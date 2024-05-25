@@ -28,3 +28,14 @@
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+/* Ed-Fi customizations */
+
+.hero {
+  background-color: #F8982B;
+}
+
+.feature-img {
+  max-width: 300px;
+  width: 100%;
+}

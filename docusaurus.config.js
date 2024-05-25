@@ -11,9 +11,9 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Ed-Fi Tech',
-  tagline: 'Connecting student data. Once. And for all.',
-  favicon: 'img/favicon.ico',
+  title: 'Ed-Fi Alliance',
+  tagline: 'Connecting Education Data. Seamlessly. Securely.',
+  favicon: 'img/tech-congress-favicon.png',
 
   // Set the production url of your site here
   url: 'https://ed-fi-alliance-oss.github.io',
@@ -67,12 +67,12 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
+      image: 'img/ed-fi-social-card.jpg',
       navbar: {
-        title: 'Ed-Fi Alliance ',
+        //title: 'Ed-Fi Alliance ',
         logo: {
           alt: 'Ed-Fi Docs Logo',
-          src: 'img/logo.png',
+          src: 'img/ed-fi-logo.webp',
         },
         items: [
           // {to: '/getting-started', label: 'Getting Started', position: 'left'},
