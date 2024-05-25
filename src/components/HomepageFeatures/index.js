@@ -11,6 +11,7 @@ const FeatureList = [
         Announcements and technical articles from the Ed-Fi Alliance Tech Team.
       </>
     ),
+    href: '/blog',
   },
   {
     title: 'Data Exchange Standards',
@@ -20,9 +21,10 @@ const FeatureList = [
         All about the Ed-Fi Data Standard and REST-based Ed-Fi APIs specifications.
       </>
     ),
+    href: '/docs/data-exchange',
   },
   {
-    title: 'Ed-Fi Software',
+    title: 'Ed-Fi Technology Suite',
     img: require('@site/static/img/ed-fi-chalkboard.png').default,
     description: (
       <>
@@ -30,10 +32,11 @@ const FeatureList = [
         Admin API, API Publisher, MetaEd, and other tools.
       </>
     ),
+    href: '/docs/technology-suite',
   },
 ];
 
-function Feature({img, title, description}) {
+function Feature({img, title, description, href}) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">
@@ -42,6 +45,7 @@ function Feature({img, title, description}) {
       <div className="text--center padding-horiz--md">
         <Heading as="h3">{title}</Heading>
         <p>{description}</p>
+        <a href={href} class="button button--primary">Read more »</a>
       </div>
     </div>
   );
