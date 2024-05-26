@@ -1,4 +1,4 @@
-# Ed-Fi Software Development Lifecycle
+# Software Development
 
 Landing page for policies, guidelines, and procedures related to Ed-Fi software development.
 

@@ -2,6 +2,6 @@
 sidebar_position: 2
 ---
 
-# Ed-Fi Technology Suite
+# Technology Suite
 
 placeholder
