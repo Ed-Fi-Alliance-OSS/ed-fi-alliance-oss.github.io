@@ -73,6 +73,7 @@ const config = {
         logo: {
           alt: 'Ed-Fi Docs Logo',
           src: 'img/ed-fi-logo.webp',
+          srcDark: 'img/ed-fi-logo-light.webp',
         },
         items: [
           // {to: '/getting-started', label: 'Getting Started', position: 'left'},
@@ -80,16 +81,16 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'API Docs',
+            label: 'Documentation',
           },
-          {
-            type: 'docsVersionDropdown',
-            position: 'left',
-          },
+          // {
+          //   type: 'docsVersionDropdown',
+          //   position: 'left',
+          // },
           {to: '/blog', label: 'Developer Blog', position: 'left'},
           {
-            href: 'https://github.com/Ed-Fi-Alliance-OSS/',
-            label: 'GitHub',
+            href: 'https://techdocs.ed-fi.org',
+            label: 'Tech Docs',
             position: 'right',
           },
           {
@@ -142,11 +143,23 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Tech',
             items: [
               {
                 label: 'Tutorial',
                 to: '/docs/intro',
+              },
+              {
+                label: 'Data Exchange Standards',
+                to: '/docs/data-exchange',
+              },
+              {
+                label: 'Technology Suite',
+                to: '/docs/technology-suite',
+              },
+              {
+                label: 'Software Development',
+                to: '/docs/sdlc',
               },
             ],
           },
@@ -154,16 +167,24 @@ const config = {
             title: 'Community',
             items: [
               {
-                label: 'Ed-Fi Academy',
-                href: 'https://academy.ed-fi.org',
+                href: 'https://techdocs.ed-fi.org',
+                label: 'Tech Docs',
+                position: 'right',
               },
               {
-                label: 'Ed-Fi Success',
-                href: 'https://success.ed-fi.org',
+                href: 'https://success.ed-fi.org/',
+                label: 'Community',
+                position: 'right',
               },
               {
-                label: 'Ed-Fi Slack',
-                href: '#',
+                href: 'https://academy.ed-fi.org/',
+                label: 'Academy',
+                position: 'right',
+              },
+              {
+                href: 'https://exchange.ed-fi.org/',
+                label: 'Exchange',
+                position: 'right',
               },
             ],
           },
@@ -171,12 +192,12 @@ const config = {
             title: 'More',
             items: [
               {
-                label: 'News',
-                to: 'https://www.ed-fi.org/blog',
+                label: 'Ed-Fi Alliance',
+                to: 'https://www.ed-fi.org',
               },
               {
-                label: 'Ed-Fi GitHub',
-                href: 'https://github.com/Ed-Fi-Alliance-OSS/',
+                label: 'Ed-Fi News',
+                to: 'https://www.ed-fi.org/blog',
               },
               {
                 label: 'Ed-Fi Events',
