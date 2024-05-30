@@ -62,6 +62,28 @@ const config = {
       }),
     ],
   ],
+  plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'data-standard',
+        path: 'data-standard',
+        routeBasePath: 'data-standard',
+        sidebarPath: './sidebarsDataStandard.js',
+        // ... other options
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'ods-api',
+        path: 'ods-api',
+        routeBasePath: 'ods-api',
+        sidebarPath: './sidebarsOdsApi.js',
+        // ... other options
+      },
+    ],
+  ],
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -83,10 +105,18 @@ const config = {
             position: 'left',
             label: 'Documentation',
           },
-          // {
-          //   type: 'docsVersionDropdown',
-          //   position: 'left',
-          // },
+          {
+            type: 'docsVersionDropdown',
+            position: 'left',
+            docsPluginId: 'data-standard',
+            label: 'Data Standard'
+          },
+          {
+            type: 'docsVersionDropdown',
+            position: 'left',
+            docsPluginId: 'ods-api',
+            label: 'ODS/API'
+          },
           {to: '/blog', label: 'Developer Blog', position: 'left'},
           {
             href: 'https://techdocs.ed-fi.org',
