@@ -21,7 +21,7 @@ function HomepageHeader() {
           <Link
             className="button button--secondary button--lg"
             to="/docs/intro">
-            Ed-Fi Tutorial - 5min ⏱️
+            Ed-Fi API Tutorial
           </Link>
         </div>
       </div>
