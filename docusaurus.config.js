@@ -77,13 +77,13 @@ const config = {
         },
         items: [
           // {to: '/getting-started', label: 'Getting Started', position: 'left'},
+          {to: '/blog', label: 'Developer Blog', position: 'left'},
           {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
             label: 'Documentation',
           },
-          {to: '/blog', label: 'Developer Blog', position: 'left'},
           {
             href: 'https://techdocs.ed-fi.org',
             label: 'Tech Docs',
