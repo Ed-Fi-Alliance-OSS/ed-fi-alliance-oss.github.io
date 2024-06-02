@@ -205,9 +205,6 @@ const config = {
       //   darkTheme: darkCodeTheme,
       // },
     }),
-    // <link rel="preconnect" href="https://fonts.googleapis.com">
-    // <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    // <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     headTags: [
       {
         tagName: 'link',
@@ -231,7 +228,18 @@ const config = {
           href: 'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap',
         },
       }
-    ]
+    ],
+    stylesheets: [
+      {
+          href: "https://unpkg.com/@antonz/codapi@0.19.7/dist/snippet.css",
+      },
+    ],
+    scripts: [
+        {
+            src: "https://unpkg.com/@antonz/codapi@0.19.7/dist/snippet.js",
+            defer: true,
+        },
+    ],
 };
 
 export default config;
