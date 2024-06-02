@@ -83,10 +83,6 @@ const config = {
             position: 'left',
             label: 'Documentation',
           },
-          // {
-          //   type: 'docsVersionDropdown',
-          //   position: 'left',
-          // },
           {to: '/blog', label: 'Developer Blog', position: 'left'},
           {
             href: 'https://techdocs.ed-fi.org',
@@ -156,10 +152,6 @@ const config = {
               {
                 label: 'Technology Suite',
                 to: '/docs/technology-suite',
-              },
-              {
-                label: 'Software Development',
-                to: '/docs/sdlc',
               },
             ],
           },
