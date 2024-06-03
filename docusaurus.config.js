@@ -4,10 +4,6 @@
 // There are various equivalent ways to declare your Docusaurus config.
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
-import {themes as prismThemes} from 'prism-react-renderer';
-
-// const lightCodeTheme = require('prism-react-renderer/themes/github');
-// const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -69,14 +65,12 @@ const config = {
       // Replace with your project's social card
       image: 'img/ed-fi-social-card.jpg',
       navbar: {
-        //title: 'Ed-Fi Alliance ',
         logo: {
           alt: 'Ed-Fi Docs Logo',
           src: 'img/ed-fi-logo.webp',
           srcDark: 'img/ed-fi-logo-light.webp',
         },
         items: [
-          // {to: '/getting-started', label: 'Getting Started', position: 'left'},
           {to: '/blog', label: 'Developer Blog', position: 'left'},
           {
             type: 'docSidebar',
@@ -101,40 +95,40 @@ const config = {
           },
         ],
       },
-      // algolia: {
-      //   // The application ID provided by Algolia
-      //   appId: 'FO340LC414',
+      algolia: {
+        // The application ID provided by Algolia
+        appId: 'FO340LC414',
 
-      //   // Public API key: it is safe to commit it
-      //   apiKey: 'b6725a50a8f5cc2d56e128cd62b5ef1f',
+        // Public API key: it is safe to commit it
+        apiKey: 'b6725a50a8f5cc2d56e128cd62b5ef1f',
 
-      //   indexName: 'teched-fi',
+        indexName: 'teched-fi',
 
-      //   // Optional: see doc section below
-      //   contextualSearch: true,
+        // Optional: see doc section below
+        contextualSearch: true,
 
-      //   // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
-      //   externalUrlRegex: 'external\\.com|domain\\.com',
+        // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
+        externalUrlRegex: 'external\\.com|domain\\.com',
 
-      //   // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
-      //   replaceSearchResultPathname: {
-      //     from: '/docs/', // or as RegExp: /\/docs\//
-      //     to: '/',
-      //   },
+        // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
+        replaceSearchResultPathname: {
+          from: '/docs/', // or as RegExp: /\/docs\//
+          to: '/',
+        },
 
-      //   // Optional: Algolia search parameters
-      //   searchParameters: {},
+        // Optional: Algolia search parameters
+        searchParameters: {},
 
-      //   // Optional: path for search page that enabled by default (`false` to disable it)
-      //   searchPagePath: 'search',
+        // Optional: path for search page that enabled by default (`false` to disable it)
+        searchPagePath: 'search',
 
-      //   placeholder: 'Ask me something',
+        placeholder: 'Ask me something',
 
-      //   //... other Algolia params
-      //   headerLinks: [
-      //     { search: true }
-      //   ],
-      // },
+        //... other Algolia params
+        headerLinks: [
+          { search: true }
+        ],
+      },
       footer: {
         style: 'dark',
         links: [
@@ -185,11 +179,11 @@ const config = {
             items: [
               {
                 label: 'Ed-Fi Alliance',
-                to: 'https://www.ed-fi.org',
+                href: 'https://www.ed-fi.org',
               },
               {
                 label: 'Ed-Fi News',
-                to: 'https://www.ed-fi.org/blog',
+                href: 'https://www.ed-fi.org/blog',
               },
               {
                 label: 'Ed-Fi Events',
@@ -200,10 +194,6 @@ const config = {
         ],
         copyright: `Copyright © ${new Date().getFullYear()} Ed-Fi Alliance.`,
       },
-      // prism: {
-      //   theme: lightCodeTheme,
-      //   darkTheme: darkCodeTheme,
-      // },
     }),
     headTags: [
       {
