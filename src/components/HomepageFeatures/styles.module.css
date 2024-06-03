@@ -5,7 +5,8 @@
   width: 100%;
 }
 
-.featureSvg {
-  height: 200px;
-  width: 200px;
+.feature-img {
+  max-height: 200px;
+  width: auto;
 }
+

@@ -40,12 +40,12 @@
 /* Ed-Fi customizations */
 
 .hero {
-  background-color: #F8982B;
+  background-color: #F8992D;
 }
 
 .feature-img {
-  max-width: 300px;
-  width: 100%;
+  max-height: 200px;
+  width: auto;
 }
 
 .footer {
