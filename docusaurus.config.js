@@ -97,10 +97,10 @@ const config = {
       },
       algolia: {
         // The application ID provided by Algolia
-        appId: 'FO340LC414',
+        appId: 'OY2ZOMW1VR',
 
         // Public API key: it is safe to commit it
-        apiKey: 'b6725a50a8f5cc2d56e128cd62b5ef1f',
+        apiKey: '7d6115bec7bf8ceedfaa94b9b3340874',
 
         indexName: 'teched-fi',
 
