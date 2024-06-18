@@ -4,12 +4,12 @@ sidebar_position: 0
 
 # Tutorial: Interacting with an Ed-Fi API
 
-Audience: developers who wish to learn how to use an Ed-Fi API.
+Audience: Developers who wish to learn how to use an Ed-Fi API.
 
-Background assumptions: basic knowledge of REST API semantics and basic
+Background assumptions: Basic knowledge of REST API semantics and basic
 familiarity with [data exchange standards](../data-exchange/).
 
-This tutorial will walk through some basic interactions with an Ed-Fi API. It
+This tutorial will walk the audience through some basic interactions with an Ed-Fi API. It
 uses a live application running the Ed-Fi Resources API version 5.0 and
 Descriptors API version 5.0 (hosted via the Ed-Fi ODS/API version 7.1). The
 concepts are the same in all versions, though some detail of the data models may
@@ -17,7 +17,7 @@ differ.
 
 :::note
 
-The data returned by this API may _look_ realistic, but they are entirely fake.
+The data returned by this API may look _realistic_, but they are entirely _made up_ for demonstration purposes.
 The Ed-Fi Alliance does not store, transmit, or have access to student data - we
 provide software to our community members, who run it for themselves or engage
 with a partner to do so on their behalf. The live application used by this tutorial
@@ -46,7 +46,9 @@ In particular, note the following:
 :::info
 
 Is it a Standard or a Model? And is it the "Data Standard" or the "API
-Standard"? It _is_ a little confusing. The "things" (_entities_) we are
+Standard"? It is a little confusing.
+
+The "things" (_entities_) we are
 describing &mdash; such as students, schools, etc. &mdash; are defined by the
 Ed-Fi Data Standard. It enumerates the properties that describe each of those
 entities. The Data Standard is an abstract concept. We transcribe it into a data
@@ -63,6 +65,7 @@ Standard.
 
 :::
 
+
 * Authentication requests (described in the next section) need to use the URL
   specified in the `$.urls.oauth` property.
 
@@ -76,6 +79,7 @@ Arrays are described in JSONPath using index notation. For example, the TPDM
 version number is at path `$.dataModels[1].version`.
 
 :::
+
 
 * The `$.urls.dataManagementApi` provides the base path for access to Ed-Fi
   Resources and Ed-Fi Descriptors &mdash; the entities you are managing via an
@@ -91,7 +95,9 @@ version number is at path `$.dataModels[1].version`.
 ## Authentication
 
 All interactions with an Ed-Fi API must be authenticated, generally using the
-OAuth client credentials flow. The following example submits a pairing of
+OAuth client credentials flow. 
+
+The following example submits a pairing of
 `client_id` and `client_secret`, and the response will contain an `access_token`
 value. That token value is a temporary key for unlocking access to the Ed-Fi
 API. What do we mean by "temporary"? Note the `expires_in` value, which is in
@@ -137,12 +143,13 @@ GET https://api.ed-fi.org/v7.1/api/data/v3/ed-fi/students?limit=1
 
 ### Access Token Authorization
 
-Look at the response carefully: it says 401 Unauthorized. We "forgot" to include
+As it can be seen in the response to the `GET` request above, the first line 
+shows HTTP Status Code 401, Unauthorized. It is because we "forgot" to include
 the `access_token` from the authentication request! The server does not
 recognize the client applications and denies it access to this resource.
 
 In the following example, copy the `access_token` from the response in the
-Authentication section above into the box below, replacing
+**Authentication** section above into the box below, replacing
 "98aa86998da3476c95c296e99e397891" after the word "bearer":
 
 ```fetch
@@ -159,7 +166,9 @@ containing a single student record.
 
 While there are other elements available on the Student data model, at minimum a
 Student must have these properties defined: `studentUniqueId`, `birthDate`,
-`firstname`, `lastSurname`. The following request creates a new student. Once
+`firstname`, `lastSurname`.
+
+The following request creates a new student. Once
 again, you will need to copy and paste your new access token from above. You
 might also want to replace the `studentUniqueId` value with something truly
 unique; otherwise, if someone else has run this tutorial recently, you will end
