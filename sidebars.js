@@ -18,7 +18,7 @@ const sidebars = {
     {
       type: 'link',
       label: 'Project Tanager',
-      href: '/Project-Tanager'
+      href: 'https://dev.ed-fi.org/Project-Tanager'
     }
   ],
 };
