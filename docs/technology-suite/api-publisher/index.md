@@ -89,9 +89,9 @@ Run the Ed-Fi API Publisher from the folder containing all the binaries by execu
 ```
 > NOTE for Ed-Fi ODS API v5.2 only: The `--exclude` flag is used to prevent trying to move any survey data due to an issue with the security metadata (described in [ODS-4974](https://tracker.ed-fi.org/browse/ODS-4974)) in the Ed-Fi ODS API v5.2 release. If you remove this argument, the publishing operation will fail due to unsatisfied dependencies in the data.  This has been fixed in future versions of the ODS/API platform.
 
-For more documentation on API Publisher's parameters, please see the [API Publisher Configuration](docs/API-Publisher-Configuration.md) markdown file for other runtime options.
+For more documentation on API Publisher's parameters, please see the [API Publisher Configuration](technical-articles/API-Publisher-Configuration.md) markdown file for other runtime options.
 
-For more information in relation to key changes and deletes, please see [Considerations in relation to key changes and deletes](docs/API-Publisher-Configuration.md#considerations-in-relation-to-key-changes-and-deletes)
+For more information in relation to key changes and deletes, please see [Considerations in relation to key changes and deletes](technical-articles/API-Publisher-Configuration.md#considerations-in-relation-to-key-changes-and-deletes)
 
 ## Known Limitations for Ed-Fi ODS / API 5.1 through 5.3
 
@@ -112,18 +112,18 @@ Changes to primary keys (on the API resources that support it) in source API wil
 
 An additional limitation of the Ed-Fi API Publisher is the current lack of support for API Profiles (for defining resource/property level data policies for API clients). Create a support case to request Profiles support if this of interest to you.
 
-More technical details on some of these issues can be found [here](docs/Known-Issues-Details.md).
+More technical details on some of these issues can be found [here](technical-articles/Known-Issues-Details.md).
 
 
 ## Next Steps
 
 When you're ready to look further, review these other topics:
 
-* [API Connection Management](docs/API-Connection-Management.md)
-* [API Publisher Configuration](docs/API-Publisher-Configuration.md)
-* [Considerations for API Hosts](docs/Considerations-for-API-Hosts.md)
-* [Considerations for Docker Configuration and Execution](docs/Considerations-docker-configuration-and-execution.md)
-* [How to use the TextFormatter class](docs/Use-TextFormatter-Serilog.md).
+* [API Connection Management](technical-articles/API-Connection-Management.md)
+* [API Publisher Configuration](technical-articles/API-Publisher-Configuration.md)
+* [Considerations for API Hosts](technical-articles/Considerations-for-API-Hosts.md)
+* [Considerations for Docker Configuration and Execution](technical-articles/Considerations-docker-configuration-and-execution.md)
+* [How to use the TextFormatter class](technical-articles/Use-TextFormatter-Serilog.md).
 
 ## Support
 
@@ -133,11 +133,11 @@ For support with the API Publisher, please use [Ed-Fi Support](https://support.e
 
 Copyright (c) 2023 Ed-Fi Alliance, LLC and contributors.
 
-Licensed under the [Apache License, Version 2.0](LICENSE) (the "License").
+Licensed under the [Apache License, Version 2.0](../LICENSE) (the "License").
 
 Unless required by applicable law or agreed to in writing, software distributed
 under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
 CONDITIONS OF ANY KIND, either express or implied. See the License for the
 specific language governing permissions and limitations under the License.
 
-See [NOTICES](NOTICES.md) for additional copyright and license notifications.
+See [NOTICES](../NOTICES.md) for additional copyright and license notifications.

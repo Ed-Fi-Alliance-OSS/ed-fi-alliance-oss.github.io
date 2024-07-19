@@ -1,6 +1,6 @@
 # First-Time Configuration for Admin API 1.x
 
-After [Installing the Admin API](../admin-api-1x-for-odsapi-34-61/admin-api-1x-docker-installation.md), there are a couple manual steps that must be completed before the application can be used.
+After [Installing the Admin API](admin-api-1x-docker-installation.md), there are a couple manual steps that must be completed before the application can be used.
 
 *   [1\. Launch the Application](#1-launch-the-application)
 *   [2\. Create the First API Client](#2-create-the-first-api-client)

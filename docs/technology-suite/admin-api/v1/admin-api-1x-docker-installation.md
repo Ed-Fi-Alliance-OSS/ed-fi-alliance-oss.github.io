@@ -80,7 +80,7 @@ adminapi:
 
 #### Admin API Database
 
-For the most part, the Admin API shares the same database schema as the Admin App. However, there are a few tables required for storing API client authentication which need to be initialized manually. You can see the details in [First-Time Configuration for Admin 1.x](../admin-api-1x-for-odsapi-34-61/first-time-configuration-for-admin-api-1x.md).
+For the most part, the Admin API shares the same database schema as the Admin App. However, there are a few tables required for storing API client authentication which need to be initialized manually. You can see the details in [First-Time Configuration for Admin 1.x](first-time-configuration-for-admin-api-1x.md).
 
 Rather than introducing these tables explicitly, for Docker we have provided an alternative image for use with Admin API: [`edfialliance/ods-admin-api-db`](https://hub.docker.com/r/edfialliance/ods-admin-api-db), which is to be used **in place of** the existing `edfialliance/ods-api-db-admin` image for your DB service.
 
@@ -174,7 +174,7 @@ docker compose -f ./compose/your-compose-file.yml --env-file ./.env up -d
 
 ## 3\. Execute First-Time Configuration
 
-Continue on to [First-Time Configuration for Admin 1.x](../admin-api-1x-for-odsapi-34-61/first-time-configuration-for-admin-api-1x.md).
+Continue on to [First-Time Configuration for Admin 1.x](first-time-configuration-for-admin-api-1x.md).
 
 > [!NOTE]
 > The following is the DockerHub repo for **Admin API v1.4.0 Docker Image** for inclusion in Docker compose:
