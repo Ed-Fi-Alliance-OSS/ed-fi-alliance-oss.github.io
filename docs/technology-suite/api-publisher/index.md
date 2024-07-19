@@ -1,8 +1,4 @@
----
-sidebar_position: 2
----
-
-# Ed-Fi API Publisher
+# API Publisher
 
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/Ed-Fi-Alliance-OSS/Ed-Fi-API-Publisher/badge)](https://securityscorecards.dev/viewer/?uri=github.com/Ed-Fi-Alliance-OSS/Ed-Fi-API-Publisher)
 
