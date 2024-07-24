@@ -102,7 +102,7 @@ const config = {
         // Public API key: it is safe to commit it
         apiKey: 'a58d193c70793d68151589d3cfbdeb6b',
 
-        indexName: 'teched-fi',
+        indexName: 'ed-fi-alliance-ossio',
 
         // Optional: see doc section below
         contextualSearch: true,
