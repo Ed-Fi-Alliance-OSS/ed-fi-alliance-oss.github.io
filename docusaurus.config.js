@@ -79,12 +79,7 @@ const config = {
             label: 'Documentation',
           },
           {
-            href: 'https://techdocs.ed-fi.org',
-            label: 'Tech Docs',
-            position: 'right',
-          },
-          {
-            href: 'https://success.ed-fi.org/',
+            href: 'https://community.ed-fi.org/',
             label: 'Community',
             position: 'right',
           },
@@ -150,16 +145,16 @@ const config = {
             ],
           },
           {
-            title: 'Community',
+            title: 'Resources',
             items: [
               {
-                href: 'https://techdocs.ed-fi.org',
-                label: 'Tech Docs',
+                href: 'https://community.ed-fi.org/',
+                label: 'Community Hub',
                 position: 'right',
               },
               {
-                href: 'https://success.ed-fi.org/',
-                label: 'Community',
+                href: 'https://techdocs.ed-fi.org',
+                label: 'Tech Docs (legacy)',
                 position: 'right',
               },
               {
