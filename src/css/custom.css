@@ -39,17 +39,31 @@
 
 /* Ed-Fi customizations */
 
-.hero {
+/* .hero {
   background-color: #F8992D;
-}
-
-.feature-img {
-  max-height: 200px;
-  width: auto;
-}
+} */
 
 .footer {
   background-color: #636567;
+}
+
+
+.hero__title {
+  background-image: url('/img/Ed-FiLogo-2.png');
+  background-size: cover;
+  height: 180px;
+  width: 344px;
+  text-indent: -9999px;
+  margin: auto;
+}
+
+[data-theme='dark'] .hero__title {
+  background-image: url('/img/ed-fi-logo-light.webp');
+}
+
+
+main {
+  background-color: var(--ifm-color-secondary);
 }
 
 [data-theme='light'] .DocSearch {

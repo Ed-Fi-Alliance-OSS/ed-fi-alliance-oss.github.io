@@ -10,18 +10,22 @@ import styles from './index.module.css';
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
   return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
+    <header className={clsx('hero', styles.heroBanner)}>
       <div className="container">
         <Heading as="h1" className="hero__title">
           {siteConfig.title}
         </Heading>
-        <img src="/img/tech-large.png" alt="Tech" />
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
+        <p className="hero__subtitle">Connecting Education Data.<br />Seamlessly. Securely.</p>
         <div className={styles.buttons}>
           <Link
+            className="button button--primary button--lg"
+            to="/getting-started">
+            Get Started
+          </Link>&nbsp;
+          <Link
             className="button button--secondary button--lg"
-            to="/docs/intro">
-            Ed-Fi API Tutorial
+            to="/reference">
+            Reference
           </Link>
         </div>
       </div>
@@ -34,7 +38,7 @@ export default function Home() {
   return (
     <Layout
       title={`Hello from ${siteConfig.title}`}
-      description="Ed-Fi Alliance - Tech News and Documentation">
+      description="Ed-Fi Alliance Documentation">
       <HomepageHeader />
       <main>
         <HomepageFeatures />

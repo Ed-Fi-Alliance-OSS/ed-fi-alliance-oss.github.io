@@ -4,45 +4,47 @@ import styles from './styles.module.css';
 
 const FeatureList = [
   {
-    title: 'Developer Blog',
+    title: 'Get Started',
     img: require('@site/static/img/ed-fi-exclaim-question.png').default,
     description: (
       <>
-        Announcements and technical articles from the Ed-Fi Alliance Tech Team.
+        Implementation playbooks and certified partner information for those
+        starting on their Ed-Fi journey or looking to expand into new use cases.
       </>
     ),
-    href: '/blog',
+    href: '/get-started',
   },
   {
-    title: 'Data Exchange Standards',
+    title: 'Reference',
     img: require('@site/static/img/ed-fi-puzzle.png').default,
     description: (
       <>
-        All about the Ed-Fi Data Standard and REST-based Ed-Fi APIs specifications.
+        Reference documentation for the Ed-Fi Data Standard and the Ed-Fi
+        Alliance's technology suite, including the Ed-Fi ODS/API and other tools.
       </>
     ),
-    href: '/docs/data-exchange',
+    href: '/reference',
   },
   {
-    title: 'Ed-Fi Technology Suite',
+    title: 'Support',
     img: require('@site/static/img/ed-fi-chalkboard.png').default,
     description: (
       <>
-        Learn about the Ed-Fi Alliance's software, including the Ed-Fi ODS/API Platform,
-        Admin API, API Publisher, MetaEd, and other tools.
+        Connect with the Ed-Fi help desk or with the Ed-Fi community at large for expert
+        support and to contribute to the growing suite of Ed-Fi aligned software.
       </>
     ),
-    href: '/docs/technology-suite',
+    href: '/docs/support',
   },
 ];
-
+//text--center
 function Feature({img, title, description, href}) {
   return (
     <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <img src={img} className="feature-img" />
+      <div className={`shadow--md text--center ${styles.featureBlock}`}>
+        <img src={img} className={`${styles.featureImg}`} alt={title} />
       </div>
-      <div className="text--center padding-horiz--md">
+      <div className="padding-horiz--md margin-bottom--lg">
         <Heading as="h3">{title}</Heading>
         <p>{description}</p>
         <a href={href} class="button button--primary">Read more »</a>
