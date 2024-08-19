@@ -34,7 +34,7 @@ const FeatureList = [
         support and to contribute to the growing suite of Ed-Fi aligned software.
       </>
     ),
-    href: '/docs/support',
+    href: '/support',
   },
 ];
 //text--center

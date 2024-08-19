@@ -21,3 +21,8 @@
   align-items: center;
   justify-content: center;
 }
+
+
+.main {
+  background-color: var(--ifm-color-secondary);
+}

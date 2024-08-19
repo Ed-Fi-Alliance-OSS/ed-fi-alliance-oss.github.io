@@ -13,8 +13,8 @@
   --ifm-color-primary-light: #33925d;
   --ifm-color-primary-lighter: #359962;
   --ifm-color-primary-lightest: #3cad6e; */
-  --ifm-color-primary: #ac268b;
-  --ifm-color-primary-dark: #7c2d8b;
+  --ifm-color-primary: #A0298C;
+  --ifm-color-primary-dark: #7A2E8C;
   --ifm-color-primary-darker: #55206e;
   --ifm-color-primary-darkest: #320d43;
   --ifm-color-primary-light: #d832af;
@@ -59,11 +59,6 @@
 
 [data-theme='dark'] .hero__title {
   background-image: url('/img/ed-fi-logo-light.webp');
-}
-
-
-main {
-  background-color: var(--ifm-color-secondary);
 }
 
 [data-theme='light'] .DocSearch {
