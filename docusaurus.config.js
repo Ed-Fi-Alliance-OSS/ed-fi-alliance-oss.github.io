@@ -44,13 +44,6 @@ const config = {
           editUrl:
             "https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/packages/docs/",
         },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            "https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/blog/",
-        },
         theme: {
           customCss: "./src/css/custom.css",
         },
