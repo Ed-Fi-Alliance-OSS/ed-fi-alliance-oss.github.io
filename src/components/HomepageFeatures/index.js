@@ -1,48 +1,56 @@
-import clsx from 'clsx';
 import Heading from '@theme/Heading';
 import styles from './styles.module.css';
 
 const FeatureList = [
   {
-    title: 'Developer Blog',
-    img: require('@site/static/img/ed-fi-exclaim-question.png').default,
-    description: (
-      <>
-        Announcements and technical articles from the Ed-Fi Alliance Tech Team.
-      </>
-    ),
-    href: '/blog',
-  },
-  {
-    title: 'Data Exchange Standards',
-    img: require('@site/static/img/ed-fi-puzzle.png').default,
-    description: (
-      <>
-        All about the Ed-Fi Data Standard and REST-based Ed-Fi APIs specifications.
-      </>
-    ),
-    href: '/docs/data-exchange',
-  },
-  {
-    title: 'Ed-Fi Technology Suite',
+    title: 'Getting Started',
     img: require('@site/static/img/ed-fi-chalkboard.png').default,
     description: (
       <>
-        Learn about the Ed-Fi Alliance's software, including the Ed-Fi ODS/API Platform,
-        Admin API, API Publisher, MetaEd, and other tools.
+        Patterns and practices for starting or expanding on your Ed-Fi journey.
       </>
     ),
-    href: '/docs/technology-suite',
+    href: '/getting-started',
+  },
+  {
+    title: 'Partners',
+    img: require('@site/static/img/ed-fi-puzzle.png').default,
+    description: (
+      <>
+        Find a certified partner or learn how to earn Ed-Fi badges and certification.
+      </>
+    ),
+    href: '/partners',
+  },
+  {
+    title: 'Community',
+    img: require('@site/static/img/ed-fi-exclaim-question.png').default,
+    description: (
+      <>
+        Connect with the Ed-Fi help desk or with the Ed-Fi community for expert support.
+      </>
+    ),
+    href: '/community',
+  },
+  {
+    title: 'Reference',
+    img: require('@site/static/img/ed-fi-phone-graphic.png').default,
+    description: (
+      <>
+        Reference documentation for the Ed-Fi Data Standard and Ed-Fi technology suite.
+      </>
+    ),
+    href: '/reference',
   },
 ];
-
+//text--center
 function Feature({img, title, description, href}) {
   return (
-    <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <img src={img} className="feature-img" />
+    <div className="col">
+      <div className={`shadow--md text--center ${styles.featureBlock}`}>
+        <img src={img} className={`${styles.featureImg}`} alt={title} />
       </div>
-      <div className="text--center padding-horiz--md">
+      <div className="padding-horiz--md margin-bottom--lg">
         <Heading as="h3">{title}</Heading>
         <p>{description}</p>
         <a href={href} class="button button--primary">Read more »</a>

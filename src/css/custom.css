@@ -13,8 +13,8 @@
   --ifm-color-primary-light: #33925d;
   --ifm-color-primary-lighter: #359962;
   --ifm-color-primary-lightest: #3cad6e; */
-  --ifm-color-primary: #ac268b;
-  --ifm-color-primary-dark: #7c2d8b;
+  --ifm-color-primary: #A0298C;
+  --ifm-color-primary-dark: #7A2E8C;
   --ifm-color-primary-darker: #55206e;
   --ifm-color-primary-darkest: #320d43;
   --ifm-color-primary-light: #d832af;
@@ -39,17 +39,26 @@
 
 /* Ed-Fi customizations */
 
-.hero {
+/* .hero {
   background-color: #F8992D;
-}
-
-.feature-img {
-  max-height: 200px;
-  width: auto;
-}
+} */
 
 .footer {
   background-color: #636567;
+}
+
+
+.hero__title {
+  background-image: url('/img/Ed-FiLogo-2.png');
+  background-size: cover;
+  height: 180px;
+  width: 344px;
+  text-indent: -9999px;
+  margin: auto;
+}
+
+[data-theme='dark'] .hero__title {
+  background-image: url('/img/ed-fi-logo-light.webp');
 }
 
 [data-theme='light'] .DocSearch {
@@ -91,3 +100,11 @@
     var(--ifm-color-emphasis-100) 100%
   );
 }
+
+
+.hero--primary {
+  background: linear-gradient(180deg, #A0298C, #7A2E8C);
+  height: 12rem;
+  margin-bottom: 2rem;
+}
+
