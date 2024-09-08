@@ -1,46 +1,52 @@
-import clsx from 'clsx';
 import Heading from '@theme/Heading';
 import styles from './styles.module.css';
 
 const FeatureList = [
   {
-    title: 'Get Started',
-    img: require('@site/static/img/ed-fi-exclaim-question.png').default,
-    description: (
-      <>
-        Implementation playbooks and certified partner information for those
-        starting on their Ed-Fi journey or looking to expand into new use cases.
-      </>
-    ),
-    href: '/get-started',
-  },
-  {
-    title: 'Reference',
-    img: require('@site/static/img/ed-fi-puzzle.png').default,
-    description: (
-      <>
-        Reference documentation for the Ed-Fi Data Standard and the Ed-Fi
-        Alliance's technology suite, including the Ed-Fi ODS/API and other tools.
-      </>
-    ),
-    href: '/reference',
-  },
-  {
-    title: 'Support',
+    title: 'Getting Started',
     img: require('@site/static/img/ed-fi-chalkboard.png').default,
     description: (
       <>
-        Connect with the Ed-Fi help desk or with the Ed-Fi community at large for expert
-        support and to contribute to the growing suite of Ed-Fi aligned software.
+        Implementation playbooks for those starting on or expanding their Ed-Fi uses cases.
       </>
     ),
-    href: '/support',
+    href: '/getting-started',
+  },
+  {
+    title: 'Partners',
+    img: require('@site/static/img/ed-fi-puzzle.png').default,
+    description: (
+      <>
+        Find a certified partner or learn how to earn Ed-Fi badges and certification.
+      </>
+    ),
+    href: '/partners',
+  },
+  {
+    title: 'Community',
+    img: require('@site/static/img/ed-fi-exclaim-question.png').default,
+    description: (
+      <>
+        Connect with the Ed-Fi help desk or with the Ed-Fi community for expert support.
+      </>
+    ),
+    href: '/community',
+  },
+  {
+    title: 'Reference',
+    img: require('@site/static/img/ed-fi-phone-graphic.png').default,
+    description: (
+      <>
+        Reference documentation for the Ed-Fi Data Standard and Ed-Fi technology suite.
+      </>
+    ),
+    href: '/reference',
   },
 ];
 //text--center
 function Feature({img, title, description, href}) {
   return (
-    <div className={clsx('col col--4')}>
+    <div className="col">
       <div className={`shadow--md text--center ${styles.featureBlock}`}>
         <img src={img} className={`${styles.featureImg}`} alt={title} />
       </div>

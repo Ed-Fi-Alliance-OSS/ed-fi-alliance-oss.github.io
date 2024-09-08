@@ -11,7 +11,7 @@ const config = {
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
-  url: "https://dev.ed-fi.org",
+  url: "https://docs.ed-fi.org",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
@@ -38,16 +38,31 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          id: "getting-started",
+          path: "getting-started",
+          editUrl: ({docPath}) =>
+            `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/${docPath}/`,
+          routeBasePath: "getting-started",
           sidebarPath: "./sidebars.js",
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            "https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/packages/docs/",
         },
         theme: {
           customCss: "./src/css/custom.css",
         },
       }),
+    ],
+  ],
+
+  plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: "partners",
+        path: "partners",
+        editUrl: ({docPath}) =>
+          `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/${docPath}/`,
+        routeBasePath: "partners",
+        sidebarPath: "./sidebarsPartners.js"
+      },
     ],
   ],
 
@@ -63,13 +78,10 @@ const config = {
           srcDark: "img/ed-fi-logo-light.webp",
         },
         items: [
-          { to: "/get-started", label: "Get Started", position: "left" },
+          { to: "/getting-started", label: "Getting Started", position: "left" },
+          { to: "/partners", label: "Partners", position: "left" },
+          { to: "/community", label: "Community", position: "left" },
           { to: "/reference", label: "Reference", position: "left" },
-          {
-            href: "https://community.ed-fi.org/",
-            label: "Community",
-            position: "right",
-          },
           {
             href: "https://academy.ed-fi.org/",
             label: "Academy",
@@ -118,20 +130,12 @@ const config = {
         style: "dark",
         links: [
           {
-            title: "Tech",
+            title: "Documentation",
             items: [
-              {
-                label: "Tutorial",
-                to: "/docs/intro",
-              },
-              {
-                label: "Data Exchange Standards",
-                to: "/docs/data-exchange",
-              },
-              {
-                label: "Technology Suite",
-                to: "/docs/technology-suite",
-              },
+              { to: "/get-started", label: "Getting Started" },
+              { to: "/partners", label: "Partners" },
+              { to: "/community", label: "Community" },
+              { to: "/reference", label: "Reference" },
             ],
           },
           {
@@ -140,11 +144,6 @@ const config = {
               {
                 href: "https://community.ed-fi.org/",
                 label: "Community Hub",
-                position: "right",
-              },
-              {
-                href: "https://techdocs.ed-fi.org",
-                label: "Tech Docs (legacy)",
                 position: "right",
               },
               {
@@ -178,6 +177,11 @@ const config = {
           },
         ],
         copyright: `Copyright © ${new Date().getFullYear()} Ed-Fi Alliance.`,
+      },
+      docs: {
+        sidebar: {
+          hideable: true,
+        },
       },
     }),
   headTags: [

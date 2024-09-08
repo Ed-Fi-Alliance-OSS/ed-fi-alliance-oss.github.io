@@ -3,14 +3,14 @@ import Link from "@docusaurus/Link";
 import Layout from "@theme/Layout";
 import Heading from "@theme/Heading";
 
-import styles from "./support.module.css";
+import styles from "./community.module.css";
 
 export default function Hello() {
   return (
     <Layout title="Support" description="Ed-Fi Support Page">
-      <div className={styles.heroBanner}>
+      <header className="hero hero--primary">
         <Heading as="h1">Getting Support&hellip; and Giving Back</Heading>
-      </div>
+      </header>
       <div className="container margin-top--lg">
         <div className="row margin-top--lg">
           <div className="col col--5">

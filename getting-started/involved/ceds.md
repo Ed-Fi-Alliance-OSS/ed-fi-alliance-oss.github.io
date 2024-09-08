@@ -1,6 +1,8 @@
-# CEDS and Ed-Fi Collaboration Guidelines
+---
+description: Collaboration Guidelines
+---
 
-July 26th, 2017
+# CEDS and Ed-Fi
 
 ## Introduction
 
@@ -45,7 +47,7 @@ reference implementation for operationalizing CEDS elements, and a suite of
 its **community** of stakeholders across the P-20W sector.
 
 Ed-Fi’s core mission is to *operationalize the standardized exchange of data for
-the K12 sector***.** In pursuit of this goal, the Ed-Fi Alliance has chosen to
+the K12 sector*. In pursuit of this goal, the Ed-Fi Alliance has chosen to
 invest in the “full stack” of data standardization, which can be thought of as a
 “depth” approach. This starts with defining the **Ed-Fi Data Standard**, which
 consists of a logical data model (that references a data dictionary aligned to

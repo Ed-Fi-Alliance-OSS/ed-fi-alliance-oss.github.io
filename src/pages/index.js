@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import Link from '@docusaurus/Link';
+// import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
@@ -16,18 +16,6 @@ function HomepageHeader() {
           {siteConfig.title}
         </Heading>
         <p className="hero__subtitle">Connecting Education Data.<br />Seamlessly. Securely.</p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--primary button--lg"
-            to="/getting-started">
-            Get Started
-          </Link>&nbsp;
-          <Link
-            className="button button--secondary button--lg"
-            to="/reference">
-            Reference
-          </Link>
-        </div>
       </div>
     </header>
   );

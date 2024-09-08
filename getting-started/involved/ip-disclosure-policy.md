@@ -1,4 +1,4 @@
-# Ed-Fi Community Intellectual Property Disclosure Policy
+# Intellectual Property Disclosure Policy
 
 This Ed-Fi Community’s Intellectual Property Disclosure Policy ("Policy”)
 applies to each participant and community member ("Member”) of an Ed-Fi
