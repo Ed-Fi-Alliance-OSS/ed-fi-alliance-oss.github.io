@@ -105,10 +105,10 @@ function Main() {
   );
 }
 
-export default function GetStarted() {
+export default function Partners() {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <Layout title="Getting Started">
+    <Layout title="Partner Programs">
       <Header></Header>
       <Main></Main>
     </Layout>

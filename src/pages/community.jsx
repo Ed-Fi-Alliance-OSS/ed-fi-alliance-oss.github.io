@@ -3,16 +3,10 @@ import Link from "@docusaurus/Link";
 import Layout from "@theme/Layout";
 import Heading from "@theme/Heading";
 
-import styles from "./community.module.css";
-
-export default function Hello() {
+function Main() {
   return (
-    <Layout title="Support" description="Ed-Fi Support Page">
-      <header className="hero hero--primary">
-        <Heading as="h1">Getting Support&hellip; and Giving Back</Heading>
-      </header>
       <div className="container margin-top--lg">
-        <div className="row margin-top--lg">
+        <div className="row">
           <div className="col col--5">
             <Heading as="h2">Community Hub</Heading>
             <p>
@@ -22,8 +16,7 @@ export default function Hello() {
               your peers in the community forums. Membership required:{" "}
               <Link to="https://www.ed-fi.org/create-an-account/">
                 join now
-              </Link>{" "}
-              at no cost.
+              </Link> at no cost.
             </p>
             <p>
               <Link
@@ -128,6 +121,31 @@ export default function Hello() {
           </div>
         </div>
       </div>
+  );
+}
+
+function Header() {
+  return (
+    <header className="hero hero--primary">
+      <div className="container">
+        <div className="row">
+          <div className="col">
+            <Heading as="h1">Community</Heading>
+            <p className="hero__subtitle">
+            Getting Support&hellip; and Giving Back
+            </p>
+          </div>
+        </div>
+      </div>
+    </header>
+  );
+}
+
+export default function Community() {
+  return (
+    <Layout title="Community">
+      <Header></Header>
+      <Main></Main>
     </Layout>
   );
 }

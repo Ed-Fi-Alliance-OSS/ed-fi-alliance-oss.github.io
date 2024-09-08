@@ -82,7 +82,7 @@ function GetStartedIntro() {
   );
 }
 
-function GetStartedHeader() {
+function Header() {
   return (
     <header className="hero hero--primary">
       <div className="container">
@@ -122,7 +122,7 @@ export default function GetStarted() {
   const { siteConfig } = useDocusaurusContext();
   return (
     <Layout title="Getting Started">
-      <GetStartedHeader></GetStartedHeader>
+      <Header></Header>
       <Main></Main>
     </Layout>
   );
