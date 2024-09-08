@@ -17,7 +17,7 @@ function SeaPlaybook() {
       State Education Agency (SEA) Playbook
       </Heading>
         <Link
-          to="/docs/sea-playbook"
+          to="/getting-started/sea-playbook"
           className="button button--primary button"
         >
           Go »
@@ -37,7 +37,7 @@ function TechPlaybook() {
       Technology Provider Playbook
       </Heading>
         <Link
-          to="/docs/provider-playbook"
+          to="/getting-started/provider-playbook"
           className="button button--primary button"
         >
           Go »
