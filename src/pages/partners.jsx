@@ -14,8 +14,8 @@ function Header() {
           <div className="col">
             <Heading as="h1">Ed-Fi Alliance Partner Program</Heading>
             <p className="hero__subtitle">
-              Collaborating to deliver greater value, drive classroom success,
-              and transform education.
+              Find a certified partner or learn how to earn Ed-Fi badges and
+              certification.
             </p>
           </div>
         </div>

@@ -9,19 +9,14 @@ component to define structure */
 function SeaPlaybook() {
   return (
     <div className="margin-bottom--lg">
-      <img
-        src="/img/sea-playbook.jpg"
-        alt="[SEA playbook cover image]"
-      />
-      <Heading as="h2">
-      State Education Agency (SEA) Playbook
-      </Heading>
-        <Link
-          to="/getting-started/sea-playbook"
-          className="button button--primary button"
-        >
-          Go »
-        </Link>
+      <img src="/img/sea-playbook.jpg" alt="[SEA playbook cover image]" />
+      <Heading as="h2">State Education Agency (SEA) Playbook</Heading>
+      <Link
+        to="/getting-started/sea-playbook"
+        className="button button--primary button"
+      >
+        Go »
+      </Link>
     </div>
   );
 }
@@ -33,18 +28,15 @@ function TechPlaybook() {
         src="/img/tech-playbook.jpg"
         alt="[Tech provider playbook cover image]"
       />
-      <Heading as="h2">
-      Technology Provider Playbook
-      </Heading>
-        <Link
-          to="/getting-started/provider-playbook"
-          className="button button--primary button"
-        >
-          Go »
-        </Link>
+      <Heading as="h2">Technology Provider Playbook</Heading>
+      <Link
+        to="/getting-started/provider-playbook"
+        className="button button--primary button"
+      >
+        Go »
+      </Link>
     </div>
   );
-
 }
 
 function GetStartedIntro() {
@@ -90,8 +82,8 @@ function Header() {
           <div className="col">
             <Heading as="h1">Getting Started</Heading>
             <p className="hero__subtitle">
-              Patterns and practices for those starting on their Ed-Fi journey
-              or looking to expand into new use cases.
+              Patterns and practices for starting or expanding on your Ed-Fi
+              journey
             </p>
           </div>
         </div>

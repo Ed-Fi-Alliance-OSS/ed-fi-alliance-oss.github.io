@@ -7,7 +7,7 @@ const FeatureList = [
     img: require('@site/static/img/ed-fi-chalkboard.png').default,
     description: (
       <>
-        Implementation playbooks for those starting on or expanding their Ed-Fi uses cases.
+        Patterns and practices for starting or expanding on your Ed-Fi journey.
       </>
     ),
     href: '/getting-started',

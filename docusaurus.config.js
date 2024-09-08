@@ -45,6 +45,11 @@ const config = {
           routeBasePath: "getting-started",
           sidebarPath: "./sidebars.js",
         },
+        blog: {
+          showReadingTime: true,
+          editUrl:
+            'https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/blog/',
+        },
         theme: {
           customCss: "./src/css/custom.css",
         },
@@ -62,6 +67,17 @@ const config = {
           `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/${docPath}/`,
         routeBasePath: "partners",
         sidebarPath: "./sidebarsPartners.js"
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: "reference",
+        path: "reference",
+        editUrl: ({docPath}) =>
+          `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/${docPath}/`,
+        routeBasePath: "reference",
+        sidebarPath: "./sidebars.js"
       },
     ],
   ],
@@ -82,6 +98,7 @@ const config = {
           { to: "/partners", label: "Partners", position: "left" },
           { to: "/community", label: "Community", position: "left" },
           { to: "/reference", label: "Reference", position: "left" },
+          { to: "/blog", label: "Dev Blog", position: "left"},
           {
             href: "https://academy.ed-fi.org/",
             label: "Academy",
