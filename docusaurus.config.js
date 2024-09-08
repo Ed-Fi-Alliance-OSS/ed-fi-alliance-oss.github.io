@@ -149,7 +149,7 @@ const config = {
           {
             title: "Documentation",
             items: [
-              { to: "/get-started", label: "Getting Started" },
+              { to: "/getting-started", label: "Getting Started" },
               { to: "/partners", label: "Partners" },
               { to: "/community", label: "Community" },
               { to: "/reference", label: "Reference" },
