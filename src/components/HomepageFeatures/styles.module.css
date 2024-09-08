@@ -5,8 +5,13 @@
   width: 100%;
 }
 
-.feature-img {
+.featureImg {
   max-height: 200px;
   width: auto;
 }
 
+.featureBlock {
+  border-radius: 8px;
+  background-color: var(--ifm-color-white);
+  margin-bottom: 1rem;
+}
