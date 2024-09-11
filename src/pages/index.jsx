@@ -8,25 +8,27 @@ import Heading from '@theme/Heading';
 import styles from './index.module.css';
 
 function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
+  const { siteConfig } = useDocusaurusContext();
   return (
     <header className={clsx('hero', styles.heroBanner)}>
       <div className="container">
         <Heading as="h1" className="hero__title">
           {siteConfig.title}
         </Heading>
-        <p className="hero__subtitle">Connecting Education Data.<br />Seamlessly. Securely.</p>
+        <p className="hero__subtitle">
+          Connecting Education Data.
+          <br />
+          Seamlessly. Securely.
+        </p>
       </div>
     </header>
   );
 }
 
 export default function Home() {
-  const {siteConfig} = useDocusaurusContext();
+  const { siteConfig } = useDocusaurusContext();
   return (
-    <Layout
-      title={siteConfig.title}
-      description="Ed-Fi Alliance Documentation">
+    <Layout title={siteConfig.title} description="Ed-Fi Alliance Documentation">
       <HomepageHeader />
       <main className={styles.main}>
         <HomepageFeatures />

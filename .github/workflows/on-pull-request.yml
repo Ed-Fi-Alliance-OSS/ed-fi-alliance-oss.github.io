@@ -1,0 +1,44 @@
+# Original source: Docusaurus documentation
+
+name: On Pull Request
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group:
+    ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions: read-all
+
+jobs:
+  test-deploy:
+    name: Test deployment
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4.0.2
+        with:
+          node-version: 18
+          cache: npm
+
+      - name: Node modules cache
+        id: modules-cache
+        uses: actions/cache@13aacd865c20de90d75de3b17ebe84f7a17d57d2 #v4.0.0
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install dependencies
+        if: ${{ steps.modules-cache.outputs.cache-hit != 'true' }}
+        run: npm install
+
+      - name: Test build website
+        run: npm run build

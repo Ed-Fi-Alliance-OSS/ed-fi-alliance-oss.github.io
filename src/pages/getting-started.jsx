@@ -1,7 +1,7 @@
-import Link from "@docusaurus/Link";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import Layout from "@theme/Layout";
-import Heading from "@theme/Heading";
+import Link from '@docusaurus/Link';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import Layout from '@theme/Layout';
+import Heading from '@theme/Heading';
 
 /* Refactor opportunity: convert the two Playbooks into a list and use a single
 component to define structure */
