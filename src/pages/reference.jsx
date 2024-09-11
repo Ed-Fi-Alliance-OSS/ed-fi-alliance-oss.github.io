@@ -1,37 +1,37 @@
-import Link from "@docusaurus/Link";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import Layout from "@theme/Layout";
-import Heading from "@theme/Heading";
-import Admonition from "@theme/Admonition";
+import Link from '@docusaurus/Link';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import Layout from '@theme/Layout';
+import Heading from '@theme/Heading';
+import Admonition from '@theme/Admonition';
 
 const LinkList = [
   {
-    title: "Data Exchange Standards",
-    to: "/reference/data-exchange",
+    title: 'Data Exchange Standards',
+    to: '/reference/data-exchange',
   },
   {
-    title: "ODS/API Platform",
-    to: "/reference/ods-api",
+    title: 'ODS/API Platform',
+    to: '/reference/ods-api',
   },
   {
-    title: "Admin API",
-    to: "/reference/admin-api",
+    title: 'Admin API',
+    to: '/reference/admin-api',
   },
   {
-    title: "MetaEd",
-    to: "/reference/metaed",
+    title: 'MetaEd',
+    to: '/reference/metaed',
   },
   {
-    title: "API Publisher",
-    to: "/reference/api-publisher",
+    title: 'API Publisher',
+    to: '/reference/api-publisher',
   },
   {
-    title: "Data Import",
-    to: "/reference/data-import",
+    title: 'Data Import',
+    to: '/reference/data-import',
   },
   {
-    title: "Docker Deployments",
-    to: "/reference/docker",
+    title: 'Docker Deployments',
+    to: '/reference/docker',
   },
 ];
 

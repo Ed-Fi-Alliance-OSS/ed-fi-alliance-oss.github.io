@@ -17,7 +17,8 @@ const FeatureList = [
     img: require('@site/static/img/ed-fi-puzzle.png').default,
     description: (
       <>
-        Find a certified partner or learn how to earn Ed-Fi badges and certification.
+        Find a certified partner or learn how to earn Ed-Fi badges and
+        certification.
       </>
     ),
     href: '/partners',
@@ -27,7 +28,8 @@ const FeatureList = [
     img: require('@site/static/img/ed-fi-exclaim-question.png').default,
     description: (
       <>
-        Connect with the Ed-Fi help desk or with the Ed-Fi community for expert support.
+        Connect with the Ed-Fi help desk or with the Ed-Fi community for expert
+        support.
       </>
     ),
     href: '/community',
@@ -37,14 +39,15 @@ const FeatureList = [
     img: require('@site/static/img/ed-fi-phone-graphic.png').default,
     description: (
       <>
-        Reference documentation for the Ed-Fi Data Standard and Ed-Fi technology suite.
+        Reference documentation for the Ed-Fi Data Standard and Ed-Fi technology
+        suite.
       </>
     ),
     href: '/reference',
   },
 ];
 //text--center
-function Feature({img, title, description, href}) {
+function Feature({ img, title, description, href }) {
   return (
     <div className="col">
       <div className={`shadow--md text--center ${styles.featureBlock}`}>
@@ -53,7 +56,9 @@ function Feature({img, title, description, href}) {
       <div className="padding-horiz--md margin-bottom--lg">
         <Heading as="h3">{title}</Heading>
         <p>{description}</p>
-        <a href={href} class="button button--primary">Read more »</a>
+        <a href={href} class="button button--primary">
+          Read more »
+        </a>
       </div>
     </div>
   );
