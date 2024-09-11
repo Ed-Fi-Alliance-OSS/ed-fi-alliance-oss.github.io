@@ -34,8 +34,8 @@ in this document.
 
 The core mission of CEDS is to provide common element names and definitions
 covering the entire P-20W system, including the data LEAs and SEAs typically
-handle. CEDS has also described itself as *establishing and continuing to evolve
-as the “Rosetta Stone of education vocabulary.*” CEDS, in pursuit of this
+handle. CEDS has also described itself as _establishing and continuing to evolve
+as the “Rosetta Stone of education vocabulary._” CEDS, in pursuit of this
 mission, is characterized by a “breadth” focus (across P-20W sectors), centered
 on developing and maintaining a **standardized vocabulary of data elements**
 organized and accessed through a user-friendly, non-technical hierarchy called
@@ -46,8 +46,8 @@ reference implementation for operationalizing CEDS elements, and a suite of
 **tools** to support working with education data. CEDS also engages deeply with
 its **community** of stakeholders across the P-20W sector.
 
-Ed-Fi’s core mission is to *operationalize the standardized exchange of data for
-the K12 sector*. In pursuit of this goal, the Ed-Fi Alliance has chosen to
+Ed-Fi’s core mission is to _operationalize the standardized exchange of data for
+the K12 sector_. In pursuit of this goal, the Ed-Fi Alliance has chosen to
 invest in the “full stack” of data standardization, which can be thought of as a
 “depth” approach. This starts with defining the **Ed-Fi Data Standard**, which
 consists of a logical data model (that references a data dictionary aligned to
@@ -85,16 +85,16 @@ needs to be taken to avoid confusing our mutual stakeholders, or competing
 and/or duplication of effort - is how and where the commonly defined
 vocabularies are further refined and transformed into concrete implementations.
 
-* Ed-Fi is focused on operationalizing standardized data exchanges in the K12
+- Ed-Fi is focused on operationalizing standardized data exchanges in the K12
   ecosystem to support student outcomes, **with a specific focus on data
   exchange between agencies and vendors and from vendor to vendor**.
-* CEDS is increasingly focusing on leveraging CEDS vocabularies to **simplify
+- CEDS is increasingly focusing on leveraging CEDS vocabularies to **simplify
   federal reporting** and **aligning data vocabularies for coherence across
   various technical standards for the entire P-20W education ecosystem**.
 
 From a technical perspective, the distinctions and differentiations are found in
-the CEDS *Normalized Data Schema* and Ed-Fi *Unifying Data Model & data exchange
-framework*.
+the CEDS _Normalized Data Schema_ and Ed-Fi _Unifying Data Model & data exchange
+framework_.
 
 ## Common Vocabularies - Collaboration Details
 
@@ -123,8 +123,8 @@ prospective elements to determine if they already exist in the other model.)
 1. If No – Determine interest in joint development.  If the element(s) will
    impact the other model, joint development will take place to ensure
    consistency among the standards. If the elements will not impact the other
-   model, confirmation will be provided that the development can proceed
-   without any needed collaboration.
+   model, confirmation will be provided that the development can proceed without
+   any needed collaboration.
 2. If Yes – An analysis will be conducted to determine applicability to the
    model.  If any changes to the element name or definition need to take place,
    representatives from the two organizations will discuss the impact of these
@@ -137,9 +137,8 @@ prospective elements to determine if they already exist in the other model.)
       potential disruption in the current standards one of two things will
       occur:
       1. The reason for non-alignment will be documented, a difference will
-         exist between the two standards around this particular element, and
-         no further collaboration to bring them into alignment will be
-         pursued.
+         exist between the two standards around this particular element, and no
+         further collaboration to bring them into alignment will be pursued.
       2. The reason for non-alignment will be documented, a difference will
          exist between the two standards around this particular element, and
          efforts will be made in future versions to slowly bring the two
@@ -153,7 +152,7 @@ element name and/or definition.  A collaborative effort will be undertaken to
 determine the differences between the two standards and document the work
 necessary to bring consistency where possible.
 
-*Existing Element Alignment Process:*
+_Existing Element Alignment Process:_
 
 1. Each organization will do a comparison of existing elements
 2. Unaligned elements will be documented
@@ -164,7 +163,7 @@ necessary to bring consistency where possible.
    continuity with existing adoption of the standards in field work, the reasons
    for continued misalignment will be documented and periodically reviewed.
 
-*Synchronization of Development and Release Cycles:*
+_Synchronization of Development and Release Cycles:_
 
 As both initiatives are solely driven by the emerging needs of education data
 stakeholders, development and release cycles are very often driven by these
@@ -175,16 +174,14 @@ current N+1 version.
 
 1. As the current cycle is defined, each organization will reach out and
    communicate the development and release plans.
-2. Both initiatives will seek to identify key points at which input will be
-   most critical.
-3. To the extent possible, release cycles will be coordinated in a way to
-   reduce the lag time between release and incorporation of mutually desired
-   elements.
+2. Both initiatives will seek to identify key points at which input will be most
+   critical.
+3. To the extent possible, release cycles will be coordinated in a way to reduce
+   the lag time between release and incorporation of mutually desired elements.
 
 :::note
 
 The CEDS and Ed-Fi Collaboration Guidelines can be downloaded in PDF format.
-**[CEDS and Ed-Fi Collaboration Guidelines
-(PDF)](/files/CEDS-and-Ed-Fi-Collaboration-Guidelines.pdf)**
+**[CEDS and Ed-Fi Collaboration Guidelines (PDF)](/files/CEDS-and-Ed-Fi-Collaboration-Guidelines.pdf)**
 
 :::

@@ -1,7 +1,7 @@
-import React from "react";
-import Link from "@docusaurus/Link";
-import Layout from "@theme/Layout";
-import Heading from "@theme/Heading";
+import React from 'react';
+import Link from '@docusaurus/Link';
+import Layout from '@theme/Layout';
+import Heading from '@theme/Heading';
 
 function Main() {
   return (
@@ -13,8 +13,8 @@ function Main() {
             Here you can search for knowledge base articles for self-help;
             submit a case to the help desk for expert one-on-one advice, to
             share a bug report, or suggest an improvement; and interact with
-            your peers in the community forums. Membership required:{" "}
-            <Link to="https://www.ed-fi.org/create-an-account/">join now</Link>{" "}
+            your peers in the community forums. Membership required:{' '}
+            <Link to="https://www.ed-fi.org/create-an-account/">join now</Link>{' '}
             at no cost.
           </p>
           <p>
@@ -51,9 +51,9 @@ function Main() {
           <p>
             The Community Hub discussion forums are ideal for asynchronous
             conversations, for archival, and for the ability to sign-up for
-            daily or weekly email digests. <a href="https://slack.com">Slack</a>{" "}
+            daily or weekly email digests. <a href="https://slack.com">Slack</a>{' '}
             remains an important tool for more real-time conversations. If you
-            haven't received an invitation to join, just send a note to the{" "}
+            haven't received an invitation to join, just send a note to the{' '}
             <a href="mailto:help@ed-fi.org?subject=Slack Invitation">
               help desk
             </a>
@@ -75,7 +75,7 @@ function Main() {
               Nearly all of the software maintained by the Ed-Fi Alliance is
               freely available for use and modification under the terms of the
               Apache License, Version 2.0. To report bugs or suggest
-              improvements, please visit the{" "}
+              improvements, please visit the{' '}
               <Link to="https://community.ed-fi.org">Community Hub</Link> to
               submit a case. When submitting a code contribution, please reach
               out in advance so that we can coordinate your work with our teams'
@@ -87,7 +87,7 @@ function Main() {
                 to="https://github.com/Ed-Fi-Alliance-OSS"
               >
                 Core Code »
-              </Link>{" "}
+              </Link>{' '}
               <Link
                 className="button button--secondary button--lg"
                 to="https://github.com/Ed-Fi-Exchange-OSS"

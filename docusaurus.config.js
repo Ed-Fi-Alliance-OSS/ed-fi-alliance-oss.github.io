@@ -6,44 +6,44 @@
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Ed-Fi Alliance",
-  tagline: "Connecting Education Data. Seamlessly. Securely.",
-  favicon: "img/favicon.ico",
+  title: 'Ed-Fi Alliance',
+  tagline: 'Connecting Education Data. Seamlessly. Securely.',
+  favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: "https://docs.ed-fi.org",
+  url: 'https://docs.ed-fi.org',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: "/",
+  baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: "ed-fi-alliance-oss", // Usually your GitHub org/user name.
-  projectName: "ed-fi-alliance-oss.github.io", // Usually your repo name.
+  organizationName: 'ed-fi-alliance-oss', // Usually your GitHub org/user name.
+  projectName: 'ed-fi-alliance-oss.github.io', // Usually your repo name.
 
-  onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "warn",
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'warn',
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: "en",
-    locales: ["en"],
+    defaultLocale: 'en',
+    locales: ['en'],
   },
 
   presets: [
     [
-      "classic",
+      'classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          id: "getting-started",
-          path: "getting-started",
-          editUrl: ({docPath}) =>
+          id: 'getting-started',
+          path: 'getting-started',
+          editUrl: ({ docPath }) =>
             `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/${docPath}/`,
-          routeBasePath: "getting-started",
-          sidebarPath: "./sidebars.js",
+          routeBasePath: 'getting-started',
+          sidebarPath: './sidebars.js',
         },
         blog: {
           showReadingTime: true,
@@ -51,7 +51,7 @@ const config = {
             'https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/blog/',
         },
         theme: {
-          customCss: "./src/css/custom.css",
+          customCss: './src/css/custom.css',
         },
       }),
     ],
@@ -61,23 +61,23 @@ const config = {
     [
       '@docusaurus/plugin-content-docs',
       {
-        id: "partners",
-        path: "partners",
-        editUrl: ({docPath}) =>
+        id: 'partners',
+        path: 'partners',
+        editUrl: ({ docPath }) =>
           `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/${docPath}/`,
-        routeBasePath: "partners",
-        sidebarPath: "./sidebarsPartners.js"
+        routeBasePath: 'partners',
+        sidebarPath: './sidebarsPartners.js',
       },
     ],
     [
       '@docusaurus/plugin-content-docs',
       {
-        id: "reference",
-        path: "reference",
-        editUrl: ({docPath}) =>
+        id: 'reference',
+        path: 'reference',
+        editUrl: ({ docPath }) =>
           `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/${docPath}/`,
-        routeBasePath: "reference",
-        sidebarPath: "./sidebars.js"
+        routeBasePath: 'reference',
+        sidebarPath: './sidebars.js',
       },
     ],
   ],
@@ -86,109 +86,113 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
-      image: "img/ed-fi-social-card.jpg",
+      image: 'img/ed-fi-social-card.jpg',
       navbar: {
         logo: {
-          alt: "Ed-Fi Docs Logo",
-          src: "img/ed-fi-logo.webp",
-          srcDark: "img/ed-fi-logo-light.webp",
+          alt: 'Ed-Fi Docs Logo',
+          src: 'img/ed-fi-logo.webp',
+          srcDark: 'img/ed-fi-logo-light.webp',
         },
         items: [
-          { to: "/getting-started", label: "Getting Started", position: "left" },
-          { to: "/partners", label: "Partners", position: "left" },
-          { to: "/community", label: "Community", position: "left" },
-          { to: "/reference", label: "Reference", position: "left" },
-          { to: "/blog", label: "Dev Blog", position: "left"},
           {
-            href: "https://academy.ed-fi.org/",
-            label: "Academy",
-            position: "right",
+            to: '/getting-started',
+            label: 'Getting Started',
+            position: 'left',
+          },
+          { to: '/partners', label: 'Partners', position: 'left' },
+          { to: '/community', label: 'Community', position: 'left' },
+          { to: '/reference', label: 'Reference', position: 'left' },
+          { to: '/blog', label: 'Dev Blog', position: 'left' },
+          {
+            href: 'https://academy.ed-fi.org/',
+            label: 'Academy',
+            position: 'right',
           },
           {
-            href: "https://www.ed-fi.org/",
-            label: "ed-fi.org",
-            position: "right",
+            href: 'https://www.ed-fi.org/',
+            label: 'ed-fi.org',
+            position: 'right',
           },
         ],
       },
       algolia: {
         // The application ID provided by Algolia
-        appId: "HFTFG7KSKA",
+        appId: 'HFTFG7KSKA',
 
         // Public API key: it is safe to commit it
-        apiKey: "a58d193c70793d68151589d3cfbdeb6b",
+        apiKey: 'a58d193c70793d68151589d3cfbdeb6b',
 
-        indexName: "ed-fi-alliance-ossio",
+        indexName: 'ed-fi-alliance-ossio',
 
         // Optional: see doc section below
         contextualSearch: false,
 
         // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
-        externalUrlRegex: "external\\.com|domain\\.com",
+        externalUrlRegex: 'external\\.com|domain\\.com',
 
         // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
         replaceSearchResultPathname: {
-          from: "/docs/", // or as RegExp: /\/docs\//
-          to: "/",
+          from: '/docs/', // or as RegExp: /\/docs\//
+          to: '/',
         },
 
         // Optional: Algolia search parameters
         searchParameters: {},
 
         // Optional: path for search page that enabled by default (`false` to disable it)
-        searchPagePath: "search",
+        searchPagePath: 'search',
 
-        placeholder: "Ask me something",
+        placeholder: 'Ask me something',
 
         //... other Algolia params
         headerLinks: [{ search: true }],
       },
       footer: {
-        style: "dark",
+        style: 'dark',
         links: [
           {
-            title: "Documentation",
+            title: 'Documentation',
             items: [
-              { to: "/getting-started", label: "Getting Started" },
-              { to: "/partners", label: "Partners" },
-              { to: "/community", label: "Community" },
-              { to: "/reference", label: "Reference" },
+              { to: '/getting-started', label: 'Getting Started' },
+              { to: '/partners', label: 'Partners' },
+              { to: '/community', label: 'Community' },
+              { to: '/reference', label: 'Reference' },
             ],
           },
           {
-            title: "Resources",
+            title: 'Resources',
             items: [
               {
-                href: "https://community.ed-fi.org/",
-                label: "Community Hub",
-                position: "right",
+                href: 'https://community.ed-fi.org/',
+                label: 'Community Hub',
+                position: 'right',
               },
               {
-                href: "https://academy.ed-fi.org/",
-                label: "Academy",
-                position: "right",
+                href: 'https://academy.ed-fi.org/',
+                label: 'Academy',
+                position: 'right',
               },
               {
-                href: "https://exchange.ed-fi.org/",
-                label: "Exchange",
-                position: "right",
+                href: 'https://exchange.ed-fi.org/',
+                label: 'Exchange',
+                position: 'right',
               },
             ],
           },
           {
-            title: "More",
+            title: 'More',
             items: [
               {
-                label: "Ed-Fi Alliance",
-                href: "https://www.ed-fi.org",
+                label: 'Ed-Fi Alliance',
+                href: 'https://www.ed-fi.org',
               },
               {
-                label: "Ed-Fi News",
-                href: "https://www.ed-fi.org/blog",
+                label: 'Ed-Fi News',
+                href: 'https://www.ed-fi.org/blog',
               },
               {
-                label: "Ed-Fi Events",
-                href: "https://www.ed-fi.org/events/",
+                label: 'Ed-Fi Events',
+                href: 'https://www.ed-fi.org/events/',
               },
             ],
           },
@@ -203,36 +207,36 @@ const config = {
     }),
   headTags: [
     {
-      tagName: "link",
+      tagName: 'link',
       attributes: {
-        rel: "preconnect",
-        href: "https://fonts.googleapis.com",
+        rel: 'preconnect',
+        href: 'https://fonts.googleapis.com',
       },
     },
     {
-      tagName: "link",
+      tagName: 'link',
       attributes: {
-        rel: "preconnect",
-        href: "https://fonts.gstatic.com",
-        crossorigin: "anonymous",
+        rel: 'preconnect',
+        href: 'https://fonts.gstatic.com',
+        crossorigin: 'anonymous',
       },
     },
     {
-      tagName: "link",
+      tagName: 'link',
       attributes: {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap",
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap',
       },
     },
   ],
   stylesheets: [
     {
-      href: "https://unpkg.com/@antonz/codapi@0.19.7/dist/snippet.css",
+      href: 'https://unpkg.com/@antonz/codapi@0.19.7/dist/snippet.css',
     },
   ],
   scripts: [
     {
-      src: "https://unpkg.com/@antonz/codapi@0.19.7/dist/snippet.js",
+      src: 'https://unpkg.com/@antonz/codapi@0.19.7/dist/snippet.js',
       defer: true,
     },
   ],

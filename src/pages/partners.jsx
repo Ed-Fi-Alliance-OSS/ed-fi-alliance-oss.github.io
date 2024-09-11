@@ -1,7 +1,7 @@
-import Link from "@docusaurus/Link";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import Layout from "@theme/Layout";
-import Heading from "@theme/Heading";
+import Link from '@docusaurus/Link';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import Layout from '@theme/Layout';
+import Heading from '@theme/Heading';
 
 /* Refactor opportunity: convert the two Playbooks into a list and use a single
 component to define structure */
@@ -30,10 +30,10 @@ function Main() {
       <div className="container">
         <div className="row margin-bottom--lg">
           <div className="col">
-            For general information on the Ed-Fi Alliance Partner Program, see{" "}
+            For general information on the Ed-Fi Alliance Partner Program, see{' '}
             <Link to="https://www.ed-fi.org/partner-program/">
               Become an Ed-Fi Alliance Partner
-            </Link>{" "}
+            </Link>{' '}
             on the main website.
           </div>
         </div>

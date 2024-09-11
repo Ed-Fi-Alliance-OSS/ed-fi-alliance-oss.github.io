@@ -6,8 +6,7 @@ Ed-Fi Alliance Tech News
 
 Copyright (c) 2023 Ed-Fi Alliance, LLC and contributors.
 
-Licensed under the [Apache License, Version 2.0](LICENSE) (the
-"License").
+Licensed under the [Apache License, Version 2.0](LICENSE) (the "License").
 
 Unless required by applicable law or agreed to in writing, software distributed
 under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
