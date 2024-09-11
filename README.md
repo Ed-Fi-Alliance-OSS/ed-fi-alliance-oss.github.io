@@ -1,10 +1,13 @@
 # ed-fi-alliance-oss.github.io
 
-Ed-Fi Alliance Tech News
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/Ed-Fi-Alliance-OSS/ed-fi-alliance-oss.github.io/badge)](https://securityscorecards.dev/viewer/?uri=github.com/Ed-Fi-Alliance-OSS/ed-fi-alliance-oss.github.io)
+
+Ed-Fi Alliance documentation, published to
+[https://docs.ed-fi.org](https://docs.ed-fi.org).
 
 ## Legal Information
 
-Copyright (c) 2023 Ed-Fi Alliance, LLC and contributors.
+Copyright (c) 2024 Ed-Fi Alliance, LLC and contributors.
 
 Licensed under the [Apache License, Version 2.0](LICENSE) (the "License").
 
