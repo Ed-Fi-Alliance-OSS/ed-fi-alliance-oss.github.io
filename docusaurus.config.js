@@ -66,7 +66,7 @@ const config = {
         editUrl: ({ docPath }) =>
           `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/${docPath}/`,
         routeBasePath: 'partners',
-        sidebarPath: './sidebarsPartners.js',
+        sidebarPath: './sidebars.js',
       },
     ],
     [
