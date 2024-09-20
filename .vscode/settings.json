@@ -24,6 +24,10 @@
       "prefix": "// "
     },
     {
+      "language": "javascriptreact",
+      "mapTo": "csharp"
+    },
+    {
       "language": "javascript",
       "mapTo": "csharp"
     },
