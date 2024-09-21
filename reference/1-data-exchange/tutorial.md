@@ -262,7 +262,8 @@ Authorization: bearer 98aa86998da3476c95c296e99e397891
 If you update the following request to have a valid bearer token, and the
 `studentUniqueId` that you used above, then you should be able to create the
 association. If the response comes back with status code 201, as expected, then
-you can try the `GET` request for the Student again (above). This time, it should be successful.
+you can try the `GET` request for the Student again (above). This time, it
+should be successful.
 
 ```fetch
 POST https://api.ed-fi.org/v7.1/api/data/v3/ed-fi/studentSchoolAssociations
@@ -346,7 +347,7 @@ Association that points to a student who does not exist!
 
 This is an example of dependency ordering. Look again at the Discovery API
 example at the top of this page. The URL specified at path
-`$.urls.dependendencies` can be used to help understand dependency order. For
+`$.urls.dependencies` can be used to help understand dependency order. For
 example, `/ed-fi/students` has order 3, and `/ed-fi/studentSchoolAssociations`
 has order 13. When _creating_ a resource, the lower number must be created
 first. When _deleting_, we must go in reverse: delete the higher number first.
