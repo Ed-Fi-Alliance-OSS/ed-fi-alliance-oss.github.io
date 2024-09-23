@@ -1,11 +1,21 @@
 # Ed-Fi API Publisher Configuration
 
-The Ed-Fi API Publisher provides a hierarchical organization of configuration information, as documented below.
+The Ed-Fi API Publisher provides a hierarchical organization of configuration
+information, as documented below.
 
-The first layer of configuration values are provided by the _publisherSettings.json_ file, which should reside in the same folder as the Ed-Fi API Publisher's binaries. This file contains the general Options available for altering the runtime behavior.
-The Options values can also be supplied (overridden) using environment variables or command-line arguments, as needed.
+The first layer of configuration values are provided by the
+_publisherSettings.json_ file, which should reside in the same folder as the
+Ed-Fi API Publisher's binaries. This file contains the general Options available
+for altering the runtime behavior. The Options values can also be supplied
+(overridden) using environment variables or command-line arguments, as needed.
 
-Command-line arguments take precedence over environment variables, which in turn take precedence over the values defined in the _publisherSettings.json_ configuration file. To use environment variables to provide configuration values, use the "Configuration Path" from the tables below, and add an `EdFi:Publisher:` prefix to the name of each variable. For example, to specify a named connection for the source API using an environment variable, use an environment variable name of `EdFi:Publisher:Connections:Source:Name`.
+Command-line arguments take precedence over environment variables, which in turn
+take precedence over the values defined in the _publisherSettings.json_
+configuration file. To use environment variables to provide configuration
+values, use the "Configuration Path" from the tables below, and add an
+`EdFi:Publisher:` prefix to the name of each variable. For example, to specify a
+named connection for the source API using an environment variable, use an
+environment variable name of `EdFi:Publisher:Connections:Source:Name`.
 
 ## Options
 
@@ -30,14 +40,35 @@ Defines general behavior of the Ed-Fi API Publisher.
 | Options:RateLimitNumberExecutions<br/>`--rateLimitNumberExecutions`                                       | Indicates the maximum number of executions allowed within the defined time window.<br/>(_Default value: 30_) |
 | Options:RateLimitTimeSeconds<br/>`--rateLimitTimeSeconds`                                                 | Indicates the  the time span for the rate limit in seconds.<br/>(_Default value: 1_) |
 | Options:RateLimitMaxRetries<br/>`--rateLimitMaxRetries`                                                   | Indicates the number of times the Ed-Fi API publisher will attempt to _resend_ a request, rejected by rate limiting, to the source or destination APIs before determining that the failure is permanent.<br/>(_Default value: 10_) |
+| Options:useReversePaging<br/>`--useReversePaging`                                                         | Indicates whether or not to use reverse paging mode. For more information about this feature read [here](Reverse-Paging.md).<br/>(_Default value: false_) |
 
 ## API Connections
 
-Metadata for source and targets API connections can be supplied to the publisher using values stored in a persistent configuration or through environment variables and/or command-line arguments, as documented below. It is **strongly recommended** that you use named connections with persistent configuration for repeated publishing operations (e.g. `--sourceName=abcd --targetName=wxyz`). You should not mix named connections with overrides supplied through environment variables or command-line arguments.
+Metadata for source and targets API connections can be supplied to the publisher
+using values stored in a persistent configuration or through environment
+variables and/or command-line arguments, as documented below. It is **strongly
+recommended** that you use named connections with persistent configuration for
+repeated publishing operations (e.g. `--sourceName=abcd --targetName=wxyz`). You
+should not mix named connections with overrides supplied through environment
+variables or command-line arguments.
 
-> NOTE: If the Ed-Fi API Publisher is executed using explicit connection information (rather than a pre-configured _named_ connection), the LastChangeVersionProcessed value cannot be updated automatically upon successful publishing (as there is no API connection name associated with the information). It will be the responsibility of the caller to update the value appropriately after extracting the new change version from the log output (or through some other enterprising manner). As such, for implementing a process that is intended to only publish _changes_ from a source to a target, it is impractical to use an approach where the API connection details are provided explicitly at execution time.
+:::info note:
 
-To select or supply source and target connection information, the following configuration values apply:
+  If the Ed-Fi API Publisher is executed using explicit connection
+  information (rather than a pre-configured `named` connection), the
+  LastChangeVersionProcessed value cannot be updated automatically upon
+  successful publishing (as there is no API connection name associated with the
+  information). It will be the responsibility of the caller to update the value
+  appropriately after extracting the new change version from the log output (or
+  through some other enterprising manner). As such, for implementing a process
+  that is intended to only publish `changes` from a source to a target, it is
+  impractical to use an approach where the API connection details are provided
+  explicitly at execution time.
+
+:::
+
+To select or supply source and target connection information, the following
+configuration values apply:
 
 | Configuration Path                                                                 | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 |------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -65,45 +96,62 @@ To select or supply source and target connection information, the following conf
 
 ## Considerations in relation to key changes and deletes
 
-Ed-Fi API Publisher will only process key changes and deletions if  specific Change Window is defined. To do so use the
-`--lastChangeVersionProcessed` value and set the `--useChangeVersionPaging` flag to true.
-Another option, if you want to keep the `--useChangeVersionPaging` false is defining a name for the source and target, using the
-`--sourceName` and `--targetName` values. More information about all these values [below](API-Publisher-Configuration.md#api-connections).
+Ed-Fi API Publisher will only process key changes and deletions if  specific
+Change Window is defined. To do so use the `--lastChangeVersionProcessed` value
+and set the `--useChangeVersionPaging` flag to true. Another option, if you want
+to keep the `--useChangeVersionPaging` false is defining a name for the source
+and target, using the `--sourceName` and `--targetName` values. More information
+about all these values [below](API-Publisher-Configuration.md#api-connections).
 
 ## Authorization Failure Handling
 
-Defines metadata (as an array of JSON objects) about which resources could experience `403 Forbidden` responses caused by data dependencies needed for successful authorization, and which other resources should be processed before retrying the original request. For example, while an API client may be able to create a Student, they won't be able to _update_ the Student until that Student is enrolled in a School through the StudentSchoolAssociation. By defining the authorization-related dependency of the _update_ operation on the StudentSchoolAssociation, the Ed-Fi API Publisher can know to retry the failed POST request after the association has been established.
+Defines metadata (as an array of JSON objects) about which resources could
+experience `403 Forbidden` responses caused by data dependencies needed for
+successful authorization, and which other resources should be processed before
+retrying the original request. For example, while an API client may be able to
+create a Student, they won't be able to `update` the Student until that Student
+is enrolled in a School through the StudentSchoolAssociation. By defining the
+authorization-related dependency of the `update` operation on the
+StudentSchoolAssociation, the Ed-Fi API Publisher can know to retry the failed
+POST request after the association has been established.
 
-NOTE: This part of the configuration can only be defined in the _publisherSettings.json_ file.
+:::info note:
+
+  This part of the configuration can only be defined in the
+  `publisherSettings.json` file.
+
+:::
 
 | JSON Path                                                  | Description                                                                                                                                                                                                  |
 | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | /authorizationFailureHandling\[\*]                         | Defines metadata for a single resource which could experience 403 Forbidden responses.                                                                                                                       |
-| /authorizationFailureHandling\[\*]/path                    | The partial path for the resource (e.g. _/ed-fi/students_) for which additional 403 Forbidden processing should be performed.                                                                                |
-| /authorizationFailureHandling\[\*]/updatePrerequisitePaths | An array of partial paths for the resource(s) (e.g. _/ed-fi/studentSchoolAssociations_) that should be processed before attempting to retry the original request which resulted in an authorization failure. |
+| /authorizationFailureHandling\[\*]/path                    | The partial path for the resource (e.g. `/ed-fi/students`) for which additional 403 Forbidden processing should be performed.                                                                                |
+| /authorizationFailureHandling\[\*]/updatePrerequisitePaths | An array of partial paths for the resource(s) (e.g. `/ed-fi/studentSchoolAssociations`) that should be processed before attempting to retry the original request which resulted in an authorization failure. |
 
-The default configuration, which will probably suffice for all current Ed-Fi ODS API deployments, is as follows:
+The default configuration, which will probably suffice for all current Ed-Fi ODS
+API deployments, is as follows:
+
 ```json
-{  
-  "options":   
-  {  
+{
+  "options":
+  {
     ...
-  },  
-  "authorizationFailureHandling": [  
-    {  
-      "path": "/ed-fi/students",  
-      "updatePrerequisitePaths": ["/ed-fi/studentSchoolAssociations"]  
-    },  
-    {  
-      "path": "/ed-fi/staffs",  
-      "updatePrerequisitePaths": [  
-        "/ed-fi/staffEducationOrganizationEmploymentAssociations",  
-        "/ed-fi/staffEducationOrganizationAssignmentAssociations"  
-      ]  
-    },  
-    {  
-      "path": "/ed-fi/parents",  
-      "updatePrerequisitePaths": ["/ed-fi/studentParentAssociations"]  
+  },
+  "authorizationFailureHandling": [
+    {
+      "path": "/ed-fi/students",
+      "updatePrerequisitePaths": ["/ed-fi/studentSchoolAssociations"]
+    },
+    {
+      "path": "/ed-fi/staffs",
+      "updatePrerequisitePaths": [
+        "/ed-fi/staffEducationOrganizationEmploymentAssociations",
+        "/ed-fi/staffEducationOrganizationAssignmentAssociations"
+      ]
+    },
+    {
+      "path": "/ed-fi/parents",
+      "updatePrerequisitePaths": ["/ed-fi/studentParentAssociations"]
     }
   ]
 }

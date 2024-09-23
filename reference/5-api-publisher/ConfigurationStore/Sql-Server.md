@@ -1,12 +1,19 @@
-# Configuration Store for SQL Server
+# SQL Server
 
-Enables management of individual connection settings with encryption support for securely storing keys and secrets using built-in support for symmetric key encryption in a SQL Server database.
+Enables management of individual connection settings with encryption support for
+securely storing keys and secrets using built-in support for symmetric key
+encryption in a SQL Server database.
 
 ## Create the Ed-Fi API Publisher Configuration Database
 
-The following script template provides you with the information needed to create the `EdFi_API_Publisher_Configuration` database. Alternatively, you can perform this step manually using SSMS or through some other means and proceed with the next step.
+The following script template provides you with the information needed to create
+the `EdFi_API_Publisher_Configuration` database. Alternatively, you can perform
+this step manually using SSMS or through some other means and proceed with the
+next step.
 
-To provide parameters for the script, type <kbd>Ctrl</kbd>+<kbd>Shft</kbd>+<kbd>M</kbd> in the SSMS query window before executing.
+To provide parameters for the script, type
+<kbd>Ctrl</kbd>+<kbd>Shft</kbd>+<kbd>M</kbd> in the SSMS query window before
+executing.
 
 ```sql
 
@@ -23,9 +30,14 @@ GO
 
 ## Create the EdFiApiPublisher User
 
-The Ed-Fi ODS API Publisher is intended to use integrated security to connect to the configuration database. To that end, the process under which the publisher utility is executing should be a local or domain Windows identity with an associated SQL Server login named "EdFiOdsApiPublisher".
+The Ed-Fi ODS API Publisher is intended to use integrated security to connect to
+the configuration database. To that end, the process under which the publisher
+utility is executing should be a local or domain Windows identity with an
+associated SQL Server login named "EdFiOdsApiPublisher".
 
-To provide parameters for the script, type <kbd>Ctrl</kbd>+<kbd>Shft</kbd>+<kbd>M</kbd> in the SSMS query window before executing.
+To provide parameters for the script, type
+<kbd>Ctrl</kbd>+<kbd>Shft</kbd>+<kbd>M</kbd> in the SSMS query window before
+executing.
 
 ```sql
 -- IMPORTANT: Type Ctrl+Shft+M to enter parameters for the script.
@@ -46,9 +58,13 @@ GO
 
 ## Create the Tables and Initialize Encryption Artifacts
 
-The following script will create the necessary configuration tables, certificate, and symmetric key needed to support the Ed-Fi ODS API Publisher's connection configuration management functionality.
+The following script will create the necessary configuration tables,
+certificate, and symmetric key needed to support the Ed-Fi ODS API Publisher's
+connection configuration management functionality.
 
-To provide parameters for the script, type <kbd>Ctrl</kbd>+<kbd>Shft</kbd>+<kbd>M</kbd> in the SSMS query window before executing.
+To provide parameters for the script, type
+<kbd>Ctrl</kbd>+<kbd>Shft</kbd>+<kbd>M</kbd> in the SSMS query window before
+executing.
 
 ```sql
 -- IMPORTANT: Type Ctrl+Shft+M to enter parameters for the script.
@@ -89,9 +105,15 @@ CREATE SYMMETRIC KEY EdFiApiPublisherConfigKey
 
 ## Create the Encryption User
 
-The configuration implementation for SQL Server provides the ability to encrypt sensitive values like API keys and secrets. A database level user named "EdFiEncryption" is created and granted the necessary permissions to perform all encryption and decryption of the configuration values on behalf of the caller through the `dbo.GetConfigurationValue` and `dbo.SetConfigurationValue` stored procedures (which are created in the next step).
+The configuration implementation for SQL Server provides the ability to encrypt
+sensitive values like API keys and secrets. A database level user named
+"EdFiEncryption" is created and granted the necessary permissions to perform all
+encryption and decryption of the configuration values on behalf of the caller
+through the `dbo.GetConfigurationValue` and `dbo.SetConfigurationValue` stored
+procedures (which are created in the next step).
 
-Execute the following script to create the database-level user account used for encryption.
+Execute the following script to create the database-level user account used for
+encryption.
 
 ```sql
 USE [EdFi_API_Publisher_Configuration]
@@ -194,7 +216,10 @@ GRANT EXECUTE ON [dbo].[SetConfigurationValue] TO [<Domain or Machine Name, nvar
 
 ## Configure API Connections
 
-Create new API connections by pasting the following SQL template into an SSMS query window and typing Ctrl+Shft+M to enter the necessary parameters. The resulting script can then be executed to create or update the specified API connection, with an encrypted key and secret.
+Create new API connections by pasting the following SQL template into an SSMS
+query window and typing Ctrl+Shft+M to enter the necessary parameters. The
+resulting script can then be executed to create or update the specified API
+connection, with an encrypted key and secret.
 
 ```sql
 EXEC    [dbo].[SetConfigurationValue]
@@ -215,11 +240,14 @@ EXEC    [dbo].[SetConfigurationValue]
 GO
 ```
 
-![SQL Server Configuration Store](../img/Sql-Server-configuration-store-example.png)
+![SQL Server Configuration
+Store](../img/Sql-Server-configuration-store-example.png)
 
 ## Configure API Publisher
 
-To use the SQL Server Configuration Store, change the `provider` setting in the _configurationStoreSettings.json_ file to `sqlServer` and supply the connection string, as shown below:
+To use the SQL Server Configuration Store, change the `provider` setting in the
+_configurationStoreSettings.json_ file to `sqlServer` and supply the connection
+string, as shown below:
 
 ```json
 {
