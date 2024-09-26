@@ -50,6 +50,9 @@ const config = {
           editUrl:
             'https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/blog/',
         },
+        googleTagManager: {
+          containerId: "GTM-KGR2977"
+        },
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -66,7 +69,7 @@ const config = {
         editUrl: ({ docPath }) =>
           `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/${docPath}/`,
         routeBasePath: 'partners',
-        sidebarPath: './sidebarsPartners.js',
+        sidebarPath: './sidebars.js',
       },
     ],
     [
