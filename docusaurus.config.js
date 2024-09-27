@@ -83,6 +83,17 @@ const config = {
         sidebarPath: './sidebars.js',
       },
     ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'community',
+        path: 'community',
+        editUrl: ({ docPath }) =>
+          `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/${docPath}/`,
+        routeBasePath: 'community',
+        sidebarPath: './sidebars.js',
+      },
+    ],
   ],
 
   themeConfig:
