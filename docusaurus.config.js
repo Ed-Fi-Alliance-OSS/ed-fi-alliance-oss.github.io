@@ -130,7 +130,7 @@ const config = {
         ],
       },
       prism: {
-        additionalLanguages: ['powershell', 'csharp', 'sql'],
+        additionalLanguages: ['powershell', 'csharp', 'sql', 'json'],
       },
       algolia: {
         // The application ID provided by Algolia

@@ -1,4 +1,4 @@
-# Coding Standards - General Principles
+# Coding Standards
 
 ## Introduction
 
@@ -114,12 +114,12 @@ not *what.* Prefer using proper English sentences.
 
     ```csharp
     var scores = _injectedService.GetScores();
-     
+
     // Calculate the average
     int count = scores.Count;
     double sum = scores.Sum();
     double average = sum / count;
-    
+
     scores.ForEach(x => Console.WriteLine(x.Average));
     ```
 
