@@ -129,6 +129,9 @@ const config = {
           },
         ],
       },
+      prism: {
+        additionalLanguages: ['powershell', 'csharp', 'sql'],
+      },
       algolia: {
         // The application ID provided by Algolia
         appId: 'HFTFG7KSKA',
