@@ -66,7 +66,7 @@ are subject to further review at a later date.
    6. Secret scanning
    7. Access to alerts: grant to the assigned development team
 3. Use a ruleset instead of branch protection ([Code Security
-   Guidelines](../code-security-guidelines) contains a JSON file for import)
+   Guidelines](./code-security-guidelines) contains a JSON file for import)
 4. Copy `.github/scorecard.yml` from LMS Toolkit
 5. Explicitly set permissions in all existing Actions workflows
 

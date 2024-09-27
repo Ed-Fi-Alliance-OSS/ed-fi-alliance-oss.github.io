@@ -57,7 +57,7 @@ distribution (where applicable) of compiled software to the Ed-Fi Community.
          number on merged code.
       2. All commits should be signed in order to avoid git user spoofing
          (see [Signing Git
-         Commits](../../source-code-control-policy/signing-git-commits.md)).
+         Commits](../source-code-control-policy/signing-git-commits.md)).
       3. All submitters must sign the [Individual Contributors License
          Agreement](https://gist.github.com/EdFiBuildAgent/d68fa602d07505c3682e8258b7dc6fbc).
       4. Linear history is required.
@@ -70,7 +70,9 @@ distribution (where applicable) of compiled software to the Ed-Fi Community.
       security, as releases will not be made from those branches.
    4. Use Rulesets instead of Branch Protection, as they are more flexible.
 
-```json title="Exported rules from LMS-Toolkit"
+<details>
+  <summary>Exported rules from LMS-Toolkit</summary>
+```json
 {
   "id": 580376,
   "name": "main",
@@ -125,10 +127,11 @@ distribution (where applicable) of compiled software to the Ed-Fi Community.
   "bypass_actors": []
 }
 ```
+</details>
 
 :::warning
 
-Rulesets is a new requirement as of 28 Mar 2024 , will gradually be
+Rulesets is a new requirement as of 28 Mar 2024, which will be gradually
 enforced across the Alliance's repositories.
 
 :::
@@ -149,7 +152,7 @@ enforced across the Alliance's repositories.
       to search for potential security vulnerabilities. ⚠️ Not available for
       closed source applications. [Example of accidentally dangerous code](./codeql-example.md)
    4. Use an appropriate [dependency review
-      tool](../dependency-security-automation) to
+      tool](./dependency-security-automation) to
       ensure that libraries/packages used by an application do not have known
       vulnerabilities.
 
@@ -160,14 +163,14 @@ enforced across the Alliance's repositories.
    2. Automate upload of built packages into an appropriate, secure, storage
       location:
 
-      | Language / Framework         | Application | Package Type       | Distribution Channel |
-      | ---------------------------- | ----------- | ------------------ | -------------------- |
-      | ​.NET                        | (default)   | NuGet              | Azure Artifacts​     |
-      | Analytics Middle Tier        | zip         | GitHub Release     |
-      | Learning Standards Sync Tool | zip         | Azure Blob Storage |
-      | Python                       | (default)   | wheels             | PyPi                 |
-      | TypeScript / JavaScript      | (default)   | npm                | Azure Artifacts      |
-      | MetaEd (see box below)       | npm         | MyGet              |
+      | Language / Framework         | Package Type | Distribution Channel |
+      | ---------------------------- | ------------ | -------------------- |
+      | ​.NET                         | NuGet        | Azure Artifacts​      |
+      | Analytics Middle Tier        | zip          | GitHub Release       |
+      | Learning Standards Sync Tool | zip          | Azure Blob Storage   |
+      | Python                       | wheels       | PyPi                 |
+      | TypeScript / JavaScript      | npm          | Azure Artifacts      |
+      | MetaEd (see box below)       | npm          | Azure Artifacts      |
 
       :::info
 
@@ -187,7 +190,7 @@ enforced across the Alliance's repositories.
 - **Automated review**:
   - All core repositories should have appropriate automation workflows in
     GitHub. See [Guidelines for Use of GitHub
-    Actions](../guidelines-for-use-of-github-actions.md)
+    Actions](./guidelines-for-use-of-github-actions.md)
     for more detail. Exceptions:
     - **Ed-Fi-Docker**: vulnerability scanning provided by Docker Hub, rather
       than GitHub Actions

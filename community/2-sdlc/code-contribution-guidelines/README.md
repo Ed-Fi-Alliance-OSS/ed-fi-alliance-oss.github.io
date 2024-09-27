@@ -173,7 +173,7 @@ tutorials are arranged from basic to more advanced.
 :::tip
 
 See [Signing Git
-Commits](./source-code-control-policy/signing-git-commits.md).
+Commits](../source-code-control-policy/signing-git-commits.md).
 
 :::
 
@@ -220,3 +220,9 @@ You may wish to also review some or all of the following documents:
 * [Testing Standards](./testing-standards)
 * [Ed-Fi Software Development Lifecycle
     Home](../)
+
+## Child Pages
+
+import DocCardList from '@theme/DocCardList';
+
+<DocCardList />

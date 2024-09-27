@@ -16,7 +16,7 @@ Ed-Fi continuous integration (CI) practices and procedures
    CI/CD pipeline for the ODS Platform team.
 4. As of 2022, we are shifting from TeamCity to GitHub Actions.
 
-## Contents
+## Child Pages
 
 import DocCardList from '@theme/DocCardList';
 

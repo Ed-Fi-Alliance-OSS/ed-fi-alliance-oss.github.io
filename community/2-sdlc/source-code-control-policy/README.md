@@ -16,14 +16,16 @@ development.
    must be loaded into GitHub for verification. → see [Signing Git
    Commits](./signing-git-commits.md)
 4. See [Code Security
-   Guidelines](../continuous-integration/code-security-guidelines/README.md)
+   Guidelines](../continuous-integration/code-security-guidelines)
    for additional information on securing repositories in GitHub, including
    access permissions, branch protection, and more.
 5. Users who do not have write access to a repository can fork the repository
    and then submit pull requests (PR) back to the origin. Pull request reviewers
-   should read [checking out pull requests locally](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/checking-out-pull-requests-locally) for tips
-   on how to manage those PRs. Please be sure when squashing the original
-   commits that the committer's name is still associated with the final commit.
+   should read [checking out pull requests
+   locally](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/checking-out-pull-requests-locally)
+   for tips on how to manage those PRs. Please be sure when squashing the
+   original commits that the committer's name is still associated with the final
+   commit.
 6. All contributors need to agree to the [Ed-Fi Contributor's License
    Agreement](./ed-fi-contributors-license-agreement.md) (CLA).
 
@@ -33,3 +35,9 @@ development.
 | Ed-Fi-Exchange-OSS | All public, community-supported or experimental Ed-Fi source code<br/>✅ open for new repositories                                                                                          |
 | Ed-Fi-Closed       | Closed source repositories that need GitHub Actions. All contributors must have a paid license<br/>⚠️ new repositories only in coordination with the Ed-Fi Director of Software Engineering |
 | Ed-Fi-Alliance     | Legacy account with free private plans, but no GitHub Actions<br/>❌ should not have new repositories here                                                                                  |
+
+## Child Pages
+
+import DocCardList from '@theme/DocCardList';
+
+<DocCardList />

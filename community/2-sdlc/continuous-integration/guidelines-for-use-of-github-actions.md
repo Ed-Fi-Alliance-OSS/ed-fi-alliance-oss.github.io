@@ -277,7 +277,7 @@ Have a new action that you'd like to use? Ask an Ed-Fi tech team member to
 review the source code.
 
 <details>
-<summary><b>Review process...</b></summary>
+<summary>Review process...</summary>
 
 Third-party dependencies should not be trusted without verification. This is
 true of "regular source code" and of CI scripts alike. In both situations, the
@@ -320,7 +320,6 @@ git diff src/index.js reverse/dist/webpack/github-actions-ensure-sha-pinned-acti
 :::
 
 </details>
-<br/>
 
 We have created a [custom
 Action](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Actions/tree/main/action-allowedlist)
@@ -357,7 +356,7 @@ repository secret.
 ### 5. Perform Code Analysis
 
 Linters are great for enforcing many style and coding standards (see [Code
-Quality Automation](./code-quality-automation/README.md)). They
+Quality Automation](./code-quality-automation)). They
 may even be able to detect some security vulnerabilities. However, their
 algorithms for detecting vulnerabilities are generally quite limited. An
 advanced static code scanner can detect deeper issues.
@@ -367,24 +366,6 @@ projects,
 [covering](https://codeql.github.com/docs/codeql-overview/supported-languages-and-frameworks/)
 the following languages used by the Alliance: C#, JavaScript, Python,
 TypeScript.
-
-:::warning
-
-MetaEd and Data Import cannot use CodeQL. Alternatives need to be
-explored. Two options that look viable:
-
-- [SonaType Lift](https://lift.sonatype.com/getting-started) appears to be
-  [freely available](https://www.sonatype.com/products/pricing?topnav=true)
-  for private repos *for now*. That will likely change at some point in the
-  future.
-- Codacy has [reasonable](https://www.codacy.com/pricing) pricing and has an
-  open source model. $15 /month/user yearly, or $18/month/user monthly. There
-  are currently 11 developers in the Ed-Fi-Closed organization, so that works
-  out to $1,980/year. We do not have a tool for SQL analysis. Might be able to
-  use [Codacy](https://www.codacy.com/pricing). Similarly, we do not have a tool
-  for PowerShell. Will be researching PSScriptAnalyzer.
-
-:::
 
 ### 6. Scan Dependencies
 

@@ -19,7 +19,7 @@ relevant pages in the content listed in this SDLC space:
 - [Slack for the Ed-Fi
   Community](../involved/slack)
 
-## Contents
+## Child Pages
 
 import DocCardList from '@theme/DocCardList';
 
