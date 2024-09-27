@@ -116,17 +116,17 @@ function Main() {
             <Heading as="h2">More information on getting involved</Heading>
             <ul>
               <li>
-                <Link to="/getting-started/involved/code-of-conduct">
+                <Link to="/community/involved/code-of-conduct">
                   Contributor Code of Conduct
                 </Link>
               </li>
               <li>
-                <Link to="/getting-started/involved/ip-disclosure-policy">
+                <Link to="/community/involved/ip-disclosure-policy">
                   Intellectual Property Disclosure
                 </Link>
               </li>
               <li>
-                <Link to="/getting-started/involved/ceds">
+                <Link to="/community/involved/ceds">
                   CEDS and Ed-Fi Collaboration Guidelines
                 </Link>
               </li>
