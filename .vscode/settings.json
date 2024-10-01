@@ -82,7 +82,7 @@
       "tables": false
     },
     "no-inline-html": {
-      "allowed_elements": [ "codapi-snippet", "kbd" ]
+      "allowed_elements": [ "codapi-snippet", "kbd", "DocCardList", "details", "summary" ]
     }
   },
   "[markdown]": {
