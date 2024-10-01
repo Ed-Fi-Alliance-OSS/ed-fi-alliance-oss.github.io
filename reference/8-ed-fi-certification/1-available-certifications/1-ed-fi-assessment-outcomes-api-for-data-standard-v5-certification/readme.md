@@ -48,18 +48,6 @@ technical API specifications provided as part of the [ED-FI RFC 22 - ASSESSMENT
 OUTCOMES
 API](https://edfi.atlassian.net/wiki/spaces/EFDSRFC/pages/25363177/ED-FI+RFC+22+-+ASSESSMENT+OUTCOMES+API).
 
-**Contents**
-
-- [Ed-Fi Assessment Outcomes API for Data Standard v5 Certification](#ed-fi-assessment-outcomes-api-for-data-standard-v5-certification)
-- [Overview and Purpose](#overview-and-purpose)
-  - [Overview of Requirements](#overview-of-requirements)
-    - [Local Descriptor Guidance](#local-descriptor-guidance)
-    - [Required Fields on API Resources](#required-fields-on-api-resources)
-    - [Student ID Configuration](#student-id-configuration)
-    - [Operations](#operations)
-    - [Error Handling](#error-handling)
-    - [Enumerations](#enumerations)
-
 ## Overview of Requirements
 
 * * *
@@ -133,6 +121,6 @@ if an Ed-Fi value fails to match the semantics needed. These enumerations are:
 
 The certification captures and publishes vendor-specific enumerations (in the
 provider entry in the [Registry of Ed-Fi Certified
-Products](../../ed-fi-certification/registry-of-ed-fi-certified-products.md)),
+Products](../../registry-of-ed-fi-certified-products.mdx)),
 and tests that enumerations used during testing are within the allowed
 enumeration sets.

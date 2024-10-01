@@ -53,7 +53,7 @@ also receive a certification for HR or Finance domains.
 
 This section provides an overview only; detailed, step-by-step requirements are
 available in the [Domain API Certification for Data Standard v5 -
-Steps](./assessment-outcomes-api-certification-for-data-standard-v5-steps.md)).
+Steps](./domain-api-certification-for-data-standard-v5-steps.md).
 
 ### Required Fields on API Resources
 

@@ -54,7 +54,7 @@ Ed-Fi certification does not cover these elements of a vendor implementation:
 
 - If the product has multiple editions, what editions of the product the
     certified functionality is available in. The [Registry of Ed-Fi Certified
-    Products](../ed-fi-certification/registry-of-ed-fi-certified-products.md), however,
+    Products](./registry-of-ed-fi-certified-products.mdx), however,
     does record which product edition and version the vendor used to meet the
     certification testing. Those wanting to procure this functionality are
     advised to reference that version if necessary.

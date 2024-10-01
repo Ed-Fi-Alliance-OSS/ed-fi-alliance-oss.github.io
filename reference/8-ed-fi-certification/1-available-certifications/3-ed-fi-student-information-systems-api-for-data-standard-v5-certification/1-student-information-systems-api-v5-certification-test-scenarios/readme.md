@@ -22,7 +22,7 @@ the test cases for API resources listed below under **Required API Resources.**
 occur as changes are made during normal product usage. It is acceptable for
 product to batch updates, but such batches MUST occur such that changes are
 near-real time. See [Requirements - Testing
-Requirements](../../2-certification-requirements-for-data-providers/requirements-testing-requirements.md) for
+Requirements](../../../2-certification-requirements-for-data-providers/requirements-testing-requirements.md) for
 more information.
 
 ### Batch Test Cases
@@ -82,7 +82,7 @@ For each API resource element, the requirement status is marked as follows:
 
 - **REQUIRED**: the element must be supplied. Note that the [Requirements -
     Testing
-    Requirements](../../2-certification-requirements-for-data-providers/requirements-testing-requirements.md)
+    Requirements](../../../2-certification-requirements-for-data-providers/requirements-testing-requirements.md)
     lists permitted workarounds for many cases where the element may be missing
     in the source system.
 
@@ -133,8 +133,8 @@ the same data concept is modeled.
 | [StudentHomelessProgramAssociation](./v5-student-program-studenthomelessprogramassociation-scenarios.md) | Create, Update |
 | [StudentLanguageInstructionProgramAssociation](./v5-student-program-studentlanguageinstructionprogramassociation-scenarios.md) | Create, Update |
 | [StudentMigrantProgramAssociations](./v5-student-program-studentmigrantprogramassociation-scenarios.md) | Create, Update |
-| [StudentNeglectedOrDelinquentProgramAssociations](./v5-student-program-studentneglectedordelinquentprogramassociation-scenarios.md) | Create, Update |
-| [studentSchoolFoodServiceProgramAssociations](./v5-student-program-studentschoolfoodserviceprogramassociation-scenarios.md) | Create, Update |
+| [StudentNeglectedOrDelinquentProgramAssociations](./v5-student-program-studentneglectedordeliquentprogramassociation-scenarios.md) | Create, Update |
+| [studentSchoolFoodServiceProgramAssociations](./v5-student-program-studentschoolfoodservicesprogramassociation-scenarios.md) | Create, Update |
 | [StudentSpecialEducationProgramAssociation](./v5-studentprogram-studentspecialeducationprogramassociation-scenarios.md) | Create, Update |
 | [StudentTitleIPartAProgramAssociation](./v5-student-program-studenttitleipartaprogramassociation-scenarios.md) | Create, Update |
 | [StudentSchoolAttendanceEvent](./v5-student-attendance-studentschoolattendanceevent-scenarios.md) | Create, Update, Delete |

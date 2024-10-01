@@ -136,7 +136,7 @@ submitted documentation.
 The certifying product will show via screen sharing the methods by which
 exchanges are triggered (and those MUST follow the requirements
 under [Certification Requirements for Data
-Providers](../../2-certification-requirements-for-data-providers.md) and
+Providers](../../2-certification-requirements-for-data-providers/readme.md) and
 be consistent with the Usage Narrative submitted in step 4, above).
 
 </details>

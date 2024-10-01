@@ -12,4 +12,4 @@ product would not be eligible for recertification.
 
 Recertification requirements are described under the applicable
 certification *–* consult [Available
-Certifications](../../1-available-certifications/readme.md).
+Certifications](../1-available-certifications/readme.md).
