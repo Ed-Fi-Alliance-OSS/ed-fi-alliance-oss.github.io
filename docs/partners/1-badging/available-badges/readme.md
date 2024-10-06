@@ -1,7 +1,10 @@
+<<<<<<< HEAD
 ---
 sidebar_position: 1
 ---
 
+=======
+>>>>>>> 0c7ab44 (created a first draft of directory)
 # Available Badges
 
 The Ed-Fi Alliance provides the following badges.
