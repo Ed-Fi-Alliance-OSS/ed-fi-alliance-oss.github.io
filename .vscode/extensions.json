@@ -1,0 +1,12 @@
+{
+    "recommendations": [
+      "psioniq.psi-header",
+      "EditorConfig.EditorConfig",
+      "streetsidesoftware.code-spell-checker",
+      "yzhang.markdown-all-in-one",
+      "bierner.markdown-mermaid",
+      "tomasdahlqvist.markdown-admonitions",
+      "DavidAnson.vscode-markdownlint",
+      "stkb.rewrap"
+    ]
+}

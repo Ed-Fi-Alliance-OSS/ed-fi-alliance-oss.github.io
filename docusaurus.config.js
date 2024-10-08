@@ -50,6 +50,9 @@ const config = {
           editUrl:
             'https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/blog/',
         },
+        googleTagManager: {
+          containerId: "GTM-KGR2977"
+        },
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -66,7 +69,7 @@ const config = {
         editUrl: ({ docPath }) =>
           `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/${docPath}/`,
         routeBasePath: 'partners',
-        sidebarPath: './sidebarsPartners.js',
+        sidebarPath: './sidebars.js',
       },
     ],
     [
@@ -77,6 +80,17 @@ const config = {
         editUrl: ({ docPath }) =>
           `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/${docPath}/`,
         routeBasePath: 'reference',
+        sidebarPath: './sidebars.js',
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'community',
+        path: 'community',
+        editUrl: ({ docPath }) =>
+          `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/${docPath}/`,
+        routeBasePath: 'community',
         sidebarPath: './sidebars.js',
       },
     ],
@@ -114,6 +128,9 @@ const config = {
             position: 'right',
           },
         ],
+      },
+      prism: {
+        additionalLanguages: ['powershell', 'csharp', 'sql', 'json'],
       },
       algolia: {
         // The application ID provided by Algolia
