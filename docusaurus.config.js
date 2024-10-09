@@ -86,6 +86,17 @@ const config = {
     [
       '@docusaurus/plugin-content-docs',
       {
+        id: 'ed-fi-badges',
+        path: 'docs/ed-fi-badges',
+        editUrl: ({ docPath }) =>
+          `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/${docPath}/`,
+        routeBasePath: 'docs/ed-fi-badges',
+        sidebarPath: './sidebars.js',
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
         id: 'community',
         path: 'community',
         editUrl: ({ docPath }) =>
@@ -192,6 +203,11 @@ const config = {
               {
                 href: 'https://exchange.ed-fi.org/',
                 label: 'Exchange',
+                position: 'right',
+              },
+              {
+                href: '/docs/ed-fi-badges',
+                label: 'Ed-Fi Badge Program',
                 position: 'right',
               },
             ],
