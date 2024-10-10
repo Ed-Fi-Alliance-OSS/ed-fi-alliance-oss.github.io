@@ -1,0 +1,535 @@
+---
+sidebar_position: 3
+---
+
+# Registry of Ed-Fi Badges
+
+export const managedODSColumns = [
+  { header: 'Product', field: 'product' },
+  { header: 'Provider', field: 'provider' },
+  { header: 'Product Information', field: 'productInformation' },
+  { header: 'Badge Valid Through', field: 'validThrough' },
+  { header: 'Verifying Agencies', field: 'verifyingAgencies' },
+  { header: 'Version Compatibility', field: 'versionCompatibility' },
+  { header: 'Product Availability', field: 'availability' },
+];
+
+export const odsPlatformConsumerColumns = [
+  { header: 'Product', field: 'product' },
+  { header: 'Provider', field: 'provider' },
+  { header: 'Website', field: 'website' },
+  { header: 'Badge Valid Through', field: 'validThrough' },
+  { header: 'Verifying Agency', field: 'verifyingAgency' },
+  { header: 'Data Mapping', field: 'dataMapping' },
+  { header: 'Version Compatibility', field: 'versionCompatibility' },
+  { header: 'Product Availability', field: 'availability' },
+];
+
+export const apiConsumerColumns = [
+  { header: 'Product', field: 'product' },
+  { header: 'Provider', field: 'provider' },
+  { header: 'Website', field: 'website' },
+  { header: 'Badge Valid Through', field: 'validThrough' },
+  { header: 'Verifying Agency', field: 'verifyingAgency' },
+  { header: 'Data Mapping', field: 'dataMapping' },
+  { header: 'Version Compatibility', field: 'versionCompatibility' },
+  { header: 'Product Availability', field: 'availability' },
+  { header: 'Support Documentation', field: 'supportDocumentation' },
+];
+
+export const implementationPartnerColumns = [
+  { header: 'Organization', field: 'product' },
+  { header: 'Sample Documentation', field: 'sampleDocumentation' },
+  { header: 'Badge Valid Through', field: 'validThrough' },
+  { header: 'Verifying Agencies', field: 'verifyingAgencies' },
+  { header: 'Services Performed', field: 'servicesPerformed' },
+];
+
+export const certData = {
+  managedODSAPI: [
+    {
+      logo: "/img/partners/badging/EdGraphDarkLogo.png",
+      productName: "EdGraph",
+      provider: "EdWire",
+      website: "https://edgraph.com/",
+      productInformation: "https://edgraph.com/",
+      validThrough: "May 11, 2024",
+      verifyingAgencies: "Volusia County Schools, FL; Alachua County PS, FL; Fox C-6 School District, MO",
+      versionCompatibility: "Ed-Fi ODS API for Suite 3 v3.4\nEd-Fi ODS API for Suite 2 v2.5 and v2.6",
+      availability: "Available to any agency (all sizes) or vendor in the U.S."
+    },
+    {
+      logo: "/img/partners/badging/EA-startingblocks-color.png",
+      productName: "StartingBlocks",
+      provider: "Education Analytics",
+      website: "https://edanalytics.org/",
+      productInformation: "https://www.edanalytics.org/products/starting-blocks",
+      validThrough: "May 12, 2026",
+      verifyingAgencies: "South Carolina DOE\nTexas Education Exchange\nVermont Agency of Education",
+      versionCompatibility: "EdFi ODS/API versions 6.x and 7.x\nAdmin API 1.x and 2.x\nData Standards 4 and 5",
+      availability: "Available to any agency (all sizes) in the U.S."
+    },
+    {
+      logo: "/img/partners/badging/k12analytics (1).png",
+      productName: "K12Analytics",
+      provider: "K12Analytics Engineering",
+      website: "https://www.k12analyticsengineering.dev/",
+      productInformation: "https://www.k12analyticsengineering.dev/",
+      validThrough: "March 8, 2025",
+      verifyingAgencies: "BreakThrough Schools",
+      versionCompatibility: "Ed-Fi ODS API for Suite 3 v3.1.1",
+      availability: "Available to any agency (all sizes) in the U.S."
+    },
+    {
+      logo: "/img/partners/badging/ESPG Stacked-Logo-scaled.jpg",
+      productName: "ESP Solutions Group",
+      provider: "ESP Solutions Group",
+      website: "https://espsolutionsgroup.com/solutions/ed-fi/",
+      productInformation: "https://espmsp.com/",
+      validThrough: "May 18, 2025",
+      verifyingAgencies: "Wyoming Department of Education (WDE)",
+      versionCompatibility: "Ed-Fi ODS API 2.x and 3.x",
+      availability: "Available to any agency (all sizes) in the U.S."
+    },
+    {
+      logo: "/img/partners/badging/Edufied_Logo (1).jpeg",
+      productName: "Edufied Hosting",
+      provider: "Edufied",
+      website: "https://www.edufied.com/",
+      productInformation: "https://www.edufied.com/about-us",
+      validThrough: "August 30, 2025",
+      verifyingAgencies: "Holdsworth Center, TX; Boston Public Schools, MA; New Mexico PED, NM",
+      versionCompatibility: "Ed-Fi ODS / API Suite 3 v5.3\nEd-Fi ODS / API Suite 3 v7.0\nCommitment to continuous support for most recent versions",
+      availability: "Available to any agency (all sizes) in the U.S."
+    },
+    {
+      logo: "/img/partners/badging/ClassLink%20Horizontal%20Logo.jpg",
+      productName: "ClassLink One Data",
+      provider: "ClassLink",
+      website: "https://www.classlink.com",
+      productInformation: "https://www.classlink.com/products",
+      validThrough: "September 12, 2025",
+      verifyingAgencies: "Clay County \n Ennis ISD",
+      versionCompatibility: "Ed-Fi ODS / API for Suite 3 v6.1",
+      availability: "Available to any agency (all sizes) in the U.S."
+    }
+  ],
+
+  odsPlatformConsumer: [
+    {
+      logo: "/img/partners/badging/EdGraphDarkLogo.png",
+      productName: "EdGraph Analytics",
+      provider: "EdWire",
+      website: "https://www.edgraph.com/",
+      validThrough: "May 11, 2024",
+      verifyingAgency: "Monroe County Community School Corporation, IN",
+      dataMapping: {
+        "EdGraph Analytics - Suite 2 Mapping": "https://edfi.atlassian.net/wiki/download/attachments/20611183/EdGraph%20Analytics%20-%20Suite%202%20Mapping.xlsx?version=1&modificationDate=1587150030197&cacheVersion=1&api=v2"
+      },
+      versionCompatibility: "Ed-Fi ODS API v2.6 and 3.2",
+      availability: "Available to any agency (all sizes) or vendor in the U.S."
+    },
+    {
+      logo: "/img/partners/badging/Innive k12-360.png",
+      productName: "Ed-Fi Data Vault by Innive",
+      provider: "Innive Inc.",
+      website: "https://k12360.com/data-as-a-service",
+      validThrough: "October 20, 2025",
+      verifyingAgency: "Austin ISD, TX",
+      dataMapping: {
+        "Mapping Document": "https://edfi.atlassian.net/wiki/download/attachments/20611183/Innive_TSDS_to_EDFI_ODS_Mapping.xlsx?version=1&modificationDate=1697801377347&cacheVersion=1&api=v2"
+      },
+      versionCompatibility: "Ed-Fi ODS 3.0 and above",
+      availability: "Available to any agency (all sizes) or vendor in the U.S."
+    },
+    {
+      logo: "/img/partners/badging/CPSI-Logo-3-Color-Square (1).png",
+      productName: "xDValidator",
+      provider: "CPSI, Ltd.",
+      website: "https://www.cpsiltd.com/",
+      validThrough: "April 11, 2025",
+      verifyingAgencies: "New Mexico Department of Education",
+      dataMapping: "No Mapping - All domains/data elements pass through",
+      versionCompatibility: "All Active Versions",
+      availability: "Available to any agency (all sizes) or vendor in the U.S."
+    },
+    {
+      logo: "/img/partners/badging/ESPG Stacked-Logo-scaled.jpg",
+      productName: "Customized Operational Dashboards",
+      provider: "ESP Solutions Group",
+      website: "https://espmsp.com/",
+      productInformation: "https://espmsp.com/customized-operational-dashboards",
+      validThrough: "May 18, 2025",
+      verifyingAgencies: "Wyoming Department of Education (WDE)",
+      dataMapping: {
+        "ESP Mapping": "https://edfi.atlassian.net/wiki/download/attachments/20611183/EdFi%203.4%20Mapping%20Master%20API_to_ODS.xlsx?version=1&modificationDate=1684421306370&cacheVersion=1&api=v2"
+      },
+      versionCompatibility: "Ed-Fi ODS 2.x and 3.x",
+      availability: "Available to any agency (all sizes) or vendor in the U.S."
+    },
+    {
+      logo: "/img/partners/badging/Crocus_Signature_RGB (1).jpg",
+      productName: "TEA Insight to Impact Dashboards",
+      provider: "Crocus, LLC",
+      website: "https://insighttoimpact.tea.texas.gov/",
+      validThrough: "February 26, 2026",
+      verifyingAgency: "Texas Education Agency (TEA)",
+      dataMapping: {
+        "Data Mapping": "https://edfi.atlassian.net/wiki/download/attachments/20611183/TEA_I2I%20Mapping.xlsx?version=1&modificationDate=1708972992290&cacheVersion=1&api=v2"
+      },
+      versionCompatibility: "Ed-Fi Data Standard 3.3.1b/API 5.3",
+      availability: "Available to all educator prep programs in Texas"
+    }
+  ],
+
+  apiConsumer: [
+    {
+      logo: "/img/partners/badging/image-20240426-184350.png",
+      productName: "eScholar CDW and eScholar Advantage",
+      provider: "eScholar",
+      website: "https://escholar.com/solutions/education-data-warehouse/",
+      validThrough: "October 17, 2025",
+      verifyingAgency: "Providence Public Schools, RI",
+      dataMapping: {
+        Mapping: "https://edfi.atlassian.net/wiki/download/attachments/20611183/eScholar%20to%20Ed-Fi%20Mapping%20API%20Consumer%20Badge%20App.xlsx?version=1&modificationDate=1697544895307&cacheVersion=1&api=v2",
+        "Usage Overview": "https://edfi.atlassian.net/wiki/download/attachments/20611183/escholar%20Usage%20Overview.docx?version=1&modificationDate=1697545634830&cacheVersion=1&api=v2"
+      },
+      versionCompatibility: "ODS: Version: 3.0.549\nAPI: Version 5.3",
+      availability: "Available to any agency or organization of any size",
+      supportDocumentation: {
+        "API Documentation": "https://bit.ly/45x0O49"
+      }
+    },
+    {
+      logo: "/img/partners/badging/image-20240426-185750.png",
+      productName: "Lingk Cloud Data Integration Platform",
+      provider: "Lingk Inc.",
+      website: "https://www.lingk.io/",
+      validThrough: "November 16, 2024",
+      verifyingAgency: "Duneland School Corporation (IN)",
+      dataMapping: {
+        "Usage Overview & Mapping": "https://edfi.atlassian.net/wiki/download/attachments/20611183/Ed-Fi%20API%20Consumer%20Badge%20-%20Lingk%20usage%20overview%20%26%20mapping.pdf?version=1&modificationDate=1668618015487&cacheVersion=1&api=v2"
+      },
+      versionCompatibility: "Ed-Fi ODS API for Suite 3 (and Suite 2)",
+      availability: "Available to any agency (all sizes) or vendor in the U.S."
+    },
+    {
+      logo: "/img/partners/badging/image-20240426-185153.png",
+      productName: "Stadium",
+      provider: "Education Analytics",
+      website: "https://www.edanalytics.org/",
+      validThrough: "July 14, 2026",
+      verifyingAgency: "Boston Public Schools",
+      versionCompatibility: "Ed-Fi ODS API for Suite 3 plus extensions",
+      availability: "Available to any agency (all sizes) or vendor in the U.S."
+    },
+    {
+      logo: "/img/partners/badging/image-20240426-185239.png",
+      productName: "Munetrix",
+      provider: "Munetrix LLC",
+      website: "https://munetrix.com/",
+      validThrough: "October 4, 2025",
+      verifyingAgencies: "Kalamazoo RESA / Michigan Data Hub",
+      dataMapping: {
+        "Academic Achievement Mapping": "https://edfi.atlassian.net/wiki/download/attachments/20611183/Munetrix%20Ed-Fi%20Utilization.xlsx?version=1&modificationDate=1696431904257&cacheVersion=1&api=v2"
+      },
+      versionCompatibility: "Ed-Fi ODS API for Suite 3 v3.1",
+      availability: "MI",
+      supportDocumentation: {
+        "Availability Statement": "https://edfi.atlassian.net/wiki/download/attachments/20611183/Munetrix%20Ed-Fi%20Certification%20-%20Availability%20Statement.docx?version=1&modificationDate=1696431815143&cacheVersion=1&api=v2",
+        "Connecting the MIDataHub to Munetrix": "https://solutions.munetrix.com/en/knowledge/connecting-the-midatahub-to-munetrix",
+        "Munetrix Implementation Guide for School Leaders": "https://edfi.atlassian.net/wiki/download/attachments/20611183/Munetrix_Implementation%2BGuide%2Bfor%2BSchool%2BLeaders_V3.pdf?version=1&modificationDate=1693419689217&cacheVersion=1&api=v2",
+        "EMW Onboard Planning": "https://edfi.atlassian.net/wiki/spaces/EDFIBADGE/pages/20611183"
+      }
+    },
+    {
+      logo: "/img/partners/badging/image-20240426-185326.png",
+      productName: "PRISM",
+      provider: "Eidex LLC",
+      website: "http://www.eidexinsights.com",
+      validThrough: "August 9, 2025",
+      verifyingAgencies: "Michigan Data Hub",
+      dataMapping: {
+        "Usage Overview": "https://edfi.atlassian.net/wiki/download/attachments/20611183/Eidex%20Ed-Fi%20Badge%20Application%20July%202023.pdf?version=1&modificationDate=1691603649910&cacheVersion=1&api=v2",
+        "Mapping Document": "https://edfi.atlassian.net/wiki/download/attachments/20611183/Eidex%20Mapping%20Document.docx?version=1&modificationDate=1691603324797&cacheVersion=1&api=v2"
+      },
+      versionCompatibility: "Ed-Fi ODS API for Suite 2 v2.5 and Suite 3 v3.1",
+      availability: "MI, IN",
+      supportDocumentation: {
+        "Support & Configuration": "http://portal.eiexinsights.com"
+      }
+    },
+    {
+      logo: "/img/partners/badging/image-20240426-185442.png",
+      productName: "ClassLink Roster Server",
+      provider: "ClassLink Inc.",
+      website: "https://www.classlink.com/products/roster-server",
+      validThrough: "July 26, 2023",
+      verifyingAgency: "Delaware Department of Education",
+      versionCompatibility: "Ed-Fi ODS API for Suite 3 v3.1 and v5.1",
+      availability: "Available to any agency (all sizes) or vendor in the U.S."
+    },
+    {
+      logo: "/img/partners/badging/image-20240426-185413.png",
+      productName: "SAS EVAAS",
+      provider: "SAS",
+      website: "https://www.sas.com",
+      validThrough: "April 9, 2026",
+      verifyingAgency: "Michigan Data Hub",
+      dataMapping: {
+        "Mapping Document": "https://edfi.atlassian.net/wiki/spaces/EDFIBADGE/pages/20611183/Registry+of+Ed-Fi+Badged+Products+and+Services"
+      },
+      versionCompatibility: "Ed-Fi ODS API for Suite 3 v3.1.1",
+      availability: "Available to any LEA or SEA in any US geography",
+      supportDocumentation: {
+        "SAS EVAAS for K-12": "https://www.midatahub.org/pub/stories/view/sas-evaas-for-k-12"
+      }
+    },
+    {
+      logo: "/img/partners/badging/image-20240426-185544.png",
+      productName: "District 360 Executive Dashboard",
+      provider: "Innive Inc.",
+      website: "https://k12360.com/analytics",
+      validThrough: "October 20, 2025",
+      verifyingAgency: "Austin ISD, TX",
+      dataMapping: {
+        "Mapping Document": "https://edfi.atlassian.net/wiki/download/attachments/20611183/Innive_TSDS_to_EDFI_ODS_Mapping.xlsx?version=1&modificationDate=1697801377347&cacheVersion=1&api=v2",
+        "Usage Overview": "https://edfi.atlassian.net/wiki/download/attachments/20611183/Innive_usage_summary.docx?version=1&modificationDate=1697802323220&cacheVersion=1&api=v2"
+      },
+      versionCompatibility: "Ed-Fi ODS API for Suite 3 and above",
+      availability: "Available to any agency (all sizes) or vendor in the U.S.",
+      supportDocumentation: "k12360support@inniveinc.com"
+    },
+    {
+      logo: "/img/partners/badging/image-20240426-185115.png",
+      productName: "Linq & Alio",
+      provider: "Linq",
+      website: "https://www.linq.com/solutions/erp/hr/",
+      validThrough: "October 18, 2025",
+      verifyingAgency: "Mondovi School District, WI",
+      dataMapping: {
+        "Alio and Linq ERP mapping": "https://edfi.atlassian.net/wiki/download/attachments/20611183/Alio%20and%20Linq%20ERP%20mapping.docx?version=1&modificationDate=1697572605577&cacheVersion=1&api=v2",
+        "Usage Overview": "https://edfi.atlassian.net/wiki/download/attachments/20611183/AlioLinq%20Usage.docx?version=1&modificationDate=1697573131280&cacheVersion=1&api=v2"
+      },
+      versionCompatibility: "Version 3x data standards and later\nVersion 6.1 API",
+      availability: "Available to any LEA in any US geography",
+      supportDocumentation: "erpsupport@linq.com"
+    },
+    {
+      logo: "/img/partners/badging/Crocus_Signature_RGB%20(1).jpg",
+      productName: "TEA Insight to Impact Dashboards",
+      provider: "Crocus, LLC",
+      website: "https://insighttoimpact.tea.texas.gov/",
+      validThrough: "Feb 26, 2026",
+      verifyingAgency: "Texas Education Agency (TEA)",
+      dataMapping: {
+        "Data Mapping": "https://edfi.atlassian.net/wiki/download/attachments/20611183/TEA_I2I%20Mapping.xlsx?version=1&modificationDate=1708972992290&cacheVersion=1&api=v2",
+        "Usage Summary": "https://edfi.atlassian.net/wiki/download/attachments/20611183/Ed-Fi%20Badge%20Application%20Crocus%20TEA%20I2I.docx.pdf?version=1&modificationDate=1708978418657&cacheVersion=1&api=v2"
+      },
+      versionCompatibility: "Data Standard 3.3.1b/API 5.3",
+      availability: "All Educator prep programs in Texas"
+    },
+    {
+      logo: "/img/partners/badging/ODS%20Logo_nowebsite.jpg",
+      productName: "OnDataSuite",
+      provider: "Aloe Software Group",
+      website: "http://www.ondatasuite.com ",
+      validThrough: "August 2, 2026",
+      verifyingAgencies: "Tomball ISD",
+      dataMapping: {
+        "Mapping Document": "https://edfi.atlassian.net/wiki/spaces/EDFIBADGE/pages/20611183/Registry+of+Ed-Fi+Badged+Products+and+Services"
+      },
+      versionCompatibility: "Ed-Fi API version 7.1\nEd-Fi Data Standard version 4.0",
+      availability: "State of Texas, Version 12.19.0 and above.",
+      supportDocumentation: {
+        "Go-Live 2024-2025 Ed-Fi Overview": "https://kb.ondatasuite.com/article-categories/go-live-2024-2025-ed-fi-overview/"
+      }
+    },
+    {
+      logo: "/img/partners/badging/FIVESTAR-Centered-Version-Squared.png  ",
+      productName: "Five Star Pivot Data Warehouse, Data Analytics, and Staff Evaluations",
+      provider: "Five Star Technology Solutions",
+      website: "https://fivestartech.com/data-analytics/ ",
+      validThrough: "Aug 14, 2026",
+      verifyingAgencies: "Michigan Data Hub",
+      dataMapping: {
+        "Mapping Document": "https://edfi.atlassian.net/wiki/spaces/EDFIBADGE/pages/20611183/Registry+of+Ed-Fi+Badged+Products+and+Services"
+      },
+      versionCompatibility: "Ed-Fi API version 6.x",
+      availability: "Available to any LEA in any US geography"
+    },
+    {
+      logo: "/img/partners/badging/PanoramaEducation_Logo_Horizontal_Digital_FullColor.jpg",
+      productName: "Panorama Education",
+      provider: "Panorama Education Student Success",
+      website: "https://www.panoramaed.com/products/student-success",
+      validThrough: "September 5, 2026",
+      verifyingAgencies: "Boston Public Schools",
+      dataMapping: {
+        "Mapping Document": "https://edfi.atlassian.net/wiki/spaces/EDFIBADGE/pages/20611183/Registry+of+Ed-Fi+Badged+Products+and+Services"
+      },
+      versionCompatibility: "Ed-Fi API Suite 3, V5.3 and Ed-Fi Data Standard versions 3.3.1-b",
+      availability: "Available to any agency (all sizes) or vendor in the U.S."
+    },
+    {
+      logo: "/img/partners/badging/CPSI-Logo-3-Color-Square%20(1).png",
+      productName: "xDValidator",
+      provider: "CPSI, Ltd.",
+      website: "https://www.cpsiltd.com/",
+      validThrough: "April 11, 2025",
+      verifyingAgencies: "New Mexico Department of Education",
+      dataMapping: "No Mapping - All domains/data elements pass through",
+      versionCompatibility: "All Active Versions",
+      availability: "Available to any agency (all sizes) or vendor in the U.S."
+    }
+  ],
+
+  implementationPartner: [
+    {
+      logo: "/img/partners/badging/image-20240426-185824.png",
+      organizationName: "EdWise Group",
+      website: "https://www.edwisegroup.com",
+      sampleDocumentation: {
+        "IDOE Ed-Fi 6.1 Vendor Documentation": "https://docs.google.com/spreadsheets/d/1b7Y36hqHfK66Mqzn1RrUmL8P64qYE-e4/edit#gid=1377605800",
+        "IDOE Ed-Fi 6.1 SIS Vendor Badging Scenarios": "https://docs.google.com/spreadsheets/d/1K_qFq3397XNTLBjvDlwLlxC3c2XetTou/edit#gid=1800575453",
+        "IDOE Ed-Fi 2.4 to 6.0 Data mapping": "https://edfi.atlassian.net/wiki/download/attachments/20611183/IDOE%20Ed-Fi%202.4%20to%206.0%20Data%20mapping.xlsx?version=1&modificationDate=1704460070267&cacheVersion=1&api=v2"
+      },
+      validThrough: "Nov 1, 2025",
+      verifyingAgencies: "Indiana DoE\nNebraska DoE",
+      servicesPerformed: "https://www.edwisegroup.com/services/"
+    },
+    {
+      logo: "/img/partners/badging/Master_unicon-net_primary_logo_2023_2-color (1).png",
+      organizationName: "Unicon",
+      website: "https://www.unicon.net/services/k-20",
+      sampleDocumentation: {
+        "TPDM Starter Kit Required Data Checklist": "https://edfi.atlassian.net/wiki/spaces/EDFIBADGE/pages/20611183/Registry+of+Ed-Fi+Badged+Products+and+Services",
+        "Evaluation Data Collection Short Form Template with Sample": "https://edfi.atlassian.net/wiki/spaces/EDFIBADGE/pages/20611183/Registry+of+Ed-Fi+Badged+Products+and+Services",
+        "Project Phases": "https://edfi.atlassian.net/wiki/spaces/EDFIBADGE/pages/20611183/Registry+of+Ed-Fi+Badged+Products+and+Services"
+      },
+      validThrough: "May 14, 2026",
+      verifyingAgencies: "University of Texas, El Paso\nTexas A&M University International University",
+      servicesPerformed: "https://www.unicon.net/services/k-20"
+    }
+  ]
+};
+
+export function CertificationTable({ certifications, columns }) {
+  const renderCell = (cert, column) => {
+    const cellRenderers = {
+      product: renderProductCell,
+      dataMapping: renderListCell,
+      sampleDocumentation: renderListCell,
+      supportDocumentation: renderListCell,
+      default: renderDefaultCell
+    };
+
+    const renderer = cellRenderers[column.field] || cellRenderers.default;
+    return renderer(cert, column);
+  };
+
+  return (
+    <table>
+      <thead>
+        <tr>
+          {columns.map((column, index) => (
+            <th key={index}>{column.header}</th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {certifications.map((cert, index) => (
+          <tr key={index}>
+            {columns.map((column, colIndex) => (
+              <td key={colIndex}>
+                {renderCell(cert, column)}
+              </td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+}
+
+export function renderProductCell(cert) {
+  return (
+    <a href={cert.website}>
+      <img
+        src={cert.logo}
+        alt={cert.productName}
+        style={{ width: '200px', height: 'auto', maxWidth: 'none' }}
+      />
+      <br />
+      {cert.productName}
+    </a>
+  );
+}
+
+export function renderListCell(cert, column) {
+  const data = cert[column.field];
+  if (typeof data !== 'object') return data;
+
+  return (
+    <ul>
+      {Object.entries(data).map(([key, value]) => (
+        <li key={key}>
+          <a href={value}>{key}</a>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+export function renderDefaultCell(cert, column) {
+  const value = cert[column.field];
+  if (typeof value === 'string' && value.startsWith('http')) {
+    return <a href={value}>{value}</a>;
+  }
+  return value;
+}
+
+This page lists products that have been awarded an Ed-Fi badge.
+
+## Ed-Fi Managed ODS / API Platform Badge
+
+The Ed-Fi Managed ODS / API Platform Badge is for products that provide the
+Ed-Fi Operational Data Store and API (ODS/API) as software-as-a-service (SaaS).
+
+Data integration and use at scale is a challenging problem regardless of
+platform, and these challenges have particularly been difficult for agencies
+with lower access to expertise in software development, enterprise data
+management, or data systems integration. Similarly, many larger agencies are
+also attempting to outsource aspects of these operations in order to focus more
+on analytics and business intelligence.  This badge  highlights product efforts
+to address these problems.
+
+<CertificationTable certifications={certData.managedODSAPI} columns={managedODSColumns} />
+
+## Ed-Fi ODS Platform Consumer Badge
+
+This badge is for products that interact or use the data from the Ed-Fi ODS
+platform, but access is not via API. Products using an Ed-Fi API to source data
+should apply for the Ed-Fi API Consumer Badge
+
+<CertificationTable certifications={certData.odsPlatformConsumer} columns={odsPlatformConsumerColumns} />
+
+## Ed-Fi API Consumer Badge
+
+This badge is for products that read data out of an Ed-Fi defined API and
+integrate that data into their product offering.
+
+<CertificationTable certifications={certData.apiConsumer} columns={apiConsumerColumns} />
+
+## Ed-Fi Implementation Partner Badge
+
+The Ed-Fi Systems Implementer  Badge is to recognize services organizations
+doing field implementation work around the Ed-Fi technology stack, which may not
+be directly relatable to a software product.
+
+Many agencies are forming short term, project based relationships to perform
+specific tasks with Ed-Fi technology - upgrades, system integrations, and
+strategy consulting. This badge aims to define organizations that follow best
+practices in a wide range of services projects.
+
+<CertificationTable certifications={certData.implementationPartner} columns={implementationPartnerColumns} />
