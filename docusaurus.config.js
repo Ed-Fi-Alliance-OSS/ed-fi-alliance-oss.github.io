@@ -39,7 +39,7 @@ const config = {
       ({
         docs: {
           id: 'getting-started',
-          path: 'getting-started',
+          path: 'docs/getting-started',
           editUrl: ({ docPath }) =>
             `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/${docPath}/`,
           routeBasePath: 'getting-started',
@@ -65,7 +65,7 @@ const config = {
       '@docusaurus/plugin-content-docs',
       {
         id: 'partners',
-        path: 'partners',
+        path: 'docs/partners',
         editUrl: ({ docPath }) =>
           `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/${docPath}/`,
         routeBasePath: 'partners',
@@ -76,7 +76,7 @@ const config = {
       '@docusaurus/plugin-content-docs',
       {
         id: 'reference',
-        path: 'reference',
+        path: 'docs/reference',
         editUrl: ({ docPath }) =>
           `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/${docPath}/`,
         routeBasePath: 'reference',
@@ -87,7 +87,7 @@ const config = {
       '@docusaurus/plugin-content-docs',
       {
         id: 'community',
-        path: 'community',
+        path: 'docs/community',
         editUrl: ({ docPath }) =>
           `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/${docPath}/`,
         routeBasePath: 'community',
