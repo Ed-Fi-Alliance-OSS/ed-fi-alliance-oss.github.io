@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # Available Badges
 
 The Ed-Fi Alliance provides the following badges.

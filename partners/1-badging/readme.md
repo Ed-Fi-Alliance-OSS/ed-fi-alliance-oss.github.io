@@ -24,8 +24,8 @@ standards.
 This site contains resources and detailed information about the Ed-Fi Badges
 program.
 
-* [Applying for a Badge](./ed-fi-badges/applying-for-a-badge.md)
-* [Available Badges](./ed-fi-badges/available-badges.md)
-* [Registry of Ed-Fi Badges](./ed-fi-badges/registry-of-ed-fi-badges.md)
+* [Applying for a Badge](./applying-for-a-badge.md)
+* [Available Badges](./available-badges/readme.md)
+* [Registry of Ed-Fi Badges](./registry-of-ed-fi-badges.mdx)
 
 <!-- ![](./attachments/ed-fi-alliance-logo-white-bg-400x400-for-social.png) -->
