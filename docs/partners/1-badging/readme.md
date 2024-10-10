@@ -30,6 +30,7 @@ This site contains resources and detailed information about the Ed-Fi Badges
 program.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 * [Applying for a Badge](./applying-for-a-badge.md)
 * [Available Badges](./available-badges/readme.md)
 * [Registry of Ed-Fi Badges](./registry-of-ed-fi-badges.mdx)
@@ -37,6 +38,11 @@ program.
 * [Applying for a Badge](./ed-fi-badges/applying-for-a-badge.md)
 * [Available Badges](./ed-fi-badges/available-badges.md)
 * [Registry of Ed-Fi Badges](./ed-fi-badges/registry-of-ed-fi-badges.md)
+=======
+* [Applying for a Badge](./applying-for-a-badge.md)
+* [Available Badges](./available-badges/readme.md)
+* [Registry of Ed-Fi Badges](./registry-of-ed-fi-badges.mdx)
+>>>>>>> f79d136 (fixed broken links + sidebar position)
 
 <!-- ![](./attachments/ed-fi-alliance-logo-white-bg-400x400-for-social.png) -->
 >>>>>>> 0c7ab44 (created a first draft of directory)

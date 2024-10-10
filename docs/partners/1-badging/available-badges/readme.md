@@ -1,10 +1,16 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f79d136 (fixed broken links + sidebar position)
 ---
 sidebar_position: 1
 ---
 
+<<<<<<< HEAD
 =======
 >>>>>>> 0c7ab44 (created a first draft of directory)
+=======
+>>>>>>> f79d136 (fixed broken links + sidebar position)
 # Available Badges
 
 The Ed-Fi Alliance provides the following badges.
