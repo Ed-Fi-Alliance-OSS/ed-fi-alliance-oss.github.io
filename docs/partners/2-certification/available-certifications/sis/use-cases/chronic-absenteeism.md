@@ -9,32 +9,32 @@ These use cases apply to the Chronic Absenteeism community priority.
 <details>
 <summary>Resource Requirements</summary>
 
-| API Resource | Notes |
-| --- | --- |
-| /studentSchoolAttendanceEvents |     |
-| /studentSectionAttendanceEvents |     |
-| /sectionAttendanceTakenEvents |     |
-| /calendars |     |
-| /calendarDates |     |
-| /courses |     |
-| /courseOfferings |     |
-| /localEducationAgencies |     |
-| /gradingPeriods |     |
-| /schools |     |
-| /sections |     |
-| /sessions |     |
-| /staffs |     |
-| /staffEducationOrganizationAssignmentAssociations |     |
-| /staffEducationOrganizationEmploymentAssociations |     |
-| /staffSchoolAssociations |     |
-| /staffSectionAssociations |     |
-| /students |     |
-| /studentEducationOrganizationAssociations |     |
-| /studentSchoolAssociations |     |
-| /studentSectionAssociations |     |
-| /bellSchedules |     |
-| /locations |     |
-| /classPeriods |     |
+| API Resource                                      | Notes |
+| ------------------------------------------------- | ----- |
+| /studentSchoolAttendanceEvents                    |       |
+| /studentSectionAttendanceEvents                   |       |
+| /sectionAttendanceTakenEvents                     |       |
+| /calendars                                        |       |
+| /calendarDates                                    |       |
+| /courses                                          |       |
+| /courseOfferings                                  |       |
+| /localEducationAgencies                           |       |
+| /gradingPeriods                                   |       |
+| /schools                                          |       |
+| /sections                                         |       |
+| /sessions                                         |       |
+| /staffs                                           |       |
+| /staffEducationOrganizationAssignmentAssociations |       |
+| /staffEducationOrganizationEmploymentAssociations |       |
+| /staffSchoolAssociations                          |       |
+| /staffSectionAssociations                         |       |
+| /students                                         |       |
+| /studentEducationOrganizationAssociations         |       |
+| /studentSchoolAssociations                        |       |
+| /studentSectionAssociations                       |       |
+| /bellSchedules                                    |       |
+| /locations                                        |       |
+| /classPeriods                                     |       |
 
 </details>
 
@@ -45,43 +45,43 @@ These use cases apply to the Chronic Absenteeism community priority.
 <details>
 <summary>Resource Requirements</summary>
 
-| API Resource | Notes |
-| --- | --- |
-| /studentSchoolAttendanceEvents |     |
-| /studentSectionAttendanceEvents |     |
-| /sectionAttendanceTakenEvents |     |
-| /calendars |     |
-| /calendarDates |     |
-| /courses |     |
-| /courseOfferings |     |
-| /localEducationAgencies |     |
-| /gradingPeriods |     |
-| /schools |     |
-| /sections |     |
-| /sessions |     |
-| /staffs |     |
-| /staffEducationOrganizationAssignmentAssociations |     |
-| /staffEducationOrganizationEmploymentAssociations |     |
-| /staffSchoolAssociations |     |
-| /staffSectionAssociations |     |
-| /students |     |
-| /studentEducationOrganizationAssociations |     |
-| /studentSchoolAssociations |     |
-| /studentSectionAssociations |     |
-| /bellSchedules |     |
-| /locations |     |
-| /classPeriods |     |
-taffs |     |
-| /staffEducationOrganizationAssignmentAssociations |     |
-| /staffEducationOrganizationEmploymentAssociations |     |
-| /staffSchoolAssociations |     |
-| /staffSectionAssociations |     |
-| /students |     |
-| /studentEducationOrganizationAssociations |     |
-| /studentSchoolAssociations |     |
-| /studentSectionAssociations |     |
-| /bellSchedules |     |
-| /locations |     |
-| /classPeriods |     |
+| API Resource                                      | Notes |
+| ------------------------------------------------- | ----- |
+| /studentSchoolAttendanceEvents                    |       |
+| /studentSectionAttendanceEvents                   |       |
+| /sectionAttendanceTakenEvents                     |       |
+| /calendars                                        |       |
+| /calendarDates                                    |       |
+| /courses                                          |       |
+| /courseOfferings                                  |       |
+| /localEducationAgencies                           |       |
+| /gradingPeriods                                   |       |
+| /schools                                          |       |
+| /sections                                         |       |
+| /sessions                                         |       |
+| /staffs                                           |       |
+| /staffEducationOrganizationAssignmentAssociations |       |
+| /staffEducationOrganizationEmploymentAssociations |       |
+| /staffSchoolAssociations                          |       |
+| /staffSectionAssociations                         |       |
+| /students                                         |       |
+| /studentEducationOrganizationAssociations         |       |
+| /studentSchoolAssociations                        |       |
+| /studentSectionAssociations                       |       |
+| /bellSchedules                                    |       |
+| /locations                                        |       |
+| /classPeriods                                     |       |
+| taffs                                             |       |
+| /staffEducationOrganizationAssignmentAssociations |       |
+| /staffEducationOrganizationEmploymentAssociations |       |
+| /staffSchoolAssociations                          |       |
+| /staffSectionAssociations                         |       |
+| /students                                         |       |
+| /studentEducationOrganizationAssociations         |       |
+| /studentSchoolAssociations                        |       |
+| /studentSectionAssociations                       |       |
+| /bellSchedules                                    |       |
+| /locations                                        |       |
+| /classPeriods                                     |       |
 
 </details>

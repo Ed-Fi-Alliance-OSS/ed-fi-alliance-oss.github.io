@@ -9,21 +9,20 @@ provides instructional services.
 
 ### Prerequisites
 
-* Staff
-* StaffEducationOrganizationAssignmentAssociations
+- Staff
+- StaffEducationOrganizationAssignmentAssociations
 
 ### Scenarios
 
 1. Create a StaffSchoolAssociation for a staff record at Grand Bend Elementary
-    School.
-2. Create a StaffSchoolAssociation for a staff record at Grand Bend High
-    School.
+   School.
+2. Create a StaffSchoolAssociation for a staff record at Grand Bend High School.
 3. Delete the StaffSchoolAssociation at Grand Bend Elementary School.
 
-| Resource | Property Name | Is Collection | Data Type | Required / Optional | Scenario 1  <br/>POST | Scenario 2  <br/>POST |
-| --- | --- | --- | --- | --- | --- | --- |
-| StaffSchoolAssociations | schoolReference | FALSE | schoolReference | REQUIRED |     |     |
-| schoolReference | schoolId | FALSE | integer | REQUIRED | 255901107 | 255901001 |
-| StaffSchoolAssociations | staffReference | FALSE | integer | REQUIRED |     |     |
-| staffReference | staffUniqueId | FALSE | string | REQUIRED | ["207220"  if possible<br/><br/>| system value] | ["207269"  if possible<br/><br/>| system value] |
-| StaffSchoolAssociations | programAssignmentDescriptor | FALSE | programAssignmentDescriptor | REQUIRED | Regular education | Regular education |
+| Resource                | Property Name               | Is Collection | Data Type                   | Required / Optional | Scenario 1 <br/>POST            | Scenario 2 <br/>POST |
+| ----------------------- | --------------------------- | ------------- | --------------------------- | ------------------- | ------------------------------- | -------------------- | ------------------------------- | ------------- |
+| StaffSchoolAssociations | schoolReference             | FALSE         | schoolReference             | REQUIRED            |                                 |                      |
+| schoolReference         | schoolId                    | FALSE         | integer                     | REQUIRED            | 255901107                       | 255901001            |
+| StaffSchoolAssociations | staffReference              | FALSE         | integer                     | REQUIRED            |                                 |                      |
+| staffReference          | staffUniqueId               | FALSE         | string                      | REQUIRED            | ["207220" if possible<br/><br/> | system value]        | ["207269" if possible<br/><br/> | system value] |
+| StaffSchoolAssociations | programAssignmentDescriptor | FALSE         | programAssignmentDescriptor | REQUIRED            | Regular education               | Regular education    |

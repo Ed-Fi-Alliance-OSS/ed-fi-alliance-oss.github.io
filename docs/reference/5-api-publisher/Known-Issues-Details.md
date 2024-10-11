@@ -2,11 +2,11 @@
 
 # Known Limitations for Ed-Fi ODS/API 5.1-5.3 (Details)
 
-Below are usage notes if using Ed-Fi ODS/API 5.1-5.3 only.  These issues have
-been resolved in the [Ed-Fi ODS / API
-5.3-cqe](https://techdocs.ed-fi.org/display/EFTD/Change+Query+Enhancements)
-patch and also resolved in upstream versions [Ed-Fi ODS / API
-6.1](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V61/overview).
+Below are usage notes if using Ed-Fi ODS/API 5.1-5.3 only. These issues have
+been resolved in the
+[Ed-Fi ODS / API 5.3-cqe](https://techdocs.ed-fi.org/display/EFTD/Change+Query+Enhancements)
+patch and also resolved in upstream versions
+[Ed-Fi ODS / API 6.1](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V61/overview).
 
 ## Deletes Cannot Be Published (without a custom build of the ODS API)
 
@@ -39,14 +39,14 @@ supply the new key values.
 
 The Ed-Fi ODS API supports this functionality for the following resources:
 
-* classPeriods
-* grades
-* gradebookEntries
-* locations
-* sections
-* sessions
-* studentSchoolAssociations
-* studentSectionAssociations
+- classPeriods
+- grades
+- gradebookEntries
+- locations
+- sections
+- sessions
+- studentSchoolAssociations
+- studentSectionAssociations
 
 If an API client updates a primary key value as described above, the Change
 Queries implementation of the Ed-Fi ODS will not reflect this. The "new"
@@ -76,7 +76,7 @@ profile-specific content types (e.g.
 `_application/vnd.ed-fi.{resource}.{profile}.readable+json_`). The reason for
 this behavior is that it is important for an API client to acknowledge that they
 are aware that they are reading or writing only _part_ of a resource rather than
-operating on the resource as a _whole_.  When extra JSON data is supplied in a
+operating on the resource as a _whole_. When extra JSON data is supplied in a
 POST request to the Ed-Fi ODS API, the request will be processed and the
 extraneous data will just be ignored. Without the explicit use of the content
 types, unexpected data loss could result.

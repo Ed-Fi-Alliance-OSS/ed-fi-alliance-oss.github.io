@@ -9,31 +9,31 @@ These use cases apply to the Early Warning community priority.
 <details>
 <summary>Resource Requirements</summary>
 
-| API Resources | Notes |
-| --- | --- |
-| /gradingPeriods |     |
-| /grades |     |
-| /calendars |     |
-| /calendarDates |     |
-| /courses |     |
-| /courseOfferings |     |
-| /localEducationAgencies |     |
-| /gradingPeriods |     |
-| /schools |     |
-| /sections |     |
-| /sessions |     |
-| /staffs |     |
-| /staffEducationOrganizationAssignmentAssociations |     |
-| /staffEducationOrganizationEmploymentAssociations |     |
-| /staffSchoolAssociations |     |
-| /staffSectionAssociations |     |
-| /students |     |
-| /studentEducationOrganizationAssociations |     |
-| /studentSchoolAssociations |     |
-| /studentSectionAssociations |     |
-| /bellSchedules |     |
-| /locations |     |
-| /classPeriods |     |
+| API Resources                                     | Notes |
+| ------------------------------------------------- | ----- |
+| /gradingPeriods                                   |       |
+| /grades                                           |       |
+| /calendars                                        |       |
+| /calendarDates                                    |       |
+| /courses                                          |       |
+| /courseOfferings                                  |       |
+| /localEducationAgencies                           |       |
+| /gradingPeriods                                   |       |
+| /schools                                          |       |
+| /sections                                         |       |
+| /sessions                                         |       |
+| /staffs                                           |       |
+| /staffEducationOrganizationAssignmentAssociations |       |
+| /staffEducationOrganizationEmploymentAssociations |       |
+| /staffSchoolAssociations                          |       |
+| /staffSectionAssociations                         |       |
+| /students                                         |       |
+| /studentEducationOrganizationAssociations         |       |
+| /studentSchoolAssociations                        |       |
+| /studentSectionAssociations                       |       |
+| /bellSchedules                                    |       |
+| /locations                                        |       |
+| /classPeriods                                     |       |
 
 </details>
 
@@ -44,34 +44,34 @@ These use cases apply to the Early Warning community priority.
 <details>
 <summary>Resource Requirements</summary>
 
-| API Resources | Notes |
-| --- | --- |
-| /disciplineActions |     |
-| /disciplineIncidents |     |
-| /studentDisciplineIncidentAssociations |     |
-| /grades |     |
-| /studentDisciplineIncidentBehaviorAssociations |     |
-| /calendars |     |
-| /calendarDates |     |
-| /courses |     |
-| /courseOfferings |     |
-| /localEducationAgencies |     |
-| /gradingPeriods |     |
-| /schools |     |
-| /sections |     |
-| /sessions |     |
-| /staffs |     |
-| /staffEducationOrganizationAssignmentAssociations |     |
-| /staffEducationOrganizationEmploymentAssociations |     |
-| /staffSchoolAssociations |     |
-| /staffSectionAssociations |     |
-| /students |     |
-| /studentEducationOrganizationAssociations |     |
-| /studentSchoolAssociations |     |
-| /studentSectionAssociations |     |
-| /bellSchedules |     |
-| /locations |     |
-| /classPeriods |     |
+| API Resources                                     | Notes |
+| ------------------------------------------------- | ----- |
+| /disciplineActions                                |       |
+| /disciplineIncidents                              |       |
+| /studentDisciplineIncidentAssociations            |       |
+| /grades                                           |       |
+| /studentDisciplineIncidentBehaviorAssociations    |       |
+| /calendars                                        |       |
+| /calendarDates                                    |       |
+| /courses                                          |       |
+| /courseOfferings                                  |       |
+| /localEducationAgencies                           |       |
+| /gradingPeriods                                   |       |
+| /schools                                          |       |
+| /sections                                         |       |
+| /sessions                                         |       |
+| /staffs                                           |       |
+| /staffEducationOrganizationAssignmentAssociations |       |
+| /staffEducationOrganizationEmploymentAssociations |       |
+| /staffSchoolAssociations                          |       |
+| /staffSectionAssociations                         |       |
+| /students                                         |       |
+| /studentEducationOrganizationAssociations         |       |
+| /studentSchoolAssociations                        |       |
+| /studentSectionAssociations                       |       |
+| /bellSchedules                                    |       |
+| /locations                                        |       |
+| /classPeriods                                     |       |
 
 </details>
 
@@ -82,31 +82,31 @@ These use cases apply to the Early Warning community priority.
 <details>
 <summary>Resource Requirements</summary>
 
-| API Resources | Notes |
-| --- | --- |
-| /cohorts |     |
-| /staffCohortAssociations |     |
-| /studentCohortAssociations |     |
-| /calendars |     |
-| /calendarDates |     |
-| /courses |     |
-| /courseOfferings |     |
-| /localEducationAgencies |     |
-| /gradingPeriods |     |
-| /schools |     |
-| /sections |     |
-| /sessions |     |
-| /staffs |     |
-| /staffEducationOrganizationAssignmentAssociations |     |
-| /staffEducationOrganizationEmploymentAssociations |     |
-| /staffSchoolAssociations |     |
-| /staffSectionAssociations |     |
-| /students |     |
-| /studentEducationOrganizationAssociations |     |
-| /studentSchoolAssociations |     |
-| /studentSectionAssociations |     |
-| /bellSchedules |     |
-| /locations |     |
-| /classPeriods |     |
+| API Resources                                     | Notes |
+| ------------------------------------------------- | ----- |
+| /cohorts                                          |       |
+| /staffCohortAssociations                          |       |
+| /studentCohortAssociations                        |       |
+| /calendars                                        |       |
+| /calendarDates                                    |       |
+| /courses                                          |       |
+| /courseOfferings                                  |       |
+| /localEducationAgencies                           |       |
+| /gradingPeriods                                   |       |
+| /schools                                          |       |
+| /sections                                         |       |
+| /sessions                                         |       |
+| /staffs                                           |       |
+| /staffEducationOrganizationAssignmentAssociations |       |
+| /staffEducationOrganizationEmploymentAssociations |       |
+| /staffSchoolAssociations                          |       |
+| /staffSectionAssociations                         |       |
+| /students                                         |       |
+| /studentEducationOrganizationAssociations         |       |
+| /studentSchoolAssociations                        |       |
+| /studentSectionAssociations                       |       |
+| /bellSchedules                                    |       |
+| /locations                                        |       |
+| /classPeriods                                     |       |
 
 </details>

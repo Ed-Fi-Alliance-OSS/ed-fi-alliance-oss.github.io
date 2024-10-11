@@ -10,8 +10,8 @@ requests.
 
 Use [CLA assistant (cla-assistant.io)](https://cla-assistant.io/), freely
 managed by SAS, to track acceptance of an Ed-Fi Contributor’s License Agreement
-(CLA). The agreement is [stored as a
-Gist](https://gist.github.com/EdFiBuildAgent/d68fa602d07505c3682e8258b7dc6fbc)
+(CLA). The agreement is
+[stored as a Gist](https://gist.github.com/EdFiBuildAgent/d68fa602d07505c3682e8258b7dc6fbc)
 in GitHub, owned by the shared EdFiBuildAgent account.
 
 The CLA assistant adds webhooks into repositories, detecting when a pull request
@@ -21,8 +21,7 @@ already, then it adds a badge to the pull request.
 
 ## Administration
 
-[Common
-Issues](https://github.com/cla-assistant/cla-assistant/blob/main/COMMON_ISSUES.md)
+[Common Issues](https://github.com/cla-assistant/cla-assistant/blob/main/COMMON_ISSUES.md)
 (cla-assistant document on github)
 
 Administrators can sign-in to the CLA assistant with a GitHub account.

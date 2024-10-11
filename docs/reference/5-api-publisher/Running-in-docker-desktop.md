@@ -73,9 +73,10 @@ specific configuration.
 
 :::info note:
 
-	If you want to run a different version than the release, you can modify
-  the version in this file using the name of the generated build. (Docker file
-  i.e. ENV VERSION="1.0.1-alpha.0.17") ![](img/docker/build-version.png)
+    If you want to run a different version than the release, you can modify
+
+the version in this file using the name of the generated build. (Docker file
+i.e. ENV VERSION="1.0.1-alpha.0.17") ![](img/docker/build-version.png)
 
 :::
 
@@ -89,8 +90,8 @@ If you like, you can change the default parameters or leave them as is.
 
 ### 2.c. Section ConfigurationStoreSettings and Plain Text Connections
 
-These two sections can be configured using [API Connection
-Management](API-Connection-Management.md)
+These two sections can be configured using
+[API Connection Management](API-Connection-Management.md)
 
 ## Step 3. Run Docker Compose
 
@@ -135,6 +136,7 @@ parameter... i.e.
 ```shell
 dotnet EdFiApiPublisher.dll --sourceUrl={{SourceUrl}}/WebApi/ --sourceKey={{SourceKey}} --sourceSecret={{SourceSecret}} --targetUrl=https://{{TargetUrl}}/WebApi/ --targetKey={{TargetKey}} --targetSecret={{TargetSecret}} {{Additional Parameters}}
 ```
+
 ![Docker Terminal Command](img/docker/docker-terminal-command.png)
 
 # Additional Configurations.
@@ -142,8 +144,9 @@ dotnet EdFiApiPublisher.dll --sourceUrl={{SourceUrl}}/WebApi/ --sourceKey={{Sour
 ## AWS Parameter Store.
 
 ### Configuration
-It is necessary to have the store parameters created on AWS [Configuration Aws
-Parameter Store](ConfigurationStore/Aws-Parameter-Store.md)
+
+It is necessary to have the store parameters created on AWS
+[Configuration Aws Parameter Store](ConfigurationStore/Aws-Parameter-Store.md)
 
 Export AWS credentials to consume AWS parameters store inside the container
 
@@ -173,7 +176,6 @@ should be updated
 
 Configure the AWS log storage parameters in the configuration file.
 [Configuration CloudWatch](CloudWatch-configuration.md)
-
 
 ## Execution.
 

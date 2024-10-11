@@ -12,26 +12,25 @@ the certified functionality.
 
 ## Format
 
-* * *
+---
 
 The information MUST be submitted by the data provider seeking certification
-using the [Required
-Form](https://edfi.atlassian.net/wiki/spaces/EDFICERT/pages/23695048/Requirements+-+Product+Availability+Information?preview=/23695048/23700313/Ed-Fi%20Certification%20-%20Availability%20Statement%20(3).docx).
+using the
+[Required Form](<https://edfi.atlassian.net/wiki/spaces/EDFICERT/pages/23695048/Requirements+-+Product+Availability+Information?preview=/23695048/23700313/Ed-Fi%20Certification%20-%20Availability%20Statement%20(3).docx>).
 Information from this form will be published as part of the product's
 certification record.
 
 ### Requirements
 
-* Geographic information MUST be (at a minimum) precise enough to allow any
-    local education agency operating within the United States to determine if it
-    is or is not within the specified geography.
-* Version information MUST be for versions generally available on the market
-    (i.e., version information MUST not include development or future versions).
-    Note that for Ed-Fi certification generally, only functionality actually
-    available in the market can be certified, not functionality under
-    development.
-* Non-specific information MUST NOT be included (e.g., “Please contact us for
-    availability information").
+- Geographic information MUST be (at a minimum) precise enough to allow any
+  local education agency operating within the United States to determine if it
+  is or is not within the specified geography.
+- Version information MUST be for versions generally available on the market
+  (i.e., version information MUST not include development or future versions).
+  Note that for Ed-Fi certification generally, only functionality actually
+  available in the market can be certified, not functionality under development.
+- Non-specific information MUST NOT be included (e.g., “Please contact us for
+  availability information").
 
 ## Rationale
 
@@ -51,12 +50,8 @@ Data providers likewise experienced customer misunderstandings based on
 certification records, and expressed a need to clarify where and when the
 certified functionality was available.
 
-:::warning
-The Ed-Fi Alliance recommends that agencies involve their data providers early
-in the process of project planning, and communicate with those providers about
-the goals of agency projects. Certification records should not be used as a
-proxy for communication with providers whose systems will be critical to project
-success.
-:::
-
-
+:::warning The Ed-Fi Alliance recommends that agencies involve their data
+providers early in the process of project planning, and communicate with those
+providers about the goals of agency projects. Certification records should not
+be used as a proxy for communication with providers whose systems will be
+critical to project success. :::

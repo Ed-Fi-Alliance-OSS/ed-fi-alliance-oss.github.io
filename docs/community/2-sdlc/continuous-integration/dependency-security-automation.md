@@ -16,9 +16,9 @@ that.
 
 :::tip
 
-Also see [Guidelines for Use of GitHub
-Actions](./guidelines-for-use-of-github-actions.md) for further notes on automating
-dependency scanning.
+Also see
+[Guidelines for Use of GitHub Actions](./guidelines-for-use-of-github-actions.md)
+for further notes on automating dependency scanning.
 
 :::
 
@@ -33,8 +33,8 @@ Actions should utilize commit hashes instead of version numbers, thus pinning to
 the reviewed code. These practices are enforced by scanning the Actions
 workflows themselves to ensure that they are only using pre-approved Actions.
 
-*Also see [Guidelines for Use of GitHub
-Actions](./guidelines-for-use-of-github-actions)*.
+_Also see
+[Guidelines for Use of GitHub Actions](./guidelines-for-use-of-github-actions)_.
 
 ## Open Source Projects
 
@@ -43,8 +43,9 @@ All open source projects should:
 1. Enable
    [Dependabot](https://docs.github.com/en/code-security/getting-started/dependabot-quickstart-guide),
    and
-2. Run the [Dependency Review
-   Action](https://github.com/actions/dependency-review-action) on pull requests
+2. Run the
+   [Dependency Review Action](https://github.com/actions/dependency-review-action)
+   on pull requests
 
 These are essentially the same underlying technologies. Dependabot runs a
 nightly scan on the `main`  branch of the code and reports on any
@@ -57,6 +58,5 @@ Closed source projects should also enable Dependabot. However, they cannot used
 use the Dependency Review Action, per the GitHub licenses for those tools.
 
 MetaEd should utilize the `npm audit`  command on pull requests. As described in
-[Improve Your TypeScript with Static
-Analysis](https://nikgrozev.com/2020/03/22/improve-your-typescript-with-static-analysis/#dep-audit),
+[Improve Your TypeScript with Static Analysis](https://nikgrozev.com/2020/03/22/improve-your-typescript-with-static-analysis/#dep-audit),
 the `audit-ci`  package may be useful for improving the message experience.

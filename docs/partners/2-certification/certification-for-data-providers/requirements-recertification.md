@@ -11,5 +11,5 @@ from a third party and substituted in the market for a previously certified
 product would not be eligible for recertification.
 
 Recertification requirements are described under the applicable
-certification *–* consult [Available
-Certifications](../available-certifications/readme.md).
+certification *–*
+consult [Available Certifications](../available-certifications/readme.md).

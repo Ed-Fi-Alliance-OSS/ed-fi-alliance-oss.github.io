@@ -11,47 +11,47 @@ usually a compilation of marks and other scores.
 
 ## Prerequisites
 
-* Student
-* Student Enrollment
-* Section
-* StudentSectionAssociation
-* GradingPeriod
+- Student
+- Student Enrollment
+- Section
+- StudentSectionAssociation
+- GradingPeriod
 
 ## Scenarios
 
 1. Create a Grade for the First Six Weeks Grading Period for an elementary
-    school student.
+   school student.
 2. Create a Grade for the First Six Weeks Grading Period for a high school
-    student.
+   student.
 3. Update the Numeric Grade Earned and/or Letter Grade Earned for Grading
-    Period.
+   Period.
 4. Update the Numeric Grade Earned and/or Letter Grade Earned for Grading
-    Period.
+   Period.
 5. Delete the grade for the elementary school student for the First Six Weeks
-    Grading Period.
+   Grading Period.
 
 ### Additional Requirements for Grades Earned
 
-* If both numeric and letter grades are recorded by the SIS, both are REQUIRED
-    for certification.
-* If only the numeric grade or letter grade is recorded by the SIS, then only
-    one SHALL be provided for certification.
+- If both numeric and letter grades are recorded by the SIS, both are REQUIRED
+  for certification.
+- If only the numeric grade or letter grade is recorded by the SIS, then only
+  one SHALL be provided for certification.
 
-| Resource | Property Name | Is Collection | Data Type | Required / Optional | Scenario 1  <br/> POST | Scenario 2  <br/> POST | Scenario 3  <br/> PUT | Scenario 4  <br/> PUT |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Grades | gradeTypeDescriptor | FALSE | gradeTypeDescriptor | REQUIRED | Grading Period | Grading Period | Grading Period | Grading Period |
-| Grades | letterGradeEarned | FALSE | string | REQUIRED | B   | A   | A   | B   |
-| Grades | numericGradeEarned | FALSE | string | REQUIRED | 80  | 94  | 91  | 89  |
-| Grades | gradingPeriodReference | FALSE | gradingPeriodReference | REQUIRED |     |     |     |     |
-| gradingPeriodReference | schoolId | FALSE | integer | REQUIRED | 255901107 | 255901001 | 255901107 | 255901001 |
-| gradingPeriodReference | gradingPeriodDescriptor | FALSE | gradingPeriodDescriptor | REQUIRED | First Six Weeks | First Six Weeks | First Six Weeks | First Six Weeks |
-| gradingPeriodReference | periodSequence | FALSE | integer | REQUIRED | 1   | 1   | 1   | 1   |
-| gradingPeriodReference | schoolYear | FALSE | integer | REQUIRED | ```<br/>[Current School Year]<br/>``` | ```<br/>[Current School Year]<br/>``` | ```<br/>[Current School Year]<br/>``` | ```<br/>[Current School Year]<br/>``` |
-| Grades | StudentSectionAssociationReference | FALSE | studentSectionAssociationReference | REQUIRED |     |     |     |     |
-| studentSectionAssociationReference | beginDate | FALSE | date | REQUIRED | 8/23/<br/>```<br/>[Current School Year]<br/>``` | 8/23/<br/>```<br/>[Current School Year]<br/>``` | 8/23/<br/>```<br/>[Current School Year]<br/>``` | 8/23/<br/>```<br/>[Current School Year]<br/>``` |
-| studentSectionAssociationReference | localCourseCode | FALSE | string | REQUIRED | \["ELA-01"  if possible<br/><br/>\| system value\] | \["ALG-2"  if possible<br/><br/>\| system value\] | \["ELA-01"  if possible<br/><br/>\| system value\] | \["ALG-2"  if possible<br/><br/>\| system value\] |
-| studentSectionAssociationReference | schoolId | FALSE | integer | REQUIRED | 255901107 | 255901001 | 255901107 | 255901001 |
-| studentSectionAssociationReference | schoolYear | FALSE | integer | REQUIRED | ```<br/>[Current School Year]<br/>``` | ```<br/>[Current School Year]<br/>``` | ```<br/>[Current School Year]<br/>``` | ```<br/>[Current School Year]<br/>``` |
-| studentSectionAssociationReference | studentUniqueId | FALSE | string | REQUIRED | 111111 | 222222 | 111111 | 222222 |
-| studentSectionAssociationReference | sessionName | FALSE | string | REQUIRED | 2016-2017 Fall Semester | 2016-2017 Fall Semester | 2016-2017 Fall Semester | 2016-2017 Fall Semester |
-| studentSectionAssociationReference | sectionIdentifier | FALSE | string | REQUIRED | \["ELA012017RM555"  if possible<br/><br/>\| system value\] | ALG12017RM901 | \["ELA012017RM555"  if possible<br/><br/>\| system value\] | ALG12017RM901 |
+| Resource                           | Property Name                      | Is Collection | Data Type                          | Required / Optional | Scenario 1 <br/> POST                                     | Scenario 2 <br/> POST                            | Scenario 3 <br/> PUT                                      | Scenario 4 <br/> PUT                             |
+| ---------------------------------- | ---------------------------------- | ------------- | ---------------------------------- | ------------------- | --------------------------------------------------------- | ------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------------ |
+| Grades                             | gradeTypeDescriptor                | FALSE         | gradeTypeDescriptor                | REQUIRED            | Grading Period                                            | Grading Period                                   | Grading Period                                            | Grading Period                                   |
+| Grades                             | letterGradeEarned                  | FALSE         | string                             | REQUIRED            | B                                                         | A                                                | A                                                         | B                                                |
+| Grades                             | numericGradeEarned                 | FALSE         | string                             | REQUIRED            | 80                                                        | 94                                               | 91                                                        | 89                                               |
+| Grades                             | gradingPeriodReference             | FALSE         | gradingPeriodReference             | REQUIRED            |                                                           |                                                  |                                                           |                                                  |
+| gradingPeriodReference             | schoolId                           | FALSE         | integer                            | REQUIRED            | 255901107                                                 | 255901001                                        | 255901107                                                 | 255901001                                        |
+| gradingPeriodReference             | gradingPeriodDescriptor            | FALSE         | gradingPeriodDescriptor            | REQUIRED            | First Six Weeks                                           | First Six Weeks                                  | First Six Weeks                                           | First Six Weeks                                  |
+| gradingPeriodReference             | periodSequence                     | FALSE         | integer                            | REQUIRED            | 1                                                         | 1                                                | 1                                                         | 1                                                |
+| gradingPeriodReference             | schoolYear                         | FALSE         | integer                            | REQUIRED            | `<br/>[Current School Year]<br/>`                         | `<br/>[Current School Year]<br/>`                | `<br/>[Current School Year]<br/>`                         | `<br/>[Current School Year]<br/>`                |
+| Grades                             | StudentSectionAssociationReference | FALSE         | studentSectionAssociationReference | REQUIRED            |                                                           |                                                  |                                                           |                                                  |
+| studentSectionAssociationReference | beginDate                          | FALSE         | date                               | REQUIRED            | 8/23/<br/>`<br/>[Current School Year]<br/>`               | 8/23/<br/>`<br/>[Current School Year]<br/>`      | 8/23/<br/>`<br/>[Current School Year]<br/>`               | 8/23/<br/>`<br/>[Current School Year]<br/>`      |
+| studentSectionAssociationReference | localCourseCode                    | FALSE         | string                             | REQUIRED            | \["ELA-01" if possible<br/><br/>\| system value\]         | \["ALG-2" if possible<br/><br/>\| system value\] | \["ELA-01" if possible<br/><br/>\| system value\]         | \["ALG-2" if possible<br/><br/>\| system value\] |
+| studentSectionAssociationReference | schoolId                           | FALSE         | integer                            | REQUIRED            | 255901107                                                 | 255901001                                        | 255901107                                                 | 255901001                                        |
+| studentSectionAssociationReference | schoolYear                         | FALSE         | integer                            | REQUIRED            | `<br/>[Current School Year]<br/>`                         | `<br/>[Current School Year]<br/>`                | `<br/>[Current School Year]<br/>`                         | `<br/>[Current School Year]<br/>`                |
+| studentSectionAssociationReference | studentUniqueId                    | FALSE         | string                             | REQUIRED            | 111111                                                    | 222222                                           | 111111                                                    | 222222                                           |
+| studentSectionAssociationReference | sessionName                        | FALSE         | string                             | REQUIRED            | 2016-2017 Fall Semester                                   | 2016-2017 Fall Semester                          | 2016-2017 Fall Semester                                   | 2016-2017 Fall Semester                          |
+| studentSectionAssociationReference | sectionIdentifier                  | FALSE         | string                             | REQUIRED            | \["ELA012017RM555" if possible<br/><br/>\| system value\] | ALG12017RM901                                    | \["ELA012017RM555" if possible<br/><br/>\| system value\] | ALG12017RM901                                    |

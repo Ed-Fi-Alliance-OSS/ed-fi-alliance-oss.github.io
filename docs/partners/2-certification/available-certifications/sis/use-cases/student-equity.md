@@ -11,29 +11,29 @@ These use cases apply to the Student Equity community priority
 
 No additional requirements beyond common resources
 
-| API Resource | Notes |
-| --- | --- |
-| /calendars |     |
-| /calendarDates |     |
-| /courses |     |
-| /courseOfferings |     |
-| /localEducationAgencies |     |
-| /gradingPeriods |     |
-| /schools |     |
-| /sections |     |
-| /sessions |     |
-| /staffs |     |
-| /staffEducationOrganizationAssignmentAssociations |     |
-| /staffEducationOrganizationEmploymentAssociations |     |
-| /staffSchoolAssociations |     |
-| /staffSectionAssociations |     |
-| /students |     |
-| /studentEducationOrganizationAssociations |     |
-| /studentSchoolAssociations |     |
-| /studentSectionAssociations |     |
-| /bellSchedules |     |
-| /locations |     |
-| /classPeriods |     |
+| API Resource                                      | Notes |
+| ------------------------------------------------- | ----- |
+| /calendars                                        |       |
+| /calendarDates                                    |       |
+| /courses                                          |       |
+| /courseOfferings                                  |       |
+| /localEducationAgencies                           |       |
+| /gradingPeriods                                   |       |
+| /schools                                          |       |
+| /sections                                         |       |
+| /sessions                                         |       |
+| /staffs                                           |       |
+| /staffEducationOrganizationAssignmentAssociations |       |
+| /staffEducationOrganizationEmploymentAssociations |       |
+| /staffSchoolAssociations                          |       |
+| /staffSectionAssociations                         |       |
+| /students                                         |       |
+| /studentEducationOrganizationAssociations         |       |
+| /studentSchoolAssociations                        |       |
+| /studentSectionAssociations                       |       |
+| /bellSchedules                                    |       |
+| /locations                                        |       |
+| /classPeriods                                     |       |
 
 </details>
 
@@ -44,30 +44,30 @@ No additional requirements beyond common resources
 <details>
 <summary>Resource Requirements</summary>
 
-| API Resource | Notes |
-| --- | --- |
-| /grades |     |
-| /calendars |     |
-| /calendarDates |     |
-| /courses |     |
-| /courseOfferings |     |
-| /localEducationAgencies |     |
-| /gradingPeriods |     |
-| /schools |     |
-| /sections |     |
-| /sessions |     |
-| /staffs |     |
-| /staffEducationOrganizationAssignmentAssociations |     |
-| /staffEducationOrganizationEmploymentAssociations |     |
-| /staffSchoolAssociations |     |
-| /staffSectionAssociations |     |
-| /students |     |
-| /studentEducationOrganizationAssociations |     |
-| /studentSchoolAssociations |     |
-| /studentSectionAssociations |     |
-| /bellSchedules |     |
-| /locations |     |
-| /classPeriods |     |
+| API Resource                                      | Notes |
+| ------------------------------------------------- | ----- |
+| /grades                                           |       |
+| /calendars                                        |       |
+| /calendarDates                                    |       |
+| /courses                                          |       |
+| /courseOfferings                                  |       |
+| /localEducationAgencies                           |       |
+| /gradingPeriods                                   |       |
+| /schools                                          |       |
+| /sections                                         |       |
+| /sessions                                         |       |
+| /staffs                                           |       |
+| /staffEducationOrganizationAssignmentAssociations |       |
+| /staffEducationOrganizationEmploymentAssociations |       |
+| /staffSchoolAssociations                          |       |
+| /staffSectionAssociations                         |       |
+| /students                                         |       |
+| /studentEducationOrganizationAssociations         |       |
+| /studentSchoolAssociations                        |       |
+| /studentSectionAssociations                       |       |
+| /bellSchedules                                    |       |
+| /locations                                        |       |
+| /classPeriods                                     |       |
 
 </details>
 
@@ -78,39 +78,39 @@ No additional requirements beyond common resources
 <details>
 <summary>Resource Requirements</summary>
 
-| API Resource | Notes |
-| --- | --- |
-| /programs |     |
-| /studentProgramAssociations |     |
-| /studentCTEProgramAssociations |     |
-| /studentHomelessProgramAssociations |     |
-| /studentLanguageInstructionProgramAssociations |     |
-| /studentMigrantProgramAssociations |     |
-| /studentNeglectedOrDelinquentProgramAssociations |     |
-| /studentSchoolFoodServiceProgramAssociations |     |
-| /studentSpecialEducationProgramAssociations |     |
-| /studentTitleIPartAProgramAssociations |     |
-| /calendars |     |
-| /calendarDates |     |
-| /courses |     |
-| /courseOfferings |     |
-| /localEducationAgencies |     |
-| /gradingPeriods |     |
-| /schools |     |
-| /sections |     |
-| /sessions |     |
-| /staffs |     |
-| /staffEducationOrganizationAssignmentAssociations |     |
-| /staffEducationOrganizationEmploymentAssociations |     |
-| /staffSchoolAssociations |     |
-| /staffSectionAssociations |     |
-| /students |     |
-| /studentEducationOrganizationAssociations |     |
-| /studentSchoolAssociations |     |
-| /studentSectionAssociations |     |
-| /bellSchedules |     |
-| /locations |     |
-| /classPeriods |     |
+| API Resource                                      | Notes |
+| ------------------------------------------------- | ----- |
+| /programs                                         |       |
+| /studentProgramAssociations                       |       |
+| /studentCTEProgramAssociations                    |       |
+| /studentHomelessProgramAssociations               |       |
+| /studentLanguageInstructionProgramAssociations    |       |
+| /studentMigrantProgramAssociations                |       |
+| /studentNeglectedOrDelinquentProgramAssociations  |       |
+| /studentSchoolFoodServiceProgramAssociations      |       |
+| /studentSpecialEducationProgramAssociations       |       |
+| /studentTitleIPartAProgramAssociations            |       |
+| /calendars                                        |       |
+| /calendarDates                                    |       |
+| /courses                                          |       |
+| /courseOfferings                                  |       |
+| /localEducationAgencies                           |       |
+| /gradingPeriods                                   |       |
+| /schools                                          |       |
+| /sections                                         |       |
+| /sessions                                         |       |
+| /staffs                                           |       |
+| /staffEducationOrganizationAssignmentAssociations |       |
+| /staffEducationOrganizationEmploymentAssociations |       |
+| /staffSchoolAssociations                          |       |
+| /staffSectionAssociations                         |       |
+| /students                                         |       |
+| /studentEducationOrganizationAssociations         |       |
+| /studentSchoolAssociations                        |       |
+| /studentSectionAssociations                       |       |
+| /bellSchedules                                    |       |
+| /locations                                        |       |
+| /classPeriods                                     |       |
 
 </details>
 
@@ -121,32 +121,32 @@ No additional requirements beyond common resources
 <details>
 <summary>Resource Requirements</summary>
 
-| API Resource | Notes |
-| --- | --- |
-| /studentAcademicRecords |     |
-| /courseTranscripts |     |
-| /grades |     |
-| /calendars |     |
-| /calendarDates |     |
-| /courses |     |
-| /courseOfferings |     |
-| /localEducationAgencies |     |
-| /gradingPeriods |     |
-| /schools |     |
-| /sections |     |
-| /sessions |     |
-| /staffs |     |
-| /staffEducationOrganizationAssignmentAssociations |     |
-| /staffEducationOrganizationEmploymentAssociations |     |
-| /staffSchoolAssociations |     |
-| /staffSectionAssociations |     |
-| /students |     |
-| /studentEducationOrganizationAssociations |     |
-| /studentSchoolAssociations |     |
-| /studentSectionAssociations |     |
-| /bellSchedules |     |
-| /locations |     |
-| /classPeriods |     |
+| API Resource                                      | Notes |
+| ------------------------------------------------- | ----- |
+| /studentAcademicRecords                           |       |
+| /courseTranscripts                                |       |
+| /grades                                           |       |
+| /calendars                                        |       |
+| /calendarDates                                    |       |
+| /courses                                          |       |
+| /courseOfferings                                  |       |
+| /localEducationAgencies                           |       |
+| /gradingPeriods                                   |       |
+| /schools                                          |       |
+| /sections                                         |       |
+| /sessions                                         |       |
+| /staffs                                           |       |
+| /staffEducationOrganizationAssignmentAssociations |       |
+| /staffEducationOrganizationEmploymentAssociations |       |
+| /staffSchoolAssociations                          |       |
+| /staffSectionAssociations                         |       |
+| /students                                         |       |
+| /studentEducationOrganizationAssociations         |       |
+| /studentSchoolAssociations                        |       |
+| /studentSectionAssociations                       |       |
+| /bellSchedules                                    |       |
+| /locations                                        |       |
+| /classPeriods                                     |       |
 
 </details>
 
@@ -157,32 +157,32 @@ No additional requirements beyond common resources
 <details>
 <summary>Resource Requirements</summary>
 
-| API Resource | Notes |
-| --- | --- |
-| /disciplineActions |     |
-| /disciplineIncidents |     |
-| /studentDisciplineIncidentAssociations |     |
-| /calendars |     |
-| /calendarDates |     |
-| /courses |     |
-| /courseOfferings |     |
-| /localEducationAgencies |     |
-| /gradingPeriods |     |
-| /schools |     |
-| /sections |     |
-| /sessions |     |
-| /staffs |     |
-| /staffEducationOrganizationAssignmentAssociations |     |
-| /staffEducationOrganizationEmploymentAssociations |     |
-| /staffSchoolAssociations |     |
-| /staffSectionAssociations |     |
-| /students |     |
-| /studentEducationOrganizationAssociations |     |
-| /studentSchoolAssociations |     |
-| /studentSectionAssociations |     |
-| /bellSchedules |     |
-| /locations |     |
-| /classPeriods |     |
+| API Resource                                      | Notes |
+| ------------------------------------------------- | ----- |
+| /disciplineActions                                |       |
+| /disciplineIncidents                              |       |
+| /studentDisciplineIncidentAssociations            |       |
+| /calendars                                        |       |
+| /calendarDates                                    |       |
+| /courses                                          |       |
+| /courseOfferings                                  |       |
+| /localEducationAgencies                           |       |
+| /gradingPeriods                                   |       |
+| /schools                                          |       |
+| /sections                                         |       |
+| /sessions                                         |       |
+| /staffs                                           |       |
+| /staffEducationOrganizationAssignmentAssociations |       |
+| /staffEducationOrganizationEmploymentAssociations |       |
+| /staffSchoolAssociations                          |       |
+| /staffSectionAssociations                         |       |
+| /students                                         |       |
+| /studentEducationOrganizationAssociations         |       |
+| /studentSchoolAssociations                        |       |
+| /studentSectionAssociations                       |       |
+| /bellSchedules                                    |       |
+| /locations                                        |       |
+| /classPeriods                                     |       |
 
 </details>
 
@@ -193,38 +193,38 @@ No additional requirements beyond common resources
 <details>
 <summary>Resource Requirements</summary>
 
-| API Resource | Notes |
-| --- | --- |
-| /programs |     |
-| /studentProgramAssociations |     |
-| /studentCTEProgramAssociations |     |
-| /studentHomelessProgramAssociations |     |
-| /studentLanguageInstructionProgramAssociations |     |
-| /studentMigrantProgramAssociations |     |
-| /studentNeglectedOrDelinquentProgramAssociations |     |
-| /studentSchoolFoodServiceProgramAssociations |     |
-| /studentSpecialEducationProgramAssociations |     |
-| /studentTitleIPartAProgramAssociations |     |
-| /calendars |     |
-| /calendarDates |     |
-| /courses |     |
-| /courseOfferings |     |
-| /localEducationAgencies |     |
-| /gradingPeriods |     |
-| /schools |     |
-| /sections |     |
-| /sessions |     |
-| /staffs |     |
-| /staffEducationOrganizationAssignmentAssociations |     |
-| /staffEducationOrganizationEmploymentAssociations |     |
-| /staffSchoolAssociations |     |
-| /staffSectionAssociations |     |
-| /students |     |
-| /studentEducationOrganizationAssociations |     |
-| /studentSchoolAssociations |     |
-| /studentSectionAssociations |     |
-| /bellSchedules |     |
-| /locations |     |
-| /classPeriods |     |
+| API Resource                                      | Notes |
+| ------------------------------------------------- | ----- |
+| /programs                                         |       |
+| /studentProgramAssociations                       |       |
+| /studentCTEProgramAssociations                    |       |
+| /studentHomelessProgramAssociations               |       |
+| /studentLanguageInstructionProgramAssociations    |       |
+| /studentMigrantProgramAssociations                |       |
+| /studentNeglectedOrDelinquentProgramAssociations  |       |
+| /studentSchoolFoodServiceProgramAssociations      |       |
+| /studentSpecialEducationProgramAssociations       |       |
+| /studentTitleIPartAProgramAssociations            |       |
+| /calendars                                        |       |
+| /calendarDates                                    |       |
+| /courses                                          |       |
+| /courseOfferings                                  |       |
+| /localEducationAgencies                           |       |
+| /gradingPeriods                                   |       |
+| /schools                                          |       |
+| /sections                                         |       |
+| /sessions                                         |       |
+| /staffs                                           |       |
+| /staffEducationOrganizationAssignmentAssociations |       |
+| /staffEducationOrganizationEmploymentAssociations |       |
+| /staffSchoolAssociations                          |       |
+| /staffSectionAssociations                         |       |
+| /students                                         |       |
+| /studentEducationOrganizationAssociations         |       |
+| /studentSchoolAssociations                        |       |
+| /studentSectionAssociations                       |       |
+| /bellSchedules                                    |       |
+| /locations                                        |       |
+| /classPeriods                                     |       |
 
 </details>

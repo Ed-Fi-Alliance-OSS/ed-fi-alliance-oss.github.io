@@ -9,34 +9,34 @@ special education programs.
 
 ### Prerequisites
 
-* Ed-Org (pre-loaded)
-* Program (pre-loaded)
-* Student
-* Student Enrollment
+- Ed-Org (pre-loaded)
+- Program (pre-loaded)
+- Student
+- Student Enrollment
 
 ### Scenarios
 
 1. Create a Student Special Education Program Association for an elementary
-    school student.  
+   school student.
 2. Create a Student Special Education Program Association for a high school
-    student.
+   student.
 3. Update the "ideaEligibility" to FALSE for Student Special Education Program
-    Association 1.
+   Association 1.
 4. Update the "ideaEligibility" to FALSE for Student Special Education Program
-    Association 2.
+   Association 2.
 
 (Note: the Program's educationOrganizationId is the Local Education Agency ID)
 
-| Resource | Property Name | Is Collection | Data Type | Required / Optional | Scenario 1  <br/>POST | Scenario 2  <br/>POST | Scenario 3  <br/>PUT | Scenario 4  <br/>PUT |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| StudentSpecialEducationProgramAssociations | beginDate | FALSE | date | REQUIRED | 8/23/<br/>```<br/>[Current School Year]<br/>``` | 8/23/<br/>```<br/>[Current School Year]<br/>``` | 8/23/<br/>```<br/>[Current School Year]<br/>``` | 8/23/<br/>```<br/>[Current School Year]<br/>``` |
-| StudentSpecialEducationProgramAssociations | educationOrganizationReference | FALSE | educationOrganizationReference | REQUIRED |     |     |     |     |
-| StudentSpecialEducationProgramAssociations | educationOrganizationId | FALSE | integer | REQUIRED | 255901 | 255901 | 255901 | 255901 |
-| StudentSpecialEducationProgramAssociations | programReference | FALSE | programReference | REQUIRED |     |     |     |     |
-| programReference | programName | FALSE | string | REQUIRED | Special Education | Special Education | Special Education | Special Education |
-| programReference | programTypeDescriptor | FALSE | programTypeDescriptor | REQUIRED | Special Education | Special Education | Special Education | Special Education |
-| programReference | educationOrganizationId | FALSE | integer | REQUIRED | 255901 | 255901 | 255901 | 255901 |
-| StudentSpecialEducationProgramAssociations | specialEducationSettingDescriptor | FALSE | specialEducationSettingDescriptor | REQUIRED | Inside regular class 80% or more of the day | Inside regular class less than 40% of the day | Inside regular class 80% or more of the day | Inside regular class less than 40% of the day |
-| StudentSpecialEducationProgramAssociations | studentReference | FALSE | studentReference | REQUIRED |     |     |     |     |
-| studentReference | studentUniqueId | FALSE | string | REQUIRED | 111111 | 222222 | 111111 | 222222 |
-| StudentSpecialEducationProgramAssociations | ideaEligibility | FALSE | boolean | REQUIRED | TRUE | TRUE | **FALSE** | **FALSE** |
+| Resource                                   | Property Name                     | Is Collection | Data Type                         | Required / Optional | Scenario 1 <br/>POST                        | Scenario 2 <br/>POST                          | Scenario 3 <br/>PUT                         | Scenario 4 <br/>PUT                           |
+| ------------------------------------------ | --------------------------------- | ------------- | --------------------------------- | ------------------- | ------------------------------------------- | --------------------------------------------- | ------------------------------------------- | --------------------------------------------- |
+| StudentSpecialEducationProgramAssociations | beginDate                         | FALSE         | date                              | REQUIRED            | 8/23/<br/>`<br/>[Current School Year]<br/>` | 8/23/<br/>`<br/>[Current School Year]<br/>`   | 8/23/<br/>`<br/>[Current School Year]<br/>` | 8/23/<br/>`<br/>[Current School Year]<br/>`   |
+| StudentSpecialEducationProgramAssociations | educationOrganizationReference    | FALSE         | educationOrganizationReference    | REQUIRED            |                                             |                                               |                                             |                                               |
+| StudentSpecialEducationProgramAssociations | educationOrganizationId           | FALSE         | integer                           | REQUIRED            | 255901                                      | 255901                                        | 255901                                      | 255901                                        |
+| StudentSpecialEducationProgramAssociations | programReference                  | FALSE         | programReference                  | REQUIRED            |                                             |                                               |                                             |                                               |
+| programReference                           | programName                       | FALSE         | string                            | REQUIRED            | Special Education                           | Special Education                             | Special Education                           | Special Education                             |
+| programReference                           | programTypeDescriptor             | FALSE         | programTypeDescriptor             | REQUIRED            | Special Education                           | Special Education                             | Special Education                           | Special Education                             |
+| programReference                           | educationOrganizationId           | FALSE         | integer                           | REQUIRED            | 255901                                      | 255901                                        | 255901                                      | 255901                                        |
+| StudentSpecialEducationProgramAssociations | specialEducationSettingDescriptor | FALSE         | specialEducationSettingDescriptor | REQUIRED            | Inside regular class 80% or more of the day | Inside regular class less than 40% of the day | Inside regular class 80% or more of the day | Inside regular class less than 40% of the day |
+| StudentSpecialEducationProgramAssociations | studentReference                  | FALSE         | studentReference                  | REQUIRED            |                                             |                                               |                                             |                                               |
+| studentReference                           | studentUniqueId                   | FALSE         | string                            | REQUIRED            | 111111                                      | 222222                                        | 111111                                      | 222222                                        |
+| StudentSpecialEducationProgramAssociations | ideaEligibility                   | FALSE         | boolean                           | REQUIRED            | TRUE                                        | TRUE                                          | **FALSE**                                   | **FALSE**                                     |

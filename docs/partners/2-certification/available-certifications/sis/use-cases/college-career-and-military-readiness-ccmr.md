@@ -9,32 +9,32 @@ These use cases apply to the CCMR community priority.
 <details>
 <summary>Resource Requirements</summary>
 
-| API Resources | Notes |
-| --- | --- |
-| /graduationPlans |     |
-| /StudentAcademicRecords |     |
-| /courseTranscripts |     |
-| /calendars |     |
-| /calendarDates |     |
-| /courses |     |
-| /courseOfferings |     |
-| /localEducationAgencies |     |
-| /gradingPeriods |     |
-| /schools |     |
-| /sections |     |
-| /sessions |     |
-| /staffs |     |
-| /staffEducationOrganizationAssignmentAssociations |     |
-| /staffEducationOrganizationEmploymentAssociations |     |
-| /staffSchoolAssociations |     |
-| /staffSectionAssociations |     |
-| /students |     |
-| /studentEducationOrganizationAssociations |     |
-| /studentSchoolAssociations |     |
-| /studentSectionAssociations |     |
-| /bellSchedules |     |
-| /locations |     |
-| /classPeriods |     |
+| API Resources                                     | Notes |
+| ------------------------------------------------- | ----- |
+| /graduationPlans                                  |       |
+| /StudentAcademicRecords                           |       |
+| /courseTranscripts                                |       |
+| /calendars                                        |       |
+| /calendarDates                                    |       |
+| /courses                                          |       |
+| /courseOfferings                                  |       |
+| /localEducationAgencies                           |       |
+| /gradingPeriods                                   |       |
+| /schools                                          |       |
+| /sections                                         |       |
+| /sessions                                         |       |
+| /staffs                                           |       |
+| /staffEducationOrganizationAssignmentAssociations |       |
+| /staffEducationOrganizationEmploymentAssociations |       |
+| /staffSchoolAssociations                          |       |
+| /staffSectionAssociations                         |       |
+| /students                                         |       |
+| /studentEducationOrganizationAssociations         |       |
+| /studentSchoolAssociations                        |       |
+| /studentSectionAssociations                       |       |
+| /bellSchedules                                    |       |
+| /locations                                        |       |
+| /classPeriods                                     |       |
 
 </details>
 
@@ -45,32 +45,32 @@ These use cases apply to the CCMR community priority.
 <details>
 <summary>Resource Requirements</summary>
 
-| API Resources | Notes |
-| --- | --- |
-| /graduationPlans |     |
-| /StudentAcademicRecords |     |
-| /courseTranscripts |     |
-| /calendars |     |
-| /calendarDates |     |
-| /courses |     |
-| /courseOfferings |     |
-| /localEducationAgencies |     |
-| /gradingPeriods |     |
-| /schools |     |
-| /sections |     |
-| /sessions |     |
-| /staffs |     |
-| /staffEducationOrganizationAssignmentAssociations |     |
-| /staffEducationOrganizationEmploymentAssociations |     |
-| /staffSchoolAssociations |     |
-| /staffSectionAssociations |     |
-| /students |     |
-| /studentEducationOrganizationAssociations |     |
-| /studentSchoolAssociations |     |
-| /studentSectionAssociations |     |
-| /bellSchedules |     |
-| /locations |     |
-| /classPeriods |     |
+| API Resources                                     | Notes |
+| ------------------------------------------------- | ----- |
+| /graduationPlans                                  |       |
+| /StudentAcademicRecords                           |       |
+| /courseTranscripts                                |       |
+| /calendars                                        |       |
+| /calendarDates                                    |       |
+| /courses                                          |       |
+| /courseOfferings                                  |       |
+| /localEducationAgencies                           |       |
+| /gradingPeriods                                   |       |
+| /schools                                          |       |
+| /sections                                         |       |
+| /sessions                                         |       |
+| /staffs                                           |       |
+| /staffEducationOrganizationAssignmentAssociations |       |
+| /staffEducationOrganizationEmploymentAssociations |       |
+| /staffSchoolAssociations                          |       |
+| /staffSectionAssociations                         |       |
+| /students                                         |       |
+| /studentEducationOrganizationAssociations         |       |
+| /studentSchoolAssociations                        |       |
+| /studentSectionAssociations                       |       |
+| /bellSchedules                                    |       |
+| /locations                                        |       |
+| /classPeriods                                     |       |
 
 </details>
 
@@ -81,31 +81,31 @@ These use cases apply to the CCMR community priority.
 <details>
 <summary>Resource Requirements</summary>
 
-| API Resources | Notes |
-| --- | --- |
-| /cohorts |     |
-| /staffCohortAssociations |     |
-| /studentCohortAssociations |     |
-| /calendars |     |
-| /calendarDates |     |
-| /courses |     |
-| /courseOfferings |     |
-| /localEducationAgencies |     |
-| /gradingPeriods |     |
-| /schools |     |
-| /sections |     |
-| /sessions |     |
-| /staffs |     |
-| /staffEducationOrganizationAssignmentAssociations |     |
-| /staffEducationOrganizationEmploymentAssociations |     |
-| /staffSchoolAssociations |     |
-| /staffSectionAssociations |     |
-| /students |     |
-| /studentEducationOrganizationAssociations |     |
-| /studentSchoolAssociations |     |
-| /studentSectionAssociations |     |
-| /bellSchedules |     |
-| /locations |     |
-| /classPeriods |     |
+| API Resources                                     | Notes |
+| ------------------------------------------------- | ----- |
+| /cohorts                                          |       |
+| /staffCohortAssociations                          |       |
+| /studentCohortAssociations                        |       |
+| /calendars                                        |       |
+| /calendarDates                                    |       |
+| /courses                                          |       |
+| /courseOfferings                                  |       |
+| /localEducationAgencies                           |       |
+| /gradingPeriods                                   |       |
+| /schools                                          |       |
+| /sections                                         |       |
+| /sessions                                         |       |
+| /staffs                                           |       |
+| /staffEducationOrganizationAssignmentAssociations |       |
+| /staffEducationOrganizationEmploymentAssociations |       |
+| /staffSchoolAssociations                          |       |
+| /staffSectionAssociations                         |       |
+| /students                                         |       |
+| /studentEducationOrganizationAssociations         |       |
+| /studentSchoolAssociations                        |       |
+| /studentSectionAssociations                       |       |
+| /bellSchedules                                    |       |
+| /locations                                        |       |
+| /classPeriods                                     |       |
 
 </details>

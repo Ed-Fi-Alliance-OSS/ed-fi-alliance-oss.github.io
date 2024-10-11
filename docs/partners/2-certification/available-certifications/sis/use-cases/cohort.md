@@ -9,32 +9,32 @@ These use cases support the Cohort community priority.
 <details>
 <summary>Resource Requirements</summary>
 
-| API Resources | Notes |
-| --- | --- |
-| /cohorts |     |
-| /staffCohortAssociations |     |
-| /studentCohortAssociations |     |
-| /calendars |     |
-| /calendarDates |     |
-| /courses |     |
-| /courseOfferings |     |
-| /localEducationAgencies |     |
-| /gradingPeriods |     |
-| /schools |     |
-| /sections |     |
-| /sessions |     |
-| /staffs |     |
-| /staffEducationOrganizationAssignmentAssociations |     |
-| /staffEducationOrganizationEmploymentAssociations |     |
-| /staffSchoolAssociations |     |
-| /staffSectionAssociations |     |
-| /students |     |
-| /studentEducationOrganizationAssociations |     |
-| /studentSchoolAssociations |     |
-| /studentSectionAssociations |     |
-| /bellSchedules |     |
-| /locations |     |
-| /classPeriods |     |
+| API Resources                                     | Notes |
+| ------------------------------------------------- | ----- |
+| /cohorts                                          |       |
+| /staffCohortAssociations                          |       |
+| /studentCohortAssociations                        |       |
+| /calendars                                        |       |
+| /calendarDates                                    |       |
+| /courses                                          |       |
+| /courseOfferings                                  |       |
+| /localEducationAgencies                           |       |
+| /gradingPeriods                                   |       |
+| /schools                                          |       |
+| /sections                                         |       |
+| /sessions                                         |       |
+| /staffs                                           |       |
+| /staffEducationOrganizationAssignmentAssociations |       |
+| /staffEducationOrganizationEmploymentAssociations |       |
+| /staffSchoolAssociations                          |       |
+| /staffSectionAssociations                         |       |
+| /students                                         |       |
+| /studentEducationOrganizationAssociations         |       |
+| /studentSchoolAssociations                        |       |
+| /studentSectionAssociations                       |       |
+| /bellSchedules                                    |       |
+| /locations                                        |       |
+| /classPeriods                                     |       |
 
 </details>
 
@@ -45,33 +45,33 @@ These use cases support the Cohort community priority.
 <details>
 <summary>Resource Requirements</summary>
 
-| API Resources | Notes |
-| --- | --- |
-| /cohorts |     |
-| /staffCohortAssociations |     |
-| /studentCohortAssociations |     |
-| /grades |     |
-| /calendars |     |
-| /calendarDates |     |
-| /courses |     |
-| /courseOfferings |     |
-| /localEducationAgencies |     |
-| /gradingPeriods |     |
-| /schools |     |
-| /sections |     |
-| /sessions |     |
-| /staffs |     |
-| /staffEducationOrganizationAssignmentAssociations |     |
-| /staffEducationOrganizationEmploymentAssociations |     |
-| /staffSchoolAssociations |     |
-| /staffSectionAssociations |     |
-| /students |     |
-| /studentEducationOrganizationAssociations |     |
-| /studentSchoolAssociations |     |
-| /studentSectionAssociations |     |
-| /bellSchedules |     |
-| /locations |     |
-| /classPeriods |     |
+| API Resources                                     | Notes |
+| ------------------------------------------------- | ----- |
+| /cohorts                                          |       |
+| /staffCohortAssociations                          |       |
+| /studentCohortAssociations                        |       |
+| /grades                                           |       |
+| /calendars                                        |       |
+| /calendarDates                                    |       |
+| /courses                                          |       |
+| /courseOfferings                                  |       |
+| /localEducationAgencies                           |       |
+| /gradingPeriods                                   |       |
+| /schools                                          |       |
+| /sections                                         |       |
+| /sessions                                         |       |
+| /staffs                                           |       |
+| /staffEducationOrganizationAssignmentAssociations |       |
+| /staffEducationOrganizationEmploymentAssociations |       |
+| /staffSchoolAssociations                          |       |
+| /staffSectionAssociations                         |       |
+| /students                                         |       |
+| /studentEducationOrganizationAssociations         |       |
+| /studentSchoolAssociations                        |       |
+| /studentSectionAssociations                       |       |
+| /bellSchedules                                    |       |
+| /locations                                        |       |
+| /classPeriods                                     |       |
 
 </details>
 
@@ -85,31 +85,31 @@ These use cases support the Cohort community priority.
 Note: this use case requires the addition of a new attendance descriptor "In
 School Exempt Absences".
 
-| API Resources | Notes |
-| --- | --- |
-| /grades |     |
-| /studentSchoolAttendanceEvents |     |
-| /studentSectionAttendanceEvents |     |
-| /calendars |     |
-| /calendarDates |     |
-| /courses |     |
-| /courseOfferings |     |
-| /localEducationAgencies |     |
-| /gradingPeriods |     |
-| /schools |     |
-| /sections |     |
-| /sessions |     |
-| /staffs |     |
-| /staffEducationOrganizationAssignmentAssociations |     |
-| /staffEducationOrganizationEmploymentAssociations |     |
-| /staffSchoolAssociations |     |
-| /staffSectionAssociations |     |
-| /students |     |
-| /studentEducationOrganizationAssociations |     |
-| /studentSchoolAssociations |     |
-| /studentSectionAssociations |     |
-| /bellSchedules |     |
-| /locations |     |
-| /classPeriods |     |
+| API Resources                                     | Notes |
+| ------------------------------------------------- | ----- |
+| /grades                                           |       |
+| /studentSchoolAttendanceEvents                    |       |
+| /studentSectionAttendanceEvents                   |       |
+| /calendars                                        |       |
+| /calendarDates                                    |       |
+| /courses                                          |       |
+| /courseOfferings                                  |       |
+| /localEducationAgencies                           |       |
+| /gradingPeriods                                   |       |
+| /schools                                          |       |
+| /sections                                         |       |
+| /sessions                                         |       |
+| /staffs                                           |       |
+| /staffEducationOrganizationAssignmentAssociations |       |
+| /staffEducationOrganizationEmploymentAssociations |       |
+| /staffSchoolAssociations                          |       |
+| /staffSectionAssociations                         |       |
+| /students                                         |       |
+| /studentEducationOrganizationAssociations         |       |
+| /studentSchoolAssociations                        |       |
+| /studentSectionAssociations                       |       |
+| /bellSchedules                                    |       |
+| /locations                                        |       |
+| /classPeriods                                     |       |
 
 </details>

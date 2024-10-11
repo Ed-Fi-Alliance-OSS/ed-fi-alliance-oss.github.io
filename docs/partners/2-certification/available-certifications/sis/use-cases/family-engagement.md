@@ -9,32 +9,32 @@ These use cases apply to the Family Engagement community priority.
 <details>
 <summary>Resource Requirements</summary>
 
-| API Resource | Notes |
-| --- | --- |
-| /parents |     |
-| /people |     |
-| /studentParentAssociations |     |
-| /calendars |     |
-| /calendarDates |     |
-| /courses |     |
-| /courseOfferings |     |
-| /localEducationAgencies |     |
-| /gradingPeriods |     |
-| /schools |     |
-| /sections |     |
-| /sessions |     |
-| /staffs |     |
-| /staffEducationOrganizationAssignmentAssociations |     |
-| /staffEducationOrganizationEmploymentAssociations |     |
-| /staffSchoolAssociations |     |
-| /staffSectionAssociations |     |
-| /students |     |
-| /studentEducationOrganizationAssociations |     |
-| /studentSchoolAssociations |     |
-| /studentSectionAssociations |     |
-| /bellSchedules |     |
-| /locations |     |
-| /classPeriods |     |
+| API Resource                                      | Notes |
+| ------------------------------------------------- | ----- |
+| /parents                                          |       |
+| /people                                           |       |
+| /studentParentAssociations                        |       |
+| /calendars                                        |       |
+| /calendarDates                                    |       |
+| /courses                                          |       |
+| /courseOfferings                                  |       |
+| /localEducationAgencies                           |       |
+| /gradingPeriods                                   |       |
+| /schools                                          |       |
+| /sections                                         |       |
+| /sessions                                         |       |
+| /staffs                                           |       |
+| /staffEducationOrganizationAssignmentAssociations |       |
+| /staffEducationOrganizationEmploymentAssociations |       |
+| /staffSchoolAssociations                          |       |
+| /staffSectionAssociations                         |       |
+| /students                                         |       |
+| /studentEducationOrganizationAssociations         |       |
+| /studentSchoolAssociations                        |       |
+| /studentSectionAssociations                       |       |
+| /bellSchedules                                    |       |
+| /locations                                        |       |
+| /classPeriods                                     |       |
 
 </details>
 
@@ -45,40 +45,40 @@ These use cases apply to the Family Engagement community priority.
 <details>
 <summary>Resource Requirements</summary>
 
-| API Resource | Notes |
-| --- | --- |
-| /parents |     |
-| /studentParentAssociations |     |
-| /programs |     |
-| /studentProgramAssociations |     |
-| /studentCTEProgramAssociations |     |
-| /studentHomelessProgramAssociations |     |
-| /studentLanguageInstructionProgramAssociations |     |
-| /studentMigrantProgramAssociations |     |
-| /studentNeglectedOrDelinquentProgramAssociations |     |
-| /studentSchoolFoodServiceProgramAssociations |     |
-| /studentSpecialEducationProgramAssociations |     |
-| /studentTitleIPartAProgramAssociations |     |
-| /calendars |     |
-| /calendarDates |     |
-| /courses |     |
-| /courseOfferings |     |
-| /localEducationAgencies |     |
-| /gradingPeriods |     |
-| /schools |     |
-| /sections |     |
-| /sessions |     |
-| /staffs |     |
-| /staffEducationOrganizationAssignmentAssociations |     |
-| /staffEducationOrganizationEmploymentAssociations |     |
-| /staffSchoolAssociations |     |
-| /staffSectionAssociations |     |
-| /students |     |
-| /studentEducationOrganizationAssociations |     |
-| /studentSchoolAssociations |     |
-| /studentSectionAssociations |     |
-| /bellSchedules |     |
-| /locations |     |
-| /classPeriods |     |
+| API Resource                                      | Notes |
+| ------------------------------------------------- | ----- |
+| /parents                                          |       |
+| /studentParentAssociations                        |       |
+| /programs                                         |       |
+| /studentProgramAssociations                       |       |
+| /studentCTEProgramAssociations                    |       |
+| /studentHomelessProgramAssociations               |       |
+| /studentLanguageInstructionProgramAssociations    |       |
+| /studentMigrantProgramAssociations                |       |
+| /studentNeglectedOrDelinquentProgramAssociations  |       |
+| /studentSchoolFoodServiceProgramAssociations      |       |
+| /studentSpecialEducationProgramAssociations       |       |
+| /studentTitleIPartAProgramAssociations            |       |
+| /calendars                                        |       |
+| /calendarDates                                    |       |
+| /courses                                          |       |
+| /courseOfferings                                  |       |
+| /localEducationAgencies                           |       |
+| /gradingPeriods                                   |       |
+| /schools                                          |       |
+| /sections                                         |       |
+| /sessions                                         |       |
+| /staffs                                           |       |
+| /staffEducationOrganizationAssignmentAssociations |       |
+| /staffEducationOrganizationEmploymentAssociations |       |
+| /staffSchoolAssociations                          |       |
+| /staffSectionAssociations                         |       |
+| /students                                         |       |
+| /studentEducationOrganizationAssociations         |       |
+| /studentSchoolAssociations                        |       |
+| /studentSectionAssociations                       |       |
+| /bellSchedules                                    |       |
+| /locations                                        |       |
+| /classPeriods                                     |       |
 
 </details>

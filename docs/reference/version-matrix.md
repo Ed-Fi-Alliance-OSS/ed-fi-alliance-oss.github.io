@@ -2,10 +2,10 @@
 
 :::tip
 
-Coming soon. For now, please see [Ed-Fi Technical Suite Version
-Matrix](https://edfi.atlassian.net/wiki/spaces/ETKB/pages/20875825/Ed-Fi+Technical+Suite+Version+Matrix)
-and [Ed-Fi Technology Version
-Index](https://edfi.atlassian.net/wiki/spaces/ETKB/pages/20875717/Ed-Fi+Technology+Version+Index).
+Coming soon. For now, please see
+[Ed-Fi Technical Suite Version Matrix](https://edfi.atlassian.net/wiki/spaces/ETKB/pages/20875825/Ed-Fi+Technical+Suite+Version+Matrix)
+and
+[Ed-Fi Technology Version Index](https://edfi.atlassian.net/wiki/spaces/ETKB/pages/20875717/Ed-Fi+Technology+Version+Index).
 
 :::
 

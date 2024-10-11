@@ -59,9 +59,9 @@ Store](../img/PostgreSql-configuration-store-example.png)
 
 :::info note:
 
-  The name of the connection (`Hosted_Sample_v5.2` in the example above)
-  should not contain spaces since a primary usage scenario is to provide the
-  name in a command-line argument to the utility (i.e.`--sourceName=Hosted_Sample_v5.2`).
+The name of the connection (`Hosted_Sample_v5.2` in the example above) should
+not contain spaces since a primary usage scenario is to provide the name in a
+command-line argument to the utility (i.e.`--sourceName=Hosted_Sample_v5.2`).
 
 :::
 
@@ -84,8 +84,8 @@ To use the PostgreSQL Configuration Store, change the `provider` setting in the
 
 ### PostgreSQL Credentials
 
-The Configuration Store implementation uses the Npgsql driver which [provides a
-few mechanisms](https://www.npgsql.org/doc/connection-string-parameters.html)
+The Configuration Store implementation uses the Npgsql driver which
+[provides a few mechanisms](https://www.npgsql.org/doc/connection-string-parameters.html)
 for providing credentials in a more secure manner than embedding them in the
 connection string in the configuration file shown above.
 
@@ -93,12 +93,12 @@ Recommendation is to either add the `Username` connection string parameter into
 the configured connection string above, or to set the `PGUSER` environment
 variable to contain the user name.
 
-Then, create a [PostgreSQL password
-file](https://www.postgresql.org/docs/current/libpq-pgpass.html) to supply the
-`password` at runtime. The default location for this file is `~/.pgpass` in
-Linux, or `%APPDATA%\postgresql\pgpass.conf` in Microsoft Windows, but an
-explicit file path can be provided through the `PGPASSFILE` environment
-variable.
+Then, create a
+[PostgreSQL password file](https://www.postgresql.org/docs/current/libpq-pgpass.html)
+to supply the `password` at runtime. The default location for this file is
+`~/.pgpass` in Linux, or `%APPDATA%\postgresql\pgpass.conf` in Microsoft
+Windows, but an explicit file path can be provided through the `PGPASSFILE`
+environment variable.
 
 ### Encryption Password
 

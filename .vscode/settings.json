@@ -68,12 +68,17 @@
   ],
   "psi-header.changes-tracking": {
     "autoHeader": "autoSave",
-    "exclude": ["css", "json", "xml", "config", "plaintext", "markdown", "batch"]
+    "exclude": [
+      "css",
+      "json",
+      "xml",
+      "config",
+      "plaintext",
+      "markdown",
+      "batch"
+    ]
   },
-  "cSpell.words": [
-    "codapi",
-    "collaboratives"
-  ],
+  "cSpell.words": ["codapi", "collaboratives"],
   "markdownlint.config": {
     "default": true,
     "line-length": {
@@ -82,7 +87,13 @@
       "tables": false
     },
     "no-inline-html": {
-      "allowed_elements": [ "codapi-snippet", "kbd", "DocCardList", "details", "summary" ]
+      "allowed_elements": [
+        "codapi-snippet",
+        "kbd",
+        "DocCardList",
+        "details",
+        "summary"
+      ]
     }
   },
   "[markdown]": {

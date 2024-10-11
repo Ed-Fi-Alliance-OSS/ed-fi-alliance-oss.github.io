@@ -11,8 +11,8 @@ cohort of students.
 
 ### Prerequisites
 
-* Staff
-* Cohort
+- Staff
+- Cohort
 
 ### Scenarios
 
@@ -22,12 +22,12 @@ cohort of students.
 4. Add an End date for staff cohort association 2.
 5. Delete the staff cohort association for the elementary school staff member.
 
-| Resource | Property Name | Is Collection | Data Type | Required / Optional | Scenario 1  <br/>POST | Scenario 2  <br/>POST | Scenario 3  <br/>PUT | Scenario 4  <br/>PUT |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| StaffCohortAssociations | cohortReference | FALSE | cohortReference | REQUIRED |     |     |     |     |
-| cohortReference | educationOrganizationId | FALSE | integer | REQUIRED | 255901107 | 255901001 | 255901107 | 255901001 |
-| cohortReference | cohortIdentifier | FALSE | string | REQUIRED | \["1" if possible<br/><br/>\| system value\] | \["2" if possible<br/><br/>\| system value\] | \["1" if possible<br/><br/>\| system value\] | \["2" if possible<br/><br/>\| system value\] |
-| StaffCohortAssociations | beginDate | FALSE | date | REQUIRED | 9/14/<br/><br/>\[Current School Year\] | 9/14/<br/><br/>\[Current School Year\] | 9/14/<br/><br/>\[Current School Year\] | 9/14//<br/><br/>\[Current School Year\] |
-| StaffCohortAssociations | endDate | FALSE | date | REQUIRED |     |     | 12/20/<br/><br/>\[Current School Year\] | 12/20/<br/><br/>\[Current School Year\] |
-| StaffCohortAssociations | staffReference | FALSE | integer | REQUIRED |     |     |     |     |
-| staffReference | staffUniqueId | FALSE | string | REQUIRED | \["207220"  if possible<br/><br/>\| system value\] | \["207269"  if possible<br/><br/>\| system value\] | \["207220"  if possible<br/><br/>\| system value\] | \["207269"  if possible<br/><br/>\| system value\] |
+| Resource                | Property Name           | Is Collection | Data Type       | Required / Optional | Scenario 1 <br/>POST                              | Scenario 2 <br/>POST                              | Scenario 3 <br/>PUT                               | Scenario 4 <br/>PUT                               |
+| ----------------------- | ----------------------- | ------------- | --------------- | ------------------- | ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
+| StaffCohortAssociations | cohortReference         | FALSE         | cohortReference | REQUIRED            |                                                   |                                                   |                                                   |                                                   |
+| cohortReference         | educationOrganizationId | FALSE         | integer         | REQUIRED            | 255901107                                         | 255901001                                         | 255901107                                         | 255901001                                         |
+| cohortReference         | cohortIdentifier        | FALSE         | string          | REQUIRED            | \["1" if possible<br/><br/>\| system value\]      | \["2" if possible<br/><br/>\| system value\]      | \["1" if possible<br/><br/>\| system value\]      | \["2" if possible<br/><br/>\| system value\]      |
+| StaffCohortAssociations | beginDate               | FALSE         | date            | REQUIRED            | 9/14/<br/><br/>\[Current School Year\]            | 9/14/<br/><br/>\[Current School Year\]            | 9/14/<br/><br/>\[Current School Year\]            | 9/14//<br/><br/>\[Current School Year\]           |
+| StaffCohortAssociations | endDate                 | FALSE         | date            | REQUIRED            |                                                   |                                                   | 12/20/<br/><br/>\[Current School Year\]           | 12/20/<br/><br/>\[Current School Year\]           |
+| StaffCohortAssociations | staffReference          | FALSE         | integer         | REQUIRED            |                                                   |                                                   |                                                   |                                                   |
+| staffReference          | staffUniqueId           | FALSE         | string          | REQUIRED            | \["207220" if possible<br/><br/>\| system value\] | \["207269" if possible<br/><br/>\| system value\] | \["207220" if possible<br/><br/>\| system value\] | \["207269" if possible<br/><br/>\| system value\] |

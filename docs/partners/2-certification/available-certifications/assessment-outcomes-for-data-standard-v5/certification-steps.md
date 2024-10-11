@@ -15,18 +15,15 @@ clarity and uniformity.
 
 ### 1\. Product Availability Information
 
-See [Requirements - Product Availability
-Information](../../certification-for-data-providers/requirements-product-availability-information.md)
+See [Requirements - Product Availability Information](../../certification-for-data-providers/requirements-product-availability-information.md)
 
 ### **2\. Initial Implementation Verification Information**
 
-See [Requirements - Implementation
-Verification](../../certification-for-data-providers/requirements-implementation-verification.md)
+See [Requirements - Implementation Verification](../../certification-for-data-providers/requirements-implementation-verification.md)
 
 ### **3\. Data Mapping**
 
-See [Requirements - Data
-Mapping](../../certification-for-data-providers/requirements-data-mapping.md)
+See [Requirements - Data Mapping](../../certification-for-data-providers/requirements-data-mapping.md)
 
 ### 4\. Usage Narrative
 
@@ -51,13 +48,13 @@ provide student results to end users of the certifying system.
 The score report template(s):
 
 - MUST cover all of the elements listed in step 2 above
-- MUST be in wide use by the vendor currently *–* the vendor MAY choose which
-    to use if there are different options or variations
+- MUST be in wide use by the vendor currently *–* the vendor MAY choose which to
+  use if there are different options or variations
 - MUST be clearly marked to show elements that are not included in the Ed-Fi
-    based API integration (e.g., elements not included in a visual picture could
-    be surrounded by a red box and marked "not included")
-- Per certification processes generally, these report templates MUST NOT
-    contain any real student data
+  based API integration (e.g., elements not included in a visual picture could
+  be surrounded by a red box and marked "not included")
+- Per certification processes generally, these report templates MUST NOT contain
+  any real student data
 
 - MUST be provided as PDF files
 
@@ -66,8 +63,7 @@ preserved and report elements are mapped to the proper Ed-Fi assessment domain
 counterparts.
 
 To help demonstrate what is wanted, view this score report from a fictitious
-vendor: [Sample Score
-Template.pdf](https://edfi.atlassian.net/wiki/download/attachments/23703026/Sample%20Score%20Template.pdf?version=1&modificationDate=1701717860453&cacheVersion=1&api=v2)
+vendor: [Sample Score Template.pdf](https://edfi.atlassian.net/wiki/download/attachments/23703026/Sample%20Score%20Template.pdf?version=1&modificationDate=1701717860453&cacheVersion=1&api=v2)
 
 </details>
 
@@ -80,13 +76,13 @@ Test data is a spreadsheet of the exact sample data that will be used in the
 certification process. The spreadsheet:
 
 - MUST include all data fields from the score report template(s) submitted as
-    part of item 5, above
+  part of item 5, above
 - MUST include all data fields from the data mapping submitted as part of item
-    3, above
+  3, above
 - MUST include records for a minimum of 100 students and a maximum of 500
-    students
-- MUST be 100% fictitious and MUST NOT be obfuscated data or derived from
-    actual school data in any way
+  students
+- MUST be 100% fictitious and MUST NOT be obfuscated data or derived from actual
+  school data in any way
 
 </details>
 
@@ -98,11 +94,11 @@ certification process. The spreadsheet:
 If the certifying system data mapping includes elements that index assessment
 metadata to learning standards, the provider:
 
-- MUST provide a spreadsheet of those learning standards that will be
-    used. The spreadsheet MUST include the GUIDS and titles of those standards;
-    no other fields are required
+- MUST provide a spreadsheet of those learning standards that will be used. The
+  spreadsheet MUST include the GUIDS and titles of those standards; no other
+  fields are required
 - SHOULD only include the learning standards referenced in the sample data; it
-    SHOULD NOT be a full catalog of all learning standards from a provider
+  SHOULD NOT be a full catalog of all learning standards from a provider
 
 </details>
 
@@ -113,9 +109,8 @@ metadata to learning standards, the provider:
 
 If present, vendor-specific enumerations MUST be provided in Ed-Fi JSON or XML
 format and will be published as part of the certification record. Note that only
-certain enumerations are permitted to be vendor-specific: [Ed-Fi Assessment
-Outcomes API for Data Standard v5
-Certification](../../available-certifications/assessment-outcomes-for-data-standard-v5/readme.md)
+certain enumerations are permitted to be
+vendor-specific: [Ed-Fi Assessment Outcomes API for Data Standard v5 Certification](../../available-certifications/assessment-outcomes-for-data-standard-v5/readme.md)
 
 The JSON MUST follow this format, which can be used to import the values into an
 Ed-Fi API:
@@ -124,21 +119,21 @@ Ed-Fi API:
 
 ```json
 {
-    "namespace": "[a namespace for your product, generally in URL or URI format]",
-    "codeValue": "[your code value]",
-    "description": "[description]",
-    "shortDescription": "[short description; e.g for inclusion in a dropdown list]"
-  }
+  "namespace": "[a namespace for your product, generally in URL or URI format]",
+  "codeValue": "[your code value]",
+  "description": "[description]",
+  "shortDescription": "[short description; e.g for inclusion in a dropdown list]"
+}
 ```
 
 #### Types JSON
 
 ```json
 {
-    "codeValue": "[your code value]",
-    "description": "[description]",
-    "shortDescription": "[short description; e.g for inclusion in a dropdown list]"
-  }
+  "codeValue": "[your code value]",
+  "description": "[description]",
+  "shortDescription": "[short description; e.g for inclusion in a dropdown list]"
+}
 ```
 
 </details>
@@ -156,8 +151,7 @@ submitted documentation.
 
 The certifying product will show via screen sharing the methods by which
 exchanges are triggered (and those MUST follow the requirements
-under [Certification Requirements for Data
-Providers](../../certification-for-data-providers/readme.md) and
+under [Certification Requirements for Data Providers](../../certification-for-data-providers/readme.md) and
 be consistent with the Usage Narrative submitted in step 4, above).
 
 </details>
@@ -185,11 +179,9 @@ the Ed-Fi Core Student Data API.
 The vendor will show via screen sharing or screen shots evidence of proof that
 this is configurable.
 
-:::note
-This configuration is **only** REQUIRED for those systems that use a
+:::note This configuration is **only** REQUIRED for those systems that use a
 standardized roster specification where individual students may have multiple
-identifiers.
-:::
+identifiers. :::
 
 </details>
 
@@ -205,18 +197,18 @@ standards or learning objective metadata if those are included.
 #### Detailed Steps
 
 1. The vendor will transmit the entire set of assessment metadata and student
-    assessment results to the sandbox.
+   assessment results to the sandbox.
 
 2. The submitted score report(s) will be used to check for completeness and for
-    valid semantics.
-    1. All fields from 1.1. that are map-able to the Ed-Fi model must be
-        included.
-    2. Field meanings must be accurately represented according to the Ed-Fi
-        definitions.
+   valid semantics.
+   1. All fields from 1.1. that are map-able to the Ed-Fi model must be
+      included.
+   2. Field meanings must be accurately represented according to the Ed-Fi
+      definitions.
 3. Ed-Fi will confirm the data landed and matched expectations from the Sample
-    Data Spreadsheet provided by the vendor.
+   Data Spreadsheet provided by the vendor.
 4. A full and more detailed analysis of the data will be conducted
-    asynchronously after the certification session by the Alliance.
+   asynchronously after the certification session by the Alliance.
 
 Any deviations from the expected data from the sample data spreadsheet or the
 vendor-provided score report(s) will be documented. Ed-Fi will notify the vendor
@@ -242,9 +234,9 @@ ensure that those records appear.
 
 1. Ed-Fi Alliance will delete several student records randomly.
 2. The certifying product will re-submit the same assessment metadata and
-    student assessment results to the sandbox.
+   student assessment results to the sandbox.
 3. Ed-Fi Alliance will confirm the deleted records have reappeared in the
-    sandbox.
+   sandbox.
 
 </details>
 
@@ -260,7 +252,7 @@ of the API resources.
 #### Detailed Steps
 
 1. Certifying product will be asked to update several a student assessment
-    result records.
+   result records.
 2. Ed-Fi Alliance will confirm the updated record in the sandbox.
 
 Updates may be done at the StudentAssessmentItem, StudentObjectiveAssessment, or
@@ -278,7 +270,7 @@ The provider / API client MUST be able to perform the following actions:
 - Capture and log transport errors, including all HTTP errors.
 - Re-attempt delivery of API resources updates following failed transmissions.
 - In the event that repeated delivery fails for the same resource update,
-    surface the error to a system user.
+  surface the error to a system user.
 
 Field work within the Ed-Fi community has revealed that this application
 behavior is a necessary condition of system interoperability. Accordingly, the
@@ -299,13 +291,12 @@ be able to successfully handle such situations.
 
 ## III. Certification Completion
 
-Upon completion, the Alliance will record the certification in the [Registry of
-Ed-Fi Certified
-Products](../../registry-of-ed-fi-certified-products.mdx).
+Upon completion, the Alliance will record the certification in
+the [Registry of Ed-Fi Certified Products](../../registry-of-ed-fi-certified-products.mdx).
 The certification record will contain all documentation submitted from 1.1 to
 1.6 above. This data is intended to allow potential users of the certified
 functionality to understand the important features of the integration that are
 available.
 
-Certifications are valid for one year. Please review the [Requirements for
-Recertification](https://edfi.atlassian.net/wiki/spaces/EDFICERT/pages/23695777/Requirements+-+Recertification).
+Certifications are valid for one year. Please review the
+[Requirements for Recertification](https://edfi.atlassian.net/wiki/spaces/EDFICERT/pages/23695777/Requirements+-+Recertification).

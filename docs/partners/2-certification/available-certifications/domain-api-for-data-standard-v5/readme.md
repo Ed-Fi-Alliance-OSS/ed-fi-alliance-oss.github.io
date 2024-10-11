@@ -2,9 +2,9 @@
 
 Certification Name: Ed-Fi Assessment Outcomes API for Suite 3 \
 Standards Referenced:\
-   [Ed-Fi API Design & Implementation Guidelines
-   v3.1](https://edfi.atlassian.net/wiki/spaces/EFAPIGUIDE/overview)\
-Technical Suite: Suite 3\
+   [Ed-Fi API Design & Implementation Guidelines    v3.1](https://edfi.atlassian.net/wiki/spaces/EFAPIGUIDE/overview)\
+Technical
+Suite: Suite 3\
 Obsoletes: – \
 Obsoleted By: – \
 Status: Active
@@ -35,8 +35,8 @@ interoperability. These include requirements around error handling and recovery,
 roster configurability, and others.
 
 This conformance specification covers the provider certification *–* that is,
-the responsibilities of the *API* *client* implementer and not the *API*
-*consumer*. Given market demand, the Alliance will publish a consumer
+the responsibilities of the _API_ _client_ implementer and not the _API_
+_consumer_. Given market demand, the Alliance will publish a consumer
 conformance specification as well.  This certification is for data provider's
 that can offer domain integration outside of what is covered in the Assessment
 Outcomes certification and the Student Information System (SIS) certifications.
@@ -48,8 +48,8 @@ also receive a certification for HR or Finance domains.
 ## Overview of Requirements
 
 This section provides an overview only; detailed, step-by-step requirements are
-available in the [Domain API Certification for Data Standard v5 -
-Steps](./certification-steps.md).
+available in
+the [Domain API Certification for Data Standard v5 - Steps](./certification-steps.md).
 
 ### Required Fields on API Resources
 
