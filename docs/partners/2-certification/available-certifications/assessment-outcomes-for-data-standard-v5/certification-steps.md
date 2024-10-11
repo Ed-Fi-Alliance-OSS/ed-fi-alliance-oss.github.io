@@ -13,19 +13,19 @@ The following documentation must be received by the Ed-Fi Alliance prior to
 certification. Ed-Fi may ask for clarifications or changes in order to ensure
 clarity and uniformity.
 
-### 1\. Product Availability Information
+### 1. Product Availability Information
 
 See [Requirements - Product Availability Information](../../certification-for-data-providers/requirements-product-availability-information.md)
 
-### **2\. Initial Implementation Verification Information**
+### 2. Initial Implementation Verification Information
 
 See [Requirements - Implementation Verification](../../certification-for-data-providers/requirements-implementation-verification.md)
 
-### **3\. Data Mapping**
+### 3. Data Mapping
 
 See [Requirements - Data Mapping](../../certification-for-data-providers/requirements-data-mapping.md)
 
-### 4\. Usage Narrative
+### 4. Usage Narrative
 
 <details>
 <summary>View detail...</summary>
@@ -37,7 +37,7 @@ words and can be provided in any common text format (MS Word, .txt file, etc.).
 
 </details>
 
-### 5\. Score Report Template(s)
+### 5. Score Report Template(s)
 
 <details>
 <summary>View detail...</summary>
@@ -63,11 +63,12 @@ preserved and report elements are mapped to the proper Ed-Fi assessment domain
 counterparts.
 
 To help demonstrate what is wanted, view this score report from a fictitious
-vendor: [Sample Score Template.pdf](https://edfi.atlassian.net/wiki/download/attachments/23703026/Sample%20Score%20Template.pdf?version=1&modificationDate=1701717860453&cacheVersion=1&api=v2)
+vendor: [Sample Score
+Template.pdf](https://edfi.atlassian.net/wiki/download/attachments/23703026/Sample%20Score%20Template.pdf?version=1&modificationDate=1701717860453&cacheVersion=1&api=v2)
 
 </details>
 
-### 6\. Fictitious Test Data for 100 to 500 Students
+### 6. Fictitious Test Data for 100 to 500 Students
 
 <details>
 <summary>View detail...</summary>
@@ -86,7 +87,7 @@ certification process. The spreadsheet:
 
 </details>
 
-### 7\. Sample Learning Standards Reference Identifiers
+### 7. Sample Learning Standards Reference Identifiers
 
 <details>
 <summary>View detail...</summary>
@@ -102,7 +103,7 @@ metadata to learning standards, the provider:
 
 </details>
 
-### 8\. Custom Enumerations Used by the Vendor in Integrations
+### 8. Custom Enumerations Used by the Vendor in Integrations
 
 <details>
 <summary>View detail...</summary>
@@ -144,7 +145,7 @@ Certification tests test conformance of the product to API specifications and
 other normative requirements of the API standard. It also validates the
 submitted documentation.
 
-### **9\. User Interaction and Availability Test**
+### 9. User Interaction and Availability Test
 
 <details>
 <summary>View detail...</summary>
@@ -156,7 +157,7 @@ be consistent with the Usage Narrative submitted in step 4, above).
 
 </details>
 
-### 10\. Student Roster Configurability Test
+### 10. Student Roster Configurability Test
 
 <details>
 <summary>View detail...</summary>
@@ -165,7 +166,7 @@ If using a formal, shared rostering specification (e.g., Clever, OneRoster,
 Ed-Fi Enrollment API) that allows for multiple student identifiers, the provider
 MUST **either**:
 
-a) Demonstrate that the product allows for configuration of which student ID
+(a) Demonstrate that the product allows for configuration of which student ID
 (from the roster specification) is used when communicating with the Assessment
 API implementation. This is REQUIRED even if the student identifiers are
 optional in the roster specification, and MUST be done for all roster
@@ -173,19 +174,23 @@ specifications. The student ID configuration is limited to the district/SIS
 student ID and the state student ID _–_ other IDs are exempt (e.g., a student
 lunchroom code, a student Google ID).
 
-b) Demonstrate the ability to roster students via the Ed-Fi Enrollment API or
+(b) Demonstrate the ability to roster students via the Ed-Fi Enrollment API or
 the Ed-Fi Core Student Data API.
 
 The vendor will show via screen sharing or screen shots evidence of proof that
 this is configurable.
 
-:::note This configuration is **only** REQUIRED for those systems that use a
+:::note
+
+This configuration is **only** REQUIRED for those systems that use a
 standardized roster specification where individual students may have multiple
-identifiers. :::
+identifiers.
+
+:::
 
 </details>
 
-### **11\. Batch Transmission Test**
+### 11. Batch Transmission Test
 
 <details>
 <summary>View detail...</summary>
@@ -193,8 +198,6 @@ identifiers. :::
 Using the sample data from step 6, the certifying system will transmit an entire
 set of assessment metadata and student assessment results, along with learning
 standards or learning objective metadata if those are included.
-
-#### Detailed Steps
 
 1. The vendor will transmit the entire set of assessment metadata and student
    assessment results to the sandbox.
@@ -220,7 +223,7 @@ are reasonably preserved in the mapping from provider formats to Ed-Fi formats.
 
 </details>
 
-### 12\. Synchronization Recovery Test
+### 12. Synchronization Recovery Test
 
 <details>
 <summary>View detail...</summary>
@@ -230,8 +233,6 @@ several student assessment results will be deleted from the previously
 transmitted results. The product will be asked to re-submit the same records to
 ensure that those records appear.
 
-#### Detailed Steps
-
 1. Ed-Fi Alliance will delete several student records randomly.
 2. The certifying product will re-submit the same assessment metadata and
    student assessment results to the sandbox.
@@ -240,7 +241,7 @@ ensure that those records appear.
 
 </details>
 
-### **13\. Provider Data Update Test**
+### 13. Provider Data Update Test
 
 <details>
 <summary>View detail...</summary>
@@ -248,8 +249,6 @@ ensure that those records appear.
 A change will be made to a set of records on the certifying product side and the
 product must show the capability to re-send the data so as to update the values
 of the API resources.
-
-#### Detailed Steps
 
 1. Certifying product will be asked to update several a student assessment
    result records.
@@ -260,7 +259,7 @@ StudentAssessment level.
 
 </details>
 
-### 14\. Error Handling Verification Test
+### 14. Error Handling Verification Test
 
 <details>
 <summary>View detail...</summary>
@@ -279,8 +278,6 @@ will be made unavailable to the client, or in which the API reports other errors
 due to resource availability (e.g., HTTP 500 error). The client is expected to
 be able to successfully handle such situations.
 
-#### Detailed Steps
-
 1. Create an error in the Assessment data.
 2. Attempt to POST or PUT the updated value to the sandbox.
 3. Provide a quick overview of how the error is surfaced to the user.
@@ -298,5 +295,5 @@ The certification record will contain all documentation submitted from 1.1 to
 functionality to understand the important features of the integration that are
 available.
 
-Certifications are valid for one year. Please review the
-[Requirements for Recertification](https://edfi.atlassian.net/wiki/spaces/EDFICERT/pages/23695777/Requirements+-+Recertification).
+Certifications are valid for one year. Please review the [Requirements for
+Recertification](https://edfi.atlassian.net/wiki/spaces/EDFICERT/pages/23695777/Requirements+-+Recertification).
