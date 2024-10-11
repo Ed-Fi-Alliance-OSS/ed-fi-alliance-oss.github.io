@@ -21,8 +21,7 @@ particular for neglected and delinquent programs.
 2. Update the Service descriptor from Mentoring Programs to Dropout Prevention
    Programs.
 
-Note: the Program's educationOrganizationId is the Local Education Agency
-ID
+Note: the Program's educationOrganizationId is the Local Education Agency ID
 
 | Resource                                        | Property Name                                 | Is Collection | Data Type                                     | Required / Optional | Scenario 1 <br/>POST                        | Scenario 2 <br/>PUT                         |
 | ----------------------------------------------- | --------------------------------------------- | ------------- | --------------------------------------------- | ------------------- | ------------------------------------------- | ------------------------------------------- |
