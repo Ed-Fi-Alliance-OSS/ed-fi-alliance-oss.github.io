@@ -4,7 +4,7 @@ These use cases support the Cohort community priority.
 
 ## Use Case 15: (Note this use case also applies to [CCMR](./college-career-and-military-readiness-ccmr.md) and [Early Warning System Supports](./early-warning-system-supports.md))
 
-### As a counselor, I want access to the information on who is in my counseling group so that I can see individual and aggregate analytics that relate to that group.
+### As a counselor, I want access to the information on who is in my counseling group so that I can see individual and aggregate analytics that relate to that group
 
 <details>
 <summary>Resource Requirements</summary>

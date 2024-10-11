@@ -19,7 +19,7 @@ cases that doesn't work, for example the Aws CloudWatch sink. If you run into
 this problem, we provide our TextFormatter which is similar to the default. Here
 we are going to see how to use it:
 
-## How to use it in the AWSCloudWatch:
+## How to use it in the AWSCloudWatch
 
 In the `logging.json` file
 
@@ -67,7 +67,7 @@ The default template format provided by the TextFormatter is:
 }
 ```
 
-## Values accepted in the template format:
+## Values accepted in the template format
 
 1. You should defined each one between braces, eg. `{Level}`.
 2. Some of them can be formatted using the .NET framework, eg.

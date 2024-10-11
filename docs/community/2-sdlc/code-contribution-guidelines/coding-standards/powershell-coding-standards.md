@@ -16,7 +16,7 @@ team(s).
 
 ## Naming Conventions
 
-1. **Use Approved Verbs for a Cmdlet Name **All cmdlet names should begin with
+1. **Use Approved Verbs for a Cmdlet Name**All cmdlet names should begin with
    one of the
    [Approved Verbs for PowerShell Commands](https://docs.microsoft.com/en-us/powershell/scripting/developer/cmdlet/approved-verbs-for-windows-powershell-commands?view=powershell-5.1).
    TIP: `Invoke` can be a useful catch-all when running a discrete "process",
@@ -186,7 +186,7 @@ team(s).
    ```
 
 3. **Comment-based Help** Public module functions should have concise
-   comment-based documentation, which will be displayed with the `Get-Help` 
+   comment-based documentation, which will be displayed with the `Get-Help`
    command. For detailed information on the topic,
    see [Writing Help for PowerShell](https://docs.microsoft.com/en-us/powershell/scripting/developer/help/writing-help-for-windows-powershell-scripts-and-functions?view=powershell-5.1).
    Basic guidance:
@@ -269,7 +269,7 @@ team(s).
    Framework types for groups of standard parameters, such as the "activity
    parameters".
 
-6. **Use Consistent Parameter Types **When the same parameter is used by
+6. **Use Consistent Parameter Types** When the same parameter is used by
    multiple cmdlets, always use the same parameter type. For example, if
    the `Process` parameter is
    an `[System.Int16](https://docs.microsoft.com/en-us/dotnet/api/System.Int16)` type

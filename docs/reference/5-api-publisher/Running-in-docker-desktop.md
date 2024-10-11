@@ -8,7 +8,7 @@ The Ed-Fi ODS Docker deployment source code is in the Ed-Fi repository hosted by
 GitHub. A link to the repository is provided in the download panel on the right.
 You can clone the repository or download the source code as a ZIP file.
 
-https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-API-Publisher
+<https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-API-Publisher>
 
 ## Step 2. Setup Your Environment Variables
 
@@ -117,7 +117,7 @@ used in the API Publisher configuration.
 
 We have two ways to run API Publisher inside or outside the created container.
 
-### Outside Container.
+### Outside Container
 
 ```shell
 docker exec -it ed-fi-ods-apipublisher dotnet EdFiApiPublisher.dll --sourceUrl={{SourceUrl}}/WebApi/ --sourceKey={{SourceKey}} --sourceSecret={{SourceSecret}} --targetUrl=https://{{TargetUrl}}/WebApi/ --targetKey={{TargetKey}} --targetSecret={{TargetSecret}} {{Additional Parameters}}
@@ -125,7 +125,7 @@ docker exec -it ed-fi-ods-apipublisher dotnet EdFiApiPublisher.dll --sourceUrl={
 
 ![Console Command](img/docker/console-command.png)
 
-### Inside Container.
+### Inside Container
 
 Using Docker Dashboard it is possible to enter the container and use its
 terminal. Once inside it is necessary to run the command without the docker
@@ -139,9 +139,9 @@ dotnet EdFiApiPublisher.dll --sourceUrl={{SourceUrl}}/WebApi/ --sourceKey={{Sour
 
 ![Docker Terminal Command](img/docker/docker-terminal-command.png)
 
-# Additional Configurations.
+# Additional Configurations
 
-## AWS Parameter Store.
+## AWS Parameter Store
 
 ### Configuration
 
@@ -163,21 +163,21 @@ dotnet EdFiApiPublisher.dll --configurationStoreProvider=awsParameterStore --sou
 
 ![Docker command runs](img/docker/run-docker-command.png)
 
-### C. Validate Results.
+### C. Validate Results
 
 After completing the execution the 'lastChangeVersion Processed' parameter value
 should be updated
 
 ![ChangeVersion updated](img/docker/changeVersion-updated.png)
 
-# CloudWatch.
+# CloudWatch
 
 ## Configuration
 
 Configure the AWS log storage parameters in the configuration file.
 [Configuration CloudWatch](CloudWatch-configuration.md)
 
-## Execution.
+## Execution
 
 Run any ApiPublisher command to start storing the execution results.
 

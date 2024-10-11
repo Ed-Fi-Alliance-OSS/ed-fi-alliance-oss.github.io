@@ -142,7 +142,7 @@ accurate mapping of all semantics on the target system.
 ### c. Update of Fixed Fields or Entities
 
 In some cases, certification tests might call for updates to fields that are
-"fixed" *–* they can't be updated in the source system due to a system
+"fixed" _–_ they can't be updated in the source system due to a system
 constraint (e.g., the field is a calculated value in that system, or the field
 is a surrogate key). In such cases, an alternative test that updates other
 fields can be provided. Systems MUST in any case demonstrate the ability to

@@ -76,8 +76,8 @@ code easier to read. Ed-Fi code conforms to the following conventions:
 ## Commenting Conventions
 
 Use comments liberally to provide _useful context_ for another developer to be
-able to follow the intent and logic of the code. Explain *why*,
-not *what.* Prefer using proper English sentences.
+able to follow the intent and logic of the code. Explain _why_,
+not _what._ Prefer using proper English sentences.
 
 1. Place the comment on a separate line, not at the end of a line of code.
 

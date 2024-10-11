@@ -132,7 +132,7 @@ our own comment explaining why we disabled the warning.
 :::tip
 
 It is not too difficult to deal with this in Visual Studio Code or Rider as
-well, even if you don't have the integrated IDE controls: simply wrap 
+well, even if you don't have the integrated IDE controls: simply wrap
 `pragma warning disable CODE`  and `pragma warning restore CODE`  around the
 line of source code, using the proper error code. Look carefully at the error
 message above and you'll see code "S101". The "S" prefix tells you that this is

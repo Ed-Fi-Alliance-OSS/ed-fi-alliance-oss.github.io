@@ -40,7 +40,7 @@ These use cases apply to the Chronic Absenteeism community priority.
 
 ## Use Case 6
 
-### As a school district, I want to be able to track a student’s attendance history to identify cases where students may be at risk of exceeding state mandates for attendance and/or time in school.
+### As a school district, I want to be able to track a student’s attendance history to identify cases where students may be at risk of exceeding state mandates for attendance and/or time in school
 
 <details>
 <summary>Resource Requirements</summary>

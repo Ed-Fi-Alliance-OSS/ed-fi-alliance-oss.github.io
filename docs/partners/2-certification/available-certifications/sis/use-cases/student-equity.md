@@ -2,7 +2,7 @@
 
 These use cases apply to the Student Equity community priority
 
-## Use Case 2:
+## Use Case 2
 
 ### As a teacher or counselor, I want access to my student’s demographic information so I can best serve the child
 

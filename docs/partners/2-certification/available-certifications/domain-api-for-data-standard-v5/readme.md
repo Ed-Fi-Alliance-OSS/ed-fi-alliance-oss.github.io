@@ -35,8 +35,8 @@ interoperability. These include requirements around error handling and recovery,
 roster configurability, and others.
 
 This conformance specification covers the provider certification *–* that is,
-the responsibilities of the _API_ _client_ implementer and not the _API_
-_consumer_. Given market demand, the Alliance will publish a consumer
+the responsibilities of the *API* *client* implementer and not the *API*
+*consumer*. Given market demand, the Alliance will publish a consumer
 conformance specification as well.  This certification is for data provider's
 that can offer domain integration outside of what is covered in the Assessment
 Outcomes certification and the Student Information System (SIS) certifications.

@@ -59,13 +59,13 @@ run:
 
 #### Option 1 - From binaries
 
-1.  Download the latest published API Publisher package here:
+1. Download the latest published API Publisher package here:
     [Ed-Fi API Publisher v1.0](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.ApiPublisher/overview/1.1.0).
     Visit the page and click download.
-2.  This will download a NuGet package to your computer. Rename this file,
+2. This will download a NuGet package to your computer. Rename this file,
     `EdFi.ApiPublisher.1.1.0.nupkg`, to include .zip extension:
     `EdFi.ApiPublisher.1.1.0.zip`.
-3.  The binary mentioned below is in the `EdFi.ApiPublisher.Win64` folder, as
+3. The binary mentioned below is in the `EdFi.ApiPublisher.Win64` folder, as
     `EdFiApiPublisher.exe`.
 
 #### Option 2 - From Docker img

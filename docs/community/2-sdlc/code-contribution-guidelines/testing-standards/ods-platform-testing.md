@@ -211,7 +211,7 @@ in 2019.
 ### Environment Variable Naming / Usage
 
 - The names of environment variables should use the following format:
-  (_known_|_supplied_)\[:_scenarioId_\]:_name_
+  (*known*|*supplied*)\[:*scenarioId*\]:*name*
 
   - Use a `known:`  prefix for variables that hold values that are "known" from
     the ODS database. Examples:

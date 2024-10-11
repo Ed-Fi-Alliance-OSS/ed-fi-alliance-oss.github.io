@@ -87,8 +87,8 @@ not-permitted.
 
 Without faithful implementation of standardized data exchange patterns *—* which
 certification tests *—* interoperability at scale will never be achieved.
-However, while such conformance may be _required_, it is not in itself
-_sufficient_ to guarantee interoperability.
+However, while such conformance may be *required*, it is not in itself
+*sufficient* to guarantee interoperability.
 
 Many environmental factors can interfere with system interoperability.
 Certification does not and cannot validate all the various ancillary elements
