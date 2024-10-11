@@ -8,9 +8,9 @@ educational institution.
 
 ### Prerequisites
 
-- Student
-- EdOrg
-- Program
+* Student
+* EdOrg
+* Program
 
 ### Scenarios
 
@@ -18,7 +18,7 @@ educational institution.
    Lunch for an Elementary School Student
 2. Update the schoolFoodServiceProgramServiceDescriptor to Free Lunch
 
-| Resource                                                                  | Property Name                             | Is Collection | Data Type                                 | Required / Optional | Scenario 1 <br/>POST | Scenario 2 <br/>PUT |
+| Resource                                                                  | Property Name                             | Is Collection | Data Type                                 | Required / Optional | Scenario 1: POST | Scenario 2 <br/>PUT |
 | ------------------------------------------------------------------------- | ----------------------------------------- | ------------- | ----------------------------------------- | ------------------- | -------------------- | ------------------- |
 | studentSchoolFoodServiceProgramAssociations                               | beginDate                                 | FALSE         | date                                      | REQUIRED            | Current Date         | Current Date        |
 | studentSchoolFoodServiceProgramAssociations                               | EducationOrganizationReference            | FALSE         | EducationOrganizationReference            | REQUIRED            |                      |                     |

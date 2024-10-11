@@ -15,12 +15,12 @@ partners
 Ed-Fi certification represents an agreement between agency customers and vendor
 providers. This agreement comprises:
 
-- a scope of data
-- API specifications
-- compatibility with current data standard and technology suite versions
-- additional normative requirements on system interaction
-- adherence to general best practices
-- their connection to solving for high value use cases the community has defined
+* a scope of data
+* API specifications
+* compatibility with current data standard and technology suite versions
+* additional normative requirements on system interaction
+* adherence to general best practices
+* their connection to solving for high value use cases the community has defined
   and prioritized together.
 
 The resulting certification requirements are intended to form a clear,
@@ -34,13 +34,13 @@ Your feedback and suggestions for continual improvement on these priority use
 cases are welcomed and needed. There are several channels open to you to lend
 your perspective:
 
-- Comment on this page in TechDocs with a mention to
+* Comment on this page in TechDocs with a mention to
   [Jeff Putnam](https://edfi.atlassian.net/wiki/people/630e7c61d8850343ef584307?ref=confluence)
-- Convey your feedback via email or Slack to
+* Convey your feedback via email or Slack to
   [Jeff.putnam@ed-fi.org](mailto:Jeff.putnam@ed-fi.org)
-- Schedule a meeting with
+* Schedule a meeting with
   the [vendor team](https://go.oncehub.com/EdFiJeffPutnam)
-- Discuss in our vendor convenings and governance opportunities, such as the
+* Discuss in our vendor convenings and governance opportunities, such as the
   Summit, Technical Congress, Technical Advisory Group, etc.
 
 **[Common Resources](./api-resources-common-to-all-use-cases.md)**

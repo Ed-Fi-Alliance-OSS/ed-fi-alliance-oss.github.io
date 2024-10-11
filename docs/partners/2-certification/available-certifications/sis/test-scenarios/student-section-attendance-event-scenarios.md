@@ -9,10 +9,10 @@ where both attendance and absences are reported.
 This event entity represents the recording of whether a student is in attendance
 for a section.
 
-### Prerequisites
+## Prerequisites
 
-- Student
-- Section
+* Student
+* Section
 
 ### Scenarios
 
@@ -22,13 +22,13 @@ for a section.
 4. Add an attendanceEventReason on the Attendance Event for Madison Johnson.
 5. Delete the attendance event for Austin Jones.
 
-| Resource                       | Property Name                     | Is Collection | Data Type                         | Required / Optional | Scenario 1 <br/>POST                    | Scenario 2 <br/>POST            | Scenario 3 <br/>PUT                    | Scenario 4 <br/>PUT             |
-| ------------------------------ | --------------------------------- | ------------- | --------------------------------- | ------------------- | --------------------------------------- | ------------------------------- | -------------------------------------- | ------------------------------- | --------------------------------------- | ------------- | -------------------------------------- | ------------- |
+| Resource                       | Property Name                     | Is Collection | Data Type                         | Required / Optional | Scenario 1: POST                    | Scenario 2: POST            | Scenario 3: PUT                    | Scenario 4: PUT             |
+| ------------------------------ | --------------------------------- | ------------- | --------------------------------- | ------------------- | --------------------------------------- | ------------------------------- | -------------------------------------- | ------------------------------- |
 | StudentSectionAttendanceEvents | sectionReference                  | FALSE         | sectionReference                  | REQUIRED            |                                         |                                 |                                        |                                 |
-| sectionReference               | localCourseCode                   | FALSE         | string                            | REQUIRED            | ["ELA-01" if possible<br/><br/>         | system value]                   | ["ALG-2" if possible<br/><br/>         | system value]                   | ["ELA-01" if possible<br/><br/>         | system value] | ["ALG-2" if possible<br/><br/>         | system value] |
+| sectionReference               | localCourseCode                   | FALSE         | string                            | REQUIRED            | ["ELA-01" if possible \| system value]                   | ["ALG-2" if possible \| system value]                   | ["ELA-01" if possible \| system value] | ["ALG-2" if possible\| system value] |
 | sectionReference               | schoolId                          | FALSE         | integer                           | REQUIRED            | 255901107                               | 255901001                       | 255901107                              | 255901001                       |
 | sectionReference               | schoolYear                        | FALSE         | integer                           | REQUIRED            | 2017                                    | 2017                            | 2017                                   | 2017                            |
-| sectionReference               | sectionIdentifier                 | FALSE         | string                            | REQUIRED            | ["ELA012017RM555" if possible<br/><br/> | system value]                   | ["ALG12017RM901" if possible<br/><br/> | system value]                   | ["ELA012017RM555" if possible<br/><br/> | system value] | ["ALG12017RM901" if possible<br/><br/> | system value] |
+| sectionReference               | sectionIdentifier                 | FALSE         | string                            | REQUIRED            | ["ELA012017RM555" if possible \| system value]                   | ["ALG12017RM901" if possible \| system value]                   | ["ELA012017RM555" if possible \| system value] | ["ALG12017RM901" if possible \| system value] |
 | sectionReference               | sessionName                       | FALSE         | string                            | REQUIRED            | 2016-2017 Fall Semester                 | 2016-2017 Fall Semester         | 2016-2017 Fall Semester                | 2016-2017 Fall Semester         |
 | StudentSectionAttendanceEvents | studentReference                  | FALSE         | studentReference                  | REQUIRED            |                                         |                                 |                                        |                                 |
 | studentReference               | studentUniqueId                   | FALSE         | string                            | REQUIRED            | 111111                                  | 222222                          | 111111                                 | 222222                          |

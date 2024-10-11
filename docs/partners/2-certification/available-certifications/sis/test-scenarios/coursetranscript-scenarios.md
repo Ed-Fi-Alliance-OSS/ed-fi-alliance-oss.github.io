@@ -8,11 +8,11 @@ semester or school year.
 
 ## Prerequisites
 
-- Course
+* Course
 
-- Student
+* Student
 
-- Enrollment
+* Enrollment
 
 ## Scenarios
 
@@ -22,12 +22,12 @@ semester or school year.
 
 ### Additional Requirements for Final Grades Earned
 
-- If both numeric and letter grades are recorded by the SIS, both are REQUIRED
+* If both numeric and letter grades are recorded by the SIS, both are REQUIRED
   for certification.
-- If only the numeric grade or letter grade is recorded by the SIS, then only
+* If only the numeric grade or letter grade is recorded by the SIS, then only
   one SHALL be provided for certification.
 
-| Resource                       | Property Name                  | Is Collection | Data Type                      | Required / Optional | Scenario 1 <br/>POST    | Scenario 2 <br/>PUT     |
+| Resource                       | Property Name                  | Is Collection | Data Type                      | Required / Optional | Scenario 1: POST    | Scenario 2 <br/>PUT     |
 | ------------------------------ | ------------------------------ | ------------- | ------------------------------ | ------------------- | ----------------------- | ----------------------- |
 | CourseTranscripts              | courseReference                | FALSE         | courseReference                | REQUIRED            |                         |                         |
 | courseReference                | educationOrganizationId        | FALSE         | integer                        | REQUIRED            | 255901001               | 255901001               |

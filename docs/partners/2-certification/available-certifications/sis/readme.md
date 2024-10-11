@@ -25,8 +25,8 @@ set of data on a target system (the "consumer") using a set of RESTful APIs
 defined by
 [ED-FI RFC 16 - CORE STUDENT DATA API](https://edfi.atlassian.net/wiki/spaces/EFDSRFC/pages/25362441/ED-FI+RFC+16+-+CORE+STUDENT+DATA+API).
 
-In this data exchange architecture, the provider *—* the Student Information
-System (SIS) *—* implements an API client which uses HTTPS requests and RESTful
+In this data exchange architecture, the provider _—_ the Student Information
+System (SIS) _—_ implements an API client which uses HTTPS requests and RESTful
 patterns to manage API resources on the consumer system, which implements the
 API definition itself (see Figure 1).
 

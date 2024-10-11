@@ -6,7 +6,7 @@ purpose of meeting the educational needs of students.
 
 ## Prerequisites
 
-- None
+* None
 
 ## Scenarios
 
@@ -17,7 +17,7 @@ purpose of meeting the educational needs of students.
 4. Update the maximumNumberOfSeats on the newly added Grand Bend High
    School location
 
-| Resource        | Property Name               | Is Collection | Data Type       | Required / Optional | Scenario 1 <br/>POST                       | Scenario 2 <br/>POST                       | Scenario 3 <br/>PUT                        | Scenario 4 <br/>PUT                        |
+| Resource        | Property Name               | Is Collection | Data Type       | Required / Optional | Scenario 1: POST                       | Scenario 2: POST                       | Scenario 3: PUT                        | Scenario 4: PUT                        |
 | --------------- | --------------------------- | ------------- | --------------- | ------------------- | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
 | Locations       | classroomIdentificationCode | FALSE         | string          | REQUIRED            | \["501" if possible <br/>\| system value\] | \["901" if possible <br/>\| system value\] | \["501" if possible <br/>\| system value\] | \["901" if possible <br/>\| system value\] |
 | Locations       | schoolReference             | FALSE         | schoolReference | REQUIRED            |                                            |                                            |                                            |                                            |

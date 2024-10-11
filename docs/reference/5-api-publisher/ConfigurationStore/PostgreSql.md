@@ -51,7 +51,8 @@ insert into dbo.configuration_value(configuration_key, configuration_value_encry
 values ('/ed-fi/apiPublisher/connections/Hosted_Sample_v5.2/key', pgp_sym_encrypt('RvcohKz9zHI4', 'my-secure-password'));
 
 insert into dbo.configuration_value(configuration_key, configuration_value_encrypted)
-values ('/ed-fi/apiPublisher/connections/Hosted_Sample_v5.2/secret', pgp_sym_encrypt('E1iEFusaNf81xzCxwHfbolkC', 'my-secure-password'));
+values ('/ed-fi/apiPublisher/connections/Hosted_Sample_v5.2/secret',
+  pgp_sym_encrypt('E1iEFusaNf81xzCxwHfbolkC', 'my-secure-password'));
 ```
 
 ![PostgreSQL Configuration

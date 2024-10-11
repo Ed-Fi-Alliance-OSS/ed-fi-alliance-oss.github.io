@@ -4,21 +4,21 @@
 
 Coding conventions serve the following purposes:
 
-- They create a consistent look to the code, so that readers can focus on
+* They create a consistent look to the code, so that readers can focus on
   content, not layout.
-- They enable readers to understand the code more quickly by making assumptions
+* They enable readers to understand the code more quickly by making assumptions
   based on previous experience.
-- They facilitate copying, changing, and maintaining the code.
-- They demonstrate best practices.
+* They facilitate copying, changing, and maintaining the code.
+* They demonstrate best practices.
 
 The principles below broadly apply to all Ed-Fi source code. For
 language-specific guidance, please see:
 
-- [C# Coding Standards](./c-coding-standards.md)
-  - [C# Best Practices](./c-best-practices.md)
-- [SQL Coding Standards](./sql-coding-standards.md)
-- [PowerShell Coding Standards](./powershell-coding-standards.md)
-- [Markdown Best Practices](./markdown-best-practices.md)
+* [C# Coding Standards](./c-coding-standards.md)
+  * [C# Best Practices](./c-best-practices.md)
+* [SQL Coding Standards](./sql-coding-standards.md)
+* [PowerShell Coding Standards](./powershell-coding-standards.md)
+* [Markdown Best Practices](./markdown-best-practices.md)
 
 ## General Principles
 

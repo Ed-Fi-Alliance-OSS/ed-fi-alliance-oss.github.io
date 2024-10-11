@@ -10,8 +10,8 @@ provided by the SIS Vendor and is required.
 
 ## Prerequisites
 
-- Course (ODS is pre-populated with Course records)
-- Session
+* Course (ODS is pre-populated with Course records)
+* Session
 
 ## Scenarios
 
@@ -27,7 +27,7 @@ provided by the SIS Vendor and is required.
 _Note: localCourseTitle can duplicate the value in courseCode if not tracked in
  your SIS._
 
-| Resource         | Property Name           | Is Collection | Data Type        | Required / Optional | Scenario 1 <br/>POST                | Scenario 2 <br/>POST    | Scenario 3 <br/>PUT            | Scenario 4 <br/>PUT             |
+| Resource         | Property Name           | Is Collection | Data Type        | Required / Optional | Scenario 1: POST                | Scenario 2: POST    | Scenario 3: PUT            | Scenario 4: PUT             |
 | ---------------- | ----------------------- | ------------- | ---------------- | ------------------- | ----------------------------------- | ----------------------- | ------------------------------ | ------------------------------- | ------------- | ----- |
 | CourseOfferings  | courseReference         | FALSE         | courseReference  | REQUIRED            |                                     |                         |                                |                                 |
 | courseReference  | courseCode              | FALSE         | string           | REQUIRED            | ELA-01                              | ALG-01                  | ELA-01                         | ALG-01                          |

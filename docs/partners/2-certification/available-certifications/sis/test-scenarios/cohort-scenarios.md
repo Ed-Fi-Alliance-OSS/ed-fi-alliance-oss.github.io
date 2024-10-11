@@ -11,7 +11,7 @@ tracking, analysis or intervention.
 
 ## Prerequisites
 
-- None
+* None
 
 ## Scenarios
 
@@ -20,7 +20,7 @@ tracking, analysis or intervention.
 3. Update Cohort type for Cohort 1.
 4. Update Cohort type for Cohort 2.
 
-| Resource                       | Property Name                  | Is Collection | Data Type                      | Required / Optional | Scenario 1 <br/>POST                         | Scenario 2 <br/>POST                         | Scenario 3 <br/>PUT                          | Scenario 4 <br/>PUT                          |
+| Resource                       | Property Name                  | Is Collection | Data Type                      | Required / Optional | Scenario 1: POST                         | Scenario 2: POST                         | Scenario 3: PUT                          | Scenario 4: PUT                          |
 | ------------------------------ | ------------------------------ | ------------- | ------------------------------ | ------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
 | Cohorts                        | educationOrganizationReference | FALSE         | educationOrganizationReference | REQUIRED            |                                              |                                              |                                              |                                              |
 | educationOrganizationReference | educationOrganizationId        | FALSE         | integer                        | REQUIRED            | 255901107                                    | 255901001                                    | 255901107                                    | 255901001                                    |

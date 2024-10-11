@@ -4,8 +4,8 @@
 
 For other important guidance, see also:
 
-- [Coding Standards - General Principles](./README.md)
-- [c# Best Practices](./c-best-practices.md)
+* [Coding Standards - General Principles](./README.md)
+* [c# Best Practices](./c-best-practices.md)
 
 :::
 
@@ -109,7 +109,7 @@ For other important guidance, see also:
     }
     ```
 
-*See also* [C# Best Practices: Naming Conventions](./c-best-practices.md).
+_See also_ [C# Best Practices: Naming Conventions](./c-best-practices.md).
 
 ## Formatting
 
@@ -536,7 +536,7 @@ For other important guidance, see also:
    reliable to match an exception based on its type than by extracting
    information from the message.
 
-*See also* [C# Best Practices: Exception Handling](./c-best-practices.md).
+_See also_ [C# Best Practices: Exception Handling](./c-best-practices.md).
 
 ## Null Detection
 
@@ -555,8 +555,8 @@ using an object reference:
    }
    ```
 
-2. On constructor arguments *except when the constructor is invoked by the IoC
-   container*. In that case, we tend to trust that the container will not inject
+2. On constructor arguments _except when the constructor is invoked by the IoC
+   container_. In that case, we tend to trust that the container will not inject
    a null object. Thus this primarily relates to constructors that we expect to
    invoke directly in code.
 
@@ -573,8 +573,8 @@ using an object reference:
    ```
 
 3. When receiving a value from a dependency. You may be able to look at the
-   dependency code and confirm that it does not *right now* return a null, but
-   it is safer to assume that it *can* return a null value.
+   dependency code and confirm that it does not _right now_ return a null, but
+   it is safer to assume that it _can_ return a null value.
 
    ```csharp
    public class A

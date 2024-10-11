@@ -9,10 +9,10 @@ particular for language instruction programs.
 
 ### Prerequisites
 
-- Ed-Org (pre-loaded)
-- Program (pre-loaded)
-- Student
-- Student Enrollment
+* Ed-Org (pre-loaded)
+* Program (pre-loaded)
+* Student
+* Student Enrollment
 
 ### Scenarios
 
@@ -23,7 +23,7 @@ particular for language instruction programs.
 
 (Note: the Program's educationOrganizationId is the Local Education Agency ID)
 
-| Resource                                      | Property Name                               | Is Collection | Data Type                                   | Required / Optional | Scenario 1 <br/>POST               | Scenario 2 <br/>PUT                |
+| Resource                                      | Property Name                               | Is Collection | Data Type                                   | Required / Optional | Scenario 1: POST               | Scenario 2 <br/>PUT                |
 | --------------------------------------------- | ------------------------------------------- | ------------- | ------------------------------------------- | ------------------- | ---------------------------------- | ---------------------------------- |
 | StudentLanguageInstructionProgramAssociations | beginDate                                   | FALSE         | date                                        | REQUIRED            | 8/23/<br/>[Current School Year]    | 8/23/<br/>[Current School Year]    |
 | StudentLanguageInstructionProgramAssociations | educationOrganizationReference              | FALSE         | educationOrganizationReference              | REQUIRED            |                                    |                                    |

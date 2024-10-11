@@ -5,7 +5,7 @@ meetings at designated times and days of the week.
 
 ## Prerequisites
 
-- None
+* None
 
 ## Scenarios
 
@@ -16,9 +16,9 @@ meetings at designated times and days of the week.
 4. Update the Official Attendance Period on the newly added Grand Bend High
    School Class Period
 
-| Resource                | Property Name   | Is <br/>Collection | Data Type       | Required / <br/>Optional | Scenario 1 <br/>POST                | Scenario 2 <br/>POST | Scenario 3 <br/>PUT                 | Scenario 4 <br/>PUT |
-| ----------------------- | --------------- | ------------------ | --------------- | ------------------------ | ----------------------------------- | -------------------- | ----------------------------------- | ------------------- | ---------------------------------------- | ------------- | ----------------------------------- | ------------- |
-| ClassPeriods            | classPeriodName | FALSE              | string          | REQUIRED                 | ["Class Period 1" if possible <br/> | system value]        | ["Class Period 1" if possible <br/> | system value]       | ["Class Period **01**" if possible <br/> | system value] | ["Class Period 1" if possible <br/> | system value] |
+| Resource                | Property Name   | Is Collection | Data Type       | Required / Optional | Scenario 1: POST                | Scenario 2: POST | Scenario 3: PUT                 | Scenario 4: PUT |
+| ----------------------- | --------------- | ------------------ | --------------- | ------------------------ | ----------------------------------- | -------------------- | ----------------------------------- | ------------------- |
+| ClassPeriods            | classPeriodName | FALSE              | string          | REQUIRED                 | ["Class Period 1" if possible \| system value]        | ["Class Period 1" if possible \| system value]       | ["Class Period **01**" if possible  \| system value] | ["Class Period 1" if possible \| system value] |
 | ClassPeriods            | schoolReference | FALSE              | schoolReference | REQUIRED                 |                                     |                      |                                     |                     |
 | schoolReference         | schoolId        | FALSE              | integer         | REQUIRED                 | 255901107                           | 255901001            | 255901107                           | 255901001           |
 | ClassPeriods            | meetingTimes    | TRUE               | Collection      | REQUIRED                 |                                     |                      |                                     |                     |

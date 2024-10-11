@@ -4,7 +4,7 @@ This entity represents a set of dates associated with an organization.
 
 ## Prerequisites
 
-- None
+* None
 
 ## Scenarios
 
@@ -13,7 +13,7 @@ This entity represents a set of dates associated with an organization.
 3. Update the calendar for the elementary school to be student specific.
 4. Update the calendar for the high school to include tenth grade also.
 
-| Resource                | Property Name          | Is Collection | Data Type              | Required / Optional | Scenario 1 <br/>POST    | Scenario 2 <br/>POST  | Scenario 3 <br/>PUT     | Scenario 4 <br/>PUT             |
+| Resource                | Property Name          | Is Collection | Data Type              | Required / Optional | Scenario 1: POST    | Scenario 2: POST  | Scenario 3: PUT     | Scenario 4: PUT             |
 | ----------------------- | ---------------------- | ------------- | ---------------------- | ------------------- | ----------------------- | --------------------- | ----------------------- | ------------------------------- |
 | Calendars               | calendarCode           | FALSE         | string                 | REQUIRED            | `<br/>107SS111111<br/>` | IEP001                | `<br/>107SS111111<br/>` | IEP001                          |
 | Calendars               | schoolReference        | FALSE         | schoolReference        | REQUIRED            |                         |                       |                         |                                 |

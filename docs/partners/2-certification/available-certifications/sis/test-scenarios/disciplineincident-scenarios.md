@@ -12,9 +12,9 @@ discipline action.
 
 ## Prerequisites
 
-- Student
-- Staff
-- Enrollment
+* Student
+* Staff
+* Enrollment
 
 ## Scenarios
 
@@ -26,13 +26,13 @@ discipline action.
 
 Additional Requirements for behavior requirements:
 
-- A discipline incident Behavior may be recorded either at the Discipline
+* A discipline incident Behavior may be recorded either at the Discipline
   Incident level or at the Student Discipline Incident Association level.
 
-| Resource                    | Property Name                 | Is Collection | Data Type                     | Required / Optional | Scenario 1 <br/>POST            | Scenario 2 <br/>POST            | Scenario 3 <br/>PUT             | Scenario 4 <br/>PUT             |
-| --------------------------- | ----------------------------- | ------------- | ----------------------------- | ------------------- | ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- | --------------------- | ------------- | --------------------- | ------------- |
-| DisciplineIncidents         | incidentDate                  | FALSE         | date                          | REQUIRED            | 9/25/<br/>[Current School Year] | 9/25/<br/>[Current School Year] | 9/25/<br/>[Current School Year] | 9/25/<br/>[Current School Year] |
-| DisciplineIncidents         | incidentIdentifier            | FALSE         | string                        | REQUIRED            | ["1" if possible<br/>           | system value]                   | ["2" if possible<br/>           | system value]                   | ["1" if possible<br/> | system value] | ["2" if possible<br/> | system value] |
+| Resource                    | Property Name                 | Is Collection | Data Type                     | Required / Optional | Scenario 1: POST            | Scenario 2: POST            | Scenario 3: PUT             | Scenario 4: PUT             |
+| --------------------------- | ----------------------------- | ------------- | ----------------------------- | ------------------- | ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
+| DisciplineIncidents         | incidentDate                  | FALSE         | date                          | REQUIRED            | 9/25/[Current School Year] | 9/25/[Current School Year] | 9/25/[Current School Year] | 9/25/[Current School Year] |
+| DisciplineIncidents         | incidentIdentifier            | FALSE         | string                        | REQUIRED            | ["1" if possible \| system value]                   | ["2" if possible  \| system value]                   | ["1" if possible \| system value] | ["2" if possible \| system value] |
 | DisciplineIncidents         | schoolReference               | FALSE         | schoolReference               | REQUIRED            |                                 |                                 |                                 |                                 |
 | schoolReference             | schoolId                      | FALSE         | integer                       | REQUIRED            | 255901107                       | 255901001                       | 255901107                       | 255901001                       |
 | DisciplineIncidents         | behaviors                     | TRUE          | disciplineIncidentBehavior[]  | REQUIRED            |                                 |                                 |                                 |                                 |

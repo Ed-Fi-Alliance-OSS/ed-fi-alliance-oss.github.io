@@ -9,9 +9,9 @@ The Student Academic Record represents the cumulative record of academic
 
 ### Prerequisites
 
-- Student
+* Student
 
-- Enrollment
+* Enrollment
 
 ### Scenarios
 
@@ -23,7 +23,7 @@ The Student Academic Record represents the cumulative record of academic
    sessionEarnedCredits and sessionAttemptedCredits on the high school Student's
    record.
 
-| Resource                       | Property Name                  | Is Collection | Data Type                      | Required / Optional | Scenario 1 <br/>POST                      | Scenario 2 <br/>POST                        | Scenario 3 <br/>PUT                                              |
+| Resource                       | Property Name                  | Is Collection | Data Type                      | Required / Optional | Scenario 1: POST                      | Scenario 2: POST                        | Scenario 3: PUT                                              |
 | ------------------------------ | ------------------------------ | ------------- | ------------------------------ | ------------------- | ----------------------------------------- | ------------------------------------------- | ---------------------------------------------------------------- |
 | StudentAcademicRecords         | educationOrganizationReference | FALSE         | educationOrganizationReference | REQUIRED            |                                           |                                             |                                                                  |
 | educationOrganizationReference | educationOrganizationId        | FALSE         | integer                        | REQUIRED            | 255901107                                 | 255901001                                   | 255901001                                                        |

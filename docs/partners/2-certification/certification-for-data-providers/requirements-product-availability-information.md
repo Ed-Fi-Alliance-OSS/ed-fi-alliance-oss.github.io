@@ -22,14 +22,14 @@ certification record.
 
 ### Requirements
 
-- Geographic information MUST be (at a minimum) precise enough to allow any
+* Geographic information MUST be (at a minimum) precise enough to allow any
   local education agency operating within the United States to determine if it
   is or is not within the specified geography.
-- Version information MUST be for versions generally available on the market
+* Version information MUST be for versions generally available on the market
   (i.e., version information MUST not include development or future versions).
   Note that for Ed-Fi certification generally, only functionality actually
   available in the market can be certified, not functionality under development.
-- Non-specific information MUST NOT be included (e.g., “Please contact us for
+* Non-specific information MUST NOT be included (e.g., “Please contact us for
   availability information").
 
 ## Rationale

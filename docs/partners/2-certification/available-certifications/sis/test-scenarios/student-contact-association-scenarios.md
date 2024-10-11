@@ -9,7 +9,7 @@ caretakers.
 
 ### Prerequisites
 
-- None
+* None
 
 ### Scenarios
 
@@ -22,7 +22,7 @@ caretakers.
 4. Update "emergency contact status" indicator for the Madison Johnson
    association.
 
-| Resource                   | Property Name          | Is Collection | Data Type          | Required / Optional | Scenario 1 <br/>POST            | Scenario 2 <br/>POST | Scenario 3 <br/>PUT             | Scenario 4 <br/>PUT |
+| Resource                   | Property Name          | Is Collection | Data Type          | Required / Optional | Scenario 1: POST            | Scenario 2: POST | Scenario 3: PUT             | Scenario 4: PUT |
 | -------------------------- | ---------------------- | ------------- | ------------------ | ------------------- | ------------------------------- | -------------------- | ------------------------------- | ------------------- | ------------------------------- | ------------- | ------------------------------- | ------------- |
 | StudentContactAssociations | contactReference       | FALSE         | contactReference   | REQUIRED            |                                 |                      |                                 |                     |
 | contactReference           | contactUniqueId        | FALSE         | string             | REQUIRED            | ["333333" if possible<br/><br/> | system value]        | ["444444" if possible<br/><br/> | system value]       | ["333333" if possible<br/><br/> | system value] | ["444444" if possible<br/><br/> | system value] |

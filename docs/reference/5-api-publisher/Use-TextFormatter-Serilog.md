@@ -1,6 +1,6 @@
 # Use TextFormatter Serilog
 
-# How to use the TextFormatter class
+## How to use the TextFormatter class
 
 API Publisher uses by default the following output template in the
 `logging.json` configuration:
@@ -23,49 +23,49 @@ we are going to see how to use it:
 
 In the `logging.json` file
 
-- Using the default format
+* Using the default format
 
-```json
-"WriteTo:AWSCloudWatch": {
-  "Name": "AmazonCloudWatch",
-  "Args": {
-    "logGroup": "Ed-Fi-Publisher",
-    "logStreamPrefix": "Ed-Fi-Tools",
-    "restrictedToMinimumLevel": "Verbose",
-    "textFormatter": "EdFi.Tools.ApiPublisher.Core.Configuration.Serilog.TextFormatter,
-                      EdFi.Tools.ApiPublisher.Core"
-  }
-}
-```
-
-:::info note:
-
-The default template format provided by the TextFormatter is:
-
-```text
-[{Timestamp:yyyy-MM-dd HH:mm:ss,fff}] [{Level}] [{ThreadId:00}]
-[{SourceContext}] - {Message} {Exception} {NewLine}
-```
-
-:::
-
-- Using a custom format
-
-```json
-"WriteTo:AWSCloudWatch": {
-  "Name": "AmazonCloudWatch",
-  "Args": {
-    "logGroup": "Ed-Fi-Publisher",
-    "logStreamPrefix": "Ed-Fi-Tools",
-    "restrictedToMinimumLevel": "Verbose",
-    "textFormatter": {
-      "type": "EdFi.Tools.ApiPublisher.Core.Configuration.Serilog.TextFormatter,
-               EdFi.Tools.ApiPublisher.Core",
-      "format": "[{Timestamp:MM-dd HH:mm:ss}] {Level} - {Message} {Exception} {NewLine}"
+  ```json
+  "WriteTo:AWSCloudWatch": {
+    "Name": "AmazonCloudWatch",
+    "Args": {
+      "logGroup": "Ed-Fi-Publisher",
+      "logStreamPrefix": "Ed-Fi-Tools",
+      "restrictedToMinimumLevel": "Verbose",
+      "textFormatter": "EdFi.Tools.ApiPublisher.Core.Configuration.Serilog.TextFormatter,
+                        EdFi.Tools.ApiPublisher.Core"
     }
   }
-}
-```
+  ```
+
+  :::info note:
+
+  The default template format provided by the TextFormatter is:
+
+  ```text
+  [{Timestamp:yyyy-MM-dd HH:mm:ss,fff}] [{Level}] [{ThreadId:00}]
+  [{SourceContext}] - {Message} {Exception} {NewLine}
+  ```
+
+  :::
+
+* Using a custom format
+
+  ```json
+  "WriteTo:AWSCloudWatch": {
+    "Name": "AmazonCloudWatch",
+    "Args": {
+      "logGroup": "Ed-Fi-Publisher",
+      "logStreamPrefix": "Ed-Fi-Tools",
+      "restrictedToMinimumLevel": "Verbose",
+      "textFormatter": {
+        "type": "EdFi.Tools.ApiPublisher.Core.Configuration.Serilog.TextFormatter,
+                 EdFi.Tools.ApiPublisher.Core",
+        "format": "[{Timestamp:MM-dd HH:mm:ss}] {Level} - {Message} {Exception} {NewLine}"
+      }
+    }
+  }
+  ```
 
 ## Values accepted in the template format
 
@@ -74,26 +74,26 @@ The default template format provided by the TextFormatter is:
    `{Timestamp:dd-MM-yy}`
 3. The following values are accepted by the implementation.
 
-   - **Timestamp:** Date and time of the event. It can be formatted using the
+   * **Timestamp:** Date and time of the event. It can be formatted using the
      [Custom date and time format string](https://learn.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings)
      provided by .NET.
-   - **Level:** Level of the event. The values will be display as follows and
+   * **Level:** Level of the event. The values will be display as follows and
      cannot be formatted
-     - Verbose => "ALL"
-     - Debug => "DEBUG"
-     - Information => "INFO"
-     - Warning => "WARN"
-     - Error => "ERROR"
-     - Fatal => "FATAL"
-   - **ThreadId:** Thread where the event was triggered. Is an Integer and can
+     * Verbose => "ALL"
+     * Debug => "DEBUG"
+     * Information => "INFO"
+     * Warning => "WARN"
+     * Error => "ERROR"
+     * Fatal => "FATAL"
+   * **ThreadId:** Thread where the event was triggered. Is an Integer and can
      be formatted using
      [Custom numeric format strings](https://learn.microsoft.com/en-us/dotnet/standard/base-types/custom-numeric-format-strings)
      provided by .NET
-   - **SourceContext:** Class name where the event was triggered.
-   - **Message:** Message of the event.
-   - **Exception:** Contains the message and stacktrace of the event. Cannot be
+   * **SourceContext:** Class name where the event was triggered.
+   * **Message:** Message of the event.
+   * **Exception:** Contains the message and stacktrace of the event. Cannot be
      formatted.
-   - **NewLine:** A property with the value of System.Environment.NewLine.
+   * **NewLine:** A property with the value of System.Environment.NewLine.
 
 ## More examples
 
@@ -101,31 +101,31 @@ You can also use this format in other sinks:
 
 1. Console
 
-```json
-"WriteTo:Console": {
-  "Name": "Console",
-  "Args": {
-    "formatter": {
-      "type": "EdFi.Tools.ApiPublisher.Core.Configuration.Serilog.TextFormatter,
-               EdFi.Tools.ApiPublisher.Core",
-      "format": "[{Level}] - {Message} {Exception} {NewLine}"
-    }
-  }
-}
-```
+   ```json
+   "WriteTo:Console": {
+     "Name": "Console",
+     "Args": {
+       "formatter": {
+         "type": "EdFi.Tools.ApiPublisher.Core.Configuration.Serilog.TextFormatter,
+                  EdFi.Tools.ApiPublisher.Core",
+         "format": "[{Level}] - {Message} {Exception} {NewLine}"
+       }
+     }
+   }
+   ```
 
 2. File
 
-```json
-"WriteTo:File": {
-  "Name": "File",
-  "Args": {
-    "formatter": {
-      "type": "EdFi.Tools.ApiPublisher.Core.Configuration.Serilog.TextFormatter,
-               EdFi.Tools.ApiPublisher.Core",
-      "format": "[{Level}] - {Message} {Exception} {NewLine}"
-    },
-    "path": "C:\\ProgramData\\Ed-Fi-API-Publisher\\Ed-Fi-API-PublisherSerilog.log"
-  }
-}
-```
+   ```json
+   "WriteTo:File": {
+     "Name": "File",
+     "Args": {
+       "formatter": {
+         "type": "EdFi.Tools.ApiPublisher.Core.Configuration.Serilog.TextFormatter,
+                  EdFi.Tools.ApiPublisher.Core",
+         "format": "[{Level}] - {Message} {Exception} {NewLine}"
+       },
+       "path": "C:\\ProgramData\\Ed-Fi-API-Publisher\\Ed-Fi-API-PublisherSerilog.log"
+     }
+   }
+   ```

@@ -41,14 +41,14 @@ delete operations.
 
 The API client MUST be able to perform the following actions:
 
-- Capture and log transport errors, including all applicable HTTP errors.
+* Capture and log transport errors, including all applicable HTTP errors.
 
-- Demonstrate the capability for re-delivery of API resources updates following
+* Demonstrate the capability for re-delivery of API resources updates following
   failed transmissions. This re-delivery does not have to be immediate and it
   can require user intervention (e.g., surface an error to a user and ask the
   user if they want to retry).
 
-- In the event that repeated delivery fails for the same resource update,
+* In the event that repeated delivery fails for the same resource update,
   surface error reports to a system user.
 
 Field work within the Ed-Fi community has revealed that this application
@@ -76,17 +76,17 @@ the data MUST NOT be real or even derived from real data.
 
 For each API resource element, the requirement status is marked as follows:
 
-- **REQUIRED**: the element must be supplied. Note that
+* **REQUIRED**: the element must be supplied. Note that
   the [Requirements - Testing Requirements](../../../certification-for-data-providers/requirements-testing-requirements.md)
   lists permitted workarounds for many cases where the element may be missing in
   the source system.
 
-- **CONDITIONAL**: the element is required IF AND ONLY IF a standard
+* **CONDITIONAL**: the element is required IF AND ONLY IF a standard
   installation of the product has this element. Providers not providing these
   elements will be required to submit proof that these elements are not present
   by default in their systems.
 
-- **OPTIONAL**: these elements are optional.
+* **OPTIONAL**: these elements are optional.
 
 Note that for some test cases additional data requirements are listed. This is
 the case (for example) in some places where there are multiple common ways that

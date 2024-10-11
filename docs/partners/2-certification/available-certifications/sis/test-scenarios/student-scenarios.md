@@ -11,7 +11,7 @@ educational institution.
 
 ### Prerequisites
 
-- None
+* None
 
 ### Scenarios
 
@@ -22,7 +22,7 @@ educational institution.
 3. Update the Birth date on the first Student.
 4. Update the Birth City on the second Student.
 
-| Resource | Property Name          | Is Collection | Data Type              | Required / Optional | Scenario 1 <br/>POST | Scenario 2 <br/>POST | Scenario 3 <br/>PUT | Scenario 4 <br/>PUT |
+| Resource | Property Name          | Is Collection | Data Type              | Required / Optional | Scenario 1: POST | Scenario 2: POST | Scenario 3: PUT | Scenario 4: PUT |
 | -------- | ---------------------- | ------------- | ---------------------- | ------------------- | -------------------- | -------------------- | ------------------- | ------------------- |
 | Students | studentUniqueId        | FALSE         | string                 | REQUIRED            | 111111               | 222222               | 111111              | 222222              |
 | Students | birthCity              | FALSE         | string                 | REQUIRED            | Grand Bend           | Grand Bend           | Grand Bend          | Grand **Oaks**      |

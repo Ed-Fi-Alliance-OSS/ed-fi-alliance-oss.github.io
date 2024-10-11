@@ -124,9 +124,9 @@ This part of the configuration can only be defined in the
 
 | JSON Path                                                  | Description                                                                                                                                                                                                  |
 | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| /authorizationFailureHandling\[\*]                         | Defines metadata for a single resource which could experience 403 Forbidden responses.                                                                                                                       |
-| /authorizationFailureHandling\[\*]/path                    | The partial path for the resource (e.g. `/ed-fi/students`) for which additional 403 Forbidden processing should be performed.                                                                                |
-| /authorizationFailureHandling\[\*]/updatePrerequisitePaths | An array of partial paths for the resource(s) (e.g. `/ed-fi/studentSchoolAssociations`) that should be processed before attempting to retry the original request which resulted in an authorization failure. |
+| /authorizationFailureHandling[*]                         | Defines metadata for a single resource which could experience 403 Forbidden responses.                                                                                                                       |
+| /authorizationFailureHandling[*]/path                    | The partial path for the resource (e.g. `/ed-fi/students`) for which additional 403 Forbidden processing should be performed.                                                                                |
+| /authorizationFailureHandling[*]/updatePrerequisitePaths | An array of partial paths for the resource(s) (e.g. `/ed-fi/studentSchoolAssociations`) that should be processed before attempting to retry the original request which resulted in an authorization failure. |
 
 The default configuration, which will probably suffice for all current Ed-Fi ODS
 API deployments, is as follows:

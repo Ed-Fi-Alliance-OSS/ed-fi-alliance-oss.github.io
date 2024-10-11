@@ -10,7 +10,7 @@ service.
 
 ### Prerequisites
 
-- Staff
+* Staff
 
 ### Scenarios
 
@@ -25,7 +25,7 @@ service.
 **\*Note:** **positionTitle** can duplicate the value in **staffClassification**
 if not tracked in your SIS.\*
 
-| Resource                                         | Property Name                  | Is Collection | Data Type                      | Required / Optional | Scenario 1 <br/>POST             | Scenario 2 <br/>POST             | Scenario 3 <br/>PUT              | Scenario 4 <br/>PUT              |
+| Resource                                         | Property Name                  | Is Collection | Data Type                      | Required / Optional | Scenario 1: POST             | Scenario 2: POST             | Scenario 3: PUT              | Scenario 4: PUT              |
 | ------------------------------------------------ | ------------------------------ | ------------- | ------------------------------ | ------------------- | -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- | -------------------------- | ------------- | -------------------------- | ------------- |
 | StaffEducationOrganizationAssignmentAssociations | staffReference                 | FALSE         | staffReference                 | REQUIRED            |                                  |                                  |                                  |                                  |
 | staffReference                                   | staffUniqueId                  | FALSE         | string                         | REQUIRED            | ["207220" if possible<br/>       | system value]                    | ["207269" if possible<br/>       | system value]                    | ["207220" if possible<br/> | system value] | ["207269" if possible<br/> | system value] |

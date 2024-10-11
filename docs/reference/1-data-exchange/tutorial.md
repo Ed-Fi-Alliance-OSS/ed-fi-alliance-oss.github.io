@@ -36,7 +36,7 @@ GET https://api.ed-fi.org/v7.1/api/
 
 In particular, note the following:
 
-- This application support the Ed-Fi Data Standard 5.0 with Teacher Preparation
+* This application support the Ed-Fi Data Standard 5.0 with Teacher Preparation
   Data Model (TPDM) extension 1.1.
 
 :::info
@@ -59,7 +59,7 @@ Standard.
 
 :::
 
-- Authentication requests (described in the next section) need to use the URL
+* Authentication requests (described in the next section) need to use the URL
   specified in the `$.urls.oauth` property.
 
 :::info
@@ -73,7 +73,7 @@ version number is at path `$.dataModels[1].version`.
 
 :::
 
-- The `$.urls.dataManagementApi` provides the base path for access to Ed-Fi
+* The `$.urls.dataManagementApi` provides the base path for access to Ed-Fi
   Resources and Ed-Fi Descriptors &mdash; the entities you are managing via an
   Ed-Fi API application. The Ed-Fi API Standard defines the complete URL for
   accessing a resource as the combination of this base URL, a namespace
@@ -233,10 +233,10 @@ We'll use the `schoolId` value in the next section.
 
 The data model for `studentSchoolAssociation` has only four required properties:
 
-- `schoolReference`
-- `studentReference`
-- `entryDate`
-- `entryGradeLevelDescriptor`
+* `schoolReference`
+* `studentReference`
+* `entryDate`
+* `entryGradeLevelDescriptor`
 
 These "references" describe other resources that must already exist in the API
 application. In this case, the reference values are rather simple, both
@@ -415,11 +415,11 @@ A few tips to help you navigate and use the tool:
 The following resources will help you learn more about working with an Ed-Fi API
 application:
 
-- [Ed-Fi API Guidelines](./api-guidelines/): this space contains guidance on how
+* [Ed-Fi API Guidelines](./api-guidelines/): this space contains guidance on how
   to build a compliant Ed-Fi API application. Those who are writing client
   applications that interact with a compatible Ed-Fi API application can also
   benefit by learning more about what to expect from the system.
-- [API Client Developers' Guide](../ods-api/client-developers-guide): provides
+* [API Client Developers' Guide](../ods-api/client-developers-guide): provides
   more detail on many of the topics explored in this tutorial, and covers
   additional details not reviewed here. This link is to the Ed-fFi ODS/API
   version 7.1 documentation. Most if not all content there applies equally to

@@ -4,7 +4,7 @@
 
 For other important guidance, see also:
 
-- [Coding Standards - General Principles](./README.md)
+* [Coding Standards - General Principles](./README.md)
 
 :::
 
@@ -66,9 +66,9 @@ team(s).
 
    The following parameter names use incorrect capitalization:
 
-   - ~`errorAction`~
+   * ~`errorAction`~
 
-   - ~`erroraction`~
+   * ~`erroraction`~
 
 ## Formatting
 
@@ -191,7 +191,7 @@ team(s).
    see [Writing Help for PowerShell](https://docs.microsoft.com/en-us/powershell/scripting/developer/help/writing-help-for-windows-powershell-scripts-and-functions?view=powershell-5.1).
    Basic guidance:
 
-   1. Place a comment block *inside* the function definition, with, at minimum,
+   1. Place a comment block _inside_ the function definition, with, at minimum,
       a `SYNOPSIS`. Placing the block inside the function helps to ensure that
       it is not "left-behind" when moving the function around.
 

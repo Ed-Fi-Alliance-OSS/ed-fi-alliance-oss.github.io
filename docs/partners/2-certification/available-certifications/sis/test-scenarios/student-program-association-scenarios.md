@@ -7,10 +7,10 @@ participates in or is served by.
 
 ### **Prerequisites**
 
-- Ed-Org (pre-loaded)
-- Program (pre-loaded)
-- Student
-- Student Enrollment
+* Ed-Org (pre-loaded)
+* Program (pre-loaded)
+* Student
+* Student Enrollment
 
 ### Scenarios
 
@@ -23,7 +23,7 @@ participates in or is served by.
 
 (Note: the Program's educationOrganizationId is the Local Education Agency ID)
 
-| Resource                       | Property Name                  | Is Collection | Data Type                      | Required / Optional | Scenario 1 <br/>POST                        | Scenario 2 <br/>POST                        | Scenario 3 <br/>PUT                                  | Scenario 4 <br/>PUT                                  |
+| Resource                       | Property Name                  | Is Collection | Data Type                      | Required / Optional | Scenario 1: POST                        | Scenario 2: POST                        | Scenario 3: PUT                                  | Scenario 4: PUT                                  |
 | ------------------------------ | ------------------------------ | ------------- | ------------------------------ | ------------------- | ------------------------------------------- | ------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
 | StudentProgramAssociations     | beginDate                      | FALSE         | date                           | REQUIRED            | 8/23/<br/>`<br/>[Current School Year]<br/>` | 8/23/<br/>`<br/>[Current School Year]<br/>` | **09/30/**<br/>`<br/>**[Current School Year]**<br/>` | **10/20/**<br/>`<br/>**[Current School Year]**<br/>` |
 | StudentProgramAssociations     | educationOrganizationReference | FALSE         | educationOrganizationReference | REQUIRED            |                                             |                                             |                                                      |                                                      |

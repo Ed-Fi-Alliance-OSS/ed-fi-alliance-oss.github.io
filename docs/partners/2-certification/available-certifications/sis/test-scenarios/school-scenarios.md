@@ -5,7 +5,7 @@ students who participate in classes and educational activity groups.
 
 ### Prerequisites
 
-- None
+* None
 
 ### Scenarios
 
@@ -17,7 +17,7 @@ students who participate in classes and educational activity groups.
 _Note: shortNameOfInstitution can duplicate the value in nameOfInstitution if
  not tracked in your SIS._
 
-| Resource                        | Property Name                           | Is Collection | Data Type                       | Required / Optional | Scenario 1 <br/>POST   | Scenario 2 <br/>POST     | Scenario 3 <br/>PUT    | Scenario 4 <br/>PUT      |
+| Resource                        | Property Name                           | Is Collection | Data Type                       | Required / Optional | Scenario 1: POST   | Scenario 2: POST     | Scenario 3: PUT    | Scenario 4: PUT      |
 | ------------------------------- | --------------------------------------- | ------------- | ------------------------------- | ------------------- | ---------------------- | ------------------------ | ---------------------- | ------------------------ |
 | Schools                         | addresses                               | TRUE          | educationOrganizationAddress[]  | REQUIRED            |                        |                          |                        |                          |
 | educationOrganizationAddresses  | addressTypeDescriptor                   | FALSE         | string                          | REQUIRED            | Physical               | Physical                 | Physical               | Physical                 |

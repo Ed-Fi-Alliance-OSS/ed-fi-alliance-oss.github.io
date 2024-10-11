@@ -8,10 +8,10 @@ discipline incident..
 
 ## Prerequisites
 
-- Student
-- Staff
-- Enrollment
-- Discipline Incident
+* Student
+* Staff
+* Enrollment
+* Discipline Incident
 
 ## Scenarios
 
@@ -24,8 +24,8 @@ discipline incident..
    "Community Service".
 5. Delete the Discipline Action for the elementary school student.
 
-| Resource                                              | Property Name                                 | Is Collection | Data Type                                     | Required / Optional | Scenario 1 <br/>POST            | Scenario 2 <br/>POST            | Scenario 3 <br/>PUT             | Scenario 4 <br/>PUT             |
-| ----------------------------------------------------- | --------------------------------------------- | ------------- | --------------------------------------------- | ------------------- | ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- | -------------------------- | ------------- | -------------------------- | ------------- |
+| Resource                                              | Property Name                                 | Is Collection | Data Type                                     | Required / Optional | Scenario 1: POST            | Scenario 2: POST            | Scenario 3: PUT             | Scenario 4: PUT             |
+| ----------------------------------------------------- | --------------------------------------------- | ------------- | --------------------------------------------- | ------------------- | ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
 | DisciplineActions                                     | disciplineActionIdentifier                    | FALSE         | nvarchar                                      | REQUIRED            | 11                              | 22                              | 11                              | 22                              |
 | DisciplineActions                                     | disciplines                                   | TRUE          | disciplineActionDiscipline[]                  | REQUIRED            |                                 |                                 |                                 |                                 |
 | disciplineActionDisciplines                           | disciplineDescriptor                          | FALSE         | disciplineDescriptor                          | REQUIRED            | Out of School Suspension        | In School Suspension            | **In School Suspension**        | **Community Service**           |
@@ -36,7 +36,7 @@ discipline incident..
 | DisciplineActions                                     | receivedEducationServicesDuringExpulsion      | FALSE         | boolean                                       | REQUIRED            | TRUE                            |                                 |                                 |                                 |
 | DisciplineActions                                     | studentDisciplineIncidentAssociations         | TRUE          | studentDisciplineIncidentAssociation[]        | REQUIRED            |                                 |                                 |                                 |                                 |
 | disciplineActionStudentDisciplineIncidentAssociations | studentDisciplineIncidentAssociationReference | FALSE         | studentDisciplineIncidentAssociationReference | REQUIRED            |                                 |                                 |                                 |                                 |
-| studentDisciplineIncidentAssociationReference         | incidentIdentifier                            | FALSE         | string                                        | REQUIRED            | ["1" if possible<br/><br/>      | system value]                   | ["2" if possible<br/><br/>      | system value]                   | ["1" if possible<br/><br/> | system value] | ["2" if possible<br/><br/> | system value] |
+| studentDisciplineIncidentAssociationReference         | incidentIdentifier                            | FALSE         | string                                        | REQUIRED            | ["1" if possible \| system value]                   | ["2" if possible \| system value]                   | ["1" if possible \| system value] | ["2" if possible \| system value] |
 | studentDisciplineIncidentAssociationReference         | schoolId                                      | FALSE         | integer                                       | REQUIRED            | 255901107                       | 255901001                       | 255901107                       | 255901001                       |
 | studentDisciplineIncidentAssociationReference         | studentUniqueId                               | TRUE          | string                                        | REQUIRED            | 111111                          | 222222                          | 111111                          | 222222                          |
 | DisciplineActions                                     | responsibilitySchoolReference                 | FALSE         | responsibilitySchoolReference                 | REQUIRED            |                                 |                                 |                                 |                                 |

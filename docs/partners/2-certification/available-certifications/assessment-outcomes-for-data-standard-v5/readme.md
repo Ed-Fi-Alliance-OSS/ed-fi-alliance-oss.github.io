@@ -37,9 +37,9 @@ by the Ed-Fi community to be critical to "real world" data exchange and
 interoperability. These include requirements around error handling and recovery,
 roster configurability, and others.
 
-This conformance specification covers the provider certification *–* that is,
-the responsibilities of the *API* *client* implementer and not the *API*
-*consumer*. Given market demand, the Alliance will publish a consumer
+This conformance specification covers the provider certification _–_ that is,
+the responsibilities of the _API_ _client_ implementer and not the _API_
+_consumer_. Given market demand, the Alliance will publish a consumer
 conformance specification as well. Both certifications will use the same
 technical API specifications provided as part of the
 [ED-FI RFC 22 - ASSESSMENT OUTCOMES API](https://edfi.atlassian.net/wiki/spaces/EFDSRFC/pages/25363177/ED-FI+RFC+22+-+ASSESSMENT+OUTCOMES+API).
@@ -108,10 +108,10 @@ The Assessment API model contains a number of controlled vocabularies.
 For some enumerations, a vendor is allowed to supply their own additional values
 if an Ed-Fi value fails to match the semantics needed. These enumerations are:
 
-- AssessmentPeriodDescriptor
-- PerformanceLevelDescriptor
-- AccommodationDescriptor
-- AssessmentReportingMethodDescriptor
+* AssessmentPeriodDescriptor
+* PerformanceLevelDescriptor
+* AccommodationDescriptor
+* AssessmentReportingMethodDescriptor
 
 The certification captures and publishes vendor-specific enumerations (in the
 provider entry in the

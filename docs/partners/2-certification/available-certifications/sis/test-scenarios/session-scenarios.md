@@ -11,9 +11,9 @@ A session may be interrupted by one or more vacations.
 
 ### Prerequisites
 
-- School
+* School
 
-- GradingPeriod
+* GradingPeriod
 
 ### Scenarios
 

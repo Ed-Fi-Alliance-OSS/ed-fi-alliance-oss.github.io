@@ -56,24 +56,24 @@ methods, fields and variables to reduce maintenance costs.
 
 2. Name dictionaries using a name format of `{ValueName}By{KeyName}`.
 
-   - Precisely describe the keys and values (e.g., `SchoolNameById` would
+   * Precisely describe the keys and values (e.g., `SchoolNameById` would
      indicate that you can obtain a school's name by its identifier).
 
-   - If each entry’s value is a single item, the name should be singularized
+   * If each entry’s value is a single item, the name should be singularized
      (e.g., `StudentById`).
 
-   - If each entry’s value is a collection, the name should be pluralized
+   * If each entry’s value is a collection, the name should be pluralized
      (e.g., `StudentsBySectionId`).
 
 3. Use the following guidelines when defining generic types:
 
-   - For types with a single generic type, prefer the use of `T`.
+   * For types with a single generic type, prefer the use of `T`.
 
      ```csharp
      public interface IList<T>
      ```
 
-   - For types with multiple generic types, use a capital "T" followed by an
+   * For types with multiple generic types, use a capital "T" followed by an
      optional secondary name for additional clarity. In all cases, start the
      type with a capital letter.
 

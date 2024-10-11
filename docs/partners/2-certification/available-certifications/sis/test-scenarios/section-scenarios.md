@@ -10,9 +10,9 @@ period of time. A course offering may be associated to more than one section.
 
 ### Prerequisites
 
-- Class Period
-- Location
-- Course Offering
+* Class Period
+* Location
+* Course Offering
 
 ### Scenarios
 
@@ -23,7 +23,7 @@ period of time. A course offering may be associated to more than one section.
 3. Update the availableCredits for the for Grand Bend Elementary School Section
 4. Update the availableCredits for the Grand Bend High School section
 
-| Resource                | Property Name                    | Is Collection | Data Type                        | Required / Optional | Scenario 1 <br/>POST                     | Scenario 2 <br/>POST    | Scenario 3 <br/>PUT                      | Scenario 4 <br/>PUT     |
+| Resource                | Property Name                    | Is Collection | Data Type                        | Required / Optional | Scenario 1: POST                     | Scenario 2: POST    | Scenario 3: PUT                      | Scenario 4: PUT     |
 | ----------------------- | -------------------------------- | ------------- | -------------------------------- | ------------------- | ---------------------------------------- | ----------------------- | ---------------------------------------- | ----------------------- | ---------------------------------------- | ------------- | ---------------------------------------- | ------------- |
 | Sections                | classPeriods                     | TRUE          | classPeriods{}                   | REQUIRED            |                                          |                         |                                          |                         |
 | classPeriods            | classPeriodReference             | FALSE         | classPeriodReference             | REQUIRED            |                                          |                         |                                          |                         |

@@ -45,37 +45,37 @@ practices.
 
 ### Summary of Policies and Best Practices
 
-- Only uses "3rd party" actions that are in the
+* Only uses "3rd party" actions that are in the
   [approved.json](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Actions/blob/main/action-allowedlist/approved.json).
-  - Collaborate with an Ed-Fi Tech Team member if you would like to bring in a
+  * Collaborate with an Ed-Fi Tech Team member if you would like to bring in a
     new action or a new version of a previously-trusted action.
-- Most repositories will have separate workflows for these tasks:
+* Most repositories will have separate workflows for these tasks:
   1. Dependency Review (mandatory)
   2. Code Review (mandatory)
   3. Build and Test
   4. Publish
-- Minimize build time by using dependency caching and not performing unnecessary
+* Minimize build time by using dependency caching and not performing unnecessary
   steps (e.g. rebuilding already built code).
-- Fail fast... and make sure the failure is obvious / easy to diagnose.
-- For new repositories, start with automation before code is developed
+* Fail fast... and make sure the failure is obvious / easy to diagnose.
+* For new repositories, start with automation before code is developed
   (security-driven development, like test- or behavior-driven development).
-- For any workflows that publish packages, do not add the publish step to the
+* For any workflows that publish packages, do not add the publish step to the
   workflow until you are sure the package being created is correct
-  - This ensures that any packages that end up in Azure Artifacts are correct
+  * This ensures that any packages that end up in Azure Artifacts are correct
     and not erroneous ones built before the workflow was complete.
-  - You can utilize the approved upload-artifact action to upload the package to
+  * You can utilize the approved upload-artifact action to upload the package to
     the build results so you can view it there to confirm if it is correct or
     not.
-- Build once and reuse is always a good idea. When temporarily storing build
+* Build once and reuse is always a good idea. When temporarily storing build
   output as an artifact for download in another job, specify the exact commit
   hash or run id of the artifacts to download.
 
 ### Examples
 
-- All
+* All
 
-  - **[Dependency Scan](https://github.com/Ed-Fi-Exchange-OSS/Suite-3-Performance-Testing/blob/main/.github/workflows/dependencies.yml)**
-  - Safe download of artifacts
+  * **[Dependency Scan](https://github.com/Ed-Fi-Exchange-OSS/Suite-3-Performance-Testing/blob/main/.github/workflows/dependencies.yml)**
+  * Safe download of artifacts
 
     ```yml title="Example"
     # This uses the commit hash to specify exactly which process to download from.
@@ -95,21 +95,21 @@ practices.
         if_no_artifact_found: fail
     ```
 
-- Dotnet
-  - [Admin App: **Build and Test**](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-AdminApp/blob/main/.github/workflows/build.yml)
-  - [Admin App: **Integration Testing**](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-AdminApp/blob/main/.github/workflows/e2e.yml)
-    - Interestingly, demonstrates starting up the ODS/API and Admin App in
+* Dotnet
+  * [Admin App: **Build and Test**](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-AdminApp/blob/main/.github/workflows/build.yml)
+  * [Admin App: **Integration Testing**](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-AdminApp/blob/main/.github/workflows/e2e.yml)
+    * Interestingly, demonstrates starting up the ODS/API and Admin App in
       Docker
-  - [Analytics Middle Tier: **Build and Test**](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Analytics-Middle-Tier/blob/main/.github/workflows/build.yml)
-  - [Analytics Middle Tier: **Publish Zip File to GitHub Release**](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Analytics-Middle-Tier/blob/main/.github/workflows/create-pre-release.yml)
-    - Most projects publish library packages to Azure Artifacts or PyPi, but AMT
+  * [Analytics Middle Tier: **Build and Test**](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Analytics-Middle-Tier/blob/main/.github/workflows/build.yml)
+  * [Analytics Middle Tier: **Publish Zip File to GitHub Release**](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Analytics-Middle-Tier/blob/main/.github/workflows/create-pre-release.yml)
+    * Most projects publish library packages to Azure Artifacts or PyPi, but AMT
       publishes a zip file with command-line executable, using GitHub release as
       the storage mechanism.
-- NodeJS
-  - [Meadowlark: **Build and Test**](https://github.com/Ed-Fi-Exchange-OSS/Meadowlark/blob/main/.github/workflows/test.yml)
-- Python
-  - [Performance Test Suite: **CodeQL Security Scan**](https://github.com/Ed-Fi-Exchange-OSS/Suite-3-Performance-Testing/blob/main/.github/workflows/codeql.yml)
-  - [Performance Test Suite: **Build and Test**](https://github.com/Ed-Fi-Exchange-OSS/Suite-3-Performance-Testing/blob/main/.github/workflows/edfi_paging_test.yml)
+* NodeJS
+  * [Meadowlark: **Build and Test**](https://github.com/Ed-Fi-Exchange-OSS/Meadowlark/blob/main/.github/workflows/test.yml)
+* Python
+  * [Performance Test Suite: **CodeQL Security Scan**](https://github.com/Ed-Fi-Exchange-OSS/Suite-3-Performance-Testing/blob/main/.github/workflows/codeql.yml)
+  * [Performance Test Suite: **Build and Test**](https://github.com/Ed-Fi-Exchange-OSS/Suite-3-Performance-Testing/blob/main/.github/workflows/edfi_paging_test.yml)
 
 #### Testing
 
@@ -125,14 +125,14 @@ Generically speaking, a build and test workflow should look something like this:
 
 #### Trigger
 
-- Run on pull request where source code files are modified in the directory that
+* Run on pull request where source code files are modified in the directory that
   is being monitored.
-  - If the repository is a monorepo, then it might be appropriate to have
+  * If the repository is a monorepo, then it might be appropriate to have
     separate workflows for each application or package.
-  - Safe to skip running if only markdown files are modified.
-- Run on push to the `main`  branch.
-  - It is not necessary to run on every push to every branch.
-- Often convenient to also allow push button execution ("workflow dispatch").
+  * Safe to skip running if only markdown files are modified.
+* Run on push to the `main`  branch.
+  * It is not necessary to run on every push to every branch.
+* Often convenient to also allow push button execution ("workflow dispatch").
 
 #### Job
 
@@ -173,10 +173,10 @@ Why? Here is a realistic scenario:
       account)
    3. Re-creates the tag
 
-If a GitHub Actions job uses the *tag* to access the "correct" Action, then it
-will import the maliciously-hacked version. But if it uses the *commit hash* -
+If a GitHub Actions job uses the _tag_ to access the "correct" Action, then it
+will import the maliciously-hacked version. But if it uses the _commit hash_ -
 which the malicious user won't be able to manipulate - then either the GitHub
-Actions job will import the correct (pre-hacked) code *or* it will simply fail,
+Actions job will import the correct (pre-hacked) code _or_ it will simply fail,
 if the hacker removed that commit from the repository.
 
 ❌ This initial example has code from
@@ -201,9 +201,9 @@ jobs:
 
 ⚠️ Better:
 
-- [https://github.com/actions/checkout/releases/tag/v2](https://github.com/actions/checkout/releases/tag/v2)
+* [https://github.com/actions/checkout/releases/tag/v2](https://github.com/actions/checkout/releases/tag/v2)
   get the commit hash → ec3a7ce113134d7a93b817d10a8272cb61118579
-- [https://github.com/actions/setup-node/releases/tag/v2](https://github.com/actions/setup-node/releases/tag/v2)
+* [https://github.com/actions/setup-node/releases/tag/v2](https://github.com/actions/setup-node/releases/tag/v2)
   → 1f8c6b94b26d0feae1e387ca63ccbdc44d27b561
 
 **Better**
@@ -225,7 +225,7 @@ jobs:
 
 ✅ Best:
 
-- For the benefit of future readers, retain the version tag as a comment at the
+* For the benefit of future readers, retain the version tag as a comment at the
   end of the `uses` line.
 
 **Best**
@@ -284,10 +284,10 @@ For all GitHub Actions that are created by third-parties (that is, with a
 namespace other than "action"),  and Ed-Fi tech team member should scan through
 the source code to look for any obviously malicious or suspicious code:
 
-- Code that modifies our source code
-- Requests out to a third-party server
-- Use of `GITHUB_TOKEN` for any unexpected reason
-- Echo statements that try to guess at repository secrets and print them to the
+* Code that modifies our source code
+* Requests out to a third-party server
+* Use of `GITHUB_TOKEN` for any unexpected reason
+* Echo statements that try to guess at repository secrets and print them to the
   log
 
 :::tip
@@ -334,10 +334,10 @@ The Ubuntu-based runners provided by GitHub include most of the development
 tools that an Ed-Fi developer will need to access: .NET, Python, Nodejs,
 PostgreSQL. Windows runners should be avoided whenever possible:
 
-- this helps us continue focusing on cross-platform development
-- the Ubuntu runners tend to startup faster and finish builds more quickly
+* this helps us continue focusing on cross-platform development
+* the Ubuntu runners tend to startup faster and finish builds more quickly
   (anecdotal evidence)
-- for private repositories (MetaEd, DataImport), Windows-based runners incur
+* for private repositories (MetaEd, DataImport), Windows-based runners incur
   double the "charge" against the available 2000 minutes of execution time.
 
 For more information about available runners, please see
@@ -466,7 +466,7 @@ organization, as shown in the screenshot below.
 ![Fine-Grained PATs](/img/sdlc/fine-grained-pats.png)
 
 When clicking Save on this form, it will generate a token - copy that and save
-it as a secret - and it will generate a *request* for approval of that token.
+it as a secret - and it will generate a _request_ for approval of that token.
 The request will show up in the Setting for the organization, and must be
 approved before the token can be used
 ([Exchange settings](https://github.com/organizations/Ed-Fi-Exchange-OSS/settings/personal-access-token-requests)).

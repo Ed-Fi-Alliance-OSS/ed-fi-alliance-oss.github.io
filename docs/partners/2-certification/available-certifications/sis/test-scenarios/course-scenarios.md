@@ -6,7 +6,7 @@ regular or systematic basis.
 
 ## Prerequisites
 
-- None
+* None
 
 ## Scenarios
 
@@ -15,10 +15,10 @@ regular or systematic basis.
 3. Update Algebra I to Algebra II
 4. Changed Core Subject to Basic
 
-| Resource                       | Property Name                        | Is <br/>Collection | Data Type                            | Required / <br/>Optional | Scenario 1 <br/>POST          | Scenario 2 <br/>POST     | Scenario 3 <br/>PUT | Scenario 4 <br/>PUT           |
-| ------------------------------ | ------------------------------------ | ------------------ | ------------------------------------ | ------------------------ | ----------------------------- | ------------------------ | ------------------- | ----------------------------- | ------------- | ------ |
+| Resource                       | Property Name                        | Is Collection | Data Type                            | Required/Optional | Scenario 1: POST          | Scenario 2: POST     | Scenario 3: PUT | Scenario 4: PUT           |
+| ------------------------------ | ------------------------------------ | ------------------ | ------------------------------------ | ------------------------ | ----------------------------- | ------------------------ | ------------------- | ----------------------------- |
 | Courses                        | academicSubjectDescriptor            | FALSE              | academicSubjectDescriptor            | REQUIRED                 | Mathematics                   | Fine and Performing Arts | Mathematics         | Fine and Performing Arts      |
-| Courses                        | courseCode                           | FALSE              | string                               | REQUIRED                 | [ALG 01 if possible<br/><br/> | system value]            | ART 01              | [ALG 01 if possible<br/><br/> | system value] | ART 01 |
+| Courses                        | courseCode                           | FALSE              | string                               | REQUIRED                 | [ALG 01 if possible \| system value]            | ART 01              | [ALG 01 if possible \| system value] | ART 01 |
 | Courses                        | courseIdentificationCodes            | TRUE               | courseIdentificationCode             | REQUIRED                 |                               |                          |                     |                               |
 | courseIdentificationCodes      | courseIdentificationSystemDescriptor | FALSE              | courseIdentificationSystemDescriptor | REQUIRED                 | State course code             | LEA course code          | State course code   | LEA course code               |
 | courseIdentificationCodes      | identificationCode                   | FALSE              | string                               | REQUIRED                 | 03100500                      | ART 01                   | 03100500            | ART 01                        |

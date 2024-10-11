@@ -9,13 +9,13 @@ where both attendance and absences are reported.
 The StudentSchoolAttendanceEvent entity represents the recording of whether a
 student is in attendance for a school day.
 
-### Prerequisites
+## Prerequisites
 
-- Student
-- Section
-- Student Enrollment
+* Student
+* Section
+* Student Enrollment
 
-### Scenarios
+## Scenarios
 
 1. Create a Tardy Attendance Event for Austin Jones.
 2. Create an Unexcused Absence Attendance event for Madison Johnson.
@@ -24,7 +24,7 @@ student is in attendance for a school day.
 
 5. Delete the Attendance Event for Austin Jones.
 
-| Resource                      | Property Name                     | Is Collection | Data Type                         | Required / Optional | Scenario 1 <br/>POST         | Scenario 2 <br/>POST         | Scenario 3 <br/>PUT          | Scenario 4 <br/>PUT          |
+| Resource                      | Property Name                     | Is Collection | Data Type                         | Required / Optional | Scenario 1: POST         | Scenario 2: POST         | Scenario 3: PUT          | Scenario 4: PUT          |
 | ----------------------------- | --------------------------------- | ------------- | --------------------------------- | ------------------- | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
 | StudentSchoolAttendanceEvents | schoolReference                   | FALSE         | schoolReference                   | REQUIRED            |                              |                              |                              |                              |
 | schoolReference               | schoolId                          | FALSE         | integer                           | REQUIRED            | 255901107                    | 255901001                    | 255901107                    | 255901001                    |

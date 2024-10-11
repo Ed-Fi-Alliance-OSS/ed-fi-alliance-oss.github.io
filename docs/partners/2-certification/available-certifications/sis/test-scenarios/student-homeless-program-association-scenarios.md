@@ -8,10 +8,10 @@ extension of the StudentProgramAssociation particular for Homeless programs.
 
 ### Prerequisites
 
-- Ed-Org (pre-loaded)
-- Program (pre-loaded)
-- Student
-- Student Enrollment
+* Ed-Org (pre-loaded)
+* Program (pre-loaded)
+* Student
+* Student Enrollment
 
 ### Scenarios
 
@@ -21,7 +21,7 @@ extension of the StudentProgramAssociation particular for Homeless programs.
 
 (Note: the Program's educationOrganizationId is the Local Education Agency ID)
 
-| Resource                           | Property Name                               | Is Collection | Data Type                                   | Required / Optional | Scenario 1 <br/>POST                        | Scenario 2 <br/>PUT                         |
+| Resource                           | Property Name                               | Is Collection | Data Type                                   | Required / Optional | Scenario 1: POST                        | Scenario 2 <br/>PUT                         |
 | ---------------------------------- | ------------------------------------------- | ------------- | ------------------------------------------- | ------------------- | ------------------------------------------- | ------------------------------------------- |
 | StudentHomelessProgramAssociations | beginDate                                   | FALSE         | date                                        | REQUIRED            | 8/23/<br/>`<br/>[Current School Year]<br/>` | 8/23/<br/>`<br/>[Current School Year]<br/>` |
 | StudentHomelessProgramAssociations | educationOrganizationReference              | FALSE         | educationOrganizationReference              | REQUIRED            |                                             |                                             |

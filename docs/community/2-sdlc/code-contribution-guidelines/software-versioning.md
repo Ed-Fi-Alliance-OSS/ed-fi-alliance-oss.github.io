@@ -9,10 +9,10 @@ _Suite Number_.
 
 Also see:
 
-- [Ed-Fi Technical Suite Version Matrix](/reference/version-matrix)
-- [Ed-Fi Data Standard Versioning and Releases](https://edfi.atlassian.net/wiki/spaces/EFDS32/pages/20187665/Ed-Fi+Data+Standard+Versioning+and+Releases)
+* [Ed-Fi Technical Suite Version Matrix](/reference/version-matrix)
+* [Ed-Fi Data Standard Versioning and Releases](https://edfi.atlassian.net/wiki/spaces/EFDS32/pages/20187665/Ed-Fi+Data+Standard+Versioning+and+Releases)
   (Confluence)
-- [Open Source and New Versioning](https://www.ed-fi.org/blog/2020/05/open-source-and-new-versioning/)
+* [Open Source and New Versioning](https://www.ed-fi.org/blog/2020/05/open-source-and-new-versioning/)
   (blog)
 
 ## Semantic Version
@@ -20,11 +20,11 @@ Also see:
 All tools released through the Ed-Fi Alliance should at minimum have a semantic
 version with three part number: x.y.z, where:
 
-- x: major version, which increments when there is a change that breaks
+* x: major version, which increments when there is a change that breaks
   compatibility.
-- y: minor version, which changes when a new feature is added in a
+* y: minor version, which changes when a new feature is added in a
   backward-compatible way.
-- z: patch version, which changes when a bug is fixed or usability is improved
+* z: patch version, which changes when a bug is fixed or usability is improved
   without adding new features or breaking compatibility.
 
 Anyone wishing to integrate another software product with an Ed-Fi tool will

@@ -149,28 +149,28 @@ multiple commits will be squashed into a single commit.
 While incredibly powerful, Git can be a little daunting to learn. The following
 tutorials are arranged from basic to more advanced.
 
-- [tryGit](https://try.github.io/levels/1/challenges/1), an interactive
+* [tryGit](https://try.github.io/levels/1/challenges/1), an interactive
   tutorial.
-- [Learn Git Branching](http://pcottle.github.io/learnGitBranching/), an
+* [Learn Git Branching](http://pcottle.github.io/learnGitBranching/), an
   interactive tutorial.
-- [Pull Request Tutorial](https://github.com/yangsu/pull-request-tutorial), with
+* [Pull Request Tutorial](https://github.com/yangsu/pull-request-tutorial), with
   many nice screenshots and some advanced functionality, such
-  as *squash*, *rebase*, and *cherry-pick*.
-- [Pro Git](https://git-scm.com/book/en/v2), the entire book, is available
+  as _squash_, _rebase_, and _cherry-pick_.
+* [Pro Git](https://git-scm.com/book/en/v2), the entire book, is available
   online for free.
 
 ### Git Security
 
-- All members (staff and contractors) of the Ed-Fi-Alliance-OSS and Ed-Fi-Closed
+* All members (staff and contractors) of the Ed-Fi-Alliance-OSS and Ed-Fi-Closed
   organizations must
   [enable Two-Factor Authentication (2FA)](https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa)
   on their GitHub accounts.
-  - Open source contributors, including on the Ed-Fi Exchange, do not require
+  * Open source contributors, including on the Ed-Fi Exchange, do not require
     2FA. They will not be granted membership or direct write access in the
     repositories; instead they will need to fork the repository, make
     modifications in their forks, and then create the pull request from the fork
     back to the primary repository.
-- All Git commits should be signed to prove authenticity.
+* All Git commits should be signed to prove authenticity.
 
 :::tip
 
@@ -216,9 +216,9 @@ Git [docs](https://git-scm.com/docs) site.
 
 You may wish to also review some or all of the following documents:
 
-- [Coding Standards - General Principles](./coding-standards)
-- [Testing Standards](./testing-standards)
-- [Ed-Fi Software Development Lifecycle Home](../)
+* [Coding Standards - General Principles](./coding-standards)
+* [Testing Standards](./testing-standards)
+* [Ed-Fi Software Development Lifecycle Home](../)
 
 ## Child Pages
 

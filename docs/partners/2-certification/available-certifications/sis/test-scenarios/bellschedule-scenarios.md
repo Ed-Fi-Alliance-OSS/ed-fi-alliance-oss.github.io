@@ -4,10 +4,10 @@ This entity represents the schedule of class period meeting times.
 
 ## Prerequisites
 
-- ClassPeriods
-  - Prior to completing this scenario please ensure you have set up at  least 6
+* ClassPeriods
+  * Prior to completing this scenario please ensure you have set up at  least 6
     class periods.
-- Schools
+* Schools
 
 ## Scenarios
 
@@ -16,7 +16,7 @@ This entity represents the schedule of class period meeting times.
 3. Create an Early Release  A Day Bell Schedule
 4. Create an Early Release B Day Bell Schedule
 
-| Resource             | Property Name        | Is Collection | Data Type            | Required / Optional | Scenario 1 <br/>POST | Scenario 2 <br/>POST | Scenario 3 <br/>POST | Scenario 4 <br/>POST |
+| Resource             | Property Name        | Is Collection | Data Type            | Required / Optional | Scenario 1: POST | Scenario 2: POST | Scenario 3 <br/>POST | Scenario 4 <br/>POST |
 | -------------------- | -------------------- | ------------- | -------------------- | ------------------- | -------------------- | -------------------- | -------------------- | -------------------- |
 | BellSchedule         | bellScheduleName     | FALSE         | string               | REQUIRED            | Normal Schedule A    | Normal Schedule B    | Early Release A      | Early Release B      |
 | BellSchedule         | schoolReference      | FALSE         | schoolReference      | REQUIRED            |                      |                      |                      |                      |

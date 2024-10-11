@@ -9,8 +9,8 @@ provides instructional services.
 
 ### Prerequisites
 
-- Section
-- Staff
+* Section
+* Staff
 
 ### Scenarios
 
@@ -25,10 +25,10 @@ provides instructional services.
 
 ### Additional Requirements
 
-- A teacher's highly qualified status may be recorded either at the Staff level
+* A teacher's highly qualified status may be recorded either at the Staff level
   or at the Staff Section Association level.
 
-| Resource                 | Property Name               | Is Collection | Data Type                   | Required / Optional | Scenario 1 <br/>POST                    | Scenario 2 <br/>POST        | Scenario 3 <br/>PUT                    | Scenario 4 <br/>PUT             |
+| Resource                 | Property Name               | Is Collection | Data Type                   | Required / Optional | Scenario 1: POST                    | Scenario 2: POST        | Scenario 3: PUT                    | Scenario 4: PUT             |
 | ------------------------ | --------------------------- | ------------- | --------------------------- | ------------------- | --------------------------------------- | --------------------------- | -------------------------------------- | ------------------------------- | --------------------------------------- | ------------- | -------------------------------------- | ------------- |
 | StaffSectionAssociations | sectionReference            | FALSE         | sectionReference            | REQUIRED            |                                         |                             |                                        |                                 |
 | sectionReference         | localCourseCode             | FALSE         | string                      | REQUIRED            | ["ELA-01" if possible<br/><br/>         | system value]               | ["ALG-2" if possible<br/><br/>         | system value]                   | ["ELA-01" if possible<br/><br/>         | system value] | ["ALG-2" if possible<br/><br/>         | system value] |

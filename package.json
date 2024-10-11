@@ -62,11 +62,12 @@
           "kbd",
           "DocCardList",
           "details",
-          "summary"
+          "summary",
+          "br"
         ]
       },
-      "emphasis-style": "underscore",
-      "ul-style": "asterisk"
+      "emphasis-style": {"style": "underscore" },
+      "ul-style": { "style": "asterisk" }
     }
   }
 }

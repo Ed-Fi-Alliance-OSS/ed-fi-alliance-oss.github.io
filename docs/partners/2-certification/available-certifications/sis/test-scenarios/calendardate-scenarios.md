@@ -4,7 +4,7 @@ This entity represents the type of scheduled or unscheduled event for the day.
 
 ## Prerequisites
 
-- Calendar
+* Calendar
 
 ## Scenarios
 
@@ -18,7 +18,7 @@ This entity represents the type of scheduled or unscheduled event for the day.
 4. Update the calendarEventDescriptor on the calendar date for Grand Bend High
    School to Holiday
 
-| Resource                   | Property Name           | Is Collection | Data Type               | Required / Optional | Scenario 1 <br/>POST         | Scenario 2 <br/>POST         | Scenario 3 <br/>PUT                                               | Scenario 4 <br/>PUT          |
+| Resource                   | Property Name           | Is Collection | Data Type               | Required / Optional | Scenario 1: POST         | Scenario 2: POST         | Scenario 3: PUT                                               | Scenario 4: PUT          |
 | -------------------------- | ----------------------- | ------------- | ----------------------- | ------------------- | ---------------------------- | ---------------------------- | ----------------------------------------------------------------- | ---------------------------- |
 | CalendarDates              | date                    | FALSE         | date                    | REQUIRED            | 9/16/\[Current School Year\] | 9/16/\[Current School Year\] | 9/16/\[Current School Year\]                                      | 9/16/\[Current School Year\] |
 | CalendarDates              | calendarReference       | FALSE         | calendarReference       | REQUIRED            |                              |                              |                                                                   |                              |

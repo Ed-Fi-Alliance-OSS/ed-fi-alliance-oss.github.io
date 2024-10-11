@@ -77,9 +77,9 @@ for details.
 
 The provider / API client MUST be able to perform the following actions:
 
-- Capture and log transport errors, including all HTTP errors.
-- Re-attempt delivery of API resources updates following failed transmissions.
-- In the event that repeated delivery fails for the same resource update,
+* Capture and log transport errors, including all HTTP errors.
+* Re-attempt delivery of API resources updates following failed transmissions.
+* In the event that repeated delivery fails for the same resource update,
   surface the error to a system user.
 
 Field work within the Ed-Fi community has revealed that this application

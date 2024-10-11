@@ -9,18 +9,18 @@ public or private education institution or agency that provides instructional
 and/or support services to students or staff at the early childhood level
 through high school completion. For example, this includes:
 
-- An "employee" who performs services under the direction of the employing
+* An "employee" who performs services under the direction of the employing
   institution or agency is compensated for such services by the employer and is
   eligible for employee benefits and wage or salary tax withholdings.
-- A "contractor" or "consultant" who performs services for an agreed upon fee or
+* A "contractor" or "consultant" who performs services for an agreed upon fee or
   an employee of a management service contracted to work on site.
-- A "volunteer" who performs services on a voluntary and uncompensated basis.
-- An in-kind service provider.
-- An independent contractor or businessperson working at a school site.
+* A "volunteer" who performs services on a voluntary and uncompensated basis.
+* An in-kind service provider.
+* An independent contractor or businessperson working at a school site.
 
 ### Prerequisites
 
-- Before executing the PUT Statements, you must
+* Before executing the PUT Statements, you must
   create [StaffEducationOrganizationAssignmentAssociation](https://edfi.atlassian.net/wiki/display/EDFI/StaffAssociation+%3E+StaffEducationOrganizationAssignmentAssociation) records
   to establish ownership of this staff record by the district.
 
@@ -33,7 +33,7 @@ through high school completion. For example, this includes:
 
 Additional Requirements for highly qualified teacher requirements:
 
-- A teacher's highly qualified status may be recorded either at the Staff level
+* A teacher's highly qualified status may be recorded either at the Staff level
   or at the Staff Section Association level.
 
 | Resource             | PropertyName                               | IsCollection | DATA_TYPE             | REQUIRED/<br/>OPTIONAL | POST 1                                                | POST 2                                                  | PUT 1                                                 | PUT 2                                                   |

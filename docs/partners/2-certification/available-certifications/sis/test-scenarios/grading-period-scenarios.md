@@ -8,7 +8,7 @@ This entity represents the time span for which grades are reported.
 
 ## Prerequisites
 
-- None
+* None
 
 ## Scenarios
 
@@ -21,7 +21,7 @@ This entity represents the time span for which grades are reported.
 6. Update the endDate and totalInstructionalDays on the newly added Grading
    Period for Grand Bend High School
 
-| **Resource**            | **Property Name**       | **Is Collection** | **Data Type**           | **Required / Optional** | **Scenario 1 <br/>POST**         | Scenario 2 <br/>POST             | **Scenario 3 <br/>POST**         | **Scenario 4 <br/>POST**         | **Scenario 5 <br/>PUT**                  | **Scenario 6 <br/>PUT**                  |
+| **Resource**            | **Property Name**       | **Is Collection** | **Data Type**           | **Required / Optional** | **Scenario 1: POST**         | Scenario 2: POST             | **Scenario 3 <br/>POST**         | **Scenario 4 <br/>POST**         | **Scenario 5 <br/>PUT**                  | **Scenario 6 <br/>PUT**                  |
 | ----------------------- | ----------------------- | ----------------- | ----------------------- | ----------------------- | -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- | ---------------------------------------- | ---------------------------------------- | ----------------------------- | --- | ---------------------------------------------- | --- | ---------------------------------------------- | --- |
 | GradingPeriods          | schoolReference         | FALSE             | schoolReference         | REQUIRED                |                                  |                                  |                                  |                                  |                                          |                                          |
 | schoolReference         | schoolId                | FALSE             | integer                 | REQUIRED                | 255901107                        | 255901107                        | 255901001                        | 255901001                        | 255901107                                | 255901001                                |

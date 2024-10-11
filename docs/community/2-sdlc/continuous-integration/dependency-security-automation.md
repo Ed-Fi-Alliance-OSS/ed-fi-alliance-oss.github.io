@@ -11,7 +11,7 @@ packages, collectively referred to as "dependencies". These are potentially
 vulnerable to supply chain attacks: a malicious agent hijacks a the dependency,
 injecting malicious code. Then an unwitting downstream user (such as the Ed-Fi
 Alliance) uses that malicious version of the dependency, distributes it to
-others, and thus infects all of *its*  users. We must do all we can to prevent
+others, and thus infects all of _its_  users. We must do all we can to prevent
 that.
 
 :::tip
@@ -33,8 +33,8 @@ Actions should utilize commit hashes instead of version numbers, thus pinning to
 the reviewed code. These practices are enforced by scanning the Actions
 workflows themselves to ensure that they are only using pre-approved Actions.
 
-*Also see
-[Guidelines for Use of GitHub Actions](./guidelines-for-use-of-github-actions)*.
+_Also see
+[Guidelines for Use of GitHub Actions](./guidelines-for-use-of-github-actions)_.
 
 ## Open Source Projects
 

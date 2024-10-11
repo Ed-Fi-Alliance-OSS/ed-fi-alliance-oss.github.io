@@ -18,32 +18,32 @@ Ed-Fi Alliance certification.
 
 ### Arizona Department of Education
 
-- Program details:
+* Program details:
   [https://www.azed.gov/information-technology/azeds/developers](https://www.azed.gov/information-technology/azeds/developers)
 
 ### Indiana Department of Education
 
-- Program details:
+* Program details:
   [https://www.in.gov/doe/it/link-initiative/data-exchange/](https://www.in.gov/doe/it/link-initiative/data-exchange/)
 
 ### Minnesota Department of Education
 
-- Program details:
+* Program details:
   [https://education.mn.gov/MDE/dse/datasub/edfi/](https://education.mn.gov/MDE/dse/datasub/edfi/)
 
 ### Nebraska Department of Education
 
-- Program details:
+* Program details:
   [https://www.education.ne.gov/dataservices/adviser-resources/](https://www.education.ne.gov/dataservices/adviser-resources/)
 
 ### Wisconsin Department of Public Instruction
 
-- Program details:
+* Program details:
   [https://dpi.wi.gov/wisedata/ed-fi-integration](https://dpi.wi.gov/wisedata/ed-fi-integration)
 
 ## Local Education Agencies (LEAs) / Collaboratives
 
 ### Michigan Data Hub (MIDataHub)
 
-- Program details and integration requirements:
+* Program details and integration requirements:
   [https://www.midatahub.org/support/vendor-resources/](https://www.midatahub.org/support/vendor-resources/)

@@ -8,7 +8,7 @@ father or caretaker.
 
 ## Prerequisites
 
-- None
+* None
 
 ## Scenarios
 
@@ -20,7 +20,7 @@ father or caretaker.
 
 4. Update the address of the second contact created.
 
-| Resource               | Property Name                | Is Collection | Data Type                    | Required / Optional | Scenario 1 <br/>POST                               | Scenario 2 <br/>POST                               | Scenario 3 <br/>PUT                                | Scenario 4 <br/>PUT                                |
+| Resource               | Property Name                | Is Collection | Data Type                    | Required / Optional | Scenario 1: POST                               | Scenario 2: POST                               | Scenario 3: PUT                                | Scenario 4: PUT                                |
 | ---------------------- | ---------------------------- | ------------- | ---------------------------- | ------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
 | Contacts               | contactUniqueId              | FALSE         | string                       | REQUIRED            | \["333333"  if possible<br/><br/>\| system value\] | \["444444"  if possible<br/><br/>\| system value\] | \["333333"  if possible<br/><br/>\| system value\] | \["444444"  if possible<br/><br/>\| system value\] |
 | Contacts               | firstName                    | FALSE         | string                       | REQUIRED            | Michael                                            | Alexis                                             | Michael                                            | Alexis                                             |

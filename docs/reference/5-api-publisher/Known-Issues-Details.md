@@ -1,6 +1,6 @@
 # Known Issues Details
 
-# Known Limitations for Ed-Fi ODS/API 5.1-5.3 (Details)
+## Known Limitations for Ed-Fi ODS/API 5.1-5.3 (Details)
 
 Below are usage notes if using Ed-Fi ODS/API 5.1-5.3 only. These issues have
 been resolved in the
@@ -39,14 +39,14 @@ supply the new key values.
 
 The Ed-Fi ODS API supports this functionality for the following resources:
 
-- classPeriods
-- grades
-- gradebookEntries
-- locations
-- sections
-- sessions
-- studentSchoolAssociations
-- studentSectionAssociations
+* classPeriods
+* grades
+* gradebookEntries
+* locations
+* sections
+* sessions
+* studentSchoolAssociations
+* studentSectionAssociations
 
 If an API client updates a primary key value as described above, the Change
 Queries implementation of the Ed-Fi ODS will not reflect this. The "new"
@@ -63,8 +63,8 @@ publishing deletes. However, the primary key of the `edfi.Descriptor` table in
 the ODS is an internal identity column which is also not portable, but is
 exposed to the client. Thus, the resources must be identified by the _alternate
 key_ -- `namespace` and `codeValue`. However, the Ed-Fi ODS tracks deletes using
-triggers which a) don't have the namespace/codeValue in context in the derived
-descriptor table triggers, and b) don't have the descriptor sub-type in context
+triggers which (a) don't have the namespace/codeValue in context in the derived
+descriptor table triggers, and (b) don't have the descriptor sub-type in context
 in the base Descriptor table trigger. The consequence is that API does not
 currently make it possible to publish descriptor deletions.
 

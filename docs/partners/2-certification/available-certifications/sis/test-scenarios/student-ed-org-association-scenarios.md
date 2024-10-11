@@ -10,7 +10,7 @@ by [https://edfi.atlassian.net/wiki/spaces/EDFI/pages/22450000](https://edfi.at
 
 ## Prerequisites
 
-- Student
+* Student
 
 ## Scenarios
 
@@ -23,22 +23,22 @@ by [https://edfi.atlassian.net/wiki/spaces/EDFI/pages/22450000](https://edfi.at
 
 ### Additional Requirements
 
-- For these scenarios SIS system MUST demonstrate that it can provide 3 student
+* For these scenarios SIS system MUST demonstrate that it can provide 3 student
   identifiers: a SIS/district ID, a state ID, and a local ID (also known as a
   "student number", which students typically memorize and use for local
   operations). In terms of studentIdentificationSystemDescriptors, these are the
   "District", "State" and "Local" values in the default Ed-Fi descriptor values,
   respectively.
-- The SIS MUST include at least these three values in the
+* The SIS MUST include at least these three values in the
   StudentIdentificationCodes array and
   the studentIdentificationSystemDescriptors MUST be labeled as "District",
   "State" and "Local" per the definitions above.
-- If the SIS only has a subset of these values, values can be repeated as
+* If the SIS only has a subset of these values, values can be repeated as
   needed. For example, the SIS might use the SIS/district ID as the local ID
   (student number); in this case, that ID would be repeated in the array as both
   the "District" and "Local" values.
 
-| **Resource**                                                       | **Property Name**                       | **Is Collection** | **Data Type**                         | **Required / Optional** | **Scenario 1 <br/>POST**                          | **Scenario 2 <br/>POST**                            | Scenario 3 <br/>POST/PUT                          | Scenario 4 POST/PUT                                 |
+| **Resource**                                                       | **Property Name**                       | **Is Collection** | **Data Type**                         | **Required / Optional** | **Scenario 1: POST**                          | **Scenario 2: POST**                            | Scenario 3 <br/>POST/PUT                          | Scenario 4 POST/PUT                                 |
 | ------------------------------------------------------------------ | --------------------------------------- | ----------------- | ------------------------------------- | ----------------------- | ------------------------------------------------- | --------------------------------------------------- | ------------------------------------------------- | --------------------------------------------------- |
 | StudentEducationOrganizationAssociations                           | educationOrganizationReference          | FALSE             | educationOrganizationReference        | REQUIRED                |                                                   |                                                     |                                                   |                                                     |
 | educationOrganizationReference                                     | educationOrganizationId                 | FALSE             | integer                               | REQUIRED                | 255901                                            | 255901                                              | 255901                                            | 255901                                              |

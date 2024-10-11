@@ -6,14 +6,14 @@ description: Transparency and improvement through automated scoring.
 
 ## Broad Goals
 
-- SUPPLY CHAIN: Secure the supply chain (access to code; the machines running
+* SUPPLY CHAIN: Secure the supply chain (access to code; the machines running
   the builds; dependency security).
-- TRANSPARENCY: Provide transparency for development community, especially open
+* TRANSPARENCY: Provide transparency for development community, especially open
   source contributors.
-- TESTING: Ensuring that every\* repository has some sort of unit test suite (\*
+* TESTING: Ensuring that every\* repository has some sort of unit test suite (\*
   there may be some exceptions, e.g. starter kits).
-- QUALITY: Automating the code review and style guide.
-- CONFIGURATION: Consistent repository configuration
+* QUALITY: Automating the code review and style guide.
+* CONFIGURATION: Consistent repository configuration
 
 ## OSSF Scorecard
 
@@ -28,17 +28,17 @@ code.
 
 Generally, Ed-Fi code repositories will not have perfect scores; we may not
 agree with OSSF on every detail. The scorecard provides transparency for third
-parties to understand what we *do* agree upon. The following list explains some
+parties to understand what we _do_ agree upon. The following list explains some
 of the more significant divergences from the OSSF recommendations. All of these
 are subject to further review at a later date.
 
-- Ed-Fi Alliance repositories typically require only **one code reviewer**;
+* Ed-Fi Alliance repositories typically require only **one code reviewer**;
   [OSSF recommends two](https://github.com/ossf/scorecard/blob/main/docs/checks.md#branch-protection).
-- **Fuzzing**: the Alliance has not yet investigated adding fuzzing, and it does
+* **Fuzzing**: the Alliance has not yet investigated adding fuzzing, and it does
   not appear that any of the suggested tools support .NET projects (the majority
   of the Ed-Fi Alliance code base)
-- No attempt, at this time, to acquire an **OpenSSF Best Practices Badge**.
-- **Packaging** will always be at zero, since the Alliance publishes packages
+* No attempt, at this time, to acquire an **OpenSSF Best Practices Badge**.
+* **Packaging** will always be at zero, since the Alliance publishes packages
   through other avenues, not through GitHub.
 
 ## Tips for Preparing an Ed-Fi Alliance Repository

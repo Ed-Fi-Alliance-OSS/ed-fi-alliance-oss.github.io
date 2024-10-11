@@ -9,8 +9,8 @@ provides instructional services.
 
 ### Prerequisites
 
-- Staff
-- StaffEducationOrganizationAssignmentAssociations
+* Staff
+* StaffEducationOrganizationAssignmentAssociations
 
 ### Scenarios
 
@@ -19,7 +19,7 @@ provides instructional services.
 2. Create a StaffSchoolAssociation for a staff record at Grand Bend High School.
 3. Delete the StaffSchoolAssociation at Grand Bend Elementary School.
 
-| Resource                | Property Name               | Is Collection | Data Type                   | Required / Optional | Scenario 1 <br/>POST            | Scenario 2 <br/>POST |
+| Resource                | Property Name               | Is Collection | Data Type                   | Required / Optional | Scenario 1: POST            | Scenario 2: POST |
 | ----------------------- | --------------------------- | ------------- | --------------------------- | ------------------- | ------------------------------- | -------------------- | ------------------------------- | ------------- |
 | StaffSchoolAssociations | schoolReference             | FALSE         | schoolReference             | REQUIRED            |                                 |                      |
 | schoolReference         | schoolId                    | FALSE         | integer                     | REQUIRED            | 255901107                       | 255901001            |

@@ -3,13 +3,13 @@
 The following sections describe requirements for certification that are common
 across all Ed-Fi Alliance certifications.
 
-- [Requirements - General](./requirements-general.md)
-- [Requirements - Partner Program](./requirements-partner-program.md)
-- [Requirements - Testing Requirements](./requirements-testing-requirements.md)
-- [Requirements - Product Availability Information](./requirements-product-availability-information.md)
-- [Requirements - Implementation Verification](./requirements-implementation-verification.md)
-- [Requirements - Data Mapping](./requirements-data-mapping.md)
-- [Requirements - Re-Certification](./requirements-recertification.md)
+* [Requirements - General](./requirements-general.md)
+* [Requirements - Partner Program](./requirements-partner-program.md)
+* [Requirements - Testing Requirements](./requirements-testing-requirements.md)
+* [Requirements - Product Availability Information](./requirements-product-availability-information.md)
+* [Requirements - Implementation Verification](./requirements-implementation-verification.md)
+* [Requirements - Data Mapping](./requirements-data-mapping.md)
+* [Requirements - Re-Certification](./requirements-recertification.md)
 <!-- * [Best
     Practices](./best-practices.md) -->
 

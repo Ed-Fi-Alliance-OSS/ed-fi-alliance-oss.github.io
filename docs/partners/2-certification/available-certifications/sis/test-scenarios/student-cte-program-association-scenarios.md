@@ -9,10 +9,10 @@ CTE programs.
 
 ### Prerequisites
 
-- Ed-Org (pre-loaded)
-- Program (pre-loaded)
-- Student
-- Student Enrollment
+* Ed-Org (pre-loaded)
+* Program (pre-loaded)
+* Student
+* Student Enrollment
 
 ### Scenarios
 
@@ -21,7 +21,7 @@ CTE programs.
 
 (Note: the Program's educationOrganizationId is the Local Education Agency ID) |
 Resource | Property Name | Is Collection | Data Type | Required / Optional |
-Scenario 1 <br/>POST | Scenario 2 <br/>PUT | | --- | --- | --- | --- | --- | ---
+Scenario 1: POST | Scenario 2 <br/>PUT | | --- | --- | --- | --- | --- | ---
 | --- | | StudentCTEProgramAssociations | beginDate | FALSE | date | REQUIRED |
 8/23/<br/>[Current School Year] | 8/23/<br/>[Current School Year] | |
 StudentCTEProgramAssociations | educationOrganizationReference | FALSE |

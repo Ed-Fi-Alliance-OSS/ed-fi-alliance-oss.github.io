@@ -48,8 +48,8 @@ destination ODS/API must be of the same version.
 For Ed-Fi ODS / API 5.1 through 5.3 only: create and assign a claim set for the
 API Publisher by running the following database scripts:
 
-- [Create-API-Publisher-Writer-Security-Metadata.sql](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-API-Publisher/blob/main/eng/Create-API-Publisher-Writer-Security-Metadata.sql)
-- [Configure-Minimal-Sandbox-Client-as-API-Publisher-Writer.sql](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-API-Publisher/blob/main/eng/Configure-Minimal-Sandbox-Client-as-API-Publisher-Writer.sql)
+* [Create-API-Publisher-Writer-Security-Metadata.sql](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-API-Publisher/blob/main/eng/Create-API-Publisher-Writer-Security-Metadata.sql)
+* [Configure-Minimal-Sandbox-Client-as-API-Publisher-Writer.sql](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-API-Publisher/blob/main/eng/Configure-Minimal-Sandbox-Client-as-API-Publisher-Writer.sql)
 
 ### Use the API Publisher
 
@@ -131,7 +131,17 @@ executing the following command, substituting your own API client's key and
 secrets. (Below development keys as shown in other Ed-Fi examples):
 
 ```shell
-.\EdFiApiPublisher.exe --sourceUrl=https://api.ed-fi.org/v5.2/api/ --sourceKey=RvcohKz9zHI4 --sourceSecret=E1iEFusaNf81xzCxwHfbolkC --targetUrl=http://localhost:54746/ --targetKey=minimal_sandbox_API_key --targetSecret=minimal_sandbox_API_secret --ignoreIsolation=true --maxDegreeOfParallelismForPostResourceItem=5 --maxDegreeOfParallelismForStreamResourcePages=3 --includeDescriptors=true --exclude=surveys
+.\EdFiApiPublisher.exe --sourceUrl=https://api.ed-fi.org/v5.2/api/ \
+  --sourceKey=RvcohKz9zHI4 \
+  --sourceSecret=E1iEFusaNf81xzCxwHfbolkC \
+  --targetUrl=http://localhost:54746/ \
+  --targetKey=minimal_sandbox_API_key \
+  --targetSecret=minimal_sandbox_API_secret \
+  --ignoreIsolation=true \
+  --maxDegreeOfParallelismForPostResourceItem=5 \
+  --maxDegreeOfParallelismForStreamResourcePages=3 \
+  --includeDescriptors=true \
+  --exclude=surveys
 ```
 
 :::info note for Ed-Fi ODS API v5.2 only:
@@ -150,7 +160,8 @@ For more documentation on API Publisher's parameters, please see the
 other runtime options.
 
 For more information in relation to key changes and deletes, please see
-[Considerations in relation to key changes and deletes](API-Publisher-Configuration.md#considerations-in-relation-to-key-changes-and-deletes)
+[Considerations in relation to key changes and
+deletes](API-Publisher-Configuration.md#considerations-in-relation-to-key-changes-and-deletes)
 
 ## Known Limitations for Ed-Fi ODS / API 5.1 through 5.3
 
@@ -161,10 +172,15 @@ in
 and
 [Ed-Fi ODS / API 6.1](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V61/overview).
 
-- [Change Queries implementation doesn't provide enough information to communicate deletes between ODS databases](https://tracker.ed-fi.org/browse/ODS-3672)
-- [Add support to Change Queries for tracking deletes by natural key](https://tracker.ed-fi.org/browse/ODS-4423)
-- [Change Queries does not capture deletes on derived resources](https://tracker.ed-fi.org/browse/ODS-4087)
-- [Change Queries does not support primary key changes](https://tracker.ed-fi.org/browse/ODS-5005)
+* [Change Queries implementation doesn't provide enough information to
+  communicate deletes between ODS
+  databases](https://tracker.ed-fi.org/browse/ODS-3672)
+* [Add support to Change Queries for tracking deletes by natural
+  key](https://tracker.ed-fi.org/browse/ODS-4423)
+* [Change Queries does not capture deletes on derived
+  resources](https://tracker.ed-fi.org/browse/ODS-4087)
+* [Change Queries does not support primary key
+  changes](https://tracker.ed-fi.org/browse/ODS-5005)
 
 (Feedback on the need for resolution to the Ed-Fi ODS API issues listed above
 should be provided to the Ed-Fi Alliance through
@@ -196,11 +212,11 @@ More technical details on some of these issues can be found
 
 When you're ready to look further, review these other topics:
 
-- [API Connection Management](API-Connection-Management.md)
-- [API Publisher Configuration](API-Publisher-Configuration.md)
-- [Considerations for API Hosts](Considerations-for-API-Hosts.md)
-- [Considerations for Docker Configuration and Execution](Running-in-docker-desktop.md)
-- [How to use the TextFormatter class](Use-TextFormatter-Serilog.md).
+* [API Connection Management](API-Connection-Management.md)
+* [API Publisher Configuration](API-Publisher-Configuration.md)
+* [Considerations for API Hosts](Considerations-for-API-Hosts.md)
+* [Considerations for Docker Configuration and Execution](Running-in-docker-desktop.md)
+* [How to use the TextFormatter class](Use-TextFormatter-Serilog.md).
 
 ## Support
 

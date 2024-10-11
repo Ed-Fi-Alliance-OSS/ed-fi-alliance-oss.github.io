@@ -6,16 +6,16 @@ This document describes the specific testing practices used by the ODS Platform
 team in maintaining the Ed-Fi ODS / API and its associated utilities (e.g., code
 generation, migration utility, database deploy).
 
-*For more context on Ed-Fi testing practices,
-see* [Testing Standards](./README.mdx).
+_For more context on Ed-Fi testing practices,
+see_ [Testing Standards](./README.mdx).
 
 ## Unit Testing
 
 ### Unit Test Toolkit
 
-- Test framework: [NUnit3](https://nunit.org/).
-- Mocking framework: [FakeItEasy](https://fakeiteasy.github.io/).
-- Assertion library: [Shouldly](http://docs.shouldly-lib.net/v2.4.0/docs).
+* Test framework: [NUnit3](https://nunit.org/).
+* Mocking framework: [FakeItEasy](https://fakeiteasy.github.io/).
+* Assertion library: [Shouldly](http://docs.shouldly-lib.net/v2.4.0/docs).
 
 ### Unit Test Base Classes
 
@@ -162,35 +162,35 @@ in 2019.
 
 ### Best Practices for Establishing Data for Tests
 
-- Do not use hard-coded values as this makes the tests rigid.
-- Interactively inspect the sample ODS database to ensure the data present are
+* Do not use hard-coded values as this makes the tests rigid.
+* Interactively inspect the sample ODS database to ensure the data present are
   adequate for testing targeted functionality.
-  - If necessary data exists, then add GET requests to initialize any needed
+  * If necessary data exists, then add GET requests to initialize any needed
     "known" values (e.g., resource Ids, UniqueIds). Save the known values as
     environment variables (using `pm.environment.set` ) for subsequent use.
     Follow the guidelines on Postman variable usage (see below).
-  - If necessary data exists but is difficult to locate through the API, add
+  * If necessary data exists but is difficult to locate through the API, add
     POST requests as necessary.
-  - If necessary data is not present, add POST requests as necessary to
+  * If necessary data is not present, add POST requests as necessary to
     initialize data in the ODS.
-- Make sure all data initialized by POST requests have tests that check the
+* Make sure all data initialized by POST requests have tests that check the
   API's response to make sure data is configured as expected (e.g., ensure that
   requests to create new data return `201 - Created` ).
-- For verification, write test scripts to be as flexible as possible in
+* For verification, write test scripts to be as flexible as possible in
   verifying targeted functionality.
-  - For example, for Composite resource tests, a GET request is used to retrieve
+  * For example, for Composite resource tests, a GET request is used to retrieve
     a page of data which is then processed in its entirety to ensure that the
-    expected structure of the composite definition is found *somewhere* (as
-    opposed to *everywhere*) in the response.
-- When creating new data in PUT and POST requests, omit the following elements
+    expected structure of the composite definition is found _somewhere_ (as
+    opposed to _everywhere_) in the response.
+* When creating new data in PUT and POST requests, omit the following elements
   from the body:
 
-- The `link`  object on references. This is not used for writing.
-- The `id`  property
-- The `_etag`  property
-- All `null`  values. This just adds noise to the body for maintenance. Keep it
+* The `link`  object on references. This is not used for writing.
+* The `id`  property
+* The `_etag`  property
+* All `null`  values. This just adds noise to the body for maintenance. Keep it
   clean.
-- Do not include any *optional* values that don't add meaning to the test. For
+* Do not include any _optional_ values that don't add meaning to the test. For
   example, some requests in the test have empty strings assigned to properties
   that are optional and could just be omitted for the test. Including those
   values can become an unnecessary distraction for future maintainers of these
@@ -210,26 +210,26 @@ in 2019.
 
 ### Environment Variable Naming / Usage
 
-- The names of environment variables should use the following format:
-  (*known*|*supplied*)\[:*scenarioId*\]:*name*
+* The names of environment variables should use the following format:
+  (_known_|_supplied_)\[:_scenarioId_\]:_name_
 
-  - Use a `known:`  prefix for variables that hold values that are "known" from
+  * Use a `known:`  prefix for variables that hold values that are "known" from
     the ODS database. Examples:
-    - `known:localEducationAgencyId`. The known Local Education Agency ID.
-    - `known:{scenarioId}:studentUniqueId`. A known student Unique ID that is
+    * `known:localEducationAgencyId`. The known Local Education Agency ID.
+    * `known:{scenarioId}:studentUniqueId`. A known student Unique ID that is
       the focus of a particular test scenario.
-  - Use a `supplied:` prefix for variables that hold values defined by the test.
+  * Use a `supplied:` prefix for variables that hold values defined by the test.
     Examples:
-    - `supplied:{scenarioId}:birthDate`. An arbitrary value created by the test
+    * `supplied:{scenarioId}:birthDate`. An arbitrary value created by the test
       (e.g., for use in creating a new Student or Staff resource).
-    - `supplied:{scenarioId}:studentUniqueId`. An arbitrary Unique ID value
+    * `supplied:{scenarioId}:studentUniqueId`. An arbitrary Unique ID value
       created by the test (also, e.g., for use in creating a new Student or
       Staff resource).
-  - The "scenarioId" portion is optional, but enables the variable to be scoped
+  * The "scenarioId" portion is optional, but enables the variable to be scoped
     for a specific scenario (which is something that Postman doesn't directly
     support).
 
-    - Our current approach has been to copy the following boilerplate to the
+    * Our current approach has been to copy the following boilerplate to the
       "Pre-request Script" of an initialization request:
 
       ```js
@@ -255,24 +255,24 @@ in 2019.
       pm.environment.set(`supplied:${scenarioId}:studentUniqueId`, newGuid());
       ```
 
-  - The "name" portion should reflect the nature of the data the variable
+  * The "name" portion should reflect the nature of the data the variable
     represents.
-  - We have removed all usages of `pm.variables.set`  because this sets
+  * We have removed all usages of `pm.variables.set`  because this sets
     transient variables that only exist for the duration of the current
     execution run. When using the Collection Runner, the variable will be
-    available throughout the current *run*, but when executing tests
+    available throughout the current _run_, but when executing tests
     interactively, the variable will only exist for the duration of the
-    current *request*.\
+    current _request_.\
      The issue is that `pm.variables.get` will resolve variables by name all the
     way up a chain of priority:
 
-    - Global
-    - Environment
-    - Collection
-    - Local
+    * Global
+    * Environment
+    * Collection
+    * Local
 
       We encountered a situation where there was an identically named variable
-      stored in the *environment.* During interactive request executions, the
+      stored in the _environment._ During interactive request executions, the
       value being used was from the environment variable, but during Collection
       Runner test runs the value set by `pm.variables.set` was used. This caused
       the tests to fail during interactive execution which was deemed to be an
@@ -280,7 +280,7 @@ in 2019.
       variables such that they are scoped using a middle "scenarioId" segment
       was taken.
 
-- Add a request at the bottom of the collection that cleans up all environment
+* Add a request at the bottom of the collection that cleans up all environment
   variables. This can be used when running tests interactively to prevent bleed
   over from one scenario to another. For example, you might have a GET request
   on `{{ApiBaseUrl}}` with the following Pre-request script:

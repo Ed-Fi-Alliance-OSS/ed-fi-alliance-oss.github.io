@@ -6,9 +6,9 @@ sections to which a student is assigned.
 
 ### **Prerequisites**
 
-- Student
-- Section
-- Student School Association
+* Student
+* Section
+* Student School Association
 
 ### Scenarios
 
@@ -21,7 +21,7 @@ sections to which a student is assigned.
    School.
 5. Delete the StudentSectionAssociation for the elementary school student.
 
-| Resource                   | Property Name     | Is Collection | Data Type        | Required / Optional | Scenario 1 <br/>POST                    | Scenario 2 <br/>POST                  | Scenario 3 <br/>PUT                           | Scenario 4 <br/>PUT                           |
+| Resource                   | Property Name     | Is Collection | Data Type        | Required / Optional | Scenario 1: POST                    | Scenario 2: POST                  | Scenario 3: PUT                           | Scenario 4: PUT                           |
 | -------------------------- | ----------------- | ------------- | ---------------- | ------------------- | --------------------------------------- | ------------------------------------- | --------------------------------------------- | --------------------------------------------- | --------------------------------------- | ------------- | -------------------------------------- | ------------- |
 | StudentSectionAssociations | sectionReference  | FALSE         | sectionReference | REQUIRED            |                                         |                                       |                                               |                                               |
 | sectionReference           | localCourseCode   | FALSE         | string           | REQUIRED            | ["ELA-01" if possible<br/><br/>         | system value]                         | ["ALG-2" if possible<br/><br/>                | system value]                                 | ["ELA-01" if possible<br/><br/>         | system value] | ["ALG-2" if possible<br/><br/>         | system value] |

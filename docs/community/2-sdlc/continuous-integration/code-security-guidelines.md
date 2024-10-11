@@ -184,22 +184,22 @@ enforced across the Alliance's repositories.
 
 ## Procedures
 
-- **New repository setup**:
-  - Apply all branch security rules described above.
-  - Carefully apply least required privilege authorization to the repository.
-- **Automated review**:
-  - All core repositories should have appropriate automation workflows in
+* **New repository setup**:
+  * Apply all branch security rules described above.
+  * Carefully apply least required privilege authorization to the repository.
+* **Automated review**:
+  * All core repositories should have appropriate automation workflows in
     GitHub. See
     [Guidelines for Use of GitHub Actions](./guidelines-for-use-of-github-actions.md)
     for more detail. Exceptions:
-    - **Ed-Fi-Docker**: vulnerability scanning provided by Docker Hub, rather
+    * **Ed-Fi-Docker**: vulnerability scanning provided by Docker Hub, rather
       than GitHub Actions
-    - **Standards**: do not contain source code
-      - **Ed-Fi-Model**
-      - **Ed-Fi-Standard**
-      - **Ed-Fi-TPDM-Artifacts**
-    - **Starter Kits** that do not contain any scannable code or actions:
-      - **Ed-Fi-Starter-Kit-Assessments**
-      - **Ed-Fi-Starter-Kit-Equity**
-  - Ideally, create the Code Scanning and Dependency Review workflows
+    * **Standards**: do not contain source code
+      * **Ed-Fi-Model**
+      * **Ed-Fi-Standard**
+      * **Ed-Fi-TPDM-Artifacts**
+    * **Starter Kits** that do not contain any scannable code or actions:
+      * **Ed-Fi-Starter-Kit-Assessments**
+      * **Ed-Fi-Starter-Kit-Equity**
+  * Ideally, create the Code Scanning and Dependency Review workflows
     immediately on creation of a new repository.

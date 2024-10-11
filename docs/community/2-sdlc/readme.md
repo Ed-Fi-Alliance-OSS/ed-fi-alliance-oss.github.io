@@ -13,8 +13,8 @@ contractors alike.
 All developers should review the following content, in addition to reviewing
 relevant pages in the content listed in this SDLC space:
 
-- [Contributor Code of Conduct](../involved/code-of-conduct)
-- [Slack for the Ed-Fi Community](../involved/slack)
+* [Contributor Code of Conduct](../involved/code-of-conduct)
+* [Slack for the Ed-Fi Community](../involved/slack)
 
 ## Child Pages
 

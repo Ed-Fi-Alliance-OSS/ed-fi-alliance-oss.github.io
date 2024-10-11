@@ -4,7 +4,7 @@
 
 For other important guidance, see also:
 
-- [Coding Standards - General Principles](./README.md)
+* [Coding Standards - General Principles](./README.md)
 
 :::
 
@@ -109,12 +109,12 @@ When writing scripts for PostgreSQL, including stored procedures, use the
 Formatting need not be a strict exercise — adherence to absolute precision in
 SQL scripts, where various tools have differing (or no) ability to help format a
 file, is difficult to achieve. The code reviewer should ensure that the file is
-readable and meets at least the *spirit* of the following *preferences*.
+readable and meets at least the _spirit_ of the following _preferences_.
 
 1. Place the `CREATE` statement on a line by itself.
 2. For the keywords `WITH` , `SELECT`, `FROM`, `WHERE` , `GROUP BY` , `HAVING`:
    1. Each should be on a line by itself.
-   2. Indent once *except when part of a CTE or sub-query.*
+   2. Indent once _except when part of a CTE or sub-query._
 3. Within each clause:
    1. Each column or condition should be on a line by itself.
    2. Indent twice (preferably 4 spaces rather than tab character).
@@ -148,13 +148,13 @@ SELECT  [Staff].[StaffUSI] as [UserKey],
 
 Problems with this example:
 
-- Need to bring the create statement onto one line.
-- The `SELECT` keyword should be indented.
-- First column in select statement is on the same line as `SELECT`.
-- Mix of case in the SQL keywords (e.g., `SELECT` and `from` are inconsistent).
-- Preference to include keyword `INNER` on the joins.
-- Join conditions must be separated.
-- The `WHERE` condition should be on a line by itself.
+* Need to bring the create statement onto one line.
+* The `SELECT` keyword should be indented.
+* First column in select statement is on the same line as `SELECT`.
+* Mix of case in the SQL keywords (e.g., `SELECT` and `from` are inconsistent).
+* Preference to include keyword `INNER` on the joins.
+* Join conditions must be separated.
+* The `WHERE` condition should be on a line by itself.
 
 ### Example: Improved Formatting
 

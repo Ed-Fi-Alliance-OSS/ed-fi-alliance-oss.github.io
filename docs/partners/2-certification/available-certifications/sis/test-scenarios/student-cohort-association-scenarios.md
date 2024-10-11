@@ -11,8 +11,8 @@ student is designated.
 
 ### Prerequisites
 
-- Cohort
-- Student
+* Cohort
+* Student
 
 ### Scenarios
 
@@ -20,7 +20,7 @@ student is designated.
 2. Create a student cohort association for a high school student.
 3. Add an end date to the student cohort association for an elementary student.
 
-| Resource                  | Property Name           | Is Collection | Data Type        | Required / Optional | Scenario 1 <br/>POST                         | Scenario 2 <br/>POST                         | Scenario 3 <br/>PUT                            |
+| Resource                  | Property Name           | Is Collection | Data Type        | Required / Optional | Scenario 1: POST                         | Scenario 2: POST                         | Scenario 3: PUT                            |
 | ------------------------- | ----------------------- | ------------- | ---------------- | ------------------- | -------------------------------------------- | -------------------------------------------- | ---------------------------------------------- |
 | StudentCohortAssociations | cohortReference         | FALSE         | cohortReference  | REQUIRED            |                                              |                                              |                                                |
 | cohortReference           | educationOrganizationId | FALSE         | integer          | REQUIRED            | 255901107                                    | 255901001                                    | 255901107                                      |

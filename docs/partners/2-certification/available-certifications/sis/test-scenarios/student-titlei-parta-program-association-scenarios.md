@@ -7,14 +7,14 @@ participates in or from which the Student receives services. The association is
 an extension of the StudentProgramAssociation specific to Title I Part A
 programs.
 
-### Prerequisites
+## Prerequisites
 
-- Ed-Org (pre-loaded)
-- Program (pre-loaded)
-- Student
-- Student Enrollment
+* Ed-Org (pre-loaded)
+* Program (pre-loaded)
+* Student
+* Student Enrollment
 
-### Scenarios
+## Scenarios
 
 1. Create a Student Title I Part A Program Association for an elementary school
    student.
@@ -25,7 +25,7 @@ programs.
 
 (Note: the Program's educationOrganizationId is the Local Education Agency ID)
 
-| Resource                              | Property Name                    | Is Collection | Data Type                        | Required / Optional | Scenario 1 <br/>POST                        | Scenario 2 <br/>POST                        | Scenario 3 <br/>PUT                         | Scenario 4 <br/>PUT                         |
+| Resource                              | Property Name                    | Is Collection | Data Type                        | Required / Optional | Scenario 1: POST                        | Scenario 2: POST                        | Scenario 3: PUT                         | Scenario 4: PUT                         |
 | ------------------------------------- | -------------------------------- | ------------- | -------------------------------- | ------------------- | ------------------------------------------- | ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
 | StudentTitleIPartAProgramAssociations | beginDate                        | FALSE         | date                             | REQUIRED            | 8/23/<br/>`<br/>[Current School Year]<br/>` | 8/23/<br/>`<br/>[Current School Year]<br/>` | 8/23/<br/>`<br/>[Current School Year]<br/>` | 8/23/<br/>`<br/>[Current School Year]<br/>` |
 | StudentTitleIPartAProgramAssociations | educationOrganizationReference   | FALSE         | educationOrganizationReference   | REQUIRED            |                                             |                                             |                                             |                                             |

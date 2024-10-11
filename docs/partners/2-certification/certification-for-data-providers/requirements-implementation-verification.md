@@ -14,14 +14,14 @@ state), that use the attached
 
 **When are verifications required?**
 
-- At least one verification must be provided prior to the start of certification
+* At least one verification must be provided prior to the start of certification
   testing.  New data providers can work with the Ed-Fi staff to identify a pilot
   program or other method of implementation verification when they are new to a
   market space.  Implementation verifications are important because they capture
   market readiness of the product.  Any modification to the initial
   implementation verification MUST capture this intent and be agreed to with
   Ed-Fi staff.
-- Remaining verifications — which MUST bring the verification total to 3 — MUST
+* Remaining verifications — which MUST bring the verification total to 3 — MUST
   be provided within 6 months of certification or the certification will be
   removed.
 
@@ -29,9 +29,9 @@ state), that use the attached
 
 LEA projects used to validate the integrations MUST meet these requirements:
 
-- MUST be between two systems directly under agency control or contract. State
+* MUST be between two systems directly under agency control or contract. State
   compliance reporting (and similar use cases) are therefore excluded.
-- Can be "pilot" or "production" in nature, but MUST be operational and be
+* Can be "pilot" or "production" in nature, but MUST be operational and be
   transferring real agency data. Projects MUST NOT be prototypes,
   proof-of-concept systems, similar development efforts that require manual
   intervention to make operational, or otherwise impermanent solutions.
@@ -56,11 +56,11 @@ to account for all the the possible issues that can cause a mismatch between
 customer expectations and actual certified product functionality. The most
 persistent problems included (but were not limited to):
 
-- The provider did not adequately support the certified functionality, leaving
+* The provider did not adequately support the certified functionality, leaving
   customers "on their own" without access to normal support resources.
-- The provider allowed or enabled local product customization that then
+* The provider allowed or enabled local product customization that then
   "disqualified" the customer from accessing the certified functionality.
-- The provider blocked access to certified functionality via high "add-on"
+* The provider blocked access to certified functionality via high "add-on"
   pricing for the certified functionality, which undermines actual availability.
 
 Situations like these proved difficult (if not impossible) to detect in formal

@@ -47,16 +47,16 @@ provide student results to end users of the certifying system.
 
 The score report template(s):
 
-- MUST cover all of the elements listed in step 2 above
-- MUST be in wide use by the vendor currently *–* the vendor MAY choose which to
+* MUST cover all of the elements listed in step 2 above
+* MUST be in wide use by the vendor currently _–_ the vendor MAY choose which to
   use if there are different options or variations
-- MUST be clearly marked to show elements that are not included in the Ed-Fi
+* MUST be clearly marked to show elements that are not included in the Ed-Fi
   based API integration (e.g., elements not included in a visual picture could
   be surrounded by a red box and marked "not included")
-- Per certification processes generally, these report templates MUST NOT contain
+* Per certification processes generally, these report templates MUST NOT contain
   any real student data
 
-- MUST be provided as PDF files
+* MUST be provided as PDF files
 
 The score report templates are used to validate that data semantics are
 preserved and report elements are mapped to the proper Ed-Fi assessment domain
@@ -75,13 +75,13 @@ vendor: [Sample Score Template.pdf](https://edfi.atlassian.net/wiki/download/at
 Test data is a spreadsheet of the exact sample data that will be used in the
 certification process. The spreadsheet:
 
-- MUST include all data fields from the score report template(s) submitted as
+* MUST include all data fields from the score report template(s) submitted as
   part of item 5, above
-- MUST include all data fields from the data mapping submitted as part of item
+* MUST include all data fields from the data mapping submitted as part of item
   3, above
-- MUST include records for a minimum of 100 students and a maximum of 500
+* MUST include records for a minimum of 100 students and a maximum of 500
   students
-- MUST be 100% fictitious and MUST NOT be obfuscated data or derived from actual
+* MUST be 100% fictitious and MUST NOT be obfuscated data or derived from actual
   school data in any way
 
 </details>
@@ -94,10 +94,10 @@ certification process. The spreadsheet:
 If the certifying system data mapping includes elements that index assessment
 metadata to learning standards, the provider:
 
-- MUST provide a spreadsheet of those learning standards that will be used. The
+* MUST provide a spreadsheet of those learning standards that will be used. The
   spreadsheet MUST include the GUIDS and titles of those standards; no other
   fields are required
-- SHOULD only include the learning standards referenced in the sample data; it
+* SHOULD only include the learning standards referenced in the sample data; it
   SHOULD NOT be a full catalog of all learning standards from a provider
 
 </details>
@@ -170,7 +170,7 @@ a) Demonstrate that the product allows for configuration of which student ID
 API implementation. This is REQUIRED even if the student identifiers are
 optional in the roster specification, and MUST be done for all roster
 specifications. The student ID configuration is limited to the district/SIS
-student ID and the state student ID *–* other IDs are exempt (e.g., a student
+student ID and the state student ID _–_ other IDs are exempt (e.g., a student
 lunchroom code, a student Google ID).
 
 b) Demonstrate the ability to roster students via the Ed-Fi Enrollment API or
@@ -267,9 +267,9 @@ StudentAssessment level.
 
 The provider / API client MUST be able to perform the following actions:
 
-- Capture and log transport errors, including all HTTP errors.
-- Re-attempt delivery of API resources updates following failed transmissions.
-- In the event that repeated delivery fails for the same resource update,
+* Capture and log transport errors, including all HTTP errors.
+* Re-attempt delivery of API resources updates following failed transmissions.
+* In the event that repeated delivery fails for the same resource update,
   surface the error to a system user.
 
 Field work within the Ed-Fi community has revealed that this application

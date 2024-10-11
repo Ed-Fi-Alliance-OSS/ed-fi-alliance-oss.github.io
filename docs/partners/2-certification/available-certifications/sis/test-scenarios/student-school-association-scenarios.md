@@ -10,9 +10,9 @@ using the StudentEducationOrganizationAssociation.
 
 ### Prerequisites
 
-- Student
-- EdOrg
-- Graduation Plan (if applicable)
+* Student
+* EdOrg
+* Graduation Plan (if applicable)
 
 ### Scenarios
 
@@ -29,13 +29,13 @@ using the StudentEducationOrganizationAssociation.
 
 Additional Requirements for StudentSchoolAssociation
 
-- The studentEducationOrganizationAssociations record should remain after the
+* The studentEducationOrganizationAssociations record should remain after the
   student withdraws in Scenario 5.  The association should not be deleted if the
   student enrollment in the education organization changes, or at the end of a
   school year.  Rather, the association should be thought of as a core part of
   the student record, but scoped to the education organization.
 
-| Resource                  | Property Name                | Is Collection | Data Type                    | Required / Optional | Scenario 1 <br/>POST                   | Scenario 2 <br/>POST                   | Scenario 3 <br/>PUT                    | Scenario 4 <br/>PUT                    | Scenario 4 <br/>PUT                    |
+| Resource                  | Property Name                | Is Collection | Data Type                    | Required / Optional | Scenario 1: POST                   | Scenario 2: POST                   | Scenario 3: PUT                    | Scenario 4: PUT                    | Scenario 4: PUT                    |
 | ------------------------- | ---------------------------- | ------------- | ---------------------------- | ------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
 | StudentSchoolAssociations | schoolReference              | FALSE         | schoolReference              | REQUIRED            |                                        |                                        |                                        |                                        |                                        |
 | schoolReference           | schoolId                     | FALSE         | integer                      | REQUIRED            | 255901107                              | 255901001                              | 255901107                              | 255901001                              | 255901107                              |

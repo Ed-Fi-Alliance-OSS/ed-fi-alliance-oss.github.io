@@ -4,7 +4,8 @@ These use cases apply to the Early Warning community priority.
 
 ## Use Case 11
 
-### As a school district, I want to review academic performance data according to important periods and boundaries within the school year
+> As a school district, I want to review academic performance data according to
+> important periods and boundaries within the school year
 
 <details>
 <summary>Resource Requirements</summary>
@@ -39,7 +40,8 @@ These use cases apply to the Early Warning community priority.
 
 ## Use Case 12
 
-### As a school district, I want to understand key factors in a student’s growth related to behavior and the impact of behavior interventions
+> As a school district, I want to understand key factors in a student’s growth
+> related to behavior and the impact of behavior interventions
 
 <details>
 <summary>Resource Requirements</summary>
@@ -75,9 +77,19 @@ These use cases apply to the Early Warning community priority.
 
 </details>
 
-## Use Case 15: (Note this use case also applies to [CCMR](./college-career-and-military-readiness-ccmr.md) and [Cohort](./cohort.md))
+## Use Case 15
 
-### As a counselor, I want access to the information on who is in my counseling group so that I can see individual and aggregate analytics that relate to that group
+:::note
+
+This use case also applies to
+[CCMR](./college-career-and-military-readiness-ccmr.md) and
+[Cohort](./cohort.md)
+
+:::
+
+> As a counselor, I want access to the information on who is in my counseling
+> group so that I can see individual and aggregate analytics that relate to that
+> group
 
 <details>
 <summary>Resource Requirements</summary>

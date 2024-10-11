@@ -11,8 +11,8 @@ cohort of students.
 
 ### Prerequisites
 
-- Staff
-- Cohort
+* Staff
+* Cohort
 
 ### Scenarios
 
@@ -22,7 +22,7 @@ cohort of students.
 4. Add an End date for staff cohort association 2.
 5. Delete the staff cohort association for the elementary school staff member.
 
-| Resource                | Property Name           | Is Collection | Data Type       | Required / Optional | Scenario 1 <br/>POST                              | Scenario 2 <br/>POST                              | Scenario 3 <br/>PUT                               | Scenario 4 <br/>PUT                               |
+| Resource                | Property Name           | Is Collection | Data Type       | Required / Optional | Scenario 1: POST                              | Scenario 2: POST                              | Scenario 3: PUT                               | Scenario 4: PUT                               |
 | ----------------------- | ----------------------- | ------------- | --------------- | ------------------- | ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
 | StaffCohortAssociations | cohortReference         | FALSE         | cohortReference | REQUIRED            |                                                   |                                                   |                                                   |                                                   |
 | cohortReference         | educationOrganizationId | FALSE         | integer         | REQUIRED            | 255901107                                         | 255901001                                         | 255901107                                         | 255901001                                         |

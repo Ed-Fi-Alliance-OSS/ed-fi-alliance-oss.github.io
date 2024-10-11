@@ -5,7 +5,7 @@ descriptor value in another namespace.
 
 ## Prerequisites
 
-- None
+* None
 
 ## Scenarios
 
