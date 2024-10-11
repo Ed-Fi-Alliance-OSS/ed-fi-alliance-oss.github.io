@@ -6,12 +6,9 @@ Coding conventions serve the following purposes:
 
 - They create a consistent look to the code, so that readers can focus on
   content, not layout.
-
 - They enable readers to understand the code more quickly by making assumptions
   based on previous experience.
-
 - They facilitate copying, changing, and maintaining the code.
-
 - They demonstrate best practices.
 
 The principles below broadly apply to all Ed-Fi source code. For
@@ -80,7 +77,6 @@ able to follow the intent and logic of the code. Explain _why_,
 not _what._ Prefer using proper English sentences.
 
 1. Place the comment on a separate line, not at the end of a line of code.
-
 2. Prefer use of proper English sentences.
 3. Insert one space between the comment delimiter  and the comment text, as
    shown in the following example.
@@ -100,7 +96,6 @@ not _what._ Prefer using proper English sentences.
    ```
 
 4. Do not create formatted blocks of asterisks around comments.
-
 5. Comments should have a blank line before and, at the very least, after the
    segment of code to which the comment applies (thus the line above the
    `ForEach` ).
