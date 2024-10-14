@@ -121,9 +121,8 @@ function Main() {
                 </Link>
               </li>
               <li>
-                <Link to="/community/sdlc">
-                  Software Development Lifecycle
-                </Link> (for open source, staff, and contractor development practices)
+                <Link to="/community/sdlc">Software Development Lifecycle</Link>{' '}
+                (for open source, staff, and contractor development practices)
               </li>
               <li>
                 <Link to="/community/involved/ip-disclosure-policy">

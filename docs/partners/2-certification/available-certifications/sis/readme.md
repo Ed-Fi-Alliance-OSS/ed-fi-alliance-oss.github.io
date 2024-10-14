@@ -2,10 +2,10 @@
 
 Certification Name: Ed-Fi Student Information Systems API for Data Standard v5 \
 Standards Referenced: \
-   [Ed-Fi Core Student Data API (RFC
-   16)](https://edfi.atlassian.net/wiki/spaces/EFDSRFC/pages/25362441/ED-FI+RFC+16+-+CORE+STUDENT+DATA+API) \
-   [Ed-Fi API Design & Implementation Guidelines
-   v7.1](https://edfi.atlassian.net/wiki/download/attachments/18645251/Public-REST-API-Design-and-Implementation-Guidelines-Rev2.pdf?version=1&modificationDate=1425039412083&cacheVersion=1&api=v2) \
+   [Ed-Fi Core Student Data API (RFC    16)](https://edfi.atlassian.net/wiki/spaces/EFDSRFC/pages/25362441/ED-FI+RFC+16+-+CORE+STUDENT+DATA+API)
+\
+   [Ed-Fi API Design & Implementation Guidelines    v7.1](https://edfi.atlassian.net/wiki/download/attachments/18645251/Public-REST-API-Design-and-Implementation-Guidelines-Rev2.pdf?version=1&modificationDate=1425039412083&cacheVersion=1&api=v2)
+\
 Technical Suite: Suite 3 \
 Obsoletes: – \
 Obsoleted By: – \
@@ -22,11 +22,11 @@ Last Revision Date: –
 The Ed-Fi Student Information Systems API for Data Standard v5 verifies that a
 Student Information System (the source system, or "provider") can manage a core
 set of data on a target system (the "consumer") using a set of RESTful APIs
-defined by [ED-FI RFC 16 - CORE STUDENT DATA
-API](https://edfi.atlassian.net/wiki/spaces/EFDSRFC/pages/25362441/ED-FI+RFC+16+-+CORE+STUDENT+DATA+API).
+defined by
+[ED-FI RFC 16 - CORE STUDENT DATA API](https://edfi.atlassian.net/wiki/spaces/EFDSRFC/pages/25362441/ED-FI+RFC+16+-+CORE+STUDENT+DATA+API).
 
-In this data exchange architecture, the provider *—* the Student Information
-System (SIS) *—* implements an API client which uses HTTPS requests and RESTful
+In this data exchange architecture, the provider _—_ the Student Information
+System (SIS) _—_ implements an API client which uses HTTPS requests and RESTful
 patterns to manage API resources on the consumer system, which implements the
 API definition itself (see Figure 1).
 
@@ -43,10 +43,10 @@ SIS system to the indicated Ed-Fi API. It does not cover the synchronization or
 transfer of historical records beyond the current school year.
 
 The test scenarios making up the certification are defined and prioritized by
-the community and described within the [SIS API Use Case
-document](https://edfi.atlassian.net/wiki/display/SG/SIS+API+V3+Certification+Use+Cases).
+the community and described within
+the [SIS API Use Case document](https://edfi.atlassian.net/wiki/display/SG/SIS+API+V3+Certification+Use+Cases).
 The use case document describes the scope of the API and what is required for
-API integration.  
+API integration.
 
 To receive this certification, a product must be able to use the described APIs
 (aligned with Data Standard v5.0) to create and manage a defined set of API
@@ -71,12 +71,10 @@ areas like error handling, modes of operation (transactional and batch), and
 additional configuration options. The certification requirements capture
 demonstrated needs of the Ed-Fi community.
 
-See [Student Information Systems API for Data Standard v5 Certification -
-Steps](./certification-steps.md) for
+See [Student Information Systems API for Data Standard v5 Certification - Steps](./certification-steps.md) for
 a list of all requirements.
 
 ## Re-certification Requirements
 
-See [Student Information Systems API v5
-Recertification](./recertification.md) for
+See [Student Information Systems API v5 Recertification](./recertification.md) for
 details.
