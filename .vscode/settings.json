@@ -68,23 +68,17 @@
   ],
   "psi-header.changes-tracking": {
     "autoHeader": "autoSave",
-    "exclude": ["css", "json", "xml", "config", "plaintext", "markdown", "batch"]
+    "exclude": [
+      "css",
+      "json",
+      "xml",
+      "config",
+      "plaintext",
+      "markdown",
+      "batch"
+    ]
   },
-  "cSpell.words": [
-    "codapi",
-    "collaboratives"
-  ],
-  "markdownlint.config": {
-    "default": true,
-    "line-length": {
-      "code_block_line_length": 110,
-      "code_blocks": true,
-      "tables": false
-    },
-    "no-inline-html": {
-      "allowed_elements": [ "codapi-snippet", "kbd", "DocCardList", "details", "summary" ]
-    }
-  },
+  "cSpell.words": ["codapi", "collaboratives"],
   "[markdown]": {
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,

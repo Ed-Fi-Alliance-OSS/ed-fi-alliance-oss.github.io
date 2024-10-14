@@ -22,24 +22,24 @@ Basic requirements for a project linter:
 5. SHOULD: be integrated into common IDEs, or have equivalent replacements that
    use the same rules.
 
-## C #
+## C
 
 Historically, the Alliance has relied on ReSharper for detecting common code
 smells, style inconsistencies, and more. However, it does not meet the
 requirements above for a good linter in several respects. Instead, the Alliance
 is adopting a combination of two tools:
 
-- Microsoft's [.NET compiler platform
-  analyzers](https://docs.microsoft.com/en-us/dotnet/fundamentals/code-analysis/overview)
+* Microsoft's
+  [.NET compiler platform analyzers](https://docs.microsoft.com/en-us/dotnet/fundamentals/code-analysis/overview)
   (Roslyn), and
-- [SonarLint](https://www.sonarlint.org) by SonarSource (makers of SonarQube),
+* [SonarLint](https://www.sonarlint.org) by SonarSource (makers of SonarQube),
   which builds on the Roslyn framework.
 
 In combination with a [.editorconfig file](https://editorconfig.org/), these
 tools provide robust analysis and reporting, whether from the command line,
 Visual Studio, or Visual Studio Code.  Furthermore, the `.editorconfig` rules
-provide the configuration needed to run the [dotnet
-format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format)
+provide the configuration needed to run the
+[dotnet format](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-format)
 command for automatic reformatting of source code files.
 
 ## Customization
@@ -47,15 +47,11 @@ command for automatic reformatting of source code files.
 The style rules can be tweaked by the Ed-Fi Tech Team with careful review. The
 following articles are helpful in understanding the various options:
 
-- [Analyze Configuration
-  (Overview)](https://docs.microsoft.com/en-us/visualstudio/code-quality/use-roslyn-analyzers?view=vs-2022)
-  - [Language
-    Rules](https://docs.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/language-rules)
-  - [Naming
-    Rules](https://docs.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/naming-rules)
-  - [Quality
-    Rules](https://docs.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/)
-- [SonarLint C# Rules](https://rules.sonarsource.com/csharp)
+* [Analyze Configuration (Overview)](https://docs.microsoft.com/en-us/visualstudio/code-quality/use-roslyn-analyzers?view=vs-2022)
+  * [Language Rules](https://docs.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/language-rules)
+  * [Naming Rules](https://docs.microsoft.com/en-us/dotnet/fundamentals/code-analysis/style-rules/naming-rules)
+  * [Quality Rules](https://docs.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/)
+* [SonarLint C# Rules](https://rules.sonarsource.com/csharp)
 
 We **install these analyzers as NuGet package dependencies** in C# projects. For
 each project:
@@ -69,14 +65,14 @@ dotnet add package SonarAnalyzer.CSharp
 
 :::note
 
-To reduce scope of changes, it is recommended to apply this to one or
-a >small number of projects at time; see migration plan below.
+To reduce scope of changes, it is recommended to apply this to one or a >small
+number of projects at time; see migration plan below.
 
 :::
 
 Next, **copy the appopriate `.editorconfig` file and the `Directory.Build.props`
-file from the [DevSecOps/dotnet
-tools](https://github.com/Ed-Fi-Alliance-OSS/DevSecOps/tree/main/dotnet)**.
+file from the
+[DevSecOps/dotnet tools](https://github.com/Ed-Fi-Alliance-OSS/DevSecOps/tree/main/dotnet)**.
 Paste them into the same directory as the **solution file**. If there is already
 a build props file, update it to include the extra two lines in this sample
 (treating warnings as errors, and outputting a sarif log file).
@@ -89,11 +85,10 @@ repositories and thus will not be used.
 
 :::warning
 
-SonarLint provides extensions ([VS
-Code](https://www.sonarlint.org/vscode/),
-[Rider](https://www.sonarlint.org/jetbrains/)) that are supposed to provide
-good integration with these tools; however, your author's experience was that
-the VS Code extension literally did nothing, out of the box.
+SonarLint provides extensions ([VS Code](https://www.sonarlint.org/vscode/),
+[Rider](https://www.sonarlint.org/jetbrains/)) that are supposed to provide good
+integration with these tools; however, your author's experience was that the VS
+Code extension literally did nothing, out of the box.
 
 :::
 
@@ -136,14 +131,14 @@ our own comment explaining why we disabled the warning.
 
 :::tip
 
-It is not too difficult to deal with this in Visual Studio Code or
-Rider as well, even if you don't have the integrated IDE controls: simply
-wrap  `pragma warning disable CODE`  and `pragma warning restore CODE`  around
-the line of source code, using the proper error code. Look carefully at the
-error message above and you'll see code "S101". The "S" prefix tells you that
-this is a Sonar warning, rather than a built-in C# warning. You can search on
-that code to find more information, or just modify the following URL to have
-the desired numeric portion of the code:
+It is not too difficult to deal with this in Visual Studio Code or Rider as
+well, even if you don't have the integrated IDE controls: simply wrap
+`pragma warning disable CODE`  and `pragma warning restore CODE`  around the
+line of source code, using the proper error code. Look carefully at the error
+message above and you'll see code "S101". The "S" prefix tells you that this is
+a Sonar warning, rather than a built-in C# warning. You can search on that code
+to find more information, or just modify the following URL to have the desired
+numeric portion of the code:
 [https://rules.sonarsource.com/csharp/RSPEC-101](https://rules.sonarsource.com/csharp/RSPEC-101)
 
 :::
@@ -156,13 +151,13 @@ review. Thus it is recommended to introduce the analyzers to only 2-3 projects -
 or, only a single project if it has many files (e.g. `EdFi.Ods.Api`).
 
 After adding the analyzers, `.editorconfig` , and `Directory.Build.props` , it
-may be useful to run the `dotnet format`  command on the *projects* (not the
+may be useful to run the `dotnet format`  command on the _projects_ (not the
 entire solution) as a first step, and commit just those file changes. Please
 note that many files will experience what will look like strange churn, due to
 changes at the top and bottom of the file:
 
-- this will strip out a UTF byte order mark (BOM), if present
-- and it will ensure there is an extra line break at the end of the file, which
+* this will strip out a UTF byte order mark (BOM), if present
+* and it will ensure there is an extra line break at the end of the file, which
   helps view the file correctly in Unix-like environments.
 
 ## Proof-of-Concept Spikes
@@ -171,10 +166,10 @@ The following pull requests show proof-of-concept spikes in several different
 repositories. Note that the Data Import spike is in a closed source repo and
 only a small number of developers can access it.
 
-- [Analytics-Middle-Tier](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Analytics-Middle-Tier/pull/215)
-  - this includes integration of Sarif log files into CodeQL.
-- [Ed-Fi-ODS-Implementation](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/pull/463)
-- [Data-Import](https://github.com/Ed-Fi-Closed/Ed-Fi-DataImport/pull/365)
+* [Analytics-Middle-Tier](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Analytics-Middle-Tier/pull/215)
+  * this includes integration of Sarif log files into CodeQL.
+* [Ed-Fi-ODS-Implementation](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/pull/463)
+* [Data-Import](https://github.com/Ed-Fi-Closed/Ed-Fi-DataImport/pull/365)
 
 ## JavaScript and TypeScript
 
@@ -191,22 +186,21 @@ must use
 
 **Install the following packages as dev dependencies:**
 
-- `@types/eslint`
-- `@typescript-eslint/eslint-plugin`
-- `@typescript-eslint/parser`
-- `eslint`
-- `eslint-config-airbnb-base`
-- `eslint-config-prettier`
-- `eslint-config-typescript`
-- `eslint-plugin-import`
-- `eslint-plugin-jasmine`
-- `eslint-plugin-json`
-- `eslint-plugin-prettier`
-- `prettier`
+* `@types/eslint`
+* `@typescript-eslint/eslint-plugin`
+* `@typescript-eslint/parser`
+* `eslint`
+* `eslint-config-airbnb-base`
+* `eslint-config-prettier`
+* `eslint-config-typescript`
+* `eslint-plugin-import`
+* `eslint-plugin-jasmine`
+* `eslint-plugin-json`
+* `eslint-plugin-prettier`
+* `prettier`
 
 **And then add copy the appropriate configuration files from
-[DevSecOps/JavaScript
-tools](https://github.com/Ed-Fi-Alliance-OSS/DevSecOps/tree/main/javascript)\*\***.\*\*
+[DevSecOps/JavaScript tools](https://github.com/Ed-Fi-Alliance-OSS/DevSecOps/tree/main/javascript)\*\***.\*\*
 
 ## Python
 
@@ -215,19 +209,18 @@ Following the lead of the LMS Toolkit project, other Python code must use:
 
 1. [Flake8](https://flake8.pycqa.org/en/latest/) for style enforcement
 2. [MyPy](http://mypy-lang.org/) for type checking
-   1. [Pylance in VS
-      Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python&WT.mc_id=devcloud-00000-cxa)
+   1. [Pylance in VS Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python&WT.mc_id=devcloud-00000-cxa)
       will follow the same configuration
 3. [Black](https://black.readthedocs.io/en/stable/) for formatting
 
 **Install the following packages as dev dependencies:**
 
-- `flake8`
-- `mypy`
-- `black`
+* `flake8`
+* `mypy`
+* `black`
 
-**And then add copy the appropriate configuration files from [DevSecOps/Python
-tools](https://github.com/Ed-Fi-Alliance-OSS/DevSecOps/tree/main/python)\*\***.\*\*
+**And then add copy the appropriate configuration files from
+[DevSecOps/Python tools](https://github.com/Ed-Fi-Alliance-OSS/DevSecOps/tree/main/python)\*\***.\*\*
 
 ## PowerShell
 
@@ -240,8 +233,8 @@ To do so, clone:
 and run `analyze.ps1`
 
 This script takes different options as parameters, the required parameter is the
-`-Directory` where you can specify a file or a folder, and this will review
-the file or folder and subfolders included.
+`-Directory` where you can specify a file or a folder, and this will review the
+file or folder and subfolders included.
 
 The flag `-SaveToFile` defines if it should only print the results into the
 console or save to a [SARIF](https://sarifweb.azurewebsites.net/) file. The
@@ -261,7 +254,6 @@ Example:
 If a warning should be ignored, annotate your class or function with the
 following:
 
-`[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseDeclaredVarsMoreThanAssignments',
-'unused', Justification = 'False positives')]`
+`[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseDeclaredVarsMoreThanAssignments', 'unused', Justification = 'False positives')]`
 
 [List of PowerShell Rules](https://learn.microsoft.com/en-us/powershell/utility-modules/psscriptanalyzer/rules-recommendations?view=ps-modules)

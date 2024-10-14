@@ -32,8 +32,8 @@ This process must perform the following steps:
 * Backup up the current EdFi_Ods database (or equivalent).
 * Generate a "snapshot identifier" as a string-based value that can be
   incorporated into a database name.
-* Restore the ODS database using following naming convention: `{Ed-Fi ODS
-  database name}_SS{snapshotIdentifier}`.
+* Restore the ODS database using following naming convention:
+  `{Ed-Fi ODS database name}_SS{snapshotIdentifier}`.
 * Insert a new record into the `changes.Snapshot` table with the new snapshot
   identifier and the current date/time.
 
@@ -47,7 +47,7 @@ The host's process _should_ also perform the following steps:
 * Remove corresponding records from `changes.Snapshot` table for the dropped
   snapshots.
 
-### Define Authorization and Security Metadata
+### SDefine Authorization and Security Metadata for the Source
 
 * Create an "Ed-Fi API Publisher - Reader" claim set that provides _read_
   permissions to the API resources needed for the use case. The claim set must
@@ -63,7 +63,7 @@ The host's process _should_ also perform the following steps:
 
 ## Target API
 
-### Define Authorization and Security Metadata
+### Define Authorization and Security Metadata for the Target
 
 * Create an "Ed-Fi API Publisher - Writer" claim set that provides appropriate
   _read_ and _write_ permissions to the API resources needed for the use case.
@@ -85,7 +85,7 @@ The host's process _should_ also perform the following steps:
   configuring the Ed-Fi API Publisher's connections. The API's base URL includes
   everything up to, but not including, the _/data/v3_ portion.
 
-# Profiles
+## Profiles
 
 For APIs that have the API Profiles option enabled, the API Publisher includes
 parameters to indicate the profile with both the source and the Target.

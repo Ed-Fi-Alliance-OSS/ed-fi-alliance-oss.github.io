@@ -2,10 +2,10 @@
 
 Certification Name: Ed-Fi Assessment Outcomes API for Suite 3 \
 Standards Referenced: \
-   [Ed-Fi Assessment Outcomes API (RFC
-   22)](https://edfi.atlassian.net/wiki/display/EFDSRFC/ED-FI+RFC+22+-+ASSESSMENT+OUTCOMES+API) \
-   [Ed-Fi API Design & Implementation Guidelines
-   v3.1](https://edfi.atlassian.net/wiki/spaces/EFAPIGUIDE/overview) \
+   [Ed-Fi Assessment Outcomes API (RFC    22)](https://edfi.atlassian.net/wiki/display/EFDSRFC/ED-FI+RFC+22+-+ASSESSMENT+OUTCOMES+API)
+\
+   [Ed-Fi API Design & Implementation Guidelines    v3.1](https://edfi.atlassian.net/wiki/spaces/EFAPIGUIDE/overview)
+\
 Technical Suite: Suite 3 \
 Obsoletes: – \
 Obsoleted By: – \
@@ -21,9 +21,8 @@ Last Revision Date: –
 
 The Ed-Fi Assessment Outcomes API for Suite 3 Certification verifies that a
 source system (the provider) can manage a core set of assessment data on a
-target system (the consumer) using the RESTful APIs defined by [ED-FI RFC 22 -
-ASSESSMENT OUTCOMES
-API](https://edfi.atlassian.net/wiki/spaces/EFDSRFC/pages/25363177/ED-FI+RFC+22+-+ASSESSMENT+OUTCOMES+API).
+target system (the consumer) using the RESTful APIs defined
+by [ED-FI RFC 22 - ASSESSMENT OUTCOMES API](https://edfi.atlassian.net/wiki/spaces/EFDSRFC/pages/25363177/ED-FI+RFC+22+-+ASSESSMENT+OUTCOMES+API).
 
 In this data exchange architecture, the provider implements an API client which
 uses HTTP/S requests and RESTful patterns to manage API resources on the
@@ -38,19 +37,18 @@ by the Ed-Fi community to be critical to "real world" data exchange and
 interoperability. These include requirements around error handling and recovery,
 roster configurability, and others.
 
-This conformance specification covers the provider certification *–* that is,
-the responsibilities of the *API* *client* implementer and not the *API*
-*consumer*. Given market demand, the Alliance will publish a consumer
+This conformance specification covers the provider certification _–_ that is,
+the responsibilities of the _API_ _client_ implementer and not the _API_
+_consumer_. Given market demand, the Alliance will publish a consumer
 conformance specification as well. Both certifications will use the same
-technical API specifications provided as part of the [ED-FI RFC 22 - ASSESSMENT
-OUTCOMES
-API](https://edfi.atlassian.net/wiki/spaces/EFDSRFC/pages/25363177/ED-FI+RFC+22+-+ASSESSMENT+OUTCOMES+API).
+technical API specifications provided as part of the
+[ED-FI RFC 22 - ASSESSMENT OUTCOMES API](https://edfi.atlassian.net/wiki/spaces/EFDSRFC/pages/25363177/ED-FI+RFC+22+-+ASSESSMENT+OUTCOMES+API).
 
 ## Overview of Requirements
 
 This section provides an overview only; detailed, step-by-step requirements are
-available in the [Assessment Outcomes API Certification for Data Standard v5 -
-Steps](./certification-steps.md).
+available in
+the [Assessment Outcomes API Certification for Data Standard v5 - Steps](./certification-steps.md).
 
 ### Local Descriptor Guidance
 
@@ -110,13 +108,13 @@ The Assessment API model contains a number of controlled vocabularies.
 For some enumerations, a vendor is allowed to supply their own additional values
 if an Ed-Fi value fails to match the semantics needed. These enumerations are:
 
-- AssessmentPeriodDescriptor
-- PerformanceLevelDescriptor
-- AccommodationDescriptor
-- AssessmentReportingMethodDescriptor
+* AssessmentPeriodDescriptor
+* PerformanceLevelDescriptor
+* AccommodationDescriptor
+* AssessmentReportingMethodDescriptor
 
 The certification captures and publishes vendor-specific enumerations (in the
-provider entry in the [Registry of Ed-Fi Certified
-Products](../../registry-of-ed-fi-certified-products.mdx)),
+provider entry in the
+[Registry of Ed-Fi Certified Products](../../registry-of-ed-fi-certified-products.mdx)),
 and tests that enumerations used during testing are within the allowed
 enumeration sets.

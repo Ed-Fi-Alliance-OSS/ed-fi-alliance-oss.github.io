@@ -41,31 +41,30 @@ distribution (where applicable) of compiled software to the Ed-Fi Community.
          organizations needed.
       2. Open source contributors can be granted Outside Collaborator access;
          this particularly useful for Ed-Fi Exchange projects.
-      3. Each person should receive the least privilege applicable to their
-         role on a given project.
-      4. Access to the "Ed-Fi-Closed" organization is more restricted than
-         the others, not only because of the closed source nature of the
-         projects, but also due to the need to pay for GitHub user seats in
-         this organization.
-   4. Access rights are reviewed whenever there is a change to team
-      composition, so that authorization can be removed when no longer needed.
+      3. Each person should receive the least privilege applicable to their role
+         on a given project.
+      4. Access to the "Ed-Fi-Closed" organization is more restricted than the
+         others, not only because of the closed source nature of the projects,
+         but also due to the need to pay for GitHub user seats in this
+         organization.
+   4. Access rights are reviewed whenever there is a change to team composition,
+      so that authorization can be removed when no longer needed.
 4. **Branch Security**
-   1. The `main`  branch is special and needs to be protected at all times,
-      and must require pull requests.
-      1. Where applicable, the EdFiBuildAgent account can be allowed to
-         bypass pull request for automation, e.g. when bumping a version
-         number on merged code.
-      2. All commits should be signed in order to avoid git user spoofing
-         (see [Signing Git
-         Commits](../source-code-control-policy/signing-git-commits.md)).
-      3. All submitters must sign the [Individual Contributors License
-         Agreement](https://gist.github.com/EdFiBuildAgent/d68fa602d07505c3682e8258b7dc6fbc).
+   1. The `main`  branch is special and needs to be protected at all times, and
+      must require pull requests.
+      1. Where applicable, the EdFiBuildAgent account can be allowed to bypass
+         pull request for automation, e.g. when bumping a version number on
+         merged code.
+      2. All commits should be signed in order to avoid git user spoofing (see
+         [Signing Git Commits](../source-code-control-policy/signing-git-commits.md)).
+      3. All submitters must sign the
+         [Individual Contributors License Agreement](https://gist.github.com/EdFiBuildAgent/d68fa602d07505c3682e8258b7dc6fbc).
       4. Linear history is required.
       5. All status checks should pass before merge.
       6. Do not allow bypassing.
       7. Block forced pushes.
-   2. In order to create patch releases safely, branches named `patch-*`
-      should receive the same protection.
+   2. In order to create patch releases safely, branches named `patch-*` should
+      receive the same protection.
    3. Other branches are treated as feature branches and do not need branch
       security, as releases will not be made from those branches.
    4. Use Rulesets instead of Branch Protection, as they are more flexible.
@@ -140,20 +139,21 @@ enforced across the Alliance's repositories.
 
    1. Pull requests on all code provide an opportunity for human review to
       ensure that there is no unexpectedly functionality, such as statements
-      that transfer data out to a third party, change filesystem permissions,
-      or provide end-users with opportunities to execute code in inappropriate
+      that transfer data out to a third party, change filesystem permissions, or
+      provide end-users with opportunities to execute code in inappropriate
       contexts.
-      1. Example of an "appropriate context" for runtime injection of
-         executable code: Data Import's pre-processing scripts. Risk is
-         ameliorated by placing Data Import in safe network zones and
-         limiting user access to Ed-Fi system administrators.
+      1. Example of an "appropriate context" for runtime injection of executable
+         code: Data Import's pre-processing scripts. Risk is ameliorated by
+         placing Data Import in safe network zones and limiting user access to
+         Ed-Fi system administrators.
    2. Protect against [Trojan Source](https://trojansource.codes/) attacks.
-   3. Use GitHub CodeQL as a static application security testing (SAST) tool
-      to search for potential security vulnerabilities. ⚠️ Not available for
-      closed source applications. [Example of accidentally dangerous code](./codeql-example.md)
-   4. Use an appropriate [dependency review
-      tool](./dependency-security-automation) to
-      ensure that libraries/packages used by an application do not have known
+   3. Use GitHub CodeQL as a static application security testing (SAST) tool to
+      search for potential security vulnerabilities. ⚠️ Not available for closed
+      source applications.
+      [Example of accidentally dangerous code](./codeql-example.md)
+   4. Use an appropriate
+      [dependency review tool](./dependency-security-automation) to ensure that
+      libraries/packages used by an application do not have known
       vulnerabilities.
 
 2. **Distribution**
@@ -165,7 +165,7 @@ enforced across the Alliance's repositories.
 
       | Language / Framework         | Package Type | Distribution Channel |
       | ---------------------------- | ------------ | -------------------- |
-      | ​.NET                         | NuGet        | Azure Artifacts​      |
+      | ​.NET                        | NuGet        | Azure Artifacts​     |
       | Analytics Middle Tier        | zip          | GitHub Release       |
       | Learning Standards Sync Tool | zip          | Azure Blob Storage   |
       | Python                       | wheels       | PyPi                 |
@@ -184,22 +184,22 @@ enforced across the Alliance's repositories.
 
 ## Procedures
 
-- **New repository setup**:
-  - Apply all branch security rules described above.
-  - Carefully apply least required privilege authorization to the repository.
-- **Automated review**:
-  - All core repositories should have appropriate automation workflows in
-    GitHub. See [Guidelines for Use of GitHub
-    Actions](./guidelines-for-use-of-github-actions.md)
+* **New repository setup**:
+  * Apply all branch security rules described above.
+  * Carefully apply least required privilege authorization to the repository.
+* **Automated review**:
+  * All core repositories should have appropriate automation workflows in
+    GitHub. See
+    [Guidelines for Use of GitHub Actions](./guidelines-for-use-of-github-actions.md)
     for more detail. Exceptions:
-    - **Ed-Fi-Docker**: vulnerability scanning provided by Docker Hub, rather
+    * **Ed-Fi-Docker**: vulnerability scanning provided by Docker Hub, rather
       than GitHub Actions
-    - **Standards**: do not contain source code
-      - **Ed-Fi-Model**
-      - **Ed-Fi-Standard**
-      - **Ed-Fi-TPDM-Artifacts**
-    - **Starter Kits** that do not contain any scannable code or actions:
-      - **Ed-Fi-Starter-Kit-Assessments**
-      - **Ed-Fi-Starter-Kit-Equity**
-  - Ideally, create the Code Scanning and Dependency Review workflows
+    * **Standards**: do not contain source code
+      * **Ed-Fi-Model**
+      * **Ed-Fi-Standard**
+      * **Ed-Fi-TPDM-Artifacts**
+    * **Starter Kits** that do not contain any scannable code or actions:
+      * **Ed-Fi-Starter-Kit-Assessments**
+      * **Ed-Fi-Starter-Kit-Equity**
+  * Ideally, create the Code Scanning and Dependency Review workflows
     immediately on creation of a new repository.

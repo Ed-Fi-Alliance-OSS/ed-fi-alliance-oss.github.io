@@ -16,8 +16,8 @@ differ.
 The data returned by this API may _look_ realistic, but they are entirely fake.
 The Ed-Fi Alliance does not store, transmit, or have access to student data - we
 provide software to our community members, who run it for themselves or engage
-with a partner to do so on their behalf. The live application used by this tutorial
-is a demonstration site containing synthetic data.
+with a partner to do so on their behalf. The live application used by this
+tutorial is a demonstration site containing synthetic data.
 
 :::
 
@@ -231,8 +231,7 @@ We'll use the `schoolId` value in the next section.
 
 ### Creating a Student School Association
 
-The data model for `studentSchoolAssociation` has only four
-required properties:
+The data model for `studentSchoolAssociation` has only four required properties:
 
 * `schoolReference`
 * `studentReference`
@@ -346,11 +345,11 @@ allowed to delete this Student, then there would be a dangling Student School
 Association that points to a student who does not exist!
 
 This is an example of dependency ordering. Look again at the Discovery API
-example at the top of this page. The URL specified at path
-`$.urls.dependencies` can be used to help understand dependency order. For
-example, `/ed-fi/students` has order 3, and `/ed-fi/studentSchoolAssociations`
-has order 13. When _creating_ a resource, the lower number must be created
-first. When _deleting_, we must go in reverse: delete the higher number first.
+example at the top of this page. The URL specified at path `$.urls.dependencies`
+can be used to help understand dependency order. For example, `/ed-fi/students`
+has order 3, and `/ed-fi/studentSchoolAssociations` has order 13. When
+_creating_ a resource, the lower number must be created first. When _deleting_,
+we must go in reverse: delete the higher number first.
 
 To delete the Student School Association, you will need the `id` value to insert
 into the URL. The following `GET` will return the `studentSchoolAssociation`
@@ -382,11 +381,11 @@ authorization, and have seen specific examples relating to Students, Grade Level
 Descriptors, and Student School Associations.
 
 As a next step in learning how to interact with an Ed-Fi API, we suggest trying
-the [live documentation site for ODS/API
-7.1](https://api.ed-fi.org/v7.1/docs/swagger). It uses a tool called Swagger UI
-to read the OpenAPI specification file &mdash; provided by the Discovery API, in
-`$.urls.openApiMetadata` &mdash; and create a friendly user interface for
-exploring the full scope of the Resources API.
+the
+[live documentation site for ODS/API 7.1](https://api.ed-fi.org/v7.1/docs/swagger).
+It uses a tool called Swagger UI to read the OpenAPI specification file &mdash;
+provided by the Discovery API, in `$.urls.openApiMetadata` &mdash; and create a
+friendly user interface for exploring the full scope of the Resources API.
 
 A few tips to help you navigate and use the tool:
 
@@ -397,8 +396,8 @@ A few tips to help you navigate and use the tool:
 2. Click the down arrow `⋎` on the right side of the page to expand a section.
 3. Each resource type (e.g. `academicWeeks`, `accountabilityRatings`, etc.) has
    expandable content for `GET`, `POST`, `GET` by ID, `PUT`, and `DELETE`
-   requests &mdash; plus two more `GET` requests that relate to the [Change
-   Queries](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V61/pages/18811902/Using+the+Changed+Record+Queries)
+   requests &mdash; plus two more `GET` requests that relate to the
+   [Change Queries](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V61/pages/18811902/Using+the+Changed+Record+Queries)
    feature.
 4. The `GET` request shows all of the available _query string parameters_ for
    filtering query results.
@@ -416,14 +415,13 @@ A few tips to help you navigate and use the tool:
 The following resources will help you learn more about working with an Ed-Fi API
 application:
 
-* [Ed-Fi API Guidelines](./api-guidelines/): this
-  space contains guidance on how to build a compliant Ed-Fi API application.
-  Those who are writing client applications that interact with a compatible
-  Ed-Fi API application can also benefit by learning more about what to expect
-  from the system.
-* [API Client Developers'
-  Guide](../ods-api/client-developers-guide): provides more detail
-  on many of the topics explored in this tutorial, and covers additional details
-  not reviewed here. This link is to the Ed-fFi ODS/API version 7.1
-  documentation. Most if not all content there applies equally to other versions
-  of the Ed-Fi ODS/API and to other Ed-Fi API applications more generally.
+* [Ed-Fi API Guidelines](./api-guidelines/): this space contains guidance on how
+  to build a compliant Ed-Fi API application. Those who are writing client
+  applications that interact with a compatible Ed-Fi API application can also
+  benefit by learning more about what to expect from the system.
+* [API Client Developers' Guide](../ods-api/client-developers-guide): provides
+  more detail on many of the topics explored in this tutorial, and covers
+  additional details not reviewed here. This link is to the Ed-fFi ODS/API
+  version 7.1 documentation. Most if not all content there applies equally to
+  other versions of the Ed-Fi ODS/API and to other Ed-Fi API applications more
+  generally.

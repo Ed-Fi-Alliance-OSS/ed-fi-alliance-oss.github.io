@@ -38,83 +38,78 @@ practices.
 
 ## References
 
-(external) [Security Hardening for GitHub
-Actions](https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions)
+(external)
+[Security Hardening for GitHub Actions](https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions)
 
 ## Authoring GitHub Actions in a Repository
 
 ### Summary of Policies and Best Practices
 
-- Only uses "3rd party" actions that are in the
+* Only uses "3rd party" actions that are in the
   [approved.json](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Actions/blob/main/action-allowedlist/approved.json).
-  - Collaborate with an Ed-Fi Tech Team member if you would like to bring in
-    a new action or a new version of a previously-trusted action.
-- Most repositories will have separate workflows for these tasks:
+  * Collaborate with an Ed-Fi Tech Team member if you would like to bring in a
+    new action or a new version of a previously-trusted action.
+* Most repositories will have separate workflows for these tasks:
   1. Dependency Review (mandatory)
   2. Code Review (mandatory)
   3. Build and Test
   4. Publish
-- Minimize build time by using dependency caching and not performing
-  unnecessary steps (e.g. rebuilding already built code).
-- Fail fast... and make sure the failure is obvious / easy to diagnose.
-- For new repositories, start with automation before code is developed
+* Minimize build time by using dependency caching and not performing unnecessary
+  steps (e.g. rebuilding already built code).
+* Fail fast... and make sure the failure is obvious / easy to diagnose.
+* For new repositories, start with automation before code is developed
   (security-driven development, like test- or behavior-driven development).
-- For any workflows that publish packages, do not add the publish step to the
+* For any workflows that publish packages, do not add the publish step to the
   workflow until you are sure the package being created is correct
-  - This ensures that any packages that end up in Azure Artifacts are
-    correct and not erroneous ones built before the workflow was complete.
-  - You can utilize the approved upload-artifact action to upload the
-    package to the build results so you can view it there to confirm if it
-    is correct or not.
-- Build once and reuse is always a good idea. When temporarily storing build
+  * This ensures that any packages that end up in Azure Artifacts are correct
+    and not erroneous ones built before the workflow was complete.
+  * You can utilize the approved upload-artifact action to upload the package to
+    the build results so you can view it there to confirm if it is correct or
+    not.
+* Build once and reuse is always a good idea. When temporarily storing build
   output as an artifact for download in another job, specify the exact commit
   hash or run id of the artifacts to download.
 
 ### Examples
 
-- All
+* All
 
-  - **[Dependency
-    Scan](https://github.com/Ed-Fi-Exchange-OSS/Suite-3-Performance-Testing/blob/main/.github/workflows/dependencies.yml)**
-  - Safe download of artifacts
+  * **[Dependency Scan](https://github.com/Ed-Fi-Exchange-OSS/Suite-3-Performance-Testing/blob/main/.github/workflows/dependencies.yml)**
+  * Safe download of artifacts
 
     ```yml title="Example"
     # This uses the commit hash to specify exactly which process to download from.
 
-        - name: Download SandboxAdmin,SwaggerUI,WebApi,Databases,EdFi.Ods.Api.Sdk,EdFi.SdkGen NugetPackages
-          uses: dawidd6/action-download-artifact@1cf11afe3f1874cee82a8d5a2b45c0fd63f0fa22 #v2.19.0
-          with:
-            workflow: InitDev,Unit tests,Integration tests,Package.yml
-            workflow_conclusion: success
-            name: NugetPackages.Artifacts
-            path: ${{ github.workspace }}/Ed-Fi-ODS-Implementation/NugetPackages/
-            commit: ${{ env.INITDEV_COMMIT }}
-            check_artifacts: true
-            if_no_artifact_found: fail
+    - name:
+        Download
+        SandboxAdmin,SwaggerUI,WebApi,Databases,EdFi.Ods.Api.Sdk,EdFi.SdkGen
+        NugetPackages
+      uses: dawidd6/action-download-artifact@1cf11afe3f1874cee82a8d5a2b45c0fd63f0fa22 #v2.19.0
+      with:
+        workflow: InitDev,Unit tests,Integration tests,Package.yml
+        workflow_conclusion: success
+        name: NugetPackages.Artifacts
+        path: ${{ github.workspace }}/Ed-Fi-ODS-Implementation/NugetPackages/
+        commit: ${{ env.INITDEV_COMMIT }}
+        check_artifacts: true
+        if_no_artifact_found: fail
     ```
 
-- Dotnet
-  - [Admin App: **Build and
-    Test**](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-AdminApp/blob/main/.github/workflows/build.yml)
-  - [Admin App: **Integration
-    Testing**](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-AdminApp/blob/main/.github/workflows/e2e.yml)
-    - Interestingly, demonstrates starting up the ODS/API and Admin App in
+* Dotnet
+  * [Admin App: **Build and Test**](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-AdminApp/blob/main/.github/workflows/build.yml)
+  * [Admin App: **Integration Testing**](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-AdminApp/blob/main/.github/workflows/e2e.yml)
+    * Interestingly, demonstrates starting up the ODS/API and Admin App in
       Docker
-  - [Analytics Middle Tier: **Build and
-    Test**](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Analytics-Middle-Tier/blob/main/.github/workflows/build.yml)
-  - [Analytics Middle Tier: **Publish Zip File to GitHub
-    Release**](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Analytics-Middle-Tier/blob/main/.github/workflows/create-pre-release.yml)
-    - Most projects publish library packages to Azure Artifacts or PyPi,
-      but AMT publishes a zip file with command-line executable, using
-      GitHub release as the storage mechanism.
-- NodeJS
-  - [Meadowlark: **Build and
-    Test**](https://github.com/Ed-Fi-Exchange-OSS/Meadowlark/blob/main/.github/workflows/test.yml)
-- Python
-  - [Performance Test Suite: **CodeQL Security
-    Scan**](https://github.com/Ed-Fi-Exchange-OSS/Suite-3-Performance-Testing/blob/main/.github/workflows/codeql.yml)
-  - [Performance Test Suite: **Build and
-    Test**](https://github.com/Ed-Fi-Exchange-OSS/Suite-3-Performance-Testing/blob/main/.github/workflows/edfi_paging_test.yml)
+  * [Analytics Middle Tier: **Build and Test**](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Analytics-Middle-Tier/blob/main/.github/workflows/build.yml)
+  * [Analytics Middle Tier: **Publish Zip File to GitHub Release**](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Analytics-Middle-Tier/blob/main/.github/workflows/create-pre-release.yml)
+    * Most projects publish library packages to Azure Artifacts or PyPi, but AMT
+      publishes a zip file with command-line executable, using GitHub release as
+      the storage mechanism.
+* NodeJS
+  * [Meadowlark: **Build and Test**](https://github.com/Ed-Fi-Exchange-OSS/Meadowlark/blob/main/.github/workflows/test.yml)
+* Python
+  * [Performance Test Suite: **CodeQL Security Scan**](https://github.com/Ed-Fi-Exchange-OSS/Suite-3-Performance-Testing/blob/main/.github/workflows/codeql.yml)
+  * [Performance Test Suite: **Build and Test**](https://github.com/Ed-Fi-Exchange-OSS/Suite-3-Performance-Testing/blob/main/.github/workflows/edfi_paging_test.yml)
 
 #### Testing
 
@@ -130,14 +125,14 @@ Generically speaking, a build and test workflow should look something like this:
 
 #### Trigger
 
-- Run on pull request where source code files are modified in the directory
-  that is being monitored.
-  - If the repository is a monorepo, then it might be appropriate to have
+* Run on pull request where source code files are modified in the directory that
+  is being monitored.
+  * If the repository is a monorepo, then it might be appropriate to have
     separate workflows for each application or package.
-  - Safe to skip running if only markdown files are modified.
-- Run on push to the `main`  branch.
-  - It is not necessary to run on every push to every branch.
-- Often convenient to also allow push button execution ("workflow dispatch").
+  * Safe to skip running if only markdown files are modified.
+* Run on push to the `main`  branch.
+  * It is not necessary to run on every push to every branch.
+* Often convenient to also allow push button execution ("workflow dispatch").
 
 #### Job
 
@@ -172,20 +167,20 @@ Why? Here is a realistic scenario:
 3. That user tampers with the Action.
    1. Delete the tags
    2. Add a piece of code that determines injects some sort of backdoor into
-      commonly-used components (for example, a script that disables
-      certificate validation in an application, or that looks for
-      commonly-used identity management software and tries to introduce a
-      backdoor administrative account)
+      commonly-used components (for example, a script that disables certificate
+      validation in an application, or that looks for commonly-used identity
+      management software and tries to introduce a backdoor administrative
+      account)
    3. Re-creates the tag
 
-If a GitHub Actions job uses the *tag* to access the "correct" Action, then it
-will import the maliciously-hacked version. But if it uses the *commit hash* -
+If a GitHub Actions job uses the _tag_ to access the "correct" Action, then it
+will import the maliciously-hacked version. But if it uses the _commit hash_ -
 which the malicious user won't be able to manipulate - then either the GitHub
-Actions job will import the correct (pre-hacked) code *or* it will simply fail,
+Actions job will import the correct (pre-hacked) code _or_ it will simply fail,
 if the hacker removed that commit from the repository.
 
-❌ This initial example has code from [Understanding GitHub
-Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions).
+❌ This initial example has code from
+[Understanding GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions).
 
 **Bad: out of the box example**
 
@@ -206,9 +201,9 @@ jobs:
 
 ⚠️ Better:
 
-- [https://github.com/actions/checkout/releases/tag/v2](https://github.com/actions/checkout/releases/tag/v2)
+* [https://github.com/actions/checkout/releases/tag/v2](https://github.com/actions/checkout/releases/tag/v2)
   get the commit hash → ec3a7ce113134d7a93b817d10a8272cb61118579
-- [https://github.com/actions/setup-node/releases/tag/v2](https://github.com/actions/setup-node/releases/tag/v2)
+* [https://github.com/actions/setup-node/releases/tag/v2](https://github.com/actions/setup-node/releases/tag/v2)
   → 1f8c6b94b26d0feae1e387ca63ccbdc44d27b561
 
 **Better**
@@ -230,8 +225,8 @@ jobs:
 
 ✅ Best:
 
-- For the benefit of future readers, retain the version tag as a comment at
-  the end of the `uses` line.
+* For the benefit of future readers, retain the version tag as a comment at the
+  end of the `uses` line.
 
 **Best**
 
@@ -252,10 +247,10 @@ jobs:
 
 :::tip
 
-This example is only using actions created by GitHub itself, whom we
-are fully trusting. It should be safe to simply use the version tag in these
-cases. However, for consistency, we will stick with the commit hashes even for
-Actions with the "actions" namespace.
+This example is only using actions created by GitHub itself, whom we are fully
+trusting. It should be safe to simply use the version tag in these cases.
+However, for consistency, we will stick with the commit hashes even for Actions
+with the "actions" namespace.
 
 :::
 
@@ -289,23 +284,23 @@ For all GitHub Actions that are created by third-parties (that is, with a
 namespace other than "action"),  and Ed-Fi tech team member should scan through
 the source code to look for any obviously malicious or suspicious code:
 
-- Code that modifies our source code
-- Requests out to a third-party server
-- Use of `GITHUB_TOKEN` for any unexpected reason
-- Echo statements that try to guess at repository secrets and print them to
-  the log
+* Code that modifies our source code
+* Requests out to a third-party server
+* Use of `GITHUB_TOKEN` for any unexpected reason
+* Echo statements that try to guess at repository secrets and print them to the
+  log
 
 :::tip
 
-When reviewing a third party JavaScript-based action that is actually
-written in TypeScript,  another variant that transpiles down to JavaScript, or
-has been "compiled" with WebPack, it can be very difficult to understand the
-built `index.js`. Reviewing the **original** source is not sufficient, since
-someone malicious could inject code directly into the **distributed** version.
-When a source map is provided, one can clone the repository, install
-[reverse-sourcemap](https://github.com/davidkevork/reverse-sourcemap), and
-then run that utility to recreate the TypeScript. Compare the recreated file
-with the original file to ensure that no tampering occurred.
+When reviewing a third party JavaScript-based action that is actually written in
+TypeScript,  another variant that transpiles down to JavaScript, or has been
+"compiled" with WebPack, it can be very difficult to understand the built
+`index.js`. Reviewing the **original** source is not sufficient, since someone
+malicious could inject code directly into the **distributed** version. When a
+source map is provided, one can clone the repository, install
+[reverse-sourcemap](https://github.com/davidkevork/reverse-sourcemap), and then
+run that utility to recreate the TypeScript. Compare the recreated file with the
+original file to ensure that no tampering occurred.
 
 **Example**
 
@@ -321,8 +316,8 @@ git diff src/index.js reverse/dist/webpack/github-actions-ensure-sha-pinned-acti
 
 </details>
 
-We have created a [custom
-Action](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Actions/tree/main/action-allowedlist)
+We have created a
+[custom Action](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Actions/tree/main/action-allowedlist)
 that will scan a repository to compare its use of Actions to the approved list.
 If the custom action finds an actions that "use" an unapproved 3rd party action,
 it will causes the job to fail. The list of actions can only be modified by the
@@ -339,14 +334,14 @@ The Ubuntu-based runners provided by GitHub include most of the development
 tools that an Ed-Fi developer will need to access: .NET, Python, Nodejs,
 PostgreSQL. Windows runners should be avoided whenever possible:
 
-- this helps us continue focusing on cross-platform development
-- the Ubuntu runners tend to startup faster and finish builds more quickly
+* this helps us continue focusing on cross-platform development
+* the Ubuntu runners tend to startup faster and finish builds more quickly
   (anecdotal evidence)
-- for private repositories (MetaEd, DataImport), Windows-based runners incur
+* for private repositories (MetaEd, DataImport), Windows-based runners incur
   double the "charge" against the available 2000 minutes of execution time.
 
-For more information about available runners, please see [About GitHub-hosted
-Runners](https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners).
+For more information about available runners, please see
+[About GitHub-hosted Runners](https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners).
 
 ### 4. Do Not Hardcode Sensitive Data
 
@@ -355,11 +350,11 @@ repository secret.
 
 ### 5. Perform Code Analysis
 
-Linters are great for enforcing many style and coding standards (see [Code
-Quality Automation](./code-quality-automation)). They
-may even be able to detect some security vulnerabilities. However, their
-algorithms for detecting vulnerabilities are generally quite limited. An
-advanced static code scanner can detect deeper issues.
+Linters are great for enforcing many style and coding standards (see
+[Code Quality Automation](./code-quality-automation)). They may even be able to
+detect some security vulnerabilities. However, their algorithms for detecting
+vulnerabilities are generally quite limited. An advanced static code scanner can
+detect deeper issues.
 
 [CodeQL](https://codeql.github.com/) is our tool of choice for open source
 projects,
@@ -374,8 +369,8 @@ a NuGet or npm package. Dependabot is a helpful GitHub tool for scanning these
 dependencies, but it only runs on a schedule in the `main`  branch. Source code
 should also be scanned during a pull request.
 
-Open source projects can use the [Dependency Review
-Action](https://github.com/actions/dependency-review-action).
+Open source projects can use the
+[Dependency Review Action](https://github.com/actions/dependency-review-action).
 
 ### 7. Scan for Trojan Source Attacks
 
@@ -383,20 +378,18 @@ Scan a repo for hidden Unicode bidirectional characters as described in
 CVE-2021-42694 and detailed
 at [https://trojansource.codes/](https://trojansource.codes/)
 
-The custom [BiDi
-Scanner](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Actions/tree/main/bidi-scanner)
+The custom
+[BiDi Scanner](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Actions/tree/main/bidi-scanner)
 action should be used to search for source code that may be trying to invoke
 this attack vector.
 
 :::tip
 
-On rare occasions, we allow storage of binary files in source code.
-Examples include Visio (.vsdx) and Dacpac (.dacpac) files. These need to be
-excluded from the scan, because they legitimately contain the Bi-Directional
-character. See the [bidi-scanner
-README](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Actions/tree/main/bidi-scanner)
-for information on how to include a config file for ignoring certain file
-types.
+On rare occasions, we allow storage of binary files in source code. Examples
+include Visio (.vsdx) and Dacpac (.dacpac) files. These need to be excluded from
+the scan, because they legitimately contain the Bi-Directional character. See
+the [bidi-scanner README](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Actions/tree/main/bidi-scanner)
+for information on how to include a config file for ignoring certain file types.
 
 :::
 
@@ -407,8 +400,8 @@ set of workflows - into multiple jobs, output from one can be shared with the
 other as an Artifact. The `dawidd6/actions-download-artifact`  action is a
 common tool for downloading those artifacts in the dependent jobs.
 Unfortunately, there is risk of a security vulnerability if not done well, which
-is [described by Legit
-Security](https://www.legitsecurity.com/blog/artifact-poisoning-vulnerability-discovered-in-rust).
+is
+[described by Legit Security](https://www.legitsecurity.com/blog/artifact-poisoning-vulnerability-discovered-in-rust).
 
 In short: if you are not precise about what to download, that action will end up
 searching across forks, not just the main repository. A malicious actor can fork
@@ -416,34 +409,40 @@ your repository and try to inject malicious artifacts. The solution is to
 specify exactly which run_id or commit hash to download.
 
 ```yml title="Dangerous Example"
-    - name: Download SandboxAdmin,SwaggerUI,WebApi,Databases,EdFi.Ods.Api.Sdk,EdFi.SdkGen NugetPackages
-      uses: dawidd6/action-download-artifact@1cf11afe3f1874cee82a8d5a2b45c0fd63f0fa22 #v2.19.0
-      with:
-        workflow: InitDev,Unit tests,Integration tests,Package.yml
-        workflow_conclusion: success
-        name: NugetPackages.Artifacts
-        path: ${{ github.workspace }}/Ed-Fi-ODS-Implementation/NugetPackages/
-        check_artifacts: true
-        if_no_artifact_found: fail
+- name:
+    Download
+    SandboxAdmin,SwaggerUI,WebApi,Databases,EdFi.Ods.Api.Sdk,EdFi.SdkGen
+    NugetPackages
+  uses: dawidd6/action-download-artifact@1cf11afe3f1874cee82a8d5a2b45c0fd63f0fa22 #v2.19.0
+  with:
+    workflow: InitDev,Unit tests,Integration tests,Package.yml
+    workflow_conclusion: success
+    name: NugetPackages.Artifacts
+    path: ${{ github.workspace }}/Ed-Fi-ODS-Implementation/NugetPackages/
+    check_artifacts: true
+    if_no_artifact_found: fail
 ```
 
 ```yml title="Safe Example"
-    - name: Download SandboxAdmin,SwaggerUI,WebApi,Databases,EdFi.Ods.Api.Sdk,EdFi.SdkGen NugetPackages
-      uses: dawidd6/action-download-artifact@1cf11afe3f1874cee82a8d5a2b45c0fd63f0fa22 #v2.19.0
-      with:
-        workflow: InitDev,Unit tests,Integration tests,Package.yml
-        workflow_conclusion: success
-        name: NugetPackages.Artifacts
-        path: ${{ github.workspace }}/Ed-Fi-ODS-Implementation/NugetPackages/
-        commit: ${{ env.INITDEV_COMMIT }} # ✅
-        check_artifacts: true
-        if_no_artifact_found: fail
+- name:
+    Download
+    SandboxAdmin,SwaggerUI,WebApi,Databases,EdFi.Ods.Api.Sdk,EdFi.SdkGen
+    NugetPackages
+  uses: dawidd6/action-download-artifact@1cf11afe3f1874cee82a8d5a2b45c0fd63f0fa22 #v2.19.0
+  with:
+    workflow: InitDev,Unit tests,Integration tests,Package.yml
+    workflow_conclusion: success
+    name: NugetPackages.Artifacts
+    path: ${{ github.workspace }}/Ed-Fi-ODS-Implementation/NugetPackages/
+    commit: ${{ env.INITDEV_COMMIT }} # ✅
+    check_artifacts: true
+    if_no_artifact_found: fail
 ```
 
 ### 9. Use a CODEOWNERS File
 
-Place a [CODEOWNERS
-file](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners)
+Place a
+[CODEOWNERS file](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners)
 in `.github/` allowing only a restricted team to edit the Actions yml files and
 core configuration files for automated testing. The restricted team needs to be
 selected and configured by Ed-Fi staff. Example:
@@ -467,10 +466,10 @@ organization, as shown in the screenshot below.
 ![Fine-Grained PATs](/img/sdlc/fine-grained-pats.png)
 
 When clicking Save on this form, it will generate a token - copy that and save
-it as a secret - and it will generate a *request* for approval of that token.
+it as a secret - and it will generate a _request_ for approval of that token.
 The request will show up in the Setting for the organization, and must be
-approved before the token can be used ([Exchange
-settings](https://github.com/organizations/Ed-Fi-Exchange-OSS/settings/personal-access-token-requests)).
+approved before the token can be used
+([Exchange settings](https://github.com/organizations/Ed-Fi-Exchange-OSS/settings/personal-access-token-requests)).
 
 The EdFiBuildAgent account also needs to have Write access to the given
 repository.

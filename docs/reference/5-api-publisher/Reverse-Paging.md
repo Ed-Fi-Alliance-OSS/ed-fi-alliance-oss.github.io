@@ -10,13 +10,14 @@ Version feature from the Web Api. The second one is done using the offset and
 limit parameters.
 
 At a high level, the execution it works like this.
+
 1. Get the total number of records.
 2. Using the changeVersionPagingWindowSize app setting determine how many
    windows will be processed.
 3. Loop trough the number of Change Query windows.
-    1.  Get the total number of records for that specific Change Query window.
-    2. Based on that number determine how many Offset-Limit windows will be
-       processed.
+   1. Get the total number of records for that specific Change Query window.
+   2. Based on that number determine how many Offset-Limit windows will be
+      processed.
 4. Based on all this information prepare the GET requests that will be sent on
    the next step.
 

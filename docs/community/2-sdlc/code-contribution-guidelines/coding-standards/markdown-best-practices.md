@@ -14,22 +14,18 @@ The [markdownlint](https://marketplace.visualstudio.com/items?itemName=DavidAns
 extension will help identify and solve many stylistic problems and is highly
 recommended. Some other potentially useful VS Code extensions:
 
-* [Markdown
-    Lint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint)
-* [Markdown All in
-    One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
-* [Markdown
-    Emoji](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-emoji)
-* [Markdown Preview Mermaid
-    Support](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-mermaid)
+* [Markdown Lint](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint)
+* [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
+* [Markdown Emoji](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-emoji)
+* [Markdown Preview Mermaid Support](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-mermaid)
 * [Rewrap](https://marketplace.visualstudio.com/items?itemName=stkb.rewrap) -
-    the most important and useful extension in this list, as it helps avoid
-    hard-to-read long lines.
+  the most important and useful extension in this list, as it helps avoid
+  hard-to-read long lines.
 
 ## Style Guide
 
-Please see [Google's markdown style
-guide](https://google.github.io/styleguide/docguide/style.html).
+Please see
+[Google's markdown style guide](https://google.github.io/styleguide/docguide/style.html).
 
 ## Diagramming
 

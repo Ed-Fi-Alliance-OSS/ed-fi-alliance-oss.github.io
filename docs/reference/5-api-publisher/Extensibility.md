@@ -1,6 +1,10 @@
-(**This page is stale, and may not be accurate.**)
-
 # Ed-Fi API Publisher Extensibility
+
+::: warning
+
+This page is stale, and may not be accurate.
+
+:::
 
 The Ed-Fi API Publisher has been developed using SOLID Principles of Software
 Development. It provides several interfaces that are pertinent for a developer

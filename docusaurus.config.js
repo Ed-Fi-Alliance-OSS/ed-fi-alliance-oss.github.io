@@ -51,7 +51,7 @@ const config = {
             'https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/blog/',
         },
         googleTagManager: {
-          containerId: "GTM-KGR2977"
+          containerId: 'GTM-KGR2977',
         },
         theme: {
           customCss: './src/css/custom.css',

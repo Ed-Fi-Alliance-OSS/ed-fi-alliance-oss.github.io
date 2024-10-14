@@ -20,23 +20,23 @@ We strive to hold each other to high standards of community engagement and
 collaboration. To do so, we encourage behavior that contributes to a positive
 environment, such as:
 
-- Demonstrating empathy and kindness toward others
-- Being respectful of differing opinions, viewpoints, and experiences
-- Giving and gracefully accepting constructive feedback
-- Accepting responsibility for and apologizing to those affected by our
+* Demonstrating empathy and kindness toward others
+* Being respectful of differing opinions, viewpoints, and experiences
+* Giving and gracefully accepting constructive feedback
+* Accepting responsibility for and apologizing to those affected by our
   mistakes, and learning from the experience
-- Focusing on what is best not just for us as individuals, but for the overall
+* Focusing on what is best not just for us as individuals, but for the overall
   community
 
 We define harassment as any unwelcome conduct or behavior that creates a
 hostile, intimidating, or offensive environment. Examples of unacceptable
 behavior include:
 
-- The use of sexualized language or imagery, and sexual attention or advances of
+* The use of sexualized language or imagery, and sexual attention or advances of
   any kind
-- Trolling, insulting or derogatory comments, and personal or political attacks
-- Public or private harassment
-- Publishing others' private information without their explicit permission
+* Trolling, insulting or derogatory comments, and personal or political attacks
+* Public or private harassment
+* Publishing others' private information without their explicit permission
 
 ## Enforcement Responsibilities
 

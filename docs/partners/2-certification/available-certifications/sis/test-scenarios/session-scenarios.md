@@ -18,35 +18,35 @@ A session may be interrupted by one or more vacations.
 ### Scenarios
 
 1. Create a Fall Semester Session which references the first and second six
-    week grading periods for Grand Bend Elementary School
+   week grading periods for Grand Bend Elementary School
 
 2. Create a Fall Semester Session which references the first and second six
-    week grading periods for Grand Bend High School
+   week grading periods for Grand Bend High School
 
 3. Update the End Date and totalInstructionalDays on the newly added Session
-     for Grand Bend Elementary School
+    for Grand Bend Elementary School
 
 4. Update the End Date and totalInstructionalDays on the newly added Session
-     for Grand Bend High School
+    for Grand Bend High School
 
-| Resource | Property Name | Is Collection | Data Type | Required / Optional | Scenario 1  <br/> POST | Scenario 2  <br/> POST | Scenario 3  <br/> PUT | Scenario 4  <br/> PUT |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Sessions | schoolReference | FA:SE | schoolReference | REQUIRED |     |     |     |     |
-| schoolReference | schoolId | FALSE | Integer | REQUIRED | 255901107 | 255901001 | 255901107 | 255901001 |
-| Sessions | schoolYearTypeReference | FALSE | schoolYearTypeReference | REQUIRED |     |     |     |     |
-| schoolYearTypeReference | schoolYear | FALSE | Integer | REQUIRED | \[Current School Year\] | \[Current School Year\] | \[Current School Year\] | \[Current School Year\] |
-| Sessions | termDescriptor | FALSE | termDescriptor | REQUIRED | Fall Semester | Fall Semester | Fall Semester | Fall Semester |
-| Sessions | sessionName | FALSE | string | REQUIRED | 2016-2017 Fall Semester | 2016-2017 Fall Semester | 2016-2017 Fall Semester | 2016-2017 Fall Semester |
-| Sessions | beginDate | FALSE | date | REQUIRED | \[Current School Year\]-08-23 | \[Current School Year\]-08-23 | \[Current School Year\]-08-23 | \[Current School Year\]-08-23 |
-| Sessions | endDate | FALSE | date | REQUIRED | \[Current School Year\]-12-15 | \[Current School Year\]-12-15 | \[Current School Year\]-12-16 | \[Current School Year\]-12-16 |
-| Sessions | totalInstructionalDays | FALSE | Integer | REQUIRED | \[System calculated value<br/>\| 88\] | \[System calculated value<br/>\| 88\] | \[Previous system<br/>calculated value + 1<br/>\| 89\] | \[Previous system<br/>calculated value + 1<br/>\| 89\] |
-| Sessions | gradingPeriods | TRUE | sessionGradingPeriod\[\] | REQUIRED | See GradingPeriodReference elements below - note there are 2 grading period references for the Fall Semester Session. |     |     |     |
-| sessionGradingPeriods | gradingPeriodReference | FALSE | gradingPeriodReference | REQUIRED |     |     |     |     |
-| gradingPeriodReference | schoolId | FALSE | integer | REQUIRED | 255901107 | 255901001 | 255901107 | 255901001 |
-| gradingPeriodReference | gradingPeriodDescriptor | FALSE | gradingPeriodDescriptor | REQUIRED | First Six Weeks | First Six Weeks | First Six Weeks | First Six Weeks |
-| gradingPeriodReference | periodSequence | FALSE | integer | REQUIRED | 1   | 1   | 1   | 1   |
-| gradingPeriodReference | schoolYear | FALSE | Integer | REQUIRED | \[Current School Year\] | \[Current School Year\] | \[Current School Year\] | \[Current School Year\] |
-| gradingPeriodReference | schoolId | FALSE | integer | REQUIRED | 255901107 | 255901001 | 255901107 | 255901001 |
-| gradingPeriodReference | gradingPeriodDescriptor | FALSE | gradingPeriodDescriptor | REQUIRED | Second Six Weeks | Second Six Weeks | Second Six Weeks | Second Six Weeks |
-| gradingPeriodReference | periodSequence | FALSE | integer | REQUIRED | 2   | 2   | 2   | 2   |
-| gradingPeriodReference | schoolYear | FALSE | Integer | REQUIRED | \[Current School Year\] | \[Current School Year\] | \[Current School Year\] | \[Current School Year\] |
+| Resource                | Property Name           | Is Collection | Data Type                | Required / Optional | Scenario 1 <br/> POST                                                                                                 | Scenario 2 <br/> POST                 | Scenario 3 <br/> PUT                                   | Scenario 4 <br/> PUT                                   |
+| ----------------------- | ----------------------- | ------------- | ------------------------ | ------------------- | --------------------------------------------------------------------------------------------------------------------- | ------------------------------------- | ------------------------------------------------------ | ------------------------------------------------------ |
+| Sessions                | schoolReference         | FA:SE         | schoolReference          | REQUIRED            |                                                                                                                       |                                       |                                                        |                                                        |
+| schoolReference         | schoolId                | FALSE         | Integer                  | REQUIRED            | 255901107                                                                                                             | 255901001                             | 255901107                                              | 255901001                                              |
+| Sessions                | schoolYearTypeReference | FALSE         | schoolYearTypeReference  | REQUIRED            |                                                                                                                       |                                       |                                                        |                                                        |
+| schoolYearTypeReference | schoolYear              | FALSE         | Integer                  | REQUIRED            | \[Current School Year\]                                                                                               | \[Current School Year\]               | \[Current School Year\]                                | \[Current School Year\]                                |
+| Sessions                | termDescriptor          | FALSE         | termDescriptor           | REQUIRED            | Fall Semester                                                                                                         | Fall Semester                         | Fall Semester                                          | Fall Semester                                          |
+| Sessions                | sessionName             | FALSE         | string                   | REQUIRED            | 2016-2017 Fall Semester                                                                                               | 2016-2017 Fall Semester               | 2016-2017 Fall Semester                                | 2016-2017 Fall Semester                                |
+| Sessions                | beginDate               | FALSE         | date                     | REQUIRED            | \[Current School Year\]-08-23                                                                                         | \[Current School Year\]-08-23         | \[Current School Year\]-08-23                          | \[Current School Year\]-08-23                          |
+| Sessions                | endDate                 | FALSE         | date                     | REQUIRED            | \[Current School Year\]-12-15                                                                                         | \[Current School Year\]-12-15         | \[Current School Year\]-12-16                          | \[Current School Year\]-12-16                          |
+| Sessions                | totalInstructionalDays  | FALSE         | Integer                  | REQUIRED            | \[System calculated value<br/>\| 88\]                                                                                 | \[System calculated value<br/>\| 88\] | \[Previous system<br/>calculated value + 1<br/>\| 89\] | \[Previous system<br/>calculated value + 1<br/>\| 89\] |
+| Sessions                | gradingPeriods          | TRUE          | sessionGradingPeriod\[\] | REQUIRED            | See GradingPeriodReference elements below - note there are 2 grading period references for the Fall Semester Session. |                                       |                                                        |                                                        |
+| sessionGradingPeriods   | gradingPeriodReference  | FALSE         | gradingPeriodReference   | REQUIRED            |                                                                                                                       |                                       |                                                        |                                                        |
+| gradingPeriodReference  | schoolId                | FALSE         | integer                  | REQUIRED            | 255901107                                                                                                             | 255901001                             | 255901107                                              | 255901001                                              |
+| gradingPeriodReference  | gradingPeriodDescriptor | FALSE         | gradingPeriodDescriptor  | REQUIRED            | First Six Weeks                                                                                                       | First Six Weeks                       | First Six Weeks                                        | First Six Weeks                                        |
+| gradingPeriodReference  | periodSequence          | FALSE         | integer                  | REQUIRED            | 1                                                                                                                     | 1                                     | 1                                                      | 1                                                      |
+| gradingPeriodReference  | schoolYear              | FALSE         | Integer                  | REQUIRED            | \[Current School Year\]                                                                                               | \[Current School Year\]               | \[Current School Year\]                                | \[Current School Year\]                                |
+| gradingPeriodReference  | schoolId                | FALSE         | integer                  | REQUIRED            | 255901107                                                                                                             | 255901001                             | 255901107                                              | 255901001                                              |
+| gradingPeriodReference  | gradingPeriodDescriptor | FALSE         | gradingPeriodDescriptor  | REQUIRED            | Second Six Weeks                                                                                                      | Second Six Weeks                      | Second Six Weeks                                       | Second Six Weeks                                       |
+| gradingPeriodReference  | periodSequence          | FALSE         | integer                  | REQUIRED            | 2                                                                                                                     | 2                                     | 2                                                      | 2                                                      |
+| gradingPeriodReference  | schoolYear              | FALSE         | Integer                  | REQUIRED            | \[Current School Year\]                                                                                               | \[Current School Year\]               | \[Current School Year\]                                | \[Current School Year\]                                |
