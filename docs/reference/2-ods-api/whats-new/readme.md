@@ -27,3 +27,7 @@ software developers.
 ## Contents
 
 Find out more about what's new in the latest version of the Ed-Fi ODS / API:
+
+- [What's New in v7.2](./whats-new-in-v72.md)
+- [What's New in Previous v7.x Releases](./whats-new-in-prev-v7x-releases.md)
+- [Release Notes](./release-notes.md)
