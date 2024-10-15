@@ -94,6 +94,17 @@ const config = {
         sidebarPath: './sidebars.js',
       },
     ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'api-publisher',
+        path: 'docs/api-publisher',
+        editUrl: ({ docPath }) =>
+          `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/${docPath}/`,
+        routeBasePath: 'docs/api-publisher',
+        sidebarPath: './sidebars.js',
+      },
+    ],
   ],
 
   themeConfig:
