@@ -1,12 +1,12 @@
 # Known Issues Details
 
-# Known Limitations for Ed-Fi ODS/API 5.1-5.3 (Details)
+## Known Limitations for Ed-Fi ODS/API 5.1-5.3 (Details)
 
-Below are usage notes if using Ed-Fi ODS/API 5.1-5.3 only.  These issues have
-been resolved in the [Ed-Fi ODS / API
-5.3-cqe](https://techdocs.ed-fi.org/display/EFTD/Change+Query+Enhancements)
-patch and also resolved in upstream versions [Ed-Fi ODS / API
-6.1](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V61/overview).
+Below are usage notes if using Ed-Fi ODS/API 5.1-5.3 only. These issues have
+been resolved in the
+[Ed-Fi ODS / API 5.3-cqe](https://techdocs.ed-fi.org/display/EFTD/Change+Query+Enhancements)
+patch and also resolved in upstream versions
+[Ed-Fi ODS / API 6.1](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V61/overview).
 
 ## Deletes Cannot Be Published (without a custom build of the ODS API)
 
@@ -63,8 +63,8 @@ publishing deletes. However, the primary key of the `edfi.Descriptor` table in
 the ODS is an internal identity column which is also not portable, but is
 exposed to the client. Thus, the resources must be identified by the _alternate
 key_ -- `namespace` and `codeValue`. However, the Ed-Fi ODS tracks deletes using
-triggers which a) don't have the namespace/codeValue in context in the derived
-descriptor table triggers, and b) don't have the descriptor sub-type in context
+triggers which (a) don't have the namespace/codeValue in context in the derived
+descriptor table triggers, and (b) don't have the descriptor sub-type in context
 in the base Descriptor table trigger. The consequence is that API does not
 currently make it possible to publish descriptor deletions.
 
@@ -76,7 +76,7 @@ profile-specific content types (e.g.
 `_application/vnd.ed-fi.{resource}.{profile}.readable+json_`). The reason for
 this behavior is that it is important for an API client to acknowledge that they
 are aware that they are reading or writing only _part_ of a resource rather than
-operating on the resource as a _whole_.  When extra JSON data is supplied in a
+operating on the resource as a _whole_. When extra JSON data is supplied in a
 POST request to the Ed-Fi ODS API, the request will be processed and the
 extraneous data will just be ignored. Without the explicit use of the content
 types, unexpected data loss could result.

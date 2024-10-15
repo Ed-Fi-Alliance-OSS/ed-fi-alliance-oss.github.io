@@ -2,7 +2,7 @@
 
 ## Introduction
 
-From the *Git User Manual*:
+From the _Git User Manual_:
 
 > Git is cryptographically secure, but it's not foolproof. If you're taking work
 > from others on the internet and want to verify that commits are actually from
@@ -11,8 +11,8 @@ From the *Git User Manual*:
 As Ed-Fi source repositories have embraced the Apache License, it is more
 important than ever that we ensure pull requests and commits are well
 identified. Although anyone can submit a pull request, we only want to accept
-the pull request if the contributor has accepted the [Contributor License
-Agreement](https://gist.github.com/EdFiBuildAgent/d68fa602d07505c3682e8258b7dc6fbc)
+the pull request if the contributor has accepted the
+[Contributor License Agreement](https://gist.github.com/EdFiBuildAgent/d68fa602d07505c3682e8258b7dc6fbc)
 (CLA). Signing Git commits allows us to both verify the identity of the
 developer and to verify that the developer has signed the CLA.
 
@@ -36,12 +36,12 @@ from [GPG4Win](https://www.gpg4win.org).
 
 The default key length is 2048 bit. 4096 is even better. You'll be prompted for
 name and email. You should use the same "commit email address" as you have
-[configured in
-GitHub](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-email-preferences/setting-your-commit-email-address).
+[configured in GitHub](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-email-preferences/setting-your-commit-email-address).
 
 ```shell
 gpg --default-new-key-algo rsa4096 --gen-key
 ```
+
 :::warning
 
 This key will expire after two years.
@@ -91,10 +91,10 @@ git config --global user.email "YOUR_EMAIL"
 
 :::note
 
-If you would prefer to take manual control of when to sign a commit or
-tag, you can skip the the `commit.gpgsign`  and `tag.gpgsign` configurations
-above. To sign a tag, add flag `-s` . To sign a commit, >add flag `-S` . *Yes,
-the difference in capitalization is critical*.
+If you would prefer to take manual control of when to sign a commit or tag, you
+can skip the the `commit.gpgsign`  and `tag.gpgsign` configurations above. To
+sign a tag, add flag `-s` . To sign a commit, >add flag `-S` . _Yes, the
+difference in capitalization is critical_.
 
 With the configuration settings above, you have no need to add the s/S flag.
 
@@ -109,17 +109,17 @@ gpg --armor --export E1E474F2023B5ABFF8752630BB4
 ```
 
 This will display your PGP Public Key Block. Copy the text, beginning
-with `-----BEGIN PGP PUBLIC KEY BLOCK-----`  and ending with `-----END PGP
-PUBLIC KEY BLOCK-----`.
+with `-----BEGIN PGP PUBLIC KEY BLOCK-----`  and ending with
+`-----END PGP PUBLIC KEY BLOCK-----`.
 
 Open [github.com/settings/keys](https://github.com/settings/keys), click the
 "New GPGP Key" button, and then paste and save the copied public key.
 
 ## One-Time Setup on Linux and Mac
 
-Please see [GPG2 (GnuGP 2)
-Guide](https://docs.releng.linuxfoundation.org/en/latest/gpg.html), then see
-step 4 above.
+Please
+see [GPG2 (GnuGP 2) Guide](https://docs.releng.linuxfoundation.org/en/latest/gpg.html),
+then see step 4 above.
 
 ## One-Time Setup in Windows Sub-system for Linux (WSL)
 
@@ -133,8 +133,7 @@ Pure Linux-developers probably know these commands or can easily follow along.
 
 ### 1. Install Git
 
-See [Get started using Git on Windows Subsystem for
-Linux](https://docs.microsoft.com/en-us/windows/wsl/tutorials/wsl-git)
+See [Get started using Git on Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/tutorials/wsl-git)
 
 ### 2. Copy the Key Created in Windows
 
@@ -176,8 +175,7 @@ git config --global tag.gpgsign true
 
 ### 4. Configure the GPG Agent
 
-[*original source of
-instructions*](https://www.39digits.com/signed-git-commits-on-wsl2-using-visual-studio-code)
+[_original source of instructions_](https://www.39digits.com/signed-git-commits-on-wsl2-using-visual-studio-code)
 
 Create a new gpg-agent.conf file by entering the following command in your Bash
 prompt:
@@ -216,9 +214,9 @@ git config --global gpg.program "/mnt/c/Program Files (x86)/GnuPG/bin/gpg.exe"
 ## Practice
 
 For those who are just starting out with using git commit signatures, we\'ve
-created a simple [training
-repository](https://github.com/Ed-Fi-Exchange-OSS/training) in Git which you can
-use to practice:
+created a simple
+[training repository](https://github.com/Ed-Fi-Exchange-OSS/training) in Git
+which you can use to practice:
 
 1. Fork [the repository](https://github.com/Ed-Fi-Exchange-OSS/training) and
    clone it locally.
@@ -233,9 +231,9 @@ use to practice:
 
 ### Need to Sign Previous Commit(s)
 
-If your last commit was not signed, you can use `git commit -S --amend
---no-edit` to fix it. If you have multiple old commits that now need to be
-signed, you can try rebasing them and amending.
+If your last commit was not signed, you can
+use `git commit -S --amend --no-edit` to fix it. If you have multiple old
+commits that now need to be signed, you can try rebasing them and amending.
 See ["Is there a way to gpg sign all previous commits?"](https://stackoverflow.com/a/54987693/30384).
 
 ### Error Message: "cannot open '/dev/tty'"
@@ -250,8 +248,8 @@ error: gpg failed to sign the data
 fatal: failed to write commit object
 ```
 
-To resolve, either [Setup GPG to sign commits in
-SourceTree](https://confluence.atlassian.com/sourcetreekb/setup-gpg-to-sign-commits-within-sourcetree-765397791.html)
+To resolve, either
+[Setup GPG to sign commits in SourceTree](https://confluence.atlassian.com/sourcetreekb/setup-gpg-to-sign-commits-within-sourcetree-765397791.html)
 or disable tty:
 
 ```shell
