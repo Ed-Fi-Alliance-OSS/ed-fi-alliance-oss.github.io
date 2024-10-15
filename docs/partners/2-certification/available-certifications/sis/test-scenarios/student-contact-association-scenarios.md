@@ -13,21 +13,21 @@ caretakers.
 
 ### Scenarios
 
-1. Create a student contact association between student, Austin Jones, and
-    first parent.
+1. Create a student contact association between student, Austin Jones, and first
+   parent.
 2. Create a student contact association between student, Madison Johnson, and
-    second parent.
+   second parent.
 3. Update the "primary contact status" indicator for the Austin Jones
-    association.
+   association.
 4. Update "emergency contact status" indicator for the Madison Johnson
-    association.
+   association.
 
-| Resource | Property Name | Is Collection | Data Type | Required / Optional | Scenario 1  <br/>POST | Scenario 2  <br/>POST | Scenario 3  <br/>PUT | Scenario 4  <br/>PUT |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| StudentContactAssociations | contactReference | FALSE | contactReference | REQUIRED |     |     |     |     |
-| contactReference | contactUniqueId | FALSE | string | REQUIRED | ["333333"  if possible<br/><br/>| system value] | ["444444"  if possible<br/><br/>| system value] | ["333333"  if possible<br/><br/>| system value] | ["444444"  if possible<br/><br/>| system value] |
-| StudentContactAssociations | studentReference | FALSE | studentReference | REQUIRED |     |     |     |     |
-| studentReference | studentUniqueId | FALSE | string | REQUIRED | 111111 | 222222 | 111111 | 222222 |
-| StudentContactAssociations | emergencyContactStatus | FALSE | boolean | REQUIRED | TRUE | TRUE | TRUE | FALSE |
-| StudentContactAssociations | primaryContactStatus | FALSE | boolean | REQUIRED | TRUE | TRUE | FALSE | TRUE |
-| StudentContactAssociations | relationDescriptor | FALSE | relationDescriptor | REQUIRED | Father | Mother | Father | Mother |
+| Resource                   | Property Name          | Is Collection | Data Type          | Required / Optional | Scenario 1: POST            | Scenario 2: POST | Scenario 3: PUT             | Scenario 4: PUT |
+| -------------------------- | ---------------------- | ------------- | ------------------ | ------------------- | ------------------------------- | -------------------- | ------------------------------- | ------------------- | ------------------------------- | ------------- | ------------------------------- | ------------- |
+| StudentContactAssociations | contactReference       | FALSE         | contactReference   | REQUIRED            |                                 |                      |                                 |                     |
+| contactReference           | contactUniqueId        | FALSE         | string             | REQUIRED            | ["333333" if possible<br/><br/> | system value]        | ["444444" if possible<br/><br/> | system value]       | ["333333" if possible<br/><br/> | system value] | ["444444" if possible<br/><br/> | system value] |
+| StudentContactAssociations | studentReference       | FALSE         | studentReference   | REQUIRED            |                                 |                      |                                 |                     |
+| studentReference           | studentUniqueId        | FALSE         | string             | REQUIRED            | 111111                          | 222222               | 111111                          | 222222              |
+| StudentContactAssociations | emergencyContactStatus | FALSE         | boolean            | REQUIRED            | TRUE                            | TRUE                 | TRUE                            | FALSE               |
+| StudentContactAssociations | primaryContactStatus   | FALSE         | boolean            | REQUIRED            | TRUE                            | TRUE                 | FALSE                           | TRUE                |
+| StudentContactAssociations | relationDescriptor     | FALSE         | relationDescriptor | REQUIRED            | Father                          | Mother               | Father                          | Mother              |

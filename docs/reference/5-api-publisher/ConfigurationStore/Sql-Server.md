@@ -16,15 +16,20 @@ To provide parameters for the script, type
 executing.
 
 ```sql
-
 -- IMPORTANT: Type Ctrl+Shft+M to enter parameters for the script.
 
 ---------------------------------------------------------
 -- Create configuration database
 ---------------------------------------------------------
 CREATE DATABASE [EdFi_API_Publisher_Configuration]
- ON PRIMARY ( NAME = N'EdFi_API_Publisher_Configuration', FILENAME = N'< DataFilePath, nvarchar, C:\MSSQL\MSSQL14.MSSQLSERVER\MSSQL\DATA\EdFi_API_Publisher_Configuration.mdf >' )
- LOG ON ( NAME = N'EdFi_API_Publisher_Configuration_log', FILENAME = N'< LogFilePath, nvarchar, C:\MSSQL\MSSQL14.MSSQLSERVER\MSSQL\DATA\EdFi_API_Publisher_Configuration_log.ldf >')
+ ON PRIMARY (
+   NAME = N'EdFi_API_Publisher_Configuration',
+   FILENAME = N'< DataFilePath, nvarchar, C:\MSSQL\DATA\EdFi_API_Publisher_Configuration.mdf >'
+ )
+ LOG ON (
+   NAME = N'EdFi_API_Publisher_Configuration_log',
+   FILENAME = N'< LogFilePath, nvarchar, C:\MSSQL\LOG\EdFi_API_Publisher_Configuration_log.ldf >'
+)
 GO
 ```
 
@@ -44,11 +49,13 @@ executing.
 
 USE [master]
 GO
-CREATE LOGIN [<Domain or Machine Name, nvarchar, DOMAIN_OR_MACHINE>\<User Name, nvarchar, WindowsUserName>] FROM WINDOWS WITH DEFAULT_DATABASE=[EdFi_API_Publisher_Configuration]
+CREATE LOGIN [<Domain or Machine Name, nvarchar, DOMAIN_OR_MACHINE>\<User Name, nvarchar, WindowsUserName>]
+  FROM WINDOWS WITH DEFAULT_DATABASE=[EdFi_API_Publisher_Configuration]
 GO
 USE [EdFi_API_Publisher_Configuration]
 GO
-CREATE USER [EdFiApiPublisher] FOR LOGIN [<Domain or Machine Name, nvarchar, DOMAIN_OR_MACHINE>\<User Name, nvarchar, WindowsUserName>]
+CREATE USER [EdFiApiPublisher] FOR LOGIN
+  [<Domain or Machine Name, nvarchar, DOMAIN_OR_MACHINE>\<User Name, nvarchar, WindowsUserName>]
 GO
 ALTER ROLE [db_datareader] ADD MEMBER [EdFiApiPublisher]
 GO
@@ -201,7 +208,9 @@ BEGIN
 
     SELECT c.ConfigurationKey,
         COALESCE(c.ConfigurationValue,
-            Convert(nvarchar, DecryptByKey(c.ConfigurationValueEncrypted, 1, HashBytes('SHA1', CONVERT(varbinary, c.ConfigurationKey)))))
+            Convert(nvarchar, DecryptByKey(c.ConfigurationValueEncrypted, 1,
+              HashBytes('SHA1', CONVERT(varbinary, c.ConfigurationKey))))
+            )
             AS ConfigurationValue
     FROM dbo.ConfigurationValue c
     WHERE ConfigurationKey LIKE COALESCE(@configurationKeyPrefix, '') + '%'
@@ -210,8 +219,10 @@ BEGIN
 END
 GO
 
-GRANT EXECUTE ON [dbo].[GetConfigurationValues] TO [<Domain or Machine Name, nvarchar, DOMAIN_OR_MACHINE>\<User Name, nvarchar, EdFiApiPublisher>]
-GRANT EXECUTE ON [dbo].[SetConfigurationValue] TO [<Domain or Machine Name, nvarchar, DOMAIN_OR_MACHINE>\<User Name, nvarchar, EdFiApiPublisher>]
+GRANT EXECUTE ON [dbo].[GetConfigurationValues] TO
+  [<Domain or Machine Name, nvarchar, DOMAIN_OR_MACHINE>\<User Name, nvarchar, EdFiApiPublisher>]
+GRANT EXECUTE ON [dbo].[SetConfigurationValue] TO
+  [<Domain or Machine Name, nvarchar, DOMAIN_OR_MACHINE>\<User Name, nvarchar, EdFiApiPublisher>]
 ```
 
 ## Configure API Connections
