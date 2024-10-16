@@ -41,7 +41,7 @@
 5. When it seems impossible to write a unit test, take another look: this
     usually signals the presence of a dependency that can be extracted to an
     [Adapter](https://en.wikipedia.org/wiki/Adapter_pattern) / Wrapper class and
-    injected into the class under test. The Adapter / Wrapper is usually *_not_
+    injected into the class under test. The Adapter / Wrapper is usually \*_not_
     covered by unit tests and should contain the minimum logic needed to
     redirect arguments to the real dependency class.
 6. Prefer test methods that assert a single truth. However, multiple assertions
