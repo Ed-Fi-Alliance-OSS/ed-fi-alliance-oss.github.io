@@ -49,4 +49,4 @@ export default function VersionDropDown() {
       </ul>
     </div>
   );
-};
+}

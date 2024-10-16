@@ -8,7 +8,6 @@ import Content from '@theme-original/DocSidebar/Desktop/Content';
 import VersionDropDown from '../../../../components/VersionDropDown';
 
 export default function ContentWrapper(props) {
-
   return (
     <>
       <VersionDropDown />

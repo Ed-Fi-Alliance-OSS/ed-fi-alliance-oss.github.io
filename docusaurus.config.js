@@ -115,16 +115,16 @@ const config = {
         routeBasePath: 'docs/ods-api',
         sidebarPath: './sidebars.js',
         versions: {
-          '5.4': {
-            banner: 'none'
+          5.4: {
+            banner: 'none',
           },
-          '6.2': {
-            banner: 'none'
+          6.2: {
+            banner: 'none',
           },
-          '7.2': {
-            banner: 'none'
-          }
-        }
+          7.2: {
+            banner: 'none',
+          },
+        },
       },
     ],
     [
