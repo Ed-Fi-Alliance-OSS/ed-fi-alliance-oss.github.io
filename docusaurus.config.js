@@ -114,6 +114,17 @@ const config = {
           `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/${docPath}/`,
         routeBasePath: 'docs/ods-api',
         sidebarPath: './sidebars.js',
+        versions: {
+          5.4: {
+            banner: 'none',
+          },
+          6.2: {
+            banner: 'none',
+          },
+          7.2: {
+            banner: 'none',
+          },
+        },
       },
     ],
     [
