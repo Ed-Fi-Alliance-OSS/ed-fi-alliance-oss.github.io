@@ -94,6 +94,50 @@ const config = {
         sidebarPath: './sidebars.js',
       },
     ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'api-publisher',
+        path: 'docs/api-publisher',
+        editUrl: ({ docPath }) =>
+          `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/${docPath}/`,
+        routeBasePath: 'docs/api-publisher',
+        sidebarPath: './sidebars.js',
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'ods-api',
+        path: 'docs/ods-api',
+        editUrl: ({ docPath }) =>
+          `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/${docPath}/`,
+        routeBasePath: 'docs/ods-api',
+        sidebarPath: './sidebars.js',
+        versions: {
+          5.4: {
+            banner: 'none',
+          },
+          6.2: {
+            banner: 'none',
+          },
+          7.2: {
+            banner: 'none',
+          },
+        },
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'data-standard',
+        path: 'docs/data-standard',
+        editUrl: ({ docPath }) =>
+          `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/${docPath}/`,
+        routeBasePath: 'docs/data-standard',
+        sidebarPath: './sidebars.js',
+      },
+    ],
   ],
 
   themeConfig:

@@ -66,8 +66,12 @@
           "br"
         ]
       },
-      "emphasis-style": {"style": "underscore" },
-      "ul-style": { "style": "asterisk" }
+      "emphasis-style": {
+        "style": "underscore"
+      },
+      "ul-style": {
+        "style": "asterisk"
+      }
     }
   }
 }
