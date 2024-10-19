@@ -1,3 +1,7 @@
+---
+hide_table_of_contents: true
+---
+
 # Registry of Ed-Fi Certified Products
 
 import React from 'react';
@@ -547,12 +551,10 @@ export const certData = {
           'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ed-Fi%20Certification%20-%20Availability%20Statement%20-%20Istation.pdf?version=1&modificationDate=1702401431310&cacheVersion=1&api=v2',
         mappings:
           'https://edfi.atlassian.net/wiki/download/attachments/23694066/Istation_score_report.xlsx?version=1&modificationDate=1701698794923&cacheVersion=1&api=v2',
-      },
+        usageOverview: 'https://edfi.atlassian.net/wiki/download/attachments/23694066/0_Statement%20of%20Purpose.pdf?version=1&modificationDate=1701699015080&cacheVersion=1&api=v2'
+     },
       supportResources: [
-        {
-          name: 'Usage Overview',
-          link: 'https://edfi.atlassian.net/wiki/download/attachments/23694066/0_Statement%20of%20Purpose.pdf?version=1&modificationDate=1701699015080&cacheVersion=1&api=v2',
-        },
+
         {
           name: 'How to get support',
           link: 'https://www.istation.com/contact',
@@ -622,8 +624,8 @@ export const certData = {
       },
       supportResources: [
         {
-          name: '',
-          link: '',
+          name: 'DeSSADemoDistrict_Demoschool_Grade8_TES-TES_StudentISRs_121540985 PM (1).PDF',
+          link: 'https://edfi.atlassian.net/wiki/download/attachments/23694066/DeSSADemoDistrict_Demoschool_Grade8_TES-TES_StudentISRs_121540985%20PM%20(1).PDF?api=v2',
         },
       ],
     },
@@ -872,6 +874,86 @@ export function CertificationTable({ certifications }) {
   );
 }
 
+export function CertificationTable2({ certifications }) {
+  return (
+    <table style={{width: "100%"}}>
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Valid Through</th>
+          <th>Certification Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        {certifications.map((cert, index) => (
+          <tr key={index}>
+            <td>
+              <a href={cert.website}>
+                <img
+                  src={cert.logo}
+                  alt={cert.productName}
+                  title={cert.productName}
+                  style={{ width: '200px', height: 'auto', maxWidth: 'none' }}
+                />
+              </a>
+            </td>
+            <td>{cert.validThrough}</td>
+            <td>
+              <details>
+                <summary>Expand for additional details...</summary>
+                <table>
+                  <tr>
+                    <th>Verifying Agencies</th>
+                    <td>{cert.verifyingAgencies.join(', ')}</td>
+                  </tr>
+                  <tr>
+                    <th>Version Compatibility</th>
+                    <td>{cert.versionCompatibility}</td>
+                  </tr>
+                  <tr>
+                    <th>Certified Product Availability</th>
+                    <td>{cert.availability}</td>
+                  </tr>
+                  <tr>
+                    <th>Required Documentation</th>
+                    <td>
+                      <ul>
+                        {Object.entries(cert.documentation).map(([key, value]) => (
+                          <li key={key}>
+                            <a href={value}>
+                              {key.charAt(0).toUpperCase() +
+                                key
+                                  .slice(1)
+                                  .replace(/([A-Z])/g, ' $1')
+                                  .trim()}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Notes & Support Resources</th>
+                    <td>
+                      <ul>
+                        {cert.supportResources.map((resource, i) => (
+                          <li key={i}>
+                            <a href={resource.link}>{resource.name}</a>
+                          </li>
+                        ))}
+                      </ul>
+                    </td>
+                  </tr>
+                </table>
+              </details>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+}
+
 This page lists products that have an Ed-Fi certification.
 
 :::warning
@@ -887,7 +969,7 @@ page.
 
 ## Ed-Fi Student Information Systems API for Data Standard v4 Certification
 
-<CertificationTable certifications={certData.sisApiV4} />
+<CertificationTable2 certifications={certData.sisApiV4} />
 
 ## Ed-Fi Student Information Systems API for Suite 3 Certification
 
