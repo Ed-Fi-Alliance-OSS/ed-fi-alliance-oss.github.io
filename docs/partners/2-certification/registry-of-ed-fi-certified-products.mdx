@@ -1,5 +1,5 @@
 ---
-hide_table_of_contents: true
+hide_table_of_contents: false
 ---
 
 # Registry of Ed-Fi Certified Products
@@ -954,6 +954,82 @@ export function CertificationTable2({ certifications }) {
   );
 }
 
+export function CertificationTable3({ certifications }) {
+  return (
+      <div className="container table">
+        <div className="row row--thead">
+          <div className="col col--2 col--th">Product</div>
+          <div className="col col--2 col--th">Valid Through</div>
+          <div className="col col--8 col--th">Certification Details</div>
+        </div>
+        {certifications.map((cert, index) => (
+          <div className={"row col--tr" + (index%2==1 ? "-alt" : "")} key={index}>
+            <div className="col col--2 col--td">
+              <a href={cert.website}>
+                <img
+                  src={cert.logo}
+                  alt={cert.productName}
+                  title={cert.productName}
+                  style={{ height: 'auto', width: '100%', maxWidth: '200px' }}
+                />
+              </a>
+            </div>
+            <div className="col col--2 col--td">{cert.validThrough}</div>
+            <div className="col col--8 col--td">
+              <details>
+                <summary>Expand for additional details...</summary>
+                <table>
+                  <tr>
+                    <th>Verifying Agencies</th>
+                    <td>{cert.verifyingAgencies.join(', ')}</td>
+                  </tr>
+                  <tr>
+                    <th>Version Compatibility</th>
+                    <td>{cert.versionCompatibility}</td>
+                  </tr>
+                  <tr>
+                    <th>Certified Product Availability</th>
+                    <td>{cert.availability}</td>
+                  </tr>
+                  <tr>
+                    <th>Required Documentation</th>
+                    <td>
+                      <ul>
+                        {Object.entries(cert.documentation).map(([key, value]) => (
+                          <li key={key}>
+                            <a href={value}>
+                              {key.charAt(0).toUpperCase() +
+                                key
+                                  .slice(1)
+                                  .replace(/([A-Z])/g, ' $1')
+                                  .trim()}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Notes &amp; Support Resources</th>
+                    <td>
+                      <ul>
+                        {cert.supportResources.map((resource, i) => (
+                          <li key={i}>
+                            <a href={resource.link}>{resource.name}</a>
+                          </li>
+                        ))}
+                      </ul>
+                    </td>
+                  </tr>
+                </table>
+              </details>
+            </div>
+          </div>
+        ))}
+      </div>
+  );
+}
+
 This page lists products that have an Ed-Fi certification.
 
 :::warning
@@ -969,7 +1045,7 @@ page.
 
 ## Ed-Fi Student Information Systems API for Data Standard v4 Certification
 
-<CertificationTable2 certifications={certData.sisApiV4} />
+<CertificationTable3 certifications={certData.sisApiV4} />
 
 ## Ed-Fi Student Information Systems API for Suite 3 Certification
 
