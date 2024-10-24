@@ -19,6 +19,8 @@ Unlike certification, badges also focus on both Ed-Fi standards as well as Ed-Fi
 technology tools; by contrast, Ed-Fi certifications only focus on Ed-Fi
 standards.
 
+![Ed-Fi Alliance Logo](../../../static/img/ed-fi-logo.webp)
+
 ## Program Information
 
 This site contains resources and detailed information about the Ed-Fi Badges
@@ -27,5 +29,3 @@ program.
 * [Applying for a Badge](./applying-for-a-badge.md)
 * [Available Badges](./available-badges/readme.md)
 * [Registry of Ed-Fi Badges](./registry-of-ed-fi-badges.mdx)
-
-<!-- ![](./attachments/ed-fi-alliance-logo-white-bg-400x400-for-social.png) -->
