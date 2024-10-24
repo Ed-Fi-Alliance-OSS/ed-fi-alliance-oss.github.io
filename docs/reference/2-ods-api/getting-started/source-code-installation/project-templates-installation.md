@@ -13,18 +13,18 @@ VS extension is useful for many customization needs.
 This section describes how to install the Project Templates. It assumes you
 have Visual Studio installed, and have successfully installed the ODS / API
 on a development machine per the instructions in the [Getting Started -
-Source Code Installation](../getting-started-source-code-installation.md)
+Source Code Installation](../readme.md)
 section of this documentation.
 
 The installation steps can be summarized as:
 
-- [Project Templates Installation](#project-templates-installation)
-  - [Step 1. Uninstall Any Previous Versions](#step-1-uninstall-any-previous-versions)
-  - [Step 2. Download the Ed-Fi Visual Studio Extension](#step-2-download-the-ed-fi-visual-studio-extension)
-  - [Step 3. Close Visual Studio](#step-3-close-visual-studio)
-  - [Step 4. Install the Templates](#step-4-install-the-templates)
-  - [Step 5. Verify Install](#step-5-verify-install)
-  - [Next Steps](#next-steps)
+* [Project Templates Installation](#project-templates-installation)
+  * [Step 1. Uninstall Any Previous Versions](#step-1-uninstall-any-previous-versions)
+  * [Step 2. Download the Ed-Fi Visual Studio Extension](#step-2-download-the-ed-fi-visual-studio-extension)
+  * [Step 3. Close Visual Studio](#step-3-close-visual-studio)
+  * [Step 4. Install the Templates](#step-4-install-the-templates)
+  * [Step 5. Verify Install](#step-5-verify-install)
+  * [Next Steps](#next-steps)
 
 ## Step 1. Uninstall Any Previous Versions
 
@@ -72,11 +72,11 @@ The installation steps can be summarized as:
   Now that you've installed the templates, you can find information on how to
   use them in the following articles:
 
-- [How To: Add API Composites to the Ed-Fi ODS / API
+* [How To: Add API Composites to the Ed-Fi ODS / API
       Solution](../../how-to-guides/how-to-add-api-composites-to-the-ed-fi-ods-api-solution.md)
-- [How To: Add Profiles to the Ed-Fi ODS /
+* [How To: Add Profiles to the Ed-Fi ODS /
       API](../../how-to-guides/how-to-add-profiles-to-the-ed-fi-ods-api.md)
-- [How To: Extend the Ed-Fi ODS / API - Alternative Education Program
+* [How To: Extend the Ed-Fi ODS / API - Alternative Education Program
       Example](../../how-to-guides/how-to-extend-the-ed-fi-ods-api-alternative-education-program-example.md)
 
 :::note

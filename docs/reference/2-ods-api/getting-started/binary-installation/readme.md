@@ -7,7 +7,7 @@ sidebar_position: 1
 
 This section describes how to set up the Ed-Fi ODS / API v7.2 using the release
 binaries listed in [Binary
-Releases](./getting-started-binary-installation/binary-releases.md). This is a
+Releases](./readme.md). This is a
 recommend approach for implementations that have no requirement to extend or
 customize the source code of the Ed-Fi ODS / API.
 
@@ -24,7 +24,7 @@ Ensure that the following components are installed:
     scripts.
 
 * **.NET 8.0 SDK.** Required by the [Database Deploy
-    Tool](../../ed-fi-ods-api-for-suite-3-v72-latest/platform-developers-guide/platform-dev-guide-tools-utilities/database-deploy-tool.md)
+    Tool](../../platform-dev-guide/utilities/database-deploy-tool.md)
     used in the database deployment scripts.
 
     <details>

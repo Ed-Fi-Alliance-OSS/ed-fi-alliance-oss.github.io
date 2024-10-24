@@ -23,7 +23,7 @@ Each step is outlined in detail, below.
 **Step 1.1. Add a Composite Project Using the Visual Studio Project
 Template.** Visual Studio Project Template can be installed by following the
 steps in the [Project Templates
-Installation](../../getting-started/source-code-installation/project-templates-installation.md)
+Installation](../getting-started/source-code-installation/project-templates-installation.md)
 section of this documentation.
 
 * To add a project to your Ed-Fi-Ods Visual Studio Solution, **right-click** on

@@ -111,7 +111,7 @@ The API is secure. It uses HTTPS for communication, the OAuth 2 specification
 for authentication, and comes with a rich and customizable claimset model so
 platform hosts have fine-grained control over which applications and users can
 see particular pieces of data. See the [API Claim Sets &
-Resources](../platform-developers-guide/platform-dev-guide-security/api-claim-sets-resources.md)
+Resources](./security/api-claim-sets-resources.md)
 section in this documentation for complete details.
 
 ## Technology Stack

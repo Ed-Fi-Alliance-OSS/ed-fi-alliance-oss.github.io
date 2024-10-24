@@ -6,7 +6,7 @@ executed against a Test Harness included in the ODS / API source code.
 The following instructions assume that the Ed-Fi ODS / API has been successfully
 set up and is running in a local environment per the instructions in
 the [Getting
-Started](../../getting-started/readme.md)
+Started](../getting-started/readme.md)
 documentation. This documentation takes you through running two options for
 running postman test collections:
 

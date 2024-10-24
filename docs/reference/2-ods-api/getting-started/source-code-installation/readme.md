@@ -8,7 +8,7 @@ This section describes how to set up the Ed-Fi ODS / API source code on a
 development machine. For those interested in getting an Ed-Fi ODS / API instance
 up and running quickly, but do not have developer tools or experience we
 recommend you to consult [Getting Started - Binary
-Installation](../getting-started/getting-started-binary-installation.md).
+Installation](../binary-installation/readme.md).
 
 The steps can be summarized as:
 
@@ -327,7 +327,7 @@ saved in `%APPDATA%/postgresql/pgpass.conf.`
 
 ![pgpass.conf](../../img/image2020-4-9_16-43-3.png)
 
-You can test the environment variable setup using:  
+You can test the environment variable setup using:
 
 ```shell
 C:\> get-item env:pgpassfile
@@ -715,7 +715,7 @@ change your password as soon as you log in.
 As the name implies, Sandbox Administration Portal is useful for development
 machines and sandbox instances of the ODS / API, but should not be present on
 production instances. See the [Platform Developers' Guide -
-Deployment](../../platform-developers-guide/deployment/readme.md) section
+Deployment](../../platform-dev-guide/deployment/readme.md) section
 for details.
 
 ## The Ed-Fi ODS / API Documentation Web Page
@@ -746,7 +746,7 @@ Similar to the Sandbox Administration Portal, the ODS / API Documentation Web
 Page is useful for development machines and sandbox instances of the ODS / API,
 but is generally not present on production instances. See the [Platform
 Developers' Guide -
-Deployment](../../platform-developers-guide/deployment/readme.md) section
+Deployment](../../platform-dev-guide/deployment/readme.md) section
 for details.
 
 </details>

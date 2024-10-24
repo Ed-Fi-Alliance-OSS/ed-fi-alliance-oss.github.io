@@ -8,15 +8,15 @@ turn data from something you have into something you can use.
 
 Documentation for the Ed-Fi ODS / API v7.2 for Suite 3 is viewable online:
 
-* [What's New](./ed-fi-ods-api-for-suite-3-v72-latest/whats-new.md)
-* [Getting Started](./ed-fi-ods-api-for-suite-3-v72-latest/getting-started.md)
+* [What's New](./whats-new/readme.md)
+* [Getting Started](./getting-started/readme.md)
 * [Platform Developers'
-    Guide](./ed-fi-ods-api-for-suite-3-v72-latest/platform-developers-guide.md)
+    Guide](./platform-dev-guide/readme.md)
 * [API Client Developers'
-    Guide](./ed-fi-ods-api-for-suite-3-v72-latest/api-client-developers-guide.md)
-* [How-To Guides](./ed-fi-ods-api-for-suite-3-v72-latest/how-to-guides.md)
+    Guide](./client-developers-guide/readme.md)
+* [How-To Guides](./how-to-guides/readme.md)
 * [Technical
-    Articles](./ed-fi-ods-api-for-suite-3-v72-latest/technical-articles.md)
+    Articles](./technical-articles/readme.md)
 * [Swagger API Sandbox](https://api.ed-fi.org/)
 
 ## Resources
@@ -24,15 +24,15 @@ Documentation for the Ed-Fi ODS / API v7.2 for Suite 3 is viewable online:
 Here are some resource highlights for the ODS / API v7.2:
 
 * [How To: Extend the ODS / API
-    (Basic)](./ed-fi-ods-api-for-suite-3-v72-latest/how-to-guides/how-to-extend-the-ed-fi-ods-api-alternative-education-program-example.md)
+    (Basic)](./how-to-guides/how-to-extend-the-ed-fi-ods-api-alternative-education-program-example.md)
 * [How To: Extend the ODS / API
-    (Advanced)](./ed-fi-ods-api-for-suite-3-v72-latest/how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transcript-example.md)
+    (Advanced)](./how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transcript-example.md)
 * [How To: Add a
-    Composite](./ed-fi-ods-api-for-suite-3-v72-latest/how-to-guides/how-to-add-api-composites-to-the-ed-fi-ods-api-solution.md)
+    Composite](./how-to-guides/how-to-add-api-composites-to-the-ed-fi-ods-api-solution.md)
 * [How To: Add
-    Profiles](./ed-fi-ods-api-for-suite-3-v72-latest/how-to-guides/how-to-add-profiles-to-the-ed-fi-ods-api.md)
+    Profiles](./how-to-guides/how-to-add-profiles-to-the-ed-fi-ods-api.md)
 * [How To: Create a Client
-    SDK](./ed-fi-ods-api-for-suite-3-v72-latest/api-client-developers-guide/using-code-generation-to-create-an-sdk.md)
+    SDK](./client-developers-guide/using-code-generation-to-create-an-sdk.md)
 
 :::info
 
@@ -46,5 +46,3 @@ Version 7.2.
   Home Page](https://edfi.atlassian.net/wiki/spaces/ETKB/overview).
 
 :::
-
-<!-- ![](./attachments/Ed-Fi-ODS-API-v6_1-Icon.png) -->

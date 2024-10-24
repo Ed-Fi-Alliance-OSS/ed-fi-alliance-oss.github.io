@@ -9,7 +9,7 @@ Before you begin:
 
 * Make sure you have configured ODS instance(s) before administering keys and
     secrets to connect to it. See [How To: Configure ODS
-    Instances](../how-to-configure-ods-instances.md)
+    Instances](./how-to-configure-ods-instances.md)
 
 :::info
 

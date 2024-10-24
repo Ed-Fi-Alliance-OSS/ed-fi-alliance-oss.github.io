@@ -17,10 +17,10 @@ links below. We recommend you stay current with the latest patch update that h
 been promoted to
 [release](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging?_a=feed&feed=EdFi%40Release).
 
-- [EdFi.Suite3.Installer.WebApi](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Installer.WebApi/versions/7.2.4)
-- [EdFi.Suite3.Installer.SwaggerUI](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Installer.SwaggerUI/versions/7.2.6) (Optional,
+* [EdFi.Suite3.Installer.WebApi](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Installer.WebApi/versions/7.2.4)
+* [EdFi.Suite3.Installer.SwaggerUI](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Installer.SwaggerUI/versions/7.2.6) (Optional,
     not for production)
-- [EdFi.Suite3.RestApi.Databases.5.1.0](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.RestApi.Databases.Standard.5.1.0/versions/7.2.1201)
+* [EdFi.Suite3.RestApi.Databases.5.1.0](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.RestApi.Databases.Standard.5.1.0/versions/7.2.1201)
 
 For each of the downloads, **right-click** and select "Properties." Update the
 file extension (from .nupkg to .zip). Remove the version number (optional).
@@ -368,7 +368,7 @@ Key must be 256 bits and base 64 encoded.
 :::info
 
 To enable [Context-Based Routing for Year-Specific
-ODS](../../platform-developers-guide/configuration/context-based-routing-for-year-specific-ods.md),
+ODS](../../platform-dev-guide/configuration/context-based-routing-for-year-specific-ods.md),
 set a valid value for OdsContextRouteTemplate parameter. An example of a valid
 value is `{schoolYear:range(2020,2030)}` Where schoolYear is the Route section,
 and the range will accept values between 2020 and 2030
@@ -497,17 +497,17 @@ Secret](../../how-to-guides/how-to-configure-key-secret.md).
 
 Just a few more tasks to complete your installation:
 
-- Open IIS (Press the **Windows key** ![Windows
+* Open IIS (Press the **Windows key** ![Windows
     logo](https://lh5.googleusercontent.com/o2iqf0j70YV3B-1NQxBFj1Ne-JeToRq5PiZeMtvF05l3jpyp4kseJn-zEs3BULgpAS_TFr8Qyacu5JZkiyXNllygq2EGhPII-PcxYyxkwCUqC4fPhMJ0QbovAD16R7T2StuDemW_)
 
      on your keyboard, type **IIS**, select **Internet Information Services
      (IIS)**, and press **Enter**.
-- **Right-click** on the server (alternatively, you can right-click the EdFi
+* **Right-click** on the server (alternatively, you can right-click the EdFi
     web site), and select **Stop**.
 
 ![Stop IIS](../../img/image2021-2-12_17-5-39.png)
 
-- **Right-click** the server (or EdFi website) again and select **Start**.
+* **Right-click** the server (or EdFi website) again and select **Start**.
 
 ![Start IIS](../../img/image2021-2-12_17-7-5.png)
 

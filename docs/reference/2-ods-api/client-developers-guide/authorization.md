@@ -115,7 +115,7 @@ an HTTP Authorization header as "Bearer XYZ" where "XYZ" is the access token.
 The same access token must be sent in the request body in the `token` parameter.
 Note that you need an active bearer token for this call, which you can obtain
 using `/oauth/token` endpoint.
-See [Authentication](../api-client-developers-guide/authentication.md) for a
+See [Authentication](../client-developers-guide/authentication.md) for a
 refresher on how to acquire a token.
 
 The snippet below shows an example POST:

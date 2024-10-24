@@ -40,7 +40,7 @@ as:
     the frequency with which processing can be performed (due to the technical
     constraints around creating and providing new snapshots).
 * The article on the [Changed Record
-    Queries](../platform-dev-guide/eatures/changed-record-queries.md)
+    Queries](../platform-dev-guide/features/changed-record-queries.md)
     feature has implementation details which may be of interest to some client
     system developers.
 
@@ -200,7 +200,7 @@ following elements:
 
 While some use cases may be very focused on a small subset of Ed-Fi data, for
 more expansive processing consider using the [resource dependency metadata
-endpoint](../api-client-developers-guide/resource-dependency-order.md) to
+endpoint](../client-developers-guide/resource-dependency-order.md) to
 correctly order the processing for the referential integrity defined in the
 Ed-Fi model.
 

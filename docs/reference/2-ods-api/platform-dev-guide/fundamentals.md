@@ -106,7 +106,7 @@ by clients – the key point just being that client applications are responsibl
 for populating the unique value in the ODS / API.
 
 See the technical article [Unique ID System
-Integration](./technical-articles/unique-id-system-integration.md) for
+Integration](../technical-articles/unique-id-system-integration.md) for
 implementation details.
 
 Keeping the unique ID API endpoints — and behavior — consistent regardless of
@@ -128,7 +128,7 @@ the system of record (i.e., the system that creates and manages the data),
 primary keys are formed from the well-known, natural keys in the domain.
 
 See the technical article [Key Structure in the Ed-Fi ODS /
-API](./technical-articles/key-structure-in-the-ed-fi-ods-api.md)
+API](../technical-articles/key-structure-in-the-ed-fi-ods-api.md)
 for additional details.
 
 ## Support for Incremental Updates
@@ -140,7 +140,7 @@ the data in the ODS through incremental updates. The feature is optional for
 platform hosts, and can be enabled through configuration.
 
 Documentation for client systems is provided in the [Using the Changed Record
-Queries](../api-client-developers-guide/using-the-changed-record-queries.md)
+Queries](../client-developers-guide/using-the-changed-record-queries.md)
 section of the API Client Developers' Guide.
 
 ## Support for Transactional & Bulk Modes

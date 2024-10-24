@@ -65,7 +65,7 @@ the fundamentals of connecting client applications to an Ed-Fi-based ODS / API.
 Platform hosts can refer clients to this documentation or use the guide as a
 starting place for documentation describing their own platform instance. See the
 [API Client Developers'
-Guide](../client-developers-guide/readme.d)
+Guide](../client-developers-guide/readme.md)
 documentation for more details.
 
 1 Formerly known as the Swagger specification. In January 2016, the

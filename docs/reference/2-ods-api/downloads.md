@@ -11,7 +11,7 @@ repository.
 ## Binary Downloads
 
 * [Binary
-    Releases](../ed-fi-ods-api-for-suite-3-v72-latest/getting-started/getting-started-binary-installation/binary-releases.md)
+    Releases](./getting-started/binary-installation/binary-releases.md)
 
 ## Source & Code Downloads
 
@@ -20,18 +20,18 @@ repository.
 * [Ed-Fi-ODS-Implementation/v7.2](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/tree/v7.2) source
     code (GitHub)
 * [API Project Templates
-    Installer](../ed-fi-ods-api-for-suite-3-v72-latest/getting-started/getting-started-source-code-installation/project-templates-installation.md) (VSIX)
+    Installer](./getting-started/source-code-installation/project-templates-installation.md) (VSIX)
 * [API Profiles Sample Source
-    Files](../ed-fi-ods-api-for-suite-3-v72-latest/how-to-guides/how-to-add-profiles-to-the-ed-fi-ods-api.md)
+    Files](./how-to-guides/how-to-add-profiles-to-the-ed-fi-ods-api.md)
     (XML)
 * [API Composite Sample Source
-    File](../ed-fi-ods-api-for-suite-3-v72-latest/how-to-guides/how-to-add-api-composites-to-the-ed-fi-ods-api-solution.md)
+    File](./how-to-guides/how-to-add-api-composites-to-the-ed-fi-ods-api-solution.md)
     (XML)
 * [Using Code Generation to Create an
-    SDK](../ed-fi-ods-api-for-suite-3-v72-latest/api-client-developers-guide/using-code-generation-to-create-an-sdk.md)
+    SDK](./client-developers-guide/using-code-generation-to-create-an-sdk.md)
     (C# Sample Application)
 * API Extensibility Sample Code - [Alternative Education
-    Program](../ed-fi-ods-api-for-suite-3-v72-latest/how-to-guides/how-to-extend-the-ed-fi-ods-api-alternative-education-program-example.md)
+    Program](./how-to-guides/how-to-extend-the-ed-fi-ods-api-alternative-education-program-example.md)
     and [Student
-    Transcript](../ed-fi-ods-api-for-suite-3-v72-latest/how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transcript-example.md)
+    Transcript](./how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transcript-example.md)
     (C# Source, SQL, XML)

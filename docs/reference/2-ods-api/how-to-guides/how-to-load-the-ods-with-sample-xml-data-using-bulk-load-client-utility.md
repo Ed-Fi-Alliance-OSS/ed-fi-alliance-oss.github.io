@@ -11,7 +11,7 @@ may fail to fulfill those additional requirements and fail to load.
 
 This article describes the steps needed to populate an Ed-Fi ODS with sample XML
 data, using the [Ed-Fi Bulk Load
-Client](../platform-dev-guide/tilities/bulk-load-client-utility.md)
+Client](../platform-dev-guide/utilities/bulk-load-client-utility.md)
 utility.
 
 The steps can be summarized as:

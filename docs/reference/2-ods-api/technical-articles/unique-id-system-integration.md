@@ -439,7 +439,7 @@ include a list of third-party identifiers (e.g., local education organization
 identifiers, driver's license, teaching certificate number) that could be used
 to further distinguish a person. For more information, see [How To: Extend the
 Ed-Fi Identities
-API](../../how-to-guides/how-to-extend-the-ed-fi-identities-api.md).
+API](../how-to-guides/how-to-extend-the-ed-fi-identities-api.md).
 
 :::
 
