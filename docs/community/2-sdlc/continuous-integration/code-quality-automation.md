@@ -123,7 +123,7 @@ person to join the conversation. In the following example, the comment starts
 with the code smell "Types should be named in PascalCase", and continues with
 our own comment explaining why we disabled the warning.
 
-```csharp
+```cs
 #pragma warning disable S101 // Types should be named in PascalCase, however, uppercase is preferred for acronyms such as "DTO"
     public class SandboxDTO
 #pragma warning restore S101 // Types should be named in PascalCase
