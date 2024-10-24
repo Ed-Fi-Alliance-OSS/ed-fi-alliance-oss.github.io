@@ -18,7 +18,7 @@ methods, fields and variables to reduce maintenance costs.
 
    **A Method Name That Does Not Reflect Its Behavior**
 
-   ```csharp
+   ```cs
    // The method name includes the text "Not" and returns a boolean value.
    // This could create scenarios where callers are performing double
    // negatives, which are hard to read (e.g., if (!IsNotDuplicate(…) { )
@@ -45,7 +45,7 @@ methods, fields and variables to reduce maintenance costs.
 
    **Improved Name and Signature**
 
-   ```csharp
+   ```cs
    private static bool TryAppendDuplicateValueMessage(StringBuilder duplicatesMessageBuilder,
          Tuple<string, string> key,
          Dictionary<Tuple<string, string>, int> idsByValue)
@@ -69,7 +69,7 @@ methods, fields and variables to reduce maintenance costs.
 
    * For types with a single generic type, prefer the use of `T`.
 
-     ```csharp
+     ```cs
      public interface IList<T>
      ```
 
@@ -77,7 +77,7 @@ methods, fields and variables to reduce maintenance costs.
      optional secondary name for additional clarity. In all cases, start the
      type with a capital letter.
 
-     ```csharp
+     ```cs
      public interface IService<TRequest, TResponse>
      ```
 
@@ -94,9 +94,9 @@ methods, fields and variables to reduce maintenance costs.
 
    1. When appropriate, format the message using string interpolation.
 
-      ```csharp
+      ```cs
       throw new Exception($"There is no data for resource '{resourceName}'.");
-       
+
       throw new Exception($"Type '{typeName}' not found in assembly '{assemblyName}'.");
       ```
 
@@ -140,7 +140,7 @@ methods, fields and variables to reduce maintenance costs.
 
    1. For `System.IO.File`, this would look like this:
 
-      ```csharp
+      ```cs
       public interface IFile
       {
           bool Exists(string path);
@@ -207,14 +207,14 @@ Robert C. Martin are highly recommended reading.
    prefer `IEnumerable<T>` over `IList<T>` and `IReadOnlyDictionary<TKey, TValue>` over `IDictionary<TKey, TValue>`,
    unless modifications by the caller are intended.
 
-   ```csharp
+   ```cs
    // Good
    public interface IStudentDataProvider
    {
        IEnumerable<Student> GetAll();
        IReadOnlyDictionary<string, Student> GetStudentByNameDictionary();
    }
-    
+
    // Potentially problematic for maintenance, due to semantics of returned values
    public interface IStudentDataProvider
    {
@@ -231,7 +231,7 @@ Robert C. Martin are highly recommended reading.
 9. When providing an implementation of an interface that does nothing, use the
    [Null Object Pattern](http://en.wikipedia.org/wiki/Null_Object_pattern).
 
-   ```csharp
+   ```cs
    public interface IETagProvider
    {
        string GetETag(object value);
@@ -265,7 +265,7 @@ Robert C. Martin are highly recommended reading.
        more clearly stated intent when a caller intends to modify the underlying
        data exposed by the provider.
 
-       ```csharp
+       ```cs
        // Instead of this...
        public interface ICacheProvider
        {
@@ -296,7 +296,7 @@ Robert C. Martin are highly recommended reading.
     3. If the contract being defined performs some sort of action, the suffix
        may be removed entirely.
 
-       ```csharp
+       ```cs
        public interface IObjectValidator
        {
            ICollection<ValidationResult> ValidateObject(object @object);
@@ -315,7 +315,7 @@ Robert C. Martin are highly recommended reading.
 12. When a class has the concept of an empty instance, implement a static
     read-only `Empty` property.
 
-    ```csharp
+    ```cs
     public class UserLookupResult
     {
         public static readonly UserLookupResult Empty = new UserLookupResult();

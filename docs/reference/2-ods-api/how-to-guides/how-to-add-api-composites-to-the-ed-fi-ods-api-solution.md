@@ -52,7 +52,7 @@ the convention
 (e.g., **Marker\_EdFi\_Ods\_Composites\_MyComposites****.cs**). The marker
 interface file should have the following code:
 
-```csharp
+```cs
 namespace EdFi.Ods.Composites.MyComposites
 {
     public interface Marker_EdFi_Ods_Composites_MyComposites { }
