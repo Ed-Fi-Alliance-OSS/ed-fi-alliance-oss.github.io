@@ -1,3 +1,8 @@
+// SPDX-License-Identifier: Apache-2.0
+// Licensed to the Ed-Fi Alliance under one or more agreements.
+// The Ed-Fi Alliance licenses this file to you under the Apache License, Version 2.0.
+// See the LICENSE and NOTICES files in the project root for more information.
+
 import React from 'react';
 import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
@@ -111,17 +116,21 @@ function Main() {
             <Heading as="h2">More information on getting involved</Heading>
             <ul>
               <li>
-                <Link to="/getting-started/involved/code-of-conduct">
+                <Link to="/community/involved/code-of-conduct">
                   Contributor Code of Conduct
                 </Link>
               </li>
               <li>
-                <Link to="/getting-started/involved/ip-disclosure-policy">
+                <Link to="/community/sdlc">Software Development Lifecycle</Link>{' '}
+                (for open source, staff, and contractor development practices)
+              </li>
+              <li>
+                <Link to="/community/involved/ip-disclosure-policy">
                   Intellectual Property Disclosure
                 </Link>
               </li>
               <li>
-                <Link to="/getting-started/involved/ceds">
+                <Link to="/community/involved/ceds">
                   CEDS and Ed-Fi Collaboration Guidelines
                 </Link>
               </li>

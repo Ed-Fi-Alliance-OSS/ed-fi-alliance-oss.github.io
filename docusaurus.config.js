@@ -39,7 +39,7 @@ const config = {
       ({
         docs: {
           id: 'getting-started',
-          path: 'getting-started',
+          path: 'docs/getting-started',
           editUrl: ({ docPath }) =>
             `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/${docPath}/`,
           routeBasePath: 'getting-started',
@@ -49,6 +49,9 @@ const config = {
           showReadingTime: true,
           editUrl:
             'https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/blog/',
+        },
+        googleTagManager: {
+          containerId: 'GTM-KGR2977',
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -62,21 +65,32 @@ const config = {
       '@docusaurus/plugin-content-docs',
       {
         id: 'partners',
-        path: 'partners',
+        path: 'docs/partners',
         editUrl: ({ docPath }) =>
           `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/${docPath}/`,
         routeBasePath: 'partners',
-        sidebarPath: './sidebarsPartners.js',
+        sidebarPath: './sidebars.js',
       },
     ],
     [
       '@docusaurus/plugin-content-docs',
       {
         id: 'reference',
-        path: 'reference',
+        path: 'docs/reference',
         editUrl: ({ docPath }) =>
           `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/${docPath}/`,
         routeBasePath: 'reference',
+        sidebarPath: './sidebars.js',
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'community',
+        path: 'docs/community',
+        editUrl: ({ docPath }) =>
+          `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/${docPath}/`,
+        routeBasePath: 'community',
         sidebarPath: './sidebars.js',
       },
     ],
@@ -114,6 +128,9 @@ const config = {
             position: 'right',
           },
         ],
+      },
+      prism: {
+        additionalLanguages: ['powershell', 'csharp', 'sql', 'json'],
       },
       algolia: {
         // The application ID provided by Algolia
