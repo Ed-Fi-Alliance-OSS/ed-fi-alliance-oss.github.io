@@ -34,8 +34,9 @@ provide additional details or guidance for uses of the affected products and
 versions. Specific end-of-support notices are listed in the panel to the right
 of this text.
 
-→ See [Ed-Fi Technology Suite Supported Versions](../version-matrix.mdx) for a
-detailed view of which products and versions are currently in or out of support.
+→ See [Ed-Fi Technology Suite Supported Versions](../supported-versions.mdx) for
+a detailed view of which products and versions are currently in or out of
+support.
 
 :::
 
