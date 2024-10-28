@@ -67,10 +67,10 @@ Sheets.
 
 There are also a lot of specialized tools. Any online research will quickly turn
 up many alternatives. Community members are invited to use the [Slack for the
-Ed-Fi Community](/docs/community/involved/slack.md) "General" channel to ask for
+Ed-Fi Community](/community/involved/slack) "General" channel to ask for
 recommendations from community colleagues.
 
-## Where can I find information on running a local instance of the service using the open source code?
+## Where can I find information on running the service using the open source code?
 
 The code will be published on the [Ed-Fi
 Exchange](https://edfi.atlassian.net/wiki/display/EXCHANGE/MappingEDU)

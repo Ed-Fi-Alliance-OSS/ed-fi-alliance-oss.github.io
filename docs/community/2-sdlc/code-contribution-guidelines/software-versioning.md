@@ -9,7 +9,7 @@ _Suite Number_.
 
 Also see:
 
-* [Ed-Fi Technical Suite Version Matrix](/docs/reference/supported-versions.md)
+* [Ed-Fi Technical Suite Version Matrix](/reference/supported-versions)
 * [Ed-Fi Data Standard Versioning and
   Releases](https://edfi.atlassian.net/wiki/spaces/EFDS32/pages/20187665/Ed-Fi+Data+Standard+Versioning+and+Releases)
   (Confluence)
