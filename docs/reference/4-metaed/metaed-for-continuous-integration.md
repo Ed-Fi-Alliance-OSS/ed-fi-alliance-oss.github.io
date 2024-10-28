@@ -11,7 +11,7 @@ engineering tasks, and can be ignored when strictly using MetaEd from the IDE.
 ## 1. Create a Node Project
 
 Initialize a new Node project and install dependency `metaed-console`  from the
-Ed-Fi registry, 
+Ed-Fi registry,
 
 ```
 https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/npm/registry/
@@ -167,9 +167,9 @@ projects when you take this approach.
 
 ```shell
 node .\node_modules\@edfi\metaed-odsapi-deploy\dist\index.js `
-	-s .\node_modules\@edfi\ed-fi-model-3.3b\ `
-	-s C:\source\ed-fi\ed-fi-ods-implementation\Extensions\Homograph\HomographMetaEd\ `
-	-t C:\source\ed-fi\ `
+ -s .\node_modules\@edfi\ed-fi-model-3.3b\ `
+ -s C:\source\ed-fi\ed-fi-ods-implementation\Extensions\Homograph\HomographMetaEd\ `
+ -t C:\source\ed-fi\ `
     -a
 ```
 
