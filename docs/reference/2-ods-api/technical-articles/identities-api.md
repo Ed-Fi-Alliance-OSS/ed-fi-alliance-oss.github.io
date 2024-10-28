@@ -34,7 +34,7 @@ The Result endpoint will return a `200 Success` response with a search response
 status of “Incomplete” with no data or “Complete” with the results. The
 following diagram provides an overview of the program workflow:
 
-![Identities API workflow](../img/identities1.PNG)
+![Identities API workflow](../img/identities1.png)
 
 **Figure 1.** Identities API workflow
 
@@ -217,7 +217,7 @@ The following diagram shows a process flow that illustrates how additional
 properties are transparently passed through the Identities API for processing by
 the back-end Identity System:
 
-![Identity API process flow](../img/identities2.PNG)
+![Identity API process flow](../img/identities2.png)
 
 **Figure 2.** Identity API process flow
 
