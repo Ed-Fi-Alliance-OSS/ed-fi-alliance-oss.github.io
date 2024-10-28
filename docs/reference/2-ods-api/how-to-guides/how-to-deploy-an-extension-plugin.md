@@ -8,17 +8,17 @@ Plugin](./how-to-create-an-extension-plugin.md).
 
 The steps can be summarized as:
 
-* [How To: Deploy an Extension Plugin](#how-to-deploy-an-extension-plugin)
-  * [Install Sample extension in Development Environment](#install-sample-extension-in-development-environment)
-    * [Import the Initiallize Development Module](#import-the-initiallize-development-module)
-  * [Install Sample Extension in an Existing Production Environment](#install-sample-extension-in-an-existing-production-environment)
-    * [Deploy Sample Extension Database Artifacts](#deploy-sample-extension-database-artifacts)
-      * [Step 1. Download EdFi.Suite3.RestApi.Databases](#step-1-downloadedfisuite3restapidatabases)
-      * [Step 2. Update configuration.json](#step-2update-configurationjson)
-      * [Step 3. Run Deployment.psm1 with Dynamic Plugins](#step-3-run-deploymentpsm1-with-dynamic-plugins)
-    * [Deploy Sample Extension Binaries to Web Server](#deploy-sample-extension-binaries-to-web-server)
-      * [Step 4. Download EdFi.Suite3.Ods.Extensions.Sample](#step-4-download-edfisuite3odsextensionssample)
-      * [Step 5. Verify API Landing Page in Browser](#step-5-verify-api-landing-page-in-browser)
+- [How To: Deploy an Extension Plugin](#how-to-deploy-an-extension-plugin)
+  - [Install Sample extension in Development Environment](#install-sample-extension-in-development-environment)
+    - [Import the Initiallize Development Module](#import-the-initiallize-development-module)
+  - [Install Sample Extension in an Existing Production Environment](#install-sample-extension-in-an-existing-production-environment)
+    - [Deploy Sample Extension Database Artifacts](#deploy-sample-extension-database-artifacts)
+      - [Step 1. Download EdFi.Suite3.RestApi.Databases](#step-1-downloadedfisuite3restapidatabases)
+      - [Step 2. Update configuration.json](#step-2update-configurationjson)
+      - [Step 3. Run Deployment.psm1 with Dynamic Plugins](#step-3-run-deploymentpsm1-with-dynamic-plugins)
+    - [Deploy Sample Extension Binaries to Web Server](#deploy-sample-extension-binaries-to-web-server)
+      - [Step 4. Download EdFi.Suite3.Ods.Extensions.Sample](#step-4-download-edfisuite3odsextensionssample)
+      - [Step 5. Verify API Landing Page in Browser](#step-5-verify-api-landing-page-in-browser)
 
 Each step is outlined in detail, below.
 
@@ -62,23 +62,23 @@ Initdev
 This will execute configured script from _**secret.json**_ to download sample
 extension plugin and deploy the plugin artifacts to local database.
 
-![Sample Plugin Artifacts](../img/image2021-10-26_16-35-10.png)
+![Sample Plugin Artifacts](../../../../static/img/reference/ods-api/image2021-10-26_16-35-10.png)
 
-![Deployment Output](../img/image2021-10-26_16-39-14.png)
+![Deployment Output](../../../../static/img/reference/ods-api/image2021-10-26_16-39-14.png)
 
 After the successful execution of initdev, you will find the sample extension in
 `<source directory>`\\Ed-Fi-ODS-Implementation\\Plugin folder.
 
-![Sample Extension Plugin](../img/image2021-10-26_16-49-9.png)
+![Sample Extension Plugin](../../../../static/img/reference/ods-api/image2021-10-26_16-49-9.png)
 
 Run the "Ed-Fi-Ods.sln" solution from Visual Studio and verify that the sample
 data models are listed in your API landing page.
 
-![Sample Plugin API Landing Page](../img/image2021-10-26_16-52-9.png)
+![Sample Plugin API Landing Page](../../../../static/img/reference/ods-api/image2021-10-26_16-52-9.png)
 
 You can also verify the Sample API endpoints in the Swagger UI documentation:
 
-![Sample Plugin Swagger UI](../img/image2021-10-26_16-58-21.png)
+![Sample Plugin Swagger UI](../../../../static/img/reference/ods-api/image2021-10-26_16-58-21.png)
 
 ## Install Sample Extension in an Existing Production Environment
 
@@ -112,14 +112,14 @@ You can also verify the Sample API endpoints in the Swagger UI documentation:
     Initialize-DeploymentEnvironment
     ```
 
-    ![Command Prompt](../img/image2021-3-26_11-26-51.png)
+    ![Command Prompt](../../../../static/img/reference/ods-api/image2021-3-26_11-26-51.png)
 
-    ![Deployment Output](../img/image2021-10-26_17-20-22.png)
+    ![Deployment Output](../../../../static/img/reference/ods-api/image2021-10-26_17-20-22.png)
 
 * After the successful execution, you will find sample schema tables in the
     deployed ODS database.
 
-    ![Sample Schema Tables](../img/image2021-10-26_17-0-27.png)
+    ![Sample Schema Tables](../../../../static/img/reference/ods-api/image2021-10-26_17-0-27.png)
 
 ### Deploy Sample Extension Binaries to Web Server
 
@@ -132,7 +132,7 @@ You can also verify the Sample API endpoints in the Swagger UI documentation:
 * Copy the extracted folder and paste it in C:\\inetpub\\Ed-Fi\\WebApi\\Plugin
     in your WebAPI directory.
 
-    ![Plugin Folder](../img/image2021-10-26_17-10-52.png)
+    ![Plugin Folder](../../../../static/img/reference/ods-api/image2021-10-26_17-10-52.png)
 
 * Update appsettings.json, for plugin settings as shown below:
 
@@ -149,9 +149,9 @@ You can also verify the Sample API endpoints in the Swagger UI documentation:
 
 * Browse to the API landing page and verify that sample data models are listed.
 
-![Sample Plugin API Landing Page](../img/image2021-10-26_16-52-9.png)
+![Sample Plugin API Landing Page](../../../../static/img/reference/ods-api/image2021-10-26_16-52-9.png)
 
 * You can also verify the Sample extension API endpoints in the Swagger UI
     documentation.
 
-![Sample Plugin Swagger UI](../img/image2021-10-26_16-58-21.png)
+![Sample Plugin Swagger UI](../../../../static/img/reference/ods-api/image2021-10-26_16-58-21.png)

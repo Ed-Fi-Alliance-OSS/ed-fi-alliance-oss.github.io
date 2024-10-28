@@ -8,13 +8,13 @@ Started](../getting-started/readme.md) documentation.
 
 The steps in Visual Studio can be summarized as:
 
-* [How To: Add API Composites to the Ed-Fi ODS / API Solution](#how-to-add-api-composites-to-the-ed-fi-ods--api-solution)
-  * [Step 1. Create the Composites Project](#step-1-create-the-composites-project)
-    * [Step 1.2. Update the Marker Interface file](#step-12-update-the-marker-interface-file)
-    * [Step 1.3. Update the **Composites.xml** file to add the appropriate](#step-13-update-thecompositesxml-file-toadd-the-appropriate)
-    * [Step 1.4](#step-14)
-  * [Step 2. Integrate Composites into the Solution](#step-2-integrate-composites-into-the-solution)
-  * [Step 3. Verify Changes](#step-3-verify-changes)
+- [How To: Add API Composites to the Ed-Fi ODS / API Solution](#how-to-add-api-composites-to-the-ed-fi-ods--api-solution)
+  - [Step 1. Create the Composites Project](#step-1-create-the-composites-project)
+    - [Step 1.2. Update the Marker Interface file](#step-12-update-the-marker-interface-file)
+    - [Step 1.3. Update the **Composites.xml** file to add the appropriate](#step-13-update-thecompositesxml-file-toadd-the-appropriate)
+    - [Step 1.4](#step-14)
+  - [Step 2. Integrate Composites into the Solution](#step-2-integrate-composites-into-the-solution)
+  - [Step 3. Verify Changes](#step-3-verify-changes)
 
 Each step is outlined in detail, below.
 
@@ -31,13 +31,13 @@ section of this documentation.
 * In the "Add New Project" dialog, find and select the "Ed-Fi API Composites
     Project Template" entry as shown below. Click **Next.**
 
-    ![Project Template](../img/composite-project-template.png)
+    ![Project Template](../../../../static/img/reference/ods-api/composite-project-template.png)
 
 * Enter the project name for the new project and click **Create**. The suggested
     naming convention for this type of project is something
     like **EdFi.Ods.Composites.MyComposites**.
 
-    ![Project Template](../img/composite-project-template2.png)
+    ![Project Template](../../../../static/img/reference/ods-api/composite-project-template2.png)
 
 ### Step 1.2. Update the Marker Interface file
 
@@ -128,7 +128,7 @@ the new resource.
 
 :::
 
-![Composites](../img/composites3.png)
+![Composites](../../../../static/img/reference/ods-api/composites3.png)
 
 The `organizationCode` mentioned in Step 1.3 ("ed-fi" in this example) can be
 seen in the Composite URLs above (e.g.,

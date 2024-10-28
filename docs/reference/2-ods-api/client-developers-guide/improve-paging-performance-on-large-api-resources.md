@@ -70,14 +70,14 @@ To identify the possible range values for your partitions, you must first obtain
 the newest change version value from your source API by sending a GET request to
 the _availableChangeVersions_ resource:
 
-![Available Change Versions](../img/image2022-9-23_18-24-27.png)
+![Available Change Versions](../../../../static/img/reference/ods-api/image2022-9-23_18-24-27.png)
 
 ### Step 2 - Obtain the total count of items in the resource
 
 Send a request to the resource with the `totalCount=true`  query string
 parameter and get the total item count from the `Total-Count` response header.
 
-![Total Count](../img/image2022-9-23_18-31-5.png)
+![Total Count](../../../../static/img/reference/ods-api/image2022-9-23_18-31-5.png)
 
 ### Step 3 - Define the partitions as ranges of Change Version values
 
@@ -131,7 +131,7 @@ and/or `maxChangeVerion`  parameters, along with the Offset Paging parameters o
 On the populated sample ODS, the Change Version value ranges defined above for
 partitions 1, 3, 4 and 5 actually return no items.
 
-![No Items](../img/image2022-9-23_20-27-43.png)
+![No Items](../../../../static/img/reference/ods-api/image2022-9-23_20-27-43.png)
 
 This is because the effectiveness of the technique is greatly influenced by the
 pattern of loading and/or usage by API clients on the underlying ODS. In this
@@ -144,7 +144,7 @@ defined them).
 The following image shows that data is returned for the first page of the second
 partition:
 
-![Items Returned](../img/image2022-9-23_20-11-28.png)
+![Items Returned](../../../../static/img/reference/ods-api/image2022-9-23_20-11-28.png)
 
 So for this example, the following requests would be sent to the API:
 

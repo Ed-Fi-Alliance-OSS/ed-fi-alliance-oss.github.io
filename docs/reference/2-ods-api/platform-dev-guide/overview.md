@@ -124,7 +124,7 @@ PostgreSQL ODS.
 
 A high-level view looks something like this:
 
-![High Level](../img/image2020-10-20_11-33-39.png)
+![High Level](../../../../static/img/reference/ods-api/image2020-10-20_11-33-39.png)
 
 A few things to note:
 

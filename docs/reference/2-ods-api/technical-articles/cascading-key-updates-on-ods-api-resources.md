@@ -72,13 +72,13 @@ resource. We will use the Account core resource as an example of a resource to
 enable cascading updates on. Note that the default behavior of the Account
 resource is not configured for cascading natural key updates via the PUT method.
 
-![Default Account Resource Behavior](../img/image2022-7-26_15-29-29.png)
+![Default Account Resource Behavior](../../../../static/img/reference/ods-api/image2022-7-26_15-29-29.png)
 
 We can modify this behavior by updating the **APIModel.json** file. Locate the
 Account resource you want to update. Then, within the identifiers array, find
 the primary key identifier and update the isUpdatable property to true.
 
-![Updated Account Resource Behavior](../img/image2022-7-26_15-36-41.png)
+![Updated Account Resource Behavior](../../../../static/img/reference/ods-api/image2022-7-26_15-36-41.png)
 
 Run the code generation steps outlined in the [Getting Started
 Guide](https://edfi.atlassian.net/wiki/display/ODSAPIS3V60/Getting+Started+-+Source+Code+Installation) (i.e.,
@@ -134,7 +134,7 @@ For configuring cascading key updates on the extension resource, simply add the
 extension project. For more details on creating Ed-Fi Extensions, see
 [here](../how-to-guides/how-to-extend-the-ed-fi-ods-api-alternative-education-program-example.md).
 
-![Extension Resource Behavior](../img/image2022-7-26_16-5-3.png)
+![Extension Resource Behavior](../../../../static/img/reference/ods-api/image2022-7-26_16-5-3.png)
 
 For more details on Table Cascading Updates, see
 [here](https://technet.microsoft.com/en-us/library/ms188066(v=sql.110).aspx).

@@ -16,7 +16,7 @@ by an ODS / API platform administrator.
 Once you select a section (e.g., Resources, Enrollment) from the main Swagger
 page, you will see an "Authorize" button.
 
-![Authorize button](../img/image2018-5-31_22-59-59.png)
+![Authorize button](../../../../static/img/reference/ods-api/image2018-5-31_22-59-59.png)
 
 **Figure 1.** Authorize button
 
@@ -25,7 +25,7 @@ If the API key and API secret fields are already filled in, simply click
 "Authorize." If not, use a key and secret provided to you by the ODS / API
 platform administrator.
 
-![Swagger authorization dialog showing auto-filled values](../img/image2018-5-31_23-0-52.png)
+![Swagger authorization dialog showing auto-filled values](../../../../static/img/reference/ods-api/image2018-5-31_23-0-52.png)
 
 **Figure 2.** Swagger authorization dialog showing auto-filled values
 
@@ -93,7 +93,7 @@ read-write access to other information in the assessment domain.
 When expanding a resource, you will see that each resource is broken into
 sections based on the verbs supported.
 
-![Supported verbs for the `students` resource](../img/image2018-5-31_23-4-0.png)
+![Supported verbs for the `students` resource](../../../../static/img/reference/ods-api/image2018-5-31_23-4-0.png)
 
 **Figure 3.** Supported verbs for the `students` resource
 
@@ -104,7 +104,7 @@ Value and Model options. The Model shows the type and description for each
 element within the resource. The Example Value shows an example of the JSON
 representation for the resource.
 
-![The Model schema for the students resource](../img/image2018-5-31_23-7-26.png)
+![The Model schema for the students resource](../../../../static/img/reference/ods-api/image2018-5-31_23-7-26.png)
 
 **Figure 4.** The Model schema for the students resource
 
@@ -115,7 +115,7 @@ choose a resource and execute a GET that uses a “Get” pattern by clicking th
 “Try it out” button. Then scroll down past the Parameters section and click the
 "Execute" button.
 
-![The result of a sample GET operation for the `students` resource](../img/image2018-5-31_23-9-57.png)
+![The result of a sample GET operation for the `students` resource](../../../../static/img/reference/ods-api/image2018-5-31_23-9-57.png)
 
 **Figure 5.** The result of a sample GET operation for the `students` resource
 
@@ -127,7 +127,7 @@ some of the remaining values, and click “Execute” for the POST. If the retur
 code indicates a successful operation, a subsequent GET operation will return
 the modified resource with a new ETag.
 
-![A sample POST operation for the `students` resource](../img/image2018-5-31_23-14-51.png)
+![A sample POST operation for the `students` resource](../../../../static/img/reference/ods-api/image2018-5-31_23-14-51.png)
 
 **Figure 6.** A sample POST operation for the `students` resource
 
@@ -137,7 +137,7 @@ After executing an operation, an HTTP status code is displayed that shows the
 result of the operation along with a message where applicable. The system sends
 response codes along with human-readable error messages.
 
-![A sample 400 response accompanied by an error message](../img/image2018-5-31_23-15-46.png)
+![A sample 400 response accompanied by an error message](../../../../static/img/reference/ods-api/image2018-5-31_23-15-46.png)
 
 **Figure 7.** A sample 400 response accompanied by an error message
 
@@ -148,12 +148,12 @@ using PUT operation. The natural language description of the PUT verb for the
 resources would indicate whether natural key updates are supported for the
 resource.
 
-![Natural natural language description of PUT operation in `section` resource indicating that the resource supports natural key updates](../img/cascade%20on%20update.png)
+![Natural natural language description of PUT operation in `section` resource indicating that the resource supports natural key updates](../../../../static/img/reference/ods-api/cascade%20on%20update.png)
 
 **Figure 8.** Natural natural language description of PUT operation in
  `section` resource indicating that the resource supports natural key updates
 
-![Natural natural language description of PUT operation in `reportCards` resource indicating that the resource does not support natural key updates](../img/No%20key%20updates.png)
+![Natural natural language description of PUT operation in `reportCards` resource indicating that the resource does not support natural key updates](../../../../static/img/reference/ods-api/No%20key%20updates.png)
 
 **Figure 9.** Natural natural language description of PUT operation in
 `reportCards` resource indicating that the resource does not support natural key
@@ -163,7 +163,7 @@ In addition, the resources that allow natural key updates can be identified
 through the `"x-Ed-Fi-isUpdatable": true` extension in the OpenAPI metadata for
 their PUT verb and is visible on the swagger documentation.
 
-![`x-Ed-Fi-isUpdatable` field on `section` resource indicating that the resource supports natural key updates](../img/image-2023-3-24_13-13-19.png)
+![`x-Ed-Fi-isUpdatable` field on `section` resource indicating that the resource supports natural key updates](../../../../static/img/reference/ods-api/image-2023-3-24_13-13-19.png)
 
 **Figure 10. `x-Ed-Fi-isUpdatable`** field on `section` resource indicating that
 the resource supports natural key updates

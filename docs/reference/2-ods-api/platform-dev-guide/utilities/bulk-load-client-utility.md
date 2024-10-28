@@ -49,7 +49,7 @@ The projects involved are:
 The general design of the application is a pipeline that takes XML files as
 input. The pipeline has the following general flow:
 
-![Depiction of the Bulk Load Client pipeline](../../img/DedupeApiLoaderProcess.png)
+![Depiction of the Bulk Load Client pipeline](../../../../../static/img/reference/ods-api/DedupeApiLoaderProcess.png)
 
 | Step | Action |
 | --- | --- |

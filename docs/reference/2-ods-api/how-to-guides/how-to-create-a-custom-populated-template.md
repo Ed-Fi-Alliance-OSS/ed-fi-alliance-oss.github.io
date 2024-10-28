@@ -16,29 +16,29 @@ contain the data you specify.
 
 The different options and steps can be summarized as:
 
-* [How To: Create a Custom Populated Template](#how-to-create-a-custom-populated-template)
-  * [Option 1. Build from XML Data Using the Create Populated Script](#option-1-build-from-xml-data-using-the-create-populated-script)
-    * [Step 1: Import the Create Populated Template Module](#step-1import-the-create-populated-template-module)
-      * [Importing the Populated Template Module](#importing-the-populated-template-module)
-    * [Step 2: Use the Initialize-PopulatedTemplate Script](#step-2-use-the-initialize-populatedtemplate-script)
-      * [Executing the Initialize-PopulatedTempate Script](#executing-the-initialize-populatedtempate-script)
-      * [Initialize-PopulatedTemplate Script Results](#initialize-populatedtemplate-script-results)
-  * [Option 2. Creating a NuGet Package](#option-2-creating-a-nuget-package)
-    * [Step 1: Create a Database Backup File from SQL Server Management Studio (SSMS)](#step-1-create-a-database-backup-file-from-sql-server-management-studio-ssms)
-    * [Step 2: Create a Nuspec File](#step-2-create-a-nuspec-file)
-      * [Populated.Template.nuspec](#populatedtemplatenuspec)
-      * [Populated.Template.nuspec](#populatedtemplatenuspec-1)
-      * [NuGet CLI Pack Command](#nuget-cli-pack-command)
-    * [Step 3: Upload a Package to MyGet](#step-3-upload-a-package-to-myget)
-      * [Nuget CLI Push Command](#nuget-cli-push-command)
-  * [Option 3. Creating a Custom Populated Template Source Script](#option-3-creating-a-custom-populated-template-source-script)
-    * [Step 1: Create a Script](#step-1-create-a-script)
-      * [NewPopulatedTemplate.ps1](#newpopulatedtemplateps1)
-    * [Step 2: Update the Config File](#step-2-update-the-config-file)
-      * [appsettings.json Example](#appsettingsjson-example)
-    * [Step 3: Run Reset-PopulatedTemplate](#step-3-runreset-populatedtemplate)
-      * [Import the Initiallize Development Module](#import-the-initiallize-development-module)
-      * [Execute Reset-PopulatedTemplate](#execute-reset-populatedtemplate)
+- [How To: Create a Custom Populated Template](#how-to-create-a-custom-populated-template)
+  - [Option 1. Build from XML Data Using the Create Populated Script](#option-1-build-from-xml-data-using-the-create-populated-script)
+    - [Step 1: Import the Create Populated Template Module](#step-1import-the-create-populated-template-module)
+      - [Importing the Populated Template Module](#importing-the-populated-template-module)
+    - [Step 2: Use the Initialize-PopulatedTemplate Script](#step-2-use-the-initialize-populatedtemplate-script)
+      - [Executing the Initialize-PopulatedTempate Script](#executing-the-initialize-populatedtempate-script)
+      - [Initialize-PopulatedTemplate Script Results](#initialize-populatedtemplate-script-results)
+  - [Option 2. Creating a NuGet Package](#option-2-creating-a-nuget-package)
+    - [Step 1: Create a Database Backup File from SQL Server Management Studio (SSMS)](#step-1-create-a-database-backup-file-from-sql-server-management-studio-ssms)
+    - [Step 2: Create a Nuspec File](#step-2-create-a-nuspec-file)
+      - [Populated.Template.nuspec](#populatedtemplatenuspec)
+      - [Populated.Template.nuspec](#populatedtemplatenuspec-1)
+      - [NuGet CLI Pack Command](#nuget-cli-pack-command)
+    - [Step 3: Upload a Package to MyGet](#step-3-upload-a-package-to-myget)
+      - [Nuget CLI Push Command](#nuget-cli-push-command)
+  - [Option 3. Creating a Custom Populated Template Source Script](#option-3-creating-a-custom-populated-template-source-script)
+    - [Step 1: Create a Script](#step-1-create-a-script)
+      - [NewPopulatedTemplate.ps1](#newpopulatedtemplateps1)
+    - [Step 2: Update the Config File](#step-2-update-the-config-file)
+      - [appsettings.json Example](#appsettingsjson-example)
+    - [Step 3: Run Reset-PopulatedTemplate](#step-3-runreset-populatedtemplate)
+      - [Import the Initiallize Development Module](#import-the-initiallize-development-module)
+      - [Execute Reset-PopulatedTemplate](#execute-reset-populatedtemplate)
 
 Details of each option and their steps follows.
 
@@ -189,23 +189,23 @@ Initialize-PopulatedTemplate` script, you can skip this step.
 Within SSMS, select the database you would like to back up, select **Tasks**
 \> **Back Up...**
 
-![Select Database](../img/2018-11-07%2009_03_53-Greenshot.png)
+![Select Database](../../../../static/img/reference/ods-api/2018-11-07%2009_03_53-Greenshot.png)
 
 In the **Back Up Database** dialog, select the **default backup
 destination,** click **Remove**, then click **Add** to create the backup.
 
-![Database Backup](../img/2018-11-07%2009_01_57-Microsoft%20SQL%20Server%20Management%20Studio.png)
+![Database Backup](../../../../static/img/reference/ods-api/2018-11-07%2009_01_57-Microsoft%20SQL%20Server%20Management%20Studio.png)
 
 In the Select Backup Destination Dialog, select **...**
 
-![Select Backup Destination](../img/2018-11-07%2009_09_22-Select%20Backup%20Destination.png)
+![Select Backup Destination](../../../../static/img/reference/ods-api/2018-11-07%2009_09_22-Select%20Backup%20Destination.png)
 
 The database must be placed in **`<source directory>`
 \\Ed\-Fi\-ODS\-Implementation\\DatabaseTemplate\\Database** and the
 file name **must end in .bak** in order for the initialize development and
 deploy scripts to pick it up.
 
-![Locate Database Files](../img/2018-11-07%2009_16_54-Locate%20Database%20Files%20-%20TRAVIS-MEADOR-O.png)
+![Locate Database Files](../../../../static/img/reference/ods-api/2018-11-07%2009_16_54-Locate%20Database%20Files%20-%20TRAVIS-MEADOR-O.png)
 
 ### Step 2: Create a Nuspec File
 
@@ -310,7 +310,7 @@ Your package was pushed.
 
 When successful, you should see something similar to the following:
 
-![MyGet Feed](../img/2018-11-12%2012_18_06-ed-fi%20-%20Packages%20_%20MyGet.png)
+![MyGet Feed](../../../../static/img/reference/ods-api/2018-11-12%2012_18_06-ed-fi%20-%20Packages%20_%20MyGet.png)
 
 In your MyGet feed you should see your new package. Additional detail:
 

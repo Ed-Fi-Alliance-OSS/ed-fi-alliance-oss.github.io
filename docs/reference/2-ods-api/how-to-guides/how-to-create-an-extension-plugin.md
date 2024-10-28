@@ -25,13 +25,13 @@ Before you begin:
 
 The steps can be summarized as:
 
-* [How To: Create an Extension Plugin](#how-to-create-an-extension-plugin)
-  * [Creating Extension Plugins](#creating-extension-plugins)
-    * [Step 1. Run CodeGen](#step-1run-codegen)
-    * [Step 2. Build Your Extension Project](#step-2build-your-extension-project)
-    * [Step 3. Create a NuGet Package](#step-3-create-a-nuget-package)
-    * [Step 4. Publish NuGet Package](#step-4-publish-nugetpackage)
-  * [Consuming Extension Plugins](#consumingextension-plugins)
+- [How To: Create an Extension Plugin](#how-to-create-an-extension-plugin)
+  - [Creating Extension Plugins](#creating-extension-plugins)
+    - [Step 1. Run CodeGen](#step-1run-codegen)
+    - [Step 2. Build Your Extension Project](#step-2build-your-extension-project)
+    - [Step 3. Create a NuGet Package](#step-3-create-a-nuget-package)
+    - [Step 4. Publish NuGet Package](#step-4-publish-nugetpackage)
+  - [Consuming Extension Plugins](#consumingextension-plugins)
 
 Each step is outlined in detail, below.
 
@@ -60,7 +60,7 @@ and execute the following command to run code generation.
 `Invoke``-CodeGen` `-Engine` `SQLServer -StandardVersion 5.1.0 -ExtensionVersion
 1.0.0`
 
-![PowerShell](../img/image2024-5-30_22-5-42.png)
+![PowerShell](../../../../static/img/reference/ods-api/image2024-5-30_22-5-42.png)
 
 ### Step 2. Build Your Extension Project
 
@@ -75,7 +75,7 @@ your extension will be in Ed-Fi-ODS-Implementation\\Application folder.
 directory>\Ed``-Fi``-ODS``-Implementation``\Application\EdFi.Ods.Extensions.SampleAlternativeEducationProgram
 -``-configuration` `release`
 
-![Building Extension](../img/image2024-5-30_22-8-5.png)
+![Building Extension](../../../../static/img/reference/ods-api/image2024-5-30_22-8-5.png)
 
 ### Step 3. Create a NuGet Package
 
@@ -89,9 +89,9 @@ cd tools
 .\NuGet.exe pack <source directory>\Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleAlternativeEducationProgram\EdFi.Ods.Extensions.SampleAlternativeEducationProgram.nuspec -OutputDirectory <output directory> -Properties configuration=release -Properties StandardVersion=5.1.0 -Properties ExtensionVersion=1.0.0 -NoPackageAnalysis -NoDefaultExcludes
 ```
 
-![PowerShell](../img/image2024-5-30_22-11-32.png)
+![PowerShell](../../../../static/img/reference/ods-api/image2024-5-30_22-11-32.png)
 
-![NuGet](../img/image2024-5-30_22-13-45.png)
+![NuGet](../../../../static/img/reference/ods-api/image2024-5-30_22-13-45.png)
 
 ### Step 4. Publish NuGet Package
 
@@ -101,7 +101,7 @@ In this step, execute the following command to publish NuGet package.
 .\NuGet.exe push -source https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json -apikey <PAT> <nuget directory>\EdFi.Ods.Extensions.SampleAlternativeEducationProgram.1.0.0.Standard.5.1.0.1.0.0.nupkg
 ```
 
-![NuGet](../img/image2024-5-30_22-18-44.png)
+![NuGet](../../../../static/img/reference/ods-api/image2024-5-30_22-18-44.png)
 
 ## Consuming Extension Plugins
 

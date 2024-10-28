@@ -43,7 +43,7 @@ The EdFi\_Admin database stores the following configuration entities:
 The following entity relationship diagram (ERD) provides additional data on the
 structure of the EdFi\_Admin database:
 
-![Depiction of the structure of the Ed-Fi Admin database](../../img/image-2023-7-28_10-28-57.png)
+![Depiction of the structure of the Ed-Fi Admin database](../../../../../static/img/reference/ods-api/image-2023-7-28_10-28-57.png)
 
 ## Ed-Fi Security Database
 
@@ -85,4 +85,4 @@ context:
 The following ERD further outlines the entities and entity relationships in the
 EdFi\_Security database:
 
-![Depiction of the structure of the Ed-Fi Security database](../../img/Security-Config-Figure-02.png)
+![Depiction of the structure of the Ed-Fi Security database](../../../../../static/img/reference/ods-api/Security-Config-Figure-02.png)

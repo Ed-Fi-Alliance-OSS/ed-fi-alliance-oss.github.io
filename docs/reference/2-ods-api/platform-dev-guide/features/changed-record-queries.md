@@ -219,7 +219,7 @@ of the sequence on all inserts and updates, whether they come from the API or
 through scripts. Queries done against the API to find changed records function
 by adding an additional where clause to based on this ChangeVersion column.
 
-![Change Queries](../../img/image2022-5-11_10-27-25.png)
+![Change Queries](../../../../../static/img/reference/ods-api/image2022-5-11_10-27-25.png)
 
 Supporting delete tracking requires another common change tracking concept,
 using a "tombstone" table. This concept involves tracking all deletes and
@@ -239,7 +239,7 @@ truncation. Given the typical uses cases of using an ODS per school year, no
 automatic truncation was introduced by default since it's unlikely to be an
 issue for most implementations.
 
-![Change Queries](../../img/image2022-5-11_10-28-49.png)
+![Change Queries](../../../../../static/img/reference/ods-api/image2022-5-11_10-28-49.png)
 
 The patterns described above are used for both the standard, as-shipped Ed-Fi
 ODS database tables, as well as tables generated to serve Ed-Fi Extensions. By

@@ -18,15 +18,15 @@ the codegen utility is downloaded from MyGet into the tools folder under
 the Ed-Fi-ODS-Implementation repository and is executed after the
 Invoke-NewDevelopmentAppSettings task.
 
-![Depiction of the initdev process](../../img/image2020-11-3_11-23-42.png)
+![Depiction of the initdev process](../../../../../static/img/reference/ods-api/image2020-11-3_11-23-42.png)
 
-![Depiction of the initdev process](../../img/image2020-11-3_11-26-46.png)
+![Depiction of the initdev process](../../../../../static/img/reference/ods-api/image2020-11-3_11-26-46.png)
 
 A successful `initdev` execution will display the tasks executed and their
 duration as shown, and you can see that code generation utility is downloaded
 and installed during the process.
 
-![Depiction of the initdev process](../../img/image2020-11-3_11-21-9.png)
+![Depiction of the initdev process](../../../../../static/img/reference/ods-api/image2020-11-3_11-21-9.png)
 
 ## Manual Execution
 
@@ -42,7 +42,7 @@ followed by the Install-CodeGen-Utiltity command. This will pull the current
 version of the tool, and install it into the tools folder under
 the Ed-Fi-ODS-Implementation repository.
 
-![Depiction of the installation process](../../img/image2020-11-3_11-29-58.png)
+![Depiction of the installation process](../../../../../static/img/reference/ods-api/image2020-11-3_11-29-58.png)
 
 ### Execution
 
@@ -50,4 +50,4 @@ To run code generation independently from the build process, the tool can be
 executed by calling the PowerShell command Run-CodeGen. This will execute the
 generation process for all required classes.
 
-![Depiction of the execution process](../../img/image2020-11-3_11-31-4.png)
+![Depiction of the execution process](../../../../../static/img/reference/ods-api/image2020-11-3_11-31-4.png)

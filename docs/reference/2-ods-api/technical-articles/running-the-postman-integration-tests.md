@@ -10,9 +10,9 @@ Started](../getting-started/readme.md)
 documentation. This documentation takes you through running two options for
 running postman test collections:
 
-* [Running the Postman Integration Tests](#running-the-postman-integration-tests)
-  * [Running Postman Test Collections via PowerShell](#running-postman-test-collections-via-powershell)
-  * [Running Postman Test Collections via Postman](#running-postman-test-collections-via-postman)
+- [Running the Postman Integration Tests](#running-the-postman-integration-tests)
+  - [Running Postman Test Collections via PowerShell](#running-postman-test-collections-via-powershell)
+  - [Running Postman Test Collections via Postman](#running-postman-test-collections-via-postman)
 
 ## Running Postman Test Collections via PowerShell
 
@@ -24,11 +24,11 @@ running postman test collections:
     script followed by `initdev -usePlugins`  and finally
     `Invoke-PostmanIntegrationTests`  
 
-    ![Postman Test](../img/image-2023-10-3_9-7-30.png)
+    ![Postman Test](../../../../static/img/reference/ods-api/image-2023-10-3_9-7-30.png)
 
 3. Test results are presented as the tests run
 
-    ![Postman Test Results](../img/image-2023-10-3_9-17-12.png)
+    ![Postman Test Results](../../../../static/img/reference/ods-api/image-2023-10-3_9-17-12.png)
 
 :::info
 
@@ -68,39 +68,39 @@ the test run, so you'll just need to wait until it finishes.
         Postman environment file and run a test API instance for the Postman
         tests to interact with.
 
-        ![Postman Test Harness](../img/image2021-10-5_16-59-40.png)
+        ![Postman Test Harness](../../../../static/img/reference/ods-api/image2021-10-5_16-59-40.png)
 
     2. After the test harness is running, import the generated environment file
         located at ~Ed-Fi-ODS-Implementation\\logistics\\scripts\\modules
 
-        [Import Environment](../img/image2021-10-5_17-4-17.png)
+        [Import Environment](../../../../static/img/reference/ods-api/image2021-10-5_17-4-17.png)
 
-        ![Postman Environment](../img/image2021-10-5_17-2-59.png)
+        ![Postman Environment](../../../../static/img/reference/ods-api/image2021-10-5_17-2-59.png)
 
     3. Ensure the environment is selected on the to right corner of Postman
         window.
 
-        ![Top right corner of Postman](../img/image2021-10-6_9-5-10.png)
+        ![Top right corner of Postman](../../../../static/img/reference/ods-api/image2021-10-6_9-5-10.png)
 
 3. Locate (or download) the Ed-Fi ODS Integration Test Suite collections from
     the Ed-Fi-ODS GitHub repository. See the reference section on the right for
     GitHub link.
 
-    ![Postman Import](../img/image2021-10-5_17-13-4.png)
+    ![Postman Import](../../../../static/img/reference/ods-api/image2021-10-5_17-13-4.png)
 4. Import one or more of the collections into Postman using the _Import_
     function located in the upper left corner of the Postman window.
 
-    ![Postman Import](../img/image2021-10-5_17-14-18.png)
+    ![Postman Import](../../../../static/img/reference/ods-api/image2021-10-5_17-14-18.png)
 
 5. Run the tests using the Collection Runner.
 
-    ![Postman Collection Runner](../img/image2021-10-6_8-54-29.png)
+    ![Postman Collection Runner](../../../../static/img/reference/ods-api/image2021-10-6_8-54-29.png)
 
-    ![Postman Collection Runner](../img/image2021-10-6_8-55-15.png)
+    ![Postman Collection Runner](../../../../static/img/reference/ods-api/image2021-10-6_8-55-15.png)
 
 6. Monitor test execution and review the test results.
 
-    ![Postman Test Results](../img/image2021-10-6_9-0-0.png)
+    ![Postman Test Results](../../../../static/img/reference/ods-api/image2021-10-6_9-0-0.png)
 
 :::note
 

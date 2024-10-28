@@ -17,17 +17,17 @@ links below. We recommend you stay current with the latest patch update that h
 been promoted to
 [release](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging?_a=feed&feed=EdFi@Release).
 
-- [EdFi.Suite3.Installer.WebApi](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Installer.WebApi/versions/7.2.4)
-- [EdFi.Suite3.Installer.SwaggerUI](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Installer.SwaggerUI/versions/7.2.6)
-- [EdFi.Suite3.Installer.SandboxAdmin](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Installer.SandboxAdmin/versions/7.2.7)
-- [EdFi.Suite3.RestApi.Databases.Standard.5.1.0](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.RestApi.Databases.Standard.5.1.0/versions/7.2.1201)
+* [EdFi.Suite3.Installer.WebApi](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Installer.WebApi/versions/7.2.4)
+* [EdFi.Suite3.Installer.SwaggerUI](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Installer.SwaggerUI/versions/7.2.6)
+* [EdFi.Suite3.Installer.SandboxAdmin](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Installer.SandboxAdmin/versions/7.2.7)
+* [EdFi.Suite3.RestApi.Databases.Standard.5.1.0](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.RestApi.Databases.Standard.5.1.0/versions/7.2.1201)
 
 For each of the downloads, **right-click** and select "Properties." Update the
 file extension (from .nupkg to .zip). Remove the version number (optional).
 Check the box next to **Unblock** (this will prevent PowerShell from asking for
 permission to load every module in the installer) and click **OK**.
 
-![Package Properties](../../img/image2024-6-5_13-12-15.png)
+![Package Properties](../../../../../static/img/reference/ods-api/image2024-6-5_13-12-15.png)
 
 :::info Enable TLS 1.2
 
@@ -360,19 +360,19 @@ Install-EdFiOdsSandboxAdmin @parameters
 
 Just a few more tasks to complete your installation:
 
-- Open IIS (Press the **Windows key** ![Windows
+* Open IIS (Press the **Windows key** ![Windows
     logo](https://lh5.googleusercontent.com/o2iqf0j70YV3B-1NQxBFj1Ne-JeToRq5PiZeMtvF05l3jpyp4kseJn-zEs3BULgpAS_TFr8Qyacu5JZkiyXNllygq2EGhPII-PcxYyxkwCUqC4fPhMJ0QbovAD16R7T2StuDemW_)
 
      on your keyboard, type **IIS**, select **Internet Information Services
      (IIS)**, and press **Enter**.
-- **Right-click** on the server (alternatively, you can right-click the EdFi
+* **Right-click** on the server (alternatively, you can right-click the EdFi
     web site), and select **Stop**.
 
-![Stop IIS](../../img/image2021-2-12_17-5-39.png)
+![Stop IIS](../../../../../static/img/reference/ods-api/image2021-2-12_17-5-39.png)
 
-- **Right-click** the server (or EdFi website) again and select **Start**.
+* **Right-click** the server (or EdFi website) again and select **Start**.
 
-![Start IIS](../../img/image2021-2-12_17-7-5.png)
+![Start IIS](../../../../../static/img/reference/ods-api/image2021-2-12_17-7-5.png)
 
 You are now ready to use the Ed-Fi ODS / API. The following URLs are available:
 

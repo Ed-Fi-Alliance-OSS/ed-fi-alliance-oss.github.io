@@ -18,13 +18,13 @@ section of this documentation.
 
 The installation steps can be summarized as:
 
-* [Project Templates Installation](#project-templates-installation)
-  * [Step 1. Uninstall Any Previous Versions](#step-1-uninstall-any-previous-versions)
-  * [Step 2. Download the Ed-Fi Visual Studio Extension](#step-2-download-the-ed-fi-visual-studio-extension)
-  * [Step 3. Close Visual Studio](#step-3-close-visual-studio)
-  * [Step 4. Install the Templates](#step-4-install-the-templates)
-  * [Step 5. Verify Install](#step-5-verify-install)
-  * [Next Steps](#next-steps)
+- [Project Templates Installation](#project-templates-installation)
+  - [Step 1. Uninstall Any Previous Versions](#step-1-uninstall-any-previous-versions)
+  - [Step 2. Download the Ed-Fi Visual Studio Extension](#step-2-download-the-ed-fi-visual-studio-extension)
+  - [Step 3. Close Visual Studio](#step-3-close-visual-studio)
+  - [Step 4. Install the Templates](#step-4-install-the-templates)
+  - [Step 5. Verify Install](#step-5-verify-install)
+  - [Next Steps](#next-steps)
 
 ## Step 1. Uninstall Any Previous Versions
 
@@ -32,7 +32,7 @@ The installation steps can be summarized as:
   **Extensions** \> **Manage Extensions** \> **Installed** > **Templates**.
   "Uninstall" previous versions of "Ed-Fi Alliance Project Templates"
 
-  ![Uninstall Previous Versions](../../img/image2024-4-16_22-40-4.png)
+  ![Uninstall Previous Versions](../../../../../static/img/reference/ods-api/image2024-4-16_22-40-4.png)
 
 ## Step 2. Download the Ed-Fi Visual Studio Extension
 
@@ -51,21 +51,21 @@ The installation steps can be summarized as:
   Double-click the downloaded EdFi.ProjectTemplates.Installer.vsix file and
   install the templates.
 
-  ![Install the Templates](../../img/image2024-4-16_22-40-44.png)
+  ![Install the Templates](../../../../../static/img/reference/ods-api/image2024-4-16_22-40-44.png)
 
-  ![Install the Templates](../../img/image2024-4-16_22-41-2.png)
+  ![Install the Templates](../../../../../static/img/reference/ods-api/image2024-4-16_22-41-2.png)
 
 ## Step 5. Verify Install
 
   Verify that the extension installed under **Extensions** \> **Manage
   Extensions** \> **Installed** > **Templates**.
 
-  ![Verify Install](../../img/image2024-4-16_22-41-20.png)
+  ![Verify Install](../../../../../static/img/reference/ods-api/image2024-4-16_22-41-20.png)
 
   Verify that the templates are available under **File** > **New** >
   **Project**.
 
-  ![Verify Install](../../img/image2024-4-16_22-41-41.png)
+  ![Verify Install](../../../../../static/img/reference/ods-api/image2024-4-16_22-41-41.png)
 
 ## Next Steps
 

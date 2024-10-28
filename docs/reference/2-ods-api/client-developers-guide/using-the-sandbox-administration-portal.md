@@ -21,7 +21,7 @@ in how the platform is administered.
 By logging into the Sandbox Administration Portal using an Admin account,
 platform hosts can provision access to vendors to manage their sandboxes.
 
-![Creating new users using Administration Portal](../img/Screenshot%202024-06-03%20133635.png)
+![Creating new users using Administration Portal](../../../../static/img/reference/ods-api/Screenshot%202024-06-03%20133635.png)
 
 **Figure 1.** Creating new users using Administration Portal
 
@@ -57,7 +57,7 @@ invitation e-mail, a link will be provided that will direct you to set a
 password for your account. Upon logging in, you will see the existing sandboxes
 associated with your user, along with their application key and secret.
 
-![Sandbox Administration Portal with configured sandboxes](../img/Screenshot%202024-06-03%20133801.png)
+![Sandbox Administration Portal with configured sandboxes](../../../../static/img/reference/ods-api/Screenshot%202024-06-03%20133801.png)
 
 **Figure 2.** Sandbox Administration Portal with configured sandboxes
 
@@ -66,7 +66,7 @@ associated with your user, along with their application key and secret.
 Click the **Manage Vendors** button in the navigation bar to open the Vendors
 administration page.
 
-![Sandbox Administration Portal with configured Vendors](../img/Screenshot%202024-06-03%20134000.png)
+![Sandbox Administration Portal with configured Vendors](../../../../static/img/reference/ods-api/Screenshot%202024-06-03%20134000.png)
 
 **Figure 3.** Sandbox Administration Portal with configured Vendors
 
@@ -77,7 +77,7 @@ satisfies your testing requirements, you can skip this section.
 Clicking on the **Add Vendor** button opens a modal where you can specify a
 namespace prefix alongside its contact information.
 
-![Creating a Vendor](../img/Screenshot%202024-06-03%20134200.png)
+![Creating a Vendor](../../../../static/img/reference/ods-api/Screenshot%202024-06-03%20134200.png)
 
 **Figure 4.** Creating a Vendor
 
@@ -99,7 +99,7 @@ manually delete them.
 Click the **Manage Applications** button in the navigation bar to open the
 Applications administration page.
 
-![Sandbox Administration Portal with configured Applications](../img/Screenshot%202024-06-03%20134453.png)
+![Sandbox Administration Portal with configured Applications](../../../../static/img/reference/ods-api/Screenshot%202024-06-03%20134453.png)
 
 **Figure 5.** Sandbox Administration Portal with configured Applications
 
@@ -111,7 +111,7 @@ Clicking on the **Add Application** button opens a modal where you can specify a
 Vendor and an Education Organization. You must first create a Vendor on the
 "Manage Vendors" page.
 
-![Creating an Application](../img/Screenshot%202024-06-03%20134612.png)
+![Creating an Application](../../../../static/img/reference/ods-api/Screenshot%202024-06-03%20134612.png)
 
 **Figure 6.** Creating an Application
 
@@ -135,7 +135,7 @@ or without sample data. A sandbox with sample data includes standard lookup data
 data (e.g., students, schools, grades, assessments scores). A sandbox created
 without sample data will still include the lookup data.
 
-![Creating a Sandbox](../img/Screenshot%202024-06-03%20134724.png)
+![Creating a Sandbox](../../../../static/img/reference/ods-api/Screenshot%202024-06-03%20134724.png)
 
 **Figure 7.** Creating a Sandbox
 
@@ -147,7 +147,7 @@ token code can be used, for example, in the Swagger documentation or to make
 sample calls to the ODS / API sandbox as shown in the
 [Authentication](./authentication.md) document.
 
-![Getting an access token using an application's credentials](../img/Screenshot%202024-06-03%20134944.png)
+![Getting an access token using an application's credentials](../../../../static/img/reference/ods-api/Screenshot%202024-06-03%20134944.png)
 
 **Figure 8.** Getting an access token using an application's credentials
 

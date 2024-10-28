@@ -64,7 +64,7 @@ postsecondary institutions) and we need to add some elements to existing
 entities. The following is a diagram is a sketch showing the additional entity
 and the new elements we're bolting on to existing Ed-Fi entities.
 
-![Student Transcript Visio Diagram](../img/Student-Transcript-Visio-Diagram.png)
+![Student Transcript Visio Diagram](../../../../static/img/reference/ods-api/Student-Transcript-Visio-Diagram.png)
 
 You'll notice that a few elements are shown with a type of "descriptor." The
 Ed-Fi Descriptor is analogous to an enumeration. It's an Ed-Fi-specific design
@@ -99,7 +99,7 @@ Maintaining Your
 Extension](https://edfi.atlassian.net/wiki/display/METAED20/MetaEd+IDE+-+Creating+and+Maintaining+Your+Extension).
 In this example our extension is in a folder called "StudentTranscript"
 
-![Create New Project](../img/NewProject.png)
+![Create New Project](../../../../static/img/reference/ods-api/NewProject.png)
 
 ### Step 2c. Update the package.json File
 
@@ -109,7 +109,7 @@ call it "SampleStudentTranscript".
 
 Click "Save" under the "File" menu or press **Ctrl + S** to save your changes.
 
-![New Project Package Json](../img/NewProjectPackageJson.png)
+![New Project Package Json](../../../../static/img/reference/ods-api/NewProjectPackageJson.png)
 
 ### Step 2d. Add MetaEd Source Files to Your Project
 
@@ -123,18 +123,18 @@ examples of subfolder naming.
 Now we'll add two MetaEd source files to the DomainEntity folder.
 **Right-click** on the folder **DomainEntity**, and select New File.
 
-![Picture Showing New File](../img/NewFile.png)
+![Picture Showing New File](../../../../static/img/reference/ods-api/NewFile.png)
 
 Name the new file **PostSecondaryOrganization.metaed** to match the name of the
 new entity to be created.
 
-![Post Secondary Org Name](../img/PostSecondaryOrgName.png)
+![Post Secondary Org Name](../../../../static/img/reference/ods-api/PostSecondaryOrgName.png)
 
 Note the new file appears in the tree view to the left. **Double-click** on the
 file in the tree view to open it. Type or copy and paste the code listing below
 into your MetaEd file:
 
-![Post Secondary Org Code](../img/PostSecondaryOrgCode.png)
+![Post Secondary Org Code](../../../../static/img/reference/ods-api/PostSecondaryOrgCode.png)
 
 Note that errors will be listed in the linter panel until the referenced
 Descriptors are created in a future step.
@@ -166,7 +166,7 @@ We'll now create a Domain Entity source file, called
 Student Academic Record entity. Note that we can extend an existing entity using
 the `additions` keyword (line 1 in the example below).
 
-![StudentAcademicRecordExtensionCode](../img/StudentAcademicRecordExtensionCode.png)
+![StudentAcademicRecordExtensionCode](../../../../static/img/reference/ods-api/StudentAcademicRecordExtensionCode.png)
 
 <details>
 <summary>MetaEd Source for StudentAcademicRecordExtensions Entity</summary>
@@ -199,7 +199,7 @@ Similar to how you extended the Student Academic Record domain entity above,
 you'll extend the Class Ranking entity with the keyword `additions`. Replace the
 template text in your new Common source file with the following code.
 
-![ClassRankingExtensions](../img/ClassRankingExtensions.png)
+![ClassRankingExtensions](../../../../static/img/reference/ods-api/ClassRankingExtensions.png)
 
 <details>
 <summary>MetaEd Source for ClassRankingExtensions Common Type</summary>
@@ -229,7 +229,7 @@ four Descriptor files in total. Name your first file
 Replace the template text in your new Descriptor source file with the following
 code.
 
-![InstitutionControlDescriptor](../img/InstitutionControlDescriptor.png)
+![InstitutionControlDescriptor](../../../../static/img/reference/ods-api/InstitutionControlDescriptor.png)
 
 <details>
 <summary>MetaEd Source for InstitutionControl Descriptor</summary>
@@ -246,7 +246,7 @@ Descriptors.
 
 Add an **InstitutionLevel.metaed** file.
 
-![InstitutionLevelDescriptor](../img/InstitutionLevelDescriptor.png)
+![InstitutionLevelDescriptor](../../../../static/img/reference/ods-api/InstitutionLevelDescriptor.png)
 
 <details>
 <summary>MetaEd Source for InstitutionLevel Descriptor</summary>
@@ -260,7 +260,7 @@ Descriptor InstitutionLevel
 
 Add a **SpecialEducationGraduationStatus.metaed** file.
 
-![SpecialEducationGradStatusDescriptor](../img/SpecialEducationGradStatusDescriptor.png)
+![SpecialEducationGradStatusDescriptor](../../../../static/img/reference/ods-api/SpecialEducationGradStatusDescriptor.png)
 
 <details>
 <summary>MetaEd Source for SpecialEducationGraduationStatus Descriptor</summary>
@@ -274,7 +274,7 @@ Descriptor SpecialEducationGraduationStatus
 
 Add a **SubmissionCertification.metaed** file.
 
-![SubmissionCertificationDescriptor](../img/SubmissionCertificationDescriptor.png)
+![SubmissionCertificationDescriptor](../../../../static/img/reference/ods-api/SubmissionCertificationDescriptor.png)
 
 <details>
 <summary>MetaEd Source for SubmissionCertification Descriptor</summary>
@@ -305,11 +305,11 @@ Interchange EdFi.StudentTranscript additions
 
 </details>
 
-![StudentTranscriptInterchangeFile](../img/StudentTranscriptInterchangeFile.png)
+![StudentTranscriptInterchangeFile](../../../../static/img/reference/ods-api/StudentTranscriptInterchangeFile.png)
 
 At this point, your project in the MetaEd IDE should look like the following:
 
-![Results](../img/Finished.png)
+![Results](../../../../static/img/reference/ods-api/Finished.png)
 
 ## Step 3. Generate Extended Technical Artifacts Using MetaEd
 
@@ -322,7 +322,7 @@ straightforward.
 
 Artifacts build successfully.
 
-![Build](../img/Build.png)
+![Build](../../../../static/img/reference/ods-api/Build.png)
 
 ### Step 3b. View MetaEd Output
 
@@ -331,7 +331,7 @@ generated artifacts. The artifacts include technical output such as SQL scripts
 and XSD used by the code generation, but also updated documentation such as data
 dictionaries that add your extension definitions to the ODS / API documentation.
 
-![Build Output](../img/BuildOutput.png)
+![Build Output](../../../../static/img/reference/ods-api/BuildOutput.png)
 
 We'll look at how to use this MetaEd output in your code below. First, we'll
 need to set up our extension project in Visual Studio.
@@ -358,19 +358,19 @@ of this documentation.
 To add a project to your Ed-Fi-Ods Visual Studio Solution, **right-click** on the
 Ed-Fi Extensions Folder. Select **Add** > **New Project**.
 
-![Creating New Project](../img/VisualStudio-AddNewProject.png)
+![Creating New Project](../../../../static/img/reference/ods-api/VisualStudio-AddNewProject.png)
 
 #### 4b.2
 
 Search and select the **Ed-Fi API Extensions Project Template** option
 and Click **Next**.
 
-![Create Extension Project](../img/vs-create%20extension%20project.png)
+![Create Extension Project](../../../../static/img/reference/ods-api/vs-create%20extension%20project.png)
 
  In the Project Name field,
  enter **EdFi.Ods.Extensions.SampleStudentTranscript** and click **Create**.
 
-![Create Extension Project](../img/vs-create%20extension%20project2.png)
+![Create Extension Project](../../../../static/img/reference/ods-api/vs-create%20extension%20project2.png)
 
 :::info
 
@@ -389,12 +389,12 @@ in newly created **EdFi.Ods.Extensions.SampleStudentTranscript** project and
 Rename the file to **Marker\_EdFi\_Ods\_Extensions\_SampleStudentTranscript.cs**.
 file to **Marker\_EdFi\_Ods\_Extensions\_SampleStudentTranscript.cs**.
 
-![Rename Marker](../img/vs-remane%20marker.png)
+![Rename Marker](../../../../static/img/reference/ods-api/vs-remane%20marker.png)
 
 **4c.2.** When prompted choose to rename all references to the code
 element **Marker\_EdFi\_Ods\_Extensions\_ExtensionName**.
 
-![Rename Marker Confirm](../img/extension-rename-marker-confirm.png)
+![Rename Marker Confirm](../../../../static/img/reference/ods-api/extension-rename-marker-confirm.png)
 
 ### Step 4d. Integrate Extension into the Solution
 
@@ -406,7 +406,7 @@ Locate the **EdFi.Ods.WebApi** project, within the "Entry Points"
 folder. **Right-click**, select **Add** > **Project Reference...**, then select
 the **EdFi.Ods.Extensions.SampleStudentTranscript** project.
 
-![Add Reference](../img/vs-extension%20add%20reference.png)
+![Add Reference](../../../../static/img/reference/ods-api/vs-extension%20add%20reference.png)
 
 #### 4d.2
 
@@ -433,7 +433,7 @@ Workspace tab, find the MetaEd extension and update the "Ods Api Deployment
 Directory" to point to the folder that contains the Ed-Fi-ODS and
 Ed-Fi-ODS-Implementation folders.
 
-![Confirming Deployment Settings](../img/Settings.png)
+![Confirming Deployment Settings](../../../../static/img/reference/ods-api/Settings.png)
 
 ### Step 5b. Deploy Your Extended Artifacts
 
@@ -446,7 +446,7 @@ previous work before running deployment.
 
 Deploy by clicking **Deploy** on the VSCode menu
 
-![Deploy](../img/Deploy.png)
+![Deploy](../../../../static/img/reference/ods-api/Deploy.png)
 
 This will run a new build of all artifacts, and the artifacts required for your
 Extended ODS / API project will be copied over to the correct locations.
@@ -636,9 +636,9 @@ The new postSecondaryOrganizations API resource should be visible, as well as
 the **postSecondaryOrganizationReference** in
 the **studentAcademicRecord** resource.
 
-![Extension Swagger 1](../img/extension%20swagger1.png)
+![Extension Swagger 1](../../../../static/img/reference/ods-api/extension%20swagger1.png)
 
-![Extension Swagger 2](../img/extension%20swagger2.png)
+![Extension Swagger 2](../../../../static/img/reference/ods-api/extension%20swagger2.png)
 
 ## Next Steps & Further Information
 
@@ -666,18 +666,18 @@ of this documentation.
 Solution, **right-click** on the Ed-Fi Extensions Folder. Select **Add** > **New
 Project**.
 
-![Creating New Project](../img/VisualStudio-AddNewProject.png)
+![Creating New Project](../../../../static/img/reference/ods-api/VisualStudio-AddNewProject.png)
 
 **2.2.** Search and select the **Ed-Fi API Extensions Project Template** option
 and click **Next**.
 
-![Create Extension Project](../img/vs-create%20extension%20project.png)
+![Create Extension Project](../../../../static/img/reference/ods-api/vs-create%20extension%20project.png)
 
 In the Project Name field,
 enter ****EdFi.Ods.Extensions.SampleStudentTranscript**** and
 click ****Create****.
 
-![Name Project](../img/vs-create%20extension%20project2.png)
+![Name Project](../../../../static/img/reference/ods-api/vs-create%20extension%20project2.png)
 
 ### Step 3. Rename the "Marker" Interface File
 
@@ -686,12 +686,12 @@ the **Marker\_EdFi\_Ods\_Extensions\_ExtensionName.cs** file in newly
 created **EdFi.Ods.Extensions.SampleStudentTranscript** project and Rename the
 file to **Marker\_EdFi\_Ods\_Extensions\_SampleStudentTranscript.cs**.
 
-![Rename Marker](../img/vs-remane%20marker.png)
+![Rename Marker](../../../../static/img/reference/ods-api/vs-remane%20marker.png)
 
 **3.2.** When prompted choose to rename all references to the code
 element **Marker\_EdFi\_Ods\_Extensions\_ExtensionName**.
 
-![Rename Marker Confirm](../img/extension-rename-marker-confirm.png)
+![Rename Marker Confirm](../../../../static/img/reference/ods-api/extension-rename-marker-confirm.png)
 
 ### Step 4. Integrate Extension into the Solution
 
@@ -703,7 +703,7 @@ Locate the **EdFi.Ods.WebApi** project, within the "Entry Points"
 folder. **Right-click**, select **Add** > **Reference...**, then select
 the **EdFi.Ods.Extensions.SampleStudentTranscript** project.
 
-![Add Reference](../img/vs-extension%20add%20reference.png)
+![Add Reference](../../../../static/img/reference/ods-api/vs-extension%20add%20reference.png)
 
 #### 4.2
 
@@ -840,9 +840,9 @@ from a PowerShell prompt run `Initialize-PowershellForDevelopment.ps1` script,
 followed by the `initdev` command). Then, run the application and view the Ed-Fi
 ODS / API in the Swagger UI. The following new API resource should be visible:
 
-![Extension Swagger 1](../img/extension%20swagger1.png)
+![Extension Swagger 1](../../../../static/img/reference/ods-api/extension%20swagger1.png)
 
-![Extension Swagger 2](../img/extension%20swagger2.png)
+![Extension Swagger 2](../../../../static/img/reference/ods-api/extension%20swagger2.png)
 
 :::note
 The following GitHub links contain source files for this extensibility sample.

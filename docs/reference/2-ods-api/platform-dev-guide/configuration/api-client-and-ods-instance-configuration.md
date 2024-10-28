@@ -11,7 +11,7 @@ in the `EdFi_Admin` database are encrypted with an AES key. This measure guards
 against the possibility that someone who gains unauthorized access to the
 database can retrieve ODS connection strings in the system.
 
-![Ed-Fi ODS Instances](../../img/image-2023-7-29_19-54-43.png)
+![Ed-Fi ODS Instances](../../../../../static/img/reference/ods-api/image-2023-7-29_19-54-43.png)
 
 To provide a simple experience for API clients with a fixed API base URL without
 route segments for school year, district, etc., each API client can be
@@ -36,4 +36,4 @@ read workloads. The second use case is for the snapshots feature, which provides
 processing isolation during change processing by API clients. Connections to
 these derivative ODSs can be configured in the `OdsInstanceDerivative` table.
 
-![Ed-Fi ODS Derivatives](../../img/image-2023-7-30_17-6-23.png)
+![Ed-Fi ODS Derivatives](../../../../../static/img/reference/ods-api/image-2023-7-30_17-6-23.png)

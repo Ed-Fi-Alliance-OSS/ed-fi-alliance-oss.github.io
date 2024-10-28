@@ -68,7 +68,7 @@ obtained by a single query that contains a specific slice of data.
 The approach is depicted in the images below for the Ed-Fi Enrollment API’s
 Section resource:
 
-![Composite Table](../img/Composite-Table-01-1.png)
+![Composite Table](../../../../static/img/reference/ods-api/Composite-Table-01-1.png)
 
 The results of all the queries are then processed into a generic structure of
 `IDictionary<string, object>` instances (representing individual objects) and
@@ -148,7 +148,7 @@ and D, they have no permissions to read Resource C (as depicted by the
 the results (and any resources that are structurally dependent on it, even if
 authorization would have been granted on the dependent resources).
 
-![Composite Figure](../img/Composite-Fig-01.png)
+![Composite Figure](../../../../static/img/reference/ods-api/Composite-Fig-01.png)
 
 **Example of the effects of Profiles, Authorization on a Composite Resource
 Response**

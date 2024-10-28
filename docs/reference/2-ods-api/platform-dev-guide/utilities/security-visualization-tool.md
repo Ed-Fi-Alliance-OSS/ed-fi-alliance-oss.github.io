@@ -10,13 +10,13 @@ implementers visualize authorization configurations.
 This section outlines how to configure and use the Security Visualization Tool.
 The high-level steps are:
 
-* [Security Visualization Tool](#security-visualization-tool)
-  * [Step 1. Install and Configure GraphViz (Optional)](#step-1-install-and-configure-graphvizoptional)
-  * [Step 2. Build and Run the Security Visualization Tool](#step-2-build-and-run-the-security-visualization-tool)
-  * [Step 3. Review Output](#step-3-review-output)
-  * [Example Output](#example-output)
-    * [Education Organizations](#education-organizations)
-    * [Descriptors](#descriptors)
+- [Security Visualization Tool](#security-visualization-tool)
+  - [Step 1. Install and Configure GraphViz (Optional)](#step-1-install-and-configure-graphvizoptional)
+  - [Step 2. Build and Run the Security Visualization Tool](#step-2-build-and-run-the-security-visualization-tool)
+  - [Step 3. Review Output](#step-3-review-output)
+  - [Example Output](#example-output)
+    - [Education Organizations](#education-organizations)
+    - [Descriptors](#descriptors)
 
 Each step is outlined in detail below.
 
@@ -42,7 +42,7 @@ not detected in the default installation path.
     \\Ed-Fi-ODS\\Utilities\\GenerateSecurityGraphs\\GenerateSecurityGraphs\\bin\\Debug\\net6.0.
 * Run `GenerateSecurityGraphs.exe --help` to view the parameters that can be
     passed to the
-    application.![Parameters passed to the application](../../img/Screenshot%202024-02-21%20235152.png)
+    application.![Parameters passed to the application](../../../../../static/img/reference/ods-api/Screenshot%202024-02-21%20235152.png)
 
 * Execute the tool to generate the visualizations. The example below assumes
     that you have followed the Ed-Fi ODS / API [Getting
@@ -62,7 +62,7 @@ authorizations that are possible, and there is a sub-folder for each
 authorization claim set that has been configured. The as-shipped ODS / API
 v6.1 contains nine claim sets, resulting in nine folders.
 
-![Security Visualization Tool Output](../../img/image2021-8-13_7-36-37.png)
+![Security Visualization Tool Output](../../../../../static/img/reference/ods-api/image2021-8-13_7-36-37.png)
 
 ## Example Output
 
@@ -91,14 +91,14 @@ Delete (CRUD) operations are authorized. The diagram also indicates that the
 authorization strategy associated with the claim
 is **NoFurtherAuthorizationRequired**.
 
-![Education Organizations](../../img/educationOrganizations_sb.png)
+![Education Organizations](../../../../../static/img/reference/ods-api/educationOrganizations_sb.png)
 
 The diagram below shows permissions for accessing education organization
 entities for the "SIS Vendor" claim set. In this case, it is assumed that the
 education agency implementing the Ed-Fi ODS / API will load and manage education
 organizations, so SIS vendor applications are only granted Read authorization.
 
-![Education Organizations](../../img/educationOrganizations.png)
+![Education Organizations](../../../../../static/img/reference/ods-api/educationOrganizations.png)
 
 ### Descriptors
 
@@ -113,9 +113,9 @@ with the appropriate Namespace prefix can add or change a managed Descriptor,
 while the **NoFurtherAuthorizationRequired** strategy is applied to Read
 operations, meaning that other API clients read a managed Descriptor.
 
-![Managed Descriptors](../../img/managedDescriptors.png)
+![Managed Descriptors](../../../../../static/img/reference/ods-api/managedDescriptors.png)
 
 The diagram below shows permissions for accessing System Descriptors for the
 "SIS Vendor" claim set, where only Read access is allowed.
 
-![System Descriptors](../../img/system_desc_icon.png)
+![System Descriptors](../../../../../static/img/reference/ods-api/system_desc_icon.png)

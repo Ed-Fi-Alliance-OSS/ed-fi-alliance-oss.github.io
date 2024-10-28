@@ -50,4 +50,4 @@ instance to identify which database should be used to service the request. A
 failure to match all the context values defined will result in a 404 Not Found
 response.
 
-![Context-Based Routing](../../img/image-2023-7-26_20-38-28.png)
+![Context-Based Routing](../../../../../static/img/reference/ods-api/image-2023-7-26_20-38-28.png)

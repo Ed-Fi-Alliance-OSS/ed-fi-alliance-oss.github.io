@@ -34,7 +34,7 @@ access to resources generally. In some cases, as is depicted below for students,
 the caller may only be able to access some items in the collection (i.e., only
 "Johnny Johns" and "Jane Doe" are available).
 
-![Authorization](../../img/image2015-11-19%2022-14-24.png)
+![Authorization](../../../../../static/img/reference/ods-api/image2015-11-19%2022-14-24.png)
 
 Claims and claim sets provide fine-grained access control over the resources
 available in the API. Claims define whether a client has permissions to create,

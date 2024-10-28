@@ -18,19 +18,19 @@ uniqueness is enforced.
 The following diagram shows Id in CourseOffering table, which stores the
 resource ID for an offering:
 
-![CourseOffering resource ID](../img/image2020-6-29_9-13-52.png)
+![CourseOffering resource ID](../../../../static/img/reference/ods-api/image2020-6-29_9-13-52.png)
 
 In the API surface, a CourseOffering can be looked up/queried by doing a HTTP
 GET on a path like: `/courseOfferings/d0fd729db6ee4a7bbc989720e4f833f5`.
 
 In the returned JSON, the resource ID appears as the `id` element:
 
-![CourseOffering resource ID](../img/json-resourceid.png)
+![CourseOffering resource ID](../../../../static/img/reference/ods-api/json-resourceid.png)
 
 When an element is POSTed (i.e., created in the ODS / API), the resource ID is
 provided via a HTTP Header. It will look something like:
 
-![New resource header](../img/api-newresourceheader.png)
+![New resource header](../../../../static/img/reference/ods-api/api-newresourceheader.png)
 
 ## USIs (Unique Surrogate Identifiers)
 
@@ -57,7 +57,7 @@ and is used only as internal identifier.
 The following diagram shows the StaffUSI primary key field and the StaffUniqueId
 field in the Staff table:
 
-![StaffUSI primary key field](../img/image2020-6-29_9-6-38.png)
+![StaffUSI primary key field](../../../../static/img/reference/ods-api/image2020-6-29_9-6-38.png)
 
 ## Natural Keys
 
@@ -79,7 +79,7 @@ This section provides an example of how natural keys in the ODS / API work in
 practice. Consider the following diagram, noting the composite key structure of
 BellScheduleClassPeriod:
 
-![Composite-Key-Model](../img/Composite-Key-Model.png)
+![Composite-Key-Model](../../../../static/img/reference/ods-api/Composite-Key-Model.png)
 
 While SchoolId is present as a key in both BellSchedule and ClassPeriod, there
 is only one SchoolId on the BellScheduleClassPeriod. This process of “merging”

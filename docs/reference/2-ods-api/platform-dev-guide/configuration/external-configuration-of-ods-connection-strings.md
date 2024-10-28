@@ -148,7 +148,7 @@ EdFi\_Security and EdFi\_ODS databases in a multi-tenant configuration. Note the
 use of the same prefix on the individual item names as the first argument passed
 to the `AddSystemsManager` call in the code sample above.
 
-![AWS Systems Manager](../../img/image-2023-11-30_15-1-26.png)
+![AWS Systems Manager](../../../../../static/img/reference/ods-api/image-2023-11-30_15-1-26.png)
 
 :::info
 
@@ -219,7 +219,7 @@ an EdFi\_ODS database (with `OdsInstanceId = 2`) in a single-tenant setup is
 depicted below. Note the use of an API-specific key vault and the use of double
 hyphens (`--`) to separate the segments of the configuration hierarchy.
 
-![Azure Key Vault](../../img/image-20240427-204312.png)
+![Azure Key Vault](../../../../../static/img/reference/ods-api/image-20240427-204312.png)
 
 :::info
 

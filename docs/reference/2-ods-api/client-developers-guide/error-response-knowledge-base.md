@@ -267,7 +267,7 @@ development team for resolution.
 * Each data model is available in a collection at the bottom of the page, or
     you can expand the various HTTP requests and find the model embedded
     within it. Example:
-    ![Data Model](../img/image2024-4-19_16-8-9.png)
+    ![Data Model](../../../../static/img/reference/ods-api/image2024-4-19_16-8-9.png)
 
 :::
 
@@ -327,7 +327,7 @@ development team for resolution.
 * Each data model is available in a collection at the bottom of the page, or
     you can expand the various HTTP requests and find the model embedded
     within it. Example:
-    ![Data Model](../img/image2024-4-19_16-8-9.png)
+    ![Data Model](../../../../static/img/reference/ods-api/image2024-4-19_16-8-9.png)
 
 :::
 

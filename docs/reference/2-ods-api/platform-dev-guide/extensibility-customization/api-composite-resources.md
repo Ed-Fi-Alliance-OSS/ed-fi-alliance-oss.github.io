@@ -42,7 +42,7 @@ references and linked collections).
 The diagram below depicts the composition process of a possible
 Enrollment Section composite resource:
 
-![Sample-Composite](../../img/Sample-Composite.png)
+![Sample-Composite](../../../../../static/img/reference/ods-api/Sample-Composite.png)
 
 ## Composite Definition
 
@@ -136,7 +136,7 @@ The `name` attribute is used in the routes, and is also normalized (introducing
 spaces, if appropriate) for display in the API Section drop-down list in the
 Swagger UI:
 
-![API Section](../../img/API%20Section.png)
+![API Section](../../../../../static/img/reference/ods-api/API%20Section.png)
 
 ## Composite Routes and Specifications
 
@@ -283,7 +283,7 @@ natural collection output when the data is sourced through a many-to-many
 relationship. For example, consider the relationship between Section and Staff
 shown below:
 
-![Many-to-Many](../../img/Many-to-Many.png)
+![Many-to-Many](../../../../../static/img/reference/ods-api/Many-to-Many.png)
 
 Without the use of the `flatten` attribute, the composite resource would be
 defined as follows:

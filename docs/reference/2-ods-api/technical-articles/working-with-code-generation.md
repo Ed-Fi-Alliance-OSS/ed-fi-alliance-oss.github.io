@@ -457,14 +457,14 @@ The tool accepts the following command line argument:
 The solution can be built using Visual Studio 2022 or Rider 2021.3. Also, it can
 be built from the command line using the following command: `dotnet build`.
 
-![Build Solution](../img/image2022-3-8_9-19-26.png)
+![Build Solution](../../../../static/img/reference/ods-api/image2022-3-8_9-19-26.png)
 
 ## Running Tests
 
 Tests can be run using Visual Studio Test Explorer, R# Test Runner of Rider
 2021.3. Alternatively, the tests can be run using the command `dotnet test`.
 
-![Test Explorer](../img/image2022-3-8_9-21-38.png)
+![Test Explorer](../../../../static/img/reference/ods-api/image2022-3-8_9-21-38.png)
 
 ## Running Approval Tests
 
@@ -480,13 +480,13 @@ the command argument is not necessary.
 
 **Step 3 :** Run the solution within Visual Studio.
 
-![Run Solution](../img/image2022-3-8_9-26-45.png)
+![Run Solution](../../../../static/img/reference/ods-api/image2022-3-8_9-26-45.png)
 
 **Step 4 :** Open Test Explorer and look for the Verify\_All test and run it to
 see if there are any failures
 
-![Test Explorer](../img/image2022-3-8_10-17-36.png)
+![Test Explorer](../../../../static/img/reference/ods-api/image2022-3-8_10-17-36.png)
 
 **Step 5 :** Approve any changes, if appropriate.
 
-![Approve Changes](../img/image2022-3-8_10-18-8.png)
+![Approve Changes](../../../../static/img/reference/ods-api/image2022-3-8_10-18-8.png)

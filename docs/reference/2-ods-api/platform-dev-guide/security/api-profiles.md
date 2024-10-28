@@ -54,9 +54,9 @@ appropriate HTTP header to the request (i.e. `Accept` for GET requests, and
 
 |     |     |
 | --- | --- |
-| ![Depiction of the inclusion of all properties](../../img/image2015-8-26%2011-40-33.png)<br/><br/>  <br/>**Figure 1.** Depiction of the inclusion of all properties | ![Depiction of the inclusion of specific properties](../../img/image2015-8-26%2011-42-57.png)<br/><br/>   <br/>**Figure 2.** Depiction of the inclusion of specific properties |
-| ![Depiction of the inclusion of a specific collection](../../img/image2015-8-25%2016-56-57.png)<br/><br/>  <br/>**Figure 3.** Depiction of the inclusion of a specific collection | ![Depiction of the inclusion or exclusion of specific collection items](../../img/image2015-8-26%2011-37-23.png)<br/><br/>  <br/>**Figure 4.** Depiction of the inclusion or exclusion of specific collection items |
-| ![Depiction of the inclusion of specific properties on a child collection's items](../../img/image2015-8-26%2018-42-12.png)<br/><br/>  <br/>**Figure 5.** Depiction of the inclusion of specific properties on a child collection's items |     |
+| ![Depiction of the inclusion of all properties](../../../../../static/img/reference/ods-api/image2015-8-26%2011-40-33.png)<br/><br/>  <br/>**Figure 1.** Depiction of the inclusion of all properties | ![Depiction of the inclusion of specific properties](../../../../../static/img/reference/ods-api/image2015-8-26%2011-42-57.png)<br/><br/>   <br/>**Figure 2.** Depiction of the inclusion of specific properties |
+| ![Depiction of the inclusion of a specific collection](../../../../../static/img/reference/ods-api/image2015-8-25%2016-56-57.png)<br/><br/>  <br/>**Figure 3.** Depiction of the inclusion of a specific collection | ![Depiction of the inclusion or exclusion of specific collection items](../../../../../static/img/reference/ods-api/image2015-8-26%2011-37-23.png)<br/><br/>  <br/>**Figure 4.** Depiction of the inclusion or exclusion of specific collection items |
+| ![Depiction of the inclusion of specific properties on a child collection's items](../../../../../static/img/reference/ods-api/image2015-8-26%2018-42-12.png)<br/><br/>  <br/>**Figure 5.** Depiction of the inclusion of specific properties on a child collection's items |     |
 
 ## Include-Only vs. Exclude-Only Strategies
 
@@ -73,7 +73,7 @@ will be automatically included, resulting in a more flexible definition that
 will not necessarily require adjustments over time. The implications of these
 two approaches is depicted in the diagram below:
 
-![Depiction of the implications on Profile flexibility using Inclusion vs. Exclusion](../../img/image2015-8-26%2011-45-58.png)
+![Depiction of the implications on Profile flexibility using Inclusion vs. Exclusion](../../../../../static/img/reference/ods-api/image2015-8-26%2011-45-58.png)
 
 **Figure 6.** Depiction of the implications on Profile flexibility using
 Inclusion vs. Exclusion
