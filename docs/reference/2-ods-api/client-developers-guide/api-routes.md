@@ -48,7 +48,7 @@ Sample JSON Payload for extended Student
 {
     "studentUniqueId": "397589871",
     "firstName" : "John",
-    "lastSurname:" "Ortiz",
+    "lastSurname": "Ortiz",
 
 [etc...]
 
