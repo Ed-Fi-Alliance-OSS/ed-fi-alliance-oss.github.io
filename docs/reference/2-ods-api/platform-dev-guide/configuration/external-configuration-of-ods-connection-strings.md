@@ -108,7 +108,7 @@ existing _appsettings.json_ file (ensuring that it is copied to the output
 directory on build), and modify the host configuration in the _Program.cs_ file
 of the _EdFi.Ods.WebApi_ project as follows:
 
-```cs
+```csharp
 var hostBuilder = Host.CreateDefaultBuilder(args)
     .ConfigureLogging(ConfigureLogging)
     .UseServiceProviderFactory(new AutofacServiceProviderFactory())
@@ -129,7 +129,7 @@ configuration in the _Program.cs_ file to register this as an additional
 configuration source using the ConfigureAppConfiguration extension method (with
 a hard-coded 10-minute refresh period in this example):
 
-```cs
+```csharp
 var hostBuilder = Host.CreateDefaultBuilder(args)
     .ConfigureLogging(ConfigureLogging)
     .UseServiceProviderFactory(new AutofacServiceProviderFactory())
@@ -168,7 +168,7 @@ additional configuration source using the `ConfigureAppConfiguration` extension
 method. This example shows how to add the key vault information to the
 _appsettings.json_ file and configure it with a 10-minute refresh period.
 
-```cs
+```csharp
 var hostBuilder = Host.CreateDefaultBuilder(args)
     .ConfigureLogging(ConfigureLogging)
     .UseServiceProviderFactory(new AutofacServiceProviderFactory())

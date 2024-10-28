@@ -6,7 +6,7 @@ custom features could be implemented by following the steps outlined here:
 
 ## Step 1. Create a Service
 
-```cs
+```csharp
 namespace EdFi.Ods.Services
 {
     public class TestService : ITestService
@@ -24,7 +24,7 @@ namespace EdFi.Ods.Services
 
 2c. Override ApplyConfigurationSpecificRegistrations method
 
-```cs
+```csharp
 using Autofac;
 using EdFi.Common.Configuration;
 using EdFi.Ods.Common.Configuration;

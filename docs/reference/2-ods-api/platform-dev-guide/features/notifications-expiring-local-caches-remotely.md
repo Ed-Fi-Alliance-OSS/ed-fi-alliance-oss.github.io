@@ -108,7 +108,7 @@ publishing of the message using [MediatR](https://github.com/jbogard/MediatR).
 Here's the interface for delivering messages to this in-process notification
 system:
 
-```cs
+```csharp
 /// <summary>
 /// Defines a method for receiving the string-based content of a notification message from a pub/sub infrastructure component.
 /// </summary>
@@ -125,7 +125,7 @@ public interface INotificationsMessageSink
 Redis support is provided during container registration using the following
 code:
 
-```cs
+```csharp
 var subscriber = _redisConnectionProvider.Get().Multiplexer.GetSubscriber();
 
 subscriber.Subscribe(
@@ -136,7 +136,7 @@ subscriber.Subscribe(
 The published/handled messages should contain JSON that can be deserialized to
 the following class:
 
-```cs
+```csharp
 /// <summary>
 /// Represents the JSON message body for notification messages published to the pub/sub messaging infrastructure.
 /// </summary>
@@ -155,7 +155,7 @@ is then deserialized from the JSON supplied in the `data` property of the raw
 notification message. The code below shows the implementation "expire-cache"
 notification:
 
-```cs
+```csharp
 /// <summary>
 /// Represents a notification message sent to the Ed-Fi ODS API process to explicitly expire the cached security metadata.
 /// </summary>
@@ -171,7 +171,7 @@ by the appropriate `INotificationHandler<T>` implementation(s) (which must be
 registered with the Autofac container). The following code snippet shows the
 structure of the class implemented for handling cache expirations:
 
-```cs
+```csharp
 /// <summary>
 /// Handles the <see cref="ExpireCache" /> notification by clearing the underlying cache for the interceptor that
 /// wraps all method invocations related to security metadata.

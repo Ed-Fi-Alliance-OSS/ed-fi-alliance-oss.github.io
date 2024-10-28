@@ -150,7 +150,7 @@ unique ID value to resolve and assign the resource identifier (`Id`) property of
 the person entity appropriately. Implicit in that interaction with the external
 system is a validation that the supplied unique ID already exists.
 
-```cs
+```csharp
 public interface IUniqueIdToIdValueMapper
 {
     PersonIdentifiersValueMap GetId(string personType, string uniqueId);
@@ -185,7 +185,7 @@ still need to be registered with the container. To register custom
 implementation, add registration to ApplyConfigurationSpecificRegistrations
 method in the `UniqueIdIntegrationModule` class as shown below:
 
-```cs
+```csharp
 namespace EdFi.Ods.Features.Container.Modules
 {
     public class UniqueIdIntegrationModule : ConditionalModule
@@ -207,7 +207,7 @@ Sample custom implementation could be:
 
 **My.Custom.UniqueIdToIdValueMapper** Expand source
 
-```cs
+```csharp
     public class My.Custom.UniqueIdToIdValueMapper : IUniqueIdToIdValueMapper
     {
         public PersonIdentifiersValueMap GetId(string personType, string uniqueId)
@@ -377,7 +377,7 @@ EdFi.Ods.Features.IdentityManagement namespace.
 
 #### Unique Identity Interfaces
 
-```cs
+```csharp
 public interface IIdentityService<in TCreateRequest, in TSearchRequest, TSearchResponse, TIdentityResponse>
     where TCreateRequest : IdentityCreateRequest
     where TSearchRequest : IdentitySearchRequest
@@ -397,7 +397,7 @@ public interface IIdentityService<in TCreateRequest, in TSearchRequest, TSearchR
 The identities are represented by a generic type argument that is based on the
 `IdentityResponse` class, which is defined as follows:
 
-```cs
+```csharp
 public class IdentityResponse
 {
  public string UniqueId { get; set; }
@@ -454,7 +454,7 @@ container separately.
 
 #### IUniqueIdentity Registration Code
 
-```cs
+```csharp
 using Autofac;
 using EdFi.Common.Configuration;
 using EdFi.Ods.Common.Configuration;

@@ -69,19 +69,19 @@ Find.
 The generic synchronous interface (IIdentityService) consists of the following
 methods:
 
-* ```cs
+* ```csharp
     IdentityServiceCapabilities IdentityServiceCapabilities { get; }
     ```
 
-* ```cs
+* ```csharp
     Task<IdentityResponseStatus<string>> Create(TCreateRequest createRequest);
     ```
 
-* ```cs
+* ```csharp
     Task<IdentityResponseStatus<TSearchResponse>> Find(params string[] findRequest);
     ```
 
-* ```cs
+* ```csharp
     Task<IdentityResponseStatus<TSearchResponse>> Search(params TSearchRequest[] searchRequest);
     ```
 

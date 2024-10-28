@@ -40,7 +40,7 @@ version when the vendor connects to the ODS / API for the first time. Plain text
 secrets are not retrievable from the database for the vendor after that first
 connection.
 
-```cs
+```csharp
 namespace EdFi.Common.Security
 {
     public class DefaultHashConfigurationProvider : IHashConfigurationProvider

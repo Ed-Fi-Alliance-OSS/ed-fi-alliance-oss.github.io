@@ -28,7 +28,7 @@ project or discoverable in the configured Plugin folder at runtime.
 
 :::
 
-```cs
+```csharp
 public class CustomIdentityServiceModule : ConditionalModule, IPluginModule
 {
     public CustomIdentityServiceModule(ApiSettings apiSettings)
@@ -50,7 +50,7 @@ public class CustomIdentityServiceModule : ConditionalModule, IPluginModule
 This section of the sample defines request and response models for the API that
 extend the out-of-the-box models with some additional properties:
 
-```cs
+```csharp
 public class CustomSearchRequest : IdentitySearchRequest
 {
     public bool CreateUICOnNoMatch { get; set; }
@@ -83,7 +83,7 @@ public class CustomSearchResponse : IdentitySearchResponse<CustomIdentityRespons
 This interface extends the generic identity service interface definitions,
 closing the generic types with the previously defined custom models.
 
-```cs
+```csharp
 public interface IIdentityServiceWithCustomModels
     : IIdentityService<CustomCreateRequest, CustomSearchRequest, CustomSearchResponse, CustomIdentityResponse>,
         IIdentityServiceAsync<CustomSearchRequest, CustomSearchResponse, CustomIdentityResponse> { }
@@ -96,7 +96,7 @@ closing the generic types with the previously defined custom models. This allows
 the controller to be discovered and registered by
 [http://ASP.NET](http://ASP.NET).
 
-```cs
+```csharp
 public class CustomIdentitiesController
     : IdentitiesControllerBase<CustomCreateRequest, CustomSearchRequest, CustomSearchResponse, CustomIdentityResponse>
 {
@@ -117,7 +117,7 @@ generic model types using the custom models defined earlier).
 The sample code is too long to show inline (see the full example source code
 file, attached), but the basic structure of this class is as follows:
 
-```cs
+```csharp
 public class CustomIdentityService : IIdentityServiceWithCustomModels
 {
     public IdentityServiceCapabilities IdentityServiceCapabilities { get; } =

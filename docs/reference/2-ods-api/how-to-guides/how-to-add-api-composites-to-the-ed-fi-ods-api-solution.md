@@ -8,13 +8,13 @@ Started](../getting-started/readme.md) documentation.
 
 The steps in Visual Studio can be summarized as:
 
-- [How To: Add API Composites to the Ed-Fi ODS / API Solution](#how-to-add-api-composites-to-the-ed-fi-ods--api-solution)
-  - [Step 1. Create the Composites Project](#step-1-create-the-composites-project)
-    - [Step 1.2. Update the Marker Interface file](#step-12-update-the-marker-interface-file)
-    - [Step 1.3. Update the **Composites.xml** file to add the appropriate](#step-13-update-thecompositesxml-file-toadd-the-appropriate)
-    - [Step 1.4](#step-14)
-  - [Step 2. Integrate Composites into the Solution](#step-2-integrate-composites-into-the-solution)
-  - [Step 3. Verify Changes](#step-3-verify-changes)
+* [How To: Add API Composites to the Ed-Fi ODS / API Solution](#how-to-add-api-composites-to-the-ed-fi-ods--api-solution)
+  * [Step 1. Create the Composites Project](#step-1-create-the-composites-project)
+    * [Step 1.2. Update the Marker Interface file](#step-12-update-the-marker-interface-file)
+    * [Step 1.3. Update the **Composites.xml** file to add the appropriate](#step-13-update-thecompositesxml-file-toadd-the-appropriate)
+    * [Step 1.4](#step-14)
+  * [Step 2. Integrate Composites into the Solution](#step-2-integrate-composites-into-the-solution)
+  * [Step 3. Verify Changes](#step-3-verify-changes)
 
 Each step is outlined in detail, below.
 
@@ -52,7 +52,7 @@ the convention
 (e.g., **Marker\_EdFi\_Ods\_Composites\_MyComposites****.cs**). The marker
 interface file should have the following code:
 
-```cs
+```csharp
 namespace EdFi.Ods.Composites.MyComposites
 {
     public interface Marker_EdFi_Ods_Composites_MyComposites { }

@@ -39,7 +39,7 @@ The code below shows an example template model:
 <details>
 <summary>Expand source</summary>
 
-```cs
+```csharp
 using System.Collections.Generic;
 using System.Linq;
 using EdFi.Ods.Common;
@@ -116,7 +116,7 @@ contains an array of **TemplateSet** objects.
 <details>
 <summary>Expand source</summary>
 
-```cs
+```csharp
 namespace EdFi.Ods.CodeGen.Models.Configuration
 {
     public class TemplateSet

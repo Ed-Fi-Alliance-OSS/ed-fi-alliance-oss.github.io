@@ -52,7 +52,7 @@ read and encourages writing meaningful "business language" descriptions.
 
 :::
 
-```cs
+```csharp
 // Create an outer "container" for all tests that belong to a particular system.
 [TestFixture]
 [SuppressMessage("ReSharper", "InconsistentNaming")]
