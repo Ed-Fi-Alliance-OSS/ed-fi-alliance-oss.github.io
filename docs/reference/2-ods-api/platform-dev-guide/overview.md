@@ -124,17 +124,58 @@ PostgreSQL ODS.
 
 A high-level view looks something like this:
 
-![High Level](../../../../static/img/reference/ods-api/image2020-10-20_11-33-39.png)
+```mermaid
+block-beta
+    columns 7
+    swagger["Swagger API Documentation"]
+    sis["Student Information System"]
+    oa["Online Assessments"]
+    in["Instructional"]
+    fin["Finance"]
+    dot["..."]
+    rpt["Reporting"]
+
+  block:e:6
+          rest["REST Interface/JSON"]
+  end
+    mart["Data Mart"]
+  block:f:6
+        api["WebAPI on ASP.NET Core"]
+  end
+    amt["Analytics Middle Tier"]
+
+    block:g:7
+        db["ODS / MSSQL / PostgreSQL Database"]
+    end
+
+    block:h:7
+        srvr["Server Platform: Database Server, Web Server"]
+    end
+
+    block:i:7
+        columns 4
+        onprem["On-Premise/VM/Docker/Windows/Linux"]
+        aws["Amazon Web Services"]
+        azure["Microsoft Azure"]
+        gcp["Google Cloud Platform"]
+    end
+
+    style rpt fill:#fff,stroke:#333,stroke-width:4px
+    style mart fill:#fff,stroke:#333,stroke-width:4px
+    style amt fill:#fff,stroke:#333,stroke-width:4px
+    style swagger fill:#4F80FF
+    style rest fill:#4F80FF
+    style api fill:#4F80FF
+    style db fill:#4F80FF
+```
 
 A few things to note:
 
-* The Ed-Fi ODS / API platform is cross platform and clients of the platform
-    can be written in practically any language for any modern operating system.
-    See the [API Client Developers'
-    Guide](../client-developers-guide/readme.md)
-    for details.
+* The Ed-Fi ODS / API platform is cross platform and clients of the platform can
+  be written in practically any language for any modern operating system. See
+  the [API Client Developers' Guide](../client-developers-guide/readme.md) for
+  details.
 * The Ed-Fi ODS / API platform can run in a variety of server environments,
-    including on-premises hardware, docker or cloud-based platforms like AWS and
-    Azure. See the
-    [Deployment](./deployment/readme.md)
-    section in this documentation for details.
+  including on-premises hardware, docker or cloud-based platforms like AWS and
+  Azure. See the [Deployment](./deployment/readme.md) section in this
+  documentation for details.

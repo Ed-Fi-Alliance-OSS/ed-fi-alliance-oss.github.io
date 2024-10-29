@@ -16,6 +16,7 @@ them). On the other hand, profile definitions added to the Admin Database will
 be dynamically refreshed without any rebuilding or redeployment.
 
 :::info
+
 The refresh period for dynamically defined profiles is controlled through the
 API configuration settings, as follows:
 

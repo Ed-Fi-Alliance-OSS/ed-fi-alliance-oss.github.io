@@ -17,15 +17,16 @@ Utility](../../how-to-guides/how-to-load-the-ods-with-sample-xml-data-using-bulk
 ## Ed-Fi ODS Populated Template
 
 The populated template is generated with the Loader using sample XML data
-contained in the public Ed-Fi-Standard GitHub repository
-([Ed-Fi-Data-Standard\\v5.1.0\\Descriptors](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v5.1.0/Descriptors) and [Ed-Fi-Data-Standard\\5.1.0\\Samples\\Sample
-XML](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v5.1.0/Samples/Sample%20XML)).
+contained in the public Ed-Fi-Standard GitHub repository:
+
+* [v5.1.0 Descriptors](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v5.1.0/Descriptors)
+* [v5.1.0 Samples Sample XML](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v5.1.0/Samples/Sample%20XML)
 
 ## Ed-Fi ODS Minimal Template
 
 The minimal template is generated with the Loader by loading Ed-Fi
 descriptors contained in the public Ed-Fi-Standard GitHub
-repository ([Ed-Fi-Data-Standard\\5.1.0\\Descriptors](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v5.1.0/Descriptors)).
+repository ([v5.1.0 Descriptors](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v5.1.0/Descriptors)).
 
 ## Overview of Solution Architecture
 
@@ -49,7 +50,62 @@ The projects involved are:
 The general design of the application is a pipeline that takes XML files as
 input. The pipeline has the following general flow:
 
-![Depiction of the Bulk Load Client pipeline](../../../../../static/img/reference/ods-api/DedupeApiLoaderProcess.png)
+```mermaid
+flowchart LR
+    start([Start])
+    s1["Load Resource Hash Cash (if exists)"]
+    start --> s1
+    s2["Load JSON Metadata From Swagger (or Cache if Exists)"]
+    s1 --> s2
+    s3[Load XML Metadata from XSD]
+    s2 --> s3
+    s4["Load Resource Dependencies From Dependency Endpoint (Or Cache If Exists)"]
+    s3 --> s4
+    s5["Filter Input XML Files Based On Resources Defined in Current Dependency Level"]
+    s4 --> s5
+    s5 --> s6
+
+    subgraph For Each File
+        s6[Validate XML Against XSD]
+        s7[Cache All Possible Reference Targets]
+        s6 --> s7
+        s8[Preload Any Mandatory Reference Sources]
+        s7 --> s8
+        s9[Get All Resources for the Current Interchange File]
+        s8 --> s9
+    end
+
+    subgraph For each Resource
+        s10[Compute Resource Hash]
+        s9 --> s10
+        s11{Compare Hash to Stored Values}
+        s10 --> s11
+        s12[Add to Final Output Hash File]
+        s11 -- value exists --> s12
+        s13[Resource Processed]
+        s12 --> s13
+
+        s14[Resolve XML References]
+        s11 -- value does not exist --> s14
+        s15[Submit Resource to Web API]
+        s14 --> s15
+        s16{Web Api Call Succeeds}
+        s15 --> s16
+        s17{Max Retrys Reached}
+        s15 -- no --> s17
+        s17 -- no --> s15
+
+        s16 -- yes --> s12
+
+        s18[Log Error]
+        s17 -- yes --> s18
+    end
+
+    endd([End])
+    s13 --> endd
+
+     style s6 stroke:#f66,stroke-width:2px,stroke-dasharray: 5 5
+```
 
 | Step | Action |
 | --- | --- |
@@ -88,7 +144,7 @@ fairly low risk, and as the ODS / API will handle upserting the record as
 needed, the issue this raises is just a time and efficiency cost.
 
 The code for the Bulk Load Client is located in the Ed-Fi-ODS repository in the
-\\Utilities\\DataLoading\\EdFi.ApiLoader.Console directory.
+`./Utilities/DataLoading/EdFi.ApiLoader.Console directory.
 
 Input files are loaded based on pattern-based matching derived from the
 interchange names. As the application goes through each interchange, it checks

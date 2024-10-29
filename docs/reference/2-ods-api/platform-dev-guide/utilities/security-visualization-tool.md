@@ -8,16 +8,6 @@ solution comes with a command-line Security Visualization Tool to help
 implementers visualize authorization configurations.
 
 This section outlines how to configure and use the Security Visualization Tool.
-The high-level steps are:
-
-- [Security Visualization Tool](#security-visualization-tool)
-  - [Step 1. Install and Configure GraphViz (Optional)](#step-1-install-and-configure-graphvizoptional)
-  - [Step 2. Build and Run the Security Visualization Tool](#step-2-build-and-run-the-security-visualization-tool)
-  - [Step 3. Review Output](#step-3-review-output)
-  - [Example Output](#example-output)
-    - [Education Organizations](#education-organizations)
-    - [Descriptors](#descriptors)
-
 Each step is outlined in detail below.
 
 ## Step 1. Install and Configure GraphViz (Optional)
@@ -42,7 +32,27 @@ not detected in the default installation path.
     \\Ed-Fi-ODS\\Utilities\\GenerateSecurityGraphs\\GenerateSecurityGraphs\\bin\\Debug\\net6.0.
 * Run `GenerateSecurityGraphs.exe --help` to view the parameters that can be
     passed to the
-    application.![Parameters passed to the application](../../../../../static/img/reference/ods-api/Screenshot%202024-02-21%20235152.png)
+    application.
+
+    ```pwsh
+    PS D:\Ed-Fi-ODS\Utilities\GenerateSecurityGraphs\GenerateSecurityGraphs> .\bin\Debug\net8.0\GenerateSecurityGraphs.exe --help
+    GenerateSecurityGraphs 1.0.0+04569d4fea5fc8935768fdff50cf64d61da58fa7
+    Copyright c 2024 Ed-Fi Alliance, LLC and Contributors
+
+      -o, --out                 Required. The path to the folder where the graphs should be generated.
+
+      -f, --force               (Default: false) Create a folder at that path if one doesn't already exist.
+
+      -c, --connectionString    (Default: Server=(local);Database=EdFi_Security;Trusted_Connection=True;Encrypt=False) The
+                                connection string for connecting to the authorization metadata database. Leave blank to
+                                connect to the local 'EdFi_Security' database using integrated security.
+
+      -g, --graphviz            (Default: C:/Program Files/Graphviz/) Graphviz installation path.
+
+      --help                    Display this help screen.
+
+      --version                 Display version information.
+    ```
 
 * Execute the tool to generate the visualizations. The example below assumes
     that you have followed the Ed-Fi ODS / API [Getting
@@ -62,7 +72,25 @@ authorizations that are possible, and there is a sub-folder for each
 authorization claim set that has been configured. The as-shipped ODS / API
 v6.1 contains nine claim sets, resulting in nine folders.
 
-![Security Visualization Tool Output](../../../../../static/img/reference/ods-api/image2021-8-13_7-36-37.png)
+| Type | Name |
+| -- | -- |
+| Directory | AB Connect |
+| Directory | Assessment Read |
+| Directory | Assessment Vendor |
+| Directory | Bootstrap Descriptors and EdOrgs |
+| Directory | District Hosted SIS Vendor |
+| Directory | Ed-Fi ODS Admin App |
+| Directory | Ed-Fi Sandbox |
+| Directory | Roster Vendor |
+| Directory | SIS Vendor |
+| File | _icon.png |
+| File | assessmentMetadata |
+| File | assesmentMetadata.png |
+| File | assesmentMetadata.svg |
+| File | AssessmentMetadata_icon.png |
+| File | educationOrganizations |
+| File | educationOrganizations.png |
+| File | ... etc. |
 
 ## Example Output
 
@@ -118,4 +146,4 @@ operations, meaning that other API clients read a managed Descriptor.
 The diagram below shows permissions for accessing System Descriptors for the
 "SIS Vendor" claim set, where only Read access is allowed.
 
-![System Descriptors](../../../../../static/img/reference/ods-api/system_desc_icon.png)
+![System Descriptors](../../img/systemDescriptors.png)

@@ -198,7 +198,7 @@ authorization performed. However, to read or update a student, the SIS vendor
 must not only have been granted the appropriate action, but must also have an
 established relationship with the student (through the StudentSchoolAssociation
 resource). As the diagram indicates, this is handled by the “AllRelationships”
-strategy described below).
+strategy described below.
 
 ## Authorization Strategies
 

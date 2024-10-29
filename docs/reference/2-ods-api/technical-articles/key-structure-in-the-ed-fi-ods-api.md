@@ -18,19 +18,54 @@ uniqueness is enforced.
 The following diagram shows Id in CourseOffering table, which stores the
 resource ID for an offering:
 
-![CourseOffering resource ID](../../../../static/img/reference/ods-api/image2020-6-29_9-13-52.png)
+```mermaid
+erDiagram
+    "edfi.CourseOffering" {
+        nvarchar(60) LocalCourseCode PK
+        int SchoolId PK
+        smallint SchoolYear PK
+        int TermDescriptorId int
+        nvarchar(60) LocalCourseTitle
+        int InstructionalTimePlanned
+        nvarchar(60) CourseCode
+        int EducationOrganizationId
+        datetime CreateDate
+        datetime LastModifiedDate
+        uniqueidentifier Id
+    }
+```
 
 In the API surface, a CourseOffering can be looked up/queried by doing a HTTP
 GET on a path like: `/courseOfferings/d0fd729db6ee4a7bbc989720e4f833f5`.
 
 In the returned JSON, the resource ID appears as the `id` element:
 
-![CourseOffering resource ID](../../../../static/img/reference/ods-api/json-resourceid.png)
+```json
+{
+    "id": "de5a5c02513a433d80099b63dde98441",
+    "courseReference": {
+      "code": "03100500",
+      "educationOrganizationId": 255901001
+    },
+    "schoolReference": {
+      "schoolId": 255901001
+    }
+}
+```
 
 When an element is POSTed (i.e., created in the ODS / API), the resource ID is
 provided via a HTTP Header. It will look something like:
 
-![New resource header](../../../../static/img/reference/ods-api/api-newresourceheader.png)
+```none
+ access-control-allow-origin: *
+ access-control-expose-headers: *
+ connection: keep-alive
+ content-length: 0
+ date: Mon,28 Oct 2024 20:38:26 GMT
+ etag: "5250293317838108944"
+ location: https://api.ed-fi.org:443/v7.2/api/data/v3/ed-fi/courseOfferings/de5a5c02513a433d80099b63dde98441
+ strict-transport-security: max-age=31536000
+```
 
 ## USIs (Unique Surrogate Identifiers)
 
@@ -57,7 +92,42 @@ and is used only as internal identifier.
 The following diagram shows the StaffUSI primary key field and the StaffUniqueId
 field in the Staff table:
 
-![StaffUSI primary key field](../../../../static/img/reference/ods-api/image2020-6-29_9-6-38.png)
+```mermaid
+%%{init: {
+    "theme": "",
+    "themeCSS": [
+        "[id*=entity-Staff] rect:nth-of-type(3),[id*=entity-Staff] rect:nth-of-type(6) { fill: orange;}"]
+}
+}%%
+erDiagram
+    Staff {
+        int StaffUSI PK
+        nvarchar(32) StaffUniqueId
+        date BirthDate
+        int CitizenshipStatusDescriptorId
+        nvarchar(75) FirstName
+        nvarchar(60) GenderIdentity
+        nvarchar(10) GenerationCodeSuffix
+        int HighestCompletedLevelOfEducationDescriptorId
+        bit HighlyQualifiedTeacher
+        bit HispanicLatinoEthnicity
+        nvarchar(75) LastSurname
+        nvarchar(60) LoginId
+        nvarchar(75) MaidenName
+        nvarchar(75) MiddleName
+        nvarchar(30) PersonalTitlePrefix
+        nvarchar(32) PersonId
+        nvarchar(75) PreferredFirstName
+        nvarchar(75) PreferredLastSurname
+        int SexDescriptorId
+        int SourceSystemDescriptorId
+        decimal YearsOfPriorProfessionalExperience
+        decimal YearsOfPriorTeachingExperience
+        datetime CreateDate
+        datetime LastModifiedDate
+        uniqueidentifier Id
+    }
+```
 
 ## Natural Keys
 
@@ -79,7 +149,54 @@ This section provides an example of how natural keys in the ODS / API work in
 practice. Consider the following diagram, noting the composite key structure of
 BellScheduleClassPeriod:
 
-![Composite-Key-Model](../../../../static/img/reference/ods-api/Composite-Key-Model.png)
+```mermaid
+erDiagram
+    School {
+        bigint SchoolId PK
+        int SchoolTypeDescriptorId
+        int AdministrativeFundingControlDescriptorId
+        int CharterApprovalAgencyTypeDescriptorId
+        smallint CharterApprovalSchoolYear
+        int CharterStatusDescriptorId
+        int InternetAccessDescriptorId
+        bigint LocalEducationAgencyId
+        int MagnetSpecialProgramEmphasisSchoolDescriptorId
+        int SchoolTypeDescriptorId
+        int TitleIPartASchoolDesignationDescriptorId
+        uniqueidentifier Id
+    }
+    BellSchedule {
+        nvarchar BellScheduleName PK
+        bigint SchoolId PK
+        nvarchar AlternateDayName
+        time EndTime
+        time StartTime
+        int TotalInstructionalTime
+        datetime CreateDate
+        datetime LastModifiedDate
+        uniqueidentifier Id
+    }
+    School only one to zero or more BellSchedule: has
+
+    ClassPeriod {
+        nvarchar ClassPeriodName PK
+        bigint SchoolId PK
+        bit OfficialAttendancePeriod
+        datetime CreateDate
+        datetime LastModifiedDate
+        uniqueidentifier Id
+    }
+    School only one to zero or more ClassPeriod: has
+
+    BellScheduleClassPeriod {
+        nvarchar ClassPeriodName PK
+        nvarchar BellScheduleName PK
+        bigint SchoolId PK
+        datetime CreateDate
+    }
+    BellSchedule only one to zero or more BellScheduleClassPeriod: has
+    ClassPeriod only one to zero or more BellScheduleClassPeriod: headers
+```
 
 While SchoolId is present as a key in both BellSchedule and ClassPeriod, there
 is only one SchoolId on the BellScheduleClassPeriod. This process of “merging”

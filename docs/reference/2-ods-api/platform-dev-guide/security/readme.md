@@ -89,7 +89,7 @@ change the hashing method by which OAuth secrets are secured.
 Platform host administrators can manage and distribute keys and secrets for
 applications using the Admin API (released separately). For more information,
 see the [Admin
-API](https://edfi.atlassian.net/wiki/spaces/ADMINAPI/overview) documentation.
+API](/reference/admin-api) documentation.
 
 ## Adaptable Security
 
