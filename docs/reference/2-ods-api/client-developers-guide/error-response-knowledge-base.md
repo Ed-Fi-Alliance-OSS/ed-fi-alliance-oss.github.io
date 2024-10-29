@@ -32,7 +32,7 @@ The following fields included in the API error response are noteworthy:
 
 * **`correlationId`**: This field allows traceability of the specific
     occurrence of the error and connects error response to entries in the API
-    errors logs.  
+    errors logs.
 
 :::tip
 
@@ -267,7 +267,7 @@ development team for resolution.
 * Each data model is available in a collection at the bottom of the page, or
     you can expand the various HTTP requests and find the model embedded
     within it. Example:
-    ![Data Model](../../../../static/img/reference/ods-api/image2024-4-19_16-8-9.png)
+    ![Data Model](/img/reference/ods-api/image2024-4-19_16-8-9.png)
 
 :::
 
@@ -287,7 +287,7 @@ Authorization: bearer 6f5bb488a65948b5b847b561b23e
 Content-Type: application/json
 
 {
-  "codeValue": "Bereavementddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",  
+  "codeValue": "Bereavementddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
   "shortDescription": "Bereavement",
   "namespace": "uri://ed-fi.org/AbsenceEventCategoryDescriptor"
 }
@@ -327,7 +327,7 @@ development team for resolution.
 * Each data model is available in a collection at the bottom of the page, or
     you can expand the various HTTP requests and find the model embedded
     within it. Example:
-    ![Data Model](../../../../static/img/reference/ods-api/image2024-4-19_16-8-9.png)
+    ![Data Model](/img/reference/ods-api/image2024-4-19_16-8-9.png)
 
 :::
 
@@ -1323,7 +1323,7 @@ Http Request
 
 ```text
 POST https://api.ed-fi.org:443/v7.2/api/data/v3/ed-fi/absenceEventCategoryDescriptors
-Authorization: basic am9obmRvZToxMjM= 
+Authorization: basic am9obmRvZToxMjM=
 Content-Type: application/json
 
 {
@@ -1587,7 +1587,7 @@ Content-Type: application/json
   "lastSurname": "Earhart",
   "BirthDate": "2010-01-13"
 }
- 
+
 ## HTTP Request 2
 GET https://api-stage.ed-fi.org:443/v7.1/api/data/v3/ed-fi/students/e31429919e6546e8905635d7858f2e80
 Authorization: Bearer fd964160527941a39875e821d2622088

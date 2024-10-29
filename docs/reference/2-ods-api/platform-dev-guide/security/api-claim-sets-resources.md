@@ -61,7 +61,7 @@ back-references from the children can be represented as direct URLs).
 
 The figure below shows a sample of resources related to restraint events.
 
-![Resources](../../../../../static/img/reference/ods-api/fig1.png)
+![Resources](/img/reference/ods-api/fig1.png)
 
 ## Claims
 
@@ -154,7 +154,7 @@ grouping. For example, rather than issue resource claims for each individual
 type of descriptor, the broader “systemDescriptors” or “managedDescriptors”
 resource claims will be issued instead.
 
-![Resource Claims](../../../../../static/img/reference/ods-api/fig2.png)
+![Resource Claims](/img/reference/ods-api/fig2.png)
 
 #### Resource Claim Values
 
@@ -179,9 +179,9 @@ taxonomy also identifies authorization strategies for the various claims that
 are applied after the basic “action” checks have been performed. The figure
 below shows a representative piece of the Ed-Fi ODS / API claims taxonomy.
 
-![Claims Taxonomy](../../../../../static/img/reference/ods-api/fig3_a.png)
+![Claims Taxonomy](/img/reference/ods-api/fig3_a.png)
 
-![Claims Taxonomy](../../../../../static/img/reference/ods-api/fig3_b-1.png)
+![Claims Taxonomy](/img/reference/ods-api/fig3_b-1.png)
 
 The strategy used to authorize a request for an Ed-Fi Type is different from the
 one used to authorize a request to modify student-related data. The former is a

@@ -27,7 +27,7 @@ file extension (from .nupkg to .zip). Remove the version number (optional).
 Check the box next to **Unblock** (this will prevent PowerShell from asking for
 permission to load every module in the installer) and click **OK**.
 
-![Package Properties](../../../../../static/img/reference/ods-api/image2024-6-5_13-12-15.png)
+![Package Properties](/img/reference/ods-api/image2024-6-5_13-12-15.png)
 
 :::info Enable TLS 1.2
 
@@ -186,7 +186,7 @@ to Ed-Fi Databases, place the extracted contents of your extension plugin
 package in the extracted EdFi.Suite3.RestApi.Databases package
 under Ed-Fi-ODS-Implementation\\Plugin folder.
 
-![Copy your extension plugin to database deployment package](../../../../../static/img/reference/ods-api/image2021-5-26_12-45-50.png)
+![Copy your extension plugin to database deployment package](/img/reference/ods-api/image2021-5-26_12-45-50.png)
 
 #### Enable your extension plugin in the deployment configuration
 
@@ -396,7 +396,7 @@ If you have an extension plugin package that you would like to be the deployed
 to Ed-Fi WebApi, place the extracted contents of your extension plugin package
 in C:\\inetpub\\Ed-Fi\\WebApi\\Plugin folder.
 
-![Copy your extension plugin to deployed WebAPI](../../../../../static/img/reference/ods-api/image2021-5-26_13-32-29.png)
+![Copy your extension plugin to deployed WebAPI](/img/reference/ods-api/image2021-5-26_13-32-29.png)
 
 #### Enable your extension plugin in appsettings.json
 
@@ -505,11 +505,11 @@ Just a few more tasks to complete your installation:
 * **Right-click** on the server (alternatively, you can right-click the EdFi
     web site), and select **Stop**.
 
-![Stop IIS](../../../../../static/img/reference/ods-api/image2021-2-12_17-5-39.png)
+![Stop IIS](/img/reference/ods-api/image2021-2-12_17-5-39.png)
 
 * **Right-click** the server (or EdFi website) again and select **Start**.
 
-![Start IIS](../../../../../static/img/reference/ods-api/image2021-2-12_17-7-5.png)
+![Start IIS](/img/reference/ods-api/image2021-2-12_17-7-5.png)
 
 You are now ready to use the Ed-Fi ODS / API. The following URLs are available:
 

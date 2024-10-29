@@ -42,7 +42,7 @@ Ensure that the following components are installed:
 
     2. Type **$PSVersionTable.PSVersion**, and press **Enter**.
 
-        ![PowerShell Version Table](../../../../../static/img/reference/ods-api/ps-version.png)
+        ![PowerShell Version Table](/img/reference/ods-api/ps-version.png)
 
     3. If the required version is not installed, download [Windows Management
         Framework
@@ -54,7 +54,7 @@ Ensure that the following components are installed:
     Download and install the latest release of the [.NET 8.0
     SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 
-    ![.NET 8.0 SDK](../../../../../static/img/reference/ods-api/SDK-8.0.300.png)
+    ![.NET 8.0 SDK](/img/reference/ods-api/SDK-8.0.300.png)
     </details>
 
 ### Web Server
@@ -83,14 +83,14 @@ Ensure that the following components are installed:
 
     3. Click **OK**.
 
-    ![Internet Information Services](../../../../../static/img/reference/ods-api/Internet-Info-Services.png)
+    ![Internet Information Services](/img/reference/ods-api/Internet-Info-Services.png)
 
     **.NET 8.0 Hosting Bundle**
 
     Download and install [.NET Hosting Bundle
     8.0](https://dotnet.microsoft.com/en-us/download/dotnet/8.0).
 
-    ![.NET 8.0 Hosting Bundle](../../../../../static/img/reference/ods-api/net-hosting-bundle.png)
+    ![.NET 8.0 Hosting Bundle](/img/reference/ods-api/net-hosting-bundle.png)
 
     </details>
 
@@ -145,46 +145,46 @@ Installation using PostgreSQL Installer
         guide](https://www.enterprisedb.com/docs/supported-open-source/postgresql/installer/) has
         details.
 
-![PostgreSQL DB Installer](../../../../../static/img/reference/ods-api/postgresqldbdownload.png)
+![PostgreSQL DB Installer](/img/reference/ods-api/postgresqldbdownload.png)
 
 Download the version 13.x installer.
 
-![PostgreSQL DB Installer](../../../../../static/img/reference/ods-api/postgresqldbdownload2.png)
+![PostgreSQL DB Installer](/img/reference/ods-api/postgresqldbdownload2.png)
 
 Click **Next**.
 
-![PostgreSQL DB Installer](../../../../../static/img/reference/ods-api/postgresqldbdownload3.png)
+![PostgreSQL DB Installer](/img/reference/ods-api/postgresqldbdownload3.png)
 
 Click **Next**.
 
-![PostgreSQL DB Installer](../../../../../static/img/reference/ods-api/postgres-install-3.jpg)
+![PostgreSQL DB Installer](/img/reference/ods-api/postgres-install-3.jpg)
 
 If you want to install only the tools uncheck PostgreSQL Server, pgAdmin 4 and
 Stack Builder.
 
 Click **Next**.
 
-![PostgreSQL DB Installer](../../../../../static/img/reference/ods-api/postgres-install-5.jpg)
+![PostgreSQL DB Installer](/img/reference/ods-api/postgres-install-5.jpg)
 
 Enter a password for the Postgres superuser.
 
 Click **Next**.
 
-![PostgreSQL DB Installer](../../../../../static/img/reference/ods-api/postgres-install-6.jpg)
+![PostgreSQL DB Installer](/img/reference/ods-api/postgres-install-6.jpg)
 
 Enter port **5432** (default).
 
 Click **Next**.
 
-![PostgreSQL DB Installer](../../../../../static/img/reference/ods-api/postgres-install-7.jpg)
+![PostgreSQL DB Installer](/img/reference/ods-api/postgres-install-7.jpg)
 
 Click **Next**.
 
-![PostgreSQL DB Installer](../../../../../static/img/reference/ods-api/postgresqldbdownload4.png)
+![PostgreSQL DB Installer](/img/reference/ods-api/postgresqldbdownload4.png)
 
 Click **Next**.
 
-![PostgreSQL DB Installer](../../../../../static/img/reference/ods-api/postgres-install-9.jpg)
+![PostgreSQL DB Installer](/img/reference/ods-api/postgres-install-9.jpg)
 
 Click **Next** to finish the installation.
 
@@ -285,9 +285,9 @@ Set the environment variable PGPASSFILE to the location of the pgpass file that
 was created, which is the recommended approach. Optionally, the file can be
 saved in `%APPDATA%/postgresql/pgpass.conf.`
 
-![PGPASSFILE Environment Variable](../../../../../static/img/reference/ods-api/image2020-4-9_16-43-3.png)
+![PGPASSFILE Environment Variable](/img/reference/ods-api/image2020-4-9_16-43-3.png)
 
-You can test the environment variable setup using:  
+You can test the environment variable setup using:
 
 ```shell
 get-item env:pgpassfile

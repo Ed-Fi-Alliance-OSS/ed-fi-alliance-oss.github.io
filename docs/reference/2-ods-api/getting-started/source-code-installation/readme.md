@@ -51,7 +51,7 @@ likely you have PowerShell 5.0 pre-installed.
      press **Enter**.
 2. Type **$PSVersionTable.PSVersion**, and press **Enter**.
 
-![PS Version](../../../../../static/img/reference/ods-api/ps-version.png)
+![PS Version](/img/reference/ods-api/ps-version.png)
 
 If the required version is not installed, download and install [PowerShell 5.0
 or
@@ -62,7 +62,7 @@ above](https://learn.microsoft.com/en-us/powershell/scripting/install/installing
 Download and install the latest [.NET SDK 8.0 (Compatible with Visual Studio
 2022)](https://dotnet.microsoft.com/en-us/download/dotnet/8.0).
 
-![.NET SDK](../../../../../static/img/reference/ods-api/SDK-8.0.300.png)
+![.NET SDK](/img/reference/ods-api/SDK-8.0.300.png)
 
 </details>
 
@@ -88,17 +88,17 @@ Ensure that the following software is installed and configured:
 
 Install Microsoft SQL Server 2019:
 
-![SQL Server Installation](../../../../../static/img/reference/ods-api/SQLServerInstallationStep1.png)
+![SQL Server Installation](/img/reference/ods-api/SQLServerInstallationStep1.png)
 
 1. When prompted, select the following features:
 
-  ![Feature Installation](../../../../../static/img/reference/ods-api/Feature%20Installation.png)
+  ![Feature Installation](/img/reference/ods-api/Feature%20Installation.png)
 
 2. Use the default instance named **MSSQLSERVER**.
-  ![SQL Server Instance](../../../../../static/img/reference/ods-api/SQLDefault.png)
+  ![SQL Server Instance](/img/reference/ods-api/SQLDefault.png)
 
 3. Select either **Windows Authentication Mode** or **Mixed Mode.**
-  ![SQL Server Authentication Mode](../../../../../static/img/reference/ods-api/SQLAuth.png)
+  ![SQL Server Authentication Mode](/img/reference/ods-api/SQLAuth.png)
 
     :::warning
 
@@ -116,7 +116,7 @@ Install Microsoft SQL Server 2019:
 
 Install SQL Server Management Studio:
 
-![SQL Server Installation](../../../../../static/img/reference/ods-api/SQLServerInstallationStep2.png)
+![SQL Server Installation](/img/reference/ods-api/SQLServerInstallationStep2.png)
 
 ## Visual Studio 2022
 
@@ -133,7 +133,7 @@ The instructions below are based on the Visual Studio 2022 Community Installer.
   * **.NET Desktop development**, and select the following components:
   * **ASP.NET and web development**
 
-![Visual Studio 2022](../../../../../static/img/reference/ods-api/image2022-3-7_18-51-45.png)
+![Visual Studio 2022](/img/reference/ods-api/image2022-3-7_18-51-45.png)
 
 2\. Restart your computer (if prompted)
 
@@ -185,46 +185,46 @@ Installation using PostgreSQL Installer
         guide](https://www.enterprisedb.com/docs/supported-open-source/postgresql/installer/) has
         details.
 
-![PostgreSQL Installer](../../../../../static/img/reference/ods-api/postgresqldbdownload.png)
+![PostgreSQL Installer](/img/reference/ods-api/postgresqldbdownload.png)
 
 Download the version 13.x installer.
 
-![PostgreSQL Installer](../../../../../static/img/reference/ods-api/postgresqldbdownload2.png)
+![PostgreSQL Installer](/img/reference/ods-api/postgresqldbdownload2.png)
 
 Click **Next**.
 
-![PostgreSQL Installer](../../../../../static/img/reference/ods-api/postgresqldbdownload3.png)
+![PostgreSQL Installer](/img/reference/ods-api/postgresqldbdownload3.png)
 
 Click **Next**.
 
-![PostgreSQL Installer](../../../../../static/img/reference/ods-api/postgres-install-3.jpg)
+![PostgreSQL Installer](/img/reference/ods-api/postgres-install-3.jpg)
 
 If you want to install only the tools uncheck PostgreSQL Server, pgAdmin 4 and
 Stack Builder.
 
 Click **Next**.
 
-![PostgreSQL Installer](../../../../../static/img/reference/ods-api/postgres-install-5.jpg)
+![PostgreSQL Installer](/img/reference/ods-api/postgres-install-5.jpg)
 
 Enter a password for the postgres superuser.
 
 Click **Next**.
 
-![PostgreSQL Installer](../../../../../static/img/reference/ods-api/postgres-install-6.jpg)
+![PostgreSQL Installer](/img/reference/ods-api/postgres-install-6.jpg)
 
 Enter port **5432** (default).
 
 Click **Next**.
 
-![PostgreSQL Installer](../../../../../static/img/reference/ods-api/postgres-install-7.jpg)
+![PostgreSQL Installer](/img/reference/ods-api/postgres-install-7.jpg)
 
 Click **Next**.
 
-![PostgreSQL Installer](../../../../../static/img/reference/ods-api/postgresqldbdownload4.png)
+![PostgreSQL Installer](/img/reference/ods-api/postgresqldbdownload4.png)
 
 Click **Next**.
 
-![PostgreSQL Installer](../../../../../static/img/reference/ods-api/postgres-install-9.jpg)
+![PostgreSQL Installer](/img/reference/ods-api/postgres-install-9.jpg)
 
 Click **Next** to finish the installation.
 
@@ -325,7 +325,7 @@ Set the environment variable PGPASSFILE to the location of the pgpass file that
 was created, which is the recommended approach. Optionally, the file can be
 saved in `%APPDATA%/postgresql/pgpass.conf.`
 
-![pgpass.conf](../../../../../static/img/reference/ods-api/image2020-4-9_16-43-3.png)
+![pgpass.conf](/img/reference/ods-api/image2020-4-9_16-43-3.png)
 
 You can test the environment variable setup using:
 
@@ -358,7 +358,7 @@ It is important that both repositories are extracted to the same root directory
 (for example C:\\Source). When both repositories have been cloned, there will be
 two folders for the ODS / API source code as shown below:
 
-![Step 3 Fig 2](../../../../../static/img/reference/ods-api/Step-3-Fig-2.png)
+![Step 3 Fig 2](/img/reference/ods-api/Step-3-Fig-2.png)
 
 :::info
 File paths can become lengthy within the ODS/API source code. In
@@ -393,7 +393,7 @@ If you download the code via a ZIP file, ensure that you check Unblock in the
 file's Properties dialog to allow the contents of the contained scripts to
 execute properly.
 
-![Unblock](../../../../../static/img/reference/ods-api/unblock.png)
+![Unblock](/img/reference/ods-api/unblock.png)
 
 :::
 
@@ -419,7 +419,7 @@ Clone. You can do so by following these instructions:
     or daily source) and use the **Download ZIP** button to download the
     repository to your local drive.
 
-    ![Download ZIP](../../../../../static/img/reference/ods-api/download_zip.PNG)
+    ![Download ZIP](/img/reference/ods-api/download_zip.PNG)
 
 2. In Windows Explorer, right-click on each of the downloaded ZIP files and
     select Extract All… Enter C:\\ for the target folder. (You can extract the
@@ -435,7 +435,7 @@ Clone. You can do so by following these instructions:
 4. When the extraction and renaming are complete, there should be two folders
     for the ODS / API source code as shown below:
 
-    ![Step 3 Fig 2](../../../../../static/img/reference/ods-api/Step-3-Fig-2.png)
+    ![Step 3 Fig 2](/img/reference/ods-api/Step-3-Fig-2.png)
 
 ## Troubleshooting the File Extract
 
@@ -447,7 +447,7 @@ In Windows Explorer, right-click each of the downloaded ZIP files and
 select **Properties**. On the **General** tab, check **Unblock** to allow the
 contents of the contained scripts to execute properly.
 
-![Unblock](../../../../../static/img/reference/ods-api/unblock.png)
+![Unblock](/img/reference/ods-api/unblock.png)
 
 The dialog box above is from Windows 10. Previous versions of Windows have an
 "Unblock" button in the same location.
@@ -482,12 +482,12 @@ To set the "StandardVersion" variable:
     Under **Advanced**, select **Environment Variables**.)
 2. Under **System variables**, select **New...**
 
-    ![System Variables](../../../../../static/img/reference/ods-api/image2024-5-15_16-33-28.png)
+    ![System Variables](/img/reference/ods-api/image2024-5-15_16-33-28.png)
 
 3. For **Variable name**, enter **StandardVersion**
 4. For **Variable value**, enter **4.0.0,** and press **OK**.
 
-    ![Variable Value](../../../../../static/img/reference/ods-api/image2024-5-15_16-31-34.png)
+    ![Variable Value](/img/reference/ods-api/image2024-5-15_16-31-34.png)
 
 ## Verify PowerShell Script Permissions
 
@@ -515,7 +515,7 @@ C:\Ed-Fi-ODS-Implementation\Initialize-PowershellForDevelopment.ps1
 
 When the scripts are loaded, you should see the results shown below:
 
-![Loaded PowerShell Scripts](../../../../../static/img/reference/ods-api/image2021-2-4_12-2-23.png)
+![Loaded PowerShell Scripts](/img/reference/ods-api/image2021-2-4_12-2-23.png)
 
 ## Initialize the Development Environment
 
@@ -572,7 +572,7 @@ base64. You can execute the `New-AESKey` command to generate a valid key.
 
 :::
 
-![initdev](../../../../../static/img/reference/ods-api/image2021-2-4_12-2-39.png)
+![initdev](/img/reference/ods-api/image2021-2-4_12-2-39.png)
 
 This command creates databases, generates code templates, and compiles projects
 in the solution. Some considerations while running the script:
@@ -590,7 +590,7 @@ in the solution. Some considerations while running the script:
 A successful `initdev` execution will display the tasks executed and their
 duration as shown below:
 
-![initdev execution](../../../../../static/img/reference/ods-api/image2021-2-4_12-3-8.png)
+![initdev execution](/img/reference/ods-api/image2021-2-4_12-3-8.png)
 
 ## Step 5. Build the Visual Studio Solution
 
@@ -613,7 +613,7 @@ DatabaseViews.generated.json which is generated one time using the
 "EdFi\_Ods\_Empty" database and subsequently provided by the source code
 repository.
 
-![Code Generation](../../../../../static/img/reference/ods-api/Step-5-Fig-1.png)
+![Code Generation](/img/reference/ods-api/Step-5-Fig-1.png)
 
 ## Alternatively Building from the Developer Command Prompt
 
@@ -626,7 +626,7 @@ To do a clean build from the command prompt:
 
 1. Open the Developer Command Prompt for Visual Studio.
 
-    ![Developer Command Prompt](../../../../../static/img/reference/ods-api/vs_step5.png)
+    ![Developer Command Prompt](/img/reference/ods-api/vs_step5.png)
 
 2. Navigate to your C:\\Ed-Fi-ODS-Implementation\\Application directory.
 3. Issue a command similar to the following:
@@ -646,7 +646,7 @@ system to be fully functional.
 To set the Startup Projects:
 
 1. Select the **Set StartUp Projects…** context menu by right-clicking on the
-    solution file in the Solution Explorer. ![Startup Projects](../../../../../static/img/reference/ods-api/startup2.png)
+    solution file in the Solution Explorer. ![Startup Projects](/img/reference/ods-api/startup2.png)
 
 2. Within the Startup Project property page, select the **Multiple startup
     projects** radio button and enable the following projects:
@@ -655,7 +655,7 @@ To set the Startup Projects:
     * EdFi.Ods.SwaggerUI
     * EdFi.Ods.WebApi
 
-    ![Startup Projects](../../../../../static/img/reference/ods-api/startup3.png)
+    ![Startup Projects](/img/reference/ods-api/startup3.png)
 
 3. Click **OK** to accept the changes to your local development settings.
 
@@ -673,7 +673,7 @@ or debug the Ed-Fi ODS / API.
 * To interactively debug the Ed-Fi ODS / API solution, press **F5** (or
     press **Start** in the Standard Toolbar).
 
-![Startup Projects](../../../../../static/img/reference/ods-api/Step-7-Fig-1.png)
+![Startup Projects](/img/reference/ods-api/Step-7-Fig-1.png)
 
 ### Notes on Running the Solution
 
@@ -710,7 +710,7 @@ can be found in
 or alternatively in **appsettings.Development.json** file. We recommend that you
 change your password as soon as you log in.
 
-![Sandbox Administration Portal](../../../../../static/img/reference/ods-api/sandbox.png)
+![Sandbox Administration Portal](/img/reference/ods-api/sandbox.png)
 
 As the name implies, Sandbox Administration Portal is useful for development
 machines and sandbox instances of the ODS / API, but should not be present on
@@ -723,7 +723,7 @@ for details.
 The ODS / API Documentation Web Page provides an overview of the ODS / API, and
 links to more detailed API documentation.
 
-![ODS API Documentation](../../../../../static/img/reference/ods-api/image-2023-11-28_15-26-31.png)
+![ODS API Documentation](/img/reference/ods-api/image-2023-11-28_15-26-31.png)
 
 The REST interface to the Ed-Fi ODS / API exposes metadata describing the
 exposed resources as well as the inputs, HTTP verbs, and schema of the exposed
@@ -740,7 +740,7 @@ for the default sandbox are pre-populated). This token is used throughout your
 session to access your sandbox. This is the same process used by other
 applications to access their data.
 
-![ODS API Documentation](../../../../../static/img/reference/ods-api/image2020-10-18_16-45-58.png)
+![ODS API Documentation](/img/reference/ods-api/image2020-10-18_16-45-58.png)
 
 Similar to the Sandbox Administration Portal, the ODS / API Documentation Web
 Page is useful for development machines and sandbox instances of the ODS / API,

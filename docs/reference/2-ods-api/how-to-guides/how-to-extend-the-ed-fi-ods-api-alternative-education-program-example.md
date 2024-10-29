@@ -57,7 +57,7 @@ and its properties. Our new program is based on the
 GeneralStudentProgramAssociation and references the common MetingTime, already
 in the ODS / API data model.
 
-![Diagram of Alternative Education Program](../../../../static/img/reference/ods-api/image2024-5-30_14-45-12.png)
+![Diagram of Alternative Education Program](/img/reference/ods-api/image2024-5-30_14-45-12.png)
 
 You'll notice that an Alternative Education Eligibility Reason is shown with a
 type of "descriptor." The Ed-Fi Descriptor is analogous to an enumeration. It's
@@ -93,7 +93,7 @@ Extension](https://edfi.atlassian.net/wiki/spaces/METAED20/pages/23709491/MetaEd
 For this example, place your extension in a folder called
 "AlternativeEducationProgram".
 
-![Extension Folder](../../../../static/img/reference/ods-api/image2024-5-30_15-25-15.png)
+![Extension Folder](/img/reference/ods-api/image2024-5-30_15-25-15.png)
 
 ### Step 2c. Update the package.json File
 
@@ -101,7 +101,7 @@ Open the package.json file by double-clicking on the file in the tree view to
 the left and provide an appropriate name for your project. In this case we will
 call it "SampleAlternativeEducationProgram".
 
-![Package.json](../../../../static/img/reference/ods-api/image2024-5-30_15-26-46.png)
+![Package.json](/img/reference/ods-api/image2024-5-30_15-26-46.png)
 
 Click **File** > **Save** (**Ctrl + S**) to save your changes.
 
@@ -117,12 +117,12 @@ MetaEd source file to that folder.
 
 **Right-click** on the folder **Association**, and select New File.
 
-![New File](../../../../static/img/reference/ods-api/image2024-5-30_15-29-49.png)
+![New File](/img/reference/ods-api/image2024-5-30_15-29-49.png)
 
 Name the new file **StudentAlternativeEducationProgramAssociation.metaed** to
 match the name of the new entity to be created.
 
-![Named File](../../../../static/img/reference/ods-api/image2024-5-30_15-31-16.png)
+![Named File](/img/reference/ods-api/image2024-5-30_15-31-16.png)
 
 Note the new file appears in the tree view to the left. **Double-click** on the
 file in the tree view to open it.
@@ -131,7 +131,7 @@ file in the tree view to open it.
 
 Type or copy and paste the code listing below into your MetaEd file:
 
-![MetaEd Source](../../../../static/img/reference/ods-api/image2024-5-30_15-47-19.png)
+![MetaEd Source](/img/reference/ods-api/image2024-5-30_15-47-19.png)
 
 Note that an error will be listed in the linter panel until the referenced
 Descriptor is created in a future step.
@@ -165,7 +165,7 @@ operational context.
 Replace the template text in your new Descriptor source file with the following
 code.
 
-![MetaEd Source for AlternativeEducationEligibilityReason Descriptor](../../../../static/img/reference/ods-api/image2024-5-30_15-49-10.png)
+![MetaEd Source for AlternativeEducationEligibilityReason Descriptor](/img/reference/ods-api/image2024-5-30_15-49-10.png)
 
 <details>
 <summary>MetaEd Source for AlternativeEducationEligibilityReason Descriptor</summary>
@@ -188,7 +188,7 @@ straightforward.
 
 **Click Build** in the VSCode Editor to generate artifacts.
 
-![Build](../../../../static/img/reference/ods-api/image2024-5-30_15-50-25.png)
+![Build](/img/reference/ods-api/image2024-5-30_15-50-25.png)
 
 ### Step 3b. View MetaEd Output
 
@@ -198,7 +198,7 @@ API metadata, and XSD used by the code generation, but also updated
 documentation such as data dictionaries that add your extension definitions to
 the ODS / API documentation.
 
-![MetaEd Output](../../../../static/img/reference/ods-api/image2024-5-30_15-51-46.png)
+![MetaEd Output](/img/reference/ods-api/image2024-5-30_15-51-46.png)
 
 We'll look at how to use this MetaEd output in your code below. First, we'll
 need to set up our extension project in Visual Studio.
@@ -224,18 +224,18 @@ of this documentation.
 Solution, **right-click** on the Ed-Fi Extensions Folder. Select **Add** > **New
 Project**.
 
-![Add New Project](../../../../static/img/reference/ods-api/image2024-5-30_15-56-51.png)
+![Add New Project](/img/reference/ods-api/image2024-5-30_15-56-51.png)
 
 **4b.2.** Search and select the **Ed-Fi API Extensions Project Template** option
 and click **Next**.
 
-![Search and select the Ed-Fi API Extensions Project Template](../../../../static/img/reference/ods-api/image2024-5-30_15-58-42.png)
+![Search and select the Ed-Fi API Extensions Project Template](/img/reference/ods-api/image2024-5-30_15-58-42.png)
 
 In the Project Name field
 enter **EdFi.Ods.Extensions.SampleAlternativeEducationProgram** and
 click ****Create**.**
 
-![Create Project](../../../../static/img/reference/ods-api/image2024-5-30_16-0-17.png)
+![Create Project](/img/reference/ods-api/image2024-5-30_16-0-17.png)
 
 :::info
 
@@ -256,12 +256,12 @@ file to **EdFi.Ods.Extensions.SampleAlternativeEducationProgram.nuspec**.
 **Marker\_EdFi\_Ods\_Extensions\_ExtensionName.cs** file and Rename the file to
 **Marker\_EdFi\_Ods\_Extensions\_**SampleAlternativeEducationProgram**.cs**.
 
-![Rename Marker Interface](../../../../static/img/reference/ods-api/image2024-5-30_16-4-16.png)
+![Rename Marker Interface](/img/reference/ods-api/image2024-5-30_16-4-16.png)
 
 **4c.2.** When prompted choose to rename all references to the code element
 **Marker\_EdFi\_Ods\_Extensions\_ExtensionName**.
 
-![Extension Rename Marker Confirm](../../../../static/img/reference/ods-api/extension-rename-marker-confirm.png)
+![Extension Rename Marker Confirm](/img/reference/ods-api/extension-rename-marker-confirm.png)
 
 ### Step 4d. Integrate Extension into the Solution
 
@@ -272,7 +272,7 @@ folder. **Right-click**, select **Add** > **Project** **Reference...**, t
 select
 the **EdFi.Ods.Extensions.**SampleAlternativeEducationProgram**** project.
 
-![Add Project Reference](../../../../static/img/reference/ods-api/image2024-5-30_16-6-51.png)
+![Add Project Reference](/img/reference/ods-api/image2024-5-30_16-6-51.png)
 
 **4d.2.** Locate any profile projects in the
 solution. **Right-click**, select **Add** > **Project** **Reference...**, then
@@ -300,7 +300,7 @@ Workspace tab, find the MetaEd extension and update the "Ods Api Deployment
 Directory" to point to the folder that contains the Ed-Fi-ODS and
 Ed-Fi-ODS-Implementation folders.
 
-![MetaEd Extension Settings](../../../../static/img/reference/ods-api/image2024-5-30_16-17-8.png)
+![MetaEd Extension Settings](/img/reference/ods-api/image2024-5-30_16-17-8.png)
 
 ### Step 5b. Deploy Your Extended Artifacts
 
@@ -315,7 +315,7 @@ previous work before running deployment.
 
 Deploy by clicking Deploy on the VSCode menu
 
-![Deploy](../../../../static/img/reference/ods-api/image2024-5-30_16-17-57.png)
+![Deploy](/img/reference/ods-api/image2024-5-30_16-17-57.png)
 
 This will run a new build of all artifacts, and the artifacts required for your
 Extended ODS / API project will be copied over to the correct locations. For
@@ -409,7 +409,7 @@ from a PowerShell prompt run `Initialize-PowershellForDevelopment.ps1` script,
 followed by the `initdev` command). Then, run the application and view the Ed-Fi
 ODS / API in the Swagger UI. The following new API resource should be visible:
 
-![New API Resource](../../../../static/img/reference/ods-api/image2024-5-30_17-4-51.png)
+![New API Resource](/img/reference/ods-api/image2024-5-30_17-4-51.png)
 
 ## Next Steps & Further Information
 
@@ -443,18 +443,18 @@ of this documentation.
 Solution, **right-click** on the Ed-Fi Extensions Folder. Select **Add** > **New
 Project**.
 
-![Add New Project](../../../../static/img/reference/ods-api/image2024-5-30_15-56-51.png)
+![Add New Project](/img/reference/ods-api/image2024-5-30_15-56-51.png)
 
 **2.2.** Search and select the **Ed-Fi API Extensions Project Template** option
 and click **Next**.
 
-![Search and select the Ed-Fi API Extensions Project Template](../../../../static/img/reference/ods-api/image2024-5-30_15-58-42.png)
+![Search and select the Ed-Fi API Extensions Project Template](/img/reference/ods-api/image2024-5-30_15-58-42.png)
 
 In the Project Name field,
 enter **EdFi.Ods.Extensions.SampleAlternativeEducationProgram** and
 click **Create**.
 
-![Create Project](../../../../static/img/reference/ods-api/image2024-5-30_16-0-17.png)
+![Create Project](/img/reference/ods-api/image2024-5-30_16-0-17.png)
 
 ### Step 3. Rename the "Marker" Interface File
 
@@ -468,12 +468,12 @@ to **EdFi.Ods.Extensions.**SampleAlternativeEducationProgram**.nuspec**.
 **Marker\_EdFi\_Ods\_Extensions\_ExtensionName.cs** file and Rename the file to
 **Marker\_EdFi\_Ods\_Extensions\_**SampleAlternativeEducationProgram**.cs**.
 
-![Rename Marker Interface](../../../../static/img/reference/ods-api/image2024-5-30_16-4-16.png)
+![Rename Marker Interface](/img/reference/ods-api/image2024-5-30_16-4-16.png)
 
 **3.2.** When prompted choose to rename all references to the code
 element **Marker\_EdFi\_Ods\_Extensions\_**SampleAlternativeEducationProgram****.
 
-![Extension Rename Marker Confirm](../../../../static/img/reference/ods-api/extension-rename-marker-confirm.png)
+![Extension Rename Marker Confirm](/img/reference/ods-api/extension-rename-marker-confirm.png)
 
 ### Step 4. Integrate Extension into the Solution
 
@@ -484,7 +484,7 @@ folder. **Right-click**, select **Add** > **Project** **Reference...**, th
 select
 the **EdFi.Ods.Extensions.**SampleAlternativeEducationProgram**** project.
 
-![Add Project Reference](../../../../static/img/reference/ods-api/image2024-5-30_16-6-51.png)
+![Add Project Reference](/img/reference/ods-api/image2024-5-30_16-6-51.png)
 
 **4.2.** Locate any profile projects in the
 solution. **Right-click**, select **Add** \> **Project Reference...**, then
@@ -560,7 +560,7 @@ from a PowerShell prompt run `Initialize-PowershellForDevelopment.ps1` script,
 followed by the `initdev` command). Then, run the application and view the Ed-Fi
 ODS / API in the Swagger UI. The following new API resource should be visible:
 
-![New API Resource](../../../../static/img/reference/ods-api/image2024-5-30_17-5-2.png)
+![New API Resource](/img/reference/ods-api/image2024-5-30_17-5-2.png)
 
 :::note
 The following GitHub links contain source files for this extensibility sample.

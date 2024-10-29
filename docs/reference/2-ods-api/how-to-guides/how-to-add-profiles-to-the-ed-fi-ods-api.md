@@ -8,15 +8,15 @@ can define profile via embedded resource in a C# project as described in
 [Appendix
 A](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V72/pages/23301303/How+To+Add+Profiles+to+the+Ed-Fi+ODS+API#HowTo:AddProfilestotheEd-FiODS/API-AppendixA:AddingProfilesUsingtheVisualStudioProfilesProjectTemplate).
 
-- [How To: Add Profiles to the Ed-Fi ODS / API](#how-to-add-profiles-to-the-ed-fi-ods--api)
-  - [Step 1. Add Profiles via the EdFi\_Admin Database](#step-1-add-profiles-via-the-edfi_admin-database)
-  - [Step 2. Verify that the API Profiles feature is enabled](#step-2-verify-that-the-api-profiles-feature-is-enabled)
-  - [Step 3. Verify that the Profile endpoints are visible](#step-3-verify-that-the-profile-endpoints-are-visible)
-  - [Step 4. Confirm Profile Settings](#step-4-confirm-profile-settings)
-  - [Appendix A: Adding Profiles Using the Visual Studio Profiles Project Template](#appendix-a-adding-profiles-using-the-visual-studio-profiles-project-template)
-    - [Step 1. Create the Profiles Project](#step-1-create-the-profiles-project)
-    - [Step 2. Integrate Profiles into the Solution](#step-2-integrate-profiles-into-the-solution)
-    - [Step 3. Rebuild the Solution and Verify Changes](#step-3-rebuild-the-solution-and-verify-changes)
+* [How To: Add Profiles to the Ed-Fi ODS / API](#how-to-add-profiles-to-the-ed-fi-ods--api)
+  * [Step 1. Add Profiles via the EdFi\_Admin Database](#step-1-add-profiles-via-the-edfi_admin-database)
+  * [Step 2. Verify that the API Profiles feature is enabled](#step-2-verify-that-the-api-profiles-feature-is-enabled)
+  * [Step 3. Verify that the Profile endpoints are visible](#step-3-verify-that-the-profile-endpoints-are-visible)
+  * [Step 4. Confirm Profile Settings](#step-4-confirm-profile-settings)
+  * [Appendix A: Adding Profiles Using the Visual Studio Profiles Project Template](#appendix-a-adding-profiles-using-the-visual-studio-profiles-project-template)
+    * [Step 1. Create the Profiles Project](#step-1-create-the-profiles-project)
+    * [Step 2. Integrate Profiles into the Solution](#step-2-integrate-profiles-into-the-solution)
+    * [Step 3. Rebuild the Solution and Verify Changes](#step-3-rebuild-the-solution-and-verify-changes)
 
 ## Step 1. Add Profiles via the EdFi\_Admin Database
 
@@ -26,7 +26,7 @@ Organizations, Profile assignments, and Profile definitions.
 
 The tables related to this process are shown below.
 
-![Table Relationships](../../../../static/img/reference/ods-api/image-2023-4-5_22-34-39.png)
+![Table Relationships](/img/reference/ods-api/image-2023-4-5_22-34-39.png)
 
 API Profiles can be directly inserted into the Profiles table and then assigned
 to Applications via the ProfileApplications table. When making changes in the
@@ -38,7 +38,7 @@ Ed-Fi-ODS-API-Profiles.xsd.
 The screenshot below shows examples of Profiles defined in the EdFi\_Admin
 `Profiles` table.
 
-![Profiles Defined in the EdFi Admin Database](../../../../static/img/reference/ods-api/image-2023-4-6_4-25-33.png)
+![Profiles Defined in the EdFi Admin Database](/img/reference/ods-api/image-2023-4-6_4-25-33.png)
 
 :::info
 
@@ -89,9 +89,9 @@ new resource.
 
 :::
 
-![Profiles](../../../../static/img/reference/ods-api/image2017-12-18_16-23-55.png)
+![Profiles](/img/reference/ods-api/image2017-12-18_16-23-55.png)
 
-![Profiles](../../../../static/img/reference/ods-api/image-2023-4-17_20-9-3.png)
+![Profiles](/img/reference/ods-api/image-2023-4-17_20-9-3.png)
 
 ## Step 4. Confirm Profile Settings
 
@@ -126,7 +126,7 @@ of this documentation.
 1. Add the Profiles project, right-click on the "Profiles" folder and
     select **File > Add > New Project...**
 
-    ![Profiles Project](../../../../static/img/reference/ods-api/profiles1.png)
+    ![Profiles Project](/img/reference/ods-api/profiles1.png)
 
 2. In the "Add New Project" dialog, find and select the "Ed-Fi API Profiles
     Project Template" entry as shown below. Click **Next**.
@@ -134,7 +134,7 @@ of this documentation.
     suggested naming convention for this type of project is something like
     **EdFi.Ods.Profiles.MyProfiles**.
 
-    ![Profiles Project](../../../../static/img/reference/ods-api/profiles2.png)
+    ![Profiles Project](/img/reference/ods-api/profiles2.png)
 
 4. **Review and modify Profiles.xml file**. The Visual Studio Project Template
     creates a sample **Profiles.xml** file. You should open it and modify it to

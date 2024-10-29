@@ -31,13 +31,13 @@ section of this documentation.
 * In the "Add New Project" dialog, find and select the "Ed-Fi API Composites
     Project Template" entry as shown below. Click **Next.**
 
-    ![Project Template](../../../../static/img/reference/ods-api/composite-project-template.png)
+    ![Project Template](/img/reference/ods-api/composite-project-template.png)
 
 * Enter the project name for the new project and click **Create**. The suggested
     naming convention for this type of project is something
     like **EdFi.Ods.Composites.MyComposites**.
 
-    ![Project Template](../../../../static/img/reference/ods-api/composite-project-template2.png)
+    ![Project Template](/img/reference/ods-api/composite-project-template2.png)
 
 ### Step 1.2. Update the Marker Interface file
 
@@ -128,7 +128,7 @@ the new resource.
 
 :::
 
-![Composites](../../../../static/img/reference/ods-api/composites3.png)
+![Composites](/img/reference/ods-api/composites3.png)
 
 The `organizationCode` mentioned in Step 1.3 ("ed-fi" in this example) can be
 seen in the Composite URLs above (e.g.,

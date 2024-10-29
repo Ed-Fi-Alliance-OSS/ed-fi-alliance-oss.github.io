@@ -28,7 +28,7 @@ database or by authorization.
 
 A high level dependency graph is shown bellow:
 
-![Dependency Graph](../../../../static/img/reference/ods-api/dependency%20graph.png)
+![Dependency Graph](/img/reference/ods-api/dependency%20graph.png)
 
 ## Dependency Order Endpoint
 
@@ -47,13 +47,13 @@ use it programmatically for orchestration of API calls.
 
 The Postman screenshot below shows the GET call:
 
-![Dependency Endpoint - json endpoint](../../../../static/img/reference/ods-api/Dependency%20Endpoint%20-json%20endpoint.jpg)
+![Dependency Endpoint - json endpoint](/img/reference/ods-api/Dependency%20Endpoint%20-json%20endpoint.jpg)
 
 Adding a header `Accept` with a value of `application/graphml` can be passed to
 obtain dependency output in the graphml XML format. The Postman screen shot
 below shows the GET call with the added header:
 
-![Dependency Endpoint - Graphml output](../../../../static/img/reference/ods-api/Dependency%20Endpoint%20-%20Graphml%20output.png)
+![Dependency Endpoint - Graphml output](/img/reference/ods-api/Dependency%20Endpoint%20-%20Graphml%20output.png)
 
 The screenshots bellow show the dependency order enforced by authorization on
 the Students resource. You can see that Student creation is at
@@ -63,16 +63,16 @@ created until an enrollment record has been established.
 
 A Postman screen shot showing the Student creation at order 3:
 
-![Dependency Endpoint - Student Create](../../../../static/img/reference/ods-api/Dependency%20Endpoint%20-%20Student%20Create.png)
+![Dependency Endpoint - Student Create](/img/reference/ods-api/Dependency%20Endpoint%20-%20Student%20Create.png)
 
 A screenshot showing the StudentSchoolAssociation creation at order 18:
 
-![Dependency Endpoint - Student School Association Create](../../../../static/img/reference/ods-api/Dependency%20Endpoint%20-%20Student%20School%20Association%20Create.png)
+![Dependency Endpoint - Student School Association Create](/img/reference/ods-api/Dependency%20Endpoint%20-%20Student%20School%20Association%20Create.png)
 
 A final screenshot showing the Student update at order 19, after
 the StudentSchoolAssociation creation:
 
-![Dependency Endpoint - Student Update](../../../../static/img/reference/ods-api/Dependency%20Endpoint%20-%20Student%20Update.png)
+![Dependency Endpoint - Student Update](/img/reference/ods-api/Dependency%20Endpoint%20-%20Student%20Update.png)
 
 :::note
 

@@ -520,8 +520,8 @@ window showing that code generation is running.
 **Step 4 :** Open Test Explorer and look for the Verify_All test and run it to
 see if there are any failures
 
-![Test Explorer](../../../../static/img/reference/ods-api/image2022-3-8_10-17-36.png)
+![Test Explorer](/img/reference/ods-api/image2022-3-8_10-17-36.png)
 
 **Step 5 :** Approve any changes, if appropriate.
 
-![Approve Changes](../../../../static/img/reference/ods-api/image2022-3-8_10-18-8.png)
+![Approve Changes](/img/reference/ods-api/image2022-3-8_10-18-8.png)

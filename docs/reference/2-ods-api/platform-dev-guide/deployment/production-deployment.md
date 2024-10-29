@@ -149,7 +149,7 @@ Very small deployments (up to about 7,500 students) can function on a simple,
 two-server model. One server hosts the API application and the other hosts the
 SQL Server platform and the ODS data store.
 
-![Two-server deployment model](../../../../../static/img/reference/ods-api/image17.png)
+![Two-server deployment model](/img/reference/ods-api/image17.png)
 
 This configuration is excellent for small organizations because it is
 inexpensive, easy to maintain, and leverages common technologies that are
@@ -161,7 +161,7 @@ used for a cloud-based or hybrid deployment.
 
 ### Load-Balanced Deployment Model
 
-![Load-balanced deployment model](../../../../../static/img/reference/ods-api/image06.png)
+![Load-balanced deployment model](/img/reference/ods-api/image06.png)
 
 A load-balanced deployment, whether on-site or in the cloud, includes an HTTP
 Load Balancer that analyzes and routes incoming network traffic, multiple web

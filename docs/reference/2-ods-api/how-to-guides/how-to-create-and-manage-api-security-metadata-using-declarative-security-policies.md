@@ -35,7 +35,7 @@ Individual API resources are represented as "leaf nodes" (aka _resource claims_)
 that are grouped under higher level _domain claims,_ as depicted in the image
 below.
 
-![Leaf Nodes](../../../../static/img/reference/ods-api/image2022-8-29_18-21-56.png)
+![Leaf Nodes](/img/reference/ods-api/image2022-8-29_18-21-56.png)
 
 The XML representation of this structure is as follows:
 
@@ -282,7 +282,7 @@ elements in a single document is depicted in the image below. Additionally,
 there are some aspects of the format that have specific behaviors that you must
 be aware of while authoring policies, and those are discussed next.
 
-![Sample Security Policy](../../../../static/img/reference/ods-api/image2022-8-30_11-50-23.png)
+![Sample Security Policy](/img/reference/ods-api/image2022-8-30_11-50-23.png)
 
 ### Create New Claims and Claim Sets
 

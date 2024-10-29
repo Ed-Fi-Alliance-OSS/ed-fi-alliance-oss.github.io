@@ -77,7 +77,7 @@ At its most basic level, the Ed-Fi ODS / API platform consists of two logical
 servers: a web server (for the ODS / API), a database server (for the ODS
 database). A diagram showing a typical configuration follows:
 
-![Logical configuration](../../../../../static/img/reference/ods-api/image2015-11-16%208-35-34.png)
+![Logical configuration](/img/reference/ods-api/image2015-11-16%208-35-34.png)
 
 These logical functions may be combined into one or more physical (or virtual)
 machines depending upon the scale and preferences of the hosting organization.
@@ -134,7 +134,7 @@ live Sandbox deployments. A typical single-server specification follows:
 
 A diagram of a simple two-server deployment follows:
 
-![Two-server deployment](../../../../../static/img/reference/ods-api/image17.png)
+![Two-server deployment](/img/reference/ods-api/image17.png)
 
 The two-server deployment of an Ed-Fi ODS / API Sandbox provides greater
 security and performance than the single server configuration. This is a common
@@ -294,7 +294,7 @@ root location can be:
 The following diagram shows the relationship between the various databases and
 their corresponding ODS / API websites.
 
-![Relationship between databases and websites](../../../../../static/img/reference/ods-api/image2015-11-16%208-58-14.png)
+![Relationship between databases and websites](/img/reference/ods-api/image2015-11-16%208-58-14.png)
 
 Detailed instructions regarding the installation and configuration of each
 website are provided in the sections that follow.
@@ -315,7 +315,7 @@ website are provided in the sections that follow.
         apply.  You can create a new self-signed certificate or use an existing
         one.
 
-        ![SSL certificate](../../../../../static/img/reference/ods-api/image2022-12-7_15-40-25.png)
+        ![SSL certificate](/img/reference/ods-api/image2022-12-7_15-40-25.png)
 
 ### EdFi.Ods.WebApi
 
@@ -357,7 +357,7 @@ Steps to deploy the application:
 7. Fill in the application name and the server location that you have published
     the application:
 
-    ![Application](../../../../../static/img/reference/ods-api/image18.png)
+    ![Application](/img/reference/ods-api/image18.png)
 
 8. Click **OK**.
 
@@ -379,7 +379,7 @@ about the API.
 Note: EdFi\_Ods\_\* connection strings are not stored in the EdFi.Ods.WebApi
 configuration file. They are configured in the EdFi\_Admin database and Sandbox
 Administration Application will create those entries at startup and when new
-sandbox creation is requested.  
+sandbox creation is requested.
 
 ### EdFi.Ods.SandboxAdmin
 
@@ -416,7 +416,7 @@ Prerequisites:
         one. Ed-Fi deployment scripts generate the self-signed certificate
         Ed-Fi-ODS which is typically what is used for local IIS deployments.
 
-        ![SSL certificate](../../../../../static/img/reference/ods-api/image2022-12-7_15-40-25.png)
+        ![SSL certificate](/img/reference/ods-api/image2022-12-7_15-40-25.png)
 
 3. All dependent databases are in place.
 
@@ -440,13 +440,13 @@ Steps to deploy the application:
 7. Fill in the application name and the server location that you have published
     the application:
 
-    ![Name and location](../../../../../static/img/reference/ods-api/image05.png)
+    ![Name and location](/img/reference/ods-api/image05.png)
 
 8. Click **OK**.
 
 9. The application is ready to use.
 
-    ![Ready to use](../../../../../static/img/reference/ods-api/image07.png)
+    ![Ready to use](/img/reference/ods-api/image07.png)
 
 10. The article [Using the Sandbox Admin
      Portal](../../client-developers-guide/using-the-sandbox-administration-portal.md)
@@ -506,7 +506,7 @@ Prerequisites:
         one. Ed-Fi deployment scripts generate the self-signed certificate
         Ed-Fi-ODS which is typically what is used for local IIS deployments.
 
-        ![SSL certificate](../../../../../static/img/reference/ods-api/image2022-12-7_15-40-25.png)
+        ![SSL certificate](/img/reference/ods-api/image2022-12-7_15-40-25.png)
 
 3. All dependent databases are in place.
 
@@ -530,13 +530,13 @@ Steps to deploy the application:
 7. Fill in the application name and the server location that you have published
     the application:
 
-    ![Name and location](../../../../../static/img/reference/ods-api/image16.png)
+    ![Name and location](/img/reference/ods-api/image16.png)
 
 8. Click **OK**.
 
 9. The application is ready to use.
 
-    ![Ready to use](../../../../../static/img/reference/ods-api/image-2023-6-5_10-41-38.png)
+    ![Ready to use](/img/reference/ods-api/image-2023-6-5_10-41-38.png)
 
 |     |     |     |
 | --- | --- | --- |

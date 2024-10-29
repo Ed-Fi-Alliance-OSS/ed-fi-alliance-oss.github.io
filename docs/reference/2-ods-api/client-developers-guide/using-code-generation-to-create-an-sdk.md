@@ -20,13 +20,13 @@ for OpenApi v3.0
 
 The high-level steps are:
 
-- [Using Code Generation to Create an SDK](#using-code-generation-to-create-an-sdk)
-  - [Step 1. Install Latest Version of Java](#step-1-install-latest-version-of-java)
-  - [Step 2. Download the OpenApi Codegen JAR File](#step-2-download-the-openapi-codegen-jar-file)
-  - [Step 3. Generate the SDK Source Files](#step-3-generate-the-sdk-source-files)
-    - [Resources, Descriptors and Extensions](#resources-descriptors-and-extensions)
-    - [Ed-Fi Core Resources and Descriptors](#ed-fi-core-resources-and-descriptors)
-  - [Step 4. Use the SDK in a Sample C# Program](#step-4-use-the-sdk-in-a-sample-c-program)
+* [Using Code Generation to Create an SDK](#using-code-generation-to-create-an-sdk)
+  * [Step 1. Install Latest Version of Java](#step-1-install-latest-version-of-java)
+  * [Step 2. Download the OpenApi Codegen JAR File](#step-2-download-the-openapi-codegen-jar-file)
+  * [Step 3. Generate the SDK Source Files](#step-3-generate-the-sdk-source-files)
+    * [Resources, Descriptors and Extensions](#resources-descriptors-and-extensions)
+    * [Ed-Fi Core Resources and Descriptors](#ed-fi-core-resources-and-descriptors)
+  * [Step 4. Use the SDK in a Sample C# Program](#step-4-use-the-sdk-in-a-sample-c-program)
 
 Each step is outlined in detail below.
 
@@ -115,18 +115,18 @@ named **EdFi.OdsApi.Sdk.sln** will be created with the SDK artifacts.
 3. In the **Solution Explorer,** **right-click** on the solution and add a
     reference to the sample project that you downloaded in the previous step.
 
-    ![Solution Explorer](../../../../static/img/reference/ods-api/image2024-4-29_10-58-47.png)
+    ![Solution Explorer](/img/reference/ods-api/image2024-4-29_10-58-47.png)
 
 4. **Right-click** on **Edfi.OdsApi.SdkClient** \> **Set as Startup Project**..
-    ![Set as Startup Project](../../../../static/img/reference/ods-api/image2024-4-29_11-1-2.png)
+    ![Set as Startup Project](/img/reference/ods-api/image2024-4-29_11-1-2.png)
 
 5. **Right-click EdFi.OdsApi.SdkClient Dependencies node** and click **Add
     Project Reference**.
-    ![Add Project Reference](../../../../static/img/reference/ods-api/image2024-4-29_11-2-5.png)
+    ![Add Project Reference](/img/reference/ods-api/image2024-4-29_11-2-5.png)
 
 6. In the **Add Reference** > **Projects** tab, select **EdFi.OdsApi.Sdk**, and
     then click **OK**.
-    ![Add Project Reference](../../../../static/img/reference/ods-api/image2024-4-29_11-7-4.png)
+    ![Add Project Reference](/img/reference/ods-api/image2024-4-29_11-7-4.png)
 
 7. **Right-click EdFi.OdsApi.SdkClient > Properties > Debug** \> **Open debug
     launch profiles UI** and set the command line arguments that will be used
@@ -134,14 +134,14 @@ named **EdFi.OdsApi.Sdk.sln** will be created with the SDK artifacts.
     you can use our hosted sandbox environment; the URL, client key and secret
     are in the Downloads panel on the right.
 
-    ![Debug Launch Profiles](../../../../static/img/reference/ods-api/image2024-4-29_11-5-39.png)
+    ![Debug Launch Profiles](/img/reference/ods-api/image2024-4-29_11-5-39.png)
 
     ```bash
     --url <ODS API Base URL> --key <client key> --secret <client secret>
     ```
 
 8. Run the application and you should see the following results:
-    ![Results](../../../../static/img/reference/ods-api/image2022-3-31_14-46-32.png)
+    ![Results](/img/reference/ods-api/image2022-3-31_14-46-32.png)
 
 With that, you're done!
 
