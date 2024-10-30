@@ -1,5 +1,12 @@
 # Error Response Knowledge Base
 
+:::tip
+
+This article applies to ODS/API 7.2 and above, and to the new Data Management
+Service.
+
+:::
+
 The Ed-Fi ODS/API adheres to the REST principles when responding to HTTP
 requests, including the use of standard status codes in HTTP responses.
 Beginning with version 7.2, the ODS/API implements the [Problem Details RFC
@@ -9,14 +16,14 @@ content.
 
 The following fields included in the API error response are noteworthy:
 
-* `**type**`: This field uniquely identifies the error type as specified in
+* **`type`**: This field uniquely identifies the error type as specified in
     RFC 9457. `type` is defined as a URI where each segment represents a level
     in the hierarchy into which the errors types are organized. For example,
     `urn:ed-fi:api:security:authorization:access-denied:resource` and
     `urn:ed-fi:api:security:authorization:access-denied:action` identify
     specific issue types within the context of an authorization error.
 
-* `**detail**`: The `detail` field provides a user-friendly description of the
+* **`detail`**: The `detail` field provides a user-friendly description of the
     encountered issue.
 
 * **`validationErrors`**: In the case of bad request errors, the response
@@ -78,9 +85,10 @@ extension](https://swagger.io/docs/specification/openapi-extensions/). PUT
 actions that permit updating natural key fields are marked with
 the `x-Ed-Fi-isUpdatable` specification extension.
 
-##### Example
+<details>
+<summary>Example</summary>
 
-Http Request
+HTTP Request
 
 ```text
 POST https://api.ed-fi.org:443/v7.2/api/data/v3/ed-fi/programs/092a2f5eaaa5491aa575ffdd5ec662ef
@@ -97,7 +105,7 @@ Content-Type: application/json
 }
 ```
 
-Http Response
+HTTP Response
 
 ```text
 HTTP/1.1 400 Bad Request
@@ -112,6 +120,8 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
+</details>
+
 :::tip Problem is in the application code → send to application development
 team for resolution.
 
@@ -125,9 +135,10 @@ team for resolution.
 A POST request should not contain an `id`  value. This value is auto-assigned by
 the API application.
 
-##### Example
+<details>
+<summary>Example</summary>
 
-Http Request
+HTTP Request
 
 ```text
 POST https://api.ed-fi.org:443/v7.2/api/data/v3/ed-fi/absenceEventCategoryDescriptors
@@ -144,7 +155,7 @@ Content-Type: application/json
 
 ```
 
-Http Response
+HTTP Response
 
 ```text
 HTTP/1.1 400 Bad Request
@@ -163,13 +174,14 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
+</details>
+
 :::tip
 
 Problem is in the application code → send to application development
 team for resolution.
 
 * Remove the `id`  value from the payload when POSTing a request.
-*
 
 :::
 
@@ -178,9 +190,10 @@ team for resolution.
 The data model for every endpoint includes one or more required property /
 field.
 
-##### Example: missing one required property, `codeValue`
+<details>
+<summary>Example: Missing one required property, `codeValue`</summary>
 
-Http Request
+HTTP Request
 
 ```text
 POST https://api.ed-fi.org:443/v7.2/api/data/v3/ed-fi/absenceEventCategoryDescriptors
@@ -195,7 +208,7 @@ Content-Type: application/json
 
 ```
 
-Http Response
+HTTP Response
 
 ```text
 HTTP/1.1 400 Bad Request
@@ -216,9 +229,12 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
-##### Example: missing two required properties, `codeValue`  and `shortDescription`
+</details>
 
-Http Request
+<details>
+<summary>Example:  missing two required properties, `codeValue`  and `shortDescription`</summary>
+
+HTTP Request
 
 ```text
 POST https://api.ed-fi.org:443/v7.2/api/data/v3/ed-fi/absenceEventCategoryDescriptors
@@ -232,7 +248,7 @@ Content-Type: application/json
 
 ```
 
-Http Response
+HTTP Response
 
 ```text
 HTTP/1.1 400 Bad Request
@@ -253,8 +269,9 @@ Content-Type: application/json; charset=utf-8
     ]
   }
 }
-
 ```
+
+</details>
 
 :::tip
 
@@ -277,11 +294,12 @@ The Ed-Fi Data Model prescribes a maximum string length in many cases. The
 application code needs to truncate strings to fit, if they are larger than the
 data model's allowed length.
 
-##### Example: `codeValue` is longer than 50 characters
+<details>
+<summary>Example: `codeValue` is longer than 50 characters</summary>
 
-Http Request
+HTTP Request
 
-```
+```text
 POST https://api.ed-fi.org:443/v7.2/api/data/v3/ed-fi/absenceEventCategoryDescriptors
 Authorization: bearer 6f5bb488a65948b5b847b561b23e
 Content-Type: application/json
@@ -294,7 +312,7 @@ Content-Type: application/json
 
 ```
 
-Http Response
+HTTP Response
 
 ```text
 HTTP/1.1 400 Bad Request
@@ -314,6 +332,8 @@ Content-Type: application/json; charset=utf-8
 }
 
 ```
+
+</details>
 
 :::tip
 
@@ -336,12 +356,13 @@ development team for resolution.
 What happens if the JSON body on a POST or PUT request is not valid? Generally,
 you get a detailed message telling you exactly where to look for the error.
 
-##### Example
+<details>
+<summary>Example</summary>
 
 An extra comma after the `schoolId` value. One trailing comma is
 fine, but two is an error.
 
-Http Request
+HTTP Request
 
 ```text
 POST https://api.ed-fi.org/v7.2/api/data/v3/ed-fi/academicWeeks
@@ -359,7 +380,7 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
-Http Response
+HTTP Response
 
 ```text
 HTTP/1.1 400 Bad Request
@@ -383,9 +404,12 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
-##### Example: missing closing curly brace before `beginDate`
+</details>
 
-Http Request
+<details>
+<summary>Example:  missing closing curly brace before `beginDate`</summary>
+
+HTTP Request
 
 ```text
 POST https://api.ed-fi.org/v7.2/api/data/v3/ed-fi/academicWeeks
@@ -403,7 +427,7 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
-Http Response
+HTTP Response
 
 ```text
 HTTP/1.1 400 Bad Request
@@ -424,6 +448,8 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
+</details>
+
 :::tip
 
 Problem is in the client application code → send to application
@@ -440,12 +466,13 @@ Most integers in an Ed-Fi API resource are Int32 (max value: 2,147,483,647),
 though a few may be Int64 starting with ODS/API 7.0 (max
 value:9,223,372,036,854,775,807).
 
-##### Example
+<details>
+<summary>Example</summary>
 
 When `communityOrganizationId` is set to a too large value to hold
 in `Int64` field
 
-Http Request
+HTTP Request
 
 ```text
 POST https://api.ed-fi.org/v7.2/api/data/v3/ed-fi/communityOrganizations
@@ -472,7 +499,7 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
-Http Response
+HTTP Response
 
 ```text
 HTTP/1.1 400 Bad Request
@@ -493,17 +520,20 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
+</details>
+
 #### Excessive String Length
 
 Many properties that take a string value have a maximum length associated with
 them.
 
-##### Example
+<details>
+<summary>Example</summary>
 
 `rating`  on `accountabilityRatings` has a max length of 35
 characters.
 
-Http Request
+HTTP Request
 
 ```text
 POST https://api.ed-fi.org/v7.2/api/data/v3/ed-fi/accountabilityRatings
@@ -523,7 +553,7 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
-Http Response
+HTTP Response
 
 ```text
 HTTP/1.1 400 Bad Request
@@ -544,6 +574,8 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
+</details>
+
 :::tip
 
 Problem is in the client application code → send to application
@@ -559,18 +591,19 @@ development team for resolution.
 In the previous example, the request _does_ have a body, it just doesn't have
 any properties in it. What happens if you don't send a body at all?
 
-Http Request
+<details>
+<summary>Example</summary>
+
+HTTP Request
 
 ```text
 POST https://api.ed-fi.org/v7.2/api/data/v3/ed-fi/schools
 Authorization: Bearer 6f5bb488a65948b5b847b561b23e
 Content-Type: application/json; charset=utf-8
 
-
-
 ```
 
-Http Response
+HTTP Response
 
 ```text
 HTTP/1.1 400 Bad Request
@@ -589,6 +622,8 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
+</details>
+
 :::tip
 
 Problem is in the client application code → send to application
@@ -604,7 +639,9 @@ development team for resolution.
 The Ed-Fi ODS/API expects UTF-8 character encoding. In the following example,
 the `content-type`  is set as UTF-16, but the content is actually in UTF-8.
 
-Http Request
+<details>
+<summary>Example</summary>
+HTTP Request
 
 ```text
 POST https://api.ed-fi.org/v7.2/api/data/v3/ed-fi/accountabilityRatings
@@ -624,12 +661,13 @@ Content-Type: application/json; charset=utf-16
 
 ```
 
-Http Response
+HTTP Response
 
 ```text
 HTTP/1.1 400 Bad Request
 Content-Type: application/json; charset=utf-8
 
+{
  "detail": "The request could not be processed. See 'errors' for details.",
     "type": "urn:ed-fi:api:bad-request",
     "title": "Bad Request",
@@ -640,6 +678,8 @@ Content-Type: application/json; charset=utf-8
     ]
 }
 ```
+
+</details>
 
 :::tip
 
@@ -656,7 +696,9 @@ Un-escaped HTML will be rejected in the validation process, as a protection for
 avoiding potential cross-site scripting attacks against other applications that
 consume data from the Ed-Fi ODS/API.
 
-Http Request
+<details>
+<summary>Example</summary>
+HTTP Request
 
 ```text
 POST https://api.ed-fi.org/v7.2/api/data/v3/ed-fi/accountabilityRating
@@ -676,7 +718,7 @@ Content-Type: application/json; charset=utf-16
 
 ```
 
-Http Response
+HTTP Response
 
 ```text
 HTTP/1.1 400 Bad Request
@@ -698,12 +740,14 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
+</details>
+
 :::tip
 
 Problem is in the application code → send to application development
 team for resolution.
 
-* Encode the < character as &lt;
+* Encode the &lt; character as &amp;lt;
 
 ```text
 "rating": "&lt;script>alert('hi')&lt;/script>"
@@ -720,9 +764,10 @@ injection attack on your application.
 Strings that compose the natural key on a resource cannot have a space in the
 initial or last position of the string.
 
-##### Example: `ratingTitle` contains leading and trailing white spaces
+<details>
+<summary>Example:  `ratingTitle` contains leading and trailing white spaces</summary>
 
-Http Request
+HTTP Request
 
 ```text
 POST https://api.ed-fi.org/v7.2/api/data/v3/ed-fi/accountabilityRating
@@ -742,7 +787,7 @@ Content-Type: application/json; charset=utf-16
 
 ```
 
-Http Response
+HTTP Response
 
 ```text
 HTTP/1.1 400 Bad Request
@@ -763,6 +808,8 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
+</details>
+
 :::tip
 
 Problem is in the client application code → send to application
@@ -778,7 +825,9 @@ development team for resolution.
 Some resources have required arrays / collections on them. The error message is
 specific to the circumstance of an empty array in the JSON payload.
 
-Http Request
+<details>
+<summary>Example</summary>
+HTTP Request
 
 ```text
 POST https://api.ed-fi.org/v7.2/api/data/v3/ed-fi/bellSchedules
@@ -795,7 +844,7 @@ Content-Type: application/json; charset=utf-16
 
 ```
 
-Http Response
+HTTP Response
 
 ```text
 HTTP/1.1 400 Bad Request
@@ -815,13 +864,18 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
+</details>
+
 #### Missing a Required Property on an Item in a Collection
 
 Some resources have collections (arrays) of information, and the model for that
 collection may include required fields. The error message will help guide you
 not only to the field, but also which entry in the collection has the problem.
 
-Http Request
+<details>
+<summary>Example</summary>
+
+HTTP Request
 
 ```text
 POST https://api.ed-fi.org/v7.2/api/data/v3/ed-fi/assessments
@@ -861,7 +915,7 @@ Content-Type: application/json; charset=utf-16
 
 ```
 
-Http Response
+HTTP Response
 
 ```text
 HTTP/1.1 400 Bad Request
@@ -882,6 +936,8 @@ Content-Type: application/json; charset=utf-8
 }
 
 ```
+
+</details>
 
 :::tip
 
@@ -913,7 +969,9 @@ interesting features:
     school year - but conceivably these may differ at times. A student might
     nominally be in a particular class, but planning on graduating early.
 
-Http Request
+<details>
+<summary>Example</summary>
+HTTP Request
 
 ```text
 POST https://api.ed-fi.org/v7.2/api/data/v3/ed-fi/studentSchoolAssociations
@@ -949,7 +1007,7 @@ Content-Type: application/json; charset=utf-16
 
 ```
 
-Http Response
+HTTP Response
 
 ```text
 HTTP/1.1 400 Bad Request
@@ -979,6 +1037,8 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
+</details>
+
 :::tip
 
 Problem may be in the application code → send to application
@@ -986,9 +1046,9 @@ development team for resolution.
 
 * Review the model definition.
 * Ensure that the right values are being transmitted. However, this
-    conceivably might be a source system problem that requires modification by an
-    end user, if the source system itself allows for selecting a combination of
-    values that are logically inconsistent in this way.
+  conceivably might be a source system problem that requires modification by an
+  end user, if the source system itself allows for selecting a combination of
+  values that are logically inconsistent in this way.
 
 :::
 
@@ -998,7 +1058,9 @@ Client applications issuing GET requests, with or without search terms, can
 control how many records come back from a request - up to a maximum count. By
 default that max count is 500.
 
-Http Request
+<details>
+<summary>Example</summary>
+HTTP Request
 
 ```text
 POST https://api.ed-fi.org/v7.2/api/data/v3/ed-fi/studentSchoolAssociations
@@ -1011,7 +1073,7 @@ Content-Type: application/json; charset=utf-16
 
 ```
 
-Http Response
+HTTP Response
 
 ```text
 HTTP/1.1 400 Bad Request
@@ -1030,6 +1092,8 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
+</details>
+
 :::tip
 
 Problem is in the application code → send to application development
@@ -1046,9 +1110,10 @@ team for resolution.
 This error occurs when the HTTP request _structure_ is good, but one or more
 descriptor _value_ does not exist.
 
-**Example:** bad descriptor _codeValue_
+<details>
+<summary>Example: bad descriptor _codeValue_</summary>
 
-Http Request
+HTTP Request
 
 ```text
 PUT https://api.ed-fi.org/v7.2/api/data/v3/ed-fi/studentAcademicRecords/d074a26cec7449299f701ba54e0f0257
@@ -1080,7 +1145,7 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
-Http Response
+HTTP Response
 
 ```text
 HTTP/1.1 400 Bad Request
@@ -1101,9 +1166,12 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
-##### Example: bad namespace
+</details>
 
-Http Request
+<details>
+<summary>Example:  bad namespace</summary>
+
+HTTP Request
 
 ```text
 POST https://api.ed-fi.org/v7.2/api/data/v3/ed-fi/studentAcademicRecords
@@ -1132,7 +1200,7 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
-Http Response
+HTTP Response
 
 ```text
 HTTP/1.1 400 Bad Request
@@ -1153,6 +1221,8 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
+</details>
+
 :::tip
 
 The problem could be in either the application code or in the source
@@ -1172,9 +1242,10 @@ source system user interface.
 
 #### Invalid Profile Usage
 
-##### Example 1: PUT/POST request when read-only profile is in use
+<details>
+<summary>Example 1: PUT/POST request when read-only profile is in use</summary>
 
-Http Request
+HTTP Request
 
 ```text
 PUT https://api.ed-fi.org/v7.2/api/data/v3/ed-fi/schools/310a0f89ada9413e9e9e46187bb1d10d
@@ -1212,7 +1283,7 @@ Content-Type: application/vnd.ed-fi.school.sample-profile-resource-readonly.read
 
 ```
 
-Http Response
+HTTP Response
 
 ```text
 HTTP/1.1 400 Bad Request
@@ -1230,11 +1301,15 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
+</details>
+
 ### urn:ed-fi:api:profile:invalid-method-usage
 
 #### Invalid Method Usage
 
-Http Request
+<details>
+<summary>Example</summary>
+HTTP Request
 
 ```text
 POST http://localhost:8765/data/v3/ed-fi/schools
@@ -1261,7 +1336,7 @@ Content-Type: application/vnd.ed-fi.school.test-profile-resource-readonly.writab
 
 ```
 
-Http Response
+HTTP Response
 
 ```text
 HTTP/1.1 400 Bad Request
@@ -1279,13 +1354,17 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
+</details>
+
 ## 401 Unauthorized
 
 ### urn:ed-fi:api:security:authentication
 
 #### Missing Authorization header
 
-Http Request
+<details>
+<summary>Example</summary>
+HTTP Request
 
 ```text
 POST https://api.ed-fi.org:443/v7.2/api/data/v3/ed-fi/absenceEventCategoryDescriptors
@@ -1298,7 +1377,7 @@ Content-Type: application/json
 
 ```
 
-Http Response
+HTTP Response
 
 ```text
 HTTP/1.1 401 Unauthorized
@@ -1317,9 +1396,13 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
+</details>
+
 ### Unsupported Authorization header scheme
 
-Http Request
+<details>
+<summary>Example</summary>
+HTTP Request
 
 ```text
 POST https://api.ed-fi.org:443/v7.2/api/data/v3/ed-fi/absenceEventCategoryDescriptors
@@ -1333,7 +1416,7 @@ Content-Type: application/json
 
 ```
 
-Http Response
+HTTP Response
 
 ```text
 HTTP/1.1 401 Unauthorized
@@ -1352,9 +1435,13 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
+</details>
+
 #### Missing or blank token in the Authorization header
 
-Http Request
+<details>
+<summary>Example</summary>
+HTTP Request
 
 ```text
 POST https://api.ed-fi.org:443/v7.2/api/data/v3/ed-fi/absenceEventCategoryDescriptors
@@ -1368,7 +1455,7 @@ Content-Type: application/json
 
 ```
 
-Http Response
+HTTP Response
 
 ```text
 HTTP/1.1 401 Unauthorized
@@ -1387,9 +1474,13 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
+</details>
+
 #### Expired or invalid token in the Authorization header
 
-Http Request
+<details>
+<summary>Example</summary>
+HTTP Request
 
 ```text
 POST https://api.ed-fi.org:443/v7.2/api/data/v3/ed-fi/absenceEventCategoryDescriptors
@@ -1403,7 +1494,7 @@ Content-Type: application/json
 
 ```
 
-Http Response
+HTTP Response
 
 ```text
 HTTP/1.1 401 Unauthorized
@@ -1421,6 +1512,8 @@ Content-Type: application/json; charset=utf-8
 }
 
 ```
+
+</details>
 
 :::tip
 
@@ -1453,7 +1546,9 @@ modify a resource which requires one for updates.
 Example: The caller is assigned a profile and requests a covered resource using
 a different profile's content type.
 
-Http Request
+<details>
+<summary>Example</summary>
+HTTP Request
 
 ```text
 GET http://localhost:8765/data/v3/ed-fi/students/82b0fb10c78e43a29ecd2d286ddc10c3
@@ -1463,7 +1558,7 @@ Content-Type: application/json; charset=utf-16
 
 ```
 
-Http Response
+HTTP Response
 
 ```text
 {
@@ -1478,6 +1573,8 @@ Http Response
 
 ```
 
+</details>
+
 ### urn:ed-fi:api:security:authorization:namespace:access-denied:namespace-mismatch
 
 #### Invalid Namespace Prefix
@@ -1489,11 +1586,13 @@ is particularly used with Assessments: namespace prefix. When an API client is
 created, it is given access to one or more namespace prefixes. For resources
 secured by namespace, the client credentials can only perform actions on objects
 that match the assigned namespace prefix. In the following example, the
-namespace summitted with resource is
-"[uri://example.org/Assessment/Assessment.xml]", but the client credentials were
+namespace submitted with resource is
+"uri://example.org/Assessment/Assessment.xml", but the client credentials were
 configured for "[uri://ed-fi.org]" prefix instead.
 
-Http Request
+<details>
+<summary>Example</summary>
+HTTP Request
 
 ```text
  POST https://api.ed-fi.org/v7.2/api/data/v3/ed-fi/assessments
@@ -1529,7 +1628,7 @@ Content-Type: application/json; charset=utf-16
 
 ```
 
-Http Response
+HTTP Response
 
 ```text
 HTTP/1.1 403 Forbidden
@@ -1544,6 +1643,8 @@ Content-Type: application/json; charset=utf-8
 }
 
 ```
+
+</details>
 
 :::tip
 
@@ -1573,7 +1674,9 @@ credentials). In order to access, there must be a relationship expressed as an
 appropriate `studentSchoolAssociation` , `studentParentAssociation` , or
 `staffSchoolAssociation`.
 
-Http Request
+<details>
+<summary>Example</summary>
+HTTP Request
 
 ```text
 ## HTTP Request 1
@@ -1595,7 +1698,7 @@ Authorization: Bearer fd964160527941a39875e821d2622088
 
 ```
 
-Http Response
+HTTP Response
 
 ```text
 ## HTTP Response 1
@@ -1622,6 +1725,8 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
+</details>
+
 :::tip
 
 Problem seems likely to be in the client application code → send to
@@ -1644,7 +1749,9 @@ that relates to that person to succeed. This is a special case that results in
 403. Most referential integrity errors receive a 409 response, not a 403
 response.
 
-Http Request
+<details>
+<summary>Example</summary>
+HTTP Request
 
 ```text
 POST https://api.ed-fi.org/v7.2/api/data/v3/ed-fi/staffSectionAssociations
@@ -1669,7 +1776,7 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
-Http Response
+HTTP Response
 
 ```text
 HTTP/1.1 403 Forbidden
@@ -1687,6 +1794,8 @@ Content-Type: application/json; charset=utf-8
 }
 
 ```
+
+</details>
 
 :::tip
 
@@ -1712,9 +1821,10 @@ security measure so that, for example, a source system that is only supposed to
 access certain schools in a local education agency (say, all middle schools),
 cannot gain access to other schools.
 
-##### Example: cannot create a Class Period for a different school
+<details>
+<summary>Example:  cannot create a Class Period for a different school</summary>
 
-Http Request
+HTTP Request
 
 ```text
 POST https://api.ed-fi.org/v6.1/api/data/v3/ed-fi/classPeriods
@@ -1735,7 +1845,7 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
-Http Response
+HTTP Response
 
 ```text
 HTTP/1.1 403 Forbidden
@@ -1754,12 +1864,15 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
-##### Example
+</details>
 
 Cannot create an Education Organization Association when the
 credentials are scoped to a particular school.
 
-Http Request
+<details>
+<summary>Example</summary>
+
+HTTP Request
 
 ```text
 POST https://api.ed-fi.org/v7.2/api/data/v3/ed-fi/studentEducationOrganizationAssociations
@@ -1778,7 +1891,7 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
-Http Response
+HTTP Response
 
 ```text
 HTTP/1.1 403 Forbidden
@@ -1797,6 +1910,8 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
+</details>
+
 :::tip
 
 The problem could be in application → have the application development
@@ -1810,10 +1925,8 @@ team check first:
   client key to the hosting provider / IT operations:
   * Using a tool like Admin API or Admin App, confirm that the key is
     configured for access to the given school or education organization.
-* Using
-  [Tokeninfo](https://edfi.atlassian.net/wiki/display/ODSAPIS3V71/Authorization#Authorization-tokeninfo)
-  endpoint, confirm that the key is configured for access to the given
-  school or education organization.
+* Using [Tokeninfo](./authorization.md#token-info) endpoint, confirm that the
+  key is configured for access to the given school or education organization.
 
 :::
 
@@ -1821,12 +1934,14 @@ team check first:
 
 #### The Requested Action Is Not Permitted
 
-Credentials to the Ed-Fi ODS/API are configured with [a claim set](#) that
+Credentials to the Ed-Fi ODS/API are configured with [a claim set](# that
 defines what the credentials are allowed to do. The following error message
 indicates that the API client has tried to take an action - in this case,
 updating a Descriptor - that is not allowed under this claim set.
 
-Http Request
+<details>
+<summary>Example</summary>
+HTTP Request
 
 ```text
  PUT https://api.ed-fi.org/v7.2/api/data/v3/ed-fi/absenceEventCategoryDescriptors/3a62029e71374c7095d288a6cabae206
@@ -1845,7 +1960,7 @@ Content-Type: application/json; charset=utf-16
 
 ```
 
-Http Response
+HTTP Response
 
 ```text
 HTTP/1.1 403 Forbidden
@@ -1864,6 +1979,8 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
+</details>
+
 :::tip
 
 Problem may be in the client application code → send to application
@@ -1881,7 +1998,9 @@ development team for resolution.
 
 #### Missing Claim
 
-Http Request
+<details>
+<summary>Example</summary>
+HTTP Request
 
 ```text
 PUT https://api.ed-fi.org/v7.2/api/data/v3/ed-fi/absenceEventCategoryDescriptors/3a62029e71374c7095d288a6cabae206
@@ -1904,7 +2023,7 @@ Content-Type: application/json; charset=utf-16
 
 ```
 
-Http Response
+HTTP Response
 
 ```text
 HTTP/1.1 403 Forbidden
@@ -1923,6 +2042,8 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
+</details>
+
 :::tip
 
 Problem may be in the client application code → send to application
@@ -1940,7 +2061,9 @@ development team for resolution.
 
 #### Resource Name Typo
 
-Http Request
+<details>
+<summary>Example</summary>
+HTTP Request
 
 ```text
 POST https://api.ed-fi.org/v7.2/api/data/v3/ed-fi/academicWeek
@@ -1956,7 +2079,7 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
-Http Response
+HTTP Response
 
 ```text
 HTTP/1.1 404 Not Found
@@ -1971,6 +2094,8 @@ Content-Type: application/json; charset=utf-8
 }
 
 ```
+
+</details>
 
 :::tip
 
@@ -1991,7 +2116,9 @@ development team:
 
 Example: resourceId submitted via PUT or DELETE requests doesn't exists.
 
-Http Request
+<details>
+<summary>Example</summary>
+HTTP Request
 
 ```text
 PUT https://api.ed-fi.org/v7.2/api/data/v3/ed-fi/academicWeek/not-valid-id
@@ -2006,7 +2133,7 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
-Http Response
+HTTP Response
 
 ```text
 HTTP/1.1 404 Not Found
@@ -2021,6 +2148,8 @@ Content-Type: application/json; charset=utf-8
 }
 
 ```
+
+</details>
 
 :::tip
 
@@ -2044,7 +2173,9 @@ processed using "upsert" semantics where the natural key value from the request
 body is used to locate and update the existing resource item if it exists;
 otherwise, a new item is created.
 
-Http Request
+<details>
+<summary>Example</summary>
+HTTP Request
 
 ```text
 POST https://api.ed-fi.org/v7.2/api/data/v3/ed-fi/studentAcademicRecords/8cdf37d9-f2cb-4104-8a5f-8cbaf96ca53f
@@ -2072,7 +2203,7 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-Http Response
+HTTP Response
 
 ```text
 HTTP/1.1 405 Method Not Allowed
@@ -2091,6 +2222,8 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
+</details>
+
 :::tip
 
 The problem is in the client application → send to the application
@@ -2106,7 +2239,9 @@ development team:
 DELETE and PUT requests must have an Ed-Fi ID value in the URL to point to the
 exact record to remove or modify.
 
-Http Request
+<details>
+<summary>Example</summary>
+HTTP Request
 
 ```text
 PUT https://api.ed-fi.org/v7.2/api/data/v3/ed-fi/studentAcademicRecords
@@ -2136,7 +2271,7 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
-Http Response
+HTTP Response
 
 ```text
 HTTP/1.1 405 Method Not Allowed
@@ -2155,7 +2290,7 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
-Http Request
+HTTP Request
 
 ```text
 DELETE https://api.ed-fi.org/v7.2/api/data/v3/ed-fi/studentAcademicRecords
@@ -2163,7 +2298,7 @@ Authorization: Bearer fd964160527941a39875e821d2622088
 
 ```
 
-Http Response
+HTTP Response
 
 ```text
 HTTP/1.1 405 Method Not Allowed
@@ -2180,6 +2315,8 @@ Content-Type: application/json; charset=utf-8
   ]
 }
 ```
+
+</details>
 
 :::tip
 
@@ -2200,7 +2337,9 @@ team for resolution.
 The ODS API doesn't support PATCH requests; to update data, use PUT requests
 instead.
 
-Http Request
+<details>
+<summary>Example</summary>
+HTTP Request
 
 ```text
 PATCH https://api.ed-fi.org/v6.1/api/data/v3/ed-fi/students/1765c75f180a4981b7a2a47974ba14d9
@@ -2215,7 +2354,7 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
-Http Response
+HTTP Response
 
 ```text
 HTTP/1.1 405 Method Not Allowed
@@ -2234,6 +2373,8 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
+</details>
+
 ## 409 Conflict
 
 ### urn:ed-fi:api:data-conflict:dependent-item-exists
@@ -2245,7 +2386,9 @@ B without first deleting all resource A instances that depend on that
 to-be-deleted instance of B. Translation: cannot delete a parent record when
 there are still existing child records.
 
-Http Request
+<details>
+<summary>Example</summary>
+HTTP Request
 
 ```text
 DELETE https://api.ed-fi.org:443/v6.1/api/data/v3/ed-fi/students/3d3ad42503b443489471b74c05067628
@@ -2255,7 +2398,7 @@ Content-Type: application/json
 
 ```
 
-Http Response
+HTTP Response
 
 ```text
 HTTP/1.1 409 Conflict
@@ -2270,6 +2413,8 @@ Content-Type: application/json; charset=utf-8
 }
 
 ```
+
+</details>
 
 :::tip
 
@@ -2296,7 +2441,8 @@ The ODS/API application enforces referential integrity: whenever a property is
 named \_\_\_Reference, the key values in that reference must match the
 identifying values of an existing object in the database.
 
-##### Example
+<details>
+<summary>Example</summary>
 
 In this example we have two references that could cause the POST
 (or a similar PUT request) to be rejected: the school, and the school year.
@@ -2306,7 +2452,7 @@ implementation can change that list through the `edfi.SchoolYearType`  table.
 There is a `schoolYearTypes`  resource in the API; however, not all credentials
 are able to access it.
 
-Http Request
+HTTP Request
 
 ```text
 POST https://api.ed-fi.org/v7.2/api/data/v3/ed-fi/calendars
@@ -2327,7 +2473,7 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
-Http Response
+HTTP Response
 
 ```text
 HTTP/1.1 409 Conflict
@@ -2343,12 +2489,15 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
-##### Example
+</details>
+
+<details>
+<summary>Example</summary>
 
 This `chartOfAccounts` is referencing a `fundDimension` that does
 not exist yet.
 
-Http Request
+HTTP Request
 
 ```text
 POST https://api.ed-fi.org/v7.2/api/data/v3/ed-fi/chartOfAccounts
@@ -2381,7 +2530,7 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
-Http Response
+HTTP Response
 
 ```text
 HTTP/1.1 409 Conflict
@@ -2397,13 +2546,16 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
-##### Example
+</details>
+
+<details>
+<summary>Example</summary>
 
 Referenced Student doesn't exist while creating a primary relationship
 used for authorization. This is a special case that results in 409. Most
 referential integrity errors receive a 409 response, not a 403 response.
 
-Http Request
+HTTP Request
 
 ```text
 POST https://api.ed-fi.org:443/v7.2/api/data/v3/ed-fi/StudentSchoolAssociations
@@ -2428,7 +2580,7 @@ Content-Type: application/json
 
 ```
 
-Http Response
+HTTP Response
 
 ```text
 HTTP/1.1 409 Conflict
@@ -2443,6 +2595,8 @@ Content-Type: application/json; charset=utf-8
 }
 
 ```
+
+</details>
 
 :::tip
 
@@ -2472,13 +2626,14 @@ However, API will error if a resource is being updated with a key that is
 already in use by another resource. ODS / API enforces uniqueness of natural
 keys of the resources.
 
-##### Example
+<details>
+<summary>Example</summary>
 
 In this example we are updating the key fields of a classperiods
 resource with PUT operation. The key being updated is already assigned to
 another resource the ODS.
 
-Http Request
+HTTP Request
 
 ```text
 PUT https://api.ed-fi.org/v7.2/api/data/v3/ed-fi/classPeriods/d327e6013bff4c7783ecdbbb420b23bb
@@ -2500,7 +2655,7 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
-Http Response
+HTTP Response
 
 ```text
 HTTP/1.1 409 Conflict
@@ -2519,6 +2674,8 @@ Content-Type: application/json; charset=utf-8
 
 ```
 
+</details>
+
 ## 412 Precondition Failed
 
 ### urn:ed-fi:api:optimistic-lock-failed
@@ -2530,7 +2687,9 @@ on a PUT request. If a different API client updates the resource before your
 client can do so, the `_etag` value will have changed and the `If-Match`  fails,
 resulting in Status Code 412.
 
-Http Request
+<details>
+<summary>Example</summary>
+HTTP Request
 
 ```text
 ## HTTP Request - GET an academicWeek
@@ -2559,7 +2718,7 @@ If-Match: 5250093105232954695
 
 ```
 
-Http Response
+HTTP Response
 
 ```text
 HTTP/1.1 200 OK Content-Type: application/json; charset=utf-8
@@ -2597,6 +2756,8 @@ HTTP/1.1 412 Precondition Failed Content-Type: application/json; charset=utf-8
 
 ```
 
+</details>
+
 :::tip
 
 Problem might be in the application code → send to application
@@ -2615,7 +2776,9 @@ issue:
 This occurs when the `content-type` header is missing or is not
 "application/json".
 
-Http Request
+<details>
+<summary>Example</summary>
+HTTP Request
 
 ```text
 POST https://api.ed-fi.org:443/v5.3/api/data/v3/ed-fi/absenceEventCategoryDescriptors
@@ -2628,7 +2791,7 @@ Authorization: bearer 6f5bb488a65948b5b847b561b23e
 
 ```
 
-Http Response
+HTTP Response
 
 ```text
 HTTP/1.1 415 Unsupported Media Type
@@ -2646,6 +2809,8 @@ Content-Type: application/json; charset=utf-8
 }
 
 ```
+
+</details>
 
 :::tip
 

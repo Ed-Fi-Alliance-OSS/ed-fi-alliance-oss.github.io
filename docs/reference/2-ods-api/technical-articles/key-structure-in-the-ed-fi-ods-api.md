@@ -3,12 +3,6 @@
 This article provides technical details on the key structure in the Ed-Fi ODS /
 API.
 
-## Contents
-
-* [Resource IDs](#resource-ids)
-* [USIs (Unique Surrogate Identifiers)](#usis-unique-surrogate-identifiers)
-* [Natural Keys](#natural-keys)
-
 ## Resource IDs
 
 The ODS / API assigns and exposes resource IDs to align with REST conventions.
@@ -19,12 +13,18 @@ The following diagram shows Id in CourseOffering table, which stores the
 resource ID for an offering:
 
 ```mermaid
+%%{init: {
+    "theme": "",
+    "themeCSS": [
+        "[id*=entity-CourseOffering] rect:nth-of-type(33) { fill: orange;}"]
+}
+}%%
 erDiagram
-    "edfi.CourseOffering" {
+    CourseOffering {
         nvarchar(60) LocalCourseCode PK
         int SchoolId PK
         smallint SchoolYear PK
-        int TermDescriptorId int
+        int TermDescriptorId
         nvarchar(60) LocalCourseTitle
         int InstructionalTimePlanned
         nvarchar(60) CourseCode
@@ -106,23 +106,7 @@ erDiagram
         date BirthDate
         int CitizenshipStatusDescriptorId
         nvarchar(75) FirstName
-        nvarchar(60) GenderIdentity
-        nvarchar(10) GenerationCodeSuffix
-        int HighestCompletedLevelOfEducationDescriptorId
-        bit HighlyQualifiedTeacher
-        bit HispanicLatinoEthnicity
-        nvarchar(75) LastSurname
-        nvarchar(60) LoginId
-        nvarchar(75) MaidenName
-        nvarchar(75) MiddleName
-        nvarchar(30) PersonalTitlePrefix
-        nvarchar(32) PersonId
-        nvarchar(75) PreferredFirstName
-        nvarchar(75) PreferredLastSurname
-        int SexDescriptorId
-        int SourceSystemDescriptorId
-        decimal YearsOfPriorProfessionalExperience
-        decimal YearsOfPriorTeachingExperience
+        etc etc
         datetime CreateDate
         datetime LastModifiedDate
         uniqueidentifier Id

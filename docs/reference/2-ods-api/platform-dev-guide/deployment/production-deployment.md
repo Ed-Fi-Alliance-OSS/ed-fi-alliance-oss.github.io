@@ -149,7 +149,18 @@ Very small deployments (up to about 7,500 students) can function on a simple,
 two-server model. One server hosts the API application and the other hosts the
 SQL Server platform and the ODS data store.
 
-![Two-server deployment model](/img/reference/ods-api/image17.png)
+```mermaid
+flowchart LR
+    api["ODS / API Web Server"]
+
+    subgraph RDBMS
+        ods[("EdFi_ODS")]
+        adm[("EdFi_Admin")]
+        sec[("EdFi_Security")]
+    end
+
+    api --> RDBMS
+```
 
 This configuration is excellent for small organizations because it is
 inexpensive, easy to maintain, and leverages common technologies that are
@@ -161,7 +172,32 @@ used for a cloud-based or hybrid deployment.
 
 ### Load-Balanced Deployment Model
 
-![Load-balanced deployment model](/img/reference/ods-api/image06.png)
+```mermaid
+flowchart TD
+    internet[Internet]
+    lb[Load Balancer]
+
+    internet --> lb
+
+    subgraph web[Clustered Web Servers]
+        api1[ODS/API Web Server]
+        api2[ODS/API Web Server]
+        api3[ODS/API Web Server]
+    end
+
+    lb --> web
+
+    subgraph Databases
+        db1[(Database Server)]
+        db2[(Replica Server)]
+
+        db1 --> db2
+        cache[(External Cache)]
+    end
+
+    web --> db1
+    web --> cache
+```
 
 A load-balanced deployment, whether on-site or in the cloud, includes an HTTP
 Load Balancer that analyzes and routes incoming network traffic, multiple web
@@ -179,8 +215,8 @@ improvements, but they do provide redundancy.
 
 Multiple web servers with identical configurations are deployed and registered
 with the load balancer. Database configurations and connection strings are
-altered to implement [automatic
-failover](https://technet.microsoft.com/en-us/library/cc917713.aspx#ECAA).
+altered to implement [always on availability
+groups](https://learn.microsoft.com/en-us/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server?view=sql-server-ver16).
 
 Several entity types (including Ed-Fi Descriptors) are cached in the web API. It
 is possible for these caches to get out of sync if they are local to each web
@@ -196,6 +232,14 @@ following entries:
 
 * **Ed-Fi ODS/API on AWS**
 * **Ed-Fi ODS/API Deploy Tools for Azure**
+
+:::warning
+
+These scripts in the Ed-Fi Exchange may have been developed for older versions
+of the Ed-Fi ODS/API, and therefore may need modification to work with this
+version.
+
+:::
 
 ## Scale and Reliability Techniques for Production Deployment
 

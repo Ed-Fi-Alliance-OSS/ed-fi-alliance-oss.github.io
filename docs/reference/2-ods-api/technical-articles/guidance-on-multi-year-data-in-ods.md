@@ -4,15 +4,6 @@ This article provides essential information for education agencies and other
 platform hosts to understand limitations of storing multiple years of data in a
 single ODS and provides guidance on how to solve for multi-year use cases.
 
-Contents:
-
-* [Guidance on Multi-Year Data in ODS](#guidance-on-multi-year-data-in-ods)
-  * [Recommendation](#recommendation)
-  * [Rationale for Single-year Collection](#rationale-for-single-year-collection)
-  * [What Does a Multi-Year Deployment Look Like?](#what-does-a-multi-year-deployment-look-like)
-  * [End of Year Considerations](#end-of-year-considerations)
-  * [Possible Uses for Multi-Year Data in Single ODS](#possible-uses-for-multi-year-data-in-single-ods)
-
 ## Recommendation
 
 The Ed-Fi Alliance recommends that implementers use the ODS for single year data
@@ -78,7 +69,7 @@ for multiple school years can be achieved by deploying new ODS(s) at least for
 each school year. The data for multiple years can then be consolidated
 downstream at the data warehouse layer.
 
-![Possible Multi-Year Configuration](/img/reference/ods-api/Possible%20Multi-Year%20Configuration.jpg)
+![Possible Multi-Year Configuration](/img/reference/ods-api/multi-year-configurations.jpg)
 
 ## End of Year Considerations
 

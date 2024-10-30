@@ -53,7 +53,7 @@ resources that are not preconfigured for cascading updates.  
     2. PostgreSQL- Locate the 0030-ForeignKeys.sql file located in
        `Ed-Fi-ODS\Application\EdFi.Ods.Standard\Artifacts\PgSql\Structure\Ods`
     3. Identify all dependent resource foreign key constraints (Search for
-        `"REFERENCES \[edfi\].\[`{Resource_Name}`\]"`)
+        `"REFERENCES [edfi].[<Resource_Name>]"`)
     4. Copy each of the the ALTER TABLE scripts to a separate text document
     5. Add a ALTER TABLE `<TableName>` DROP CONSTRAINT `<ConstraintName>` to the
         line before each of the copied ALTER TABLE Scripts

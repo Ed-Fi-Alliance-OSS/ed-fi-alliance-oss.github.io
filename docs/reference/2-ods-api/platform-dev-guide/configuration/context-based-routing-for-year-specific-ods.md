@@ -50,4 +50,21 @@ instance to identify which database should be used to service the request. A
 failure to match all the context values defined will result in a 404 Not Found
 response.
 
-![Context-Based Routing](/img/reference/ods-api/image-2023-7-26_20-38-28.png)
+```mermaid
+erDiagram
+    OdsInstances ||--o{ OdsInstanceContext : has
+
+    OdsInstances {
+        int OdsInstanceId PK
+        varchar Name
+        varchar InstanceType
+        varchar ConnectionString
+    }
+
+    OdsInstanceContext {
+        int OdsInstanceContextId PK
+        int OdsInstanceId FK
+        varchar ContextKey
+        varchar ContextValue
+    }
+```

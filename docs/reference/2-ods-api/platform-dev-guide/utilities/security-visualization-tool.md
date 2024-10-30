@@ -146,4 +146,4 @@ operations, meaning that other API clients read a managed Descriptor.
 The diagram below shows permissions for accessing System Descriptors for the
 "SIS Vendor" claim set, where only Read access is allowed.
 
-![System Descriptors](../../img/systemDescriptors.png)
+![System Descriptors](/img/reference/ods-api/systemDescriptors.png)
