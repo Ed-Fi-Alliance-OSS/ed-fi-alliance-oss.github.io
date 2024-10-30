@@ -42,7 +42,7 @@ official or unofficial submission.
 
 Based on our needs, we require a new entity (to contain information about
 postsecondary institutions) and we need to add some elements to existing
-entities. The following is a diagram is a sketch showing the additional entity
+entities. The following diagram is a sketch showing the additional entity
 and the new elements we're bolting on to existing Ed-Fi entities.
 
 ```mermaid
@@ -89,16 +89,16 @@ required to extend the Ed-Fi ODS / API. Let's continue with the mechanics.
 
 In this step, we'll create a new project in MetaEd, and author our new entity.
 You do need to [download and install
-MetaEd](https://edfi.atlassian.net/wiki/spaces/METAED20/pages/23710221/Getting+Started+with+the+MetaEd+IDE) to
-do this step. Do that now if you haven't already.
+MetaEd](https://edfi.atlassian.net/wiki/spaces/METAED20/pages/23710221/Getting+Started+with+the+MetaEd+IDE)
+to do this step. Do that now if you haven't already.
 
 ### Step 2a. Set or Confirm MetaEd Target Version
 
 MetaEd allows you to target different versions of the Ed-Fi technology stack and
 data model. Confirm that your MetaEd IDE is targeting v7.2 by following the
 instructions in the [Version
-Targeting](https://edfi.atlassian.net/wiki/spaces/METAED20/pages/23709491/MetaEd+IDE+-+Creating+and+Maintaining+Your+Extension#MetaEdIDE-CreatingandMaintainingYourExtension-Step4.AddtheCorrectDataModelProject) documentation
-for the MetaEd IDE.
+Targeting](https://edfi.atlassian.net/wiki/spaces/METAED20/pages/23709491/MetaEd+IDE+-+Creating+and+Maintaining+Your+Extension#MetaEdIDE-CreatingandMaintainingYourExtension-Step4.AddtheCorrectDataModelProject)
+documentation for the MetaEd IDE.
 
 The desired model for the latest ODS / API is "ed-fi-model-5.1".
 
@@ -123,6 +123,8 @@ In this example our extension is in a folder called "StudentTranscript"
   > Enumeration
   > Interchange
 ```
+
+</details>
 
 ### Step 2c. Update the package.json File
 
@@ -535,11 +537,6 @@ following SQL DML script into the newly created file and save.
 <summary>0001-PostSecondaryOrganization\_No\_Further\_Auth\_Required.sql</summary>
 
 ```sql
--- SPDX-License-Identifier: Apache-2.0
--- Licensed to the Ed-Fi Alliance under one or more agreements.
--- The Ed-Fi Alliance licenses this file to you under the Apache License, Version 2.0.
--- See the LICENSE and NOTICES files in the project root for more information.
-
 DECLARE @SystemDescriptorsId INT
 
 SELECT @SystemDescriptorsId = resourceclaimid
@@ -675,7 +672,7 @@ singularized name of the resource (e.g., "postSecondaryOrganization" not
 
 Note that in 0001-PostSecondaryOrganization\_No\_Further\_Auth\_Required.sql
 script above, the resulting ClaimName value is
-`"<http://ed-fi.org/ods/identity/claims/sample-student-transcript/postSecondaryOrganization>"`
+`"http://ed-fi.org/ods/identity/claims/sample-student-transcript/postSecondaryOrganization"`
 
 ## Step 7. Run Code Generation and Verify Changes
 
@@ -690,7 +687,7 @@ The new postSecondaryOrganizations API resource should be visible, as well as
 the **postSecondaryOrganizationReference** in
 the **studentAcademicRecord** resource.
 
-![Extension Swagger 1](/img/reference/ods-api/extension-swagger1.png)
+![Extension Swagger 1](/img/reference/ods-api/how-to-transcript/extension-swagger1.png)
 
 ![Extension Swagger 2](/img/reference/ods-api/how-to-transcript/extension-swagger2.webp)
 
@@ -816,11 +813,6 @@ following SQL DML script into the newly created file and save.
 <summary>0001-PostSecondaryOrganization\_No\_Further\_Auth\_Required.sql</summary>
 
 ```sql
--- SPDX-License-Identifier: Apache-2.0
--- Licensed to the Ed-Fi Alliance under one or more agreements.
--- The Ed-Fi Alliance licenses this file to you under the Apache License, Version 2.0.
--- See the LICENSE and NOTICES files in the project root for more information.
-
 DECLARE @SystemDescriptorsId INT
 
 SELECT @SystemDescriptorsId = resourceclaimid

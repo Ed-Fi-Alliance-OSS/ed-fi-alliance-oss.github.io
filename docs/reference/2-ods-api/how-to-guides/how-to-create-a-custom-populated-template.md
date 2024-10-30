@@ -14,34 +14,6 @@ This article describes the process to create a custom populated template
 database, which will enable new sandbox and testing database instances to
 contain the data you specify.
 
-The different options and steps can be summarized as:
-
-* [How To: Create a Custom Populated Template](#how-to-create-a-custom-populated-template)
-  * [Option 1. Build from XML Data Using the Create Populated Script](#option-1-build-from-xml-data-using-the-create-populated-script)
-    * [Step 1: Import the Create Populated Template Module](#step-1import-the-create-populated-template-module)
-      * [Importing the Populated Template Module](#importing-the-populated-template-module)
-    * [Step 2: Use the Initialize-PopulatedTemplate Script](#step-2-use-the-initialize-populatedtemplate-script)
-      * [Executing the Initialize-PopulatedTempate Script](#executing-the-initialize-populatedtempate-script)
-      * [Initialize-PopulatedTemplate Script Results](#initialize-populatedtemplate-script-results)
-  * [Option 2. Creating a NuGet Package](#option-2-creating-a-nuget-package)
-    * [Step 1: Create a Database Backup File from SQL Server Management Studio (SSMS)](#step-1-create-a-database-backup-file-from-sql-server-management-studio-ssms)
-    * [Step 2: Create a Nuspec File](#step-2-create-a-nuspec-file)
-      * [Populated.Template.nuspec](#populatedtemplatenuspec)
-      * [Populated.Template.nuspec](#populatedtemplatenuspec-1)
-      * [NuGet CLI Pack Command](#nuget-cli-pack-command)
-    * [Step 3: Upload a Package to MyGet](#step-3-upload-a-package-to-myget)
-      * [Nuget CLI Push Command](#nuget-cli-push-command)
-  * [Option 3. Creating a Custom Populated Template Source Script](#option-3-creating-a-custom-populated-template-source-script)
-    * [Step 1: Create a Script](#step-1-create-a-script)
-      * [NewPopulatedTemplate.ps1](#newpopulatedtemplateps1)
-    * [Step 2: Update the Config File](#step-2-update-the-config-file)
-      * [appsettings.json Example](#appsettingsjson-example)
-    * [Step 3: Run Reset-PopulatedTemplate](#step-3-runreset-populatedtemplate)
-      * [Import the Initiallize Development Module](#import-the-initiallize-development-module)
-      * [Execute Reset-PopulatedTemplate](#execute-reset-populatedtemplate)
-
-Details of each option and their steps follows.
-
 ## Option 1. Build from XML Data Using the Create Populated Script
 
 Before you begin:
@@ -63,9 +35,8 @@ From a PowerShell session, import `<source directory>`
 
 #### Importing the Populated Template Module
 
-```powershell
-C:\> Import-Module C:\edfi\Ed-Fi-ODS-Implementation\DatabaseTemplate\Modules\create-populated-template.psm1
-
+```pwsh
+Import-Module C:\Ed-Fi-ODS-Implementation\DatabaseTemplate\Modules\create-populated-template.psm1
 ```
 
 ### Step 2: Use the Initialize-PopulatedTemplate Script
@@ -108,7 +79,7 @@ repository as our sample folder. Since this is a common use case the script is
 set up to handle its particular folder structure. A simpler folder setup with
 all XML files in a single folder is also supported by the script.
 
-#### Executing the Initialize-PopulatedTempate Script
+#### Executing the Initialize-PopulatedTemplate Script
 
 ```powershell
 PS C:\> Initialize-PopulatedTemplate -samplePath "C:\Ed-Fi-Standard\"
@@ -124,7 +95,8 @@ apiYear                        2020
 ArtifactSources                {Homograph, Sample, TPDM}
 buildConfiguration             Debug
 bulkLoadBootstrapInterchanges  {InterchangeDescriptors, InterchangeStandards, InterchangeEducationOrganization}
-...
+
+<trimmed output...>
 ```
 
 The script will run through the tasks noted above. The process will take a few
@@ -133,7 +105,7 @@ minutes to complete.
 #### Initialize-PopulatedTemplate Script Results
 
 ```powershell
-...
+<trimmed output...>
 
 Duration  Task
 --------  ----
@@ -166,46 +138,35 @@ You should see the above task output when the script has finished successfully.
 Before you begin:
 
 * This example assumes you have SQL Server Management Studio (SSMS). You can
-    find instructions for installing SSMS in the Step 3. Install and Configure
-    Required Software step of the [Getting
-    Started](../getting-started/source-code-installation/readme.md)
-    guide for the Ed-Fi ODS / API.
+  find instructions for installing SSMS in the Step 3. Install and Configure
+  Required Software step of the [Getting
+  Started](../getting-started/source-code-installation/readme.md)
+  guide for the Ed-Fi ODS / API.
 * This example assumes you have NuGet CLI tool. You can follow the
-    instructions for [Installing Nuget Client
-    Tools](https://docs.microsoft.com/en-us/nuget/install-nuget-client-tools#nugetexe-cli).
+  instructions for [Installing Nuget Client
+  Tools](https://docs.microsoft.com/en-us/nuget/install-nuget-client-tools#nugetexe-cli).
 * This example assumes you have access to a MyGet feed. You can follow MyGet's
-    instructions for [Getting Started with
-    NuGet](https://docs.myget.org/docs/walkthrough/getting-started-with-nuget).
+  instructions for [Getting Started with
+  NuGet](https://docs.myget.org/docs/walkthrough/getting-started-with-nuget).
 
 ### Step 1: Create a Database Backup File from SQL Server Management Studio (SSMS)
 
 :::info
 
 If you have already created a backup using the
-Initialize-PopulatedTemplate` script, you can skip this step.
+`Initialize-PopulatedTemplate` script, you can skip this step.
 
 :::
 
-Within SSMS, select the database you would like to back up, select **Tasks**
-\> **Back Up...**
+1. Within SSMS, select the database you would like to back up, select **Tasks**
+   \> **Back Up...**
+2. In the **Back Up Database** dialog, select the **default backup
+   destination,** click **Remove**, then click **Add** to create the backup.
+3. In the Select Backup Destination Dialog, select **...**
 
-![Select Database](/img/reference/ods-api/2018-11-07%2009_03_53-Greenshot.png)
-
-In the **Back Up Database** dialog, select the **default backup
-destination,** click **Remove**, then click **Add** to create the backup.
-
-![Database Backup](/img/reference/ods-api/2018-11-07%2009_01_57-Microsoft%20SQL%20Server%20Management%20Studio.png)
-
-In the Select Backup Destination Dialog, select **...**
-
-![Select Backup Destination](/img/reference/ods-api/2018-11-07%2009_09_22-Select%20Backup%20Destination.png)
-
-The database must be placed in **`<source directory>`
-\\Ed\-Fi\-ODS\-Implementation\\DatabaseTemplate\\Database** and the
+The database must be placed in `<source directory>\\Ed\-Fi\-ODS\-Implementation\\DatabaseTemplate\\Database` and the
 file name **must end in .bak** in order for the initialize development and
 deploy scripts to pick it up.
-
-![Locate Database Files](/img/reference/ods-api/2018-11-07%2009_16_54-Locate%20Database%20Files%20-%20TRAVIS-MEADOR-O.png)
 
 ### Step 2: Create a Nuspec File
 
@@ -215,7 +176,7 @@ already been created. You can also create a new one by running the
 or by running `nuget spec`.
 
 The nuspec file created by the `New-PopulatedTemplateNuspec` script will be
-created at `<source directory>`\\Ed-Fi-ODS-Implementation\\DatabaseTemplate\\Database\\Populated.Template.nuspec.
+created at `<source directory>\\Ed-Fi-ODS-Implementation\\DatabaseTemplate\\Database\\Populated.Template.nuspec`.
 
 #### Populated.Template.nuspec
 
@@ -246,9 +207,7 @@ The contents of the Populated.Template.nuspec file needs to be modified with
 your information. The default information is shown below as an example of the
 structure:
 
-#### Populated.Template.nuspec
-
-```xml
+```xml title="Populated.Template.nuspec"
 <?xml version="1.0"?>
 <package>
   <metadata>
@@ -276,9 +235,9 @@ folder and execute `nuget pack`.
 #### NuGet CLI Pack Command
 
 ```powershell
-PS C:\edfi\Ed-Fi-ODS-Implementation\DatabaseTemplate\Database> nuget pack
+PS C:\Ed-Fi-ODS-Implementation\DatabaseTemplate\Database> nuget pack
 Attempting to build package from 'Populated.Template.nuspec'.
-Successfully created package 'C:\edfi\Ed-Fi-ODS-Implementation\DatabaseTemplate\Database\Populated.Template.1.0.0.nupkg'.
+Successfully created package 'C:\Ed-Fi-ODS-Implementation\DatabaseTemplate\Database\Populated.Template.1.0.0.nupkg'.
 ```
 
 When successful, you should see something similar to above. Additional detail:
@@ -301,16 +260,15 @@ The command should look as follows: `nuget push Populated.Template.1.0.0.nupkg
 #### Nuget CLI Push Command
 
 ```powershell
-PS C:\edfi\Ed-Fi-ODS-Implementation\DatabaseTemplate\Database> nuget push .\Populated.Template.1.0.0.nupkg <APIKEY> -source https://www.myget.org/F/<FeedName>/api/v2/index.json
+PS C:\Ed-Fi-ODS-Implementation\DatabaseTemplate\Database> nuget push `
+    .\Populated.Template.1.0.0.nupkg <APIKEY> `
+    -source https://www.myget.org/F/<FeedName>/api/v2/index.json
+
 Pushing Populated.Template.1.0.0.nupkg to 'https://www.myget.org/F/<FeedName>/api/v2/package'...
   PUT https://www.myget.org/F/<FeedName>/api/v2/package/
   Created https://www.myget.org/F/<FeedName>/api/v2/package/ 19188ms
 Your package was pushed.
 ```
-
-When successful, you should see something similar to the following:
-
-![MyGet Feed](/img/reference/ods-api/2018-11-12%2012_18_06-ed-fi%20-%20Packages%20_%20MyGet.png)
 
 In your MyGet feed you should see your new package. Additional detail:
 
@@ -338,16 +296,16 @@ $params = @{
 ```
 
 This script must be placed in the folder: `<source
-directory>`\\Ed-Fi-ODS-Implementation\\DatabaseTemplate\\Scripts\\.
+directory>\\Ed-Fi-ODS-Implementation\\DatabaseTemplate\\Scripts\\`.
 
 In our example, we are reusing the `<source
-directory>`\\Ed-Fi-ODS-Implementation\\DatabaseTemplate\\Modules\\get-populated-from-nuget.ps1 script.
-This script will download the specified NuGet package name and version from the
-specified source and place it in the Database folder. Alternatively, we could
-have written a custom script that would get a .bak file from the web or from a
-shared drive. The source selection script's only requirement is that it places a
-.bak file in the folder: `<source
-directory>`\\Ed-Fi-ODS-Implementation\\DatabaseTemplate\\Database\\. How it
+directory>\\Ed-Fi-ODS-Implementation\\DatabaseTemplate\\Modules\\get-populated-from-nuget.ps1`
+script. This script will download the specified NuGet package name and version
+from the specified source and place it in the Database folder. Alternatively, we
+could have written a custom script that would get a .bak file from the web or
+from a shared drive. The source selection script's only requirement is that it
+places a .bak file in the folder: `<source
+directory>\\Ed-Fi-ODS-Implementation\\DatabaseTemplate\\Database\\`. How it
 accomplishes this is left up to the developer. You can have multiple scripts
 saved here but only the ones specified in the config files in the next step will
 be run.
@@ -364,7 +322,7 @@ else in the Database folder is not recommended.
 
 Add the "ApiSettings:PopulatedTemplateScript" key to the appSettings section of
 the file: `<source
-directory>`\\Ed-Fi-ODS-Implementation\\Application\\EdFi.Ods.WebApi\\appsettings.json.
+directory>\\Ed-Fi-ODS-Implementation\\Application\\EdFi.Ods.WebApi\\appsettings.json`.
 
 #### appsettings.json Example
 
@@ -382,11 +340,12 @@ the Initialize-DevelopmentEnvironment will fail when trying to reset the
 populated template.
 
 If you have an environment (usually staging or QA) that also deploys the
-populated template you will need to add the same key to the file:`<source directory>`\\Ed-Fi-ODS-Implementation\\Scripts\\NuGet\\EdFi.RestApi.Databases\\configuration.json.
+populated template you will need to add the same key to the file:`<source
+directory>\\Ed-Fi-ODS-Implementation\\Scripts\\NuGet\\EdFi.RestApi.Databases\\configuration.json`.
 
 ### Step 3: Run Reset-PopulatedTemplate
 
-In a PowerShell session navigate to `<source directory>`\\Ed-Fi-ODS-Implementation\\.
+In a PowerShell session navigate to `<source directory>\\Ed-Fi-ODS-Implementation\\`.
 
 Execute `.\Initialize-PowershellForDevelopment.ps1`.
 
@@ -409,7 +368,7 @@ Found populated template nuget package: Populated.Template v1.0.0
 Successfully added Populated.Template.1.0.0.bak to populated template source folder
 ...
 Dropping the EdFi_Ods_Populated_Template Database.
-Using backup C:\edfi\Ed-Fi-ODS-Implementation\DatabaseTemplate\Database\Populated.Template.1.0.0.bak
+Using backup C:\Ed-Fi-ODS-Implementation\DatabaseTemplate\Database\Populated.Template.1.0.0.bak
 ...
 Task                    TotalMinutes
 ----                    ------------
@@ -421,9 +380,10 @@ above.
 
 :::note
 
-The following GitHub link contains the sample XML files and the as-shipped Ed-Fi
-Descriptor XML from the
-[Ed-Fi-Data-Standard](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v5.1.0)
-repository.
+Sample XML files can be found in the Ed-Fi-Data-Standard repository:
+
+* [Data Standard 5.1](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v5.1.0)
+* [Data Standard 5.0](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v5.0.0)
+* [Data Standard 4.0](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v4.0.0)
 
 :::

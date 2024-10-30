@@ -10,23 +10,6 @@ up and running quickly, but do not have developer tools or experience we
 recommend you to consult [Getting Started - Binary
 Installation](../binary-installation/readme.md).
 
-The steps can be summarized as:
-
-* [Step 1. Install and Configure Windows
-    Components](#step-1-install-and-configure-windows-components)
-* [Step 2. Install and Configure Required
-    Software](#step-2-install-and-configure-required-software)
-* [Step 3. Download the Ed-Fi ODS / API v7.2
-    Code](#step-3-download-the-ed-fi-ods-api-v72-code)
-* [Step 4. Prepare the Development
-    Environment](#step-4-prepare-the-development-environment)
-* [Step 5. Build the Visual Studio
-    Solution](#step-5-build-the-visual-studio-solution)
-* [Step 6. Set Startup Projects](#step-6-set-startup-projects)
-* [Step 7. Run the Solution](#step-7-run-the-solution)
-
-Detail on each step follows.
-
 ## Step 1. Install and Configure Windows Components
 
 Ensure that the following components are installed:
@@ -44,14 +27,17 @@ Ensure that the following components are installed:
 Verify that PowerShell 5.0 or above is installed. If you are on Windows, most
 likely you have PowerShell 5.0 pre-installed.
 
-1. Press the **Windows key** ![Windows
-    logo](https://lh5.googleusercontent.com/o2iqf0j70YV3B-1NQxBFj1Ne-JeToRq5PiZeMtvF05l3jpyp4kseJn-zEs3BULgpAS_TFr8Qyacu5JZkiyXNllygq2EGhPII-PcxYyxkwCUqC4fPhMJ0QbovAD16R7T2StuDemW_)
+1. Press the **Windows key** 🪟 on your keyboard, type **PowerShell**,
+     select **Windows PowerShell**, and press **Enter**.
+2. Type `$PSVersionTable.PSVersion`, and press **Enter**.
 
-     on your keyboard, type **PowerShell**, select **Windows PowerShell**, and
-     press **Enter**.
-2. Type **$PSVersionTable.PSVersion**, and press **Enter**.
+```pwsh
+PS D:\> $PSVersionTable.PSVersion
 
-![PS Version](/img/reference/ods-api/ps-version.png)
+Major  Minor  Patch  PreReleaseLabel BuildLabel
+-----  -----  -----  --------------- ----------
+7      4      5
+```
 
 If the required version is not installed, download and install [PowerShell 5.0
 or
@@ -62,7 +48,12 @@ above](https://learn.microsoft.com/en-us/powershell/scripting/install/installing
 Download and install the latest [.NET SDK 8.0 (Compatible with Visual Studio
 2022)](https://dotnet.microsoft.com/en-us/download/dotnet/8.0).
 
-![.NET SDK](/img/reference/ods-api/SDK-8.0.300.png)
+:::tip
+
+Most Windows users will want either the `winget` instructions for command line
+install, or the `x64` installer.
+
+:::
 
 </details>
 
@@ -71,52 +62,40 @@ Download and install the latest [.NET SDK 8.0 (Compatible with Visual Studio
 Ensure that the following software is installed and configured:
 
 * **Visual Studio 2022.** Visual Studio 2022 (Community, Professional, or
-    Enterprise edition) or **JetBrains Rider version 2021.3+** (an alternative
-    development environment that can be used instead of Visual Studio 2022).
+  Enterprise edition) or **JetBrains Rider version 2021.3+** (an alternative
+  development environment that can be used instead of Visual Studio 2022).
 
 * **Microsoft SQL Server 2019.** Microsoft SQL Server is used to store the data
-    for the Ed-Fi ODS / API. Local installation of Standard, Developer, or
-    Enterprise Editions are supported.
+  for the Ed-Fi ODS / API. Local installation of Standard, Developer, or
+  Enterprise Editions are supported.
 * Optional PostgreSQL datastore:
   * **PostgreSQL 13.x.** PostgreSQL can be used as the datastore for and Ed-Fi
-        ODS / API instance instead of Microsoft SQL Server.
+     ODS / API instance instead of Microsoft SQL Server.
+
+:::tip
+
+Newer versions of Microsoft SQL Server and PostgreSQL typically work without any
+modifications to the instructions or source code. The versions listed above are
+known _minimum_ versions that are supported by the Alliance.
+
+:::
 
 <details>
 <summary>View detail...</summary>
 
 ## Microsoft SQL Server 2019
 
-Install Microsoft SQL Server 2019:
-
-![SQL Server Installation](/img/reference/ods-api/SQLServerInstallationStep1.png)
+Install Microsoft SQL Server 2019, with the following notes for the subsequent
+steps in the installation wizard:
 
 1. When prompted, select the following features:
-
-  ![Feature Installation](/img/reference/ods-api/Feature%20Installation.png)
-
+   * ✅ Database Engine Services
 2. Use the default instance named **MSSQLSERVER**.
-  ![SQL Server Instance](/img/reference/ods-api/SQLDefault.png)
-
 3. Select either **Windows Authentication Mode** or **Mixed Mode.**
-  ![SQL Server Authentication Mode](/img/reference/ods-api/SQLAuth.png)
-
-    :::warning
-
-    Mixed Mode may be preferred if you also intend to install the
-    [Ed-Fi
-    Dashboards](https://edfi.atlassian.net/wiki/display/DASH20/Ed-Fi+Dashboards+v2.0).
-    Mixed Mode can be enabled later by following the [Change Server
-    Authentication
-    Mode](https://msdn.microsoft.com/en-us/library/ms188670.aspx)
-    instructions.
-
-    :::
-
 4. In Specify SQL Server administrator, click **Add Current User**.
 
-Install SQL Server Management Studio:
-
-![SQL Server Installation](/img/reference/ods-api/SQLServerInstallationStep2.png)
+Install SQL Server Management Studio from [Download SQL Server Management Studio
+(SSMS)](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16)
 
 ## Visual Studio 2022
 
@@ -127,22 +106,11 @@ environment.
 
 The instructions below are based on the Visual Studio 2022 Community Installer.
 
-1. Launch the installer and make sure the following features are selected:
-
-* In the **Workloads Tab**
-  * **.NET Desktop development**, and select the following components:
-  * **ASP.NET and web development**
-
-![Visual Studio 2022](/img/reference/ods-api/image2022-3-7_18-51-45.png)
-
-2\. Restart your computer (if prompted)
-
-3\. Open **Developer Command Prompt for VS2022** as an Administrator**,** at the
-command prompt type **gacutil -l envdte** to verify EnvDTE is registered in GAC.
-If no listings are found, run the following command to add EnvDTE to GAC.
-
-**gacutil -i "%COMMONPROGRAMFILES(x86)%\\microsoft
-shared\\MSEnv\\PublicAssemblies\\envdte.dll"**
+1. Launch the installer and make sure the following features are selected in the
+   _Workloads Tab_:
+   * ✅ .NET Desktop development
+   * ✅ ASP.NET and web development
+2. Restart your computer (if prompted)
 
 :::warning
 
@@ -178,55 +146,19 @@ containers.
 Installation using PostgreSQL Installer
 
 * Install using the
-    PostgreSQL [installer](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads).
-    Version 13.x is compatible with the ODS / API.
+  PostgreSQL [installer](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads).
+  Version 13.x is compatible with the ODS / API.
   * Note the installer includes pgAdmin as an option.
   * The [PostgreSQL installation
-        guide](https://www.enterprisedb.com/docs/supported-open-source/postgresql/installer/) has
-        details.
+    guide](https://www.enterprisedb.com/docs/supported-open-source/postgresql/installer/)
+    has details.
 
-![PostgreSQL Installer](/img/reference/ods-api/postgresqldbdownload.png)
+Notes while stepping through the installation wizard:
 
-Download the version 13.x installer.
-
-![PostgreSQL Installer](/img/reference/ods-api/postgresqldbdownload2.png)
-
-Click **Next**.
-
-![PostgreSQL Installer](/img/reference/ods-api/postgresqldbdownload3.png)
-
-Click **Next**.
-
-![PostgreSQL Installer](/img/reference/ods-api/postgres-install-3.jpg)
-
-If you want to install only the tools uncheck PostgreSQL Server, pgAdmin 4 and
-Stack Builder.
-
-Click **Next**.
-
-![PostgreSQL Installer](/img/reference/ods-api/postgres-install-5.jpg)
-
-Enter a password for the postgres superuser.
-
-Click **Next**.
-
-![PostgreSQL Installer](/img/reference/ods-api/postgres-install-6.jpg)
-
-Enter port **5432** (default).
-
-Click **Next**.
-
-![PostgreSQL Installer](/img/reference/ods-api/postgres-install-7.jpg)
-
-Click **Next**.
-
-![PostgreSQL Installer](/img/reference/ods-api/postgresqldbdownload4.png)
-
-Click **Next**.
-
-![PostgreSQL Installer](/img/reference/ods-api/postgres-install-9.jpg)
-
-Click **Next** to finish the installation.
+* If you want to install only the tools uncheck PostgreSQL Server, pgAdmin 4 and
+  Stack Builder.
+* Enter a password for the postgres superuser.
+* Use port **5432** (default).
 
 </details>
 
@@ -243,7 +175,7 @@ Initial setup with Docker:
 
 #### Run PostgreSQL with Docker in Linux Containers
 
-Create a Docker Compose file (name: `docker-compose.yml`) to bootstrap
+Create a Docker Compose file (name: `docker compose.yml`) to bootstrap
 PostgreSQL using Linux containers. More information on the Docker Compose file
 can be found [on the Docker documentation
 site](https://docs.docker.com/compose/).
@@ -279,28 +211,28 @@ Sample files for these can be downloaded from the download panel on the right.
 
 #### Data Retention and Docker Compose
 
-Once you have set up your docker-compose.yml and .env files and placed them in a
+Once you have set up your docker compose.yml and .env files and placed them in a
 folder (e.g., C:\\PGDockerSetup), navigate to that folder in PowerShell and run
-[docker-compose](https://docs.docker.com/compose/). This utility reads
-the docker-compose.yml configuration file and runs all of the containers
+[docker compose](https://docs.docker.com/compose/). This utility reads
+the docker compose.yml configuration file and runs all of the containers
 described in that file.
 
 To bring up the environment:
 
 ```shell
-C:\PGDockerSetup>docker-compose up -d
+C:\PGDockerSetup>docker compose up -d
 ```
 
 To stop the volumes and containers:
 
 ```shell
-C:\PGDockerSetup>docker-compose down
+C:\PGDockerSetup>docker compose down
 ```
 
 To stop the services and remove them, but retain the data in separate volumes:
 
 ```shell
-C:\PGDockerSetup>docker-compose down -v
+C:\PGDockerSetup>docker compose down -v
 ```
 
 </details>
@@ -349,7 +281,6 @@ by GitHub.
 The Ed-Fi ODS / API can be found in the repository links below:
 
 * [Ed-Fi-ODS/v7.2](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v7.2)
-
 * [Ed-Fi-ODS-Implementation/v7.2](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/tree/v7.2)
 
 Use a Git client (such as [GitHub Desktop](https://desktop.github.com/)) or a
@@ -358,9 +289,13 @@ It is important that both repositories are extracted to the same root directory
 (for example C:\\Source). When both repositories have been cloned, there will be
 two folders for the ODS / API source code as shown below:
 
-![Step 3 Fig 2](/img/reference/ods-api/Step-3-Fig-2.png)
+```none title="File listing"
+> Ed-Fi-ODS
+> Ed-Fi-ODS-Implementation
+```
 
 :::info
+
 File paths can become lengthy within the ODS/API source code. In
 Windows, this may cause errors during Git Clone. To mitigate this, consider
 extracting the packages close to the root directory (e.g., C:\\Source) Doing
@@ -379,7 +314,9 @@ To configure git for long file paths:
 :::
 
 :::info
-When you clone a repository, ensure that you have the correct tag checked out in your client before you proceed.
+
+When you clone a repository, ensure that you have the correct tag checked out in
+your client before you proceed.
 
 ```shell
 git checkout tags/v7.2 -b <branch>
@@ -407,7 +344,6 @@ download the links to the very latest daily source code in the development
 branch:
 
 * [Ed-Fi-ODS/main](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/main)
-
 * [Ed-Fi-ODS-Implementation/main](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/tree/main)
 
 ## Alternate Method for Code Download
@@ -416,26 +352,19 @@ Some developers prefer simply to download the code rather than perform a Git
 Clone. You can do so by following these instructions:
 
 1. Navigate to each of the repository links described above (for latest release
-    or daily source) and use the **Download ZIP** button to download the
-    repository to your local drive.
-
-    ![Download ZIP](/img/reference/ods-api/download_zip.PNG)
-
+  or daily source) and use the **Download ZIP** button to download the
+  repository to your local drive.
 2. In Windows Explorer, right-click on each of the downloaded ZIP files and
-    select Extract All… Enter C:\\ for the target folder. (You can extract the
-    files to any directory, but these instructions assume you've extracted to
-    C:\\.) The ZIP files contain an embedded folder ending in "-v7.2" (or
-    "-main" if downloading latest daily source). For example, the "Ed-Fi ODS
-    ZIP" archive contents will be extracted into C:\\Ed-Fi-ODS-v7.2.
-
+   select Extract All… Enter C:\\ for the target folder. (You can extract the
+   files to any directory, but these instructions assume you've extracted to
+   C:\\.) The ZIP files contain an embedded folder ending in "-v7.2" (or
+   "-main" if downloading latest daily source). For example, the "Ed-Fi ODS
+   ZIP" archive contents will be extracted into C:\\Ed-Fi-ODS-v7.2.
 3. After the extractions are complete, rename the folders to remove
     the -v7.2 (or "-main") from the folder names. For example, change
     C:\\Ed-Fi-ODS-v7.2 to C:\\Ed-Fi-ODS.
-
 4. When the extraction and renaming are complete, there should be two folders
-    for the ODS / API source code as shown below:
-
-    ![Step 3 Fig 2](/img/reference/ods-api/Step-3-Fig-2.png)
+    for the ODS / API source code.
 
 ## Troubleshooting the File Extract
 
@@ -469,25 +398,15 @@ variable is properly configured.
 
 To set the "StandardVersion" variable:
 
-1. Press the **Windows key**![Windows
-    logo](https://lh5.googleusercontent.com/o2iqf0j70YV3B-1NQxBFj1Ne-JeToRq5PiZeMtvF05l3jpyp4kseJn-zEs3BULgpAS_TFr8Qyacu5JZkiyXNllygq2EGhPII-PcxYyxkwCUqC4fPhMJ0QbovAD16R7T2StuDemW_)
-
-     on your keyboard, type **Environment Variables**, select **Edit the system
-     environment variables**, and press **Enter.** This brings up **System
-     Properties**. Under **Advanced**, select **Environment Variables**.
-     (Alternatively, right-click the **Start Menu**![Windows
-     logo](https://lh5.googleusercontent.com/o2iqf0j70YV3B-1NQxBFj1Ne-JeToRq5PiZeMtvF05l3jpyp4kseJn-zEs3BULgpAS_TFr8Qyacu5JZkiyXNllygq2EGhPII-PcxYyxkwCUqC4fPhMJ0QbovAD16R7T2StuDemW_)
-
-    , select **System**, and click on the **Advanced system settings**.
-    Under **Advanced**, select **Environment Variables**.)
+1. Press the **Windows key** 🪟 on your keyboard, type **Environment
+   Variables**, select **Edit the system environment variables**, and
+   press **Enter.** This brings up **System Properties**. Under **Advanced**,
+   select **Environment Variables**. (Alternatively, right-click the **Start
+   Menu** 🪟 button, select **System**, and click on the **Advanced system
+    settings**. Under **Advanced**, select **Environment Variables**.)
 2. Under **System variables**, select **New...**
-
-    ![System Variables](/img/reference/ods-api/image2024-5-15_16-33-28.png)
-
 3. For **Variable name**, enter **StandardVersion**
 4. For **Variable value**, enter **4.0.0,** and press **OK**.
-
-    ![Variable Value](/img/reference/ods-api/image2024-5-15_16-31-34.png)
 
 ## Verify PowerShell Script Permissions
 
@@ -496,7 +415,7 @@ may need to change the execution policy for unsigned PowerShell scripts to run
 on your machine to run the scripts. This can be done by opening a PowerShell
 console and typing the following command:
 
-```shell
+```pwsh
 Set-ExecutionPolicy Unrestricted
 ```
 
@@ -509,13 +428,17 @@ when the Ed-Fi-ODS solution is opened. They may also be loaded for use within a
 PowerShell console window by running the initialize PowerShell for development
 script located at:
 
-```shell
+```pwsh
 C:\Ed-Fi-ODS-Implementation\Initialize-PowershellForDevelopment.ps1
 ```
 
 When the scripts are loaded, you should see the results shown below:
 
-![Loaded PowerShell Scripts](/img/reference/ods-api/image2021-2-4_12-2-23.png)
+```pwsh
+Using repositories: Ed-Fi-ODS, Ed-Fi-ODS-Implementation
+Importing Module: InitializeDevelopmentEnvironment.psm1
+c:\Ed-Fi-ODS-Implementation
+```
 
 ## Initialize the Development Environment
 
@@ -572,25 +495,54 @@ base64. You can execute the `New-AESKey` command to generate a valid key.
 
 :::
 
-![initdev](/img/reference/ods-api/image2021-2-4_12-2-39.png)
+```pwsh
+PS C:\Ed-Fi-ODS-Implementation> initdev
+
+----------------------------------------
+    Invoke-NewDevelopmentAppSettings
+----------------------------------------
+
+<trimmed output...>
+```
 
 This command creates databases, generates code templates, and compiles projects
 in the solution. Some considerations while running the script:
 
 * The `initdev` script may not finish with a command prompt when it is
-    automatically loaded with the solution in Visual Studio in some
-    circumstances. Simply press **Enter**, and ignore any messages that appear
-    in the console window.
+  automatically loaded with the solution in Visual Studio in some circumstances.
+  Simply press **Enter**, and ignore any messages that appear in the console
+  window.
 * Initializing the development environment will take several minutes to
-    complete. Some developers report encountering an error during the
-    initialization process the first time it is run. This is due to an
-    intermittent timing issue. The issue generally resolves itself when
-    the `initdev` process is run a second time.
+  complete. Some developers report encountering an error during the
+  initialization process the first time it is run. This is due to an
+  intermittent timing issue. The issue generally resolves itself when
+  the `initdev` process is run a second time.
 
 A successful `initdev` execution will display the tasks executed and their
 duration as shown below:
 
-![initdev execution](/img/reference/ods-api/image2021-2-4_12-3-8.png)
+```pwsh
+<trimmed output...>
+
+Duration Task
+-------- ----
+00:01.92 Invoke-NewDevelopmentAppSettings
+00:02.69 Install-Plugins
+00:01.57 Install-CodeGenUtility
+00:08.19 Invoke-CodeGen
+00:29.14 Invoke-RebuildSolution
+00:01.48 Install-DbDeploy
+00:15.78 Reset-TestAdminDatabase
+00:26.09 Reset-TestSecurityDatabase
+00:20.62 Reset-TestPopulatedTemplateDatabase
+00:14.31 Reset-AdminDatabase
+00:25.81 Reset-SecurityDatabase
+00:00.78 Remove-SandboxDatabases
+00:19.23 Reset-MinimalTemplateDatabase
+00:20.55 Reset-PopulatedTemplateDatabase
+-        -
+03:11.35 Initialize-DevelopmentEnvironment
+```
 
 ## Step 5. Build the Visual Studio Solution
 
@@ -605,7 +557,7 @@ To build the solution from within Visual Studio:
 
 ## Code Generation During Build
 
-The following diagram shows how MeatEd generated artifacts are used to create
+The following diagram shows how MetaEd generated artifacts are used to create
 the API for the Ed-Fi ODS using code generators within the solution. Code
 generation uses Api Model JSON file to understand the structure that it uses to
 generate data access code. Code generation also depends on the
@@ -613,26 +565,38 @@ DatabaseViews.generated.json which is generated one time using the
 "EdFi\_Ods\_Empty" database and subsequently provided by the source code
 repository.
 
-![Code Generation](/img/reference/ods-api/Step-5-Fig-1.png)
+```mermaid
+flowchart LR
+    model@{ shape: doc, label: "APIModel.json" }
+    metaed[MetaEd] --> model
+
+    db[(EdFi_Ods_Empty)]
+
+    metaed --> db
+    views@{ shape: doc, label: "Database Views" }
+    db -.-> views
+
+    gen@{ shape: processes, label: "Code Generators" }
+
+    model --> gen
+    views --> gen
+
+    gen --> generated["compiled C#, json, XML"]
+
+    generated --> server["Ed-FI ODS/API service"]
+```
 
 ## Alternatively Building from the Developer Command Prompt
 
 When the “EdFi\_Ods\_Empty” database has been created (by running the `initdev`
 PowerShell command in the previous step), there are two ways to build the
 solution. The solution can be built from Visual Studio, as described above, or
-from a Developer Command Prompt for Visual Studio using the Windows start menu.
+from a terminal window.
 
-To do a clean build from the command prompt:
-
-1. Open the Developer Command Prompt for Visual Studio.
-
-    ![Developer Command Prompt](/img/reference/ods-api/vs_step5.png)
-
-2. Navigate to your C:\\Ed-Fi-ODS-Implementation\\Application directory.
-3. Issue a command similar to the following:
-
-```shell
-Msbuild /nr:false /t:clean;build Ed-Fi-Ods.sln
+```pwsh
+cd C:\\Ed-Fi-ODS-Implementation\\Application
+dotnet clean Ed-Fi-Ods.sln
+dotnet build Ed-Fi-Ods.sln
 ```
 
 </details>
@@ -646,8 +610,7 @@ system to be fully functional.
 To set the Startup Projects:
 
 1. Select the **Set StartUp Projects…** context menu by right-clicking on the
-    solution file in the Solution Explorer. ![Startup Projects](/img/reference/ods-api/startup2.png)
-
+solution file in the Solution Explorer. ![Startup Projects](/img/reference/ods-api/startup2.png)
 2. Within the Startup Project property page, select the **Multiple startup
     projects** radio button and enable the following projects:
 
@@ -672,8 +635,6 @@ or debug the Ed-Fi ODS / API.
 * To run the Ed-Fi ODS / API without debugging, press **Ctrl**+**F5.**
 * To interactively debug the Ed-Fi ODS / API solution, press **F5** (or
     press **Start** in the Standard Toolbar).
-
-![Startup Projects](/img/reference/ods-api/Step-7-Fig-1.png)
 
 ### Notes on Running the Solution
 
@@ -723,7 +684,7 @@ for details.
 The ODS / API Documentation Web Page provides an overview of the ODS / API, and
 links to more detailed API documentation.
 
-![ODS API Documentation](/img/reference/ods-api/image-2023-11-28_15-26-31.png)
+![ODS API Documentation](/img/reference/ods-api/image2020-10-18_16-45-58.png)
 
 The REST interface to the Ed-Fi ODS / API exposes metadata describing the
 exposed resources as well as the inputs, HTTP verbs, and schema of the exposed
@@ -739,8 +700,6 @@ secret in the appropriate fields and retrieve a token (the key and secret values
 for the default sandbox are pre-populated). This token is used throughout your
 session to access your sandbox. This is the same process used by other
 applications to access their data.
-
-![ODS API Documentation](/img/reference/ods-api/image2020-10-18_16-45-58.png)
 
 Similar to the Sandbox Administration Portal, the ODS / API Documentation Web
 Page is useful for development machines and sandbox instances of the ODS / API,
