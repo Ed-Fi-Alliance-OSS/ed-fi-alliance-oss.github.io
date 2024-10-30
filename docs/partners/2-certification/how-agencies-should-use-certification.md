@@ -20,44 +20,44 @@ language:
 Ed-Fi Certification is a technical verification that a vendor system conforms to
 an Ed-Fi API standard. By "conform" we mean that the vendor system:
 
-- Demonstrates it has implemented an API standard or can communicate with (as
-    a client) an implementation of the API across all API resources and fields
-    marked as "required" in the API specification
+* Demonstrates it has implemented an API standard or can communicate with (as a
+  client) an implementation of the API across all API resources and fields
+  marked as "required" in the API specification
 
-- Meets all of the "must" requirements listed in the API specification
+* Meets all of the "must" requirements listed in the API specification
 
-- Meets all of the "must" requirements of the certification
+* Meets all of the "must" requirements of the certification
 
 The test scenarios making up the certification are defined and prioritized by
 the community and described within the [SIS API Use Case
 document](https://edfi.atlassian.net/wiki/spaces/SG/pages/20612545/SIS+API+V3+Certification+Use+Cases).
 The use case document describes the scope of the API and what is required for
-API integration.  
+API integration.
 
 ## What is Not Covered?
 
 Ed-Fi certification does not cover these elements of a vendor implementation:
 
-- Under what conditions the certified functionality is made available to the
-    vendor's customers. For example, this would include if the certified
-    functionality:
+* Under what conditions the certified functionality is made available to the
+  vendor's customers. For example, this would include if the certified
+  functionality:
 
-  - Requires additional installations or product maintenance
+  * Requires additional installations or product maintenance
 
-  - Comes with license fees or other costs
+  * Comes with license fees or other costs
 
-  - Is available only in certain geographies
+  * Is available only in certain geographies
 
     The vendor of a certified product must assert, however, that the certified
     functionality is available in the K–12 market in some place – i.e., a vendor
     may not certify unreleased or unavailable functionality.
 
-- If the product has multiple editions, what editions of the product the
-    certified functionality is available in. The [Registry of Ed-Fi Certified
-    Products](./registry-of-ed-fi-certified-products.mdx), however,
-    does record which product edition and version the vendor used to meet the
-    certification testing. Those wanting to procure this functionality are
-    advised to reference that version if necessary.
+* If the product has multiple editions, what editions of the product the
+  certified functionality is available in. The [Registry of Ed-Fi Certified
+  Products](./registry-of-ed-fi-certified-products.mdx), however, does record
+  which product edition and version the vendor used to meet the certification
+  testing. Those wanting to procure this functionality are advised to reference
+  that version if necessary.
 
 ## Certification's Approach to Data Semantics
 
@@ -85,10 +85,10 @@ not-permitted.
 
 ## Does Certification Guarantee "Plug-and-play" Interoperability?
 
-Without faithful implementation of standardized data exchange patterns *—* which
-certification tests *—* interoperability at scale will never be achieved.
-However, while such conformance may be *required*, it is not in itself
-*sufficient* to guarantee interoperability.
+Without faithful implementation of standardized data exchange patterns _—_ which
+certification tests _—_ interoperability at scale will never be achieved.
+However, while such conformance may be _required_, it is not in itself
+_sufficient_ to guarantee interoperability.
 
 Many environmental factors can interfere with system interoperability.
 Certification does not and cannot validate all the various ancillary elements

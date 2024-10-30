@@ -14,10 +14,10 @@ Programs may also include organized extracurricular activities for students.
 1. Create a Bilingual Program.
 2. Delete the Bilingual Program.
 
-| Resource | Property Name | Is Collection | Data Type | Required / Optional | Scenario 1  <br/>POST |
-| --- | --- | --- | --- | --- | --- |
-| Programs | educationOrganizationReference | FALSE | educationOrganizationReference | REQUIRED |     |
-| educationOrganizationReference | educationOrganizationId | FALSE | int | REQUIRED | 255901 |
-| Programs | programId | FALSE | string | REQUIRED | ["101"  if possible<br/><br/>| system value] |
-| Programs | programName | FALSE | string | REQUIRED | Grand Bend Bilingual 101 |
-| Programs | programTypeDescriptor | FALSE | programTypeDescriptor | REQUIRED | Bilingual |
+| Resource                       | Property Name                  | Is Collection | Data Type                      | Required / Optional | Scenario 1: POST         |
+| ------------------------------ | ------------------------------ | ------------- | ------------------------------ | ------------------- | ---------------------------- | ------------- |
+| Programs                       | educationOrganizationReference | FALSE         | educationOrganizationReference | REQUIRED            |                              |
+| educationOrganizationReference | educationOrganizationId        | FALSE         | int                            | REQUIRED            | 255901                       |
+| Programs                       | programId                      | FALSE         | string                         | REQUIRED            | ["101" if possible<br/><br/> | system value] |
+| Programs                       | programName                    | FALSE         | string                         | REQUIRED            | Grand Bend Bilingual 101     |
+| Programs                       | programTypeDescriptor          | FALSE         | programTypeDescriptor          | REQUIRED            | Bilingual                    |

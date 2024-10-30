@@ -6,19 +6,19 @@ defined in a JavaScript file whose file system path is provided using the
 `--remediationScriptFile` command-line argument (or the `remediationsScriptFile`
 setting in the `options` section of the `apiPublisherSettings.js` file).
 
-:::warning
-  This feature uses Node.js for JavaScript execution, and the JavaScript code
-  does not run in a sandbox. You must take appropriate steps to only allow trusted
-  remediation scripts to be executed.
-:::
+:::warning This feature uses Node.js for JavaScript execution, and the
+JavaScript code does not run in a sandbox. You must take appropriate steps to
+only allow trusted remediation scripts to be executed. :::
 
 ## Dependency
+
 The remediations feature has a dependency on [Node.js](https://nodejs.org/en/)
 which must be available on the `PATH` environment variable.
 
 ## Parameters
 
 ### FailureContext (input)
+
 The input parameter, `failureContext`, contains information about the failed
 request. For example:
 
@@ -32,7 +32,9 @@ request. For example:
   targetConnectionName: "MyTargetApi"
 }
 ```
+
 ### RemediationPlan (output)
+
 The return value is a remediation plan containing an optional modified version
 of the original request and/or an array of additional requests to be POSTed
 against the target API. For example:
@@ -64,6 +66,7 @@ against the specified resources on the target API, before retrying the original
 failing request.
 
 ## Sample Remediations
+
 The following remediations module demonstrates how the remediation functions are
 written for specific resources and status codes. The functions will receive
 information about the failed POST request and return a "remediation plan"
@@ -78,6 +81,7 @@ worked for the other local education agency and were not available for
 publishing.
 
 ### Solution 1: Add Resource Items for Missing References
+
 To remediate these POST requests failing with a `400 Bad Request` status against
 the `/ed-fi/disciplineActions` resource, the following remediation module will
 create minimal staff resource items for the unresolveable staff associations:
@@ -91,9 +95,12 @@ module.exports = {
     const response = JSON.parse(failureContext.responseBody);
 
     // Ensure the error message contains the text associated with the failure we're remediating
-    if (response.message.includes("Validation of 'DisciplineActionStaffs' failed.")
-      && response.message.includes("Staff reference could not be resolved.")) {
-
+    if (
+      response.message.includes(
+        "Validation of 'DisciplineActionStaffs' failed.",
+      ) &&
+      response.message.includes('Staff reference could not be resolved.')
+    ) {
       // Define a regular expression to extract the array index values from the validation message
       const indexRegEx = /DisciplineActionStaff\[(?<Index>[0-9]+)\]/gi;
 
@@ -104,26 +111,27 @@ module.exports = {
       return {
         additionalRequests:
           // Map the missing staff into requests for the remediation
-          matches.map(m => {
+          matches.map((m) => {
             return {
-              resource: "/ed-fi/staffs",
+              resource: '/ed-fi/staffs',
               body: {
                 staffUniqueId: `${request.staffs[m.groups['Index']].staffReference.staffUniqueId}`,
-                firstName: "Unknown Staff",
-                lastSurname: "Unknown Staff"
-              }
-            }
-          })
+                firstName: 'Unknown Staff',
+                lastSurname: 'Unknown Staff',
+              },
+            };
+          }),
       };
     }
 
     // Take no action for the current request
     return null;
-  }
-}
+  },
+};
 ```
 
 ### Solution 2: Remove the Unresolved References from the Request
+
 To remediate these POST requests failing with a `400 Bad Request` status against
 the `/ed-fi/disciplineActions` resource, the following remediation module will
 remove the `staffs` child collection items for the unresolveable staff
@@ -138,9 +146,12 @@ module.exports = {
     const response = JSON.parse(failureContext.responseBody);
 
     // Ensure the error message contains the text associated with the failure we're remediating
-    if (response.message.includes("Validation of 'DisciplineActionStaffs' failed.")
-      && response.message.includes("Staff reference could not be resolved.")) {
-
+    if (
+      response.message.includes(
+        "Validation of 'DisciplineActionStaffs' failed.",
+      ) &&
+      response.message.includes('Staff reference could not be resolved.')
+    ) {
       // Define a regular expression to extract the array index values from the validation message
       const indexRegEx = /DisciplineActionStaff\[(?<Index>[0-9]+)\]/gi;
 
@@ -148,10 +159,10 @@ module.exports = {
       const matches = [...response.message.matchAll(indexRegEx)];
 
       // Delete the offending entries in the array (NOTE: does not remove the array items)
-      matches.forEach(m => delete request.staffs[m.groups['Index']]);
+      matches.forEach((m) => delete request.staffs[m.groups['Index']]);
 
       // Filter the array down to just the non-deleted items, and reassign
-      request.staffs = request.staffs.filter(i => i != null);
+      request.staffs = request.staffs.filter((i) => i != null);
 
       // Return the modified request body
       return { modifiedRequestBody: request };
@@ -159,6 +170,6 @@ module.exports = {
 
     // Take no action for the current request
     return null;
-  }
-}
+  },
+};
 ```

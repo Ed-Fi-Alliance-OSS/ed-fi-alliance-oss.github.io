@@ -85,10 +85,10 @@ needs to be taken to avoid confusing our mutual stakeholders, or competing
 and/or duplication of effort - is how and where the commonly defined
 vocabularies are further refined and transformed into concrete implementations.
 
-- Ed-Fi is focused on operationalizing standardized data exchanges in the K12
+* Ed-Fi is focused on operationalizing standardized data exchanges in the K12
   ecosystem to support student outcomes, **with a specific focus on data
   exchange between agencies and vendors and from vendor to vendor**.
-- CEDS is increasingly focusing on leveraging CEDS vocabularies to **simplify
+* CEDS is increasingly focusing on leveraging CEDS vocabularies to **simplify
   federal reporting** and **aligning data vocabularies for coherence across
   various technical standards for the entire P-20W education ecosystem**.
 
