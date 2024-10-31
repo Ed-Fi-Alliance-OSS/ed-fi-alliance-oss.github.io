@@ -108,21 +108,23 @@ successfully.
 
 ### API tests
 
-```shell
-EdFi.SmokeTest.Console.exe -k {yourSandboxKey} -s {yourSandboxSecret} -b "http://localhost:54746" -t NonDestructiveApi
-
+```powershell
+EdFi.SmokeTest.Console.exe -k {yourSandboxKey} -s {yourSandboxSecret} -b "http://localhost:54746" `
+  -t NonDestructiveApi
 ```
 
 ### Non-destructive SDK tests
 
-```shell
-EdFi.SmokeTest.Console.exe -k {yourSandboxKey} -s {yourSandboxSecret} -b "http://localhost:54746" -t NonDestructiveSdk -l "..\\..\\..\\..\\EdFi.LoadTools.Test\\bin\\Debug\\net6.0\\EdFi.OdsApi.Sdk.dll"
+```powershell
+EdFi.SmokeTest.Console.exe -k {yourSandboxKey} -s {yourSandboxSecret} -b "http://localhost:54746" `
+  -t NonDestructiveSdk -l "..\\..\\..\\..\\EdFi.LoadTools.Test\\bin\\Debug\\net6.0\\EdFi.OdsApi.Sdk.dll"
 ```
 
 ### Destructive SDK tests
 
-```shell
-EdFi.SmokeTest.Console.exe -k {yourSandboxKey} -s {yourSandboxSecret} -b "http://localhost:54746" -t DestructiveSdk -l "..\\..\\..\\..\\EdFi.LoadTools.Test\\bin\\Debug\\net6.0\\EdFi.OdsApi.Sdk.dll"
+```powershell
+EdFi.SmokeTest.Console.exe -k {yourSandboxKey} -s {yourSandboxSecret} -b "http://localhost:54746" `
+  -t DestructiveSdk -l "..\\..\\..\\..\\EdFi.LoadTools.Test\\bin\\Debug\\net6.0\\EdFi.OdsApi.Sdk.dll"
 ```
 
 :::caution

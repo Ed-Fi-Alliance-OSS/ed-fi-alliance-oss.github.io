@@ -62,12 +62,8 @@ manual restart of ODS / API would be needed.
 
 :::
 
-Security configurations can be setup at different levels:
-
-* [How To: Configure Claim Sets](#how-to-configure-claim-sets)
-  * [Define default Authorization Strategies for a Resource Action](#define-default-authorization-strategies-for-a-resource-action)
-  * [Add a Resource and Action to a Claim Set](#add-a-resource-and-action-to-a-claim-set)
-  * [Define Claim Set Specific Authorization Strategy Overrides for a Resource Action](#define-claim-set-specific-authorization-strategy-overrides-for-a-resource-action)
+Security configurations can be setup at different levels, as described in the
+sections below.
 
 ## Define default Authorization Strategies for a Resource Action
 

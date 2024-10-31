@@ -7,13 +7,7 @@ do not require a change to the compiled code.
 
 Key configuration points include: OAuth endpoints, Admin and Security datastore
 connections, Token timeouts, Enabling / disabling features. See the following
-sections for more details on important configuration options:
-
-- [Configuration Details](#configuration-details)
-  - [Required Configuration Settings](#required-configuration-settings)
-  - [Optional Configuration Settings](#optional-configuration-settings)
-  - [Environment Configuration](#environment-configuration)
-  - [Secret Manager](#secret-manager)
+sections for more details on important configuration options
 
 ## Required Configuration Settings
 
@@ -108,13 +102,16 @@ projects so that they aren't accidentally checked into source control. To set
 overrides, you can either use the [.NET
 CLI Tool](https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-8.0&tabs=windows#set-a-secret)
 
-![Secret Manager](../../../../../static/img/reference/ods-api/image2021-3-19_12-8-29.png)
+```powershell
+PS D:\Ed-Fi-ODS-Implementation\Application\EdFi.Ods.WebApi> dotnet user-secrets set "ApiSettings:PopulatedTemplateScript" "Glendale"
+Successfully saved ApiSettings:PopulatedTemplateScript = Glendale to the secret store.
+```
 
 or [Manage User
-Secrets](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows#json-structure-flattening-in-visual-studio) gesture
+Secrets](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows#json-structure-flattening-in-visual-studio)
 in Visual Studio.
 
-![Manage User Secrets](../../../../../static/img/reference/ods-api/image2021-3-19_12-6-13.png)
+![Manage User Secrets](/img/reference/ods-api/manage-user-secrets.webp)
 
 Both of the above methods will create a _secret.json_ file in the local
 machine's user profile folder and will override settings
@@ -129,7 +126,13 @@ in _appsettings_._**Development**_._json._
 e.g., Following _secret.json_ overrides the default 'GrandBend' dataset and
 deploys with 'Glendale' sample dataset.
 
-![Secret Manager](../../../../../static/img/reference/ods-api/image2021-3-12_16-47-40.png)
+```json
+{
+  "ApiSettings": {
+    "PopulatedTemplateScript": "Glendale",
+  }
+}
+```
 
 See [Safe storage of app secrets in development in ASP.NET
 Core](https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-8.0&tabs=windows)

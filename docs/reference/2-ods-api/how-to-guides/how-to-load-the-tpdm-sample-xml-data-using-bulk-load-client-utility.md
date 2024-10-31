@@ -8,17 +8,6 @@ XML Data using Bulk Load Client
 Utility](./how-to-load-the-ods-with-sample-xml-data-using-bulk-load-client-utility.md).
 Walk through those steps first to get familiar with the process.
 
-The steps can be summarized as:
-
-* [How To: Load the TPDM Sample XML Data using Bulk Load Client Utility](#how-to-load-the-tpdm-sample-xml-data-using-bulk-load-client-utility)
-  * [Step 1. Install the Ed-Fi Bulk Load Client](#step-1-install-theed-fibulk-load-client)
-  * [Step 2. Download Scripts and Sample Data](#step-2-download-scripts-and-sample-data)
-  * [Step 3. Create an Empty Sandbox](#step-3-create-an-empty-sandbox)
-  * [Step 4. Update Claim Set to Load Descriptors and Education Organizations](#step-4-update-claim-set-to-load-descriptors-and-education-organizations)
-  * [Step 5. Run the Bootstrap Script to Load Descriptors and Education Organizations](#step-5-run-the-bootstrap-script-toload-descriptors-and-education-organizations)
-  * [Step 6. Update Claim Set to Load Sample Data](#step-6-update-claim-set-to-load-sample-data)
-  * [Step 7. Run the Sample Data Script to Load Sample Data](#step-7-run-the-sample-data-script-toload-sample-data)
-
 ## Step 1. Install the Ed-Fi Bulk Load Client
 
 * Ensure that you have an instance of the **Ed-Fi ODS / API running locally**

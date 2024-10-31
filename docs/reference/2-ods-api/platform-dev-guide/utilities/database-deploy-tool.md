@@ -27,25 +27,6 @@ the API.
 
 :::
 
-* [Database Deploy Tool](#database-deploy-tool)
-  * [Installing the Application](#installing-the-application)
-  * [Running the Application](#running-the-application)
-    * [As a Dotnet Tool](#as-a-dotnet-tool)
-    * [Using Dotnet Run on the Project](#using-dotnet-run-on-the-project)
-    * [Verbs](#verbs)
-    * [Arguments](#arguments)
-    * [Examples](#examples)
-      * [Ex: SQL Server with Minimal Arguments](#ex-sql-server-with-minimal-arguments)
-      * [Ex: Test If Deployment Needed](#ex-test-if-deployment-needed)
-      * [Ex: SQL Server Install with Extensions](#ex-sql-server-install-with-extensions)
-      * [Ex: SQL Server with Minimal Arguments, Admin database](#ex-sql-server-with-minimal-arguments-admin-database)
-      * [Ex: SQL Server with Optional Arguments](#ex-sql-server-with-optional-arguments)
-      * [Ex: PostgreSQL with Minimal Arguments](#ex-postgresql-with-minimal-arguments)
-      * [Ex: PostgreSQL on Alternate Port with Optional Arguments](#ex-postgresql-on-alternate-port-with-optional-arguments)
-    * [SQL Server Connection String Encryption](#sql-server-connection-string-encryption)
-    * [PostgreSQL Connection String Encryption](#postgresql-connection-string-encryption)
-  * [Troubleshooting](#troubleshooting)
-
 ## Installing the Application
 
 As a [.NET Global
@@ -54,18 +35,22 @@ application runs on a machine with [.NET 8.0 SDK (Compatible with Visual Studio
 2022)](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) and is installed
 from Azure Artifacts with one of the following commands:
 
-```shell
+```powershell
 # Globally install the most recent version
-dotnet tool install -g EdFi.Suite3.Db.Deploy --add-source https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json
+dotnet tool install -g EdFi.Suite3.Db.Deploy `
+  --add-source https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json
 
 # Install most recent version into a local directory
-dotnet tool install EdFi.Suite3.Db.Deploy --tool-path <directory> --add-source https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json
+dotnet tool install EdFi.Suite3.Db.Deploy --tool-path <directory> `
+  --add-source https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json
 
 # Install a specific version
-dotnet tool install EdFi.Suite3.Db.Deploy --tool-path <directory> --version 4.1.52 --add-source https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json
+dotnet tool install EdFi.Suite3.Db.Deploy --tool-path <directory> --version 4.1.52 `
+  --add-source https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json
 
 # Install the most recent patch-release of 4.1 by adding -* wildcard to the version
-dotnet tool install EdFi.Suite3.Db.Deploy --tool-path <directory> --version 4.1.* --add-source https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json
+dotnet tool install EdFi.Suite3.Db.Deploy --tool-path <directory> --version 4.1.* `
+  --add-source https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json
 ```
 
 Note that this process will create a single locally executable binary, bundling
@@ -138,114 +123,117 @@ Verbs describe the action that the tool needs to take.
 
 ### Examples
 
+:::tip
+
+With the default SQL Server installation on localhost, you may have an untrusted
+certificate. You can bypass transport encryption by added `` to any connection
+string. This is not advised for production usage. To setup a proper certificate,
+see [Install a valid certificate on the
+server.](https://learn.microsoft.com/en-us/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)
+
+For more information on connection string formats, see:
+
+* [Connection string syntax
+  (MSSQL)](https://learn.microsoft.com/en-us/sql/connect/ado-net/connection-string-syntax)
+* [Connection string parameters
+  (PostgreSQL)](https://www.npgsql.org/doc/connection-string-parameters.html)
+
+:::
+
 #### Ex: SQL Server with Minimal Arguments
 
-```shell
-EdFi.Db.Deploy.exe deploy
-    --engine SqlServer
-    --connectionString "Server=localhost; Database=EdFi_Ods_Empty_Template; Integrated Security=True;Encrypt=False" `
-    --standardVersion "5.1.0"
-    --filePaths
-        "Ed-Fi-Ods\"
+```powershell
+EdFi.Db.Deploy.exe deploy `
+    --engine SqlServer `
+    --connectionString "Server=localhost; Database=EdFi_Ods_Empty_Template; Integrated Security=True" `
+    --standardVersion "5.1.0" `
+    --filePaths `
+        "Ed-Fi-Ods\" `
         "Ed-Fi-ODS\Application\EdFi.Ods.Standard"
 ```
 
 #### Ex: Test If Deployment Needed
 
-```shell
-EdFi.Db.Deploy.exe whatif
-    --engine SqlServer
-    --connectionString "Server=localhost; Database=EdFi_Ods_Empty_Template; Integrated Security=True;Encrypt=False"
-    --standardVersion "5.1.0"
-    --filePaths
-        "Ed-Fi-Ods\"
+```powershell
+EdFi.Db.Deploy.exe whatif `
+    --engine SqlServer `
+    --connectionString "Server=localhost; Database=EdFi_Ods_Empty_Template; Integrated Security=True" `
+    --standardVersion "5.1.0" `
+    --filePaths `
+        "Ed-Fi-Ods\" `
         "Ed-Fi-ODS\Application\EdFi.Ods.Standard"
 ```
 
 #### Ex: SQL Server Install with Extensions
 
-```shell
-EdFi.Db.Deploy.exe deploy
-    --engine SqlServer
-    --connectionString "Server=localhost; Database=EdFi_Ods_Empty_Template; Integrated Security=True;Encrypt=False"
-    --standardVersion "5.1.0"
-    --extensionVersion "1.1.0"
-    --filePaths
-        "Ed-Fi-Ods\"
-        "Ed-Fi-ODS\Application\EdFi.Ods.Standard"
-        "Ed-Fi-Ods-Implementation\Application\EdFi.Ods.Extensions.TPDM"
+```powershell
+EdFi.Db.Deploy.exe deploy `
+    --engine SqlServer `
+    --connectionString "Server=localhost; Database=EdFi_Ods_Empty_Template; Integrated Security=True" `
+    --standardVersion "5.1.0" `
+    --extensionVersion "1.1.0" `
+    --filePaths `
+        "Ed-Fi-Ods\" `
+        "Ed-Fi-ODS\Application\EdFi.Ods.Standard" `
+        "Ed-Fi-Ods-Implementation\Application\EdFi.Ods.Extensions.TPDM" `
         "Ed-Fi-Ods-Implementation\Application\EdFi.Ods.Extensions.Sample"
 ```
 
 #### Ex: SQL Server with Minimal Arguments, Admin database
 
-```shell
-EdFi.Db.Deploy.exe deploy
-    --database Admin
-    --engine SqlServer
-    --connectionString "Server=localhost; Database=EdFi_Admin; Integrated Security=True;Encrypt=False"
-    --standardVersion "5.1.0"
-    --filePaths
-        "Ed-Fi-Ods\"
-        "Ed-Fi-ODS-Implementation\"
+```powershell
+EdFi.Db.Deploy.exe deploy `
+    --database Admin `
+    --engine SqlServer `
+    --connectionString "Server=localhost; Database=EdFi_Admin; Integrated Security=True" `
+    --standardVersion "5.1.0" `
+    --filePaths `
+        "Ed-Fi-Ods\" `
+        "Ed-Fi-ODS-Implementation\" `
         "Ed-Fi-ODS\Application\EdFi.Ods.Standard"
 ```
 
 #### Ex: SQL Server with Optional Arguments
 
-```shell
-EdFi.Db.Deploy.exe deploy
-    --engine SqlServer
-    --connectionString "Server=localhost; Database=EdFi_Ods_Empty_Template; Integrated Security=True;Encrypt=False"
-    --standardVersion "5.1.0"
-    --filePaths
-        "Ed-Fi-Ods\"
-        "Ed-Fi-ODS\Application\EdFi.Ods.Standard"
+```powershell
+EdFi.Db.Deploy.exe deploy `
+    --engine SqlServer `
+    --connectionString "Server=localhost; Database=EdFi_Ods_Empty_Template; Integrated Security=True" `
+    --standardVersion "5.1.0" `
+    --filePaths `
+        "Ed-Fi-Ods\" `
+        "Ed-Fi-ODS\Application\EdFi.Ods.Standard" `
     --features "Changes", "RecordOwnership"
 ```
 
 #### Ex: PostgreSQL with Minimal Arguments
 
-```shell
-EdFi.Db.Deploy.exe deploy
-    --engine PostgreSql
-    --connectionString "Host=localhost; Port=5432; Database=EdFi_Ods_Empty_Template; username=postgres; password=docker;"
-    --standardVersion "5.1.0"
-    --filePaths
-        "Ed-Fi-Ods\"
+```powershell
+EdFi.Db.Deploy.exe deploy `
+    --engine PostgreSql `
+    --connectionString "Host=localhost; Port=5432; Database=EdFi_Ods_Empty_Template; username=postgres; password=docker;" `
+    --standardVersion "5.1.0" `
+    --filePaths `
+        "Ed-Fi-Ods\" `
         "Ed-Fi-ODS\Application\EdFi.Ods.Standard"
 ```
 
 #### Ex: PostgreSQL on Alternate Port with Optional Arguments
 
-```shell
-EdFi.Db.Deploy.exe deploy
-    --engine PostgreSql
-    --connectionString "Host=localhost; Port=1234; Database=EdFi_Ods_Empty_Template; username=postgres; password=docker;"
-    --standardVersion "5.1.0"
-    --timeOut 360
-    --filePaths
-        "Ed-Fi-Ods\"
+```powershell
+EdFi.Db.Deploy.exe deploy `
+    --engine PostgreSql `
+    --connectionString "Host=localhost; Port=1234; Database=EdFi_Ods_Empty_Template; username=postgres; password=docker;" `
+    --standardVersion "5.1.0" `
+    --timeOut 360 `
+    --filePaths `
+        "Ed-Fi-Ods\" `
         "Ed-Fi-ODS\Application\EdFi.Ods.Standard"
 ```
 
-### SQL Server Connection String Encryption
-
-The examples provided are using Encrypt=false setting in the connection strings.
-This setting is not recommended for production environments. For information on
-securing and encrypting connection strings please see [Install a valid
-certificate on the
-server.](https://learn.microsoft.com/en-us/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)
-
-### PostgreSQL Connection String Encryption
-
-For information on securing and encrypting connection strings please see the
-npgsql
-docs: [https://www.npgsql.org/doc/security.html](https://www.npgsql.org/doc/security.html).
-
 ## Troubleshooting
 
-PostgreSQL passwords containing special characters are problematic — some users
+PostgreSQL passwords containing special characters are problematic &mdash; some users
 find that they work and others find that they do not work, even with third-party
 tools such as PG Admin 4. This problem might be restricted to Windows
 Containers. No workaround other than changing the password has been found.

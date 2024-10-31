@@ -27,7 +27,7 @@ file extension (from .nupkg to .zip). Remove the version number (optional).
 Check the box next to **Unblock** (this will prevent PowerShell from asking for
 permission to load every module in the installer) and click **OK**.
 
-![Package Properties](../../../../../static/img/reference/ods-api/image2024-6-5_13-12-15.png)
+![Package Properties](/img/reference/ods-api/unblock.png)
 
 :::info Enable TLS 1.2
 
@@ -186,7 +186,16 @@ to Ed-Fi Databases, place the extracted contents of your extension plugin
 package in the extracted EdFi.Suite3.RestApi.Databases package
 under Ed-Fi-ODS-Implementation\\Plugin folder.
 
-![Copy your extension plugin to database deployment package](../../../../../static/img/reference/ods-api/image2021-5-26_12-45-50.png)
+```none title="File listing (partial)"
+∨ edfi.suite3.restapi.databases
+  ∨ Ed-Fi-ODS-Implementation
+    ∨ Plugin
+      > [Your Extension Package Extract]
+      - homograph.ps1
+      - profiles.sample.ps1
+      - sample.ps1
+      - tpdm.ps1
+```
 
 #### Enable your extension plugin in the deployment configuration
 
@@ -203,6 +212,7 @@ Scripts values to the following:
 ```
 
 </details>
+
 ## Run Installation Script
 
 Open a PowerShell window in Administrator mode and navigate to the
@@ -210,18 +220,14 @@ EdFi.Suite3.RestApi.Databases package folder.
 
 Run the following PowerShell command to load modules for installation:
 
-```shell
-
+```powershell
 Import-Module .\Deployment.psm1
-
 ```
 
 Next, execute the following command in PowerShell:
 
-```shell
-
+```powershell
 Initialize-DeploymentEnvironment
-
 ```
 
 ## Step 3. Install WebApi
@@ -236,10 +242,8 @@ Open a PowerShell window in Administrator mode and navigate to the
 EdFi.Suite3.Installer.WebApi package folder. Run the following PowerShell
 command to load modules for installation:
 
-```shell
-
+```powershell
 Import-Module .\Install-EdFiOdsWebApi.psm1
-
 ```
 
 The WebApi installer can take a number of parameters to tailor the installation
@@ -359,7 +363,7 @@ server.](https://learn.microsoft.com/en-us/sql/database-engine/configure-windows
 :::info ODS Connection String Encryption
 
 By default, an Encryption key will be generated using member
-New-AESKey from Install-EdFiOdsWebApi.psm1 module. If you need to override the
+New-AESKey from `Install-EdFiOdsWebApi.psm1` module. If you need to override the
 value with an specific key, add OdsConnectionStringEncryptionKey parameter.
 Key must be 256 bits and base 64 encoded.
 
@@ -377,14 +381,12 @@ and the range will accept values between 2020 and 2030
 
 Paste the modified parameter code into your PowerShell window and hit **Enter**.
 
-### Run the Installation Script
+### Run the Installation Script (Web API)
 
 Run the following command in the PowerShell window:
 
-```shell
-
+```powershell
 Install-EdFiOdsWebApi @parameters
-
 ```
 
 <details>
@@ -396,7 +398,13 @@ If you have an extension plugin package that you would like to be the deployed
 to Ed-Fi WebApi, place the extracted contents of your extension plugin package
 in C:\\inetpub\\Ed-Fi\\WebApi\\Plugin folder.
 
-![Copy your extension plugin to deployed WebAPI](../../../../../static/img/reference/ods-api/image2021-5-26_13-32-29.png)
+```none title="File listing (partial)"
+∨ inetpub
+  ∨ Ed-Fi
+    ∨ WebApi
+      ∨ Plugin
+        > [Your Extension Package Extract]
+```
 
 #### Enable your extension plugin in appsettings.json
 
@@ -429,10 +437,8 @@ Open a PowerShell window in Administrator mode and navigate to the
 "EdFi.Suite3.Installer.SwaggerUI" folder. Run the following PowerShell command
 to load modules for installation:
 
-```shell
-
+```powershell
 Import-Module .\Install-EdFiOdsSwaggerUI.psm1
-
 ```
 
 The Swagger UI installer can take a number of parameters to tailor the install
@@ -442,12 +448,10 @@ At a minimum, WebAPI connection information is required.
 Copy and modify the following parameter code to add your site name:
 
 ```powershell
-
 $parameters = @{
     PackageVersion = "7.2.1201"
     WebApiVersionUrl = "https://YOUR_SITE_OR_SERVER_NAME_HERE/WebApi"
 }
-
 ```
 
 Paste the modified parameter into your PowerShell window and execute the code.
@@ -470,14 +474,12 @@ school years.
 
 :::
 
-### Run the Installation Script
+### Run the Installation Script (Swagger UI)
 
 Run the following command in the PowerShell window:
 
-```shell
-
+```powershell
 Install-EdFiOdsSwaggerUI @parameters
-
 ```
 
 ## Step 5. Install Admin API
@@ -497,27 +499,19 @@ Secret](../../how-to-guides/how-to-configure-key-secret.md).
 
 Just a few more tasks to complete your installation:
 
-* Open IIS (Press the **Windows key** ![Windows
-    logo](https://lh5.googleusercontent.com/o2iqf0j70YV3B-1NQxBFj1Ne-JeToRq5PiZeMtvF05l3jpyp4kseJn-zEs3BULgpAS_TFr8Qyacu5JZkiyXNllygq2EGhPII-PcxYyxkwCUqC4fPhMJ0QbovAD16R7T2StuDemW_)
-
-     on your keyboard, type **IIS**, select **Internet Information Services
-     (IIS)**, and press **Enter**.
+* Open IIS (Press the **Windows key** 🪟 on your keyboard, type **IIS**,
+  select **Internet Information Services (IIS)**, and press **Enter**.
 * **Right-click** on the server (alternatively, you can right-click the EdFi
-    web site), and select **Stop**.
-
-![Stop IIS](../../../../../static/img/reference/ods-api/image2021-2-12_17-5-39.png)
-
+  web site), and select **Stop**.
 * **Right-click** the server (or EdFi website) again and select **Start**.
-
-![Start IIS](../../../../../static/img/reference/ods-api/image2021-2-12_17-7-5.png)
 
 You are now ready to use the Ed-Fi ODS / API. The following URLs are available:
 
-| Website | URL |
-| --- | --- |
-| Ed-Fi ODS / API | [https://YOUR\_SERVER\_NAME\_HERE/WebApi/](https://YOUR_SERVER_NAME_HERE/WebApi/) |
-| Ed-Fi Admin API | [https://YOUR\_SERVER\_NAME\_HERE/AdminApi/](https://YOUR_SERVER_NAME_HERE/AdminApi/) |
-| Ed-Fi ODS / API Documentation  <br/>(Optional, not for production) | [https://YOUR\_SERVER\_NAME\_HERE/SwaggerUI](https://YOUR_SERVER_NAME_HERE/SwaggerUI) |
+| Website                                                            | URL                                          |
+| ------------------------------------------------------------------ | -------------------------------------------- |
+| Ed-Fi ODS / API                                                    | `https://YOUR\_SERVER\_NAME\_HERE/WebApi`    |
+| Ed-Fi Admin API                                                    | `https://YOUR\_SERVER\_NAME\_HERE/AdminApi`  |
+| Ed-Fi ODS / API Documentation  <br/>(Optional, not for production) | `https://YOUR\_SERVER\_NAME\_HERE/SwaggerUI` |
 
 ## Contents
 

@@ -7,40 +7,20 @@ resource called **studentAlternativeEducationProgramAssociations.**
 Before you begin:
 
 * This example uses MetaEd to generate extended artifacts and documentation.
-    MetaEd is a free tool developed by the Ed-Fi Alliance and is the recommended
-    way to add new fields to the Ed-Fi ODS / API. You should [download and
-    install
-    MetaEd](https://edfi.atlassian.net/wiki/spaces/METAED20/pages/23710221/Getting+Started+with+the+MetaEd+IDE) before
-    beginning. This example goes step-by-step, so it's okay if you've never used
-    MetaEd before. If you prefer to generate extended artifacts manually instead
-    of using MetaEd, the steps are listed in [Appendix
-    A](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V72/pages/23299672/How+To+Extend+the+Ed-Fi+ODS+API+-+Alternative+Education+Program+Example#HowTo:ExtendtheEd-FiODS/API-AlternativeEducationProgramExample-appendixA) of
-    this page.
+  MetaEd is a free tool developed by the Ed-Fi Alliance and is the recommended
+  way to add new fields to the Ed-Fi ODS / API. You should [download and install
+  MetaEd](/reference/metaed) before beginning. This example goes step-by-step,
+  so it's okay if you've never used MetaEd before. If you prefer to generate
+  extended artifacts manually instead of using MetaEd, the steps are listed in
+  [Appendix A](#appendix-a-adding-manually-created-extensions) of this page.
 * This example assumes that the Ed-Fi ODS / API has been successfully downloaded
-    and is running in a local development environment per the instructions in
-    the [Getting
-    Started](../getting-started/source-code-installation/readme.md) documentation.
+  and is running in a local development environment per the instructions in
+  the [Getting
+  Started](../getting-started/source-code-installation/readme.md) documentation.
 * Back up any existing code or scripts in source control or your file system.
-    This is important if you or your team have performed these steps before. The
-    MetaEd deployment feature replaces existing files, some of which may contain
-    hand-crafted customizations (e.g., to define an authorization strategy).
-
-The steps can be summarized as:
-
-* [Step 1. Design Your Extension](#step-1-design-your-extension)
-* [Step 2. Author Your Extension Using
-    MetaEd](#step-2-author-your-extension-using-metaed)
-* [Step 3. Generate Extended Technical Artifacts Using
-    MetaEd](#step-3-generate-extended-technical-artifacts-using-metaed)
-* [Step 4. Create Extension Project in ODS / API
-    Solution](#step-4-create-extension-project-in-ods-api-solution)
-* [Step 5. Deploy your Extended Artifacts to the ODS / API
-    Solution](#step-5-deploy-your-extended-artifacts-to-the-ods-api-solution)
-* [Step 6. Configure Security](#step-6-configure-security)
-* [Step 7. Run Code Generation and Verify
-    Changes](#step-7-run-code-generation-and-verify-changes)
-
-Each step is outlined in detail below.
+  This is important if you or your team have performed these steps before. The
+  MetaEd deployment feature replaces existing files, some of which may contain
+  hand-crafted customizations (e.g., to define an authorization strategy).
 
 ## Step 1. Design Your Extension
 
@@ -57,7 +37,33 @@ and its properties. Our new program is based on the
 GeneralStudentProgramAssociation and references the common MetingTime, already
 in the ODS / API data model.
 
-![Diagram of Alternative Education Program](../../../../static/img/reference/ods-api/image2024-5-30_14-45-12.png)
+```mermaid
+classDiagram
+    StudentAlternativeEducationProgramAssociation -- GeneralStudentProgramAssociation : based on
+    StudentAlternativeEducationProgramAssociation -- MeetingTime : references
+
+    class StudentAlternativeEducationProgramAssociation {
+        <<new association>>
+        +AlternativeEducationEligibilityReasonDescriptor
+        +MeetingTime
+    }
+    class MeetingTime {
+        <<core entity>>
+        StartTime
+        EndTime
+    }
+    class GeneralStudentProgramAssociation {
+        <<core entity>>
+        Student[0..1]
+        Program[0..1]
+        EndDate
+        BeginDate
+        ReasonExited[0..1]
+        EducationOrganization[0..1]
+        ServedOutsideOfRegularSession
+        ProgramParticipationStatus
+    }
+```
 
 You'll notice that an Alternative Education Eligibility Reason is shown with a
 type of "descriptor." The Ed-Fi Descriptor is analogous to an enumeration. It's
@@ -71,8 +77,7 @@ extend the Ed-Fi ODS / API. Let's continue with the mechanics.
 ## Step 2. Author Your Extension Using MetaEd
 
 In this step, we'll create a new project in MetaEd and author our new entity.
-It's easy, but you need to [download and install
-MetaEd](https://edfi.atlassian.net/wiki/spaces/METAED20/pages/23710221/Getting+Started+with+the+MetaEd+IDE) to
+It's easy, but you need to [download and install MetaEd](/reference/metaed) to
 do this step. Do that now if you haven't already.
 
 ### Step 2a. Set or Confirm MetaEd Target Version
@@ -93,7 +98,29 @@ Extension](https://edfi.atlassian.net/wiki/spaces/METAED20/pages/23709491/MetaEd
 For this example, place your extension in a folder called
 "AlternativeEducationProgram".
 
-![Extension Folder](../../../../static/img/reference/ods-api/image2024-5-30_15-25-15.png)
+<details>
+<summary>Listing of files</summary>
+
+```none
+∨ ed-fi-model-5.1
+  > Association
+  > Choice
+  > Common
+  > Descriptor
+  > Domain
+  > DomainEntity
+  > Enumeration
+  > Interchange
+  > Shared
+  - package.json
+  - README.md
+∨ AlternativeEducationProgram
+  > Association
+  > Descriptor
+  - package.json
+```
+
+</details>
 
 ### Step 2c. Update the package.json File
 
@@ -101,7 +128,14 @@ Open the package.json file by double-clicking on the file in the tree view to
 the left and provide an appropriate name for your project. In this case we will
 call it "SampleAlternativeEducationProgram".
 
-![Package.json](../../../../static/img/reference/ods-api/image2024-5-30_15-26-46.png)
+```json
+{
+  "metaEdProject": {
+    "projectName": "SampleAlternativeEducationProgram",
+    "projectVersion": "1.0.0"
+  }
+}
+```
 
 Click **File** > **Save** (**Ctrl + S**) to save your changes.
 
@@ -117,29 +151,36 @@ MetaEd source file to that folder.
 
 **Right-click** on the folder **Association**, and select New File.
 
-![New File](../../../../static/img/reference/ods-api/image2024-5-30_15-29-49.png)
-
 Name the new file **StudentAlternativeEducationProgramAssociation.metaed** to
 match the name of the new entity to be created.
-
-![Named File](../../../../static/img/reference/ods-api/image2024-5-30_15-31-16.png)
 
 Note the new file appears in the tree view to the left. **Double-click** on the
 file in the tree view to open it.
 
+<details>
+<summary>Listing of files</summary>
+
+```none
+> ed-fi-model-5.1
+∨ AlternativeEducationProgram
+  ∨ Association
+    - StudentAlternativeEducationProgramAssociation.metaed
+  > Descriptor
+  - package.json
+```
+
+</details>
+
 ### Step 2e. Author and Save Your Extension
 
-Type or copy and paste the code listing below into your MetaEd file:
-
-![MetaEd Source](../../../../static/img/reference/ods-api/image2024-5-30_15-47-19.png)
-
-Note that an error will be listed in the linter panel until the referenced
-Descriptor is created in a future step.
+Type or copy and paste the code listing below into your MetaEd file. Note that
+an error will be listed in the linter panel until the referenced Descriptor is
+created in a future step.
 
 <details  >
 <summary>MetaEd Source for StudentAlternativeEducationProgramAssociation Association</summary>
 
-```metaed
+```none
 Association StudentAlternativeEducationProgramAssociation based on EdFi.GeneralStudentProgramAssociation
     documentation "This association represents Students in an Alternative Education Program."
     descriptor AlternativeEducationEligibilityReason
@@ -165,12 +206,10 @@ operational context.
 Replace the template text in your new Descriptor source file with the following
 code.
 
-![MetaEd Source for AlternativeEducationEligibilityReason Descriptor](../../../../static/img/reference/ods-api/image2024-5-30_15-49-10.png)
-
 <details>
 <summary>MetaEd Source for AlternativeEducationEligibilityReason Descriptor</summary>
 
-```metaed
+```none
 Descriptor AlternativeEducationEligibilityReason
     documentation "This descriptor describes the reason a student is eligible for an Alternative Education Program"
 ```
@@ -186,9 +225,8 @@ straightforward.
 
 ### Step 3a. Build Your Project
 
-**Click Build** in the VSCode Editor to generate artifacts.
-
-![Build](../../../../static/img/reference/ods-api/image2024-5-30_15-50-25.png)
+**Click Build** in the VSCode Editor to generate artifacts. Note that you must
+have a file open for the Build button to be displayed.
 
 ### Step 3b. View MetaEd Output
 
@@ -198,7 +236,28 @@ API metadata, and XSD used by the code generation, but also updated
 documentation such as data dictionaries that add your extension definitions to
 the ODS / API documentation.
 
-![MetaEd Output](../../../../static/img/reference/ods-api/image2024-5-30_15-51-46.png)
+<details>
+<summary>Listing of files</summary>
+
+```none
+> ed-fi-model-5.1
+∨ AlternativeEducationProgram
+  ∨ Association
+    - StudentAlternativeEducationProgramAssociation.metaed
+  > Descriptor
+  > MetaEdOutput                            <----- NEW DIRECTORY
+    > Documentation
+    > EdFi
+    ∨ SampleAlternativeEducationProgram
+      ∨ ApiMetadata
+        - ApiModel-EXTENSION.json
+      > Database
+      > Interchange
+      > XSD
+  - package.json
+```
+
+</details>
 
 We'll look at how to use this MetaEd output in your code below. First, we'll
 need to set up our extension project in Visual Studio.
@@ -215,8 +274,8 @@ documentation. Do that now if you haven't already.
 
 Visual Studio Project Templates can be installed by following steps in [Project
 Templates
-Installation](../getting-started/source-code-installation/project-templates-installation.md) section
-of this documentation.
+Installation](../getting-started/source-code-installation/project-templates-installation.md)
+section of this documentation.
 
 ### Step 4b. Create new Extension Project
 
@@ -224,18 +283,14 @@ of this documentation.
 Solution, **right-click** on the Ed-Fi Extensions Folder. Select **Add** > **New
 Project**.
 
-![Add New Project](../../../../static/img/reference/ods-api/image2024-5-30_15-56-51.png)
-
 **4b.2.** Search and select the **Ed-Fi API Extensions Project Template** option
 and click **Next**.
 
-![Search and select the Ed-Fi API Extensions Project Template](../../../../static/img/reference/ods-api/image2024-5-30_15-58-42.png)
+![Create Extension Project](/img/reference/ods-api/how-to-transcript/vs-create-extension-project.webp)
 
 In the Project Name field
 enter **EdFi.Ods.Extensions.SampleAlternativeEducationProgram** and
 click ****Create**.**
-
-![Create Project](../../../../static/img/reference/ods-api/image2024-5-30_16-0-17.png)
 
 :::info
 
@@ -256,12 +311,8 @@ file to **EdFi.Ods.Extensions.SampleAlternativeEducationProgram.nuspec**.
 **Marker\_EdFi\_Ods\_Extensions\_ExtensionName.cs** file and Rename the file to
 **Marker\_EdFi\_Ods\_Extensions\_**SampleAlternativeEducationProgram**.cs**.
 
-![Rename Marker Interface](../../../../static/img/reference/ods-api/image2024-5-30_16-4-16.png)
-
 **4c.2.** When prompted choose to rename all references to the code element
 **Marker\_EdFi\_Ods\_Extensions\_ExtensionName**.
-
-![Extension Rename Marker Confirm](../../../../static/img/reference/ods-api/extension-rename-marker-confirm.png)
 
 ### Step 4d. Integrate Extension into the Solution
 
@@ -272,7 +323,7 @@ folder. **Right-click**, select **Add** > **Project** **Reference...**, t
 select
 the **EdFi.Ods.Extensions.**SampleAlternativeEducationProgram**** project.
 
-![Add Project Reference](../../../../static/img/reference/ods-api/image2024-5-30_16-6-51.png)
+![Add Reference](/img/reference/ods-api/how-to-transcript/vs-extension-add-reference.webp)
 
 **4d.2.** Locate any profile projects in the
 solution. **Right-click**, select **Add** > **Project** **Reference...**, then
@@ -300,8 +351,6 @@ Workspace tab, find the MetaEd extension and update the "Ods Api Deployment
 Directory" to point to the folder that contains the Ed-Fi-ODS and
 Ed-Fi-ODS-Implementation folders.
 
-![MetaEd Extension Settings](../../../../static/img/reference/ods-api/image2024-5-30_16-17-8.png)
-
 ### Step 5b. Deploy Your Extended Artifacts
 
 :::warning
@@ -313,15 +362,13 @@ previous work before running deployment.
 
 :::
 
-Deploy by clicking Deploy on the VSCode menu
-
-![Deploy](../../../../static/img/reference/ods-api/image2024-5-30_16-17-57.png)
+Deploy by clicking the **Deploy** button in the upper right corner of the window
+(must have a file open, otherwise the button is not displayed).
 
 This will run a new build of all artifacts, and the artifacts required for your
 Extended ODS / API project will be copied over to the correct locations. For
 instructions on how to perform the steps manually, see [Appendix
-A](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V72/pages/23299672/How+To+Extend+the+Ed-Fi+ODS+API+-+Alternative+Education+Program+Example#HowTo:ExtendtheEd-FiODS/API-AlternativeEducationProgramExample-appendixA),
-below.
+A](#appendix-a-adding-manually-created-extensions), below.
 
 ## Step 6. Configure Security
 
@@ -375,14 +422,16 @@ VALUES ('studentAlternativeEducationProgramAssociation'
 
 ### Preventing Resource Name Conflicts
 
-With MetaEd 2.0+, it is possible to create extension resources that use the same
+It is possible to create extension resources that use the same
 name as an Ed-Fi standard resource. The authorization metadata supports this
 through a change in behavior so it no longer uses just the resource name to
 identify the resource, but instead uses the ClaimName. To prevent possible
 naming conflicts, the claim name's URI value should include the schema
 representation, using the following format:
 
-"`<http://ed-fi.org/ods/identity/claims/{schema}/{resourceName}>`"
+```none
+http://ed-fi.org/ods/identity/claims/{schema}/{resourceName}
+```
 
 The URI representation of the schema name should be derived by splitting the
 terms in the name of the extension, inserting hyphens and converting to lower
@@ -398,7 +447,7 @@ singularized name of the resource (e.g.,
 
 Note that in **0**001-AlternativeEducationProgram\_ResourceClaims.sql**** script
 above, the resulting ClaimName value is
-"`http://ed-fi.org/ods/identity/claims/sample-alternative-education-program/studentAlternativeEducationProgramAssociation>`".
+`http://ed-fi.org/ods/identity/claims/sample-alternative-education-program/studentAlternativeEducationProgramAssociation>`.
 
 ## Step 7. Run Code Generation and Verify Changes
 
@@ -409,7 +458,7 @@ from a PowerShell prompt run `Initialize-PowershellForDevelopment.ps1` script,
 followed by the `initdev` command). Then, run the application and view the Ed-Fi
 ODS / API in the Swagger UI. The following new API resource should be visible:
 
-![New API Resource](../../../../static/img/reference/ods-api/image2024-5-30_17-4-51.png)
+![New API Resource](/img/reference/ods-api/image2024-5-30_17-4-51.png)
 
 ## Next Steps & Further Information
 
@@ -430,31 +479,30 @@ development work into production.
 
 ## Appendix A: Adding Manually Created Extensions
 
-### Step 1. Set Up the C# Project Template
+### Step A1. Set Up the C# Project Template
 
 Visual Studio Project Templates can be installed by following steps in [Project
 Templates
-Installation](../getting-started/source-code-installation/project-templates-installation.md) section
-of this documentation.
+Installation](../getting-started/source-code-installation/project-templates-installation.md)
+section of this documentation.
 
-### Step 2. Create new Extension Project
+### Step A2. Create new Extension Project
 
-**2.1.** To add a project to your Ed-Fi-Ods Visual Studio
-Solution, **right-click** on the Ed-Fi Extensions Folder. Select **Add** > **New
-Project**.
+#### A2.1
 
-![Add New Project](../../../../static/img/reference/ods-api/image2024-5-30_15-56-51.png)
+To add a project to your Ed-Fi-Ods Visual Studio Solution, **right-click** on
+the Ed-Fi Extensions Folder. Select **Add** > **New Project**.
 
-**2.2.** Search and select the **Ed-Fi API Extensions Project Template** option
-and click **Next**.
+#### A2.2
 
-![Search and select the Ed-Fi API Extensions Project Template](../../../../static/img/reference/ods-api/image2024-5-30_15-58-42.png)
+Search and select the **Ed-Fi API Extensions Project Template** option and
+click **Next**.
+
+![Create Extension Project](/img/reference/ods-api/how-to-transcript/vs-create-extension-project.webp)
 
 In the Project Name field,
 enter **EdFi.Ods.Extensions.SampleAlternativeEducationProgram** and
 click **Create**.
-
-![Create Project](../../../../static/img/reference/ods-api/image2024-5-30_16-0-17.png)
 
 ### Step 3. Rename the "Marker" Interface File
 
@@ -468,12 +516,8 @@ to **EdFi.Ods.Extensions.**SampleAlternativeEducationProgram**.nuspec**.
 **Marker\_EdFi\_Ods\_Extensions\_ExtensionName.cs** file and Rename the file to
 **Marker\_EdFi\_Ods\_Extensions\_**SampleAlternativeEducationProgram**.cs**.
 
-![Rename Marker Interface](../../../../static/img/reference/ods-api/image2024-5-30_16-4-16.png)
-
 **3.2.** When prompted choose to rename all references to the code
 element **Marker\_EdFi\_Ods\_Extensions\_**SampleAlternativeEducationProgram****.
-
-![Extension Rename Marker Confirm](../../../../static/img/reference/ods-api/extension-rename-marker-confirm.png)
 
 ### Step 4. Integrate Extension into the Solution
 
@@ -484,7 +528,7 @@ folder. **Right-click**, select **Add** > **Project** **Reference...**, th
 select
 the **EdFi.Ods.Extensions.**SampleAlternativeEducationProgram**** project.
 
-![Add Project Reference](../../../../static/img/reference/ods-api/image2024-5-30_16-6-51.png)
+![Add Reference](/img/reference/ods-api/how-to-transcript/vs-extension-add-reference.webp)
 
 **4.2.** Locate any profile projects in the
 solution. **Right-click**, select **Add** \> **Project Reference...**, then
@@ -503,20 +547,25 @@ Ed-Fi-ODS/Samples/Extensions/AlternativeEducationProgram.
 
 * Copy the metadata files to the implementation project.
 
-```bash
-xcopy /y "Ed-Fi-ODS\Samples\Extensions\AlternativeEducationProgram\AlternativeEducationProgramMetaEd\MetaEdOutput\SampleAlternativeEducationProgram\Database\SQLServer\ODS\Structure" "Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleAlternativeEducationProgram\Versions\1.0.0\Standard\5.1.0\Artifacts\MsSql\Structure\Ods\*"
+```powershell
+xcopy /y "Ed-Fi-ODS\Samples\Extensions\AlternativeEducationProgram\AlternativeEducationProgramMetaEd\MetaEdOutput\SampleAlternativeEducationProgram\Database\SQLServer\ODS\Structure" `
+  "Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleAlternativeEducationProgram\Versions\1.0.0\Standard\5.1.0\Artifacts\MsSql\Structure\Ods\*"
 
-xcopy /y "Ed-Fi-ODS\Samples\Extensions\AlternativeEducationProgram\AlternativeEducationProgramMetaEd\MetaEdOutput\SampleAlternativeEducationProgram\Database\PostgreSQL\ODS\Structure" "Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleAlternativeEducationProgram\Versions\1.0.0\Standard\5.1.0\Artifacts\PgSql\Structure\Ods\*"
+xcopy /y "Ed-Fi-ODS\Samples\Extensions\AlternativeEducationProgram\AlternativeEducationProgramMetaEd\MetaEdOutput\SampleAlternativeEducationProgram\Database\PostgreSQL\ODS\Structure" `
+  "Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleAlternativeEducationProgram\Versions\1.0.0\Standard\5.1.0\Artifacts\PgSql\Structure\Ods\*"
 
-xcopy /y "Ed-Fi-ODS\Samples\Extensions\AlternativeEducationProgram\AlternativeEducationProgramMetaEd\MetaEdOutput\SampleAlternativeEducationProgram\ApiMetadata" "Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleAlternativeEducationProgram\Versions\1.0.0\Standard\5.1.0\Artifacts\Metadata\*"
+xcopy /y "Ed-Fi-ODS\Samples\Extensions\AlternativeEducationProgram\AlternativeEducationProgramMetaEd\MetaEdOutput\SampleAlternativeEducationProgram\ApiMetadata" `
+  "Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleAlternativeEducationProgram\Versions\1.0.0\Standard\5.1.0\Artifacts\Metadata\*"
 
-xcopy /y "Ed-Fi-ODS\Samples\Extensions\AlternativeEducationProgram\AlternativeEducationProgramMetaEd\MetaEdOutput\SampleAlternativeEducationProgram\XSD" "Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleAlternativeEducationProgram\Versions\1.0.0\Standard\5.1.0\Artifacts\Schemas\*"
+xcopy /y "Ed-Fi-ODS\Samples\Extensions\AlternativeEducationProgram\AlternativeEducationProgramMetaEd\MetaEdOutput\SampleAlternativeEducationProgram\XSD" `
+  "Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleAlternativeEducationProgram\Versions\1.0.0\Standard\5.1.0\Artifacts\Schemas\*"
 
-xcopy /y "Ed-Fi-ODS\Samples\Extensions\AlternativeEducationProgram\AlternativeEducationProgramMetaEd\MetaEdOutput\SampleAlternativeEducationProgram\Interchange" "Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleAlternativeEducationProgram\Versions\1.0.0\Standard\5.1.0\Artifacts\Schemas\*"
+xcopy /y "Ed-Fi-ODS\Samples\Extensions\AlternativeEducationProgram\AlternativeEducationProgramMetaEd\MetaEdOutput\SampleAlternativeEducationProgram\Interchange" `
+  "Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleAlternativeEducationProgram\Versions\1.0.0\Standard\5.1.0\Artifacts\Schemas\*"
 
 ```
 
-### Step 6. Configure Security
+### Step A6. Configure Security
 
 The Ed-Fi ODS / API is secure by default. One implication of this design
 principle is that new entities and elements may not be accessed until an
@@ -551,7 +600,7 @@ VALUES      ('alternativeEducationEligibilityReasonDescriptor',
 
 </details>
 
-### Step 7. Run Initdev
+### Step A7. Run Initdev
 
 Save all modified files, close Ed-Fi-ODS.sln, and re-run the code generation
 steps outlined in the [Getting Started
@@ -560,7 +609,7 @@ from a PowerShell prompt run `Initialize-PowershellForDevelopment.ps1` script,
 followed by the `initdev` command). Then, run the application and view the Ed-Fi
 ODS / API in the Swagger UI. The following new API resource should be visible:
 
-![New API Resource](../../../../static/img/reference/ods-api/image2024-5-30_17-5-2.png)
+![New API Resource](/img/reference/ods-api/image2024-5-30_17-5-2.png)
 
 :::note
 The following GitHub links contain source files for this extensibility sample.

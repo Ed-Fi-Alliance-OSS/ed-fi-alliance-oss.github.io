@@ -25,7 +25,24 @@ The API identifies the presence of a read-replica ODS by the existence of a
 record in the OdsInstanceDerivative table in the EdFi\_Admin database with a
 DerivativeType value of "ReadReplica":
 
-![API Read-Replica Configuration](../../../../../static/img/reference/ods-api/image-2023-8-4_14-23-55.png)
+```mermaid
+erDiagram
+    OdsInstances {
+        int OdsInstanceId PK
+        varchar Name
+        varchar InstanceType
+        varchar ConnectionString
+    }
+
+    OdsInstanceDeriviative {
+        int OdstInstanceDerivativeId PK
+        int OdsInstanceId FK
+        string DerivativeType
+        string ConnectionString
+    }
+
+    OdsInstances ||--o{ OdsInstanceDeriviative : has
+```
 
 This connection string can also be overridden through configuration, as the
 example below for SQL Server demonstrates (note the addition of

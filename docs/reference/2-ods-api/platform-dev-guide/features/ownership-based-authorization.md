@@ -6,7 +6,7 @@ additional level of authorization that can be used in scenarios where more
 granular access controls are needed. Refer to [API Claim Sets &
 Resources](../security/api-claim-sets-resources.md)
 for details on various available authorization strategies. This documentation
-covers the essentials for platform hosts to enable and manage the feature.  
+covers the essentials for platform hosts to enable and manage the feature.
 
 Ownership based authorization is an optional feature that is turned off by
 default - but can be turned on through configuration. When this feature is
@@ -21,17 +21,7 @@ existing relationship based authorization strategies. API Authorization layer
 identifies multiple matching authorization strategies for a request, and applies
 multiple sets of filter criteria to apply authorization.
 
-The following steps demonstrate setting up ownership based authorization:
-
-- [Ownership Based Authorization](#ownership-based-authorization)
-  - [Enabling Ownership Based Authorization](#enabling-ownership-based-authorization)
-  - [Setting up Security Metadata](#setting-up-security-metadata)
-  - [Configuring the API Client](#configuring-the-api-client)
-  - [Verifying a successful setup](#verifying-a-successful-setup)
-  - [Technical Details](#technical-details)
-    - [EdFi\_Security Database](#edfi_security-database)
-    - [EdFi\_Admin Database](#edfi_admin-database)
-    - [Ed-Fi ODS Database](#ed-fi-ods-database)
+The following steps demonstrate setting up ownership based authorization.
 
 ## Enabling Ownership Based Authorization
 
@@ -252,7 +242,13 @@ updated to allow configuration of multiple authorization strategies for the
 default resource claim/action "tuples" as well as for claim set-specific
 overrides.
 
-![EdFi Security Database](../../../../../static/img/reference/ods-api/image2022-2-3_10-42-35.png)
+```mermaid
+erDiagram
+    ResourceClaimActions ||--o{ ResourceClaimActionAuthorizationStrategies : has
+    AuthorizationStrategies ||--o{ ResourceClaimActionAuthorizationStrategies : has
+    AuthorizationStrategies ||--o{ ClaimSetResourceClaimActionAuthorizationStrategyOVerrides : has
+    ClaimSetResourceClaimActions ||--o{ ClaimSetResourceClaimActionAuthorizationStrategyOVerrides : has
+```
 
 ### EdFi\_Admin Database
 
@@ -264,7 +260,12 @@ to identify which resource items they currently "own", and the authorization
 process will filter results and access against this list against based on the
 target resource's "CretedByOwnershipTokenId" value.
 
-![EdFi Admin Database](../../../../../static/img/reference/ods-api/image2022-2-3_10-36-52.png)
+```mermaid
+erDiagram
+    OwnershipTokens ||--o{ ApiClients : has
+    OwnershipTokens ||--o{ ApiClientOwnershipTokens : has
+    ApiClients ||--o{ ApiClientOwnershipTokens : has
+```
 
 ### Ed-Fi ODS Database
 
@@ -273,4 +274,25 @@ used to assign an ownership token to each record.
 
 Eg. Student Table
 
-![Ed-Fi ODS Database](../../../../../static/img/reference/ods-api/image2022-2-3_10-37-3.png)
+```mermaid
+
+%%{init: {
+    "theme": "",
+    "themeCSS": [
+        "[id*=entity-Student] rect:nth-of-type(24) { fill: orange;}",
+        "[id*=entity-Student] rect:nth-of-type(11), rect:nth-of-type(12), rect:nth-of-type(13) { fill: silver;}"
+    ]
+}
+}%%
+erDiagram
+    Student {
+        int StudentUsi PK
+        varchar StudentUniqueId
+        varchar FirstName
+        etc etc
+        datetime CreateDate
+        datetime LastModifiedDate
+        uniqueidentifier Id
+        int CreatedByOwnershipTokenId
+    }
+```

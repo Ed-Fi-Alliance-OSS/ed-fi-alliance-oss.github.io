@@ -27,14 +27,16 @@ file extension (from .nupkg to .zip). Remove the version number (optional).
 Check the box next to **Unblock** (this will prevent PowerShell from asking for
 permission to load every module in the installer) and click **OK**.
 
-![Package Properties](../../../../../static/img/reference/ods-api/image2024-6-5_13-12-15.png)
+![Package Properties](/img/reference/ods-api/unblock.png)
 
 :::info Enable TLS 1.2
 
 You may need to configure TLS while running the installation scripts
 described in steps below.
-`[Net.ServicePointManager]::SecurityProtocol +=
-[Net.SecurityProtocolType]::Tls12`
+
+```powershell
+[Net.ServicePointManager]::SecurityProtocol += [Net.SecurityProtocolType]::Tls12`
+```
 
 :::
 
@@ -221,7 +223,7 @@ Key must be 256 bits and base 64 encoded.
 
 Paste the modified parameter code into your PowerShell window and hit Enter.
 
-### Run the Installation Script
+### Run the Installation Script (Web API)
 
 Next, run the following command in the PowerShell window:
 
@@ -270,7 +272,7 @@ connect to the Populated Sandbox Instance created by the Sandbox Admin App.
 
 Paste the modified parameter into your PowerShell window and execute the code.
 
-### Run the Installation Script
+### Run the Installation Script (Swagger UI)
 
 Then, run the following command in the PowerShell window:
 
@@ -348,7 +350,7 @@ secret will be set to random strings.
 
 Paste the modified parameter into your PowerShell window and execute the code.
 
-### Run the Installation Script
+### Run the Installation Script (Sandbox Admin)
 
 Next, run the following command in the PowerShell window:
 
@@ -360,24 +362,16 @@ Install-EdFiOdsSandboxAdmin @parameters
 
 Just a few more tasks to complete your installation:
 
-* Open IIS (Press the **Windows key** ![Windows
-    logo](https://lh5.googleusercontent.com/o2iqf0j70YV3B-1NQxBFj1Ne-JeToRq5PiZeMtvF05l3jpyp4kseJn-zEs3BULgpAS_TFr8Qyacu5JZkiyXNllygq2EGhPII-PcxYyxkwCUqC4fPhMJ0QbovAD16R7T2StuDemW_)
-
-     on your keyboard, type **IIS**, select **Internet Information Services
-     (IIS)**, and press **Enter**.
-* **Right-click** on the server (alternatively, you can right-click the EdFi
-    web site), and select **Stop**.
-
-![Stop IIS](../../../../../static/img/reference/ods-api/image2021-2-12_17-5-39.png)
-
+* Open IIS (Press the **Windows key** 🪟    on your keyboard, type **IIS**,
+  select **Internet Information Services (IIS)**, and press **Enter**.
+* **Right-click** on the server (alternatively, you can right-click the EdFi web
+  site), and select **Stop**.
 * **Right-click** the server (or EdFi website) again and select **Start**.
-
-![Start IIS](../../../../../static/img/reference/ods-api/image2021-2-12_17-7-5.png)
 
 You are now ready to use the Ed-Fi ODS / API. The following URLs are available:
 
 | Website | URL |
 | --- | --- |
-| Ed-Fi ODS / API | [https://YOUR\_SERVER\_NAME\_HERE/WebApi/](https://YOUR_SERVER_NAME_HERE/WebApi/) |
-| Sandbox Administration (for Sandbox Support Only) | [https://YOUR\_SERVER\_NAME\_HERE/SandboxAdmin](https://YOUR_SERVER_NAME_HERE/SandboxAdmin) |
-| Ed-Fi ODS / API Documentation | [https://YOUR\_SERVER\_NAME\_HERE/SwaggerUI](https://YOUR_SERVER_NAME_HERE/SwaggerUI) |
+| Ed-Fi ODS / API | `https://YOUR\_SERVER\_NAME\_HERE/WebApi` |
+| Sandbox Administration (for Sandbox Support Only) | `https://YOUR\_SERVER\_NAME\_HERE/SandboxAdmin` |
+| Ed-Fi ODS / API Documentation | `https://YOUR\_SERVER\_NAME\_HERE/SwaggerUI` |

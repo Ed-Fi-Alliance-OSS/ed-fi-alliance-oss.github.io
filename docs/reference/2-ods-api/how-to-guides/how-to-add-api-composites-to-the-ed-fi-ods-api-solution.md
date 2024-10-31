@@ -6,38 +6,23 @@ Ed-Fi ODS / API has been successfully downloaded and is running in a local
 environment per the instructions in the [Getting
 Started](../getting-started/readme.md) documentation.
 
-The steps in Visual Studio can be summarized as:
-
-* [How To: Add API Composites to the Ed-Fi ODS / API Solution](#how-to-add-api-composites-to-the-ed-fi-ods--api-solution)
-  * [Step 1. Create the Composites Project](#step-1-create-the-composites-project)
-    * [Step 1.2. Update the Marker Interface file](#step-12-update-the-marker-interface-file)
-    * [Step 1.3. Update the **Composites.xml** file to add the appropriate](#step-13-update-thecompositesxml-file-toadd-the-appropriate)
-    * [Step 1.4](#step-14)
-  * [Step 2. Integrate Composites into the Solution](#step-2-integrate-composites-into-the-solution)
-  * [Step 3. Verify Changes](#step-3-verify-changes)
-
-Each step is outlined in detail, below.
-
 ## Step 1. Create the Composites Project
 
-**Step 1.1. Add a Composite Project Using the Visual Studio Project
-Template.** Visual Studio Project Template can be installed by following the
-steps in the [Project Templates
+### Step 1.1 Add a Composite Project Using the Visual Studio Project Template
+
+VisualStudio Project Template can be installed by following the steps in
+the [Project Templates
 Installation](../getting-started/source-code-installation/project-templates-installation.md)
 section of this documentation.
 
 * To add a project to your Ed-Fi-Ods Visual Studio Solution, **right-click** on
-    the "Composites" folder. Select **Add** > **New Project**.
+  the "Composites" folder. Select **Add** > **New Project**.
 * In the "Add New Project" dialog, find and select the "Ed-Fi API Composites
-    Project Template" entry as shown below. Click **Next.**
-
-    ![Project Template](../../../../static/img/reference/ods-api/composite-project-template.png)
-
+  Project Template" entry as shown below. Click **Next.** ![Project
+  Template](/img/reference/ods-api/composite-project-template.png)
 * Enter the project name for the new project and click **Create**. The suggested
-    naming convention for this type of project is something
-    like **EdFi.Ods.Composites.MyComposites**.
-
-    ![Project Template](../../../../static/img/reference/ods-api/composite-project-template2.png)
+  naming convention for this type of project is something
+  like **EdFi.Ods.Composites.MyComposites**.
 
 ### Step 1.2. Update the Marker Interface file
 
@@ -128,7 +113,7 @@ the new resource.
 
 :::
 
-![Composites](../../../../static/img/reference/ods-api/composites3.png)
+![Composites](/img/reference/ods-api/composites3.png)
 
 The `organizationCode` mentioned in Step 1.3 ("ed-fi" in this example) can be
 seen in the Composite URLs above (e.g.,
@@ -138,7 +123,11 @@ of a composite URL.
 
 :::note
 
-The following GitHub link contains source files for the Composite described in this article:
-[Composite Source Files](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v7.2/Samples/Composites)
+The following GitHub link contains source files for the Composite described in
+this article:
+
+* [ODS/API 7.2](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v7.2/Samples/Composites)
+* [ODS/API 7.1](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v7.1/Samples/Composites)
+* [ODS/API 6.2](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v6.2/Samples/Composites)
 
 :::

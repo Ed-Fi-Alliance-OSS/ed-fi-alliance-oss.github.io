@@ -77,7 +77,28 @@ At its most basic level, the Ed-Fi ODS / API platform consists of two logical
 servers: a web server (for the ODS / API), a database server (for the ODS
 database). A diagram showing a typical configuration follows:
 
-![Logical configuration](../../../../../static/img/reference/ods-api/image2015-11-16%208-35-34.png)
+```mermaid
+flowchart TD
+    swagger[EdFi.Ods.SwaggerUI]
+    webapi[EdFi.Ods.WebApi]
+    sandbox[EdFi.Ods.SandboxAdmin]
+
+    security[(Security)]
+    ods1[(ODS Database 1)]
+    ods2[(ODS Database 1)]
+    ods3[(ODS ...)]
+    admin[(Admin)]
+
+    swagger --> webapi
+    webapi --> ods1
+    webapi --> ods2
+    webapi --> ods3
+
+    webapi --> security
+    webapi --> admin
+
+    sandbox --> admin
+```
 
 These logical functions may be combined into one or more physical (or virtual)
 machines depending upon the scale and preferences of the hosting organization.
@@ -134,7 +155,18 @@ live Sandbox deployments. A typical single-server specification follows:
 
 A diagram of a simple two-server deployment follows:
 
-![Two-server deployment](../../../../../static/img/reference/ods-api/image17.png)
+```mermaid
+flowchart LR
+    api["ODS / API Web Server"]
+
+    subgraph RDBMS
+        ods[("EdFi_ODS")]
+        adm[("EdFi_Admin")]
+        sec[("EdFi_Security")]
+    end
+
+    api --> RDBMS
+```
 
 The two-server deployment of an Ed-Fi ODS / API Sandbox provides greater
 security and performance than the single server configuration. This is a common
@@ -294,7 +326,28 @@ root location can be:
 The following diagram shows the relationship between the various databases and
 their corresponding ODS / API websites.
 
-![Relationship between databases and websites](../../../../../static/img/reference/ods-api/image2015-11-16%208-58-14.png)
+```mermaid
+flowchart TD
+    swagger[EdFi.Ods.SwaggerUI]
+    webapi[EdFi.Ods.WebApi]
+    sandbox[EdFi.Ods.SandboxAdmin]
+
+    security[(Security)]
+    ods1[(ODS Database 1)]
+    ods2[(ODS Database 1)]
+    ods3[(ODS ...)]
+    admin[(Admin)]
+
+    swagger --> webapi
+    webapi --> ods1
+    webapi --> ods2
+    webapi --> ods3
+
+    webapi --> security
+    webapi --> admin
+
+    sandbox --> admin
+```
 
 Detailed instructions regarding the installation and configuration of each
 website are provided in the sections that follow.
@@ -315,7 +368,7 @@ website are provided in the sections that follow.
         apply.  You can create a new self-signed certificate or use an existing
         one.
 
-        ![SSL certificate](../../../../../static/img/reference/ods-api/image2022-12-7_15-40-25.png)
+        ![SSL certificate](/img/reference/ods-api/image2022-12-7_15-40-25.png)
 
 ### EdFi.Ods.WebApi
 
@@ -357,20 +410,24 @@ Steps to deploy the application:
 7. Fill in the application name and the server location that you have published
     the application:
 
-    ![Application](../../../../../static/img/reference/ods-api/image18.png)
+    ![Application](/img/reference/ods-api/image18.webp)
 
 8. Click **OK**.
 
 The application is ready to use. You can browse and see version information
 about the API.
 
+App Settings:
+
 |     |     |     |
 | --- | --- | --- |
-| **Configuration** |     |     |
-| **App Settings** |     |     |
 | OdsConnectionStringEncryptionKey\* | AES Encryption key used to encrypt ODS connection strings configured in the Admin database. | Required everywhere other than development environment |
 | BearerTokenTimeoutMinutes | The amount of time in minutes that an OAuth session token is valid between calls. | Default value is `30`. |
-| **Connection Strings** |     |     |
+
+Connection Strings:
+
+|     |     |     |
+| --- | --- | --- |
 | EdFi\_Admin\* | Connection to the Admin database. |     |
 | EdFi\_Security\* | Connection to the Security database. |     |
 
@@ -379,7 +436,7 @@ about the API.
 Note: EdFi\_Ods\_\* connection strings are not stored in the EdFi.Ods.WebApi
 configuration file. They are configured in the EdFi\_Admin database and Sandbox
 Administration Application will create those entries at startup and when new
-sandbox creation is requested.  
+sandbox creation is requested.
 
 ### EdFi.Ods.SandboxAdmin
 
@@ -416,7 +473,7 @@ Prerequisites:
         one. Ed-Fi deployment scripts generate the self-signed certificate
         Ed-Fi-ODS which is typically what is used for local IIS deployments.
 
-        ![SSL certificate](../../../../../static/img/reference/ods-api/image2022-12-7_15-40-25.png)
+        ![SSL certificate](/img/reference/ods-api/image2022-12-7_15-40-25.png)
 
 3. All dependent databases are in place.
 
@@ -440,13 +497,13 @@ Steps to deploy the application:
 7. Fill in the application name and the server location that you have published
     the application:
 
-    ![Name and location](../../../../../static/img/reference/ods-api/image05.png)
+    ![Name and location](/img/reference/ods-api/image05.webp)
 
 8. Click **OK**.
 
 9. The application is ready to use.
 
-    ![Ready to use](../../../../../static/img/reference/ods-api/image07.png)
+    ![Ready to use](/img/reference/ods-api/image07.webp)
 
 10. The article [Using the Sandbox Admin
      Portal](../../client-developers-guide/using-the-sandbox-administration-portal.md)
@@ -454,15 +511,19 @@ Steps to deploy the application:
      developers, additional configuration details, plus general usage
      instructions.
 
+App Settings:
+
 |     |     |     |
 | --- | --- | --- |
-| **Configuration** |     |     |
-| **App Settings** |     |     |
 | DefaultApplicationName | The name of the application used for sandbox application clients. | Default value is `Default Sandbox Application`. |
 | DefaultClaimSetName | The claim set name for the default application for sandbox application clients. | Default value is `Ed-Fi Sandbox`. |
 | OAuthUrl\* | Points to WebApi OAuth controller. | Default value is `[http://localhost:54746/oauth/](http://localhost:54746/oauth/)`. |
 | MaximumSandboxesPerUser | The maximum number of sandboxes a sandbox admin user can create. | Default value is 5 |
-| **Connection Strings** |     |     |
+
+Connection Strings:
+
+|     |     |     |
+| --- | --- | --- |
 | EdFi\_Ods | Connection string template to create sandboxes on the fly. Sandbox Administration application will create and configure sandbox ODS instances in the EdFi\_Admin database |     |
 | EdFi\_Admin | Should point to the Sandbox deployment of EdFi\_Admin. Note that this database should NOT be shared with Security Tools. |     |
 | EdFi\_Security | Should point to the Sandbox deployment of EdFi\_Security. Note that this database should NOT be shared with Security Tools. |     |
@@ -506,7 +567,7 @@ Prerequisites:
         one. Ed-Fi deployment scripts generate the self-signed certificate
         Ed-Fi-ODS which is typically what is used for local IIS deployments.
 
-        ![SSL certificate](../../../../../static/img/reference/ods-api/image2022-12-7_15-40-25.png)
+        ![SSL certificate](/img/reference/ods-api/image2022-12-7_15-40-25.png)
 
 3. All dependent databases are in place.
 
@@ -530,18 +591,17 @@ Steps to deploy the application:
 7. Fill in the application name and the server location that you have published
     the application:
 
-    ![Name and location](../../../../../static/img/reference/ods-api/image16.png)
+    ![Name and location](/img/reference/ods-api/image16.webp)
 
 8. Click **OK**.
 
 9. The application is ready to use.
 
-    ![Ready to use](../../../../../static/img/reference/ods-api/image-2023-6-5_10-41-38.png)
+    ![Ready to use](/img/reference/ods-api/image-2023-6-5_10-41-38.png)
+
+App Settings:
 
 |     |     |     |
-| --- | --- | --- |
-| **Configuration** |     |     |
-| **App Settings** |     |     |
 | WebApiVersionUrl\* | Provides the version information for ODS / API. | Sample value: `[https://server-name](https://server-name)` |
 | SwaggerUIOptions:OAuthConfigObject:ClientId | Optionally provides the value to prefill in the "key" field of auth. | Sample value: `populatedTemplate` |
 | SwaggerUIOptions:OAuthConfigObject:ClientSecret | Optionally provides the value to prefill in the "secret" field of auth. | Sample value: `populatedTemplateSecret` |
@@ -580,13 +640,19 @@ following entries:
 * **Ed-Fi ODS/API on AWS**
 * **Ed-Fi ODS/API Deploy Tools for Azure**
 
+:::warning
+
+These scripts in the Ed-Fi Exchange may have been developed for older versions
+of the Ed-Fi ODS/API, and therefore may need modification to work with this
+version.
+
+:::
+
 ## Conclusion
 
 A Sandbox instance of the ODS / API is a critical element in the success of a
 large-scale deployment. This section should have provided you with the
 information needed to get your Sandbox instance up and running.
 
-Once you’ve done that, you’ll want to consider production deployments, which are
-covered in
-the [https://edfi.atlassian.net/wiki/spaces/EDFIODS/pages/19738902](https://edfi.atlassian.net/wiki/spaces/EDFIODS/pages/19738902) of
-this documentation.
+Once you’ve done that, you’ll next want to consider [production
+deployments](./production-deployment.md).

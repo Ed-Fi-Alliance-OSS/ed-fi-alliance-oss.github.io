@@ -34,7 +34,38 @@ The Result endpoint will return a `200 Success` response with a search response
 status of “Incomplete” with no data or “Complete” with the results. The
 following diagram provides an overview of the program workflow:
 
-![Identities API workflow](../../../../static/img/reference/ods-api/identities1.PNG)
+```mermaid
+flowchart LR
+    idsearch[/Identities Search/]
+    search[Search]
+
+    idsearch --> search
+
+    uniques[/Unique Ids/]
+    find[Find]
+
+    uniques --> find
+
+    response{Response}
+
+    search --> response
+    find --> response
+
+    subgraph Asynchronous Flow
+        result["Result/{token}"]
+        status{Status}
+
+        result -- 200 --> status
+        status -- incomplete --> result
+    end
+
+    response -- 202 --> result
+
+    idresult[/Identities Results/]
+
+    response -- 200 --> idresult
+    status -- complete --> idresult
+```
 
 **Figure 1.** Identities API workflow
 
@@ -69,23 +100,17 @@ Find.
 The generic synchronous interface (IIdentityService) consists of the following
 methods:
 
-* ```csharp
-    IdentityServiceCapabilities IdentityServiceCapabilities { get; }
-    ```
+```csharp
+IdentityServiceCapabilities IdentityServiceCapabilities { get; }
 
-* ```csharp
-    Task<IdentityResponseStatus<string>> Create(TCreateRequest createRequest);
-    ```
+Task<IdentityResponseStatus<string>> Create(TCreateRequest createRequest);
 
-* ```csharp
-    Task<IdentityResponseStatus<TSearchResponse>> Find(params string[] findRequest);
-    ```
+Task<IdentityResponseStatus<TSearchResponse>> Find(params string[] findRequest);
 
-* ```csharp
-    Task<IdentityResponseStatus<TSearchResponse>> Search(params TSearchRequest[] searchRequest);
-    ```
+Task<IdentityResponseStatus<TSearchResponse>> Search(params TSearchRequest[] searchRequest);
+```
 
-### Identity Service Capabilities
+### Synchronous Identity Service Capabilities
 
 This property describes to the Identities API which of the other methods are
 supported by the service. The values Create, Find, and Search correspond to
@@ -161,18 +186,28 @@ Status value.
 The properties of the transfer objects in the Ed-Fi Identities API are as
 follows:
 
-* string LastSurname
-* string FirstName
-* string MiddleName
-* string GenerationCodeSuffix
-* string SexType
-* DateTime? BirthDate
-* int? BirthOrder
-* Location BirthLocation
-  * string City
-  * string StateAbbreviation
-  * string InternationalProvince
-  * string Country
+```mermaid
+classDiagram
+    class IdentitiesResponse{
+       string LastSurname
+       string FirstName
+       string MiddleName
+       string GenerationCodeSuffix
+       string SexType
+       DateTime? BirthDate
+       int? BirthOrder
+       Location BirthLocation
+    }
+
+    class Location {
+       string City
+       string StateAbbreviation
+       string InternationalProvince
+       string Country
+    }
+
+    IdentitiesResponse --> Location
+```
 
 As noted above, platform hosts may implement variations on the Identities API
 suitable for their environment. It is _highly_ recommended that any Identity
@@ -217,7 +252,38 @@ The following diagram shows a process flow that illustrates how additional
 properties are transparently passed through the Identities API for processing by
 the back-end Identity System:
 
-![Identity API process flow](../../../../static/img/reference/ods-api/identities2.PNG)
+```mermaid
+flowchart LR
+    subgraph Client
+        subgraph Client Properties
+            core[Core Properties]
+            additional[Additional Properties]
+        end
+    end
+
+    subgraph Identies API
+        api[ODS Identities API]
+    end
+
+    subgraph IIdentityService
+        subgraph Service Properties
+            icore[Core Properties]
+            iadditional[Additional Properties]
+        end
+    end
+
+    subgraph Identity System
+        native[Native Properties]
+    end
+
+    core -- json --> api
+    additional -- json --> api
+
+    api -- dynamic --> icore
+    api -- dynamic --> iadditional
+
+    icore -- mapping --> native
+```
 
 **Figure 2.** Identity API process flow
 
@@ -252,7 +318,7 @@ following methods:
 
 These methods are described below.
 
-### Identity Service Capabilities
+### Asynchronous Identity Service Capabilities
 
 Bulk Create is not supported, therefore Create is ignored as an Identity Service
 Capability. If either Find or Search are supported, then the Response method

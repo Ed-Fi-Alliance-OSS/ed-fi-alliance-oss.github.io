@@ -43,7 +43,27 @@ The EdFi\_Admin database stores the following configuration entities:
 The following entity relationship diagram (ERD) provides additional data on the
 structure of the EdFi\_Admin database:
 
-![Depiction of the structure of the Ed-Fi Admin database](../../../../../static/img/reference/ods-api/image-2023-7-28_10-28-57.png)
+```mermaid
+erDiagram
+    Profiles ||--o{ ProfileApplications : has
+    Vendors ||--o{ Applications : has
+    Applications ||--o{ ProfileApplications : has
+    Applications ||--o{ ApplicationEducationOrganizations : has
+    ApplicationEducationOrganizations ||--o{ ApiClientApplicationEducationOrganizations : has
+    ApiClients ||--o{ ApiClientApplicationEducationOrganizations : has
+    Applications ||--o{ ApiClients : has
+    Vendors ||--o{ VendorNamespacePrefixes : has
+    Vendors ||--o{ Users : has
+    OdsInstances ||--o{ Applications : has
+    OdsInstances ||--o{ ApiClientOdsInstances : has
+    ApiClients ||--o{ ApiClientOdsInstances : has
+    OdsInstances ||--o{ OdsInstanceDerivative : has
+    OdsInstances ||--o{ OdsInstanceContext : has
+    OwnershipTokens ||--o{ ApiClients : has
+    OwnershipTokens ||--o{ ApiClientOwnershipTokens : has
+    ApiClients ||--o{ ClientAccessTokens : has
+    ApiClients ||--o{ ApiClientOwnershipTokens : has
+```
 
 ## Ed-Fi Security Database
 
@@ -85,4 +105,18 @@ context:
 The following ERD further outlines the entities and entity relationships in the
 EdFi\_Security database:
 
-![Depiction of the structure of the Ed-Fi Security database](../../../../../static/img/reference/ods-api/Security-Config-Figure-02.png)
+```mermaid
+erDiagram
+    ResourceClaims ||--o{ ResourceClaims : has
+    ResourceClaims ||--o{ ClaimSetResourceClaimActions : has
+    ClaimSets ||--o{ ClaimSetResourceClaimActions : has
+    ClaimSetResourceClaimActions ||--o{ ClaimSetResourceClaimActionAuthorizationStrategyOverrides : has
+    AuthorizationStrategies ||--o{ ClaimSetResourceClaimActionAuthorizationStrategyOverrides : has
+    Applications ||--o{ ResourceClaims : has
+    Applications ||--o{ ClaimSets : has
+    ResourceClaims ||--o{ ResourceClaimActions : has
+    ResourceClaimActions ||--o{ ClaimSetResourceClaimActionAuthorizationStrategyOverrides : has
+    AuthorizationStrategies ||--o{ ClaimSetResourceClaimActionAuthorizationStrategyOverrides : has
+    Actions ||--o{ ClaimSetResourceClaimActions : has
+    Actions ||--o{ ResourceClaimActions : has
+```

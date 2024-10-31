@@ -3,8 +3,7 @@
 The Ed-Fi ODS SQL Server data store allows for the configuration of Cascading
 Updates on entities. Cascading Update specifies that if an update is made to a
 key value in a data row where the key value is referenced by foreign keys, then
-all existing foreign key values are updated to the new key
-value.[1](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V72/pages/23301674#CascadingKeyUpdatesonODS/APIResources-Footnote-1)
+all existing foreign key values are updated to the new key value.
 
 The following ODS / API resources are **already configured for Cascading
 Updates** in the as-shipped solution:
@@ -38,26 +37,23 @@ steps to modify generated artifacts to enable cascading key updates on core
 resources that are not preconfigured for cascading updates.  
 
 1. Update the Api Model
-    1. Locate the ApiModel.json file located in `<source code root
-        directory>`Ed-Fi-ODS\\Application\\EdFi.Ods.Standard\\Artifacts\\Metadata
+    1. Locate the ApiModel.json file located in
+       `Ed-Fi-ODS\Application\EdFi.Ods.Standard\Artifacts\Metadata`
     2. Find the model you want to enable cascading updates on
     3. Within the identifiers array, find the primary key identifier (isPrimary
         flag will be true)
     4. Update the isUpdatable property to true
 2. Run the code generation steps outlined in the [Getting Started
-    Guide](https://edfi.atlassian.net/wiki/display/ODSAPIS3V60/Getting+Started+-+Source+Code+Installation) (i.e.,
-    from a PowerShell prompt
+    Guide](../getting-started) (i.e., from a PowerShell prompt
     run `Initialize-PowershellForDevelopment.ps1` script, followed by
     the `initdev` command)
 3. Update Foreign Key Constraints for all dependencies
-    1. SQL Server - Locate the 0030-ForeignKeys.sql file located in `<source
-        code root
-        directory>`\\Ed-Fi-ODS\\Application\\EdFi.Ods.Standard\\Artifacts\\MsSql\\Structure\\Ods
-    2. PostgreSQL- Locate the 0030-ForeignKeys.sql file located in `<source
-        code root
-        directory>`\\Ed-Fi-ODS\\Application\\EdFi.Ods.Standard\\Artifacts\\PgSql\\Structure\\Ods
+    1. SQL Server - Locate the 0030-ForeignKeys.sql file located in
+       `Ed-Fi-ODS\Application\EdFi.Ods.Standard\Artifacts\MsSql\Structure\Ods`
+    2. PostgreSQL- Locate the 0030-ForeignKeys.sql file located in
+       `Ed-Fi-ODS\Application\EdFi.Ods.Standard\Artifacts\PgSql\Structure\Ods`
     3. Identify all dependent resource foreign key constraints (Search for
-        "REFERENCES \[edfi\].\[`<Resource_Name>`\]")
+        `"REFERENCES [edfi].[<Resource_Name>]"`)
     4. Copy each of the the ALTER TABLE scripts to a separate text document
     5. Add a ALTER TABLE `<TableName>` DROP CONSTRAINT `<ConstraintName>` to the
         line before each of the copied ALTER TABLE Scripts
@@ -70,15 +66,38 @@ resources that are not preconfigured for cascading updates.  
 Here is an example scenario to demonstrate the steps needed to update a Core
 resource. We will use the Account core resource as an example of a resource to
 enable cascading updates on. Note that the default behavior of the Account
-resource is not configured for cascading natural key updates via the PUT method.
+resource is not configured for cascading natural key updates via the PUT method,
+as shown in the Open API specification (SwaggerUI):
 
-![Default Account Resource Behavior](../../../../static/img/reference/ods-api/image2022-7-26_15-29-29.png)
+> "Additionally, this API resource is not configured for cascading natural key
+> updates. Natural key values for this resource cannot be changed using PUT
+> operation and will not be modified in the database, and so recommendation is
+> to use POST as that supports upsert behavior."
 
 We can modify this behavior by updating the **APIModel.json** file. Locate the
 Account resource you want to update. Then, within the identifiers array, find
 the primary key identifier and update the isUpdatable property to true.
 
-![Updated Account Resource Behavior](../../../../static/img/reference/ods-api/image2022-7-26_15-36-41.png)
+```json
+{
+  "identifiers": [
+    {
+      "identifierName": "Account_PK",
+      "identifyPropertNames": [
+        "AccountIdentifier",
+        "EducationOrganizationId",
+        "FiscalYear"
+      ],
+      "isPrimary": true,
+      "isUpdatable": true,
+      "constraintNames": {
+        "sqlServer": "Account_PK",
+        "postgreSql": "Account_PK"
+      }
+    }
+  ]
+}
+```
 
 Run the code generation steps outlined in the [Getting Started
 Guide](https://edfi.atlassian.net/wiki/display/ODSAPIS3V60/Getting+Started+-+Source+Code+Installation) (i.e.,
@@ -134,7 +153,20 @@ For configuring cascading key updates on the extension resource, simply add the
 extension project. For more details on creating Ed-Fi Extensions, see
 [here](../how-to-guides/how-to-extend-the-ed-fi-ods-api-alternative-education-program-example.md).
 
-![Extension Resource Behavior](../../../../static/img/reference/ods-api/image2022-7-26_16-5-3.png)
+```none
+Domain Entity BudgetAlternative
+  documentation "..."
+  allow primary key updates
+  currency Amount
+    documentation "..."
+    is required
+  date AsOfDate
+    documentation "..."
+    is part of identity
+  domain entity EdFi.Account
+    documentation "..."
+    is part of identity
+```
 
-For more details on Table Cascading Updates, see
-[here](https://technet.microsoft.com/en-us/library/ms188066(v=sql.110).aspx).
+For more details on Table Cascading Updates, see [Cascading Referential
+Integrity](https://learn.microsoft.com/en-us/sql/relational-databases/tables/primary-and-foreign-key-constraints?view=sql-server-ver16#cascading-referential-integrity).

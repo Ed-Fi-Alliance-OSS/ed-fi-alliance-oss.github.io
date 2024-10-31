@@ -34,7 +34,7 @@ access to resources generally. In some cases, as is depicted below for students,
 the caller may only be able to access some items in the collection (i.e., only
 "Johnny Johns" and "Jane Doe" are available).
 
-![Authorization](../../../../../static/img/reference/ods-api/image2015-11-19%2022-14-24.png)
+![Authorization](/img/reference/ods-api/auth-via-claims-and-profiles.png)
 
 Claims and claim sets provide fine-grained access control over the resources
 available in the API. Claims define whether a client has permissions to create,
@@ -89,7 +89,7 @@ change the hashing method by which OAuth secrets are secured.
 Platform host administrators can manage and distribute keys and secrets for
 applications using the Admin API (released separately). For more information,
 see the [Admin
-API](https://edfi.atlassian.net/wiki/spaces/ADMINAPI/overview) documentation.
+API](/reference/admin-api) documentation.
 
 ## Adaptable Security
 

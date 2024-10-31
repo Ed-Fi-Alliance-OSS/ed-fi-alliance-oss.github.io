@@ -457,14 +457,50 @@ The tool accepts the following command line argument:
 The solution can be built using Visual Studio 2022 or Rider 2021.3. Also, it can
 be built from the command line using the following command: `dotnet build`.
 
-![Build Solution](../../../../static/img/reference/ods-api/image2022-3-8_9-19-26.png)
+```powershell
+PS D:\ed-fi\Ed-Fi-ODS\Utilities\CodeGeneration> dotnet build
+  Determining projects to restore...
+  Restored D:\ed-fi\Ed-Fi-ODS\Application\EdFi.Common\EdFi.Common.csproj (in 270 ms).
+  Restored D:\ed-fi\Ed-Fi-ODS\Utilities\CodeGeneration\EdFi.Ods.CodeGen\EdFi.Ods.CodeGen.csproj (in 282 ms).
+  Restored D:\ed-fi\Ed-Fi-ODS\Application\EdFi.Ods.Common\EdFi.Ods.Common.csproj (in 282 ms).
+  Restored D:\ed-fi\Ed-Fi-ODS\Utilities\CodeGeneration\EdFi.Ods.CodeGen.Tests\EdFi.Ods.CodeGen.Tests.csproj (in 282 ms
+  ).
+  EdFi.Common -> D:\ed-fi\Ed-Fi-ODS\Application\EdFi.Common\bin\Debug\net8.0\EdFi.Common.dll
+  EdFi.Ods.Common -> D:\ed-fi\Ed-Fi-ODS\Application\EdFi.Ods.Common\bin\Debug\net8.0\EdFi.Ods.Common.dll
+  EdFi.Ods.CodeGen -> D:\ed-fi\Ed-Fi-ODS\Utilities\CodeGeneration\EdFi.Ods.CodeGen\bin\Debug\net8.0\EdFi.Ods.CodeGen.d
+  ll
+  EdFi.Ods.CodeGen.Tests -> D:\ed-fi\Ed-Fi-ODS\Utilities\CodeGeneration\EdFi.Ods.CodeGen.Tests\bin\Debug\net8.0\EdFi.O
+  ds.CodeGen.Tests.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:05.51
+```
 
 ## Running Tests
 
-Tests can be run using Visual Studio Test Explorer, R# Test Runner of Rider
+Tests can be run using Visual Studio Test Explorer or R# Test Runner of Rider
 2021.3. Alternatively, the tests can be run using the command `dotnet test`.
 
-![Test Explorer](../../../../static/img/reference/ods-api/image2022-3-8_9-21-38.png)
+```powershell
+Testing C:\projects\Ed-Fi-DOS\Application\EdFi.Ods.Standard\EntityOrmMappings\MsSql\EntityOrmMappings.generated.hbm.xml
+Testing C:\projects\Ed-Fi-DOS\Application\EdFi.Ods.Standard\EntityOrmMappings\MsSql\EntityOrmMappingsForViews.generated.hbm.xml
+Testing C:\projects\Ed-Fi-DOS\Application\EdFi.Ods.Standard\EntityOrmMappings\PgSql\EntityOrmMappings.generated.hbm.xml
+Testing C:\projects\Ed-Fi-DOS\Application\EdFi.Ods.Standard\EntityOrmMappings\PgSql\EntityOrmMappingsForViews.generated.hbm.xml
+Testing C:\projects\Ed-Fi-DOS\Application\EdFi.Ods.Standard\ExceptionHandling\DatabaseMetadata.generated.cs
+Testing C:\projects\Ed-Fi-DOS\Application\EdFi.Ods.Standard\Models\Entities\Entities.generated.cs
+Testing C:\projects\Ed-Fi-DOS\Application\EdFi.Ods.Standard\Models\Entities\EntitiesForQueries.generated.cs
+Testing C:\projects\Ed-Fi-DOS\Application\EdFi.Ods.Standard\Models\Interfaces\EntityInterfaces.generated.cs
+Testing C:\projects\Ed-Fi-DOS\Application\EdFi.Ods.Standard\Models\Mappers\EntityMapper.generated.cs
+Testing C:\projects\Ed-Fi-DOS\Application\EdFi.Ods.Standard\Pipelines\CreateOrUpdatePipelines.generated.cs
+Testing C:\projects\Ed-Fi-DOS\Application\EdFi.Ods.Standard\Requests\Requests.generated.cs
+Testing C:\projects\Ed-Fi-DOS\Application\EdFi.Ods.Standard\Resources\Resources.generated.cs
+Testing C:\projects\Ed-Fi-DOS\Application\EdFi.Ods.Standard\Security\Authorization\EntityAuthorizationContextProviders.generated.cs
+Testing C:\projects\Ed-Fi-DOS\Artifacts\PgSql\Data\Security\0001-ResourceClaimMetadata_generated.sql
+Passed: 0, Failed: 137, Skipped: 0, Total: 127, Duration: 6m - EdFi.Ods.CodeGen.Tests.dll (net6.0)
+```
 
 ## Running Approval Tests
 
@@ -478,15 +514,14 @@ To run the tests, the following steps are required:
 **Step 2 :** Set **EdFi.Ods.Codegen.Console** as the startup project. Note that
 the command argument is not necessary.
 
-**Step 3 :** Run the solution within Visual Studio.
+**Step 3 :** Run the solution within Visual Studio. It will open a terminal
+window showing that code generation is running.
 
-![Run Solution](../../../../static/img/reference/ods-api/image2022-3-8_9-26-45.png)
-
-**Step 4 :** Open Test Explorer and look for the Verify\_All test and run it to
+**Step 4 :** Open Test Explorer and look for the Verify_All test and run it to
 see if there are any failures
 
-![Test Explorer](../../../../static/img/reference/ods-api/image2022-3-8_10-17-36.png)
+![Test Explorer](/img/reference/ods-api/image2022-3-8_10-17-36.png)
 
 **Step 5 :** Approve any changes, if appropriate.
 
-![Approve Changes](../../../../static/img/reference/ods-api/image2022-3-8_10-18-8.png)
+![Approve Changes](/img/reference/ods-api/image2022-3-8_10-18-8.png)

@@ -17,17 +17,13 @@ When retrieving all the data from an API resource, API clients will issue a
 series of paged requests (using Offset Paging via the `offset`  and `limit`
 parameters) that look something like the following:
 
-* ```text
-    GET /ed-fi/studentSectionAttendanceEvents?offset=0&limit=500
-    ```
+```text
+GET /ed-fi/studentSectionAttendanceEvents?offset=0&limit=500
 
-* ```text
-    GET /ed-fi/studentSectionAttendanceEvents?offset=500&limit=500
-    ```
+GET /ed-fi/studentSectionAttendanceEvents?offset=500&limit=500
 
-* ```text
-    GET /ed-fi/studentSectionAttendanceEvents?offset=1000&limit=500
-    ```
+GET /ed-fi/studentSectionAttendanceEvents?offset=1000&limit=500
+```
 
 On large data sets, you may notice increasing levels of performance degradation
 as the page requests get deeper due to the growing number of reads being
@@ -70,14 +66,33 @@ To identify the possible range values for your partitions, you must first obtain
 the newest change version value from your source API by sending a GET request to
 the _availableChangeVersions_ resource:
 
-![Available Change Versions](../../../../static/img/reference/ods-api/image2022-9-23_18-24-27.png)
+```none
+GET <host>/ChangeQueries/v1/availableChangeVersions
+accept: application/json
+authorization: Bearer fghjklrftyuiofghjk
+
+--> Response body:
+
+{
+  "oldestChangeVersion": 0,
+  "newestChangeVersion": 112317
+}
+```
 
 ### Step 2 - Obtain the total count of items in the resource
 
 Send a request to the resource with the `totalCount=true`  query string
 parameter and get the total item count from the `Total-Count` response header.
 
-![Total Count](../../../../static/img/reference/ods-api/image2022-9-23_18-31-5.png)
+```none
+GET <host>/data/v3/ed-fi/studentSectionAttendanceEvents?totalCount=true
+accept: application/json
+authorization: Bearer fghjklrftyuiofghjk
+
+--> Reply headers:
+
+total-count: 4332
+```
 
 ### Step 3 - Define the partitions as ranges of Change Version values
 
@@ -91,33 +106,33 @@ partitions will be greatly improved.
 
 Use the following formula to determine the number of partitions:
 
-_\# of partitions =  item count / partition size_
+`# of partitions =  item count / partition size`
 
 Next, use the following formula to determine the size of the ranges (expressed
 in the Change Version values):
 
-_range size = max change version / # of partitions_
+`range size = max change version / # of partitions`
 
 For the purpose of this example, we'll target a partition size of 1,000 against
 4,332 total items.
 
-4332 / 1000 = 4.332 partitions
+`4332 / 1000 = 4.332 partitions`
 
 Rounding up to 5 partitions, we'll now need to divide the available Change
 Version values accordingly to get the approximate range size:
 
-112317 / 5 = 22463.4
+`112317 / 5 = 22463.4`
 
 Thus, our partitions will be defined based on Change Versions roughly as
 follows:
 
 | Partition | minChangeVersion | maxChangeVersion |
-| --- | --- | --- |
-| 1   | 0   | 22464 |
-| 2   | 22465 | 49929 |
-| 3   | 49930 | 67393 |
-| 4   | 67394 | 89857 |
-| 5   | 89858 |     |
+| --------- | ---------------- | ---------------- |
+| 1         | 0                | 22464            |
+| 2         | 22465            | 49929            |
+| 3         | 49930            | 67393            |
+| 4         | 67394            | 89857            |
+| 5         | 89858            |                  |
 
 The range criteria for each partition can be added to the queries using the
 `minChangeVersion`  and/or `maxChangeVersion`  query string parameters.
@@ -131,7 +146,15 @@ and/or `maxChangeVerion`  parameters, along with the Offset Paging parameters o
 On the populated sample ODS, the Change Version value ranges defined above for
 partitions 1, 3, 4 and 5 actually return no items.
 
-![No Items](../../../../static/img/reference/ods-api/image2022-9-23_20-27-43.png)
+```none
+GET <host>/data/v3/ed-fi/studentSectionAttendanceEvents?offset=0&limit=500&minChangeVersion=0&maxChangeVersion=22463
+accept: application/json
+authorization: Bearer fghjklrftyuiofghjk
+
+--> Response body:
+
+[]
+```
 
 This is because the effectiveness of the technique is greatly influenced by the
 pattern of loading and/or usage by API clients on the underlying ODS. In this
@@ -144,19 +167,35 @@ defined them).
 The following image shows that data is returned for the first page of the second
 partition:
 
-![Items Returned](../../../../static/img/reference/ods-api/image2022-9-23_20-11-28.png)
+```none
+GET <host>/data/v3/ed-fi/studentSectionAttendanceEvents?offset=0&limit=500&minChangeVersion=22464&maxChangeVersion=49929
+accept: application/json
+authorization: Bearer fghjklrftyuiofghjk
+
+--> Response body:
+
+[
+  {
+    "id": "....",
+    "sectionReference": {
+      ...
+    }
+    ...
+  }
+]
+```
 
 So for this example, the following requests would be sent to the API:
 
-| Partition 1 (0 items) |
-| --- |
-|`GET /ed-fi/studentSectionAttendanceEvents?offset=0&limit=500&maxChangeVersion=22464` |
-|
+| Partition 1 (0 items)                                                                 |
+| ------------------------------------------------------------------------------------- |
+| `GET /ed-fi/studentSectionAttendanceEvents?offset=0&limit=500&maxChangeVersion=22464` |
+|                                                                                       |
 
-| Partition 2 (4,332 items) |
-| --- |
-| `GET /ed-fi/studentSectionAttendanceEvents?offset=0&limit=500&minChangeVersion=22465&maxChangeVersion=49929` |
-| `GET /ed-fi/studentSectionAttendanceEvents?offset=500&limit=500&minChangeVersion=22465&maxChangeVersion=49929` |
+| Partition 2 (4,332 items)                                                                                       |
+| --------------------------------------------------------------------------------------------------------------- |
+| `GET /ed-fi/studentSectionAttendanceEvents?offset=0&limit=500&minChangeVersion=22465&maxChangeVersion=49929`    |
+| `GET /ed-fi/studentSectionAttendanceEvents?offset=500&limit=500&minChangeVersion=22465&maxChangeVersion=49929`  |
 | `GET /ed-fi/studentSectionAttendanceEvents?offset=1000&limit=500&minChangeVersion=22465&maxChangeVersion=49929` |
 | `GET /ed-fi/studentSectionAttendanceEvents?offset=1500&limit=500&minChangeVersion=22465&maxChangeVersion=49929` |
 | `GET /ed-fi/studentSectionAttendanceEvents?offset=2000&limit=500&minChangeVersion=22465&maxChangeVersion=49929` |
@@ -164,22 +203,22 @@ So for this example, the following requests would be sent to the API:
 | `GET /ed-fi/studentSectionAttendanceEvents?offset=3000&limit=500&minChangeVersion=22465&maxChangeVersion=49929` |
 | `GET /ed-fi/studentSectionAttendanceEvents?offset=3500&limit=500&minChangeVersion=22465&maxChangeVersion=49929` |
 | `GET /ed-fi/studentSectionAttendanceEvents?offset=4000&limit=500&minChangeVersion=22465&maxChangeVersion=49929` |
-|
+|                                                                                                                 |
 
-| Partition 3 (0 items) |
-| --- |
+| Partition 3 (0 items)                                                                                        |
+| ------------------------------------------------------------------------------------------------------------ |
 | `GET /ed-fi/studentSectionAttendanceEvents?offset=0&limit=500&minChangeVersion=49930&maxChangeVersion=67393` |
-|
+|                                                                                                              |
 
-| Partition 4 (0 items) |
-| --- |
+| Partition 4 (0 items)                                                                                        |
+| ------------------------------------------------------------------------------------------------------------ |
 | `GET /ed-fi/studentSectionAttendanceEvents?offset=0&limit=500&minChangeVersion=67394&maxChangeVersion=89857` |
-|
+|                                                                                                              |
 
-| Partition 5 (0 items) |
-| --- |
+| Partition 5 (0 items)                                                                 |
+| ------------------------------------------------------------------------------------- |
 | `GET /ed-fi/studentSectionAttendanceEvents?offset=0&limit=500&minChangeVersion=89858` |
-|
+|                                                                                       |
 
 ## Conclusion
 
@@ -192,5 +231,5 @@ patterns of the Ed-Fi ODS API by API clients.
 
  This article was created based on the work done by the Data Engineering team at
  Education Analytics, who have implemented this approach in their
- [Stadium/EDU](https://edfi.atlassian.net/wiki/display/EDFIBADGE/Registry+of+Ed-Fi+Badges#RegistryofEdFiBadges-Ed-FiAPIConsumerBadge)
+ [Stadium/EDU](https://edfi.atlassian.net/wiki/spaces/EDFIBADGE/pages/20611183/Registry+of+Ed-Fi+Badged+Products+and+Services)
  code base.

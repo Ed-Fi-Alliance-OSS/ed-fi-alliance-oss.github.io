@@ -7,17 +7,6 @@ database that handled the API call. Furthermore, the duration for which this
 logging can be enabled is limited because it has the potential to generate a
 large amount of data.
 
-The steps to enable web API request/response logging can be summarized:
-
-* [How To: Enable logging API request and response content](#how-to-enable-logging-api-request-and-response-content)
-  * [Step 1. Create a table for storing the log in the ODS database](#step-1-create-a-table-for-storing-the-log-in-the-ods-database)
-    * [Using MS SQL Server](#using-ms-sql-server)
-    * [Using PostgreSQL](#using-postgresql)
-  * [Step 2. Update the EdFi.Ods.WebApi log4net configuration](#step-2-update-the-edfiodswebapi-log4net-configuration)
-    * [Using MS SQL Server](#using-ms-sql-server-1)
-    * [Using PostgreSQL](#using-postgresql-1)
-  * [Step 3. Set the logging duration](#step-3-set-the-logging-duration)
-
 ## Step 1. Create a table for storing the log in the ODS database
 
 Because the content of an API transaction may contain sensitive data, the only

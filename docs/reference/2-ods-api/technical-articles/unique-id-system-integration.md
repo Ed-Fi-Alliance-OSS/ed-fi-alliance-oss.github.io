@@ -83,7 +83,19 @@ It is assumed that once a unique ID is obtained by a client, it will be stored
 in client applications as a way to easily sync data between the client and
 platform from that point forward.
 
-![Client-Side ID Lookup](../../../../static/img/reference/ods-api/image2019-8-2_12-17-37.png)
+```mermaid
+flowchart TD
+    A[1 Execute a GET /identities with the first name, last name, sex and date of birth.]
+    B[2 Show results to the user to let them select the correct identity]
+    C{User chooses an existing identity}
+    D[3 Creates a new identity using POST /identities]
+    E[4 Client application stores the unique ID for the person for use with the Ed-Fi ODS/API]
+
+    A --> B
+    B --> C
+    C -- no --> D
+    C -- yes --> E
+```
 
 A description of each step follows.
 

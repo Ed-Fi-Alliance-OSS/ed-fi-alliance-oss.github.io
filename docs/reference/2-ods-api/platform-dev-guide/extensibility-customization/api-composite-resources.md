@@ -42,7 +42,7 @@ references and linked collections).
 The diagram below depicts the composition process of a possible
 Enrollment Section composite resource:
 
-![Sample-Composite](../../../../../static/img/reference/ods-api/Sample-Composite.png)
+![Sample-Composite](/img/reference/ods-api/Sample-Composite.webp)
 
 ## Composite Definition
 
@@ -84,7 +84,7 @@ The basic structure of a Composite Definition is as follows:
       </Composite>
     </Composites>
   </Category>
- 
+
   <Category>
     ...
   </Category>
@@ -136,7 +136,7 @@ The `name` attribute is used in the routes, and is also normalized (introducing
 spaces, if appropriate) for display in the API Section drop-down list in the
 Swagger UI:
 
-![API Section](../../../../../static/img/reference/ods-api/API%20Section.png)
+![API Section](/img/reference/ods-api/swagger-api-section.webp)
 
 ## Composite Routes and Specifications
 
@@ -164,7 +164,7 @@ incoming request.
       <Route relativeRouteTemplate="/sections/{Section.Id}/{compositeName}" />
       <Route relativeRouteTemplate="/staffs/{Staff.Id}/{compositeName}" />
       <Route relativeRouteTemplate="/students/{Student.Id}/{compositeName}" />
-    </Routes> 
+    </Routes>
 ```
 
 When the routes are registered with WebAPI at runtime, the composite category
@@ -258,15 +258,15 @@ using the `displayName` attribute.
 <EmbeddedObject name="StudentLearningStyle">
   ...
 </EmbeddedObject>
- 
+
 <ReferencedResource name='SessionReference'>
   ...
 </ReferencedResource>
- 
+
 <Collection name="StaffElectronicMails">
   ...
 </Collection>
- 
+
 <LinkedCollection name="StudentSectionAssociations">
   ...
 </LinkedCollection>
@@ -283,7 +283,23 @@ natural collection output when the data is sourced through a many-to-many
 relationship. For example, consider the relationship between Section and Staff
 shown below:
 
-![Many-to-Many](../../../../../static/img/reference/ods-api/Many-to-Many.png)
+```mermaid
+erDiagram
+    Staff ||--o{ StaffSectionAssociation : has
+    Section ||--o{ StaffSectionAssociation : has
+
+    Section {
+        varchar SectionIdentifier PK
+        int SequenceOfCourse
+        varchar LocalCourseCode
+    }
+
+    Staff {
+        varchar StaffUniqueId PK
+        varchar FirstName
+        varchar LastSurName
+    }
+```
 
 Without the use of the `flatten` attribute, the composite resource would be
 defined as follows:

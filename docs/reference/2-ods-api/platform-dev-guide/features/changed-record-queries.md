@@ -14,10 +14,10 @@ section of the API Client Developers' Guide.
 
 Change queries is an optional feature and is turned on by default — but can be
 turned off through configuration. This feature also provides
-an [option](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V72/pages/23298957/Changed+Record+Queries#ChangedRecordQueries-publish) that
-enables platform hosts to provide API clients with isolated context for
-processing changes. This documentation covers the essentials for platform hosts
-to enable and manage the feature.
+an [option](#changed-record-queries-with-snapshot-isolation) that enables
+platform hosts to provide API clients with isolated context for processing
+changes. This documentation covers the essentials for platform hosts to enable
+and manage the feature.
 
 ## Enabling Change Queries
 
@@ -219,7 +219,40 @@ of the sequence on all inserts and updates, whether they come from the API or
 through scripts. Queries done against the API to find changed records function
 by adding an additional where clause to based on this ChangeVersion column.
 
-![Change Queries](../../../../../static/img/reference/ods-api/image2022-5-11_10-27-25.png)
+```mermaid
+
+%%{init: {
+    "theme": "",
+    "themeCSS": [
+        "[id*=entity-Student] rect:nth-of-type(24) { fill: orange;}",
+        "[id*=entity-Student] rect:nth-of-type(11), [id*=entity-Student] rect:nth-of-type(12), [id*=entity-Student] rect:nth-of-type(13) { fill: silver;}",
+        "[id*=entity-Candidate] rect:nth-of-type(21) { fill: orange;}",
+        "[id*=entity-Candidate] rect:nth-of-type(8), [id*=entity-Candidate] rect:nth-of-type(9), [id*=entity-Candidate] rect:nth-of-type(10) { fill: silver;}"
+    ]
+}
+}%%
+erDiagram
+    Student {
+        int StudentUsi PK
+        varchar StudentUniqueId
+        varchar FirstName
+        etc etc
+        datetime CreateDate
+        datetime LastModifiedDate
+        uniqueidentifier Id
+        int ChangeVersion
+    }
+
+    Candidate {
+        varchar CandidateIdentifier PK
+        varchar FirstName
+        etc etc
+        datetime CreateDate
+        datetime LastModifiedDate
+        uniqueidentifier Id
+        int ChangeVersion
+    }
+```
 
 Supporting delete tracking requires another common change tracking concept,
 using a "tombstone" table. This concept involves tracking all deletes and
@@ -239,16 +272,35 @@ truncation. Given the typical uses cases of using an ODS per school year, no
 automatic truncation was introduced by default since it's unlikely to be an
 issue for most implementations.
 
-![Change Queries](../../../../../static/img/reference/ods-api/image2022-5-11_10-28-49.png)
+```mermaid
+erDiagram
+    "tracked_changes_edfi.Student" {
+        int ChangeVersion PK
+        int OldStudentUSI
+        varchar OldStudentUniqueId
+        varchar NewStudentUniqueId
+        uniqueidentifier Id
+        varchar Discriminator
+        datetime CreateDate
+    }
+
+    "tracked_changes_edfi.Candidate" {
+        int ChangeVersion PK
+        varchar OldCandidateIdentifier
+        varchar NewCandidateIdentifier
+        uniqueidentifier Id
+        varchar Discriminator
+        datetime CreateDate
+    }
+```
 
 The patterns described above are used for both the standard, as-shipped Ed-Fi
 ODS database tables, as well as tables generated to serve Ed-Fi Extensions. By
-using [MetaEd v2.x](https://edfi.atlassian.net/wiki/spaces/METAED20) (the
-recommended method for extending the Ed-Fi ODS / API), scripts are generated to
-support the ChangeVersion column, insert/update/delete triggers, and delete
-tracking tables. This allows hosts to have consistent support for the feature
-across their entire API, even for new top-level entities introduced by Extension
-projects.
+using [MetaEd](/reference/metaed) (the recommended method for extending the
+Ed-Fi ODS / API), scripts are generated to support the ChangeVersion column,
+insert/update/delete triggers, and delete tracking tables. This allows hosts to
+have consistent support for the feature across their entire API, even for new
+top-level entities introduced by Extension projects.
 
 ## Changed Record Queries with Snapshot Isolation
 
