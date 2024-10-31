@@ -108,21 +108,21 @@ successfully.
 
 ### API tests
 
-```pwsh
+```powershell
 EdFi.SmokeTest.Console.exe -k {yourSandboxKey} -s {yourSandboxSecret} -b "http://localhost:54746" `
   -t NonDestructiveApi
 ```
 
 ### Non-destructive SDK tests
 
-```pwsh
+```powershell
 EdFi.SmokeTest.Console.exe -k {yourSandboxKey} -s {yourSandboxSecret} -b "http://localhost:54746" `
   -t NonDestructiveSdk -l "..\\..\\..\\..\\EdFi.LoadTools.Test\\bin\\Debug\\net6.0\\EdFi.OdsApi.Sdk.dll"
 ```
 
 ### Destructive SDK tests
 
-```pwsh
+```powershell
 EdFi.SmokeTest.Console.exe -k {yourSandboxKey} -s {yourSandboxSecret} -b "http://localhost:54746" `
   -t DestructiveSdk -l "..\\..\\..\\..\\EdFi.LoadTools.Test\\bin\\Debug\\net6.0\\EdFi.OdsApi.Sdk.dll"
 ```

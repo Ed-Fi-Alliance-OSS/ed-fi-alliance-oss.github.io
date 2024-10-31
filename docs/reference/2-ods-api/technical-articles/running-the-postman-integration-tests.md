@@ -25,9 +25,9 @@ collections.
     Guide](../getting-started/source-code-installation/readme.md)
     from a PowerShell prompt run `Initialize-PowershellForDevelopment.ps1`
     script followed by `initdev -usePlugins`  and finally
-    `Invoke-PostmanIntegrationTests`  
+    `Invoke-PostmanIntegrationTests`
 
-    ```pwsh
+    ```powershell
     PS D:\ed-fi\Ed-Fi-ODS-Implementation> .\Initialize-PowershellForDevelopment.ps1
 
     Using repositories: Ed-Fi-ODS, Ed-Fi-ODS-Implementation
@@ -54,7 +54,7 @@ collections.
 
 3. Test results are presented as the tests run
 
-   ```pwsh
+   ```powershell
    <trimmed output...>
    ------------------------------------------------------------------
    |                         |          executed |           failed |

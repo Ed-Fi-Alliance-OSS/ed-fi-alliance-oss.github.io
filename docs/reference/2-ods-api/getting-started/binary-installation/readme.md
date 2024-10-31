@@ -38,7 +38,7 @@ Ensure that the following components are installed:
          select **Windows PowerShell**, and press **Enter**.
     2. Type **$PSVersionTable.PSVersion**, and press **Enter**.
 
-        ```pwsh
+        ```powershell
         PS D:\> $PSVersionTable.PSVersion
 
         Major  Minor  Patch  PreReleaseLabel BuildLabel
@@ -230,19 +230,19 @@ described in that file.
 
 To bring up the environment:
 
-```pwsh
+```powershell
 C:\PGDockerSetup>docker compose up -d
 ```
 
 To stop the volumes and containers:
 
-```pwsh
+```powershell
 C:\PGDockerSetup>docker compose down
 ```
 
 To stop the services and remove them, but retain the data in separate volumes:
 
-```pwsh
+```powershell
 C:\PGDockerSetup>docker compose down -v
 ```
 
@@ -272,7 +272,7 @@ saved in `%APPDATA%/postgresql/pgpass.conf.`
 
 You can test the environment variable setup using:
 
-```pwsh
+```powershell
 get-item env:pgpassfile
 
 Name                           Value

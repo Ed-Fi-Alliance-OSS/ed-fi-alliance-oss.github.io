@@ -457,7 +457,7 @@ The tool accepts the following command line argument:
 The solution can be built using Visual Studio 2022 or Rider 2021.3. Also, it can
 be built from the command line using the following command: `dotnet build`.
 
-```pwsh
+```powershell
 PS D:\ed-fi\Ed-Fi-ODS\Utilities\CodeGeneration> dotnet build
   Determining projects to restore...
   Restored D:\ed-fi\Ed-Fi-ODS\Application\EdFi.Common\EdFi.Common.csproj (in 270 ms).
@@ -484,7 +484,7 @@ Time Elapsed 00:00:05.51
 Tests can be run using Visual Studio Test Explorer or R# Test Runner of Rider
 2021.3. Alternatively, the tests can be run using the command `dotnet test`.
 
-```pwsh
+```powershell
 Testing C:\projects\Ed-Fi-DOS\Application\EdFi.Ods.Standard\EntityOrmMappings\MsSql\EntityOrmMappings.generated.hbm.xml
 Testing C:\projects\Ed-Fi-DOS\Application\EdFi.Ods.Standard\EntityOrmMappings\MsSql\EntityOrmMappingsForViews.generated.hbm.xml
 Testing C:\projects\Ed-Fi-DOS\Application\EdFi.Ods.Standard\EntityOrmMappings\PgSql\EntityOrmMappings.generated.hbm.xml

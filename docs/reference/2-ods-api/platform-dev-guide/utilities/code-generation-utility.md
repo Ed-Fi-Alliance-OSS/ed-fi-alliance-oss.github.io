@@ -18,7 +18,7 @@ utility is downloaded from Azure Artifacts into the tools folder under
 the Ed-Fi-ODS-Implementation repository and is executed after the
 `Invoke-NewDevelopmentAppSettings` task.
 
-```pwsh
+```powershell
 <trimmed output...>
 
 2024-10-28 20:11:28,067 [.NET TP Worker] INFO  TemplateProcessor - Processing started for assembly: ODS Database Specific in folder: D:\ed-fi\Ed-Fi-ODS\Application\EdFi.Ods.Standard\Standard\5.1.0\Artifacts
@@ -38,7 +38,7 @@ A successful `initdev` execution will display the tasks executed and their
 duration as shown, and you can see that code generation utility is downloaded
 and installed during the process.
 
-```pwsh
+```powershell
 <trimmed output...>
 Duration Task
 -------- ----
@@ -74,7 +74,7 @@ the `Install-CodeGenUtiltity` command. This will pull the current version of 
 tool, and install it into the tools folder under the Ed-Fi-ODS-Implementation
 repository.
 
-```pwsh
+```powershell
 PS D:\ed-fi\Ed-Fi-ODS-Implementation> Install-CodeGenUtility
 
 ------------------------------
@@ -95,7 +95,7 @@ To run code generation independently from the build process, the tool can be
 executed by calling the PowerShell command `Run-CodeGen`. This will execute the
 generation process for all required classes.
 
-```pwsh
+```powershell
 PS D:\ed-fi\Ed-Fi-ODS-Implementation> Run-CodeGen -StandardVersion 4.0.0 -ExtensionVersion 1.0.0
 
 ------------------------------

@@ -770,7 +770,7 @@ Open command prompt and navigate to root of the ODS / API repository on your
 local drive. This is the folder that contains both Ed-Fi-ODS
 and Ed-Fi-ODS-Implementation repositories. Run the following copy commands:
 
-```pwsh
+```powershell
 xcopy /y "Ed-Fi-ODS\Samples\Extensions\StudentTranscript\StudentTranscriptMetaEd\MetaEdOutput\SampleStudentTranscript\Database\SQLServer\ODS\Structure" `
   "Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleStudentTranscript\Versions\1.0.0\Standard\5.1.0\Artifacts\MsSql\Structure\Ods\*"
 

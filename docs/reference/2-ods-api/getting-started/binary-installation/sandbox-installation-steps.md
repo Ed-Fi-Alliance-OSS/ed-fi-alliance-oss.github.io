@@ -34,7 +34,7 @@ permission to load every module in the installer) and click **OK**.
 You may need to configure TLS while running the installation scripts
 described in steps below.
 
-```pwsh
+```powershell
 [Net.ServicePointManager]::SecurityProtocol += [Net.SecurityProtocolType]::Tls12`
 ```
 

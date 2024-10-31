@@ -23,7 +23,7 @@ option.
 
 Configure appsettings to load sample plugin along with the default TPDM extension:
 
-```pwsh
+```powershell
 PS C:\Ed-Fi-ODS-Implementation\Application\EdFi.Ods.WebApi\> dotnet user-secrets set "Plugin:Folder"  "../../Plugin"
 Successfully saved Plugin:Folder = ../../Plugin to the secret store.
 PS C:\Ed-Fi-ODS-Implementation\Application\EdFi.Ods.WebApi\> dotnet user-secrets set "Plugin:Scripts:0"  "tpdm"
@@ -35,7 +35,7 @@ Successfully saved Plugin:Scripts:1 = sample to the secret store.
 Next, build the source code. To do so, simply open PowerShell and navigate to `<source
 directory>\Ed-Fi-ODS-Implementation` folder and run:
 
-```pwsh
+```powershell
 .\Initialize-PowershellForDevelopment.ps1
 Initdev
 ```
@@ -51,7 +51,7 @@ extension plugin and deploy the plugin artifacts to local database.
 }
 ```
 
-```pwsh title="Deployment output"
+```powershell title="Deployment output"
 packages:TPDMCorePopulatedTemplate:PackageVersion                 7.2.202
 packages:TPDMCorePostgreSqlMinimalTemplate:PackageName            EdFi.Suite3.Ods.Minimal.Template.TPDM.Core.{ExtensionVersion}.PostgreSQL.Standard.{StandardVersion}
 packages:TPDMCorePostgreSqlMinimalTemplate:PackageSource          https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json

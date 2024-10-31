@@ -34,7 +34,7 @@ not detected in the default installation path.
     passed to the
     application.
 
-    ```pwsh
+    ```powershell
     PS D:\Ed-Fi-ODS\Utilities\GenerateSecurityGraphs\GenerateSecurityGraphs> .\bin\Debug\net8.0\GenerateSecurityGraphs.exe --help
     GenerateSecurityGraphs 1.0.0+04569d4fea5fc8935768fdff50cf64d61da58fa7
     Copyright c 2024 Ed-Fi Alliance, LLC and Contributors

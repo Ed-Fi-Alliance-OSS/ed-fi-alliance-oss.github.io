@@ -30,7 +30,7 @@ Java](https://www.oracle.com/java/technologies/downloads/),
 Download the latest version of the OpenApi Codegen JAR 7.2.0. Windows users can
 use Invoke-WebRequest in PowerShell 3.0+.
 
-```pwsh
+```powershell
 Invoke-WebRequest -OutFile openApi-codegen-cli.jar `
   https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/7.2.0/openapi-generator-cli-7.2.0.jar
 ```
@@ -54,7 +54,7 @@ PowerShell commands. You can see the available metadata endpoints for SDK
 generation
 at [https://api.ed-fi.org/v7.2/api/metadata?sdk=true](https://api.ed-fi.org/v7.2/api/metadata?sdk=true).
 
-```pwsh
+```powershell
 java -jar <openapi-generator-jar-path> generate -g csharp -i <swagger-json-url> `
   --additional-properties targetFramework=net8.0,netCoreProjectFile=true --skip-validate-spec
 ```
@@ -70,7 +70,7 @@ in the generated SDK.
 
 ### Resources, Descriptors and Extensions
 
-```pwsh
+```powershell
 java -jar openApi-codegen-cli.jar generate -g csharp `
   -i https://api.ed-fi.org/v7.2/api/metadata/data/v3/swagger.json `
   --api-package Apis.All --model-package Models.All -o ./csharp `
@@ -80,7 +80,7 @@ java -jar openApi-codegen-cli.jar generate -g csharp `
 
 ### Ed-Fi Core Resources and Descriptors
 
-```pwsh
+```powershell
 java -jar openApi-codegen-cli.jar generate -g csharp `
   -i https://api.ed-fi.org/v7.2/api/metadata/data/v3/ed-fi/swagger.json `
   --api-package Apis.All --model-package Models.All -o ./csharp `
@@ -91,7 +91,7 @@ java -jar openApi-codegen-cli.jar generate -g csharp `
 Alternatively, you can generate SDK with segregated namespaces for resources,
 descriptors, enrollment composites, and Identity API endpoints as follows:
 
-```pwsh
+```powershell
 java -jar openApi-codegen-cli.jar generate -g csharp `
   -i https://api.ed-fi.org/v7.2/api/metadata/data/v3/resources/swagger.json `
   --api-package Api.Resources --model-package Models.Resources  -o ./csharp `
@@ -138,7 +138,7 @@ named **EdFi.OdsApi.Sdk.sln** will be created with the SDK artifacts.
     you can use our hosted sandbox environment; the URL, client key and secret
     are in the Downloads panel on the right.
 
-    ```pwsh
+    ```powershell
     --url <ODS API Base URL> --key <client key> --secret <client secret>
     ```
 

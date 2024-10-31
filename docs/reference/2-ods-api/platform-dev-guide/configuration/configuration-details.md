@@ -102,7 +102,7 @@ projects so that they aren't accidentally checked into source control. To set
 overrides, you can either use the [.NET
 CLI Tool](https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-8.0&tabs=windows#set-a-secret)
 
-```pwsh
+```powershell
 PS D:\Ed-Fi-ODS-Implementation\Application\EdFi.Ods.WebApi> dotnet user-secrets set "ApiSettings:PopulatedTemplateScript" "Glendale"
 Successfully saved ApiSettings:PopulatedTemplateScript = Glendale to the secret store.
 ```

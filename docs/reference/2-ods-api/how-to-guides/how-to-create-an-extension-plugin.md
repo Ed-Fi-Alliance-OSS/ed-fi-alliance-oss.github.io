@@ -39,7 +39,7 @@ Example](./how-to-extend-the-ed-fi-ods-api-alternative-education-program-example
 Open a PowerShell session and navigate to Ed-Fi-ODS-Implementation folder
 and execute the following command to run code generation.
 
-```pwsh
+```powershell
 cd <source dir>\Ed-Fi-ODS-Implementation
 .\Initialize-PowershellForDevelopment.ps1
 Invoke-CodeGen -Engine SQLServer -StandardVersion 5.1.0 -ExtensionVersion 1.0.0
@@ -54,7 +54,7 @@ Example](./how-to-extend-the-ed-fi-ods-api-alternative-education-program-example
 create the EdFi.Ods.Extensions.SampleAlternativeEducationProgram project,
 your extension will be in Ed-Fi-ODS-Implementation\\Application folder.
 
-```pwsh
+```powershell
 dotnet build `
   <source dir>\Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleAlternativeEducationProgram `
   --configuration release

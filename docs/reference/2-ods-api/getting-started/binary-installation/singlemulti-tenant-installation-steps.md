@@ -220,13 +220,13 @@ EdFi.Suite3.RestApi.Databases package folder.
 
 Run the following PowerShell command to load modules for installation:
 
-```pwsh
+```powershell
 Import-Module .\Deployment.psm1
 ```
 
 Next, execute the following command in PowerShell:
 
-```pwsh
+```powershell
 Initialize-DeploymentEnvironment
 ```
 
@@ -242,7 +242,7 @@ Open a PowerShell window in Administrator mode and navigate to the
 EdFi.Suite3.Installer.WebApi package folder. Run the following PowerShell
 command to load modules for installation:
 
-```pwsh
+```powershell
 Import-Module .\Install-EdFiOdsWebApi.psm1
 ```
 
@@ -257,7 +257,7 @@ Copy and modify the following parameter code to fit your connection information:
 <details>
 <summary>SQL Server</summary>
 
-```pwsh
+```powershell
 $parameters = @{
     PackageVersion = "7.2.1201"
     PackageName = "EdFi.Suite3.Ods.WebApi.Standard.5.1.0"
@@ -275,7 +275,7 @@ $parameters = @{
 <details>
 <summary>PostgreSQL</summary>
 
-```pwsh
+```powershell
 $parameters = @{
     PackageVersion = "7.2.1201"
     PackageName = "EdFi.Suite3.Ods.WebApi.Standard.5.1.0"
@@ -292,7 +292,7 @@ $parameters = @{
 <details>
 <summary>SQL Server (MultiTenant)</summary>
 
-```pwsh
+```powershell
 $parameters = @{
     IsMultiTenant = $true
     PackageVersion = "7.2.1201"
@@ -321,7 +321,7 @@ $parameters = @{
 <details>
 <summary>PostgreSQL (MultiTenant)</summary>
 
-```pwsh
+```powershell
 $parameters = @{
     IsMultiTenant = $true
     PackageVersion = "7.2.1201"
@@ -385,7 +385,7 @@ Paste the modified parameter code into your PowerShell window and hit **Enter**.
 
 Run the following command in the PowerShell window:
 
-```pwsh
+```powershell
 Install-EdFiOdsWebApi @parameters
 ```
 
@@ -437,7 +437,7 @@ Open a PowerShell window in Administrator mode and navigate to the
 "EdFi.Suite3.Installer.SwaggerUI" folder. Run the following PowerShell command
 to load modules for installation:
 
-```pwsh
+```powershell
 Import-Module .\Install-EdFiOdsSwaggerUI.psm1
 ```
 
@@ -447,7 +447,7 @@ At a minimum, WebAPI connection information is required.
 
 Copy and modify the following parameter code to add your site name:
 
-```pwsh
+```powershell
 $parameters = @{
     PackageVersion = "7.2.1201"
     WebApiVersionUrl = "https://YOUR_SITE_OR_SERVER_NAME_HERE/WebApi"
@@ -461,7 +461,7 @@ Paste the modified parameter into your PowerShell window and execute the code.
 To deploy Swagger for MultiTenant, use parameters `Tenants` and `DefaultTenant`
 (Optional. Used to specify one tenant to be displayed as default).
 
-```pwsh
+```powershell
 $parameters = @{
     PackageVersion = "7.2.1201"
     WebApiVersionUrl = "https://YOUR_SITE_OR_SERVER_NAME_HERE/WebApi"
@@ -478,7 +478,7 @@ school years.
 
 Run the following command in the PowerShell window:
 
-```pwsh
+```powershell
 Install-EdFiOdsSwaggerUI @parameters
 ```
 

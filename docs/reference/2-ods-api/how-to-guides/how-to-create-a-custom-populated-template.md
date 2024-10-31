@@ -35,7 +35,7 @@ From a PowerShell session, import `<source directory>`
 
 #### Importing the Populated Template Module
 
-```pwsh
+```powershell
 Import-Module C:\Ed-Fi-ODS-Implementation\DatabaseTemplate\Modules\create-populated-template.psm1
 ```
 

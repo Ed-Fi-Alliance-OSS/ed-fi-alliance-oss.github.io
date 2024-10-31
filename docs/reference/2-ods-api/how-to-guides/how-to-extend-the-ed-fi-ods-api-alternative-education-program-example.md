@@ -547,7 +547,7 @@ Ed-Fi-ODS/Samples/Extensions/AlternativeEducationProgram.
 
 * Copy the metadata files to the implementation project.
 
-```pwsh
+```powershell
 xcopy /y "Ed-Fi-ODS\Samples\Extensions\AlternativeEducationProgram\AlternativeEducationProgramMetaEd\MetaEdOutput\SampleAlternativeEducationProgram\Database\SQLServer\ODS\Structure" `
   "Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleAlternativeEducationProgram\Versions\1.0.0\Standard\5.1.0\Artifacts\MsSql\Structure\Ods\*"
 

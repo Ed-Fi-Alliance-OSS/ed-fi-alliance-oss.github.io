@@ -35,7 +35,7 @@ application runs on a machine with [.NET 8.0 SDK (Compatible with Visual Studio
 2022)](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) and is installed
 from Azure Artifacts with one of the following commands:
 
-```pwsh
+```powershell
 # Globally install the most recent version
 dotnet tool install -g EdFi.Suite3.Db.Deploy `
   --add-source https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json
@@ -142,7 +142,7 @@ For more information on connection string formats, see:
 
 #### Ex: SQL Server with Minimal Arguments
 
-```pwsh
+```powershell
 EdFi.Db.Deploy.exe deploy `
     --engine SqlServer `
     --connectionString "Server=localhost; Database=EdFi_Ods_Empty_Template; Integrated Security=True" `
@@ -154,7 +154,7 @@ EdFi.Db.Deploy.exe deploy `
 
 #### Ex: Test If Deployment Needed
 
-```pwsh
+```powershell
 EdFi.Db.Deploy.exe whatif `
     --engine SqlServer `
     --connectionString "Server=localhost; Database=EdFi_Ods_Empty_Template; Integrated Security=True" `
@@ -166,7 +166,7 @@ EdFi.Db.Deploy.exe whatif `
 
 #### Ex: SQL Server Install with Extensions
 
-```pwsh
+```powershell
 EdFi.Db.Deploy.exe deploy `
     --engine SqlServer `
     --connectionString "Server=localhost; Database=EdFi_Ods_Empty_Template; Integrated Security=True" `
@@ -181,7 +181,7 @@ EdFi.Db.Deploy.exe deploy `
 
 #### Ex: SQL Server with Minimal Arguments, Admin database
 
-```pwsh
+```powershell
 EdFi.Db.Deploy.exe deploy `
     --database Admin `
     --engine SqlServer `
@@ -195,7 +195,7 @@ EdFi.Db.Deploy.exe deploy `
 
 #### Ex: SQL Server with Optional Arguments
 
-```pwsh
+```powershell
 EdFi.Db.Deploy.exe deploy `
     --engine SqlServer `
     --connectionString "Server=localhost; Database=EdFi_Ods_Empty_Template; Integrated Security=True" `
@@ -208,7 +208,7 @@ EdFi.Db.Deploy.exe deploy `
 
 #### Ex: PostgreSQL with Minimal Arguments
 
-```pwsh
+```powershell
 EdFi.Db.Deploy.exe deploy `
     --engine PostgreSql `
     --connectionString "Host=localhost; Port=5432; Database=EdFi_Ods_Empty_Template; username=postgres; password=docker;" `
@@ -220,7 +220,7 @@ EdFi.Db.Deploy.exe deploy `
 
 #### Ex: PostgreSQL on Alternate Port with Optional Arguments
 
-```pwsh
+```powershell
 EdFi.Db.Deploy.exe deploy `
     --engine PostgreSql `
     --connectionString "Host=localhost; Port=1234; Database=EdFi_Ods_Empty_Template; username=postgres; password=docker;" `

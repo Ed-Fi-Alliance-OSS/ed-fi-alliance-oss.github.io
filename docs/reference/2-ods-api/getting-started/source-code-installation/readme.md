@@ -31,7 +31,7 @@ likely you have PowerShell 5.0 pre-installed.
      select **Windows PowerShell**, and press **Enter**.
 2. Type `$PSVersionTable.PSVersion`, and press **Enter**.
 
-```pwsh
+```powershell
 PS D:\> $PSVersionTable.PSVersion
 
 Major  Minor  Patch  PreReleaseLabel BuildLabel
@@ -415,7 +415,7 @@ may need to change the execution policy for unsigned PowerShell scripts to run
 on your machine to run the scripts. This can be done by opening a PowerShell
 console and typing the following command:
 
-```pwsh
+```powershell
 Set-ExecutionPolicy Unrestricted
 ```
 
@@ -428,13 +428,13 @@ when the Ed-Fi-ODS solution is opened. They may also be loaded for use within a
 PowerShell console window by running the initialize PowerShell for development
 script located at:
 
-```pwsh
+```powershell
 C:\Ed-Fi-ODS-Implementation\Initialize-PowershellForDevelopment.ps1
 ```
 
 When the scripts are loaded, you should see the results shown below:
 
-```pwsh
+```powershell
 Using repositories: Ed-Fi-ODS, Ed-Fi-ODS-Implementation
 Importing Module: InitializeDevelopmentEnvironment.psm1
 c:\Ed-Fi-ODS-Implementation
@@ -495,7 +495,7 @@ base64. You can execute the `New-AESKey` command to generate a valid key.
 
 :::
 
-```pwsh
+```powershell
 PS C:\Ed-Fi-ODS-Implementation> initdev
 
 ----------------------------------------
@@ -521,7 +521,7 @@ in the solution. Some considerations while running the script:
 A successful `initdev` execution will display the tasks executed and their
 duration as shown below:
 
-```pwsh
+```powershell
 <trimmed output...>
 
 Duration Task
@@ -593,7 +593,7 @@ PowerShell command in the previous step), there are two ways to build the
 solution. The solution can be built from Visual Studio, as described above, or
 from a terminal window.
 
-```pwsh
+```powershell
 cd C:\\Ed-Fi-ODS-Implementation\\Application
 dotnet clean Ed-Fi-Ods.sln
 dotnet build Ed-Fi-Ods.sln
