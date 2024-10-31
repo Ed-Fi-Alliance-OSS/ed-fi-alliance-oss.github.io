@@ -232,7 +232,7 @@ by adding an additional where clause to based on this ChangeVersion column.
 }
 }%%
 erDiagram
-    "edfi.Student" {
+    Student {
         int StudentUsi PK
         varchar StudentUniqueId
         varchar FirstName
@@ -243,7 +243,7 @@ erDiagram
         int ChangeVersion
     }
 
-    "edfi.Candidate" {
+    Candidate {
         varchar CandidateIdentifier PK
         varchar FirstName
         etc etc
