@@ -21,11 +21,11 @@ steps:
 Ensure that the following components are installed:
 
 * **PowerShell 5.0,7.2,7.3.** PowerShell is used by the database deployment
-    scripts.
+  scripts.
 
 * **.NET 8.0 SDK.** Required by the [Database Deploy
-    Tool](../../platform-dev-guide/utilities/database-deploy-tool.md)
-    used in the database deployment scripts.
+  Tool](../../platform-dev-guide/utilities/database-deploy-tool.md)
+  used in the database deployment scripts.
 
     <details>
       <summary>View detail...</summary>
@@ -34,15 +34,17 @@ Ensure that the following components are installed:
 
     Verify that PowerShell 5.0 or above is installed:
 
-    1. Press the **Windows key** ![Windows
-        logo](https://lh5.googleusercontent.com/o2iqf0j70YV3B-1NQxBFj1Ne-JeToRq5PiZeMtvF05l3jpyp4kseJn-zEs3BULgpAS_TFr8Qyacu5JZkiyXNllygq2EGhPII-PcxYyxkwCUqC4fPhMJ0QbovAD16R7T2StuDemW_)
-
-         on your keyboard, type **PowerShell**, select **Windows PowerShell**,
-         and press **Enter**.
-
+    1. Press the **Windows key** 🪟 on your keyboard, type **PowerShell**,
+         select **Windows PowerShell**, and press **Enter**.
     2. Type **$PSVersionTable.PSVersion**, and press **Enter**.
 
-        ![PowerShell Version Table](/img/reference/ods-api/ps-version.png)
+        ```pwsh
+        PS D:\> $PSVersionTable.PSVersion
+
+        Major  Minor  Patch  PreReleaseLabel BuildLabel
+        -----  -----  -----  --------------- ----------
+        7      4      5
+        ```
 
     3. If the required version is not installed, download [Windows Management
         Framework
@@ -53,17 +55,26 @@ Ensure that the following components are installed:
 
     Download and install the latest release of the [.NET 8.0
     SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
-
-    ![.NET 8.0 SDK](/img/reference/ods-api/SDK-8.0.300.png)
     </details>
 
 ### Web Server
+
+:::tip
+
+These notes are for installation in Windows Server. Installation notes for Linux
+and MacOSX are outside the scope of this document. Users on Unix-like systems
+will likely want to run a reverse-proxy web server such as NGiNX or Apache HTTP
+Server, and will need to run the proper application DLLs as a service at
+startup. See the [Ed-Fi ODS
+Docker](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Docker) code repository
+for an example.
+
+:::
 
 Ensure that the following components are installed:
 
 * **Internet Information Services.** IIS is the web server that will run the
     ODS / API.
-
 * **.NET 8.0 Hosting Bundle.** The .NET 8.0 Hosting Bundle is required for
     running the API on IIS. Must be installed after IIS.
 
@@ -72,25 +83,16 @@ Ensure that the following components are installed:
 
     **Internet Information Services**
 
-    1. Press the **Windows key** ![Windows
-        logo](https://lh5.googleusercontent.com/o2iqf0j70YV3B-1NQxBFj1Ne-JeToRq5PiZeMtvF05l3jpyp4kseJn-zEs3BULgpAS_TFr8Qyacu5JZkiyXNllygq2EGhPII-PcxYyxkwCUqC4fPhMJ0QbovAD16R7T2StuDemW_)
-
-         on your keyboard, type "features", select **Turn Windows features on or
-         off**, press **Enter**.
-
+    1. Press the **Windows key** 🪟      on your keyboard, type "features",
+       select **Turn Windows features on or off**, press **Enter**.
     2. Check the box next to Internet Information Services. The default
         selections will be good for most cases.
-
     3. Click **OK**.
-
-    ![Internet Information Services](/img/reference/ods-api/Internet-Info-Services.png)
 
     **.NET 8.0 Hosting Bundle**
 
     Download and install [.NET Hosting Bundle
     8.0](https://dotnet.microsoft.com/en-us/download/dotnet/8.0).
-
-    ![.NET 8.0 Hosting Bundle](/img/reference/ods-api/net-hosting-bundle.png)
 
     </details>
 
@@ -107,6 +109,14 @@ server:
   * **[Microsoft Visual C++ 2015
         Redistributable](https://www.microsoft.com/en-us/download/details.aspx?id=52685).**
         Required by some of the PostgreSQL Binary tools.
+
+:::tip
+
+Newer versions of Microsoft SQL Server and PostgreSQL typically work without any
+modifications to the instructions or source code. The versions listed above are
+known _minimum_ versions that are supported by the Alliance.
+
+:::
 
 <details>
   <summary>View detail...</summary>
@@ -144,49 +154,22 @@ Installation using PostgreSQL Installer
   * The [PostgreSQL installation
         guide](https://www.enterprisedb.com/docs/supported-open-source/postgresql/installer/) has
         details.
+Installation using PostgreSQL Installer
 
-![PostgreSQL DB Installer](/img/reference/ods-api/postgresqldbdownload.png)
+* Install using the
+  PostgreSQL [installer](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads).
+  Version 13.x is compatible with the ODS / API.
+  * Note the installer includes pgAdmin as an option.
+  * The [PostgreSQL installation
+    guide](https://www.enterprisedb.com/docs/supported-open-source/postgresql/installer/)
+    has details.
 
-Download the version 13.x installer.
+Notes while stepping through the installation wizard:
 
-![PostgreSQL DB Installer](/img/reference/ods-api/postgresqldbdownload2.png)
-
-Click **Next**.
-
-![PostgreSQL DB Installer](/img/reference/ods-api/postgresqldbdownload3.png)
-
-Click **Next**.
-
-![PostgreSQL DB Installer](/img/reference/ods-api/postgres-install-3.jpg)
-
-If you want to install only the tools uncheck PostgreSQL Server, pgAdmin 4 and
-Stack Builder.
-
-Click **Next**.
-
-![PostgreSQL DB Installer](/img/reference/ods-api/postgres-install-5.jpg)
-
-Enter a password for the Postgres superuser.
-
-Click **Next**.
-
-![PostgreSQL DB Installer](/img/reference/ods-api/postgres-install-6.jpg)
-
-Enter port **5432** (default).
-
-Click **Next**.
-
-![PostgreSQL DB Installer](/img/reference/ods-api/postgres-install-7.jpg)
-
-Click **Next**.
-
-![PostgreSQL DB Installer](/img/reference/ods-api/postgresqldbdownload4.png)
-
-Click **Next**.
-
-![PostgreSQL DB Installer](/img/reference/ods-api/postgres-install-9.jpg)
-
-Click **Next** to finish the installation.
+* If you want to install only the tools uncheck PostgreSQL Server, pgAdmin 4 and
+  Stack Builder.
+* Enter a password for the postgres superuser.
+* Use port **5432** (default).
 
 </details>
 
@@ -198,12 +181,12 @@ Click **Next** to finish the installation.
 Initial setup with Docker:
 
 * Install Docker using
-    this [guide](https://docs.docker.com/docker-for-windows/install/).
+  [this guide](https://docs.docker.com/docker-for-windows/install/).
 * Create a Docker Compose file.
 
 ### Run PostgreSQL with Docker in Linux Containers
 
-Create a Docker Compose file (name: `docker-compose.yml`) to bootstrap
+Create a Docker Compose file (name: `docker compose.yml`) to bootstrap
 PostgreSQL using Linux containers. More information on the Docker Compose file
 can be found [on the Docker documentation
 site](https://docs.docker.com/compose/).
@@ -239,28 +222,28 @@ Sample files for these can be downloaded from the download panel on the right.
 
 ### Data Retention and Docker Compose
 
-Once you have set up your docker-compose.yml and .env files and placed them in a
+Once you have set up your docker compose.yml and .env files and placed them in a
 folder (e.g., C:\\PGDockerSetup), navigate to that folder in PowerShell and run
-[docker-compose](https://docs.docker.com/compose/). This utility reads
-the docker-compose.yml configuration file and runs all of the containers
+[docker compose](https://docs.docker.com/compose/). This utility reads
+the docker compose.yml configuration file and runs all of the containers
 described in that file.
 
 To bring up the environment:
 
-```shell
-C:\PGDockerSetup>docker-compose up -d
+```pwsh
+C:\PGDockerSetup>docker compose up -d
 ```
 
 To stop the volumes and containers:
 
-```shell
-C:\PGDockerSetup>docker-compose down
+```pwsh
+C:\PGDockerSetup>docker compose down
 ```
 
 To stop the services and remove them, but retain the data in separate volumes:
 
-```shell
-C:\PGDockerSetup>docker-compose down -v
+```pwsh
+C:\PGDockerSetup>docker compose down -v
 ```
 
 </details>
@@ -285,11 +268,11 @@ Set the environment variable PGPASSFILE to the location of the pgpass file that
 was created, which is the recommended approach. Optionally, the file can be
 saved in `%APPDATA%/postgresql/pgpass.conf.`
 
-![PGPASSFILE Environment Variable](/img/reference/ods-api/image2020-4-9_16-43-3.png)
+![pgpass.conf](/img/reference/ods-api/image2020-4-9_16-43-3.png)
 
 You can test the environment variable setup using:
 
-```shell
+```pwsh
 get-item env:pgpassfile
 
 Name                           Value

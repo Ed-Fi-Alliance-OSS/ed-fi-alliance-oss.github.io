@@ -28,7 +28,7 @@ database or by authorization.
 
 A high level dependency graph is shown bellow:
 
-![Dependency Graph](/img/reference/ods-api/dependency%20graph.png)
+![Dependency Graph](/img/reference/ods-api/dependency-graph.webp)
 
 ## Dependency Order Endpoint
 
@@ -45,34 +45,107 @@ order group. "Delete" operations are to be performed at the reverse order of
 Create operations. API Client developers can use this as documentation or can
 use it programmatically for orchestration of API calls.
 
-The Postman screenshot below shows the GET call:
-
-![Dependency Endpoint - json endpoint](/img/reference/ods-api/Dependency%20Endpoint%20-json%20endpoint.jpg)
+```json title="Partial listing of the Dependencies endpoint"
+{
+  ...
+  {
+    "resource": "/ed-fi/studentTransportations",
+    "order": 14,
+    "operations": [
+      "Create",
+      "Update"
+    ]
+  },
+  {
+    "resource": "/tpdm/financialAids",
+    "order": 14,
+    "operations": [
+      "Create",
+      "Update"
+    ]
+  },
+  {
+    "resource": "/ed-fi/contacts",
+    "order": 15,
+    "operations": [
+      "Update"
+    ]
+  },
+  {
+    "resource": "/ed-fi/credentials",
+    "order": 15,
+    "operations": [
+      "Create",
+      "Update"
+    ]
+  },
+  {
+    "resource": "/ed-fi/grades",
+    "order": 15,
+    "operations": [
+      "Create",
+      "Update"
+    ]
+  }
+  ...
+}
+```
 
 Adding a header `Accept` with a value of `application/graphml` can be passed to
-obtain dependency output in the graphml XML format. The Postman screen shot
-below shows the GET call with the added header:
+obtain dependency output in the [graphml XML
+format](https://en.wikipedia.org/wiki/GraphML).
 
-![Dependency Endpoint - Graphml output](/img/reference/ods-api/Dependency%20Endpoint%20-%20Graphml%20output.png)
+```xml title="Partial listing of the Dependencies endpoint in GraphML
+<?xml version="1.0" encoding="UTF-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+<graph id="EdFi Dependencies" edgedefault="directed">
+<node id="/ed-fi/absenceEventCategoryDescriptors"/>
+<node id="/ed-fi/academicHonorCategoryDescriptors"/>
+<node id="/ed-fi/academicSubjectDescriptors"/>
+<node id="/ed-fi/academicWeeks"/>
+<node id="/ed-fi/accommodationDescriptors"/>
+<node id="/ed-fi/accountabilityRatings"/>
+<node id="/ed-fi/accountTypeDescriptors"/>
+<node id="/ed-fi/achievementCategoryDescriptors"/>
+...
+```
 
-The screenshots bellow show the dependency order enforced by authorization on
-the Students resource. You can see that Student creation is at
-order 3, StudentSchoolAssociation creation is at order 18 the Student update is
-at order 19. This shows that a client cannot edit a student record it has
-created until an enrollment record has been established.
+The example below shows the dependency order enforced by authorization on the
+Students resource. You can see that Student creation is at
+order 3, StudentSchoolAssociation creation is at order 13, and the Student
+update is at order 14. This shows that a client cannot edit a student record it
+has created until an enrollment record has been established.
 
-A Postman screen shot showing the Student creation at order 3:
-
-![Dependency Endpoint - Student Create](/img/reference/ods-api/Dependency%20Endpoint%20-%20Student%20Create.png)
-
-A screenshot showing the StudentSchoolAssociation creation at order 18:
-
-![Dependency Endpoint - Student School Association Create](/img/reference/ods-api/Dependency%20Endpoint%20-%20Student%20School%20Association%20Create.png)
-
-A final screenshot showing the Student update at order 19, after
-the StudentSchoolAssociation creation:
-
-![Dependency Endpoint - Student Update](/img/reference/ods-api/Dependency%20Endpoint%20-%20Student%20Update.png)
+```json
+{
+  ...
+  {
+    "resource": "/ed-fi/students",
+    "order": 3,
+    "operations": [
+      "Create"
+    ]
+  },
+  ...
+  {
+    "resource": "/ed-fi/studentSchoolAssociations",
+    "order": 13,
+    "operations": [
+      "Create",
+      "Update"
+    ]
+  },
+  ...
+  {
+    "resource": "/ed-fi/students",
+    "order": 14,
+    "operations": [
+      "Update"
+    ]
+  },
+  ...
+}
+```
 
 :::note
 

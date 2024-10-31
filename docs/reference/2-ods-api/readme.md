@@ -8,15 +8,15 @@ turn data from something you have into something you can use.
 
 Documentation for the Ed-Fi ODS / API v7.2 for Suite 3 is viewable online:
 
-* [What's New](./whats-new/readme.md)
-* [Getting Started](./getting-started/readme.md)
+* [What's New](./whats-new)
+* [Getting Started](./getting-started)
 * [Platform Developers'
-    Guide](./platform-dev-guide/readme.md)
+    Guide](./platform-dev-guide)
 * [API Client Developers'
     Guide](./client-developers-guide/readme.md)
-* [How-To Guides](./how-to-guides/readme.md)
+* [How-To Guides](./how-to-guides)
 * [Technical
-    Articles](./technical-articles/readme.md)
+    Articles](./technical-articles)
 * [Swagger API Sandbox](https://api.ed-fi.org/)
 
 ## Resources
@@ -42,7 +42,6 @@ Version 7.2.
 * Looking for previous versions of the Ed-Fi ODS / API? Visit the [Ed-Fi
   Technology Version
   Index](https://edfi.atlassian.net/wiki/spaces/ETKB/pages/20875717/Ed-Fi+Technology+Version+Index#Ed-FiTechnologyVersionIndex-Data-Standard).
-* Looking for another Ed-Fi Technology? Visit the [Ed-Fi Technical Documentation
-  Home Page](https://edfi.atlassian.net/wiki/spaces/ETKB/overview).
+* Looking for another Ed-Fi Technology? Visit the [Ed-Fi Reference Documentation](/reference).
 
 :::

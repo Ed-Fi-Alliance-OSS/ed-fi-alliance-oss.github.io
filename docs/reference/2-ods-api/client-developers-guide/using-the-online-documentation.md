@@ -41,7 +41,7 @@ are Resources, Descriptors, Types, Other, Composites, and Profiles. The
 resources exposed are, generally speaking, representative of entities from the
 Ed-Fi data model. This means that the entities will share names, organizations,
 and definitions across all parts of the [Ed-Fi Data
-Standard](https://edfi.atlassian.net/wiki/spaces/EFDS5), including the Ed-Fi XSD
+Standard](/reference/data-exchange/data-standard), including the Ed-Fi XSD
 and the Ed-Fi ODS / API.
 
 Detail follows about the API documentation sections.
@@ -148,12 +148,12 @@ using PUT operation. The natural language description of the PUT verb for the
 resources would indicate whether natural key updates are supported for the
 resource.
 
-![Natural natural language description of PUT operation in `section` resource indicating that the resource supports natural key updates](/img/reference/ods-api/cascade%20on%20update.png)
+![Natural natural language description of PUT operation in `section` resource indicating that the resource supports natural key updates](/img/reference/ods-api/cascade-on-update.png)
 
 **Figure 8.** Natural natural language description of PUT operation in
  `section` resource indicating that the resource supports natural key updates
 
-![Natural natural language description of PUT operation in `reportCards` resource indicating that the resource does not support natural key updates](/img/reference/ods-api/No%20key%20updates.png)
+![Natural natural language description of PUT operation in `reportCards` resource indicating that the resource does not support natural key updates](/img/reference/ods-api/no-key-updates.png)
 
 **Figure 9.** Natural natural language description of PUT operation in
 `reportCards` resource indicating that the resource does not support natural key

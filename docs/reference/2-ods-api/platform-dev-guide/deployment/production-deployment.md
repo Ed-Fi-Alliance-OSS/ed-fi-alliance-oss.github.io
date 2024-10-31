@@ -14,21 +14,15 @@ There are several websites and databases that work together to provide primary
 and supporting functions for a Production instance:
 
 * **Websites**
-
   * **Ed-Fi ODS API.** The REST endpoint for client applications.
-
   * **Admin App Website.** This website provides administrative tools for
-        managing API client keys and secrets.
-
+    managing API client keys and secrets.
 * **Databases**
-
   * **EdFi\_ODS.** A database that stores data for the Ed-Fi ODS / API.
-
   * **EdFi\_Admin.** A database containing authentication information for API
-        clients.
-
+    clients.
   * **EdFi\_Security.** A database containing authorization information for API
-        clients.
+    clients.
 
 Of particular note: production deployments should _not_ include the Swagger
 Documentation UI, Sandbox Administration UI, or the EdFi\_ODS\_\* databases.
@@ -94,46 +88,31 @@ periodically thereafter.
 
 * Ensure that only intended client applications can interact with the Ed-Fi ODS
     / API.
-
 * Implement a process for client application owners to refresh their key/secret
     pair.
-
 * Verify the IP address of incoming requests.
-
 * Ensure client applications have the least-privileged access to the database.
-
 * Encrypt connection strings in configuration files.
-
 * Throttle or limit the rate of incoming requests to prevent denial of service
-    attacks.
-
+  attacks.
 * Encrypt sensitive data, including database storage.
-
 * Ensure the OAuth secret is hashed in the database.
-
 * Allow only HTTPS connections.
-
 * Set "Persist Security Info" to false in the database connection string.
-
 * Ensure the ODS database does not accept external connections.
 
 #### Recommendations for the Ed-Fi Sandbox Administration Portal
 
 * Do not deploy the Sandbox Administration Portal to a Production instance.
-
 * Ensure any Sandbox development tools and configurations are not included in
-    Production.
-
+  Production.
 * Remove the Swagger documentation pages from Production instances.
 
 #### Admin App
 
 * Encrypt sensitive data.
-
 * Ensure the OAuth secret is hashed in the database.
-
 * Only allow HTTPS.
-
 * Configuration should explicitly only allow administrator access.
 
 ## Reference Models for Production Deployment

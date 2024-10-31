@@ -68,7 +68,7 @@ obtained by a single query that contains a specific slice of data.
 The approach is depicted in the images below for the Ed-Fi Enrollment API’s
 Section resource:
 
-![Composite Table](/img/reference/ods-api/Composite-Table-01-1.png)
+![Composite Table](/img/reference/ods-api/Composite-Table-01-1.webp)
 
 The results of all the queries are then processed into a generic structure of
 `IDictionary<string, object>` instances (representing individual objects) and

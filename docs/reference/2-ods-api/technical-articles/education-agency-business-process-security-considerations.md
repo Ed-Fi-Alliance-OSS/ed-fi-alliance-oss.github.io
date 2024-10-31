@@ -26,34 +26,13 @@ business process changes by platform hosts.
 As such, we present this information with two purposes:
 
 * To ensure platform hosts using the Ed-Fi ODS / API are aware of
-    security concerns and to provide information on how to mitigate associated
-    risk.
-* To invite community discussion of potential improvements to Ed-Fi
-    technology, plus the associated systems and business processes in place at
-    education agencies and platform hosts.
-
-In general, the concerns of note are:
-
-* [Education Agency Business Process Security Considerations](#education-agency-business-process-security-considerations)
-  * [Introduction](#introduction)
-  * [District-Declared Student Enrollment](#district-declared-student-enrollment)
-    * [Discussion](#discussion)
-    * [Recommendation](#recommendation)
-  * [State-Issued Sequential Student IDs](#state-issued-sequential-student-ids)
-    * [Discussion](#discussion-1)
-    * [Recommendation](#recommendation-1)
-  * [Data Sanitization](#data-sanitization)
-    * [Discussion](#discussion-2)
-    * [Recommendation](#recommendation-2)
-  * [Lockout Mechanisms](#lockout-mechanisms)
-    * [Discussion](#discussion-3)
-    * [Recommendations](#recommendations)
-
-Detail about each concern follows.
+  security concerns and to provide information on how to mitigate associated
+  risk.
+* To invite community discussion of potential improvements to Ed-Fi technology,
+  plus the associated systems and business processes in place at education
+  agencies and platform hosts.
 
 ## District-Declared Student Enrollment
-
-### Discussion
 
 In the as-shipped Ed-Fi ODS / API, any API client (e.g., a district student
 information system) with permissions to write to student enrollment records (API
@@ -82,15 +61,15 @@ enrollments before they occur, or of new enrollments not being allowed for
 previously enrolled students — but those options do not seem feasible given the
 limited ability of the state to validate the accuracy of district claims.
 
-### Recommendation
+:::tip
 
 A recommended mitigation is to use standard IP monitoring technologies to look
 for connections originating from outside the state or outside of known provider
 (e.g., SIS vendor cloud hosting) systems.
 
-## State-Issued Sequential Student IDs
+:::
 
-### Discussion
+## State-Issued Sequential Student IDs
 
 A core principle of the Ed-Fi standards is to support the natural keys to data
 records, such as using state-provided student IDs to uniquely identify students,
@@ -108,14 +87,14 @@ numbering. Because that is the case, it becomes easier for a malicious user or
 system to guess new IDs. The ability to guess at identifiers for records
 increases risks.
 
-### Recommendation
+:::tip
 
 The remediation for states or platform hosts would be to use non-sequential IDs.
 Such a change would require no changes to Ed-Fi technology to enhance security.
 
-## Data Sanitization
+:::
 
-### Discussion
+## Data Sanitization
 
 The ODS / API is designed to protect itself from attack. Since it is primarily a
 recipient of data from disparate source systems, full data integrity — both in
@@ -145,7 +124,7 @@ The appropriate use and implementation of data validation is a core question in
 the community today, and this topic will be considered in light of that
 discussion.
 
-### Recommendation
+:::tip
 
 A best practice is for downstream systems and clients to sanitize the data
 before displaying or otherwise using it. Further, since those downstream
@@ -154,9 +133,9 @@ applied that considers the best possible exploit options. For example, PHP
 applications can sanitize for injection of PHP-based language elements, Web
 applications can sanitize for cross-site-scripting, and so forth.
 
-## Lockout Mechanisms
+:::
 
-### Discussion
+## Lockout Mechanisms
 
 Attackers or a malicious client application may attempt repeatedly to guess at
 ODS / API authentication credentials using a brute-force approach. The
@@ -170,7 +149,7 @@ API itself for a few reasons:
 * Such functionality is available on the market from specialized vendors, and
     is often built into existing cloud-based infrastructure.
 
-### Recommendations
+:::tip
 
 The Alliance recommends that API deployments configure deployment security
 (using firewalls or other security tools) to detect brute-force login attempts.
@@ -181,3 +160,5 @@ or SSH attacks, and similar exploits. These concerns are not discussed in detail
 here as this documentation is focused on the Ed-Fi ODS / API, but the
 remediation for those issues are often related to the authentication lockout
 concern noted here.
+
+:::

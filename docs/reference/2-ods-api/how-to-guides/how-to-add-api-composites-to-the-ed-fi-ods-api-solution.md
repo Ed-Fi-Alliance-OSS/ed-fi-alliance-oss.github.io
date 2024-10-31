@@ -16,17 +16,13 @@ Installation](../getting-started/source-code-installation/project-templates-inst
 section of this documentation.
 
 * To add a project to your Ed-Fi-Ods Visual Studio Solution, **right-click** on
-    the "Composites" folder. Select **Add** > **New Project**.
+  the "Composites" folder. Select **Add** > **New Project**.
 * In the "Add New Project" dialog, find and select the "Ed-Fi API Composites
-    Project Template" entry as shown below. Click **Next.**
-
-    ![Project Template](/img/reference/ods-api/composite-project-template.png)
-
+  Project Template" entry as shown below. Click **Next.** ![Project
+  Template](/img/reference/ods-api/composite-project-template.png)
 * Enter the project name for the new project and click **Create**. The suggested
-    naming convention for this type of project is something
-    like **EdFi.Ods.Composites.MyComposites**.
-
-    ![Project Template](/img/reference/ods-api/composite-project-template2.png)
+  naming convention for this type of project is something
+  like **EdFi.Ods.Composites.MyComposites**.
 
 ### Step 1.2. Update the Marker Interface file
 

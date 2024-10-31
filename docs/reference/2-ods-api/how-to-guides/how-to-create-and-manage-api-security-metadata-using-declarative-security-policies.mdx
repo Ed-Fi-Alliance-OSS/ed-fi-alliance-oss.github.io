@@ -3,12 +3,11 @@
 ## Introduction
 
 The Ed-Fi ODS API security metadata is stored in the EdFi\_Security database and
-is logically organized into a taxonomy. The [Admin
-API](https://edfi.atlassian.net/wiki/spaces/ADMINAPI/pages/21300937/Endpoints+in+Admin+API+2.x)
-provides a endpoints for managing this taxonomy. Another alternative is to
+is logically organized into a taxonomy. The [Admin API](/reference/admin-api)
+provides a endpoints for managing this taxonomy. Another alternative is to
 author SQL scripts from scratch to affect the desired changes in the
 EdFi\_Security database's relational tables used to model the hierarchical
-structure – a tedious and often challenging exercise. Refer to [How To:
+structure &mdash; a tedious and often challenging exercise. Refer to [How To:
 Configure Claim Sets](../how-to-guides/how-to-configure-claim-sets.md) for
 examples for authoring SQL scripts to setup security metadata.
 
@@ -32,10 +31,14 @@ introduced, along with their XML representations.
 ### Managing the Claims Taxonomy
 
 Individual API resources are represented as "leaf nodes" (aka _resource claims_)
-that are grouped under higher level _domain claims,_ as depicted in the image
-below.
+that are grouped under higher level _domain claims,_ as depicted in the table below
 
-![Leaf Nodes](/img/reference/ods-api/image2022-8-29_18-21-56.png)
+|            |                                                       |
+| ---------- | ----------------------------------------------------- |
+| people     | `http://ed-fi.org/ods/identity/claims/domains/people` |
+| ⌊_ parent  | `http://ed-fi.org/ods/identity/claims/parent`         |
+| ⌊_ staff   | `http://ed-fi.org/ods/identity/claims/parent`         |
+| ⌊_ student | `http://ed-fi.org/ods/identity/claims/parent`         |
 
 The XML representation of this structure is as follows:
 
@@ -63,7 +66,7 @@ domains rather than according to the similarities in the authorization approach.
 
 ### Default Authorization Metadata
 
-Each claim _may_ have default authorization metadata associated with it, which
+Each claim _may_ have default authorization metadata associated with it, which
 tells the API which _authorization strategy_ (or strategies) to use when
 authorizing API requests that are performing specific _actions_ (i.e. CRUD
 operations). This default authorization metadata applies to all descendants in
@@ -146,7 +149,7 @@ This is represented in XML as follows:
 <SecurityMetadata>
   <Claims>
     <Claim name="http://ed-fi.org/ods/identity/claims/domains/people">
-      <ClaimSets>
+      <ClaimSets>
         <ClaimSet name="SIS Vendor">
           <Actions>
             <Action name="Create" />
@@ -282,13 +285,13 @@ elements in a single document is depicted in the image below. Additionally,
 there are some aspects of the format that have specific behaviors that you must
 be aware of while authoring policies, and those are discussed next.
 
-![Sample Security Policy](/img/reference/ods-api/image2022-8-30_11-50-23.png)
+![Sample Security Policy](/img/reference/ods-api/sample-security-policy.webp)
 
 ### Create New Claims and Claim Sets
 
 Claims and claim sets will be created if they do not yet exist in the
-EdFi\_Security database – authorization strategies and actions cannot be created
-through a security policy document (errors will occur during SQL script
+EdFi\_Security database &mdash; authorization strategies and actions cannot be
+created through a security policy document (errors will occur during SQL script
 execution).
 
 ### Manage the Claims Taxonomy
@@ -315,7 +318,7 @@ as the parent to retain the existing hierarchy):
               <Actions>
                 <Action name="Read" />
               </Actions>
-            </ClaimSet>
+            </ClaimSet>
           </ClaimSets>
         </Claim>
         <Claim name="http://ed-fi.org/ods/identity/claims/student">
@@ -324,10 +327,10 @@ as the parent to retain the existing hierarchy):
               <Actions>
                 <Action name="Read" />
               </Actions>
-            </ClaimSet>
+            </ClaimSet>
           </ClaimSets>
         </Claim>
-       </Claims>
+       </Claims>
     </Claim>
   </Claims>
 </SecurityMetadata>
@@ -336,23 +339,23 @@ as the parent to retain the existing hierarchy):
 ### Clearing Security Metadata
 
 When you include a `DefaultAuthorization` element, a wholesale replacement
-occurs – all existing `Actions`  and their contained `AuthorizationStrategies`
+occurs &mdash; all existing `Actions`  and their contained `AuthorizationStrategies`
 are first cleared before the newly defined metadata is created. If the
-`DefaultAuthorization`  element is empty, the existing metadata will be deleted.
+`DefaultAuthorization`  element is empty, the existing metadata will be deleted.
 
 ```xml
 <SecurityMetadata>
   <Claims>
-    <Claim name="http://ed-fi.org/ods/identity/claims/domains/someDomain">
+    <Claim name="http://ed-fi.org/ods/identity/claims/domains/someDomain">
       <DefaultAuthorization /> <!-- Delete existing default authorization metadata -->
     </Claim>
   </Claims>
 </SecurityMetadata>
 ```
 
-This behavior also applies to actions under a claim set. When you include an
-`Actions`  element under a `ClaimSet` all existing `Actions`  and
-`AuthorizationStrategyOverrides`  are first cleared before the newly defined
+This behavior also applies to actions under a claim set. When you include an
+`Actions`  element under a `ClaimSet` all existing `Actions`  and
+`AuthorizationStrategyOverrides`  are first cleared before the newly defined
 metadata is created. If the `Actions` element is empty, the existing claim set
 permissions will be deleted.
 
@@ -365,10 +368,10 @@ permissions will be deleted.
           <ClaimSets>
             <ClaimSet name="Parent Portal App">
               <Actions /> <!-- Delete all existing permissions explicitly defined for student -->
-            </ClaimSet>
+            </ClaimSet>
           </ClaimSets>
         </Claim>
-       </Claims>
+       </Claims>
     </Claim>
   </Claims>
 </SecurityMetadata>
@@ -376,7 +379,7 @@ permissions will be deleted.
 
 :::info
 
-The clearing behavior does not apply to the `Claims`  or `ClaimSets` collection
+The clearing behavior does not apply to the `Claims`  or `ClaimSets` collection
 elements. Providing those elements as empty will have no effect on the existing
 security metadata.
 
@@ -387,16 +390,16 @@ security metadata.
 In order to apply the security policy to the EdFi\_Security database, you must
 generate SQL scripts for your target database engine (SQL Server and PostgreSQL
 are supported). The zip archive provided in the download panel on the
-right contains the following artifacts:
+right contains the following artifacts:
 
-* an XSLT stylesheet that consumes the security policy and transforms it into
-    a SQL script to produce the declared end state of the security policy
-* a PowerShell script (transform.ps1) that installs the Saxon XSLT processor
-    and invokes the XSLT transformation
+* an XSLT stylesheet that consumes the security policy and transforms it into a
+  SQL script to produce the declared end state of the security policy
+* a PowerShell script (transform.ps1) that installs the Saxon XSLT processor and
+  invokes the XSLT transformation
 * SQL scripts (for SQL Server and PostgreSQL) to export the full metadata from
-    the EdFi\_Security database in the security policy XML format (which can be
-    very useful for diagnostic purposes, or as a reference for writing new
-    security policies)
+  the EdFi\_Security database in the security policy XML format (which can be
+  very useful for diagnostic purposes, or as a reference for writing new
+  security policies)
 
 :::info
 
@@ -411,24 +414,39 @@ apparently requires some manual manipulation to assemble into an XML document.
 
 The basic usage of the transformation script is as follows:
 
-```powershell
-.\transform.ps1 .\Security-Policies\MySecurityPolicy.xml .\Generated\MySecurityPolicy-Postgres.sql -DatabaseEngine PostgreSql
-.\transform.ps1 .\Security-Policies\MySecurityPolicy.xml .\Generated\MySecurityPolicy-SqlServer.sql -DatabaseEngine SqlServer
-```
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+  <TabItem value="PostgreSQL" label="PostgreSQL" default>
+    ```pwsh
+    .\transform.ps1 .\Security-Policies\MySecurityPolicy.xml `
+      .\Generated\MySecurityPolicy-Postgres.sql -DatabaseEngine PostgreSql
+    ```
+  </TabItem>
+  <TabItem value="MSSQL" label="SQL Server" default>
+    ```pwsh
+    .\transform.ps1 .\Security-Policies\MySecurityPolicy.xml `
+      .\Generated\MySecurityPolicy-SqlServer.sql -DatabaseEngine SqlServer
+    ```
+  </TabItem>
+</Tabs>
 
 The resulting SQL scripts are idempotent and can be executed against the
 EdFi\_Security database.
 
 :::note
 
-The following GitHub links contain the PowerShell script that installs
+The following GitHub links contain the PowerShell script that installs
 the Saxon XSLT processor and invokes the XSLT transformation. The XSLT
 stylesheet consumes the security policy you define and transforms it into a
 SQL script to produce the declared end state of the security policy. The
 archive also contains SQL scripts (for SQL Server and PostgreSQL) to export
 the full metadata from the EdFi\_Security database in the security policy XML
 format (which can be very useful for diagnostic purposes, or as a reference
-for writing new security policies). [Security Metadata
-Scripts](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/tree/v7.2/SecurityMetadata)
+for writing new security policies).
+
+* [Security Metadata Scripts for ODS/API
+7.2](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/tree/v7.2/SecurityMetadata)
 
 :::

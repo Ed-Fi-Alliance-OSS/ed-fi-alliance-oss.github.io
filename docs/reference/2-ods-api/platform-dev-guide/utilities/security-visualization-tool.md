@@ -119,14 +119,14 @@ Delete (CRUD) operations are authorized. The diagram also indicates that the
 authorization strategy associated with the claim
 is **NoFurtherAuthorizationRequired**.
 
-![Education Organizations](/img/reference/ods-api/educationOrganizations_sb.png)
+![Education Organizations](/img/reference/ods-api/educationOrganizations_sb.webp)
 
 The diagram below shows permissions for accessing education organization
 entities for the "SIS Vendor" claim set. In this case, it is assumed that the
 education agency implementing the Ed-Fi ODS / API will load and manage education
 organizations, so SIS vendor applications are only granted Read authorization.
 
-![Education Organizations](/img/reference/ods-api/educationOrganizations.png)
+![Education Organizations](/img/reference/ods-api/educationOrganizations.webp)
 
 ### Descriptors
 
@@ -141,9 +141,9 @@ with the appropriate Namespace prefix can add or change a managed Descriptor,
 while the **NoFurtherAuthorizationRequired** strategy is applied to Read
 operations, meaning that other API clients read a managed Descriptor.
 
-![Managed Descriptors](/img/reference/ods-api/managedDescriptors.png)
+![Managed Descriptors](/img/reference/ods-api/managedDescriptors.webp)
 
 The diagram below shows permissions for accessing System Descriptors for the
-"SIS Vendor" claim set, where only Read access is allowed.
+"SIS Vendor" claim set, where only Read access is allowed. (partial view only).
 
-![System Descriptors](/img/reference/ods-api/systemDescriptors.png)
+![System Descriptors](/img/reference/ods-api/systemDescriptors.webp)

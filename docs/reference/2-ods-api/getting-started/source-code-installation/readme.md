@@ -643,11 +643,11 @@ or debug the Ed-Fi ODS / API.
     Express. By default, the websites are configured according to the following
     table:
 
-| Website | Project | URL |
-| --- | --- | --- |
-| Ed-Fi ODS API | EdFi.Ods.WebApi | [http://localhost:54746/](http://localhost:54746/) |
-| Sandbox Administration | EdFi.Ods.SandboxAdmin | [http://localhost:38928/](http://localhost:38928/) |
-| Ed-Fi ODS API Documentation | EdFi.Ods.SwaggerUI | [http://localhost:56641/](http://localhost:56641/) |
+| Website                     | Project               | URL                                                |
+| --------------------------- | --------------------- | -------------------------------------------------- |
+| Ed-Fi ODS API               | EdFi.Ods.WebApi       | [http://localhost:54746/](http://localhost:54746/) |
+| Sandbox Administration      | EdFi.Ods.SandboxAdmin | [http://localhost:38928/](http://localhost:38928/) |
+| Ed-Fi ODS API Documentation | EdFi.Ods.SwaggerUI    | [http://localhost:56641/](http://localhost:56641/) |
 
 * At this point, you're ready to explore the system.
 
@@ -657,7 +657,7 @@ or debug the Ed-Fi ODS / API.
 Follow these steps to finish configuring the solution:
 
 1. Visiting the API Sandbox Administration Portal and logging in with the Test
-    User Account
+   User Account
 2. Reviewing the Ed-Fi ODS API Documentation
 
 ### The Sandbox Administration Portal

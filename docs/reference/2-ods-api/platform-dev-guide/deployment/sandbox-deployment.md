@@ -156,11 +156,16 @@ live Sandbox deployments. A typical single-server specification follows:
 A diagram of a simple two-server deployment follows:
 
 ```mermaid
-architecture-beta
-    service api(server)[ODS API]
-    service ods(database)[ODS Database]
+flowchart LR
+    api["ODS / API Web Server"]
 
-    api:R --> L:ods
+    subgraph RDBMS
+        ods[("EdFi_ODS")]
+        adm[("EdFi_Admin")]
+        sec[("EdFi_Security")]
+    end
+
+    api --> RDBMS
 ```
 
 The two-server deployment of an Ed-Fi ODS / API Sandbox provides greater

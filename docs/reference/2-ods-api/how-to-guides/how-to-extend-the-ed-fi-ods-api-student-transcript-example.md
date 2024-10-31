@@ -749,7 +749,7 @@ Locate the **EdFi.Ods.WebApi** project, within the "Entry Points"
 folder. **Right-click**, select **Add** > **Reference...**, then select
 the **EdFi.Ods.Extensions.SampleStudentTranscript** project.
 
-![Add Reference](/img/reference/ods-api/vs-extension-add-reference.webp)
+![Add Reference](/img/reference/ods-api/how-to-transcript/vs-extension-add-reference.webp)
 
 #### A4.2
 
@@ -887,9 +887,9 @@ from a PowerShell prompt run `Initialize-PowershellForDevelopment.ps1` script,
 followed by the `initdev` command). Then, run the application and view the Ed-Fi
 ODS / API in the Swagger UI. The following new API resource should be visible:
 
-![Extension Swagger 1](/img/reference/ods-api/extension%20swagger1.png)
+![Extension Swagger 1](/img/reference/ods-api/how-to-transcript/extension-swagger1.png)
 
-![Extension Swagger 2](/img/reference/ods-api/extension%20swagger2.png)
+![Extension Swagger 2](/img/reference/ods-api/how-to-transcript/extension-swagger2.webp)
 
 :::note
 The following GitHub links contain source files for this extensibility sample.
