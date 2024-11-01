@@ -1,6 +1,6 @@
 # Ed-Fi Implementation Partner Badge
 
-![Ed-Fi Implementation Partner Badge](../img/Ed-Fi%20Implementation%20Partner%20Badge-Watermarked.png)
+![Ed-Fi Implementation Partner Badge](/img/partners/badging/ed-fi-implementation-badge.png)
 
 To be awarded this badge, a vendor must be able to demonstrate adherence to
 Ed-Fi best practices and their services must facilitate Ed-Fi data standards

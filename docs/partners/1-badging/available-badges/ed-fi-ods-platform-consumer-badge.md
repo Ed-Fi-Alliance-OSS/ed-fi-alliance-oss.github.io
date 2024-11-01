@@ -1,6 +1,6 @@
 # Ed-Fi ODS Platform Consumer Badge
 
-![Ed-Fi ODS Platform Consumer Badge](../img/Ed-Fi_Badge-ODS-Platform-Consumer_logo_FINAL-2x_watermarked%20(1).png)
+![Ed-Fi ODS Platform Consumer Badge](/img/partners/badging/ed-fi-ods-platform-badge.png)
 
 This badge is for products that interact or use the data from the Ed-Fi ODS
 platform, but access is not via API. Products using an Ed-Fi API to source data
