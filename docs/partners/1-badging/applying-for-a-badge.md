@@ -84,13 +84,13 @@ consistent with the core value provided by the product.
 
 For the format, the mapping must
 
-- be in a spreadsheet format
-- in header information, state the version numbers of the Ed-Fi standards or
+* be in a spreadsheet format
+* in header information, state the version numbers of the Ed-Fi standards or
     products which apply to the data elements (e.g. "The data elements listed
     are for Ed-Fi Data Standard 3.1" If the product has multiple version
     support, it is permitted to default these to the most recent Ed-Fi version
     supported.
-- for the Ed-Fi data elements, use the exact terms from either the Ed-Fi Data
+* for the Ed-Fi data elements, use the exact terms from either the Ed-Fi Data
     Handbook, the Ed-Fi API element name, or the Ed-Fi ODS database element name
 
 ### 3\. Implementation Verification
