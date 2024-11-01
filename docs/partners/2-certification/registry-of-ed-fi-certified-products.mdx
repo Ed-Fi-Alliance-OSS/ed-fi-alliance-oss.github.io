@@ -638,7 +638,7 @@ export const certData = {
       validThrough: 'October 18, 2025',
       verifyingAgencies: ['Mondovi School District, WI'],
       versionCompatibility:
-        'Version 3x data standards and later\nVersion 6.1 API',
+        'Version 3x data standards and later; Version 6.1 API',
       availability: 'Available to any LEA in any US geography',
       documentation: {
         mappings:
@@ -795,7 +795,7 @@ export const certData = {
       validThrough: 'October 18, 2025',
       verifyingAgencies: ['Mondovi School District, WI'],
       versionCompatibility:
-        'Version 3x data standards and later\nVersion 6.1 API',
+        'Version 3x data standards and later; Version 6.1 API',
       availability: 'Available to any LEA in any US geography',
       documentation: {
         mappings:
@@ -814,147 +814,6 @@ export const certData = {
 };
 
 export function CertificationTable({ certifications }) {
-  return (
-    <table>
-      <thead>
-        <tr>
-          <th>Product (and Vendor)</th>
-          <th>Certification Valid Through</th>
-          <th>Implementation Verification (Verifying Agencies)</th>
-          <th>Version Compatibility</th>
-          <th>Certified Product Availability</th>
-          <th>Required Documentation</th>
-          <th>Notes & Support Resources</th>
-        </tr>
-      </thead>
-      <tbody>
-        {certifications.map((cert, index) => (
-          <tr key={index}>
-            <td>
-              <a href={cert.website}>
-                <img
-                  src={cert.logo}
-                  alt={cert.productName}
-                  style={{ width: '200px', height: 'auto', maxWidth: 'none' }}
-                />
-              </a>
-            </td>
-            <td>{cert.validThrough}</td>
-            <td>{cert.verifyingAgencies.join(', ')}</td>
-            <td>{cert.versionCompatibility}</td>
-            <td>{cert.availability}</td>
-            <td>
-              <ul>
-                {Object.entries(cert.documentation).map(([key, value]) => (
-                  <li key={key}>
-                    <a href={value}>
-                      {key.charAt(0).toUpperCase() +
-                        key
-                          .slice(1)
-                          .replace(/([A-Z])/g, ' $1')
-                          .trim()}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </td>
-            <td>
-              <ul>
-                {cert.supportResources.map((resource, i) => (
-                  <li key={i}>
-                    <a href={resource.link}>{resource.name}</a>
-                  </li>
-                ))}
-              </ul>
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  );
-}
-
-export function CertificationTable2({ certifications }) {
-  return (
-    <table style={{width: "100%"}}>
-      <thead>
-        <tr>
-          <th>Product</th>
-          <th>Valid Through</th>
-          <th>Certification Details</th>
-        </tr>
-      </thead>
-      <tbody>
-        {certifications.map((cert, index) => (
-          <tr key={index}>
-            <td>
-              <a href={cert.website}>
-                <img
-                  src={cert.logo}
-                  alt={cert.productName}
-                  title={cert.productName}
-                  style={{ width: '200px', height: 'auto', maxWidth: 'none' }}
-                />
-              </a>
-            </td>
-            <td>{cert.validThrough}</td>
-            <td>
-              <details>
-                <summary>Expand for additional details...</summary>
-                <table>
-                  <tr>
-                    <th>Verifying Agencies</th>
-                    <td>{cert.verifyingAgencies.join(', ')}</td>
-                  </tr>
-                  <tr>
-                    <th>Version Compatibility</th>
-                    <td>{cert.versionCompatibility}</td>
-                  </tr>
-                  <tr>
-                    <th>Certified Product Availability</th>
-                    <td>{cert.availability}</td>
-                  </tr>
-                  <tr>
-                    <th>Required Documentation</th>
-                    <td>
-                      <ul>
-                        {Object.entries(cert.documentation).map(([key, value]) => (
-                          <li key={key}>
-                            <a href={value}>
-                              {key.charAt(0).toUpperCase() +
-                                key
-                                  .slice(1)
-                                  .replace(/([A-Z])/g, ' $1')
-                                  .trim()}
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>Notes & Support Resources</th>
-                    <td>
-                      <ul>
-                        {cert.supportResources.map((resource, i) => (
-                          <li key={i}>
-                            <a href={resource.link}>{resource.name}</a>
-                          </li>
-                        ))}
-                      </ul>
-                    </td>
-                  </tr>
-                </table>
-              </details>
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  );
-}
-
-export function CertificationTable3({ certifications }) {
   return (
       <div className="container table">
         <div className="row row--thead">
@@ -1045,7 +904,7 @@ page.
 
 ## Ed-Fi Student Information Systems API for Data Standard v4 Certification
 
-<CertificationTable3 certifications={certData.sisApiV4} />
+<CertificationTable certifications={certData.sisApiV4} />
 
 ## Ed-Fi Student Information Systems API for Suite 3 Certification
 
