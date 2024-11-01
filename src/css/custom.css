@@ -108,3 +108,40 @@
   height: 12rem;
   margin-bottom: 2rem;
 }
+
+.table {
+  margin-bottom: var(--ifm-spacing-vertical);
+}
+
+.row--thead {
+  background-color: var(--ifm-table-stripe-background);
+}
+
+.col--th {
+  background-color: var(--ifm-color-secondary);
+  font-weight: var(--ifm-font-weight-bold);
+}
+
+.col--tr {
+  background-color: var(--ifm-table-background);
+}
+
+.col--tr-alt {
+  background-color: var(--ifm-table-stripe-background);
+}
+
+.col--th,
+.col--td {
+  border: var(--ifm-table-border-width) solid var(--ifm-table-border-color);
+  padding: var(--ifm-table-cell-padding);
+}
+
+.col--th {
+  background-color: var(--ifm-table-head-background);
+  color: var(--ifm-table-head-color);
+  font-weight: var(--ifm-table-head-font-weight);
+}
+
+.col--td {
+  color: var(--ifm-table-cell-color);
+}
