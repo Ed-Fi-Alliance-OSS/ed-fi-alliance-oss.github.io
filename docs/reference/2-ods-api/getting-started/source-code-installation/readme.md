@@ -567,16 +567,16 @@ repository.
 
 ```mermaid
 flowchart LR
-    model@{ shape: doc, label: "APIModel.json" }
+    model["APIModel.json"]
     metaed[MetaEd] --> model
 
     db[(EdFi_Ods_Empty)]
 
     metaed --> db
-    views@{ shape: doc, label: "Database Views" }
+    views["Database Views"]
     db -.-> views
 
-    gen@{ shape: processes, label: "Code Generators" }
+    gen[["Code Generators"]]
 
     model --> gen
     views --> gen
@@ -584,7 +584,6 @@ flowchart LR
     gen --> generated["compiled C#, json, XML"]
 
     generated --> server["Ed-FI ODS/API service"]
-```
 
 ## Alternatively Building from the Developer Command Prompt
 
