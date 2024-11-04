@@ -8,8 +8,8 @@ Badges](./available-badges/).
 
 Vendors must submit a request to join the Partner Program by providing the
 information and commitments requested in this **[online
-form](https://forms.gle/N57icQ29Xgx4Kz8W8)**. Direct any questions to [Sean
-Casey](mailto:sean.casey@ed-fi.org?subject=Partner%20Program).
+form](https://forms.gle/N57icQ29Xgx4Kz8W8)**. Direct any questions to [Nathan
+Gandomi](mailto:nathan.gandomi@ed-fi.org?subject=Badging%20Requirements).
 
 ## Availability
 

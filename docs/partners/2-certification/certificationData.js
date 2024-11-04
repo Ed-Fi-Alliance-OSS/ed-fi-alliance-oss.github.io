@@ -67,8 +67,8 @@ export default {
       productName: 'PowerSchool',
       logo: '/img/partners/certification/PowerSchool.png',
       website: 'https://www.powerschool.com/',
-      validThrough: 'May 9, 2024',
-      verifyingAgencies: ['Lorena ISD, TX'],
+      validThrough: 'September 23, 2025',
+      verifyingAgencies: ['Lorena ISD, TX', 'Buford City Schools, GA', 'Chisholm Public Schools, MN'],
       versionCompatibility: 'Conformance testing met with version 221014',
       availability: 'Available to any agency (all sizes) in the U.S.',
       documentation: {
@@ -667,7 +667,7 @@ export default {
       supportResources: [
         {
           name: 'Support',
-          link: 'http://support.skyward.com',
+          link: 'https://support.skyward.com',
         },
       ],
     },
@@ -688,7 +688,7 @@ export default {
       supportResources: [
         {
           name: 'Support',
-          link: 'http://support.skyward.com',
+          link: 'https://support.skyward.com',
         },
       ],
     },
