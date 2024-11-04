@@ -42,9 +42,9 @@ question on if the functionality is available and working.
 
 The Ed-Fi related functionality that is the basis for the badge must employ
 Ed-Fi core data entities –  i.e. those in the [Ed-Fi Unifying Data
-Model](/reference/data-exchange/udm.md) – as part of its core value to users.
-The integration functionality can include extended elements, but the value to
-end uses must be clear and apparent if the extensions were not present.
+Model](/reference/data-exchange/data-standard/udm) – as part of its core value
+to users. The integration functionality can include extended elements, but the
+value to end uses must be clear and apparent if the extensions were not present.
 
 ## Changes to Badge Requirements
 
