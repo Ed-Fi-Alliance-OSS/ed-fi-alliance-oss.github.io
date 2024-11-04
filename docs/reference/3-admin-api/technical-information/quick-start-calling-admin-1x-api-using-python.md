@@ -6,29 +6,29 @@ This is a quick start guide for calling Admin API using Python scripting, it wil
 
 ## Table of Contents
 
-*   [Configure Environment with Python and Admin API 1.1](#configure-environment-with-python-and-admin-api-11)
-    *   [Information](#information)
-    *   [Authenticate to Admin API](#authenticate-to-admin-api)
-    *   [Register a new client](#register-a-new-client)
-    *   [Token](#token)
-*   [Vendors](#vendors)
-    *   [Retrieve a Listing of Vendors](#retrieve-a-listing-of-vendors)
-    *   [Create a Vendor](#create-a-vendor)
-    *   [Get a vendor](#get-a-vendor)
-    *   [Update a vendor](#update-a-vendor)
-    *   [Delete a vendor](#delete-a-vendor)
-*   [Claim sets](#claim-sets)
-    *   [List all Claims](#list-all-claims)
-    *   [Create a Claim](#create-a-claim)
-    *   [Retrieve a claim set](#retrieve-a-claim-set)
-    *   [Update a claim set](#update-a-claim-set)
-    *   [Delete a claim set](#delete-a-claim-set)
-*   [Applications](#applications)
-    *   [Create an Application and Set of Credentials](#create-an-application-and-set-of-credentials)
-    *   [Retrieve application data](#retrieve-application-data)
-    *   [Update an application](#update-an-application)
-    *   [Delete an application](#delete-an-application)
-    *   [Refresh application credentials](#refresh-application-credentials)
+* [Configure Environment with Python and Admin API 1.1](#configure-environment-with-python-and-admin-api-11)
+  * [Information](#information)
+  * [Authenticate to Admin API](#authenticate-to-admin-api)
+  * [Register a new client](#register-a-new-client)
+  * [Token](#token)
+* [Vendors](#vendors)
+  * [Retrieve a Listing of Vendors](#retrieve-a-listing-of-vendors)
+  * [Create a Vendor](#create-a-vendor)
+  * [Get a vendor](#get-a-vendor)
+  * [Update a vendor](#update-a-vendor)
+  * [Delete a vendor](#delete-a-vendor)
+* [Claim sets](#claim-sets)
+  * [List all Claims](#list-all-claims)
+  * [Create a Claim](#create-a-claim)
+  * [Retrieve a claim set](#retrieve-a-claim-set)
+  * [Update a claim set](#update-a-claim-set)
+  * [Delete a claim set](#delete-a-claim-set)
+* [Applications](#applications)
+  * [Create an Application and Set of Credentials](#create-an-application-and-set-of-credentials)
+  * [Retrieve application data](#retrieve-application-data)
+  * [Update an application](#update-an-application)
+  * [Delete an application](#delete-an-application)
+  * [Refresh application credentials](#refresh-application-credentials)
 
 ## Configure Environment with Python and Admin API 1.1
 
@@ -97,7 +97,7 @@ In order to do so, we can add the functionality to our script by adding the foll
 
 **POST /connect/register**
 
-```
+```python
 def register(
     base_url: str,
     client_payload: str,
@@ -124,9 +124,9 @@ def register(
     url = f"{base_url}{endpoint}"
 
     r = requests.post(
-        url, 
+        url,
         data={
-            "ClientId": client_payload["client_id"], 
+            "ClientId": client_payload["client_id"],
             "ClientSecret": client_payload["client_secret"],
             "DisplayName": client_payload["display_name"],
             },
@@ -140,7 +140,7 @@ And we can construct our payload as the following example.
 
 **Sample input**
 
-```
+```python
 new_client = {
         'client_id': <your_client_id>,
         'client_secret': <your_secret>,
@@ -152,41 +152,37 @@ The successful output will be JSON formatted.
 
 **Sample output**
 
-```
+```json
 {
   "title": "Registered client 1 successfully.",
   "status": 200
 }
-
-
 ```
 
 ### Token
 
-Once we register our client according to the parameters specified in the document [Securing Admin API](../technical-information/securing-admin-api.md).
+Once we register our client according to the parameters specified in the document [Securing Admin API](securing-admin-api.md).
 
 We can obtain the token we will use for each API query. Just pass the same ClientID and ClientSecret we use to register it, with two new variables.
 
 **Sample input**
 
-```
+```python
 client_id = <your_client_id>
 client_secret = <your_secret>
 grant_type = "client_credentials"
 scope = "edfi_admin_api/full_access"
 ```
 
-  
-
 **POST /connect/token**
 
-```
+```python
 def token(
     base_url: str,
-    client_id: str, 
+    client_id: str,
     client_secret: str,
-    grant_type: str, 
-    scope: str, 
+    grant_type: str,
+    scope: str,
 ) -> dict:
     '''
         Retrieves a bearer token
@@ -208,9 +204,9 @@ def token(
     url = f"{base_url}{endpoint}"
 
     r = requests.post(
-        url, 
+        url,
         data={
-            "client_id": client_id, 
+            "client_id": client_id,
             "client_secret": client_secret,
             "grant_type": grant_type,
             "scope": scope,
@@ -225,14 +221,12 @@ The outcome will be JSON formatted.
 
 **Sample output**
 
-```
+```json
 {
   "access_token": <your_token>,
   "token_type": "Bearer",
   "expires_in": 3599
 }
-
-
 ```
 
 Then you can use the token as an authentication method, with the header Authorization as the example below.
@@ -245,7 +239,7 @@ See the [Endpoints - Admin API](https://edfi.atlassian.net/wiki/display/ADMINAPI
 
 **GET /v1/vendors**
 
-```
+```python
 def get_vendors(
     base_url: str,
     access_token: str,
@@ -259,11 +253,11 @@ def get_vendors(
             URL where API is hosted
         access_token: str
             String with the authorization token bearer
-        
+
         Returns
         -------
         r: List[Dict[str, str]]
-            Returns a list of dictionaries from the request 
+            Returns a list of dictionaries from the request
             converted from JSON format.
             [
                 {
@@ -279,7 +273,7 @@ def get_vendors(
     url = f"{base_url}{endpoint}"
     headers = {
         'Authorization': f'Bearer {access_token}',
-        'Content-type': 'application/json', 
+        'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
 
@@ -296,7 +290,7 @@ We will get a list of the vendors, JSON formatted, as in the example below.
 
 **Sample output**
 
-```
+```json
 {
   "result": [
     {
@@ -320,7 +314,7 @@ To create a new vendor, we will use the POST verb. Although in this example, it 
 
 **Sample output**
 
-```
+```json
 vendor_payload = {
         "company": "ACME Education",
         "namespacePrefixes": "ACME",
@@ -333,7 +327,7 @@ Which we will pass as a parameter to a function as shown below, or with the meth
 
 **POST /v1/vendors**
 
-```
+```python
 def create_vendor(
     base_url: str,
     access_token: str,
@@ -360,7 +354,7 @@ def create_vendor(
     url = f"{base_url}{endpoint}"
     headers = {
         'Authorization': f'Bearer {access_token}',
-        'Content-type': 'application/json', 
+        'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
 
@@ -378,7 +372,7 @@ As a result, we will obtain in JSON format, a dictionary verifying that our info
 
 **Sample output**
 
-```
+```json
 {
   "result": {
     "vendorId": 2,
@@ -394,13 +388,13 @@ As a result, we will obtain in JSON format, a dictionary verifying that our info
 
 ```
 
-### Get a vendor 
+### Get a vendor
 
 In the case that you want to retrieve information from one of the vendors, you will need to use the resource ID.
 
-**GET /v1/vendors/{id}**
+**GET /v1/vendors/`{id}`**
 
-```
+```python
 def get_vendor(
     base_url: str,
     access_token: str,
@@ -419,10 +413,10 @@ def get_vendor(
             Resource identifier
     '''
     endpoint = "/v1/vendors"
-    url = f"{base_url}{endpoint}/{id}"
+    url = f"{base_url}{endpoint}/`{id}`"
     headers = {
         'Authorization': f'Bearer {access_token}',
-        'Content-type': 'application/json', 
+        'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
 
@@ -439,7 +433,7 @@ In case of success we will obtain an output as follow:
 
 **Sample output**
 
-```
+```json
 {
   "result": {
     "vendorId": 9,
@@ -459,7 +453,7 @@ For this example, we update the previously created vendor with the following inf
 
 **Sample input**
 
-```
+```json
 vendor_payload = {
         "company": "ACME Education",
         "namespacePrefixes": "ACME",
@@ -470,9 +464,9 @@ vendor_payload = {
 
 We use as an example the code below.
 
-**PUT /v1/vendors/{id}**
+**PUT /v1/vendors/`{id}`**
 
-```
+```python
 def edit_vendor(
     base_url: str,
     access_token: str,
@@ -499,10 +493,10 @@ def edit_vendor(
             Resource identifier
     '''
     endpoint = "/v1/vendors"
-    url = f"{base_url}{endpoint}/{id}"
+    url = f"{base_url}{endpoint}/`{id}`"
     headers = {
         'Authorization': f'Bearer {access_token}',
-        'Content-type': 'application/json', 
+        'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
 
@@ -520,7 +514,7 @@ The successful out will look like the following.
 
 **Sample output**
 
-```
+```json
 {
   "result": {
     "vendorId": 9,
@@ -540,9 +534,9 @@ The successful out will look like the following.
 
 To delete a vendor you can use the next point, as the example provided below.
 
-**/v1/vendors/{id}**
+**/v1/vendors/`{id}`**
 
-```
+```python
 def delete_vendor(
     base_url: str,
     access_token: str,
@@ -561,10 +555,10 @@ def delete_vendor(
             Resource identifier
     '''
     endpoint = "/v1/vendors"
-    url = f"{base_url}{endpoint}/{id}"
+    url = f"{base_url}{endpoint}/`{id}`"
     headers = {
         'Authorization': f'Bearer {access_token}',
-        'Content-type': 'application/json', 
+        'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
 
@@ -596,7 +590,7 @@ To retrieve all the claims we will use the GET verb as follows:
 
 **GET /v1/claimsets**
 
-```
+```python
 def get_claimsets(
     base_url: str,
     access_token: str,
@@ -610,11 +604,11 @@ def get_claimsets(
             URL where API is hosted
         access_token: str
             String with the authorization token bearer
-        
+
         Returns
         -------
         r: List[Dict[str, str]]
-            Returns a list of dictionaries from the request 
+            Returns a list of dictionaries from the request
             converted from JSON format.
             [
                 {
@@ -629,7 +623,7 @@ def get_claimsets(
     url = f"{base_url}{endpoint}"
     headers = {
         'Authorization': f'Bearer {access_token}',
-        'Content-type': 'application/json', 
+        'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
 
@@ -646,7 +640,7 @@ The result will be a list of claim sets as the ones shown below:
 
 **Sample output**
 
-```
+```json
 {
   "result": [
     {
@@ -770,7 +764,7 @@ claimset_payload = {
                 None
                 ],
                 "children": []
-            }      
+            }
             ]
         }
 ```
@@ -779,7 +773,7 @@ Which we will pass as a parameter in a function like the following:
 
 **POST /v1/claimsets**
 
-```
+```python
 def create_claimset(
     base_url: str,
     access_token: str,
@@ -827,7 +821,7 @@ def create_claimset(
     url = f"{base_url}{endpoint}"
     headers = {
         'Authorization': f'Bearer {access_token}',
-        'Content-type': 'application/json', 
+        'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
 
@@ -845,7 +839,7 @@ The output will give the updated information, in JSON format.
 
 **Sample output**
 
-```
+```json
 {
   "result": {
     "resourceClaims": [
@@ -985,9 +979,9 @@ The output will give the updated information, in JSON format.
 
 To retrieve the claim information, we will use the Claims ID, the example would be as follows.
 
-**GET /v1/claimsets/{id}**
+**GET /v1/claimsets/`{id}`**
 
-```
+```python
 def get_claimset(
     base_url: str,
     access_token: str,
@@ -1006,10 +1000,10 @@ def get_claimset(
             Resource identifier
     '''
     endpoint = "/v1/claimsets"
-    url = f"{base_url}{endpoint}/{id}"
+    url = f"{base_url}{endpoint}/`{id}`"
     headers = {
         'Authorization': f'Bearer {access_token}',
-        'Content-type': 'application/json', 
+        'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
 
@@ -1028,7 +1022,7 @@ In case you want to update some info from the previous claim set. For this examp
 
 **Sample input**
 
-```
+```json
 claimset_payload = {
         "name": "Updated-ClaimSet",
         "resourceClaims": [
@@ -1128,14 +1122,14 @@ claimset_payload = {
                 None
                 ],
                 "children": []
-            }      
+            }
             ]
         }
 ```
 
 And the code to update goes as follows.
 
-**PUT /v1/claimsets/{id}**
+**PUT /v1/claimsets/`{id}`**
 
 ```
 def edit_claimset(
@@ -1183,10 +1177,10 @@ def edit_claimset(
                 }
     '''
     endpoint = "/v1/claimsets"
-    url = f"{base_url}{endpoint}/{id}"
+    url = f"{base_url}{endpoint}/`{id}`"
     headers = {
         'Authorization': f'Bearer {access_token}',
-        'Content-type': 'application/json', 
+        'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
 
@@ -1347,7 +1341,7 @@ The given output will look like the following output.
 
 To delete a claim set you can use the example below.
 
-**DELETE /v1/claimset/{id}**
+**DELETE /v1/claimset/`{id}`**
 
 ```
 def delete_claimset(
@@ -1368,10 +1362,10 @@ def delete_claimset(
             Resource identifier
     '''
     endpoint = "/v1/claimsets"
-    url = f"{base_url}{endpoint}/{id}"
+    url = f"{base_url}{endpoint}/`{id}`"
     headers = {
         'Authorization': f'Bearer {access_token}',
-        'Content-type': 'application/json', 
+        'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
 
@@ -1448,7 +1442,7 @@ def create_application(
     url = f"{base_url}{endpoint}"
     headers = {
         'Authorization': f'Bearer {access_token}',
-        'Content-type': 'application/json', 
+        'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
     r = requests.post(
@@ -1481,7 +1475,7 @@ The result of the code above it will give you an output as follows.
 
 Where you can obtain the key and secret from the response, and save the application ID. If you need to verify that your app was created, you can use the code as follows with the App ID.
 
-**GET /v1/applications/{id}**
+**GET /v1/applications/`{id}`**
 
 ```
 def get_application(
@@ -1502,10 +1496,10 @@ def get_application(
             Resource identifier
     '''
     endpoint = "/v1/applications"
-    url = f"{base_url}{endpoint}/{id}"
+    url = f"{base_url}{endpoint}/`{id}`"
     headers = {
         'Authorization': f'Bearer {access_token}',
-        'Content-type': 'application/json', 
+        'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
 
@@ -1543,7 +1537,7 @@ The confirmation outcome will be like the following:
 
 You can use the following code to update the information in the application.
 
-**PUT /v1/applications/{id}**
+**PUT /v1/applications/`{id}`**
 
 ```
 def edit_application(
@@ -1575,10 +1569,10 @@ def edit_application(
             Resource ID
     '''
     endpoint = "/v1/applications"
-    url = f"{base_url}{endpoint}/{id}"
+    url = f"{base_url}{endpoint}/`{id}`"
     headers = {
         'Authorization': f'Bearer {access_token}',
-        'Content-type': 'application/json', 
+        'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
     r = requests.put(
@@ -1614,7 +1608,7 @@ The confirmation result will be similar to the sample output.
 
 To delete an application the example will be the following.
 
-**DELETE /v1/applications/{id}**
+**DELETE /v1/applications/`{id}`**
 
 ```
 def delete_application(
@@ -1635,10 +1629,10 @@ def delete_application(
             Resource identifier
     '''
     endpoint = "/v1/applications"
-    url = f"{base_url}{endpoint}/{id}"
+    url = f"{base_url}{endpoint}/`{id}`"
     headers = {
         'Authorization': f'Bearer {access_token}',
-        'Content-type': 'application/json', 
+        'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
 
@@ -1668,7 +1662,7 @@ The output will be as follow:
 
 In case you want to refresh your credentials or get a new ones you can use the next endpoint.
 
-**PUT /v1/applications/{id}/reset-credential**
+**PUT /v1/applications/`{id}`/reset-credential**
 
 ```
 def reset_application_credentials(
@@ -1689,10 +1683,10 @@ def reset_application_credentials(
             Resource identifier
     '''
     endpoint = "/v1/applications"
-    url = f"{base_url}{endpoint}/{id}/reset-credential"
+    url = f"{base_url}{endpoint}/`{id}`/reset-credential"
     headers = {
         'Authorization': f'Bearer {access_token}',
-        'Content-type': 'application/json', 
+        'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
 

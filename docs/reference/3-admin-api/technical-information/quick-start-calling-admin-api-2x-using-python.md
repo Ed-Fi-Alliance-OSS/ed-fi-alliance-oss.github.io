@@ -1,62 +1,62 @@
 # Quick Start Calling Admin API 2.x using Python
 
-## Overview 
+## Overview
 
 This is a quick start guide for calling Admin API using Python scripting, it will cover the basic operations of the Admin API:  
 
 ## Table of Contents
 
-*   [Configure Environment with Python and Admin API 2.2](#configure-environment-with-python-and-admin-api-22)
-    *   [Information](#information)
-    *   [Authenticate to Admin API](#authenticate-to-admin-api)
-    *   [Register a new client](#register-a-new-client)
-    *   [Token](#token)
-*   [Vendors](#vendors)
-    *   [Retrieve a Listing of Vendors](#retrieve-a-listing-of-vendors)
-    *   [Create a Vendor](#create-a-vendor)
-    *   [Get a vendor](#get-a-vendor)
-    *   [Update a vendor](#update-a-vendor)
-    *   [Delete a vendor](#delete-a-vendor)
-*   [Claim sets](#claim-sets)
-    *   [List all Claims](#list-all-claims)
-    *   [Create a Claim](#create-a-claim)
-    *   [Retrieve a claim set](#retrieve-a-claim-set)
-    *   [Update a claim set](#update-a-claim-set)
-    *   [Delete a claim set](#delete-a-claim-set)
-    *   [Import a Claim set](#import-a-claim-set)
-    *   [Export a Claim set](#export-a-claim-set)
-*   [ODS Instances](#ods-instances)
-    *   [Retrieve a Listing of ODS instances](#retrieve-a-listing-of-ods-instances)
-    *   [Create an ODS Instances](#create-an-ods-instances)
-    *   [Get an ODS Instance](#get-an-ods-instance)
-    *   [Get ODS Instance Applications](#get-ods-instance-applications)
-    *   [Update an ODS Instance](#update-an-ods-instance)
-    *   [Delete an ODS Instance](#delete-an-ods-instance)
-*   [ODS Instance Derivatives](#ods-instance-derivatives)
-    *   [Retrieve a Listing of ODS instance derivatives](#retrieve-a-listing-of-ods-instance-derivatives)
-    *   [Create an ODS Instance derivatives](#create-an-ods-instance-derivatives)
-    *   [Get an ODS Instance derivative](#get-an-ods-instance-derivative)
-    *   [Update an ODS Instance derivative](#update-an-ods-instance-derivative)
-    *   [Delete an ODS Instance derivative](#delete-an-ods-instance-derivative)
-*   [ODS Instance Contexts](#ods-instance-contexts)
-    *   [Retrieve a Listing of ODS instance contexts](#retrieve-a-listing-of-ods-instance-contexts)
-    *   [Create an ODS Instance Context](#create-an-ods-instance-context)
-    *   [Get an ODS Instance Context](#get-an-ods-instance-context)
-    *   [Update an ODS Instance Context](#update-an-ods-instance-context)
-    *   [Delete an ODS Instance Context](#delete-an-ods-instance-context)
-*   [Applications](#applications)
-    *   [Create an Application and Set of Credentials](#create-an-application-and-set-of-credentials)
-    *   [Retrieve application data](#retrieve-application-data)
-    *   [Update an application](#update-an-application)
-    *   [Delete an application](#delete-an-application)
-    *   [Refresh application credentials](#refresh-application-credentials)
-    *   [Create multiple applications using a CSV file](#create-multiple-applications-using-a-csv-file)
-*   [Profiles](#profiles)
-    *   [Retrieve a Listing of Profiles](#retrieve-a-listing-of-profiles)
-    *   [Create a profile](#create-a-profile)
-    *   [Get Profile](#get-profile)
-    *   [Update a Profile](#update-a-profile)
-    *   [Delete a Profile](#delete-a-profile)
+* [Configure Environment with Python and Admin API 2.2](#configure-environment-with-python-and-admin-api-22)
+  * [Information](#information)
+  * [Authenticate to Admin API](#authenticate-to-admin-api)
+  * [Register a new client](#register-a-new-client)
+  * [Token](#token)
+* [Vendors](#vendors)
+  * [Retrieve a Listing of Vendors](#retrieve-a-listing-of-vendors)
+  * [Create a Vendor](#create-a-vendor)
+  * [Get a vendor](#get-a-vendor)
+  * [Update a vendor](#update-a-vendor)
+  * [Delete a vendor](#delete-a-vendor)
+* [Claim sets](#claim-sets)
+  * [List all Claims](#list-all-claims)
+  * [Create a Claim](#create-a-claim)
+  * [Retrieve a claim set](#retrieve-a-claim-set)
+  * [Update a claim set](#update-a-claim-set)
+  * [Delete a claim set](#delete-a-claim-set)
+  * [Import a Claim set](#import-a-claim-set)
+  * [Export a Claim set](#export-a-claim-set)
+* [ODS Instances](#ods-instances)
+  * [Retrieve a Listing of ODS instances](#retrieve-a-listing-of-ods-instances)
+  * [Create an ODS Instances](#create-an-ods-instances)
+  * [Get an ODS Instance](#get-an-ods-instance)
+  * [Get ODS Instance Applications](#get-ods-instance-applications)
+  * [Update an ODS Instance](#update-an-ods-instance)
+  * [Delete an ODS Instance](#delete-an-ods-instance)
+* [ODS Instance Derivatives](#ods-instance-derivatives)
+  * [Retrieve a Listing of ODS instance derivatives](#retrieve-a-listing-of-ods-instance-derivatives)
+  * [Create an ODS Instance derivatives](#create-an-ods-instance-derivatives)
+  * [Get an ODS Instance derivative](#get-an-ods-instance-derivative)
+  * [Update an ODS Instance derivative](#update-an-ods-instance-derivative)
+  * [Delete an ODS Instance derivative](#delete-an-ods-instance-derivative)
+* [ODS Instance Contexts](#ods-instance-contexts)
+  * [Retrieve a Listing of ODS instance contexts](#retrieve-a-listing-of-ods-instance-contexts)
+  * [Create an ODS Instance Context](#create-an-ods-instance-context)
+  * [Get an ODS Instance Context](#get-an-ods-instance-context)
+  * [Update an ODS Instance Context](#update-an-ods-instance-context)
+  * [Delete an ODS Instance Context](#delete-an-ods-instance-context)
+* [Applications](#applications)
+  * [Create an Application and Set of Credentials](#create-an-application-and-set-of-credentials)
+  * [Retrieve application data](#retrieve-application-data)
+  * [Update an application](#update-an-application)
+  * [Delete an application](#delete-an-application)
+  * [Refresh application credentials](#refresh-application-credentials)
+  * [Create multiple applications using a CSV file](#create-multiple-applications-using-a-csv-file)
+* [Profiles](#profiles)
+  * [Retrieve a Listing of Profiles](#retrieve-a-listing-of-profiles)
+  * [Create a profile](#create-a-profile)
+  * [Get Profile](#get-profile)
+  * [Update a Profile](#update-a-profile)
+  * [Delete a Profile](#delete-a-profile)
 
 ## Configure Environment with Python and Admin API 2.2
 
@@ -152,9 +152,9 @@ def register(
     url = f"{base_url}{endpoint}"
 
     r = requests.post(
-        url, 
+        url,
         data={
-            "ClientId": client_payload["client_id"], 
+            "ClientId": client_payload["client_id"],
             "ClientSecret": client_payload["client_secret"],
             "DisplayName": client_payload["display_name"],
             },
@@ -204,17 +204,15 @@ grant_type = "client_credentials"
 scope = "edfi_admin_api/full_access"
 ```
 
-  
-
 **POST /connect/token**
 
 ```
 def token(
     base_url: str,
-    client_id: str, 
+    client_id: str,
     client_secret: str,
-    grant_type: str, 
-    scope: str, 
+    grant_type: str,
+    scope: str,
 ) -> dict:
     '''
         Retrieves a bearer token
@@ -236,9 +234,9 @@ def token(
     url = f"{base_url}{endpoint}"
 
     r = requests.post(
-        url, 
+        url,
         data={
-            "client_id": client_id, 
+            "client_id": client_id,
             "client_secret": client_secret,
             "grant_type": grant_type,
             "scope": scope,
@@ -287,11 +285,11 @@ def get_vendors(
             URL where API is hosted
         access_token: str
             String with the authorization token bearer
-        
+
         Returns
         -------
         r: List[Dict[str, str]]
-            Returns a list of dictionaries from the request 
+            Returns a list of dictionaries from the request
             converted from JSON format.
             [
                 {
@@ -307,7 +305,7 @@ def get_vendors(
     url = f"{base_url}{endpoint}"
     headers = {
         'Authorization': f'Bearer {access_token}',
-        'Content-type': 'application/json', 
+        'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
 
@@ -384,7 +382,7 @@ def create_vendor(
     url = f"{base_url}{endpoint}"
     headers = {
         'Authorization': f'Bearer {access_token}',
-        'Content-type': 'application/json', 
+        'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
 
@@ -400,11 +398,11 @@ def create_vendor(
 
 As a result, we will obtain a 201 Status Code
 
-### Get a vendor 
+### Get a vendor
 
 In the case that you want to retrieve information from one of the vendors, you will need to use the resource ID.
 
-**GET /v2/vendors/{id}**
+**GET /v2/vendors/`{id}`**
 
 ```
 def get_vendor(
@@ -425,10 +423,10 @@ def get_vendor(
             Resource identifier
     '''
     endpoint = "/v2/vendors"
-    url = f"{base_url}{endpoint}/{id}"
+    url = f"{base_url}{endpoint}/`{id}`"
     headers = {
         'Authorization': f'Bearer {access_token}',
-        'Content-type': 'application/json', 
+        'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
 
@@ -472,7 +470,7 @@ vendor_payload = {
 
 We use as an example the code below.
 
-**PUT /v2/vendors/{id}**
+**PUT /v2/vendors/`{id}`**
 
 ```
 def edit_vendor(
@@ -501,10 +499,10 @@ def edit_vendor(
             Resource identifier
     '''
     endpoint = "/v2/vendors"
-    url = f"{base_url}{endpoint}/{id}"
+    url = f"{base_url}{endpoint}/`{id}`"
     headers = {
         'Authorization': f'Bearer {access_token}',
-        'Content-type': 'application/json', 
+        'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
 
@@ -524,7 +522,7 @@ As a result, we will obtain a 200 Status Code
 
 To delete a vendor you can use the next point, as the example provided below.
 
-**/v2/vendors/{id}**
+**/v2/vendors/`{id}`**
 
 ```
 def delete_vendor(
@@ -545,10 +543,10 @@ def delete_vendor(
             Resource identifier
     '''
     endpoint = "/v2/vendors"
-    url = f"{base_url}{endpoint}/{id}"
+    url = f"{base_url}{endpoint}/`{id}`"
     headers = {
         'Authorization': f'Bearer {access_token}',
-        'Content-type': 'application/json', 
+        'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
 
@@ -593,30 +591,30 @@ def get_claimsets(
             URL where API is hosted
         access_token: str
             String with the authorization token bearer
-        
+
         Returns
         -------
         r: List[Dict[str, str]]
-            Returns a list of dictionaries from the request 
+            Returns a list of dictionaries from the request
             converted from JSON format.
             [
                 {
-				    "id": 0,
-				    "name": "string",
-				    "_isSystemReserved": false,
-				    "_applications": [
-     				 	{
-				        	"applicationName": "string"
-					    }
-				    ]
-				}
+        "id": 0,
+        "name": "string",
+        "_isSystemReserved": false,
+        "_applications": [
+           {
+             "applicationName": "string"
+         }
+        ]
+    }
             ]
     '''
     endpoint = "/v2/claimsets?offset=0&limit=25"
     url = f"{base_url}{endpoint}"
     headers = {
         'Authorization': f'Bearer {access_token}',
-        'Content-type': 'application/json', 
+        'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
 
@@ -655,7 +653,7 @@ For the creation of a claim, we will use the POST verb again, and we will pass a
 ```
 claimset_payload = {
         "name": "Acme Learning User"
-	}
+ }
 ```
 
 Which we will pass as a parameter in a function like the following:
@@ -686,7 +684,7 @@ def create_claimset(
     url = f"{base_url}{endpoint}"
     headers = {
         'Authorization': f'Bearer {access_token}',
-        'Content-type': 'application/json', 
+        'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
 
@@ -706,7 +704,7 @@ As a result, we will obtain a 201 Status Code
 
 To retrieve the claim information, we will use the Claims ID, the example would be as follows.
 
-**GET /v2/claimsets/{id}**
+**GET /v2/claimsets/`{id}`**
 
 ```
 def get_claimset(
@@ -727,10 +725,10 @@ def get_claimset(
             Resource identifier
     '''
     endpoint = "/v2/claimsets"
-    url = f"{base_url}{endpoint}/{id}"
+    url = f"{base_url}{endpoint}/`{id}`"
     headers = {
         'Authorization': f'Bearer {access_token}',
-        'Content-type': 'application/json', 
+        'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
 
@@ -750,7 +748,7 @@ In case of success we will obtain an output as follow:
 ```
 {
   "resourceClaims": [
-	{
+ {
       "id": 9,
       "name": "educationStandards",
       "actions": [
@@ -828,10 +826,10 @@ In case of success we will obtain an output as follow:
   "name": "Acme Learning User",
   "_isSystemReserved": false,
   "_applications": [
-		{
-			"applicationName": "Acme Learning"
-		}
-	]
+  {
+   "applicationName": "Acme Learning"
+  }
+ ]
 }
 ```
 
@@ -843,13 +841,13 @@ In case you want to update some info from the previous claim set. For this examp
 
 ```
 claimset_payload = {
-        	"name": "Updated-ClaimSet"
+         "name": "Updated-ClaimSet"
         }
 ```
 
 And the code to update goes as follows.
 
-**PUT /v2/claimsets/{id}**
+**PUT /v2/claimsets/`{id}`**
 
 ```
 def edit_claimset(
@@ -873,10 +871,10 @@ def edit_claimset(
             }
     '''
     endpoint = "/v2/claimsets"
-    url = f"{base_url}{endpoint}/{id}"
+    url = f"{base_url}{endpoint}/`{id}`"
     headers = {
         'Authorization': f'Bearer {access_token}',
-        'Content-type': 'application/json', 
+        'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
 
@@ -896,7 +894,7 @@ As a result, we will obtain a 200 Status Code
 
 To delete a claim set you can use the example below.
 
-**DELETE /v2/claimset/{id}**
+**DELETE /v2/claimset/`{id}`**
 
 ```
 def delete_claimset(
@@ -917,10 +915,10 @@ def delete_claimset(
             Resource identifier
     '''
     endpoint = "/v2/claimsets"
-    url = f"{base_url}{endpoint}/{id}"
+    url = f"{base_url}{endpoint}/`{id}`"
     headers = {
         'Authorization': f'Bearer {access_token}',
-        'Content-type': 'application/json', 
+        'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
 
@@ -972,7 +970,7 @@ claimset_import_payload = {
 
 And the code to import goes as follows.
 
-**POST /v2/claimset/{id}**
+**POST /v2/claimset/`{id}`**
 
 ```
 def import_claimset(
@@ -982,7 +980,7 @@ def import_claimset(
 ) -> dict:
     '''
         Imports a claimset based on supplied values
- 
+
         Parameters
         ----------
         base_url: str
@@ -1028,14 +1026,14 @@ def import_claimset(
         'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
- 
+
     r = requests.post(
         url=url,
         headers=headers,
         json=payload,
         verify=False,
         )
- 
+
     return r
 ```
 
@@ -1053,7 +1051,7 @@ def export_claimset(
 ) -> dict:
     '''
         Exports an existing claimset using the resource identifier
- 
+
         Parameters
         ----------
         base_url: str
@@ -1064,19 +1062,19 @@ def export_claimset(
             Resource identifier
     '''
     endpoint = "/v2/claimsets"
-    url = f"{base_url}{endpoint}/{id}/export"
+    url = f"{base_url}{endpoint}/`{id}`/export"
     headers = {
         'Authorization': f'Bearer {access_token}',
         'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
- 
+
     r = requests.get(
         url=url,
         headers=headers,
         verify=False,
         )
- 
+
     return r.json()
 ```
 
@@ -1087,7 +1085,7 @@ In case of success we will obtain an output as follow:
 ```
 {
   "resourceClaims": [
-	{
+ {
       "id": 9,
       "name": "educationStandards",
       "actions": [
@@ -1165,10 +1163,10 @@ In case of success we will obtain an output as follow:
   "name": "Acme Learning User",
   "_isSystemReserved": false,
   "_applications": [
-		{
-			"applicationName": "Acme Learning"
-		}
-	]
+  {
+   "applicationName": "Acme Learning"
+  }
+ ]
 }
 ```
 
@@ -1188,7 +1186,7 @@ def get_ods_instance(
 ) -> dict:
     '''
         Get an existing ods instance using the resource identifier
- 
+
         Parameters
         ----------
         base_url: str
@@ -1199,19 +1197,19 @@ def get_ods_instance(
             Resource identifier
     '''
     endpoint = "/v2/odsInstances"
-    url = f"{base_url}{endpoint}/{id}"
+    url = f"{base_url}{endpoint}/`{id}`"
     headers = {
         'Authorization': f'Bearer {access_token}',
         'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
- 
+
     r = requests.get(
         url=url,
         headers=headers,
         verify=False,
         )
- 
+
     return r.json()
 ```
 
@@ -1238,7 +1236,7 @@ To create a new ods instance, we will use the POST verb.
 
 ```
 odsinstance_payload = {
-	"name": "Ods Instance 1",
+ "name": "Ods Instance 1",
     "instanceType": "ODS",
     "connectionString": "valid connection string"
 }
@@ -1256,7 +1254,7 @@ def create_ods_instance(
 ) -> dict:
     '''
         Creates an ODS instance based on supplied values
- 
+
         Parameters
         ----------
         base_url: str
@@ -1264,9 +1262,9 @@ def create_ods_instance(
         access_token: str
             String with the authorization token bearer
         payload: dict
-             {                  
-                "name": "string",  
-                "instanceType": "string", 
+             {
+                "name": "string",
+                "instanceType": "string",
                 "connectionString": "string"
               }
     '''
@@ -1277,24 +1275,24 @@ def create_ods_instance(
         'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
- 
+
     r = requests.post(
         url=url,
         headers=headers,
         json=payload,
         verify=False,
         )
- 
+
     return r
 ```
 
 As a result, we will obtain a 201 Status Code
 
-### Get an ODS Instance 
+### Get an ODS Instance
 
 In the case that you want to retrieve information from one of the ods instances, you will need to use the resource ID.
 
-**GET /v2/odsInstances/{id}**
+**GET /v2/odsInstances/`{id}`**
 
 ```
 def get_ods_instance(
@@ -1304,7 +1302,7 @@ def get_ods_instance(
 ) -> dict:
     '''
         Get an existing ods instance using the resource identifier
- 
+
         Parameters
         ----------
         base_url: str
@@ -1315,19 +1313,19 @@ def get_ods_instance(
             Resource identifier
     '''
     endpoint = "/v2/odsInstances"
-    url = f"{base_url}{endpoint}/{id}"
+    url = f"{base_url}{endpoint}/`{id}`"
     headers = {
         'Authorization': f'Bearer {access_token}',
         'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
- 
+
     r = requests.get(
         url=url,
         headers=headers,
         verify=False,
         )
- 
+
     return r.json()
 ```
 
@@ -1338,10 +1336,10 @@ In case of success we will obtain an output as follow:
 ```
 {
   'odsInstanceContexts': [
-    
+
   ],
   'odsInstanceDerivatives': [
-    
+
   ],
   'id': 1,
   'name': 'Ods Instance 1',
@@ -1353,7 +1351,7 @@ In case of success we will obtain an output as follow:
 
 In the case that you want to retrieve information from one of the ODS instance applications, you will need to use the resource ID.
 
-**GET /v2/odsInstances/{id}**
+**GET /v2/odsInstances/`{id}`**
 
 ```
 def get_ods_instance_applications(
@@ -1363,7 +1361,7 @@ def get_ods_instance_applications(
 ) -> dict:
     '''
         Get an existing ods instance applications using the resource identifier
- 
+
         Parameters
         ----------
         base_url: str
@@ -1374,19 +1372,19 @@ def get_ods_instance_applications(
             Resource identifier
     '''
     endpoint = "/v2/odsInstances"
-    url = f"{base_url}{endpoint}/{id}/applications"
+    url = f"{base_url}{endpoint}/`{id}`/applications"
     headers = {
         'Authorization': f'Bearer {access_token}',
         'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
- 
+
     r = requests.get(
         url=url,
         headers=headers,
         verify=False,
         )
- 
+
     return r.json()
 ```
 
@@ -1405,7 +1403,7 @@ In case of success we will obtain an output as follow:
     ],
     'vendorId': 1,
     'profileIds': [
-      
+
     ],
     'odsInstanceIds': [
       1
@@ -1418,7 +1416,7 @@ In case of success we will obtain an output as follow:
 
 You can use the following code to update the information in the ODS instance.
 
-**PUT /v2/odsInstances/{id}**
+**PUT /v2/odsInstances/`{id}`**
 
 ```
 def edit_ods_instance(
@@ -1437,19 +1435,19 @@ def edit_ods_instance(
         access_token: str
             String with the authorization token bearer
         payload: dict
-            {                  
-                "name": "string",  
-                "instanceType": "string", 
+            {
+                "name": "string",
+                "instanceType": "string",
                 "connectionString": "string"
               }
         id: int
             Resource ID
     '''
     endpoint = "/v2/odsInstances"
-    url = f"{base_url}{endpoint}/{id}"
+    url = f"{base_url}{endpoint}/`{id}`"
     headers = {
         'Authorization': f'Bearer {access_token}',
-        'Content-type': 'application/json', 
+        'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
     r = requests.put(
@@ -1468,7 +1466,7 @@ As a result, we will obtain a 200 Status Code
 
 To delete a ods instance you can use the next point, as the example provided below.
 
-**/v2/odsInstances/{id}**
+**/v2/odsInstances/`{id}`**
 
 ```
 def delete_ods_instance(
@@ -1478,7 +1476,7 @@ def delete_ods_instance(
 ) -> dict:
     '''
         Deletes an existing ods instance using the resource identifier
- 
+
         Parameters
         ----------
         base_url: str
@@ -1489,19 +1487,19 @@ def delete_ods_instance(
             Resource identifier
     '''
     endpoint = "/v2/odsInstances"
-    url = f"{base_url}{endpoint}/{id}"
+    url = f"{base_url}{endpoint}/`{id}`"
     headers = {
         'Authorization': f'Bearer {access_token}',
         'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
- 
+
     r = requests.delete(
         url=url,
         headers=headers,
         verify=False,
         )
- 
+
     return r.json()
 ```
 
@@ -1530,14 +1528,14 @@ def get_ods_instance_derivatives(
 ) -> dict:
     '''
         Retrieves ods instance derivatives
- 
+
         Parameters
         ----------
         base_url: str
             URL where API is hosted
         access_token: str
             String with the authorization token bearer
-         
+
         Returns
         -------
         r: List[Dict[str, str]]
@@ -1560,13 +1558,13 @@ def get_ods_instance_derivatives(
         'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
- 
+
     r = requests.get(
         url=url,
         headers=headers,
         verify=False,
         )
- 
+
     return r.json()
 ```
 
@@ -1593,7 +1591,7 @@ To create a new ods instance, we will use the POST verb.
 
 ```
 odsinstancederivative_payload = {
-	"odsInstanceId": 1,
+ "odsInstanceId": 1,
     "derivativeType": "ReadReplica",
     "connectionString": "Server=localhost;Database=EdFi_Ods;Integrated Security=True;"
 }
@@ -1611,7 +1609,7 @@ def create_ods_instance_derivative(
 ) -> dict:
     '''
         Creates an ODS instance derivative based on supplied values
- 
+
         Parameters
         ----------
         base_url: str
@@ -1632,14 +1630,14 @@ def create_ods_instance_derivative(
         'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
- 
+
     r = requests.post(
         url=url,
         headers=headers,
         json=payload,
         verify=False,
         )
- 
+
     return r
 ```
 
@@ -1649,7 +1647,7 @@ As a result, we will obtain a 201 Status Code
 
 In the case that you want to retrieve information from one of the ods instances, you will need to use the resource ID.
 
-**GET /v2/odsInstanceDerivatives/{id}**
+**GET /v2/odsInstanceDerivatives/`{id}`**
 
 ```
 def get_ods_instance_derivative(
@@ -1659,7 +1657,7 @@ def get_ods_instance_derivative(
 ) -> dict:
     '''
         Get an existing ods instance derivative using the resource identifier
- 
+
         Parameters
         ----------
         base_url: str
@@ -1670,19 +1668,19 @@ def get_ods_instance_derivative(
             Resource identifier
     '''
     endpoint = "/v2/odsInstanceDerivatives"
-    url = f"{base_url}{endpoint}/{id}"
+    url = f"{base_url}{endpoint}/`{id}`"
     headers = {
         'Authorization': f'Bearer {access_token}',
         'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
- 
+
     r = requests.get(
         url=url,
         headers=headers,
         verify=False,
         )
- 
+
     return r.json()
 ```
 
@@ -1702,7 +1700,7 @@ In case of success we will obtain an output as follow:
 
 You can use the following code to update the information in the ODS instance derivative.
 
-**PUT /v2/odsInstanceDerivatives/{id}**
+**PUT /v2/odsInstanceDerivatives/`{id}`**
 
 ```
 def edit_ods_instance_derivative(
@@ -1730,10 +1728,10 @@ def edit_ods_instance_derivative(
             Resource ID
     '''
     endpoint = "/v2/odsInstanceDerivatives"
-    url = f"{base_url}{endpoint}/{id}"
+    url = f"{base_url}{endpoint}/`{id}`"
     headers = {
         'Authorization': f'Bearer {access_token}',
-        'Content-type': 'application/json', 
+        'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
     r = requests.put(
@@ -1752,7 +1750,7 @@ As a result, we will obtain a 200 Status Code
 
 To delete a ods instance derivative you can use the next point, as the example provided below.
 
-**/v2/odsInstanceDerivatives/{id}**
+**/v2/odsInstanceDerivatives/`{id}`**
 
 ```
 def delete_ods_instance_derivative(
@@ -1762,7 +1760,7 @@ def delete_ods_instance_derivative(
 ) -> dict:
     '''
         Deletes an existing ods instance derivative using the resource identifier
- 
+
         Parameters
         ----------
         base_url: str
@@ -1773,19 +1771,19 @@ def delete_ods_instance_derivative(
             Resource identifier
     '''
     endpoint = "/v2/odsInstanceDerivatives"
-    url = f"{base_url}{endpoint}/{id}"
+    url = f"{base_url}{endpoint}/`{id}`"
     headers = {
         'Authorization': f'Bearer {access_token}',
         'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
- 
+
     r = requests.delete(
         url=url,
         headers=headers,
         verify=False,
         )
- 
+
     return r
 ```
 
@@ -1795,7 +1793,7 @@ As a result, we will obtain a 200 Status Code
 
 ### Retrieve a Listing of ODS instance contexts
 
-See the [Endpoints - Admin API](https://edfi.atlassian.net/wiki/display/ADMINAPI/Endpoints+-+Admin+API#EndpointsAdminAPI-Vendors) page for a complete list of resources and parameters. For this example, we will get a list of providers. 
+See the [Endpoints - Admin API](https://edfi.atlassian.net/wiki/display/ADMINAPI/Endpoints+-+Admin+API#EndpointsAdminAPI-Vendors) page for a complete list of resources and parameters. For this example, we will get a list of providers.
 
 **GET /v2/odsInstanceContexts**
 
@@ -1806,14 +1804,14 @@ def get_ods_instance_contexts(
 ) -> dict:
     '''
         Retrieves ods instance contexts
- 
+
         Parameters
         ----------
         base_url: str
             URL where API is hosted
         access_token: str
             String with the authorization token bearer
-         
+
         Returns
         -------
         r: List[Dict[str, str]]
@@ -1835,13 +1833,13 @@ def get_ods_instance_contexts(
         'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
- 
+
     r = requests.get(
         url=url,
         headers=headers,
         verify=False,
         )
- 
+
     return r.json()
 ```
 
@@ -1868,9 +1866,9 @@ To create a new ods instance, we will use the POST verb.
 
 ```
 odsinstancecontext_payload = {
-	"odsInstanceId": 1,
-	"contextKey": "contextKeyText",
-	"contextValue": "2024"
+ "odsInstanceId": 1,
+ "contextKey": "contextKeyText",
+ "contextValue": "2024"
 }
 ```
 
@@ -1886,7 +1884,7 @@ def create_ods_instance_context(
 ) -> dict:
     '''
         Creates an ODS instance context based on supplied values
- 
+
         Parameters
         ----------
         base_url: str
@@ -1907,14 +1905,14 @@ def create_ods_instance_context(
         'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
- 
+
     r = requests.post(
         url=url,
         headers=headers,
         json=payload,
         verify=False,
         )
- 
+
     return r
 ```
 
@@ -1924,7 +1922,7 @@ As a result, we will obtain a 201 Status Code
 
 In the case that you want to retrieve information from one of the ods instance context, you will need to use the resource ID.
 
-**GET /v2/odsInstanceContexts/{id}**
+**GET /v2/odsInstanceContexts/`{id}`**
 
 ```
 def get_ods_instance_context(
@@ -1934,7 +1932,7 @@ def get_ods_instance_context(
 ) -> dict:
     '''
         Get an existing ods instance context using the resource identifier
- 
+
         Parameters
         ----------
         base_url: str
@@ -1945,19 +1943,19 @@ def get_ods_instance_context(
             Resource identifier
     '''
     endpoint = "/v2/odsInstanceContexts"
-    url = f"{base_url}{endpoint}/{id}"
+    url = f"{base_url}{endpoint}/`{id}`"
     headers = {
         'Authorization': f'Bearer {access_token}',
         'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
- 
+
     r = requests.get(
         url=url,
         headers=headers,
         verify=False,
         )
- 
+
     return r.json()
 ```
 
@@ -1978,7 +1976,7 @@ In case of success we will obtain an output as follow:
 
 You can use the following code to update the information in the ODS instance context.
 
-**PUT /v2/odsInstanceContexts/{id}**
+**PUT /v2/odsInstanceContexts/`{id}`**
 
 ```
 def edit_ods_instance_context(
@@ -2006,10 +2004,10 @@ def edit_ods_instance_context(
             Resource ID
     '''
     endpoint = "/v2/odsInstanceContexts"
-    url = f"{base_url}{endpoint}/{id}"
+    url = f"{base_url}{endpoint}/`{id}`"
     headers = {
         'Authorization': f'Bearer {access_token}',
-        'Content-type': 'application/json', 
+        'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
     r = requests.put(
@@ -2028,7 +2026,7 @@ As a result, we will obtain a 200 Status Code
 
 To delete a ods instance context you can use the next point, as the example provided below.
 
-**/v2/odsInstanceContexts/{id}**
+**/v2/odsInstanceContexts/`{id}`**
 
 ```
 def delete_ods_instance_context(
@@ -2038,7 +2036,7 @@ def delete_ods_instance_context(
 ) -> dict:
     '''
         Deletes an existing ods instance context using the resource identifier
- 
+
         Parameters
         ----------
         base_url: str
@@ -2049,19 +2047,19 @@ def delete_ods_instance_context(
             Resource identifier
     '''
     endpoint = "/v2/odsInstanceContexts"
-    url = f"{base_url}{endpoint}/{id}"
+    url = f"{base_url}{endpoint}/`{id}`"
     headers = {
         'Authorization': f'Bearer {access_token}',
         'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
- 
+
     r = requests.delete(
         url=url,
         headers=headers,
         verify=False,
         )
- 
+
     return r
 ```
 
@@ -2083,9 +2081,9 @@ application_payload = {
             "educationOrganizationIds": [
                 0
             ],
-  			"odsInstanceIds": [
-			    0
-			]
+     "odsInstanceIds": [
+       0
+   ]
         }
 ```
 
@@ -2123,7 +2121,7 @@ def create_application(
     url = f"{base_url}{endpoint}"
     headers = {
         'Authorization': f'Bearer {access_token}',
-        'Content-type': 'application/json', 
+        'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
     r = requests.post(
@@ -2152,7 +2150,7 @@ The result of the code above it will give you an output as follows.
 
 Where you can obtain the key and secret from the response, and save the application ID. If you need to verify that your app was created, you can use the code as follows with the App ID.
 
-**GET /v2/applications/{id}**
+**GET /v2/applications/`{id}`**
 
 ```
 def get_application(
@@ -2173,10 +2171,10 @@ def get_application(
             Resource identifier
     '''
     endpoint = "/v2/applications"
-    url = f"{base_url}{endpoint}/{id}"
+    url = f"{base_url}{endpoint}/`{id}`"
     headers = {
         'Authorization': f'Bearer {access_token}',
-        'Content-type': 'application/json', 
+        'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
 
@@ -2209,7 +2207,7 @@ The confirmation outcome will be like the following:
 
 You can use the following code to update the information in the application.
 
-**PUT /v2/applications/{id}**
+**PUT /v2/applications/`{id}`**
 
 ```
 def edit_application(
@@ -2241,10 +2239,10 @@ def edit_application(
             Resource ID
     '''
     endpoint = "/v2/applications"
-    url = f"{base_url}{endpoint}/{id}"
+    url = f"{base_url}{endpoint}/`{id}`"
     headers = {
         'Authorization': f'Bearer {access_token}',
-        'Content-type': 'application/json', 
+        'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
     r = requests.put(
@@ -2263,7 +2261,7 @@ As a result, we will obtain a 200 Status Code
 
 To delete an application the example will be the following.
 
-**DELETE /v2/applications/{id}**
+**DELETE /v2/applications/`{id}`**
 
 ```
 def delete_application(
@@ -2284,10 +2282,10 @@ def delete_application(
             Resource identifier
     '''
     endpoint = "/v2/applications"
-    url = f"{base_url}{endpoint}/{id}"
+    url = f"{base_url}{endpoint}/`{id}`"
     headers = {
         'Authorization': f'Bearer {access_token}',
-        'Content-type': 'application/json', 
+        'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
 
@@ -2316,7 +2314,7 @@ The output will be as follow:
 
 In case you want to refresh your credentials or get a new ones you can use the next endpoint.
 
-**PUT /v2/applications/{id}/reset-credential**
+**PUT /v2/applications/`{id}`/reset-credential**
 
 ```
 def reset_application_credentials(
@@ -2337,10 +2335,10 @@ def reset_application_credentials(
             Resource identifier
     '''
     endpoint = "/v2/applications"
-    url = f"{base_url}{endpoint}/{id}/reset-credential"
+    url = f"{base_url}{endpoint}/`{id}`/reset-credential"
     headers = {
         'Authorization': f'Bearer {access_token}',
-        'Content-type': 'application/json', 
+        'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
 
@@ -2373,22 +2371,19 @@ CSV file template → [apps.csv](https://edfi.atlassian.net/wiki/download/attac
 
 Columns description
 
-*   Name: (Required) The application name
-*   VendorId: (Required) Set the vendor id as numeric value. e.g. 2
-*   ClamsetName: (Required) The claimset to be used. e.g. SIS Vendor
-*   ProfileIds: (Optional) List with the profile ids. This cell is not required, but in case you need to set it the format should be a single id or multiple. In case of multiple values, use the dash to separate them, e.g. 10-20-30
-*   EdOrgIds: (Required) List with the eduction organization ids. This cell is required, the format should be a single id or multiple. In case of multiple values, use the dash to separate them, e.g. 10023-20020-304040
-*   OdsInstanceIds: (Required) List with the ods instance ids. This cell is required, the format should be a single id or multiple. In case of multiple values, use the dash to separate them, e.g. 10023-20020-304040
-
-  
+* Name: (Required) The application name
+* VendorId: (Required) Set the vendor id as numeric value. e.g. 2
+* ClamsetName: (Required) The claimset to be used. e.g. SIS Vendor
+* ProfileIds: (Optional) List with the profile ids. This cell is not required, but in case you need to set it the format should be a single id or multiple. In case of multiple values, use the dash to separate them, e.g. 10-20-30
+* EdOrgIds: (Required) List with the eduction organization ids. This cell is required, the format should be a single id or multiple. In case of multiple values, use the dash to separate them, e.g. 10023-20020-304040
+* OdsInstanceIds: (Required) List with the ods instance ids. This cell is required, the format should be a single id or multiple. In case of multiple values, use the dash to separate them, e.g. 10023-20020-304040
 
 > [!INFO]
-> *   The following code sample uses the ["create\_application"](https://edfi.atlassian.net/wiki/spaces/ADMINAPI/pages/21301321/Quick+Start+Calling+Admin+API+2.x+using+Python#QuickStartCallingAdminAPI2.xusingPython-create_app) script used to create an application, so don't forget to create it and import it before using this script.
-> *   This code uses the Pandas library, so you need to install it before. 
->     *   Use pip to install the library: "pip install pandas"
->     *   For more details: [Installation — pandas 2.2.2 documentation (pydata.org)](https://pandas.pydata.org/pandas-docs/stable/getting_started/install.html)
-
-  
+>
+> * The following code sample uses the ["create\_application"](https://edfi.atlassian.net/wiki/spaces/ADMINAPI/pages/21301321/Quick+Start+Calling+Admin+API+2.x+using+Python#QuickStartCallingAdminAPI2.xusingPython-create_app) script used to create an application, so don't forget to create it and import it before using this script.
+> * This code uses the Pandas library, so you need to install it before.
+>   * Use pip to install the library: "pip install pandas"
+>   * For more details: [Installation — pandas 2.2.2 documentation (pydata.org)](https://pandas.pydata.org/pandas-docs/stable/getting_started/install.html)
 
 **import\_applications.py**
 
@@ -2427,7 +2422,7 @@ def import_applications(
             profileIds = []
 
         edOrgIds = [int(i) for i in row[4].split('-')]
-        odsIds = [int(i) for i in row[5].split('-')] 
+        odsIds = [int(i) for i in row[5].split('-')]
 
         application_payload = {
                 "applicationName": row[0],
@@ -2447,7 +2442,7 @@ As a result, we will obtain multiple 201 Status Code
 
 ### Retrieve a Listing of Profiles
 
-See the [Endpoints - Admin API](https://edfi.atlassian.net/wiki/display/ADMINAPI/Endpoints+-+Admin+API#EndpointsAdminAPI-Vendors) page for a complete list of resources and parameters. For this example, we will get a list of providers. 
+See the [Endpoints - Admin API](https://edfi.atlassian.net/wiki/display/ADMINAPI/Endpoints+-+Admin+API#EndpointsAdminAPI-Vendors) page for a complete list of resources and parameters. For this example, we will get a list of providers.
 
 **GET /v2/profiles**
 
@@ -2458,14 +2453,14 @@ def get_profiles(
 ) -> dict:
     '''
         Retrieves profiles
- 
+
         Parameters
         ----------
         base_url: str
             URL where API is hosted
         access_token: str
             String with the authorization token bearer
-         
+
         Returns
         -------
         r: List[Dict[str, str]]
@@ -2485,13 +2480,13 @@ def get_profiles(
         'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
- 
+
     r = requests.get(
         url=url,
         headers=headers,
         verify=False,
         )
- 
+
     return r.json()
 ```
 
@@ -2533,7 +2528,7 @@ def create_profile(
 ) -> dict:
     '''
         Creates a profile based on supplied values
- 
+
         Parameters
         ----------
         base_url: str
@@ -2553,14 +2548,14 @@ def create_profile(
         'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
- 
+
     r = requests.post(
         url=url,
         headers=headers,
         json=payload,
         verify=False,
         )
- 
+
     return r
 ```
 
@@ -2570,7 +2565,7 @@ As a result, we will obtain a 201 Status Code
 
 In the case that you want to retrieve information from one of the profiles, you will need to use the resource ID.
 
-**GET /v2/profiles/{id}**
+**GET /v2/profiles/`{id}`**
 
 ```
 def get_profile(
@@ -2580,7 +2575,7 @@ def get_profile(
 ) -> dict:
     '''
         Get an existing profile using the resource identifier
- 
+
         Parameters
         ----------
         base_url: str
@@ -2591,19 +2586,19 @@ def get_profile(
             Resource identifier
     '''
     endpoint = "/v2/profiles"
-    url = f"{base_url}{endpoint}/{id}"
+    url = f"{base_url}{endpoint}/`{id}`"
     headers = {
         'Authorization': f'Bearer {access_token}',
         'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
- 
+
     r = requests.get(
         url=url,
         headers=headers,
         verify=False,
         )
- 
+
     return r.json()
 ```
 
@@ -2623,7 +2618,7 @@ In case of success we will obtain an output as follow:
 
 You can use the following code to update the information in the profile.
 
-**PUT /v2/profiles/{id}**
+**PUT /v2/profiles/`{id}`**
 
 ```
 def edit_profile(
@@ -2650,10 +2645,10 @@ def edit_profile(
             Resource ID
     '''
     endpoint = "/v2/profiles"
-    url = f"{base_url}{endpoint}/{id}"
+    url = f"{base_url}{endpoint}/`{id}`"
     headers = {
         'Authorization': f'Bearer {access_token}',
-        'Content-type': 'application/json', 
+        'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
     r = requests.put(
@@ -2672,7 +2667,7 @@ As a result, we will obtain a 200 Status Code
 
 To delete a profile you can use the next point, as the example provided below.
 
-**/v2/profiles/{id}**
+**/v2/profiles/`{id}`**
 
 ```
 def delete_profile(
@@ -2682,7 +2677,7 @@ def delete_profile(
 ) -> dict:
     '''
         Deletes an existing profile using the resource identifier
- 
+
         Parameters
         ----------
         base_url: str
@@ -2693,19 +2688,19 @@ def delete_profile(
             Resource identifier
     '''
     endpoint = "/v2/profiles"
-    url = f"{base_url}{endpoint}/{id}"
+    url = f"{base_url}{endpoint}/`{id}`"
     headers = {
         'Authorization': f'Bearer {access_token}',
         'Content-type': 'application/json',
         'Accept': 'text/plain',
         }
- 
+
     r = requests.delete(
         url=url,
         headers=headers,
         verify=False,
         )
- 
+
     return r
 ```
 
