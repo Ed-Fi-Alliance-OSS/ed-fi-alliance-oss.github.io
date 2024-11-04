@@ -4,7 +4,7 @@ The Ed-Fi ODS / API comes with a set of configurable features that can be
 enabled or disabled using configuration settings in deployed API. This section
 contains additional reference documentation for these configurable features.
 
-| Feature | Is Enabled by Default | Description |
+| Feature | Default State | Description |
 | --- | --- | --- |
 | changeQueries | true | The [Changed Record Queries](./changed-record-queries.md) feature can be enabled or disabled via configuration. Database configuration remains a separate step, see [Using the Changed Record Queries](../../client-developers-guide/using-the-changed-record-queries.md). |
 | openApiMetadata | true | The metadata API endpoint used by Swagger UI can be enabled or disabled via configuration. It is recommend for Production deployments to disable this. |
