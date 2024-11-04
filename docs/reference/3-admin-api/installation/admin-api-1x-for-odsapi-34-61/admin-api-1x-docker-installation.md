@@ -2,48 +2,75 @@
 
 **Contents:**
 
-*   [Before You Install](#before-you-install)
-    *   [Compatibility & Supported ODS / API Versions](#compatibility-supported-ods-api-versions)
-*   [Installation Instructions](#installation-instructions)
-    *   [General Prerequisites](#general-prerequisites)
-*   [Installation Instructions](#installation-instructions)
-    *   [1\. Include Admin API in the ODS Docker Setup](#1-include-admin-api-in-the-ods-docker-setup)
-    *   [2\. Relaunch the Docker Composition](#2-relaunch-the-docker-composition)
-    *   [3\. Execute First-Time Configuration](#3-execute-first-time-configuration)
+* [Before You Install](#before-you-install)
+  * [Compatibility & Supported ODS / API
+        Versions](#compatibility-supported-ods-api-versions)
+* [Installation Instructions](#installation-instructions)
+  * [General Prerequisites](#general-prerequisites)
+* [Installation Instructions](#installation-instructions)
+  * [1\. Include Admin API in the ODS Docker
+        Setup](#1-include-admin-api-in-the-ods-docker-setup)
+  * [2\. Relaunch the Docker
+        Composition](#2-relaunch-the-docker-composition)
+  * [3\. Execute First-Time
+        Configuration](#3-execute-first-time-configuration)
 
-# Before You Install
+## Before You Install
 
-This section provides general information you should review before installing the Ed-Fi ODS / API Admin API for v1.4.0.
+This section provides general information you should review before installing
+the Ed-Fi ODS / API Admin API for v1.4.0.
 
-## Compatibility & Supported ODS / API Versions
+### Compatibility & Supported ODS / API Versions
 
-This version of the Admin API has been tested and can be installed for use with the Ed-Fi ODS / API v3.4 - 6.1. See the [Ed-Fi Technology Version Index](https://edfi.atlassian.net/wiki/spaces/ETKB/pages/20875717/Ed-Fi+Technology+Version+Index) for more details.
+This version of the Admin API has been tested and can be installed for use with
+the Ed-Fi ODS / API v3.4 - 6.1. See the [Ed-Fi Technology Version
+Index](https://edfi.atlassian.net/wiki/spaces/ETKB/pages/20875717/Ed-Fi+Technology+Version+Index)
+for more details.
 
-# Installation Instructions
+## Installation Instructions
 
-## General Prerequisites
+### General Prerequisites
 
 The following are required to install the Admin API:
 
-*   The Admin API provides an interface to administer an Ed-Fi ODS / API. Understandably, you must have an instance of the Ed-Fi ODS / API v3.4 - 6.1 deployed and operational before you can use the Admin API. Tested configurations include on-premises installation via [binary installation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V520/pages/25100419/Getting+Started+-+Binary+Installation) or [source code installation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V520/pages/25100348/Getting+Started+-+Source+Code+Installation). 
-*   A SQL Server 2012 or higher, or Postgres 11 or higher database server (i.e., the same platform requirement applicable to your ODS / API).
-*   A modern web browser such as Google Chrome, Mozilla Firefox, or Microsoft Edge is required to view live Swagger documentation. Internet Explorer 11 (a pre-installed browser on Windows Server) may load but may not function when using Admin API.
+* The Admin API provides an interface to administer an Ed-Fi ODS / API.
+    Understandably, you must have an instance of the Ed-Fi ODS / API v3.4 - 6.1
+    deployed and operational before you can use the Admin API. Tested
+    configurations include on-premises installation via [binary
+    installation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V520/pages/25100419/Getting+Started+-+Binary+Installation)
+    or [source code
+    installation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V520/pages/25100348/Getting+Started+-+Source+Code+Installation).
+* A SQL Server 2012 or higher, or Postgres 11 or higher database server (i.e.,
+    the same platform requirement applicable to your ODS / API).
+* A modern web browser such as Google Chrome, Mozilla Firefox, or Microsoft
+    Edge is required to view live Swagger documentation. Internet Explorer 11 (a
+    pre-installed browser on Windows Server) may load but may not function when
+    using Admin API.
 
-# Installation Instructions
+## Installation Instructions
 
-Admin API is not included with the ODS-Docker solution by default, but can be hosted as part of that ecosystem.
+Admin API is not included with the ODS-Docker solution by default, but can be
+hosted as part of that ecosystem.
 
-To install Admin API on Docker, first Install the [ODS / API Docker](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Docker) environment [following these instructions](https://edfi.atlassian.net/wiki/display/EDFITOOLS/Docker+Deployment). Then, apply the below changes to the environment to introduce the Admin API.  Admin API does not support in-place upgrades from prior versions.  Please install a fresh copy of Admin API to upgrade from prior versions.
+To install Admin API on Docker, first Install the [ODS / API
+Docker](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Docker) environment
+[following these
+instructions](https://edfi.atlassian.net/wiki/display/EDFITOOLS/Docker+Deployment).
+Then, apply the below changes to the environment to introduce the Admin API.
+Admin API does not support in-place upgrades from prior versions.  Please
+install a fresh copy of Admin API to upgrade from prior versions.
 
 ## 1\. Include Admin API in the ODS Docker Setup
 
 ### Docker Compose
 
-Add the following to your `docker-compose.yml`  file. This can be done either instead of or in addition to the `adminapp`  service.
+Add the following to your `docker-compose.yml`  file. This can be done either
+instead of or in addition to the `adminapp`  service.
 
 #### Admin API Application
 
-This service depends on the `pb-admin`  and subsequently `db-admin` services to run.
+This service depends on the `pb-admin`  and subsequently `db-admin` services to
+run.
 
 **docker-compose.yml**
 
@@ -62,14 +89,14 @@ adminapi:
       AUTHORITY: ${AUTHORITY}
       ISSUER_URL: ${ISSUER_URL}
       SIGNING_KEY: ${SIGNING_KEY}
-      ADMIN_API_VIRTUAL_NAME: ${ADMIN_API_VIRTUAL_NAME:-adminapi} 
+      ADMIN_API_VIRTUAL_NAME: ${ADMIN_API_VIRTUAL_NAME:-adminapi}
       API_INTERNAL_URL: ${API_INTERNAL_URL}
     volumes:
       - ../../Docker/ssl:/ssl/
     depends_on:
       - pb-admin
     restart: always
-    hostname: ${ADMIN_API_VIRTUAL_NAME:-adminapi} 
+    hostname: ${ADMIN_API_VIRTUAL_NAME:-adminapi}
     container_name: adminapi
     healthcheck:
       test: $$ADMIN_API_HEALTHCHECK_TEST
@@ -80,11 +107,24 @@ adminapi:
 
 #### Admin API Database
 
-For the most part, the Admin API shares the same database schema as the Admin App. However, there are a few tables required for storing API client authentication which need to be initialized manually. You can see the details in [First-Time Configuration for Admin 1.x](../admin-api-1x-for-odsapi-34-61/first-time-configuration-for-admin-api-1x.md).
+For the most part, the Admin API shares the same database schema as the Admin
+App. However, there are a few tables required for storing API client
+authentication which need to be initialized manually. You can see the details in
+[First-Time Configuration for Admin
+1.x](../admin-api-1x-for-odsapi-34-61/first-time-configuration-for-admin-api-1x.md).
 
-Rather than introducing these tables explicitly, for Docker we have provided an alternative image for use with Admin API: [`edfialliance/ods-admin-api-db`](https://hub.docker.com/r/edfialliance/ods-admin-api-db), which is to be used **in place of** the existing `edfialliance/ods-api-db-admin` image for your DB service.
+Rather than introducing these tables explicitly, for Docker we have provided an
+alternative image for use with Admin API:
+[`edfialliance/ods-admin-api-db`](https://hub.docker.com/r/edfialliance/ods-admin-api-db), which
+is to be used **in place of** the existing `edfialliance/ods-api-db-admin` image
+for your DB service.
 
-**If you are introducing Admin API to an existing composition do** NOT **change the volume mapping configuration in order to preserve your data**.**** Only change the image and tag of the existing service. The below block is a sample of this, based on an example ODS / API Docker environment composition. Make sure you update the mode (`"``SharedInstance"`, `"YearSpecific"`, or `"DistrictSpecific"`) accordingly.
+**If you are introducing Admin API to an existing composition do** NOT **change
+the volume mapping configuration in order to preserve your data**.**** Only
+change the image and tag of the existing service. The below block is a sample of
+this, based on an example ODS / API Docker environment composition. Make sure
+you update the mode (`"``SharedInstance"`, `"YearSpecific"`, or
+`"DistrictSpecific"`) accordingly.
 
 **docker-compose.yml**
 
@@ -105,13 +145,15 @@ db-admin:
 
 ### .env Settings
 
-Add the following to your environment settings file to support Admin API. Note that when running both Admin App and Admin API, some of these settings may overlap. This is expected, and the same values can be used.
+Add the following to your environment settings file to support Admin API. Note
+that when running both Admin App and Admin API, some of these settings may
+overlap. This is expected, and the same values can be used.
 
 **.env for Admin API**
 
 ```
 ADMIN_API_TAG=<version of image to run>
-ADMIN_API_DB_TAG=<version of image to run> 
+ADMIN_API_DB_TAG=<version of image to run>
 API_MODE=<API Mode Eg. SharedInstance, YearSpecific, DistrictSpecific>
 ADMIN_API_VIRTUAL_NAME=<virtual name for the Admin API endpoint>
 ODS_VIRTUAL_NAME=<virtual name for the ods endpoint>
@@ -140,7 +182,8 @@ API_INTERNAL_URL = http://${ODS_VIRTUAL_NAME}
 
 ### Nginx / Gateway Configuration
 
-Update your nginx server configuration to include the Admin API in the reverse proxy.
+Update your nginx server configuration to include the Admin API in the reverse
+proxy.
 
 **default.conf.template**
 
@@ -174,10 +217,12 @@ docker compose -f ./compose/your-compose-file.yml --env-file ./.env up -d
 
 ## 3\. Execute First-Time Configuration
 
-Continue on to [First-Time Configuration for Admin 1.x](../admin-api-1x-for-odsapi-34-61/first-time-configuration-for-admin-api-1x.md).
+Continue on to [First-Time Configuration for Admin
+1.x](../admin-api-1x-for-odsapi-34-61/first-time-configuration-for-admin-api-1x.md).
 
-> [!NOTE]
-> The following is the DockerHub repo for **Admin API v1.4.0 Docker Image** for inclusion in Docker compose:
-> *   [edfialliance/ods-admin-api:v1.4.0](https://hub.docker.com/layers/edfialliance/ods-admin-api/v1.4/images/sha256-0a52face1b03e94892dc4d82e05f2fae05e635f1c46b2baf081bbcf2e81d76b1?context=explore)
->     
-> *   [edfialliance/ods-admin-api-db:v1.4.0](https://hub.docker.com/layers/edfialliance/ods-admin-api-db/v1.4/images/sha256-70375e3564e9d409dfe8c25d27d504f1b3e15f75e454c9da9f5dc40c30c9d4a3?context=explore)
+> [!NOTE] The following is the DockerHub repo for **Admin API v1.4.0 Docker
+> Image** for inclusion in Docker compose:
+>
+> * [edfialliance/ods-admin-api:v1.4.0](https://hub.docker.com/layers/edfialliance/ods-admin-api/v1.4/images/sha256-0a52face1b03e94892dc4d82e05f2fae05e635f1c46b2baf081bbcf2e81d76b1?context=explore)
+>
+> * [edfialliance/ods-admin-api-db:v1.4.0](https://hub.docker.com/layers/edfialliance/ods-admin-api-db/v1.4/images/sha256-70375e3564e9d409dfe8c25d27d504f1b3e15f75e454c9da9f5dc40c30c9d4a3?context=explore)
