@@ -10,9 +10,9 @@ and Admin API 1.4 is available for [Ed-Fi ODS / API v5.x-6.x](https://edfi.atlas
 
 Documentation for the Ed-Fi Admin API is viewable online:
 
-* [What's New](./whats-new.md)
-* [Getting Started](./getting-started.md)
-* [Technical Articles](./technical-articles.md)
+* [What's New](whats-new.md)
+* [Getting Started](getting-started.md)
+* [Technical Articles](technical-articles)
 
 ## Installation
 
