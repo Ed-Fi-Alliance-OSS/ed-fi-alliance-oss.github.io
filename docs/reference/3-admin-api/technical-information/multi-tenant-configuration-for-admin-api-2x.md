@@ -8,6 +8,8 @@ flag to true.
 
  “MultiTenancy”: true
 }
+
+
 ```
 
 ## Connection Strings
@@ -64,11 +66,11 @@ The connection strings are organized under distinct tenant entries in a
 Admin API clients must use request header to carry the well-known tenant
 identifiers:
 
-**Tenant specific request header key:** `*tenant*`
+**Tenant specific request header key:** _tenant_
 
-**Tenant specific request header value:** `*<Tenant-Id>*`
+**Tenant specific request header value:** _`<Tenant-Id>`_
 
-![](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/technical-information/image-2024-1-15_18-3-15-1.png)
+![Screenshot](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/technical-information/image-2024-1-15_18-3-15-1.png)
 
 Note: The requests from Swagger UI don’t automatically include tenant identifier
 in the headers. So, if user enables Swagger UI and MultiTenancy,
