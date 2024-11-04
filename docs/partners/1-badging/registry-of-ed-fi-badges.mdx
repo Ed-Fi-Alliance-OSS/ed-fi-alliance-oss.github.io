@@ -1,55 +1,10 @@
 ---
 sidebar_position: 3
-<<<<<<< HEAD
-hide_table_of_contents: true
-=======
->>>>>>> de7281c (registry of ed-fi badges table complete)
 ---
 
 # Registry of Ed-Fi Badges
 
-export const managedODSColumns = [
-  { header: 'Product', field: 'product' },
-  { header: 'Provider', field: 'provider' },
-  { header: 'Product Information', field: 'productInformation' },
-  { header: 'Badge Valid Through', field: 'validThrough' },
-  { header: 'Verifying Agencies', field: 'verifyingAgencies' },
-  { header: 'Version Compatibility', field: 'versionCompatibility' },
-  { header: 'Product Availability', field: 'availability' },
-];
-
-export const odsPlatformConsumerColumns = [
-  { header: 'Product', field: 'product' },
-  { header: 'Provider', field: 'provider' },
-  { header: 'Website', field: 'website' },
-  { header: 'Badge Valid Through', field: 'validThrough' },
-  { header: 'Verifying Agency', field: 'verifyingAgency' },
-  { header: 'Data Mapping', field: 'dataMapping' },
-  { header: 'Version Compatibility', field: 'versionCompatibility' },
-  { header: 'Product Availability', field: 'availability' },
-];
-
-export const apiConsumerColumns = [
-  { header: 'Product', field: 'product' },
-  { header: 'Provider', field: 'provider' },
-  { header: 'Website', field: 'website' },
-  { header: 'Badge Valid Through', field: 'validThrough' },
-  { header: 'Verifying Agency', field: 'verifyingAgency' },
-  { header: 'Data Mapping', field: 'dataMapping' },
-  { header: 'Version Compatibility', field: 'versionCompatibility' },
-  { header: 'Product Availability', field: 'availability' },
-  { header: 'Support Documentation', field: 'supportDocumentation' },
-];
-
-export const implementationPartnerColumns = [
-  { header: 'Organization', field: 'product' },
-  { header: 'Sample Documentation', field: 'sampleDocumentation' },
-  { header: 'Badge Valid Through', field: 'validThrough' },
-  { header: 'Verifying Agencies', field: 'verifyingAgencies' },
-  { header: 'Services Performed', field: 'servicesPerformed' },
-];
-
-export const certData = {
+export const badgeData = {
   managedODSAPI: [
     {
       logo: "/img/partners/badging/edgraph.png",
@@ -129,8 +84,8 @@ export const certData = {
       provider: "EdWire",
       website: "https://www.edgraph.com/",
       validThrough: "May 11, 2024",
-      verifyingAgency: ["Monroe County Community School Corporation, IN"],
-      dataMapping: {
+      verifyingAgencies: ["Monroe County Community School Corporation, IN"],
+      documentation: {
         "EdGraph Analytics - Suite 2 Mapping": "https://edfi.atlassian.net/wiki/download/attachments/20611183/EdGraph+Analytics+-+Suite+2+Mapping.xlsx?version=1"
       },
       versionCompatibility: ["Ed-Fi ODS/API v2.6", "Ed-Fi ODS/API v3.2"],
@@ -142,8 +97,8 @@ export const certData = {
       provider: "Innive Inc.",
       website: "https://k12360.com/data-as-a-service",
       validThrough: "October 20, 2025",
-      verifyingAgency: ["Austin ISD, TX"],
-      dataMapping: {
+      verifyingAgencies: ["Austin ISD, TX"],
+      documentation: {
         "Mapping Document": "https://edfi.atlassian.net/wiki/download/attachments/20611183/Innive_TSDS_to_EDFI_ODS_Mapping.xlsx?version=1"
       },
       versionCompatibility: ["Ed-Fi ODS 3.0 and above"],
@@ -156,7 +111,7 @@ export const certData = {
       website: "https://www.cpsiltd.com/",
       validThrough: "April 11, 2025",
       verifyingAgencies: ["New Mexico Department of Education"],
-      dataMapping: "No Mapping - All domains/data elements pass through",
+      documentation: "No Mapping - All domains/data elements pass through",
       versionCompatibility: ["All Active Versions"],
       availability: "Available to any agency (all sizes) or vendor in the U.S."
     },
@@ -168,7 +123,7 @@ export const certData = {
       productInformation: "https://espmsp.com/customized-operational-dashboards",
       validThrough: "May 18, 2025",
       verifyingAgencies: ["Wyoming Department of Education (WDE)"],
-      dataMapping: {
+      documentation: {
         "ESP Mapping": "https://edfi.atlassian.net/wiki/download/attachments/20611183/EdFi+3.4+Mapping+Master+API_to_ODS.xlsx?version=1"
       },
       versionCompatibility: ["Ed-Fi ODS/API 2.x", "Ed-Fi ODS/API 3.x"],
@@ -180,8 +135,8 @@ export const certData = {
       provider: "Crocus, LLC",
       website: "https://insighttoimpact.tea.texas.gov/",
       validThrough: "February 26, 2026",
-      verifyingAgency: ["Texas Education Agency (TEA)"],
-      dataMapping: {
+      verifyingAgencies: ["Texas Education Agency (TEA)"],
+      documentation: {
         "Data Mapping": "https://edfi.atlassian.net/wiki/download/attachments/20611183/TEA_I2I+Mapping.xlsx?version=1"
       },
       versionCompatibility: ["Ed-Fi Data Standard 3.3.1b / ODS/API API 5.3"],
@@ -196,16 +151,14 @@ export const certData = {
       provider: "eScholar",
       website: "https://escholar.com/solutions/education-data-warehouse/",
       validThrough: "October 17, 2025",
-      verifyingAgency: ["Providence Public Schools, RI"],
-      dataMapping: {
+      verifyingAgencies: ["Providence Public Schools, RI"],
+      documentation: {
         Mapping: "https://edfi.atlassian.net/wiki/download/attachments/20611183/eScholar+to+Ed-Fi+Mapping+API+Consumer+Badge+App.xlsx?version=1",
-        "Usage Overview": "https://edfi.atlassian.net/wiki/download/attachments/20611183/escholar+Usage+Overview.docx?version=1"
+        "Usage Overview": "https://edfi.atlassian.net/wiki/download/attachments/20611183/escholar+Usage+Overview.docx?version=1",
+        "API Documentation": "https://escholar.com/wp-content/uploads/2023/10/eScholar-Ed-Fi-API-Documentation.pdf"
       },
       versionCompatibility: ["ODS: Version: 3.0.549", "API: Version 5.3"],
       availability: "Available to any agency or organization of any size",
-      supportDocumentation: {
-        "API Documentation": "https://bit.ly/45x0O49"
-      }
     },
     {
       logo: "/img/partners/badging/lingk.png",
@@ -213,8 +166,8 @@ export const certData = {
       provider: "Lingk Inc.",
       website: "https://www.lingk.io/",
       validThrough: "November 16, 2024",
-      verifyingAgency: ["Duneland School Corporation (IN)"],
-      dataMapping: {
+      verifyingAgencies: ["Duneland School Corporation (IN)"],
+      documentation: {
         "Usage Overview & Mapping": "https://edfi.atlassian.net/wiki/download/attachments/20611183/Ed-Fi+API+Consumer+Badge+-+Lingk+usage+overview+%26+mapping.pdf?version=1"
       },
       versionCompatibility: ["Ed-Fi ODS API for Suite 3 (and Suite 2)"],
@@ -226,7 +179,7 @@ export const certData = {
       provider: "Education Analytics",
       website: "https://www.edanalytics.org/",
       validThrough: "July 14, 2026",
-      verifyingAgency: ["Boston Public Schools"],
+      verifyingAgencies: ["Boston Public Schools"],
       versionCompatibility: ["Ed-Fi ODS API for Suite 3 plus extensions"],
       availability: "Available to any agency (all sizes) or vendor in the U.S."
     },
@@ -237,17 +190,15 @@ export const certData = {
       website: "https://munetrix.com/",
       validThrough: "October 4, 2025",
       verifyingAgencies: ["Kalamazoo RESA / Michigan Data Hub"],
-      dataMapping: {
-        "Academic Achievement Mapping": "https://edfi.atlassian.net/wiki/download/attachments/20611183/Munetrix+Ed-Fi+Utilization.xlsx?version=1"
-      },
-      versionCompatibility: ["Ed-Fi ODS API for Suite 3 v3.1"],
-      availability: "MI",
-      supportDocumentation: {
+      documentation: {
+        "Academic Achievement Mapping": "https://edfi.atlassian.net/wiki/download/attachments/20611183/Munetrix+Ed-Fi+Utilization.xlsx?version=1",
         "Availability Statement": "https://edfi.atlassian.net/wiki/download/attachments/20611183/Munetrix+Ed-Fi+Certification+-+Availability+Statement.docx?version=1",
         "Connecting the MIDataHub to Munetrix": "https://solutions.munetrix.com/en/knowledge/connecting-the-midatahub-to-munetrix",
         "Munetrix Implementation Guide for School Leaders": "https://edfi.atlassian.net/wiki/download/attachments/20611183/Munetrix_Implementation%2BGuide%2Bfor%2BSchool%2BLeaders_V3.pdf?version=1",
         "EMW Onboard Planning": "https://edfi.atlassian.net/wiki/download/attachments/20611183/Munetrix_EWM+Onboarding+Planning.pdf?version=1"
-      }
+      },
+      versionCompatibility: ["Ed-Fi ODS API for Suite 3 v3.1"],
+      availability: "MI",
     },
     {
       logo: "/img/partners/badging/eidex.png",
@@ -256,15 +207,13 @@ export const certData = {
       website: "http://www.eidexinsights.com",
       validThrough: "August 9, 2025",
       verifyingAgencies: ["Michigan Data Hub"],
-      dataMapping: {
+      documentation: {
         "Usage Overview": "https://edfi.atlassian.net/wiki/download/attachments/20611183/Eidex+Ed-Fi+Badge+Application+July+2023.pdf?version=1",
-        "Mapping Document": "https://edfi.atlassian.net/wiki/download/attachments/20611183/Eidex+Mapping+Document.docx?version=1"
+        "Mapping Document": "https://edfi.atlassian.net/wiki/download/attachments/20611183/Eidex+Mapping+Document.docx?version=1",
+        "Support & Configuration": "http://portal.eiexinsights.com"
       },
       versionCompatibility: ["Ed-Fi ODS/API for Suite 2 v2.5", "Ed-FI ODS/API for Suite 3 v3.1"],
       availability: "MI, IN",
-      supportDocumentation: {
-        "Support & Configuration": "http://portal.eiexinsights.com"
-      }
     },
     {
       logo: "/img/partners/badging/classlink.jpg",
@@ -272,7 +221,7 @@ export const certData = {
       provider: "ClassLink Inc.",
       website: "https://www.classlink.com/products/roster-server",
       validThrough: "July 26, 2023",
-      verifyingAgency: ["Delaware Department of Education"],
+      verifyingAgencies: ["Delaware Department of Education"],
       versionCompatibility: ["Ed-Fi ODS/API for Suite 3 v3.1", "Ed-Fi ODS/API for Suite 3 v5.1"],
       availability: "Available to any agency (all sizes) or vendor in the U.S."
     },
@@ -282,15 +231,13 @@ export const certData = {
       provider: "SAS",
       website: "https://www.sas.com",
       validThrough: "April 9, 2026",
-      verifyingAgency: ["Michigan Data Hub"],
-      dataMapping: {
-        "Mapping Document": "https://edfi.atlassian.net/wiki/download/attachments/20611183/SAS+Ed-Fi+Badge+Application+-+Mapping+%281%29%5B98%5D+%281%29.docx?version=1"
+      verifyingAgencies: ["Michigan Data Hub"],
+      documentation: {
+        "Mapping Document": "https://edfi.atlassian.net/wiki/download/attachments/20611183/SAS+Ed-Fi+Badge+Application+-+Mapping+%281%29%5B98%5D+%281%29.docx?version=1",
+        "SAS EVAAS for K-12": "https://www.midatahub.org/pub/stories/view/sas-evaas-for-k-12"
       },
       versionCompatibility: ["Ed-Fi ODS API for Suite 3 v3.1.1"],
       availability: "Available to any LEA or SEA in any US geography",
-      supportDocumentation: {
-        "SAS EVAAS for K-12": "https://www.midatahub.org/pub/stories/view/sas-evaas-for-k-12"
-      }
     },
     {
       logo: "/img/partners/badging/innive-k12.png",
@@ -298,14 +245,14 @@ export const certData = {
       provider: "Innive Inc.",
       website: "https://k12360.com/analytics",
       validThrough: "October 20, 2025",
-      verifyingAgency: ["Austin ISD, TX"],
-      dataMapping: {
+      verifyingAgencies: ["Austin ISD, TX"],
+      documentation: {
         "Mapping Document": "https://edfi.atlassian.net/wiki/download/attachments/20611183/Innive_TSDS_to_EDFI_ODS_Mapping.xlsx?version=1",
-        "Usage Overview": "https://edfi.atlassian.net/wiki/download/attachments/20611183/Innive_usage_summary.docx?version=1"
+        "Usage Overview": "https://edfi.atlassian.net/wiki/download/attachments/20611183/Innive_usage_summary.docx?version=1",
+        Email: "k12360support@inniveinc.com"
       },
       versionCompatibility: ["Ed-Fi ODS API for Suite 3 and above"],
       availability: "Available to any agency (all sizes) or vendor in the U.S.",
-      supportDocumentation: "k12360support@inniveinc.com"
     },
     {
       logo: "/img/partners/badging/linq.png",
@@ -313,14 +260,14 @@ export const certData = {
       provider: "Linq",
       website: "https://www.linq.com/solutions/erp/hr/",
       validThrough: "October 18, 2025",
-      verifyingAgency: ["Mondovi School District, WI"],
-      dataMapping: {
+      verifyingAgencies: ["Mondovi School District, WI"],
+      documentation: {
         "Alio and Linq ERP mapping": "https://edfi.atlassian.net/wiki/download/attachments/20611183/Alio+and+Linq+ERP+mapping.docx?version=1",
-        "Usage Overview": "https://edfi.atlassian.net/wiki/download/attachments/20611183/AlioLinq+Usage.docx?version=1"
+        "Usage Overview": "https://edfi.atlassian.net/wiki/download/attachments/20611183/AlioLinq+Usage.docx?version=1",
+        Email: "erpsupport@linq.com"
       },
       versionCompatibility: ["Version 3x data standards and later", "Ed-Fi ODS/API for Suite 3 v6.1"],
       availability: "Available to any LEA in any US geography",
-      supportDocumentation: "erpsupport@linq.com"
     },
     {
       logo: "/img/partners/badging/crocus.jpg",
@@ -328,8 +275,8 @@ export const certData = {
       provider: "Crocus, LLC",
       website: "https://insighttoimpact.tea.texas.gov/",
       validThrough: "Feb 26, 2026",
-      verifyingAgency: ["Texas Education Agency (TEA)"],
-      dataMapping: {
+      verifyingAgencies: ["Texas Education Agency (TEA)"],
+      documentation: {
         "Data Mapping": "https://edfi.atlassian.net/wiki/download/attachments/20611183/TEA_I2I+Mapping.xlsx?version=1",
         "Usage Summary": "https://edfi.atlassian.net/wiki/download/attachments/20611183/Ed-Fi+Badge+Application+Crocus+TEA+I2I.docx.pdf?version=1"
       },
@@ -337,20 +284,18 @@ export const certData = {
       availability: "All Educator prep programs in Texas"
     },
     {
-      logo: "/img/partners/badging/on-data-suite.jpg",
+      logo: "/img/partners/badging/on-data-suite.png",
       productName: "OnDataSuite",
       provider: "Aloe Software Group",
       website: "http://www.ondatasuite.com ",
       validThrough: "August 2, 2026",
       verifyingAgencies: ["Tomball ISD"],
-      dataMapping: {
-        "Mapping Document": "https://edfi.atlassian.net/wiki/download/attachments/20611183/ODS+Ed-Fi+Data+Model+Reference.pdf?version=1"
+      documentation: {
+        "Mapping Document": "https://edfi.atlassian.net/wiki/download/attachments/20611183/ODS+Ed-Fi+Data+Model+Reference.pdf?version=1",
+        "Go-Live 2024-2025 Ed-Fi Overview": "https://kb.ondatasuite.com/article-categories/go-live-2024-2025-ed-fi-overview/"
       },
       versionCompatibility: ["Ed-Fi API version 7.1", "Ed-Fi Data Standard version 4.0"],
       availability: "State of Texas, Version 12.19.0 and above.",
-      supportDocumentation: {
-        "Go-Live 2024-2025 Ed-Fi Overview": "https://kb.ondatasuite.com/article-categories/go-live-2024-2025-ed-fi-overview/"
-      }
     },
     {
       logo: "/img/partners/badging/fivestar.png",
@@ -359,20 +304,20 @@ export const certData = {
       website: "https://fivestartech.com/data-analytics/ ",
       validThrough: "Aug 14, 2026",
       verifyingAgencies: ["Michigan Data Hub"],
-      dataMapping: {
+      documentation: {
         "Mapping Document": "https://edfi.atlassian.net/wiki/download/attachments/20611183/FiveStar-EdFi-staff-mapping+%281%29.xlsx?version=1"
       },
       versionCompatibility: ["Ed-Fi API version 6.x"],
       availability: "Available to any LEA in any US geography"
     },
     {
-      logo: "/img/partners/badging/panorama-education.jpg",
+      logo: "/img/partners/badging/panorama-education.png",
       productName: "Panorama Education",
       provider: "Panorama Education Student Success",
       website: "https://www.panoramaed.com/products/student-success",
       validThrough: "September 5, 2026",
       verifyingAgencies: ["Boston Public Schools"],
-      dataMapping: {
+      documentation: {
         "Mapping Document": "https://edfi.atlassian.net/wiki/download/attachments/20611183/EdFi__Panorama+Student+Success+Mapping.xlsx?version=1"
       },
       versionCompatibility: ["Ed-Fi API Suite 3 v5.3", "Ed-Fi Data Standard versions 3.3.1-b"],
@@ -385,7 +330,7 @@ export const certData = {
       website: "https://www.cpsiltd.com/",
       validThrough: "April 11, 2025",
       verifyingAgencies: ["New Mexico Department of Education"],
-      dataMapping: "No Mapping - All domains/data elements pass through",
+      documentation: "No Mapping - All domains/data elements pass through",
       versionCompatibility: ["All Active Versions"],
       availability: "Available to any agency (all sizes) or vendor in the U.S."
     }
@@ -396,116 +341,185 @@ export const certData = {
       logo: "/img/partners/badging/edwise-group.png",
       organizationName: "EdWise Group",
       website: "https://www.edwisegroup.com",
-      sampleDocumentation: {
+      documentation: {
         "IDOE Ed-Fi 6.1 Vendor Documentation": "https://docs.google.com/spreadsheets/d/1b7Y36hqHfK66Mqzn1RrUmL8P64qYE-e4/edit#gid=1377605800",
         "IDOE Ed-Fi 6.1 SIS Vendor Badging Scenarios": "https://docs.google.com/spreadsheets/d/1K_qFq3397XNTLBjvDlwLlxC3c2XetTou/edit#gid=1800575453",
         "IDOE Ed-Fi 2.4 to 6.0 Data mapping": "https://edfi.atlassian.net/wiki/download/attachments/20611183/IDOE+Ed-Fi+2.4+to+6.0+Data+mapping.xlsx?version=1"
       },
       validThrough: "Nov 1, 2025",
       verifyingAgencies: ["Indiana DoE<br />Nebraska DoE"],
-      servicesPerformed: "https://www.edwisegroup.com/services/"
+      servicesPerformed: {
+        link: "https://www.edwisegroup.com/services/"
+      }
     },
     {
       logo: "/img/partners/badging/unicon.png",
       organizationName: "Unicon",
       website: "https://www.unicon.net/services/k-20",
-      sampleDocumentation: {
+      documentation: {
         "TPDM Starter Kit Required Data Checklist": "https://edfi.atlassian.net/wiki/download/attachments/20611183/TPDM+Starter+Kit+Required+Data+Checklist.xlsx?version=1",
         "Evaluation Data Collection Short Form Template with Sample": "https://edfi.atlassian.net/wiki/download/attachments/20611183/Evaluation+Data+Collection+Short+Form+Template+with+Sample.xlsx?version=1",
         "Project Phases": "https://edfi.atlassian.net/wiki/download/attachments/20611183/Project+Phases.pptx?version=1"
       },
       validThrough: "May 14, 2026",
       verifyingAgencies: ["University of Texas, El Paso", "Texas A&M University International University"],
-      servicesPerformed: "https://www.unicon.net/services/k-20"
+      servicesPerformed: {
+        link: "https://www.unicon.net/services/k-20"
+      }
     },
     {
       logo: "/img/partners/badging/keen-logic.png",
       organizationName: "Keen Logic",
       website: "https://www.keenlogic.io/",
-      sampleDocumentation: {
+      documentation: {
         "MSP Rubric and Guided Questions.docx": "https://edfi.atlassian.net/wiki/download/attachments/20611183/MSP+Rubric+and+Guided+Questions.docx?version=1",
         "Sample vendor resource and generalized error encyclopedia": "https://app.powerbi.com/view?r=eyJrIjoiZTJiNGQ3OWEtMDBjNy00NTk1LWExNzQtNzdmNjIyMDFhZTliIiwidCI6Ijg1ODNiOGI5LTc2OGItNDA2Yy04OGU5LThjMjk1Y2FkYTk2MyIsImMiOjJ9"
       },
       validThrough: "September 25, 2026",
       verifyingAgencies: [ "Texas Computer Collaborative (Region 20)", "Hamilton County ESC" ],
-      servicesPerformed: "<a href=\"https://www.canva.com/design/DAFgjhWrffk/xzeUAmAheXm8sT9o_sSlQg/view\">Keen Logic Services Performed</a><br /><br />API error support, ODS error support, Product feedback, Documentation and training, Stakeholder management, Project management and technical planning, Vendor coordination"
+      servicesPerformed: {
+        href: "https://www.canva.com/design/DAFgjhWrffk/xzeUAmAheXm8sT9o_sSlQg/view",
+        description: "API error support, ODS error support, Product feedback, Documentation and training, Stakeholder management, Project management and technical planning, Vendor coordination"
+      }
     }
   ]
 };
 
-export function CertificationTable({ certifications, columns }) {
-  const renderCell = (cert, column) => {
-    const cellRenderers = {
-      product: renderProductCell,
-      dataMapping: renderListCell,
-      sampleDocumentation: renderListCell,
-      supportDocumentation: renderListCell,
-      default: renderDefaultCell
-    };
 
-    const renderer = cellRenderers[column.field] || cellRenderers.default;
-    return renderer(cert, column);
-  };
+export function BadgingTable({ badges }) {
 
-  return (
-    <table>
-      <thead>
-        <tr>
-          {columns.map((column, index) => (
-            <th key={index}>{column.header}</th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {certifications.map((cert, index) => (
-          <tr key={index}>
-            {columns.map((column, colIndex) => (
-              <td key={colIndex}>
-                {renderCell(cert, column)}
-              </td>
-            ))}
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  );
-}
+  function productInformationLink(badge) {
+    if (badge.productInformation) {
+      return <p><a href={badge.productInformation}>product information</a></p>;
+    }
 
-export function renderProductCell(cert) {
-  return (
-    <a href={cert.website}>
-      <img
-        src={cert.logo}
-        alt={cert.productName}
-        style={{ width: '200px', height: 'auto', maxWidth: 'none' }}
-      />
-      <br />
-      {cert.productName}
-    </a>
-  );
-}
+    if (badge.website) {
+      return <p><a href={badge.website}>product information</a></p>;
+    }
 
-export function renderListCell(cert, column) {
-  const data = cert[column.field];
-  if (typeof data !== 'object') return data;
 
-  return (
-    <ul>
-      {Object.entries(data).map(([key, value]) => (
-        <li key={key}>
-          <a href={value}>{key}</a>
-        </li>
-      ))}
-    </ul>
-  );
-}
-
-export function renderDefaultCell(cert, column) {
-  const value = cert[column.field];
-  if (typeof value === 'string' && value.startsWith('http')) {
-    return <a href={value}>{value}</a>;
+    return null;
   }
-  return value;
+
+  function constructLink(href, text) {
+    if (href.includes("@")) {
+      return <a href={"mailto:" + href}>{text}</a>;
+    }
+
+    return <a href={href}>{text}</a>;
+  }
+
+  function documentation(badge) {
+    if (!badge.documentation) return null;
+
+    if (typeof badge.documentation === 'string' || badge.documentation instanceof String) {
+      return (
+        <tr>
+          <th>Documentation</th>
+          <td>
+            {badge.documentation}
+          </td>
+        </tr>
+      );
+    }
+
+    const items = Object.entries(badge.documentation).map(([key, value]) => (
+        <p>{constructLink(value, key)}</p>
+    ));
+
+    return (
+        <tr>
+          <th>Documentation</th>
+          <td>
+            {items}
+          </td>
+        </tr>
+    );
+  }
+
+  function services(badge){
+    if (!badge.servicesPerformed) return null;
+
+    let description = "";
+    if (badge.servicesPerformed.description) {
+      description = <p> {badge.servicesPerformed.description} </p>
+    }
+
+    return (
+      <tr>
+        <th>Services Performed</th>
+        <td>
+          <a href={badge.servicesPerformed.link}>{badge.organization} services</a>
+          {description}
+        </td>
+      </tr>
+    );
+  }
+
+  function versions(badge) {
+    if (!badge.versionCompatibility) return null;
+
+    return (
+        <tr>
+          <th>Version Compatibility</th>
+          <td>{(badge.versionCompatibility || []).join(', ')}</td>
+        </tr>
+    );
+  }
+
+  function availability(badge) {
+    if (!badge.availability) return null;
+
+    return (
+      <tr>
+        <th>Product Availability</th>
+        <td>{badge.availability}</td>
+      </tr>
+    );
+  }
+
+  return (
+      <div className="container table">
+        <div className="row row--thead">
+          <div className="col col--2 col--th">Product</div>
+          <div className="col col--2 col--th">Valid Through</div>
+          <div className="col col--8 col--th">Badge Details</div>
+        </div>
+        {badges.map((badge, index) => (
+          <div className={"row col--tr" + (index%2==1 ? "-alt" : "")} key={index}>
+            <div className="col col--2 col--td">
+              <p>
+                <a href={badge.website}>
+                  <img
+                    src={badge.logo}
+                    alt={badge.productName}
+                    title={badge.productName}
+                    style={{ height: 'auto', width: '100%', maxWidth: '200px' }}
+                  />
+                </a>
+              </p>
+              {productInformationLink(badge)}
+            </div>
+            <div className="col col--2 col--td">{badge.validThrough}</div>
+            <div className="col col--8 col--td">
+              <details>
+                <summary>Expand for additional details...</summary>
+                <table>
+                  <tr>
+                    <th>Verifying Agencies</th>
+                    <td>{(badge.verifyingAgencies || []).join(', ')}</td>
+                  </tr>
+                  {versions(badge)}
+                  {availability(badge)}
+                  {documentation(badge)}
+                  {services(badge)}
+                </table>
+              </details>
+            </div>
+          </div>
+        ))}
+      </div>
+  );
 }
 
 This page lists products that have been awarded an Ed-Fi badge.
@@ -523,26 +537,26 @@ also attempting to outsource aspects of these operations in order to focus more
 on analytics and business intelligence. This badge highlights product efforts
 to address these problems.
 
-<CertificationTable certifications={certData.managedODSAPI} columns={managedODSColumns} />
+<BadgingTable badges={badgeData.managedODSAPI} />
 
 ## Ed-Fi ODS Platform Consumer Badge
 
 This badge is for products that interact or use the data from the Ed-Fi ODS
 platform, but access is not via API. Products using an Ed-Fi API to source data
-should apply for the Ed-Fi API Consumer Badge
+should apply for the Ed-Fi API Consumer Badge
 
-<CertificationTable certifications={certData.odsPlatformConsumer} columns={odsPlatformConsumerColumns} />
+<BadgingTable badges={badgeData.odsPlatformConsumer} />
 
 ## Ed-Fi API Consumer Badge
 
 This badge is for products that read data out of an Ed-Fi defined API and
 integrate that data into their product offering.
 
-<CertificationTable certifications={certData.apiConsumer} columns={apiConsumerColumns} />
+<BadgingTable badges={badgeData.apiConsumer} />
 
 ## Ed-Fi Implementation Partner Badge
 
-The Ed-Fi Systems Implementer  Badge is to recognize services organizations
+The Ed-Fi Systems Implementer Badge is to recognize services organizations
 doing field implementation work around the Ed-Fi technology stack, which may not
 be directly relatable to a software product.
 
@@ -551,4 +565,4 @@ specific tasks with Ed-Fi technology - upgrades, system integrations, and
 strategy consulting. This badge aims to define organizations that follow best
 practices in a wide range of services projects.
 
-<CertificationTable certifications={certData.implementationPartner} columns={implementationPartnerColumns} />
+<BadgingTable badges={badgeData.implementationPartner} />
