@@ -1,0 +1,234 @@
+# How To: Clear expired client access tokens with a database job
+
+Currently, the API handles clearing expired client access tokens with a
+background task that runs on a configurable interval. This approach was chosen
+for "out of the box" experience to ensure a seamless experience from the get-go,
+owing to its simplicity and adaptability across various deployment environments.
+However, in this default implementation, when multiple instances of the API are
+operational, each instance triggers the background task, leading to redundant
+executions of the cleanup process. To prevent this, one option is to disable the
+'DeleteExpiredTokens' background task on all instances of the API server except
+for one. Alternatively, you could entirely switch to an external process. A
+solution of this nature is detailed in this article. It demonstrates how to
+configure a scheduled job running on the database server that hosts the
+Ed-Fi-Admin database.
+
+## Implementation Steps
+
+1. Disable API background task
+2. Verify that the database server job agent is enabled and running
+3. Create scheduled job which consists of:
+    1. Job - to encapsulate all job steps
+    2. Job Step - to execute the command(s)
+    3. Schedule - to schedule when the job and all of its steps will be
+        executed
+
+## Disable API background task
+
+```json
+"ScheduledJobs": [
+      {
+        "Name": "DeleteExpiredTokens",
+        "IsEnabled": false,
+        "CronExpression": "0 0/30 * 1/1 * ? *"
+      }
+    ]
+```
+
+## Create Scheduled Job
+
+Modify and execute the SQL Server or PostgreSQL script below in order to create
+the scheduled job within your database server.
+
+<details>
+<summary>SQL Server</summary>
+
+For Ed-Fi implementations running SQL, [SQL Server Agent needs to be
+configured](https://docs.microsoft.com/en-us/sql/ssms/agent/configure-sql-server-agent)
+
+```sql
+USE [msdb]
+GO
+
+BEGIN TRANSACTION
+
+DECLARE @jobId binary(16)
+DECLARE @jobStepId binary(16)
+DECLARE @jobName NVARCHAR(1000) = N'Ed-Fi Admin Job - Delete Expired Tokens';
+
+SELECT @jobId = job_id FROM msdb.dbo.sysjobs WHERE (name = @jobName)
+IF (@jobId IS NOT NULL)
+BEGIN
+  EXEC msdb.dbo.sp_delete_jobstep @job_id = @jobId, @step_id = 1
+     EXEC msdb.dbo.sp_delete_job @jobId
+END
+
+GO
+
+-- *********************************************************************************
+-- *********************************************************************************
+-- Replace the loginName below with the login the job will run under.
+-- To find existing logins, run the following:
+-- EXEC sp_helplogins
+
+DECLARE @loginName NVARCHAR(1000) = N'SET_LOGIN_NAME';
+
+-- *********************************************************************************
+-- *********************************************************************************
+
+DECLARE @databaseName NVARCHAR(100) = N'EdFi_Admin';
+DECLARE @serverName NVARCHAR(100) = N'(local)'
+DECLARE @categoryClass NVARCHAR(1000) = N'JOB';
+DECLARE @categoryType NVARCHAR(1000) = N'LOCAL';
+DECLARE @categoryName NVARCHAR(1000) = N'[Ed-Fi Admin (' + @categoryType + ')]';
+DECLARE @jobId binary(16)
+DECLARE @jobStepId binary(16)
+DECLARE @jobName NVARCHAR(1000) = N'Ed-Fi Admin Job - Delete Expired Tokens';
+DECLARE @jobStepName NVARCHAR(1000) = N'Ed-Fi Admin Job Step - Delete Expired Tokens';
+DECLARE @minuteInterval int = 30
+DECLARE @jobScheduleName NVARCHAR(1000) = N'Ed-Fi Admin Job Schedule - Delete Expired Tokens every ' + CONVERT(nvarchar(100), @minuteInterval) + ' minutes';
+DECLARE @jobDescription NVARCHAR(1000) = N'Deletes expired client access tokens from the Ed-Fi Admin database';
+DECLARE @jobScheduleId uniqueidentifier = NEWID();
+DECLARE @jobStepCommand NVARCHAR(MAX) = N'
+DELETE
+From ClientAccessTokens
+WHERE Expiration < GETUTCDATE()
+'
+
+DECLARE @ReturnCode INT
+SELECT @ReturnCode = 0
+
+IF NOT EXISTS (SELECT name FROM msdb.dbo.syscategories WHERE name=@categoryName AND category_class=1)
+BEGIN
+EXEC @ReturnCode = msdb.dbo.sp_add_category @class=@categoryClass, @type=@categoryType, @name=@categoryName
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+
+END
+
+EXEC @ReturnCode =  msdb.dbo.sp_add_job @job_name=@jobName,
+  @enabled=1,
+  @notify_level_eventlog=0,
+  @notify_level_email=0,
+  @notify_level_netsend=0,
+  @notify_level_page=0,
+  @delete_level=0,
+  @description=@jobDescription,
+  @category_name=@categoryName,
+  @owner_login_name=@loginName, @job_id = @jobId OUTPUT
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+
+EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=@jobStepName,
+  @step_id=1,
+  @cmdexec_success_code=0,
+  @on_success_action=1,
+  @on_success_step_id=0,
+  @on_fail_action=2,
+  @on_fail_step_id=0,
+  @retry_attempts=0,
+  @retry_interval=0,
+  @os_run_priority=0, @subsystem=N'TSQL',
+  @command=@jobStepCommand,
+  @database_name=@databaseName,
+  @flags=0
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_update_job @job_id = @jobId, @start_step_id = 1
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_add_jobschedule @job_id=@jobId, @name=@jobScheduleName,
+  @enabled=1,
+  @freq_type=4,
+  @freq_interval=1,
+  @freq_subday_type=4,
+  @freq_subday_interval=@minuteInterval,
+  @freq_relative_interval=0,
+  @freq_recurrence_factor=0,
+  @active_start_date=20220223,
+  @active_end_date=99991231,
+  @active_start_time=0,
+  @active_end_time=235959,
+  @schedule_uid=@jobScheduleId
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+EXEC @ReturnCode = msdb.dbo.sp_add_jobserver @job_id = @jobId, @server_name = @serverName
+IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
+COMMIT TRANSACTION
+GOTO EndSave
+QuitWithRollback:
+    IF (@@TRANCOUNT > 0) ROLLBACK TRANSACTION
+EndSave:
+GO
+```
+
+</details>
+
+<details>
+
+<summary>PostgreSQL</summary>
+
+For Ed-Fi implementations running PostgreSQL, [pgAgent needs to be
+configured](https://www.pgadmin.org/docs/pgadmin4/development/pgagent_install.html)
+
+:::warning
+
+The following example SQL script would be executed with a
+connection to the postgreSQL maintenance database (which is called postgres
+by default)
+
+:::
+
+```sql
+DO $$
+DECLARE
+    jid integer;
+    scid integer;
+  job_name text = 'Delete Expired Tokens';
+  job_step_name text = 'Delete Expired Tokens Step';
+  database_name text = 'EdFi_Admin';
+  job_step_command text = 'DELETE FROM dbo.ClientAccessTokens WHERE expiration < now()';
+  job_schedule text = 'Delete expired tokens Schedule';
+BEGIN
+
+DELETE
+FROM pgagent.pga_job
+WHERE jobname = job_name;
+
+INSERT INTO pgagent.pga_job(
+    jobjclid, jobname, jobdesc, jobhostagent, jobenabled
+) VALUES (
+    1::integer, job_name, ''::text, ''::text, true
+) RETURNING jobid INTO jid;
+
+-- Steps
+-- Inserting a step (jobid: NULL)
+INSERT INTO pgagent.pga_jobstep (
+    jstjobid, jstname, jstenabled, jstkind,
+    jstconnstr, jstdbname, jstonerror,
+    jstcode, jstdesc
+) VALUES (
+    jid, job_step_name, true, 's'::character(1),
+    ''::text, database_name, 'f'::character(1),
+    job_step_command, ''::text
+) ;
+
+-- Schedules
+-- Inserting a schedule
+INSERT INTO pgagent.pga_schedule(
+    jscjobid, jscname, jscdesc, jscenabled,
+    jscstart,     jscminutes, jschours, jscweekdays, jscmonthdays, jscmonths
+) VALUES (
+    jid, job_schedule, ''::text, true,
+    '2022-02-23 15:07:00-07'::timestamp with time zone,
+    -- Minutes
+    ARRAY[false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false]::boolean[],
+    -- Hours
+    ARRAY[false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false]::boolean[],
+    -- Week days
+    ARRAY[false,false,false,false,false,false,false]::boolean[],
+    -- Month days
+    ARRAY[false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false]::boolean[],
+    -- Months
+    ARRAY[false,false,false,false,false,false,false,false,false,false,false,false]::boolean[]
+) RETURNING jscid INTO scid;
+END
+$$;
+```
+
+</details>
