@@ -51,60 +51,67 @@ The general design of the application is a pipeline that takes XML files as
 input. The pipeline has the following general flow:
 
 ```mermaid
-flowchart LR
+%%{init: {
+  'flowchart': {
+    'htmlLabels': true,
+    'diagramPadding': 10,
+    'nodeSpacing': 15,
+    'rankSpacing': 25,
+    'curve': 'basis'
+  },
+  'themeVariables': {
+    'fontSize': '12px',
+    'fontFamily': 'arial',
+    'subGraphTitleMargin': 8
+  }
+}}%%
+flowchart TD
     start([Start])
-    s1["Load Resource Hash Cash (if exists)"]
-    start --> s1
-    s2["Load JSON Metadata From Swagger (or Cache if Exists)"]
-    s1 --> s2
-    s3[Load XML Metadata from XSD]
-    s2 --> s3
-    s4["Load Resource Dependencies From Dependency Endpoint (Or Cache If Exists)"]
-    s3 --> s4
-    s5["Filter Input XML Files Based On Resources Defined in Current Dependency Level"]
-    s4 --> s5
-    s5 --> s6
+    s1["Load Resource Hash Cache<br/>(if exists)"]
+    s2["Load JSON Metadata From Swagger<br/>(or Cache if Exists)"]
+    s3["Load XML Metadata<br/>from XSD"]
+    s4["Load Resource Dependencies<br/>From Dependency Endpoint<br/>(Or Cache If Exists)"]
+    s5["Filter Input XML Files Based On<br/>Resources Defined in Current Dependency Level"]
 
-    subgraph For Each File
+    start --> s1 --> s2 --> s3 --> s4 --> s5
+    s5 --> FileProcess
+
+    subgraph FileProcess[For Each File]
         s6[Validate XML Against XSD]
-        s7[Cache All Possible Reference Targets]
-        s6 --> s7
-        s8[Preload Any Mandatory Reference Sources]
-        s7 --> s8
-        s9[Get All Resources for the Current Interchange File]
-        s8 --> s9
+        s7[Cache All Possible<br/>Reference Targets]
+        s8[Preload Any Mandatory<br/>Reference Sources]
+        s9[Get All Resources for the<br/>Current Interchange File]
+
+        s6 --> s7 --> s8 --> s9
     end
 
-    subgraph For each Resource
+    subgraph ResourceProcess[For each Resource]
         s10[Compute Resource Hash]
-        s9 --> s10
-        s11{Compare Hash to Stored Values}
-        s10 --> s11
-        s12[Add to Final Output Hash File]
-        s11 -- value exists --> s12
+        s11{Compare Hash to<br/>Stored Values}
+        s12[Add to Final Output<br/>Hash File]
         s13[Resource Processed]
-        s12 --> s13
-
         s14[Resolve XML References]
-        s11 -- value does not exist --> s14
         s15[Submit Resource to Web API]
-        s14 --> s15
-        s16{Web Api Call Succeeds}
-        s15 --> s16
-        s17{Max Retrys Reached}
-        s15 -- no --> s17
-        s17 -- no --> s15
-
-        s16 -- yes --> s12
-
+        s16{Web Api Call<br/>Succeeds?}
+        s17{Max Retries<br/>Reached?}
         s18[Log Error]
-        s17 -- yes --> s18
+
+        s10 --> s11
+        s11 -- "Value exists" --> s12
+        s11 -- "Value does not exist" --> s14
+        s14 --> s15
+        s15 --> s16
+        s16 -- "Yes" --> s12
+        s15 -- "No" --> s17
+        s17 -- "No" --> s15
+        s17 -- "Yes" --> s18
+        s12 --> s13
     end
 
-    endd([End])
-    s13 --> endd
+    FileProcess --> ResourceProcess
+    ResourceProcess --> endd([End])
 
-     style s6 stroke:#f66,stroke-width:2px,stroke-dasharray: 5 5
+    style s6 stroke:#f66,stroke-width:2px,stroke-dasharray: 5 5
 ```
 
 | Step | Action |
