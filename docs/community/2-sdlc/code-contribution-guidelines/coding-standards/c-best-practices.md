@@ -96,7 +96,7 @@ methods, fields and variables to reduce maintenance costs.
 
       ```csharp
       throw new Exception($"There is no data for resource '{resourceName}'.");
-       
+
       throw new Exception($"Type '{typeName}' not found in assembly '{assemblyName}'.");
       ```
 
@@ -214,7 +214,7 @@ Robert C. Martin are highly recommended reading.
        IEnumerable<Student> GetAll();
        IReadOnlyDictionary<string, Student> GetStudentByNameDictionary();
    }
-    
+
    // Potentially problematic for maintenance, due to semantics of returned values
    public interface IStudentDataProvider
    {

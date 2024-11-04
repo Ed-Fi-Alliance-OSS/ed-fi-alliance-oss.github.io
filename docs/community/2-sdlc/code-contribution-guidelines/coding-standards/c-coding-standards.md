@@ -564,7 +564,7 @@ using an object reference:
    public class A
    {
        private readonly B _b;
-    
+
        public A(B b)
     {
            _b = b ?? throw new ArgumentNullException(nameof(b));
@@ -580,21 +580,21 @@ using an object reference:
    public class A
    {
        private readonly ISomeInterface _b;
-    
+
        public A(ISomeInterface b)
     {
            _b = b;
        }
-    
+
        public bool DoSomething()
     {
           var c = _b.CallAMethod();
-    
+
           if (c == null)
        {
               throw new InvalidOperationException("Cannot calculate value due to dependent object returning a null value unexpectedly");
           }
-    
+
           return c.IsTrue;
        }
    }
@@ -609,16 +609,16 @@ using an object reference:
    public class A
    {
        private readonly ISomeInterface _b;
-    
+
        public A(ISomeInterface b)
        {
            _b = b;
        }
-    
+
        public bool DoSomething()
        {
           var c = _b.CallAMethod();
-    
+
           // Accept null values above, but treat as false
           return c?.IsTrue ?? false;
        }
