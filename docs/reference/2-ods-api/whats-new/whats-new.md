@@ -1,4 +1,4 @@
-# What's New in v7.2
+# What's New
 
 This section provides an overview of the new features in v7.2 of the Ed-Fi ODS /
 API, targeted for deployment starting in the 2024–2025 school year. A
@@ -31,13 +31,13 @@ version 7.2, the ODS/API implements the [Problem Details RFC
 that error messages are both machine-readable and user-friendly, providing clear
 and actionable information to developers and users. Key benefits include:
 
-- Standardization: Aligns with RFC 9457 for consistent machine-readable error
+* Standardization: Aligns with RFC 9457 for consistent machine-readable error
     responses across the API.
-- Improved User Experience: User-friendly messages help quickly understand and
+* Improved User Experience: User-friendly messages help quickly understand and
     address data submission issues.
-- Enhanced Traceability: Comprehensive error details and correlation IDs
+* Enhanced Traceability: Comprehensive error details and correlation IDs
     facilitate easier troubleshooting.
-- Efficient Data Submission: Reporting all validation errors in a single
+* Efficient Data Submission: Reporting all validation errors in a single
     response reduces the number of submission attempts.
 
 Overall, this feature significantly enhances the clarity, usability, and
