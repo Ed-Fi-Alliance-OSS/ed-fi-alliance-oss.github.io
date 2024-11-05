@@ -1,9 +1,11 @@
 # Single/Multi Tenant Installation Steps
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 This section describes how to set up the Ed-Fi ODS / API in single/multi tenant
 mode. Before you proceed, make sure you have installed the prerequisites listed
-in [Getting Started - Binary
-Installation](./readme.md).
+in [Getting Started - Binary Installation](./readme.md).
 
 ## Step 1. Download the Ed-Fi ODS / API Installer Packages
 
@@ -13,12 +15,12 @@ links:
 ### Package Links
 
 The required release packages to install the Ed-Fi ODS / API can be found at the
-links below. We recommend you stay current with the latest patch update that has
+links below. We recommend you stay current with the latest patch update that has
 been promoted to
 [release](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging?_a=feed&feed=EdFi%40Release).
 
 * [EdFi.Suite3.Installer.WebApi](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Installer.WebApi/versions/7.2.4)
-* [EdFi.Suite3.Installer.SwaggerUI](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Installer.SwaggerUI/versions/7.2.6) (Optional,
+* [EdFi.Suite3.Installer.SwaggerUI](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Installer.SwaggerUI/versions/7.2.6) (Optional,
     not for production)
 * [EdFi.Suite3.RestApi.Databases.5.1.0](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.RestApi.Databases.Standard.5.1.0/versions/7.2.1201)
 
@@ -41,7 +43,7 @@ in steps below. `[Net.ServicePointManager]::SecurityProtocol +=
 
 File paths can become lengthy within the ODS/API package components.
 In Windows, this may cause errors during deployment. To mitigate this,
-consider extracting the packages close to the root directory (e.g., `C:\temp`)
+consider extracting the packages close to the root directory (e.g., `C:\temp`)
 while running the installation steps below. Doing so minimizes the risk of
 encountering excessively long file paths. Alternatively, you can enable long
 paths in Windows.
@@ -50,9 +52,9 @@ paths in Windows.
 
 ## Step 2. Install the Ed-Fi Databases
 
-Extract the contents of the EdFi.Suite3.RestApi.Databases package. The paths in
+Extract the contents of the EdFi.Suite3.RestApi.Databases package. The paths in
 these instructions assume that the package was extracted to a folder with the
-name of the package (e.g., C:\\temp\\EdFi.Suite3.RestApi.Databases).
+name of the package (e.g., `C:\\temp\\EdFi.Suite3.RestApi.Databases`).
 
 ### Edit the configuration.json File
 
@@ -60,141 +62,134 @@ There are several settings in the configuration file that are left empty as they
 depend on whether you are opting of SQL Server or PostgreSQL backend. Update the
 settings by consulting the samples provided below.
 
-:::note
-
-<details>
-<summary>SQL Server</summary>
-
-```json
-  "ConnectionStrings": {
-      "EdFi_Ods": "server=(local);trusted_connection=True;database=EdFi_{0};Application Name=EdFi.Ods.WebApi",
-      "EdFi_Security": "server=(local);trusted_connection=True;database=EdFi_Security;persist security info=True;Application Name=EdFi.Ods.WebApi",
-      "EdFi_Admin": "server=(local);trusted_connection=True;database=EdFi_Admin;Application Name=EdFi.Ods.WebApi",
-      "EdFi_Master": "server=(local);trusted_connection=True;database=master;Application Name=EdFi.Ods.WebApi"
-  },
-  "InstallType": "SingleTenant",
-  "ApiSettings": {
-      "Engine": "SQLServer",
-      ...
-      "MinimalTemplateScript": "TPDMCoreMinimalTemplate",
-      "PopulatedTemplateScript": "TPDMCorePopulatedTemplate"
-  }
-```
-
-</details>
-
-<details>
-<summary>PostgreSQL</summary>
-
-```json
-  "ConnectionStrings": {
-      "EdFi_Ods": "host=localhost;port=5432;username=postgres;database=EdFi_{0};Application Name=EdFi.Ods.WebApi",
-      "EdFi_Security": "host=localhost;port=5432;username=postgres;database=EdFi_Security;Application Name=EdFi.Ods.WebApi",
-      "EdFi_Admin": "host=localhost;port=5432;username=postgres;database=EdFi_Admin;Application Name=EdFi.Ods.WebApi",
-      "EdFi_Master": "host=localhost;port=5432;username=postgres;database=postgres;Application Name=EdFi.Ods.WebApi"
-  },
-  "InstallType": "SingleTenant",
-  "ApiSettings": {
-      "Engine": "PostgreSQL",
-      ...
-      "MinimalTemplateScript": "TPDMCorePostgreSqlMinimalTemplate",
-      "PopulatedTemplateScript": "TPDMCorePostgreSqlPopulatedTemplate"
-  }
-```
-
-</details>
-
-<details>
-<summary>SQL Server (MultiTenant)</summary>
-
-```json
-"InstallType": "MultiTenant",
-"ApiSettings": {
-    "Engine": "SQLServer",
-    "OdsTokens": "Tenant1ODS;Tenant2ODS",
-    "Features": [
-      ...
-      {
-          "IsEnabled": true,
-          "Name": "MultiTenancy"
+<Tabs>
+  <TabItem value="MSSQL" label="SQL Server" default>
+    ```json
+    {
+      "ConnectionStrings": {
+          "EdFi_Ods": "server=(local);trusted_connection=True;database=EdFi_{0};Application Name=EdFi.Ods.WebApi",
+          "EdFi_Security": "server=(local);trusted_connection=True;database=EdFi_Security;persist security info=True;Application Name=EdFi.Ods.WebApi",
+          "EdFi_Admin": "server=(local);trusted_connection=True;database=EdFi_Admin;Application Name=EdFi.Ods.WebApi",
+          "EdFi_Master": "server=(local);trusted_connection=True;database=master;Application Name=EdFi.Ods.WebApi"
       },
-      ...
-    ]
-},
-"Tenants" : {
-  "Tenant1": {
-      "ConnectionStrings": {
-          "EdFi_Security":  "server=(local);trusted_connection=True;database=EdFi_Security_Tenant1;persist security info=True;application name=EdFi.Ods.WebApi;encrypt=False",
-          "EdFi_Admin":  "server=(local);trusted_connection=True;database=EdFi_Admin_Tenant1;application name=EdFi.Ods.WebApi;encrypt=False"
-      }
-    },
-  "Tenant2": {
-      "ConnectionStrings": {
-          "EdFi_Security":  "server=(local);trusted_connection=True;database=EdFi_Security_Tenant2;persist security info=True;application name=EdFi.Ods.WebApi;encrypt=False",
-          "EdFi_Admin":  "server=(local);trusted_connection=True;database=EdFi_Admin_Tenant2;application name=EdFi.Ods.WebApi;encrypt=False"
+      "InstallType": "SingleTenant",
+      "ApiSettings": {
+          "Engine": "SQLServer",
+          ...
+          "MinimalTemplateScript": "TPDMCoreMinimalTemplate",
+          "PopulatedTemplateScript": "TPDMCorePopulatedTemplate"
       }
     }
-}
-```
-
-</details>
-
-<details>
-<summary>PostgreSQL (MultiTenant)</summary>
-
-```json
-"InstallType": "MultiTenant",
-"ApiSettings": {
-    "Engine": "PostgreSQL",
-    "OdsTokens": "Tenant1ODS;Tenant2ODS",
-    "Features": [
-      ...
-      {
-          "IsEnabled": true,
-          "Name": "MultiTenancy"
+    ```
+  </TabItem>
+  <TabItem value="PostgreSQL" label="PostgreSQL">
+    ```json
+    {
+      "ConnectionStrings": {
+          "EdFi_Ods": "host=localhost;port=5432;username=postgres;database=EdFi_{0};Application Name=EdFi.Ods.WebApi",
+          "EdFi_Security": "host=localhost;port=5432;username=postgres;database=EdFi_Security;Application Name=EdFi.Ods.WebApi",
+          "EdFi_Admin": "host=localhost;port=5432;username=postgres;database=EdFi_Admin;Application Name=EdFi.Ods.WebApi",
+          "EdFi_Master": "host=localhost;port=5432;username=postgres;database=postgres;Application Name=EdFi.Ods.WebApi"
       },
-      ...
-    ]
-},
-"Tenants" : {
-  "Tenant1": {
-      "ConnectionStrings": {
-          "EdFi_Security":  "host=localhost;port=5432;username=postgres;database=EdFi_Security_Tenant1;application name=EdFi.Ods.WebApi",
-          "EdFi_Admin":  "host=localhost;port=5432;username=postgres;database=EdFi_Admin_Tenant1;application name=EdFi.Ods.WebApi"
-      }
-    },
-  "Tenant2": {
-      "ConnectionStrings": {
-          "EdFi_Security":  "host=localhost;port=5432;username=postgres;database=EdFi_Security_Tenant2;application name=EdFi.Ods.WebApi",
-          "EdFi_Admin":  "host=localhost;port=5432;username=postgres;database=EdFi_Admin_Tenant2;application name=EdFi.Ods.WebApi"
+      "InstallType": "SingleTenant",
+      "ApiSettings": {
+          "Engine": "PostgreSQL",
+          ...
+          "MinimalTemplateScript": "TPDMCorePostgreSqlMinimalTemplate",
+          "PopulatedTemplateScript": "TPDMCorePostgreSqlPopulatedTemplate"
       }
     }
-}
-```
+    ```
+  </TabItem>
+  <TabItem value="MSSQLMulti" label="SQL Server (MultiTenant)">
+    ```json
+    {
+      "InstallType": "MultiTenant",
+      "ApiSettings": {
+          "Engine": "SQLServer",
+          "OdsTokens": "Tenant1ODS;Tenant2ODS",
+          "Features": [
+            ...
+            {
+                "IsEnabled": true,
+                "Name": "MultiTenancy"
+            },
+            ...
+          ]
+      },
+      "Tenants" : {
+        "Tenant1": {
+            "ConnectionStrings": {
+                "EdFi_Security":  "server=(local);trusted_connection=True;database=EdFi_Security_Tenant1;persist security info=True;application name=EdFi.Ods.WebApi;encrypt=False",
+                "EdFi_Admin":  "server=(local);trusted_connection=True;database=EdFi_Admin_Tenant1;application name=EdFi.Ods.WebApi;encrypt=False"
+            }
+          },
+        "Tenant2": {
+            "ConnectionStrings": {
+                "EdFi_Security":  "server=(local);trusted_connection=True;database=EdFi_Security_Tenant2;persist security info=True;application name=EdFi.Ods.WebApi;encrypt=False",
+                "EdFi_Admin":  "server=(local);trusted_connection=True;database=EdFi_Admin_Tenant2;application name=EdFi.Ods.WebApi;encrypt=False"
+            }
+          }
+      }
+    }
+    ```
+  </TabItem>
+  <TabItem value="PostgreSQLMulti" label="PostgreSQL (MultiTenant)">
+    ```json
+    {
+      "InstallType": "MultiTenant",
+      "ApiSettings": {
+          "Engine": "PostgreSQL",
+          "OdsTokens": "Tenant1ODS;Tenant2ODS",
+          "Features": [
+            ...
+            {
+                "IsEnabled": true,
+                "Name": "MultiTenancy"
+            },
+            ...
+          ]
+      },
+      "Tenants" : {
+        "Tenant1": {
+            "ConnectionStrings": {
+                "EdFi_Security":  "host=localhost;port=5432;username=postgres;database=EdFi_Security_Tenant1;application name=EdFi.Ods.WebApi",
+                "EdFi_Admin":  "host=localhost;port=5432;username=postgres;database=EdFi_Admin_Tenant1;application name=EdFi.Ods.WebApi"
+            }
+          },
+        "Tenant2": {
+            "ConnectionStrings": {
+                "EdFi_Security":  "host=localhost;port=5432;username=postgres;database=EdFi_Security_Tenant2;application name=EdFi.Ods.WebApi",
+                "EdFi_Admin":  "host=localhost;port=5432;username=postgres;database=EdFi_Admin_Tenant2;application name=EdFi.Ods.WebApi"
+            }
+          }
+      }
+    }
+    ```
+  </TabItem>
+</Tabs>
 
-</details>
-
-:::
+:::tip
 
 <details>
-<summary>Optional: Click here to see custom extension Plugin deployment steps...</summary>
+<summary>Optional: custom extension Plugin deployment steps...</summary>
 
 #### Copy your extension plugin to database deployment package
 
 If you have an extension plugin package that you would like to be the deployed
-to Ed-Fi Databases, place the extracted contents of your extension plugin
+to Ed-Fi Databases, place the extracted contents of your extension plugin
 package in the extracted EdFi.Suite3.RestApi.Databases package
-under Ed-Fi-ODS-Implementation\\Plugin folder.
+under Ed-Fi-ODS-Implementation\\Plugin folder.
 
 ```none title="File listing (partial)"
-∨ edfi.suite3.restapi.databases
-  ∨ Ed-Fi-ODS-Implementation
-    ∨ Plugin
-      > [Your Extension Package Extract]
-      - homograph.ps1
-      - profiles.sample.ps1
-      - sample.ps1
-      - tpdm.ps1
+edfi.suite3.restapi.databases/
+├─ Ed-Fi-ODS-Implementation/
+│  ├─ Plugin/
+│    ├─ [Your Extension Package Extract]/
+│    ├─ homograph.ps1
+│    ├─ profiles.sample.ps1
+│    ├─ sample.ps1
+│    ├─ tpdm.ps1
 ```
 
 #### Enable your extension plugin in the deployment configuration
@@ -204,10 +199,10 @@ Scripts values to the following:
 
 ```json
 "Plugin": {
-    "Folder": "../../Plugin",
-    "Scripts": [
-    ]
-  }
+    "Folder": "../../Plugin",
+    "Scripts": [
+    ]
+  }
 
 ```
 
@@ -252,101 +247,84 @@ At a minimum, database connection info is required.
 
 Copy and modify the following parameter code to fit your connection information:
 
-:::note
-
-<details>
-<summary>SQL Server</summary>
-
-```powershell
-$parameters = @{
-    PackageVersion = "7.2.1201"
-    PackageName = "EdFi.Suite3.Ods.WebApi.Standard.5.1.0"
-    DbConnectionInfo = @{
-        Engine="SqlServer"
-        Server="localhost"
-        UseIntegratedSecurity=$true
-    }
-    UnEncryptedConnection = $true
-}
-```
-
-</details>
-
-<details>
-<summary>PostgreSQL</summary>
-
-```powershell
-$parameters = @{
-    PackageVersion = "7.2.1201"
-    PackageName = "EdFi.Suite3.Ods.WebApi.Standard.5.1.0"
-    DbConnectionInfo = @{
-        Engine="PostgreSQL"
-        Server="localhost"
-        Username="postgres"
-    }
-}
-```
-
-</details>
-
-<details>
-<summary>SQL Server (MultiTenant)</summary>
-
-```powershell
-$parameters = @{
-    IsMultiTenant = $true
-    PackageVersion = "7.2.1201"
-    PackageName = "EdFi.Suite3.Ods.WebApi.Standard.5.1.0"
-    DbConnectionInfo = @{
-        Engine="SqlServer"
-        Server="localhost"
-        UseIntegratedSecurity=$true
-    }
-    UnEncryptedConnection = $true
-    Tenants = @{
-        Tenant1 = @{
-            AdminDatabaseName = "EdFi_Admin_Tenant1"
-            SecurityDatabaseName = "EdFi_Security_Tenant1"
+<Tabs>
+  <TabItem value="MSSQL" label="SQL Server" default>
+    ```powershell
+    $parameters = @{
+        PackageVersion = "7.2.1201"
+        PackageName = "EdFi.Suite3.Ods.WebApi.Standard.5.1.0"
+        DbConnectionInfo = @{
+            Engine="SqlServer"
+            Server="localhost"
+            UseIntegratedSecurity=$true
         }
-        Tenant2 = @{
-            AdminDatabaseName = "EdFi_Admin_Tenant2"
-            SecurityDatabaseName = "EdFi_Security_Tenant2"
+        UnEncryptedConnection = $true
+    }
+    ```
+  </TabItem>
+  <TabItem value="PostgreSQL" label="PostgreSQL">
+    ```powershell
+    $parameters = @{
+        PackageVersion = "7.2.1201"
+        PackageName = "EdFi.Suite3.Ods.WebApi.Standard.5.1.0"
+        DbConnectionInfo = @{
+            Engine="PostgreSQL"
+            Server="localhost"
+            Username="postgres"
         }
     }
-}
-```
-
-</details>
-
-<details>
-<summary>PostgreSQL (MultiTenant)</summary>
-
-```powershell
-$parameters = @{
-    IsMultiTenant = $true
-    PackageVersion = "7.2.1201"
-    PackageName = "EdFi.Suite3.Ods.WebApi.Standard.5.1.0"
-    DbConnectionInfo = @{
-        Engine="PostgreSQL"
-        Server="localhost"
-        Username="postgres"
-    }
-    Tenants = @{
-        Tenant1 = @{
-            AdminDatabaseName = "EdFi_Admin_Tenant1"
-            SecurityDatabaseName = "EdFi_Security_Tenant1"
+    ```
+  </TabItem>
+  <TabItem value="PostgreSQLMultiTenant" label="SQL Server (MultiTenant)">
+    ```powershell
+    $parameters = @{
+        IsMultiTenant = $true
+        PackageVersion = "7.2.1201"
+        PackageName = "EdFi.Suite3.Ods.WebApi.Standard.5.1.0"
+        DbConnectionInfo = @{
+            Engine="SqlServer"
+            Server="localhost"
+            UseIntegratedSecurity=$true
         }
-        Tenant2 = @{
-            AdminDatabaseName = "EdFi_Admin_Tenant2"
-            SecurityDatabaseName = "EdFi_Security_Tenant2"
+        UnEncryptedConnection = $true
+        Tenants = @{
+            Tenant1 = @{
+                AdminDatabaseName = "EdFi_Admin_Tenant1"
+                SecurityDatabaseName = "EdFi_Security_Tenant1"
+            }
+            Tenant2 = @{
+                AdminDatabaseName = "EdFi_Admin_Tenant2"
+                SecurityDatabaseName = "EdFi_Security_Tenant2"
+            }
         }
     }
-}
-```
-
-</details>
-
-:::
+    ```
+  </TabItem>
+  <TabItem value="PostgreSQLMultiTenant" label="PostgreSQL (MultiTenant)">
+    ```powershell
+    $parameters = @{
+        IsMultiTenant = $true
+        PackageVersion = "7.2.1201"
+        PackageName = "EdFi.Suite3.Ods.WebApi.Standard.5.1.0"
+        DbConnectionInfo = @{
+            Engine="PostgreSQL"
+            Server="localhost"
+            Username="postgres"
+        }
+        Tenants = @{
+            Tenant1 = @{
+                AdminDatabaseName = "EdFi_Admin_Tenant1"
+                SecurityDatabaseName = "EdFi_Security_Tenant1"
+            }
+            Tenant2 = @{
+                AdminDatabaseName = "EdFi_Admin_Tenant2"
+                SecurityDatabaseName = "EdFi_Security_Tenant2"
+            }
+        }
+    }
+    ```
+  </TabItem>
+</Tabs>
 
 :::info Use of UnEncryptedConnection parameter
 
@@ -395,31 +373,30 @@ Install-EdFiOdsWebApi @parameters
 #### Copy your extension plugin to deployed WebAPI
 
 If you have an extension plugin package that you would like to be the deployed
-to Ed-Fi WebApi, place the extracted contents of your extension plugin package
+to Ed-Fi WebApi, place the extracted contents of your extension plugin package
 in C:\\inetpub\\Ed-Fi\\WebApi\\Plugin folder.
 
 ```none title="File listing (partial)"
-∨ inetpub
-  ∨ Ed-Fi
-    ∨ WebApi
-      ∨ Plugin
-        > [Your Extension Package Extract]
+inetpub/
+├─ Ed-Fi/
+│  ├─ WebApi/
+│    ├─ Plugin/
+│      ├─ [Your Extension Package Extract]
 ```
 
 #### Enable your extension plugin in appsettings.json
 
-Open the appsettings.json file found in C:\\inetpub\\Ed-Fi\\WebApi.
+Open the appsettings.json file found in C:\\inetpub\\Ed-Fi\\WebApi.
 
 Edit the Plugin section of the configuration file and update the Folder and
 Scripts values to the following:
 
 ```json
-
 "Plugin": {
-    "Folder": "./Plugin",
-    "Scripts": [
-    ]
-  }
+    "Folder": "./Plugin",
+    "Scripts": [
+    ]
+  }
 
 ```
 
@@ -442,7 +419,7 @@ Import-Module .\Install-EdFiOdsSwaggerUI.psm1
 ```
 
 The Swagger UI installer can take a number of parameters to tailor the install
-experience (more examples can be found in the Install-EdFiOdsWebApi.psm1 file).
+experience (more examples can be found in the Install-EdFiOdsWebApi.psm1 file).
 At a minimum, WebAPI connection information is required.
 
 Copy and modify the following parameter code to add your site name:
@@ -499,8 +476,8 @@ Secret](../../how-to-guides/how-to-configure-key-secret.md).
 
 Just a few more tasks to complete your installation:
 
-* Open IIS (Press the **Windows key** 🪟 on your keyboard, type **IIS**,
-  select **Internet Information Services (IIS)**, and press **Enter**.
+* Open IIS (Press the **Windows key** 🪟 on your keyboard, type **IIS**,
+  select **Internet Information Services (IIS)**, and press **Enter**.
 * **Right-click** on the server (alternatively, you can right-click the EdFi
   web site), and select **Stop**.
 * **Right-click** the server (or EdFi website) again and select **Start**.
@@ -515,4 +492,4 @@ You are now ready to use the Ed-Fi ODS / API. The following URLs are available:
 
 ## Contents
 
-Find out more about how to begin using the Ed-Fi ODS / API:
+Find out more about how to begin using the Ed-Fi ODS / API:

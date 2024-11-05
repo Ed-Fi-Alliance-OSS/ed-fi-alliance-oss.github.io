@@ -418,16 +418,16 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 <Tabs>
-  <TabItem value="PostgreSQL" label="PostgreSQL" default>
-    ```powershell
-    .\transform.ps1 .\Security-Policies\MySecurityPolicy.xml `
-      .\Generated\MySecurityPolicy-Postgres.sql -DatabaseEngine PostgreSql
-    ```
-  </TabItem>
   <TabItem value="MSSQL" label="SQL Server" default>
     ```powershell
     .\transform.ps1 .\Security-Policies\MySecurityPolicy.xml `
       .\Generated\MySecurityPolicy-SqlServer.sql -DatabaseEngine SqlServer
+    ```
+  </TabItem>
+  <TabItem value="PostgreSQL" label="PostgreSQL">
+    ```powershell
+    .\transform.ps1 .\Security-Policies\MySecurityPolicy.xml `
+      .\Generated\MySecurityPolicy-Postgres.sql -DatabaseEngine PostgreSql
     ```
   </TabItem>
 </Tabs>
