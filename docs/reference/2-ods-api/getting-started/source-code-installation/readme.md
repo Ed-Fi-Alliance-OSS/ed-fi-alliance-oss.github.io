@@ -14,7 +14,7 @@ Installation](../binary-installation/readme.md).
 
 Ensure that the following components are installed:
 
-* **PowerShell 5.0,7.2,7.3.** PowerShell is used to initialize the development
+* **PowerShell 5.0, 7.2, or 7.3.** PowerShell is used to initialize the development
     environment.
 * **.NET 8.0 SDK**. The .NET 8.0 Software Developer Kit is required for
     compiling the solution.

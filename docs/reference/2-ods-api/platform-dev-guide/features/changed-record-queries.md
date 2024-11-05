@@ -52,7 +52,7 @@ provided scripts. These scripts will set up a new database schema and all the
 changes necessary to support change queries. All scripts supporting change
 queries will exist under a subfolder named "changes" inside the "Ods" target
 database folder (i.e.,
-\\Ed-Fi-ODS\\Application\\EdFi.Ods.Standard\\`(StandardVersion)`\\Artifacts\\MsSql\\Structure\\Ods\\Changes).
+`Ed-Fi-ODS\Application\EdFi.Ods.Standard\<StandardVersion>\Artifacts\MsSql\Structure\Ods\Changes`).
 Scripts will be generated for this feature by MetaEd for Ed-Fi Extension
 projects as well.
 
@@ -76,9 +76,9 @@ ODS database(s). The exact steps depend on your deployment method:
     updates to enable change queries functionality.
 * If the built-in deployment scripts are not being used, all scripts under the
     "changes" inside the "Ods" target database folder
-    (Ed-Fi-ODS\\Application\\EdFi.Ods.Standard\\`(StandardVersion)`\\Artifacts\\MsSql\\Structure\\Ods\\Changes)
+    (`Ed-Fi-ODS\Application\EdFi.Ods.Standard\<StandardVersion>\Artifacts\MsSql\Structure\Ods\Changes`)
     must be run against the ODS, including the extension version of the scripts
-    (Ed-Fi-ODS-Implementation\\Application\\(YourExtensionProject)\\Versions\\(ExtensionVersion)\\Standard\\`(StandardVersion)`\\Artifacts\\MsSql\\Structure\\Ods\\Changes).
+    (`Ed-Fi-ODS-Implementation\Application\<YourExtensionProject>\Versions\<ExtensionVersion>\Standard\<StandardVersion>\Artifacts\MsSql\Structure\Ods\Changes`).
 
 ## Disabling Change Queries
 

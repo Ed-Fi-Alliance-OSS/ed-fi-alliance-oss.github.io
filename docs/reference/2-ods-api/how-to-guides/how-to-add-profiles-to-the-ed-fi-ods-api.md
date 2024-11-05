@@ -59,7 +59,7 @@ Ed-Fi-ODS\\Application\\EdFi.Ods.Common\\Metadata\\Schemas\\Ed-Fi-ODS-API-Profil
 
 Profiles in the EdFi\_Admin database are refreshed dynamically by the Ed-Fi ODS
 / API each time the profiles cache expires. The expiration time for the
-profiles cache can be adjusted in the appsettings.json file, as shown below.
+profiles cache can be adjusted in the `appsettings.json` file, as shown below.
 
 ```json
 "Caching": {
@@ -73,7 +73,7 @@ profiles cache can be adjusted in the appsettings.json file, as shown below.
 ## Step 2. Verify that the API Profiles feature is enabled
 
 Ensure that the API Profiles feature is enabled by looking at the
-appsettings.json file in the WebApi project, which can be found under the “Entry
+`appsettings.json` file in the WebApi project, which can be found under the “Entry
 Points” folder in the solution.
 
 ```json
@@ -220,13 +220,7 @@ ProfileDefinition column.
 :::note
 
 The following GitHub link contains source files for this Profile
-sample:
-
-* [ODS/API
+sample: [ODS/API
 7.2](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v7.2/Samples/Project-Profiles-Template)
-* [ODS/API
-7.1](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v7.1/Samples/Project-Profiles-Template)
-* [ODS/API
-6.2](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v6.2/Samples/Project-Profiles-Template)
 
 :::

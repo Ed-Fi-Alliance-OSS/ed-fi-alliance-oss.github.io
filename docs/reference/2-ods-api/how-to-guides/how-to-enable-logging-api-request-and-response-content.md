@@ -68,10 +68,12 @@ log4net configuration file for the web API, typically either
 log4net.development.config or log4net.config.
 
 :::info
+
 By default, only requests that result in an exception are logged. To log the
 request/response content of all calls to the web API, change `<threshold
 value="ERROR" />` to `<threshold value="INFO" />` in both of the places it
 appears in the log4net configuration.
+
 :::
 
 ### Using MS SQL Server

@@ -113,15 +113,17 @@ In this example our extension is in a folder called "StudentTranscript"
 <summary>Listing of files</summary>
 
 ```none
-∨ StudentTranscript
-  > Association
-  > Choice
-  > Common
-  > Descriptor
-  > Domain
-  > DomainEntity
-  > Enumeration
-  > Interchange
+StudentTranscript/
+├─ Association/
+├─ Choice/
+├─ Common/
+├─ Descriptor/
+├─ Domain/
+├─ DomainEntity/
+├─ Enumeration/
+├─ Interchange/
+├─ Shared/
+├─ package.json
 ```
 
 </details>
@@ -325,23 +327,25 @@ At this point, your project in the MetaEd IDE should look like the following:
 <summary>Listing of files</summary>
 
 ```none
-∨ StudentTranscript
-  > Association
-  > Choice
-  > Common
-    - ClassRankingExtensions.metaed
-  > Descriptor
-    - InstitutionControl.metaed
-    - InstitutionLevel.metaed
-    - SpecialEducationGraduationStatus.metaed
-    - SubmissionCertification.metaed
-  ∨ Domain
-  ∨ DomainEntity
-    - PostSecondaryOrganizations.metaed
-    - StudentAcademicRecordExtension.metaed
-  > Enumeration
-  > Interchange
-    - StudentTranscript.metaed
+StudentTranscript/
+├─ Association/
+├─ Choice/
+├─ Common/
+| ├─ ClassRankingExtensions.metaed
+├─ Descriptor/
+| ├─ InstitutionControl.metaed
+| ├─ InstitutionLevel.metaed
+| ├─ SpecialEducationGraduationStatus.metaed
+| ├─ SubmissionCertification.metaed
+├─ Domain/
+├─ DomainEntity/
+| ├─ PostSecondaryOrganizations.metaed
+| ├─ StudentAcademicRecordExtension.metaed
+├─ Enumeration/
+├─ Interchange/
+| ├─ StudentTranscript.metaed
+├─ Shared/
+├─ package.json
 ```
 
 </details>
@@ -368,34 +372,34 @@ dictionaries that add your extension definitions to the ODS / API documentation.
 <summary>Listing of files</summary>
 
 ```none
-∨ StudentTranscript
-  > Association
-  > Choice
-  > Common
-    - ClassRankingExtensions.metaed
-  > Descriptor
-    - InstitutionControl.metaed
-    - InstitutionLevel.metaed
-    - SpecialEducationGraduationStatus.metaed
-    - SubmissionCertification.metaed
-  ∨ Domain
-  ∨ DomainEntity
-    - PostSecondaryOrganizations.metaed
-    - StudentAcademicRecordExtension.metaed
-  > Enumeration
-  > Interchange
-    - StudentTranscript.metaed
-  > MetaEdOutput                            <----- NEW DIRECTORY
-    > Documentation
-    > EdFi
-    ∨ SampleStudentTranscript
-      ∨ ApiMetadata
-        - ApiModel-EXTENSION.json
-      > Database
-      > Interchange
-      > XSD
-  > Shared
-  - package.json
+StudentTranscript/
+├─ Association/
+├─ Choice/
+├─ Common/
+| ├─ ClassRankingExtensions.metaed
+├─ Descriptor/
+| ├─ InstitutionControl.metaed
+| ├─ InstitutionLevel.metaed
+| ├─ SpecialEducationGraduationStatus.metaed
+| ├─ SubmissionCertification.metaed
+├─ Domain/
+├─ DomainEntity/
+| ├─ PostSecondaryOrganizations.metaed
+| ├─ StudentAcademicRecordExtension.metaed
+├─ Enumeration/
+├─ Interchange/
+| ├─ StudentTranscript.metaed
+├─ MetaEdOutput/                            <----- NEW DIRECTORY
+| ├─ Documentation/
+| ├─ EdFi/
+| ├─ SampleStudentTranscript/
+|   ├─ ApiMetadata/
+|     ├─ ApiModel-EXTENSION.json
+|   ├─ Database/
+|   ├─ Interchange/
+|   ├─ XSD/
+├─ Shared/
+├─ package.json
 ```
 
 </details>

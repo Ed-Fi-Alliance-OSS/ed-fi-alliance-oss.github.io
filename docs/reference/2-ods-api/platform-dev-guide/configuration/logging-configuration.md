@@ -147,7 +147,7 @@ troubleshooting.
 To further aid production troubleshooting, RequestResponseDetailsLogger can be
 configured to log request/response JSON to the ODS associated with the API
 request. See [How To: Enable logging API request and response
-content](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V72/pages/23301585/How+To%3A+Enable+logging+API+request+and+response+content)
+content](../../how-to-guides/how-to-enable-logging-api-request-and-response-content.md)
 for details.
 
 ## Correlation ID

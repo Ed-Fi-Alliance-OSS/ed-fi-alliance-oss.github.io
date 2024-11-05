@@ -1,18 +1,18 @@
 # Authorization
 
-Authorization takes place after authentication is established. If you're reading
-this, you probably already know that the purpose of authorization is to
-establish that a particular user has rights to work with a particular system
-function or a specific piece of information. This section describes the
-fundamentals of authorization in connecting with an Ed-Fi API. The core concepts
-to understand are how tokens and profiles are used.
+Authorization takes place after [authentication](./authentication.md) is
+established. If you're reading this, you probably already know that the purpose
+of authorization is to establish that a particular user has rights to work with
+a particular system function or a specific piece of information. This section
+describes the fundamentals of authorization in connecting with an Ed-Fi API. The
+core concepts to understand are how tokens and profiles are used.
 
 ## Tokens & Profiles
 
 With each request made to the API, the token obtained from the authentication
-process must be passed in an
-HTTP[1](https://edfi.atlassian.net/wiki/pages/resumedraft.action?draftId=23299377#Authorization-footnote-1)
-header, like so:
+process must be passed in an [HTTP
+header](https://edfi.atlassian.net/wiki/pages/resumedraft.action?draftId=23299377#Authorization-footnote-1)
+like so:
 
 ```text
 Authorization: Bearer <token_value>
@@ -20,6 +20,14 @@ Authorization: Bearer <token_value>
 
 The Ed-Fi API uses this token to identify the caller and determine the
 permissions that apply to each of the accessible API resources.
+
+:::info
+
+Throughout this documentation, we generally use "HTTP" to describe specific uses of that
+protocol. As noted elsewhere, the traffic between systems containing production
+data is always over HTTPS.
+
+:::
 
 ## Authorization Details
 
@@ -121,7 +129,10 @@ refresher on how to acquire a token.
 The snippet below shows an example POST:
 
 ```powershell
-$response = Invoke-RestMethod -Method Post -Uri "https://api.ed-fi.org/v7.2/api/oauth/token_info" -Headers @{ "Authorization" = "Bearer 385432d854194fd5bb09fe08092353b5"} -Body @{ "token" = "385432d854194fd5bb09fe08092353b5"; }
+$response = Invoke-RestMethod -Method Post -Uri "https://api.ed-fi.org/v7.2/api/oauth/token_info" `
+  -Headers @{ "Authorization" = "Bearer 385432d854194fd5bb09fe08092353b5"}
+  -Body @{ "token" = "385432d854194fd5bb09fe08092353b5"; }
+
 $response | ConvertTo-Json
 ```
 
@@ -184,14 +195,8 @@ The snippet below shows a sample response:
 Now that you've seen how to authenticate and authorize a client application,
 let's look at how to design an elegant solution by trapping errors and
 leveraging best practices learned from hard-won experience. The [Error Handling
-& Best
-Practices](./error-handling-best-practices.md)
-section walks you through the details.
-
-[footnote-1](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V72/pages/23299377/Authorization#Authorization-footnote-1) Throughout
-this documentation, we generally use "HTTP" to describe specific uses of that
-protocol. As noted elsewhere, the traffic between systems containing production
-data is always over HTTPS.
+&amp; Best Practices](./error-handling-best-practices.md) section walks you through
+the details.
 
 :::note
 

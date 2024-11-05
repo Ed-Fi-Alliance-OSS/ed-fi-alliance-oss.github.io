@@ -30,9 +30,8 @@ OdsInstanceId (as defined in the EdFi\_Admin database). Note that in the example
 below, it shows an explicit database segmentation approach based on school year
 provided by the API client in the base route of the API.
 
-#### appsettings\_odsinstances.json
-
-```json
+```json title="snippet from appsettings.json"
+...
 "OdsInstances": {
   "3": {
     "ConnectionString": "Server=(local); Database=EdFi_Ods_2022; Encrypt=False; Trusted_Connection=True; Application Name=EdFi.Ods.WebApi;",
@@ -50,6 +49,7 @@ provided by the API client in the base route of the API.
     }
   }
 }
+...
 ```
 
 ### Multi-Tenant Configuration
@@ -59,9 +59,8 @@ defined in an "OdsInstances" section under the "Tenants" section of the
 configuration, keyed by tenant-specific OdsInstanceId (as defined in the
 tenant's EdFi\_Admin database), as follows:
 
-#### appsettings\_tenants.json
-
-```json
+```json title="snippet from appsettings.json"
+...
 "Tenants": {
   "Tenant1": {
     "ConnectionStrings": {
@@ -90,6 +89,7 @@ tenant's EdFi\_Admin database), as follows:
     ...
   }
 }
+...
 ```
 
 ## Examples

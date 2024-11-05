@@ -5,17 +5,16 @@ settings. Some configuration values, such as database connection strings, must
 be supplied for every instance. Others are optional and change the behavior of
 the system. This section provides an overview of the primary files that contain
 configuration settings. Main configuration location is in the EdFi.Ods.WebApi
-project (found in the Ed-Fi-ODS-Implementation\\Application\\EdFi.Ods.WebApi
+project (found in the `Ed-Fi-ODS-Implementation\Application\EdFi.Ods.WebApi`
 directory of the ODS / API solution) contains the primary configurations for an
-instance of the Ed-Fi ODS / API. By customizing the appsettings.json you should
-be able to modify the API to suit your needs. appsettings.json includes settings
-for database connection strings and the settings that enable various
+instance of the Ed-Fi ODS / API. By customizing the `appsettings.json` you
+should be able to modify the API to suit your needs. `appsettings.json` includes
+settings for database connection strings and the settings that enable various
 configurable features. For more detail on the configuration files and the
-specific values, see the [Configuration
-Details](./configuration-details.md) section of this documentation. log4net.config includes logging configurations for the Ed-Fi
-ODS / API, see [Logging
-Configuration](./logging-configuration.md) section
-for details.
+specific values, see the [Configuration Details](./configuration-details.md)
+section of this documentation. `log4net.config` includes logging configurations
+for the Ed-Fi ODS / API, see [Logging
+Configuration](./logging-configuration.md) section for details.
 
 ## Security Configuration
 

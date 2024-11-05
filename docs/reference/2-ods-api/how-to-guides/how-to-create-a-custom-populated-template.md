@@ -30,8 +30,8 @@ Before you begin:
 
 ### Step 1: Import the Create Populated Template Module
 
-From a PowerShell session, import `<source directory>`
-\\Ed-Fi-ODS-Implementation\\DatabaseTemplate\\Modules\\create-populated-template.psm1.
+From a PowerShell session, import `<source
+directory>\Ed-Fi-ODS-Implementation\DatabaseTemplate\Modules\create-populated-template.psm1`.
 
 #### Importing the Populated Template Module
 
@@ -164,7 +164,8 @@ If you have already created a backup using the
    destination,** click **Remove**, then click **Add** to create the backup.
 3. In the Select Backup Destination Dialog, select **...**
 
-The database must be placed in `<source directory>\\Ed\-Fi\-ODS\-Implementation\\DatabaseTemplate\\Database` and the
+The database must be placed in `<source
+directory>\\Ed\-Fi\-ODS\-Implementation\\DatabaseTemplate\\Database` and the
 file name **must end in .bak** in order for the initialize development and
 deploy scripts to pick it up.
 
@@ -176,7 +177,7 @@ already been created. You can also create a new one by running the
 or by running `nuget spec`.
 
 The nuspec file created by the `New-PopulatedTemplateNuspec` script will be
-created at `<source directory>\\Ed-Fi-ODS-Implementation\\DatabaseTemplate\\Database\\Populated.Template.nuspec`.
+created at `<source directory>\Ed-Fi-ODS-Implementation\DatabaseTemplate\Database\Populated.Template.nuspec`.
 
 #### Populated.Template.nuspec
 
@@ -296,16 +297,16 @@ $params = @{
 ```
 
 This script must be placed in the folder: `<source
-directory>\\Ed-Fi-ODS-Implementation\\DatabaseTemplate\\Scripts\\`.
+directory>\Ed-Fi-ODS-Implementation\DatabaseTemplate\Scripts\`.
 
 In our example, we are reusing the `<source
-directory>\\Ed-Fi-ODS-Implementation\\DatabaseTemplate\\Modules\\get-populated-from-nuget.ps1`
+directory>\Ed-Fi-ODS-Implementation\DatabaseTemplate\Modules\get-populated-from-nuget.ps1`
 script. This script will download the specified NuGet package name and version
 from the specified source and place it in the Database folder. Alternatively, we
 could have written a custom script that would get a .bak file from the web or
 from a shared drive. The source selection script's only requirement is that it
 places a .bak file in the folder: `<source
-directory>\\Ed-Fi-ODS-Implementation\\DatabaseTemplate\\Database\\`. How it
+directory>\Ed-Fi-ODS-Implementation\DatabaseTemplate\Database\`. How it
 accomplishes this is left up to the developer. You can have multiple scripts
 saved here but only the ones specified in the config files in the next step will
 be run.
@@ -322,7 +323,7 @@ else in the Database folder is not recommended.
 
 Add the "ApiSettings:PopulatedTemplateScript" key to the appSettings section of
 the file: `<source
-directory>\\Ed-Fi-ODS-Implementation\\Application\\EdFi.Ods.WebApi\\appsettings.json`.
+directory>\Ed-Fi-ODS-Implementation\Application\EdFi.Ods.WebApi\appsettings.json`.
 
 #### appsettings.json Example
 
@@ -341,11 +342,11 @@ populated template.
 
 If you have an environment (usually staging or QA) that also deploys the
 populated template you will need to add the same key to the file:`<source
-directory>\\Ed-Fi-ODS-Implementation\\Scripts\\NuGet\\EdFi.RestApi.Databases\\configuration.json`.
+directory>\Ed-Fi-ODS-Implementation\Scripts\NuGet\EdFi.RestApi.Databases\configuration.json`.
 
 ### Step 3: Run Reset-PopulatedTemplate
 
-In a PowerShell session navigate to `<source directory>\\Ed-Fi-ODS-Implementation\\`.
+In a PowerShell session navigate to `<source directory>\Ed-Fi-ODS-Implementation\`.
 
 Execute `.\Initialize-PowershellForDevelopment.ps1`.
 
@@ -380,10 +381,8 @@ above.
 
 :::note
 
-Sample XML files can be found in the Ed-Fi-Data-Standard repository:
-
-* [Data Standard 5.1](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v5.1.0)
-* [Data Standard 5.0](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v5.0.0)
-* [Data Standard 4.0](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v4.0.0)
+Sample XML files can be found in the Ed-Fi-Data-Standard repository: [Data
+Standard
+5.1](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v5.1.0).
 
 :::

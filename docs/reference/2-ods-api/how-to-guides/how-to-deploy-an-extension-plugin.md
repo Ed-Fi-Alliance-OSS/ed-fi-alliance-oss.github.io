@@ -89,13 +89,15 @@ Install-Plugins done in 10s.
 After the successful execution of initdev, you will find the sample extension in
 `<source directory>`\\Ed-Fi-ODS-Implementation\\Plugin folder.
 
-```none title="Ed-Fi-ODS-Implementation/Plugin Directory Listing"
-> EdFi.Suite3.Ods.Extensions.Sample.7.2.24
-> EdFi.Suite3.Ods.Extensions.TPDM.Core.1.1.0.7.2.159
-- homograph.ps1
-- profiles.sample.ps1
-- sample.ps1
-- tpdm.ps1
+```none title="Directory Listing"
+Ed-Fi-ODS-Implementation/
+├─ Plugin/
+| ├─ EdFi.Suite3.Ods.Extensions.Sample.7.2.24/
+| ├─ EdFi.Suite3.Ods.Extensions.TPDM.Core.1.1.0.7.2.159/
+| ├─ homograph.ps1
+| ├─ profiles.sample.ps1
+| ├─ sample.ps1
+| ├─ tpdm.ps1
 ```
 
 Run the "Ed-Fi-Ods.sln" solution from Visual Studio and verify that the sample
@@ -155,33 +157,33 @@ You can also verify the Sample API endpoints in the Swagger UI documentation:
 
 * Update configuration.json, for plugin settings as shown below:
 
-    ```json
-     "Plugin": {
-            "Folder": "../../Plugin",
-            "Scripts": [ "tpdm", "sample" ]
-        }
-    ```
+  ```json
+  "Plugin": {
+        "Folder": "../../Plugin",
+        "Scripts": [ "tpdm", "sample" ]
+    }
+  ```
 
 #### Step 3. Run Deployment.psm1 with Dynamic Plugins
 
 * From PowerShell, navigate to the download directory and run the following
-    command to install sample extension on your existing ODS database:
+  command to install sample extension on your existing ODS database:
 
-    ```powershell
-    Import-Module .\Deployment.psm1
-    Initialize-DeploymentEnvironment
+  ```powershell
+  Import-Module .\Deployment.psm1
+  Initialize-DeploymentEnvironment
 
-    <trimmed output...>
+  <trimmed output...>
 
-    Duration Task
-    -------- ----
-    00:00.95 Install-Plugins
-    00:01.49 Reset-AdminDatabase
-    00:01.49 Reset-SecurityDatabase
-    00:13.08 Reset-OdsDatabase
-    -        -
-    00:17:55 InitializeDeploymentEnvironment
-    ```
+  Duration Task
+  -------- ----
+  00:00.95 Install-Plugins
+  00:01.49 Reset-AdminDatabase
+  00:01.49 Reset-SecurityDatabase
+  00:13.08 Reset-OdsDatabase
+  -        -
+  00:17:55 InitializeDeploymentEnvironment
+  ```
 
 * After the successful execution, you will find sample schema tables in the
   deployed ODS database, under the `sample` schema.
@@ -191,25 +193,30 @@ You can also verify the Sample API endpoints in the Swagger UI documentation:
 #### Step 4. Download EdFi.Suite3.Ods.Extensions.Sample
 
 * Download the EdFi.Suite3.Ods.Extensions.Sample package from [Binary
-    Releases](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging?_a=package&feed=EdFi%40Release&view=overview&package=EdFi.Suite3.Ods.Extensions.Sample&protocolType=NuGet).
+  Releases](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging?_a=package&feed=EdFi%40Release&view=overview&package=EdFi.Suite3.Ods.Extensions.Sample&protocolType=NuGet).
 * Change extension from `nupkg` to `zip`.
 * Right-click the zip, click unblock, and unzip the package.
-* Copy the extracted folder and paste it in C:\\inetpub\\Ed-Fi\\WebApi\\Plugin
-    in your WebAPI directory.
+* Copy the extracted folder and paste it in `C:\inetpub\Ed-Fi\WebApi\Plugin` in
+  your WebAPI directory.
 
-    ```none title="c:\inetpub\Ed-Fi\WebApi\Plugin File Listing"
-    > EdFi.Suite3.Ods.Extensions.Sample.7.2.24
-    > EdFi.Suite3.Ods.Extensions.TPDM.Core.1.1.0.7.2.159
-    ```
+  ```none title="c:\inetpub\Ed-Fi\WebApi\Plugin File Listing"
+  c:/
+  ├─ inetpub/
+  | ├─ Ed-Fi/
+  |   ├─ WebApi/
+  |     ├─ Plugin
+  |       ├─ EdFi.Suite3.Ods.Extensions.Sample.7.2.24/
+  |       ├─ EdFi.Suite3.Ods.Extensions.TPDM.Core.1.1.0.7.2.159/
+  ```
 
 * Update appsettings.json, for plugin settings as shown below:
 
-    ```json
-     "Plugin": {
-            "Folder": "./Plugin",
-            "Scripts": [ "tpdm", "sample" ]
-        }
-    ```
+  ```json
+    "Plugin": {
+          "Folder": "./Plugin",
+          "Scripts": [ "tpdm", "sample" ]
+      }
+  ```
 
 * Restart your IIS instance.
 
@@ -217,8 +224,7 @@ You can also verify the Sample API endpoints in the Swagger UI documentation:
 
 * Browse to the Discovery API endpoint and verify that sample data models are
   listed, as described above.
-
 * You can also verify the Sample extension API endpoints in the Swagger UI
-    documentation.
+  documentation.
 
 ![Sample Plugin Swagger UI](/img/reference/ods-api/image2021-10-26_16-58-21.png)

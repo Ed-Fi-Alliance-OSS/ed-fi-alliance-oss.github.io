@@ -101,23 +101,26 @@ For this example, place your extension in a folder called
 <details>
 <summary>Listing of files</summary>
 
+Note that this represents two folders open at the same time in VS Code.
+
 ```none
-∨ ed-fi-model-5.1
-  > Association
-  > Choice
-  > Common
-  > Descriptor
-  > Domain
-  > DomainEntity
-  > Enumeration
-  > Interchange
-  > Shared
-  - package.json
-  - README.md
-∨ AlternativeEducationProgram
-  > Association
-  > Descriptor
-  - package.json
+ed-fi-model-5.1/
+├─ Association/
+├─ Choice/
+├─ Common/
+├─ Descriptor/
+├─ Domain/
+├─ DomainEntity/
+├─ Enumeration/
+├─ Interchange/
+├─ Shared/
+├─ package.json
+├─ README.md
+
+AlternativeEducationProgram
+├─ Association/
+├─ Descriptor/
+├─ package.json
 ```
 
 </details>
@@ -161,12 +164,13 @@ file in the tree view to open it.
 <summary>Listing of files</summary>
 
 ```none
-> ed-fi-model-5.1
-∨ AlternativeEducationProgram
-  ∨ Association
-    - StudentAlternativeEducationProgramAssociation.metaed
-  > Descriptor
-  - package.json
+ed-fi-model-5.1/
+
+AlternativeEducationProgram
+├─ Association/
+| ├─ StudentAlternativeEducationProgramAssociation.metaed
+├─ Descriptor/
+├─ package.json
 ```
 
 </details>
@@ -177,7 +181,7 @@ Type or copy and paste the code listing below into your MetaEd file. Note that
 an error will be listed in the linter panel until the referenced Descriptor is
 created in a future step.
 
-<details  >
+<details>
 <summary>MetaEd Source for StudentAlternativeEducationProgramAssociation Association</summary>
 
 ```none
@@ -240,21 +244,22 @@ the ODS / API documentation.
 <summary>Listing of files</summary>
 
 ```none
-> ed-fi-model-5.1
-∨ AlternativeEducationProgram
-  ∨ Association
-    - StudentAlternativeEducationProgramAssociation.metaed
-  > Descriptor
-  > MetaEdOutput                            <----- NEW DIRECTORY
-    > Documentation
-    > EdFi
-    ∨ SampleAlternativeEducationProgram
-      ∨ ApiMetadata
-        - ApiModel-EXTENSION.json
-      > Database
-      > Interchange
-      > XSD
-  - package.json
+ed-fi-model-5.1/
+
+AlternativeEducationProgram/
+├─ Association/
+| ├─ StudentAlternativeEducationProgramAssociation.metaed
+├─ Descriptor/
+├─ MetaEdOutput                            <----- NEW DIRECTORY
+| ├─ Documentation/
+| ├─ EdFi/
+| ├─ SampleAlternativeEducationProgram/
+|   ├─ ApiMetadata/
+|     ├─ ApiModel-EXTENSION.json
+|   ├─ Database/
+|   ├─ Interchange/
+|   ├─ XSD/
+├─ package.json
 ```
 
 </details>

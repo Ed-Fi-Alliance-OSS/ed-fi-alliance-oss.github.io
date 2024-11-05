@@ -83,7 +83,7 @@ tool with `--help` parameter.
 
 | Parameter | Description | Non-Destructive API | Non-Destructive SDK | Destructive SDK |
 | --- | --- | --- | --- | --- |
-| `b, baseurl` | The base url used to derive api, metadata, oauth, and dependency urls (e.g., [http://server](http://server)). If provided, `apiurl, metadataurl and oauthurl` parameters can be skipped. | Required | Required | Required |
+| `b, baseurl` | The base url used to derive api, metadata, oauth, and dependency urls (e.g., `http://server`. If provided, `apiurl, metadataurl and oauthurl` parameters can be skipped. | Required | Required | Required |
 | `k, key` | The web API OAuth key | Required | Required | Required |
 | `l, library` | The complete path to a compiled Ed-Fi SDK library | N/A | Required | Required |
 | `n, namespace` | Override the URI to use when generating namespace values (e.g., `uri://edfi.org`) | Optional | Optional | Optional |

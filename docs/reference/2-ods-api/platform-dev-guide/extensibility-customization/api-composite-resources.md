@@ -93,9 +93,9 @@ The basic structure of a Composite Definition is as follows:
 
 An XML schema containing standard Composite Definitions is included in the
 Ed-Fi-ODS repository
-at Ed-Fi-ODS\\Application\\EdFi.Ods.Common\\Metadata\\Schemas\\Ed-Fi-ODS-API-Composites.xsd.
+at `Ed-Fi-ODS\Application\EdFi.Ods.Common\Metadata\Schemas\Ed-Fi-ODS-API-Composites.xsd`.
 Additionally, a full set of composite definitions used for unit testing can be
-found at Ed-Fi-ODS\\Application\\EdFi.Ods.Composites.Test\\Composites.xml. These
+found at `Ed-Fi-ODS\Application\EdFi.Ods.Composites.Test\Composites.xml`. These
 definitions contain many different facets of the composite definition applied to
 API resources and may serve as useful reference examples for implementers.
 
@@ -124,7 +124,7 @@ segment for the WebAPI route definitions in the Ed-Fi ODS / API. For example, a
 Composite resource of "Section" defined by Ed-Fi with a category `name` of
 "Enrollment" would be exposed on the following URL:
 
-`http://`**`{host}`**`/api/composites/v1/ed-fi/enrollment/Sections`
+`http://<host>/api/composites/v1/ed-fi/enrollment/Sections`
 
 :::info
 
@@ -145,8 +145,8 @@ Ed-Fi ODS / API, a default route is registered for each of the Composite
 resources. Thus, the following URLs are supported by the as-shipped API for
 Composite resources:
 
-`http://`**`{host}`**`/api/composites/v1/ed-fi/enrollment/Sections`
-`http://`**`{host}`**`/api/composites/v1/ed-fi/enrollment/Sections/647d626a7a434ca08621494efc406c06`
+`http://<host>/api/composites/v1/ed-fi/enrollment/Sections`
+`http://<host>/api/composites/v1/ed-fi/enrollment/Sections/647d626a7a434ca08621494efc406c06`
 
 Additionally, each Composite Category has the opportunity to define an
 additional set of WebAPI-style routes for the contained resources. The listing
@@ -171,7 +171,7 @@ When the routes are registered with WebAPI at runtime, the composite category
 name is automatically included in the registration. For example, the first route
 defined above would match an API request for the following URL:
 
-`http://{host}/api/composites/v1/ed-fi/enrollment/647d626a7a434ca08621494efc406c06/sections`
+`http://<host>/api/composites/v1/ed-fi/enrollment/647d626a7a434ca08621494efc406c06/sections`
 
 In this example, once the route is matched by WebAPI,
 the `LocalEducationAgency.Id` parameter will be bound to a value of
@@ -199,13 +199,13 @@ parameter definition specifies that in order to apply
 the `LocalEducationAgency.Id` parameter to the query, we first need to "crawl"
 from the base resource (i.e., Section) up to the School, then to the
 LocalEducationAgency to filter on its `Id` value. The path syntax uses arrows
-(i.e., **`->`**) to indicate jumps between entities, and periods (i.e., `.`) to
+(i.e., `->`) to indicate jumps between entities, and periods (i.e., `.`) to
 indicate property access.
 
 Note in the specification above for the Section resource that there is no
 definition for the `Section.Id` parameter. Since it would not make sense for the
 API to respond to a request
-for /sections/647d626a7a434ca08621494efc406c06/sections, leaving this parameter
+for `/sections/647d626a7a434ca08621494efc406c06/sections`, leaving this parameter
 out of the specification effectively prevents the corresponding route definition
 from being used to process the request. The caller would receive a `404 Not
 Found` response in this situation.
