@@ -13,15 +13,14 @@ The Ed-Fi ODS / API Admin App is a web-based administrative interface for the Ed
 
 Below are supported releases of the Ed-Fi Admin App:
 
-*   [Admin App v3.3](https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/48889918/Admin+App+v3.3)
-*   [Admin App v3.2](./ods-api-admin-app/getting-started/installation/older-versions-of-admin-app/admin-app-v32.md)
-*   [Admin App for Suite 3 v2.4](./ods-api-admin-app/getting-started/installation/older-versions-of-admin-app/admin-app-for-suite-3-v24.md)
+* [Admin App v3.3](https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/48889918/Admin+App+v3.3)
+* [Admin App v3.2](./ods-api-admin-app/getting-started/installation/older-versions-of-admin-app/admin-app-v32.md)
+* [Admin App for Suite 3 v2.4](./ods-api-admin-app/getting-started/installation/older-versions-of-admin-app/admin-app-for-suite-3-v24.md)
 
 # Documentation
 
 Documentation for the Ed-Fi ODS / API Admin App is available online:
 
-*   [What's New](./ods-api-admin-app/whats-new.md)
-*   [Getting Started](./ods-api-admin-app/getting-started.md)
-*   [https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25231476](https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25231476)
-*   [Technical Articles](./ods-api-admin-app/technical-articles.md)
+* [What's New](whats-new.md)
+* [Getting Started](getting-started/)
+* [Technical Articles](technical-articles/)
