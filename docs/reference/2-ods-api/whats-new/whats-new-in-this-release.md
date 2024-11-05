@@ -2,7 +2,7 @@
 description: Detailed description of new features in ODS/API v7.2.
 ---
 
-# What's New
+# What's New In This Release
 
 This section provides an overview of the new features in v7.2 of the Ed-Fi ODS /
 API, targeted for deployment starting in the 2024–2025 school year. A
