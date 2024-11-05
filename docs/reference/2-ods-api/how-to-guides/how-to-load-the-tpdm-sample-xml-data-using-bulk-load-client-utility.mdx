@@ -5,17 +5,17 @@ import TabItem from '@theme/TabItem';
 
 This article describes the steps needed to populate an Ed-Fi ODS with sample
 TPDM XML data using the [Ed-Fi Bulk Load
-Client](../platform-dev-guide/utilities/bulk-load-client-utility.md)
+Client](../platform-dev-guide/utilities/bulk-load-client-utility)
 utility. This process works very similarly to [How To: Load the ODS with Sample
 XML Data using Bulk Load Client
-Utility](./how-to-load-the-ods-with-sample-xml-data-using-bulk-load-client-utility.md).
+Utility](./how-to-load-the-ods-with-sample-xml-data-using-bulk-load-client-utility).
 Walk through those steps first to get familiar with the process.
 
 ## Step 1. Install the Ed-Fi Bulk Load Client
 
 * Ensure that you have an instance of the **Ed-Fi ODS / API running locally**
     that has been set up following the [Getting Started - Source Code
-    Installation](../getting-started/source-code-installation/readme.md).
+    Installation](../getting-started/source-code-installation/readme).
 * Ensure .NET 8.0 SDK is installed.
 
 * Add Ed-Fi package source by running the following  command in PowerShell:
@@ -54,7 +54,7 @@ Walk through those steps first to get familiar with the process.
 
 * You can verify that the **EdFi.BulkLoadClient.Console.exe**  is available by
     browsing to this location
-    **`{YourInstallFolder}\\EdFi.BulkLoadClient.Console.exe`**
+    **`{YourInstallFolder}\EdFi.BulkLoadClient.Console.exe`**
 
 ## Step 2. Download Scripts and Sample Data
 
@@ -100,7 +100,7 @@ files.
 * **Open a PowerShell session.**
 * **Navigate** to \\Ed-Fi-ODS-Implementation\\ directory
 * **Execute `.\Initialize-PowershellForDevelopment.ps1` and
-    then `Reset-EmptySandboxDatabase`.
+  then `Reset-EmptySandboxDatabase`.
 
     The script will create **EdFi\_Ods\_Sandbox\_Empty** Database.
 

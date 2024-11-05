@@ -2,12 +2,11 @@
 sidebar_position: 1
 ---
 
-
 # Getting Started - Binary Installation
 
 This section describes how to set up the Ed-Fi ODS / API v7.2 using the release
 binaries listed in [Binary
-Releases](./readme.md). This is a
+Releases](./readme). This is a
 recommend approach for implementations that have no requirement to extend or
 customize the source code of the Ed-Fi ODS / API.
 
@@ -24,7 +23,7 @@ Ensure that the following components are installed:
   scripts.
 
 * **.NET 8.0 SDK.** Required by the [Database Deploy
-  Tool](../../platform-dev-guide/utilities/database-deploy-tool.md)
+  Tool](../../platform-dev-guide/utilities/database-deploy-tool)
   used in the database deployment scripts.
 
     <details>
@@ -83,7 +82,7 @@ Ensure that the following components are installed:
 
     **Internet Information Services**
 
-    1. Press the **Windows key** 🪟      on your keyboard, type "features",
+    1. Press the **Windows key** 🪟 on your keyboard, type "features",
        select **Turn Windows features on or off**, press **Enter**.
     2. Check the box next to Internet Information Services. The default
         selections will be good for most cases.
@@ -231,19 +230,19 @@ described in that file.
 To bring up the environment:
 
 ```powershell
-C:\PGDockerSetup>docker compose up -d
+docker compose up -d
 ```
 
 To stop the volumes and containers:
 
 ```powershell
-C:\PGDockerSetup>docker compose down
+docker compose down
 ```
 
 To stop the services and remove them, but retain the data in separate volumes:
 
 ```powershell
-C:\PGDockerSetup>docker compose down -v
+docker compose down -v
 ```
 
 </details>
@@ -288,10 +287,8 @@ PowerShell installers released with the ODS / API provide varied configuration
 options. The primary ODS / API install use cases are provided as examples below.
 Choose the option that suits your need and customize parameters as needed.
 
-* [Sandbox Installation
-    Steps](./sandbox-installation-steps.md)
-* [Single/Multi Tenant Installation
-    Steps](./singlemulti-tenant-installation-steps.md)
+* [Sandbox Installation Steps](./sandbox-installation-steps)
+* [Single/Multi Tenant Installation Steps](./singlemulti-tenant-installation-steps)
 
 :::note
 

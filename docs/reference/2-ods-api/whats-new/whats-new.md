@@ -1,3 +1,7 @@
+---
+description: Detailed description of new features in ODS/API v7.2.
+---
+
 # What's New
 
 This section provides an overview of the new features in v7.2 of the Ed-Fi ODS /
@@ -32,13 +36,13 @@ that error messages are both machine-readable and user-friendly, providing clear
 and actionable information to developers and users. Key benefits include:
 
 * Standardization: Aligns with RFC 9457 for consistent machine-readable error
-    responses across the API.
+  responses across the API.
 * Improved User Experience: User-friendly messages help quickly understand and
-    address data submission issues.
+  address data submission issues.
 * Enhanced Traceability: Comprehensive error details and correlation IDs
-    facilitate easier troubleshooting.
+  facilitate easier troubleshooting.
 * Efficient Data Submission: Reporting all validation errors in a single
-    response reduces the number of submission attempts.
+  response reduces the number of submission attempts.
 
 Overall, this feature significantly enhances the clarity, usability, and
 traceability of API error responses, benefiting both developers and users. For

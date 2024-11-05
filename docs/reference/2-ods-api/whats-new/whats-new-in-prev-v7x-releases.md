@@ -1,3 +1,7 @@
+---
+description: Summary of what changed in prior releases of 7.x
+---
+
 # What's New in Previous v7.x Releases
 
 This documentation provides a summary overview of the major improvements,

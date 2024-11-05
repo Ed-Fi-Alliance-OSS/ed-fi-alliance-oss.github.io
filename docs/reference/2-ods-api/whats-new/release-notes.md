@@ -1,8 +1,19 @@
+---
+description: Release notes for ODS/API v7.2
+---
+
 # Release Notes
 
 This section provides a comprehensive list of the improvements, updates, fixes,
-and changes in the Ed-Fi ODS / API for Suite 3 v7.2 release, with links to the
-relevant issue in the Ed-Fi Tracker.
+and changes in the Ed-Fi ODS / API for Suite 3 v7.2 release.
+
+:::tip
+
+The lists below include ticket numbers from Jira. The Jira project can only be
+seen by the development team. However, anyone can look for that ticket number in
+the Git commit history to find the changes for that specific update.
+
+:::
 
 ## Ed-Fi ODS / API v7.2 - Release Notes
 
