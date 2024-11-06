@@ -44,9 +44,7 @@ namespace EdFi.Ods.Composites.MyComposites
 }
 ```
 
-### Step 1.3. Update the **Composites.xml** file to add the appropriate
-
-composite definition.
+### Step 1.3. Update the Composites.xml file to add the appropriate composite definition
 
 The Visual Studio Project Template creates an empty sample
 **Composites****.xml** file, replace its contents with the following:
@@ -91,9 +89,11 @@ used to identify the composite being requested from the API.
 
 :::
 
-### Step 1.4
+:::tip
 
-Save the Project
+Be sure to save the Project
+
+:::
 
 ## Step 2. Integrate Composites into the Solution
 
