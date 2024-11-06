@@ -41,7 +41,7 @@ Ensure that the following components are installed:
 
           Major  Minor  Patch  PreReleaseLabel BuildLabel
           -----  -----  -----  --------------- ----------
-          7      4      5
+          5      1      22621  4111
           ```
 
       3. If the required version is not installed, download [Windows Management

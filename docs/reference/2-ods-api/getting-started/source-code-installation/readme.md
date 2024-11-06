@@ -31,13 +31,13 @@ likely you have PowerShell 5.0 pre-installed.
      select **Windows PowerShell**, and press **Enter**.
 2. Type `$PSVersionTable.PSVersion`, and press **Enter**.
 
-```powershell
-PS D:\> $PSVersionTable.PSVersion
+   ```powershell
+   PS D:\> $PSVersionTable.PSVersion
 
-Major  Minor  Patch  PreReleaseLabel BuildLabel
------  -----  -----  --------------- ----------
-7      4      5
-```
+   Major  Minor  Patch  PreReleaseLabel BuildLabel
+   -----  -----  -----  --------------- ----------
+   5      1      22621  4111
+   ```
 
 If the required version is not installed, download and install [PowerShell 5.0
 or
