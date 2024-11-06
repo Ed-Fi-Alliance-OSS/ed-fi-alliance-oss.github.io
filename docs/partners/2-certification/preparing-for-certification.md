@@ -4,8 +4,6 @@ This section provides advice on preparing for certification.
 
 ## Pilot with Real Users
 
----
-
 Above all, the Ed-Fi Alliance strongly recommends piloting with actual schools
 as you build your API. Certification is not a precise proxy for what your
 product users will value most from the integration. As you build, you will face
@@ -26,24 +24,19 @@ possible decisions. Develop for success first, certify second.
 
 ## Review the Implementation Playbook
 
----
-
 In planning your API implementation, the Alliance has published a set of
 training materials and best practice, the [Data Providers - Implementation
-Playbook](https://edfi.atlassian.net/wiki/spaces/TNG/pages/22905120/Technology+Providers+-+Implementation+Playbook).
+Playbook](/getting-started/provider-playbook).
 We strongly suggest that data providers planning or building integrations review
 that material as early as possible in their project.
 
 ## Set up a Test Environment
 
----
-
 If you don't have an API provided to you, you can set up the Ed-Fi ODS and API
 to get a local implementation of Assessment APIs to test against. Consult
-the [Ed-Fi ODS / API
-documentation](https://edfi.atlassian.net/wiki/pages/viewpage.action?pageId=23035909)
-for more information on using the Ed-Fi ODS / API to set up a testing sandbox.
-There are also cloud-based installers available in the [Ed-Fi
+the [Ed-Fi ODS / API documentation](/reference/ods-api) for more information on
+using the Ed-Fi ODS / API to set up a testing sandbox. There are also
+cloud-based installers available in the [Ed-Fi
 Exchange](http://exchange.ed-fi.org).
 
 By default, the testing employs references from the "populated" sandbox (also

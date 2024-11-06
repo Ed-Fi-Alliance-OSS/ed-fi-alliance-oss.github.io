@@ -9,10 +9,11 @@ to provide K–12 education services by a U.S. state or territory.
 
 To meet the requirement, the Ed-Fi Alliance must receive three verifications
 from LEAs (i.e., entities authorized to provide education services by a U.S.
-state), that use the attached
-[Ed-Fi Certification Verification Form](https://edfi.atlassian.net/wiki/spaces/EDFICERT/pages/23695790/Requirements+-+Implementation+Verification?preview=/23695790/23695917/Ed-Fi%20Certification%20-%20Implementation%20Verification%20Form.docx)
+state), that use the [Ed-Fi Certification Verification
+Form](https://edfi.atlassian.net/wiki/download/attachments/23695790/Ed-Fi+Certification+-+Implementation+Verification+Form.docx?version=4)
+(docx)
 
-**When are verifications required?**
+### When are verifications required?
 
 * At least one verification must be provided prior to the start of certification
   testing.  New data providers can work with the Ed-Fi staff to identify a pilot
@@ -25,7 +26,7 @@ state), that use the attached
   be provided within 6 months of certification or the certification will be
   removed.
 
-**What LEA Projects Qualify?**
+### What LEA Projects Qualify?
 
 LEA projects used to validate the integrations MUST meet these requirements:
 
@@ -36,12 +37,19 @@ LEA projects used to validate the integrations MUST meet these requirements:
   proof-of-concept systems, similar development efforts that require manual
   intervention to make operational, or otherwise impermanent solutions.
 
-**What is Published?**
+### What is Published?
 
 Only the identity of the agency that provided the verification will be published
 in
 the [Registry of Ed-Fi Certified Products](../registry-of-ed-fi-certified-products.mdx).
 No other information from the verification is published.
+
+### Resolution Process
+
+Agencies with gaps in implementation in a supported region may submit a request
+to the Ed-Fi Alliance to review the product's ability to support all
+requirements under certification. See [this page for further
+discussion](./requirements-product-availability-information.md).
 
 ## Rationale
 

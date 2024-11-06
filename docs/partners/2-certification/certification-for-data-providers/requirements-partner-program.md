@@ -10,4 +10,4 @@ organization.
 Vendors may join the Ed-Fi Partner Program by providing the information and
 commitments requested in this
 **[online form](https://forms.gle/N57icQ29Xgx4Kz8W8)**. Direct any questions to
-[Sean Casey](mailto:sean.casey@ed-fi.org).
+[Nathan Gandomi](mailto:nathan.gandomi@ed-fi.org?subject=Partner%20Program%20Requirements).
