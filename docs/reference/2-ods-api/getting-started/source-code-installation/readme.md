@@ -584,6 +584,7 @@ flowchart LR
     gen --> generated["compiled C#, json, XML"]
 
     generated --> server["Ed-FI ODS/API service"]
+```
 
 ## Alternatively Building from the Developer Command Prompt
 
