@@ -128,7 +128,7 @@ the test run, so you'll just need to wait until it finishes.
     This will create the Postman Environment file required for the tests to
     run.
     1. Run the EdFi.Ods.Api.IntegrationTestHarness project. Test Harness will
-        create test API clients in the EdFi\_Admin\_Test database, create a
+        create test API clients in the `EdFi_Admin_Test` database, create a
         Postman environment file and run a test API instance for the Postman
         tests to interact with.
 

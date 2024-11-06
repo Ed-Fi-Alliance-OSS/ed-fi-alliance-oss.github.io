@@ -3,7 +3,7 @@
 API keys and secrets can be administered by the Admin API or Sandbox Admin App,
 but some implementers may prefer to work directly with the data. The SQL queries
 on this page enable a database administrator to create keys and secrets. These
-queries run against the EdFi\_Admin database.
+queries run against the `EdFi_Admin` database.
 
 Before you begin:
 

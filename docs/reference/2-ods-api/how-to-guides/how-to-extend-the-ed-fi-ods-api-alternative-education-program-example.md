@@ -154,7 +154,7 @@ MetaEd source file to that folder.
 
 **Right-click** on the folder **Association**, and select New File.
 
-Name the new file **StudentAlternativeEducationProgramAssociation.metaed** to
+Name the new file `StudentAlternativeEducationProgramAssociation.metaed` to
 match the name of the new entity to be created.
 
 Note the new file appears in the tree view to the left. **Double-click** on the
@@ -205,7 +205,7 @@ operational context such as a single district, but may be different in another
 operational context.
 
 **Right-click** on the Descriptor folder, select **New File**. Name the file
-**AlternativeEducationEligibilityReason.metaed**.
+`AlternativeEducationEligibilityReason.metaed`.
 
 Replace the template text in your new Descriptor source file with the following
 code.
@@ -294,7 +294,7 @@ and click **Next**.
 ![Create Extension Project](/img/reference/ods-api/how-to-transcript/vs-create-extension-project.webp)
 
 In the Project Name field
-enter **EdFi.Ods.Extensions.SampleAlternativeEducationProgram** and
+enter `EdFi.Ods.Extensions.SampleAlternativeEducationProgram` and
 click ****Create**.**
 
 :::info
@@ -308,16 +308,16 @@ Step 2.c.
 ### Step 4c. Rename the "Marker" Interface file
 
 **4c.1.** **Right-click** on the
-**EdFi.Ods.Extensions.ExtensionName.nuspec** file in newly created
-**EdFi.Ods.Extensions.SampleAlternativeEducationProgram** project and Rename the
-file to **EdFi.Ods.Extensions.SampleAlternativeEducationProgram.nuspec**.
+`EdFi.Ods.Extensions.ExtensionName.nuspec` file in newly created
+`EdFi.Ods.Extensions.SampleAlternativeEducationProgram` project and Rename the
+file to `EdFi.Ods.Extensions.SampleAlternativeEducationProgram.nuspec`.
 
 **Right-click** on the
-**Marker\_EdFi\_Ods\_Extensions\_ExtensionName.cs** file and Rename the file to
-**Marker\_EdFi\_Ods\_Extensions\_**SampleAlternativeEducationProgram**.cs**.
+`Marker_EdFi_Ods_Extensions_ExtensionName.cs` file and Rename the file to
+`Marker_EdFi_Ods_Extensions_SampleAlternativeEducationProgram.cs`.
 
 **4c.2.** When prompted choose to rename all references to the code element
-**Marker\_EdFi\_Ods\_Extensions\_ExtensionName**.
+`Marker_EdFi_Ods_Extensions_ExtensionName`.
 
 ### Step 4d. Integrate Extension into the Solution
 
@@ -326,7 +326,7 @@ In this step, we'll integrate the extension into the solution.
 **4d.1.** Locate the **EdFi.Ods.WebApi** project, within the "Entry Points"
 folder. **Right-click**, select **Add** > **Project** **Reference...**, then
 select
-the **EdFi.Ods.Extensions.**SampleAlternativeEducationProgram**** project.
+the `EdFi.Ods.Extensions.`SampleAlternativeEducationProgram` project.
 
 ![Add Reference](/img/reference/ods-api/how-to-transcript/vs-extension-add-reference.webp)
 
@@ -384,9 +384,9 @@ confidential information, but does require active steps on the part of system
 developers to enable access to Extensions.
 
 Create a security SQL script called
-**0001-AlternativeEducationProgram\_ResourceClaims.sql** and place it inCollapse
-the Ed-Fi-ODS-Implementation/Application/
-EdFi.Ods.Extensions.SampleAlternativeEducationProgram/Versions/1.0.0/Standard/5.1.0/Artifacts/MsSql/Data/Security folder
+`0001-AlternativeEducationProgram_ResourceClaims.sql` and place it in
+the`Ed-Fi-ODS-Implementation/Application/
+EdFi.Ods.Extensions.SampleAlternativeEducationProgram/Versions/1.0.0/Standard/5.1.0/Artifacts/MsSql/Data/Security` folder
 (Create 'Security' folder if it does not exist). Copy the contents of the
 following SQL DML script into the newly created file and save.
 
@@ -450,9 +450,9 @@ singularized name of the resource (e.g.,
 "StudentAlternativeEducationProgramAssociation" or
 "studentAlternativeEducationProgramAssociations").
 
-Note that in **0**001-AlternativeEducationProgram\_ResourceClaims.sql**** script
+Note that in `0001-AlternativeEducationProgram_ResourceClaims.sql` script
 above, the resulting ClaimName value is
-`http://ed-fi.org/ods/identity/claims/sample-alternative-education-program/studentAlternativeEducationProgramAssociation>`.
+`http://ed-fi.org/ods/identity/claims/sample-alternative-education-program/studentAlternativeEducationProgramAssociation`.
 
 ## Step 7. Run Code Generation and Verify Changes
 
@@ -506,23 +506,22 @@ click **Next**.
 ![Create Extension Project](/img/reference/ods-api/how-to-transcript/vs-create-extension-project.webp)
 
 In the Project Name field,
-enter **EdFi.Ods.Extensions.SampleAlternativeEducationProgram** and
+enter `EdFi.Ods.Extensions.SampleAlternativeEducationProgram` and
 click **Create**.
 
 ### Step 3. Rename the "Marker" Interface File
 
-**3.1.**  **Right-click** on the
-**EdFi.Ods.Extensions.ExtensionName.nuspec** file in newly created
-**EdFi.Ods.Extensions.**SampleAlternativeEducationProgram**** project and Rename
-the file
-to **EdFi.Ods.Extensions.**SampleAlternativeEducationProgram**.nuspec**.
+**3.1.**  **Right-click** on the `EdFi.Ods.Extensions.ExtensionName.nuspec` file
+in newly created `EdFi.Ods.Extensions.SampleAlternativeEducationProgram` project
+and Rename the file
+to `EdFi.Ods.Extensions.SampleAlternativeEducationProgram.nuspec`.
 
-**Right-click** on the
-**Marker\_EdFi\_Ods\_Extensions\_ExtensionName.cs** file and Rename the file to
-**Marker\_EdFi\_Ods\_Extensions\_**SampleAlternativeEducationProgram**.cs**.
+**Right-click** on the `Marker_EdFi_Ods_Extensions_ExtensionName.cs` file and
+Rename the file to
+`Marker_EdFi_Ods_Extensions_SampleAlternativeEducationProgram.cs`.
 
 **3.2.** When prompted choose to rename all references to the code
-element **Marker\_EdFi\_Ods\_Extensions\_**SampleAlternativeEducationProgram****.
+element `Marker_EdFi_Ods_Extensions_SampleAlternativeEducationProgram`.
 
 ### Step 4. Integrate Extension into the Solution
 
@@ -531,14 +530,14 @@ In this step, we'll integrate the extension into the solution.
 **4.1.** Locate the **EdFi.Ods.WebApi** project, within the "Entry Points"
 folder. **Right-click**, select **Add** > **Project** **Reference...**, then
 select
-the **EdFi.Ods.Extensions.**SampleAlternativeEducationProgram**** project.
+the `EdFi.Ods.Extensions.SampleAlternativeEducationProgram` project.
 
 ![Add Reference](/img/reference/ods-api/how-to-transcript/vs-extension-add-reference.webp)
 
 **4.2.** Locate any profile projects in the
 solution. **Right-click**, select **Add** \> **Project Reference...**, then
 select
-the **EdFi.Ods.Extensions.**SampleAlternativeEducationProgram**** project. This
+the `EdFi.Ods.Extensions.SampleAlternativeEducationProgram` project. This
 step is needed only if any of the Profile resources in the Profiles.xml document
 are extended, or extension entities are being constrained by a particular
 Profile.
@@ -578,10 +577,10 @@ authorization strategy is applied. This prevents accidental release of
 confidential information, but does require active steps on the part of system
 developers to enable access to Extensions.
 
-Create a security SQL script
-called **0001-AlternativeEducationProgram\_ResourceClaims.sql** and place it in
-the Ed-Fi-ODS-Implementation/Application/
-EdFi.Ods.Extensions.SampleAlternativeEducationProgram/Versions/1.0.0/Standard/5.1.0/Artifacts/MsSql/Data/Security folder
+Create a security SQL script called
+`0001-AlternativeEducationProgram_ResourceClaims.sql` and place it in
+the `Ed-Fi-ODS-Implementation/Application/
+EdFi.Ods.Extensions.SampleAlternativeEducationProgram/Versions/1.0.0/Standard/5.1.0/Artifacts/MsSql/Data/Security` folder
 (Create 'Security' folder if it does not exist). Copy the contents of the
 following SQL DML script into the newly created file and save.
 

@@ -18,14 +18,14 @@ and supporting functions for a Production instance:
   * **Admin App Website.** This website provides administrative tools for
     managing API client keys and secrets.
 * **Databases**
-  * **EdFi\_ODS.** A database that stores data for the Ed-Fi ODS / API.
-  * **EdFi\_Admin.** A database containing authentication information for API
+  * **`EdFi_ODS.*`.** A database that stores data for the Ed-Fi ODS / API.
+  * **`EdFi_Admin`.** A database containing authentication information for API
     clients.
-  * **EdFi\_Security.** A database containing authorization information for API
+  * **`EdFi_Security`.** A database containing authorization information for API
     clients.
 
 Of particular note: production deployments should _not_ include the Swagger
-Documentation UI, Sandbox Administration UI, or the EdFi\_ODS\_\* databases.
+Documentation UI, Sandbox Administration UI, or the `EdFi_ODS_*` databases.
 Those components are included by default in the code distribution — and are
 appropriate for a Sandbox instance of the ODS / API — but should not be deployed
 to production.

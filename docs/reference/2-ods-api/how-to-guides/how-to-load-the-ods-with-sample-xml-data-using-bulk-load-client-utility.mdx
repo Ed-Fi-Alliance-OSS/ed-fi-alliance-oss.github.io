@@ -39,37 +39,39 @@ utility.
     ```
 
 * Install the Ed-Fi Bulk Load Client from a PowerShell prompt using the
-  following command:
-
-  **Install the Ed-Fi Bulk Load Client**
+  following commands:
 
   ```bash
-  c:\>mkdir `{YourInstallFolder}`
-  c:\> dotnet tool install EdFi.Suite3.BulkLoadClient.Console --version 7.2.413 --tool-path `{YourInstallFolder}`
+  mkdir <YourInstallFolder>
+  dotnet tool install EdFi.Suite3.BulkLoadClient.Console --version 7.2.413 --tool-path <YourInstallFolder>
+  ```
+
+  This will produce output like:
+
+  ```bash
   You can invoke the tool using the following command: EdFi.BulkLoadClient.Console
   Tool 'edfi.suite3.bulkloadclient.console' (version '7.2.413') was successfully installed.
   ```
 
-* You can verify that the **EdFi.BulkLoadClient.Console.exe**  is available by
+* You can verify that the `EdFi.BulkLoadClient.Console.exe`  is available by
   browsing to this location
-  **`{YourInstallFolder}`\\EdFi.BulkLoadClient.Console.exe**
+  `<YourInstallFolder>\EdFi.BulkLoadClient.Console.exe`
 
 ## Step 2. Download Scripts and Sample Data
 
-* **Download and Extract** **Ed-Fi-SampleDataLoad.zip** to a local folder. We
-  recommend **C:\\Ed-Fi-SampleDataLoad**.
-  Ed-Fi-SampleDataLoad.zip contains all the scripts and directory structure
-  used in this how-to article.
-* **Download the Sample XML** to **Ed-Fi-SampleDataLoad\\Sample XML**
-* **Download the Descriptors** to **Ed-Fi-SampleDataLoad\\Bootstrap**
-* **Move** the following files from **Ed-Fi-SampleDataLoad\\Sample XML** to
-  **Ed-Fi-SampleDataLoad\\Bootstrap**
-  * **Standards.xml**
-  * **EducationOrganization.xml**
-  * **IndicatorDescriptor.xml**
-  * **IndicatorGroupDescriptor.xml**
-  * **IndicatorLevelDescriptor.xml**
-  * **ProgramCharacteristicDescriptor.xml**
+* **Download and Extract** `Ed-Fi-SampleDataLoad.zip` to a local folder. We
+  recommend `C:\Ed-Fi-SampleDataLoad`. `Ed-Fi-SampleDataLoad.zip` contains all
+  the scripts and directory structure used in this how-to article.
+* **Download the Sample XML** to `Ed-Fi-SampleDataLoad\Sample XML`
+* **Download the Descriptors** to `Ed-Fi-SampleDataLoad\Bootstrap`
+* **Move** the following files from `Ed-Fi-SampleDataLoad\Sample XML` to
+  `Ed-Fi-SampleDataLoad\Bootstrap`
+  * `Standards.xml`
+  * `EducationOrganization.xml`
+  * `IndicatorDescriptor.xml`
+  * `IndicatorGroupDescriptor.xml`
+  * `IndicatorLevelDescriptor.xml`
+  * `ProgramCharacteristicDescriptor.xml`
 
 :::info
 
@@ -83,17 +85,17 @@ files.
 ## Step 3. Create an Empty Sandbox
 
 * **Open a PowerShell session.**
-* **Navigate** to \\Ed-Fi-ODS-Implementation\\ directory
-* **Execute .\\Initialize-PowershellForDevelopment.ps1** and then
-  **Reset-EmptySandboxDatabase**.
+* **Navigate** to the `Ed-Fi-ODS-Implementation` directory
+* **Execute `.\Initialize-PowershellForDevelopment.ps1` and then
+  `Reset-EmptySandboxDatabase`.
 
-  The script will create **EdFi\_Ods\_Sandbox\_Empty** Database.
+  The script will create the `EdFi_Ods_Sandbox_Empty` Database.
 
 ## Step 4. Create API Client for Empty Sandbox
 
-* **Execute CreateApiClientforEmptySandbox.sql** against the EdFi\_Admin
-  database. This will create claims needed to access
-  **EdFi\_Ods\_Sandbox\_Empty** ODS.
+* **Execute CreateApiClientforEmptySandbox.sql** against the `EdFi_Admin`
+  database. This will create claims needed to access the
+  `EdFi_Ods_Sandbox_Empty`.
 
   <Tabs>
     <TabItem value="MSSQL" label="SQL Server" default>
@@ -390,23 +392,23 @@ files.
 ## Step 5. Run the Bootstrap Script to Load Descriptors, Standards and Education Organizations
 
 * Open a PowerShell session.
-* Navigate to **Ed-Fi-SampleDataLoad** directory (e.g.,
-    C:\\Ed-Fi-SampleDataLoad).
-* Open the **LoadBootstrapData****.ps1 file** in a text editor and update the
-  `$apiLoaderExe` variable Value where **EdFi.BulkLoadClient.Console** is
+* Navigate to `Ed-Fi-SampleDataLoad` directory (e.g.,
+  `C:\Ed-Fi-SampleDataLoad`).
+* Open the `LoadBootstrapData.ps1` file in a text editor and update the
+  `$apiLoaderExe` variable Value where `EdFi.BulkLoadClient.Console` is
   installed in **Step 1.**
 * Example `$apiLoaderExe="<YourInstallFolderFullPath>\EdFi.BulkLoadClient.Console.exe"`
-* For Postgres Only, Please update Key &amp Secret `"-k", "**E**mpty", "-s", "empty**S**ecret"`
-* Save and Execute **LoadBootstrapData.ps1**.
+* For Postgres Only, please update Key &amp Secret `"-k", "**E**mpty", "-s", "empty**S**ecret"`
+* Save and Execute `LoadBootstrapData.ps1`.
 
   The script will run the Bulk Load Client loading data from the Bootstrap
   folder to the Empty Sandbox Database.
 
 ## Step 6. Update Claim Set to Load Sample Data
 
-* **Execute EnableSandboxClaimset.sql** against the EdFi\_Admin database. This
+* **Execute `EnableSandboxClaimset.sql` against the `EdFi_Admin` database. This
   will change the claim set for the empty sandbox database you created in Step
-  4 to the **Ed-Fi Sandbox** claimset.
+  4 to the `Ed-Fi Sandbox` claimset.
 
   <Tabs>
   <TabItem value="MSSQL" label="SQL Server">
@@ -432,17 +434,17 @@ files.
 * Restart the instance of the Ed-Fi ODS / API running locally again to refresh
   the claims.
 * Open a PowerShell session.
-* Navigate to **Ed-Fi-SampleDataLoad** directory (e.g.,
-  C:\\Ed-Fi-SampleDataLoad).
-* Open the **LoadSampleData.ps1 file** in notepad or Windows PowerShell ISE
+* Navigate to `Ed-Fi-SampleDataLoad` directory (e.g.,
+  `C:\Ed-Fi-SampleDataLoad`).
+* Open the `LoadSampleData.ps1` file in notepad or Windows PowerShell ISE
   and update the $apiLoaderExe variable Value  where
-  **EdFi.BulkLoadClient.Console** is installed in **Step 1.**
+  `EdFi.BulkLoadClient.Console` is installed in **Step 1.**
 * Example `$apiLoaderExe="<YourInstallFolderFullPath>\EdFi.BulkLoadClient.Console.exe"`
-* For Postgres Only, Please update Key &amp; Secret `"-k", "**E**mpty", "-s", "empty**S**ecret"`
-* Save and Execute **LoadSampleData.ps1**.
+* For Postgres Only, please update Key &amp; Secret `"-k", "**E**mpty", "-s", "empty**S**ecret"`
+* Save and Execute `LoadSampleData.ps1`.
 
-  The script will run the Bulk Load Client to load data from the Sample XML
-  folder to the Empty Sandbox Database.
+The script will run the Bulk Load Client to load data from the Sample XML
+folder to the Empty Sandbox Database.
 
 :::note
 

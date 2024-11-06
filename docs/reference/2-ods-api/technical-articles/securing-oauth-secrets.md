@@ -22,7 +22,7 @@ development environment does not use hashing by default.
 
 The hash implementation in the Ed-Fi ODS / API is resilient to hash algorithm
 changes in future and allows for customization if implementations require a
-different hashing algorithm. The OAuth secret database (EdFi\_Admin) stores the
+different hashing algorithm. The OAuth secret database (`EdFi_Admin`) stores the
 hashing details used when the hash was generated so those settings can be used
 to regenerate the password hash from plain text while transitioning to a new
 provider. The general flow for updates is that an OAuth secret is presented to

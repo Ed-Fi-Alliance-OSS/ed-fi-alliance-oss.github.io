@@ -86,8 +86,8 @@ Your database extension scripts are automatically run against the sample
 database (minimal or populated databases). The populated sample database is
 retrieved from a NuGet package. However, this database contains education
 organizations and descriptors that you may not wish to use. If you wish to
-provide your own sample data, the EdFi.Samples.Ods.\* NuGet should not be
-allowed to populate the “EdFi\_Ods\_Populated\_Template” database during the
+provide your own sample data, the `EdFi.Samples.Ods.*` NuGet should not be
+allowed to populate the `EdFi_Ods_Populated_Template` database during the
 initialize development environment process.
 
 ## API Metadata

@@ -115,10 +115,12 @@ data models are listed in your API landing page ("Discovery API" endpoint).
             "version": "5.1.0",
             "informationalVersion": "The Ed-Fi Data Model 5.1"
         },
+        // highlight-start
         {
             "name": "Sample",           <-- THIS IS NEW
             "version": "1.0.0"
         },
+        // highlight-end
         {
             "name": "TPDM",
             "version": "1.1.0",
@@ -199,7 +201,7 @@ You can also verify the Sample API endpoints in the Swagger UI documentation:
 * Copy the extracted folder and paste it in `C:\inetpub\Ed-Fi\WebApi\Plugin` in
   your WebAPI directory.
 
-  ```none title="c:\inetpub\Ed-Fi\WebApi\Plugin File Listing"
+  ```none title="File Listing"
   c:/
   ├─ inetpub/
   | ├─ Ed-Fi/

@@ -88,9 +88,8 @@ required to extend the Ed-Fi ODS / API. Let's continue with the mechanics.
 ## Step 2. Author Your Extension Using MetaEd
 
 In this step, we'll create a new project in MetaEd, and author our new entity.
-You do need to [download and install
-MetaEd](https://edfi.atlassian.net/wiki/spaces/METAED20/pages/23710221/Getting+Started+with+the+MetaEd+IDE)
-to do this step. Do that now if you haven't already.
+You do need to [download and install MetaEd](/reference/metaed) to do this step.
+Do that now if you haven't already.
 
 ### Step 2a. Set or Confirm MetaEd Target Version
 
@@ -157,7 +156,7 @@ examples of subfolder naming.
 Now we'll add two MetaEd source files to the DomainEntity folder.
 **Right-click** on the folder **DomainEntity**, and select New File.
 
-Name the new file **PostSecondaryOrganization.metaed** to match the name of the
+Name the new file `PostSecondaryOrganization.metaed` to match the name of the
 new entity to be created.
 
 Note the new file appears in the tree view to the left. **Double-click** on the
@@ -219,7 +218,7 @@ Special Education Graduation Status element. The steps are generally the same as
 the ones you used to add the domain entities above.
 
 **Right-Click** on the Common folder, select **New File**. Name your new file
-**ClassRankingExtension.metaed**.
+`ClassRankingExtension.metaed`.
 
 Similar to how you extended the Student Academic Record domain entity above,
 you'll extend the Class Ranking entity with the keyword `additions`. Replace the
@@ -248,7 +247,7 @@ operational context.
 
 **Right-click** on the Descriptor folder, select **New File**. We'll be adding
 four Descriptor files in total. Name your first file
-**InstitutionControl.metaed**.
+`InstitutionControl.metaed`.
 
 Replace the template text in your new Descriptor source file with the following
 code.
@@ -266,7 +265,7 @@ Descriptor InstitutionControl
 Voilà! Almost done. Follow the steps above and add the remaining three
 Descriptors.
 
-Add an **InstitutionLevel.metaed** file.
+Add an `InstitutionLevel.metaed` file.
 
 <details>
 <summary>MetaEd Source for InstitutionLevel Descriptor</summary>
@@ -278,7 +277,7 @@ Descriptor InstitutionLevel
 
 </details>
 
-Add a **SpecialEducationGraduationStatus.metaed** file.
+Add a `SpecialEducationGraduationStatus.metaed` file.
 
 <details>
 <summary>MetaEd Source for SpecialEducationGraduationStatus Descriptor</summary>
@@ -290,7 +289,7 @@ Descriptor SpecialEducationGraduationStatus
 
 </details>
 
-Add a **SubmissionCertification.metaed** file.
+Add a `SubmissionCertification.metaed` file.
 
 <details>
 <summary>MetaEd Source for SubmissionCertification Descriptor</summary>
@@ -308,7 +307,7 @@ If you want to bulk load this extension, you need to create an interchange
 file.
 
 **Right-click** on the Interchange folder, select **New File**. Name your file
-**StudentTranscript.metaed**. Replace the template text in your new Interchange
+`StudentTranscript.metaed`. Replace the template text in your new Interchange
 source file with the following code.
 
 <details>
@@ -437,7 +436,7 @@ and Click **Next**.
 ![Create Extension Project](/img/reference/ods-api/how-to-transcript/vs-create-extension-project.webp)
 
  In the Project Name field,
- enter **EdFi.Ods.Extensions.SampleStudentTranscript** and click **Create**.
+ enter `EdFi.Ods.Extensions.SampleStudentTranscript` and click **Create**.
 
 :::info
 
@@ -451,13 +450,13 @@ Step 2.c with the first character in upper case.
 
 #### 4c.1. Rename the "Marker" Interface file
 
-**Right-click** on the **Marker\_EdFi\_Ods\_Extensions\_ExtensionName.cs** file
+**Right-click** on the `Marker_EdFi_Ods_Extensions_ExtensionName.cs` file
 in newly created **EdFi.Ods.Extensions.SampleStudentTranscript** project and
-Rename the file to **Marker\_EdFi\_Ods\_Extensions\_SampleStudentTranscript.cs**.
-file to **Marker\_EdFi\_Ods\_Extensions\_SampleStudentTranscript.cs**.
+Rename the file to `Marker_EdFi_Ods_Extensions_SampleStudentTranscript.cs`.
+file to `Marker_EdFi_Ods_Extensions_SampleStudentTranscript.cs`.
 
 **4c.2.** When prompted choose to rename all references to the code
-element **Marker\_EdFi\_Ods\_Extensions\_ExtensionName**.
+element `Marker_EdFi_Ods_Extensions_ExtensionName`.
 
 ### Step 4d. Integrate Extension into the Solution
 
@@ -531,9 +530,9 @@ security is desired, another authorization strategy could be implemented to
 handle this entity.
 
 To enable NoFurtherAuthorizationRequired, first create a security SQL script
-called **0001-PostSecondaryOrganization\_No\_Further\_Auth\_Required.sql** and
-place it in
-the Ed-Fi-ODS-Implementation\\Application\\EdFi.Ods.Extensions.SampleStudentTranscript\\Versions\\1.0.0\\Standard\\5.1.0\\Artifacts\\MsSql\\Data\\Security folder
+called `0001-PostSecondaryOrganization_No_Further_Auth_Required.sql` and place
+it in
+the `Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleStudentTranscript\Versions\1.0.0\Standard\5.1.0\Artifacts\MsSql\Data\Security` folder
 (Create 'Security' folder if it does not exist). Copy the contents of the
 following SQL DML script into the newly created file and save.
 
@@ -662,7 +661,9 @@ identify the resource, but instead uses the ClaimName. To prevent possible
 naming conflicts, the claim name's URI value should include the schema
 representation, using the following format:
 
-`<http://ed-fi.org/ods/identity/claims/{schema}/{resourceName}>`
+```none
+http://ed-fi.org/ods/identity/claims/{schema}/{resourceName}
+```
 
 The URI representation of the schema name should be derived by splitting the
 terms in the name of the extension, inserting hyphens and converting to lower
@@ -674,7 +675,7 @@ The resource name should be the camel-cased (also known as "medial capitals"),
 singularized name of the resource (e.g., "postSecondaryOrganization" not
 "PostSecondaryOrganization" or "postSecondaryOrganizations").
 
-Note that in 0001-PostSecondaryOrganization\_No\_Further\_Auth\_Required.sql
+Note that in `0001-PostSecondaryOrganization_No_Further_Auth_Required.sql`
 script above, the resulting ClaimName value is
 `"http://ed-fi.org/ods/identity/claims/sample-student-transcript/postSecondaryOrganization"`
 
@@ -730,18 +731,18 @@ click **Next**.
 ![Create Extension Project](/img/reference/ods-api/how-to-transcript/vs-create-extension-project.webp)
 
 In the Project Name field,
-enter ****EdFi.Ods.Extensions.SampleStudentTranscript**** and
-click ****Create****.
+enter `EdFi.Ods.Extensions.SampleStudentTranscript` and
+click **Create**.
 
 ### Step A3. Rename the "Marker" Interface File
 
 **3.1.** **Right-click** on
-the **Marker\_EdFi\_Ods\_Extensions\_ExtensionName.cs** file in newly
+the `Marker_EdFi_Ods_Extensions_ExtensionName.cs` file in newly
 created **EdFi.Ods.Extensions.SampleStudentTranscript** project and Rename the
-file to **Marker\_EdFi\_Ods\_Extensions\_SampleStudentTranscript.cs**.
+file to `Marker_EdFi_Ods_Extensions_SampleStudentTranscript.cs`.
 
 **3.2.** When prompted choose to rename all references to the code
-element **Marker\_EdFi\_Ods\_Extensions\_ExtensionName**.
+element `Marker_EdFi_Ods_Extensions_ExtensionName`.
 
 ### Step A4. Integrate Extension into the Solution
 
@@ -807,7 +808,7 @@ security is desired, another authorization strategy could be implemented to
 handle this entity.
 
 To enable NoFurtherAuthorizationRequired, first create a security SQL script
-called **0001-PostSecondaryOrganization\_No\_Further\_Auth\_Required.sql** and
+called `0001-PostSecondaryOrganization_No_Further_Auth_Required.sql` and
 place it in the `Ed-Fi-ODS-Implementation/Application/
 EdFi.Ods.Extensions.SampleStudentTranscript/Versions/1.0.0/Standard/5.1.0/Artifacts/MsSql/Data/Security` folder
 (Create 'Security' folder if it does not exist). Copy the contents of the

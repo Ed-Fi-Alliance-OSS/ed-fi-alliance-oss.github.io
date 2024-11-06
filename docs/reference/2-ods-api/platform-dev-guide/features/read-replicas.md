@@ -22,7 +22,7 @@ the PostgreSQL documentation).
 ## API Configuration
 
 The API identifies the presence of a read-replica ODS by the existence of a
-record in the OdsInstanceDerivative table in the EdFi\_Admin database with a
+record in the OdsInstanceDerivative table in the `EdFi_Admin` database with a
 DerivativeType value of "ReadReplica":
 
 ```mermaid

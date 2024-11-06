@@ -43,13 +43,13 @@ and supporting functions for a Sandbox instance:
 
 * **Databases**
 
-  * **EdFi\_ODS\_\*.** Databases used as templates and test data stores for
+  * **`EdFi_ODS_*`.** Databases used as templates and test data stores for
         a Sandbox installation of the Ed-Fi-ODS / API.
 
-  * **EdFi\_Admin.** A database containing authentication information for
+  * **`EdFi_Admin`.** A database containing authentication information for
         API clients.
 
-  * **EdFi\_Security.** A database containing authorization information for
+  * **`EdFi_Security`.** A database containing authorization information for
         API clients.
 
 ## Sandbox Security
@@ -244,13 +244,10 @@ development environment creates each of the required databases.
 Open Microsoft SQL Server management Studio and backup each of the following
 databases:
 
-* EdFi\_Admin
-
-* EdFi\_Ods\_Minimal\_Template
-
-* EdFi\_Ods\_Populated\_Template
-
-* EdFi\_Security
+* `EdFi_Admin`
+* `EdFi_Ods_Minimal_Template`
+* `EdFi_Ods_Populated_Template`
+* `EdFi_Security`
 
 ### Step 4. Publish Websites and Services
 
@@ -259,7 +256,7 @@ in this document. The following steps are provided as a high-level overview.
 Please see the individual installation and configuration instructions as they
 pertain to your configuration.
 
-Load the EdFi\_ODS solution in Visual Studio and publish the following projects
+Load the `EdFi_ODS` solution in Visual Studio and publish the following projects
 to a local directory with the same name as the project under a common parent
 directory (like `C:\temp`):
 
@@ -301,8 +298,8 @@ directory (like `C:\temp`):
     for the server. From the Server Properties, Security page, select SQL Server
     and Windows Authentication mode.
 
-* Create Logins for your websites and applications to connect to EdFi\_Admin,
-    EdFi\_Security and EdFi\_Ods\* databases.
+* Create Logins for your websites and applications to connect to `EdFi_Admin`,
+    `EdFi_Security` and `EdFi_Ods_*` databases.
 
 * Assign permissions to the corresponding databases.
 
@@ -383,11 +380,9 @@ API over the web.
 
 #### Dependencies
 
-* EdFi\_Admin (Database
-
-* EdFi\_Ods\_\* (Database)
-
-* EdFi\_Security (Database)
+* `EdFi_Admin` (Database)
+* `EdFi_Ods_*` (Database)
+* `EdFi_Security` (Database)
 
 #### Deployment Steps (for an on-premises IIS)
 
@@ -400,7 +395,7 @@ Steps to deploy the application:
 3. Under Profiles, choose **PublishToIIS** and click on **Connection**.
 
 4. Choose your deployment path in the Target Location textbox. This can be a
-    network path. The default location is C:\\inetpub\\wwwroot\\EdFi.Ods.WebApi.
+    network path. The default location is `C:\inetpub\wwwroot\EdFi.Ods.WebApi`.
 
 5. Click **Publish**.
 
@@ -428,13 +423,13 @@ Connection Strings:
 
 | Key              | Description                          |
 | ---------------- | ------------------------------------ |
-| EdFi\_Admin\*    | Connection to the Admin database.    |
-| EdFi\_Security\* | Connection to the Security database. |
+| `EdFi_Admin`\*    | Connection to the Admin database.    |
+| `EdFi_Security`\* | Connection to the Security database. |
 
 \* Values are not optional and MUST be defined at deployment time.
 
-Note: EdFi\_Ods\_\* connection strings are not stored in the EdFi.Ods.WebApi
-configuration file. They are configured in the EdFi\_Admin database and Sandbox
+Note: `EdFi_Ods_*` connection strings are not stored in the EdFi.Ods.WebApi
+configuration file. They are configured in the `EdFi_Admin` database and Sandbox
 Administration Application will create those entries at startup and when new
 sandbox creation is requested.
 
@@ -448,11 +443,11 @@ sandboxes.
 
 #### Sandbox Dependencies
 
-* EdFi\_Admin (Database)
-* EdFi\_Security (Database)
-* EdFi\_Ods\_\* (Database)
-* EdFi\_Ods\_Populated\_Template (Database)
-* EdFi\_Ods\_Minimal\_Template (Database)
+* `EdFi_Admin` (Database)
+* `EdFi_Security` (Database)
+* `EdFi_Ods_*` (Database)
+* `EdFi_Ods_Populated_Template` (Database)
+* `EdFi_Ods_Minimal_Template` (Database)
 * EdFi.Ods.WebApi
 
 #### Sandbox Deployment Steps (for an on-premises IIS)
@@ -524,9 +519,9 @@ Connection Strings:
 
 | Key            | Description                                                                                                                                                               |
 | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| EdFi\_Ods      | Connection string template to create sandboxes on the fly. Sandbox Administration application will create and configure sandbox ODS instances in the EdFi\_Admin database |
-| EdFi\_Admin    | Should point to the Sandbox deployment of EdFi\_Admin. Note that this database should NOT be shared with Security Tools.                                                  |
-| EdFi\_Security | Should point to the Sandbox deployment of EdFi\_Security. Note that this database should NOT be shared with Security Tools.                                               |
+| EdFi\_Ods      | Connection string template to create sandboxes on the fly. Sandbox Administration application will create and configure sandbox ODS instances in the `EdFi_Admin` database |
+| `EdFi_Admin`    | Should point to the Sandbox deployment of `EdFi_Admin`. Note that this database should NOT be shared with Security Tools.                                                  |
+| `EdFi_Security` | Should point to the Sandbox deployment of `EdFi_Security`. Note that this database should NOT be shared with Security Tools.                                               |
 | EdFi\_master   | Master Connection string to create other ODSs on the fly. It should point to the proper server upon which you want the ODS databases to be created.                       |
 
 The `User` section defines  user accounts and sandboxes that will be deployed

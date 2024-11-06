@@ -2,11 +2,11 @@
 
 ## Introduction
 
-The Ed-Fi ODS API security metadata is stored in the EdFi\_Security database and
+The Ed-Fi ODS API security metadata is stored in the `EdFi_Security` database and
 is logically organized into a taxonomy. The [Admin API](/reference/admin-api)
 provides a endpoints for managing this taxonomy. Another alternative is to
 author SQL scripts from scratch to affect the desired changes in the
-EdFi\_Security database's relational tables used to model the hierarchical
+`EdFi_Security` database's relational tables used to model the hierarchical
 structure &mdash; a tedious and often challenging exercise. Refer to [How To:
 Configure Claim Sets](../how-to-guides/how-to-configure-claim-sets.md) for
 examples for authoring SQL scripts to setup security metadata.
@@ -290,7 +290,7 @@ be aware of while authoring policies, and those are discussed next.
 ### Create New Claims and Claim Sets
 
 Claims and claim sets will be created if they do not yet exist in the
-EdFi\_Security database &mdash; authorization strategies and actions cannot be
+`EdFi_Security` database &mdash; authorization strategies and actions cannot be
 created through a security policy document (errors will occur during SQL script
 execution).
 
@@ -387,7 +387,7 @@ security metadata.
 
 ### Generating SQL Scripts for the Security Policy
 
-In order to apply the security policy to the EdFi\_Security database, you must
+In order to apply the security policy to the `EdFi_Security` database, you must
 generate SQL scripts for your target database engine (SQL Server and PostgreSQL
 are supported). The zip archive provided in the download panel on the
 right contains the following artifacts:
@@ -397,14 +397,14 @@ right contains the following artifacts:
 * a PowerShell script (transform.ps1) that installs the Saxon XSLT processor and
   invokes the XSLT transformation
 * SQL scripts (for SQL Server and PostgreSQL) to export the full metadata from
-  the EdFi\_Security database in the security policy XML format (which can be
+  the `EdFi_Security` database in the security policy XML format (which can be
   very useful for diagnostic purposes, or as a reference for writing new
   security policies)
 
 :::info
 
 The GitHub link provided in the downloads section of this article includes SQL
-scripts for exporting the existing security metadata from the EdFi\_Security
+scripts for exporting the existing security metadata from the `EdFi_Security`
 database, providing support for both SQL Server and PostgreSQL. However, the
 original export script was authored and developed exclusively for SQL Server.
 The PostgreSQL version is far less widely used, and the resulting content
@@ -433,7 +433,7 @@ import TabItem from '@theme/TabItem';
 </Tabs>
 
 The resulting SQL scripts are idempotent and can be executed against the
-EdFi\_Security database.
+`EdFi_Security` database.
 
 :::note
 
@@ -442,7 +442,7 @@ the Saxon XSLT processor and invokes the XSLT transformation. The XSLT
 stylesheet consumes the security policy you define and transforms it into a
 SQL script to produce the declared end state of the security policy. The
 archive also contains SQL scripts (for SQL Server and PostgreSQL) to export
-the full metadata from the EdFi\_Security database in the security policy XML
+the full metadata from the `EdFi_Security` database in the security policy XML
 format (which can be very useful for diagnostic purposes, or as a reference
 for writing new security policies).
 

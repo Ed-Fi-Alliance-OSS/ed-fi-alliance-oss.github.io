@@ -124,7 +124,7 @@ enabling full feature set of the ODS / API.
 ### SQLServer Steps
 
 * Download the compressed version of your backup database from
-  [EdFi\_Ods\_Northridge\_v71\_20240416.7z](https://odsassets.blob.core.windows.net/public/Northridge/EdFi_Ods_Northridge_v71_20240416.7z)
+  [`EdFi_Ods_Northridge_v71_20240416.7z`](https://odsassets.blob.core.windows.net/public/Northridge/EdFi_Ods_Northridge_v71_20240416.7z)
 * Uncompress the download using the [7zip utility](https://www.7-zip.org/).
 * If you downloaded and uncompressed the file someplace other than the
   database server, copy the uncompressed ".bak" file to a folder on the
@@ -159,7 +159,7 @@ additional steps are needed.
 * Record (or copy) the name of the sandbox database.
 * Rename the sandbox database. For example, add "-backup" to the end of the
   existing name.
-* Rename the sample (i.e., EdFi\_Ods\_Northridge\_v71) to what the sandbox
+* Rename the sample (i.e., `EdFi_Ods_Northridge_v71`) to what the sandbox
   database was named.
 * You should be good for internal access.
 

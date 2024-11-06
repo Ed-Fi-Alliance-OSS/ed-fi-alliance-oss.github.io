@@ -3,14 +3,14 @@
 This example outlines the steps necessary to integrate and activate Ed-Fi
 Profile definitions for use in an Ed-Fi ODS / API. To be able to update profile
 definitions at run-time without rebuild and redeployment, it is preferred to
-configure profile definitions in the EdFi\_Admin database. Alternatively, you
+configure profile definitions in the `EdFi_Admin` database. Alternatively, you
 can define profile via embedded resource in a C# project as described in
 [Appendix
 A](#appendix-a-adding-profiles-using-the-visual-studio-profiles-project-template).
 
-## Step 1. Add Profiles via the EdFi\_Admin Database
+## Step 1. Add Profiles via the EdFi_Admin Database
 
-API Profiles can be configured and assigned through the EdFi\_Admin database.
+API Profiles can be configured and assigned through the `EdFi_Admin` database.
 This database stores the data required to manage API keys and secrets, Education
 Organizations, Profile assignments, and Profile definitions.
 
@@ -53,11 +53,11 @@ Ed-Fi-ODS-API-Profiles.xsd.
 
 The XML schema of API Profile definitions can be validated using the schema
 definition file included in the Ed-Fi-ODS repository at
-Ed-Fi-ODS\\Application\\EdFi.Ods.Common\\Metadata\\Schemas\\Ed-Fi-ODS-API-Profiles.xsd.
+`Ed-Fi-ODS\Application\EdFi.Ods.Common\Metadata\Schemas\Ed-Fi-ODS-API-Profiles.xsd`.
 
 :::
 
-Profiles in the EdFi\_Admin database are refreshed dynamically by the Ed-Fi ODS
+Profiles in the `EdFi_Admin` database are refreshed dynamically by the Ed-Fi ODS
 / API each time the profiles cache expires. The expiration time for the
 profiles cache can be adjusted in the `appsettings.json` file, as shown below.
 
@@ -157,9 +157,7 @@ to the Profiles Project, stored as an embedded resource when the project is
 built, and then the ODS / API reads and applies the Profiles definitions in that
 embedded resource at runtime. The assumption is that the Ed-Fi ODS / API has
 been successfully set up and is running in a local environment per the
-instructions in the [Getting
-Started](https://edfi.atlassian.net/wiki/display/ODSAPIS3V70/Getting+Started)
-documentation.
+instructions in the [Getting Started](../getting-started/) documentation.
 
 Detail on each step follows.
 
@@ -180,9 +178,9 @@ section of this documentation.
    Project Template" entry as shown below. Click **Next**.
 1. Enter the project name for the new project and click **Create**. The
   suggested naming convention for this type of project is something like
-  **EdFi.Ods.Profiles.MyProfiles**.
-1. **Review and modify Profiles.xml file**. The Visual Studio Project Template
-   creates a sample **Profiles.xml** file. You should open it and modify it to
+  `EdFi.Ods.Profiles.MyProfiles`.
+1. **Review and modify `Profiles.xml` file**. The Visual Studio Project Template
+   creates a sample `Profiles.xml` file. You should open it and modify it to
    meet the needs of your Profile. Consult [API
    Profiles](../platform-dev-guide/security/api-profiles.md)
    for guidance.

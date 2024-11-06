@@ -41,8 +41,8 @@ Walk through those steps first to get familiar with the process.
     **Install the Ed-Fi Bulk Load Client**
 
     ```shell
-    mkdir `{YourInstallFolder}`
-    dotnet tool install EdFi.Suite3.BulkLoadClient.Console --version 7.2.413 --tool-path `{YourInstallFolder}`
+    mkdir `<YourInstallFolder>`
+    dotnet tool install EdFi.Suite3.BulkLoadClient.Console --version 7.2.413 --tool-path `<YourInstallFolder>`
     ```
 
     You will see output like this:
@@ -52,32 +52,32 @@ Walk through those steps first to get familiar with the process.
     Tool 'edfi.suite3.bulkloadclient.console' (version '7.2.413') was successfully installed.
     ```
 
-* You can verify that the **EdFi.BulkLoadClient.Console.exe**  is available by
+* You can verify that the `EdFi.BulkLoadClient.Console.exe`  is available by
     browsing to this location
-    **`{YourInstallFolder}\EdFi.BulkLoadClient.Console.exe`**
+    `<YourInstallFolder>\EdFi.BulkLoadClient.Console.exe`
 
 ## Step 2. Download Scripts and Sample Data
 
-* **Download and Extract** **Ed-Fi-TPDMDataLoad.zip** to a local folder. We
-    recommend **C:\\Ed-Fi-TPDMDataLoad**.
+* **Download and Extract** `Ed-Fi-TPDMDataLoad.zip` to a local folder. We
+    recommend `C:\Ed-Fi-TPDMDataLoad`.
     Ed-Fi-TPDMDataLoad.zip contains all the scripts and directory structure used
     in this how-to article.
-* **Download the Sample XML** to **Ed-Fi-TPDMDataLoad****\\Sample XML**
-* **Download the Descriptors** to **Ed-Fi-TPDMDataLoad****\\Bootstrap**
-* **Move** the following files from **Ed-Fi-TPDMDataLoad****\\Sample XML** to
-  **Ed-Fi-TPDMDataLoad****\\Bootstrap**
-  * **Standards.xml**
-  * **EducationOrganization.xml**
-  * **IndicatorDescriptor.xml**
-  * **IndicatorGroupDescriptor.xml**
-  * **IndicatorLevelDescriptor.xml**
-  * **ProgramCharacteristicDescriptor.xml**
-* **Download the TPDM Sample XML** to **Ed-Fi-TPDMDataLoad\\Sample
-  XML\\TPDM**.
+* **Download the Sample XML** to `Ed-Fi-TPDMDataLoad\Sample XML`
+* **Download the Descriptors** to `Ed-Fi-TPDMDataLoad\Bootstrap`
+* **Move** the following files from `Ed-Fi-TPDMDataLoad\Sample XML` to
+  `Ed-Fi-TPDMDataLoad\Bootstrap`
+  * `Standards.xml`
+  * `EducationOrganization.xml`
+  * `IndicatorDescriptor.xml`
+  * `IndicatorGroupDescriptor.xml`
+  * `IndicatorLevelDescriptor.xml`
+  * `ProgramCharacteristicDescriptor.xml`
+* **Download the TPDM Sample XML** to `Ed-Fi-TPDMDataLoad\Sample
+  XML\TPDM`.
 * **Download the TPDM Descriptors** to
-  **Ed-Fi-TPDMDataLoad\\Bootstrap\\TPDM**.
-* **Copy** the file **TPDM Sample XML\\EducationOrganization.xml** to the
-  **Ed-Fi-TPDMDataLoad\\****Bootstrap\\TPDM** folder:
+  `Ed-Fi-TPDMDataLoad\Bootstrap\TPDM`.
+* **Copy** the file `TPDM Sample XML\EducationOrganization.xml` to the
+  `Ed-Fi-TPDMDataLoad\Bootstrap\TPDM` folder:
 
 :::info
 
@@ -98,16 +98,16 @@ files.
 ## Step 3. Create an Empty Sandbox
 
 * **Open a PowerShell session.**
-* **Navigate** to \\Ed-Fi-ODS-Implementation\\ directory
+* **Navigate** to `Ed-Fi-ODS-Implementation` directory
 * **Execute `.\Initialize-PowershellForDevelopment.ps1` and
   then `Reset-EmptySandboxDatabase`.
 
-    The script will create **EdFi\_Ods\_Sandbox\_Empty** Database.
+    The script will create the `EdFi_Ods_Sandbox_Empty` Database.
 
 ## Step 4. Update Claim Set to Load Descriptors and Education Organizations
 
-* **Execute CreateApiClienforEmptySandbox.sql** by executing the file against
-  the EdFi\_Admin database using any database query tool. Use the version
+* **Execute `CreateApiClienforEmptySandbox.sql`** by executing the file against
+  the `EdFi_Admin` database using any database query tool. Use the version
   appropriate to your database.
 
   <Tabs>
@@ -432,21 +432,21 @@ files.
 ## Step 5. Run the Bootstrap Script to Load Descriptors and Education Organizations
 
 * **Open a PowerShell session.**
-* **Navigate** to **Ed-Fi-TPDMDataLoad** directory (e.g.,
-  C:\\Ed-Fi-TPDMDataLoad).
-* Open the **LoadBootstrapData****.ps1 file** in a text editor update the
-  `$apiLoaderExe` variable Value where **EdFi.BulkLoadClient.Console** is
+* **Navigate** to `Ed-Fi-TPDMDataLoad` directory (e.g.,
+  `C:\Ed-Fi-TPDMDataLoad`).
+* Open the **`LoadBootstrapData.ps1` file** in a text editor update the
+  `$apiLoaderExe` variable Value where `EdFi.BulkLoadClient.Console` is
   installed in **Step 1.**
 * Example `$apiLoaderExe="<YourInstallFolderFullPath>\EdFi.BulkLoadClient.Console.exe"`
-* **Save and Execute LoadBootstrapData.ps1**.
+* **Save and Execute `LoadBootstrapData.ps1`**.
 
   The script will run the Bulk Load Client loading data from the Bootstrap
   folder to the TPDM Populated Sandbox Database.
 
 ## Step 6. Update Claim Set to Load Sample Data
 
-* **Execute EnableSandboxClaimset****.sql** by executing the file against the
-    EdFi\_Admin database using any database query tool. Use the version
+* **Execute `EnableSandboxClaimset.sql`** by executing the file against the
+    `EdFi_Admin` database using any database query tool. Use the version
     appropriate to your database.
 
 
@@ -474,13 +474,13 @@ files.
 ## Step 7. Run the Sample Data Script to Load Sample Data
 
 * **Open a PowerShell session.**
-* **Navigate** to **Ed-Fi-TPDMDataLoad** directory (e.g.,
-  C:\\Ed-Fi-TPDMDataLoad).
-* Open the **LoadSampleData.ps1 file** in notepad or Windows PowerShell ISE
+* **Navigate** to `Ed-Fi-TPDMDataLoad` directory (e.g.,
+  `C:\Ed-Fi-TPDMDataLoad`).
+* Open the **`LoadSampleData.ps1` file** in notepad or Windows PowerShell ISE
   and update the $apiLoaderExe variable Value  where
-  **EdFi.BulkLoadClient.Console** is installed in **Step 1.**
+  `EdFi.BulkLoadClient.Console` is installed in **Step 1.**
 * Example `$apiLoaderExe="<YourInstallFolderFullPath>\EdFi.BulkLoadClient.Console.exe"`
-* **Save and Execute** **LoadSampleData.ps1**.
+* **Save and Execute** `LoadSampleData.ps1`.
 
   The script will run the Bulk Load Client to load data from the Sample XML
   folder to the Empty Sandbox database.

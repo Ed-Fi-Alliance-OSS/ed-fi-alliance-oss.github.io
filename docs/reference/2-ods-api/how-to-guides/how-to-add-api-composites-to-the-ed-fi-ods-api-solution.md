@@ -34,7 +34,7 @@ strongly typed mechanism for obtaining a reference to the .NET assembly. If you
 used the Visual Studio Project template to create your composite, a file will
 already exist — but you'll need to rename the interface and the file to match
 the convention
-(e.g., **Marker\_EdFi\_Ods\_Composites\_MyComposites****.cs**). The marker
+(e.g., `Marker_EdFi_Ods_Composites_MyComposites.cs`). The marker
 interface file should have the following code:
 
 ```csharp

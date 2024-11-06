@@ -43,7 +43,7 @@ parameter named "schoolYear" because of a corresponding resource property.
 Once the OdsContextRouteTemplate is defined, _all_ API requests must include the
 segment in the base path (in multi-tenant mode this context segment will be
 added after the tenant identifier segment). Also, all ODS instance definitions
-managed in the EdFi\_Admin database must have corresponding contextual
+managed in the `EdFi_Admin` database must have corresponding contextual
 name/value pairs defined in the OdsInstanceContext table. The API will use the
 context from the request path with the contextual values defined for the ODS
 instance to identify which database should be used to service the request. A

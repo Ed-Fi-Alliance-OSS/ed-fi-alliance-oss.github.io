@@ -457,7 +457,7 @@ the composite resources. The following list contains the impact of authorization
 on the API responses:
 
 * Composite API Resources do not require additional security metadata to be
-    defined in the EdFi\_Security database. All authorization decisions and
+    defined in the `EdFi_Security` database. All authorization decisions and
     behavior are based on the metadata already defined for the existing Ed-Fi
     ODS / API resources.
 * If the caller does not have access to the base resource of a composite,

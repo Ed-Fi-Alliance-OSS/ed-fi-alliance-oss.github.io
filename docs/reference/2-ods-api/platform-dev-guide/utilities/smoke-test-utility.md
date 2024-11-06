@@ -204,7 +204,7 @@ Intermittent warnings and errors may possibly be logged due to the
 inaccessibility of resources for security reasons.
 
 Security may be disabled for all keys/secrets by running the following query
-against the EdFi\_Security database:
+against the `EdFi_Security` database:
 
 ```sql
 update [EdFi_Security].[dbo].[ResourceClaimActionAuthorizationStrategies] set AuthorizationStrategyId = 1
@@ -213,5 +213,5 @@ update [EdFi_Security].[dbo].[ResourceClaimActionAuthorizationStrategies] set Au
 This statement replaces the authorization strategy for all resource types to be
 "no further authorization required".
 
-Deleting the EdFi\_Security database will cause it to be rebuilt with the
+Deleting the `EdFi_Security` database will cause it to be rebuilt with the
 default claims the next time the websites are run.

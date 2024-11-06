@@ -1,5 +1,9 @@
 # How To: Enable logging API request and response content
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock'
+
 This example will show how the content of the requests and responses for the web
 API can be logged. Because the content of API requests and responses may contain
 sensitive data, this information can only be logged to a table in the ODS
@@ -16,47 +20,46 @@ the data at rest in the ODS database app also applies to the data stored in the
 log entries required table can be created by running the following SQL script on
 the ODS database:
 
-### Using MS SQL Server
-
-```sql
-CREATE TABLE dbo.RequestResponseContentLog (
-    Id int IDENTITY (1, 1) NOT NULL,
-    Date datetime NOT NULL,
- Thread varchar(255) NOT NULL,
- CorrelationId varchar(255) NOT NULL,
-    ApiClientId varchar(255) NULL,
-    Level varchar(50) NULL,
- RequestUrl varchar(255) NULL,
- RequestMethod varchar(10) NULL,
- ProfilesHeader varchar(255) NULL,
- RequestBody nvarchar(max) NULL,
- ResponseBody nvarchar(max) NULL,
-    ResponseMessage varchar(255) NULL,
-    Exception varchar(2000) NULL
-)
-```
-
-### Using PostgreSQL
-
-```sql
-CREATE TABLE edfi.RequestResponseContentLog (
-Id SERIAL PRIMARY KEY NOT NULL,
-Date TIMESTAMP NOT NULL,
-Thread varchar (255) NOT NULL,
-CorrelationId varchar (255) NOT NULL,
-ApiClientId varchar (255) NULL,
-Level varchar (50) NULL,
-RequestUrl varchar (255) NULL,
-RequestMethod varchar (10) NULL,
-ProfilesHeader varchar (255) NULL,
-RequestBody varchar NULL,
-ResponseBody varchar NULL,
-ResponseMessage varchar (255) NULL,
-Exception varchar (2000) NULL
-)
-
-
-```
+<Tabs>
+  <TabItem value="MSSQL" label="SQL Server" default>
+    ```sql
+    CREATE TABLE dbo.RequestResponseContentLog (
+      Id int IDENTITY (1, 1) NOT NULL,
+      [Date] datetime NOT NULL,
+      Thread varchar(255) NOT NULL,
+      CorrelationId varchar(255) NOT NULL,
+      ApiClientId varchar(255) NULL,
+      [Level] varchar(50) NULL,
+      RequestUrl varchar(255) NULL,
+      RequestMethod varchar(10) NULL,
+      ProfilesHeader varchar(255) NULL,
+      RequestBody nvarchar(max) NULL,
+      ResponseBody nvarchar(max) NULL,
+      ResponseMessage varchar(255) NULL,
+      Exception varchar(2000) NULL
+    )
+    ```
+  </TabItem>
+  <TabItem value="PostgreSQL" label="PostgreSQL">
+    ```sql
+    CREATE TABLE edfi.RequestResponseContentLog (
+      Id SERIAL PRIMARY KEY NOT NULL,
+      Date TIMESTAMP NOT NULL,
+      Thread varchar (255) NOT NULL,
+      CorrelationId varchar (255) NOT NULL,
+      ApiClientId varchar (255) NULL,
+      Level varchar (50) NULL,
+      RequestUrl varchar (255) NULL,
+      RequestMethod varchar (10) NULL,
+      ProfilesHeader varchar (255) NULL,
+      RequestBody varchar NULL,
+      ResponseBody varchar NULL,
+      ResponseMessage varchar (255) NULL,
+      Exception varchar (2000) NULL
+    )
+    ```
+  </TabItem>
+</Tabs>
 
 ## Step 2. Update the EdFi.Ods.WebApi log4net configuration
 
@@ -76,217 +79,226 @@ appears in the log4net configuration.
 
 :::
 
-### Using MS SQL Server
-
-```xml
-  <logger name="RequestResponseContentLogger" additivity="false">
- <level value="ERROR" />
- <appender-ref ref="RequestResponseContentAppender" />
-  </logger>
-  <appender name="RequestResponseContentAppender" type="log4net.Appender.AdoNetAppender">
-    <bufferSize value="0" />
-    <threshold value="ERROR" />
-    <connectionType value="Microsoft.Data.SqlClient.SqlConnection, Microsoft.Data.SqlClient" />
-    <commandText value="INSERT INTO RequestResponseContentLog ([Date],[Thread],[CorrelationId],[ApiClientId],[Level],[RequestUrl],[RequestMethod],[ProfilesHeader],[RequestBody],[ResponseBody],[ResponseMessage],[Exception]) VALUES (@log_date, @thread, @correlation_id, @api_client_id, @log_level, @request_url, @request_method, @profiles_header, @request_body, @response_body, @response_message, @exception)" />
-    <parameter>
+<Tabs>
+  <TabItem value="MSSQL" label="SQL Server" default>
+  <details>
+    <summary>View detail...</summary>
+    ```xml
+    <logger name="RequestResponseContentLogger" additivity="false">
+      <level value="ERROR" />
+      <appender-ref ref="RequestResponseContentAppender" />
+    </logger>
+    <appender name="RequestResponseContentAppender" type="log4net.Appender.AdoNetAppender">
+      <bufferSize value="0" />
+      <threshold value="ERROR" />
+      <connectionType value="Microsoft.Data.SqlClient.SqlConnection, Microsoft.Data.SqlClient" />
+      <commandText
+        value="INSERT INTO RequestResponseContentLog ([Date],[Thread],[CorrelationId],[ApiClientId],[Level],[RequestUrl],[RequestMethod],[ProfilesHeader],[RequestBody],[ResponseBody],[ResponseMessage],[Exception]) VALUES (@log_date, @thread, @correlation_id, @api_client_id, @log_level, @request_url, @request_method, @profiles_header, @request_body, @response_body, @response_message, @exception)" />
+      <parameter>
         <parameterName value="@log_date" />
         <dbType value="DateTime" />
         <layout type="log4net.Layout.RawTimeStampLayout" />
-    </parameter>
-    <parameter>
+      </parameter>
+      <parameter>
         <parameterName value="@thread" />
         <dbType value="String" />
         <size value="255" />
         <layout type="log4net.Layout.PatternLayout">
-            <conversionPattern value="%thread" />
+          <conversionPattern value="%thread" />
         </layout>
-    </parameter>
-    <parameter>
+      </parameter>
+      <parameter>
         <parameterName value="@correlation_id" />
         <dbType value="String" />
         <size value="255" />
         <layout type="log4net.Layout.PatternLayout">
-            <conversionPattern value="%property{CorrelationId}" />
+          <conversionPattern value="%property{CorrelationId}" />
         </layout>
-    </parameter>
-    <parameter>
-     <parameterName value="@api_client_id" />
-     <dbType value="String" />
-     <size value="255" />
-     <layout type="log4net.Layout.PatternLayout">
-      <conversionPattern value="%property{ApiClientId}" />
-     </layout>
-    </parameter>
-    <parameter>
+      </parameter>
+      <parameter>
+        <parameterName value="@api_client_id" />
+        <dbType value="String" />
+        <size value="255" />
+        <layout type="log4net.Layout.PatternLayout">
+          <conversionPattern value="%property{ApiClientId}" />
+        </layout>
+      </parameter>
+      <parameter>
         <parameterName value="@log_level" />
         <dbType value="String" />
         <size value="50" />
         <layout type="log4net.Layout.PatternLayout">
-            <conversionPattern value="%level" />
+          <conversionPattern value="%level" />
         </layout>
-    </parameter>
-    <parameter>
-     <parameterName value="@request_url" />
-     <dbType value="String" />
-     <size value="255" />
-     <layout type="log4net.Layout.PatternLayout">
-      <conversionPattern value="%property{RequestUrlWithQueryString}" />
-     </layout>
-    </parameter>
-    <parameter>
-     <parameterName value="@request_method" />
-     <dbType value="String" />
-     <size value="10" />
-     <layout type="log4net.Layout.PatternLayout">
-      <conversionPattern value="%property{RequestMethod}" />
-     </layout>
-    </parameter>
-    <parameter>
-     <parameterName value="@profiles_header" />
-     <dbType value="String" />
-     <size value="255" />
-     <layout type="log4net.Layout.PatternLayout">
-      <conversionPattern value="%property{ProfilesHeader}" />
-     </layout>
-    </parameter>
-    <parameter>
+      </parameter>
+      <parameter>
+        <parameterName value="@request_url" />
+        <dbType value="String" />
+        <size value="255" />
+        <layout type="log4net.Layout.PatternLayout">
+          <conversionPattern value="%property{RequestUrlWithQueryString}" />
+        </layout>
+      </parameter>
+      <parameter>
+        <parameterName value="@request_method" />
+        <dbType value="String" />
+        <size value="10" />
+        <layout type="log4net.Layout.PatternLayout">
+          <conversionPattern value="%property{RequestMethod}" />
+        </layout>
+      </parameter>
+      <parameter>
+        <parameterName value="@profiles_header" />
+        <dbType value="String" />
+        <size value="255" />
+        <layout type="log4net.Layout.PatternLayout">
+          <conversionPattern value="%property{ProfilesHeader}" />
+        </layout>
+      </parameter>
+      <parameter>
         <parameterName value="@request_body" />
         <dbType value="String" />
         <size value="-1" />
         <layout type="log4net.Layout.PatternLayout">
-            <conversionPattern value="%property{RequestBody}" />
+          <conversionPattern value="%property{RequestBody}" />
         </layout>
-    </parameter>
-    <parameter>
-     <parameterName value="@response_body" />
-     <dbType value="String" />
-     <size value="-1" />
-     <layout type="log4net.Layout.PatternLayout">
-      <conversionPattern value="%property{ResponseBody}" />
-     </layout>
-    </parameter>
-    <parameter>
+      </parameter>
+      <parameter>
+        <parameterName value="@response_body" />
+        <dbType value="String" />
+        <size value="-1" />
+        <layout type="log4net.Layout.PatternLayout">
+          <conversionPattern value="%property{ResponseBody}" />
+        </layout>
+      </parameter>
+      <parameter>
         <parameterName value="@response_message" />
         <dbType value="String" />
         <size value="255" />
         <layout type="log4net.Layout.PatternLayout">
-            <conversionPattern value="%message" />
+          <conversionPattern value="%message" />
         </layout>
-    </parameter>
-    <parameter>
+      </parameter>
+      <parameter>
         <parameterName value="@exception" />
         <dbType value="String" />
         <size value="2000" />
         <layout type="log4net.Layout.ExceptionLayout" />
-    </parameter>
-  </appender>
-```
-
-### Using PostgreSQL
-
-```xml
-  <logger name="RequestResponseContentLogger" additivity="false">
- <level value="ERROR" />
- <appender-ref ref="RequestResponseContentAppender" />
-  </logger>
-  <appender name="RequestResponseContentAppender" type="log4net.Appender.AdoNetAppender">
-    <bufferSize value="0" />
-    <threshold value="ERROR" />
-     <connectionType value="Npgsql.NpgsqlConnection, Npgsql" />
-    <commandText value="INSERT INTO edfi.RequestResponseContentLog (date,thread,correlationid,apiclientid,level,requesturl,requestmethod,profilesheader,requestbody,responsebody,responsemessage,exception) VALUES (@log_date, @thread, @correlation_id, @api_client_id, @log_level, @request_url, @request_method, @profiles_header, @request_body, @response_body, @response_message, @exception)" />
-    <parameter>
+      </parameter>
+    </appender>
+    ```
+  </details>
+  </TabItem>
+  <TabItem value="PostgreSQL" label="PostgreSQL">
+  <details>
+    <summary>View detail...</summary>
+    ```xml
+    <logger name="RequestResponseContentLogger" additivity="false">
+      <level value="ERROR" />
+      <appender-ref ref="RequestResponseContentAppender" />
+    </logger>
+    <appender name="RequestResponseContentAppender" type="log4net.Appender.AdoNetAppender">
+      <bufferSize value="0" />
+      <threshold value="ERROR" />
+      <connectionType value="Npgsql.NpgsqlConnection, Npgsql" />
+      <commandText
+        value="INSERT INTO edfi.RequestResponseContentLog (date,thread,correlationid,apiclientid,level,requesturl,requestmethod,profilesheader,requestbody,responsebody,responsemessage,exception) VALUES (@log_date, @thread, @correlation_id, @api_client_id, @log_level, @request_url, @request_method, @profiles_header, @request_body, @response_body, @response_message, @exception)" />
+      <parameter>
         <parameterName value="@log_date" />
         <dbType value="DateTime" />
         <layout type="log4net.Layout.RawTimeStampLayout" />
-    </parameter>
-    <parameter>
+      </parameter>
+      <parameter>
         <parameterName value="@thread" />
         <dbType value="String" />
         <size value="255" />
         <layout type="log4net.Layout.PatternLayout">
-            <conversionPattern value="%thread" />
+          <conversionPattern value="%thread" />
         </layout>
-    </parameter>
-    <parameter>
+      </parameter>
+      <parameter>
         <parameterName value="@correlation_id" />
         <dbType value="String" />
         <size value="255" />
         <layout type="log4net.Layout.PatternLayout">
-            <conversionPattern value="%property{CorrelationId}" />
+          <conversionPattern value="%property{CorrelationId}" />
         </layout>
-    </parameter>
-    <parameter>
-     <parameterName value="@api_client_id" />
-     <dbType value="String" />
-     <size value="255" />
-     <layout type="log4net.Layout.PatternLayout">
-      <conversionPattern value="%property{ApiClientId}" />
-     </layout>
-    </parameter>
-    <parameter>
+      </parameter>
+      <parameter>
+        <parameterName value="@api_client_id" />
+        <dbType value="String" />
+        <size value="255" />
+        <layout type="log4net.Layout.PatternLayout">
+          <conversionPattern value="%property{ApiClientId}" />
+        </layout>
+      </parameter>
+      <parameter>
         <parameterName value="@log_level" />
         <dbType value="String" />
         <size value="50" />
         <layout type="log4net.Layout.PatternLayout">
-            <conversionPattern value="%level" />
+          <conversionPattern value="%level" />
         </layout>
-    </parameter>
-    <parameter>
-     <parameterName value="@request_url" />
-     <dbType value="String" />
-     <size value="255" />
-     <layout type="log4net.Layout.PatternLayout">
-      <conversionPattern value="%property{RequestUrlWithQueryString}" />
-     </layout>
-    </parameter>
-    <parameter>
-     <parameterName value="@request_method" />
-     <dbType value="String" />
-     <size value="10" />
-     <layout type="log4net.Layout.PatternLayout">
-      <conversionPattern value="%property{RequestMethod}" />
-     </layout>
-    </parameter>
-    <parameter>
-     <parameterName value="@profiles_header" />
-     <dbType value="String" />
-     <size value="255" />
-     <layout type="log4net.Layout.PatternLayout">
-      <conversionPattern value="%property{ProfilesHeader}" />
-     </layout>
-    </parameter>
-    <parameter>
+      </parameter>
+      <parameter>
+        <parameterName value="@request_url" />
+        <dbType value="String" />
+        <size value="255" />
+        <layout type="log4net.Layout.PatternLayout">
+          <conversionPattern value="%property{RequestUrlWithQueryString}" />
+        </layout>
+      </parameter>
+      <parameter>
+        <parameterName value="@request_method" />
+        <dbType value="String" />
+        <size value="10" />
+        <layout type="log4net.Layout.PatternLayout">
+          <conversionPattern value="%property{RequestMethod}" />
+        </layout>
+      </parameter>
+      <parameter>
+        <parameterName value="@profiles_header" />
+        <dbType value="String" />
+        <size value="255" />
+        <layout type="log4net.Layout.PatternLayout">
+          <conversionPattern value="%property{ProfilesHeader}" />
+        </layout>
+      </parameter>
+      <parameter>
         <parameterName value="@request_body" />
         <dbType value="String" />
         <size value="-1" />
         <layout type="log4net.Layout.PatternLayout">
-            <conversionPattern value="%property{RequestBody}" />
+          <conversionPattern value="%property{RequestBody}" />
         </layout>
-    </parameter>
-    <parameter>
-     <parameterName value="@response_body" />
-     <dbType value="String" />
-     <size value="-1" />
-     <layout type="log4net.Layout.PatternLayout">
-      <conversionPattern value="%property{ResponseBody}" />
-     </layout>
-    </parameter>
-    <parameter>
+      </parameter>
+      <parameter>
+        <parameterName value="@response_body" />
+        <dbType value="String" />
+        <size value="-1" />
+        <layout type="log4net.Layout.PatternLayout">
+          <conversionPattern value="%property{ResponseBody}" />
+        </layout>
+      </parameter>
+      <parameter>
         <parameterName value="@response_message" />
         <dbType value="String" />
         <size value="255" />
         <layout type="log4net.Layout.PatternLayout">
-            <conversionPattern value="%message" />
+          <conversionPattern value="%message" />
         </layout>
-    </parameter>
-    <parameter>
+      </parameter>
+      <parameter>
         <parameterName value="@exception" />
         <dbType value="String" />
         <size value="2000" />
         <layout type="log4net.Layout.ExceptionLayout" />
-    </parameter>
-  </appender>
-```
+      </parameter>
+    </appender>
+    ```
+  </details>
+  </TabItem>
+</Tabs>
 
 ## Step 3. Set the logging duration
 

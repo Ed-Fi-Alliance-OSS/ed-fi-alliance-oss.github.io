@@ -6,7 +6,7 @@ a command-line utility to view and graphically depict security configurations.
 However, it is sometimes useful to view configurations as stored in the
 system. The SQL queries on this page enable a database administrator to view
 information about security configurations. Execute the queries from the
-EdFi\_Security database.
+`EdFi_Security` database.
 
 ## View Permissions Under a Claim Set
 

@@ -12,11 +12,11 @@ the creation method and purpose.
 
 | Database | Method | Purpose |
 | --- | --- | --- |
-| EdFi\_Ods\_Minimal\_Template | SQL Backup | A template database used to create empty sandboxes or to create production ODS. |
-| EdFi\_Ods\_Populated\_Template | SQL Backup | A template database populated with sample data used to create sample data sandboxes. |
-| EdFi\_ODS\_\* | SQL Backup | A database that stores data for the ODS / API |
-| EdFi\_Admin | SQL Scripts | A database containing administration configuration information specific to the ODS / API. |
-| EdFi\_Security | SQL Scripts | A database containing security configuration information. |
+| `EdFi_Ods_Minimal_Template` | SQL Backup | A template database used to create empty sandboxes or to create production ODS. |
+| `EdFi_Ods_Populated_Template` | SQL Backup | A template database populated with sample data used to create sample data sandboxes. |
+| `EdFi_ODS_*` | SQL Backup | A database that stores data for the ODS / API |
+| `EdFi_Admin` | SQL Scripts | A database containing administration configuration information specific to the ODS / API. |
+| `EdFi_Security` | SQL Scripts | A database containing security configuration information. |
 
 In addition to these databases, copies of either the minimal or populated
 template databases are made for each sandbox in the environment.
