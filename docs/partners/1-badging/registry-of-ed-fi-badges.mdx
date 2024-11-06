@@ -1,0 +1,53 @@
+---
+sidebar_position: 3
+---
+
+import badgeData from './badgeData.js';
+import BadgingTable from './badgeComponent.jsx';
+
+# Registry of Ed-Fi Badges
+
+This page lists products that have been awarded an Ed-Fi badge.
+
+## Ed-Fi Managed ODS / API Platform Badge
+
+The Ed-Fi Managed ODS / API Platform Badge is for products that provide the
+Ed-Fi Operational Data Store and API (ODS/API) as software-as-a-service (SaaS).
+
+Data integration and use at scale is a challenging problem regardless of
+platform, and these challenges have particularly been difficult for agencies
+with lower access to expertise in software development, enterprise data
+management, or data systems integration. Similarly, many larger agencies are
+also attempting to outsource aspects of these operations in order to focus more
+on analytics and business intelligence. This badge highlights product efforts
+to address these problems.
+
+<BadgingTable badges={badgeData.managedODSAPI} />
+
+## Ed-Fi ODS Platform Consumer Badge
+
+This badge is for products that interact or use the data from the Ed-Fi ODS
+platform, but access is not via API. Products using an Ed-Fi API to source data
+should apply for the Ed-Fi API Consumer Badge
+
+<BadgingTable badges={badgeData.odsPlatformConsumer} />
+
+## Ed-Fi API Consumer Badge
+
+This badge is for products that read data out of an Ed-Fi defined API and
+integrate that data into their product offering.
+
+<BadgingTable badges={badgeData.apiConsumer} />
+
+## Ed-Fi Implementation Partner Badge
+
+The Ed-Fi Systems Implementer Badge is to recognize services organizations
+doing field implementation work around the Ed-Fi technology stack, which may not
+be directly relatable to a software product.
+
+Many agencies are forming short term, project based relationships to perform
+specific tasks with Ed-Fi technology - upgrades, system integrations, and
+strategy consulting. This badge aims to define organizations that follow best
+practices in a wide range of services projects.
+
+<BadgingTable badges={badgeData.implementationPartner} />
