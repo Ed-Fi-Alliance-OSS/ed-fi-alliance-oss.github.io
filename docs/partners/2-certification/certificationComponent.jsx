@@ -19,14 +19,19 @@ export default ({ certifications }) => {
           key={index}
         >
           <div className="col col--2 col--td">
-            <a href={cert.website}>
-              <img
-                src={cert.logo}
-                alt={cert.productName}
-                title={cert.productName}
-                style={{ height: 'auto', width: '100%', maxWidth: '200px' }}
-              />
-            </a>
+            <p>
+              <a href={cert.website}>
+                <img
+                  src={cert.logo}
+                  alt={cert.productName}
+                  title={cert.productName}
+                  style={{ height: 'auto', width: '100%', maxWidth: '200px' }}
+                />
+              </a>
+            </p>
+            <p>
+              <a href={cert.website}>{cert.productName}</a>
+            </p>
           </div>
           <div className="col col--2 col--td">{cert.validThrough}</div>
           <div className="col col--8 col--td">

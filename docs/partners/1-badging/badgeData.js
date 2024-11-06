@@ -139,7 +139,7 @@ export default {
       provider: 'ESP Solutions Group',
       website: 'https://espmsp.com/',
       productInformation:
-        'https://espmsp.com/customized-operational-dashboards',
+        'https://espmsp.com/wp-content/uploads/2023/05/3a-MSP-Dashboards-002.pdf',
       validThrough: 'May 18, 2025',
       verifyingAgencies: ['Wyoming Department of Education (WDE)'],
       documentation: {
@@ -410,7 +410,7 @@ export default {
           'https://edfi.atlassian.net/wiki/download/attachments/20611183/IDOE+Ed-Fi+2.4+to+6.0+Data+mapping.xlsx?version=1',
       },
       validThrough: 'Nov 1, 2025',
-      verifyingAgencies: ['Indiana DoE<br />Nebraska DoE'],
+      verifyingAgencies: ['Indiana DoE', 'Nebraska DoE'],
       servicesPerformed: {
         link: 'https://www.edwisegroup.com/services/',
       },
