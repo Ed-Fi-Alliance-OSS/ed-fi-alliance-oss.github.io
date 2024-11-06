@@ -147,7 +147,7 @@ troubleshooting.
 To further aid production troubleshooting, RequestResponseDetailsLogger can be
 configured to log request/response JSON to the ODS associated with the API
 request. See [How To: Enable logging API request and response
-content](../../how-to-guides/how-to-enable-logging-api-request-and-response-content.md)
+content](../../how-to-guides/how-to-enable-logging-api-request-and-response-content.mdx)
 for details.
 
 ## Correlation ID
