@@ -1,3 +1,7 @@
+---
+sidebar_position: 4
+---
+
 # API Client Developers' Guide
 
 This documentation provides essential information for building client
