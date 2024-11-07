@@ -1,8 +1,8 @@
 # How To: Configure ODS Instances
 
 The Ed-Fi ODS / API expects that the ODS connection strings are configured in
-the EdFi\_Admin database. After deploying your ODS(s), configure connections in
-the EdFi\_Admin database by running these queries.
+the `EdFi_Admin` database. After deploying your ODS(s), configure connections in
+the `EdFi_Admin` database by running these queries.
 
 :::info
 

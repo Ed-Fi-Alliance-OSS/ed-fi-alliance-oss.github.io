@@ -45,7 +45,12 @@ is E1iEFusaNf81xzCxwHfbolkC, the value for the Authorization header would be
 #### PowerShell Token Request
 
 ```powershell
-Invoke-RestMethod -Method Post -Uri "https://api.ed-fi.org/v7.2/api/oauth/token" -Headers @{ "Authorization" = ("Basic", [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("RvcohKz9zHI4", "E1iEFusaNf81xzCxwHfbolkC" -join ":"))) -join " ") } -Body @{ "grant_type" = "client_credentials"; }
+$key = "RvcohKz9zHI4"
+$secret = "E1iEFusaNf81xzCxwHfbolkC"
+$auth = ([Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes("$($key):$secret")) -join " ")
+$token = Invoke-RestMethod -Method Post -Uri "https://api.ed-fi.org/v7.2/api/oauth/token" `
+  -Headers @{ "Authorization" = "Basic $auth" } `
+  -Body @{ "grant_type" = "client_credentials"; }
 ```
 
 #### cURL Token Request
@@ -54,8 +59,12 @@ Invoke-RestMethod -Method Post -Uri "https://api.ed-fi.org/v7.2/api/oauth/token"
 curl --user RvcohKz9zHI4:E1iEFusaNf81xzCxwHfbolkC https://api.ed-fi.org/v7.2/api/oauth/token --data 'grant_type=client_credentials'
 ```
 
-\*Note: curl --user option should base-64 encode the key and secret into the
-Authorization header.
+:::tip
+
+curl's `--user` option will base64 encode the plain text key and secret
+into the Authorization header.
+
+:::
 
 The above should return an access token.
 
@@ -86,7 +95,8 @@ with the access token returned in the previous step.
 #### API Call with Token with PowerShell
 
 ```powershell
-Invoke-RestMethod -Method Get -Uri "https://api.ed-fi.org/v7.2/api/data/v3/ed-fi/schools" -Headers @{ "Authorization" = "Bearer R3PLAC3_W1TH_ACC3SS_TOK3N" }
+Invoke-RestMethod -Method Get -Uri https://api.ed-fi.org/v7.2/api/data/v3/ed-fi/schools `
+  -Headers @{ "Authorization" = "Bearer $($token.access_token)" }
 ```
 
 #### API Call with Token with cURL
@@ -101,7 +111,8 @@ recorded in the sandbox ODS / API. Don't forget to replace the `Bearer` value.
 #### Another API Call with Token with PowerShell
 
 ```powershell
-Invoke-RestMethod -Method Get -Uri "https://api.ed-fi.org/v7.2/api/data/v3/ed-fi/disciplineIncidents " -Headers @{ "Authorization" = "Bearer R3PLAC3_W1TH_ACC3SS_TOK3N" }
+Invoke-RestMethod -Method Get -Uri https://api.ed-fi.org/v7.2/api/data/v3/ed-fi/disciplineIncidents  `
+  -Headers @{ "Authorization" = "Bearer $($token.access_token)" }
 ```
 
 #### Another API Call with Token with cURL
@@ -112,8 +123,7 @@ curl https://api.ed-fi.org/v7.2/api/data/v3/ed-fi/disciplineIncidents -H "Author
 
 You can explore the whole API surface in this manner, but there are easier ways.
 See the section called [Using the Online
-Documentation](./using-the-online-documentation.md)
-for more information.
+Documentation](./using-the-online-documentation.md) for more information.
 
 The next section, [Authorization](./authorization.md), has more details about
 using the access token.

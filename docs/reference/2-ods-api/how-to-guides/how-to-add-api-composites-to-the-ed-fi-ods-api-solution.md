@@ -34,7 +34,7 @@ strongly typed mechanism for obtaining a reference to the .NET assembly. If you
 used the Visual Studio Project template to create your composite, a file will
 already exist — but you'll need to rename the interface and the file to match
 the convention
-(e.g., **Marker\_EdFi\_Ods\_Composites\_MyComposites****.cs**). The marker
+(e.g., `Marker_EdFi_Ods_Composites_MyComposites.cs`). The marker
 interface file should have the following code:
 
 ```csharp
@@ -44,9 +44,7 @@ namespace EdFi.Ods.Composites.MyComposites
 }
 ```
 
-### Step 1.3. Update the **Composites.xml** file to add the appropriate
-
-composite definition.
+### Step 1.3. Update the Composites.xml file to add the appropriate composite definition
 
 The Visual Studio Project Template creates an empty sample
 **Composites****.xml** file, replace its contents with the following:
@@ -91,9 +89,11 @@ used to identify the composite being requested from the API.
 
 :::
 
-### Step 1.4
+:::tip
 
-Save the Project
+Be sure to save the Project
+
+:::
 
 ## Step 2. Integrate Composites into the Solution
 
@@ -124,10 +124,7 @@ of a composite URL.
 :::note
 
 The following GitHub link contains source files for the Composite described in
-this article:
-
-* [ODS/API 7.2](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v7.2/Samples/Composites)
-* [ODS/API 7.1](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v7.1/Samples/Composites)
-* [ODS/API 6.2](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v6.2/Samples/Composites)
+this article: [ODS/API
+7.2](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v7.2/Samples/Composites)
 
 :::

@@ -18,11 +18,9 @@ namespace EdFi.Ods.Services
 
 ## Step 2. Add a New Autofac Module Class
 
-2a.  Inherit from ConditionalModule in EdFi.Ods.Common.
-
-2b. Override IsSelected method
-
-2c. Override ApplyConfigurationSpecificRegistrations method
+1. Inherit from `ConditionalModule` in `EdFi.Ods.Common`.
+2. Override `IsSelected` method
+3. Override `ApplyConfigurationSpecificRegistrations` method
 
 ```csharp
 using Autofac;

@@ -5,8 +5,7 @@ classes and ORM mappings that are necessary to build the solution. Code
 generation is required when working on the solution to create the core objects,
 profiles, and extensions. This article describes how code generation is built
 into the initdev command for local development and how it can be [executed from
-a CICD
-pipeline](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V72/pages/23299247/Code+Generation+Utility#CodeGenerationUtility-ManualExecution).
+a CI/CD pipeline](#manual-execution).
 
 ## Running initdev
 

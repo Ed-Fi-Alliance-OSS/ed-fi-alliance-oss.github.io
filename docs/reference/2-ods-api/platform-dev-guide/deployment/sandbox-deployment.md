@@ -43,13 +43,13 @@ and supporting functions for a Sandbox instance:
 
 * **Databases**
 
-  * **EdFi\_ODS\_\*.** Databases used as templates and test data stores for
+  * **`EdFi_ODS_*`.** Databases used as templates and test data stores for
         a Sandbox installation of the Ed-Fi-ODS / API.
 
-  * **EdFi\_Admin.** A database containing authentication information for
+  * **`EdFi_Admin`.** A database containing authentication information for
         API clients.
 
-  * **EdFi\_Security.** A database containing authorization information for
+  * **`EdFi_Security`.** A database containing authorization information for
         API clients.
 
 ## Sandbox Security
@@ -145,11 +145,11 @@ district or test installations with a low expected load. While a single disk
 configuration is possible, a dual raid configuration is recommended for use in
 live Sandbox deployments. A typical single-server specification follows:
 
-| Server | **OS / Apps** | **SQL Data** |
-| --- | --- | --- |
-| CPU / RAM | 4 Core / 28+ GB |     |
+| Server             | OS/Apps              | SQL Data              |
+| ------------------ | -------------------- | --------------------- |
+| CPU / RAM          | 4 Core / 28+ GB      |                       |
 | Disk Configuration | SSD RAID 1 (2 Disks) | SSD RAID 5 (3+ disks) |
-| Disk Size | 2 x 250 GB | 3+ x 500+ GB |
+| Disk Size          | 2 x 250 GB           | 3+ x 500+ GB          |
 
 ### Two-Server Deployment
 
@@ -174,11 +174,11 @@ deployment configuration for very large installations. Due to the disk-intensive
 nature of the Ed-Fi ODS, the ODS Database server is typically much more capable,
 in terms of memory, disk, and CPU than the ODS / API.
 
-| Server | **OS/Apps** | **SQL Data** |
-| --- | --- | --- |
-| CPU / RAM | 4 Core / 16+ GB | 4 Core / 16+ GB |
+| Server             | OS/Apps              | SQL Data              |
+| ------------------ | -------------------- | --------------------- |
+| CPU / RAM          | 4 Core / 16+ GB      | 4 Core / 16+ GB       |
 | Disk Configuration | SSD RAID 1 (2 disks) | SSD RAID 5 (3+ disks) |
-| Disk Size | 2 x 250 GB | 3+ x 500+ GB |
+| Disk Size          | 2 x 250 GB           | 3+ x 500+ GB          |
 
 ### Other Deployment Variations
 
@@ -235,7 +235,7 @@ development environment creates each of the required databases.
 
 * Open the Sandbox Administration website (EdFi.Ods.SandboxAdmin).
 
-* Login as [test@edfi.org](mailto:test@edfi.org) and change the password.
+* Login as `test@edfi.org` and change the password.
 
 * Do not create any sandboxes or additional users.
 
@@ -244,13 +244,10 @@ development environment creates each of the required databases.
 Open Microsoft SQL Server management Studio and backup each of the following
 databases:
 
-* EdFi\_Admin
-
-* EdFi\_Ods\_Minimal\_Template
-
-* EdFi\_Ods\_Populated\_Template
-
-* EdFi\_Security
+* `EdFi_Admin`
+* `EdFi_Ods_Minimal_Template`
+* `EdFi_Ods_Populated_Template`
+* `EdFi_Security`
 
 ### Step 4. Publish Websites and Services
 
@@ -259,9 +256,9 @@ in this document. The following steps are provided as a high-level overview.
 Please see the individual installation and configuration instructions as they
 pertain to your configuration.
 
-Load the EdFi\_ODS solution in Visual Studio and publish the following projects
+Load the `EdFi_ODS` solution in Visual Studio and publish the following projects
 to a local directory with the same name as the project under a common parent
-directory (like C:\\temp):
+directory (like `C:\temp`):
 
 * EdFi.Ods.SandboxAdmin
 
@@ -301,8 +298,8 @@ directory (like C:\\temp):
     for the server. From the Server Properties, Security page, select SQL Server
     and Windows Authentication mode.
 
-* Create Logins for your websites and applications to connect to EdFi\_Admin,
-    EdFi\_Security and EdFi\_Ods\* databases.
+* Create Logins for your websites and applications to connect to `EdFi_Admin`,
+    `EdFi_Security` and `EdFi_Ods_*` databases.
 
 * Assign permissions to the corresponding databases.
 
@@ -314,11 +311,11 @@ to the Ed-Fi ODS / API.
 :::info
 
 In the following instructions, when deploying web applications, we use
-C:\\inetpub\\wwwroot as the default root folder. This is not required. Your
+`C:\inetpub\wwwroot` as the default root folder. This is not required. Your
 root location can be:
 
-* C:\\EdFi\\Application
-* C:\\inetpub\\web
+* `C:\EdFi\Application`
+* `C:\inetpub\web`
 * … or something else.
 
 :::
@@ -383,11 +380,9 @@ API over the web.
 
 #### Dependencies
 
-* EdFi\_Admin (Database
-
-* EdFi\_Ods\_\* (Database)
-
-* EdFi\_Security (Database)
+* `EdFi_Admin` (Database)
+* `EdFi_Ods_*` (Database)
+* `EdFi_Security` (Database)
 
 #### Deployment Steps (for an on-premises IIS)
 
@@ -400,7 +395,7 @@ Steps to deploy the application:
 3. Under Profiles, choose **PublishToIIS** and click on **Connection**.
 
 4. Choose your deployment path in the Target Location textbox. This can be a
-    network path. The default location is C:\\inetpub\\wwwroot\\EdFi.Ods.WebApi.
+    network path. The default location is `C:\inetpub\wwwroot\EdFi.Ods.WebApi`.
 
 5. Click **Publish**.
 
@@ -419,22 +414,22 @@ about the API.
 
 App Settings:
 
-|     |     |     |
-| --- | --- | --- |
+| Key                                | Description                                                                                 | Notes                                                  |
+| ---------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
 | OdsConnectionStringEncryptionKey\* | AES Encryption key used to encrypt ODS connection strings configured in the Admin database. | Required everywhere other than development environment |
-| BearerTokenTimeoutMinutes | The amount of time in minutes that an OAuth session token is valid between calls. | Default value is `30`. |
+| BearerTokenTimeoutMinutes          | The amount of time in minutes that an OAuth session token is valid between calls.           | Default value is `30`.                                 |
 
 Connection Strings:
 
-|     |     |     |
-| --- | --- | --- |
-| EdFi\_Admin\* | Connection to the Admin database. |     |
-| EdFi\_Security\* | Connection to the Security database. |     |
+| Key              | Description                          |
+| ---------------- | ------------------------------------ |
+| `EdFi_Admin`\*    | Connection to the Admin database.    |
+| `EdFi_Security`\* | Connection to the Security database. |
 
 \* Values are not optional and MUST be defined at deployment time.
 
-Note: EdFi\_Ods\_\* connection strings are not stored in the EdFi.Ods.WebApi
-configuration file. They are configured in the EdFi\_Admin database and Sandbox
+Note: `EdFi_Ods_*` connection strings are not stored in the EdFi.Ods.WebApi
+configuration file. They are configured in the `EdFi_Admin` database and Sandbox
 Administration Application will create those entries at startup and when new
 sandbox creation is requested.
 
@@ -446,16 +441,16 @@ sandbox creation is requested.
 administration features to vendor users and developers to manage their own
 sandboxes.
 
-#### Dependencies
+#### Sandbox Dependencies
 
-* EdFi\_Admin (Database)
-* EdFi\_Security (Database)
-* EdFi\_Ods\_\* (Database)
-* EdFi\_Ods\_Populated\_Template (Database)
-* EdFi\_Ods\_Minimal\_Template (Database)
+* `EdFi_Admin` (Database)
+* `EdFi_Security` (Database)
+* `EdFi_Ods_*` (Database)
+* `EdFi_Ods_Populated_Template` (Database)
+* `EdFi_Ods_Minimal_Template` (Database)
 * EdFi.Ods.WebApi
 
-#### Deployment Steps (for an on-premises IIS)
+#### Sandbox Deployment Steps (for an on-premises IIS)
 
 Prerequisites:
 
@@ -487,7 +482,7 @@ Steps to deploy the application:
 
 4. Choose your deployment path in the Target Location textbox. This can be a
     network path. The default location is
-    C:\\inetpub\\wwwroot\\EdFi.Ods.SandboxAdmin.
+    `C:\inetpub\wwwroot\EdFi.Ods.SandboxAdmin`.
 
 5. Click **Publish**.
 
@@ -513,45 +508,76 @@ Steps to deploy the application:
 
 App Settings:
 
-|     |     |     |
-| --- | --- | --- |
-| DefaultApplicationName | The name of the application used for sandbox application clients. | Default value is `Default Sandbox Application`. |
-| DefaultClaimSetName | The claim set name for the default application for sandbox application clients. | Default value is `Ed-Fi Sandbox`. |
-| OAuthUrl\* | Points to WebApi OAuth controller. | Default value is `[http://localhost:54746/oauth/](http://localhost:54746/oauth/)`. |
-| MaximumSandboxesPerUser | The maximum number of sandboxes a sandbox admin user can create. | Default value is 5 |
+| Key                     | Description                                                                     | Default value                    |
+| ----------------------- | ------------------------------------------------------------------------------- | -------------------------------- |
+| DefaultApplicationName  | The name of the application used for sandbox application clients.               | `Default Sandbox Application`.   |
+| DefaultClaimSetName     | The claim set name for the default application for sandbox application clients. | `Ed-Fi Sandbox`.                 |
+| OAuthUrl\*              | Points to WebApi OAuth controller.                                              | `http://localhost:54746/oauth/`. |
+| MaximumSandboxesPerUser | The maximum number of sandboxes a sandbox admin user can create.                | `5`                              |
 
 Connection Strings:
 
-|     |     |     |
-| --- | --- | --- |
-| EdFi\_Ods | Connection string template to create sandboxes on the fly. Sandbox Administration application will create and configure sandbox ODS instances in the EdFi\_Admin database |     |
-| EdFi\_Admin | Should point to the Sandbox deployment of EdFi\_Admin. Note that this database should NOT be shared with Security Tools. |     |
-| EdFi\_Security | Should point to the Sandbox deployment of EdFi\_Security. Note that this database should NOT be shared with Security Tools. |     |
-| EdFi\_master | Master Connection string to create other ODSs on the fly. It should point to the proper server upon which you want the ODS databases to be created. |     |
-| User | Defining automatically created user accounts and sandboxes. Also configures automatic refreshes of sandboxes to a clean state. Each user entry will be created with the given email/password, and the sandboxes defined underneath it will also be created for the type and key/secret values.<br/><br/>Example:<br/><br/>**Sample Initialization Section**<br/><br/>```<br/>Contents on appsettings.json<br/> "User": {<br/>        "Test Admin": {<br/>            "Email": "test@ed-fi.org",<br/>            "Admin": "true",<br/>            "NamespacePrefixes": [<br/>                "uri://ed-fi.org",<br/>                "uri://gbisd.org"<br/>            ],<br/>            "Password": "f5Ejk0eIQrbqNDahvVOtJ",<br/>            "Sandboxes": {<br/>                "Minimal Demonstration Sandbox": {<br/>                    "Key": "oqU2nYvOwiIsdtBj0CThb",<br/>                    "Type": "Minimal",<br/>                    "Secret": "c5tRIxoyb4UkCDnaB3GWv",<br/>                    "Refresh": "false"<br/>                },<br/>                "Populated Demonstration Sandbox": {<br/>                    "Key": "ThupCASBce7raw0iOxHnv",<br/>                    "Type": "Sample",<br/>                    "Secret": "YZhr9WImPgHpbLK73EulQ",<br/>                    "Refresh": "false"<br/>                }<br/>            }<br/>        }<br/>    }<br/>``` |     |
+| Key            | Description                                                                                                                                                               |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| EdFi\_Ods      | Connection string template to create sandboxes on the fly. Sandbox Administration application will create and configure sandbox ODS instances in the `EdFi_Admin` database |
+| `EdFi_Admin`    | Should point to the Sandbox deployment of `EdFi_Admin`. Note that this database should NOT be shared with Security Tools.                                                  |
+| `EdFi_Security` | Should point to the Sandbox deployment of `EdFi_Security`. Note that this database should NOT be shared with Security Tools.                                               |
+| EdFi\_master   | Master Connection string to create other ODSs on the fly. It should point to the proper server upon which you want the ODS databases to be created.                       |
+
+The `User` section defines  user accounts and sandboxes that will be deployed
+automatically. Also configures automatic refreshes of sandboxes to a clean
+state. Each user entry will be created with the given email/password, and the
+sandboxes defined underneath it will also be created for the type and key/secret
+values. See below for an example:
+
+```json title="Contents of appsettings.json
+{
+  "User": {
+            "Test Admin": {
+                          "Email": "test@ed-fi.org",
+            "Admin": "true",
+            "NamespacePrefixes": [
+                "uri://ed-fi.org",
+                "uri://gbisd.org"
+            ],
+            "Password": "f5Ejk0eIQrbqNDahvVOtJ",
+            "Sandboxes": {
+                "Minimal Demonstration Sandbox": {
+                    "Key": "oqU2nYvOwiIsdtBj0CThb",
+                    "Type": "Minimal",
+                    "Secret": "c5tRIxoyb4UkCDnaB3GWv",
+                    "Refresh": "false"
+                },
+                "Populated Demonstration Sandbox": {
+                    "Key": "ThupCASBce7raw0iOxHnv",
+                    "Type": "Sample",
+                    "Secret": "YZhr9WImPgHpbLK73EulQ",
+                    "Refresh": "false"
+                }
+            }
+        }
+    }
+}
+```
 
 \* Values are not optional and MUST be defined at deployment time.
 
 ### EdFi.Ods.SwaggerUI
 
-#### Type
+**Type.** Web Application.
 
-Web Application.
-
-#### Description
-
-Online documentation for the Ed-Fi REST API is available
+**Description.** Online documentation for the Ed-Fi REST API is available
 through Swagger. Swagger is a visual and interactive documentation site
 providing detailed descriptions for each API resource as well as a simple way to
 test calls to the Ed-Fi REST API in sandbox environments.
 
-#### Dependencies
+#### Swagger Dependencies
 
 * EdFi.Ods.WebApi (Application)
 
-#### Deployment Steps (for an on-premises IIS)
+#### Swagger UI Deployment Steps
 
-Prerequisites:
+For Windows Server / IIS installations. Prerequisites:
 
 1. IIS must be running on the target machine.
 
@@ -581,7 +607,7 @@ Steps to deploy the application:
 
 4. Choose your deployment path in the Target Location textbox. This can be a
     network path. The default location is
-    C:\\inetpub\\wwwroot\\EdFi.Ods.SwaggerUI.
+    `C:\inetpub\wwwroot\EdFi.Ods.SwaggerUI`.
 
 5. Click **Publish**.
 
@@ -601,10 +627,11 @@ Steps to deploy the application:
 
 App Settings:
 
-|     |     |     |
-| WebApiVersionUrl\* | Provides the version information for ODS / API. | Sample value: `[https://server-name](https://server-name)` |
-| SwaggerUIOptions:OAuthConfigObject:ClientId | Optionally provides the value to prefill in the "key" field of auth. | Sample value: `populatedTemplate` |
-| SwaggerUIOptions:OAuthConfigObject:ClientSecret | Optionally provides the value to prefill in the "secret" field of auth. | Sample value: `populatedTemplateSecret` |
+| Key                                             | Description                                                             | Sample Value              |
+| ----------------------------------------------- | ----------------------------------------------------------------------- | ------------------------- |
+| WebApiVersionUrl\*                              | Provides the version information for ODS / API.                         | `https://<host>`          |
+| SwaggerUIOptions:OAuthConfigObject:ClientId     | Optionally provides the value to prefill in the "key" field of auth.    | `populatedTemplate`       |
+| SwaggerUIOptions:OAuthConfigObject:ClientSecret | Optionally provides the value to prefill in the "secret" field of auth. | `populatedTemplateSecret` |
 
 \* Values are not optional and MUST be defined at deployment time.
 

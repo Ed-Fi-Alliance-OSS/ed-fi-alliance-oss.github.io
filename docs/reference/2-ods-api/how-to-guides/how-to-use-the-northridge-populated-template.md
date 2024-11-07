@@ -11,16 +11,13 @@ student information.
 This article walks through how set up the Northridge database as your template
 for a populated database. If you prefer to manually update the sandbox with
 Northridge dataset instead of integrating it as a populated template, steps are
-listed in [How To: Use the Northridge Populated Template#Appendix
-A](https://edfi.atlassian.net/wiki/pages/resumedraft.action?draftId=53248004#HowTo:UsetheNorthridgePopulatedTemplate-AppendixA),
-below.
+[listed in below](#appendix-manually-update-sandbox-with-an-alternative-sample-database).
 
 ## Step 1. Update the Config File
 
-The "ApiSettings:PopulatedTemplateScript" key in `<source directory>`\\Ed-Fi-ODS-Implementation\\Application\\EdFi.Ods.WebApi\\appsettings.json
+The "ApiSettings:PopulatedTemplateScript" key in `<source
+directory>\Ed-Fi-ODS-Implementation\Application\EdFi.Ods.WebApi\appsettings.json`
 file configures the dataset for the populated template.
-
-### `appsettings.json` Example
 
 ```json
    "ApiSettings": {
@@ -37,12 +34,10 @@ populated template.
 
 In development environment, you can use _secret.json_ to override this setting
 to deploy Northridge dataset. In a PowerShell session navigate to `<source
-directory>`\\Ed-Fi-ODS-Implementation\\Application\\EdFi.Ods.WebApi and use
+directory>\Ed-Fi-ODS-Implementation\Application\EdFi.Ods.WebApi` and use
 user-secret CLI to setup the override. See [Configuration Details -
-SecretManager](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V71/pages/25493635/Configuration+Details#ConfigurationDetails-SecretManager) for
-more details.
-
-### Import the Initiallize Development Module
+SecretManager](../platform-dev-guide/configuration/configuration-details.md#secret-manager)
+for more details.
 
 ```powershell
 PS C:\Ed-Fi-ODS-Implementation\Application\EdFi.Ods.WebApi\> dotnet user-secrets set "ApiSettings:PopulatedTemplateScript" "Northridge"
@@ -51,15 +46,13 @@ Successfully saved ApiSettings:PopulatedTemplateScript = Northridge to the secre
 
 In non-development environments (usually staging or QA) that also deploys the
 populated template, you will need to add the same key to the file: `<source
-directory>`\\Ed-Fi-ODS-Implementation\\Scripts\\NuGet\\EdFi.RestApi.Databases\\configuration.json.
+directory>\Ed-Fi-ODS-Implementation\Scripts\NuGet\EdFi.RestApi.Databases\configuration.json`.
 
 ## Step 2. Run Reset-PopulatedTemplate
 
-In a PowerShell session navigate to `<source directory>`\\Ed-Fi-ODS-Implementation\\.
+In a PowerShell session navigate to `<source directory>Ed-Fi-ODS-Implementation`.
 
 Execute `.\Initialize-PowershellForDevelopment.ps1`.
-
-### Import the Initiallize Development Module
 
 ```powershell
 PS C:\Ed-Fi-ODS-Implementation\> .\Initialize-PowershellForDevelopment.ps1
@@ -90,7 +83,7 @@ Reset-PopulatedTemplate       3.78
 When the process successfully completes, you should see something similar to
 above.
 
-## How To: Manually Update Sandbox with an Alternative Sample Database
+## Appendix: Manually Update Sandbox with an Alternative Sample Database
 
 While integrating the alternative dataset as a populated template as described
 above is required for building alternative sample dataset into CI/CD and
@@ -99,10 +92,10 @@ enabling full feature set of the ODS / API.
 ## Limitations Of This Approach
 
 * Steps provided here only describe how to use the demo databases with an API
-    deployment configured for sandbox support.
+  deployment configured for sandbox support.
 * Ed-Fi provided sample databases do not contain extensions and change query
-    related artifacts. Since demo databases are manually replaced after
-    initialize development (i.e., `initdev`) process:
+  related artifacts. Since demo databases are manually replaced after
+  initialize development (i.e., `initdev`) process:
   * Extensions feature should be disabled, which means this approach
         wouldn't work with TPDM .
   * Change queries feature should be disabled
@@ -110,48 +103,42 @@ enabling full feature set of the ODS / API.
 ## Prerequisites
 
 * 7zip, or a similar compression / decompression tool that supports the 7zip
-    format, should be installed. This can be installed on the database server.
-    Download 7zip for free from [https://www.7-zip.org](https://www.7-zip.org)
+  format, should be installed. This can be installed on the database server.
+  Download 7zip for free from [https://www.7-zip.org](https://www.7-zip.org)
 * The database server should have sufficient space to download and install the
-    sample database. For the larger data set, Northridge, this will require 730
-    megabytes of space to download the compressed version of the backup, 15
-    gigabytes for the uncompressed backup, and 17 gigabytes in SQL Server space.
+  sample database. For the larger data set, Northridge, this will require 730
+  megabytes of space to download the compressed version of the backup, 15
+  gigabytes for the uncompressed backup, and 17 gigabytes in SQL Server space.
 
 ## Installation Steps
 
 ### Ed-Fi ODS installation
 
-* Build the Ed-Fi solution from the source code, per the instructions
-    [here](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V71/pages/25493619/Getting+Started+-+Source+Code+Installation).
-    Before running initdev, open the appsettings.json file in the WebApi and
-    change the "IsEnabled" setting to "false" for the **ChangeQueries** and
-    **Extensions** features.
+* Build the Ed-Fi solution [from the source
+  code](../getting-started/source-code-installation/). Before running `initdev`,
+  open the `appsettings.json` file in the WebApi and change the "IsEnabled"
+  setting to "false" for the **ChangeQueries** and **Extensions** features.
 
 :::note
 
 ### SQLServer Steps
 
-* Download the compressed version of your backup database from one of the
-    following links:
-
-    |     |     |
-    | --- | --- |
-    | v7.1 Northridge sample ODS database download MS SQLServer | [EdFi\_Ods\_Northridge\_v71\_20240416.7z](https://odsassets.blob.core.windows.net/public/Northridge/EdFi_Ods_Northridge_v71_20240416.7z) |
-
+* Download the compressed version of your backup database from
+  [`EdFi_Ods_Northridge_v71_20240416.7z`](https://odsassets.blob.core.windows.net/public/Northridge/EdFi_Ods_Northridge_v71_20240416.7z)
 * Uncompress the download using the [7zip utility](https://www.7-zip.org/).
 * If you downloaded and uncompressed the file someplace other than the
-    database server, copy the uncompressed ".bak" file to a folder on the
-    database server.
+  database server, copy the uncompressed ".bak" file to a folder on the
+  database server.
 * Log into SQL Server Management Server with credentials that have database
-    administrator access.
+  administrator access.
 * Right-click on the "Databases" folder in the object explorer and choose
-    "Restore".
+  "Restore".
 * Choose "Device" as the source and click the "..." button next to it.
 * In the next screen, choose "Add". Browse to the uncompressed .bak file and
-    select it. Click the "Replace" button in the options panel.
+  select it. Click the "Replace" button in the options panel.
 * Click "Ok" in the remaining messages.
 * Wait for the notification that your database restored successfully. The
-    data is now ready for use.
+  data is now ready for use.
 
 :::
 
@@ -164,16 +151,16 @@ database. If you would like to access this data using the Ed-Fi API, these
 additional steps are needed.
 
 * Create a sandbox instance using the Sandbox Administration tool. Note and
-    remember the key and secret values. Choose the option to have sample data.
+  remember the key and secret values. Choose the option to have sample data.
 * Go back to SQL Server Management Studio. Find the sandbox database that was
-    just created (you might need to right-click on the databases folder and do a
-    "Refresh"). The database will have the word "Sandbox" in it and contain the
-    key that was provided when the sandbox was created.
+  just created (you might need to right-click on the databases folder and do a
+  "Refresh"). The database will have the word "Sandbox" in it and contain the
+  key that was provided when the sandbox was created.
 * Record (or copy) the name of the sandbox database.
 * Rename the sandbox database. For example, add "-backup" to the end of the
-    existing name.
-* Rename the sample (i.e., EdFi\_Ods\_Northridge\_v71) to what the sandbox
-    database was named.
+  existing name.
+* Rename the sample (i.e., `EdFi_Ods_Northridge_v71`) to what the sandbox
+  database was named.
 * You should be good for internal access.
 
 If you receive "internal errors" from the API, you can check the Ed-Fi logs for

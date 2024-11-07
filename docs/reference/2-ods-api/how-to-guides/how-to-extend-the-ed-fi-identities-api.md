@@ -1,11 +1,10 @@
 # How To: Extend the Ed-Fi Identities API
 
-The [Ed-Fi Identities
-API](http://edfi.atlassian.net/wiki/spaces/ODSAPIS3V72/pages/23301616) provides
-an optional standardized interface for integrating with a native identity
-system. As with any abstraction, there may be a need to extend it in the context
-of a specific implementation. This document provides a reference implementation
-for extending the data elements supported by the Identity API.
+The [Ed-Fi Identities API](../technical-articles/identities-api.md) provides an
+optional standardized interface for integrating with a native identity system.
+As with any abstraction, there may be a need to extend it in the context of a
+specific implementation. This document provides a reference implementation for
+extending the data elements supported by the Identity API.
 
 The sample code defines a custom identity service by creating custom request and
 response models, a service interface, a service implementation, and a
@@ -93,8 +92,7 @@ public interface IIdentityServiceWithCustomModels
 
 This controller class derives from the abstract base identities controller,
 closing the generic types with the previously defined custom models. This allows
-the controller to be discovered and registered by
-[http://ASP.NET](http://ASP.NET).
+the controller to be discovered and registered by ASP.NET.
 
 ```csharp
 public class CustomIdentitiesController

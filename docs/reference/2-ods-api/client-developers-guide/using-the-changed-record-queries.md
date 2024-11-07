@@ -26,11 +26,10 @@ as:
     different from a change data capture (CDC) system that provides a log of
     every change.)
 * Synchronization processing is greatly simplified when using _[snapshot
-    isolation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V72/pages/23299597/Using+the+Changed+Record+Queries#UsingtheChangedRecordQueries-snapshotisolation)_
-    (which isolates the API client's work from ongoing changes to the underlying
-    source ODS database). However, this approach is only available if the Ed-Fi
-    ODS / API host takes some extra steps to create and make snapshots of the
-    ODS available.
+    isolation](#use-snapshot-isolation)_ (which isolates the API client's work
+    from ongoing changes to the underlying source ODS database). However, this
+    approach is only available if the Ed-Fi ODS / API host takes some extra
+    steps to create and make snapshots of the ODS available.
 * When snapshots are not available, the API client bears the ultimate
     responsibility for ensuring data consistency with downstream systems
     (guidance for implementing this type of processing is provided later in this
@@ -51,7 +50,7 @@ The core operations for Change Queries processing are as follows:
 ### Snapshots
 
 Snapshots are configured as an override to OdsInstances. This is done in the
-EdFi\_Admin.dbo.OdsInstanceDerivative table, where a Snapshot is configured to
+`EdFi_Admin.dbo.OdsInstanceDerivative` table, where a Snapshot is configured to
 override an OdsInstance with an specific Connection String.
 
 The API client should the Use-Snapshot HTTP header to true to each request.
@@ -67,7 +66,9 @@ provides information on the current change version. This resource allows clients
 to request just the resource items that have been created, updated or deleted
 since the last synchronization processing was performed.
 
-* `GET /changeQueries/v1/availableChangeVersions`
+```none
+GET /changeQueries/v1/availableChangeVersions
+```
 
 ```json
 {
@@ -96,9 +97,9 @@ The "Deletes" route allows clients to get the `id` and the **natural key**
 values for deleted resources. This route also supports the existing paging
 parameters of `offset` and `limit`.
 
-* `` `GET
-    /data/v3/ed-fi/studentProgramAssociations/deletes?minChangeVersion=234378&offset=0&limit=25`
-    ``
+```none
+GET /data/v3/ed-fi/studentProgramAssociations/deletes?minChangeVersion=234378&offset=0&limit=25
+```
 
 #### Deletes Response for Resource with Composite Key
 
@@ -129,9 +130,9 @@ will be one entry per resource item affected with the _initial_ and _final_ key
 values for that resource. This route also supports the existing paging
 parameters of `offset` and `limit`.
 
-* `GET
-    /data/v3/ed-fi/classPeriods/keyChanges?minChangeVersion=104030&offset=100&limit=500
-    `
+```none
+GET /data/v3/ed-fi/classPeriods/keyChanges?minChangeVersion=104030&offset=100&limit=500
+```
 
 #### Key Changes Response for Resource with Composite Key
 
@@ -165,36 +166,29 @@ Server)](https://docs.microsoft.com/en-us/sql/relational-databases/track-changes
 The recommended implementation of a data synchronization solution contains the
 following elements:
 
-* [Identify which API
-    resources](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V72/pages/23299597/Using+the+Changed+Record+Queries#UsingtheChangedRecordQueries-Identifyresources)
-    are to be processed and the order of processing (informed by Ed-Fi model
-    dependencies).
-* [Initial
-    Synchronization](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V72/pages/23299597/Using+the+Changed+Record+Queries#UsingtheChangedRecordQueries-InitialDataProcessing)
-    (a one-time operation).
-  * Obtain the system's current change version (a.k.a., the
-        _synchronization_ _version_).
-  * Obtain and process the initial data for identified resources (with no
-        change version filters applied).
-  * If successful, save the _synchronization_ version for future change
-        processing.
-* [Perform Change
-    Processing](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V72/pages/23299597/Using+the+Changed+Record+Queries#UsingtheChangedRecordQueries-changeprocessing)
-    (repeating, on a schedule).
-  * Obtain the saved synchronization version from the previous successful
-        processing and add 1 (a.k.a., the _starting change version_)
+* [Identify which API resources](#identify-resources-to-be-processed) are to be
+  processed and the order of processing (informed by Ed-Fi model dependencies).
+* [Initial Synchronization](#obtain-initial-data) (a one-time operation).
   * Obtain the system's current change version (a.k.a., the _synchronization
-        version_).
-  * Confirm [snapshot
-        isolation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V72/pages/23299597/Using+the+Changed+Record+Queries#UsingtheChangedRecordQueries-snapshotisolation)
-        is enabled and process the following API calls by applying
-        `Use-Snapshot`  HTTP header set to true.
+    version_).
+  * Obtain and process the initial data for identified resources (with no change
+    version filters applied).
+  * If successful, save the _synchronization_ version for future change
+    processing.
+* [Perform Change Processing](#use-the-change-version-to-obtain-changes)
+  (repeating, on a schedule).
+  * Obtain the saved synchronization version from the previous successful
+    processing and add 1 (a.k.a., the _starting change version_)
+  * Obtain the system's current change version (a.k.a., the _synchronization
+    version_).
+  * Confirm [snapshot isolation](#use-snapshot-isolation) is enabled and process
+    the following API calls by applying `Use-Snapshot`  HTTP header set to true.
   * Process for key changes on identified resources (as applicable, in
-        dependency order).
+    dependency order).
   * Process for changes on identified resources(in dependency order).
   * Process deletes on identified resources (in *reverse-*dependency order).
-  * If successful, save the new synchronization version value (for future
-        Change Processing).
+  * If successful, save the new synchronization version value (for future Change
+    Processing).
 
 ### Identify resources to be processed
 
@@ -210,7 +204,9 @@ Before an application can obtain changes for the first time, the application
 must obtain the system's current change version. This can be obtained using the
 _availableChangeVersions_ route:
 
-* `GET /changeQueries/v1/availableChangeVersions`
+```none
+GET /changeQueries/v1/availableChangeVersions
+```
 
 #### Available Change Versions Response
 
@@ -225,10 +221,10 @@ With the current (initial) change version identified, the initial data should be
 retrieved from the API using paged queries against the desired data management
 API resources, as follows:
 
-* `GET /data/v3/ed-fi/students?offset=0&limit=500`
-* `GET /data/v3/ed-fi/students?offset=500&limit=500`
-* `GET /data/v3/ed-fi/students?offset=1000&limit=500`
-* `...`
+1. `GET /data/v3/ed-fi/students?offset=0&limit=500`
+2. `GET /data/v3/ed-fi/students?offset=500&limit=500`
+3. `GET /data/v3/ed-fi/students?offset=1000&limit=500`
+4. `...`
 
 If retrieval of the initial data set succeeds, save the change version value
 obtained at the beginning of this initial processing for use in the next stage –
@@ -243,7 +239,9 @@ any of the same changes again.
 For resources that allow for primary/natural key changes, first use the
 _keyChanges_ route with the `minChangeVersion` parameter as follows:
 
-* `GET /data/v3/ed-fi/sections/keyChanges?minChangeVersion=101`
+```none
+GET /data/v3/ed-fi/sections/keyChanges?minChangeVersion=101
+```
 
 :::info
 
@@ -256,12 +254,16 @@ continuing on with processing the other changes.
 To obtain changes that have been made to a particular resource, use the main
 data management API with the `minChangeVersion` parameter, as follows:
 
-* `GET /data/v3/ed-fi/sections?minChangeVersion=101`
+```none
+GET /data/v3/ed-fi/sections?minChangeVersion=101
+```
 
 To obtain resource items that have been deleted, use the _deletes_ route with
 the `minChangeVersion` parameter as follows:
 
-* `GET /data/v3/ed-fi/sections/deletes?minChangeVersion=101`
+```none
+GET /data/v3/ed-fi/sections/deletes?minChangeVersion=101
+```
 
 ### Obtain consistent and correct results
 
@@ -303,11 +305,10 @@ more effort.
 Change queries has been designed to work well with snapshot isolation. Snapshot
 isolation must be supported by the API host through the _OdsInstanceDerivative_
 table. All the steps that are required to [obtain
-changes](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V72/pages/23299597/Using+the+Changed+Record+Queries#UsingtheChangedRecordQueries-changeprocessing)
-must be performed against a specific ODS snapshot by applying the `Use-Snapshot`
-header set to true to each API request. This will ensure that the changes that
-are made to the ODS data by other API clients won't be visible to the
-synchronization processing.
+changes](#use-the-change-version-to-obtain-changes) must be performed against a
+specific ODS snapshot by applying the `Use-Snapshot` header set to true to each
+API request. This will ensure that the changes that are made to the ODS data by
+other API clients won't be visible to the synchronization processing.
 
 ### Alternatives to snapshot isolation
 
@@ -318,35 +319,35 @@ two ways to handle this situation. The option that is used depends on the
 application and how it can handle the side-effects of each approach:
 
 * **Include all changes, even those that have a change version larger than the
-    synchronization version**
-    With this approach, all Change Queries API requests will only include the
-    `minChangeVersion` parameter (the `maxChangeVersion`  parameter will not be
-    supplied).
+  synchronization version** \
+  With this approach, all Change Queries API requests will only include the
+  `minChangeVersion` parameter (the `maxChangeVersion`  parameter will not be
+  supplied).
 
-    The resource items (including keyChanges and deletes) that have a change
-    version larger than the synchronization version will be obtained again on
-    the next synchronization. This must be expected and handled by the
-    processing logic.
+  The resource items (including keyChanges and deletes) that have a change
+  version larger than the synchronization version will be obtained again on
+  the next synchronization. This must be expected and handled by the
+  processing logic.
 
 * **Ignore changes that have a change version larger than the synchronization
-    version
-    **With this approach, all Change Queries API requests will include both the
-    `minChangeVersion` and the `maxChangeVersion` parameters, the latter of
-    which will be assigned to the synchronization version.
+  version** \
+  With this approach, all Change Queries API requests will include both the
+  `minChangeVersion` and the `maxChangeVersion` parameters, the latter of
+  which will be assigned to the synchronization version.
 
-    This has the side effect that a new or updated resource item would be
-    skipped if it was created or updated before the synchronization version was
-    obtained, but then updated afterward. If there's a new resource item, a
-    referential integrity problem might occur if there was a resource item in
-    another resource that was created that referenced the skipped resource item.
-    If there's an updated existing resource item, the resource item will be
-    skipped and not synchronized until the next time.
+  This has the side effect that a new or updated resource item would be
+  skipped if it was created or updated before the synchronization version was
+  obtained, but then updated afterward. If there's a new resource item, a
+  referential integrity problem might occur if there was a resource item in
+  another resource that was created that referenced the skipped resource item.
+  If there's an updated existing resource item, the resource item will be
+  skipped and not synchronized until the next time.
 
-* **Devise an approach that combines both the previous options
-    **With this approach, you could decide that depending on the operation you
-    might want an application for which it is best to ignore changes newer than
-    the next synchronization version in which the resource item was deleted, but
-    creates/updates aren't ignored.
+* **Devise an approach that combines both the previous options** \
+  With this approach, you could decide that depending on the operation you
+  might want an application for which it is best to ignore changes newer than
+  the next synchronization version in which the resource item was deleted, but
+  creates/updates aren't ignored.
 
 Adding to the potential list of issues that must be considered with either of
 the above options is how certain operations performed by other API clients can
@@ -374,9 +375,8 @@ analysis. Therefore, it is _much_ simpler to use snapshot isolation.
 
 :::info
 
-For ODS-to-ODS change processing, consider using the [API
-Publisher](https://github.com/Ed-Fi-Exchange-OSS/API-Publisher) utility from
-the [Ed-Fi Exchange](https://github.com/Ed-Fi-Exchange-OSS) which was
-developed specifically for this use case.
+For API-to-API change processing, consider using the [API
+Publisher](/reference/api-publisher) utility that was developed specifically for
+this use case.
 
 :::

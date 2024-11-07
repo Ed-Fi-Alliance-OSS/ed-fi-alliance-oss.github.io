@@ -14,7 +14,7 @@ Installation](../binary-installation/readme.md).
 
 Ensure that the following components are installed:
 
-* **PowerShell 5.0,7.2,7.3.** PowerShell is used to initialize the development
+* **PowerShell 5.0, 7.2, or 7.3.** PowerShell is used to initialize the development
     environment.
 * **.NET 8.0 SDK**. The .NET 8.0 Software Developer Kit is required for
     compiling the solution.
@@ -31,13 +31,13 @@ likely you have PowerShell 5.0 pre-installed.
      select **Windows PowerShell**, and press **Enter**.
 2. Type `$PSVersionTable.PSVersion`, and press **Enter**.
 
-```powershell
-PS D:\> $PSVersionTable.PSVersion
+   ```powershell
+   PS D:\> $PSVersionTable.PSVersion
 
-Major  Minor  Patch  PreReleaseLabel BuildLabel
------  -----  -----  --------------- ----------
-7      4      5
-```
+   Major  Minor  Patch  PreReleaseLabel BuildLabel
+   -----  -----  -----  --------------- ----------
+   5      1      22621  4111
+   ```
 
 If the required version is not installed, download and install [PowerShell 5.0
 or
@@ -548,8 +548,8 @@ Duration Task
 
 To build the solution from within Visual Studio:
 
-1. Start Visual Studio. Within Visual Studio, open the "Ed-Fi-Ods.sln" solution
-    file from the C:\\Ed-Fi-ODS-Implementation\\Application directory.
+1. Start Visual Studio. Within Visual Studio, open the `Ed-Fi-Ods.sln` solution
+    file from the `C:\Ed-Fi-ODS-Implementation\Application` directory.
 2. Select **Build** > **Build Solution** (or press **Ctrl**+**Shift**+**B**).
 
 <details>
@@ -562,7 +562,7 @@ the API for the Ed-Fi ODS using code generators within the solution. Code
 generation uses Api Model JSON file to understand the structure that it uses to
 generate data access code. Code generation also depends on the
 DatabaseViews.generated.json which is generated one time using the
-"EdFi\_Ods\_Empty" database and subsequently provided by the source code
+`EdFi_Ods_Empty` database and subsequently provided by the source code
 repository.
 
 ```mermaid
@@ -584,10 +584,11 @@ flowchart LR
     gen --> generated["compiled C#, json, XML"]
 
     generated --> server["Ed-FI ODS/API service"]
+```
 
 ## Alternatively Building from the Developer Command Prompt
 
-When the “EdFi\_Ods\_Empty” database has been created (by running the `initdev`
+When the `EdFi_Ods_Empty` database has been created (by running the `initdev`
 PowerShell command in the previous step), there are two ways to build the
 solution. The solution can be built from Visual Studio, as described above, or
 from a terminal window.
@@ -666,8 +667,8 @@ databases containing data that can be accessed through the Ed-Fi ODS / API.
 
 Login to Sandbox Administration Portal with Test Admin Account. Login details
 can be found in
-**Ed-Fi-ODS-Implementation\\Application\\EdFi.Ods.SandboxAdmin\\appsettings.json**
-or alternatively in **appsettings.Development.json** file. We recommend that you
+`Ed-Fi-ODS-Implementation\Application\EdFi.Ods.SandboxAdmin\appsettings.json`
+or alternatively in `appsettings.Development.json` file. We recommend that you
 change your password as soon as you log in.
 
 ![Sandbox Administration Portal](/img/reference/ods-api/sandbox.png)

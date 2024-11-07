@@ -16,7 +16,7 @@ The Descriptor references must be formatted as follows:
 uri://[namespace]/[name of descriptor]#[descriptor value]
 ```
 
-* Valid namespaces can only contain alphanumeric characters and $-\_.+!\*'(),
+* Valid namespaces can only contain alphanumeric characters and `$-\_.+!\*'()`,
 * Valid Descriptor names can only contain alphanumeric characters
 * Valid code values can contain any character except '#'
 

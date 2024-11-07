@@ -1,15 +1,15 @@
 # Security Configuration Data Stores
 
 Security settings for the Ed-Fi ODS / API are stored in two separate databases,
-EdFi\_Admin and EdFi\_Security. Both databases are required. The EdFi\_Admin
+`EdFi_Admin` and `EdFi_Security`. Both databases are required. The `EdFi_Admin`
 mainly holds data pertaining to Authentication (i.e., Identifying the API
-client) while the EdFi\_Security database mainly holds security metadata
+client) while the `EdFi_Security` database mainly holds security metadata
 pertaining to Authorization (i.e., Establishing API client's assess rights to
 serve the request).
 
 ## Ed-Fi Admin Database
 
-The EdFi\_Admin database stores the following configuration entities:
+The `EdFi_Admin` database stores the following configuration entities:
 
 * **Vendors.** Each education software vendor is represented in the admin
     database and serves as a wrapper for individual users and applications.
@@ -41,7 +41,7 @@ The EdFi\_Admin database stores the following configuration entities:
     "Snapshot" derivatives.
 
 The following entity relationship diagram (ERD) provides additional data on the
-structure of the EdFi\_Admin database:
+structure of the `EdFi_Admin` database:
 
 ```mermaid
 erDiagram
@@ -67,7 +67,7 @@ erDiagram
 
 ## Ed-Fi Security Database
 
-The EdFi\_Security database stores information about available resource claims
+The `EdFi_Security` database stores information about available resource claims
 and their relationship to claim sets, Ed-Fi applications, and authorization
 strategies. The following high-level entity descriptions provide additional
 context:
@@ -103,7 +103,7 @@ context:
     strategies.
 
 The following ERD further outlines the entities and entity relationships in the
-EdFi\_Security database:
+`EdFi_Security` database:
 
 ```mermaid
 erDiagram

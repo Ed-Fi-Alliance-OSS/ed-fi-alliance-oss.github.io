@@ -118,7 +118,7 @@ Verbs describe the action that the tool needs to take.
 |     | \--standardVersion | yes | Standard Version to install, e.g. 5.1.0 |
 |     | \--extensionVersion | no  | Extension Version to install |
 | \-t | \--timeOut | no (default=60) | Connection time out in seconds |
-| \-p | \--filePaths | no  | Comma-separated list of base paths containing files to install<br/><br/> :warning: The application will install all files directly in `<basePath>\Standard\<standardVersion>\Artifacts\<engine>\Structure\<database>\`  and `<basePath>\Standard\<standardVersion>\``Artifacts\<engine>\Data\<database>` . Files in sub-directories are treated as features, to be installed with `--features.` |
+| \-p | \--filePaths | no  | Comma-separated list of base paths containing files to install<br/><br/> ⚠️ The application will install all files directly in `<basePath>\Standard\<standardVersion>\Artifacts\<engine>\Structure\<database>\`  and `<basePath>\Standard\<standardVersion>\``Artifacts\<engine>\Data\<database>` . Files in sub-directories are treated as features, to be installed with `--features.` |
 | \-f | \--features | no  | Optional features to install, as comma-separated list |
 
 ### Examples

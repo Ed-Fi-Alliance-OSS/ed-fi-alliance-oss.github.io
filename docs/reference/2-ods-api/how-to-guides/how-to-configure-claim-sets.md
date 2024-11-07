@@ -1,6 +1,6 @@
 # How To: Configure Claim Sets
 
-The API claim sets for the Ed-Fi ODS / API are stored in EdFi\_Security
+The API claim sets for the Ed-Fi ODS / API are stored in `EdFi_Security`
 database. Out of the box, Ed-Fi ODS / API has a set of default claim sets
 pre-loaded:
 
@@ -13,10 +13,10 @@ pre-loaded:
     for all Assessment data.
 * **Bootstrap Descriptors and EdOrgs** - Provides Create only permissions for
     Descriptor and Education Organization data, intended for loading set up data
-    by Administration Level users.  
+    by Administration Level users.
 * **Ed-Fi ODS Admin App** - Used by the Admin App/Admin API and has CRUD
     permissions on the Descriptor and Education Organization resources, intended
-    for loading set up data by Administration Level users.  
+    for loading set up data by Administration Level users.
 * **Ed-Fi Sandbox** - For Administration Level users. This allows the highest
     level of access and allows for CRUD permissions on all resources.  Not
     intended for Vendor access (API hosts can use it for setup, e.g. loading
@@ -36,7 +36,7 @@ pre-loaded:
     includes Create/Update assess to the School recourse and Update access to
     the Local Education Agency resource.   This claim set is commonly used for a
     single LEA implementation.
-* **Finance Vendor** \- Provides Read only access to dimensions (e.g.
+* **Finance Vendor** - Provides Read only access to dimensions (e.g.
     FundDimension, ProgramDimension etc.) in the [finance
     domain](https://edfi.atlassian.net/wiki/display/EFDS4X/Finance+Domain+-+Entities%2C+References%2C+and+Descriptors).
     Provides CRUD access to ChartOfAccount and locals (e.g. LocalAccount,
@@ -44,9 +44,8 @@ pre-loaded:
     organization.
 
 API clients can be assigned with one of the default claim set or a new claim
-sets can be created to suite the needs. The [Admin
-API](https://edfi.atlassian.net/wiki/spaces/ADMINAPI/pages/21300937/Endpoints+in+Admin+API+2.x)
-provides a endpoints for managing claim sets. For those wishing to setup Claim
+sets can be created to suite the needs. The [Admin API](/reference/admin-api)
+provides endpoints for managing claim sets. For those wishing to setup Claim
 Sets directly in the database, the SQL queries on this page enable a database
 administrator to edit information about security configurations.
 
@@ -119,7 +118,7 @@ INSERT INTO ResourceClaimActionAuthorizationStrategies
 
 The Ed-Fi ODS / API comes with a set of claim sets pre-configured with actions
 that can be performed on various resources. You can update them or create new
-claim sets and add resource actions to the new claim set.  
+claim sets and add resource actions to the new claim set.
 
 :::info
 

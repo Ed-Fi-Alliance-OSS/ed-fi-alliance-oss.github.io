@@ -1,9 +1,9 @@
 # Single and Multi-Tenant Configuration
 
-In a single-tenant configuration, there is only one EdFi\_Admin and
-EdFi\_Security used by the API. ODS instances, API clients, and their
-associations are all managed within the EdFi\_Admin databases. In a multi-tenant
-configuration, each tenant has its own EdFi\_Admin and EdFi\_Security databases
+In a single-tenant configuration, there is only one `EdFi_Admin` and
+`EdFi_Security` used by the API. ODS instances, API clients, and their
+associations are all managed within the `EdFi_Admin` databases. In a multi-tenant
+configuration, each tenant has its own `EdFi_Admin` and `EdFi_Security` databases
 and the API clients must include the well-known tenant identifier in the base
 route of their API requests.
 
@@ -24,7 +24,7 @@ MultiTenancy can be enabled in the appsettings "Features" section, as follows:
 
 ## Connection Strings
 
-The connection strings for the EdFi\_Admin and EdFi\_Security databases are
+The connection strings for the `EdFi_Admin` and `EdFi_Security` databases are
 configured differently depending on whether the MultiTenancy feature is enabled
 or disabled.
 

@@ -104,38 +104,38 @@ following identity claims are currently represented by in-memory purpose-built
 objects available in the current request context (and not created and accessed
 as `Claim`  objects):
 
-* Namespace Prefix (_`<http://ed-fi.org/claims/namespacePrefix>`_) - used to
-    authorize access to resource items where callers need to manage their own
-    data in the Ed-Fi ODS that is not associated with any specific education
-    organizations, such as custom descriptor values and assessment metadata. A
-    consumer could have access to many namespace prefixes, with each namespace
-    prefix defined in association with their “Vendor” record in the Ed-Fi ODS /
-    API Admin database.
-* Profile (_`<http://ed-fi.org/claims/profile>`_) - used to apply data policies to
-    the response data returned to a consumer. A consumer could have many
-    assigned profiles, with each profile name defined in association with their
-    "Application" record in the Ed-Fi ODS / API Admin database.
-* Claim Set Name (_`<http://ed-fi.org/claims/claimSetName>`_) - used to apply a
+* Namespace Prefix (`<http://ed-fi.org/claims/namespacePrefix>`) - used to
+  authorize access to resource items where callers need to manage their own
+  data in the Ed-Fi ODS that is not associated with any specific education
+  organizations, such as custom descriptor values and assessment metadata. A
+  consumer could have access to many namespace prefixes, with each namespace
+  prefix defined in association with their “Vendor” record in the Ed-Fi ODS /
+  API Admin database.
+* Profile (`<http://ed-fi.org/claims/profile>`) - used to apply data policies to
+  the response data returned to a consumer. A consumer could have many
+  assigned profiles, with each profile name defined in association with their
+  "Application" record in the Ed-Fi ODS / API Admin database.
+* Claim Set Name (`<http://ed-fi.org/claims/claimSetName>`) - used to apply a
     predefined set of claims to the consumer (as defined in the Ed-Fi security
-    database). A consumer can only be assigned a single claim set, the name of
-    which is defined in their associated "Application" record in the Ed-Fi ODS /
-    API Admin database.
-* Ownership Token Ids (_`<http://ed-fi.org/claims/ownershipTokenId>`_) - used to
-    perform "Ownership Based" authorization. The consumer has an associated
-    "creator" token (assigned through the "ApiClient" record in the Ed-Fi ODS /
-    API Admin database), and a set of "data access" tokens (assigned through
-    "ApiClientOwnershipTokens" records).
+  database). A consumer can only be assigned a single claim set, the name of
+  which is defined in their associated "Application" record in the Ed-Fi ODS /
+  API Admin database.
+* Ownership Token Ids (`<http://ed-fi.org/claims/ownershipTokenId>`) - used to
+  perform "Ownership Based" authorization. The consumer has an associated
+  "creator" token (assigned through the "ApiClient" record in the Ed-Fi ODS /
+  API Admin database), and a set of "data access" tokens (assigned through
+  "ApiClientOwnershipTokens" records).
 * Education Organization Ids - used to identify the education organizations
-    whose data the consumer can access.  For example, a SIS vendor would have
-    permissions to manage student data, but only for students enrolled in
-    schools within the local education agencies they serve. The education
-    organization ids associated with the consumer are managed in the Ed-Fi ODS /
-    API Admin database.
+  whose data the consumer can access.  For example, a SIS vendor would have
+  permissions to manage student data, but only for students enrolled in
+  schools within the local education agencies they serve. The education
+  organization ids associated with the consumer are managed in the Ed-Fi ODS /
+  API Admin database.
 
 ### Service Claims
 
 Service claims are defined in the Ed-Fi ODS / API Security database with a claim
-name using a prefix of _`<http://ed-fi.org/claims/services/>`_. These are the only
+name using a prefix of `<http://ed-fi.org/claims/services/>`. These are the only
 type of claims that are actually created as `Claim`  objects and added to the
 consumer's authenticated principal. They can be used to perform authorization on
 additional services exposed through the API such as the Identity management

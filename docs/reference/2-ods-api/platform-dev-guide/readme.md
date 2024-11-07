@@ -27,7 +27,3 @@ familiar with the following knowledge areas:
     see Chapter 5
 * [OAuth 2.0](https://tools.ietf.org/html/rfc6749)
 * [JavaScript Object Notation](http://www.json.org) (JSON)
-
-## Developers' Guide Contents
-
-Find out more about how to develop platforms based on the Ed-Fi ODS / API:
