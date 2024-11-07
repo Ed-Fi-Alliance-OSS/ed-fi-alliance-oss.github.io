@@ -165,7 +165,7 @@ If you have already created a backup using the
 3. In the Select Backup Destination Dialog, select **...**
 
 The database must be placed in `<source
-directory>\\Ed\-Fi\-ODS\-Implementation\\DatabaseTemplate\\Database` and the
+directory>\Ed-Fi-ODS\Implementation\DatabaseTemplate\Database` and the
 file name **must end in .bak** in order for the initialize development and
 deploy scripts to pick it up.
 
