@@ -1,4 +1,8 @@
-# Ed-Fi ODS / API for Suite 3 v7.2 (Latest)
+---
+sidebar_position: 0
+---
+
+# Ed-Fi ODS / API for Suite 3 v7.3
 
 Born from the practical needs of our community, the Ed-Fi ODS / API gives you a
 simple, cost-effective way of connecting and maintaining systems, helping you
