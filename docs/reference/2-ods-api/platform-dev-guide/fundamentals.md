@@ -150,7 +150,7 @@ format for data exchange. However there are utilities that can aid in uploadin
 data in batch mode via the API (e.g., [Bulk Load Client
 Utility](./utilities/bulk-load-client-utility.md) can
 be used to bulk load XML data and Data Import [Data
-Import](https://edfi.atlassian.net/wiki/display/EDFITOOLS/Data+Import) can be
+Import](/reference/data-import) can be
 used to bulk load CSV data). Bulk loading is useful for solutions where data is
 updated in batches (e.g., for organizations that feed data on a nightly
 schedule). Bulk loading is also useful for the initial population of data (e.g.,
@@ -177,7 +177,7 @@ publishes a free, lightweight tool called the MetaEd IDE. The MetaEd IDE uses a
 simple language to express data model customizations, and generates all the
 technical artifacts you'll need to implement your extensions.
 
-The [Extensibility &
+The [Extensibility &amp;
 Customization](./extensibility-customization/readme.md)
 section of this documentation provides additional detail on the code generation
 used by the solution.
@@ -204,18 +204,3 @@ with every code commit into the version control system. This practice provides
 an automated authoritative build that can be deployed automatically to test or
 production servers. The Ed-Fi ODS / API solution is shipped with scripts that
 can be used as a basis for Continuous Integration.
-
-## Built for the Ed-Fi Dashboards
-
-The Ed-Fi ODS / API is an ideal data source to populate an instance of the
-[Ed-Fi Dashboards](https://edfi.atlassian.net/wiki/spaces/DASH20).1 The
-Dashboards display a range of student performance metrics in a compelling
-interface. The ODS database contains the full spectrum of information needed to
-populate the Dashboards, and the data structures in the ODS are tuned to the
-data loaders that ship with the Dashboards. This similarity allows for a
-simplified data import and metrics computation in organizations where the Ed-Fi
-Dashboards are used.
-
-1 See the [Ed-Fi Technical Suite Compatibility
-Matrix](https://edfi.atlassian.net/wiki/spaces/ETKB/pages/20875825/Ed-Fi+Technical+Suite+Version+Matrix) for
-the latest details on the Ed-Fi products that are compatible with the ODS / API.

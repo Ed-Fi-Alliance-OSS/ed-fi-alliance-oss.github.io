@@ -11,7 +11,7 @@ will use code generation to automatically add your data extensions to the Ed-Fi
 ODS / API.
 
 The Ed-Fi Alliance provides a free tool called the [MetaEd
-IDE](https://edfi.atlassian.net/wiki/spaces/METAED20) that allows you to author
+IDE]((/reference/metaed) that allows you to author
 and build extensions using a simple language. The MetaEd IDE system can also
 assist you by "deploying" the extension customizations to the appropriate
 locations in your solution. This means that some of the details covered below
@@ -36,17 +36,16 @@ for a complete walkthrough.
 
 The Ed-Fi Data Standard provides XSD interchange schema for a number of data
 exchange scenarios. ODS / API Implementers can extend these schema to customize
-the data transfer for their particular needs. The free [MetaEd
-IDE](https://edfi.atlassian.net/wiki/spaces/METAED20) makes this process
-reliable and easy, and so is the recommended approach for extending XSD for use
-with the ODS / API.
+the data transfer for their particular needs. [MetaEd IDE](/reference/metaed)
+makes this process reliable and easy, and so is the recommended approach for
+extending XSD for use with the ODS / API.
 
 ## Database Scripts
 
 The ODS database scripts are located in their respective
-`\\Application\\EdFi.Ods.Standard\\Standard\\{Standard-Version}\\Artifacts\\MsSql\\Structure\\Ods`
+`\Application\EdFi.Ods.Standard\Standard\<Standard-Version>\Artifacts\MsSql\Structure\Ods`
 and
-`\\Application\\EdFi.Ods.Standard\\Standard\\{StandardVersion}\\Artifacts\\MsSql\\Data\\Ods`
+`\Application\EdFi.Ods.Standard\Standard\<StandardVersion>\Artifacts\MsSql\Data\Ods`
 directories. The Ed-Fi-ODS repository contains the as-shipped, non-customized
 data structures, while the Ed-Fi-ODS-Implementation repository contains
 customization scripts.
@@ -56,13 +55,13 @@ standard scripts are run against the database followed by the implementation
 scripts. A set of structure scripts creates the database objects, and the
 database tables are populated by data scripts. For example, the current school
 year is set during this process from scripts in the
-`Ed-Fi-ODS\\Application\\EdFi.Ods.Standard\\Standard\\{StandardVersion}\\Artifacts\\MsSql\\Data\\Ods`
+`Ed-Fi-ODS\Application\EdFi.Ods.Standard\Standard\<StandardVersion>\Artifacts\MsSql\Data\Ods`
 directory.
 
 Matching the same pattern, extension scripts are located
-at `Ed-Fi-ODS-Implementation\\Application\\{YourExtensionProject}\\Versions\\{ExtensionVersion}\\Standard\\{StandardVersion}\\Artifacts\\MsSql\\Structure\\Ods`
+at `Ed-Fi-ODS-Implementation\Application\<YourExtensionProject>\Versions\<ExtensionVersion>\Standard\<StandardVersion>\Artifacts\MsSql\Structure\Ods`
 and
-`Ed-Fi-ODS-Implementation\\Application\\{YourExtensionProject}\\Versions\\{ExtensionVersion}\\Standard\\{StandardVersion}\\Artifacts\\MsSql\\Data\\Ods`
+`Ed-Fi-ODS-Implementation\Application\<YourExtensionProject>\Versions\<ExtensionVersion>\Standard\<StandardVersion>\Artifacts\MsSql\Data\Ods`
 directories.
 
 Extension schema files must be named in this pattern: 0001-description.sql,
@@ -74,11 +73,12 @@ provide additional database objects to support your customization, they should
 be placed here as well.
 
 The [How To: Extend the ODS / API - Alternative Education Program
-Example](../../how-to-guides/how-to-extend-the-ed-fi-ods-api-alternative-education-program-example.md) and [How
-To: Extend the Ed-Fi ODS / API - Student Transcript
-Example](../../how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transcript-example.md) articles
-explain how to set up security for your extensions using this technique. You can
-also populate descriptors and education organizations using this technique.
+Example](../../how-to-guides/how-to-extend-the-ed-fi-ods-api-alternative-education-program-example.md)
+and [How To: Extend the Ed-Fi ODS / API - Student Transcript
+Example](../../how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transcript-example.md)
+articles explain how to set up security for your extensions using this
+technique. You can also populate descriptors and education organizations using
+this technique.
 
 ### Populated Sample Data
 
@@ -86,8 +86,8 @@ Your database extension scripts are automatically run against the sample
 database (minimal or populated databases). The populated sample database is
 retrieved from a NuGet package. However, this database contains education
 organizations and descriptors that you may not wish to use. If you wish to
-provide your own sample data, the EdFi.Samples.Ods.\* NuGet should not be
-allowed to populate the “EdFi\_Ods\_Populated\_Template” database during the
+provide your own sample data, the `EdFi.Samples.Ods.*` NuGet should not be
+allowed to populate the `EdFi_Ods_Populated_Template` database during the
 initialize development environment process.
 
 ## API Metadata
@@ -181,11 +181,11 @@ Once added, Extensions can be removed from a development instance by a generally
 inverse process:
 
 1. Remove any Extension Projects in Visual Studio. **Right-click** on the
-    Project in the Solution Explorer, select **Remove**.
+   Project in the Solution Explorer, select **Remove**.
 2. Manually delete the Extension Project files from disk. These will be
-    in `{{ Source Code Root }}\\Ed-Fi-ODS-Implementation\\Application\\`.
+   in `<source code root>\Ed-Fi-ODS-Implementation\Application\`.
 3. Remove references to the Extension Projects. These references will be in
-    your **OwinStartup** class (e.g., EdFi.Ods.WebApi\\Startup\\ApiStartup.cs).
-    Remove the using statement and the AssemblyLoader call for each project.
+   your `OwinStartup` class (e.g., `EdFi.Ods.WebApi\Startup\ApiStartup.cs`).
+   Remove the using statement and the AssemblyLoader call for each project.
 
 After these steps, Extensions will be removed.

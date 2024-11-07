@@ -1,3 +1,7 @@
+---
+description: Summary of what changed in prior releases of 7.x
+---
+
 # What's New in Previous v7.x Releases
 
 This documentation provides a summary overview of the major improvements,
@@ -67,7 +71,7 @@ to MetaEd IDE v4.3 or higher.
 This section briefly describes the new features and enhancements built into the
 Ed-Fi ODS / API Platform v7.0 and provides links to additional documentation.
 
-### Data Model Changes
+### Data Model Changes in v7.0
 
 Ed-Fi ODS / API v7.0 add support for implementing Ed-Fi Data Standard v5-pre2,
 which introduces important updates that impact multiple domains of the Ed-Fi

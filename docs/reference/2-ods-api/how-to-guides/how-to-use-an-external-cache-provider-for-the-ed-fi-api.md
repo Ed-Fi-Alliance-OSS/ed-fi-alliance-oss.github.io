@@ -78,7 +78,7 @@ In order to use the external cache feature, update the following values in
   * Only "Redis" is supported
 * Set external cache configuration
   * Redis
-    * Configuration \- Comma separated list of host and ports
+    * Configuration - Comma separated list of host and ports
     * Password (optional) AUTH Password
 * Configure which cacheable resource to use external cache for:
     1. ApiClientDetails

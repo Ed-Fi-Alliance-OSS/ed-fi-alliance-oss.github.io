@@ -10,7 +10,7 @@ Parameter Store.
 
 ## Alternative Connection String Sources
 
-While the EdFi\_Admin database holds information about the available ODS
+While the `EdFi_Admin` database holds information about the available ODS
 instances and their connection strings, the Ed-Fi ODS/API also supports sourcing
 the ODS connection strings for the ODS instances through the configuration
 architecture. Examples of the applicable configuration formats are shown below
@@ -19,20 +19,19 @@ architecture. Examples of the applicable configuration formats are shown below
 :::caution
 When you are using a configuration-based source for the ODS instance connection
 strings, be sure to set the ConnectionString column of the records in the
-OdsInstances table in the EdFi\_Admin database to `null`.
+OdsInstances table in the `EdFi_Admin` database to `null`.
 :::
 
 ### Single-Tenant Configuration
 
 In a single-tenant configuration, the overrides for ODS connection strings can
 be defined in the "OdsInstances" section of the configuration, keyed by the
-OdsInstanceId (as defined in the EdFi\_Admin database). Note that in the example
+OdsInstanceId (as defined in the `EdFi_Admin` database). Note that in the example
 below, it shows an explicit database segmentation approach based on school year
 provided by the API client in the base route of the API.
 
-#### appsettings\_odsinstances.json
-
-```json
+```json title="snippet from appsettings.json"
+...
 "OdsInstances": {
   "3": {
     "ConnectionString": "Server=(local); Database=EdFi_Ods_2022; Encrypt=False; Trusted_Connection=True; Application Name=EdFi.Ods.WebApi;",
@@ -50,6 +49,7 @@ provided by the API client in the base route of the API.
     }
   }
 }
+...
 ```
 
 ### Multi-Tenant Configuration
@@ -57,11 +57,10 @@ provided by the API client in the base route of the API.
 In a multi-tenant configuration, the overrides for ODS connection strings are
 defined in an "OdsInstances" section under the "Tenants" section of the
 configuration, keyed by tenant-specific OdsInstanceId (as defined in the
-tenant's EdFi\_Admin database), as follows:
+tenant's `EdFi_Admin` database), as follows:
 
-#### appsettings\_tenants.json
-
-```json
+```json title="snippet from appsettings.json"
+...
 "Tenants": {
   "Tenant1": {
     "ConnectionStrings": {
@@ -90,6 +89,7 @@ tenant's EdFi\_Admin database), as follows:
     ...
   }
 }
+...
 ```
 
 ## Examples
@@ -143,8 +143,8 @@ var hostBuilder = Host.CreateDefaultBuilder(args)
 
 Finally, you'll need to create and maintain the necessary configuration entries
 in the AWS Systems Manager Parameter Store. The image below shows the
-configuration of secure connection strings for tenant-specific EdFi\_Admin,
-EdFi\_Security and EdFi\_ODS databases in a multi-tenant configuration. Note the
+configuration of secure connection strings for tenant-specific `EdFi_Admin`,
+`EdFi_Security` and `EdFi_ODS` databases in a multi-tenant configuration. Note the
 use of the same prefix on the individual item names as the first argument passed
 to the `AddSystemsManager` call in the code sample above.
 
@@ -163,10 +163,10 @@ your AWS account. That information is outside the scope of this documentation.
 To add Azure Key Vault support to the API, first add the
 [Azure.Extensions.AspNetCore.Configuration.Secrets](https://www.nuget.org/packages/Azure.Extensions.AspNetCore.Configuration.Secrets)
 nuget package to the _EdFi.Ods.WebApi_ project. Then modify the host
-configuration in the _Program.cs_ file as shown below to register this as an
+configuration in the `Program.cs` file as shown below to register this as an
 additional configuration source using the `ConfigureAppConfiguration` extension
 method. This example shows how to add the key vault information to the
-_appsettings.json_ file and configure it with a 10-minute refresh period.
+`appsettings.json` file and configure it with a 10-minute refresh period.
 
 ```csharp
 var hostBuilder = Host.CreateDefaultBuilder(args)
@@ -215,7 +215,7 @@ section in _appsettings.json_:
 Ultimately, it is essential to create and manage the required configuration
 entries in Azure Key Vault, ensuring that the identity accessing the vault has
 the necessary permissions. The configuration for a secure connection string to
-an EdFi\_ODS database (with `OdsInstanceId = 2`) in a single-tenant setup is
+an `EdFi_ODS` database (with `OdsInstanceId = 2`) in a single-tenant setup is
 depicted below. Note the use of an API-specific key vault and the use of double
 hyphens (`--`) to separate the segments of the configuration hierarchy.
 

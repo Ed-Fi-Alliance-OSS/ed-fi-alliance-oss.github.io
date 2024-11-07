@@ -12,13 +12,13 @@ Each step is outlined in detail below.
 
 ## Step 1. Install and Configure GraphViz (Optional)
 
-The security visualization tool uses [GraphViz](http://www.graphviz.org/) — open
-source visualization software —. You can install the latest stable MSI release
-for Windows [here](https://graphviz.org/download/#windows).
+The security visualization tool uses [GraphViz](http://www.graphviz.org/)open
+source visualization software. You can install the latest stable MSI release for
+Windows [here](https://graphviz.org/download/#windows).
 
-Use **\--graphviz** command-line argument to specify the installation path; if
-this argument is not specified, the tool uses **C:\\Program
-Files\\Graphviz\\** by default.
+Use `--graphviz` command-line argument to specify the installation path; if this
+argument is not specified, the tool uses `C:\Program Files\Graphviz\` by
+default.
 
 The tool will automatically download and use a portable version if GraphViz is
 not detected in the default installation path.
@@ -26,42 +26,40 @@ not detected in the default installation path.
 ## Step 2. Build and Run the Security Visualization Tool
 
 * Start Visual Studio, open the Security Visualization Tool solution from
-    \\Ed-Fi-ODS\\Utilities\\GenerateSecurityGraphs\\GenerateSecurityGraphs.sln,
-    and build the solution.
+  \\Ed-Fi-ODS\\Utilities\\GenerateSecurityGraphs\\GenerateSecurityGraphs.sln,
+  and build the solution.
 * Open a Console window and navigate to
-    \\Ed-Fi-ODS\\Utilities\\GenerateSecurityGraphs\\GenerateSecurityGraphs\\bin\\Debug\\net6.0.
+  \\Ed-Fi-ODS\\Utilities\\GenerateSecurityGraphs\\GenerateSecurityGraphs\\bin\\Debug\\net6.0.
 * Run `GenerateSecurityGraphs.exe --help` to view the parameters that can be
-    passed to the
-    application.
+  passed to the application.
 
-    ```powershell
-    PS D:\Ed-Fi-ODS\Utilities\GenerateSecurityGraphs\GenerateSecurityGraphs> .\bin\Debug\net8.0\GenerateSecurityGraphs.exe --help
-    GenerateSecurityGraphs 1.0.0+04569d4fea5fc8935768fdff50cf64d61da58fa7
-    Copyright c 2024 Ed-Fi Alliance, LLC and Contributors
+  ```powershell
+  PS D:\Ed-Fi-ODS\Utilities\GenerateSecurityGraphs\GenerateSecurityGraphs> .\bin\Debug\net8.0\GenerateSecurityGraphs.exe --help
+  GenerateSecurityGraphs 1.0.0+04569d4fea5fc8935768fdff50cf64d61da58fa7
+  Copyright c 2024 Ed-Fi Alliance, LLC and Contributors
 
-      -o, --out                 Required. The path to the folder where the graphs should be generated.
+    -o, --out                 Required. The path to the folder where the graphs should be generated.
 
-      -f, --force               (Default: false) Create a folder at that path if one doesn't already exist.
+    -f, --force               (Default: false) Create a folder at that path if one doesn't already exist.
 
-      -c, --connectionString    (Default: Server=(local);Database=EdFi_Security;Trusted_Connection=True;Encrypt=False) The
-                                connection string for connecting to the authorization metadata database. Leave blank to
-                                connect to the local 'EdFi_Security' database using integrated security.
+    -c, --connectionString    (Default: Server=(local);Database=EdFi_Security;Trusted_Connection=True;Encrypt=False) The
+                              connection string for connecting to the authorization metadata database. Leave blank to
+                              connect to the local 'EdFi_Security' database using integrated security.
 
-      -g, --graphviz            (Default: C:/Program Files/Graphviz/) Graphviz installation path.
+    -g, --graphviz            (Default: C:/Program Files/Graphviz/) Graphviz installation path.
 
-      --help                    Display this help screen.
+    --help                    Display this help screen.
 
-      --version                 Display version information.
-    ```
+    --version                 Display version information.
+  ```
 
 * Execute the tool to generate the visualizations. The example below assumes
-    that you have followed the Ed-Fi ODS / API [Getting
-    Started](../../getting-started/readme.md)
-    steps successfully.
+  that you have followed the Ed-Fi ODS / API [Getting
+  Started](../../getting-started/readme.md) steps successfully.
 
-```shell
-GenerateSecurityGraphs.exe -o "C:\graphs" -f
-```
+  ```shell
+  GenerateSecurityGraphs.exe -o "C:\graphs" -f
+  ```
 
 ## Step 3. Review Output
 
@@ -96,8 +94,7 @@ v6.1 contains nine claim sets, resulting in nine folders.
 
 This section provides some examples of output from the Security Visualization
 Tool, along with explanatory notes. An understanding of the concepts described
-in [API Claim Sets &
-Resources](../security/api-claim-sets-resources.md) is
+in [API Claim Sets &amp; Resources](../security/api-claim-sets-resources.md) is
 useful to fully understand the visualizations.
 
 Note that the shading of font has relevance:

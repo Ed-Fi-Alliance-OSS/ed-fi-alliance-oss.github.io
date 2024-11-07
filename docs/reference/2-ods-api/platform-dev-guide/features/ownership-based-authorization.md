@@ -11,10 +11,10 @@ covers the essentials for platform hosts to enable and manage the feature.
 Ownership based authorization is an optional feature that is turned off by
 default - but can be turned on through configuration. When this feature is
 turned on, each aggregate root entity in the ODS is assigned with an ownership
-token indicating the access rights to that resource.  EdFi\_Admin database holds
+token indicating the access rights to that resource.  `EdFi_Admin` database holds
 ownership tokens for the API clients. API populates the new ownership token
 property on the aggregate root entity from the API client's key context.
-Authorization metadata in EdFi\_Security database allows platform hosts to
+Authorization metadata in `EdFi_Security` database allows platform hosts to
 configure multiple authorization strategies for a given resource/action
 combination to use ownership based authorization strategy in conjunction with
 existing relationship based authorization strategies. API Authorization layer
@@ -26,8 +26,8 @@ The following steps demonstrate setting up ownership based authorization.
 ## Enabling Ownership Based Authorization
 
 The Ownership based authorization feature is managed on the deployed code by
-changing the appsettings.json file of the EdFi.Ods.WebApi project. This is
-the appsettings.json of the "Api" component of the deployed solution. The app
+changing the `appsettings.json` file of the EdFi.Ods.WebApi project. This is
+the `appsettings.json` of the "Api" component of the deployed solution. The app
 setting `ApiSettings:Features:OwnershipBasedAuthorization` should be set to the
 value "true". If the app setting doesn't exist, it should be created.
 
@@ -51,7 +51,7 @@ using the provided scripts. These scripts will set up a new column in all
 aggregate root entities and necessary to support this feature. All scripts
 supporting ownership based authorization will exist under a subfolder named
 "RecordOwnership" inside the "Ods" target database folder (i.e.,
-\\Ed-Fi-ODS\\Application\\EdFi.Ods.Standard\\`(StandardVersion)`\\Artifacts\\MsSql\\Structure\\Ods\\RecordOwnership).
+`Ed-Fi-ODS\Application\EdFi.Ods.Standard\<StandardVersion>\Artifacts\MsSql\Structure\Ods\RecordOwnership`).
 Scripts will be generated for this feature by MetaEd for Ed-Fi Extension
 projects as well.
 
@@ -76,9 +76,9 @@ ODS database(s). The exact steps depend on your deployment method:
     necessary updates to enable ownership based authorization functionality.
 * If the built-in deployment scripts are not being used, all scripts under the
     "RecordOwnership" inside the "Ods" target database folder
-    (Ed-Fi-ODS\\Application\\EdFi.Ods.Standard\\`(StandardVersion)`\\Artifacts\\MsSql\\Structure\\Ods\\RecordOwnership)
+    (`Ed-Fi-ODS\Application\EdFi.Ods.Standard\<StandardVersion>\Artifacts\MsSql\Structure\Ods\RecordOwnership`)
     must be run against the ODS, including the extension version of the scripts
-    (Ed-Fi-ODS-Implementation\\Application\\(YourExtensionProject)\\Versions\\(ExtensionVersion)\\Standard\\`(StandardVersion)`\\Artifacts\\MsSql\\Structure\\Ods\\RecordOwnership).
+    (`Ed-Fi-ODS-Implementation\Application\<YourExtensionProject>\Versions\<ExtensionVersion>\Standard\<StandardVersion>\Artifacts\MsSql\Structure\Ods\RecordOwnership`).
 
 :::caution
 
@@ -234,10 +234,10 @@ based authorization are returned correctly.
 
 The tables involved in ownership based authorization are as follows:
 
-### EdFi\_Security Database
+### EdFi_Security Database
 
 The application of an "ownership-based" authorization strategy is done in an
-additive fashion. To facilitate this, EdFi\_Security database schema has been
+additive fashion. To facilitate this, `EdFi_Security` database schema has been
 updated to allow configuration of multiple authorization strategies for the
 default resource claim/action "tuples" as well as for claim set-specific
 overrides.
@@ -250,7 +250,7 @@ erDiagram
     ClaimSetResourceClaimActions ||--o{ ClaimSetResourceClaimActionAuthorizationStrategyOVerrides : has
 ```
 
-### EdFi\_Admin Database
+### EdFi_Admin Database
 
 In order to authorize individual resource items in the API based on the concept
 of "ownership", each API client is associated with "CreatorOwnershipTokenId"

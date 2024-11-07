@@ -68,9 +68,7 @@ number of course-related entities in the Ed-Fi UDM.
 | Domain Aggregate/Resource | Entities |
 | --- | --- |
 | Course | Course |
-| CourseAcademicSubject | | CourseCompetencyLevel | | CourseIdentificationCode |
-| CourseLearningStandard | | CourseLevelCharacteristic | |
-CourseOfferedGradeLevel |
+| CourseAcademicSubject | CourseCompetencyLevel<br />CourseIdentificationCode<br />CourseLearningStandard<br />CourseLevelCharacteristic<br />CourseOfferedGradeLevel |
 
 When a domain aggregate is constructed from related entities and associations,
 API applies name shortening to remove redundancy in the property names by
@@ -94,16 +92,15 @@ Handbook](https://edfi.atlassian.net/wiki/display/EFDS5/Unifying+Data+Model+-+v5
 ### Exceptions to name shortening
 
 * Name shortening is not applied to known identifiers like 'USI', 'Id', and
-    'TypeId'.
+  'TypeId'.
 * Name shortening is not applied to the properties that are resource
-    references.  
+  references.  
 * Name shortening is not applied to scalar properties.
 * Name shortening is not applied when applying this naming convention to a
-    child property's name will result in a collision with another property's
-    name.
+  child property's name will result in a collision with another property's
+  name.
 
-The [Using the Online
-Documentation](./using-the-online-documentation.md)
+The [Using the Online Documentation](./using-the-online-documentation.md)
 section provides a great overview of the API surface — and the
 [documentation](https://api.ed-fi.org/v7.2/docs) itself is a complete reference
 for a core API implementation that defines the endpoints, JSON payloads, element
@@ -117,35 +114,34 @@ The API supports transactional data loading scenarios, so client applications
 can stay connected in near real-time. The API uses JSON for real-time and
 transactional data exchange. However there are utilities that can aid
 in uploading data in batch mode via the API (e.g., [Bulk Load Client
-Utility](../platform-dev-guide/utilities/bulk-load-client-utility.md)
-can be used to bulk load XML data and [Data
-Import](https://edfi.atlassian.net/wiki/spaces/EDFITOOLS/pages/24119638/Data+Import)
-can be used to bulk load CSV data).
+Utility](../platform-dev-guide/utilities/bulk-load-client-utility.md) can be
+used to bulk load XML data and [Data Import](/reference/data-import) can be used
+to bulk load CSV data).
 
 The Ed-Fi ODS / API supports the following HTTP verbs:
 
 * **POST** An HTTP POST creates an individual resource. If successful, the URI
-    to the new resource is returned in the “Location” HTTP header of the
-    response. Performing a POST with identical [natural
-    keys](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V72/pages/23301644/Key+Structure+in+the+Ed-Fi+ODS+API#KeyStructureintheEd-FiODS/API-NaturalKeys)
-    to a resource already in the data store performs an update rather than
-    create a new resource.
+  to the new resource is returned in the “Location” HTTP header of the response.
+  Performing a POST with identical [natural
+  keys](../technical-articles/key-structure-in-the-ed-fi-ods-api.md#natural-keys) to a
+  resource already in the data store performs an update rather than create a new
+  resource.
 * **GET** An HTTP GET returns existing resources. Providing the [natural
-    key](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V72/pages/23301644/Key+Structure+in+the+Ed-Fi+ODS+API#KeyStructureintheEd-FiODS/API-NaturalKeys)
-    or internal UUID on the URL specifies an individual resource, while omitting
-    the [natural
-    keys](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V72/pages/23301644/Key+Structure+in+the+Ed-Fi+ODS+API#KeyStructureintheEd-FiODS/API-NaturalKeys)
-    and UUID retrieves the complete set of Resources of the given type.
-* **PUT** An HTTP PUT performs an idempotent update of an existing resource.
-    PUT performs a full replacement of the existing resource with the supplied
-    value. In addition, PUT can update [natural
-    key](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V72/pages/23301644/Key+Structure+in+the+Ed-Fi+ODS+API#KeyStructureintheEd-FiODS/API-NaturalKeys)
-    on selected resources. This is provisioned for specific resources with
-    relatively volatile natural key by allowing [cascading
-    changes](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V72/pages/23301674/Cascading+Key+Updates+on+ODS+API+Resources)
-    in the backend store. See [Using the Online
-    Documentation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V72/pages/23299558/Using+the+Online+Documentation#UsingtheOnlineDocumentation-naturalkeyupdate)
-    for details on how to identify resources that support natural key updates.
+  key](../technical-articles/key-structure-in-the-ed-fi-ods-api.md#natural-keys)
+  or internal UUID on the URL specifies an individual resource, while omitting
+  the [natural
+  keys](../technical-articles/key-structure-in-the-ed-fi-ods-api.md#natural-keys)
+  and UUID retrieves the complete set of Resources of the given type.
+* **PUT** An HTTP PUT performs an idempotent update of an existing resource. PUT
+  performs a full replacement of the existing resource with the supplied value.
+  In addition, PUT can update [natural
+  key](../technical-articles/key-structure-in-the-ed-fi-ods-api.md#natural-keys)
+  on selected resources. This is provisioned for specific resources with
+  relatively volatile natural key by allowing [cascading
+  changes](../technical-articles/cascading-key-updates-on-ods-api-resources.md)
+  in the backend store. See [Using the Online
+  Documentation](./using-the-online-documentation.md) for details on how to
+  identify resources that support natural key updates.
 * **DELETE** An HTTP DELETE deletes an existing individual resource.
 
 ## Security

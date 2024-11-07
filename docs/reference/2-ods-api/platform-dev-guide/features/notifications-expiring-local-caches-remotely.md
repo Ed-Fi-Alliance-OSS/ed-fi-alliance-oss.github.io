@@ -74,7 +74,7 @@ message, but the format of the message is very simple:
     could be useful to immediately terminate an API client's access.
 
 * `profile-metadata` - expires all cached metadata related to API Profiles,
-    which could be useful if a Profile definition is updated in the EdFi\_Admin
+    which could be useful if a Profile definition is updated in the `EdFi_Admin`
     database.
 
 * `ods-instances` - expires all cached details related to ODS instances, which

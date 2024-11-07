@@ -6,10 +6,9 @@ material to help platform hosts support developers of client applications.
 ## Online API Documentation via Swagger
 
 The REST interface to the Ed-Fi ODS / API exposes metadata based on the open
-source [OpenAPI
-Specification](https://swagger.io/resources/open-api/).[1](https://edfi.atlassian.net/wiki/pages/resumedraft.action?draftId=23299233#PlatformDevGuide-Documentation&amp;ClientSupport-Footnote-1)
-This metadata describes all the API resources as well as the inputs, HTTP verbs,
-and schema of the exposed resources. This metadata enables a user interface to
+source [OpenAPI Specification](https://swagger.io/resources/open-api/). This
+metadata describes all the API resources as well as the inputs, HTTP verbs, and
+schema of the exposed resources. This metadata enables a user interface to
 automatically generate and display API documentation. This documentation
 describes everything a client needs to connect to the ODS / API, including
 resource URIs, methods (e.g., GET, POST, PUT, DELETE), parameters, and so forth.
@@ -28,6 +27,14 @@ Documentation](../client-developers-guide/using-the-online-documentation.md)
 section of the API Client Developers' Guide provides an overview of the
 documentation along with information on how to make sample API calls through the
 UI.
+
+:::tip
+
+OpenAPI was formerly known as the Swagger specification. In January 2016, the
+specification changed its name to the OpenAPI specification, though many of the
+tools retain the Swagger identity.
+
+:::
 
 ## Client SDK Code Generation for C# and Java
 
@@ -67,7 +74,3 @@ starting place for documentation describing their own platform instance. See the
 [API Client Developers'
 Guide](../client-developers-guide/readme.md)
 documentation for more details.
-
-1 Formerly known as the Swagger specification. In January 2016, the
-specification changed its name to the OpenAPI specification, though many of the
-tools retain the Swagger identity.

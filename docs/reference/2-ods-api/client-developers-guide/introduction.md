@@ -2,7 +2,6 @@
 sidebar_position: 1
 ---
 
-
 # Introduction
 
 This documentation describes concepts and techniques necessary for a technical

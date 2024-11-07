@@ -83,7 +83,7 @@ tool with `--help` parameter.
 
 | Parameter | Description | Non-Destructive API | Non-Destructive SDK | Destructive SDK |
 | --- | --- | --- | --- | --- |
-| `b, baseurl` | The base url used to derive api, metadata, oauth, and dependency urls (e.g., [http://server](http://server)). If provided, `apiurl, metadataurl and oauthurl` parameters can be skipped. | Required | Required | Required |
+| `b, baseurl` | The base url used to derive api, metadata, oauth, and dependency urls (e.g., `http://server`. If provided, `apiurl, metadataurl and oauthurl` parameters can be skipped. | Required | Required | Required |
 | `k, key` | The web API OAuth key | Required | Required | Required |
 | `l, library` | The complete path to a compiled Ed-Fi SDK library | N/A | Required | Required |
 | `n, namespace` | Override the URI to use when generating namespace values (e.g., `uri://edfi.org`) | Optional | Optional | Optional |
@@ -204,7 +204,7 @@ Intermittent warnings and errors may possibly be logged due to the
 inaccessibility of resources for security reasons.
 
 Security may be disabled for all keys/secrets by running the following query
-against the EdFi\_Security database:
+against the `EdFi_Security` database:
 
 ```sql
 update [EdFi_Security].[dbo].[ResourceClaimActionAuthorizationStrategies] set AuthorizationStrategyId = 1
@@ -213,5 +213,5 @@ update [EdFi_Security].[dbo].[ResourceClaimActionAuthorizationStrategies] set Au
 This statement replaces the authorization strategy for all resource types to be
 "no further authorization required".
 
-Deleting the EdFi\_Security database will cause it to be rebuilt with the
+Deleting the `EdFi_Security` database will cause it to be rebuilt with the
 default claims the next time the websites are run.

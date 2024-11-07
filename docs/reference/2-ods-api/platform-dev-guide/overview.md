@@ -6,12 +6,12 @@ API platform.
 ## Solution Overview
 
 The Ed-Fi Alliance publishes the [Ed-Fi Data
-Standard](https://edfi.atlassian.net/wiki/spaces/EFDS5), which models a broad
-spectrum of commonly exchanged and shared K–12 education data. The Ed-Fi ODS /
-API is a concrete implementation of a relational database and a companion API
-harmonized with the Ed-Fi Data Standard. The Ed-Fi ODS / API is tuned to the
-security and performance needs of K–12 organizations and the education
-technology vendors who serve them.
+Standard](/reference/data-exchange/data-standard), which models a broad spectrum
+of commonly exchanged and shared K–12 education data. The Ed-Fi ODS / API is a
+concrete implementation of a relational database and a companion API harmonized
+with the Ed-Fi Data Standard. The Ed-Fi ODS / API is tuned to the security and
+performance needs of K–12 organizations and the education technology vendors who
+serve them.
 
 The ODS implementation supports Microsoft SQL Server as well as PostgreSQL as a
 database platforms. The API implementation is written in C# and ASP.NET Core.

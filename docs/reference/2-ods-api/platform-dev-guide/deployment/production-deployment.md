@@ -18,14 +18,14 @@ and supporting functions for a Production instance:
   * **Admin App Website.** This website provides administrative tools for
     managing API client keys and secrets.
 * **Databases**
-  * **EdFi\_ODS.** A database that stores data for the Ed-Fi ODS / API.
-  * **EdFi\_Admin.** A database containing authentication information for API
+  * **`EdFi_ODS.*`.** A database that stores data for the Ed-Fi ODS / API.
+  * **`EdFi_Admin`.** A database containing authentication information for API
     clients.
-  * **EdFi\_Security.** A database containing authorization information for API
+  * **`EdFi_Security`.** A database containing authorization information for API
     clients.
 
 Of particular note: production deployments should _not_ include the Swagger
-Documentation UI, Sandbox Administration UI, or the EdFi\_ODS\_\* databases.
+Documentation UI, Sandbox Administration UI, or the `EdFi_ODS_*` databases.
 Those components are included by default in the code distribution — and are
 appropriate for a Sandbox instance of the ODS / API — but should not be deployed
 to production.
@@ -58,9 +58,9 @@ threat modeling exercise during the deployment planning cycle.
 ### Important Security Information
 
 The technical article [Education Agency Business Process Security
-Considerations](../../technical-articles/education-agency-business-process-security-considerations.md) contains
-important background information that all implementers should know before
-deploying a production instance of the Ed-Fi ODS / API.
+Considerations](../../technical-articles/education-agency-business-process-security-considerations.md)
+contains important background information that all implementers should know
+before deploying a production instance of the Ed-Fi ODS / API.
 
 ### Value Assets
 
@@ -277,7 +277,7 @@ The Ed-Fi ODS web servers should use solid state drives where possible.
 Microsoft Windows and IIS perform much better when SSDs are used. From a
 performance perspective, it is not necessary to have a separate data drive
 containing the Ed-Fi ODS / API website. It is relatively small. The website may
-be easily installed in the C:\\inetpub directory.
+be easily installed in the `C:\inetpub` directory.
 
 System drives should be the first drives on the database server upgraded to use
 solid state drives, followed by data drives. Where budget allows, the data
@@ -336,7 +336,7 @@ developer-friendly implementations that demonstrate basic functionality but may
 not represent functionality required for a specific installation.
 
 Also, the Ed-Fi ODS / API is built on the [Ed-Fi Data
-Standard](https://edfi.atlassian.net/wiki/spaces/EFDS5/overview), which is made
+Standard](/reference/data-exchange/data-standard), which is made
 to be extended. Schema extensions often include individual attributes as well as
 the addition of completely new entities that may be created to provide
 solution-specific information. A common scenario includes state education agency
@@ -346,11 +346,8 @@ mandatory data collections.
 Configuration considerations that your organization should evaluate include:
 
 * An approach to Unique IDs
-
 * Client key/secret generation and distribution scenarios
-
 * Use of database-per-year ODS databases
-
 * Use of per-district ODS databases
 
 These items represent the key areas where the as-shipped components of the ODS /
