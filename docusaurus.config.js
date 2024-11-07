@@ -94,6 +94,22 @@ const config = {
         sidebarPath: './sidebars.js',
       },
     ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'odsApi',
+        // path: 'docs/reference/2-ods-api',
+        editUrl: ({ docPath }) =>
+          `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/${docPath}/`,
+        routeBasePath: 'reference/ods-api',
+        sidebarPath: './sidebars.js',
+        includeCurrentVersion: false,
+        versions: {
+          7.2: { banner: 'none', badge: true },
+          // 7.3: { banner: 'unreleased', badge: true }
+        }
+      },
+    ],
   ],
 
   themeConfig:
