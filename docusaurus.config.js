@@ -106,7 +106,7 @@ const config = {
         includeCurrentVersion: false,
         versions: {
           7.2: { banner: 'none', badge: true },
-          // 7.3: { banner: 'unreleased', badge: true }
+          7.3: { banner: 'unreleased', badge: true }
         }
       },
     ],
