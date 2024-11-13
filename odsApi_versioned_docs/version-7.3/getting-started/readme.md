@@ -39,5 +39,5 @@ tested with the following software configurations:
 * Microsoft SQL Server 2019 (Developer Edition, Standard Edition, or
     Enterprise Edition)
 
-* PostgreSQL 13.x
+* PostgreSQL 16.x
 * Visual Studio 2022 (Community or higher)

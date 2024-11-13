@@ -22,8 +22,8 @@ Ensure that the following components are installed:
 * **PowerShell 5.0,7.2,7.3.** PowerShell is used by the database deployment
   scripts.
 * **.NET 8.0 SDK.** Required by the [Database Deploy
-  Tool](../../platform-dev-guide/utilities/database-deploy-tool)
-  used in the database deployment scripts.
+  Tool](../../platform-dev-guide/utilities/database-deploy-tool) used in
+  the database deployment scripts.
 
     <details>
       <summary>View detail...</summary>
@@ -71,8 +71,8 @@ for an example.
 
 Ensure that the following components are installed:
 
-* **Internet Information Services.** IIS is the web server that will run the
-  ODS / API.
+* **Internet Information Services.** IIS is the web server that will run the ODS
+  / API.
 * **.NET 8.0 Hosting Bundle.** The .NET 8.0 Hosting Bundle is required for
   running the API on IIS. Must be installed after IIS.
 
@@ -102,7 +102,7 @@ server:
 * **Microsoft SQL Server 2019.** Microsoft SQL Server is used to store the data
   for the Ed-Fi ODS / API. Standard, Developer, or Enterprise Editions are
   supported.
-* Alternative PostgreSQL datastore: **PostgreSQL 13.x.** can be used as the
+* Alternative PostgreSQL datastore: **PostgreSQL 16.x.** can be used as the
   datastore for Ed-Fi ODS / API instance instead of Microsoft SQL Server.
   * **[Microsoft Visual C++ 2015
     Redistributable](https://www.microsoft.com/en-us/download/details.aspx?id=52685).**
@@ -125,11 +125,12 @@ options. The primary ODS / API install use cases are provided as examples below.
 Choose the option that suits your need and customize parameters as needed.
 
 * [Sandbox Installation Steps](./sandbox-installation-steps)
-* [Single/Multi Tenant Installation Steps](./singlemulti-tenant-installation-steps)
+* [Single/Multi Tenant Installation
+  Steps](./singlemulti-tenant-installation-steps)
 
 :::note
 
-The following link contains sample docker setup files for PostgreSQL
-[PGDockerSetup.zip](https://edfi.atlassian.net/wiki/download/attachments/23298153/PGDockerSetup.zip?version=1&modificationDate=1708470911443&cacheVersion=1&api=v2)
+See [this folder](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/tree/v7.3/logistics/ods-postgresql)
+for an example of how to start a local PostgreSQL development environment.
 
 :::

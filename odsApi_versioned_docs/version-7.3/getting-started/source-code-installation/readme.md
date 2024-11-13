@@ -69,7 +69,7 @@ Ensure that the following software is installed and configured:
   for the Ed-Fi ODS / API. Local installation of Standard, Developer, or
   Enterprise Editions are supported.
 * Optional PostgreSQL datastore:
-  * **PostgreSQL 13.x.** PostgreSQL can be used as the datastore for and Ed-Fi
+  * **PostgreSQL 16.x.** PostgreSQL can be used as the datastore for and Ed-Fi
      ODS / API instance instead of Microsoft SQL Server.
 
 :::tip
@@ -121,7 +121,7 @@ for Visual Studio updates.
 
 ## PostgreSQL Installation (Optional)
 
-Install PostgreSQL 13.x on port 5432 if you intend to use PostgreSQL as a
+Install PostgreSQL 16.x on port 5432 if you intend to use PostgreSQL as a
 backing datastore for the ODS / API.
 
 ### PostgreSQL Visualization Tool
@@ -147,7 +147,7 @@ Installation using PostgreSQL Installer
 
 * Install using the
   PostgreSQL [installer](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads).
-  Version 13.x is compatible with the ODS / API.
+  Version 16.x is compatible with the ODS / API.
   * Note the installer includes pgAdmin as an option.
   * The [PostgreSQL installation
     guide](https://www.enterprisedb.com/docs/supported-open-source/postgresql/installer/)
@@ -183,20 +183,20 @@ site](https://docs.docker.com/compose/).
 ```yaml
 version: '3.7'
 services:
-    pg13:
-        image: postgres:13-alpine
-        container_name: pg13
+    pg16:
+        image: postgres:16-alpine
+        container_name: pg16
         volumes:
-            - pg13-database:/var/lib/postgresql/data
+            - pg16-database:/var/lib/postgresql/data
         ports:
             - 5432:5432
         environment:
             - POSTGRES_PASSWORD=${PG_PASSWORD}
         restart: on-failure
 volumes:
-    pg13-database:
+    pg16-database:
         driver: local
-        name: pg13-database
+        name: pg16-database
 ```
 
 Create an environment file (name: `.env`) to be consumed by Docker Compose. By
@@ -398,11 +398,11 @@ variable is properly configured.
 
 To set the "StandardVersion" variable:
 
-1. Press the **Windows key** 🪟 on your keyboard, type **Environment
+1. Press the **Windows key** on your keyboard, type **Environment
    Variables**, select **Edit the system environment variables**, and
    press **Enter.** This brings up **System Properties**. Under **Advanced**,
    select **Environment Variables**. (Alternatively, right-click the **Start
-   Menu** 🪟 button, select **System**, and click on the **Advanced system
+   Menu** button, select **System**, and click on the **Advanced system
     settings**. Under **Advanced**, select **Environment Variables**.)
 2. Under **System variables**, select **New...**
 3. For **Variable name**, enter **StandardVersion**
