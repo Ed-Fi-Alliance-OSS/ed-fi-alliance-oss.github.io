@@ -5,15 +5,15 @@ Client SDK using a Windows environment targeting C#.
 
 :::warning
 
-ODS / API v7.2 metadata endpoints return documents adhering to the OpenApi
+ODS / API v7.3 metadata endpoints return documents adhering to the OpenApi
 v3.0.1 specification by default. A client can request OpenApi v2.0 metadata
 documents using the **query string parameter** `**version=2**`. OpenApi CodeGen
 can consume metadata in either version and generate the SDK. e.g.
-[https://api.ed-fi.org/v7.2/api/metadata/data/v3/swagger.json?version=2](https://api.ed-fi.org/v7.2/api/metadata/data/v3/swagger.json?version=3)
+[https://api.ed-fi.org/v7.3/api/metadata/data/v3/swagger.json?version=2](https://api.ed-fi.org/v7.3/api/metadata/data/v3/swagger.json?version=3)
 for OpenApi v2.0
-[https://api.ed-fi.org/v7.2/api/metadata/data/v3/swagger.json?version=3](https://api.ed-fi.org/v7.2/api/metadata/data/v3/swagger.json?version=3)
+[https://api.ed-fi.org/v7.3/api/metadata/data/v3/swagger.json?version=3](https://api.ed-fi.org/v7.3/api/metadata/data/v3/swagger.json?version=3)
 or
-[https://api.ed-fi.org/v7.2/api/metadata/data/v3/swagger.json](https://api.ed-fi.org/v7.2/api/metadata/data/v3/swagger.json)
+[https://api.ed-fi.org/v7.3/api/metadata/data/v3/swagger.json](https://api.ed-fi.org/v7.3/api/metadata/data/v3/swagger.json)
 for OpenApi v3.0
 
 :::
@@ -27,12 +27,12 @@ Java](https://www.oracle.com/java/technologies/downloads/),
 
 ## Step 2. Download the OpenApi Codegen JAR File
 
-Download the latest version of the OpenApi Codegen JAR 7.2.0. Windows users can
+Download the latest version of the OpenApi Codegen JAR 7.3.0. Windows users can
 use Invoke-WebRequest in PowerShell 3.0+.
 
 ```powershell
 Invoke-WebRequest -OutFile openApi-codegen-cli.jar `
-  https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/7.2.0/openapi-generator-cli-7.2.0.jar
+  https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/7.3.0/openapi-generator-cli-7.3.0.jar
 ```
 
 For more information and download options visit
@@ -52,7 +52,7 @@ created during the code generation.
 The SDK source files are generated using Swagger metadata via a few simple
 PowerShell commands. You can see the available metadata endpoints for SDK
 generation
-at [https://api.ed-fi.org/v7.2/api/metadata?sdk=true](https://api.ed-fi.org/v7.2/api/metadata?sdk=true).
+at [https://api.ed-fi.org/v7.3/api/metadata?sdk=true](https://api.ed-fi.org/v7.3/api/metadata?sdk=true).
 
 ```powershell
 java -jar <openapi-generator-jar-path> generate -g csharp -i <swagger-json-url> `
@@ -72,7 +72,7 @@ in the generated SDK.
 
 ```powershell
 java -jar openApi-codegen-cli.jar generate -g csharp `
-  -i https://api.ed-fi.org/v7.2/api/metadata/data/v3/swagger.json `
+  -i https://api.ed-fi.org/v7.3/api/metadata/data/v3/swagger.json `
   --api-package Apis.All --model-package Models.All -o ./csharp `
   --additional-properties packageName=EdFi.OdsApi.Sdk,targetFramework=net8.0,netCoreProjectFile=true `
   --global-property modelTests=false --global-property apiTests=false --skip-validate-spec
@@ -82,7 +82,7 @@ java -jar openApi-codegen-cli.jar generate -g csharp `
 
 ```powershell
 java -jar openApi-codegen-cli.jar generate -g csharp `
-  -i https://api.ed-fi.org/v7.2/api/metadata/data/v3/ed-fi/swagger.json `
+  -i https://api.ed-fi.org/v7.3/api/metadata/data/v3/ed-fi/swagger.json `
   --api-package Apis.All --model-package Models.All -o ./csharp `
   --additional-properties packageName=EdFi.OdsApi.Sdk,targetFramework=net8.0,netCoreProjectFile=true `
   --global-property modelTests=false --global-property apiTests=false --skip-validate-spec
@@ -93,25 +93,25 @@ descriptors, enrollment composites, and Identity API endpoints as follows:
 
 ```powershell
 java -jar openApi-codegen-cli.jar generate -g csharp `
-  -i https://api.ed-fi.org/v7.2/api/metadata/data/v3/resources/swagger.json `
+  -i https://api.ed-fi.org/v7.3/api/metadata/data/v3/resources/swagger.json `
   --api-package Api.Resources --model-package Models.Resources  -o ./csharp `
   --additional-properties packageName=EdFi.OdsApi.Sdk,targetFramework=net8.0,netCoreProjectFile=true `
   --global-property modelTests=false --global-property apiTests=false --skip-validate-spec
 
 java -jar openApi-codegen-cli.jar generate -g csharp `
-  -i https://api.ed-fi.org/v7.2/api/metadata/composites/v1/ed-fi/enrollment/swagger.json `
+  -i https://api.ed-fi.org/v7.3/api/metadata/composites/v1/ed-fi/enrollment/swagger.json `
   --api-package Api.EnrollmentComposites --model-package Models.EnrollmentComposites -o ./csharp `
   --additional-properties packageName=EdFi.OdsApi.Sdk,targetFramework=net8.0,netCoreProjectFile=true `
   --global-property modelTests=false --global-property apiTests=false --skip-validate-spec
 
 java -jar openApi-codegen-cli.jar generate -g csharp
-  -i https://api.ed-fi.org/v7.2/api/metadata/identity/v2/swagger.json `
+  -i https://api.ed-fi.org/v7.3/api/metadata/identity/v2/swagger.json `
   --api-package Api.Identities --model-package Models.Identities -o ./csharp `
   --additional-properties packageName=EdFi.OdsApi.Sdk,targetFramework=net8.0,netCoreProjectFile=true `
   --global-property modelTests=false --global-property apiTests=false --skip-validate-spec
 
 java -jar openApi-codegen-cli.jar generate -g csharp `
--i https://api.ed-fi.org/v7.2/api/metadata/data/v3/descriptors/swagger.json `
+-i https://api.ed-fi.org/v7.3/api/metadata/data/v3/descriptors/swagger.json `
 --api-package Api.Descriptors --model-package Models.Descriptors -o ./csharp `
 --additional-properties packageName=EdFi.OdsApi.Sdk,targetFramework=net8.0,netCoreProjectFile=true `
 --global-property modelTests=false --global-property apiTests=false --skip-validate-spec
@@ -180,9 +180,9 @@ components in the generated code.
 :::note
 
 [Sample Console Application
-project](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/tree/v7.2/Examples/Using%20the%20ODS%20API%20SDK).
+project](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/tree/v7.3/Examples/Using%20the%20ODS%20API%20SDK).
 **Sandbox environment** API base
-URL: [https://api.ed-fi.org/v7.2/api/](https://api.ed-fi.org/v7.2/api/) \
+URL: [https://api.ed-fi.org/v7.3/api/](https://api.ed-fi.org/v7.3/api/) \
 Client key: RvcohKz9zHI4 \
 Client secret: E1iEFusaNf81xzCxwHfbolkC
 

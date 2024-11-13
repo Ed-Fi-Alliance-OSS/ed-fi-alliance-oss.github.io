@@ -1,11 +1,11 @@
 ---
-description: Release notes for ODS/API v7.2
+description: Release notes for ODS/API v7.3
 ---
 
 # Release Notes
 
 This section provides a comprehensive list of the improvements, updates, fixes,
-and changes in the Ed-Fi ODS / API for Suite 3 v7.2 release.
+and changes in the Ed-Fi ODS / API for Suite 3 v7.3 release.
 
 :::tip
 
@@ -15,7 +15,7 @@ the Git commit history to find the changes for that specific update.
 
 :::
 
-## Ed-Fi ODS / API v7.2 - Release Notes
+## Ed-Fi ODS / API v7.3 - Release Notes
 
 ### Important Epics
 
