@@ -31,7 +31,7 @@ feature.
 The _Ed-Fi ODS/API Platform_ is the group of tools that work together to support
 a production deployment of the Ed-Fi Resources API. The Platform includes:
 
-* [Ed-Fi ODS/API](./ods-api), the official Ed-Fi implementation of a REST API
+* [Ed-Fi ODS/API](./ods-api-platform), the official Ed-Fi implementation of a REST API
   defined by the Ed-Fi Data Standard.
   * Also includes the _Ed-Fi ODS Sandbox Admin_ and _Ed-Fi Swagger UI_ web
     applications.
