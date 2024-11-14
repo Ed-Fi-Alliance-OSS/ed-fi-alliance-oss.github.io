@@ -125,6 +125,6 @@ of a composite URL.
 
 The following GitHub link contains source files for the Composite described in
 this article: [ODS/API
-7.2](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v7.2/Samples/Composites)
+7.3](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v7.3/Samples/Composites)
 
 :::
