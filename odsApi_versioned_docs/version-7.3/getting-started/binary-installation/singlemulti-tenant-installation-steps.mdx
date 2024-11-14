@@ -342,19 +342,19 @@ server.](https://learn.microsoft.com/en-us/sql/database-engine/configure-windows
 
 :::info
 
-To create a database server login for the application, first, ensure that the login does not already exist. 
-Logins created by the installer will have database system administrator rights by default. 
-If more restrictive permissions are required, the SQL login used by the WebAPI should be created manually. 
-If the database connection information includes login credentials, the new login will use these. 
-However, if no credentials are provided, integrated security must be selected, 
-and a new SQL login matching the application pool identity used by WebAPI will be created. 
+To create a database server login for the application, first, ensure that the login does not already exist.
+Logins created by the installer will have database system administrator rights by default.
+If more restrictive permissions are required, the SQL login used by the WebAPI should be created manually.
+If the database connection information includes login credentials, the new login will use these.
+However, if no credentials are provided, integrated security must be selected,
+and a new SQL login matching the application pool identity used by WebAPI will be created.
 
-For a custom SQL Server login, if integrated security is not enabled, a username and password must be specified in the database connection parameters. 
-If integrated security is enabled, the username must be a valid Windows user, 
-and the application pool identity for the WebAPI must be updated to match this Windows username. 
+For a custom SQL Server login, if integrated security is not enabled, a username and password must be specified in the database connection parameters.
+If integrated security is enabled, the username must be a valid Windows user,
+and the application pool identity for the WebAPI must be updated to match this Windows username.
 
-For creating a custom login for Postgres, if integrated security is not enabled, 
-a username and password should be provided in the database connection parameters. 
+For creating a custom login for Postgres, if integrated security is not enabled,
+a username and password should be provided in the database connection parameters.
 If integrated security is enabled, the `pg_ident.conf` map must be updated to include the username used for the connection.
 
 :::
