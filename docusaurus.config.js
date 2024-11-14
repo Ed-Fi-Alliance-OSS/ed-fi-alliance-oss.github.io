@@ -104,7 +104,10 @@ const config = {
         routeBasePath: 'reference/ods-api',
         sidebarPath: './sidebars.js',
         includeCurrentVersion: false,
+        lastVersion: "7.2",
         versions: {
+          5.4: { banner: 'unmaintained', badge: true, path: '5.4' },
+          6.2: { banner: 'unmaintained', badge: true, path: '6.2' },
           7.2: { banner: 'none', badge: true, path: '7.2' },
           7.3: { banner: 'unreleased', badge: true, path: '7.3' }
         }

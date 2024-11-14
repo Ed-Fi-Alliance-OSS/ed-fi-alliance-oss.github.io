@@ -7,36 +7,32 @@ import { useLocation } from '@docusaurus/router';
 
 const odsApi = [
   {
-    path: '/docs/ods-api',
+    path: '/reference/ods-api/7.3',
     number: '7.3',
   },
   {
-    path: '/docs/ods-api',
+    path: '/reference/ods-api/7.2',
     number: '7.2',
   },
-  // {
-  //   path: '/docs/ods-api/6.2',
-  //   number: '6.2',
-  // },
-  // {
-  //   path: '/docs/ods-api/5.4',
-  //   number: '5.4',
-  // },
+  {
+    path: '/reference/ods-api/6.2',
+    number: '6.2',
+  },
+  {
+    path: '/reference/ods-api/5.4',
+    number: '5.4',
+  },
 ];
 
 export default function VersionDropDown() {
   const { pathname } = useLocation();
 
-  console.log(">>>>", pathname);
-
   let product = "";
   let versions = [];
-  let destination = "/";
 
   if (pathname.includes('/ods-api')) {
     product = 'ODS/API';
     versions = odsApi;
-    destination = '/reference/ods-api/'
   }
   else {
     return '';
@@ -50,7 +46,7 @@ export default function VersionDropDown() {
       <ul className="dropdown__menu">
         {versions.map((version, index) => (
           <li key={index}>
-            <a className="dropdown__link" href={destination + version.number}>
+            <a className="dropdown__link" href={version.path}>
               v{version.number}
             </a>
           </li>
