@@ -41,7 +41,7 @@ to open the file and jump directly to the problematic line.
 
 Resources to review when diagnosing an issue:
 
-* [Cookbook](../cookbook/readme.md)
+* [Cookbook](../cookbook/readme.mdx)
 * [Language Specification](../language-specification/readme.md).
 * [Ed-Fi Extension
     Framework](https://edfi.atlassian.net/wiki/spaces/EFDS4X/pages/24412627/Ed-Fi+Extension+Framework)

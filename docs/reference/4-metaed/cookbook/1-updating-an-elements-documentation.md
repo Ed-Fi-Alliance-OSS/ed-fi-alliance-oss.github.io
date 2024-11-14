@@ -50,5 +50,5 @@ text, any double quote characters in the text itself are denoted by a
 consecutive pairing of double quotes. There is no maximum length for
 documentation text. Alternatively, properties that refer to other entities may
 use the **`inherited`** keyword to use the documentation of that entity. See the
-[MetaEd Language Specification](../language-specification/readme.mdx) for more
+[MetaEd Language Specification](../language-specification/readme.md) for more
 detail.

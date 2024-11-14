@@ -18,7 +18,7 @@ Detail on each step follows.
 If you run into errors running MetaEd, then please check to ensure that Visual
 Studio Code is running the latest version and that the MetaEd extension is on
 the latest version. Visit the [MetaEd IDE - Common Problems and
-Troubleshooting](../metaed-ide-user-guide/metaed-ide-common-problems-and-troubleshooting.md)
+Troubleshooting](./common-problems-and-troubleshooting.md)
 if errors continue to occur.
 
 :::
@@ -187,7 +187,7 @@ files. Copy that location and paste it in when adding a folder to the workspace.
       :::
 
 3. Now open your new file and begin adding detail to it, using the MetaEd
-    [Language Specification](../../metaed-home/language-specification.md).
+    [Language Specification](../language-specification/readme.md).
 
     ![Language Specification usage](../img/image2023-2-10_12-6-21.png)
 
@@ -202,7 +202,7 @@ will see a notification "Building MetaEd..." in the bottom right corner.
 :::info
 
 Please see [MetaEd IDE - Common Problems and
-Troubleshooting](../metaed-ide-user-guide/metaed-ide-common-problems-and-troubleshooting.md)
+Troubleshooting](./common-problems-and-troubleshooting.md)
 if you run into an error and are unsure of how to correct it.
 
 :::

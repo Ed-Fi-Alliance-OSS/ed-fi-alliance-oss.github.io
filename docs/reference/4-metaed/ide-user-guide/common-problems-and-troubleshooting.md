@@ -112,7 +112,7 @@ warn: MetaEdId '3116' on Shared Decimal Property EarnedCredits already exists on
 ```
 
 The
-[MetaEdId](../language-specification/supporting-components.md) is
+[MetaEdIde](../language-specification/supporting-components.md) is
 an optional feature, primarily used only by the Alliance. This warning indicates
 that a value was accidentally re-used in model 3.3b. This will not have any
 detrimental impact on an extension build and **should be ignored**.
@@ -146,8 +146,7 @@ of entity with different roles. MetaEd can handle these complex modeling
 scenarios by using the `merge...with` directive.
 
 See the MetaEd Cookbook entry [Using Merge
-Directives](../cookbook/using-merge-directives.md) for
-details.
+Directives](../cookbook/14-using-merge-directives.md) for details.
 
 ## Build and Deploy Issues
 

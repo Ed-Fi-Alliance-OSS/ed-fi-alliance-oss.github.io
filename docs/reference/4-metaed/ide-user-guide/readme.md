@@ -23,15 +23,3 @@ familiar with the following knowledge areas:
     Framework](https://edfi.atlassian.net/wiki/spaces/EFDS31/pages/23855253/Ed-Fi+Extension+Framework),
     which provides guidance on the extension of the Ed-Fi Data Standard
     and [https://edfi.atlassian.net/wiki/spaces/ODSAPI32/pages/27099730](https://edfi.atlassian.net/wiki/spaces/ODSAPI32/pages/27099730).
-
-## IDE User Guide Contents
-
-Read more about how to use the MetaEd IDE:
-
-[//]: # (TODO: Add links to the following topics)
-<!-- MetaEd IDE - Core Concepts
-MetaEd IDE - Creating and Maintaining Your Extension
-MetaEd IDE - Correcting Language Warnings and Errors
-MetaEd IDE - Using the Generated Artifacts
-MetaEd IDE - Common Problems and Troubleshooting
-MetaEd IDE - Upgrading to MetaEd 4.x -->

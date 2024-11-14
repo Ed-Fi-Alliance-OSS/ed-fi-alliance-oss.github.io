@@ -50,7 +50,7 @@ Open the settings from the `File > Preferences > Settings`  menu.  [MetaEd IDE
 Creating and Maintaining Your Extension (X)](#) provides more detail on the
 settings, most of which depend on your project needs. Most importantly, please
 be sure to accept the [Ed-Fi License Agreement for Use of
-MetaEd](./getting-started-installation/ed-fi-license-agreement-for-use-of-metaed.md),
+MetaEd](./ed-fi-license-agreement-for-use-of-metaed.md),
 as shown in the screenshot below.
 
 ![MetaEd Settings](../../img/image2023-2-16_13-42-46.png)

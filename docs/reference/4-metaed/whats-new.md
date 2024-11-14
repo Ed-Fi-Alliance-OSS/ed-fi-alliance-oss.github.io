@@ -5,7 +5,7 @@
 If you already have the Visual Studio Code based editor, then it will
 automatically update the MetaEd extension for you. If you are still using the
 deprecated Atom based editor, then please see [MetaEd IDE - Upgrading to MetaEd
-4.x](../metaed-home/metaed-ide-user-guide/metaed-ide-upgrading-to-metaed-4x.md).
+4.x](./ide-user-guide/upgrading-to-metaed-4x.md).
 
 :::
 
@@ -132,8 +132,6 @@ to Visual Studio Code ("VS Code").
 ### Installation
 
 * [Upgrading to MetaEd 4.x](./ide-user-guide/upgrading-to-metaed-4x.md)
-* [Getting Started - Download and
-  Installation](./ide-atom-user-guide/getting-started.md)
 
 ### Changes
 
@@ -319,7 +317,7 @@ The major improvements in 2.5.1 include:
   * Similarly, the use of attributes on Descriptors is deprecated and will
     generate an error with Data Standard 3.3.0-a and higher.
   * The new "[potentially
-    logical](../metaed-home/language-specification/supporting-components.md)"
+    logical](./language-specification/supporting-components.md)"
     keywords indicate that a reference may have a logical rather that literal
     interpretation in a target technology.
 * **Publishing Changes.**
@@ -611,7 +609,7 @@ The major improvements from v1.0 include:
 
 * **Added New Namespace Reference.** This new feature allows reuse of entity
   names across multiple extension projects. See the [Namespace
-  Reference](../metaed-home/language-specification/namespace-references.md)
+  Reference](./language-specification/namespace-references.md)
   documentation for more details.
 * **Requires Node 12.5.0 or higher.** Node 6.x was end-of-lifed in April 2019.
   Node 12.5.0 is the most current version, with long term support until April
@@ -619,12 +617,11 @@ The major improvements from v1.0 include:
 * **Removed Implicit Merges.** This improvement removes automatic key
   unification when column names match, which provides greater transparency to
   data modelers. See the MetaEd Cookbook entry [Using Merge
-  Directives](../metaed-home/cookbook/14-using-merge-directives.md) for more
+  Directives](./cookbook/14-using-merge-directives.md) for more
   information about key unification in MetaEd v2.0.
 * **Added Standardized Plugin Configuration.** This new feature for the IDE
   framework automatically loads configuration files, organizes the data, and
-  notifies plugins. See the [Plugin Developer
-  Guide](../metaed-home/metaed-plugin-developer-guide.md) for complete details.
+  notifies plugins.
 * **Changed "With Context" to "Role Name".** This language improvement changed
   `With Context` to `Role Name` to better represent the purpose of the keywords.
   The
