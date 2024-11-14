@@ -11,23 +11,20 @@ v7.x suite of releases and provides links to additional documentation.
 
 Detail about each change follows.
 
-## Improvements & Enhancements - Version v7.3
+## Improvements & Enhancements - Version v7.2
 
-This section briefly describes the new features and enhancements built into the
-Ed-Fi ODS / API Platform v7.3 and provides links to additional documentation.
+### Data Model Changes in v7.2
 
-### Data Model Changes in v7.3
-
-Ed-Fi ODS / API v7.3 adds support for Ed-Fi Data Standard
+Ed-Fi ODS / API v7.2 adds support for Ed-Fi Data Standard
 v5.1 implementation, with no breaking changes from the previous Data Standard
-v5.0. Additionally, Ed-Fi ODS/API v7.3 continues to support Data Standard v4.0
+v5.0. Additionally, Ed-Fi ODS/API v7.2 continues to support Data Standard v4.0
 implementation.
 
 ### Enhanced API Error Handling
 
 The Ed-Fi ODS/API adheres to REST principles when responding to HTTP requests,
 including the use of standard status codes in HTTP responses. Starting from
-version 7.3, the ODS/API implements the [Problem Details RFC
+version 7.2, the ODS/API implements the [Problem Details RFC
 9457](https://www.rfc-editor.org/rfc/rfc9457.html). This improvement ensures
 that error messages are both machine-readable and user-friendly, providing clear
 and actionable information to developers and users. Key benefits include:
