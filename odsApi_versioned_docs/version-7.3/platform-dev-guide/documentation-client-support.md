@@ -21,7 +21,7 @@ your platform's client-facing documentation.
 
 To get a sense for the appearance and content of the documentation, you can view
 the docs for an as-shipped version of the ODS / API hosted
-at [https://api.ed-fi.org/v7.2/docs/](https://api.ed-fi.org/v7.2/docs/). Also,
+at [https://api.ed-fi.org/v7.3/docs/](https://api.ed-fi.org/v7.3/docs/). Also,
 the [Using the Online
 Documentation](../client-developers-guide/using-the-online-documentation.md)
 section of the API Client Developers' Guide provides an overview of the

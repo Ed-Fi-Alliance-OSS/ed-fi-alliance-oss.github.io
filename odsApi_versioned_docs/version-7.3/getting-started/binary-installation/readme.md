@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Getting Started - Binary Installation
 
-This section describes how to set up the Ed-Fi ODS / API v7.2 using the release
+This section describes how to set up the Ed-Fi ODS / API v7.3 using the release
 binaries listed in [Binary
 Releases](./readme.md). This is a
 recommend approach for implementations that have no requirement to extend or

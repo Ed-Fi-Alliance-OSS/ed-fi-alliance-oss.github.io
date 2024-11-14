@@ -80,7 +80,7 @@ PS D:\ed-fi\Ed-Fi-ODS-Implementation> Install-CodeGenUtility
     Install-CodeGenUtility
 ------------------------------
 
-EdFi.Suite3.Ods.CodeGen version 7.2.1119 is already installed at D:\ed-fi\Ed-Fi-ODS-Implementation\tools
+EdFi.Suite3.Ods.CodeGen version 7.3.1119 is already installed at D:\ed-fi\Ed-Fi-ODS-Implementation\tools
 Install-CodeGenUtility done in 1s.
 
 Duration Task
@@ -101,7 +101,7 @@ PS D:\ed-fi\Ed-Fi-ODS-Implementation> Run-CodeGen -StandardVersion 4.0.0 -Extens
     Install-CodeGenUtility
 ------------------------------
 
-EdFi.Suite3.Ods.CodeGen version 7.2.1119 is already installed at D:\ed-fi\Ed-Fi-ODS-Implementation\tools
+EdFi.Suite3.Ods.CodeGen version 7.3.1119 is already installed at D:\ed-fi\Ed-Fi-ODS-Implementation\tools
 Install-CodeGenUtility done in 1s.
 
 

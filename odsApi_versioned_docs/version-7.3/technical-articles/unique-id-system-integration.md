@@ -501,6 +501,6 @@ namespace EdFi.Ods.Features.Container.Modules
 
 The following link contains the documentation for the `identities`
 endpoints: [Identities
-API](https://api.ed-fi.org/v7.2/docs/swagger/index.html?urls.primaryName=Other:%20Identity)
+API](https://api.ed-fi.org/v7.3/docs/swagger/index.html?urls.primaryName=Other:%20Identity)
 
 :::

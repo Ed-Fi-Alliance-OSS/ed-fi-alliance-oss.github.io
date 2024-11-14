@@ -94,7 +94,7 @@ Handbook](https://edfi.atlassian.net/wiki/display/EFDS5/Unifying+Data+Model+-+v5
 * Name shortening is not applied to known identifiers like 'USI', 'Id', and
   'TypeId'.
 * Name shortening is not applied to the properties that are resource
-  references.  
+  references.
 * Name shortening is not applied to scalar properties.
 * Name shortening is not applied when applying this naming convention to a
   child property's name will result in a collision with another property's
@@ -102,7 +102,7 @@ Handbook](https://edfi.atlassian.net/wiki/display/EFDS5/Unifying+Data+Model+-+v5
 
 The [Using the Online Documentation](./using-the-online-documentation.md)
 section provides a great overview of the API surface — and the
-[documentation](https://api.ed-fi.org/v7.2/docs) itself is a complete reference
+[documentation](https://api.ed-fi.org/v7.3/docs) itself is a complete reference
 for a core API implementation that defines the endpoints, JSON payloads, element
 definitions, parameter options, and other useful technical information.
 

@@ -172,6 +172,6 @@ more information on managing Redis.
 The following GitHub link contains docker setup file for testing with
 Redis and Redis-Commander.
 
-* [Redis Setup](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/blob/v7.2/RedisCacheTesting/docker-compose.yaml)
+* [Redis Setup](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/blob/v7.3/RedisCacheTesting/docker-compose.yaml)
 
 :::

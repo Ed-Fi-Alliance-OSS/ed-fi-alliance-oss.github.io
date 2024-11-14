@@ -129,7 +129,7 @@ refresher on how to acquire a token.
 The snippet below shows an example POST:
 
 ```powershell
-$response = Invoke-RestMethod -Method Post -Uri "https://api.ed-fi.org/v7.2/api/oauth/token_info" `
+$response = Invoke-RestMethod -Method Post -Uri "https://api.ed-fi.org/v7.3/api/oauth/token_info" `
   -Headers @{ "Authorization" = "Bearer 385432d854194fd5bb09fe08092353b5"}
   -Body @{ "token" = "385432d854194fd5bb09fe08092353b5"; }
 

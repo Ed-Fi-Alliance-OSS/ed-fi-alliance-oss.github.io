@@ -178,6 +178,6 @@ in most browsers).
 
 The Ed-Fi Alliance hosts a sandbox version of the documentation you
 can explore: [Ed-Fi ODS / API Sandbox
-Documentation](https://api.ed-fi.org/v7.2/docs/)
+Documentation](https://api.ed-fi.org/v7.3/docs/)
 
 :::

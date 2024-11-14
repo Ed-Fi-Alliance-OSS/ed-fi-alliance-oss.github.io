@@ -15,9 +15,9 @@ repository.
 
 ## Source & Code Downloads
 
-* [Ed-Fi-ODS/v7.2](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v7.2)
+* [Ed-Fi-ODS/v7.3](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v7.3)
     source code (GitHub)
-* [Ed-Fi-ODS-Implementation/v7.2](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/tree/v7.2) source
+* [Ed-Fi-ODS-Implementation/v7.3](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/tree/v7.3) source
     code (GitHub)
 * [API Project Templates
     Installer](./getting-started/source-code-installation/project-templates-installation.md) (VSIX)

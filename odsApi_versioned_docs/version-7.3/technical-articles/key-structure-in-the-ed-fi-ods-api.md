@@ -63,7 +63,7 @@ provided via a HTTP Header. It will look something like:
  content-length: 0
  date: Mon,28 Oct 2024 20:38:26 GMT
  etag: "5250293317838108944"
- location: https://api.ed-fi.org:443/v7.2/api/data/v3/ed-fi/courseOfferings/de5a5c02513a433d80099b63dde98441
+ location: https://api.ed-fi.org:443/v7.3/api/data/v3/ed-fi/courseOfferings/de5a5c02513a433d80099b63dde98441
  strict-transport-security: max-age=31536000
 ```
 

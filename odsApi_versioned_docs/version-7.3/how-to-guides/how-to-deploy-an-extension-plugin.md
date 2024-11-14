@@ -52,13 +52,13 @@ extension plugin and deploy the plugin artifacts to local database.
 ```
 
 ```powershell title="Deployment output"
-packages:TPDMCorePopulatedTemplate:PackageVersion                 7.2.202
+packages:TPDMCorePopulatedTemplate:PackageVersion                 7.3.202
 packages:TPDMCorePostgreSqlMinimalTemplate:PackageName            EdFi.Suite3.Ods.Minimal.Template.TPDM.Core.{ExtensionVersion}.PostgreSQL.Standard.{StandardVersion}
 packages:TPDMCorePostgreSqlMinimalTemplate:PackageSource          https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json
-packages:TPDMCorePostgreSqlMinimalTemplate:PackageVersion         7.2.189
+packages:TPDMCorePostgreSqlMinimalTemplate:PackageVersion         7.3.189
 packages:TPDMCorePostgreSqlPopulatedTemplate:PackageName          EdFi.Suite3.Ods.Populated.Template.TPDM.Core.{ExtensionVersion}.PostgreSQL.Standard.{StandardVersion}
 packages:TPDMCorePostgreSqlPopulatedTemplate:PackageSource        https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json
-packages:TPDMCorePostgreSqlPopulatedTemplate:PackageVersion       7.2.194
+packages:TPDMCorePostgreSqlPopulatedTemplate:PackageVersion       7.3.194
 Plugin:Folder                                                     ../../Plugin
 Plugin:Scripts:0                                                  tpdm
 Plugin:Scripts:1                                                  sample
@@ -78,11 +78,11 @@ Invoke-NewDevelopmentAppSettings done in 2s.
 -----------------------
 
 & D:\Ed-Fi-ODS-Implementation\Plugin\tpdm.ps1
-D:\Ed-Fi-ODS-Implementation\tools/nuget install EdFi.Suite3.Ods.Extensions.TPDM.Core.1.1.0.Standard -source https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json -outputDirectory D:\ed-fi\Ed-Fi-ODS-Implementation\Plugin -ExcludeVersion -version 7.2.159
-D:\Ed-Fi-ODS-Implementation\Plugin\EdFi.Suite3.Ods.Extensions.TPDM.Core.1.1.0.7.2.159
+D:\Ed-Fi-ODS-Implementation\tools/nuget install EdFi.Suite3.Ods.Extensions.TPDM.Core.1.1.0.Standard -source https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json -outputDirectory D:\ed-fi\Ed-Fi-ODS-Implementation\Plugin -ExcludeVersion -version 7.3.159
+D:\Ed-Fi-ODS-Implementation\Plugin\EdFi.Suite3.Ods.Extensions.TPDM.Core.1.1.0.7.3.159
 & D:\Ed-Fi-ODS-Implementation\Plugin\sample.ps1
-D:\Ed-Fi-ODS-Implementation\tools/nuget install EdFi.Suite3.Ods.Extensions.Sample -source https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json -outputDirectory D:\ed-fi\Ed-Fi-ODS-Implementation\Plugin -ExcludeVersion -version 7.2.24
-D:\Ed-Fi-ODS-Implementation\Plugin\EdFi.Suite3.Ods.Extensions.Sample.7.2.24
+D:\Ed-Fi-ODS-Implementation\tools/nuget install EdFi.Suite3.Ods.Extensions.Sample -source https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json -outputDirectory D:\ed-fi\Ed-Fi-ODS-Implementation\Plugin -ExcludeVersion -version 7.3.24
+D:\Ed-Fi-ODS-Implementation\Plugin\EdFi.Suite3.Ods.Extensions.Sample.7.3.24
 Install-Plugins done in 10s.
 ```
 
@@ -92,8 +92,8 @@ After the successful execution of initdev, you will find the sample extension in
 ```none title="Directory Listing"
 Ed-Fi-ODS-Implementation/
 ├─ Plugin/
-| ├─ EdFi.Suite3.Ods.Extensions.Sample.7.2.24/
-| ├─ EdFi.Suite3.Ods.Extensions.TPDM.Core.1.1.0.7.2.159/
+| ├─ EdFi.Suite3.Ods.Extensions.Sample.7.3.24/
+| ├─ EdFi.Suite3.Ods.Extensions.TPDM.Core.1.1.0.7.3.159/
 | ├─ homograph.ps1
 | ├─ profiles.sample.ps1
 | ├─ sample.ps1
@@ -105,10 +105,10 @@ data models are listed in your API landing page ("Discovery API" endpoint).
 
 ```json
 {
-    "version": "7.2",
-    "informationalVersion": "7.2",
+    "version": "7.3",
+    "informationalVersion": "7.3",
     "suite": "3",
-    "build": "7.2.1201.0",
+    "build": "7.3.1201.0",
     "dataModels": [
         {
             "name": "Ed-Fi",
@@ -128,14 +128,14 @@ data models are listed in your API landing page ("Discovery API" endpoint).
         }
     ],
     "urls": {
-        "dependencies": "https://api.ed-fi.org/v7.2/api/metadata/data/v3/dependencies",
-        "openApiMetadata": "https://api.ed-fi.org/v7.2/api/metadata/",
-        "oauth": "https://api.ed-fi.org/v7.2/api/oauth/token",
-        "dataManagementApi": "https://api.ed-fi.org/v7.2/api/data/v3/",
-        "xsdMetadata": "https://api.ed-fi.org/v7.2/api/metadata/xsd",
-        "changeQueries": "https://api.ed-fi.org/v7.2/api/changeQueries/v1/",
-        "composites": "https://api.ed-fi.org/v7.2/api/composites/v1/",
-        "identity": "https://api.ed-fi.org/v7.2/api/identity/v2/"
+        "dependencies": "https://api.ed-fi.org/v7.3/api/metadata/data/v3/dependencies",
+        "openApiMetadata": "https://api.ed-fi.org/v7.3/api/metadata/",
+        "oauth": "https://api.ed-fi.org/v7.3/api/oauth/token",
+        "dataManagementApi": "https://api.ed-fi.org/v7.3/api/data/v3/",
+        "xsdMetadata": "https://api.ed-fi.org/v7.3/api/metadata/xsd",
+        "changeQueries": "https://api.ed-fi.org/v7.3/api/changeQueries/v1/",
+        "composites": "https://api.ed-fi.org/v7.3/api/composites/v1/",
+        "identity": "https://api.ed-fi.org/v7.3/api/identity/v2/"
     }
 }
 ```
@@ -207,8 +207,8 @@ You can also verify the Sample API endpoints in the Swagger UI documentation:
   | ├─ Ed-Fi/
   |   ├─ WebApi/
   |     ├─ Plugin
-  |       ├─ EdFi.Suite3.Ods.Extensions.Sample.7.2.24/
-  |       ├─ EdFi.Suite3.Ods.Extensions.TPDM.Core.1.1.0.7.2.159/
+  |       ├─ EdFi.Suite3.Ods.Extensions.Sample.7.3.24/
+  |       ├─ EdFi.Suite3.Ods.Extensions.TPDM.Core.1.1.0.7.3.159/
   ```
 
 * Update appsettings.json, for plugin settings as shown below:
