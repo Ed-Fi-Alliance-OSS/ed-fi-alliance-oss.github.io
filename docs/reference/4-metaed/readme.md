@@ -2,8 +2,6 @@
 
 ## Documentation & Download Home
 
-* * *
-
 :::tip
 
 Starting with [MetaEd v4.0](./metaed-home/whats-new.md), MetaEd runs on Visual
@@ -28,8 +26,6 @@ Ed-Fi community members.
 
 ## Documentation
 
-* * *
-
 Documentation for MetaEd is viewable online:
 
 * [What's New](./metaed-home/whats-new.md)
@@ -41,4 +37,4 @@ Documentation for MetaEd is viewable online:
 * [MetaEd Plugin Developer
   Guide](./metaed-home/metaed-plugin-developer-guide.md)
 
-![](../../static/img/MetaEd-Temp-Icon.png)
+![MetaEd Icon](./img/MetaEd-Temp-Icon.png)

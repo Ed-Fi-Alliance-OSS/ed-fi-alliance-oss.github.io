@@ -13,7 +13,7 @@ engineering tasks, and can be ignored when strictly using MetaEd from the IDE.
 Initialize a new Node project and install dependency `metaed-console`  from the
 Ed-Fi registry,
 
-```
+```none
 https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/npm/registry/
 ```
 
@@ -87,7 +87,7 @@ The build process creates the following outputs:
 
 ### Output Directory structure
 
-```
+```none
 <artifactDirectory>
    └─ Documentation
       └─ DataDictionary
@@ -175,7 +175,7 @@ node .\node_modules\@edfi\metaed-odsapi-deploy\dist\index.js `
 
 ### Deploy Output
 
-```shell
+```none
 <deployDirectory>
    └─ Ed-Fi-ODS
       └─ Standard

@@ -9,18 +9,18 @@ deprecated Atom based editor, then please see [MetaEd IDE - Upgrading to MetaEd
 
 :::
 
-# Updates and Improvements in version 4.4.0
+## Updates and Improvements in version 4.4.0
 
 Release date: 20 May 2024
 
-## Overview
+### Overview
 
 Version 4.4 supports the upcoming ODS/API 7.2 and Data Standard 5.1 releases and
 supports ODS/API 6.2 and 5.4 releases explicitly (formerly only supported
 implicitly, by selecting the prior minor release 6.1 or 5.3). Includes improved
 user error reporting for swifter diagnosis.
 
-## Changes
+### Changes
 
 * \[METAED-1514\] typos in metaed settings "API source directory" should be
   causing deploy to fail but are not
@@ -35,17 +35,17 @@ Tracker](https://tracker.ed-fi.org/projects/METAED/versions/15627). Note that
 there are many more changes that are not user facing, primarily in support of
 [Project Tanager](https://github.com/Ed-Fi-Alliance-OSS/Project-Tanager/).
 
-# Updates and Improvements in version 4.3.0
+## Updates and Improvements in version 4.3.0
 
 Release date: 30 Nov 2023
 
-# Overview
+## Overview
 
 This release supports version 5.0 final of the Ed-Fi Data Standard, and Ed-Fi
 ODS/API version 7.1. It drops support for obsolete Ed-Fi Data Standard and Ed-Fi
 ODS/API versions in alignment with the Ed-Fi Technical Suite Version Matrix.
 
-## Changes
+### Changes
 
 * Support for ODS/API 7.1 and DS 5.0 final.
 * Dropped support for all ODS/API and Data Standard versions no longer supported
@@ -57,15 +57,15 @@ ODS/API versions in alignment with the Ed-Fi Technical Suite Version Matrix.
 * Update to ODS/API index generation in support of performance improvements in
   ODS/API 7.1.
 
-# Updates and Improvements in version 4.2.1
+## Updates and Improvements in version 4.2.1
 
 Release date: 01 Aug 2023
 
-# Overview
+## Overview
 
 This release updates version 5.0-pre.2 of the Ed-Fi Data Standard.
 
-## Changes
+### Changes
 
 * Update packaged version of 5.0-pre.2 of the Ed-Fi Data Standard to the final
   version.
@@ -73,19 +73,19 @@ This release updates version 5.0-pre.2 of the Ed-Fi Data Standard.
 [Complete change log in
 Tracker](https://tracker.ed-fi.org/projects/METAED/versions/15614)
 
-# Updates and Improvements in version 4.2.0
+## Updates and Improvements in version 4.2.0
 
 Release date: 01 Aug 2023
 
 <details>
 <summary>Click here to expand...</summary>
 
-# Overview
+## Overview
 
 This release supports version 5.0-pre.2 of the Ed-Fi Data Standard, and Ed-Fi
 ODS/API version 7.0. It also adds support for new Meadowlark features.
 
-## Changes
+### Changes
 
 * Include Data Standard 5.0-pre.2
 * Support performance improvements to ODS/API 7.0
@@ -96,20 +96,19 @@ Tracker](https://tracker.ed-fi.org/projects/METAED/versions/15603)
 
 </details>
 
-# Updates and Improvements in version 4.1.1
+## Updates and Improvements in version 4.1.1
 
 Release date: 22 May 2023
 
 <details>
 <summary>Click here to expand...</summary>
 
-
-## Overview
+### Overview
 
 This release provides for internal changes to MetaEd, including a shift to
 hosting on Azure Artifacts and a change to the internal plugin architecture.
 
-## Changes
+### Changes
 
 * Moved from MyGet npm package hosting to Azure Artifacts
 * Changed internal plugin architecture to be compatible with modern JavaScript
@@ -117,27 +116,26 @@ hosting on Azure Artifacts and a change to the internal plugin architecture.
 
 </details>
 
-# Updates and Improvements in version 4.0
+## Updates and Improvements in version 4.0
 
 Release date: 25 Apr 2023
 
 <details>
 <summary>Click here to expand...</summary>
 
-## Overview
+### Overview
 
 With this release, the MetaEd IDE moves from the
 [now-retired](https://github.blog/2022-06-08-sunsetting-atom/) Atom text editor
 to Visual Studio Code ("VS Code").
 
-## Installation
+### Installation
 
-* [Upgrading to MetaEd
-  4.x](../metaed-home/metaed-ide-user-guide/metaed-ide-upgrading-to-metaed-4x.md)
+* [Upgrading to MetaEd 4.x](./ide-user-guide/upgrading-to-metaed-4x.md)
 * [Getting Started - Download and
-  Installation](../metaed-home/metaed-ide-atom-user-guide/getting-started-download-and-installation.md)
+  Installation](./ide-atom-user-guide/getting-started.md)
 
-## Changes
+### Changes
 
 In addition to all of the work that went into moving to VS Code:
 
@@ -153,7 +151,7 @@ In addition to all of the work that went into moving to VS Code:
   vulnerabilities. While those vulnerabilities do not appear to be a threat to
   MetaEd, we decided there was no value to keeping the code around.
 
-## Bug Fixes
+### Bug Fixes
 
 * \[[METAED-1350](https://tracker.ed-fi.org/browse/METAED-1350)\] - ApiModel
   DomainMetadata table comparison not using overlap-collapsed table name
@@ -172,15 +170,14 @@ In addition to all of the work that went into moving to VS Code:
 
 </details>
 
-# Updates & Improvements in 3.2.0
+## Updates & Improvements in 3.2.0
 
 Release date: 01 Dec 2022
 
 <details>
 <summary>Click here to expand...</summary>
 
-
-## Overview
+### Overview
 
 This release supports version 4.0 of the Ed-Fi Data Standard, and Ed-Fi ODS/API
 version 6.1. We also upgrade many of the underlying package dependencies in this
@@ -191,20 +188,20 @@ This version continues to run on Atom. The next planned release will be MetaEd
 
 </details>
 
-# Updates & Improvements in 3.1.0
+## Updates & Improvements in 3.1.0
 
 Release date: 30 Aug 2022
 
 <details>
 <summary>Click here to expand...</summary>
 
-## Overview
+### Overview
 
 This release corresponds with the release of the 4.0.0-a version of the Ed-Fi
 Data Standard and with Ed-Fi ODS/API 6.0, along with a few functional changes
 that impact any supported data standard.
 
-## Key Changes
+### Key Changes
 
 [Complete change log in
 Tracker](https://tracker.ed-fi.org/projects/METAED/versions/14620)
@@ -227,14 +224,14 @@ Tracker](https://tracker.ed-fi.org/projects/METAED/versions/14620)
 
 </details>
 
-# Updates & Improvements in 3.0.0
+## Updates & Improvements in 3.0.0
 
 Release date: 07 Mar 2022
 
 <details>
 <summary>Click here to expand...</summary>
 
-## Overview
+### Overview
 
 The primary purpose of this release is to upgrade MetaEd for use with NodeJs 16.
 Previously, MetaEd required NodeJs 12. As of 30 April, 2022, that version will
@@ -245,7 +242,7 @@ of NodeJs until the end of April, 2024.
 Along with this upgrade, many of the Node libraries / dependencies were brought
 up to date, thus eliminating a large source of tech debt and potential bugs.
 
-## Functional Changes
+### Functional Changes
 
 There are no functional changes to the MetaEd language, build and deploy
 process, extension authoring, etc. From a user perspective, the only change is
@@ -253,14 +250,14 @@ to the NodeJs framework.
 
 </details>
 
-# Updates & Improvements in 2.6.0
+## Updates & Improvements in 2.6.0
 
 Release date: 10 Nov 2021
 
 <details>
 <summary>Click here to expand...</summary>
 
-## Overview
+### Overview
 
 The major improvements in 2.5.1 include:
 
@@ -275,7 +272,7 @@ The major improvements in 2.5.1 include:
   limbo"; this release corrects that and offers full support for this modeling
   pattern.
 
-## Change Detail
+### Change Detail
 
 The following is a detailed list of changes in 2.6.0:
 
@@ -289,26 +286,26 @@ The following is a detailed list of changes in 2.6.0:
 | [METAED-1207](https://tracker.ed-fi.org/browse/METAED-1207) | Add support for "Used By" in Data Handbook for Extension elements |
 | [METAED-1231](https://tracker.ed-fi.org/browse/METAED-1231) | Allow common subclass to rely on parent identity |
 
-## Known Problem
+### Known Problem
 
 When targeting Data Standard 3.3b, the following warning will be displayed. This
 can be safely ignored.
 
-```
-warn: MetaEdId '3116' on Descriptor Property Term already exists on another entity. All MetaEdIds must be globally unique. C:\projects\metaed\node_modules\ed-fi-model-3.3b\Common\CohortYear.metaed (9:21)
-warn: MetaEdId '3116' on Shared Decimal Property EarnedCredits already exists on another entity. All MetaEdIds must be globally unique. C:\projects\metaed\node_modules\ed-fi-model-3.3b\Common\PartialCourseTranscriptAwards.metaed (6:53)
+```text
+  warn: MetaEdId '3116' on Descriptor Property Term already exists on another entity. All MetaEdIds must be globally unique. C:\projects\metaed\node_modules\ed-fi-model-3.3b\Common\CohortYear.metaed (9:21)
+  warn: MetaEdId '3116' on Shared Decimal Property EarnedCredits already exists on another entity. All MetaEdIds must be globally unique. C:\projects\metaed\node_modules\ed-fi-model-3.3b\Common\PartialCourseTranscriptAwards.metaed (6:53)
 ```
 
 </details>
 
-# Updates & Improvements in 2.5.1
+## Updates & Improvements in 2.5.1
 
 Release date: 26 Mar 2021
 
 <details>
 <summary>Click here to expand...</summary>
 
-## Overview
+### Overview
 
 The major improvements in 2.5.1 include:
 
@@ -331,7 +328,7 @@ The major improvements in 2.5.1 include:
     Bulk Client Loader no longer relies on it for running bulk uploads into the
     ODS / API.
 
-## Change Detail
+### Change Detail
 
 The following is a detailed list of changes in 2.5.1:
 
@@ -351,14 +348,14 @@ The following is a detailed list of changes in 2.5.1:
 
 </details>
 
-# Updates & Improvements in 2.4.0
+## Updates & Improvements in 2.4.0
 
 Release date: 28 Oct 2020
 
 <details>
 <summary>Click here to expand...</summary>
 
-## Overview
+### Overview
 
 The major improvements in 2.4.0 include:
 
@@ -367,7 +364,7 @@ The major improvements in 2.4.0 include:
 * **Fixes deploy issue.**  This version works around a bug in Atom 1.52.0 that
   prevented the MetaEd deploy feature from working.
 
-## Change Detail
+### Change Detail
 
 The following is a detailed list of changes in 2.4.0:
 
@@ -380,21 +377,21 @@ The following is a detailed list of changes in 2.4.0:
 
 </details>
 
-# Updates & Improvements in 2.3.0
+## Updates & Improvements in 2.3.0
 
 Release date: 29 Jul 2020
 
 <details>
 <summary>Click here to expand...</summary>
 
-## Overview
+### Overview
 
 The major improvements in 2.3.0 include:
 
 * **Supports ODS / API 5.0.x and Data Standard 3.2.0-c.** This version supports
   the latest Data Standard and ODS / API releases.
 
-## Change Detail
+### Change Detail
 
 The following is a detailed list of changes in 2.3.0:
 
@@ -423,21 +420,21 @@ The following is a detailed list of changes in 2.3.0:
 
 </details>
 
-# Updates & Improvements in v2.2
+## Updates & Improvements in v2.2
 
 Release date: 20 Apr 2020
 
 <details>
 <summary>Click here to expand...</summary>
 
-## Overview
+### Overview
 
 The major improvements in v2.2 include:
 
 * **Supports ODS / API v3.4 and Data Standard v3.2b.** This version supports the
   latest Data Standard and ODS / API releases.
 
-## Change Detail
+### Change Detail
 
 The following is a detailed list of changes in v2.2:
 
@@ -461,19 +458,19 @@ The following is a detailed list of changes in v2.2:
 
 </details>
 
-# Updates & Improvements in v2.1.2
+## Updates & Improvements in v2.1.2
 
 Release date: 21 Jan 2020
 
 <details>
 <summary>Click here to expand...</summary>
 
-## Overview
+### Overview
 
 MetaEd v2.1.2 is a bug fix release. It resolves an issue that prevented
 extension projects from deploying to ODS / API version 2.x.
 
-## Change Detail
+### Change Detail
 
 The following is a detailed list of changes in v2.1.2:
 
@@ -482,20 +479,20 @@ The following is a detailed list of changes in v2.1.2:
 
 </details>
 
-# Updates & Improvements in v2.1.1
+## Updates & Improvements in v2.1.1
 
 Release date: 03 Jan 2020
 
 <details>
 <summary>Click here to expand...</summary>
 
-## Overview
+### Overview
 
 MetaEd v2.1.1 is a bug fix release. It resolves an issue when targeting ODS /
 API v3.3 and Data Standard v3.2a that prevented extension projects from building
 in the ODS / API.
 
-## Change Detail
+### Change Detail
 
 The following is a detailed list of changes in v2.1.1:
 
@@ -504,14 +501,14 @@ The following is a detailed list of changes in v2.1.1:
 
 </details>
 
-# Updates & Improvements in v2.1.0
+## Updates & Improvements in v2.1.0
 
 Release date: 11 Dec 2019
 
 <details>
 <summary>Click here to expand...</summary>
 
-## Overview
+### Overview
 
 The major improvements in v2.1 include:
 
@@ -531,7 +528,7 @@ The major improvements in v2.1 include:
 * **Ready for Roadrunner.** This version generates all files necessary for
   Project Roadrunner's PostgreSQL implementation.
 
-## Change Detail
+### Change Detail
 
 The following is a detailed list of changes in v2.1:
 
@@ -595,20 +592,20 @@ The following is a detailed list of changes in v2.1:
 
 </details>
 
-# Updates & Improvements in v2.0
+## Updates & Improvements in v2.0
 
 Release date: 24 Jul 2019
 
 <details>
 <summary>Click here to expand...</summary>
 
-## Backward Compatibility with v1.x
+### Backward Compatibility with v1.x
 
 Existing MetaEd v1.x projects can be upgraded to v2.x. The steps to upgrade a
 project are outlined in
 [https://edfi.atlassian.net/wiki/spaces/METAED20/pages/23709882](https://edfi.atlassian.net/wiki/spaces/METAED20/pages/23709882).
 
-## Overview
+### Overview
 
 The major improvements from v1.0 include:
 
@@ -638,7 +635,7 @@ The major improvements from v1.0 include:
   new Open Existing Project menu option, which, not surprisingly, opens an
   existing project in MetaEd.
 
-## Change Detail
+### Change Detail
 
 The following is a detailed list of changes from v1.0:
 
@@ -675,64 +672,3 @@ The following is a detailed list of changes from v1.0:
   extension artifacts
 
 </details>
-
-<!-- **Table of Contents**
-
-- [What's New](#whats-new)
-- [Updates and Improvements in version 4.4.0](#updates-and-improvements-in-version-440)
-  - [Overview](#overview)
-  - [Changes](#changes)
-- [Updates and Improvements in version 4.3.0](#updates-and-improvements-in-version-430)
-- [Overview](#overview-1)
-  - [Changes](#changes-1)
-- [Updates and Improvements in version 4.2.1](#updates-and-improvements-in-version-421)
-- [Overview](#overview-2)
-  - [Changes](#changes-2)
-- [Updates and Improvements in version 4.2.0](#updates-and-improvements-in-version-420)
-- [Overview](#overview-3)
-  - [Changes](#changes-3)
-- [Updates and Improvements in version 4.1.1](#updates-and-improvements-in-version-411)
-  - [Overview](#overview-4)
-  - [Changes](#changes-4)
-- [Updates and Improvements in version 4.0](#updates-and-improvements-in-version-40)
-  - [Overview](#overview-5)
-  - [Installation](#installation)
-  - [Changes](#changes-5)
-  - [Bug Fixes](#bug-fixes)
-- [Updates \& Improvements in 3.2.0](#updates--improvements-in-320)
-  - [Overview](#overview-6)
-- [Updates \& Improvements in 3.1.0](#updates--improvements-in-310)
-  - [Overview](#overview-7)
-  - [Key Changes](#key-changes)
-- [Updates \& Improvements in 3.0.0](#updates--improvements-in-300)
-  - [Overview](#overview-8)
-  - [Functional Changes](#functional-changes)
-- [Updates \& Improvements in 2.6.0](#updates--improvements-in-260)
-  - [Overview](#overview-9)
-  - [Change Detail](#change-detail)
-  - [Known Problem](#known-problem)
-- [Updates \& Improvements in 2.5.1](#updates--improvements-in-251)
-  - [Overview](#overview-10)
-  - [Change Detail](#change-detail-1)
-- [Updates \& Improvements in 2.4.0](#updates--improvements-in-240)
-  - [Overview](#overview-11)
-  - [Change Detail](#change-detail-2)
-- [Updates \& Improvements in 2.3.0](#updates--improvements-in-230)
-  - [Overview](#overview-12)
-  - [Change Detail](#change-detail-3)
-- [Updates \& Improvements in v2.2](#updates--improvements-in-v22)
-  - [Overview](#overview-13)
-  - [Change Detail](#change-detail-4)
-- [Updates \& Improvements in v2.1.2](#updates--improvements-in-v212)
-  - [Overview](#overview-14)
-  - [Change Detail](#change-detail-5)
-- [Updates \& Improvements in v2.1.1](#updates--improvements-in-v211)
-  - [Overview](#overview-15)
-  - [Change Detail](#change-detail-6)
-- [Updates \& Improvements in v2.1.0](#updates--improvements-in-v210)
-  - [Overview](#overview-16)
-  - [Change Detail](#change-detail-7)
-- [Updates \& Improvements in v2.0](#updates--improvements-in-v20)
-  - [Backward Compatibility with v1.x](#backward-compatibility-with-v1x)
-  - [Overview](#overview-17)
-  - [Change Detail](#change-detail-8) -->

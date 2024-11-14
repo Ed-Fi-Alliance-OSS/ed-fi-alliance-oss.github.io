@@ -2,20 +2,7 @@
 
 The MetaEd IDE makes it easy for implementers to create their own Ed-Fi
 Extensions. The basic steps to do that are fairly simple, and so are a great
-place to get started with the IDE. The steps can be summarized as follows:
-
-- [MetaEd IDE - Creating and Maintaining Your Extension](#metaed-ide---creating-and-maintaining-your-extension)
-  - [Step 1. Install MetaEd](#step-1-install-metaed)
-  - [Step 2. Add an Extension Project](#step-2-add-an-extension-project)
-    - [Step 2a. Create a New Extension Project](#step-2a-create-a-new-extension-project)
-    - [Step 2b. Alternate: Modify One or More Existing Extensions](#step-2b-alternate-modify-one-or-more-existing-extensions)
-  - [Step 3. Configure MetaEd Preferences](#step-3-configure-metaed-preferences)
-  - [Step 4. Add the Correct Data Model Project](#step-4-add-the-correct-data-model-project)
-  - [Step 5. Add MetaEd Files to the Project Folder](#step-5-add-metaed-files-to-the-project-folder)
-  - [Step 6. Build the Project](#step-6-build-the-project)
-- [Step 7. View MetaEd Output](#step-7-view-metaed-output)
-- [Step 8. Save Workspace File (optional)](#step-8-save-workspace-file-optional)
-  - [IDE User Guide Contents](#ide-user-guide-contents)
+place to get started with the IDE.
 
 Detail on each step follows.
 
@@ -28,9 +15,9 @@ Detail on each step follows.
 
 :::tip
 
-If you run into errors running MetaEd, then please check to ensure that
-Visual Studio Code is running the latest version and that the MetaEd extension
-is on the latest version. Visit the [MetaEd IDE - Common Problems and
+If you run into errors running MetaEd, then please check to ensure that Visual
+Studio Code is running the latest version and that the MetaEd extension is on
+the latest version. Visit the [MetaEd IDE - Common Problems and
 Troubleshooting](../metaed-ide-user-guide/metaed-ide-common-problems-and-troubleshooting.md)
 if errors continue to occur.
 
@@ -47,15 +34,15 @@ if errors continue to occur.
     <details>
     <summary>Standard directories...</summary>
 
-    - Association
-    - Choice
-    - Common
-    - Descriptor
-    - Domain
-    - DomainEntity
-    - Enumeration
-    - Interchange
-    - Shared
+    * Association
+    * Choice
+    * Common
+    * Descriptor
+    * Domain
+    * DomainEntity
+    * Enumeration
+    * Interchange
+    * Shared
     </details>
 
     **Sample package.json**
@@ -72,15 +59,15 @@ if errors continue to occur.
     :::tip
 
     The projectName
-    - must start with an uppercase alphabetic character
-    - must have at least two alphabetic characters
-    - should avoid special characters, as they will likely be stripped out
-    for downstream artifacts For example, "Project-Two" will be transformed to
-    a "projecttwo" database schema by the SQL plugin. The projectVersion
-    should follow [SemVer 2.0.0](https://www.semver.org) principles. In short:
-    modify the first digit when you have a breaking change to your API model;
-    modify the second where there are backward-compatible enhancements; and
-    modify the third when there is a bug fix / patch.
+    * must start with an uppercase alphabetic character
+    * must have at least two alphabetic characters
+    * should avoid special characters, as they will likely be stripped out for
+    downstream artifacts For example, "Project-Two" will be transformed to a
+    "projecttwo" database schema by the SQL plugin. The projectVersion should
+    follow [SemVer 2.0.0](https://www.semver.org) principles. In short: modify
+    the first digit when you have a breaking change to your API model; modify
+    the second where there are backward-compatible enhancements; and modify the
+    third when there is a bug fix / patch.
 
     :::
 
@@ -124,13 +111,13 @@ Simply add one or more folders with the "Add Folder to Workspace..." command.
 
     :::warning
 
-    There are some MetaEd settings visible under the User tab.
-    Please ignore these and only use the Workspace tab.
+    There are some MetaEd settings visible under the User tab. Please ignore
+    these and only use the Workspace tab.
 
     :::
 
-3. Expand `Extensions > MetaEd`  or type "metaed" in the search bar to scroll
-    to the available settings.
+3. Expand `Extensions > MetaEd`  or type "metaed" in the search bar to scroll to
+    the available settings.
 4. Available settings:
     1. **Accepted License:** Usage of the MetaEd IDE requires acceptance of the
         [Ed-Fi License
@@ -140,8 +127,8 @@ Simply add one or more folders with the "Add Folder to Workspace..." command.
 
         :::tip
 
-        For ODS/API version 6.2, select "6.1.0" as the target version.
-        From MetaEd's perspective, there is no difference between the two.
+        For ODS/API version 6.2, select "6.1.0" as the target version. From
+        MetaEd's perspective, there is no difference between the two.
 
         :::
 
@@ -152,8 +139,7 @@ Simply add one or more folders with the "Add Folder to Workspace..." command.
         SupportingArtifacts API folder. For advanced users only.
     5. **Alliance Mode:** For Alliance users only, this makes core files
         editable. Non-Alliance users must leave this setting disabled to avoid
-        dangerous and costly mistakes.
-        :warning:
+        dangerous and costly mistakes. :warning:
 
          Alliance mode users: manually update the "Data Standard Project
          Directory" to the correct folder path to the active Ed-Fi-Model
@@ -177,32 +163,33 @@ click the Build button after you have opened your extension: this will present
 you with an error message that helpfully tells you where to find the data model
 files. Copy that location and paste it in when adding a folder to the workspace.
 
-![](../../../static/img/image2023-2-21_15-34-30.png)
+![Error message](../img/image2023-2-21_15-34-30.png)
 
 ## Step 5. Add MetaEd Files to the Project Folder
 
 1. Right-click on any of the folders to add a new file.
 
-    ![](../../../static/img/image2023-2-10_12-0-28.png)
+    ![Right-click to add a new file](../img/image2023-2-10_12-0-28.png)
 
-2. When you save the file, be sure to save with `metaed`  as the file
-    extension. For example, if you have a new Domainentity called
-    `ClassDiscussion` then you would create the file under the `DomainEntity`
-    folder and name it `ClassDiscussion.metaed`.
+2. When you save the file, be sure to save with `metaed`  as the file extension.
+    For example, if you have a new Domainentity called `ClassDiscussion` then
+    you would create the file under the `DomainEntity` folder and name it
+    `ClassDiscussion.metaed`.
 
-    ![](../../../static/img/image2023-2-10_12-5-21.png)
+    ![File extension](../img/image2023-2-10_12-5-21.png)
 
       :::tip
 
-      As a best practice, the name of the file should match the name of the resource
-      being created. MetaEd files should always be saved with a .metaed extension.
+      As a best practice, the name of the file should match the name of the
+      resource being created. MetaEd files should always be saved with a .metaed
+      extension.
 
       :::
 
 3. Now open your new file and begin adding detail to it, using the MetaEd
     [Language Specification](../../metaed-home/language-specification.md).
 
-    ![](../../../static/img/image2023-2-10_12-6-21.png)
+    ![Language Specification usage](../img/image2023-2-10_12-6-21.png)
 
 ## Step 6. Build the Project
 
@@ -210,7 +197,7 @@ When you are ready to test that your project will build properly, click the
 `Build` button in the upper right corner of the editor. After clicking this, you
 will see a notification "Building MetaEd..." in the bottom right corner.
 
-![](../../../static/img/image2023-2-10_12-10-38.png)
+![Build project](../img/image2023-2-10_12-10-38.png)
 
 :::info
 
@@ -222,23 +209,24 @@ if you run into an error and are unsure of how to correct it.
 
 Artifacts build successfully.
 
-![](../../../static/img/image2023-2-21_15-7-51.png)
+![Artifacts build successfully](../img/image2023-2-21_15-7-51.png)
 
-# Step 7. View MetaEd Output
+## Step 7. View MetaEd Output
 
 Expand the project in the tree view and click **MetaEdOutput** to explore
 generated artifacts. The **MetaEdOutput** folder is created in the last
 workspace folder at the time that the project was built. However, the folder
 will contain generated artifacts for all of the MetaEd projects in the
 workspace.
-![](../../../static/img/image2023-2-21_15-8-39.png)
 
-# Step 8. Save Workspace File (optional)
+![MetaEd Output](../img/image2023-2-21_15-8-39.png)
+
+## Step 8. Save Workspace File (optional)
 
 Click on `File > Save Workspace As`  to create a workspace file in your
 extension folder.
 
-![](../../../static/img/image2023-2-21_15-16-47.png)
+![Save Workspace As](../img/image2023-2-21_15-16-47.png)
 
 This creates a workspace file that contains any settings that you configured in
 Workspace Settings, like this:
@@ -266,20 +254,16 @@ The next time you open the extension folder, you will be prompted to also open
 the Ed-Fi model folder (which is required in order to run the Build and Deploy
 actions).
 
-![](../../../static/img/image2023-2-21_15-21-0.png)
+![Open Ed-Fi model folder](../img/image2023-2-21_15-21-0.png)
 
 :::warning
 
-Note that the workspace file has a path that includes the username.
-This path will not work on anyone else's computer. Therefore this file should
-*not* be kept in source control. If you are using git, then add
-`*.code-workspace`  to your `.gitignore`  file.
+Note that the workspace file has a path that includes the username. This path
+will not work on anyone else's computer. Therefore this file should _not_ be
+kept in source control. If you are using git, then add `*.code-workspace`  to
+your `.gitignore`  file.
 
 :::
 
 **→ Ready to build the ODS/API? Next up:** **[MetaEd IDE - Using the Generated
-Artifacts](../metaed-ide-user-guide/metaed-ide-using-the-generated-artifacts.md)**
-
-## IDE User Guide Contents
-
-Read more about how to use the MetaEd IDE:
+Artifacts](./using-the-generated-artifacts.md)**
