@@ -7,8 +7,6 @@ import Link from '@docusaurus/Link';
 export default function DocVersionBannerWrapper(props) {
   const versionMetadata = useDocsVersion();
 
-  console.log('>>>', versionMetadata);
-
   switch (versionMetadata.className) {
     case 'active':
       const getVersionMainDoc = (version) =>
