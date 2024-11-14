@@ -271,7 +271,7 @@ PGPASSFILE                     C:\PGDockerSetup\pgpass.conf
 
 </details>
 
-## Step 3. Download the Ed-Fi ODS / API v7.2 Code
+## Step 3. Download the Ed-Fi ODS / API v7.3 Code
 
 The Ed-Fi ODS / API source code is contained in two Ed-Fi repositories hosted
 by GitHub.
@@ -280,8 +280,8 @@ by GitHub.
 
 The Ed-Fi ODS / API can be found in the repository links below:
 
-* [Ed-Fi-ODS/v7.2](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v7.2)
-* [Ed-Fi-ODS-Implementation/v7.2](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/tree/v7.2)
+* [Ed-Fi-ODS/v7.3](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v7.3)
+* [Ed-Fi-ODS-Implementation/v7.3](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/tree/v7.3)
 
 Use a Git client (such as [GitHub Desktop](https://desktop.github.com/)) or a
 Git command line tool to Git Clone each of the repository links described above.
@@ -319,7 +319,7 @@ When you clone a repository, ensure that you have the correct tag checked out in
 your client before you proceed.
 
 ```shell
-git checkout tags/v7.2 -b <branch>
+git checkout tags/v7.3 -b <branch>
 ```
 
 :::
@@ -339,7 +339,7 @@ execute properly.
 
 ## Accessing Daily Source
 
-The links above are for the stable release of the ODS / API v7.2. You can
+The links above are for the stable release of the ODS / API v7.3. You can
 download the links to the very latest daily source code in the development
 branch:
 
@@ -357,12 +357,12 @@ Clone. You can do so by following these instructions:
 2. In Windows Explorer, right-click on each of the downloaded ZIP files and
    select Extract All… Enter C:\\ for the target folder. (You can extract the
    files to any directory, but these instructions assume you've extracted to
-   C:\\.) The ZIP files contain an embedded folder ending in "-v7.2" (or
+   C:\\.) The ZIP files contain an embedded folder ending in "-v7.3" (or
    "-main" if downloading latest daily source). For example, the "Ed-Fi ODS
-   ZIP" archive contents will be extracted into C:\\Ed-Fi-ODS-v7.2.
+   ZIP" archive contents will be extracted into C:\\Ed-Fi-ODS-v7.3.
 3. After the extractions are complete, rename the folders to remove
-    the -v7.2 (or "-main") from the folder names. For example, change
-    C:\\Ed-Fi-ODS-v7.2 to C:\\Ed-Fi-ODS.
+    the -v7.3 (or "-main") from the folder names. For example, change
+    C:\\Ed-Fi-ODS-v7.3 to C:\\Ed-Fi-ODS.
 4. When the extraction and renaming are complete, there should be two folders
     for the ODS / API source code.
 

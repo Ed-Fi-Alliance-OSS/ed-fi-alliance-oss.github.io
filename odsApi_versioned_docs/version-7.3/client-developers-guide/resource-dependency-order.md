@@ -151,6 +151,6 @@ has created until an enrollment record has been established.
 
 You can explore the dependency endpoint at the Ed-Fi Alliance-hosted
 sandbox: [Dependency Endpoint in Ed-Fi ODS / API
-Sandbox](https://api.ed-fi.org/v7.2/api/metadata/data/v3/dependencies)
+Sandbox](https://api.ed-fi.org/v7.3/api/metadata/data/v3/dependencies)
 
 :::

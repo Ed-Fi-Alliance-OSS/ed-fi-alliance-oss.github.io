@@ -219,6 +219,6 @@ ProfileDefinition column.
 
 The following GitHub link contains source files for this Profile
 sample: [ODS/API
-7.2](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v7.2/Samples/Project-Profiles-Template)
+7.3](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v7.3/Samples/Project-Profiles-Template)
 
 :::

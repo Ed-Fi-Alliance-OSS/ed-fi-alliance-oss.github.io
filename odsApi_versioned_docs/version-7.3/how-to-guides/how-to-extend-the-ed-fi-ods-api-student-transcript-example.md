@@ -94,7 +94,7 @@ Do that now if you haven't already.
 ### Step 2a. Set or Confirm MetaEd Target Version
 
 MetaEd allows you to target different versions of the Ed-Fi technology stack and
-data model. Confirm that your MetaEd IDE is targeting v7.2 by following the
+data model. Confirm that your MetaEd IDE is targeting v7.3 by following the
 instructions in the [Version
 Targeting](https://edfi.atlassian.net/wiki/spaces/METAED20/pages/23709491/MetaEd+IDE+-+Creating+and+Maintaining+Your+Extension#MetaEdIDE-CreatingandMaintainingYourExtension-Step4.AddtheCorrectDataModelProject)
 documentation for the MetaEd IDE.
@@ -899,7 +899,7 @@ ODS / API in the Swagger UI. The following new API resource should be visible:
 :::note
 The following GitHub links contain source files for this extensibility sample.
 
-* [Student Transcript MetaEd Source](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v7.2/Samples/Extensions/StudentTranscript/StudentTranscriptMetaEd)
-* [Student Transcript Generated Artifacts](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v7.2/Samples/Extensions/StudentTranscript/StudentTranscriptMetaEd/MetaEdOutput/SampleStudentTranscript)
+* [Student Transcript MetaEd Source](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v7.3/Samples/Extensions/StudentTranscript/StudentTranscriptMetaEd)
+* [Student Transcript Generated Artifacts](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v7.3/Samples/Extensions/StudentTranscript/StudentTranscriptMetaEd/MetaEdOutput/SampleStudentTranscript)
 
 :::
