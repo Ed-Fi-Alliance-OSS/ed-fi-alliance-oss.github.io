@@ -34,4 +34,4 @@ Documentation for MetaEd is viewable online:
 * MetaEd [Cookbook](./cookbook/readme.mdx)
 * MetaEd [Language Specification](./language-specification/readme.md)
 
-![MetaEd Icon](./img/MetaEd-Temp-Icon.png)
+![MetaEd Icon](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/img/MetaEd-Temp-Icon.png)

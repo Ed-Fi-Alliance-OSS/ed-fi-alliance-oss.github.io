@@ -33,14 +33,14 @@ MetaEd on an Apple device. In theory, it _should_ work.
 Open the Extensions panel from the toolbar on the left, or from the `View >
 Extensions`  menu. Search for MetaEd and install the latest release version.
 
-![Extensions Panel](../../img/image2023-2-16_13-12-23.png)
+![Extensions Panel](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/img/install-release-version.png)
 
 ## Step 3. Wait for the Extension to Activate
 
 Wait a moment for the extension to activate. When ready, you'll see a
 notification that  "MetaEd has started".
 
-![MetaEd Started](../../img/image2023-2-16_13-14-8.png)
+![MetaEd Started](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/img/search-for-metaed-extension.png)
 
 ## Step 4. Configure Settings
 
@@ -51,6 +51,6 @@ be sure to accept the [Ed-Fi License Agreement for Use of
 MetaEd](./ed-fi-license-agreement-for-use-of-metaed.md),
 as shown in the screenshot below.
 
-![MetaEd Settings](../../img/image2023-2-16_13-42-46.png)
+![MetaEd Settings](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/img/accept-license.png)
 
 That's it! You can now start using MetaEd in Visual Studio Code.
