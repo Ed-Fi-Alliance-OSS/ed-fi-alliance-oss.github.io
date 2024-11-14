@@ -1,3 +1,7 @@
+---
+description: One entity references another, but the reference has a special meaning.
+---
+
 # 13 - Add Reference with Role Name
 
 ## Problem

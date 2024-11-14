@@ -1,3 +1,7 @@
+---
+description: The design of a MetaEd model requires a new common.  
+---
+
 # 3 - Create a New Common
 
 ## Problem

@@ -1,3 +1,7 @@
+---
+description: Templates for new files.
+---
+
 # 0 - Templates for New Files
 
 Below are templates to help you get started creating new files, for every type

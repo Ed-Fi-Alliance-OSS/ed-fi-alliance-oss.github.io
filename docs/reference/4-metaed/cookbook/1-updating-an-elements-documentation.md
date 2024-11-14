@@ -1,3 +1,7 @@
+---
+description: The Documentation of an existing element needs to be updated or corrected.
+---
+
 # 1 - Updating an Element's Documentation
 
 ## Problem

@@ -1,3 +1,7 @@
+---
+description: The design of a MetaEd model requires the subclassing of an association.  
+---
+
 # 4 - Create a New Association Subclass
 
 ## Problem

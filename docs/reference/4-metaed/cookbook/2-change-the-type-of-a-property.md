@@ -1,3 +1,7 @@
+---
+description: A property of an entity is not of the correct type.
+---
+
 # 2 - Change the Type of a Property
 
 ## Problem

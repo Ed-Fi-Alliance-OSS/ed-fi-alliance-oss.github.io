@@ -34,20 +34,22 @@ if errors continue to occur.
     <details>
     <summary>Standard directories...</summary>
 
-    * Association
-    * Choice
-    * Common
-    * Descriptor
-    * Domain
-    * DomainEntity
-    * Enumeration
-    * Interchange
-    * Shared
+    ```none
+    <Project root>
+    ├─ Association/
+    ├─ Choice/
+    ├─ Common/
+    ├─ Descriptor/
+    ├─ Domain/
+    ├─ DomainEntity/
+    ├─ Enumeration/
+    ├─ Interchange/
+    ├─ Shared/
+    ```
+
     </details>
 
-    **Sample package.json**
-
-    ```json
+    ```json title="Sample package.json"
     {
       "metaEdProject": {
         "projectName": "Sample",
@@ -73,7 +75,7 @@ if errors continue to occur.
 
      Expand source
 
-    ```shell
+    ```powershell
     # Create the new project directory
     mkdir MyExtension
 

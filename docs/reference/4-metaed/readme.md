@@ -28,7 +28,7 @@ Ed-Fi community members.
 
 Documentation for MetaEd is viewable online:
 
-* [What's New](./whats-new.md)
+* [Release Notes](./releases/readme.mdx)
 * [Getting Started with the MetaEd IDE](./getting-started-with-metaed-ide/readme.md)
 * [MetaEd IDE User Guide](./ide-user-guide/readme.md)
 * MetaEd [Cookbook](./cookbook/readme.mdx)

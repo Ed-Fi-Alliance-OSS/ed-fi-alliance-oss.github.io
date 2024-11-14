@@ -1,3 +1,7 @@
+---
+description: The design of a MetaEd model requires the subclassing of a common.  
+---
+
 # 16 - Create a New Common Subclass
 
 ## Problem

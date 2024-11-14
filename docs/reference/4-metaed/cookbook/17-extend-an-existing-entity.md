@@ -1,3 +1,7 @@
+---
+description: The design of a MetaEd model requires extending an entity to include additional properties.
+---
+
 # 17 - Extend an Existing Entity
 
 ## Problem

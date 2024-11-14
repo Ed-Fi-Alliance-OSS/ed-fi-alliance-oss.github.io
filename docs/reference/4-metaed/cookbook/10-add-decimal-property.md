@@ -1,3 +1,7 @@
+---
+description: The design of a MetaEd model requires the addition of a decimal property to an entity.
+---
+
 # 10 - Add Decimal Property
 
 ## Problem

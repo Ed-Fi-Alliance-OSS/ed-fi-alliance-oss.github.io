@@ -1,3 +1,7 @@
+---
+description: The design of a MetaEd model requires the addition of an enumeration property to an entity.
+---
+
 # 9 - Add Enumeration Property
 
 :::caution

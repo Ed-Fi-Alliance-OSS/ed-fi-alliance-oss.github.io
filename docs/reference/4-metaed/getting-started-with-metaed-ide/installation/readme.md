@@ -4,8 +4,6 @@ The MetaEd IDE installation steps are fairly straightforward. It's worth noting
 that the MetaEd IDE is a plug-in to the free, open source Visual Studio Code
 text editor. The installation steps below walk you through a complete install.
 
-The installation steps can be summarized as:
-
 Detail on each step follows.
 
 :::info
@@ -14,7 +12,7 @@ If you run into issues during install, please consult the troubleshooting
 information located at: [Installation and Update
 Issues](../../ide-user-guide/common-problems-and-troubleshooting.md). If you
 still have issues, please raise a source case through the [Ed-Fi Community
-Hub](https://success.ed-fi.org) and provide details of the issue.
+Hub](https://community.ed-fi.org) and provide details of the issue.
 
 :::
 

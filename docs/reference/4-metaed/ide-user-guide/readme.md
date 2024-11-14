@@ -16,10 +16,9 @@ software developers.
 To gain the most benefit from this information, the reader should already be
 familiar with the following knowledge areas:
 
-* Ed-Fi technologies such as the
-    [https://edfi.atlassian.net/wiki/spaces/ODSAPI32/overview](https://edfi.atlassian.net/wiki/spaces/ODSAPI32/overview)
-    and [Ed-Fi Data Standard](https://edfi.atlassian.net/wiki/spaces/EFDS31)
+* Ed-Fi technologies such as the [Ed-Fi ODS / API
+  Platform](/reference/ods-api-platform) and [Ed-Fi Data
+  Standard](/reference/data-exchange/data-standard)
 * The [Ed-Fi Extension
-    Framework](https://edfi.atlassian.net/wiki/spaces/EFDS31/pages/23855253/Ed-Fi+Extension+Framework),
-    which provides guidance on the extension of the Ed-Fi Data Standard
-    and [https://edfi.atlassian.net/wiki/spaces/ODSAPI32/pages/27099730](https://edfi.atlassian.net/wiki/spaces/ODSAPI32/pages/27099730).
+  Framework](/reference/data-exchange/data-standard/extension-framework.md),
+  which provides guidance on the extension of the Ed-Fi Data Standard.

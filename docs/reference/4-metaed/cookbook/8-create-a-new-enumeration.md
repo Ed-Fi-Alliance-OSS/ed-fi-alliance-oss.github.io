@@ -1,3 +1,7 @@
+---
+description: The design of a MetaEd model requires a new enumeration.  
+---
+
 # 8 - Create a New Enumeration
 
 :::caution

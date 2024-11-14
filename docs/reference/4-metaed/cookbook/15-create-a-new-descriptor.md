@@ -1,3 +1,7 @@
+---
+description: The design of a MetaEd model requires a new Ed-Fi Descriptor.
+---
+
 # 15 - Create a New Descriptor
 
 ## Problem
