@@ -27,12 +27,12 @@ Java](https://www.oracle.com/java/technologies/downloads/),
 
 ## Step 2. Download the OpenApi Codegen JAR File
 
-Download the latest version of the OpenApi Codegen JAR 7.3.0. Windows users can
+Download the latest version of the OpenApi Codegen JAR 7.9.0. Windows users can
 use Invoke-WebRequest in PowerShell 3.0+.
 
 ```powershell
 Invoke-WebRequest -OutFile openApi-codegen-cli.jar `
-  https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/7.3.0/openapi-generator-cli-7.3.0.jar
+  https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/7.9.0/openapi-generator-cli-7.9.0.jar
 ```
 
 For more information and download options visit
