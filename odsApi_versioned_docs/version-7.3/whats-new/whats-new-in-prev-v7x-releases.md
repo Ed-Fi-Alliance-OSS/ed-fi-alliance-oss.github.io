@@ -1,5 +1,6 @@
 ---
 description: Summary of what changed in prior releases of 7.x
+sidebar_position: 2
 ---
 
 # What's New in Previous v7.x Releases
@@ -10,9 +11,47 @@ v7.x suite of releases and provides links to additional documentation.
 
 Detail about each change follows.
 
+## Improvements & Enhancements - Version v7.3
+
+This section briefly describes the new features and enhancements built into the
+Ed-Fi ODS / API Platform v7.3 and provides links to additional documentation.
+
+### Data Model Changes in v7.3
+
+Ed-Fi ODS / API v7.3 adds support for Ed-Fi Data Standard
+v5.1 implementation, with no breaking changes from the previous Data Standard
+v5.0. Additionally, Ed-Fi ODS/API v7.3 continues to support Data Standard v4.0
+implementation.
+
+### Enhanced API Error Handling
+
+The Ed-Fi ODS/API adheres to REST principles when responding to HTTP requests,
+including the use of standard status codes in HTTP responses. Starting from
+version 7.3, the ODS/API implements the [Problem Details RFC
+9457](https://www.rfc-editor.org/rfc/rfc9457.html). This improvement ensures
+that error messages are both machine-readable and user-friendly, providing clear
+and actionable information to developers and users. Key benefits include:
+
+* Standardization: Aligns with RFC 9457 for consistent machine-readable error
+  responses across the API.
+* Improved User Experience: User-friendly messages help quickly understand and
+  address data submission issues.
+* Enhanced Traceability: Comprehensive error details and correlation IDs
+  facilitate easier troubleshooting.
+* Efficient Data Submission: Reporting all validation errors in a single
+  response reduces the number of submission attempts.
+
+Overall, this feature significantly enhances the clarity, usability, and
+traceability of API error responses, benefiting both developers and users.
+
+### MetaEd IDE v4.4
+
+Implementing extensions in Ed-Fi ODS / API v7.0 requires implementers to update
+to MetaEd IDE v4.4 or higher.
+
 ## Improvements & Enhancements - Version v7.1
 
-### Data Model Changes
+### Data Model Changes in v7.1
 
 Ed-Fi ODS / API v7.1 adds support for implementing Ed-Fi Data Standard v5.0,
 which introduces important updates that impact multiple domains of the Ed-Fi
@@ -42,7 +81,7 @@ versions, the entire serialized mappings were transferred to and deserialized
 from an external cache provider like Redis every time a translation was needed.
 With the latest release, this process has been refined to minimize network
 overhead. Refer to [How To: Use an External Cache Provider for the Ed-Fi
-API](https://edfi.atlassian.net/wiki/display/ODSAPIS3V61/How+To%3A+Use+an+External+Cache+Provider+for+the+Ed-Fi+API)
+API](../how-to-guides/how-to-use-an-external-cache-provider-for-the-ed-fi-api.md)
 for details on how to enable external caching and how to choose external or
 in-memory caching for specific cache data.
 
@@ -53,10 +92,10 @@ Specification (OAS), which is a widely adopted, standardized format for
 describing REST APIs. This metadata comprehensively outlines all API resources,
 including inputs, HTTP verbs, and the schema of the exposed resources. The
 OpenAPI specification is utilized in generating [Online
-Documentation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V72/pages/23299558/Using+the+Online+Documentation),
+Documentation](../client-developers-guide/using-the-online-documentation.md),
 and by the code generation tools to [Generate
-SDKs](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V72/pages/23299451/Using+Code+Generation+to+Create+an+SDK).
-In earlier versions, the ODS/API exposed OAS version 2. However, in ODS/API 7.1,
+SDKs](../client-developers-guide/using-code-generation-to-create-an-sdk.md). In
+earlier versions, the ODS/API exposed OAS version 2. However, in ODS/API 7.1,
 metadata is exposed in OAS v3 by default, while still allowing access to OAS v2
 through a version parameter for backward compatibility. This ensures a smooth
 transition for users while providing compatibility with previous specification.
@@ -82,31 +121,13 @@ to review the changes carefully.
 
 In the past, each release of the Ed-Fi ODS / API implemented a specific version
 of the Data Standard. Ed-Fi ODS / API v7.0 introduces the capability to build
-and deploy APIs that adhere to either the [Ed-Fi Data Standard
-v4](https://edfi.atlassian.net/wiki/display/EFDS4X/) or [Ed-Fi Data Standard
-v5](https://edfi.atlassian.net/wiki/display/EFDS5/Ed-Fi+Data+Standard+v5). This
-enhancement involves updates to the source code structure, build process,
-packaging, and deployment components of the technology stack to process either
-one of the data standard versions. This flexibility empowers implementations to
-leverage bug fixes and advancements within the technology suite, while
-incorporating supported data standard upgrades at a pace suitable for their
-institution's needs.
-
-It is important for implementers to note that Ed-Fi ODS / API v7.0 introduces
-breaking changes listed in the [release
-notes](https://edfi.atlassian.net/wiki/display/ODSAPIS3V70/What%27s+New+-+Release+Notes#What%27sNewReleaseNotes-breakingchanges).
-These changes will impact the behavior of the API in both [Ed-Fi Data Standard
-v4](https://edfi.atlassian.net/wiki/display/EFDS4X/) and [Ed-Fi Data Standard
-v5](https://edfi.atlassian.net/wiki/display/EFDS5/Ed-Fi+Data+Standard+v5) implementations.
-Additionally, Ed-Fi ODS / API v7.0 brings non-breaking changes to the ODS
-database schema, aimed at enhancing performance. Implementers are advised to
-upgrade their existing ODS to incorporate these schema changes, particularly
-when upgrading from an existing [Ed-Fi Data Standard
-v4](https://edfi.atlassian.net/wiki/display/EFDS4X/) (ODS / API v6.1)
-implementation. Beyond the ODS, it's essential to update the Admin and Security
-database schemas to the latest versions when upgrading to Ed-Fi ODS / API v7.0
-for implementing [Ed-Fi Data Standard
-v4](https://edfi.atlassian.net/wiki/display/EFDS4X/).
+and deploy APIs that adhere to either the Ed-Fi Data Standard v4 or Ed-Fi Data
+Standard v5. This enhancement involves updates to the source code structure,
+build process, packaging, and deployment components of the technology stack to
+process either one of the data standard versions. This flexibility empowers
+implementations to leverage bug fixes and advancements within the technology
+suite, while incorporating supported data standard upgrades at a pace suitable
+for their institution's needs.
 
 ### Dynamic Profile Configuration
 
@@ -120,10 +141,9 @@ redeployment.  Additionally, profiles now integrate seamlessly with extension
 plugins. This enhancement empowers administrators to modify data policies even
 after the deployment of ODS / API throughout the school year, accommodating
 evolving consumer needs. For general overview of profiles feature refer to [API
-Profiles](https://edfi.atlassian.net/wiki/display/ODSAPIS3V71/API+Profiles) and
-for for technical implementation details consult [How To: Add Profiles to the
-Ed-Fi ODS /
-API](https://edfi.atlassian.net/wiki/pages/viewpage.action?pageId=25493741).
+Profiles](platform-dev-guide\security\api-profiles.md) and for for technical
+implementation details consult [How To: Add Profiles to the Ed-Fi ODS /
+API](../how-to-guides\how-to-add-profiles-to-the-ed-fi-ods-api.md).
 
 In addition to profile configuration, Ed-Fi ODS / API v7.0 simplifies profile
 usage. The ODS / API now evaluates incoming API requests to determine whether
@@ -141,26 +161,26 @@ versions. ODS instances are now configured and linked to API clients within the
 Admin database, allowing configuration of complete connection strings. This
 setup enables ODS instances to reside on separate database servers, ensuring
 improved performance and security. Refer to [API Client and ODS Instance
-Configuration](https://edfi.atlassian.net/wiki/display/ODSAPIS3V71/API+Client+and+ODS+Instance+Configuration)
+Configuration](../platform-dev-guide/configuration/api-client-and-ods-instance-configuration.md)
 for details. API administrators retain the ability to implement previously
 supported [database segmentation
-strategies](https://edfi.atlassian.net/wiki/pages/viewpage.action?pageId=25493647#PlatformDevGuideExtensibility&Customization-DbPartition).
+strategies](../platform-dev-guide/extensibility-customization/readme.md#database-segmentation-strategy).
 API administrators can opt for implicit routes (segmentation information not
-visible in the routes). Additionally, administrators have the option to configure
-database segmentation for explicit routes with [Context-Based
-Routing](https://edfi.atlassian.net/wiki/display/ODSAPIS3V71/Context-Based+Routing+for+Year-Specific+ODS).
+visible in the routes). Additionally, administrators have the option to
+configure database segmentation for explicit routes with [Context-Based
+Routing](../platform-dev-guide/configuration/context-based-routing-for-year-specific-ods.md).
 Streamlined routes in ODS / API v7.0 offer simplified route configurations
 within client applications. Details on route patterns can be found in the [API
-Routes](https://edfi.atlassian.net/wiki/display/ODSAPIS3V71/API+Routes) section.
+Routes](../client-developers-guide/api-routes.md) section.
 
 Further enhancing capabilities, snapshot for change processing can now be
 configured on separate database server from the primary ODS. Additionally, newly
-introduced [Read-Replicas](https://edfi.atlassian.net/wiki/display/ODSAPIS3V71/Read-Replicas)
-can offload GET requests, contributing to optimized performance.
+introduced [Read-Replicas](../platform-dev-guide/features/read-replicas.md) can
+offload GET requests, contributing to optimized performance.
 
 To ensure security and efficient management of tenants, ODS / API
 v7.0 introduces support for [Multi Tenant
-Configuration](https://edfi.atlassian.net/wiki/display/ODSAPIS3V71/Single+and+Multi-Tenant+Configuration#SingleandMultiTenantConfiguration-multiTenantSetting).
+Configuration](../platform-dev-guide/configuration/single-and-multi-tenant-configuration.md#SingleandMultiTenantConfiguration-multiTenantSetting)
 This setup configures separate Admin and Security databases for each tenant.
 
 ### MetaEd IDE v4.2
