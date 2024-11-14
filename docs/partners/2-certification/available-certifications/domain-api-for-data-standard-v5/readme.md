@@ -26,7 +26,7 @@ uses HTTP/S requests and RESTful patterns to manage API resources on the
 consumer system, which implements the API definition itself (see Figure 1).
 
 ![Conceptual data exchange
-architecture](/img/partners/certification/provider-consumer.png)
+architecture](https://edfidocs.blob.core.windows.net/$web/img/partners/certification/provider-consumer.png)
 
 **Figure 1.** Conceptual data exchange architecture
 
