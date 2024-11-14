@@ -56,4 +56,3 @@ export default function VersionDropDown() {
   );
 }
 
-// /reference/ods-api/7.3/getting-started/getting-started-appendix

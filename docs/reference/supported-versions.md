@@ -42,14 +42,14 @@ a production deployment of the Ed-Fi Resources API. The Platform includes:
 
 ### Ed-Fi ODS/API
 
-| Version | Timeline                             | Data Standard(s) |
-| ------- | ------------------------------------ | ---------------- |
-| 5.3.x   | Active through 2024-2025 school year | 3.3.1            |
-| 6.2.x   | Active through 2025-2026 school year | 4.0.0            |
-| 7.0.0   | Replaced by 7.1                      | 4.0.0, 5.0.0     |
-| 7.1.x   | Active through 2027-2028 school year | 4.0.0, 5.0.0     |
-| 7.2.x   | Active through 2027-2028 school year | 4.0.0, 5.1.0     |
-| 7.3.0   | Coming soon (November/December 2024) | 4.0.0, 5.2.0     |
+| Version                         | Timeline                             | Data Standard(s) |
+| ------------------------------- | ------------------------------------ | ---------------- |
+| [5.4.x](/reference/ods-api/5.4) | Active through 2024-2025 school year | 3.3.1            |
+| [6.2.x](/reference/ods-api/6.2) | Active through 2025-2026 school year | 4.0.0            |
+| 7.0.0                           | Replaced by 7.1                      | 4.0.0, 5.0.0     |
+| 7.1.x                           | Active through 2027-2028 school year | 4.0.0, 5.0.0     |
+| [7.2.x](/reference/ods-api/7.2) | Active through 2027-2028 school year | 4.0.0, 5.1.0     |
+| 7.3.0                           | Coming soon (November/December 2024) | 4.0.0, 5.2.0     |
 
 ### Ed-Fi ODS Admin API
 
