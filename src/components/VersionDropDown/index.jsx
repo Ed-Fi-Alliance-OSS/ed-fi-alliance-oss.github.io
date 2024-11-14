@@ -15,6 +15,10 @@ const odsApi = [
     number: '7.2',
   },
   {
+    path: '/reference/ods-api/7.1',
+    number: '7.1',
+  },
+  {
     path: '/reference/ods-api/6.2',
     number: '6.2',
   },
