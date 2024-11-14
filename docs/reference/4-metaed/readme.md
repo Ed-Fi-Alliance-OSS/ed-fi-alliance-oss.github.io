@@ -4,7 +4,7 @@
 
 :::tip
 
-Starting with [MetaEd v4.0](./whats-new.md), MetaEd runs on Visual
+Starting with [MetaEd v4.0](./releases/4.0.0.md), MetaEd runs on Visual
 Studio Code instead of Atom. We strongly recommend that everyone in the
 community move from the Atom-based version to this new one using Visual Studio
 Code. Existing users: please see [MetaEd IDE - Upgrading to MetaEd

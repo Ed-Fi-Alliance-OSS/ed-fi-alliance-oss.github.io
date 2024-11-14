@@ -24,7 +24,6 @@ Extensions.
 
 * Extending the XML and the Ed-Fi Data Standard is covered in the [Ed-Fi
   Extensions
-  Framework](/reference/data-exchange/data-standard/extension-framework.md)
+  Framework](../../1-data-exchange/data-standard/extension-framework.md)
   documentation.
-* Extending the Ed-Fi ODS / API is covered in the [ODS / API Platform
-  documentation](/reference/ods-api-platform).
+* Extending the Ed-Fi ODS / API is covered in the [ODS / API Platform documentation](../../ods-api-platform.mdx)

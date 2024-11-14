@@ -153,7 +153,7 @@ The Ed-Fi Data Standard has multiple versions and your extensions need to be
 targeted at the Data Standard and ODS / API versions you are using. Please
 consult the ODS / API documentation for information on the version(s) applicable
 to your project. This information is generally found in the "What's New" section
-of the documentation. Alternately, see [Ed-Fi Technical Suite Supported Versions](/reference/supported-versions.md)
+of the documentation. Alternately, see [Ed-Fi Technical Suite Supported Versions](../../supported-versions.md)
 for all available versions.
 
 Once you know which data model version to use, you need to add it to the
