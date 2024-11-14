@@ -177,7 +177,7 @@ offload GET requests, contributing to optimized performance.
 
 To ensure security and efficient management of tenants, ODS / API
 v7.0 introduces support for [Multi Tenant
-Configuration](../platform-dev-guide/configuration/single-and-multi-tenant-configuration.md#SingleandMultiTenantConfiguration-multiTenantSetting)
+Configuration](../platform-dev-guide/configuration/single-and-multi-tenant-configuration.md#multi-tenant-configuration)
 This setup configures separate Admin and Security databases for each tenant.
 
 ### MetaEd IDE v4.2
