@@ -1,0 +1,503 @@
+# How To: Load the TPDM Sample XML Data using Bulk Load Client Utility
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+This article describes the steps needed to populate an Ed-Fi ODS with sample
+TPDM XML data using the [Ed-Fi Bulk Load
+Client](../platform-dev-guide/utilities/bulk-load-client-utility.md) utility.
+This process works very similarly to [How To: Load the ODS with Sample XML Data
+using Bulk Load Client
+Utility](./how-to-load-the-ods-with-sample-xml-data-using-bulk-load-client-utility.mdx).
+Walk through those steps first to get familiar with the process.
+
+## Step 1. Install the Ed-Fi Bulk Load Client
+
+* Ensure that you have an instance of the **Ed-Fi ODS / API running locally**
+    that has been set up following the [Getting Started - Source Code
+    Installation](../getting-started/source-code-installation).
+* Ensure .NET 8.0 SDK is installed.
+
+* Add Ed-Fi package source by running the following  command in PowerShell:
+
+    **Install the Ed-Fi Bulk Load Client**
+
+    ```powershell
+    if (-not [Net.ServicePointManager]::SecurityProtocol.HasFlag([Net.SecurityProtocolType]::Tls12)) {
+       [Net.ServicePointManager]::SecurityProtocol += [Net.SecurityProtocolType]::Tls12
+    }
+    if(-not (Get-PackageSource -ProviderName NuGet | Where-Object -Property Name -eq "Ed-FiAzureArtifacts")){
+        Write-Host "Registering Ed-Fi Package Source..."
+        Register-PackageSource -Name Ed-FiAzureArtifacts `
+            -Location "https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json" `
+            -ProviderName NuGet
+        Write-Host "Ed-Fi package source configured"
+    }
+    ```
+
+* Install the Ed-Fi Bulk Load Client from a PowerShell prompt using the
+    following command:
+
+    **Install the Ed-Fi Bulk Load Client**
+
+    ```shell
+    mkdir `<YourInstallFolder>`
+    dotnet tool install EdFi.Suite3.BulkLoadClient.Console --version 7.3.413 --tool-path `<YourInstallFolder>`
+    ```
+
+    You will see output like this:
+
+    ```shell
+    You can invoke the tool using the following command: EdFi.BulkLoadClient.Console
+    Tool 'edfi.suite3.bulkloadclient.console' (version '7.3.413') was successfully installed.
+    ```
+
+* You can verify that the `EdFi.BulkLoadClient.Console.exe`  is available by
+    browsing to this location
+    `<YourInstallFolder>\EdFi.BulkLoadClient.Console.exe`
+
+## Step 2. Download Scripts and Sample Data
+
+* **Download and Extract** `Ed-Fi-TPDMDataLoad.zip` to a local folder. We
+    recommend `C:\Ed-Fi-TPDMDataLoad`.
+    Ed-Fi-TPDMDataLoad.zip contains all the scripts and directory structure used
+    in this how-to article.
+* **Download the Sample XML** to `Ed-Fi-TPDMDataLoad\Sample XML`
+* **Download the Descriptors** to `Ed-Fi-TPDMDataLoad\Bootstrap`
+* **Move** the following files from `Ed-Fi-TPDMDataLoad\Sample XML` to
+  `Ed-Fi-TPDMDataLoad\Bootstrap`
+  * `Standards.xml`
+  * `EducationOrganization.xml`
+  * `IndicatorDescriptor.xml`
+  * `IndicatorGroupDescriptor.xml`
+  * `IndicatorLevelDescriptor.xml`
+  * `ProgramCharacteristicDescriptor.xml`
+* **Download the TPDM Sample XML** to `Ed-Fi-TPDMDataLoad\Sample
+  XML\TPDM`.
+* **Download the TPDM Descriptors** to
+  `Ed-Fi-TPDMDataLoad\Bootstrap\TPDM`.
+* **Copy** the file `TPDM Sample XML\EducationOrganization.xml` to the
+  `Ed-Fi-TPDMDataLoad\Bootstrap\TPDM` folder:
+
+:::info
+
+Note that the TPDM Sample data depends on the Grand Bend, so we are
+loading them together in this how-to article.
+
+:::
+
+:::info
+
+The Bootstrap folder is used to load the necessary Descriptors and Education
+Organization used by the ODS / API. Since they require a special claimset
+(enabled in Step 4, below), they must be loaded separately from the other sample
+files.
+
+:::
+
+## Step 3. Create an Empty Sandbox
+
+* **Open a PowerShell session.**
+* **Navigate** to `Ed-Fi-ODS-Implementation` directory
+* **Execute `.\Initialize-PowershellForDevelopment.ps1` and
+  then `Reset-EmptySandboxDatabase`.
+
+    The script will create the `EdFi_Ods_Sandbox_Empty` Database.
+
+## Step 4. Update Claim Set to Load Descriptors and Education Organizations
+
+* **Execute `CreateApiClienforEmptySandbox.sql`** by executing the file against
+  the `EdFi_Admin` database using any database query tool. Use the version
+  appropriate to your database.
+
+  <Tabs>
+    <TabItem value="MSSQL" label="SQL Server" default>
+      <details>
+      <summary>Expand to view sample code...</summary>
+
+     ```sql title="CreateApiClienforEmptySandbox.sql"
+     DECLARE @VendorName nvarchar(150) = 'Empty Test Vendor'
+     DECLARE @NamespacePrefix nvarchar (255) = 'uri://ed-fi.org'
+     DECLARE @NamespacePrefixEdu nvarchar (255) = 'uri://gbisd.edu'
+     DECLARE @UserFullName varchar(150) = 'Empty Test User'
+     DECLARE @UserEmailAddress varchar(150) = 'emptytest@ed-fi.org'
+     DECLARE @ApplicationName nvarchar(255) = 'Default Sandbox Application Empty'
+     DECLARE @ClaimSetName nvarchar(255) = 'Bootstrap Descriptors and EdOrgs'
+     DECLARE @ApiClientName nvarchar(50) = 'Empty Demonstration Sandbox'
+     DECLARE @Key nvarchar(50) = 'empty'
+     DECLARE @Secret nvarchar(100) = 'emptySecret'
+     DECLARE @OdsInstanceName nvarchar(100) = 'Test ODS'
+     DECLARE @OdsInstanceType nvarchar(100) = 'Test Type'
+     DECLARE @OdsInstanceConnectionString nvarchar(500) = 'server=(local);trusted_connection=True;database=EdFi_Ods_Sandbox_Empty;application name=EdFi.Ods.WebApi;Encrypt=False'
+
+     DECLARE @IsPopulatedSandbox bit = 0
+     -- For Non-Sandbox deployments
+     DECLARE @UseSandbox bit = 0
+     -- For Sandbox
+     --DECLARE @UseSandbox bit = 1
+
+     DECLARE @VendorId int
+     DECLARE @UserId int
+     DECLARE @ApplicationId int
+     DECLARE @ApplicationEducationOrganizationId int
+     DECLARE @ApiClientId int
+     DECLARE @OdsInstanceId int
+
+     DECLARE @EducationOrganizationIds TABLE(Idx int IDENTITY(1,1), EdOrgId int)
+
+     --Must be ed-orgs in the ODS
+     INSERT INTO @EducationOrganizationIds (EdOrgId)
+         SELECT 255901 UNION
+         SELECT 1 UNION
+         SELECT 2 UNION
+         SELECT 3 UNION
+         SELECT 4 UNION
+         SELECT 5 UNION
+         SELECT 6 UNION
+         SELECT 7 UNION
+         SELECT 6000203
+
+     -- Clear @IsPopulatedSandbox if not using sandbox
+     IF (@UseSandbox = 0)
+         SET @IsPopulatedSandbox = 0
+
+     -- Ensure Vendor exists
+     SELECT @VendorId = VendorId FROM [dbo].[Vendors] WHERE VendorName = @VendorName
+
+     IF(@VendorId IS NULL)
+     BEGIN
+         INSERT INTO [dbo].[Vendors] (VendorName)
+         VALUES (@VendorName)
+
+         SET @VendorId = SCOPE_IDENTITY()
+     END
+
+     -- Ensure correct namespace prefixes are set up
+     DELETE FROM [dbo].[VendorNamespacePrefixes] WHERE Vendor_VendorId = @VendorId
+     INSERT INTO [dbo].[VendorNamespacePrefixes] (Vendor_VendorId, NamespacePrefix)
+     VALUES (@VendorId, @NamespacePrefix)
+     INSERT INTO [dbo].[VendorNamespacePrefixes] (Vendor_VendorId, NamespacePrefix)
+     VALUES (@VendorId, @NamespacePrefixEdu)
+     -- Ensure User exists for test Vendor
+     SELECT @UserId = UserId FROM [dbo].[Users] WHERE FullName = @UserFullName AND Vendor_VendorId = @VendorId
+
+     IF(@UserId IS NULL)
+     BEGIN
+         INSERT INTO [dbo].[Users] (Email, FullName, Vendor_VendorId)
+         VALUES (@UserEmailAddress, @UserFullName, @VendorId)
+
+         SET @UserId = SCOPE_IDENTITY()
+     END
+     ELSE
+     BEGIN
+         UPDATE [dbo].[Users] SET Email = @UserEmailAddress WHERE UserId = @UserId
+     END
+
+     -- Ensure Application exists
+     SELECT @ApplicationId = ApplicationId FROM [dbo].[Applications] WHERE ApplicationName = @ApplicationName AND Vendor_VendorId = @VendorId
+
+     IF (@ApplicationId IS NULL)
+     BEGIN
+         INSERT INTO [dbo].[Applications] (ApplicationName, Vendor_VendorId, ClaimSetName)
+         VALUES (@ApplicationName, @VendorId, @ClaimSetName)
+
+         SET @ApplicationId = SCOPE_IDENTITY()
+     END
+     ELSE
+     BEGIN
+         UPDATE [dbo].[Applications] SET ClaimSetName = @ClaimSetName WHERE ApplicationId = @ApplicationId
+     END
+
+     -- Ensure ApiClient exists
+     SELECT @ApiClientId = ApiClientId FROM [dbo].[ApiClients] WHERE Application_ApplicationId = @ApplicationId AND [Name] = @ApiClientName
+
+     IF(@ApiClientId IS NULL)
+     BEGIN
+         INSERT INTO [dbo].[ApiClients] ([Key], [Secret], [Name], IsApproved, UseSandbox, SandboxType, Application_ApplicationId, User_UserId, SecretIsHashed)
+         VALUES (@Key, @Secret, @ApiClientName, 1, @UseSandbox, @IsPopulatedSandbox, @ApplicationId, @UserId, 0)
+
+         SET @ApiClientId = SCOPE_IDENTITY()
+     END
+     ELSE
+     BEGIN
+         UPDATE [dbo].[ApiClients] SET [Key] = @Key, [Secret] = @Secret, UseSandbox = @UseSandbox, SandboxType = @IsPopulatedSandbox, User_UserId = @UserId, SecretIsHashed = 0 WHERE ApiClientId = @ApiClientId
+     END
+
+     -- Ensure OdsInstance exists
+     SELECT @OdsInstanceId = OdsInstanceId FROM [dbo].[OdsInstances] WHERE [Name] = @OdsInstanceName and InstanceType = @OdsInstanceType
+
+     IF(@OdsInstanceId IS NULL)
+     BEGIN
+         INSERT INTO [dbo].[OdsInstances] ([Name], InstanceType, ConnectionString)
+         VALUES (@OdsInstanceName, @OdsInstanceType, @OdsInstanceConnectionString)
+         SET @OdsInstanceId = SCOPE_IDENTITY()
+     END
+     ELSE
+     BEGIN
+         UPDATE [dbo].[OdsInstances] SET ConnectionString = @OdsInstanceConnectionString WHERE OdsInstanceId = @OdsInstanceId
+     END
+
+     -- Ensure ApiClientOdsInstance exists
+     IF NOT EXISTS (SELECT 1 FROM [dbo].[ApiClientOdsInstances] WHERE ApiClient_ApiClientId = @ApiClientId AND OdsInstance_OdsInstanceId = @OdsInstanceId)
+     BEGIN
+         INSERT INTO [dbo].[ApiClientOdsInstances] (ApiClient_ApiClientId, OdsInstance_OdsInstanceId)
+         VALUES (@ApiClientId, @OdsInstanceId)
+     END
+
+     IF ((SELECT COUNT(*) FROM @EducationOrganizationIds) > 0)
+     BEGIN
+         -- Clear all education organization links for the selected application
+         DELETE acaeo
+         FROM dbo.ApiClientApplicationEducationOrganizations acaeo
+         INNER JOIN dbo.ApplicationEducationOrganizations aeo
+         ON acaeo.ApplicationEducationOrganization_ApplicationEducationOrganizationId = aeo.ApplicationEducationOrganizationId
+         WHERE aeo.Application_ApplicationId = @ApplicationId
+         DELETE FROM [dbo].[ApplicationEducationOrganizations] WHERE Application_ApplicationId = @ApplicationId
+
+
+      -- Ensure correct education organizations are set up
+      DECLARE @i int
+      DECLARE @Len int
+
+      SELECT @i = min(Idx) - 1, @Len = max(Idx) FROM @EducationOrganizationIds
+
+      WHILE @i < @Len
+      BEGIN
+       SELECT @i = @i + 1
+       DECLARE @EdOrg int = (SELECT TOP 1 EdOrgId FROM @EducationOrganizationIds WHERE Idx = @i)
+
+       INSERT INTO [dbo].[ApplicationEducationOrganizations] (EducationOrganizationId, Application_ApplicationId)
+       VALUES (@EdOrg, @ApplicationId)
+       SELECT @ApplicationEducationOrganizationId = SCOPE_IDENTITY()
+
+       INSERT INTO [dbo].[ApiClientApplicationEducationOrganizations] (ApplicationEducationOrganization_ApplicationEducationOrganizationId, ApiClient_ApiClientId)
+       VALUES (@ApplicationEducationOrganizationId, @ApiClientId)
+      END
+     END
+     ```
+
+      </details>
+    </TabItem>
+    <TabItem value="PostgreSQL" label="PostgreSQL" default>
+      <details>
+      <summary>Expand to view sample code...</summary>
+
+     ```sql title="CreateApiClienforEmptySandbox.sql"
+     DO $$
+     DECLARE
+
+     vendor_name varchar(150) := 'Empty Test Vendor';
+     namespace_prefix varchar(255) = 'uri://ed-fi.org';
+     namespace_prefix_edu varchar(255) = 'uri://gbisd.edu';
+     user_full_name varchar(150) = 'Local Test User';
+     user_email_address varchar(150) = 'emptytest@ed-fi.org';
+     application_name varchar(255) = 'Default Sandbox Application Empty';
+     claimset_name varchar(255) = 'Bootstrap Descriptors and EdOrgs';
+     api_client_name varchar(50) = 'Empty Demonstration Sandbox';
+     client_key varchar(50) = 'empty';
+     client_secret varchar(100) = 'emptySecret';
+     ods_instance_name varchar(100) = 'Test ODS';
+     ods_instance_type varchar(100) = 'Test Type';
+     ods_instance_connection_string varchar(255) = 'host=localhost;port=5432;username=postgres;database=EdFi_Ods_Sandbox_Empty;pooling=true;minimum pool size=10;maximum pool size=50;Application Name=EdFi.Ods.WebApi';
+
+     --Must be ed-orgs in the ODS
+     education_organization_ids bigint[] = array[255901, 1, 2, 3, 4, 5, 6, 7, 6000203];
+
+     is_populated_sandbox INT = 0;
+     -- For Non-Sandbox deployments
+     use_sandbox boolean = False;
+     -- For Sandbox
+     --use_sandbox boolean = True;
+
+     vendor_id int;
+     user_id int;
+     application_id int;
+     application_education_organization_id int;
+     api_client_id int;
+     ods_instance_id int;
+
+     BEGIN
+     -- Clear is_populated_sandbox if not using sandbox
+     IF NOT use_sandbox
+     THEN
+         SELECT 0 INTO is_populated_sandbox;
+     END IF;
+
+     -- Ensure Vendor exists
+     SELECT VendorId INTO vendor_id FROM dbo.Vendors WHERE VendorName = vendor_name;
+
+     IF(vendor_id IS NULL)
+     THEN
+         INSERT INTO dbo.Vendors (VendorName)
+         VALUES (vendor_name);
+
+         SELECT LASTVAL() INTO vendor_id;
+     END IF;
+
+     -- Ensure correct namespace prefixes are set up
+     DELETE FROM dbo.VendorNamespacePrefixes WHERE Vendor_VendorId = vendor_id;
+     INSERT INTO dbo.VendorNamespacePrefixes (Vendor_VendorId, NamespacePrefix)
+     VALUES (vendor_id, namespace_prefix);
+     INSERT INTO dbo.VendorNamespacePrefixes (Vendor_VendorId, NamespacePrefix)
+     VALUES (vendor_id, namespace_prefix_edu);
+
+     -- Ensure User exists for test Vendor
+     SELECT UserId INTO user_id FROM dbo.Users WHERE FullName = user_full_name AND Vendor_VendorId = vendor_id;
+
+
+     IF(user_id IS NULL)
+     THEN
+         INSERT INTO dbo.Users (Email, FullName, Vendor_VendorId)
+         VALUES (user_email_address, user_full_name, vendor_id);
+
+         SELECT LASTVAL() INTO user_id;
+     ELSE
+         UPDATE dbo.Users SET Email = user_email_address WHERE UserId = user_id;
+     END IF;
+
+     -- Ensure Application exists
+     SELECT ApplicationId INTO application_id FROM dbo.Applications WHERE ApplicationName = application_name AND Vendor_VendorId = vendor_id;
+
+     IF (application_id IS NULL)
+     THEN
+         INSERT INTO dbo.Applications (ApplicationName, Vendor_VendorId, ClaimSetName)
+         VALUES (application_name, vendor_id, claimset_name);
+
+         SELECT LASTVAL() INTO application_id;
+     ELSE
+         UPDATE dbo.Applications SET ClaimSetName = claimset_name WHERE ApplicationId = application_id;
+     END IF;
+
+     -- Ensure ApiClient exists
+     SELECT  ApiClientId INTO api_client_id FROM dbo.ApiClients WHERE Application_ApplicationId = application_id AND Name = api_client_name;
+
+     IF(api_client_id IS NULL)
+     THEN
+         INSERT INTO dbo.ApiClients (Key, Secret, Name, IsApproved, UseSandbox, SandboxType, Application_ApplicationId, User_UserId, SecretIsHashed)
+         VALUES (client_key, client_secret, api_client_name, TRUE, use_sandbox, is_populated_sandbox, application_id, user_id, FALSE);
+
+         SELECT  LASTVAL() INTO api_client_id;
+     ELSE
+         UPDATE dbo.ApiClients SET Key = client_key, Secret = client_secret, UseSandbox = use_sandbox, SandboxType = is_populated_sandbox, User_UserId = user_id, SecretIsHashed = FALSE WHERE ApiClientId = api_client_id;
+     END IF;
+
+     -- Ensure OdsInstance exists
+     SELECT OdsInstanceId INTO ods_instance_id FROM dbo.OdsInstances WHERE Name = ods_instance_name AND InstanceType = ods_instance_type;
+
+     IF(ods_instance_id IS NULL)
+     THEN
+         INSERT INTO dbo.OdsInstances (Name, InstanceType, ConnectionString)
+         VALUES (ods_instance_name, ods_instance_type, ods_instance_connection_string);
+
+         SELECT LASTVAL() INTO ods_instance_id;
+     ELSE
+         UPDATE dbo.OdsInstances SET ConnectionString = ods_instance_connection_string WHERE OdsInstanceId = ods_instance_id;
+     END IF;
+
+     -- Ensure ApiClientOdsInstance exists
+     INSERT INTO dbo.ApiClientOdsInstances (ApiClient_ApiClientId, OdsInstance_OdsInstanceId)
+     SELECT api_client_id, ods_instance_id
+     WHERE NOT EXISTS (SELECT * FROM dbo.ApiClientOdsInstances WHERE ApiClient_ApiClientId = api_client_id AND OdsInstance_OdsInstanceId = ods_instance_id);
+
+     IF (ARRAY_LENGTH(education_organization_ids, 1) > 0)
+     THEN
+         -- Clear all education organization links for the selected application
+         DELETE
+         FROM dbo.ApiClientApplicationEducationOrganizations WHERE
+         ApplicationEdOrg_ApplicationEdOrgId IN ( SELECT ApplicationEducationOrganizationId
+                                                  FROM dbo.ApplicationEducationOrganizations
+                                                  WHERE Application_ApplicationId = application_id);
+         DELETE FROM dbo.ApplicationEducationOrganizations WHERE Application_ApplicationId = application_id;
+
+      DECLARE education_organization_id bigint;
+      -- Ensure correct education organizations are set up
+      BEGIN
+       FOREACH education_organization_id IN ARRAY education_organization_ids LOOP
+        INSERT INTO dbo.ApplicationEducationOrganizations (EducationOrganizationId, Application_ApplicationId)
+        VALUES (education_organization_id, application_id);
+        SELECT LASTVAL() INTO application_education_organization_id;
+
+        INSERT INTO dbo.ApiClientApplicationEducationOrganizations (Applicationedorg_Applicationedorgid, ApiClient_ApiClientId)
+        VALUES (application_education_organization_id, api_client_id);
+       END LOOP;
+      END;
+     END IF;
+     END $$;
+     ```
+
+     </details>
+    </TabItem>
+  </Tabs>
+
+## Step 5. Run the Bootstrap Script to Load Descriptors and Education Organizations
+
+* **Open a PowerShell session.**
+* **Navigate** to `Ed-Fi-TPDMDataLoad` directory (e.g.,
+  `C:\Ed-Fi-TPDMDataLoad`).
+* Open the **`LoadBootstrapData.ps1` file** in a text editor update the
+  `$apiLoaderExe` variable Value where `EdFi.BulkLoadClient.Console` is
+  installed in **Step 1.**
+* Example `$apiLoaderExe="<YourInstallFolderFullPath>\EdFi.BulkLoadClient.Console.exe"`
+* **Save and Execute `LoadBootstrapData.ps1`**.
+
+  The script will run the Bulk Load Client loading data from the Bootstrap
+  folder to the TPDM Populated Sandbox Database.
+
+## Step 6. Update Claim Set to Load Sample Data
+
+* **Execute `EnableSandboxClaimset.sql`** by executing the file against the
+    `EdFi_Admin` database using any database query tool. Use the version
+    appropriate to your database.
+
+
+  <Tabs>
+    <TabItem value="MSSQL" label="SQL Server" default>
+     ```sql title="EnableSandboxClaimset.sql"
+     UPDATE [dbo].[Applications]
+     SET [ClaimSetName] = 'Ed-Fi Sandbox'
+     WHERE [ApplicationName] = 'Default Sandbox Application Empty'
+     GO
+     ```
+    </TabItem>
+    <TabItem value="PostgreSQL" label="PostgreSQL" default>
+     ```sql title="EnableSandboxClaimset.sql"
+     DO $$
+     BEGIN
+      UPDATE dbo.Applications
+      SET ClaimSetName = 'Ed-Fi Sandbox'
+      WHERE ApplicationName = 'Default Sandbox Application Empty';
+     END $$
+     ```
+     </TabItem>
+  </Tabs>
+
+## Step 7. Run the Sample Data Script to Load Sample Data
+
+* **Open a PowerShell session.**
+* **Navigate** to `Ed-Fi-TPDMDataLoad` directory (e.g.,
+  `C:\Ed-Fi-TPDMDataLoad`).
+* Open the **`LoadSampleData.ps1` file** in notepad or Windows PowerShell ISE
+  and update the $apiLoaderExe variable Value  where
+  `EdFi.BulkLoadClient.Console` is installed in **Step 1.**
+* Example `$apiLoaderExe="<YourInstallFolderFullPath>\EdFi.BulkLoadClient.Console.exe"`
+* **Save and Execute** `LoadSampleData.ps1`.
+
+  The script will run the Bulk Load Client to load data from the Sample XML
+  folder to the Empty Sandbox database.
+
+:::note
+
+The following link contains the scripts and directory setup used in
+this how-to article.
+[Ed-Fi-TPDMDataLoad.zip](https://edfi.atlassian.net/wiki/download/attachments/23301444/Ed-Fi-TPDMDataLoad.zip?version=2&modificationDate=1716571235874&cacheVersion=1&api=v2)
+The following GitHub links contain the sample XML files and the as-shipped
+Ed-Fi Descriptor XML. [Sample
+XML](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v5.1.0/Samples/Sample%20XML)
+[Descriptors](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v5.1.0/Descriptors)
+The following GitHub links contain the sample XML files and the as-shipped
+TPDM Descriptor XML. [TPDM Sample
+XML](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-TPDM-Artifacts/tree/Data-Standard-v5.1.0/Samples/Sample%20XML)
+[TPDM
+Descriptors](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-TPDM-Artifacts/tree/Data-Standard-v5.1.0/Descriptors)
+
+:::

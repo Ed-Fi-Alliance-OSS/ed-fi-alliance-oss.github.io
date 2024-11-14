@@ -1,0 +1,146 @@
+---
+description: Release notes for ODS/API v7.3
+---
+
+# Release Notes
+
+This section provides a comprehensive list of the improvements, updates, fixes,
+and changes in the Ed-Fi ODS / API for Suite 3 v7.3 release.
+
+:::tip
+
+The lists below include ticket numbers from Jira. The Jira project can only be
+seen by the development team. However, anyone can look for that ticket number in
+the Git commit history to find the changes for that specific update.
+
+:::
+
+## Ed-Fi ODS / API v7.3 - Release Notes
+
+### Important Epics
+
+* ODS-5815 - Extensible Authorization Filtering
+
+* ODS-6412 - Align ODS /API to v5.2 Data Standard
+
+* ODS-6513 - Improve data out performance
+
+### General Improvements & Enhancements
+
+* ODS-5665 - Add ability to query organizations by an identification code
+
+* ODS-4799 - Introduce resource POST/Retry order in dependency endpoint
+
+* ODS-4936 - Installer support and Integrated Security
+
+* ODS-5419 - Add Discriminator to edfi.Descriptor
+
+* ODS-6120 - External connection configuration via plugin
+
+* ODS-6299 - Make PostgreSQL 16 the minimum supported version
+
+* ODS-6326 - Cascaded keyChanges should bump the change version of references
+
+* ODS-6362 - ODS/API Feature: Permissions API
+
+* ODS-6418 - Enforce token limits on API clients
+
+* ODS-6448 - I would like to disable a key/secret without deleting it.
+
+* ODS-6482 - Eliminate unnecessary database roundtrip for ChangeVersion after
+  all upserts
+
+* ODS-6492 - Update RestSharp package
+
+* ODS-6502 - Update security metadata for StudentContactAssociation \(and
+  StudentParentAssociation\) to eliminate unnecessary join
+
+* ODS-6508 - Add support for applying criteria using inherited properties on
+  derived resources
+
+* ODS-6512 - Modify batched page queries in NHibernate to use AggregateId
+  instead of Id for page-level inclusion criteria
+
+* ODS-6517 - Update Ownership-based dynamic NHibernate mapping to correctly
+  suppress column usage in updates
+
+* ODS-6543 - Update security metadata for StudentContactAssociation \(and
+  StudentParentAssociation\) to eliminate unnecessary join - ReadChanges
+
+* ODS-6546 - Perform joins to authorization views on base tables rather than
+  derived tables to take advantage of indexes
+
+* ODS-6547 - Fix the XML-based security metadata export scripts for PostgreSQL
+
+* ODS-6548 - Remove clustered indexes from authorization views for SQL Server
+
+* ODS-6552 - Change database PowerShell Installer to pack dbDeploy .nupkg
+  instead of executable
+
+### Bug Fixes
+
+* ODS-6380 - POST to a Descriptor is allowing empty spaces in the required
+  fields
+
+* ODS-6410 - Swagger UI is not updating Token URL
+
+* ODS-6420 - Edge case: strange error result trying to delete an
+  EducationOrganizationCategoryDescriptor
+
+* ODS-6440 - Sandbox Admin's "Change Secret" button fails after EFCore upgrade
+
+* ODS-6454 - Timeout connecting to EdFi\_Security Database after EFCore upgrade
+
+* ODS-6463 - Discriminator values in the populated template
+
+* ODS-6480- Schrödinger’s studentContactAssociation
+
+* ODS-6498 - X-Forwarded headers don't work in SwaggerUI
+
+* ODS-6518 - 0002-ResourceClaimMetadata.xml is using the old Identity API
+  ClaimName
+
+* ODS-6540 - Fix \`TreatErrorsAsWarning\` typo
+
+### Ed-Fi ODS / API v7.x - Breaking Changes
+
+Apart from the breaking changes introduced by the data standard, there are some
+breaking changes in the API behavior introduced at the API tech stack
+
+#### Change Query Snapshots
+
+Endpoint `ChangeQueries/v1/snapshots`: the snapshots Endpoint was removed. API
+now allows single snapshot configuration and clients can indicate the intent to
+use the snapshot with the HTTP header 'Use-Snapshot' instead of previously used
+'Snapshot-Identifier' HTTP Header. See [Using the Changed Record
+Queries](../client-developers-guide/using-the-changed-record-queries.md) for
+details.
+
+#### Validation
+
+Throughout the API surface:
+
+* Required fields whose default values have domain meaning should be now be
+  explicitly supplied. Earlier versions of the API assigned default values to
+  non nullable required fields when not supplied by the API client.
+* API now applies min/max validations when specified in the model.
+* ODS / API 7.x Fixed enforcement of required embedded objects in resources.
+* ODS / API 7.x now results in error response (instead of ignoring) when primary
+  key value changes are submitted for resource that doesn't allow key updates.
+
+#### Routes
+
+Throughout the API surface: ODS / API 7.x allows simplified uniform routes.
+Depending on the configuration of the deployed ODS, SchoolYear segment may not
+be present or in case when additional segments are present, they appear at the
+beginning of all routes allowing easy configuration for API clients. See [API
+Routes](../client-developers-guide/api-routes.md) for details.
+
+#### Error Responses
+
+Throughout the API surface: Starting with version 7.3, ODS/API updated its error
+responses to implement [Problem Details RFC
+9457](https://www.rfc-editor.org/rfc/rfc9457.html), providing both
+machine-readable and user-friendly responses. This change may require
+modifications to API Client applications. See [Error Response Knowledge
+Base](../client-developers-guide/error-response-knowledge-base.md) for details.
