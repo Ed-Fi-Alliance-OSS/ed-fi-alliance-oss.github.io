@@ -1,3 +1,7 @@
+---
+sidebar_position: 0
+---
+
 # Ed-Fi ODS / API for Suite 3 v6.2
 
 :::info
