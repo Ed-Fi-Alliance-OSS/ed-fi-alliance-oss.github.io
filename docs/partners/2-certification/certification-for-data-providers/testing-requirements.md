@@ -1,4 +1,4 @@
-# Requirements - Testing Requirements
+# Testing Requirements
 
 The Ed-Fi standards have as their goal the capture and exchange of deep
 semantics in K–12 data via efficient processes that do not overburden K–12

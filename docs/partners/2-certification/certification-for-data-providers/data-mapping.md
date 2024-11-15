@@ -1,4 +1,4 @@
-# Requirements - Data Mapping
+# Data Mapping
 
 Products MUST submit a data mapping as part of their certification. The data
 mapping MUST show the mapping between data elements from the certifying system

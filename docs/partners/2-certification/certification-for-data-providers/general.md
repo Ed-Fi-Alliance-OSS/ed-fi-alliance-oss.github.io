@@ -1,4 +1,4 @@
-# Requirements - General
+# General
 
 ## Technical Conformance
 

@@ -1,4 +1,4 @@
-# Requirements - Implementation Verification
+# Implementation Verification
 
 Data providers must provide a verification that the certified product
 functionality is in use at a minimum of 3 local education agencies (LEAs) who
@@ -49,7 +49,7 @@ No other information from the verification is published.
 Agencies with gaps in implementation in a supported region may submit a request
 to the Ed-Fi Alliance to review the product's ability to support all
 requirements under certification. See [this page for further
-discussion](./requirements-product-availability-information.md).
+discussion](./product-availability-information.md).
 
 ## Rationale
 

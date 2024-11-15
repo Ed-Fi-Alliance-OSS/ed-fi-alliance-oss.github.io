@@ -8,15 +8,15 @@ clarity and uniformity.
 
 ### 1\. Product Availability Information
 
-See [Requirements - Product Availability Information](../../certification-for-data-providers/requirements-product-availability-information.md)
+See [Requirements - Product Availability Information](../../certification-for-data-providers/product-availability-information.md)
 
 ### **2\. Initial Implementation Verification Information**
 
-See [Requirements - Implementation Verification](../../certification-for-data-providers/requirements-implementation-verification.md)
+See [Requirements - Implementation Verification](../../certification-for-data-providers/implementation-verification.md)
 
 ### **3\. Data Mapping**
 
-See [Requirements - Data Mapping](../../certification-for-data-providers/requirements-data-mapping.md)
+See [Requirements - Data Mapping](../../certification-for-data-providers/data-mapping.md)
 
 ### 4\. Usage Narrative
 
@@ -50,7 +50,7 @@ Note that there are often some questions as to what outcome qualifies as
 "passing" a test, when there are significant data model differences, slight
 differences in data semantics between systems, use of default values, or other
 situations. In such cases, the
-[Requirements - Testing Requirements](../../certification-for-data-providers/requirements-testing-requirements.md)
+[Requirements - Testing Requirements](../../certification-for-data-providers/testing-requirements.md)
 document is used to determine the outcome.
 
 Please be aware that actual student data _—_ including anonymized or obfuscated
@@ -110,9 +110,9 @@ the [Registry of Ed-Fi Certified Products](../../registry-of-ed-fi-certified-pr
 The certification record will contain all documentation submitted above.
 
 Certifications are valid for one year. Please review the
-[Requirements for Recertification](../../certification-for-data-providers/requirements-recertification.md).
+[Requirements for Recertification](../../certification-for-data-providers/recertification.md).
 
 Please note that
-remaining [Requirements - Implementation Verification](../../certification-for-data-providers/requirements-implementation-verification.md) documents
+remaining [Requirements - Implementation Verification](../../certification-for-data-providers/implementation-verification.md) documents
 must be submitted within the time period described in that document, in order to
 retain the certification.

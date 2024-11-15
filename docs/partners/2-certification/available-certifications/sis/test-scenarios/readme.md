@@ -20,7 +20,7 @@ the test cases for API resources listed below under **Required API Resources.**
 occur as changes are made during normal product usage. It is acceptable for
 product to batch updates, but such batches MUST occur such that changes are
 near-real time.
-See [Requirements - Testing Requirements](../../../certification-for-data-providers/requirements-testing-requirements.md) for
+See [Requirements - Testing Requirements](../../../certification-for-data-providers/testing-requirements.md) for
 more information.
 
 ### Batch Test Cases
@@ -77,7 +77,7 @@ the data MUST NOT be real or even derived from real data.
 For each API resource element, the requirement status is marked as follows:
 
 * **REQUIRED**: the element must be supplied. Note that
-  the [Requirements - Testing Requirements](../../../certification-for-data-providers/requirements-testing-requirements.md)
+  the [Requirements - Testing Requirements](../../../certification-for-data-providers/testing-requirements.md)
   lists permitted workarounds for many cases where the element may be missing in
   the source system.
 

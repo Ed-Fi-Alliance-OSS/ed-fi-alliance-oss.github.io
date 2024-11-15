@@ -1,4 +1,4 @@
-# Requirements - Partner Program
+# Partner Program
 
 The organization seeking to certify a product MUST be an Ed-Fi Partner. The
 partner status MUST be maintained for the duration of the certification.

@@ -15,15 +15,15 @@ clarity and uniformity.
 
 ### 1. Product Availability Information
 
-See [Requirements - Product Availability Information](../../certification-for-data-providers/requirements-product-availability-information.md)
+See [Requirements - Product Availability Information](../../certification-for-data-providers/product-availability-information.md)
 
 ### 2. Initial Implementation Verification Information
 
-See [Requirements - Implementation Verification](../../certification-for-data-providers/requirements-implementation-verification.md)
+See [Requirements - Implementation Verification](../../certification-for-data-providers/implementation-verification.md)
 
 ### 3. Data Mapping
 
-See [Requirements - Data Mapping](../../certification-for-data-providers/requirements-data-mapping.md)
+See [Requirements - Data Mapping](../../certification-for-data-providers/data-mapping.md)
 
 ### 4. Usage Narrative
 

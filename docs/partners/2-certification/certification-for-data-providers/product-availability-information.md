@@ -1,4 +1,4 @@
-# Requirements - Product Availability Information
+# Product Availability Information
 
 The data provider MUST provide information on the availability of all
 functionality that was used to complete certification. That information MUST

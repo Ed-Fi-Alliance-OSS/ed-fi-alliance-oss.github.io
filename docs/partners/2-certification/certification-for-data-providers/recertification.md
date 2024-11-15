@@ -1,4 +1,4 @@
-# Requirements - Re-Certification
+# Re-Certification
 
 A partner MAY re-certify a product at any time, and MUST re-certify before
 expiration in order to avoid losing its certified status.
@@ -11,5 +11,4 @@ from a third party and substituted in the market for a previously certified
 product would not be eligible for recertification.
 
 Recertification requirements are described under the applicable
-certification _–_
-consult [Available Certifications](../available-certifications/readme.md).
+certification - consult [Available Certifications](../available-certifications/readme.md).
