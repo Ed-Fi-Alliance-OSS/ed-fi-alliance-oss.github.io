@@ -9,6 +9,14 @@ Badge](./ed-fi-api-consumer-badge.md)
 
 ## Requirements
 
+:::info
+
+In addition to the specifics listed below, a vendor must satisfy all applicable
+core requirements listed in [Badging Requirements for Technology
+Providers](../badging-requirements.md).
+
+:::
+
 To be awarded this badge, a product must be able to consume data from the Ed-Fi
 ODS platform via standard platform access points.
 
