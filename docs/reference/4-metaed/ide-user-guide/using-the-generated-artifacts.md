@@ -7,7 +7,7 @@ the Explorer in the MetaEdOutput directory. We figure you wouldn't be here if
 you didn't have a solid working knowledge of Ed-Fi technology — but a few pieces
 of information are worth covering.
 
-![Generated artifacts](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/img/metaed-output-folder.png)
+![Generated artifacts](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/metaed-output-folder.png)
 
 ## Generated SQL
 
@@ -92,7 +92,7 @@ The generated files are:
 The HTML version of the data handbook is a self-contained file that can be run
 locally or hosted on a web server. An example of the output is shown below:
 
-![Ed-Fi Data Handbook](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/img/Ed-Fi-Data-Handbook.png)
+![Ed-Fi Data Handbook](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/Ed-Fi-Data-Handbook.png)
 
 ## Artifact Deployment for ODS / API Builds
 
@@ -115,12 +115,12 @@ more information on creating the related C# project.
 First, ensure that your Ed-Fi ODS / API source directory is set properly in the
 MetaEd IDE settings.
 
-![ODS/API path](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/img/deployment-directory.png)
+![ODS/API path](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/deployment-directory.png)
 
 Then, deploy by selecting **MetaEd** > **Deploy** from the menu bar. Click OK on
 the confirmation dialog.
 
-![Deploy artifacts](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/img/class-discussion-deploy.png)
+![Deploy artifacts](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/class-discussion-deploy.png)
 
 This will run a new build of all artifacts, and the artifacts required for the
 ODS / API will be copied over to the correct locations.

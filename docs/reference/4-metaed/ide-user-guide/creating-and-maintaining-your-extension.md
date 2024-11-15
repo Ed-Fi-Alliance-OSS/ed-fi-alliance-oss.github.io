@@ -164,20 +164,20 @@ click the Build button after you have opened your extension: this will present
 you with an error message that helpfully tells you where to find the data model
 files. Copy that location and paste it in when adding a folder to the workspace.
 
-![Error message](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/img/nothing-to-deploy.png)
+![Error message](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/nothing-to-deploy.png)
 
 ## Step 5. Add MetaEd Files to the Project Folder
 
 1. Right-click on any of the folders to add a new file.
 
-    ![Right-click to add a new file](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/img/new-domain-entity.png)
+    ![Right-click to add a new file](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/new-domain-entity.png)
 
 2. When you save the file, be sure to save with `metaed`  as the file extension.
     For example, if you have a new Domainentity called `ClassDiscussion` then
     you would create the file under the `DomainEntity` folder and name it
     `ClassDiscussion.metaed`.
 
-    ![File extension](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/img/class-discussion-file.png)
+    ![File extension](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/class-discussion-file.png)
 
       :::tip
 
@@ -190,7 +190,7 @@ files. Copy that location and paste it in when adding a folder to the workspace.
 3. Now open your new file and begin adding detail to it, using the MetaEd
     [Language Specification](../language-specification/readme.md).
 
-    ![Language Specification usage](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/img/class-discussion-model.png)
+    ![Language Specification usage](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/class-discussion-model.png)
 
 ## Step 6. Build the Project
 
@@ -198,7 +198,7 @@ When you are ready to test that your project will build properly, click the
 `Build` button in the upper right corner of the editor. After clicking this, you
 will see a notification "Building MetaEd..." in the bottom right corner.
 
-![Build project](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/img/class-discussion-build.png)
+![Build project](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/class-discussion-build.png)
 
 :::info
 
@@ -210,7 +210,7 @@ if you run into an error and are unsure of how to correct it.
 
 Artifacts build successfully.
 
-![Artifacts build successfully](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/img/metaed-build-success.png)
+![Artifacts build successfully](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/metaed-build-success.png)
 
 ## Step 7. View MetaEd Output
 
@@ -220,14 +220,14 @@ workspace folder at the time that the project was built. However, the folder
 will contain generated artifacts for all of the MetaEd projects in the
 workspace.
 
-![MetaEd Output](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/img/generated-sql-files.png)
+![MetaEd Output](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/generated-sql-files.png)
 
 ## Step 8. Save Workspace File (optional)
 
 Click on `File > Save Workspace As`  to create a workspace file in your
 extension folder.
 
-![Save Workspace As](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/img/save-workspace.png)
+![Save Workspace As](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/save-workspace.png)
 
 This creates a workspace file that contains any settings that you configured in
 Workspace Settings, like this:
@@ -255,7 +255,7 @@ The next time you open the extension folder, you will be prompted to also open
 the Ed-Fi model folder (which is required in order to run the Build and Deploy
 actions).
 
-![Open Ed-Fi model folder](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/img/contains-workspace-file.png)
+![Open Ed-Fi model folder](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/contains-workspace-file.png)
 
 :::warning
 

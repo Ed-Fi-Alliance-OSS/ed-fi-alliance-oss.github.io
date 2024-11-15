@@ -14,7 +14,7 @@ errors) are color red (error) or gold (warning) in the tree view (note: gold is
 difficult to see in light themes). All errors in all files of the project are
 listed below.
 
-![Problems pane](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/img/problems-pane.png)
+![Problems pane](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/problems-pane.png)
 
 :::tip
 
@@ -28,14 +28,14 @@ Problems`  menu or Control-Shift-M keyboard shortcut.
 Click the funnel icon in the Problems pane to filter the visible problems, or
 type into the text box to find specific problems.
 
-![Filter the problem list](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/img/show-warnings.png)
+![Filter the problem list](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/show-warnings.png)
 
 ## Step 2. Navigate to Warning or Error Location
 
 To navigate to the precise location of an error, you may click the problem text
 to open the file and jump directly to the problematic line.
 
-![Navigate to the error location](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/img/warning-detail.png)
+![Navigate to the error location](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/warning-detail.png)
 
 ## Step 3. Correct the Issue
 

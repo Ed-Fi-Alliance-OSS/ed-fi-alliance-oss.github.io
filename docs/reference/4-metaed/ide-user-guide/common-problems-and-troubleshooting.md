@@ -18,7 +18,7 @@ versions are available. To check on the status, you can open the Extensions
 panel and search for MetaEd. There, you can see the currently installed version
 number.
 
-![MetaEd IDE version](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/img/find-version.png)
+![MetaEd IDE version](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/find-version.png)
 
 If you suspect there is a newer version, but are having trouble getting Visual
 Studio Code to install the update, then you can [view all available
@@ -27,7 +27,7 @@ on the Visual Studio Marketplace and manually download a newer version. Install
 the manually downloaded version with the Install from VSIX command, as shown
 below.
 
-![Install from VSIX](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/img/install-from-vsix.png)
+![Install from VSIX](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/install-from-vsix.png)
 
 ### I want to fully uninstall MetaEd IDE
 
@@ -38,7 +38,7 @@ button. Optionally, uninstall VS Code.
 
 This is normal and should be harmless.
 
-![MetaEd controls in a non-MetaEd project](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/img/metaed-has-started.png)
+![MetaEd controls in a non-MetaEd project](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/metaed-has-started.png)
 
 If you do not wish to see MetaEd on other folders, then please disable the
 extension until it is needed again. Open the list of extensions, find MetaEd,
@@ -85,13 +85,13 @@ Common causes:
 The error pictured below seems to indicate that descriptors may be included in
 domain files, which is incorrect.
 
-![Descriptors cannot be included in domain files](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/img/mismatched-input.png)
+![Descriptors cannot be included in domain files](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/mismatched-input.png)
 
 Descriptors cannot be included in domain files. The error message above may be
 corrected in a future release. The error message below provides the correct set
 of items that may be included in a domain file.
 
-![Descriptors cannot be included in domain files](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/img/entity-does-not-exist.png)
+![Descriptors cannot be included in domain files](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/entity-does-not-exist.png)
 
 :::info
 
@@ -158,7 +158,7 @@ MetaEd. Older versions not displayed here are no longer supported. ODS/API 6.2
 expected to be more generic by the time ODS/API 7.2 comes out, at which time it
 will likely simply "6" or "7" without the full version number.
 
-![ODS/API versions](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/img/choose-target-version.png)
+![ODS/API versions](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/choose-target-version.png)
 
 ### I clicked the button, and nothing happened
 
@@ -168,7 +168,7 @@ issue, please submit a support ticket in [Ed-Fi
 Tracker](https://tracker.ed-fi.org) with a copy of the error message and as much
 detail as you can provide about the conditions under which the error occurred.
 
-![Output panel](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/img/metaed-tasks-output.png)
+![Output panel](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/metaed-tasks-output.png)
 
 ### I tried to build or deploy and received an error message about needing a Data Standard project
 
@@ -182,17 +182,17 @@ location of all of the data model versions that are bundled with the MetaEd IDE.
 You can highlight the folder name, copy it, and paste into the window when
 adding adding a folder to a workspace.
 
-![Data model versions](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/img/ds-project-copy-text.png)
+![Data model versions](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/ds-project-copy-text.png)
 
-![Data model versions](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/img/add-folder-to-workspace.png)
+![Data model versions](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/add-folder-to-workspace.png)
 
-![Data model versions](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/img/selecting-folder.png)
+![Data model versions](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/selecting-folder.png)
 
-![Data model versions](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/img/selecting-model-version.png)
+![Data model versions](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/selecting-model-version.png)
 
 ### I added a Data Standard project and get an error message with the wrong ODS/API version
 
-![Data Standard project](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/img/requires-data-standard-project.png)
+![Data Standard project](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/requires-data-standard-project.png)
 
 This occurs when MetaEd expects you to use one model version and you have loaded
 a different one in the explorer panel. And sometimes, you may think that you
@@ -204,11 +204,11 @@ the user settings should override anything in workspace, but we have seen some
 inconsistency there, with workspace settings sometimes "winning". In general, we
 recommend only using the workspace settings.
 
-![Workspace settings](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/img/use-workspace-settings.png)
+![Workspace settings](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/use-workspace-settings.png)
 
 ### I tried to deploy, but received a message about checking the ODS/API path
 
-![ODS/API path error](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/img/deploy-failure-note.png)
+![ODS/API path error](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/deploy-failure-note.png)
 
 There are two possible explanations:
 
@@ -217,7 +217,7 @@ There are two possible explanations:
   repository.
 * You have an extension data model, but do not have a C# extension project in
     `Ed-Fi-ODS-Implementation/Application`. The output panel will show a message
-    like this in such a case: ![Output](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/img/project-not-found.png)
+    like this in such a case: ![Output](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/project-not-found.png)
 
   * Reference: [How To: Extend the Ed-Fi ODS / API - Student Transportation
     Example - Step 4. Create Extension Project in ODS/API
@@ -246,7 +246,7 @@ any other indication that the build attempt has completed other than a
 description of the error that caused the build to fail. The error message itself
 is an indication that the attempt has finished.
 
-![Build error](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/img/entity-does-not-exist-1.png)
+![Build error](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/entity-does-not-exist-1.png)
 
 ### I sometimes receive the unhelpful error message "no viable alternative at input `<EOF>`" when working on the end of a file
 
@@ -256,11 +256,11 @@ have enough information to recover from the error, so the best it can do is
 indicate that one exists. Continue working on the file and MetaEd will be able
 to recover once there is more of the file for it to inspect.
 
-![No viable alternative at input `<EOF>`](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/img/no.viable.alternative.png)
+![No viable alternative at input `<EOF>`](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/no.viable.alternative.png)
 
 ### The Interchange XSD files generated by the build are invalid when opened in an XML editor
 
-![Schema location error](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/img/altova-xml-error.png)
+![Schema location error](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/altova-xml-error.png)
 
 In order to assist with file organization, build artifacts are sorted into
 folders according to the type of artifact. However, the schema location
@@ -268,11 +268,11 @@ specified in the generated interchange files expects the schema file to be in
 the same folder as the interchange files. Simply move either the schema file or
 the interchange files (or both) into the same folder.
 
-![Schema location error](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/img/drag-into-interchange.png)
+![Schema location error](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/drag-into-interchange.png)
 
 Your interchange files should now validate properly in an XML editor.
 
-![Validated interchange files](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/img/altova-xml-fix.png)
+![Validated interchange files](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/altova-xml-fix.png)
 
 If you make additional changes and run the build again, all MetaEdOutput folders
 are deleted and replaced in their original locations. Therefore, to validate the
@@ -281,7 +281,7 @@ manually moved again.
 
 ### I received a message saying there are non-MetaEd projects in the workspace, and my extension did not build
 
-![Non-MetaEd projects in the workspace](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/img/ignore-non-metaed-files.png)
+![Non-MetaEd projects in the workspace](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/ignore-non-metaed-files.png)
 
 In the original example of this error, the build process completed and there is
 an output folder, but it did not contain any extension information. The problem
@@ -292,14 +292,14 @@ UTF-8](https://stackoverflow.com/questions/2241348/what-are-unicode-utf-8-and-ut
 Look at the bottom edge of the VS Code window to find the file format; in this
 screenshot you can see it as "UTF-16 LE".
 
-![File format](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/img/package-json-utf-16.png)
+![File format](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/package-json-utf-16.png)
 
 Click on that text to initiate saving in the correct format (UTF-8), as shown in
 these screenshots.
 
-![Save with encoding](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/img/save_with_encoding.jpg)
+![Save with encoding](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/save_with_encoding.jpg)
 
-![Save with encoding](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/img/convert-to-utf-8.png)
+![Save with encoding](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/convert-to-utf-8.png)
 
 ## Additional Resources
 
