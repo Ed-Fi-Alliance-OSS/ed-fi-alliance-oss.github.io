@@ -1,3 +1,7 @@
+---
+hide_table_of_contents: true
+---
+
 # v5 StudentCohort > Cohort Scenarios
 
 Cohorts are used to designate groups of students outside of class Student
@@ -20,11 +24,11 @@ tracking, analysis or intervention.
 3. Update Cohort type for Cohort 1.
 4. Update Cohort type for Cohort 2.
 
-| Resource                       | Property Name                  | Is Collection | Data Type                      | Required / Optional | Scenario 1: POST                         | Scenario 2: POST                         | Scenario 3: PUT                          | Scenario 4: PUT                          |
-| ------------------------------ | ------------------------------ | ------------- | ------------------------------ | ------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| Cohorts                        | educationOrganizationReference | FALSE         | educationOrganizationReference | REQUIRED            |                                              |                                              |                                              |                                              |
-| educationOrganizationReference | educationOrganizationId        | FALSE         | integer                        | REQUIRED            | 255901107                                    | 255901001                                    | 255901107                                    | 255901001                                    |
-| Cohorts                        | cohortIdentifier               | FALSE         | string                         | REQUIRED            | \["1" if possible<br/><br/>\| system value\] | \["2" if possible<br/><br/>\| system value\] | \["1" if possible<br/><br/>\| system value\] | \["2" if possible<br/><br/>\| system value\] |
-| Cohorts                        | cohortTypeDescriptor           | FALSE         | cohortTypeDescriptor           | REQUIRED            | Study Hall                                   | Study Hall                                   | Field Trip                                   | Extracurricular Activity                     |
-| Cohorts                        | cohortDescription              | FALSE         | cohortDescription              | REQUIRED            | Cohort 1 Description                         | Cohort 2 Description                         | Cohort 1 Description                         | Cohort 2 Description                         |
-| Cohorts                        | cohortScopeDescriptor          | FALSE         | cohortScopeDescriptor          | REQUIRED            | District                                     | District                                     | District                                     | District                                     |
+| Resource                       | Property Name                  | Is Collection | Data Type                      | Required | Scenario 1: POST                    | Scenario 2: POST                    | Scenario 3: PUT                     | Scenario 4: PUT                     |
+| ------------------------------ | ------------------------------ | ------------- | ------------------------------ | -------- | ----------------------------------- | ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| Cohorts                        | educationOrganizationReference | FALSE         | educationOrganizationReference | REQUIRED |                                     |                                     |                                     |                                     |
+| educationOrganizationReference | educationOrganizationId        | FALSE         | integer                        | REQUIRED | 255901107                           | 255901001                           | 255901107                           | 255901001                           |
+| Cohorts                        | cohortIdentifier               | FALSE         | string                         | REQUIRED | \["1" if possible \| system value\] | \["2" if possible \| system value\] | \["1" if possible \| system value\] | \["2" if possible \| system value\] |
+| Cohorts                        | cohortTypeDescriptor           | FALSE         | cohortTypeDescriptor           | REQUIRED | Study Hall                          | Study Hall                          | Field Trip                          | Extracurricular Activity            |
+| Cohorts                        | cohortDescription              | FALSE         | cohortDescription              | REQUIRED | Cohort 1 Description                | Cohort 2 Description                | Cohort 1 Description                | Cohort 2 Description                |
+| Cohorts                        | cohortScopeDescriptor          | FALSE         | cohortScopeDescriptor          | REQUIRED | District                            | District                            | District                            | District                            |

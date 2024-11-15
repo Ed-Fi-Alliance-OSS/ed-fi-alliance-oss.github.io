@@ -1,3 +1,7 @@
+---
+hide_table_of_contents: true
+---
+
 # v5 Student Attendance > StudentSchoolAttendanceEvent Scenarios
 
 The Student Attendance Interchange describes student attendance and
@@ -24,16 +28,16 @@ student is in attendance for a school day.
 
 5. Delete the Attendance Event for Austin Jones.
 
-| Resource                      | Property Name                     | Is Collection | Data Type                         | Required / Optional | Scenario 1: POST         | Scenario 2: POST         | Scenario 3: PUT          | Scenario 4: PUT          |
-| ----------------------------- | --------------------------------- | ------------- | --------------------------------- | ------------------- | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
-| StudentSchoolAttendanceEvents | schoolReference                   | FALSE         | schoolReference                   | REQUIRED            |                              |                              |                              |                              |
-| schoolReference               | schoolId                          | FALSE         | integer                           | REQUIRED            | 255901107                    | 255901001                    | 255901107                    | 255901001                    |
-| StudentSchoolAttendanceEvents | sessionReference                  | FALSE         | sessionReference                  | REQUIRED            |                              |                              |                              |                              |
-| sessionReference              | schoolId                          | FALSE         | integer                           | REQUIRED            | 255901107                    | 255901001                    | 255901107                    | 255901001                    |
-| sessionReference              | schoolYear                        | FALSE         | integer                           | REQUIRED            | \[Current School Year\]      | \[Current School Year\]      | \[Current School Year\]      | \[Current School Year\]      |
-| sessionReference              | sessionName                       | FALSE         | string                            | REQUIRED            | 2016-2017 Fall Semester      | 2016-2017 Fall Semester      | 2016-2017 Fall Semester      | 2016-2017 Fall Semester      |
-| StudentSchoolAttendanceEvents | studentReference                  | FALSE         | studentReference                  | REQUIRED            |                              |                              |                              |                              |
-| studentReference              | studentUniqueId                   | FALSE         | string                            | REQUIRED            | 111111                       | 222222                       | 111111                       | 222222                       |
-| StudentSchoolAttendanceEvents | attendanceEventCategoryDescriptor | FALSE         | attendanceEventCategoryDescriptor | REQUIRED            | Tardy                        | Unexcused Absence            | Tardy                        | Unexcused Absence            |
-| StudentSchoolAttendanceEvents | eventDate                         | FALSE         | date                              | REQUIRED            | 9/16/\[Current School Year\] | 10/5/\[Current School Year\] | 9/16/\[Current School Year\] | 10/5/\[Current School Year\] |
-| StudentSchoolAttendanceEvents | attendanceEventReason             | FALSE         | string                            | REQUIRED            |                              |                              | Late                         | No Note                      |
+| Resource                      | Property Name                     | Is Collection | Data Type                         | Required | Scenario 1: POST             | Scenario 2: POST             | Scenario 3: PUT              | Scenario 4: PUT              |
+| ----------------------------- | --------------------------------- | ------------- | --------------------------------- | -------- | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
+| StudentSchoolAttendanceEvents | schoolReference                   | FALSE         | schoolReference                   | REQUIRED |                              |                              |                              |                              |
+| schoolReference               | schoolId                          | FALSE         | integer                           | REQUIRED | 255901107                    | 255901001                    | 255901107                    | 255901001                    |
+| StudentSchoolAttendanceEvents | sessionReference                  | FALSE         | sessionReference                  | REQUIRED |                              |                              |                              |                              |
+| sessionReference              | schoolId                          | FALSE         | integer                           | REQUIRED | 255901107                    | 255901001                    | 255901107                    | 255901001                    |
+| sessionReference              | schoolYear                        | FALSE         | integer                           | REQUIRED | \[Current School Year\]      | \[Current School Year\]      | \[Current School Year\]      | \[Current School Year\]      |
+| sessionReference              | sessionName                       | FALSE         | string                            | REQUIRED | 2016-2017 Fall Semester      | 2016-2017 Fall Semester      | 2016-2017 Fall Semester      | 2016-2017 Fall Semester      |
+| StudentSchoolAttendanceEvents | studentReference                  | FALSE         | studentReference                  | REQUIRED |                              |                              |                              |                              |
+| studentReference              | studentUniqueId                   | FALSE         | string                            | REQUIRED | 111111                       | 222222                       | 111111                       | 222222                       |
+| StudentSchoolAttendanceEvents | attendanceEventCategoryDescriptor | FALSE         | attendanceEventCategoryDescriptor | REQUIRED | Tardy                        | Unexcused Absence            | Tardy                        | Unexcused Absence            |
+| StudentSchoolAttendanceEvents | eventDate                         | FALSE         | date                              | REQUIRED | 9/16/\[Current School Year\] | 10/5/\[Current School Year\] | 9/16/\[Current School Year\] | 10/5/\[Current School Year\] |
+| StudentSchoolAttendanceEvents | attendanceEventReason             | FALSE         | string                            | REQUIRED |                              |                              | Late                         | No Note                      |

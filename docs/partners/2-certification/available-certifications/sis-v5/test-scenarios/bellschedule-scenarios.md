@@ -1,3 +1,7 @@
+---
+hide_table_of_contents: true
+---
+
 # v5 MasterSchedule > BellSchedule Scenarios
 
 This entity represents the schedule of class period meeting times.

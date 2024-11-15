@@ -1,3 +1,7 @@
+---
+hide_table_of_contents: true
+---
+
 # v5 Student Discipline > DisciplineIncident Scenarios
 
 This interchange defines discipline incidents and discipline actions.
@@ -29,14 +33,14 @@ Additional Requirements for behavior requirements:
 * A discipline incident Behavior may be recorded either at the Discipline
   Incident level or at the Student Discipline Incident Association level.
 
-| Resource                    | Property Name                 | Is Collection | Data Type                     | Required / Optional | Scenario 1: POST            | Scenario 2: POST            | Scenario 3: PUT             | Scenario 4: PUT             |
-| --------------------------- | ----------------------------- | ------------- | ----------------------------- | ------------------- | ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
-| DisciplineIncidents         | incidentDate                  | FALSE         | date                          | REQUIRED            | 9/25/[Current School Year] | 9/25/[Current School Year] | 9/25/[Current School Year] | 9/25/[Current School Year] |
-| DisciplineIncidents         | incidentIdentifier            | FALSE         | string                        | REQUIRED            | ["1" if possible \| system value]                   | ["2" if possible  \| system value]                   | ["1" if possible \| system value] | ["2" if possible \| system value] |
-| DisciplineIncidents         | schoolReference               | FALSE         | schoolReference               | REQUIRED            |                                 |                                 |                                 |                                 |
-| schoolReference             | schoolId                      | FALSE         | integer                       | REQUIRED            | 255901107                       | 255901001                       | 255901107                       | 255901001                       |
-| DisciplineIncidents         | behaviors                     | TRUE          | disciplineIncidentBehavior[]  | REQUIRED            |                                 |                                 |                                 |                                 |
-| disciplineIncidentBehaviors | behaviorDescriptor            | FALSE         | behaviorDescriptor            | REQUIRED            | School Code of Conduct          | State Offense                   | School Code of Conduct          | State Offense                   |
-| DisciplineIncidents         | incidentLocationDescriptor    | FALSE         | incidentLocationDescriptor    | REQUIRED            | School bus                      | Library/media center            | School bus                      | **Classroom**                   |
-| DisciplineIncidents         | reporterDescriptionDescriptor | FALSE         | reporterDescriptionDescriptor | REQUIRED            | Staff                           | Staff                           | Staff                           | Staff                           |
-| DisciplineIncidents         | reporterName                  | FALSE         | string                        | REQUIRED            | Loyo, John                      | Smith, Jane                     | **Villa, Mark**                 | Smith, Jane                     |
+| Resource                    | Property Name                 | Is Collection | Data Type                     | Required | Scenario 1: POST                  | Scenario 2: POST                   | Scenario 3: PUT                   | Scenario 4: PUT                   |
+| --------------------------- | ----------------------------- | ------------- | ----------------------------- | -------- | --------------------------------- | ---------------------------------- | --------------------------------- | --------------------------------- |
+| DisciplineIncidents         | incidentDate                  | FALSE         | date                          | REQUIRED | 9/25/[Current School Year]        | 9/25/[Current School Year]         | 9/25/[Current School Year]        | 9/25/[Current School Year]        |
+| DisciplineIncidents         | incidentIdentifier            | FALSE         | string                        | REQUIRED | ["1" if possible \| system value] | ["2" if possible  \| system value] | ["1" if possible \| system value] | ["2" if possible \| system value] |
+| DisciplineIncidents         | schoolReference               | FALSE         | schoolReference               | REQUIRED |                                   |                                    |                                   |                                   |
+| schoolReference             | schoolId                      | FALSE         | integer                       | REQUIRED | 255901107                         | 255901001                          | 255901107                         | 255901001                         |
+| DisciplineIncidents         | behaviors                     | TRUE          | disciplineIncidentBehavior[]  | REQUIRED |                                   |                                    |                                   |                                   |
+| disciplineIncidentBehaviors | behaviorDescriptor            | FALSE         | behaviorDescriptor            | REQUIRED | School Code of Conduct            | State Offense                      | School Code of Conduct            | State Offense                     |
+| DisciplineIncidents         | incidentLocationDescriptor    | FALSE         | incidentLocationDescriptor    | REQUIRED | School bus                        | Library/media center               | School bus                        | **Classroom**                     |
+| DisciplineIncidents         | reporterDescriptionDescriptor | FALSE         | reporterDescriptionDescriptor | REQUIRED | Staff                             | Staff                              | Staff                             | Staff                             |
+| DisciplineIncidents         | reporterName                  | FALSE         | string                        | REQUIRED | Loyo, John                        | Smith, Jane                        | **Villa, Mark**                   | Smith, Jane                       |

@@ -19,9 +19,9 @@ the test cases for API resources listed below under **Required API Resources.**
 "Transactionally" means that API resource transactions / synchronization MUST
 occur as changes are made during normal product usage. It is acceptable for
 product to batch updates, but such batches MUST occur such that changes are
-near-real time.
-See [Requirements - Testing Requirements](../../../certification-for-data-providers/testing-requirements.md) for
-more information.
+near-real time. See [Testing
+Requirements](../../../certification-for-data-providers/testing-requirements.md)
+for more information.
 
 ### Batch Test Cases
 
@@ -121,7 +121,7 @@ the same data concept is modeled.
 | [StaffCohortAssociation](./staff-cohort-association-scenarios.md)                                                     | Create, Update, Delete |
 | [StudentCohortAssociation](./student-cohort-association-scenarios.md)                                                 | Create, Update         |
 | [DisciplineIncident](./disciplineincident-scenarios.md)                                                               | Create, Update         |
-| [StudentDisciplineIncidentAssociation](#)                                                                             | Create, Delete         |
+| [StudentDisciplineIncidentAssociation](./student-discipline-incident-association.md)                                  | Create, Delete         |
 | [DisciplineAction](./disciplineaction-scenarios.md)                                                                   | Create, Update, Delete |
 | [StudentProgramAssociation](./student-program-association-scenarios.md)                                               | Create, Update, Delete |
 | [StudentCTEProgramAssociation](./student-cte-program-association-scenarios.md)                                        | Create, Update         |

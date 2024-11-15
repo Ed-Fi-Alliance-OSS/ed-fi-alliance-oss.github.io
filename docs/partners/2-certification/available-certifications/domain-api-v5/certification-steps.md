@@ -29,16 +29,19 @@ See [Requirements - Data Mapping](../../certification-for-data-providers/data-m
 
 <details>
 <summary>View detail...</summary>
+
 The usage narrative is a short narrative text account of how the data
 exchange functionality is made available to product users. This information will
 be part of the certification registry entry. This SHOULD be fewer than 1000
 words and can be provided in any common text format (MS Word, .txt file, etc.).
+
 </details>
 
 ### 5. Domain Report Template(s)
 
 <details>
 <summary>View detail...</summary>
+
 One or more report templates that are currently used by the Ed-Fi API host to
 provide that domain information to end users of the certifying system.
 
