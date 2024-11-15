@@ -7,7 +7,7 @@ export default {
   sisApiV4: [
     {
       productName: 'Aeries',
-      logo: '/img/partners/certification/Aeries_logo.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/Aeries_logo.png',
       website: 'https://www.aeries.com/',
       validThrough: 'April 30, 2025',
       verifyingAgencies: ['Edna ISD (TX)', 'Moody ISD (TX)'],
@@ -37,7 +37,7 @@ export default {
     },
     {
       productName: 'EschoolPlus',
-      logo: '/img/partners/certification/ESP_Logo.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/ESP_Logo.png',
       website:
         'https://www.powerschool.com/operations/student-information-systems/eschoolplus-sis/',
       validThrough: 'May 9, 2024',
@@ -65,7 +65,7 @@ export default {
     },
     {
       productName: 'PowerSchool',
-      logo: '/img/partners/certification/PowerSchool.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/PowerSchool.png',
       website: 'https://www.powerschool.com/',
       validThrough: 'September 23, 2025',
       verifyingAgencies: ['Lorena ISD, TX', 'Buford City Schools, GA', 'Chisholm Public Schools, MN'],
@@ -98,7 +98,7 @@ export default {
     },
     {
       productName: 'Focus School Software',
-      logo: '/img/partners/certification/Focus_logo.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/Focus_logo.png',
       website: 'https://focusschoolsoftware.com/',
       validThrough: 'June 22, 2024',
       verifyingAgencies: ['Richardson ISD, TX'],
@@ -127,7 +127,7 @@ export default {
     },
     {
       productName: 'Infinite Campus SIS',
-      logo: '/img/partners/certification/Infinite_Campus_logo.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/Infinite_Campus_logo.png',
       website: 'https://www.infinitecampus.com',
       validThrough: 'August 16, 2024',
       verifyingAgencies: ['Princeton ISD, TX'],
@@ -160,7 +160,7 @@ export default {
     },
     {
       productName: 'Ascender SIS',
-      logo: '/img/partners/certification/ascender_logo.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/ascender_logo.png',
       website: 'https://ascendertx.com/',
       validThrough: 'December 14, 2024',
       verifyingAgencies: ['Eagle Pass ISD, TX', 'Dilley ISD', 'Ingram ISD'],
@@ -185,7 +185,7 @@ export default {
     },
     {
       productName: 'EduPoint Synergy',
-      logo: '/img/partners/certification/EduPointLogo_RGB-400x120.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/EduPointLogo_RGB-400x120.png',
       website:
         'http://www.edupoint.com/Products/Student-Information-Management',
       validThrough: 'January 2, 2025',
@@ -214,7 +214,7 @@ export default {
     },
     {
       productName: 'Skyward Qmlativ',
-      logo: '/img/partners/certification/Skyward-logo.jpg',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/Skyward-logo.jpg',
       website: 'https://www.skyward.com/ed-fi',
       validThrough: 'January 10, 2025',
       verifyingAgencies: ['Royse City ISD, TX', 'San Benito CISD, TX', 'KIPP'],
@@ -236,7 +236,7 @@ export default {
     },
     {
       productName: 'Frontline SIS',
-      logo: '/img/partners/certification/Frontline_SIS-Logo.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/Frontline_SIS-Logo.png',
       website:
         'https://www.frontlineeducation.com/special-programs/special-ed-software/student-information-system/',
       validThrough: 'April 17, 2025',
@@ -267,7 +267,7 @@ export default {
     },
     {
       productName: 'Jupiter',
-      logo: '/img/partners/certification/image-20240426-150815.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/image-20240426-150815.png',
       website: 'https://www.jupitered.com/',
       validThrough: 'April 25, 2025',
       verifyingAgencies: [
@@ -298,7 +298,7 @@ export default {
   sisSuite3: [
     {
       productName: 'Aeries SIS (Eagle Software)',
-      logo: '/img/partners/certification/Aeries_logo.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/Aeries_logo.png',
       website: 'https://www.aeries.com/',
       validThrough: 'April 30, 2025',
       verifyingAgencies: [
@@ -332,7 +332,7 @@ export default {
     },
     {
       productName: 'EduPoint Synergy',
-      logo: '/img/partners/certification/EduPointLogo_RGB-400x120.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/EduPointLogo_RGB-400x120.png',
       website:
         'http://www.edupoint.com/Products/Student-Information-Management',
       validThrough: 'January 2, 2025',
@@ -367,7 +367,7 @@ export default {
     },
     {
       productName: 'Infinite Campus SIS',
-      logo: '/img/partners/certification/Infinite_Campus_logo.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/Infinite_Campus_logo.png',
       website: 'https://www.infinitecampus.com',
       validThrough: 'August 16, 2024',
       verifyingAgencies: [
@@ -405,7 +405,7 @@ export default {
     },
     {
       productName: 'Focus School Software',
-      logo: '/img/partners/certification/Focus_logo.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/Focus_logo.png',
       website: 'https://focusschoolsoftware.com/',
       validThrough: 'June 22, 2024',
       verifyingAgencies: [
@@ -438,7 +438,7 @@ export default {
     },
     {
       productName: 'PowerSchool',
-      logo: '/img/partners/certification/PowerSchool.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/PowerSchool.png',
       website: 'https://www.powerschool.com/',
       validThrough: 'May 8, 2024',
       verifyingAgencies: [
@@ -476,7 +476,7 @@ export default {
     },
     {
       productName: 'EschoolPlus',
-      logo: '/img/partners/certification/ESP_Logo.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/ESP_Logo.png',
       website:
         'https://www.powerschool.com/operations/student-information-systems/eschoolplus-sis/',
       validThrough: 'May 9, 2024',
@@ -500,7 +500,7 @@ export default {
     },
     {
       productName: 'Jupiter',
-      logo: '/img/partners/certification/image-20240426-150815.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/image-20240426-150815.png',
       website: 'https://www.jupitered.com/',
       validThrough: 'April 26, 2025',
       verifyingAgencies: [
@@ -531,7 +531,7 @@ export default {
   assessmentOutcomesSuite3: [
     {
       productName: 'Istation ISIP (Indicators of Progress)',
-      logo: '/img/partners/certification/Istation_logo.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/Istation_logo.png',
       website: 'https://www.istation.com/isip-assessment',
       validThrough: 'December 12, 2024',
       verifyingAgencies: [
@@ -560,7 +560,7 @@ export default {
     },
     {
       productName: 'DnA',
-      logo: '/img/partners/certification/Renaissance DnA.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/Renaissance DnA.png',
       website: 'https://www.renaissance.com/products/dna/',
       validThrough: 'December 2, 2023',
       verifyingAgencies: [
@@ -601,7 +601,7 @@ export default {
     },
     {
       productName: 'Cambium Assessment',
-      logo: '/img/partners/certification/2024-09-03_12-46-45.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/2024-09-03_12-46-45.png',
       website: 'https://www.cambiumassessment.com/index.html',
       validThrough: 'September 3, 2025',
       verifyingAgencies: [
@@ -630,7 +630,7 @@ export default {
   domainApiV4: [
     {
       productName: 'Linq & Alio',
-      logo: '/img/partners/certification/_LINQ_Logo_FullColor_Dark_LightBG_RGB%20(1).png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/_LINQ_Logo_FullColor_Dark_LightBG_RGB%20(1).png',
       website: 'https://www.linq.com/solutions/erp/hr/',
       validThrough: 'October 18, 2025',
       verifyingAgencies: ['Mondovi School District, WI'],
@@ -652,7 +652,7 @@ export default {
     },
     {
       productName: 'Skyward Qmlativ',
-      logo: '/img/partners/certification/Skyward-logo.jpg',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/Skyward-logo.jpg',
       website: 'https://www.skyward.com/ed-fi',
       validThrough: 'November 27, 2025',
       verifyingAgencies: ['San Benito CISD'],
@@ -673,7 +673,7 @@ export default {
     },
     {
       productName: 'Skyward SMS',
-      logo: '/img/partners/certification/Skyward-logo.jpg',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/Skyward-logo.jpg',
       website: 'https://www.skyward.com/ed-fi',
       validThrough: 'November 27, 2025',
       verifyingAgencies: ['Sharyland ISD'],
@@ -694,7 +694,7 @@ export default {
     },
     {
       productName: 'Frontline ERP',
-      logo: '/img/partners/certification/Frontline%20ERP%20Logo.jpg',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/Frontline%20ERP%20Logo.jpg',
       website: 'https://www.frontlineeducation.com/solutions/erp/',
       validThrough: 'November 27, 2025',
       verifyingAgencies: ['Magnolia ISD'],
@@ -710,7 +710,7 @@ export default {
     },
     {
       productName: 'Ascender Business',
-      logo: '/img/partners/certification/ascender_logo.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/ascender_logo.png',
       website: 'https://ascendertx.com/',
       validThrough: 'December 14, 2025',
       verifyingAgencies: ['Eagle Pass ISD'],
@@ -726,7 +726,7 @@ export default {
     },
     {
       productName: 'Enterprise ERP - Formerly MUNIS',
-      logo: '/img/partners/certification/tyler_logo_RGB_PNG.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/tyler_logo_RGB_PNG.png',
       website: 'https://www.tylertech.com/',
       validThrough: 'January 17, 2026',
       verifyingAgencies: ['Harmony ISD'],
@@ -749,7 +749,7 @@ export default {
   domainApiSuite3: [
     {
       productName: 'Elevate Standards Alignment',
-      logo: '/img/partners/certification/Elevate_StandardsAlignment.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/Elevate_StandardsAlignment.png',
       website:
         'https://www.instructure.com/learning-companies/products/elevate/elevate-standards-alignment',
       validThrough: 'June 3, 2024',
@@ -770,7 +770,7 @@ export default {
     },
     {
       productName: 'JMC SIS',
-      logo: '/img/partners/certification/5ce84113935d74d185dd7e20_jmc_logo.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/5ce84113935d74d185dd7e20_jmc_logo.png',
       website: 'https://www.jmcinc.com/',
       validThrough: 'January 6, 2025',
       verifyingAgencies: ['WI DPI'],
@@ -787,7 +787,7 @@ export default {
     },
     {
       productName: 'Linq & Alio',
-      logo: '/img/partners/certification/_LINQ_Logo_FullColor_Dark_LightBG_RGB%20(1).png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/_LINQ_Logo_FullColor_Dark_LightBG_RGB%20(1).png',
       website: 'https://www.linq.com/solutions/erp/hr/',
       validThrough: 'October 18, 2025',
       verifyingAgencies: ['Mondovi School District, WI'],

@@ -141,6 +141,6 @@ the same data concept is modeled.
 \*\* A Student must be associated with a School via StudentSchoolAssociation
 before a student record may be updated.
 
-![Ed-Fi UDM Dependency Graph.png](/img/partners/certification/Ed-Fi-UDM-Dependency-Graph.png)
+![Ed-Fi UDM Dependency Graph.png](https://edfidocs.blob.core.windows.net/$web/img/partners/certification/Ed-Fi-UDM-Dependency-Graph.png)
 
 _Ed-Fi API Dependency Graph_
