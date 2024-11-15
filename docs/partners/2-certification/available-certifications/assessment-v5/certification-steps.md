@@ -111,7 +111,7 @@ metadata to learning standards, the provider:
 If present, vendor-specific enumerations MUST be provided in Ed-Fi JSON or XML
 format and will be published as part of the certification record. Note that only
 certain enumerations are permitted to be
-vendor-specific: [Ed-Fi Assessment Outcomes API for Data Standard v5 Certification](../../available-certifications/assessment-outcomes-for-data-standard-v5/readme.md)
+vendor-specific: [Ed-Fi Assessment Outcomes API for Data Standard v5 Certification](../../available-certifications/assessment-v5/readme.md)
 
 The JSON MUST follow this format, which can be used to import the values into an
 Ed-Fi API:
