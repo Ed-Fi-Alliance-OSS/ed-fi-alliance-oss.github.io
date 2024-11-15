@@ -1,6 +1,6 @@
 # Ed-Fi API Consumer Badge
 
-![Ed-Fi API Consumer Badge](/img/partners/badging/ed-fi-api-consumer-badge.webp)
+![Ed-Fi API Consumer Badge](https://edfidocs.blob.core.windows.net/$web/img/partners/badging/ed-fi-api-consumer-badge.webp)
 
 To be awarded this badge, a product must be able to read data out of an Ed-Fi
 defined API and integrate that data into its product offering.

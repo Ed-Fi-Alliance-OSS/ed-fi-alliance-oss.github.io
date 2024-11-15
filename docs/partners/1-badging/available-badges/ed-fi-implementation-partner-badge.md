@@ -1,6 +1,6 @@
 # Ed-Fi Implementation Partner Badge
 
-![Ed-Fi Implementation Partner Badge](/img/partners/badging/ed-fi-implementation-badge.webp)
+![Ed-Fi Implementation Partner Badge](https://edfidocs.blob.core.windows.net/$web/img/partners/badging/ed-fi-implementation-badge.webp)
 
 To be awarded this badge, a vendor must be able to demonstrate adherence to
 Ed-Fi best practices and their services must facilitate Ed-Fi data standards
