@@ -74,7 +74,7 @@ export default ({ badges }) => {
         <th>Services Performed</th>
         <td>
           <a href={badge.servicesPerformed.link}>
-            {badge.organization} services
+            {badge.organization}
           </a>
           {description}
         </td>

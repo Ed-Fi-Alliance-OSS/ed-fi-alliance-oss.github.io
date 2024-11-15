@@ -457,5 +457,25 @@ export default {
           'API error support, ODS error support, Product feedback, Documentation and training, Stakeholder management, Project management and technical planning, Vendor coordination',
       },
     },
+    {
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/crocus.jpg',
+      organizationName: 'Crocus, LLC',
+      website: 'https://www.crocusllc.com',
+      documentation: {
+        'TEA I2I Mapping Spreadsheet': 'https://edfidocs.blob.core.windows.net/$web/assets/partners/badging/crocus-impl-badge/TEA_I2I-Mapping.xlsx',
+        'Data Health Check Testing Plan': 'https://edfidocs.blob.core.windows.net/$web/assets/partners/badging/crocus-impl-badge/Data-Health-Check-Testing-Plan.pdf',
+        'Data Health Check App Mock Up': 'https://edfidocs.blob.core.windows.net/$web/assets/partners/badging/crocus-impl-badge/Data-Health-Check-App-Mock-Up.pdf'
+       },
+      validThrough: 'November 15, 2026',
+      verifyingAgencies: [
+        'Texas Education Agency',
+        'Texas Education Exchange (Region 4)'
+      ],
+      servicesPerformed: {
+        href: 'https://www.crocusllc.com/products-and-services',
+        description:
+          'Documentation and training, Stakeholder management, Governance, Project management and technical planning, Integration development, Vendor coordination',
+      },
+    },
   ],
 };
