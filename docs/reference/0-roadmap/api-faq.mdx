@@ -4,7 +4,7 @@ The Ed-Fi blog post [New Cloud-Native Functionality Coming to the Ed-Fi Alliance
 Technology Suite](https://www.ed-fi.org/blog/cloud-native-ed-fi-technology/)
 introduced a piece of software under active development, the [Ed-Fi Data
 Management
-Service](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service).
+Service](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service) (DMS).
 Eventually, this software will replace the Ed-Fi ODS/API Platform.
 Unsurprisingly, a few themes emerged in the questions and conversations at Ed-Fi
 Tech Congress 2024. We will try to address some of the most common below.
@@ -14,24 +14,37 @@ Tech Congress 2024. We will try to address some of the most common below.
 The Ed-Fi Alliance plans to continue support for the ODS/API Platform through
 school year 2027-2028.
 
-```mermaid
-gantt
-    dateFormat  YYYY-MM
-    section ODS/API 5.4
-        active :a1, 2024-08, 1y
-
-    section ODS/API 6.2
-        active :a2, 2024-08, 2y
-        negotiable :after a2 2026-08, 1y
-
-    section ODS/API 7.x
-        active :a3, 2024-08, 4y
-        negotiable :after a3, 2028-08, 1y
-
-    section DMS
-        testing :a4, 2025-08, 1y
-        production :after a4, 2026-08, 3y
-```
+<div class="container table">
+  <div class="row row--thead">
+      <div class="col col--2 col--th">Application</div>
+      <div class="col col--2 col--th">2025</div>
+      <div class="col col--2 col--th">2026</div>
+      <div class="col col--2 col--th">2027</div>
+      <div class="col col--2 col--th">2028</div>
+      <div class="col col--2 col--th">2029</div>
+  </div>
+  <div class="row col--tr">
+      <div class="col col--2 col--td">ODS/API 5.4</div>
+      <div class="col col--1 col--td" style={{backgroundColor: "var(--ifm-color-info-lightest)"}}>active</div>
+      <div class="col col--9 col--td">&nbsp;</div>
+  </div>
+  <div class="row col--tr-alt">
+      <div class="col col--2 col--td">ODS/API 6.2</div>
+      <div class="col col--3 col--td" style={{backgroundColor: "var(--ifm-color-info-lightest)"}}>active</div>
+      <div class="col col--7 col--td">&nbsp;</div>
+  </div>
+  <div class="row col--tr">
+      <div class="col col--2 col--td">ODS/API 7.x</div>
+      <div class="col col--8 col--td" style={{backgroundColor: "var(--ifm-color-info-lightest)"}}>active</div>
+      <div class="col col--2 col--td">&nbsp;</div>
+  </div>
+  <div class="row col--tr-alt">
+      <div class="col col--2 col--td">DMS</div>
+      <div class="col col--1 col--td">&nbsp;</div>
+      <div class="col col--2 col--td" style={{backgroundColor: "var(--ifm-color-warning-lightest)"}}>testing</div>
+      <div class="col col--7 col--td" style={{backgroundColor: "var(--ifm-color-info-lightest)"}}>active</div>
+  </div>
+</div>
 
 As shown in the table above:
 
@@ -39,11 +52,11 @@ As shown in the table above:
   will be supported for one more school year. The 5.x line of code was first
   released in 2020, for the 2021-2022 school year. It supported Data Standard 3
   (current: 3.3).
-* ODS/API 6.2, this past February, supports Data Standard 4.0. No further
+* ODS/API 6.2, released February 2024, supports Data Standard 4.0. No further
   feature enhancements are planned. It will be supported in production at least
   through the 2025-2026 school year; this may be extended depending on community
   adoption of the newer ODS/API 7.x releases.
-* ODS/API 7.2 will be released in June, and we plan to continue with biannual
+* ODS/API 7.2 was released in June 2024, and we plan to continue with biannual
   feature enhancements (and bug fixes) for the next several years.
 
   This version supports Data Standard 4 and Data Standard 5. It will be fully
@@ -76,13 +89,12 @@ Goal timeline:
 
 The first release candidate will be fully-compatible with the _must have_
 requirements described in the [Ed-Fi API Design and Implementation Guidelines,
-4.0](https://edfi.atlassian.net/wiki/spaces/EFAPIGUIDE/pages/144867329/Ed-Fi+API+Design+and+Implementation+Guidelines).
-The second release candidate will expand further into the _should have_ and
-_optional_ requirements and features. State Education Agencies (SEA) frequently
-have more detailed technical requirements for client authorization and for
-access to raw data for warehousing and reporting. Tentatively, those features
-will be given a longer timeline; this will provide more opportunity for
-co-development with the SEA community.
+4.0](../1-data-exchange/api-guidelines/readme.md). The second release candidate
+will expand further into the _should have_ and _optional_ requirements and
+features. State Education Agencies (SEA) frequently have more detailed technical
+requirements for client authorization and for access to raw data for warehousing
+and reporting. Tentatively, those features will be given a longer timeline; this
+will provide more opportunity for co-development with the SEA community.
 
 The final release will not have complete parity with the optional features in
 the ODS/API Platform (see note below). The Project Tanager Technical Workgroup
@@ -139,9 +151,9 @@ Management Service.
 
 ## Q: Will integrations built for the Admin API continue to work with the new system?
 
-Yes – if referring to the Admin API
+Yes &mdash; if referring to the Admin API
 [specification](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-API-Standards/blob/main/api-specifications/admin-api/admin-api-2.2.0.yaml).
-No – if referring to the specific software application called "Admin API". The
+No &mdash; if referring to the specific software application called "Admin API". The
 Data Management Service will have a different database system than the ODS/API,
 including restructuring of the data currently housed in the `EdFi_Admin` and
 `EdFi_Security` databases. The project will introduce a new application,
