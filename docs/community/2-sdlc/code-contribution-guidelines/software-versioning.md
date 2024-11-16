@@ -9,10 +9,8 @@ _Suite Number_.
 
 Also see:
 
-* [Ed-Fi Technical Suite Version Matrix](/reference/supported-versions)
-* [Ed-Fi Data Standard Versioning and
-  Releases](https://edfi.atlassian.net/wiki/spaces/EFDS32/pages/20187665/Ed-Fi+Data+Standard+Versioning+and+Releases)
-  (Confluence)
+* [Ed-Fi Technical Suite Version  Matrix](/reference/roadmap/supported-versions)
+* [Ed-Fi Data Standard Versioning and Releases](/reference/data-exchange/versioning-and-releases)
 * [Open Source and New
   Versioning](https://www.ed-fi.org/blog/2020/05/open-source-and-new-versioning/)
   (blog)
@@ -38,9 +36,9 @@ breaking changes.
 ## Suite Number
 
 In 2018, the Alliance introduced the concept of Technical Suites, that represent
-a  generation of technology products that share a data model and are designed to
-work together. See [Ed-Fi Technical Suite Version
-Matrix](https://edfi.atlassian.net/wiki/spaces/ETKB/pages/20875825/Ed-Fi+Technical+Suite+Version+Matrix).
+a generation of technology products that share a data model and are designed to
+work together. See [Ed-Fi Technology Suite Supported
+Versions](/reference/roadmap/supported-versions).
 
 Integrating the Suite Number into the versioning scheme was introduced in
 mid-2020; prior to this, an Ed-Fi ODS/API release was given only a plain version

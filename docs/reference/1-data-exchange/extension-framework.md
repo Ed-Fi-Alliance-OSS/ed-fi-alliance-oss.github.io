@@ -90,14 +90,14 @@ overview of the steps involved:
    [MetaEd Page](../4-metaed/readme.md).
 2. **Define and build the extension.** See the [How To: Extend the Ed-Fi ODS /
    API - Alternative Education Program
-   Example](/reference/ods-api/how-to-guides/how-to-extend-the-ed-fi-ods-api-alternative-education-program-example.md)
+   Example](/reference/ods-api/how-to-guides/how-to-extend-the-ed-fi-ods-api-alternative-education-program-example)
    for step-by-step guide using the Student Transportation extension as an
    example.
 3. **Create an Extension Plugin.** See the [How To: Create an
-   Extension](/reference/ods-api/how-to-guides/how-to-create-an-extension-plugin.md)
+   Extension](/reference/ods-api/how-to-guides/how-to-create-an-extension-plugin)
    page.
 4. **Deploy an Extension Plugin.** See the [How To: Deploy an
-   Extension](/reference/ods-api/how-to-guides/how-to-deploy-an-extension-plugin.md)
+   Extension](/reference/ods-api/how-to-guides/how-to-deploy-an-extension-plugin)
    page.
 
 ## Best Practices

@@ -24,7 +24,7 @@ covered in the Unifying Data Model.
 ## Revisions
 
 The Ed-Fi Alliance manages and revises the Unify Data Model annually. Please see
-the [Ed-Fi Technology Roadmap](../../roadmap.mdx) for announcements about
+the [Ed-Fi Technology Roadmap](../../0-roadmap/readme.mdx) for announcements about
 upcoming releases. Each revision is given a version number that follows the
 SemVer labeling conventions: major.minor.patch number (ex: 1.2.3), where a
 change in the major number denotes that there are breaking changes, the minor
@@ -32,8 +32,8 @@ number denotes non-breaking additions, and the patch number is used to represent
 bug fixes (in this case, "bug fixes" may be documentation-only updates).
 
 Please see [Ed-Fi Technology Suite Supported
-Versions](../../supported-versions.md) for the version history of the _Data
-Standard_, which encompasses the Data Model.
+Versions](../../0-roadmap/supported-versions.md) for the version history of the
+_Data Standard_, which encompasses the Data Model.
 
 :::tip
 
