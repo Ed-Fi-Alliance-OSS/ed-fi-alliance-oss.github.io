@@ -52,11 +52,7 @@
   "markdownlint-cli2": {
     "config": {
       "default": true,
-      "line-length": {
-        "code_block_line_length": 110,
-        "code_blocks": true,
-        "tables": false
-      },
+      "line-length": false,
       "no-inline-html": {
         "allowed_elements": [
           "codapi-snippet",
