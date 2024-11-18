@@ -8,6 +8,14 @@ delivery in their customer's solutions.
 
 ## Requirements
 
+:::info
+
+In addition to the specifics listed below, a vendor must satisfy all applicable
+core requirements listed in [Badging Requirements for Technology
+Providers](../badging-requirements.md).
+
+:::
+
 ### Verifications - Quality
 
 Like other badges, a verifying agency/company is required. The nature of the

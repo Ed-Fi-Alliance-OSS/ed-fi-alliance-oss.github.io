@@ -20,6 +20,14 @@ renewed annually.
 
 ## Requirements
 
+:::info
+
+In addition to the specifics listed below, a vendor must satisfy all applicable
+core requirements listed in [Badging Requirements for Technology
+Providers](../badging-requirements.md).
+
+:::
+
 To qualify for this badge, a product must meet the following requirements.
 
 1. **The product must include a recent, full version of the Ed-Fi Operational

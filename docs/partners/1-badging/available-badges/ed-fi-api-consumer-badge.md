@@ -7,7 +7,14 @@ defined API and integrate that data into its product offering.
 
 ## Requirements
 
-* The integration of the data must be such that it clearly provides
-    significant additional value to the product end users, and the
-    implementation verification submitted by the badge applicant must validate
-    this utility.
+:::info
+
+In addition to the specifics listed below, a vendor must satisfy all applicable
+core requirements listed in [Badging Requirements for Technology
+Providers](../badging-requirements.md).
+
+:::
+
+* The integration of the data must be such that it clearly provides significant
+  additional value to the product end users, and the implementation verification
+  submitted by the badge applicant must validate this utility.
