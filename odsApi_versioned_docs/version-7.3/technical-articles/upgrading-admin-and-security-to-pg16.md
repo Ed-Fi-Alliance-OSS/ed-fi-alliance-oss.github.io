@@ -35,12 +35,12 @@ create backups of each database.
 <details>
 <summary>Windows examples</summary>
 
-```none
-C:\Program Files\PostgreSQL\<old_version>\bin\pg_dump.exe -U pgadmin -d EdFi_Admin -f EdFi_Admin_backup.sql
+```powershell
+& "C:\Program Files\PostgreSQL\<old_version>\bin\pg_dump.exe" -U pgadmin -d EdFi_Admin -f EdFi_Admin_backup.sql
 ```
 
-```none
-C:\Program Files\PostgreSQL\<old_version>\bin\pg_dump.exe -U pgadmin -d EdFi_Security -f EdFi_Security_backup.sql
+```powershell
+& "C:\Program Files\PostgreSQL\<old_version>\bin\pg_dump.exe" -U pgadmin -d EdFi_Security -f EdFi_Security_backup.sql
 ```
 
 </details>
@@ -48,12 +48,12 @@ C:\Program Files\PostgreSQL\<old_version>\bin\pg_dump.exe -U pgadmin -d EdFi_Sec
 <details>
 <summary>Linux examples</summary>
 
-```none
-/usr/pgsql-<old version>/bin/pg_dump -U pgadmin -d EdFi_Admin --create -f EdFi_Admin_backup.sql
+```powershell
+/usr/pgsql-<old version>/bin/pg_dump -U pgadmin -d EdFi_Admin -f EdFi_Admin_backup.sql
 ```
 
-```none
-/usr/pgsql-<old version>/bin/pg_dump --create -U pgadmin -d EdFi_Security --create -f EdFi_Security_backup.sql
+```powershell
+/usr/pgsql-<old version>/bin/pg_dump -U pgadmin -d EdFi_Security -f EdFi_Security_backup.sql
 ```
 
 </details>
@@ -65,8 +65,8 @@ Stop the old PostgreSQL instance.
 <details>
 <summary>Windows examples</summary>
 
-```none
-C:\Program Files\PostgreSQL\<old_version>\bin\pg_ctl -D "C:\Program Files\PostgreSQL\<old_version>\data" stop
+```powershell
+& "C:\Program Files\PostgreSQL\<old_version>\bin\pg_ctl" -D "C:\Program Files\PostgreSQL\<old_version>\data" stop
 ```
 
 </details>
@@ -74,7 +74,7 @@ C:\Program Files\PostgreSQL\<old_version>\bin\pg_ctl -D "C:\Program Files\Postgr
 <details>
 <summary>Linux examples</summary>
 
-```none
+```powershell
 /usr/pgsql-<old version>/bin/pg_ctl -D <old PGDATA directory> stop
 ```
 
@@ -92,8 +92,8 @@ Start the new instance of PostgreSQL 16.x (if it is not already running.)
 <details>
 <summary>Windows examples</summary>
 
-```none
-C:\Program Files\PostgreSQL\16\bin\pg_ctl -D "C:\Program Files\PostgreSQL\16\data" start
+```powershell
+& "C:\Program Files\PostgreSQL\16\bin\pg_ctl" -D "C:\Program Files\PostgreSQL\16\data" start
 ```
 
 </details>
@@ -101,7 +101,7 @@ C:\Program Files\PostgreSQL\16\bin\pg_ctl -D "C:\Program Files\PostgreSQL\16\dat
 <details>
 <summary>Linux examples</summary>
 
-```none
+```powershell
 /usr/pgsql-16/bin/pg_ctl -D <new PGDATA directory> start
 ```
 
@@ -115,20 +115,20 @@ PostgreSQL 16.x instance and then restore the backup files into them.
 <details>
 <summary>Windows examples</summary>
 
-```none
-C:\Program Files\PostgreSQL\16\bin\psql -U pgadmin -c 'create database EdFi_Admin;'
+```powershell
+& "C:\Program Files\PostgreSQL\16\bin\psql" -U pgadmin -c 'create database EdFi_Admin;'
 ```
 
-```none
-C:\Program Files\PostgreSQL\16\bin\psql -U pgadmin -c 'create database EdFi_Security;'
+```powershell
+& "C:\Program Files\PostgreSQL\16\bin\psql" -U pgadmin -c 'create database EdFi_Security;'
 ```
 
-```none
-C:\Program Files\PostgreSQL\16\bin\psql -U pgadmin -d EdFi_Admin < EdFi_Admin_backup.sql
+```powershell
+& "C:\Program Files\PostgreSQL\16\bin\psql" -U pgadmin -d EdFi_Admin < EdFi_Admin_backup.sql
 ```
 
-```none
-C:\Program Files\PostgreSQL\16\bin\psql -U pgadmin -d EdFi_Security < EdFi_Security_backup.sql
+```powershell
+& "C:\Program Files\PostgreSQL\16\bin\psql" -U pgadmin -d EdFi_Security < EdFi_Security_backup.sql
 ```
 
 </details>
@@ -136,19 +136,19 @@ C:\Program Files\PostgreSQL\16\bin\psql -U pgadmin -d EdFi_Security < EdFi_Secur
 <details>
 <summary>Linux examples</summary>
 
-```none
+```powershell
 /usr/pgsql-16/bin/psql -U pgadmin -c 'create database EdFi_Security;'
 ```
 
-```none
+```powershell
 /usr/pgsql-16/bin/psql -U pgadmin -c 'create database EdFi_Admin;'
 ```
 
-```none
+```powershell
 /usr/pgsql-16/bin/psql -U pgadmin -d EdFi_Admin < EdFi_Admin_backup.sql
 ```
 
-```none
+```powershell
 /usr/pgsql-16/bin/psql -U pgadmin -d EdFi_Security < EdFi_Security_backup.sql
 ```
 
