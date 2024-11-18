@@ -398,11 +398,11 @@ variable is properly configured.
 
 To set the "StandardVersion" variable:
 
-1. Press the **Windows key** on your keyboard, type **Environment
+1. Press the **Windows key** 🪟 on your keyboard, type **Environment
    Variables**, select **Edit the system environment variables**, and
    press **Enter.** This brings up **System Properties**. Under **Advanced**,
    select **Environment Variables**. (Alternatively, right-click the **Start
-   Menu** button, select **System**, and click on the **Advanced system
+   Menu** 🪟 button, select **System**, and click on the **Advanced system
     settings**. Under **Advanced**, select **Environment Variables**.)
 2. Under **System variables**, select **New...**
 3. For **Variable name**, enter **StandardVersion**
