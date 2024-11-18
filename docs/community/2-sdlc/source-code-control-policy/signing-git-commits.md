@@ -23,10 +23,13 @@ developer and to verify that the developer has signed the CLA.
 If you use Git Bash, then you already have GPG at path /usr/bin/gpg .
 
 If you use PowerShell or cmd.exe, then you will need to install GPG. The
-simplest way to install GPG is with chocolatey:
+simplest way to install GPG is with chocolatey or winget:
 
 ```powershell
 choco install -y gpg4win
+
+# Or:
+winget install gpg4win
 ```
 
 Alternately, you can download and install
@@ -131,7 +134,7 @@ the Windows instructions above have already been completed.
 
 Pure Linux-developers probably know these commands or can easily follow along.
 
-### 1. Install Git
+### 1. Install Git (Linux)
 
 See [Get started using Git on Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/tutorials/wsl-git)
 
@@ -145,7 +148,7 @@ cp /mnt/c/users/john.doe/AppData/Roaming/gnupg ~/.gnupg -r
 rm ~/.gnupg/*.lock
 ```
 
-### 3. Configure Git to Always Sign
+### 3. Configure Git to Always Sign (Linux)
 
 You will need the key ID for this. In the following example from the Git manual,
 the id is "E1E474F2023B5ABFF8752630BB4".
