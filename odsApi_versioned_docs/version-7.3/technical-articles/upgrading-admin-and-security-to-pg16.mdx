@@ -32,53 +32,48 @@ Cluster](https://www.postgresql.org/docs/16/upgrading.html#UPGRADING).
 Use the `pg_dump` utility from the currently installed version of PostgreSQL to
 create backups of each database.
 
-<details>
-<summary>Windows examples</summary>
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+  <TabItem value="Windows" label="Windows" default>
 
 ```powershell
 & "C:\Program Files\PostgreSQL\<old_version>\bin\pg_dump.exe" -U pgadmin -d EdFi_Admin -f EdFi_Admin_backup.sql
-```
-
-```powershell
 & "C:\Program Files\PostgreSQL\<old_version>\bin\pg_dump.exe" -U pgadmin -d EdFi_Security -f EdFi_Security_backup.sql
 ```
 
-</details>
-
-<details>
-<summary>Linux examples</summary>
+</TabItem>
+<TabItem value="Linux" label="Linux">
 
 ```powershell
 /usr/pgsql-<old version>/bin/pg_dump -U pgadmin -d EdFi_Admin -f EdFi_Admin_backup.sql
-```
-
-```powershell
 /usr/pgsql-<old version>/bin/pg_dump -U pgadmin -d EdFi_Security -f EdFi_Security_backup.sql
 ```
 
-</details>
+</TabItem>
+</Tabs>
 
 ### Step 2. Stop the old PostgeSQL server instance
 
 Stop the old PostgreSQL instance.
 
-<details>
-<summary>Windows examples</summary>
+<Tabs>
+  <TabItem value="Windows" label="Windows" default>
 
 ```powershell
 & "C:\Program Files\PostgreSQL\<old_version>\bin\pg_ctl" -D "C:\Program Files\PostgreSQL\<old_version>\data" stop
 ```
 
-</details>
-
-<details>
-<summary>Linux examples</summary>
+</TabItem>
+<TabItem value="Linux" label="Linux">
 
 ```powershell
 /usr/pgsql-<old version>/bin/pg_ctl -D <old PGDATA directory> stop
 ```
 
-</details>
+</TabItem>
+</Tabs>
 
 ### Step 3. Install Postgres 16.x
 
@@ -89,67 +84,53 @@ PostgreSQL [installer](https://www.enterprisedb.com/downloads/postgres-postgresq
 
 Start the new instance of PostgreSQL 16.x (if it is not already running.)
 
-<details>
-<summary>Windows examples</summary>
+<Tabs>
+  <TabItem value="Windows" label="Windows" default>
 
 ```powershell
 & "C:\Program Files\PostgreSQL\16\bin\pg_ctl" -D "C:\Program Files\PostgreSQL\16\data" start
 ```
 
-</details>
-
-<details>
-<summary>Linux examples</summary>
+</TabItem>
+<TabItem value="Linux" label="Linux">
 
 ```powershell
 /usr/pgsql-16/bin/pg_ctl -D <new PGDATA directory> start
 ```
 
-</details>
+</TabItem>
+</Tabs>
 
 ### Step 5. Restore the database backups
 
 Use `psql` to create empty EdFi_Admin and EdFi_Security databases on the new
 PostgreSQL 16.x instance and then restore the backup files into them.
 
-<details>
-<summary>Windows examples</summary>
+<Tabs>
+  <TabItem value="Windows" label="Windows" default>
 
 ```powershell
 & "C:\Program Files\PostgreSQL\16\bin\psql" -U pgadmin -c 'create database EdFi_Admin;'
-```
-
-```powershell
 & "C:\Program Files\PostgreSQL\16\bin\psql" -U pgadmin -c 'create database EdFi_Security;'
 ```
 
 ```powershell
 & "C:\Program Files\PostgreSQL\16\bin\psql" -U pgadmin -d EdFi_Admin < EdFi_Admin_backup.sql
-```
-
-```powershell
 & "C:\Program Files\PostgreSQL\16\bin\psql" -U pgadmin -d EdFi_Security < EdFi_Security_backup.sql
 ```
 
-</details>
-
-<details>
-<summary>Linux examples</summary>
+</TabItem>
+<TabItem value="Linux" label="Linux">
 
 ```powershell
 /usr/pgsql-16/bin/psql -U pgadmin -c 'create database EdFi_Security;'
-```
-
-```powershell
 /usr/pgsql-16/bin/psql -U pgadmin -c 'create database EdFi_Admin;'
 ```
 
 ```powershell
 /usr/pgsql-16/bin/psql -U pgadmin -d EdFi_Admin < EdFi_Admin_backup.sql
-```
-
-```powershell
 /usr/pgsql-16/bin/psql -U pgadmin -d EdFi_Security < EdFi_Security_backup.sql
 ```
 
-</details>
+</TabItem>
+</Tabs>
