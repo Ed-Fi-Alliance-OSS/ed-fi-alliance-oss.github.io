@@ -14,7 +14,7 @@
     "write-heading-ids": "docusaurus write-heading-ids",
     "format": "npx prettier . --write",
     "lint": "markdownlint-cli2 **/*.md #node_modules && eslint **/*.mdx",
-    "lint:fix": "markdownlint-cli2 **/*.md **/*.mdx #node_modules --fix"
+    "lint:fix": "markdownlint-cli2 **/*.md #node_modules --fix"
   },
   "dependencies": {
     "@docusaurus/core": "^3.6.3",
