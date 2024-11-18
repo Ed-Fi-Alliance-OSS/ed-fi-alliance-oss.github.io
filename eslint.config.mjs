@@ -1,4 +1,4 @@
-import * as mdx from 'eslint-plugin-mdx'
+import * as mdx from 'eslint-plugin-mdx';
 
 export default [
   {
@@ -24,4 +24,4 @@ export default [
       'react/no-unescaped-entities': 'warn',
     },
   },
-]
+];
