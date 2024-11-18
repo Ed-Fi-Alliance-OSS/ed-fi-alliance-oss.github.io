@@ -78,7 +78,7 @@ their very nature acts of interpretation, so certification is unable to
 guarantee 100% consistency in the translation of semantics from a source to
 target system across an API interface. Those who are concerned about this
 element of certification are invited to consult the [Requirements - Testing
-Requirements](./certification-for-data-providers/requirements-testing-requirements.md),
+Requirements](./certification-for-data-providers/testing-requirements.md),
 which cover semantic translations that are permitted and those which are
 not-permitted.
 
@@ -117,4 +117,4 @@ ability to support all requirements of the specific Ed-Fi certification within
 the region.  If there are any Ed-Fi gaps to the data that cannot be resolved,
 then the vendor’s certification will no longer apply for that region. See [this
 page for further
-discussion](./certification-for-data-providers/requirements-product-availability-information.md).
+discussion](./certification-for-data-providers/product-availability-information.md).
