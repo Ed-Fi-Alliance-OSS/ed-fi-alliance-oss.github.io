@@ -56,7 +56,7 @@ following articles are helpful in understanding the various options:
 We **install these analyzers as NuGet package dependencies** in C# projects. For
 each project:
 
-```shell
+```powershell
 cd <project directory>
 dotnet add package Microsoft.CodeAnalysis
 dotnet add package Microsoft.CodeAnalysis.CSharp.CodeStyle
@@ -97,7 +97,7 @@ Code extension literally did nothing, out of the box.
 When you run msbuild at the command line, warnings will now  be treated as
 errors - thus causing the build to fail, and giving us strict enforcement.
 
-```shell
+```powershell
 ...
 Build FAILED.
 

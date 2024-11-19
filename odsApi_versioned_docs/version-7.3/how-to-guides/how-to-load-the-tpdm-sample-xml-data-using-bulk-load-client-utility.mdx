@@ -40,14 +40,14 @@ Walk through those steps first to get familiar with the process.
 
     **Install the Ed-Fi Bulk Load Client**
 
-    ```shell
+    ```powershell
     mkdir `<YourInstallFolder>`
     dotnet tool install EdFi.Suite3.BulkLoadClient.Console --version 7.3.413 --tool-path `<YourInstallFolder>`
     ```
 
     You will see output like this:
 
-    ```shell
+    ```powershell
     You can invoke the tool using the following command: EdFi.BulkLoadClient.Console
     Tool 'edfi.suite3.bulkloadclient.console' (version '7.3.413') was successfully installed.
     ```
@@ -448,7 +448,6 @@ files.
 * **Execute `EnableSandboxClaimset.sql`** by executing the file against the
     `EdFi_Admin` database using any database query tool. Use the version
     appropriate to your database.
-
 
   <Tabs>
     <TabItem value="MSSQL" label="SQL Server" default>

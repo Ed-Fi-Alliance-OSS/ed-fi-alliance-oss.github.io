@@ -44,13 +44,13 @@ static website generator.
 
 ### Installation
 
-```shell
+```powershell
 npm install
 ```
 
 ### Local Development
 
-```shell
+```powershell
 npm run start
 ```
 
@@ -59,7 +59,7 @@ Most changes are reflected live without having to restart the server.
 
 ### Build
 
-```shell
+```powershell
 npm run build
 ```
 

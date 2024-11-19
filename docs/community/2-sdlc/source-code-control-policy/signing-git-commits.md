@@ -25,7 +25,7 @@ If you use Git Bash, then you already have GPG at path /usr/bin/gpg .
 If you use PowerShell or cmd.exe, then you will need to install GPG. The
 simplest way to install GPG is with chocolatey:
 
-```shell
+```powershell
 choco install -y gpg4win
 ```
 
@@ -38,7 +38,7 @@ The default key length is 2048 bit. 4096 is even better. You'll be prompted for
 name and email. You should use the same "commit email address" as you have
 [configured in GitHub](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-email-preferences/setting-your-commit-email-address).
 
-```shell
+```powershell
 gpg --default-new-key-algo rsa4096 --gen-key
 ```
 
@@ -53,7 +53,7 @@ This key will expire after two years.
 You will need the key ID for this. In the following example from the Git manual,
 the id is "E1E474F2023B5ABFF8752630BB4".
 
-```shell
+```powershell
 gpg --list-keys
 ```
 
@@ -74,7 +74,7 @@ is usually found at `C:\Program Files (x86)\GnuPG\bin\gpg.exe.` In some
 installations, it might instead be in
 `%LOCALAPPDATA%\Local\Programs\GnuPG\bin\gpg.exe`
 
-```shell
+```powershell
 git config --global user.signingkey E1E474F2023B5ABFF8752630BB4
 
 git config --global gpg.program "C:\Program Files(x86)\GnuPG\bin\gpg.exe"
@@ -104,7 +104,7 @@ With the configuration settings above, you have no need to add the s/S flag.
 
 Export the key using that same key id from above.
 
-```shell
+```powershell
 gpg --armor --export E1E474F2023B5ABFF8752630BB4
 ```
 
@@ -140,7 +140,7 @@ See [Get started using Git on Windows Subsystem for Linux](https://docs.microso
 To reuse the same key that you already configured in Windows, open Ubuntu and
 run:
 
-```shell
+```powershell
 cp /mnt/c/users/john.doe/AppData/Roaming/gnupg ~/.gnupg -r
 rm ~/.gnupg/*.lock
 ```
@@ -150,7 +150,7 @@ rm ~/.gnupg/*.lock
 You will need the key ID for this. In the following example from the Git manual,
 the id is "E1E474F2023B5ABFF8752630BB4".
 
-```shell
+```powershell
 gpg --list-keys
 ```
 
@@ -167,7 +167,7 @@ uid         [ultimate] Jon Doe <jon.doe@examppppppplllleeeee.com>
 Configure this globally, or set it up one repository at a time by omitting the
 `--global` argument. Additionally, configure the GPG.exe to be used by Git.
 
-```shell
+```powershell
 git config --global user.signingkey E1E474F2023B5ABFF8752630BB4
 git config --global commit.gpgsign true
 git config --global tag.gpgsign true
@@ -180,7 +180,7 @@ git config --global tag.gpgsign true
 Create a new gpg-agent.conf file by entering the following command in your Bash
 prompt:
 
-```shell
+```powershell
 cat > ~/.gnupg/gpg-agent.conf <<EOF
 default-cache-ttl 34560000
 max-cache-ttl 34560000
@@ -191,7 +191,7 @@ EOF
 Now restart the GPG Agent. You might need to close the Ubuntu terminal window as
 well.
 
-```shell
+```powershell
 gpgconf --kill gpg-agent
 ```
 
@@ -199,7 +199,7 @@ gpgconf --kill gpg-agent
 
 The instructions above do not always work. If you get a message like this:
 
-```shell
+```powershell
 error: gpg failed to sign the data
 fatal: failed to write commit object
 ```
@@ -207,7 +207,7 @@ fatal: failed to write commit object
 Then try configuring Git to use the Windows version of gpg, instead of using the
 WSL copy.
 
-```shell
+```powershell
 git config --global gpg.program "/mnt/c/Program Files (x86)/GnuPG/bin/gpg.exe"
 ```
 
@@ -241,7 +241,7 @@ See ["Is there a way to gpg sign all previous commits?"](https://stackoverflow.
 Atlassian SourceTree may have a problem with the instructions above, giving you
 an error message like:
 
-```shell
+```powershell
 gpg: cannot open '/dev/tty': Device not configured
 
 error: gpg failed to sign the data
@@ -252,7 +252,7 @@ To resolve, either
 [Setup GPG to sign commits in SourceTree](https://confluence.atlassian.com/sourcetreekb/setup-gpg-to-sign-commits-within-sourcetree-765397791.html)
 or disable tty:
 
-```shell
+```powershell
 echo 'no-tty' >> ~/.gnupg/gpg.conf
 ```
 
@@ -260,7 +260,7 @@ echo 'no-tty' >> ~/.gnupg/gpg.conf
 
 If the following error message occurs after attempting a commit:
 
-```shell
+```powershell
 gpg: skipped "xxxxxxxxxxxxxxxxxx": No secret key
 gpg: signing failed: No secret key
 error: gpg failed to sign the data
@@ -269,7 +269,7 @@ fatal: failed to write commit object
 
 Open a Git Bash session and type find the location of gpg on the command line:
 
-```shell
+```powershell
 # If using separate install
 where gpg
 C:\Program Files\Git\usr\bin\gpg.exe
@@ -281,7 +281,7 @@ which gpg
 
 Next, set gpg.program to the path returned from the where command:
 
-```shell
+```powershell
 git config --global gpg.program "C:\Program Files\Git\usr\bin\gpg.exe"
 
 # Or
@@ -293,7 +293,7 @@ git config --global gpg.program "/usr/bin/gpg"
 
 On rare occasions the commit signing might fail with a message like this:
 
-```shell
+```powershell
 git commit -m "my commit message"
 gpg: can't connect to the agent: IPC connect call failed
 gpg: keydb_search failed: No agent running
@@ -307,7 +307,7 @@ gpg-agent from the command line, at least temporarily. Assuming you are using
 Windows, open a new prompt (cmd, PowerShell, or Git-bash - but not a WSL prompt)
 and run this:
 
-```shell
+```powershell
 gpg-agent --daemon
 ```
 
@@ -320,7 +320,7 @@ and Control-C out of the daemon.
 This likely means that your key has expired and needs to be replaced, following
 the directions above. You can check the expiration at the command line:
 
-```shell
+```powershell
 PS C:\> gpg --list-keys
 gpg: checking the trustdb
 gpg: marginals needed: 3 completes needed: 1 trust model: pgp

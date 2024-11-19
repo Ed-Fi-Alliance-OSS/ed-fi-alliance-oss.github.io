@@ -219,19 +219,19 @@ described in that file.
 
 To bring up the environment:
 
-```shell
+```powershell
 C:\PGDockerSetup>docker compose up -d
 ```
 
 To stop the volumes and containers:
 
-```shell
+```powershell
 C:\PGDockerSetup>docker compose down
 ```
 
 To stop the services and remove them, but retain the data in separate volumes:
 
-```shell
+```powershell
 C:\PGDockerSetup>docker compose down -v
 ```
 
@@ -261,7 +261,7 @@ saved in `%APPDATA%/postgresql/pgpass.conf.`
 
 You can test the environment variable setup using:
 
-```shell
+```powershell
 C:\> get-item env:pgpassfile
 
 Name                           Value
@@ -318,7 +318,7 @@ To configure git for long file paths:
 When you clone a repository, ensure that you have the correct tag checked out in
 your client before you proceed.
 
-```shell
+```powershell
 git checkout tags/v7.3 -b <branch>
 ```
 
@@ -449,25 +449,25 @@ by navigating to the Ed-Fi-ODS-Implementation folder.
 For a SQL Server backing datastore, type the following into a PowerShell command
 prompt:
 
-```shell
+```powershell
 initdev
 ```
 
 For a PostgreSQL backing datastore, use the following:
 
-```shell
+```powershell
 initdev -Engine PostgreSQL
 ```
 
 For building Data Standard 4.0, use the following:
 
-```shell
+```powershell
 initdev -StandardVersion 4.0.0
 ```
 
 To get full details on initdev parameter options, use the following:
 
-```shell
+```powershell
 get-help initdev -detailed
 ```
 

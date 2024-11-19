@@ -57,7 +57,7 @@ not detected in the default installation path.
   that you have followed the Ed-Fi ODS / API [Getting
   Started](../../getting-started/readme.md) steps successfully.
 
-  ```shell
+  ```powershell
   GenerateSecurityGraphs.exe -o "C:\graphs" -f
   ```
 

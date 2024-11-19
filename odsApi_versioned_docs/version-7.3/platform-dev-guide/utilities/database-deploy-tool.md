@@ -74,7 +74,7 @@ created, you can create it in advance before running this application.
 
 ### As a Dotnet Tool
 
-```shell
+```powershell
 # If installed globally
 EdFi.Db.Deploy <verb> <args>
 
@@ -89,7 +89,7 @@ the "long form." If you provide the "short form" then these parameters will be
 interpreted as arguments to the `dotnet` command rather than as arguments to the
 Deploy Tool.
 
-```shell
+```powershell
 # Switch to local src/EdFi.Db.Deploy directory
 
 # Correct

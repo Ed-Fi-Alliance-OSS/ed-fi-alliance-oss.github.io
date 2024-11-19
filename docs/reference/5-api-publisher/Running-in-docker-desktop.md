@@ -99,7 +99,7 @@ commands (i.e. PowerShell in Windows)
 
 Go to the root of the project and run this command:
 
-```shell
+```powershell
 docker compose -f src/Compose/compose-build.yml --env-file src/Compose/.env up -d
 ```
 
@@ -118,7 +118,7 @@ We have two ways to run API Publisher inside or outside the created container.
 
 ### Outside Container
 
-```shell
+```powershell
 docker exec -it ed-fi-ods-apipublisher dotnet EdFiApiPublisher.dll \
   --sourceUrl={{SourceUrl}}/WebApi/ \
   --sourceKey={{SourceKey}} \
@@ -139,7 +139,7 @@ parameter... i.e.
 
 ![Docker Terminal](img/docker/docker-terminal.png)
 
-```shell
+```powershell
 dotnet EdFiApiPublisher.dll --sourceUrl={{SourceUrl}}/WebApi/ \
   --sourceKey={{SourceKey}} \
   --sourceSecret={{SourceSecret}} \
@@ -169,7 +169,7 @@ Export AWS credentials to consume AWS parameters store inside the container
 Having all this configured it is possible to run ApiPublisher with the
 AWSParameterStore parameter
 
-```shell
+```powershell
 dotnet EdFiApiPublisher.dll --configurationStoreProvider=awsParameterStore \
   --sourceName=Ed-Fi-ApiPub01 \
   --targetName=Ed-Fi-ApiPub02 \
@@ -201,7 +201,7 @@ Configure the AWS log storage parameters in the configuration file.
 
 Run any ApiPublisher command to start storing the execution results.
 
-```shell
+```powershell
 dotnet EdFiApiPublisher.dll --configurationStoreProvider=awsParameterStore \
   --sourceName=Ed-Fi-ApiPub01 \
   --targetName=Ed-Fi-ApiPub02 \
