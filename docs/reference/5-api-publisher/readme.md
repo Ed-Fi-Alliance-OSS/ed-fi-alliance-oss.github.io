@@ -80,7 +80,7 @@ the Ed-Fi stack.
 If you would like to build the API Publisher from source, build the solution by
 running the following command from the repository's root directory:
 
-```shell
+```powershell
  dotnet build
 ```
 
@@ -130,7 +130,7 @@ Run the Ed-Fi API Publisher from the folder containing all the binaries by
 executing the following command, substituting your own API client's key and
 secrets. (Below development keys as shown in other Ed-Fi examples):
 
-```shell
+```powershell
 .\EdFiApiPublisher.exe --sourceUrl=https://api.ed-fi.org/v5.2/api/ \
   --sourceKey=RvcohKz9zHI4 \
   --sourceSecret=E1iEFusaNf81xzCxwHfbolkC \
