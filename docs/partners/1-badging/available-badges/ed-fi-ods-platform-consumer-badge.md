@@ -1,6 +1,6 @@
 # Ed-Fi ODS Platform Consumer Badge
 
-![Ed-Fi ODS Platform Consumer Badge](/img/partners/badging/ed-fi-ods-platform-badge.webp)
+![Ed-Fi ODS Platform Consumer Badge](https://edfidocs.blob.core.windows.net/$web/img/partners/badging/ed-fi-ods-platform-badge.webp)
 
 This badge is for products that interact or use the data from the Ed-Fi ODS
 platform, but access is not via API. Products using an Ed-Fi API to source data
@@ -8,6 +8,14 @@ should apply for the [Ed-Fi API Consumer
 Badge](./ed-fi-api-consumer-badge.md)
 
 ## Requirements
+
+:::info
+
+In addition to the specifics listed below, a vendor must satisfy all applicable
+core requirements listed in [Badging Requirements for Technology
+Providers](../badging-requirements.md).
+
+:::
 
 To be awarded this badge, a product must be able to consume data from the Ed-Fi
 ODS platform via standard platform access points.

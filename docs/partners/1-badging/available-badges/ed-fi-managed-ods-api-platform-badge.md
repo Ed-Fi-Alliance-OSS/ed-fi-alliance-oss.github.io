@@ -1,6 +1,6 @@
 # Ed-Fi Managed ODS API Platform Badge
 
-![Ed-Fi Managed ODS API Platform Badge](/img/partners/badging/ed-fi-managed-partner-badge.webp)
+![Ed-Fi Managed ODS API Platform Badge](https://edfidocs.blob.core.windows.net/$web/img/partners/badging/ed-fi-managed-partner-badge.webp)
 
 The Ed-Fi Managed ODS / API Platform Badge is for products that provide the
 Ed-Fi Operational Data Store and API (ODS/API) as software-as-a-service (SaaS).
@@ -19,6 +19,14 @@ Unlike with other Ed-Fi badges this badge is good for one year and must be
 renewed annually.
 
 ## Requirements
+
+:::info
+
+In addition to the specifics listed below, a vendor must satisfy all applicable
+core requirements listed in [Badging Requirements for Technology
+Providers](../badging-requirements.md).
+
+:::
 
 To qualify for this badge, a product must meet the following requirements.
 

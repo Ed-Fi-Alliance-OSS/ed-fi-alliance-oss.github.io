@@ -6,7 +6,7 @@
 export default {
   managedODSAPI: [
     {
-      logo: '/img/partners/badging/edgraph.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/edgraph.png',
       productName: 'EdGraph',
       provider: 'EdWire',
       website: 'https://edgraph.com/',
@@ -20,7 +20,7 @@ export default {
       availability: 'Available to any agency (all sizes) or vendor in the U.S.',
     },
     {
-      logo: '/img/partners/badging/starting-blocks.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/starting-blocks.png',
       productName: 'StartingBlocks',
       provider: 'Education Analytics',
       website: 'https://edanalytics.org/',
@@ -40,7 +40,7 @@ export default {
       availability: 'Available to any agency (all sizes) in the U.S.',
     },
     {
-      logo: '/img/partners/badging/k12-analytics.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/k12-analytics.png',
       productName: 'K12Analytics',
       provider: 'K12Analytics Engineering',
       website: 'https://www.k12analyticsengineering.dev/',
@@ -51,7 +51,7 @@ export default {
       availability: 'Available to any agency (all sizes) in the U.S.',
     },
     {
-      logo: '/img/partners/badging/esp-group.jpg',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/esp-group.jpg',
       productName: 'ESP Solutions Group',
       provider: 'ESP Solutions Group',
       website: 'https://espsolutionsgroup.com/solutions/ed-fi/',
@@ -62,7 +62,7 @@ export default {
       availability: 'Available to any agency (all sizes) in the U.S.',
     },
     {
-      logo: '/img/partners/badging/edufied.jpg',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/edufied.jpg',
       productName: 'Edufied Hosting',
       provider: 'Edufied',
       website: 'https://www.edufied.com/',
@@ -81,7 +81,7 @@ export default {
       availability: 'Available to any agency (all sizes) in the U.S.',
     },
     {
-      logo: '/img/partners/badging/classlink.jpg',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/classlink.jpg',
       productName: 'ClassLink One Data',
       provider: 'ClassLink',
       website: 'https://www.classlink.com',
@@ -95,7 +95,7 @@ export default {
 
   odsPlatformConsumer: [
     {
-      logo: '/img/partners/badging/edgraph.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/edgraph.png',
       productName: 'EdGraph Analytics',
       provider: 'EdWire',
       website: 'https://www.edgraph.com/',
@@ -109,7 +109,7 @@ export default {
       availability: 'Available to any agency (all sizes) or vendor in the U.S.',
     },
     {
-      logo: '/img/partners/badging/innive-k12.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/innive-k12.png',
       productName: 'Ed-Fi Data Vault by Innive',
       provider: 'Innive Inc.',
       website: 'https://k12360.com/data-as-a-service',
@@ -123,7 +123,7 @@ export default {
       availability: 'Available to any agency (all sizes) or vendor in the U.S.',
     },
     {
-      logo: '/img/partners/badging/cpsi.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/cpsi.png',
       productName: 'xDValidator',
       provider: 'CPSI, Ltd.',
       website: 'https://www.cpsiltd.com/',
@@ -134,7 +134,7 @@ export default {
       availability: 'Available to any agency (all sizes) or vendor in the U.S.',
     },
     {
-      logo: '/img/partners/badging/esp-group.jpg',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/esp-group.jpg',
       productName: 'Customized Operational Dashboards',
       provider: 'ESP Solutions Group',
       website: 'https://espmsp.com/',
@@ -150,7 +150,7 @@ export default {
       availability: 'Available to any agency (all sizes) or vendor in the U.S.',
     },
     {
-      logo: '/img/partners/badging/crocus.jpg',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/crocus.jpg',
       productName: 'TEA Insight to Impact Dashboards',
       provider: 'Crocus, LLC',
       website: 'https://insighttoimpact.tea.texas.gov/',
@@ -167,7 +167,7 @@ export default {
 
   apiConsumer: [
     {
-      logo: '/img/partners/badging/escholar.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/escholar.png',
       productName: 'eScholar CDW and eScholar Advantage',
       provider: 'eScholar',
       website: 'https://escholar.com/solutions/education-data-warehouse/',
@@ -185,7 +185,7 @@ export default {
       availability: 'Available to any agency or organization of any size',
     },
     {
-      logo: '/img/partners/badging/lingk.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/lingk.png',
       productName: 'Lingk Cloud Data Integration Platform',
       provider: 'Lingk Inc.',
       website: 'https://www.lingk.io/',
@@ -199,7 +199,7 @@ export default {
       availability: 'Available to any agency (all sizes) or vendor in the U.S.',
     },
     {
-      logo: '/img/partners/badging/stadium.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/stadium.png',
       productName: 'Stadium',
       provider: 'Education Analytics',
       website: 'https://www.edanalytics.org/',
@@ -209,7 +209,7 @@ export default {
       availability: 'Available to any agency (all sizes) or vendor in the U.S.',
     },
     {
-      logo: '/img/partners/badging/munetrix.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/munetrix.png',
       productName: 'Munetrix',
       provider: 'Munetrix LLC',
       website: 'https://munetrix.com/',
@@ -231,7 +231,7 @@ export default {
       availability: 'MI',
     },
     {
-      logo: '/img/partners/badging/eidex.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/eidex.png',
       productName: 'PRISM',
       provider: 'Eidex LLC',
       website: 'http://www.eidexinsights.com',
@@ -251,7 +251,7 @@ export default {
       availability: 'MI, IN',
     },
     {
-      logo: '/img/partners/badging/classlink.jpg',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/classlink.jpg',
       productName: 'ClassLink Roster Server',
       provider: 'ClassLink Inc.',
       website: 'https://www.classlink.com/products/roster-server',
@@ -264,7 +264,7 @@ export default {
       availability: 'Available to any agency (all sizes) or vendor in the U.S.',
     },
     {
-      logo: '/img/partners/badging/sas.webp',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/sas.webp',
       productName: 'SAS EVAAS',
       provider: 'SAS',
       website: 'https://www.sas.com',
@@ -280,7 +280,7 @@ export default {
       availability: 'Available to any LEA or SEA in any US geography',
     },
     {
-      logo: '/img/partners/badging/innive-k12.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/innive-k12.png',
       productName: 'District 360 Executive Dashboard',
       provider: 'Innive Inc.',
       website: 'https://k12360.com/analytics',
@@ -297,7 +297,7 @@ export default {
       availability: 'Available to any agency (all sizes) or vendor in the U.S.',
     },
     {
-      logo: '/img/partners/badging/linq.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/linq.png',
       productName: 'Linq & Alio',
       provider: 'Linq',
       website: 'https://www.linq.com/solutions/erp/hr/',
@@ -317,7 +317,7 @@ export default {
       availability: 'Available to any LEA in any US geography',
     },
     {
-      logo: '/img/partners/badging/crocus.jpg',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/crocus.jpg',
       productName: 'TEA Insight to Impact Dashboards',
       provider: 'Crocus, LLC',
       website: 'https://insighttoimpact.tea.texas.gov/',
@@ -333,7 +333,7 @@ export default {
       availability: 'All Educator prep programs in Texas',
     },
     {
-      logo: '/img/partners/badging/on-data-suite.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/on-data-suite.png',
       productName: 'OnDataSuite',
       provider: 'Aloe Software Group',
       website: 'http://www.ondatasuite.com ',
@@ -352,7 +352,7 @@ export default {
       availability: 'State of Texas, Version 12.19.0 and above.',
     },
     {
-      logo: '/img/partners/badging/fivestar.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/fivestar.png',
       productName:
         'Five Star Pivot Data Warehouse, Data Analytics, and Staff Evaluations',
       provider: 'Five Star Technology Solutions',
@@ -367,7 +367,7 @@ export default {
       availability: 'Available to any LEA in any US geography',
     },
     {
-      logo: '/img/partners/badging/panorama-education.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/panorama-education.png',
       productName: 'Panorama Education',
       provider: 'Panorama Education Student Success',
       website: 'https://www.panoramaed.com/products/student-success',
@@ -384,7 +384,7 @@ export default {
       availability: 'Available to any agency (all sizes) or vendor in the U.S.',
     },
     {
-      logo: '/img/partners/badging/cpsi.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/cpsi.png',
       productName: 'xDValidator',
       provider: 'CPSI, Ltd.',
       website: 'https://www.cpsiltd.com/',
@@ -398,7 +398,7 @@ export default {
 
   implementationPartner: [
     {
-      logo: '/img/partners/badging/edwise-group.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/edwise-group.png',
       organizationName: 'EdWise Group',
       website: 'https://www.edwisegroup.com',
       documentation: {
@@ -416,7 +416,7 @@ export default {
       },
     },
     {
-      logo: '/img/partners/badging/unicon.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/unicon.png',
       organizationName: 'Unicon',
       website: 'https://www.unicon.net/services/k-20',
       documentation: {
@@ -437,7 +437,7 @@ export default {
       },
     },
     {
-      logo: '/img/partners/badging/keen-logic.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/keen-logic.png',
       organizationName: 'Keen Logic',
       website: 'https://www.keenlogic.io/',
       documentation: {
@@ -455,6 +455,26 @@ export default {
         href: 'https://www.canva.com/design/DAFgjhWrffk/xzeUAmAheXm8sT9o_sSlQg/view',
         description:
           'API error support, ODS error support, Product feedback, Documentation and training, Stakeholder management, Project management and technical planning, Vendor coordination',
+      },
+    },
+    {
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/crocus.jpg',
+      organizationName: 'Crocus, LLC',
+      website: 'https://www.crocusllc.com',
+      documentation: {
+        'TEA I2I Mapping Spreadsheet': 'https://edfidocs.blob.core.windows.net/$web/assets/partners/badging/crocus-impl-badge/TEA_I2I-Mapping.xlsx',
+        'Data Health Check Testing Plan': 'https://edfidocs.blob.core.windows.net/$web/assets/partners/badging/crocus-impl-badge/Data-Health-Check-Testing-Plan.pdf',
+        'Data Health Check App Mock Up': 'https://edfidocs.blob.core.windows.net/$web/assets/partners/badging/crocus-impl-badge/Data-Health-Check-App-Mock-Up.pdf'
+       },
+      validThrough: 'November 15, 2026',
+      verifyingAgencies: [
+        'Texas Education Agency',
+        'Texas Education Exchange (Region 4)'
+      ],
+      servicesPerformed: {
+        href: 'https://www.crocusllc.com/products-and-services',
+        description:
+          'Documentation and training, Stakeholder management, Governance, Project management and technical planning, Integration development, Vendor coordination',
       },
     },
   ],
