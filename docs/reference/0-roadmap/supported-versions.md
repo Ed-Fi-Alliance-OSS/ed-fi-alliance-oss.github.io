@@ -5,12 +5,12 @@ software may receive bug and security fixes from time to time, and the latest
 precise patch number will not be updated on this page. See
 [Ed-Fi Software Versioning](/community/sdlc/code-contribution-guidelines/software-versioning)
 and
-[Ed-Fi Data Standard Versioning and Releases](/docs/reference/1-data-exchange/versioning-and-releases.md)
+[Ed-Fi Data Standard Versioning and Releases](../1-data-exchange/versioning-and-releases.md)
 for more information on the versioning practices.
 
 ## Data Standard
 
-See [Ed-Fi Data Standard](./data-exchange/data-standard) for more information.
+See [Ed-Fi Data Standard](../1-data-exchange/data-standard/readme.md) for more information.
 
 | Version | Timeline                               | Ed-Fi API Software                      |
 | ------- | -------------------------------------- | --------------------------------------- |
@@ -22,23 +22,23 @@ See [Ed-Fi Data Standard](./data-exchange/data-standard) for more information.
 | 6.0.0   | Coming 2025, for 2026-2027 school year | Ed-Fi Data Management Service 1.0       |
 
 Development of extensions for the Ed-Fi Data Standard relies on
-[MetaEd](./metaed/) version 4.x. As Visual Studio Code extension, MetaEd will
-self-update to the latest version unless the user disables the self-update
-feature.
+[MetaEd](../4-metaed/readme.md) version 4.x. As Visual Studio Code extension,
+MetaEd will self-update to the latest version unless the user disables the
+self-update feature.
 
 ## ODS/API Platform
 
 The _Ed-Fi ODS/API Platform_ is the group of tools that work together to support
 a production deployment of the Ed-Fi Resources API. The Platform includes:
 
-* [Ed-Fi ODS/API](./ods-api), the official Ed-Fi implementation of a REST API
-  defined by the Ed-Fi Data Standard.
+* [Ed-Fi ODS/API](/reference/ods-api/), the official Ed-Fi implementation of a
+  REST API defined by the Ed-Fi Data Standard.
   * Also includes the _Ed-Fi ODS Sandbox Admin_ and _Ed-Fi Swagger UI_ web
     applications.
-* [Ed-Fi ODS Admin API](./admin-api), a REST interface for managing client
-  credentials ("key and secret") and security configuration.
-* [Ed-Fi ODS Admin App](./admin-app), a web application for managing single
-  instances of an Ed-Fi ODS/API.
+* [Ed-Fi ODS Admin API](../3-admin-api/readme.md), a REST interface for managing
+  client credentials ("key and secret") and security configuration.
+* [Ed-Fi ODS Admin App](../8-admin-app/readme.md), a web application for
+  managing single instances of an Ed-Fi ODS/API.
 
 ### Ed-Fi ODS/API
 
@@ -84,10 +84,10 @@ receive critical updates. Formal support
 
 ### Docker Deployments
 
-The [sample Docker Compose scripts](./docker/) demonstrate how to run these
-applications together, and provide a quick startup option for running a local
-testing environment. Because these are demonstration scripts, not meant for
-production, they are not always fully up-to-date with the latest software
+The [sample Docker Compose scripts](../7-docker/readme.md) demonstrate how to
+run these applications together, and provide a quick startup option for running
+a local testing environment. Because these are demonstration scripts, not meant
+for production, they are not always fully up-to-date with the latest software
 versions.
 
 | Version | Supports                                                            |
@@ -99,7 +99,7 @@ versions.
 ## Data Management Service Platform
 
 This is the future replacement for the Ed-Fi ODS/API. See
-[Ed-Fi ODS/API and Data Management Service FAQ](./api-faq.md) for more
+[Ed-Fi ODS/API and Data Management Service FAQ](./api-faq.mdx) for more
 information.
 
 | Version           | Timeline                                          | Data Standard(s) |
@@ -111,11 +111,12 @@ information.
 
 Additional applications formally maintained and supported by the Ed-Fi Alliance:
 
-* [API Publisher](./api-publisher) works with all supported versions of the
-  Ed-Fi ODS/API
-* [Data Import](./data-import/) works with all supported versions of the Ed-Fi
-  ODS/API
-* [Analytics Middle Tier](./analytics-middle-tier) works with 5.x and 6.x
+* [API Publisher](../5-api-publisher/readme.md) works with all supported
+  versions of the Ed-Fi ODS/API
+* [Data Import](../6-data-import/readme.md) works with all supported versions of
+  the Ed-Fi ODS/API
+* [Analytics Middle Tier](../9-analytics-middle-tier/readme.md) works with 5.x
+* and 6.x
   versions of the Ed-Fi ODS/API.
 
 In all of these cases, only the latest version is formally supported.
