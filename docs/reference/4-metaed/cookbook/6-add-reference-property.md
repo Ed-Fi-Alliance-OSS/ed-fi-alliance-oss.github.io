@@ -1,3 +1,7 @@
+---
+description: The design of a MetaEd model requires the addition of a reference property to an entity.
+---
+
 # 6 - Add Reference Property
 
 ## Problem
@@ -63,6 +67,5 @@ developers of complex values review these sections:
 * [13 - Add Reference with Role
   Name](./13-add-reference-with-role-name.md)
 * [14 - Using Merge Directives](./14-using-merge-directives.md)
-*
 
 :::

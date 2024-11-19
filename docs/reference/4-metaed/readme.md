@@ -4,7 +4,7 @@
 
 :::tip
 
-Starting with [MetaEd v4.0](./whats-new.md), MetaEd runs on Visual
+Starting with [MetaEd v4.0](./releases/4.0.0.md), MetaEd runs on Visual
 Studio Code instead of Atom. We strongly recommend that everyone in the
 community move from the Atom-based version to this new one using Visual Studio
 Code. Existing users: please see [MetaEd IDE - Upgrading to MetaEd
@@ -28,10 +28,10 @@ Ed-Fi community members.
 
 Documentation for MetaEd is viewable online:
 
-* [What's New](./whats-new.md)
+* [Release Notes](./releases/readme.mdx)
 * [Getting Started with the MetaEd IDE](./getting-started-with-metaed-ide/readme.md)
 * [MetaEd IDE User Guide](./ide-user-guide/readme.md)
 * MetaEd [Cookbook](./cookbook/readme.mdx)
 * MetaEd [Language Specification](./language-specification/readme.md)
 
-![MetaEd Icon](./img/MetaEd-Temp-Icon.png)
+![MetaEd Icon](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/MetaEd-Temp-Icon.png)

@@ -1,3 +1,7 @@
+---
+description: A MetaEd enumeration requires additional enumeration items.
+---
+
 # 7 - Add Enumeration Item
 
 :::caution

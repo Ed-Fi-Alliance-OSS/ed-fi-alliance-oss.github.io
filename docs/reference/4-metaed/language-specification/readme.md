@@ -18,11 +18,8 @@ familiar with the following knowledge areas:
 
 * Ed-Fi technology, see [www.ed-fi.org](http://www.ed-fi.org)
 * The Ed-Fi Extensions Framework, see, for example, the relevant sections of
-    the [Ed-Fi Extension
-    Framework](https://edfi.atlassian.net/wiki/spaces/EFDS31/pages/23855253/Ed-Fi+Extension+Framework) documentation
-    and the
-    [https://edfi.atlassian.net/wiki/spaces/ODSAPI32/pages/27100294](https://edfi.atlassian.net/wiki/spaces/ODSAPI32/pages/27100294)
-    documentation
+  the [Ed-Fi Extension Framework](../../1-data-exchange/data-standard/extension-framework.md)
+  documentation and the [ODS/API Platform](../../ods-api-platform.mdx) documentation
 * MetaEd IDE, see the [MetaEd IDE User
     Guide](../ide-user-guide/readme.md), particularly the [Core
     Concepts](../ide-user-guide/core-concepts.md)

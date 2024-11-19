@@ -1,3 +1,7 @@
+---
+description: A field with the same properties is frequently included in multiple MetaEd files.
+---
+
 # 12 - Create a New Shared Type
 
 ## Problem

@@ -1,3 +1,7 @@
+---
+description: The design of a MetaEd model requires the renaming of an entity.
+---
+
 # 5 - Rename Entity
 
 ## Problem

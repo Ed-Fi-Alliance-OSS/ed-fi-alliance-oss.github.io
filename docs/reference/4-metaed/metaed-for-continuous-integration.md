@@ -17,12 +17,12 @@ Ed-Fi registry,
 https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/npm/registry/
 ```
 
-## 2\. Build Without Deploy
+## 2. Build Without Deploy
 
 Run the following command from the project directory to see all command line
 options:
 
-```shell
+```powershell
 node .\node_modules\@edfi\metaed-console\dist\index.js -h
 ```
 
@@ -52,8 +52,8 @@ reference those projects directly as shown in this config file under
       }
     ],
     "projectPaths": [
-      ".\node_modules\\@edfi\\ed-fi-model-3.3b",
-      "C:\\source\\ed-fi\\ed-fi-ods-implementation\\Extensions\\Homograph\\HomographMetaEd"
+      ".\node_modules\@edfi\ed-fi-model-3.3b",
+      "C:\source\ed-fi\ed-fi-ods-implementation\Extensions\Homograph\HomographMetaEd"
     ],
     "defaultPluginTechVersion": "5.3.0"
   }
@@ -62,7 +62,7 @@ reference those projects directly as shown in this config file under
 
 Now, to run the build:
 
-```shell
+```powershell
 node .\node_modules\@edfi\metaed-console\dist\index.js -c .\your-config.json -a
 ```
 
@@ -89,18 +89,18 @@ The build process creates the following outputs:
 
 ```none
 <artifactDirectory>
-   └─ Documentation
-      └─ DataDictionary
-      └─ Ed-Fi-Handbook
-      └─ UDM
-   └─ EdFi
-      └─ ApiMetadata
-      └─ Database
-      └─ Interchange
-      └─ XSD
+├─ Documentation/
+│  ├─ DataDictionary/
+│  ├─ Ed-Fi-Handbook/
+│  ├─ UDM/
+├─ EdFi/
+│  ├─ ApiMetadata/
+│  ├─ Database/
+│  ├─ Interchange/
+│  ├─ XSD/
 ```
 
-## 3\. Build and Deploy
+## 3. Build and Deploy
 
 In this scenario, you are not only building, but also deploying the output into
 an extension project in the Ed-Fi-ODS-Implementation repository for use by the
@@ -115,7 +115,7 @@ deploy process).
 Run the following command from the project directory to see all command line
 options. Note that this is a different package than the one used above.
 
-```shell
+```powershell
 node .\node_modules\@edfi\metaed-odsapi-deploy\dist\index.js -h
 ```
 
@@ -125,8 +125,8 @@ file, we can reuse the file above with a few additions.
 ```json
 {
   "metaEdConfiguration": {
-    "artifactDirectory": "C:\\source\\ed-fi\\MetaEd-Js\\build\\MetaEdOutput",
-    "deployDirectory": "c:\\source\\ed-fi",
+    "artifactDirectory": "C:\source\ed-fi\MetaEd-Js\build\MetaEdOutput",
+    "deployDirectory": "c:\source\ed-fi",
     "projects": [
       {
         "namespaceName": "EdFi",
@@ -144,8 +144,8 @@ file, we can reuse the file above with a few additions.
       }
     ],
     "projectPaths": [
-      ".\node_modules\\@edfi\\ed-fi-model-3.3b",
-      "C:\\source\\ed-fi\\ed-fi-ods-implementation\\Extensions\\Homograph\\HomographMetaEd"
+      ".\node_modules\@edfi\ed-fi-model-3.3b",
+      "C:\source\ed-fi\ed-fi-ods-implementation\Extensions\Homograph\HomographMetaEd"
     ],
     "defaultPluginTechVersion": "5.3.0"
   }
@@ -165,7 +165,7 @@ Alternately, you can run without a config file, with only the command line
 switches. Interestingly, you don't need to specify the artifactDirectory or
 projects when you take this approach.
 
-```shell
+```powershell
 node .\node_modules\@edfi\metaed-odsapi-deploy\dist\index.js `
  -s .\node_modules\@edfi\ed-fi-model-3.3b\ `
  -s C:\source\ed-fi\ed-fi-ods-implementation\Extensions\Homograph\HomographMetaEd\ `
@@ -176,23 +176,22 @@ node .\node_modules\@edfi\metaed-odsapi-deploy\dist\index.js `
 ### Deploy Output
 
 ```none
-<deployDirectory>
-   └─ Ed-Fi-ODS
-      └─ Standard
-         └─ Metadata
-      └─ Database
-         └─ Data
-            └─ EdFi
-         └─ Structure
-            └─ EdFi
-      └─ Database
-         └─ Schemas
-            └─ Interchange
-            └─ XSD
-   └─ Ed-Fi-ODS-Implementation
-      └─ Application
-         └─ EdFi.Ods.Standard
-            └─ SupportingArtifacts
-               └─ Metadata
-                  └─ ApiModel.json
+<deployDirectory>/
+├─ Ed-Fi-ODS/
+│  ├─ Standard/
+│    ├─ Metadata/
+│  ├─ Database/
+│    ├─ Data/
+│      ├─ EdFi/
+│    ├─ Structure/
+│      ├─ EdFi/
+│  ├─ Schemas/
+│    ├─ Interchange/
+│    ├─ XSD/
+├─ Ed-Fi-ODS-Implementation/
+│  ├─ Application/
+│    ├─ EdFi.Ods.Standard/
+│      ├─ SupportingArtifacts/
+│        ├─ Metadata/
+│          ├─ ApiModel.json
 ```

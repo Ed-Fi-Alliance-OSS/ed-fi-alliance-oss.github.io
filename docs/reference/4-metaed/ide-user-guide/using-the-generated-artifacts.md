@@ -1,13 +1,13 @@
 # MetaEd IDE - Using the Generated Artifacts
 
-## . . . or, "Now What?"
+## ... or, "Now What?"
 
 The MetaEd IDE generates a number of technical artifacts, which you can find in
 the Explorer in the MetaEdOutput directory. We figure you wouldn't be here if
 you didn't have a solid working knowledge of Ed-Fi technology — but a few pieces
 of information are worth covering.
 
-![Generated artifacts](../img/image2023-2-22_12-54-56.png)
+![Generated artifacts](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/metaed-output-folder.png)
 
 ## Generated SQL
 
@@ -25,19 +25,19 @@ replace the files with the same name.
 
 The generated files are:
 
-* 0001-Schemas,sql - the Ed-Fi core database schema definitions.
-* 0001-EXTENSION-extension-Schemas.sql - The database schema definitions for
+* `0001-Schemas.sql` - the Ed-Fi core database schema definitions.
+* `0001-EXTENSION-extension-Schemas.sql` - The database schema definitions for
     the extensions provided, using the default "extension" namespace.
-* 0004-Tables.sql - the Ed-Fi core database tables.
-* 0004-EXTENSION-extension.sql - the extension database tables, using the
+* `0004-Tables.sql` - the Ed-Fi core database tables.
+* `0004-EXTENSION-extension.sql` - the extension database tables, using the
     default "extension" namespace.
-* 0009-IdColumnUniqueIndexes.sql - an indexing update to the Ed-Fi core tables
+* `0009-IdColumnUniqueIndexes.sql` - an indexing update to the Ed-Fi core tables
     for API support.
-* 0009-EXTENSION-extension-IdColumnUniqueIndexes.sql - the same indexing
+* `0009-EXTENSION-extension-IdColumnUniqueIndexes.sql` - the same indexing
     update for extensions, using the default "extension" namespace.
 
 See the [Ed-Fi ODS / API
-documentation](https://edfi.atlassian.net/wiki/spaces/ODSAPI32) for more detail
+documentation](/reference/ods-api/7.3/platform-dev-guide/extensibility-customization/extending-the-ods-api-data-model) for more detail
 on the SQL files and the code generation process.
 
 ## Generated XSD
@@ -92,7 +92,7 @@ The generated files are:
 The HTML version of the data handbook is a self-contained file that can be run
 locally or hosted on a web server. An example of the output is shown below:
 
-![Ed-Fi Data Handbook](../img/Ed-Fi-Data-Handbook.png)
+![Ed-Fi Data Handbook](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/Ed-Fi-Data-Handbook.png)
 
 ## Artifact Deployment for ODS / API Builds
 
@@ -107,7 +107,7 @@ locations for the ODS / API project.
 :::tip
 
 See [How To: Extend the Ed-Fi ODS / API - Student Transportation
-Example](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V71/pages/25493729) for
+Example](/reference/ods-api/7.3/how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transcript-example) for
 more information on creating the related C# project.
 
 :::
@@ -115,12 +115,12 @@ more information on creating the related C# project.
 First, ensure that your Ed-Fi ODS / API source directory is set properly in the
 MetaEd IDE settings.
 
-![ODS/API path](../img/image2023-2-17_11-38-48.png)
+![ODS/API path](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/deployment-directory.png)
 
 Then, deploy by selecting **MetaEd** > **Deploy** from the menu bar. Click OK on
 the confirmation dialog.
 
-![Deploy artifacts](../img/image2023-2-17_11-39-58.png)
+![Deploy artifacts](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/class-discussion-deploy.png)
 
 This will run a new build of all artifacts, and the artifacts required for the
 ODS / API will be copied over to the correct locations.

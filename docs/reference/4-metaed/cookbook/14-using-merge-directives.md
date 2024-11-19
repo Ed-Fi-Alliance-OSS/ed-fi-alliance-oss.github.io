@@ -1,3 +1,7 @@
+---
+description: A complex model results in duplicate references flowing through the model.
+---
+
 # 14 - Using Merge Directives
 
 ## Problem

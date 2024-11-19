@@ -1,3 +1,7 @@
+---
+description: The design of a MetaEd model requires a new interchange.  
+---
+
 # 11 - Create a New Interchange
 
 ## Problem

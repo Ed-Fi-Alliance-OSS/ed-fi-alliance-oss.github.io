@@ -1,3 +1,7 @@
+---
+description: Need to reference an entity that is defined in a different project.
+---
+
 # 18 - Reference an Entity Defined in a Different Project (Including Core)
 
 ## Problem

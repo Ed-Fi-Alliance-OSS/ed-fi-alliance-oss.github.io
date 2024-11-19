@@ -42,7 +42,7 @@ As an end-user, you should be aware of the following:
     preferences and search for "extension auto update" to see the options
     available to you.
 
-    ![Automatic updates](../img/image2023-2-9_16-8-32.png)
+    ![Automatic updates](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/automatic-updates.png)
 
     </details>
 
@@ -61,4 +61,4 @@ for more information on the new settings and how to open your extension folder.
 Manually set the "Data Standard Project Directory" to your local clone of the
 Git repository, and be sure to check the "Alliance Mode" box.
 
-![Data standard project directory](../img/image2023-2-16_15-52-26.png)
+![Data standard project directory](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/alliance-mode.png)

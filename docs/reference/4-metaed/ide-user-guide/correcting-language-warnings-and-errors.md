@@ -14,7 +14,7 @@ errors) are color red (error) or gold (warning) in the tree view (note: gold is
 difficult to see in light themes). All errors in all files of the project are
 listed below.
 
-![Problems pane](../img/image2023-2-16_16-23-48.png)
+![Problems pane](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/problems-pane.png)
 
 :::tip
 
@@ -28,14 +28,14 @@ Problems`  menu or Control-Shift-M keyboard shortcut.
 Click the funnel icon in the Problems pane to filter the visible problems, or
 type into the text box to find specific problems.
 
-![Filter the problem list](../img/image2023-2-16_16-28-2.png)
+![Filter the problem list](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/show-warnings.png)
 
 ## Step 2. Navigate to Warning or Error Location
 
 To navigate to the precise location of an error, you may click the problem text
 to open the file and jump directly to the problematic line.
 
-![Navigate to the error location](../img/image2023-2-16_16-29-20.png)
+![Navigate to the error location](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/warning-detail.png)
 
 ## Step 3. Correct the Issue
 
@@ -44,7 +44,7 @@ Resources to review when diagnosing an issue:
 * [Cookbook](../cookbook/readme.mdx)
 * [Language Specification](../language-specification/readme.md).
 * [Ed-Fi Extension
-    Framework](https://edfi.atlassian.net/wiki/spaces/EFDS4X/pages/24412627/Ed-Fi+Extension+Framework)
+  Framework](../../1-data-exchange/data-standard/extension-framework.md)
 
 Occasionally, there may be known issues preventing the use of otherwise valid
 extension scenarios or cases where an extension scenario is not fully supported
