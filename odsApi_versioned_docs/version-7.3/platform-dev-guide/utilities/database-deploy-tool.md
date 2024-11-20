@@ -2,7 +2,7 @@
 
 The Database Deploy Tool is a utility for the Ed-Fi Technical Suite 3 databases.
 The utility supports the deployment of ODS databases in both the SQL Server 2019
-and PostgreSQL 13 platforms, and is designed to work with Ed-Fi ODS / API v3.3
+and PostgreSQL 16 platforms, and is designed to work with Ed-Fi ODS / API v3.3
 and later.
 
 While the Deploy Tool supports deployment of fresh ODS instances and deployment
@@ -15,15 +15,13 @@ and others — can be used for generating ODS upgrade scripts.
 
 :::info
 
-In most cases, you do not need to directly download this tool to use
-it. The Initialize the Development Environment (initdev) script described
+In most cases, you do not need to directly download this tool to use it.
+The Initialize the Development Environment (initdev) script described
 in [Getting Started - Source Code
-Installation](../../getting-started/source-code-installation/readme.md)
-and the EdFi.Suite3.RestApi.Databases PowerShell deployment package
-listed [Binary
-Releases](../../getting-started/binary-installation/binary-releases.md)
-uses the Database Deploy Tool to deploy the ODS and related databases used by
-the API.
+Installation](../../getting-started/source-code-installation/readme.md) and the
+EdFi.Suite3.RestApi.Databases PowerShell deployment package listed [Binary
+Releases](../../getting-started/binary-installation/binary-releases.md) uses the
+Database Deploy Tool to deploy the ODS and related databases used by the API.
 
 :::
 
@@ -233,7 +231,8 @@ EdFi.Db.Deploy.exe deploy `
 
 ## Troubleshooting
 
-PostgreSQL passwords containing special characters are problematic &mdash; some users
-find that they work and others find that they do not work, even with third-party
-tools such as PG Admin 4. This problem might be restricted to Windows
-Containers. No workaround other than changing the password has been found.
+PostgreSQL passwords containing special characters are problematic &mdash; some
+users find that they work and others find that they do not work, even with
+third-party tools such as PG Admin 4. This problem might be restricted to
+Windows Containers. No workaround other than changing the password has been
+found.
