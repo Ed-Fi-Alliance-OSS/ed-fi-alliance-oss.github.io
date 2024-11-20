@@ -104,13 +104,28 @@ const config = {
         routeBasePath: 'reference/ods-api',
         sidebarPath: './sidebars.js',
         includeCurrentVersion: false,
-        lastVersion: "7.2",
+        lastVersion: '7.3',
         versions: {
-          5.4: { banner: 'none', badge: true, path: '5.4', className: 'active' },
-          6.2: { banner: 'none', badge: true, path: '6.2', className: 'active' },
-          7.1: { banner: 'none', badge: true, path: '7.1', className: 'active' },
+          5.4: {
+            banner: 'none',
+            badge: true,
+            path: '5.4',
+            className: 'active',
+          },
+          6.2: {
+            banner: 'none',
+            badge: true,
+            path: '6.2',
+            className: 'active',
+          },
+          7.1: {
+            banner: 'none',
+            badge: true,
+            path: '7.1',
+            className: 'active',
+          },
           7.2: { banner: 'none', badge: true, path: '7.2' },
-          7.3: { banner: 'unreleased', badge: true, path: '7.3' }
+          7.3: { banner: 'unreleased', badge: true },
         },
       },
     ],
@@ -127,7 +142,7 @@ const config = {
           5: { banner: 'none', badge: true },
         }
       },
-    ],
+    ]
   ],
 
   themeConfig:
