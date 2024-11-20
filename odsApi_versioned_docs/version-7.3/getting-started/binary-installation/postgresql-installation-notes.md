@@ -4,7 +4,7 @@ sidebar_position: 99
 
 # PostgreSQL Installation Notes
 
-Install PostgreSQL 13.x on port 5432 if you intend to use PostgreSQL as a
+Install PostgreSQL 16.x on port 5432 if you intend to use PostgreSQL as a
 backing datastore for the ODS / API.
 
 ## PostgreSQL Visualization Tool
@@ -27,7 +27,7 @@ containers.
 
 Install using the
 PostgreSQL [installer](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads).
-Version 13.x is compatible with the ODS / API.
+Version 16.x is compatible with the ODS / API.
 
 * Note the installer includes pgAdmin as an option.
 * The [PostgreSQL installation
@@ -56,20 +56,20 @@ site](https://docs.docker.com/compose/).
 
 ```yaml
 services:
-    pg13:
-        image: postgres:13-alpine
-        container_name: pg13
+    pg16:
+        image: postgres:16-alpine
+        container_name: pg16
         volumes:
-            - pg13-database:/var/lib/postgresql/data
+            - pg16-database:/var/lib/postgresql/data
         ports:
             - 5432:5432
         environment:
             - POSTGRES_PASSWORD=${PG_PASSWORD}
         restart: on-failure
 volumes:
-    pg13-database:
+    pg16-database:
         driver: local
-        name: pg13-database
+        name: pg16-database
 ```
 
 Create an environment file (name: `.env`) to be consumed by Docker Compose. By
