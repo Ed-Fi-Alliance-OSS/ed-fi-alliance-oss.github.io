@@ -6,7 +6,7 @@ resources and key publications.
 
 ## Ed-Fi Data Standards
 
-The [Ed-Fi Data Standard](./data-standard/) is the widely adopted, CEDS-aligned,
+The [Ed-Fi Data Standard](./data-standard/readme.md) is the widely adopted, CEDS-aligned,
 open-source data standard developed by the educational community for the
 betterment of the community. The Ed-Fi Data Standard serves as the foundation
 for enabling interoperability among secure data systems and contains a Unifying
@@ -17,8 +17,8 @@ important information in the K–12 education enterprise.
 
 An Ed-Fi compatible API application creates a REST-based interface for data
 exchange, where the messages conform to the Ed-Fi Data Standard. The [Ed-Fi
-ODS/API](/reference/ods-api) is the Ed-Fi Alliance's core API product, used by
-nearly all "Ed-Fi deployments." Any interested party can build an alternate,
+ODS/API](../ods-api-platform.mdx) is the Ed-Fi Alliance's core API product, used
+by nearly all "Ed-Fi deployments." Any interested party can build an alternate,
 compatible, application, by adhering to the Open API specifications and guidance
 provided in [Ed-Fi API Guidelines](./api-guidelines/).
 
@@ -39,10 +39,10 @@ API Guidelines](./api-guidelines/).
 * This space contains additional documentation and technical specifications for
   our published standards; see the additional articles in the left sidebar.
 * Ed-Fi data exchange standards are aligned with the reference standards
-  published in the [Ed-Fi Data Standard](./data-standard/) space. In particular,
+  published in the [Ed-Fi Data Standard](./data-standard/readme.md) space. In particular,
   the [Ed-Fi Unifying Data Model](./data-standard/udm.md) is a helpful reference
   to understand the contents and structure of the data exchanges we support.
-* The [Ed-Fi RFC Specifications](./rfc/) contains work-in-progress
+* The [Ed-Fi RFC Specifications](./rfc/readme.md) contains work-in-progress
   specifications. Although the material is still in draft form, the technical
   specifications are typically implementable. For example, the Ed-Fi community
   uses this site to publish data exchange specifications for Ed-Fi-related
