@@ -5,12 +5,12 @@
 
 import React from 'react';
 import Content from '@theme-original/DocSidebar/Desktop/Content';
-import VersionDropDown from '../../../../components/VersionDropDown';
+import { SideBarVersionDropDown } from '../../../../components/VersionDropDown';
 
 export default function ContentWrapper(props) {
   return (
     <>
-      <VersionDropDown />
+      <SideBarVersionDropDown />
       <Content {...props} />
     </>
   );
