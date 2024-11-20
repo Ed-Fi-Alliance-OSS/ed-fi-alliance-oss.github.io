@@ -15,14 +15,14 @@ import {
 } from '@docusaurus/theme-common';
 import { useNavbarMobileSidebar } from '@docusaurus/theme-common/internal';
 import DocSidebarItems from '@theme/DocSidebarItems';
-import VersionDropDown from '../../../components/VersionDropDown';
+import { SideBarVersionDropDown } from '../../../components/VersionDropDown';
 
 // eslint-disable-next-line react/function-component-definition
 const DocSidebarMobileSecondaryMenu = ({ sidebar, path }) => {
   const mobileSidebar = useNavbarMobileSidebar();
   return (
     <>
-      <VersionDropDown />
+      <SideBarVersionDropDown />
       <ul className={clsx(ThemeClassNames.docs.docSidebarMenu, 'menu__list')}>
         <DocSidebarItems
           items={sidebar}

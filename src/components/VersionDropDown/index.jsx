@@ -28,20 +28,7 @@ const odsApi = [
   },
 ];
 
-export default function VersionDropDown() {
-  const { pathname } = useLocation();
-
-  let product = "";
-  let versions = [];
-
-  if (pathname.includes('/ods-api/')) {
-    product = 'ODS/API';
-    versions = odsApi;
-  }
-  else {
-    return '';
-  }
-
+function VersionDropDown(product, versions) {
   return (
     <div className="dropdown dropdown--hoverable margin-top--md margin-left--md">
       <button className="button button--secondary navbar__link">
@@ -60,3 +47,18 @@ export default function VersionDropDown() {
   );
 }
 
+function OdsApiDropDown() {
+  return VersionDropDown('ODS/API', odsApi);
+}
+
+function SideBarVersionDropDown() {
+  const { pathname } = useLocation();
+  if (pathname.includes('/ods-api/')) {
+    return OdsApiDropDown();
+  }
+  else {
+    return '';
+  }
+}
+
+export { VersionDropDown, OdsApiDropDown, SideBarVersionDropDown };
