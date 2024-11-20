@@ -7,23 +7,23 @@ import { useLocation } from '@docusaurus/router';
 
 const odsApi = [
   {
-    path: '/reference/ods-api/7.3',
+    path: '/reference/ods-api/',
     number: '7.3',
   },
   {
-    path: '/reference/ods-api/7.2',
+    path: '/reference/ods-api/7.2/',
     number: '7.2',
   },
   {
-    path: '/reference/ods-api/7.1',
+    path: '/reference/ods-api/7.1/',
     number: '7.1',
   },
   {
-    path: '/reference/ods-api/6.2',
+    path: '/reference/ods-api/6.2/',
     number: '6.2',
   },
   {
-    path: '/reference/ods-api/5.4',
+    path: '/reference/ods-api/5.4/',
     number: '5.4',
   },
 ];
@@ -34,7 +34,7 @@ export default function VersionDropDown() {
   let product = "";
   let versions = [];
 
-  if (pathname.includes('/ods-api')) {
+  if (pathname.includes('/ods-api/')) {
     product = 'ODS/API';
     versions = odsApi;
   }
