@@ -1,0 +1,38 @@
+<!-- # Expected and Actual Section Attendance
+
+## Report a student's expected total days in attendance for a section
+
+Expected Days in Attendance for a Section = Section → CourseOffering →
+Session.TotalInstructionalDays
+
+WHERE Section = { Section for the attendance calculation }
+
+![Total Expected Attendance for Section Year](../../../../img/Total%20Expected%20Attendance%20for%20Section%20Year.png)
+
+#### Assumption
+
+* The student is enrolled for the entire session associated with the section.
+
+## Report a student's actual attendance for a section
+
+Student Section Attendance = { Expected Days in Attendance for the Section (see
+above) } - COUNT ( StudentSectionAttendanceEvent.AttendanceEvent.EventDate )
+
+WHERE
+StudentSectionAttendanceEvent.AttendanceEvent.AttendanceEventCategoryDescriptor
+IN { Absent categories (e.g., Excused Absence, Unexcused Absence) as defined by
+the implementation }
+
+    AND StudentSectionAttendanceEvent.Student= { Student for the attendance calculation }
+
+    AND StudentSectionAttendanceEvent.Section = { Section for the attendance calculation }
+
+<!-- Image lost -->
+<!-- ![Actual Attendance for a Section](../../../../img/Actual%20Attendance%20for%20a%20Section.png) -->
+
+<!-- #### Assumptions
+
+* The student is enrolled in the section for the entire session.
+* Days are reported as whole numbers. If reported as partial days,
+    StudentSectionAttendanceEvent → SectionAttendanceDuration or
+    StudentSectionAttendanceEvent → AttendanceEvent → EventDuration may be used. -->

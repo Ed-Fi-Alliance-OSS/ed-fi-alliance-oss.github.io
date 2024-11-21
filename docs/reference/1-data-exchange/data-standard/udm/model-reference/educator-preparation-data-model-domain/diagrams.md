@@ -1,0 +1,15 @@
+# Educator Preparation Data Model Domain - Model Diagrams
+
+:::warning
+The Teacher Preparation Data Model has been renamed to the Educator Preparation
+Data Model to better reflect the capability of the model to support all types of
+educator preparation. Read more about the name change [We're renaming TPDM,
+here's
+why](https://edfi.atlassian.net/wiki/display/EPP/We%27re+renaming+TPDM%2C+here%27s+why)
+:::
+
+## EPDM Domain UML Diagram
+
+![Teacher Prep Data Model Diagram](../../../img/TeacherPrepDataModel.jpeg)
+
+_TPDM Domain (click to enlarge)_
