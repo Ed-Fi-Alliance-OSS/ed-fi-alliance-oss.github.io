@@ -11,7 +11,7 @@ the [Bell Schedule
 Domain](../bell-schedule-domain/readme.md).
 
 * [School Calendar Domain - Overview](./overview.md)
-* [School Calendar Domain - Model Diagrams](./diagrams.md)
+* [School Calendar Domain - Model Diagrams](./model-diagrams.md)
 * [School Calendar Domain - Entities, References, and
   Descriptors](./entities-references-and-descriptors.md)
 * [School Calendar Domain - Best Practices](./best-practices.md)

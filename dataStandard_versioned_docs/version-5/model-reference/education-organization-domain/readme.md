@@ -8,7 +8,7 @@ typically including schools, school districts and other local education agencies
 (LEAs), regional educational service agencies, and state education agencies.
 
 * [Education Organization Domain - Overview](./overview.md)
-* [Education Organization Domain - Model Diagrams](./diagrams.md)
+* [Education Organization Domain - Model Diagrams](./model-diagrams.md)
 * [Education Organization Domain - Entities and Descriptors](./entities-references-and-descriptors.md)
 
 ← [Go back to the UDM Reference page](../readme.md)

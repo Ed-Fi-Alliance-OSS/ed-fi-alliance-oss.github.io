@@ -98,7 +98,7 @@ You can look up a key for any entity in the [UDM Data
 Handbook](../udm-handbook.md). Key
 attributes are indicated in the "Identity" column.
 
-<!-- ![Course Offering Handbook Key Example](../../img/Course%20Offering%20Handbook%20Key%20Example%20-%20cropped.png) -->
+![Course Offering Handbooks Key Example](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Course%20Offering%20Handbook%20Key%20Example%20-%20cropped.png)
 
 In the above example showing the Course Offering entity, the key is a Local
 Course Code, a School, and a Session. Collectively, these constitute the natural

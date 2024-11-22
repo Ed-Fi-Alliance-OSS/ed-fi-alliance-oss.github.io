@@ -8,7 +8,7 @@ programs, and are often deployed for students with special needs or who are at
 risk.
 
 * [Intervention Domain - Overview](./overview.md)
-* [Intervention Domain - Model Diagrams](./diagrams.md)
+* [Intervention Domain - Model Diagrams](./model-diagrams.md)
 * [Intervention Domain - Entities, References, and Descriptors](./entities-references-and-descriptors.md)
 
 ← [Go back to the UDM Reference page](../readme.md)

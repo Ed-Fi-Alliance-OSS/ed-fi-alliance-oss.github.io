@@ -7,7 +7,7 @@ including situations in which staff may have multiple employment and assignment
 associations.
 
 * [Staff Domain - Overview](./overview.md)
-* [Staff Domain - Model Diagrams](./diagrams.md)
+* [Staff Domain - Model Diagrams](./model-diagrams.md)
 * [Staff Domain - Entities, References, and
   Descriptors](./entities-references-and-descriptors.md)
 

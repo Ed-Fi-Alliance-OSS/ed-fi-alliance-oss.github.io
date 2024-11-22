@@ -7,7 +7,7 @@ transcript that contains the final record of grades received and other
 significant accomplishments.
 
 * [Student Academic Record Domain - Overview](./overview.md)
-* [Student Academic Record Domain - Model Diagrams](./diagrams.md)
+* [Student Academic Record Domain - Model Diagrams](./model-diagrams.md)
 * [Student Academic Record Domain - Entities, References, and
   Descriptors](./entities-references-and-descriptors.md)
 * [Student Academic Record Domain - Best Practices](./best-practices.md)

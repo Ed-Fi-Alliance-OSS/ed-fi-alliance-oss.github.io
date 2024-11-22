@@ -6,7 +6,7 @@ funding purposes. Core to the Finance model is the Account entity, representing
 the chart of accounts, or an organization of aggregate accounts.
 
 * [Finance Domain - Overview](./overview.md)
-* [Finance Domain - Model Diagrams](./diagrams.md)
+* [Finance Domain - Model Diagrams](./model-diagrams.md)
 * [Finance Domain - Entities, References, and Descriptors](./entities-references-and-descriptors.md)
 * [Finance Domain - Best Practices](./best-practices.md)
 
