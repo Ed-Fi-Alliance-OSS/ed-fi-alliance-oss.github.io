@@ -43,4 +43,6 @@ The key concepts include the following:
 The following diagram uses data to illustrate the connections between the key
 entities in the Bell Schedule domain:
 
-<!-- ![Bell-Schedule-Data-Diagram](../../../img/Bell-Schedule-Data-Diagram.png) -->
+![Bell-Schedule-Data-Diagram](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Bell-Schedule-Data-Diagram.png)
+
+[_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Bell-Schedule-Data-Diagram.png)

@@ -8,7 +8,7 @@ in their classroom, school, or district. The Ed-Fi Unifying Data Model (UDM)
 integrates and organizes raw education data and information from a broad range
 of data sources so it can be sifted, analyzed, and put to everyday use.
 
-<!-- ![Interoperability](../../img/Ed-Fi%20Interoperability%20Graphic.png) -->
+![Interoperability](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Ed-Fi%20Interoperability%20Graphic.png)
 
 By using products based upon the Unifying Data Model, educators are equipped
 with the information they need to understand the individual needs of students
@@ -32,7 +32,7 @@ The Unifying Data Model is built on open industry protocols and conventions and
 is therefore vendor-neutral. The Unifying Data Model and its derivative products
 can be implemented on any hardware and software platform.
 
-<!-- ![Sample Model and Handbook](../../img/Sample%20Model%20and%20Handbook.png) -->
+![Sample Model and Handbook](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Sample%20Model%20and%20Handbook.png)
 
 * [Ed-Fi Unifying Data Model (UDM) Handbook (Latest
     version)](https://schema.ed-fi.org/datahandbook-v510/index.html#/)

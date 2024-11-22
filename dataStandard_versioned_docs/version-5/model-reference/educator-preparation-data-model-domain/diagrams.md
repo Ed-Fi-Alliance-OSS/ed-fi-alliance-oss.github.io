@@ -12,6 +12,6 @@ why](https://edfi.atlassian.net/wiki/display/EPP/We%27re+renaming+TPDM%2C+here%2
 
 ## EPDM Domain UML Diagram
 
-<!-- ![Teacher Prep Data Model Diagram](../../../img/TeacherPrepDataModel.jpeg) -->
+![Teacher Prep Data Model Diagram](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/TeacherPrepDataModel.jpeg)
 
-_TPDM Domain (click to enlarge)_
+[_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/TeacherPrepDataModel.jpeg)

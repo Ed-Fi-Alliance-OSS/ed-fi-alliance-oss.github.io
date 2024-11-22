@@ -56,7 +56,7 @@ has this feature).
 In Notepad++ go to the Plugins menu and select Plugins Admin. Find XML Tools in
 the list, check the box, and click the Install button.
 
-<!-- ![Notepad++ Plugins Admin](../img/01%20Notepad++%20Plugins%20Admin.PNG) -->
+![Notepad++ Plugins Admin](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/01%20Notepad++%20Plugins%20Admin.PNG)
 
 ### Step 2: Download XML Schema Files
 
@@ -95,6 +95,6 @@ xsi:schemaLocation="http://ed-fi.org/0320 C:/Ed-Fi-Standard/v3.2/Schemas/Bulk/In
 Go to the Plugins menu → XML Tools → Validate Now. If validation is successful,
 you will see the following:
 
-<!-- ![Notepad++ Validation](../img/03%20Notepad++%20Valid.PNG) -->
+![Notepad++ Validation](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/03%20Notepad++%20Valid.PNG)
 
 Otherwise, an Information window will appear with validation error messages.

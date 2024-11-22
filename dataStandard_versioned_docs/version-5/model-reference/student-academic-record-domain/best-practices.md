@@ -44,7 +44,7 @@ The following is a sample course transcript showing mappings to the Ed-Fi data
 model. Each circled number corresponds to an element in the Ed-Fi Data Standard;
 elements are listed below by number.
 
-<!-- ![Sample Student Transcript](../../../img/Sample%20Student%20Transcript.PNG) -->
+![Sample Student Transcript](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Sample%20Student%20Transcript.PNG)
 
 | #   | Description | Ed-Fi Entity | Ed-Fi Element | Condition(s) |
 | --- | --- | --- | --- | --- |

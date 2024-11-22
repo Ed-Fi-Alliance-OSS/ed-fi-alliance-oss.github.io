@@ -2,6 +2,6 @@
 
 ## Student Attendance Model UML Diagram
 
-<!-- ![Student Attendance UML](../../../img/Student%20Attendance%20UML.png) -->
+![Student Attendance UML](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Student%20Attendance%20UML.png)
 
-_Student Attendance Domain (click to enlarge)_
+[_Student Attendance Domain (click to enlarge)_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Student%20Attendance%20UML.png)

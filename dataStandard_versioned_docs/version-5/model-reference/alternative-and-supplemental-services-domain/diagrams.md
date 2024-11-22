@@ -5,15 +5,14 @@ Services domain model and subdomains.
 
 ## Alternative and Supplemental Services Model UML Diagram
 
-<!-- ![Alternative and Supplemental Services Model UML Diagram](../../../img/Alternative%20and%20Supplemental%20Services%20Model%20UML%20Diagram.png) -->
+![Alternative and Supplemental Services Model UML Diagram](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Alternative%20and%20Supplemental%20Services%20Model%20UML%20Diagram.png)
 
-Alternative and Supplemental Services Domain (click to enlarge)
+[_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Alternative%20and%20Supplemental%20Services%20Model%20UML%20Diagram.png)
 
 ### Federal Programs Subdomain
 
 #### Alternative and Supplemental Services, Federal Programs Model UML Diagram
 
-<!-- ![Federal Programs Subdomain](../../../img/Federal%20Programs%20Subdomain.png) -->
+![Federal Programs Subdomain](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Federal%20Programs%20Subdomain.png)
 
-Alternative and Supplemental Services - Federal Programs Subdomain (click to
-enlarge)
+[_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Federal%20Programs%20Subdomain.png)

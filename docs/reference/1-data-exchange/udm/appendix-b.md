@@ -132,7 +132,7 @@ direction of an association.
 Consider, for example, the associations in the Student Attendance domain shown
 in the diagram below.
 
-<!-- ![Attendance Event](../img/image2018-5-7_13-41-55.png) -->
+![Attendance Event](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/image2018-5-7_13-41-55.png)
 
 As shown, the association relating a student to the attendance event is
 contained in the source AttendanceEvent. It is reasonable to assume that

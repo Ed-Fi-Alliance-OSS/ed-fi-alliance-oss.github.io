@@ -2,6 +2,6 @@
 
 ## Intervention Model UML Diagram
 
-<!-- ![Intervention Domain](../../../img/Intervention%20Domain.png) -->
+![Intervention Domain](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Intervention%20Domain.png)
 
-_Intervention Domain (click to enlarge)_
+[_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Intervention%20Domain.png)

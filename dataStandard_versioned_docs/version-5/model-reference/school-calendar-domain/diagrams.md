@@ -2,6 +2,6 @@
 
 ## School Calendar Model UML Diagram
 
-<!-- ![School Calendar Domain](../../../img/School%20Calendar%20Domain.png) -->
+![School Calendar Domain](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/School%20Calendar%20Domain.png)
 
-_School Calendar Domain (click to enlarge)_
+[_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/School%20Calendar%20Domain.png)

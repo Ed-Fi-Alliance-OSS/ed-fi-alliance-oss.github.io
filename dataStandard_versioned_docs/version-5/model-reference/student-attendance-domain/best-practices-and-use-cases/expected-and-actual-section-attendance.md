@@ -1,19 +1,25 @@
-<!-- # Expected and Actual Section Attendance
+# Expected and Actual Section Attendance
 
 ## Report a student's expected total days in attendance for a section
+
+```sql
 
 Expected Days in Attendance for a Section = Section → CourseOffering →
 Session.TotalInstructionalDays
 
 WHERE Section = { Section for the attendance calculation }
 
-![Total Expected Attendance for Section Year](../../../../img/Total%20Expected%20Attendance%20for%20Section%20Year.png)
+```
+
+![Total Expected Attendance for Section Year](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Total%20Expected%20Attendance%20for%20Section%20Year.png)
 
 #### Assumption
 
 * The student is enrolled for the entire session associated with the section.
 
 ## Report a student's actual attendance for a section
+
+```sql
 
 Student Section Attendance = { Expected Days in Attendance for the Section (see
 above) } - COUNT ( StudentSectionAttendanceEvent.AttendanceEvent.EventDate )
@@ -27,12 +33,14 @@ the implementation }
 
     AND StudentSectionAttendanceEvent.Section = { Section for the attendance calculation }
 
+```
+
 <!-- Image lost -->
 <!-- ![Actual Attendance for a Section](../../../../img/Actual%20Attendance%20for%20a%20Section.png) -->
 
-<!-- #### Assumptions
+#### Assumptions
 
 * The student is enrolled in the section for the entire session.
 * Days are reported as whole numbers. If reported as partial days,
     StudentSectionAttendanceEvent → SectionAttendanceDuration or
-    StudentSectionAttendanceEvent → AttendanceEvent → EventDuration may be used. -->
+    StudentSectionAttendanceEvent → AttendanceEvent → EventDuration may be used.

@@ -30,7 +30,7 @@ JSON, or XML schema.
 The data model consists of entities, associations and attributes, as can be seen
 in this small section of the model.
 
-<!-- ![Ed-Fi Student Parent Model](../img/UML-StudentParent.png) -->
+![Ed-Fi Student Parent Model](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/UML-StudentParent.png)
 
 The Ed-Fi Alliance also publishes data exchange standards that are derived from
 the Ed-Fi data model: vendors and others use these to interoperate — to send
@@ -80,17 +80,17 @@ A good example of flattening is the "Name" entity. If we look at Student in UDM,
 we see a"Name" entity. From the Data Handbook, we can see that Name is composed
 of several attributes: a FirstName, a LastSurname, etc.
 
-<!-- | UML | Data Handbook |
+| UML | Data Handbook |
 | --- | --- |
-| ![Ed-Fi Name Model](../img/UML-name.png) | ![Data Handbook Name](../img/DataHandbook-Name.png)<br/><br/>_click to expand_ | -->
+| ![Ed-Fi Name Model](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/UML-name.png) | ![Data Handbook Name](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/DataHandbook-Name.png)<br/><br/>_click to expand_ |
 
 But if we look in the API JSON model and in the ODS database, the elements of
 "name" have been flattened directly onto the entity. There is no independent
 "Name" entity — its attributes have been added directly to Student.
 
-<!-- | API JSON | ODS Database |
+| API JSON | ODS Database |
 | --- | --- |
-| ```<br/> {<br/>    "id": "string",<br/>    "studentUniqueId": "string",<br/>    "firstName": "string",<br/>    "generationCodeSuffix": "string",<br/>    "lastSurname": "string",<br/>    "maidenName": "string",<br/>    "middleName": "string",<br/>    [etc.]<br/>}<br/><br/><br/>``` | ![ODS Database](../img/ODSDB-student.png) | -->
+| ```<br/> {<br/>    "id": "string",<br/>    "studentUniqueId": "string",<br/>    "firstName": "string",<br/>    "generationCodeSuffix": "string",<br/>    "lastSurname": "string",<br/>    "maidenName": "string",<br/>    "middleName": "string",<br/>    [etc.]<br/>}<br/><br/><br/>``` | ![ODS Database](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/ODSDB-student.png) |
 
 We refer to this as a "contained class": Name is contained by Student. Some but
 not all contained classes behave this way, but be on the lookout for it if you
@@ -112,9 +112,9 @@ ElectronicMailType, DoNotPublish indicator, etc. But unlike Name, a Student or
 Staff can have multiple ElectronicMails. You can see this in the UML by the
 cardinality "0..n" (highlighted below).
 
-<!-- | UML | Data Handbook |
+| UML | Data Handbook |
 | --- | --- |
-| ![Ed-Fi Electronic Mail Model](../img/UML-electronicmail.png) | ![Data Handbook Electronic Mail](../img/DataHandbook-electronicmail.png)<br/><br/>_Click to expand_ | -->
+| ![Ed-Fi Electronic Mail Model](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/UML-electronicmail.png) | ![Data Handbook Electronic Mail](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/DataHandbook-electronicmail.png)<br/><br/>_Click to expand_ |
 
 Collections of contained classes look different in the API and in the database.
 
@@ -143,7 +143,7 @@ In the database, this hierarchy is flattened via a separate table that inherits
 the table name and the key of the containing entity. So in this case, we have
 two tables: Staff and StaffElectronicMail.
 
-<!-- | ODS Database | | --- | | ![ODS Database](../img/ODSDB-email.png) | -->
+| ODS Database | | --- | | ![ODS Database](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/ODSDB-email.png) |
 
 As you can see, StaffElectronicMail email inherits the key of the containing
 table (StaffUSI) and adds to it (ElectronicMailAddress
@@ -163,11 +163,11 @@ GradeLevel.
 Descriptors downstream from the UML have some differences in implementation. See
 the table below for details:
 
-<!-- | UML/Data Handbook | API JSON |
+| UML/Data Handbook | API JSON |
 | --- | --- |
-| Core model Descriptors, e.g., **GradeLevel** <br/><br/>Example below from Calendar - note that in this case GradeLevel is a collection ("0..n" cardinality).<br/><br/>**![UML](../img/UML-calendar.png)<br/><br/>**<br/><br/>_UML_<br/><br/>**![Data Handbook](../img/DataHandbook-calendar.png)<br/><br/>**<br/><br/>_Data Handbook_ | In an API resource, descriptors have a "Descriptor" suffix, as in **GradeLevelDescriptor**<br/><br/>```<br/>{<br/>    "id": "string",<br/>    "calendarCode": "string",<br/>    "schoolReference": {<br/>      "schoolId": 0<br/>    },<br/>    "calendarTypeDescriptor": "string",<br/>    "gradeLevels": [<br/>      {<br/>        "gradeLevelDescriptor": "string"<br/>      }<br/>    ],<br/>``` |
+| Core model Descriptors, e.g., **GradeLevel** <br/><br/>Example below from Calendar - note that in this case GradeLevel is a collection ("0..n" cardinality).<br/><br/>**![UML](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/UML-calendar.png)<br/><br/>**<br/><br/>_UML_<br/><br/>**![Data Handbook](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/DataHandbook-calendar.png)<br/><br/>**<br/><br/>_Data Handbook_ | In an API resource, descriptors have a "Descriptor" suffix, as in **GradeLevelDescriptor**<br/><br/>```<br/>{<br/>    "id": "string",<br/>    "calendarCode": "string",<br/>    "schoolReference": {<br/>      "schoolId": 0<br/>    },<br/>    "calendarTypeDescriptor": "string",<br/>    "gradeLevels": [<br/>      {<br/>        "gradeLevelDescriptor": "string"<br/>      }<br/>    ],<br/>``` |
 | ODS Database |     |
-| In the database, all descriptors are managed in a central data structure, so GradeLevel on an entity will appear as **GradeLevelDescriptorID** that references a **GradeLevelDescriptor** table. However, the actual values for entities in that table are held in a central **Descriptor** Table. The key fields highlighted below will all match.<br/><br/>See the example below.<br/><br/>![ODS Database](../img/ODSDB-gradelevel.png) |     | -->
+| In the database, all descriptors are managed in a central data structure, so GradeLevel on an entity will appear as **GradeLevelDescriptorID** that references a **GradeLevelDescriptor** table. However, the actual values for entities in that table are held in a central **Descriptor** Table. The key fields highlighted below will all match.<br/><br/>See the example below.<br/><br/>![ODS Database](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/ODSDB-gradelevel.png) |     |
 
 ### Implementation-specific Attributes
 
@@ -181,9 +181,9 @@ elements specific to those bindings appear.
 In the API JSON, users may find additional elements not in the Ed-Fi data model.
 If we look at the Location entity, we can clearly see this:
 
-<!-- | UML/Data Handbook | API JSON - Standard |
+| UML/Data Handbook | API JSON - Standard |
 | --- | --- |
-| ![Data Handbook Location](../img/DataHandbook-location.png)<br/><br/>_Click to expand_ | ```<br/>{  <br/>  "id": "string",  <br/>  "classroomIdentificationCode": "string",  <br/>  "schoolReference": {  <br/>    "schoolId": 0  <br/>  },  <br/>  "maximumNumberOfSeats": 0,  <br/>  "optimalNumberOfSeats": 0,  <br/>  "_etag": "string"  <br/>}<br/><br/>``` | -->
+| ![Data Handbook Location](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/DataHandbook-location.png)<br/><br/>_Click to expand_ | ```<br/>{  <br/>  "id": "string",  <br/>  "classroomIdentificationCode": "string",  <br/>  "schoolReference": {  <br/>    "schoolId": 0  <br/>  },  <br/>  "maximumNumberOfSeats": 0,  <br/>  "optimalNumberOfSeats": 0,  <br/>  "_etag": "string"  <br/>}<br/><br/>``` |
 
 As we can see from the Data Handbook, Location has 4 elements, but in the API
 JSON, it has 6 elements - in the API JSON, it has an **id**, **\_etag** as well.
@@ -198,7 +198,7 @@ feature-dependent: they are only present if certain features are enabled.
 
 ODS Database
 
-<!-- ![ODS Database](../img/ODSDB-location.png) -->
+![ODS Database](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/ODSDB-location.png)
 
 ### Inheritance
 
@@ -233,9 +233,9 @@ their subclasses.
 Let's look at a specific example: School, which inherits from (is a subclass of)
 the abstract class EducationOrganization.
 
-<!-- | UML | Data Handbook |
+| UML | Data Handbook |
 | --- | --- |
-| ![UML EdOrg School](../img/UML-EdOrg-School.png) | ![Data Handbook EdOrg School](../img/DataHandbook-EdOrg-School.png)<br/><br/>_Excerpt of School entity in the Data Handbook. The subclass relationship is highlighted in red._<br/><br/>_Click to expand._ | -->
+| ![UML EdOrg School](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/UML-EdOrg-School.png) | ![Data Handbook EdOrg School](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/DataHandbook-EdOrg-School.png)<br/><br/>_Excerpt of School entity in the Data Handbook. The subclass relationship is highlighted in red._<br/><br/>_Click to expand._ |
 
 ```json
 {
@@ -301,10 +301,10 @@ materialized in a table. Where this happens, there is also a column on the
 abstract super-class called **Discriminator** added that will hold the type of
 the subclass
 
-<!-- | ODS Database | | --- | |
-![ODS Database EdOrg School](../img/ODSDB-EdOrg-School.png)<br/><br/>_Abstract class and its
+| ODS Database | | --- | |
+![ODS Database EdOrg School](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/ODSDB-EdOrg-School.png)<br/><br/>_Abstract class and its
 sub-class in the ODS database. Note the field "Discriminator" on the super
-class._ | -->
+class._ |
 
 This representation looks much more like the data model we see in the UML. In
 that representation, the data attributes are stored in either the abstract or

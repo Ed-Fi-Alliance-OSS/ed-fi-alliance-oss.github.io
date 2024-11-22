@@ -7,7 +7,7 @@ specifications, cardinality, usage, an XSD (normative) and SQL (non-normative)
 expression, and other information about the elements and entities that make up
 the Ed-Fi Data Model.
 
-<!-- ![Handbook](../img/image-2023-4-28_10-38-18.png) -->
+![Handbook](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/image-2023-4-28_10-38-18.png)
 
 * [Ed-Fi Unifying Data Model (UDM) Handbook (Latest
     version)](https://schema.ed-fi.org/datahandbook-v510/index.html#/)

@@ -30,7 +30,7 @@ The key concepts include the following:
 * There are three distinct associations between a Staff member and an
     EducationOrganization. Note that there is also a StaffSectionAssociation
     relationship; that relationship is detailed in the [Teaching and Learning
-    Domain](../../unifying-data-model-v5-model-reference/teaching-and-learning-domain.md).
+    Domain](../teaching-and-learning-domain/overview.md).
 
   * The StaffEducationOrganizationEmploymentAssociation entity is primarily
         for the financial relationship with the entity that is responsible for

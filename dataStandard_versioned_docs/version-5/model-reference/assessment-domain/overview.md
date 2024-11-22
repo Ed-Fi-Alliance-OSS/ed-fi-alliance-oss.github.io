@@ -80,7 +80,9 @@ AssessmentItem that is defined in the metadata, the student's results are
 reflected in parallel instances of the complex attribute
 StudentAssessment.StudentAssessmentItem.
 
-<!-- ![Assessment Explained](../../../img/Assessment%20Explained.png) -->
+![Assessment Explained](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Assessment%20Explained.png)
+
+[_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Assessment%20Explained.png)
 
 ## Hierarchical Model
 
@@ -100,13 +102,15 @@ the skill areas are ObjectiveAssessment entities. This structure is recursive,
 so that there can be any number of levels of
 ObjectiveAssessments.
 
-<!-- ![ObjectiveAssessments](../../../img/ObjectiveAssessments.png) -->
+![ObjectiveAssessments](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/ObjectiveAssessments.png)
 
 Once a student takes an assessment, the results can be modeled in the
 StudentAssessment entity with parallel StudentObjectiveAssessment complex
 attributes, each of which has references back to its parent or peer entities.
 
-<!-- ![StudentObjectiveAsessments](../../../img/StudentObjectiveAsessments.png) -->
+![StudentObjectiveAsessments](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/StudentObjectiveAsessments.png)
+
+[_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/StudentObjectiveAsessments.png)
 
 ### Support for Mapping to Local Learning Standards
 
@@ -122,7 +126,9 @@ Core State Standards.
 
 The structure looks like this:
 
-<!-- ![LearningStandards](../../../img/LearningStandards.png) -->
+![LearningStandards](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/LearningStandards.png)
+
+[_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/LearningStandards.png)
 
 The source of the data is typically as follows:
 
@@ -153,13 +159,13 @@ the
 A typical classroom score report (for a fictitious provider) might look like
 this:
 
-<!-- ![mathwhale score report](../../../img/mathwhale.png) -->
+![mathwhale score report](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/mathwhale.png)
 
-_Figure 1: a sample score report (click to expand)_
+[_Figure 1: a sample score report (click to expand)_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/mathwhale.png)
 
 A mapping of the main elements might look like this (you will see a few new
 elements appear here):
 
-<!-- ![mathwhale annotated](../../../img/mathwhale-annotated.png) -->
+![mathwhale annotated](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/mathwhale-annotated.png)
 
-_Figure 2: mappings for sample score report (click to expand)_
+[_Figure 2: mappings for sample score report (click to expand)_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/mathwhale-annotated.png)

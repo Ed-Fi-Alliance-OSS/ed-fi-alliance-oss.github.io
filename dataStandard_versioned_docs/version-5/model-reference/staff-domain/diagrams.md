@@ -2,6 +2,6 @@
 
 ## Staff Domain UML Diagram
 
-<!-- ![Staff Domain](../../../img/Staff%20UML.png) -->
+![Staff Domain](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Staff%20UML.png)
 
-_Staff Domain (click to enlarge)_
+[_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Staff%20UML.png)

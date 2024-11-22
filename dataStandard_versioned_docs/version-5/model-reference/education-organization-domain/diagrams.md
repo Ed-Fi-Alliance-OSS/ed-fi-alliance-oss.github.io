@@ -2,6 +2,6 @@
 
 ## Education Organization Model UML Diagram
 
-<!-- ![Education Organizaiion Diagram](../../../img/EducationOrganization.jpeg) -->
+![Education Organizaiion Diagram](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/EducationOrganization.jpeg)
 
-_Education Organization Domain (click to enlarge)_
+[_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/EducationOrganization.jpeg)

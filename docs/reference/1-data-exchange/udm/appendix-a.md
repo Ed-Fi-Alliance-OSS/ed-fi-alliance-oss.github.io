@@ -25,7 +25,7 @@ education domain, such as students, teachers, campuses, and locations.
 Additionally, classes model non-physical entities in the education space, such
 as courses, sections, attendance events, and discipline actions.
 
-<!-- ![Class](../img/UML-Diagram-Convention-1.png) -->
+![Class](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/UML-Diagram-Convention-1.png)
 
 The class attributes represent properties or characteristics of entities that
 are important in the education domain. Complex attributes with many components
@@ -35,12 +35,12 @@ city, state, and ZIP code. Unless otherwise indicated, attributes are of
 cardinality 1, meaning that they are single-valued and required. Other
 cardinalities are shown within square brackets.
 
-<!-- ![Complex Attribute](../img/UML-Diagram-Convention-2.png) -->
+![Complex Attribute](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/UML-Diagram-Convention-2.png)
 
 Relationships or associations represent logical connections between entities
 that are important in our education domain.
 
-<!-- ![Association](../img/UML-Diagram-Convention-3.png) -->
+![Association](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/UML-Diagram-Convention-3.png)
 
 For example, students are associated with campuses through enrollment. The
 direction of an association indicates readability (as in Student HasAssociated
@@ -60,13 +60,13 @@ associations defined for the superclass are inherited by the more specialized
 subclasses. Generalization semantics are compatible with Type extensions in XML
 schemas.
 
-<!-- ![Generalization](../img/UML-Diagram-Convention-4.png) -->
+![Generalization](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/UML-Diagram-Convention-4.png)
 
 To explain the purpose of certain complex types contained within an entity
 class, the following convention is used. Complex attributes may contain
 attributes, other complex types, and/or associations.
 
-<!-- ![Complex Attribute](../img/UML-Diagram-Conventions-5.png) -->
+![Complex Attribute](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/UML-Diagram-Conventions-5.png)
 
 Notes are included in the Ed-Fi Unifying Data Model to explain or elaborate on
 points not obvious from the UML model structure or class names.

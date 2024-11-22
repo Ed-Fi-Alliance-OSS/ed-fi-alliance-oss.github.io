@@ -47,14 +47,13 @@ the status is updated.
 
 3. To expand the filter options, click View all issues and filters.
 
-    <!-- ![](./img/tracker%20search.png) -->
+![Tracker Search](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/tracker%20search.png)
 
 4. Once you have selected the ticket you wish to track, click the Start
     watching this issue hyperlink.
+![Tracker Watch Issue](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/tracker%20watch%20issue.PNG)
 
-    <!-- ![](./img/tracker%20watch%20issue.PNG) -->
-
-    The number to the left shows how many people are currently watching this
+The number to the left shows how many people are currently watching this
     issue.
 
 5. As updates occur to the ticket, you will receive an email alert with a link
@@ -62,7 +61,7 @@ the status is updated.
 
 6. To stop tracking a ticket, click the Stop watching this issue hyperlink.
 
-    <!-- ![](./img/tracker%20stop%20watch%20issue.PNG) -->
+![Tracker Stop Watch Issue](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/tracker%20stop%20watch%20issue.PNG)
 
 ## Vote or Comment on an Issue
 
@@ -81,21 +80,21 @@ all in the same place.
 
 3. To expand the filter options, click View all issues and filters.
 
-    <!-- ![](./img/tracker%20search.png) -->
+![Tracker Search](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/tracker%20search.png)
 
 4. Once you have selected the ticket, you can vote by clicking the Vote for
     this issue hyperlink on the right side of the page.
 
-    <!-- ![](./img/tracker%20vote%20issue.PNG) -->
+![Tracker Vote Issue](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/tracker%20vote%20issue.PNG)
 
 5. And you can comment by scrolling down to the Comments section.
 
-    <!-- ![](./img/tracker%20comments%20section.PNG) -->
+![Tracker Comments Section](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/tracker%20comments%20section.PNG)
 
 6. Click the Comment button and include information like additional use cases
     or questions.
 
-    <!-- ![](./img/tracker%20add%20new%20comment.PNG) -->
+![Tracker Add New Comment](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/tracker%20add%20new%20comment.PNG)
 
 ## Example Tickets
 

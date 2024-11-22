@@ -9,7 +9,7 @@ the date the assessment was taken, and accommodations. Entities have natural
 **associations** (i.e., relationships): for example, students are related to
 schools via their enrollments.
 
-<!-- ![Core Concepts](../../img/image-2023-5-1_8-58-34.png) -->
+![Core Concepts](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/image-2023-5-1_8-58-34.png)
 
 The Ed-Fi UDM is independent of any interchange mechanism, database or data
 warehouse storage structure. It is meant to capture the meaning and inherent
@@ -45,7 +45,7 @@ has grown over time into related areas of the K–12 enterprise with important
 indirect relations to student achievement such as teacher professional
 development.
 
-<!-- ![Scope](../../img/Ed-Fi%20Scope.PNG) -->
+![Scope](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Ed-Fi%20Scope.PNG)
 
 The Ed-Fi UDM focuses on granular education data for specific students,
 teachers, schools, courses, grades, assessments, and so forth. It generally does

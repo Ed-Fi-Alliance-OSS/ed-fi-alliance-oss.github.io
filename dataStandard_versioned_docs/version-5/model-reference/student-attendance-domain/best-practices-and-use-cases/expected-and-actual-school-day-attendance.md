@@ -1,8 +1,10 @@
-<!-- # Expected and Actual School Day Attendance
+# Expected and Actual School Day Attendance
 
 ## Report a Student's Expected Total Days in Attendance for the School Year
 
 ### Option 1: Using Session.TotalInstructionalDays
+
+```sql
 
 Expected Days in Attendance for the School Year = SUM (
 Session.TotalInstructionalDays )
@@ -11,9 +13,13 @@ WHERE Session.School.SchoolId = { School Id for the attendance calculation }
 
     AND Session.SchoolYear = { Current School Year }
 
-![Total Expected Attendance for School Year via Session](../../../../img/Total%20Expected%20Attendance%20for%20School%20Year%20via%20Session.png)
+```
+
+![Total Expected Attendance for School Year via Session](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Total%20Expected%20Attendance%20for%20School%20Year%20via%20Session.png)
 
 ### Option 2: Using Calendar and CalendarDate
+
+```sql
 
 Expected Days in Attendance for the School Year = COUNT ( CalendarDate.Date )
 
@@ -26,7 +32,9 @@ Events }
 
     AND Calendar.SchoolYear = { Current School Year }
 
-![Total Expected Attendance for School Year via Calendar](../../../../img/Total%20Expected%20Attendance%20for%20School%20Year%20via%20Calendar.png)
+```
+
+![Total Expected Attendance for School Year via Calendar](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Total%20Expected%20Attendance%20for%20School%20Year%20via%20Calendar.png)
 
 #### Assumptions
 
@@ -40,6 +48,8 @@ Events }
     year.
 
 ## Report a Student's Actual Attendance for the School Year
+
+```sq;
 
 Student School Attendance for the School Year = { Expected Days in Attendance
 for the School Year (see above) } - COUNT (
@@ -56,7 +66,9 @@ the implementation }
 
     AND StudentSchoolAttendanceEvent.Session = { All sessions within the school year }
 
-![Actual Attendance for School Year](../../../../img/Actual%20Attendance%20for%20School%20Year.png)
+```
+
+![Actual Attendance for School Year](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Actual%20Attendance%20for%20School%20Year.png)
 
 #### Assumptions
 
@@ -65,4 +77,4 @@ the implementation }
     year.
 * Days are reported as whole numbers. If reported as partial days,
     StudentSchoolAttendanceEvent → SchoolAttendanceDuration or
-    StudentSchoolAttendanceEvent → AttendanceEvent → EventDuration may be used. -->
+    StudentSchoolAttendanceEvent → AttendanceEvent → EventDuration may be used.

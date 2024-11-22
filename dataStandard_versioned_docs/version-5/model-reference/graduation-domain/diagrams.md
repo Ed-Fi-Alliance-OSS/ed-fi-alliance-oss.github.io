@@ -2,6 +2,6 @@
 
 ## Graduation Model UML Diagram
 
-<!-- ![Graduation Domain](../../../img/Graduation%20Domain.png) -->
+![Graduation Domain](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Graduation%20Domain.png)
 
-_Graduation Domain (click to enlarge)_
+[_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Graduation%20Domain.png)

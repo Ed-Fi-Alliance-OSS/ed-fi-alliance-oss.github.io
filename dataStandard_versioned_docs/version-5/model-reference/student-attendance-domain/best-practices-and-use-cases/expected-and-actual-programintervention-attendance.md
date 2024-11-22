@@ -1,8 +1,8 @@
-<!-- # Expected and Actual Program/Intervention Attendance
+# Expected and Actual Program/Intervention Attendance
 
 ## Report a student's expected total time in attendance for a program or intervention
 
-::: warning
+:::warning
 
 Expected, or prescribed attendance is not supported for the generic
 StudentProgramAssociation or its sub-classes. Expected attendance is only
@@ -14,6 +14,8 @@ limited to those two program types.
 
 ### For a special education program
 
+```sql
+
 Expected Time in Attendance for a Special Education Program = (
 StudentSpecialEducationProgramAssociation.SpecialEducationHoursPerWeek )
 
@@ -24,9 +26,13 @@ attendance calculation }
 
     AND StudentSpecialEducationProgramAssociation.Student= { Student for the attendance calculation }
 
-![Total Expected Attendance for Special Education Program](../../../../img/Total%20Expected%20Attendance%20for%20Special%20Education%20Program.png)
+```
+
+![Total Expected Attendance for Special Education Program](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Total%20Expected%20Attendance%20for%20Special%20Education%20Program.png)
 
 ### For a language instruction program
+
+```sql
 
 Expected Time in Attendance for a Language Instruction Program =
 StudentLanguageInstructionProgramAssociation.Dosage
@@ -36,9 +42,13 @@ attendance calculation }
 
     AND StudentLanguageInstructionProgramAssociation.Student= { Student for the attendance calculation }
 
-![Total Expected Attendance for Language Instruction Program](../../../../img/Total%20Expected%20Attendance%20for%20Language%20Instruction%20Program.png)
+```
+
+![Total Expected Attendance for Language Instruction Program](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Total%20Expected%20Attendance%20for%20Language%20Instruction%20Program.png)
 
 ### For an intervention
+
+```sql
 
 Expected Time in Attendance for an Intervention =
 StudentInterventionAssociation.Dosage
@@ -48,7 +58,9 @@ attendance calculation }
 
     AND StudentInterventionAssociation.Student= { Student for the attendance calculation }
 
-![Total Expected Attendance for Intervention](../../../../img/Total%20Expected%20Attendance%20for%20Intervention.png)
+```
+
+![Total Expected Attendance for Intervention](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Total%20Expected%20Attendance%20for%20Intervention.png)
 
 #### Assumptions
 
@@ -73,6 +85,8 @@ case, are the exceptions to this rule.
 
 ### Option 1: When EventDuration is used to capture portions of a school day in attendance
 
+```sql
+
 Student Program Attendance = SUM (
 StudentProgramAttendanceEvent.AttendanceEvent.EventDuration )
 
@@ -86,9 +100,13 @@ IN { Present categories (e.g., In Attendance) as defined by the implementation 
 
     AND StudentProgramAttendanceEvent.Program= { Program for the attendance calculation }
 
-![Actual Attendance for a Program via EventDuration](../../../../img/Actual%20Attendance%20for%20a%20Program%20via%20EventDuration.png)
+```
+
+![Actual Attendance for a Program via EventDuration](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Actual%20Attendance%20for%20a%20Program%20via%20EventDuration.png)
 
 ### Option 2: When ProgramAttendanceDuration (or InterventionDuration, for interventions) is used to capture time in attendance
+
+```sql
 
 Student Program Attendance = SUM (
 StudentProgramAttendanceEvent.ProgramAttendanceDuration )
@@ -101,10 +119,12 @@ IN { Present categories (e.g., In Attendance) as defined by the implementation 
 
     AND StudentProgramAttendanceEvent.Program= { Program for the attendance calculation }
 
-![Actual Attendance for a Program via ProgramAttendanceDuration](../../../../img/Actual%20Attendance%20for%20a%20Program%20via%20ProgramAttendanceDuration.png)
+```
+
+![Actual Attendance for a Program via ProgramAttendanceDuration](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Actual%20Attendance%20for%20a%20Program%20via%20ProgramAttendanceDuration.png)
 
 #### Assumptions
 
 * For a program or intervention, positive attendance is reported.
 * Option 1 reports total time in attendance in days.
-* Option 2 reports total time in attendance in minutes. -->
+* Option 2 reports total time in attendance in minutes.

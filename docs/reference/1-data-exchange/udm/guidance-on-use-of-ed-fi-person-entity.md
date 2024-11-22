@@ -36,7 +36,7 @@ unique identifiers and Staff would have another. Student identifiers were most
 often assigned by the LEA or SEA; Staff identifiers were most often assigned by
 a human resources (HR) system, as depicted in the diagram below.
 
-<!-- ![Agency Configuration](../img/Agency%20Configuration.png) -->
+![Agency Configuration](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Agency%20Configuration.png)
 
 ## Typical Early Agency Architecture
 
@@ -116,7 +116,7 @@ as follows:
 * Optional association references are made from all person-roles: Staff,
     Student, Parent; and in extensions as needed (e.g., TPDM TeacherCandidate).
 
-<!-- ![Ed-Fi Person Model](../img/Person%20Model%20UML.png) -->
+![Ed-Fi Person Model](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Person%20Model%20UML.png)
 
 This model makes the use of Person entirely optional and supports backward
 compatibility with existing use of person-roles, whether Person is used or not.

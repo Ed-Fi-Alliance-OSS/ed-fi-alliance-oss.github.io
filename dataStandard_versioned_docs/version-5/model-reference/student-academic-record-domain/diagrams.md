@@ -5,9 +5,9 @@ domain model.
 
 ## Student Academic Record Model UML Diagram
 
-<!-- ![Student Academic Record Model UML](../../../img/Student%20Academic%20Record%20Model%20UML.png) -->
+![Student Academic Record Model UML](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Student%20Academic%20Record%20Model%20UML.png)
 
-_Student Academic Record Domain (click to enlarge)_
+[_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Student%20Academic%20Record%20Model%20UML.png)
 
 ### Student Transcript Subdomain
 
@@ -15,9 +15,9 @@ The Student Transcript Model provides an academic history for a student.
 
 #### Student Academic Record, Student Transcript Model UML Diagram
 
-<!-- ![Student Academic Record - Student Transcript Subdomain](../../../img/Student%20Academic%20Record%20-%20Student%20Transcript%20Subdomain.png) -->
+![Student Academic Record - Student Transcript Subdomain](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Student%20Academic%20Record%20-%20Student%20Transcript%20Subdomain.png)
 
-_Student Academic Record - Student Transcript Subdomain (click to enlarge)_
+[_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Student%20Academic%20Record%20-%20Student%20Transcript%20Subdomain.png)
 
 ### Report Card Subdomain
 
@@ -27,9 +27,9 @@ to CompetencyObjectives.
 
 #### Student Academic Record, Report Card Model UML Diagram
 
-<!-- ![Student Academic Record - Report Card Subdomain](../../../img/Report%20Card%20Subdomain%20UML.png) -->
+![Student Academic Record - Report Card Subdomain](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Report%20Card%20Subdomain%20UML.png)
 
-_Student Academic Record - Report Card Subdomain_
+[_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Report%20Card%20Subdomain%20UML.png)
 
 ### Student Academic Record, Gradebook Model
 
@@ -39,6 +39,6 @@ entry is a StudentGradebookEntry which can be a grade or a CompetencyLevel.
 
 #### Student Academic Record, Gradebook Model UML Diagram
 
-<!-- ![Student Academic Record - Gradebook Subdomain](../../../img/Student%20Academic%20Record%20-%20Gradebook.png) -->
+![Student Academic Record - Gradebook Subdomain](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Student%20Academic%20Record%20-%20Gradebook.png)
 
-_Student Academic Record - Gradebook Subdomain (click to enlarge)_
+[_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Student%20Academic%20Record%20-%20Gradebook.png)

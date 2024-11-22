@@ -2,6 +2,6 @@
 
 ## Discipline Model UML Diagram
 
-<!-- ![Discipline Domain](../../../img/Discipline%20Domain.png) -->
+![Discipline Domain](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Discipline%20Domain.png)
 
-_Discipline Domain (click to enlarge)_
+[_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Discipline%20Domain.png)
