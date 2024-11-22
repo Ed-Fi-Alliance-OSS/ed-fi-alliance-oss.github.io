@@ -1,5 +1,10 @@
 # Improve Paging Performance on Large API Resources
 
+:::warning
+This article describes an older technique for paging using ChangeVersion. For
+new implementations, see [Cursor Paging](cursor-paging.md).
+:::
+
 ## Introduction
 
 The Ed-Fi ODS API uses Offset Paging (through the `offset` and `limit` query
