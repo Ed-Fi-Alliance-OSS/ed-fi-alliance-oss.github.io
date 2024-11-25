@@ -50,8 +50,8 @@ with `offset` and `limit` as these represent mutually exclusive paging
 strategies. :::
 
 :::info The `totalCount` query string parameter is not supported with cursor
-paging (using `pageToken`). If you need to get a total count before processing,
-perform this using an initial request as follows:
+paging (i.e. when using using `pageToken`). If you need to get a total count
+before processing, perform this using an initial request as follows:
 
 ```http
 GET /ed-fi/students?totalCount=true&limit=0
@@ -61,9 +61,9 @@ GET /ed-fi/students?totalCount=true&limit=0
 
 ## Parallel Data Processing with `/partitions`
 
-The `/partitions` child endpoint of each resource is designed for client-side
-parallelizing data processing by dividing the resource items into smaller,
-_equally distributed_ partitions of data. This approach allows API clients to
+The `/partitions` child endpoint of each resource is designed to enable client-side
+parallel data processing by dividing the resource items into smaller,
+_evenly distributed_ partitions of data. This approach allows API clients to
 process data in parallel threads, improving efficiency and reducing overall
 processing time.
 
@@ -76,10 +76,10 @@ processing time.
 * You may get fewer than the number of requested partitions if there isn't
   sufficient data available to warrant the level of parallel processing
   requested.
-* Each entry of response `pageTokens` array property contains the `pageToken`
+* Each entry in the `pageTokens` array of the response contains the `pageToken`
   that represents the starting point for cursor pagination within that
   partition.
-* If no `number` is provided, the API will provide a sensible number of
+* If no `number` parameter is provided, the API will provide a sensible number of
   partitions (up to a maximum of 10).
 
 :::note The API first calculates the partition size as follows:
