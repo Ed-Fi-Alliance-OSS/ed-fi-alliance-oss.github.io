@@ -10,9 +10,7 @@ core concepts to understand are how tokens and profiles are used.
 ## Tokens & Profiles
 
 With each request made to the API, the token obtained from the authentication
-process must be passed in an [HTTP
-header](https://edfi.atlassian.net/wiki/pages/resumedraft.action?draftId=23299377#Authorization-footnote-1)
-like so:
+process must be passed in an HTTP header like so:
 
 ```text
 Authorization: Bearer <token_value>
@@ -109,14 +107,21 @@ response.
 ## Token Info
 
 The Ed-Fi API provides a way to get information about education organizations,
-namespaces and profiles related to a token.
+namespaces, profiles, and accessible resources related to a token.
 
 As previously discussed, the Ed-Fi API uses a token to identify the client and
 determine associated permissions. The Ed-Fi API uses a relationship-based
 strategy to authorize access to most resources. Relationship-based access is
 established by the education organization associated with a given token. You can
 use the `/oauth/token_info` endpoint to determine the education organization
-associated with and the profiles assigned to a token.
+associated with and the profiles assigned to a token; it also returns what
+resources are accessible and which operations are allowed (Create, Delete, etc.).
+
+:::tip
+
+Combining the `/oauth/token_info` endpoint with the [Dependency Order](./resource-dependency-order.md) endpoint could make integrating with Ed-Fi API easier.
+
+:::
 
 The process is relatively straightforward. POST to the `/oauth/token_info` with
 an HTTP Authorization header as "Bearer XYZ" where "XYZ" is the access token.
@@ -136,7 +141,7 @@ $response = Invoke-RestMethod -Method Post -Uri "https://api.ed-fi.org/v7.3/api/
 $response | ConvertTo-Json
 ```
 
-The snippet below shows a sample response:
+The snippet below shows a sample response. For a description of each field, refer to the [OpenAPI specification](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-API-Standards/blob/main/api-specifications/oauth-token-introspection/1.0-draft/oauth-token-introspection-api-1.0.yml).
 
 ```json
 {
@@ -144,7 +149,7 @@ The snippet below shows a sample response:
     "client_id": "RvcohKz9zHI4",
     "namespace_prefixes": [
         "uri://ed-fi.org",
-        "uri://gbisd.org",
+        "uri://gbisd.edu",
         "uri://tpdm.ed-fi.org"
     ],
     "education_organizations": [
@@ -154,41 +159,46 @@ The snippet below shows a sample response:
             "type": "edfi.LocalEducationAgency",
             "local_education_agency_id": 255901,
             "education_service_center_id": 255950
-        },
-        {
-            "education_organization_id": 2559011,
-            "name_of_institution": "Grand Bend ISD Central Office",
-            "type": "edfi.OrganizationDepartment",
-            "local_education_agency_id": 255901,
-            "education_service_center_id": 255950,
-            "organization_department_id": 2559011
-        },
-        {
-            "education_organization_id": 255901001,
-            "name_of_institution": "Grand Bend High School",
-            "type": "edfi.School",
-            "local_education_agency_id": 255901,
-            "education_service_center_id": 255950,
-            "school_id": 255901001
-        },
-        {
-            "education_organization_id": 255901044,
-            "name_of_institution": "Grand Bend Middle School",
-            "type": "edfi.School",
-            "local_education_agency_id": 255901,
-            "education_service_center_id": 255950,
-            "school_id": 255901044
-        },
-        {
-            "education_organization_id": 255901107,
-            "name_of_institution": "Grand Bend Elementary School",
-            "type": "edfi.School",
-            "local_education_agency_id": 255901,
-            "education_service_center_id": 255950,
-            "school_id": 255901107
         }
     ],
-    "assigned_profiles": []
+    "assigned_profiles": [
+        "Sample-Profile-Resource-IncludeOnly"
+    ],
+    "claim_set": {
+        "name": "Ed-Fi Sandbox"
+    },
+    "resources": [
+        {
+            "resource": "/ed-fi/absenceEventCategoryDescriptors",
+            "operations": [
+                "Create",
+                "Read",
+                "Update",
+                "Delete",
+                "ReadChanges"
+            ]
+        },
+        {
+            "resource": "/ed-fi/students",
+            "operations": [
+                "Create",
+                "Read",
+                "Update",
+                "Delete",
+                "ReadChanges"
+            ]
+        }
+    ],
+    "services": [
+        {
+            "service": "identity",
+            "operations": [
+                "Create",
+                "Read",
+                "Update"
+            ]
+        }
+    ]
 }
 ```
 
@@ -198,11 +208,3 @@ leveraging best practices learned from hard-won experience. The [Error Handling
 &amp; Best Practices](./error-handling-best-practices.md) section walks you through
 the details.
 
-:::note
-
-The following link is a ZIP archive containing a Postman example
-illustrating the relationship based authorization strategy for a student.
-[Ed-Fi API Client Developer Postman
-Example](https://edfi.atlassian.net/wiki/download/attachments/20480666/Ed-Fi%20API%20Client%20Developer%20Postman%20Example.zip?version=3&modificationDate=1527887971107&api=v2&download=true)
-
-:::
