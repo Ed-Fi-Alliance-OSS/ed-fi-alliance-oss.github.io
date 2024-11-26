@@ -16,7 +16,7 @@ const LinkList = [
   },
   {
     title: 'ODS/API Platform',
-    to: '/reference/ods-api',
+    to: '/reference/ods-api-platform',
   },
   {
     title: 'Admin API',
