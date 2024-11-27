@@ -88,11 +88,6 @@ keys in "AdminApi\\appsettings.json". Some values to note:
         **generate\_signingkey.ps1** Expand source
 
         ```json
-        # SPDX-License-Identifier: Apache-2.0
-        # Licensed to the Ed-Fi Alliance under one or more agreements.
-        # The Ed-Fi Alliance licenses this file to you under the Apache License, Version 2.0.
-        # See the LICENSE and NOTICES files in the project root for more information.
-
         # <base64-encoded 256-bit key>
         $randomNumber = [System.Security.Cryptography.RandomNumberGenerator]::Create();
         $buffer = New-Object byte[] 32;
@@ -320,6 +315,7 @@ etc..)
      CONSTRAINT PK_Tokens PRIMARY KEY (Id)
  );
  ```
+
 :::
 
 :::info note:
@@ -398,6 +394,7 @@ etc..)
      CONSTRAINT PK_Tokens PRIMARY KEY (Id)
  );
  ```
+
 :::
 
 ### **Step 10. Execute First-Time Configuration**
@@ -409,6 +406,6 @@ Continue on to [First-Time Configuration for Admin
  The following is a Nuget package containing the **Admin API v2.2.0
  source** **files** for manual deployment to IIS.
 
- * [EdFi.Suite3.ODS.AdminApi
+* [EdFi.Suite3.ODS.AdminApi
      v2.2.0](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.Suite3.ODS.AdminApi/overview/2.2.0)
 :::

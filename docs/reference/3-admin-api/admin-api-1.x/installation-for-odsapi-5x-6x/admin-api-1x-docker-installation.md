@@ -39,7 +39,7 @@ hosted as part of that ecosystem.
 To install Admin API on Docker, first Install the [ODS / API
 Docker](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Docker) environment
 [following these
-instructions](/reference/docker).
+instructions](https://edfi.atlassian.net/wiki/display/EDFITOOLS/Docker+Deployment).
 Then, apply the below changes to the environment to introduce the Admin API.
 Admin API does not support in-place upgrades from prior versions.  Please
 install a fresh copy of Admin API to upgrade from prior versions.
