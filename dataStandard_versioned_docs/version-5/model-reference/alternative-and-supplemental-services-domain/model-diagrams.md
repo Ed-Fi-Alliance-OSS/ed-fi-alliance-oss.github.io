@@ -13,6 +13,6 @@ Services domain model and subdomains.
 
 #### Alternative and Supplemental Services, Federal Programs Model UML Diagram
 
-![Federal Programs Subdomain](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Federal%20Programs%20Subdomain.png)
+![Federal Programs Subdomain](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Federal%20Programs%20Subdomain(resized).png)
 
 [_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Federal%20Programs%20Subdomain.png)
