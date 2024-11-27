@@ -84,7 +84,7 @@ receive critical updates. Formal support
 
 ### Docker Deployments
 
-The [sample Docker Compose scripts](../7-docker/readme.md) demonstrate how to
+The [sample Docker Compose scripts](../7-docker/readme.mdx) demonstrate how to
 run these applications together, and provide a quick startup option for running
 a local testing environment. Because these are demonstration scripts, not meant
 for production, they are not always fully up-to-date with the latest software
