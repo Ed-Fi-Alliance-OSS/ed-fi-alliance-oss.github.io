@@ -45,30 +45,37 @@ considered “Proficient”. In addition, if it is possible for your students to
 achieve better than 100% on a performance level, we suggest that a MaximumScore
 value for the top performance level be omitted.
 
-|     | | --- | | `"performanceLevels": [`  <br/>           `{`
-<br/>               `"assessmentReportingMethodType": "Raw score",`
-<br/>               `"performanceLevelDescriptor":
-"[http://namespace.com/Advanced](http://namespace.com/Advanced)",`
-<br/>               `"minimumScore”: "90",`
-<br/>               `"resultDatatypeType”: "Percentage”`  <br/>           `},`
-<br/>           `{`  <br/>               `"assessmentReportingMethodType": "Raw
-score",`  <br/>               `"performanceLevelDescriptor":
-"[http://namespace.com/Proficient](http://namespace.com/Proficient)",`
-<br/>               `"minimumScore”: "80",`  <br/>               `"maximumScore":
-"90",`  <br/>               `"resultDatatypeType”: "Percentage”`
-<br/>           `},`  <br/>           `{`
-<br/>               `"assessmentReportingMethodType": "Raw score",`
-<br/>               `"performanceLevelDescriptor":
-"[http://namespace.com/Basic](http://namespace.com/Basic)",`
-<br/>               `"minimumScore”: "70",`  <br/>               `"maximumScore":
-"80",`  <br/>               `"resultDatatypeType”: "Percentage”`
-<br/>           `},`  <br/>           `{`
-<br/>               `"assessmentReportingMethodType": "Raw score",`
-<br/>               `"performanceLevelDescriptor":
-"[http://namespace.com/Below](http://namespace.com/Below) Basic",`
-<br/>               `"minimumScore”: "0",`  <br/>               `"maximumScore":
-"70",`  <br/>               `"resultDatatypeType”: "Percentage”`
-<br/>           `}`  <br/>       `],` | |     |
+```json
+"performanceLevels": [
+    {
+        "assessmentReportingMethodType": "Raw score",
+        "performanceLevelDescriptor": "http://namespace.com/Advanced",
+        "minimumScore": "90",
+        "resultDatatypeType": "Percentage"
+    },
+    {
+        "assessmentReportingMethodType": "Raw score",
+        "performanceLevelDescriptor": "http://namespace.com/Proficient",
+        "minimumScore": "80",
+        "maximumScore": "90",
+        "resultDatatypeType": "Percentage"
+    },
+    {
+        "assessmentReportingMethodType": "Raw score",
+        "performanceLevelDescriptor": "http://namespace.com/Basic",
+        "minimumScore": "70",
+        "maximumScore": "80",
+        "resultDatatypeType": "Percentage"
+    },
+    {
+        "assessmentReportingMethodType": "Raw score",
+        "performanceLevelDescriptor": "http://namespace.com/Below Basic",
+        "minimumScore": "0",
+        "maximumScore": "70",
+        "resultDatatypeType": "Percentage"
+    }
+]
+```
 
 ## An objective’s scores designation
 
