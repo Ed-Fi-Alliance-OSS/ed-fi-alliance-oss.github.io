@@ -9,8 +9,7 @@ the Ed-Fi ODS / API Admin API for v1.4.0.
 
 This version of the Admin API has been tested and can be installed for use with
 the Ed-Fi ODS / API v3.4 - 6.1. See the [Ed-Fi Technology Version
-Index](https://edfi.atlassian.net/wiki/spaces/ETKB/pages/20875717/Ed-Fi+Technology+Version+Index)
-for more details.
+Index](/reference/supported-versions) for more details.
 
 # Installation Instructions
 
@@ -40,7 +39,7 @@ hosted as part of that ecosystem.
 To install Admin API on Docker, first Install the [ODS / API
 Docker](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Docker) environment
 [following these
-instructions](https://edfi.atlassian.net/wiki/display/EDFITOOLS/Docker+Deployment).
+instructions](/reference/docker).
 Then, apply the below changes to the environment to introduce the Admin API.
 Admin API does not support in-place upgrades from prior versions.  Please
 install a fresh copy of Admin API to upgrade from prior versions.
@@ -208,7 +207,7 @@ Continue on to [First-Time Configuration for Admin
 :::info note:
  The following is the DockerHub repo for **Admin API v1.4.0 Docker Image** for inclusion in Docker compose:
 
- * [edfialliance/ods-admin-api:v1.4.0](https://hub.docker.com/layers/edfialliance/ods-admin-api/v1.4/images/sha256-0a52face1b03e94892dc4d82e05f2fae05e635f1c46b2baf081bbcf2e81d76b1?context=explore)
+* [edfialliance/ods-admin-api:v1.4.0](https://hub.docker.com/layers/edfialliance/ods-admin-api/v1.4/images/sha256-0a52face1b03e94892dc4d82e05f2fae05e635f1c46b2baf081bbcf2e81d76b1?context=explore)
 
- * [edfialliance/ods-admin-api-db:v1.4.0](https://hub.docker.com/layers/edfialliance/ods-admin-api-db/v1.4/images/sha256-70375e3564e9d409dfe8c25d27d504f1b3e15f75e454c9da9f5dc40c30c9d4a3?context=explore)
+* [edfialliance/ods-admin-api-db:v1.4.0](https://hub.docker.com/layers/edfialliance/ods-admin-api-db/v1.4/images/sha256-70375e3564e9d409dfe8c25d27d504f1b3e15f75e454c9da9f5dc40c30c9d4a3?context=explore)
 :::

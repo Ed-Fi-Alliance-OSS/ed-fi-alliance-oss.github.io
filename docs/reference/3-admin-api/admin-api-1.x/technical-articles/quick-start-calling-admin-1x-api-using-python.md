@@ -220,11 +220,6 @@ Authorization as the example below.
 
 ### Retrieve a Listing of Vendors
 
-See the [Endpoints - Admin
-API](https://edfi.atlassian.net/wiki/spaces/ADMINAPI/pages/21300701/Endpoints+in+Admin+API+1.x)
-page for a complete list of resources and parameters. For this example, we will
-get a list of providers.  
-
 **GET /v1/vendors**
 
 ```python
