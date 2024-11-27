@@ -9,7 +9,7 @@ the Ed-Fi ODS / API Admin API for v1.4.0.
 
 This version of the Admin API has been tested and can be installed for use with
 the Ed-Fi ODS / API v3.4 - 6.1. See the [Ed-Fi Technology Version
-Index](/reference/supported-versions) for more details.
+Index](https://edfi.atlassian.net/wiki/spaces/ETKB/pages/20875717/Ed-Fi+Technology+Version+Index) for more details.
 
 # Installation Instructions
 
