@@ -27,4 +27,4 @@ installing the Admin API.
 
 ### Usage
 
-* [Securing Admin API](technical-articles/securing-admin-api.md)
+* [Securing Admin API](securing-admin-api.md)

@@ -1,7 +1,7 @@
 # First-Time Configuration for Admin API 2.x
 
 After [Installing the Admin
-API](../../installation/admin-api-1x-for-odsapi-34-61/admin-api-1x-docker-installation.md),
+API](admin-api-2x-docker-installation.md),
 there are a couple manual steps that must be completed before the application
 can be used.
 
@@ -63,7 +63,7 @@ curl -X POST https://your-admin-api/connect/token -H "Content-Type: application/
 This should return a JSON result including a bearer token. Note that the above
 request does _not_ include a request scope, so the token will be invalid for
 accessing most endpoints. See [Securing Admin
-API](../../../admin-api/technical-articles/securing-admin-api.md) for more info.
+API](../../securing-admin-api.md) for more info.
 
 ```json
 {

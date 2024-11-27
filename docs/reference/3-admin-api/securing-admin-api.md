@@ -13,7 +13,7 @@ the Admin API using this framework.
  Admin API management system, and _not a client of the Ed-Fi ODS / API
  Platform_, which are managed via the Admin API. For management of the ODS / API
  clients, see instead the Applications section in [Endpoints in Admin API
- 1.x](../technical-information/endpoints-in-admin-api-1x.md).
+ 1.x](admin-api-1.x/technical-articles/endpoints-in-admin-api-1x.md).
 :::
 
 ## Authenticating Requests
@@ -32,7 +32,7 @@ token in the `Authorization`  header on subsequent requests. Note the
 :::info
  The endpoints outlined here do not follow the same patterns as those
  documented in [Endpoints in Admin API
- 1.x](../technical-information/endpoints-in-admin-api-1x.md). They are not
+ 1.x](admin-api-1.x/technical-articles/endpoints-in-admin-api-1x.md). They are not
  prefixed with a version and do not wrap their responses in the same format
  consistently. These endpoints are managed separately from API endpoints in
  order to support OAuth 2.0 internally and may change in future releases.

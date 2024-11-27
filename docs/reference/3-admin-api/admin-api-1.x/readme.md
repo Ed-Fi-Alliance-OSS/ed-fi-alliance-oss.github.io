@@ -10,9 +10,9 @@ v5.x-6.x](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V62/overview).
 
 Documentation for the Ed-Fi Admin API is viewable online:
 
-* [What's New](whats-new.md)
-* [Getting Started](getting-started.md)
-* [Technical Articles](technical-articles)
+* [What's New](../whats-new.md)
+* [Getting Started](../getting-started.md)
+* [Technical Articles](../admin-api-1.x/technical-articles)
 
 ## Installation
 
@@ -21,6 +21,6 @@ of the ODS / API in use.  Both Docker and Windows installation modes are
 supported, alongside ODS / API supported deployment modes.
 
 * [Admin API v1.4 for ODS / API 5.x -
-  6.x](./admin-api/installation/admin-api-1x-for-odsapi-5x-6x.md)
+  6.x](installation-for-odsapi-5x-6x)
 
 ## Resources

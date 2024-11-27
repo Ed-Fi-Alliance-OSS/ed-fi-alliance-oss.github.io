@@ -60,7 +60,7 @@ curl -X POST https://your-admin-api/connect/token-H "Content-Type: application/x
 This should return a JSON result including a bearer token. Note that the above
 request does _not_ include a request scope, so the token will be invalid for
 accessing most endpoints. See [Securing Admin
-API](../../../admin-api/technical-information/securing-admin-api.md) for more
+API](../../securing-admin-api.md) for more
 info.
 
 ```json

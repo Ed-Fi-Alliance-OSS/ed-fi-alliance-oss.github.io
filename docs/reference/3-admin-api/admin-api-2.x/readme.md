@@ -9,9 +9,9 @@ also available for deployments on Docker. The Admin API v2.2 is available for
 
 Documentation for the Ed-Fi Admin API is viewable online:
 
-* [What's New](whats-new.md)
-* [Getting Started](getting-started.md)
-* [Technical Articles](technical-articles)
+* [What's New](../whats-new.md)
+* [Getting Started](../getting-started.md)
+* [Technical Articles](../admin-api-2.x/technical-articles)
 
 ## Installation
 
@@ -20,6 +20,6 @@ of the ODS / API in use.  Both Docker and Windows installation modes are
 supported, alongside ODS / API supported deployment modes.
 
 * [Admin API v2.2 for ODS / API
-  7.x](./admin-api/installation/admin-api-2x-for-odsapi-7x.md)
+  7.x](installation-for-odsapi-7x)
 
 ## Resources
