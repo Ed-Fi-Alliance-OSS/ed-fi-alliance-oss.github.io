@@ -30,7 +30,7 @@
 
 ## Teaching and Learning Domain Descriptors
 
-| Entity | Name | Description | Usage Classification  (see [info](https://edfi.atlassian.net/wiki/display/EFDS4X/Non-Normative+Descriptor+Classifications)) | EDFacts Mapping | Commonly Used | Commonly State-Defined |
+| Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
 | Course | AcademicSubject | The intended major subject area of the course. | Local |     |     |     |
 | CareerPathway | Indicates the career cluster or pathway the course is associated with as part of a CTE curriculum. | Flexible |     |     |     |
@@ -59,3 +59,11 @@
 | StudentSchoolAssociation | EnrollmentType | The type of enrollment reflected by the StudentSchoolAssociation |     |     |     |     |
 |     | NextYearGradlevel | The anticipated grade level for the student for the next school year |     |     |     |     |
 |     | SchoolChoiceBasis | The legal basis for the school choice enrollment according to local, state or federal policy or regulation. |     |     |     |     |
+
+:::tip
+
+See [Non-normative Descriptor
+Classifications](/reference/data-exchange/udm/non-normative-descriptor-classifications)
+for more information on _Usage Classification_.
+
+:::

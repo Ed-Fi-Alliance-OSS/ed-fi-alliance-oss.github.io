@@ -27,7 +27,7 @@
 
 ## Staff Domain Descriptors
 
-| Entity | Name | Description | Usage Classification  (see [info](https://edfi.atlassian.net/wiki/display/EFDS4X/Non-Normative+Descriptor+Classifications)) | EDFacts Mapping | Commonly Used | Commonly State-Defined |
+| Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
 | Credential | AcademicSubject | The academic subjects to which the credential pertains. | Local |     |     |     |
 | CredentialField | The field of certification for the certificate (e.g., Mathematics, Music). | Local |     |     |     |
@@ -82,3 +82,11 @@
 | StaffSchoolAssociation | AcademicSubject | The academic subjects the individual is eligible to teach. | Local |     |     |     |
 | GradeLevel | The grade levels the individual is eligible to teach. | Orthodox |     |     |     |
 | ProgramAssignment | The name of the program for which the individual is assigned; for example: Regular education, Title I-Academic, Title I-Non-Academic, Special Education, Bilingual/English as a Second Language. | Orthodox |     |     |     |
+
+:::tip
+
+See [Non-normative Descriptor
+Classifications](/reference/data-exchange/udm/non-normative-descriptor-classifications)
+for more information on _Usage Classification_.
+
+:::

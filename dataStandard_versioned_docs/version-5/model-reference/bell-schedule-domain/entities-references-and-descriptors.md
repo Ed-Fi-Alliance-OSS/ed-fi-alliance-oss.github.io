@@ -18,6 +18,14 @@
 
 ## Bell Schedule Domain Descriptors
 
-| Entity | Descriptor | Description | Usage Classification  (see [info](https://edfi.atlassian.net/wiki/display/EFDS4X/Non-Normative+Descriptor+Classifications)) | EDFacts Mapping | Commonly Used | Commonly State-Defined |
+| Entity | Descriptor | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
 | BellSchedule | GradeLevel | The grade levels the particular BellSchedule applies to. | Orthodox | Yes | Yes |     |
+
+:::tip
+
+See [Non-normative Descriptor
+Classifications](/reference/data-exchange/udm/non-normative-descriptor-classifications)
+for more information on _Usage Classification_.
+
+:::

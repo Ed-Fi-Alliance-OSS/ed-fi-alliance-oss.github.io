@@ -20,7 +20,7 @@
 
 ## Graduation Domain Descriptors
 
-| Entity | Name | Description | Usage Classification  (see [info](https://edfi.atlassian.net/wiki/display/EFDS4X/Non-Normative+Descriptor+Classifications)) | EDFacts Mapping | Commonly Used | Commonly State-Defined |
+| Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
 | GraduationPlan | AcademicSubject | The intended major subject area of the graduation requirement. | Local |     |     |     |
 | AssessmentReportingMethod | The method that the administrator of the assessment uses to report the performance and achievement of all students. It may be a qualitative method such as performance level descriptors or a quantitative method such as a numerical grade or cut score. More than one type of reporting method may be used. | Local |     |     |     |
@@ -30,3 +30,11 @@
 | ResultDatatypeType | The datatype of the result. The results can be expressed as a number, percentile, range, level, etc. | Orthodox |     |     |     |
 | WhenTakenGradeLevel | The grade level when the student is planned to take the course. | Orthodox |     |     |     |
 | PostSecondaryEvent | PostSecondaryEventCategory | The PostSecondaryEvent that is logged (e.g., FAFSA application, college application, college acceptance). | Orthodox |     |     |     |
+
+:::tip
+
+See [Non-normative Descriptor
+Classifications](/reference/data-exchange/udm/non-normative-descriptor-classifications)
+for more information on _Usage Classification_.
+
+:::

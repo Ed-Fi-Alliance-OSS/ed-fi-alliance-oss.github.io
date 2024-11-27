@@ -22,7 +22,7 @@
 
 ## Education Organization Domain Descriptors
 
-| Entity | Name | Description | Usage Classification  (see [info](https://edfi.atlassian.net/wiki/display/EFDS4X/Non-Normative+Descriptor+Classifications)) | EDFacts Mapping | Commonly Used | Commonly State-Defined |
+| Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
 | CommunityProvider | ProviderCategory | Indicates the category of the provider. | Local |     |     |     |
 | ProviderProfitability | Indicates the profitability status of the provider. | Standard |     |     |     |
@@ -58,3 +58,11 @@
 | SchoolCategory | The one or more categories of school. For example: High School, Middle School, and/or Elementary School. | Local |     | Yes |     |
 | SchoolType | The type of education institution as classified by its primary focus such as Alternative, Career and Technical Education, Regular, or Special Education schools. | Standard | Yes | Yes |     |
 | TitleIPartASchoolDesignation | Denotes the Title I Part A designation for the school. | Standard | Yes | Yes |     |
+
+:::tip
+
+See [Non-normative Descriptor
+Classifications](/reference/data-exchange/udm/non-normative-descriptor-classifications)
+for more information on _Usage Classification_.
+
+:::

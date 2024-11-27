@@ -33,8 +33,16 @@
 
 ## Survey Domain Descriptors
 
-| Entity | Descriptor | Description | Usage Classification (see [info](https://edfi.atlassian.net/wiki/display/EFDS4X/Non-Normative+Descriptor+Classifications)) | EDFacts Mapping | Commonly Used | Commonly State-Defined |
+| Entity | Descriptor | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
 | Survey | SurveyCategory | The descriptor holds the category or type of survey. | Local |     |     |     |
 | SurveyQuestion | QuestionForm | The form or type of question. | Local |     |     |     |
 | SurveyResponse | SurveyLevel | Provides information about the respondents of a survey and how they can be grouped together. | Local |     |     |     |
+
+:::tip
+
+See [Non-normative Descriptor
+Classifications](/reference/data-exchange/udm/non-normative-descriptor-classifications)
+for more information on _Usage Classification_.
+
+:::

@@ -21,7 +21,7 @@
 
 ## Discipline Domain Descriptors
 
-| Entity | Name | Description | Usage Classification  (see [info](https://edfi.atlassian.net/wiki/display/EFDS4X/Non-Normative+Descriptor+Classifications)) | EDFacts Mapping | Commonly Used | Commonly State-Defined |
+| Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
 | DisciplineAction | Discipline | Type of action, such as removal from the classroom, used to discipline the student involved as a perpetrator in a discipline incident. | Local | Yes | Yes |     |
 | DisciplineActionLengthDifferenceReason | Indicates the reason for the difference, if any, between the official and actual lengths of a student's disciplinary assignment. | Local |     | Yes |     |
@@ -36,3 +36,11 @@
 | StudentDisciplineIncidentBehaviorAssociation | Behavior | Describes behavior by category. | Local |     | Yes |     |
 | DisciplineIncidentParticipationCode | The role or type of participation of a student in a discipline incident. | Local |     | Yes |     |
 | StudentDisciplineIncidentNonOffenderAssociation | DisciplineIncidentParticipationCode | The role or type of participation of a student in a discipline incident. | Local |     | Yes |     |
+
+:::tip
+
+See [Non-normative Descriptor
+Classifications](/reference/data-exchange/udm/non-normative-descriptor-classifications)
+for more information on _Usage Classification_.
+
+:::

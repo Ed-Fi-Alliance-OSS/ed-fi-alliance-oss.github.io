@@ -21,7 +21,7 @@
 
 ## Enrollment Domain Descriptors
 
-| Entity | Name | Description | Usage Classification  (see [info](https://edfi.atlassian.net/wiki/display/EFDS4X/Non-Normative+Descriptor+Classifications)) | EDFacts Mapping | Commonly Used | Commonly State-Defined |
+| Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
 | StudentEducationOrganizationResponsibilityAssociation | Responsibility | Indications of an education organization's responsibility for a student, such as accountability, attendance, funding, etc. | Local |     | Yes |     |
 | StudentSchoolAssociation | EducationPlan | The type of education plan(s) the student is following, if appropriate. | Local |     | Yes |     |
@@ -38,3 +38,11 @@
 | BusRoute | Identifies the specific route taken by a bus for student transportation. | Local |     |     | Yes |
 | TravelDayofWeek | Specifies the day(s) of the week on which student transportation occurs. | Flexible |     |     |     |
 | TravelDirection | Indicates the direction of travel for the student transportation route (e.g., to school, from school). | Local |     | Yes |     |
+
+:::tip
+
+See [Non-normative Descriptor
+Classifications](/reference/data-exchange/udm/non-normative-descriptor-classifications)
+for more information on _Usage Classification_.
+
+:::

@@ -24,7 +24,7 @@
 
 ## Assessment Domain Descriptors
 
-| Entity | Descriptor | Description | Usage Classification  (see [info](https://edfi.atlassian.net/wiki/display/EFDS4X/Non-Normative+Descriptor+Classifications)) | EDFacts Mapping | Commonly Used | Commonly State-Defined |
+| Entity | Descriptor | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
 | Assessment | AcademicSubject | The description of the content or subject area (e.g., arts, mathematics, reading, stenography, or a foreign language) of an assessment. | Local | Yes | Yes |     |
 | AssessedGradeLevel | The grade level(s) for which an assessment is designed. The semantics of null is assumed to mean that the assessment is not associated with any grade level. | Orthodox | Yes | Yes |     |
@@ -60,3 +60,11 @@
 | ResultDatatypeType | The datatype of the result. The results can be expressed as a number, percentile, range, level, etc. | Orthodox |     |     | Yes |
 | RetestIndicator | Indicator if the test was retaken. For example: Primary administration, First retest, Second retest... | Flexible |     |     |     |
 | WhenAssessedGradeLevel | The grade level of a student when assessed. | Orthodox |     | Yes |     |
+
+:::tip
+
+See [Non-normative Descriptor
+Classifications](/reference/data-exchange/udm/non-normative-descriptor-classifications)
+for more information on _Usage Classification_.
+
+:::

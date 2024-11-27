@@ -24,7 +24,7 @@
 
 ## Intervention Domain Descriptors
 
-| Entity | Name | Description | Usage Classification  (see [info](https://edfi.atlassian.net/wiki/display/EFDS4X/Non-Normative+Descriptor+Classifications)) | EDFacts Mapping | Commonly Used | Commonly State-Defined |
+| Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
 | Intervention | AppropriateGradeLevel | Grade levels for the Intervention-if omitted, considered generally applicable. | Orthodox |     |     |     |
 | AppropriateSex | Sexes for the Intervention. If omitted, considered generally applicable. | Standard |     |     |     |
@@ -54,3 +54,11 @@
 | StudentInterventionAttendanceEvent | AttendanceEventCategory | A code describing the attendance event, for example:  <br/>Present  <br/>Unexcused absence  <br/>Excused absence  <br/>Tardy. | Local |     |     |     |
 | AttendanceEventReason | The reported reason for a student's absence. |     |     |     |     |
 | EducationalEnvironment | The setting in which a child receives education and related services. This attribute is only used if it differs from the EducationalEnvironment of the Section. This is only used in the AttendanceEvent if different from the associated Section. | Orthodox |     |     |     |
+
+:::tip
+
+See [Non-normative Descriptor
+Classifications](/reference/data-exchange/udm/non-normative-descriptor-classifications)
+for more information on _Usage Classification_.
+
+:::

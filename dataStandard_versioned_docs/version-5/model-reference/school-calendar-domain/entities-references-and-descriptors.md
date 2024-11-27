@@ -21,10 +21,18 @@
 
 ## School Calendar Domain Descriptors
 
-| Entity | Name | Description | Usage Classification (see [info](https://edfi.atlassian.net/wiki/display/EFDS4X/Non-Normative+Descriptor+Classifications)) | EDFacts Mapping | Commonly Used | Commonly State-Defined |
+| Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
 | Calendar | CalendarType | Indicates the type of Calendar. | Flexible |     |     |     |
 | GradeLevel | Indicates the GradeLevel associated with the Calendar. | Orthodox |     |     |     |
 | CalendarDate | CalendarEvent | The type of scheduled or unscheduled event for the day. | Flexible |     |     |     |
 | GradingPeriod | GradingPeriod | The name of the period for which grades are reported. | Flexible |     |     |     |
 | Session | Term | An descriptor value indicating the term (e.g., 'Semester', 'Quarter', etc.). | Flexible |     |     |     |
+
+:::tip
+
+See [Non-normative Descriptor
+Classifications](/reference/data-exchange/udm/non-normative-descriptor-classifications)
+for more information on _Usage Classification_.
+
+:::

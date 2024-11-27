@@ -25,7 +25,7 @@
 
 ## Student Attendance Domain Descriptors
 
-| Entity | Name | Description | Usage Classification (see [info](https://edfi.atlassian.net/wiki/display/EFDS4X/Non-Normative+Descriptor+Classifications)) | EDFacts Mapping | Commonly Used | Commonly State-Defined |
+| Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
 | StudentProgramAttendanceEvent | AttendanceEventCategory | A code describing the attendance event, for example: Present, Unexcused absence, Excused absence, Tardy. | Local |     |     |     |
 | EducationalEnvironment | The setting in which a child receives education and related services. This attribute is only used if it differs from the EducationalEnvironment of the Section. This is only used in the AttendanceEvent if different from the associated Section. | Orthodox |     |     |     |
@@ -33,3 +33,11 @@
 | EducationalEnvironment | The setting in which a child receives education and related services. This attribute is only used if it differs from the EducationalEnvironment of the Section. This is only used in the AttendanceEvent if different from the associated Section. | Orthodox |     |     |     |
 | StudentSectionAttendanceEvent | AttendanceEventCategory | A code describing the attendance event, for example: Present, Unexcused absence, Excused absence, Tardy. | Local |     |     |     |
 | EducationalEnvironment | The setting in which a child receives education and related services. This attribute is only used if it differs from the EducationalEnvironment of the Section. This is only used in the AttendanceEvent if different from the associated Section. | Orthodox |     |     |     |
+
+:::tip
+
+See [Non-normative Descriptor
+Classifications](/reference/data-exchange/udm/non-normative-descriptor-classifications)
+for more information on _Usage Classification_.
+
+:::

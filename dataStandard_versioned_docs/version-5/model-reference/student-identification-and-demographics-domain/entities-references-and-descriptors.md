@@ -18,7 +18,7 @@
 
 ### Student Identification and Demographics Domain Descriptors
 
-| Entity | Name | Description | Usage Classification  (see [info](https://edfi.atlassian.net/wiki/spaces/EFDS5/pages/26707462/Non-Normative+Descriptor+Classifications)) | EDFacts Mapping | Commonly Used | Commonly State-Defined |
+| Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
 | Contact | AddressType | The type of address listed for an individual or organization. For example: Physical Address, Mailing Address, Home Address, etc.) | Orthodox |     |     |     |
 | Country | The name of the country. It is strongly recommended that entries use only ISO 3166 2-letter country codes. | Standard |     |     |     |
@@ -71,3 +71,11 @@
 | TribalAffiliation | An American Indian tribe with which the student is affiliated as last reported to the education organization. | Orthodox |     |     |     |
 |     | SupporterMilitaryConnection | Military connection of the person/people whom the student is a dependent of | Standard |     |     |     |
 | StudentContactAssociation | Relation | The nature of an individual's relationship to a student; for example: Father, Mother, Step Father, Step Mother, Foster Father, Foster Mother, Guardian, etc. | Orthodox |     |     |     |
+
+:::tip
+
+See [Non-normative Descriptor
+Classifications](/reference/data-exchange/udm/non-normative-descriptor-classifications)
+for more information on _Usage Classification_.
+
+:::

@@ -45,7 +45,7 @@ why](https://edfi.atlassian.net/wiki/display/EPP/We%27re+renaming+TPDM%2C+here%2
 
 ## TPDM Domain Descriptors
 
-| Entity | Name | Description | Usage Classification  (see [info](https://edfi.atlassian.net/wiki/display/EFDS4X/Non-Normative+Descriptor+Classifications)) | EDFacts Mapping | Commonly Used | Commonly State-Defined |
+| Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
 | EducatorPreparationProgram | AccreditationStatus | Accreditation Status for a Teacher Preparation Provider. | Standard |     |     |     |
 | FinancialAid | AidType | This descriptor defines the classification of financial aid awarded to a person for the academic term/year. | Orthodox |     |     |     |
@@ -65,3 +65,11 @@ why](https://edfi.atlassian.net/wiki/display/EPP/We%27re+renaming+TPDM%2C+here%2
 | PerformanceEvaluationRating | PerformanceEvaluationRatingLevel | Rating levels for Performance Evaluations. | Flexible |     |     |     |
 | PerformanceEvaluation | PerformanceEvaluationType | The type of performance evaluation conducted (e.g., walkthrough, summative). | Orthodox |     |     |     |
 | RubricDimension | RubricRatingLevel | Rating levels for Rubric Dimensions. | Flexible |     |     |     |
+
+:::tip
+
+See [Non-normative Descriptor
+Classifications](/reference/data-exchange/udm/non-normative-descriptor-classifications)
+for more information on _Usage Classification_.
+
+:::

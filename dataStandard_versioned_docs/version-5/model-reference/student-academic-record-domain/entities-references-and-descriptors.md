@@ -32,7 +32,7 @@
 
 ## Student Academic Record Domain Descriptors
 
-| Entity | Name | Description | Usage Classification (see [info](https://edfi.atlassian.net/wiki/display/EFDS4X/Non-Normative+Descriptor+Classifications)) | EDFacts Mapping | Commonly Used | Commonly State-Defined |
+| Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
 | CompetencyObjective | ObjectiveGradeLevel | The grade level for which the CompetencyObjective is targeted. | Orthodox |     |     |     |
 | CourseTranscript | AdditionalCreditType | The type of credits or units of value awarded for the completion of a course. | Orthodox |     |     |     |
@@ -57,3 +57,11 @@
 | Term | The term for the session during the school year. | Flexible |     |     |     |
 | StudentCompetencyObjective | CompetencyLevel | The competency level assessed for the student for the referenced competency objective. | Flexible |     |     |     |
 | StudentGradebookEntry | CompetencyLevel | The CompetencyLevel assessed for the student for the referenced LearningObjective. | Flexible |     |     |     |
+
+:::tip
+
+See [Non-normative Descriptor
+Classifications](/reference/data-exchange/udm/non-normative-descriptor-classifications)
+for more information on _Usage Classification_.
+
+:::

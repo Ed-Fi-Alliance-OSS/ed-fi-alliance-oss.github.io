@@ -29,8 +29,16 @@
 
 ## Finance Domain Descriptors
 
-| Entity | Name | Description | Usage Classification (see [info](https://edfi.atlassian.net/wiki/display/EFDS4X/Non-Normative+Descriptor+Classifications)) | EDFacts Mapping | Commonly Used | Commonly State-Defined |
+| Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
 | LocalAccount,<br/><br/>ChartOfAccount,<br/><br/>FundDimension,<br/><br/>ProgramDimension,<br/><br/>FunctionDimension,<br/><br/>ObejctDimension,<br/><br/>ProjectDimension,<br/><br/>OperationalUnitDimension,<br/><br/>SourceDimension,<br/><br/>BalanceSheetDimension | ReportingTag | A descriptor used to demote specific state needs for reporting. | Orthodox |     |     |     |
 | LocalBudget,<br/><br/>LocalActual,<br/><br/>LocalContractedStaff,<br/><br/>LocalEncumbrance,<br/><br/>LocalPayroll | FinancialCollection | The accounting period or grouping for which the amount is collected. | Flexible |     |     |     |
 | ChartOfAccount | AccountType | The type of account used in accounting such as revenue, expenditure, or balance sheet. | Orthodox |     |     |     |
+
+:::tip
+
+See [Non-normative Descriptor
+Classifications](/reference/data-exchange/udm/non-normative-descriptor-classifications)
+for more information on _Usage Classification_.
+
+:::
