@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # Student Identification and Demographics Domain - Overview
 
 ## Key Entities
