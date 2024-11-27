@@ -1,0 +1,172 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Ed-Fi Docker Compose Architecture
+
+## Overview
+
+This page provides information on the components used in the out-of-the-box
+Ed-Fi Docker Compose configuration, as well as brief descriptions and diagrams
+of configurations supported by the Ed-Fi Docker solution.
+
+## Components
+
+The Ed-Fi Docker solution contains images to support the following components.
+All images are built on the Alpine Linux distribution. Custom images are
+distributed via the [edfialliance account on Docker
+Hub](https://hub.docker.com/r/edfialliance/).
+
+| Image Name | Application | Purpose |
+| --- | --- | --- |
+| ods-api-web-gateway | NGiNX​ 1.25.1 | Reverse proxy web server that provides:<br/><br/>1.  Single point of entry for HTTPS traffic into the Docker network, serving routes for:<br/>    1.  Web API<br/>    2.  Admin Api<br/>2.  SSL termination<br/>3.  (Potential) load balancing for multiple Web API instances<br/>4.  (Potential) traffic logging<br/><br/>_"Potential" means that the container can be reconfigured to support these features._ |
+| ods-api-web-gateway-sandbox | NGiNX 1.25.1 | Similar to ods-api-web-gateway, except serving routes for:<br/><br/>_Web API<br/>_   Sandbox Admin Web<br/>*   Swagger UI |
+| ods-api-web-api | Ed-Fi Web API | Hosts the core Ed-Fi Web API web service. Sections below describe various configuration options. Configured for use with PostgreSQL databases. |
+| ods-api-web-api:`<TAG>`-mssql | Ed-Fi Web API | Hosts the core Ed-Fi Web API web service. Sections below describe various configuration options. Configured for use with Microsoft SQL Server databases. |
+| ods-api-web-swaggerui | Ed-Fi SwaggerUI | Hosts a web-based user interface for documenting the API and allowing users with client credentials to interact with the API. |
+| ods-api-web-sandbox-admin | Ed-Fi Sandbox Admin | Hosts the Ed-Fi Sandbox web application, used for configuring new sandboxes used for client testing. Configured for use with PostgreSQL databases. |
+| ods-api-web-sandbox-admin:`<TAG>`-mssql | Ed-Fi Sandbox Admin | Hosts the Ed-Fi Sandbox web application, used for configuring new sandboxes used for client testing. Configured for use with Microsoft SQL Server databases. |
+| ods-api-db-ods | PostgreSQL 13.12 | Pre-configured PostgreSQL database containing the ODS database, with both the Ed-Fi core data model and the Teacher Preparation Data Model (TPDM). Loaded with the "minimal template" that provides a default set of [Descriptors](https://edfi.atlassian.net/wiki/spaces/EFDS32/pages/20187680/Descriptor+Guidance) and no other data. |
+| ods-api-db-sandbox | PostgreSQL 13.12 | Like the ods-api-db-ods, but using the "populated template" that contains a small set of sample data representing the fictional Grand Bend school district. |
+| ods-api-db-admin | PostgreSQL 13.12 | Pre-configured PostgreSQL server with two database: EdFi\_Admin and EdFi\_Security. |
+| ods-admin-api | Ed-Fi ODS Admin Api | Hosts the Ed-Fi ODS Admin Api web application, configured for use with PostgreSQL databases, and configurable for Single Tenant and Single Tenant with ODS Contexts. |
+| ods-admin-api-db | PostgreSQL 13.12 | Pre-configured PostgreSQL server with two database: EdFi\_Admin with Admin Api specific tables and EdFi\_Security. |
+| PgBouncer | PgBouncer latest (1.20.0) | Lightweight PostgreSQL connection pooler that [improves application scalability](https://www.percona.com/blog/2018/06/27/scaling-postgresql-with-pgbouncer-you-may-need-a-connection-pooler-sooner-than-you-expect/) through connection pooling. |
+
+### Additional Images
+
+These Ed-Fi Alliance maintained images are not included in the configurations
+described below, and therefore must be deployed separately.
+
+| Image Name | Application | Purpose |
+| --- | --- | --- |
+| data-import | Ed-Fi Data Import | Hosts the Ed-Fi Data Import web application, configured for use   with PostgreSQL as a backing database. <br/>|
+| analytics-middle-tier | Ed-Fi Analytics Middle Tier | Distribution of the Analytics Middle Tier command line installation tool. |
+
+:::tip
+See [Docker Deployment for Data
+Import](/reference/data-import/getting-started/installation/docker-deployment-for-data-import.md)
+for usage instructions
+:::
+
+## Configuration Options
+
+The following configurations are supported out of the box. In the diagrams
+below, the dashed line represents the internal Docker network, and all
+rectangles represent separate containers. Cylinders represent data that should
+be stored in volumes that are mapped outside of the Docker network for
+permanency.
+
+### Sandbox Configuration
+
+A Sandbox environment is generally used to support API client developers in
+developing client applications. It is not intended to be a staging environment
+for the platform host. Includes the following web applications:
+
+* Ed-Fi Web API
+* Ed-Fi Sandbox Admin
+* SwaggerUI
+
+<Tabs>
+  <TabItem value="PostgreSQL" label="PostgreSQL" default>
+    ![Sandbox Configuration - PostgreSQL](https://edfidocs.blob.core.windows.net/$web/img/reference/docker/Sandbox-PostgreSQL.png)
+
+    [_click to enlarge_](https://edfidocs.blob.core.windows.net/$web/img/reference/docker/Sandbox-PostgreSQL.png)
+  </TabItem>
+  <TabItem value="SQL Server" label="SQL Server">
+    ![Sandbox Configuration - SQL Server](https://edfidocs.blob.core.windows.net/$web/img/reference/docker/Sandbox-Mssql.png)
+
+    [_click to enlarge_](https://edfidocs.blob.core.windows.net/$web/img/reference/docker/Sandbox-Mssql.png)
+  </TabItem>
+</Tabs>
+
+
+### SingleTenant Configuration
+
+This configuration shows a basic example of a single tenant configuration where
+a single ODS database serves all data going through the API. While this example
+has one ODS for demonstration purpose, single tenant deployments can support
+separate ODS per school years and districts. See [API Client and ODS Instance
+Configuration](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V70/pages/24559631/API+Client+and+ODS+Instance+Configuration)
+for more information.
+
+Includes the following web applications:
+
+* Ed-Fi Web API
+* Ed-FI ODS Admin Api
+
+<Tabs>
+  <TabItem value="PostgreSQL" label="PostgreSQL" default>
+    ![SingleTenant Configuration - PostgreSQL](https://edfidocs.blob.core.windows.net/$web/img/reference/docker/SingleTenant-PostgreSql.png)
+
+    [_click to enlarge_](https://edfidocs.blob.core.windows.net/$web/img/reference/docker/SingleTenant-PostgreSql.png)
+  </TabItem>
+  <TabItem value="SQL Server" label="SQL Server">
+    ![SingleTenant Configuration - SQL Server](https://edfidocs.blob.core.windows.net/$web/img/reference/docker/SingleTenant-Mssql.png)
+
+    [_click to enlarge_](https://edfidocs.blob.core.windows.net/$web/img/reference/docker/SingleTenant-Mssql.png)
+  </TabItem>
+</Tabs>
+
+### SingleTenant with ODS Context Configuration
+
+This configuration shows a basic example of _explicit_ data segmentation
+strategy based on school year, i.e. school year becomes a required part of the
+API route segments. See [Context-Based Routing for Year-Specific
+ODS](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V70/pages/24559277/Context-Based+Routing+for+Year-Specific+ODS)
+for more information.
+
+Includes the following web applications:
+
+* Ed-Fi Web API
+* Ed-FI ODS Admin Api
+
+<Tabs>
+  <TabItem value="PostgreSQL" label="PostgreSQL" default>
+    ![SingleTenant with ODS Context Configuration - PostgreSQL](https://edfidocs.blob.core.windows.net/$web/img/reference/docker/SingleTenantContext-PostgreSql.png)
+
+    [_click to enlarge_](https://edfidocs.blob.core.windows.net/$web/img/reference/docker/SingleTenantContext-PostgreSql.png)
+  </TabItem>
+</Tabs>
+
+### MultiTenant Configuration
+
+This configuration shows a basic example of multiple tenant configuration, with
+one Admin, Security, ODS databases per tenant. See [Multi-Tenant
+Configuration](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V70/pages/24559218/Single+and+Multi-Tenant+Configuration)
+for more information.
+
+Includes the following web applications:
+
+* Ed-Fi Web API
+
+<Tabs>
+  <TabItem value="PostgreSQL" label="PostgreSQL" default>
+    ![MultiTenant Configuration - PostgreSQL](https://edfidocs.blob.core.windows.net/$web/img/reference/docker/MultiTenant-PostgreSql.png)
+
+    [_click to enlarge_](https://edfidocs.blob.core.windows.net/$web/img/reference/docker/MultiTenant-PostgreSql.png)
+  </TabItem>
+</Tabs>
+
+### MultiTenant with ODS Context Configuration
+
+This configuration shows a basic example of multi tenant configuration with
+_explicit_ data segmentation strategy based on school year. Deployment has one
+Admin, Security per tenant and has one ODS per school year. ODS for the school
+year is selected based on the schoolyear in the API route segment. See
+[Multi-Tenant
+Configuration](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V70/pages/24559218/Single+and+Multi-Tenant+Configuration)
+and [Context-Based Routing for Year-Specific
+ODS](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V70/pages/24559277/Context-Based+Routing+for+Year-Specific+ODS)
+for more information.
+
+Includes the following web applications:
+
+* Ed-Fi Web API
+
+<Tabs>
+  <TabItem value="PostgreSQL" label="PostgreSQL" default>
+    ![MultiTenant with ODS Context Configuration - PostgreSQL](https://edfidocs.blob.core.windows.net/$web/img/reference/docker/MultiTenantContexts-PostgreSql.png)
+
+    [_click to enlarge_](https://edfidocs.blob.core.windows.net/$web/img/reference/docker/MultiTenantContexts-PostgreSql.png)
+  </TabItem>
+</Tabs>
