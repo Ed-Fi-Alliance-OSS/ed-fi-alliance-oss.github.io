@@ -9,6 +9,6 @@ categorization of reasons for those.
 * [Student Attendance Domain - Entities, References, and
   Descriptors](./entities-references-and-descriptors.md)
 * [Student Attendance Domain - Best Practices and Use
-  Cases](./best-practices-and-use-cases.md)
+  Cases](./best-practices-and-use-cases/readme.md)
 
 ← [Go back to the Model Reference page](../readme.md)

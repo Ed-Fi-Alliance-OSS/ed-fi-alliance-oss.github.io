@@ -28,5 +28,5 @@ familiar with the following knowledge areas:
 * Ed-Fi technology, see [www.ed-fi.org](http://www.ed-fi.org)
 * The Ed-Fi Extensions Framework, see, for example, the relevant sections of
     the [Ed-Fi Extension
-    Framework](../../1-data-exchange/extension-framework/readme.md) documentation
+    Framework](docs/reference/1-data-exchange/extensions-framework/readme.md) documentation
     and the [Ed-Fi ODS/API Platform](../../ods-api-platform.mdx) documentation

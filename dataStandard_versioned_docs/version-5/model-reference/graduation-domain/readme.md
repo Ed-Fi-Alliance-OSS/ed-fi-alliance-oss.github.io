@@ -4,7 +4,7 @@ The Graduation domain model captures graduation requirements, such as credits
 and coursework required for graduation, and references to required assessments.
 The information to determine if a student has fulfilled these requirements is
 typically held in the [Student Academic Record
-Domain](../unifying-data-model-v5-model-reference/student-academic-record-domain.md),
+Domain](../student-academic-record-domain/readme.md),
 which holds course transcript data.
 
 The domain includes some entities to capture student outcomes after graduation,

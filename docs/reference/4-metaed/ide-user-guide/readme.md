@@ -17,7 +17,7 @@ To gain the most benefit from this information, the reader should already be
 familiar with the following knowledge areas:
 
 * Ed-Fi technologies such as the [Ed-Fi ODS / API
-  Platform](../../ods-api-platform) and [Ed-Fi Data Standard](../../1-data-exchange/data-standard/readme.md)
+  Platform](../../ods-api-platform) and [Ed-Fi Data Standard](/reference/data-exchange/data-standard/)
 * The [Ed-Fi Extension
-  Framework](../../1-data-exchange/extension-framework/readme.md),
+  Framework](docs/reference/1-data-exchange/extensions-framework/readme.md),
   which provides guidance on the extension of the Ed-Fi Data Standard.

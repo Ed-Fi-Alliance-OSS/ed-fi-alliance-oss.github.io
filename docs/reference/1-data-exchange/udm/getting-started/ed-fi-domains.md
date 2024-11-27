@@ -11,7 +11,7 @@ well-recognized in the K–12 education data space:
 
 A brief description for each domain follows. Model details for each domain,
 including key entities, key concepts, and model diagrams are in the [Unifying
-Data Model - v5 Model Reference](../model-reference/readme.md).
+Data Model - v5 Model Reference](../../data-standard/model-reference/).
 
 ## Alternative and Supplemental Services
 

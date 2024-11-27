@@ -40,7 +40,7 @@ API Guidelines](./api-guidelines/).
   our published standards; see the additional articles in the left sidebar.
 * Ed-Fi data exchange standards are aligned with the reference standards
   published in the [Ed-Fi Data Standard](/reference/data-exchange/data-standard/) space. In particular,
-  the [Ed-Fi Unifying Data Model](./data-standard/udm/readme.md) is a helpful reference
+  the [Ed-Fi Unifying Data Model](./udm/readme.md) is a helpful reference
   to understand the contents and structure of the data exchanges we support.
 * The [Ed-Fi RFC Specifications](./rfc/readme.md) contains work-in-progress
   specifications. Although the material is still in draft form, the technical

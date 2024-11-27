@@ -22,7 +22,7 @@
 
 :::tip
 
-See [Non-Normative Descriptor Classifications](/reference/data-exchange/umd/non-normative-descriptor-classifications.md) for more information on _Usage Classification_.
+See [Non-Normative Descriptor Classifications](/reference/data-exchange/udm/non-normative-descriptor-classifications) for more information on _Usage Classification_.
 
 :::
 
