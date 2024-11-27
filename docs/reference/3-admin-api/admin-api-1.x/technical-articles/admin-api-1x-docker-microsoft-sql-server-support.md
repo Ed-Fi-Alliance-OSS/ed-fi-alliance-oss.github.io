@@ -1,6 +1,6 @@
 # Admin API 1.x Docker & Microsoft SQL Server Support
 
-**Pre-requisites:**
+## Pre-requisites:
 
 * SQL Server exposed or locally
 
@@ -13,43 +13,17 @@
     [Docker/Settings/ssl/generate-certificate.sh](https://github.com/Ed-Fi-Alliance-OSS/AdminAPI-1.x/tree/main/Docker/Settings/ssl)
     script
 
-**File configuration.**
+## File configuration.
 
 1. Set the version of AdminApi to use in
-    [Docker/Dockerfile](https://github.com/Ed-Fi-Alliance-OSS/AdminAPI-1.x/blob/main/Docker/Dockerfile)
-    Update the parameters:
-    **DB**: mssql
-    **VERSION**: 1.4.1
-
-    ```
-    FROM mcr.microsoft.com/dotnet/aspnet:8.0.3-alpine3.19-amd64@sha256:a531d9d123928514405b9da9ff28a3aa81bd6f7d7d8cfb6207b66c007e7b3075 as base
-    ARG DB=mssql
-
-    RUN apk --no-cache add curl=~8 unzip=~6 dos2unix=~7 bash=~5 gettext=~0 icu=~74 jq=~1 && \
-        if [ "$DB" = "pgsql" ]; then apk --no-cache add postgresql13-client=~13; fi && \
-        addgroup -S edfi && adduser -S edfi -G edfi
-
-    FROM base as build
-
-    LABEL maintainer="Ed-Fi Alliance, LLC and Contributors <techsupport@ed-fi.org>"
-
-    ARG VERSION="1.4.1"
-    ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
-    ENV ASPNETCORE_HTTP_PORTS=80
-
-    WORKDIR /app
-
-    COPY --chmod=600 Settings/"${DB}"/appsettings.template.json /app/appsettings.template.json
-    COPY --chmod=500 Settings/"${DB}"/run.sh /app/run.sh
-    COPY Settings/"${DB}"/log4net.config /app/log4net.txt
-
-    ```
+    [Docker/Dockerfile](https://github.com/Ed-Fi-Alliance-OSS/AdminAPI-1.x/blob/main/Docker/api.mssql.Dockerfile)
+    Update the parameters: **DB**: mssql **VERSION**: 1.4.1
 
 2. Update the
     [Docker/Settings/mssql/appsettings.template.json](https://github.com/Ed-Fi-Alliance-OSS/AdminAPI-1.x/blob/main/Docker/Settings/mssql/appsettings.template.json)
     template with the connection string for SQL
 
-    ```
+    ```json
     {
       "AppSettings": {
           "DatabaseEngine": "SqlServer",
@@ -88,7 +62,7 @@
     [Docker/Compose/mssql/compose-build-binaries.yml](https://github.com/Ed-Fi-Alliance-OSS/AdminAPI-1.x/blob/main/Docker/Compose/mssql/compose-build-binaries.yml)
     with SQL parameters
 
-    ```
+    ```docker
       adminapi:
         build:
           context: ../../
@@ -129,7 +103,7 @@
 
     * Update the **SQLSERVER** parameters with the respective values.
 
-    ```
+    ```docker
     API_MODE=SharedInstance
     ADMIN_API_VIRTUAL_NAME=adminapi
     ODS_API_VERSION=5.3
@@ -156,21 +130,21 @@
 
     ```
 
-![Screenshot](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/technical-information/Screenshot%202024-06-28%20at%206.59.40%E2%80%AFPM.png)
+![Signing Key](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/technical-information/Screenshot%202024-06-28%20at%206.59.40%E2%80%AFPM.png)
 
 After having everything configured we can now create the images and upload them.
 Command:
 
-```
+```shell
 docker-compose -f Docker/Compose/mssql/compose-build-binaries.yml --env-file Docker/Settings/mssql/.env up -d
 ```
 
-![Screenshot](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/technical-information/Screenshot%202024-06-28%20at%206.45.15%E2%80%AFPM.png)
+![Container Started](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/technical-information/Screenshot%202024-06-28%20at%206.45.15%E2%80%AFPM.png)
 
 then enter the url:
 
-```
+```shell
 https://localhost/adminapi/swagger
 ```
 
-![Screenshot](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/technical-information/Screenshot%202024-06-28%20at%206.53.19%E2%80%AFPM.png)
+![Swagger](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/technical-information/Screenshot%202024-06-28%20at%206.53.19%E2%80%AFPM.png)

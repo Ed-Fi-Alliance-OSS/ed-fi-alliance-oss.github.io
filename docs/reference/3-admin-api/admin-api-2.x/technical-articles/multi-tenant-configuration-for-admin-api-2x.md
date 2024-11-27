@@ -3,13 +3,10 @@
 MultiTenancy can be enabled in the appsettings file by updating “MultiTenancy”
 flag to true.
 
-```
+```json
 "AppSettings": {
-
- “MultiTenancy”: true
+   “MultiTenancy”: true
 }
-
-
 ```
 
 ## Connection Strings
@@ -25,13 +22,11 @@ EdFi\_Security used by Admin API.
 
 The connection strings are in the "ConnectionStrings" section, as follows:
 
-```
+```json
 "ConnectionStrings": {
     "EdFi_Admin": "Server=(local); Database=EdFi_Admin; Integrated Security=True; Application Name=AdminApi;",
     "EdFi_Security": "Server=(local); Database=EdFi_Security; Integrated Security=True; Application Name=AdminApi;"
 }
-
-
 ```
 
 ### Multi-Tenant Configuration
@@ -42,7 +37,7 @@ EdFi\_Security databases.
 The connection strings are organized under distinct tenant entries in a
 "Tenants" section, as follows:
 
-```
+```json
 "Tenants": {
     "Tenant1": {
       "ConnectionStrings": {
@@ -57,8 +52,6 @@ The connection strings are organized under distinct tenant entries in a
       }
     }
   }
-
-
 ```
 
 ## Request header
@@ -70,14 +63,14 @@ identifiers:
 
 **Tenant specific request header value:** _`<Tenant-Id>`_
 
-![Screenshot](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/technical-information/image-2024-1-15_18-3-15-1.png)
+![Tenant Config](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/technical-information/image-2024-1-15_18-3-15-1.png)
 
-Note: The requests from Swagger UI don’t automatically include tenant identifier
+:::info note:
+The requests from Swagger UI don’t automatically include tenant identifier
 in the headers. So, if user enables Swagger UI and MultiTenancy,
-
 then “DefaultTenant” should be configured as follows in the appSettings file:
 
-```
+```json
 "SwaggerSettings": {
         "EnableSwagger": true,
         "DefaultTenant": "Tenant1"
@@ -86,3 +79,4 @@ then “DefaultTenant” should be configured as follows in the appSettings file
 
 So, all the requests from Swagger UI will be using “DefaultTenant” as tenant
 identifier.
+:::

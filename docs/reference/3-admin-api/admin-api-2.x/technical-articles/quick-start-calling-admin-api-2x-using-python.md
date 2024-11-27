@@ -1,76 +1,29 @@
 # Quick Start Calling Admin API 2.x using Python
 
-## Overview
+# Overview
 
-This is a quick start guide for calling Admin API using Python scripting, it will cover the basic operations of the Admin API:  
-
-## Table of Contents
-
-* [Configure Environment with Python and Admin API 2.2](#configure-environment-with-python-and-admin-api-22)
-  * [Information](#information)
-  * [Authenticate to Admin API](#authenticate-to-admin-api)
-  * [Register a new client](#register-a-new-client)
-  * [Token](#token)
-* [Vendors](#vendors)
-  * [Retrieve a Listing of Vendors](#retrieve-a-listing-of-vendors)
-  * [Create a Vendor](#create-a-vendor)
-  * [Get a vendor](#get-a-vendor)
-  * [Update a vendor](#update-a-vendor)
-  * [Delete a vendor](#delete-a-vendor)
-* [Claim sets](#claim-sets)
-  * [List all Claims](#list-all-claims)
-  * [Create a Claim](#create-a-claim)
-  * [Retrieve a claim set](#retrieve-a-claim-set)
-  * [Update a claim set](#update-a-claim-set)
-  * [Delete a claim set](#delete-a-claim-set)
-  * [Import a Claim set](#import-a-claim-set)
-  * [Export a Claim set](#export-a-claim-set)
-* [ODS Instances](#ods-instances)
-  * [Retrieve a Listing of ODS instances](#retrieve-a-listing-of-ods-instances)
-  * [Create an ODS Instances](#create-an-ods-instances)
-  * [Get an ODS Instance](#get-an-ods-instance)
-  * [Get ODS Instance Applications](#get-ods-instance-applications)
-  * [Update an ODS Instance](#update-an-ods-instance)
-  * [Delete an ODS Instance](#delete-an-ods-instance)
-* [ODS Instance Derivatives](#ods-instance-derivatives)
-  * [Retrieve a Listing of ODS instance derivatives](#retrieve-a-listing-of-ods-instance-derivatives)
-  * [Create an ODS Instance derivatives](#create-an-ods-instance-derivatives)
-  * [Get an ODS Instance derivative](#get-an-ods-instance-derivative)
-  * [Update an ODS Instance derivative](#update-an-ods-instance-derivative)
-  * [Delete an ODS Instance derivative](#delete-an-ods-instance-derivative)
-* [ODS Instance Contexts](#ods-instance-contexts)
-  * [Retrieve a Listing of ODS instance contexts](#retrieve-a-listing-of-ods-instance-contexts)
-  * [Create an ODS Instance Context](#create-an-ods-instance-context)
-  * [Get an ODS Instance Context](#get-an-ods-instance-context)
-  * [Update an ODS Instance Context](#update-an-ods-instance-context)
-  * [Delete an ODS Instance Context](#delete-an-ods-instance-context)
-* [Applications](#applications)
-  * [Create an Application and Set of Credentials](#create-an-application-and-set-of-credentials)
-  * [Retrieve application data](#retrieve-application-data)
-  * [Update an application](#update-an-application)
-  * [Delete an application](#delete-an-application)
-  * [Refresh application credentials](#refresh-application-credentials)
-  * [Create multiple applications using a CSV file](#create-multiple-applications-using-a-csv-file)
-* [Profiles](#profiles)
-  * [Retrieve a Listing of Profiles](#retrieve-a-listing-of-profiles)
-  * [Create a profile](#create-a-profile)
-  * [Get Profile](#get-profile)
-  * [Update a Profile](#update-a-profile)
-  * [Delete a Profile](#delete-a-profile)
+This is a quick start guide for calling Admin API using Python scripting, it
+will cover the basic operations of the Admin API:  
 
 ## Configure Environment with Python and Admin API 2.2
 
-Once [Admin API](../readme.md) is installed, we can use Python versions above 3.7+. It is necessary to have the [requests](https://requests.readthedocs.io/en/latest/user/quickstart/) library installed or similar. We can use the following command to review our current python version.
+Once [Admin API](../readme.md) is installed, we can use Python versions above
+3.7+. It is necessary to have the
+[requests](https://requests.readthedocs.io/en/latest/user/quickstart/) library
+installed or similar. We can use the following command to review our current
+python version.
 
-```
+```shell
 python --version
 ```
 
-The utility to install packages in Python is called pip, in case you don't have it installed you can follow the instructions in this [link](https://pip.pypa.io/en/stable/installation/).
+The utility to install packages in Python is called pip, in case you don't have
+it installed you can follow the instructions in this
+[link](https://pip.pypa.io/en/stable/installation/).
 
 To install the libraries using pip, you can use the line below.
 
-```
+```shell
 pip install -U requests
 ```
 
@@ -78,20 +31,18 @@ To import it into our script we will use the following imports:
 
 **script.py**
 
-```
+```python
 import requests
 import warnings
 
 warnings.filterwarnings('ignore') # setting ignore as a parameter
-
-
 ```
 
 ### Information
 
 **GET /**
 
-```
+```python
 def information(base_url: str) -> dict:
     '''
         Retrieve API informational data
@@ -108,7 +59,7 @@ Our output should bring the information from the Restful API.
 
 **Sample Output**
 
-```
+```json
 {
   "version": "1.1",
   "build": "1.0.0.0"
@@ -117,15 +68,18 @@ Our output should bring the information from the Restful API.
 
 ### Authenticate to Admin API
 
-In a new installation, it is necessary to previously register the client to connect, for which we will follow the instructions within the document in [Securing Admin API](securing-admin-api.md).
+In a new installation, it is necessary to previously register the client to
+connect, for which we will follow the instructions within the document in
+[Securing Admin API](../../securing-admin-api.md).
 
 ### Register a new client
 
-In order to do so, we can add the functionality to our script by adding the following lines.
+In order to do so, we can add the functionality to our script by adding the
+following lines.
 
 **POST /connect/register**
 
-```
+```python
 def register(
     base_url: str,
     client_payload: str,
@@ -168,7 +122,7 @@ And we can construct our payload as the following example.
 
 **Sample input**
 
-```
+```json
 new_client = {
         'client_id': <your_client_id>,
         'client_secret': <your_secret>,
@@ -180,7 +134,7 @@ The successful output will be JSON formatted.
 
 **Sample output**
 
-```
+```json
 {
   "title": "Registered client 1 successfully.",
   "status": 200
@@ -191,13 +145,15 @@ The successful output will be JSON formatted.
 
 ### Token
 
-Once we register our client according to the parameters specified in the document [Securing Admin API](securing-admin-api.md).
+Once we register our client according to the parameters specified in the
+document [Securing Admin API](../../securing-admin-api.md).
 
-We can obtain the token we will use for each API query. Just pass the same ClientID and ClientSecret we use to register it, with two new variables.
+We can obtain the token we will use for each API query. Just pass the same
+ClientID and ClientSecret we use to register it, with two new variables.
 
 **Sample input**
 
-```
+```json
 client_id = <your_client_id>
 client_secret = <your_secret>
 grant_type = "client_credentials"
@@ -206,7 +162,7 @@ scope = "edfi_admin_api/full_access"
 
 **POST /connect/token**
 
-```
+```python
 def token(
     base_url: str,
     client_id: str,
@@ -251,27 +207,29 @@ The outcome will be JSON formatted.
 
 **Sample output**
 
-```
+```json
 {
   "access_token": <your_token>,
   "token_type": "Bearer",
   "expires_in": 3599
 }
-
-
 ```
 
-Then you can use the token as an authentication method, with the header Authorization as the example below.
+Then you can use the token as an authentication method, with the header
+Authorization as the example below.
 
 ## Vendors
 
 ### Retrieve a Listing of Vendors
 
-See the [Endpoints - Admin API](https://edfi.atlassian.net/wiki/display/ADMINAPI/Endpoints+-+Admin+API#EndpointsAdminAPI-Vendors) page for a complete list of resources and parameters. For this example, we will get a list of providers.  
+See the [Endpoints - Admin
+API](https://edfi.atlassian.net/wiki/spaces/ADMINAPI/pages/21300937/Endpoints+in+Admin+API+2.x)
+page for a complete list of resources and parameters. For this example, we will
+get a list of providers.  
 
 **GET /v2/vendors**
 
-```
+```python
 def get_vendors(
     base_url: str,
     access_token: str,
@@ -322,7 +280,7 @@ We will get a list of the vendors, JSON formatted, as in the example below.
 
 **Sample output**
 
-```
+```json
 [
   {
     "id": 1,
@@ -338,11 +296,16 @@ We will get a list of the vendors, JSON formatted, as in the example below.
 
 ### Create a Vendor
 
-To create a new vendor, we will use the POST verb. Although in this example, it is necessary to pass a dictionary with the required data. Again, you can refer to the link [Endpoints - Admin API](https://edfi.atlassian.net/wiki/display/ADMINAPI/Endpoints+-+Admin+API#EndpointsAdminAPI-Vendors)  to successfully create the provider. In our case, we will use the following information.
+To create a new vendor, we will use the POST verb. Although in this example, it
+is necessary to pass a dictionary with the required data. Again, you can refer
+to the link [Endpoints - Admin
+API](https://edfi.atlassian.net/wiki/spaces/ADMINAPI/pages/21300937/Endpoints+in+Admin+API+2.x)
+to successfully create the provider. In our case, we will use the following
+information.
 
 **Sample output**
 
-```
+```json
 vendor_payload = {
         "company": "ACME Education",
         "namespacePrefixes": "ACME",
@@ -351,11 +314,12 @@ vendor_payload = {
         }
 ```
 
-Which we will pass as a parameter to a function as shown below, or with the method of your choice.
+Which we will pass as a parameter to a function as shown below, or with the
+method of your choice.
 
 **POST /v2/vendors**
 
-```
+```python
 def create_vendor(
     base_url: str,
     access_token: str,
@@ -400,11 +364,12 @@ As a result, we will obtain a 201 Status Code
 
 ### Get a vendor
 
-In the case that you want to retrieve information from one of the vendors, you will need to use the resource ID.
+In the case that you want to retrieve information from one of the vendors, you
+will need to use the resource ID.
 
 **GET /v2/vendors/`{id}`**
 
-```
+```python
 def get_vendor(
     base_url: str,
     access_token: str,
@@ -443,7 +408,7 @@ In case of success we will obtain an output as follow:
 
 **Sample output**
 
-```
+```json
 {
   "Id": 9,
   "company": "ACME Education",
@@ -455,11 +420,12 @@ In case of success we will obtain an output as follow:
 
 ### Update a vendor
 
-For this example, we update the previously created vendor with the following info.
+For this example, we update the previously created vendor with the following
+info.
 
 **Sample input**
 
-```
+```json
 vendor_payload = {
         "company": "ACME Education",
         "namespacePrefixes": "ACME",
@@ -472,7 +438,7 @@ We use as an example the code below.
 
 **PUT /v2/vendors/`{id}`**
 
-```
+```python
 def edit_vendor(
     base_url: str,
     access_token: str,
@@ -524,7 +490,7 @@ To delete a vendor you can use the next point, as the example provided below.
 
 **/v2/vendors/`{id}`**
 
-```
+```python
 def delete_vendor(
     base_url: str,
     access_token: str,
@@ -563,7 +529,7 @@ The output will be a confirmation as follows:
 
 **Sample output**
 
-```
+```json
 {
   "title": "Vendor deleted successfully"
 }
@@ -577,7 +543,7 @@ To retrieve all the claims we will use the GET verb as follows:
 
 **GET /v2/claimsets**
 
-```
+```python
 def get_claimsets(
     base_url: str,
     access_token: str,
@@ -631,7 +597,7 @@ The result will be a list of claim sets as the ones shown below:
 
 **Sample output**
 
-```
+```json
 [
   {
     "id": 1,
@@ -646,11 +612,13 @@ The result will be a list of claim sets as the ones shown below:
 
 ### Create a Claim
 
-For the creation of a claim, we will use the POST verb again, and we will pass a dictionary with the values to store, an example of payload for this case could be like the following.
+For the creation of a claim, we will use the POST verb again, and we will pass a
+dictionary with the values to store, an example of payload for this case could
+be like the following.
 
 **Sample input**
 
-```
+```json
 claimset_payload = {
         "name": "Acme Learning User"
  }
@@ -660,7 +628,7 @@ Which we will pass as a parameter in a function like the following:
 
 **POST /v2/claimsets**
 
-```
+```python
 def create_claimset(
     base_url: str,
     access_token: str,
@@ -702,11 +670,12 @@ As a result, we will obtain a 201 Status Code
 
 ### Retrieve a claim set
 
-To retrieve the claim information, we will use the Claims ID, the example would be as follows.
+To retrieve the claim information, we will use the Claims ID, the example would
+be as follows.
 
 **GET /v2/claimsets/`{id}`**
 
-```
+```python
 def get_claimset(
     base_url: str,
     access_token: str,
@@ -745,7 +714,7 @@ In case of success we will obtain an output as follow:
 
 **Sample output**
 
-```
+```json
 {
   "resourceClaims": [
  {
@@ -835,11 +804,12 @@ In case of success we will obtain an output as follow:
 
 ### Update a claim set
 
-In case you want to update some info from the previous claim set. For this example, we will use the next input.
+In case you want to update some info from the previous claim set. For this
+example, we will use the next input.
 
 **Sample input**
 
-```
+```json
 claimset_payload = {
          "name": "Updated-ClaimSet"
         }
@@ -849,7 +819,7 @@ And the code to update goes as follows.
 
 **PUT /v2/claimsets/`{id}`**
 
-```
+```python
 def edit_claimset(
     base_url: str,
     access_token: str,
@@ -896,7 +866,7 @@ To delete a claim set you can use the example below.
 
 **DELETE /v2/claimset/`{id}`**
 
-```
+```python
 def delete_claimset(
     base_url: str,
     access_token: str,
@@ -935,7 +905,7 @@ The confirmation message.
 
 **Sample output**
 
-```
+```json
 {
   "title": "ClaimSet deleted successfully"
 }
@@ -943,11 +913,12 @@ The confirmation message.
 
 ### Import a Claim set
 
-For importing a claim, we will use the POST verb again. An example of payload for this case could be like the following.
+For importing a claim, we will use the POST verb again. An example of payload
+for this case could be like the following.
 
 **Sample output**
 
-```
+```python
 claimset_import_payload = {
   "name": "Acme Learning User Imported",
   "resourceClaims": [
@@ -972,7 +943,7 @@ And the code to import goes as follows.
 
 **POST /v2/claimset/`{id}`**
 
-```
+```python
 def import_claimset(
     base_url: str,
     access_token: str,
@@ -1039,11 +1010,12 @@ def import_claimset(
 
 ### Export a Claim set
 
-For exporting a claim, we will use the GET verb. An example of payload for this case could be like the following.
+For exporting a claim, we will use the GET verb. An example of payload for this
+case could be like the following.
 
 **GET /v2/claimsets**
 
-```
+```python
 def export_claimset(
     base_url: str,
     access_token: str,
@@ -1082,7 +1054,7 @@ In case of success we will obtain an output as follow:
 
 **Sample output**
 
-```
+```json
 {
   "resourceClaims": [
  {
@@ -1174,11 +1146,14 @@ In case of success we will obtain an output as follow:
 
 ### Retrieve a Listing of ODS instances
 
-See the [Endpoints - Admin API](https://edfi.atlassian.net/wiki/display/ADMINAPI/Endpoints+-+Admin+API#EndpointsAdminAPI-Vendors) page for a complete list of resources and parameters. For this example, we will get a list of providers.  
+See the [Endpoints - Admin
+API](https://edfi.atlassian.net/wiki/spaces/ADMINAPI/pages/21300937/Endpoints+in+Admin+API+2.x)
+page for a complete list of resources and parameters. For this example, we will
+get a list of providers.  
 
 **GET /v2/odsInstances**
 
-```
+```python
 def get_ods_instance(
     base_url: str,
     access_token: str,
@@ -1213,11 +1188,12 @@ def get_ods_instance(
     return r.json()
 ```
 
-We will get a list of the ods instances, JSON formatted, as in the example below.
+We will get a list of the ods instances, JSON formatted, as in the example
+below.
 
 **Sample output**
 
-```
+```json
 [
   {
     'id': 1,
@@ -1234,7 +1210,7 @@ To create a new ods instance, we will use the POST verb.
 
 **Sample output**
 
-```
+```json
 odsinstance_payload = {
  "name": "Ods Instance 1",
     "instanceType": "ODS",
@@ -1242,11 +1218,12 @@ odsinstance_payload = {
 }
 ```
 
-Which we will pass as a parameter to a function as shown below, or with the method of your choice.
+Which we will pass as a parameter to a function as shown below, or with the
+method of your choice.
 
 **POST /v2/odsInstances**
 
-```
+```python
 def create_ods_instance(
     base_url: str,
     access_token: str,
@@ -1290,11 +1267,12 @@ As a result, we will obtain a 201 Status Code
 
 ### Get an ODS Instance
 
-In the case that you want to retrieve information from one of the ods instances, you will need to use the resource ID.
+In the case that you want to retrieve information from one of the ods instances,
+you will need to use the resource ID.
 
 **GET /v2/odsInstances/`{id}`**
 
-```
+```python
 def get_ods_instance(
     base_url: str,
     access_token: str,
@@ -1333,7 +1311,7 @@ In case of success we will obtain an output as follow:
 
 **Sample output**
 
-```
+```json
 {
   'odsInstanceContexts': [
 
@@ -1349,11 +1327,12 @@ In case of success we will obtain an output as follow:
 
 ### Get ODS Instance Applications
 
-In the case that you want to retrieve information from one of the ODS instance applications, you will need to use the resource ID.
+In the case that you want to retrieve information from one of the ODS instance
+applications, you will need to use the resource ID.
 
 **GET /v2/odsInstances/`{id}`**
 
-```
+```python
 def get_ods_instance_applications(
     base_url: str,
     access_token: str,
@@ -1392,7 +1371,7 @@ In case of success we will obtain an output as follow:
 
 **Sample output**
 
-```
+```json
 [
   {
     'id': 1,
@@ -1418,7 +1397,7 @@ You can use the following code to update the information in the ODS instance.
 
 **PUT /v2/odsInstances/`{id}`**
 
-```
+```python
 def edit_ods_instance(
     base_url: str,
     access_token: str,
@@ -1464,11 +1443,12 @@ As a result, we will obtain a 200 Status Code
 
 ### Delete an ODS Instance
 
-To delete a ods instance you can use the next point, as the example provided below.
+To delete a ods instance you can use the next point, as the example provided
+below.
 
 **/v2/odsInstances/`{id}`**
 
-```
+```python
 def delete_ods_instance(
     base_url: str,
     access_token: str,
@@ -1507,7 +1487,7 @@ The output will be a confirmation as follows:
 
 **Sample output**
 
-```
+```json
 {
   "title": "Ods Instance deleted successfully"
 }
@@ -1517,11 +1497,14 @@ The output will be a confirmation as follows:
 
 ### Retrieve a Listing of ODS instance derivatives
 
-See the [Endpoints - Admin API](https://edfi.atlassian.net/wiki/display/ADMINAPI/Endpoints+-+Admin+API#EndpointsAdminAPI-Vendors) page for a complete list of resources and parameters. For this example, we will get a list of providers.  
+See the [Endpoints - Admin
+API](https://edfi.atlassian.net/wiki/spaces/ADMINAPI/pages/21300937/Endpoints+in+Admin+API+2.x)
+page for a complete list of resources and parameters. For this example, we will
+get a list of providers.  
 
 **GET /v2/odsInstanceDerivatives**
 
-```
+```python
 def get_ods_instance_derivatives(
     base_url: str,
     access_token: str,
@@ -1568,11 +1551,12 @@ def get_ods_instance_derivatives(
     return r.json()
 ```
 
-We will get a list of the ods instances, JSON formatted, as in the example below.
+We will get a list of the ods instances, JSON formatted, as in the example
+below.
 
 **Sample output**
 
-```
+```json
 [
   {
     'id': 2,
@@ -1589,7 +1573,7 @@ To create a new ods instance, we will use the POST verb.
 
 **Sample output**
 
-```
+```json
 odsinstancederivative_payload = {
  "odsInstanceId": 1,
     "derivativeType": "ReadReplica",
@@ -1597,11 +1581,12 @@ odsinstancederivative_payload = {
 }
 ```
 
-Which we will pass as a parameter to a function as shown below, or with the method of your choice.
+Which we will pass as a parameter to a function as shown below, or with the
+method of your choice.
 
 **POST /v2/odsInstanceDerivatives**
 
-```
+```python
 def create_ods_instance_derivative(
     base_url: str,
     access_token: str,
@@ -1645,11 +1630,12 @@ As a result, we will obtain a 201 Status Code
 
 ### Get an ODS Instance derivative
 
-In the case that you want to retrieve information from one of the ods instances, you will need to use the resource ID.
+In the case that you want to retrieve information from one of the ods instances,
+you will need to use the resource ID.
 
 **GET /v2/odsInstanceDerivatives/`{id}`**
 
-```
+```python
 def get_ods_instance_derivative(
     base_url: str,
     access_token: str,
@@ -1688,7 +1674,7 @@ In case of success we will obtain an output as follow:
 
 **Sample output**
 
-```
+```json
 {
   'id': 1,
   'odsInstanceId': 1,
@@ -1698,11 +1684,12 @@ In case of success we will obtain an output as follow:
 
 ### Update an ODS Instance derivative
 
-You can use the following code to update the information in the ODS instance derivative.
+You can use the following code to update the information in the ODS instance
+derivative.
 
 **PUT /v2/odsInstanceDerivatives/`{id}`**
 
-```
+```python
 def edit_ods_instance_derivative(
     base_url: str,
     access_token: str,
@@ -1748,11 +1735,12 @@ As a result, we will obtain a 200 Status Code
 
 ### Delete an ODS Instance derivative
 
-To delete a ods instance derivative you can use the next point, as the example provided below.
+To delete a ods instance derivative you can use the next point, as the example
+provided below.
 
 **/v2/odsInstanceDerivatives/`{id}`**
 
-```
+```python
 def delete_ods_instance_derivative(
     base_url: str,
     access_token: str,
@@ -1793,11 +1781,14 @@ As a result, we will obtain a 200 Status Code
 
 ### Retrieve a Listing of ODS instance contexts
 
-See the [Endpoints - Admin API](https://edfi.atlassian.net/wiki/display/ADMINAPI/Endpoints+-+Admin+API#EndpointsAdminAPI-Vendors) page for a complete list of resources and parameters. For this example, we will get a list of providers.
+See the [Endpoints - Admin
+API](https://edfi.atlassian.net/wiki/spaces/ADMINAPI/pages/21300937/Endpoints+in+Admin+API+2.x)
+page for a complete list of resources and parameters. For this example, we will
+get a list of providers.
 
 **GET /v2/odsInstanceContexts**
 
-```
+```python
 def get_ods_instance_contexts(
     base_url: str,
     access_token: str,
@@ -1843,11 +1834,12 @@ def get_ods_instance_contexts(
     return r.json()
 ```
 
-We will get a list of the ods instances, JSON formatted, as in the example below.
+We will get a list of the ods instances, JSON formatted, as in the example
+below.
 
 **Sample output**
 
-```
+```json
 [
   {
     'id': 1,
@@ -1864,7 +1856,7 @@ To create a new ods instance, we will use the POST verb.
 
 **Sample output**
 
-```
+```json
 odsinstancecontext_payload = {
  "odsInstanceId": 1,
  "contextKey": "contextKeyText",
@@ -1872,11 +1864,12 @@ odsinstancecontext_payload = {
 }
 ```
 
-Which we will pass as a parameter to a function as shown below, or with the method of your choice.
+Which we will pass as a parameter to a function as shown below, or with the
+method of your choice.
 
 **POST /v2/odsInstanceContexts**
 
-```
+```python
 def create_ods_instance_context(
     base_url: str,
     access_token: str,
@@ -1920,11 +1913,12 @@ As a result, we will obtain a 201 Status Code
 
 ### Get an ODS Instance Context
 
-In the case that you want to retrieve information from one of the ods instance context, you will need to use the resource ID.
+In the case that you want to retrieve information from one of the ods instance
+context, you will need to use the resource ID.
 
 **GET /v2/odsInstanceContexts/`{id}`**
 
-```
+```python
 def get_ods_instance_context(
     base_url: str,
     access_token: str,
@@ -1963,7 +1957,7 @@ In case of success we will obtain an output as follow:
 
 **Sample output**
 
-```
+```json
 {
   'id': 1,
   'odsInstanceId': 1,
@@ -1974,11 +1968,12 @@ In case of success we will obtain an output as follow:
 
 ### Update an ODS Instance Context
 
-You can use the following code to update the information in the ODS instance context.
+You can use the following code to update the information in the ODS instance
+context.
 
 **PUT /v2/odsInstanceContexts/`{id}`**
 
-```
+```python
 def edit_ods_instance_context(
     base_url: str,
     access_token: str,
@@ -2024,11 +2019,12 @@ As a result, we will obtain a 200 Status Code
 
 ### Delete an ODS Instance Context
 
-To delete a ods instance context you can use the next point, as the example provided below.
+To delete a ods instance context you can use the next point, as the example
+provided below.
 
 **/v2/odsInstanceContexts/`{id}`**
 
-```
+```python
 def delete_ods_instance_context(
     base_url: str,
     access_token: str,
@@ -2069,11 +2065,13 @@ As a result, we will obtain a 200 Status Code
 
 ### Create an Application and Set of Credentials
 
-To create an application, we use the POST verb, and we will pass it a dictionary with the values to store, an example of payload for this case could be the following.
+To create an application, we use the POST verb, and we will pass it a dictionary
+with the values to store, an example of payload for this case could be the
+following.
 
-**Sample data create appication**
+**Sample data create application**
 
-```
+```json
 application_payload = {
             "applicationName": "Acme Learning",
             "vendorId": 1,
@@ -2091,7 +2089,7 @@ Which we will use inside a variable to pass it inside a function like a payload.
 
 **POST /v2/applications**
 
-```
+```python
 def create_application(
     base_url: str,
     access_token: str,
@@ -2138,7 +2136,7 @@ The result of the code above it will give you an output as follows.
 
 **Sample output**
 
-```
+```json
 {
   "applicationId": 4,
   "key": "ZQeSgtdaj2GI",
@@ -2148,11 +2146,13 @@ The result of the code above it will give you an output as follows.
 
 ### Retrieve application data
 
-Where you can obtain the key and secret from the response, and save the application ID. If you need to verify that your app was created, you can use the code as follows with the App ID.
+Where you can obtain the key and secret from the response, and save the
+application ID. If you need to verify that your app was created, you can use the
+code as follows with the App ID.
 
 **GET /v2/applications/`{id}`**
 
-```
+```python
 def get_application(
     base_url: str,
     access_token: str,
@@ -2191,7 +2191,7 @@ The confirmation outcome will be like the following:
 
 **Sample output**
 
-```
+```json
 {
   "applicationId": 1,
   "applicationName": "Acme Learning",
@@ -2209,7 +2209,7 @@ You can use the following code to update the information in the application.
 
 **PUT /v2/applications/`{id}`**
 
-```
+```python
 def edit_application(
     base_url: str,
     access_token: str,
@@ -2263,7 +2263,7 @@ To delete an application the example will be the following.
 
 **DELETE /v2/applications/`{id}`**
 
-```
+```python
 def delete_application(
     base_url: str,
     access_token: str,
@@ -2302,7 +2302,7 @@ The output will be as follow:
 
 **Sample output**
 
-```
+```json
 {
   "title": "Application deleted successfully"
 }
@@ -2312,11 +2312,12 @@ The output will be as follow:
 
 ### Refresh application credentials
 
-In case you want to refresh your credentials or get a new ones you can use the next endpoint.
+In case you want to refresh your credentials or get a new ones you can use the
+next endpoint.
 
 **PUT /v2/applications/`{id}`/reset-credential**
 
-```
+```python
 def reset_application_credentials(
     base_url: str,
     access_token: str,
@@ -2355,7 +2356,7 @@ The resulting output will again print the new secret keys.
 
 **Sample output**
 
-```
+```json
 {
   "applicationId": 4,
   "key": "ZQeSgtdaj2GI",
@@ -2365,29 +2366,42 @@ The resulting output will again print the new secret keys.
 
 ### Create multiple applications using a CSV file
 
-In case you want to create multiple applications, you can use the following template and code sample to do so:
+In case you want to create multiple applications, you can use the following
+template and code sample to do so:
 
-CSV file template → [apps.csv](https://edfi.atlassian.net/wiki/download/attachments/21301321/apps.csv?version=2&modificationDate=1721410503374&cacheVersion=1&api=v2)
+CSV file template
+→ [apps.csv](https://edfi.atlassian.net/wiki/download/attachments/21301321/apps.csv?version=2&modificationDate=1721410503374&cacheVersion=1&api=v2)
 
 Columns description
 
 * Name: (Required) The application name
 * VendorId: (Required) Set the vendor id as numeric value. e.g. 2
 * ClamsetName: (Required) The claimset to be used. e.g. SIS Vendor
-* ProfileIds: (Optional) List with the profile ids. This cell is not required, but in case you need to set it the format should be a single id or multiple. In case of multiple values, use the dash to separate them, e.g. 10-20-30
-* EdOrgIds: (Required) List with the eduction organization ids. This cell is required, the format should be a single id or multiple. In case of multiple values, use the dash to separate them, e.g. 10023-20020-304040
-* OdsInstanceIds: (Required) List with the ods instance ids. This cell is required, the format should be a single id or multiple. In case of multiple values, use the dash to separate them, e.g. 10023-20020-304040
+* ProfileIds: (Optional) List with the profile ids. This cell is not required,
+  but in case you need to set it the format should be a single id or multiple.
+  In case of multiple values, use the dash to separate them, e.g. 10-20-30
+* EdOrgIds: (Required) List with the eduction organization ids. This cell is
+  required, the format should be a single id or multiple. In case of multiple
+  values, use the dash to separate them, e.g. 10023-20020-304040
+* OdsInstanceIds: (Required) List with the ods instance ids. This cell is
+  required, the format should be a single id or multiple. In case of multiple
+  values, use the dash to separate them, e.g. 10023-20020-304040
 
-> [!INFO]
->
-> * The following code sample uses the ["create\_application"](https://edfi.atlassian.net/wiki/spaces/ADMINAPI/pages/21301321/Quick+Start+Calling+Admin+API+2.x+using+Python#QuickStartCallingAdminAPI2.xusingPython-create_app) script used to create an application, so don't forget to create it and import it before using this script.
-> * This code uses the Pandas library, so you need to install it before.
->   * Use pip to install the library: "pip install pandas"
->   * For more details: [Installation — pandas 2.2.2 documentation (pydata.org)](https://pandas.pydata.org/pandas-docs/stable/getting_started/install.html)
+:::info
+
+ * The following code sample uses the
+   ["create\_application"](https://edfi.atlassian.net/wiki/spaces/ADMINAPI/pages/21301321/Quick+Start+Calling+Admin+API+2.x+using+Python#QuickStartCallingAdminAPI2.usingPython-create_app)
+   script used to create an application, so don't forget to create it and
+   import it before using this script.
+ * This code uses the Pandas library, so you need to install it before.
+   * Use pip to install the library: "pip install pandas"
+   * For more details: [Installation — pandas 2.2.2 documentation
+     (pydata.org)](https://pandas.pydata.org/pandas-docs/stable/getting_started/install.html)
+:::
 
 **import\_applications.py**
 
-```
+```python
 import pandas
 import math
 import numbers
@@ -2442,11 +2456,14 @@ As a result, we will obtain multiple 201 Status Code
 
 ### Retrieve a Listing of Profiles
 
-See the [Endpoints - Admin API](https://edfi.atlassian.net/wiki/display/ADMINAPI/Endpoints+-+Admin+API#EndpointsAdminAPI-Vendors) page for a complete list of resources and parameters. For this example, we will get a list of providers.
+See the [Endpoints - Admin
+API](https://edfi.atlassian.net/wiki/spaces/ADMINAPI/pages/21300937/Endpoints+in+Admin+API+2.x)
+page for a complete list of resources and parameters. For this example, we will
+get a list of providers.
 
 **GET /v2/profiles**
 
-```
+```python
 def get_profiles(
     base_url: str,
     access_token: str,
@@ -2490,11 +2507,12 @@ def get_profiles(
     return r.json()
 ```
 
-We will get a list of the ods instances, JSON formatted, as in the example below.
+We will get a list of the ods instances, JSON formatted, as in the example
+below.
 
 **Sample output**
 
-```
+```json
 [
   {
     'id': 1,
@@ -2509,18 +2527,19 @@ To create a new profile, we will use the POST verb.
 
 **Sample output**
 
-```
+```json
 profile_payload = {
         "name": "Test-Profile",
         "definition": "<Profile name=\"Test-Profile\"><Resource name=\"Resource1\"><ReadContentType memberSelection=\"IncludeOnly\"><Collection name=\"Collection1\" memberSelection=\"IncludeOnly\"><Property    name=\"Property1\" /><Property name=\"Property2\" /></Collection></ReadContentType><WriteContentType memberSelection=\"IncludeOnly\"><Collection name=\"Collection2\" memberSelection=\"IncludeOnly\"><Property name=\"Property1\" /><Property name=\"Property2\" /></Collection></WriteContentType></Resource></Profile>"
     }
 ```
 
-Which we will pass as a parameter to a function as shown below, or with the method of your choice.
+Which we will pass as a parameter to a function as shown below, or with the
+method of your choice.
 
 **POST /v2/profiles**
 
-```
+```python
 def create_profile(
     base_url: str,
     access_token: str,
@@ -2563,11 +2582,12 @@ As a result, we will obtain a 201 Status Code
 
 ### Get Profile
 
-In the case that you want to retrieve information from one of the profiles, you will need to use the resource ID.
+In the case that you want to retrieve information from one of the profiles, you
+will need to use the resource ID.
 
 **GET /v2/profiles/`{id}`**
 
-```
+```python
 def get_profile(
     base_url: str,
     access_token: str,
@@ -2606,7 +2626,7 @@ In case of success we will obtain an output as follow:
 
 **Sample output**
 
-```
+```json
 {
   'definition': '<Profile name="Test-Profile"><Resource name="Resource1"><ReadContentType memberSelection="IncludeOnly"><Collection name="Collection1" memberSelection="IncludeOnly"><Property    name="Property1" /><Property name="Property2" /></Collection></ReadContentType><WriteContentType memberSelection="IncludeOnly"><Collection name="Collection2" memberSelection="IncludeOnly"><Property name="Property1" /><Property name="Property2" /></Collection></WriteContentType></Resource></Profile>',
   'id': 1,
@@ -2620,7 +2640,7 @@ You can use the following code to update the information in the profile.
 
 **PUT /v2/profiles/`{id}`**
 
-```
+```python
 def edit_profile(
     base_url: str,
     access_token: str,
@@ -2669,7 +2689,7 @@ To delete a profile you can use the next point, as the example provided below.
 
 **/v2/profiles/`{id}`**
 
-```
+```python
 def delete_profile(
     base_url: str,
     access_token: str,

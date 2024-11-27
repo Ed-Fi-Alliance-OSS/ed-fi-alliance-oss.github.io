@@ -2,47 +2,28 @@
 
 ## Overview
 
-This is a quick start guide for calling Admin API using Python scripting, it will cover the basic operations of the Admin API:  
-
-## Table of Contents
-
-* [Configure Environment with Python and Admin API 1.1](#configure-environment-with-python-and-admin-api-11)
-  * [Information](#information)
-  * [Authenticate to Admin API](#authenticate-to-admin-api)
-  * [Register a new client](#register-a-new-client)
-  * [Token](#token)
-* [Vendors](#vendors)
-  * [Retrieve a Listing of Vendors](#retrieve-a-listing-of-vendors)
-  * [Create a Vendor](#create-a-vendor)
-  * [Get a vendor](#get-a-vendor)
-  * [Update a vendor](#update-a-vendor)
-  * [Delete a vendor](#delete-a-vendor)
-* [Claim sets](#claim-sets)
-  * [List all Claims](#list-all-claims)
-  * [Create a Claim](#create-a-claim)
-  * [Retrieve a claim set](#retrieve-a-claim-set)
-  * [Update a claim set](#update-a-claim-set)
-  * [Delete a claim set](#delete-a-claim-set)
-* [Applications](#applications)
-  * [Create an Application and Set of Credentials](#create-an-application-and-set-of-credentials)
-  * [Retrieve application data](#retrieve-application-data)
-  * [Update an application](#update-an-application)
-  * [Delete an application](#delete-an-application)
-  * [Refresh application credentials](#refresh-application-credentials)
+This is a quick start guide for calling Admin API using Python scripting, it
+will cover the basic operations of the Admin API:  
 
 ## Configure Environment with Python and Admin API 1.1
 
-Once [Admin API](../../admin-api.md) is installed, we can use Python versions above 3.7+. It is necessary to have the [requests](https://requests.readthedocs.io/en/latest/user/quickstart/) library installed or similar. We can use the following command to review our current python version.
+Once [Admin API](../readme.md) is installed, we can use Python versions
+above 3.7+. It is necessary to have the
+[requests](https://requests.readthedocs.io/en/latest/user/quickstart/) library
+installed or similar. We can use the following command to review our current
+python version.
 
-```
+```shell
 python --version
 ```
 
-The utility to install packages in Python is called pip, in case you don't have it installed you can follow the instructions in this [link](https://pip.pypa.io/en/stable/installation/).
+The utility to install packages in Python is called pip, in case you don't have
+it installed you can follow the instructions in this
+[link](https://pip.pypa.io/en/stable/installation/).
 
 To install the libraries using pip, you can use the line below.
 
-```
+```shell
 pip install -U requests
 ```
 
@@ -50,20 +31,18 @@ To import it into our script we will use the following imports:
 
 **script.py**
 
-```
+```python
 import requests
 import warnings
 
 warnings.filterwarnings('ignore') # setting ignore as a parameter
-
-
 ```
 
 ### Information
 
 **GET /**
 
-```
+```python
 def information(base_url: str) -> dict:
     '''
         Retrieve API informational data
@@ -80,7 +59,7 @@ Our output should bring the information from the Restful API.
 
 **Sample Output**
 
-```
+```json
 {
   "version": "1.1",
   "build": "1.0.0.0"
@@ -89,11 +68,14 @@ Our output should bring the information from the Restful API.
 
 ### Authenticate to Admin API
 
-In a new installation, it is necessary to previously register the client to connect, for which we will follow the instructions within the document in [Securing Admin API](../technical-information/securing-admin-api.md).
+In a new installation, it is necessary to previously register the client to
+connect, for which we will follow the instructions within the document in
+[Securing Admin API](../../securing-admin-api.md).
 
 ### Register a new client
 
-In order to do so, we can add the functionality to our script by adding the following lines.
+In order to do so, we can add the functionality to our script by adding the
+following lines.
 
 **POST /connect/register**
 
@@ -161,9 +143,11 @@ The successful output will be JSON formatted.
 
 ### Token
 
-Once we register our client according to the parameters specified in the document [Securing Admin API](securing-admin-api.md).
+Once we register our client according to the parameters specified in the
+document [Securing Admin API](../../securing-admin-api.md).
 
-We can obtain the token we will use for each API query. Just pass the same ClientID and ClientSecret we use to register it, with two new variables.
+We can obtain the token we will use for each API query. Just pass the same
+ClientID and ClientSecret we use to register it, with two new variables.
 
 **Sample input**
 
@@ -229,13 +213,17 @@ The outcome will be JSON formatted.
 }
 ```
 
-Then you can use the token as an authentication method, with the header Authorization as the example below.
+Then you can use the token as an authentication method, with the header
+Authorization as the example below.
 
 ## Vendors
 
 ### Retrieve a Listing of Vendors
 
-See the [Endpoints - Admin API](https://edfi.atlassian.net/wiki/display/ADMINAPI/Endpoints+-+Admin+API#EndpointsAdminAPI-Vendors) page for a complete list of resources and parameters. For this example, we will get a list of providers.  
+See the [Endpoints - Admin
+API](https://edfi.atlassian.net/wiki/spaces/ADMINAPI/pages/21300701/Endpoints+in+Admin+API+1.x)
+page for a complete list of resources and parameters. For this example, we will
+get a list of providers.  
 
 **GET /v1/vendors**
 
@@ -310,7 +298,12 @@ We will get a list of the vendors, JSON formatted, as in the example below.
 
 ### Create a Vendor
 
-To create a new vendor, we will use the POST verb. Although in this example, it is necessary to pass a dictionary with the required data. Again, you can refer to the link [Endpoints - Admin API](https://edfi.atlassian.net/wiki/display/ADMINAPI/Endpoints+-+Admin+API#EndpointsAdminAPI-Vendors)  to successfully create the provider. In our case, we will use the following information.
+To create a new vendor, we will use the POST verb. Although in this example, it
+is necessary to pass a dictionary with the required data. Again, you can refer
+to the link [Endpoints - Admin
+API](https://edfi.atlassian.net/wiki/spaces/ADMINAPI/pages/21300701/Endpoints+in+Admin+API+1.x#Vendors)
+to successfully create the provider. In our case, we will use the following
+information.
 
 **Sample output**
 
@@ -323,7 +316,8 @@ vendor_payload = {
         }
 ```
 
-Which we will pass as a parameter to a function as shown below, or with the method of your choice.
+Which we will pass as a parameter to a function as shown below, or with the
+method of your choice.
 
 **POST /v1/vendors**
 
@@ -368,7 +362,9 @@ def create_vendor(
     return r.json()
 ```
 
-As a result, we will obtain in JSON format, a dictionary verifying that our information was saved correctly. If necessary, you can store the Vendor ID for future reference.
+As a result, we will obtain in JSON format, a dictionary verifying that our
+information was saved correctly. If necessary, you can store the Vendor ID for
+future reference.
 
 **Sample output**
 
@@ -390,7 +386,8 @@ As a result, we will obtain in JSON format, a dictionary verifying that our info
 
 ### Get a vendor
 
-In the case that you want to retrieve information from one of the vendors, you will need to use the resource ID.
+In the case that you want to retrieve information from one of the vendors, you
+will need to use the resource ID.
 
 **GET /v1/vendors/`{id}`**
 
@@ -449,7 +446,8 @@ In case of success we will obtain an output as follow:
 
 ### Update a vendor
 
-For this example, we update the previously created vendor with the following info.
+For this example, we update the previously created vendor with the following
+info.
 
 **Sample input**
 
@@ -575,7 +573,7 @@ The output will be a confirmation as follows:
 
 **Sample output**
 
-```
+```json
 {
   "status": 200,
   "title": "Vendor deleted successfully"
@@ -660,11 +658,13 @@ The result will be a list of claim sets as the ones shown below:
 
 ### Create a Claim
 
-For the creation of a claim, we will use the POST verb again, and we will pass a dictionary with the values to store, an example of payload for this case could be like the following.
+For the creation of a claim, we will use the POST verb again, and we will pass a
+dictionary with the values to store, an example of payload for this case could
+be like the following.
 
 **Sample input**
 
-```
+```json
 claimset_payload = {
         "name": "Acme Learning User",
         "resourceClaims": [
@@ -977,7 +977,8 @@ The output will give the updated information, in JSON format.
 
 ### Retrieve a claim set
 
-To retrieve the claim information, we will use the Claims ID, the example would be as follows.
+To retrieve the claim information, we will use the Claims ID, the example would
+be as follows.
 
 **GET /v1/claimsets/`{id}`**
 
@@ -1018,7 +1019,8 @@ def get_claimset(
 
 ### Update a claim set
 
-In case you want to update some info from the previous claim set. For this example, we will use the next input.
+In case you want to update some info from the previous claim set. For this
+example, we will use the next input.
 
 **Sample input**
 
@@ -1131,7 +1133,7 @@ And the code to update goes as follows.
 
 **PUT /v1/claimsets/`{id}`**
 
-```
+```python
 def edit_claimset(
     base_url: str,
     access_token: str,
@@ -1198,7 +1200,7 @@ The given output will look like the following output.
 
 **Sample output**
 
-```
+```json
 {
   "result": {
     "resourceClaims": [
@@ -1343,7 +1345,7 @@ To delete a claim set you can use the example below.
 
 **DELETE /v1/claimset/`{id}`**
 
-```
+```python
 def delete_claimset(
     base_url: str,
     access_token: str,
@@ -1382,7 +1384,7 @@ The confirmation meesage.
 
 **Sample output**
 
-```
+```json
 {
   "status": 200,
   "title": "ClaimSet deleted successfully"
@@ -1393,11 +1395,13 @@ The confirmation meesage.
 
 ### Create an Application and Set of Credentials
 
-To create an application, we use the POST verb, and we will pass it a dictionary with the values to store, an example of payload for this case could be the following.
+To create an application, we use the POST verb, and we will pass it a dictionary
+with the values to store, an example of payload for this case could be the
+following.
 
 **Sample data create appication**
 
-```
+```json
 application_payload = {
             "applicationName": "Acme Learning",
             "vendorId": 1,
@@ -1412,7 +1416,7 @@ Which we will use inside a variable to pass it inside a function like a payload.
 
 **POST /v1/applications**
 
-```
+```python
 def create_application(
     base_url: str,
     access_token: str,
@@ -1459,7 +1463,7 @@ The result of the code above it will give you an output as follows.
 
 **Sample output**
 
-```
+```json
 {
   "result": {
     "applicationId": 4,
@@ -1473,11 +1477,13 @@ The result of the code above it will give you an output as follows.
 
 ### Retrieve application data
 
-Where you can obtain the key and secret from the response, and save the application ID. If you need to verify that your app was created, you can use the code as follows with the App ID.
+Where you can obtain the key and secret from the response, and save the
+application ID. If you need to verify that your app was created, you can use the
+code as follows with the App ID.
 
 **GET /v1/applications/`{id}`**
 
-```
+```python
 def get_application(
     base_url: str,
     access_token: str,
@@ -1516,7 +1522,7 @@ The confirmation outcome will be like the following:
 
 **Sample output**
 
-```
+```json
 {
   "result": {
     "applicationId": 1,
@@ -1539,7 +1545,7 @@ You can use the following code to update the information in the application.
 
 **PUT /v1/applications/`{id}`**
 
-```
+```python
 def edit_application(
     base_url: str,
     access_token: str,
@@ -1589,7 +1595,7 @@ The confirmation result will be similar to the sample output.
 
 **Sample output**
 
-```
+```json
 {
   "result": {
     "applicationId": 3,
@@ -1610,7 +1616,7 @@ To delete an application the example will be the following.
 
 **DELETE /v1/applications/`{id}`**
 
-```
+```python
 def delete_application(
     base_url: str,
     access_token: str,
@@ -1649,7 +1655,7 @@ The output will be as follow:
 
 **Sample output**
 
-```
+```json
 {
   "status": 200,
   "title": "Application deleted successfully"
@@ -1660,11 +1666,12 @@ The output will be as follow:
 
 ### Refresh application credentials
 
-In case you want to refresh your credentials or get a new ones you can use the next endpoint.
+In case you want to refresh your credentials or get a new ones you can use the
+next endpoint.
 
 **PUT /v1/applications/`{id}`/reset-credential**
 
-```
+```python
 def reset_application_credentials(
     base_url: str,
     access_token: str,
@@ -1703,7 +1710,7 @@ The resulting output will again print the new secret keys.
 
 **Sample output**
 
-```
+```json
 {
   "result": {
     "applicationId": 4,
