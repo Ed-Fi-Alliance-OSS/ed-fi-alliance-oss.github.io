@@ -1,3 +1,7 @@
+---
+sidebar_position: 3
+---
+
 # Coding Patterns
 
 This section outlines code and database patterns used throughout the Ed-Fi ODS /

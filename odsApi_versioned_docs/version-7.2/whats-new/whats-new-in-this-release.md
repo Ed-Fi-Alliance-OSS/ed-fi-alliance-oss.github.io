@@ -1,5 +1,6 @@
 ---
 description: Detailed description of new features in ODS/API v7.2.
+sidebar_position: 1
 ---
 
 # What's New In This Release
@@ -48,7 +49,7 @@ Overall, this feature significantly enhances the clarity, usability, and
 traceability of API error responses, benefiting both developers and users. For
 details and examples of the new error response format, please refer to [Error
 Response Knowledge
-Base](../client-developers-guide/error-response-knowledge-base.md).  
+Base](../client-developers-guide/error-response-knowledge-base.md).
 
 ### MetaEd IDE v4.4
 

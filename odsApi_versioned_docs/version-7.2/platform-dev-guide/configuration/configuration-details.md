@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # Configuration Details
 
 The Ed-Fi ODS / API is configurable in a number of ways. Since the source code

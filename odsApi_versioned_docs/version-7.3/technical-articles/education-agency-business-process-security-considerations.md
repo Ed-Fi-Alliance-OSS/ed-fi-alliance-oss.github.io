@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # Education Agency Business Process Security Considerations
 
 No connected technology solution is without risk. This article provides

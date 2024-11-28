@@ -1,3 +1,7 @@
+---
+sidebar_position: 4
+---
+
 # Unique ID System Integration
 
 Generally speaking, a unique ID system ensures that a person has only one unique
