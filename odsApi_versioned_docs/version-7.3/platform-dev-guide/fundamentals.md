@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Fundamentals
 
 The Ed-Fi ODS / API is a fairly large, complex system. This section covers the

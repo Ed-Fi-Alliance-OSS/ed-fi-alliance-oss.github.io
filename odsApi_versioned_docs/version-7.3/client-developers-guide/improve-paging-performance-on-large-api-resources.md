@@ -2,7 +2,7 @@
 
 :::warning
 This article describes an older technique for paging using ChangeVersion. For
-new implementations, see [Cursor Paging](cursor-paging.md).
+new implementations, see [Partitioned Cursor Paging](improve-paging-performance-cursor-paging.md).
 :::
 
 ## Introduction

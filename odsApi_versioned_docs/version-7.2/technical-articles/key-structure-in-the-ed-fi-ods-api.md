@@ -1,3 +1,7 @@
+---
+sidebar_position: 5
+---
+
 # Key Structure in the Ed-Fi ODS / API
 
 This article provides technical details on the key structure in the Ed-Fi ODS /
