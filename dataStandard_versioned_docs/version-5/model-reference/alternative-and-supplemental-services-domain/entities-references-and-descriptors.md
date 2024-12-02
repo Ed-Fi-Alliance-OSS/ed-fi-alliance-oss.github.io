@@ -36,7 +36,7 @@
 
 ### Alternative and Supplemental Services Domain Descriptors
 
-| Entity | Name | Description | Usage Classification (see [info](https://edfi.atlassian.net/wiki/display/EFDS4X/Non-Normative+Descriptor+Classifications)) | EDFacts Mapping | Commonly Used | Commonly State-Defined |
+| Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
 | GeneralStudentProgramAssociation | ParticipationStatus | The student's program participation status. | Standard |     | Yes |     |
 | ReasonExited | The reason the child left the Program within a school or district. | Standard | Yes | Yes |     |
@@ -74,3 +74,11 @@
 | IDEAPart | Indicates if the evaluation is done under Part B IDEA or Part C IDEA | Standard |     |     |     |
 | StudentTitleIPartAProgramAssociation | TitleIPartAParticipant | An indication of the type of Title I program, if any, in which the student is participating and by which the student is served: Public Targeted Assistance, Program, Public Schoolwide Program, Private School Students Participating, Local Neglected Program. | Standard | Yes | Yes | Yes |
 | TitleIPartAProgramService | Indicates the service being provided to the student by the Title I Part A Program. | Standard | Yes | Yes |     |
+
+:::tip
+
+See [Non-normative Descriptor
+Classifications](/reference/data-exchange/udm/non-normative-descriptor-classifications)
+for more information on _Usage Classification_.
+
+:::
