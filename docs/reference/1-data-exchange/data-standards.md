@@ -31,7 +31,7 @@ Version 5.0 was released in 2023 and again modified in 2024 with minor releases
 5.1 and 5.2. This version is intended to support school years 2024-2025,
 2025-2026, 2026-2027, and 2027-2028.
 
-➡️ [Documentation for 5.x](/reference/data-standard/)
+➡️ [Documentation for 5.x](/reference/data-exchange/data-standard/)
 
 ## Version 4.0
 

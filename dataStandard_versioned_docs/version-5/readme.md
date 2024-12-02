@@ -20,7 +20,7 @@ data systems.
 :::warning
 
 Please note that the current version of Data Standard v5 is v5.1 (full version
-number 5.1.0), the final stable version for v5 - see the [Ed-Fi Technology Roadmap](/reference/roadmap)
+number 5.1.0). See the [Ed-Fi Technology Roadmap](/reference/roadmap)
 for previous and future Data Standard release versions. Also see the [What's New](./whats-new/readme.md)
 page for information on the changes in this release.
 
@@ -32,9 +32,8 @@ The data model is referred to as the Ed-Fi Unifying Data Model, or UDM. The UDM
 is documented via 2 primary artifacts: the **Ed-Fi Data Handbook** and a set of
 **Unified Modeling Language (UML)** diagrams.
 
-* [Ed-Fi Data Handbook for DS v5.1](https://edfidocs.blob.core.windows.net/$web/handbook/v5.1/index.html)
-
-  * [Ed-Fi Data Handbook for DS v5.0](https://edfidocs.blob.core.windows.net/$web/handbook/v5.0/index.html)
+* <a href="https://edfidocs.blob.core.windows.net/$web/handbook/v5.1/index.html" target="_blank">Ed-Fi Data Handbook for DS v5.1</a>
+  * <a href="https://edfidocs.blob.core.windows.net/$web/handbook/v5.0/index.html" target="_blank">Ed-Fi Data Handbook for DS v5.0</a>
 * [Ed-Fi UDM UML Diagrams](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Standard/tree/main/Models) (Visio format, on GitHub)
 
 Additional documentation is provided in the [Ed-Fi Unifying Data
