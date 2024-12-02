@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Logging Configuration
 
 The as-shipped Ed-Fi ODS / API uses the Apache log4net framework to assist
@@ -131,8 +135,8 @@ troubleshooting.
     <appendToFile value="true" />
     <maximumFileSize value="100MB" />
     <maxSizeRollBackups value="7" />
-    <layout type="log4net.Layout.PatternLayout">      
-       <conversionPattern value="%date [%thread,%property{ApiClientId},%property{CorrelationId}] %-5level %logger - MESSAGE: %message%newline %exception" />     
+    <layout type="log4net.Layout.PatternLayout">
+       <conversionPattern value="%date [%thread,%property{ApiClientId},%property{CorrelationId}] %-5level %logger - MESSAGE: %message%newline %exception" />
     </layout>
   </appender>
   <logger name="NHibernate">

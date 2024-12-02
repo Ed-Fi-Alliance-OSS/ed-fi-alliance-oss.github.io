@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Logging Configuration
 
 The as-shipped Ed-Fi ODS / API uses the Apache log4net framework to assist

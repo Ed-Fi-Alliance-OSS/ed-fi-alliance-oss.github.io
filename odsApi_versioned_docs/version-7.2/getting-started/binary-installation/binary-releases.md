@@ -1,3 +1,7 @@
+---
+sidebar_position: 5
+---
+
 # Binary Releases
 
 The Ed-Fi Alliance publishes a set of .NET binaries and databases with each ODS

@@ -1,5 +1,6 @@
 ---
 description: Summary of what changed in prior releases of 7.x
+sidebar_position: 2
 ---
 
 # What's New in Previous v7.x Releases

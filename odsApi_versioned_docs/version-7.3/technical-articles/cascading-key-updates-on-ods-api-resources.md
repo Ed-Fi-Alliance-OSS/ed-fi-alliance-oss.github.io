@@ -1,3 +1,7 @@
+---
+sidebar_position: 6
+---
+
 # Cascading Key Updates on ODS / API Resources
 
 The Ed-Fi ODS SQL Server data store allows for the configuration of Cascading
