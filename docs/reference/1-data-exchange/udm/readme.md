@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # Ed-Fi Unifying Data Model
 
 ## Introduction

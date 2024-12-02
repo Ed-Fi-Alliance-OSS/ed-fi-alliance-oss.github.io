@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Ed-Fi Data Standard Extension Framework Best Practices
 
 ## Introduction

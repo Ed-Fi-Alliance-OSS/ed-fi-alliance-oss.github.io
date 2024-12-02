@@ -1,3 +1,7 @@
+---
+sidebar_position: 0
+---
+
 # Ed-Fi Data Standards
 
 The Ed-Fi Data Standard is the widely adopted, CEDS-aligned, open-source data
