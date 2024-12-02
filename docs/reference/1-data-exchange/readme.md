@@ -6,7 +6,7 @@ resources and key publications.
 
 ## Ed-Fi Data Standards
 
-The [Ed-Fi Data Standard](/reference/data-exchange/data-standard/) is the widely
+The [Ed-Fi Data Standard](./data-standards.md) is the widely
 adopted, CEDS-aligned, open-source data standard developed by the educational
 community for the betterment of the community. The Ed-Fi Data Standard serves as
 the foundation for enabling interoperability among secure data systems and
