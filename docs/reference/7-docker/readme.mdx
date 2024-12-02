@@ -4,13 +4,14 @@ import TabItem from '@theme/TabItem';
 # Docker Deployment
 
 :::note
-The following links contain relevant source code and published images:
-Repository: [Ed-Fi-ODS-Docker](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Docker)
 
+The following links contain relevant source code and published images:
+
+* [Source code](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Docker)
 * Use the [Releases
   page](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Docker/releases) to find
-  the most recently published versions. Images:
-  [https://hub.docker.com/u/edfialliance](https://hub.docker.com/u/edfialliance)
+  the most recently published versions.
+* [Images on Docker Hub](https://hub.docker.com/u/edfialliance)
 
 :::
 
@@ -49,23 +50,23 @@ Services (AWS), and Microsoft Azure, have adopted it. For simplicity, the steps
 below describe how to use Docker Compose to deploy the Ed-Fi ODS/API and related
 tools on Docker Desktop.
 
-### Setup
+## Setup
 
-#### Step 1. Download the Source Code or Clone the Repo
+### Step 1. Download the Source Code or Clone the Repo
 
 The Ed-Fi ODS Docker deployment source code is in the Ed-Fi repository hosted by
 GitHub. A link to the repository is provided in the download panel on the right.
 You can clone the repository or download the source code as a ZIP file.
 
-#### Step 2. Setup Runtime Environment
+### Step 2. Setup Runtime Environment
 
-##### 2a. Docker Desktop
+#### 2a. Docker Desktop
 
 To work with the material in this repository, set up a Docker environment by
-referring to the article [Set Up Your Docker
+referring to the article [Set Up Your Docker
 Environment](https://docs.docker.com/get-started/#set-up-your-docker-environment).
 
-##### 2b. Microsoft SQL Server
+#### 2b. Microsoft SQL Server
 
 :::warning
 Experimental - this is not a widely tested deployment path.
@@ -78,17 +79,15 @@ cloud service, or on a "bare metal" / on-prem virtual machine, you must install
 the databases yourself. The following notes will help guide a decision and
 approach,
 
-![](https://edfi.atlassian.net/wiki/images/icons/grey_arrow_down.png)
-
 <details>
 <summary>MSSQL Deployment Options...</summary>
 
 1. Run installations from the official binary distributions and documentation:
 
-     :checkmark: PRO: can get the minimal or populated template
-     :x: CON: can only run on localhost - requires a migration process
+     ✅ PRO: can get the minimal or populated template \
+     ❌ CON: can only run on localhost - requires a migration process
 
-    1. Follow steps 1 and 2 in [Sandbox Installation Steps: Step
+    1. Follow steps 1 and 2 in [Sandbox Installation Steps: Step
         2](https://edfi.atlassian.net/wiki/display/ODSAPIS3V61/Sandbox+Installation+Steps#SandboxInstallationSteps-Step2.InstalltheEd-FiDatabases),
         only download the EdFi.Suite3.RestApi.Databases package (ignore the
         package links for WebApi, SwaggerUI, and SandboxAdmin).
@@ -104,36 +103,36 @@ approach,
     installation files but orchestrates them differently to avoid installing the
     Admin API and to allow remote deployments.
 
-     :checkmark: PRO: should be able to install into any destination MSSQL database you can
+     ✅ PRO: should be able to install into any destination MSSQL database you can
      reach
-     :x: CON: no sample data (minimal or populated template)
+     ❌ CON: no sample data (minimal or populated template)
 
 </details>
 
-#### Step 3. Setup Your Environment Variables
+### Step 3. Setup Your Environment Variables
 
 Configure your deployments using an environment file. The repository includes a
-**.env.example** listing the supported environment variables.
-Copy **.env.example** file and name it **.env**. Update the values as desired.
+`.env.example` listing the supported environment variables.
+Copy `.env.example` file and name it `.env`. Update the values as desired.
 
 :::info
 
 Compose supports declaring default [environment
-variables](https://docs.docker.com/compose/environment-variables/) in an
-environment file named **.env**, placed in the folder where the docker compose
-command is executed (current working directory). If you desire a different name
-or location for the **.env** file, use the `--env-file`  argument as shown
+variables](https://docs.docker.com/compose/environment-variables/) in an
+environment file named `.env`, placed in the folder where the docker compose
+command is executed (current working directory). If you desire a different name
+or location for the `.env` file, use the `--env-file`  argument as shown
 below:
 
 ```powershell
-docker compose --env-file .env.dev -f (docker-compose-filename) up
+docker compose --env-file .env.dev -f [docker-compose-filename] up
 ```
 
 :::
 
-Sample **.env** files for a PostgreSQL and SQL Server are provided below.
+Sample `.env` files for a PostgreSQL and SQL Server are provided below.
 
-:warning: Please change these values to more secure settings before using them
+⚠️ Please change these values to more secure settings before using them
 in a deployed environment.
 
 :::tip
@@ -147,7 +146,7 @@ such as `${xyz}` are variable insertions you do not need to change.
 
 <Tabs>
   <TabItem value="postgresql" label="PostgreSQL" default>
-    ```text
+    ```ini
     ADMIN_USER=admin@example.com
     ADMIN_PASSWORD=Admin1
     LOGS_FOLDER=c:/tmp/logs
@@ -161,7 +160,7 @@ such as `${xyz}` are variable insertions you do not need to change.
     ODS_VIRTUAL_NAME=api
     SANDBOX_ADMIN_VIRTUAL_NAME=admin
     TPDM_ENABLED=true
-    ODS_CONNECTION_STRING_ENCRYPTION_KEY=<base64-encoded 256-bit key>  
+    ODS_CONNECTION_STRING_ENCRYPTION_KEY=<base64-encoded 256-bit key>
 
     TAG=<ODS API image tag. Use 7 or 7-5.0.0 for DS 5.0 and use 7-4.0.0 for DS 4.0>
     GATEWAY_TAG=v3
@@ -190,7 +189,7 @@ such as `${xyz}` are variable insertions you do not need to change.
     ```
   </TabItem>
   <TabItem value="sqlserver" label="SQL Server">
-    ```text
+    ```ini
     ADMIN_USER=admin@example.com
     ADMIN_PASSWORD=Admin#1
     LOGS_FOLDER=c:/tmp/logs
@@ -238,23 +237,23 @@ such as `${xyz}` are variable insertions you do not need to change.
     words, SQL Server is installed directly on the workstation, not running inside
     of Docker, set
 
-    ```text
+    ```ini
     SQLSERVER_ODS_DATASOURCE=host.docker.internal
     SQLSERVER_ADMIN_DATASOURCE=host.docker.internal
     ```
   </TabItem>
 </Tabs>
 
-#### Step 4. Provide SSL certificate
+### Step 4. Provide SSL certificate
 
 The deployments require a valid SSL certificate to function. A self-signed
 certificate can be used for a Non-Production environment. The repository
-includes **generate-cert.sh** script that can be used to generate a self-signed
-certificate and place it in the **`ssl`** folder under the root directory to be
+includes `generate-cert.sh` script that can be used to generate a self-signed
+certificate and place it in the `ssl` folder under the root directory to be
 used by the running Gateway container.
 
 If deploying on a local Windows host, you will need Git Bash or WSL to run
-**generate-cert.sh**.
+`generate-cert.sh`.
 
 <Tabs>
   <TabItem value="gitbash" label="Git Bash" default>
@@ -272,7 +271,7 @@ If deploying on a local Windows host, you will need Git Bash or WSL to run
     * [Enable WSL and install a Linux from the Microsoft
         Store](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
     * Start a WSL session.
-    * Run script generate-cert.sh (i.e., **./generate-cert.sh**).
+    * Run script generate-cert.sh (i.e., `./generate-cert.sh`).
   </TabItem>
   <TabItem value="macosx" label="MacOSX">
     Tip from community members: Ensure that you have LibreSSL 3.1.0 or newer and
@@ -287,17 +286,16 @@ If deploying on a local Windows host, you will need Git Bash or WSL to run
   </TabItem>
 </Tabs>
 
-#### Step 5. Run Docker Compose
+### Step 5. Run Docker Compose
 
-In this step, you need to choose between deploying a **Sandbox,**
-**SingleTenant, SingleTenant with ODS Context routes, MultiTenant, or
-MultiTenant with ODS Context routes** environment, as described in [Docker
-Compose Architecture:
-ConfigurationModes](./ed-fi-docker-compose-architecture.mdx).
-The source code repository contains a Docker compose orchestration file for each
-scenario. The sample commands below show the use of the published images from
-Docker Hub. These commands can be run from any shell terminal that supports
-Docker commands (e.g., PowerShell in Windows).
+In this step, you need to choose between deploying a _Sandbox_, _SingleTenant_,
+_SingleTenant with ODS Context routes_, _MultiTenant_, or _MultiTenant with ODS
+Context routes_ environment, as described in [Docker Compose Architecture:
+ConfigurationModes](./ed-fi-docker-compose-architecture.mdx). The source code
+repository contains a Docker compose orchestration file for each scenario. The
+sample commands below show the use of the published images from Docker Hub.
+These commands can be run from any shell terminal that supports Docker commands
+(e.g., PowerShell in Windows).
 
 Powershell scripts are also provided for each scenario; the up script will set
 up a new environment, and the -clean script will remove containers and volumes.
@@ -308,309 +306,330 @@ file at the root level.
 
 The Docker Compose file does not create SQL Server databases; this means that
 EdFi_Admin and EdFi_Security databases should already exist within the server
-defined by `SQLSERVER_ADMIN_DATASOURCE` in the .**env** file. Similarly, the ODS
+defined by `SQLSERVER_ADMIN_DATASOURCE` in the `.env` file. Similarly, the ODS
 databases for desired school years should already exist with the correct naming
 convention described for each configuration below.
 
 :::
 
-##### Sandbox Environment
-
-<Tabs>
-  <TabItem value="postgresql" label="PostgreSQL" default>
-    **Docker command**
-
-    ```powershell
-    docker compose -f ./Compose/pgsql/compose-sandbox-env.yml --env-file ./.env up -d
-    ```
-
-    **Powershell script**
-
-    ```powershell
-    ./sandbox-env-up.ps1
-    ```
-  </TabItem>
-  <TabItem value="sqlserver" label="SQL Server">
-    **Docker command**
-
-    ```powershell
-    docker compose -f ./Compose/mssql/compose-sandbox-env.yml --env-file ./.env up -d
-    ```
-
-    **Powershell script**
-
-    ```powershell
-    ./sandbox-env-up.ps1 -Engine SQLServer
-    ```
-  </TabItem>
-</Tabs>
-
-##### SingleTenant Environment
-
-<Tabs>
-  <TabItem value="postgresql" label="PostgreSQL" default>
-    **Docker command**
-
-    ```powershell
-    docker compose -f ./Compose/pgsql/SingleTenant/compose-single-tenant-env.yml --env-file ./.env up -d
-    ```
-
-    **Powershell script**
-
-    ```powershell
-    ./single-tenant-env-up.ps1
-    ```
-  </TabItem>
-  <TabItem value="sqlserver" label="SQL Server">
-    **Docker command**
-
-    ```powershell
-    docker compose -f ./Compose/mssql/SingleTenant/compose-single-tenant-env.yml --env-file ./.env up -d
-    ```
-
-    **Powershell script**
-
-    ```powershell
-    ./single-tenant-env-up.ps1 -Engine SQLServer
-    ```
-  </TabItem>
-</Tabs>
-
-##### SingleTenant with ODS Context Routes Environments
+#### Sandbox Environment
 
 <details>
   <summary>PostgreSQL</summary>
 
-<Tabs>
-  <TabItem value="docker-command" label="Docker Command" default>
-    ```powershell
-    docker compose -f ./Compose/pgsql/SingleTenant-OdsContext/compose-single-tenant-odscontext-env.yml --env-file ./.env up -d
-    ```
-  </TabItem>
-  <TabItem value="powershell-script" label="Powershell Script">
-    ```powershell
-    ./single-tenant-odscontexts-up.ps1
-    ```
-  </TabItem>
-</Tabs>
+  <Tabs>
+    <TabItem value="docker-command" label="Docker Command" default>
+      ```powershell
+      docker compose -f ./Compose/pgsql/compose-sandbox-env.yml --env-file ./.env up -d
+      ```
+    </TabItem>
+    <TabItem value="powershell-script" label="Powershell Script">
+      ```powershell
+      ./sandbox-env-up.ps1
+      ```
+    </TabItem>
+  </Tabs>
+
+</details>
+
+<details>
+  <summary>SQL Server</summary>
+
+  <Tabs>
+    <TabItem value="docker-command" label="Docker Command" default>
+      ```powershell
+      docker compose -f ./Compose/mssql/compose-sandbox-env.yml --env-file ./.env up -d
+      ```
+    </TabItem>
+    <TabItem value="powershell-script" label="Powershell Script">
+      ```powershell
+      ./sandbox-env-up.ps1 -Engine SQLServer
+      ```
+    </TabItem>
+  </Tabs>
+
+</details>
+
+#### SingleTenant Environment
+
+<details>
+  <summary>PostgreSQL</summary>
+
+  <Tabs>
+    <TabItem value="docker-command" label="Docker Command" default>
+      ```powershell
+     docker compose -f ./Compose/pgsql/SingleTenant/compose-single-tenant-env.yml --env-file ./.env up -d
+      ```
+    </TabItem>
+    <TabItem value="powershell-script" label="Powershell Script">
+      ```powershell
+      ./single-tenant-env-up.ps1
+      ```
+    </TabItem>
+  </Tabs>
+
+</details>
+
+<details>
+  <summary>SQL Server</summary>
+
+  <Tabs>
+    <TabItem value="docker-command" label="Docker Command" default>
+      ```powershell
+      docker compose -f ./Compose/mssql/SingleTenant/compose-single-tenant-env.yml --env-file ./.env up -d
+      ```
+    </TabItem>
+    <TabItem value="powershell-script" label="Powershell Script">
+      ```powershell
+     ./single-tenant-env-up.ps1 -Engine SQLServer
+      ```
+    </TabItem>
+  </Tabs>
+
+</details>
+
+#### SingleTenant with ODS Context Routes Environments
+
+<details>
+  <summary>PostgreSQL</summary>
+
+  <Tabs>
+    <TabItem value="docker-command" label="Docker Command" default>
+      ```powershell
+      docker compose -f ./Compose/pgsql/SingleTenant-OdsContext/compose-single-tenant-odscontext-env.yml --env-file ./.env up -d
+      ```
+    </TabItem>
+    <TabItem value="powershell-script" label="Powershell Script">
+      ```powershell
+      ./single-tenant-odscontexts-up.ps1
+      ```
+    </TabItem>
+  </Tabs>
 
 </details>
 
 Notice that the compose file provided in the repository is an example that
-defines ODS for the years 2022 and 2023.  You can generate the compose file for
+defines ODS for the years 2022 and 2023.  You can generate the compose file for
 the desired school years.
 
 <details>
   <summary>Generating Compose File</summary>
 
-To customize for desired school years, you can use the Mustache template
-provided in the repository.
+  To customize for desired school years, you can use the Mustache template
+  provided in the repository.
 
-Navigate to the folder where you cloned/downloaded the Ed-Fi-ODS-Docker
-repository and go to the sub-folder
-_Compose-Generator/Alpine/templates/pgsql/SingleTenant-OdsContext_; in there,
-you will find example configuration files that instruct the Mustache template on
-how to generate the SingleTenant with OdsContexts Docker Compose file.
+  Navigate to the folder where you cloned/downloaded the Ed-Fi-ODS-Docker
+  repository and go to the sub-folder
+  `Compose-Generator/Alpine/templates/pgsql/SingleTenant-OdsContext`; in there,
+  you will find example configuration files that instruct the Mustache template on
+  how to generate the SingleTenant with OdsContexts Docker Compose file.
 
-Copy `parameters.example.yml` and update it as you see fit; the available
-options are:
+  Copy `parameters.example.yml` and update it as you see fit; the available
+  options are:
 
-* **odsContextRouteTemplate** - Defines the route parameter template used to
-    specify the school year.
-
-    {/* Configure it following [route
-    constraints](<https://techdocs.ed-fi.org/docker> run --rm -v
-    c:%5CEd-Fi-ODS-Docker%5CCompose-Generator%5CAlpine%5Ctemplates%5Cpgsql%5Cparameters-year-specific.yml:/parameters
-    -v C:%5CEd-Fi-ODS-Docker%5CCompose%5Cpgsql%5CSingleTenant-OdsContext:/output
-    edfialliance/ods-compose-generator). */}
-
-* **contextKey** \- Key used to configure dbo.OdsInstanceContext table in
-    EdFi\_Admin database*. Should match URI in odsContextRouteTemplate*
-* **tokens -** A collection where you can define the desired years
-* **tokens.token -** The year
-* **tokens.pgBouncerPort -** (Optional) Exposed pgBouncer port that you can
+  * `odsContextRouteTemplate` - Defines the route parameter template used to
+    specify the school year. Configure it following [route
+    constraints](/reference/ods-api/platform-dev-guide/configuration/context-based-routing-for-year-specific-ods)
+  * `contextKey` - Key used to configure dbo.OdsInstanceContext table in
+    `EdFi_Admin` database. _Should match URI in odsContextRouteTemplate_
+  * `tokens` - A collection where you can define the desired years
+  * `tokens.token` - The year
+  * `tokens.pgBouncerPort` - (Optional) Exposed pgBouncer port that you can
     use to connect to the year or district Postgres server
 
-To generate the final Docker Compose file:
+  To generate the final Docker Compose file:
 
-1. Execute:
+  1. Execute:
 
-```powershell
-docker run --rm -v <full path to parameters file>:/parameters -v <full path to desired output folder>:/output edfialliance/ods-compose-generator
-```
+  ```powershell
+  docker run --rm `
+    -v <full path to parameters file>:/parameters
+    -v <full path to desired output folder>:/output
+    edfialliance/ods-compose-generator
+  ```
 
-:::note
+  :::note
 
-Note that the parameters file path must be fully qualified (Docker
-volumes don't support relative paths).
-For example:
+  Note that the parameters file path must be fully qualified (Docker volumes don't
+  support relative paths). For example:
 
-```powershell
-docker run --rm -v C:\Ed-Fi-ODS-Docker\Compose-Generator\Alpine\templates\pgsql\parameters-year-specific.yml:/parameters -v C:\Ed-Fi-ODS-Docker\Compose\pgsql\SingleTenant-OdsContext:/output edfialliance/ods-compose-generator
-```
+  ```powershell
+  docker run --rm `
+    -v C:\Ed-Fi-ODS-Docker\Compose-Generator\Alpine\templates\pgsql\parameters-year-specific.yml:/parameters
+    -v C:\Ed-Fi-ODS-Docker\Compose\pgsql\SingleTenant-OdsContext:/output
+    edfialliance/ods-compose-generator
+  ```
 
-:::
+  :::
 
 </details>
 
-##### MultiTenant Environments
+#### MultiTenant Environments
 
 <details>
   <summary>PostgreSQL</summary>
 
-<Tabs>
-  <TabItem value="docker-command" label="Docker Command" default>
-    ```powershell
-    docker compose -f ./Compose/pgsql/MultiTenant/compose-multi-tenant-env.yml --env-file ./.env up -d
-    ```
-  </TabItem>
-  <TabItem value="powershell-script" label="Powershell Script">
-    ```powershell
-    ./multi-tenant-env-up.ps1
-    ```
-  </TabItem>
-</Tabs>
+  <Tabs>
+    <TabItem value="docker-command" label="Docker Command" default>
+      ```powershell
+      docker compose -f ./Compose/pgsql/MultiTenant/compose-multi-tenant-env.yml --env-file ./.env up -d
+      ```
+    </TabItem>
+    <TabItem value="powershell-script" label="Powershell Script">
+      ```powershell
+      ./multi-tenant-env-up.ps1
+      ```
+    </TabItem>
+  </Tabs>
 
 </details>
 
 Notice that the compose file provided in the repository is an example that
-defines Tenant1 and Tenant2 with one ODS database each.  You can generate the
+defines Tenant1 and Tenant2 with one ODS database each.  You can generate the
 compose file for desired tenants.
 
 <details>
   <summary>Generating Compose File</summary>
 
-Generating Compose File...
+  Generating Compose File...
 
-To customize the desired school years, you can use the Mustache template
-provided in the repository to customize for desired tenants.
+  To customize the desired school years, you can use the Mustache template
+  provided in the repository to customize for desired tenants.
 
-`You can just navigate to the folder where you cloned/downloaded the
-Ed-Fi-ODS-Docker repository and go to the sub-folder
-Compose-Generator/Alpine/templates/pgsql/MultiTenant; in the`
+  `You can just navigate to the folder where you cloned/downloaded the
+  Ed-Fi-ODS-Docker repository and go to the sub-folder
+  Compose-Generator/Alpine/templates/pgsql/MultiTenant; in the`
 
-Copy `parameters.example.yml` and update it as you see fit; the available
-options are:
+  Copy `parameters.example.yml` and update it as you see fit; the available
+  options are:
 
-* **tenants -** A collection where you can define the desired tenants
-* **tenants.tenantId -** Id of the tenant
-* **tenants.admin-pgBouncerPort -** (Optional) Exposed pgBouncer port you can
-    connect to the admin Postgres server
-* **tenants.ods-pgBouncerPort -** (Optional) Exposed pgBouncer port you can
-    use to connect to the ODS Postgres server
-* **tenants.isLast -** Required to generate correctly a settings json file.
+  * `tenants` - A collection where you can define the desired tenants
+  * `tenants.tenantId` - Id of the tenant
+  * `tenants.admin-pgBouncerPort` - (Optional) Exposed pgBouncer port you can
+      connect to the admin Postgres server
+  * `tenants.ods-pgBouncerPort` - (Optional) Exposed pgBouncer port you can
+      use to connect to the ODS Postgres server
+  * `tenants.isLast` - Required to generate correctly a settings json file.
 
-To generate the final Docker Compose file:
+  To generate the final Docker Compose file:
 
-1. Execute:
+  1. Execute:
 
-```powershell
-docker run --rm -v <full path to parameters file>:/parameters -v <full path to desired output folder>:/output edfialliance/ods-compose-generator multiTenant.sh
-```
+  ```powershell
+  docker run --rm `
+    -v <full path to parameters file>:/parameters `
+    -v <full path to desired output folder>:/output `
+    edfialliance/ods-compose-generator `
+    multiTenant.sh
+  ```
 
-:::info
-Note that the parameters file path must be fully qualified (Docker
-volumes don't support relative paths).
-For example:
+  :::info
+
+  Note that the parameters file path must be fully qualified (Docker volumes don't
+  support relative paths). For example:
 
 
-```powershell
-docker run --rm -v C:\Ed-Fi-ODS-Docker\Compose-Generator\Alpine\templates\pgsql\parameters-year-specific.yml:/parameters -v C:\Ed-Fi-ODS-Docker\Compose\pgsql\SingleTenant-OdsContext:/output edfialliance/ods-compose-generator multiTenant.sh
-```
+  ```powershell
+  docker run --rm `
+    -v C:\Ed-Fi-ODS-Docker\Compose-Generator\Alpine\templates\pgsql\parameters-year-specific.yml:/parameters `
+    -v C:\Ed-Fi-ODS-Docker\Compose\pgsql\SingleTenant-OdsContext:/output `
+    edfialliance/ods-compose-generator `
+    multiTenant.sh
+  ```
 
-:::
+  :::
 
 </details>
 
-##### MultiTenant with ODS Context Routes Environments
+#### MultiTenant with ODS Context Routes Environments
 
 <details>
   <summary>PostgreSQL</summary>
 
-<Tabs>
-  <TabItem value="docker-command" label="Docker Command" default>
-    ```powershell
-    docker compose -f ./Compose/pgsql/MultiTenant-OdsContext/compose-multi-tenant-odscontext-env.yml --env-file ./.env up -d
-    ```
-  </TabItem>
-  <TabItem value="powershell-script" label="Powershell Script">
-    ```powershell
-    ./multi-tenant-odscontexts-up.ps1
-    ```
-  </TabItem>
-</Tabs>
+  <Tabs>
+    <TabItem value="docker-command" label="Docker Command" default>
+      ```powershell
+      docker compose -f ./Compose/pgsql/MultiTenant-OdsContext/compose-multi-tenant-odscontext-env.yml --env-file ./.env up -d
+      ```
+    </TabItem>
+    <TabItem value="powershell-script" label="Powershell Script">
+      ```powershell
+      ./multi-tenant-odscontexts-up.ps1
+      ```
+    </TabItem>
+  </Tabs>
 
 </details>
 
 Notice that the compose file provided in the repository is an example that
-defines Tenant1 and Tenant2 with years 2022 and 2023 each.  You can generate the
+defines Tenant1 and Tenant2 with years 2022 and 2023 each.  You can generate the
 compose file for desired tenants and school years.
 
 <details>
   <summary>Generating Compose File</summary>
 
-To customize for desired tenants and school years, you can use the Mustache
-template provided in the repository.
+  To customize for desired tenants and school years, you can use the Mustache
+  template provided in the repository.
 
-Navigate to the folder where you cloned/downloaded the Ed-Fi-ODS-Docker
-repository and go to the sub-folder
-_Compose-Generator/Alpine/templates/pgsql/SingleTenant-OdsContext_; in there,
-you will find example configuration files that instruct the Mustache template on
-how to generate the SingleTenant with OdsContexts Docker Compose file.
+  Navigate to the folder where you cloned/downloaded the Ed-Fi-ODS-Docker
+  repository and go to the sub-folder
+  _Compose-Generator/Alpine/templates/pgsql/SingleTenant-OdsContext_; in there,
+  you will find example configuration files that instruct the Mustache template on
+  how to generate the SingleTenant with OdsContexts Docker Compose file.
 
-Copy `parameters.example.yml` and update it as you see fit; the available
-options are:
+  Copy `parameters.example.yml` and update it as you see fit; the available
+  options are:
 
-* **odsContextRouteTemplate** - Defines the route parameter template used to
-    specify the school year.
+  * `odsContextRouteTemplate` - Defines the route parameter template used to
+    specify the school year. Configure it following [route
+    constraints](/reference/ods-api/platform-dev-guide/configuration/context-based-routing-for-year-specific-ods)
 
-    {/* Configure it following [route
-    constraints](<https://techdocs.ed-fi.org/docker> run --rm -v
-    c:%5CEd-Fi-ODS-Docker%5CCompose-Generator%5CAlpine%5Ctemplates%5Cpgsql%5Cparameters-year-specific.yml:/parameters
-    -v C:%5CEd-Fi-ODS-Docker%5CCompose%5Cpgsql%5CSingleTenant-OdsContext:/output
-    edfialliance/ods-compose-generator). */}
-
-* **contextKey** \- Key used to configure dbo.OdsInstanceContext table in
-    EdFi\_Admin database*. Should match URI in odsContextRouteTemplate*
-* **tenants -** A collection where you can define the desired tenants
-* **tenants.tenantId -** Id of the tenant
-* **tenants.admin-pgBouncerPort -** (Optional) Exposed pgBouncer port you can
+  * `contextKey` - Key used to configure dbo.OdsInstanceContext table in
+    `EdFi_Admin` database. _Should match URI in odsContextRouteTemplate_.
+  * `tenants` - A collection where you can define the desired tenants
+  * `tenants.tenantId` - Id of the tenant
+  * `tenants.admin-pgBouncerPort` - (Optional) Exposed pgBouncer port you can
     connect to the admin Postgres server
-* **tenants.isLast -** Required to generate correctly a settings json file.
-* **tenants.tokens -** A collection where you can define the desired years
-* **tenants.tokens.token -** The year
-* **tenants.tokens.pgBouncerPort -** (Optional) Exposed pgBouncer port that
+  * `tenants.isLast` - Required to generate correctly a settings json file.
+  * `tenants.tokens` - A collection where you can define the desired years
+  * `tenants.tokens.token` - The year
+  * `tenants.tokens.pgBouncerPort` - (Optional) Exposed pgBouncer port that
     you can use to connect to the tenant year Postgres server
 
-To generate the final Docker Compose file:
+  To generate the final Docker Compose file, execute:
 
-1. Execute:
+  ```
+  docker run --rm `
+    -v <full path to parameters file>:/parameters `
+    -v <full path to desired output folder>:/output `
+    edfialliance/ods-compose-generator `
+    multiTenant-OdsContext.sh
+  ```
 
-```
-docker run --rm -v <full path to parameters file>:/parameters -v <full path to desired output folder>:/output edfialliance/ods-compose-generator multiTenant-OdsContext.sh
-```
+  :::note
 
-:::note
+  Note that the parameters file path must be fully qualified (Docker volumes don't support relative paths).
+  For example:
 
-Note that the parameters file path must be fully qualified (Docker volumes don't support relative paths).
-For example:
+  ```powershell
+  docker run --rm -v `
+    C:\Ed-Fi-ODS-Docker\Compose-Generator\Alpine\templates\pgsql\parameters-year-specific.yml:/parameters `
+    -v C:\Ed-Fi-ODS-Docker\Compose\pgsql\SingleTenant-OdsContext:/output `
+    edfialliance/ods-compose-generator multiTenant-OdsContext.sh
+  ```
 
-```powershell
-docker run --rm -v C:\Ed-Fi-ODS-Docker\Compose-Generator\Alpine\templates\pgsql\parameters-year-specific.yml:/parameters -v C:\Ed-Fi-ODS-Docker\Compose\pgsql\SingleTenant-OdsContext:/output edfialliance/ods-compose-generator multiTenant-OdsContext.sh
-```
-
-:::
+  :::
 
 </details>
 
-#### Step 6. Verify Your Deployments
+### Step 6. Verify Your Deployments
 
 You can just open your Docker Desktop instance and view running container
 instances.
 
 The following image shows **Sandbox** Postgres deployment:
 
-![Sandbox Postgres](https://edfidocs.blob.core.windows.net/$web/img/reference/docker/image-2023-9-29_18-12-53.png)
+![screenshot from Docker Desktop](https://edfidocs.blob.core.windows.net/$web/img/reference/docker/image-2023-9-29_18-12-53.png)
 
 You can also verify deployed applications by browsing to:
 
@@ -619,21 +638,21 @@ You can also verify deployed applications by browsing to:
 * Sandbox Admin: [https://localhost/admin](https://localhost/admin)
 
  :warning:The exact virtual name for each site after
- "[https://localhost/](https://localhost/)" depends on your `.env`  file
+ "[https://localhost/](https://localhost/)" depends on your `.env`  file
  settings.*
 
 The following image shows **Single Tenant** Postgres deployment:
-![Single Tenant Postgres](https://edfidocs.blob.core.windows.net/$web/img/reference/docker/image-2023-9-29_17-53-7.png)
+![screenshot from Docker Desktop](https://edfidocs.blob.core.windows.net/$web/img/reference/docker/image-2023-9-29_17-53-7.png)
 
 You can also verify deployed applications by browsing to:
 
 * ODS / API: [https://localhost/api](https://localhost/api)
 * Admin Api : [https://localhost/adminapi](https://localhost/adminapi)
 
-The following image shows **Single Tenant with Ods Context** Postgres
+The following image shows **Single Tenant with Ods Context** Postgres
 deployment:
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/docker/image-2023-9-30_0-4-16.png)
+![screenshot from Docker Desktop](https://edfidocs.blob.core.windows.net/$web/img/reference/docker/image-2023-9-30_0-4-16.png)
 
 You can also verify deployed applications by browsing to:
 
@@ -642,7 +661,7 @@ You can also verify deployed applications by browsing to:
 
 The following image shows **Multi Tenant** Postgres deployment:
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/docker/image-2023-9-30_0-7-1.png)
+![screenshot from Docker Desktop](https://edfidocs.blob.core.windows.net/$web/img/reference/docker/image-2023-9-30_0-7-1.png)
 
 You can also verify deployed applications by browsing to:
 
@@ -650,86 +669,99 @@ You can also verify deployed applications by browsing to:
 
 The following image shows **Multi Tenant with Ods Context** Postgres deployment:
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/docker/image-2023-9-30_0-24-26.png)
+![screenshot from Docker Desktop](https://edfidocs.blob.core.windows.net/$web/img/reference/docker/image-2023-9-30_0-24-26.png)
 
 You can also verify deployed applications by browsing to:
 
 * ODS / API: [https://localhost/api](https://localhost/api)
 
-#### Step 7. Accessing Application Log Files
+### Step 7. Accessing Application Log Files
 
 The ODS/API, Admin App, and Sandbox Admin write their internal log entries to a
 mounted folder within their docker containers. The environment file described in
 Step 3 lets you configure the log location for easy access. For example, you
-could set the LOGS\_FOLDER variable to c:/tmp/logs for Windows hosts or to
-~/tmp/logs for Linux and MacOS hosts.
+could set the `LOGS_FOLDER` variable to `c:/tmp/logs` for Windows hosts or to
+`~/tmp/logs` for Linux and MacOS hosts.
 
-### Tear Down
+## Tear Down
 
 If deployed as a sandbox environment, navigate to the root directory of Docker
 deployment scripts and run the following command:
 
-<Tabs>
-  <TabItem value="postgresql" label="PostgreSQL" default>
-    **Docker command**
+<details>
+  <summary>PostgreSQL</summary>
 
-    ```powershell
-    docker compose -f ./compose/pgsql/compose-sandbox-env.yml --env-file ./.env down
-    ```
+  <Tabs>
+    <TabItem value="docker-command" label="Docker Command" default>
+      ```powershell
+      docker compose -f ./compose/pgsql/compose-sandbox-env.yml --env-file ./.env down
+      ```
+    </TabItem>
+    <TabItem value="powershell-script" label="Powershell Script">
+      ```powershell
+      ./sandbox-env-clean.ps1
+      ```
+    </TabItem>
+  </Tabs>
 
-    **Powershell script**
+</details>
 
-    ```powershell
-    ./sandbox-env-clean.ps1
-    ```
-  </TabItem>
-  <TabItem value="sqlserver" label="SQL Server">
-    **Docker command**
+<details>
+  <summary>SQL Server</summary>
 
-    ```powershell
-    docker compose -f ./compose/mssql/compose-sandbox-env.yml --env-file ./.env  down
-    ```
+  <Tabs>
+    <TabItem value="docker-command" label="Docker Command" default>
+      ```powershell
+      docker compose -f ./compose/mssql/compose-sandbox-env.yml --env-file ./.env  down
+      ```
+    </TabItem>
+    <TabItem value="powershell-script" label="Powershell Script">
+      ```powershell
+      ./sandbox-env-clean.ps1 -Engine SQLServer
+      ```
+    </TabItem>
+  </Tabs>
 
-    **Powershell script**
-
-    ```powershell
-    ./sandbox-env-clean.ps1 -Engine SQLServer
-    ```
-  </TabItem>
-</Tabs>
+</details>
 
 If deployed as a single tenant environment, navigate to the root directory of
 Docker deployment scripts and run the following script:
 
-<Tabs>
-  <TabItem value="postgresql" label="PostgreSQL" default>
-    **Docker command**
+<details>
+  <summary>PostgreSQL</summary>
 
-    ```powershell
-    docker compose -f ./compose/pgsql/SingleTenant/compose-single-tenant-env.yml --env-file ./.env  down
-    ```
+  <Tabs>
+    <TabItem value="docker-command" label="Docker Command" default>
+      ```powershell
+      docker compose -f ./compose/pgsql/SingleTenant/compose-single-tenant-env.yml --env-file ./.env  down
+      ```
+    </TabItem>
+    <TabItem value="powershell-script" label="Powershell Script">
+      ```powershell
+      ./single-tenant-env-clean.ps1
+      ```
+    </TabItem>
+  </Tabs>
 
-    **Powershell script**
+</details>
 
-    ```powershell
-    ./single-tenant-env-clean.ps1
-    ```
-  </TabItem>
-  <TabItem value="sqlserver" label="SQL Server">
-    **Docker command**
+<details>
+  <summary>SQL Server</summary>
 
-    ```powershell
-    docker compose -f ./compose/mssql/SingleTenant/compose-single-tenant-env.yml --env-file ./.env  down
-    ```
+  <Tabs>
+    <TabItem value="docker-command" label="Docker Command" default>
+      ```powershell
+      docker compose -f ./compose/mssql/SingleTenant/compose-single-tenant-env.yml --env-file ./.env  down
+      ```
+    </TabItem>
+    <TabItem value="powershell-script" label="Powershell Script">
+      ```powershell
+      ./single-tenant-env-clean.ps1 -Engine SQLServer
+      ```
+    </TabItem>
+  </Tabs>
 
-    **Powershell script**
-
-    ```powershell
-    ./single-tenant-env-clean.ps1 -Engine SQLServer
-    ```
-  </TabItem>
-</Tabs>
-
+</details>
 
 If deployed as a single tenant with an ods context environment, navigate to the
 root directory of Docker deployment scripts and run the following script:
@@ -737,18 +769,18 @@ root directory of Docker deployment scripts and run the following script:
 <details>
   <summary>PostgreSQL</summary>
 
-<Tabs>
-  <TabItem value="docker-command" label="Docker Command" default>
-    ```powershell
-    docker compose -f ./Compose/pgsql/SingleTenant-OdsContext/compose-single-tenant-odscontext-env.yml --env-file ./.env down
-    ```
-  </TabItem>
-  <TabItem value="powershell-script" label="Powershell Script">
-    ```powershell
-    ./single-tenant-odscontexts-clean.ps1
-    ```
-  </TabItem>
-</Tabs>
+  <Tabs>
+    <TabItem value="docker-command" label="Docker Command" default>
+      ```powershell
+      docker compose -f ./Compose/pgsql/SingleTenant-OdsContext/compose-single-tenant-odscontext-env.yml --env-file ./.env down
+      ```
+    </TabItem>
+    <TabItem value="powershell-script" label="Powershell Script">
+      ```powershell
+      ./single-tenant-odscontexts-clean.ps1
+      ```
+    </TabItem>
+  </Tabs>
 
 </details>
 
@@ -758,18 +790,18 @@ Docker deployment scripts and run the following script:
 <details>
   <summary>PostgreSQL</summary>
 
-<Tabs>
-  <TabItem value="docker-command" label="Docker Command" default>
-    ```powershell
-    docker compose -f ./Compose/pgsql/MultiTenant/compose-multi-tenant-env.yml --env-file ./.env down
-    ```
-  </TabItem>
-  <TabItem value="powershell-script" label="Powershell Script">
-    ```powershell
-    ./multi-tenant-env-clean.ps1
-    ```
-  </TabItem>
-</Tabs>
+  <Tabs>
+    <TabItem value="docker-command" label="Docker Command" default>
+      ```powershell
+      docker compose -f ./Compose/pgsql/MultiTenant/compose-multi-tenant-env.yml --env-file ./.env down
+      ```
+    </TabItem>
+    <TabItem value="powershell-script" label="Powershell Script">
+      ```powershell
+      ./multi-tenant-env-clean.ps1
+      ```
+    </TabItem>
+  </Tabs>
 
 </details>
 
@@ -779,28 +811,32 @@ root directory of Docker deployment scripts and run the following script:
 <details>
   <summary>PostgreSQL</summary>
 
-<Tabs>
-  <TabItem value="docker-command" label="Docker Command" default>
-    ```powershell
-    docker compose -f ./Compose/pgsql/MultiTenant-OdsContext/compose-multi-tenant-odscontext-env.yml --env-file ./.env down
-    ```
-  </TabItem>
-  <TabItem value="powershell-script" label="Powershell Script">
-    ```powershell
-    ./multi-tenant-odscontexts-clean.ps1
-    ```
-  </TabItem>
-</Tabs>
+  <Tabs>
+    <TabItem value="docker-command" label="Docker Command" default>
+
+      ```powershell
+      docker compose -f ./Compose/pgsql/MultiTenant-OdsContext/compose-multi-tenant-odscontext-env.yml --env-file ./.env down
+      ```
+
+    </TabItem>
+    <TabItem value="powershell-script" label="Powershell Script">
+
+      ```powershell
+      ./multi-tenant-odscontexts-clean.ps1
+      ```
+
+    </TabItem>
+  </Tabs>
 
 </details>
 
 :::tip Additional Docker Tips
 
 * Add the argument `--remove-orphans` if the Docker Compose file has changed and
-    you want to clear out old images that are no longer in use.
+  you want to clear out old images that are no longer in use.
 * If you also wish to remove the local volumes used for persistent storage, add
-    `-v`  to the `docker compose ... down` command.
+  `-v`  to the `docker compose ... down` command.
 * You can use the rmi command to clean up local copies of images if you don't
-    want to use them again and to reclaim disk space.
+  want to use them again and to reclaim disk space.
 
 :::
