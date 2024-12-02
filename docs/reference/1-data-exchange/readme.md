@@ -6,12 +6,13 @@ resources and key publications.
 
 ## Ed-Fi Data Standards
 
-The [Ed-Fi Data Standard](/reference/data-exchange/data-standard/) is the widely adopted, CEDS-aligned,
-open-source data standard developed by the educational community for the
-betterment of the community. The Ed-Fi Data Standard serves as the foundation
-for enabling interoperability among secure data systems and contains a Unifying
-Data Model designed to capture the meaning and inherent structure in the most
-important information in the K–12 education enterprise.
+The [Ed-Fi Data Standard](/reference/data-exchange/data-standard/) is the widely
+adopted, CEDS-aligned, open-source data standard developed by the educational
+community for the betterment of the community. The Ed-Fi Data Standard serves as
+the foundation for enabling interoperability among secure data systems and
+contains a [Unifying Data Model](./udm/readme.md) designed to capture the
+meaning and inherent structure in the most important information in the K–12
+education enterprise.
 
 ## Ed-Fi API Standards
 
@@ -39,7 +40,7 @@ API Guidelines](./api-guidelines/).
 * This space contains additional documentation and technical specifications for
   our published standards; see the additional articles in the left sidebar.
 * Ed-Fi data exchange standards are aligned with the reference standards
-  published in the [Ed-Fi Data Standard](/reference/data-exchange/data-standard/) space. In particular,
+  published in the [Ed-Fi Data Standard](/reference/data-exchange/data-standards.md). In particular,
   the [Ed-Fi Unifying Data Model](./udm/readme.md) is a helpful reference
   to understand the contents and structure of the data exchanges we support.
 * The [Ed-Fi RFC Specifications](./rfc/readme.md) contains work-in-progress
