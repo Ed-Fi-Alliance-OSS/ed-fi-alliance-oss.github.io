@@ -432,6 +432,20 @@ import TabItem from '@theme/TabItem';
   </TabItem>
 </Tabs>
 
+An abbreviated usage is available if the SQL script is to be generated with the
+same file name as the security policy file (but with a `.sql` file extension), and
+the database engine does not have to be specified explicitly if a directory
+named `MsSql` or `PgSql` is included in the path to the security policy. This is
+useful, for example, when co-locating the XML files with the SQL files in a
+database migration scripts directory.
+
+The following command will create a co-located "0100-My-new-security.policy.sql"
+DDL SQL script file that targets SQL server.
+
+```powershell
+.\transform.ps1 C:\MyProjects\Ed-Fi-ODS\SomeProject\Artifacts\MsSql\Data\Security\0100-My-new-security-policy.xml
+```
+
 The resulting SQL scripts are idempotent and can be executed against the
 `EdFi_Security` database.
 
