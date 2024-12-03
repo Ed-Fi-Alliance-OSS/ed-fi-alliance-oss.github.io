@@ -16,7 +16,7 @@ in [Available Certifications](../available-certifications/readme.md).
 
 ## Alignment with new Break-Rest Development Cadence
 
-![Break-Rest Development Cadence Table](https://edfi.atlassian.net/wiki/download/attachments/20876154/image-2024-3-30_10-49-43.png?version=1&modificationDate=1711813783893&cacheVersion=1&api=v2 "Break Rest Development Cadence")
+![Break-Rest Development Cadence Table](https://edfidocs.blob.core.windows.net/$web/img/reference/release-cadence.png "Break Rest Development Cadence")
 
 Certification requirements are aligned to the Ed-Fi Data and API Standard Release Cadence
 * Support goes from 3 to 4 years
