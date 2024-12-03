@@ -124,7 +124,7 @@ Certification tests test conformance of the product to API specifications and
 other normative requirements of the API standard. It also validates the
 submitted documentation.
 
-### **9. User Interaction and Availability Test**
+### 9. User Interaction and Availability Test
 
 <details>
 <summary>View details</summary>
