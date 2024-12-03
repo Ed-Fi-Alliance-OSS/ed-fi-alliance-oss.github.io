@@ -2,9 +2,14 @@
 
 The data provider MUST provide information on the availability of all
 functionality that was used to complete certification. That information MUST
-include both the geographical areas where the certified functionality is
-available and version information that applies to those geographies. This
-information is submitted by using the form provided below.
+include documentation that outlines the states and the data standard versions supported 
+where the partner:
+
+* Has an existing customer
+* Supports all data elements required under certification
+* Supports state reporting implementations
+
+This information is submitted by using the form provided below.
 
 The Alliance will publish information from this statement as part of the
 certification record, so that the Ed-Fi community can understand availability of
@@ -16,7 +21,7 @@ the certified functionality.
 
 The information MUST be submitted by the data provider seeking certification
 using the
-[Required Form](<https://edfi.atlassian.net/wiki/spaces/EDFICERT/pages/23695048/Requirements+-+Product+Availability+Information?preview=/23695048/23700313/Ed-Fi%20Certification%20-%20Availability%20Statement%20(3).docx>).
+[Required Form](<https://edfi.atlassian.net/wiki/download/attachments/293896203/Ed-Fi%20Certification%20-%20Availability%20Statement%20V2.docx?api=v2>).
 Information from this form will be published as part of the product's
 certification record.
 
@@ -49,6 +54,17 @@ functionality.
 Data providers likewise experienced customer misunderstandings based on
 certification records, and expressed a need to clarify where and when the
 certified functionality was available.
+
+Detailed availability statements make it easier for new agencies to identify 
+suitable vendor and make informed decisions. Agencies can quickly assess which 
+partners have experience in their state and with their specific requirements. 
+
+By allowing partners to list more detailed availability it allows them to 
+demonstrate expanded support for various states and data standard versions, 
+and incentivizes partners to offer certified functionality across the ecosystem. 
+
+Clear availability information can highlight gaps in support for certain states 
+or versions, guiding partners in support of certain regions to fill identified gaps. 
 
 :::warning The Ed-Fi Alliance recommends that agencies involve their data
 providers early in the process of project planning, and communicate with those
