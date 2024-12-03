@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Technology Provider Playbook
 
 :::tip
