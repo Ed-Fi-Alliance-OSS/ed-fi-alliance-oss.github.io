@@ -146,7 +146,9 @@ API client creation script samples:
 ## Disabling an API Client
 
 An API client may be disabled by setting the `IsApproved` column to
-false in the `ApiClients` table of the `EdFi_Admin` database.
+`false` in the `ApiClients` table of the `EdFi_Admin` database. Setting
+`IsApproved` to `false` for a client prevents its key and secret from being used
+to authenticate and obtain an OAuth bearer token.
 
 To disable the client with the key `ApiClientKey1`, the following SQL query could
 be run on the `EdFi_Admin` database:
@@ -160,13 +162,13 @@ END
 :::note
 While disabling an API client in the `EdFi_Admin` database will immediately prevent
 the issuance of new OAuth bearer tokens for it, any previously issued
-non-expired bearer tokens for the client will remain valid for authenticating API
+non-expired bearer tokens for the client will remain valid for authorizing API
 requests until they expire unless additional actions are taken.
 :::
 
-In the even it is necessary to immediately disable a client's ability to authenticate
-using previously issued non-expired OAuth bearer tokens, two additional actions
-are needed:
+In the event it is necessary to immediately disable a client's ability to authorize
+API requests using previously issued non-expired OAuth bearer tokens, two additional
+actions are needed:
 
 1. **Removing previously issued tokens for the client from the
    `ClientAccessTokens` table in the `EdFi_Admin` database.**
