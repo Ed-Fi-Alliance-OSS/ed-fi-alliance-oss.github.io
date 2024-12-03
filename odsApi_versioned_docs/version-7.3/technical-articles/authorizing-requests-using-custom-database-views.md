@@ -79,7 +79,25 @@ the presence of the Academic Subject of “Mathematics”. This value is stored 
 the AcademicSubjectDescriptorId column of the AssessmentAcademicSubject child
 table:
 
-![Database Diagram](/img/reference/ods-api/Assessment-AssessmentAcademicSubject-Diagram.webp)
+```mermaid
+erDiagram
+    Assessment  ||--o{ AssessmentAcademicSubject : has
+
+    Assessment  {
+        varchar Assessmentidentifier PK
+        varchar Namespace PK
+        int AdaptiveAssessment
+        int AssessmentCategoryDescriptorId
+        varchar AssessmentFamily
+    }
+
+    AssessmentAcademicSubject {
+        int AcademicSubjectDescriptorld PK
+        varchar AssessmentIdentifier PK,FK
+        varchar Namespace PK,FK
+        datetime CreateDate
+    }
+```
 
 Since the Assessment’s primary key columns are present on this child table, the
 Assessment table won’t need to be included in the query, however, a join to the

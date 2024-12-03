@@ -42,7 +42,52 @@ AS
 GO
 ```
 
-![Database Diagram](/img/reference/ods-api/view-based-auth-diagram.webp)
+```mermaid
+
+erDiagram
+    StudentSectionAssociation ||--o{ CourseOffering : "has associated"
+
+    StudentSectionAssociation  {
+        date BeginDate PK
+        varchar LocalCourseCode PK
+        bigint Schoolld PK
+        smallint SchoolYear PK
+        varchar Sectionidentifier PK
+        varchar SessionName PK
+        int StudentUSI PK
+        int AttemptStatusDescriptorId
+        bigint DualCreditEducationOrganizationId
+    }
+
+    CourseOffering {
+        int LocalCourseCode PK
+        varchar Schoolld PK
+        smallint SchoolYear PK
+        varchar SessionName PK
+        varchar CourseCode
+        bigint EducationOrganizationld
+        bool DualCreditIndicator
+    }
+
+    CourseOffering ||--o{ CourseAcademicSubject : "has associated"
+
+    CourseAcademicSubject {
+        varchar CourseCode PK
+        bigint EducationOrganizationid PK
+        int AcademicSubjectDescriptorld PK
+        datetime CreateDate
+    }
+
+    CourseAcademicSubject ||--|| Descriptor : "has"
+
+    Descriptor {
+        int Descriptorld PK
+        varchar Namespace
+        varchar CodeValue
+        varchar ShortDescription
+        varchar Description
+    }
+```
 
 ## Add Security Metadata to the Security Database
 
