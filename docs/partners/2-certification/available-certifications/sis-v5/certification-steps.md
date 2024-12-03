@@ -6,19 +6,19 @@ The following documentation MUST be received by the Ed-Fi Alliance prior to
 certification. Ed-Fi may ask for clarifications or changes in order to ensure
 clarity and uniformity.
 
-### 1\. Product Availability Information
+### 1. Product Availability Information
 
 See [Requirements - Product Availability Information](../../certification-for-data-providers/product-availability-information.md)
 
-### **2\. Initial Implementation Verification Information**
+### 2. Initial Implementation Verification Information**
 
 See [Requirements - Implementation Verification](../../certification-for-data-providers/implementation-verification.md)
 
-### **3\. Data Mapping**
+### 3. Data Mapping
 
 See [Requirements - Data Mapping](../../certification-for-data-providers/data-mapping.md)
 
-### 4\. Usage Narrative
+### 4. Usage Narrative
 
 <details>
 <summary>View detail...</summary>
@@ -36,7 +36,7 @@ Certification tests test conformance of the product to API specifications and
 other normative requirements of the API standard. It also validates the
 submitted documentation.
 
-### **5\. Transactional Test Cases**
+### **5. Transactional Test Cases**
 
 <details>
 <summary>View details</summary>
@@ -58,7 +58,7 @@ data derived from real data _—_ MUST NOT be used in certification testing.
 
 </details>
 
-### 6\. Batch Test Cases
+### 6. Batch Test Cases
 
 <details>
 <summary>View details</summary>
@@ -70,7 +70,7 @@ for details.
 
 </details>
 
-### 7\. Error Handling Verification Test
+### 7. Error Handling Verification Test
 
 <details>
 <summary>View details</summary>
@@ -91,7 +91,7 @@ be able to successfully handle such situations.
 
 </details>
 
-### 8\. Descriptor Configuration Test
+### 8. Descriptor Configuration Test
 
 <details>
 <summary>View details</summary>

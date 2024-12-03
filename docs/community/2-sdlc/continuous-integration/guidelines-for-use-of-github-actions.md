@@ -182,7 +182,7 @@ if the hacker removed that commit from the repository.
 ❌ This initial example has code from
 [Understanding GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions).
 
-**Bad: out of the box example**
+Bad: out of the box example:
 
 ```yml
 name: learn-github-actions
@@ -206,7 +206,7 @@ jobs:
 * [https://github.com/actions/setup-node/releases/tag/v2](https://github.com/actions/setup-node/releases/tag/v2)
   → 1f8c6b94b26d0feae1e387ca63ccbdc44d27b561
 
-**Better**
+Better example:
 
 ```yml
 name: learn-github-actions
@@ -228,7 +228,7 @@ jobs:
 * For the benefit of future readers, retain the version tag as a comment at the
   end of the `uses` line.
 
-**Best**
+Best example:
 
 ```yml
 name: learn-github-actions
@@ -302,7 +302,7 @@ source map is provided, one can clone the repository, install
 run that utility to recreate the TypeScript. Compare the recreated file with the
 original file to ensure that no tampering occurred.
 
-**Example**
+Example:
 
 ```bash
 git clone https://github.com/zgosalvez/github-actions-ensure-sha-pinned-actions
@@ -463,7 +463,7 @@ creating the token, you must choose the "Resource Owner" and submit a request
 for that token to be approved. The "Resource Owner" in this case means the
 organization, as shown in the screenshot below.
 
-![Fine-Grained PATs](/img/sdlc/fine-grained-pats.png)
+![Fine-Grained PATs](https://edfidocs.blob.core.windows.net/$web/img/sdlc/fine-grained-pats.png)
 
 When clicking Save on this form, it will generate a token - copy that and save
 it as a secret - and it will generate a _request_ for approval of that token.
