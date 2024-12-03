@@ -24,7 +24,7 @@ Certification requirements are aligned to the Ed-Fi Data and API Standard Releas
 * Vendors should certify on everything that is active, we always encourage on the latest 
 * There will be some experimental areas of domains to change more rapidly than the cadence (those areas will not be included in testing)
 
-Visit this section for more discussion on the [Ed-Fi Data And API Standard Release Cadence](https://edfi.atlassian.net/wiki/spaces/ETKB/pages/20876154). 
+Visit this section for more discussion on the [Ed-Fi Data And API Standard Release Cadence](/reference/roadmap/cadence). 
 
 ## Ready to Certify?
 
