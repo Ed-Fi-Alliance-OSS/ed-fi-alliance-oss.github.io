@@ -49,6 +49,7 @@ function GetStartedIntro() {
   // https://www.ed-fi.org/blog/introducing-ed-fi-implementation-playbooks/
   return (
     <div>
+      <Heading as="h2">Playbooks</Heading>
       <p>
         No two Ed-Fi implementations look exactly alike. Each agency has their
         own priorities and specific challenges that they are attempting to solve
@@ -77,6 +78,26 @@ function GetStartedIntro() {
       </p>
     </div>
   );
+}
+
+function UseCases() {
+  return (
+    <div className="margin-bottom--lg">
+      <Heading as="h1">Use Cases</Heading>
+      <p>
+        The Ed-Fi Data Standard supports collection of data in a diverse set of domains that span the K-12 educational
+        system, including elements for both student and workforce development. In this
+        section you will find detailed descriptions of several different use cases that
+        can be addressed by the Data Standard.
+      </p>
+      <Link
+        to="/getting-started/use-cases"
+        className="button button--primary button"
+      >
+        Go »
+      </Link>
+    </div>
+  )
 }
 
 function Header() {
@@ -108,6 +129,11 @@ function Main() {
           <div className="col col--4">
             <SeaPlaybook></SeaPlaybook>
             <TechPlaybook></TechPlaybook>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col">
+            <UseCases></UseCases>
           </div>
         </div>
       </div>
