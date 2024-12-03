@@ -15,7 +15,7 @@ export default {
         'Conformance testing met with Aeries single product version (distributed to all customers)',
       availability: 'Available to any agency (all sizes) in the U.S.',
       documentation: {
-        "Availability Statement":
+        'Availability Statement':
           'https://edfi.atlassian.net/wiki/download/attachments/23694066/Aeries%20v4%20Ed-Fi%20Certification%20-%20Availability%20Statement.docx?version=1&modificationDate=1682594251897&cacheVersion=1&api=v2',
         Mappings:
           'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ed-Fi%20Mappings%2010-21.xlsx?version=1&modificationDate=1668719714227&cacheVersion=1&api=v2',
@@ -45,7 +45,7 @@ export default {
       versionCompatibility: 'Conformance testing met with version 23.4.0.0',
       availability: 'Available to any agency (all sizes) in the U.S.',
       documentation: {
-        "Availability Statement":
+        'Availability Statement':
           'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ed-Fi%20Certification%20-%20DEX%20Cloud.docx?version=1&modificationDate=1705005677070&cacheVersion=1&api=v2',
       },
       supportResources: [
@@ -68,11 +68,15 @@ export default {
       logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/PowerSchool.png',
       website: 'https://www.powerschool.com/',
       validThrough: 'September 23, 2025',
-      verifyingAgencies: ['Lorena ISD, TX', 'Buford City Schools, GA', 'Chisholm Public Schools, MN'],
+      verifyingAgencies: [
+        'Lorena ISD, TX',
+        'Buford City Schools, GA',
+        'Chisholm Public Schools, MN',
+      ],
       versionCompatibility: 'Conformance testing met with version 221014',
       availability: 'Available to any agency (all sizes) in the U.S.',
       documentation: {
-        "Availability Statement":
+        'Availability Statement':
           'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ed-Fi%20Certification%20-%20PowerSchool%20SIS.docx?version=1&modificationDate=1705005715627&cacheVersion=1&api=v2',
         Mappings:
           'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ed-Fi%20Resources%20and%20Elements%20for%20PowerSchool%20SIS%20Base%20v221014.xlsx?api=v2',
@@ -105,7 +109,7 @@ export default {
       versionCompatibility: 'Conformance testing met with version 11 and 12',
       availability: 'Available to any agency (all sizes) in the U.S.',
       documentation: {
-        "Availability Statement":
+        'Availability Statement':
           'https://edfi.atlassian.net/wiki/download/attachments/23694066/Focus%20Ed-Fi%20v4%20Availability%20Statement%20-%20Signed.pdf?version=1&modificationDate=1688731324490&cacheVersion=1&api=v2',
         Mappings:
           'https://edfi.atlassian.net/wiki/download/attachments/23694066/Field%20Mappings.xlsx?version=2&modificationDate=1663104029430&cacheVersion=1&api=v2',
@@ -134,7 +138,7 @@ export default {
       versionCompatibility: 'Conformance testing met with version 2321',
       availability: 'Available to any agency (all sizes) in the U.S.',
       documentation: {
-        "Availability Statement":
+        'Availability Statement':
           'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ed-Fi%20Certification%20-%20Availability%20Statement%20IC%202023%20v4.docx?version=1&modificationDate=1692208989277&cacheVersion=1&api=v2',
         Mappings:
           'https://kb.infinitecampus.com/help/ed-fi-v31---ed-fi-core-data',
@@ -167,7 +171,7 @@ export default {
       versionCompatibility: 'Conformance testing met with version 8.0300',
       availability: 'Available to any LEA in Texas only',
       documentation: {
-        "Availability Statement":
+        'Availability Statement':
           'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ascender%20Ed-Fi%20Certification%20-%20Availability%20Statement.pdf?version=1&modificationDate=1702748666493&cacheVersion=1&api=v2',
         Mappings:
           'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ascender%20Ed-Fi%20v4%20Certification.xlsx?version=1&modificationDate=1702585341873&cacheVersion=1&api=v2',
@@ -222,7 +226,7 @@ export default {
         'Conformance testing met with Qmlativ single product version (distributed to all customers)',
       availability: 'Available to any LEA in Texas only, others upon request',
       documentation: {
-        "Availability Statement":
+        'Availability Statement':
           'https://edfi.atlassian.net/wiki/download/attachments/23694066/Qmlativ%20-%20Ed-Fi%20Certification%20-%20Availability%20Statement%20Form.docx?version=1&modificationDate=1704891797820&cacheVersion=1&api=v2',
         Mappings:
           'https://edfi.atlassian.net/wiki/download/attachments/23694066/Qmlativ%20Data%20Mapping.docx?version=1&modificationDate=1704891823890&cacheVersion=1&api=v2',
@@ -249,7 +253,7 @@ export default {
         'Conformance testing met with Frontline single product version (distributed to all customers)',
       availability: 'Available to all Texas Frontline SIS clients.',
       documentation: {
-        "Availability Statement":
+        'Availability Statement':
           'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ed-Fi%20Certification%20-%20Availability%20Statement.docx?version=1&modificationDate=1713283670679&cacheVersion=1&api=v2',
         Mappings:
           'https://edfi.atlassian.net/wiki/download/attachments/23694066/EdFi%20Data%20Mapping.zip?version=1&modificationDate=1713283750434&cacheVersion=1&api=v2',
@@ -280,7 +284,8 @@ export default {
         'Conformance testing met with Jupiter single product version (distributed to all customers)',
       availability: 'Available to any agency (all sizes) in the U.S.',
       documentation: {
-        "Availability Statement": 'https://ops.jupitered.com/help/?statereporting',
+        'Availability Statement':
+          'https://ops.jupitered.com/help/?statereporting',
         Mappings: '',
       },
       supportResources: [
@@ -310,7 +315,7 @@ export default {
         'Conformance testing met with Aeries single product version (distributed to all customers)',
       availability: 'Available to any agency (all sizes) in the U.S.',
       documentation: {
-        "Availability Statement":
+        'Availability Statement':
           'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ed-Fi%20Certification%20-%20Availability%20Statement%20-%20Aeries%20Software%20-%20Signed.pdf?version=1&modificationDate=1668719682233&cacheVersion=1&api=v2',
         Mappings:
           'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ed-Fi%20Mappings%2010-21.xlsx?version=1&modificationDate=1668719714227&cacheVersion=1&api=v2',
@@ -345,7 +350,7 @@ export default {
       versionCompatibility: 'Conformance testing met with version 2023',
       availability: 'Available to any agency (all sizes) in the U.S.',
       documentation: {
-        "Availability Statement":
+        'Availability Statement':
           'https://edfi.atlassian.net/wiki/download/attachments/23694066/Edupoint%20-%20Ed-Fi%20Certification%20-%20Availability%20Statement.pdf?version=1&modificationDate=1673960235177&cacheVersion=1&api=v2',
         Mappings:
           'https://edfi.atlassian.net/wiki/download/attachments/23694066/Edupoint%20-%20Base%20Ed-Fi%20Certification%20Mappings%20for%203x.xlsx?version=1&modificationDate=1673960210507&cacheVersion=1&api=v2',
@@ -379,7 +384,7 @@ export default {
       availability:
         'Available to all Infinite Campus Student Information System customers on version 2235 or later',
       documentation: {
-        "Availability Statement":
+        'Availability Statement':
           'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ed-Fi%20Certification%20-%20Availability%20Statement%20IC%202022.docx?version=1&modificationDate=1666815066043&cacheVersion=1&api=v2',
         Mappings:
           'https://kb.infinitecampus.com/help/ed-fi-v31---ed-fi-core-data',
@@ -416,7 +421,7 @@ export default {
       versionCompatibility: 'Conformance testing met with version 11',
       availability: 'Available to any agency (all sizes) in the U.S.',
       documentation: {
-        "Availability Statement":
+        'Availability Statement':
           'https://edfi.atlassian.net/wiki/download/attachments/23694066/Availability%20Statement.pdf?version=2&modificationDate=1663103992567&cacheVersion=1&api=v2',
         Mappings:
           'https://edfi.atlassian.net/wiki/download/attachments/23694066/Field%20Mappings.xlsx?version=2&modificationDate=1663104029430&cacheVersion=1&api=v2',
@@ -450,7 +455,7 @@ export default {
       versionCompatibility: 'Conformance testing met with version 221014',
       availability: 'Available to any agency (all sizes) in the U.S.',
       documentation: {
-        "Availability Statement":
+        'Availability Statement':
           'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ed-Fi%20Certification%20-%20Implementation%20Verification%20-%20PowerSchool%20SIS%20signed.JPG?api=v2',
         Mappings:
           'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ed-Fi%20Resources%20and%20Elements%20for%20PowerSchool%20SIS%20Base%20v221014.xlsx?api=v2',
@@ -488,7 +493,7 @@ export default {
       versionCompatibility: 'Conformance testing met with version 23.4.0.0',
       availability: 'Available to any agency (all sizes) in the U.S.',
       documentation: {
-        "Availability Statement":
+        'Availability Statement':
           'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ed-Fi%20Certification%20-%20Implementation%20Verification%20-%20PowerSchool%20SIS%20signed.JPG?api=v2',
       },
       supportResources: [
@@ -513,7 +518,8 @@ export default {
         'Conformance testing met with Jupiter single product version (distributed to all customers)',
       availability: 'Arizona, Indiana, New Mexico, Wisconsin',
       documentation: {
-        "Availability Statement": 'https://ops.jupitered.com/help/?statereporting',
+        'Availability Statement':
+          'https://ops.jupitered.com/help/?statereporting',
         Mappings: '',
       },
       supportResources: [
@@ -544,14 +550,14 @@ export default {
       availability:
         'Available to any agency (all sizes) in the U.S. where iStation is sold',
       documentation: {
-        "Availability Statement":
+        'Availability Statement':
           'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ed-Fi%20Certification%20-%20Availability%20Statement%20-%20Istation.pdf?version=1&modificationDate=1702401431310&cacheVersion=1&api=v2',
         Mappings:
           'https://edfi.atlassian.net/wiki/download/attachments/23694066/Istation_score_report.xlsx?version=1&modificationDate=1701698794923&cacheVersion=1&api=v2',
-        usageOverview: 'https://edfi.atlassian.net/wiki/download/attachments/23694066/0_Statement%20of%20Purpose.pdf?version=1&modificationDate=1701699015080&cacheVersion=1&api=v2'
-     },
+        usageOverview:
+          'https://edfi.atlassian.net/wiki/download/attachments/23694066/0_Statement%20of%20Purpose.pdf?version=1&modificationDate=1701699015080&cacheVersion=1&api=v2',
+      },
       supportResources: [
-
         {
           name: 'How to get support',
           link: 'https://www.istation.com/contact',
@@ -571,7 +577,7 @@ export default {
       versionCompatibility: 'Version 14.2 and above',
       availability: 'Available to any agency (all sizes) in the U.S.',
       documentation: {
-        "Availability Statement":
+        'Availability Statement':
           'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ed-Fi%20Certification%20-%20Availability%20Statement%20-%20DnA.docx?version=1&modificationDate=1669749570400&cacheVersion=1&api=v2',
         Mappings:
           'https://docs.google.com/spreadsheets/d/1ZwAeVZTW8snEiLygKEuorMv3vUikCOnTfe2C01YZEZs/edit#gid=539557861',
@@ -612,7 +618,7 @@ export default {
       versionCompatibility: 'All versions 16.x',
       availability: 'Available to any agency (all sizes) in the U.S.',
       documentation: {
-        "Availability Statement":
+        'Availability Statement':
           'https://edfi.atlassian.net/wiki/spaces/EDFICERT/pages/23694066/Registry+of+Ed-Fi+Certified+Products',
         Mappings:
           'https://edfi.atlassian.net/wiki/spaces/EDFICERT/pages/23694066/Registry+of+Ed-Fi+Certified+Products',
