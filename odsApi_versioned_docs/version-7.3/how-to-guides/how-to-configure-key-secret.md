@@ -142,3 +142,75 @@ API client creation script samples:
 * **PostgreSQL Script:** [SetupApiClient\_PostgreSQL.sql](https://edfi.atlassian.net/wiki/download/attachments/23301501/SetupApiClient_PostgreSQL.sql?version=1&modificationDate=1708470934980&cacheVersion=1&api=v2)
 
 :::
+
+## Disabling an API Client
+
+An API client may be disabled by setting the `IsApproved` column to
+false in the `ApiClients` table of the `EdFi_Admin` database.
+
+To disable the client with the key `ApiClientKey1`, the following SQL query could
+be run on the `EdFi_Admin` database:
+
+```sql
+BEGIN
+  UPDATE [dbo].[ApiClients] SET IsApproved = 0 WHERE [Key] = 'ApiClientKey1'
+END
+```
+
+:::note
+While disabling an API client in the `EdFi_Admin` database will immediately prevent
+the issuance of new OAuth bearer tokens for it, any previously issued
+non-expired bearer tokens for the client will remain valid for authenticating API
+requests until they expire unless additional actions are taken.
+:::
+
+In the even it is necessary to immediately disable a client's ability to authenticate
+using previously issued non-expired OAuth bearer tokens, two additional actions
+are needed:
+
+1. **Removing previously issued tokens for the client from the
+   `ClientAccessTokens` table in the `EdFi_Admin` database.**
+
+   For the client used in the example above with the key `ApiClientKey1`, this
+   can be done by running the following SQL query on the `EdFi_Admin`
+   database:
+
+     ```sql
+     BEGIN
+        DELETE cat
+        FROM [dbo].[ClientAccessTokens] cat
+        INNER JOIN [dbo].[ApiClients] ac
+        ON ac.ApiClientId = cat.ApiClientId
+        WHERE ac.[Key] = 'ApiClientKey1'
+     END
+     ```
+
+2. **Expiring the `ApiClientDetails` cache.**
+
+   The specific actions needed to expire/clear the `ApiClientDetails` cache depend
+   on the configuration of the ODS/API instance.
+
+   For a deployment using the default in-memory cache and without
+   the "Notifications" feature enabled, this would be accomplished by restarting
+   the ODS/API application.
+
+   If the "Notifications" feature is enabled, the in-memory
+   cache may be invalidated by sending the following Notification payload:
+
+    ```json
+    {
+        "type": "expire-cache",
+        "data": {
+            "cacheType": "api-client-details"
+        }
+    }
+    ```
+
+    Additional details on using the "Notifications" feature to expire in-memory caches
+    can be found in [Notifications (Expiring Local Caches
+    Remotely)](/odsApi_versioned_docs/version-7.3/platform-dev-guide/features/notifications-expiring-local-caches-remotely.md).
+
+    If an [external cache
+    provider](/odsApi_versioned_docs/version-7.3/how-to-guides/how-to-use-an-external-cache-provider-for-the-ed-fi-api.md)
+    is in use, then an administrator would need to manually
+    remove the relevant ApiClientDetails entries from the external cache.
