@@ -1,0 +1,318 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# AMT Deployment Guide
+
+## Compatibility
+
+The Analytics Middle Tier views support these Ed-Fi ODS database versions:
+
+| Ed-Fi ODS / API | Data Standard | Database Engine |
+| --- | --- | --- |
+| 2.5.1  <br/>2.6.0​ | ​2.2 | SQL Server 2016  <br/>SQL Server 2017 |
+| 3.1.1  <br/>3.2.0 | 3.1 | SQL Server 2016  <br/>SQL Server 2017 |
+| 3.3.0 | 3.2a | SQL Server 2016  <br/>SQL Server 2017 |
+| 3.4.0 | 3.2b | SQL Server 2016  <br/>SQL Server 2017  <br/>PostgreSQL 11 |
+| Suite 3, version 5.0.0 | 3.2.0-c | SQL Server 2016  <br/>SQL Server 2017  <br/>PostgreSQL 11 |
+| Version 6.1.0 | 4.0 | SQL Server 2016  <br/>SQL Server 2017  <br/>PostgreSQL 11 |
+
+:::warning
+
+Support for Data Standard v2.2 was removed with the Suite 3 major release. AMT
+will not longer provide updates to v2.2 after the v4 version of the data
+standard is released.
+
+:::
+
+## Preparation
+
+Before beginning the installation, you will need to:
+
+1. Select a deployment model, which will determine the correct server and
+   database names to use. The deployment options are:
+    * Option 1. Installing into a replicated or log-shipped copy of the
+      production ODS database (the [generally
+      recommended](./limiting-impact-on-the-production-ods.md) approach).
+    * Option 2. Directly installing on your production ODS database.
+2. Decide which of the
+   optional [Collections](../user-guide/collections/readme.md) to
+   install, if any.
+3. Ensure that the machine running the installation has network access to the
+   database server, and that you can supply database credentials with sufficient
+   access to create new objects in the destination database.
+4. Review the following documents for awareness of security and performance
+   considerations:
+    1. [Limiting Impact on the Production
+       ODS](./limiting-impact-on-the-production-ods.md)
+    2. [Administrative
+       Security](./administrative-security.md)
+    3. [Improving ODS Query Performance With
+       Indexes](./improving-ods-query-performance-with-indexes.md)
+
+:::tip
+
+We recommend using a [pgpass configuration
+file](https://www.postgresql.org/docs/11/libpq-pgpass.html) to store
+PostgreSQL user password. This approach allows the connection string to
+contain a database user name without requiring a password.
+
+:::
+
+## Installation
+
+:::warning
+
+There are two options for running the installer. The first option is that you
+can run the installer by downloaded it to your machine or building it from
+source control. The second option is you can run the installer from a docker
+container. Both Step 1 options are described below.
+
+:::
+
+### Step 1 (option A). Download or Build from Source
+
+* [Raw source
+  code](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Analytics-Middle-Tier)
+  (build instructions follow). Can be run from a Linux host.
+* [Download a compiled
+  release](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Analytics-Middle-Tier/releases)
+  in either format:
+
+    :::warning
+
+    Binaries for version 2.0.0 and earlier are posted the older
+    GitHub organization, pre-Apache License. To download the binaries, you
+    must be signed in to GitHub with an account that has Ed-Fi licensee
+    access.
+
+    :::
+
+  * `EdFi.AnalyticsMiddleTier.zip` (~2 MB) is a .NET Core framework-dependent
+    deployment, meaning that you must have the [.NET Core 3.1 SDK and
+    Runtime](https://www.microsoft.com/net/download) installed on the system on
+    which you wish to run the application. Can be run from a Linux host.
+  * `EdFi.AnalyticsMiddleTier-win10.x64.zip` (~30 MB) is a self-contained
+    deployment, meaning that you can run it without downloading and installing
+    .NET Core 3.1. Must be run from a Windows host.
+
+Choose an appropriate version, download, and unzip the files.
+
+### Step 1 (option B). Run the Installer from Docker
+
+This option assumes you already have a docker environment set up and running.
+If you don't have a a docker environment, consider using the existing installer
+in the option A of Step 1.  The instructions below use [Docker
+Desktop](https://www.docker.com/products/docker-desktop/) for workstation
+usage.  [Docker](https://www.docker.com/) is also available for on-premise and
+cloud providers as well.
+
+* Images for Analytics Middle Tier (AMT) can be found at [Docker AMT
+  Images](https://hub.docker.com/r/edfialliance/analytics-middle-tier)
+* To run the installer in Step 2, your installation command will look like:
+
+    ```powershell
+    docker run -t edfialliance/analytics-middle-tier --connectionString "...." --options A, B, C
+    ```
+
+    :::tip
+
+    See [Docker Deployment: (Optional) Step 9. Install Analytics Middle
+    Tier](https://edfi.atlassian.net/wiki/spaces/EDFITOOLS/pages/24119348/Docker+Deployment+2.x)
+    for more information.
+
+    :::
+
+### Step 2. Run the Installer
+
+#### Command Line Arguments
+
+Command line arguments can be provided using either a "short flag" (e.g., `-c
+"..."`) or "long flag" (e.g. `–connectionString "..."`).
+
+| Short Flag | Long Flag | Description |
+| --- | --- | --- |
+| \-c | \--connectionString | REQUIRED. Full connection string for the SQL server database on which to install the solution. |
+| \-e | \--engine | OPTIONAL. Database engine, either `SqlServer` or `PostgreSQL` . Defaults to `SqlServer`. |
+| \-o | \--options | OPTIONAL. One or more optional use case collection names, space separated (e.g., `EWS RLS CHRAB Indexes`) to install the four collections EWS, RLS, CHRAB, and Indexes. If left blank, the installer will only create the [Core Views](../user-guide/collections/core-view-collection/readme.md).<br/><br/>The current available options:<br/><br/>_**Indexes** - This adds indexes to improve AMT performance<br/>_   **RLS** - [Row level security collections](../user-guide/collections/row-level-security-collection/readme.md)<br/>_**EWS** - [QuickSight Early Warning System collections](../user-guide/collections/early-warning-system-collection/readme.md)<br/>_   **CHRAB** - [Chronic Absenteeism collection](../user-guide/collections/chronic-absenteeism-collection/readme.md)<br/>_**ASMT** - [Assessment collections](../user-guide/collections/assessment-collection/readme.md)<br/>_   **EQUITY** - [Student Equity collections](../user-guide/collections/student-equity-collection/readme.md)<br/>_**ENGAGE** - [Engage Online Learners Collection](../user-guide/collections/engage-online-learners-collection/readme.md)<br/>_   **EPP** - [Educator Preparation Collection](../user-guide/collections/educator-preparation-collection/readme.md) |
+| \-u | \--uninstall | OPTIONAL. Default: false. Removes all views and indexes, leaving in place the tables configuration tables and role `analytics_middle_tier`.<br/><br/>⚠️ Generally only used by developers. |
+
+#### Running the Tool
+
+The precise syntax for running the tool varies slightly depending on which
+download and build strategy you have chosen. Examples are shown below for each
+approach.
+
+##### Connection String
+
+The connection string will be in standard .NET format, for example:
+
+<Tabs>
+
+  <TabItem value="sqlserver" label="SQL Server">
+
+    ```text
+    server=yourServer;database=EdFi_ODS_ReadOnly;integrated security=sspi;
+    ```
+
+  </TabItem>
+  <TabItem value="postgresql" label="PostgreSQL">
+
+    ```text
+    host=yourServer;database=EdFi_ODS_Readonly;username=postgres;
+    ```
+
+  </TabItem>
+
+</Tabs>
+
+
+The detailed examples below leave the connection string out in order to focus
+attention on other elements of the command.
+
+##### From Source Code
+
+Note that the "long flag" is required for the options when running from source
+(e.g., use `--connectionString` and not `-c`):
+
+```powershell title="Core Views Only, SQL Server"
+cd Ed-Fi-Analytics-Middle-Tier\src
+dotnet run --connectionString "..."
+```
+
+```powershell title="Core Views Only, PostgreSQL"
+cd Ed-Fi-Analytics-Middle-Tier\src
+dotnet run --connectionString "..." --engine PostgreSQL
+```
+
+```powershell title="Optional Indexes and Early Warning System Collection, on SQL Server"
+cd Ed-Fi-Analytics-Middle-Tier\src
+dotnet run --connectionString "..." --options Indexes EWS
+```
+
+##### Framework-Dependent Download
+
+As with source code, when using `EdFi.AnalyticsMiddleTier.zip` you must provide
+command parameters via the "long flag" form for options.
+
+```powershell title="Core Views Only, SQL Server"
+cd Ed-Fi-Analytics-Middle-Tier\src
+dotnet EdFi.AnalyticsMiddleTier.Console.dll --connectionString "..."
+```
+
+```powershell title="Core Views Only, PostgreSQL"
+cd Ed-Fi-Analytics-Middle-Tier\src
+dotnet EdFi.AnalyticsMiddleTier.Console.dll --connectionString "..." --engine PostgreSQL
+```
+
+```powershell title="Optional Indexes and Early Warning System Collection, on SQL Server"
+cd Ed-Fi-Analytics-Middle-Tier\src
+dotnet EdFi.AnalyticsMiddleTier.Console.dll --connectionString "..." --options Indexes EWS
+```
+
+#### Self-Contained Executable
+
+In this scenario, you can use the long flags as shown above or the short flags
+as shown below.
+
+```powershell title="Core Views Only, SQL Server"
+cd EdFi.AnalyticsMiddleTier-win10.x64
+.\EdFi.AnalyticsMiddleTier.Console.exe -c "..."
+```
+
+```powershell title="Core Views Only, PostgreSQL"
+cd EdFi.AnalyticsMiddleTier-win10.x64
+.\EdFi.AnalyticsMiddleTier.Console.exe -c "..." -e PostgreSQL
+```
+
+```powershell title="Optional Indexes and Early Warning System Collection, on SQL Server"
+cd EdFi.AnalyticsMiddleTier-win10.x64
+.\EdFi.AnalyticsMiddleTier.Console.exe -c "..." -o Indexes EWS
+```
+
+#### Using Docker
+
+In this scenario, you can use the long flags as shown above or the short flags
+as shown below.
+
+```powershell title="Core Views Only, SQL Server"
+docker run edfialliance/analytics-middle-tier --c "...."
+```
+
+```powershell title="Core Views Only, PostgreSQL"
+docker run edfialliance/analytics-middle-tier --c "...." -e PostgreSQL
+```
+
+```powershell title="Optional Indexes and Early Warning System Collection, on SQL Server"
+docker run edfialliance/analytics-middle-tier --c "...." -o Indexes EWS
+```
+
+Installing Additional Collections
+
+An administrator can run the installation tool repeatedly with no harm; the
+install is an idempotent operation. To install additional collections after the
+initial install, simply re-run the tool and provide the additional collection
+name(s) at the command line.
+
+#### Common Errors Seen During Installation
+
+When running the installer in a Non-Windows Environment, such as Linux, MacOS,
+Windows Subsystem for Linux, or Google Cloud, you could receive the following
+error:
+
+```text title="Installation Error"
+Error:
+An assembly specified in the application dependencies manifest (EdFi.AnalyticsMiddleTier.Console.deps.json) was not found:
+package: 'System.Data.SqlClient', version '4.6.0'
+path: 'runtimes/unix/lib/netcoreapp2.1/System.Data.SqlClient.dll'
+```
+
+This error comes about due to one of the subfolders that was extracted from the
+zip file not having the correct permissions. To resolve this you can run the
+following command from the root of the contents of the extracted zip file:
+
+```powershell title="Permission fix"
+sudo chmod -R 755 runtimes/*
+```
+
+Once this has been done, then you should be able to run the installer
+successfully.
+
+### Step 3. Configure Database User Access
+
+The installer creates a new security role in the
+database, `analytics_middle_tier`, with permission to query all of the views in
+the `analytics` schema. The database administrator will need to assign user(s)
+to this role as appropriate. This can be done by issuing a command like:
+
+```sql title="Add user to role"
+ALTER ROLE [analytics_middle_tier] ADD MEMBER [someUserName]
+```
+
+Note that this does not substitute for applying [Row-Level Security
+Collection](../user-guide/collections/row-level-security-collection/readme.md) in
+the downstream applications. Since the user connecting to the database will have
+access to all students' data, the end-user application needs to provide its own
+appropriate row-limiting security features.
+
+### Step 4. Configure Descriptor Mappings
+
+The installation process automatically loads descriptor mappings that match up
+with the default descriptors provided by the Ed-Fi Alliance in the "minimal
+template" install of the ODS / API. These need to be reviewed and customized for
+each field implementation.
+
+For detailed information and instructions, please see [Descriptor
+Mapping](./descriptor-mapping.md).
+
+### Step 5. Configure Optional Features
+
+Some of the optional
+[Collections](../user-guide/collections/) have
+their own configurability mechanisms. Please review and apply instructions from
+each relevant collection below.
+
+* [Row-Level User Security:
+  Configuration](../user-guide/collections/row-level-security-collection/readme.md)
+* [Early Warning System Collection:
+  Configuration](../user-guide/collections/early-warning-system-collection/readme.md)
+* [https://edfi.atlassian.net/wiki/spaces/EXCHANGE/pages/22488932](https://edfi.atlassian.net/wiki/spaces/EXCHANGE/pages/22488932)
