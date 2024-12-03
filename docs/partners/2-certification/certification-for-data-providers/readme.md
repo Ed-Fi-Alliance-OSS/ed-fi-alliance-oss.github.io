@@ -19,6 +19,7 @@ in [Available Certifications](../available-certifications/readme.md).
 ![Break-Rest Development Cadence Table](https://edfidocs.blob.core.windows.net/$web/img/reference/release-cadence.png "Break Rest Development Cadence")
 
 Certification requirements are aligned to the Ed-Fi Data and API Standard Release Cadence
+
 * Support goes from 3 to 4 years
 * Certification will continue to be annual 
 * Vendors should certify on everything that is active, we always encourage on the latest 
