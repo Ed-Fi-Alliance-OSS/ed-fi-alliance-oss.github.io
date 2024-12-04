@@ -135,7 +135,7 @@ uniquely describe a single EducationOrganizationAssociation.
 
 The Ed-Fi UDM can be extended to augment the structure of existing entities or
 create entirely new entities (cf [Ed-Fi Data Standard Extension
-Framework](https://edfi.atlassian.net/wiki/spaces/ETKB/pages/56655917/Ed-Fi+Data+Standard+Extension+Framework)).
+Framework](../../../../extension-framework.md).
 In the context of an Ed-Fi REST API, these are called resource extensions.
 Consumers of an Ed-Fi REST API interact with resource extensions just as they
 interact with other Resources. For example, if the Student resource has been

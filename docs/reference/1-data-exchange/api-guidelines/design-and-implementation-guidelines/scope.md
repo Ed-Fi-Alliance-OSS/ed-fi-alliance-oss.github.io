@@ -23,7 +23,7 @@ _compatible_ and _aligned_ API applications.
 ### Resource API
 
 The [Ed-Fi Unifying Data
-Model](https://edfi.atlassian.net/wiki/spaces/EFDS/pages/129990704/Ed-Fi+Unifying+Data+Model)(UDM)
+The [Ed-Fi Unifying Data Model](../../data-standard/udm.md)(UDM)
 provides the basis for the data transferred and manipulated by an Ed-Fi REST API
 implementation. The Ed-Fi UDM is a structured, conceptual model of common K–12
 education data. The model includes entities that are easily recognized by
