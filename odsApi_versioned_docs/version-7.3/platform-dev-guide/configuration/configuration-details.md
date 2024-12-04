@@ -61,6 +61,7 @@ optional configuration values include:
 | EdFi.Ods.WebApi | appsettings.json | QueueAutoCreate | Example: 1 | Whether or not a message queue should be created if it is not found. For Azure or Active Directory queues, this should be 0. |
 | EdFi.Ods.WebApi | appsettings.json | CommitUploadCommandMessageEndPoint | Example: localhost | The server hosting the message queues. |
 | EdFi.Ods.WebApi | appsettings.json | ApiSettings:BearerTokenTimeoutMinutes | Example: 30 | The amount of time that an OAuth token remains valid. |
+| EdFi.Ods.WebApi | appsettings.json | ApiSettings:BearerTokenPerClientLimit | Example: 15 | The maximum number of active (non-expired) OAuth tokens allowed for a client. Setting this value to -1 disables the limit. |
 | EdFi.Ods.WebApi | appsettings.json | ApiSettings:Caching:Security:AbsoluteExpirationMinutes | Example: 10 | The amount of time the security metadata from `EdFi_Security` database is cached. E.g., if it is set to 10 mins, the claim set changes will reflect in the API at least after 10 mins without needing to recycle API process. |
 | EdFi.Ods.WebApi | appsettings.json | ApiSettings:Caching:Descriptors:AbsoluteExpirationSeconds | Example: 1800 | Number of seconds after which the descriptor cache is refreshed. |
 | EdFi.Ods.WebApi | appsettings.json | ApiSettings:Caching:Descriptors:UseExternalCache | Example: true | When true, the Descriptor cache will use the configured external cache provider. |
