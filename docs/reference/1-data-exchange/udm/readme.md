@@ -39,14 +39,8 @@ Please see [Ed-Fi Technology Suite Supported
 Versions](../../0-roadmap/supported-versions.md) for the version history of the
 _Data Standard_, which encompasses the Data Model.
 
-:::tip
-
-Temporary links while this new site is being developed:
-
-* [Data Standard 5.x](https://edfi.atlassian.net/wiki/display/EFDS5/Ed-Fi+Data+Standard+v5)
-* [Data Standard 4.0](https://edfi.atlassian.net/wiki/display/EFDS4X/Ed-Fi+Data+Standard+v4)
-* [Data Standard 3.3](https://edfi.atlassian.net/wiki/spaces/EFDS33/pages/26968259/What+s+New+-+v3.3-b)
-* [Data Standard 3.2](https://edfi.atlassian.net/wiki/spaces/EFDS32)
-* [Data Standard 3.1](https://edfi.atlassian.net/wiki/spaces/EFDS31)
-
-:::
+* [Data Standard 5.x Model Reference](/reference/data-exchange/data-standard/model-reference)
+* [Data Standard 4.0 Model Reference](https://edfi.atlassian.net/wiki/spaces/EFDS4X/pages/24412244/Unifying+Data+Model+-+v4.0+Model+Reference) (opens in Confluence)
+* [Data Standard 3.3 Model Reference](https://edfi.atlassian.net/wiki/spaces/EFDS33/pages/26968275/Unifying+Data+Model+-+v3.3+Model+Reference) (opens in Confluence)
+* [Data Standard 3.2 Model Reference](https://edfi.atlassian.net/wiki/spaces/EFDS32/pages/20186084/Unifying+Data+Model+-+v3.2+Model+Reference) (opens in Confluence)
+* [Data Standard 3.1 Model Reference](https://edfi.atlassian.net/wiki/spaces/EFDS31/pages/23855215/Unifying+Data+Model+-+v3.1+Model+Reference) (opens in Confluence)

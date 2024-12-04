@@ -31,11 +31,3 @@ Ed-Fi standards and technologies share common models and data definitions.
 The Unifying Data Model is built on open industry protocols and conventions and
 is therefore vendor-neutral. The Unifying Data Model and its derivative products
 can be implemented on any hardware and software platform.
-
-![Sample Model and Handbook](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Sample%20Model%20and%20Handbook.png)
-
-* [Ed-Fi Unifying Data Model (UDM) Handbook (Latest
-    version)](https://schema.ed-fi.org/datahandbook-v510/index.html#/)
-* [Ed-Fi UDM Diagram (Latest
-    version)](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Standard/tree/main/Models)
-    (Visio format, on GitHub)

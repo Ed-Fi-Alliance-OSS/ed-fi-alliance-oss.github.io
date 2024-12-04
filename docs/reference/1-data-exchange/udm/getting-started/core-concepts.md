@@ -113,9 +113,3 @@ The following table is a general glossary of data modeling terms.
 | Entity | A classifier that describes a set of abstract or real objects that share the same features, constraints, and semantics. |
 | Association | A relationship between entities which is used to show that instances of the entities could be linked to each other. |
 | Attribute | A property that is owned by an entity. |
-
-* [Ed-Fi Unifying Data Model (UDM) Handbook (Latest
-    version)](https://schema.ed-fi.org/datahandbook-v510/index.html#/)
-* [Ed-Fi UDM Diagram (Latest
-    version)](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Standard/tree/main/Models)
-    (Visio format, on GitHub)

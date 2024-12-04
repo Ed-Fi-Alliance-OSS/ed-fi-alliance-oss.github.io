@@ -10,8 +10,7 @@ The Ed-Fi UDM is organized into the following 17 base domains, all generally
 well-recognized in the K–12 education data space:
 
 A brief description for each domain follows. Model details for each domain,
-including key entities, key concepts, and model diagrams are in the [Unifying
-Data Model - v5 Model Reference](../../data-standard/model-reference/).
+including key entities, key concepts, and model diagrams are in the [Model Reference](/reference/data-exchange/data-standard/model-reference).
 
 ## Alternative and Supplemental Services
 
@@ -126,9 +125,3 @@ Sub Domains:
 
 * Course Catalog
 * Sections and Programs
-
-* [Ed-Fi Unifying Data Model (UDM) Handbook (Latest
-    version)](https://schema.ed-fi.org/datahandbook-v510/index.html#/)
-* [Ed-Fi UDM Diagram (Latest
-    version)](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Standard/tree/main/Models)
-    (Visio format, on GitHub)
