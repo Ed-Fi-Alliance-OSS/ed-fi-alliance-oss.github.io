@@ -1,3 +1,7 @@
+---
+hide_table_of_contents: true
+---
+
 # Educator Preparation Data Model Domain - Entities, References, and Descriptors
 
 :::warning

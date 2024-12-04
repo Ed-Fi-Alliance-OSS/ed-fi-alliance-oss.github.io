@@ -1,3 +1,7 @@
+---
+hide_table_of_contents: true
+---
+
 # Bell Schedule Domain - Entities, References, and Descriptors
 
 ## Bell Schedule Domain Entities

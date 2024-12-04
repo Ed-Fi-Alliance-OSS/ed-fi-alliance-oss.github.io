@@ -1,3 +1,7 @@
+---
+hide_table_of_contents: true
+---
+
 # Alternative and Supplemental Services Domain - Entities, References, and Descriptors
 
 ## Entities, Extended References, and Descriptors

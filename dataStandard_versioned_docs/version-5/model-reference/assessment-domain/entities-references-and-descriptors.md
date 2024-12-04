@@ -1,3 +1,7 @@
+---
+hide_table_of_contents: true
+---
+
 # Assessment Domain - Entities, References, and Descriptors
 
 ## Assessment Domain Entities

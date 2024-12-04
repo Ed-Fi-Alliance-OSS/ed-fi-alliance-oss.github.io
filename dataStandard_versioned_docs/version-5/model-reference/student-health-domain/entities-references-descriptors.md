@@ -1,3 +1,7 @@
+---
+hide_table_of_contents: true
+---
+
 # Student Health Domain - Entities, References, and Descriptors
 
 ## Student Health Domain Entities

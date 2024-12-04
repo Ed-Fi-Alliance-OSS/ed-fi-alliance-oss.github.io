@@ -1,3 +1,7 @@
+---
+hide_table_of_contents: true
+---
+
 # Teaching and Learning Domain - Entities, References, and Descriptors
 
 ## Teaching and Learning Model Entities

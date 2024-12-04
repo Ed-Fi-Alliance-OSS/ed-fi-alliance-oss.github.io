@@ -1,3 +1,7 @@
+---
+hide_table_of_contents: true
+---
+
 # Student Identification and Demographics Domain - Entities, References, and Descriptors
 
 ## Student Identification and Demographics Domain Entities

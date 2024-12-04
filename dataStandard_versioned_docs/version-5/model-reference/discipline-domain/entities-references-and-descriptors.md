@@ -1,3 +1,7 @@
+---
+hide_table_of_contents: true
+---
+
 # Discipline Domain - Entities, References, and Descriptors
 
 ## Discipline Domain Entities

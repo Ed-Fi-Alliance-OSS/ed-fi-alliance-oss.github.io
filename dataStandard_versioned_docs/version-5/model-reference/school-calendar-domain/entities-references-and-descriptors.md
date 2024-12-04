@@ -1,3 +1,7 @@
+---
+hide_table_of_contents: true
+---
+
 # School Calendar Domain - Entities, References, and Descriptors
 
 ## School Calendar Domain Entities

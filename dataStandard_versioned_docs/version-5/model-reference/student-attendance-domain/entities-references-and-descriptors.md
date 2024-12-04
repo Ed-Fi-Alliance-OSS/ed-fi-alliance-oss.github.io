@@ -1,3 +1,7 @@
+---
+hide_table_of_contents: true
+---
+
 # Student Attendance Domain - Entities, References, and Descriptors
 
 ## Student Attendance Domain Entities

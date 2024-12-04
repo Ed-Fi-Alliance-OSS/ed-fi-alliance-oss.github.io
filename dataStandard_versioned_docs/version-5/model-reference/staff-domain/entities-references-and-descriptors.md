@@ -1,3 +1,7 @@
+---
+hide_table_of_contents: true
+---
+
 # Staff Domain - Entities, References, and Descriptors
 
 ## Staff Domain Entities

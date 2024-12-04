@@ -1,3 +1,7 @@
+---
+hide_table_of_contents: true
+---
+
 # Enrollment Domain - Entities, References, and Descriptors
 
 ## Enrollment Domain Entities

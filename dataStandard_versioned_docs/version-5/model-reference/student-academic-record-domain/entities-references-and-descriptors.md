@@ -1,3 +1,7 @@
+---
+hide_table_of_contents: true
+---
+
 # Student Academic Record Domain - Entities, References, and Descriptors
 
 ## Student Academic Record Domain Entities

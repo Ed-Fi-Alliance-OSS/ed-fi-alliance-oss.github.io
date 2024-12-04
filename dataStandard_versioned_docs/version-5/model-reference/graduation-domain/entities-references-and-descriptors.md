@@ -1,3 +1,7 @@
+---
+hide_table_of_contents: true
+---
+
 # Graduation Domain - Entities, References, and Descriptors
 
 ## Graduation Domain Entities
