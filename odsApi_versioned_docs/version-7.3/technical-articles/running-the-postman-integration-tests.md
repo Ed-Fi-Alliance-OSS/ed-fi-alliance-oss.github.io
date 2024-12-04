@@ -7,19 +7,11 @@ The following instructions assume that the Ed-Fi ODS / API has been successfully
 set up and is running in a local environment per the instructions in
 the [Getting Started](../getting-started) documentation. This
 documentation takes you through running two options for running postman test
-collections.
+collections:
 
 ## Running Postman Test Collections via PowerShell
 
-1. Install [Node.js 18+](https://nodejs.org)
-
-   :::tip
-
-   Many Windows users choose [nvm for
-   Windows](https://github.com/coreybutler/nvm-windows/releases) to manage
-   Node.js installations.
-
-    :::
+1. Install NVM, for windows systems you could use [nvm for Windows](https://github.com/coreybutler/nvm-windows/releases)
 
 2. As outlined in the [Getting Started
     Guide](../getting-started/source-code-installation/readme.md)
@@ -124,41 +116,50 @@ the test run, so you'll just need to wait until it finishes.
 ## Running Postman Test Collections via Postman
 
 1. Install and launch [Postman](https://www.getpostman.com/downloads/).
-2. Run the EdFi.Ods.Api.IntegrationTestHarness project from the ODS solution.
-    This will create the Postman Environment file required for the tests to
-    run.
-    1. Run the EdFi.Ods.Api.IntegrationTestHarness project. Test Harness will
-        create test API clients in the `EdFi_Admin_Test` database, create a
-        Postman environment file and run a test API instance for the Postman
-        tests to interact with.
+2. Import the Postman collections to test from the "Postman Test Suite" folder
+   in the Ed-Fi-ODS repository.
+   1. In the Postman UI, click "Import".
+      ![Postman Import Button](/img/reference/ods-api/postman1.webp)
+   2. Click the "files" link to launch the "Open File" dialog.
+      ![Postman Files Link](/img/reference/ods-api/postman2.webp)
+3. Create a Postman environment for running the collections.
+    ![Postman Environments](/img/reference/ods-api/postman3.webp)
+   1. Click on "Environments" section (in the left column).
+   2. Click the "+" symbol to create a new environment.
+   3. Provide a name for the environment (e.g. "Ed-Fi ODS API (Integration Testing)").
+   4. Add 4 Postman environment variables:
+       1. **ApiBaseUrl** = **http&#58;//localhost&#58;8765**
+       2. **ParentOrContactProperName** = **Parent** (_Ed-Fi Standard v4.x or
+         earlier_) or **Contact** (_Ed-Fi Standard v5.x+_)
+       3. **CompositesFeatureIsEnabled** = **true**
+       4. **ProfilesFeatureIsEnabled** = **true**
+4. Load and run the EdFi.Ods.Api.IntegrationTestHarness project from
+   Tests/Integration solution folder in the Ed-Fi-Ods solution.
+5. Run a Postman test collection.
+    1. Select the collection to run (Step 1 below).
+    2. Select the Postman environment just created (Step 2 below).
+    3. Select "Run collection" from the context menu (Steps 3 and 4 below).
+       ![Postman Run Collection](/img/reference/ods-api/postman4.webp)
+    4. Click the "Run" button to execute and monitor the progress of all the
+      tests in the collection.
+       ![Postman Run Button](/img/reference/ods-api/postman5.webp)
 
-        :::tip
+:::info
+You can easily reset the test databases at any point by performing the following
+steps in PowerShell:
 
-        In Visual Studio, you can right click on the TestHarness project, then
-        choose `Debug > Start New Instance` from the popup menu.
+1. In a PowerShell console, go to the root folder of the
+   Ed-Fi-ODS-Implementation repository (previously cloned from GitHub).
+2. Run the following command to initialize the PowerShell environment:
 
-        :::
+    ```powershell
+    .\Initialize-PowershellForDevelopment.ps1
+    ```
 
-    2. After the test harness is running, open Postman and import the generated
-        environment file located at
-        `Ed-Fi-ODS-Implementation\logistics\scripts\modules`
-    3. Ensure the environment is selected on the to right corner of Postman
-        window.
+3. Reset the test databases by executing the following command (repeat as necessary):
 
-        :::tip
+    ```powershell
+    Reset-TestAdminDatabase; Reset-TestSecurityDatabase; Reset-TestPopulatedTemplateDatabase
+    ```
 
-        See [Navigating
-        Postman](https://learning.postman.com/docs/getting-started/basics/navigating-postman)
-        for additional help on choosing an environment in Postman
-
-        :::
-
-3. Locate (or download) the Ed-Fi ODS Integration Test Suite collections from
-    the [Ed-Fi-ODS GitHub
-    repository](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS). Look in
-    `Ed-FI-ODS\Postman Test Suite` directory.
-4. Import one or more of the collections into Postman using the _Import_
-    function located in the upper left corner of the Postman window.
-5. Run the tests using the [Collection
-   Runner](https://learning.postman.com/docs/collections/running-collections/intro-to-collection-runs/).
-6. Monitor test execution and review the test results.
+:::
