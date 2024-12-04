@@ -188,10 +188,13 @@ Thus, custom view-based authorization strategies can be used alone or in
 conjunction with relationship-based authorization strategies to further restrict
 access based on criteria embedded in the view definition.
 
-:::info By default, the Ed-Fi ODS API refreshes the security metadata
+:::info
+By default, the Ed-Fi ODS API refreshes the security metadata
 periodically so it follows then that you could define new custom views on the
 ODS database(s) at runtime, add the necessary security metadata (including use
 by a claim set), and the next time a request is authorized with the refreshed
 security metadata, the custom view will be used (without the need to restart the
 API).
 :::
+
+Refer to the [How To: Use Custom View-Based Authorization](/odsApi_versioned_docs/version-7.3/how-to-guides/how-to-use-custom-view-based-authorization.md) walkthrough for additional details.
