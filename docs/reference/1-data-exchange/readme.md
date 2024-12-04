@@ -1,8 +1,9 @@
 # Data Exchange Standards
 
-education and the exchange of education data. This article collects links to
 The Ed-Fi Alliance coordinates and publishes community-led standards for
-resources and key publications.
+education and the exchange of education data. This article collects links to The
+Ed-Fi Alliance coordinates and publishes community-led standards for resources
+and key publications.
 
 ## Ed-Fi Data Standards
 
