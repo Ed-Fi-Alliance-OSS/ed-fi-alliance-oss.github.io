@@ -477,7 +477,8 @@ export default {
       servicesPerformed: {
         href: 'https://www.crocusllc.com/products-and-services',
         description:
-          'Documentation and training, Stakeholder management, Governance, Project management and technical planning, Integration development, Vendor coordination',
+          'Data Diagnostic, Data Governance, Use Case development, Stakeholder engagement, Project management and technical planning, Integration development, Ed-Fi implementation, 
+          Educator Preparation implementation, Dashboard visualizations and reports, Vendor coordination',
       },
     },
   ],
