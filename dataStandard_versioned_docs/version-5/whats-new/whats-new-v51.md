@@ -8,8 +8,7 @@ Data Standard version v5.1 is the first release of two releases Ed-Fi has planne
 
 ### Crisis Event and Student
 
-[DATASTD-2161](https://edfi.atlassian.net/browse/DATASTD-2161) - Getting issue
-details... STATUS
+[DATASTD-2161](https://edfi.atlassian.net/browse/DATASTD-2161)
 
 The Crisis Event model is designed to monitor students who have been displaced
 due to crises like natural disasters or emergencies. The model collects accurate
@@ -109,13 +108,11 @@ student’s status changes from being temporarily “displaced” to permanently
 “relocated”. While they are optional, using the DisplacedStudentBeginDate and
 DisplacedStudentEndDate can significantly improve the accuracy of tracking.
 
-More information and guidance on the usage of the Crisis Event can be found at
-the [Ed-Fi's Model Reference page](../model-reference/enrollment-domain/readme.md).
+Crisis Event is part of the [Enrollment Domain](../model-reference/enrollment-domain/readme.md).
 
 ### Student Health
 
-[DATASTD-2157](https://edfi.atlassian.net/browse/DATASTD-2157) - Getting issue
-details... STATUS
+[DATASTD-2157](https://edfi.atlassian.net/browse/DATASTD-2157)
 
 The purpose of the Ed-Fi Student Health domain is to have local educational
 agencies have a secure place to keep the record of student health related data
@@ -234,13 +231,11 @@ As SEAs or LEAs wish to bring additional student health data into the Ed-Fi
 model, the recommendation is to work with the Ed-Fi Alliance to extend the
 StudentHealth entity.
 
-More information and guidance on the usage of the Student Health domain can be
-found at the [Ed-Fi's Model Reference TechDoc page](../model-reference/student-health-domain/readme.md).
+For more information, see the [Student Health Domain](../model-reference/student-health-domain/readme.md).
 
 ### Student Transportation
 
-[DATASTD-2168](https://edfi.atlassian.net/browse/DATASTD-2168) - Getting issue
-details... STATUS
+[DATASTD-2168](https://edfi.atlassian.net/browse/DATASTD-2168)
 
 Public school districts provide transportation to students based upon distance
 of the home from school, as well as students with disabilities, and when such
@@ -327,9 +322,7 @@ student transportation data, the frequency of update needs to be determined.
 Access control to the StudentTransportation entity should support the use of
 these interfaces.
 
-More information and guidance on the usage of the Student Transportation can be
-found at the [Ed-Fi's Model Reference TechDoc](https://edfi.atlassian.net/wiki/spaces/EFDS5/pages/26707145/Enrollment+Domain)
-[page](https://edfi.atlassian.net/wiki/spaces/EFDS5/pages/26707145/Enrollment+Domain).
+Student Transportation is included in the [Enrollment Domain](../model-reference/enrollment-domain/readme.md).
 
 ## Minor Changes
 
@@ -362,8 +355,7 @@ and "Middle Eastern or North African" as two new options for the descriptor.
 
 ### Removing Unnecessary min Length Requirements
 
-[DATASTD-2177](https://edfi.atlassian.net/browse/DATASTD-2177) - Getting issue
-details... STATUS
+[DATASTD-2177](https://edfi.atlassian.net/browse/DATASTD-2177)
 
 Ed-Fi ODS/API has not enforced minimum requirements for string data type for
 versions released before the Ed-Fi ODS/API v7. Now it is enforced with new
@@ -376,12 +368,9 @@ remove unnecessary minimum length requirements (more specifically min length =
 
 ### MetaEd and UML Alignment for UDM Representation
 
-[DATASTD-2170](https://edfi.atlassian.net/browse/DATASTD-2170) - Getting issue
-details... STATUS
+[DATASTD-2170](https://edfi.atlassian.net/browse/DATASTD-2170)
 
 ## List of All Changes
-
-Links to Jira tickets:
 
 * [Change Namespace from 5.0.0 to 5.1 in TPDM](https://edfi.atlassian.net/browse/DATASTD-2229)
 * [MetaEd QA Process for version 4.4](https://edfi.atlassian.net/browse/DATASTD-2214)

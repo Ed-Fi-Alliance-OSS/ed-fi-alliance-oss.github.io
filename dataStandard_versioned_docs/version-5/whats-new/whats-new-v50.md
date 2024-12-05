@@ -30,8 +30,7 @@ before.
 
 ### Adding Special Education Program Eligibility Association
 
- [DATASTD-1898](https://tracker.ed-fi.org/browse/DATASTD-1898) - Getting issue
- details... STATUS
+[DATASTD-1898](https://tracker.ed-fi.org/browse/DATASTD-1898)
 
 State Education Agencies (SEA's) need to evaluate their efforts to implement the
 requirements of the Individuals with Disabilities Education Act of 2004 (IDEA
@@ -49,7 +48,7 @@ StudentSpecialEducationProgramAssociation entity. Both the Wisconsin Department
 of Public Instruction and the Texas Education Agency had created extensions to
 handle this type of data and that lead to the design of a new
 entity _StudentSpecialEducationProgramEligibilityAssociation_ in Ed-Fi core
-model as presented with this release*.*
+model as presented with this release\*.\*
 
 This addition to the model allows states to collect data required for
 improvement and monitoring activities communicated to the Office of Special
@@ -78,15 +77,14 @@ included in this new association is as shown below.
 | TransitionConferenceDate | optional | Indicates the month, day, and year when the transition conference was held (for a child receiving early childhood intervention (ECI) services) among the lead agency, the family, and the LEA where the child resides to discuss the child’s potential eligibility for early childhood special education (ECSE) services. |
 | EligibilityConferenceDate | optional | The month, day, and year when the eligibility conference is held between the parent(s)/guardian(s) and the educational organization responsible staff member(s) to review and make decision on special education related services eligibility. |
 
-More details can be found in the [related
-ticket](https://tracker.ed-fi.org/browse/DATASTD-1898) and the [ED-FI WORKING
-DRAFT
-8](https://edfi.atlassian.net/wiki/display/EFDSDRAFT/ED-FI+WORKING+DRAFT+8+-+SPECIAL+EDUCATION+PROGRAM+ELIGIBILITY+MODEL).
+More details can be found in the [related](https://tracker.ed-fi.org/browse/DATASTD-1898)
+[ticket](https://tracker.ed-fi.org/browse/DATASTD-1898) and the [ED-FI WORKING](https://edfi.atlassian.net/wiki/display/EFDSDRAFT/ED-FI+WORKING+DRAFT+8+-+SPECIAL+EDUCATION+PROGRAM+ELIGIBILITY+MODEL)
+[DRAFT](https://edfi.atlassian.net/wiki/display/EFDSDRAFT/ED-FI+WORKING+DRAFT+8+-+SPECIAL+EDUCATION+PROGRAM+ELIGIBILITY+MODEL)
+[8](https://edfi.atlassian.net/wiki/display/EFDSDRAFT/ED-FI+WORKING+DRAFT+8+-+SPECIAL+EDUCATION+PROGRAM+ELIGIBILITY+MODEL).
 
 #### Updates on Special Education Program Association
 
- [DATASTD-2105](https://tracker.ed-fi.org/browse/DATASTD-2105) - Getting issue
- details... STATUS
+[DATASTD-2105](https://tracker.ed-fi.org/browse/DATASTD-2105)
 
 Ed-Fi Alliance's collaborative work with the SEAs through and after the SpEd SIG
 has yielded a decision for adding three new optional attributes to the Student
@@ -111,8 +109,7 @@ educational agents.
 
 ### Adding Student Program Evaluation
 
- [DATASTD-1906](https://tracker.ed-fi.org/browse/DATASTD-1906) - Getting issue
- details... STATUS
+[DATASTD-1906](https://tracker.ed-fi.org/browse/DATASTD-1906)
 
 A new model for the Student Program Evaluation data domain in the Ed-Fi data
 standard has been created to address multiple state agencies' needs to keep
@@ -122,27 +119,28 @@ Minnesota and Indiana as well as the 21st CCLC programs implemented in Arizona.
 For these programs Ed-Fi community member states indicated that a student
 program evaluation model would provide them benefits in
 
-* Demonstrating program effectiveness: Program evaluation data can be used to
-    demonstrate the effectiveness of educational programs to stakeholders,
-    including funders, accrediting bodies, and policymakers. The data can be
-    used to show the impact of the program on student outcomes, such as
-    graduation rates, academic performance, and career success.
-* Improving student engagement and satisfaction: Student program evaluation
-    data can provide insights into student engagement and satisfaction with the
-    program. By using this data, educators can make changes to improve the
-    student experience and increase engagement and satisfaction.
+Demonstrating program effectiveness: Program evaluation data can be used to
+demonstrate the effectiveness of educational programs to stakeholders,
+including funders, accrediting bodies, and policymakers. The data can be
+used to show the impact of the program on student outcomes, such as
+graduation rates, academic performance, and career success.
 
-* Identifying areas of improvement: Student program evaluation data provides
-    valuable insights into areas where programs are succeeding and where they
-    need improvement. By analyzing the data, educators and administrators can
-    identify specific areas that require attention and make changes to better
-    serve their students.
+Improving student engagement and satisfaction: Student program evaluation
+data can provide insights into student engagement and satisfaction with the
+program. By using this data, educators can make changes to improve the
+student experience and increase engagement and satisfaction.
 
-* Ensuring accountability: Tracking program evaluation data can help ensure
-    accountability for educational institutions and programs. By regularly
-    collecting and analyzing data, educators and administrators can identify
-    areas where they may not be meeting their goals and take action to address
-    these issues.
+Identifying areas of improvement: Student program evaluation data provides
+valuable insights into areas where programs are succeeding and where they
+need improvement. By analyzing the data, educators and administrators can
+identify specific areas that require attention and make changes to better
+serve their students.
+
+Ensuring accountability: Tracking program evaluation data can help ensure
+accountability for educational institutions and programs. By regularly
+collecting and analyzing data, educators and administrators can identify
+areas where they may not be meeting their goals and take action to address
+these issues.
 
 The proposed domain model for the Student Program Evaluation data domain aims to
 capture the child outcomes indicator for early childhood evaluations as well as
@@ -154,15 +152,14 @@ making data-driven decisions. This model can also accommodate other evaluation
 types and can be extended to accommodate additional entities and relationships
 as needed.
 
-More details can be found in the [related
-ticket](https://tracker.ed-fi.org/browse/DATASTD-1906) and the [ED-FI WORKING
-DRAFT
-12](https://edfi.atlassian.net/wiki/display/EFDSDRAFT/ED-FI+WORKING+DRAFT+12+-+STUDENT+PROGRAM+EVALUATION+DOMAIN+MODEL).
+More details can be found in the [related](https://tracker.ed-fi.org/browse/DATASTD-1906)
+[ticket](https://tracker.ed-fi.org/browse/DATASTD-1906) and the [ED-FI WORKING](https://edfi.atlassian.net/wiki/display/EFDSDRAFT/ED-FI+WORKING+DRAFT+12+-+STUDENT+PROGRAM+EVALUATION+DOMAIN+MODEL)
+[DRAFT](https://edfi.atlassian.net/wiki/display/EFDSDRAFT/ED-FI+WORKING+DRAFT+12+-+STUDENT+PROGRAM+EVALUATION+DOMAIN+MODEL)
+[12](https://edfi.atlassian.net/wiki/display/EFDSDRAFT/ED-FI+WORKING+DRAFT+12+-+STUDENT+PROGRAM+EVALUATION+DOMAIN+MODEL).
 
 ### Section Model Updates
 
- [DATASTD-1596](https://tracker.ed-fi.org/browse/DATASTD-1596) - Getting issue
- details... STATUS
+[DATASTD-1596](https://tracker.ed-fi.org/browse/DATASTD-1596)
 
 Section in the current model combines the aspects of scheduling of instruction
 in a course offering for students and teacher and students' attempted credits,
@@ -182,9 +179,9 @@ members earlier or at these group meetings.
 
 A group of Ed-Fi community members were invited to participate, including local
 and state education agencies as well as members of some research institutes and
-other organizations that have shown a previous interest on the topic. The [Ed-Fi
-DEI
-SIG](https://edfi.atlassian.net/wiki/display/ESIG/DEI+Special+Interest+Group)
+other organizations that have shown a previous interest on the topic. The [Ed-Fi](https://edfi.atlassian.net/wiki/display/ESIG/DEI+Special+Interest+Group)
+[DEI](https://edfi.atlassian.net/wiki/display/ESIG/DEI+Special+Interest+Group)
+[SIG](https://edfi.atlassian.net/wiki/display/ESIG/DEI+Special+Interest+Group)
 was initiated with its first meeting in February. The group has completed three
 meetings with an achievement of fruitful discussions and completion of all
 topics that were pointed before and during the existence of the group. It is
@@ -212,10 +209,8 @@ success with its reflections on the model.
 
 #### Renaming Parent Domain Entity to Contact
 
- [DATASTD-1536](https://tracker.ed-fi.org/browse/DATASTD-1536) - Getting issue
- details... STATUS
- [DATASTD-1940](https://tracker.ed-fi.org/browse/DATASTD-1940) - Getting issue
- details... STATUS
+[DATASTD-1536](https://tracker.ed-fi.org/browse/DATASTD-1536)
+[DATASTD-1940](https://tracker.ed-fi.org/browse/DATASTD-1940)
 
 The topic was discussed by the DEI SIG at its first meeting based on the Ed-Fi
 community members' recommendation at the Technical Congress of 2022. The group
@@ -233,8 +228,7 @@ StudentIdentificationAndDemographics domain.
 
 #### Adding Preferred First Name and Preferred Last Name to the Name Common
 
- [DATASTD-1948](https://tracker.ed-fi.org/browse/DATASTD-1948) - Getting issue
- details... STATUS
+[DATASTD-1948](https://tracker.ed-fi.org/browse/DATASTD-1948)
 
 Another topic the Data Standard team picked up from the DEI SIG discussion and
 had a conclusion on was the adding the Preferred First Name and Preferred Last
@@ -247,10 +241,8 @@ followed group's recommendation by adding these two field in the Name common.
 
 #### Sex Descriptor Updates and Adding Gender Identity
 
- [DATASTD-1888](https://tracker.ed-fi.org/browse/DATASTD-1888) - Getting issue
- details... STATUS
- [DATASTD-1938](https://tracker.ed-fi.org/browse/DATASTD-1938) - Getting issue
- details... STATUS
+[DATASTD-1888](https://tracker.ed-fi.org/browse/DATASTD-1888)
+[DATASTD-1938](https://tracker.ed-fi.org/browse/DATASTD-1938)
 
 One of the longest conversations Data Standard team had with the community
 members with the guidance of the DEI SIG members was about the Sex descriptor
@@ -262,8 +254,7 @@ issue can be tracked in the tickets attached here.
 
 ### Removal of Previously Deprecated Elements
 
- [DATASTD-1944](https://tracker.ed-fi.org/browse/DATASTD-1944) - Getting issue
- details... STATUS
+[DATASTD-1944](https://tracker.ed-fi.org/browse/DATASTD-1944)
 
 The Data Standard team has the tradition of marking an element that is subject
 to removal form the Ed-Fi model as "Deprecated" once an element of the model
@@ -275,8 +266,7 @@ to remove the element from the core model after giving the community members
 time for preparation. With this intend there has been numerous elements of the
 Ed-Fi model that have been marked as deprecated, but not removed.
 
- [DATASTD-1942](https://tracker.ed-fi.org/browse/DATASTD-1942) - Getting issue
- details... STATUS
+[DATASTD-1942](https://tracker.ed-fi.org/browse/DATASTD-1942)
 
 The Data Standard team conducted an assessment to find these elements in the
 model where their removal was recommended and formulated, but has not been
@@ -312,8 +302,7 @@ assuming the continuity of the current release policy.
 
 ### Changes on Student School Association
 
- [DATASTD-1939](https://tracker.ed-fi.org/browse/DATASTD-1939) - Getting issue
- details... STATUS
+[DATASTD-1939](https://tracker.ed-fi.org/browse/DATASTD-1939)
 
 As a part of state assessment of school funding process for the upcoming school
 it was reported by an Ed-Fi community member that some additional fields are
@@ -333,8 +322,7 @@ Standard team implemented following updates on the StudentSchoolAssociation.
 
 ### Adding Grading Period Name
 
- [DATASTD-1919](https://tracker.ed-fi.org/browse/DATASTD-1919) - Getting issue
- details... STATUS
+[DATASTD-1919](https://tracker.ed-fi.org/browse/DATASTD-1919)
 
 It was brought to Ed-Fi Alliance's attention by some Student Information System
 (SIS) providers that GradingPeriod descriptor is not fulling their need in some
@@ -346,14 +334,13 @@ their accurate data collection and a freedom that fits in their practices, Ed-Fi
 created GradingPeriodName as a required attribute in Grading Period entity. With
 this addition the definition of the GradingPeriod descriptor in the same entity
 has been updated to reflect that it is the naming pre-defined by the SEA and
-PeriodSequence attribute made optional instead of required.  
+PeriodSequence attribute made optional instead of required.
 
 ## Minor Changes
 
 ### Updates on EventDuration Field
 
- [DATASTD-1911](https://tracker.ed-fi.org/browse/DATASTD-1911) - Getting issue
- details... STATUS
+[DATASTD-1911](https://tracker.ed-fi.org/browse/DATASTD-1911)
 
 The documentation of the field in the Ed-Fi system has been updated to reflect
 that EventDuration is the amount of time as a decimal fraction for the event as
@@ -362,16 +349,14 @@ the field.
 
 ### Updates on LetterGradeEarned
 
- [DATASTD-1912](https://tracker.ed-fi.org/browse/DATASTD-1912) - Getting issue
- details... STATUS
+[DATASTD-1912](https://tracker.ed-fi.org/browse/DATASTD-1912)
 
 Definition for the LetterGradeEarned has been updated and the Maximum length
 value is redefined as 64 instead of 20.
 
 ### Updating EarnedCredit as optional on CourseTranscript
 
- [DATASTD-1934](https://tracker.ed-fi.org/browse/DATASTD-1934) - Getting issue
- details... STATUS
+[DATASTD-1934](https://tracker.ed-fi.org/browse/DATASTD-1934)
 
 The cardinality of the EarnedCredit on the CourseTranscript domain entity has
 updated from required to optional based on the feedback collected from Ed-Fi
@@ -379,8 +364,7 @@ community members.
 
 ### Update on BeginDate in StaffSectionAssociation
 
- [DATASTD-1744](https://tracker.ed-fi.org/browse/DATASTD-1744) - Getting issue
- details... STATUS
+[DATASTD-1744](https://tracker.ed-fi.org/browse/DATASTD-1744)
 
 The BeginDate attribute is made an identity field for the
 StaffSectionAssociation to have parallel with the decision made for the same
@@ -389,18 +373,16 @@ model updates.
 
 ### Update on the Definition of Term and Session
 
- [DATASTD-1973](https://tracker.ed-fi.org/browse/DATASTD-1973) - Getting issue
- details... STATUS
+[DATASTD-1973](https://tracker.ed-fi.org/browse/DATASTD-1973)
 
 We have realized that there has been a confusion among the Ed-Fi community
 members about Ed-Fi's definition of Session and Term. To prevent these
 confusions and any misusage of them, the definition of these terms are updated
-in this version.  
+in this version.
 
 ### Adding AnnualWage
 
- [DATASTD-2068](https://tracker.ed-fi.org/browse/DATASTD-2068) - Getting issue
- details... STATUS
+[DATASTD-2068](https://tracker.ed-fi.org/browse/DATASTD-2068)
 
 Upon a report that indicate the misusage of the HourlyWage field in the core
 model because of the lack of attribute for the annual wage of staff in the
@@ -410,8 +392,7 @@ optional data for the association.
 
 ### Adding SupporterMilitaryConnection
 
- [DATASTD-2069](https://tracker.ed-fi.org/browse/DATASTD-2069) - Getting issue
- details... STATUS
+[DATASTD-2069](https://tracker.ed-fi.org/browse/DATASTD-2069)
 
 After reviewing multiple states' use case for data collection practices on the
 military connection of people who are responsible for students,
@@ -422,40 +403,33 @@ Unknown.
 
 ## List of All Changes
 
-View all:
-
-| Key | Summary | T   | Created | Updated | Due | Assignee | Reporter | P   | Status | Resolution |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [DATASTD-2105](https://tracker.ed-fi.org/browse/DATASTD-2105) | [SPED Changes based on SC discussion](https://tracker.ed-fi.org/browse/DATASTD-2105) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-2105) | 12/Oct/23 3:30 PM | 29/Nov/23 8:40 AM |     | Unassigned | Steven Arnold | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Done |
-| [DATASTD-2076](https://tracker.ed-fi.org/browse/DATASTD-2076) | [Data Standard v5.0 Final Release Punchlist](https://tracker.ed-fi.org/browse/DATASTD-2076) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-2076) | 12/Sep/23 8:34 AM | 02/May/24 10:14 AM |     | Unassigned | Steven Arnold | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Done |
-| [DATASTD-2074](https://tracker.ed-fi.org/browse/DATASTD-2074) | [GradingPeriod Sample Data Updates](https://tracker.ed-fi.org/browse/DATASTD-2074) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-2074) | 05/Sep/23 3:34 PM | 22/Sep/23 10:58 AM |     | Unassigned | Mustafa Yilmaz | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Done |
-| [DATASTD-2069](https://tracker.ed-fi.org/browse/DATASTD-2069) | [Consider adding family members' military connection descriptor to StudentEdOrgAssociation](https://tracker.ed-fi.org/browse/DATASTD-2069) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-2069) | 29/Aug/23 4:44 PM | 29/Nov/23 1:36 PM |     | Unassigned | Jonathan Hickam | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Done |
-| [DATASTD-2068](https://tracker.ed-fi.org/browse/DATASTD-2068) | [Adding AnnualWage to Capture Staff Compensation](https://tracker.ed-fi.org/browse/DATASTD-2068) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-2068) | 29/Aug/23 2:43 PM | 29/Nov/23 12:17 PM |     | Unassigned | Jonathan Hickam | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Done |
-| [DATASTD-2019](https://tracker.ed-fi.org/browse/DATASTD-2019) | [Entities within StudentProgramEvaluation have duplicate names with TPDM-Core PerformanceEvaluation entities](https://tracker.ed-fi.org/browse/DATASTD-2019) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-2019) | 24/Jul/23 11:42 AM | 20/Oct/23 1:46 PM |     | Unassigned | Steven Arnold | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Done |
-| [DATASTD-2018](https://tracker.ed-fi.org/browse/DATASTD-2018) | [StudentProgramEvaluation duplicates EPDM Evaluation names](https://tracker.ed-fi.org/browse/DATASTD-2018) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-2018) | 20/Jul/23 10:08 AM | 31/Jul/23 3:43 PM |     | Unassigned | Steven Arnold | ![Blocker](https://tracker.ed-fi.org/images/icons/priorities/blocker.svg) | Closed | Done |
-| [DATASTD-2006](https://tracker.ed-fi.org/browse/DATASTD-2006) | [Data Standard v5.0-pre2 Punchlist](https://tracker.ed-fi.org/browse/DATASTD-2006) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-2006) | 17/Jul/23 10:50 AM | 12/Sep/23 8:34 AM |     | Unassigned | Steven Arnold | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Done |
-| [DATASTD-2005](https://tracker.ed-fi.org/browse/DATASTD-2005) | [Updates to PersonalInformationVerification data in contact data](https://tracker.ed-fi.org/browse/DATASTD-2005) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-2005) | 30/Jun/23 3:28 PM | 22/Sep/23 3:28 PM |     | Unassigned | Steven Arnold | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Duplicate |
-| [DATASTD-2003](https://tracker.ed-fi.org/browse/DATASTD-2003) | [Fix StudentDiscipline.xml sample data](https://tracker.ed-fi.org/browse/DATASTD-2003) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-2003) | 29/Jun/23 12:42 PM | 22/Sep/23 3:28 PM |     | Unassigned | Muriel Marable | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Fixed |
-| [DATASTD-2002](https://tracker.ed-fi.org/browse/DATASTD-2002) | [Sample Data updates for main from pre-contact-branch fixes](https://tracker.ed-fi.org/browse/DATASTD-2002) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-2002) | 29/Jun/23 11:25 AM | 22/Sep/23 3:28 PM |     | Unassigned | Steven Arnold | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Done |
-| [DATASTD-1999](https://tracker.ed-fi.org/browse/DATASTD-1999) | [Fix sample data for Preferred Names - main](https://tracker.ed-fi.org/browse/DATASTD-1999) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-1999) | 20/Jun/23 7:56 PM | 22/Sep/23 3:28 PM |     | Unassigned | Muriel Marable | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Done |
-| [DATASTD-1990](https://tracker.ed-fi.org/browse/DATASTD-1990) | [Sample data updates requested by platform team](https://tracker.ed-fi.org/browse/DATASTD-1990) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-1990) | 02/Jun/23 8:14 AM | 22/Sep/23 3:29 PM |     | Unassigned | Steven Arnold | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Done |
-| [DATASTD-1988](https://tracker.ed-fi.org/browse/DATASTD-1988) | [Remove TPDM related descriptor files from Ed-Fi-Standard repo](https://tracker.ed-fi.org/browse/DATASTD-1988) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-1988) | 01/Jun/23 10:19 AM | 22/Sep/23 3:29 PM |     | Unassigned | Steven Arnold | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Done |
-| [DATASTD-1986](https://tracker.ed-fi.org/browse/DATASTD-1986) | [Implement Student Program Evaluation Model](https://tracker.ed-fi.org/browse/DATASTD-1986) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-1986) | 26/May/23 11:09 AM | 22/Sep/23 3:29 PM |     | Unassigned | Steven Arnold | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Done |
-| [DATASTD-1984](https://tracker.ed-fi.org/browse/DATASTD-1984) | [Create Sample Data for Student Program Evaluation](https://tracker.ed-fi.org/browse/DATASTD-1984) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-1984) | 23/May/23 12:38 PM | 22/Sep/23 3:29 PM |     | Unassigned | Mustafa Yilmaz | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Done |
-| [DATASTD-1958](https://tracker.ed-fi.org/browse/DATASTD-1958) | [Data Standard v5.0-pre1 PunchList](https://tracker.ed-fi.org/browse/DATASTD-1958) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-1958) | 24/Apr/23 9:57 AM | 02/May/23 1:09 PM |     | Unassigned | Mustafa Yilmaz | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Done |
-| [DATASTD-1956](https://tracker.ed-fi.org/browse/DATASTD-1956) | [Mobility Rate Indicator](https://tracker.ed-fi.org/browse/DATASTD-1956) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-1956) | 21/Apr/23 2:41 PM | 29/Nov/23 1:48 PM |     | Unassigned | Steven Arnold | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Done |
-| [DATASTD-1951](https://tracker.ed-fi.org/browse/DATASTD-1951) | [Sample Data for PreferedFirstName and PreferedLastSurname](https://tracker.ed-fi.org/browse/DATASTD-1951) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-1951) | 04/Apr/23 3:22 PM | 22/Sep/23 3:29 PM |     | Unassigned | Steven Arnold | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Done |
-| [DATASTD-1950](https://tracker.ed-fi.org/browse/DATASTD-1950) | [Sample Data updates for StudentSchoolAssociation](https://tracker.ed-fi.org/browse/DATASTD-1950) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-1950) | 04/Apr/23 3:05 PM | 22/Sep/23 3:29 PM |     | Unassigned | Steven Arnold | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Done |
-| [DATASTD-1949](https://tracker.ed-fi.org/browse/DATASTD-1949) | [Sample Data updates for Parent to Contact changes](https://tracker.ed-fi.org/browse/DATASTD-1949) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-1949) | 04/Apr/23 2:43 PM | 22/Sep/23 3:29 PM |     | Unassigned | Steven Arnold | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Done |
-| [DATASTD-1948](https://tracker.ed-fi.org/browse/DATASTD-1948) | [Add PreferredFirstName and PreferredLastName to name common](https://tracker.ed-fi.org/browse/DATASTD-1948) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-1948) | 04/Apr/23 12:30 PM | 22/Sep/23 3:29 PM |     | Unassigned | Steven Arnold | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Done |
-| [DATASTD-1941](https://tracker.ed-fi.org/browse/DATASTD-1941) | [Implement changes to StudentSchoolAssociation](https://tracker.ed-fi.org/browse/DATASTD-1941) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-1941) | 14/Mar/23 2:28 PM | 22/Sep/23 3:29 PM |     | Unassigned | Ed Comer | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Done |
-| [DATASTD-1940](https://tracker.ed-fi.org/browse/DATASTD-1940) | [Updates to Parent and related entities](https://tracker.ed-fi.org/browse/DATASTD-1940) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-1940) | 14/Mar/23 9:57 AM | 22/Sep/23 3:29 PM |     | Unassigned | Steven Arnold | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Done |
-| [DATASTD-1939](https://tracker.ed-fi.org/browse/DATASTD-1939) | [CLONE - Delaware is implementing some extensions to support its' funding process and has several suggestions.](https://tracker.ed-fi.org/browse/DATASTD-1939) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-1939) | 13/Mar/23 4:04 PM | 28/Apr/23 1:35 PM |     | Unassigned | Scott Kuykendall | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Done |
-| [DATASTD-1938](https://tracker.ed-fi.org/browse/DATASTD-1938) | [Sex and Gender Updates](https://tracker.ed-fi.org/browse/DATASTD-1938) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-1938) | 13/Mar/23 1:08 PM | 29/Nov/23 8:56 AM |     | Unassigned | Steven Arnold | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Done |
-| [DATASTD-1916](https://tracker.ed-fi.org/browse/DATASTD-1916) | [Change schoolId from int32 to varchar 30 or int64](https://tracker.ed-fi.org/browse/DATASTD-1916) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-1916) | 09/Jan/23 7:23 AM | 22/Sep/23 3:30 PM |     | Unassigned | Wendy Stephens | ![Blocker](https://tracker.ed-fi.org/images/icons/priorities/blocker.svg) | Closed | Done |
-| [DATASTD-1915](https://tracker.ed-fi.org/browse/DATASTD-1915) | [Create best practices documentation for Student Transcript Credit Use Cases](https://tracker.ed-fi.org/browse/DATASTD-1915) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-1915) | 05/Jan/23 10:06 AM | 28/Apr/23 6:29 AM |     | Unassigned | Steven Arnold | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Done |
-| [DATASTD-1912](https://tracker.ed-fi.org/browse/DATASTD-1912) | [Update to LetterGradeEarned and GradeEarned](https://tracker.ed-fi.org/browse/DATASTD-1912) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-1912) | 15/Dec/22 2:33 PM | 03/May/23 4:03 PM |     | Unassigned | Ed Comer | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Done |
-| [DATASTD-1911](https://tracker.ed-fi.org/browse/DATASTD-1911) | [Update documentation and add constraints to EventDuration field for StudentSchoolAttendanceEvent](https://tracker.ed-fi.org/browse/DATASTD-1911) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-1911) | 15/Dec/22 11:42 AM | 28/Apr/23 1:35 PM |     | Unassigned | Ed Comer | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Done |
-
-Showing 30 out of [37
-issues](https://tracker.ed-fi.org/issues/?jql=project+%3D+DATASTD++AND+issuetype+%3D+Story+AND+fixVersion+%3D+%22Data+Standard+v5.0-pre1%22+OR++project+%3D+DATASTD+AND+issuetype+%3D+Story+AND+fixVersion+%3D+%22Data+Standard+v5.0-pre2%22+OR++project+%3D+DATASTD+AND+issuetype+%3D+Story+AND+fixVersion+%3D+%22Data+Standard+v5.0%22+&src=confmacro)
+* [SPED Changes based on SC discussion](https://tracker.ed-fi.org/browse/DATASTD-2105)
+* [Data Standard v5.0 Final Release Punchlist](https://tracker.ed-fi.org/browse/DATASTD-2076)
+* [GradingPeriod Sample Data Updates](https://tracker.ed-fi.org/browse/DATASTD-2074)
+* [Consider adding family members' military connection descriptor to StudentEdOrgAssociation](https://tracker.ed-fi.org/browse/DATASTD-2069)
+* [Adding AnnualWage to Capture Staff Compensation](https://tracker.ed-fi.org/browse/DATASTD-2068)
+* [Entities within StudentProgramEvaluation have duplicate names with TPDM-Core PerformanceEvaluation entities](https://tracker.ed-fi.org/browse/DATASTD-2019)
+* [StudentProgramEvaluation duplicates EPDM Evaluation names](https://tracker.ed-fi.org/browse/DATASTD-2018)
+* [Data Standard v5.0-pre2 Punchlist](https://tracker.ed-fi.org/browse/DATASTD-2006)
+* [Updates to PersonalInformationVerification data in contact data](https://tracker.ed-fi.org/browse/DATASTD-2005)
+* [Fix StudentDiscipline.xml sample data](https://tracker.ed-fi.org/browse/DATASTD-2003)
+* [Sample Data updates for main from pre-contact-branch fixes](https://tracker.ed-fi.org/browse/DATASTD-2002)
+* [Fix sample data for Preferred Names - main](https://tracker.ed-fi.org/browse/DATASTD-1999)
+* [Sample data updates requested by platform team](https://tracker.ed-fi.org/browse/DATASTD-1990)
+* [Remove TPDM related descriptor files from Ed-Fi-Standard repo](https://tracker.ed-fi.org/browse/DATASTD-1988)
+* [Implement Student Program Evaluation Model](https://tracker.ed-fi.org/browse/DATASTD-1986)
+* [Create Sample Data for Student Program Evaluation](https://tracker.ed-fi.org/browse/DATASTD-1984)
+* [Data Standard v5.0-pre1 PunchList](https://tracker.ed-fi.org/browse/DATASTD-1958)
+* [Mobility Rate Indicator](https://tracker.ed-fi.org/browse/DATASTD-1956)
+* [Sample Data for PreferedFirstName and PreferedLastSurname](https://tracker.ed-fi.org/browse/DATASTD-1951)
+* [Sample Data updates for StudentSchoolAssociation](https://tracker.ed-fi.org/browse/DATASTD-1950)
+* [Sample Data updates for Parent to Contact changes](https://tracker.ed-fi.org/browse/DATASTD-1949)
+* [Add PreferredFirstName and PreferredLastName to name common](https://tracker.ed-fi.org/browse/DATASTD-1948)
+* [Implement changes to StudentSchoolAssociation](https://tracker.ed-fi.org/browse/DATASTD-1941)
+* [Updates to Parent and related entities](https://tracker.ed-fi.org/browse/DATASTD-1940)
+* [CLONE - Delaware is implementing some extensions to support its' funding process and has several suggestions.](https://tracker.ed-fi.org/browse/DATASTD-1939)
+* [Sex and Gender Updates](https://tracker.ed-fi.org/browse/DATASTD-1938)
+* [Change schoolId from int32 to varchar 30 or int64](https://tracker.ed-fi.org/browse/DATASTD-1916)
+* [Create best practices documentation for Student Transcript Credit Use Cases](https://tracker.ed-fi.org/browse/DATASTD-1915)
+* [Update to LetterGradeEarned and GradeEarned](https://tracker.ed-fi.org/browse/DATASTD-1912)
+* [Update documentation and add constraints to EventDuration field for StudentSchoolAttendanceEvent](https://tracker.ed-fi.org/browse/DATASTD-1911)
