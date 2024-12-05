@@ -1,3 +1,7 @@
+---
+sidebar_position: 7
+---
+
 # Tutorial: Interacting with an Ed-Fi API
 
 Audience: developers who wish to learn how to use an Ed-Fi API.

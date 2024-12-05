@@ -58,9 +58,9 @@ expectations of the vendor to fulfill.  Certification tests do not reflect the
 entire surface of Ed-Fi's data standard.  Full visibility to the data standard
 can be found using the following resources:
 
-[https://api.ed-fi.org/](https://api.ed-fi.org/)
-
-[Data Standard 5 handbook](https://schema.ed-fi.org/datahandbook-v500pre2/#/)
+* [https://api.ed-fi.org/](https://api.ed-fi.org/)
+* [Ed-Fi Unifying Data Model (UDM) Handbook (v5.1)](https://edfidocs.blob.core.windows.net/$web/handbook/v5.1/index.html)
+* [Ed-Fi Unifying Data Model (UDM) Handbook (v5.0)](https://edfidocs.blob.core.windows.net/$web/handbook/v5.0/index.html)
 
 ## Certification Requirements
 
