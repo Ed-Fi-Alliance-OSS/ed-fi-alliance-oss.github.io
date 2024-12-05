@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # XSD Guidelines - Design
 
-The Ed-Fi Core XML Schema is the embodiment of the [Ed-Fi Unifying Data Model](../data-standard/udm.md) (UDM) in an XML schema format that is designed to meet the requirements for XML data interchange, and has the following attributes:
+The Ed-Fi Core XML Schema is the embodiment of the [Ed-Fi Unifying Data Model](../udm/readme.md) (UDM) in an XML schema format that is designed to meet the requirements for XML data interchange, and has the following attributes:
 
 * A core set of domain, association, and attribute types that directly map to the Ed-Fi UDM
 * A method and examples of composing interchange schemas, reusing the types defined in the core schema

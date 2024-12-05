@@ -1,3 +1,7 @@
+---
+sidebar_position: 5
+---
+
 # Ed-Fi XSD Guidelines
 
 Product: Ed-Fi XSD Design & Implementation Guidelines \
