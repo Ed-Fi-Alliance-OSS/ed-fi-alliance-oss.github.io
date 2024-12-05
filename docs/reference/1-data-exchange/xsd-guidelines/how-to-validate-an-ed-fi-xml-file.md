@@ -34,12 +34,7 @@ This requires local copies of the Ed-Fi XML Core and Interchange Schema which
 can be downloaded from the [Ed-Fi Alliance GitHub
 Ed-Fi-Standard](https://github.com/Ed-Fi-Alliance/Ed-Fi-Standard) repository.
 
-For more information about the Ed-Fi data model and Ed-Fi Standard Interchange
-Schemas, see the Ed-Fi [Unifying Data
-Model](https://edfi.atlassian.net/wiki/display/EFDS20/Unifying+Data+Model+v2.0) and
-Ed-Fi [Interchange Schema
-Documentation](https://edfi.atlassian.net/wiki/display/EFDS20/Interchange+Schema+Documentation) available
-online at [http://www.ed-fi.org/tech-docs](http://www.ed-fi.org/tech-docs).
+For more information, see [Ed-Fi Unifying Data Model](../udm/readme.md).
 
 ## Validate XML Using Notepad++
 
@@ -80,13 +75,12 @@ Interchange schema locally.
 
 Replace the '../../../../XSLT2/References/Ed-Fi-Standard/Schemas/' portion of
 the schemaLocation with your local file path, leaving both the
-'[http://ed-fi.org/0320](http://ed-fi.org/0320) ' and interchange file name
-unchanged.
+`http://ed-fi.org/0320` and interchange file name unchanged.
 
 For example, if you saved the Ed-Fi schemas to your C drive and were validating
 an AssessmentMetadata XML file, your schemaLocation would appear as follows:
 
-```
+```none
 xsi:schemaLocation="http://ed-fi.org/0320 C:/Ed-Fi-Standard/v3.2/Schemas/Bulk/Interchange-AssessmentMetadata.xsd"
 ```
 
