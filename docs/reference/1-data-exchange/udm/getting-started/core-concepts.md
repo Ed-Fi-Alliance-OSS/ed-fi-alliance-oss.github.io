@@ -59,8 +59,7 @@ which aggregate data may be calculated.
 The Ed-Fi UDM is expressed as Unified Modeling Language (UML) Class diagrams.
 UML Class diagrams capture the logical structure of a domain (in this case the
 education domain) as a set of entities, attributes, and associations between
-entities. More details can be found in the [UDM Appendix A - UML
-Notation and Conventions](../appendix-a.md).
+entities. More details can be found in the [UML Notation and Conventions](../uml-notation-and-conventions.md).
 
 ### Data Handbook
 

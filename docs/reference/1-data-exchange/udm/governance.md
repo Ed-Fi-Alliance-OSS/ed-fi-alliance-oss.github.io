@@ -125,7 +125,7 @@ telegraph all changes before they happen:
 * To the extent practical, all Data Standard discussion is documented in the
     [Ed-Fi Tracker DATASTD project](https://edfi.atlassian.net/jira/software/c/projects/DATASTD/issues/).
     Anyone is invited to participate in that discussion (see the [Ed-Fi
-    Code of Conduct](/community/code-of-conduct)).
+    Code of Conduct](/community/involved/code-of-conduct)).
 * If scheduling permits, major changes are presented and discussed at the
     annual Ed-Fi Summit and/or the Ed-Fi Technical Congress, as is applicable in
     that release cycle.
