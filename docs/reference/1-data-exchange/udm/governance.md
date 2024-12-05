@@ -1,4 +1,4 @@
-# UDM Appendix C - Governance
+# Governance
 
 This section describes the principles that guide the governance choices made for
 the Ed-Fi Unifying Data Model (UDM).
@@ -8,15 +8,14 @@ the Ed-Fi Unifying Data Model (UDM).
 Changes to the data model are influenced by a number of sources:
 
 * Field Implementation Reports and Artifacts.
-* The Ed-Fi Community and [governance groups and
-    processes](https://edfi.atlassian.net/wiki/spaces/GOV/overview).
+* The Ed-Fi Community and [governance groups and processes](https://edfi.atlassian.net/wiki/spaces/GOV/overview).
 * Ed-Fi Governance Groups.
 * Data Standard RFC comments
-* Bug Reports (e.g., in [Ed-Fi Tracker](http://tracker.ed-fi.org)).
+* Bug Reports submitted via the [Ed-Fi Community Hub](https://community.ed-fi.org).
 * Common Education Data Standards (CEDS) and other standards related to K–12
-    education.
+  education.
 * Industry and International Standards, where established and appropriate for
-    use in K–12 education.
+  use in K–12 education.
 
 These influences combine to define each subsequent version of the Ed-Fi UDM.
 
@@ -124,10 +123,9 @@ opportunities to provide feedback. Here's our general approach to ensure that w
 telegraph all changes before they happen:
 
 * To the extent practical, all Data Standard discussion is documented in the
-    [Ed-Fi Tracker DATASTD project](https://tracker.ed-fi.org/projects/DATASTD).
+    [Ed-Fi Tracker DATASTD project](https://edfi.atlassian.net/jira/software/c/projects/DATASTD/issues/).
     Anyone is invited to participate in that discussion (see the [Ed-Fi
-    Technical Community
-    Guidelines](https://edfi.atlassian.net/wiki/display/ETKB/Technical+Community+Guidelines)).
+    Code of Conduct](/community/code-of-conduct)).
 * If scheduling permits, major changes are presented and discussed at the
     annual Ed-Fi Summit and/or the Ed-Fi Technical Congress, as is applicable in
     that release cycle.
@@ -142,7 +140,4 @@ feedback early and often.
 
 ## More Information
 
-To find out more, or to get involved, see [About the Ed-Fi
-Alliance](https://edfi.atlassian.net/wiki/spaces/ETKB/pages/20875405/About+the+Ed-Fi+Alliance),
-particularly the section on [Data
-Standards](https://edfi.atlassian.net/wiki/spaces/ETKB/pages/20875427/About+-+Data+Standards).
+To find out more, or to get involved, see [About - Ed-Fi Data Standard](../data-standards.md)

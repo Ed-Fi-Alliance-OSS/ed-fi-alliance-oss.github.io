@@ -1,4 +1,4 @@
-# UDM Appendix A - UML Notation and Conventions
+# UML Notation and Conventions
 
 This section explains the principles, patterns, and conventions used for the
 Ed-Fi Unifying Data Model.
@@ -123,7 +123,7 @@ Extensions to the Ed-Fi Data Standard should carry forward the naming
 conventions. The same naming conventions apply to the Ed-Fi UDM, the Ed-Fi REST
 API Specifications, and the associated Ed-Fi XML schemas. For additional and
 specific rules for how the naming conventions apply to the REST APIs, see [API
-Design & Implementation
+Design &amp; Implementation
 Guidelines](https://edfi.atlassian.net/wiki/spaces/EFAPIGUIDE). For the Ed-Fi
 XML-based data standards, see [XSD Design & Implementation
 Guidelines](https://edfi.atlassian.net/wiki/spaces/EFXSDGUIDE).

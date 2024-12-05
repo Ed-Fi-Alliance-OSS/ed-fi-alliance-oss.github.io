@@ -1,4 +1,4 @@
-# UDM Appendix B - Design Principles
+# Design Principles
 
 The building blocks of the Ed-Fi Unifying Data Model (UDM) are entities
 (classes), elements (attributes), and relationships (associations). Even with
