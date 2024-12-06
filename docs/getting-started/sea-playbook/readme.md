@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # State Education Agency (SEA) Playbook
 
 :::tip
