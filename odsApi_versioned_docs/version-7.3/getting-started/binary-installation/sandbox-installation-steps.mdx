@@ -38,7 +38,7 @@ You may need to configure TLS while running the installation scripts described
 in steps below.
 
 ```powershell
-[Net.ServicePointManager]::SecurityProtocol += [Net.SecurityProtocolType]::Tls12`
+[Net.ServicePointManager]::SecurityProtocol += [Net.SecurityProtocolType]::Tls12
 ```
 
 :::
@@ -58,7 +58,7 @@ Windows.
 
 Extract the contents of the EdFi.Suite3.RestApi.Databases package. The paths in
 these instructions assume that the package was extracted to a folder with the
-name of the package (e.g., C:\\temp\\EdFi.Suite3.RestApi.Databases).
+name of the package (e.g., `C:\temp\EdFi.Suite3.RestApi.Databases`).
 
 ### Edit the configuration.json File
 
@@ -264,7 +264,7 @@ Copy and modify the following parameter code to add your site name:
 $parameters = @{
     PackageVersion = "7.2.1201"
     WebApiVersionUrl = "https://YOUR_SITE_OR_SERVER_NAME_HERE/WebApi"
- PrePopulatedKey = "YOUR_POPULATED_KEY_HERE"
+    PrePopulatedKey = "YOUR_POPULATED_KEY_HERE"
     PrePopulatedSecret = "YOUR_POPULATED_SECRET_HERE"
 }
 ```
@@ -377,6 +377,6 @@ You are now ready to use the Ed-Fi ODS / API. The following URLs are available:
 
 | Website                                           | URL                                             |
 | ------------------------------------------------- | ----------------------------------------------- |
-| Ed-Fi ODS / API                                   | `https://YOUR\_SERVER\_NAME\_HERE/WebApi`       |
-| Sandbox Administration (for Sandbox Support Only) | `https://YOUR\_SERVER\_NAME\_HERE/SandboxAdmin` |
-| Ed-Fi ODS / API Documentation                     | `https://YOUR\_SERVER\_NAME\_HERE/SwaggerUI`    |
+| Ed-Fi ODS / API                                   | `https://YOUR_SITE_OR_SERVER_NAME_HERE/WebApi`       |
+| Sandbox Administration (for Sandbox Support Only) | `https://YOUR_SITE_OR_SERVER_NAME_HERE/SandboxAdmin` |
+| Ed-Fi ODS / API Documentation                     | `https://YOUR_SITE_OR_SERVER_NAME_HERE/SwaggerUI`    |

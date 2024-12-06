@@ -38,8 +38,11 @@ permission to load every module in the installer) and click **OK**.
 :::info Enable TLS 1.2
 
 You may need to configure TLS while running the installation scripts described
-in steps below. `[Net.ServicePointManager]::SecurityProtocol +=
-[Net.SecurityProtocolType]::Tls12`
+in steps below.
+
+```powershell
+[Net.ServicePointManager]::SecurityProtocol += [Net.SecurityProtocolType]::Tls12
+```
 
 :::
 
@@ -58,7 +61,7 @@ paths in Windows.
 
 Extract the contents of the EdFi.Suite3.RestApi.Databases package. The paths in
 these instructions assume that the package was extracted to a folder with the
-name of the package (e.g., `C:\\temp\\EdFi.Suite3.RestApi.Databases`).
+name of the package (e.g., `C:\temp\EdFi.Suite3.RestApi.Databases`).
 
 ### Edit the configuration.json File
 
@@ -211,6 +214,8 @@ Scripts values to the following:
 ```
 
 </details>
+
+:::
 
 ## Run Installation Script
 
@@ -485,7 +490,7 @@ Install-EdFiOdsSwaggerUI @parameters
 The Admin API provides an API-based programmatic interface for platform hosts to
 administer and manage non-sandbox instances of the Ed-Fi ODS / API. Follow the
 installation steps
-[here](https://edfi.atlassian.net/wiki/display/ADMINAPI/Getting+Started).
+[here](/reference/admin-api).
 Alternatively, ODS instances can be configured by database administrators via
 SQL queries as outlined in the article [How To: Configure ODS
 Instances](../../how-to-guides/how-to-configure-ods-instances.md).
@@ -507,10 +512,6 @@ You are now ready to use the Ed-Fi ODS / API. The following URLs are available:
 
 | Website                                                            | URL                                          |
 | ------------------------------------------------------------------ | -------------------------------------------- |
-| Ed-Fi ODS / API                                                    | `https://YOUR\_SERVER\_NAME\_HERE/WebApi`    |
-| Ed-Fi Admin API                                                    | `https://YOUR\_SERVER\_NAME\_HERE/AdminApi`  |
-| Ed-Fi ODS / API Documentation  <br/>(Optional, not for production) | `https://YOUR\_SERVER\_NAME\_HERE/SwaggerUI` |
-
-## Contents
-
-Find out more about how to begin using the Ed-Fi ODS / API:
+| Ed-Fi ODS / API                                                    | `https://YOUR_SITE_OR_SERVER_NAME_HERE/WebApi`    |
+| Ed-Fi Admin API                                                    | `https://YOUR_SITE_OR_SERVER_NAME_HERE/AdminApi`  |
+| Ed-Fi ODS / API Documentation  <br/>(Optional, not for production) | `https://YOUR_SITE_OR_SERVER_NAME_HERE/SwaggerUI` |
