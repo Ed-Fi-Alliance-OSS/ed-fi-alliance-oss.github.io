@@ -299,6 +299,29 @@ export default {
         },
       ],
     },
+
+    {
+      productName: 'Skyward SMS 2.0',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/Skyward-logo.jpg',
+      website: 'https://www.skyward.com/ed-fi',
+      validThrough: 'December 4, 2025',
+      verifyingAgencies: ['Sharyland ISD, TX', 'New Caney ISD, TX', 'Mesquite ISD, TX'],
+      versionCompatibility:
+        'Conformance testing met with SMS 2.0 single product version (distributed to all customers)',
+      availability: 'Available to any LEA in Florida, New Jersey, Rhode Island, South Dakota, Tennessee, Texas, Washington, Utah, others by request',
+      documentation: {
+        'Availability Statement':
+          'https://edfi.atlassian.net/wiki/download/attachments/23691441/SMS%20-%20Ed-Fi%20Certification%20-%20Availability%20Statement%20Form.docx?api=v2',
+        Mappings:
+          'https://edfi.atlassian.net/wiki/download/attachments/23691441/SMS%20Data%20Mapping.docx?api=v2',
+      },
+      supportResources: [
+        {
+          name: 'Support',
+          link: 'http://support.skyward.com',
+        },
+      ],
+    },
   ],
   sisSuite3: [
     {
@@ -533,6 +556,7 @@ export default {
         },
       ],
     },
+    
   ],
   assessmentOutcomesSuite3: [
     {

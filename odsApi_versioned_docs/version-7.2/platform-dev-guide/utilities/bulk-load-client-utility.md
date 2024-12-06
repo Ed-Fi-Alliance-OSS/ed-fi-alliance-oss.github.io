@@ -11,8 +11,7 @@ model, including profiles.
 
 This documentation covers the basics, runtime options, and general usage
 guidelines for the Bulk Load Client. A walkthrough of typical use can be found
-at [How To: Load the ODS with Sample XML Data using Bulk Load Client
-Utility](../../how-to-guides/how-to-load-the-ods-with-sample-xml-data-using-bulk-load-client-utility).
+at [How To: Load the ODS with Sample XML Data using Bulk Load Client Utility](../../how-to-guides/how-to-load-the-ods-with-sample-xml-data-using-bulk-load-client-utility.mdx).
 
 ## Ed-Fi ODS Populated Template
 
