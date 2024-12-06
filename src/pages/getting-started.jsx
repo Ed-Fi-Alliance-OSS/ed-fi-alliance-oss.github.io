@@ -49,6 +49,7 @@ function GetStartedIntro() {
   // https://www.ed-fi.org/blog/introducing-ed-fi-implementation-playbooks/
   return (
     <div>
+      <Heading as="h2">Playbooks</Heading>
       <p>
         No two Ed-Fi implementations look exactly alike. Each agency has their
         own priorities and specific challenges that they are attempting to solve
@@ -75,6 +76,32 @@ function GetStartedIntro() {
       <p>
         We're calling these training resources the Implementation Playbooks.
       </p>
+    </div>
+  );
+}
+
+function EducatorPipeline() {
+  return (
+    <div className="margin-bottom--lg">
+      <Heading as="h2">Educator Pipeline</Heading>
+      <p>
+        The Ed-Fi Alliance strives to help key stakeholders within Educator
+        Preparation Programs (EPPs), state education agencies (SEAs), local
+        education agencies (LEAs), and education service agencies (ESAs) make
+        sense of their disparate data sets by bringing them all together in one
+        place, the Ed-Fi Data Standard. The data standard, along with the
+        Educator Preparation Data Model (EPDM) (previously the Teacher
+        Preparation Data Model) can manage data on an educator's full-career
+        lifecycle, from pre-enrollment through their time in an educator
+        preparation program, the certification process and in-service work at
+        K-12 institutions, and the outcomes of those students.
+      </p>
+      <Link
+        to="/getting-started/educator-pipeline"
+        className="button button--primary button"
+      >
+        Go »
+      </Link>
     </div>
   );
 }
@@ -108,6 +135,11 @@ function Main() {
           <div className="col col--4">
             <SeaPlaybook></SeaPlaybook>
             <TechPlaybook></TechPlaybook>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col">
+            <EducatorPipeline></EducatorPipeline>
           </div>
         </div>
       </div>

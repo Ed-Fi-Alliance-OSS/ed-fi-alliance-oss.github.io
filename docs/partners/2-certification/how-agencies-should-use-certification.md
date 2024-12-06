@@ -71,7 +71,7 @@ Accordingly, Ed-Fi certification validates that elements in the certified system
 sent via API conform to data definitions in Ed-Fi API specifications. Those
 specifications in turn draw their vocabularies from the applicable the Ed-Fi
 Data Handbook (see [Unifying Data
-Model](/reference/data-exchange/data-standard/udm)).
+Model](/reference/data-exchange/udm/)).
 
 Mapping data elements and measuring semantic conformance of mappings are by
 their very nature acts of interpretation, so certification is unable to
