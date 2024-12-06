@@ -1,8 +1,14 @@
-# Ed-Fi Data Standard Extension Framework
+---
+sidebar_position: 2
+---
+
+# Ed-Fi Data Standard Extension Framework Best Practices
 
 ## Introduction
 
-This knowledge base article attempts to provide an overview and best practices
+The Ed-Fi Data Standard and related technologies can be extended to add new
+entities and elements. The set of standard extensions are codified in the Ed-Fi
+Extension Framework, documented herein. This knowledge base article attempts to provide an overview and best practices
 for the Ed-Fi Data Standard Extension Framework.
 
 This article assumes prerequisite knowledge from the [Ed-Fi
@@ -17,6 +23,17 @@ If you have not already completed these courses, we recommend doing so
 before attempting to digest the information presented in this article.
 
 ## Overview of the Ed-Fi Data Standard Extension Framework
+
+### Framework Reference Implementation
+
+An implementation of the Ed-Fi Extension Framework is provided via the MetaEd
+IDE. The Ed-Fi Community has relied heavily on this reference implementation and
+downstream technology implementations (e.g., the API implementation in the Ed-Fi
+ODS/API, etc.) to define patterns that have proven stable and are believed to be
+widely implementable.
+
+The Alliance and the Ed-Fi community welcome other Extension Framework
+implementations to contribute their tools and knowledge to this effort.
 
 ### What is the Extension Framework?
 
@@ -48,9 +65,15 @@ of individual Ed-Fi states and collaboratives.
 ### What type of Extensions are supported?
 
 The framework allows adding new entities, extending existing entities, or
-subclassing existing entities. See the [Supported Extensions Tech Docs
-page](https://edfi.atlassian.net/wiki/display/EFDS5/Supported+Extensions) for
-more specific guidelines.
+subclassing existing entities. Extensions in this category generally have
+implementation and documentation support in Ed-Fi technology such as the
+Ed-Fi ODS / API. See the [Supported Extensions Tech Docs page](./supported-extensions/readme.md) for more specific guidelines.
+
+Extensions not in the Extension Framework are
+not allowed. The documentation attempts to enumerate the most common of
+those. The Extension Framework evolves over time, so there are some
+community input mechanisms in place to help the community explore new models
+that may be candidates for support. See [Unsupported Modifications](./unsupported-modifications.md) for commonly encountered scenarios.
 
 ## When to Extend the Ed-Fi Data Standard
 
@@ -87,7 +110,7 @@ overview of the steps involved:
 1. **Understand the MetaEd IDE.** Start by familiarizing yourself with the
    MetaEd IDE. This tool serves as the central hub for extension development
    within the Ed-Fi ecosystem. For an in-depth understanding, refer to the
-   [MetaEd Page](../4-metaed/readme.md).
+   [MetaEd Page](../../4-metaed/readme.md).
 2. **Define and build the extension.** See the [How To: Extend the Ed-Fi ODS /
    API - Alternative Education Program
    Example](/reference/ods-api/how-to-guides/how-to-extend-the-ed-fi-ods-api-alternative-education-program-example)
@@ -113,8 +136,7 @@ Framework.
   You can connect with them by going to the
   [Community Hub](https://community.ed-fi.org/)
 * **Refrain from making unsupported modifications.** Do not extend the Ed-Fi
-  Data Model in ways that are not supported. See the [Supported Extensions Tech
-  Docs page](https://edfi.atlassian.net/wiki/display/EFDS5/Supported+Extensions)
+  Data Model in ways that are not supported. See the [Supported Extensions](./supported-extensions/readme.md)
   for more specific guidelines.
 * **Be cautious about aggregate data.**The idea of using extensions to hold
   aggregate data elements comes up often in data mapping exercises. In general,
@@ -126,15 +148,16 @@ Framework.
   long-term goals and whether it is a sustainable solution for addressing your
   unique data needs.
 * **Evaluate future standard updates.** As mentioned earlier, Ed-Fi extensions
-play a key role in ensuring the Ed-Fi Data Standard continues to stay relevant
-as new data collection sources come online.  Stay informed about upcoming
-releases and updates to the Ed-Fi Data Standard. Some of your identified gaps
-may be addressed in future versions. Assess whether waiting for an upcoming
-release is a viable option for your organization. Also, develop a plan to share
-your extension with the Ed-Fi Alliance Community members for a larger adoption
-if you go that route. If you are a state education agency or a regional agency,
-connect with your community peers to understand if they created an extension for
-a similar use case and how they have done it.  The Ed-Fi Alliance’s governance
-workgroups (SEA Working Group and Collaborative Working Group) can facilitate
-these discussions, you can email them at
-[governance@ed-fi.org](mailto:governance@ed-fi.org).
+    play a key role in ensuring the Ed-Fi Data Standard continues to stay
+    relevant as new data collection sources come online.  Stay informed about
+    upcoming releases and updates to the Ed-Fi Data Standard. Some of your
+    identified gaps may be addressed in future versions. Assess whether waiting
+    for an upcoming release is a viable option for your organization. Also,
+    develop a plan to share your extension with the Ed-Fi Alliance Community
+    members for a larger adoption if you go that route.
+    If you are a state education agency or a regional agency, connect with your
+    community peers to understand if they created an extension for a similar use
+    case and how they have done it.  The Ed-Fi Alliance’s governance workgroups
+    (SEA Working Group and Collaborative Working Group) can facilitate these
+    discussions, you can email them at
+    [governance@ed-fi.org](mailto:governance@ed-fi.org).
