@@ -27,7 +27,7 @@ using the StudentEducationOrganizationAssociation.
 3. Update the entry date for the elementary student's StudentSchoolAssociation.
     Remove the exitWithdraw Date and exitWithdraw Descriptor.
 4. Add a graduation plan reference to the High School student's
-   StudentSchoolAssociation.
+   StudentSchoolAssociation and update the student's associated calendar.
 5. Update the exitWithdrawDate for the elementary school student.
 6. Delete the StudentSchoolAssociation for the elementary school student.
 
@@ -56,3 +56,4 @@ Additional Requirements for StudentSchoolAssociation
 | StudentSchoolAssociations | exitWithdrawTypeDescriptor   | FALSE         | exitWithdrawTypeDescriptor   | REQUIRED | Transferred                            |                                        |                                        |                                        | Transferred                            |
 | StudentSchoolAssociations | repeatGradeIndicator         | FALSE         | boolean                      | REQUIRED | FALSE                                  | FALSE                                  | FALSE                                  | FALSE                                  | FALSE                                  |
 | StudentSchoolAssociations | residencyStatusDescriptor    | FALSE         | residencyStatusDescriptor    | REQUIRED | Resident of admin unit and school area | Resident of admin unit and school area | Resident of admin unit and school area | Resident of admin unit and school area | Resident of admin unit and school area |
+| Calendars                 | calendarCode                 | FALSE         | string                       | REQUIRED | 107SS111111                            | [High School calendarCode]             | 107SS111111                            | [New High School calendarCode]         | 107SS111111                            |
