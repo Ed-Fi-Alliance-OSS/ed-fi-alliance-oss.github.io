@@ -20,10 +20,10 @@ Ed-Fi ODS / API Platform v7.3 and provides links to additional documentation.
 ### Data Model Changes
 
 Ed-Fi ODS / API v7.3 adds [Ed-Fi Data Standard
-v5.2](https://edfi.atlassian.net/wiki/spaces/EFDS5/overview) implementation, with
+v5.2](/reference/data-exchange/data-standard/) implementation, with
 no breaking changes from the previous Data Standard v5.x. Refer to [What's New
 in Data Standard
-v5](https://edfi.atlassian.net/wiki/spaces/EFDS5/pages/26706990/What%27s+New) for
+v5](/reference/data-exchange/data-standard/whats-new/) for
 details. Additionally, Ed-Fi ODS/API v7.3 continues to support Data Standard
 v4.0 implementation.
 
