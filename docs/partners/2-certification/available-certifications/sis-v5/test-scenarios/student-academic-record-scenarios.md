@@ -19,13 +19,12 @@ The Student Academic Record represents the cumulative record of academic
 
 ## Scenarios
 
-1. Create a StudentAcademic Record for Fall Semester of School Year 2017 for a
-   student at Grand Bend Elementary School.
-2. Create a StudentAcademic Record for Fall Semester of School Year 2017 for a
-   student at Grand Bend High School.
-3. Update the cumulativeAttemptedCredits, cumulativeEarnedCredits,
-   sessionEarnedCredits and sessionAttemptedCredits on the high school Student's
-   record.
+1. Create a StudentAcademic Record for Fall Semester of School Year from five years
+   ago for a student at Grand Bend Elementary School.
+2. Create a StudentAcademic Record for Fall Semester of School Year from five years
+   ago for a student at Grand Bend High School. This should be a course that appears on the student's graduation transcript. Add a graduation plan reference to the High School student's StudentSchoolAssociation.
+3. Update the cumulativeAttemptedCredits, cumulativeEarnedCredits, sessionEarnedCredits
+   and sessionAttemptedCredits on the high school Student's record.
 
 | Resource                       | Property Name                  | Is Collection | Data Type                      | Required | Scenario 1: POST                 | Scenario 2: POST                   | Scenario 3: PUT                               |
 | ------------------------------ | ------------------------------ | ------------- | ------------------------------ | -------- | -------------------------------- | ---------------------------------- | --------------------------------------------- |
@@ -41,3 +40,6 @@ The Student Academic Record represents the cumulative record of academic
 | StudentAcademicRecords         | cumulativeGradePointAverage    | FALSE         | decimal                        | REQUIRED |                                  | \[System calculated value \| 3.0\] | \[System calculated value \| 3.0\]            |
 | StudentAcademicRecords         | sessionAttemptedCredits        | FALSE         | decimal                        | REQUIRED |                                  | \[System calculated value \| 3\]   | \[Previous systemcalculated value + 3 \| 6\]  |
 | StudentAcademicRecords         | sessionEarnedCredits           | FALSE         | decimal                        | REQUIRED |                                  | \[System calculated value \| 3\]   | \[Previous systemcalculated value + 3 \| 6\]  |
+| graduationPlanReference        | educationOrganizationId        | FALSE         | integer                        | REQUIRED |                                  | 255901001                          |                                               |
+| graduationPlanReference        | graduationSchoolYear           | FALSE         | integer                        | REQUIRED |                                  | \[Current of future school year\]  |                                               |
+| graduationPlanReference        | graduationPlanTypeDescriptor   | FALSE         | graduationPlanTypeDescriptor   | REQUIRED |                                  | Recommended                        |                                               |
