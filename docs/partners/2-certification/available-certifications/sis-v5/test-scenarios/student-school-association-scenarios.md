@@ -38,6 +38,7 @@ Additional Requirements for StudentSchoolAssociation
   student enrollment in the education organization changes, or at the end of a
   school year.  Rather, the association should be thought of as a core part of
   the student record, but scoped to the education organization.
+* A student must have an association with a Calendar and the association should not be deleted, only updated. 
 
 | Resource                  | Property Name                | Is Collection | Data Type                    | Required | Scenario 1: POST                       | Scenario 2: POST                       | Scenario 3: PUT                        | Scenario 4: PUT                        | Scenario 4: PUT                        |
 | ------------------------- | ---------------------------- | ------------- | ---------------------------- | -------- | -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
