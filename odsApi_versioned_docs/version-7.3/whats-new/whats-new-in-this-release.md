@@ -53,7 +53,7 @@ differ from identifiers used by the API host.
 Ed-Fi ODS/API v7.3 enhances the /oauth/token_info endpoint to include
 resource-level permissions, along with namespace prefixes, associated education
 organizations, and profiles assigned to a token. Refer to [Token
-Info](./../client-developers-guide/authorization.md/#token-info) for details.
+Info](./../client-developers-guide/authorization.md#token-info) for details.
 
 ### Extensible Authorization Filtering
 
