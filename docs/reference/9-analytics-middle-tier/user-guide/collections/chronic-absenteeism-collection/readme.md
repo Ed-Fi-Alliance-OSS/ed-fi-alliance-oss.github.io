@@ -8,7 +8,7 @@
 > not been fully understood."
 
 From the introduction to [CHRONIC ABSENTEEISM IN THE NATION'S SCHOOLS: A hidden
-educational crisis](https://www2.ed.gov/datastory/chronicabsenteeism.html) by
+educational crisis](https://www.ed.gov/chronic-absenteeism) by
 the U.S. Department of Education.
 
 ## Views in this Collection
@@ -22,7 +22,7 @@ Install using the option code "CHRAB"
 `.\EdFi.AnalyticsMiddleTier.Console.exe -c "..." -o CHRAB`
 
 For more information, see the [AMT Deployment
-Guide](https://edfi.atlassian.net/wiki/display/EDFITOOLS/AMT+Deployment+Guide).
+Guide](../../../deployment-guide/readme.mdx).
 
 ## Functional Vision
 

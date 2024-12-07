@@ -13,9 +13,9 @@ defining attendance.
 
 | Column | Data Type | Source | Description |
 | --- | --- | --- | --- |
-| ​StudentSchoolKey | nvarchar​ | StudentSchoolAssociation | For linking to the [StudentSchoolDim View](https://edfi.atlassian.net/wiki/display/EDFITOOLS/StudentSchoolDim+View)​. |
-| StudentKey | nvarchar | StudentUniqueId | For linking to the [StudentSchoolDim View](https://edfi.atlassian.net/wiki/display/EDFITOOLS/StudentSchoolDim+View)​. |
-| SchoolKey | varchar | SchoolId | For linking to [SchoolDim View](https://edfi.atlassian.net/wiki/display/EDFITOOLS/SchoolDim+View). |
+| ​StudentSchoolKey | nvarchar​ | StudentSchoolAssociation | For linking to the `StudentSchoolDim` View. |
+| StudentKey | nvarchar | StudentUniqueId | For linking to the `StudentSchoolDim` View. |
+| SchoolKey | varchar | SchoolId | For linking to `SchoolDim` View. |
 | DateKey | varchar | CalendarDateCalenderEvent | The attendance date (YYYYMMDD format) |
 | ReportedAsPresentAtSchool | int | StudentSectionAttendanceEvent | True/False representation of the student's presence at school for the record's specific date |
 | ReportedAsAbsentFromSchool | int | StudentSectionAttendanceEvent | True/False representation of the student's absence at school for the record's specific date |

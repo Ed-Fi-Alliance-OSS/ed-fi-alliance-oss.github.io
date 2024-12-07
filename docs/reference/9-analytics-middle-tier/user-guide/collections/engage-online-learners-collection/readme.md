@@ -55,4 +55,4 @@ Install using the option code "engage"
 ```
 
 For more information, see the [AMT Deployment
-Guide](https://edfi.atlassian.net/wiki/display/EDFITOOLS/AMT+Deployment+Guide).
+Guide](../../../deployment-guide/readme.md).

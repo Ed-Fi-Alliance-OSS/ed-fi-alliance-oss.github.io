@@ -296,15 +296,7 @@ Design](https://edfi.atlassian.net/wiki/spaces/EFTD/pages/24806003/Version+2.0+R
 ### Bug Fixes
 
 Some of the enhancements were in response to community-identified issues, which
-were never logged as bugs per se. They are listed below for completeness along
-with one community-reported bug.
-
-|     |     |     |     |
-| --- | --- | --- | --- |
-| Key | Summary | T   | Status |
-
-[No issues
-found](https://tracker.ed-fi.org/issues/?jql=key+in+%28BIA-150%2C+BIA-152%2C+BIA-227%2C+BIA-309%29+&src=confmacro)
+were never logged as bugs per se. 
 
 ### Installation
 
@@ -348,13 +340,10 @@ Deployment Guide](./deployment-guide/readme.mdx).
 
 ### Bug Fixes
 
-|     |     |     |
-| --- | --- | --- |
-| Key | Summary | T   |
-
-[No issues
-found](https://tracker.ed-fi.org/issues/?jql=fixVersion+%3D+%22Analytics+Middle+Tier+v1.3.2%22+&src=confmacro)
-
+* StaffClassificationDescriptorScope in Wrong Schema
+* ContactPerson Bad Join with ParentAddress in Data Standard 3.1
+* Prevent GradingPeriodDimension From Showing Future Grading Periods (v1.3.2)
+* Prevent Student Dimension Duplicates Due to StudentSchoolFoodServiceProgramAssociation (v1.3.2)
 </details>
 
 ## Version 1.3.1
@@ -364,12 +353,7 @@ found](https://tracker.ed-fi.org/issues/?jql=fixVersion+%3D+%22Analytics+Middle+
 
 ### Bug Fixes
 
-|     |     |     |
-| --- | --- | --- |
-| Key | Summary | T   |
-
-[No issues
-found](https://tracker.ed-fi.org/issues/?jql=fixVersion+%3D+%22Analytics+Middle+Tier+v1.3.1%22++&src=confmacro)
+* ContactPersonDimension has incorrect joins - production hotfix
 
 </details>
 
@@ -402,12 +386,6 @@ Student enrollment now accepts students with future exit date as being enrolled,
 whereas before the views were erroneously excluding all students with an
 ExitDate regardless of when that date occurs.
 
-|     |     |     |
-| --- | --- | --- |
-| Key | Summary | T   |
-
-[No issues
-found](https://tracker.ed-fi.org/issues/?jql=issuetype+%3D+Bug+AND+fixVersion+%3D+%22Analytics+Middle+Tier+v1.3.0%22+++&src=confmacro)
 
 </details>
 

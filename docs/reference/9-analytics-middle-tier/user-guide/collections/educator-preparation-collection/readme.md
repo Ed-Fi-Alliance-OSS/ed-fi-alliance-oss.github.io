@@ -22,14 +22,14 @@ Kit](https://edfi.atlassian.net/wiki/spaces/SK/pages/22021402/Clinical+Experienc
 
 ## Views in this Collection
 
-* [CandidateDim](https://edfi.atlassian.net/wiki/display/EDFITOOLS/EPP_CandidateDim)
-* [CandidateSurveyDim](https://edfi.atlassian.net/wiki/display/EDFITOOLS/EPP_CandidateSurveyDim)
-* [EPPDim](https://edfi.atlassian.net/wiki/display/EDFITOOLS/EPP_EPPDim)
-* [FinancialAidDim](https://edfi.atlassian.net/wiki/display/EDFITOOLS/EPP_FinancialAidDim)
-* [EvaluationElementRatingDim](https://edfi.atlassian.net/wiki/display/EDFITOOLS/Copy+of+EPP_EvaluationElementRatingDim)
-* [RaceDescriptorDim](https://edfi.atlassian.net/wiki/display/EDFITOOLS/EPP_RaceDescriptorDim)
-* [SexDescriptorDim](https://edfi.atlassian.net/wiki/display/EDFITOOLS/EPP_SexDescriptorDim)
-* [TermDescriptorDim](https://edfi.atlassian.net/wiki/display/EDFITOOLS/EPP_TermDescriptorDim)
+* [CandidateDim](./epp_candidatedim.md)
+* [CandidateSurveyDim](./epp_candidatesurveydim.md)
+* [EPPDim](./epp_eppdim.md)
+* [FinancialAidDim](./epp_financialaiddim.md)
+* [EvaluationElementRatingDim](./epp_evaluationelementratingdim.md)
+* [RaceDescriptorDim](./epp_racedescriptordim)
+* [SexDescriptorDim](./epp_sexdescriptordim.md)
+* [TermDescriptorDim](./epp_termdescriptordim.md)
 
 ## Installation
 
@@ -38,4 +38,4 @@ Install using the option code "EQUITY"
 `.\EdFi.AnalyticsMiddleTier.Console.exe -c "..." -o EPP`
 
 For more information, see the [AMT Deployment
-Guide](https://edfi.atlassian.net/wiki/display/EDFITOOLS/AMT+Deployment+Guide).
+Guide](../../../deployment-guide/readme.mdx).

@@ -1,17 +1,4 @@
-# AcademicTimePeriodDim View - Experimental
-
-:::warning
-
-This view is already in the `main` branch and will be included in the Analytics
-Middle Tier version 2.5.0. This is considered experimental functionality with
-its initial release and may be subject to significant changes during the course
-of ongoing work with
-the [https://edfi.atlassian.net/wiki/spaces/SKD/pages/26841349](https://edfi.atlassian.net/wiki/spaces/SKD/pages/26841349).
-Because of the experimental nature, patch releases of the Analytics Middle Tier
-might have _breaking changes_ in this view, so it is not recommended that anyone
-take a hard dependency on this view until further notice.
-
-:::
+# AcademicTimePeriodDim View
 
 ## Purpose
 

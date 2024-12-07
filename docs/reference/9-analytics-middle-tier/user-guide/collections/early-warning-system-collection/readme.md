@@ -25,10 +25,7 @@ The data model contains two fact tables with different date
 dimensions: [`StudentSectionGradeFact`](./ews_studentsectiongradefact-view.md) represents
 a grade assigned to a date range (grading period),
 and [`StudentEarlyWarningFact`](./ews_studentearlywarningfact-view.md) brings
-together attendance and behavior information on a daily basis. Also
-see [Dimensional
-Views](https://github.com/Ed-Fi-Alliance/Ed-Fi-X-Analytics-Middle-Tier/blob/develop/docs/dimensional-views.md) for
-more information on the other views in this model.
+together attendance and behavior information on a daily basis.
 
 ![StudentSectionGradeFact](https://edfidocs.blob.core.windows.net/$web/img/reference/analytics-middle-tier/student-section-grade-fact.jpg)
 
@@ -87,7 +84,7 @@ Install using the option code "EWS"
 ```
 
 For more information, see the [AMT Deployment
-Guide](https://edfi.atlassian.net/wiki/display/EDFITOOLS/AMT+Deployment+Guide).
+Guide](../../../deployment-guide).
 
 ## Configuration
 
@@ -114,7 +111,7 @@ That is, a grade of A will be treated a 95.0, a grade of B will be treated as
 ## Sample Scripts
 
 The source code repository contains a number of sample scripts in the **[samples
-directory](https://github.com/Ed-Fi-Alliance/Ed-Fi-X-Analytics-Middle-Tier/blob/main/samples)**.
+directory](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Analytics-Middle-Tier/tree/main/samples)**.
 
 :::warning
 
@@ -201,7 +198,7 @@ Math Grade := during a grading period, the average of grades earned in sections 
 These calculations can be see
 in `StudentGradeByGradingPeriod.sql`, `RiskIndicators.sql`, and EwsViews.sql (in
 the [sample
-scripts](https://github.com/Ed-Fi-Alliance/Ed-Fi-X-Analytics-Middle-Tier/tree/master/samples)).
+scripts](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Analytics-Middle-Tier/tree/main/samples)).
 The `EnrolledSections.sql` script simply provides the grade for any given
 section. These results in themselves are not considered part of the early
 warning system; however, they may be useful for display to end-users who want to
@@ -217,7 +214,7 @@ As noted in [Limiting Impact on the Production
 ODS](../../../deployment-guide/limiting-impact-on-the-production-ods.md),
 running analytics queries over these views can have a negative impact on the
 overall database performance. A "data mart" solution was developed for the
-[https://edfi.atlassian.net/wiki/spaces/EXCHANGE/pages/22487683](https://edfi.atlassian.net/wiki/spaces/EXCHANGE/pages/22487683),
+[AWS QuickSight Starter Kit](https://edfi.atlassian.net/wiki/spaces/EXCHANGE/pages/22487683),
 which exports the view results out to tables. Once tables are created, indexes
 can be applied for significant performance improvement.
 

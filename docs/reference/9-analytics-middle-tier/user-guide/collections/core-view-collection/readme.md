@@ -62,7 +62,7 @@ Every installation will include these views.
 ```
 
 For more information, see the [AMT Deployment
-Guide](https://edfi.atlassian.net/wiki/display/EDFITOOLS/AMT+Deployment+Guide).
+Guide](../../../deployment-guide/readme.mdx).
 
 ## Configuration
 

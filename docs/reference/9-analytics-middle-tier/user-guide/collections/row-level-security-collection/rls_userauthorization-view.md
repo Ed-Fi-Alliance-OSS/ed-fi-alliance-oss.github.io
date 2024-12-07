@@ -28,7 +28,7 @@ have "teacher", "principal", or "superintendent" type access.
 | Column Name | Source Table | Source Column | Data Type |
 | --- | --- | --- | --- |
 | UserKey | Staff | StaffUniqueId | int |
-| UserScope | analytics.AuthorizationScope via<br/><br/>[StaffClassificationDescriptorRole](https://edfi.atlassian.net/wiki/display/EDFIODS/Staff+Classification+to+Scope+Mapping+Table) | ScopeName | nvarchar(50) |
+| UserScope | analytics.AuthorizationScope via<br/><br/>StaffClassificationDescriptorRole | ScopeName | nvarchar(50) |
 | StudentPermission | n/a | static string "ALL" | nvarchar(3) |
 | SectionPermission | Teacher: Section via StaffSectionAssociation | Id  | nvarchar(50) |
 |     | Principal: n/a | static string "ALL" |
