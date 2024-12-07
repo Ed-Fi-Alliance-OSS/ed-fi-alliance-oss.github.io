@@ -1,3 +1,7 @@
+---
+sidebar_position: 6
+---
+
 # Ed-Fi Data Standard Versioning and Releases
 
 The Ed-Fi data model uses semantic versioning. It is also organized into

@@ -297,40 +297,26 @@ execution).
 ### Manage the Claims Taxonomy
 
 Security policies can also be used to _reorganize_ the claims taxonomy (i.e.
-change individual claims' parent references). Thus, when defining security
-metadata for a claim, the claim's entire lineage must be specified. If not, the
-claim's parent reference will be cleared, effectively moving it to the top of
-the hierarchy as a root node.
+change individual claims' parent references). Starting in v7.3, this behavior
+must be activated by adding the `modifyHierarchy="true"` attribute to the root
+`<SecurityMetadata>` element. When this attribute is set to true, each claim will
+be modified to match the lineage specified in the security policy document
+provided. If no lineage is provided for a claim, that claim's parent reference
+will be cleared, effectively moving (or adding) it to the top of the hierarchy
+as a root-level node.
 
-For example, in order to apply read permissions to a parent portal application
-claim set for just the "parents" and "students" resource claims, the security
-policy would look like the following (note the inclusion of the "people" claim
-as the parent to retain the existing hierarchy):
+For example, in order to introduce a new resource under an existing "domain"
+claim, the security policy would look something like the following:
 
 ```xml
-<SecurityMetadata>
+<SecurityMetadata modifyHierarchy="true">
   <Claims>
-    <Claim name="http://ed-fi.org/ods/identity/claims/domains/people">
+    <Claim name="http://ed-fi.org/ods/identity/claims/domains/someDomain">
       <Claims>
-        <Claim name="http://ed-fi.org/ods/identity/claims/parent">
-          <ClaimSets>
-            <ClaimSet name="Amazing Parent Portal App">
-              <Actions>
-                <Action name="Read" />
-              </Actions>
-            </ClaimSet>
-          </ClaimSets>
+        <Claim name="http://ed-fi.org/ods/identity/claims/myext/myNewResource">
+          ...
         </Claim>
-        <Claim name="http://ed-fi.org/ods/identity/claims/student">
-          <ClaimSets>
-            <ClaimSet name="Amazing Parent Portal App">
-              <Actions>
-                <Action name="Read" />
-              </Actions>
-            </ClaimSet>
-          </ClaimSets>
-        </Claim>
-       </Claims>
+      </Claims>
     </Claim>
   </Claims>
 </SecurityMetadata>
@@ -338,10 +324,10 @@ as the parent to retain the existing hierarchy):
 
 ### Clearing Security Metadata
 
-When you include a `DefaultAuthorization` element, a wholesale replacement
-occurs &mdash; all existing `Actions`  and their contained `AuthorizationStrategies`
-are first cleared before the newly defined metadata is created. If the
-`DefaultAuthorization`  element is empty, the existing metadata will be deleted.
+When you include a DefaultAuthorization element, a wholesale replacement occurs
+– all existing Actions  and their contained AuthorizationStrategies are first
+cleared before the newly defined metadata is created. If the
+DefaultAuthorization  element is empty, the existing metadata will be deleted.
 
 ```xml
 <SecurityMetadata>
@@ -431,6 +417,20 @@ import TabItem from '@theme/TabItem';
     ```
   </TabItem>
 </Tabs>
+
+An abbreviated usage is available if the SQL script is to be generated with the
+same file name as the security policy file (but with a `.sql` file extension), and
+the database engine does not have to be specified explicitly if a directory
+named `MsSql` or `PgSql` is included in the path to the security policy. This is
+useful, for example, when co-locating the XML files with the SQL files in a
+database migration scripts directory.
+
+The following command will create a co-located "0100-My-new-security.policy.sql"
+DDL SQL script file that targets SQL server.
+
+```powershell
+.\transform.ps1 C:\MyProjects\Ed-Fi-ODS\SomeProject\Artifacts\MsSql\Data\Security\0100-My-new-security-policy.xml
+```
 
 The resulting SQL scripts are idempotent and can be executed against the
 `EdFi_Security` database.

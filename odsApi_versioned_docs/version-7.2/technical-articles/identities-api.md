@@ -1,3 +1,7 @@
+---
+sidebar_position: 3
+---
+
 # Identities API
 
 The Ed-Fi Identities API provides an abstraction wrapper for an optional native

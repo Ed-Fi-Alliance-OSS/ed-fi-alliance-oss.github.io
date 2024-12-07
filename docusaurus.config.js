@@ -106,7 +106,21 @@ const config = {
         includeCurrentVersion: false,
         versions: {
           7.2: { banner: 'none', badge: true },
-          7.3: { banner: 'unreleased', badge: true }
+          7.3: { banner: 'unreleased', badge: true },
+        },
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'dataStandard',
+        editUrl: ({ docPath }) =>
+          `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/${docPath}/`,
+        routeBasePath: 'reference/data-exchange/data-standard',
+        sidebarPath: './sidebars.js',
+        includeCurrentVersion: false,
+        versions: {
+          5: { banner: 'none', badge: true },
         }
       },
     ],

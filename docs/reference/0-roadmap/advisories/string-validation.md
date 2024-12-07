@@ -16,9 +16,9 @@ were not enforced in the ODS/API 6.x implementation of Data Standard 4.0.
 
 The Ed-Fi Unifying Data Model (UDM) defines minimum and maximum length for
 string data types
-([example](https://schema.ed-fi.org/datahandbook-v400/index.html#/LocalCourseCode69))
+([example](https://edfidocs.blob.core.windows.net/$web/handbook/v4.0/index.html#/LocalCourseCode69))
 and minimum and maximum values for integer
-([example](https://schema.ed-fi.org/datahandbook-v400/index.html#/LocalFiscalYear3225))
+([example](https://edfidocs.blob.core.windows.net/$web/handbook/v4.0/index.html#/LocalFiscalYear3225))
 and decimal datatypes. In ODS / API implementations prior to v7.x, these
 validations were not enforced.  Recognizing this as a longstanding gap in the
 ODS/API implementation, a decision was made to address it in ODS/API version
@@ -39,8 +39,8 @@ that allow empty strings for optional fields.
 
 ### Nuget Packages
 
-* [7.1 Binary
-  Releases](https://edfi.atlassian.net/wiki/display/ODSAPIS3V71/Binary+Releases)
+<!-- This page is not yet available in Docusaurus -->
+* [7.1 Binary Releases](https://edfi.atlassian.net/wiki/display/ODSAPIS3V71/Binary+Releases)
   (Updated packages are marked with patch update date `06/2024`)
 
 ### Source code releases
