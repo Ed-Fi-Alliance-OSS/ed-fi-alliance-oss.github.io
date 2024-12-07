@@ -56,15 +56,6 @@ confusion and/or misleading analyses.
 For more information, see the [AMT User
 Guide](./user-guide/readme.md).
 
-## Contributing
-
-We ❤️ your code contributions! Have some useful queries to share with others in
-the community? Easy: just turn them into views and share via the Analytics
-Middle Tier.
-
-For more information, see the [AMT Contributor
-Guide](./contributor-guide/readme.md).
-
 ## Related Content From the Ed-Fi Blog
 
 * February 14, 2020: [The Analytics Middle Tier Grows

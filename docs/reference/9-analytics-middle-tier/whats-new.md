@@ -211,9 +211,6 @@ Version 2.2.0 comes with a few changes to the Analytics Middle Tier:
 3. AMT now has a companion repository for community contributed collections.
     This companion repository can be found
     at [https://github.com/Ed-Fi-Exchange-OSS/Analytics-Middle-Tier-Contrib](https://github.com/Ed-Fi-Exchange-OSS/Analytics-Middle-Tier-Contrib).
-    Documentation on usage and deployment can be found at [Community
-    Contribution
-    Repository](./contributor-guide/community-contribution-repository.md)
 
 </details>
 
@@ -296,7 +293,7 @@ Design](https://edfi.atlassian.net/wiki/spaces/EFTD/pages/24806003/Version+2.0+R
 ### Bug Fixes
 
 Some of the enhancements were in response to community-identified issues, which
-were never logged as bugs per se. 
+were never logged as bugs per se.
 
 ### Installation
 
@@ -344,6 +341,7 @@ Deployment Guide](./deployment-guide/readme.mdx).
 * ContactPerson Bad Join with ParentAddress in Data Standard 3.1
 * Prevent GradingPeriodDimension From Showing Future Grading Periods (v1.3.2)
 * Prevent Student Dimension Duplicates Due to StudentSchoolFoodServiceProgramAssociation (v1.3.2)
+
 </details>
 
 ## Version 1.3.1
@@ -385,7 +383,6 @@ Or alternately, use the short-hand:
 Student enrollment now accepts students with future exit date as being enrolled,
 whereas before the views were erroneously excluding all students with an
 ExitDate regardless of when that date occurs.
-
 
 </details>
 

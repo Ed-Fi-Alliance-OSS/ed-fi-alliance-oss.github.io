@@ -32,8 +32,7 @@ This installs the following indexes:
 | edfi.StudentSectionAssociation | SchoolId, LocalCourseCode, SchoolYear, SessionName | EndDate, LastModifiedDate |
 | edfi.AcademicSubjectType  <br/>(Data Standard v2.2 only) | CodeValue | (none) |
 
-On the Glendale [sample
-database](../contributor-guide/contributions/testing-with-sample-data.md),
+On the Glendale ,
 the `Grade`  table storage allocation grows by approximately 9% with the
 addition of this index: 75 MB additional space for sample grade data covering
 16,724 students. This is not a significant additional burden, and may not cause
