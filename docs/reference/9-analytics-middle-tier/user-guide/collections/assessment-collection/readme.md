@@ -15,26 +15,26 @@ summative, interim, or other benchmark assessments.
 
 ## Views in this Collection
 
-* [AssessmentFact](./asmt_AssessmentFact.md)
-* [StudentAssessmentFact](./asmt_StudentAssessmentFact.md)
+* [AssessmentFact](./asmt_assessmentfact.md)
+* [StudentAssessmentFact](./asmt_studentassessmentfact.md)
 
 The assessment collection comprises two Fact tables focused on assessments.
 
 The first fact table is called
-[AssessmentFact](./asmt_AssessmentFact.md) and
+[AssessmentFact](./asmt_assessmentfact.md) and
 this view combines the granularity of the assessment found in the assessment and
 objective assessment table as well as the assessment's association with learning
 standards.  Finally,
-the [AssessmentFact](./asmt_AssessmentFact.md) table
+the [AssessmentFact](./asmt_assessmentfact.md) table
 has denormalized summary information related to descriptions and reporting
 methods.
 
 The second fact table is
-called [StudentAssessmentFact](./asmt_StudentAssessmentFact.md) and
+called [StudentAssessmentFact](./asmt_studentassessmentfact.md) and
 this fact table summarizes the students' results of each assessment.  The fact
 table consolidates each student's reporting results and associates that
 information in a similar structure
-as [AssessmentFact](./asmt_AssessmentFact.md).  
+as [AssessmentFact](./asmt_assessmentfact.md).  
 
 ![Assessment Collection](https://edfidocs.blob.core.windows.net/$web/img/reference/analytics-middle-tier/Assessment%20Collection.png)
 

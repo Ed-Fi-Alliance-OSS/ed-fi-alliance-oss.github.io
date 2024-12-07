@@ -25,7 +25,7 @@ Kit](https://edfi.atlassian.net/wiki/spaces/SK/pages/22021402/Clinical+Experienc
 * [CandidateDim](./epp_candidatedim.md)
 * [CandidateSurveyDim](./epp_candidatesurveydim.md)
 * [EPPDim](./epp_eppdim.md)
-* [FinancialAidDim](./epp_financialaiddim.md)
+* [FinancialAidFact](./epp_financialaidfact.md)
 * [EvaluationElementRatingDim](./epp_evaluationelementratingdim.md)
 * [RaceDescriptorDim](./epp_racedescriptordim)
 * [SexDescriptorDim](./epp_sexdescriptordim.md)
