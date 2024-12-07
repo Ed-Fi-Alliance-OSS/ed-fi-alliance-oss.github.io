@@ -104,12 +104,12 @@ the primary key identifier and update the isUpdatable property to true.
 ```
 
 Run the code generation steps outlined in the [Getting Started
-Guide](https://edfi.atlassian.net/wiki/display/ODSAPIS3V60/Getting+Started+-+Source+Code+Installation) (i.e.,
-from a PowerShell prompt run `Initialize-PowershellForDevelopment.ps1` script,
-followed by the `initdev` command). At this point, the API would allow for
-natural key cascading updates, but database is not set to support the cascading
-updates yet. We need to update the foreign key constraints that dependencies of
-Account have on the target ODS.
+Guide](./../getting-started/source-code-installation/readme.md) (i.e., from a
+PowerShell prompt run `Initialize-PowershellForDevelopment.ps1` script, followed
+by the `initdev` command). At this point, the API would allow for natural key
+cascading updates, but database is not set to support the cascading updates yet.
+We need to update the foreign key constraints that dependencies of Account have
+on the target ODS.
 
 <details>
 <summary>Click for scripts</summary>

@@ -7,10 +7,9 @@ API. This kind of sandbox testing environment is typically isolated from
 production data, which ensures that your testing doesn't impact the integrity of
 the information in the production system.
 
-The Ed-Fi ODS / API comes with a Sandbox Administration Portal. Most platform
-hosts expose this portal to client developers. The Admin Portal allows users to
-create and manage testing environments that are completely isolated from
-production data.
+The Ed-Fi ODS / API comes with a Sandbox Administration Portal. The Admin Portal
+allows users to create and manage testing environments that are completely
+isolated from production data.
 
 ## Creating New Users
 
