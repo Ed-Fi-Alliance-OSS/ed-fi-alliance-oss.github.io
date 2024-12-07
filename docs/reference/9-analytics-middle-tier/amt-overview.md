@@ -19,7 +19,7 @@ led to the initial development of the AMT in 2018.
 
 ## Background
 
-## Problem Definition
+### Problem Definition
 
 Analytics tools offer the great promise of uncovering insights by making visible
 the connections between data. The latest generation of tools go further by

@@ -2,9 +2,6 @@
 
 :::warning December 2023:
 
-* Released: [Analytics Middle Tier
-v4.1.0](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Analytics-Middle-Tier/releases/tag/4.1.0),
-with support for .NET 8. October 2023
 * [Analytics Middle Tier Transitioning to Ed-Fi Exchange in
     2025](https://edfi.atlassian.net/wiki/spaces/ETKB/pages/20875033/Analytics+Middle+Tier+Transitioning+to+Ed-Fi+Exchange+in+2025)
 
@@ -22,7 +19,7 @@ information.
 
 The Analytics Middle Tier is a set of denormalized analytics views over the
 database tables backing an
-[https://edfi.atlassian.net/wiki/spaces/TT/pages/18648017](https://edfi.atlassian.net/wiki/spaces/TT/pages/18648017),
+[Ed-Fi ODS/API deployment](../../ods-api-platform),
 satisfying the user story:
 
 As a district data analyst, I want to build intelligent reporting on the Ed-Fi

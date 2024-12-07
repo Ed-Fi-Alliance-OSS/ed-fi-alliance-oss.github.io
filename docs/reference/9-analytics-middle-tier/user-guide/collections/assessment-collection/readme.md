@@ -15,26 +15,26 @@ summative, interim, or other benchmark assessments.
 
 ## Views in this Collection
 
-* [AssessmentFact](https://edfi.atlassian.net/wiki/display/EDFITOOLS/asmt_AssessmentFact)
-* [StudentAssessmentFact](https://edfi.atlassian.net/wiki/display/EDFITOOLS/asmt_StudentAssessmentFact)
+* [AssessmentFact](./asmt_AssessmentFact.md)
+* [StudentAssessmentFact](./asmt_StudentAssessmentFact.md)
 
 The assessment collection comprises two Fact tables focused on assessments.
 
 The first fact table is called
-[AssessmentFact](https://edfi.atlassian.net/wiki/display/EDFITOOLS/asmt_AssessmentFact) and
+[AssessmentFact](./asmt_AssessmentFact.md) and
 this view combines the granularity of the assessment found in the assessment and
 objective assessment table as well as the assessment's association with learning
 standards.  Finally,
-the [AssessmentFact](https://edfi.atlassian.net/wiki/display/EDFITOOLS/asmt_AssessmentFact) table
+the [AssessmentFact](./asmt_AssessmentFact.md) table
 has denormalized summary information related to descriptions and reporting
 methods.
 
 The second fact table is
-called [StudentAssessmentFact](https://edfi.atlassian.net/wiki/display/EDFITOOLS/asmt_StudentAssessmentFact) and
+called [StudentAssessmentFact](./asmt_StudentAssessmentFact.md) and
 this fact table summarizes the students' results of each assessment.  The fact
 table consolidates each student's reporting results and associates that
 information in a similar structure
-as [AssessmentFact](https://edfi.atlassian.net/wiki/display/EDFITOOLS/asmt_AssessmentFact).  
+as [AssessmentFact](./asmt_AssessmentFact.md).  
 
 ![Assessment Collection](https://edfidocs.blob.core.windows.net/$web/img/reference/analytics-middle-tier/Assessment%20Collection.png)
 
@@ -45,7 +45,7 @@ Install using the option code "ASMT"
 `.\EdFi.AnalyticsMiddleTier.Console.exe` `-c` `"..."` `-o` `ASMT`
 
 For more information, see the [AMT Deployment
-Guide](https://edfi.atlassian.net/wiki/display/EDFITOOLS/AMT+Deployment+Guide).
+Guide](../../../deployment-guide/readme.mdx).
 
 ## Example Queries
 

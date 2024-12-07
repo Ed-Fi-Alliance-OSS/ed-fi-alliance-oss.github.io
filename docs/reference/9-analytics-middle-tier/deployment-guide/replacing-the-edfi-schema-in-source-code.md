@@ -13,8 +13,7 @@ Analytics Middle Tier over a customized database can do so.
 
 ### Prerequisite
 
-* This procedure requires installation of [.NET Core SDK
-    3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1) on the developer
+* This procedure requires installation of [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download) on the developer
     workstation in order to recompile the source code.
 
 ### Steps
@@ -23,8 +22,36 @@ Analytics Middle Tier over a customized database can do so.
     ([https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Analytics-Middle-Tier](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Analytics-Middle-Tier)).
 2. Clone the fork onto a developer computer.
 3. Place the following script in the root repository
-    directory: [amt-change-source-schema.ps1](https://edfi.atlassian.net/wiki/download/attachments/24117711/amt-change-source-schema.ps1?version=1&modificationDate=1588082584830&cacheVersion=1&api=v2).
+    directory: 
+    
+    ```powershell title="amt-change-source-schema.ps1"
+        <#
+        This script will change all AMT SQL scripts to use a different schema in place
+        of "edfi", for those implementations which have customized their ODS database
+        by using some other schema name.
+        
+        Place this script in the root of the Analytics Middle Tier source code project.
+        #>        
+        param(
+            [string]
+            [Parameter(Mandatory=$true)]
+            $NewSchema
+        )
 
+        $filesToProcess = @{
+            Path = $PSScriptRoot
+            Recurse = $true
+            Filter = "*.sql"
+        }
+
+        Get-ChildItem @filesToProcess | ForEach-Object {        
+            $filePath = $_.FullName
+            $content = Get-Content -Path $filePath -Raw
+            $content = $content.Replace("edfi.", "$($NewSchema).")
+            $content = $content.Replace("[edfi].", "$($NewSchema).")
+            $content | Out-File -FilePath $filePath -Encoding UTF8
+        }
+   ```
 4. Execute the script against the desired release tag (for example, "2.0.0" for
     the AMT 2.0.0 release), commit all changes in a new branch, and push back to
     GitHub.\*
