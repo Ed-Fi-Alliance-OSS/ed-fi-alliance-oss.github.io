@@ -45,8 +45,6 @@ challenging point.
 :::info
 
 The sample queries and results below are based on the Glendale sample database.
-For more information, see [Testing With Sample
-Data](../contributor-guide/contributions/testing-with-sample-data.md).
 The article provides a few simple examples of what can be done with the views,
 but not all facets are explored.
 
