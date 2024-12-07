@@ -54,5 +54,4 @@ Install using the option code "engage"
 .\EdFi.AnalyticsMiddleTier.Console.exe -c "..." -o engage
 ```
 
-For more information, see the [AMT Deployment
-Guide](../../../deployment-guide/readme.md).
+For more information, see the [AMT Deployment Guide](../../../deployment-guide/readme.mdx).
