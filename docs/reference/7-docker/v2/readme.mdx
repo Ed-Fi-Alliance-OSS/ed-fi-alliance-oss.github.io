@@ -1,0 +1,587 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Docker Deployment 2.x
+
+## Overview
+
+The Ed-Fi ODS Docker deployment scripts install and configure components of the Ed-Fi ODS / API on Docker containers. The example [Docker Compose](https://docs.docker.com/compose/) files automate the numerous configuration steps required to get the ODS / API up and running on Linux containers backed by PostgreSQL or an external SQL Server. These scripts can be used for scenarios where a default ODS / API is needed without extensions or customizations.
+
+Please see [Ed-Fi Docker Compose Architecture](./architecture.md) for more information on the components and configuration options provided by the Ed-Fi Docker solution.
+
+:::warning
+
+The Ed-Fi Alliance does not have expertise in production deployments. Before deploying into a production environment, please review and adjust the orchestration as appropriate for your requirements.
+If running in a cloud provider, it might be wise to use native services to host the containers. In such situations, it might not be necessary or advisable to use the provided [NGiNX](https://www.nginx.com/) container as a reverse proxy. Similarly, [PgBouncer](https://www.pgbouncer.org/) might not be necessary in some situations. The roles played by NGiNX and PgBouncer are explained in the following sections.
+
+:::
+
+
+The following links contain relevant source code and published images:
+
+* Repository:
+  * [Ed-Fi-ODS-Docker](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Docker)
+  * Use [Releases page](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Docker/releases) to find the most recently published 2.x versions.
+  * [Latest Docker Deployment 2.3.3](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Docker/releases/tag/v2.3.0) deploys [Ed-Fi ODS / API for Suite 3 v6.2](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V62).
+  * [Docker Deployment 2.1.7](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Docker/releases/tag/v2.1.7) deploys [Ed-Fi ODS / API for Suite 3 v5.4](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54).
+* Images: [https://hub.docker.com/u/edfialliance](https://hub.docker.com/u/edfialliance)
+
+## Running in Docker Desktop
+
+Docker Containers have the added benefit of running anywhere (e.g., VMs, on premises, in the cloud), which is a huge advantage for both development and deployment. It has been adopted by leading cloud providers, including, Google Cloud, Amazon Web Services (AWS), and Microsoft Azure. For simplicity, the steps below describe how to use Docker Compose to deploy the Ed-Fi ODS/API and related tools on Docker Desktop.
+
+### Step 1. Download the Source Code or Clone the Repo
+
+The Ed-Fi ODS Docker deployment source code is contained in the Ed-Fi repository hosted by GitHub. A link to the repository is provided in the download panel on the right. You can either clone the repository or download the source code as a ZIP file.
+
+### Step 2. Setup Runtime Environment
+
+#### 2a. Docker Desktop
+
+To work with the material in this repository, set up a Docker environment by referring to the article [Set Up Your Docker Environment](https://docs.docker.com/get-started/#set-up-your-docker-environment).
+
+#### 2b. Microsoft SQL Server
+
+:::warning
+
+Experimental - this is not a widely tested deployment path.
+
+:::
+
+The default configurations use PostgreSQL. The Ed-Fi Alliance does not currently distribute pre-configured Microsoft SQL Server (MSSQL) containers. To run with MSSQL instead of PostgreSQL, whether MSSQL is running in Docker, as a managed cloud service, or on "bare metal" / on-prem virtual machine, you must install the databases yourself. The following notes will help guide a decision and approach,
+
+<details>
+  <summary>MSSQL Deployment Options</summary>
+
+  1. Run installations from the official binary distributions and documentation: \
+     ✅ PRO: can get minimal or populated template \
+     ❌ CON: con only run on localhost - requires a migration process \
+     ❌ CON: installs the full Admin App web application \
+     1. Follow steps 1 and 2 in [Sandbox Installation Steps: Step 2](https://edfi.atlassian.net/wiki/display/ODSAPIS3V61/Sandbox+Installation+Steps#SandboxInstallationSteps-Step2.InstalltheEd-FiDatabases), only downloading the EdFi.Suite3.RestApi.Databases package (ignore the package links for WebApi, SwaggerUI, and SandboxAdmin).
+     2. Install Admin App for Suite 3 v3.1.
+     3. Export data-tier applications (bacpac) for each of the created databases.
+     4. Import the data-tier applications onto your destination server.
+  2. Use experimental EdFi-MSSQL-Install-Scripts for a lighter-weight deploy process. This set of scripts uses the same installation files, but orchestrates them differently to avoid installing Admin App and to allow remote deployments. \
+     ✅ PRO: should be able to install into any destination MSSQL database you can reach \
+     ❌ CON: no sample data (minimal or populated template)
+
+</details>
+
+:::tip
+
+Before starting the Docker containers, make sure that the database user that you plan to use for the connection has permission to create objects in the ODS database(s), either as a ddl admin or db owner. This is because AdminApp installs additional reports into the ODS database on startup. It may be possible to change that access back to read/write only after first time startup, but this has not been robustly tested.
+
+:::
+
+### Step 3. Setup Your Environment Variables
+
+Configure your deployments using an environment file. The repository includes **.env.example**, which lists the supported environment variables. Copy **.env.example** file and name it **.env**. Update the values as desired.
+
+:::info
+
+Note: Compose supports declaring default [environment variables](https://docs.docker.com/compose/environment-variables/) in an environment file named **.env**, placed in the folder where the docker compose command is executed (current working directory). If you desire a different name or location for the **.env** file, use the `--env-file`  argument as shown below:
+
+```powershell
+docker compose --env-file .env.dev -f (docker-compose-filename) up
+```
+
+:::
+
+Sample .env files for a PostgreSQL and SQL Server are provided below. ⚠️ Please change these values to more secure settings before using in a deployed environment.
+
+:::tip
+
+The `LOGS_FOLDER` is a local directory for permanent storage of log files, and thus the file path is on the Docker Desktop host, not inside a container. In Windows, use forward slashes rather than backslashes.
+
+Values containing tokens such as `${xyz}` are variable insertions that you do not need to change.
+
+:::
+
+<Tabs>
+  <TabItem value="postgresql" label="PostgreSQL" default>
+  <details>
+  <summary>Sample .env for PostgreSQL</summary>
+  ```ini
+   ADMIN_USER=admin@example.com
+   ADMIN_PASSWORD=Admin1
+   LOGS_FOLDER=c:/tmp/logs
+   MINIMAL_KEY=minimal
+   MINIMAL_SECRET=minimalSecret
+   POPULATED_KEY=populated
+   POPULATED_SECRET=populatedSecret
+   POSTGRES_USER=postgres
+   POSTGRES_PASSWORD=P@ssw0rd
+   PGBOUNCER_LISTEN_PORT=6432
+   ODS_VIRTUAL_NAME=api
+   SANDBOX_ADMIN_VIRTUAL_NAME=admin
+   TPDM_ENABLED=true
+   TAG=v2
+
+   # Specify a health check url for ODS API, Admin App, Sandbox, and Swagger respectively.
+   # RECOMMENDED: To use the default internal health check endpoints, set:
+   API_HEALTHCHECK_TEST="curl -f http://localhost/health"
+   ADMINAPP_HEALTHCHECK_TEST="curl -f http://localhost/health"
+   SANDBOX_HEALTHCHECK_TEST="curl -f http://localhost/health"
+   SWAGGER_HEALTHCHECK_TEST="curl -f http://localhost/health"
+
+   # The following are only needed for Admin App
+   ADMINAPP_VIRTUAL_NAME=adminapp
+   API_HOSTNAME=localhost
+   ENCRYPTION_KEY=<base64-encoded 256-bit key>
+   API_INTERNAL_URL = http://${ODS_VIRTUAL_NAME}
+  ```
+  </details>
+  </TabItem>
+  <TabItem value="mssql" label="SQL Server">
+  <details>
+  <summary>Sample .env for MSSQL</summary>
+  ```ini
+  ADMIN_USER=admin@example.com
+  ADMIN_PASSWORD=Admin#1
+  LOGS_FOLDER=c:/tmp/logs
+  MINIMAL_KEY=minimal
+  MINIMAL_SECRET=minimalSecret
+  POPULATED_KEY=populated
+  POPULATED_SECRET=populatedSecret
+  SQLSERVER_ODS_DATASOURCE=<DNS or IP Address of the SQL Server Instance, i.e. sql.somedns.org or 10.1.5.9,1433>
+  SQLSERVER_ADMIN_DATASOURCE=<DNS or IP Address of the SQL Server Instance that contains the Admin/Security/Master databases, i.e. sql.somedns.org or 10.1.5.9,1433>
+  SQLSERVER_USER=<SQL Username with access to SQL Server Ed-Fi databases, edfiadmin>
+  SQLSERVER_PASSWORD=<SQL Password for the SQLSERVER_USER with access to SQL Server Ed-Fi databases, password123!>
+  SQLSERVER_ENCRYPT=<true/false to encrypt connections to SQL Server; if true, then the container must have the proper certificate>
+  ODS_VIRTUAL_NAME=api
+  SANDBOX_ADMIN_VIRTUAL_NAME=admin
+  TPDM_ENABLED=true
+  TAG=v2
+
+  # Specify a health check url for ODS API, Admin App, Sandbox, and Swagger respectively.
+  # RECOMMENDED: To use the default internal health check endpoints, set:
+  API_HEALTHCHECK_TEST="curl -f http://localhost/health"
+  ADMINAPP_HEALTHCHECK_TEST="curl -f http://localhost/health"
+  SANDBOX_HEALTHCHECK_TEST="curl -f http://localhost/health"
+  SWAGGER_HEALTHCHECK_TEST="curl -f http://localhost/health"
+
+  # The following are only needed for Admin App
+  ADMINAPP_VIRTUAL_NAME=adminapp
+  API_HOSTNAME=localhost
+  ENCRYPTION_KEY=<base64-encoded 256-bit key>
+  API_INTERNAL_URL = http://${ODS_VIRTUAL_NAME}
+  ADMINAPP_HEALTHCHECK_TEST="curl -f http://${ADMINAPP_VIRTUAL_NAME}/health"
+  ```
+  </details>
+
+  When running SQL Server on the same host computer as Docker Desktop - in other words, SQL Server is installed directly on the workstation, not running inside of Docker, set
+
+  ```
+  SQLSERVER_ODS_DATASOURCE=host.docker.internal
+  SQLSERVER_ADMIN_DATASOURCE=host.docker.internal
+  ```
+  </TabItem>
+</Tabs>
+
+When including the Admin App in your deployment, such as with the Shared Instance Configuration:
+
+* `API_HOSTNAME `value is required for successfully connecting to ODS/API. This should be the full host (server) name for public access to the API, not including protocol (e.g., "https") or path (e.g., "/api"). For example, if running on a virtual machine called "edfi" on network "[my-district.edu](http://my-district.edu)" then this value would be "API_HOSTNAME=[edfi.my-district.edu](http://edfi.my-district.edu)"
+* `ENCRYPTION_KEY `must be set to a newly generated AES encryption key for the deployment environment. Such a unique value can be [generated](https://docs.microsoft.com/en-us/dotnet/standard/security/generating-keys-for-encryption-and-decryption) using the following code snippet at a Linux command prompt or using Git Bash, if deploying on local Windows host.
+
+  ```bash title="Generate key on Linux"
+  openssl rand -base64 32
+  ```
+
+* `API_INTERNAL_URL `needs to be set to specify the ODS / API endpoint for admin app to internally connect.
+* If you choose direct connection between ODS / API and admin app within docker network, then set `API_INTERNAL_URL = http://${ODS_VIRTUAL_NAME}`
+* If you choose to connect to ODS / API from admin app through reverse proxy (nginx = our gateway host name), then follow the steps below.
+* STEP 1: Update the CA certificate to include `subjectAltName = DNS:nginx`; please refer **Step 4. Provide SSL certificate** for more details.
+* STEP 2: After the CA certificate update, set `API_INTERNAL_URL = https://nginx/${ODS_VIRTUAL_NAME}`
+* `ADMINAPP_HEALTHCHECK_TEST `must be set to specify a health check url for admin app.
+* RECOMMENDED: To use the default internal Admin App health check endpoint, set `ADMINAPP_HEALTHCHECK_TEST="curl -f http://${ADMINAPP_VIRTUAL_NAME}/health"`
+* To disable the health check, remove the above and instead set `ADMINAPP_HEALTHCHECK_TEST=/bin/true`
+* To add a custom health check, consult the documentation at [Healthcheck](https://docs.docker.com/compose/compose-file/compose-file-v3/#healthcheck)
+
+### Step 4. Provide SSL certificate
+
+The deployments require a valid SSL certificate to function. A self-signed certificate can be used for a Non-Production environment. The repository includes `generate-cert.sh` script that can be used to generate a self-signed certificate and place it in `ssl` folder under root directory to be used by the running Gateway container.
+
+If deploying on local Windows host, you will either need Git Bash or WSL to run `generate-cert.sh`.
+
+<Tabs>
+  <TabItem value="gitbash" label="Git Bash" default>
+    * Start a Git Bash Session
+    * Run the following commands:
+
+    ```bash
+    export MSYS_NO_PATHCONV=1
+    cd '{your repo root}'
+    ./generate-cert.sh
+    ```
+  </TabItem>
+  <TabItem value="wsl" label="WSL">
+    * [Enable WSL and install a Linux from the Microsoft Store](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
+    * Start a WSL session.
+    * Run script `generate-cert.sh` (i.e., `./generate-cert.sh`).
+  </TabItem>
+  <TabItem value="macosx" label="MacOSX">
+    Tip from community members: Ensure that you have LibreSSL 3.1.0 or newer and add the new version of `openssl`  to your path. Then run the generation script from the command line.
+
+    ```bash
+    brew install openssl
+    export PATH=/usr/local/opt/openssl/bin:$PATH
+    ./generate-cert.sh
+    ```
+  </TabItem>
+</Tabs>
+
+:::info
+
+To allow Admin app to communicate with the ODS / API via reverse proxy/ gateway (nginx), generate-cert.sh file was updated to include subjectAltName with value DNS:nginx as follows:
+
+```bash
+openssl req -subj '/CN=localhost' -x509 -newkey rsa:4096 -nodes -keyout ssl/server.key -out ssl/server.crt -days 365 -addext "subjectAltName = DNS:nginx"
+```
+
+"nginx" is the default gateway host name in the Docker Compose files.
+
+Regenerate your certificate if you are upgrading from a previous version. If not using generate-cert.sh for generating the certificate, then consider providing "subjectAltName = DNS:nginx" when creating CA certificate.
+
+If you prefer not to update your certificate at this time, please refer to Step 3: Setup Your Environment Variables for details on an alternate way to set up the API_INTERNAL_URL to fallback to not using reverse proxy for communication between Admin App and ODS / API.
+
+:::
+
+### Step 5. Run Docker Compose
+
+In this step, you need to choose between deploying a **Sandbox,** **Shared Instance, Year Specific, or District Specific **environment, as described in [Docker Compose Architecture: ConfigurationModes](https://edfi.atlassian.net/wiki/spaces/EDFITOOLS/pages/24119332#Ed-FiDocker2.xComposeArchitecture-ConfigurationModes). The source code repository contains two Docker compose orchestration files for each mode: one that downloads images from Docker Hub, and one that has the word "build" in the file name. The latter builds a local version of the image instead of downloading from Docker Hub. The sample commands below show the use of the pre-built images from Docker Hub. These commands can be run from any shell terminal that supports Docker commands (e.g. PowerShell in Windows).
+
+:::info
+
+If you are upgrading from a previous version, make sure to cleanup local copies of images using [rmi](https://docs.docker.com/engine/reference/commandline/rmi/) command before installing new version.
+
+:::
+
+:::warning Using SQL Server Instead of PostgreSQL
+
+SQL Server databases are not created by the Docker Compose file; this means that `EdFi_Admin` and `EdFi_Security` databases should already exist within the server defined by `SQLSERVER_ADMIN_DATASOURCE` in the .env file. Similarly, the ODS databases for desired school years should already exist with the correct naming convention, which is described for each configuration below.
+
+:::
+
+#### Sandbox Environment
+
+
+<Tabs>
+  <TabItem value="postgresql" label="PostgreSQL" default>
+    ```bash
+    docker compose -f ./Compose/pgsql/compose-sandbox-env.yml --env-file ./.env up -d
+    ```
+  </TabItem>
+  <TabItem value="mssql" label="SQL Server">
+    ```bash
+    docker compose -f ./Compose/mssql/compose-sandbox-env.yml --env-file ./.env up -d
+    ```
+  </TabItem>
+</Tabs>
+
+#### Shared Instance Environment
+
+<Tabs>
+  <TabItem value="postgresql" label="PostgreSQL" default>
+    ```bash
+    docker compose -f ./Compose/pgsql/compose-shared-instance-env.yml --env-file ./.env up -d
+    ```
+  </TabItem>
+  <TabItem value="mssql" label="SQL Server">
+    ```bash
+    docker compose -f ./Compose/mssql/compose-shared-instance-env.yml --env-file ./.env up -d
+    ```
+  </TabItem>
+</Tabs>
+
+#### Year Specific Environments
+
+<Tabs>
+  <TabItem value="postgresql" label="PostgreSQL" default>
+    ```bash
+    docker compose -f ./Compose/pgsql/compose-year-specific-env.example.yml --env-file ./.env up -d
+    ```
+  </TabItem>
+  <TabItem value="mssql" label="SQL Server">
+    ```bash
+    docker compose -f ./Compose/mssql/compose-year-specific-env.yml --env-file ./.env up -d
+    ```
+  </TabItem>
+</Tabs>
+
+:::warning SQL Server caution
+
+The ODS databases for desired school years should already exist with the name format `EdFi_Ods_{year}` within the server defined by `SQLSERVER_ODS_DATASOURCE `in the .env file.
+
+Alternatively, each year-specific ODS database can reside in its own SQL Server instance (multi-server scenario). To enable this, in the .env set `SQLSERVER_ODS_DATASOURCE=EdFi_{0}` where `{0}` will get replaced by` 'Ods_' `+ year, for example for the year 2022, the server hostname will be `EdFi_Ods_2022`.
+
+:::
+
+Notice that the compose file provided in the repository is an example that defines ODS for years 2022 and 2023.  You can generate the compose file for desired school years.
+
+
+<details>
+  <summary>Generating a Docker Compose file</summary>
+  To customize for desired school years, you can use the Mustache template provided in the repository.
+
+  Navigate to the folder where you cloned/downloaded Ed-Fi-ODS-Docker repository and go to the sub-folder `Compose-Generator/Alpine/templates/pgsql`; in there, you will find example configuration files that instructs the Mustache template on how to generate the final Docker Compose file.
+
+  Copy `parameters-year-specific.example.yml` and update it as you see fit; the available options are:
+
+  * `usePreBuiltImages` - If enabled; the resulting Docker Compose file will use images from Ed-Fi's Docker Hub; disable it only if you made changes to the Docker images defined in this repository and you want to test them
+  * `apiMode` - Valid values are YearSpecific and DistrictSpecific
+  * `tokens` - A collection where you can define the desired years or districts
+  * `tokens.token` - The year or the district
+  * `tokens.pgBouncerPort` - (Optional) Exposed pgBouncer port that you can use to connect to the year or district Postgres server
+
+  To generate the final Docker Compose file:
+
+  1. Go to folder: `Compose/pgsql`
+  2. Execute:
+
+    ```bash
+    docker run --rm -v <full-path-to-parameters-file>:/parameters edfialliance/ods-compose-generator > compose-year-specific-env.yml
+    ```
+
+    :::info Example
+
+    ```bash
+    docker run --rm -v C:\Ed-Fi-ODS-Docker\Compose-Generator\Alpine\templates\pgsql\parameters-year-specific.yml:/parameters edfialliance/ods-compose-generator > compose-year-specific-env.yml
+    ```
+
+    :::
+
+</details>
+
+#### District Specific Environments
+
+<Tabs>
+  <TabItem value="postgresql" label="PostgreSQL" default>
+    ```bash
+    docker compose -f .\Compose\pgsql\compose-district-specific-env.example.yml --env-file ./.env up -d
+    ```
+  </TabItem>
+  <TabItem value="mssql" label="SQL Server">
+    ```bash
+    docker compose -f .\Compose\mssql\compose-district-specific-env.yml --env-file ./.env up -d
+    ```
+  </TabItem>
+</Tabs>
+
+:::warning
+
+The ODS databases for desired districts should already exist with the name format `EdFi_Ods_{district}` within the server defined by `SQLSERVER_ODS_DATASOURCE `in the .env file.
+
+Alternatively, each district specific ODS database can reside in its own SQL Server instance (multi-server scenario). To enable this, in the .env set `SQLSERVER_ODS_DATASOURCE=EdFi_{0}` where `{0}` will get replaced by` 'Ods_' `+ district, for example for the district 255901 the server hostname will be `EdFi_Ods_255901`.
+
+:::
+
+Notice that the compose file provided in the repository is an example that defines ODS for district 255901 and 255902.  You can generate the compose file for desired districts.
+
+<details>
+  <summary>Generating a Docker Compose file</summary>
+  To customize for desired districts, you can use the Mustache template provided in the repository.
+
+  Navigate to the folder where you cloned/downloaded Ed-Fi-ODS-Docker repository and go to the sub-folder `Compose-Generator/Alpine/templates/pgsql`; in there, you will find example configuration files that instructs the Mustache template on how to generate the final Docker Compose file.
+
+  Copy `parameters-district-specific.example.yml` and update it as you see fit; the available options are:
+
+  * `usePreBuiltImages` - If enabled; the resulting Docker Compose file will use images from Ed-Fi's Docker Hub; disable it only if you made changes to the Docker images defined in this repository and you want to test them
+  * `apiMode` - Valid values are YearSpecific and DistrictSpecific
+  * `tokens` - A collection where you can define the desired years or districts
+  * `tokens.token` - The year or the district
+  * `tokens.pgBouncerPort` - (Optional) Exposed pgBouncer port that you can use to connect to the year or district Postgres server
+
+  To generate the final Docker Compose file:
+
+  1. Go to folder: `Compose/pgsql`
+  2. Execute:
+
+    ```bash
+    docker run --rm -v <full-path-to-parameters-file>:/parameters edfialliance/ods-compose-generator > compose-district-specific-env.yml
+    ```
+</details>
+
+
+### Step 6. Verify Your Deployments
+
+Open your Docker Desktop instance and view running container instances.
+
+The following image shows **sandbox** Postgres deployment:
+
+![Docker Desktop screenshot](https://edfidocs.blob.core.windows.net/$web/img/reference/docker/docker-2x-sandbox.webp)
+
+You can also verify deployed applications by browsing to:
+
+* Swagger UI: [https://localhost/docs](https://localhost/docs)
+* ODS / API: [https://localhost/api](https://localhost/api)
+* Sandbox Admin: [https://localhost/admin](https://localhost/admin)
+
+:::tip
+
+The exact virtual name for each site, after "https://localhost/", depends on your .env  file settings.
+
+:::
+
+The following image shows **shared instance** Postgres deployment:
+
+![Docker Desktop screenshot](https://edfidocs.blob.core.windows.net/$web/img/reference/docker/docker-2x-shared.webp)
+
+You can also verify deployed applications by browsing to:
+
+* ODS / API: [https://localhost/api](https://localhost/api)
+* Admin App: [https://localhost/adminapp](https://localhost/adminapp)
+
+The following image shows **year specific** Postgres deployment:
+
+![Docker Desktop screenshot](https://edfidocs.blob.core.windows.net/$web/img/reference/docker/docker-2x-year-specific.webp)
+
+You can also verify deployed applications by browsing to:
+
+* ODS / API: [https://localhost/api](https://localhost/api)
+* Admin App: [https://localhost/adminapp](https://localhost/adminapp)
+
+The following image shows **district specific** Postgres deployment:
+
+![Docker Desktop screenshot](https://edfidocs.blob.core.windows.net/$web/img/reference/docker/docker-2x-district-specific.webp)
+
+
+You can also verify deployed applications by browsing to:
+
+- ODS / API : [https://localhost/api](https://localhost/api)
+- Admin App : [https://localhost/adminapp](https://localhost/adminapp)
+
+### Step 7. Restarting the ODS/API
+
+:::tip
+
+This step is only for ODS / API versions is 3.4 through 5.2. ODS / API versions 5.3 and higher do not require a service restart.
+
+:::
+
+After the first time setup for Admin App, the user is prompted to restart the ODS/API. For Docker deployments, the ODS/API can be restarted by clicking on the restart button (see image) next to the ODS/API container on your Docker Desktop instance.
+
+![Docker Desktop screenshot](https://edfidocs.blob.core.windows.net/$web/img/reference/docker/docker-2x-restarting.webp)
+
+### Step 8. Accessing Application Log Files
+
+The ODS/API, Admin App and Sandbox Admin write their internal log entries to a mounted folder within their docker containers. The environment file described in the Step 3 lets you configure log location for easy access. For example, you could set LOGS_FOLDER variable to c:/tmp/logs for windows hosts or to ~/tmp/logs for Linux and MacOS hosts.
+
+### (Optional) Step 9. Install Analytics Middle Tier
+
+The Analytics Middle Tier (AMT) installer application is available as a Docker image. Run the following to see the full set of command line options:
+
+```bash
+docker run -t edfialliance/analytics-middle-tier --help
+```
+
+Do not use "localhost" in the connection string, as that will refer only to the docker instance itself - which does not have a running database. If you wish to install AMT views in a database engine running on your local workstation, or running in another Docker container with a port mapped on the workstation, then use host name `host.docker.internal` (credit: [How to connect to the Docker host from inside a Docker container?](https://medium.com/@TimvanBaarsen/how-to-connect-to-the-docker-host-from-inside-a-docker-container-112b4c71bc66)). The following example will install on a PostgreSQL-hosted shared instance database that is hosted using this page's instructions, with two options (extra indexes, and the chronic absenteeism collection).
+
+:::warning
+
+Note the case sensitivity on the database name - do not use \"EdFi_ODS\" instead of \"EdFi_Ods\", for example.
+
+:::
+
+<Tabs>
+  <TabItem value="powershell" label="PowerShell" default>
+  ```powershell
+  $ConnString="host=host.docker.internal; port=5402; user id=postgres; password=P@ssw0rd; database=EdFi_Ods"
+  $Options="indexes,chrab"
+  $Engine="postgresql"
+
+  docker run -t edfialliance/analytics-middle-tier `
+    --connectionString $ConnString `
+    --options $Options `
+    --engine $Engine
+  ```
+  </TabItem>
+  <TabItem value="bash" label="Bash">
+  ```bash
+  ConnString="host=host.docker.internal; port=5402; user id=postgres; password=P@ssw0rd; database=EdFi_Ods"
+  Options="indexes,chrab"
+  Engine="postgresql"
+  docker run -t edfialliance/analytics-middle-tier \
+    --connectionString "$ConnString" \
+    --options $Options \
+    --engine $Engine
+  ```
+  </TabItem>
+</Tabs>
+
+## Tear Down
+
+
+If deployed as a sandbox environment, navigate to the root directory of Docker deployment scripts, and run the following command:
+
+<Tabs>
+  <TabItem value="postgresql" label="PostgreSQL" default>
+    ```bash
+    docker compose -f ./compose/pgsql/compose-sandbox-env.yml --env-file ./.env down
+    ```
+  </TabItem>
+  <TabItem value="mssql" label="SQL Server">
+    ```bash
+    docker compose -f ./compose/mssql/compose-sandbox-env.yml --env-file ./.env  down
+    ```
+  </TabItem>
+</Tabs>
+
+If deployed as a shared instance environment, navigate to the root directory of Docker deployment scripts and run the following script:
+
+<Tabs>
+  <TabItem value="postgresql" label="PostgreSQL" default>
+    ```bash
+    docker compose -f ./compose/pgsql/compose-shared-instance-env.yml --env-file ./.env  down
+    ```
+  </TabItem>
+  <TabItem value="mssql" label="SQL Server">
+    ```bash
+    docker compose -f ./compose/mssql/compose-shared-instance-env.yml --env-file ./.env  down
+    ```
+  </TabItem>
+</Tabs>
+
+If deployed as a year specific environment, navigate to the root directory of Docker deployment scripts and run the following script:
+
+<Tabs>
+  <TabItem value="postgresql" label="PostgreSQL" default>
+    ```bash
+    docker compose -f .\Compose\pgsql\compose-year-specific-env.example.yml --env-file ./.env down
+    ```
+  </TabItem>
+  <TabItem value="mssql" label="SQL Server">
+    ```bash
+    docker compose -f .\Compose\mssql\compose-year-specific-env.yml --env-file ./.env down
+    ```
+  </TabItem>
+</Tabs>
+
+If deployed as a district specific environment, navigate to the root directory of Docker deployment scripts and run the following script:
+
+<Tabs>
+  <TabItem value="postgresql" label="PostgreSQL" default>
+    ```bash
+    docker compose -f .\Compose\pgsql\compose-district-specific-env.example.yml --env-file ./.env down
+    ```
+  </TabItem>
+  <TabItem value="mssql" label="SQL Server">
+    ```bash
+    docker compose -f .\Compose\mssql\compose-district-specific-env.yml --env-file ./.env  down
+    ```
+  </TabItem>
+</Tabs>
+
+:::tip Additional Docker Tips
+
+* Add the argument` --remove-orphans` if the Docker Compose file has changed and you want to clear out old images that are no longer in use.
+* If you also wish to remove the local volumes used for persistent storage, add `-v` to the `docker compose ... down` command.
+* Use [rmi](https://docs.docker.com/engine/reference/commandline/rmi/) command to cleanup local copies of images if you do not expect to use them again, and what to reclaim disk space.
+
+:::
+
+# Known Issues
+
+The table below identifies known issues in this release.
+
+* `POSTGRES_USER` variable is not configurable with current release and only works with default `POSTGRES_USER=postgres` setting.
+* Issue: Learning standard process on Admin App failing intermittently. Temporary solution: Please reload/ rerun the Learning standards process for fixing the issue.
