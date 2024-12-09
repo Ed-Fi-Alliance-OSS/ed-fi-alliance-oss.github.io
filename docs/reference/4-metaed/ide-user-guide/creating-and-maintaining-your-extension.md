@@ -94,8 +94,8 @@ if errors continue to occur.
     mkdir Interchange
     mkdir Shared
 
-    # Download a package.json file template. Be sure to edit it and replace with your project name.
-    curl https://edfi.atlassian.net/wiki/download/attachments/23709491/package.json?api=v2 -o package.json
+    # Create an initial package.json file
+    echo '{  "metaEdProject": {    "projectName": "MyExtension",    "projectVersion": "1.0.0"  }}' > package.json
     ```
 
 2. Open this folder in Visual Studio Code.
@@ -114,7 +114,8 @@ Simply add one or more folders with the "Add Folder to Workspace..." command.
     :::warning
 
     There are some MetaEd settings visible under the User tab. Please ignore
-    these and only use the Workspace tab.
+    these and only use the Workspace tab. This tab is only available if you
+    have already added a folder to your workspace (step 2b).
 
     :::
 
