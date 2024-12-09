@@ -60,21 +60,22 @@ reports other errors due to resource availability (e.g., HTTP 500 error). The
 client is expected to be able to handle successfully such situations.
 
 ### Performance and Optimization
+
 API clients should minimize API transactions and reduce network traffic.
 
-This set of best practices will help to ensure scalability of API hosts by focusing on efficiency of 
-integrations. They will minimize unnecessary data transfers, data churn, and network overhead and 
-thereby also reduce costs. Since API implementation can be shared resources, these can also reduce 
+This set of best practices will help to ensure scalability of API hosts by focusing on efficiency of
+integrations. They will minimize unnecessary data transfers, data churn, and network overhead and
+thereby also reduce costs. Since API implementation can be shared resources, these can also reduce
 overall latency time or similar complications for the entire vendor community transacting with the API.
 
 Certification will test for the product's ability to perform targeted syncs and use a multi-threading
-strategy for API transaction management. Updates should only be made to targeted elements and not sync 
-unaffected resources. This requirement will minimize uncessesary data transfers, data churn and network 
+strategy for API transaction management. Updates should only be made to targeted elements and not sync
+unaffected resources. This requirement will minimize unnecessary data transfers, data churn and network
 overhead. The system should be able to perform the following during scenario testing:
 
 * Resync single records that have previously failed.
 * Resync by single API resource (e.g., all sections, all staff)
-* Select and resync a smaller subset of API resources (e.g., by time period, by resource, etc.) 
+* Select and resync a smaller subset of API resources (e.g., by time period, by resource, etc.)
 
 In addition, the system’s primary behavior should be to update records in place using POST/PUT rather than DELETE/POST​.
 
