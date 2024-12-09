@@ -42,8 +42,7 @@ of person-USI-to-Unique-Id mapping in external cache storage. In previous
 versions, the entire serialized mappings were transferred to and deserialized
 from an external cache provider like Redis every time a translation was needed.
 With the latest release, this process has been refined to minimize network
-overhead. Refer to [How To: Use an External Cache Provider for the Ed-Fi
-API](https://edfi.atlassian.net/wiki/display/ODSAPIS3V61/How+To%3A+Use+an+External+Cache+Provider+for+the+Ed-Fi+API)
+overhead. Refer to [How To: Use an External Cache Provider for the Ed-Fi API](./../how-to-guides/how-to-use-an-external-cache-provider-for-the-ed-fi-api.md)
 for details on how to enable external caching and how to choose external or
 in-memory caching for specific cache data.
 
@@ -95,7 +94,7 @@ institution's needs.
 
 It is important for implementers to note that Ed-Fi ODS / API v7.0 introduces
 breaking changes listed in the [release
-notes](https://edfi.atlassian.net/wiki/display/ODSAPIS3V70/What%27s+New+-+Release+Notes#What%27sNewReleaseNotes-breakingchanges).
+notes](./../whats-new/release-notes.md#ed-fi-ods--api-v7x---breaking-changes).
 These changes will impact the behavior of the API in both [Ed-Fi Data Standard
 v4](https://edfi.atlassian.net/wiki/display/EFDS4X/) and [Ed-Fi Data Standard
 v5](https://edfi.atlassian.net/wiki/display/EFDS5/Ed-Fi+Data+Standard+v5) implementations.
@@ -121,10 +120,9 @@ redeployment.  Additionally, profiles now integrate seamlessly with extension
 plugins. This enhancement empowers administrators to modify data policies even
 after the deployment of ODS / API throughout the school year, accommodating
 evolving consumer needs. For general overview of profiles feature refer to [API
-Profiles](https://edfi.atlassian.net/wiki/display/ODSAPIS3V71/API+Profiles) and
-for for technical implementation details consult [How To: Add Profiles to the
-Ed-Fi ODS /
-API](https://edfi.atlassian.net/wiki/pages/viewpage.action?pageId=25493741).
+Profiles](./../platform-dev-guide/security/api-profiles.md) and for
+for technical implementation details consult [How To: Add Profiles to the Ed-Fi
+ODS / API](./../how-to-guides/how-to-add-profiles-to-the-ed-fi-ods-api.md).
 
 In addition to profile configuration, Ed-Fi ODS / API v7.0 simplifies profile
 usage. The ODS / API now evaluates incoming API requests to determine whether
@@ -142,26 +140,26 @@ versions. ODS instances are now configured and linked to API clients within the
 Admin database, allowing configuration of complete connection strings. This
 setup enables ODS instances to reside on separate database servers, ensuring
 improved performance and security. Refer to [API Client and ODS Instance
-Configuration](https://edfi.atlassian.net/wiki/display/ODSAPIS3V71/API+Client+and+ODS+Instance+Configuration)
+Configuration](./../platform-dev-guide/configuration/api-client-and-ods-instance-configuration.md)
 for details. API administrators retain the ability to implement previously
 supported [database segmentation
-strategies](https://edfi.atlassian.net/wiki/pages/viewpage.action?pageId=25493647#PlatformDevGuideExtensibility&Customization-DbPartition).
+strategies](./../platform-dev-guide/extensibility-customization/readme.md#database-segmentation-strategy).
 API administrators can opt for implicit routes (segmentation information not
-visible in the routes). Additionally, administrators have the option to configure
-database segmentation for explicit routes with [Context-Based
-Routing](https://edfi.atlassian.net/wiki/display/ODSAPIS3V71/Context-Based+Routing+for+Year-Specific+ODS).
+visible in the routes). Additionally, administrators have the option to
+configure database segmentation for explicit routes with [Context-Based
+Routing](./../platform-dev-guide/configuration/context-based-routing-for-year-specific-ods.md).
 Streamlined routes in ODS / API v7.0 offer simplified route configurations
 within client applications. Details on route patterns can be found in the [API
-Routes](https://edfi.atlassian.net/wiki/display/ODSAPIS3V71/API+Routes) section.
+Routes](./../client-developers-guide/api-routes.md) section.
 
 Further enhancing capabilities, snapshot for change processing can now be
 configured on separate database server from the primary ODS. Additionally, newly
-introduced [Read-Replicas](https://edfi.atlassian.net/wiki/display/ODSAPIS3V71/Read-Replicas)
+introduced [Read-Replicas](./../platform-dev-guide/features/read-replicas.md)
 can offload GET requests, contributing to optimized performance.
 
 To ensure security and efficient management of tenants, ODS / API
 v7.0 introduces support for [Multi Tenant
-Configuration](https://edfi.atlassian.net/wiki/display/ODSAPIS3V71/Single+and+Multi-Tenant+Configuration#SingleandMultiTenantConfiguration-multiTenantSetting).
+Configuration](./../platform-dev-guide/configuration/single-and-multi-tenant-configuration.md#multi-tenant-configuration).
 This setup configures separate Admin and Security databases for each tenant.
 
 ### MetaEd IDE v4.2
