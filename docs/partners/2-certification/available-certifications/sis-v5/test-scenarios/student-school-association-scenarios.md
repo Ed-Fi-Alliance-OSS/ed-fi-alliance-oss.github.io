@@ -27,7 +27,7 @@ using the StudentEducationOrganizationAssociation.
 3. Update the entry date for the elementary student's StudentSchoolAssociation.
     Remove the exitWithdraw Date and exitWithdraw Descriptor.
 4. Add a graduation plan reference to the High School student's
-   StudentSchoolAssociation.
+   StudentSchoolAssociation and update the student's associated calendar.
 5. Update the exitWithdrawDate for the elementary school student.
 6. Delete the StudentSchoolAssociation for the elementary school student.
 
@@ -38,6 +38,7 @@ Additional Requirements for StudentSchoolAssociation
   student enrollment in the education organization changes, or at the end of a
   school year.  Rather, the association should be thought of as a core part of
   the student record, but scoped to the education organization.
+* A student must have an association with a Calendar and the association should not be deleted, only updated. 
 
 | Resource                  | Property Name                | Is Collection | Data Type                    | Required | Scenario 1: POST                       | Scenario 2: POST                       | Scenario 3: PUT                        | Scenario 4: PUT                        | Scenario 4: PUT                        |
 | ------------------------- | ---------------------------- | ------------- | ---------------------------- | -------- | -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
@@ -56,3 +57,4 @@ Additional Requirements for StudentSchoolAssociation
 | StudentSchoolAssociations | exitWithdrawTypeDescriptor   | FALSE         | exitWithdrawTypeDescriptor   | REQUIRED | Transferred                            |                                        |                                        |                                        | Transferred                            |
 | StudentSchoolAssociations | repeatGradeIndicator         | FALSE         | boolean                      | REQUIRED | FALSE                                  | FALSE                                  | FALSE                                  | FALSE                                  | FALSE                                  |
 | StudentSchoolAssociations | residencyStatusDescriptor    | FALSE         | residencyStatusDescriptor    | REQUIRED | Resident of admin unit and school area | Resident of admin unit and school area | Resident of admin unit and school area | Resident of admin unit and school area | Resident of admin unit and school area |
+| Calendars                 | calendarCode                 | FALSE         | string                       | REQUIRED | 107SS111111                            | [High School calendarCode]             | 107SS111111                            | [New High School calendarCode]         | 107SS111111                            |
