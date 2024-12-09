@@ -1,4 +1,4 @@
-# MetaEd IDE - Creating and Maintaining Your Extension
+# Creating and Maintaining Your Extension
 
 The MetaEd IDE makes it easy for implementers to create their own Ed-Fi
 Extensions. The basic steps to do that are fairly simple, and so are a great

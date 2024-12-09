@@ -1,4 +1,4 @@
-# MetaEd IDE - Core Concepts
+# Core Concepts
 
 This section outlines core concepts related to MetaEd.
 
