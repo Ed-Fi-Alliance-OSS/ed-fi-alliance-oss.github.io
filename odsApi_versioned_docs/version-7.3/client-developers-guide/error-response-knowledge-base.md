@@ -1657,7 +1657,7 @@ for resolution.
 * Using a tool like Admin API or Admin App, confirm that the key is configured
   for access to the intended namespace.
 * Using
-  [Tokeninfo](https://edfi.atlassian.net/wiki/display/ODSAPIS3V71/Authorization#Authorization-tokeninfo)
+  [Tokeninfo](./../client-developers-guide/authorization.md#token-info)
   endpoint, confirm that the key is configured for access to the intended
   namespace.
 
