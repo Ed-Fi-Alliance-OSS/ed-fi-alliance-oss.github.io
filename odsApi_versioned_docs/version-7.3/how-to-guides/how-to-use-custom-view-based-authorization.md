@@ -110,9 +110,7 @@ manner.
 Next, use the new authorization strategy for authorization of a resource claim
 on a claim set’s actions using your preferred approach.
 
-The declarative XML snippet below follows the approach described in [How To:
-Create and Manage API Security Metadata using Declarative Security
-Policies](/reference/ods-api/7.3/how-to-guides/how-to-create-and-manage-api-security-metadata-using-declarative-security-policies)
+The declarative XML snippet below follows the approach described in [How To: Create and Manage API Security Metadata using Declarative Security Policies](./how-to-create-and-manage-api-security-metadata-using-declarative-security-policies.mdx)
 and applies the new authorization strategy to the Student resource for API
 clients assigned to the Ed-Fi Sandbox claim set. This XML can be transformed
 into a database script using the `transform.ps1` script located in the
