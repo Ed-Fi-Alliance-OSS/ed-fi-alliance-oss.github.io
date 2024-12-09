@@ -18,14 +18,14 @@ Hub](https://hub.docker.com/r/edfialliance/).
 
 | Image Name | Application | Purpose |
 | --- | --- | --- |
-| ods-api-web-gateway | NGiNX​ 1.25.1 | Reverse proxy web server that provides:<br/><br/>1.  Single point of entry for HTTPS traffic into the Docker network, serving routes for:<br/>    1.  Web API<br/>    2.  Admin Api<br/>2.  SSL termination<br/>3.  (Potential) load balancing for multiple Web API instances<br/>4.  (Potential) traffic logging<br/><br/>_"Potential" means that the container can be reconfigured to support these features._ |
+| ods-api-web-gateway | NGiNX 1.25.1 | Reverse proxy web server that provides:<br/><br/>1.  Single point of entry for HTTPS traffic into the Docker network, serving routes for:<br/>    1.  Web API<br/>    2.  Admin Api<br/>2.  SSL termination<br/>3.  (Potential) load balancing for multiple Web API instances<br/>4.  (Potential) traffic logging<br/><br/>_"Potential" means that the container can be reconfigured to support these features._ |
 | ods-api-web-gateway-sandbox | NGiNX 1.25.1 | Similar to ods-api-web-gateway, except serving routes for:<br/><br/>_Web API<br/>_   Sandbox Admin Web<br/>*   Swagger UI |
 | ods-api-web-api | Ed-Fi Web API | Hosts the core Ed-Fi Web API web service. Sections below describe various configuration options. Configured for use with PostgreSQL databases. |
 | ods-api-web-api:`<TAG>`-mssql | Ed-Fi Web API | Hosts the core Ed-Fi Web API web service. Sections below describe various configuration options. Configured for use with Microsoft SQL Server databases. |
 | ods-api-web-swaggerui | Ed-Fi SwaggerUI | Hosts a web-based user interface for documenting the API and allowing users with client credentials to interact with the API. |
 | ods-api-web-sandbox-admin | Ed-Fi Sandbox Admin | Hosts the Ed-Fi Sandbox web application, used for configuring new sandboxes used for client testing. Configured for use with PostgreSQL databases. |
 | ods-api-web-sandbox-admin:`<TAG>`-mssql | Ed-Fi Sandbox Admin | Hosts the Ed-Fi Sandbox web application, used for configuring new sandboxes used for client testing. Configured for use with Microsoft SQL Server databases. |
-| ods-api-db-ods | PostgreSQL 13.12 | Pre-configured PostgreSQL database containing the ODS database, with both the Ed-Fi core data model and the Teacher Preparation Data Model (TPDM). Loaded with the "minimal template" that provides a default set of [Descriptors](https://edfi.atlassian.net/wiki/spaces/EFDS32/pages/20187680/Descriptor+Guidance) and no other data. |
+| ods-api-db-ods | PostgreSQL 13.12 | Pre-configured PostgreSQL database containing the ODS database, with both the Ed-Fi core data model and the Teacher Preparation Data Model (TPDM). Loaded with the "minimal template" that provides a default set of Descriptors and no other data. |
 | ods-api-db-sandbox | PostgreSQL 13.12 | Like the ods-api-db-ods, but using the "populated template" that contains a small set of sample data representing the fictional Grand Bend school district. |
 | ods-api-db-admin | PostgreSQL 13.12 | Pre-configured PostgreSQL server with two database: EdFi\_Admin and EdFi\_Security. |
 | ods-admin-api | Ed-Fi ODS Admin Api | Hosts the Ed-Fi ODS Admin Api web application, configured for use with PostgreSQL databases, and configurable for Single Tenant and Single Tenant with ODS Contexts. |
@@ -86,7 +86,7 @@ This configuration shows a basic example of a single tenant configuration where
 a single ODS database serves all data going through the API. While this example
 has one ODS for demonstration purpose, single tenant deployments can support
 separate ODS per school years and districts. See [API Client and ODS Instance
-Configuration](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V70/pages/24559631/API+Client+and+ODS+Instance+Configuration)
+Configuration](/reference/ods-api/platform-dev-guide/configuration/api-client-and-ods-instance-configuration)
 for more information.
 
 Includes the following web applications:
