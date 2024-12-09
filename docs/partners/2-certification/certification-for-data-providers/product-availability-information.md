@@ -55,16 +55,16 @@ Data providers likewise experienced customer misunderstandings based on
 certification records, and expressed a need to clarify where and when the
 certified functionality was available.
 
-Detailed availability statements make it easier for new agencies to identify 
-suitable vendor and make informed decisions. Agencies can quickly assess which 
-partners have experience in their state and with their specific requirements. 
+Detailed availability statements make it easier for new agencies to identify
+suitable vendor and make informed decisions. Agencies can quickly assess which
+partners have experience in their state and with their specific requirements.
 
-By allowing partners to list more detailed availability it allows them to 
-demonstrate expanded support for various states and data standard versions, 
-and incentivizes partners to offer certified functionality across the ecosystem. 
+By allowing partners to list more detailed availability it allows them to
+demonstrate expanded support for various states and data standard versions,
+and incentivizes partners to offer certified functionality across the ecosystem.
 
-Clear availability information can highlight gaps in support for certain states 
-or versions, guiding partners in support of certain regions to fill identified gaps. 
+Clear availability information can highlight gaps in support for certain states
+or versions, guiding partners in support of certain regions to fill identified gaps.
 
 :::warning The Ed-Fi Alliance recommends that agencies involve their data
 providers early in the process of project planning, and communicate with those
