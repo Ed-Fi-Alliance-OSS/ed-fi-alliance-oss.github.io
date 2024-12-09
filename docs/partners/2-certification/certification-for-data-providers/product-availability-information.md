@@ -2,7 +2,7 @@
 
 The data provider MUST provide information on the availability of all
 functionality that was used to complete certification. That information MUST
-include documentation that outlines the states and the data standard versions supported 
+include documentation that outlines the states and the data standard versions supported
 where the partner:
 
 * Has an existing customer
