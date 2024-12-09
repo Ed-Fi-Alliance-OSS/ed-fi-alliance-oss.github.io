@@ -1,4 +1,4 @@
-# MetaEd IDE - Common Problems and Troubleshooting
+# Common Problems and Troubleshooting
 
 Experiencing issues? This section provides troubleshooting guidance for the
 following issues:
