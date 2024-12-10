@@ -1,4 +1,4 @@
-# MetaEd IDE - Upgrading to MetaEd 4.x
+# Upgrading to MetaEd 4.x
 
 ## Installation Process
 
