@@ -1,8 +1,8 @@
-# Ed-Fi Managed ODS API Platform Badge
+# Ed-Fi Managed Service Provider Badge
 
-![Ed-Fi Managed ODS API Platform Badge](https://edfidocs.blob.core.windows.net/$web/img/partners/badging/ed-fi-managed-partner-badge.webp)
+![Ed-Fi Managed Service Provider Badge](https://edfidocs.blob.core.windows.net/$web/img/partners/badging/ed-fi-managed-partner-badge.webp)
 
-The Ed-Fi Managed ODS / API Platform Badge is for products that provide the
+The Ed-Fi Managed Service Provider Badge is for products that provide the
 Ed-Fi Operational Data Store and API (ODS/API) as software-as-a-service (SaaS).
 
 Data integration and use at scale is a challenging problem regardless of
