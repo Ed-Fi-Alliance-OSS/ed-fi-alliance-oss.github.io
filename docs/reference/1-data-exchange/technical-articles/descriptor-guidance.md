@@ -1,3 +1,7 @@
+---
+description: Guidance for usage of descriptors in the Ed-Fi Data Standard
+---
+
 # Descriptor Guidance
 
 ## Purpose and Scope
