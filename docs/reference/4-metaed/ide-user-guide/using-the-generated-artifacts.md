@@ -1,4 +1,4 @@
-# MetaEd IDE - Using the Generated Artifacts
+# Using the Generated Artifacts
 
 ## ... or, "Now What?"
 
