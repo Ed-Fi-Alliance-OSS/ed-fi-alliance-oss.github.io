@@ -19,7 +19,7 @@ Accordingly if the API implementer has extended the API you are connecting to, y
 
 ## Cloud Deployments of the ODS API
 
-In developing, it can be very helpful to have an actual API to work against. In the section, [Getting Started with Ed-Fi APIs](../technology-providers-implementation/getting-started-with-apis.md), you were introduced to the Ed-Fi API Sandbox, which is a public service for experimenting with Ed-Fi APIs.
+In developing, it can be very helpful to have an actual API to work against. In the section, [Getting Started with Ed-Fi APIs](../technology-providers-implementation/getting-started-with-apis/readme.md), you were introduced to the Ed-Fi API Sandbox, which is a public service for experimenting with Ed-Fi APIs.
 
 However, it is **not** appropriate to introduce the Ed-Fi API Sandbox into your development or QA processes. To assist you in those processes, there are some cloud-based deployments that simplify the process of installing a cloud-based version of the Ed-Fi ODS API, which you can then use for your internal development work.
 
