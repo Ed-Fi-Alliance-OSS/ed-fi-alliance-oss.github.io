@@ -1,8 +1,10 @@
 # Assessment Providers - Activity 2
 
-> [!INFO]
->
-> * HTTP POST operations are used to add new records to the API.
+:::info
+
+* HTTP POST operations are used to add new records to the API.
+
+:::
 
 ## Activity 2 - Add a new Student Assessment
 

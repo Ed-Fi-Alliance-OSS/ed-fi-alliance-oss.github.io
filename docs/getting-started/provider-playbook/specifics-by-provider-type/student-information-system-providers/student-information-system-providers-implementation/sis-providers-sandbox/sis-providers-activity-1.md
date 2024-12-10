@@ -1,9 +1,10 @@
 # SIS Providers - Activity 1
 
-> [!INFO]
->
-> * The Ed-Fi API Sandbox is a quick and easy way to explore how an actual API exchange works.
-> * HTTP GET operations are used to query the API and get data back.
+:::info
+
+* HTTP GET operations are used to query the API and get data back.
+
+:::
 
 ## Activity 1 - Get all Students in the Sandbox
 
