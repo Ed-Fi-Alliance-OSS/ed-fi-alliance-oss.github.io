@@ -26,7 +26,7 @@ hide_table_of_contents: true
 
 :::tip
 
-See [Non-Normative Descriptor Classifications](/reference/data-exchange/udm/non-normative-descriptor-classifications) for more information on _Usage Classification_.
+See [Non-Normative Descriptor Classifications](/reference/data-exchange/technical-articles/non-normative-descriptor-classifications) for more information on _Usage Classification_.
 
 :::
 

@@ -57,3 +57,9 @@ Commonly in K12, source systems will contain descriptor mappings to multiple con
 Allowing these canonical mappings to be captured as data promises to allow a system to transmit data that retains important contextual information for multiple contexts and use cases.
 
 The Alliance hopes that this feature can be useful to projects; we invite feedback on its utility for inclusion in future descriptor guidance.
+
+:::tip
+
+Also see: [Non-Normative Descriptor Classifications](./non-normative-descriptor-classifications.md)
+
+:::
