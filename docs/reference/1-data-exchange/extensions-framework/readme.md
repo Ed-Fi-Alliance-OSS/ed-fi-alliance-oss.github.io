@@ -1,5 +1,6 @@
 ---
 sidebar_position: 2
+title: Extension Framework Best Practices
 ---
 
 # Ed-Fi Data Standard Extension Framework Best Practices

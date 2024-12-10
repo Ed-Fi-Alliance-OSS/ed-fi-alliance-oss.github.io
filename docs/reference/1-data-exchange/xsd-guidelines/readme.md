@@ -1,4 +1,5 @@
 ---
+title: XSD Guidelines
 sidebar_position: 5
 ---
 
