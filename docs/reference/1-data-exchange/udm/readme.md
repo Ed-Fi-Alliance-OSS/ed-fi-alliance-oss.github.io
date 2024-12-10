@@ -1,5 +1,6 @@
 ---
 sidebar_position: 1
+title: Unifying Data Model
 ---
 
 # Ed-Fi Unifying Data Model
