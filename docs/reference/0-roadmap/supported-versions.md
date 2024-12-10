@@ -10,16 +10,16 @@ for more information on the versioning practices.
 
 ## Data Standard
 
-See [Ed-Fi Data Standard](../1-data-exchange/data-standard/readme.md) for more information.
+See [Ed-Fi Data Exchange Standards](../1-data-exchange/readme.md) for more information.
 
-| Version | Timeline                               | Ed-Fi API Software                      |
-| ------- | -------------------------------------- | --------------------------------------- |
-| 3.3.1   | Active through 2024-2025 school year   | Ed-FI ODS/API 5.3                       |
-| 4.0.0   | Active through 2025-2026 school year   | Ed-Fi ODS/API 6.2 and Ed-Fi ODS/API 7.2 |
-| 5.0.0   | Active through 2027-2028 school year   | Ed-FI ODS/API 7.1                       |
-| 5.1.0   | Active through 2027-2028 school year   | Ed-Fi ODS/API 7.2                       |
-| 5.2.0   | Coming soon (November 2024)            | Ed-Fi ODS/API 7.3                       |
-| 6.0.0   | Coming 2025, for 2026-2027 school year | Ed-Fi Data Management Service 1.0       |
+| Version                                          | Timeline                               | Ed-Fi API Software                      |
+| ------------------------------------------------ | -------------------------------------- | --------------------------------------- |
+| 3.3.1                                            | Active through 2024-2025 school year   | Ed-FI ODS/API 5.3                       |
+| 4.0.0                                            | Active through 2025-2026 school year   | Ed-Fi ODS/API 6.2 and Ed-Fi ODS/API 7.2 |
+| [5.0.0](/reference/data-exchange/data-standard/) | Active through 2027-2028 school year   | Ed-FI ODS/API 7.1                       |
+| [5.1.0](/reference/data-exchange/data-standard/) | Active through 2027-2028 school year   | Ed-Fi ODS/API 7.2                       |
+| [5.2.0](/reference/data-exchange/data-standard/) | Coming soon (November 2024)            | Ed-Fi ODS/API 7.3                       |
+| 6.0.0                                            | Coming 2025, for 2026-2027 school year | Ed-Fi Data Management Service 1.0       |
 
 Development of extensions for the Ed-Fi Data Standard relies on
 [MetaEd](../4-metaed/readme.md) version 4.x. As Visual Studio Code extension,
@@ -84,7 +84,7 @@ receive critical updates. Formal support
 
 ### Docker Deployments
 
-The [sample Docker Compose scripts](../7-docker/readme.md) demonstrate how to
+The [sample Docker Compose scripts](../7-docker/readme.mdx) demonstrate how to
 run these applications together, and provide a quick startup option for running
 a local testing environment. Because these are demonstration scripts, not meant
 for production, they are not always fully up-to-date with the latest software

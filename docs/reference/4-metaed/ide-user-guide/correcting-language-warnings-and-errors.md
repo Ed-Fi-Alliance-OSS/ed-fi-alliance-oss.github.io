@@ -1,4 +1,4 @@
-# MetaEd IDE - Correcting Language Warnings and Errors
+# Correcting Language Warnings and Errors
 
 MetaEd IDE alerts you if any files in the project contain syntax errors, invalid
 references, or unexpected text. This document describes problem resolution for
@@ -44,7 +44,7 @@ Resources to review when diagnosing an issue:
 * [Cookbook](../cookbook/readme.mdx)
 * [Language Specification](../language-specification/readme.md).
 * [Ed-Fi Extension
-  Framework](../../1-data-exchange/data-standard/extension-framework.md)
+  Framework](docs/reference/1-data-exchange/extensions-framework/readme.md)
 
 Occasionally, there may be known issues preventing the use of otherwise valid
 extension scenarios or cases where an extension scenario is not fully supported
