@@ -1,4 +1,4 @@
-# Ed-Fi Assessment Outcomes API for Data Standard v4 Certification
+# Ed-Fi Domain API for Data Standard v4 Certification
 
 :::tip
 

@@ -18,8 +18,7 @@ form](https://edfi.atlassian.net/wiki/download/attachments/20611181/Ed-Fi%20Badg
 ### 2. Data Model Integration Information
 
 This requirement only applies to the [Ed-Fi API Consumer
-Badge](./available-badges/ed-fi-api-consumer-badge.md) and [Ed-Fi ODS Platform
-Consumer Badge](./available-badges/ed-fi-ods-platform-consumer-badge.md).
+Badge](./available-badges/ed-fi-api-consumer-badge.md).
 
 The product must supply a list of all Ed-Fi data elements that are part of the
 badge-related functionality. These elements must be employed within the badge
