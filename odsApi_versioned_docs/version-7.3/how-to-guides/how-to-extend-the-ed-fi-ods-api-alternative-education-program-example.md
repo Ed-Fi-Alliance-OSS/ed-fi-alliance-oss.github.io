@@ -386,7 +386,7 @@ developers to enable access to Extensions.
 Create a security SQL script called
 `0001-AlternativeEducationProgram_ResourceClaims.sql` and place it in
 the`Ed-Fi-ODS-Implementation/Application/
-EdFi.Ods.Extensions.SampleAlternativeEducationProgram/Versions/1.0.0/Standard/5.1.0/Artifacts/MsSql/Data/Security` folder
+EdFi.Ods.Extensions.SampleAlternativeEducationProgram/Versions/1.0.0/Standard/5.2.0/Artifacts/MsSql/Data/Security` folder
 (Create 'Security' folder if it does not exist). Copy the contents of the
 following SQL DML script into the newly created file and save.
 
@@ -553,19 +553,19 @@ Ed-Fi-ODS/Samples/Extensions/AlternativeEducationProgram.
 
 ```powershell
 xcopy /y "Ed-Fi-ODS\Samples\Extensions\AlternativeEducationProgram\AlternativeEducationProgramMetaEd\MetaEdOutput\SampleAlternativeEducationProgram\Database\SQLServer\ODS\Structure" `
-  "Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleAlternativeEducationProgram\Versions\1.0.0\Standard\5.1.0\Artifacts\MsSql\Structure\Ods\*"
+  "Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleAlternativeEducationProgram\Versions\1.0.0\Standard\5.2.0\Artifacts\MsSql\Structure\Ods\*"
 
 xcopy /y "Ed-Fi-ODS\Samples\Extensions\AlternativeEducationProgram\AlternativeEducationProgramMetaEd\MetaEdOutput\SampleAlternativeEducationProgram\Database\PostgreSQL\ODS\Structure" `
-  "Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleAlternativeEducationProgram\Versions\1.0.0\Standard\5.1.0\Artifacts\PgSql\Structure\Ods\*"
+  "Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleAlternativeEducationProgram\Versions\1.0.0\Standard\5.2.0\Artifacts\PgSql\Structure\Ods\*"
 
 xcopy /y "Ed-Fi-ODS\Samples\Extensions\AlternativeEducationProgram\AlternativeEducationProgramMetaEd\MetaEdOutput\SampleAlternativeEducationProgram\ApiMetadata" `
-  "Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleAlternativeEducationProgram\Versions\1.0.0\Standard\5.1.0\Artifacts\Metadata\*"
+  "Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleAlternativeEducationProgram\Versions\1.0.0\Standard\5.2.0\Artifacts\Metadata\*"
 
 xcopy /y "Ed-Fi-ODS\Samples\Extensions\AlternativeEducationProgram\AlternativeEducationProgramMetaEd\MetaEdOutput\SampleAlternativeEducationProgram\XSD" `
-  "Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleAlternativeEducationProgram\Versions\1.0.0\Standard\5.1.0\Artifacts\Schemas\*"
+  "Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleAlternativeEducationProgram\Versions\1.0.0\Standard\5.2.0\Artifacts\Schemas\*"
 
 xcopy /y "Ed-Fi-ODS\Samples\Extensions\AlternativeEducationProgram\AlternativeEducationProgramMetaEd\MetaEdOutput\SampleAlternativeEducationProgram\Interchange" `
-  "Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleAlternativeEducationProgram\Versions\1.0.0\Standard\5.1.0\Artifacts\Schemas\*"
+  "Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleAlternativeEducationProgram\Versions\1.0.0\Standard\5.2.0\Artifacts\Schemas\*"
 
 ```
 
@@ -580,7 +580,7 @@ developers to enable access to Extensions.
 Create a security SQL script called
 `0001-AlternativeEducationProgram_ResourceClaims.sql` and place it in
 the `Ed-Fi-ODS-Implementation/Application/
-EdFi.Ods.Extensions.SampleAlternativeEducationProgram/Versions/1.0.0/Standard/5.1.0/Artifacts/MsSql/Data/Security` folder
+EdFi.Ods.Extensions.SampleAlternativeEducationProgram/Versions/1.0.0/Standard/5.2.0/Artifacts/MsSql/Data/Security` folder
 (Create 'Security' folder if it does not exist). Copy the contents of the
 following SQL DML script into the newly created file and save.
 
