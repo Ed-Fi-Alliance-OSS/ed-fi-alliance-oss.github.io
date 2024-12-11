@@ -6,8 +6,8 @@ Find out how it works and how to contribute.
 
 ## Browse the Exchange
 
-* [Code & Technology](./code-technology/readme.md)
-* [Guides & Documentation](./guides-documentation/readme.md)
+* [Code & Technology](./technology/readme.mdx)
+* [Guides & Documentation](./guides/readme.mdx)
 * [How it Works](./how-it-works.md)
 * [How to Contribute](./how-to-contribute.md)
 
