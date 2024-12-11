@@ -2,7 +2,7 @@
 
 ## How to contribute
 
-If your organization has developed Ed-Fi aligned technologies or informational resources as part of an Ed-Fi technology implementation, please start by [creating a ticket](https://tracker.ed-fi.org/secure/CreateIssue!default.jspa) in the [Ed-Fi Tracker  project](https://tracker.ed-fi.org/projects/EDFI) (using the "Exchange Contribution" issue type) , and provide the following information in the ticket:
+Create a case in the [Ed-Fi Community Hub](https://community.ed-fi.org/), providing the following information:
 
 * Project Name:
 * Brief Description:
@@ -21,10 +21,11 @@ If your organization has developed Ed-Fi aligned technologies or informational r
    * Make sure there are no live student data
    * If there are realistic-looking, yet fake, student data, it might be worth stating that clearly in the project Readme to head off concerns that real data might have leaked out.
 
-2. Read [Signing Git Commits](https://edfi.atlassian.net/wiki/spaces/ETKB/pages/20875476/Signing+Git+Commits) - the Git commits needs to be signed in order to prove identity.
+2. Read [Signing Git Commits](/community/sdlc/source-code-control-policy/signing-git-commits) - the Git commits needs to be signed in order to prove identity.
 
 3. Provide a useful README file describing the functionality.
 4. Provide installation instructions. These do not need to be absolutely foolproof; they need only be good enough to set someone in the right direction.
+
 Example: [Readme](https://github.com/Ed-Fi-Exchange-OSS/SDCOE-Data-Hub/blob/main/README.md) and [Deployment](https://github.com/Ed-Fi-Exchange-OSS/SDCOE-Data-Hub/blob/main/Docs/README.md) instructions from the SDCOE Data Hub
 
 ## Creating a New Exchange Repository on GitHub

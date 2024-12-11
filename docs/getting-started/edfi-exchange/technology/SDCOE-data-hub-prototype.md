@@ -15,7 +15,7 @@ When a member organization logs in, the Data Hub displays any active alerts and 
 
 ## Details
 
-* By: [San Deigo County Office of Education](https://www.sdcoe.net/)
+* By: [San Diego County Office of Education](https://www.sdcoe.net/)
 
 * License Terms: Apache 2.0
 * Released: Mar 24, 2022

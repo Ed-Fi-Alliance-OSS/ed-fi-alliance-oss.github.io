@@ -17,11 +17,6 @@ The **Ed-Fi Exchange** is a technology hub for community contributions aligned t
 
 The goal is to make the Ed-Fi Community **greater than the sum of its parts** by openly sharing innovations aligned to the Ed-Fi Data Standard.
 
-## How to Fully Access Contributions
+## How to Contribute to the Exchange
 
-Only Ed-Fi Licensees can **download contributions** and **view contributing organization information** to learn more about their Ed-Fi aligned solutions. To get full access to the Ed-Fi Exchange, you can [request a license](#).
-
-Once the Ed-Fi Alliance has verified your status as a licensee, you will receive an e-mail with instructions to log into the site. You will then be able to view additional solution detail, download contributions and contact solution contributors.
-
-How to Contribute to the Exchange
 Read about how to contribute a solution or informational resource in [How to Contribute](./how-to-contribute.md).

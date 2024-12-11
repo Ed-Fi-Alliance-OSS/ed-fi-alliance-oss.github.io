@@ -1,6 +1,4 @@
 ---
-owned_by: Stephen Fuqua
-last_updated: 12/10/2024 Robert Hunter Jr
 labels:
 - exchange-code
 - exchange-tech-suite-3
