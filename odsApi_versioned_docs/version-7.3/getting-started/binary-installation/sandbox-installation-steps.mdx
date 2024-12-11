@@ -202,24 +202,20 @@ production environments, it is recommended to follow the steps to
 
 :::
 
-### SQL logins created the installer will have system admin rights
+:::info Database logins created by the installer will have database server administrator rights
 
-:::info
+If more restrictive permissions are required, the database login used by the WebApi should be created manually before executing the installer.
 
-To create a database server login for the application, first, ensure that the login does not already exist.
-Logins created by the installer will have database system administrator rights by default.
-If more restrictive permissions are required, the SQL login used by the WebAPI should be created manually.
-If the database connection information includes login credentials, the new login will use these.
-However, if no credentials are provided, integrated security must be selected,
-and a new SQL login matching the application pool identity used by WebAPI will be created.
+To create a custom login for SQL Server:
+- If integrated security (param: `UseIntegratedSecurity`) is not enabled, a username and password must be provided in the database connection information (param: `DbConnectionInfo`) parameter(s)
+- If integrated security is enabled, the username provided must be a valid Windows user, or left undefined to use the default application pool identity
+  - If using a custom Windows username, the application pool identity used by the WebApi needs to be manually updated to use the same Windows username after the installer has been executed
 
-For a custom SQL Server login, if integrated security is not enabled, a username and password must be specified in the database connection parameters.
-If integrated security is enabled, the username must be a valid Windows user,
-and the application pool identity for the WebAPI must be updated to match this Windows username.
+To create a custom login for Postgres:
+- If integrated security is not enabled, a username must be provided in the database connection information parameter(s). A password can be optionally specified
+- If integrated security is enabled, `pg_ident.conf` map needs to be updated to use the username provided
 
-For creating a custom login for Postgres, if integrated security is not enabled,
-a username and password should be provided in the database connection parameters.
-If integrated security is enabled, the `pg_ident.conf` map must be updated to include the username used for the connection.
+Examples can be found in the `Install-EdFiOdsWebApi.psm1` file.
 
 :::
 
@@ -322,6 +318,11 @@ Copy and modify the following parameter code to add your site name:
         Settings = @{ OAuthUrl = "https://YOUR_SITE_OR_SERVER_NAME_HERE/WebApi" }
         PrePopulatedKey = "YOUR_POPULATED_KEY_HERE"
         PrePopulatedSecret = "YOUR_POPULATED_SECRET_HERE"
+        DbConnectionInfo = @{
+            Engine="SqlServer"
+            Server="localhost"
+            UseIntegratedSecurity=$true
+        }
         UnEncryptedConnection = $true
     }
     ```
@@ -331,9 +332,13 @@ Copy and modify the following parameter code to add your site name:
     $parameters = @{
         PackageVersion = "7.2.1201"
         Settings = @{ OAuthUrl = "https://YOUR_SITE_OR_SERVER_NAME_HERE/WebApi" }
-        Engine="PostgreSQL"
         PrePopulatedKey = "YOUR_POPULATED_KEY_HERE"
         PrePopulatedSecret = "YOUR_POPULATED_SECRET_HERE"
+        DbConnectionInfo = @{
+            Engine="PostgreSQL"
+            Server="localhost"
+            Username="postgres"
+        }
     }
     ```
   </TabItem>
