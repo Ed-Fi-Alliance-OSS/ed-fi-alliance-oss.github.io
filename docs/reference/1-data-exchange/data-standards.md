@@ -2,7 +2,7 @@
 sidebar_position: 0
 ---
 
-# About - Ed-Fi Data Standards
+# About the Ed-Fi Data Standards
 
 ## Active Versions
 
