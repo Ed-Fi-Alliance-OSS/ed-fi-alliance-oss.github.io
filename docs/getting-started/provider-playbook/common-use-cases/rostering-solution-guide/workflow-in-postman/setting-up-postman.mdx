@@ -1,0 +1,154 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+
+# Setting Up Postman
+
+## Get Postman
+
+This can be used in [Postman Desktop](https://www.postman.com/downloads/) or
+[Postman Web](http://web.postman.co/).
+
+><Tabs>
+>
+>  <TabItem value="desktop" label="Postman Desktop">
+>
+>    ### Postman Desktop
+>
+>    **Postman 8** is required. If a previous version of Postman is already
+>    installed, [update
+>    Postman](https://learning.postman.com/docs/getting-started/installation-and-updates/#updating-postman).
+>
+>    Go to [Download Postman Desktop](https://www.postman.com/downloads/) and
+>    Install.
+>
+>    ![Download Postman Desktop](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/rostering-solution-guide/image2021-5-25_16-31-0.png)
+>
+>    After installation is done, Postman will open automatically.
+>
+>    ![Postman will open automatically](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/rostering-solution-guide/image2021-5-25_16-37-54.png)
+>
+>    Create an Account, Sign in or Skip this step. This account is to sync the
+>    collection in your account, but it is not mandatory.
+>
+>    If you sign in or skip the login, you can then continue to [Import
+>    Collection](#import-collection).
+>
+>  </TabItem>
+>
+>  <TabItem value="web" label="Postman Web">
+>
+>    ### Postman Web
+>
+>    Browse to [web.postman.co](http://web.postman.co/).
+>
+>    This will be redirected to the login page. Login or register with any email
+>    and continue.
+>
+>    ![Login Page](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/rostering-solution-guide/image2021-5-24_8-34-55.png)
+>
+>    If you already have an account, after sign in, you can continue to [Import
+>    Collection](#import-collection).
+>
+>    After registering, the Welcome screen will appear. Enter a name and click
+>    **Continue**.
+>
+>    ![Welcome Screen](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/rostering-solution-guide/image2021-5-24_8-37-15.png)
+>
+>    In the following screen, click on **Continue Without a Team**.
+>
+>    ![Continue Without a Team](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/rostering-solution-guide/image2021-5-24_8-40-3.png)
+>
+>    After postman loads, go to [Import Collection](#import-collection).
+>
+>  </TabItem>
+>
+></Tabs>
+
+
+## Import Collection
+
+### Download the collection
+
+The collection can be downloaded
+from: [https://github.com/Ed-Fi-Alliance-OSS/Roster-Starter-Kit-for-Vendors/tree/main/postman
+collection](https://github.com/Ed-Fi-Alliance-OSS/Roster-Starter-Kit-for-Vendors/tree/main/postman%20collection).
+
+This page also contains links to download each file individually. In order to
+save, right-click on the link and click on 'Save link as...' and save as a JSON
+file.
+
+![Download Collection](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/rostering-solution-guide/image2021-5-27_8-57-39.png)
+
+### Import into Postman
+
+From the homepage, click on **Import file**.
+
+![Import file](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/rostering-solution-guide/image2021-5-24_9-10-53.png)
+
+From an existing workspace, click on **Import**.
+
+![Import](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/rostering-solution-guide/image2021-5-24_10-20-57.png)
+
+Select the downloaded files, the entire folder, or copy and paste the content.
+
+![Select files](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/rostering-solution-guide/image2021-5-24_10-25-3.png)
+
+After selecting the files, the file type must be highlighted. If any error
+appears, or nothing appears in the list, it means that the JSON file has an
+error.
+
+![Error](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/rostering-solution-guide/image2021-6-15_16-52-6.png)
+
+Click on **Import**.
+
+After the success message appears, the collection is ready.
+
+## Next Steps
+
+[Enrollment API via Postman](./enrollment-api-via-postman.mdx)
+
+[Change Queries via Postman](./change-queries-via-postman.md)
+
+## Troubleshooting
+
+When there are errors executing one of the API calls, it is recommended to check
+the console to get additional information.
+
+![Console](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/rostering-solution-guide/image2021-6-21_16-35-18.png)
+
+### Authentication failed
+
+![Authentication failed](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/rostering-solution-guide/image2021-6-21_16-36-53.png)
+
+1. Verify the API URL and the Key and Secret (This can be verified with
+   Swagger).
+2. Check the console.
+
+### Unable to get local issuer certificate
+
+When testing in production that do not have an SSL certificate (this can happen
+specially on testing environments), the following error may occur:
+
+![Unable to get local issuer certificate](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/rostering-solution-guide/image2021-6-21_16-40-5.png)
+
+The simplest way to go around this issue, is to execute the following steps:
+
+1) Go to "Settings"
+
+  ![Settings](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/rostering-solution-guide/image2021-6-21_16-45-41.png)
+
+2) Turn off **SSL certificate verification**.
+
+  ![Turn off SSL certificate verification](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/rostering-solution-guide/image2021-6-21_16-46-27.png)
+
+3) Dismiss and continue
+
+:::note
+
+Roster Postman Collection on GitHub: [Roster Starter Kit for
+Vendors](https://github.com/Ed-Fi-Alliance-OSS/Roster-Starter-Kit-for-Vendors/tree/main/postman%20collection)
+Roster Postman Collection ZIP Package: [Ed-Fi Roster Starter Kit v1.0 Postman
+Collection.zip](https://odsassets.blob.core.windows.net/public/RosterStarterKit/Ed-Fi%20Roster%20Starter%20Kit%20v1.0%20Postman%20Collection.zip)
+
+:::

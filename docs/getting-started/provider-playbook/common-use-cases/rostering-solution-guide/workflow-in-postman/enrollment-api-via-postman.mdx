@@ -1,0 +1,282 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Enrollment API via Postman
+
+## Prerequisites
+
+Before using this collection, follow the steps from [Setting Up
+Postman](./setting-up-postman.mdx).
+
+## Using the Collection
+
+### Select an Environment
+
+In the top right corner, select an environment from the imported ones:
+
+![Select an Environment](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/rostering-solution-guide/image2021-5-24_11-24-28.png)
+
+Click on the "Environments" tab and click on the Checkbox for the desired
+environment:
+
+![Select an Environment](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/rostering-solution-guide/image2021-5-24_11-26-40.png)
+
+### Authorization
+
+In order to authenticate, an environment must be selected. The environment files
+includes a _Key_ and _Secret_ value for testing purposes.
+
+In the "Collections" tab, click on the **Ed-Fi Roster** root folder, when the
+folder opens, select the "Authorization" tab.
+
+![Authorization](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/rostering-solution-guide/image2021-6-16_8-5-57.png)
+
+Scroll down and click **Get New Access Token**.
+
+![Get New Access Token](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/rostering-solution-guide/image2021-5-24_11-44-24.png)
+
+The following confirmation message will appear:
+
+![Configuration Message](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/rostering-solution-guide/image2021-5-24_11-51-46.png)
+
+Click on **Use Token**:
+
+![Use Token](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/rostering-solution-guide/image2021-5-24_11-51-46.png)
+
+The token is ready to be used.
+
+This token expires, therefore, this process must be repeated each time the token
+has expired.
+
+All API calls inherit from this authorization token.
+
+### Execute the API Calls
+
+There are two types of API calls, independent and dependent calls.
+
+#### Independent API calls
+
+These API calls can be executed directly once the token is generated, because it
+does not depend on any value to be executed.
+
+To execute any of these API calls, select the call and click on **Send**.
+There's no modification needed, and if so, it means there's an error with the
+Authentication Token (in which case, it is better to follow the
+[Authorization](https://edfi.atlassian.net/wiki/spaces/SG/pages/20612030/Enrollment+API+via+Postman#EnrollmentAPIviaPostman-Authorization) steps
+again).
+
+![Send](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/rostering-solution-guide/image2021-5-24_12-52-20.png)
+
+After the request is done, the status **200 OK** must appear and the Response
+body must be visible.
+
+![Send](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/rostering-solution-guide/image2021-5-24_12-56-10.png)
+
+#### Dependent API calls
+
+These API calls require a value in a variable in order to be executed. Those
+appear with the preposition '_by_' in the API calls
+
+![Dependent API calls](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/rostering-solution-guide/image2021-5-24_13-1-49.png)
+
+There are two ways to get the variables needed for these API calls, this will be
+exemplified using the '_Schools by LEA_' API call:
+
+##### Copy and enter the ID required in the environment variables
+
+Execute the "Local Education Agencies" API call
+
+![Local Education Agencies](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/rostering-solution-guide/image2021-5-24_14-28-21.png)
+
+Copy the first ID in the result.
+
+Go to the "Environments" tab and paste the copied value in the "Current Value"
+field for the _lea\_id_ variable:
+
+![Copy and enter the ID required in the environment variables](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/rostering-solution-guide/image2021-5-24_14-42-8.png)
+
+Return to the Collection and execute the API call '_Schools by LEA_'. Status
+**200 OK** should appear and the Response body must be visible
+
+![Send](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/rostering-solution-guide/image2021-5-24_14-53-4.png)
+
+Here, The _lea\_id_ variable is replaced with the value set.
+
+If no value is set, the following error will appear:
+
+![Send](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/rostering-solution-guide/image2021-5-24_14-56-28.png)
+
+##### Execute an API call that automatically sets the required variable
+
+The API calls that are located under the "Enrollment Composite" folder that have
+the name "All" in it, will automatically set the value for the corresponding
+variable by setting the first result returned by the call.
+
+For example, if you want to execute the '_Schools by LEA_' API call, you can
+execute the '_All Local Education Agencies_' API call first and that way the LEA
+variable will be automatically set and ready to use.
+
+![Animation](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/rostering-solution-guide/Animation.gif)
+
+| API Request | Request to set the variable |
+| --- | --- |
+| by LEA | "_All Local Education Agencies"_ |
+| by School | "_All Schools"_ |
+| by Staff | "_All Staff"_ |
+| by Section | "_All Sections"_ |
+
+## Getting Code Samples
+
+Postman provides built in code samples for multiple programming languages per
+API request.
+
+To get these code samples:
+
+Open an API request and verify it's valid:
+
+![Verify the API request is valid](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/rostering-solution-guide/image2021-5-24_16-13-34.png)
+
+Click on the Code button on the right side menu
+![Code](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/rostering-solution-guide/image2021-5-24_16-21-2.png)
+
+![Code](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/rostering-solution-guide/image2021-5-24_16-19-2.png)
+
+Select your programming language of choice in the dropdown and copy the code:
+
+![Select your programming language of choice](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/rostering-solution-guide/image2021-5-24_16-22-36.png)
+
+### Code Samples
+
+:::note
+In order to run the samples, get a new [Access
+Token](https://edfi.atlassian.net/wiki/spaces/SG/pages/20612030/Enrollment+API+via+Postman#EnrollmentAPIviaPostman-Authorization)
+and place it after the _Bearer_
+:::
+
+<Tabs>
+
+  <TabItem value="python" label="Python">
+
+    ```python
+    import requests
+
+    url = "https://api.ed-fi.org/v3.4.0/api/data/v3/ed-fi/staffs"
+
+    payload={}
+    headers = {
+      'Authorization': 'Bearer {{YourToken}}'
+    }
+
+    response = requests.request("GET", url, headers=headers, data=payload)
+
+    print(response.text)
+    ```
+
+    Demo
+
+    ![Using Python](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/rostering-solution-guide/Python.gif)
+
+  </TabItem>
+
+  <TabItem value="javascript" label="Javascript">
+
+    ```javascript
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer {{YourToken}}");
+
+    var requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
+      redirect: 'follow'
+    };
+
+    fetch("https://api.ed-fi.org/v3.4.0/api/composites/v1/ed-fi/enrollment/staff", requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+    ```
+
+    Demo:
+
+    ![Using Javascript](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/rostering-solution-guide/Javascript.gif)
+
+  </TabItem>
+
+  <TabItem value="java" label="Java">
+
+    ```java
+    import okhttp3.OkHttpClient;
+    import okhttp3.Request;
+    import okhttp3.Response;
+    ```
+
+    Also, the Java sample in Postman doesn't print the result, therefore this
+    should also be included to see the result.
+
+    ```java
+    OkHttpClient client = new OkHttpClient().newBuilder()
+      .build();
+    Request request = new Request.Builder()
+      .url("https://api.ed-fi.org/v3.4.0/api/data/v3/ed-fi/staffs")
+      .method("GET", null)
+      .addHeader("Authorization", "Bearer {{YourToken}}")
+      .build();
+    Response response = client.newCall(request).execute();
+    System.out.print(response.body().string());
+    ```
+
+    Demo:
+
+    ![Using Java](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/rostering-solution-guide/Java.gif)
+
+  </TabItem>
+
+  <TabItem value="ruby" label="Ruby">
+
+    ```ruby
+    require "uri"
+    require "net/http"
+
+    url = URI("https://api.ed-fi.org/v3.4.0/api/data/v3/ed-fi/staffs")
+
+    https = Net::HTTP.new(url.host, url.port)
+    https.use_ssl = true
+
+    request = Net::HTTP::Get.new(url)
+    request["Authorization"] = "Bearer {{YourToken}}"
+
+    response = https.request(request)
+    puts response.read_body
+    ```
+
+    Demo:
+
+    ![Using Ruby](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/rostering-solution-guide/Ruby.gif)
+
+  </TabItem>
+
+  <TabItem value="csharp" label="C#">
+
+    To execute this code, this snippet needs to be placed in a function and add
+    the RestSharp dependency:
+
+    ```csharp
+    using RestSharp;
+    ```
+
+    ```csharp
+    var client = new RestClient("https://api.ed-fi.org/v3.4.0/api/composites/v1/ed-fi/enrollment/staff");
+    client.Timeout = -1;
+    var request = new RestRequest(Method.GET);
+    request.AddHeader("Authorization", "Bearer {{YourToken}}");
+    IRestResponse response = client.Execute(request);
+    Console.WriteLine(response.Content);
+    ```
+
+    Demo:
+
+    ![Using C#](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/rostering-solution-guide/C%23.gif)
+
+  </TabItem>
+
+</Tabs>
