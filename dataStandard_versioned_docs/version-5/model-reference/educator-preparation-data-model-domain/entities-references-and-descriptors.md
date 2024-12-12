@@ -73,7 +73,7 @@ why](https://edfi.atlassian.net/wiki/display/EPP/We%27re+renaming+TPDM%2C+here%2
 :::tip
 
 See [Non-normative Descriptor
-Classifications](/reference/data-exchange/udm/non-normative-descriptor-classifications)
+Classifications](/reference/data-exchange/technical-articles/non-normative-descriptor-classifications)
 for more information on _Usage Classification_.
 
 :::
