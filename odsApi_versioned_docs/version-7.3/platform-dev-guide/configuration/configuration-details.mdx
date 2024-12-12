@@ -398,7 +398,7 @@ In _appsettings.json_:
   <tr style={{verticalAlign: 'top'}}>
     <td>ApiSettings:Features:ResourceLinks</td>
     <td>true</td>
-    <td>Includes the `link` objects in references in the data management API responses. Disabling this feature is a server-side optimization at the cost of potentially breaking integrations by clients that may utilize them.</td>
+    <td>Controls the inclusion of `link` objects in references in responses from the Data Management resource endpoints. Disabling this feature is a server-side optimization reducing database load, but comes with the risk of breaking API client integrations that utilize them.</td>
   </tr>
 
   <tr style={{verticalAlign: 'top'}}>
