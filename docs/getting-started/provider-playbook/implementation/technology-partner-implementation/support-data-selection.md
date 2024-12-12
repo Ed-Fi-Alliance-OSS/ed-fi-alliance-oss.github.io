@@ -8,4 +8,4 @@ The specific use case should be considered as well. For example, if a system int
 
 This promotes data security and reduces labor when tracking down problems with data quality and performance. Further, it sets up the customer for success in the configuration of the product in their implementation.
 
-Ed-Fi's ODS/API technology also allows for the ODS/API to be extended.  To learn more about why you would do this and how, refer to [API Extensions](../../technology-providers-implementation/ed-fi-api-fundamentals/api-extensions.md)
+Ed-Fi's ODS/API technology also allows for the ODS/API to be extended.  To learn more about why you would do this and how, refer to [API Extensions](../../implementation/ed-fi-api-fundamentals/api-extensions.md)

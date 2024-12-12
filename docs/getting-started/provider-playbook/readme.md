@@ -24,34 +24,34 @@ We recommend these resources for those very new to Ed-Fi - they will assist in d
 
 ## Playbook Content
 
-Section 1: [Technology Providers - Project Planning](./technology-providers-project-planning/readme.md)
+Section 1: [Technology Providers - Project Planning](./project-planning/readme.md)
 
-* [Overview of Ed-Fi Standards and Technology](./technology-providers-project-planning/overview-of-ed-fi-standards-and-technology.md)
-* [Why Support the Ed-Fi Data Standard?](./technology-providers-project-planning/why-support-the-ed-fi-data-standard.md)
-* [Technology Provider Ed-Fi Journey](./technology-providers-project-planning/technology-provider-ed-fi-journey.md)
-* [What Does it Mean to Build an Ed-Fi Integration?](./technology-providers-project-planning/what-does-it-mean-to-build-an-ed-fi-integration.md)
+* [Overview of Ed-Fi Standards and Technology](./project-planning/overview-of-ed-fi-standards-and-technology.md)
+* [Why Support the Ed-Fi Data Standard?](./project-planning/why-support-the-ed-fi-data-standard.md)
+* [Technology Provider Ed-Fi Journey](./project-planning/technology-provider-ed-fi-journey.md)
+* [What Does it Mean to Build an Ed-Fi Integration?](./project-planning/what-does-it-mean-to-build-an-ed-fi-integration.md)
 
-Section 2: [Technology Providers - Data Governance](./technology-providers-data-governance/readme.md)
+Section 2: [Technology Providers - Data Governance](./data-governance/readme.md)
 
-* [Data Governance for Source System Vendors](./technology-providers-data-governance/data-governance-for-source-system-vendors.md)
+* [Data Governance for Source System Vendors](./data-governance/data-governance-for-source-system-vendors.md)
 
-Section 3: [Technology Providers - Implementation](./technology-providers-implementation/readme.md)
+Section 3: [Technology Providers - Implementation](./implementation/readme.md)
 
-* [Common Integration Challenges](./technology-providers-implementation/common-integration-challenges.md)
-* [Getting Started with APIs](./technology-providers-implementation/getting-started-with-apis/readme.md)
-* [Ed-Fi API Fundamentals](./technology-providers-implementation/ed-fi-api-fundamentals/readme.md)
-* [Technology Partner - Implementation](./technology-providers-implementation/technology-partner-implementation/readme.md)
-* [Ed-Fi API Integration Architecture for Data Providers](./technology-providers-implementation/ed-fi-api-integration-architecture-for-data-providers.md)
-* [Best Practices - API Integration](./technology-providers-implementation/best-practices-api-integration.md)
-* [Best Practices - UI/UX](./technology-providers-implementation/best-practices-uiux.md)
+* [Common Integration Challenges](./implementation/common-integration-challenges.md)
+* [Getting Started with APIs](./implementation/getting-started-with-apis/readme.md)
+* [Ed-Fi API Fundamentals](./implementation/ed-fi-api-fundamentals/readme.md)
+* [Technology Partner - Implementation](./implementation/technology-partner-implementation/readme.md)
+* [Ed-Fi API Integration Architecture for Data Providers](./implementation/ed-fi-api-integration-architecture-for-data-providers.md)
+* [Best Practices - API Integration](./implementation/best-practices-api-integration.md)
+* [Best Practices - UI/UX](./implementation/best-practices-uiux.md)
 
-Section 4: [Technology Providers - Support](./technology-providers-support/readme.md)
+Section 4: [Technology Providers - Support](./support/readme.md)
 
-* [SDKs and Development APIs](./technology-providers-support/sdks-and-development-apis.md)
-* [Ed-Fi Credentialing](./technology-providers-support/ed-fi-credentialing.md)
-* [Ed-Fi Badge Program](./technology-providers-support/ed-fi-badge-program.md)
-* [Technology Versions and Roadmaps](./technology-providers-support/technology-versions-and-roadmaps.md)
-* [Community and Governance](./technology-providers-support/community-and-governance.md)
+* [SDKs and Development APIs](./support/sdks-and-development-apis.md)
+* [Ed-Fi Credentialing](./support/ed-fi-credentialing.md)
+* [Ed-Fi Badge Program](./support/ed-fi-badge-program.md)
+* [Technology Versions and Roadmaps](./support/technology-versions-and-roadmaps.md)
+* [Community and Governance](./support/community-and-governance.md)
 
 Section 5: [Specifics by Provider Type](./specifics-by-provider-type/readme.md)
 

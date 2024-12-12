@@ -9,7 +9,7 @@ These activities use a browser-based toolkit called Swagger UI. This toolkit all
 ![Swagger Screenshot](https://edfi.atlassian.net/wiki/download/thumbnails/22905157/swagger.png?version=1&modificationDate=1569248123083&cacheVersion=1&api=v2&width=1217&height=704)
 
 :::warning
-These activities use the Ed-Fi ODS implementation of the Assessment API. Note that this implementation is only one possible implementation of the API and not the API itself (see [Overview of Ed-Fi Standards and Technology](../../../../technology-providers-project-planning/overview-of-ed-fi-standards-and-technology.md) on this point).
+These activities use the Ed-Fi ODS implementation of the Assessment API. Note that this implementation is only one possible implementation of the API and not the API itself (see [Overview of Ed-Fi Standards and Technology](../../../../project-planning/overview-of-ed-fi-standards-and-technology.md) on this point).
 :::
 
 ## Activities

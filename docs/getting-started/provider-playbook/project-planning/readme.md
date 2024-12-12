@@ -1,3 +1,8 @@
+---
+sidebar_position: 0
+title: Project Planning
+---
+
 # Technology Providers - Project Planning
 
 * [Overview of Ed-Fi Standards and Technology](./overview-of-ed-fi-standards-and-technology.md)

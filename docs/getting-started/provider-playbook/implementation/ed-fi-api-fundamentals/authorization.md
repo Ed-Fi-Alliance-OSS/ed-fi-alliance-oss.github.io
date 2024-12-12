@@ -1,6 +1,6 @@
 # Authorization
 
-In its _data exchange standards_ efforts (distinct from Ed-Fi's _technology development_ efforts, going back to a distinction made in section [Overview of Ed-Fi Standards and Technology](../../technology-providers-project-planning/overview-of-ed-fi-standards-and-technology)) Ed-Fi recommends implementing a robust authorization system based on the principle of "least privilege" and following several other guidelines.
+In its _data exchange standards_ efforts (distinct from Ed-Fi's _technology development_ efforts, going back to a distinction made in section [Overview of Ed-Fi Standards and Technology](../../project-planning/overview-of-ed-fi-standards-and-technology)) Ed-Fi recommends implementing a robust authorization system based on the principle of "least privilege" and following several other guidelines.
 
 The recommendations can be seen in the REST API Guidelines that the Alliance publishes:
 

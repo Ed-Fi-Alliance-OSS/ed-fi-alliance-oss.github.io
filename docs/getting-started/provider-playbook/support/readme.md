@@ -1,3 +1,8 @@
+---
+sidebar_position: 3
+title: Support
+---
+
 # Technology Providers - Support
 
 Here are some additional resources you may find helpful for your development, deployment, and maintenance efforts.

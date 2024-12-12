@@ -49,4 +49,4 @@ To capture this metadata about the assessment, we use the PerformanceLevel objec
   }
 ```
 
-Note that the PerformanceLevels here are scoped within the namespace "mathwhale.com" indicating that these are Math Whale defined definitions. This seems appropriate, as they are the ones defining and sending the values. However, there may be cases in which the API defines the values to use.  We will cover these cases in a later section: [Enumerations (Descriptors)](../../../../../provider-playbook/technology-providers-implementation/ed-fi-api-fundamentals/enumerations-descriptors.md).
+Note that the PerformanceLevels here are scoped within the namespace "mathwhale.com" indicating that these are Math Whale defined definitions. This seems appropriate, as they are the ones defining and sending the values. However, there may be cases in which the API defines the values to use.  We will cover these cases in a later section: [Enumerations (Descriptors)](../../../../../provider-playbook/implementation/ed-fi-api-fundamentals/enumerations-descriptors.md).
