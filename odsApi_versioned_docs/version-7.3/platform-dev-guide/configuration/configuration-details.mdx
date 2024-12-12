@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # Configuration Details
 
 The Ed-Fi ODS / API is configurable in a number of ways. Since the source code
@@ -273,6 +277,12 @@ In _appsettings.json_:
     <td>ApiSettings:BearerTokenTimeoutMinutes</td>
     <td>30</td>
     <td>The amount of time that an OAuth token remains valid.</td>
+  </tr>
+
+  <tr style={{verticalAlign: 'top'}}>
+    <td>ApiSettings:BearerTokenPerClientLimit</td>
+    <td>15</td>
+    <td>The maximum number of active (non-expired) OAuth tokens allowed for a client. Setting this value to -1 disables the limit.</td>
   </tr>
 
   <tr style={{verticalAlign: 'top'}}>
