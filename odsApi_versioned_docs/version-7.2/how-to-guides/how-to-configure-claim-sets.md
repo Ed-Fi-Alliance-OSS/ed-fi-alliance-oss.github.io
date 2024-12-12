@@ -55,7 +55,7 @@ Security configuration is cached in the ODS / API, claim set changes will take
 effect on the ODS / API only after the security cache is refreshed. Out of the
 box, ODS / API is configured to refresh security cache every 10 minutes. Cache
 refresh interval can be configured using
-[ApiSettings:Caching:Security:AbsoluteExpirationMinutes](../platform-dev-guide/configuration/configuration-details.mdx)
+[ApiSettings:Caching:Security:AbsoluteExpirationMinutes](../platform-dev-guide/configuration/configuration-details.md)
 setting in application configuration. For immediate reflection of changes,
 manual restart of ODS / API would be needed.
 
