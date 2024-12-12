@@ -95,3 +95,9 @@ implemented by compliant systems. By API, those descriptors are:
 * AcademicSubjectDescriptor
 * AssessmentReportingMethodDescriptor
 * ResultDatatypeTypeDescriptor
+
+:::tip
+
+Also see: [Descriptor Guidance](./descriptor-guidance.md)
+
+:::
