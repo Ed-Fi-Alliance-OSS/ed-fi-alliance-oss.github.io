@@ -13,14 +13,14 @@ community for the betterment of the community. The Ed-Fi Data Standard serves as
 the foundation for enabling interoperability among secure data systems and
 contains a [Unifying Data Model](./udm/readme.md) designed to capture the
 meaning and inherent structure in the most important information in the K–12
-education enterprise.
+education enterprise
 
 ## Ed-Fi API Standards
 
 An Ed-Fi compatible API application creates a REST-based interface for data
 exchange, where the messages conform to the Ed-Fi Data Standard. The [Ed-Fi
-ODS/API](/reference/ods-api) is the Ed-Fi Alliance's core API product, used by
-nearly all "Ed-Fi deployments." Any interested party can build an alternate,
+ODS/API](../ods-api-platform.mdx) is the Ed-Fi Alliance's core API product, used
+by nearly all "Ed-Fi deployments." Any interested party can build an alternate,
 compatible, application, by adhering to the Open API specifications and guidance
 provided in [Ed-Fi API Guidelines](./api-guidelines/readme.md).
 
