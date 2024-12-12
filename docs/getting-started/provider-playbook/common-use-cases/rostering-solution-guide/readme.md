@@ -51,8 +51,6 @@ application.
 
 ## Guide Index
 
-Below are links to detail pages in the Roster Solution Guide:
-
 * [Rostering Development Guide](./rostering-development-guide.md)
 * [Ed-Fi Roster Workflow in Postman](./workflow-in-postman/readme.md)
   * [Setting Up Postman](./workflow-in-postman/setting-up-postman.mdx)
@@ -67,4 +65,3 @@ Below are links to detail pages in the Roster Solution Guide:
         API](./sample-application/enrollment-api.md)
   * [Ed-Fi Roster Sample Application - Change
         Queries](./sample-application/change-queries.md)
-* [Generating an SDK - Ed-Fi Roster](./generating-an-sdk.mdx)

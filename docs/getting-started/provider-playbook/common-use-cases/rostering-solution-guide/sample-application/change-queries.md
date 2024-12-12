@@ -32,15 +32,15 @@ Once you have extracted and compiled the solution.
     This will leave the server running in this terminal. To stop the server and
     go back to the terminal hit **C****trl-C**.
 
-  ## Browsing
+## Browsing
 
-    When the solution is running correctly, the following messages will appear
-    in the terminal:
+When the solution is running correctly, the following messages will appear
+in the terminal:
 
-    ![Application Running](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/rostering-solution-guide/application%20running.png)
+![Application Running](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/rostering-solution-guide/application%20running.png)
 
-    Browse to [https://localhost:5001](https://localhost:5001/), and the home
-    page will load.
+Browse to [https://localhost:5001](https://localhost:5001/), and the home
+page will load.
 
 ## Explore the Sample Application
 

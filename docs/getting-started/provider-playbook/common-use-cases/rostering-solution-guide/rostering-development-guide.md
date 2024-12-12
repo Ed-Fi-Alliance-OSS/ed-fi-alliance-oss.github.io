@@ -45,8 +45,8 @@ This specification offers a synopsis of the Enrollment API as well as use cases
 discussion, model diagrams, and additional considerations when pulling roster
 from the Ed-Fi ODS / API. There is also a public deployment of the [Ed-Fi
 Enrollment
-API](https://api.ed-fi.org/v5.2/docs/index.html?urls.primaryName=Composites:%20Enrollment)
-(as part of the Ed-Fi ODS / API Suite 3 v5.2.0). This deployment provides you
+API](https://api.ed-fi.org/v6.2/docs/index.html?urls.primaryName=Composites:%20Enrollment)
+(as part of the Ed-Fi ODS / API Suite 3 v6.2.0). This deployment provides you
 with a way to interact with the Ed-Fi ODS / API via the Swagger UI and see
 sample data in the Ed-Fi JSON format.
 
@@ -64,10 +64,9 @@ The Change Queries functionality is not available on the Ed-Fi Enrollment API,
 so in order to use this functionality data will need to be consumed from the
 individual resources. Begin by reviewing the definition and elements available
 in the list of resources below. Each resource listed can be reviewed in detail
-in the [Ed-Fi API Suite 3 v5.2 Online
-Documentation](https://api.ed-fi.org/v5.2/docs/swagger/index.html?urls.primaryName=Resources)
-(SwaggerUI). The [Ed-Fi Data Handbook
-v3.2.0](https://schema.ed-fi.org/datahandbook-v320/index.html#/) also defines
+in the [Ed-Fi API Suite 3 v6.2 Online
+Documentation](https://api.ed-fi.org/v6.2/docs/swagger/index.html?urls.primaryName=Resources)
+(SwaggerUI). The [Ed-Fi Data Handbook](/reference/data-exchange/udm/udm-handbook) also defines
 the data in a format that is not JSON or API specific.
 
 | resource |     |
@@ -94,8 +93,7 @@ challenge of Rostering and how the Ed-Fi solution can address the need. Link:
 read more about [Education Technology
 Vendors](https://www.ed-fi.org/how-to-use-ed-fi/education-technology-vendors/)
 and how to [Easily Pull Roster
-Data](https://www.ed-fi.org/how-to-use-ed-fi/education-technology-vendors/easily-pull-roster-data/)
-on [Ed-Fi.org](http://Ed-Fi.org)
+Data](https://www.ed-fi.org/how-to-use-ed-fi/education-technology-vendors/easily-pull-roster-data/).
 
 :::
 
@@ -113,12 +111,9 @@ kick-start your development effort by generating an SDK using one of many tools
 available to generate API SDKs from an OpenAPI specification file. A thorough
 list of SDK generators is available in the [SDK
 Generators](https://openapi.tools/#sdk) section of the
-OpenAPI [Tools](https://openapi.tools/) page. Included in this solution guide is
-a page [Generating an SDK - Ed-Fi
-Roster](../rostering-solution-guide/generating-an-sdk.mdx) that will
-walk you through the process. You can also refer to the [Ed-Fi ODS / API SDK
+OpenAPI [Tools](https://openapi.tools/) page. You canrefer to the [Ed-Fi ODS / API SDK
 Guide](/reference/ods-api/client-developers-guide/using-code-generation-to-create-an-sdk) to
-walk through generating a SDK in C#. Once you have the foundational SDK
+walk through generating a client SDK. Once you have the foundational SDK
 generated, the data mapping information compiled in the previous step can be
 used to transform the data retrieved from the Ed-Fi API into the format needed
 by the target platform.
@@ -156,37 +151,26 @@ usefulness and value to the customer of that data integration in the platform.
 
 Initial testing can be done using the [public
 deployment](https://api.ed-fi.org/) of the [Ed-Fi ODS / API
-v5.2](https://api.ed-fi.org/v5.2/docs/).
+v6.2](https://api.ed-fi.org/v6.2/docs/).
 
 * [Enrollment
-  API](https://api.ed-fi.org/v5.2/docs/index.html?urls.primaryName=Composites%3A%20Enrollment)
+  API](https://api.ed-fi.org/v6.2/docs/index.html?urls.primaryName=Composites%3A%20Enrollment)
 
-* [Root URL](https://api.ed-fi.org/v5.2.0/api/)
+* [Root URL](https://api.ed-fi.org/v6.2.0/api/)
 
 Additionally, if deeper testing and more control of the Ed-Fi ODS / API
 environment is needed, there are a number of ways to quickly set up an
 environment for internal testing purposes.
 
-*  [Ed-Fi ODS / API for Suite 3 v5.2.0 - Getting
+*  [Ed-Fi ODS / API for Suite 3 - Getting
    Started](/reference/ods-api/getting-started/) walks developers through
-   setting up the Ed-Fi ODS / API codebase on a development machine.
+   setting up the Ed-Fi ODS / API (latest version) on a development machine.
 * [A Quick Deploy of the Ed-Fi ODS / API Development
   Server](https://edfi.atlassian.net/wiki/spaces/EXCHANGE/pages/22490024) has
   PowerShell scripts to initialize a server and install a development
   environment Ed-Fi ODS / API.
 * A [Docker Deployment 2.x](/reference/docker/v2/) of the Ed-Fi ODS /
   API has also been released.
-
-:::note **Need help?**
-
-If you need assistance with a Solution Guide, engage an Ed-Fi representative via
-one of the support channels. Links:
-
-* Ed-Fi Slack channel
-  [#starter-kits](https://ed-fi-alliance.slack.com/archives/C01DV8ANYG2)
-* Open a ticket in [Ed-Fi Tracker](https://tracker.ed-fi.org/projects/EDFI)
-
-:::
 
 :::note **More information**
 

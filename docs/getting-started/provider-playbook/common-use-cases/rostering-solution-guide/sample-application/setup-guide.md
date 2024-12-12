@@ -10,14 +10,11 @@ this application.
 * [GIT](https://git-scm.com/download/win)
 * [.NET Core SDK v3.1](https://dotnet.microsoft.com/download/dotnet/3.1)
 
-<details>
-<summary>Install prerequisites via chocolatey</summary>
+:::warning
 
-```powershell
-choco install vscode git dotnetcore-sdk -y
-```
+.NET Core 3.1 is no longer supported by Microsoft; however, it should be easy to update the sample code to work with newer versions of .NET.
 
-</details>
+:::
 
 ## Code
 
@@ -196,9 +193,9 @@ though you could point at another non-Production installation as well. If you
 use the public demo URL, you can use the following values for the Key and
 Secret:
 
-**Key:** RvcohKz9zHI4
+**Key:** `RvcohKz9zHI4`
 
-**Secret:** E1iEFusaNf81xzCxwHfbolkC
+**Secret:** `E1iEFusaNf81xzCxwHfbolkC`
 
 In Production scenarios with real-world data, be sure to protect your Key and
 Secret just as you would any critical username and password.

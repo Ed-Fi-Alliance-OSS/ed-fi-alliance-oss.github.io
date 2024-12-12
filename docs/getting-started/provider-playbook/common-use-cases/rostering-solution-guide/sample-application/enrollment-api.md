@@ -1,7 +1,7 @@
 # Enrollment API
 
 Use this guide to download and run the Ed-Fi Roster Application using test data
-available from the public deployment of the Ed-Fi ODS / API Suite 3 v5.2.0.
+available from the public deployment of the Ed-Fi ODS / API Suite 3 v6.2.0.
 
 Be sure to go through the [Ed-Fi Roster Sample Application Setup
 Guide](./setup-guide.md) before going through this page.
@@ -61,9 +61,9 @@ public demo ODS, though you could point at another non-Production installation
 as well. If you use the public demo URL, you can use the following values for
 the Key and Secret:
 
-**Key:** RvcohKz9zHI4
+**Key:** `RvcohKz9zHI4`
 
-**Secret:** E1iEFusaNf81xzCxwHfbolkC
+**Secret:** `E1iEFusaNf81xzCxwHfbolkC`
 
 In Production scenarios with real-world data, be sure to protect your Key and
 Secret just as you would any critical username and password.

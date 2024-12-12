@@ -19,8 +19,7 @@ formats, and see some UI components that are expected for basic usability.
 
 The sample application was developed using C# in Visual Studio 2019 Community.
 The Web project uses .NET Core 3.1, but the SDK was generated in .NET Framework
-4.6.1 following the instructions in the [Generating an SDK - Ed-Fi
-Roster](../generating-an-sdk.mdx) article.
+4.6.1 following the instructions.
 
 The application does not implement security measures necessary to work with real
 student data. For example:
