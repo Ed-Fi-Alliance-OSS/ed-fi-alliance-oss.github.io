@@ -4,9 +4,9 @@
 // See the LICENSE and NOTICES files in the project root for more information.
 
 import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
+import ThemedImage from '@theme/ThemedImage';
 
 /* Refactor opportunity: convert the two Playbooks into a list and use a single
 component to define structure */
@@ -106,6 +106,23 @@ function EducatorPipeline() {
   );
 }
 
+function Exchange() {
+  return (
+    <div className="margin-bottom--lg">
+      <Heading as="h2">Ed-Fi Exchange</Heading>
+      <p>
+        The Ed-Fi Exchange is a technology hub for community contributions aligned to the Ed-Fi Data Standard and Implementation Suite.
+      </p>
+      <Link
+        to="/getting-started/edfi-exchange"
+        className="button button--primary button"
+      >
+        Go »
+      </Link>
+    </div>
+  )
+}
+
 function Header() {
   return (
     <header className="hero hero--primary">
@@ -125,6 +142,9 @@ function Header() {
 }
 
 function Main() {
+  const dark = 'https://edfidocs.blob.core.windows.net/$web/img/exchange-logo_white_250px.png';
+  const light = 'https://edfidocs.blob.core.windows.net/$web/img/exchange-logo_black_250px.png';
+
   return (
     <div className="main">
       <div className="container">
@@ -142,13 +162,26 @@ function Main() {
             <EducatorPipeline></EducatorPipeline>
           </div>
         </div>
+        <div className="row">
+          <div className="col col--10">
+            <Exchange></Exchange>
+          </div>
+          <div className="col col--2">
+            <ThemedImage
+              alt="Ed-Fi Exchange Logo"
+              sources={{
+                light,
+                dark
+              }}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
 }
 
 export default function GetStarted() {
-  const { siteConfig } = useDocusaurusContext();
   return (
     <Layout title="Getting Started">
       <Header></Header>
