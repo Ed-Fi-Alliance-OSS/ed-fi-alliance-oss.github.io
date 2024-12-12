@@ -17,6 +17,12 @@ with a highly simplified query pattern that eliminates the need for any joins
 resource's data must be loaded for both read and write scenarios, this
 improvement will provided benefit to all Data Management resource requests.
 
+To support this feature, a new `AggregateData` column has been added to every
+aggregate root table in the ODS to store the serialized binary data, as follows:
+
+* SQL Server - `varbinary(8000)`
+* PostgreSQL - `bytea`
+
 On the read side, the API is able to provide the response using only the
 serialized data stored in the `AggregateData` column rather than needing to
 execute a potentially large batch of SQL. The following listing shows the SQL
@@ -25,8 +31,8 @@ authorization-related):
 
 ```sql
 SELECT  r.AggregateId , r.AggregateData , r.LastModifiedDate , r.StudentUsi AS SurrogateId
-FROM edfi.Student AS r
-  INNER JOIN authView7ba7db ON r.StudentUSI = authView7ba7db.StudentUSI
+FROM    edfi.Student AS r
+        INNER JOIN authView7ba7db ON r.StudentUSI = authView7ba7db.StudentUSI
 ORDER BY r.AggregateId
 
 OFFSET @Offset ROWS FETCH NEXT @Limit ROWS ONLY
