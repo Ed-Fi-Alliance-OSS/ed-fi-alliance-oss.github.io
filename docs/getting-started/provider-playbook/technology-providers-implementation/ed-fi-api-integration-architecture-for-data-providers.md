@@ -16,7 +16,7 @@ We recommend doing so before attempting to digest all the information presented 
 
 Architecting an Ed-Fi API integration can be complex. This document seeks to surface things one should consider when implementing an integration for their application. In this document, we try to not be overly prescriptive when it comes to programming language or software. We acknowledge that programming languages and tools can look very different from vendor to vendor and by staying tool agnostic, we hope to provide guidance that is usable by all.
 
-While this knowledgebase article does not go deep into the dependency order built into the Ed-Fi API, you can find more in TechDocs [here](https://edfi.atlassian.net/wiki/display/ODSAPIS3V71/Resource+Dependency+Order) as well as the Ed-Fi API Resource Dependency page in the Ed-Fi Academy course [Publishing Your First Set of Data](https://academy.ed-fi.org/courses/ed-fi-142-publishing-your-first-set-of-data/lessons/ed-fi-api/topic/ed-fi-api-resource-dependency-2/).
+While this knowledgebase article does not go deep into the dependency order built into the Ed-Fi API, you can find more information in [Resource Dependency Order](/reference/ods-api/client-developers-guide/resource-dependency-order) as well as the Ed-Fi API Resource Dependency page in the Ed-Fi Academy course [Publishing Your First Set of Data](https://academy.ed-fi.org/courses/ed-fi-142-publishing-your-first-set-of-data/lessons/ed-fi-api/topic/ed-fi-api-resource-dependency-2/).
 
 Throughout this document, we will be using a fictional student information system, Limitless SIS, to better explain various aspects of architecting an Ed-Fi API integration. For the sake of brevity, let’s imagine that Limitless has decided they will sync information from their SIS to the Ed-Fi API resources below.
 
@@ -24,7 +24,7 @@ Throughout this document, we will be using a fictional student information syste
 
 The arrows note the dependency order that must be adhered to. While data may be sent to Local Education Agencies and Students at the same time, data must be sent to Local Education Agencies prior to sending data to Schools.
 
-While this document is written to assist source system vendors who are developing an Ed-Fi API integration in-house, we also encourage you to seek out a managed service provider or system integrator who can lend their expertise when it comes to developing or even hosting the integration for you. You can find a list of managed providers on our [registry](https://edfi.atlassian.net/wiki/display/EDFIBADGE/Registry+of+Ed-Fi+Badges) and discuss this with our Vendor Team directly.
+While this document is written to assist source system vendors who are developing an Ed-Fi API integration in-house, we also encourage you to seek out a managed service provider or system integrator who can lend their expertise when it comes to developing or even hosting the integration for you. You can find a list of managed providers on our [registry](/partners/badging/registry-of-ed-fi-badges) and discuss this with our Vendor Team directly.
 
  Early on in your development of an Ed-Fi API integration, you will want to understand how your data conforms to the Ed-Fi API. We refer to this as the mapping process. Understanding how the data in your application is represented in the Ed-Fi Data Standard can greatly ease the initial development of the integration as it provides something tangible to work towards.
 

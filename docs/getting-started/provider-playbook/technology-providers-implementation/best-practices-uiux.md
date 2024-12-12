@@ -33,7 +33,7 @@ Simplicity is critical. There should be some functionality to “pre-map” obvi
 
 ### Operational Context for Descriptors
 
-* Local vs state vs [ed-fi.org](http://ed-fi.org)
+* Local vs state vs `ed-fi.org`
   * Consult specifications for each state geography when considering help documentation. It is not the role of the source system to determine the correct descriptor mapping, as long as the actual method of mapping is easy to navigate.
   * Make sure to clearly document the decision tree of descriptor mappings.
   * Always display the namespace associated with each descriptor value to avoid confusion in the case of obvious semantic duplication.

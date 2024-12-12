@@ -22,7 +22,7 @@ The resource ID is API assigned and can't be requested.  Further, if a HTTP POS
 
 To improve data quality and maximize the possibility for data to move between systems, an Ed-Fi APIs data model also employs a natural key system.
 
-The key for an entity can be looked up by using the either the [Unifying Data Model - v4.0 Handbook](https://edfi.atlassian.net/wiki/spaces/EFDS4X/pages/24412607/Unifying+Data+Model+-+v4.0+Handbook) or the [Unifying Data Model - v5.0 Handbook](https://edfi.atlassian.net/wiki/spaces/EFDS5/pages/26707400/Unifying+Data+Model+-+v5.0+Handbook) and looking under the column “Identity” – key fields are indicated there. For example, for the CourseOffering entity, this page appears:
+The key for an entity can be looked up by using the [Unifying Data Model - Handbook](/reference/data-exchange/udm/udm-handbook) version appropriate to the Data Standard in use and looking under the column “Identity” – key fields are indicated there. For example, for the CourseOffering entity, this page appears:
 
 ![Handbook Offering](https://edfi.atlassian.net/wiki/download/thumbnails/22905241/handbook-courseoffering.png?version=2&modificationDate=1561126990507&cacheVersion=1&api=v2&width=1162&height=367)
 
@@ -30,9 +30,9 @@ _Figure 3: natural key fields are shown by looking at the "identity" column in t
 
 You can see that the entity has three keys: a LocalCourseCode, a School, and a Session. Collectively, these constitute the natural key.
 
-In the API for the /courseOffering (you can see this resource in the [Ed-Fi ODS API Sandbox](https://api.ed-fi.org/v2.5.0/docs/index.html?url=https://api.ed-fi.org/v2.5.0/api/metadata/resources/api-docs#!/courseOfferings/getCourseOfferingsAll)), the JSON reveals that these keys collectively contain 4 fields, as the Session has 3 fields in its natural key:
+In the API for the /courseOffering (you can see this resource in the [Ed-Fi ODS API Sandbox](https://api.ed-fi.org/v7.2/docs/swagger/index.html?urls.primaryName=Resources#operations-tag-courseOfferings)), the JSON reveals that these keys collectively contain 4 fields, as the Session has 3 fields in its natural key:
 
-```json JSON snippet for CourseOffering
+```json title="JSON snippet for CourseOffering"
 {
   "id": "d0fd729db6ee4a7bbc989720e4f833f5",
   "courseReference": {

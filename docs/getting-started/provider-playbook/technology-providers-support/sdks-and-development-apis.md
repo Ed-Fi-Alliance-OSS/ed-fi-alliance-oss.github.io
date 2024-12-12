@@ -11,7 +11,7 @@
 
 Software Development Kits (SDKs) can be very useful for developers of API clients.  For those technology providers connecting to an API implemented by the Ed-Fi ODS API, there are instructions for generating an SDK.
 
-* [Using Code Generation to Create an SDK](https://edfi.atlassian.net/wiki/spaces/ODSAPI31/pages/26968911/Using+Code+Generation+to+Create+an+SDK) (latest guidance for Suite 3)
+* [Using Code Generation to Create an SDK](/reference/ods-api/client-developers-guide/using-code-generation-to-create-an-sdk)
 
 The Ed-Fi ODS API generation process uses OpenAPI (or OpenAPI's predecessor, Swagger) specification files to generate the SDK.
 
@@ -26,7 +26,6 @@ However, it is **not** appropriate to introduce the Ed-Fi API Sandbox into your 
 A few notes:
 
 * Please note that these installers are community-maintained, so may not track the latest versions of the APIs.
-* These resources require an Ed-Fi License, as they are the actual Ed-Fi code. See the [license application process](https://www.ed-fi.org/getting-started/license-ed-fi-technology/).
 * These installers produce a non-extended Ed-Fi API (see section [API Extensions](../../provider-playbook/technology-providers-implementation/ed-fi-api-fundamentals/api-extensions.md)). If the API you are using is extended, you will need to work with the API host on resources to support your development.
 
 These cloud-based installers are available on the [Ed-Fi Exchange](https://exchange.ed-fi.org/):

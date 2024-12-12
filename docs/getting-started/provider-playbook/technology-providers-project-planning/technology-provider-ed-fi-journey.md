@@ -27,7 +27,7 @@ During this “Develop” stage:
 
 ## Credential
 
-**Credential**. The Ed-Fi Alliance operates the [Ed-Fi Certification](https://edfi.atlassian.net/wiki/spaces/EDFICERT/overview) and [Ed-Fi Badge](https://edfi.atlassian.net/wiki/display/EDFIBADGE/) programs that can test that your work is ready for broad usage in the Ed-Fi Community.
+**Credential**. The Ed-Fi Alliance operates the [Ed-Fi Certification](/partners/certification) and [Ed-Fi Badge](/partners/badging) programs that can test that your work is ready for broad usage in the Ed-Fi Community.
 
 Key expectations and activities in this stage are:
 

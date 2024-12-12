@@ -73,16 +73,15 @@ Specifications in a "Draft" Request for Comment (RFC) state (which are also comm
 
 Certifications for these specifications and others are listed here:
 
-[Available Certifications](https://edfi.atlassian.net/wiki/spaces/EDFICERT/pages/23692586/Available+Certifications)
+[Available Certifications](/partners/certification)
 
 ### Example: Assessment Outcomes API
 
 As an example, let's look at the Assessment Outcomes API.
 
-In this API (which is defined in [ED-FI RFC 15 - ASSESSMENT OUTCOMES API](https://edfi.atlassian.net/wiki/spaces/EFDSRFC/pages/25362990/ED-FI+RFC+15+-+ASSESSMENT+OUTCOMES+API)), there are no requirements as to what enumeration sets are required. However, in the certification for this API, only certain enumerations are permitted to be tech-provider-supplied and others must be Ed-Fi-governed values.  There are currently three major versions of the Data Standard available so look at these locations for examples:
+In this API (which is defined in [ED-FI RFC 15 - ASSESSMENT OUTCOMES API](https://edfi.atlassian.net/wiki/spaces/EFDS/pages/17727736/Ed-Fi+Assessment+Outcomes+API+for+Suite+3)), there are no requirements as to what enumeration sets are required. However, in the certification for this API, only certain enumerations are permitted to be tech-provider-supplied and others must be Ed-Fi-governed values.  There are currently three major versions of the Data Standard available so look at these locations for examples:
 
-* [Ed-Fi Assessment Outcomes API for Suite 3 Certification - Ed-Fi Certification - Ed-Fi TechDocs (atlassian.net)](https://edfi.atlassian.net/wiki/spaces/EDFICERT/pages/23697946/Ed-Fi+Assessment+Outcomes+API+for+Suite+3+Certification)
-* [Ed-Fi Assessment Outcomes API for Data Standard v4 Certification - Ed-Fi Certification - Ed-Fi TechDocs (atlassian.net)](https://edfi.atlassian.net/wiki/spaces/EDFICERT/pages/23701219/Ed-Fi+Assessment+Outcomes+API+for+Data+Standard+v4+Certification)
-* [Ed-Fi Assessment Outcomes API for Data Standard v5 Certification - Ed-Fi Certification - Ed-Fi TechDocs (atlassian.net)](https://edfi.atlassian.net/wiki/spaces/EDFICERT/pages/23702691/Ed-Fi+Assessment+Outcomes+API+for+Data+Standard+v5+Certification)
+* [Ed-Fi Assessment Outcomes API for Suite 3 Certification, **v4**](/partners/certification/available-certifications/assessment-v4/)
+* [Ed-Fi Assessment Outcomes API for Data Standard, **v5**](/partners/certification/available-certifications/assessment-v5/)
 
 **This requirement to handle both tech-provider-supplied and Ed-Fi-governed values applies only to products seeking Ed-Fi Certification.** You can implement the specification without this guidance, but a product that does so will not be eligible for Ed-Fi Certification.

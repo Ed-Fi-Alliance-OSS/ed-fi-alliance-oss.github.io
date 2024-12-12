@@ -12,7 +12,7 @@ These standards are reflected principally as Rest API specifications implemented
 
 ## What software is supported by Ed-Fi Alliance?
 
-The Ed-Fi Alliance supports the Ed-Fi Platform which consists of the Operational Data Store (ODS) and API. The Ed-Fi Platform is a software platform that many education agencies use to aggregate data across disparate domains.
+The Ed-Fi Alliance supports the Ed-Fi ODS/API Platform which consists of the Operational Data Store (ODS) and API. The Ed-Fi ODS/API Platform is a software platform that many education agencies use to aggregate data across disparate domains.
 
 Please note: The data standard and the technology that implements the standard are two separate things. Any system is welcome to implement the API specifications via different technologies.
 

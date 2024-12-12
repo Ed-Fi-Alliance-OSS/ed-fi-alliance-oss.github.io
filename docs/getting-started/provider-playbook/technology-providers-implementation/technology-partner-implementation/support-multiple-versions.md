@@ -27,4 +27,4 @@ The Ed-Fi Alliance will periodically release new versions of the Ed-Fi Platform 
 
 In the example above, the education agency's Ed-Fi API is running Ed-Fi Data Model v3.3.1-b. A later version, v4.0-a, of the Data Standard added two new fields to the `/ed-fi/grades` endpoint to broaden the scope to include student course grades for active grading periods. This means an API client would need to know what version of the Data Standard the API supports and use that information to know what to send and what not to send.
 
-Data Standard releases and detailed What's New notes can be found [here](https://edfi.atlassian.net/wiki/display/ETKB/Ed-Fi+Standards).
+Data Standard releases and detailed What's New notes can be found at [About the Ed-Fi Data Standards](/reference/data-exchange/data-standards).

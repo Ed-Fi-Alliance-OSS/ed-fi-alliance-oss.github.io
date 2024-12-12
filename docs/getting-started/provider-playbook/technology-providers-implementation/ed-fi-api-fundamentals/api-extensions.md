@@ -3,6 +3,7 @@
 :::info Key Concepts
 
 * The Ed-Fi ODS/API platform contains a system for extending APIs.
+* Be sure to follow [Ed-Fi Data Standard Extension Framework Best Practices](/reference/data-exchange/extensions-framework)
 
 :::
 

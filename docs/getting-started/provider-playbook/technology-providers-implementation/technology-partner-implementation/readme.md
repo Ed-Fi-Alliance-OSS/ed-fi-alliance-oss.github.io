@@ -1,6 +1,6 @@
 # Technology Partner - Implementation
 
-This section contains best practice guidance on implementing an API client to support regular and secure data exchange. This best practice has been observed from current Ed-Fi field work. If you have other suggestions for best practices, please send us your thoughts by commenting on this page or submitting a ticket to [Ed-Fi Tracker](https://tracker.ed-fi.org/) and we will continue to add to this section!
+This section contains best practice guidance on implementing an API client to support regular and secure data exchange. This best practice has been observed from current Ed-Fi field work. If you have other suggestions for best practices, please send us your thoughts by submitting a case in the [Ed-Fi Community Hub](https://community.ed-fi.org) and we will continue to add to this section!
 
 In the case of each of these best practices, we are trying to promote reliability and stability—while reducing labor.
 

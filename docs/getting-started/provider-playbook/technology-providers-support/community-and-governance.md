@@ -6,8 +6,8 @@ Below are some links to important community resources for technology providers n
 
 * [Access Request Form](https://www.ed-fi.org/access-form/) - provides a an single-sign on account use for most core Ed-Fi online resources
 * [Slack for the Ed-Fi Community](https://ed-fi-alliance.slack.com) - the community messaging platform, a place to ask questions and seek advice
-* [Ed-Fi Tracker](https://tracker.ed-fi.org) - a ticketing system for technical bug reports, suggestions or issues
-* [Ed-Fi Tech Docs](https://edfi.atlassian.net) - technical documentation arranged by component or product
+* [Ed-Fi Community Hub](https://community.ed-fi.org) - a ticketing system for technical bug reports, suggestions or issues
+* [Ed-Fi Documentation](https://docs.ed-fi.org) - technical and non-technical documentation arranged by component or product
 * [Ed-Fi Governance](https://edfi.atlassian.net/wiki/spaces/GOV) - processes and groups that define how Ed-Fi standards and technology evolve, with info on how to participate
 
 ![Community Diagram](https://edfi.atlassian.net/wiki/download/thumbnails/22905286/community.png?version=1&modificationDate=1569247813987&cacheVersion=1&api=v2&width=570&height=620)
