@@ -6,9 +6,10 @@ The following documentation MUST be received by the Ed-Fi Alliance prior to
 certification. Ed-Fi may ask for clarifications or changes in order to ensure
 clarity and uniformity.
 
-### 1. Product Availability Information
+### 1. Product Availability & Pricing Information
 
-See [Requirements - Product Availability Information](../../certification-for-data-providers/product-availability-information.md)
+See [Requirements - Product Availability Information](../../certification-for-data-providers/product-availability-information.md)  
+See [Requirements - Pricing Statement](../../certification-for-data-providers/pricing-statement.md)
 
 ### 2. Initial Implementation Verification Information**
 
@@ -100,6 +101,16 @@ The provider will show evidence, via a live, synchronous meeting and screen
 sharing, the ability to allow enumeration configuration. See
 [Student Information Systems API v5 Certification - Test Scenarios#TestScenarios-EnumerationConfiguration](./test-scenarios/readme.md)
 for details.
+
+</details>
+
+### 9. API Integration Test
+
+<details>
+<summary>View detail...</summary>
+
+The provider will show evidence, via a live, synchronous meeting and screen sharing, how the product
+ integration follows these [API Integration Best Practices](../../certification-for-data-providers/api-integration-best-practices.md) 
 
 </details>
 
