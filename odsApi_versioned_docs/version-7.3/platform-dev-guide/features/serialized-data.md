@@ -15,7 +15,7 @@ NHibernate, the Object Relational Mapper (ORM) that is used for persistence,
 with a highly simplified query pattern that eliminates the need for any joins
 (other than those required for authorization purposes). Since all of the
 resource's data must be loaded for both read and write scenarios, this
-improvement will provided benefit to all Data Management resource requests.
+improvement will provide benefit to all Data Management resource requests.
 
 To support this feature, a new `AggregateData` column has been added to every
 aggregate root table in the ODS to store the serialized binary data, as follows:
