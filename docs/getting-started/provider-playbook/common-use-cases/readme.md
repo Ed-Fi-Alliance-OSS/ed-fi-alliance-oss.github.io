@@ -25,7 +25,7 @@ Kit](https://edfi.atlassian.net/wiki/spaces/SK/pages/21999134/Assessment+Starter
 * [Assessment Solution Guide Home](./assessment-solution-guide/readme.md)
 
 ![Image of people working
-together](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/Coders-Perhaps@0.33x.png)
+together](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/Coders-Perhaps@0.33x.png) -->
 
 ## Chronic Absenteeism Solution Guide
 
@@ -43,7 +43,7 @@ Kit](https://edfi.atlassian.net/wiki/spaces/SK/pages/21996654/Chronic+Absenteeis
 ![Image of four students standing next to each
 other](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/School-Districts-Isometric-Ensure-Equitable-Access2.png)
 
-## Ensure Equitable Access for Students Solution Guide
+<!-- ## Ensure Equitable Access for Students Solution Guide
 
 **This guide is for vendors who want to assist their clients in setting up an
 Ed-Fi Student Equity solution.**  Understand, analyze and take supportive
