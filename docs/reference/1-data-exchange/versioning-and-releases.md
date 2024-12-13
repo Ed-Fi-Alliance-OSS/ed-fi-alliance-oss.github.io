@@ -1,5 +1,6 @@
 ---
 sidebar_position: 6
+title: Versioning and Releases
 ---
 
 # Ed-Fi Data Standard Versioning and Releases

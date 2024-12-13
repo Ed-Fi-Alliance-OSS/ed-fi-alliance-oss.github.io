@@ -6,7 +6,7 @@ sidebar_position: 1
 
 This section describes how to set up the Ed-Fi ODS / API v7.3 using the release
 binaries listed in [Binary
-Releases](./readme.md). This is a
+Releases](./binary-releases.md). This is a
 recommend approach for implementations that have no requirement to extend or
 customize the source code of the Ed-Fi ODS / API.
 

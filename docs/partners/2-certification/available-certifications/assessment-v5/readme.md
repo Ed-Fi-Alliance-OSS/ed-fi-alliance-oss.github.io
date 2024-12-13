@@ -2,9 +2,9 @@
 
 Certification Name: Ed-Fi Assessment Outcomes API for Suite 3 \
 Standards Referenced: \
-   [Ed-Fi Assessment Outcomes API (RFC    22)](https://edfi.atlassian.net/wiki/display/EFDSRFC/ED-FI+RFC+22+-+ASSESSMENT+OUTCOMES+API)
+   [Ed-Fi Assessment Outcomes API (RFC 22)](https://edfi.atlassian.net/wiki/display/EFDSRFC/ED-FI+RFC+22+-+ASSESSMENT+OUTCOMES+API)
 \
-   [Ed-Fi API Design & Implementation Guidelines    v3.1](https://edfi.atlassian.net/wiki/spaces/EFAPIGUIDE/overview)
+   [Ed-Fi API Design & Implementation Guidelines v3.1](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-API-Standards/tree/main/api-guidelines/v3.1)
 \
 Technical Suite: Suite 3 \
 Obsoletes: – \

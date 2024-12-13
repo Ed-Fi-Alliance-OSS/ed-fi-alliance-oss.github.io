@@ -36,7 +36,7 @@ In development environment, you can use _secret.json_ to override this setting
 to deploy Northridge dataset. In a PowerShell session navigate to `<source
 directory>\Ed-Fi-ODS-Implementation\Application\EdFi.Ods.WebApi` and use
 user-secret CLI to setup the override. See [Configuration Details -
-SecretManager](../platform-dev-guide/configuration/configuration-details.md#secret-manager)
+SecretManager](../platform-dev-guide/configuration/configuration-details.mdx#secret-manager)
 for more details.
 
 ```powershell
