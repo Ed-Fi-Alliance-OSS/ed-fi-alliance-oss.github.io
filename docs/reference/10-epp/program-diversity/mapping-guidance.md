@@ -48,7 +48,7 @@ Instructions for adding education organizations in Admin App can be found in the
 
 ### Set up data import
 
-Installation Instructions for Data Import can be found [here](https://edfi.atlassian.net/wiki/display/EDFITOOLS/Getting+Started).
+Installation Instructions for Data Import can be found [here](../../6-data-import/readme.md).
 
 Once you've installed Data Import, initial setup and post installation steps are [here](./setup-guide.md#configure-data-import-for-first-time-use).
 
@@ -102,7 +102,7 @@ Each section is designated by a different color for better visual representation
 
 ![Mapping workbook](https://edfidocs.blob.core.windows.net/$web/img/reference/epp-sk/mapping-workbook.png)
 
-Educator Preparation Program represents a state-approved course of study, completion of which signifies a candidate will have met all requirements necessary to obtain a certification or licensure to teach within K-12 schools. Most educator preparation providers will offer multiple programs, each aligned with a certification offered by the state. Program data needs to be loaded after Education Organizations (completed through Admin App, see [Program Diversity and Persistence Setup Guide](../../program-diversity-and-persistence-starter-kit/program-diversity-and-persistence-setup-guide.md)) but should be loaded before any other data. To load Programs you need the following data:
+Educator Preparation Program represents a state-approved course of study, completion of which signifies a candidate will have met all requirements necessary to obtain a certification or licensure to teach within K-12 schools. Most educator preparation providers will offer multiple programs, each aligned with a certification offered by the state. Program data needs to be loaded after Education Organizations (completed through Admin App, see [Program Diversity and Persistence Setup Guide](./setup-guide.md)) but should be loaded before any other data. To load Programs you need the following data:
 
 The id of the school created with Admin App,
 
@@ -110,7 +110,7 @@ The name of the program, this generally correlates to the degree being offered b
 
 The program type. In many cases this will be a traditional program, but Post-Baccalaureate is also quite common.
 
-Within the Diversity and Persistence Starter Kit there is one visual that makes use of programs, 'Number of Candidates by Program'. This visual uses  the concept of groups within Power BI to collect programs that provide similar degree levels into the same value (i.e. Elementary vs. High School). For more on how to set up the groups in Power Bi, see the [Program Diversity and Persistence Setup Guide](../../program-diversity-and-persistence-starter-kit/program-diversity-and-persistence-setup-guide.md).
+Within the Diversity and Persistence Starter Kit there is one visual that makes use of programs, 'Number of Candidates by Program'. This visual uses  the concept of groups within Power BI to collect programs that provide similar degree levels into the same value (i.e. Elementary vs. High School). For more on how to set up the groups in Power Bi, see the [Program Diversity and Persistence Setup Guide](./setup-guide.md).
 
 ![Number of candidates by program graph](https://edfidocs.blob.core.windows.net/$web/img/reference/epp-sk/number-of-candidates-by-program.png)
 

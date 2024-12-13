@@ -223,7 +223,7 @@ To import the data necessary for the Program Diversity and Persistence starter k
 
 :::tip
 
-For detailed information on the data requirements to be able to power the Program Diversity and Persistence Dashboard, see the [data loading requirements](./data-loading.md)
+For detailed information on the data requirements to be able to power the Program Diversity and Persistence Dashboard, see the [data loading requirements](./data-requirements.md)
 
 :::
 
