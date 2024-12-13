@@ -20,8 +20,7 @@ Vendor support for chronic absenteeism encompasses the following steps:
     problem. Read more about how to [Help School Districts Address Chronic
     Absenteeism](https://www.ed-fi.org/solution-guides/help-school-districts-address-chronic-absenteeism/).
 * **Develop.** Add Ed-Fi capabilities to your product to support customers
-    addressing chronic absenteeism. You will find the [Chronic Absenteeism
-    Vendor Developer Guide](./vendor-developer-guide/readme.md) below.
+    addressing chronic absenteeism.
 * **Test.** To fully realize the benefits of the Chronic Absenteeism Starter
     Kit, and ensure your solution is field ready, we recommend selecting and
     working with an existing district customer to test your integration in a
