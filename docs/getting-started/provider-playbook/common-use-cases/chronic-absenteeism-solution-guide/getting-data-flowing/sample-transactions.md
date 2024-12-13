@@ -3,7 +3,7 @@ description: A few examples of what real-world transactions look like.
 sidebar_position: 7
 ---
 
-# Sample Transactions - Chronic Absenteeism-VDG
+# Sample Transactions
 
 ## Example: Creating a Student
 
