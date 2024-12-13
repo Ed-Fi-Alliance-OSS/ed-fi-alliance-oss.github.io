@@ -400,7 +400,7 @@ optional configuration values include:
   <tr style={{verticalAlign: 'top'}}>
     <td>:new: ApiSettings:Features:SerializedData</td>
     <td>true</td>
-    <td>Activates optimized behavior in the API to serialize the resource data into a binary representation that is stored on the "root" record of the resource's underlying table in the ODS. This serialized representation is then used as the primary source for servicing future API requests. While the data in the ODS tables is still maintained, it is only used as the canonical source when the serialized data is invalidated by modification of the ODS data by other processes (detected by a change to `LastModifiedDate`).</td>
+    <td>Activates optimized behavior in the API to [serialize the resource data](./../features/serialized-data.md) into a binary representation that is stored on the "root" record of the resource's underlying table in the ODS. This serialized representation is then used as the primary source for servicing future API requests. While the data in the ODS tables is still maintained, it is only used as the canonical source when the serialized data is invalidated by modification of the ODS data by other processes (detected by a change to `LastModifiedDate`).</td>
   </tr>
 
   <tr style={{verticalAlign: 'top'}}>
