@@ -2,13 +2,8 @@
 
 :::note
 
-Want to know more before you get started? The Ed-Fi website has
-detail on the challenge of Rostering and how the Ed-Fi solution can address the
-need. Link: read more about [Education Technology
-Vendors](https://www.ed-fi.org/how-to-use-ed-fi/education-technology-vendors/)
-and how to [Easily Pull Roster
-Data](https://www.ed-fi.org/how-to-use-ed-fi/education-technology-vendors/easily-pull-roster-data/)
-on [Ed-Fi.org](http://Ed-Fi.org)
+Want to know more before you get started? Read more about [Education Technology Vendors](https://www.ed-fi.org/how-to-use-ed-fi/education-technology-vendors/)
+and how to [Easily Pull Roster Data](https://www.ed-fi.org/how-to-use-ed-fi/education-technology-vendors/easily-pull-roster-data/).
 
 :::
 
