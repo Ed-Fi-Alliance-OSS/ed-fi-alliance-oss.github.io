@@ -250,7 +250,7 @@ If you have encountered any issue or would like some more information on the sol
 
 Once your environment is up and running on AWS, information on using the software can be found in following the links in Step 8 above.
 
-Further support on using the Ed-FI ODS/API solution can be obtained at the [Ed-Fi Alliance website](/docs/reference/ods-api-platform.mdx). In addition, technical support is available. Information can be found in the [AWS ODS/API Solution - Frequently Asked Questions page](./faq.md).
+Further support on using the Ed-FI ODS/API solution can be obtained at the [Ed-Fi Alliance website](@site/docs/reference/ods-api-platform.mdx). In addition, technical support is available. Information can be found in the [AWS ODS/API Solution - Frequently Asked Questions page](./faq.md).
 
 ### Accessing the Servers
 
