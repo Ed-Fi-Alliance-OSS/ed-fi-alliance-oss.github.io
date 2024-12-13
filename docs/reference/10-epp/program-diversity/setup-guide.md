@@ -1,3 +1,8 @@
+---
+title: Setup Guide
+sidebar_position: 0
+---
+
 # Program Diversity and Persistence Setup Guide
 
 Use this Setup Guide to install and configure your Program Diversity and Persistence solution using test data. This guide will walk you through setting up a test environment that closely mimics a staging or production environment. At the end of this Setup Guide you'll have a test environment with your own test data loaded, but to cover all required elements (credentials, candidates, and financial aid/grants) for the Program Diversity and Persistence solution additional steps will be required as indicated at the end of Step 3.
@@ -214,11 +219,13 @@ Data Import is now configured and you are ready to create or import a template t
 
 To import the data necessary for the Program Diversity and Persistence starter kit, you will need to upload data for people, candidates, credentials, programs, and financial aid. This will require repeating Section 3, beginning with _Create or Import a Mapping Template_ for each of the remaining data sources until all of the required data is loaded.
 
-;;;
+:::
 
-**Deep dive**
+:::tip
 
 For detailed information on the data requirements to be able to power the Program Diversity and Persistence Dashboard, see the [data loading requirements](./data-loading.md)
+
+:::
 
 ## Step 4. Install and Test the Program Diversity and Persistence Dashboard
 
@@ -386,7 +393,7 @@ To do this, open your favorite browser and navigate to [https://powerbi.microso
 
 Click on your workspace and you should see the "Program Diversity and Persistence Dashboard" in the list.
 
-![](./attachments/image2021-7-28_9-58-24.png)
+![Dashboard as listed in a workspace](https://edfidocs.blob.core.windows.net/$web/img/reference/epp-sk/dashboard-listed-in-workspace.png)
 
 #### Enabling Security on the Report
 

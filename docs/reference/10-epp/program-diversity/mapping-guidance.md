@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Mapping Guidance
 
 This developer guide describes the processes for a System Integrator to provide data to the Diversity and Persistence Starter Kit. In the [Program Diversity and Persistence Setup Guide](./setup-guide.md) we explain how to setup the Ed-Fi solution including a high-level description of how to use Data Import to read and map a CSV. In this document, we we dive a bit deeper into how to work  with the Educator Preparation Provider (in mapping session with their data expert) to understand the data needs of the starter kit and how that data will map into Ed-Fi to produce a report valuable to the EPP.

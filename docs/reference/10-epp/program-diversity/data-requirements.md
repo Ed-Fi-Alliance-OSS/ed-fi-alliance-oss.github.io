@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # Data Requirements
 
 The following shows the tables and fields from the Ed-Fi ODS v5.3, which comes with EPDM-Core, that were used to build the visualizations above to answers questions related to Educator Preparation Program Persistence and Diversity.
@@ -13,7 +17,7 @@ We have created a Google Sheets workbook for mapping data specifically for the D
 | Sex | A person's gender. | DesciptorDataType (enumeration) | Female, Male, Non-Binary, Not Selected |
 | BirthDate | The month, day, and year on which an individual was born. | Date |   |
 | Person | Relates the candidate to a generic person. | Person reference | If institution uses a person ID system, will use that info, otherwise created by SI |
-| Race |  The general racial category which most clearly reflects the individual's recognition of his or her community or with which the individual most identifies. <br><br>The data model allows for multiple entries so that each individual can specify all appropriate races. | DescriptorDataType (enumeration) | American Indian - Alaska Native, Asian, Black - African American, Choose Not to Respond, Hispanic/Latino, Native Hawaiian - Pacific Islander, Other, White |
+| Race |  The general racial category which most clearly reflects the individual's recognition of his or her community or with which the individual most identifies.  /><br />The data model allows for multiple entries so that each individual can specify all appropriate races. | DescriptorDataType (enumeration) | American Indian - Alaska Native, Asian, Black - African American, Choose Not to Respond, Hispanic/Latino, Native Hawaiian - Pacific Islander, Other, White |
 | **Credential - All fields required** |   |   |   |
 | CredentialIdentifier | A unique identifier assigned to each record in the Credential Extension table. | String (60) |   |
 | CredentialField | The field of certification for the certificate (e.g., Mathematics, Music). | DesciptorDataType (enumeration) | See DescriptorValues tab for possible values |
