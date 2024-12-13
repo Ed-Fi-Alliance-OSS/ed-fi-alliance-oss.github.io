@@ -11,7 +11,7 @@ instance of the Ed-Fi ODS / API. By customizing the `appsettings.json` you
 should be able to modify the API to suit your needs. `appsettings.json` includes
 settings for database connection strings and the settings that enable various
 configurable features. For more detail on the configuration files and the
-specific values, see the [Configuration Details](./configuration-details.mdx)
+specific values, see the [Configuration Details](./configuration-details.md)
 section of this documentation. `log4net.config` includes logging configurations
 for the Ed-Fi ODS / API, see [Logging
 Configuration](./logging-configuration.md) section for details.

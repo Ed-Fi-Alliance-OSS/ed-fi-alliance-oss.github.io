@@ -15,17 +15,24 @@ sections for more details on important configuration options
 
 ## Required Configuration Settings
 
-Some configuration must be done for every Ed-Fi ODS / API platform instance.
-Examples of required configurations include database connection strings, SMTP
-server locations, and similar.
+Some configuration must be done for every Ed-Fi ODS / API platform instance. In
+Ed-Fi ODS / API, the _appsettings.json_ file provides the primary configuration
+for the ASP.NET Core applications. Examples of required configurations include
+database connection strings, SMTP server locations, and similar.
 
 To make it easier for developers to install and run the Ed-Fi ODS / API, the
 default download from source control is pre-configured with values appropriate
 for a developer or single-server test instance of the system.
 
-### EdFi.Ods.SwaggerUI
+The _appsettings.json_ files provide the primary configurations for the ASP.NET
+applications described below, though the .NET architecture provides support for
+additional configuration sources such as environment variables, command-line
+arguments, and other sources (such as services from cloud providers). See the
+[Configuration in ASP.NET
+Core](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-8.0)
+documentation for more information.
 
-In _appsettings.json_:
+### EdFi.Ods.SwaggerUI
 
 * **WebApiVersionUrl**
   <table>
@@ -39,8 +46,6 @@ In _appsettings.json_:
 
 ### EdFi.Ods.SandboxAdmin
 
-In _appsettings.json_:
-
 * **OAuthUrl**
   <table>
     <tr style={{verticalAlign: 'top'}}>
@@ -52,8 +57,6 @@ In _appsettings.json_:
   </table>
 
 ### EdFi.Ods.WebApi
-
-In _appsettings.json_:
 
 * **ConnectionStrings:EdFi_Admin**
   <table>
@@ -96,8 +99,6 @@ optional configuration values include:
 
 ### EdFi.Ods.SwaggerUI
 
-In _appsettings.json_:
-
 <table>
   <thead>
     <th>Setting Name</th>
@@ -136,7 +137,6 @@ In _appsettings.json_:
 
 ### EdFi.Ods.SandboxAdmin
 
-In _appsettings.json_:
 <table>
   <thead>
     <th>Setting Name</th>
@@ -252,8 +252,6 @@ In _appsettings.json_:
 
 ### EdFi.Ods.WebApi
 
-In _appsettings.json_:
-
 <table>
   <thead>
     <th>Setting Name</th>
@@ -280,7 +278,7 @@ In _appsettings.json_:
   </tr>
 
   <tr style={{verticalAlign: 'top'}}>
-    <td>ApiSettings:BearerTokenPerClientLimit</td>
+    <td>:new: ApiSettings:BearerTokenPerClientLimit</td>
     <td>15</td>
     <td>The maximum number of active (non-expired) OAuth tokens allowed for a client. Setting this value to -1 disables the limit.</td>
   </tr>
@@ -400,13 +398,13 @@ In _appsettings.json_:
   </tr>
 
   <tr style={{verticalAlign: 'top'}}>
-    <td>ApiSettings:Features:SerializedData</td>
+    <td>:new: ApiSettings:Features:SerializedData</td>
     <td>true</td>
     <td>Activates optimized behavior in the API to serialize the resource data into a binary representation that is stored on the "root" record of the resource's underlying table in the ODS. This serialized representation is then used as the primary source for servicing future API requests. While the data in the ODS tables is still maintained, it is only used as the canonical source when the serialized data is invalidated by modification of the ODS data by other processes (detected by a change to `LastModifiedDate`).</td>
   </tr>
 
   <tr style={{verticalAlign: 'top'}}>
-    <td>ApiSettings:Features:ResourceLinks</td>
+    <td>:new: ApiSettings:Features:ResourceLinks</td>
     <td>true</td>
     <td>Controls the inclusion of `link` objects in references in responses from the Data Management resource endpoints. Disabling this feature is a server-side optimization reducing database load, but comes with the risk of breaking API client integrations that utilize them.</td>
   </tr>
