@@ -203,7 +203,7 @@ The following are required to install the Admin App:
 
     During the installation process, you will be prompted to choose database login details. Entering "Y" will continue with default option( Installation process will create IIS APPPOOL\\AdminApp database login on the server).
 
-    Choosing 'n' will prompt you to enter windows username. The installation process will validate and create database login using entered username, if the login does not exist on the database server already. 
+    Choosing 'n' will prompt you to enter windows username. The installation process will validate and create database login using entered username, if the login does not exist on the database server already.
 
     ![image2022-9-20_12-7-6.png](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/installation/image2022-9-20_12-7-6.png)
 
@@ -257,7 +257,7 @@ The following are required to install the Admin App:
 
     ### **Step 8. Create Initial Administrative User**
 
-    Upon first launch of the Admin App, you will have to create the initial administrative user for the application. This consists of creating a username and password for the initial user. Additional users can be added at a later time. Please see [Securing the Admin App](../../getting-started/securing-the-admin-app.md) for more information.
+    Upon first launch of the Admin App, you will have to create the initial administrative user for the application. This consists of creating a username and password for the initial user. Additional users can be added at a later time. Please see [Securing the Admin App](../../getting-started/securing-the-admin-app) for more information.
 
     **Step 9. Open Admin App to Complete Installation**
 
@@ -271,9 +271,9 @@ The following are required to install the Admin App:
 
     The Admin App is now configured for use with your Ed-Fi ODS / API instance. Please visit the following articles to help with next actions in using Admin App:
 
-  * [Securing the Admin App](../../getting-started/securing-the-admin-app.md)
-  * [Multi-Instance Connections](../../getting-started/multi-instance-connections.md)
-  * [Next Steps](../../getting-started/next-steps.md)
-  * [Known Issues](../../getting-started/known-issues.md)
+  * [Securing the Admin App](../../getting-started/securing-the-admin-app)
+  * [Multi-Instance Connections](../../getting-started/multi-instance-connections)
+  * [Next Steps](../../getting-started/next-steps)
+  * [Known Issues](../../getting-started/known-issues)
 
     Admin App also has a [https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25231476](https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25231476) for an in-depth look at each of the features contained within.

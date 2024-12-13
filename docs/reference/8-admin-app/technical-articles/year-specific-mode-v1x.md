@@ -10,11 +10,11 @@ ODS / API platform hosts may choose a "Year-Specific" configuration mode within 
 
 Use this checklist and the details below to modify your ODS and Admin App to run in Year-Specific mode
 
-* ODS API: configure the ODS API Web.config for **YearSpecific** startup
-* ODS SwaggerUI: configure the swagger.webApiMetadataUrl to contain the configured year. For example, `<http://localhost:54746/metadata/**{year}**/>`
-* ODS Database: Rename the EdFi\_Ods database to **EdFi\_Ods\_2019**
-* Admin App: update database value in **EdFi\_Ods\_Production** connectionString
-* Admin App: enable and configure year specific app settings **yearSpecific:isEnabled** and **yearSpecific:year**
+* ODS API: configure the ODS API Web.config for `YearSpecific` startup
+* ODS SwaggerUI: configure the swagger.webApiMetadataUrl to contain the configured year. For example, `<http://localhost:54746/metadata/{year}/>`
+* ODS Database: Rename the EdFi\_Ods database to `EdFi\_Ods\_2019`
+* Admin App: update database value in `EdFi\_Ods\_Production` connectionString
+* Admin App: enable and configure year specific app settings `yearSpecific:isEnabled` and `yearSpecific:year`
 
 ## Year-Specific Configuration
 
@@ -26,19 +26,19 @@ The ODS / API and SwaggerUI each require changes to configure them for Year-Spec
 
 In the SwaggerUI Web.config, make the following changes:
 
-* Update **swagger.webApiMetadataUrl** to contain a school year.
+* Update `swagger.webApiMetadataUrl` to contain a school year.
 
 ![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/technical-articles/image2019-8-2_10-14-51.png)
 
 In the WebApi Web.config, make the following changes:
 
-* Update the **owin:appStartup** app setting to have the value of "YearSpecific".
+* Update the `owin:appStartup` app setting to have the value of "YearSpecific".
 
 ![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/technical-articles/image2019-8-2_10-16-11.png)
 
 ### ODS Database Year-Specific Naming Convention
 
-In Year-Specific mode, the database is identified with a "\_{year}" suffix value in the database name. To enable, install the database as usual, either through the [**initdev** process](https://edfi.atlassian.net/wiki/display/ODSAPI32/Getting+Started+-+Installation+Steps) or through the [Windows Installers for the Ed-Fi ODS / API Suite 3](https://exchange.ed-fi.org/). Once installed, you can manually rename the database through SQL Server Management Studio by right-clicking the database name and selecting "Rename":
+In Year-Specific mode, the database is identified with a `\_{year}` suffix value in the database name. To enable, install the database as usual, either through the [`initdev` process](https://edfi.atlassian.net/wiki/display/ODSAPI32/Getting+Started+-+Installation+Steps) or through the [Windows Installers for the Ed-Fi ODS / API Suite 3](https://exchange.ed-fi.org/). Once installed, you can manually rename the database through SQL Server Management Studio by right-clicking the database name and selecting "Rename":
 
 ![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/technical-articles/image2019-8-2_10-20-41.png)
 
@@ -56,16 +56,14 @@ To find the Web.config file, open IIS Manager and navigate to the AdminApp web a
 
 In Web.config, make the following changes:
 
-**Change 1.** Set the "EdFi\_Ods\_Production" connection string to contain the year-specific database name created while setting up the ODS. The example below uses the "EdFi\_Ods\_2019" database and windows authentication:
+`Change 1.` Set the "EdFi\_Ods\_Production" connection string to contain the year-specific database name created while setting up the ODS. The example below uses the "EdFi\_Ods\_2019" database and windows authentication:
 
 ![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/technical-articles/image2019-8-1_10-3-3.png)
 
-**Changes 2 & 3.** To enable year-specific functionality inside Admin App, add the two items shown below into the AppSettings node in Web.config, placing them below any items that already exist.
+`Changes 2 & 3.` To enable year-specific functionality inside Admin App, add the two items shown below into the AppSettings node in Web.config, placing them below any items that already exist.
 
 ![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/technical-articles/image2019-8-2_10-22-32.png)
 
-# Reporting Issues
+## Reporting Issues
 
 If you encounter issues related to configuration of the Admin App, please create a ticket in the [Ed-Fi Tracker system (in the EDFI project)](https://tracker.ed-fi.org/projects/EDFI).
-
-## Contents

@@ -192,8 +192,8 @@ Steps for restarting the ODS / API:
 The Admin App is now configured for use with your Ed-Fi ODS / API instance. Please visit the following articles to help with next actions in using Admin App:
 
 * [Securing the Admin App (v2.x)](https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25243028)
-* [Multi-Instance Connections](../../../getting-started/multi-instance-connections.md)
-* [Next Steps](../../../getting-started/next-steps.md)
-* [Known Issues](../../../getting-started/known-issues.md)
+* [Multi-Instance Connections](../../../getting-started/multi-instance-connections)
+* [Next Steps](../../../getting-started/next-steps)
+* [Known Issues](../../../getting-started/known-issues)
 
 Admin App also has a [https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25231476](https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25231476) for an in-depth look at each of the features contained within.

@@ -277,9 +277,9 @@ To verify and launch the Admin App, open "Internet Information Services (IIS) Ma
 
 The Admin App is now configured for use with your Ed-Fi ODS / API instance. Please visit the following articles to help with next actions in using Admin App:
 
-* [Securing the Admin App](../../../getting-started/securing-the-admin-app.md)
-* [Multi-Instance Connections](../../../getting-started/multi-instance-connections.md)
-* [Next Steps](../../../getting-started/next-steps.md)
-* [Known Issues](../../../getting-started/known-issues.md)
+* [Securing the Admin App](../../../getting-started/securing-the-admin-app)
+* [Multi-Instance Connections](../../../getting-started/multi-instance-connections)
+* [Next Steps](../../../getting-started/next-steps)
+* [Known Issues](../../../getting-started/known-issues)
 
 Admin App also has a [https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25231476](https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25231476) for an in-depth look at each of the features contained within.

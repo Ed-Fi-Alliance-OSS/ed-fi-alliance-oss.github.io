@@ -111,7 +111,7 @@ The PowerShell output should look like the following:
 
 ### **Next Steps. Continue at Step 5 in the Admin App Installation (3.x)**
 
-Continue Step 5 and beyond in the general Admin App installation instructions: [Admin App v1.7 for ODS / API v3.3](../../ods-api-admin-app/getting-started/installation/older-versions-of-admin-app/admin-app-v17-for-ods-api-v33.md).
+Continue Step 5 and beyond in the general Admin App installation instructions: [Admin App v1.7 for ODS / API v3.3](../getting-started/installation/older-versions-of-admin-app/admin-app-v17-for-ods-api-v33).
 
 ## Contents
 

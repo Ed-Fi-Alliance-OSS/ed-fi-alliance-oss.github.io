@@ -1,6 +1,6 @@
 # Admin App v1.8.1 for Ed-Fi ODS / API v3.4
 
-# Before You Install
+## Before You Install
 
 This section provides general information you should review before installing the Ed-Fi ODS / API Admin App for the ODS / API v3.4.
 
@@ -13,7 +13,7 @@ The following are required to install the Admin App:
 
 * The Admin App provides an interface to administer an Ed-Fi ODS / API. Understandably, you must have an Ed-Fi ODS / API deployed and operational before you can use the Admin App. The ODS / API must be an On-Premises Installation either via the [https://edfi.atlassian.net/wiki/spaces/TSINSTALL/overview](https://edfi.atlassian.net/wiki/spaces/TSINSTALL/overview) or [manual installation via source code](https://edfi.atlassian.net/wiki/display/ODSAPI34/Getting+Started).
 * You must have an Ed-Fi license to use the Admin App. If you have an installation of the ODS / API, you already have a license. The Ed-Fi License is free and available online. If you haven't done so already, visit the [Ed-Fi.org licensing section](https://www.ed-fi.org/getting-started/license-ed-fi-technology/) for details and a link to get started.
-* Admin App authentication will work via Single Sign-On using either Active Directory or Active Directory for Azure depending on deployment. Admin App v1.8 contains a preview of non-Active Directory using ASP.NET Identity as an alternate authentication method (see: [ASP.NET Identity (Preview in v1.8)](../../../../ods-api-admin-app/technical-articles/aspnet-identity-preview-in-v18.md)).
+* Admin App authentication will work via Single Sign-On using either Active Directory or Active Directory for Azure depending on deployment. Admin App v1.8 contains a preview of non-Active Directory using ASP.NET Identity as an alternate authentication method (see: [ASP.NET Identity (Preview in v1.8)](../../../technical-articles/aspnet-identity-preview-in-v18)).
 * The [.NET Framework 4.8 Runtime](https://dotnet.microsoft.com/download/dotnet-framework/net48) is required on the destination server before installation of Admin App.
 * A modern web browser such as Google Chrome, Mozilla Firefox, or Microsoft Edge. Internet Explorer 11 (a pre-installed browser on Windows Server) may load, but may not function when using Admin App.
 
@@ -24,29 +24,29 @@ You will need the following information to complete this installation:
 * The location of your Ed-Fi ODS / API.
 * Administrator access and credentials for either on-premises or Azure environment with target Ed-Fi ODS / API.
 
-# Installation Instructions
+## Installation Instructions
 
 This section provides step-by-step instructions for installation. The specific steps are different depending on the deployment model and version of your Ed-Fi ODS / API.
 
-* [Admin App v1.8.1 for Ed-Fi ODS / API v3.4](#admin-app-v181-for-ed-fi-ods--api-v34)
-* [Before You Install](#before-you-install)
-  * [Prerequisites](#prerequisites)
-  * [Required Information](#required-information)
-* [Installation Instructions](#installation-instructions)
-  * [Compatibility \& Supported ODS / API Versions](#compatibility--supported-ods--api-versions)
-    * [Other Versions](#other-versions)
-  * [On-Premises Deployment for ODS / API for v3.4](#on-premises-deployment-for-ods--api-for-v34)
-    * [**Step 1.** **Unzip Admin App Installation Files**](#step-1unzip-admin-app-installation-files)
-    * [Step 2. Locate the Installation Script Files](#step-2-locate-the-installation-script-files)
-    * [Step 3. Configure Installation](#step-3configure-installation)
-    * [**Step 4.** **Run the Installation via PowerShell**](#step-4run-the-installation-via-powershell)
-    * [**Step 5. Create SQL Server Login (if "useIntegratedSecurity" set to "true")**](#step-5-create-sql-server-login-if-useintegratedsecurity-set-to-true)
-    * [](#)
-    * [**Step 6. Checking Folder Permissions**](#step-6checking-folder-permissions)
-    * [**Step 7. Securing the Admin App**](#step-7-securing-the-admin-app)
-    * [**Step 8. Admin App Licensing \& Configuration**](#step-8-admin-app-licensing--configuration)
-    * [**Step 9. Restart the ODS / API**](#step-9-restart-theods--api)
-    * [Step 10. Using the Admin App](#step-10-using-the-admin-app)
+- [Admin App v1.8.1 for Ed-Fi ODS / API v3.4](#admin-app-v181-for-ed-fi-ods--api-v34)
+  - [Before You Install](#before-you-install)
+  - [Prerequisites](#prerequisites)
+  - [Required Information](#required-information)
+  - [Installation Instructions](#installation-instructions)
+  - [Compatibility \& Supported ODS / API Versions](#compatibility--supported-ods--api-versions)
+    - [Other Versions](#other-versions)
+  - [On-Premises Deployment for ODS / API for v3.4](#on-premises-deployment-for-ods--api-for-v34)
+    - [**Step 1.** **Unzip Admin App Installation Files**](#step-1unzip-admin-app-installation-files)
+    - [Step 2. Locate the Installation Script Files](#step-2-locate-the-installation-script-files)
+    - [Step 3. Configure Installation](#step-3configure-installation)
+    - [**Step 4.** **Run the Installation via PowerShell**](#step-4run-the-installation-via-powershell)
+    - [**Step 5. Create SQL Server Login (if "useIntegratedSecurity" set to "true")**](#step-5-create-sql-server-login-if-useintegratedsecurity-set-to-true)
+    - [](#)
+    - [**Step 6. Checking Folder Permissions**](#step-6checking-folder-permissions)
+    - [**Step 7. Securing the Admin App**](#step-7-securing-the-admin-app)
+    - [**Step 8. Admin App Licensing \& Configuration**](#step-8-admin-app-licensing--configuration)
+    - [**Step 9. Restart the ODS / API**](#step-9-restart-theods--api)
+    - [Step 10. Using the Admin App](#step-10-using-the-admin-app)
 
 ## Compatibility & Supported ODS / API Versions
 
@@ -58,7 +58,7 @@ The Admin App downloadable from this page is compatible with the ODS / API v3.4.
 
 Other installers are available for other versions of the ODS / API:
 
-* [Installation for ODS / API v3.1.1, v3.2, v3.3](../older-versions-of-admin-app/admin-app-v17-for-ods-api-v33.md)
+* [Installation for ODS / API v3.1.1, v3.2, v3.3](../older-versions-of-admin-app/admin-app-v17-for-ods-api-v33)
 * [Admin App v1.5.1 for ODS / API v2.5 or v2.6](https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25232532)
 
 ## On-Premises Deployment for ODS / API for v3.4
@@ -265,9 +265,9 @@ Steps for restarting the ODS / API:
 The Admin App is now configured for use with your Ed-Fi ODS / API instance. Please visit the following articles to help with next actions in using Admin App:
 
 * [Securing the Admin App (v1.x)](https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25233039)
-* [ASP.NET Identity (Preview in v1.8)](../../../../ods-api-admin-app/technical-articles/aspnet-identity-preview-in-v18.md)
-* [Year-Specific Mode (v1.x)](../../../../ods-api-admin-app/technical-articles/year-specific-mode-v1x.md)
-* [Next Steps](../../../getting-started/next-steps.md)
-* [Known Issues](../../../getting-started/known-issues.md)
+* [ASP.NET Identity (Preview in v1.8)](../../../technical-articles/aspnet-identity-preview-in-v18)
+* [Year-Specific Mode (v1.x)](../../../technical-articles/year-specific-mode-v1x)
+* [Next Steps](../../../getting-started/next-steps)
+* [Known Issues](../../../getting-started/known-issues)
 
 Admin App also has a [https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25231476](https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25231476) for an in-depth look at each of the features contained within.

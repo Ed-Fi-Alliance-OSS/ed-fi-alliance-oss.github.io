@@ -4,37 +4,37 @@ This section provides an overview of what's new in the latest versions of the OD
 
 **Contents**
 
-*   [Updates in Admin App v3.3](#updates-in-admin-app-v33)
-*   [Updates in Admin App v3.2](#updates-in-admin-app-v32)
-*   [Updates in Admin App v3.1](#updates-in-admin-app-v31)
-*   [Updates in Admin App for Suite 3 v3.0](#updates-in-admin-app-for-suite-3-v30)
-*   [Updates in Admin App for Suite 3 v2.4](#updates-in-admin-app-for-suite-3-v24)
-*   [Updates in Admin App for Suite 3 v2.3](#updates-in-admin-app-for-suite-3-v23)
-*   [Updates in Admin App for Suite 3 v2.2.1](#updates-in-admin-app-for-suite-3-v221)
-*   [Updates in Admin App for Suite 3 v2.2](#updates-in-admin-app-for-suite-3-v22)
-*   [Updates in Admin App for Suite 3 v2.1.0](#updates-in-admin-app-for-suite-3-v210)
-*   [Updates in Admin App for Suite 3 v2.0.1](#updates-in-admin-app-for-suite-3-v201)
-*   [Updates in Admin App for Suite 3 v2.0.0](#updates-in-admin-app-for-suite-3-v200)
-*   [Updates in Admin App v1.8 for Ed-Fi ODS / API v3.4](#updates-in-admin-app-v18-for-ed-fi-ods-api-v34)
-*   [Updates in Admin App v1.7 for Ed-Fi ODS / API v3.3](#updates-in-admin-app-v17-for-ed-fi-ods-api-v33)
-*   [Updates in Admin App v1.6 for Ed-Fi ODS / API v3.2](#updates-in-admin-app-v16-for-ed-fi-ods-api-v32)
-*   [Updates in Admin App v1.5.1 for Ed-Fi ODS / API v2.6](#updates-in-admin-app-v151-for-ed-fi-ods-api-v26)
-*   [Updates in Admin App v1.5](#updates-in-admin-app-v15)
+* [Updates in Admin App v3.3](#updates-in-admin-app-v33)
+* [Updates in Admin App v3.2](#updates-in-admin-app-v32)
+* [Updates in Admin App v3.1](#updates-in-admin-app-v31)
+* [Updates in Admin App for Suite 3 v3.0](#updates-in-admin-app-for-suite-3-v30)
+* [Updates in Admin App for Suite 3 v2.4](#updates-in-admin-app-for-suite-3-v24)
+* [Updates in Admin App for Suite 3 v2.3](#updates-in-admin-app-for-suite-3-v23)
+* [Updates in Admin App for Suite 3 v2.2.1](#updates-in-admin-app-for-suite-3-v221)
+* [Updates in Admin App for Suite 3 v2.2](#updates-in-admin-app-for-suite-3-v22)
+* [Updates in Admin App for Suite 3 v2.1.0](#updates-in-admin-app-for-suite-3-v210)
+* [Updates in Admin App for Suite 3 v2.0.1](#updates-in-admin-app-for-suite-3-v201)
+* [Updates in Admin App for Suite 3 v2.0.0](#updates-in-admin-app-for-suite-3-v200)
+* [Updates in Admin App v1.8 for Ed-Fi ODS / API v3.4](#updates-in-admin-app-v18-for-ed-fi-ods-api-v34)
+* [Updates in Admin App v1.7 for Ed-Fi ODS / API v3.3](#updates-in-admin-app-v17-for-ed-fi-ods-api-v33)
+* [Updates in Admin App v1.6 for Ed-Fi ODS / API v3.2](#updates-in-admin-app-v16-for-ed-fi-ods-api-v32)
+* [Updates in Admin App v1.5.1 for Ed-Fi ODS / API v2.6](#updates-in-admin-app-v151-for-ed-fi-ods-api-v26)
+* [Updates in Admin App v1.5](#updates-in-admin-app-v15)
 
 # Updates in Admin App v3.3
 
 Latest Release
 
-*   .NET 8
-*   Updated NuGet package dependencies
-*   Improved messaging when editing a claimset ([AA-1440](https://tracker.ed-fi.org/browse/AA-1440))
-*   Updated base images for the Docker containers
+* .NET 8
+* Updated NuGet package dependencies
+* Improved messaging when editing a claimset ([AA-1440](https://tracker.ed-fi.org/browse/AA-1440))
+* Updated base images for the Docker containers
 
 Admin App v3.3.1 update:
 
-*    [AA-1747](https://tracker.ed-fi.org/browse/AA-1747) - Getting issue details... STATUS
-*    [AA-1748](https://tracker.ed-fi.org/browse/AA-1748) - Getting issue details... STATUS
-*    [AA-1744](https://tracker.ed-fi.org/browse/AA-1744) - Getting issue details... STATUS
+* [AA-1747](https://tracker.ed-fi.org/browse/AA-1747)
+* [AA-1748](https://tracker.ed-fi.org/browse/AA-1748)
+* [AA-1744](https://tracker.ed-fi.org/browse/AA-1744)
 
 # Updates in Admin App v3.2
 
@@ -42,8 +42,8 @@ Admin App v3.3.1 update:
 
 Additional support for ODS/API 6.1 updates and to support field use cases.
 
-*   [\[AA-1705\] Claimset export on adminapp will fail if there are multiple default authorization strategies - Ed-Fi Tracker](https://tracker.ed-fi.org/browse/AA-1705)
-*   [\[AA-1711\] UI changes for Claimset export on adminapp will fail if there are multiple default authorization strategies - Ed-Fi Tracker](https://tracker.ed-fi.org/browse/AA-1711) 
+* [\[AA-1705\] Claimset export on adminapp will fail if there are multiple default authorization strategies - Ed-Fi Tracker](https://tracker.ed-fi.org/browse/AA-1705)
+* [\[AA-1711\] UI changes for Claimset export on adminapp will fail if there are multiple default authorization strategies - Ed-Fi Tracker](https://tracker.ed-fi.org/browse/AA-1711)
 
 ### Error Updating Large Claimsets
 
@@ -83,14 +83,14 @@ Admin App v3.0 offers authentication via OpenID Connect (OIDC) and third-party s
 
 Claim Set Editor Bug Fixes
 
-The following tickets have also been resolved in the Admin App v3.0 release:  
- [AA-1594](https://tracker.ed-fi.org/browse/AA-1594) - Getting issue details... STATUS  
- [AA-1597](https://tracker.ed-fi.org/browse/AA-1597) - Getting issue details... STATUS  
+The following tickets have also been resolved in the Admin App v3.0 release:
+ [AA-1594](https://tracker.ed-fi.org/browse/AA-1594) - Getting issue details... STATUS
+ [AA-1597](https://tracker.ed-fi.org/browse/AA-1597) - Getting issue details... STATUS
  [AA-1600](https://tracker.ed-fi.org/browse/AA-1600) - Getting issue details... STATUS
 
 # Updates in Admin App for Suite 3 v2.4
 
-### Update to .NET 6 
+### Update to .NET 6
 
 Admin App has been updated to .NET 6 to match the ODS/API and other utilities in the Ed-Fi suite of products.  [AA-1423](https://tracker.ed-fi.org/browse/AA-1423) - Getting issue details... STATUS
 
@@ -102,8 +102,8 @@ The prior ODS/API Cloud Deployment for Azure deployment methods used PowerShell 
 
 The following implementation issues have been reported by the community and have been resolved
 
-*   A bug has been fixed in the Claim Set Editor of not preserving an intended update  [AA-1485](https://tracker.ed-fi.org/browse/AA-1485) - Getting issue details... STATUS
-*   A request has been made to disable the Product Improvement feature and now available as an appSetting.json configuration variable  [AA-1556](https://tracker.ed-fi.org/browse/AA-1556) - Getting issue details... STATUS  
+* A bug has been fixed in the Claim Set Editor of not preserving an intended update  [AA-1485](https://tracker.ed-fi.org/browse/AA-1485) - Getting issue details... STATUS
+* A request has been made to disable the Product Improvement feature and now available as an appSetting.json configuration variable  [AA-1556](https://tracker.ed-fi.org/browse/AA-1556) - Getting issue details... STATUS
 
 # Updates in Admin App for Suite 3 v2.3
 
@@ -209,7 +209,7 @@ Along with the new multi-instance administration feature, Admin App v2.0.0 suppo
 
 ### Multiple Version Support for Ed-Fi ODS / API v3.4 and v5.0.0
 
-Admin App v2.0.0 supports both ODS / API v3.4 and v5.0.0. 
+Admin App v2.0.0 supports both ODS / API v3.4 and v5.0.0.
 
 ### ASP.NET Identity and Multiple Role Support
 
@@ -225,7 +225,7 @@ Based on Ed-Fi community feedback and building on the Admin App v1.7 Claim Set E
 
 ### ASP.NET Identity (Preview)
 
-Based on Ed-Fi community feedback from those hosting instances on cloud configurations, authorization approaches other than Active Directory have been preferred by numerous implementers. ASP.NET Identity offers secure web-form authentication as an alternative to the Active Directory support built-in today. Currently, this feature is offered as a preview, and will become part of future releases based on field usage. See the [ASP.NET Identity (Preview in v1.8)](../ods-api-admin-app/technical-articles/aspnet-identity-preview-in-v18.md) section for information and instructions on how to enable this feature.
+Based on Ed-Fi community feedback from those hosting instances on cloud configurations, authorization approaches other than Active Directory have been preferred by numerous implementers. ASP.NET Identity offers secure web-form authentication as an alternative to the Active Directory support built-in today. Currently, this feature is offered as a preview, and will become part of future releases based on field usage. See the [ASP.NET Identity (Preview in v1.8)](technical-articles/aspnet-identity-preview-in-v18) section for information and instructions on how to enable this feature.
 
 ### Learning Standards 1.1 Update
 
@@ -237,7 +237,7 @@ Admin App v1.8 is fully compatible with Postgres 11 Ed-Fi ODS / API configuratio
 
 ### PowerShell Installation Process
 
-Admin App now provides an enhanced and customizable PowerShell installation process based on Ed-Fi community feedback. Please see [Admin App v1.8.1 for Ed-Fi ODS / API v3.4](../ods-api-admin-app/getting-started/installation/older-versions-of-admin-app/admin-app-v181-for-ed-fi-ods-api-v34.md) for more information on how to use and take advantage of the PowerShell installer.
+Admin App now provides an enhanced and customizable PowerShell installation process based on Ed-Fi community feedback. Please see [Admin App v1.8.1 for Ed-Fi ODS / API v3.4](getting-started/installation/older-versions-of-admin-app/admin-app-v181-for-ed-fi-ods-api-v34) for more information on how to use and take advantage of the PowerShell installer.
 
 # Updates in Admin App v1.7 for Ed-Fi ODS / API v3.3
 
@@ -245,7 +245,7 @@ Admin App now provides an enhanced and customizable PowerShell installation proc
 
 ### Claim Set Editor (Preview)
 
-Starting with Admin App v3.3, a new graphical editor for Claim Sets is available as a preview feature. Please see [this Technical Article](../ods-api-admin-app/technical-articles/claim-set-editor-tab-preview-in-v17.md) for instructions on how to enable and preview the Claim Set Editor features.
+Starting with Admin App v3.3, a new graphical editor for Claim Sets is available as a preview feature. Please see [this Technical Article](technical-articles/claim-set-editor-tab-preview-in-v17) for instructions on how to enable and preview the Claim Set Editor features.
 
 # Updates in Admin App v1.6 for Ed-Fi ODS / API v3.2
 
@@ -267,13 +267,12 @@ On-premises installations have accepted the Ed-Fi license as part of access to s
 
 ### Student ID to Identification Code Translation
 
-Multiple student identifiers are commonly used in the education data ecosystem. Several cases have emerged in the Ed-Fi Community where student IDs in API transactions (i.e., the `studentUniqueId` field) are not known to the client application. As a result, a related transaction fails. This issue has been raised in, for example, the [ODS-1824](https://tracker.ed-fi.org/browse/ODS-1824), [ODS-2664](https://tracker.ed-fi.org/browse/ODS-2664), and [ODS-2791](https://tracker.ed-fi.org/browse/ODS-2791) tickets. 
+Multiple student identifiers are commonly used in the education data ecosystem. Several cases have emerged in the Ed-Fi Community where student IDs in API transactions (i.e., the `studentUniqueId` field) are not known to the client application. As a result, a related transaction fails. This issue has been raised in, for example, the [ODS-1824](https://tracker.ed-fi.org/browse/ODS-1824), [ODS-2664](https://tracker.ed-fi.org/browse/ODS-2664), and [ODS-2791](https://tracker.ed-fi.org/browse/ODS-2791) tickets.
 
 The recommended long-term solution is to facilitate, push, and drive rostering products to support configuration of different IDs for different agencies, and to store all roster IDs. However, the Ed-Fi ODS / API v2.6 includes a student identification code translation feature as a stopgap measure.
 
 ![](https://techdocs.ed-fi.org/download/attachments/61705307/AdminAppFunctionAddApplication2.PNG?version=3&modificationDate=1561498133930&api=v2)
 
-  
 **Admin App v1.5.1 for Ed-Fi ODS / API v2.6 Student Identification System Descriptor selection drop-down**
 
 # Updates in Admin App v1.5

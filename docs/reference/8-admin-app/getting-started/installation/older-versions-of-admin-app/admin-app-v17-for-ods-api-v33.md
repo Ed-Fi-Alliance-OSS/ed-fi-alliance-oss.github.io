@@ -21,31 +21,31 @@ You will need the following information to complete this installation:
 * The location of your Ed-Fi ODS / API.
 * Administrator access and credentials for either on-premises or Azure environment with target Ed-Fi ODS / API.
 
-# Installation Instructions
+## Installation Instructions
 
 This section provides step-by-step instructions for installation. The specific steps are different depending on the deployment model and version of your Ed-Fi ODS / API.
 
-* [Admin App v1.7 for ODS / API v3.3](#admin-app-v17-for-ods--api-v33)
-* [Before You Install](#before-you-install)
-  * [Prerequisites](#prerequisites)
-  * [Required Information](#required-information)
-* [Installation Instructions](#installation-instructions)
-  * [Compatibility \& Supported ODS / API Versions](#compatibility--supported-ods--api-versions)
-  * [On-Premises Deployment for ODS / API for v3.3](#on-premises-deployment-for-ods--api-for-v33)
-    * [**Step 1. Select Install Location**](#step-1-select-install-location)
-    * [**Step 2.** **Configure SQL Connection**](#step-2configure-sql-connection)
-    * [Step 3. ODS / API URL Configuration](#step-3ods--api-url-configuration)
-    * [**Step 4. ODS / API Mode**](#step-4-ods--api-mode)
-    * [**Step 5. Create SQL Server Login (if "Trusted Connection" used above)**](#step-5-create-sql-server-login-if-trusted-connection-used-above)
-    * [\*\*](#)
-    * [**Step 6. Checking Folder Permission (Optional)**](#step-6checking-folder-permission-optional)
-    * [\*\*](#-1)
-    * [**Step 7. Securing the Admin App**](#step-7-securing-the-admin-app)
-    * [**Step 8. Admin App Licensing \& Configuration**](#step-8-admin-app-licensing--configuration)
-    * [**Step 9. Restart the ODS / API**](#step-9-restart-theods--api)
-    * [Step 10. Admin app walk through](#step-10-admin-app-walk-through)
-    * [Step 11. Reports](#step-11-reports)
-  * [Contents](#contents)
+- [Admin App v1.7 for ODS / API v3.3](#admin-app-v17-for-ods--api-v33)
+- [Before You Install](#before-you-install)
+  - [Prerequisites](#prerequisites)
+  - [Required Information](#required-information)
+  - [Installation Instructions](#installation-instructions)
+  - [Compatibility \& Supported ODS / API Versions](#compatibility--supported-ods--api-versions)
+  - [On-Premises Deployment for ODS / API for v3.3](#on-premises-deployment-for-ods--api-for-v33)
+    - [**Step 1. Select Install Location**](#step-1-select-install-location)
+    - [**Step 2.** **Configure SQL Connection**](#step-2configure-sql-connection)
+    - [Step 3. ODS / API URL Configuration](#step-3ods--api-url-configuration)
+    - [**Step 4. ODS / API Mode**](#step-4-ods--api-mode)
+    - [**Step 5. Create SQL Server Login (if "Trusted Connection" used above)**](#step-5-create-sql-server-login-if-trusted-connection-used-above)
+    - [\*\*](#)
+    - [**Step 6. Checking Folder Permission (Optional)**](#step-6checking-folder-permission-optional)
+    - [\*\*](#-1)
+    - [**Step 7. Securing the Admin App**](#step-7-securing-the-admin-app)
+    - [**Step 8. Admin App Licensing \& Configuration**](#step-8-admin-app-licensing--configuration)
+    - [**Step 9. Restart the ODS / API**](#step-9-restart-theods--api)
+    - [Step 10. Admin app walk through](#step-10-admin-app-walk-through)
+    - [Step 11. Reports](#step-11-reports)
+  - [Contents](#contents)
 
 ## Compatibility & Supported ODS / API Versions
 
@@ -108,7 +108,7 @@ If the ODS / API was configured after installation to run in Year Specific mode:
 
 ![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/older-versions-of-admin-app/image2019-8-2_13-48-57.png)
 
-For additional information about Year Specific mode and configuring the Admin App or ODS without use of the exe installers, see [https://edfi.atlassian.net/wiki/spaces/ODSAPI32/pages/27099724](https://edfi.atlassian.net/wiki/spaces/ODSAPI32/pages/27099724) and [Year-Specific Mode (v1.x)](../../../../ods-api-admin-app/technical-articles/year-specific-mode-v1x.md).
+For additional information about Year Specific mode and configuring the Admin App or ODS without use of the exe installers, see [https://edfi.atlassian.net/wiki/spaces/ODSAPI32/pages/27099724](https://edfi.atlassian.net/wiki/spaces/ODSAPI32/pages/27099724) and [Year-Specific Mode (v1.x)](../../../technical-articles/year-specific-mode-v1x).
 
 ### **Step 5. Create SQL Server Login (if "Trusted Connection" used above)**
 
