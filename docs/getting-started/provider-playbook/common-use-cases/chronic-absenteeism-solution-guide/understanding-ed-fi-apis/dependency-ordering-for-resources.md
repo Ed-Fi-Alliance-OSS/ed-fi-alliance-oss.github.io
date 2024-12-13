@@ -78,6 +78,6 @@ the StudentSchoolAssociation creation:
 
 You can explore the dependency endpoint at the Ed-Fi Alliance-hosted sandbox:
 [Dependency Endpoint in Ed-Fi ODS / API
-Sandbox](https://api.ed-fi.org/v5.2/api/metadata/data/v3/dependencies)
+Sandbox](https://api.ed-fi.org/v6.2/api/metadata/data/v3/dependencies)
 
 :::

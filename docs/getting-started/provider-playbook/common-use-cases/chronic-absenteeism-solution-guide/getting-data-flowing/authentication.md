@@ -1,3 +1,8 @@
+---
+description: This section describes how your software authenticates with the API.
+sidebar_position: 4
+---
+
 # Authentication
 
 Authentication for an Ed-Fi API is handled using two-legged [OAuth
@@ -36,16 +41,22 @@ Call the POST method on `/oauth/token` with an Authorization header of "Basic
 < 64 base encoded client key : client secret>". The `Grant_type` will be set to
 `client_credentials`. This follows the process described by the [Basic
 Authentication Scheme](https://tools.ietf.org/html/rfc2617#section-2). For
-Example, if the client id or key is RvcohKz9zHI4 and the client secret
-is E1iEFusaNf81xzCxwHfbolkC, the value for the Authorization header would be
-"Basic Base64EncodedKey:Secret"
+Example, if the client id or key is `RvcohKz9zHI4` and the client secret
+is `E1iEFusaNf81xzCxwHfbolkC`, the value for the Authorization header would be
+"Basic Base64Encoded(Key:Secret)"
 
 ```powershell title="PowerShell Token Request"
-Invoke-RestMethod -Method Post -Uri "https://api.ed-fi.org/v5.2/api/oauth/token" -Headers @{ "Authorization" = ("Basic", [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("RvcohKz9zHI4", "E1iEFusaNf81xzCxwHfbolkC" -join ":"))) -join " ") } -Body @{ "grant_type" = "client_credentials"; }
+$encoded = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("RvcohKz9zHI4", "E1iEFusaNf81xzCxwHfbolkC" -join ":"))) -join " "
+
+Invoke-RestMethod -Method Post -Uri "https://api.ed-fi.org/v6.2/api/oauth/token" `
+  -Headers @{ "Authorization" = ("Basic", encoded) } `
+  -Body @{ "grant_type" = "client_credentials"; }
 ```
 
-```powershell title="cURL Token Request"
-curl --user RvcohKz9zHI4:E1iEFusaNf81xzCxwHfbolkC https://api.ed-fi.org/v5.2/api/oauth/token --data 'grant_type=client_credentials'
+```bash title="cURL Token Request"
+curl --user RvcohKz9zHI4:E1iEFusaNf81xzCxwHfbolkC \
+  https://api.ed-fi.org/v6.2/api/oauth/token \
+  --data 'grant_type=client_credentials'
 ```
 
 \*Note: curl --user option should base-64 encode the key and secret into the
@@ -78,22 +89,28 @@ the sandbox ODS / API hosted by the Ed-Fi Alliance. Replace the `Bearer` value
 with the access token returned in the previous step.
 
 ```powershell title="PowerShell API Call with Token"
-Invoke-RestMethod -Method Get -Uri "https://api.ed-fi.org/v5.2/api/data/v3/ed-fi/schools" -Headers @{ "Authorization" = "Bearer R3PLAC3_W1TH_ACC3SS_TOK3N" }
+Invoke-RestMethod -Method Get `
+  -Uri "https://api.ed-fi.org/v6.2/api/data/v3/ed-fi/schools" `
+  -Headers @{ "Authorization" = "Bearer R3PLAC3_W1TH_ACC3SS_TOK3N" }
 ```
 
-```powershell title="cURL API Call with Token"
-curl https://api.ed-fi.org/v5.2/api/data/v3/ed-fi/schools -H "Authorization: Bearer R3PLAC3_W1TH_ACC3SS_TOK3N"
+```bash title="cURL API Call with Token"
+curl https://api.ed-fi.org/v6.2/api/data/v3/ed-fi/schools \
+  -H "Authorization: Bearer R3PLAC3_W1TH_ACC3SS_TOK3N"
 ```
 
 As another example, the following call retrieves the discipline incidents
 recorded in the sandbox ODS / API. Don't forget to replace the `Bearer` value.
 
 ```powershell title="PowerShell API Call with Token"
-Invoke-RestMethod -Method Get -Uri "https://api.ed-fi.org/v5.2/api/data/v3/ed-fi/disciplineIncidents " -Headers @{ "Authorization" = "Bearer R3PLAC3_W1TH_ACC3SS_TOK3N" }
+Invoke-RestMethod -Method Get `
+  -Uri "https://api.ed-fi.org/v6.2/api/data/v3/ed-fi/disciplineIncidents" `
+  -Headers @{ "Authorization" = "Bearer R3PLAC3_W1TH_ACC3SS_TOK3N" }
 ```
 
-```powershell title="cURL API Call with Token"
-curl https://api.ed-fi.org/v5.2/api/data/v3/ed-fi/disciplineIncidents -H "Authorization: Bearer R3PLAC3_W1TH_ACC3SS_TOK3N"
+```bash title="cURL API Call with Token"
+curl https://api.ed-fi.org/v6.2/api/data/v3/ed-fi/disciplineIncidents \
+  -H "Authorization: Bearer R3PLAC3_W1TH_ACC3SS_TOK3N"
 ```
 
 You can explore the whole API surface in this manner, but there are easier ways.

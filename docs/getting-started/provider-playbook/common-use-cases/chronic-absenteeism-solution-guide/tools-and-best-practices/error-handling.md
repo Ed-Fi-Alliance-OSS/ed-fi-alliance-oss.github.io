@@ -1,9 +1,9 @@
-# Error Handling - Chronic Absenteeism-VDG
+# Error Handling
 
 This section describes error handling and integration best practices of note to
 Ed-Fi API client developers.
 
-## Error Handling
+## Programmatic Handling
 
 Proper API error response handling is a feature critical to the sustainability
 and scalability of a robust and efficient API client. Education technology

@@ -1,3 +1,8 @@
+---
+description: The Ed-Fi Alliance maintains online Swagger documentation that is very useful as a reference and early exploration tool.
+sidebar_position: 6
+---
+
 # Online API Documentation and Sandbox
 
 Online documentation for the Ed-Fi ODS / API is available through Swagger UI,
@@ -5,8 +10,7 @@ which is a visual and interactive documentation suite providing detailed
 descriptions for each resource as well as a simple way to test calls to the API
 in sandbox environments.
 
-The Alliance maintains an online API Sandbox
-: [http://api.ed-fi.org](http://api.ed-fi.org).
+The Alliance maintains an online API Sandbox at [http://api.ed-fi.org](http://api.ed-fi.org).
 
 Various versions of the API are shown.
 

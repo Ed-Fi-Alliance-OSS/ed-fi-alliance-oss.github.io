@@ -66,9 +66,9 @@ Examples of both are provided below.
 
 [etc...]
 
-    “_ext” : {
-        “SomeState” : {
-            “tribalAffiliation” : “Pascua Yaqui”,
+    "_ext" : {
+        “SomeState" : {
+            “tribalAffiliation" : “Pascua Yaqui",
             [etc...]
         }
     }

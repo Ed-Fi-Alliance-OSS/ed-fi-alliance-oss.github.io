@@ -1,3 +1,8 @@
+---
+description: Background material to help you understand this system integration pattern.
+sidebar_position: 3
+---
+
 # Understanding REST APIs - Chronic Absenteeism-VDG
 
 Your data gets to the Starter Kit via the Ed-Fi ODS platform's API. The Ed-Fi

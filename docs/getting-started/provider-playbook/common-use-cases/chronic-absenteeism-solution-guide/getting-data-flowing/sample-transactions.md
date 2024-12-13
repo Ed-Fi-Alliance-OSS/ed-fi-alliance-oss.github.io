@@ -1,3 +1,8 @@
+---
+description: A few examples of what real-world transactions look like.
+sidebar_position: 7
+---
+
 # Sample Transactions - Chronic Absenteeism-VDG
 
 ## Example: Creating a Student
@@ -5,8 +10,8 @@
 Putting the pieces in the above sections together, we can look at the contents
 of a sample transaction:
 
-```http title="Request: Creating a Student"
-POST "https://ed-fi.grandbend.edu:443/v5.1.0/api/data/v3/ed-fi/students"
+```none title="Request: Creating a Student"
+POST "https://ed-fi.grandbend.edu/data/v3/ed-fi/students"
 accept: application/json
 Content-Type: application/json
 authorization: Bearer 20ea10c525354cdaa32aacfb71bc2ff8
@@ -35,7 +40,7 @@ the instructions to authorize and try it out.
 
 A response from your system would look as follows:
 
-```http title="Response"
+```none title="Response"
 201
 access-control-allow-origin: *
 access-control-expose-headers: *
@@ -43,7 +48,7 @@ connection: keep-alive
 content-length: 0
 date: Wed07 Apr 2021 17:21:27 GMT
 etag: "5249220147305124204"
-location: https://api.ed-fi.org:443/data/v3/ed-fi/students/918bb778138b4ab2a44e599fbcbf7f66
+location: https://ed-fi.grandbend.edu/data/v3/ed-fi/students/918bb778138b4ab2a44e599fbcbf7f66
 ```
 
 This is an empty response with only HTTP headers (a few headers have been
@@ -64,7 +69,7 @@ removed to allow us to focus on the ones most important to our discussion).
 A second example that represents a more complex scenario would look like this:
 
 ```http title="Request: Creating a Student Attendance Record"
-POST "https://ed-fi.grandbend.edu:443/v5.1.0/api/data/v3/ed-fi/studentSchoolAttendanceEvents"
+POST "https://ed-fi.grandbend.edu/data/v3/ed-fi/studentSchoolAttendanceEvents"
 accept: application/json
 Content-Type: application/json
 authorization: Bearer 20ea10c525354cdaa32aacfb71bc2ff8

@@ -1,3 +1,8 @@
+---
+description: This section describes how requests to the API are authorized
+sidebar_position: 5
+---
+
 # Authorization
 
 ## Overview
@@ -12,7 +17,7 @@ describes the fundamentals of authorization in connecting with an Ed-Fi API.
 With each request made to the API, the token obtained from the authentication
 process must be passed in a HTTP header, like so:
 
-```http
+```none
 Authorization: Bearer <token_value>
 ```
 
@@ -116,12 +121,12 @@ Systems.
     * the namespace string must begin with "uri://"
     * for an assessment (Assessment) record, the namespace typically indicates
         the vendor that owns or provides the assessment (e.g.,
-        "[uri://nwea.org](http://nwea.org)", "[uri://act.org](http://act.org)", etc.)
+        `uri://nwea.org`, `uri://act.org`, etc.)
     * for a student assessment result (StudentAssessment), this is the vendor
         that owns or provides the assessment for which the results were assigned
     * for a credential (Credential), this is the organization that assigns the
-        credential (e.g., "[uri://dpi.wi.gov](http://dpi.wi.gov)",
-        "[uri://microsoft.com](http://microsoft.com)", etc.)
+        credential (e.g., `uri://dpi.wi.gov`,
+        `uri://microsoft.com`, etc.)
     * and so on...
 3. Your API client is authorized based on the following 2 items being true:
     * The namespace of the root the API resource matches the namespace
@@ -168,8 +173,8 @@ Assessment entity (see schema below).
 ## Understanding the EducationOrganization Entity
 
 In the Ed-Fi API, there is no EducationOrganization API resource (you can see
-the latest v5.2 API surface
-at: [https://api.ed-fi.org/v5.2/docs/swagger/index.html](https://api.ed-fi.org/v5.2/docs/swagger/index.html)).
+the v6.2 API surface
+at: [https://api.ed-fi.org/v6.2/docs/swagger/index.html](https://api.ed-fi.org/v6.2/docs/swagger/index.html)).
 
 This is because EducationOrganization is abstract: it only has concrete
 subclasses, the most common of which are: School, LocalEducationAgency, and
@@ -214,5 +219,7 @@ The following link is a ZIP archive containing a Postman example illustrating
 the relationship based authorization strategy for a student. [Ed-Fi API Client
 Developer Postman
 Example](https://edfi.atlassian.net/wiki/download/attachments/20480666/Ed-Fi%20API%20Client%20Developer%20Postman%20Example.zip?version=3&modificationDate=1527887971107&api=v2&download=true)
+
+<!-- When we replace the Confluence link above, we might want to put this content into GitHub rather than upload a zip file -->
 
 :::

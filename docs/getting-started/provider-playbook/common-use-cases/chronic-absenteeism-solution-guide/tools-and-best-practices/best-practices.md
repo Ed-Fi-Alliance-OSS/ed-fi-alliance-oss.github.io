@@ -1,4 +1,4 @@
-# Best Practices - Chronic Absenteeism-VDG
+# Best Practices
 
 The Ed-Fi Alliance, through field experience, has developed additional best
 practice recommendations for developers clients that connect to an Ed-Fi API.

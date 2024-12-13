@@ -14,7 +14,9 @@ This ID helps provide for compatibility with REST conventions. For example, a
 CourseOffering can be looked up and queried by doing a HTTP GET on a path like
 this:
 
+```none
 /courseOfferings/d0fd729db6ee4a7bbc989720e4f833f5
+```
 
 In the JSON, the resource ID appears as the "id" element:
 
@@ -44,7 +46,7 @@ will vary):
   "date": "Fri, 15 Mar 2019 21:51:24 GMT",
   "etag": "\"63682654845800000\"",
   "strict-transport-security": "max-age=31536000",
-  "location": "https://api.ed-fi.org/v2.5.0/api/v2.0/2019/courseOfferings/dba76850635c4bf793bc1d1f4a539c1a", // Resource ID
+  "location": "https://ed-fi.grandbend.edu/courseOfferings/dba76850635c4bf793bc1d1f4a539c1a", // Resource ID
   "access-control-expose-headers": "*",
   "content-length": "0",
   "content-type": null
@@ -58,9 +60,7 @@ _Figure 2. The resource ID of the newly created API resource._
 To improve data quality and maximize the possibility for data to move between
 systems, the Ed-Fi API also employs a natural key system.
 
-The key for an entity can be looked up by using the Ed-Fi Data Handbook (see
-most recent version here: [Unifying Data Model - v3.2
-Handbook](https://edfi.atlassian.net/wiki/spaces/EFDS32/pages/20187800/Unifying+Data+Model+-+v3.2+Handbook)) and
+The key for an entity can be looked up by using the [Ed-Fi Data Handbook](/reference/data-exchange/udm/udm-handbook) and
 looking under the column “Identity”. Key fields are indicated there. Note, for
 example, the documentation for the CourseOffering entity:
 
@@ -75,7 +75,7 @@ Session. Collectively, these constitute the natural key.
 
 In the API endpoint for /courseOfferings (you can see this resource in the
 [Ed-Fi ODS / API
-Sandbox](https://api.ed-fi.org/v2.5.0/docs/index.html?url=https://api.ed-fi.org/v2.5.0/api/metadata/resources/api-docs#!/courseOfferings/getCourseOfferingsAll)),
+Sandbox](https://api.ed-fi.org/v6.2/docs/swagger/index.html?urls.primaryName=Resources#operations-courseOfferings-getCourseOfferings)),
 the JSON reveals that these keys collectively contain data from 4 distinct
 fields, as the Session has 3 fields in its natural key and School and
 LocalCourseCode 1 field each. There are 5 fields in total, but the schoolId
@@ -144,7 +144,3 @@ _Figure 5. The "Merge" column shows which fields in the entity are merged_
 
 This note is declaring that the School in the Session reference must match the
 School reference on CourseOffering itself.
-
-1. Note that the Ed-Fi ODS API v2.x allows for resource IDs to be chosen by
-   clients; this functionality is deprecated and is removed in the ODS / API v3
-   and beyond.
