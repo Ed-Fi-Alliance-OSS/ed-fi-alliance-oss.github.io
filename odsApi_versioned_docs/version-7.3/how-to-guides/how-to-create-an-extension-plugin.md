@@ -42,7 +42,7 @@ and execute the following command to run code generation.
 ```powershell
 cd <source dir>\Ed-Fi-ODS-Implementation
 .\Initialize-PowershellForDevelopment.ps1
-Invoke-CodeGen -Engine SQLServer -StandardVersion 5.1.0 -ExtensionVersion 1.0.0
+Invoke-CodeGen -Engine SQLServer -StandardVersion 5.2.0 -ExtensionVersion 1.0.0
 ```
 
 ### Step 2. Build Your Extension Project
@@ -73,7 +73,7 @@ cd tools
   <source dir>\Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleAlternativeEducationProgram\EdFi.Ods.Extensions.SampleAlternativeEducationProgram.nuspec `
   -OutputDirectory <output directory> `
   -Properties configuration=release `
-  -Properties StandardVersion=5.1.0 `
+  -Properties StandardVersion=5.2.0 `
   -Properties ExtensionVersion=1.0.0 `
   -NoPackageAnalysis `
   -NoDefaultExcludes
@@ -89,7 +89,7 @@ In this step, execute the following command to publish NuGet package.
 .\NuGet.exe push -source `
   https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json `
   -apikey <PAT> `
-  <nuget directory>\EdFi.Ods.Extensions.SampleAlternativeEducationProgram.1.0.0.Standard.5.1.0.1.0.0.nupkg
+  <nuget directory>\EdFi.Ods.Extensions.SampleAlternativeEducationProgram.1.0.0.Standard.5.2.0.1.0.0.nupkg
 ```
 
 ## Consuming Extension Plugins

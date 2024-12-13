@@ -383,6 +383,6 @@ above.
 
 Sample XML files can be found in the Ed-Fi-Data-Standard repository: [Data
 Standard
-5.1](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v5.1.0).
+5.1](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v5.2.0).
 
 :::

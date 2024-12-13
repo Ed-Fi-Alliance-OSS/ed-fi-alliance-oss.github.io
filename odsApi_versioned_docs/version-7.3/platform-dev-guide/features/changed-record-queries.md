@@ -21,7 +21,7 @@ and manage the feature.
 
 ## Enabling Change Queries
 
-The change query feature is enabled by default since v5.1.0, and the schema
+The change query feature is enabled by default since v5.2.0, and the schema
 changes are included with all Ed-Fi provided backups. These steps are provided
 to manage including the feature on previous versions as part of an upgrade, or
 to reenable the feature after disabling it.

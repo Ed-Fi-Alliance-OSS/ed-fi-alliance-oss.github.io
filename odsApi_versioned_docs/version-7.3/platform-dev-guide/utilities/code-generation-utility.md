@@ -20,7 +20,7 @@ the Ed-Fi-ODS-Implementation repository and is executed after the
 ```powershell
 <trimmed output...>
 
-2024-10-28 20:11:28,067 [.NET TP Worker] INFO  TemplateProcessor - Processing started for assembly: ODS Database Specific in folder: D:\ed-fi\Ed-Fi-ODS\Application\EdFi.Ods.Standard\Standard\5.1.0\Artifacts
+2024-10-28 20:11:28,067 [.NET TP Worker] INFO  TemplateProcessor - Processing started for assembly: ODS Database Specific in folder: D:\ed-fi\Ed-Fi-ODS\Application\EdFi.Ods.Standard\Standard\5.2.0\Artifacts
 2024-10-28 20:11:28,477 [.NET TP Worker] INFO  TemplateProcessor - Processing complete for assembly: ODS Database Specific in 00:00:00.4101082.
 2024-10-28 20:11:28,478 [.NET TP Worker] INFO  Program - Finished code generation in 00:00:07.8224338.
 Invoke-CodeGen done in 8s.
