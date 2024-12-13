@@ -23,4 +23,4 @@ contains additional reference documentation for these configurable features.
 * [Notifications Expiring Local Caches Remotely](./notifications-expiring-local-caches-remotely.md)
 * [Ownership Based Authorization](./ownership-based-authorization.md)
 * [Read Replicas](./read-replicas.md)
-* [Serialized Data Storage](./serialized-data.md)
+* [Serialized Data](./serialized-data.md)
