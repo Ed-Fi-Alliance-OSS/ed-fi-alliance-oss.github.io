@@ -6,8 +6,6 @@ Admin App supports shared, year-specific and district-specific modes.  Admin Ap
 
 Admin App is a tool that is used to manage account access and other internal information for the ODS/API Platform.  For this reason, we recommend running Admin App only within internal, VPN-accessible and/or "extranet" networks with proper firewall/infrastructure controls to maintain limited access for only its administrative users.
 
-Audience
+## Audience
 
 This documentation is for administrators and DevOps personnel who will be installing the Admin App. The information herein may also be of interest to users of the Admin App.
-
-## Contents

@@ -30,7 +30,7 @@ In this step, we'll add a new vendor and a client application.
 
 If you're not already there, go to the Admin App Home page:
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/installation/image2020-4-17_13-5-7.png)
+![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/image2020-4-17_13-5-7.png)
 
 Click **Global** and you'll be presented with the screen below with two tabs: Vendors and Claim Sets.
 
@@ -38,35 +38,35 @@ Details for the Claim Sets tab can be found here: [https://edfi.atlassian.net/w
 
 We'll continue with the Vendor tab to add a vendor.
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/installation/image2020-4-17_13-3-7.png)
+![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/image2020-4-17_13-3-7.png)
 
 Clicking on Add Vendor will open the following screen for adding a new vendor.
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/installation/image2020-4-17_13-6-49.png)
+![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/image2020-4-17_13-6-49.png)
 
 Please enter company, namespace, contact name, and contact e-mail address and hit Save Changes.
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/installation/image2021-4-29_9-57-21.png)
+![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/image2021-4-29_9-57-21.png)
 
 Now, we'll add an application to the vendor we just created. Applications are specific to an ODS / API instance. We can go to the Application creation screen using the **Define Applications** button that appears besides the Add Vendor button when we create the first vendor.
 In **Shared Instance mode**, the **Define Applications** button simply takes you to the Applications tab for the single instance.
 In **District/Year Specific modes**, the **Define Applications** button takes you to the Instance selection screen.
 If there are instances registered already, the user is guided to select an instance to define applications for it.
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/installation/image-2021-03-26-10-07-59-556.png)
+![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/image-2021-03-26-10-07-59-556.png)
 
 If there are no instances registered, a **super admin** user is guided to register an instance and define applications for it.
- ![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/installation/image-2021-03-26-10-05-33-329.png)
+ ![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/image-2021-03-26-10-05-33-329.png)
 
 If there are no instances registered, a **non-super admin** user is guided to contact a super admin to get an instance assigned and proceed further.
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/installation/image-2021-03-26-10-04-39-050.png)
+![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/image-2021-03-26-10-04-39-050.png)
 
 Click on the **Settings from Home** page will take you to **ODS Instance** section.
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/installation/image2020-4-17_13-9-36.png)
+![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/image2020-4-17_13-9-36.png)
 
 Clicking on Add Application will show following screen.
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/installation/Applicationpage5.JPG)
+![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/Applicationpage5.JPG)
 
 Steps for adding application to vendor
 
@@ -80,37 +80,37 @@ You will be presented with the Key and Secret at the next screen. Copy this info
 
 It's useful to test client system functionality (in this document we will be using the generated key and secret for Bulk upload process).
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/installation/image2020-1-24_16-20-38.png)
+![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/image2020-1-24_16-20-38.png)
 
 After completing the above step, you'll see the new Test application you just added.
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/installation/image2020-4-17_13-11-18.png)
+![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/image2020-4-17_13-11-18.png)
 
 ## Descriptors tab
 
 View configured descriptors for a known instance.
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/installation/image2020-4-17_13-12-33.png)
+![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/image2020-4-17_13-12-33.png)
 
 ## Education Organizations tab
 
 View and manage education organizations (LEAs and schools).
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/installation/image2020-4-17_13-13-31.png)
+![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/image2020-4-17_13-13-31.png)
 
 ## Bulk Upload process
 
 You can enter a generated key and secret here and save the credentials. The saved key and secret will be used to authorize bulk upload processes.
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/installation/image2020-4-17_13-14-19.png)
+![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/image2020-4-17_13-14-19.png)
 
 After saving credentials, bulk upload page will be presented.
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/installation/image2020-4-17_13-17-17.png)
+![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/image2020-4-17_13-17-17.png)
 
 To perform upload, please select appropriate file type and input file and click upload. After clicking the upload button, the popup will display the upload progress.
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/installation/page12.JPG)
+![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/page12.JPG)
 
 Bulk upload is completed successfully.
 
@@ -120,17 +120,17 @@ In this step, we'll populate learning standards in the ODS / API by using the Ad
 
 To synchronize learning standards in on local environment, select the **Learning Standards** tab. You'll be presented with the screen below:
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/installation/image2020-4-17_13-18-44.png)
+![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/image2020-4-17_13-18-44.png)
 
 The screen contains instructions on how to get an API ID and Key from Certica Solutions. Following the instructions on screen to obtain an ID and Key.
 
 Please enter AB connect ID and Key obtained from Certica and click **Enable Learning Standards.** Syncing will begin. A progress bar will show you the current status, and you'll see a "completed successfully" message once done.
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/installation/image2020-4-17_13-19-30.png)
+![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/image2020-4-17_13-19-30.png)
 
 Clicking Reload will take you to the following screen, where you can reset the AB connect credentials or update the learning standards.
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/installation/image2020-4-17_13-20-15.png)
+![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/image2020-4-17_13-20-15.png)
 
 ## Optional Verification Step
 
@@ -144,15 +144,15 @@ SELECT COUNT(*) FROM EdFi.LearningStandard WHERE [Namespace] LIKE '%api.academic
 
 Select Reports tab for Ods Instance specific reports.
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/installation/image2020-4-17_13-21-7.png)
+![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/image2020-4-17_13-21-7.png)
 
 Choosing district will provide district specific reports.
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/installation/image2020-4-17_13-21-58.png)
+![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/image2020-4-17_13-21-58.png)
 
 By clicking on the individual report link will take you to the detailed report page.
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/installation/image2020-4-17_13-22-45.png)
+![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/image2020-4-17_13-22-45.png)
 
 ## New features in Admin App 2.2
 
@@ -166,19 +166,19 @@ In this step, the user can set the ODS instance-level School Year setting. The 
 
 In **Shared Instance mode**, the year selection is visible and editable in the header of the Instance Settings screen.
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/installation/image-2021-03-18-17-29-15-964.png)
+![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/image-2021-03-18-17-29-15-964.png)
 
 In **District/Year Specific modes**, the **Set School Year** column is visible and editable for the registered instances on the Registered Instances screen.
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/installation/image-2021-03-19-12-10-48-570.png)
+![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/image-2021-03-19-12-10-48-570.png)
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/installation/image-2021-03-19-12-11-52-878.png)
+![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/image-2021-03-19-12-11-52-878.png)
 
 Clicking the edit pencil icon opens up a modal to select the current school year from the dropdown of possible school years.
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/installation/image2021-4-29_8-29-43.png)
+![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/image2021-4-29_8-29-43.png)
 
 There are special considerations for Year Specific mode. At instance registration time, we default the instance's year selection to the single year that the instance is dedicated for, saving the user from (likely) ever needing to edit it themselves. However, we do still offer the controls, primarily so a user could correct the system if the school year was altered outside of the app. When a user goes to edit the year in Year Specific mode, we put up a warning as well as suggest exactly what value is expected for that instance. This warning and suggestion also helps to guide the user away from an "off by one" mistake as "Current Year 2021" really corresponds with a "2020-2021" school year.
- ![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/installation/image-2021-03-18-11-55-55-246.png)
+ ![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/image-2021-03-18-11-55-55-246.png)
 
 # Review Ed-Fi ODS / API Documentation
 

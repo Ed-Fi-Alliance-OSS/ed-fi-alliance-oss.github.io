@@ -16,9 +16,9 @@ On this step, we need to clear all the data records created during first time se
 
 1. Please make sure to stop ODS API and Admin App websites under IIS or within the Azure portal App Service.
 
-            Ex (in Azure):  EdFiOdsApiWebSite-{environment}-{resourceGroupid}
+            Ex (in Azure):  `EdFiOdsApiWebSite-{environment}-{resourceGroupid}`
 
-            EdFiOdsAdminAppWebSite-{environment}-{resourceGroupid}
+            `EdFiOdsAdminAppWebSite-{environment}-{resourceGroupid}`
 
       2. Connect to SQL Server on SSMS or use Azure Query Editor
 
@@ -28,8 +28,8 @@ On this step, we need to clear all the data records created during first time se
 
 **SQL**
 
-```
-BEGIN TRAN   
+`
+BEGIN TRAN
 DECLARE @ApplicationId INT;
 
 SELECT @ApplicationId = ApplicationId FROM dbo.Applications WHERE ClaimSetName = 'Ed-Fi ODS Admin App'
@@ -38,7 +38,7 @@ DELETE FROM dbo.ClientAccessTokens WHERE EXISTS (
         SELECT 1 FROM dbo.ApiClients
         WHERE ClientAccessTokens.ApiClient_ApiClientId = ApiClients.ApiClientId
         AND Application_ApplicationId = @ApplicationId
-) 
+)
 
     DELETE FROM dbo.ApiClients WHERE Application_ApplicationId = @ApplicationId
     DELETE FROM dbo.ApplicationEducationOrganizations WHERE Application_ApplicationId = @ApplicationId
@@ -47,7 +47,7 @@ DELETE FROM dbo.ClientAccessTokens WHERE EXISTS (
     DELETE FROM dbo.OdsInstances
     DELETE FROM adminapp.SecretConfigurations
 COMMIT  TRAN
-```
+`
 
      5. Once the SQL commands executed successfully. Please start the ODS API and Admin App websites under IIS or within the Azure portal App Service.
 
@@ -63,44 +63,42 @@ The following JSON code block explains the parameters required and their intenti
 
 **SQL**
 
-```
-{
+\{
  //These are the credentials used to access the EdFi_Admin database.
- "AdminCredentials":{
-   "Password":"[dbpassword]",
-   "UserName":"[dbuser]"
- },
+ "AdminCredentials":\{
+   "Password":[dbpassword],
+   "UserName":[dbuser]
+\},
  // This is the address of the MsSQL server. This can be a DNS or an IP Address.
- "HostName":"[the SQL Server: sql.somthing.com]",
+ "HostName":"[the SQL Server: sql.something.com]",
  // These are the credentials that will be stored encrypted that the Admin App will use to connect to the Ed-Fi ODS API
- "ProductionApiCredentials":{
+ "ProductionApiCredentials":\{
    "Password":"[SecurePassword]",
    "UserName":"EdFiOdsProductionApi"
- },
- "AdminAppCredentials":{
+ \},
+ "AdminAppCredentials":\{
    "Password":"[SecurePassword]",
    "UserName":"EdFiOdsAdminApp"
- }
-}
-```
+ \}
+\}
 
-Modify the SQL statement below by providing the User Name and Password for the required fields marked with square brakets "\[...\]"
+Modify the SQL statement below by providing the User Name and Password for the required fields marked with square brackets "\[...\]"
 
 Following the steps above open SSMS or Azure Query Editor and execute the following statement against the EdFi\_Admin database.
 
 **SQL**
 
-```
-BEGIN TRAN   
+`
+BEGIN TRAN
 UPDATE adminapp.AzureSqlConfigurations set field='{"AdminCredentials":{"Password":"PW Specified in Deployment Script","UserName":"SERVER Master UN"},"HostName":"","ProductionApiCredentials":{"Password":"Enter PW","UserName":"EdFiOdsProductionApi"},"AdminAppCredentials":{"Password":"","UserName":"EdFiOdsAdminApp"}}' WHERE Id=1;
 COMMIT  TRAN
-```
+`
 
 ### **3) Update Admin App web site on IIS or Azure**
 
-_**Note:**_ That older versions of Admin app need the presence of “SetupRequired” file. This indicates to the first time setup process that it has not run. If the file not present, this means that the first-time setup was completed. Recreating the file will enforce the First time setup process to run again.
+_**Note:**_ That older versions of Admin app need the presence of `SetupRequired` file. This indicates to the first time setup process that it has not run. If the file not present, this means that the first-time setup was completed. Recreating the file will enforce the First time setup process to run again.
 
-To create this file just create text file with the name “SetupRequired” and set the content of it to: Placeholder file to let the AdminApp know additional setup of the system is required.
+To create this file just create text file with the name `SetupRequired` and set the content of it to: Placeholder file to let the AdminApp know additional setup of the system is required.
 
 On IIS or Azure, proceed to restart the application. Once the restart has finished use your web browser and navigate to the Admin App URL. You should be able to continue the First Time Setup within Admin App.
 

@@ -1,7 +1,6 @@
 # ODS / API Admin App
 
-> [!WARNING]
-> June 2024: On behalf of the Ed-Fi community, we are pleased to announce the release of Admin App v3.3.1. This version is compatible with ODS/API versions 3.4 to 6.2.
+Note: June 2024: On behalf of the Ed-Fi community, we are pleased to announce the release of Admin App v3.3.1. This version is compatible with ODS/API versions 3.4 to 6.2.
 
 ## Overview
 
@@ -23,5 +22,4 @@ Documentation for the Ed-Fi ODS / API Admin App is available online:
 
 * [What's New](./ods-api-admin-app/whats-new.md)
 * [Getting Started](./ods-api-admin-app/getting-started.md)
-* [https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25231476](https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25231476)
 * [Technical Articles](./ods-api-admin-app/technical-articles.md)

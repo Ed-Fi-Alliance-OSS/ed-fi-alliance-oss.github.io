@@ -90,9 +90,9 @@ On this step, we need to clear all the data records created during first time se
 
 1. Please make sure to stop ODS API and Admin App websites under IIS or within the Azure portal App Service.
 
-            Ex (in Azure):  EdFiOdsApiWebSite-{environment}-{resourceGroupid}
+            Ex (in Azure):  `EdFiOdsApiWebSite-{environment}-{resourceGroupid}`
 
-            EdFiOdsAdminAppWebSite-{environment}-{resourceGroupid}
+            `EdFiOdsAdminAppWebSite-{environment}-{resourceGroupid}`
 
       2. Connect to SQL Server on SSMS or use Azure Query Editor
 
