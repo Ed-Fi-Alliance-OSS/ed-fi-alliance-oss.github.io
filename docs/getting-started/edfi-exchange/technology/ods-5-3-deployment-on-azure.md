@@ -2,6 +2,7 @@
 labels:
 - exchange-code
 - exchange-tech-suite-3
+description: Code & docs for deploying Ed-Fi ODS/API 5.3 to Azure
 ---
 
 # ODS/API 5.3 Deployment on Azure from K12 Analytics Engineering
