@@ -88,7 +88,7 @@ instructions in the [Version
 Targeting](https://edfi.atlassian.net/wiki/spaces/METAED20/pages/23709491/MetaEd+IDE+-+Creating+and+Maintaining+Your+Extension#MetaEdIDE-CreatingandMaintainingYourExtension-Step4.AddtheCorrectDataModelProject)
 documentation for the MetaEd IDE.
 
-The desired model for the latest ODS / API is "ed-fi-model-5.1".
+The desired model for the latest ODS / API is "ed-fi-model-5.2".
 
 ### Step 2b. Create a New Extension Project
 
@@ -104,7 +104,7 @@ For this example, place your extension in a folder called
 Note that this represents two folders open at the same time in VS Code.
 
 ```none
-ed-fi-model-5.1/
+ed-fi-model-5.2/
 ├─ Association/
 ├─ Choice/
 ├─ Common/
@@ -164,7 +164,7 @@ file in the tree view to open it.
 <summary>Listing of files</summary>
 
 ```none
-ed-fi-model-5.1/
+ed-fi-model-2/
 
 AlternativeEducationProgram
 ├─ Association/
@@ -244,7 +244,7 @@ the ODS / API documentation.
 <summary>Listing of files</summary>
 
 ```none
-ed-fi-model-5.1/
+ed-fi-model-5.2/
 
 AlternativeEducationProgram/
 ├─ Association/
