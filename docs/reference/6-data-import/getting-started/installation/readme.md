@@ -29,15 +29,15 @@ Three methods of installation for Data Import are supported: Docker, PowerShell 
 
 Data Import v2.3 supports deployment using Docker.
 
-For general info, see [Docker Deployment for Data Import](./installation/docker-deployment-for-data-import)
+For general info, see [Docker Deployment for Data Import](docker-deployment-for-data-import)
 
-For introducing Data Import into more complex deployment configurations, see [Advanced Details for Data Import in Docker](./installation/docker-deployment-for-data-import/advanced-details-for-data-import-in-docker)
+For introducing Data Import into more complex deployment configurations, see [Advanced Details for Data Import in Docker](docker-deployment-for-data-import/advanced-details-for-data-import-in-docker)
 
 ## PowerShell Installation
 
 PowerShell installation provides a convenient method for installing Data Import using PowerShell scripts and a simple configuration file.
 
-For installation instructions, see [PowerShell Installation for Data Import using NuGet Packages](./installation/powershell-installation-for-data-import-using-nuget-packages) based on which version you are installing.
+For installation instructions, see [PowerShell Installation for Data Import using NuGet Packages](powershell-installation-for-data-import-using-nuget-packages) based on which version you are installing.
 
 ## Contents
 

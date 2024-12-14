@@ -56,16 +56,16 @@ Data Import adds a third type of preprocessor script:
 
 **The rest of this page focuses on modern Custom File Processors.** For more on Row Processors and File Generators, see:
 
-* [Integrated Custom Record Processing](../preprocessing-csv-files/integrated-custom-record-processing)
-* [Integrated Custom File Generation](../preprocessing-csv-files/integrated-custom-file-generation)
+* [Integrated Custom Record Processing](integrated-custom-record-processing)
+* [Integrated Custom File Generation](integrated-custom-file-generation)
 
-All of the examples in this page are based on the Student Assessments example described in the [Quick Start](../../../data-import/getting-started/quick-start).
+All of the examples in this page are based on the Student Assessments example described in the [Quick Start].
 
 All of the example templates and example input files are in the attached zip. The \*.json template files can all be imported into a test Data Import installation, and then tested using Manual Agents with the sample \*.csv and \*.txt files enclosed in the same zip.
 
 |     | File | Modified |
 | --- | --- | --- |
-| Labels*   No labels[Preview] [View](/wiki/download/attachments/24117967/CustomFileProcessorExamples.zip?version=1) | ZIP Archive [CustomFileProcessorExamples.zip](/wiki/download/attachments/24117967/CustomFileProcessorExamples.zip?api=v2) | May 20, 2021 by [Patrick Lioi](/wiki/people/557058:7887342a-0353-489d-a048-e90e2a6afcfc) |
+| Labels*   No labels[Preview] [View] | ZIP Archive [CustomFileProcessorExamples.zip] | May 20, 2021 by [Patrick Lioi] |
 
 They are all intended to work against an ODS with the "Grand Bend" sample data as a prerequisite, such as for the public instances hosted on [https://api.ed-fi.org/](https://api.ed-fi.org/):
 

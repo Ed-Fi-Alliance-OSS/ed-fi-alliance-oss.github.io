@@ -1,14 +1,14 @@
 # Enabling Custom File Generators After Upgrade to 1.2
 
-Prior to Data Import 1.2, Custom File Generators were saved on disk and executed from there. From Data Import 1.2 forward, the scripts are stored in the Data Import database and take part in the PowerShell "sandboxing" security feature outlined in [Integrated Custom File Processors](../../preprocessing-csv-files/integrated-custom-file-processors). The consequence is that your preexisting scripts are very likely to begin failing due to their need for exceptionally high privileges on the system. File Generators naturally tend to need access to the filesystem and to databases on the network.
+Prior to Data Import 1.2, Custom File Generators were saved on disk and executed from there. From Data Import 1.2 forward, the scripts are stored in the Data Import database and take part in the PowerShell "sandboxing" security feature outlined in [Integrated Custom File Processors]. The consequence is that your preexisting scripts are very likely to begin failing due to their need for exceptionally high privileges on the system. File Generators naturally tend to need access to the filesystem and to databases on the network.
 
 Using a File Generator is a strong indicator that you are mixing Data Import's data mapping role with the ETL role of other systems. Consider: does Data Import need to know about your bespoke ETL scripting prior to mapping and importing? If you wish to proceed with executing this before-mapping step within the mapping tool, you'll need to grant it permission. Here we'll witness the experience through the upgrade, initial errors due to the sandbox denying access, and then recovery through granting those rights.
 
-The example files described here are in the attached zip and are based on the Student Assessments example described in the [Quick Start](../../../../data-import/getting-started/quick-start):
+The example files described here are in the attached zip and are based on the Student Assessments example described in the [Quick Start]:
 
 |     | File | Modified |
 | --- | --- | --- |
-| Labels*   No labels[Preview] [View](/wiki/download/attachments/24117960/ExampleSqlQueryFileGenerator.zip?version=1) | ZIP Archive [ExampleSqlQueryFileGenerator.zip](/wiki/download/attachments/24117960/ExampleSqlQueryFileGenerator.zip?api=v2) | May 21, 2021 by [Patrick Lioi](/wiki/people/557058:7887342a-0353-489d-a048-e90e2a6afcfc) |
+| Labels*   No labels | ZIP Archive [ExampleSqlQueryFileGenerator.zip] | May 21, 2021 by [Patrick Lioi] |
 
 We begin in a Data Import 1.1.1 system, with a File Generator stored on disk like so:
 

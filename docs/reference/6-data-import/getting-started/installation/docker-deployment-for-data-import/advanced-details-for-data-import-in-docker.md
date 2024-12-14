@@ -1,6 +1,6 @@
 # Advanced Details for Data Import in Docker
 
-Data Import v2.3 is now in Docker configuration to run in containers.  This page includes details for custom implementations and advanced usage of Data Import running within Docker.  For information on the ODS / API running in Docker, please see [Docker Deployment 2.x](../../../../../ed-fi-tools-home/docker-deployment/docker-deployment-2x).
+Data Import v2.3 is now in Docker configuration to run in containers.  This page includes details for custom implementations and advanced usage of Data Import running within Docker.  For information on the ODS / API running in Docker, please see [Docker Deployment 2.x].
 
 > [!INFO]
 > These details assume readers are familiar with Docker and Docker Compose. If these tools are new to you, please be sure to read [Docker's own documentation](https://docs.docker.com/compose/) to familiarize yourself before utilizing this documentation.

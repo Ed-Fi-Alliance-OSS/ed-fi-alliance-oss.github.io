@@ -3,9 +3,9 @@
 > [!INFO]
 > "Preprocessing CSV Files" (this article) is targeted to Data Import 1.0. If using Data Import 1.0.1, please also see the two additional PowerShell integration articles below which offer direct integration within Data Import.
 >
-> * [Integrated Custom Record Processing](preprocessing-csv-files/integrated-custom-record-processing)
-> * [Integrated Custom File Generation](preprocessing-csv-files/integrated-custom-file-generation)
-> * [Integrated Custom File Processors](preprocessing-csv-files/integrated-custom-file-processors)
+> * [Integrated Custom Record Processing](integrated-custom-record-processing)
+> * [Integrated Custom File Generation](integrated-custom-file-generation)
+> * [Integrated Custom File Processors](integrated-custom-file-processors)
 
 Data Import is a ETL tool that eases the burden of mapping and loading CSV data to Ed-Fi ODS / API endpoints.  It provides basic ETL transform functions such as value translation (e.g. "1" to "First grade"), however does not provide advanced abilities such string manipulation or formatting as a general purpose language would.  The source CSV data you are working with may require these functions and other preprocessing steps before an automated tool like Data Import could be expected to load into an Ed-Fi ODS / API.  For example, a source CSV file may incompatible or incomplete date format, or may need to calculate a new column based on a few of the original columns.  The right tool for such a job _is_ a general purpose programming language, _before_ the CSV file is given to Data Import, and PowerShell is one that can work well to accommodate these needs.
 
@@ -25,7 +25,7 @@ Download the sample displayed in the yellow box on the right. Once downloaded, r
 
 After unzipping, you'll find 3 files:
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/technical-articles/hotfixes/preprocessing-csv-files/image2019-8-19_17-13-1.png)
+![](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/technical-articles/hotfixes/image2019-8-19_17-13-1.png)
 
 "DI-TEST-2018-GrandBend-pre.csv" is an example CSV file from the Quickstart with a few additional data issues. Open this file in notepad.exe to witness the raw content (right click \\ edit):
 
@@ -41,7 +41,7 @@ After unzipping, you'll find 3 files:
 
 Holding the shift key, right click within the extracted zip folder and select "Open PowerShell window here":
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/technical-articles/hotfixes/preprocessing-csv-files/image2019-8-19_17-19-35.png)
+![](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/technical-articles/hotfixes/image2019-8-19_17-19-35.png)
 
 ## 4\. Run the Example
 
@@ -53,9 +53,9 @@ In the powershell window, enter the following command and hit enter:
 
 A new file will appear, "DI-TEST-2018-GrandBend-post.csv":
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/technical-articles/hotfixes/preprocessing-csv-files/image2019-8-19_17-21-47.png)
+![](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/technical-articles/hotfixes/image2019-8-19_17-21-47.png)
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/technical-articles/hotfixes/preprocessing-csv-files/mage2019-8-19_17-22-21.png)
+![](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/technical-articles/hotfixes/mage2019-8-19_17-22-21.png)
 
 ## 5\. Inspect the Results
 
@@ -67,11 +67,11 @@ A new file will appear, "DI-TEST-2018-GrandBend-post.csv":
 
 DI-TEST-2018-GrandBend-pre.csv:
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/technical-articles/hotfixes/preprocessing-csv-files/image2019-8-19_17-24-34.png)
+![](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/technical-articles/hotfixes/image2019-8-19_17-24-34.png)
 
 DI-TEST-2018-GrandBend-post.csv:
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/technical-articles/hotfixes/preprocessing-csv-files/image2019-8-19_17-25-9.png)
+![](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/technical-articles/hotfixes/image2019-8-19_17-25-9.png)
 
 ## 6\. Customize
 
@@ -79,4 +79,4 @@ This is just a representative example. Naturally, you will need to modify "di-cs
 
 > [!NOTE]
 > The following ZIP file is the source for this example:
-> [di-powershell-csv-preprocessor-example.zip](https://edfi.atlassian.net/wiki/download/https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/technical-articles/hotfixes/preprocessing-csv-files/24117496/di-powershell-csv-preprocessor-example.zip?version=2&modificationDate=1566253046610&cacheVersion=1&api=v2)
+> [di-powershell-csv-preprocessor-example.zip](https://edfi.atlassian.net/wiki/download/https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/technical-articles/hotfixes/24117496/di-powershell-csv-preprocessor-example.zip?version=2&modificationDate=1566253046610&cacheVersion=1&api=v2)
