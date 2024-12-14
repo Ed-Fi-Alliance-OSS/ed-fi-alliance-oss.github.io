@@ -1,7 +1,7 @@
 # Integrated Custom File Processors
 
 > [!INFO]
-> The features in this article were added in Data Import 1.2. They enhance and extend prior versions' [Integrated Custom Record Processing](../preprocessing-csv-files/integrated-custom-record-processing.md) and [Integrated Custom File Generation](../preprocessing-csv-files/integrated-custom-file-generation.md) features.
+> The features in this article were added in Data Import 1.2. They enhance and extend prior versions' [Integrated Custom Record Processing](../preprocessing-csv-files/integrated-custom-record-processing) and [Integrated Custom File Generation](../preprocessing-csv-files/integrated-custom-file-generation) features.
 
 # Overview
 
@@ -48,7 +48,7 @@ Data Import adds a third type of preprocessor script:
 > As of Data Import 1.2, preprocessor scripts run in a safe-by-default PowerShell "sandbox". The core language is available, as well as many common built-in operations and ODS / API specific commands, but all potentially-dangerous operations are locked down by default. A malicious script author, for instance, would want to cause harm by accessing the filesystem directly, by attempting to connect to databases on the local network, etc. The sandbox is safe by default, so **all such attempts would rightly fail** for them at runtime.
 
 > [!CAUTION]
-> This sandboxing safety can naturally pose a problem when your script needs to do something like access the filesystem or query databases. [File Generators](../preprocessing-csv-files/integrated-custom-file-generation.md), for instance, perform exactly that kind of work by their very nature. **This is a good reason to question whether such an operation belongs inside a data mapping step within a data mapping tool, rather than inside an ETL process _prior_ to mapping with Data Import.**
+> This sandboxing safety can naturally pose a problem when your script needs to do something like access the filesystem or query databases. [File Generators](../preprocessing-csv-files/integrated-custom-file-generation), for instance, perform exactly that kind of work by their very nature. **This is a good reason to question whether such an operation belongs inside a data mapping step within a data mapping tool, rather than inside an ETL process _prior_ to mapping with Data Import.**
 > If an administrator wants to opt-in to the risks of arbitrary code running in their data maps, performing file access, database connections, and the like, they can enable full access to the PowerShell language and commands: in both the `DataImport.Web/Web.config` file and the `DataImport.Server.TransformLoad/DataImport.Server.TransformLoad.exe.config` file, locate the `<appSettings>` tag and add the following setting to enable full PowerShell access:
 > ![](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/technical-articles/data-import-article-archive/DANGER%20-%20Enable%20Full%20PowerShell.png)
 
@@ -56,10 +56,10 @@ Data Import adds a third type of preprocessor script:
 
 **The rest of this page focuses on modern Custom File Processors.** For more on Row Processors and File Generators, see:
 
-* [Integrated Custom Record Processing](../preprocessing-csv-files/integrated-custom-record-processing.md)
-* [Integrated Custom File Generation](../preprocessing-csv-files/integrated-custom-file-generation.md)
+* [Integrated Custom Record Processing](../preprocessing-csv-files/integrated-custom-record-processing)
+* [Integrated Custom File Generation](../preprocessing-csv-files/integrated-custom-file-generation)
 
-All of the examples in this page are based on the Student Assessments example described in the [Quick Start](../../../data-import/getting-started/quick-start.md).
+All of the examples in this page are based on the Student Assessments example described in the [Quick Start](../../../data-import/getting-started/quick-start).
 
 All of the example templates and example input files are in the attached zip. The \*.json template files can all be imported into a test Data Import installation, and then tested using Manual Agents with the sample \*.csv and \*.txt files enclosed in the same zip.
 

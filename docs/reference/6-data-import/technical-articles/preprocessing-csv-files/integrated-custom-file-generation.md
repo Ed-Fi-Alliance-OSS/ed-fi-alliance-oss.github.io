@@ -3,7 +3,7 @@
 > [!INFO]
 > This feature is available in Data Import as of version 1.0.1.
 
-As described in [Preprocessing CSV Files](../preprocessing-csv-files.md), Data Import is not a general purpose programming language. Some complex file preparation may simply require the power of a general purpose programming language prior to bringing data into Data Import, leaving Data Import to focus on the task of transforming rows of data into ODS Resources. Thankfully, though, _most_ custom CSV file cleanup _can_ be integrated into Data Import's Transform/Load process without the need for a separate preprocessing of CSV files. This page documents the feature and walks through a representative example.
+As described in [Preprocessing CSV Files](../preprocessing-csv-files), Data Import is not a general purpose programming language. Some complex file preparation may simply require the power of a general purpose programming language prior to bringing data into Data Import, leaving Data Import to focus on the task of transforming rows of data into ODS Resources. Thankfully, though, _most_ custom CSV file cleanup _can_ be integrated into Data Import's Transform/Load process without the need for a separate preprocessing of CSV files. This page documents the feature and walks through a representative example.
 
 ## Applying Custom File Generation
 

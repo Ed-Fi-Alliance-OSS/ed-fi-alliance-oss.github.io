@@ -3,7 +3,7 @@
 > [!INFO]
 > This feature is available in Data Import as of version 1.0.1.
 
-As described in [Preprocessing CSV Files](../preprocessing-csv-files.md), Data Import is not a general purpose programming language. Some complex file preparation may require the power of a general purpose programming language prior to bringing data into Data Import, leaving Data Import to focus on the task of transforming rows of data into ODS Resources. Thankfully, though, _most_ custom row-by-row record cleanup _can_ be integrated into Data Imports Transform/Load process, beginning in version 1.0.1, without the need for a separate wholesale preprocessing of CSV files.
+As described in [Preprocessing CSV Files](../preprocessing-csv-files), Data Import is not a general purpose programming language. Some complex file preparation may require the power of a general purpose programming language prior to bringing data into Data Import, leaving Data Import to focus on the task of transforming rows of data into ODS Resources. Thankfully, though, _most_ custom row-by-row record cleanup _can_ be integrated into Data Imports Transform/Load process, beginning in version 1.0.1, without the need for a separate wholesale preprocessing of CSV files.
 
 This page documents the feature and walks through a representative example.
 
@@ -66,7 +66,7 @@ adminyear,DistrictNumber,DistrictName,SchoolNumber,SchoolName,sasid,listeningss_
 
 ```
 
-Similar to the [Quick Start](../../../data-import/getting-started/quick-start.md), the user sets up any necessary _Bootstrap_ items, a _Data Map_ for mapping these CSV columns to ODS Student Assessements, and an _Agent._ Because of the invalid excess spaces in the sasid column, though, the first attempt to load the ODS rightly fails. In the _Logs \\ Ingestion_ screen, we see a detailed description of the failures like so:
+Similar to the [Quick Start](../../../data-import/getting-started/quick-start), the user sets up any necessary _Bootstrap_ items, a _Data Map_ for mapping these CSV columns to ODS Student Assessements, and an _Agent._ Because of the invalid excess spaces in the sasid column, though, the first attempt to load the ODS rightly fails. In the _Logs \\ Ingestion_ screen, we see a detailed description of the failures like so:
 
 ![](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/technical-articles/data-import-article-archive/image2019-11-15_13-56-9.png)
 

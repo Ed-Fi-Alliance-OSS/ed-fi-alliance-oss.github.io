@@ -3,9 +3,9 @@
 > [!INFO]
 > "Preprocessing CSV Files" (this article) is targeted to Data Import 1.0. If using Data Import 1.0.1, please also see the two additional PowerShell integration articles below which offer direct integration within Data Import.
 >
-> * [Integrated Custom Record Processing](preprocessing-csv-files/integrated-custom-record-processing.md)
-> * [Integrated Custom File Generation](preprocessing-csv-files/integrated-custom-file-generation.md)
-> * [Integrated Custom File Processors](preprocessing-csv-files/integrated-custom-file-processors.md)
+> * [Integrated Custom Record Processing](preprocessing-csv-files/integrated-custom-record-processing)
+> * [Integrated Custom File Generation](preprocessing-csv-files/integrated-custom-file-generation)
+> * [Integrated Custom File Processors](preprocessing-csv-files/integrated-custom-file-processors)
 
 Data Import is a ETL tool that eases the burden of mapping and loading CSV data to Ed-Fi ODS / API endpoints.  It provides basic ETL transform functions such as value translation (e.g. "1" to "First grade"), however does not provide advanced abilities such string manipulation or formatting as a general purpose language would.  The source CSV data you are working with may require these functions and other preprocessing steps before an automated tool like Data Import could be expected to load into an Ed-Fi ODS / API.  For example, a source CSV file may incompatible or incomplete date format, or may need to calculate a new column based on a few of the original columns.  The right tool for such a job _is_ a general purpose programming language, _before_ the CSV file is given to Data Import, and PowerShell is one that can work well to accommodate these needs.
 

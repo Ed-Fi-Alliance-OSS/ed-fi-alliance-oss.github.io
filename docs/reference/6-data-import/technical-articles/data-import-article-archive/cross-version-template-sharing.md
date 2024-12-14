@@ -1,7 +1,7 @@
 # Cross-Version Template Sharing
 
 > [!INFO]
-> The feature in this article was added in Data Import 1.1.2 and applies forward. See [Template Sharing Service Import Restriction Workaround (Data Import 1.0-1.1.1)](../data-import-article-archive/template-sharing-service-import-restriction-workaround-data-import-10-111.md) for a workaround when using earlier versions of Data Import.
+> The feature in this article was added in Data Import 1.1.2 and applies forward. See [Template Sharing Service Import Restriction Workaround (Data Import 1.0-1.1.1)](../data-import-article-archive/template-sharing-service-import-restriction-workaround-data-import-10-111) for a workaround when using earlier versions of Data Import.
 
 # Overview
 

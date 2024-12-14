@@ -21,7 +21,7 @@ The following improvements and fixes were made in Data Import v2.2:
 
 *   [DI-1066](https://tracker.ed-fi.org/browse/DI-1066) - Error saving long Map form
 *   [DI-1168](https://tracker.ed-fi.org/browse/DI-1168) - Uploading large CSV file into MAP, error 431 appears and browser is cleared
-*   [DI-1319](https://tracker.ed-fi.org/browse/DI-1319) - Delete Support in Data Import. Please see [Bulk Delete using Data Import](../data-import/technical-articles/bulk-delete-using-data-import.md) for full documentation on this feature.
+*   [DI-1319](https://tracker.ed-fi.org/browse/DI-1319) - Delete Support in Data Import. Please see [Bulk Delete using Data Import](../data-import/technical-articles/bulk-delete-using-data-import) for full documentation on this feature.
     *   [DI-1132](https://tracker.ed-fi.org/browse/DI-1132) - DELETE by id
     *   [DI-1318](https://tracker.ed-fi.org/browse/DI-1318) - DELETE by natural key
 
@@ -68,7 +68,7 @@ The following improvements and fixes were made in Data Import v1.3, with major c
 
 *   [DI-1039](https://tracker.ed-fi.org/browse/DI-1039) - \*Migration to .NET Core
 *   [DI-1117](https://tracker.ed-fi.org/browse/DI-1117) - Configuring Data Import to run within Docker containers (taking advantage of the .NET Core migration work)
-*   [DI-770](https://tracker.ed-fi.org/browse/DI-770) - Postgres support 
+*   [DI-770](https://tracker.ed-fi.org/browse/DI-770) - Postgres support
 *   [DI-1064](https://tracker.ed-fi.org/browse/DI-1064) - Support for external, administrator-defined preprocessors
 *   [DI-1058](https://tracker.ed-fi.org/browse/DI-1058) - Ability to manually specific agent run order
 *   Bug fixes and changes based on field reports.
@@ -77,8 +77,8 @@ The following improvements and fixes were made in Data Import v1.3, with major c
 
 The following improvements and fixes were made in Data Import v1.2, with major community contributions from [Instructure](https://www.instructure.com/)\*:
 
-*   [DI-480](https://tracker.ed-fi.org/browse/DI-480) - \*Major enhancements to PowerShell pre-processing, including security-based sandboxing. For more information see [Integrated Custom File Processors](../data-import/technical-articles/preprocessing-csv-files/integrated-custom-file-processors.md).
-*   [DI-929](https://tracker.ed-fi.org/browse/DI-929) - Ability to import Template Sharing templates across multiple versions of the ODS / API with same major version of Ed-Fi Data Suite (3.x for example). For more information see [Cross-Version Template Sharing](../data-import/technical-articles/data-import-article-archive/cross-version-template-sharing.md).
+*   [DI-480](https://tracker.ed-fi.org/browse/DI-480) - \*Major enhancements to PowerShell pre-processing, including security-based sandboxing. For more information see [Integrated Custom File Processors](../data-import/technical-articles/preprocessing-csv-files/integrated-custom-file-processors).
+*   [DI-929](https://tracker.ed-fi.org/browse/DI-929) - Ability to import Template Sharing templates across multiple versions of the ODS / API with same major version of Ed-Fi Data Suite (3.x for example). For more information see [Cross-Version Template Sharing](../data-import/technical-articles/data-import-article-archive/cross-version-template-sharing).
 *   [DI-940](https://tracker.ed-fi.org/browse/DI-940) - Currency data handling from Swagger "numeric" type.
 *   Bug fixes and changes based on field reports.
 
@@ -109,7 +109,7 @@ The following improvements and fixes were made in Data Import v1.0.1.
 
 *   Consolidation of Transform Load, File Transfer and File Cleanup service into one service for easier setup and maintenance
 *   New Activity pane to show status of import jobs in the web application
-*   PowerShell integration for row-level or file-level pre-processing (see [Integrated Custom Record Processing](../data-import/technical-articles/preprocessing-csv-files/integrated-custom-record-processing.md) and [Integrated Custom File Generation](../data-import/technical-articles/preprocessing-csv-files/integrated-custom-file-generation.md))
+*   PowerShell integration for row-level or file-level pre-processing (see [Integrated Custom Record Processing](../data-import/technical-articles/preprocessing-csv-files/integrated-custom-record-processing) and [Integrated Custom File Generation](../data-import/technical-articles/preprocessing-csv-files/integrated-custom-file-generation))
 *   Ed-Fi Product Improvement (Google Analytics and Jira / Ed-Fi Tracker integration, see [\_Product Improvement](https://edfi.atlassian.net/wiki/spaces/EDFITOOLS/pages/24118943) for more information)
 *   Enhancements to run in SaaS contexts and improvements for running on Azure
 *   EDFI-183 - "Logs tabs with refresh"
@@ -124,7 +124,7 @@ The following improvements and fixes were made in Data Import v1.0.1.
 The following improvements and fixes were made in since Data Import 1.0 RC 3 release.
 
 *   [EDFI-178](https://tracker.ed-fi.org/browse/EDFI-178) - "Configuration updated and files up to 200MB tested on Windows Server & IIS 10
-    
+
 *   [EDFI-174](https://tracker.ed-fi.org/browse/EDFI-174) - "URL handling improvements"
 *   Template Sharing Service to allow sharing of metadata for ETL jobs (maps, bootstraps and lookups)
 *   Enhancements to Data Import logging statements, including TransformLoad service
@@ -152,11 +152,11 @@ The following improvements and fixes were made in Data Import since the [Tech C
 
 *   Full support for both Ed-Fi ODS / API 2.5 and 3.1 (and later version numbers)
 *   Data import capabilities, based on multiple implementor requests, including:
-    
+
     *   Import capability for all Ed-Fi objects (previously only the Assessment domain was supported)
-        
+
     *   Import capability for Ed-Fi Descriptors
-        
+
 *   User Interface for CSV to Ed-Fi data mapping function including:
     *   Support for multiple sub-objects
     *   Support for optional fields
@@ -164,14 +164,14 @@ The following improvements and fixes were made in Data Import since the [Tech C
     *   [EDFI-105](https://tracker.ed-fi.org/browse/EDFI-105) - "Issues With Data Import Data Map"
     *   [EDFI-89](https://tracker.ed-fi.org/browse/EDFI-89) - "Student assessment score result upload using GUI doesn't fully save JSON map"
 *   Import and export of templates (CSV to Ed-Fi maps, lookups and bootstrap data)
-    
+
 *   Installation options, providing both EXE and ZIP installation options
     *   [EDFI-98](https://tracker.ed-fi.org/browse/EDFI-98) - "Provide documentation to install under IIS (not IIS Express)"
 
 ## Improvements
 
 *   Performance improvements:
-    
+
     *   [EDFI-120](https://tracker.ed-fi.org/browse/EDFI-120) - "Data Flow/Import Transform load application failed to process more than 6000 records in single file"
     *   [EDFI-123](https://tracker.ed-fi.org/browse/EDFI-123) - "Data Import Agent Manual Upload Fails can't access file used by other process"
     *   [EDFI-136](https://tracker.ed-fi.org/browse/EDFI-136) - "When Admin config is changed Bootstraps and Maps are removed"

@@ -58,13 +58,13 @@ If you wish to register additional users within this instance of Data Import, en
 
 ### Step 4. Update Configuration
 
-With all prior steps completed, click on the "Update Configuration" button. Once configuration is verified, "Configuration was modified" will appear in the top-right of the screen. From here, it is recommended to view [Quick Start](../getting-started/quick-start.md) for additional information on how to use Data Import.
+With all prior steps completed, click on the "Update Configuration" button. Once configuration is verified, "Configuration was modified" will appear in the top-right of the screen. From here, it is recommended to view [Quick Start](../getting-started/quick-start) for additional information on how to use Data Import.
 
 ![](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/getting-started/Snag_24286a65.png)
 
 ### Step 5. (Optional) Use Quick Start for an Introduction to Data Import
 
-For a walk-through of your first import with Data Import, please follow the [Quick Start](../getting-started/quick-start.md) instructions on the next page.
+For a walk-through of your first import with Data Import, please follow the [Quick Start](../getting-started/quick-start) instructions on the next page.
 
 ## Contents
 

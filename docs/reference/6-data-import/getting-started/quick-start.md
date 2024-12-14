@@ -6,7 +6,7 @@ The high-level steps are:
 
 ### Step 1. Open Data Import in the Web Browser
 
-Once installed, launch "Ed-Fi Data Import". If using an EXE installer, the URL would be: `https://<machinename>/DataImport`. Internet Information Services (IIS) Manager could be used to verify the location if not similar to previously mentioned. As Data Import loads for the first time, click on the "Register" link to register the first administrative user. If you need more configuration guidance, please see [First-Time Configuration](../getting-started/first-time-configuration.md) for explanation on each step.
+Once installed, launch "Ed-Fi Data Import". If using an EXE installer, the URL would be: `https://<machinename>/DataImport`. Internet Information Services (IIS) Manager could be used to verify the location if not similar to previously mentioned. As Data Import loads for the first time, click on the "Register" link to register the first administrative user. If you need more configuration guidance, please see [First-Time Configuration](../getting-started/first-time-configuration) for explanation on each step.
 
 ![](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/getting-started/image2020-12-15_0-56-54.png)
 

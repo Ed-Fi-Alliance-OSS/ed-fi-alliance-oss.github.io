@@ -1,6 +1,6 @@
 # Advanced Details for Data Import in Docker
 
-Data Import v2.3 is now in Docker configuration to run in containers.  This page includes details for custom implementations and advanced usage of Data Import running within Docker.  For information on the ODS / API running in Docker, please see [Docker Deployment 2.x](../../../../../ed-fi-tools-home/docker-deployment/docker-deployment-2x.md).
+Data Import v2.3 is now in Docker configuration to run in containers.  This page includes details for custom implementations and advanced usage of Data Import running within Docker.  For information on the ODS / API running in Docker, please see [Docker Deployment 2.x](../../../../../ed-fi-tools-home/docker-deployment/docker-deployment-2x).
 
 > [!INFO]
 > These details assume readers are familiar with Docker and Docker Compose. If these tools are new to you, please be sure to read [Docker's own documentation](https://docs.docker.com/compose/) to familiarize yourself before utilizing this documentation.
@@ -23,9 +23,9 @@ Some possible adaptations include:
 *   running this composition wholesale alongside an ODS/API solution deployed using Docker or other methods
 *   adding the below services and volumes to an existing ODS/API Docker composition and redeploying
 *   using the `dataimport`  service as an example for plugging in to a composition with an existing datab
-    
+
     ase, updating the `POSTGRES_HOST`  and other DB settings accordingly
-    
+
 
 **docker-compose.yml** Expand source
 
@@ -34,11 +34,11 @@ Some possible adaptations include:
 # Licensed to the Ed-Fi Alliance under one or more agreements.
 # The Ed-Fi Alliance licenses this file to you under the Apache License, Version 2.0.
 # See the LICENSE and NOTICES files in the project root for more information.
-  
+
 version: "3.8"
-  
+
 services:
-  dataimport:  
+  dataimport:
     image: edfialliance/data-import:v2.3.1
     ports:
       - "8080:80"
@@ -59,7 +59,7 @@ services:
     restart: always
     hostname: dataimport
     container_name: ed-fi-dataimport
-  
+
   db-dataimport:
     image: postgres@sha256:67cff2d866a237c54a21f2038e15e61cd257b7dde465436e231bb91e31ac9f79 # postgres:11-alpine
     ports:
@@ -72,7 +72,7 @@ services:
       - vol-db-dataimport:/var/lib/postgresql/data
     restart: always
     container_name: ed-fi-db-dataimport
-  
+
   pb-dataimport:
     image: pgbouncer/pgbouncer@sha256:aa8a38b7b33e5fe70c679053f97a8e55c74d52b00c195f0880845e52b50ce516 #pgbouncer:1.15.0
     environment:
@@ -84,7 +84,7 @@ services:
     container_name: ed-fi-pb-dataimport
     depends_on:
       - db-dataimport
-  
+
 volumes:
   vol-db-dataimport:
     driver: local
@@ -104,7 +104,7 @@ ENCRYPTION_KEY=<base64-encoded 256-bit key>
 TIME_ZONE=<US/Central>
 USER_RECOVERY_TOKEN=<base64-encoded 256-bit key>
 
-# NOTE: PostgreSql is supported by default. If SqlServer is used, then environment section of the dataimport container 
+# NOTE: PostgreSql is supported by default. If SqlServer is used, then environment section of the dataimport container
 # within the docker compose file needs to be customized to have appropriate connection string
 DATABASE_ENGINE=<PostgreSql or SqlServer>
 
@@ -149,7 +149,7 @@ The above configuration is designed with a dedicated  PostgreSQL server and con
 
 To connect to a Microsoft SQL Server instance you must have a valid SQL username and password. It possible to leverage a Docker container or an instance installed on the host or elsewhere, but if using the latter options, consider the host/container networking relationship.
 
-*   Change "DATABASE\_ENGINE" on .env file to `SqlServer` 
+*   Change "DATABASE\_ENGINE" on .env file to `SqlServer`
 *   Remove `POSTGRES_` environment settings
 *   Update `CONNECTIONSTRINGS__DEFAULTCONNECTION` to a valid connection string
     *    SQL username/password must be used to connect, as opposed to Integrated Security
@@ -164,11 +164,11 @@ To connect to a Microsoft SQL Server instance you must have a valid SQL username
 
 To upgrade from an existing Data Import installation that is outside of Docker, execute the following steps:
 
-1.  If you are using the same database, **Make a backup of the Data Import database, for safety.  
+1.  If you are using the same database, **Make a backup of the Data Import database, for safety.
     **The installer is capable of automatically upgrading the content of the existing database, so the uninstall/install process can use the same database.
 2.  **Make a backup of the Data Import configuration files** **for any values you may have set here.** Note especially your **`EncryptionKey`**  value which appears the same in both files. Copy this especially as it will be re-used in the new Data Import installation. The files to check differ for versions less than 1.3.0:
-    1.  **1.2.0:** The web application **"Web.config"** and the Transform/Load application's **"DataImport.Server.TransformLoad.exe.config"** 
-    2.  **1.3.0+:** The web application **"appsettings.json"** and the Transform/Load application's **"appsettings.json"** 
+    1.  **1.2.0:** The web application **"Web.config"** and the Transform/Load application's **"DataImport.Server.TransformLoad.exe.config"**
+    2.  **1.3.0+:** The web application **"appsettings.json"** and the Transform/Load application's **"appsettings.json"**
 3.  Stop the previous Data Import application and website from Internet Information Server
 4.  Run the Docker Installation
     1.  Update configuration values to match those copied above
@@ -185,9 +185,9 @@ To upgrade from an existing Docker deployment:
     1.  pay close attention that the `ENCRYPTION_KEY`  setting **does not** change
 4.  **Redeploy** the docker composition
 
-  
 
-  
+
+
 
 > [!NOTE]
 > The following links contain relevant source code and published images:

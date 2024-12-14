@@ -91,7 +91,7 @@ return $outputCsvFile
 
 This script is run to generate the output file, which will contain the StudentUniqueIds. When this script is run, the StudentUSI (Key) is used to retrieve the StudentUniqueId (Value) from the StudentLookups table that we have defined. To perform this lookup, we need to configure the connection string and then use the proper query to get the StudentUniqueId. Once this lookup is made, there is some validation to ensure there is exactly one match and then we add to the "StudentUniqueId" column with the looked-up value to the output file. The Transform/Load process then retrieves the output file and performs the mapping on each row and POSTs to the ODS.
 
-Similar to the [Quick Start](../../../../data-import/getting-started/quick-start.md), the user sets up any necessary _Bootstrap_ items, a _Data Map_ for mapping these CSV columns to ODS Student Assessements, and a File System/Powershell _Agent_ that is set up to use the script*.* When setting up the _Data Map_, we added a dummy column named "StudentUniqueId" to our CSV since Transform/Load will be looking for the looked-up value in that column.
+Similar to the [Quick Start](../../../../data-import/getting-started/quick-start), the user sets up any necessary _Bootstrap_ items, a _Data Map_ for mapping these CSV columns to ODS Student Assessements, and a File System/Powershell _Agent_ that is set up to use the script*.* When setting up the _Data Map_, we added a dummy column named "StudentUniqueId" to our CSV since Transform/Load will be looking for the looked-up value in that column.
 
 When we run Transform/Load, we will encounter success. The _Logs \\ Ingestion_ screen shows the looked-up StudentUniqueId value that was POSTed to the ODS:
 
