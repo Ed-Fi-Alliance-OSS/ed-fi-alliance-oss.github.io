@@ -11,19 +11,6 @@ You will need the following information to complete this installation.
 
 ## Configuration Instructions
 
-The high-level steps for configuration are:
-
-- [First-Time Configuration](#first-time-configuration)
-  - [Required Information](#required-information)
-  - [Configuration Instructions](#configuration-instructions)
-    - [Step 1. Create Data Import Administrative User](#step-1-create-data-import-administrative-user)
-    - [](#)
-    - [Step 2. Enter API Server Information](#step-2-enter-api-server-information)
-    - [**Step 3. (Optional) User Management**](#step-3-optional-user-management)
-    - [**Step 4. Update Configuration**](#step-4-update-configuration)
-    - [**Step 5. (Optional) Use Quick Start for an Introduction to Data Import**](#step-5-optional-use-quick-start-for-an-introduction-to-data-import)
-  - [Contents](#contents)
-
 Detail follows.
 
 ### Step 1. Create Data Import Administrative User
@@ -63,19 +50,19 @@ Configure the following fields:
 
 ![](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/getting-started/image2020-11-25_16-54-8.png)
 
-### **Step 3. (Optional) User Management**
+### Step 3. (Optional) User Management
 
 If you wish to register additional users within this instance of Data Import, enable "Allow User Registration" below and run through Step 1 to create additional users. **Ensure this option is disabled once all users are created.** If not adding new users beyond the initial administrative user in Step 1, it is recommended to not allow user registration (i.e., leave the checkbox unchecked) unless and until needed.
 
 ![](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/getting-started/image2019-12-10_19-55-47.png)
 
-### **Step 4. Update Configuration**
+### Step 4. Update Configuration
 
 With all prior steps completed, click on the "Update Configuration" button. Once configuration is verified, "Configuration was modified" will appear in the top-right of the screen. From here, it is recommended to view [Quick Start](../getting-started/quick-start.md) for additional information on how to use Data Import.
 
 ![](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/getting-started/Snag_24286a65.png)
 
-### **Step 5. (Optional) Use Quick Start for an Introduction to Data Import**
+### Step 5. (Optional) Use Quick Start for an Introduction to Data Import
 
 For a walk-through of your first import with Data Import, please follow the [Quick Start](../getting-started/quick-start.md) instructions on the next page.
 

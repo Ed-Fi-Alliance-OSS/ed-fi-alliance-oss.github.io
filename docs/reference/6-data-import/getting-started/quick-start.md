@@ -4,21 +4,7 @@ This section contains a simple walkthrough which can be used to verify installat
 
 The high-level steps are:
 
-* [Quick Start](#quick-start)
-  * [**Step 1. Open Data Import in the Web Browser**](#step-1-open-data-import-in-the-web-browser)
-  * [Step 2. Review Use Case for Importing Sample State Assessments](#step-2-review-use-case-for-importing-sample-state-assessments)
-  * [Step 3. Obtain Sample from Data Import-Templates Repository](#step-3-obtain-sample-from-data-import-templates-repository)
-  * [Step 4. Review Lookups](#step-4-review-lookups)
-  * [Step 5. Review Bootstraps](#step-5-review-bootstraps)
-  * [Step 6. Review Data Map](#step-6-review-data-map)
-  * [Step 7. Add an Agent](#step-7-add-an-agent)
-  * [Step 8. Upload file to Agent](#step-8-upload-file-to-agent)
-  * [Step 9. Run the Agent](#step-9-run-the-agent)
-  * [Step 10. View Logs](#step-10-view-logs)
-  * [Support \& Reporting Issues](#support--reporting-issues)
-  * [Contents](#contents)
-
-### **Step 1. Open Data Import in the Web Browser**
+### Step 1. Open Data Import in the Web Browser
 
 Once installed, launch "Ed-Fi Data Import". If using an EXE installer, the URL would be: `https://<machinename>/DataImport`. Internet Information Services (IIS) Manager could be used to verify the location if not similar to previously mentioned. As Data Import loads for the first time, click on the "Register" link to register the first administrative user. If you need more configuration guidance, please see [First-Time Configuration](../getting-started/first-time-configuration.md) for explanation on each step.
 
