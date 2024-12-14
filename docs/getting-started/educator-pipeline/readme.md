@@ -17,5 +17,6 @@ of those students. In addition to the data model, we also offer insights into
 some of the most essential questions that stakeholder's are asking, through the
 following use case documents.
 
+* [Educator Workforce](./educator-workforce.md)
 * [Clinical Experience Dashboard](./clinical-experience.md)
 * [Program Diversity and Persistence](./program-diversity.md)
