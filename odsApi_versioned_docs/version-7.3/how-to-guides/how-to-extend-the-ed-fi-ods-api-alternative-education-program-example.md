@@ -164,7 +164,7 @@ file in the tree view to open it.
 <summary>Listing of files</summary>
 
 ```none
-ed-fi-model-2/
+ed-fi-model-5.2/
 
 AlternativeEducationProgram
 ├─ Association/
