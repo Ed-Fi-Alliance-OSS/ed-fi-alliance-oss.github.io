@@ -1,10 +1,66 @@
 # Analytics Middle Tier
 
-:::tip
+:::warning December 2023:
 
-🚧 This site is under construction. In the meantime, please see [Analytics
-Middle
-Tier](https://edfi.atlassian.net/wiki/spaces/EDFITOOLS/pages/24119458/Analytics+Middle+Tier)
-in Confluence for more information.
+* [Analytics Middle Tier Transitioning to Ed-Fi Exchange in 2025](../0-roadmap/notifications/amt.md)
 
 :::
+
+:::caution
+
+The Ed-Fi Alliance no longer recommends new production dependencies
+on Analytics Middle Tier; see the Ed-Fi Exchange announcement above for more
+information.
+
+:::
+
+## Overview
+
+The Analytics Middle Tier is a set of denormalized analytics views over the
+database tables backing an
+[Ed-Fi ODS/API deployment](../ods-api-platform.mdx),
+satisfying the user story:
+
+As a district data analyst, I want to build intelligent reporting on the Ed-Fi
+ODS with **minimal learning curve and low risk of breaking changes**, so that I
+can deliver timely data to educators and administrators.
+
+These views are suitable for use in a wide range of downstream applications. For
+more information, see the [AMT
+Overview](./amt-overview.md).
+
+## Installing the Views
+
+System administrators install the Analytics Middle Tier into an Ed-Fi ODS
+database using a command-line utility. Every version of the utility builds on
+prior releases by migrating the analytics views to the current release, without
+having to uninstall (though v2.0.0 requires an uninstall of v1.x, if present).
+The product contains a number of use-case specific collections that are
+installed as optional components. After install, the system administrator must
+perform some manual steps to customize the system to the distinct implementation
+details.
+
+For more information, see the [AMT Deployment
+Guide](./deployment-guide/readme.mdx).
+
+## Using the Views
+
+The Analytics Middle Tier contains a core collection of views and a number of
+use case-specific collections. The Analytics Middle Tier views are a simple
+representation the Ed-Fi Data Standard, which support a seamless bridge from one
+version of the Data Standard to the next. The work to simplify and bridge
+standards comes at cost, however: data analysts and programmers using these
+views need to understand both their utility and their limitations, or else risk
+confusion and/or misleading analyses.
+
+For more information, see the [AMT User
+Guide](./user-guide/readme.md).
+
+## Related Content From the Ed-Fi Blog
+
+* February 14, 2020: [The Analytics Middle Tier Grows
+    Up](https://www.ed-fi.org/blog/2020/02/the-analytics-middle-tier-grows-up/)
+* January 16, 2019: [(Re)New on the Ed-Fi Exchange: Analytics Starter
+    Kits](https://www.ed-fi.org/blog/2019/01/renew-ed-fi-exchange-analytics-starter-kits/)
+* August 7, 2018: [From Diagrams & Definitions: Solving the Analytics Reporting
+    Gap]

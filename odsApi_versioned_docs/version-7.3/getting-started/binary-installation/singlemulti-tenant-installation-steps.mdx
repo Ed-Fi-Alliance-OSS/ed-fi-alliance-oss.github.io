@@ -23,10 +23,10 @@ links below. We recommend you stay current with the latest patch update that has
 been promoted to
 [release](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging?_a=feed&feed=EdFi%40Release).
 
-* [EdFi.Suite3.Installer.WebApi](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Installer.WebApi/versions/7.2.4)
-* [EdFi.Suite3.Installer.SwaggerUI](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Installer.SwaggerUI/versions/7.2.6) (Optional,
+* [EdFi.Suite3.Installer.WebApi](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Installer.WebApi/versions/7.3.27)
+* [EdFi.Suite3.Installer.SwaggerUI](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Installer.SwaggerUI/versions/7.3.33) (Optional,
     not for production)
-* [EdFi.Suite3.RestApi.Databases.5.1.0](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.RestApi.Databases.Standard.5.1.0/versions/7.2.1201)
+* [EdFi.Suite3.RestApi.Databases.5.2.0](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.RestApi.Databases.Standard.5.2.0/versions/7.3.1277)
 
 For each of the downloads, **right-click** and select "Properties." Update the
 file extension (from .nupkg to .zip). Remove the version number (optional).
@@ -38,8 +38,11 @@ permission to load every module in the installer) and click **OK**.
 :::info Enable TLS 1.2
 
 You may need to configure TLS while running the installation scripts described
-in steps below. `[Net.ServicePointManager]::SecurityProtocol +=
-[Net.SecurityProtocolType]::Tls12`
+in steps below.
+
+```powershell
+[Net.ServicePointManager]::SecurityProtocol += [Net.SecurityProtocolType]::Tls12
+```
 
 :::
 
@@ -58,7 +61,7 @@ paths in Windows.
 
 Extract the contents of the EdFi.Suite3.RestApi.Databases package. The paths in
 these instructions assume that the package was extracted to a folder with the
-name of the package (e.g., `C:\\temp\\EdFi.Suite3.RestApi.Databases`).
+name of the package (e.g., `C:\temp\EdFi.Suite3.RestApi.Databases`).
 
 ### Edit the configuration.json File
 
@@ -212,6 +215,8 @@ Scripts values to the following:
 
 </details>
 
+:::
+
 ## Run Installation Script
 
 Open a PowerShell window in Administrator mode and navigate to the
@@ -255,8 +260,8 @@ Copy and modify the following parameter code to fit your connection information:
   <TabItem value="MSSQL" label="SQL Server" default>
     ```powershell
     $parameters = @{
-        PackageVersion = "7.2.1201"
-        PackageName = "EdFi.Suite3.Ods.WebApi.Standard.5.1.0"
+        PackageVersion = "7.3.1277"
+        PackageName = "EdFi.Suite3.Ods.WebApi.Standard.5.2.0"
         DbConnectionInfo = @{
             Engine="SqlServer"
             Server="localhost"
@@ -269,8 +274,8 @@ Copy and modify the following parameter code to fit your connection information:
   <TabItem value="PostgreSQL" label="PostgreSQL">
     ```powershell
     $parameters = @{
-        PackageVersion = "7.2.1201"
-        PackageName = "EdFi.Suite3.Ods.WebApi.Standard.5.1.0"
+        PackageVersion = "7.3.1277"
+        PackageName = "EdFi.Suite3.Ods.WebApi.Standard.5.2.0"
         DbConnectionInfo = @{
             Engine="PostgreSQL"
             Server="localhost"
@@ -283,8 +288,8 @@ Copy and modify the following parameter code to fit your connection information:
     ```powershell
     $parameters = @{
         IsMultiTenant = $true
-        PackageVersion = "7.2.1201"
-        PackageName = "EdFi.Suite3.Ods.WebApi.Standard.5.1.0"
+        PackageVersion = "7.3.1277"
+        PackageName = "EdFi.Suite3.Ods.WebApi.Standard.5.2.0"
         DbConnectionInfo = @{
             Engine="SqlServer"
             Server="localhost"
@@ -308,8 +313,8 @@ Copy and modify the following parameter code to fit your connection information:
     ```powershell
     $parameters = @{
         IsMultiTenant = $true
-        PackageVersion = "7.2.1201"
-        PackageName = "EdFi.Suite3.Ods.WebApi.Standard.5.1.0"
+        PackageVersion = "7.3.1277"
+        PackageName = "EdFi.Suite3.Ods.WebApi.Standard.5.2.0"
         DbConnectionInfo = @{
             Engine="PostgreSQL"
             Server="localhost"
@@ -342,24 +347,20 @@ server.](https://learn.microsoft.com/en-us/sql/database-engine/configure-windows
 
 :::
 
-### SQL logins created the installer will have system admin rights
+:::info Database logins created by the installer will have database server administrator rights
 
-:::info
+If more restrictive permissions are required, the database login used by the WebApi should be created manually before executing the installer.
 
-To create a database server login for the application, first, ensure that the login does not already exist.
-Logins created by the installer will have database system administrator rights by default.
-If more restrictive permissions are required, the SQL login used by the WebAPI should be created manually.
-If the database connection information includes login credentials, the new login will use these.
-However, if no credentials are provided, integrated security must be selected,
-and a new SQL login matching the application pool identity used by WebAPI will be created.
+To create a custom login for SQL Server:
+- If integrated security (param: `UseIntegratedSecurity`) is not enabled, a username and password must be provided in the database connection information (param: `DbConnectionInfo`) parameter(s)
+- If integrated security is enabled, the username provided must be a valid Windows user, or left undefined to use the default application pool identity
+  - If using a custom Windows username, the application pool identity used by the WebApi needs to be manually updated to use the same Windows username after the installer has been executed
 
-For a custom SQL Server login, if integrated security is not enabled, a username and password must be specified in the database connection parameters.
-If integrated security is enabled, the username must be a valid Windows user,
-and the application pool identity for the WebAPI must be updated to match this Windows username.
+To create a custom login for Postgres:
+- If integrated security is not enabled, a username must be provided in the database connection information parameter(s). A password can be optionally specified
+- If integrated security is enabled, `pg_ident.conf` map needs to be updated to use the username provided
 
-For creating a custom login for Postgres, if integrated security is not enabled,
-a username and password should be provided in the database connection parameters.
-If integrated security is enabled, the `pg_ident.conf` map must be updated to include the username used for the connection.
+Examples can be found in the `Install-EdFiOdsWebApi.psm1` file.
 
 :::
 
@@ -451,7 +452,7 @@ Copy and modify the following parameter code to add your site name:
 
 ```powershell
 $parameters = @{
-    PackageVersion = "7.2.1201"
+    PackageVersion = "7.3.1277"
     WebApiVersionUrl = "https://YOUR_SITE_OR_SERVER_NAME_HERE/WebApi"
 }
 ```
@@ -465,7 +466,7 @@ To deploy Swagger for MultiTenant, use parameters `Tenants` and `DefaultTenant`
 
 ```powershell
 $parameters = @{
-    PackageVersion = "7.2.1201"
+    PackageVersion = "7.3.1277"
     WebApiVersionUrl = "https://YOUR_SITE_OR_SERVER_NAME_HERE/WebApi"
     Tenants = @("Tenant1", "Tenant2")
 }
@@ -489,7 +490,7 @@ Install-EdFiOdsSwaggerUI @parameters
 The Admin API provides an API-based programmatic interface for platform hosts to
 administer and manage non-sandbox instances of the Ed-Fi ODS / API. Follow the
 installation steps
-[here](https://edfi.atlassian.net/wiki/display/ADMINAPI/Getting+Started).
+[here](/reference/admin-api).
 Alternatively, ODS instances can be configured by database administrators via
 SQL queries as outlined in the article [How To: Configure ODS
 Instances](../../how-to-guides/how-to-configure-ods-instances.md).
@@ -511,10 +512,6 @@ You are now ready to use the Ed-Fi ODS / API. The following URLs are available:
 
 | Website                                                            | URL                                          |
 | ------------------------------------------------------------------ | -------------------------------------------- |
-| Ed-Fi ODS / API                                                    | `https://YOUR\_SERVER\_NAME\_HERE/WebApi`    |
-| Ed-Fi Admin API                                                    | `https://YOUR\_SERVER\_NAME\_HERE/AdminApi`  |
-| Ed-Fi ODS / API Documentation  <br/>(Optional, not for production) | `https://YOUR\_SERVER\_NAME\_HERE/SwaggerUI` |
-
-## Contents
-
-Find out more about how to begin using the Ed-Fi ODS / API:
+| Ed-Fi ODS / API                                                    | `https://YOUR_SITE_OR_SERVER_NAME_HERE/WebApi`    |
+| Ed-Fi Admin API                                                    | `https://YOUR_SITE_OR_SERVER_NAME_HERE/AdminApi`  |
+| Ed-Fi ODS / API Documentation  <br/>(Optional, not for production) | `https://YOUR_SITE_OR_SERVER_NAME_HERE/SwaggerUI` |

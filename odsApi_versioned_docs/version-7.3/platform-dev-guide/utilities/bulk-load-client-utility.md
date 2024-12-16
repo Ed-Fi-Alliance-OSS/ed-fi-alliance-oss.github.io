@@ -19,14 +19,14 @@ Utility](../../how-to-guides/how-to-load-the-ods-with-sample-xml-data-using-bulk
 The populated template is generated with the Loader using sample XML data
 contained in the public Ed-Fi-Standard GitHub repository:
 
-* [v5.1.0 Descriptors](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v5.1.0/Descriptors)
-* [v5.1.0 Samples Sample XML](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v5.1.0/Samples/Sample%20XML)
+* [v5.2.0 Descriptors](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v5.2.0/Descriptors)
+* [v5.2.0 Samples Sample XML](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v5.2.0/Samples/Sample%20XML)
 
 ## Ed-Fi ODS Minimal Template
 
 The minimal template is generated with the Loader by loading Ed-Fi
 descriptors contained in the public Ed-Fi-Standard GitHub
-repository ([v5.1.0 Descriptors](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v5.1.0/Descriptors)).
+repository ([v5.2.0 Descriptors](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v5.2.0/Descriptors)).
 
 ## Overview of Solution Architecture
 

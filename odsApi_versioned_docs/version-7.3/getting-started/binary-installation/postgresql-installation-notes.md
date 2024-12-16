@@ -20,7 +20,7 @@ various tools that work:
 ## Install PostgreSQL
 
 Installation of PostgreSQL can be done either using the binaries or using
-Docker. The recommended solution is to use the docker install using Linux
+Docker. The recommended solution is to use the Docker install using Linux
 containers.
 
 ### Installation using PostgreSQL Installer

@@ -96,16 +96,16 @@ Do that now if you haven't already.
 MetaEd allows you to target different versions of the Ed-Fi technology stack and
 data model. Confirm that your MetaEd IDE is targeting v7.3 by following the
 instructions in the [Version
-Targeting](https://edfi.atlassian.net/wiki/spaces/METAED20/pages/23709491/MetaEd+IDE+-+Creating+and+Maintaining+Your+Extension#MetaEdIDE-CreatingandMaintainingYourExtension-Step4.AddtheCorrectDataModelProject)
+Targeting](/reference/metaed/ide-user-guide/creating-and-maintaining-your-extension#step-4-add-the-correct-data-model-project)
 documentation for the MetaEd IDE.
 
-The desired model for the latest ODS / API is "ed-fi-model-5.1".
+The desired model for the latest ODS / API is "ed-fi-model-5.2".
 
 ### Step 2b. Create a New Extension Project
 
 Create a new extension by following the steps in [MetaEd IDE - Creating and
 Maintaining Your
-Extension](https://edfi.atlassian.net/wiki/display/METAED20/MetaEd+IDE+-+Creating+and+Maintaining+Your+Extension).
+Extension](/reference/metaed/ide-user-guide/creating-and-maintaining-your-extension).
 In this example our extension is in a folder called "StudentTranscript"
 
 <details>
@@ -532,7 +532,7 @@ handle this entity.
 To enable NoFurtherAuthorizationRequired, first create a security SQL script
 called `0001-PostSecondaryOrganization_No_Further_Auth_Required.sql` and place
 it in
-the `Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleStudentTranscript\Versions\1.0.0\Standard\5.1.0\Artifacts\MsSql\Data\Security` folder
+the `Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleStudentTranscript\Versions\1.0.0\Standard\5.2.0\Artifacts\MsSql\Data\Security` folder
 (Create 'Security' folder if it does not exist). Copy the contents of the
 following SQL DML script into the newly created file and save.
 
@@ -777,19 +777,19 @@ and Ed-Fi-ODS-Implementation repositories. Run the following copy commands:
 
 ```powershell
 xcopy /y "Ed-Fi-ODS\Samples\Extensions\StudentTranscript\StudentTranscriptMetaEd\MetaEdOutput\SampleStudentTranscript\Database\SQLServer\ODS\Structure" `
-  "Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleStudentTranscript\Versions\1.0.0\Standard\5.1.0\Artifacts\MsSql\Structure\Ods\*"
+  "Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleStudentTranscript\Versions\1.0.0\Standard\5.2.0\Artifacts\MsSql\Structure\Ods\*"
 
 xcopy /y "Ed-Fi-ODS\Samples\Extensions\StudentTranscript\StudentTranscriptMetaEd\MetaEdOutput\SampleStudentTranscript\Database\PostgreSQL\ODS\Structure" `
-  "Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleStudentTranscript\Versions\1.0.0\Standard\5.1.0\Artifacts\PgSql\Structure\Ods\*"
+  "Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleStudentTranscript\Versions\1.0.0\Standard\5.2.0\Artifacts\PgSql\Structure\Ods\*"
 
 xcopy /y "Ed-Fi-ODS\Samples\Extensions\StudentTranscript\StudentTranscriptMetaEd\MetaEdOutput\SampleStudentTranscript\ApiMetadata" `
-  "Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleStudentTranscript\Versions\1.0.0\Standard\5.1.0\Artifacts\Metadata\*"
+  "Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleStudentTranscript\Versions\1.0.0\Standard\5.2.0\Artifacts\Metadata\*"
 
 xcopy /y "Ed-Fi-ODS\Samples\Extensions\StudentTranscript\StudentTranscriptMetaEd\MetaEdOutput\SampleStudentTranscript\XSD" `
-  "Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleStudentTranscript\Versions\1.0.0\Standard\5.1.0\Artifacts\Schemas\*"
+  "Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleStudentTranscript\Versions\1.0.0\Standard\5.2.0\Artifacts\Schemas\*"
 
 xcopy /y "Ed-Fi-ODS\Samples\Extensions\StudentTranscript\StudentTranscriptMetaEd\MetaEdOutput\SampleStudentTranscript\Interchange" `
-  "Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleStudentTranscript\Versions\1.0.0\Standard\5.1.0\Artifacts\Schemas\*"
+  "Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleStudentTranscript\Versions\1.0.0\Standard\5.2.0\Artifacts\Schemas\*"
 ```
 
 ### Step A6. Configure Security
@@ -810,7 +810,7 @@ handle this entity.
 To enable NoFurtherAuthorizationRequired, first create a security SQL script
 called `0001-PostSecondaryOrganization_No_Further_Auth_Required.sql` and
 place it in the `Ed-Fi-ODS-Implementation/Application/
-EdFi.Ods.Extensions.SampleStudentTranscript/Versions/1.0.0/Standard/5.1.0/Artifacts/MsSql/Data/Security` folder
+EdFi.Ods.Extensions.SampleStudentTranscript/Versions/1.0.0/Standard/5.2.0/Artifacts/MsSql/Data/Security` folder
 (Create 'Security' folder if it does not exist). Copy the contents of the
 following SQL DML script into the newly created file and save.
 

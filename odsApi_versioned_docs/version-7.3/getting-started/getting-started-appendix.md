@@ -26,7 +26,7 @@ template databases are made for each sandbox in the environment.
 The Ed-Fi ODS / API comes with a set of configurable features that can be
 enabled or disabled using configuration settings in deployed API. See
 the [Configuration
-Details](../platform-dev-guide/configuration/configuration-details.md) section
+Details](../platform-dev-guide/configuration/configuration-details.mdx) section
 for more details on these settings.
 
 | Feature | Is Enabled by Default | Description |

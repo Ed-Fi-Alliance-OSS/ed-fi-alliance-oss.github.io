@@ -1,4 +1,4 @@
-# MetaEd IDE - Correcting Language Warnings and Errors
+# Correcting Language Warnings and Errors
 
 MetaEd IDE alerts you if any files in the project contain syntax errors, invalid
 references, or unexpected text. This document describes problem resolution for
