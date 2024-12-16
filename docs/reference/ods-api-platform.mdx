@@ -1,7 +1,29 @@
-# Ed-Fi ODS/API Platform
+---
+sidebar_position: 2
+---
 
-:::tip
+# Ed-Fi ODS / API Platform
 
-Content coming soon
+The Ed-Fi Alliance publishes the [Ed-Fi Data
+Standard](./data-exchange/data-standard/), which models a broad spectrum of
+commonly exchanged and shared K-12 education data. The Ed-Fi ODS / API is a
+concrete implementation of a relational database and a companion API harmonized
+with the Ed-Fi Data Standard. The Ed-Fi ODS / API is tuned to the security and
+performance needs of K-12 organizations and the education technology vendors who
+serve them.
 
-:::
+The ODS implementation uses Microsoft SQL Server or PostgreSQL as a database
+platform. The API implementation is written in C#. Together, these form a data
+platform to host student-centric data. The ODS / API platform is vendor neutral,
+meaning that client applications may be written in any language.
+
+Please see the [Ed-Fi Technology Suite Supported
+Versions](./0-roadmap/supported-versions.md) for an overview of which Data Standard
+version(s) are supported by a given ODS / API version.
+
+You can use the dropdown version control below to select which version's documentation
+you wish to view:
+
+import { OdsApiDropDown } from '@site/src/components/VersionDropDown';
+
+<OdsApiDropDown />
