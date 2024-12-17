@@ -1,14 +1,14 @@
 # Admin App for Suite 3 v2.0.1
 
-# Before You Install
+## Before You Install
 
 This section provides general information you should review before installing the Ed-Fi ODS / API Admin App for Suite 3 v2.0.1.
 
-## Compatibility & Supported ODS / API Versions
+### Compatibility & Supported ODS / API Versions
 
 This version ODS / API Admin App can be installed for use with the Ed-Fi ODS / API v3.4 and v5.0.0. See the [Ed-Fi Technology Version Index](https://edfi.atlassian.net/wiki/spaces/ETKB/pages/20875717/Ed-Fi+Technology+Version+Index) for more details.
 
-## Prerequisites
+### Prerequisites
 
 The following are required to install the Admin App:
 
@@ -17,32 +17,16 @@ The following are required to install the Admin App:
 * A SQL Server 2012 or higher, or Postgres 11 or higher database server as also in use with your ODS / API v3.4 or v5.0.0 installation.
 * A modern web browser such as Google Chrome, Mozilla Firefox, or Microsoft Edge. Internet Explorer 11 (a pre-installed browser on Windows Server) may load, but may not function when using Admin App.
 
-## Required Information
+### Required Information
 
 You will need the following information to complete this installation:
 
 * The location of your Ed-Fi ODS / API.
 * Administrator access and credentials for either on-premises or Azure environment with target Ed-Fi ODS / API.
 
-# Installation Instructions
+## Installation Instructions
 
 This section provides step-by-step instructions for installation. The specific steps are different depending on the deployment model and version of your Ed-Fi ODS / API.
-
-* [Admin App for Suite 3 v2.0.1](#admin-app-for-suite-3-v201)
-* [Before You Install](#before-you-install)
-  * [Compatibility \& Supported ODS / API Versions](#compatibility--supported-ods--api-versions)
-  * [Prerequisites](#prerequisites)
-  * [Required Information](#required-information)
-* [Installation Instructions](#installation-instructions)
-  * [On-Premises Deployment](#on-premises-deployment)
-    * [Step 1. Download and Open Installer Package](#step-1-download-and-open-installer-package)
-    * [Step 2. Configure Installation](#step-2configure-installation)
-    * [**Step 3.** **Run the Installation via PowerShell**](#step-3run-the-installation-via-powershell)
-    * [**Step 4. Create SQL Server Login (if "useIntegratedSecurity" set to "true")**](#step-4-create-sql-server-login-if-useintegratedsecurity-set-to-true)
-    * [**Step 5. Check Folder Permissions**](#step-5check-folder-permissions)
-    * [**Step 6. Create Initial Administrative User**](#step-6-create-initial-administrative-user)
-    * [**Step 7. Restart the ODS / API**](#step-7-restart-theods--api)
-    * [Step 8. Using the Admin App](#step-8-using-the-admin-app)
 
 ## On-Premises Deployment
 
@@ -52,7 +36,7 @@ Each step is outlined in detail below for the PowerShell deployment. Ensure t
 
 You can download the EdFi.Suite3.Installer.AdminApp.2.0.1 package from the link in the sidebar to the right, rename it to \*.zip and extract it as you would any zip file. Alternatively, you can accomplish the same with PowerShell. Open PowerShell and change to a temporary directory, then download and open the EdFi.Suite3.Installer.AdminApp package. The following script downloads the package, opens it, changes to the unzipped directory, and opens Windows Explorer in that location:
 
-```
+```powershell
 cd c:\temp
 $url = "https://www.myget.org/F/ed-fi/api/v2/package/EdFi.Suite3.Installer.AdminApp/2.0.1"
 $pkg = "EdFi.Suite3.Installer.AdminApp.2.0.1"
@@ -64,7 +48,7 @@ explorer .
 
 ### Step 2. Configure Installation
 
-Open the "install.ps1" file. You will need to edit this file with your configuration details. If a value is not present for any of the parameters, it will use its default value.
+Open the `install.ps1` file. You will need to edit this file with your configuration details. If a value is not present for any of the parameters, it will use its default value.
 
 1. Configure `$dbConnectionInfo`. These values are used to construct the connection strings.
     1. `Server`. The name of the database server. For a local server, we can use "(local)" for SQL and "localhost" for PostgreSQL.
@@ -91,9 +75,9 @@ Open the "install.ps1" file. You will need to edit this file with your configura
 
 Below is an example of the configuration of the "install.ps1" file for SQL Server with `sharedinstance` mode:
 
-**install.ps1(SQLServer)** Expand source
+`install.ps1` Expand source
 
-```
+```powershell
 $dbConnectionInfo = @{
  Server = "(local)"
  Engine = "SqlServer"
@@ -108,9 +92,9 @@ $p = @{
 
 Below is an example of the configuration of the "install.ps1" file for PostgreSQL with districtspecific mode:
 
-**install.ps1(PostgreSQL)** Expand source
+`install.ps1` Expand source
 
-```
+```powershell
 $dbConnectionInfo = @{
  Server = "localhost"
  Engine = "PostgreSQL"
@@ -132,11 +116,11 @@ $parameters = @{
 
 ### **Step 3.** **Run the Installation via PowerShell**
 
-Run "install.ps1" script.
+Run `install.ps1` script.
 
 The PowerShell output will look something like the following:
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/older-versions-of-admin-app/Successful-Installation.JPG)
+![Powershell Success](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/older-versions-of-admin-app/Successful-Installation.JPG)
 
 ### **Step 4. Create SQL Server Login (if "useIntegratedSecurity" set to "true")**
 
@@ -150,9 +134,9 @@ Now that the installation has finished, follow these steps to create a new SQL S
 * Everything else can be left at the default setting.
 * Once you're done, click **OK**.
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/older-versions-of-admin-app/SqlLogin.JPG)
+  ![SQL Server Login Preview](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/older-versions-of-admin-app/SqlLogin.JPG)
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/older-versions-of-admin-app/SQLLogin-role.JPG)
+  ![SQL Server Login Role](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/older-versions-of-admin-app/SQLLogin-role.JPG)
 
 ### **Step 5. Check Folder Permissions**
 
@@ -166,11 +150,11 @@ For checking permissions:
 * **Right-click** the folder, choose **Properties**, view the **Security** tab.
 * Verify the "Group or user names" section has AdminApp with Full control.
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/older-versions-of-admin-app/Upload-folder-permission.JPG)
+  ![SQL Server folder permissions](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/older-versions-of-admin-app/Upload-folder-permission.JPG)
 
-If the AdminApp not available on the list, add with Full control.
+  If the AdminApp not available on the list, add with Full control.
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/older-versions-of-admin-app/AddFolderPermission.JPG)
+  ![SQL Server add folder permissions](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/older-versions-of-admin-app/AddFolderPermission.JPG)
 
 ### **Step 6. Create Initial Administrative User**
 

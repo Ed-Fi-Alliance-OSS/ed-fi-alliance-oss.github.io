@@ -28,26 +28,6 @@ You will need the following information to complete this installation:
 
 This section provides step-by-step instructions for installation. The specific steps are different depending on the deployment model and version of your Ed-Fi ODS / API.
 
-- [Admin App v1.8.1 for Ed-Fi ODS / API v3.4](#admin-app-v181-for-ed-fi-ods--api-v34)
-  - [Before You Install](#before-you-install)
-  - [Prerequisites](#prerequisites)
-  - [Required Information](#required-information)
-  - [Installation Instructions](#installation-instructions)
-  - [Compatibility \& Supported ODS / API Versions](#compatibility--supported-ods--api-versions)
-    - [Other Versions](#other-versions)
-  - [On-Premises Deployment for ODS / API for v3.4](#on-premises-deployment-for-ods--api-for-v34)
-    - [**Step 1.** **Unzip Admin App Installation Files**](#step-1unzip-admin-app-installation-files)
-    - [Step 2. Locate the Installation Script Files](#step-2-locate-the-installation-script-files)
-    - [Step 3. Configure Installation](#step-3configure-installation)
-    - [**Step 4.** **Run the Installation via PowerShell**](#step-4run-the-installation-via-powershell)
-    - [**Step 5. Create SQL Server Login (if "useIntegratedSecurity" set to "true")**](#step-5-create-sql-server-login-if-useintegratedsecurity-set-to-true)
-    - [](#)
-    - [**Step 6. Checking Folder Permissions**](#step-6checking-folder-permissions)
-    - [**Step 7. Securing the Admin App**](#step-7-securing-the-admin-app)
-    - [**Step 8. Admin App Licensing \& Configuration**](#step-8-admin-app-licensing--configuration)
-    - [**Step 9. Restart the ODS / API**](#step-9-restart-theods--api)
-    - [Step 10. Using the Admin App](#step-10-using-the-admin-app)
-
 ## Compatibility & Supported ODS / API Versions
 
 This version ODS / API Admin App can be installed for use with the Ed-Fi ODS / API v3.4. See the [Ed-Fi Technology Version Index](https://edfi.atlassian.net/wiki/spaces/ETKB/pages/20875717/Ed-Fi+Technology+Version+Index) for more details.

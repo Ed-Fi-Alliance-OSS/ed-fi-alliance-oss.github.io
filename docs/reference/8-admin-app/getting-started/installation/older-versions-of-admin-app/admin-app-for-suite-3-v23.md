@@ -91,86 +91,78 @@ Open the "install.ps1" file in a text editor. You will need to edit this file wi
 
 Configuration samples for the "install.ps1" file:
 
-> [!NOTE]
-> ![](https://edfi.atlassian.net/wiki/images/icons/grey_arrow_down.png)
->
-> SQL Server Shared Instance
->
-> **install.ps1(SQL Server)**
->
-> ```
-> $dbConnectionInfo = @{
->  Server = "(local)"
->  Engine = "SqlServer"
->  UseIntegratedSecurity = $true
-> }
->
-> $p = @{
->  DbConnectionInfo = $dbConnectionInfo
->  OdsApiUrl = "https://localhost:54746"
-> }
-> ```
->
-> ![](https://edfi.atlassian.net/wiki/images/icons/grey_arrow_down.png)
->
-> PostgreSQL District Specific
->
-> **install.ps1(PostgreSQL)**
->
-> ```
-> $dbConnectionInfo = @{
->  Server = "localhost"
->  Engine = "PostgreSQL"
->  Username = "exampleAdmin"
->  Password = "examplePassword"
-> }
->
-> $adminAppFeatures = @{
->  ApiMode = "districtspecific"
-> }
->
-> $parameters = @{
->  DbConnectionInfo = $dbConnectionInfo
->     OdsApiUrl = "https://localhost:54746"
->     AdminAppFeatures = $adminAppFeatures
-> }
->
-> ```
->
-> ![](https://edfi.atlassian.net/wiki/images/icons/grey_arrow_down.png)
->
-> SQL Server Year Specific
->
-> **install.ps1(SQL Server)**
->
-> ```
-> $dbConnectionInfo = @{
->  Server = "(local)"
->  Engine = "SqlServer"
->  UseIntegratedSecurity = $true
-> }
->
-> $adminAppFeatures = @{
->  ApiMode = "yearspecific"
-> }
->
-> $p = @{
->  DbConnectionInfo = $dbConnectionInfo
->  OdsApiUrl = "https://localhost:54746"
->     AdminAppFeatures = $adminAppFeatures
-> }
->
-> ```
+ SQL Server Shared Instance
+
+ **install.ps1(SQL Server)**
+
+ ```powershell
+ $dbConnectionInfo = @{
+  Server = "(local)"
+  Engine = "SqlServer"
+  UseIntegratedSecurity = $true
+ }
+
+ $p = @{
+  DbConnectionInfo = $dbConnectionInfo
+  OdsApiUrl = "https://localhost:54746"
+ }
+ ```
+
+ PostgreSQL District Specific
+
+ **install.ps1(PostgreSQL)**
+
+ ```powershell
+ $dbConnectionInfo = @{
+  Server = "localhost"
+  Engine = "PostgreSQL"
+  Username = "exampleAdmin"
+  Password = "examplePassword"
+ }
+
+ $adminAppFeatures = @{
+  ApiMode = "districtspecific"
+ }
+
+ $parameters = @{
+  DbConnectionInfo = $dbConnectionInfo
+     OdsApiUrl = "https://localhost:54746"
+     AdminAppFeatures = $adminAppFeatures
+ }
+
+ ```
+
+ SQL Server Year Specific
+
+ **install.ps1(SQL Server)**
+
+ ```powershell
+ $dbConnectionInfo = @{
+  Server = "(local)"
+  Engine = "SqlServer"
+  UseIntegratedSecurity = $true
+ }
+
+ $adminAppFeatures = @{
+  ApiMode = "yearspecific"
+ }
+
+ $p = @{
+  DbConnectionInfo = $dbConnectionInfo
+  OdsApiUrl = "https://localhost:54746"
+     AdminAppFeatures = $adminAppFeatures
+ }
+ ```
 
 ### **Step 3. Open a PowerShell Prompt in Administrator Mode**
 
 Method 1: Open \[Windows Key\]-R which will open a Run dialog for tasks needing administrative privileges. Type "PowerShell" to open a PowerShell prompt in Administrator mode.
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/older-versions-of-admin-app/image2020-4-20_12-37-43.png)
+![Open power shell from start menu](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/older-versions-of-admin-app/image2020-4-20_12-37-43.png)
 
 Method 2: Click on the Windows icon in the lower-left corner. Type "PowerShell" and right-click the "Windows PowerShell" option when provided. Select "Run as Administrator" to open a PowerShell prompt in Administrator mode.
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/older-versions-of-admin-app/image2020-4-20_12-37-57.png)
+![Run as administrator](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/older-versions-of-admin-app/image2020-4-20_12-37-57.png)
 
 Change the directory to the unzipped directory for the Admin App Installer.
 
@@ -180,7 +172,7 @@ Run "install.ps1" script.
 
 The PowerShell output will look something like the following:
 
-![](https://techdocs.ed-fi.org/download/attachments/83801576/Successful-Installation.JPG?version=1&modificationDate=1611248544420&api=v2)
+![Successful Installation](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/installation/Successful-Installation.JPG)
 
 ### **Step 5. Create SQL Server Login (if "useIntegratedSecurity" set to "true")**
 
@@ -194,9 +186,9 @@ Now that the installation has finished, follow these steps to create a new SQL S
 * Everything else can be left at the default setting.
 * Once you're done, click **OK**.
 
-![](https://techdocs.ed-fi.org/download/attachments/83801576/SqlLogin.JPG?version=1&modificationDate=1611248544403&api=v2)
+![SQL Login](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/installation/SqlLogin.JPG)
 
-![](https://techdocs.ed-fi.org/download/attachments/83801576/SQLLogin-role.JPG?version=1&modificationDate=1611248544387&api=v2)
+![SQL Login Role](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/installation/SQLLogin-role.JPG)
 
 ### **Step 6. Check Folder Permissions**
 
@@ -210,15 +202,15 @@ For checking permissions:
 * **Right-click** the folder, choose **Properties**, view the **Security** tab.
 * Verify the "Group or user names" section has AdminApp with Full control.
 
-![](https://techdocs.ed-fi.org/download/attachments/83801576/Upload-folder-permission.JPG?version=1&modificationDate=1611248544353&api=v2)
+![Upload Folder Permissions](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/installation/Upload-folder-permission.JPG)
 
 If the AdminApp not available on the list, add with Full control.
 
-![](https://techdocs.ed-fi.org/download/attachments/83801576/AddFolderPermission.JPG?version=1&modificationDate=1611248544370&api=v2)
+![Add Folder Permissions](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/installation/AddFolderPermission.JPG)
 
 ### **Step 7. Create Initial Administrative User**
 
-Upon first launch of the Admin App, you will have to create the initial administrative user for the application. This consists of creating a username and password for the initial user. Additional users can be added at a later time. Please see [Securing the Admin App (v2.x)](https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25243028) for more information.
+Upon first launch of the Admin App, you will have to create the initial administrative user for the application. This consists of creating a username and password for the initial user. Additional users can be added at a later time. Please see [Securing the Admin App (v2.x)](../../securing-the-admin-app.md) for more information.
 
 ### **Step 8. Enable Product Improvement Features**
 
@@ -244,23 +236,26 @@ The installation will default to `https://<machinename>/AdminApp`.
 
 To verify and launch the Admin App, open "Internet Information Services (IIS) Manager". Open the server name, open the Sites folder and open the Ed-Fi branch. Observe three web applications have been installed for the Ed-Fi Tech Suite. Clicking on "AdminApp", use Manage Application to view the configured URL. Click on "Browse `<servername>`" to launch Admin App.
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/older-versions-of-admin-app/image2020-4-20_13-56-8.png)
+![SQL Server Getting Started](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/older-versions-of-admin-app/image2020-4-20_13-56-8.png)
 
 ### Step 11. Using the Admin App
 
 The Admin App is now configured for use with your Ed-Fi ODS / API instance. Please visit the following articles to help with next actions in using Admin App:
 
-* [Securing the Admin App (v2.x)](https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25243028)
-* [Multi-Instance Connections](../../../getting-started/multi-instance-connections)
-* [Next Steps](../../../getting-started/next-steps)
-* [Known Issues](../../../getting-started/known-issues)
+* [Securing the Admin App (v2.x)](../../securing-the-admin-app.md)
+* [Multi-Instance Connections](../../multi-instance-connections.md)
+* [Next Steps](../../next-steps.md)
+* [Known Issues](../../known-issues.md)
 
 Admin App also has a [https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25231476](https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25231476) for an in-depth look at each of the features contained within.
 
-> [!NOTE]
-> The following is a ZIP package containing PowerShell scripts for the installation of the **Admin App for Suite 3 v2.3 (for automated installations):**
-> [EdFi.Suite3.Installer.AdminApp.nupkg](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.Suite3.Installer.AdminApp/overview/2.3.2)
-> Use the Download button in the upper-right corner. Rename from `.nupkg`  to `.zip`  after downloading.
->
-> **Admin App v2.3 Binaries are included with ODS / API 5.3 (for manual installations)**:
-> [Binary Releases](https://edfi.atlassian.net/wiki/display/ODSAPIS3V53/Binary+Releases)
+:::note
+The following is a ZIP package containing PowerShell scripts for the installation of the **Admin App for Suite 3 v2.3 (for automated installations):**
+
+[EdFi.Suite3.Installer.AdminApp.nupkg](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.Suite3.Installer.AdminApp/overview/2.3.2)
+
+Use the Download button in the upper-right corner. Rename from `.nupkg`  to `.zip`  after downloading.
+
+**Admin App v2.3 Binaries are included with ODS / API 5.3 (for manual installations)**:
+[Binary Releases](https://edfi.atlassian.net/wiki/display/ODSAPIS3V53/Binary+Releases)
+:::

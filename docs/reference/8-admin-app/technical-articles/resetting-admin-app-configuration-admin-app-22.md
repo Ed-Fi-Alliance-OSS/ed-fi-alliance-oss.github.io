@@ -1,6 +1,6 @@
 # Resetting Admin App Configuration (Admin App 2.2+)
 
-# Environment: OnPrem
+## Environment: OnPrem
 
 **Admin App Version: >= 2.2.0**
 
@@ -24,7 +24,7 @@ $EncryptionKey = [System.Convert]::ToBase64String($aes.Key)
 
 If user is in any of the above-mentioned situation, please follow the following steps to recover the application and force the first-time setup on Admin App.
 
-## Steps for Recovering the Application on Shared Instance mode
+### Steps for Recovering the Application on Shared Instance mode
 
 1. Please make sure to stop ODS API and Admin App websites under IIS.
 2. Connect to SQL Server on SSMS.
@@ -70,21 +70,21 @@ If user is in any of the above-mentioned situation, please follow the following 
 
 * * *
 
-# Environment: Azure
+## Environment: Azure
 
 **Admin App Version: < 2.2.0**
 
-## Issues
+### Issues
 
 The application deployed and First-Time setup was successful, however you are unable to proceed further with the Admin App settings page or you get an error message saying that the key and secret can not be used in that state.
 
-## Cause
+### Cause
 
 Admin App secret configuration and/or Azure SQL configuration values became corrupted for whatever reason.
 
-## Steps for Recovering the Application
+### Steps for Recovering the Application
 
-### **1) Clear Configuration Parameters & Force Admin App's First-Time Setup**
+#### **1) Clear Configuration Parameters & Force Admin App's First-Time Setup**
 
 On this step, we need to clear all the data records created during first time setup.
 
@@ -100,9 +100,7 @@ On this step, we need to clear all the data records created during first time se
 
       4. Execute the following sql commands for clearing all the data records created during first time setup process.
 
-**SQL**
-
-```
+```sql
 BEGIN TRAN   
 DECLARE @ApplicationId INT;
 
@@ -123,9 +121,9 @@ DELETE FROM dbo.ClientAccessTokens WHERE EXISTS (
 COMMIT  TRAN
 ```
 
-     5. Once the SQL commands executed successfully. Please start the ODS API and Admin App websites under IIS or within the Azure portal App Service.
+     1. Once the SQL commands executed successfully. Please start the ODS API and Admin App websites under IIS or within the Azure portal App Service.
 
-### **2) Update the Admin App Configuration Parameters**
+#### **2) Update the Admin App Configuration Parameters**
 
 There is a table in the EdFi\_Admin database called adminapp.AzureSqlConfigurations. This table holds the encrypted configuration parameters used by the admin app.
 
@@ -135,9 +133,7 @@ Here is a template of how it looks: `{"AdminCredentials":{"Password":"\[dbpasswo
 
 The following JSON code block explains the parameters required and their intention:
 
-**SQL**
-
-```
+```json
 {
  //These are the credentials used to access the EdFi_Admin database.
  "AdminCredentials":{
@@ -158,19 +154,17 @@ The following JSON code block explains the parameters required and their intenti
 }
 ```
 
-Modify the SQL statement below by providing the User Name and Password for the required fields marked with square brakets "\[...\]"
+Modify the SQL statement below by providing the User Name and Password for the required fields marked with square brackets "\[...\]"
 
 Following the steps above open SSMS or Azure Query Editor and execute the following statement against the EdFi\_Admin database.
 
-**SQL**
-
-```
+```sql
 BEGIN TRAN   
 UPDATE adminapp.AzureSqlConfigurations set field='{"AdminCredentials":{"Password":"PW Specified in Deployment Script","UserName":"SERVER Master UN"},"HostName":"","ProductionApiCredentials":{"Password":"Enter PW","UserName":"EdFiOdsProductionApi"},"AdminAppCredentials":{"Password":"","UserName":"EdFiOdsAdminApp"}}' WHERE Id=1;
 COMMIT  TRAN
 ```
 
-### **3) Update Admin App web site on IIS or Azure**
+#### **3) Update Admin App web site on IIS or Azure**
 
 _**Note:**_ That older versions of Admin app need the presence of “SetupRequired” file. This indicates to the first time setup process that it has not run. If the file not present, this means that the first-time setup was completed. Recreating the file will enforce the First time setup process to run again.
 
@@ -182,7 +176,7 @@ Deployed pages and resources can be accessed on Azure portal.
 
 [https://www.gslab.com/blogs/kudu-azure-web-app](https://www.gslab.com/blogs/kudu-azure-web-app)
 
-#### References
+### References
 
 If you have any questions on how to connect to the EdFi-Admin database please refer to this articles below:
 

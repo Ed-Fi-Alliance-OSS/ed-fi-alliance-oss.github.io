@@ -1,10 +1,10 @@
 # PowerShell Installation (ODS / API v3.3)
 
-# Before You Install
+## Before You Install
 
 This section provides general information you should review before installing the Ed-Fi ODS / API Admin App.
 
-## Prerequisites
+### Prerequisites
 
 The following are required to install the Admin App:
 
@@ -13,38 +13,38 @@ The following are required to install the Admin App:
 * Admin App authentication will work via Single Sign-On using either Active Directory or Active Directory for Azure depending on deployment.
 * Download and install the Microsoft IIS URL Rewrite Tool: [https://www.iis.net/downloads/microsoft/url-rewrite](https://www.iis.net/downloads/microsoft/url-rewrite) if it is not already available (this may require computer restart).
 
-## Required Information
+### Required Information
 
 You will need the following information to complete this installation:
 
 * The location of your Ed-Fi ODS / API.
 * Administrator access and credentials for either on-premises or Azure environment with target Ed-Fi ODS / API.
 
-# Installation Instructions
+## Installation Instructions
 
 This section provides step-by-step instructions for installation. The specific steps are different depending on the deployment model and version of your Ed-Fi ODS / API.
 
-## Compatibility & Supported ODS / API Versions
+### Compatibility & Supported ODS / API Versions
 
 Currently, the ODS / API Admin App can be installed for use with the Ed-Fi ODS / API v3.3. See the [Ed-Fi Technology Version Index](https://edfi.atlassian.net/wiki/spaces/ETKB/pages/20875717/Ed-Fi+Technology+Version+Index) for more details.
 
-## On-Premises Deployment for ODS / API for v3.3
+### On-Premises Deployment for ODS / API for v3.3
 
 Each step is outlined in detail below.
 
-### **Step 1. Unzip Admin App Source Files**
+#### **Step 1. Unzip Admin App Source Files**
 
 Unzip the contents of the Source ZIP into any folder of your choosing. Our directory is on the following path: "C:\\Ed-Fi\\Admin App v1.7".
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/technical-articles/image2020-1-30_10-59-30.png)
+![Unzipped windows folder](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/technical-articles/image2020-1-30_10-59-30.png)
 
-### **Step 2.** **Unzip Admin App Installation Files**
+#### **Step 2.** **Unzip Admin App Installation Files**
 
 Unzip the contents of the Installation ZIP into any folder of your choosing. Our directory is on the following path: "C:\\Ed-Fi\\Admin App Installation".
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/technical-articles/image2020-1-30_10-58-34.png)
+![Unzipped Windows folder](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/technical-articles/image2020-1-30_10-58-34.png)
 
-### Step 3. Configure Installation
+#### Step 3. Configure Installation
 
 Open the "install-config.json" file. We will need to edit this file with our configuration details.
 
@@ -63,9 +63,9 @@ Open the "install-config.json" file. We will need to edit this file with our con
 
 This is an example of what a complete "install-config.json" file could look like:
 
-**install-config.json**
+install-config.json
 
-```
+```json
 {
     "installationDirectory": "C:\\Ed-Fi\\Admin App v1.7",
     "odsApi": {
@@ -99,7 +99,7 @@ This is an example of what a complete "install-config.json" file could look like
 }
 ```
 
-### **Step 4.** **Run the Installation via PowerShell**
+#### **Step 4.** **Run the Installation via PowerShell**
 
 Ensure that you have permission to execute PowerShell scripts. For more information, see [http://go.microsoft.com/fwlink/?LinkID=135170](http://go.microsoft.com/fwlink/?LinkID=135170).
 
@@ -107,17 +107,20 @@ Launch PowerShell as an administrator, cd to the directory containing the instal
 
 The PowerShell output should look like the following:
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/technical-articles/image2020-1-30_11-4-51.png)
+![Power Shell Launch as Admin](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/technical-articles/image2020-1-30_11-4-51.png)
 
-### **Next Steps. Continue at Step 5 in the Admin App Installation (3.x)**
+#### **Next Steps. Continue at Step 5 in the Admin App Installation (3.x)**
 
 Continue Step 5 and beyond in the general Admin App installation instructions: [Admin App v1.7 for ODS / API v3.3](../getting-started/installation/older-versions-of-admin-app/admin-app-v17-for-ods-api-v33).
 
-## Contents
+### Contents
 
-> [!NOTE]
-> The following are ZIP files needed for the successful on-premises installation of Admin App v1.7 for Ed-Fi ODS / API v3.3
-> Source ZIP:
-> [Ed-Fi\_ODS\_AdminApp\_1.7\_3.3.zip](https://edfi.atlassian.net/wiki/download/attachments/25235508/EdFi.Ods.AdminApp.3.3.0.389.zip?version=1&modificationDate=1580420953863&cacheVersion=1&api=v2)
-> Installation ZIP:
-> [Ed-Fi\_ODS\_AdminApp\_Installation\_1.7\_3.3.zip](https://edfi.atlassian.net/wiki/download/attachments/25235508/EdFi.Ods.AdminApp.Installation.3.3.0.389.zip?version=1&modificationDate=1580420906613&cacheVersion=1&api=v2)
+:::note
+The following are ZIP files needed for the successful on-premises installation of Admin App v1.7 for Ed-Fi ODS / API v3.3
+
+Source ZIP:
+[Ed-Fi\_ODS\_AdminApp\_1.7\_3.3.zip](https://edfi.atlassian.net/wiki/download/attachments/25235508/EdFi.Ods.AdminApp.3.3.0.389.zip?version=1&modificationDate=1580420953863&cacheVersion=1&api=v2)
+
+Installation ZIP:
+[Ed-Fi\_ODS\_AdminApp\_Installation\_1.7\_3.3.zip](https://edfi.atlassian.net/wiki/download/attachments/25235508/EdFi.Ods.AdminApp.Installation.3.3.0.389.zip?version=1&modificationDate=1580420906613&cacheVersion=1&api=v2)
+:::
