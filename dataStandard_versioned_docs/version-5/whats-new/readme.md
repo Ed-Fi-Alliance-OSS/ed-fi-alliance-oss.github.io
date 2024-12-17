@@ -6,7 +6,8 @@ sidebar_position: 1
 
 ## Overview
 
-Data Standard v5, introduces changes to the core data model for domains commonly
+Data Standard v5, introduces changes to the Ed-Fi Universal Data Model (UDM, aka
+core data model) for domains commonly
 used by student information systems and assessment systems. It is the successor
 to the v4 Data Standard (most recent release being [Data Standard
 v4.0](https://edfi.atlassian.net/wiki/display/EFDS4x/)). This documentation
@@ -15,6 +16,7 @@ additional detail on specific data model changes.
 
 * [What's New - v5.0](./whats-new-v50.md)
 * [What's New - v5.1](./whats-new-v51.md)
+* [What's New - v5.2](./whats-new-v52.md)
 
 For more on data standard versioning and where to find source materials, please
 consult: [Ed-Fi Data Standard Versioning and
