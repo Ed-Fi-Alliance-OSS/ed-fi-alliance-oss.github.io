@@ -7,7 +7,7 @@ agencies understand what is included in the standard engagement and what may inc
 additional costs.
 
 ## Format and Requirements
-The information MUSt be submitted by the data provider seeking certification using the 
+The information MUST be submitted by the data provider seeking certification using the 
 [Required Form](https://edfi.atlassian.net/wiki/download/attachments/335740941/Ed-Fi%20Certification%20-%20Pricing%20Statement%20V1.docx?api=v2). Information from this form will be published as part of the product's 
 certification record. 
 

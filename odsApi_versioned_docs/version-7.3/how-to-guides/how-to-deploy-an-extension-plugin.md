@@ -108,12 +108,12 @@ data models are listed in your API landing page ("Discovery API" endpoint).
     "version": "7.3",
     "informationalVersion": "7.3",
     "suite": "3",
-    "build": "7.3.1201.0",
+    "build": "7.3.1277.0",
     "dataModels": [
         {
             "name": "Ed-Fi",
-            "version": "5.1.0",
-            "informationalVersion": "The Ed-Fi Data Model 5.1"
+            "version": "5.2.0",
+            "informationalVersion": "The Ed-Fi Data Model 5.2"
         },
         // highlight-start
         {

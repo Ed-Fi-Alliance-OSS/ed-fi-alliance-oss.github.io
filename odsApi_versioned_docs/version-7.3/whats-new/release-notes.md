@@ -25,6 +25,8 @@ the Git commit history to find the changes for that specific update.
 
 * ODS-6513 - Improve data out performance
 
+* ODS-6585 - Serialized Data Storage for Optimized API Request Processing
+
 ### General Improvements & Enhancements
 
 * ODS-5665 - Add ability to query organizations by an identification code
@@ -76,6 +78,8 @@ the Git commit history to find the changes for that specific update.
 
 * ODS-6552 - Change database PowerShell Installer to pack dbDeploy .nupkg
   instead of executable
+
+* ODS-6465 - Allow non-default POSTGRES_USER in pgsql images
 
 ### Bug Fixes
 
