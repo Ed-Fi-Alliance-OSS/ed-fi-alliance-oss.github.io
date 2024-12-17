@@ -41,7 +41,7 @@ const config = {
           id: 'getting-started',
           path: 'docs/getting-started',
           editUrl: ({ docPath }) =>
-            `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/${docPath}/`,
+            `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/docs/getting-started/${docPath}/`,
           routeBasePath: 'getting-started',
           sidebarPath: './sidebars.js',
         },
@@ -67,7 +67,7 @@ const config = {
         id: 'partners',
         path: 'docs/partners',
         editUrl: ({ docPath }) =>
-          `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/${docPath}/`,
+          `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/docs/partners/${docPath}/`,
         routeBasePath: 'partners',
         sidebarPath: './sidebars.js',
       },
@@ -78,7 +78,7 @@ const config = {
         id: 'reference',
         path: 'docs/reference',
         editUrl: ({ docPath }) =>
-          `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/${docPath}/`,
+          `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/docs/reference/${docPath}/`,
         routeBasePath: 'reference',
         sidebarPath: './sidebars.js',
       },
@@ -89,7 +89,7 @@ const config = {
         id: 'community',
         path: 'docs/community',
         editUrl: ({ docPath }) =>
-          `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/${docPath}/`,
+          `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/docs/community/${docPath}/`,
         routeBasePath: 'community',
         sidebarPath: './sidebars.js',
       },
@@ -99,8 +99,8 @@ const config = {
       {
         id: 'odsApi',
         // path: 'docs/reference/2-ods-api',
-        editUrl: ({ docPath }) =>
-          `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/${docPath}/`,
+        editUrl: ({ docPath,versionDocsDirPath }) =>
+          `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/${versionDocsDirPath}/${docPath}/`,
         routeBasePath: 'reference/ods-api',
         sidebarPath: './sidebars.js',
         includeCurrentVersion: false,
@@ -133,8 +133,8 @@ const config = {
       '@docusaurus/plugin-content-docs',
       {
         id: 'dataStandard',
-        editUrl: ({ docPath }) =>
-          `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/${docPath}/`,
+        editUrl: ({ docPath,versionDocsDirPath }) =>
+          `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/${versionDocsDirPath}/${docPath}`,
         routeBasePath: 'reference/data-exchange/data-standard',
         sidebarPath: './sidebars.js',
         includeCurrentVersion: false,
