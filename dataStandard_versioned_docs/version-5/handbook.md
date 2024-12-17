@@ -9,9 +9,9 @@ entities that make up the Ed-Fi Data Model.
 
 :::tip
 
-<a href="https://edfidocs.blob.core.windows.net/$web/handbook/v5.1/index.html" target="_blank">Open the handbook in a separate tab</a>
+<a href="https://edfidocs.blob.core.windows.net/$web/handbook/v5.2/index.html" target="_blank">Open the handbook in a separate tab</a>
 
 :::
 
-<iframe src="https://edfidocs.blob.core.windows.net/$web/handbook/v5.1/index.html"
-  title="Data Standard v5.1 Handbook" />
+<iframe src="https://edfidocs.blob.core.windows.net/$web/handbook/v5.2/index.html"
+  title="Data Standard v5.2 Handbook" />
