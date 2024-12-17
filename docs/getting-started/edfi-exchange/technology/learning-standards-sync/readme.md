@@ -9,11 +9,11 @@ The Ed-Fi Learning Standards Sync Utility is a tool for system administrators fo
 ## Download
 
 * [Code](https://github.com/Ed-Fi-Exchange-OSS/Ed-Fi-LearningStandards-Client)
-* [Documentation](https://edfi.atlassian.net/wiki/spaces/EXCHANGE/pages/22487416/Learning+Standards+Sync+Utility)
+* [Documentation](./getting-started.md)
 
 ## Licensing
 
-The Learning Standards Sync Utility is licensed through the [Ed-Fi License](https://www.ed-fi.org/getting-started/license-ed-fi-technology/).  Source code is available under the [Apache 2.0 license](https://github.com/Ed-Fi-Exchange-OSS/Ed-Fi-LearningStandards-Client/blob/main/LICENSE).
+Source code is available under the [Apache 2.0 license](https://github.com/Ed-Fi-Exchange-OSS/Ed-Fi-LearningStandards-Client/blob/main/LICENSE).
 
 Learning Standards data is provided by Instructure, Inc. via the Academic Benchmarks (AB) Connect service. Vendors and education agencies can contact Instructure, Inc. for a free license to AB Connect [here](https://www.instructure.com/landing/elevate/ed-fi).
 

@@ -3,7 +3,7 @@
 # Ed-Fi ODS/API Cloud Deployment for AWS (Suite 3)
 
 :::info
-The Ed-Fi Alliance no longer supports nor recommends using the "Ed-Fi ODS/API Cloud Deployment for AWS (Suite 3)" offering and is provided here for historical reference.  At the time this offering was developed, direct platform commands were necessary to support deployments out to cloud providers, which this offering relies heavily on.  Based on community feedback, we've migrated our deployments to utilize Docker as a primary deployment strategy, as all major cloud providers, along with on-premise methods to do so.  We recommend referring to [Docker Deployment 2.x](https://edfi.atlassian.net/wiki/spaces/EDFITOOLS/pages/24119348/Docker+Deployment+2.x) on TechDocs and the other Docker offerings here in the Exchange as ways to stand up Ed-Fi on the major cloud providers.
+The Ed-Fi Alliance no longer supports nor recommends using the "Ed-Fi ODS/API Cloud Deployment for AWS (Suite 3)" offering and is provided here for historical reference.  At the time this offering was developed, direct platform commands were necessary to support deployments out to cloud providers, which this offering relies heavily on.  Based on community feedback, we've migrated our deployments to utilize Docker as a primary deployment strategy, as all major cloud providers, along with on-premise methods to do so.  We recommend referring to [Docker Deployment 2.x](../../../../reference/7-docker/v2/readme.mdx) on TechDocs and the other Docker offerings here in the Exchange as ways to stand up Ed-Fi on the major cloud providers.
 :::
 
 ## Description
@@ -12,7 +12,8 @@ The Ed-Fi ODS / API deployment for Amazon Web Services consists of a set of Clou
 
 ## Download
 
-* [Code & Documentation](https://edfi.atlassian.net/wiki/spaces/EXCHANGE/pages/22491023/Ed-Fi+ODS+API+Cloud+Deployment+for+AWS+-+Deployment+Guide)
+* [Performance Test Code](./deployment-guide/readme.md)
+* [Documentation](./deployment-guide/readme.md)
 
 ## Details
 
