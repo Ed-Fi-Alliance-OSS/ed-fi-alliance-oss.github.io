@@ -6,7 +6,7 @@
 
 This  deployment guide provides information and instructions for deploying the Ed-Fi ODS / API solution on the AWS Cloud.   The deployment guide is divided into the following areas:
 
-* [Overview of Solution](https://edfi.atlassian.net/wiki/pages/resumedraft.action?draftId=22491023) (this page; read this page for information on the solution itself and the costs of the solution)
+* [Overview of Solution](../readme.md) (this page; read this page for information on the solution itself and the costs of the solution)
 * [AWS ODS/API Solution - Prerequisites](./prerequisites.md) (these must be performed before launching the solution)
 * [AWS ODS/API Solution - Launch a Non-Production Environment](./launch-non-prod.md) (go here if you just want the steps to get the solution up and running)
 * [AWS ODS/API Solution - Launch a Production Environment](./launch-prod.md)
