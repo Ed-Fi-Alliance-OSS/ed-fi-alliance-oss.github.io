@@ -5,14 +5,6 @@
 
 The questions and answers below have been gathered through feedback from adopters.   It contains information that is commonly asked of users of the AWS ODS/API Solution.
 
-## Where can I get support for the AWS ODS/API solution?
-
-Support is available for users who implement the solution and encounter issues, simply would like some help in the process, or have inquiries about managed services for their environment..   To receive support, please create a ticket in the [Ed-Fi Tracker](https://tracker.ed-fi.org/projects/EDFI), with a component of "AWS Deployment Template", and a support engineer will contact you.
-
-## Where do I report any discovered bugs with the deployment process or applications?
-
- Feedback on this deployment process and the application are greatly appreciated.  Please submit issues, questions, bugs in to the [Ed-FI Tracker](https://tracker.ed-fi.org/projects/EDFI), with a component of "AWS Deployment Template".
-
 ## I encountered a CREATE_FAILED error when I launched the solution
 
  If AWS CloudFormation fails to create the stack, we recommend that you relaunch the template with Rollback on failure set to No. (This setting is under Advanced in the AWS CloudFormation console, Options page.) With this setting, the stack’s state will be retained and the instance will be left running, so you can troubleshoot the issue.   Common reasons for failure could include exceeding your AWS service limits or providing an incorrect ARN value for the SSL certificate in the ACM service.
@@ -24,6 +16,10 @@ For additional information, see [Troubleshooting AWS CloudFormation](https://doc
 In the event a failure has occurred, the approximate amount of time a stack will need to Rollback is 1 hour.
 
 ## When I attempt to access the Admin Application the first time when using a PostgreSQL database, I see an error similar to ones shown below
+
+  [Postgres Initial Error](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/technology/ed-fi-odsapi-cloud-deployment-for-aws-suite-3/ed-fi-odsapi-cloud-deployment-for-aws-deployment-guide/admin-app-postgres-initial-error.png)
+
+  [Postgres Admin App next error](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/technology/ed-fi-odsapi-cloud-deployment-for-aws-suite-3/ed-fi-odsapi-cloud-deployment-for-aws-deployment-guide/admin-app-error-2-pg.png)
 
   This is a known bug with the new PostgreSQL feature that has been added in v3.4.1.   Simply refresh your browser page and the login page for the Admin Application will return.
 
@@ -58,10 +54,6 @@ In the event a failure has occurred, the approximate amount of time a stack will
 ## Can I update an existing solution with CloudFormation?
 
  While this is technically possible, it is recommended to not update existing stacks and instead to launch a new stack.   The reason for this is that the Admin Application is not yet fully ready to be removed and relaunched seamlessly in an environment. Consult an AWS expert on the possibilities that are there in an existing stack.
-
-## Can I launch a new stack and use a snapshot of a previous RDS from another stack?
-
- This is possible, but it is recommended that you contact support for the process, or be familiar with replacing an RDS inside of an existing stack and its implication.  Please submit a support request in the [Ed-FI Tracker](https://tracker.ed-fi.org/projects/EDFI), with a component of "AWS Deployment Template".
 
 ## Can I stop my EC2 or RDS resources for a Non-Production type environment?
 

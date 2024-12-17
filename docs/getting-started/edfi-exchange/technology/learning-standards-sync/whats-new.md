@@ -12,7 +12,6 @@ The following improvements. and fixes were made in the Learning Standards Sync U
 
 * The sync CLI command now supports retrieving only the Academic Benchmark standards that have changed during synchronization. This new behavior is enabled by default after an initial sync.
 * Server-side proxy updates were made to resolve learning standard sequencing issues between parent and child standards, which were causing download issues.
-  * The fix is documented in [EDFI-235](https://tracker.ed-fi.org/browse/EDFI-235?src=confmacro)
 * A `changes` CLI command has been added that provides information regarding the availability of Academic Benchmark standards changes.
   * The output from the `changes` command is optionally available in a JSON format for scripting integration.
 

@@ -12,8 +12,6 @@ Please note that the screenshots for SSL warnings are from a Google Chrome web b
 
 ODS/API Software Version used in steps below: 3.4.0
 
-If you encounter any errors in this process, please see the [AWS ODS/API Solution - Frequently Asked Questions](./faq.md), or obtain support by submitting a ticket on the [Ed-Fi Tracker](https://tracker.ed-fi.org/projects/EDFI) with a component of "AWS Deployment Template", and a support engineer will contact you.
-
 ## Validation and Testing Process
 
 **Click on any image in this document to zoom in and see further details.**
