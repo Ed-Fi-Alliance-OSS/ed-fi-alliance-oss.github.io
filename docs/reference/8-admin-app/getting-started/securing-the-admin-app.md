@@ -2,19 +2,28 @@
 
 ## Overview
 
-Admin App v3.0 supports two methods for authentication: web-forms authentication or single-sign on via Open ID Connect (OIDC).  Both utilize [ASP.NET Core Identity](https://learn.microsoft.com/en-us/aspnet/core/security/?view=aspnetcore-6.0) as the underlying framework.  This page will provide details to configure Admin App based on the selected model.  Please use this as reference for Admin App v2.x, however the  single-sign on via Open ID Connect method is not supported in those product versions.
-
-* [Overview](#overview)
-* [Securing Admin App](#securing-admin-app)
-* [Single Sign-On with Open ID Connect (Admin App v3.x+)](#single-sign-on-with-open-id-connect-admin-app-v3x)
+Admin App v3.0 supports two methods for authentication: web-forms authentication
+or single-sign on via Open ID Connect (OIDC).  Both utilize [ASP.NET Core
+Identity](https://learn.microsoft.com/en-us/aspnet/core/security/?view=aspnetcore-6.0)
+as the underlying framework.  This page will provide details to configure Admin
+App based on the selected model.  Please use this as reference for Admin App
+v2.x, however the  single-sign on via Open ID Connect method is not supported in
+those product versions.
 
 ## Admin App Roles
 
-Admin App uses two roles within the application for ODS/API management.  The _Super-Administrator_ role is used to register multiple users with separate roles and privileges along with all ODS / API instances and its functions. The _Administrator_ role is allowed to access only specific ODS / API instances and its functions. This user authentication model pairs well with multi-instance support within Admin App.
+Admin App uses two roles within the application for ODS/API management.  The
+_Super-Administrator_ role is used to register multiple users with separate
+roles and privileges along with all ODS / API instances and its functions. The
+_Administrator_ role is allowed to access only specific ODS / API instances and
+its functions. This user authentication model pairs well with multi-instance
+support within Admin App.
 
-### **1. Super-Administrator (default role for the first user)**
+### 1. Super-Administrator (default role for the first user)
 
-The Super-Administrator role is intended for an IT Administrator managing a collection of individual ODS instances, such as found within district collaboratives.
+The Super-Administrator role is intended for an IT Administrator managing a
+collection of individual ODS instances, such as found within district
+collaboratives.
 
 #### Super-Administrator Permissions
 
@@ -26,9 +35,11 @@ The Super-Administrator role is intended for an IT Administrator managing a coll
 * Delete a user
 * Plus, all permissions of the Administrator role
 
-### **2\. Administrator**
+### 2. Administrator
 
-The Administrator role is one that can access one or more ODS instances assigned by the Super-Administrator. This means that users in the Administrator role can only administer ODS / API instances specifically assigned.
+The Administrator role is one that can access one or more ODS instances assigned
+by the Super-Administrator. This means that users in the Administrator role can
+only administer ODS / API instances specifically assigned.
 
 #### Administrator Permissions
 
@@ -38,9 +49,11 @@ The Administrator role is one that can access one or more ODS instances assigned
 * Bulk data uploads
 * Learning standards synchronization
 
-# Securing Admin App
+## Securing Admin App
 
-1. Existing form authentication (Please refer [here](https://edfi.atlassian.net/wiki/pages/viewpage.action?pageId=25243028) for more details)
+1. Existing form authentication (Please refer
+   [here](https://edfi.atlassian.net/wiki/pages/viewpage.action?pageId=25243028)
+   for more details)
 
 2. Single sign on (SSO)
 

@@ -2,11 +2,13 @@
 
 ## Overview
 
-This article describes configuration settings in appSettings.json for Admin App v2.x.
+This article describes configuration settings in appSettings.json for Admin App
+v2.x.
 
 ## Details
 
-Following are some important configuration settings for Admin App along with their corresponding details:
+Following are some important configuration settings for Admin App along with
+their corresponding details:
 
 |     |     |     |
 | --- | --- | --- |

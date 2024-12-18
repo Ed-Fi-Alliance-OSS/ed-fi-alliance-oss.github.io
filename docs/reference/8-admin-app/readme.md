@@ -16,7 +16,7 @@ Below are supported releases of the Ed-Fi Admin App:
 * [Admin App v3.2](getting-started/installation/older-versions-of-admin-app/admin-app-v32)
 * [Admin App for Suite 3 v2.4](getting-started/installation/older-versions-of-admin-app/admin-app-for-suite-3-v24)
 
-# Documentation
+## Documentation
 
 Documentation for the Ed-Fi ODS / API Admin App is available online:
 

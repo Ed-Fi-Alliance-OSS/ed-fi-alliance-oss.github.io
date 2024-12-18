@@ -35,6 +35,10 @@ const LinkList = [
     to: '/reference/data-import',
   },
   {
+    title: 'Admin App',
+    to: '/reference/admin-app',
+  },
+  {
     title: 'Docker Deployments',
     to: '/reference/docker',
   },
