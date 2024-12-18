@@ -19,8 +19,8 @@ data systems.
 
 :::warning
 
-Please note that the current version of Data Standard v5 is v5.1 (full version
-number 5.1.0). See the [Ed-Fi Technology Roadmap](/reference/roadmap)
+Please note that the current version of Data Standard v5 is v5.2 (full version
+number v5.2.0). See the [Ed-Fi Technology Roadmap](/reference/roadmap)
 for previous and future Data Standard release versions. Also see the [What's New](./whats-new/readme.md)
 page for information on the changes in this release.
 
@@ -32,8 +32,9 @@ The data model is referred to as the Ed-Fi Unifying Data Model, or UDM. The UDM
 is documented via 2 primary artifacts: the **Ed-Fi Data Handbook** and a set of
 **Unified Modeling Language (UML)** diagrams.
 
+* <a href="https://edfidocs.blob.core.windows.net/$web/handbook/v5.2/index.html" target="_blank">Ed-Fi Data Handbook for DS v5.2</a>
 * <a href="https://edfidocs.blob.core.windows.net/$web/handbook/v5.1/index.html" target="_blank">Ed-Fi Data Handbook for DS v5.1</a>
-  * <a href="https://edfidocs.blob.core.windows.net/$web/handbook/v5.0/index.html" target="_blank">Ed-Fi Data Handbook for DS v5.0</a>
+* <a href="https://edfidocs.blob.core.windows.net/$web/handbook/v5.0/index.html" target="_blank">Ed-Fi Data Handbook for DS v5.0</a>
 * [Ed-Fi UDM UML Diagrams](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Standard/tree/main/Models) (Visio format, on GitHub)
 
 Additional documentation is provided in the [Ed-Fi Unifying Data
@@ -43,7 +44,7 @@ key entities, as well as normative best practice guidance.
 ### Version
 
 The most recent version and name for the Ed-Fi Data Standard is **Ed-Fi Data
-Standard for Suite 3 v5.1.0.**
+Standard for Suite 3 v5.2.0.**
 
 It is the minor release of Data Standard v5 following the previous final release
 v5.0.0 and the stable final version v4.0 before it.
@@ -58,7 +59,7 @@ v5.0.0 and the stable final version v4.0 before it.
 This release contains only changes classified as "non-breaking", so for API
 clients using previous final versions should be fine. However, those who have
 been using version v4.0 or earlier may need be aware of the breaking changes
-introduced earlier by v5.0 (which the v5.1 is build on) and prepare for those
+introduced earlier by v5.0 (which the v5.2 is build on) and prepare for those
 changes. API bindings have been published with the v5.0 final release.
 
 #### Bulk / XML Bindings
