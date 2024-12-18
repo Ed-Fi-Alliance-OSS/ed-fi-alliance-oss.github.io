@@ -24,10 +24,16 @@ for more details.
 
 View information about each domain:
 
+### Version 5.2
+
+* [Ed-Fi Unifying Data Model (UDM) Handbook (Latest version)](https://edfidocs.blob.core.windows.net/$web/handbook/v5.2/index.html)
+* [Ed-Fi UDM Diagram (Latest version)](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v5.2.0/Models)
+    (Visio format, on GitHub)
+
 ### Version 5.1
 
-* [Ed-Fi Unifying Data Model (UDM) Handbook (Latest version)](https://edfidocs.blob.core.windows.net/$web/handbook/v5.1/index.html)
-* [Ed-Fi UDM Diagram (Latest version)](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v5.1.0/Models)
+* [Ed-Fi Unifying Data Model (UDM) Handbook](https://edfidocs.blob.core.windows.net/$web/handbook/v5.1/index.html)
+* [Ed-Fi UDM Diagram](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v5.1.0/Models)
     (Visio format, on GitHub)
 
 ### Version 5.0
