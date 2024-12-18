@@ -129,3 +129,9 @@ displayed this way instead of a chart.
 ![Candidate Summary by Race table](https://edfidocs.blob.core.windows.net/$web/img/getting-started/use-cases/epp/candidate-summary-by-race-small.png)
 
 _[larger version](https://edfidocs.blob.core.windows.net/$web/img/getting-started/use-cases/epp/candidate-summary-by-race.png)_
+
+:::tip
+
+For implementation guidance, see the [Program Diversity and Persistence Starter Kit](/reference/educator-pipeline/program-diversity/) reference documentation.
+
+:::

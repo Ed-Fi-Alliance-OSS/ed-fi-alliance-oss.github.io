@@ -6,7 +6,7 @@ sidebar_position: 3
 
 ## Solution Overview
 
-This guide describes how set up and use the Data Import Error Report as a companion report to your Educator Preparation Starter Kit. The Data Import Error Report is a simple Power Bi report meant to display errors from the Ed-Fi Alliance's Data Import. This allows for a read-only view of the errors that happen after an import w/o requiring non-technical people to log into the Data Import administration console.
+This guide describes how set up and use the Data Import Error Report as a companion report to your starter kit. The Data Import Error Report is a simple Power Bi report meant to display errors from the Ed-Fi Alliance's Data Import. This allows for a read-only view of the errors that happen after an import w/o requiring non-technical people to log into the Data Import administration console.
 
 The error report has several columns, all of which can be configured to show our hide based on your specific needs and preferences, these columns include:
 
@@ -32,8 +32,6 @@ As part of it's normal operation, Data Import sends a lot of data to it's databa
 All of the above can be adjusted to fit your needs by adjusting the queries within the Power Bi report.
 
 ## Install and Test the Data Import Error Log Report
-
-In this step, you'll download and run the Program Diversity and Persistence Dashboards.
 
 ### Prerequisites
 

@@ -1,6 +1,6 @@
-# Educator Preparation Starter Kits
+# Educator Pipeline Starter Kits
 
-The release of the Educator Preparation Data Model (EPDM) v1.0 was accompanied by production of two PowerBI based starter kits to help educator prep programs gain new insight on the progress of their educator candidates.
+These "starter kits" provide sample reporting and analytics for reporting on the training and development of new educators. They also showcase the Educator Preparation Data Model (EPDM) portion of the [Ed-Fi Unified Data Model](../1-data-exchange/udm/readme.md).
 
 ## Program Diversity and Persistence
 

@@ -225,7 +225,7 @@ The next steps involved using the actual software.   The first step is to login 
 :::warning
 **Resart required!**
 
-Prior to continuing, due to the Admin Application inserting required security data into the Admin database during its setup process, the ODS/API needs to be restarted. **This is accomplished by restarting the IIS server on an ODS/API server in the solution**. For details on connecting to the servers in this solution, please see the section titled [Accessing the Servers](./).
+Prior to continuing, due to the Admin Application inserting required security data into the Admin database during its setup process, the ODS/API needs to be restarted. **This is accomplished by restarting the IIS server on an ODS/API server in the solution**. For details on connecting to the servers in this solution, please see the section titled [Accessing the Servers](#accessing-the-servers).
 
 Steps for restarting the ODS / API:
 
@@ -248,9 +248,10 @@ If you have encountered any issue or would like some more information on the sol
 
 ## Next Steps
 
-Once your environment is up and running on AWS, information on using the software can be found in following the links in Step 8 above.
+Once your environment is up and running on AWS, information on using the software can be found in following the links in Step 8 above. For more information, also see:
 
-Further support on using the Ed-FI ODS/API solution can be obtained at the [Ed-Fi Alliance website](@site/docs/reference/ods-api-platform.mdx). In addition, technical support is available. Information can be found in the [AWS ODS/API Solution - Frequently Asked Questions page](./faq.md).
+* [Ed-Fi ODS/API Platform](/reference/ods-api-platform)
+* [AWS ODS/API Solution - Frequently Asked Questions page](./faq.md).
 
 ### Accessing the Servers
 
