@@ -7,6 +7,8 @@ description: Code & docs for deploying Ed-Fi ODS/API 5.3 to Azure
 
 # ODS/API 5.3 Deployment on Azure from K12 Analytics Engineering
 
+![K12 Analytics Engineering](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/technology/Logo%20-%20Copy.png)
+
 ## Description
 
 Documentation of the Azure CLI commands necessary to deploy the Ed-Fi Platform on Azure. This deploys the Ed-Fi ODS via a private PostgreSQL instance, Ed-Fi API and Admin App via App Services. Base configuration is estimated to cost ~$1,250/year and is appropriate for small to medium education organizations.
