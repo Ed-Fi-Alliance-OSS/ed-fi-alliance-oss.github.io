@@ -49,7 +49,7 @@ This starter kit was developed with the following software:
 
 #### Tools
 
-* Chocolatey (Package Manager)
+* Chocolatey (Package Manager) (optional)
 * Git for Windows (Solution Code Manager)
 * Modern browser (Microsoft Edge or Google Chrome)
 
@@ -61,3 +61,9 @@ This starter kit was developed with the following software:
 * Data Import v2
 
 The latest `minor.patch` release of each should be compatible with this guide (for example, ODS/API v6.2.0).
+
+:::note
+
+The educator pipeline starter kits were originally developed on Data Standard 3.3 (ODS/API 5.3) and have also been tested for compatibility with Data Standard 4 (ODS/API 6.x and ODS/API 7.x).
+
+:::

@@ -258,44 +258,6 @@ Once the download completes, navigate to the folder where you downloaded the fil
 
 ![Candidate Summary view](https://edfidocs.blob.core.windows.net/$web/img/getting-started/use-cases/epp/candidate-summary-small.png)
 
-### Update Groups Used in the Dashboard
-
-The current Diversity and Persistence Dashboard groups Programs into grade levels and Financial Aid into Aid Type. The program groups are All Level, Elementary, Middle School, and High School. The financial aid groups are Grants, Loans, Work Study, and Other. In this step, you'll update both groups to better fit your organization.
-
-### Update Program Groups
-
-* In the report view in Power BI Desktop, expand the Candidate table in the Data pane.
-* Click on the ellipsis (...) next to the field ProgramName (groups) in the Candidate table and select Edit Groups.
-
-  ![Finding ProgramName in PowerBI](https://edfidocs.blob.core.windows.net/$web/img/reference/epp-sk/update-program-groups-1.png)
-
-* A dialogue box appears that allows editing groups.
-
-  ![Editing dialogue box](https://edfidocs.blob.core.windows.net/$web/img/reference/epp-sk/update-program-groups-2.png)
-
-* Expand the groups on the right to see the programs in each group. You can edit the groupings by selecting or multi-selecting (CRTL+Select) programs and then clicking Group or Ungroup. You can also edit the names of groups by double-clicking on group names.
-
-  ![Selecting the right items](https://edfidocs.blob.core.windows.net/$web/img/reference/epp-sk/update-program-groups-3.png)
-
-* Once you are done editing groups, click the OK button to save your settings.
-
-### Update Financial Aid Groups
-
-* In the report view in Power BI Desktop, expand the Financial Aid table in the Data pane.
-* Click on the ellipsis (...) next to the field AidType (groups) in the Financial Aid table and select Edit Groups.
-
-  ![Finding AidType in PowerBI](https://edfidocs.blob.core.windows.net/$web/img/reference/epp-sk/update-financial-aid-group-1.png)
-
-* A dialogue box appears that allows editing groups.
-
-  ![Editing dialogu box](https://edfidocs.blob.core.windows.net/$web/img/reference/epp-sk/update-financial-aid-group-2.png)
-
-* Expand the groups on the right to see the Aid Type in each group. You can edit the groupings by selecting or multi-selecting (CRTL+Select) Aid Type and then clicking Group or Ungroup. You can also edit the names of groups by double-clicking on group names.
-
-  ![Selecting the right items](https://edfidocs.blob.core.windows.net/$web/img/reference/epp-sk/update-financial-aid-group-3.png)
-
-* Once you are done editing groups, click the OK button to save your settings.
-
 ### Connect your Power BI Dashboard to your Ed-Fi ODS
 
 The data that is pre-populated is a set of data that mimics real world data in a educator preparation program.
@@ -326,9 +288,47 @@ The data that is pre-populated is a set of data that mimics real world data in a
 
   ![Waiting for data load](https://edfidocs.blob.core.windows.net/$web/img/reference/epp-sk/connect-to-ods-5.png)
 
-* Once it loads, the Program Diversity and Persistence Dashboard will display your data.
+* Once it loads, the Clinical Experience and Performance Dashboard will display your data.
 
-If you haven't already, visit the [Program Diversity and Persistence Dashboard Use Case](/getting-started/educator-pipeline/program-diversity) to learn more about how to use the Program Diversity and Persistence Dashboard.
+If you haven't already, visit the [Clinical Experience and Performance Dashboard Use Case](/getting-started/educator-pipeline/program-diversity) to learn more about how to use the Clinical Experience and Performance Dashboard.
+
+### Update Groups Used in the Dashboard
+
+The current Diversity and Persistence Dashboard groups Programs into grade levels and Financial Aid into Aid Type. The program groups are All Level, Elementary, Middle School, and High School. The financial aid groups are Grants, Loans, Work Study, and Other. In this step, you'll update both groups to better fit your organization.
+
+### Update Program Groups
+
+* In the report view in Power BI Desktop, expand the Candidate table in the Data pane.
+* Click on the ellipsis (...) next to the field ProgramName (groups) in the Candidate table and select Edit Groups.
+
+  ![Finding ProgramName in PowerBI](https://edfidocs.blob.core.windows.net/$web/img/reference/epp-sk/update-program-groups-1.png)
+
+* A dialogue box appears that allows editing groups.
+
+  ![Editing dialogue box](https://edfidocs.blob.core.windows.net/$web/img/reference/epp-sk/update-program-groups-2.png)
+
+* Expand the groups on the right to see the programs in each group. You can edit the groupings by selecting or multi-selecting (CRTL+Select) programs and then clicking Group or Ungroup. You can also edit the names of groups by double-clicking on group names.
+
+  ![Selecting the right items](https://edfidocs.blob.core.windows.net/$web/img/reference/epp-sk/update-program-groups-3.png)
+
+* Once you are done editing groups, click the OK button to save your settings.
+
+### Update Financial Aid Groups
+
+* In the report view in Power BI Desktop, expand the Financial Aid table in the Data pane.
+* Click on the ellipsis (...) next to the field AidType (groups) in the Financial Aid table and select Edit Groups.
+
+  ![Finding AidType in PowerBI](https://edfidocs.blob.core.windows.net/$web/img/reference/epp-sk/update-financial-aid-group-1.png)
+
+* A dialogue box appears that allows editing groups.
+
+  ![Editing dialogue box](https://edfidocs.blob.core.windows.net/$web/img/reference/epp-sk/update-financial-aid-group-2.png)
+
+* Expand the groups on the right to see the Aid Type in each group. You can edit the groupings by selecting or multi-selecting (CRTL+Select) Aid Type and then clicking Group or Ungroup. You can also edit the names of groups by double-clicking on group names.
+
+  ![Selecting the right items](https://edfidocs.blob.core.windows.net/$web/img/reference/epp-sk/update-financial-aid-group-3.png)
+
+* Once you are done editing groups, click the OK button to save your settings.
 
 ## Step 5. Publish the Program Diversity and Persistence Dashboard and Plan Your Rollout
 

@@ -16,19 +16,19 @@ The Diversity and Persistence Starter Kit requires data from a number of differe
 
 This data may all be stored in the Student Information System (SIS), but may also be in different source systems.
 
-## How to get Data into Ed-Fi
+## How to get Data into the Ed-Fi API
 
-### Procure the data (or sample data)
+### Procure the Data (or Sample Data)
 
 Having the data in hand is generally the best way to get a feel for the type of mapping and manipulation work that needs to be completed to load the data into Ed-Fi. Since sharing agreements can slow this process, having a set of de-identified sample data that matches the structure of the final output works just as well. Knowing what data will be in what files and the names of fields allow for mapping to begin even if real data is not available.
 
-### Map fields
+### Map Fields
 
 Now that the data (or sample data) has been provided, you can start the mapping process. There are a number of tools for mapping data, including a [Google Sheets workbook](https://docs.google.com/spreadsheets/d/1eAb3-XQgIrNkyEsSHYik8HNDvv85MRdq66CY7Cu27uw/edit#gid=1865042024) specifically tailored to work with the Starter Kits. We will be using the workbook for examples and descriptions below.
 
-### Map descriptor values
+### Map Descriptor Values
 
-Many Ed-Fi entities use enumeration values called descriptors. These descriptors are used to categorize data and help provide useful reporting. Descriptor values will need to be mapped from the source data into values in Ed-Fi. In most cases new descriptor values can be added if the default ones provided by Ed-Fi are not sufficient. In cases where the EPP doesn't have data for a descriptor value, it can be statically set on import of the data. Both MappingEdu and the mapping workbook offer descriptor values for any given entity. General guidance for descriptors can be found [here](/reference/data-exchange/technical-articles/descriptor-guidance).
+Many Ed-Fi entities use enumeration values called descriptors. These descriptors are used to categorize data and help provide useful reporting. Descriptor values will need to be mapped from the source data into values in Ed-Fi. In most cases new descriptor values can be added if the default ones provided by Ed-Fi are not sufficient. In cases where the EPP doesn't have data for a descriptor value, it can be statically set on import of the data. The mapping workbook offers descriptor values for any given entity. General guidance for descriptors can be found [here](/reference/data-exchange/technical-articles/descriptor-guidance).
 
 ### Determine Mapping Logic
 
@@ -38,7 +38,7 @@ A good example of this is with the cohort year data for candidates. Currently, c
 
 In the above example, pre-processing either within the [Data Import tool](https://edfi.atlassian.net/wiki/spaces/EDFITOOLS/pages/24117496/Preprocessing+CSV+Files) or using a python or PowerShell script before the file is ingested via Data Import.
 
-### Set up the ODS and Admin App
+### Set up the ODS/API and Admin App
 
 Installation Instructions can be found in the  [Clinical Experience and Performance Setup Guide](./setup-guide.md)
 
@@ -46,7 +46,7 @@ Installation Instructions can be found in the  [Clinical Experience and Perform
 
 Instructions for adding education organizations in Admin App can be found in the starter kit setup guide [here](./setup-guide.md#add-your-education-organizations-in-the-admin-app).
 
-### Set up data import
+### Set up Data Import
 
 Installation Instructions for Data Import can be found [here](../../6-data-import/readme.md).
 
@@ -68,9 +68,16 @@ Instructions for uploading files to agents can be found in the [Diversity and Pe
 
 Execute Data Import Agents.  Details can be found in the [Diversity and Persistence Setup Guide](./setup-guide.md#execute-data-import).
 
-## How the provided mapping workbook works
+## How the Provided Mapping Workbook Works
 
 Ed-Fi provides a [workbook](https://docs.google.com/spreadsheets/d/1eAb3-XQgIrNkyEsSHYik8HNDvv85MRdq66CY7Cu27uw/edit#gid=1865042024) that has been used successfully in past projects to help System Integrators (SI's) and EPP's provide the appropriate data and also map that data into the ODS. The examples in this page will use that workbook, but any mapping tool can be used and the concepts should remain the same.
+
+To use the workbook for your Starter Kit mapping:
+
+1. Click on the workbook link above
+2. If you are logged into your Google account, you can either:
+    1. Download - click the "File" menu then hover your mouse over the download option and choose your preferred format (e.g., Excel, Open Office, etc).
+    2. Copy to your Google Drive - click the "File" menu and select "Make a Copy". This will present a dialog that will allow you to choose a name and the Google Drive where you'd like to save your workbook.
 
 Here is an example of a simple mapping from the workbook, EducatorPreparationProgram. Within the workbook, the rows for each entity can be broken down into two distinct sections:
 
@@ -83,20 +90,20 @@ Each section is designated by a different color for better visual representation
 
 ### Field Information
 
-* API Resource / Entity Name - The entity within the model that will be mapped.
-* Ed-Fi Field Name - The name of the field within the entity. Only required fields are shown, for a list all fields within an entity, see the [Data Handbook - Ed-Fi + EPDM](https://edfidocs.blob.core.windows.net/$web/handbook/tpdm-v1.0/Index.html).
-* Ed-Fi Description - What this field represents.
-* Ed-Fi  Data Type - The type of data expected for that field, including the length of the field if appropriate. Reference types refer to other Ed-Fi entities that would need to be created prior to loading this data. Descriptor data types are similar to enumerations and the default values provided by Ed-Fi are listed below the data mapping rows.
-* Other comment - A space for more description of the field. This is also used to signal the key of a reference type if not clear.
+* **API Resource / Entity Name** - The entity within the model that will be mapped.
+* **Ed-Fi Field Name** - The name of the field within the entity. Only required fields are shown, for a list all fields within an entity, see the [Data Handbook - Ed-Fi + EPDM](https://edfidocs.blob.core.windows.net/$web/handbook/tpdm-v1.0/Index.html).
+* **Ed-Fi Description** - What this field represents.
+* **Ed-Fi  Data Type** - The type of data expected for that field, including the length of the field if appropriate. Reference types refer to other Ed-Fi entities that would need to be created prior to loading this data. Descriptor data types are similar to enumerations and the default values provided by Ed-Fi are listed below the data mapping rows.
+* **Other comment** - A space for more description of the field. This is also used to signal the key of a reference type if not clear.
 
 ### Mapping Information
 
-* CSV File - The name of the file provided from the EPP that will contain this data.
-* CSV File / Field Mapping - The field with the CSV that that will map to this field.
-* Sample - A sample output from the field.
-* Mapping Logic - Any logic need to get the data from source to destination (i.e. if two fields need to be concatenated).
-* Actual Static Values - In some cases the EPP might not have the data to represent the field, in these cases the field can be defaulted to a static value.
-* Descriptor Mapping - How to map EPP values into provided descriptors. If the default descriptor values are not sufficient, descriptors within Ed-Fi can be added.
+* **CSV File.** The name of the file provided from the EPP that will contain this data.
+* **CSV File / Field Mapping.** The field with the CSV that will map to this field.
+* **Sample.** A sample output from the field.
+* **Mapping Logic.** Any logic needed to get the data from source to destination (e.g., if two fields need to be concatenated).
+* **Actual Static Values.** In some cases, the EPP might not have the data to represent the field. In these cases, the field can be defaulted to a static value.
+* **Descriptor Mapping.** How to map EPP values into provided descriptors. If the default descriptor values are not sufficient, descriptors within Ed-Fi can be added.
 
 ## EducatorPreparationPrograms
 
@@ -104,11 +111,9 @@ Each section is designated by a different color for better visual representation
 
 Educator Preparation Program represents a state-approved course of study, completion of which signifies a candidate will have met all requirements necessary to obtain a certification or licensure to teach within K-12 schools. Most educator preparation providers will offer multiple programs, each aligned with a certification offered by the state. Program data needs to be loaded after Education Organizations (completed through Admin App, see [Program Diversity and Persistence Setup Guide](./setup-guide.md)) but should be loaded before any other data. To load Programs you need the following data:
 
-The id of the school created with Admin App,
-
-The name of the program, this generally correlates to the degree being offered by the program such as 'All Level EC-12+Art' or 'High School 7 - 12+Science',
-
-The program type. In many cases this will be a traditional program, but Post-Baccalaureate is also quite common.
+* The id of the school created with Admin App,
+* The name of the program, this generally correlates to the degree being offered by the program such as 'All Level EC-12+Art' or 'High School 7 - 12+Science',
+* The program type. In many cases this will be a traditional program, but Post-Baccalaureate is also quite common.
 
 Within the Diversity and Persistence Starter Kit there is one visual that makes use of programs, 'Number of Candidates by Program'. This visual uses  the concept of groups within Power BI to collect programs that provide similar degree levels into the same value (i.e. Elementary vs. High School). For more on how to set up the groups in Power Bi, see the [Program Diversity and Persistence Setup Guide](./setup-guide.md).
 
