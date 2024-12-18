@@ -15,7 +15,6 @@ The stand-alone text messaging solution sits alongside the ed-fi ods and uses cu
 ## Details
 
 * **By:** Aspire Public Schools
-* **Contact**: [Saurabh Kulkarni (Unlicensed)](https://edfi.atlassian.net/wiki/people/5c76d4b44ad08d301f9268ef?ref=confluence)
 * **License terms:** Apache 2.0
 * **Released: 09 Jun 2022**
 

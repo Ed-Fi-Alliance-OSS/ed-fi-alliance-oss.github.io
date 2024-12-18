@@ -23,5 +23,3 @@ This offering comes with PowerShell installation scripts. Please read through th
 
 **Generation:** Tech Suite 3
 **For:** ODS/API v3.1, v3.2, v3.3
-
-![](https://edfi.atlassian.net/wiki/plugins/servlet/confluence/placeholder/unknown-macro?name=rate&locale=en_US&version=2)
