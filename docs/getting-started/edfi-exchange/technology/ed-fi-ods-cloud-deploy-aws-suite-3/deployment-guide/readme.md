@@ -186,5 +186,5 @@ To get the ODS/API solution running in AWS, you will need to first complete the 
 
 ### Ed-Fi Documentation
 
-* [ODS/API Getting Started](@site/docs/reference/ods-api-platform.mdx)
-* [Admin Application](@site/docs/reference/8-admin-app/readme.md)
+* [ODS/API Getting Started](/reference/ods-api-platform)
+* [Admin Application](/reference/admin-app)
