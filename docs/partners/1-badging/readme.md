@@ -6,7 +6,7 @@ Certification](../certification).
 
 Many products that use Ed-Fi standardized APIs or integrate natively with Ed-Fi
 technology tools (such as
-the [Ed-Fi ODS/API](/reference/ods-api))
+the [Ed-Fi ODS/API](/reference/ods-api-platform))
 are forging new ground in terms of defining data integration use cases valuable
 to schools. Badges allow these efforts to be validated and recognized by the
 community.
