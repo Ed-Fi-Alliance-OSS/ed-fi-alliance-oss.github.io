@@ -1,6 +1,7 @@
 # Technical Articles
 
-This section contains Technical Articles for advanced use topics for Data Import:
+This section contains Technical Articles for advanced use topics for Data
+Import:
 
 ## Contents
 

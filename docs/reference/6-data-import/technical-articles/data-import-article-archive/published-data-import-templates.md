@@ -1,8 +1,10 @@
 # Published Data Import Templates
 
-Data Import allows the publishing and consuming of templates of other Data Import users. A list of currently published templates is provided below.
+Data Import allows the publishing and consuming of templates of other Data
+Import users. A list of currently published templates is provided below.
 
-These templates are available on GitHub here:  [https://github.com/Ed-Fi-Exchange-OSS/DataImport-Templates](https://github.com/Ed-Fi-Exchange-OSS/DataImport-Templates)
+These templates are available on GitHub here:
+ [https://github.com/Ed-Fi-Exchange-OSS/DataImport-Templates](https://github.com/Ed-Fi-Exchange-OSS/DataImport-Templates)
 
 ## Assessment Domain
 
@@ -49,6 +51,9 @@ These templates are available on GitHub here:  [https://github.com/Ed-Fi-Exchan
 | WIDA ACCESS for ELLs (Summative and Alternate) Assessments - API 3+ - (DataImport v1.2) | Developers.Net | 5.2 | January 05, 2022 |
 | WIDA ACCESS for ELLs (Summative and Alternate) Assessments - API 3.2 | Developers.Net | 3.2.0 | May 18, 2020 |
 
-In order to access these templates you need to install and register Data Import. See [Data Import - Getting Started](../../../data-import/getting-started) for more details. *(This information is available to Ed-Fi licensees only, and requires you to be logged in.)*
+In order to access these templates you need to install and register Data Import.
+See [Data Import - Getting Started](../../../data-import/getting-started) for
+more details. *(This information is available to Ed-Fi licensees only, and
+requires you to be logged in.)*
 
 Last updated: 11 Apr 2022
