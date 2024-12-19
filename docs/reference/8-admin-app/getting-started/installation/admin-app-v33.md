@@ -8,7 +8,7 @@ the Ed-Fi ODS / API Admin App v3.3 for ODS/API 3.4 to 6.2.
 ## Compatibility & Supported ODS / API Versions
 
 This version ODS / API Admin App has been tested and can be installed for use
-with the Ed-Fi ODS / API 3.4 to 6.2. See the [Ed-Fi Technology Sutie Supported Versions](../../../0-roadmap/supported-versions.md) for
+with the Ed-Fi ODS / API 3.4 to 6.2. See the [Ed-Fi Technology Suite Supported Versions](../../../0-roadmap/supported-versions.md) for
 more details.
 
 Admin App supports two deployment modes:  Docker Deployment and On-Premise
@@ -39,37 +39,38 @@ The following are required to install the Admin App:
 :::info note
  The following is the DockerHub repo for **Admin App v3.3.1 Docker
  Image** for inclusion in Docker compose:
- * [edfialliance/ods-admin-app:v3.3.1](https://hub.docker.com/layers/edfialliance/ods-admin-app/v3.3.1/images/sha256-ebc0ab6b1aafff1788477f97a0e86bcb46e1e9a1dfddfda69a69593cb8b19395?context=explore)
+
+* [edfialliance/ods-admin-app:v3.3.1](https://hub.docker.com/layers/edfialliance/ods-admin-app/v3.3.1/images/sha256-ebc0ab6b1aafff1788477f97a0e86bcb46e1e9a1dfddfda69a69593cb8b19395?context=explore)
 :::
 
-  * The Admin App provides an interface to administer an Ed-Fi ODS / API.
+* The Admin App provides an interface to administer an Ed-Fi ODS / API.
     Understandably, you must have an instance of the supported Ed-Fi ODS / API
     deployed and operational before you can use the Admin App. Tested
     configurations include on-premises installation via [binary
     installation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V62/pages/18219081/Getting+Started+-+Binary+Installation)
     or [source code
     installation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V62/pages/18219161/Getting+Started+-+Source+Code+Installation).
-  * Both the [.NET 8 SDK and .NET 8 Hosting
+* Both the [.NET 8 SDK and .NET 8 Hosting
     Bundle](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) are required
     on the destination server before installation of Admin App.
-    * After installing the .NET Core SDK and the .NET Core SDK, it is necessary
+  * After installing the .NET Core SDK and the .NET Core SDK, it is necessary
       to restart the computer for the changes to take effect.
-  * A SQL Server 2012 or higher, or Postgres 11 or higher database server as
+* A SQL Server 2012 or higher, or Postgres 11 or higher database server as
     also in use with your ODS / API v6.0 installation.
-  * IIS must be enabled before installing .NET Core Hosting Bundle.
-  * A modern web browser such as Google Chrome, Mozilla Firefox, or Microsoft
+* IIS must be enabled before installing .NET Core Hosting Bundle.
+* A modern web browser such as Google Chrome, Mozilla Firefox, or Microsoft
     Edge. Internet Explorer 11 (a pre-installed browser on Windows Server) may
     load, but may not function when using Admin App.
 
     Admin App does not today support in-place upgrades from prior versions.
     Please install a fresh copy of Admin App to upgrade from prior versions.
 
-    ## Required Information
+  ## Required Information
 
     You will need the following information to complete this installation:
 
-    * The location of your Ed-Fi ODS / API.
-    * Administrator access and credentials for either on-premises or Azure
+  * The location of your Ed-Fi ODS / API.
+  * Administrator access and credentials for either on-premises or Azure
     environment with target Ed-Fi ODS / API.
 
 ## Installation Instructions
@@ -78,29 +79,29 @@ The following are required to install the Admin App:
     specific steps are different depending on the deployment model and version
     of your Ed-Fi ODS / API.
 
-  * [Step 1. Download and Open Installer Package](#step-1-download-and-open-installer-package)
-  * [Step 2. Configure Installation File](#step-2-configure-installation-file)
-  * [Step 3. Open a PowerShell Prompt in Administrator Mode](#step-3-open-a-powershell-prompt-in-administrator-mode)
-  * [Step 4 . Run the Installation via PowerShell](#step-4-run-the-installation-via-powershell)
-  * [Step 5. Create SQL Server Login (if "useIntegratedSecurity" set to "true")](#step-5-create-sql-server-login-if-useintegratedsecurity-set-to-true)
-  * [Step 6. Update Application Pool Identity (Optional)](#step-6-update-application-pool-identity-optional)
-  * [Step 7. Check Folder Permissions](#step-7-check-folder-permissions)
-  * [Step 8. Create Initial Administrative User](#step-8-create-initial-administrative-user)
-  * [Step 9. Open Admin App to Complete Installation](#step-9-open-admin-app-to-complete-installation)
-  * [Step 10. Using the Admin App](#step-10-using-the-admin-app)
+* [Step 1. Download and Open Installer Package](#step-1-download-and-open-installer-package)
+* [Step 2. Configure Installation File](#step-2-configure-installation-file)
+* [Step 3. Open a PowerShell Prompt in Administrator Mode](#step-3-open-a-powershell-prompt-in-administrator-mode)
+* [Step 4 . Run the Installation via PowerShell](#step-4-run-the-installation-via-powershell)
+* [Step 5. Create SQL Server Login (if "useIntegratedSecurity" set to "true")](#step-5-create-sql-server-login-if-useintegratedsecurity-set-to-true)
+* [Step 6. Update Application Pool Identity (Optional)](#step-6-update-application-pool-identity-optional)
+* [Step 7. Check Folder Permissions](#step-7-check-folder-permissions)
+* [Step 8. Create Initial Administrative User](#step-8-create-initial-administrative-user)
+* [Step 9. Open Admin App to Complete Installation](#step-9-open-admin-app-to-complete-installation)
+* [Step 10. Using the Admin App](#step-10-using-the-admin-app)
 
-    ## On-Premises Deployment
+  ## On-Premises Deployment
 
     Each step is outlined in detail below for the PowerShell deployment. Ensure
     that you have permission to execute PowerShell scripts. For more
     information,
     see [http://go.microsoft.com/fwlink/?LinkID=135170](http://go.microsoft.com/fwlink/?LinkID=135170).
 
-    ### Step 1. Download and Open Installer Package
+  ### Step 1. Download and Open Installer Package
 
     Download , rename the file extension from to `.zip`  and unzip the package
 
-    * Installer and binaries for Admin App 3.3:
+  * Installer and binaries for Admin App 3.3:
     [EdFi.Suite3.ODS.AdminApp.Web.3.3.1.nupkg](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.Suite3.ODS.AdminApp.Web/overview/3.3.1)
 
     Alternatively, run the below PowerShell command to download the package as a
@@ -201,6 +202,7 @@ The following are required to install the Admin App:
       OdsApiUrl = "https://localhost:54746"
      }
      ```
+
      PostgreSQL District Specific
 
      ```json title="install.ps1 for PostgreSQL"
@@ -245,6 +247,7 @@ The following are required to install the Admin App:
      }
 
      ```
+
     :::
 
     ### Step 3. Open a PowerShell Prompt in Administrator Mode
@@ -263,7 +266,7 @@ The following are required to install the Admin App:
 
     Run "install.ps1" script.
 
-    ### Database login setup on integrated security mode:
+    ### Database login setup on integrated security mode
 
     During the installation process, you will be prompted to choose database login details. Entering "Y" will continue with default option( Installation process will create IIS APPPOOL\\AdminApp database login on the server).
 
