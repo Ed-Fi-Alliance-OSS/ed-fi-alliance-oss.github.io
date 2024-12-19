@@ -189,9 +189,7 @@ The following are required to install the Admin App:
 
      SQL Server Shared Instance
 
-     **install.ps1(SQL Server)**
-
-     ```json
+     ```json title="install.ps1 for MSSQL"
      $dbConnectionInfo = @{
       Server = "(local)"
       Engine = "SqlServer"
@@ -203,13 +201,9 @@ The following are required to install the Admin App:
       OdsApiUrl = "https://localhost:54746"
      }
      ```
-
-
      PostgreSQL District Specific
 
-     **install.ps1(PostgreSQL)**
-
-     ```json
+     ```json title="install.ps1 for PostgreSQL"
      $dbConnectionInfo = @{
       Server = "localhost"
       Engine = "PostgreSQL"
