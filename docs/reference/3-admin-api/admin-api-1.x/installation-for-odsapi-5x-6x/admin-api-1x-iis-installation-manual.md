@@ -1,6 +1,6 @@
 # Admin API 1.x - IIS Installation (Manual)
 
-# Before You Install
+## Before You Install
 
 This section provides general information you should review before installing
 the Ed-Fi ODS / API Admin API for v1.4.0.
@@ -8,8 +8,7 @@ the Ed-Fi ODS / API Admin API for v1.4.0.
 ## Compatibility & Supported ODS / API Versions
 
 This version of the Admin API has been tested and can be installed for use with
-the Ed-Fi ODS / API v3.4 - 6.1.  See the [Ed-Fi Technology Version
-Index](https://edfi.atlassian.net/wiki/spaces/ETKB/pages/20875717/Ed-Fi+Technology+Version+Index) for
+the Ed-Fi ODS / API v3.4 - 6.1.  See the [Ed-Fi Technology Suite Supported Versions](../../../../0-roadmap/supported-versions.md) for
 more details.
 
 ## Installation Instructions
@@ -139,6 +138,7 @@ Here is a snippet from a properly configured application settings file:
 ```
 
 #### **Step 5. Create Self-Signed Certificate in IIS Manager**
+
 :::info
  This step is only necessary if you do not have a certificate from an
  existing ODS / API and Admin App installation in IIS.
@@ -293,6 +293,7 @@ preference.
      CONSTRAINT PK_Tokens PRIMARY KEY (Id)
  );
  ```
+
 :::
 :::info note:
  SQL Server
@@ -369,6 +370,7 @@ preference.
      CONSTRAINT PK_Tokens PRIMARY KEY (Id)
  );
  ```
+
 :::
 
 #### **Step 10. Execute First-Time Configuration**
@@ -380,8 +382,8 @@ Continue on to [First-Time Configuration for Admin
  The following is a NuGet package containing the **Admin API v1.4.0
  source** **files** for manual deployment to IIS.
 
- * [EdFi.Suite3.ODS.AdminApi
+* [EdFi.Suite3.ODS.AdminApi
    1.4.0](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.Suite3.ODS.AdminApi/overview/1.4.0)
- * [Follow Binary Release for Admin App Database
+* [Follow Binary Release for Admin App Database
    v2.3](https://edfi.atlassian.net/wiki/display/ADMIN/Admin+App+for+Suite+3+v2.3)
 :::

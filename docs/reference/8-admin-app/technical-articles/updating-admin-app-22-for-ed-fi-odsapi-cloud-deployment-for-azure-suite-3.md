@@ -141,7 +141,7 @@ on dbo.OdsInstances table.
 ### Steps for new installation
 
 1.Please refer [Ed-Fi ODS/API Cloud Deployment for Azure (Suite
-3)](https://docs.ed-fi.org/getting-started/edfi-exchange/technology/ed-fi-odsapi-cloud-deployment-for-azure-suite-3/))  for new
+3)](/getting-started/edfi-exchange/technology/ed-fi-odsapi-cloud-deployment-for-azure-suite-3/))  for new
 installation on Azure ( Note: New installation will create new resource group
 and resources).
 

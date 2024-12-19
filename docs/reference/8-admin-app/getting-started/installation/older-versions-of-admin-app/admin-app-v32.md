@@ -8,8 +8,7 @@ the Ed-Fi ODS / API Admin App v3.2 for ODS/API 3.4 to 6.1.
 ## Compatibility & Supported ODS / API Versions
 
 This version ODS / API Admin App has been tested and can be installed for use
-with the Ed-Fi ODS / API 3.4 to 6.1. See the [Ed-Fi Technology Version
-Index](https://edfi.atlassian.net/wiki/spaces/ETKB/pages/20875717/Ed-Fi+Technology+Version+Index) for
+with the Ed-Fi ODS / API 3.4 to 6.1. See the [Ed-Fi Technology Suite Supported Versions](../../../../0-roadmap/supported-versions.md) for
 more details.
 
 Admin App supports two deployment modes:  Docker Deployment and On-Premise
@@ -42,7 +41,7 @@ The following are required to install the Admin App:
   The following is the DockerHub repo for **Admin App v3.2.1 Docker
   Image** for inclusion in Docker compose:
 
-  * [edfialliance/ods-admin-app:v3.2.1](https://hub.docker.com/layers/edfialliance/ods-admin-app/v3.2.1/images/sha256-6e924a4fd629a7c97acbec12cf32687abfa8eabde48d02600711d365bac823ab?context=explore)
+* [edfialliance/ods-admin-app:v3.2.1](https://hub.docker.com/layers/edfialliance/ods-admin-app/v3.2.1/images/sha256-6e924a4fd629a7c97acbec12cf32687abfa8eabde48d02600711d365bac823ab?context=explore)
 :::
 
 * The Admin App provides an interface to administer an Ed-Fi ODS / API.
@@ -104,7 +103,7 @@ ODS / API.
 
 Each step is outlined in detail below for the PowerShell deployment. Ensure that
 you have permission to execute PowerShell scripts. For more information,
-see [http://go.microsoft.com/fwlink/?LinkID=135170](http://go.microsoft.com/fwlink/?LinkID=135170).
+see [about_Execution_Policies](http://go.microsoft.com/fwlink/?LinkID=135170).
 
 ### Step 1. Download and Open Installer Package
 
@@ -214,6 +213,7 @@ Configuration samples for the "install.ps1" file:
    OdsApiUrl = "https://localhost:54746"
   }
   ```
+
 :::
 
 :::info note:
@@ -241,6 +241,7 @@ Configuration samples for the "install.ps1" file:
   }
 
   ```
+
 :::
 
 :::info note:
@@ -267,6 +268,7 @@ Configuration samples for the "install.ps1" file:
   }
 
   ```
+
 :::
 
 ### Step 3. Open a PowerShell Prompt in Administrator Mode
@@ -365,7 +367,6 @@ If the AdminApp not available on the list, add with Full control.
 
 ![Permission groups](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/older-versions-of-admin-app/AddFolderPermission.JPG)
 
-
 :::info note:
 If you choose custom login over default Application Pool Identity ( Refer
 Step 6 for more details), then make sure the custom login has full control on
@@ -378,7 +379,7 @@ Upon first launch of the Admin App, you will have to create the initial
 administrative user for the application. This consists of creating a username
 and password for the initial user. Additional users can be added at a later
 time. Please see [Securing the Admin App
-(v2.x)](https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25243028) for more
+(v2.x)](../../securing-the-admin-app.md) for more
 information.
 
 ### Step 9. Open Admin App to Complete Installation
@@ -404,7 +405,3 @@ App:
   Connections](../../../getting-started/multi-instance-connections)
 * [Next Steps](../../../getting-started/next-steps)
 * [Known Issues](../../../getting-started/known-issues)
-
-Admin App also has
-a [https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25231476](https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25231476) for
-an in-depth look at each of the features contained within.

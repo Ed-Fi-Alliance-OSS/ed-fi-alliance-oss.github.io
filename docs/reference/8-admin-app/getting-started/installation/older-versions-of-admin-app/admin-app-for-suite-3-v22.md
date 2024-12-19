@@ -8,8 +8,7 @@ the Ed-Fi ODS / API Admin App for Suite 3 v2.2.
 ## Compatibility & Supported ODS / API Versions
 
 This version ODS / API Admin App has been tested and can be installed for use
-with the Ed-Fi ODS / API v3.4 through v5.2. See the [Ed-Fi Technology Version
-Index](https://edfi.atlassian.net/wiki/spaces/ETKB/pages/20875717/Ed-Fi+Technology+Version+Index) for
+with the Ed-Fi ODS / API v3.4 through v5.2. See the [Ed-Fi Technology Suite Supported Versions](../../../../0-roadmap/supported-versions.md) for
 more details.
 
 ## Prerequisites
@@ -19,9 +18,7 @@ The following are required to install the Admin App:
 * The Admin App provides an interface to administer an Ed-Fi ODS / API.
   Understandably, you must have an instance of the Ed-Fi ODS / API v3.4 through
   v5.2 deployed and operational before you can use the Admin App. Tested
-  configurations include on-premises installation via the [Tech Suite
-  Installer](https://edfi.atlassian.net/wiki/display/TSINSTALL/) (ODS / API only
-  from PowerShell installation) or [manual installation via source
+  configurations include on-premises installation via [via source
   code](https://edfi.atlassian.net/wiki/display/ODSAPI34/Getting+Started).
 * The [.NET Framework 4.8
   Runtime](https://dotnet.microsoft.com/download/dotnet-framework/thank-you/net48-web-installer) and
@@ -57,30 +54,12 @@ You will need the following information to complete this installation:
 This section provides step-by-step instructions for installation. The specific
 steps are different depending on the deployment model and version of your Ed-Fi
 ODS / API.
-* Admin App for Suite 3 v2.2
-* [Before You Install](#before-you-install)
-  * [Compatibility \& Supported ODS / API Versions](#compatibility--supported-ods--api-versions)
-  * [Prerequisites](#prerequisites)
-  * [Required Information](#required-information)
-* [Installation Instructions](#installation-instructions)
-  * [On-Premises Deployment](#on-premises-deployment)
-    * [Step 1. Download and Open Installer Package](#step-1-download-and-open-installer-package)
-    * [Step 2. Configure Installation](#step-2configure-installation)
-    * [Step 3. Open a PowerShell Prompt in Administrator Mode](#step-3-open-a-powershell-prompt-in-administrator-mode)
-    * [Step 4. Run the Installation via PowerShell](#step-4-run-the-installation-via-powershell)
-    * [Step 5. Create SQL Server Login (if "useIntegratedSecurity" set to "true")](#step-5-create-sql-server-login-if-useintegratedsecurity-set-to-true)
-    * [Step 6. Check Folder Permissions**](#step-6check-folder-permissions)
-    * [Step 7. Create Initial Administrative User](#step-7-create-initial-administrative-user)
-    * [Step 8. Enable Product Improvement Features](#step-8-enable-product-improvement-features)
-    * [Step 9. Restart the ODS / API](#step-9-restart-theods--api)
-    * [Step 10. Open Admin App to Complete Installation](#step-10-open-admin-app-to-complete-installation)
-    * [Step 11. Using the Admin App](#step-11-using-the-admin-app)
 
 ## On-Premises Deployment
 
 Each step is outlined in detail below for the PowerShell deployment. Ensure that
 you have permission to execute PowerShell scripts. For more information,
-see [http://go.microsoft.com/fwlink/?LinkID=135170](http://go.microsoft.com/fwlink/?LinkID=135170).
+see [about_Execution_Policies](http://go.microsoft.com/fwlink/?LinkID=135170).
 
 ### Step 1. Download and Open Installer Package
 
@@ -180,6 +159,7 @@ Configuration samples for the "install.ps1" file:
   OdsApiUrl = "https://localhost:54746"
  }
  ```
+
 :::
 
 :::info note
@@ -207,6 +187,7 @@ Configuration samples for the "install.ps1" file:
  }
 
  ```
+
 :::
 
 :::info note
@@ -233,6 +214,7 @@ Configuration samples for the "install.ps1" file:
  }
 
  ```
+
 :::
 
 ### Step 3. Open a PowerShell Prompt in Administrator Mode
@@ -306,7 +288,7 @@ Upon first launch of the Admin App, you will have to create the initial
 administrative user for the application. This consists of creating a username
 and password for the initial user. Additional users can be added at a later
 time. Please see [Securing the Admin App
-(v2.x)](https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25243028) for more
+(v2.x)](../../securing-the-admin-app.md) for more
 information.
 
 ### Step 8. Enable Product Improvement Features
@@ -354,17 +336,15 @@ Please visit the following articles to help with next actions in using Admin
 App:
 
 * [Securing the Admin App
-  (v2.x)](https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25243028)
+  (v2.x)](../../securing-the-admin-app.md)
 * [Multi-Instance
   Connections](../../../getting-started/multi-instance-connections)
 * [Next Steps](../../../getting-started/next-steps)
 * [Known Issues](../../../getting-started/known-issues)
 
-Admin App also has
-a [https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25231476](https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25231476) for
-an in-depth look at each of the features contained within.
+:::info
 
-:::info note:
- **Admin App v2.2 Binaries are included with ODS / API 5.2**: [Binary
- Releases](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V520/pages/25100418/Binary+Releases)
+**Admin App v2.2 Binaries are included with ODS / API 5.2**: [Binary
+Releases](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V520/pages/25100418/Binary+Releases)
+
 :::

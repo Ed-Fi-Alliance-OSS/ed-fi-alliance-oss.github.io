@@ -8,8 +8,7 @@ the Ed-Fi ODS / API Admin App for Suite 3 v2.1.
 ## Compatibility & Supported ODS / API Versions
 
 This version ODS / API Admin App can be installed for use with the Ed-Fi ODS /
-API v3.4, v5.0.0 and v5.1.0. See the [Ed-Fi Technology Version
-Index](https://edfi.atlassian.net/wiki/spaces/ETKB/pages/20875717/Ed-Fi+Technology+Version+Index) for
+API v3.4, v5.0.0 and v5.1.0. See the [Ed-Fi Technology Version Index](../../../../0-roadmap/supported-versions.md) for
 more details.
 
 ## Prerequisites
@@ -52,27 +51,28 @@ You will need the following information to complete this installation:
 This section provides step-by-step instructions for installation. The specific
 steps are different depending on the deployment model and version of your Ed-Fi
 ODS / API.
-  * Admin App for Suite 3 v2.1
-  * [Before You Install](#before-you-install)
-  * [Compatibility \& Supported ODS / API Versions](#compatibility--supported-ods--api-versions)
-  * [Prerequisites](#prerequisites)
-  * [Required Information](#required-information)
-  * [Installation Instructions](#installation-instructions)
-  * [On-Premises Deployment](#on-premises-deployment)
-    * [Step 1. Download and Open Installer Package](#step-1-download-and-open-installer-package)
-    * [Step 2. Configure Installation](#step-2configure-installation)
-    * [Step 3. Run the Installation via PowerShell](#step-3-run-the-installation-via-powershell)
-    * [Step 4. Create SQL Server Login (if "useIntegratedSecurity" set to "true")](#step-4-create-sql-server-login-if-useintegratedsecurity-set-to-true)
-    * [Step 5. Check Folder Permissions](#step-5check-folder-permissions)
-    * [Step 6. Create Initial Administrative User](#step-6-create-initial-administrative-user)
-    * [Step 7. Restart the ODS / API](#step-7-restart-theods--api)
-    * [Step 8. Using the Admin App](#step-8-using-the-admin-app)
+
+* Admin App for Suite 3 v2.1
+* [Before You Install](#before-you-install)
+* [Compatibility \& Supported ODS / API Versions](#compatibility--supported-ods--api-versions)
+* [Prerequisites](#prerequisites)
+* [Required Information](#required-information)
+* [Installation Instructions](#installation-instructions)
+* [On-Premises Deployment](#on-premises-deployment)
+  * [Step 1. Download and Open Installer Package](#step-1-download-and-open-installer-package)
+  * [Step 2. Configure Installation](#step-2configure-installation)
+  * [Step 3. Run the Installation via PowerShell](#step-3-run-the-installation-via-powershell)
+  * [Step 4. Create SQL Server Login (if "useIntegratedSecurity" set to "true")](#step-4-create-sql-server-login-if-useintegratedsecurity-set-to-true)
+  * [Step 5. Check Folder Permissions](#step-5check-folder-permissions)
+  * [Step 6. Create Initial Administrative User](#step-6-create-initial-administrative-user)
+  * [Step 7. Restart the ODS / API](#step-7-restart-theods--api)
+  * [Step 8. Using the Admin App](#step-8-using-the-admin-app)
 
 ## On-Premises Deployment
 
 Each step is outlined in detail below for the PowerShell deployment. Ensure that
 you have permission to execute PowerShell scripts. For more information,
-see [http://go.microsoft.com/fwlink/?LinkID=135170](http://go.microsoft.com/fwlink/?LinkID=135170).
+see [about_Execution_Policies](http://go.microsoft.com/fwlink/?LinkID=135170).
 
 ### Step 1. Download and Open Installer Package
 
@@ -247,8 +247,7 @@ If the AdminApp not available on the list, add with Full control.
 Upon first launch of the Admin App, you will have to create the initial
 administrative user for the application. This consists of creating a username
 and password for the initial user. Additional users can be added at a later
-time. Please see [Securing the Admin App
-(v2.x)](https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25243028) for more
+time. Please see [Securing the Admin App (v2.x)](../../securing-the-admin-app.md) for more
 information.
 
 ### Step 7. Restart the ODS / API
@@ -270,11 +269,7 @@ The Admin App is now configured for use with your Ed-Fi ODS / API instance.
 Please visit the following articles to help with next actions in using Admin
 App:
 
-* [Securing the Admin App (v2.x)](https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25243028)
+* [Securing the Admin App (v2.x)](../../securing-the-admin-app.md)
 * [Multi-Instance Connections](../../../getting-started/multi-instance-connections)
 * [Next Steps](../../../getting-started/next-steps)
 * [Known Issues](../../../getting-started/known-issues)
-
-Admin App also has
-a [https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25231476](https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25231476) for
-an in-depth look at each of the features contained within.

@@ -1,19 +1,16 @@
 # Admin API 1.x - Docker installation
 
-# Before You Install
+## Before You Install
 
 This section provides general information you should review before installing
 the Ed-Fi ODS / API Admin API for v1.4.0.
 
-## Compatibility & Supported ODS / API Versions
+### Compatibility & Supported ODS / API Versions
 
 This version of the Admin API has been tested and can be installed for use with
-the Ed-Fi ODS / API v3.4 - 6.1. See the [Ed-Fi Technology Version
-Index](https://edfi.atlassian.net/wiki/spaces/ETKB/pages/20875717/Ed-Fi+Technology+Version+Index) for more details.
+the Ed-Fi ODS / API v3.4 - 6.1. See the [Ed-Fi Technology Suite Supported Versions](../../../../0-roadmap/supported-versions.md) for more details.
 
-# Installation Instructions
-
-## General Prerequisites
+### General Prerequisites
 
 The following are required to install the Admin API:
 
@@ -31,7 +28,7 @@ The following are required to install the Admin API:
   pre-installed browser on Windows Server) may load but may not function when
   using Admin API.
 
-# Installation Instructions
+## Installation Instructions
 
 Admin API is not included with the ODS-Docker solution by default, but can be
 hosted as part of that ecosystem.
@@ -44,14 +41,14 @@ Then, apply the below changes to the environment to introduce the Admin API.
 Admin API does not support in-place upgrades from prior versions.  Please
 install a fresh copy of Admin API to upgrade from prior versions.
 
-## 1\. Include Admin API in the ODS Docker Setup
+### 1\. Include Admin API in the ODS Docker Setup
 
-### Docker Compose
+#### Docker Compose
 
 Add the following to your `docker-compose.yml`  file. This can be done either
 instead of or in addition to the `adminapp`  service.
 
-#### Admin API Application
+##### Admin API Application
 
 This service depends on the `pb-admin`  and subsequently `db-admin` services to
 run.
@@ -89,7 +86,7 @@ adminapi:
 # ... below are network and volume configs
 ```
 
-#### Admin API Database
+##### Admin API Database
 
 For the most part, the Admin API shares the same database schema as the Admin
 App. However, there are a few tables required for storing API client
@@ -127,7 +124,7 @@ db-admin:
 # ... below are other services
 ```
 
-### .env Settings
+#### .env Settings
 
 Add the following to your environment settings file to support Admin API. Note
 that when running both Admin App and Admin API, some of these settings may
@@ -135,7 +132,7 @@ overlap. This is expected, and the same values can be used.
 
 **.env for Admin API**
 
-```docker
+```ini
 ADMIN_API_TAG=<version of image to run>
 ADMIN_API_DB_TAG=<version of image to run>
 API_MODE=<API Mode Eg. SharedInstance, YearSpecific, DistrictSpecific>
@@ -164,14 +161,14 @@ ADMIN_API_HEALTHCHECK_TEST="curl -f http://${ADMIN_API_VIRTUAL_NAME}/health"
 API_INTERNAL_URL = http://${ODS_VIRTUAL_NAME}
 ```
 
-### Nginx / Gateway Configuration
+#### Nginx / Gateway Configuration
 
 Update your nginx server configuration to include the Admin API in the reverse
 proxy.
 
 **default.conf.template**
 
-```json
+```none
 # upstream server config...
 
 server {
@@ -191,7 +188,7 @@ server {
 }
 ```
 
-## 2\. Relaunch the Docker Composition
+### 2\. Relaunch the Docker Composition
 
 After updating the files, restart the docker composition.
 
@@ -199,7 +196,7 @@ After updating the files, restart the docker composition.
 docker compose -f ./compose/your-compose-file.yml --env-file ./.env up -d
 ```
 
-## 3\. Execute First-Time Configuration
+### 3\. Execute First-Time Configuration
 
 Continue on to [First-Time Configuration for Admin
 1.x](first-time-configuration-for-admin-api-1x.md).
