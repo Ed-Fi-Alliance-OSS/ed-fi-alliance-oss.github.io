@@ -232,7 +232,7 @@ To request multiple features, you can separate them with commas
 FEATURE=[assignments, activities]
 ```
 
-You may have questions about what exact data is included. That information is LMS-specific. If you need that info, you can consult: [LMS Unifying Data Model#AdditionalMappingNotes](../../ed-fi-lms-toolkit/lms-unifying-data-model.md)
+You may have questions about what exact data is included. That information is LMS-specific. If you need that info, you can consult: [LMS Unifying Data Model#AdditionalMappingNotes](../lms-unifying-data-model/readme.md)
 
 At this point, we recommend that you these two lines to your .env file - this tells the extractor to gather assignments data.
 

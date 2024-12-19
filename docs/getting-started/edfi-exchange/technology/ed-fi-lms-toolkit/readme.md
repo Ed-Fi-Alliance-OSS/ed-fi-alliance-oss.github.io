@@ -14,7 +14,7 @@ The LMS Toolkit is use-case driven, and the primary use cases are:
 ## Download
 
 * **Code :** [https://github.com/Ed-Fi-Exchange-OSS/LMS-Toolkit](https://github.com/Ed-Fi-Exchange-OSS/LMS-Toolkit)
-* **Documentation:**  [Ed-Fi LMS Toolkit](https://edfi.atlassian.net/wiki/spaces/EXCHANGE/pages/22498933/Ed-Fi+LMS+Toolkit)
+* **Documentation:**  [Ed-Fi LMS Toolkit](./lms-toolkit-user-guide/readme.md)
 
 ## Component Description
 
@@ -25,14 +25,14 @@ The Toolkit consists of several components.
 | Extractors | Utilities that extracts data from important K12 instructional systems and merges that data into a common format (LMS Unifying Data Model).Note that these can be used independent of the Ed-Fi technology infrastructure and platform if desired. | Pull from Canvas, Google Classroom, or Schoology | CSV files |
 | Loaders | Utilities that push the data into a SQL Server database store. | CSV files created by the extractors | `lms.*`  tables in SQL Server |
 | Harmonizers | Utilities that help make the LMS data queryable alongside SIS data, by addressing problems such as entity identity mismatch, filtering of irrelevant MLS data, etc. | `edfi.*`  tables in SQL Server and `lms.*`  tables in SQL Server | `lms**x**.*`  tables in SQL Server |
-| [Ed-Fi ODS/API Extension](./ed-fi-lms-toolkit/lmsx-extension-to-the-ed-fi-odsapi.md) | Builds support for the LMSX extension directly into the Ed-Fi ODS/API, allowing LMS vendors to push data directly into the API, and thus making the tools above unnecessary | Push from an LMS vendor | `lms**x**.*`  tables in SQL Server |
+| [Ed-Fi ODS/API Extension](./lmsx-extension-to-the-ed-fi-odsapi.md) | Builds support for the LMSX extension directly into the Ed-Fi ODS/API, allowing LMS vendors to push data directly into the API, and thus making the tools above unnecessary | Push from an LMS vendor | `lms**x**.*`  tables in SQL Server |
 
 ### Option 1: Pull Data from the Source System
 
 ![LMS Toolkit Diagram](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/technology/image2023-1-24_21-48-41.png)
 
 :::tip
-See [LMS Toolkit Userguide](./lms-toolkit-user-guide.md) for more detailed technical information / architecture of these components. See [LMS Toolkit User Guide](./ed-fi-lms-toolkit/lms-toolkit-user-guide.md) for installation instructions.
+See [LMS Toolkit Userguide](./lms-toolkit-user-guide/readme.md) for more detailed technical information / architecture of these components. See [LMS Toolkit User Guide](./lms-toolkit-user-guide/readme.md) for installation instructions.
 :::
 
 ### Option 2: Direct Integration with ODS/API
@@ -40,7 +40,7 @@ See [LMS Toolkit Userguide](./lms-toolkit-user-guide.md) for more detailed tech
 ![Integration Diagram](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/technology/image2022-1-25_14-39-17.png)
 
 :::tip
-See [LMSX Extension to the Ed-Fi ODS/API](./ed-fi-lms-toolkit/lmsx-extension-to-the-ed-fi-odsapi.md) for more information on the API definition. See [LMS Toolkit User Guide](./ed-fi-lms-toolkit/lms-toolkit-user-guide.md) for installation instructions.
+See [LMSX Extension to the Ed-Fi ODS/API](./lmsx-extension-to-the-ed-fi-odsapi.md) for more information on the API definition. See [LMS Toolkit User Guide](./lms-toolkit-user-guide/readme.md) for installation instructions.
 :::
 
 ## Supported LMS Systems
@@ -49,11 +49,11 @@ Tools are available for the following systems:
 
 | Instructional System |     | User / Developer Info |
 | --- | --- | --- |
-| ![Google Classroom logo](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/technology/Google_Classroom_Logo.png) | Tools for Google Classroom | See GitHub links and other info in the [What's New in the LMS Toolkit](./ed-fi-lms-toolkit/whats-new-in-the-lms-toolkit.md) page. |
+| ![Google Classroom logo](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/technology/Google_Classroom_Logo.png) | Tools for Google Classroom | See GitHub links and other info in the [What's New in the LMS Toolkit](./whats-new-in-the-lms-toolkit.md) page. |
 | ![Canvas Logo](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/technology/canvas-logo.png) | Tools for Canvas LMS |
 | ![Schoology](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/technology/schoology-logo.png) | Tools for Schoology |
 
-A [LMS Unifying Data Model](./ed-fi-lms-toolkit/lms-unifying-data-model.md) designed to aggregate data across systems is also available.
+A [LMS Unifying Data Model](./lms-unifying-data-model/readme.md) designed to aggregate data across systems is also available.
 
 If you would like to help us build tools for your platform, please contact us!
 

@@ -20,8 +20,7 @@ Below we provide information on the access needed by the LMS Toolkit for each LM
 The documentation below can go out of date as the Learning Management Systems providers release new versions. We recommend consulting the latest administrator guide for your LMS if you have problems.
 :::
 
-:::Note
-
+:::note
 Canvas
 
 Create an access token by signing into your Canvas instance.
