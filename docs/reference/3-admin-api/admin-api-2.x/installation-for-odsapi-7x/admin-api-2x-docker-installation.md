@@ -1,36 +1,33 @@
 # Admin API 2.x - Docker installation
 
-# Before You Install
+## Before You Install
 
 This section provides general information you should review before installing
 the Ed-Fi ODS / API Admin API for v2.2.0.
 
-## Compatibility & Supported ODS / API Versions
+### Compatibility & Supported ODS / API Versions
 
 This version of the Admin API has been tested and can be installed for use with
-Ed-Fi ODS / API v7.1. See the [Ed-Fi Technology Version
-Index](https://edfi.atlassian.net/wiki/spaces/ETKB/pages/20875717/Ed-Fi+Technology+Version+Index)
+Ed-Fi ODS / API v7.1. See the [Ed-Fi Technology Suite Supported Versions](/reference/roadmap/supported-versions)
 for more details.
-
-## Installation Instructions
 
 ### General Prerequisites
 
 The following are required to install the Admin API:
 
-*   The Admin API provides an interface to administer an Ed-Fi ODS / API.
-    Understandably, you must have an instance of the Ed-Fi ODS / API v7.1
-    deployed and operational before you can use the Admin API. Tested
-    configurations include on-premises installation via [binary
-    installation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V520/pages/25100419/Getting+Started+-+Binary+Installation)
-    or [source code
-    installation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V520/pages/25100348/Getting+Started+-+Source+Code+Installation). 
-*   A SQL Server 2012 or higher, or Postgres 11 or higher database server (i.e.,
-    the same platform requirement applicable to your ODS / API).
-*   A modern web browser such as Google Chrome, Mozilla Firefox, or Microsoft
-    Edge is required to view live Swagger documentation. Internet Explorer 11 (a
-    pre-installed browser on Windows Server) may load but may not function when
-    using Admin API.
+* The Admin API provides an interface to administer an Ed-Fi ODS / API.
+  Understandably, you must have an instance of the Ed-Fi ODS / API v7.1
+  deployed and operational before you can use the Admin API. Tested
+  configurations include on-premises installation via [binary
+  installation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V520/pages/25100419/Getting+Started+-+Binary+Installation)
+  or [source code
+  installation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V520/pages/25100348/Getting+Started+-+Source+Code+Installation).
+* A SQL Server 2012 or higher, or Postgres 11 or higher database server (i.e.,
+  the same platform requirement applicable to your ODS / API).
+* A modern web browser such as Google Chrome, Mozilla Firefox, or Microsoft
+  Edge is required to view live Swagger documentation. Internet Explorer 11 (a
+  pre-installed browser on Windows Server) may load but may not function when
+  using Admin API.
 
 ## Installation Instructions
 
@@ -56,46 +53,40 @@ instead of or in addition to the `adminapp`  service.
 
 Docker compose
 
-:::info note:
+```none title="Single-Tenant"
+This service depends on the `pb-admin` and subsequently `db-admin` services to run.
+# ... above are other services adminapi:
+image: edfialliance/ods-admin-api:${ADMIN_API_TAG}
+environment: ADMIN_POSTGRES_HOST: pb-admin
+POSTGRES_PORT: "$PGBOUNCER_LISTEN_PORT:-6432}"
+POSTGRES_USER: "${POSTGRES_USER}"
+POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+DATABASEENGINE: "PostgreSql"
+AUTHORITY: ${AUTHORITY}
+ISSUER_URL: $ISSUER_URL}
+SIGNING_KEY: ${SIGNING_KEY}
+ADMIN_API_VIRTUAL_NAME: ${ADMIN_API_VIRTUAL_NAME:-adminapi}
+API_INTERNAL_URL: ${API_INTERNAL_URL}
+AppSettings__DefaultPageSizeOffset: ${PAGING_OFFSET:-0}
+AppSettings__DefaultPageSizeLimit: ${PAGING_LIMIT:-25}
+volumes: - ../../Docker/ssl:/ssl/
+depends_on: - pb-admin
+restart: always
+hostname: ${ADMIN_API_VIRTUAL_NAME:-adminapi}
+container_name: adminapi
+healthcheck: test: $$ADMIN_API_HEALTHCHECK_TEST
+start_period: "60s" retries: 3 # ...
+below are network and volume configs
+```
 
- Single-Tenant
+:::note
 
- ```text
- This service depends on the `pb-admin` and subsequently `db-admin` services to run.
- # ... above are other services adminapi:
-  image: edfialliance/ods-admin-api:${ADMIN_API_TAG}
-  environment: ADMIN_POSTGRES_HOST: pb-admin
-  POSTGRES_PORT: "$PGBOUNCER_LISTEN_PORT:-6432}"
-  POSTGRES_USER: "${POSTGRES_USER}"
-  POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
-  DATABASEENGINE: "PostgreSql"
-  AUTHORITY: ${AUTHORITY}
-  ISSUER_URL: $ISSUER_URL}
-  SIGNING_KEY: ${SIGNING_KEY}
-  ADMIN_API_VIRTUAL_NAME: ${ADMIN_API_VIRTUAL_NAME:-adminapi}
-  API_INTERNAL_URL: ${API_INTERNAL_URL}
-  AppSettings__DefaultPageSizeOffset: ${PAGING_OFFSET:-0}
-  AppSettings__DefaultPageSizeLimit: ${PAGING_LIMIT:-25}
-  volumes: - ../../Docker/ssl:/ssl/
-  depends_on: - pb-admin
-  restart: always
-  hostname: ${ADMIN_API_VIRTUAL_NAME:-adminapi}
-  container_name: adminapi
-  healthcheck: test: $$ADMIN_API_HEALTHCHECK_TEST
-  start_period: "60s" retries: 3 # ...
-  below are network and volume configs
- ```
- ![](https://edfi.atlassian.net/wiki/images/icons/grey_arrow_down.png)
+Please consider having appsettings.dockertemplate.json file for defining tenant details.
+File content example:
+
 :::
 
-:::info note:
-
- Multi-Tenant
-
- ```json
- Note:
- Please consider having appsettings.dockertemplate.json file for defining tenant details.
- File content example:
+ ```json title="Multi-Tenant"
  {
    "Tenants": {
      "tenant1": {
@@ -117,8 +108,9 @@ Docker compose
    }
  }
 
- Compose file section:
- This service depends on db-admin-tenant1, db-admin-tenant2 services to run
+ Compose file section:  This service depends on db-admin-tenant1, db-admin-tenant2 services to run
+
+ ```none
  # ... above are other services
  adminapi:
      image: edfialliance/ods-admin-api:${ADMIN_API_TAG}
@@ -153,7 +145,6 @@ Docker compose
        retries: 3
  # ... below are network and volumes configs
  ```
-:::
 
 ##### Admin API Database
 
@@ -172,13 +163,9 @@ for your DB service.
 **If you are introducing Admin API to an existing composition do** NOT **change
 the volume mapping configuration in order to preserve your data**. Only
 change the image and tag of the existing service. The below block is a sample of
-this, based on an example ODS / API Docker environment composition. 
+this, based on an example ODS / API Docker environment composition.
 
-:::info note:
-
- Single-Tenant
-
- ```docker
+ ```docker title="Single-Tenant"
  # ... above are other services
  db-admin:
      image: edfialliance/ods-admin-api-db:${ADMIN_API_DB_TAG}
@@ -191,13 +178,8 @@ this, based on an example ODS / API Docker environment composition. 
      container_name: ed-fi-db-admin
  # ... below are other services
  ```
-:::
 
-:::info note:
-
- Multi-Tenant
-
- ```docker
+ ```docker title="Multi-Tenant"
  # ... above are other services
  db-admin-tenant1:
      image: edfialliance/ods-admin-api-db:${ADMIN_API_DB_TAG}
@@ -232,7 +214,6 @@ this, based on an example ODS / API Docker environment composition. 
        retries: 3
  # ... below are other services
  ```
-:::
 
 #### .env Settings
 
@@ -240,9 +221,7 @@ Add the following to your environment settings file to support Admin API. Note
 that when running both Admin App and Admin API, some of these settings may
 overlap. This is expected, and the same values can be used.
 
-**.env for Admin API**
-
-```docker
+```docker title=".env for Admin API"
 ADMIN_API_TAG=<version of image to run>
 ADMIN_API_DB_TAG=<version of image to run>
 ADMIN_API_VIRTUAL_NAME=<virtual name for the Admin API endpoint>
@@ -273,9 +252,7 @@ ADMIN_API_HEALTHCHECK_TEST="curl -f http://${ADMIN_API_VIRTUAL_NAME}/health"
 Update your nginx server configuration to include the Admin API in the reverse
 proxy.
 
-**default.conf.template**
-
-```json
+```json title="default.conf.template"
 # upstream server config...
 
 server {
@@ -299,7 +276,7 @@ server {
 
 After updating the files, restart the docker composition.
 
-```shell
+```bash
 docker compose -f ./compose/your-compose-file.yml --env-file ./.env up -d
 ```
 
@@ -308,9 +285,12 @@ docker compose -f ./compose/your-compose-file.yml --env-file ./.env up -d
 Continue on to [First-Time Configuration for Admin API
 2.x](first-time-configuration-for-admin-api-2x.md).
 
-:::info note:
-  The following is the DockerHub repo for **Admin API v2.2.0 Docker Image** for inclusion in Docker compose:
- *   [edfialliance/ods-admin-api:v2.2.0](https://hub.docker.com/layers/edfialliance/ods-admin-api/v2.2.0/images/sha256-0e818c3741e4dea8473af1b52d25a512684f27bf9529fc43a5c9954e00dc5b0d?context=explore)
+:::info
 
- *   [edfialliance/ods-admin-api-db:v2.2.0](https://hub.docker.com/layers/edfialliance/ods-admin-api-db/v2.2.0/images/sha256-ad0563347f65d9c44bfab6fffee302d6793be4ea84e6d0369242c6cd15a17d39?context=explore)
+The following is the DockerHub repo for **Admin API v2.2.0 Docker Image** for inclusion in Docker compose:
+
+* [edfialliance/ods-admin-api:v2.2.0](https://hub.docker.com/layers/edfialliance/ods-admin-api/v2.2.0/images/sha256-0e818c3741e4dea8473af1b52d25a512684f27bf9529fc43a5c9954e00dc5b0d?context=explore)
+
+* [edfialliance/ods-admin-api-db:v2.2.0](https://hub.docker.com/layers/edfialliance/ods-admin-api-db/v2.2.0/images/sha256-ad0563347f65d9c44bfab6fffee302d6793be4ea84e6d0369242c6cd15a17d39?context=explore)
+
 :::
