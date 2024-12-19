@@ -33,5 +33,3 @@ Within the interface, users can track student referrals for intervention, pre-re
 
 **Generation:** Tech Suite 3
 **For:** ODS / API v3.x
-
-![](https://edfi.atlassian.net/wiki/plugins/servlet/confluence/placeholder/unknown-macro?name=rate&locale=en_US&version=2)
