@@ -37,7 +37,7 @@ The following are required to install the Admin API with IIS:
 
 Each step is outlined in detail below for the PowerShell deployment. Ensure that
 you have permission to execute PowerShell scripts. For more information,
-see [http://go.microsoft.com/fwlink/?LinkID=135170](http://go.microsoft.com/fwlink/?LinkID=135170).
+see [about_Execution_Policies](http://go.microsoft.com/fwlink/?LinkID=135170).
 
 #### **Step 1. Rename and Unzip Admin API Source Files**
 
@@ -133,6 +133,7 @@ complete.
      AdminApiFeatures = $adminApiFeatures
  }
  ```
+
 :::
 
 :::info note:
@@ -166,6 +167,7 @@ complete.
      AdminApiFeatures = $adminApiFeatures
  }
  ```
+
 :::
 
 #### **Step 3. Open a PowerShell Prompt in Administrator Mode**
@@ -318,6 +320,7 @@ preference.
      CONSTRAINT PK_Tokens PRIMARY KEY (Id)
  );
  ```
+
 :::
 
 :::info note:
@@ -396,6 +399,7 @@ preference.
      CONSTRAINT PK_Tokens PRIMARY KEY (Id)
  );
  ```
+
 :::
 
 #### **Step 9. Execute First-Time Configuration**
@@ -407,8 +411,8 @@ Continue on to [First-Time Configuration for Admin
  The following is a Nuget package containing the **Admin API v1.4.0**
  binaries and installer scripts for deployment to IIS.
 
- * [EdFi.Suite3.ODS.AdminApi
+* [EdFi.Suite3.ODS.AdminApi
    1.4.0](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.Suite3.ODS.AdminApi/overview/1.4.0)
- * [Follow Binary Release for Admin App Database
+* [Follow Binary Release for Admin App Database
    v2.3](https://edfi.atlassian.net/wiki/display/ADMIN/Admin+App+for+Suite+3+v2.3)
 :::

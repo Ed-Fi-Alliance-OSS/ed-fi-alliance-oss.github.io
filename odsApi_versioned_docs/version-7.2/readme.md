@@ -43,9 +43,7 @@ Here are some resource highlights for the ODS / API v7.2:
 This site contains the latest version of the Ed-Fi ODS / API for Suite 3,
 Version 7.2.
 
-* Looking for previous versions of the Ed-Fi ODS / API? Visit the [Ed-Fi
-  Technology Version
-  Index](https://edfi.atlassian.net/wiki/spaces/ETKB/pages/20875717/Ed-Fi+Technology+Version+Index#Ed-FiTechnologyVersionIndex-Data-Standard).
+* Looking for previous versions of the Ed-Fi ODS / API? Visit the [Ed-Fi Technology Suite Supported Versions](/reference/roadmap/supported-versions).
 * Looking for another Ed-Fi Technology? Visit the [Ed-Fi Reference Documentation](/reference).
 
 :::

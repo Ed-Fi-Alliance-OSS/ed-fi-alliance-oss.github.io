@@ -17,7 +17,7 @@ more details.
 ### Prerequisites
 
 A running instance of the ODS / API v7.1 platform must be configured and running
-before installing Admin API.  
+before installing Admin API.
 
 Admin API only supports running one instance of the application at a time in an
 ODS / API ecosystem. Future versions may allow for scaling and load balancing.
@@ -37,7 +37,7 @@ The following are required to install the Admin API with IIS:
 
 Each step is outlined in detail below for the PowerShell deployment. Ensure that
 you have permission to execute PowerShell scripts. For more information,
-see [http://go.microsoft.com/fwlink/?LinkID=135170](http://go.microsoft.com/fwlink/?LinkID=135170).
+see [about_Execution_Policies](http://go.microsoft.com/fwlink/?LinkID=135170).
 
 #### **Step 1. Rename and Unzip Admin API Source Files**
 
@@ -113,6 +113,7 @@ Database engine specific connection information ($dbConnectionInfo):
          Password = "examplePassword"
  }
  ```
+
 :::
 
 :::info note:
@@ -128,6 +129,7 @@ Database engine specific connection information ($dbConnectionInfo):
          Password = "examplePassword"
  }
  ```
+
 :::
 
 :::info note:
@@ -153,6 +155,7 @@ Database engine specific connection information ($dbConnectionInfo):
      AuthenticationSettings = $authenticationSettings
  }
  ```
+
 :::
 
 :::info note:
@@ -189,6 +192,7 @@ Database engine specific connection information ($dbConnectionInfo):
      }
  }
  ```
+
 :::
 
 #### **Step 3. Open a PowerShell Prompt in Administrator Mode**
@@ -275,6 +279,6 @@ Continue on to [First-Time Configuration for Admin API
   The following is a Nuget package containing the **Admin API v2.2.0**
   binaries and installer scripts for deployment to IIS.
 
- * [EdFi.Suite3.ODS.AdminApi
+* [EdFi.Suite3.ODS.AdminApi
      v2.2.0](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.Suite3.ODS.AdminApi/overview/2.2.0)
 :::
