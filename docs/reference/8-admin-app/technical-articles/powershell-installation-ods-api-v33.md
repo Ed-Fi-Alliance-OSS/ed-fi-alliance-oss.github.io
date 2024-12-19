@@ -43,7 +43,7 @@ ODS / API.
 
 Currently, the ODS / API Admin App can be installed for use with the Ed-Fi ODS /
 API v3.3. See the [Ed-Fi Technology Version
-Index](https://edfi.atlassian.net/wiki/spaces/ETKB/pages/20875717/Ed-Fi+Technology+Version+Index) for
+Index](../../0-roadmap/supported-versions.md) for
 more details.
 
 ## On-Premises Deployment for ODS / API for v3.3
