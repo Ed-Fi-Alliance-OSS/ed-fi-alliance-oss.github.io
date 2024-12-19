@@ -84,7 +84,7 @@ The following are required to install the Admin App:
     Each step is outlined in detail below for the PowerShell deployment. Ensure
     that you have permission to execute PowerShell scripts. For more
     information,
-    see [http://go.microsoft.com/fwlink/?LinkID=135170](http://go.microsoft.com/fwlink/?LinkID=135170).
+    see [about_Execution_Policies](http://go.microsoft.com/fwlink/?LinkID=135170).
 
 ### Step 1. Download and Open Installer Package
 
@@ -359,7 +359,3 @@ The following are required to install the Admin App:
     Connections](../../getting-started/multi-instance-connections)
   * [Next Steps](../../getting-started/next-steps)
   * [Known Issues](../../getting-started/known-issues)
-
-    Admin App also has
-    a [https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25231476](https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25231476) for
-    an in-depth look at each of the features contained within.

@@ -8,8 +8,7 @@ the Ed-Fi ODS / API Admin App for Suite 3 v2.4.
 ## Compatibility & Supported ODS / API Versions
 
 This version ODS / API Admin App has been tested and can be installed for use
-with the Ed-Fi ODS / API v3.4 through v5.3. See the [Ed-Fi Technology Version
-Index](https://edfi.atlassian.net/wiki/spaces/ETKB/pages/20875717/Ed-Fi+Technology+Version+Index) for
+with the Ed-Fi ODS / API v3.4 through v5.3. See the [Ed-Fi Technology Suite Supported Versions](../../../../0-roadmap/supported-versions.md) for
 more details.
 
 Admin App supports two deployment modes:  Docker Deployment and On-Premise
@@ -109,7 +108,7 @@ ODS / API.
 
 Each step is outlined in detail below for the PowerShell deployment. Ensure that
 you have permission to execute PowerShell scripts. For more information,
-see [http://go.microsoft.com/fwlink/?LinkID=135170](http://go.microsoft.com/fwlink/?LinkID=135170).
+see [about_Execution_Policies](http://go.microsoft.com/fwlink/?LinkID=135170).
 
 ### Step 1. Download and Open Installer Package
 
@@ -222,6 +221,7 @@ Configuration samples for the "install.ps1" file:
   OdsApiUrl = "https://localhost:54746"
  }
  ```
+
 :::
 
 :::info note:
@@ -248,6 +248,7 @@ Configuration samples for the "install.ps1" file:
      AdminAppFeatures = $adminAppFeatures
  }
  ```
+
  :::
 
  :::info note:
@@ -274,6 +275,7 @@ Configuration samples for the "install.ps1" file:
  }
 
  ```
+
 :::
 
 ### Step 3. Open a PowerShell Prompt in Administrator Mode
@@ -335,7 +337,6 @@ the next step.
 
 ![SQLLogin-role](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/older-versions-of-admin-app/SQLLogin-role.JPG)
 
-
 ### Step 6. Update Application Pool Identity (Optional)
 
 As mentioned on Step 5, installation process sets up an appropriate SQL Login
@@ -373,7 +374,6 @@ If the AdminApp not available on the list, add with Full control.
 
 ![Permission groups](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/older-versions-of-admin-app/AddFolderPermission.JPG)
 
-
 :::info note:
 If you choose custom login over default Application Pool Identity ( Refer
 Step 6 for more details), then make sure the custom login has full control on
@@ -386,7 +386,7 @@ Upon first launch of the Admin App, you will have to create the initial
 administrative user for the application. This consists of creating a username
 and password for the initial user. Additional users can be added at a later
 time. Please see [Securing the Admin App
-(v2.x)](https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25243028) for more
+(v2.x)](../../securing-the-admin-app.md) for more
 information.
 
 ### Step 9. Enable Product Improvement Features
@@ -451,12 +451,8 @@ Please visit the following articles to help with next actions in using Admin
 App:
 
 * [Securing the Admin App
-  (v2.x)](https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25243028)
+  (v2.x)](../../securing-the-admin-app.md)
 * [Multi-Instance
   Connections](../../../getting-started/multi-instance-connections)
 * [Next Steps](../../../getting-started/next-steps)
 * [Known Issues](../../../getting-started/known-issues)
-
-Admin App also has
-a [https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25231476](https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25231476) for
-an in-depth look at each of the features contained within.

@@ -135,7 +135,7 @@ like:
 
 Ensure that you have permission to execute PowerShell scripts. For more
 information,
-see [http://go.microsoft.com/fwlink/?LinkID=135170](http://go.microsoft.com/fwlink/?LinkID=135170).
+see [about_Execution_Policies](http://go.microsoft.com/fwlink/?LinkID=135170).
 
 Launch PowerShell as an administrator, cd to the directory containing the
 installation files, and run the "install.ps1" script.

@@ -3,9 +3,7 @@
 This section outlines a few recommended next steps following a successful
 installation:
 
-## Details follow.
-
-### Explore Admin App Features
+## Explore Admin App Features
 
 After installation, consider exploring the Admin App itself:
 
@@ -33,9 +31,6 @@ After installation, consider exploring the Admin App itself:
   built-in synchronization to populate an ODS / API directly from Certica AB.
   The license is free, and can be obtained online by [visiting this
   link](https://certicasolutions.com/products/academic-benchmarks/#demo).
-
-The activities above are documented in
-the [https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25231476](https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25231476).
 
 ## Admin App Walkthrough
 
@@ -231,19 +226,19 @@ from the dropdown of possible school years.
 ![School Year](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/image2021-4-29_8-29-43.png)
 
 There are special considerations for Year Specific mode. At instance
- registration time, we default the instance's year selection to the single year
- that the instance is dedicated for, saving the user from (likely) ever needing
- to edit it themselves. However, we do still offer the controls, primarily so a
- user could correct the system if the school year was altered outside of the
- app. When a user goes to edit the year in Year Specific mode, we put up a
- warning as well as suggest exactly what value is expected for that instance.
- This warning and suggestion also helps to guide the user away from an "off by
- one" mistake as "Current Year 2021" really corresponds with a "2020-2021"
- school year.
+registration time, we default the instance's year selection to the single year
+that the instance is dedicated for, saving the user from (likely) ever needing
+to edit it themselves. However, we do still offer the controls, primarily so a
+user could correct the system if the school year was altered outside of the
+app. When a user goes to edit the year in Year Specific mode, we put up a
+warning as well as suggest exactly what value is expected for that instance.
+This warning and suggestion also helps to guide the user away from an "off by
+one" mistake as "Current Year 2021" really corresponds with a "2020-2021"
+school year.
 
- ![Error School Year](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/image-2021-03-18-11-55-55-246.png)
+![Error School Year](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/image-2021-03-18-11-55-55-246.png)
 
-# Review Ed-Fi ODS / API Documentation
+## Review Ed-Fi ODS / API Documentation
 
 If you're new to the Ed-Fi ODS / API — or even if you're upgrading from a
 previous version in tandem with installing the Admin App — the product
@@ -251,13 +246,12 @@ documentation for your solution has additional information you'll find useful:
 
 * The Ed-Fi ODS / API v5.2 documentation is available online
   [here](https://edfi.atlassian.net/wiki/spaces/ODSAPI34).
-* You can find documentation for prior version at [Ed-Fi Technology Version
-  Index](https://edfi.atlassian.net/wiki/spaces/ETKB/pages/20875717/Ed-Fi+Technology+Version+Index)
+* You can find documentation for prior version at [Ed-Fi Technology Suite Supported Versions](../../../../0-roadmap/supported-versions.md)
 
 The Platform Developers' Guide and API Client Developers' Guide are essential
 reading for platform hosts.
 
-# Admin App Source Code Access
+## Admin App Source Code Access
 
 Admin App source code is available under Apache 2 license terms, and can be
 found

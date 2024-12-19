@@ -45,31 +45,10 @@ This section provides step-by-step instructions for installation. The specific
 steps are different depending on the deployment model and version of your Ed-Fi
 ODS / API.
 
-- Admin App v1.7 for ODS / API v3.3
-- [Before You Install](#before-you-install)
-  - [Prerequisites](#prerequisites)
-  - [Required Information](#required-information)
-  - [Installation Instructions](#installation-instructions)
-  - [Compatibility \& Supported ODS / API Versions](#compatibility--supported-ods--api-versions)
-  - [On-Premises Deployment for ODS / API for v3.3](#on-premises-deployment-for-ods--api-for-v33)
-    - [Step 1. Select Install Location](#step-1-select-install-location)
-    - [Step 2. Configure SQL Connection](#step-2-configure-sql-connection)
-    - [Step 3. ODS / API URL Configuration](#step-3ods--api-url-configuration)
-    - [Step 4. ODS / API Mode**](#step-4-ods--api-mode)
-    - [Step 5. Create SQL Server Login (if "Trusted Connection" used above)](#step-5-create-sql-server-login-if-trusted-connection-used-above)
-    - [\*\*](#)
-    - [Step 6. Checking Folder Permission (Optional)](#step-6checking-folder-permission-optional)
-    - [Step 7. Securing the Admin App**](#step-7-securing-the-admin-app)
-    - [Step 8. Admin App Licensing \& Configuration](#step-8-admin-app-licensing--configuration)
-    - [Step 9. Restart the ODS / API](#step-9-restart-theods--api)
-    - [Step 10. Admin app walk through](#step-10-admin-app-walk-through)
-    - [Step 11. Reports](#step-11-reports)
-
 ## Compatibility & Supported ODS / API Versions
 
 Currently, the ODS / API Admin App can be installed for use with the Ed-Fi ODS /
-API v3.3. See the [Ed-Fi Technology Version
-Index](https://edfi.atlassian.net/wiki/spaces/ETKB/pages/20875717/Ed-Fi+Technology+Version+Index) for
+API v3.3. See the [Ed-Fi Technology Suite Supported Versions](../../../../0-roadmap/supported-versions.md) for
 more details.
 
 ## On-Premises Deployment for ODS / API for v3.3
@@ -154,7 +133,6 @@ Server login for the EdFi.AdminApp App Pool:
 
 ![Sql Logins](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/older-versions-of-admin-app/image2020-1-23_14-28-11.png)
 
-
 ![Sql Permissions](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/older-versions-of-admin-app/image2020-1-23_14-30-55.png)
 
 ### Step 6. Checking Folder Permission (Optional)
@@ -223,7 +201,6 @@ In this step, we'll add a new vendor and a client application.
 If you're not already there, go to the Admin App Home page:
 
 ![Main Admin App](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/older-versions-of-admin-app/image2020-1-24_15-55-45.png)
-
 
 Click **Settings** and you'll be presented with the screen below. We'll use this
 screen to add a vendor.
@@ -351,4 +328,3 @@ By clicking on the individual report link will take you to the detailed report
 page.
 
 ![ODS District Report](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/older-versions-of-admin-app/Applicationpage18.JPG)
-

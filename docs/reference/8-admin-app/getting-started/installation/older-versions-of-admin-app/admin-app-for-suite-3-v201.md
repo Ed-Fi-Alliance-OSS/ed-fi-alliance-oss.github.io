@@ -8,8 +8,7 @@ the Ed-Fi ODS / API Admin App for Suite 3 v2.0.1.
 ## Compatibility & Supported ODS / API Versions
 
 This version ODS / API Admin App can be installed for use with the Ed-Fi ODS /
-API v3.4 and v5.0.0. See the [Ed-Fi Technology Version
-Index](https://edfi.atlassian.net/wiki/spaces/ETKB/pages/20875717/Ed-Fi+Technology+Version+Index) for
+API v3.4 and v5.0.0. See the [Ed-Fi Technology Suite Supported Versions](../../../../0-roadmap/supported-versions.md) for
 more details.
 
 ## Prerequisites
@@ -51,7 +50,7 @@ ODS / API.
 
 Each step is outlined in detail below for the PowerShell deployment. Ensure that
 you have permission to execute PowerShell scripts. For more information,
-see [http://go.microsoft.com/fwlink/?LinkID=135170](http://go.microsoft.com/fwlink/?LinkID=135170).
+see [about_Execution_Policies](http://go.microsoft.com/fwlink/?LinkID=135170).
 
 ### Step 1. Download and Open Installer Package
 
@@ -193,7 +192,6 @@ Run "install.ps1" script.
 The PowerShell output will look something like the following:
 
 ![Run Powershell](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/older-versions-of-admin-app/Successful-Installation.JPG)
-
 
 ### Step 4. Create SQL Server Login (if "useIntegratedSecurity" set to "true")
 

@@ -1,18 +1,15 @@
 # Admin API 2.x - IIS Installation (Manual)
 
-# Before You Install
+## Before You Install
 
 This section provides general information you should review before installing
 the Ed-Fi ODS / API Admin API for v2.2.0.
 
-## Compatibility & Supported ODS / API Versions
+### Compatibility & Supported ODS / API Versions
 
 This version of the Admin API has been tested and can be installed for use with
-the Ed-Fi ODS / API v7.1.  See the [Ed-Fi Technology Version
-Index](https://edfi.atlassian.net/wiki/spaces/ETKB/pages/20875717/Ed-Fi+Technology+Version+Index) for
+the Ed-Fi ODS / API v7.1.  See the [Ed-Fi Technology Suite Supported Versions](../../../../0-roadmap/supported-versions.md) for
 more details.
-
-## Installation Instructions
 
 ### Prerequisites
 
@@ -38,7 +35,7 @@ The following are required to install the Admin API with IIS:
 ### **Step 1. Create Admin API Directory**
 
 Create a directory to hold all of the Admin API source files. In this example,
-we'll use a directory on the following path: "C:\\Ed-Fi\\AdminAPI".
+we'll use a directory on the following path: `C:\Ed-Fi\AdminAPI`.
 
 ![Empty Installation Folder](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/installation-v2/Empty%20Installation%20Folder.png)
 
@@ -78,7 +75,7 @@ step.
 ### **Step 4. Configure App/Web Configuration Files**
 
 You will need to manually edit connection strings, authorization settings, and
-keys in "AdminApi\\appsettings.json". Some values to note:
+keys in `AdminApi\appsettings.json`. Some values to note:
 
 * Authentication Settings
   * `Authentication:SigningKey`  must be a Base64-encoded 256-bit string. The
@@ -117,42 +114,42 @@ keys in "AdminApi\\appsettings.json". Some values to note:
 
 Here is a snippet from a properly configured application settings file:
 
-**appsettings.json**
-
-```json
-    "AppSettings": {
-        "DatabaseEngine": "SqlServer",
-        "PathBase": "",
-        "DefaultPageSizeOffset": 0,
-        "DefaultPageSizeLimit": 25,
-        "MultiTenancy": false
+```json title="appsettings.json"
+{
+  "AppSettings": {
+      "DatabaseEngine": "SqlServer",
+      "PathBase": "",
+       "DefaultPageSizeOffset": 0,
+      "DefaultPageSizeLimit": 25,
+       "MultiTenancy": false
       },
-    "Authentication": {
-        "Authority": "https://YOUR_SERVER_NAME_HERE/AdminApi",
-        "IssuerUrl": "https://YOUR_SERVER_NAME_HERE/AdminApi",
-        "SigningKey": "YOUR_BASE64_ENCODED_256_BIT_STRING",
-        "AllowRegistration": false
-    },
+  "Authentication": {
+      "Authority": "https://YOUR_SERVER_NAME_HERE/AdminApi",
+      "IssuerUrl": "https://YOUR_SERVER_NAME_HERE/AdminApi",
+      "SigningKey": "YOUR_BASE64_ENCODED_256_BIT_STRING",
+      "AllowRegistration": false
+  },
     "SwaggerSettings": {
-        "EnableSwagger": false,
-        "DefaultTenant": ""
-    },
+      "EnableSwagger": false,
+      "DefaultTenant": ""
+  },
     "EnableDockerEnvironment": false,
-    "ConnectionStrings": {
-        "Admin": "Data Source=(local);Initial Catalog=EdFi_Admin;Trusted_Connection=True",
-        "Security": "Data Source=(local);Initial Catalog=EdFi_Security;Trusted_Connection=True"
-    },
-    "Log4NetCore": {
-        "Log4NetConfigFileName": "log4net\\log4net.config"
-    },
-    "Logging": {
-        "LogLevel": {
-            "Default": "Information",
-            "Microsoft": "Warning",
-            "Microsoft.Hosting.Lifetime": "Information"
-        }
-    },
-    "AllowedHosts": "*"
+  "ConnectionStrings": {
+      "Admin": "Data Source=(local);Initial Catalog=EdFi_Admin;Trusted_Connection=True",
+      "Security": "Data Source=(local);Initial Catalog=EdFi_Security;Trusted_Connection=True"
+  },
+  "Log4NetCore": {
+      "Log4NetConfigFileName": "log4net\\log4net.config"
+  },
+  "Logging": {
+      "LogLevel": {
+          "Default": "Information",
+          "Microsoft": "Warning",
+          "Microsoft.Hosting.Lifetime": "Information"
+      }
+  },
+  "AllowedHosts": "*"
+}
 ```
 
 ### **Step 5. Create Self-Signed Certificate in IIS Manager**
@@ -250,71 +247,69 @@ etc..)
  Execute the below script against the EdFi\_Admin database using psql ,
  PgAdmin, or the tool of your choice.
 
- **adminapi-tables-pgsql.sql**
+```sql title="adminapi-tables-pgsql.sql"
+CREATE SCHEMA IF NOT EXISTS adminapi;
 
- ```sql
- CREATE SCHEMA IF NOT EXISTS adminapi;
+CREATE TABLE adminapi.Applications (
+    Id INT NOT NULL GENERATED ALWAYS AS IDENTITY,
+    ConcurrencyToken VARCHAR(128) NULL,
+    ClientId VARCHAR(256) NULL,
+    ClientSecret VARCHAR(256) NULL,
+    Type VARCHAR(256) NULL,
+    ConsentType VARCHAR(256) NULL,
+    Permissions VARCHAR NULL,
+    Properties VARCHAR NULL,
+    Requirements VARCHAR NULL,
+    DisplayName VARCHAR(256) NULL,
+    DisplayNames VARCHAR NULL,
+    RedirectUris VARCHAR NULL,
+    PostLogoutRedirectUris VARCHAR NULL,
+    CONSTRAINT PK_Applications PRIMARY KEY (Id)
+);
 
- CREATE TABLE adminapi.Applications (
-     Id INT NOT NULL GENERATED ALWAYS AS IDENTITY,
-     ConcurrencyToken VARCHAR(128) NULL,
-     ClientId VARCHAR(256) NULL,
-     ClientSecret VARCHAR(256) NULL,
-     Type VARCHAR(256) NULL,
-     ConsentType VARCHAR(256) NULL,
-     Permissions VARCHAR NULL,
-     Properties VARCHAR NULL,
-     Requirements VARCHAR NULL,
-     DisplayName VARCHAR(256) NULL,
-     DisplayNames VARCHAR NULL,
-     RedirectUris VARCHAR NULL,
-     PostLogoutRedirectUris VARCHAR NULL,
-     CONSTRAINT PK_Applications PRIMARY KEY (Id)
- );
+CREATE TABLE adminapi.Scopes (
+    Id INT NOT NULL GENERATED ALWAYS AS IDENTITY,
+    Name VARCHAR(256) NULL,
+    ConcurrencyToken VARCHAR(128) NULL,
+    Description VARCHAR NULL,
+    Descriptions VARCHAR NULL,
+    DisplayName VARCHAR(256) NULL,
+    DisplayNames VARCHAR NULL,
+    Properties VARCHAR NULL,
+    Resources VARCHAR NULL,
+    CONSTRAINT PK_Scopes PRIMARY KEY (Id)
+);
 
- CREATE TABLE adminapi.Scopes (
-     Id INT NOT NULL GENERATED ALWAYS AS IDENTITY,
-     Name VARCHAR(256) NULL,
-     ConcurrencyToken VARCHAR(128) NULL,
-     Description VARCHAR NULL,
-     Descriptions VARCHAR NULL,
-     DisplayName VARCHAR(256) NULL,
-     DisplayNames VARCHAR NULL,
-     Properties VARCHAR NULL,
-     Resources VARCHAR NULL,
-     CONSTRAINT PK_Scopes PRIMARY KEY (Id)
- );
+CREATE TABLE adminapi.Authorizations (
+    Id INT NOT NULL GENERATED ALWAYS AS IDENTITY,
+    ConcurrencyToken VARCHAR(128) NULL,
+    ApplicationId int NOT NULL,
+    Scopes VARCHAR NULL,
+    Subject VARCHAR(256) NULL,
+    Status VARCHAR(256) NULL,
+    Properties VARCHAR NULL,
+    CreationDate TIMESTAMP NULL,
+    CONSTRAINT PK_Authorizations PRIMARY KEY (Id),
+    CONSTRAINT FK_AuthorizationsId_ApplicationId FOREIGN KEY ApplicationId) REFERENCES adminapi.Applications (Id) ON DELETE RESTRICT
+);
 
- CREATE TABLE adminapi.Authorizations (
-     Id INT NOT NULL GENERATED ALWAYS AS IDENTITY,
-     ConcurrencyToken VARCHAR(128) NULL,
-     ApplicationId int NOT NULL,
-     Scopes VARCHAR NULL,
-     Subject VARCHAR(256) NULL,
-     Status VARCHAR(256) NULL,
-     Properties VARCHAR NULL,
-     CreationDate TIMESTAMP NULL,
-     CONSTRAINT PK_Authorizations PRIMARY KEY (Id),
-     CONSTRAINT FK_AuthorizationsId_ApplicationId FOREIGN KEY ApplicationId) REFERENCES adminapi.Applications (Id) ON DELETE RESTRICT
- );
-
- CREATE TABLE adminapi.Tokens (
-     Id INT NOT NULL GENERATED ALWAYS AS IDENTITY,
-     ConcurrencyToken VARCHAR(128) NULL,
-     ApplicationId int NULL,
-     AuthorizationId int NULL,
-     Type VARCHAR(256) NULL,
-     CreationDate TIMESTAMP NULL,
-     ExpirationDate TIMESTAMP NULL,
-     RedemptionDate TIMESTAMP NULL,
-     Payload VARCHAR NULL,
-     Properties VARCHAR NULL,
-     Subject VARCHAR(256) NULL,
-     Status VARCHAR(256) NULL,
-     ReferenceId VARCHAR(256) NULL,
-     CONSTRAINT PK_Tokens PRIMARY KEY (Id)
- );
- ```
+CREATE TABLE adminapi.Tokens (
+    Id INT NOT NULL GENERATED ALWAYS AS IDENTITY,
+    ConcurrencyToken VARCHAR(128) NULL,
+    ApplicationId int NULL,
+    AuthorizationId int NULL,
+    Type VARCHAR(256) NULL,
+    CreationDate TIMESTAMP NULL,
+    ExpirationDate TIMESTAMP NULL,
+    RedemptionDate TIMESTAMP NULL,
+    Payload VARCHAR NULL,
+    Properties VARCHAR NULL,
+    Subject VARCHAR(256) NULL,
+    Status VARCHAR(256) NULL,
+    ReferenceId VARCHAR(256) NULL,
+    CONSTRAINT PK_Tokens PRIMARY KEY (Id)
+);
+```
 
 :::
 
@@ -326,9 +321,7 @@ etc..)
  Management Studio, Azure Data Studio, PowerShell SQL Tools, or the tool of
  your choice.
 
- **adminapi-tables-mssql.sql**
-
- ```sql
+ ```sql title="adminapi-tables-mssql.sql"
  IF NOT EXISTS (SELECT 1 FROM sys.schemas WHERE name = 'adminapi')
  BEGIN
  EXEC( 'CREATE SCHEMA adminapi' );
