@@ -8,7 +8,7 @@ the Ed-Fi ODS / API Admin App for Suite 3 v2.2.1.
 ## Compatibility & Supported ODS / API Versions
 
 This version ODS / API Admin App has been tested and can be installed for use
-with the Ed-Fi ODS / API v3.4 through v5.2. See the [Ed-Fi Technology Suite Supported Versions](../../../../0-roadmap/supported-versions.md) for
+with the Ed-Fi ODS / API v3.4 through v5.2. See the [Ed-Fi Technology Suite Supported Versions](/reference/roadmap/supported-versions) for
 more details.
 
 ## Prerequisites

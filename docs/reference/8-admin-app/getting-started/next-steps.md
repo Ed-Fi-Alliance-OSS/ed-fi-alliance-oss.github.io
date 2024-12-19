@@ -246,7 +246,7 @@ documentation for your solution has additional information you'll find useful:
 
 * The Ed-Fi ODS / API v5.2 documentation is available online
   [here](https://edfi.atlassian.net/wiki/spaces/ODSAPI34).
-* You can find documentation for prior version at [Ed-Fi Technology Suite Supported Versions](../../../../0-roadmap/supported-versions.md)
+* You can find documentation for prior version at [Ed-Fi Technology Suite Supported Versions](/reference/roadmap/supported-versions)
 
 The Platform Developers' Guide and API Client Developers' Guide are essential
 reading for platform hosts.

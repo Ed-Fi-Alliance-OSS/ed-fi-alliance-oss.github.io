@@ -8,7 +8,7 @@ the Ed-Fi ODS / API Admin API for v1.4.0.
 ## Compatibility & Supported ODS / API Versions
 
 This version of the Admin API has been tested and can be installed for use with
-the Ed-Fi ODS / API v3.4 - 6.1.  See the [Ed-Fi Technology Suite Supported Versions](../../../../0-roadmap/supported-versions.md) for
+the Ed-Fi ODS / API v3.4 - 6.1.  See the [Ed-Fi Technology Suite Supported Versions](/reference/roadmap/supported-versions) for
 more details.
 
 ## Installation Instructions
@@ -16,7 +16,7 @@ more details.
 ### Prerequisites
 
 A running instance of the ODS / API v3.4 - 6.1 platform must be configured and
-running before installing Admin API.  
+running before installing Admin API.
 
 Admin API only supports running one instance of the application at a time in an
 ODS / API ecosystem. Future versions may allow for scaling and load balancing.

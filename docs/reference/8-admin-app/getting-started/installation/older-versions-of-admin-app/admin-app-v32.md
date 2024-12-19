@@ -8,7 +8,7 @@ the Ed-Fi ODS / API Admin App v3.2 for ODS/API 3.4 to 6.1.
 ## Compatibility & Supported ODS / API Versions
 
 This version ODS / API Admin App has been tested and can be installed for use
-with the Ed-Fi ODS / API 3.4 to 6.1. See the [Ed-Fi Technology Suite Supported Versions](../../../../0-roadmap/supported-versions.md) for
+with the Ed-Fi ODS / API 3.4 to 6.1. See the [Ed-Fi Technology Suite Supported Versions](/reference/roadmap/supported-versions) for
 more details.
 
 Admin App supports two deployment modes:  Docker Deployment and On-Premise

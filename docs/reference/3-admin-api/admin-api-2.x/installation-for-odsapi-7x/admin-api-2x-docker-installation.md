@@ -8,7 +8,7 @@ the Ed-Fi ODS / API Admin API for v2.2.0.
 ### Compatibility & Supported ODS / API Versions
 
 This version of the Admin API has been tested and can be installed for use with
-Ed-Fi ODS / API v7.1. See the [Ed-Fi Technology Suite Supported Versions](../../../../0-roadmap/supported-versions.md)
+Ed-Fi ODS / API v7.1. See the [Ed-Fi Technology Suite Supported Versions](/reference/roadmap/supported-versions)
 for more details.
 
 ### General Prerequisites

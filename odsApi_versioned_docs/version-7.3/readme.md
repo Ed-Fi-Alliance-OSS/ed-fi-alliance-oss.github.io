@@ -43,7 +43,7 @@ Here are some resource highlights for the ODS / API v7.3:
 This site contains the latest version of the Ed-Fi ODS / API for Suite 3,
 Version 7.3.
 
-* Looking for previous versions of the Ed-Fi ODS / API? Visit the [Ed-Fi Technology Suite Supported Versions](../../../../0-roadmap/supported-versions.md).
+* Looking for previous versions of the Ed-Fi ODS / API? Visit the [Ed-Fi Technology Suite Supported Versions](/reference/roadmap/supported-versions).
 * Looking for another Ed-Fi Technology? Visit the [Ed-Fi Reference Documentation](/reference).
 
 :::
