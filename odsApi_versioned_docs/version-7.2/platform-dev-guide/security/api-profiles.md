@@ -239,8 +239,8 @@ addresses. If also applied to the `WriteContentType`, the caller will receive a
 error response if they attempt to write anything other than Physical or Shipping
 addresses.
 
-Identifying members of the resource are always included in the `GET` responses
-and must be included in `POST` and `PUT` requests.
+Resource members that are part of the identity are always automatically included
+in the request/response bodies.
 
 ```xml
 <!-- Resource-level IncludeOnly -->
@@ -270,9 +270,8 @@ and must be included in `POST` and `PUT` requests.
 
 In the example above, the API includes schoolId in `GET` responses, and the API
 client must include it in `POST` and `PUT` requests. Additionally, if required
-fields are excluded, the profile cannot be used to create the resource. In this
-example, the `POST` operation cannot be used to create a new school because the
-write profile excludes some required fields.
+fields are excluded, the profile cannot be used to create the resource
+(though updates would still be possible).
 
 ## Adding Profiles to the Ed-Fi ODS / API
 
