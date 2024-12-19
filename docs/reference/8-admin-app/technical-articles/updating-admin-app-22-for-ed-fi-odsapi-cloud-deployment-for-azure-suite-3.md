@@ -304,9 +304,6 @@ to launch the ODS API website successful on Azure.
 7. Please use above mentioned Admin app upgrade steps for installing Admin App
 2.2.0.
 
-8\. Please refere Admin App new features in Admin App
-2.2.0 [here](https://edfi.atlassian.net/wiki/display/ADMIN/Next+Steps).
-
 :::info note:
   The following is a ZIP package containing PowerShell scripts for the
   installation of the Admin App 2.2 update**:**
