@@ -223,7 +223,8 @@ The next steps involved using the actual software.   The first step is to login 
 5. You will be required to restart the ODS/API IIS site to continue using the software.
 
 :::warning
-**Resart required!**
+
+**Restart required!**
 
 Prior to continuing, due to the Admin Application inserting required security data into the Admin database during its setup process, the ODS/API needs to be restarted. **This is accomplished by restarting the IIS server on an ODS/API server in the solution**. For details on connecting to the servers in this solution, please see the section titled [Accessing the Servers](#accessing-the-servers).
 
