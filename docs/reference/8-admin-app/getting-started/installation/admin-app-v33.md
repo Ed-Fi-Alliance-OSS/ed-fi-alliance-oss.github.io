@@ -79,29 +79,18 @@ The following are required to install the Admin App:
     specific steps are different depending on the deployment model and version
     of your Ed-Fi ODS / API.
 
-* [Step 1. Download and Open Installer Package](#step-1-download-and-open-installer-package)
-* [Step 2. Configure Installation File](#step-2-configure-installation-file)
-* [Step 3. Open a PowerShell Prompt in Administrator Mode](#step-3-open-a-powershell-prompt-in-administrator-mode)
-* [Step 4 . Run the Installation via PowerShell](#step-4-run-the-installation-via-powershell)
-* [Step 5. Create SQL Server Login (if "useIntegratedSecurity" set to "true")](#step-5-create-sql-server-login-if-useintegratedsecurity-set-to-true)
-* [Step 6. Update Application Pool Identity (Optional)](#step-6-update-application-pool-identity-optional)
-* [Step 7. Check Folder Permissions](#step-7-check-folder-permissions)
-* [Step 8. Create Initial Administrative User](#step-8-create-initial-administrative-user)
-* [Step 9. Open Admin App to Complete Installation](#step-9-open-admin-app-to-complete-installation)
-* [Step 10. Using the Admin App](#step-10-using-the-admin-app)
-
-  ## On-Premises Deployment
+## On-Premises Deployment
 
     Each step is outlined in detail below for the PowerShell deployment. Ensure
     that you have permission to execute PowerShell scripts. For more
     information,
     see [http://go.microsoft.com/fwlink/?LinkID=135170](http://go.microsoft.com/fwlink/?LinkID=135170).
 
-  ### Step 1. Download and Open Installer Package
+### Step 1. Download and Open Installer Package
 
     Download , rename the file extension from to `.zip`  and unzip the package
 
-  * Installer and binaries for Admin App 3.3:
+* Installer and binaries for Admin App 3.3:
     [EdFi.Suite3.ODS.AdminApp.Web.3.3.1.nupkg](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.Suite3.ODS.AdminApp.Web/overview/3.3.1)
 
     Alternatively, run the below PowerShell command to download the package as a
@@ -112,7 +101,7 @@ The following are required to install the Admin App:
     Invoke-WebRequest "https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_apis/packaging/feeds/EdFi/nuget/packages/EdFi.Suite3.ODS.AdminApp.Web/versions/3.2.1/content?api-version=6.0-preview.1" -OutFile .\EdFi.Suite3.ODS.AdminApp.Web-3.2.1.0.zip
     ```
 
-    ### Step 2. Configure Installation File
+  ### Step 2. Configure Installation File
 
     Open the "install.ps1" file on installer folder in a text editor. You will
     need to edit this file with your configuration details. If a value is not
@@ -250,7 +239,7 @@ The following are required to install the Admin App:
 
     :::
 
-    ### Step 3. Open a PowerShell Prompt in Administrator Mode
+  ### Step 3. Open a PowerShell Prompt in Administrator Mode
 
     Method 1: Open \[Windows Key\]-R which will open a Run dialog for tasks needing administrative privileges. Type "PowerShell" to open a PowerShell prompt in Administrator mode.
 
@@ -262,11 +251,11 @@ The following are required to install the Admin App:
 
     Change the directory to the unzipped directory for the Admin App Installer.
 
-    ### Step 4. Run the Installation via PowerShell
+  ### Step 4. Run the Installation via PowerShell
 
     Run "install.ps1" script.
 
-    ### Database login setup on integrated security mode
+  ### Database login setup on integrated security mode
 
     During the installation process, you will be prompted to choose database login details. Entering "Y" will continue with default option( Installation process will create IIS APPPOOL\\AdminApp database login on the server).
 
@@ -282,7 +271,7 @@ The following are required to install the Admin App:
 
     ![pws main results](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/installation/Successful-Installation.JPG)
 
-    ### Step 5. Create SQL Server Login (if "useIntegratedSecurity" set to "true")
+  ### Step 5. Create SQL Server Login (if "useIntegratedSecurity" set to "true")
 
     This step only needs to be completed if you set `useIntegratedSecurity` to true on the "install.ps1" script in Step 2, above. If you did not, we can skip ahead to Step 5.
 
