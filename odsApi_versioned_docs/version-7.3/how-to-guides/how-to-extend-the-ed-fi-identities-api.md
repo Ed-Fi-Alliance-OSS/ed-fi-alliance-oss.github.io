@@ -17,7 +17,7 @@ feature is enabled and registers the custom identity service as a singleton.
 
 :::info
 
-Note the implementation of the IPluginModule interface. This is a
+Note the implementation of the ICustomModule interface. This is a
 “marker” interface makes the “plugin” discoverable at startup by the API’s
 built-in plugin support, resulting in the automatic invocation of the
 registration logic to register the necessary components in the Autofac
@@ -28,7 +28,7 @@ project or discoverable in the configured Plugin folder at runtime.
 :::
 
 ```csharp
-public class CustomIdentityServiceModule : ConditionalModule, IPluginModule
+public class CustomIdentityServiceModule : ConditionalModule, ICustomModule
 {
     public CustomIdentityServiceModule(ApiSettings apiSettings)
         : base(apiSettings, nameof(CustomIdentityServiceModule)) { }
