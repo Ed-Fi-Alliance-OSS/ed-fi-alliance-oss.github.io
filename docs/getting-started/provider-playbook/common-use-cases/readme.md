@@ -12,7 +12,7 @@ directly from source systems.
 ![Image depicting people working by a big
 phone](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/Aaah-Big-Phone@0.33x.png)
 
-<!-- ## Assessment Solution Guide
+## Assessment Solution Guide
 
 **This guide is for vendors who want to assist their clients in setting up an
 Ed-Fi Assessment solution.** Ed-Fi technology helps schools and districts
@@ -25,7 +25,7 @@ Kit](https://edfi.atlassian.net/wiki/spaces/SK/pages/21999134/Assessment+Starter
 * [Assessment Solution Guide Home](./assessment-solution-guide/readme.md)
 
 ![Image of people working
-together](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/Coders-Perhaps@0.33x.png) -->
+together](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/Coders-Perhaps@0.33x.png)
 
 ## Chronic Absenteeism Solution Guide
 
