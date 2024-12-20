@@ -78,7 +78,7 @@ The following improvements and fixes were made in Data Import v1.3, with major c
 The following improvements and fixes were made in Data Import v1.2, with major community contributions from [Instructure](https://www.instructure.com/):
 
 * DI-480 - Major enhancements to PowerShell pre-processing, including security-based sandboxing. For more information see [Integrated Custom File Processors](../data-import/technical-articles/preprocessing-csv-files/integrated-custom-file-processors).
-* DI-929 - Ability to import Template Sharing templates across multiple versions of the ODS / API with same major version of Ed-Fi Data Suite (3.x for example). For more information see [Cross-Version Template Sharing](../data-import/technical-articles/data-import-article-archive/cross-version-template-sharing).
+* DI-929 - Ability to import Template Sharing templates across multiple versions of the ODS / API with same major version of Ed-Fi Data Suite (3.x for example).
 * DI-940 - Currency data handling from Swagger "numeric" type.
 * Bug fixes and changes based on field reports.
 
