@@ -16,7 +16,7 @@ const LinkList = [
   },
   {
     title: 'ODS/API Platform',
-    to: '/reference/ods-api',
+    to: '/reference/ods-api-platform',
   },
   {
     title: 'Admin API',
@@ -33,6 +33,10 @@ const LinkList = [
   {
     title: 'Data Import',
     to: '/reference/data-import',
+  },
+  {
+    title: 'Admin App',
+    to: '/reference/admin-app',
   },
   {
     title: 'Docker Deployments',

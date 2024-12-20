@@ -3,7 +3,7 @@
 The Ed-Fi Admin API is an API-based administrative interface for the Ed-Fi ODS /
 API Platform.  The Admin API is available as a standalone application, and is
 also available for deployments on Docker. The Admin API v2.2 is available for
-[Ed-Fi ODS / API v7.x](https://docs.ed-fi.org/reference/ods-api) and Admin API
+[Ed-Fi ODS / API v7.x](/reference/ods-api) and Admin API
 1.4 is available for [Ed-Fi ODS / API
 v5.x-6.x](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V62/overview).
 
