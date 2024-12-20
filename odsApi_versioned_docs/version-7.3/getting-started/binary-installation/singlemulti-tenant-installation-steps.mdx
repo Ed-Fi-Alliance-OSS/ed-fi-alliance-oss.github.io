@@ -23,10 +23,10 @@ links below. We recommend you stay current with the latest patch update that has
 been promoted to
 [release](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging?_a=feed&feed=EdFi%40Release).
 
-* [EdFi.Suite3.Installer.WebApi](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Installer.WebApi/versions/7.2.4)
-* [EdFi.Suite3.Installer.SwaggerUI](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Installer.SwaggerUI/versions/7.2.6) (Optional,
+* [EdFi.Suite3.Installer.WebApi](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Installer.WebApi/versions/7.3.27)
+* [EdFi.Suite3.Installer.SwaggerUI](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Installer.SwaggerUI/versions/7.3.33) (Optional,
     not for production)
-* [EdFi.Suite3.RestApi.Databases.5.2.0](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.RestApi.Databases.Standard.5.2.0/versions/7.2.1201)
+* [EdFi.Suite3.RestApi.Databases.5.2.0](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.RestApi.Databases.Standard.5.2.0/versions/7.3.1277)
 
 For each of the downloads, **right-click** and select "Properties." Update the
 file extension (from .nupkg to .zip). Remove the version number (optional).
@@ -452,7 +452,7 @@ Copy and modify the following parameter code to add your site name:
 
 ```powershell
 $parameters = @{
-    PackageVersion = "7.2.1201"
+    PackageVersion = "7.3.1277"
     WebApiVersionUrl = "https://YOUR_SITE_OR_SERVER_NAME_HERE/WebApi"
 }
 ```
@@ -466,7 +466,7 @@ To deploy Swagger for MultiTenant, use parameters `Tenants` and `DefaultTenant`
 
 ```powershell
 $parameters = @{
-    PackageVersion = "7.2.1201"
+    PackageVersion = "7.3.1277"
     WebApiVersionUrl = "https://YOUR_SITE_OR_SERVER_NAME_HERE/WebApi"
     Tenants = @("Tenant1", "Tenant2")
 }

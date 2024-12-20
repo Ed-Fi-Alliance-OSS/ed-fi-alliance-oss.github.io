@@ -20,10 +20,10 @@ links below. We recommend you stay current with the latest patch update that has
 been promoted to
 [release](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging?_a=feed&feed=EdFi@Release).
 
-* [EdFi.Suite3.Installer.WebApi](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Installer.WebApi/versions/7.2.4)
-* [EdFi.Suite3.Installer.SwaggerUI](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Installer.SwaggerUI/versions/7.2.6)
-* [EdFi.Suite3.Installer.SandboxAdmin](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Installer.SandboxAdmin/versions/7.2.7)
-* [EdFi.Suite3.RestApi.Databases.Standard.5.2.0](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.RestApi.Databases.Standard.5.2.0/versions/7.2.1201)
+* [EdFi.Suite3.Installer.WebApi](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Installer.WebApi/versions/7.3.27)
+* [EdFi.Suite3.Installer.SwaggerUI](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Installer.SwaggerUI/versions/7.3.33)
+* [EdFi.Suite3.Installer.SandboxAdmin](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Installer.SandboxAdmin/versions/7.3.35)
+* [EdFi.Suite3.RestApi.Databases.Standard.5.2.0](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.RestApi.Databases.Standard.5.2.0/versions/7.3.1277)
 
 For each of the downloads, **right-click** and select "Properties." Update the
 file extension (from .nupkg to .zip). Remove the version number (optional).
@@ -262,7 +262,7 @@ Copy and modify the following parameter code to add your site name:
 
 ```powershell
 $parameters = @{
-    PackageVersion = "7.2.1201"
+    PackageVersion = "7.3.1277"
     WebApiVersionUrl = "https://YOUR_SITE_OR_SERVER_NAME_HERE/WebApi"
     PrePopulatedKey = "YOUR_POPULATED_KEY_HERE"
     PrePopulatedSecret = "YOUR_POPULATED_SECRET_HERE"
@@ -314,7 +314,7 @@ Copy and modify the following parameter code to add your site name:
   <TabItem value="MSSQL" label="SQL Server" default>
     ```powershell
     $parameters = @{
-        PackageVersion = "7.2.1201"
+        PackageVersion = "7.3.1277"
         Settings = @{ OAuthUrl = "https://YOUR_SITE_OR_SERVER_NAME_HERE/WebApi" }
         PrePopulatedKey = "YOUR_POPULATED_KEY_HERE"
         PrePopulatedSecret = "YOUR_POPULATED_SECRET_HERE"
@@ -330,7 +330,7 @@ Copy and modify the following parameter code to add your site name:
   <TabItem value="PostgreSQL" label="PostgreSQL">
     ```powershell
     $parameters = @{
-        PackageVersion = "7.2.1201"
+        PackageVersion = "7.3.1277"
         Settings = @{ OAuthUrl = "https://YOUR_SITE_OR_SERVER_NAME_HERE/WebApi" }
         PrePopulatedKey = "YOUR_POPULATED_KEY_HERE"
         PrePopulatedSecret = "YOUR_POPULATED_SECRET_HERE"
