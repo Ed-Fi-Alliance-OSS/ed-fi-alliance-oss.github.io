@@ -3,9 +3,9 @@
 Under heavy usage, there are two log tables in Data Import 1.0 which can grow
 quite large:
 
-*   ApplicationLogs, which records a wide variety of activity as the system
+* ApplicationLogs, which records a wide variety of activity as the system
     runs.
-*   IngestionLogs, which records information about each input row being POSTed
+* IngestionLogs, which records information about each input row being POSTed
     to the target ODS.
 
 When these grow large enough, they may pose an obstacle in the system resources
@@ -15,7 +15,7 @@ used to store them.
 
 The ApplicationLogs table in particular grows the fastest, and thankfully an
 administrator has control over just how much information goes into this table to
-begin with. 
+begin with.
 
 To limit the number of records written to ApplicationLogs, locate log4net.config
 file. This file appears in **two** places: once within the web application
@@ -64,9 +64,7 @@ entries are useful from a troubleshooting point of view, but once old records
 have served that purpose you can simply delete them. For maximum efficiency, you
 can delete all records from both tables with the TRUNCATE T-SQL command:
 
-**Erase All Log Records**
-
-```sql
+```sql title="Erase All Log Records"
 TRUNCATE TABLE [EdFi_DataImport].[dbo].[ApplicationLogs];
 TRUNCATE TABLE [EdFi_DataImport].[dbo].[IngestionLogs];
 ```
@@ -78,5 +76,5 @@ TRUNCATE TABLE [EdFi_DataImport].[dbo].[IngestionLogs];
   statement, so long as they understand the consequences in SQL Server when
   choosing to TRUNCATE or DELETE records. DELETE would also allow the
   administrator to only delete records beyond a certain date in the past, wherease
-  TRUNCATE always removes *all* records.
+  TRUNCATE always removes _all_ records.
 :::

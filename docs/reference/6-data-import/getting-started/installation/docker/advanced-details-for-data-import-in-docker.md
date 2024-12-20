@@ -21,11 +21,11 @@ file. It includes images for the Data Import application, backing
 
 Some possible adaptations include:
 
-*   running this composition wholesale alongside an ODS/API solution deployed
+* running this composition wholesale alongside an ODS/API solution deployed
     using Docker or other methods
-*   adding the below services and volumes to an existing ODS/API Docker
+* adding the below services and volumes to an existing ODS/API Docker
     composition and redeploying
-*   using the `dataimport`  service as an example for plugging in to a
+* using the `dataimport`  service as an example for plugging in to a
     composition with an existing datab
 
     ase, updating the `POSTGRES_HOST`  and other DB settings accordingly
@@ -102,7 +102,7 @@ through to the service in the `environment`  section.
 
 **.env** Expand source
 
-```docker
+```ini
 POSTGRES_USER=<default postgres database user>
 POSTGRES_PASSWORD=<password for default postgres user>
 PGBOUNCER_LISTEN_PORT=<port for pg bouncer to listen to>
@@ -163,10 +163,10 @@ and password. It possible to leverage a Docker container or an instance
 installed on the host or elsewhere, but if using the latter options, consider
 the host/container networking relationship.
 
-*   Change "DATABASE\_ENGINE" on .env file to `SqlServer`
-*   Remove `POSTGRES_` environment settings
-*   Update `CONNECTIONSTRINGS__DEFAULTCONNECTION` to a valid connection string
-    *    SQL username/password must be used to connect, as opposed to Integrated
+* Change "DATABASE\_ENGINE" on .env file to `SqlServer`
+* Remove `POSTGRES_` environment settings
+* Update `CONNECTIONSTRINGS__DEFAULTCONNECTION` to a valid connection string
+  *  SQL username/password must be used to connect, as opposed to Integrated
          Security
 
 ## Upgrading Data Import
@@ -190,44 +190,46 @@ the host/container networking relationship.
 To upgrade from an existing Data Import installation that is outside of Docker,
 execute the following steps:
 
-1.  If you are using the same database, **Make a backup of the Data Import
-    database, for safety. **The installer is capable of automatically upgrading
+1. If you are using the same database, **Make a backup of the Data Import
+    database, for safety.**The installer is capable of automatically upgrading
     the content of the existing database, so the uninstall/install process can
     use the same database.
-2.  **Make a backup of the Data Import configuration files** **for any values
+2. **Make a backup of the Data Import configuration files** **for any values
     you may have set here.** Note especially your **`EncryptionKey`**  value
     which appears the same in both files. Copy this especially as it will be
     re-used in the new Data Import installation. The files to check differ for
     versions less than 1.3.0:
-    1.  **1.2.0:** The web application **"Web.config"** and the Transform/Load
+    1. **1.2.0:** The web application **"Web.config"** and the Transform/Load
         application's **"DataImport.Server.TransformLoad.exe.config"**
-    2.  **1.3.0+:** The web application **"appsettings.json"** and the
+    2. **1.3.0+:** The web application **"appsettings.json"** and the
         Transform/Load application's **"appsettings.json"**
-3.  Stop the previous Data Import application and website from Internet
+3. Stop the previous Data Import application and website from Internet
     Information Server
-4.  Run the Docker Installation
-    1.  Update configuration values to match those copied above
-    2.  Verify the website is running correctly in Docker
-5.  Manually delete the previous Data Import application, website, and app pools
+4. Run the Docker Installation
+    1. Update configuration values to match those copied above
+    2. Verify the website is running correctly in Docker
+5. Manually delete the previous Data Import application, website, and app pools
     from Internet Information Server.
 
 ### From An Existing Docker Deployment
 
 To upgrade from an existing Docker deployment:
 
-1.  **Make a backup of the Data Import database, for safety.** The installer is
+1. **Make a backup of the Data Import database, for safety.** The installer is
     capable of automatically upgrading the content of the existing database, so
     the uninstall/install process can use the same database.
-2.  **Update the image tag** for the Data Import service in your composition to
+2. **Update the image tag** for the Data Import service in your composition to
     the new version
-3.  **Note and update** of any new environment variables which may need
+3. **Note and update** of any new environment variables which may need
     configured and that your current environment variables have not changed
-    1.  pay close attention that the `ENCRYPTION_KEY`  setting **does not**
+    1. pay close attention that the `ENCRYPTION_KEY`  setting **does not**
         change
-4.  **Redeploy** the docker composition
+4. **Redeploy** the docker composition
 
-:::info note:
- The following links contain relevant source code and published images:
- **Images**
- [https://hub.docker.com/r/edfialliance/data-import](https://hub.docker.com/r/edfialliance/data-import)
+:::info
+
+The following links contain relevant source code and published images:
+
+* **Images**: [https://hub.docker.com/r/edfialliance/data-import](https://hub.docker.com/r/edfialliance/data-import)
+
 :::

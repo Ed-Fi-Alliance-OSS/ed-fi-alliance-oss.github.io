@@ -9,9 +9,7 @@ Consider a CSV file from a third-party system which contains this Student
 Assessment data. In this case, the third-party system produces data with a
 StudentUSI and we must perform a lookup so we can get the StudentUniqueId:
 
-**StudentAssessmentsWithStudentUSI.csv**
-
-```cv
+```text title="StudentAssessmentsWithStudentUSI.csv"
 adminyear,DistrictNumber,DistrictName,SchoolNumber,SchoolName,StudentUSI,listeningss_adj,speakingss_adj,readingss_adj,writingss_adj,comprehensionss_adj,oralss_adj,literacyss_adj,Overallss_adj
 2018,255901,Grand Bend ISD,255901107,Grand Bend Elementary School,134709,333,349,270,246,289,341,258,283
 2018,255901,Grand Bend ISD,255901107,Grand Bend Elementary School,134537,303,392,100,100,161,348,100,174
@@ -23,8 +21,6 @@ adminyear,DistrictNumber,DistrictName,SchoolNumber,SchoolName,StudentUSI,listeni
 2018,255901,Grand Bend ISD,255901107,Grand Bend Elementary School,185565,934,948,932,926,933,941,929,933
 2018,255901,Grand Bend ISD,255901107,Grand Bend Elementary School,212298,939,939,928,930,931,939,929,932
 2018,255901,Grand Bend ISD,255901107,Grand Bend Elementary School,26811,938,925,929,916,932,932,923,925
-
-
 ```
 
 We also have a table called StudentLookups defined with StudentUSI as the
@@ -36,9 +32,7 @@ records in that table:
 A custom script to "look up" the Student Unique Id from the Student USI looks
 like this:
 
-**StudentIdLookup.ps1**
-
-```ps1
+```powershell title="StudentIdLookup.ps1"
 param ($row)
 
 # This example takes a CSV with StudentUSIs and performs a lookup on a database table to retrieve the corresponding StudentUniqueId

@@ -34,10 +34,3 @@ feature in Data Import to consume and publish new templates.
 [https://github.com/Ed-Fi-Exchange-OSS/DataImport-Templates](https://github.com/Ed-Fi-Exchange-OSS/DataImport-Templates)
 
 ![Ed-Fi Exchange logo](https://github.com/Ed-Fi-Exchange-OSS/.github/raw/main/profile/ed-fi-exchange.png)
-
-:::info
-  You can review Data Import Templates that have been published by the
-  Ed-Fi Community at [Published Data Import
-  Templates](../../data-import/technical-articles/data-import-article-archive/published-data-import-templates).
-:::
-

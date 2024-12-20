@@ -41,33 +41,31 @@ Configure the following fields:
   provided needs to enable authorized access read the Ed-Fi ODS / API /schools
   resource. If you use an "out of box" claimset, then you will need to use
   either the "Ed-Fi Sandbox" or "SIS Vendor" claim sets. The "Assessment Vendor"
-  claim set does not enabled with this access. Alternatively, you can use the
-  Admin
-  App's [https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25238340](https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25238340)
+  claim set does not enabled with this access. Alternatively, you can use [Admin App](../../8-admin-app/readme.md)
   to create a custom claim set.
 :::
 
-1.) Click on the Ed-Fi API Connections button to open the API Connections panel.
-Data Import works with multiple API connections and needs at least one to
-function.
+1. Click on the Ed-Fi API Connections button to open the API Connections panel.
+   Data Import works with multiple API connections and needs at least one to
+   function.
 
-![Configuration](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/getting-started/image2022-11-8_11-50-28.png)
+   ![Configuration](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/getting-started/image2022-11-8_11-50-28.png)
 
-2.) Click on the "Add API Connection" to add the first Ed-Fi ODS / API
+2. Click on the "Add API Connection" to add the first Ed-Fi ODS / API
 connection.
 
-![Api Connection](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/getting-started/image2020-11-25_16-49-2.png)
+   ![Api Connection](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/getting-started/image2020-11-25_16-49-2.png)
 
-3.) Add a Name for the API Connection, the API URL, Key and Secret. Click on the
-"Test Connection" button. If successful as indicated by the confirmation
-message, click "Save Changes" to add the connection.
+3. Add a Name for the API Connection, the API URL, Key and Secret. Click on the
+   "Test Connection" button. If successful as indicated by the confirmation
+   message, click "Save Changes" to add the connection.
 
-![Add Api Connection](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/getting-started/image2020-11-25_16-52-10.png)
+   ![Add Api Connection](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/getting-started/image2020-11-25_16-52-10.png)
 
-4.) After saving the connection, you will be returned to the API Connections
+4. After saving the connection, you will be returned to the API Connections
 screen.
 
-![Test Api Connection](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/getting-started/image2020-11-25_16-54-8.png)
+   ![Test Api Connection](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/getting-started/image2020-11-25_16-54-8.png)
 
 ### Step 3. (Optional) User Management
 

@@ -1,12 +1,16 @@
 # Preprocessing CSV Files
 
-> [!INFO] "Preprocessing CSV Files" (this article) is targeted to Data Import
-> 1.0. If using Data Import 1.0.1, please also see the two additional PowerShell
-> integration articles below which offer direct integration within Data Import.
->
-> * [Integrated Custom Record Processing](integrated-custom-record-processing)
-> * [Integrated Custom File Generation](integrated-custom-file-generation)
-> * [Integrated Custom File Processors](integrated-custom-file-processors)
+:::info
+
+"Preprocessing CSV Files" (this article) is targeted to Data Import
+1.0. If using Data Import 1.0.1, please also see the two additional PowerShell
+integration articles below which offer direct integration within Data Import.
+
+* [Integrated Custom Record Processing](integrated-custom-record-processing)
+* [Integrated Custom File Generation](integrated-custom-file-generation)
+* [Integrated Custom File Processors](integrated-custom-file-processors)
+
+:::
 
 Data Import is a ETL tool that eases the burden of mapping and loading CSV data
 to Ed-Fi ODS / API endpoints.  It provides basic ETL transform functions such as
@@ -47,7 +51,7 @@ After unzipping, you'll find 3 files:
 
 "DI-TEST-2018-GrandBend-pre.csv" is an example CSV file from the Quickstart with
 a few additional data issues. Open this file in notepad.exe to witness the raw
-content (right click \\ edit):
+content (right click > edit):
 
 1. The "DistrictNumber" column has inconsistent whitespace we'd like to clean
    up.
@@ -75,7 +79,7 @@ Holding the shift key, right click within the extracted zip folder and select
 
 In the powershell window, enter the following command and hit enter:
 
-```shell
+```powershell
 .\di-csv-preprocessor.ps1 DI-TEST-2018-GrandBend-pre.csv DI-TEST-2018-GrandBend-post.csv
 ```
 

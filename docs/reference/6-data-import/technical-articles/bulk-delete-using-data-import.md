@@ -1,7 +1,6 @@
 # Bulk Delete using Data Import
 
-Beginning with
-[v2.2](https://edfi.atlassian.net/wiki/pages/viewpage.action?pageId=24119656#What%27sNewinDataImport(2.2precopy)-What%27sNewinDataImportv2.1)
+Beginning with [v2.2](../whats-new-in-data-import.md#whats-new-in-data-import-v22)
 the Data Import tool has the capability to bulk delete resources from csv files.
 This functionality is supported in two ways, **delete by Id** and **delete by
 natural key**. If you have access to the primary key `Id` of the resources you

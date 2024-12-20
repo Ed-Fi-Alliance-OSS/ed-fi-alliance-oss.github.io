@@ -89,22 +89,27 @@ Data Import adds a third type of preprocessor script:
 :::
 
 :::warning
-  This sandboxing safety can naturally pose a problem when your
-  script needs to do something like access the filesystem or query
-  databases. [File
-  Generators](../preprocessing-csv-files/integrated-custom-file-generation), for
-  instance, perform exactly that kind of work by their very nature. **This is a
-  good reason to question whether such an operation belongs inside a data
-  mapping step within a data mapping tool, rather than inside an ETL process
-  _prior_ to mapping with Data Import.** If an administrator wants to opt-in to
-  the risks of arbitrary code running in their data maps, performing file
-  access, database connections, and the like, they can enable full access to the
-  PowerShell language and commands: in both the `DataImport.Web/Web.config` file
-  and the
-  `DataImport.Server.TransformLoad/DataImport.Server.TransformLoad.exe.config`
-  file, locate the `<appSettings>` tag and add the following setting to enable
-  full PowerShell access:
-  ![](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/technical-articles/data-import-article-archive/DANGER%20-%20Enable%20Full%20PowerShell.png)
+
+This sandboxing safety can naturally pose a problem when your
+script needs to do something like access the filesystem or query
+databases. [File
+Generators](../preprocessing-csv-files/integrated-custom-file-generation), for
+instance, perform exactly that kind of work by their very nature. **This is a
+good reason to question whether such an operation belongs inside a data
+mapping step within a data mapping tool, rather than inside an ETL process
+_prior_ to mapping with Data Import.** If an administrator wants to opt-in to
+the risks of arbitrary code running in their data maps, performing file
+access, database connections, and the like, they can enable full access to the
+PowerShell language and commands: in both the `DataImport.Web/Web.config` file
+and the
+`DataImport.Server.TransformLoad/DataImport.Server.TransformLoad.exe.config`
+file, locate the `<appSettings>` tag and add the following setting to enable
+full PowerShell access:
+
+```xml
+<add key="UsePowerShellWithNoRestrictions" value="True" />
+```
+
 :::
 
 ## Custom File Processors - Examples
@@ -123,9 +128,11 @@ The \*.json template files can all be imported into a test Data Import
 installation, and then tested using Manual Agents with the sample \*.csv and
 \*.txt files enclosed in the same zip.
 
-|     | File | Modified |
-| --- | --- | --- |
-| Labels*   No labels[Preview] [View] | ZIP Archive [CustomFileProcessorExamples.zip] | May 20, 2021 by [Patrick Lioi] |
+:::info
+
+[CustomFileProcessorExamples.zip](https://edfi.atlassian.net/wiki/download/attachments/24117967/CustomFileProcessorExamples.zip?api=v2)
+
+:::
 
 They are all intended to work against an ODS with the "Grand Bend" sample data
 as a prerequisite, such as for the public instances hosted
@@ -157,9 +164,7 @@ own, this file will be meaningless to Data Import. However, the Data Map in this
 template includes its own Preprocessor to convert each line from being
 tab-delimited to a valid CSV:
 
-**Tab-Delimited to CSV Conversion**
-
-```json
+```powershell title="Tab-Delimited to CSV Conversion"
 [CmdletBinding()]
 Param(
     [Parameter(Mandatory = $true, ValueFromPipeline = $true)][string]$line
@@ -182,7 +187,7 @@ Here, we see the basic structure of a 'Custom File Processor' script. Custom
 File Processors begin like so (it's best to copy this directly to avoid typos
 and get off to a good start!):
 
-```json
+```powershell
 [CmdletBinding()]
 Param(
     [Parameter(Mandatory = $true, ValueFromPipeline = $true)][string]$line
@@ -237,9 +242,7 @@ the _exact_ start position of each expected field. This can be quite painful to
 do oneself, so Data Import provides a convenient command
 `**ConvertFrom-FixedWidth**` to assist with the chopping-up of each line:
 
-**Fixed-Width Student Assessments to CSV Conversion**
-
-```json
+```powershell title="Fixed-Width Student Assessments to CSV Conversion"
 [CmdletBinding()]
 Param(
     [Parameter(Mandatory = $true, ValueFromPipeline = $true)][string]$line
@@ -330,9 +333,7 @@ error on the part of the user. Data Import will not _assume_ that it can change
 your values away from those given. So, we'll need to use a preprocessor to
 inspect, clean up, and then emit each value as intended:
 
-**Trim Fields in Assessments Rows**
-
-```json
+```powershell title="Trim Fields in Assessments Rows"
 [CmdletBinding()]
 Param(
     [Parameter(Mandatory = $true, ValueFromPipeline = $true)][string]$line
@@ -418,9 +419,7 @@ no changes to the original file (it merely "echoes" each original `**$line**` t
 the output), but before doing that work it performs many API calls in order to
 output live Descriptor values as a sort of diagnostic first:
 
-**Metadata and ODS API Calls**
-
-```json
+```powershell title="Metadata and ODS API Calls"
 [CmdletBinding()]
 Param(
     [Parameter(Mandatory = $true, ValueFromPipeline = $true)][string]$line

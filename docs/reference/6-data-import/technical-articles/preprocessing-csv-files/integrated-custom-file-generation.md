@@ -71,9 +71,7 @@ Consider a CSV file from a third-party system which contains Student Assessment
 data. In this case, the third-party system produces data with an extra pound
 sign in one of the columns we are interested in (sasid):
 
-**StudentAssessmentsWithExtraPoundSigns.csv**
-
-```cs
+```text title="StudentAssessmentsWithExtraPoundSigns.csv"
 adminyear,DistrictNumber,DistrictName,SchoolNumber,SchoolName,sasid,"listen,ingss_adj",speakingss_adj,readingss_adj,writingss_adj,comprehensionss_adj,oralss_adj,literacyss_adj,Overallss_adj
 2018,255901,Grand Bend ISD,255901107,Grand Bend Elementary School,#604825,"333,444",349,270,246,289,341,258,283
 2018,255901,Grand Bend ISD,255901107,Grand Bend Elementary School,#604826,303,392,100,100,161,348,100,174
@@ -90,9 +88,7 @@ adminyear,DistrictNumber,DistrictName,SchoolNumber,SchoolName,sasid,"listen,ings
 
 A custom script to "trim" these excess pound signs is fairly straightforward:
 
-**GenerateAssessments.ps1**
-
-```ps1
+```powershell title="GenerateAssessments.ps1"
 $inputCsvFile = "C:\Temp\FileGenerationWorkingFolder\StudentAssessmentsWithExtraPoundSigns.csv"
 $outputCsvFile = "C:\Temp\FileGenerationWorkingFolder\StudentAssessmentsFixed.csv"
 
@@ -121,4 +117,3 @@ After placing this PowerShell file within the Share as described above, and
 updating our _Agent_ to use this script by using the "File System / PowerShell"
 Agent Type, we run Transform/Load and encounter success. The _Logs \\ Ingestion_
 screen shows that cleaned-up values were POSTed to the ODS:
-
