@@ -7,6 +7,11 @@ sidebar_position: 4
 Install PostgreSQL 16.x on port 5432 if you intend to use PostgreSQL as a
 backing datastore for the ODS / API.
 
+:::info
+If you already have a PostgreSQL server, ODS / API will be installed correctly if the server was setup using the default postgres user.
+If it was setup with a superuser different than default, follow the steps from [here](../../how-to-guides/how-to-add-a-postgre-role-on-a-custom-configured-postgresql-server.md).
+:::
+
 ## PostgreSQL Visualization Tool
 
 Unlike SQL Server, PostgreSQL does not include a GUI to visualize the database
