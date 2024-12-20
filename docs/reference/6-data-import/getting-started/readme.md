@@ -37,4 +37,3 @@ tested with the following software configurations:
     to function, however not officially supported by Ed-Fi.
 
 * Source files:  up to 200MB have been successfully tested
-

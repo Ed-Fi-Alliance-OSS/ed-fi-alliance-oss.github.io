@@ -45,9 +45,7 @@ Once present, it will become selectable on the _Add/Edit Agent_ screen:
 Scripts need to be written in the Powershell programming language. The first
 line must be _exactly_ the following:
 
-**Required First Line**
-
-```ps1
+```powershell title="Required First Line"
 param ($row)
 
 ```
@@ -62,9 +60,7 @@ there are 2 fundamental things you may need to do:
 
 In either case, we refer to the column by name:
 
-**Inspect and Modify Columns Within a Row**
-
-```ps1
+```powershell title="Inspect and Modify Columns Within a Row"
 $row.'Column 1' = 'New Value'  # This line completely replaces the value of the column named 'Column 1' with the brand new value 'New Value'.
 $row.'Column 2' = $row.'Column 2' + '!'  # This line modifies the value of the column named 'Column 2' by adding an exclamation point to the end of the original value.
 ```
@@ -82,9 +78,7 @@ Consider a CSV file from a third-party system which contains Student Assessment
 data. In this case, the third-party system produces data with excessive white
 space in two of the columns we are interested in (sasid and Overallss\_adj):
 
-**StudentAssessmentsWithExcessSpaces.csv**
-
-```cs
+```text title="StudentAssessmentsWithExcessSpaces.csv"
 adminyear,DistrictNumber,DistrictName,SchoolNumber,SchoolName,sasid,listeningss_adj,speakingss_adj,readingss_adj,writingss_adj,comprehensionss_adj,oralss_adj,literacyss_adj,Overallss_adj
 2018,255901,Grand Bend ISD,255901107,Grand Bend Elementary School, 604825 ,333,349,270,246,289,341,258, 283
 2018,255901,Grand Bend ISD,255901107,Grand Bend Elementary School,  604826  ,303,392,100,100,161,348,100,  174
@@ -114,9 +108,7 @@ could expect the ODS to accept them.
 
 A custom script to "trim" these excess spaces is fairly straightforward:
 
-**CleanStudentAssessments.ps1**
-
-```ps1
+```powershell title="CleanStudentAssessments.ps1"
 param ($row)
 
 $row.'sasid' = $row.'sasid'.Trim()

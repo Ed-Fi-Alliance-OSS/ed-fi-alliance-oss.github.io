@@ -110,19 +110,19 @@ NMSQT, PSAT10 and PSAT89 Assessments
     select * from  [edfi].StudentAssessmentStudentObjectiveAssessmentPerformanceLevel where AssessmentIdentifier like 'National-%' order by IdentificationCode
     ```
 
-14.  Back to in the Powershell window run the following command
-     “.\\DataImport.Server.TransformLoad.exe”
+14. Back to in the Powershell window run the following command
+     `.\DataImport.Server.TransformLoad.exe`
 
     ![DataImport Command](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/technical-articles/image2019-10-4_11-19-55.png)
 
-15.  It will go through a series of steps like Inserting Bootstrap data. And
+15. It will go through a series of steps like Inserting Bootstrap data. And
      then proceed to load the CSVs with the provided mappings.
 
     ![DataImport Result](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/technical-articles/image2019-10-4_11-21-3.png)
 
-16.  Go back to SSMS and run the SQL statement.
+16. Go back to SSMS and run the SQL statement.
 
     ![Sql Statement](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/technical-articles/image2019-10-4_11-21-34.png)
 
-17.  Voila! You have now imported these sample Colleboard CSV files into your
+17. Voila! You have now imported these sample Collegeboard CSV files into your
      ODS.

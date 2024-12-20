@@ -6,7 +6,7 @@ v3.2 and the Grand Bend sample data set.
 
 The high-level steps are:
 
-### Step 1. Open Data Import in the Web Browser
+## Step 1. Open Data Import in the Web Browser
 
 Once installed, launch "Ed-Fi Data Import". If using an EXE installer, the URL
 would be: `https://<machinename>/DataImport`. Internet Information Services
@@ -29,7 +29,7 @@ Schools available.
 
 ![Schools](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/getting-started/image2020-11-25_16-58-23.png)
 
-### Step 2. Review Use Case for Importing Sample State Assessments
+## Step 2. Review Use Case for Importing Sample State Assessments
 
 Download the sample "DI-TEST-2019-GrandBend.csv" on the right of this page.
 Double click on this file to open and select Notepad when selected.
@@ -39,7 +39,7 @@ Bend. View the columns to have an understanding of the data we'll be importing.
 
 ![Import File](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/getting-started/image2019-9-26_15-6-27.png)
 
-### Step 3. Obtain Sample from Data Import-Templates Repository
+## Step 3. Obtain Sample from Data Import-Templates Repository
 
 Data Import has the ability to import and export templates (data maps, lookups
 and bootstraps) and share those templates through [Data Import-Templates
@@ -64,14 +64,14 @@ or other real data.
 
 ![Import Template](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/getting-started/image2022-11-8_18-1-48.png)
 
-### Step 4. Review Lookups
+## Step 4. Review Lookups
 
 Click on menu option Configure → Lookups. Observe the "grade-level" lookups that
 have been imported from the template.
 
 ![Lookups](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/getting-started/image2022-11-8_18-5-50.png)
 
-### Step 5. Review Bootstraps
+## Step 5. Review Bootstraps
 
 Click on Configure → Bootstrap Data. Observe that four bootstraps have been
 imported. Click first Bootstrap item's edit icon to view its data.
@@ -82,7 +82,7 @@ Review "Grand Bend 2019 State ELA Assessment".
 
 ![Bootstraps Data](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/getting-started/image2022-11-8_18-10-40.png)
 
-### Step 6. Review Data Map
+## Step 6. Review Data Map
 
 Click on menu option Maps. Review the "Grand Bend 2019 Sample...." that was
 imported. Click Edit icon to review.
@@ -101,7 +101,7 @@ map. Notice that it uses column, static and lookups within this map.
 
 ![Score Results](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/getting-started/image2022-11-9_9-41-47.png)
 
-### Step 7. Add an Agent
+## Step 7. Add an Agent
 
 Agents associate a file transfer with the maps defined for this file.
 
@@ -124,7 +124,7 @@ Log in using the details below:
 
 ![Details Login](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/getting-started/image2022-11-9_9-45-36.png)
 
-### Step 8. Upload file to Agent
+## Step 8. Upload file to Agent
 
 Once you have created the agent, you must upload the CSV file downloaded earlier
 ("DI-TEST-2019-GrandBend.csv") because this is a manual agent. On the main
@@ -138,7 +138,7 @@ that agent should now be 1. Now, we are ready to load to the ODS.
 
 ![Agents Files](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/getting-started/image2022-11-9_9-52-11.png)
 
-### Step 9. Run the Agent
+## Step 9. Run the Agent
 
 Execute Data Import's Transform Load command line task to import and transform
 CSV data to the StudentAssessment endpoint. This can be done by executing the
@@ -146,7 +146,7 @@ DataImport.Server.TransformLoad.exe from the TransformLoad folder.
 
 ![Run Agent](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/getting-started/image2019-9-26_16-20-27.png)
 
-### Step 10. View Logs
+## Step 10. View Logs
 
 Data Import provides logging facilities for files to process, ingestion log
 details, and a general application log. Select Configure → **Logs** to view this
@@ -176,11 +176,13 @@ Tracker](https://tracker.ed-fi.org/projects/EDFI/issues).
 
 Read more about getting started with the Data Import tool:
 
-:::info note:
-  Below are two sample data files used in the "Next Steps" referenced in
-  the walkthrough on this page: \- Sample CSV file:
-  [DI-TEST-2019-GrandBend.csv](https://edfi.atlassian.net/wiki/download/attachments/24119444/DI-TEST-2019-GrandBend.csv?version=1&modificationDate=1576003083757&cacheVersion=1&api=v2)
-  \- Sample template file: [Grand Bend 2019 Sample ELA Assessment
-  Results](https://github.com/Ed-Fi-Exchange-OSS/DataImport-Templates/tree/main/Grand_Bend_2019_Sample_State_ELA_Assessment_Results)
+:::info
+
+Below are two sample data files used in the "Next Steps" referenced in
+the walkthrough on this page:
+
+* Sample CSV file: [DI-TEST-2019-GrandBend.csv](https://edfi.atlassian.net/wiki/download/attachments/24119444/DI-TEST-2019-GrandBend.csv?version=1&modificationDate=1576003083757&cacheVersion=1&api=v2)
+*  Sample template file: [Grand Bend 2019 Sample ELA Assessment Results](https://github.com/Ed-Fi-Exchange-OSS/DataImport-Templates/tree/main/Grand_Bend_2019_Sample_State_ELA_Assessment_Results)
   (on GitHub)
+
 :::

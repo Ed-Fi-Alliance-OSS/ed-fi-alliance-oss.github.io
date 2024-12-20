@@ -55,9 +55,7 @@ to load every module in the installer) and click **OK**.
 Use the following PowerShell script to download and extract the DataImport.Web
 package (if you already have NuGet CLI)
 
-**download-data-import-installer.ps1**
-
-```json
+```powershell title="download-data-import-installer.ps1"
 $pathToNuget = "Path\To\NuGet.exe"
 $pathToOutputDirectory = "Path\To\Output\Directory"
 $releaseVersion = "2.3.2"
@@ -134,13 +132,9 @@ any of the parameters, it will use its default value.
 
 Minimal configuration samples for the "install.ps1" file:
 
-:::info note:
+:::info SQL Server
 
-  SQL Server
-
-  **install.ps1(SQL Server)**
-
-  ```json
+  ```powershell title="install.ps1 for SQL Server"
   $dbConnectionInfo = @{
    Server = "(local)"
    Engine = "SqlServer"
@@ -151,15 +145,12 @@ Minimal configuration samples for the "install.ps1" file:
    DbConnectionInfo = $dbConnectionInfo
   }
   ```
+
 :::
 
-:::info note:
+:::info PostgreSQL
 
-  PostgreSQL
-
-  **install.ps1(PostgreSQL)**
-
-  ```json
+  ```powershell title="install.ps1 for PostgreSQL"
   $dbConnectionInfo = @{
    Server = "localhost"
    Engine = "PostgreSQL"
@@ -170,8 +161,8 @@ Minimal configuration samples for the "install.ps1" file:
   $parameters = @{
    DbConnectionInfo = $dbConnectionInfo
   }
-
   ```
+
 :::
 
 ### Step 3. Run the Installation via PowerShell

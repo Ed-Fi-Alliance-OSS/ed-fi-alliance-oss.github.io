@@ -1,7 +1,7 @@
 # Quick Start for Data Import in Docker
 
 :::info note:
- This TechDocs page applies to Data Import 1.3.2.
+This  page applies to Data Import 1.3.2.
 :::
 
 ## Using Docker Deployment for Data Import
@@ -20,19 +20,17 @@ Desktop.
 We've created a package which provides for a "quickstart" into Docker Desktop to
 provide Data Import with a full pre-configured Ed-Fi Tech Suite.  This package
 contains a Docker compose file, a file for environment variables to start Docker
-".env" file, SSL folder with pre-built certificate and a script to generate SSL
+`.env` file, SSL folder with pre-built certificate and a script to generate SSL
 certificates for secure configuration.
 
 This package can be downloaded using the side bar on the right.
 
 #### **Step 2.** **Setup the environment variables:**
 
-.env file please update the following environment variables with
+`.env` file please update the following environment variables with
 appropriate values:
 
-**Environment Variables**
-
-```json
+```ini title="Environment Variables"
 POSTGRES_USER=postgres
 POSTGRES_PASSWORD=P@ssw0rd
 PGBOUNCER_LISTEN_PORT=6432
@@ -47,13 +45,13 @@ generate encryption key as follows:
 
 #### Generate encryption key on Linux
 
-```shell
+```bash
 openssl rand -base64 32
 ```
 
 #### Generate encryption key on Windows PowerShell
 
-```json
+```powershell
  $aes = [System.Security.Cryptography.Aes]::Create()
  $aes.KeySize = 256
  $aes.GenerateKey()
@@ -70,10 +68,11 @@ and key files. Else can generate the new certificate and key files as follows:
 * Start a Git Bash Session
 * Run the following commands:
 
-`export` `MSYS_NO_PATHCONV=1` `cd` `'{your repo root}'` `.``/generate-cert``.sh`
+```bash
+export MSYS_NO_PATHCONV=1 cd '{your repo root}' ./generate-cert.sh
+```
 
-Please refer [Docker
-Deployment#Step4.ProvideSSLcertificate](https://edfi.atlassian.net/wiki/display/EDFITOOLS/Docker+Deployment#DockerDeployment-Step4.ProvideSSLcertificate) for
+Please refer [Docker Deployment - Step 4. Provide SSL Certificate](../../7-docker/readme.mdx#step-4-provide-ssl-certificate) for
 more details.
 
 #### **Step 4. Setup the docker containers**
@@ -106,13 +105,14 @@ your workstation below:
 To run the Transform-Load service within Data Import running in Docker, use a
 command such as below:
 
-**Example**
-
-```shell
+```bash title="Example"
 docker exec -w /app/DataImport.Server.TransformLoad/ -ti <container-name> ./DataImport.Server.TransformLoad
 ```
+
 :::info note:
-  The following links contain relevant source code and published images:
-  **Quick Start**
-  [https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-DataImport/blob/main/eng/data/DataImport-1.3.2-Docker-Quick-Start.zip](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-DataImport/blob/main/eng/data/DataImport-1.3.2-Docker-Quick-Start.zip)
+
+The following links contain relevant source code and published images:
+
+* **Quick Start**: [DataImport-1.3.2-Docker-Quick-Start.zip](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-DataImport/blob/main/eng/data/DataImport-1.3.2-Docker-Quick-Start.zip)
+
 :::

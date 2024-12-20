@@ -19,9 +19,11 @@ recovery through granting those rights.
 The example files described here are in the attached zip and are based on the
 Student Assessments example described in the [Quick Start]:
 
-|     | File | Modified |
-| --- | --- | --- |
-| Labels*   No labels | ZIP Archive [ExampleSqlQueryFileGenerator.zip] | May 21, 2021 by [Patrick Lioi] |
+:::info
+
+[ExampleSqlQueryFileGenerator.zip](https://edfi.atlassian.net/wiki/download/attachments/24117960/ExampleSqlQueryFileGenerator.zip?api=v2)
+
+:::
 
 We begin in a Data Import 1.1.1 system, with a File Generator stored on disk
 like so:
@@ -49,15 +51,19 @@ generation concept truly an aspect of data _mapping,_ or is it in fact an ETL
 process _prior_ to bringing Data Import's mapping into the picture?
 
 :::warning
-  If an administrator wants to opt-in to the risks of arbitrary code
-  running in their data maps, performing file access, database connections, and
-  the like, they can enable full access to the PowerShell language and commands:
-  in both the `DataImport.Web/Web.config` file and
-  the `DataImport.Server.TransformLoad/DataImport.Server.TransformLoad.exe.config` file,
-  locate the `<appSettings>` tag and add the following setting to enable full
-  PowerShell access:
 
-  ![](https://edfi.atlassian.net/wiki/download/thumbnails/24117960/DANGER%20-%20Enable%20Full%20PowerShell.png?version=1&modificationDate=1621556509903&cacheVersion=1&api=v2&width=884&height=114)
+If an administrator wants to opt-in to the risks of arbitrary code
+running in their data maps, performing file access, database connections, and
+the like, they can enable full access to the PowerShell language and commands:
+in both the `DataImport.Web/Web.config` file and
+the `DataImport.Server.TransformLoad/DataImport.Server.TransformLoad.exe.config` file,
+locate the `<appSettings>` tag and add the following setting to enable full
+PowerShell access:
+
+```xml
+<add key="UsePowerShellWithNoRestrictions" value="True" />
+```
+
 :::
 
 Upon the next attempt to run the Agent, the script runs with full privileges and

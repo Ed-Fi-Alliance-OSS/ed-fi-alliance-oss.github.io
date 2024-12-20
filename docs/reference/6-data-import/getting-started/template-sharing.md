@@ -40,4 +40,3 @@ feature in Data Import to consume and publish new templates.
   Ed-Fi Community at [Published Data Import
   Templates](../../data-import/technical-articles/data-import-article-archive/published-data-import-templates).
 :::
-
