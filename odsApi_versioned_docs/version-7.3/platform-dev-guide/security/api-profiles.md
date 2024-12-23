@@ -48,8 +48,8 @@ consumer is covered by a single _assigned_ Profile, and if so, it will
 implicitly process the request using that Profile. However, if multiple Profiles
 are assigned, or the API consumer is simply choosing to use a particular
 Profile, the API consumer must specify which Profile is to be used by adding the
-appropriate HTTP header to the request (i.e. `Accept` for GET requests, and
-`Content-Type` for PUT/POST requests).
+appropriate HTTP header to the request (i.e. `Accept` for `GET` requests, and
+`Content-Type` for `PUT`/`POST` requests).
 
 :::
 
@@ -240,7 +240,7 @@ error response if they attempt to write anything other than Physical or Shipping
 addresses.
 
 Resource members that are part of the identity are automatically included in the 
-GET responses and must be included in the PUT and POST request bodies.
+`GET` responses and must be included in the `PUT` and `POST` request bodies.
 
 ```xml
 <!-- Resource-level IncludeOnly -->
@@ -271,7 +271,7 @@ GET responses and must be included in the PUT and POST request bodies.
 In the example above, the API includes schoolId in `GET` responses, and the API 
 client must include it in `POST` and `PUT` requests even though it wasn't explicitly
 included in the definition. Additionally, if required fields are excluded, 
-the profile cannot be used to create the resource (though updates would still be possible).
+the profile cannot be used to _create_ the resource (though updates would still be possible).
 
 ## Adding Profiles to the Ed-Fi ODS / API
 
