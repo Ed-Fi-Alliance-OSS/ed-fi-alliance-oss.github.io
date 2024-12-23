@@ -1,3 +1,7 @@
+---
+sidebar_position: 4
+---
+
 # Enrollment Domain - Best Practices
 
 ## Definitions and Key Concepts
