@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Bell Schedule Domain - Model Diagrams
 
 ## Bell Schedule Model UML Diagram

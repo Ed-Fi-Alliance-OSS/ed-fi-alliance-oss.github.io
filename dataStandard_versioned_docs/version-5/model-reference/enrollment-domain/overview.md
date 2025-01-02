@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # Enrollment Domain - Overview
 
 ## Key Entities

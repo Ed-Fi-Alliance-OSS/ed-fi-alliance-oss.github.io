@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Teaching and Learning Domain - Model Diagrams
 
 This section contains reference information for the Teaching and Learning domain

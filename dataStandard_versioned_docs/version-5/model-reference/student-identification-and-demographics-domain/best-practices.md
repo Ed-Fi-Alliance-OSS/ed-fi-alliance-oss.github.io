@@ -1,3 +1,7 @@
+---
+sidebar_position: 4
+---
+
 # Student Identification and Demographics Domain - Best Practices
 
 ## Purpose
