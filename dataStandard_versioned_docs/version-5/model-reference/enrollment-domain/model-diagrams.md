@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Enrollment Domain - Model Diagrams
 
 ## Enrollment Model UML Diagram

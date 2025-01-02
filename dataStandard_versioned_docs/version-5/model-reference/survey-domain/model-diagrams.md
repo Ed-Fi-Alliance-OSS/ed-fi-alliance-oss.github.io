@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Survey Domain - Model Diagrams
 
 This section contains reference information for the Assessment domain model and

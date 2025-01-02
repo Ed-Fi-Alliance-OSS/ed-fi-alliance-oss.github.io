@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Discipline Domain - Model Diagrams
 
 ## Discipline Model UML Diagram

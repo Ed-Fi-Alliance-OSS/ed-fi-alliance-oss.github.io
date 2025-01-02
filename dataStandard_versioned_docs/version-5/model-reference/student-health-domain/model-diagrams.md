@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Student Health Domain - Model Diagrams
 
 ## Student Health Model UML Diagram

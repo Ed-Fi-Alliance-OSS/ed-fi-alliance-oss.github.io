@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Student Identification and Demographics Domain - Model Diagrams
 
 ## Student Identification and Demographics Model UML Diagram

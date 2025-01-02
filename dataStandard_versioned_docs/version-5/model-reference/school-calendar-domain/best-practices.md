@@ -1,3 +1,7 @@
+---
+sidebar_position: 4
+---
+
 # School Calendar Domain - Best Practices
 
 ## Sessions, Grading Periods, Calendars, and Calendar Dates

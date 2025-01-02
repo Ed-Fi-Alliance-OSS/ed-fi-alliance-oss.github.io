@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Student Academic Record Domain - Model Diagrams
 
 This section contains reference information for the Student Academic Record
