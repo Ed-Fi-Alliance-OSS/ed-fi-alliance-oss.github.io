@@ -9,7 +9,6 @@ the Ed-Fi Data Model.
 
 * [Handbook for v5.1](https://edfidocs.blob.core.windows.net/$web/handbook/v5.1/index.html)
 * [Handbook for v5.0](https://edfidocs.blob.core.windows.net/$web/handbook/v5.0/index.html)
-* [Handbook for v4.0](https://edfidocs.blob.core.windows.net/$web/handbook/v5.0/index.html)
 * [Handbook for v4.0](https://edfidocs.blob.core.windows.net/$web/handbook/v4.0/index.html)
 * [Handbook for v3.3](https://edfidocs.blob.core.windows.net/$web/handbook/v3.3/index.html)
 * [Handbook for v3.2](https://edfidocs.blob.core.windows.net/$web/handbook/v3.2/index.html)
