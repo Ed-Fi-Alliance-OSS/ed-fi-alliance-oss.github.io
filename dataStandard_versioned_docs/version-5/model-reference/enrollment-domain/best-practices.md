@@ -202,7 +202,7 @@ _Best Practices for the use of the SSA Attributes_
 | --- | --- | --- | --- |
 | Student (key)<br/><br/>School (key)<br/><br/>EntryDate (key)<br/><br/>EntryGradeLevel | EntryType<br/><br/>PrimarySchool<br/><br/>SchoolYear<br/><br/>EnrollmentType<br/><br/>ResidencyStatus<br/><br/>ExitWithdrawDate<br/><br/>ExitWithdrawType<br/><br/>Calendar<br/><br/>FullTimeEquivalency | EntryGradeLevelReason<br/><br/>RepeatGradeIndicator<br/><br/>ClassOfSchoolYear<br/><br/>GraduationPlan | EducationPlan<br/><br/>AlternativeGraduationPlan<br/><br/>EmployedWhileEnrolled<br/><br/>SchoolChoice<br/><br/>SchoolChoiceBasis<br/><br/>TermCompletionIndicator<br/><br/>NextYearSchool<br/><br/>NextYearGradeLevel |
 
-Keys in reading the table:
+:::note Keys in reading the table and following ones:
 
 * Required attributes in Ed-Fi are hard constraints, meaning that a record or
     API payload will be rejected if the attribute is not present. These
@@ -212,6 +212,7 @@ Keys in reading the table:
 * Recommended attributes are those whose best practices encourage their use.
 * As Needed attributes are those that should be used when appropriate, based
     upon policy.
+:::
 
 Business Rules that considered as best practices for the usage of the _SSA_ as
 follows

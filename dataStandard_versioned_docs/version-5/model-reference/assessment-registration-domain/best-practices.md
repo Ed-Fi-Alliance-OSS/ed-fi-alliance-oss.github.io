@@ -81,14 +81,14 @@ entities and associations that will be used in the process.
 ## Prerequisites for Writing Assessment Registration Domain Entities
 
 The Assessment Registration domain has dependencies on other data that should be
-entered into the Ed-Fi API/ODS prior to writing the domain entities and
+entered into the Ed-Fi API prior to writing the domain entities and
 associations, as follows:
 
-* Yearly API/ODS setup. The best practice convention instantiates a separate
-  API/ODS for each school year. This means that assessment registration entities
-  and associations must be written into the appropriate API/ODS for the school year.
+* Yearly API setup. The best practice convention instantiates a separate
+  API for each school year. This means that assessment registration entities
+  and associations must be written into the appropriate API for the school year.
 * EducationOrganizations, minimally Schools, LocalEducationAgency(s) and
-  StateEducationAgency(s), need to be created for the scope of the ODS.
+  StateEducationAgency(s), need to be created for the scope of the API.
 * The assessment registration domain is dependent on certain attributes of entities
   and associations in the Student Identification and Demographics domain and the
   Enrollment domain, as follows:
@@ -146,3 +146,239 @@ associations, as follows:
     relationship-based authorization by assigning the EducationOrganization spanning
     the scope of the students to the assessment vendor's claim.  This is typically
     the AssessmentAdministration.AssigningEducationOrganization
+
+## Using the Assessment Registration Domain
+
+### Education Organizations for Assessment Administration
+
+The Assessment Registration domain is designed to provide flexibility for a variety
+of assessment use cases where there is a need to communicate the information about
+registered students and their characteristics that will be taking the assessment to
+the assessment vendor.
+
+The domain can be used for assessments administered by a
+StateEducationalAgency, an EducationServiceCenter, a LocalEducationAgency, or a School.
+
+Much of the flexibility is provided by identifying the different roles of
+EducationOrganizations as follows:
+
+| Education Organization | Specified in Entity | Definition of Role |
+| --- | --- | --- |
+| AssigningEducationOrganization | AssessmentAdministration | The organization that contracts and administers the assessment. |
+| ParticipatingEducationOrganization | AssessmentAdministration Participation | Lower-level organizations that will be participating in the assessment, For example for with an SEA as the “assigning” organization, the LEAs would be “participating” in this administration of the assessment. |
+| TestingEducationOrganization | StudentAssessmentRegistration | The organization where the student will be taking the assessment, often a school. This school may be different from the school the student is enrolled in. |
+| ReportingEducationOrganization | StudentAssessmentRegistration | The organization where the results of the assessment will be reported, typically the School (or its LEA) where the student is enrolled. |
+
+### Use of Battery Parts
+
+Assessments are often organized into modules that are separately scored, often
+by subject area. The different modules are indicated as ObjectiveAssessments as
+part of the Assessment Domain.
+
+The use of the AssessmentBatteryPart entity denotes the organization of parts for
+delivery to students, specifically where:
+
+* Different students may take different battery parts of the assessment.
+* Students may require different accommodation(s) for different batter parts.
+Some things to note on usage:
+* An assessment may or may not have AssessmentBatteryParts
+* AssessmentBatteryPart may or may not be aligned with the ObjectiveAssessments.
+  AssessmentBatteryPart.ObjectiveAssessment is used to map the relationship, if
+  it exists.
+* AssessmentBatteryParts may or may not be scored separately.
+
+### Specifying and Communicating Student Accommodations
+
+The accommodations actually provided to a student for an assessment is reported
+after the fact in the StudentAssessment.Accommodation.  The determination of
+what accommodations a student should receive are addressed in the Assessment
+Registration domain.
+
+The Assessment Registration use case requires that the education organization
+provides information to the assessment vendor as to what accommodation(s) to
+provide or organize through the proctor.  To address this flexibly, there are
+three (optional) mechanisms defined, as shown in the table below.  Any or all
+of these options may be used as needed.
+
+| Attribute | When to Write | Definition |
+|---|---|---|
+| StudentEducationOrganizationAssessmentAccommodation. GeneralAccommodation | At student school registration or when determined by a program (e.g., special education or language instruction). | Indicates what assessment accommodations the student should generally receive for all assessments |
+| StudentAssessmentRegistration.AssessmentAccommodation | Upon student registration for the assessment. | Indicates the accommodations the student should receive for this particular assessment. |
+| StudentAssessmentRegistrationBatteryPartAssociation. Accommodation | Upon student registration for the assessment. Used on when the accommodations may differ by battery part. | Indicates the accommodations the student should receive for each battery part. |
+
+## Assessment Registration Best Practices
+
+The following best practices are organized by entity and association in the
+Assessment Registration domain.
+
+### AssessmentAdministration
+
+The AssessmentAdministration entity captures the anticipated administration
+of an assessment under the purview of an EducationOrganization.  The
+following table summarizes the best practice use of the AssessmentAdministration
+attributes.
+
+| Required | Must Have | Recommended | As Needed |
+|---|---|---|---|
+|AssigningEducationOrganization (key) <br/> Assessment (key) <br/>  AdministrationIdentifier (key) | AssessmentAdministration <br/> Period |  | AssessmentBatteryPart |
+
+:::note Keys in reading the table and following ones:
+
+* _Required_ attributes in Ed-Fi are hard constraints, meaning that a record or
+    API payload will be rejected if the attribute is not present. These
+    necessarily include key values.
+* _Must Have_ attributes are those whose intended use of the entity requires
+    them to be used, even if, upon creation, they may not be present.
+* _Recommended_ attributes are those whose best practices encourage their use.
+* _As Needed_ attributes are those that should be used when appropriate, based
+    upon policy.
+:::
+
+<br/>
+Best practices for the use of AssessmentAdministration and its attributes
+
+:::info
+
+* An Assessment may have zero or more AssessmentAdministrations for a
+  school year.
+* Different AssessmentAdministrations for the same Assessment typically do
+  not have overlapping AssessmentAdministration.Periods – but may in
+  circumstances where there are different AssessmentAdministrationParticipation.
+  ParticipatingEducationOrganizations or where different student populations
+  are targeted.
+* The AssessmentAdministration.AssigningEducationOrganization should reflect
+  that organization that has responsibility for the entire scope of the
+  assessment registration including management of the assessment vendor.
+* If, at the time of defining an assessment administration with the assessment
+  vendor, the assessment meta data (specifically the Assessment entity) has not
+  been written, create the Assessment for reference by the AssessmentAdministration.
+* If the assessment administration will involve the selective delivery of
+  assessment battery parts, create the AssessmentBatteryParts for reference by
+  the AssessmentAdministration.
+
+::::
+
+### AssessmentAdministrationParticipation
+
+The AssessmentAdministrationParticipation entity indicates the planned
+participation of an EducationOrganization in the administration of an assessment.
+The following table summarizes the best practice use of the
+AssessmentAdministrationParticipation attributes.
+
+| Required | Must Have | Recommended | As Needed |
+|---|---|---|---|
+| AssessmentAdministration (key) <br/> ParticipatingEducationOrganization (key) |  | AdministrationContact |  |
+
+<br/>
+
+Best practices for the use of AssessmentAdministrationParticipation and its attributes
+:::info
+
+* Use the AssessmentRegistrationParticipation entity to communicate the participating
+  education organizations and their contacts to the assessment vendor, if required.
+* The AssessmentRegistrationParticipation.ParticipatingEducationOrganization is
+  typically a sub-organization of the AssessmentAdministration.AssigningEducationOrganization,
+  for example a LocalEducationAgency as a participating sub-organization of the
+  StateEducationAgency.
+
+:::
+
+### StudentAssessmentRegistration
+
+The StudentAssessmentRegistration entity reflects the registration that indicates the
+student is expected to participate in a particular assessment administration. The
+following table summarizes the best practice use of the StudentAssessmentRegistration
+attributes.
+
+| Required | Must Have | Recommended | As Needed |
+|---|---|---|---|
+| AssessmentAdministration (key) <br/> StudentEducationOrganization Association (key) <br/> StudentSchoolAssociation | TestingEducationOrganization <br/> ReportingEducationOrganization | AssessmentAccommodation <br/> PlatformType <br/> AssessmentGradeLevel | StudentEducationOrganizationAssessmentAccommodation <br/> AssessmentCustomization |
+
+<br/>
+
+Best practices for the use of StudentAssessmentRegistration and its attributes
+:::info
+
+* A StudentAssessmentRegistration is not required for the results of the Assessment to
+  be reported in StudentAssessment.
+* Every student reflected in the StudentAssessmentRegistration should have a corresponding
+  StudentAssessment, even if the student was not tested.
+* The StudentAssessmentRegistration.ReportingEducationOrganization is typically the School,
+  or its LEA, where the student is enrolled.
+* Use the StudentAssessmentRegistration.AssessmentAccommodation to communicate to the
+  assessment vendor the accommodations required for the student for the entire assessment.
+* Use the StudentAssessmentRegistration.AssessmentCustomization to communicate to the
+  assessment vendor additional data about the student and/or details of the student’s
+  registration that is not available from other entities in the API.
+
+:::
+
+### AssessmentBatteryPart
+
+The AssessmentBatteryPart entity denotes parts that are organized for administering an
+assessment which, together, provide a comprehensive assessment of the students. The
+following table summarizes the best practice use of the AssessmentBatteryPart attributes.
+
+| Required | Must Have | Recommended | As Needed |
+|---|---|---|---|
+| Assessment (key) <br/> AssessmentBatteryPart (key) |  | ObjectiveAssessment |  |
+
+<br/>
+
+Best practices for the use of AssessmentBatteryPart and its attributes
+:::info
+
+* Use the AssessmentBatteryPart when
+  1) students are selectively delivered different assessment battery parts, or
+  2) students may receive different accommodations for different assessment battery parts.
+* An Assessment may have zero or more AssessmentBatteryParts.
+* If AssessmentBatteryParts are defined, reference the ObjectiveAssessments that
+  they are mapped to when aligned.
+
+:::
+
+### StudentAssessmentRegistrationBatteryPartAssociation
+
+The StudentAssessmentRegistrationBatteryPartAssociation indicates the battery part(s) of
+the assessment that the student is to be tested for this administration of the assessment.
+The following table summarizes the best practice use of the
+StudentAssessmentRegistrationBatteryPartAssociation attributes.
+
+ Required | Must Have | Recommended | As Needed |
+|---|---|---|---|
+| StudentAssessmentRegistration (key) <br/> AssessmentBatteryPart (key) |  | Accommodation |  |
+
+<br/>
+
+:::info
+
+* Use the StudentAssessmentRegistrationBatteryPartAssociation when
+  1) the student is selectively delivered certain assessment battery parts;
+  2) the student should receive different accommodations for different assessment battery parts.
+
+:::
+
+### StudentEducationOrganizationAssessmentAccommodation
+
+The StudentEducationOrganizationAssessmentAccommodation entity specifies the
+accommodation(s) required or expected for administering assessments as determined by the
+education organization.  This is typically written by the SIS (or alternatively supporting
+applications for ELL or special education) to indicate what assessment accommodations the
+student should generally receive for assessments.  The following table summarizes the best
+practice use of the StudentEducationOrganizationAssessmentAccommodation attributes.
+
+ Required | Must Have | Recommended | As Needed |
+|---|---|---|---|
+| EducationOrganization (key) <br/> Student (key) | GeneralAccommodation |  |  |
+
+<br/>
+
+:::info
+
+* Use the StudentEducationOrganizationAssessmentAccommodation to record the general
+  accommodations that the student should be afforded for all assessments.
+* The StudentEducationOrganizationAssessmentAccommodation.EducationOrganization is
+  typically the same as the corresponding StudentEducationOrganizationAssociation.EducationOrganization
+  that is written during enrollment
+
+:::

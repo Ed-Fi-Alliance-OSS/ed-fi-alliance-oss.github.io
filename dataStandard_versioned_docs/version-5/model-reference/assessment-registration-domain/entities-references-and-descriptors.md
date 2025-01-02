@@ -12,7 +12,7 @@ hide_table_of_contents: true
 | AssessmentAdministration | The anticipated administration of an assessment under the purview of an EducationOrganization. |
 | AssessmentAdministrationParticipation | Identifies the point of contact for the administration of an assessment under the purview of an EducationOrganization. |
 | StudentAssessmentRegistration | Identifies an assessment registration that a student is expected to participate in including the testing organization, reporting organization and assessment delivery details. |
-| AssessmentBatteryPart | The parts organized for administering an assessment which together provide a comprehensive assessment of the students.. |
+| AssessmentBatteryPart | The parts organized for administering an assessment which together provide a comprehensive assessment of the students. |
 | StudentAssessmentRegistrationBatteryPartAssociation | The association to the part(s) of the assessment battery that the student is to be tested for this administration of the assessment. |
 | StudentEducationOrganizationAssessmentAccommodation |  The accommodation(s) required or expected for administering assessments as determined by the education organization. |
 
