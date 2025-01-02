@@ -21,7 +21,7 @@ following steps.
     on [Ed-Fi.org](https://www.ed-fi.org).
 * **Develop.** Add Ed-Fi capabilities to your product  to support customers
     harnessing multiple measures of assessment. You will find the [Assessment
-    Vendor Developer Guide](./get-started.md)
+    Vendor Developer Guide](./readme.md)
     below.
 * **Test.** To fully realize the benefits of Harnessing Multiple Measures of
     Assessment and ensure your solution is field ready, we recommend selecting

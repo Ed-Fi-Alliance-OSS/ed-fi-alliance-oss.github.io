@@ -21,7 +21,7 @@ Vendor support for student equity encompasses the following steps:
 * **Develop.** Add Ed-Fi capabilities to your product to support customers
     addressing chronic absenteeism. You will find the [Student Equity Starter
     Kit Vendor Developer
-    Guide](./get-started.md)
+    Guide](./readme.md)
     below.
 * **Test.** To fully realize the benefits of the Student Equity Starter Kit,
     and ensure your solution is field ready, we recommend selecting and working
