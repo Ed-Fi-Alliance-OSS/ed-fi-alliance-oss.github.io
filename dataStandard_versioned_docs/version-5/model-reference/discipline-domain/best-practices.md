@@ -1,3 +1,7 @@
+---
+sidebar_position: 4
+---
+
 # Discipline Domain - Best Practices
 
 ## Summary

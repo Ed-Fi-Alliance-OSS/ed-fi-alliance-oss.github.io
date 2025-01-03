@@ -44,6 +44,21 @@ function TechPlaybook() {
   );
 }
 
+function EsaPlaybook() {
+  return (
+    <div className="margin-bottom--lg">
+      <img src="/img/esa-playbook.jpg" alt="[ESA playbook cover image]" />
+      <Heading as="h2">Educational Service Agency (ESA) Playbook</Heading>
+      <Link
+        to="/getting-started/esa-playbook"
+        className="button button--primary button"
+      >
+        Go »
+      </Link>
+    </div>
+  );
+}
+
 function GetStartedIntro() {
   // Original text sourced from
   // https://www.ed-fi.org/blog/introducing-ed-fi-implementation-playbooks/
@@ -155,6 +170,7 @@ function Main() {
           <div className="col col--4">
             <SeaPlaybook></SeaPlaybook>
             <TechPlaybook></TechPlaybook>
+            <EsaPlaybook></EsaPlaybook>
           </div>
         </div>
         <div className="row">

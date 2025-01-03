@@ -1,3 +1,7 @@
+---
+sidebar_position: 4
+---
+
 # Teaching and Learning Domain - Best Practices
 
 CourseLevelCharacteristics can be defined in the Course, Course Offering, and
