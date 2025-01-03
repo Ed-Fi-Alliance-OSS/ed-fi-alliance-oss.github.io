@@ -260,6 +260,7 @@ export default {
       versionCompatibility: [
         'Ed-Fi ODS/API for Suite 3 v3.1',
         'Ed-Fi ODS/API for Suite 3 v5.1',
+        'Ed-Fi ODS/API for Suite 3 v6.2',
       ],
       availability: 'Available to any agency (all sizes) or vendor in the U.S.',
     },
