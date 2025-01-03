@@ -6,7 +6,7 @@
 export default {
   managedODSAPI: [
     {
-      logo: 'https://edfidocs.blob.core.windFows.net/$web/img/partners/badging/edgraph.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/edgraph.png',
       productName: 'EdGraph',
       provider: 'EdWire',
       website: 'https://edgraph.com/',
