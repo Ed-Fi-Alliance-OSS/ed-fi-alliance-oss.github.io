@@ -24,12 +24,13 @@ auditing.
 
 ### Source Code
 
-1. Dependency review and analysis using
+1. Static Application Security Testing (SAST) using [CodeQL](https://codeql.github.com/).
+2. Dependency review and analysis using
    [Dependabot](https://docs.github.com/en/code-security/dependabot/working-with-dependabot)
    (nightly review of the `main` branch) and
    [actions/dependency-review-action](https://github.com/actions/dependency-review-action)
    (review of new dependencies in pull requests).
-2. [Trojan
+3. [Trojan
    Source](https://www.malwarebytes.com/blog/news/2021/11/trojan-source-hiding-malicious-code-in-plain-sight)
    detection.
 
