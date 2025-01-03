@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Educator Preparation Data Model Domain - Model Diagrams
 
 :::note

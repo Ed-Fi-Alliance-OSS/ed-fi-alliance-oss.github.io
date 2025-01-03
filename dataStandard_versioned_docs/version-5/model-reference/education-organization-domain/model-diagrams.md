@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Education Organization Domain - Model Diagrams
 
 ## Education Organization Model UML Diagram

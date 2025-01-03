@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Student Attendance Domain - Model Diagrams
 
 ## Student Attendance Model UML Diagram

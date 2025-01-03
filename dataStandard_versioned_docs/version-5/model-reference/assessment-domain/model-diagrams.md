@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Assessment Domain - Model Diagrams
 
 This section contains reference information for the Assessment domain model and
