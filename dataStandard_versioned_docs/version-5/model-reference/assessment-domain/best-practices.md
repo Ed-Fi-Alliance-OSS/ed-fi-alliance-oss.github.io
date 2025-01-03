@@ -1,3 +1,7 @@
+---
+sidebar_position: 4
+---
+
 # Assessment Domain - Best Practices
 
 The Ed-Fi assessment specification is purposefully non-restrictive when it comes

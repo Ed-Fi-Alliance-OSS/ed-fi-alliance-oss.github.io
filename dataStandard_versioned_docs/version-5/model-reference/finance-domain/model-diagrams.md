@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Finance Domain - Model Diagrams
 
 ## Finance Domain UML Diagram

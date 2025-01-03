@@ -1,3 +1,7 @@
+---
+sidebar_position: 4
+---
+
 # Student Academic Record Domain - Best Practices
 
 ## Current Grade Capture
