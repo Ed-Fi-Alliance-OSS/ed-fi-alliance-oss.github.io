@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Staff Domain - Model Diagrams
 
 ## Staff Domain UML Diagram

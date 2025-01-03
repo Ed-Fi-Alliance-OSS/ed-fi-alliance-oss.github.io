@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Graduation Domain - Model Diagrams
 
 ## Graduation Model UML Diagram

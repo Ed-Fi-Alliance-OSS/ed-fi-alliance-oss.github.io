@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # School Calendar Domain - Model Diagrams
 
 ## School Calendar Model UML Diagram
