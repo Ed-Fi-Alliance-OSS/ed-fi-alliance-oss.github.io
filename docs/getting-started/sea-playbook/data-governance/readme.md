@@ -10,7 +10,7 @@ This section covers topics relating to SEA data governance processes and how imp
 * [Developing State Data Specifications](./developing-state-data-specifications/readme.md)
 * [Guidelines and Expectations for States Using Ed-Fi Standards](./guidelines-and-expectations-for-states-using-ed-fi-standards.md)
 * [Overview of Ed-Fi Data Domains](./overview-of-ed-fi-data-domains/readme.md)
-  * [How To: Calculate Instructional Days and Instructional Time](./overview-of-ed-fi-data-domains/how-to-calculate-instructional-days-and-instructional-time.md)
+  * [How To: Calculate Instructional Days and Instructional Time](./overview-of-ed-fi-data-domains/how-to-calculate-instructional-days-and-instructional-time/readme.md)
     * [Use Case: Minutes per Day](./overview-of-ed-fi-data-domains/how-to-calculate-instructional-days-and-instructional-time/use-case-minutes-per-day.md)
     * [Use Case: Total Instructional Days](./overview-of-ed-fi-data-domains/how-to-calculate-instructional-days-and-instructional-time/use-case-total-instructional-days.md)
     * [Use Case: Total Instructional Minutes](./overview-of-ed-fi-data-domains/how-to-calculate-instructional-days-and-instructional-time/use-case-total-instructional-minutes.md)

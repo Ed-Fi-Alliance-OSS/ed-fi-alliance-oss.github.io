@@ -11,8 +11,8 @@ The documents in this section provide additional information important for SEAs 
 
 ## Contents
 
-* [API Overview](./implementation/api-overview.md)
-* [Elements of an Ed-Fi Architecture](./implementation/elements-of-an-ed-fi-architecture.md)
-* [Hardware and Software Recommendations](./implementation/hardware-and-software-recommendations.md)
-* [Ed-Fi Installation Environments](./implementation/ed-fi-installation-environments.md)
-* [Why ETL and ELT Practices Do Not Solve Interoperability Problems](./implementation/why-etl-and-elt-practices-do-not-solve-interoperability-problems.md)
+* [API Overview](./api-overview.md)
+* [Elements of an Ed-Fi Architecture](./elements-of-an-ed-fi-architecture.md)
+* [Hardware and Software Recommendations](./hardware-and-software-recommendations.md)
+* [Ed-Fi Installation Environments](./ed-fi-installation-environments.md)
+* [Why ETL and ELT Practices Do Not Solve Interoperability Problems](./why-etl-and-elt-practices-do-not-solve-interoperability-problems.md)

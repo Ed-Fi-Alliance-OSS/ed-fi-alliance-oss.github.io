@@ -58,7 +58,7 @@ In an API-based data collections system, this human intervention is no longer po
 
 What is important to realize is that changes must be made early enough so that vendors can develop and release their changes. Whereas before late changes were possible because the rate-limiting step was educating the LEA collections coordinator – i.e., weeks –  now the rate-limiting step is the need of the vendor to redevelop their API implementation and deploy that software out to their schools – i.e., months, a software development cycle.
 
-In the [State Education Agencies - Implementation Playbook](../../readme.md) the Ed-Fi Alliance publishes recommended lead times for publishing vendor specifications; these timelines have been proven to help create successful Ed-Fi implementations.
+In the [State Education Agencies - Implementation Playbook](../readme.md) the Ed-Fi Alliance publishes recommended lead times for publishing vendor specifications; these timelines have been proven to help create successful Ed-Fi implementations.
 
 ## The SEA data portal
 

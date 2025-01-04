@@ -6,7 +6,7 @@ The Ed-Fi Data Model, also called the Ed-Fi Unifying Data Model or UDM, is exten
 
 The UDM documentation provides details pertaining to the 16 domains in the Ed-Fi Data Standard.
 
-UDM documentation for the latest version of the data model can be found here: [Unifying Data Model Reference](reference/data-exchange/data-standard/model-reference/)
+UDM documentation for the latest version of the data model can be found here: [Unifying Data Model Reference](/reference/data-exchange/data-standard/model-reference/)
 
 The [video](https://vimeo.com/294250718) below explains the Ed-Fi Unified Data Model using a simple enrollment use case to describe what the entities, attributes, and associations are.
 
@@ -20,7 +20,7 @@ The following example uses the "Calendar" and "Bell Schedule" models for calcula
 
 | Use Case | Page |
 | --- | --- |
-| **A general introduction to the Ed-Fi Calendar domain.** | [How To: Calculate Instructional Days and Instructional Time](../overview-of-ed-fi-data-domains/how-to-calculate-instructional-days-and-instructional-time.md) |
+| **A general introduction to the Ed-Fi Calendar domain.** | [How To: Calculate Instructional Days and Instructional Time](../overview-of-ed-fi-data-domains/how-to-calculate-instructional-days-and-instructional-time/readme.md) |
 | **Total Instructional Days/School Year** - Calculate the total number of instructional days in a school for a school year for reporting purposes. | [Use Case: Total Instructional Days](../overview-of-ed-fi-data-domains/how-to-calculate-instructional-days-and-instructional-time/use-case-total-instructional-days.md) |
 | **Total Instructional Minutes/School Year** - Calculate the total number of instructional minutes for a school year for reporting purposes | [Use Case: Total Instructional Minutes](../overview-of-ed-fi-data-domains/how-to-calculate-instructional-days-and-instructional-time/use-case-total-instructional-minutes.md) |
 | **Total Minutes/Day** - Calculate the total time students are in school, including instructional time within class periods and non-instructional time like passing time between classes, lunch, breaks, and recess. | [Use Case: Minutes per Day](../overview-of-ed-fi-data-domains/how-to-calculate-instructional-days-and-instructional-time/use-case-minutes-per-day.md) |
