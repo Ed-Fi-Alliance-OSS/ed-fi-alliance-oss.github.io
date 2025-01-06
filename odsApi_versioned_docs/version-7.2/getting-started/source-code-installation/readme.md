@@ -280,8 +280,8 @@ by GitHub.
 
 The Ed-Fi ODS / API can be found in the repository links below:
 
-* [Ed-Fi-ODS/v7.2](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v7.2)
-* [Ed-Fi-ODS-Implementation/v7.2](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/tree/v7.2)
+* [Ed-Fi-ODS/v7.2](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v7.2-patch1)
+* [Ed-Fi-ODS-Implementation/v7.2](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/tree/v7.2-patch1)
 
 Use a Git client (such as [GitHub Desktop](https://desktop.github.com/)) or a
 Git command line tool to Git Clone each of the repository links described above.
