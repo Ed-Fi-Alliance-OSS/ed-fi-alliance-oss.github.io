@@ -319,7 +319,7 @@ When you clone a repository, ensure that you have the correct tag checked out in
 your client before you proceed.
 
 ```powershell
-git checkout tags/v7.2 -b <branch>
+git checkout tags/v7.2-patch1 -b <branch>
 ```
 
 :::
