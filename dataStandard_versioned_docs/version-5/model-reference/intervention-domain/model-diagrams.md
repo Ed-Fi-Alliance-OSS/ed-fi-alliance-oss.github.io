@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Intervention Domain - Model Diagrams
 
 ## Intervention Model UML Diagram

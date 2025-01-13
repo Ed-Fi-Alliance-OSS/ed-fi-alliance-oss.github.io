@@ -53,7 +53,8 @@ To allow community members track data in the Ed-Fi UDM, Assessment Registration 
 StudentAssessmentRegistration: Identifies a registration that indicates the student is expected to participate in a particular assessment administration.
 
 <u>_AssessmentBatteryPart_:</u> The parts organized for administering an assessment which together provide a comprehensive assessment of the students.
-StudentAssessmentRegistrationBatteryPartAssociation: The association to the part(s) of the assessment battery that the student is to be tested for this administration of the assessment.
+
+<u>_StudentAssessmentRegistrationBatteryPartAssociation_:</u> The association to the part(s) of the assessment battery that the student is to be tested for this administration of the assessment.
 
 <u>_StudentEducationOrganizationAssessmentAccommodation_:</u> The accommodation(s) required or expected for administering assessments as determined by the education organization.
 

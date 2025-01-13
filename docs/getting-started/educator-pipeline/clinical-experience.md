@@ -119,3 +119,9 @@ survey or related survey questions) and response date (survey completion).
 ![Survey Response visual](https://edfidocs.blob.core.windows.net/$web/img/getting-started/use-cases/epp/survey-response-small.png)
 
 _[larger version](https://edfidocs.blob.core.windows.net/$web/img/getting-started/use-cases/epp/survey-response.png)_
+
+:::tip
+
+For implementation guidance, see the [Clinical Experience and Performance Starter Kit](/reference/educator-pipeline/clinical-experience/) reference documentation.
+
+:::
