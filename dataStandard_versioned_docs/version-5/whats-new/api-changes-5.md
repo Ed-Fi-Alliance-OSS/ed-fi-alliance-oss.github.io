@@ -243,22 +243,6 @@ _Also see [Alternative and Supplemental Services Best Practices](../model-refere
     * **Changed** property: specialEducationProgramServices[n].serviceBeginDate (string)
     * **Changed** property: specialEducationProgramServices[n].serviceEndDate (string)
 
-### Time Variable Definition Updates
-
-The definition for the following time-related data elements have been updated.
-
-* `/ed-fi/assessmentItems`
-  * `expectedTimeAssessed` - The duration allotted for the assessment item expressed in minutes.
-* `/ed-fi/educationContents`
-  * `timeRequired` - Indicates if the total number of items available should be returned in the 'Total-Count' header of the response. If set to false, 'Total-Count' header will not be provided. Must be false when using cursor paging (with pageToken).
-* `/ed-fi/studentInterventionAttendanceEvents`
-  * `eventDuration` - The amount of time in days for the event as recognized by the school: 1 day = 1, 1/2 day = 0.5, 1/3 day = 0.33.
-  * `interventionDuration` - The duration in minutes of the intervention attendance event.
-* `/ed-fi/studentProgramEvaluations`
-  * `evaluationDuration` - The actual number of minutes to conduct the evaluation.
-* `/ed-fi/surveyResponses`
-  * `responseTime` - The amount of time in seconds it took for the respondent to complete the survey.
-
 ### Discipline Domain Modifications
 
 _Also see [Discipline Domain Best Practices](../model-reference/discipline-domain/best-practices.md)_
@@ -309,7 +293,3 @@ _Also see [Discipline Domain Best Practices](../model-reference/discipline-domai
 
   * **Request**
     * **Added** property: weapons (array)
-
-### Update definition for Begin and EndDate Data Elements
-
-The definitions for date-related data elements have been updated to include the following note: 'Note: Date interpretation may vary. Ed-Fi recommends inclusive dates, but state-specific definitions may differ. For calculations, adhere to local guidelines.'
