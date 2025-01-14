@@ -395,6 +395,18 @@ export default {
       versionCompatibility: ['All Active Versions'],
       availability: 'Available to any agency (all sizes) or vendor in the U.S.',
     },
+    {
+      logo: 'https://edfi.atlassian.net/wiki/download/attachments/23692586/xello%20logo.png?api=v2',
+      productName: 'Xello',
+      provider: 'Xello Inc.',
+      website: 'https://xello.world/en/',
+      validThrough: '1/14/2027',
+      verifyingAgencies: ['Michigan Data Hub'],
+      documentation: {'Mapping Document':'https://edfi.atlassian.net/wiki/download/attachments/23692586/Xello%20required%20Ed-Fi%20API%20Data%20Elements.xlsx?api=v2',
+      },
+      versionCompatibility: ['Ed-Fi API version 6.x'],
+      availability: 'Available to any agency (all sizes) or vendor in the U.S.',
+    },
   ],
 
   implementationPartner: [
