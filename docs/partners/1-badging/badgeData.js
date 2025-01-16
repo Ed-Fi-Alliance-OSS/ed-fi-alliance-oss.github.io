@@ -189,7 +189,7 @@ export default {
       productName: 'Lingk Cloud Data Integration Platform',
       provider: 'Lingk Inc.',
       website: 'https://www.lingk.io/',
-      validThrough: 'November 16, 2024',
+      validThrough: 'June 16, 2025',
       verifyingAgencies: ['Duneland School Corporation (IN)'],
       documentation: {
         'Usage Overview & Mapping':
