@@ -270,6 +270,14 @@ const config = {
           hideable: true,
         },
       },
+      announcementBar: {
+        id: 'whats_new',
+        content:
+        `🎉️🎉️🎉️ 👉<b>Check Out <a href='/blog/2024/12/18/'>Ed-Fi's Latest Releases!</a></b>👈 🎉️🎉️🎉️`,
+        backgroundColor: '#eaebec',
+        textColor: '#091E42',
+        isCloseable: true,
+      }
     }),
   headTags: [
     {
