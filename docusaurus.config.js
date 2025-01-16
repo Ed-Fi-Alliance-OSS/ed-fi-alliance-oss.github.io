@@ -273,7 +273,7 @@ const config = {
       announcementBar: {
         id: 'whats_new',
         content:
-        `🎉️🎉️🎉️ 👉<b>Check Out <a href='/blog/2024/12/18/'>Ed-Fi's Latest Releases!</a></b>👈 🎉️🎉️🎉️`,
+        `👉<b><a href='/blog/2024/12/18/'>Check Out Ed-Fi's Latest Releases!</a>👈 Introducing DS 5.2, ODS/API 7.3 and MetaEd 4.5!</b>🎉️🎉️🎉️`,
         backgroundColor: '#eaebec',
         textColor: '#091E42',
         isCloseable: true,
