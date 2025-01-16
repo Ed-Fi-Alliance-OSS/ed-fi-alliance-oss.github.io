@@ -106,6 +106,15 @@ approach,
      ✅ PRO: should be able to install into any destination MSSQL database you can
      reach
      ❌ CON: no sample data (minimal or populated template)
+3. Use compose.yml file that uses Docker file for building db-admin ,  db-ods and db-ods-sandbox
+    [Sample docker Compose file which uses ods-api-db-ods-minimal/ubuntu/mssql and  ods-api-db-admin/ubuntu/mssql docker file ](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/blob/main/Docker/docker-compose-local-mssql.yml)
+    [Sample docker Compose file which  uses ods-api-db-ods-sandbox/ubuntu/mssql docker file ](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/blob/main/Docker/docker-compose-sandbox-mssql.yml)    
+   
+    this appoarch allows to setup the MSSQL database using docker container images .
+
+     ✅ PRO: should not required to have local MSSQL Server environment.
+     ❌ CON: Requires additional resources and time to download, build, and run Docker images, which may impact system performance, especially on machines with limited resources.
+        
 
 </details>
 
