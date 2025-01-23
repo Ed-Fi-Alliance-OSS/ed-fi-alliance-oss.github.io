@@ -239,7 +239,7 @@ const config = {
                 position: 'right',
               },
               {
-                href: 'https://exchange.ed-fi.org/',
+                href: '/getting-started/edfi-exchange/',
                 label: 'Exchange',
                 position: 'right',
               },
