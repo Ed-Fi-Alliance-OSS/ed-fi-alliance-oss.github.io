@@ -556,7 +556,7 @@ export default {
         },
       ],
     },
-    
+
   ],
   assessmentOutcomesSuite3: [
     {
@@ -653,6 +653,31 @@ export default {
         {
           name: 'DeSSADemoDistrict_Demoschool_Grade8_TES-TES_StudentISRs_121540985 PM (1).PDF',
           link: 'https://edfi.atlassian.net/wiki/download/attachments/23694066/DeSSADemoDistrict_Demoschool_Grade8_TES-TES_StudentISRs_121540985%20PM%20(1).PDF?api=v2',
+        },
+      ],
+    },
+    {
+      productName: 'Amplify mCLASS DIBELS 8th Edition and mCLASS Lectura',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/amplify/AmplifyWordmark_Screen.png',
+      website: 'https://amplify.com/',
+      validThrough: 'January 31, 2026',
+      verifyingAgencies: [
+        'Mesquite ISD, TX',
+      ],
+      versionCompatibility: 'All versions',
+      availability: 'Available to any agency (all sizes) in the U.S.',
+      documentation: {
+        'Availability Statement':
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/amplify/Ed-Fi%20Certification_%20Product%20Availability%20Statement.pdf',
+        Mappings:
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/amplify/Ed-Fi%20Certification_%20Data%20Mapping.xlsx',
+        narrative:
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/amplify/Ed-Fi%20Certification_%20Usage%20Narrative.pdf',
+      },
+      supportResources: [
+        {
+          name: 'Support Resource: Amplify mCLASS Texas and ECDS for the 2024–25 school year',
+          link: 'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/amplify/TEA_mCLASS-ECDS-Data.pdf',
         },
       ],
     },
