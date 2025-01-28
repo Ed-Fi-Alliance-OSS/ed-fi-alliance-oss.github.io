@@ -108,8 +108,9 @@ keys in `AdminApi\appsettings.json`. Some values to note:
 * The connection strings will need to be accurately configured by the user. For
     more information on how to determine connection strings for your database,
     please reference Microsoft documentation.
-* Change `EncryptionKey` to any Base-64 string, e.g., `6VDn8N4Kj7vYAmnMrFUgdXTqOaTiGZJc9Kf2TFFDHAA=` 
-    will work as Encryption Key for ods instance connection strings.  
+* Change `EncryptionKey` to a Base-64 string, this encryption key has to be 
+    the same as used in the ODS/API. Labeled as [OdsConnectionStringEncryptionKey](/reference/ods-api/platform-dev-guide/configuration/configuration-details/#edfiodswebapi) 
+    in the ODS/API appsettings.json.  
 * Please refer [Multi-tenant Configuration for Admin API
     2.x](../technical-articles/multi-tenant-configuration-for-admin-api-2x.md)
     for configuring Multi-Tenant specific AppSettings and ConnectionStrings.
