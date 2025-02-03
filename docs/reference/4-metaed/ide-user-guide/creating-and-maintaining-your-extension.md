@@ -10,7 +10,7 @@ Detail on each step follows.
 
 1. Open Visual Studio Code
 2. If you haven't
-    already [installed](https://edfi.atlassian.net/wiki/display/METAED20/Getting+Started+-+Installation) the
+    already [installed](../getting-started-with-metaed-ide/readme.md) the
     MetaEd extension, please do so now.
 
 :::tip
