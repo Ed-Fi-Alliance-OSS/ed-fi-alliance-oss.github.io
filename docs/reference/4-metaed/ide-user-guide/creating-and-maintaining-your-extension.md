@@ -117,6 +117,9 @@ Simply add one or more folders with the "Add Folder to Workspace..." command.
     these and only use the Workspace tab. This tab is only available if you
     have already added a folder to your workspace (step 2b).
 
+    This tab will only be available if you have already open a folder, as in
+    step 2.
+
     :::
 
 3. Expand `Extensions > MetaEd`  or type "metaed" in the search bar to scroll to
