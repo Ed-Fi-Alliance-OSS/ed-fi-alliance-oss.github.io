@@ -411,7 +411,7 @@ export default {
       logo: 'https://edfidocs.blob.core.windows.net/$web/assets/partners/badging/nexus-cons-badge/663a6d01a4ca58af92934e8a_nexus%20copy-p-800.png',
       productName: 'CourseFlow, Inc',
       provider: 'Nexus',
-      website: 'https://asknexus.ai',
+      website: 'https://www.asknexus.ai',
       validThrough: '2/4/2027',
       verifyingAgencies: ['School District of Janesville, WI'],
       documentation: {'Mapping Document':'https://edfidocs.blob.core.windows.net/$web/assets/partners/badging/nexus-cons-badge/Ed-Fi%20Mapping%20Nexus.xlsx',
