@@ -10,7 +10,7 @@ Detail on each step follows.
 
 1. Open Visual Studio Code
 2. If you haven't
-    already [installed](https://edfi.atlassian.net/wiki/display/METAED20/Getting+Started+-+Installation) the
+    already [installed](../getting-started-with-metaed-ide/readme.md) the
     MetaEd extension, please do so now.
 
 :::tip
@@ -116,6 +116,9 @@ Simply add one or more folders with the "Add Folder to Workspace..." command.
     There are some MetaEd settings visible under the User tab. Please ignore
     these and only use the Workspace tab. This tab is only available if you
     have already added a folder to your workspace (step 2b).
+
+    This tab will only be available if you have already open a folder, as in
+    step 2.
 
     :::
 

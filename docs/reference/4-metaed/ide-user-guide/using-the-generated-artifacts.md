@@ -58,8 +58,7 @@ The generated files are:
 * EXTENSION-Interchange-\*.xsd - the interchanges for the extension, using the
     default "extension" namespace.
 
-See the [Ed-Fi ODS / API
-documentation](https://edfi.atlassian.net/wiki/spaces/ODSAPI32) for more detail.
+See the [Ed-Fi ODS / API documentation](/reference/ods-api) for more detail.
 
 ## Generated API Metadata
 

@@ -18,7 +18,7 @@ Descriptor will be generated, with one exception. Each new Descriptor requires
 that the individual Descriptor _values_ be defined manually in XML. After
 completing the necessary steps to create a new Descriptor in MetaEd, details on
 how to define the Descriptor values can be found here: [XML Schema - Ed-Fi
-Descriptors](https://edfi.atlassian.net/wiki/spaces/EFXSDGUIDE/pages/19070990/XML+Schema+-+Ed-Fi+Descriptors).
+Descriptors](../../1-data-exchange/xsd-guidelines/implementation/descriptors.md).
 
 ## Discussion
 
