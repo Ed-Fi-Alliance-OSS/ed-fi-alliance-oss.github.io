@@ -1,12 +1,5 @@
 # Canvas Mapping Notes
 
-**Contents**
-
-* [Canvas Mapping Notes](#canvas-mapping-notes)
-  * [Resource Mappings](#resource-mappings)
-  * [Canvas Enumerations](#canvas-enumerations)
-  * [Mappings to ODS Tables](#mappings-to-ods-tables)
-
 ## Resource Mappings
 
 | Canvas Resource | Data Model Entity | Business Logic Notes |
