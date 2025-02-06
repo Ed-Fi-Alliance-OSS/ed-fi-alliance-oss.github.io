@@ -1,4 +1,4 @@
-# Domain API Certification for Data Standard v4 - Steps
+# Assessment Outcomes API Certification for Data Standard v4 - Steps
 
 There are 13 steps to completing certification: 8 documentation steps (completed
 prior to certification) and 6 tests that MUST be completed.
@@ -7,50 +7,25 @@ Note that not all steps are required for all products, as some tests are
 optional or only apply to products with certain features. Please consult the
 details below each step below for details.
 
-Table of Contents
-
-I. [Pre-Certification Documentation](#i-pre-certification-documentation)
-
-  1. [Product Availability Information](/partners/certification/certification-for-data-providers/product-availability-information)
-  2. [Initial Implementation Verification Information](/partners/certification/certification-for-data-providers/implementation-verification)
-  3. [Data Mapping](/partners/certification/certification-for-data-providers/data-mapping)
-  4. Usage Narrative
-  5. Score Report Template(s)
-  6. Fictitious Test Data for 100 to 500 Students
-  7. Sample Learning Standards Reference Identifiers
-  8. Custom Enumerations Used by the Vendor in Integrations
-
-II. [Certification Tests](#ii-certification-tests)
-
-  9. User Interaction and Availability Test
-  10. Student Roster Configurability Test
-  11. Batch Transmission Test
-  12. Synchronization Recovery Test
-  13. Provider Data Update Test
-  14. Error Handling Verification Test
-  15. API Integration Test
-
-III. [Certification Completion](#iii-certification-completion)
-
 ## I. Pre-Certification Documentation
 
 The following documentation must be received by the Ed-Fi Alliance prior to
 certification. Ed-Fi may ask for clarifications or changes in order to ensure
 clarity and uniformity.
 
-1. Product Availability Information
+### 1. Product Availability Information
 
-  See [Requirements - Product Availability Information]
+  See [Requirements - Product Availability Information](/partners/certification/certification-for-data-providers/product-availability-information)
 
-2. Initial Implementation Verification Information
+### 2. Initial Implementation Verification Information
 
-  See [Requirements - Implementation Verification]
+  See [Requirements - Initial Implementation Verification Information](/partners/certification/certification-for-data-providers/implementation-verification)
 
-3. Data Mapping
+### 3. Data Mapping
 
-  See [Requirements - Data Mapping]
+  See [Requirements - Data Mapping](/partners/certification/certification-for-data-providers/data-mapping)
 
-4. Usage Narrative
+### 4. Usage Narrative
 
 <details>
 <summary>View detail...</summary>
@@ -61,7 +36,7 @@ of the certification registry entry. This SHOULD be fewer than 1000 words and
 can be provided in any common text format (MS Word, .txt file, etc.).
 
 </details>
-5. Domain Report Template(s)
+### 5. Domain Report Template(s)
 
 <details>
 <summary>View detail...</summary>
@@ -90,7 +65,7 @@ vendor: [Sample Score
 Template.pdf](https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Sample%20Score%20Template.pdf)
 
 </details>
-6. Fictitious Test Data for 100 to 500 Students
+### 6. Fictitious Test Data for 100 to 500 Students
 
 <details>
 <summary>View detail...</summary>
@@ -112,7 +87,7 @@ school data in any way
 
 </details>
 
-7. Sample Learning Standards Reference Identifiers
+### 7. Sample Learning Standards Reference Identifiers
 
 <details>
 <summary>View detail...</summary>
@@ -127,7 +102,7 @@ metadata to learning standards, the provider:
   SHOULD NOT be a full catalog of all learning standards from a provider
 
 </details>
-8. Custom Enumerations Used by the Vendor in Integrations
+### 8. Custom Enumerations Used by the Vendor in Integrations
 
 <details>
 <summary>View detail...</summary>
@@ -167,7 +142,7 @@ Certification tests test conformance of the product to API specifications and
 other normative requirements of the API standard. It also validates the
 submitted documentation.
 
-9. User Interaction and Availability Test
+### 9. User Interaction and Availability Test
 
 <details>
 <summary>View detail...</summary>
@@ -179,7 +154,7 @@ Providers](/partners/certification/certification-for-data-providers/) and be
 consistent with the Usage Narrative submitted in step 4, above).
 
 </details>
-10. Student Roster Configurability Test
+### 10. Student Roster Configurability Test
 
 <details>
 <summary>View detail...</summary>
@@ -211,7 +186,7 @@ identifiers.
 :::
 
 </details>
-11. Batch Transmission Test
+### 11. Batch Transmission Test
 
 <details>
 <summary>View detail...</summary>
@@ -248,7 +223,7 @@ are reasonably preserved in the mapping from provider formats to Ed-Fi formats.
 
 </details>
 
-12. Synchronization Recovery Test
+### 12. Synchronization Recovery Test
 
 <details>
 <summary>View detail...</summary>
@@ -269,7 +244,7 @@ Detailed Steps
    sandbox.
 
 </details>
-13. Provider Data Update Test
+### 13. Provider Data Update Test
 
 <details>
 <summary>View detail...</summary>
@@ -285,7 +260,7 @@ Detailed Steps
 2. Ed-Fi Alliance will confirm the updated record in the sandbox.
 
 </details>
-14. Error Handling Verification Test
+### 14. Error Handling Verification Test
 
 <details>
 <summary>View detail...</summary>
@@ -317,7 +292,7 @@ Detailed Steps
 5. Data submission is confirmed by the Ed-Fi Alliance.
 
 </details>
-15. API Integration Test
+### 15. API Integration Test
 
 <details>
 <summary>View detail...</summary>
