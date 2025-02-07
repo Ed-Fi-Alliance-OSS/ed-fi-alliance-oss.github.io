@@ -20,11 +20,12 @@ This knowledge base article is to better outline each vendor’s participation d
 * The agenda should include:
   * Address training issues
   * Identify and address, open ticket and when they will be released.
-  * Identify possible short-term temporary workarounds.
-* Request LEAs to send questions before the call so vendor can prepare any screenshot documentation without displaying any Personal Identifiable Information (PII) data. Doing this will allow the calls to be recorded and shared in the future​.
-* Have a sandbox with demo data that can be used during meetings and training.
-* Demo how to solve problems LEAs have identified​.
-* Move to a weekly release cycle to incorporate recent fixes quickly. This will allow the LEAs to resolve outstanding issues more quickly.
+    * Identify possible short-term temporary workarounds.
+  * Request LEAs to send questions before the call so vendor can prepare any screenshot documentation without displaying any Personal Identifiable Information (PII) data. Doing this will allow the calls to be recorded and shared in the future​.
+  * Have a sandbox with demo data that can be used during meetings and training.
+  * Demo how to solve problems LEAs have identified​.
+  * Move to a weekly release cycle to incorporate recent fixes quickly.
+    * This will allow the LEAs to resolve outstanding issues more quickly.
 
 ### Distribute a weekly bulletin that discusses:​
 
