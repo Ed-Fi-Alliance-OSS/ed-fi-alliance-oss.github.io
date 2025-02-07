@@ -77,10 +77,3 @@ larger amounts of data.
 This section provides information on tools and best practices to assist in your
 development and in the long-term maintenance and health of supporting
 organizations using the Student Equity Starter Kit.
-
-### Next Steps
-
-Upon completing development of the Ed-Fi API functionality, you can test the
-features with a customer or proceed on to applying for an [Ed-Fi Starter Kit
-Data Partner
-Badge](https://edfi.atlassian.net/wiki/display/EDFIBADGE/Ed-Fi+Starter+Kit+Data+Partner+Badge).

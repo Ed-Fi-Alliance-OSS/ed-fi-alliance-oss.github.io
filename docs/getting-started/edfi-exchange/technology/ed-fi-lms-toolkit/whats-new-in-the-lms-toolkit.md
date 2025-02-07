@@ -32,8 +32,8 @@ Packages published as 1.1.1:
 
 ### Bug Fixes 1.1.1
 
-* [LMS-414](https://tracker.ed-fi.org/browse/LMS-414?src=confmacro)
-* [LMS-424](https://tracker.ed-fi.org/browse/LMS-424?src=confmacro)
+* LMS-414: Fatal error when running Google Classroom extractor
+* LMS-424: Publish release version of SQL Adapter
 
 ## Version 1.1.0
 
@@ -45,19 +45,11 @@ GitHub artifacts: [https://github.com/Ed-Fi-Alliance-OSS/LMS-Toolkit/releases/t
 
 ### Enhancements
 
-|     |     |     |     |     |     |     |     |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Key | Summary | T   | Created | Updated | Reporter | P   | Status |
-
-[No issues found](https://tracker.ed-fi.org/issues/?jql=key+in+%28LMS-264%2C+LMS-359%2C+LMS-383%29+++&src=confmacro)
+None
 
 ### Bug Fixes
 
-|     |     |     |     |     |     |     |     |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Key | Summary | T   | Created | Updated | Reporter | P   | Status |
-
-[No issues found](https://tracker.ed-fi.org/issues/?jql=key+in+%28LMS-371%2C+LMS-340%29++&src=confmacro)
+None
 
 ## Canvas Extractor Version 1.0.1
 
@@ -65,12 +57,12 @@ There were no published changes to the other tools in this release.
 
 ### Bugs Fixed
 
-* [LMS-324: Canvas Assignments Submission File Has Incorrect Assignment Source System Identifier](https://tracker.ed-fi.org/browse/LMS-324)
-* [LMS-265: Not Getting any Assignment Submission Data or System Activity Data from LMS Toolkit Canvas Extractor](https://tracker.ed-fi.org/browse/LMS-265)
+* LMS-324: Canvas Assignments Submission File Has Incorrect Assignment Source System Identifier
+* LMS-265: Not Getting any Assignment Submission Data or System Activity Data from LMS Toolkit Canvas Extractor
 
 ### Other Changes
 
-* [LMS-272: Potential Performance Enhancement for the Canvas Extractor (LMS Toolkit)](https://tracker.ed-fi.org/browse/LMS-272)
+* LMS-272: Potential Performance Enhancement for the Canvas Extractor (LMS Toolkit)
 
 ## Version 1.0.0
 
@@ -101,4 +93,4 @@ They also have experimental support, to varying degrees, for the following resou
 
 The LMS Data Store Loader supports loading all but the grade files into a SQL Server database.
 
-For install and usage instructions, please see the [\_\_Outdated LMS Toolkit User Guide](https://edfi.atlassian.net/wiki/spaces/EDFITOOLS/pages/24118272).
+For install and usage instructions, please see the [User Guide](./lms-toolkit-user-guide/readme.md).

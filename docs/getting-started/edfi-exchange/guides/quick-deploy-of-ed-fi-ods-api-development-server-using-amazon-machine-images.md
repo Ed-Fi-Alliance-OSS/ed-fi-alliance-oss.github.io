@@ -12,7 +12,7 @@ The goal of these virtual machines is to have a quick way to stand up and explor
 
 ## Get Documentation
 
-* **Documentation:** [https://edfi.atlassian.net/wiki/spaces/EXCHANGE/pages/22488876](https://edfi.atlassian.net/wiki/spaces/EXCHANGE/pages/22488876) (_Ed-Fi Community membership required_)
+* **Documentation:** [How to: Deploy the Ed-Fi ODS / API v3.4 in AWS Using AWS AMIs - Amazon Machine Images](https://edfi.atlassian.net/wiki/spaces/EXCHANGE/pages/22488876)
 
 ## Details
 

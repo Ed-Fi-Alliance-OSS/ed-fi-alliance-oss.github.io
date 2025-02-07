@@ -9,7 +9,7 @@ The LMS Toolkit helps school districts unlock, simplify, and use instructional s
 The LMS Toolkit is use-case driven, and the primary use cases are:
 
 1. Allow school districts to assess the level of student engagement in course work and combine this data with data from other key systems (such as SIS and assessment data) in order to support teachers and administrators in making the best possible decisions about the needs of and intervention options for individual students.
-2. Providing the ability of school districts to mark attendance, especially in remote instructional contexts. That use cases is described in this analysis: [Instructional System Data to Support SEA 2020-21 Attendance Policies](https://edfi.atlassian.net/wiki/display/TT/Instructional+System+Data+to+Support+SEA+2020-21+Attendance+Policies)
+2. Providing the ability of school districts to mark attendance, especially in remote instructional contexts.
 
 ## Download
 

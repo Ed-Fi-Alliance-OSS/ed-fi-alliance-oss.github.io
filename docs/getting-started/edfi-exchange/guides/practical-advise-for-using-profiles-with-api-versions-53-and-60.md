@@ -1,6 +1,6 @@
 # Practical Advice for using profiles with API versions 5.3 and 6.0
 
-This document lists some lessons-learned that the customer success team has come across in our use of the Profile feature that we did not find in the documentation.  This should be considered a supplement to the documentation  [API Profiles](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V61/pages/18810074/API+Profiles) and  [How To: Add Profiles to the Ed-Fi ODS / API Solution](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V61/pages/18811173).
+This document lists some lessons-learned that the customer success team has come across in our use of the Profile feature that we did not find in the documentation.  This should be considered a supplement to the documentation  [API Profiles](/reference/ods-api/platform-dev-guide/security/api-profiles) and  [How To: Add Profiles to the Ed-Fi ODS / API Solution](/reference/ods-api/how-to-guides/how-to-add-profiles-to-the-ed-fi-ods-api).
 
 ## Content-Type reference
 
