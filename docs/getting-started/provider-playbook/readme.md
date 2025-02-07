@@ -4,6 +4,8 @@ sidebar_position: 2
 
 # Technology Providers - Implementation Playbook
 
+![Tech provider playbook cover image](/img/tech-playbook.jpg)
+
 ## Welcome to the Playbook
 
 Welcome to the Ed-Fi playbook for technology providers in the K–12 ecosystem! This information is intended to help you understand the major aspects of building data system integrations using the Ed-Fi Data Standard.

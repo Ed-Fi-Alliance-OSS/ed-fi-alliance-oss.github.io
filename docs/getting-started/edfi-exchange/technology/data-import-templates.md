@@ -8,7 +8,7 @@ Data Import allows the publishing and consuming of templates of other Data Impor
 
 ## Download
 
-* **Code & Documentation:** [Published Data Import Templates](https://edfi.atlassian.net/wiki/spaces/EDFITOOLS/pages/24119005/Published+Data+Import+Templates)
+* **Code & Documentation:** [Published Data Import Templates](https://github.com/Ed-Fi-Exchange-OSS/DataImport-Templates)
 
 ## Details
 
