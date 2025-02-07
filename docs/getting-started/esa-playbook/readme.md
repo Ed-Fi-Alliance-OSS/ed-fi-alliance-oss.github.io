@@ -4,6 +4,8 @@ sidebar_position: 3
 
 # Education Service Agency (ESA) Playbook
 
+![ESA playbook cover image](/img/esa-playbook.jpg)
+
 ## Download the Playbook
 
 Welcome to the Ed-Fi playbook for Educational Service Agencies in the K–12
