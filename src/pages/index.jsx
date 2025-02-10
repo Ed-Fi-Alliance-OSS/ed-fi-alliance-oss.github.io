@@ -32,7 +32,8 @@ function HomepageHeader() {
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <Layout title={siteConfig.title} description="Ed-Fi Alliance Documentation">
+    <Layout title="Documentation Knowledge Base"
+      description="Documentation knowledge base for getting started, supporting, and building on the Ed-Fi Data Standard and the Ed-Fi API">
       <HomepageHeader />
       <main className={styles.main}>
         <HomepageFeatures />
