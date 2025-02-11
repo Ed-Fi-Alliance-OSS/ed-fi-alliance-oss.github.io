@@ -138,11 +138,18 @@ const config = {
         routeBasePath: 'reference/data-exchange/data-standard',
         sidebarPath: './sidebars.js',
         includeCurrentVersion: false,
+        lastVersion: '5',
         versions: {
           5: { banner: 'none', badge: true },
-        }
+          4: {
+            banner: 'none',
+            badge: true,
+            path: '4',
+            className: 'active',
+          },
+        },
       },
-    ]
+    ],
   ],
 
   themeConfig:
