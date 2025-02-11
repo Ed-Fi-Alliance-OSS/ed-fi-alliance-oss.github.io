@@ -6,6 +6,7 @@ hide_table_of_contents: true
 # Teaching and Learning Domain - Best Practice
 
 ## Definition and Key Concepts
+
 The Teaching and Learning domain defines the entities and associations for
 organizing instruction. Key concepts are as follows:
 A course is an organization of subject matter and related learning experiences
@@ -55,6 +56,7 @@ students may receive all instruction from the same teacher, simple grade-oriente
 courses, course offerings, and sections are defined.
 
 ## Teaching and Learning Use Cases
+
 The Teaching and Learning domain entities and associations address the use cases
 associated with organizing instruction (per the diagram above), assigning teachers
 and placing students as shown in the following table.
@@ -91,11 +93,11 @@ The Teaching and Learning domain has dependencies on other data that should be
 entered into the Ed-Fi API prior to writing domain entities and associations,
 as follows:
 
-* Yearly API setup. The best practice convention has a separate API for each school
+* Year-based setup: The best practice convention has a separate Ed-Fi API instance for each school
 year. This means that teaching and learning entities and associations must be written
-into the appropriate API for the school year.
+into the appropriate Ed-Fi API instance for the school year.
 * EducationOrganizations, minimally Schools, LocalEducationAgency(s) and the
-StateEducationAgency, need to be created for the scope of the ODS.
+StateEducationAgency, need to be created for the scope of the Ed-Fi API.
 * LearningStandards need to be written before defining Courses of instruction are
 organized by learning standard.
 * School calendar entities (minimally the Sessions) need to be written before the
@@ -366,7 +368,7 @@ The following table summarizes the best practice use of the Course attributes.
 Best practices for the use of Course and its attributes
 :::info
 
-* In the school-year-specific ODS, the set of Courses should reflect only those
+* In the school-year-specific situation, the set of Courses should reflect only those
   “active” courses that are available for being offered during that school year.
 * The Course.CourseCode (key) should reflect the unique identifier established
   by the assigning (managing) Course.EducationOrganization. Additional
