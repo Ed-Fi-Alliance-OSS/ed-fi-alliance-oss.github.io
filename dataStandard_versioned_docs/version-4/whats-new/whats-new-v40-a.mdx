@@ -1,0 +1,455 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# What's New - v4.0-a
+
+## Overview
+
+Data Standard 4 is targeted at deployment starting in the 2023-24 school year.
+Data Standard v4 (current version 4.0-a) introduces important updates to 3
+domains of the Ed-Fi data model:
+
+* Student Academic Report (Grade & Gradebook area only)
+* Assessment
+* Finance
+
+These changes come from field feedback and are designed to help drive the
+community and community innovation forward. There are breaking changes in these
+domains, so implementers are advised to review the changes. In addition, Data
+Standard 4 introduces the new concept of managing descriptor mappings as data
+entities.
+
+Other areas of the model have received minor, non-breaking updates, and API
+bindings and implementations in those areas should continue to function as
+before.
+
+## Major Changes
+
+### Descriptor Mapping
+
+ [DATASTD-1785](https://tracker.ed-fi.org/browse/DATASTD-1785)
+
+In many cases, source systems manage multiple code sets for the same data
+entity. For example, this is common in SIS systems where the SIS manages both a
+local value for an element (for example a student event attendance code value)
+and a state value for that same data entity (the state code value).
+
+Following many years and months of community research and discussion (via the
+Technical Advisory Group and at the Ed-Fi Technical Congress, among other
+community venues) Data Standard 4 introduces the concept of sourcing these
+mappings as data themselves. This capability promises to unlock many valuable
+use cases for agencies.
+
+For example, it is quite common for a local education agency to need to track
+both the performance of local programs and the state view of those same
+programs. Providing access to "canonical" local-to-state descriptor mappings for
+the school year for code values will be critical in this area.
+
+The element fields for this new entity called DescriptorMapping are as follows:
+
+* string Value
+* string Namespace
+* string MappedValue
+* string  MappedNamespace
+* descriptor MappingScope (optional)
+
+A sample mapping would look like this:
+
+```json
+{
+  "value" : "AlgebraII",
+  "namespace" : "uri://grandbendisd.edu/AcademicSubjectDescriptor",
+  "mappedValue" : "ADVMATH",
+  "mappedNamespace" : "uri://somestate.edu/AcademicSubjectDescriptor",
+  "modelEntities" : [
+  {
+       "modelEntityDescriptor": "uri://ed-fi.org/ModelEntity#Staff"
+     }
+  ]
+}
+```
+
+This sample captures a mapping of code values for AcademicSubject from a local
+value ("AlgebraII") to a state value ("ADVMATH"), and clarifies that the mapping
+applies only for the Staff entity. If MappingScope is omitted, then the mapping
+is assumed to be universal for the current data exchange context.
+
+### Student Academic Report Domain Changes - Grade & Gradebook
+
+Major changes to the Student Academic Record Domain were limited to Grade and
+Gradebook elements of the model.
+
+#### Add support for current grades
+
+ [DATASTD-1696](https://tracker.ed-fi.org/browse/DATASTD-1696)
+
+ [DATASTD-1723](https://tracker.ed-fi.org/browse/DATASTD-1723)
+
+A common field request was for the Ed-Fi Data Standard to support exchange of
+grades for the current, non-concluded grading period. Note that this solution
+involves both a data model change and normative guidance; the latter is captured
+in [Student Academic Record Domain - Best
+Practices](../model-reference/student-academic-record-domain/best-practices.md)
+
+This change adds two optional elements that allow a SIS to send current grades.
+In JSON, they appear as follows as part of the **/grades** API resource.
+
+```json
+{
+  ...
+  "currentGradeIndicator": boolean,
+  "currentGradeAsOfDate" : date,
+  ...
+}
+```
+
+The indicator is used to indicate that this is a current grade (and not a final
+term grade) and the "as of" date provides a clear indication of how current this
+is.
+
+Note also that this a non-breaking change for a SIS that is only posting final
+grades. However, those that decide to post current grades will need to change
+their logic for posting current grades (to overwrite). There are also possible
+downstream implications for reporting.
+
+While these elements are optional, use of them will likely be a requirement for
+Ed-Fi certification, to reflect the importance of and community demand for this
+data.
+
+#### Changes to GradebookEntry and StudentGradebookEntry Key
+
+ [DATASTD-1599](https://tracker.ed-fi.org/browse/DATASTD-1599)
+
+ [DATASTD-1703](https://tracker.ed-fi.org/browse/DATASTD-1703)
+
+The key to Gradebook needed to be changed to remove potential volatility. The
+new key adopts the strategy of using the source system surrogate key and a
+namespace, which follows the pattern for Assessment entities.
+StudentGradebookEntry inherits these changes. In the JSON, the new key elements
+for GradebookEntry look as follows:
+
+```json
+{
+  "gradebookEntryIdentifier": "string",
+  "namespace": "string"
+...
+}
+```
+
+The key to StudentGradebookEntry includes this as a key and adds a student
+reference. In the JSON, the key there is:
+
+```json
+{
+  "gradebookEntryReference": {
+    "gradebookEntryIdentifier": "string",
+    "namespace": "string"
+  },
+  "studentReference": {
+    "studentUniqueId": "string"
+  }
+...
+}
+```
+
+#### Linking Gradebook entities to Sections
+
+ [DATASTD-1599](https://tracker.ed-fi.org/browse/DATASTD-1599)
+
+In the Ed-Fi model, the Section entity is derived from the concept (common in
+Student Information Systems) that a section is both a student
+grouping/scheduling entity (i.e., it has students and staff attached) and a
+curricular entity (i.e., it is tied to CourseOfferings). Accordingly the entity
+key is composed of fields from both.
+
+One issue this creates is that Gradebook systems that are separate from the SIS
+are often unaware of the curricular elements of the Section entity and cannot
+therefore provide the curricular elements of the Section key (a CourseOffering
+reference).
+
+To solve this problem, a second means of connecting a GradebookEntry to a
+Section is provided: by using the SectionIdentifer. This requires of course that
+the SectionIdentidier is unique within the data exchange context. If a system
+has a full reference to a Section, it can and should also supply that. A
+consuming system should therefore first attempt to use the Section reference
+(optional) and if that was not supplied, the SectionIdentifier (required).
+
+```json
+{
+  ...
+  "sourceSectionIdentifier": "string"
+  "sectionReference": {
+      "localCourseCode": "string",
+      "schoolId": 0,
+      "schoolYear": 0,
+      "sectionIdentifier": "string",
+      "sessionName": "string"
+    }
+ ...
+}
+```
+
+In the JSON binding, the pattern looks as follows, with the
+sourceSectionIdentifier **required** and the sectionRefernce **optional**.
+
+This pattern encourages systems to make the sourceSectionIdentifier sufficiently
+unique to resolve to a single course in the current school year. Research shows
+that this is the practice with nearly all SIS systems, and that those who do not
+do this have a clear path forward to make this change in their Ed-Fi
+representation.
+
+#### Gradebook authorization
+
+While not a data model change per se, the model now assumes that the most common
+pattern for authorizing access to gradebook will be via namespace. Accordingly
+GradebookEntry is given a field named Namespace in order to allow host API
+systems to drive authorization in this fashion. This is due in part to the above
+changes relating to section, and the lack of clarity that all gradebook systems
+track or roster formal Section or even Education Organization identifiers.
+
+Other authorization patterns are still possible; this is mainly to signal to
+systems that namespace may be the chosen pattern.
+
+#### Removal of deprecated LearningObjective from Grade and Gradebook elements
+
+ [DATASTD-1751](https://tracker.ed-fi.org/browse/DATASTD-1751)
+
+Removal of LearningObjective links into the Gradebook model is the most
+significant of these. LearningObjective had been previously deprecated in favor
+of having a single entity – LearningStandard – that was used to manage any
+references to formal academic standards, regardless of if those were local,
+state or national in scope.
+
+### Assessment Domain Changes
+
+A number of changes were made to the Assessment domain, including breaking
+changes. The changes to the domain do not represent fundamental rethinking or
+restructuring of the domain; rather they represent opportunities for implement
+and alignment with industry practice.
+
+#### Changes relating to AssessmentPeriod
+
+ [DATASTD-1240](https://tracker.ed-fi.org/browse/DATASTD-1240)
+
+ [DATASTD-1615](https://tracker.ed-fi.org/browse/DATASTD-1615)
+
+Interim benchmark assessments are critical to most education agencies in
+academic planning and intervention, and these benchmarks are usually given in
+and marked with a windows or periods - "beginning of year", "middle of year" or
+"fall", "spring" etc. In previous data model versions, there was only the
+ability to capture a single period on the Assessment entity, and the
+StudentAssessment result was assumed be linked to that period via its link to
+Assessment. This model proved too inflexible in many cases, such as where an
+assessment was used in multiple periods, or where a student result needed to be
+attributed to a different period.
+
+The new model allows the capture of multiple AssessmentPeriods on Assessment,
+and then the attribution of a student result to a period is made explicitly via
+a field AssessmentPeriod on StudentAssessment.
+
+<Tabs>
+<TabItem value="assessments" label="On /assessments">
+
+```json
+"periods": [
+    {
+        "assessmentPeriodDescriptor": "string",
+        "beginDate": "2022-08-16",
+        "endDate": "2022-08-16"
+    }
+]
+```
+
+</TabItem>
+<TabItem value="studentAssessments" label="On /studentAssessments">
+
+```json
+"period": {
+    "assessmentPeriodDescriptor": "string",
+    "beginDate": "2022-08-16",
+    "endDate": "2022-08-16"
+}
+```
+
+</TabItem>
+</Tabs>
+
+#### Tracking time spent on assessments
+
+ [DATASTD-1298](https://tracker.ed-fi.org/browse/DATASTD-1298)
+
+There were a  number of field requests to track time students spent on an
+assessment, and some fields were added to enable this:
+
+* AssessedMinutes was added to StudentAssessment
+* AssessedMinutes was added to StudentObjectiveAssessment (a sub-entity on
+    StudentAssessment)
+
+The latter provides the ability to track amount of time spent on sub-sections or
+elements of an overall assessment.
+
+#### Tracking assessment dates and allowing for capture of un-assessed students
+
+ [DATASTD-1660](https://tracker.ed-fi.org/browse/DATASTD-1660)
+
+ [DATASTD-1310](https://tracker.ed-fi.org/browse/DATASTD-1310)
+
+Some refinements have been made to date tracking.
+
+* StudentAssessment.AdmistratonDate was changed from required to optional to
+    reflect that there was not always a single unified date for many assessment
+    administrations, and that it would be burdensome to require accounting of
+    all dates. For example, in many cases early literacy benchmarks are
+    performed across multiple sessions, and technology-driven assessments have
+    also led to situations where there is not a single clear date/time for an
+    assessment.
+* AdmistratonDate was added to StudentObjectiveAssessment to allow for
+    optional tagging of a particular sub-element of an assessment to a certain
+    date.
+
+Making a date optional on StudentAssessment is also critical to allowing a way
+to capture untested students - see
+[DATASTD-1660](https://tracker.ed-fi.org/browse/DATASTD-1660) - Getting issue
+details... STATUS
+
+#### Removal of deprecated PerformanceLevelMet boolean
+
+[DATASTD-1739](https://tracker.ed-fi.org/browse/DATASTD-1739) - Getting issue
+details... STATUS
+
+This element had been deprecated in the Data Standard 3.x line. To show which
+level was met by a student assessment, the model had previously required a
+re-listing of the PerformanceLevels and the marking of the one met with this
+boolean value. That was unnecessary and confusing and had been deprecated. The
+new model removes this element.
+
+#### Resolve ambiguities in mapping of PerformanceLevels in complex assessments
+
+ [DATASTD-1738](https://tracker.ed-fi.org/browse/DATASTD-1738)
+
+ [DATASTD-1766](https://tracker.ed-fi.org/browse/DATASTD-1766)
+
+In very complex assessments with multiple scores in the assessment hierarchy,
+there was a possibility of ambiguity in how performance levels were linked from
+assessment metadata to student assessment results. PerformanceLevelIndicatorName
+was added to the model to make the link explicit. See the attached tickets for
+details.
+
+#### ScoreResult changed to an optional collection on StudentObjectiveAssessment
+
+ [DATASTD-1510](https://tracker.ed-fi.org/browse/DATASTD-1510)
+
+ [DATASTD-1550](https://tracker.ed-fi.org/browse/DATASTD-1550)
+
+This change aligns the metadata on the ObjectiveAssessment with the student
+results capture. Formerly, ScoreResult was required on the student results but
+optional on the assessment metadata. To bring these into alignment,  ScoreResult
+is now optional on both ObjectiveAssessment and StudentObjectiveAssessment.
+
+#### Removal of deprecated elements from Assessment domain
+
+ [DATASTD-1780](https://tracker.ed-fi.org/browse/DATASTD-1780)
+
+ [DATASTD-1754](https://tracker.ed-fi.org/browse/DATASTD-1754)
+
+ [DATASTD-1753](https://tracker.ed-fi.org/browse/DATASTD-1753)
+
+ [DATASTD-1752](https://tracker.ed-fi.org/browse/DATASTD-1752)
+
+ [DATASTD-1739](https://tracker.ed-fi.org/browse/DATASTD-1739)
+
+The most significant of these is the removal of links to LearningObjective,
+which has been deprecated for several releases.
+
+### Finance Domain Changes
+
+ [DATASTD-1794](https://tracker.ed-fi.org/browse/DATASTD-1794)
+
+Data Standard 4 replaces the older Finance domain with changes from [ED-FI RFC
+18 - FINANCE
+API](https://edfi.atlassian.net/wiki/spaces/GOV/pages/20320242/ED-FI+RFC+18+-+FINANCE+API)
+
+* this is a direct swap of domains. The following chart is intended to be a
+helpful guide to the changes.
+
+| Data Standard 3.x | Data Standard 4.x | Notes on change |
+| --- | --- | --- |
+| AccountCode | ChartOfAccount | A more formal chart of accounts representation was introduced |
+| Account | LocalAccount | Modified |
+| Budget | LocalBudget | Modified |
+| Actual | LocalActual | Modified |
+|     | LocalEncumbrance | Added |
+| ContractedStaff | LocalContractedStaff | Modified |
+| Payroll | LocalPayroll | Modified |
+|     | FundDimension | All dimensions were introduced |
+|     | ProgramDimension |
+|     | FunctionDimension |
+|     | ObjectDimension |
+|     | ProjectDimension |
+|     | OperationalUnitDimension |
+|     | SourceDimension |
+|     | BalanceSheetDimension |
+
+### General changes
+
+#### Significant cleanup of default descriptor values
+
+ [DATASTD-1671](https://tracker.ed-fi.org/browse/DATASTD-1671)
+
+ [DATASTD-1493](https://tracker.ed-fi.org/browse/DATASTD-1493)
+
+ [DATASTD-1494](https://tracker.ed-fi.org/browse/DATASTD-1494)
+
+Work was done to clean up default descriptor values sets, including adding
+values that were missing and deprecating outliers. This work focused on sets
+that are often highly localized – see the ticket for details.
+
+#### Alignment of a number of descriptor sets to EDFacts
+
+ [DATASTD-1499](https://tracker.ed-fi.org/browse/DATASTD-1499)
+
+ [DATASTD-1498](https://tracker.ed-fi.org/browse/DATASTD-1498)
+
+ [DATASTD-1498](https://tracker.ed-fi.org/browse/DATASTD-1498)
+
+ [DATASTD-1497](https://tracker.ed-fi.org/browse/DATASTD-1497)
+
+ [DATASTD-1495](https://tracker.ed-fi.org/browse/DATASTD-1495)
+
+EDFacts analysis had revealed a number of opportunities to align default values
+for entities that are commonly used in state reporting better with EDFacts
+values. This release included a number of changes in this area.
+
+## All Changes
+
+<details>
+<summary>View all</summary>
+
+|     |     |     |     |     |     |     |     |     |     |     |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Key | Summary | T   | Created | Updated | Due | Assignee | Reporter | P   | Status | Resolution |
+| [DATASTD-1859](https://tracker.ed-fi.org/browse/DATASTD-1859) | [Fix DATASTD-1749 Sample Data - AssessmentReportingMethod](https://tracker.ed-fi.org/browse/DATASTD-1859) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-1859) | 26/Sep/22 4:29 PM | 17/Oct/22 11:28 AM |     | Unassigned | Muriel Marable | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Done |
+| [DATASTD-1856](https://tracker.ed-fi.org/browse/DATASTD-1856) | [Update Descriptor Guidance](https://tracker.ed-fi.org/browse/DATASTD-1856) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-1856) | 01/Sep/22 10:15 AM | 01/Sep/22 10:16 AM |     | Unassigned | Eric Jansson | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Done |
+| [DATASTD-1850](https://tracker.ed-fi.org/browse/DATASTD-1850) | [GitHub release for TPDM-Core repos](https://tracker.ed-fi.org/browse/DATASTD-1850) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-1850) | 17/Aug/22 4:59 PM | 17/Oct/22 10:46 AM |     | Eric Jansson | Steven Arnold | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Done |
+| [DATASTD-1839](https://tracker.ed-fi.org/browse/DATASTD-1839) | [Need to rename GradebookEntry.SectionIdentifier](https://tracker.ed-fi.org/browse/DATASTD-1839) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-1839) | 26/Jul/22 1:07 PM | 09/Aug/22 9:40 AM |     | Muriel Marable | Eric Jansson | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Done |
+| [DATASTD-1835](https://tracker.ed-fi.org/browse/DATASTD-1835) | [Consider removing deprecated descriptor values from AssessmentPeriod](https://tracker.ed-fi.org/browse/DATASTD-1835) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-1835) | 19/Jul/22 4:01 PM | 18/Aug/22 1:19 PM |     | Unassigned | Eric Jansson | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Done |
+| [DATASTD-1832](https://tracker.ed-fi.org/browse/DATASTD-1832) | [Change GradebookEntry SourceNamespace to Namespace](https://tracker.ed-fi.org/browse/DATASTD-1832) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-1832) | 13/Jul/22 2:06 PM | 26/Jul/22 3:29 PM |     | Unassigned | Eric Jansson | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Done |
+| [DATASTD-1831](https://tracker.ed-fi.org/browse/DATASTD-1831) | [Assessment Domain Changes](https://tracker.ed-fi.org/browse/DATASTD-1831) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-1831) | 12/Jul/22 4:18 PM | 26/Jul/22 5:09 PM |     | Unassigned | Nichole Cota | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Done |
+| [DATASTD-1830](https://tracker.ed-fi.org/browse/DATASTD-1830) | [Incomplete description for AssignmentLateStatus](https://tracker.ed-fi.org/browse/DATASTD-1830) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-1830) | 05/Jul/22 2:58 PM | 09/Aug/22 11:52 AM |     | Unassigned | Muriel Marable | ![Minor](https://tracker.ed-fi.org/images/icons/priorities/minor.svg) | Closed | Done |
+| [DATASTD-1794](https://tracker.ed-fi.org/browse/DATASTD-1794) | [Replace existing finance API and domain model with model from RFC 18](https://tracker.ed-fi.org/browse/DATASTD-1794) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-1794) | 10/Jun/22 4:02 PM | 28/Apr/23 8:53 AM |     | Muriel Marable | Muriel Marable | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Done |
+| [DATASTD-1785](https://tracker.ed-fi.org/browse/DATASTD-1785) | [Propose an API to source descriptor mappings](https://tracker.ed-fi.org/browse/DATASTD-1785) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-1785) | 26/May/22 1:57 PM | 27/Apr/23 8:56 AM |     | Unassigned | Eric Jansson | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Done |
+| [DATASTD-1784](https://tracker.ed-fi.org/browse/DATASTD-1784) | [Increase field length to 32 characters for DisciplineAction.DisciplineActionIdentifier](https://tracker.ed-fi.org/browse/DATASTD-1784) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-1784) | 26/May/22 8:41 AM | 04/Aug/22 2:38 PM |     | Unassigned | Tim Reed | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Done |
+| [DATASTD-1781](https://tracker.ed-fi.org/browse/DATASTD-1781) | [Clarify that Years of Expereince is prior to current year](https://tracker.ed-fi.org/browse/DATASTD-1781) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-1781) | 25/May/22 8:19 AM | 09/Aug/22 11:55 AM |     | Eric Jansson | Eric Jansson | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Done |
+| [DATASTD-1780](https://tracker.ed-fi.org/browse/DATASTD-1780) | [Deletion of LearningObjective from Domain/Assessment](https://tracker.ed-fi.org/browse/DATASTD-1780) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-1780) | 24/May/22 4:04 PM | 28/Apr/23 8:53 AM |     | Unassigned | Muriel Marable | ![Minor](https://tracker.ed-fi.org/images/icons/priorities/minor.svg) | Closed | Done |
+| [DATASTD-1777](https://tracker.ed-fi.org/browse/DATASTD-1777) | [Create model for updated Finance domain](https://tracker.ed-fi.org/browse/DATASTD-1777) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-1777) | 23/May/22 11:45 AM | 22/Jun/22 12:52 PM |     | Unassigned | Ed Comer | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Done |
+| [DATASTD-1766](https://tracker.ed-fi.org/browse/DATASTD-1766) | [Update Assessment to add PerformanceLevelIndicatorName](https://tracker.ed-fi.org/browse/DATASTD-1766) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-1766) | 18/May/22 1:55 PM | 28/Apr/23 8:53 AM |     | Unassigned | Ed Comer | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Done |
+| [DATASTD-1765](https://tracker.ed-fi.org/browse/DATASTD-1765) | [Change GradebookEntryTitle to simply Title and increase size](https://tracker.ed-fi.org/browse/DATASTD-1765) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-1765) | 18/May/22 1:47 PM | 25/Jul/22 10:50 AM |     | Unassigned | Eric Jansson | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Done |
+| [DATASTD-1754](https://tracker.ed-fi.org/browse/DATASTD-1754) | [Deletion of Deprecated AssessmentItem.CorrectResponse](https://tracker.ed-fi.org/browse/DATASTD-1754) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-1754) | 04/May/22 9:11 AM | 28/Apr/23 8:53 AM |     | Unassigned | Ed Comer | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Done |
+| [DATASTD-1753](https://tracker.ed-fi.org/browse/DATASTD-1753) | [Deletion of Deprecated ObjectiveAssessment.LearningObjective reference](https://tracker.ed-fi.org/browse/DATASTD-1753) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-1753) | 04/May/22 9:07 AM | 28/Apr/23 8:53 AM |     | Unassigned | Ed Comer | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Done |
+| [DATASTD-1752](https://tracker.ed-fi.org/browse/DATASTD-1752) | [Deletion of Deprecated ObjectiveAssessment.LearningObjective reference](https://tracker.ed-fi.org/browse/DATASTD-1752) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-1752) | 04/May/22 9:05 AM | 28/Apr/23 8:53 AM |     | Muriel Marable | Ed Comer | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Duplicate |
+| [DATASTD-1751](https://tracker.ed-fi.org/browse/DATASTD-1751) | [Deletion of Deprecated GradebookEntry.LearningObjective reference](https://tracker.ed-fi.org/browse/DATASTD-1751) | [![Story](https://tracker.ed-fi.org/secure/viewavatar?size=xsmall&avatarId=10315&avatarType=issuetype)<br/><br/>](https://tracker.ed-fi.org/browse/DATASTD-1751) | 04/May/22 9:00 AM | 28/Apr/23 8:31 AM |     | Unassigned | Ed Comer | ![Major](https://tracker.ed-fi.org/images/icons/priorities/major.svg) | Closed | Done |
+
+Showing 20 out of [60
+issues](https://tracker.ed-fi.org/issues/?jql=project+%3D+DATASTD+AND+issuetype+%3D+Story+AND+fixVersion+%3D+%22Data+Standard+v4.0-a%22+&src=confmacro)
+
+</details>
