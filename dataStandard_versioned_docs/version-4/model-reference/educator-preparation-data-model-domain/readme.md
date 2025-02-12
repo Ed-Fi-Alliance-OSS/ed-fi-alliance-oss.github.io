@@ -1,15 +1,16 @@
-# Education Organization Domain
+# Education Preparation Data Model Domain
 
-The Education Organization domain defines the organizational structure,
-hierarchy, and other associations of education organizations. The
-EducationOrganization entity serves as an abstraction for attributes and
-associations common to all levels of an education organization hierarchy,
-typically including schools, school districts and other local education agencies
-(LEAs), regional educational service agencies, and state education agencies.
+The core Educator Preparation Data Model (EPDM) core domain captures data that allows an Educator Preparation Provider (EPP) to understand and answer key questions relating to teacher candidate development.
 
-* [Education Organization Domain - Overview](./overview.md)
-* [Education Organization Domain - Model Diagrams](./model-diagrams.md)
-* [Education Organization Domain - Entities and
-    Descriptors](./entities-references-and-descriptors.md)
+The EPDM domains and entities will:
+
+* Allow administrators to use data to understand and increase the diversity of educator candidates
+* Provide key information on the performance of candidates in their clinical placement and allow them to improve program performance
+
+Additional Links:
+
+* [Education Preparation Data Model Domain - Overview](./overview.md)
+* [Education Preparation Data Model Domain - Model Diagrams](./model-diagrams.md)
+* [Education Preparation Data Model Domain - Entities and Descriptors](./entities-references-and-descriptors.md)
 
 ← [Go back to the UDM Reference page](../readme.md)
