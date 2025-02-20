@@ -10,7 +10,7 @@ communicate student registrations to vendors. Key concepts within this domain
 include assessment, assessment administration, assessment battery part, and
 assessment accommodations.
 
-By leveraging the Assessment Registration domain within the Ed-Fi Unified Data
+By leveraging the Assessment Registration domain within the Ed-Fi Unifying Data
 Model (UDM), educational organizations can enhance communication with assessment
 vendors regarding the administration of assessments. This integration not only
 reduces redundant workloads through improved data interoperability but also

@@ -1,5 +1,6 @@
 ---
 sidebar_position: 4
+hide_table_of_contents: true
 ---
 
 # Enrollment Domain - Best Practices
@@ -36,11 +37,15 @@ Ed-Fi domains as shown below.
 
 | Primary Use Cases | Ed-Fi Domains Needed to be Utilized for the Use Case |
 | --- | --- |
-| Application process requiring acceptance | Currently not supported in the core model. Applications are part of the _Educator Preparation_ domain which is an extension created and shared by Ed-Fi Alliance. |
-| _Registration for school enrollment<br/>_   Exit or withdrawal from school<br/>_Transfer to/from another school<br/>_   Enrolling from the same (or feeder) school through normal promotion<br/>*   Enrolling in a school as a displaced student because of a crisis | _Student Identification and Demographics<br/>_   Student Health<br/>*   Enrollment |
-| Evaluation for participation in a program | Student Program Evaluation |
-| _Enrollment for participation in program<br/>_   Exit or withdrawal from a program | Alternative and Supplemental Services |
-| _Assignment to a specific section for a course<br/>_   Exit from a specific section<br/>*   Transfer to another section of the same course | Teaching and Learning |
+| - Application process requiring acceptance(*) |  |
+| - Registration for school enrollment<br/> -  Exit or withdrawal from school<br/> - Transfer to/from another school<br/> -  Enrolling from the same (or feeder) school through normal promotion<br/> -  Enrolling in a school as a displaced student because of a crisis | - Student Identification and Demographics<br/> - Student Health<br/> - Enrollment |
+| - Evaluation for participation in a program | - Student Program Evaluation |
+| - Enrollment for participation in program<br/> - Exit or withdrawal from a program | - Alternative and Supplemental Services |
+| - Assignment to a specific section for a course<br/> - Exit from a specific section<br/> - Transfer to another section of the same course | - Teaching and Learning |
+
+(*) Currently not supported in the core model. Applications are part of the
+Educator Preparation domain which is an extension created and shared by Ed-Fi
+Alliance. Data Standard v6 will include the EPDM (Educator Preparation Data Model).
 
 This article on the best practices relating the Enrollment domain has specific
 focus on the following entities as parts of the domain
