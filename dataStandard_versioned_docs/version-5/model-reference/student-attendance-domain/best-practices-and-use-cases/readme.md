@@ -1,3 +1,7 @@
+---
+hide_table_of_contents: true
+---
+
 # Student Attendance Domain - Best Practices and Use Cases
 
 ## Definition and Key Concepts
