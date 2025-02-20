@@ -56,7 +56,7 @@ CrisisEndDate. A record in the CrisisEvent is created once for every recognized
 crisis. This CrisisEvent is associated with the record of DisplacedStudent.
 
 Displaced Student is designed as a common and embedded in the
-StudentEducationOrganizationAssociation in the Ed-Fi Unified Data Model (UDM) as
+StudentEducationOrganizationAssociation in the Ed-Fi Unifying Data Model (UDM) as
 an optional collection. The DisplacedStudent common captures essential
 information about student displacement linked to the CrisisEvent through a key
 reference. The common also includes the DisplacedStudentStatus descriptor as

@@ -6,7 +6,7 @@ sidebar_position: 4
 
 ## Purpose
 
-In the Ed-Fi Unified Data Model, student demographic data is generally found in
+In the Ed-Fi Unifying Data Model, student demographic data is generally found in
 the Student Identification and Demographics domain as a well-defined attribute
 in the core model, as a Student Characteristic, or as a Student Indicator. There
 are also cases, particularly when a demographic indicator is closely associated

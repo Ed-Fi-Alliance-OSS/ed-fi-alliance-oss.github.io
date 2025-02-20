@@ -30,7 +30,7 @@ page for information on the changes in this release.
 
 The data model is referred to as the Ed-Fi Unifying Data Model, or UDM. The UDM
 is documented via 2 primary artifacts: the **Ed-Fi Data Handbook** and a set of
-**Unified Modeling Language (UML)** diagrams.
+**Unifying Modeling Language (UML)** diagrams.
 
 * <a href="https://edfidocs.blob.core.windows.net/$web/handbook/v5.2/index.html" target="_blank">Ed-Fi Data Handbook for DS v5.2</a>
 * <a href="https://edfidocs.blob.core.windows.net/$web/handbook/v5.1/index.html" target="_blank">Ed-Fi Data Handbook for DS v5.1</a>
