@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The Educator Preparation collection was built to power the the EPP Starter Kit's
+The Educator Preparation collection was built to power the the EPP Dashboard's
 and help answer the following questions:
 
 For the [Program Diversity and Persistence Starter

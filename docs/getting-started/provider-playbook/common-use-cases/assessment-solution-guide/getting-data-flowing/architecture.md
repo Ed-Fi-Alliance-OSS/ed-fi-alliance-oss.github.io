@@ -1,6 +1,6 @@
 # Architecture
 
-The overall architecture of the Assessment Starter Kit is as follows:
+The overall architecture of the Assessment Dashboard is as follows:
 
 ![Solution guide architecture diagram](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/assessment-solution-guide/assessment-solution-guide-architecture.webp)
 

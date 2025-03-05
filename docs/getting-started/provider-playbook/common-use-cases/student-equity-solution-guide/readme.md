@@ -2,14 +2,14 @@
 
 ## About the Student Equity Solution Guide
 
-The Student Equity Starter Kit is a step-by-step guide designed to help local
+The Student Equity Dashboard is a step-by-step guide designed to help local
 education agencies, AKA school districts, understand, analyze and take
 supportive actions with data to uncover gaps in students’ access and
 participation in your school's educational offerings..
 
 This Solution Guide for Student Equity helps Student Information System vendors
 take the necessary steps to provide districts with the data needed to power the
-starter kit.  
+Dashboard.
 
 Vendor support for student equity encompasses the following steps:
 
@@ -23,14 +23,14 @@ Vendor support for student equity encompasses the following steps:
     Kit Vendor Developer
     Guide](./readme.md)
     below.
-* **Test.** To fully realize the benefits of the Student Equity Starter Kit,
+* **Test.** To fully realize the benefits of the Student Equity Dashboard,
     and ensure your solution is field ready, we recommend selecting and working
     with an existing district customer to test your integration in a live, Ed-Fi
-    implementation of the starter kit. Securing a district customer will allow
-    you a reference point for future adoptees of this starter kit. Working with
+    implementation of the Dashboard. Securing a district customer will allow
+    you a reference point for future adoptees of this Dashboard. Working with
     a local district agency is not required but it is strongly recommended.
 * **Certify.** For vendor organizations that have completed integration with
-    the starter kit using the vendor developer guide, apply for the API Domain
+    the Dashboard using the vendor developer guide, apply for the API Domain
     Certification so you may be listed as a verified partner on
     [Ed-Fi.org](http://Ed-Fi.org).
 
@@ -52,7 +52,7 @@ on [Ed-Fi.org](http://Ed-Fi.org).
 
 This developer guide describes the processes for a Student Information System to
 develop the functionality in their platform to provide data to an Ed-Fi API to
-power the Student Equity Starter Kit.
+power the Student Equity Dashboard.
 
 ![Student Equity Vendor Developer Guide](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/student-equity-solution-guide/image2021-7-28_12-5-31.png)
 
@@ -76,4 +76,4 @@ larger amounts of data.
 
 This section provides information on tools and best practices to assist in your
 development and in the long-term maintenance and health of supporting
-organizations using the Student Equity Starter Kit.
+organizations using the Student Equity Dashboard.

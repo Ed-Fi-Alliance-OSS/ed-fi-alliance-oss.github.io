@@ -22,8 +22,8 @@ completed and certified)
 | SexDescriptor | nvarchar | Candidate | The text description of the sex of the candidate |
 | RaceDescriptorKey | varchar | Candidate | The unique key that describes the race of the candidate |
 | RaceDescriptor | nvarchar | Candidate | The text description of the race of the candidate |
-| HispanicLatinoEthnicity | bit | Candidate | Flag for identifying a candidate as Hispanic or Latino (note: this is not currently used in the EPP starter kits. The starter kits expect a Hispanic/Latino race descriptor) |
-| EconomicallyDisadvantaged | bit | Candidate | Flag for identifying a candidate as economically disadvantaged (note: this is not currently used in the EPP starter kits) |
+| HispanicLatinoEthnicity | bit | Candidate | Flag for identifying a candidate as Hispanic or Latino (note: this is not currently used in the EPP Dashboards. The Dashboards expect a Hispanic/Latino race descriptor) |
+| EconomicallyDisadvantaged | bit | Candidate | Flag for identifying a candidate as economically disadvantaged (note: this is not currently used in the EPP Dashboards) |
 | Cohort | varchar | CandidateEducatorPreparationProgramAssociation | The cohort year the candidate belongs to. This is generally the year of entry into the program, but can vary based on EPP business rules |
 | ProgramComplete | bit | CandidateEducatorPreparationProgramAssociation | Flag for identifying whether the candidate has completed the program. A candidate is considered program complete when the ReasonExitedDescriptor is set to a value of 'Completed' |
 | StudentUSI | varchar | Student | The student record associated with the candidate, this is used to link financial aid |
