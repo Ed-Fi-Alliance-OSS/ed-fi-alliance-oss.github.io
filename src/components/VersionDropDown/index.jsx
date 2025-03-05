@@ -37,6 +37,10 @@ const dataStandard = [
     path: '/reference/data-exchange/data-standard/4/',
     number: '4',
   },
+  {
+    path: '/reference/data-exchange/data-standard/3/',
+    number: '3',
+  },
 ];
 
 function VersionDropDown(product, versions) {
