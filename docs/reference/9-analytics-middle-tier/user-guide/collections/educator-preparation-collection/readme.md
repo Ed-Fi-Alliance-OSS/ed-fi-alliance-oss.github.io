@@ -5,8 +5,7 @@
 The Educator Preparation collection was built to power the the EPP Dashboard's
 and help answer the following questions:
 
-For the [Program Diversity and Persistence Starter
-Kit](https://edfi.atlassian.net/wiki/spaces/SK/pages/22020300/Program+Diversity+and+Persistence+Starter+Kit)
+For the [Program Diversity and Persistence Dashboard](../../../../10-educator-pipeline/program-diversity/readme.md)
 
 > _Does the diversity of our candidate pool align with the areas the candidates
 > will most likely be teaching in?_
@@ -14,8 +13,7 @@ Kit](https://edfi.atlassian.net/wiki/spaces/SK/pages/22020300/Program+Diversity+
 > _Is our candidate pipeline (Candidate to Completed to Certified to teach) as
 > healthy as we would expect?_
 
-For the [Clinical Experience and Performance Starter
-Kit](https://edfi.atlassian.net/wiki/spaces/SK/pages/22021402/Clinical+Experience+and+Performance+Starter+Kit)
+For the [Clinical Experience and Performance Dashboard](../../../../10-educator-pipeline/clinical-experience/readme.md)
 
 > _Are our candidates performing as expected during their clinical experience
 > (based on observational data)_
