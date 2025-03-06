@@ -147,6 +147,12 @@ const config = {
             path: '4',
             className: 'active',
           },
+          3: {
+            banner: 'none',
+            badge: true,
+            path: '3',
+            className: 'active',
+          },
         },
       },
     ],
