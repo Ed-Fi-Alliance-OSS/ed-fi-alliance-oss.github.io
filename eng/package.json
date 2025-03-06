@@ -12,8 +12,8 @@
     "markdownlint-cli2": "^0.17.2",
     "turndown": "^7.0.0"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Ed-Fi Alliance",
+  "license": "Apache-2.0",
   "markdownlint-cli2": {
     "config": {
       "default": true,
