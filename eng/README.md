@@ -1,43 +1,40 @@
-# node-url-to-markdown
+# URL to Markdown Converter
 
-A simple Node.js package that converts web page contents to Markdown format using the Turndown library.
+This Node.js package converts the contents of a web page to Markdown using the
+`turndown` package and saves the output to a file. It also runs `markdownlint`
+on the generated Markdown to ensure it follows best practices.
 
 ## Installation
 
-To install the package, run the following command:
+1. Clone the repository:
 
-```
-npm install node-url-to-markdown
-```
+    ```sh
+    git clone <repository-url>
+    cd <repository-directory>
+    ```
+
+2. Install the dependencies:
+
+    ```sh
+    npm install
+    ```
 
 ## Usage
 
-You can use the `convertUrlToMarkdown` function to convert the contents of a web page to Markdown. Here's how to do it:
+To run the package, use the following command:
 
-```javascript
-const { convertUrlToMarkdown } = require('node-url-to-markdown');
-
-const url = 'https://example.com';
-convertUrlToMarkdown(url)
-    .then(markdown => {
-        console.log(markdown);
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
+```sh
+npm run start <URL> <output-file>
 ```
 
 ## Functionality
 
-- **convertUrlToMarkdown(url)**: Fetches the HTML content from the provided URL and converts it to Markdown format.
+* **convertUrlToMarkdown(url)**: Fetches the HTML content from the provided URL
+  and converts it to Markdown format.
 
 ## Dependencies
 
 This package requires the following npm packages:
 
-- `axios`: For making HTTP requests to fetch web page content.
-- `turndown`: For converting HTML content to Markdown.
-
-## License
-
-This project is licensed under the MIT License.
+* `axios`: For making HTTP requests to fetch web page content.
+* `turndown`: For converting HTML content to Markdown.
