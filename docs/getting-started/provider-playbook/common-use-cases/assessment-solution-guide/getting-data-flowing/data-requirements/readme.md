@@ -1,7 +1,7 @@
 # Data Requirements
 
 The data requirements for vendors depend on the type of system being integrated.
-For the starter kit to work, it requires data from both the student information
+For the Dashboard to work, it requires data from both the student information
 system and from assessment providers.
 
 Please consult the appropriate page below:

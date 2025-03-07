@@ -9,14 +9,14 @@ the Ed-Fi API and get some early data flowing in a development setup.
 
 ## [Architecture](./architecture)
 
-Describes the various parts of the starter kit, including the role your
+Describes the various parts of the Dashboard, including the role your
 application plays.
 
 ## [Data Requirements](./data-requirements)
 
 Describes the data elements provided by your product. Later sections will
 describe the formats and processes by which that data is transmitted to the
-Chronic Absenteeism Starter Kit.
+Chronic Absenteeism Dashboard.
 
 ## [Understanding REST APIs](./understanding-rest-apis)
 
@@ -39,7 +39,7 @@ a reference and early exploration tool.
 
 ## [Maintenance and Version Dependencies](./maintenance-and-version-dependencies)
 
-Information on the version requirements for the Starter Kit and where to receive
+Information on the version requirements for the Dashboard and where to receive
 updated information on maintenance over time.
 
 ## [Sample Transactions](./sample-transactions)

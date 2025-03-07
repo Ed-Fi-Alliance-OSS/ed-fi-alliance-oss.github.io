@@ -6,11 +6,11 @@ hide_table_of_contents: true
 
 # Data Requirements
 
-Data requirements for the Starter Kit are provided below.
+Data requirements for the Dashboard are provided below.
 
 * Elements listed as optional should be provided when available: while their
-    absence will not cause issues with the starter kit visualizations, their
-    presence will enhance the capabilities of the starter kit.
+    absence will not cause issues with the Dashboard visualizations, their
+    presence will enhance the capabilities of the Dashboard.
 * Descriptors (values suffixed with "Descriptor" below) must be consistent
     with the standard values provided as part of the relevant [Ed-Fi Data Standard](/reference/data-exchange/data-standards).
   * Links to specific sets are provided below in Ed-Fi XML format. See the
@@ -49,7 +49,7 @@ against.
 | studentSchoolAssociations | entryGradeLevelDescriptor | Required | must be from standard [GradeLevel set](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Standard/blob/v4.0.0/Descriptors/GradeLevelDescriptor.xml) | edfi.StudentSchoolAssociation | EntryGradeLevelDescriptorId |
 | /studentEducationOrganizationAssociations |     |     |     |     |     |
 | studentEducationOrganizationAssociations | studentReference => studentUniqueId | Required |     | edfi.StudentEducationOrganizationAssociation | StudentUSI |
-| studentEducationOrganizationAssociations | educationOrganizationReference => educationOrganizationId | Required | LocalEducationAgencyId from the edfi.LocalEducationAgency must match this  column, i.e., the demographics must be tied to the school district that represents the overall scope of the starter kit | edfi.StudentEducationOrganizationAssociation | EducationOrganizationId |
+| studentEducationOrganizationAssociations | educationOrganizationReference => educationOrganizationId | Required | LocalEducationAgencyId from the edfi.LocalEducationAgency must match this  column, i.e., the demographics must be tied to the school district that represents the overall scope of the Dashboard | edfi.StudentEducationOrganizationAssociation | EducationOrganizationId |
 | studentEducationOrganizationAssociations | hispanicLatinoEthnicity | Optional |     | edfi.StudentEducationOrganizationAssociation | HispanicLatinoEthnicity |
 | studentEducationOrganizationAssociations | limitedEnglishProficiencyDescriptor | Optional | must be from standard [LimitedEnglishProficiency set](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Standard/blob/v4.0.0/Descriptors/LimitedEnglishProficiencyDescriptor.xml) | edfi.StudentEducationOrganizationAssociation | LimitedEnglishProficiencyDescriptorId |
 | studentEducationOrganizationAssociations | sexDescriptor | Required | must be from standard [Sex set](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Standard/blob/v4.0.0/Descriptors/SexDescriptor.xml) | edfi.StudentEducationOrganizationAssociation | SexDescriptorId |

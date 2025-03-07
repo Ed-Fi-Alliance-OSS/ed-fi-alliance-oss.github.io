@@ -198,8 +198,8 @@ enforced across the Alliance's repositories.
       * **Ed-Fi-Model**
       * **Ed-Fi-Standard**
       * **Ed-Fi-TPDM-Artifacts**
-    * **Starter Kits** that do not contain any scannable code or actions:
-      * **Ed-Fi-Starter-Kit-Assessments**
-      * **Ed-Fi-Starter-Kit-Equity**
+    * **Dashboards** that do not contain any scannable code or actions:
+      * **Ed-Fi-Assessments-Dashboard**
+      * **Ed-Fi-Equity-Dashboards**
   * Ideally, create the Code Scanning and Dependency Review workflows
     immediately on creation of a new repository.

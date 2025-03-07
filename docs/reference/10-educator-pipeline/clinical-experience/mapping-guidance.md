@@ -4,9 +4,9 @@ sidebar_position: 2
 
 # Mapping Guidance
 
-This developer guide describes the processes for a System Integrator to provide data to the Clinical Experience and Performance Starter Kit. In the [Clinical Experience and Performance Setup Guide](./setup-guide.md) we explain how to setup the Ed-Fi solution including a high-level description of how to use Data Import to read and map a CSV. In this document, we we dive a bit deeper into how to work  with the Educator Preparation Provider (in mapping session with their data expert) to understand the data needs of the starter kit and how that data will map into Ed-Fi to produce a report valuable to the EPP.
+This developer guide describes the processes for a System Integrator to provide data to the Clinical Experience and Performance Dashboard. In the [Clinical Experience and Performance Setup Guide](./setup-guide.md) we explain how to setup the Ed-Fi solution including a high-level description of how to use Data Import to read and map a CSV. In this document, we we dive a bit deeper into how to work  with the Educator Preparation Provider (in mapping session with their data expert) to understand the data needs of the Dashboard and how that data will map into Ed-Fi to produce a report valuable to the EPP.
 
-The Clinical Experience and Performance Starter Kit requires data from a number of different sources:
+The Clinical Experience and Performance Dashboard requires data from a number of different sources:
 
 * Candidates
 * Credentials
@@ -41,7 +41,7 @@ Installation Instructions can be found in the  [Clinical Experience and Perform
 
 ### Create Education Organizations
 
-Instructions for adding education organizations in Admin App can be found in the starter kit setup guide [here](./setup-guide.md#add-your-education-organizations-in-the-admin-app).
+Instructions for adding education organizations in Admin App can be found in the Dashboard setup guide [here](./setup-guide.md#add-your-education-organizations-in-the-admin-app).
 
 ### Set up Data Import
 
@@ -51,7 +51,7 @@ Once you've installed Data Import, initial setup and post installation steps are
 
 ### Create Import Maps and Agents
 
-Data Import requires a map for each piece of CSV data that will loaded into the ODS. Basic information on creating maps and agents for the Clinical Experience and Performance Starter Kit can be found [here](./setup-guide.md#create-or-import-a-mapping-template).
+Data Import requires a map for each piece of CSV data that will loaded into the ODS. Basic information on creating maps and agents for the Clinical Experience and Performance Dashboard can be found [here](./setup-guide.md#create-or-import-a-mapping-template).
 
 More in-depth documentation on Import Maps and Agents can be found in the Data Import [documentation](../../6-data-import/readme.md).
 
@@ -118,7 +118,7 @@ Programs are also provided as a filter value on the left hand side of the report
 
 ![Candidates and Persons workbook](https://edfidocs.blob.core.windows.net/$web/img/reference/epp-sk/mapping-candidates-persons.png)
 
-Candidate is a student accepted to an EPP and working their way toward licensure or certification. The values needed for the Clinical Experience and Performance Starter Kit are basic identification and demographic information, including:
+Candidate is a student accepted to an EPP and working their way toward licensure or certification. The values needed for the Clinical Experience and Performance Dashboard are basic identification and demographic information, including:
 
 * **CandidateIdentifier.**  The key field for Candidate. It is a string field and is generally mapped to the student or person ID supplied by the EPP, university, or state.
 * **FirstName.** The first name of the candidate
@@ -127,7 +127,7 @@ Candidate is a student accepted to an EPP and working their way toward licensure
 * **BirthDate.** The birthdate of the candidate
 * **Race.** The race of the candidate
 
-Person is an entity meant to represent the actual person within Ed-Fi. A person can have many roles (e.g., Candidate is a role a person can have). Many entities within Ed-Fi use person (rather than the specific role that the person is playing) to associate other entities. In the Clinical Experience and Performance Starter Kit, credentials are associated via the person reference.
+Person is an entity meant to represent the actual person within Ed-Fi. A person can have many roles (e.g., Candidate is a role a person can have). Many entities within Ed-Fi use person (rather than the specific role that the person is playing) to associate other entities. In the Clinical Experience and Performance Dashboard, credentials are associated via the person reference.
 
 Person has two fields, the PersonId, a string similar to CandidateIdentifier. The second field is a descriptor for the source system. Unless the university or EPP is using a Person Identification System, it is recommended that the PersonId be the same as the CandidateIdentifier, and the SourceSystemDescriptor be defaulted to 'school' for simplicity.
 
@@ -157,7 +157,7 @@ Credential represents the attainment of a certification or license that authoriz
 * From the State of Issuance - EPP's can generally request from the state a list of their candidates who have been credentialed.
 * From post-completion surveys - When an EPP cannot receive the data from the state, they will send out surveys and determine licensed candidates from the responses.
 
-For the Clinical Experience and Performance Starter Kit to function properly, a credential record must exist for any given candidate. The data of the credential is irrelevant. Credential, however, does require a number of fields to be loaded into the ODS:
+For the Clinical Experience and Performance Dashboard to function properly, a credential record must exist for any given candidate. The data of the credential is irrelevant. Credential, however, does require a number of fields to be loaded into the ODS:
 
 * **CredentialIdentifier.** A unique identifier for the credential, generally the credential id from the state.
 * **CredentialField.** What the credential allows the recipient to teach (e.g., Art, Computer Science, English)
@@ -192,11 +192,11 @@ Performance Evaluation is a hierarchical structure meaning that each level requi
 
 ![Performance Evaluation workbook](https://edfidocs.blob.core.windows.net/$web/img/reference/epp-sk/performance-evaluation-workbook.webp)
 
-PerformanceEvaluation is an umbrella entity that allows for multiple evaluations to be grouped together. For the Clinical Experience and Performance Starter Kit, we're focused on a single evaluation. So while you can use multiple evaluations, only one will display in the report and thus we will only discuss a single report in this document.
+PerformanceEvaluation is an umbrella entity that allows for multiple evaluations to be grouped together. For the Clinical Experience and Performance Dashboard, we're focused on a single evaluation. So while you can use multiple evaluations, only one will display in the report and thus we will only discuss a single report in this document.
 
 PerformanceEvaluation has a few required fields:
 
-* **PerformanceEvaluationTitle.** A unique identifier for this performance evaluation. For the Clinical Experience and Performance Starter Kit, our sample PerformanceEvaluationTitle is 'Clinical Teacher - TWS' to represent the Teacher Work Sample.
+* **PerformanceEvaluationTitle.** A unique identifier for this performance evaluation. For the Clinical Experience and Performance Dashboard, our sample PerformanceEvaluationTitle is 'Clinical Teacher - TWS' to represent the Teacher Work Sample.
 * **Term.** The term where this evaluation applies. Common values include:
   * 'Fall Semester', 'Spring Semester'
   * 'First Term', 'Second Term', etc.
@@ -226,7 +226,7 @@ EvaluationObjective represents the larger criteria that any given candidate will
 The required fields for EvaluationObjectives are:
 
 * **Evaluation.** The overall evaluation this objective belongs to, created in the last step.
-* **EvaluationObjectiveTitle.** The title of this objective. This title is what will show in the Clinical Experience and Performance Starter Kit as Objectives.
+* **EvaluationObjectiveTitle.** The title of this objective. This title is what will show in the Clinical Experience and Performance Dashboard as Objectives.
 
 ### EvaluationElement
 
@@ -254,7 +254,7 @@ The required fields for PerformanceEvaluationRating are:
 
 ![Evaluation Rating workbook](https://edfidocs.blob.core.windows.net/$web/img/reference/epp-sk/evaluation-rating.webp)
 
-EvaluationRating is a specific evaluation that has been completed for a person. EvaluationRating can be scored, but for the Clinical Experience and Performance Starter Kit, evaluations are scored at the element level.
+EvaluationRating is a specific evaluation that has been completed for a person. EvaluationRating can be scored, but for the Clinical Experience and Performance Dashboard, evaluations are scored at the element level.
 
 The required fields for EvaluationRating are:
 
@@ -266,7 +266,7 @@ The required fields for EvaluationRating are:
 
 ![Evaluation Objective Rating workbook](https://edfidocs.blob.core.windows.net/$web/img/reference/epp-sk/evaluation-objective-rating-workbook.webp)
 
-EvaluationObjectiveRating is a specific evaluation that has been completed for a person. EvaluationObjectiveRating can be scored, but for the Clinical Experience and Performance Starter Kit, evaluations are scored at the element level.
+EvaluationObjectiveRating is a specific evaluation that has been completed for a person. EvaluationObjectiveRating can be scored, but for the Clinical Experience and Performance Dashboard, evaluations are scored at the element level.
 
 The required fields for EvaluationObjectiveRating are:
 
@@ -277,7 +277,7 @@ The required fields for EvaluationObjectiveRating are:
 
 ![Evaluation Element Rating workbook](https://edfidocs.blob.core.windows.net/$web/img/reference/epp-sk/evaluation-element-rating.webp)
 
-EvaluationElementRating is a specific evaluation that has been completed for a person. EvaluationElementRating is where the evaluation is scored for the Clinical Experience and Performance Starter Kit.
+EvaluationElementRating is a specific evaluation that has been completed for a person. EvaluationElementRating is where the evaluation is scored for the Clinical Experience and Performance Dashboard.
 
 The required fields for EvaluationElementRating are:
 
@@ -290,7 +290,7 @@ The required fields for EvaluationElementRating are:
 
 ## Surveys
 
-Surveys in the Clinical Experience and Performance Starter Kit allow Educator Preparation Providers to see summary responses from candidate self-report surveys. These surveys are generally about the candidate's experience, either in classes or more commonly while out in the field during clinical work. These surveys generally work best with matrix-style Likert scale questions. Similar to PerformanceEvaluation above, the survey domain has two distinct sides:
+Surveys in the Clinical Experience and Performance Dashboard allow Educator Preparation Providers to see summary responses from candidate self-report surveys. These surveys are generally about the candidate's experience, either in classes or more commonly while out in the field during clinical work. These surveys generally work best with matrix-style Likert scale questions. Similar to PerformanceEvaluation above, the survey domain has two distinct sides:
 
 * **Metadata.** This defines the structure of the survey, including any sections as well as the questions asked in the survey.
 * **Responses.** These are the above metadata as given by a specific person.
@@ -312,7 +312,7 @@ The required fields for Survey are:
 
 ![Survey Section workbook](https://edfidocs.blob.core.windows.net/$web/img/reference/epp-sk/survey-section-workbook.webp)
 
-Survey sections allow you to group questions of a similar nature. The Clinical Experience and Performance Starter Kit expects at least one section.
+Survey sections allow you to group questions of a similar nature. The Clinical Experience and Performance Dashboard expects at least one section.
 
 The required fields for SurveySection are:
 
@@ -329,8 +329,8 @@ The required fields for SurveyQuestion are:
 
 * **QuestionCode.** The identifying code for the question, unique for the survey.
 * **Survey.** The previously created survey to which this question will belong.
-* **SurveySection.** The section that this question will belong to. The survey question model doesn't require a section to function but the Clinical Experience and Performance Starter Kit does expect at least 1 section.
-* **QuestionForm.** How the questions are laid out. For the Clinical Experience and Performance Starter Kit, we work with matrix-style questions, so this will most likely be 'Matrix of textboxes' or 'Matrix of dropdowns'
+* **SurveySection.** The section that this question will belong to. The survey question model doesn't require a section to function but the Clinical Experience and Performance Dashboard does expect at least 1 section.
+* **QuestionForm.** How the questions are laid out. For the Clinical Experience and Performance Dashboard, we work with matrix-style questions, so this will most likely be 'Matrix of textboxes' or 'Matrix of dropdowns'
 * **QuestionText.** The text of the question.
 
 ### SurveyResponse
@@ -363,7 +363,7 @@ The required fields for SurveyQuestionResponse are:
 
 ![Survey Response Person Target Association Workbook](https://edfidocs.blob.core.windows.net/$web/img/reference/epp-sk/survey-response-person-target-association-workbook.webp)
 
-The person the SurveyResponse is about. This is what makes the survey in the Clinical Experience and Performance Starter Kit a self-referential survey. The person taking the survey is evaluating their experiences in a given program, school, and so forth.
+The person the SurveyResponse is about. This is what makes the survey in the Clinical Experience and Performance Dashboard a self-referential survey. The person taking the survey is evaluating their experiences in a given program, school, and so forth.
 
 The required fields for SurveyResponsePersonTargetAssociation are:
 

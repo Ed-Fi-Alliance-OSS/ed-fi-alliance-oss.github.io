@@ -3,7 +3,7 @@
 ## Purpose
 
 A collection of terms used to populate the term filter dropdown in the EPP
-Starter Kit's
+Dashboard's
 
 ## SQL Object Name
 

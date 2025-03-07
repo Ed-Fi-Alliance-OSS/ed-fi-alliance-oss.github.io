@@ -19,8 +19,7 @@ Ed-Fi Assessment solution.** Ed-Fi technology helps schools and districts
 combine assessment data from multiple measures and sources in one interface to
 gain a comprehensive view of their learners’ progress.
 
-This guide is a direct companion to the [Assessment Starter
-Kit](https://edfi.atlassian.net/wiki/spaces/SK/pages/21999134/Assessment+Starter+Kit).
+This guide is a direct companion to the [Assessment Dashboard](https://github.com/Ed-Fi-Exchange-OSS/Ed-Fi-Assessments-Dashboard).
 
 * [Assessment Solution Guide Home](./assessment-solution-guide/readme.md)
 
@@ -34,8 +33,7 @@ Ed-Fi Chronic Absenteeism solution.** Ed-Fi technology helps schools and
 districts identify trends and intervene earlier with accurate, real-time
 attendance data.
 
-This guide is a direct companion to the [Chronic Absenteeism Starter
-Kit](https://edfi.atlassian.net/wiki/spaces/SK/pages/21996654/Chronic+Absenteeism+Starter+Kit).
+This guide is a direct companion to the [Chronic Absenteeism Dashboard](https://github.com/Ed-Fi-Exchange-OSS/Chronic-Absenteeism-Dashboard).
 
 * [Chronic Absenteeism Solution Guide
   Home](./chronic-absenteeism-solution-guide/readme.md)

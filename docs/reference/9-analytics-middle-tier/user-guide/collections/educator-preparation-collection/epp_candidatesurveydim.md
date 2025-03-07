@@ -22,5 +22,5 @@ program they are enrolled in)
 | QuestionCode | varchar | Candidate | The unique identifier for the question being asked |
 | QuestionText | nvarchar | Candidate | The text of the question being asked |
 |     |     |     |     |
-| TextResponse | bit | SurveyQuestionResponseSurveyQuestionMatrixElementResponse | The response of the question being asked. It is generally preferred that this be a response from a set of pre-defined responses (i.e. a Likert Scale). A predefined set of responses is required for the Clinical Experience and Performance Starter Kit |
-| NumericResponse | bit | Candidate | The numerical representation of the above TextResponse. Allows for ordering of the survey responses in the Clinical Experience and Performance Starter Kit.<br/><br/>Example:<br/><br/>1 = Very much like me<br/><br/>2 = Mostly like me<br/><br/>3 = Somewhat like me |
+| TextResponse | bit | SurveyQuestionResponseSurveyQuestionMatrixElementResponse | The response of the question being asked. It is generally preferred that this be a response from a set of pre-defined responses (i.e. a Likert Scale). A predefined set of responses is required for the Clinical Experience and Performance Dashboard |
+| NumericResponse | bit | Candidate | The numerical representation of the above TextResponse. Allows for ordering of the survey responses in the Clinical Experience and Performance Dashboard.<br/><br/>Example:<br/><br/>1 = Very much like me<br/><br/>2 = Mostly like me<br/><br/>3 = Somewhat like me |

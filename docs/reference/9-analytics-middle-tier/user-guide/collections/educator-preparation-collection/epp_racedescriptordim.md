@@ -3,7 +3,7 @@
 ## Purpose
 
 A collection of races, used to populate the race filter dropdown in the EPP
-Starter Kit's
+Dashboard's
 
 ## SQL Object Name
 

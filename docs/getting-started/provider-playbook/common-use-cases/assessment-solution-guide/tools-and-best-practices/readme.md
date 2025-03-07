@@ -6,7 +6,7 @@ sidebar_position: 3
 
 This section provides information on tools and best practices to assist in your
 development and in the long-term maintenance and health of supporting
-organizations using the Assessment Starter Kit.
+organizations using the Assessment Dashboard.
 
 ## [Best Practices](./best-practices.md)
 

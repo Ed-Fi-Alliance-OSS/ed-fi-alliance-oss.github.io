@@ -1,4 +1,4 @@
-# Program Diversity and Persistence Starter Kit
+# Program Diversity and Persistence Dashboard
 
 :::tip
 
@@ -6,13 +6,13 @@ Want to know more before you get started? Read more about [Educator Preparation]
 
 :::
 
-The Program Diversity and Persistence Starter Kit provides step-by-step instructions to technical and non-technical users on how to implement the Ed-Fi Program Diversity and Persistence solution.
+The Program Diversity and Persistence Dashboard provides step-by-step instructions to technical and non-technical users on how to implement the Ed-Fi Program Diversity and Persistence solution.
 
 ![Candidate Summary view](https://edfidocs.blob.core.windows.net/$web/img/getting-started/use-cases/epp/candidate-summary-small.png)
 
 The [Setup Guide](./setup-guide.md) provides details on how to customize the Program Diversity and Persistence solution to fit your unique needs such as setting the solution up on your own infrastructure, configuring the Data Import tool, and loading test data. Completing the Setup Guide will result in a test environment intended to mimic your production environment. It is recommended that you have access to resource(s) that have a basic knowledge of Windows Server, Microsoft SQL Server, and Power BI.
 
-For more help operating this starter kit, see the following pages:
+For more help operating this Dashboard, see the following pages:
 
 * [Data Requirements](./data-requirements.md)
 * [Mapping Guidance](./mapping-guidance.md)
@@ -32,7 +32,7 @@ These are basic requirements for using the system. Production deployments may re
 
 ### Software Installed
 
-This starter kit was developed with the following software:
+This Dashboard was developed with the following software:
 
 #### Windows Components
 
@@ -64,6 +64,6 @@ The latest `minor.patch` release of each should be compatible with this guide (f
 
 :::note
 
-The educator pipeline starter kits were originally developed on Data Standard 3.3 (ODS/API 5.3) and have also been tested for compatibility with Data Standard 4 (ODS/API 6.x and ODS/API 7.x).
+The educator pipeline Dashboards were originally developed on Data Standard 3.3 (ODS/API 5.3) and have also been tested for compatibility with Data Standard 4 (ODS/API 6.x and ODS/API 7.x).
 
 :::

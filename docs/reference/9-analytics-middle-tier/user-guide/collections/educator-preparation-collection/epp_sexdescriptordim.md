@@ -3,7 +3,7 @@
 ## Purpose
 
 A collection of sexes used to populate the sex filter dropdown in the EPP
-Starter Kit's
+Dashboard's
 
 ## SQL Object Name
 
