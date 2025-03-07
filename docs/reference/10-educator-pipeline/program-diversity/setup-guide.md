@@ -1,9 +1,8 @@
 ---
-title: Setup Guide
 sidebar_position: 0
 ---
 
-# Program Diversity and Persistence Setup Guide
+# Setup Guide
 
 Use this Setup Guide to install and configure your Program Diversity and Persistence solution using test data. This guide will walk you through setting up a test environment that closely mimics a staging or production environment. At the end of this Setup Guide you'll have a test environment with your own test data loaded, but to cover all required elements (credentials, candidates, and financial aid/grants) for the Program Diversity and Persistence solution additional steps will be required as indicated at the end of Step 3.
 
@@ -38,7 +37,7 @@ The rest of this guide will instruct you on how to:
 * Install the above components.
 * Configure Education Organizations and apps in the Ed-Fi Admin App.
 * Load data via the Data Import Tool (SIS, Programs, Credentials, Financial Aid/Grants) to the Ed-Fi ODS.
-* Use the Program Diversity and Persistence Starter Kit to engage and provide support to staff, deans, and program managers.
+* Use the Program Diversity and Persistence Dashboard to engage and provide support to staff, deans, and program managers.
 
   :::note
 
@@ -58,7 +57,7 @@ These instructions were developed with older versions of the Ed-Fi software, tho
 
 :::
 
-In this step, you will install the components of the Ed-Fi solution needed for the starter kit. These components are:
+In this step, you will install the components of the Ed-Fi solution needed for the Dashboard. These components are:
 
 * ODS / API for Suite 3
 * Analytics Middle Tier
@@ -105,7 +104,7 @@ The time to configure and coordinate data flowing from a certified SIS system ty
 
 ## Step 2. Configure your Education Organizations and Applications
 
-In this step, you will load data from your SIS, credential, and financial aid providers to the Ed-Fi ODS / API for it to be available on the Diversity and Persistence dashboard. This step requires you to have access to data in CSV format for Data Import to load into the Ed-Fi ODS / API. If you would like to see sample data import templates and CSV data it can be found [in GitHub](https://github.com/Ed-Fi-Exchange-OSS/EPP-PowerBI-Report-Starter-Kit/tree/main/Starter%20Kit%20Support/Data%20Import%20Templates%20and%20Sample%20Data).
+In this step, you will load data from your SIS, credential, and financial aid providers to the Ed-Fi ODS / API for it to be available on the Diversity and Persistence dashboard. This step requires you to have access to data in CSV format for Data Import to load into the Ed-Fi ODS / API. If you would like to see sample data import templates and CSV data it can be found [in GitHub](https://github.com/Ed-Fi-Exchange-OSS/Educator-Pipeline-Dashboards/tree/main/Starter%20Kit%20Support/Data%20Import%20Templates%20and%20Sample%20Data).
 
 ### Add Your Education Organizations in the Admin App
 
@@ -136,7 +135,7 @@ Once you have successfully installed the Admin App following the instructions pr
 
     :::tip
 
-    For test environments using the Ed-Fi Sandbox claim set is appropriate, bur if this is a production environment we suggest using a claim set tailored specifically to this starter kit.
+    For test environments using the Ed-Fi Sandbox claim set is appropriate, bur if this is a production environment we suggest using a claim set tailored specifically to this Dashboard.
 
     :::
 
@@ -217,7 +216,7 @@ Data Import is now configured and you are ready to create or import a template t
 
 :::note
 
-To import the data necessary for the Program Diversity and Persistence starter kit, you will need to upload data for people, candidates, credentials, programs, and financial aid. This will require repeating Section 3, beginning with _Create or Import a Mapping Template_ for each of the remaining data sources until all of the required data is loaded.
+To import the data necessary for the Program Diversity and Persistence Dashboard, you will need to upload data for people, candidates, credentials, programs, and financial aid. This will require repeating Section 3, beginning with _Create or Import a Mapping Template_ for each of the remaining data sources until all of the required data is loaded.
 
 :::
 
@@ -252,7 +251,7 @@ The latest version of the Program Diversity and Persistence Power BI Dashboard 
 
 Use the machine that has Power BI and create the following folder structure: `C:\Ed-Fi\QuickStarts\EPP_Diversity`.
 
-Save this file onto that location by clicking this link: [Diversity and Persistence Power Bi Report](https://github.com/Ed-Fi-Exchange-OSS/EPP-PowerBI-Report-Starter-Kit/raw/main/EPP%20Diversity%20and%20Completion/Ed-Fi%20EPP%20Diversity%20and%20Completion.pbix) .
+Save this file onto that location by clicking this link: [Diversity and Persistence Power Bi Report](https://github.com/Ed-Fi-Exchange-OSS/Educator-Pipeline-Dashboards/raw/main/EPP%20Diversity%20and%20Completion/Ed-Fi%20EPP%20Diversity%20and%20Completion.pbix) .
 
 Once the download completes, navigate to the folder where you downloaded the file and double-click it. This should open Power BI and load the Program Diversity and Persistence Dashboard as depicted below:
 
@@ -400,7 +399,7 @@ Click on your workspace and you should see the "Program Diversity and Persistenc
 The report comes configured with two security roles:
 
 * Supervisor - Has full access to all data
-* Standard - This role is meant to restrict access to Personally Identifiable Information and does not have access to the details page of the starter kit.
+* Standard - This role is meant to restrict access to Personally Identifiable Information and does not have access to the details page of the Dashboard.
 
 To enable it in Power BI Online, follow these steps:
 

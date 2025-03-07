@@ -10,7 +10,7 @@ support and preparation.
 
 To demonstrate the potential of the Ed-Fi Data Standard's _educator preparation
 data model_ (EPDM), a [sample PowerBI
-dashboard](https://github.com/Ed-Fi-Exchange-OSS/EPP-PowerBI-Report-Starter-Kit)
+dashboard](https://github.com/Ed-Fi-Exchange-OSS/Educator-Pipeline-Dashboards)
 providing three visualizations: Evaluation, Evaluation Detail, and Survey.
 
 :::note
@@ -122,6 +122,6 @@ _[larger version](https://edfidocs.blob.core.windows.net/$web/img/getting-starte
 
 :::tip
 
-For implementation guidance, see the [Clinical Experience and Performance Starter Kit](/reference/educator-pipeline/clinical-experience/) reference documentation.
+For implementation guidance, see the [Clinical Experience and Performance Dashboard](/reference/educator-pipeline/clinical-experience/) reference documentation.
 
 :::

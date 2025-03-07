@@ -6,7 +6,7 @@ sidebar_position: 3
 
 ## Solution Overview
 
-This guide describes how set up and use the Data Import Error Report as a companion report to your starter kit. The Data Import Error Report is a simple Power Bi report meant to display errors from the Ed-Fi Alliance's Data Import. This allows for a read-only view of the errors that happen after an import w/o requiring non-technical people to log into the Data Import administration console.
+This guide describes how set up and use the Data Import Error Report as a companion report to your dashboard. The Data Import Error Report is a simple Power Bi report meant to display errors from the Ed-Fi Alliance's Data Import. This allows for a read-only view of the errors that happen after an import w/o requiring non-technical people to log into the Data Import administration console.
 
 The error report has several columns, all of which can be configured to show our hide based on your specific needs and preferences, these columns include:
 
@@ -40,11 +40,11 @@ All of the above can be adjusted to fit your needs by adjusting the queries with
 
 ### Download and Configure the Data Import Error Log Dashboard
 
-The latest version of the Data Import Error Log Power BI Dashboard file is located in a [GitHub repository](https://github.com/Ed-Fi-Exchange-OSS/EPP-PowerBI-Report-Starter-Kit/raw/main/Starter%20Kit%20Support/Data%20Import%20Error%20Log%20Report/Data%20Import%20Error%20Log.pbix).
+The latest version of the Data Import Error Log Power BI Dashboard file is located in a [GitHub repository](https://github.com/Ed-Fi-Exchange-OSS/Educator-Pipeline-Dashboards/raw/main/Starter%20Kit%20Support/Data%20Import%20Error%20Log%20Report/Data%20Import%20Error%20Log.pbix).
 
 Use the machine that has Power BI and create the following folder structure: `C:\Ed-Fi\QuickStarts\Error\Log\`.
 
-Save this file onto that location by clicking this link: [Data Import Error Log](https://github.com/Ed-Fi-Exchange-OSS/EPP-PowerBI-Report-Starter-Kit/raw/main/Starter%20Kit%20Support/Data%20Import%20Error%20Log%20Report/Data%20Import%20Error%20Log.pbix) .
+Save this file onto that location by clicking this link: [Data Import Error Log](https://github.com/Ed-Fi-Exchange-OSS/Educator-Pipeline-Dashboards/raw/main/Starter%20Kit%20Support/Data%20Import%20Error%20Log%20Report/Data%20Import%20Error%20Log.pbix) .
 
 Once the download completes, navigate to the folder where you downloaded the file and double-click it. This should open Power BI and load the Data Import Error Log as depicted below:
 

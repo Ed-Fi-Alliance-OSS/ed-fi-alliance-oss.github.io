@@ -6,11 +6,11 @@ hide_table_of_contents: true
 
 # Data Requirements
 
-Data requirements for the Starter Kit are provided below.
+Data requirements for the Dashboard are provided below.
 
 * Elements listed as **optional** should be provided when available: while their
-    absence will not cause issues with the starter kit visualizations, their
-    presence will enhance the capabilities of the starter kit.
+    absence will not cause issues with the Dashboard visualizations, their
+    presence will enhance the capabilities of the Dashboard.
 * Descriptors (values suffixed with "Descriptor" below) must be consistent with
     the standard values provided as part of [Ed-Fi Data
     Standard](/reference/data-exchange/data-standards)
