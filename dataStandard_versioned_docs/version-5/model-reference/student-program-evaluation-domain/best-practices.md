@@ -28,7 +28,7 @@ It is also important to note the differences between a student program evaluatio
 * Assessments may be associated with a school, grade level, academic subject, section or program.  Student program evaluations are only administered in the context of a program.
 The Program Evaluation domain has the following entities:
 * ProgramEvaluation: An evaluation instrument applied to evaluate a student in the context of a program. Student evaluations are typically applied by a staff member based upon a rubric.
-* ProgramEvaluationObjective: A subcomponent of a ProgramEvaluation, a specific student objective or domain of performance that is being evaluated.
+* ProgramEvaluationObjective: A sub component of a ProgramEvaluation, a specific student objective or domain of performance that is being evaluated.
 * ProgramEvaluationElement: The lowest level elements or criterion of a students' performance that is being evaluated, typically by a rubric.
 * EvaluationRubricDimension: The cells of a rubric, consisting of a qualitative description, definition, or exemplar with the associated rubric evaluation level.
 * StudentProgramEvaluation: The evaluation results for a student as evaluated in the context of a program.
@@ -69,7 +69,7 @@ The Student Program Evaluation domain has dependencies on other data that should
 * ProgramEvaluationElement
   * ElementProgramEvaluationLevel.RatingLevel
 * EvaluationRubricDimension
-  * EvaluationRubricRtaingLevel
+  * EvaluationRubricRatingLevel
 * StudentProgramEvaluation
   * SummaryEvaluationRatingLevel
   * EvaluationObjectiveRatingLevel
@@ -115,14 +115,14 @@ Best Practice Use of ProgramEvaluation Attributes
 
 | REQUIRED | MUST | RECOMMENDED | AS NEEDED|
 | -------  | -----| ----------- | ---------|
-<br>Program (ref)</br><br>ProgramEvaluationTitle</br><br>ProgramEvaluationType</br><br>ProgramEvaluationPeriod</br> | |<br>ProgramEvaluationDescription</br><br>ProgramEvaluationLevel</br><br>EvaluationMaxNumericRating</br><br>EvaluationMinNumericRating</br>|
-
+|<br>Program (ref)</br><br>ProgramEvaluationTitle</br><br>ProgramEvaluationType</br><br>ProgramEvaluationPeriod</br> | |<br>ProgramEvaluationDescription</br><br>ProgramEvaluationLevel</br><br>EvaluationMaxNumericRating</br><br>EvaluationMinNumericRating</br>||
 
 KEY
-- REQUIRED attributes in Ed-Fi are hard constraints, meaning that a record or API payload will be rejected if the attribute is not present. These necessarily include key values.
-- MUST attributes are those whose intended use of the entity requires them to be used, even if, upon creation, they may not be present.
-- RECOMMENDED attributes are those whose best practices encourage their use.
-- AS NEEDED attributes are those that should be used when appropriate, based upon policy.
+
+* **REQUIRED** attributes in Ed-Fi are hard constraints, meaning that a record or API payload will be rejected if the attribute is not present. These necessarily include key values.
+* **MUST** attributes are those whose intended use of the entity requires them to be used, even if, upon creation, they may not be present.
+* **RECOMMENDED** attributes are those whose best practices encourage their use.
+* **AS NEEDED** attributes are those that should be used when appropriate, based upon policy.
 
 Best practice business rules are shown below.
 
@@ -130,13 +130,13 @@ The EvaluationMaxNumericRating must be greater than the EvaluationMinNumericRati
 
 ### ProgramEvaluationObjective
 
-The ProgramEvaluationObjective entity reflects a subcomponent of a ProgramEvaluation, a specific student objective or domain of performance that is being evaluated. The following table summarizes the best practice use of the ProgramEvaluationObjective attributes.
+The ProgramEvaluationObjective entity reflects a sub component of a ProgramEvaluation, a specific student objective or domain of performance that is being evaluated. The following table summarizes the best practice use of the ProgramEvaluationObjective attributes.
 
 Best Practice Use of ProgramEvaluationObjective Attributes
 
 | REQUIRED | MUST | RECOMMENDED | AS NEEDED|
 | -------  | -----| ----------- | ---------|
-|<br>ProgramEvaluation (ref)</br><br>ProgramEvaluationObjectiveTitle</br> | |<br>ProgramEvaluationObjectiveDescription</br><br>ObjectiveProgramEvaluationLevel</br><br>ObjectiveMaxNumericRating</br> <br>ObjectiveMinNumericRating</br> | <br>ObjectiveSortOrder</br>
+|<br>ProgramEvaluation (ref)</br><br>ProgramEvaluationObjectiveTitle</br> | |<br>ProgramEvaluationObjectiveDescription</br><br>ObjectiveProgramEvaluationLevel</br><br>ObjectiveMaxNumericRating</br> <br>ObjectiveMinNumericRating</br> | <br>ObjectiveSortOrder</br>|
 
 Best practice business rules are shown below.
 
@@ -152,7 +152,7 @@ Best Practice Use of ProgramEvaluationElement Attributes
 
 | REQUIRED | MUST | RECOMMENDED | AS NEEDED|
 | -------  | -----| ----------- | ---------|
-|<br>ProgramEvaluation (ref)</br><br>ProgramEvaluationElementTitle</br> | | <br>ProgramEvaluationElementDescription</br> <br>ElementProgramEvaluationLevel</br><br>ElementMaxNumericRating</br> <br>ElementMinNumericRating</br> | <br>ProgramEvaluationObjective(ref) </br> <br> ElementSortOrder </br>
+|<br>ProgramEvaluation (ref)</br><br>ProgramEvaluationElementTitle</br> | | <br>ProgramEvaluationElementDescription</br> <br>ElementProgramEvaluationLevel</br><br>ElementMaxNumericRating</br> <br>ElementMinNumericRating</br> | <br>ProgramEvaluationObjective(ref) </br> <br> ElementSortOrder </br>|
 
 Best practice business rules are shown below.
 
@@ -168,12 +168,12 @@ Best Practice Use of EvaluationRubricDimension Attributes
 
 | REQUIRED | MUST | RECOMMENDED | AS NEEDED|
 | -------  | -----| ----------- | ---------|
-|<br>ProgramEvaluationElement (ref)</br> EvaluationRubricRating | EvaluationCriterionDescription | EvaluationRubricRating Level | RubricDimensionSortOrder
+|<br>ProgramEvaluationElement (ref)</br> EvaluationRubricRating | EvaluationCriterionDescription | EvaluationRubricRating Level | RubricDimensionSortOrder|
 
 Best practice business rules are shown below.
 
 :::note
-For each ProgramEvalutionElement, two or more EvaluationRubricDimensions must be defined.
+For each ProgramEvaluationElement, two or more EvaluationRubricDimensions must be defined.
 :::
 
 ### StudentProgramEvaluation
@@ -184,7 +184,7 @@ Best Practice Use of StudentProgramEvaluation Attributes
 
 | REQUIRED | MUST | RECOMMENDED | AS NEEDED|
 | -------  | -----| ----------- | ---------|
-| <br>ProgramEvaluation (ref) </br><br> Student (ref) </br><br> EvaluationDate </br> | |  <br>SummaryEvaluationNumericRating  </br><br>SummaryEvaluationRatingLevel </br> <br> StaffEvaluatorStaff </br> | <br> EducationOrganization (ref) </br> <br>EvaluationDuration SummaryEvaluationComment ExternalEvaluator </br> <br> StudentEvaluationObjective (common)</br> <br> StudentEvaluationElement (common)</br>
+| <br>ProgramEvaluation (ref) </br><br> Student (ref) </br><br> EvaluationDate </br> | |  <br>SummaryEvaluationNumericRating  </br><br>SummaryEvaluationRatingLevel </br> <br> StaffEvaluatorStaff </br> | <br> EducationOrganization (ref) </br> <br>EvaluationDuration SummaryEvaluationComment ExternalEvaluator </br> <br> StudentEvaluationObjective (common)</br> <br> StudentEvaluationElement (common)</br>|
 
 Best practice business rules are shown below.
 
