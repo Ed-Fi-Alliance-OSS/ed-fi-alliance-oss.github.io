@@ -2,24 +2,24 @@
 sidebar_position: 1
 ---
 
-# Advisory: Profiles Security Vulnerability in Multi-Tenant Deployment
+# Advisory: Implementation Error When Using Profiles with Multi-Tenant Deployments
 
 Feb 15, 2025
 
 ## Issue
 
-Incorrect usage of the
-[profiles](https://docs.ed-fi.org/reference/ods-api/platform-dev-guide/security/api-profiles)
-feature has been identified in [multi-tenant
-deployments](https://docs.ed-fi.org/reference/ods-api/platform-dev-guide/configuration/single-and-multi-tenant-configuration#multi-tenant-configuration)
-of ODS / API 7.x line. In ODS / API 7.x, profile configurations are stored in
-the database and cached at the application level to reduce repetitive database
-queries. However, the profile cache does not distinguish between tenant
-contexts, meaning it can only store profiles for one tenant at a time. As a
-result, when an API client attempts to access a resource with an applied profile
-and its tenant-specific configuration is missing from the cache, the API
-returns an error response. If you use the Profiles feature in a multi-tenant
-deployment, we recommend that you install this update.
+We have identified an implementation error that affects usage of the
+[profiles](/reference/ods-api/platform-dev-guide/security/api-profiles) feature
+with [multi-tenant
+deployments](/reference/ods-api/platform-dev-guide/configuration/single-and-multi-tenant-configuration#multi-tenant-configuration),
+which can lead to service interruptions. In ODS / API 7.x, profile
+configurations are stored in the database and cached at the application level to
+reduce repetitive database queries. However, the profile cache does not
+distinguish between tenant contexts, meaning it can only store profiles for one
+tenant at a time. As a result, when an API client attempts to access a resource
+with an applied profile and its tenant-specific configuration is missing from
+the cache, the API returns an error response. If you use the Profiles feature in
+a multi-tenant deployment, we recommend that you install this update.
 
 All deployments using profiles feature should review [Additional
 Recommendations](#additional-recommendations) section.
