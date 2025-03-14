@@ -1,3 +1,7 @@
+---
+sidebar_position: 9
+---
+
 # Advisory: Analysis of the Log4j Vulnerability CVE-2021-44228
 
 15 December 2021

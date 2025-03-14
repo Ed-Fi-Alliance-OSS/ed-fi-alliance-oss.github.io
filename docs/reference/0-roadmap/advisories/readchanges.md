@@ -1,3 +1,7 @@
+---
+sidebar_position: 5
+---
+
 # Advisory: ReadChanges action grants access to Read and Update actions
 
 July 23, 2023

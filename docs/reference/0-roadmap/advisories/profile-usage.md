@@ -1,3 +1,7 @@
+---
+sidebar_position: 6
+---
+
 # Advisory: Non-Enforcement of Profile Usage
 
 March 28, 2023

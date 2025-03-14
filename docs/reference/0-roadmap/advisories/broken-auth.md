@@ -1,3 +1,7 @@
+---
+sidebar_position: 4
+---
+
 # Advisory: Potential for Broken Authorization When Using Admin App or Admin API
 
 4 Nov 2023

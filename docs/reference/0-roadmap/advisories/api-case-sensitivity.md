@@ -1,3 +1,7 @@
+---
+sidebar_position: 8
+---
+
 # Advisory: API Case Sensitivity Issue
 
 April 27, 2022

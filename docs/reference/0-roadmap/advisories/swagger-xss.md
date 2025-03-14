@@ -1,3 +1,7 @@
+---
+sidebar_position: 7
+---
+
 # Advisory: Swagger UI XSS Vulnerability
 
 11 August 2022
