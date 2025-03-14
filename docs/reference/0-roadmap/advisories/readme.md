@@ -5,7 +5,7 @@ important and timely information related to Ed-Fi offerings.
 
 The following list is sorted with the latest advisory at the top.
 
-* [Advisory: Profiles Security Vulnerability in Multi-Tenant Deployment - February, 2025](./profiles%20in%20multi-tenancy.md)
+* [Advisory: Implementation Error When Using Profiles with Multi-Tenant Deployments - February, 2025](./profiles%20in%20multi-tenancy.md)
 * [Advisory: String Validation Divergence - June, 2024](./string-validation.md)
 * [Advisory: Microsoft SqlClient Vulnerability - February, 2024](./sqlclient.md)
 * [Advisory: Potential for Broken Authorization When Using Admin App or Admin API - November, 2023](./broken-auth.md)
