@@ -2,13 +2,13 @@
 
 ## About the Assessment Solution Guide
 
-The Assessment starter kit is a step-by-step guide designed to help LEAs combine
+The Assessment Dashboard is a step-by-step guide designed to help LEAs combine
 assessment data from multiple measures and sources in one interface to gain a
 comprehensive view of their learners’ progress.
 
-This Solution Guide for this starter kit is designed to help Assessment and
+This Solution Guide for this Dashboard is designed to help Assessment and
 Student Information System Vendors take the steps necessary to provide the data
-these districts need to power the the starter kit.
+these districts need to power the the Dashboard.
 
 Vendor support for Harnessing Multiple Measures of Assessment encompasses the
 following steps.
@@ -25,12 +25,12 @@ following steps.
 * **Test.** To fully realize the benefits of Harnessing Multiple Measures of
     Assessment and ensure your solution is field ready, we recommend selecting
     and working with an existing district customer to test your integration in a
-    live Ed-Fi implementation of the starter kit. Securing a district customer
-    will allow you a reference point for future adoptees of this Starter Kit.
+    live Ed-Fi implementation of the Dashboard. Securing a district customer
+    will allow you a reference point for future adoptees of this Dashboard.
     Working with a local district agency is not required but it is strongly
     recommended.
 * **Certify.** For vendor organizations that have completed integration with the
-    starter kit using the vendor developer guide, apply for the API Domain
+    Dashboard using the vendor developer guide, apply for the API Domain
     Certification so you may be listed as a verified partner on
     [Ed-Fi.org](http://Ed-Fi.org).
 
@@ -57,7 +57,7 @@ Links:
 
 This developer guide describes the processes for assessment providers and
 student information systems to develop the functionality in their platform to
-provide data to an Ed-Fi API to power the Ed-Fi Assessment Starter Kit.
+provide data to an Ed-Fi API to power the Ed-Fi Assessment Dashboard.
 
 ### Assessment System
 
@@ -89,7 +89,7 @@ larger amounts of data.
 
 This section provides information on tools and best practices to assist in your
 development and in the long-term maintenance and health of supporting
-organizations using the Assessment Starter Kit.
+organizations using the Assessment Dashboard.
 
 #### Next Steps
 

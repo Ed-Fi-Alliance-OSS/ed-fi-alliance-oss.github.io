@@ -77,7 +77,6 @@ v6.1 contains nine claim sets, resulting in nine folders.
 | Directory | Assessment Vendor |
 | Directory | Bootstrap Descriptors and EdOrgs |
 | Directory | District Hosted SIS Vendor |
-| Directory | Ed-Fi ODS Admin App |
 | Directory | Ed-Fi Sandbox |
 | Directory | Roster Vendor |
 | Directory | SIS Vendor |

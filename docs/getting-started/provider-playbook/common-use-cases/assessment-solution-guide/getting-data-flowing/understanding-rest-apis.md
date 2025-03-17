@@ -1,6 +1,6 @@
 # Understanding REST APIs
 
-Your data gets to the Starter Kit via the Ed-Fi ODS platform's API. The Ed-Fi
+Your data gets to the Dashboard via the Ed-Fi ODS platform's API. The Ed-Fi
 API uses standard REST conventions and JSON as its data format language.
 
 A REST API is a common pattern in software development; if you are not familiar
