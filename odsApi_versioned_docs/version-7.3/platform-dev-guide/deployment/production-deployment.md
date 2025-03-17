@@ -15,8 +15,6 @@ and supporting functions for a Production instance:
 
 * **Websites**
   * **Ed-Fi ODS API.** The REST endpoint for client applications.
-  * **Admin App Website.** This website provides administrative tools for
-    managing API client keys and secrets.
 * **Databases**
   * **`EdFi_ODS.*`.** A database that stores data for the Ed-Fi ODS / API.
   * **`EdFi_Admin`.** A database containing authentication information for API
@@ -107,13 +105,6 @@ periodically thereafter.
 * Ensure any Sandbox development tools and configurations are not included in
   Production.
 * Remove the Swagger documentation pages from Production instances.
-
-#### Admin App
-
-* Encrypt sensitive data.
-* Ensure the OAuth secret is hashed in the database.
-* Only allow HTTPS.
-* Configuration should explicitly only allow administrator access.
 
 ## Reference Models for Production Deployment
 

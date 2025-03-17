@@ -33,7 +33,7 @@ re-hashed using the new algorithm and the hashing method details are updated.
 ## Default Hashing
 
 As noted above, the default algorithm used for hashing is PBKDF2-HMACSHA1, and
-is implemented in EdFi.Common.Security. The API and the Admin App use the
+is implemented in EdFi.Common.Security. The ODS/ API uses the
 following values. No manual scripts are necessary to hash existing
 secrets. Existing vendor secrets are upgraded from plain text to the a hashed
 version when the vendor connects to the ODS / API for the first time. Plain text
