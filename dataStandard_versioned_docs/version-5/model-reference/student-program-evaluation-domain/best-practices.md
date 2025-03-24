@@ -13,34 +13,72 @@ A **Student Program Evaluation** uses an evaluation instrument to appraise a stu
 
 An **Evaluation Rubric** is a structured guide that articulates specific criteria and elements of the evaluation.  Rubrics contain descriptions associated with a performance scale which inform what different levels of achievement look like.  Rubrics are organized
 
-* Elements represent the lowest level of criteria to be evaluated.
-* Rubric dimensions represent the cells of a rubric associated with an element, consisting of a qualitative description, definition, or exemplar associated with each facet of the performance scale.
-* In evaluating a student, the evaluator uses the description of the rubric dimensions to assign a numeric rating and/or a rating level for each element of the rubric.
+* _Elements_ represent the lowest level of criteria to be evaluated.
+* _Rubric dimensions_ represent the cells of a rubric associated with an element, consisting of a qualitative description, definition, or exemplar associated with each facet of the performance scale.
+* In evaluating a student, the evaluator uses the description of the rubric dimensions to assign a _numeric rating_ and/or a _rating level_ for each element of the rubric.
 * The rubric may be organized into one or more objectives hierarchically, aggregating elements to reflect higher levels of evaluation criteria.
 * For each student, the numeric ratings or performance level ratings of the elements are aggregated, by numeric rating and/or rating level, by objective.
 
-Note there is a difference between a student program evaluation (addressed in this domain) and a program evaluation:
+Note there is a difference between a _student program evaluation_ (addressed in this domain) and a _program evaluation_:
 
 * A student program evaluation appraises individual students according to criteria appropriate for the use of the instrument.
 * A program evaluation is a measure of success of the program according to program-level criteria.
-It is also important to note the differences between a student program evaluation and an assessment. While both are evaluative of students’ performance and share some structural similarities, there are specific distinctions between the two.
+
+It is also important to note the differences between _a student program evaluation_ and _an assessment_. While both are evaluative of students’ performance and share some structural similarities, there are specific distinctions between the two.
+
 * Assessments are typically quantitatively scored where student program evaluations are qualitatively judged by an evaluator following the criteria in a rubric.
 * Assessments may be associated with a school, grade level, academic subject, section or program.  Student program evaluations are only administered in the context of a program.
+
 The Program Evaluation domain has the following entities:
-* ProgramEvaluation: An evaluation instrument applied to evaluate a student in the context of a program. Student evaluations are typically applied by a staff member based upon a rubric.
-* ProgramEvaluationObjective: A sub component of a ProgramEvaluation, a specific student objective or domain of performance that is being evaluated.
-* ProgramEvaluationElement: The lowest level elements or criterion of a students' performance that is being evaluated, typically by a rubric.
-* EvaluationRubricDimension: The cells of a rubric, consisting of a qualitative description, definition, or exemplar with the associated rubric evaluation level.
-* StudentProgramEvaluation: The evaluation results for a student as evaluated in the context of a program.
+
+**ProgramEvaluation:** An evaluation instrument applied to evaluate a student in the context of a program. Student evaluations are typically applied by a staff member based upon a rubric.
+
+* **ProgramEvaluationObjective:** A sub component of a ProgramEvaluation, a specific student objective or domain of performance that is being evaluated.
+* **ProgramEvaluationElement:** The lowest level elements or criterion of a students' performance that is being evaluated, typically by a rubric.
+* **EvaluationRubricDimension:** The cells of a rubric, consisting of a qualitative description, definition, or exemplar with the associated rubric evaluation level.
+* **StudentProgramEvaluation:** The evaluation results for a student as evaluated in the context of a program.
 Additional details about the Student Program Evaluation domain can be found in [ED-FI WORKING DRAFT 12.](https://edfi.atlassian.net/wiki/display/EFDSDRAFT/ED-FI+WORKING+DRAFT+12+-+STUDENT+PROGRAM+EVALUATION+DOMAIN+MODEL)
 
 ## Student Program Evaluation Process Use Cases
 
 The various use cases associated with student program evaluation process span several Ed-Fi domains as shown below.
 
-| Primary Use Cases | Ed-Fi Entities |
-| ----- | ---- |
-|Prior or upon enrollment in program, a student is evaluated for readiness or eligibility. <br/> Upon entry into a program, the level of performance of the student is appraised to determine the placement of the student or the services to be provided. <br/> Relevant qualities or traits of the student are evaluated to inform the program as to how best support the student. <br/> The student’s achievement is evaluated at a point in time to measure the program’s impact. <br/> * The student’s achievement is evaluated at multiple points in time to measure the student’s improvement or growth. | The metadata defining the student program evaluation is defined using the entities: <br/> ProgramEvaluation <br/> ProgramEvaluationObjective <br/> ProgramEvaluationElement <br/> EvaluationRubricDimension <br/> The results of the student program evaluation are captured in the following entity: <br/> StudentProgramEvaluation |
+<table>
+  <thead>
+    <tr>
+      <th>Primary Use Cases</th>
+      <th>Ed-Fi Entities</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <ul>
+          <li>Prior or upon enrollment in program, a student is evaluated for readiness or eligibility.</li>
+          <li>Upon entry into a program, the level of performance of the student is appraised to determine the placement of the student or the services to be provided.</li>
+          <li>Relevant qualities or traits of the student are evaluated to inform the program as to how best support the student.</li>
+          <li>The student’s achievement is evaluated at a point in time to measure the program’s impact.</li>
+          <li>The student’s achievement is evaluated at multiple points in time to measure the student’s improvement or growth.</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>The metadata defining the student program evaluation is defined using the entities:</li>
+          <ul>
+            <li>ProgramEvaluation</li>
+            <li>ProgramEvaluationObjective</li>
+            <li>ProgramEvaluationElement</li>
+            <li>EvaluationRubricDimension</li>
+          </ul>
+          <li>The results of the student program evaluation are captured in the following entity:</li>
+          <ul>
+            <li>StudentProgramEvaluation</li>
+          </ul>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 ## Ed-Fi Prerequisites for Writing Student Program Evaluation Domain Entities
 
@@ -49,24 +87,24 @@ The Student Program Evaluation domain has dependencies on other data that should
 * Yearly API/ODS setup. The best practice convention has a separate API/ODS for each school year. This means that Student Program Evaluations must be written for each school year.
 
 * Descriptor values need to be loaded. The Student Program Evaluation domain has dependency on the following sets of descriptors.
-* ProgramEvaluation
-  * ProgramEvaluationType
-  * ProgramEvaluationPeriod
-  * ProgramEvaluationLevel.RatingLevel
-* ProgramEvaluationObjective
-  * ObjectiveProgramEvaluationLevel.RatingLevel
-* ProgramEvaluationElement
-  * ElementProgramEvaluationLevel.RatingLevel
-* EvaluationRubricDimension
-  * EvaluationRubricRatingLevel
-* StudentProgramEvaluation
-  * SummaryEvaluationRatingLevel
-  * EvaluationObjectiveRatingLevel
-  * EvaluationElementRatingLevel
-* EducationOrganizations, minimally Schools and LocalEducationAgency(s), need to be created for the scope of the ODS.
-* Programs need to be loaded that are associated with the ProgramEvaluations.
-* Student records need to be written prior to being referenced in a StudentProgramEvaluation.
-* Depending on policy, a StudentSchoolAssociation (SSA) may be required prior to a StudentProgramEvaluation.
+  * ProgramEvaluation
+    * ProgramEvaluationType
+    * ProgramEvaluationPeriod
+    * ProgramEvaluationLevel.RatingLevel
+  * ProgramEvaluationObjective
+    * ObjectiveProgramEvaluationLevel.RatingLevel
+  * ProgramEvaluationElement
+    * ElementProgramEvaluationLevel.RatingLevel
+  * EvaluationRubricDimension
+    * EvaluationRubricRatingLevel
+  * StudentProgramEvaluation
+    * SummaryEvaluationRatingLevel
+    * EvaluationObjectiveRatingLevel
+    * EvaluationElementRatingLevel
+  * EducationOrganizations, minimally Schools and LocalEducationAgency(s), need to be created for the scope of the ODS.
+  * Programs need to be loaded that are associated with the ProgramEvaluations.
+  * Student records need to be written prior to being referenced in a StudentProgramEvaluation.
+  * Depending on policy, a StudentSchoolAssociation (SSA) may be required prior to a StudentProgramEvaluation.
 
 ## Alternative Patterns for the Student Program Evaluation Domain
 
@@ -100,7 +138,8 @@ The following best practices are organized below by entity in the Student Progra
 
 The ProgramEvaluation entity reflects the instrument applied to evaluate a student in the context of a program. Student evaluations are typically applied by a staff member based upon an evaluation rubric. The following table summarizes the best practice use of the ProgramEvaluation attributes.
 
-Best Practice Use of ProgramEvaluation Attributes
+**Best Practice Use of ProgramEvaluation Attributes
+**
 
 | REQUIRED | MUST | RECOMMENDED | AS NEEDED|
 | -------  | -----| ----------- | ---------|
@@ -124,7 +163,8 @@ The EvaluationMaxNumericRating must be greater than the EvaluationMinNumericRati
 
 The ProgramEvaluationObjective entity reflects a sub component of a ProgramEvaluation, a specific student objective or domain of performance that is being evaluated. The following table summarizes the best practice use of the ProgramEvaluationObjective attributes.
 
-Best Practice Use of ProgramEvaluationObjective Attributes
+**Best Practice Use of ProgramEvaluationObjective Attributes
+**
 
 | REQUIRED | MUST | RECOMMENDED | AS NEEDED|
 | -------  | -----| ----------- | ---------|
@@ -133,14 +173,15 @@ Best Practice Use of ProgramEvaluationObjective Attributes
 Best practice business rules are shown below.
 
 :::warning
-The ObjectiveMaxNumericRating must be greater than the ObjectiveMinNumericRating.
+_The ObjectiveMaxNumericRating must be greater than the ObjectiveMinNumericRating._
 :::
 
 ### ProgramEvaluationElement
 
 The ProgramEvaluationElement entity is the lowest level elements or criterion of a students' performance that is being evaluated, typically by a rubric. The following table summarizes the best practice use of the ProgramEvaluationElement attributes.
 
-Best Practice Use of ProgramEvaluationElement Attributes
+**Best Practice Use of ProgramEvaluationElement Attributes
+**
 
 | REQUIRED | MUST | RECOMMENDED | AS NEEDED|
 | -------  | -----| ----------- | ---------|
@@ -149,14 +190,15 @@ Best Practice Use of ProgramEvaluationElement Attributes
 Best practice business rules are shown below.
 
 :::warning
-The ElementMaxNumericRating must be greater than the ElementMinNumericRating.
+_The ElementMaxNumericRating must be greater than the ElementMinNumericRating._
 :::
 
 ### EvaluationRubricDimension
 
 The EvaluationRubricDimension entity reflects the cells of a rubric, consisting of a qualitative description, definition, or exemplar with the associated rubric evaluation level. The following table summarizes the best practice use of the EvaluationRubric attributes.
 
-Best Practice Use of EvaluationRubricDimension Attributes
+**Best Practice Use of EvaluationRubricDimension Attributes
+**
 
 | REQUIRED | MUST | RECOMMENDED | AS NEEDED|
 | -------  | -----| ----------- | ---------|
@@ -165,14 +207,15 @@ Best Practice Use of EvaluationRubricDimension Attributes
 Best practice business rules are shown below.
 
 :::warning
-For each ProgramEvaluationElement, two or more EvaluationRubricDimensions must be defined.
+_For each ProgramEvaluationElement, two or more EvaluationRubricDimensions must be defined._
 :::
 
 ### StudentProgramEvaluation
 
 The StudentProgramEvaluation entity captures the evaluation results for a student as evaluated in the context of a program. The following table summarizes the best practice use of the StudentProgramEvaluation attributes.
 
-Best Practice Use of StudentProgramEvaluation Attributes
+**Best Practice Use of StudentProgramEvaluation Attributes
+**
 
 | REQUIRED | MUST | RECOMMENDED | AS NEEDED|
 | -------  | -----| ----------- | ---------|
@@ -181,9 +224,9 @@ Best Practice Use of StudentProgramEvaluation Attributes
 Best practice business rules are shown below.
 
 :::warning
-The StudentProgramEvaluation.SummaryEvaluationNumericRating must be greater than or equal to the associated ProgramEvaluation.EvaluationMinNumericRating and less than or equal to the ProgramEvaluation.EvaluationMaxNumericRating.
+_The StudentProgramEvaluation.SummaryEvaluationNumericRating must be greater than or equal to the associated ProgramEvaluation.EvaluationMinNumericRating and less than or equal to the ProgramEvaluation.EvaluationMaxNumericRating._
 
-The StudentProgramEvaluation.StudentEvaluationObjective. EvaluationObjectiveNumericRating must be greater than or equal to the associated ProgramEvaluationObjective.ObjectiveMinNumericRating and less than or equal to the ProgramEvaluationObjective.ObjectiveMaxNumericRating.
+_The StudentProgramEvaluation.StudentEvaluationObjective. EvaluationObjectiveNumericRating must be greater than or equal to the associated ProgramEvaluationObjective.ObjectiveMinNumericRating and less than or equal to the ProgramEvaluationObjective.ObjectiveMaxNumericRating._
 
-The StudentProgramEvaluation.StudentEvaluationElement. EvaluationElementNumericRating must be greater than or equal to the associated ProgramEvaluationElement.ElementMinNumericRating and less than or equal to the ProgramEvaluationElement.ElementMaxNumericRating.
+_The StudentProgramEvaluation.StudentEvaluationElement. EvaluationElementNumericRating must be greater than or equal to the associated ProgramEvaluationElement.ElementMinNumericRating and less than or equal to the ProgramEvaluationElement.ElementMaxNumericRating._
 :::
