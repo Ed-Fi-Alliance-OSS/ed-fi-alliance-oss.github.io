@@ -290,7 +290,7 @@ CREATE TABLE adminapi.Authorizations (
     Properties VARCHAR NULL,
     CreationDate TIMESTAMP NULL,
     CONSTRAINT PK_Authorizations PRIMARY KEY (Id),
-    CONSTRAINT FK_AuthorizationsId_ApplicationId FOREIGN KEY ApplicationId) REFERENCES adminapi.Applications (Id) ON DELETE RESTRICT
+    CONSTRAINT FK_AuthorizationsId_ApplicationId FOREIGN KEY (ApplicationId) REFERENCES adminapi.Applications (Id) ON DELETE RESTRICT
 );
 
 CREATE TABLE adminapi.Tokens (
