@@ -28,6 +28,15 @@ The connection strings for the `EdFi_Admin` and `EdFi_Security` databases are
 configured differently depending on whether the MultiTenancy feature is enabled
 or disabled.
 
+:::info
+
+As an alternative to the _appsettings.json_ file, connection strings may be
+stored in an external secure parameter store. For more information, see
+[External Configuration of ODS Connection
+Strings](./external-configuration-of-ods-connection-strings.md).
+
+:::
+
 ### Single-Tenant Configuration
 
 In a single-tenant configuration (the default), the connection strings are
@@ -69,8 +78,13 @@ connection strings specific to Tenant1 are configured in `EdFi_Admin_Tenant1`
 database and ODS connection strings specific to Tenant2 are configured in
 `EdFi_Admin_Tenant2` database.
 
-For more details on configuring ODS connections, refer to [API Client and ODS
-Instance Configuration](./api-client-and-ods-instance-configuration.md).
-Additionally, connection strings can be stored in an external secure parameter
-store. For more information, see [External Configuration of ODS Connection
-Strings](./single-and-multi-tenant-configuration.md).
+## ODS Connection Strings
+
+ODS instances, API clients, and their associations are all managed within the
+Admin database(s) as described in [API Client and ODS Instance
+Configuration](./api-client-and-ods-instance-configuration.md). ODS instances
+can be configured by database administrators via SQL queries as outlined in the
+article [How To: Configure ODS
+Instances](../../how-to-guides/how-to-configure-ods-instances.md). API keys and
+secrets can be administered via SQL queries as described in the article [How
+To:Configure Key / Secret](../../how-to-guides/how-to-configure-key-secret.md).
