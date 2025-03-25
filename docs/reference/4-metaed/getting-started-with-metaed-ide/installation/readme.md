@@ -1,6 +1,6 @@
 # Getting Started - Installation
 
-The MetaEd IDE installation steps are fairly straightforward. It's worth noting
+The MetaEd IDE installation is straightforward. It's worth noting
 that the MetaEd IDE is a plug-in to the free, open source Visual Studio Code
 text editor. The installation steps below walk you through a complete install.
 
@@ -19,12 +19,13 @@ Hub](https://community.ed-fi.org) and provide details of the issue.
 ## Step 1. Download and Install Visual Studio Code
 
 Download and install [Visual Studio Code](https://code.visualstudio.com/), which
-is available for Windows, Linux, and MacOS
+is available for Windows, Linux, and macOS.
 
 :::warning
 
-The Ed-Fi development team does not have the resources to test
-MetaEd on an Apple device. In theory, it _should_ work.
+The Ed-Fi development team tests MetaEd on Windows devices. Because VS Code is
+multi-platform, the application _should_ work on other platforms, but we may
+not be able to validate or debug issues that arise in Linux and macOS.
 
 :::
 
@@ -44,13 +45,22 @@ notification that  "MetaEd has started".
 
 ## Step 4. Configure Settings
 
-Open the settings from the `File > Preferences > Settings`  menu.  [MetaEd IDE -
+Open the settings from the `File > Preferences > Settings`  menu. [MetaEd IDE -
 Creating and Maintaining Your Extension (X)](#) provides more detail on the
 settings, most of which depend on your project needs. Most importantly, please
 be sure to accept the [Ed-Fi License Agreement for Use of
-MetaEd](./ed-fi-license-agreement-for-use-of-metaed.md),
+the Ed-Fi Unifying Data Model](./ed-fi-license-agreement.md),
 as shown in the screenshot below.
 
 ![MetaEd Settings](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/accept-license.png)
 
 That's it! You can now start using MetaEd in Visual Studio Code.
+
+:::tip
+
+Beginning in March, 2025, the MetaEd source code uses the Apache License,
+version 2.0, like the other Ed-fi applications. However, the [Unifying Data
+Model](../../../1-data-exchange/udm/readme.md) files continue to be provided
+through MetaEd under terms of the Ed-Fi License Agreement.
+
+:::

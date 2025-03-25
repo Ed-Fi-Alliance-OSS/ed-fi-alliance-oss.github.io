@@ -579,7 +579,7 @@ between versions. Should be an unsigned integer, surround by square brackets ([
 
 MetaEdIds are used by the Alliance. They're not required for Extension projects
 but can be used. Note, however, that the Alliance currently has no formal
-assignment of IDs or ID ranges for licensees, so implementers using IDs for
+assignment of IDs or ID ranges for users, so implementers using IDs for
 Extensions should be aware that the IDs may need to change in the future.
 
 ```metaed
