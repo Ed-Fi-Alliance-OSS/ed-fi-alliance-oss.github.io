@@ -14,9 +14,6 @@ pre-loaded:
 * **Bootstrap Descriptors and EdOrgs** - Provides Create only permissions for
     Descriptor and Education Organization data, intended for loading set up data
     by Administration Level users.
-* **Ed-Fi ODS Admin App** - Used by the Admin App/Admin API and has CRUD
-    permissions on the Descriptor and Education Organization resources, intended
-    for loading set up data by Administration Level users.
 * **Ed-Fi Sandbox** - For Administration Level users. This allows the highest
     level of access and allows for CRUD permissions on all resources.  Not
     intended for Vendor access (API hosts can use it for setup, e.g. loading

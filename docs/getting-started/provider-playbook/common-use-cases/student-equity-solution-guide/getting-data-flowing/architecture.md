@@ -1,13 +1,13 @@
 ---
-description: Describes the various parts of the starter kit, including the role your application plays.
+description: Describes the various parts of the Dashboard, including the role your application plays.
 sidebar_position: 1
 ---
 
 # Architecture
 
-The overall architecture of the Student Equity Starter Kit is as follows:
+The overall architecture of the Student Equity Dashboard is as follows:
 
-![Student Equity Starter Kit Architecture](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/student-equity-solution-guide/figure1.png)
+![Student Equity Dashboard Architecture](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/student-equity-solution-guide/figure1.png)
 
 In this document, we focus on the boxes to the left: the student information system and student assessment data flowing from providers applications to the Ed-Fi ODS Platform, over HTTP/S and via the Ed-Fi REST Application Programming Interface (API).
 

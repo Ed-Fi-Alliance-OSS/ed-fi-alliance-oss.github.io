@@ -10,7 +10,7 @@ Detail on each step follows.
 
 1. Open Visual Studio Code
 2. If you haven't
-    already [installed](https://edfi.atlassian.net/wiki/display/METAED20/Getting+Started+-+Installation) the
+    already [installed](../getting-started-with-metaed-ide/readme.md) the
     MetaEd extension, please do so now.
 
 :::tip
@@ -117,15 +117,17 @@ Simply add one or more folders with the "Add Folder to Workspace..." command.
     these and only use the Workspace tab. This tab is only available if you
     have already added a folder to your workspace (step 2b).
 
+    This tab will only be available if you have already open a folder, as in
+    step 2.
+
     :::
 
 3. Expand `Extensions > MetaEd`  or type "metaed" in the search bar to scroll to
     the available settings.
 4. Available settings:
-    1. **Accepted License:** Usage of the MetaEd IDE requires acceptance of the
-        [Ed-Fi License
-        agreement](https://www.ed-fi.org/getting-started/license-ed-fi-technology).
-        Check the box to accept the license terms.
+    1. **Accepted License:** Usage of the Ed-Fi Unifying Data Model requires acceptance of the
+        [Ed-Fi License agreement](../../4-metaed/getting-started-with-metaed-ide/installation/ed-fi-license-agreement.md).
+        Check the box to accept the license terms. <!-- https://www.ed-fi.org/getting-started/license-ed-fi-technology -->
     2. **Target Ods Api Version**: The target Ed-Fi ODS/API version.
 
         :::tip

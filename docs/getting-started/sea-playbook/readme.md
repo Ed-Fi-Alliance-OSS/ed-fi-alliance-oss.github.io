@@ -4,7 +4,9 @@ sidebar_position: 1
 
 # State Education Agencies - Implementation Playbook
 
-## Download the Playbook
+![SEA playbook cover image](/img/sea-playbook.jpg)
+
+## About the Playbook
 
 Welcome to the Ed-Fi State Education Agencies (SEAs) - Implementation Playbook ("SEA Playbook").
 
@@ -12,8 +14,10 @@ The intended audience for the SEA Playbook is leadership of state data efforts. 
 
 The Playbook is published in both a PowerPoint and PDF format. A PowerPoint format is provided as we encourage state leadership to adapt this content for use with their own teams.
 
-* PowerPoint Version: [SEA Ed-Fi Overview and Implementation Playbook.pptx](https://edfi.atlassian.net/wiki/download/attachments/22905309/SEA%20Ed-Fi%20Overview%20and%20Implementation%20Playbook.pptx?version=3&modificationDate=1709246225953&cacheVersion=1&api=v2)
-* PDF Version: [SEA Ed-Fi Overview and Implementation Playbook.pdf](https://edfi.atlassian.net/wiki/download/attachments/22905309/SEA%20Ed-Fi%20Overview%20and%20Implementation%20Playbook.pdf?version=3&modificationDate=1709246241320&cacheVersion=1&api=v2)
+### Download the Playbook
+
+* PowerPoint Version: [SEA Ed-Fi Overview and Implementation Playbook.pptx](https://edfi.atlassian.net/wiki/download/attachments/22905309/SEA%20Ed-Fi%20Overview%20and%20Implementation%20Playbook.pptx?api=v2)
+* PDF Version: [SEA Ed-Fi Overview and Implementation Playbook.pdf](https://edfi.atlassian.net/wiki/download/attachments/22905309/SEA%20Ed-Fi%20Overview%20and%20Implementation%20Playbook.pdf?api=v2)
 
 ## Ed-Fi Academy Content
 

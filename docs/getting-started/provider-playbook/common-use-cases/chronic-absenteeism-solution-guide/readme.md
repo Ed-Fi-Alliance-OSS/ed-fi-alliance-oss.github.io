@@ -11,7 +11,7 @@ and [Addressing Chronic Absenteeism](https://www.ed-fi.org/how-to-use-ed-fi/sch
 
 This Solution Guide helps Student Information
 System vendors take the necessary steps to provide districts with the data
-needed to dashboards and reports on chronic absenteeism.  
+needed to dashboards and reports on chronic absenteeism.
 
 Vendor support for chronic absenteeism encompasses the following steps:
 
@@ -24,19 +24,19 @@ Vendor support for chronic absenteeism encompasses the following steps:
 * **Test.** To fully realize the benefits of the Chronic Absenteeism Starter
     Kit, and ensure your solution is field ready, we recommend selecting and
     working with an existing district customer to test your integration in a
-    live, Ed-Fi implementation of the starter kit. Securing a district customer
-    will allow you a reference point for future adoptees of this starter kit.
+    live, Ed-Fi implementation of the Dashboard. Securing a district customer
+    will allow you a reference point for future adoptees of this Dashboard.
     Working with a local district agency is not required but it is strongly
     recommended.
 * **Certify.** For vendor organizations that have completed integration with
-    the starter kit using the vendor developer guide, apply for the API Domain
+    the Dashboard using the vendor developer guide, apply for the API Domain
     Certification so you may be listed as a [badged partner](/partners/badging/).
 
 ## Let's Get Started
 
 This developer guide describes the processes for a Student Information System to
 develop the functionality in their platform to provide data to an Ed-Fi API to
-power the Chronic Absenteeism Starter Kit.
+power the Chronic Absenteeism Dashboard.
 
 ![Chronic Absenteeism Vendor Developer Guide](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/chronic-absenteeism-solution-guide/image2021-7-26_15-42-40.png)
 
@@ -60,7 +60,7 @@ larger amounts of data.
 
 This section provides information on tools and best practices to assist in your
 development and in the long-term maintenance and health of supporting
-organizations using the Chronic Absenteeism Starter Kit.
+organizations using the Chronic Absenteeism Dashboard.
 
 ### Next Steps
 

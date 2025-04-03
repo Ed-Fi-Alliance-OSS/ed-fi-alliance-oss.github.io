@@ -9,9 +9,8 @@ following issues:
 
 If you're having trouble with the MetaEd IDE, a good place to start is ensuring
 you have the latest version. If you're having issues, you may want to skim the
-[What's
-New](https://edfi.atlassian.net/wiki/spaces/METAED20/pages/23707618) section of
-this documentation to see if the problem you're experiencing is mentioned.
+[MetaEd Release Notes](../releases/readme.mdx) to see if the problem you're
+experiencing is mentioned.
 
 Typically, VS Code will auto-update the MetaEd IDE from time to time, as new
 versions are available. To check on the status, you can open the Extensions
@@ -219,9 +218,9 @@ There are two possible explanations:
     `Ed-Fi-ODS-Implementation/Application`. The output panel will show a message
     like this in such a case: ![Output](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/project-not-found.png)
 
-  * Reference: [How To: Extend the Ed-Fi ODS / API - Student Transportation
-    Example - Step 4. Create Extension Project in ODS/API
-    Solution](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V61/pages/18811954#HowTo:ExtendtheEd-FiODS/API-StudentTransportationExample-Step4.CreateExtensionProjectinODS/APISolution).
+  * Reference: [How To: Extend the Ed-Fi ODS / API - Alternative Education
+    Program Example - Step 4. Create Extension Project in ODS/API
+    Solution](/reference/ods-api/how-to-guides/how-to-extend-the-ed-fi-ods-api-alternative-education-program-example#step-4-create-extension-project-in-ods--api-solution).
 
 ### I ran a successful build, but re-running the build now results in an "Unable to delete output directory..." error
 

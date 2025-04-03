@@ -28,6 +28,9 @@ yilmaz:
   url: https://www.ed-fi.org/success-stories/category/mustafa-yilmaz/
   image_url: https://www.ed-fi.org/assets/2022/08/Mustafa-Yilmaz-July-2022-Headshot-768x768.png
   page: true
+  socials:
+    linkedin: mustafayilmaz4data
+    github: mreddata
 
 hunter:
   name: Robert Hunter, Jr

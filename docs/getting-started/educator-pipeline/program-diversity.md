@@ -5,7 +5,7 @@ examination of blockers that occur during the teacher pipeline.
 
 To demonstrate the potential of the Ed-Fi Data Standard's _educator preparation
 data model_ (EPDM), a [sample PowerBI
-dashboard](https://github.com/Ed-Fi-Exchange-OSS/EPP-PowerBI-Report-Starter-Kit)
+dashboard](https://github.com/Ed-Fi-Exchange-OSS/Educator-Pipeline-Dashboards)
 providing three visualizations: Candidate Summary, Program Completion Rate by
 Race, Certification Rate by Race.
 
@@ -132,6 +132,6 @@ _[larger version](https://edfidocs.blob.core.windows.net/$web/img/getting-starte
 
 :::tip
 
-For implementation guidance, see the [Program Diversity and Persistence Starter Kit](/reference/educator-pipeline/program-diversity/) reference documentation.
+For implementation guidance, see the [Program Diversity and Persistence Dashboard](/reference/educator-pipeline/program-diversity/) reference documentation.
 
 :::

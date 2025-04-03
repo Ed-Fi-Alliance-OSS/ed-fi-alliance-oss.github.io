@@ -28,6 +28,21 @@ const odsApi = [
   },
 ];
 
+const dataStandard = [
+  {
+    path: '/reference/data-exchange/data-standard/',
+    number: '5',
+  },
+  {
+    path: '/reference/data-exchange/data-standard/4/',
+    number: '4',
+  },
+  {
+    path: '/reference/data-exchange/data-standard/3/',
+    number: '3',
+  },
+];
+
 function VersionDropDown(product, versions) {
   return (
     <div className="dropdown dropdown--hoverable margin-top--md margin-left--md">
@@ -51,14 +66,21 @@ function OdsApiDropDown() {
   return VersionDropDown('ODS/API', odsApi);
 }
 
+function DataStandardDropDown() {
+  return VersionDropDown('Data Standard', dataStandard);
+}
+
 function SideBarVersionDropDown() {
   const { pathname } = useLocation();
   if (pathname.includes('/ods-api/')) {
     return OdsApiDropDown();
+  }
+  else if (pathname.includes('/data-standard/')) {
+    return DataStandardDropDown();
   }
   else {
     return '';
   }
 }
 
-export { VersionDropDown, OdsApiDropDown, SideBarVersionDropDown };
+export { VersionDropDown, OdsApiDropDown, SideBarVersionDropDown, DataStandardDropDown };

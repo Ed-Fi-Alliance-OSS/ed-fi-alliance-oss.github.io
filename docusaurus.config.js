@@ -138,11 +138,24 @@ const config = {
         routeBasePath: 'reference/data-exchange/data-standard',
         sidebarPath: './sidebars.js',
         includeCurrentVersion: false,
+        lastVersion: '5',
         versions: {
           5: { banner: 'none', badge: true },
-        }
+          4: {
+            banner: 'none',
+            badge: true,
+            path: '4',
+            className: 'active',
+          },
+          3: {
+            banner: 'none',
+            badge: true,
+            path: '3',
+            className: 'active',
+          },
+        },
       },
-    ]
+    ],
   ],
 
   themeConfig:
@@ -239,7 +252,7 @@ const config = {
                 position: 'right',
               },
               {
-                href: 'https://exchange.ed-fi.org/',
+                href: '/getting-started/edfi-exchange/',
                 label: 'Exchange',
                 position: 'right',
               },
@@ -270,6 +283,14 @@ const config = {
           hideable: true,
         },
       },
+      announcementBar: {
+        id: 'whats_new',
+        content:
+        `👉<b><a href='/blog/2024/12/18/'>Check Out Ed-Fi's Latest Releases!</a>👈 Introducing DS 5.2, ODS/API 7.3 and MetaEd 4.5!</b>🎉️🎉️🎉️`,
+        backgroundColor: '#eaebec',
+        textColor: '#091E42',
+        isCloseable: true,
+      }
     }),
   headTags: [
     {

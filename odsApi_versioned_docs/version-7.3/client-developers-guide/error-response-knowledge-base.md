@@ -1654,7 +1654,7 @@ for resolution.
 * Is the correct namespace being transmitted? If that is correct, then it could
   be a credential access problem → send the client key to the hosting provider /
   IT operations:
-* Using a tool like Admin API or Admin App, confirm that the key is configured
+* Using a tool like Admin API, confirm that the key is configured
   for access to the intended namespace.
 * Using
   [Tokeninfo](./../client-developers-guide/authorization.md#token-info)
@@ -1923,7 +1923,7 @@ team check first:
   otherwise legitimate `schoolId` 's that they should not be able to access. If
 * That is correct, then it could be a credential access problem → send the
   client key to the hosting provider / IT operations:
-  * Using a tool like Admin API or Admin App, confirm that the key is
+  * Using a tool like Admin API, confirm that the key is
     configured for access to the given school or education organization.
 * Using [Tokeninfo](./authorization.md#token-info) endpoint, confirm that the
   key is configured for access to the given school or education organization.

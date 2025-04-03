@@ -1,10 +1,8 @@
 # Architecture
 
-The overall architecture of the Assessment Starter Kit is as follows:
+The overall architecture of the Assessment Dashboard is as follows:
 
-<!-- ![](https://edfi.atlassian.net/wiki/plugins/servlet/confluence/placeholder/unknown-macro?name=inc-drawio&locale=en_US&version=2) -->
-
-<!-- Image Lost -->
+![Solution guide architecture diagram](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/assessment-solution-guide/assessment-solution-guide-architecture.webp)
 
 In this document, we focus on the boxes to the left: the student information
 system and student assessment data flowing from providers applications to the
