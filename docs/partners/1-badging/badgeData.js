@@ -39,7 +39,7 @@ export default {
       ],
       availability: 'Available to any agency (all sizes) in the U.S.',
     },
-    {
+   /* {
       logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/k12-analytics.png',
       productName: 'K12Analytics',
       provider: 'K12Analytics Engineering',
@@ -50,6 +50,7 @@ export default {
       versionCompatibility: ['Ed-Fi ODS API for Suite 3 v3.1.1'],
       availability: 'Available to any agency (all sizes) in the U.S.',
     },
+    */
     {
       logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/esp-group.jpg',
       productName: 'ESP Solutions Group',
@@ -88,6 +89,18 @@ export default {
       productInformation: 'https://www.classlink.com/products',
       validThrough: 'September 12, 2025',
       verifyingAgencies: ['Clay County', 'Ennis ISD'],
+      versionCompatibility: ['Ed-Fi ODS / API for Suite 3 v6.1'],
+      availability: 'Available to any agency (all sizes) in the U.S.',
+    },
+
+    {
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/Authentica-Logo-Full-Color-Vertical-FINAL-01-00.png',
+      productName: 'Authentica Seed',
+      provider: 'Authentica Solutions',
+      website: 'https://authenticasolutions.com/ed-fi-alliance/',
+      productInformation: 'https://authenticasolutions.com/ed-fi-alliance/',
+      validThrough: 'April 3, 2027',
+      verifyingAgencies: ['Hayward Unified School District, CA'],
       versionCompatibility: ['Ed-Fi ODS / API for Suite 3 v6.1'],
       availability: 'Available to any agency (all sizes) in the U.S.',
     },
@@ -255,7 +268,7 @@ export default {
       productName: 'ClassLink Roster Server',
       provider: 'ClassLink Inc.',
       website: 'https://www.classlink.com/products/roster-server',
-      validThrough: 'July 26, 2023',
+      validThrough: 'July 26, 2026',
       verifyingAgencies: ['Delaware Department of Education'],
       versionCompatibility: [
         'Ed-Fi ODS/API for Suite 3 v3.1',
@@ -400,7 +413,7 @@ export default {
       productName: 'Xello',
       provider: 'Xello Inc.',
       website: 'https://xello.world/en/',
-      validThrough: '1/14/2027',
+      validThrough: 'January 14, 2027',
       verifyingAgencies: ['Michigan Data Hub'],
       documentation: {'Mapping Document':'https://edfi.atlassian.net/wiki/download/attachments/23692586/Xello%20required%20Ed-Fi%20API%20Data%20Elements.xlsx?api=v2',
       },
@@ -412,7 +425,7 @@ export default {
       productName: 'CourseFlow, Inc',
       provider: 'Nexus',
       website: 'https://www.asknexus.ai',
-      validThrough: '2/4/2027',
+      validThrough: 'February 4, 2027',
       verifyingAgencies: ['School District of Janesville, WI'],
       documentation: {'Mapping Document':'https://edfidocs.blob.core.windows.net/$web/assets/partners/badging/nexus-cons-badge/Ed-Fi%20Mapping%20Nexus.xlsx',
       },
