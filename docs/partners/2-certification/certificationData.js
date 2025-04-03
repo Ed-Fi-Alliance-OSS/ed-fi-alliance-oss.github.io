@@ -104,7 +104,7 @@ export default {
       productName: 'Focus School Software',
       logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/Focus_logo.png',
       website: 'https://focusschoolsoftware.com/',
-      validThrough: 'June 22, 2024',
+      validThrough: 'April 3, 2026',
       verifyingAgencies: ['Richardson ISD, TX'],
       versionCompatibility: 'Conformance testing met with version 11 and 12',
       availability: 'Available to any agency (all sizes) in the U.S.',
@@ -435,7 +435,7 @@ export default {
       productName: 'Focus School Software',
       logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/Focus_logo.png',
       website: 'https://focusschoolsoftware.com/',
-      validThrough: 'June 22, 2024',
+      validThrough: 'April 3, 2026',
       verifyingAgencies: [
         'Bradford County Schools, FL',
         'Columbia County Schools, FL',
@@ -559,7 +559,8 @@ export default {
 
   ],
   assessmentOutcomesSuite3: [
-    {
+ /* Istation is no longer a valid certification in the registry, but it is retained here for historical purposes.
+ {
       productName: 'Istation ISIP (Indicators of Progress)',
       logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/Istation_logo.png',
       website: 'https://www.istation.com/isip-assessment',
@@ -588,6 +589,7 @@ export default {
         },
       ],
     },
+    */
     {
       productName: 'DnA',
       logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/Renaissance DnA.png',

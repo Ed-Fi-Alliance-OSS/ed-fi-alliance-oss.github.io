@@ -13,9 +13,10 @@ The following documentation must be received by the Ed-Fi Alliance prior to
 certification. Ed-Fi may ask for clarifications or changes in order to ensure
 clarity and uniformity.
 
-### 1. Product Availability Information
+### 1. Product Availability & Pricing Information
 
-  See [Requirements - Product Availability Information](/partners/certification/certification-for-data-providers/product-availability-information)
+See [Requirements - Product Availability Information](../../certification-for-data-providers/product-availability-information.md)
+See [Requirements - Pricing Statement](../../certification-for-data-providers/pricing-statement.md)
 
 ### 2. Initial Implementation Verification Information
 
