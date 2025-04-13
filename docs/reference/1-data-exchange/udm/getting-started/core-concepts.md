@@ -69,6 +69,15 @@ information, such as entity keys. The Data Handbook also repeats various
 information from the UML notation, such as entity attributes and model
 structure.
 
+:::tip
+
+Each version of the Ed-Fi Data Standard has its own Data Handbook, which you
+can find from the [version-specific pages](../../data-standards.md). Once you
+click on the documentation for a specific Data Standard, look for "Handbook"
+in the left-side navigation.
+
+:::
+
 ### Naming Conventions
 
 The following naming conventions are used for the Ed-Fi Data Standard, and are
