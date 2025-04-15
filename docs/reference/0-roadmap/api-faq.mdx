@@ -1,13 +1,12 @@
 # Ed-Fi ODS/API and Data Management Service FAQ
-
-The Ed-Fi blog post [New Cloud-Native Functionality Coming to the Ed-Fi Alliance
-Technology Suite](https://www.ed-fi.org/blog/cloud-native-ed-fi-technology/)
-introduced a piece of software under active development, the [Ed-Fi Data
-Management
-Service](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service) (DMS).
-Eventually, this software will replace the Ed-Fi ODS/API Platform.
-Unsurprisingly, a few themes emerged in the questions and conversations at Ed-Fi
-Tech Congress 2024. We will try to address some of the most common below.
+The Ed-Fi Alliance is actively developing the [Ed-Fi Data Management
+Service]((https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service)) (DMS)
+to enhance data integration and management capabilities for educational
+agencies. Designed to be robust and flexible, the DMS will address the evolving
+needs of the Ed-Fi Community. The Ed-Fi Alliance plans to fully replace the
+current ODS/API Platform with the DMS by the 2028–2029 school year. In the
+meantime, the Alliance remains committed to supporting the ODS/API Platform
+through the 2027–2028 school year.
 
 ## Q: What does the future look like for the legacy ODS/API Platform?
 
@@ -35,8 +34,8 @@ school year 2027-2028.
   </div>
   <div class="row col--tr">
       <div class="col col--2 col--td">ODS/API 7.x</div>
-      <div class="col col--8 col--td" style={{backgroundColor: "var(--ifm-color-info-lightest)"}}>active</div>
-      <div class="col col--2 col--td">&nbsp;</div>
+      <div class="col col--7 col--td" style={{backgroundColor: "var(--ifm-color-info-lightest)"}}>active</div>
+      <div class="col col--3 col--td">&nbsp;</div>
   </div>
   <div class="row col--tr-alt">
       <div class="col col--2 col--td">DMS</div>
@@ -48,21 +47,16 @@ school year 2027-2028.
 
 As shown in the table above:
 
-* Ed-Fi ODS/API Platform ("ODS/API") version 5.4, coming out in summer 2024,
-  will be supported for one more school year. The 5.x line of code was first
-  released in 2020, for the 2021-2022 school year. It supported Data Standard 3
-  (current: 3.3).
-* ODS/API 6.2, released February 2024, supports Data Standard 4.0. No further
-  feature enhancements are planned. It will be supported in production at least
-  through the 2025-2026 school year; this may be extended depending on community
-  adoption of the newer ODS/API 7.x releases.
-* ODS/API 7.2 was released in June 2024, and we plan to continue with biannual
-  feature enhancements (and bug fixes) for the next several years.
-
-  This version supports Data Standard 4 and Data Standard 5. It will be fully
-  supported at least through school year 2027-2028. Continued support for one
-  more year beyond this will be negotiable based on actual circumstances, if the
-  expense of maintaining it can be kept low.
+* ODS/API 5.4, released in summer 2024, will be supported for the school year
+  2024-2025. The 5.x series was first released in 2020, for the 2021-2022 school
+  year. It implements Data Standard 3 (current: 3.3).
+* ODS/API 6.2, released in February 2024, implements Data Standard 4.0. No
+  further feature enhancements are planned. It will be supported in production
+  at least through the 2025-2026 school year;
+* ODS/API 7.x will continue to receive annual feature enhancements (and bug
+  fixes) for the next several years. This version supports Data Standard 4 and
+  Data Standard 5. It will be fully supported at least through school year
+  2027-2028.
 
 "Support" means that the Ed-Fi Alliance will release updates as needed for
 critical bugs and security issues, and the most recent major version (e.g.
@@ -76,24 +70,19 @@ another stand-alone bug fix or patch release to 6.1.
 
 Goal timeline:
 
-1. _Preview release_ in September, in time for the Ed-Fi Summit 2024. The goal is
-   to have something people can use in basic scenarios, something functional and
-   performant enough to give feedback on core Ed-Fi API functionality.
-2. _Release candidate 1_ in spring 2025, with enough features to satisfy a typical
+1. _Release candidate_ in summer 2025, with enough features to satisfy a typical
    deployment for a Local Education Agency. :exclamation:Only recommended for
    those who are engaged with the Project Tanager Technical Workgroup.
-3. _Release candidate 2_ in fall 2025, with enough features to satisfy a typical
-   deployment for a State Education Agency.
-4. Potential _Release 1.0_ in spring 2026, available for production usage in
-   school year 2026-2027.
+2. _Release 1.0_ in fall 2025, available for production usage in school year
+   2026-2027.
 
 The first release candidate will be fully-compatible with the _must have_
 requirements described in the [Ed-Fi API Design and Implementation Guidelines,
-4.0](../1-data-exchange/api-guidelines/readme.md). The second release candidate
-will expand further into the _should have_ and _optional_ requirements and
-features. State Education Agencies (SEA) frequently have more detailed technical
-requirements for client authorization and for access to raw data for warehousing
-and reporting. Tentatively, those features will be given a longer timeline; this
+4.0](../1-data-exchange/api-guidelines/readme.md). The _release 1.0_ will expand
+further into the _should have_ and _optional_ requirements and features. State
+Education Agencies (SEA) frequently have more detailed technical requirements
+for client authorization and for access to raw data for warehousing and
+reporting. Tentatively, those features will be given a longer timeline; this
 will provide more opportunity for co-development with the SEA community.
 
 The final release will not have complete parity with the optional features in
@@ -106,11 +95,9 @@ features.
 timeline
     Fall 2024 : Preview
          : General Testing
-    Spring 2025 : Release Candidate 1
+    Summer 2025 : Release Candidate
          : Testing LEA context
-    Fall 2025 : Release Candidate 2
-         : Testing SEA context
-    Spring 2026 : 1.0
+    Fall 2025 : 1.0
          : Early adopters
 ```
 
@@ -118,7 +105,8 @@ timeline
 
 An example of an ODS/API feature that is _not_ planned for the Data Management
 Service: `link` elements in the `xyzReference` sections when retrieving a
-resource with a `GET` request. See [Deprecation of Links](../1-data-exchange/api-guidelines/design-and-implementation-guidelines/api-design-guidelines/rest-api-conventions/get-requests.md#deprecation-of-links)
+resource with a `GET` request. See [Deprecation of
+Links](../1-data-exchange/api-guidelines/design-and-implementation-guidelines/api-design-guidelines/rest-api-conventions/get-requests.md#deprecation-of-links)
 for more information.
 
 :::
@@ -135,8 +123,7 @@ such as the use of streaming events in Kafka. However, we recognize that many
 existing Ed-Fi installations have critical reporting and analytics systems that
 currently integrate directly with the ODS database. We are committed to working
 with the community to create a pathway that allows agencies to leverage their
-existing data integrations; for example, there is a proposal to build database
-views that look like the tables from the ODS database.
+existing data integrations.
 
 :::note
 
@@ -152,14 +139,21 @@ Management Service.
 
 Yes &mdash; if referring to the Admin API
 [specification](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-API-Standards/blob/main/api-specifications/admin-api/admin-api-2.2.0.yaml).
-No &mdash; if referring to the specific software application called "Admin API". The
-Data Management Service will have a different database system than the ODS/API,
-including restructuring of the data currently housed in the `EdFi_Admin` and
-`EdFi_Security` databases. The project will introduce a new application,
-tentatively called the Ed-Fi Configuration Service. The plan is to implement the
-Admin API specification (version 2), so that applications and scripts developed
-on this specification can interact seamlessly either with the platform of today
-or of tomorrow.
+No &mdash; if referring to the specific software application called "Admin API".
+The Data Management Service will have a different database system than the
+ODS/API, including restructuring of the data currently housed in the
+`EdFi_Admin` and `EdFi_Security` databases. The project will introduce a new
+application, tentatively called the Ed-Fi Configuration Service. The plan is to
+implement the Admin API specification (version 2), so that applications and
+scripts developed on this specification can interact seamlessly either with the
+platform of today or of tomorrow.
+
+## Q: How can I / my team prepare for the upgrade
+
+Start by identifying all direct ODS integrations in your environment (e.g. ETLs
+that load data from the ODS to a data warehouse. Data Validation procedures that
+run directly on ODS), Then, work with your Ed-Fi liaison to build a plan for
+transitioning ahead of the 2028–2029 school year.
 
 ## Q: How can I / my team get involved?
 
