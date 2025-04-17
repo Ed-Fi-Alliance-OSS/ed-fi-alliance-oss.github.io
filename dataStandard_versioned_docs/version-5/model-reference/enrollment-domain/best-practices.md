@@ -44,7 +44,7 @@ Ed-Fi domains as shown below.
 | - Assignment to a specific section for a course<br/> - Exit from a specific section<br/> - Transfer to another section of the same course | - Teaching and Learning |
 
 (*) Currently not supported in the core model. Applications are part of the
-Educator Preparation domain which is an extension created and shared by Ed-Fi
+Educator Preparation Data Model which is an extension created and shared by Ed-Fi
 Alliance. Data Standard v6 will include the EPDM (Educator Preparation Data Model).
 
 This article on the best practices relating the Enrollment domain has specific
