@@ -1,4 +1,4 @@
-# Program Diversity and Persistence
+# Program Diversity and Persistence Use Case
 
 Meaningfully increasing the diversity of the teacher workforce requires the
 examination of blockers that occur during the teacher pipeline.

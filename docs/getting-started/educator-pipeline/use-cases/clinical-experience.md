@@ -1,4 +1,4 @@
-# Clinical Experience Dashboard
+# Clinical Experience Use Case
 
 The shortage of teachers continues to grow, and when indicators of teacher
 quality are taken into account the shortage is even more dire than estimated.
