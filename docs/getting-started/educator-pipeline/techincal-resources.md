@@ -1,3 +1,6 @@
+---
+sidebar_position: 3
+---
 # EPDM Technical Resources
 
 This page contains Technical Resources for working with the EPDM.

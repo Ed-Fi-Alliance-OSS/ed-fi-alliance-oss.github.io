@@ -4,7 +4,7 @@ sidebar_position: 2
 hide_table_of_contents: true
 ---
 
-# Example EPDM Use Cases
+# Educator Pipeline Use Cases
 
 The table below contains a sample of the use cases that were used to define the EPDM/TPDM Extension set. [cite: 38]
 The sample use cases are organized by the educator preparation lifecycle: pre-program activities such as recruitment and selection, activities during the prep program such as program design and partner activities, and post-program activities such as observations and surveys.
