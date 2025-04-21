@@ -40,7 +40,7 @@ If you are upgrading from TPDM v1.0 (and not using starter kits), or are unsure,
 
 | Installing EPDM-CORE | Installing EPDM-Community |
 |----------------------|---------------------------|
-| Install the Ed-Fi ODS/API platform v5.3 (defaults to including EPDM-Core extension) | EPDM-Community: Install the Ed-Fi ODS/API platform v5.3, but change the EPDM extension to be installed to EPDM-Community. This is done by following these [installation instructions](#). |
+| Install the Ed-Fi ODS/API platform v5.3 (defaults to including EPDM-Core extension) | EPDM-Community: Install the Ed-Fi ODS/API platform v5.3, but change the EPDM extension to be installed to EPDM-Community. This is done by following these [installation instructions](https://edfi.atlassian.net/wiki/spaces/EPP/pages/23169945/Installing+Ed-Fi+ODS+API+5.3+with+EPDM-Community+v1.1). |
 
 ### Visual Representation
 
@@ -52,7 +52,7 @@ If you are upgrading from TPDM v1.0 (and not using starter kits), or are unsure,
 
 ![EPDM-Community](https://edfidocs.blob.core.windows.net/$web/img/getting-started/epp/overview/epdm_community.png)
 
-More details about [TPDM-Core](https://techdocs.ed-fi.org/display/ETKB/TPDM-Core+Details) and [TPDM-Community](https://techdocs.ed-fi.org/display/ETKB/TPDM-Community+Details).
+More details about [TPDM-Core](https://edfi.atlassian.net/wiki/display/EFDS33/Educator+Preparation+Data+Model+Domain) and [TPDM-Community](https://edfi.atlassian.net/wiki/display/TPDMX/TPDM+Community?src=contextnavpagetreemode).
 
 ## ​Changing the EPDM model installed
 
@@ -69,22 +69,19 @@ The Alliance plans to continue to work with the EPP community to identify furthe
 
 The following are resources for getting information and engaging in the process:
 
-* [Ed-Fi Community Governance](https://edfi.org/community-governance/) – for convening the community and sharing information.
-* [Ed-Fi Technology Roadmap](https://techdocs.ed-fi.org/display/ETKB/Roadmap) - for details on upcoming releases.
-* [Ed-Fi Tracker](https://tracker.ed-fi.org/) – for submitting tickets.
+* [Ed-Fi Community Governance](https://edfi.atlassian.net/wiki/display/GOV/Ed-Fi+Governance) – for convening the community and sharing information.
+* [Ed-Fi Technology Roadmap](https://edfi.atlassian.net/wiki/display/ETKB/Ed-Fi+Technology+Roadmap) - for details on upcoming releases.
+* [Ed-Fi Tracker](https://tracker.ed-fi.org/secure/RapidBoard.jspa?rapidView=175) – for submitting tickets.
 
 ## Links to resources and documentation
 
-* [EPDM-Core Details](https://techdocs.ed-fi.org/display/ETKB/EPDM-Core+Details)
-* [EPDM-Community Details](https://techdocs.ed-fi.org/display/ETKB/EPDM-Community+Details)
-* [EPDM Technical Resources](https://techdocs.ed-fi.org/display/ETKB/EPDM+Technical+Resources)
-* [Educator Prep Data Model Work Group](https://techdocs.ed-fi.org/display/ETKB/Educator+Prep+Data+Model+Work+Group)
-* [Clinical Experience and Performance Starter Kit](https://techdocs.ed-fi.org/display/ETKB/Clinical+Experience+and+Performance+Starter+Kit)
-* [Program Diversity and Persistence Starter Kit](https://techdocs.ed-fi.org/display/ETKB/Program+Diversity+and+Persistence+Starter+Kit)
-* [Educator Preparation Resources](https://techdocs.ed-fi.org/display/ETKB/Educator+Preparation+Resources)
-* [Ed-Fi Exchange Resources](https://techdocs.ed-fi.org/display/ETKB/Ed-Fi+Exchange+Resources)
-  * [Educator Preparation Dashboards](https://techdocs.ed-fi.org/display/ETKB/Educator+Preparation+Dashboards) - A Collaborative EPP Dashboard project led by Crocus to gather requirements, feedback, and best practices from EPPs and partners.
-  * [EPDM Implementation Resources](https://techdocs.ed-fi.org/display/ETKB/EPDM+Implementation+Resources)
+* [EPDM-Core Details](https://edfi.atlassian.net/wiki/display/EFDS33/Educator+Preparation+Data+Model+Domain)
+* [EPDM-Community Details](https://edfi.atlassian.net/wiki/display/EPP/EPDM+Community)
+* [EPDM Technical Resources](https://edfi.atlassian.net/wiki/spaces/EPP/pages/23171694/EPDM+Technical+Resources)
+* [Educator Prep Data Model Work Group](https://edfi.atlassian.net/wiki/spaces/GOV/pages/20335903/Educator+Prep+Program+EPP+Work+Group)
+* [Clinical Experience and Performance Starter Kit](https://edfi.atlassian.net/wiki/display/SK/Clinical+Experience+and+Performance+Starter+Kit)
+* [Program Diversity and Persistence Starter Kit](https://edfi.atlassian.net/wiki/display/SK/Program+Diversity+and+Persistence+Starter+Kit)
+* [Educator Preparation Resources](https://edfi.atlassian.net/wiki/display/TPDMX/TPDM+Resources)
 
 :::tip
 The Educator Pipeline is currently undergoing migration. [Reference to the previous overview can be found here](https://edfi.atlassian.net/wiki/spaces/EPP/pages/23170337/EPDM+Overview)
