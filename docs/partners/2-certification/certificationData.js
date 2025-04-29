@@ -192,14 +192,14 @@ export default {
       logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/EduPointLogo_RGB-400x120.png',
       website:
         'http://www.edupoint.com/Products/Student-Information-Management',
-      validThrough: 'January 2, 2025',
-      verifyingAgencies: ['Lincoln Public Schools, NB'],
+      validThrough: 'April 28, 2026',
+      verifyingAgencies: ['Lincoln Public Schools, NE', 'Higley Unified School District, Gilbert, AZ', 'Phoenix Union High School District, AZ'],
       versionCompatibility: 'Conformance testing met with version 2023',
       availability: 'Available to any agency (all sizes) in the U.S.',
       documentation: {
         pending: '',
         Mappings:
-          'https://edfi.atlassian.net/wiki/download/attachments/23694066/Edupoint%20-%20Base%20Ed-Fi%20Certification%20Mappings%20for%203x.xlsx?version=1&modificationDate=1673960210507&cacheVersion=1&api=v2',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Edupoint/Edupoint%20-%20Base%20Ed-Fi%20Certification%20Mappings.xlsx',
       },
       supportResources: [
         {
