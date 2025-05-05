@@ -40,13 +40,17 @@ export default {
       logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/ESP_Logo.png',
       website:
         'https://www.powerschool.com/operations/student-information-systems/eschoolplus-sis/',
-      validThrough: 'May 9, 2024',
-      verifyingAgencies: ['San Angelo, TX'],
+      validThrough: 'May 2, 2026',
+      verifyingAgencies: ['San Angelo, TX', 'Round Rock ISD, TX', 'North Canton ISD, OH'],
       versionCompatibility: 'Conformance testing met with version 23.4.0.0',
       availability: 'Available to any agency (all sizes) in the U.S.',
       documentation: {
         'Availability Statement':
-          'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ed-Fi%20Certification%20-%20DEX%20Cloud.docx?version=1&modificationDate=1705005677070&cacheVersion=1&api=v2',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/eSchoolPlus/Ed-Fi%20Certification%20-%20Availability%20Statement%20eSchoolPlus.pdf',
+        'Pricing Statement':
+         'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/eSchoolPlus/Ed-Fi%20Certification%20-%20Pricing%20Statement%20eSchoolPlus.pdf',
+         'Mapping Document':
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/eSchoolPlus/Ed-Fi%20Resources%20and%20Elements%20for%20eSchoolPlus%20Base%20v250501.xlsx'
       },
       supportResources: [
         {
