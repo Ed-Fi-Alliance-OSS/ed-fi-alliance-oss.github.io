@@ -2,16 +2,17 @@
 description: Instructions for local configuration for multi-tenancy.
 ---
 
-# Multi-Tenant Deployment with Source Code and PowerShell
+# How-To: Perform Multi-Tenant Database Deployment from Source Code
 
-The version 7 release of the Ed-Fi ODS/API introduced a multi-tenant concept
-that supports segregation of tenant security information into different
-databases. For example, an education service agency (ESA) might serve multiple
-local education agencies (LEA), and segregate each LEA as a tenant. In turn, the
-LEA might have several _instances_ of the ODS database: these might be
-development environments (dev, stg, prod) or could be using year-based routing
-(2023, 2024, 2025). A single Ed-Fi ODS/API _web application_ can support routing
-all of the interactions to the correct databases, when properly configured.
+Version 7.0 of the Ed-Fi ODS/API introduced a multi-tenant concept that supports
+segregation of tenant ODS database and security information into different
+databases on different servers. For example, an education service agency (ESA)
+might serve multiple local education agencies (LEA), and segregate each LEA as a
+tenant. In turn, the LEA might have several _instances_ of the ODS database:
+these might be development environments (dev, stg, prod) or could be using
+year-based routing (2023, 2024, 2025). A single Ed-Fi ODS/API _web application_
+can support routing the incoming HTTP requests to the correct databases, when
+properly configured.
 
 ```mermaid
 C4Container
@@ -43,11 +44,11 @@ C4Container
 ```
 
 This article demonstrates the steps required to configure this multi-tenant and
-multi-instance environment. Furthermore, it shows how to use the provided
-PowerShell scripts to create the databases used by this setup. The steps
-described here can be adapted to work with the `EdFi.Suite3.RestApi.Databases`
-NuGet package for automating deployments in remote environments, without the use
-of the full set of C# source code.
+multi-instance environment. Furthermore, it shows how to use the
+`Ed-Fi-ODS-Implementation` PowerShell scripts to create the databases used by
+this setup. The steps described here can be adapted to work with the
+`EdFi.Suite3.RestApi.Databases` NuGet package for automating deployments in
+remote environments, without the use of the full set of C# source code.
 
 :::tip
 
@@ -57,15 +58,27 @@ performed in the `configuration.json` file.
 
 :::
 
+:::caution
+
+Do not use multitenancy with the `initdev` command when building the source code
+and extensions.
+
+:::
+
 ## Getting Started
 
-1. Download both repositories.
+1. Download or clone both repositories.
+   1. [Ed-Fi-ODS](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS)
+   2. [Ed-Fi-ODS-Implementation](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation)
 2. Run `initdev` out of the box with no modifications to download tools and get
    the scripts set up. Might be able to provide an alternate script to simplify.
 
 ## Deploy the Databases
 
-Create a user secrets file in the WebAPI project. Note that `EdFi_Admin` and `EdFi_Security` have the same database name below.
+Create a [user secrets
+file](https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-8.0&tabs=windows)
+in the WebAPI project. Note that `EdFi_Admin` and `EdFi_Security` have the same
+database name below.
 
 ```json
 {
@@ -75,7 +88,7 @@ Create a user secrets file in the WebAPI project. Note that `EdFi_Admin` and `Ed
         "EdFi_Security": "server=(local);trusted_connection=True;database=EdFi_Tenant1_Security;persist security info=True;Application Name=EdFi.Ods.WebApi",
         "EdFi_Master": "server=(local);trusted_connection=True;database=master;Application Name=EdFi.Ods.WebApi"
     },
-    "InstallType": "Sandbox"
+    "InstallType": "MultiTenant"
 }
 ```
 
@@ -94,11 +107,14 @@ and rerun the commands above.
 
 ## Configure ODS Instances
 
-Next, need to setup the `dbo.OdsInstances` table in each `EdFi_Tenant{?}_Security` database.
+Next, need to setup the `dbo.OdsInstances` table in each
+`EdFi_Tenant{?}_Security` database. Note that the `OdsInstanceName` and
+`OdsInstanceType` are both free text fields where you can put any string that is
+meaningful to you.
 
 ```sql
-DECLARE @OdsInstanceName nvarchar(100) = 'Sandbox'
-DECLARE @OdsInstanceType nvarchar(100) = 'Sandbox'
+DECLARE @OdsInstanceName nvarchar(100) = '<Tenant 1>'
+DECLARE @OdsInstanceType nvarchar(100) = 'LEA'
 DECLARE @OdsInstanceConnectionString nvarchar(500) =
  'server=(local);trusted_connection=True;database=EdFi_Tenant1_{0};application name=EdFi.Ods.WebApi;Encrypt=False'
 
@@ -120,9 +136,10 @@ BEGIN
 END
 ```
 
-## Configure for Multi-Tenancy
+## App Settings for Multi-Tenancy
 
-Finally, update the tenancy-settings in user settings.
+Finally, update the tenancy-settings in the `appSettings` file or use equivalent
+environment variables.
 
 ```json
 {
@@ -151,12 +168,6 @@ Finally, update the tenancy-settings in user settings.
 }
 ```
 
-:::warning
-
-TODO: use correct installtype. Configure year-based routing.
-
-:::
-
 ## Bonus: Combining Admin and Security Databases
 
 To lower the maintenance and cost burden, you can deploy the `EdFi_Admin` and
@@ -176,10 +187,8 @@ error when seeing that `dbo.Applications` already exists.
 
 :::
 
-## Using Swagger
-
 ## Using Admin API
 
-## Reference Articles
-
-TODO: links to current ODS/API docs on tenants, instances. Link to Admin API docs on tenants.
+Admin API v2.3 supports management of credentials for a multi-tenant ODS/API
+deployment. Please see [Multi-tenant Configuration for Admin API
+2.x](/reference/admin-api/admin-api-2.x/technical-articles/multi-tenant-configuration-for-admin-api-2x).
