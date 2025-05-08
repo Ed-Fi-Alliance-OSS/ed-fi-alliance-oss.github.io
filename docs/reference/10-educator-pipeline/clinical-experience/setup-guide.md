@@ -1,6 +1,5 @@
 ---
-title: Setup Guide
-sidebar_position: 0
+sidebar_position: 1
 ---
 
 # Clinical Experience and Performance Setup Guide

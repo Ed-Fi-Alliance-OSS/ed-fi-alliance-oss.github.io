@@ -1,8 +1,8 @@
 ---
-sidebar_position: 0
+sidebar_position: 1
 ---
 
-# Setup Guide
+# Program Diversity and Persistence Setup Guide
 
 Use this Setup Guide to install and configure your Program Diversity and Persistence solution using test data. This guide will walk you through setting up a test environment that closely mimics a staging or production environment. At the end of this Setup Guide you'll have a test environment with your own test data loaded, but to cover all required elements (credentials, candidates, and financial aid/grants) for the Program Diversity and Persistence solution additional steps will be required as indicated at the end of Step 3.
 
