@@ -289,7 +289,7 @@ The data that is pre-populated is a set of data that mimics real world data in a
 
 * Once it loads, the Clinical Experience and Performance Dashboard will display your data.
 
-If you haven't already, visit the [Clinical Experience and Performance Dashboard Use Case](/getting-started/educator-pipeline/program-diversity) to learn more about how to use the Clinical Experience and Performance Dashboard.
+If you haven't already, visit the [Clinical Experience and Performance Dashboard Use Case](/getting-started/educator-pipeline/use-cases/clinical-experience) to learn more about how to use the Clinical Experience and Performance Dashboard.
 
 ### Update Groups Used in the Dashboard
 
@@ -448,7 +448,7 @@ Regarding identity mapping, **it is important to note that a user's email addre
 At this point you have completed all the steps required to launch your "Program Diversity and Persistence Dashboard" with your organization. You are now in a position to:
 
 * Verify functionality and support from key systems
-* Explore the dashboard (follow the [use case description](/getting-started/educator-pipeline/program-diversity) to help you and your users)
+* Explore the dashboard (follow the [use case description](/getting-started/educator-pipeline/use-cases/program-diversity) to help you and your users)
 * Understand what resources and technical skills you need to support it
 * Test this solution with your key audiences in a pilot (Note: it is recommended to have a small pilot group so that they help by looking at data and provide feedback on the displayed metrics)
 * Plan and conduct a production rollout of your solution

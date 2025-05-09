@@ -9,12 +9,12 @@ Model](../1-data-exchange/udm/readme.md).
 
 Tackle program diversity and persistence: all students can benefit from having a more diverse teaching force.
 
-* [Background information on the use case](/getting-started/educator-pipeline/program-diversity)
+* [Background information on the use case](./program-diversity/use-case.md)
 * [Technical reference](./program-diversity/readme.md)
 
 ## Clinical Experience Dashboard
 
 Support teacher candidates to be well prepared: clinical experience is critical to the preparation of teacher candidates.
 
-* [Background information on the use case](/getting-started/educator-pipeline/clinical-experience)
+* [Background information on the use case](./clinical-experience/use-case.md)
 * [Technical reference](./clinical-experience/readme.md)

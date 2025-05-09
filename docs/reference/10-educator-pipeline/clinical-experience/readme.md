@@ -2,7 +2,7 @@
 
 :::tip
 
-Want to know more before you get started? Read more about [Educator Preparation](https://www.ed-fi.org/how-to-use-ed-fi/educator-prep-programs/) and the [Clinical Experience and Performance use case summary](/getting-started/educator-pipeline/clinical-experience).
+Want to know more before you get started? Read more about [Educator Preparation](https://www.ed-fi.org/how-to-use-ed-fi/educator-prep-programs/) and the [Clinical Experience and Performance use case summary](/getting-started/educator-pipeline/use-cases/clinical-experience).
 
 :::
 
