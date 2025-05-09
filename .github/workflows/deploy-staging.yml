@@ -1,0 +1,67 @@
+# Original source: Docusaurus documentation
+# Modified for manual staging deployment
+
+name: Manual Staging Deployment
+
+on:
+  workflow_dispatch: # Allows manual triggering from the Actions tab
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }} # Group by workflow and the branch ref (e.g., staging)
+  cancel-in-progress: true
+
+permissions: read-all # Top-level default permissions
+
+jobs:
+  build:
+    name: Build Docusaurus (Staging)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 0 # Checkout all history, useful for versioning/docs
+
+      - uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4.2.0
+        with:
+          node-version: 18
+          cache: npm
+
+      - name: Node modules cache
+        id: modules-cache
+        uses: actions/cache@1bd1e32a3bdc45362d1e726936510720a7c30a57 # v4.2.0
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install dependencies
+        if: ${{ steps.modules-cache.outputs.cache-hit != 'true' }}
+        run: npm ci
+
+      - name: Build website
+        run: npm run build # Assumes build command is the same for staging
+
+      - name: Upload Build Artifact
+        uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
+        with:
+          path: build
+
+  deploy:
+    name: Deploy to GitHub Pages (Staging)
+    needs: build
+
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+
+    # Deploy to the github-pages environment.
+    # If you have a specific GitHub Environment for staging (e.g., 'staging-pages'),
+    # you should update the 'name' field below.
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5
