@@ -2,7 +2,7 @@
 
 :::tip
 
-Want to know more before you get started? Read more about [Educator Preparation](https://www.ed-fi.org/how-to-use-ed-fi/educator-prep-programs/) and [Program Diversity and Persistence](https://www.ed-fi.org/how-to-use-ed-fi/educator-prep-programs/program-diversity-and-persistence/) on the Ed-Fi website, or read the [Program Diversity and Persistence use case summary](/getting-started/educator-pipeline/program-diversity).
+Want to know more before you get started? Read more about [Educator Preparation](https://www.ed-fi.org/how-to-use-ed-fi/educator-prep-programs/) and [Program Diversity and Persistence](https://www.ed-fi.org/how-to-use-ed-fi/educator-prep-programs/program-diversity-and-persistence/) on the Ed-Fi website, or read the [Program Diversity and Persistence use case summary](/getting-started/educator-pipeline/use-cases/program-diversity).
 
 :::
 
