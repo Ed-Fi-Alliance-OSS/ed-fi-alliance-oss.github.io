@@ -19,9 +19,16 @@ async function convertUrlToMarkdown(url) {
 
 function removeJsAndCss(html) {
   // Remove <script> tags and their content
-  html = html.replace(/<script[^>]*>([\s\S]*?)<\/script>/gi, '');
+  let previous;
+  do {
+    previous = html;
+    html = html.replace(/<script[^>]*>([\s\S]*?)<\/script>/gi, '');
+  } while (html !== previous);
   // Remove <style> tags and their content
-  html = html.replace(/<style[^>]*>([\s\S]*?)<\/style>/gi, '');
+  do {
+    previous = html;
+    html = html.replace(/<style[^>]*>([\s\S]*?)<\/style>/gi, '');
+  } while (html !== previous);
   // Remove inline JavaScript
   html = html.replace(/ on\w+="[^"]*"/gi, '');
   return html;
