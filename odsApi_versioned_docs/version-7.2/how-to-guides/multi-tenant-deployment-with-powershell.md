@@ -77,8 +77,7 @@ and extensions.
 
 Create a [user secrets
 file](https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-8.0&tabs=windows)
-in the WebAPI project. Note that `EdFi_Admin` and `EdFi_Security` have the same
-database name below.
+in the WebAPI project.
 
 ```json
 {
