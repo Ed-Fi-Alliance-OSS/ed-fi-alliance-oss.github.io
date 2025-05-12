@@ -166,7 +166,7 @@ environment for internal testing purposes.
    Started](/reference/ods-api/getting-started/) walks developers through
    setting up the Ed-Fi ODS / API (latest version) on a development machine.
 * [A Quick Deploy of the Ed-Fi ODS / API Development
-  Server](https://edfi.atlassian.net/wiki/spaces/EXCHANGE/pages/22490024) has
+  Server](https://github.com/Ed-Fi-Exchange-OSS/Ed-Fi-BinariesPowerShellInstaller) has
   PowerShell scripts to initialize a server and install a development
   environment Ed-Fi ODS / API.
 * A [Docker Deployment 2.x](/reference/docker/v2/) of the Ed-Fi ODS /
