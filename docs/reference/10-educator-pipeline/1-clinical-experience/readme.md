@@ -16,7 +16,6 @@ For more help operating this Dashboard, see the following pages:
 
 * [Data Requirements](./data-requirements.md)
 * [Mapping Guidance](./mapping-guidance.md)
-* [Data Import Error Report](../program-diversity/data-import-error-report.md)
 
 ## System Requirements
 
