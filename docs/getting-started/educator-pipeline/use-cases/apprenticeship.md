@@ -17,11 +17,11 @@ As of 2025, 45 states, along with the District of Columbia and Puerto Rico, have
 
 ## Leveraging the Ed-Fi Standard for Enabling Essential Data Use and Reporting
 
-Driven by the needs of the Ed-Fi community, the standard is continuing to be pulled to cover adjacent data domains. Ed-Fi Alliance in partnership with [the Pathways Alliance](https://www.thepathwaysalliance.org/) engaged in field research. Ed-Fi began to explore how to expand the data standard into a new educator apprenticeship pathway domain, leveraging the existing Ed-Fi and EPDM modelsPicture 13, Picture
+Driven by the needs of the Ed-Fi community, the standard is continuing to be pulled to cover adjacent data domains. Ed-Fi Alliance in partnership with [the Pathways Alliance](https://www.thepathwaysalliance.org/) engaged in field research. Ed-Fi began to explore how to expand the data standard into a new educator apprenticeship pathway domain, leveraging the existing Ed-Fi and EPDM models
 
-<!-- ![Ten Thousand Foot View of Comprehensive Entity Model]() -->
+![Ten Thousand Foot View of Comprehensive Entity Model](https://edfidocs.blob.core.windows.net/$web/img/getting-started/use-cases/epp/comprehensive_entity_model.jpg)
 
-_Ten Thousand Foot View of Comprehensive Entity Model_
+<p align="center"><em>Ten Thousand Foot View of Comprehensive Entity Model</em></p>
 
 The effort started with the process of detailing underlying the data models, leveraging the existing Ed-Fi and EPDM data models, which are well defined and proven in the field. Though the domain design was targeting Teacher Registered Apprenticeship, we believe that other industry apprenticeship programs could benefit from leveraging this domain.
 
