@@ -192,25 +192,6 @@ Several entity types (including Ed-Fi Descriptors) are cached in the web API. It
 is possible for these caches to get out of sync if they are local to each web
 server. In a load-balanced configuration, an external cache should be used.
 
-### Cloud-Based Deployment Models
-
-Documentation and scripts for deployment of an Ed-Fi ODS / API instance in
-Microsoft Azure and Amazon Web Services can be found in the Ed-Fi Exchange. To
-locate these, navigate
-to [https://exchange.ed-fi.org](https://exchange.ed-fi.org/) and browse to the
-following entries:
-
-* **Ed-Fi ODS/API on AWS**
-* **Ed-Fi ODS/API Deploy Tools for Azure**
-
-:::warning
-
-These scripts in the Ed-Fi Exchange may have been developed for older versions
-of the Ed-Fi ODS/API, and therefore may need modification to work with this
-version.
-
-:::
-
 ## Scale and Reliability Techniques for Production Deployment
 
 Production deployments have complex techniques to achieve particular
