@@ -11,7 +11,7 @@ will use code generation to automatically add your data extensions to the Ed-Fi
 ODS / API.
 
 The Ed-Fi Alliance provides a free tool called the [MetaEd
-IDE]((/reference/metaed) that allows you to author
+IDE](/reference/metaed) that allows you to author
 and build extensions using a simple language. The MetaEd IDE system can also
 assist you by "deploying" the extension customizations to the appropriate
 locations in your solution. This means that some of the details covered below
