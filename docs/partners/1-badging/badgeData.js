@@ -26,7 +26,7 @@ export default {
       website: 'https://edanalytics.org/',
       productInformation:
         'https://www.edanalytics.org/products/starting-blocks',
-      validThrough: 'May 12, 2025',
+      validThrough: 'May 12, 2027',
       verifyingAgencies: [
         'South Carolina DOE',
         'Texas Education Exchange',
@@ -431,6 +431,19 @@ export default {
       },
       versionCompatibility: ['Ed-Fi Data Standard V4 and Suite 3'],
       availability: 'Customers in the following states: Tennessee, Wisconsin, Alabama, Kentucky, Ohio',
+    },
+
+        {
+      logo: 'https://edfidocs.blob.core.windows.net/$web/assets/partners/badging/EA/podium_Logo_Horizontal_Color.jpg',
+      productName: 'Podium',
+      provider: 'Education Analytics',
+      website: 'https://www.edanalytics.org/blog/introducing-podium-an-ed-fi-enabled-set-of-common-dashboards-to-support-school-and-district-decision-making',
+      validThrough: 'May 13, 2027',
+      verifyingAgencies: ['South Carolina Department of Education'],
+      documentation: {'Mapping Document':'https://edfidocs.blob.core.windows.net/$web/assets/partners/badging/EA/podium_edfi_mapping_raw%20(2).csv',
+      },
+      versionCompatibility: ['Ed-Fi Data Standard V4 and Suite 3'],
+      availability: 'Available to any agency (all sizes) or vendor in the U.S.',
     },
   ],
 
