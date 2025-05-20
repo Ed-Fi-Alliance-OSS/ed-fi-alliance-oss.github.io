@@ -1,20 +1,16 @@
-# Educator Pipeline Tools
+# Educator Pipeline Use Cases & Tools
 
-These tools provide sample reporting and analytics for reporting on the training
-and development of new educators. They also showcase the Educator Preparation
-Data Model (EPDM) portion of the [Ed-Fi Unified Data
-Model](../1-data-exchange/udm/readme.md).
+A comprehensive view of the educator pipeline—from early interest through certification, hiring, and career growth—is vital to building a strong, sustainable teaching workforce. Tracking key milestones before, during, and after entry into the profession helps stakeholders support aspiring educators, reduce attrition, and ensure schools are staffed with qualified teachers. Ed-Fi-backed insights further enable targeted interventions, data-driven policies, and continuous improvement across the educator journey.
 
-## Program Diversity and Persistence Dashboard
+Explore key use cases and related Ed-Fi Educator Preparation Data Model (EPDM) backed tools and solutions:
 
-Tackle program diversity and persistence: all students can benefit from having a more diverse teaching force.
-
-* [Background information on the use case](./program-diversity/use-case.md)
-* [Technical reference](./program-diversity/readme.md)
-
-## Clinical Experience Dashboard
-
-Support teacher candidates to be well prepared: clinical experience is critical to the preparation of teacher candidates.
-
-* [Background information on the use case](./clinical-experience/use-case.md)
-* [Technical reference](./clinical-experience/readme.md)
+* [Educator Workforce Use Case](/getting-started/educator-pipeline/use-cases/educator-workforce)
+* [Apprenticeship Use Case](/getting-started/educator-pipeline/use-cases/apprenticeship)
+* Educator Preparation Tools
+  * Program Diversity and Persistence Dashboard
+    * [Background information on the use case](/getting-started/educator-pipeline/use-cases/program-diversity)
+    * [Technical reference](./2-program-diversity/readme.md)
+  * Clinical Experience Dashboard
+    * [Background information on the use case](/getting-started/educator-pipeline/use-cases/clinical-experience)
+    * [Technical reference](./1-clinical-experience/readme.md)
+* [Educator Preparation Data Model (EPDM) Resources](/getting-started/educator-pipeline/epp-resources)
