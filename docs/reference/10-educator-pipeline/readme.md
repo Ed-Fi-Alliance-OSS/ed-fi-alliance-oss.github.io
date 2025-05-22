@@ -13,4 +13,4 @@ Explore key use cases and related Ed-Fi Educator Preparation Data Model (EPDM) b
   * Clinical Experience Dashboard
     * [Background information on the use case](/getting-started/educator-pipeline/use-cases/clinical-experience)
     * [Technical reference](./1-clinical-experience/readme.md)
-* [Educator Preparation Data Model (EPDM) Resources](/getting-started/educator-pipeline/epp-resources)
+* [Educator Preparation Data Model (EPDM) Technical Resources](https://edfi.atlassian.net/wiki/spaces/EPP/pages/23171694/EPDM+Technical+Resources)
