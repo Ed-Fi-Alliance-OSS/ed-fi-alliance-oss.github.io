@@ -1,11 +1,10 @@
 ---
-title: Setup Guide
-sidebar_position: 0
+sidebar_position: 1
 ---
 
-# Clinical Experience and Performance Setup Guide
+# Program Diversity and Persistence Setup Guide
 
-Use this Setup Guide to install and configure your Clinical Experience and Performance solution using test data. This guide will walk you through setting up a test environment that closely mimics a staging or production environment. At the end of this Setup Guide you'll have a test environment with your own test data loaded, but to cover all required elements (credentials, candidates, and financial aid/grants) for the Clinical Experience and Performance solution additional steps will be required as indicated at the end of Step 3.
+Use this Setup Guide to install and configure your Program Diversity and Persistence solution using test data. This guide will walk you through setting up a test environment that closely mimics a staging or production environment. At the end of this Setup Guide you'll have a test environment with your own test data loaded, but to cover all required elements (credentials, candidates, and financial aid/grants) for the Program Diversity and Persistence solution additional steps will be required as indicated at the end of Step 3.
 
 This test environment allows your tech team, administrators, and stakeholders to test configuration changes being considered for the production environment without an impact on end-users. It is important to note that this test environment is separate and distinct from the sample environment you accessed during the Quick Start.
 
@@ -19,7 +18,7 @@ The following steps to get this test environment up and running are very simil
 
 ## Solution Overview
 
-This section provides an overview of the components of your Clinical Experience and Performance solution to provide context for completing the remainder of the Setup Guide. The diagram below depicts the high-level architecture and component interactions. Names and acronyms in the diagram are explained below.
+This section provides an overview of the components of your Program Diversity and Persistence solution to provide context for completing the remainder of the Setup Guide. The diagram below depicts the high-level architecture and component interactions. Names and acronyms in the diagram are explained below.
 
 ![Architecture diagram](https://edfidocs.blob.core.windows.net/$web/img/reference/epp-sk/epp-sk-architecture.webp)
 
@@ -27,10 +26,10 @@ The core components involved in this solution are:
 
 * Student Information System (SIS) Data.
 * Program Data.
-* Survey and Evaluation Data.
+* Financial Aid Data.
 * Credentials Data.
 * The Ed-Fi ODS / API & Tools, which include Ed-Fi ODS / API, Ed-Fi Admin App, and Data Import Tool.
-* Power BI Desktop, the application chosen to model, create, and deliver the Clinical Experience and Performance Dashboards.
+* Power BI Desktop, the application chosen to model, create, and deliver the Program Diversity and Persistence Dashboards.
 * Power BI Online, which allows you to publish the dashboard and manage the different users and roles.
 
 The rest of this guide will instruct you on how to:
@@ -38,7 +37,7 @@ The rest of this guide will instruct you on how to:
 * Install the above components.
 * Configure Education Organizations and apps in the Ed-Fi Admin App.
 * Load data via the Data Import Tool (SIS, Programs, Credentials, Financial Aid/Grants) to the Ed-Fi ODS.
-* Use the Clinical Experience and Performance Dashboard to engage and provide support to staff, deans, and program managers.
+* Use the Program Diversity and Persistence Dashboard to engage and provide support to staff, deans, and program managers.
 
   :::note
 
@@ -217,19 +216,19 @@ Data Import is now configured and you are ready to create or import a template t
 
 :::note
 
-To import the data necessary for the Clinical Experience and Performance Dashboard, you will need to upload data for people, candidates, credentials, programs, and financial aid. This will require repeating Section 3, beginning with _Create or Import a Mapping Template_ for each of the remaining data sources until all of the required data is loaded.
+To import the data necessary for the Program Diversity and Persistence Dashboard, you will need to upload data for people, candidates, credentials, programs, and financial aid. This will require repeating Section 3, beginning with _Create or Import a Mapping Template_ for each of the remaining data sources until all of the required data is loaded.
 
 :::
 
 :::tip
 
-For detailed information on the data requirements to be able to power the Clinical Experience and Performance Dashboard, see the [data loading requirements](./data-requirements.md)
+For detailed information on the data requirements to be able to power the Program Diversity and Persistence Dashboard, see the [data loading requirements](./data-requirements.md)
 
 :::
 
-## Step 4. Install and Test the Clinical Experience and Performance Dashboard
+## Step 4. Install and Test the Program Diversity and Persistence Dashboard
 
-In this step, you'll install Power BI prerequisites, as well as download and run the Clinical Experience and Performance Dashboards.
+In this step, you'll install Power BI prerequisites, as well as download and run the Program Diversity and Persistence Dashboards.
 
 ### Prerequisites
 
@@ -239,28 +238,24 @@ In this step, you'll install Power BI prerequisites, as well as download and run
 
 ### Install Power BI Desktop
 
-The Clinical Experience and Performance Dashboard was built with Microsoft's Power BI Desktop application.
+The Program Diversity and Persistence Dashboard was built with Microsoft's Power BI Desktop application.
 
 To run the dashboard you will need a machine with:
 
 * Access to the database server where you installed the Ed-Fi ODS database
 * Power BI Desktop that can be downloaded at this link: [https://powerbi.microsoft.com/en-us/downloads/](https://powerbi.microsoft.com/en-us/downloads/)
 
-### Download and Configure the Clinical Experience and Performance Dashboard
+### Download and Configure the Program Diversity and Persistence Dashboard
 
-The latest version of the Clinical Experience and Performance Power BI Dashboard file is located in a GitHub repository.
+The latest version of the Program Diversity and Persistence Power BI Dashboard file is located in a GitHub repository.
 
-Use the machine that has Power BI and create the following folder structure: `C:\Ed-Fi\QuickStarts\EPP_Performance`.
+Use the machine that has Power BI and create the following folder structure: `C:\Ed-Fi\QuickStarts\EPP_Diversity`.
 
-Save this file onto that location by clicking this link: [Clinical Experience and Performance Power Bi Report](https://github.com/Ed-Fi-Exchange-OSS/Educator-Pipeline-Dashboards/raw/main/Clinical%20Experience/Ed-Fi%20EPP%20Performance.pbix) .
+Save this file onto that location by clicking this link: [Diversity and Persistence Power Bi Report](https://github.com/Ed-Fi-Exchange-OSS/Educator-Pipeline-Dashboards/raw/main/EPP%20Diversity%20and%20Completion/Ed-Fi%20EPP%20Diversity%20and%20Completion.pbix) .
 
-Once the download completes, navigate to the folder where you downloaded the file and double-click it. This should open Power BI and load the Clinical Experience and Performance Dashboard as depicted below:
+Once the download completes, navigate to the folder where you downloaded the file and double-click it. This should open Power BI and load the Program Diversity and Persistence Dashboard as depicted below:
 
-![Teacher Work Sample Summary view](https://edfidocs.blob.core.windows.net/$web/img/reference/epp-sk/teacher-work-sample-summary-view.webp)
-
-### Update Groups Used in the Dashboard
-
-The current Diversity and Persistence Dashboard groups Programs into grade levels and Financial Aid into Aid Type. The program groups are All Level, Elementary, Middle School, and High School. The financial aid groups are Grants, Loans, Work Study, and Other. In this step, you'll update both groups to better fit your organization.
+![Candidate Summary view](https://edfidocs.blob.core.windows.net/$web/img/getting-started/use-cases/epp/candidate-summary-small.png)
 
 ### Connect your Power BI Dashboard to your Ed-Fi ODS
 
@@ -294,11 +289,49 @@ The data that is pre-populated is a set of data that mimics real world data in a
 
 * Once it loads, the Clinical Experience and Performance Dashboard will display your data.
 
-If you haven't already, visit the [Clinical Experience and Performance Dashboard Use Case](/getting-started/educator-pipeline/clinical-experience) to learn more about how to use the Clinical Experience and Performance Dashboard.
+If you haven't already, visit the [Clinical Experience and Performance Dashboard Use Case](/getting-started/educator-pipeline/use-cases/clinical-experience) to learn more about how to use the Clinical Experience and Performance Dashboard.
 
-## Step 5. Publish the Clinical Experience and Performance Dashboard and Plan Your Rollout
+### Update Groups Used in the Dashboard
 
-The final step is to publish the Clinical Experience and Performance Dashboards to Power BI Online. This release is targeted to your internal test users, allowing them to log in, view, use, and test the data visualizations. At the end of this step, you will be able to plan your rollout and deployment.
+The current Diversity and Persistence Dashboard groups Programs into grade levels and Financial Aid into Aid Type. The program groups are All Level, Elementary, Middle School, and High School. The financial aid groups are Grants, Loans, Work Study, and Other. In this step, you'll update both groups to better fit your organization.
+
+### Update Program Groups
+
+* In the report view in Power BI Desktop, expand the Candidate table in the Data pane.
+* Click on the ellipsis (...) next to the field ProgramName (groups) in the Candidate table and select Edit Groups.
+
+  ![Finding ProgramName in PowerBI](https://edfidocs.blob.core.windows.net/$web/img/reference/epp-sk/update-program-groups-1.png)
+
+* A dialogue box appears that allows editing groups.
+
+  ![Editing dialogue box](https://edfidocs.blob.core.windows.net/$web/img/reference/epp-sk/update-program-groups-2.png)
+
+* Expand the groups on the right to see the programs in each group. You can edit the groupings by selecting or multi-selecting (CRTL+Select) programs and then clicking Group or Ungroup. You can also edit the names of groups by double-clicking on group names.
+
+  ![Selecting the right items](https://edfidocs.blob.core.windows.net/$web/img/reference/epp-sk/update-program-groups-3.png)
+
+* Once you are done editing groups, click the OK button to save your settings.
+
+### Update Financial Aid Groups
+
+* In the report view in Power BI Desktop, expand the Financial Aid table in the Data pane.
+* Click on the ellipsis (...) next to the field AidType (groups) in the Financial Aid table and select Edit Groups.
+
+  ![Finding AidType in PowerBI](https://edfidocs.blob.core.windows.net/$web/img/reference/epp-sk/update-financial-aid-group-1.png)
+
+* A dialogue box appears that allows editing groups.
+
+  ![Editing dialogue box](https://edfidocs.blob.core.windows.net/$web/img/reference/epp-sk/update-financial-aid-group-2.png)
+
+* Expand the groups on the right to see the Aid Type in each group. You can edit the groupings by selecting or multi-selecting (CRTL+Select) Aid Type and then clicking Group or Ungroup. You can also edit the names of groups by double-clicking on group names.
+
+  ![Selecting the right items](https://edfidocs.blob.core.windows.net/$web/img/reference/epp-sk/update-financial-aid-group-3.png)
+
+* Once you are done editing groups, click the OK button to save your settings.
+
+## Step 5. Publish the Program Diversity and Persistence Dashboard and Plan Your Rollout
+
+The final step is to publish the Program Diversity and Persistence Dashboards to Power BI Online. This release is targeted to your internal test users, allowing them to log in, view, use, and test the data visualizations. At the end of this step, you will be able to plan your rollout and deployment.
 
 ### Basic Power BI Online Setup
 
@@ -331,7 +364,7 @@ To create users follow these simple steps:
 
 * This will open a modal window that will allow you to add a user. Follow the instruction on that modal to create a user.
 * It is important to note that the user's email address in Power BI should be the same as the ones in you SIS and in the Ed-Fi ODS. This is how we match the user that is logged in with a role in the Ed-Fi ODS.
-* You can repeat this process to add all the users that will be accessing the Clinical Experience and Performance Dashboard on Power BI
+* You can repeat this process to add all the users that will be accessing the Program Diversity and Persistence Dashboard on Power BI
 
 #### Creating a Workspace to Hold the Dashboard
 
@@ -357,7 +390,7 @@ To confirm, we recommend that you login to Power BI Online and ensure you can se
 
 To do this, open your favorite browser and navigate to [https://powerbi.microsoft.com/](https://powerbi.microsoft.com/) and login.
 
-Click on your workspace and you should see the "Clinical Experience and Performance Dashboard" in the list, similar to the Diversity Dashboard shown in the screenshot below:
+Click on your workspace and you should see the "Program Diversity and Persistence Dashboard" in the list.
 
 ![Dashboard as listed in a workspace](https://edfidocs.blob.core.windows.net/$web/img/reference/epp-sk/dashboard-listed-in-workspace.png)
 
@@ -370,7 +403,7 @@ The report comes configured with two security roles:
 
 To enable it in Power BI Online, follow these steps:
 
-Open your browser and navigate to Power BI Online. Then proceed to open the workspace where you published the "Clinical Experience and Performance Dashboard" report. Ensure that the "All" submenu has been selected, and click on the context menu for the row showing the "Dataset". In the context menu select the security option.
+Open your browser and navigate to Power BI Online. Then proceed to open the workspace where you published the "Program Diversity and Persistence Dashboard" report. Ensure that the "All" submenu has been selected, and click on the context menu for the row showing the "Dataset". In the context menu select the security option.
 
 ![Enable security](https://edfidocs.blob.core.windows.net/$web/img/reference/epp-sk/enable-security-1.png)
 
@@ -412,10 +445,10 @@ Regarding identity mapping, **it is important to note that a user's email addre
 
 ## Success! You are Ready to Plan Your Rollout and Production Deployment With Your Team
 
-At this point you have completed all the steps required to launch your "Clinical Experience and Performance Dashboard" with your organization. You are now in a position to:
+At this point you have completed all the steps required to launch your "Program Diversity and Persistence Dashboard" with your organization. You are now in a position to:
 
 * Verify functionality and support from key systems
-* Explore the dashboard (follow the [use case description](/getting-started/educator-pipeline/clinical-experience) to help you and your users)
+* Explore the dashboard (follow the [use case description](/getting-started/educator-pipeline/use-cases/program-diversity) to help you and your users)
 * Understand what resources and technical skills you need to support it
 * Test this solution with your key audiences in a pilot (Note: it is recommended to have a small pilot group so that they help by looking at data and provide feedback on the displayed metrics)
 * Plan and conduct a production rollout of your solution

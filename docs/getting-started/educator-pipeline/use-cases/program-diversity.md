@@ -1,10 +1,8 @@
-# Program Diversity and Persistence
+# Program Diversity and Persistence Use Case / Dashboard
 
-Meaningfully increasing the diversity of the teacher workforce requires the
-examination of blockers that occur during the teacher pipeline.
+Educator Preparation Programs (EPPs) are committed to increasing the number of teacher candidates who complete their programs and earn certification. By analyzing data on how different candidate groups progress through key milestones, EPPs can identify trends, set improvement targets, and tailor supports. These insights are essential for driving equity, enhancing program effectiveness, and ensuring more candidates are prepared to enter the classroom. Access the [Educator Preparation Ed-Fi Backed Tools: Program Diversity and Persistence Use Case Resource](https://edfidocs.blob.core.windows.net/$web/assets/getting-started/epp/use-cases/program-diversity/Program%20Diversity%20and%20Persistence%20Use%20Case%20Resource.pdf), to learn more about this use case and the related essential questions.
 
-To demonstrate the potential of the Ed-Fi Data Standard's _educator preparation
-data model_ (EPDM), a [sample PowerBI
+In supporting the EPP Community to access these insights, Ed-Fi has developed a field-informed solution backed by the Educator Preparator Data Model (EPDM) with a [sample PowerBI
 dashboard](https://github.com/Ed-Fi-Exchange-OSS/Educator-Pipeline-Dashboards)
 providing three visualizations: Candidate Summary, Program Completion Rate by
 Race, Certification Rate by Race.

@@ -1,3 +1,8 @@
+---
+sidebar_position: 1
+---
+
+
 # Educator Workforce Use Case
 
 ## Background and Purpose
