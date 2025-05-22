@@ -107,6 +107,36 @@ and rerun the commands above.
 
 ## Configure ODS Instances
 
+### Step 1
+
+Setup each ODS database per tenant, go to `Ed-Fi-ODS-Implementation` directory and run the following commands.
+
+`Initialize-PowershellForDevelopment.ps1`
+```powershell
+C:\ed-fi\Ed-Fi-ODS-Implementation> .\Initialize-PowershellForDevelopment.ps1
+```
+
+`Reset-OdsDatabase`
+
+```powershell
+Using repositories: Ed-Fi-ODS, Ed-Fi-ODS-Implementation
+Importing Module: D:\ed-fi\Ed-Fi-ODS-Implementation\Application\SolutionScripts\InitializeDevelopmentEnvironment.psm1
+PS D:\ed-fi\Ed-Fi-ODS-Implementation> Reset-OdsDatabase
+```
+
+Repeat the above steps for each tenant `(EdFi_Tenant1_{0} and EdFi_Tenant2_{0})` configuring the database name in the `EdFi_ODS` connection strings in the user secret file.
+
+```json
+{
+    "ConnectionStrings": {
+        "EdFi_Ods": "server=(local);trusted_connection=True;database=EdFi_Tenant2_{0};Application Name=EdFi.Ods.WebApi"
+    }
+}
+```
+
+
+### Step 2
+
 Next, need to setup the `dbo.OdsInstances` table in each
 `EdFi_Tenant{?}_Admin` database. Note that the `OdsInstanceName` and
 `OdsInstanceType` are both free text fields where you can put any string that is
