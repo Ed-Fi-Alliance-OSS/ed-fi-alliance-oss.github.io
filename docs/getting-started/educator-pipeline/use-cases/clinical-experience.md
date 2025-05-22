@@ -1,16 +1,9 @@
-# Clinical Experience Dashboard
+# Clinical Experience and Performance Use Case / Dashboard
 
-The shortage of teachers continues to grow, and when indicators of teacher
-quality are taken into account the shortage is even more dire than estimated.
-Now more than ever we need programs to produce teachers who are highly-qualified
-and well-prepared—armed with the knowledge and skills to be effective in the
-classroom on day one. Access to connected data provides programs with a lens
-into candidates’ readiness to teach and informs improvements in candidate
-support and preparation.
+Educator Preparation Programs (EPPs) gain valuable insights into candidate readiness through clinical evaluations and end-of-program surveys. By analyzing this data across programs, cohorts, and demographic groups, EPPs can pinpoint areas of strength and identify where additional support is needed. These findings guide targeted improvements, helping ensure candidates are well-prepared for the classroom and that programs evolve to meet the diverse needs of future educators. Access the [Educator Preparation Ed-Fi Backed Tools: Clinical Experience and Performance Use Case Resource](https://edfidocs.blob.core.windows.net/$web/assets/getting-started/epp/use-cases/clinical-experience/Ed-Fi%20Alliance%20_Clinical%20Experience%20and%20Performance%20Use%20Case%20Resource.pdf), to learn more about this use case and the related essential questions.
 
-To demonstrate the potential of the Ed-Fi Data Standard's _educator preparation
-data model_ (EPDM), a [sample PowerBI
-dashboard](https://github.com/Ed-Fi-Exchange-OSS/Educator-Pipeline-Dashboards)
+Paragraph locked by Lindsey Judd
+In supporting the EPP Community to access these insights, Ed-Fi has developed a field-informed solution backed by the Educator Preparator Data Model (EPDM) with a [sample PowerBI dashboard](https://github.com/Ed-Fi-Exchange-OSS/Educator-Pipeline-Dashboards)
 providing three visualizations: Evaluation, Evaluation Detail, and Survey.
 
 :::note
