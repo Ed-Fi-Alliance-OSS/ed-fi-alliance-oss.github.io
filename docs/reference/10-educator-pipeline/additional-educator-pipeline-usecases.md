@@ -1,8 +1,6 @@
 
 # Additional Educator Pipeline Use Cases
 
-## Explaining the use cases
-
 :::info
-[Click Here](/getting-started/educator-pipeline/use-cases/)
+View additional [Educator Pipeline Use Cases](/getting-started/educator-pipeline/use-cases/) here
 :::
