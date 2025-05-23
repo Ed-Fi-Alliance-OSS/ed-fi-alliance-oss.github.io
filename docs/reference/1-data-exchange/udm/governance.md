@@ -60,7 +60,7 @@ UDM.
 * Adding domains or major entities also generally happens in conjunction with
     field work such as proof-of-concept implementations, or deconstruction of
     technology submitted to the [Ed-Fi
-    Exchange](https://edfi.atlassian.net/wiki/spaces/EXCHANGE/overview).
+    Exchange](/getting-started/edfi-exchange).
 * Adding elements to an existing entity requires a lower burden of proof, but
     still requires documentation of specific use cases from field work.
 * The Alliance periodically reviews how field work is extending concrete

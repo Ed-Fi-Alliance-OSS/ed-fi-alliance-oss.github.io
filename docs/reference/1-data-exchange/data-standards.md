@@ -21,9 +21,7 @@ changes in consecutive years followed by a year with no breaking changes. This
 version is intended to support school years 2024-2025, 2025-2026. There is no
 plan for a 4.1 or other minor release.
 
-➡️ [Documentation for
-4.0](https://edfi.atlassian.net/wiki/spaces/EFDS4X/overview) (opens in
-Confluence)
+➡️ [Documentation for 4.0](/reference/data-exchange/data-standard/4/)
 
 ### Version 3.x
 
@@ -31,9 +29,7 @@ Version 3.0 was released in 2018 and received several updates until 2022,
 through version 3.3.1. School year 2024-2025 will be the last year to support
 Data Standard 3.3.1; older 3.x releases are already out of support.
 
-➡️ [Documentation for
-3.3](https://edfi.atlassian.net/wiki/spaces/EFDS33/overview) (opens in
-Confluence)
+➡️ [Documentation for 3.3](/reference/data-exchange/data-standard/3/)
 
 ## Data Standard Principles
 
