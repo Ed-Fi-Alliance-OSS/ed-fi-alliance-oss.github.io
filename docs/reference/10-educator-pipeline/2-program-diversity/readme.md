@@ -1,22 +1,22 @@
-# Clinical Experience and Performance Dashboard
+# Program Diversity and Persistence Dashboard
 
 :::tip
 
-Want to know more before you get started? Read more about [Educator Preparation](https://www.ed-fi.org/how-to-use-ed-fi/educator-prep-programs/) and the [Clinical Experience and Performance use case summary](/getting-started/educator-pipeline/clinical-experience).
+Want to know more before you get started? Read more about [Educator Preparation](https://www.ed-fi.org/how-to-use-ed-fi/educator-prep-programs/) and [Program Diversity and Persistence](https://www.ed-fi.org/how-to-use-ed-fi/educator-prep-programs/program-diversity-and-persistence/) on the Ed-Fi website, or read the [Program Diversity and Persistence use case summary](/getting-started/educator-pipeline/use-cases/program-diversity).
 
 :::
 
-The Clinical Experience and Performance Dashboard provides step-by-step instructions to technical and non-technical users on how to implement the Ed-Fi Clinical Experience and Performance solution.
+The Program Diversity and Persistence Dashboard provides step-by-step instructions to technical and non-technical users on how to implement the Ed-Fi Program Diversity and Persistence solution.
 
-![Teacher Work Sample Summary view](https://edfidocs.blob.core.windows.net/$web/img/reference/epp-sk/teacher-work-sample-summary-view.webp)
+![Candidate Summary view](https://edfidocs.blob.core.windows.net/$web/img/getting-started/use-cases/epp/candidate-summary-small.png)
 
-The [Setup Guide](./setup-guide.md) provides details on how to customize the solution to fit your unique needs such as setting the solution up on your own infrastructure, configuring the Data Import tool, and loading test data. Completing the Setup Guide will result in a test environment intended to mimic your production environment. It is recommended that you have access to resource(s) that have a basic knowledge of Windows Server, Microsoft SQL Server, and Power BI.
+The [Setup Guide](./setup-guide.md) provides details on how to customize the Program Diversity and Persistence solution to fit your unique needs such as setting the solution up on your own infrastructure, configuring the Data Import tool, and loading test data. Completing the Setup Guide will result in a test environment intended to mimic your production environment. It is recommended that you have access to resource(s) that have a basic knowledge of Windows Server, Microsoft SQL Server, and Power BI.
 
 For more help operating this Dashboard, see the following pages:
 
 * [Data Requirements](./data-requirements.md)
 * [Mapping Guidance](./mapping-guidance.md)
-* [Data Import Error Report](../program-diversity/data-import-error-report.md)
+* [Data Import Error Report](./data-import-error-report.md)
 
 ## System Requirements
 
@@ -51,7 +51,7 @@ This Dashboard was developed with the following software:
 
 * Chocolatey (Package Manager) (optional)
 * Git for Windows (Solution Code Manager)
-* Modern browser (e.g. Microsoft Edge or Google Chrome)
+* Modern browser (Microsoft Edge or Google Chrome)
 
 #### Ed-Fi Technology Suite 3
 
