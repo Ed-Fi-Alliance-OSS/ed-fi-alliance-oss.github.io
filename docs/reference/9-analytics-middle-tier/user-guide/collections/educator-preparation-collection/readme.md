@@ -5,7 +5,7 @@
 The Educator Preparation collection was built to power the the EPP Dashboard's
 and help answer the following questions:
 
-For the [Program Diversity and Persistence Dashboard](../../../../10-educator-pipeline/program-diversity/readme.md)
+For the [Program Diversity and Persistence Dashboard](/getting-started/educator-pipeline/use-cases/program-diversity)
 
 > _Does the diversity of our candidate pool align with the areas the candidates
 > will most likely be teaching in?_
@@ -13,7 +13,7 @@ For the [Program Diversity and Persistence Dashboard](../../../../10-educator-pi
 > _Is our candidate pipeline (Candidate to Completed to Certified to teach) as
 > healthy as we would expect?_
 
-For the [Clinical Experience and Performance Dashboard](../../../../10-educator-pipeline/clinical-experience/readme.md)
+For the [Clinical Experience and Performance Dashboard](/getting-started/educator-pipeline/use-cases/clinical-experience)
 
 > _Are our candidates performing as expected during their clinical experience
 > (based on observational data)_
