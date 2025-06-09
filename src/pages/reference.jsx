@@ -90,7 +90,7 @@ function Main() {
             <ul>
               <li>
                 <Link to="/reference/educator-pipeline">
-                  Educator Pipeline Dashboards
+                  Educator Pipeline Use Cases / Dashboards
                 </Link>
               </li>
               <li>
