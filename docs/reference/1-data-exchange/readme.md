@@ -15,6 +15,9 @@ contains a [Unifying Data Model](./udm/readme.md) designed to capture the
 meaning and inherent structure in the most important information in the K–12
 education enterprise
 
+➡️ [Documentation for version 5](/reference/data-exchange/data-standard/) \
+➡️ [Documentation for version 4](/reference/data-exchange/data-standard/4/)
+
 ## Ed-Fi API Standards
 
 An Ed-Fi compatible API application creates a REST-based interface for data

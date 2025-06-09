@@ -3,6 +3,14 @@ import TabItem from '@theme/TabItem';
 
 # Docker Deployment
 
+:::tip
+
+This page describes how to deploy the Ed-Fi ODS / API version 7.x using Docker
+containers. For older versions of the ODS / API, please refer to the [Docker
+Deploy v2.x](./v2/readme.mdx) page.
+
+:::
+
 :::note
 
 The following links contain relevant source code and published images:
@@ -48,7 +56,8 @@ on-premises, in the cloud), which is a massive advantage for both development
 and deployment. Leading cloud providers, including Google Cloud, Amazon Web
 Services (AWS), and Microsoft Azure, have adopted it. For simplicity, the steps
 below describe how to use Docker Compose to deploy the Ed-Fi ODS/API and related
-tools on Docker Desktop.
+tools on Docker Desktop. These instructions are generally transferrable to other OCI-based
+container runtimes, such as Podman.
 
 ## Setup
 
@@ -109,14 +118,14 @@ approach,
 3. Create a Compose file to build db-admin, db-ods (minimal template), or db-ods-sandbox (populated template)
     Docker images for SQL Server. Refer to the following  sample Compose files for guidance:
      * [Compose file with minimal template](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/blob/main/Docker/docker-compose-local-mssql.yml)
-     * [Compose file with populated template](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/blob/main/Docker/docker-compose-sandbox-mssql.yml) 
+     * [Compose file with populated template](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/blob/main/Docker/docker-compose-sandbox-mssql.yml)
 
-    This approach enables you to set up the MSSQL database using Docker containers. By default, the SQL Server Express edition is used. 
+    This approach enables you to set up the MSSQL database using Docker containers. By default, the SQL Server Express edition is used.
     You can specify a different SQL Server edition or provide a product key by setting the MSSQL_PID environment variable .
 
      ✅ PRO: does not require local MSSQL Server instance \
      ❌ CON: Requires additional resources and time to download, build Docker images
-        
+
 
 </details>
 
