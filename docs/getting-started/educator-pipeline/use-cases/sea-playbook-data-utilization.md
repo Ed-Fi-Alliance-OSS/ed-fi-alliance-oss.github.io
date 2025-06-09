@@ -19,13 +19,13 @@ Available in both PowerPoint and PDF formats, this resource is meant to be adapt
 
 ## Other Useful Resources
 
-* [Apprenticeship Pathway Use Case](https://docs.ed-fi.org/getting-started/educator-pipeline/use-cases/apprenticeship)
+* [Apprenticeship Pathway Use Case](/getting-started/educator-pipeline/use-cases/apprenticeship)
 
-* [Educator Pipeline Use Case/Dashboard](https://docs.ed-fi.org/getting-started/educator-pipeline/use-cases/educator-workforce)
+* [Educator Pipeline Use Case/Dashboard](/getting-started/educator-pipeline/use-cases/educator-workforce)
 
-* [Clinical Experience and Performance Use Case/Dashboard](https://docs.ed-fi.org/getting-started/educator-pipeline/use-cases/clinical-experience)
+* [Clinical Experience and Performance Use Case/Dashboard](/getting-started/educator-pipeline/use-cases/clinical-experience)
 
-* [Performance Diversity and Persistence Use Case/Dashboard](https://docs.ed-fi.org/getting-started/educator-pipeline/use-cases/program-diversity)
+* [Performance Diversity and Persistence Use Case/Dashboard](/getting-started/educator-pipeline/use-cases/program-diversity)
 
 * [Educator Preparation Data Model (EPDM) Technical Resources](https://edfi.atlassian.net/wiki/spaces/EPP/pages/23171694/EPDM+Technical+Resources)
 
