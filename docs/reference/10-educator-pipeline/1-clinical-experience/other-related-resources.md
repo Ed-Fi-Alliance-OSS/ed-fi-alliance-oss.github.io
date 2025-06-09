@@ -11,3 +11,5 @@ Comprehensive resources are available to help users navigate the dashboard effec
 * [Clinical Experience and Performance Dashboard: Navigation Guide](https://edfidocs.blob.core.windows.net/$web/assets/getting-started/epp/use-cases/clinical-experience/EdFi_Alliance_Clinical_Experience_and_Performance_Starter_Kit_Quick_Navigation_Guide_R2.pdf)
 
 * [Technical Reference: Measure Document](https://edfidocs.blob.core.windows.net/$web/assets/getting-started/epp/use-cases/clinical-experience/EdFi%20Alliance%20Clinical%20Experience%20and%20Performance%20Dashboard_%20Measures%20Documentation.xlsx)
+
+* [Educator Preparation Ed-Fi Backed Tools: Clinical Experience and Performance Use Case Resource](https://edfidocs.blob.core.windows.net/$web/assets/getting-started/epp/use-cases/clinical-experience/Ed-Fi%20Alliance%20_Clinical%20Experience%20and%20Performance%20Use%20Case%20Resource.pdf)
