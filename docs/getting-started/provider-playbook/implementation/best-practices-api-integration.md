@@ -27,12 +27,6 @@
 * It is advisable to maintain a sync database to keep track of records that have been synced to the Ed-Fi ODS.  As part of this process you should save the ID from the location header after creating a record; This will help you minimize your traffic in multiple ways, and may also protect you from orphaning records.
 * API performance can depend on load. Do not expect consistent performance.
 
-## Error Handling
-
-* Especially in year start scenarios, there can be a high volume of errors in certain categories. Consider grouping and or limiting the number of errors visible to the end user. As an example, you may attempt to send records that you are not yet authorized to send, resulting in many thousands of errors during a large batch scenario.
-* Make sure errors are logged for data stewards troubleshooting and that they do not get deleted from the logs after the errors are cleared. Allow manual or scheduled log clearing later. Make sure logs do not contain PII as they may be forwarded to an MSP or technical staff for troubleshooting.
-* Many errors happen because a relationship between the resource and the education organization has not been formed. As an example, it is common to try and update the student record before the studentSchoolAssociation (or studentEducationOrganizationResponsibilityAssociation) is submitted. Use the dependency order guide (linked above) to determine at what point each CRUD operation is allowed.
-
 ## API Consumers
 
 * Do not use the Ed-Fi API as an application backend - i.e., send all data requests that occur during a user's usage of an application to the API. There are 2 main reasons for this.
