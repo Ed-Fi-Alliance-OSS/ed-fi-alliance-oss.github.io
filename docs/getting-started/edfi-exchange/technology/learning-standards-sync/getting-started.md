@@ -20,7 +20,7 @@ Certica Solutions provides support for Academic Benchmarks via [absupport@certic
 
 ### Step 2. Download and Extract to Location
 
-Download the Learning Standards Sync Utility from the sidebar on the right of this page. Once downloaded, extract the archive file to the desired location, and navigate to the folder. The file named **EdFi.Admin.LearningStandards.CLI.exe** is the utility.
+[Download the Learning Standards Sync Utility](https://github.com/Ed-Fi-Exchange-OSS/Ed-Fi-LearningStandards-Client/releases/tag/1.1). Once downloaded, extract the archive file to the desired location, and navigate to the folder. The file named **EdFi.Admin.LearningStandards.CLI.exe** is the utility.
 
 ### Step 3. Install Academic Benchmarks Vendor Claim Set to the Target ODS
 
@@ -406,4 +406,4 @@ Log files are written to the same directory as the application. These logs conta
 
 ## Next Steps and Support
 
-You can download a mapping between the AB data model and the Ed-Fi data model in the sidebar on this page.
+You can download a mapping between the AB data model and the Ed-Fi data model [here](https://github.com/Ed-Fi-Exchange-OSS/Ed-Fi-LearningStandards-Client/blob/main/other/Learning%20Standards%20Sync%20Utility%20-%20Academic%20Benchmarks%202019%20to%20Ed-Fi%20v10.xlsx).
