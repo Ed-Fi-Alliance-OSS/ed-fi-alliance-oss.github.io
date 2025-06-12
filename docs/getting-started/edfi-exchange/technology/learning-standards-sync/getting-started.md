@@ -406,4 +406,4 @@ Log files are written to the same directory as the application. These logs conta
 
 ## Next Steps and Support
 
-You can download a mapping between the AB data model and the Ed-Fi data model in the sidebar on this page.
+You can download a mapping between the AB data model and the Ed-Fi data model [here](https://github.com/Ed-Fi-Exchange-OSS/Ed-Fi-LearningStandards-Client/blob/main/other/Learning%20Standards%20Sync%20Utility%20-%20Academic%20Benchmarks%202019%20to%20Ed-Fi%20v10.xlsx).
