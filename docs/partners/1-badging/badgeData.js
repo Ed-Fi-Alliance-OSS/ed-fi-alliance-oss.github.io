@@ -445,6 +445,19 @@ export default {
       versionCompatibility: ['Ed-Fi Data Standard V4 and Suite 3'],
       availability: 'Available to any agency (all sizes) or vendor in the U.S.',
     },
+
+            {
+      logo: 'https://www.ed-fi.org/assets/2025/06/67537c5c1b120ceabe9a0913_Frame-2087325081.png',
+      productName: 'SchooLinks Platform',
+      provider: 'SchooLinks',
+      website: 'https://www.schoolinks.com/',
+      validThrough: 'June 17, 2027',
+      verifyingAgencies: ['Greenville County Schools, SC'],
+      documentation: {'Mapping Document':'https://www.ed-fi.org/assets/2025/06/SchooLinks-Ed-Fi_-Greenville-Data-Mapping.xlsx',
+      },
+      versionCompatibility: ['Suite 3.x - 6.x'],
+      availability: 'Available for all states version Suite 3 – v6.x and above ',
+    },
   ],
 
   implementationPartner: [
