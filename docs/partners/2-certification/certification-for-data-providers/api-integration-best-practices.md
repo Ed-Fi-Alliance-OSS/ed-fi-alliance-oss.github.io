@@ -96,3 +96,43 @@ of Ed-Fi-based API connections. For example:
 how to resolve bad connections as part of the product feature.​
 * Provide LEA administrators with access to a resource​ that helps them resolve common Ed-Fi-related data
 errors (e.g., error dictionary).
+
+## Recommended practices
+
+The following best practices are _recommended_, but not _required_, for Ed-Fi Certification.
+
+### Token Expiration
+
+Token generation is expensive, and overuse of the token endpoint can put a
+significant burden on the API host. When an API clients authenticates, it
+receives a response with a payload like this:
+
+```json
+{
+  "access_token": "29f3b057e14844138a0389fdc7681dc1",
+  "expires_in": 1800,
+  "token_type": "bearer"
+}
+```
+
+This token is valid for the next 1800 seconds, or 30 minutes. The API client
+should continue using this token until it is expired, rather than retrieving a
+new token for each request. The client application can either pro-actively renew
+as the token is about to expire, it could detect a 401 (unauthorized) response
+and then issue a new request for a token. Ideally, separate processes share the
+same token (and token refresh logic) when using a multi-threaded process.
+
+### Use of the Discovery API
+
+API Design guidelines and recommendations are provided by the Ed-Fi Alliance
+because the REST architecture style allows for a great deal of flexibility in
+design. Discovery API (formerly known as "version endpoint") should be used by
+API clients to discover information about the Data Model available at a
+particular URL and to discover details about the implementation. The Discovery
+API provides essential metadata about the application version, supported data
+models, and URLs for additional metadata, aiding in client-server interactions.
+Note: these guidelines may be considered for inclusion in future certification
+requirements but are not currently under review for inclusion in certification
+testing for school year 2025-26.
+
+See [Discovery API](/reference/data-exchange/api-guidelines/design-and-implementation-guidelines/api-design-guidelines/discovery-api) for more detailed information on this endpoint.
