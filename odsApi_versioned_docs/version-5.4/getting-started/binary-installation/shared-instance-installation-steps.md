@@ -1,11 +1,14 @@
 ---
-title: Sandbox Installation Steps
-sidebar_position: 2
+title: Shared Instance Installation Steps
+sidebar_position: 3
 ---
 
-# Sandbox Installation Steps
+# Shared Instance Installation Steps
 
-This section describes how to set up the Ed-Fi ODS / API v5.4 in sandbox mode. Before you proceed, make sure you have installed prerequisites listed in [Getting Started - Binary Installation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774182/Getting+Started+-+Binary+Installation).
+This section describes how to set up the Ed-Fi ODS / API v5.4 in shared instance mode. Before you proceed, make sure you have installed the prerequisites listed in [Getting Started - Binary Installation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774182/Getting+Started+-+Binary+Installation).
+
+> **Warning**
+> There are considerable limitations to storing multiple years of data in a single ODS. If you are using "Shared Instance" deployment, plan on starting with a fresh ODS each school year. Please refer to [Guidance on Multi-Year Data in ODS](https://edfi.atlassian.net/wiki/display/ODSAPIS3V54/Guidance+on+Multi-Year+Data+in+ODS?src=contextnavpagetreemode) for details.
 
 ## Contents
 
@@ -13,7 +16,7 @@ This section describes how to set up the Ed-Fi ODS / API v5.4 in sandbox mode. B
 - [Step 2. Install the Ed-Fi Databases](#step-2-install-the-ed-fi-databases)
 - [Step 3. Install WebApi](#step-3-install-webapi)
 - [Step 4. Install Swagger](#step-4-install-swagger)
-- [Step 5. Install SandboxAdmin (for Sandbox Mode Only)](#step-5-install-sandboxadmin-for-sandbox-mode-only)
+- [Step 5. Install Admin App](#step-5-install-admin-app)
 - [Step 6. Restart your Website](#step-6-restart-your-website)
 
 ---
@@ -27,13 +30,12 @@ The Ed-Fi ODS / API installation packages can be downloaded from the following l
 The required release packages to install the Ed-Fi ODS / API can be found at the links below. We recommend you stay current with the latest patch update that has been promoted to [release](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging?_a=feed&feed=EdFi@Release).
 
 - [EdFi.Suite3.Installer.WebApi](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Installer.WebApi/versions/5.4.57)
-- [EdFi.Suite3.Installer.SwaggerUI](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Installer.SwaggerUI/overview/5.4.57)
-- [EdFi.Suite3.Installer.SandboxAdmin](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Installer.SandboxAdmin/versions/5.4.59)
+- [EdFi.Suite3.Installer.SwaggerUI](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Installer.SwaggerUI/overview/5.4.57) (Optional, not for production)
 - [EdFi.Suite3.RestApi.Databases](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.RestApi.Databases/overview/5.4.2272)
 
 For each of the downloads, **right-click** and select "Properties." Update the file extension (from .nupkg to .zip). Remove the version number (optional). Check the box next to **Unblock** (this will prevent PowerShell from asking for permission to load every module in the installer) and click **OK**.
 
-![Sample.nupkg](https://edfi.atlassian.net/wiki/download/thumbnails/22774213/image2024-7-25_6-28-48.png?version=1&modificationDate=1721906933815&cacheVersion=1&api=v2&width=700&height=942)
+![Sample.nupkg](https://edfi.atlassian.net/wiki/download/thumbnails/22774218/image2024-7-25_6-30-30.png?version=1&modificationDate=1721907033718&cacheVersion=1&api=v2&width=725&height=977)
 
 :::info
 You may need to configure TLS while running the installation scripts described in steps below.
@@ -51,7 +53,7 @@ Extract the contents of the EdFi.Suite3.RestApi.Databases package. The paths in 
 
 ### Edit the configuration.json File
 
-The basic settings for Microsoft SQL Server deployment are provided in configuration.json and the basic settings for PostgreSQL deployment are provided in configuration.postgreSQL.json file. If deploying to PostgreSQL, delete configuration.json file and rename configuration.postgreSQL.json to configuration.json. Update the settings in the file to fit your needs.
+There are several settings in the configuration file that are left empty as they depend on whether you are opting for SQL Server or PostgreSQL backend. Update the settings by consulting the samples provided below.
 
 <details>
   <summary>SQL Server</summary>
@@ -65,7 +67,7 @@ The basic settings for Microsoft SQL Server deployment are provided in configura
       "EdFi_Master": "server=(local);trusted_connection=True;database=master;Application Name=EdFi.Ods.WebApi"
     },
     "ApiSettings": {
-      "Mode": "Sandbox",
+      "Mode": "SharedInstance",
       "Engine": "SQLServer",
       ...
       "MinimalTemplateScript": "TPDMCoreMinimalTemplate",
@@ -87,7 +89,7 @@ The basic settings for Microsoft SQL Server deployment are provided in configura
       "EdFi_Master": "host=localhost;port=5432;username=postgres;database=postgres;Application Name=EdFi.Ods.WebApi"
     },
     "ApiSettings": {
-      "Mode": "Sandbox",
+      "Mode": "SharedInstance",
       "Engine": "PostgreSQL",
       ...
       "MinimalTemplateScript": "TPDMCorePostgreSqlMinimalTemplate",
@@ -99,7 +101,7 @@ The basic settings for Microsoft SQL Server deployment are provided in configura
 
 ### Run Installation Script
 
-After you edit the configuration.json file, open a PowerShell window in Administrator mode and navigate to the EdFi.Suite3.RestApi.Databases package folder.
+Open a PowerShell window in Administrator mode and navigate to the EdFi.Suite3.RestApi.Databases package folder.
 
 Run the following PowerShell command to load modules for installation:
 
@@ -107,7 +109,7 @@ Run the following PowerShell command to load modules for installation:
 Import-Module .\Deployment.psm1
 ```
 
-Then, execute the following command in PowerShell:
+Next, execute the following command in PowerShell:
 
 ```powershell
 Initialize-DeploymentEnvironment
@@ -117,11 +119,19 @@ Initialize-DeploymentEnvironment
 
 ## Step 3. Install WebApi
 
-Extract the contents of the EdFi.Suite3.Installer.WebApi package. The paths in these instructions assume that the package was extracted to a folder with the name of the package (e.g., `C:\temp\EdFi.Suite3.Installer.WebApi`).
+Extract the contents of the EdFi.Suite3.Installer.WebApi package. The paths in these instructions assume that the package was extracted to a folder with the name of the package (e.g., C:\temp\EdFi.Suite3.Installer.WebApi).
 
 ### Prepare Installation script
 
-Open a PowerShell window in Administrator mode and navigate to the EdFi.Suite3.Installer.WebApi package folder and run the following PowerShell command to load modules for installation:
+Open a PowerShell window in Administrator mode and navigate to the EdFi.Suite3.Installer.WebApi package folder. Run the following PowerShell command to load modules for installation:
+
+```powershell
+Import-Module .\Install-EdFiOdsWebApi.psm1
+```
+
+The WebApi installer can take a number of parameters to tailor the installation experience (more examples can be found in the Install-EdFiOdsWebApi.psm1 file). At a minimum, database connection info is required.
+
+Copy and modify the following parameter code to fit your connection information:
 
 <details>
   <summary>SQL Server</summary>
@@ -134,7 +144,7 @@ Open a PowerShell window in Administrator mode and navigate to the EdFi.Suite3.I
          Server="localhost"
          UseIntegratedSecurity=$true
       }
-      InstallType = "Sandbox"   
+      InstallType = "SharedInstance"   
   }
   ```
 </details>
@@ -150,18 +160,16 @@ Open a PowerShell window in Administrator mode and navigate to the EdFi.Suite3.I
          Server="localhost"
          Username="postgres"
       }
-      InstallType = "Sandbox"   
+      InstallType = "SharedInstance"   
   }
   ```
 </details>
 
-<br>
-
 Paste the modified parameter code into your PowerShell window and hit Enter.
 
-### Run the Installation Script (Web API)
+### Run the Installation Script
 
-Next, run the following command in the PowerShell window:
+Run the following command in the PowerShell window:
 
 ```powershell
 Install-EdFiOdsWebApi @parameters
@@ -171,17 +179,17 @@ Install-EdFiOdsWebApi @parameters
 
 ## Step 4. Install Swagger
 
-Extract the contents of the EdFi.Suite3.Installer.SwaggerUI package. The paths in these instructions assume that the package was extracted to a folder with the name of the package (e.g., C:\temp\EdFi.Suite3.Installer.SwaggerUI).
+Extract the contents of the "EdFi.Suite3.Installer.SwaggerUI" package. The paths in these instructions assume that the package was extracted to a folder with the name of the package (e.g., C:\temp\EdFi.Suite3.Installer.SwaggerUI).
 
 ### Prepare Installation Script
 
-Open a PowerShell window in Administrator mode and navigate to the EdFi.Suite3.Installer.SwaggerUI folder and run the following PowerShell command to load modules for installation:
+Open a PowerShell window in Administrator mode and navigate to the "EdFi.Suite3.Installer.SwaggerUI" folder. Run the following PowerShell command to load modules for installation:
 
 ```powershell
 Import-Module .\Install-EdFiOdsSwaggerUI.psm1
 ```
 
-The Swagger UI installer can take a number of parameters to tailor the install experience (more examples can be found in the Install-EdFiOdsSwaggerUI.psm1 file). At a minimum, WebAPI connection information is required.
+The Swagger UI installer can take a number of parameters to tailor the install experience (more examples can be found in the Install-EdFiOdsWebApi.psm1 file). At a minimum, WebAPI connection information is required.
 
 Copy and modify the following parameter code to add your site name:
 
@@ -194,9 +202,9 @@ $parameters = @{
 
 Paste the modified parameter into your PowerShell window and execute the code.
 
-### Run the Installation Script (Swagger UI)
+### Run the Installation Script
 
-Then, run the following command in the PowerShell window:
+Run the following command in the PowerShell window:
 
 ```powershell
 Install-EdFiOdsSwaggerUI @parameters
@@ -204,54 +212,9 @@ Install-EdFiOdsSwaggerUI @parameters
 
 ---
 
-## Step 5. Install SandboxAdmin (for Sandbox Mode Only)
+## Step 5. Install Admin App
 
-Extract the contents of the EdFi.Suite3.Installer.SandboxAdmin package. The paths in these instructions assume that the package was extracted to a folder with the name of the package (e.g., C:\temp\EdFi.Suite3.Installer.SandboxAdmin).
-
-### Prepare Installation Script
-
-Open a PowerShell window in Administrator mode and navigate to the EdFi.Suite3.Installer.SandboxAdmin folder and run the following PowerShell command to load modules for installation:
-
-```powershell
-Import-Module .\Install-EdFiOdsSandboxAdmin.psm1
-```
-
-The SandboxAdmin installer can take a number of parameters to tailor the install experience (more examples can be found in the Install-EdFiOdsSandboxAdmin.psm1 file). At a minimum, OAuthUrl information is required.
-
-Copy and modify the following parameter code to add your site name:
-
-<details>
-  <summary>SQL Server</summary>
-
-  ```powershell
-  $parameters = @{
-      PackageVersion = "5.4.2285"
-      OAuthUrl = "https://YOUR_SITE_OR_SERVER_NAME_HERE/WebApi"
-  }
-  ```
-</details>
-
-<details>
-  <summary>PostgreSQL</summary>
-
-  ```powershell
-  $parameters = @{
-      PackageVersion = "5.4.2285"
-      OAuthUrl = "https://YOUR_SITE_OR_SERVER_NAME_HERE/WebApi"
-      Engine="PostgreSQL"
-  }
-  ```
-</details>
-<br>
-Paste the modified parameter into your PowerShell window and execute the code.
-
-### Run the Installation Script (Sandbox Admin)
-
-Next, run the following command in the PowerShell window:
-
-```powershell
-Install-EdFiOdsSandboxAdmin @parameters
-```
+The Admin App provides a graphical interface for platform hosts to administer and manage non-sandbox instances of the Ed-Fi ODS / API. Follow the installation steps [here](https://edfi.atlassian.net/wiki/display/ADMIN/Admin+App+for+Suite+3+v2.3). Alternatively, API keys and secrets can be administered by database administrators via SQL queries as outlined in the article [How To: Configure Key / Secret](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774840/How+To+Configure+Key+Secret).
 
 ---
 
@@ -262,27 +225,27 @@ Just a few more tasks to complete your installation:
 * Open IIS (Press the **Windows key** ![Windows logo](https://lh5.googleusercontent.com/o2iqf0j70YV3B-1NQxBFj1Ne-JeToRq5PiZeMtvF05l3jpyp4kseJn-zEs3BULgpAS_TFr8Qyacu5JZkiyXNllygq2EGhPII-PcxYyxkwCUqC4fPhMJ0QbovAD16R7T2StuDemW_) on your keyboard, type **IIS**, select **Internet Information Services (IIS)**, and press **Enter**.
 * **Right-click** on the server (alternatively, you can right-click the EdFi web site), and select **Stop**.
 
-  ![Sample SandboxAdmin $parameters for SQL Server](https://edfi.atlassian.net/wiki/download/thumbnails/22774213/image2021-2-12_17-5-39.png?version=1&modificationDate=1641861343847&cacheVersion=1&api=v2&width=546&height=555)
+  ![Sample SandboxAdmin $parameters for SQL Server](https://edfi.atlassian.net/wiki/download/attachments/22774218/image2021-2-12_17-5-39.png?version=1&modificationDate=1641861344017&cacheVersion=1&api=v2)
 
 * **Right-click** the server (or EdFi website) again and select **Start**.
 
-  ![Sample SandboxAdmin $parameters for PostgreSQL](https://edfi.atlassian.net/wiki/download/thumbnails/22774213/image2021-2-12_17-7-5.png?version=1&modificationDate=1641861343857&cacheVersion=1&api=v2&width=466&height=555)
+  ![Sample SandboxAdmin $parameters for PostgreSQL](https://edfi.atlassian.net/wiki/download/thumbnails/22774218/image2021-2-12_17-7-5.png?version=1&modificationDate=1641861344027&cacheVersion=1&api=v2&width=466&height=555)
 
 You are now ready to use the Ed-Fi ODS / API. The following URLs are available:
 
 | Website | URL |
 | ------- | --- |
-| Ed-Fi ODS / API | `https://YOUR_SITE_OR_SERVER_NAME_HERE/WebApi` |
-| Sandbox Administration (for Sandbox Mode Only) | `https://YOUR_SITE_OR_SERVER_NAME_HERE/SandboxAdmin` |
-| Ed-Fi ODS / API Documentation | `https://YOUR_SITE_OR_SERVER_NAME_HERE/SwaggerUI` |
+| Ed-Fi ODS / API | `https://YOUR_SERVER_NAME_HERE/WebApi` |
+| Ed-Fi Admin App | `https://YOUR_SERVER_NAME_HERE/AdminApp/` |
+| Ed-Fi ODS / API Documentation (Optional, not for production) | `https://YOUR_SERVER_NAME_HERE/SwaggerUI` |
 
 ---
 
 ## Contents
 
 - [Getting Started - Binary Installation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774182/Getting+Started+-+Binary+Installation)
-- Sandbox Installation Steps
-- [Shared Instance Installation Steps](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774218/Shared+Instance+Installation+Steps)
+- [Sandbox Installation Steps](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774213/Sandbox+Installation+Steps)
+- Shared Instance Installation Steps
 - [Year-Specific Installation Steps](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774223/Year-Specific+Installation+Steps)
 - [Binary Releases](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774232/Binary+Releases)
 - [Getting Started - Source Code Installation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774233/Getting+Started+-+Source+Code+Installation)
