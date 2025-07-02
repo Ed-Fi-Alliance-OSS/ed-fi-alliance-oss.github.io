@@ -31,27 +31,19 @@ The Ed-Fi ODS / API configuration described in this documentation has been teste
 
 Find out more about how to begin using the Ed-Fi ODS / API:
 
-<ul>
-  <li>
-    <details>
-      <summary>Getting Started - Binary Installation</summary>
-      <ul>
-        <li><a href="https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774213/Sandbox+Installation+Steps">Sandbox Installation Steps</a></li>
-        <li><a href="https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774218/Shared+Instance+Installation+Steps">Shared Instance Installation Steps</a></li>
-        <li><a href="https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774223/Year-Specific+Installation+Steps">Year-Specific Installation Steps</a></li>
-        <li><a href="https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774232/Binary+Releases">Binary Releases</a></li>
-      </ul>
-    </details>
-  </li>
-  <li>
-    <details>
-      <summary>Getting Started - Source Code Installation</summary>
-      <ul>
-        <li><a href="https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774290/Project+Templates+Installation">Project Templates Installation</a></li>
-      </ul>
-    </details>
-  </li>
-  <li>
-    <a href="https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774308/Getting+Started+-+Appendix">Getting Started - Appendix</a>
-  </li>
-</ul>
+<details>
+  <summary>Getting Started - Binary Installation</summary>
+
+  * [Sandbox Installation Steps](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774213/Sandbox+Installation+Steps)
+  * [Shared Instance Installation Steps](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774218/Shared+Instance+Installation+Steps)
+  * [Year-Specific Installation Steps](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774223/Year-Specific+Installation+Steps)
+  * [Binary Releases](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774232/Binary+Releases)
+</details>
+
+<details>
+  <summary>Getting Started - Source Code Installation</summary>
+
+  * [Project Templates Installation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774290/Project+Templates+Installation)
+  </details>
+
+[Getting Started - Appendix](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774308/Getting+Started+-+Appendix)
