@@ -173,29 +173,29 @@ The detailed definition of the model is shown in the tables below.
 
 **Period (Common from Ed-Fi Core)**: The time period for which the information is applicable or effective.
 
-| Property | UML Datatype | JSON Datatype | Other |   | Cardinality | Definition |
-| --- | --- | --- | --- | --- | --- | --- |
-| BeginDate | Date | number | MetaEd DSL Datatype: DateProperty  SQL Recommended Datatype: DATE  Ed-Fi ODS/API Identity: Yes |   | required | The month, day, and year for the start of  the period. |
-| EndDate | Date| number | MetaEd DSL Datatype: DateProperty  SQL Recommended Datatype: DATE  Ed-Fi ODS/API Identity: No |   | optional | The month, day, and year for the end of the  period. |
+| Property | UML Datatype | JSON Datatype | Other | Cardinality | Definition |
+| --- | --- | --- | --- | --- | --- |
+| BeginDate | Date | number | MetaEd DSL Datatype: DateProperty  SQL Recommended Datatype: DATE  Ed-Fi ODS/API Identity: Yes | required | The month, day, and year for the start of  the period. |
+| EndDate | Date| number | MetaEd DSL Datatype: DateProperty  SQL Recommended Datatype: DATE  Ed-Fi ODS/API Identity: No | optional | The month, day, and year for the end of the  period. |
 
 <br />
 
 **PathPhaseStatusEvent (Common)**: An event recognizing the change in status for the path phase.
 
-| Property | UML Datatype | JSON Datatype | Other |   | Cardinality | Definition |
-| --- | --- | --- | --- | --- | --- | --- |
-| PathPhaseStatus | Reference | object | MetaEd DSL Datatype: DescriptorProperty  Ed-Fi ODS/API Identity: Yes |   | required | The student's status associated with  entering or completing the phase. |
-| PathPhaseStatusDate | Date | number | MetaEd DSL Datatype: DateProperty  SQL Recommended Datatype: DateProperty  Ed-Fi ODS/API Identity: Yes |   | required | The month, day, and year on which the   status was achieved for the milestone. |
+| Property | UML Datatype | JSON Datatype | Other | Cardinality | Definition |
+| --- | --- | --- | --- | --- | --- |
+| PathPhaseStatus | Reference | object | MetaEd DSL Datatype: DescriptorProperty  Ed-Fi ODS/API Identity: Yes | required | The student's status associated with  entering or completing the phase. |
+| PathPhaseStatusDate | Date | number | MetaEd DSL Datatype: DateProperty  SQL Recommended Datatype: DateProperty  Ed-Fi ODS/API Identity: Yes | required | The month, day, and year on which the   status was achieved for the milestone. |
 
 <br />
 
 **PathMilestoneStatusEvent (Common)**: An event recognizing the change in status for the path milestone.
 
-| Property | UML Datatype | JSON Datatype | Other |   | Cardinality | Definition |
-| --- | --- | --- | --- | --- | --- | --- |
-| PathMilestoneStatus | Reference | object | MetaEd DSL Datatype: DescriptorProperty  Ed-Fi ODS/API Identity: Yes |   | required | The student's status associated with the  path milestone. |
-| PathPhaseMilestoneDate | Date | number | MetaEd DSL Datatype: DateProperty  SQL Recommended Datatype: DATE  Ed-Fi ODS/API Identity: Yes |   | required | The month, day, and year associated with  the change in the path milestone status. |
-| PathMilestoneStatusDescription | String | string | MetaEd DSL Datatype: SharedStringProperty  SQL Recommended Datatype:  VARCHAR(256) |   | optional | Additional information associated with the milestone status achieved. |
+| Property | UML Datatype | JSON Datatype | Other | Cardinality | Definition |
+| --- | --- | --- | --- | --- | --- |
+| PathMilestoneStatus | Reference | object | MetaEd DSL Datatype: DescriptorProperty  Ed-Fi ODS/API Identity: Yes | required | The student's status associated with the  path milestone. |
+| PathPhaseMilestoneDate | Date | number | MetaEd DSL Datatype: DateProperty  SQL Recommended Datatype: DATE  Ed-Fi ODS/API Identity: Yes | required | The month, day, and year associated with  the change in the path milestone status. |
+| PathMilestoneStatusDescription | String | string | MetaEd DSL Datatype: SharedStringProperty  SQL Recommended Datatype:  VARCHAR(256) | optional | Additional information associated with the milestone status achieved. |
 
 ## Using the Student Path Model
 
