@@ -45,7 +45,7 @@ Section 3: [Technology Providers - Implementation](./implementation/readme.md)
 * [Technology Partner - Implementation](./implementation/technology-partner-implementation/readme.md)
 * [Ed-Fi API Integration Architecture for Data Providers](./implementation/ed-fi-api-integration-architecture-for-data-providers.md)
 * [Best Practices - API Integration](./implementation/best-practices-api-integration.md)
-* [Best Practices - UI/UX](./implementation/best-practices-uiux.md)
+* [Best Practices - UI/UX](./implementation/technology-partner-implementation/invest-in-a-strong-ux.md)
 
 Section 4: [Technology Providers - Support](./support/readme.md)
 
