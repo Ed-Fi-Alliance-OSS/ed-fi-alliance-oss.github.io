@@ -17,12 +17,7 @@ Note that the project templates have been updated for the v5.4 release. Develope
 
 * [EdFi.ProjectTemplates.Installer.vsix](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.ProjectTemplates.Installer/overview/5.4.396)
 
-## Contents
 
-* [Getting Started - Binary Installation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774182/Getting+Started+-+Binary+Installation)
-* [Getting Started - Source Code Installation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774233/Getting+Started+-+Source+Code+Installation)
-* Project Templates Installation
-* [Getting Started - Appendix](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774308/Getting+Started+-+Appendix)
 
 ## Installation Steps
 
@@ -76,6 +71,3 @@ Now that you've installed the templates, you can find information on how to use 
 * [How To: Add Profiles to the Ed-Fi ODS / API Solution](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774786/How+To+Add+Profiles+to+the+Ed-Fi+ODS+API+Solution)
 * [How To: Extend the Ed-Fi ODS / API - Student Transportation Example](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774474/How+To+Extend+the+Ed-Fi+ODS+API+-+Student+Transportation+Example)
 
----
-
-_Last updated: 2025-07-01_

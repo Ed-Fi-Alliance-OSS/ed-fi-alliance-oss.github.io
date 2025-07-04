@@ -160,6 +160,17 @@ The WebApi installer can take a number of parameters to tailor the installation 
   ```
 </details>
 
+
+
+Paste the modified parameter code into your PowerShell window and hit Enter.
+
+### Run the Installation Script
+
+Run the following command in the PowerShell window:
+
+```powershell
+Install-EdFiOdsWebApi @parameters
+```
 <details>
   <summary>Optional: Custom Extension Plugin Deployment Steps</summary>
 
@@ -177,18 +188,6 @@ Enable your extension plugin in `appsettings.json`. Open the `appsettings.json` 
 ![WebApi Plugin](https://edfi.atlassian.net/wiki/download/thumbnails/22774223/image2021-5-26_13-32-29.png?version=1&modificationDate=1641861344317&cacheVersion=1&api=v2&width=907&height=222)
 
 </details>
-
-Paste the modified parameter code into your PowerShell window and hit Enter.
-
-### Run the Installation Script
-
-Run the following command in the PowerShell window:
-
-```powershell
-Install-EdFiOdsWebApi @parameters
-```
-
----
 
 ## Step 4. Install Swagger
 
@@ -250,18 +249,3 @@ You are now ready to use the Ed-Fi ODS / API. The following URLs are available:
 | Ed-Fi Admin App | https://YOUR_SERVER_NAME_HERE/AdminApp/ |
 | Ed-Fi ODS / API Documentation (Optional, not for production) | https://YOUR_SERVER_NAME_HERE/SwaggerUI |
 
----
-
-## Contents
-
-* [Getting Started - Binary Installation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774182/Getting+Started+-+Binary+Installation)
-* [Sandbox Installation Steps](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774213/Sandbox+Installation+Steps)
-* [Shared Instance Installation Steps](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774218/Shared+Instance+Installation+Steps)
-* Year-Specific Installation Steps
-* [Binary Releases](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774232/Binary+Releases)
-* [Getting Started - Source Code Installation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774233/Getting+Started+-+Source+Code+Installation)
-* [Getting Started - Appendix](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774308/Getting+Started+-+Appendix)
-
----
-
-_Last updated: 2025-06-30_

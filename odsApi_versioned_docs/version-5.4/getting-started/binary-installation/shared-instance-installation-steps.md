@@ -7,18 +7,24 @@ sidebar_position: 3
 
 This section describes how to set up the Ed-Fi ODS / API v5.4 in shared instance mode. Before you proceed, make sure you have installed the prerequisites listed in [Getting Started - Binary Installation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774182/Getting+Started+-+Binary+Installation).
 
+
+
+- [Shared Instance Installation Steps](#shared-instance-installation-steps)
+  - [Step 1. Download the Ed-Fi ODS / API Installer Packages](#step-1-download-the-ed-fi-ods--api-installer-packages)
+    - [Package Links](#package-links)
+  - [Step 2. Install the Ed-Fi Databases](#step-2-install-the-ed-fi-databases)
+    - [Edit the configuration.json File](#edit-the-configurationjson-file)
+    - [Run Installation Script](#run-installation-script)
+  - [Step 3. Install WebApi](#step-3-install-webapi)
+    - [Prepare Installation script](#prepare-installation-script)
+    - [Run the Installation Script](#run-the-installation-script)
+  - [Step 4. Install Swagger](#step-4-install-swagger)
+    - [Prepare Installation Script](#prepare-installation-script-1)
+    - [Run the Installation Script](#run-the-installation-script-1)
+  - [Step 5. Install Admin App](#step-5-install-admin-app)
+  - [Step 6. Restart your Website](#step-6-restart-your-website)
 > **Warning**
 > There are considerable limitations to storing multiple years of data in a single ODS. If you are using "Shared Instance" deployment, plan on starting with a fresh ODS each school year. Please refer to [Guidance on Multi-Year Data in ODS](https://edfi.atlassian.net/wiki/display/ODSAPIS3V54/Guidance+on+Multi-Year+Data+in+ODS?src=contextnavpagetreemode) for details.
-
-## Contents
-
-- [Step 1. Download the Ed-Fi ODS / API Installer Packages](#step-1-download-the-ed-fi-ods--api-installer-packages)
-- [Step 2. Install the Ed-Fi Databases](#step-2-install-the-ed-fi-databases)
-- [Step 3. Install WebApi](#step-3-install-webapi)
-- [Step 4. Install Swagger](#step-4-install-swagger)
-- [Step 5. Install Admin App](#step-5-install-admin-app)
-- [Step 6. Restart your Website](#step-6-restart-your-website)
-
 ---
 
 ## Step 1. Download the Ed-Fi ODS / API Installer Packages
@@ -239,18 +245,3 @@ You are now ready to use the Ed-Fi ODS / API. The following URLs are available:
 | Ed-Fi Admin App | `https://YOUR_SERVER_NAME_HERE/AdminApp/` |
 | Ed-Fi ODS / API Documentation (Optional, not for production) | `https://YOUR_SERVER_NAME_HERE/SwaggerUI` |
 
----
-
-## Contents
-
-- [Getting Started - Binary Installation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774182/Getting+Started+-+Binary+Installation)
-- [Sandbox Installation Steps](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774213/Sandbox+Installation+Steps)
-- Shared Instance Installation Steps
-- [Year-Specific Installation Steps](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774223/Year-Specific+Installation+Steps)
-- [Binary Releases](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774232/Binary+Releases)
-- [Getting Started - Source Code Installation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774233/Getting+Started+-+Source+Code+Installation)
-- [Getting Started - Appendix](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774308/Getting+Started+-+Appendix)
-
-![thumbs up](https://pf-emoji-service--cdn.us-east-1.prod.public.atl-paas.net/standard/ef8b0642-7523-4e13-9fd3-01b65648acf6/64x64/1f44d.png)
-![clapping hands](https://pf-emoji-service--cdn.us-east-1.prod.public.atl-paas.net/standard/ef8b0642-7523-4e13-9fd3-01b65648acf6/64x64/1f44f.png)
-![party popper](https://pf-emoji-service--cdn.us-east-1.prod.public.atl-paas.net/standard/ef8b0642-7523-4e13-9fd3-01b65648acf6/64x64/1f389.png)

@@ -9,11 +9,14 @@ This section describes how to set up the Ed-Fi ODS / API v5.4 using the release 
 
 Before binary installation, install the prerequisites listed in the following steps:
 
-## Contents
+- [Getting Started - Binary Installation](#getting-started---binary-installation)
+  - [Step 1. Install and Configure Windows Components](#step-1-install-and-configure-windows-components)
+    - [Database Server](#database-server)
+    - [Web Server](#web-server)
+  - [Step 2. Install and Configure Required Software](#step-2-install-and-configure-required-software)
+  - [Step 3. Install and Configure ODS / API](#step-3-install-and-configure-ods--api)
 
-- [Step 1. Install and Configure Windows Components](#step-1-install-and-configure-windows-components)
-- [Step 2. Install and Configure Required Software](#step-2-install-and-configure-required-software)
-- [Step 3. Install and Configure ODS / API](#step-3-install-and-configure-ods--api)
+Detail on each step follows.
 
 ---
 
@@ -94,9 +97,3 @@ PowerShell installers released with the ODS / API provide varied configuration o
 - [Year-Specific Installation Steps](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774223/Year-Specific+Installation+Steps)
 
 ---
-
-## Contents
-
-- Getting Started - Binary Installation
-- [Getting Started - Source Code Installation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774233/Getting+Started+-+Source+Code+Installation)
-- [Getting Started - Appendix](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774308/Getting+Started+-+Appendix)

@@ -428,13 +428,15 @@ To set the Startup Projects:
 
 * At this point, you're ready to explore the system.
 
+<details>
+<summary>View detail about the applications...</summary>
+
 Follow these steps to finish configuring the solution:
 
 1. Visiting the API Sandbox Administration Portal and logging in with the Test User Account
 2. Reviewing the Ed-Fi ODS API Documentation
 
-<details>
-<summary>View detail about the applications...</summary>
+
 
 ## The Sandbox Administration Portal
 

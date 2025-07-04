@@ -5,14 +5,6 @@ sidebar_position: 4
 
 # Binary Releases
 
-## Contents
-
-* [Getting Started - Binary Installation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774182/Getting+Started+-+Binary+Installation)
-* [Sandbox Installation Steps](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774213/Sandbox+Installation+Steps)
-* [Shared Instance Installation Steps](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774218/Shared+Instance+Installation+Steps)
-* [Year-Specific Installation Steps](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774223/Year-Specific+Installation+Steps)
-* [Getting Started - Source Code Installation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774233/Getting+Started+-+Source+Code+Installation)
-* [Getting Started - Appendix](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774308/Getting+Started+-+Appendix)
 
 ---
 
@@ -42,7 +34,3 @@ We recommend you stay current with the latest patch update that has been promote
 | EdFi.Ods.Minimal.Template.TPDM.Core.PostgreSQL | PostgreSQL Minimal Template database backup with TPDM core sample data (no descriptors) | [EdFi.Suite3.Ods.Minimal.Template.TPDM.Core.PostgreSQL 5.4](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging?_a=package&feed=EdFi&package=EdFi.Suite3.Ods.Minimal.Template.TPDM.Core.PostgreSQL&version=5.3.77&protocolType=NuGet) |  |
 | EdFi.Database.Admin | Admin database backup | [EdFi.Database.Admin 5.4](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging?_a=package&feed=EdFi@Release&package=EdFi.Database.Admin&protocolType=NuGet&version=5.3.153) |  |
 | EdFi.Database.Security | Security database backup | [EdFi.Database.Security 5.4](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging?_a=package&feed=EdFi@Release&package=EdFi.Database.Security&protocolType=NuGet&version=5.3.153) |  |
-
----
-
-_Last updated: 2025-06-30_
