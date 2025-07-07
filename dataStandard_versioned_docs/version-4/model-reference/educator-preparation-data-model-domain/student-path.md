@@ -49,11 +49,13 @@ The Path is defined by specifying **PathMilestones** to be achieved in each Path
 
 ### Conceptual View Of a Path
 
-![Teacher Prep Data Model Diagram](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/TeacherPrepDataModel.jpeg)
+![Figure 1](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Conceptual%20View%20Of%20A%20Path.png)
 
 ### Structural View of a Path
 
-![Teacher Prep Data Model Diagram](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/TeacherPrepDataModel.jpeg)
+The hierarchical structure for the three entities: Path, PathPhase, and PathMilestone are shown below.
+
+![Figure 2](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Structural%20View%20Of%20A%20Path.png)
 
 A student is assigned to a Path via a **StudentPath** association and may change paths. Multiple students may be assigned to the same Path.
 
@@ -74,7 +76,7 @@ The entity structure for the Path definition and the recording of a student’s 
 
 ### Structural View of a Student Path Status
 
-![Teacher Prep Data Model Diagram](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/TeacherPrepDataModel.jpeg)
+![Figure 3](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Structural%20View%20Of%20A%20Students%20Path%20Status.png)
 
 ## Student Path Domain Data Model
 
@@ -92,7 +94,7 @@ The Student Path domain data model is shown below.  Key items of note:
 * Tracking of StudentPathPhaseStatus is optional; if desired, only StudentPathMilestoneStatus may be used to track status.
 * • Status may be tracked simply with the CompletionIndicators or more granularly with *StatusEvents.
 
-![Teacher Prep Data Model Diagram](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/TeacherPrepDataModel.jpeg)
+![Figure 4](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Student%20Path%20Domain%20Data%20Model.png)
 
 The detailed definition of the model is shown in the tables below.
 
@@ -173,29 +175,29 @@ The detailed definition of the model is shown in the tables below.
 
 **Period (Common from Ed-Fi Core)**: The time period for which the information is applicable or effective.
 
-| Property | UML Datatype | JSON Datatype | Other |   | Cardinality | Definition |
-| --- | --- | --- | --- | --- | --- | --- |
-| BeginDate | Date | number | MetaEd DSL Datatype: DateProperty  SQL Recommended Datatype: DATE  Ed-Fi ODS/API Identity: Yes |   | required | The month, day, and year for the start of  the period. |
-| EndDate | Date| number | MetaEd DSL Datatype: DateProperty  SQL Recommended Datatype: DATE  Ed-Fi ODS/API Identity: No |   | optional | The month, day, and year for the end of the  period. |
+| Property | UML Datatype | JSON Datatype | Other | Cardinality | Definition |
+| --- | --- | --- | --- | --- | --- |
+| BeginDate | Date | number | MetaEd DSL Datatype: DateProperty  SQL Recommended Datatype: DATE  Ed-Fi ODS/API Identity: Yes | required | The month, day, and year for the start of  the period. |
+| EndDate | Date| number | MetaEd DSL Datatype: DateProperty  SQL Recommended Datatype: DATE  Ed-Fi ODS/API Identity: No | optional | The month, day, and year for the end of the  period. |
 
 <br />
 
 **PathPhaseStatusEvent (Common)**: An event recognizing the change in status for the path phase.
 
-| Property | UML Datatype | JSON Datatype | Other |   | Cardinality | Definition |
-| --- | --- | --- | --- | --- | --- | --- |
-| PathPhaseStatus | Reference | object | MetaEd DSL Datatype: DescriptorProperty  Ed-Fi ODS/API Identity: Yes |   | required | The student's status associated with  entering or completing the phase. |
-| PathPhaseStatusDate | Date | number | MetaEd DSL Datatype: DateProperty  SQL Recommended Datatype: DateProperty  Ed-Fi ODS/API Identity: Yes |   | required | The month, day, and year on which the   status was achieved for the milestone. |
+| Property | UML Datatype | JSON Datatype | Other | Cardinality | Definition |
+| --- | --- | --- | --- | --- | --- |
+| PathPhaseStatus | Reference | object | MetaEd DSL Datatype: DescriptorProperty  Ed-Fi ODS/API Identity: Yes | required | The student's status associated with  entering or completing the phase. |
+| PathPhaseStatusDate | Date | number | MetaEd DSL Datatype: DateProperty  SQL Recommended Datatype: DateProperty  Ed-Fi ODS/API Identity: Yes | required | The month, day, and year on which the   status was achieved for the milestone. |
 
 <br />
 
 **PathMilestoneStatusEvent (Common)**: An event recognizing the change in status for the path milestone.
 
-| Property | UML Datatype | JSON Datatype | Other |   | Cardinality | Definition |
-| --- | --- | --- | --- | --- | --- | --- |
-| PathMilestoneStatus | Reference | object | MetaEd DSL Datatype: DescriptorProperty  Ed-Fi ODS/API Identity: Yes |   | required | The student's status associated with the  path milestone. |
-| PathPhaseMilestoneDate | Date | number | MetaEd DSL Datatype: DateProperty  SQL Recommended Datatype: DATE  Ed-Fi ODS/API Identity: Yes |   | required | The month, day, and year associated with  the change in the path milestone status. |
-| PathMilestoneStatusDescription | String | string | MetaEd DSL Datatype: SharedStringProperty  SQL Recommended Datatype:  VARCHAR(256) |   | optional | Additional information associated with the milestone status achieved. |
+| Property | UML Datatype | JSON Datatype | Other | Cardinality | Definition |
+| --- | --- | --- | --- | --- | --- |
+| PathMilestoneStatus | Reference | object | MetaEd DSL Datatype: DescriptorProperty  Ed-Fi ODS/API Identity: Yes | required | The student's status associated with the  path milestone. |
+| PathPhaseMilestoneDate | Date | number | MetaEd DSL Datatype: DateProperty  SQL Recommended Datatype: DATE  Ed-Fi ODS/API Identity: Yes | required | The month, day, and year associated with  the change in the path milestone status. |
+| PathMilestoneStatusDescription | String | string | MetaEd DSL Datatype: SharedStringProperty  SQL Recommended Datatype:  VARCHAR(256) | optional | Additional information associated with the milestone status achieved. |
 
 ## Using the Student Path Model
 
@@ -205,4 +207,4 @@ The following diagram provides an example certification path annotated with the 
 * The program Path is further organized by the various PathMilestoneTypes (a descriptor), as reflected in the horizontal swim lanes.
 * The body of the Path lists the individual PathMIlestones, organized by their PathMilestoneType (the horizontal swim lanes) and by the PathPhase (vertical column).
 
-![Teacher Prep Data Model Diagram](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/TeacherPrepDataModel.jpeg)
+![Figure 5](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Example%20Annotated%20Certification%20Path.png)
