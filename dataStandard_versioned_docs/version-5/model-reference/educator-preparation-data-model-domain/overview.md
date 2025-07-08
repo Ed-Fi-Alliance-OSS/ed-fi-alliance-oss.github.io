@@ -38,7 +38,7 @@ This domain contains:
 * The Student Path is a community extension that tracks the progress of an individual
     from being a student to becoming an educator. This domain tracks various
     assessments , fieldwork, and certifications from third party and state education
-    agencies. The [Student Path Domain](student-path.md) community extension can be reviewed in greater detail by following the link.
+    agencies. See the [Student Path Domain](student-path.md) community extension for more information.
 
 ## Key Concepts
 

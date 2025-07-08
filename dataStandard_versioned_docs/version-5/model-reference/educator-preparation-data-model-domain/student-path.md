@@ -6,7 +6,7 @@ hide_table_of_contents: true
 # Student Path Domain
 
 :::note
-StudentPath is currently part of the EPDM community extension
+StudentPath is currently part of the [EPDM community extension](https://docs.ed-fi.org/getting-started/educator-pipeline/overview).
 :::
 
 This article describes the Student Path Domain for the Educator Preparation Data Model (EPDM), providing the background and rationale, and offers guidance for its application in the field.
@@ -20,7 +20,7 @@ Note a similar need has been raised in the K-12 community to similarly capture t
 ## Drivers for the Student Path Domain
 
 The Path for a student to become an educator comprises many steps, including a program sequence of courses offered by the EPP, various assessments, fieldwork in a school, certification exams typically offered by a third party, and certifications from the state education agency.  Candidates are a finisher when they have completed the EPP program, but still must pass their exams for educator certification.
-The need to capture the student Path and track progress against the Path is driven by several requirements to:
+The need to capture the Student Path and track progress against the Path is driven by several requirements to:
 
 * Capture the detailed Path that individual students are assigned.
 * Track the student’s progress to the Path, so as to better counsel the student to remain on track.
@@ -100,8 +100,6 @@ The detailed definition of the model is shown in the tables below.
 
 ### Path Entity Definitions
 
-<br />
-
 **Path**: A scheme for achieving milestones organized by phases for students to follow and be tracked against.
 
 | Property | UML Datatype | JSON Datatype | Other | Identity | Cardinality | Definition |
@@ -122,8 +120,6 @@ The detailed definition of the model is shown in the tables below.
 | PathPhaseDescription | String | string | MetaEd DSL Datatype:  SharedStringProperty  SQL Recommended Datatype:  VARCHAR(256) | No | optional | Additional information describing the path's phase |
 | PathPhaseMilestone | Reference | object | MetaEd DSL Datatype:  DomainEntityProperty | No |  optional  collection | A reference to the path milestones associated with this phase |
 
-<br />
-
 **PathMilestone**: A significant event or achievement as part of a path.
 
 | Property | UML Datatype | JSON Datatype | Other | Identity | Cardinality | Definition |
@@ -135,8 +131,6 @@ The detailed definition of the model is shown in the tables below.
 
 ### StudentPath Entity Definitions
 
-<br />
-
 **StudentPath**: The entity representing the association or assignment of the student to the path being pursued.
 
 | Property | UML Datatype | JSON Datatype | Other | Identity | Cardinality | Definition |
@@ -144,8 +138,6 @@ The detailed definition of the model is shown in the tables below.
 | Student | Reference | object | MetaEd DSL Datatype:  DomainEntityProperty | Yes | required | A reference to the Student Associated with  the Path. |
 | Path | Reference | object | MetaEd DSL Datatype:  DomainEntityProperty | Yes | required | A reference to the path associated with or  assigned to the student. |
 | Period | Reference | object | MetaEd DSL Datatype:  CommonProperty  Ed-Fi ODS/API Identity: No | No | optional  collection | The time periods for which the student  was assigned and pursuing the path. |
-
-<br />
 
 **StudentPathPhaseStatus**: The status of the student's association with the path's phase.
 
@@ -156,8 +148,6 @@ The detailed definition of the model is shown in the tables below.
 | CompletionIndicator | Boolean | boolean | MetaEd DSL Datatype:  BooleanProperty  SQL Recommended Datatype:  BOOLEAN | No | optional | Indicator on whether the student has  completed the phase associated with the  path. |
 | PathPhaseStatusEvent | Reference | object | MetaEd DSL Datatype:  CommonProperty  Ed-Fi ODS/API Identity: No | No | optional  collection | The student's phase status and the date of  the status change. |
 | Period | Reference | object | MetaEd DSL Datatype:  Common Property  Ed-fi ODS/API Identity: No | No | optional  collection | the time period associated with the  phase status. |
-
-<br />
 
 **StudentPathMilestoneStatus**: The status of the student's achievement of the path milestone.
 
@@ -171,8 +161,6 @@ The detailed definition of the model is shown in the tables below.
 
 ### Common Definitions
 
-<br />
-
 **Period (Common from Ed-Fi Core)**: The time period for which the information is applicable or effective.
 
 | Property | UML Datatype | JSON Datatype | Other | Cardinality | Definition |
@@ -180,16 +168,12 @@ The detailed definition of the model is shown in the tables below.
 | BeginDate | Date | number | MetaEd DSL Datatype: DateProperty  SQL Recommended Datatype: DATE  Ed-Fi ODS/API Identity: Yes | required | The month, day, and year for the start of  the period. |
 | EndDate | Date| number | MetaEd DSL Datatype: DateProperty  SQL Recommended Datatype: DATE  Ed-Fi ODS/API Identity: No | optional | The month, day, and year for the end of the  period. |
 
-<br />
-
 **PathPhaseStatusEvent (Common)**: An event recognizing the change in status for the path phase.
 
 | Property | UML Datatype | JSON Datatype | Other | Cardinality | Definition |
 | --- | --- | --- | --- | --- | --- |
 | PathPhaseStatus | Reference | object | MetaEd DSL Datatype: DescriptorProperty  Ed-Fi ODS/API Identity: Yes | required | The student's status associated with  entering or completing the phase. |
 | PathPhaseStatusDate | Date | number | MetaEd DSL Datatype: DateProperty  SQL Recommended Datatype: DateProperty  Ed-Fi ODS/API Identity: Yes | required | The month, day, and year on which the   status was achieved for the milestone. |
-
-<br />
 
 **PathMilestoneStatusEvent (Common)**: An event recognizing the change in status for the path milestone.
 
