@@ -6,14 +6,14 @@ hide_table_of_contents: true
 # Student Path Domain
 
 :::note
-StudentPath is currently part of the [EPDM community extension](https://docs.ed-fi.org/getting-started/educator-pipeline/overview).
+StudentPath is currently part of the [EPDM community extension](/getting-started/educator-pipeline/overview).
 :::
 
 This article describes the Student Path Domain for the Educator Preparation Data Model (EPDM), providing the background and rationale, and offers guidance for its application in the field.
 
 ## Background
 
-The EPDM model is an extension to do Ed-Fi core model that captures data to allow an Educator Preparation Provider (EPP) to understand and answer key questions relating to educator Candidates, as they progress through the process of being a Student of the EPP, receiving instruction, taking assessments, accomplishing fieldwork and clinical teaching, and getting their teacher certification(s).  The EPDM model supports capturing the results of these processes.  
+The EPDM model is an extension to do Ed-Fi core model that captures data to allow an Educator Preparation Provider (EPP) to understand and answer key questions relating to educator Candidates, as they progress through the process of being a Student of the EPP, receiving instruction, taking assessments, accomplishing fieldwork and clinical teaching, and getting their teacher certification(s).  The EPDM model supports capturing the results of these processes.
 Feedback from the EPP community indicates a need to capture the student’s detailed Path and track progress against that Path.
 Note a similar need has been raised in the K-12 community to similarly capture the student’s detailed graduation Path and track progress against that Path.
 
@@ -65,7 +65,7 @@ Students may be tracked through teh PathPhases over time with the **StudentPathP
 * The period(s) when a student is considered “in the phase” can be recorded, if desired, in StudentPathPhasePeriods.
 * Recording of StudentPathPhaseStatus is optional.
 
-As students attempt and complete PathMilestones, the appropriate **StudentPathMilestoneStatus** is posted.  
+As students attempt and complete PathMilestones, the appropriate **StudentPathMilestoneStatus** is posted.
 
 * Status may be recorded using a completion indicator and/or by recording more granular PathMilestoneStatusEvents (e.g., scheduled, attempting, pass, complete, fail, in
     remediation, waiver).
@@ -107,8 +107,6 @@ The detailed definition of the model is shown in the tables below.
 | EducationOrganization| Reference | object | MetaEd DSLDatatype:  DomainEntityProperty | Yes | required | A Reference to the Education Organization  associated with the path |
 | PathName | String | string | MetaEd DSLDatatype:  SharedStringProperty  SQL Recommended Datatype:  VARCHAR(60) | Yes | required | The name of the path associated with the path milestone. |
 | GraduationPlan | Reference | object | MetaEd DSL Datatype:  DomainEntityProperty | No | optional | A reference to the graduation plan associated with this path. |
-
-<br />
 
 **PathPhase**: A stage in the process of a student achieving milestones.
 
