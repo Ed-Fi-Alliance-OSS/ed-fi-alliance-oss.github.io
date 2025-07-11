@@ -8,4 +8,6 @@ The recommendations can be seen in the REST API Guidelines that the Alliance pub
 
 In the Ed-Fi _open source technology development_ effort, the Ed-Fi ODS / API follows these recommendations and implements a robust and configurable system for securing access to information in the API. The Ed-Fi ODS / API ships with a set of default authorization "strategies" (essentially patterns). Because there are multiple strategies, it is best to provide information customized to provider type. Accordingly, the information is presented in separate sections below.
 
+* [Ed-Fi API Authorization Guidelines](/reference/ods-api/client-developers-guide/authentication)
+
 **Pro tip:** The ODS / API system is highly configurable, and an API implementer can configure or implement other strategies. Ask the API host if such configurations have taken place before doing integration work.
