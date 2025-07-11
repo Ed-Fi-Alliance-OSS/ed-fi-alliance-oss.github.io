@@ -42,10 +42,6 @@
 
 /* Ed-Fi customizations */
 
-/* .hero {
-  background-color: #F8992D;
-} */
-
 .footer {
   background-color: #636567;
 }
@@ -109,8 +105,8 @@
   margin-bottom: 2rem;
 }
 
-.table {
-  margin-bottom: var(--ifm-spacing-vertical);
+table, .table {
+  margin-bottom: 2rem;
 }
 
 .row--thead {
