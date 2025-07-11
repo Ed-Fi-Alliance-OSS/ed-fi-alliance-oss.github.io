@@ -446,7 +446,7 @@ export default {
       availability: 'Available to any agency (all sizes) or vendor in the U.S.',
     },
 
-            {
+    {
       logo: 'https://www.ed-fi.org/assets/2025/06/67537c5c1b120ceabe9a0913_Frame-2087325081.png',
       productName: 'SchooLinks Platform',
       provider: 'SchooLinks',
@@ -457,6 +457,30 @@ export default {
       },
       versionCompatibility: ['Suite 3.x - 6.x'],
       availability: 'Available for all states version Suite 3 – v6.x and above ',
+    },
+
+   {
+      logo: 'https://edfidocs.blob.core.windows.net/$web/assets/partners/badging/EA/rally-doublestack-with-flags-color-resize.png',
+      productName: 'Rally',
+      provider: 'Education Analytics',
+      website: 'https://www.edanalytics.org/products/rally-analytics-platform',
+      validThrough: 'June 18, 2027',
+      verifyingAgencies: ['South Carolina Department of Education'],
+      documentation: {'Mapping Document':'https://edfidocs.blob.core.windows.net/$web/assets/partners/badging/EA/Rally%20Ed-Fi%20mapping%20(1).csv',
+      },
+      versionCompatibility: ['Rally (by virtue of sourcing data through EA’s Stadium/Enable Data Union warehousing product), works with Ed-Fi API versions 5.4, 6.2, 7.1, and 7.2'],
+      availability: 'Rally is currently available statewide in South Carolina, Texas, Colorado, and Indiana. Very soon it will be available statewide in California. All geographies are available under the Ed-Fi versions listed above.',
+    },
+
+       {
+      logo: 'https://edfidocs.blob.core.windows.net/$web/assets/partners/badging/EA/runwaytile_2025-01-15-174304_xmhb.png',
+      productName: 'Runway',
+      provider: 'Education Analytics',
+      website: 'https://www.edanalytics.org/products',
+      validThrough: 'June 18, 2027',
+      verifyingAgencies: ['South Carolina Department of Education'],
+      versionCompatibility: ['Works with any ODS/API on DS 3.3.1b and beyond'],
+      availability: 'Availability & Preconditions: Runway supports Ed-Fi ODS/API 3.3.1b and later. LEAs must be configured with an active Ed-Fi ODS and appropriate API credentials. Mapping templates (Earthmover bundles) are aligned to the local assessment formats; these may vary by state or LEA. Use requires a support agreement with EA; pricing varies depending on scope. Runway is currently deployed in Texas, as part of the Texas Education Exchange; South Carolina statewide implementation supported automated and manual assessment data uploads for all districts. ',
     },
   ],
 
