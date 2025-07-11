@@ -16,9 +16,42 @@ Ed-Fi Alliance will periodically release updates covering vulnerabilities,
 urgent bugs, and dependency updates. The label "active" means that the Alliance
 may add additional features.
 
-<div style={{display: "flex", justifyContent: "center", margin: "2em 0"}}>
-  <img src="/img/reference/api-roadmap-table.svg" alt="ODS/API and DMS Support Timeline" style={{maxWidth: "100%", height: "auto"}} />
-</div>
+<table align="center" width="80%">
+  <thead>
+    <tr>
+      <th>Application</th>
+      <th>'24-'25</th>
+      <th>'25-'26</th>
+      <th>'26-'27</th>
+      <th>'27-'28</th>
+      <th>'28-'29</th>
+      <th>'29-'30</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ODS/API 5.4</td>
+      <td style={{backgroundColor: "var(--ifm-color-info-lightest)"}}>patch</td>
+      <td colSpan={5}>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>ODS/API 6.2</td>
+      <td colSpan={2} style={{backgroundColor: "var(--ifm-color-info-lightest)"}}>patch</td>
+      <td colSpan={4}>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>ODS/API 7.3</td>
+      <td colSpan={5} style={{backgroundColor: "var(--ifm-color-info-lightest)"}}>patch</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>DMS 1.x</td>
+      <td>&nbsp;</td>
+      <td style={{backgroundColor: "var(--ifm-color-warning-lightest)"}}>testing</td>
+      <td colSpan={4} style={{backgroundColor: "var(--ifm-color-info-lightest)"}}>active</td>
+    </tr>
+  </tbody>
+</table>
 
 As shown in the table above:
 
@@ -28,7 +61,7 @@ As shown in the table above:
 * ODS/API 6.2, released in February 2024, implements Data Standard 4.0. No
   further feature enhancements are planned. It will be supported in production
   at least through the 2025-2026 school year;
-* ODS/API 7.3x will continue to receive annual feature enhancements (and bug
+* ODS/API 7.3.x will continue to receive annual feature enhancements (and bug
   fixes) for the next several years, including an update to .NET 10 in 2026.
   This version supports Data Standard versions 4 and 5, and will support Data
   Standard version 6. It will be fully supported at least through school year
