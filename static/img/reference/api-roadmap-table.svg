@@ -1,0 +1,58 @@
+  <svg width="700" height="180" viewBox="0 0 700 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ODS/API and DMS Support Timeline">
+    <style>
+      .th { font: bold 14px Montserrat, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,sans-serif; fill: #222; }
+      .td { font: 14px Montserrat, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,sans-serif; fill: #222; }
+      .info { fill: #e7f3fa; }
+      .warning { fill: #fff4e5; }
+      .border { stroke: #bbb; stroke-width: 1; }
+    </style>
+    <!-- Column headers -->
+    <rect x="0" y="0" width="120" height="32" class="border" fill="#f5f5f5"/>
+    <text x="60" y="21" text-anchor="middle" class="th">Application</text>
+    <rect x="120" y="0" width="96" height="32" class="border" fill="#f5f5f5"/>
+    <text x="168" y="21" text-anchor="middle" class="th">2025</text>
+    <rect x="216" y="0" width="96" height="32" class="border" fill="#f5f5f5"/>
+    <text x="264" y="21" text-anchor="middle" class="th">2026</text>
+    <rect x="312" y="0" width="96" height="32" class="border" fill="#f5f5f5"/>
+    <text x="360" y="21" text-anchor="middle" class="th">2027</text>
+    <rect x="408" y="0" width="96" height="32" class="border" fill="#f5f5f5"/>
+    <text x="456" y="21" text-anchor="middle" class="th">2028</text>
+    <rect x="504" y="0" width="96" height="32" class="border" fill="#f5f5f5"/>
+    <text x="552" y="21" text-anchor="middle" class="th">2029</text>
+
+    <!-- Row 1: ODS/API 5.4 -->
+    <rect x="0" y="32" width="120" height="32" class="border" fill="#fff"/>
+    <text x="60" y="53" text-anchor="middle" class="td">ODS/API 5.4</text>
+    <rect x="120" y="32" width="96" height="32" class="border info"/>
+    <text x="168" y="53" text-anchor="middle" class="td">patch</text>
+    <rect x="216" y="32" width="384" height="32" class="border" fill="#fff"/>
+    <!-- empty cells -->
+
+    <!-- Row 2: ODS/API 6.2 -->
+    <rect x="0" y="64" width="120" height="32" class="border" fill="#fff"/>
+    <text x="60" y="85" text-anchor="middle" class="td">ODS/API 6.2</text>
+    <rect x="120" y="64" width="192" height="32" class="border info"/>
+    <text x="216" y="85" text-anchor="middle" class="td">patch</text>
+    <rect x="312" y="64" width="288" height="32" class="border" fill="#fff"/>
+    <!-- empty cells -->
+
+    <!-- Row 3: ODS/API 7.3 -->
+    <rect x="0" y="96" width="120" height="32" class="border" fill="#fff"/>
+    <text x="60" y="117" text-anchor="middle" class="td">ODS/API 7.3</text>
+    <rect x="120" y="96" width="384" height="32" class="border info"/>
+    <text x="312" y="117" text-anchor="middle" class="td">patch</text>
+    <rect x="504" y="96" width="96" height="32" class="border" fill="#fff"/>
+    <!-- empty cell -->
+
+    <!-- Row 4: DMS -->
+    <rect x="0" y="128" width="120" height="32" class="border" fill="#fff"/>
+    <text x="60" y="149" text-anchor="middle" class="td">DMS</text>
+    <rect x="120" y="128" width="96" height="32" class="border" fill="#fff"/>
+    <rect x="216" y="128" width="192" height="32" class="border warning"/>
+    <text x="312" y="149" text-anchor="middle" class="td">testing</text>
+    <rect x="408" y="128" width="192" height="32" class="border info"/>
+    <text x="504" y="149" text-anchor="middle" class="td">active</text>
+
+    <!-- Borders for the table -->
+    <rect x="0" y="0" width="600" height="160" fill="none" stroke="#bbb" stroke-width="2"/>
+  </svg>
