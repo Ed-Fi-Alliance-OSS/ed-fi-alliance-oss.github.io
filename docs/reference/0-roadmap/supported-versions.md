@@ -44,13 +44,14 @@ a production deployment of the Ed-Fi Resources API. The Platform includes:
 
 | Version                         | Timeline                             | Data Standard(s)     |
 | ------------------------------- | ------------------------------------ | ---------------------|
-| [5.4.x](/reference/ods-api/5.4) | Active through 2024-2025 school year | 3.3.1                |
 | [6.2.x](/reference/ods-api/6.2) | Active through 2025-2026 school year | 4.0.0                |
 | 7.0.0                           | Replaced by 7.1                      | 4.0.0, 5.0.0         |
 | [7.1.x](/reference/ods-api/7.1) | Active through 2027-2028 school year | 4.0.0, 5.0.0         |
 | [7.2.x](/reference/ods-api/7.2) | Active through 2027-2028 school year | 4.0.0, 5.1.0         |
 | [7.3.0](/reference/ods-api/)    | Active through 2027-2028 school year | 4.0.0, 5.2.0         |
 | [7.3.1](/reference/ods-api/)    | Coming soon (November/December 2025) | 4.0.0, 5.2.0, 6.0.0  |
+
+Out of Support: all releases prior to ODS/API 6.2.
 
 ### Ed-Fi ODS Admin API
 
@@ -81,7 +82,7 @@ receive critical updates. Formal support
 
 | Version | Timeline                             | Supports ODS/API |
 | ------- | ------------------------------------ | ---------------- |
-| 3.3     | Maintenance mode until June 30, 2025 | 5.x.y, 6.x.y     |
+| 3.3     | Maintenance mode until June 30, 2026 | 5.x.y, 6.x.y     |
 
 ### Docker Deployments
 
@@ -95,12 +96,14 @@ versions.
 | ------- | ------------------------------------------------------------------- |
 | 3.1.x   | ODS/API 7.x (latest minor/patch) and Admin API 2.1.x (latest patch) |
 | 2.3.x   | ODS/API 6.2.x and Admin App 3.2.1                                   |
-| 2.2.x   | ODS/APi 5.4.x and Admin App 3.2.1                                   |
+
+Out of Support: all releases prior to 2.3, including the "Docker 2.2.x" release
+that supported ODS/API 5.4 and Admin App 3.2.
 
 ## Data Management Service Platform
 
 This is the future replacement for the Ed-Fi ODS/API. See
-[Ed-Fi ODS/API and Data Management Service FAQ](./api-faq.mdx) for more
+[Ed-Fi ODS/API and Data Management Service FAQ](./api-faq.md) for more
 information.
 
 | Version           | Timeline                                          | Data Standard(s) |
