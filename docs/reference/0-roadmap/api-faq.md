@@ -19,6 +19,7 @@ Ed-Fi Alliance will periodically release updates covering vulnerabilities,
 urgent bugs, and dependency updates. The label "active" means that the Alliance
 may add additional features.
 
+<!-- markdownlint-disable -->
 <table align="center" width="80%">
   <thead>
     <tr>
@@ -74,16 +75,17 @@ may add additional features.
     </tr>
   </tbody>
 </table>
+<!-- markdownlint-enable -->
 
 As shown in the table above:
 
-- ODS/API 5.4, released in summer 2024, will be supported for the school year
+* ODS/API 5.4, released in summer 2024, will be supported for the school year
   2024-2025. The 5.x series was first released in 2020, for the 2021-2022 school
   year. It implements Data Standard 3 (current: 3.3).
-- ODS/API 6.2, released in February 2024, implements Data Standard 4.0. No
+* ODS/API 6.2, released in February 2024, implements Data Standard 4.0. No
   further feature enhancements are planned. It will be supported in production
   at least through the 2025-2026 school year;
-- ODS/API 7.3.x will continue to receive annual feature enhancements (and bug
+* ODS/API 7.3.x will continue to receive annual feature enhancements (and bug
   fixes) for the next several years, including an update to .NET 10 in 2026.
   This version supports Data Standard versions 4 and 5, and will support Data
   Standard version 6. It will be fully supported at least through school year
@@ -140,7 +142,7 @@ for more information.
 
 ## Technical Integrations
 
-## Q: Will integrations built for the ODS/API continue to work with the new system?
+### Q: Will integrations built for the ODS/API continue to work with the new system?
 
 The Data Management Service will be a fully compatible Ed-Fi API implementation.
 Client applications that interact with the REST API will continue to work\*.
@@ -164,7 +166,7 @@ Management Service.
 
 :::
 
-## Q: Will integrations built for the Admin API continue to work with the new system?
+### Q: Will integrations built for the Admin API continue to work with the new system?
 
 Yes &mdash; if referring to the Management API
 [specification](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-API-Standards/blob/main/api-specifications/admin-api/admin-api-2.2.0.yaml).
@@ -184,14 +186,14 @@ of today or of tomorrow.
 Start by identifying all direct ODS, Admin, and Security database integrations
 in your environment:
 
-- ETLs that extract from a metadata catalog and load into the ODS.
-  - Replace with direct calls to the Ed-Fi API.
-- ETLs that extract from the ODS and load into a data warehouse.
-  - Replace with direct calls to the Ed-Fi API, using Change Queries.
-- Data Validation procedures that run directly on ODS.
-  - Replace with validation off of a data mart of data warehouse.
-- Client credential management directly in the Admin database.
-  - Deploy Admin API and replace with calls with calls to its implementation of
+* ETLs that extract from a metadata catalog and load into the ODS.
+  * Replace with direct calls to the Ed-Fi API.
+* ETLs that extract from the ODS and load into a data warehouse.
+  * Replace with direct calls to the Ed-Fi API, using Change Queries.
+* Data Validation procedures that run directly on ODS.
+  * Replace with validation off of a data mart of data warehouse.
+* Client credential management directly in the Admin database.
+  * Deploy Admin API and replace with calls with calls to its implementation of
     the Ed-Fi Management API, which will be implemented in the Data Management
     Service.
 
