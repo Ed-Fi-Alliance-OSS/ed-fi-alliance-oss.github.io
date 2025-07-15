@@ -100,7 +100,7 @@ versions.
 ## Data Management Service Platform
 
 This is the future replacement for the Ed-Fi ODS/API. See
-[Ed-Fi ODS/API and Data Management Service FAQ](./api-faq.mdx) for more
+[Ed-Fi ODS/API and Data Management Service FAQ](./api-faq.md) for more
 information.
 
 | Version           | Timeline                                          | Data Standard(s) |
