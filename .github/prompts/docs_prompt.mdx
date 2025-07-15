@@ -6,42 +6,44 @@ tools: ['file_search', 'read_file', 'replace_string_in_file', 'create_file', 'gr
 description: 'Convert Confluence documentation to Markdown files in the Ed-Fi repository'
 ---
 
-Documentation-Fi Documentation Coon Guide
+Ed-Fi Documentation Conversion Guide
 
 ## Task Summary
-Edit or create Markdown files using ONLY content from the provided Confluence link and following the reference version structure. ALWAYS edit existing files in-place rather than creating duplicates. Insert content at the PRECISE corresponding locations to maintain document structure integrity.
+Edit or create Markdown files using ONLY content from the provided Confluence link and following the reference version structure. ALWAYS edit existing files in-place rather than creating duplicates. Insert content at the precise corresponding locations to maintain document structure integrity.
 
 ## Required Inputs
 1. **Target File/Folder**: Where documentation should be updated (e.g., `odsApi_versioned_docs/version-7.1/getting-started/binary-installation.md`)
-2. **Confluence URL**: Link containing source documentation 
-3. **ReferenceVersion**: Verson to use as stuctural templat (e.g., v7.3)
+2. **Confluence URL**: Link containing source documentation
+3. **Reference Version**: Version to use as structural template (e.g., v7.3)
 
-# Key Requirement
+# Key Requirements
 
-1. **Content Sorce**: 
-   - Use ONY content from the Cnfluence page
-   - D not add or remove inormation not in the surce
-   - Extract imaes and embed properly
-  - Preserve EXACT headig structure and contentorganization
+1. **Content Source**:
+   - Use ONLY content from the Confluence page.
+   - Do not add or remove information not in the source.
+   - Extract images and embed properly.
+   - Preserve EXACT heading structure and content organization.
 
-2. **FileHandling**:
-   - EDIT exiting files in-place instea of creating new ones whenpossible
-   - Add content t the EXACT corresponding lcations in the document
-    Use kebab-case for filename following reference versionpatterns
-   - Include `readm.md` files in each directory
+2. **File Handling**:
+   - Edit existing files in-place instead of creating new ones whenever possible.
+   - Add content at the exact corresponding locations in the document.
+   - Use kebab-case for filenames, following reference version patterns.
+   - Include `readme.md` files in each directory.
+
 3. **Formatting**:
-   - Use Dosaurus admonitions: `:::note`, ::warning`, etc.
-   - Code bloc with language identifiers: ```carp
-   - Proper Markdown tables a heading hierarchy
-   - Fix interl links toColoplacVersionlindetweeverect ColoplacVersionlindetweenrv than loplacVersionlindetweenrve vtent placVersionlindetween sectiovte. **Versionlind*:
-   - Replace vte numberslind target version
-   -vte all lind references accordingly
-v*Style lines**:
-   - Clear, concise pvsionnguage
-   - Present tense, active v
-Address reader as "you"
-   - Define acrirst use
-   - Sentence case for headings
+   - Use Docusaurus admonitions: `:::note`, `:::warning`, etc.
+   - Use code blocks with language identifiers.
+   - Use proper Markdown tables and heading hierarchy.
+   - Fix internal links to reference the correct version and section.
+   - Replace version numbers with the target version.
+   - Update all link references accordingly.
+
+**Style Guidelines**:
+   - Use clear, concise, and neutral language.
+   - Use present tense and active voice.
+   - Address the reader as "you".
+   - Define acronyms at first use.
+   - Use sentence case for headings.
 
 ## Guide & Requirements
 
