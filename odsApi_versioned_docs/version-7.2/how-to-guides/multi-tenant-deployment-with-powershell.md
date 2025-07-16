@@ -58,7 +58,7 @@ performed in the `configuration.json` file.
 
 :::
 
-:::caution
+:::warning
 
 Do not use multitenancy with the `initdev` command when building the source code
 and extensions.
@@ -77,13 +77,11 @@ and extensions.
 
 Create a [user secrets
 file](https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-8.0&tabs=windows)
-in the WebAPI project. Note that `EdFi_Admin` and `EdFi_Security` have the same
-database name below.
+in the WebAPI project.
 
 ```json
 {
     "ConnectionStrings": {
-        "EdFi_Ods": "server=(local);trusted_connection=True;database=EdFi_Tenant1_{0};Application Name=EdFi.Ods.WebApi",
         "EdFi_Admin": "server=(local);trusted_connection=True;database=EdFi_Tenant1_Admin;Application Name=EdFi.Ods.WebApi",
         "EdFi_Security": "server=(local);trusted_connection=True;database=EdFi_Tenant1_Security;persist security info=True;Application Name=EdFi.Ods.WebApi",
         "EdFi_Master": "server=(local);trusted_connection=True;database=master;Application Name=EdFi.Ods.WebApi"
@@ -184,6 +182,13 @@ the v7 deployment actually creates and drops the `dbo.Applications` table from
 the `EdFi_Security` database. Thus, `EdFi_Security` must come before
 `EdFi_Admin` - otherwise the `EdFi_Security` deployment script will throw an
 error when seeing that `dbo.Applications` already exists.
+
+:::
+
+:::warning
+
+Do not try running `initdev` with the same database names, as it will run the
+Admin database deploy first and the Security database deploy will fail.
 
 :::
 
