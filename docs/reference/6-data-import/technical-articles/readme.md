@@ -5,4 +5,5 @@ Import:
 
 import DocCardList from '@theme/DocCardList';
 
+<!-- markdownlint-disable-next-line -->
 <DocCardList />
