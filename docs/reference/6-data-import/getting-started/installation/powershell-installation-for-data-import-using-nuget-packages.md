@@ -29,8 +29,8 @@ The following are required to install the Data Import:
 
 Consider downloading and installing NuGet CLI to simplify the process of
 downloading and installing packages with the PowerShell scripts mentioned in the
-proceeding document. The instructions to download NuGet CLI are available
-[here](https://docs.microsoft.com/en-us/nuget/reference/nuget-exe-cli-reference#installing-nugetexe).
+proceeding document. See the instructions to download
+[NuGet CLI here](https://docs.microsoft.com/en-us/nuget/reference/nuget-exe-cli-reference#installing-nugetexe).
 
 ## Using Data Import NuGet package
 
@@ -50,7 +50,7 @@ extension (from .nupkg to .zip). Remove the version number (optional). Check the
 box next to **Unblock** (this will prevent PowerShell from asking for permission
 to load every module in the installer) and click **OK**.
 
-**Or**
+#### Alternative Method
 
 Use the following PowerShell script to download and extract the DataImport.Web
 package (if you already have NuGet CLI)
@@ -94,7 +94,6 @@ any of the parameters, it will use its default value.
    connection strings.
     1. `Server`. The name of the database server. For a local server, we can use
        "(local)" for SQL and "localhost" for PostgreSQL.
-
     2. `Engine.` Data Import supports SQL and PostgreSQL database engines. So
        setting up the `Engine` will decide which database engine to be used.
        Valid values are "SQLServer" and "PostgreSQL".
@@ -110,10 +109,10 @@ any of the parameters, it will use its default value.
        needed
     6. `Port.` Optional. Used to specify the database server port, presuming the
        server is configured to use the specific port.
+
 2. Configure `$p`. This is the variable used to send all the information to the
    installation process.
-
-1. 1. `ToolsPath`. Path for storing installation tools, e.g., nuget.exe.
+   1. `ToolsPath`. Path for storing installation tools, e.g., nuget.exe.
       Defaults to "C:/temp/tools"
    2. `DbConnectionInfo` does not need to be edited, as it was configured above
    3. `DataImportDatabaseName`  name of Data Import database. Defaults to
