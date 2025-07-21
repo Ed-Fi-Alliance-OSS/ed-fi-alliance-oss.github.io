@@ -108,7 +108,7 @@ and rerun the commands above.
 ## Configure ODS Instances
 
 Next, need to setup the `dbo.OdsInstances` table in each
-`EdFi_Tenant{?}_Security` database. Note that the `OdsInstanceName` and
+`EdFi_Tenant{?}_Admin` database. Note that the `OdsInstanceName` and
 `OdsInstanceType` are both free text fields where you can put any string that is
 meaningful to you.
 
