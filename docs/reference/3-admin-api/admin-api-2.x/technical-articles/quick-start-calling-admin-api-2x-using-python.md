@@ -486,7 +486,7 @@ As a result, we will obtain a 200 Status Code
 
 To delete a vendor you can use the next point, as the example provided below.
 
-#### DEL /v2/vendors/`{id}`
+#### DELETE /v2/vendors/`{id}`
 
 ```python
 def delete_vendor(
@@ -2067,7 +2067,7 @@ To create an application, we use the POST verb, and we will pass it a dictionary
 with the values to store, an example of payload for this case could be the
 following.
 
-**Sample data create application**
+#### Sample data create application
 
 ```json
 application_payload = {
@@ -2187,7 +2187,7 @@ def get_application(
 
 The confirmation outcome will be like the following:
 
-#### Sample Output
+#### Sample Output for Retrieve application data
 
 ```json
 {
@@ -2298,7 +2298,7 @@ def delete_application(
 
 The output will be as follow:
 
-#### Sample Output
+#### Sample Output for Delete an application
 
 ```json
 {
@@ -2352,7 +2352,7 @@ def reset_application_credentials(
 
 The resulting output will again print the new secret keys.
 
-#### Sample Output
+#### Sample Output for Refresh application credentials
 
 ```json
 {
@@ -2509,7 +2509,7 @@ def get_profiles(
 We will get a list of the ods instances, JSON formatted, as in the example
 below.
 
-#### Sample Output
+#### Sample Output for Retireve a Listing of Profiles
 
 ```json
 [
@@ -2524,7 +2524,7 @@ below.
 
 To create a new profile, we will use the POST verb.
 
-#### Sample Output
+#### Sample Input for Create a profile
 
 ```json
 profile_payload = {
@@ -2623,7 +2623,7 @@ def get_profile(
 
 In case of success we will obtain an output as follow:
 
-#### Sample Output
+#### Sample Output for Get Profile
 
 ```json
 {
@@ -2637,7 +2637,7 @@ In case of success we will obtain an output as follow:
 
 You can use the following code to update the information in the profile.
 
-**PUT /v2/profiles/`{id}`**
+#### PUT /v2/profiles/`{id}`
 
 ```python
 def edit_profile(
@@ -2686,7 +2686,7 @@ As a result, we will obtain a 200 Status Code
 
 To delete a profile you can use the next point, as the example provided below.
 
-**/v2/profiles/`{id}`**
+#### DELETE /v2/profiles/`{id}`
 
 ```python
 def delete_profile(
