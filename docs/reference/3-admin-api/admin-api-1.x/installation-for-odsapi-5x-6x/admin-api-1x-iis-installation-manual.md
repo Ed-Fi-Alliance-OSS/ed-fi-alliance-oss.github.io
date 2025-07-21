@@ -95,7 +95,7 @@ keys in "AdminApi\\appsettings.json". Some values to note:
 
 Here is a snippet from a properly configured application settings file:
 
-**appsettings.json**
+#### appsettings.json
 
 ```json
     "AppSettings": {
@@ -228,7 +228,7 @@ preference.
  Execute the below script against the EdFi\_Admin database using psql ,
  PgAdmin, or the tool of your choice.
 
- **adminapi-tables-pgsql.sql**
+#### adminapi-tables-pgsql.sql
 
  ```sql
  CREATE SCHEMA IF NOT EXISTS adminapi;
@@ -302,7 +302,7 @@ preference.
  Management Studio, Azure Data Studio, PowerShell SQL Tools, or the tool of
  your choice.
 
- **adminapi-tables-mssql.sql**
+#### adminapi-tables-mssql.sql
 
  ```sql
  IF NOT EXISTS (SELECT 1 FROM sys.schemas WHERE name = 'adminapi')
