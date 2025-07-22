@@ -148,8 +148,8 @@ curl -k https://localhost/adminapi/health
 
 ### 7. Access the Admin API
 
-- **Swagger UI**: <https://localhost/adminapi/swagger/index.html>
-- **API Base URL**: <https://localhost/adminapi>
+- **Swagger UI**: [https://localhost/adminapi/swagger/index.html](https://localhost/adminapi/swagger/index.html)
+- **API Base URL**: [https://localhost/adminapi](https://localhost/adminapi)
 
 ### 9. Stop the Containers
 
