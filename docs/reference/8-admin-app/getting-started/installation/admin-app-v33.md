@@ -312,7 +312,7 @@ The following are required to install the Admin App:
 
   * Admin App log folder (default folder path: C:\\ProgramData\\Ed-Fi-ODS-AdminApp).
 
-      For checking permissions:
+  For checking permissions:
 
   * **Right-click** the folder, choose **Properties**, view the **Security**
     tab.
