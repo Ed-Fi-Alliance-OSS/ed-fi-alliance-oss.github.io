@@ -78,65 +78,65 @@ configuration details.
 1. Set the `installationDirectory` to the directory where the Admin App source
    files should be installed.
 
-    a. Be sure to escape any special characters like slashes (For example, a
+    * Be sure to escape any special characters like slashes (For example, a
        path like "C:\\inetpub\\Ed-Fi\\AdminApp" must be changed to
        "C:\\\\inetpub\\\\Ed-Fi\\\\AdminApp").
 
 2. Configure values for the `odsApi` section.
 
-    a. `apiUrl` is the base URL for the ODS / API.
+    * `apiUrl` is the base URL for the ODS / API.
 
-    b. `apiMode` is either going to be "Shared Instance" or "Year Specific".
-        b1. If "Shared Instance" was chosen, the `schoolYear` can be left blank.
-        b2. If "Year Specific" was chosen, you must provide the `schoolYear`.
+    * `apiMode` is either going to be "Shared Instance" or "Year Specific".
+        *If "Shared Instance" was chosen, the `schoolYear` can be left blank.
+        * If "Year Specific" was chosen, you must provide the `schoolYear`.
 
 3. Configure the values for the `databases` section. These are used to construct
    the connection strings.
 
-    a. `applicationCredentials.` These credentials will be used with database
+    * `applicationCredentials.` These credentials will be used with database
        connection strings on application's Web.config file.
 
-    b. `installCredentials.` These credentials will be used while deploying the
+    * `installCredentials.` These credentials will be used while deploying the
        admin app specific database setup.
 
-    c. `useIntegratedSecurity.` Will either be "true" or "false".
+    * `useIntegratedSecurity.` Will either be "true" or "false".
 
-        c1. If you plan to use Windows authentication, this value will be "true"
+        * If you plan to use Windows authentication, this value will be "true"
            and `databaseUser` and `databasePassword` can be left blank.
 
-        c2. If you plan to use SQL Server/ PostgreSQL server authentication, this
+        * If you plan to use SQL Server/ PostgreSQL server authentication, this
            value will be "false" and the `databaseUser` and `databasePassword`
            must be provided.
 
-    d. `engine.` Admin App supports SQL and PostgreSQL database engines. So
+    * `engine.` Admin App supports SQL and PostgreSQL database engines. So
        setting up the `engine` will decide which database engine to be used.
        Valid values are "SQLServer" and "PostgreSQL".
 
-    e. `databaseServer.` The name of the database server. For a local server, we
+    * `databaseServer.` The name of the database server. For a local server, we
        can use "(local)" for SQL and "localhost" for PostgreSQL.
 
-    f. `databasePort.` Used to specify the database server port, presuming the
+    * `databasePort.` Used to specify the database server port, presuming the
        server is configured to use the specific port. The default port value for
        PostgreSQL is "5432".
 
-    g. `adminDatabaseName`, `odsDatabaseName`, `securityDatabaseName.` Simply
+    * `adminDatabaseName`, `odsDatabaseName`, `securityDatabaseName.` Simply
        the name of the respective databases being referenced.
 
-        g1. For example, when configuring the `odsDatabaseName`, the value here
+        * For example, when configuring the `odsDatabaseName`, the value here
            will be the name of the ODS database, whereas the `adminDatabaseName`
            and `securityDatabaseName` will be the name of the Admin and Security
            databases, respectively.
 
-    h. Several values can be left at their defaults as they are not directly
+    * Several values can be left at their defaults as they are not directly
        relevant to Admin App installation. These are:
 
-        h1. `useTemplates`. Defaults to false. Okay as-is.
+        * `useTemplates`. Defaults to false. Okay as-is.
 
-        h2. `odsTemplate.` Defaults to "populated". Okay as-is.
+        * `odsTemplate.` Defaults to "populated". Okay as-is.
 
-        h3. `noDuration.` Defaults to false. Okay as-is.
+        * `noDuration.` Defaults to false. Okay as-is.
 
-        h4. `dropDatabases.` Defaults to false. Okay as-is.
+        * `dropDatabases.` Defaults to false. Okay as-is.
 
 Below is an example of a complete "install-config.json" file for SQL Server:
 

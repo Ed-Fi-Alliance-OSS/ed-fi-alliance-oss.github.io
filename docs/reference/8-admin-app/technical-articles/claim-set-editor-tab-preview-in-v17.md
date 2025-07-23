@@ -47,7 +47,7 @@ After the above configuration change, the Claim Sets tab can be accessed within
 the Admin App ODS Instance Settings as seen below:
 ![Claim Sets](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/technical-articles/image2020-1-13_11-25-50.png)
 
-# Reporting Issues
+## Reporting Issues
 
 If you encounter issues related to configuration of the Admin App, please create
 a ticket in the [Ed-Fi Tracker system (in the EDFI

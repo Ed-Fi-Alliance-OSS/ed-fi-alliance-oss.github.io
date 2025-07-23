@@ -1,6 +1,6 @@
 # PowerShell Installation (ODS / API v3.3)
 
-# Before You Install
+## Before You Install
 
 This section provides general information you should review before installing
 the Ed-Fi ODS / API Admin App.
@@ -33,38 +33,38 @@ You will need the following information to complete this installation:
 * Administrator access and credentials for either on-premises or Azure
   environment with target Ed-Fi ODS / API.
 
-# Installation Instructions
+## Installation Instructions
 
 This section provides step-by-step instructions for installation. The specific
 steps are different depending on the deployment model and version of your Ed-Fi
 ODS / API.
 
-## Compatibility & Supported ODS / API Versions
+### Compatibility & Supported ODS / API Versions
 
 Currently, the ODS / API Admin App can be installed for use with the Ed-Fi ODS /
 API v3.3. See the [Ed-Fi Technology Version
 Index](../../0-roadmap/supported-versions.md) for
 more details.
 
-## On-Premises Deployment for ODS / API for v3.3
+### On-Premises Deployment for ODS / API for v3.3
 
 Each step is outlined in detail below.
 
-### Step 1. Unzip Admin App Source Files
+#### Step 1. Unzip Admin App Source Files
 
 Unzip the contents of the Source ZIP into any folder of your choosing. Our
 directory is on the following path: "C:\\Ed-Fi\\Admin App v1.7".
 
 ![Unzip Installer](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/technical-articles/image2020-1-30_10-59-30.png)
 
-### Step 2. Unzip Admin App Installation Files
+#### Step 2. Unzip Admin App Installation Files
 
 Unzip the contents of the Installation ZIP into any folder of your choosing. Our
 directory is on the following path: "C:\\Ed-Fi\\Admin App Installation".
 
 ![Unzip App](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/technical-articles/image2020-1-30_10-58-34.png)
 
-### Step 3. Configure Installation
+#### Step 3. Configure Installation
 
 Open the "install-config.json" file. We will need to edit this file with our
 configuration details.
@@ -74,28 +74,28 @@ configuration details.
    path like "C:\\Ed-Fi\\Admin App v1.7" should be changed to
    "C:\\\\Ed-Fi\\\\Admin App v1.7").
 2. Configure values for the ODS / API.
-    1. "apiUrl" is the base URL for the ODS / API.
-    2. "apiMode" is either going to be "Shared Instance" or "Year Specific".
-        1. If "Shared Instance" was chosen, the "schoolYear" can be left blank.
-        2. If "Year Specific" was chosen, you must provide the "schoolYear".
+    * "apiUrl" is the base URL for the ODS / API.
+    * "apiMode" is either going to be "Shared Instance" or "Year Specific".
+        * If "Shared Instance" was chosen, the "schoolYear" can be left blank.
+        * If "Year Specific" was chosen, you must provide the "schoolYear".
 3. Configure values for each database. These are used to construct the
    connection strings.
-    1. "sqlServer" is the name of the database server. For a local server, we
+    * "sqlServer" is the name of the database server. For a local server, we
        can use "(local)".
-    2. "name" is simply the name of the database being referenced. For example,
+    * "name" is simply the name of the database being referenced. For example,
        when configuring for the "ods" database, the value here will be the name
        of the ODS, whereas the "admin" and "security" database names will
        probably be "EdFi\_Admin" and "EdFi\_Security", respectively.
-    3. "trustedConnection" will either be "true" or "false".
-        1. If you plan to use Windows authentication, this value will be "true"
+    * "trustedConnection" will either be "true" or "false".
+        * If you plan to use Windows authentication, this value will be "true"
            and "username" and "password" can be left blank.
-        2. If you plan to use SQL Server authentication, this value will be
+        * If you plan to use SQL Server authentication, this value will be
            "false" and the "username" and "password" must be provided.
 
 This is an example of what a complete "install-config.json" file could look
 like:
 
-**install-config.json**
+##### install-config.json
 
 ```json
 {
@@ -131,7 +131,7 @@ like:
 }
 ```
 
-### Step 4. Run the Installation via PowerShell
+#### Step 4. Run the Installation via PowerShell
 
 Ensure that you have permission to execute PowerShell scripts. For more
 information,
@@ -144,7 +144,7 @@ The PowerShell output should look like the following:
 
 ![Pws Certificate](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/technical-articles/image2020-1-30_11-4-51.png)
 
-### Next Steps. Continue at Step 5 in the Admin App Installation (3.x)
+#### Next Steps. Continue at Step 5 in the Admin App Installation (3.x)
 
 Continue Step 5 and beyond in the general Admin App installation
 instructions: [Admin App v1.7 for ODS / API

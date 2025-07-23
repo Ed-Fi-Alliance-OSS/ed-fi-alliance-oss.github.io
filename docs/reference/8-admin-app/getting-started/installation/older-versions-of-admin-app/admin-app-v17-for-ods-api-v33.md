@@ -86,7 +86,7 @@ Enter appropriate Ods database name if it is different (ex: EdFi\_Ods).
 
 **Admin database connection:**
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/older-versions-of-admin-app/page4.JPG)
+![Database connection set up](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/older-versions-of-admin-app/page4.JPG)
 
 ### Step 3. ODS / API URL Configuration
 
@@ -194,7 +194,7 @@ Steps for restarting the ODS / API:
 
 ### Step 10. Admin app walk through
 
-**Step 10.1 Add Vendor & Application**
+#### Step 10.1 Add Vendor & Application
 
 In this step, we'll add a new vendor and a client application.
 
@@ -248,19 +248,19 @@ added.
 
 ![Vendor Application](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/older-versions-of-admin-app/page7.JPG)
 
-**Step 10.2 Descriptors tab**
+#### Step 10.2 Descriptors tab
 
 View configured descriptors for a known instance.
 
 ![Descriptors](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/older-versions-of-admin-app/page8.JPG)
 
-**Step 10.3 Education Organizations tab**
+#### Step 10.3 Education Organizations tab
 
 View and manage education organizations (LEAs and schools).
 
 ![Education Organization](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/older-versions-of-admin-app/page9.JPG)
 
-**Step 10.4 Bulk Upload process**
+#### Step 10.4 Bulk Upload process
 
 Please enter generated key and secret (on step 10.1) here and save credentials.
 Saved key and secret will be used to authorize the bulk upload process.
@@ -279,7 +279,7 @@ progress.
 
 Bulk upload is completed successfully.
 
-**Step 10.5 Sync Learning Standards**
+#### Step 10.5 Sync Learning Standards
 
 In this step, we'll populate learning standards in the ODS / API by using the
 Admin App to synchronize with the AB Connect API.
@@ -303,7 +303,7 @@ AB connect credentials or update the learning standards.
 
 ![Learning Success](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/older-versions-of-admin-app/Applicationpage15.JPG)
 
-**Optional Verification Step**
+#### Optional Verification Step
 
 To confirm that learning standards have been populated, a SQL query, such as
 shown below, can be run against your ODS / API instance database. The query

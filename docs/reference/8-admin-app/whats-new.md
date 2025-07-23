@@ -36,6 +36,7 @@ Additional support for ODS/API 6.1 updates and to support field use cases.
 
 ## Updates in Admin App v3.1
 
+<!-- markdownlint-disable-next-line MD024 -->
 ### Support for ODS/API Suite 3 and v6.x Security Model Updates
 
 * [AA-1637](https://tracker.ed-fi.org/browse/AA-1637) Admin App v3.1 provides compatibility for both ODS/API Suite 3 (v3.4-v5.3) and
@@ -300,6 +301,7 @@ functions within.
 
 ## Updates in Admin App v1.8 for Ed-Fi ODS / API v3.4
 
+<!-- markdownlint-disable-next-line MD024 -->
 ### New Features
 
 #### Claim Set Editor
@@ -327,7 +329,7 @@ information and instructions on how to enable this feature.
 The Learning Standards feature within Admin App v1.8 has been updated to version
 1.1. Optimizations have been updated to help with sequencing of learning
 standard items as well as enhancements to learning standards updates from within
-Admin App. Please see the [What's New - Learning Standards Sync Utility](#)
+Admin App. Please see the What's New - Learning Standards Sync Utility
 section for more information on this update.
 
 #### Postgres Support
@@ -357,6 +359,7 @@ instructions on how to enable and preview the Claim Set Editor features.
 
 ## Updates in Admin App v1.6 for Ed-Fi ODS / API v3.2
 
+<!-- markdownlint-disable-next-line MD024 -->
 ### New Feature
 
 #### On-Premises Year-Specific Mode
@@ -377,6 +380,7 @@ process.
 
 ## Updates in Admin App v1.5.1 for Ed-Fi ODS / API v2.6
 
+<!-- markdownlint-disable-next-line MD024 -->
 ### New Features
 
 #### Student ID to Identification Code Translation
@@ -394,7 +398,7 @@ products to support configuration of different IDs for different agencies, and
 to store all roster IDs. However, the Ed-Fi ODS / API v2.6 includes a student
 identification code translation feature as a stopgap measure.
 
-![](https://techdocs.ed-fi.org/download/attachments/61705307/AdminAppFunctionAddApplication2.PNG?version=3&modificationDate=1561498133930&api=v2)
+![Admin App Student Identification System Descriptor selection drop-down](https://techdocs.ed-fi.org/download/attachments/61705307/AdminAppFunctionAddApplication2.PNG?version=3&modificationDate=1561498133930&api=v2)
 
 **Admin App v1.5.1 for Ed-Fi ODS / API v2.6 Student Identification System
 Descriptor selection drop-down**
@@ -407,6 +411,7 @@ including a version distributed with the Ed-Fi ODS / API Cloud Deployment for
 Azure and the Ed-Fi ODS / API Cloud Deployment for AWS, both published on the
 [Ed-Fi Exchange](https://exchange.ed-fi.org).
 
+<!-- markdownlint-disable-next-line MD024 -->
 ### New Features
 
 #### Built-In Support for AB Connect
@@ -414,7 +419,7 @@ Azure and the Ed-Fi ODS / API Cloud Deployment for AWS, both published on the
 Admin App v1.5 comes with built-in integration to Certica's Academic Benchmark
 product, an online resource for academic benchmarks and learning standards. The
 integration includes a free license to several national and state-level learning
-standards. See the [Ed-Fi Learning Standards Sync Utility](#) documentation for
+standards. See the Ed-Fi Learning Standards Sync Utility documentation for
 details.
 
 #### Support for On-Premises Deployments

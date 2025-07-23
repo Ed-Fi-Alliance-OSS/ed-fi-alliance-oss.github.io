@@ -244,8 +244,8 @@ If you're new to the Ed-Fi ODS / API — or even if you're upgrading from a
 previous version in tandem with installing the Admin App — the product
 documentation for your solution has additional information you'll find useful:
 
-* The Ed-Fi ODS / API v5.2 documentation is available online
-  [here](https://edfi.atlassian.net/wiki/spaces/ODSAPI34).
+<!-- markdownlint-disable-next-line MD059 -->
+* The Ed-Fi ODS / API v5.2 documentation is available online [here](https://edfi.atlassian.net/wiki/spaces/ODSAPI34).
 * You can find documentation for prior version at [Ed-Fi Technology Suite Supported Versions](/reference/roadmap/supported-versions)
 
 The Platform Developers' Guide and API Client Developers' Guide are essential
