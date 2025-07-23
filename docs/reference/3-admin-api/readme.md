@@ -13,8 +13,8 @@ Documentation for the Ed-Fi Admin API is viewable online:
 
 * [What's New](whats-new.md)
 * [Getting Started](getting-started.md)
-* [Technical Articles 1.x](admin-api-1.x/technical-articles)
-* [Technical Articles 2.x](admin-api-2.x/technical-articles)
+* [Technical Articles 1.x](admin-api-1.x/technical-articles/readme.md)
+* [Technical Articles 2.x](admin-api-2.x/technical-articles/readme.md)
 
 ## Installation
 
