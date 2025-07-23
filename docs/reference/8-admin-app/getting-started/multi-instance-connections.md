@@ -28,7 +28,7 @@ The ODS / API modes supported by multi-instance management within Admin App are:
 When multi-instance mode is enabled, users can navigate to ODS Instances list by
 clicking on “ODS Instances” from Home page.
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/SuperAdmin-Home.JPG)
+![Admin App Super Admin - Home View](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/SuperAdmin-Home.JPG)
 
 In the absence of any registered instance, the user will be directed to the
 Register ODS Instance page.  Otherwise, the user will be presented with
@@ -38,21 +38,21 @@ available ODS instances.
 
 ### District-Specific Mode
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/SuperAdmin-InstancesList.JPG)
+![Admin App Super Admin - Instance List View](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/SuperAdmin-InstancesList.JPG)
 
   Clicking on the District / EdOrg id link will take the user to an
   instance-specific ODS settings page.
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/Multi-instance-ApplicationsPage.JPG)
+![Admin App - Instance applications](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/Multi-instance-ApplicationsPage.JPG)
 
 ### Year-Specific Mode
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/SuperAdmin-YS-InstancesList.JPG)
+![Admin App - SuperAdmin Year Selected InstancesList](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/SuperAdmin-YS-InstancesList.JPG)
 
 Clicking on the school year will take user to year-specific ODS instance
 settings page.
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/SuperAdmin-YS-Application.JPG)
+![Admin App - SuperAdmin Year Selected Application](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/SuperAdmin-YS-Application.JPG)
 
 ## Registering New ODS Instance
 
@@ -75,21 +75,23 @@ settings page.
 
 * Generated ODS instance / database name length should be below 50 characters.
 
-**District-Specific Mode**
+<!-- markdownlint-disable-next-line MD024 -->
+### District-Specific Mode
 
 * To register a district-specific ODS instance, the user needs to provide a
   valid ODS Instance District/EdOrg id and ODS Instance Description.
 
 ![District-Specific](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/SuperAdmin-RegiterNewInstance.JPG)
 
-**Year-Specific Mode**
+<!-- markdownlint-disable-next-line MD024 -->
+### Year-Specific Mode
 
 * To register a year-specific ODS instance, the user needs to provide a valid
   ODS Instance School Year and ODS Instance Description.
 
 ![Year-Specific](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/SuperAdmin-Registr-YS-Instance.JPG)
 
-**Registering Many Instances in Bulk**
+### Registering Many Instances in Bulk
 
 * To register many instances in bulk, the user can upload a list of
   district/education organization IDs or school years plus descriptions. The

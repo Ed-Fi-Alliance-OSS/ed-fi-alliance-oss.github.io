@@ -51,8 +51,8 @@ only administer ODS / API instances specifically assigned.
 
 ## Securing Admin App
 
-1. Existing form authentication (Please refer
-   [here](https://edfi.atlassian.net/wiki/pages/viewpage.action?pageId=25243028)
+<!-- markdownlint-disable-next-line MD059 -->
+1. Existing form authentication (Please refer [here](https://edfi.atlassian.net/wiki/pages/viewpage.action?pageId=25243028)
    for more details)
 
 2. Single sign on (SSO)

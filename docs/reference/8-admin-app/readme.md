@@ -6,7 +6,7 @@ Note: June 2024: On behalf of the Ed-Fi community, we are pleased to announce th
 
 The Ed-Fi ODS / API Admin App is a web-based administrative interface for the Ed-Fi ODS / API. The Admin App is available as a standalone application, and is also available for deployments on Azure and Docker. The Admin App is available for Technical Suite Three.
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/AdminApp18-ScreenCap.png)
+![Admin App Image](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/AdminApp18-ScreenCap.png)
 
 ## Supported Releases
 

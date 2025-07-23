@@ -32,7 +32,7 @@ setup.
       4. Execute the following sql commands for clearing all the data records
       created during first time setup process.
 
-**SQL**
+#### SQL
 
 ```sql
 BEGIN TRAN DECLARE @ApplicationId INT;
@@ -74,7 +74,8 @@ sql.somthing.com\]","ProductionApiCredentials":{"Password":"\[SecurePassword\]",
 The following JSON code block explains the parameters required and their
 intention:
 
-**SQL**
+<!-- markdownlint-disable-next-line MD024 -->
+#### SQL
 
 ```json
 {
@@ -96,7 +97,8 @@ required fields marked with square brackets "\[...\]"
 Following the steps above open SSMS or Azure Query Editor and execute the
 following statement against the EdFi\_Admin database.
 
-**SQL**
+<!-- markdownlint-disable-next-line MD024 -->
+#### SQL
 
 ```sql
 BEGIN TRAN UPDATE adminapp.AzureSqlConfigurations set
