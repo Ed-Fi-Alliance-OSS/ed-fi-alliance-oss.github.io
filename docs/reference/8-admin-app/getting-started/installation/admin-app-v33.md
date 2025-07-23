@@ -306,14 +306,13 @@ The following are required to install the Admin App:
 
   ### Step 7. Check Folder Permissions
 
-    Folders to verify:
+  Folders to verify:
 
-  * Admin App application "uploads" folder (default folder path:
-       C:\\inetpub\\Ed-Fi\\AdminApp\\uploads).
-  * Admin App log folder (default folder path:
-       C:\\ProgramData\\Ed-Fi-ODS-AdminApp).
+  * Admin App application "uploads" folder (default folder path: C:\\inetpub\\Ed-Fi\\AdminApp\\uploads).
 
-    For checking permissions:
+  * Admin App log folder (default folder path: C:\\ProgramData\\Ed-Fi-ODS-AdminApp).
+
+      For checking permissions:
 
   * **Right-click** the folder, choose **Properties**, view the **Security**
     tab.
