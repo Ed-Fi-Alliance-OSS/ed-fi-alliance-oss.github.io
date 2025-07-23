@@ -96,10 +96,10 @@ The following are required to install the Admin App:
     Alternatively, run the below PowerShell command to download the package as a
     zip file directly:
 
-    ```shell
-    # Web App Binaries
-    Invoke-WebRequest "https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_apis/packaging/feeds/EdFi/nuget/packages/EdFi.Suite3.ODS.AdminApp.Web/versions/3.2.1/content?api-version=6.0-preview.1" -OutFile .\EdFi.Suite3.ODS.AdminApp.Web-3.2.1.0.zip
-    ```
+      ```shell
+      # Web App Binaries
+      Invoke-WebRequest "https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_apis/packaging/feeds/EdFi/nuget/packages/EdFi.Suite3.ODS.AdminApp.Web/versions/3.2.1/content?api-version=6.0-preview.1" -OutFile .\EdFi.Suite3.ODS.AdminApp.Web-3.2.1.0.zip
+      ```
 
   ### Step 2. Configure Installation File
 
@@ -112,65 +112,65 @@ The following are required to install the Admin App:
       done for installation to complete.
     :::
 
-    1. Configure `$dbConnectionInfo`. These values are used to construct the
+  * Configure `$dbConnectionInfo`. These values are used to construct the
        connection strings.
 
-        a. `Server`. The name of the database server. For a local server, we can
+    * `Server`. The name of the database server. For a local server, we can
            use "(local)" for SQL and "localhost" for PostgreSQL.
 
-        b. `Engine.` Admin App supports SQL and PostgreSQL database engines. So
+    * `Engine.` Admin App supports SQL and PostgreSQL database engines. So
            setting up the `Engine` will decide which database engine to be used.
            Valid values are "SQLServer" and "PostgreSQL".
 
-        c. `UseIntegratedSecurity.` Will either be "$true" or "$false".
-            c1. If you plan to use Windows authentication, this value will be
+    * `UseIntegratedSecurity.` Will either be "$true" or "$false".
+      * If you plan to use Windows authentication, this value will be
                "$true"
-            c2. If you plan to use SQL Server/ PostgreSQL server authentication,
+      * If you plan to use SQL Server/ PostgreSQL server authentication,
                this value will be "$false" and the Username and `Password` must
                be provided.
 
-        d. `Username`. Optional. The username to connect to the database.
+    * `Username`. Optional. The username to connect to the database.
            If `UseIntegratedSecurity` is set to $true, this entry is not needed
 
-        e. `Password`. Optional. The password to connect to the
+    * `Password`. Optional. The password to connect to the
            database. If `UseIntegratedSecurity` is set to $true, this entry is
            not needed
 
-        f. `Port.` Optional. Used to specify the database server port, presuming
+    * `Port.` Optional. Used to specify the database server port, presuming
            the server is configured to use the specific port.
 
-    2. Configure `$adminAppFeatures`. These values are used to set Optional
+  * Configure `$adminAppFeatures`. These values are used to set Optional
        overrides for features and settings in the web.config.
 
-        a. `ApiMode.` Possible values: `sharedinstance`, `districtspecific` and
+    * `ApiMode.` Possible values: `sharedinstance`, `districtspecific` and
            `yearspecific`. Defaults to `sharedinstance`
 
-        b. `SecurityMetadataCacheTimeoutMinutes`. Optional. Defaults to 10
+    * `SecurityMetadataCacheTimeoutMinutes`. Optional. Defaults to 10
            minute security metadata cache timeout.
 
-    3. Configure `$p`. This is the variable used to send all the information to
+  * Configure `$p`. This is the variable used to send all the information to
        the installation process.
 
-        a. `ToolsPath`. Path for storing installation tools, e.g., nuget.exe.
+    * `ToolsPath`. Path for storing installation tools, e.g., nuget.exe.
            Defaults to "C:/temp/tools"
 
-        b. **`OdsApiUrl`. Base URL for the ODS / API. Mandatory.**
+    * **`OdsApiUrl`. Base URL for the ODS / API. Mandatory.**
 
-        c. `AdminDatabaseName`. , `OdsDatabaseName`,
+    * `AdminDatabaseName`. , `OdsDatabaseName`,
            `SecurityDatabaseName`. Optional. Specify _only_ if ODS / API was set
            with a custom database name.
-            c1. For example, when configuring the `OdsDatabaseName`, the value
+      * For example, when configuring the `OdsDatabaseName`, the value
                here will be the name of the ODS database, whereas the
                `AdminDatabaseName` and `SecurityDatabaseName` will be the name
                of the Admin and Security databases, respectively.
 
-        d. `WebApplicationName.` Optional. Defaults to "AdminApp".
+    * `WebApplicationName.` Optional. Defaults to "AdminApp".
 
-        e. `WebSitePort`. Optional. Defaults to 443.
+    * `WebSitePort`. Optional. Defaults to 443.
 
-        f. `WebsiteName`. Optional. Defaults to "Ed-Fi".
+    * `WebsiteName`. Optional. Defaults to "Ed-Fi".
 
-        g. `PackageVersion`. Optional. If not set, will retrieve the latest full
+    * `PackageVersion`. Optional. If not set, will retrieve the latest full
            release package.
 
     Configuration samples for the "install.ps1" file:
@@ -179,7 +179,7 @@ The following are required to install the Admin App:
 
      SQL Server Shared Instance
 
-     ```json title="install.ps1 for MSSQL"
+         ```json title="install.ps1 for MSSQL"
      $dbConnectionInfo = @{
       Server = "(local)"
       Engine = "SqlServer"
@@ -188,13 +188,14 @@ The following are required to install the Admin App:
 
      $p = @{
       DbConnectionInfo = $dbConnectionInfo
-      OdsApiUrl = "https://localhost:54746"
+      OdsApiUrl = "<https://localhost:54746>"
      }
-     ```
+
+        ```
 
      PostgreSQL District Specific
 
-     ```json title="install.ps1 for PostgreSQL"
+        ```json title="install.ps1 for PostgreSQL"
      $dbConnectionInfo = @{
       Server = "localhost"
       Engine = "PostgreSQL"
@@ -208,17 +209,17 @@ The following are required to install the Admin App:
 
      $parameters = @{
       DbConnectionInfo = $dbConnectionInfo
-         OdsApiUrl = "https://localhost:54746"
+         OdsApiUrl = "<https://localhost:54746>"
          AdminAppFeatures = $adminAppFeatures
      }
 
-     ```
+        ```
 
      SQL Server Year Specific
 
-     **install.ps1(SQL Server)**
+    #### install.ps1(SQL Server)
 
-     ```json
+        ```json
      $dbConnectionInfo = @{
       Server = "(local)"
       Engine = "SqlServer"
@@ -231,11 +232,11 @@ The following are required to install the Admin App:
 
      $p = @{
       DbConnectionInfo = $dbConnectionInfo
-      OdsApiUrl = "https://localhost:54746"
+      OdsApiUrl = "<https://localhost:54746>"
          AdminAppFeatures = $adminAppFeatures
      }
 
-     ```
+        ```
 
     :::
 
@@ -305,14 +306,13 @@ The following are required to install the Admin App:
 
   ### Step 7. Check Folder Permissions
 
-    Folders to verify:
+  Folders to verify:
 
-    1. Admin App application "uploads" folder (default folder path:
-       C:\\inetpub\\Ed-Fi\\AdminApp\\uploads).
-    2. Admin App log folder (default folder path:
-       C:\\ProgramData\\Ed-Fi-ODS-AdminApp).
+  * Admin App application "uploads" folder (default folder path: C:\\inetpub\\Ed-Fi\\AdminApp\\uploads).
 
-    For checking permissions:
+  * Admin App log folder (default folder path: C:\\ProgramData\\Ed-Fi-ODS-AdminApp).
+
+  For checking permissions:
 
   * **Right-click** the folder, choose **Properties**, view the **Security**
     tab.

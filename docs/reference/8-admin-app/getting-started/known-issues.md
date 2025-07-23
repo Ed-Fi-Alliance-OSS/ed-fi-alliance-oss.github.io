@@ -37,10 +37,10 @@ useful if the connection between Admin App and the ODS API becomes corrupted.
 This will keep any new Vendors, Applications, or Claim Sets you created with the
 Admin App
 
-1.  Replace secret.json file with default content. This file exists in the root
-    of the web site directory. Delete the secret.json and re-create it with the
-    following content. **Note: this is only required for versions before Admin
-    App 1.8**. For Admin App versions 1.8+ you can skip this step.
+1. Replace secret.json file with default content. This file exists in the root
+  of the web site directory. Delete the secret.json and re-create it with the
+  following content. **Note: this is only required for versions before Admin
+  App 1.8**. For Admin App versions 1.8+ you can skip this step.
 
     ```json
     {
@@ -65,14 +65,15 @@ Admin App
     }
     ```
 
-2.  Create a new text file named `SetupRequired` and remove the file extension
-    so it shows as “File” in file explorer. **Note: this is only required for
-    versions before Admin App 2.0.1**. For Admin App versions 2.0+ you can skip
-    this step.
-3.  Connect to the EdFi\_Admin database on your SQL Server and remove old data
-    created by the original run of setup. There might be a table in the sample
-    below that doesn’t exist -- you can remove these lines if they show an error
-    in SSMS.
+2. Create a new text file named `SetupRequired` and remove the file extension
+  so it shows as “File” in file explorer. **Note: this is only required for
+  versions before Admin App 2.0.1**. For Admin App versions 2.0+ you can skip
+  this step.
+
+3. Connect to the EdFi\_Admin database on your SQL Server and remove old data
+  created by the original run of setup. There might be a table in the sample
+  below that doesn’t exist -- you can remove these lines if they show an error
+  in SSMS.
 
     :::info Note
       please use Admin App version appropriate script
@@ -117,17 +118,17 @@ Admin App
             WHERE ClientAccessTokens.ApiClient_ApiClientId = ApiClients.ApiClientId
             AND Application_ApplicationId = @ApplicationId
     )
-        DELETE FROM dbo.ApiClients WHERE Application_ApplicationId = @ApplicationId
-        DELETE FROM dbo.ApplicationEducationOrganizations WHERE Application_ApplicationId = @ApplicationId
-        DELETE FROM dbo.ProfileApplications WHERE Application_ApplicationId = @ApplicationId
-        DELETE FROM dbo.Applications WHERE ApplicationId = @ApplicationId
-        DELETE FROM adminapp.SecretConfigurations
-    	DELETE FROM adminapp.OdsInstanceRegistrations
-    	DELETE FROM adminapp.ApplicationConfigurations
-    	UPDATE  dbo.Applications set OdsInstance_OdsInstanceId = null where OdsInstance_OdsInstanceId = @InstanceId
+      DELETE FROM dbo.ApiClients WHERE Application_ApplicationId = @ApplicationId
+      DELETE FROM dbo.ApplicationEducationOrganizations WHERE Application_ApplicationId = @ApplicationId
+      DELETE FROM dbo.ProfileApplications WHERE Application_ApplicationId = @ApplicationId
+      DELETE FROM dbo.Applications WHERE ApplicationId = @ApplicationId
+      DELETE FROM adminapp.SecretConfigurations
+      DELETE FROM adminapp.OdsInstanceRegistrations
+      DELETE FROM adminapp.ApplicationConfigurations
+      UPDATE  dbo.Applications set OdsInstance_OdsInstanceId = null where OdsInstance_OdsInstanceId = @InstanceId
     DELETE FROM [EdFi_Admin].[dbo].[OdsInstances] where OdsInstanceId = @InstanceId
     COMMIT  TRAN
 
     ```
 
-4.  Relaunch Admin App and you should see First Time Setup again.
+4. Relaunch Admin App and you should see First Time Setup again.
