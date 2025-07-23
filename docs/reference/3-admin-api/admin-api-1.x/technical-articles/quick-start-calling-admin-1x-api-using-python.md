@@ -384,7 +384,7 @@ future reference.
 In the case that you want to retrieve information from one of the vendors, you
 will need to use the resource ID.
 
-#### GET /v1/vendors/{id}
+#### GET /v1/vendors/`{id}`
 
 ```python
 def get_vendor(
@@ -457,7 +457,7 @@ vendor_payload = {
 
 We use as an example the code below.
 
-#### PUT /v1/vendors/{id}
+#### PUT /v1/vendors/`{id}`
 
 ```python
 def edit_vendor(
@@ -527,7 +527,7 @@ The successful out will look like the following.
 
 To delete a vendor you can use the next point, as the example provided below.
 
-#### DELETE /v1/vendors/{id}
+#### DELETE /v1/vendors/`{id}`
 
 ```python
 def delete_vendor(
@@ -975,7 +975,7 @@ The output will give the updated information, in JSON format.
 To retrieve the claim information, we will use the Claims ID, the example would
 be as follows.
 
-#### GET /v1/claimsets/{id}
+#### GET /v1/claimsets/`{id}`
 
 ```python
 def get_claimset(
@@ -1126,7 +1126,7 @@ claimset_payload = {
 
 And the code to update goes as follows.
 
-#### PUT /v1/claimsets/{id}
+#### PUT /v1/claimsets/`{id}`
 
 ```python
 def edit_claimset(
@@ -1338,7 +1338,7 @@ The given output will look like the following output.
 
 To delete a claim set you can use the example below.
 
-#### DELETE /v1/claimsets/{id}
+#### DELETE /v1/claimsets/`{id}`
 
 ```python
 def delete_claimset(
@@ -1476,7 +1476,7 @@ Where you can obtain the key and secret from the response, and save the
 application ID. If you need to verify that your app was created, you can use the
 code as follows with the App ID.
 
-#### GET /v1/applications/{id}
+#### GET /v1/applications/`{id}`
 
 ```python
 def get_application(
@@ -1538,7 +1538,7 @@ The confirmation outcome will be like the following:
 
 You can use the following code to update the information in the application.
 
-#### PUT /v1/applications/{id}
+#### PUT /v1/applications/`{id}`
 
 ```python
 def edit_application(
@@ -1609,7 +1609,7 @@ The confirmation result will be similar to the sample output.
 
 To delete an application the example will be the following.
 
-#### DELETE /v1/applications/{id}
+#### DELETE /v1/applications/`{id}`
 
 ```python
 def delete_application(
@@ -1664,7 +1664,7 @@ The output will be as follow:
 In case you want to refresh your credentials or get a new ones you can use the
 next endpoint.
 
-#### PUT /v1/applications/{id}/reset-credential
+#### PUT /v1/applications/`{id}`/reset-credential
 
 ```python
 def reset_application_credentials(

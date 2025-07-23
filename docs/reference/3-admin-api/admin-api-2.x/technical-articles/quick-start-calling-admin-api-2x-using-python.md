@@ -434,7 +434,7 @@ vendor_payload = {
 
 We use as an example the code below.
 
-**PUT /v2/vendors/`{id}`**
+#### PUT /v2/vendors/`{id}`
 
 ```python
 def edit_vendor(
@@ -815,7 +815,7 @@ claimset_payload = {
 
 And the code to update goes as follows.
 
-**PUT /v2/claimsets/`{id}`**
+#### PUT /v2/claimsets/`{id}`
 
 ```python
 def edit_claimset(
@@ -862,7 +862,7 @@ As a result, we will obtain a 200 Status Code
 
 To delete a claim set you can use the example below.
 
-**DELETE /v2/claimset/`{id}`**
+#### DELETE /v2/claimset/`{id}`
 
 ```python
 def delete_claimset(
@@ -1393,7 +1393,7 @@ In case of success we will obtain an output as follow:
 
 You can use the following code to update the information in the ODS instance.
 
-**PUT /v2/odsInstances/`{id}`**
+#### PUT /v2/odsInstances/`{id}`
 
 ```python
 def edit_ods_instance(
@@ -1444,7 +1444,7 @@ As a result, we will obtain a 200 Status Code
 To delete a ods instance you can use the next point, as the example provided
 below.
 
-**/v2/odsInstances/`{id}`**
+#### DELETE /v2/odsInstances/`{id}`
 
 ```python
 def delete_ods_instance(
@@ -1685,7 +1685,7 @@ In case of success we will obtain an output as follow:
 You can use the following code to update the information in the ODS instance
 derivative.
 
-**PUT /v2/odsInstanceDerivatives/`{id}`**
+#### PUT /v2/odsInstanceDerivatives/`{id}`
 
 ```python
 def edit_ods_instance_derivative(
@@ -1736,7 +1736,7 @@ As a result, we will obtain a 200 Status Code
 To delete a ods instance derivative you can use the next point, as the example
 provided below.
 
-**/v2/odsInstanceDerivatives/`{id}`**
+#### DELETE /v2/odsInstanceDerivatives/`{id}`
 
 ```python
 def delete_ods_instance_derivative(
@@ -1969,7 +1969,7 @@ In case of success we will obtain an output as follow:
 You can use the following code to update the information in the ODS instance
 context.
 
-**PUT /v2/odsInstanceContexts/`{id}`**
+#### PUT /v2/odsInstanceContexts/`{id}`
 
 ```python
 def edit_ods_instance_context(
@@ -2020,7 +2020,7 @@ As a result, we will obtain a 200 Status Code
 To delete a ods instance context you can use the next point, as the example
 provided below.
 
-**/v2/odsInstanceContexts/`{id}`**
+#### DELETE /v2/odsInstanceContexts/`{id}`
 
 ```python
 def delete_ods_instance_context(
@@ -2205,7 +2205,7 @@ The confirmation outcome will be like the following:
 
 You can use the following code to update the information in the application.
 
-**PUT /v2/applications/`{id}`**
+#### PUT /v2/applications/`{id}`
 
 ```python
 def edit_application(
@@ -2259,7 +2259,7 @@ As a result, we will obtain a 200 Status Code
 
 To delete an application the example will be the following.
 
-**DELETE /v2/applications/`{id}`**
+#### DELETE /v2/applications/`{id}`
 
 ```python
 def delete_application(
