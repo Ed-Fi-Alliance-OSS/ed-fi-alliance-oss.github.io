@@ -1,6 +1,6 @@
 # Admin API 1.x Docker & Microsoft SQL Server Support
 
-## Pre-requisites:
+## Pre-requisites
 
 * SQL Server exposed or locally
 
@@ -13,7 +13,7 @@
     [Docker/Settings/ssl/generate-certificate.sh](https://github.com/Ed-Fi-Alliance-OSS/AdminAPI-1.x/tree/main/Docker/Settings/ssl)
     script
 
-## File configuration.
+## File configuration
 
 1. Set the version of AdminApi to use in
     [Docker/Dockerfile](https://github.com/Ed-Fi-Alliance-OSS/AdminAPI-1.x/blob/main/Docker/api.mssql.Dockerfile)

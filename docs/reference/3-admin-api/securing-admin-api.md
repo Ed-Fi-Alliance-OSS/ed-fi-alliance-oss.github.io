@@ -23,7 +23,7 @@ a **URL-Encoded Form** request to the `/connect/token` endpoint.
 
 | Endpoint | Http Verb | Description | Request Schema | Response Schema (Success) | Response Schema (Error) |
 | --- | --- | --- | --- | --- | --- |
-| ```/connect```<br/>```/token``` | POST | Retrieve a bearer token for Admin API | ```client_id="string"```<br/>```client_secret="string"```<br/>```grant_type="client_credentials"``` <br/>```scope="edfi_admin_api/full_access"```|```{ "access_token": "string", "token_type": "Bearer", "expires_in": 0  }``` | ```{ "error": "string", "error_description": "string", "error_uri": "string"}``` |
+| ```/connect``` ```/token``` | POST | Retrieve a bearer token for Admin API | ```client_id="string"``` ```client_secret="string"``` ```grant_type="client_credentials"``` ```scope="edfi_admin_api/full_access"```|```{ "access_token": "string", "token_type": "Bearer", "expires_in": 0  }``` | ```{ "error": "string", "error_description": "string", "error_uri": "string"}``` |
 
 Save the resulting `access_token` from the response and include it as a Bearer
 token in the `Authorization`  header on subsequent requests. Note the
@@ -69,7 +69,7 @@ Then, register a new client by POSTing a **URL-Encoded Form** request to
 
 | Endpoint | Http Verb | Description | Request Schema | Response Schema (Success) | Response Schema (Validation Error) | Response Schema (Error) |
 | --- | --- | --- | --- | --- | --- | --- |
-| ```/connect```<br/>```/register``` | POST | Registers a new Admin API client | ```ClientId="string"```<br/>```ClientSecret="string"```<br/>```DisplayName="string"``` | ```{ "status": 0      "title": "string" }``` | ```{    "status": 0,    "title": "string",    "errors": [      { "string": [ "string" ] }    ]  }``` | ```{    "status": 0,    "title": "string",    "errors": [ "string" ]  }``` |
+| ```/connect``` ```/register``` | POST | Registers a new Admin API client | ```ClientId="string"``` ```ClientSecret="string"``` ```DisplayName="string"``` | ```{ "status": 0      "title": "string" }``` | ```{    "status": 0,    "title": "string",    "errors": [      { "string": [ "string" ] }    ]  }``` | ```{    "status": 0,    "title": "string",    "errors": [ "string" ]  }``` |
 
 You can now retrieve a bearer token using the process above with your newly
 registered Client ID and Secret.
