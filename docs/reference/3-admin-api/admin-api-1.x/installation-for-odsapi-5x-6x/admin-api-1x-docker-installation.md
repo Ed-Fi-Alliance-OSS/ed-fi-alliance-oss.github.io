@@ -14,10 +14,10 @@ the Ed-Fi ODS API 6.1. See the [Ed-Fi Technology Suite Supported Versions](/refe
 
 The following are required to install the Admin API:
 
-* Docker Desktop or equivalent container runtime
-* A SQL Server 2012 or higher, or Postgres 11 or higher database server (i.e.,
+- Docker Desktop or equivalent container runtime
+- A SQL Server 2012 or higher, or Postgres 11 or higher database server (i.e.,
   the same platform requirement applicable to your ODS / API).
-* A modern web browser such as Google Chrome, Mozilla Firefox, or Microsoft Edge
+- A modern web browser such as Google Chrome, Mozilla Firefox, or Microsoft Edge
   is required to view live Swagger documentation. Internet Explorer 11 (a
   pre-installed browser on Windows Server) may load but may not function when
   using Admin API.
@@ -98,7 +98,6 @@ SIGNING_KEY=<generate-random-signing-key>
 >TIP:
 Generate a secure encryption key using: `openssl rand -base64 32`
 
-
 ### 5. Choose Your Deployment Type
 
 The Admin API provides two deployment options:
@@ -112,6 +111,7 @@ docker compose -f compose-build-dev.yml up -d
 ```
 
 This option includes:
+
 - Admin API application
 - Admin database
 - ODS/API for testing
@@ -127,6 +127,7 @@ docker compose -f compose-build-binaries.yml up -d
 ```
 
 This option includes:
+
 - Admin API application
 - Admin database
 - Web gateway (NGiNX)
@@ -147,8 +148,8 @@ curl -k https://localhost/adminapi/health
 
 ### 7. Access the Admin API
 
-- **Swagger UI**: https://localhost/adminapi/swagger/index.html
-- **API Base URL**: https://localhost/adminapi
+- **Swagger UI**: [https://localhost/adminapi/swagger/index.html](https://localhost/adminapi/swagger/index.html)
+- **API Base URL**: [https://localhost/adminapi](https://localhost/adminapi)
 
 ### 9. Stop the Containers
 
@@ -162,5 +163,5 @@ docker compose -f <your-compose-file> down
 
 The following Docker images are available for Admin API v1.4.0:
 
-* **Admin API Application**: [edfialliance/ods-admin-api:v1.4.0](https://hub.docker.com/layers/edfialliance/ods-admin-api/v1.4/images/sha256-0a52face1b03e94892dc4d82e05f2fae05e635f1c46b2baf081bbcf2e81d76b1?context=explore)
-* **Admin Database**: [edfialliance/ods-admin-api-db:v1.4.0](https://hub.docker.com/layers/edfialliance/ods-admin-api-db/v1.4/images/sha256-70375e3564e9d409dfe8c25d27d504f1b3e15f75e454c9da9f5dc40c30c9d4a3?context=explore)
+- **Admin API Application**: [edfialliance/ods-admin-api:v1.4.0](https://hub.docker.com/layers/edfialliance/ods-admin-api/v1.4/images/sha256-0a52face1b03e94892dc4d82e05f2fae05e635f1c46b2baf081bbcf2e81d76b1?context=explore)
+- **Admin Database**: [edfialliance/ods-admin-api-db:v1.4.0](https://hub.docker.com/layers/edfialliance/ods-admin-api-db/v1.4/images/sha256-70375e3564e9d409dfe8c25d27d504f1b3e15f75e454c9da9f5dc40c30c9d4a3?context=explore)

@@ -82,19 +82,17 @@ keys in `AdminApi\appsettings.json`. Some values to note:
         following script demonstrates how to generate it, but you can use
         another preferred method:
 
-        **generate\_signingkey.ps1** Expand source
-
-        ```json
-        # <base64-encoded 256-bit key>
-        $randomNumber = [System.Security.Cryptography.RandomNumberGenerator]::Create();
-        $buffer = New-Object byte[] 32;
-        $randomNumber.GetBytes($buffer);
-        [BitConverter]::ToString($buffer).Replace("-", [string]::Empty);
-        # Convert to base-64
-        $StringBytes = [System.Text.Encoding]::Unicode.GetBytes($buffer)
-        $Base64EncodedKey =[Convert]::ToBase64String($StringBytes)
-        Write-Host "Your EncryptionKey: " $Base64EncodedKey
-        ```
+    ```ps1 title="generate\_signingkey.ps1"
+    # <base64-encoded 256-bit key>
+    $randomNumber = [System.Security.Cryptography.RandomNumberGenerator]::Create();
+    $buffer = New-Object byte[] 32;
+    $randomNumber.GetBytes($buffer);
+    [BitConverter]::ToString($buffer).Replace("-", [string]::Empty);
+    # Convert to base-64
+    $StringBytes = [System.Text.Encoding]::Unicode.GetBytes($buffer)
+    $Base64EncodedKey =[Convert]::ToBase64String($StringBytes)
+    Write-Host "Your EncryptionKey: " $Base64EncodedKey
+    ```
 
   * `Authentication:Authority`  and `Authentication:IssuerUrl`  should be the
         same URL as your application
@@ -115,41 +113,41 @@ keys in `AdminApi\appsettings.json`. Some values to note:
 Here is a snippet from a properly configured application settings file:
 
 ```json title="appsettings.json"
-{
-  "AppSettings": {
-      "DatabaseEngine": "SqlServer",
-      "PathBase": "",
-       "DefaultPageSizeOffset": 0,
-      "DefaultPageSizeLimit": 25,
-       "MultiTenancy": false
-      },
-  "Authentication": {
-      "Authority": "https://YOUR_SERVER_NAME_HERE/AdminApi",
-      "IssuerUrl": "https://YOUR_SERVER_NAME_HERE/AdminApi",
-      "SigningKey": "YOUR_BASE64_ENCODED_256_BIT_STRING",
-      "AllowRegistration": false
-  },
-    "SwaggerSettings": {
-      "EnableSwagger": false,
-      "DefaultTenant": ""
-  },
-    "EnableDockerEnvironment": false,
-  "ConnectionStrings": {
-      "Admin": "Data Source=(local);Initial Catalog=EdFi_Admin;Trusted_Connection=True",
-      "Security": "Data Source=(local);Initial Catalog=EdFi_Security;Trusted_Connection=True"
-  },
-  "Log4NetCore": {
-      "Log4NetConfigFileName": "log4net\\log4net.config"
-  },
-  "Logging": {
-      "LogLevel": {
-          "Default": "Information",
-          "Microsoft": "Warning",
-          "Microsoft.Hosting.Lifetime": "Information"
-      }
-  },
-  "AllowedHosts": "*"
-}
+    {
+    "AppSettings": {
+        "DatabaseEngine": "SqlServer",
+        "PathBase": "",
+           "DefaultPageSizeOffset": 0,
+        "DefaultPageSizeLimit": 25,
+           "MultiTenancy": false
+          },
+    "Authentication": {
+        "Authority": "https://YOUR_SERVER_NAME_HERE/AdminApi",
+        "IssuerUrl": "https://YOUR_SERVER_NAME_HERE/AdminApi",
+        "SigningKey": "YOUR_BASE64_ENCODED_256_BIT_STRING",
+        "AllowRegistration": false
+    },
+        "SwaggerSettings": {
+        "EnableSwagger": false,
+        "DefaultTenant": ""
+    },
+        "EnableDockerEnvironment": false,
+    "ConnectionStrings": {
+        "Admin": "Data Source=(local);Initial Catalog=EdFi_Admin;Trusted_Connection=True",
+        "Security": "Data Source=(local);Initial Catalog=EdFi_Security;Trusted_Connection=True"
+    },
+    "Log4NetCore": {
+        "Log4NetConfigFileName": "log4net\\log4net.config"
+    },
+    "Logging": {
+        "LogLevel": {
+            "Default": "Information",
+            "Microsoft": "Warning",
+            "Microsoft.Hosting.Lifetime": "Information"
+        }
+    },
+    "AllowedHosts": "*"
+    }
 ```
 
 ### **Step 5. Create Self-Signed Certificate in IIS Manager**
