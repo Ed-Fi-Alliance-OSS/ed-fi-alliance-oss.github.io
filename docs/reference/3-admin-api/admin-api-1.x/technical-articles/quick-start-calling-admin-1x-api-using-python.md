@@ -18,8 +18,8 @@ python --version
 ```
 
 The utility to install packages in Python is called pip, in case you don't have
-it installed you can follow the instructions in this
-[link](https://pip.pypa.io/en/stable/installation/).
+it installed you can follow the
+[the instructions in this link](https://pip.pypa.io/en/stable/installation/).
 
 To install the libraries using pip, you can use the line below.
 
@@ -29,7 +29,7 @@ pip install -U requests
 
 To import it into our script we will use the following imports:
 
-**script.py**
+### script.py
 
 ```python
 import requests
@@ -40,7 +40,7 @@ warnings.filterwarnings('ignore') # setting ignore as a parameter
 
 ### Information
 
-**GET /**
+#### GET /
 
 ```python
 def information(base_url: str) -> dict:
@@ -57,7 +57,7 @@ def information(base_url: str) -> dict:
 
 Our output should bring the information from the Restful API.
 
-**Sample Output**
+#### Sample Output
 
 ```json
 {
@@ -77,7 +77,7 @@ connect, for which we will follow the instructions within the document in
 In order to do so, we can add the functionality to our script by adding the
 following lines.
 
-**POST /connect/register**
+#### POST /connect/register
 
 ```python
 def register(
@@ -120,7 +120,7 @@ def register(
 
 And we can construct our payload as the following example.
 
-**Sample input**
+#### Sample input for register a new client
 
 ```python
 new_client = {
@@ -132,7 +132,7 @@ new_client = {
 
 The successful output will be JSON formatted.
 
-**Sample output**
+#### Sample output for register a new client
 
 ```json
 {
@@ -149,7 +149,7 @@ document [Securing Admin API](../../securing-admin-api.md).
 We can obtain the token we will use for each API query. Just pass the same
 ClientID and ClientSecret we use to register it, with two new variables.
 
-**Sample input**
+#### Sample input token
 
 ```python
 client_id = <your_client_id>
@@ -158,7 +158,7 @@ grant_type = "client_credentials"
 scope = "edfi_admin_api/full_access"
 ```
 
-**POST /connect/token**
+#### POST /connect/token
 
 ```python
 def token(
@@ -203,7 +203,7 @@ def token(
 
 The outcome will be JSON formatted.
 
-**Sample output**
+#### Sample output token
 
 ```json
 {
@@ -220,7 +220,7 @@ Authorization as the example below.
 
 ### Retrieve a Listing of Vendors
 
-**GET /v1/vendors**
+#### GET /v1/vendors
 
 ```python
 def get_vendors(
@@ -271,7 +271,7 @@ def get_vendors(
 
 We will get a list of the vendors, JSON formatted, as in the example below.
 
-**Sample output**
+#### Sample output for retrieve a listing of vendors
 
 ```json
 {
@@ -300,7 +300,7 @@ API](https://edfi.atlassian.net/wiki/spaces/ADMINAPI/pages/21300701/Endpoints+in
 to successfully create the provider. In our case, we will use the following
 information.
 
-**Sample output**
+#### Sample input for create a Vendor
 
 ```json
 vendor_payload = {
@@ -314,7 +314,7 @@ vendor_payload = {
 Which we will pass as a parameter to a function as shown below, or with the
 method of your choice.
 
-**POST /v1/vendors**
+#### POST /v1/vendors
 
 ```python
 def create_vendor(
@@ -361,7 +361,7 @@ As a result, we will obtain in JSON format, a dictionary verifying that our
 information was saved correctly. If necessary, you can store the Vendor ID for
 future reference.
 
-**Sample output**
+#### Sample output for create a Vendor
 
 ```json
 {
@@ -384,7 +384,7 @@ future reference.
 In the case that you want to retrieve information from one of the vendors, you
 will need to use the resource ID.
 
-**GET /v1/vendors/`{id}`**
+#### GET /v1/vendors/`{id}`
 
 ```python
 def get_vendor(
@@ -423,7 +423,7 @@ def get_vendor(
 
 In case of success we will obtain an output as follow:
 
-**Sample output**
+#### Sample output for get a vendor
 
 ```json
 {
@@ -444,7 +444,7 @@ In case of success we will obtain an output as follow:
 For this example, we update the previously created vendor with the following
 info.
 
-**Sample input**
+#### Sample input for update a vendor
 
 ```json
 vendor_payload = {
@@ -457,7 +457,7 @@ vendor_payload = {
 
 We use as an example the code below.
 
-**PUT /v1/vendors/`{id}`**
+#### PUT /v1/vendors/`{id}`
 
 ```python
 def edit_vendor(
@@ -505,7 +505,7 @@ def edit_vendor(
 
 The successful out will look like the following.
 
-**Sample output**
+#### Sample output for update a vendor
 
 ```json
 {
@@ -527,7 +527,7 @@ The successful out will look like the following.
 
 To delete a vendor you can use the next point, as the example provided below.
 
-**/v1/vendors/`{id}`**
+#### DELETE /v1/vendors/`{id}`
 
 ```python
 def delete_vendor(
@@ -566,7 +566,7 @@ def delete_vendor(
 
 The output will be a confirmation as follows:
 
-**Sample output**
+#### Sample output for delete a vendor
 
 ```json
 {
@@ -581,7 +581,7 @@ The output will be a confirmation as follows:
 
 To retrieve all the claims we will use the GET verb as follows:
 
-**GET /v1/claimsets**
+#### GET /v1/claimsets
 
 ```python
 def get_claimsets(
@@ -631,7 +631,7 @@ def get_claimsets(
 
 The result will be a list of claim sets as the ones shown below:
 
-**Sample output**
+#### Sample output for list all Claims
 
 ```json
 {
@@ -657,7 +657,7 @@ For the creation of a claim, we will use the POST verb again, and we will pass a
 dictionary with the values to store, an example of payload for this case could
 be like the following.
 
-**Sample input**
+#### Sample input for create a Claim
 
 ```json
 claimset_payload = {
@@ -766,7 +766,7 @@ claimset_payload = {
 
 Which we will pass as a parameter in a function like the following:
 
-**POST /v1/claimsets**
+#### POST /v1/claimsets
 
 ```python
 def create_claimset(
@@ -832,7 +832,7 @@ def create_claimset(
 
 The output will give the updated information, in JSON format.
 
-**Sample output**
+#### Sample output for create a Claim
 
 ```json
 {
@@ -975,7 +975,7 @@ The output will give the updated information, in JSON format.
 To retrieve the claim information, we will use the Claims ID, the example would
 be as follows.
 
-**GET /v1/claimsets/`{id}`**
+#### GET /v1/claimsets/`{id}`
 
 ```python
 def get_claimset(
@@ -1017,7 +1017,7 @@ def get_claimset(
 In case you want to update some info from the previous claim set. For this
 example, we will use the next input.
 
-**Sample input**
+#### Sample input for update a claim set
 
 ```json
 claimset_payload = {
@@ -1126,7 +1126,7 @@ claimset_payload = {
 
 And the code to update goes as follows.
 
-**PUT /v1/claimsets/`{id}`**
+#### PUT /v1/claimsets/`{id}`
 
 ```python
 def edit_claimset(
@@ -1193,7 +1193,7 @@ def edit_claimset(
 
 The given output will look like the following output.
 
-**Sample output**
+#### Sample output for update a claim set
 
 ```json
 {
@@ -1338,7 +1338,7 @@ The given output will look like the following output.
 
 To delete a claim set you can use the example below.
 
-**DELETE /v1/claimset/`{id}`**
+#### DELETE /v1/claimsets/`{id}`
 
 ```python
 def delete_claimset(
@@ -1377,7 +1377,7 @@ def delete_claimset(
 
 The confirmation meesage.
 
-**Sample output**
+#### Sample output for delete a claim set
 
 ```json
 {
@@ -1394,7 +1394,7 @@ To create an application, we use the POST verb, and we will pass it a dictionary
 with the values to store, an example of payload for this case could be the
 following.
 
-**Sample data create appication**
+#### Sample data create appication
 
 ```json
 application_payload = {
@@ -1409,7 +1409,7 @@ application_payload = {
 
 Which we will use inside a variable to pass it inside a function like a payload.
 
-**POST /v1/applications**
+#### POST /v1/applications
 
 ```python
 def create_application(
@@ -1456,7 +1456,7 @@ def create_application(
 
 The result of the code above it will give you an output as follows.
 
-**Sample output**
+#### Sample output for create an application
 
 ```json
 {
@@ -1476,7 +1476,7 @@ Where you can obtain the key and secret from the response, and save the
 application ID. If you need to verify that your app was created, you can use the
 code as follows with the App ID.
 
-**GET /v1/applications/`{id}`**
+#### GET /v1/applications/`{id}`
 
 ```python
 def get_application(
@@ -1515,7 +1515,7 @@ def get_application(
 
 The confirmation outcome will be like the following:
 
-**Sample output**
+#### Sample output for retrieve application data
 
 ```json
 {
@@ -1538,7 +1538,7 @@ The confirmation outcome will be like the following:
 
 You can use the following code to update the information in the application.
 
-**PUT /v1/applications/`{id}`**
+#### PUT /v1/applications/`{id}`
 
 ```python
 def edit_application(
@@ -1588,7 +1588,7 @@ def edit_application(
 
 The confirmation result will be similar to the sample output.
 
-**Sample output**
+#### Sample output for update an application
 
 ```json
 {
@@ -1609,7 +1609,7 @@ The confirmation result will be similar to the sample output.
 
 To delete an application the example will be the following.
 
-**DELETE /v1/applications/`{id}`**
+#### DELETE /v1/applications/`{id}`
 
 ```python
 def delete_application(
@@ -1648,7 +1648,7 @@ def delete_application(
 
 The output will be as follow:
 
-**Sample output**
+#### Sample output for delete an application
 
 ```json
 {
@@ -1664,7 +1664,7 @@ The output will be as follow:
 In case you want to refresh your credentials or get a new ones you can use the
 next endpoint.
 
-**PUT /v1/applications/`{id}`/reset-credential**
+#### PUT /v1/applications/`{id}`/reset-credential
 
 ```python
 def reset_application_credentials(
@@ -1703,7 +1703,7 @@ def reset_application_credentials(
 
 The resulting output will again print the new secret keys.
 
-**Sample output**
+#### Sample output for refresh application credentials
 
 ```json
 {
