@@ -9,7 +9,7 @@ sidebar_position: 4
 With the Data Standard v3.3-a release, a number of changes were introduced to
 the Discipline domain. New entities, like the
 StudentDisciplineIncidentBehaviorAssociation and
-StudentDisciplineIncidientNonOffenderAssociation were introduced while the
+StudentDisciplineIncidentNonOffenderAssociation were introduced while the
 previously used StudentDisciplineIncidentAssociation was deprecated. The
 following documentation is an attempt to clarify best practices of how to store
 the Discipline data given these recent changes.
@@ -23,10 +23,10 @@ within the Discipline domain. Namely:
 1. as an optional collection on DisciplineIncident
 2. as a required field on the new StudentDisciplineIncidentBehaviorAssociation
 3. as an optional collection on the deprecated
-    StudentDisicplineIncidentAssociation
+    StudentDisciplineIncidentAssociation
 
 The Alliance advises avoiding use of deprecated elements, so usage of the
-Behavior collection on StudentDisicplineIncidentAssociation is not recommended.
+Behavior collection on StudentDisciplineIncidentAssociation is not recommended.
 
 ## Use Cases
 
@@ -40,6 +40,11 @@ Behavior descriptor is an optional collection on DisciplineIncident. All
 behaviors associated with the incident SHOULD be recorded here, regardless of
 which student or non-student participant was responsible for each Behavior.
 
+:::note
+If an incident involves students associated to another school, each school should
+record an incident relative to the student or students involved as part of the DisciplineIncident.
+:::
+
 ### Student Behaviors
 
 The second use case is to tie these behaviors to the individuals responsible. To
@@ -48,12 +53,14 @@ entity, Behavior is a part of the key and so must be defined. If a student is
 responsible for more than one behavior in a single incident, multiple
 StudentDisciplineIncidentBehaviorAssociation records will be created.
 
-Note that this use case was previously handled via the
+:::note
+This use case was previously handled via the
 StudentDisciplineIncidentAssociation, but that entity is now deprecated.
+:::
 
 ### Behavior Consequences
 
-The final use case is to tie these students and behaviors to a DisciplineAction.
+The third use case is to tie these students and behaviors to a DisciplineAction.
 There is a new collection of optional references on DisciplineAction to
 StudentDisciplineIncidentBehaviorAssociation. This allows for multiple behaviors
 to be tied to a single action.
@@ -64,7 +71,7 @@ StudentDisciplineIncidentBehaviorAssociation record.
 
 ### Capture of Non-offender Data
 
-The last new entity, StudentDisciplineIncidientNonOffenderAssociation does not
-include Behavior descriptor as it is assumed there is no Behavior or
-DisciplineAction required for students that were not the perpetrators of the
-incident.
+The final use case involves recording information related to non perpetrators.
+StudentDisciplineIncidentNonOffenderAssociation does not include Behavior descriptor
+as it is assumed there is no Behavior or DisciplineAction required for students that were
+not the perpetrators of the incident.
