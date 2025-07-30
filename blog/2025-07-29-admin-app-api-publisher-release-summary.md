@@ -26,7 +26,7 @@ Welcome to the July 2025 Ed-Fi release update! This post highlights the latest f
 
 ## 🚀 Features Delivered So Far
 
-#### Ed-Fi Admin App
+### Ed-Fi Admin App
 
 - ODS instance and vendor management
 - Claim set and API client management
