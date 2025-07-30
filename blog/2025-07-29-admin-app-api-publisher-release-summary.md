@@ -48,7 +48,7 @@ Welcome to the July 2025 Ed-Fi release update! This post highlights the latest f
 
 ## 🛠️ Try It Out
 
-##### Ed-Fi Admin App
+### Ed-Fi Admin App
 
 See the [Admin App Documentation](/reference/admin-app) and [Docker deployment guide](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-AdminApp/tree/v3.3.4/Docker) for installation and upgrade instructions.
 
