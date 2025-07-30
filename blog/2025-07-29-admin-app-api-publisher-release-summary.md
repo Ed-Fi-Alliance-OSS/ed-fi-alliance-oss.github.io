@@ -36,7 +36,7 @@ Welcome to the July 2025 Ed-Fi release update! This post highlights the latest f
 - UI enhancements and validation
 - Community-driven bug fixes and documentation
 
-#### Ed-Fi API Publisher
+### Ed-Fi API Publisher
 
 - Change version tracking and publishing
 - Namespace-based publishing support
