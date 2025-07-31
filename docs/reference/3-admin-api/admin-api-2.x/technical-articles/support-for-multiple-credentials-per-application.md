@@ -18,7 +18,7 @@ you want to reset these credentials, you can use the `/v2/applications/{id}/rese
 ## New approach (multiple credentials per Application)
 
 When you create an Application, Admin API still creates a new set of credentials, but you can use
-the `/v2/apiclients` endpoint to manage aditional credentials.
+the `/v2/apiclients` endpoint to manage additional credentials.
 
 :::warning
 
