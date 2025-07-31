@@ -2451,6 +2451,314 @@ def import_applications(
 
 As a result, we will obtain multiple 201 Status Code
 
+## Api Clients
+
+### Create ApiClient for a given Application
+
+To create an ApiClient, we use the POST verb, and we will pass it a dictionary
+with the values to store, an example of payload for this case could be the
+following.
+
+#### Sample data create ApiClient
+
+```json
+apiclient_payload = {
+        "name": "ApiClient",
+        "isApproved": true,
+        "applicationId": 1,
+        "odsInstanceIds": [
+            1
+        ]
+    }
+```
+
+Which we will use inside a variable to pass it inside a function like a payload.
+
+#### POST /v2/apiclients
+
+```python
+def create_apiclient(
+    base_url: str,
+    access_token: str,
+    payload: dict,
+) -> dict:
+    '''
+        Creates an ApiClient based on supplied values
+
+        Parameters
+        ----------
+        base_url: str
+            URL where API is hosted
+        access_token: str
+            String with the authorization token bearer
+        payload: dict
+            {
+                "name": "string",
+                "isApproved": true,
+                "applicationId": 0,
+                "odsInstanceIds": [
+                    0
+                ]
+            }
+    '''
+    endpoint = "/v2/apiclients"
+    url = f"{base_url}{endpoint}"
+    headers = {
+        'Authorization': f'Bearer {access_token}',
+        'Content-type': 'application/json',
+        'Accept': 'text/plain',
+        }
+    r = requests.post(
+        url=url,
+        headers=headers,
+        json=payload,
+        verify=False,
+        )
+
+    return r.json()
+```
+
+The result of the code above it will give you an output as follows.
+
+#### Sample Output
+
+```json
+{
+  "id": 1,
+  "name": "ApiClient",
+  "key": "mEbKpWVUtEmP",
+  "secret": "NKOKV8j0S21bp9XX0fuyJUfJ",
+  "applicationId": 1
+}
+```
+
+### Retrieve ApiClient data
+
+Where you can obtain the key and secret from the response.
+If you need to verify that your ApiClient was created, you can use the
+code as follows with the ApiClient ID.
+
+#### GET /v2/apiclients/`{id}`
+
+```python
+def get_apiclient(
+    base_url: str,
+    access_token: str,
+    id: int,
+) -> dict:
+    '''
+        Get an existing ApiClient using the resource identifier
+
+        Parameters
+        ----------
+        base_url: str
+            URL where API is hosted
+        access_token: str
+            String with the authorization token bearer
+        id: int
+            Resource identifier
+    '''
+    endpoint = "/v2/apiclients"
+    url = f"{base_url}{endpoint}/`{id}`"
+    headers = {
+        'Authorization': f'Bearer {access_token}',
+        'Content-type': 'application/json',
+        'Accept': 'text/plain',
+        }
+
+    r = requests.get(
+        url=url,
+        headers=headers,
+        verify=False,
+        )
+
+    return r.json()
+```
+
+The confirmation outcome will be like the following:
+
+#### Sample Output for Retrieve ApiClient data
+
+```json
+{
+  "id": 2,
+  "key": "mEbKpWVUtEmP",
+  "name": "ApiClient",
+  "isApproved": true,
+  "useSandbox": false,
+  "sandboxType": 0,
+  "applicationId": 1,
+  "keyStatus": "Active",
+  "educationOrganizationIds": [],
+  "odsInstanceIds": [
+    1
+  ]
+}
+
+```
+
+### Update an ApiClient
+
+You can use the following code to update the information in the ApiClient.
+
+#### PUT /v2/apiclients/`{id}`
+
+```python
+def edit_apiclient(
+    base_url: str,
+    access_token: str,
+    payload: dict,
+    id: int,
+) -> dict:
+    '''
+        Updates an ApiClient based on resource id
+
+        Parameters
+        ----------
+        base_url: str
+            URL where API is hosted
+        access_token: str
+            String with the authorization token bearer
+        payload: dict
+            {
+                "name": "string",
+                "isApproved": true,
+                "applicationId": 0,
+                "odsInstanceIds": [
+                    0
+                ]
+            }
+        id: int
+            Resource ID
+    '''
+    endpoint = "/v2/apiclients"
+    url = f"{base_url}{endpoint}/`{id}`"
+    headers = {
+        'Authorization': f'Bearer {access_token}',
+        'Content-type': 'application/json',
+        'Accept': 'text/plain',
+        }
+    r = requests.put(
+        url=url,
+        headers=headers,
+        json=payload,
+        verify=False,
+    )
+
+    return r.json()
+```
+
+As a result, we will obtain a 200 Status Code
+
+### Delete an ApiClient
+
+To delete an ApiClient the example will be the following.
+
+#### DELETE /v2/apiclients/`{id}`
+
+```python
+def delete_apiclient(
+    base_url: str,
+    access_token: str,
+    id: int,
+) -> dict:
+    '''
+        Deletes an existing ApiClient using the resource identifier
+
+        Parameters
+        ----------
+        base_url: str
+            URL where API is hosted
+        access_token: str
+            String with the authorization token bearer
+        id: int
+            Resource identifier
+    '''
+    endpoint = "/v2/apiclients"
+    url = f"{base_url}{endpoint}/`{id}`"
+    headers = {
+        'Authorization': f'Bearer {access_token}',
+        'Content-type': 'application/json',
+        'Accept': 'text/plain',
+    }
+
+    r = requests.delete(
+        url=url,
+        headers=headers,
+        verify=False,
+    )
+
+    return r.json()
+```
+
+The output will be as follow:
+
+#### Sample Output for Delete an ApiClient
+
+```json
+{
+  "title": "ApiClient deleted successfully"
+}
+
+
+```
+
+### Refresh ApiClient credentials
+
+In case you want to refresh your credentials or get a new ones you can use the
+next endpoint.
+
+**PUT /v2/apiclients/`{id}`/reset-credential**
+
+```python
+def reset_apiclient_credentials(
+    base_url: str,
+    access_token: str,
+    id: int,
+) -> dict:
+    '''
+        Get an existing ApiClient using the resource identifier
+
+        Parameters
+        ----------
+        base_url: str
+            URL where API is hosted
+        access_token: str
+            String with the authorization token bearer
+        id: int
+            Resource identifier
+    '''
+    endpoint = "/v2/apiclients"
+    url = f"{base_url}{endpoint}/`{id}`/reset-credential"
+    headers = {
+        'Authorization': f'Bearer {access_token}',
+        'Content-type': 'application/json',
+        'Accept': 'text/plain',
+        }
+
+    r = requests.put(
+        url=url,
+        headers=headers,
+        verify=False,
+        )
+
+    return r.json()
+```
+
+The resulting output will again print the new secret keys.
+
+#### Sample Output for Refresh apiclient credentials
+
+```json
+{
+  "id": 1,
+  "name": "ApiClient",
+  "key": "mEbKpWVUtEmP",
+  "secret": "Dhh1kJp8606G4RDLpAa5M93a",
+  "applicationId": 1
+}
+```
+
 ## Profiles
 
 ### Retrieve a Listing of Profiles
