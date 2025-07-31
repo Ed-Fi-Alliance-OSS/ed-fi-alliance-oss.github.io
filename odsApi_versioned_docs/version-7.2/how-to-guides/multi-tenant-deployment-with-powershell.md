@@ -71,7 +71,7 @@ and extensions.
    1. [Ed-Fi-ODS](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS)
    2. [Ed-Fi-ODS-Implementation](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation)
 2. Run `initdev` out of the box with no modifications to download tools and get
-   the scripts set up. Might be able to provide an alternate script to simplify.
+   the scripts set up.
 
 ## Deploy the Databases
 
