@@ -2132,7 +2132,7 @@ def create_application(
 
 The result of the code above it will give you an output as follows.
 
-#### Sample Output
+#### Sample Output for Create an Application
 
 ```json
 {
@@ -2520,7 +2520,7 @@ def create_apiclient(
 
 The result of the code above it will give you an output as follows.
 
-#### Sample Output
+#### Sample Output for Create an ApiClient
 
 ```json
 {
