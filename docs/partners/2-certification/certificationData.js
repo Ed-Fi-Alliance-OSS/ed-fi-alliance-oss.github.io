@@ -598,7 +598,7 @@ export default {
       productName: 'DnA',
       logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/Renaissance DnA.png',
       website: 'https://www.renaissance.com/products/dna/',
-      validThrough: 'December 2, 2023',
+      validThrough: 'August 4, 2026',
       verifyingAgencies: [
         'Boston Public Schools (MA)',
         'Chico USD (CA)',
@@ -608,9 +608,9 @@ export default {
       availability: 'Available to any agency (all sizes) in the U.S.',
       documentation: {
         'Availability Statement':
-          'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ed-Fi%20Certification%20-%20Availability%20Statement%20-%20DnA.docx?version=1&modificationDate=1669749570400&cacheVersion=1&api=v2',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/DnA/DnA%20Ed-Fi%20Certification%202025%20-%20Availability%20Statement%20V2.pdf',
         Mappings:
-          'https://docs.google.com/spreadsheets/d/1ZwAeVZTW8snEiLygKEuorMv3vUikCOnTfe2C01YZEZs/edit#gid=539557861',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/DnA/Ed-Fi%20Assessment%20Outcome%20API%20Mapping%20for%20DnA%20(2).xlsx',
       },
       supportResources: [
         {
@@ -627,11 +627,11 @@ export default {
         },
         {
           name: 'DnA Matrix Report',
-          link: 'https://edfi.atlassian.net/wiki/download/attachments/23694066/MatrixReport.pdf?version=1&modificationDate=1669837860260&cacheVersion=1&api=v2',
+          link: 'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/DnA/student_response_matrix_report%20DnA.xls',
         },
         {
           name: 'Student Response Report',
-          link: 'https://edfi.atlassian.net/wiki/download/attachments/23694066/StudentResponseReportOverall-updated.pdf?version=1&modificationDate=1669837945123&cacheVersion=1&api=v2',
+          link: 'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/DnA/Score%20Report%20DnA.pdf',
         },
       ],
     },
