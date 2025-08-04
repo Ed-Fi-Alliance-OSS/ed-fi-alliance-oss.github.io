@@ -1,4 +1,4 @@
-# Support for multiple credentials per application
+# Support for Multiple Client Credentials Per Application
 
 :::info
 
