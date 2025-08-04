@@ -30,3 +30,11 @@ To disable this endpoint, go to the `appSettings.json` file and set the `EnableA
 property to false.
 
 :::
+
+### Key rotation
+
+You can use this new approach to manage planned key rotation. One posibility is:
+
+1. Issue new credentials for an Application.
+2. Wait for the client application to apply these new credentials.
+3. Disable the previous credentials.
