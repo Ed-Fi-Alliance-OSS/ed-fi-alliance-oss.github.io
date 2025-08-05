@@ -6,7 +6,14 @@ This information is relevant if you are using Admin API 2.3 and forward
 
 :::
 
-Admin API 2.x includes now an endpoint to manage extra credentials for an application.
+Admin API 2.3+ now includes an endpoint to manage multiple ODS/API credentials for a single Application.
+
+The `EdFi_Admin` database establishes a hierarchy of with a `Vendor` containing many `Application` records,
+which in turn can contain many `ApiClient` records containing client credentials for the ODS/API. Previously, 
+the Admin API application only allowed management of one `ApiClient` per `Application`, in spite of the 1-
+to-many relationship in the database. The new endpoint now allows for management of an unlimited 
+number of `ApiClient` records. The benefits include support for manual key rotation and the ability 
+to link the distinct `ApiClient` credentials to separate [ODS Instances](../../../ods-api/how-to-guides/how-to-configure-ods-instances).
 
 It now implements two different approaches
 
