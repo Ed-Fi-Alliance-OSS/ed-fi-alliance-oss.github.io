@@ -2455,7 +2455,7 @@ As a result, we will obtain multiple 201 Status Code
 
 ### Create ApiClient for a given Application
 
-The [`apiClients`](https://docs.ed-fi.org/reference/ods-api/platform-dev-guide/security/security-configuration-data-stores/#ed-fi-admin-database)
+The [`apiClients`](../../../ods-api/platform-dev-guide/security/security-configuration-data-stores/#ed-fi-admin-database)
 endpoint manages client credentials for accessing the Ed-Fi ODS/API.
 
 To create an ApiClient, we use the POST verb, and we will pass it a dictionary
