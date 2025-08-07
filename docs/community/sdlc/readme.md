@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # Ed-Fi Software Development Lifecycle Home
 
 :::note

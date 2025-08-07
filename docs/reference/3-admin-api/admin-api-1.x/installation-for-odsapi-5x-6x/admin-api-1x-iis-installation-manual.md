@@ -83,6 +83,11 @@ keys in "AdminApi\\appsettings.json". Some values to note:
   * `Authentication:SigningKey`  must be a Base64-encoded string
   * `Authentication:Authority`  and `Authentication:IssuerUrl`  should be the
     same URL as your application
+
+    :::warning
+    If `Authentication:Authority` is not present in the appsettings file, then it must be explicitly added to ensure proper authentication.
+    :::
+
   * Changing `Authentication:AllowRegistration` to `true` allows unrestricted
     registration of new Admin API clients
     * This is **not** recommended for production
