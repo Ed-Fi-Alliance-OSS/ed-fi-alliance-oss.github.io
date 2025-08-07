@@ -83,6 +83,11 @@ keys in "AdminApi\\appsettings.json". Some values to note:
   * `Authentication:SigningKey`  must be a Base64-encoded string
   * `Authentication:Authority`  and `Authentication:IssuerUrl`  should be the
     same URL as your application
+
+    :::warning
+    If `Authentication:Authority` is not present in the appsettings file, then it must be explicitly added to ensure proper authentication.
+    :::
+
   * Changing `Authentication:AllowRegistration` to `true` allows unrestricted
     registration of new Admin API clients
     * This is **not** recommended for production
@@ -95,7 +100,7 @@ keys in "AdminApi\\appsettings.json". Some values to note:
 
 Here is a snippet from a properly configured application settings file:
 
-**appsettings.json**
+#### appsettings.json
 
 ```json
     "AppSettings": {
@@ -228,7 +233,7 @@ preference.
  Execute the below script against the EdFi\_Admin database using psql ,
  PgAdmin, or the tool of your choice.
 
- **adminapi-tables-pgsql.sql**
+#### adminapi-tables-pgsql.sql
 
  ```sql
  CREATE SCHEMA IF NOT EXISTS adminapi;
@@ -302,7 +307,7 @@ preference.
  Management Studio, Azure Data Studio, PowerShell SQL Tools, or the tool of
  your choice.
 
- **adminapi-tables-mssql.sql**
+#### adminapi-tables-mssql.sql
 
  ```sql
  IF NOT EXISTS (SELECT 1 FROM sys.schemas WHERE name = 'adminapi')

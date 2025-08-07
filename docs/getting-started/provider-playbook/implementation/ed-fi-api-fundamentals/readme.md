@@ -9,3 +9,5 @@ For most provider types (e.g. assessment, student information system, etc.) this
 * [Authentication and OAuth](./authentication-and-oauth.md)
 * [Authorization](./authorization.md)
 * [API Extensions](./api-extensions.md)
+
+Dig into additional essential information for building client applications that interact with an Ed-Fi ODS / API platform and the read [API Client Developer's Guide](/reference/ods-api/client-developers-guide).

@@ -6,12 +6,29 @@ New to Markdown? Check out the [Markdown Guide](https://www.markdownguide.org/).
 
 Recommended editor: Visual Studio code, using the extensions defined in [extensions.json](./.vscode/extensions.json). The markdownlint extension will help ensure consistent usage of markdown. See [DavidAnson/markdownlint](https://github.com/DavidAnson/markdownlint) for a full list of style rules. Minor customization has been applied in [package.json](./package.json), including allowance for using `<kbd>`, `<br />`, and a few other HTML tags.
 
+### Windows Long File Path Support
+
+Some files in this repository have names long enough to potentially cause problems for Windows users, especially in the generated build directories. To avoid path length issues when cloning or building this repository on Windows, you may need to enable long file path support:
+
+1. Press Win + R, type `regedit`, and press Enter.
+2. Navigate to: `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem`
+3. Find or create a DWORD (32-bit) Value named: `LongPathsEnabled`
+4. Set its value to `1`.
+5. Restart your computer.
+
+Additionally, configure Git to handle long paths:
+
+```powershell
+git config --global core.longpaths true
+```
+
 ## Formatting Tips
 
 There are three `npm run` commands that can help ensure consistent style:
 
 * `npm run format` will reformat almost everything _except_ `*.md`. This command uses Prettier, which does not have provide any customization options for Markdown files. Note that it _is_ running on `*.mdx` files.
 * `npm run lint` calls Markdownlint, the same tool used in the Visual Studio Code extension. It will only report style errors.
+* `npm run lint:folder <folder-path>` calls Markdownlint, the same tool used in the Visual Studio Code extension. It will only report style errors in the specified folder. eg: `npm run lint:folder docs/reference/3-admin-api`
 * `npm run lint:fix` will automatically fix many style errors, though it cannot fix everything.
   * If you have modified a `.mdx` file, then you might want to call `format` first and then call `lint:fix`: Prettier will reformat the JSX embedded in the `.mdx` file, and Markdownlint will fix the Markdown problems that Prettier introduced.
 

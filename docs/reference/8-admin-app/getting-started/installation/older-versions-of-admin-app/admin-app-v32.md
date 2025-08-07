@@ -134,63 +134,63 @@ any of the parameters, it will use its default value.
 1. Configure `$dbConnectionInfo`. These values are used to construct the
    connection strings.
 
-    a. `Server`. The name of the database server. For a local server, we can use
+    * `Server`. The name of the database server. For a local server, we can use
        "(local)" for SQL and "localhost" for PostgreSQL.
 
-    b. `Engine.` Admin App supports SQL and PostgreSQL database engines. So
+    * `Engine.` Admin App supports SQL and PostgreSQL database engines. So
        setting up the `Engine` will decide which database engine to be used.
        Valid values are "SQLServer" and "PostgreSQL".
 
-    c. `UseIntegratedSecurity.` Will either be "$true" or "$false".
-        c1. If you plan to use Windows authentication, this value will be "$true"
+    * `UseIntegratedSecurity.` Will either be "$true" or "$false".
+        * If you plan to use Windows authentication, this value will be "$true"
 
-        c2. If you plan to use SQL Server/ PostgreSQL server authentication, this
+        * If you plan to use SQL Server/ PostgreSQL server authentication, this
            value will be "$false" and the Username and `Password` must be
            provided.
 
-    d. `Username`. Optional. The username to connect to the database.
+    * `Username`. Optional. The username to connect to the database.
        If `UseIntegratedSecurity` is set to $true, this entry is not needed
 
-    e. `Password`. Optional. The password to connect to the
+    * `Password`. Optional. The password to connect to the
        database. If `UseIntegratedSecurity` is set to $true, this entry is not
        needed
 
-    f. `Port.` Optional. Used to specify the database server port, presuming the
+    * `Port.` Optional. Used to specify the database server port, presuming the
        server is configured to use the specific port.
 
 2. Configure `$adminAppFeatures`. These values are used to set Optional
    overrides for features and settings in the web.config.
 
-    a. `ApiMode.` Possible values: `sharedinstance`, `districtspecific` and
+    * `ApiMode.` Possible values: `sharedinstance`, `districtspecific` and
        `yearspecific`. Defaults to `sharedinstance`
 
-    b. `SecurityMetadataCacheTimeoutMinutes`. Optional. Defaults to 10 minute
+    * `SecurityMetadataCacheTimeoutMinutes`. Optional. Defaults to 10 minute
        security metadata cache timeout.
 
 3. Configure `$p`. This is the variable used to send all the information to the
    installation process.
 
-    a. `ToolsPath`. Path for storing installation tools, e.g., nuget.exe.
+    * `ToolsPath`. Path for storing installation tools, e.g., nuget.exe.
        Defaults to "C:/temp/tools"
 
-    b. **`OdsApiUrl`. Base URL for the ODS / API. Mandatory.**
+    * **`OdsApiUrl`. Base URL for the ODS / API. Mandatory.**
 
-    c. `AdminDatabaseName`. , `OdsDatabaseName`,
+    * `AdminDatabaseName`. , `OdsDatabaseName`,
        `SecurityDatabaseName`. Optional. Specify _only_ if ODS / API was set
        with a custom database name.
 
-        c1. For example, when configuring the `OdsDatabaseName`, the value here
+        * For example, when configuring the `OdsDatabaseName`, the value here
            will be the name of the ODS database, whereas the `AdminDatabaseName`
            and `SecurityDatabaseName` will be the name of the Admin and Security
            databases, respectively.
 
-    d. `WebApplicationName.` Optional. Defaults to "AdminApp".
+    * `WebApplicationName.` Optional. Defaults to "AdminApp".
 
-    e. `WebSitePort`. Optional. Defaults to 443.
+    * `WebSitePort`. Optional. Defaults to 443.
 
-    f. `WebsiteName`. Optional. Defaults to "Ed-Fi".
+    * `WebsiteName`. Optional. Defaults to "Ed-Fi".
 
-    g. `PackageVersion`. Optional. If not set, will retrieve the latest full
+    * `PackageVersion`. Optional. If not set, will retrieve the latest full
        release package.
 
 Configuration samples for the "install.ps1" file:
@@ -199,7 +199,7 @@ Configuration samples for the "install.ps1" file:
 
   SQL Server Shared Instance
 
-  **install.ps1(SQL Server)**
+#### install.ps1(SQL Server)
 
   ```json
   $dbConnectionInfo = @{
@@ -220,7 +220,7 @@ Configuration samples for the "install.ps1" file:
 
   PostgreSQL District Specific
 
-  **install.ps1(PostgreSQL)**
+#### install.ps1(PostgreSQL)
 
   ```json
   $dbConnectionInfo = @{
@@ -248,9 +248,9 @@ Configuration samples for the "install.ps1" file:
 
   SQL Server Year Specific
 
-  **install.ps1(SQL Server)**
+#### install.ps1 (SQL Server)
 
-  ```
+   ```json
   $dbConnectionInfo = @{
    Server = "(local)"
    Engine = "SqlServer"

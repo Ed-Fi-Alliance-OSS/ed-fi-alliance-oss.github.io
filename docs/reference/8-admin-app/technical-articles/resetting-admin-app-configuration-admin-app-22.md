@@ -1,8 +1,8 @@
 # Resetting Admin App Configuration (Admin App 2.2+)
 
-# Environment: OnPrem
+## Environment: OnPrem
 
-**Admin App Version: >= 2.2.0**
+### Admin App Version: >= 2.2.0
 
 :::info note:
   Admin App version 2.2+, the encryption and decryption operation are
@@ -10,11 +10,11 @@
   cannot be used in that state" issue.
 :::
 
-**Uncommon cases:**
+### Uncommon cases
 
 1. User missed to maintain/ retain the EncryptionKey while upgrading the
    application from version 2.2+ to latest version (Please refer the
-   documentation on upgrading Admin App [here](#))
+   documentation on upgrading Admin App here)
 2. Missing the encryption key on the appsettings.json after the first-time setup
    completed on Admin App 2.2+
 
@@ -22,7 +22,7 @@ Note: Please make sure to create new EncryptionKey using the following
 PowerShell command and update the appsettings.json with newly created value
 before running the first-time setup again on Admin App.
 
-**Generate Encryption Key** Expand source
+### Generate Encryption Key Expand source
 
 ```ps1
 $aes = [System.Security.Cryptography.Aes]::Create()
@@ -67,7 +67,7 @@ steps to recover the application and force the first-time setup on Admin App.
      SET FirstTimeSetUpCompleted = 0
      DELETE FROM dbo.OdsInstances COMMIT
      TRAN
-     ```
+      ```
 
 5. Once successfully executed the above mentioned SQL script, please restart
    the Admin App website under IIS
@@ -86,9 +86,9 @@ steps to recover the application and force the first-time setup on Admin App.
     @odsinstanceid where OdsInstance_OdsInstanceId is null
   ```
 
-# Environment: Azure
+## Environment: Azure
 
-**Admin App Version: < 2.2.0**
+## Admin App Version: < 2.2.0**
 
 ## Issues
 
@@ -111,7 +111,7 @@ setup.
 1. Please make sure to stop ODS API and Admin App websites under IIS or within
    the Azure portal App Service.
 
-        Ex (in Azure): 
+        Ex (in Azure):
          `EdFiOdsApiWebSite-{environment}-{resourceGroupid}`
 
          `EdFiOdsAdminAppWebSite-{environment}-{resourceGroupid}`
@@ -123,10 +123,10 @@ setup.
       4. Execute the following sql commands for clearing all the data records
       created during first time setup process.
 
-**SQL**
+#### SQL
 
 ```sql
-BEGIN TRAN   
+BEGIN TRAN
 DECLARE @ApplicationId INT;
 
 SELECT @ApplicationId = ApplicationId FROM dbo.Applications WHERE ClaimSetName = 'Ed-Fi ODS Admin App'
@@ -135,7 +135,7 @@ DELETE FROM dbo.ClientAccessTokens WHERE EXISTS (
         SELECT 1 FROM dbo.ApiClients
         WHERE ClientAccessTokens.ApiClient_ApiClientId = ApiClients.ApiClientId
         AND Application_ApplicationId = @ApplicationId
-) 
+)
 
     DELETE FROM dbo.ApiClients WHERE Application_ApplicationId = @ApplicationId
     DELETE FROM dbo.ApplicationEducationOrganizations WHERE Application_ApplicationId = @ApplicationId
@@ -157,6 +157,7 @@ configuration parameters used by the admin app.
 The format of this string is JSON and specifies a few key: value pairs.
 
 Here is a template of how it looks:
+
 ```json
 {"AdminCredentials":{"Password":"\[dbpassword\]","UserName":"\[dbuser\]"},"HostName":"\[the
 SQL Server:
@@ -166,7 +167,8 @@ sql.somthing.com\]","ProductionApiCredentials":{"Password":"\[SecurePassword\]",
 The following JSON code block explains the parameters required and their
 intention:
 
-**SQL**
+<!-- markdownlint-disable-next-line MD024 -->
+#### SQL
 
 ```sql
 {
@@ -195,10 +197,11 @@ required fields marked with square brakets "\[...\]"
 Following the steps above open SSMS or Azure Query Editor and execute the
 following statement against the EdFi\_Admin database.
 
-**SQL**
+<!-- markdownlint-disable-next-line MD024 -->
+#### SQL
 
 ```sql
-BEGIN TRAN   
+BEGIN TRAN
 UPDATE adminapp.AzureSqlConfigurations set field='{"AdminCredentials":{"Password":"PW Specified in Deployment Script","UserName":"SERVER Master UN"},"HostName":"","ProductionApiCredentials":{"Password":"Enter PW","UserName":"EdFiOdsProductionApi"},"AdminAppCredentials":{"Password":"","UserName":"EdFiOdsAdminApp"}}' WHERE Id=1;
 COMMIT  TRAN
 ```
