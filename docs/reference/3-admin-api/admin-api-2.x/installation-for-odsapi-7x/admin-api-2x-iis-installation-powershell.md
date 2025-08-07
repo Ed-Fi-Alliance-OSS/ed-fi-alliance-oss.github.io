@@ -1,6 +1,6 @@
 # Admin API 2.x - IIS Installation (PowerShell)
 
-# Before You Install
+## Before You Install
 
 This section provides general information to review before installing the Ed-Fi
 ODS / API Admin API for v2.2.0.

@@ -13,7 +13,7 @@ the application is running. The root page (`/`) should return JSON with the API
 and Build versions. Additionally you can visit `/swagger/index.html` if Swagger
 is enabled in appsettings and view the web-based documentation.
 
-**Sample Response from /**
+### Sample Response from /
 
 ```json
 {
