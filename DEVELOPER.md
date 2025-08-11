@@ -28,6 +28,7 @@ There are three `npm run` commands that can help ensure consistent style:
 
 * `npm run format` will reformat almost everything _except_ `*.md`. This command uses Prettier, which does not have provide any customization options for Markdown files. Note that it _is_ running on `*.mdx` files.
 * `npm run lint` calls Markdownlint, the same tool used in the Visual Studio Code extension. It will only report style errors.
+* `npm run lint:folder <folder-path>` calls Markdownlint, the same tool used in the Visual Studio Code extension. It will only report style errors in the specified folder. eg: `npm run lint:folder docs/reference/3-admin-api`
 * `npm run lint:fix` will automatically fix many style errors, though it cannot fix everything.
   * If you have modified a `.mdx` file, then you might want to call `format` first and then call `lint:fix`: Prettier will reformat the JSX embedded in the `.mdx` file, and Markdownlint will fix the Markdown problems that Prettier introduced.
 

@@ -76,7 +76,7 @@ To find the Web.config file, open IIS Manager and navigate to the AdminApp web
 application. Right-click and select the "Explore" option. This will open the
 installation directory of Admin App where you will find Web.config.
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/technical-articles/image2019-8-2_10-10-19.png)
+![IIS Manager showing "Explore" option after right click](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/technical-articles/image2019-8-2_10-10-19.png)
 
 #### Step 2. Configure for Year-Specific mode
 
@@ -86,13 +86,13 @@ In Web.config, make the following changes:
 year-specific database name created while setting up the ODS. The example below
 uses the "EdFi\_Ods\_2019" database and windows authentication:
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/technical-articles/image2019-8-1_10-3-3.png)
+![Ods connection string set up in the Web.config file](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/technical-articles/image2019-8-1_10-3-3.png)
 
 `Changes 2 & 3.` To enable year-specific functionality inside Admin App, add the
 two items shown below into the AppSettings node in Web.config, placing them
 below any items that already exist.
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/technical-articles/image2019-8-2_10-22-32.png)
+![Needed keys to enable year-specific functionality added in the Web.config file](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/technical-articles/image2019-8-2_10-22-32.png)
 
 ## Reporting Issues
 

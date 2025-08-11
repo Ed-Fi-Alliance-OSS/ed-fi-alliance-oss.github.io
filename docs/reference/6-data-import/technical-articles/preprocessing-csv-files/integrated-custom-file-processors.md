@@ -138,13 +138,13 @@ They are all intended to work against an ODS with the "Grand Bend" sample data
 as a prerequisite, such as for the public instances hosted
 on [https://api.ed-fi.org/](https://api.ed-fi.org/):
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/technical-articles/data-import-article-archive/image2021-5-20_19-36-59.png)
+![Sample data](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/technical-articles/data-import-article-archive/image2021-5-20_19-36-59.png)
 
 After importing the sample \*.json templates found in the attached zip file,
 you'll have several similar Data Maps, Bootstraps, and most interestingly
 Preprocessors:
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/technical-articles/data-import-article-archive/image2021-5-20_19-38-33.png)
+![Importing the sample](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/technical-articles/data-import-article-archive/image2021-5-20_19-38-33.png)
 
 ### Example: Tab-Delimited Files
 

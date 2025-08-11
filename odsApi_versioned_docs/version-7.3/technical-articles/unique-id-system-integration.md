@@ -4,6 +4,17 @@ sidebar_position: 4
 
 # Unique ID System Integration
 
+:::tip
+
+Out of the box, the Ed-Fi ODS/API does not require use of a Unique ID system. Please
+check with your Ed-Fi OSD/API platform host to determine if they require client
+applications to integrate with a unique ID solution before trying to build an
+integration with either of the models described below. This page's guidance should
+not be used in basic instructions on how to build an Ed-Fi Data Standard
+integration.
+
+:::
+
 Generally speaking, a unique ID system ensures that a person has only one unique
 ID for an organization even if the person is represented in multiple roles, such
 as an individual who is both a staff member and parent at a school.
@@ -30,16 +41,12 @@ how-to material about connecting to an existing unique ID system.
 ## Unique ID System Integration Models
 
 When planning an API implementation, platform hosts must select an approach that
-best serves their enterprise's needs: an [integrated unique ID system
-model](https://edfi.atlassian.net/wiki/pages/resumedraft.action?draftId=23301628#UniqueIDSystemIntegration-Integrated)
-(shortened to "integrated model," below), or a [non-integrated unique ID system
-model](https://edfi.atlassian.net/wiki/pages/resumedraft.action?draftId=23301628#UniqueIDSystemIntegration-NonIntegrated)
+best serves their enterprise's needs: an [integrated unique ID system model](#model-1-integratedunique-id-system-model)
+(shortened to "integrated model," below), or a [non-integrated unique ID system model](#model-2-non-integrated-unique-id-system-model)
 ("non-integrated," below).
 
-Within the integrated model, there are two facets: [unique ID
-validation](https://edfi.atlassian.net/wiki/pages/resumedraft.action?draftId=23301628#UniqueIDSystemIntegration-validation)
-and [identity
-management](https://edfi.atlassian.net/wiki/pages/resumedraft.action?draftId=23301628#UniqueIDSystemIntegration-management).
+Within the integrated model, there are two facets: [unique ID validation](#key-integration-steps-for-unique-id-validation)
+and [identity management](#key-integration-steps-for-identity-management).
 Minimally, support for validation is expected. Optionally, the platform host may
 also choose to support the identity management endpoints.
 
@@ -68,6 +75,12 @@ Distinguishing characteristics of this model include:
 This model can support fully integrated unique ID management, but it does make
 some assumptions about the system flow. An outline of an expected system flow
 follows.
+
+:::tip
+
+See [Identities API](./identities-api.md) for more information on optional use of the `/identities` endpoint.
+
+:::
 
 #### Client-Side ID Lookup in the Integrated Model
 

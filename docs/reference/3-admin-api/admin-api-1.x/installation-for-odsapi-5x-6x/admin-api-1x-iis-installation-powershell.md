@@ -1,6 +1,6 @@
 # Admin API 1.x - IIS Installation (PowerShell)
 
-# Before You Install
+## Before You Install
 
 This section provides general information to review before installing the Ed-Fi
 ODS / API Admin API for v1.4.0.
@@ -255,7 +255,7 @@ preference.
  Execute the below script against the EdFi\_Admin database using psql ,
  PgAdmin, or the tool of your choice.
 
- **adminapi-tables-pgsql.sql**
+#### adminapi-tables-pgsql.sql
 
  ```sql
  CREATE SCHEMA IF NOT EXISTS adminapi;
@@ -331,7 +331,7 @@ preference.
  Management Studio, Azure Data Studio, PowerShell SQL Tools, or the tool of
  your choice.
 
- **adminapi-tables-mssql.sql**
+#### adminapi-tables-mssql.sql
 
  ```sql
  IF NOT EXISTS (SELECT 1 FROM sys.schemas WHERE name = 'adminapi')
