@@ -275,11 +275,7 @@ configurations.
 #### PowerShell Installation Process
 
 Admin App now provides an enhanced and customizable PowerShell installation
-process based on Ed-Fi community feedback. Please see [Admin App v1.8.1 for
-Ed-Fi ODS / API
-v3.4](getting-started/installation/older-versions-of-admin-app/admin-app-v181-for-ed-fi-ods-api-v34)
-for more information on how to use and take advantage of the PowerShell
-installer.
+process based on Ed-Fi community feedback.
 
 ## Updates in Admin App v1.7 for Ed-Fi ODS / API v3.3
 

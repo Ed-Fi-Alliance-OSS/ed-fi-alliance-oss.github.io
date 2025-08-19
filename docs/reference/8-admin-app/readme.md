@@ -13,16 +13,9 @@ Look for more news about its replacement in October, 2025.
 
 :::
 
-## Supported Releases
-
-Below are supported releases of the Ed-Fi Admin App:
-
-* [Admin App v3.3](getting-started/installation/admin-app-v33.mdx)
-
 ## Documentation
 
-Documentation for the Ed-Fi ODS / API Admin App is available online:
-
+* [Installation Instructions](getting-started/installation.mdx)
 * [What's New](whats-new)
 * [Getting Started](getting-started)
 * [Technical Articles](technical-articles)
