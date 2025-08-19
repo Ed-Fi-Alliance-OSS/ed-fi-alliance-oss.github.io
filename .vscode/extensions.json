@@ -7,7 +7,7 @@
     "bierner.markdown-mermaid",
     "tomasdahlqvist.markdown-admonitions",
     "DavidAnson.vscode-markdownlint",
-    "stkb.rewrap",
+    "dnut.rewrap-revived",
     "unifiedjs.vscode-mdx",
     "dbaeumer.vscode-eslint"
   ]

@@ -3,6 +3,15 @@
 This section provides an overview of what's new in the latest versions of the
 ODS / API Admin App for Technical Suite Two and Technical Suite Three.
 
+## Admin App v3.3.4
+
+July, 2025.
+
+This release includes updates to .NET dependencies and fixes for several
+field-reported bugs. See [Release
+notes](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-AdminApp/releases/tag/v3.3.4)
+in GitHub.
+
 ## Updates in Admin App v3.3
 
 Latest Release
@@ -10,14 +19,7 @@ Latest Release
 * .NET 8
 * Updated NuGet package dependencies
 * Improved messaging when editing a claimset
-  ([AA-1440](https://tracker.ed-fi.org/browse/AA-1440))
 * Updated base images for the Docker containers
-
-Admin App v3.3.1 update:
-
-* [AA-1747](https://tracker.ed-fi.org/browse/AA-1747)
-* [AA-1748](https://tracker.ed-fi.org/browse/AA-1748)
-* [AA-1744](https://tracker.ed-fi.org/browse/AA-1744)
 
 ## Updates in Admin App v3.2
 
@@ -25,136 +27,75 @@ Admin App v3.3.1 update:
 
 Additional support for ODS/API 6.1 updates and to support field use cases.
 
-* [AA-1705](https://tracker.ed-fi.org/browse/AA-1705) Claimset export on adminapp will fail if there are multiple
+* Claimset export on adminapp will fail if there are multiple
   default authorization strategies
-* [AA-1711](https://tracker.ed-fi.org/browse/AA-1711) UI changes for Claimset export on adminapp will fail if there are
+* UI changes for Claimset export on adminapp will fail if there are
   multiple default authorization strategies
 
 ### Error Updating Large Claimsets
 
-* [AA-1651](https://tracker.ed-fi.org/browse/AA-1651) EdFi Admin App - Editing large claimsets produces an error on page
+* EdFi Admin App - Editing large claimsets produces an error on page
 
 ## Updates in Admin App v3.1
 
-<!-- markdownlint-disable-next-line MD024 -->
-### Support for ODS/API Suite 3 and v6.x Security Model Updates
-
-* [AA-1637](https://tracker.ed-fi.org/browse/AA-1637) Admin App v3.1 provides compatibility for both ODS/API Suite 3 (v3.4-v5.3) and
+* Admin App v3.1 provides compatibility for both ODS/API Suite 3 (v3.4-v5.3) and
 ODS/API v6.x.
-
-### Removal of Product Improvement features
-
-* [AA-1638](https://tracker.ed-fi.org/browse/AA-1638) Based on community feedback, we have removed product improvements features and
+* Based on community feedback, we have removed product improvements features and
 integrations with Google Analytics, Salesforce and Jira Tracker.
-
-### Update in installation packages
-
-* [AA-1603](https://tracker.ed-fi.org/browse/AA-1603) The installation package for Admin App has been incorporated into the Admin App
+* The installation package for Admin App has been incorporated into the Admin App
 NuGet package. Please see Installation Instructions for updated instructions on
 how to install using the included installation package.
-
-### Update to PowerShell Pre-Installation Check
-
-* [AA-1663](https://tracker.ed-fi.org/browse/AA-1663) The PowerShell pre-installation check has been updated in Admin App v3.1.1 to
+* The PowerShell pre-installation check has been updated in Admin App v3.1.1 to
 respond to the reported field issue.
-
-### Changing Ed Org Id Leaves a Record Behind
-
-* [AA-1722](https://tracker.ed-fi.org/browse/AA-1722) A bug was discovered where changing an education organization identifier leaves
+* A bug was discovered where changing an education organization identifier leaves
 behind additional data affecting ed org hierarchy and data access. This Admin
 App v3.1.2 update resolves the issue for this use case.
 
 ## Updates in Admin App for Suite 3 v3.0
 
-### Support for ODS/API v6 Security Model Updates
-
-* [AA-1412](https://tracker.ed-fi.org/browse/AA-1412) Admin App v3.0 provides support for the ODS/API v6 security model updates.
-
-### Single-Sign On Support via OpenID Connect
-
-* [AA-1073](https://tracker.ed-fi.org/browse/AA-1073) Admin App v3.0 offers authentication via OpenID Connect (OIDC) and third-party
+* Admin App v3.0 provides support for the ODS/API v6 security model updates.
+* Admin App v3.0 offers authentication via OpenID Connect (OIDC) and third-party
 systems using this well-known standard.  OIDC authentication is found in
 enterprise and major online providers and has been highly requested by the
-field.  [EdWire](https://www.edgraph.com/) has contributed main portions of this
+field. [EdWire](https://www.edgraph.com/) has contributed main portions of this
 feature with a community contribution to establish the pattern.
-
-### Claim Set Editor Bug Fixes
-
-* [AA-1594](https://tracker.ed-fi.org/browse/AA-1594)
-  [AA-1597](https://tracker.ed-fi.org/browse/AA-1597)
-  [AA-1600](https://tracker.ed-fi.org/browse/AA-1600) The following tickets have
-  also been resolved in the Admin App v3.0 release:
+* Claim Set Editor Bug Fixes
 
 ## Updates in Admin App for Suite 3 v2.4
 
-### Update to .NET 6
-
-* [AA-1423](https://tracker.ed-fi.org/browse/AA-1423) Admin App has been updated to .NET 6 to match the ODS/API and other utilities in
+* Admin App has been updated to .NET 6 to match the ODS/API and other utilities in
 the Ed-Fi suite of products.
-
-### Remove Azure support from Admin App
-
-* [AA-1460](https://tracker.ed-fi.org/browse/AA-1460) The prior ODS/API Cloud Deployment for Azure deployment methods used PowerShell
+* The prior ODS/API Cloud Deployment for Azure deployment methods used PowerShell
 and features-specific to the Azure platform, which were state-of-the-art at time
 of development.  These deployment methods have modernized and updated now
-available as the [Docker Deployment
-2.x](https://edfi.atlassian.net/wiki/spaces/EDFITOOLS/pages/24119348/Docker+Deployment+2.x),
+available as the [Docker Deployment 2.x](../7-docker/v2/readme.mdx),
 for which Admin App has been updated to run in that context.  The prior methods
-tied to Azure have been removed here.  Ed-Fi [Docker Deployment
-2.x](https://edfi.atlassian.net/wiki/spaces/EDFITOOLS/pages/24119348/Docker+Deployment+2.x)s
-are known to run on Azure.  The [Ed-Fi on
+tied to Azure have been removed here.  Ed-Fi Docker Deployments are known to run on Azure.  The [Ed-Fi on
 Azure](https://github.com/K12-Analytics-Engineering/edfi-on-azure) repository on
 GitHub, by Marcos Alcozer of K12 Analytics Engineering, provides documentation
 and scripts to help deploy Ed-Fi ODS/API and Admin App images to the Azure cloud
 platform as an updated method.
-
-### Reported Issues
-
-The following implementation issues have been reported by the community and have
+* The following implementation issues have been reported by the community and have
 been resolved
-
-* [AA-1485](https://tracker.ed-fi.org/browse/AA-1485) A bug has been fixed in the Claim Set Editor of not preserving an intended
+  * A bug has been fixed in the Claim Set Editor of not preserving an intended
   update
-* [AA-1556](https://tracker.ed-fi.org/browse/AA-1556) A request has been made to disable the Product Improvement feature and now
+  * A request has been made to disable the Product Improvement feature and now
   available as an appSetting.json configuration variable
 
 ## Updates in Admin App for Suite 3 v2.3
 
-### Multiple Namespace Support
-
-Admin App now has the ability to register multiple namespaces per vendor within
-the application.
-
-### Multiple Database Support for Docker
-
-Support for multiple database servers in Admin App for Docker configurations is
-now supported.
-
-### Expanded Database Name Support
-
-Admin App now supports database names up to 1,024 characters long for
-SaaS/auto-deploy configurations.
-
-### Upgrade Support
-
-Admin App supports upgrade installations via PowerShell installation script.
-
-### Product Improvement Updates
-
-Admin App now includes the ability to send instance information into Community
-365 to offer better service to implementers. For more information, please see
-the
-[https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25243154](https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25243154)
-page.
-
-### Submit Enhanced Log Information to Ed-Fi Tracker
-
-When errors occur in Admin App, a new global error handler can send information
+* Admin App now has the ability to register multiple namespaces per vendor within
+  the application.
+* Support for multiple database servers in Admin App for Docker configurations is
+  now supported.
+* Admin App now supports database names up to 1,024 characters long for
+  SaaS/auto-deploy configurations.
+* Admin App supports upgrade installations via PowerShell installation script.
+* Admin App now includes the ability to send instance information into Community
+  365 to offer better service to implementers.
+* When errors occur in Admin App, a new global error handler can send information
 to Ed-Fi Tracker to enhance the support experience.
-
-### User Experience Improvements
-
-Various updates to features such as Learning Standards for better error messages
+* Various updates to features such as Learning Standards for better error messages
 and reporting.
 
 ## Updates in Admin App for Suite 3 v2.2.1
@@ -219,13 +160,9 @@ Docker](https://www.docker.com/resources/what-container) containers. This
 requirement has been signaled by our [Technical Advisory
 Group](https://edfi.atlassian.net/wiki/display/GOV/Technical+Advisory+Group) and
 Ed-Fi community members, which we're excited by this release to deliver on. As
-related, the Ed-Fi [Docker
-Deployment](https://edfi.atlassian.net/wiki/display/EDFITOOLS/Docker+Deployment) offering
+related, the Ed-Fi [Docker Deployment](../7-docker/v2/readme.mdx) offering
 has been updated to include Admin App v2.1.0 and configured to run with ODS /
-API v5.1.0. For more information on the migration, please see a recorded
-webinar titled "[A .NET Core migration
-story](https://headspring.com/about/events/a-net-core-migration-story-the-benefits-of-a-carefully-planned-process/)"
-as recently presented by the ODS Tools Team.
+API v5.1.0.
 
 ### **Display Version Numbers**
 
@@ -309,9 +246,7 @@ functions within.
 Based on Ed-Fi community feedback and building on the Admin App v1.7 Claim Set
 Editor preview, a graphical editor for claim sets is now available in Admin App.
 This feature minimizes the complex work of writing SQL scripts to establish
-claim sets. See
-the [https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25238340](https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25238340) documentation
-for instructions on how to use the new feature.
+claim sets.
 
 #### ASP.NET Identity (Preview)
 
@@ -340,11 +275,7 @@ configurations.
 #### PowerShell Installation Process
 
 Admin App now provides an enhanced and customizable PowerShell installation
-process based on Ed-Fi community feedback. Please see [Admin App v1.8.1 for
-Ed-Fi ODS / API
-v3.4](getting-started/installation/older-versions-of-admin-app/admin-app-v181-for-ed-fi-ods-api-v34)
-for more information on how to use and take advantage of the PowerShell
-installer.
+process based on Ed-Fi community feedback.
 
 ## Updates in Admin App v1.7 for Ed-Fi ODS / API v3.3
 
@@ -388,17 +319,12 @@ process.
 Multiple student identifiers are commonly used in the education data ecosystem.
 Several cases have emerged in the Ed-Fi Community where student IDs in API
 transactions (i.e., the `studentUniqueId` field) are not known to the client
-application. As a result, a related transaction fails. This issue has been
-raised in, for example,
-the [ODS-1824](https://tracker.ed-fi.org/browse/ODS-1824), [ODS-2664](https://tracker.ed-fi.org/browse/ODS-2664),
-and [ODS-2791](https://tracker.ed-fi.org/browse/ODS-2791) tickets.
+application. As a result, a related transaction fails.
 
 The recommended long-term solution is to facilitate, push, and drive rostering
 products to support configuration of different IDs for different agencies, and
 to store all roster IDs. However, the Ed-Fi ODS / API v2.6 includes a student
 identification code translation feature as a stopgap measure.
-
-![Admin App Student Identification System Descriptor selection drop-down](https://techdocs.ed-fi.org/download/attachments/61705307/AdminAppFunctionAddApplication2.PNG?version=3&modificationDate=1561498133930&api=v2)
 
 **Admin App v1.5.1 for Ed-Fi ODS / API v2.6 Student Identification System
 Descriptor selection drop-down**
@@ -409,7 +335,7 @@ This Admin App v1.5 was the first version of the ODS / API Admin App in its
 current form. However, many of its core features were part of previous products,
 including a version distributed with the Ed-Fi ODS / API Cloud Deployment for
 Azure and the Ed-Fi ODS / API Cloud Deployment for AWS, both published on the
-[Ed-Fi Exchange](https://exchange.ed-fi.org).
+[Ed-Fi Exchange](/getting-started/edfi-exchange).
 
 <!-- markdownlint-disable-next-line MD024 -->
 ### New Features
