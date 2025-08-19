@@ -1,3 +1,7 @@
+---
+draft: true
+comment: "version is no longer supported"
+---
 # Admin App v3.1
 
 ## Before You Install

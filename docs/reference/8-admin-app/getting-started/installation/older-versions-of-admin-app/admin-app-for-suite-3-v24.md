@@ -1,3 +1,7 @@
+---
+draft: true
+comment: "version is no longer supported"
+---
 # Admin App for Suite 3 v2.4
 
 ## Before You Install

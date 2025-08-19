@@ -1,3 +1,7 @@
+---
+draft: true
+comment: "version is no longer supported"
+---
 # Admin App v3.0 for ODS/API v6.0
 
 Before You Install
