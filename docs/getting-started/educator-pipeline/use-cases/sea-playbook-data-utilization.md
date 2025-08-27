@@ -11,6 +11,12 @@ The SEA Playbook equips state leaders with the tools and insights needed to leve
 
 Available in both PowerPoint and PDF formats, this resource is meant to be adapted and shared across teams to support statewide data modernization and continuous improvement efforts.
 
+## TEA Spotlight: Putting Vision into Practice
+
+Gain real-world insights from the Texas Education Agency and their Ed-Fi Standard-backed Insight to Impact Dashboard (I2I), which leverages educator candidate data to support continuous improvement efforts across the educator pipeline—empowering preparation programs and local education agencies and fostering collaboration among key stakeholders.
+
+Webinar Link: [Advancing Educator Preparation Through State-Level Data Innovation](https://msdf.wistia.com/medias/1sjueke4d0) video recording
+
 ## Download the Playbook
 
 * PDF Playbook Documentation Version: [SEA Playbook: Advancing Data Utilization to Support Educator Preparation and Teacher Workforce](https://edfidocs.blob.core.windows.net/$web/assets/getting-started/epp/use-cases/sea-playbook-data-utilization/Ed-Fi%20Alliance_%20State%20Education%20Agency%20Playbook%20for%20Empowering%20Educator%20Preparation%20Programs_v1%202024.pdf)
