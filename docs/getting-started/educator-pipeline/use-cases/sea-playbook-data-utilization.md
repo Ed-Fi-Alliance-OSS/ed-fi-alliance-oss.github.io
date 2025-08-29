@@ -13,7 +13,7 @@ Available in both PowerPoint and PDF formats, this resource is meant to be adapt
 
 ## TEA Spotlight: Putting Vision into Practice
 
-Gain real-world insights from the Texas Education Agency and their Ed-Fi Data Standard-backed Insight to Impact Dashboard (I2I), which leverages educator candidate data to support continuous improvement efforts across the educator pipeline—empowering preparation programs and local education agencies and fostering collaboration among key stakeholders.
+Gain real-world insights from the Texas Education Agency and their Ed-Fi Data Standard-backed Insight to Impact Dashboard (I2I), which leverages educator candidate data to support continuous improvement efforts across the educator pipeline—empowering preparation programs and fostering collaboration among local education agencies and other key stakeholders.
 
 Webinar Link: [Advancing Educator Preparation Through State-Level Data Innovation](https://msdf.wistia.com/medias/1sjueke4d0) video recording
 
