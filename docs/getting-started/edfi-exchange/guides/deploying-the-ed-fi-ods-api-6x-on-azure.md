@@ -14,7 +14,7 @@ The following prerequisites should be addressed before starting the Azure deploy
 
 * Local or virtual machine development environment with the following:
   * Ed-Fi ODS/API installed from source ([Getting Started - Source Code Installation](/reference/ods-api/6.2/downloads)) . We have found that deploying 6.x versions of the ODS/API requires building the solution from source code so that the web application can be explicitly defined as 64-bit. More on that later…
-  * The Ed-Fi ODS Admin App should be installed but NOT run for the first time ([Admin App v3.0 for ODS/API v6.0](/reference/admin-app/getting-started/installation/older-versions-of-admin-app/admin-app-v30-for-odsapi-v60/))
+  * The Ed-Fi ODS Admin App should be installed but NOT run for the first time ([Admin App v3.3 for ODS/API v6.0](/reference/admin-app/getting-started/))
   * [The Azure CLI should be installed](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli)
 
 Step 1. MSSQL Server Setup
