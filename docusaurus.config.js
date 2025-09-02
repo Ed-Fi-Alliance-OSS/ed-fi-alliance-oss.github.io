@@ -110,7 +110,7 @@ const config = {
             banner: 'none',
             badge: true,
             path: '5.4',
-            className: 'active',
+            className: 'unmaintained',
           },
           6.2: {
             banner: 'none',
@@ -140,6 +140,7 @@ const config = {
         includeCurrentVersion: false,
         lastVersion: '5',
         versions: {
+          6: { banner: 'unreleased', badge: true, path: 'next'},
           5: { banner: 'none', badge: true },
           4: {
             banner: 'none',
@@ -148,10 +149,10 @@ const config = {
             className: 'active',
           },
           3: {
-            banner: 'none',
+            banner: 'unmaintained',
             badge: true,
             path: '3',
-            className: 'active',
+            className: 'unmaintained',
           },
         },
       },
