@@ -24,4 +24,4 @@ Releases](../../versioning-and-releases).
 
 For information on future Data Standard releases, please consult  the [Ed-Fi
 Technology
-Roadmap](https://edfi.atlassian.net/wiki/display/ETKB/Ed-Fi+Technology+Roadmap)
+Roadmap](/reference/roadmap/)

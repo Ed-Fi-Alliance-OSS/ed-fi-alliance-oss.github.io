@@ -8,38 +8,42 @@ import { useLocation } from '@docusaurus/router';
 const odsApi = [
   {
     path: '/reference/ods-api/',
-    number: '7.3',
+    number: '7.3 (Current)',
   },
   {
     path: '/reference/ods-api/7.2/',
-    number: '7.2',
+    number: '7.2 (Unsupported)',
   },
   {
     path: '/reference/ods-api/7.1/',
-    number: '7.1',
+    number: '7.1 (Supported)',
   },
   {
     path: '/reference/ods-api/6.2/',
-    number: '6.2',
+    number: '6.2 (Supported)',
   },
   {
     path: '/reference/ods-api/5.4/',
-    number: '5.4',
+    number: '5.4 (Unsupported)',
   },
 ];
 
 const dataStandard = [
   {
-    path: '/reference/data-exchange/data-standard/',
-    number: '5',
+    path: '/reference/data-exchange/data-standard/next',
+    number: '6 (Next)',
+  },
+  {
+    path: '/reference/data-exchange/data-standard',
+    number: '5 (Current)',
   },
   {
     path: '/reference/data-exchange/data-standard/4/',
-    number: '4',
+    number: '4 (Supported)',
   },
   {
     path: '/reference/data-exchange/data-standard/3/',
-    number: '3',
+    number: '3 (Unsupported)',
   },
 ];
 
