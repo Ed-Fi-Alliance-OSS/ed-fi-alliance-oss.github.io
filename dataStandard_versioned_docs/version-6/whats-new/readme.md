@@ -18,7 +18,7 @@ additional detail on specific data model changes.
 
 For more on data standard versioning and where to find source materials, please
 consult: [Ed-Fi Data Standard Versioning and
-Releases](../../versioning-and-releases).
+Releases](/reference/data-exchange/versioning-and-releases).
 
 For information on future Data Standard releases, please consult  the [Ed-Fi
 Technology
