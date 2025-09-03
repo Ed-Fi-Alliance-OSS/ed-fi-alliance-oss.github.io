@@ -8,7 +8,7 @@ Generally, states have several Ed-Fi deployment environments. Using multiple env
 
 The Ed-Fi Alliance strongly recommends that new SEA implementers use a Managed Service Provider or System Integrator with prior experience deploying Ed-Fi for SEAs.
 
-An MSP or experienced integrator will understand best practice with regards to hosting options, maintaining current Ed-Fi products and tools, debugging early integrations, providing vendor support and many other processes. These providers can dramatically accelerate progress.
+An MSP or experienced integrator will understand best practice with regards to hosting options, maintaining current Ed-Fi Technology Suite and tools, debugging early integrations, providing vendor support and many other processes. These providers can dramatically accelerate progress.
 
 If you have an existing consultant or a preferred vendor list, SEAs have successfully asked those providers to sub-contract with an experienced Ed-Fi provider.
 

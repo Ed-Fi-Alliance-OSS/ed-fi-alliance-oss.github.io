@@ -2,7 +2,7 @@
 
 ## Overview
 
-Some implementers of Ed-Fi technology may have changed the default database
+Some implementers of Ed-Fi Technology Suite may have changed the default database
 schema from `edfi`  to a custom value. In keeping with the majority of
 implementations, the Analytics Middle Tier assumes that all Ed-Fi ODS database
 tables are in the `edfi`  schema. There is no built-in or configuration option

@@ -4,7 +4,7 @@
 
 ## Description
 
-This documentation will show you how to deploy the Ed-Fi platform (ODS/API v6.1, Swagger and Admin App) and into Amazon Elastic Container Service.
+This documentation will show you how to deploy the Ed-Fi Technology Suite (ODS/API v6.1, Swagger and Admin App) and into Amazon Elastic Container Service.
 
 ## Download
 

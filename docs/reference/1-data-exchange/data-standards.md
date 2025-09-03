@@ -54,7 +54,7 @@ The Ed-Fi Data Standards focus on K–12 information related to students and the
 * Useful roster information such as contact information, student IDs, and parent/guardian information.
 * Basic information from students' Pre-K and postsecondary experiences.
 
-The standards are student-centric, meaning that detailed data is described at the individual student level. Many Ed-Fi products aggregate or otherwise process information to give a look at school, district, and state-level trends – but central to our philosophy is that any aggregation should be calculated based on student-level information, since each student's story is unique.
+The standards are student-centric, meaning that detailed data is described at the individual student level. Many Ed-Fi Technology Suite aggregate or otherwise process information to give a look at school, district, and state-level trends – but central to our philosophy is that any aggregation should be calculated based on student-level information, since each student's story is unique.
 
 ### What standards do the Ed-Fi Alliance publish?
 
@@ -64,7 +64,7 @@ Normative standards include API endpoint descriptions and JSON messages. The [AP
 
 ### What is the purpose of the Ed-Fi Unifying Data Model?
 
-The Ed-Fi Unifying Data Model (UDM) serves a special function in the Ed-Fi technology suite. The Ed-Fi UDM is an abstract model that specifies the organization, structure, and types for all concrete Ed-Fi Data Standards and Ed-Fi technology – meaning that elements like Student First Name will contain similar and analogous definitions in all Ed-Fi products, including API endpoints, XSD definitions, ODS SQL tables, and so forth.
+The Ed-Fi Unifying Data Model (UDM) serves a special function in the Ed-Fi Technology Suite. The Ed-Fi UDM is an abstract model that specifies the organization, structure, and types for all concrete Ed-Fi Data Standards and Ed-Fi Technology Suite – meaning that elements like Student First Name will contain similar and analogous definitions in all Ed-Fi Technology Suite, including API endpoints, XSD definitions, ODS SQL tables, and so forth.
 
 The UDM exists primarily to reconcile all published Ed-Fi standards to ensure they work together. It takes more effort as a community to maintain and ensure this harmonization via the UDM, but the experience of many data standards efforts shows that it is common to produce specifications with conflicting underlying data models, which results in complexity and incompatibility in actual data systems in the field.
 
@@ -82,7 +82,7 @@ The process also supports the creation and publication of standards for leading-
 
 ### What are the classes of Ed-Fi Data Standards?
 
-As noted, the Alliance may publish standards that aren't necessarily part of the Ed-Fi technology core offerings. This section outlines the distinctions.
+As noted, the Alliance may publish standards that aren't necessarily part of the Ed-Fi Technology Suite core offerings. This section outlines the distinctions.
 
 #### Standard
 

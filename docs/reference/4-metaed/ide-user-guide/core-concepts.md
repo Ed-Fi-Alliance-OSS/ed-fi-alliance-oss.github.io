@@ -5,7 +5,7 @@ This section outlines core concepts related to MetaEd.
 ## Before You Begin
 
 The MetaEd IDE provides implementers with a quick and painless means of
-extending various Ed-Fi technology components. All extensions to Ed-Fi technical
+extending various Ed-Fi Technology Suite components. All extensions to Ed-Fi technical
 products must adhere to the [Ed-Fi Extension
 Framework](../../1-data-exchange/extensions-framework/readme.md). The MetaEd IDE
 generates extended technical artifacts aligned with the guidance and principles
@@ -15,7 +15,7 @@ If you don't have an Ed-Fi ODS / API, or you don't use the Ed-Fi Data Standard,
 then the MetaEd IDE can be a pleasant diversion from the workaday world, but
 won't really do anything for you.
 
-However, if you are looking to implement and extend Ed-Fi technology, then the
+However, if you are looking to implement and extend Ed-Fi Technology Suite, then the
 MetaEd IDE is for you.
 
 ## What Is MetaEd? And What Is the MetaEd IDE?
@@ -93,7 +93,7 @@ how most users will interact with the language.
 **The MetaEd Language is Customized for Ed-Fi Technology.** The heart of MetaEd
 is the MetaEd language, which is a domain-specific language written for the
 Ed-Fi Alliance. The language works because it contains all the core concepts
-around modeling and data typing that are relevant to Ed-Fi technology — and the
+around modeling and data typing that are relevant to Ed-Fi Technology Suite — and the
 language interpreters and generators know how to turn those concepts into
 concrete technology artifacts. The language was written using the popular [ANTLR
 framework](http://www.antlr.org).

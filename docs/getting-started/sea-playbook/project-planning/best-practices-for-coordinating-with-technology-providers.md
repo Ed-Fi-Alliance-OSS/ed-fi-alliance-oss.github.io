@@ -24,7 +24,7 @@ During peak development times, you should take part in a weekly, one-hour meetin
 
 ## Publish the Resources to Vendor's Need to Perform API Development
 
-Helping vendors with their development efforts is critically important. While some vendors are experienced with Ed-Fi technology and Ed-Fi-based data flows, every state and region will have some vendors who are not. In addition, there remains a strong network of smaller technology providers in K-12 for whom API-based data exchange will be new and challenging. States need to support these organizations in particular.
+Helping vendors with their development efforts is critically important. While some vendors are experienced with Ed-Fi Technology Suite and Ed-Fi-based data flows, every state and region will have some vendors who are not. In addition, there remains a strong network of smaller technology providers in K-12 for whom API-based data exchange will be new and challenging. States need to support these organizations in particular.
 
 There is a lot of best practice in this area, so it has been separated into its own page; see [Vendor Support - Technical Resources to Support API Development](../support-plan/vendor-support-technical-resources-to-support-api-development.md)
 
