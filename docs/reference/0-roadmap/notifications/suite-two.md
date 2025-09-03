@@ -1,4 +1,4 @@
-# Ed-Fi Technical Suite 2 - End of Support Notice
+# Ed-Fi Technology Suite 2 - End of Support Notice
 
 27 Jul 2021
 

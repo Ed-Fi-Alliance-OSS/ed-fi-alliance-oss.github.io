@@ -139,7 +139,7 @@ All versions of these applications are no longer supported.
 
 ### Technical Suite Two (Out of Support)
 
-[Ed-Fi Technical Suite 2 - End of Support Notice](./notifications/suite-two.md)
+[Ed-Fi Technology Suite 2 - End of Support Notice](./notifications/suite-two.md)
 
 * Ed-Fi ODS/API Platform version 2.x
 * Admin App version 1.x
