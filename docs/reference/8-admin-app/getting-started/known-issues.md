@@ -1,7 +1,7 @@
 # Known Issues
 
 Below are known issues with information or workarounds for the Admin App for
-Ed-Fi Technical Suite Two and Three as supported by active ODS / API releases.
+Ed-Fi Technology Suite Two and Three as supported by active ODS / API releases.
 This page will be updated as issues are found and resolved.
 
 ## Can I use Admin App for my sandbox mode ODS / API instance?**

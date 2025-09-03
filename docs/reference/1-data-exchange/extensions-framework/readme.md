@@ -130,7 +130,7 @@ Below is a list of best practices to consider when working with the Extensions
 Framework.
 
 * **If possible, avoid extensions.** Carefully assess your need to extend the
-  core Ed-Fi Data Model and justify the assessment result by comparing it with
+  core Ed-Fi Unifying Data Model and justify the assessment result by comparing it with
   the previous work and conversation of the Ed-Fi Community.
 * **Get help with data mapping.** The Ed-Fi Data Standard team is here to assist
   with your data mapping questions and guide you with the extension modeling.

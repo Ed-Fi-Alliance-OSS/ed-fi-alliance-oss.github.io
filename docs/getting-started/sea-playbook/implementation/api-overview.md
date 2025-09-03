@@ -12,7 +12,7 @@ If you haven’t already completed:
 We recommend doing so before attempting to digest all the information presented in this article.
 
 :::note
-This article is written about the Ed-Fi ODS/API 3 v7.1, links to other supported versions can be found at [Ed-Fi Technical Suite Supported Versions](/reference/roadmap/supported-versions)
+This article is written about the Ed-Fi ODS/API 3 v7.1, links to other supported versions can be found at [Ed-Fi Technology Suite Supported Versions](/reference/roadmap/supported-versions)
 :::
 
 ## Overview of APIs usage in the Ed-Fi Technology Suite
@@ -25,7 +25,7 @@ A REST API is a common pattern in software development; if you are not familiar 
 
 [REST API Overview](https://en.wikipedia.org/wiki/Representational_state_transfer)
 
-[Video about REST APIs](https://www.youtube.com/watch?v=Q-BpqyOT3a8&)  The Ed-Fi API is built around Resources such as schools, students, grades, and assessments. In the Ed-Fi API, a Resource either represents an entity or composition of entities wrapped up as a single entity known as “domain aggregate” in the Ed-Fi Data Model. Your technology partner will send or receive data to these Resources via HTTPS (Hypertext Transfer Protocol Secure), using the HTTP methods (GET, PUT, POST, DELETE).  The diagram below shows an LEA SIS interacting with the Ed-Fi ODS/API.
+[Video about REST APIs](https://www.youtube.com/watch?v=Q-BpqyOT3a8&)  The Ed-Fi API is built around Resources such as schools, students, grades, and assessments. In the Ed-Fi API, a Resource either represents an entity or composition of entities wrapped up as a single entity known as “domain aggregate” in the Ed-Fi Unifying Data Model. Your technology partner will send or receive data to these Resources via HTTPS (Hypertext Transfer Protocol Secure), using the HTTP methods (GET, PUT, POST, DELETE).  The diagram below shows an LEA SIS interacting with the Ed-Fi ODS/API.
 
 ![LEA SIS Ed-Fi ODS/API Interaction Diagram](https://edfi.atlassian.net/wiki/download/thumbnails/19334211/image-2024-2-11_19-30-9.png?version=1&modificationDate=1707701409610&cacheVersion=1&api=v2&width=884&height=300)
 
@@ -45,7 +45,7 @@ To use the Ed-Fi API you must know how the routes are constructed.  The route c
 
 ### Understanding Resources
 
-Each Ed-Fi API endpoint addresses a specific Resource or domain aggregate.  A domain aggregate is made up of multiple entities in the Ed-Fi Data Model.  For instance, let’s look at the domain aggregate Course, which is made up of seven different entities:
+Each Ed-Fi API endpoint addresses a specific Resource or domain aggregate.  A domain aggregate is made up of multiple entities in the Ed-Fi Unifying Data Model.  For instance, let’s look at the domain aggregate Course, which is made up of seven different entities:
 
 | Domain Aggregate | Entities |
 | --- | --- |
@@ -83,7 +83,7 @@ When planning your Ed-Fi Technology Suite deployment you have three options, eac
 
 1. **Binary Deployment –** This is the easiest of the deployment options as there is little configuration.  The downside is that other than the configuration there is little customization to be done. To learn more about Binary Deployment see: [Getting Started – Binary Installation](/reference/ods-api/getting-started/binary-installation)
 
-2. **Core Binary Deployment + Source Code Extension Deployment –** This gives your organization the same fast deployment benefit of the binary deployment, with the ability to extend the Ed-Fi Data Model with an extension deployment. To see an example of this type of deployment see the following GitHub repository and build: C# Extension Project and [Extension Project Plugin Build](https://github.com/Ed-Fi-Alliance-OSS/Starter-Kit-SEA-Modernization/actions)
+2. **Core Binary Deployment + Source Code Extension Deployment –** This gives your organization the same fast deployment benefit of the binary deployment, with the ability to extend the Ed-Fi Unifying Data Model with an extension deployment. To see an example of this type of deployment see the following GitHub repository and build: C# Extension Project and [Extension Project Plugin Build](https://github.com/Ed-Fi-Alliance-OSS/Starter-Kit-SEA-Modernization/actions)
 
 3. **Source Code Deployment –** This deployment will take the longest to set up as it is more involved, with more customization.  This gives full control of the deployment, including ability to extend the data model, customize the Identity API, and deploy bug fixes from the Ed-Fi source ahead of Ed-Fi releases. To learn more about Source Code Deployment see: [Getting Started – Source Code Installation](/reference/ods-api/getting-started/source-code-installation)
 
@@ -101,7 +101,7 @@ Segmenting the Ed-Fi ODS allows your organization to break it into smaller datab
 
 ### Latest Version
 
-The Ed-Fi Alliance is continuing to work to extend and improve the Ed-Fi API which means there will continue to be updates to the Ed-Fi API. Information on which versions are supported as well as the newest versions available can be found here: [Ed-Fi Technical Suite Supported Versions](/reference/roadmap/supported-versions)
+The Ed-Fi Alliance is continuing to work to extend and improve the Ed-Fi API which means there will continue to be updates to the Ed-Fi API. Information on which versions are supported as well as the newest versions available can be found here: [Ed-Fi Technology Suite Supported Versions](/reference/roadmap/supported-versions)
 
 ### Planning for upgrades
 
@@ -138,5 +138,5 @@ Here are a few other useful links to continue your learning:
 * [API Developers Guide: Basics](/reference/ods-api/client-developers-guide/basics)
 * [API Client Developers’ Guide](/reference/ods-api/client-developers-guide)
 * [Platform Developers’ Guide](/reference/ods-api/platform-dev-guide)
-* [Ed-Fi Technical Suite Supported Versions](/reference/roadmap/supported-versions)
+* [Ed-Fi Technology Suite Supported Versions](/reference/roadmap/supported-versions)
 * [Ed-Fi Data Standard Extension Framework Best Practices](/reference/data-exchange/extensions-framework/#best-practices)

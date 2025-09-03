@@ -2,7 +2,7 @@
 description: Describes how various features of the Ed-Fi UDM are materialized in JSON.
 ---
 
-# Understanding UML, REST API, and Database Expressions of the Ed-Fi Data Model
+# Understanding UML, REST API, and Database Expressions of the Ed-Fi Unifying Data Model
 
 ## Audience and Purpose
 

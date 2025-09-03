@@ -4,7 +4,7 @@
 
 ## Description
 
-The Dashboard Replacement Proof of Concept project was established to address a number of architectural issues related to the ongoing advancement of the Ed-Fi Technical Suite. The  goals of the project were:
+The Dashboard Replacement Proof of Concept project was established to address a number of architectural issues related to the ongoing advancement of the Ed-Fi Technology Suite. The  goals of the project were:
 
 * Demonstrate that a technical modernization of the Ed-Fi Dashboard UI is viable.
 * Provide a framework for estimating the cost of modernizing the entire Ed-Fi Dashboard.
