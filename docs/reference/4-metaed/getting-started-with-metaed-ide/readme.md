@@ -12,8 +12,8 @@ technology vendors and education data analysts.
 
 ## Before You Install the MetaEd IDE
 
-The MetaEd IDE helps implementers who are extending Ed-Fi technology. If you're
-not sure what Ed-Fi technology is, see the links in the Prerequisites section
+The MetaEd IDE helps implementers who are extending Ed-Fi Technology Suite. If you're
+not sure what Ed-Fi Technology Suite is, see the links in the Prerequisites section
 below. If you're not sure whether the MetaEd IDE can help with the needs of your
 particular project, the [Core
 Concepts](../ide-user-guide/core-concepts.md)
@@ -25,7 +25,7 @@ can't) do.
 To gain the most benefit from this information, the reader should already be
 familiar with the following knowledge areas:
 
-* Ed-Fi technology, see [www.ed-fi.org](http://www.ed-fi.org)
+* Ed-Fi Technology Suite, see [www.ed-fi.org](http://www.ed-fi.org)
 * The Ed-Fi Extensions Framework, see, for example, the relevant sections of
     the [Ed-Fi Extension
     Framework](docs/reference/1-data-exchange/extensions-framework/readme.md) documentation

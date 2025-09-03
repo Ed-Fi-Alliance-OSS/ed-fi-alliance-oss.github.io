@@ -67,7 +67,7 @@ of individual Ed-Fi states and collaboratives.
 
 The framework allows adding new entities, extending existing entities, or
 subclassing existing entities. Extensions in this category generally have
-implementation and documentation support in Ed-Fi technology such as the
+implementation and documentation support in Ed-Fi Technology Suite such as the
 Ed-Fi ODS / API. See the [Supported Extensions Tech Docs page](./supported-extensions/readme.md) for more specific guidelines.
 
 Extensions not in the Extension Framework are

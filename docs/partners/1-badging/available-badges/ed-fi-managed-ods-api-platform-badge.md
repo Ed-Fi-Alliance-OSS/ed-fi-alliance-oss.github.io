@@ -75,7 +75,7 @@ To qualify for this badge, a product must meet the following requirements.
     (e.g. via a LEA help desk or ticketing system), but the product must have an
     option included in a subscription level for escalations of Tier-1 issues to
     Tier-2 and Tier-3 support.
-    1. These higher support levels must cover all operations of Ed-Fi platform
+    1. These higher support levels must cover all operations of Ed-Fi Technology Suite
         and also system integrations with the platform via API, including
         performing actions to help diagnose issues and communicate with 3rd
         party products to resolve integration issues.  These integration
