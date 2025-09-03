@@ -66,4 +66,4 @@ Ed-Fi API applications are intended for use by systems, not end users. Therefore
 * External User Authorization
 * Internal User Authorization
 
-The Bulk Operations section has also been removed, as it was a feature of a particular application, and not a prescribed part of the Ed-Fi API Standards.
+The Bulk Operations section has also been removed, as it was a feature of a particular application, and not a prescribed part of the Ed-Fi API Specifications.

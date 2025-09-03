@@ -19,7 +19,7 @@ education enterprise
 ➡️ [Documentation for version 5 (current)](/reference/data-exchange/data-standard/) \
 ➡️ [Documentation for version 4 (active)](/reference/data-exchange/data-standard/4/)
 
-## Ed-Fi API Standards
+## Ed-Fi API Specifications
 
 An Ed-Fi compatible API application creates a REST-based interface for data
 exchange, where the messages conform to the Ed-Fi Data Standard. The [Ed-Fi
