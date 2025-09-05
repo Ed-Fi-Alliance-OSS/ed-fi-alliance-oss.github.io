@@ -1,4 +1,4 @@
-# Effective Dates in the Ed-Fi Data Model
+# Effective Dates in the Ed-Fi Unifying Data Model
 
 This document provides information on the Ed-Fi Unifying Data Model's (UDM)
 approach to effective dates, and gives practical guidance on using the data

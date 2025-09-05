@@ -70,7 +70,7 @@ The Alliance plans to continue to work with the EPP community to identify furthe
 The following are resources for getting information and engaging in the process:
 
 * [Ed-Fi Community Governance](https://edfi.atlassian.net/wiki/display/GOV/Ed-Fi+Governance) – for convening the community and sharing information.
-* [Ed-Fi Technology Roadmap](/reference/roadmap/) - for details on upcoming releases.
+* [Roadmap for the Ed-Fi Technology Suite](/reference/roadmap/) - for details on upcoming releases.
 * [Ed-Fi Tracker](https://tracker.ed-fi.org/secure/RapidBoard.jspa?rapidView=175) – for submitting tickets.
 
 ## Links to resources and documentation

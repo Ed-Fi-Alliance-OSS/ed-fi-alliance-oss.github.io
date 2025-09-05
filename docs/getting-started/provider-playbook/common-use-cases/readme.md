@@ -15,7 +15,7 @@ phone](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-
 ## Assessment Solution Guide
 
 **This guide is for vendors who want to assist their clients in setting up an
-Ed-Fi Assessment solution.** Ed-Fi technology helps schools and districts
+Ed-Fi Assessment solution.** Ed-Fi Technology Suite helps schools and districts
 combine assessment data from multiple measures and sources in one interface to
 gain a comprehensive view of their learners’ progress.
 
@@ -29,7 +29,7 @@ together](https://edfidocs.blob.core.windows.net/$web/img/getting-started/soluti
 ## Chronic Absenteeism Solution Guide
 
 **This guide is for vendors who want to assist their clients in setting up an
-Ed-Fi Chronic Absenteeism solution.** Ed-Fi technology helps schools and
+Ed-Fi Chronic Absenteeism solution.** Ed-Fi Technology Suite helps schools and
 districts identify trends and intervene earlier with accurate, real-time
 attendance data.
 

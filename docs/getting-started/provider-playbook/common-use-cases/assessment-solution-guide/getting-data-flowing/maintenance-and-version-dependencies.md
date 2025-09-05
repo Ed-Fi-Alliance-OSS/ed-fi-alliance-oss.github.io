@@ -6,7 +6,7 @@ Documentation and Sandbox -
 Assessment-VDG](./online-api-documentation-and-sandbox.md)
 
 Future releases of the Dashboard may update or change the version
-requirements. This will happen organically as the Ed-Fi technology and the core
+requirements. This will happen organically as the Ed-Fi Technology Suite and the core
 Ed-Fi data model evolve over time. To track these changes, the Ed-Fi Alliance
 publishes a number of resources.
 
