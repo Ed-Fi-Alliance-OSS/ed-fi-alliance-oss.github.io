@@ -568,5 +568,30 @@ export default {
           'Data Diagnostic, Data Governance, Use Case development, Stakeholder engagement, Project management and technical planning, Integration development, Ed-Fi implementation, Educator Preparation implementation, Dashboard visualizations and reports, Vendor coordination',
       },
     },
+
+{
+      logo: 'https://edfidocs.blob.core.windows.net/$web/assets/partners/badging/Resultantlogo.jpg',
+      organizationName: 'Resultant',
+      website: 'https://resultant.com',
+      documentation: {
+        'Indiana Graduates Prepared to Succeed (Indiana GPS) Dashboard':
+        'https://indianagps.doe.in.gov/',
+        'IDOE Ed-Fi Support Knowledge Hub':
+        'https://idoe.atlassian.net/wiki/spaces/IKHTV/overview',
+        'IDOE Ed-Fi Implementation Journey Maps':
+        'https://www.in.gov/doe/files/school-administrator-and-data-provider-experience-map.pdf',
+      },
+      validThrough: 'Aug 29, 2027',
+      verifyingAgencies: [
+        'Indiana Department of Education',
+        'Texas Education Exchange (Region 4)',
+        'Region 10 ESC, TX',
+      ],
+      servicesPerformed: {
+        href: 'https://resultant.com/education/ed-fi/',
+        description:
+          'Ed-Fi strategy and implementation planning, Technical architecture and environment setup, Data mapping and validation, Vendor coordination and onboarding, Stakeholder engagement and project governance, Project management and change facilitation, Documentation, training, and LEA support, Operational and post-deployment support',
+      },
+    },
   ],
 };
