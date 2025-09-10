@@ -1,8 +1,10 @@
----
-draft: true
----
-
 # Vendor and Claimset Management
+
+:::warning
+
+This is pre-release documentation for software that is not yet available.
+
+:::
 
 The Ed-Fi Admin App allows appropriately permissioned users to manage Vendors and Claimsets for the Ed-Fi Environments or Ed-Fi Tenants owned by their team. These directions outline steps to create and manage both of these resources.
 
@@ -54,7 +56,7 @@ Before creating applications and managing claimsets, it's important to understan
 
 **Claimset:** A collection of permissions (claims) that define what actions an application can perform on specific Ed-Fi resources. Claimsets provide fine-grained control over data access.
 
-For more detailed information about Ed-Fi security concepts, [**see the documentation here describing the different security concepts in Ed-Fi.**](https://techdocs.ed-fi.org/display/ODSAPIS3V71/Security+Configuration+Data+Stores)
+For more detailed information about Ed-Fi security concepts, [**see the documentation here describing the different security concepts in Ed-Fi.**](/reference/ods-api/platform-dev-guide/security/security-configuration-data-stores)
 
 ## Claimset Management
 
@@ -64,11 +66,11 @@ Claimsets are fundamental to Ed-Fi security, defining the specific permissions t
 
 Claims represent specific types of access that can be granted to an application:
 
-* **Create**: Permission to add new data records to the ODS
-* **Read**: Permission to retrieve and view existing data
-* **Update**: Permission to modify existing data records
-* **Delete**: Permission to remove data records from the ODS
-* **ReadChanges**: Permission to access change tracking data and deltas
+- **Create**: Permission to add new data records to the ODS
+- **Read**: Permission to retrieve and view existing data
+- **Update**: Permission to modify existing data records
+- **Delete**: Permission to remove data records from the ODS
+- **ReadChanges**: Permission to access change tracking data and deltas
 
 ### Creating Custom Claimsets
 
@@ -77,19 +79,19 @@ Claims represent specific types of access that can be granted to an application:
 2. Click the `+ New` button to create a new claimset.
 
 3. **Define Claimset Properties:**
-   * Provide a descriptive name for the claimset
-   * Add a description explaining the claimset's purpose
-   * Select the resources that this claimset should have access to
+   - Provide a descriptive name for the claimset
+   - Add a description explaining the claimset's purpose
+   - Select the resources that this claimset should have access to
 
 4. **Configure Resource Permissions:**
-   * For each selected resource, specify the allowed actions (Create, Read, Update, Delete, ReadChanges)
-   * Consider the principle of least privilege when assigning permissions
-   * Review dependencies between resources
+   - For each selected resource, specify the allowed actions (Create, Read, Update, Delete, ReadChanges)
+   - Consider the principle of least privilege when assigning permissions
+   - Review dependencies between resources
 
 5. **Validate and Save:**
-   * Review all assigned permissions
-   * Test the claimset with a non-production application if possible
-   * Save the claimset configuration
+   - Review all assigned permissions
+   - Test the claimset with a non-production application if possible
+   - Save the claimset configuration
 
 :::tip
 When creating custom claimsets, start with the minimum required permissions and expand as needed. This approach reduces security risks and makes troubleshooting easier.
@@ -101,27 +103,27 @@ The Admin App includes several pre-configured claimsets for common integration s
 
 #### Ed-Fi Sandbox Claimset
 
-* Comprehensive access for testing and development
-* Includes read/write access to most Ed-Fi resources
-* Should only be used in non-production environments
+- Comprehensive access for testing and development
+- Includes read/write access to most Ed-Fi resources
+- Should only be used in non-production environments
 
 #### SIS Vendor Claimset
 
-* Designed for Student Information System integrations
-* Includes access to student demographics, enrollment, and academic records
-* Provides create/read/update access to core educational data
+- Designed for Student Information System integrations
+- Includes access to student demographics, enrollment, and academic records
+- Provides create/read/update access to core educational data
 
 #### Assessment Claimset
 
-* Specialized for assessment and testing applications
-* Read access to student and school data
-* Write access to assessment results and scores
+- Specialized for assessment and testing applications
+- Read access to student and school data
+- Write access to assessment results and scores
 
 #### Roster Only Claimset
 
-* Limited access for learning management systems
-* Read-only access to student enrollment and scheduling data
-* Includes section and course information
+- Limited access for learning management systems
+- Read-only access to student enrollment and scheduling data
+- Includes section and course information
 
 ## Application Management
 
@@ -134,19 +136,19 @@ Applications represent the actual software systems that will connect to the Ed-F
 2. Click `+ New` to create a new application.
 
 3. **Configure Application Details:**
-   * Enter a descriptive application name
-   * Provide application description and purpose
-   * Select the appropriate claimsets for this application
+   - Enter a descriptive application name
+   - Provide application description and purpose
+   - Select the appropriate claimsets for this application
 
 4. **Generate Credentials:**
-   * The system will generate a Client ID and Client Secret
-   * Securely store these credentials as they cannot be retrieved later
-   * These credentials will be used for API authentication
+   - The system will generate a Client ID and Client Secret
+   - Securely store these credentials as they cannot be retrieved later
+   - These credentials will be used for API authentication
 
 5. **Configure Additional Settings:**
-   * Set any applicable rate limits or quotas
-   * Configure monitoring and logging levels
-   * Define operational restrictions if needed
+   - Set any applicable rate limits or quotas
+   - Configure monitoring and logging levels
+   - Define operational restrictions if needed
 
 :::warning
 **Client Secret Security:** The client secret is only displayed once during application creation. Store it securely and treat it as a password. If lost, you'll need to regenerate the credentials.
@@ -154,26 +156,26 @@ Applications represent the actual software systems that will connect to the Ed-F
 
 ### Managing Application Credentials
 
-* **Credential Rotation**: Regularly rotate client secrets for enhanced security
-* **Access Monitoring**: Monitor application usage and access patterns
-* **Deactivation**: Temporarily disable applications without deleting them
-* **Deletion**: Permanently remove applications that are no longer needed
+- **Credential Rotation**: Regularly rotate client secrets for enhanced security
+- **Access Monitoring**: Monitor application usage and access patterns
+- **Deactivation**: Temporarily disable applications without deleting them
+- **Deletion**: Permanently remove applications that are no longer needed
 
 ## Best Practices
 
 ### Security Best Practices
 
-* **Principle of Least Privilege**: Grant only the minimum necessary permissions
-* **Regular Audits**: Periodically review vendor and application access
-* **Credential Management**: Implement secure storage and rotation of API credentials
-* **Monitoring**: Track application usage and identify unusual patterns
+- **Principle of Least Privilege**: Grant only the minimum necessary permissions
+- **Regular Audits**: Periodically review vendor and application access
+- **Credential Management**: Implement secure storage and rotation of API credentials
+- **Monitoring**: Track application usage and identify unusual patterns
 
 ### Operational Best Practices
 
-* **Documentation**: Maintain detailed records of all vendors, applications, and their purposes
-* **Testing**: Use non-production environments to test new configurations
-* **Change Management**: Follow approval processes for claimset modifications
-* **Backup**: Maintain backups of critical configuration data
+- **Documentation**: Maintain detailed records of all vendors, applications, and their purposes
+- **Testing**: Use non-production environments to test new configurations
+- **Change Management**: Follow approval processes for claimset modifications
+- **Backup**: Maintain backups of critical configuration data
 
 ## Troubleshooting
 
@@ -181,31 +183,31 @@ Applications represent the actual software systems that will connect to the Ed-F
 
 #### Vendor Creation Problems
 
-* Verify you have the necessary permissions in the selected environment/tenant
-* Ensure the namespace prefix is unique and follows naming conventions
-* Check that all required fields are properly completed
+- Verify you have the necessary permissions in the selected environment/tenant
+- Ensure the namespace prefix is unique and follows naming conventions
+- Check that all required fields are properly completed
 
 #### Application Authentication Failures
 
-* Verify the Client ID and Client Secret are correct
-* Check that the application is active and not disabled
-* Ensure the application's claimsets include the necessary permissions
-* Validate that the Ed-Fi API endpoint URLs are correct
+- Verify the Client ID and Client Secret are correct
+- Check that the application is active and not disabled
+- Ensure the application's claimsets include the necessary permissions
+- Validate that the Ed-Fi API endpoint URLs are correct
 
 #### Permission Denied Errors
 
-* Review the application's assigned claimsets
-* Verify that the claimsets include the required permissions for the specific operation
-* Check if there are any resource-specific restrictions
-* Ensure the application is accessing the correct tenant/environment
+- Review the application's assigned claimsets
+- Verify that the claimsets include the required permissions for the specific operation
+- Check if there are any resource-specific restrictions
+- Ensure the application is accessing the correct tenant/environment
 
 ### Getting Support
 
 For additional assistance with vendor and claimset management:
 
-* Review the Ed-Fi technical documentation for detailed API specifications
-* Check application logs for specific error messages
-* Contact your system administrator for environment-specific issues
-* Consult the Ed-Fi community forums for best practices and troubleshooting tips
+- Review the Ed-Fi technical documentation for detailed API specifications
+- Check application logs for specific error messages
+- Contact your system administrator for environment-specific issues
+- Consult the Ed-Fi community forums for best practices and troubleshooting tips
 
 Proper vendor and claimset management ensures secure and efficient integration between external applications and your Ed-Fi data, while maintaining appropriate access controls and audit capabilities.

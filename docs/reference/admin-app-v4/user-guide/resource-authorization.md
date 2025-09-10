@@ -1,8 +1,10 @@
----
-draft: true
----
+# Resource Authorization and Admin App
 
-# Ed-Fi Resource Authorization and Admin App
+:::warning
+
+This is pre-release documentation for software that is not yet available.
+
+:::
 
 The Ed-Fi Admin App streamlines the process of generating API keys and secrets crucial for seamlessly integrating applications with your organization's Ed-Fi data. These credentials play a pivotal role in ensuring secure data transactions between integrated applications, safeguarding your organization's information flow. It's vital for Admin App users to understand the components that make up an application within the Ed-Fi framework. This guide aims to provide a comprehensive understanding of the application components in Ed-Fi, ensuring users are well-informed when setting up and managing applications in the Admin App.
 
@@ -12,7 +14,7 @@ The Ed-Fi Admin App streamlines the process of generating API keys and secrets c
 
 **ODS:** Operational Data Store. A database that holds operational data for the current school year in Ed-Fi. The data is stored in accordance to Ed-Fi Data Standards.
 
-**Tenant:** A virtual environment that allows for the ability to locally control claimsets, vendors, and applications without impacting other tenants hosted in the same Ed-Fi environment. 
+**Tenant:** A virtual environment that allows for the ability to locally control claimsets, vendors, and applications without impacting other tenants hosted in the same Ed-Fi environment.
 
 **Resource:** Each of the endpoints in the Ed-Fi data API represents a resource. These resources are used by API clients to access domain specific data. These are what API clients interact with to retrieve, update, or manage data.
 
