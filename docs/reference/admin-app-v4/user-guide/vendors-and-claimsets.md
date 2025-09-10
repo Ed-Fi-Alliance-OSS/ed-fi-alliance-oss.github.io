@@ -16,7 +16,7 @@ The Ed-Fi Admin App allows appropriately permissioned users to manage Vendors an
 
    ![sbaa_vendor_nav.gif](https://docs.startingblocks.org/imgs/sbaa_vendor_nav.gif)
 
-2. If the user has the appropriate permissions, the user will be able to see the `+ New` button at the top right of the Vendors box on this page. If you do not see this button but you believe you should have permissions to do so, please reach out to your system administrator.
+2. If you have the appropriate permissions, you'll see the `+ New` button at the top right of the Vendors box. If not visible but expected, contact your system administrator.
 
    ![new_vendor.png](https://docs.startingblocks.org/imgs/new_vendor.PNG)
 

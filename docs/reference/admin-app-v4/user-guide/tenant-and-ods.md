@@ -16,13 +16,13 @@ The ODS is the central data repository that stores educational data. In multi-te
 
 At the database level, a single pairing of `EdFi_Admin` and `EdFi_Security` databases can support one more instances of the `EdFi_Ods` database.
 
-### Mult-Tenancy
+### Multi-Tenancy
 
 :::tip
 
 Multi-tenancy was introduced in ODS/API 7.1. This section does not apply to prior versions of the ODS/API
 
-Fore more information, see [Single and Multi-Tenant Configuration](/reference/ods-api/platform-dev-guide/configuration/single-and-multi-tenant-configuration).
+For more information, see [Single and Multi-Tenant Configuration](/reference/ods-api/platform-dev-guide/configuration/single-and-multi-tenant-configuration).
 
 :::
 
