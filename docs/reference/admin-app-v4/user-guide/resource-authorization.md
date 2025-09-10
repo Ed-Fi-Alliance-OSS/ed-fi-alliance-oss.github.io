@@ -4,88 +4,67 @@ draft: true
 
 # Ed-Fi Resource Authorization and Admin App
 
-This guide covers the resource authorization features and capabilities of the Ed-Fi Admin App. Resource authorization controls access to Ed-Fi API resources and ensures data security across your Ed-Fi implementation.
+The Ed-Fi Admin App streamlines the process of generating API keys and secrets crucial for seamlessly integrating applications with your organization's Ed-Fi data. These credentials play a pivotal role in ensuring secure data transactions between integrated applications, safeguarding your organization's information flow. It's vital for Admin App users to understand the components that make up an application within the Ed-Fi framework. This guide aims to provide a comprehensive understanding of the application components in Ed-Fi, ensuring users are well-informed when setting up and managing applications in the Admin App.
 
-## Understanding Resource Authorization
+:::info
+[See the documentation here describing the different security concepts in Ed-Fi.](https://techdocs.ed-fi.org/display/ODSAPIS3V71/Security+Configuration+Data+Stores)
+:::
 
-Resource authorization in the Ed-Fi ecosystem determines which applications and users can access specific data resources through the Ed-Fi ODS/API. The Admin App provides tools to configure and manage these authorization policies.
+**ODS:** Operational Data Store. A database that holds operational data for the current school year in Ed-Fi. The data is stored in accordance to Ed-Fi Data Standards.
 
-## Key Concepts
+**Tenant:** A virtual environment that allows for the ability to locally control claimsets, vendors, and applications without impacting other tenants hosted in the same Ed-Fi environment. 
 
-### Resources
+**Resource:** Each of the endpoints in the Ed-Fi data API represents a resource. These resources are used by API clients to access domain specific data. These are what API clients interact with to retrieve, update, or manage data.
 
-Ed-Fi resources represent different types of educational data (students, schools, assessments, etc.). Each resource has specific access requirements and security considerations.
+**Vendor:** A named entity that owns multiple applications within the system. They are the main link between applications and namespace prefixes. For example, a vendor in Ed-Fi could be the name of an assessment vendor (e.g. iReady or ACT), or a SIS vendor (e.g. PowerSchool). To learn more about creating vendors in the Admin App [**please click here.**](../vendors-and-claimsets/)
 
-### Claims
+**Namespace Prefix:** Employed to signify data ownership for distinct partitions within the Ed-Fi data model. This holds particular significance in domains employing Namespace Based Authorization, such as descriptors or assessments.
 
-Claims define specific permissions that can be granted to applications or users. Common claim types include:
+**Application:** A named entity that makes an association between resource authorizations and API clients. This association is crucial for managing and tracking who has access to various data within the system. All applications belong to a vendor.
 
-* Create
-* Read
-* Update
-* Delete
-* ReadChanges
+:::tip Example
+A district admin wanting to create a set of API credentials for their SIS integration would create an *application* using the Admin App. The admin would provide a name for the application, and select the vendor, the claimset and education organizations they'd like the integrating SIS to be bound to. Saving this information in the Admin App will generate a set of API credentials that can then be shared or input into the integrating system.
+:::
 
-### Claimsets
+**Claimset:** A collection of rules that define which resources can be accessed, what actions can be performed on them, and the authorization strategies that apply. It serves as a blueprint for access control, outlining the specific permissions for a given use case. For additional comprehensive documentation around claimsets and Resources in Ed-Fi, please read the technical documentation [**located here.**](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V71/pages/25493663/API+Claim+Sets+Resources)
 
-Claimsets are collections of claims that can be assigned to vendors or applications. They provide a convenient way to manage groups of related permissions.
+**Authorization Strategy:** A method through which the Ed-Fi system determines whether an application should be allowed to carry out a specific action on a resource, such as reading student data or updating teacher information. At this time, authorization strategies are not user defined, but rather pre-defined by Ed-Fi. [**More details here.**](#authorization-strategies)
 
-## Configuring Resource Authorization
+**Action:** The types of operations that can be performed on a resource, aligning with the CRUD acronym: Create, Read, Update, and Delete (in Ed-Fi there is also a ReadChanges action). Each action represents a different way in which resources can be accessed or manipulated. [**Read more about actions in Ed-Fi here.**](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V71/pages/25493663/API+Claim+Sets+Resources#:~:text=API%20Admin%20database.-,Actions,-The%20Ed%2DFi) Scroll down to the section called **Actions.**
 
-### Viewing Current Authorization
+**Profiles:** Complement the function of claimsets by controlling access at a more granular level, specifically at the columnar or sub-collection level within resources. While claimsets determine who has access to which resources and what actions they can perform, profiles define access to specific parts of the data within those resources. [**Please read technical documentation about profiles in Ed-Fi here.**](https://techdocs.ed-fi.org/display/ODSAPIS3V71/API+Profiles)
 
-The Admin App provides a comprehensive view of current resource authorization settings. You can review:
+:::info
+This graphic is pulled straight from the Ed-Fi Tech docs but is useful to visualize how profiles work in Ed-Fi.
 
-* Active claimsets
-* Resource-specific permissions
-* Vendor assignments
+![Ed-Fi Profiles Visual](https://docs.startingblocks.org/imgs/edfi_profiles_visual.PNG)
+:::
 
-### Managing Claimsets
+## Claimsets in the Admin App
 
-Use the Admin App to:
+Currently in the Admin App, you can export, import, and view claimset definitions within the user interface (UI). Future releases of the Admin App will include a claimset editor.
 
-1. Create new claimsets
-2. Modify existing claimsets
-3. Assign claimsets to vendors
-4. Review claimset usage
+To view claimset definitions in the Admin App, navigate to the claimset page in your chosen environment.
 
-### Security Best Practices
+![Claimset Viewer](https://docs.startingblocks.org/imgs/claimset_viewer.gif)
 
-When configuring resource authorization:
+## Authorization Strategies
 
-* Follow the principle of least privilege
-* Regularly review and audit permissions
-* Document authorization decisions
-* Test changes in a non-production environment
+Admin App users who create claimsets and provision API credentials must be aware of the different authorization methods in Ed-Fi standards. Authorization strategies represent *how* an API client can access certain resources within Ed-Fi.
 
-## Authorization Profiles
+**The current list of authorization strategies used in Ed-Fi as of API Suite 3 v 7.1**
 
-The Admin App supports authorization profiles that define different levels of access:
+* No Further Authorization Required
+* Relationships with Education Organizations and People
+* Relationships with Education Organizations only
+* Namespace Based
+* Relationships with People only
+* Relationships with Students only
+* Relationships with Students only (through - StudentEducationOrganizationResponsibilityAssociation)
+* Ownership Based
+* Relationships with Education Organizations and People (including deletes)
+* Relationships with Education Organizations only (Inverted)
+* Relationships with Education Organizations and People (Inverted)
+* Relationships with Students only (through - StudentEducationOrganizationResponsibilityAssociation, including deletes)
 
-* **Application Profile**: Standard application access
-* **Assessment Profile**: Specialized access for assessment data
-* **Roster Profile**: Access to student roster information
-
-Each profile has predefined settings that can be customized based on your needs.
-
-## Monitoring and Auditing
-
-The Admin App provides tools for monitoring resource access:
-
-* View access logs
-* Generate authorization reports
-* Track permission changes
-* Monitor vendor activity
-
-Regular monitoring helps ensure that authorization policies are working as intended and can help identify potential security issues.
-
-## Troubleshooting Authorization Issues
-
-Common authorization issues and solutions:
-
-1. **Access Denied Errors**: Verify claimset assignments and resource permissions
-2. **Missing Data**: Check read permissions for relevant resources
-3. **Update Failures**: Ensure update/delete permissions are granted
-4. **Performance Issues**: Review the scope of granted permissions
-
-For complex authorization scenarios, consult the Ed-Fi community documentation or reach out to your system administrator.
+For more information about how authorization works in Ed-Fi [**please read the docs here.**](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V71/pages/25493663/API+Claim+Sets+Resources#:~:text=strategy%20described%20below.-,Authorization%20Strategies,-The%20implementation%20of) There is a section at the bottom of the page specifically about authorization strategies.
