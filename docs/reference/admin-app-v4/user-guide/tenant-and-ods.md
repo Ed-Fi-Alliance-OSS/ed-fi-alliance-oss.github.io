@@ -1,3 +1,4 @@
+<!-- # Tenant and ODS Management in Admin App -->
 # Tenant and ODS Management in Admin App
 
 :::warning
@@ -8,7 +9,7 @@ This is pre-release documentation for software that is not yet available.
 
 Ed-Fi version 7.1 and later support the creation of Ed-Fi Tenants. These tenants are isolated "virtual environments" that allow Ed-Fi users the ability to locally control things like claimsets, vendors, and applications without impacting other tenants hosted in the same Ed-Fi environment. The Ed-Fi Admin App allows for users to manage tenants and ODSs within their team's scope in the Admin App.
 
-[**Please find more information about Multi-Tenancy in Ed-Fi here**](/reference/ods-api/configuration/single-and-multi-tenant-configuration.md)
+[**Please find more information about Multi-Tenancy in Ed-Fi here**](/reference/ods-api/platform-dev-guide/configuration/single-and-multi-tenant-configuration)
 
 Below is a diagram pulled from the Ed-Fi tech docs page above depicting how routing works in a multi-tenant environment:
 
@@ -20,7 +21,15 @@ Notice that the tenant ID that is part of the URL informs how to route API reque
 
 Like other resources in the Admin App, users must have the appropriate permissions assigned to them to manage Ed-Fi tenants in their Ed-Fi environment(s). With the appropriate permissions, users are able to create and delete tenants from their Ed-Fi environment(s). If you do not see the options to create or delete a tenant within your Ed-Fi environment but believe you should have these permissions, please reach out to your system administrator.
 
-### Creating and Deleting Tenants
+:::warning
+
+Tenant management is not yet fully functional in the Ed-Fi Admin App. At this time, tenants can only be created during initial environment setup.
+
+If you add additional tenants to a multi-tenant ODS/API 7.x installation _after_ having already created an environment, then start over by creating a new environment.
+
+:::
+
+<!-- ### Creating and Deleting Tenants
 
 1. Navigate to the Ed-Fi environment where you'd like to add an Ed-Fi Tenant. Clicking on an environment under the `Environments` section will bring you to the environment details page.
 
@@ -36,7 +45,7 @@ Like other resources in the Admin App, users must have the appropriate permissio
 
 :::warning
 Deleting a tenant is a permanent action that will remove all associated data, vendors, claimsets, and applications. Ensure you have proper backups and approval before proceeding with tenant deletion.
-:::
+::: -->
 
 ## ODS Management
 

@@ -56,7 +56,7 @@ Before creating applications and managing claimsets, it's important to understan
 
 **Claimset:** A collection of permissions (claims) that define what actions an application can perform on specific Ed-Fi resources. Claimsets provide fine-grained control over data access.
 
-For more detailed information about Ed-Fi security concepts, [**see the documentation here describing the different security concepts in Ed-Fi.**](/reference/ods-api/platform-dev-guide/security/security-configuration-data-stores)
+For more detailed information about Ed-Fi security concepts, [**see the documentation here describing the different security concepts in Ed-Fi.**](/reference/ods-api/platform-dev-guide/configuration/single-and-multi-tenant-configuration)
 
 ## Claimset Management
 
