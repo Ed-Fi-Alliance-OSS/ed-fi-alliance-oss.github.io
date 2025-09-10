@@ -4,233 +4,208 @@ draft: true
 
 # Vendor and Claimset Management
 
-This guide covers the management of vendors and claimsets in the Ed-Fi Admin App. Vendors represent third-party applications or systems that need access to Ed-Fi data, while claimsets define the specific permissions granted to those vendors.
+The Ed-Fi Admin App allows appropriately permissioned users to manage Vendors and Claimsets for the Ed-Fi Environments or Ed-Fi Tenants owned by their team. These directions outline steps to create and manage both of these resources.
 
-## Understanding Vendors and Claimsets
+## Vendor Creation
 
-### Vendors
+1. Navigate to the `Vendors` section under Ed-Fi Environment > Ed-Fi Tenant.
 
-Vendors in the Ed-Fi ecosystem are external applications, systems, or organizations that require access to Ed-Fi data through the ODS/API. Each vendor must be properly registered and configured before they can access any data.
+   ![sbaa_vendor_nav.gif](https://docs.startingblocks.org/imgs/sbaa_vendor_nav.gif)
 
-### Claimsets
+2. If the user has the appropriate permissions, the user will be able to see the `+ New` button at the top right of the Vendors box on this page. If you do not see this button but you believe you should have permissions to do so, please reach out to your system administrator.
 
-Claimsets are collections of permissions (claims) that define what actions a vendor can perform on specific Ed-Fi resources. They provide a structured way to manage and assign permissions to vendors.
+   ![new_vendor.png](https://docs.startingblocks.org/imgs/new_vendor.PNG)
 
-## Vendor Management
+3. After clicking the `+ New` button on the vendors page, a `Create New Vendor` form will pop up on the next page. To create a new vendor in Ed-Fi, you will need to enter the Company name, the Namespace prefix that governs data segmentation in the ODS, a Contact name, and a Contact email address. Your new vendor will be available to use after clicking `Save` on the creation page.
 
-### Registering a New Vendor
+   ![vendor_creation.gif](https://docs.startingblocks.org/imgs/vendor_creation.gif)
 
-To register a new vendor in the Admin App:
+:::info
+The **Namespace prefix** is a critical component that ensures data segmentation and prevents conflicts between different vendors' data in the ODS. Choose a meaningful and unique prefix that represents your organization or application.
+:::
 
-1. **Access Vendor Management**
-   Navigate to the vendor management section in the Admin App
+### Vendor Management
 
-2. **Create Vendor Profile**
-   * Enter vendor name and contact information
-   * Provide vendor description and purpose
-   * Set vendor status (active/inactive)
+Admin App users also have the ability to manage (update and delete) vendors within their Ed-Fi Environments or Ed-Fi Tenants.
 
-3. **Configure Technical Details**
-   * Generate or assign client credentials
-   * Set up authentication parameters
-   * Configure connection limits and quotas
+1. Navigate to the `Vendors` section under Ed-Fi Environment > Ed-Fi Tenant to view all existing vendors.
 
-4. **Assign Initial Permissions**
-   * Select appropriate claimsets
-   * Review and approve access levels
-   * Set effective dates for access
+2. To edit an existing vendor, click on the vendor name or use the edit option from the vendor's menu.
 
-### Vendor Configuration Options
+3. To delete a vendor, use the delete option from the vendor's actions menu.
 
-#### Basic Information
+:::warning
+Deleting a vendor will also remove all applications associated with that vendor. Ensure that all related applications are no longer needed before proceeding with vendor deletion.
+:::
 
-* **Vendor Name**: Unique identifier for the vendor
-* **Contact Information**: Primary contact details for support
-* **Description**: Purpose and scope of vendor access
-* **Status**: Active, inactive, or pending approval
+## Understanding Ed-Fi Components
 
-#### Security Configuration
+Before creating applications and managing claimsets, it's important to understand the key components that make up the Ed-Fi framework:
 
-* **Client ID**: Unique identifier for API authentication
-* **Client Secret**: Secure credential for vendor authentication
-* **Authentication Method**: OAuth 2.0, certificate-based, or custom
-* **Access Restrictions**: IP allowlists, time-based restrictions
+**ODS:** Operational Data Store. A database that holds operational data for the current school year in Ed-Fi. The data is stored in accordance to Ed-Fi Data Standards.
 
-#### Operational Settings
+**Tenant:** A virtual environment that allows for the ability to locally control claimsets, vendors, and applications without impacting other tenants hosted in the same Ed-Fi environment.
 
-* **Rate Limits**: Maximum API calls per time period
-* **Data Access Quotas**: Limits on data volume or record counts
-* **Monitoring Level**: Standard, enhanced, or detailed logging
-* **Support Level**: Priority and escalation procedures
+**Resource:** Each of the endpoints in the Ed-Fi data API represents a resource. These resources are used by API clients to access domain specific data. These are what API clients interact with to retrieve, update, or manage data.
+
+**Vendor:** A named entity that owns multiple applications within the system. They are the main link between applications and namespace prefixes. For example, a vendor in Ed-Fi could be the name of an assessment vendor (e.g. iReady or ACT), or a SIS vendor (e.g. PowerSchool).
+
+**Application:** A software system or service that integrates with the Ed-Fi ODS/API to exchange educational data. Applications are owned by vendors and are assigned claimsets that define their permissions.
+
+**Claimset:** A collection of permissions (claims) that define what actions an application can perform on specific Ed-Fi resources. Claimsets provide fine-grained control over data access.
+
+For more detailed information about Ed-Fi security concepts, [**see the documentation here describing the different security concepts in Ed-Fi.**](https://techdocs.ed-fi.org/display/ODSAPIS3V71/Security+Configuration+Data+Stores)
 
 ## Claimset Management
 
+Claimsets are fundamental to Ed-Fi security, defining the specific permissions that applications have when accessing Ed-Fi data. The Admin App provides tools to create, modify, and assign claimsets to applications.
+
 ### Understanding Claims
 
-Claims represent specific permissions within the Ed-Fi system:
+Claims represent specific types of access that can be granted to an application:
 
-* **Create**: Permission to add new data records
-* **Read**: Permission to retrieve and view data
-* **Update**: Permission to modify existing data
-* **Delete**: Permission to remove data records
-* **ReadChanges**: Permission to access change tracking data
+* **Create**: Permission to add new data records to the ODS
+* **Read**: Permission to retrieve and view existing data
+* **Update**: Permission to modify existing data records
+* **Delete**: Permission to remove data records from the ODS
+* **ReadChanges**: Permission to access change tracking data and deltas
 
 ### Creating Custom Claimsets
 
-1. **Define Claimset Purpose**
-   * Identify the specific use case
-   * Determine required resources and actions
-   * Consider security and compliance requirements
+1. Navigate to the `Claimsets` section within your Ed-Fi Environment or Tenant.
 
-2. **Select Resources and Claims**
-   * Choose relevant Ed-Fi resources
-   * Assign appropriate claim levels
-   * Review cross-resource dependencies
+2. Click the `+ New` button to create a new claimset.
 
-3. **Configure Advanced Settings**
-   * Set up resource-specific filters
-   * Configure ownership-based access
-   * Define temporal restrictions
+3. **Define Claimset Properties:**
+   * Provide a descriptive name for the claimset
+   * Add a description explaining the claimset's purpose
+   * Select the resources that this claimset should have access to
 
-4. **Test and Validate**
-   * Test claimset with sample data
-   * Verify security boundaries
-   * Confirm intended functionality
+4. **Configure Resource Permissions:**
+   * For each selected resource, specify the allowed actions (Create, Read, Update, Delete, ReadChanges)
+   * Consider the principle of least privilege when assigning permissions
+   * Review dependencies between resources
+
+5. **Validate and Save:**
+   * Review all assigned permissions
+   * Test the claimset with a non-production application if possible
+   * Save the claimset configuration
+
+:::tip
+When creating custom claimsets, start with the minimum required permissions and expand as needed. This approach reduces security risks and makes troubleshooting easier.
+:::
 
 ### Pre-built Claimsets
 
-The Admin App includes several pre-configured claimsets:
+The Admin App includes several pre-configured claimsets for common integration scenarios:
 
-#### Standard Application Claimset
+#### Ed-Fi Sandbox Claimset
 
-* Basic read/write access to core educational data
-* Suitable for most SIS integrations
-* Includes student, staff, and academic record access
+* Comprehensive access for testing and development
+* Includes read/write access to most Ed-Fi resources
+* Should only be used in non-production environments
 
-#### Assessment Integration Claimset
+#### SIS Vendor Claimset
 
-* Specialized access for assessment systems
+* Designed for Student Information System integrations
+* Includes access to student demographics, enrollment, and academic records
+* Provides create/read/update access to core educational data
+
+#### Assessment Claimset
+
+* Specialized for assessment and testing applications
 * Read access to student and school data
 * Write access to assessment results and scores
 
-#### Analytics and Reporting Claimset
+#### Roster Only Claimset
 
-* Read-only access to aggregated data
-* Optimized for business intelligence tools
-* Includes historical and change tracking data
-
-#### Roster Management Claimset
-
-* Access to student enrollment and scheduling data
-* Suitable for learning management systems
+* Limited access for learning management systems
+* Read-only access to student enrollment and scheduling data
 * Includes section and course information
 
-## Assigning Claimsets to Vendors
+## Application Management
 
-### Assignment Process
+Applications represent the actual software systems that will connect to the Ed-Fi API. Each application must be associated with a vendor and assigned appropriate claimsets.
 
-1. **Review Vendor Requirements**
-   * Understand vendor's data needs
-   * Assess security and compliance requirements
-   * Verify vendor's technical capabilities
+### Creating Applications
 
-2. **Select Appropriate Claimsets**
-   * Choose claimsets that match vendor needs
-   * Consider principle of least privilege
-   * Review potential data exposure
+1. Navigate to the `Applications` section under your chosen vendor.
 
-3. **Configure Assignment Parameters**
-   * Set effective dates for access
-   * Configure any vendor-specific restrictions
-   * Define monitoring and audit requirements
+2. Click `+ New` to create a new application.
 
-4. **Approve and Activate**
-   * Review assignment for compliance
-   * Obtain necessary approvals
-   * Activate vendor access
+3. **Configure Application Details:**
+   * Enter a descriptive application name
+   * Provide application description and purpose
+   * Select the appropriate claimsets for this application
 
-### Assignment Best Practices
+4. **Generate Credentials:**
+   * The system will generate a Client ID and Client Secret
+   * Securely store these credentials as they cannot be retrieved later
+   * These credentials will be used for API authentication
 
-* **Least Privilege**: Grant only the minimum necessary permissions
-* **Regular Review**: Periodically review and update assignments
-* **Documentation**: Maintain detailed records of all assignments
-* **Monitoring**: Track vendor usage and access patterns
+5. **Configure Additional Settings:**
+   * Set any applicable rate limits or quotas
+   * Configure monitoring and logging levels
+   * Define operational restrictions if needed
 
-## Monitoring and Auditing
+:::warning
+**Client Secret Security:** The client secret is only displayed once during application creation. Store it securely and treat it as a password. If lost, you'll need to regenerate the credentials.
+:::
 
-### Vendor Activity Monitoring
+### Managing Application Credentials
 
-The Admin App provides comprehensive monitoring capabilities:
+* **Credential Rotation**: Regularly rotate client secrets for enhanced security
+* **Access Monitoring**: Monitor application usage and access patterns
+* **Deactivation**: Temporarily disable applications without deleting them
+* **Deletion**: Permanently remove applications that are no longer needed
 
-* **API Usage Statistics**: Track call volumes and patterns
-* **Data Access Logs**: Monitor which data is being accessed
-* **Authentication Events**: Log successful and failed login attempts
-* **Performance Metrics**: Track response times and error rates
+## Best Practices
 
-### Audit Reporting
+### Security Best Practices
 
-Generate regular audit reports to:
+* **Principle of Least Privilege**: Grant only the minimum necessary permissions
+* **Regular Audits**: Periodically review vendor and application access
+* **Credential Management**: Implement secure storage and rotation of API credentials
+* **Monitoring**: Track application usage and identify unusual patterns
 
-* Review vendor compliance with assigned permissions
-* Identify unusual access patterns or potential security issues
-* Document access for compliance and regulatory requirements
-* Support vendor performance evaluations
+### Operational Best Practices
+
+* **Documentation**: Maintain detailed records of all vendors, applications, and their purposes
+* **Testing**: Use non-production environments to test new configurations
+* **Change Management**: Follow approval processes for claimset modifications
+* **Backup**: Maintain backups of critical configuration data
 
 ## Troubleshooting
 
-### Common Vendor Issues
+### Common Issues
 
-#### Authentication Failures
+#### Vendor Creation Problems
 
-* Verify client credentials are correct
-* Check authentication method configuration
-* Review network connectivity and firewall settings
-* Examine authentication logs for error details
+* Verify you have the necessary permissions in the selected environment/tenant
+* Ensure the namespace prefix is unique and follows naming conventions
+* Check that all required fields are properly completed
+
+#### Application Authentication Failures
+
+* Verify the Client ID and Client Secret are correct
+* Check that the application is active and not disabled
+* Ensure the application's claimsets include the necessary permissions
+* Validate that the Ed-Fi API endpoint URLs are correct
 
 #### Permission Denied Errors
 
-* Verify claimset assignments are active
-* Check resource-specific permissions
-* Review any vendor-specific restrictions
-* Confirm API endpoint configurations
+* Review the application's assigned claimsets
+* Verify that the claimsets include the required permissions for the specific operation
+* Check if there are any resource-specific restrictions
+* Ensure the application is accessing the correct tenant/environment
 
-#### Performance Problems
+### Getting Support
 
-* Monitor rate limiting and quota usage
-* Review data access patterns
-* Check for inefficient API calls
-* Consider optimization recommendations
+For additional assistance with vendor and claimset management:
 
-### Claimset Troubleshooting
+* Review the Ed-Fi technical documentation for detailed API specifications
+* Check application logs for specific error messages
+* Contact your system administrator for environment-specific issues
+* Consult the Ed-Fi community forums for best practices and troubleshooting tips
 
-#### Insufficient Permissions
-
-* Review required claims for specific operations
-* Check resource dependencies and relationships
-* Verify temporal restrictions and effective dates
-* Consider upgrading to more comprehensive claimsets
-
-#### Over-permissioned Access
-
-* Audit current claimset assignments
-* Identify and remove unnecessary permissions
-* Consider creating more specific, limited claimsets
-* Implement additional monitoring for high-privilege access
-
-## Security Considerations
-
-### Best Practices
-
-* **Regular Credential Rotation**: Periodically update client secrets
-* **Access Review**: Conduct quarterly reviews of vendor access
-* **Incident Response**: Maintain procedures for security incidents
-* **Compliance Monitoring**: Ensure ongoing compliance with regulations
-
-### Risk Management
-
-* **Vendor Assessment**: Evaluate vendor security practices
-* **Data Classification**: Understand sensitivity of exposed data
-* **Impact Analysis**: Assess potential impact of data breaches
-* **Mitigation Strategies**: Implement appropriate risk controls
-
-Regular vendor and claimset management ensures secure, efficient, and compliant access to Ed-Fi data while supporting the diverse needs of your educational technology ecosystem.
+Proper vendor and claimset management ensures secure and efficient integration between external applications and your Ed-Fi data, while maintaining appropriate access controls and audit capabilities.
