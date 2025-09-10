@@ -6,21 +6,23 @@ This is pre-release documentation for software that is not yet available.
 
 :::
 
-The Ed-Fi Admin App streamlines the process of generating API keys and secrets crucial for seamlessly integrating applications with your organization's Ed-Fi data. These credentials play a pivotal role in ensuring secure data transactions between integrated applications, safeguarding your organization's information flow. It's vital for Admin App users to understand the components that make up an application within the Ed-Fi framework. This guide aims to provide a comprehensive understanding of the application components in Ed-Fi, ensuring users are well-informed when setting up and managing applications in the Admin App.
+The Ed-Fi Admin App streamlines the process of generating API keys and secrets crucial for seamlessly integrating applications with your organization's Ed-Fi API. These credentials play a pivotal role in ensuring secure data transactions between integrated applications, safeguarding your organization's information flow. It's vital for Admin App users to understand the components that make up an application within the context of an Ed-Fi API. This guide aims to provide a comprehensive understanding of the application components, ensuring users are well-informed when setting up and managing applications in the Admin App.
 
 :::info
 [See the documentation here describing the different security concepts in the Ed-Fi ODS/API](/reference/ods-api/platform-dev-guide/security/security-configuration-data-stores).
 :::
 
-**ODS:** Operational Data Store. A database that holds operational data for the current school year in Ed-Fi. The data is stored in accordance to Ed-Fi Data Standards.
+## Key Concepts
 
-**Tenant:** A virtual environment that allows for the ability to locally control claimsets, vendors, and applications without impacting other tenants hosted in the same Ed-Fi environment.
+**ODS:** Operational Data Store. A database that holds operational data for the current school year in the Ed-Fi API. The data is stored in accordance to Ed-Fi Data Standards.
 
-**Resource:** Each of the endpoints in the Ed-Fi data API represents a resource. These resources are used by API clients to access domain specific data. These are what API clients interact with to retrieve, update, or manage data.
+**Tenant:** A virtual environment that allows for the ability to locally control claimsets, vendors, and applications without impacting other tenants hosted in the same Ed-Fi API environment.
 
-**Vendor:** A named entity that owns multiple applications within the system. They are the main link between applications and namespace prefixes. For example, a vendor in Ed-Fi could be the name of an assessment vendor (e.g. iReady or ACT), or a SIS vendor (e.g. PowerSchool). To learn more about creating vendors in the Admin App [**please click here.**](./vendors-and-claimsets.md)
+**Resource:** Each of the endpoints in the Ed-Fi API represents a resource. These resources are used by API clients to access domain specific data. These are what API clients interact with to retrieve, update, or manage data.
 
-**Namespace Prefix:** Employed to signify data ownership for distinct partitions within the Ed-Fi data model. This holds particular significance in domains employing Namespace Based Authorization, such as descriptors or assessments.
+**Vendor:** A named entity that owns multiple applications within the system. They are the main link between applications and namespace prefixes. For example, a vendor could be the name of an assessment vendor (e.g. iReady or ACT) or a SIS vendor (e.g. PowerSchool). To learn more about creating vendors in the Admin App [**please click here.**](./vendors-and-claimsets.md)
+
+**Namespace Prefix:** Employed to signify data ownership for distinct partitions within the Ed-Fi Data Standard. This holds particular significance in domains employing Namespace Based Authorization, such as descriptors or assessments.
 
 **Application:** A named entity that makes an association between resource authorizations and API clients. This association is crucial for managing and tracking who has access to various data within the system. All applications belong to a vendor.
 
@@ -28,11 +30,11 @@ The Ed-Fi Admin App streamlines the process of generating API keys and secrets c
 A district admin wanting to create a set of API credentials for their SIS integration would create an *application* using the Admin App. The admin would provide a name for the application, and select the vendor, the claimset and education organizations they'd like the integrating SIS to be bound to. Saving this information in the Admin App will generate a set of API credentials that can then be shared or input into the integrating system.
 :::
 
-**Claimset:** A collection of rules that define which resources can be accessed, what actions can be performed on them, and the authorization strategies that apply. It serves as a blueprint for access control, outlining the specific permissions for a given use case. For additional comprehensive documentation around claimsets and Resources in Ed-Fi, please read the technical documentation [**located here.**](/reference/ods-api/platform-dev-guide/security/api-claim-sets-resources)
+**Claimset:** A collection of rules that define which resources can be accessed, what actions can be performed on them, and the authorization strategies that apply. It serves as a blueprint for access control, outlining the specific permissions for a given use case. For additional comprehensive documentation around claimsets and Resources, please read the technical documentation [**located here.**](/reference/ods-api/platform-dev-guide/security/api-claim-sets-resources)
 
-**Authorization Strategy:** A method through which the Ed-Fi system determines whether an application should be allowed to carry out a specific action on a resource, such as reading student data or updating teacher information. At this time, authorization strategies are not user defined, but rather pre-defined by Ed-Fi. [**More details here.**](#authorization-strategies)
+**Authorization Strategy:** A method through which the Ed-Fi API determines whether an application should be allowed to carry out a specific action on a resource, such as reading student data or updating teacher information. At this time, authorization strategies are not user defined, but rather pre-defined by the Ed-Fi API. [**More details here.**](#authorization-strategies)
 
-**Action:** The types of operations that can be performed on a resource, aligning with the CRUD acronym: Create, Read, Update, and Delete (in Ed-Fi there is also a ReadChanges action). Each action represents a different way in which resources can be accessed or manipulated. [**Read more about actions in Ed-Fi here.**](/reference/ods-api/platform-dev-guide/security/api-claim-sets-resources#actions) Scroll down to the section called **Actions.**
+**Action:** The types of operations that can be performed on a resource, aligning with the CRUD acronym: `Create`, `Read`, `Update`, and `Delete` (in the Ed-Fi API there is also a `ReadChanges` action). Each action represents a different way in which resources can be accessed or manipulated. [**Read more about actions**](/reference/ods-api/platform-dev-guide/security/api-claim-sets-resources#actions).
 
 **Profiles:** Complement the function of claimsets by controlling access at a more granular level, specifically at the columnar or sub-collection level within resources. While claimsets determine who has access to which resources and what actions they can perform, profiles define access to specific parts of the data within those resources. [**Please read technical documentation about profiles in the Ed-Fi ODS/API here.**](/reference/ods-api/platform-dev-guide/security/api-profiles)
 
@@ -50,9 +52,9 @@ To view claimset definitions in the Admin App, navigate to the claimset page in 
 
 ## Authorization Strategies
 
-Admin App users who create claimsets and provision API credentials must be aware of the different authorization methods in Ed-Fi standards. Authorization strategies represent *how* an API client can access certain resources within Ed-Fi.
+Admin App users who create claimsets and provision API credentials must be aware of the different authorization methods in the Ed-Fi API. Authorization strategies represent *how* an API client can access certain resources within the API.
 
-**The current list of authorization strategies used in Ed-Fi as of API Suite 3 v 7.1**
+**The current list of authorization strategies used in the Ed-Fi ODS/API version 7**
 
 * No Further Authorization Required
 * Relationships with Education Organizations and People
@@ -67,4 +69,13 @@ Admin App users who create claimsets and provision API credentials must be aware
 * Relationships with Education Organizations and People (Inverted)
 * Relationships with Students only (through - StudentEducationOrganizationResponsibilityAssociation, including deletes)
 
-For more information about how authorization works in Ed-Fi [**please read the docs here.**](/reference/ods-api/platform-dev-guide/security/api-claim-sets-resources#authorization-strategies). There is a section at the bottom of the page specifically about authorization strategies.
+For more information about how authorization works [**please read the docs here.**](/reference/ods-api/platform-dev-guide/security/api-claim-sets-resources#authorization-strategies).
+
+## Security Best Practices
+
+When configuring resource authorization:
+
+* Follow the principle of least privilege
+* Regularly review and audit permissions
+* Document authorization decisions
+* Test changes in a non-production environment

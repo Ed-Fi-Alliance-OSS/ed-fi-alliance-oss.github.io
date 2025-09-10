@@ -6,7 +6,9 @@ This is pre-release documentation for software that is not yet available.
 
 :::
 
-The Ed-Fi Admin App allows appropriately permissioned users to manage Vendors and Claimsets for the Ed-Fi Environments or Ed-Fi Tenants owned by their team. These directions outline steps to create and manage both of these resources.
+This guide covers the management of vendors and claimsets in the Ed-Fi Admin App. Vendors represent third-party applications or systems that need access to Ed-Fi API data, while claimsets define the specific permissions granted to those vendors.
+
+The Ed-Fi Admin App allows appropriately permissioned users to manage Vendors and Claimsets for the environments owned by their team. These directions outline steps to create and manage both of these resources.
 
 ## Vendor Creation
 
@@ -18,7 +20,7 @@ The Ed-Fi Admin App allows appropriately permissioned users to manage Vendors an
 
    ![new_vendor.png](https://docs.startingblocks.org/imgs/new_vendor.PNG)
 
-3. After clicking the `+ New` button on the vendors page, a `Create New Vendor` form will pop up on the next page. To create a new vendor in Ed-Fi, you will need to enter the Company name, the Namespace prefix that governs data segmentation in the ODS, a Contact name, and a Contact email address. Your new vendor will be available to use after clicking `Save` on the creation page.
+3. After clicking the `+ New` button on the vendors page, a `Create New Vendor` form will pop up on the next page. To create a new vendor, you will need to enter the Company name, the Namespace prefix that governs data segmentation in the ODS, a Contact name, and a Contact email address. Your new vendor will be available to use after clicking `Save` on the creation page.
 
    ![vendor_creation.gif](https://docs.startingblocks.org/imgs/vendor_creation.gif)
 
@@ -42,25 +44,25 @@ Deleting a vendor will also remove all applications associated with that vendor.
 
 ## Understanding Ed-Fi Components
 
-Before creating applications and managing claimsets, it's important to understand the key components that make up the Ed-Fi framework:
+Before creating applications and managing claimsets, it's important to understand the key components that make up the Ed-Fi API framework:
 
-**ODS:** Operational Data Store. A database that holds operational data for the current school year in Ed-Fi. The data is stored in accordance to Ed-Fi Data Standards.
+**ODS:** Operational Data Store. A database that holds operational data for the current school year in the Ed-Fi API. The data is stored in accordance to Ed-Fi Data Standard.
 
-**Tenant:** A virtual environment that allows for the ability to locally control claimsets, vendors, and applications without impacting other tenants hosted in the same Ed-Fi environment.
+**Tenant:** A virtual environment that allows for the ability to locally control claimsets, vendors, and applications without impacting other tenants hosted in the same Ed-Fi Environment.
 
-**Resource:** Each of the endpoints in the Ed-Fi data API represents a resource. These resources are used by API clients to access domain specific data. These are what API clients interact with to retrieve, update, or manage data.
+**Resource:** Each of the endpoints in the Ed-Fi API represents a resource. These resources are used by API clients to access domain specific data. These are what API clients interact with to retrieve, update, or manage data.
 
-**Vendor:** A named entity that owns multiple applications within the system. They are the main link between applications and namespace prefixes. For example, a vendor in Ed-Fi could be the name of an assessment vendor (e.g. iReady or ACT), or a SIS vendor (e.g. PowerSchool).
+**Vendor:** A named entity that owns multiple applications within the system. They are the main link between applications and namespace prefixes. For example, a vendor could be the name of an assessment vendor (e.g. iReady or ACT), or a SIS vendor (e.g. PowerSchool).
 
 **Application:** A software system or service that integrates with the Ed-Fi ODS/API to exchange educational data. Applications are owned by vendors and are assigned claimsets that define their permissions.
 
-**Claimset:** A collection of permissions (claims) that define what actions an application can perform on specific Ed-Fi resources. Claimsets provide fine-grained control over data access.
+**Claimset:** A collection of permissions (claims) that define what actions an application can perform on specific Ed-Fi Resources. Claimsets provide fine-grained control over data access.
 
 For more detailed information about Ed-Fi security concepts, [**see the documentation here describing the different security concepts in Ed-Fi.**](/reference/ods-api/platform-dev-guide/configuration/single-and-multi-tenant-configuration)
 
 ## Claimset Management
 
-Claimsets are fundamental to Ed-Fi security, defining the specific permissions that applications have when accessing Ed-Fi data. The Admin App provides tools to create, modify, and assign claimsets to applications.
+Claimsets are fundamental to Ed-Fi API security, defining the specific permissions that applications have when accessing an Ed-Fi API. The Admin App provides tools to create, modify, and assign claimsets to applications.
 
 ### Understanding Claims
 
@@ -104,7 +106,7 @@ The Admin App includes several pre-configured claimsets for common integration s
 #### Ed-Fi Sandbox Claimset
 
 - Comprehensive access for testing and development
-- Includes read/write access to most Ed-Fi resources
+- Includes read/write access to most Ed-Fi Resources
 - Should only be used in non-production environments
 
 #### SIS Vendor Claimset

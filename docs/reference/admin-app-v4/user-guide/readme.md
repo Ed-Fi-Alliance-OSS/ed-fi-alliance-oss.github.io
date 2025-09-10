@@ -6,13 +6,15 @@ This is pre-release documentation for software that is not yet available.
 
 :::
 
-This guide will walk you through the initial setup and configuration of the Ed-Fi Admin App.
+The Ed-Fi Admin App is a web-based application that provides administrative capabilities for managing Ed-Fi ODS/API implementations. It allows administrators to configure security, manage vendors, and oversee data access policies.
 
-:::note
-**Team** in Admin App is a collection of owned resources. Most installations will have a single **team** consisting of all environments at the top level, and all the related owned resources therein.
+## Prerequisites
 
-An **environment** is a single deployment of the Ed-Fi ODS/API.
-:::
+Before you begin, ensure you have:
+
+* Access to an Ed-Fi ODS/API instance
+* Appropriate administrative credentials
+* A supported web browser (Chrome, Firefox, Safari, or Edge)
 
 ## Logging in
 
@@ -28,13 +30,21 @@ After a successful login, you will be brought to the Admin App homepage which wi
 
 ![Tenant List](https://docs.startingblocks.org/imgs/tenant_list.png)
 
+:::tip
+
+**Team** in Admin App is a collection of owned resources. Most installations will have a single **team** consisting of all environments at the top level, and all the related owned resources therein.
+
+An **environment** is a single deployment of the Ed-Fi ODS/API.
+
+:::
+
 ## General Overview
 
 On the left hand side, there are two sections to be aware of. At the top of the menu there are high level team-wide resources.
 
-- `Home` - High level overview about Ed-Fi environments within your team's scope. Here you will see the API version and data standard version for each environment.
-- `Account` - Overview of your user team memberships and user role.
-- `Users` - Shows a list of users with access to your team within Admin App.
+* `Home` - High level overview about Ed-Fi environments within your team's scope. Here you will see the API version and data standard version for each environment.
+* `Account` - Overview of your user team memberships and user role.
+* `Users` - Shows a list of users with access to your team within Admin App.
 
 ![Top Left Navigation](https://docs.startingblocks.org/imgs/top_left_nav.png)
 
@@ -78,8 +88,8 @@ Users are able to create application credentials through Admin App.
 
 6. After clicking `Save` on the application creation page, a card will pop up to notify you that new credentials have been generated for the application. Depending on your configuration, either:
 
-   - The new credentials will display on the screen, or
-   - The screen will have a generated link that can be shared with whomever needs the credentials. **It is a one time access link so it's important that the API credentials are saved to a local password manager to be retrieved later or entered straight into the integrating system.**
+   * The new credentials will display on the screen, or
+   * The screen will have a generated link that can be shared with whomever needs the credentials. **It is a one time access link so it's important that the API credentials are saved to a local password manager to be retrieved later or entered straight into the integrating system.**
 
 ## Managing Application Credentials
 
@@ -93,10 +103,21 @@ Admin App users are also able to delete or reset existing application credential
 4. Resetting credentials will take you to that application's details page and a new pop-up card with the One Time Share (OTS) link will appear like when first creating the application.
 5. Clicking delete for the application, the user will be faced with a confirmation prompt to make sure the user is sure of their choice. Hitting `Yes` will remove the application from the table and also the environment.
 
+## Troubleshooting
+
+If you encounter issues during setup:
+
+1. Verify your network connectivity
+2. Check your credentials
+3. Ensure the Ed-Fi ODS/API is accessible
+4. Review the Admin App logs for error messages
+
+For additional support, consult your system administrator or refer to the Ed-Fi community resources.
+
 ## Next Steps
 
 See the following pages for more detailed guidance on special topics.
 
-- [Resource Authorization and Admin App](./resource-authorization.md)
-- [Tenant and ODS Management in Admin App](./tenant-and-ods.md)
-- [Vendor and Claimset Management](./vendors-and-claimsets.md)
+* [Resource Authorization and Admin App](./resource-authorization.md)
+* [Tenant and ODS Management in Admin App](./tenant-and-ods.md)
+* [Vendor and Claimset Management](./vendors-and-claimsets.md)

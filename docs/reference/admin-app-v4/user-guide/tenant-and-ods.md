@@ -1,5 +1,4 @@
-<!-- # Tenant and ODS Management in Admin App -->
-# Tenant and ODS Management in Admin App
+# ODS Instance and Tenant Management in Admin App
 
 :::warning
 
@@ -7,11 +6,36 @@ This is pre-release documentation for software that is not yet available.
 
 :::
 
-Ed-Fi version 7.1 and later support the creation of Ed-Fi Tenants. These tenants are isolated "virtual environments" that allow Ed-Fi users the ability to locally control things like claimsets, vendors, and applications without impacting other tenants hosted in the same Ed-Fi environment. The Ed-Fi Admin App allows for users to manage tenants and ODSs within their team's scope in the Admin App.
+This guide covers the creation and management of tenants and Operational Data Store (ODS) instances using the Ed-Fi Admin App. Proper tenant and ODS instance management is essential for multi-tenant Ed-Fi ODS/API implementations.
 
-[**Please find more information about Multi-Tenancy in Ed-Fi here**](/reference/ods-api/platform-dev-guide/configuration/single-and-multi-tenant-configuration)
+## Understanding ODS Instance and Tenants
 
-Below is a diagram pulled from the Ed-Fi tech docs page above depicting how routing works in a multi-tenant environment:
+### Operational Data Store (ODS) Instances
+
+The ODS is the central data repository that stores educational data. In multi-tenant scenarios, each tenant typically has its own dedicated ODS instance or shares an ODS with data isolation.
+
+At the database level, a single pairing of `EdFi_Admin` and `EdFi_Security` databases can support one more instances of the `EdFi_Ods` database.
+
+### Mult-Tenancy
+
+:::tip
+
+Multi-tenancy was introduced in ODS/API 7.1. This section does not apply to prior versions of the ODS/API
+
+Fore more information, see [Single and Multi-Tenant Configuration](/reference/ods-api/platform-dev-guide/configuration/single-and-multi-tenant-configuration).
+
+:::
+
+In the Ed-Fi Technology Suite, a tenant represents an isolated environment for a specific organization or group. Each tenant has its own:
+
+- Data isolation
+- Security boundaries
+- Configuration settings
+- User access controls
+
+These tenants are isolated "virtual environments" that allow users the ability to locally control things like claimsets, vendors, and applications without impacting other tenants hosted in the same environment. At the database level, each tenant has a separate pairing of the `EdFi_Admin` and `EdFi_Security` databases, thus isolating the security settings at the tenant level.
+
+The diagram below depicts how an API client is routed to the correct ODS instance:
 
 ![multi_tenant_routing.png](https://docs.startingblocks.org/imgs/multi_tenant_routing.PNG)
 
@@ -47,13 +71,13 @@ If you add additional tenants to a multi-tenant ODS/API 7.x installation _after_
 Deleting a tenant is a permanent action that will remove all associated data, vendors, claimsets, and applications. Ensure you have proper backups and approval before proceeding with tenant deletion.
 ::: -->
 
-## ODS Management
+## ODS Instance Management
 
-An Operational Data Store (ODS) is a database that holds operational data for the current school year in Ed-Fi. The data is stored in accordance to Ed-Fi Data Standards. In multi-tenant environments, each tenant can have its own dedicated ODS or share an ODS with other tenants.
+An Operational Data Store (ODS) is a database that holds operational data for the current school year in the Ed-Fi API. The data is stored in accordance to Ed-Fi Data Standard. In multi-tenant environments, each tenant can have its own dedicated ODS or share an ODS with other tenants.
 
 ### Creating and Managing ODS Instances
 
-1. Navigate to your Ed-Fi environment and select the appropriate tenant.
+1. Navigate to your environment and select the appropriate tenant.
 
 2. Within the tenant, locate the ODS section where you can view existing ODS instances.
 
@@ -63,7 +87,7 @@ An Operational Data Store (ODS) is a database that holds operational data for th
    - **ODS Name**: Provide a descriptive name for the ODS instance
    - **Database Configuration**: Set up connection parameters and database settings
    - **Academic Year**: Specify the academic year this ODS will serve
-   - **Data Standards Version**: Select the appropriate Ed-Fi Data Standards version
+   - **Data Standards Version**: Select the appropriate Ed-Fi Data Standard version
 
 5. Review and save your ODS configuration.
 
@@ -80,7 +104,7 @@ When creating multiple ODS instances, consider your data archival strategy and e
 
 ## Multi-Tenant Architecture Benefits
 
-Using the multi-tenant architecture in Ed-Fi provides several advantages:
+Using the multi-tenant architecture provides several advantages:
 
 - **Data Isolation**: Each tenant operates independently with its own data boundaries
 - **Scalability**: Resources can be allocated based on individual tenant needs
@@ -116,9 +140,9 @@ Using the multi-tenant architecture in Ed-Fi provides several advantages:
 
 For additional assistance with tenant and ODS management:
 
-- Consult the Ed-Fi technical documentation
+- Review system logs and error messages
 - Review the multi-tenancy implementation guide
 - Contact your system administrator for environment-specific issues
-- Engage with the Ed-Fi community for best practices and troubleshooting tips
+- Engage with the Ed-Fi Community for best practices and troubleshooting tips
 
 Proper tenant and ODS management ensures secure, scalable, and efficient operation of your Ed-Fi implementation across multiple organizational units or environments.
