@@ -819,7 +819,7 @@ export default {
       verifyingAgencies: ['Fullerton School District', 'New Caney ISD'],
       versionCompatibility: 'Ed-Fi ODS API for v2.5 and v3.x',
       availability:
-        'Available to states (SEAs) and school districts (LEAs) using Ed-Fi technology.',
+        'Available to states (SEAs) and school districts (LEAs) using Ed-Fi Technology Suite.',
       documentation: {
         Mappings:
           'https://edfi.atlassian.net/wiki/download/attachments/20611183/AB%20Connect%20-%20API%20Provider%20Badge%20-%20Data%20Mapping.xlsx?version=2&modificationDate=1597692936440&cacheVersion=1&api=v2',

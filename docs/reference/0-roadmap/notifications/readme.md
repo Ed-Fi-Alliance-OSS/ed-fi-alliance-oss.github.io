@@ -17,7 +17,7 @@ lines are retired.
   It will be updated to .NET 8 all all NuGet package dependencies will be
   brought up to date. But there will be no new features, and it will not become
   compatible with Ed-Fi ODS/API 7.x.
-* A product line that is still a core part of the Ed-Fi technology offering may
+* A product line that is still a core part of the Ed-Fi Technology Suite offering may
   remain fully supported while older versions eventually fall out of support,
   for example in 2023, we ended support for Ed-Fi ODS/API versions less than
   5.3.
@@ -54,7 +54,7 @@ support.
   * This may not be possible if the product repository still has supported
     versions.
 * The Alliance will stop monitoring codebases and running processes designed to
-  monitor security and vulnerability of Ed-Fi products.
+  monitor security and vulnerability of Ed-Fi Technology Suite.
 * The Alliance may withdraw or change training content that includes references
   to out-of-support products.
 * Alliance help desk services will not provide support for installation,

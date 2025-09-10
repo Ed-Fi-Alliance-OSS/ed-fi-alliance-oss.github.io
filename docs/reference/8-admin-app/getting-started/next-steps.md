@@ -12,7 +12,7 @@ After installation, consider exploring the Admin App itself:
   installed the Admin App for a new, empty ODS / API, this provides you with an
   easy setup. If your Admin App is pointing to an existing ODS / API, you can
   confirm that the education organization information is as you expect.
-* **Review Ed-Fi Descriptors.** Ed-Fi technology allows you to configure value
+* **Review Ed-Fi Descriptors.** Ed-Fi Technology Suite allows you to configure value
   lists (i.e., code sets) specific to your context using Ed-Fi Descriptors. You
   can review Descriptors in the Admin App to make sure the as-shipped ODS / API
   contains values appropriate for your environment.
