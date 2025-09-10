@@ -12,12 +12,6 @@ The ODS Migration Utility is a command-line tool built to upgrade the schema of 
 
 It currently supports data migration from [Ed-Fi Data Standard v2.0](https://edfi.atlassian.net/wiki/display/EFDS20/) and [Ed-Fi Data Standard v2.2](https://edfi.atlassian.net/wiki/display/EFDS22/) to [Ed-Fi Data Standard v3.3](/reference/data-exchange/data-standard/3/). The utility has out-of-the-box support for migrating an as-shipped ODS to the latest version. With additional customized scripting, the Migration Utility can be easily adapted and used to migrate extended ODS instances. ODS shared instances may take advantage of this utility. For year-specific instances, migration may not be a concern as a new ODS is created at the beginning of every school year.
 
-### Contents
-
-1. [Usage Scenarios](#usage-scenarios)
-2. [Developer Quick Start](#developer-quick-start)
-3. [Usage Walkthrough](#usage-walkthrough)
-
 ## Usage Scenarios
 
 The following table summarizes the supported scenarios for the migration utility:
