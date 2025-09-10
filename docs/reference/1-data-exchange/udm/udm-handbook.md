@@ -1,11 +1,11 @@
 # Unifying Data Model - Handbook
 
 The Ed-Fi Unifying Data Model Handbook is a searchable reference that includes
-definitions for every entity and element in the Ed-Fi Data Model. The UDM
+definitions for every entity and element in the Ed-Fi Unifying Data Model. The UDM
 Handbook complements the visual UDM diagrams by providing detailed type
 specifications, cardinality, usage, an XSD (normative) and SQL (non-normative)
 expression, and other information about the elements and entities that make up
-the Ed-Fi Data Model.
+the Ed-Fi Unifying Data Model.
 
 * [Handbook for v5.1](https://edfidocs.blob.core.windows.net/$web/handbook/v5.1/index.html)
 * [Handbook for v5.0](https://edfidocs.blob.core.windows.net/$web/handbook/v5.0/index.html)

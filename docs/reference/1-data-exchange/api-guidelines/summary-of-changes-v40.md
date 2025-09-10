@@ -4,7 +4,7 @@
 
 This document describes a set of proposed changes to replace the _Ed-Fi API Design & Implementation Guidelines_ v3.1.
 
-The Ed-Fi API Design & Implementation Guidelines (herein after referred to as the "Guidelines") describe requirements for an Ed-Fi representational state transfer (REST) application programming interface (API). The Guidelines describe the properties to which an API specification and related implementation must adhere in order to be considered aligned to Ed-Fi technology standards. They do not describe a specific implementation technology.
+The Ed-Fi API Design & Implementation Guidelines (herein after referred to as the "Guidelines") describe requirements for an Ed-Fi representational state transfer (REST) application programming interface (API). The Guidelines describe the properties to which an API specification and related implementation must adhere in order to be considered aligned to Ed-Fi Technology Suite standards. They do not describe a specific implementation technology.
 
 These changes are intended to ensure the establishment of API standards that can be relied upon when building or using an Ed-Fi compliant API, allowing client applications to interoperate with _any_ Ed-Fi API with minimal friction.
 
@@ -66,4 +66,4 @@ Ed-Fi API applications are intended for use by systems, not end users. Therefore
 * External User Authorization
 * Internal User Authorization
 
-The Bulk Operations section has also been removed, as it was a feature of a particular application, and not a prescribed part of the Ed-Fi API Standards.
+The Bulk Operations section has also been removed, as it was a feature of a particular application, and not a prescribed part of the Ed-Fi API Specifications.

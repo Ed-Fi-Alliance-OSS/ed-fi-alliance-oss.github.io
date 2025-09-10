@@ -15,13 +15,13 @@ The API extension patterns and other relevant information are covered below.
 
 ## Why Make an API Extensible?
 
-Extensibility is the opposite of standardization, so why support it in the Ed-Fi technology? There are a couple of reasons.
+Extensibility is the opposite of standardization, so why support it in the Ed-Fi Technology Suite? There are a couple of reasons.
 
 First, the capability has been critical to many field use cases, such as mandated compliance reporting. In such cases, an education agency is often mandated to collect state-specific indicators that are not in wide use elsewhere in K-12 or applicable in other contexts. In such cases, extensibility has proven critical to allowing adaptation to local requirements and conditions.
 
 Some may complain that by definition such projects are "non-standardized" and therefore don't support interoperability. That position takes a very "all-or-nothing" approach to interoperability. In our view, extensibility allows an agency to be interoperable where it can, and customize where it is mandated to do so and where collaboration cannot or should not occur.
 
-Second, extensibility allows for experimentation on new APIs by using the Ed-Fi technology stack. By allowing for extensibility, the community is able to try out proposed revisions of API models and data exchanges through those. Such information can then be used to inform discussions about "what really works" – too often, discussions about the best designs are overly theoretical and disconnected from actual practice.
+Second, extensibility allows for experimentation on new APIs by using the Ed-Fi Technology Suite stack. By allowing for extensibility, the community is able to try out proposed revisions of API models and data exchanges through those. Such information can then be used to inform discussions about "what really works" – too often, discussions about the best designs are overly theoretical and disconnected from actual practice.
 
 Extensibility is a power that is not to be used lightly. Used incorrectly, extensibility is a means of fragmenting the ecosystem in ways that harm the overall goal of interoperability. But handled correctly as a community, customization is an opportunity for further exploration and evolution of the Ed-Fi Data Standard.
 
