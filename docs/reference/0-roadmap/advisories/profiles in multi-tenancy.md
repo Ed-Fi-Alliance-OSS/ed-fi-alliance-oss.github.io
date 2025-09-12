@@ -42,7 +42,7 @@ NuGet Packages
 
 * 7.1:
   * [EdFi.Suite3.Ods.WebApi for DS
-    4](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Ods.WebApi.Standard.4.0.0/versions/7.1.3646)
+    4](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Ods.WebApi.Standard.4.0.0/overview/7.1.3646)
   * [EdFi.Suite3.Ods.WebApi for DS
     5](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Ods.WebApi.Standard.5.0.0/overview/7.1.3646)
 * 7.2:
@@ -52,9 +52,9 @@ NuGet Packages
     5](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Ods.WebApi.Standard.5.1.0/overview/7.2.2682)
 * 7.3:
   * [EdFi.Suite3.Ods.WebApi for DS
-    4](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Ods.WebApi.Standard.4.0.0/overview/7.3.1574)
+    4](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Ods.WebApi.Standard.4.0.0/overview/7.3.2041)
   * [EdFi.Suite3.Ods.WebApi for DS
-    5](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Ods.WebApi.Standard.5.2.0/overview/7.3.1574)
+    5](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Ods.WebApi.Standard.5.2.0/overview/7.3.2041)
 
 Source code branches
 
@@ -65,8 +65,8 @@ Source code branches
   * [Ed-Fi-ODS](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v7.2-patch2),
   * [Ed-Fi-ODS-Implementation](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/tree/v7.2-patch2)
 * 7.3:
-  * [Ed-Fi-ODS](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v7.3-patch1),
-  * [Ed-Fi-ODS-Implementation](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/tree/v7.3-patch1)
+  * [Ed-Fi-ODS](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v7.3-patch2),
+  * [Ed-Fi-ODS-Implementation](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/tree/v7.3-patch2)
 
 When using NuGet packages, you can rename the download, changing the extension
 ".nupkg" to ".zip", then open the zip file. Extract the DLL files and copy them
