@@ -20,12 +20,19 @@ the Git commit history to find the changes for that specific update.
 ### Bug Fixes
 
 * ODS-6663 - Fixed API rejection of EdOrgId values with leading zeros.
+
 * ODS-6675 - Ensured cascading key changes update LastModifiedDate in dependent tables.
+
 * ODS-6681 - Corrected stale data detection after key changes on resources.
+
 * ODS-6682 - Resolved unresolvable links caused by key unification in resource child item references.
+
 * ODS-6684 - Fixed ProblemDetails response construction failure in edge-case extension scenarios.
+
 * ODS-6685 - Improved error messaging in GetPackedHash when input is not Base64 encoded.
+
 * ODS-6697 - Added fallback option for whitespace validation in required string fields.
+
 * ODS-6700 - Prevented exception logging when token authentication fails due to expiration.
 
 ## Ed-Fi ODS / API v7.3-patch1 - Release Notes
@@ -37,6 +44,7 @@ the Git commit history to find the changes for that specific update.
 ### Bug Fixes
 
 * ODS-6602 - API only allows tenant1's profiles when different profiles are set up for different tenants
+
 * ODS-6613 - Deserialization fails when a model extension introduces an entity extension after the resource has been created
 
 ## Ed-Fi ODS / API v7.3 - Release Notes
