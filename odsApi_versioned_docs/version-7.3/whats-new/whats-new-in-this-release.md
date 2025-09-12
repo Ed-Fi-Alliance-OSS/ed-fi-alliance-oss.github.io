@@ -88,6 +88,12 @@ to [MetaEd IDE v4.5](/reference/metaed). Refer to [MetaEd 4.5 What's
 New](/reference/metaed/releases/4.5.0) for details on latest updates and
 improvements.
 
+### Configuration Updates
+
+There are updates to the configuration settings in this release. New entries are
+marked with 🆕 icon in the [Configuration
+Details](./../platform-dev-guide/configuration/configuration-details) page.
+
 ## Improvements & Enhancements - Previous v7.x
 
 Refer to [What's New in Previous v7.x
