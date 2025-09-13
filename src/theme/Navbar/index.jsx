@@ -1,6 +1,7 @@
 import React from 'react';
 import OriginalNavbar from '@theme-original/Navbar';
 import styles from './styles.module.css';
+import PrimaryNav from './PrimaryNav';
 
 export default function Navbar(props) {
   return (
@@ -32,7 +33,9 @@ export default function Navbar(props) {
           </div>
         </div>
       </div>
-      <OriginalNavbar {...props} />
+      <PrimaryNav />
+      {/* Original Navbar kept only for mobile (hidden on desktop via CSS override below) */}
+      <div className={styles.mobileOnly}> <OriginalNavbar {...props} /> </div>
     </>
   );
 }

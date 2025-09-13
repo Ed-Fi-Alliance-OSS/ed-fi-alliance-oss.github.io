@@ -78,6 +78,15 @@ nav.navbar--fixed-top {
   top: 36px;
 }
 
+/* Hide original navbar on desktop, show on smaller screens */
+.mobileOnly { display:none; }
+@media (max-width:1100px) {
+  .mobileOnly { display:block; }
+}
+@media (min-width:1101px) {
+  nav.navbar { display:none; }
+}
+
 @media (max-width: 768px) {
   .topBar {
     height: 32px;
