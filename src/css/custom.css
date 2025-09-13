@@ -157,3 +157,252 @@ iframe {
   color: var(--ifm-font-color-base);
   margin: var(--ifm-spacing-vertical);
 }
+
+/* ------------------------------------------------------------
+   Sidebar Navigation (Left Doc Tree) Design Refresh
+   Goals based on provided mockups:
+   - Clear active + hover states (top-level deep navy, nested subtle highlight)
+   - Visual tree using vertical + horizontal connector lines
+   - Rotating disclosure (caret) inside circular pill; filled + rotated when open
+   - Adjusted typography (weight + size by depth)
+   - Consistent spacing / padding tokens
+   - Easy theming via CSS variables (light + dark)
+------------------------------------------------------------- */
+
+:root {
+  /* Sidebar palette (light) */
+  --ef-sb-bg: #ffffff;
+  --ef-sb-color: #0c3d8a; /* base link */
+  --ef-sb-color-sub: #244f92; /* nested link */
+  --ef-sb-color-active: #ffffff;
+  --ef-sb-color-hover: #082b62;
+  --ef-sb-top-active-bg: #003582; /* active top-level background */
+  --ef-sb-hover-bg: #f1f5fb; /* hover row */
+  --ef-sb-active-leaf-bg: #e6eef9; /* active leaf subtle */
+  --ef-sb-section-bg: #f1f5fb; /* expanded section container */
+  --ef-sb-border: #d6dbe3; /* connector lines */
+  --ef-sb-caret-bg: #e3ecf7;
+  --ef-sb-caret-active-bg: #0c3d8a;
+  --ef-sb-caret-color: #0c3d8a;
+  --ef-sb-caret-color-active: #ffffff;
+  --ef-sb-radius: 4px;
+  --ef-sb-transition: 120ms ease-in-out;
+  /* Reduced all fonts ~1pt (approx 0.05rem) per request */
+  --ef-sb-top-font: 0.9rem;
+  --ef-sb-sub-font: 0.8rem;
+  --ef-sb-subsub-font: 0.75rem;
+  --ef-sb-indent: 0.75rem;
+}
+
+[data-theme='dark'] {
+  --ef-sb-bg: #111722;
+  --ef-sb-color: #c7d9f6;
+  --ef-sb-color-sub: #b3c9ee;
+  --ef-sb-color-active: #ffffff;
+  --ef-sb-color-hover: #ffffff;
+  --ef-sb-top-active-bg: #254982;
+  --ef-sb-hover-bg: #1d2836;
+  --ef-sb-active-leaf-bg: #2a3950;
+  --ef-sb-section-bg: #1d2836;
+  --ef-sb-border: #33455f;
+  --ef-sb-caret-bg: #2d3f58;
+  --ef-sb-caret-active-bg: #4d6da5;
+  --ef-sb-caret-color: #c7d9f6;
+  --ef-sb-caret-color-active: #ffffff;
+}
+
+/* Base container */
+.theme-doc-sidebar-menu { background: var(--ef-sb-bg); }
+
+/* Reset default excessive spacing to gain tighter tree */
+.theme-doc-sidebar-menu .menu__list { padding-left: 0; }
+
+/* TOP-LEVEL ITEMS */
+.theme-doc-sidebar-menu > .menu__list > .menu__list-item > .menu__link {
+  font-size: var(--ef-sb-top-font);
+  font-weight: 600;
+  color: var(--ef-sb-color);
+  padding: 1rem 1.1rem; /* taller & more block-like */
+  margin: 0 0 0.4rem; /* more vertical separation */
+  border-radius: var(--ef-sb-radius);
+  line-height: 1.25;
+  transition: background var(--ef-sb-transition), color var(--ef-sb-transition);
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Active top-level */
+.theme-doc-sidebar-menu > .menu__list > .menu__list-item > .menu__link.menu__link--active,
+.theme-doc-sidebar-menu > .menu__list > .menu__list-item > .menu__link[aria-current='page'],
+.theme-doc-sidebar-menu > .menu__list > .menu__list-item > .menu__link.menu__link--sublist[aria-expanded='true'] {
+  background: var(--ef-sb-top-active-bg);
+  color: var(--ef-sb-color-active);
+}
+
+/* Hover top-level */
+.theme-doc-sidebar-menu > .menu__list > .menu__list-item > .menu__link:hover { background: var(--ef-sb-hover-bg); }
+
+/* SECOND LEVEL LISTS */
+.theme-doc-sidebar-menu > .menu__list > .menu__list-item > ul.menu__list {
+  margin: 0 0 0 0.25rem;
+  padding: 0 0 0 calc(var(--ef-sb-indent));
+  position: relative;
+}
+
+/* Vertical connector for nested groups */
+.theme-doc-sidebar-menu > .menu__list > .menu__list-item > ul.menu__list::before,
+.theme-doc-sidebar-menu ul.menu__list ul.menu__list ul.menu__list::before {
+  content: '';
+  position: absolute;
+  top: 0.6rem;
+  bottom: 0.6rem;
+  left: calc(var(--ef-sb-indent) * -0.5);
+  width: 1px;
+  background: var(--ef-sb-border);
+}
+
+/* Horizontal connectors for each nested item */
+.theme-doc-sidebar-menu ul.menu__list ul.menu__list > .menu__list-item { position: relative; }
+.theme-doc-sidebar-menu ul.menu__list ul.menu__list > .menu__list-item::before {
+  content: '';
+  position: absolute;
+  top: 1.2em; /* adjust for increased padding */
+  left: calc(var(--ef-sb-indent) * -0.5);
+  width: calc(var(--ef-sb-indent) * 0.5 - 1px);
+  height: 1px;
+  background: var(--ef-sb-border);
+}
+
+/* Trim vertical line after last child */
+.theme-doc-sidebar-menu ul.menu__list ul.menu__list > .menu__list-item:last-child::after {
+  content: '';
+  position: absolute;
+  left: calc(var(--ef-sb-indent) * -0.5);
+  bottom: 0;
+  width: 1px;
+  height: calc(100% - 1.1em);
+  background: var(--ef-sb-bg);
+}
+
+/* SECOND LEVEL LINKS */
+.theme-doc-sidebar-menu ul.menu__list ul.menu__list > .menu__list-item > .menu__link {
+  font-size: var(--ef-sb-sub-font);
+  font-weight: 500;
+  color: var(--ef-sb-color-sub);
+  padding: 0.7rem 0.85rem 0.7rem 0.65rem; /* increased height & separation */
+  margin: 0.15rem 0.35rem;
+  border-radius: var(--ef-sb-radius);
+  transition: background var(--ef-sb-transition), color var(--ef-sb-transition);
+  display: flex;
+  align-items: center;
+}
+
+/* THIRD+ LEVEL LINKS */
+.theme-doc-sidebar-menu ul.menu__list ul.menu__list ul.menu__list > .menu__list-item > .menu__link {
+  font-size: var(--ef-sb-subsub-font);
+  font-weight: 500;
+  opacity: 0.9;
+  padding: 0.6rem 0.7rem 0.6rem 0.5rem; /* increased height */
+  display: flex;
+  align-items: center;
+}
+
+/* Hover + focus states */
+.theme-doc-sidebar-menu .menu__link:hover,
+.theme-doc-sidebar-menu .menu__link:focus-visible { background: var(--ef-sb-hover-bg); text-decoration: none; }
+
+/* Active leaf (non top-level) */
+.theme-doc-sidebar-menu .menu__link.menu__link--active:not(.theme-doc-sidebar-menu > .menu__list > .menu__list-item > .menu__link),
+.theme-doc-sidebar-menu .menu__link[aria-current='page']:not(.theme-doc-sidebar-menu > .menu__list > .menu__list-item > .menu__link) {
+  background: var(--ef-sb-active-leaf-bg);
+  color: var(--ef-sb-color-hover);
+  font-weight: 600;
+}
+
+/* CARET (disclosure button) */
+.theme-doc-sidebar-menu .menu__list-item-collapsible { display: flex; align-items: center; }
+.theme-doc-sidebar-menu .menu__caret {
+  width: 1.3rem; /* reduced */
+  height: 1.3rem;
+  margin-left: auto;
+  border-radius: 50%;
+  background: var(--ef-sb-caret-bg);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: background var(--ef-sb-transition), transform var(--ef-sb-transition), color var(--ef-sb-transition);
+  color: var(--ef-sb-caret-color);
+  border: none;
+}
+/* Chevron: thinner look while still visible */
+.theme-doc-sidebar-menu .menu__caret::before {
+  content: '';
+  width: 0.45rem;
+  height: 0.45rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(-45deg); /* right */
+  transition: transform var(--ef-sb-transition);
+  display: block;
+  margin-left: 1px;
+}
+.theme-doc-sidebar-menu .menu__caret[aria-expanded='true'] { background: var(--ef-sb-caret-active-bg); color: var(--ef-sb-caret-color-active); }
+.theme-doc-sidebar-menu .menu__caret[aria-expanded='true']::before { transform: rotate(45deg); /* down */ }
+
+/* When parent is active, also reflect active styling for caret */
+.theme-doc-sidebar-menu .menu__link.menu__link--active + .menu__caret,
+.theme-doc-sidebar-menu .menu__link[aria-current='page'] + .menu__caret { background: var(--ef-sb-caret-active-bg); color: var(--ef-sb-caret-color-active); }
+
+/* Improve hit area for links */
+.theme-doc-sidebar-menu .menu__link { position: relative; }
+.theme-doc-sidebar-menu .menu__link:focus-visible { outline: 2px solid var(--ifm-color-primary); outline-offset: 2px; }
+
+/* Compact spacing inside nested lists */
+.theme-doc-sidebar-menu ul.menu__list ul.menu__list { margin-top: 0.15rem; margin-bottom: 0.35rem; }
+
+/* Remove default underline on hover (ensures clean block highlight) */
+.theme-doc-sidebar-menu .menu__link:hover { text-decoration: none; }
+
+/* Scrollbar subtle styling within sidebar (if overflow) */
+/* Hide scrollbar while still scrollable (cover additional wrappers) */
+.theme-doc-sidebar-menu,
+.theme-doc-sidebar-container,
+.menu.thin-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+.theme-doc-sidebar-menu::-webkit-scrollbar,
+.theme-doc-sidebar-container::-webkit-scrollbar,
+.menu.thin-scrollbar::-webkit-scrollbar { width: 0 !important; height: 0 !important; display: none; }
+.theme-doc-sidebar-menu::-webkit-scrollbar-track,
+.theme-doc-sidebar-container::-webkit-scrollbar-track,
+.menu.thin-scrollbar::-webkit-scrollbar-track { background: transparent; }
+.theme-doc-sidebar-menu::-webkit-scrollbar-thumb,
+.theme-doc-sidebar-container::-webkit-scrollbar-thumb,
+.menu.thin-scrollbar::-webkit-scrollbar-thumb { background: transparent; }
+[data-theme='dark'] .theme-doc-sidebar-menu::-webkit-scrollbar-thumb { background: transparent; }
+
+/* Expanded section group background (parent + its list) */
+.theme-doc-sidebar-menu > .menu__list > .menu__list-item:not(.menu__list-item--collapsed) > .menu__link.menu__link--sublist {
+  background: var(--ef-sb-top-active-bg);
+  color: var(--ef-sb-color-active);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.theme-doc-sidebar-menu > .menu__list > .menu__list-item:not(.menu__list-item--collapsed) > ul.menu__list {
+  background: var(--ef-sb-section-bg);
+  border-radius: 0 0 var(--ef-sb-radius) var(--ef-sb-radius);
+  padding-bottom: 0.35rem;
+  padding-top: 0.15rem;
+}
+
+/* Ensure nested list background doesn't override active leaf emphasis */
+.theme-doc-sidebar-menu > .menu__list > .menu__list-item:not(.menu__list-item--collapsed) > ul.menu__list .menu__link.menu__link--active {
+  background: var(--ef-sb-active-leaf-bg);
+}
+
+@media (max-width: 996px) {
+  /* Slightly larger touch targets on mobile */
+  .theme-doc-sidebar-menu > .menu__list > .menu__list-item > .menu__link { padding: 1.05rem 1.15rem; }
+  .theme-doc-sidebar-menu .menu__caret { width: 1.45rem; height: 1.45rem; }
+}
+
