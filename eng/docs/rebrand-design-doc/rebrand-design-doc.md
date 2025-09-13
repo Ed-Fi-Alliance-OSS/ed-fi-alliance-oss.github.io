@@ -119,9 +119,18 @@ After building, a static, servable version of the website is available, at which
 
 ### User Acceptance Testing
 
+User acceptance testing involves walking through CUJ's to ensure that the expected conditions meet the test criteria.
+
+- Search Blog
+- Search Reference
+- Search the DS
+-
+
 ### Snapshot Testing
 
-Ensure individual components render as expected based on inputs received. This will allow components to be treated as libraries and tested individually of the
+Ensure individual components render as expected based on inputs received. This will allow components to be treated as libraries and tested independently from the integrated portions
+
+WIP
 
 ## Major Milestones
 
