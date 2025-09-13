@@ -225,11 +225,12 @@ iframe {
   padding: 1rem 1.1rem; /* taller & more block-like */
   margin: 0 0 0.4rem; /* more vertical separation */
   border-radius: var(--ef-sb-radius);
-  line-height: 1.25;
-  transition: background var(--ef-sb-transition), color var(--ef-sb-transition);
+  line-height: 1.3; /* slightly improved line height for better readability */
+  transition: background var(--ef-sb-transition), color var(--ef-sb-transition), transform var(--ef-sb-transition);
   position: relative;
   display: flex;
   align-items: center;
+  text-decoration: none;
 }
 
 /* Active top-level */
@@ -293,9 +294,11 @@ iframe {
   padding: 0.7rem 0.85rem 0.7rem 0.65rem; /* increased height & separation */
   margin: 0.15rem 0.35rem;
   border-radius: var(--ef-sb-radius);
-  transition: background var(--ef-sb-transition), color var(--ef-sb-transition);
+  line-height: 1.35; /* improved line height for secondary items */
+  transition: background var(--ef-sb-transition), color var(--ef-sb-transition), transform var(--ef-sb-transition);
   display: flex;
   align-items: center;
+  text-decoration: none;
 }
 
 /* THIRD+ LEVEL LINKS */
@@ -304,13 +307,20 @@ iframe {
   font-weight: 500;
   opacity: 0.9;
   padding: 0.6rem 0.7rem 0.6rem 0.5rem; /* increased height */
+  line-height: 1.4; /* improved line height for deep nesting */
+  transition: background var(--ef-sb-transition), color var(--ef-sb-transition), transform var(--ef-sb-transition);
   display: flex;
   align-items: center;
+  text-decoration: none;
 }
 
 /* Hover + focus states */
 .theme-doc-sidebar-menu .menu__link:hover,
-.theme-doc-sidebar-menu .menu__link:focus-visible { background: var(--ef-sb-hover-bg); text-decoration: none; }
+.theme-doc-sidebar-menu .menu__link:focus-visible { 
+  background: var(--ef-sb-hover-bg); 
+  text-decoration: none;
+  transform: translateX(2px); /* subtle hover movement for better feedback */
+}
 
 /* Active leaf (non top-level) */
 .theme-doc-sidebar-menu .menu__link.menu__link--active:not(.theme-doc-sidebar-menu > .menu__list > .menu__list-item > .menu__link),
@@ -335,7 +345,16 @@ iframe {
   transition: background var(--ef-sb-transition), transform var(--ef-sb-transition), color var(--ef-sb-transition);
   color: var(--ef-sb-caret-color);
   border: none;
+  cursor: pointer; /* ensure cursor shows as pointer */
 }
+
+/* Enhanced caret hover state */
+.theme-doc-sidebar-menu .menu__caret:hover {
+  background: var(--ef-sb-caret-active-bg);
+  color: var(--ef-sb-caret-color-active);
+  transform: scale(1.05); /* subtle hover animation */
+}
+
 /* Chevron: thinner look while still visible */
 .theme-doc-sidebar-menu .menu__caret::before {
   content: '';
@@ -356,8 +375,17 @@ iframe {
 .theme-doc-sidebar-menu .menu__link[aria-current='page'] + .menu__caret { background: var(--ef-sb-caret-active-bg); color: var(--ef-sb-caret-color-active); }
 
 /* Improve hit area for links */
-.theme-doc-sidebar-menu .menu__link { position: relative; }
-.theme-doc-sidebar-menu .menu__link:focus-visible { outline: 2px solid var(--ifm-color-primary); outline-offset: 2px; }
+.theme-doc-sidebar-menu .menu__link { 
+  position: relative; 
+  text-decoration: none;
+}
+
+/* Enhanced focus state for accessibility */
+.theme-doc-sidebar-menu .menu__link:focus-visible { 
+  outline: 2px solid var(--ifm-color-primary); 
+  outline-offset: 2px; 
+  box-shadow: 0 0 0 4px rgba(160, 41, 140, 0.15); /* subtle glow effect */
+}
 
 /* Compact spacing inside nested lists */
 .theme-doc-sidebar-menu ul.menu__list ul.menu__list { margin-top: 0.15rem; margin-bottom: 0.35rem; }
