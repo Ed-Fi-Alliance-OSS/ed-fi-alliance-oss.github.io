@@ -170,7 +170,8 @@ iframe {
   --edfi-sidebar-leaf-fg: #004c99; /* standard leaf link color */
   --edfi-sidebar-leaf-active-fg: #004c99; /* active leaf text (bold + white bg) */
   --edfi-sidebar-caret-size: 1.25rem;
-  --edfi-sidebar-item-vertical-pad: 0.55rem; /* consistent vertical sizing */
+  --edfi-sidebar-item-vertical-pad: 12px; /* consistent vertical sizing (updated) */
+  --edfi-sidebar-caret-royal: #1d56c9; /* royal blue circle for top-level + active parents */
 }
 
 [data-theme='dark'] {
@@ -185,17 +186,49 @@ iframe {
   padding-top: var(--edfi-sidebar-item-vertical-pad);
   padding-bottom: var(--edfi-sidebar-item-vertical-pad);
   line-height: 1.2;
-  border-radius: 4px;
+  border-radius: 0; /* removed radius */
   transition: background-color .15s ease, color .15s ease;
 }
 
 /* Non-active parent categories (default transparent) */
 .theme-doc-sidebar-item-category > .menu__list-item-collapsible {
   background: transparent;
-  border-radius: 4px;
+  border-radius: 0;
+  padding-top: 12px; /* 12px vertical padding as requested */
+  padding-bottom: 12px; /* 12px vertical padding as requested */
 }
 
-/* Ensure collapsed (non-active) caret has white background (light mode) */
+/* Caret wrapper - creates circular container */
+.theme-doc-sidebar-item-category .menu__caret-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--edfi-sidebar-caret-size);
+  height: var(--edfi-sidebar-caret-size);
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid #d4dbe3;
+}
+
+[data-theme='dark'] .theme-doc-sidebar-item-category .menu__caret-wrapper {
+  background: #1e3a60;
+  border-color: #2c4d78;
+}
+
+/* Button itself - transparent background with arrow centered */
+.theme-doc-sidebar-item-category > .menu__list-item-collapsible .menu__caret-btn {
+  background: transparent !important;
+  border: none;
+  color: var(--edfi-sidebar-leaf-fg);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+/* Legacy caret styling - keeping for backwards compatibility but overridden by wrapper */
 .theme-doc-sidebar-item-category > .menu__list-item-collapsible .menu__caret {
   background: #ffffff;
   color: var(--edfi-sidebar-leaf-fg);
@@ -214,37 +247,86 @@ iframe {
   color: var(--edfi-sidebar-leaf-fg);
 }
 
+[data-theme='dark'] .theme-doc-sidebar-item-category > .menu__list-item-collapsible .menu__caret-btn {
+  color: var(--edfi-sidebar-leaf-fg);
+}
+
 /* Caret icon (triangle) coloring */
 .theme-doc-sidebar-item-category .menu__caret:before {
   border-color: currentColor;
 }
 
-/* Any active category (at any depth) header row */
-.theme-doc-sidebar-item-category:has(> .menu__list-item-collapsible > .menu__link--active) > .menu__list-item-collapsible {
+/* Caret rotation: default points right (collapsed); when the list item is expanded, point down */
+.theme-doc-sidebar-item-category .menu__caret:before {
+  transition: transform .15s ease;
+  transform-origin: center;
+  transform: rotate(0deg); /* right */
+}
+
+/* Active category header row: only apply dark-blue header to top-level categories (level-1) */
+.theme-doc-sidebar-item-category-level-1:has(> .menu__list-item-collapsible > .menu__link--active) > .menu__list-item-collapsible {
   background: var(--edfi-sidebar-active-parent-bg);
   color: #ffffff;
   font-weight: 600; /* bold active parent */
 }
 
-/* Active category link inside header */
-.theme-doc-sidebar-item-category:has(> .menu__list-item-collapsible > .menu__link--active) > .menu__list-item-collapsible > .menu__link {
+/* Active category link inside header (top-level only) */
+.theme-doc-sidebar-item-category-level-1:has(> .menu__list-item-collapsible > .menu__link--active) > .menu__list-item-collapsible > .menu__link {
   color: #ffffff;
 }
 
-/* Active caret styling (blend with dark blue background) */
-.theme-doc-sidebar-item-category:has(> .menu__list-item-collapsible > .menu__link--active) > .menu__list-item-collapsible .menu__caret {
-  background: var(--edfi-sidebar-active-parent-bg);
-  border-color: var(--edfi-sidebar-active-parent-bg);
+/* Active caret wrapper styling (blend with dark blue background) */
+.theme-doc-sidebar-item-category:has(> .menu__list-item-collapsible > .menu__link--active) > .menu__list-item-collapsible .menu__caret-wrapper {
+  background: var(--edfi-sidebar-caret-royal);
+  border-color: var(--edfi-sidebar-caret-royal);
+}
+
+.theme-doc-sidebar-item-category:has(> .menu__list-item-collapsible > .menu__link--active) > .menu__list-item-collapsible .menu__caret-btn {
   color: #ffffff;
+}
+
+/* Legacy: Royal blue circle + white arrow for any active parent (expanded) */
+.theme-doc-sidebar-item-category:has(> .menu__list-item-collapsible > .menu__link--active) > .menu__list-item-collapsible .menu__caret {
+  background: var(--edfi-sidebar-caret-royal);
+  border-color: var(--edfi-sidebar-caret-royal);
+  color: #ffffff;
+}
+
+/* Always display royal blue circular node for top-level category carets (even when not active) */
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible .menu__caret-wrapper {
+  background: var(--edfi-sidebar-caret-royal);
+  border-color: var(--edfi-sidebar-caret-royal);
+  width: calc(var(--edfi-sidebar-caret-size) + 4px);
+  height: calc(var(--edfi-sidebar-caret-size) + 4px);
+}
+
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible .menu__caret-btn {
+  color: #ffffff;
+  font-size: .9rem;
+}
+
+/* Legacy styles for top-level carets */
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible .menu__caret {
+  background: var(--edfi-sidebar-caret-royal);
+  border-color: var(--edfi-sidebar-caret-royal);
+  color: #ffffff;
+  width: calc(var(--edfi-sidebar-caret-size) + 4px);
+  height: calc(var(--edfi-sidebar-caret-size) + 4px);
+  font-size: .9rem;
+}
+
+/* Caret arrow white for level-1 categories */
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible .menu__caret:before {
+  border-color: #ffffff;
 }
 
 /* Top-level active category: group background around its children */
 .theme-doc-sidebar-item-category-level-1:has(> .menu__list-item-collapsible > .menu__link--active) > ul.menu__list {
   background: var(--edfi-sidebar-active-group-bg);
-  margin-top: 4px;
+  margin-top: 0;
   padding: 4px 6px 6px;
-  border-left: 4px solid var(--edfi-sidebar-active-parent-bg);
-  border-radius: 4px;
+  border-left: 2px solid var(--edfi-sidebar-caret-royal);
+  border-radius: 0;
 }
 
 /* Leaf links default (non-active) */
@@ -257,10 +339,11 @@ iframe {
 
 /* Active leaf link */
 .theme-doc-sidebar-item-link .menu__link.menu__link--active {
-  background: #ffffff;
+  background: #ffffff; /* ensure white background for active leaf */
   color: var(--edfi-sidebar-leaf-active-fg);
   font-weight: 600;
-  box-shadow: 0 0 0 1px var(--edfi-sidebar-active-parent-bg) inset;
+  box-shadow: none;
+  border-left: 2px solid var(--edfi-sidebar-caret-royal); /* tree line continuation on link container */
 }
 
 [data-theme='dark'] .theme-doc-sidebar-item-link .menu__link.menu__link--active {
@@ -288,6 +371,11 @@ iframe {
   padding-left: 0.4rem;
 }
 
+/* Add faint left border to all UL menu lists to create a subtle tree-line */
+.theme-doc-sidebar-menu .menu__list {
+  border-left: 1px solid #e6e9ec; /* faint light grey */
+}
+
 /* Compact spacing between category blocks */
 .theme-doc-sidebar-item-category { margin-bottom: 0.25rem; }
 
@@ -308,16 +396,88 @@ iframe {
   font-weight: 600;
 }
 
+/* Ensure nested categories (non level-1) do not get the dark-blue header background
+   even when they contain the active link — only level-1 should get that treatment. */
+.theme-doc-sidebar-item-category:not(.theme-doc-sidebar-item-category-level-1):has(> .menu__list-item-collapsible > .menu__link--active) > .menu__list-item-collapsible {
+  background: transparent;
+  color: var(--edfi-sidebar-leaf-fg);
+  font-weight: 500;
+}
+
+/* Collapsible rows that are not expanded should be transparent with blue text */
+.theme-doc-sidebar-item-category > .menu__list-item-collapsible.menu__list-item--collapsed {
+  background: transparent;
+}
+
+/* Ensure collapsed category header text is blue (not white/dark-blue) */
+.theme-doc-sidebar-item-category > .menu__list-item-collapsible.menu__list-item--collapsed > .menu__link {
+  color: var(--edfi-sidebar-leaf-fg);
+  background: transparent;
+  font-weight: 500;
+}
+
 /* Fallback: style active top-level category header even if :has unsupported */
 .theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link.menu__link--active {
   background: var(--edfi-sidebar-active-parent-bg);
   color: #ffffff;
-  border-radius: 4px;
+  border-radius: 0;
+  border-left: 2px solid var(--edfi-sidebar-caret-royal);
 }
 
-.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link.menu__link--active .menu__caret {
-  background: var(--edfi-sidebar-active-parent-bg);
-  border-color: var(--edfi-sidebar-active-parent-bg);
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link.menu__link--active .menu__caret-wrapper .menu__caret-btn {
   color: #ffffff;
+}
+
+/* New caret wrapper & button styling */
+.menu__caret-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(var(--edfi-sidebar-caret-size) + 8px);
+  height: calc(var(--edfi-sidebar-caret-size) + 8px);
+  background: var(--edfi-sidebar-caret-royal);
+  border-radius: 50%;
+  margin-left: 6px;
+  flex-shrink: 0;
+}
+
+.menu__caret-wrapper--active { background: var(--edfi-sidebar-caret-royal); }
+
+.menu__caret-btn {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  position: relative;
+  cursor: pointer;
+}
+
+/* Create arrow using pseudo element */
+    .menu__caret-btn:before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 0;
+      height: 0;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-left: 7px solid currentColor; /* right-pointing triangle */
+      transform: translate(-50%, -50%) rotate(0deg);
+      transform-origin: center;
+      transition: transform .15s ease, border-left-color .15s ease;
+      display: block;
+    }
+
+    /* Expanded (rotate arrow to point down) - use aria-expanded on the button to control state */
+    .menu__caret-btn[aria-expanded='true']:before {
+      transform: translate(-50%, -50%) rotate(90deg); /* down arrow */
+    }
+
+/* Provide spacing so border-left tree line doesn't overlap text */
+.theme-doc-sidebar-item-link .menu__link.menu__link--active,
+.theme-doc-sidebar-item-category:has(> .menu__list-item-collapsible > .menu__link--active) > .menu__list-item-collapsible,
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link.menu__link--active {
+  padding-left: 0.75rem;
 }
 
