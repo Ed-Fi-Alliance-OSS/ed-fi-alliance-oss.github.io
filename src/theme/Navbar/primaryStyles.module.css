@@ -1,7 +1,7 @@
 /* Primary (second layer) navigation bar redesign */
 
 :root {
-  --primary-nav-height: 76px;
+  --primary-nav-height: 92px; /* Increased ~20% */
   --primary-accent: #0433c7;
   --primary-divider-color: #E1E5EE;
   --primary-search-bg: #FFFFFF;
@@ -41,58 +41,62 @@
 }
 
 .inner {
-  max-width: 1440px;
   width: 100%;
-  margin: 0 auto;
+  margin: 0;
   padding: 0 32px;
   display: grid;
-  grid-template-columns: auto 1px auto 2px minmax(320px, 560px) auto auto;
+  /* Logo | thin div | Docs | thick div | search grows | nav links | toggle */
+  grid-template-columns: auto 1px auto 2px minmax(300px, 1fr) auto auto;
   align-items: center;
-  gap: 20px;
+  gap: 32px;
   min-height: var(--primary-nav-height);
 }
 
 .brand { display: inline-flex; align-items: center; text-decoration: none; }
-.logoImg { height: 44px; width: auto; display:block; }
+.logoImg { height: 52px; width: auto; display:block; }
 
-.dividerThin { width:1px; height:40px; background: var(--primary-divider-color); justify-self:center; }
-.dividerSection { width:2px; height:48px; background: var(--primary-divider-color); justify-self:center; }
+.dividerThin { width:1px; height:48px; background: var(--primary-divider-color); justify-self:center; }
+.dividerSection { width:2px; height:56px; background: var(--primary-divider-color); justify-self:center; }
 
-.docsHome { font-weight:600; color:#0433c7; text-decoration:none; font-size:16px; }
+.docsHome { font-weight:900; color:#0433c7; text-decoration:none; font-size:24px; }
 .docsHome:hover { text-decoration:underline; }
 
 .searchRegion { width:100%; min-width:0; }
-.searchShell { position:relative; display:flex; align-items:center; height:46px; border:1px solid var(--primary-search-border); border-radius:28px; background:var(--primary-search-bg); padding:0 12px 0 44px; box-shadow:0 0 0 0 rgba(4,51,199,0.1); transition: box-shadow .16s, background .16s, border-color .16s; }
+.searchShell { position:relative; display:flex; align-items:center; height:54px; border:1px solid var(--primary-search-border); border-radius:30px; background:var(--primary-search-bg); padding:0 16px 0 48px; box-shadow:0 0 0 0 rgba(4,51,199,0.1); transition: box-shadow .16s, background .16s, border-color .16s; }
 
 [data-theme='dark'] .searchShell { background:var(--primary-search-bg-dark); border-color:var(--primary-search-border-dark); }
 
 .searchShell:focus-within { box-shadow:0 0 0 3px rgba(4,51,199,0.35); border-color: var(--primary-accent); }
 
-.searchIcon { position:absolute; left:16px; color:#4A5A72; display:inline-flex; }
+.searchIcon { position:absolute; left:18px; color:#4A5A72; display:inline-flex; }
 [data-theme='dark'] .searchIcon { color:#93A3B8; }
 
 /* Override inner SearchBar input default styling */
-.searchShell :global(.DocSearch-Button) { all:unset; flex:1; font-size:14px; color:var(--ifm-font-color-base); cursor:text; }
+.searchShell :global(.DocSearch-Button) { all:unset; flex:1; font-size:15px; color:var(--ifm-font-color-base); cursor:text; }
 .searchShell :global(.DocSearch-Button:hover) { background:none; }
 .searchShell :global(.DocSearch-Button-Placeholder) { font-weight:400; }
 .searchShell :global(.DocSearch-Button-Placeholder)::before { content:''; }
+/* Hide internal default DocSearch magnifier to avoid duplicate icon */
+.searchShell :global(.DocSearch-Search-Icon) { display:none !important; }
+/* Hide internal DocSearch key hints since we supply our own pill */
+.searchShell :global(.DocSearch-Button-Keys) { display:none !important; }
 
 .shortcut { margin-left:12px; font-size:12px; line-height:1; padding:5px 8px; border:1px solid #CCD2DC; border-radius:6px; background:#F5F7FA; color:#394355; font-weight:500; }
 [data-theme='dark'] .shortcut { background:#2A303B; border-color:#3A4250; color:#C8D2DD; }
 
 .navLinks { list-style:none; display:flex; gap:4px; margin:0 12px 0 32px; padding:0; height:100%; }
 .navItem { height:100%; }
-.navLink { position:relative; display:flex; align-items:center; height:var(--primary-nav-height); padding:0 14px; font-weight:600; text-decoration:none; color:#0F1623; }
-.navLink:hover { color:var(--primary-accent); }
+.navLink { position:relative; display:flex; align-items:center; height:var(--primary-nav-height); padding:0 18px 4px; box-sizing:border-box; font-weight:600; text-decoration:none; color:var(--primary-accent); border-bottom:4px solid transparent; }
+.navLink:hover { color:#021f77; border-bottom-color:rgba(4,51,199,0.35); }
+.navLinkActive { border-bottom-color:var(--primary-accent); font-weight:700; }
 
-[data-theme='dark'] .navLink { color:#D6DFEA; }
-[data-theme='dark'] .navLink:hover { color:#fff; }
+[data-theme='dark'] .navLink { color:#8aaaff; }
+[data-theme='dark'] .navLink:hover { color:#ffffff; border-bottom-color:rgba(138,170,255,0.45); }
+[data-theme='dark'] .navLinkActive { border-bottom-color:var(--primary-accent); }
 
-.navLink::after { content:""; position:absolute; left:10px; right:10px; bottom:10px; height:3px; background:var(--primary-accent); border-radius:2px; transform:scaleX(0); transform-origin:left; transition:transform .18s; }
-.navLink:hover::after { transform:scaleX(.4); opacity:.5; }
-.navLink[aria-current='page']::after, .navLink--active::after { transform:scaleX(1); }
+/* Removed pseudo underline in favor of persistent block border approach */
 
-.modeToggle { width:44px; height:44px; border:1px solid var(--primary-search-border); background:var(--primary-search-bg); border-radius:24px; display:inline-flex; align-items:center; justify-content:center; cursor:pointer; transition:background .15s, box-shadow .15s, border-color .15s; }
+.modeToggle { width:52px; height:52px; border:1px solid var(--primary-search-border); background:var(--primary-search-bg); border-radius:28px; display:inline-flex; align-items:center; justify-content:center; cursor:pointer; transition:background .15s, box-shadow .15s, border-color .15s; }
 [data-theme='dark'] .modeToggle { background:var(--primary-search-bg-dark); border-color:var(--primary-search-border-dark); }
 .modeToggle:hover { background:#F2F5FA; }
 [data-theme='dark'] .modeToggle:hover { background:#2A303B; }

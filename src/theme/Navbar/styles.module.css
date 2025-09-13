@@ -7,18 +7,21 @@
   display: flex;
   align-items: center;
   box-shadow: 0 2px 4px rgba(4,51,199,0.12);
-  z-index: 1020; /* above navbar which typically uses 1000+ */
+  z-index: 1030; /* above primary nav */
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 .topBarInner {
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
+  margin: 0;
+  padding: 0 32px;
   font-size: 0.95rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 32px;
 }
 
 .topLeft {
@@ -73,10 +76,8 @@
   transform: translateY(-1px);
 }
 
-/* Push the fixed-top navbar down so the blue bar sits above it */
-nav.navbar--fixed-top {
-  top: 36px;
-}
+/* Push the original mobile navbar down below blue bar */
+nav.navbar--fixed-top { top: 36px; }
 
 /* Hide original navbar on desktop, show on smaller screens */
 .mobileOnly { display:none; }

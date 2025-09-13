@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import {useColorMode} from '@docusaurus/theme-common';
 import SearchBar from '@theme/SearchBar';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import {useLocation} from '@docusaurus/router';
 import styles from './primaryStyles.module.css';
 
 // NOTE: Desktop-focused primary nav. Original Docusaurus Navbar kept for mobile only.
@@ -13,6 +14,13 @@ export default function PrimaryNav() {
   const {colorMode, setColorMode} = useColorMode();
   const [isMac, setIsMac] = useState(false);
   useEffect(() => { setIsMac(/Mac|iPod|iPhone|iPad/.test(window.navigator.platform)); }, []);
+  const location = useLocation();
+
+  const isActive = (item) => {
+    if (!item.to) return false;
+    if (item.to === '/') return location.pathname === '/';
+    return location.pathname === item.to || location.pathname.startsWith(item.to + '/');
+  };
 
   const toggle = () => setColorMode(colorMode === 'dark' ? 'light' : 'dark');
 
@@ -31,7 +39,7 @@ export default function PrimaryNav() {
             />
           </a>
           <span className={styles.dividerThin} aria-hidden="true" />
-          <a href="/" className={clsx(styles.docsHome,'docs-home-link')}>Docs</a>
+          <a href="/" className={clsx(styles.docsHome,'docs-home-link')} aria-current={location.pathname === '/' ? 'page' : undefined}>Docs</a>
           <span className={styles.dividerSection} aria-hidden="true" />
           <div className={styles.searchRegion}>
             <div className={styles.searchShell} role="search">
@@ -44,13 +52,20 @@ export default function PrimaryNav() {
             </div>
           </div>
           <ul className={styles.navLinks}>
-            {leftItems.map(item => (
-              <li key={item.label} className={styles.navItem}>
-                <a href={item.to || item.href} className={styles.navLink} {...(item.to === '/reference' ? {'data-active-root':'reference'}: {})}>
-                  {item.label}
-                </a>
-              </li>
-            ))}
+            {leftItems.map(item => {
+              const active = isActive(item);
+              return (
+                <li key={item.label} className={styles.navItem}>
+                  <a
+                    href={item.to || item.href}
+                    className={clsx(styles.navLink, active && styles.navLinkActive)}
+                    aria-current={active ? 'page' : undefined}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
           <button type="button" onClick={toggle} className={styles.modeToggle} aria-label="Toggle dark mode" aria-pressed={colorMode === 'dark'}>
             {colorMode === 'dark' ? (

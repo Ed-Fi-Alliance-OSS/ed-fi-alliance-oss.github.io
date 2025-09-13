@@ -54,7 +54,10 @@ const config = {
           containerId: 'GTM-KGR2977',
         },
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: [
+            './src/css/custom.css',
+            './src/css/layout-overrides.css'
+          ],
         },
       }),
     ],

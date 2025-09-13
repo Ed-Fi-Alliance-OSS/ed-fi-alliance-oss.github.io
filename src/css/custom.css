@@ -27,7 +27,7 @@
     Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
     'Segoe UI Symbol';
   /* Adjust navbar height for content offset (primary nav) */
-  --ifm-navbar-height: 76px;
+  --ifm-navbar-height: 92px; /* match increased primary nav height */
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */

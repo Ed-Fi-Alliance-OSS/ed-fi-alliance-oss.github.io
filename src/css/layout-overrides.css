@@ -1,0 +1,16 @@
+/* Offsets for combined fixed top bars (blue global + primary nav) */
+:root {
+  --global-top-bar-height: 36px;
+  --primary-nav-height: 92px; /* keep in sync */
+  --combined-top-offset: calc(var(--global-top-bar-height) + var(--primary-nav-height));
+}
+
+@media (max-width:1100px) {
+  :root { --combined-top-offset: calc(32px + var(--ifm-navbar-height)); }
+}
+
+/* Ensure main content starts below fixed bars */
+.main-wrapper { padding-top: var(--combined-top-offset); }
+
+/* Adjust anchor scroll margin to account for two bars */
+main [id] { scroll-margin-top: calc(var(--combined-top-offset) + 16px); }
