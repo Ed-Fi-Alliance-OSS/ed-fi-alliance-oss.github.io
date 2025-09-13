@@ -157,3 +157,167 @@ iframe {
   color: var(--ifm-font-color-base);
   margin: var(--ifm-spacing-vertical);
 }
+
+/* =============================
+   Sidebar (Left Nav) Overrides
+   Implements requested visual design for active/inactive parents & leaves
+   ============================= */
+
+:root {
+  /* Sidebar design tokens */
+  --edfi-sidebar-active-parent-bg: #003c78; /* dark blue for active top-level & active parents */
+  --edfi-sidebar-active-group-bg: #e8f2fc; /* faint blue grouping background */
+  --edfi-sidebar-leaf-fg: #004c99; /* standard leaf link color */
+  --edfi-sidebar-leaf-active-fg: #004c99; /* active leaf text (bold + white bg) */
+  --edfi-sidebar-caret-size: 1.25rem;
+  --edfi-sidebar-item-vertical-pad: 0.55rem; /* consistent vertical sizing */
+}
+
+[data-theme='dark'] {
+  --edfi-sidebar-active-parent-bg: #0a2a4d;
+  --edfi-sidebar-active-group-bg: #132f54;
+  --edfi-sidebar-leaf-fg: #6fb3ff;
+  --edfi-sidebar-leaf-active-fg: #8fc4ff;
+}
+
+/* Base link sizing & spacing */
+.theme-doc-sidebar-menu .menu__link {
+  padding-top: var(--edfi-sidebar-item-vertical-pad);
+  padding-bottom: var(--edfi-sidebar-item-vertical-pad);
+  line-height: 1.2;
+  border-radius: 4px;
+  transition: background-color .15s ease, color .15s ease;
+}
+
+/* Non-active parent categories (default transparent) */
+.theme-doc-sidebar-item-category > .menu__list-item-collapsible {
+  background: transparent;
+  border-radius: 4px;
+}
+
+/* Ensure collapsed (non-active) caret has white background (light mode) */
+.theme-doc-sidebar-item-category > .menu__list-item-collapsible .menu__caret {
+  background: #ffffff;
+  color: var(--edfi-sidebar-leaf-fg);
+  width: var(--edfi-sidebar-caret-size);
+  height: var(--edfi-sidebar-caret-size);
+  border-radius: 50%;
+  border: 1px solid #d4dbe3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+[data-theme='dark'] .theme-doc-sidebar-item-category > .menu__list-item-collapsible .menu__caret {
+  background: #1e3a60;
+  border-color: #2c4d78;
+  color: var(--edfi-sidebar-leaf-fg);
+}
+
+/* Caret icon (triangle) coloring */
+.theme-doc-sidebar-item-category .menu__caret:before {
+  border-color: currentColor;
+}
+
+/* Any active category (at any depth) header row */
+.theme-doc-sidebar-item-category:has(> .menu__list-item-collapsible > .menu__link--active) > .menu__list-item-collapsible {
+  background: var(--edfi-sidebar-active-parent-bg);
+  color: #ffffff;
+  font-weight: 600; /* bold active parent */
+}
+
+/* Active category link inside header */
+.theme-doc-sidebar-item-category:has(> .menu__list-item-collapsible > .menu__link--active) > .menu__list-item-collapsible > .menu__link {
+  color: #ffffff;
+}
+
+/* Active caret styling (blend with dark blue background) */
+.theme-doc-sidebar-item-category:has(> .menu__list-item-collapsible > .menu__link--active) > .menu__list-item-collapsible .menu__caret {
+  background: var(--edfi-sidebar-active-parent-bg);
+  border-color: var(--edfi-sidebar-active-parent-bg);
+  color: #ffffff;
+}
+
+/* Top-level active category: group background around its children */
+.theme-doc-sidebar-item-category-level-1:has(> .menu__list-item-collapsible > .menu__link--active) > ul.menu__list {
+  background: var(--edfi-sidebar-active-group-bg);
+  margin-top: 4px;
+  padding: 4px 6px 6px;
+  border-left: 4px solid var(--edfi-sidebar-active-parent-bg);
+  border-radius: 4px;
+}
+
+/* Leaf links default (non-active) */
+.theme-doc-sidebar-item-link .menu__link,
+.theme-doc-sidebar-item-category .menu__list .theme-doc-sidebar-item-link .menu__link {
+  color: var(--edfi-sidebar-leaf-fg);
+  font-weight: 500;
+  background: transparent;
+}
+
+/* Active leaf link */
+.theme-doc-sidebar-item-link .menu__link.menu__link--active {
+  background: #ffffff;
+  color: var(--edfi-sidebar-leaf-active-fg);
+  font-weight: 600;
+  box-shadow: 0 0 0 1px var(--edfi-sidebar-active-parent-bg) inset;
+}
+
+[data-theme='dark'] .theme-doc-sidebar-item-link .menu__link.menu__link--active {
+  background: #0f223a;
+  box-shadow: 0 0 0 1px #335d96 inset;
+}
+
+/* Hover states */
+.theme-doc-sidebar-menu .menu__link:hover {
+  background: rgba(0,60,120,0.08);
+  text-decoration: none;
+}
+
+.theme-doc-sidebar-item-category:has(> .menu__list-item-collapsible > .menu__link--active) > .menu__list-item-collapsible > .menu__link:hover {
+  background: var(--edfi-sidebar-active-parent-bg); /* keep solid */
+}
+
+/* Remove default underline on active items */
+.theme-doc-sidebar-menu .menu__link.menu__link--active {
+  text-decoration: none;
+}
+
+/* Sublist indentation refinement */
+.theme-doc-sidebar-item-category .menu__list { /* inner lists */
+  padding-left: 0.4rem;
+}
+
+/* Compact spacing between category blocks */
+.theme-doc-sidebar-item-category { margin-bottom: 0.25rem; }
+
+/* Ensure smooth caret rotation visibility on dark background */
+.theme-doc-sidebar-item-category:has(> .menu__list-item-collapsible > .menu__link--active) .menu__caret:before {
+  border-color: #ffffff;
+}
+
+/* High contrast adjustment for dark mode grouping container */
+[data-theme='dark'] .theme-doc-sidebar-item-category-level-1:has(> .menu__list-item-collapsible > .menu__link--active) > ul.menu__list {
+  background: #1b3556;
+  border-left-color: var(--edfi-sidebar-active-parent-bg);
+}
+
+/* Fallback for browsers without :has support (progressive enhancement):
+   Style active parent link directly so at least header row shows design */
+.theme-doc-sidebar-item-category .menu__link.menu__link--active {
+  font-weight: 600;
+}
+
+/* Fallback: style active top-level category header even if :has unsupported */
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link.menu__link--active {
+  background: var(--edfi-sidebar-active-parent-bg);
+  color: #ffffff;
+  border-radius: 4px;
+}
+
+.theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link.menu__link--active .menu__caret {
+  background: var(--edfi-sidebar-active-parent-bg);
+  border-color: var(--edfi-sidebar-active-parent-bg);
+  color: #ffffff;
+}
+
