@@ -1,0 +1,32 @@
+.topBar {
+  background-color: #0b66d0; /* Ed-Fi blue */
+  color: #fff;
+  width: 100%;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(11,102,208,0.15);
+  z-index: 1020; /* above navbar which typically uses 1000+ */
+}
+
+.topBarInner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  font-size: 0.95rem;
+}
+
+/* Push the fixed-top navbar down so the blue bar sits above it */
+nav.navbar--fixed-top {
+  top: 32px;
+}
+
+@media (max-width: 768px) {
+  .topBar {
+    height: 28px;
+  }
+  nav.navbar--fixed-top {
+    top: 28px;
+  }
+}
