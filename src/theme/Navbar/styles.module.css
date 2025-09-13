@@ -1,11 +1,12 @@
 .topBar {
-  background-color: #0b66d0; /* Ed-Fi blue */
+  /* New blue matching screenshot */
+  background-color: #0433c7;
   color: #fff;
   width: 100%;
-  height: 32px;
+  height: 36px;
   display: flex;
   align-items: center;
-  box-shadow: 0 2px 4px rgba(11,102,208,0.15);
+  box-shadow: 0 2px 4px rgba(4,51,199,0.12);
   z-index: 1020; /* above navbar which typically uses 1000+ */
 }
 
@@ -15,18 +16,81 @@
   margin: 0 auto;
   padding: 0 1rem;
   font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.topLeft {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.topLink {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 3px;
+  opacity: 0.95;
+}
+
+.topLink:hover {
+  opacity: 1;
+  background: rgba(255,255,255,0.04);
+}
+
+.active {
+  background: rgba(0,0,0,0.12);
+  box-shadow: inset 0 -3px 0 rgba(0,0,0,0.12);
+}
+
+.topRight {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.iconLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  color: #fff;
+  text-decoration: none;
+  opacity: 0.95;
+}
+
+.iconLink svg {
+  width: 18px;
+  height: 18px;
+}
+
+.iconLink:hover {
+  opacity: 1;
+  transform: translateY(-1px);
 }
 
 /* Push the fixed-top navbar down so the blue bar sits above it */
 nav.navbar--fixed-top {
-  top: 32px;
+  top: 36px;
 }
 
 @media (max-width: 768px) {
   .topBar {
-    height: 28px;
+    height: 32px;
   }
   nav.navbar--fixed-top {
-    top: 28px;
+    top: 32px;
+  }
+  .topLink {
+    padding: 4px 8px;
+    font-size: 0.9rem;
+  }
+  .iconLink {
+    width: 26px;
+    height: 26px;
   }
 }
