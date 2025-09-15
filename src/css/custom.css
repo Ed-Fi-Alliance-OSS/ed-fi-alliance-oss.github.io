@@ -188,6 +188,15 @@ iframe {
   line-height: 1.2;
   border-radius: 0; /* removed radius */
   transition: background-color .15s ease, color .15s ease;
+  font-size: 0.95rem; /* slightly smaller to match design specs */
+  font-weight: 500;
+}
+
+/* Add right padding to sidebar items so text doesn't touch the viewport edge */
+.theme-doc-sidebar-menu .menu__list,
+.theme-doc-sidebar-menu .menu__link,
+.menu_SIkG .menu__link {
+  padding-right: 1rem; /* 16px of right padding for breathing room */
 }
 
 /* Non-active parent categories (default transparent) */
@@ -335,6 +344,7 @@ iframe {
   color: var(--edfi-sidebar-leaf-fg);
   font-weight: 500;
   background: transparent;
+  font-size: 0.95rem;
 }
 
 /* Active leaf link */
@@ -373,7 +383,7 @@ iframe {
 
 /* Add faint left border to all UL menu lists to create a subtle tree-line */
 .theme-doc-sidebar-menu .menu__list {
-  border-left: 1px solid #e6e9ec; /* faint light grey */
+  border-left: 2px solid #e6e9ec; /* faint light grey; increased thickness */
 }
 
 /* Compact spacing between category blocks */
@@ -433,11 +443,11 @@ iframe {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: calc(var(--edfi-sidebar-caret-size) + 8px);
-  height: calc(var(--edfi-sidebar-caret-size) + 8px);
+  width: calc(var(--edfi-sidebar-caret-size) + 4px);
+  height: calc(var(--edfi-sidebar-caret-size) + 4px);
   background: var(--edfi-sidebar-caret-royal);
   border-radius: 50%;
-  margin-left: 6px;
+  margin-left: 4px; /* slightly tighter spacing */
   flex-shrink: 0;
 }
 
@@ -453,31 +463,73 @@ iframe {
 }
 
 /* Create arrow using pseudo element */
-    .menu__caret-btn:before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 0;
-      height: 0;
-      border-top: 5px solid transparent;
-      border-bottom: 5px solid transparent;
-      border-left: 7px solid currentColor; /* right-pointing triangle */
-      transform: translate(-50%, -50%) rotate(0deg);
-      transform-origin: center;
-      transition: transform .15s ease, border-left-color .15s ease;
-      display: block;
-    }
+.menu__caret-btn:before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border-top: 3px solid transparent; /* thinner arrow */
+  border-bottom: 3px solid transparent;
+  border-left: 5px solid currentColor; /* right-pointing triangle */
+  transform: translate(-50%, -50%) rotate(0deg);
+  transform-origin: center;
+  transition: transform .12s ease, border-left-color .12s ease;
+  display: block;
+}
 
-    /* Expanded (rotate arrow to point down) - use aria-expanded on the button to control state */
-    .menu__caret-btn[aria-expanded='true']:before {
-      transform: translate(-50%, -50%) rotate(90deg); /* down arrow */
-    }
+/* Expanded (rotate arrow to point down) - use aria-expanded on the button to control state */
+.menu__caret-btn[aria-expanded='true']:before {
+  transform: translate(-50%, -50%) rotate(90deg); /* down arrow */
+}
 
 /* Provide spacing so border-left tree line doesn't overlap text */
 .theme-doc-sidebar-item-link .menu__link.menu__link--active,
 .theme-doc-sidebar-item-category:has(> .menu__list-item-collapsible > .menu__link--active) > .menu__list-item-collapsible,
 .theme-doc-sidebar-item-category-level-1 > .menu__list-item-collapsible > .menu__link.menu__link--active {
   padding-left: 0.75rem;
+}
+
+/* ==========================================
+   UI tweaks: hide sidebar collapse button and
+   visually hide vertical scrollbar on the docs sidebar
+   ========================================== */
+
+/* Hide the persistent "Collapse sidebar" control (use attribute selectors so builds with hashed classes still match) */
+button[aria-label="Collapse sidebar"],
+button[title="Collapse sidebar"] {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Hide native scrollbars on the docs sidebar while keeping scrolling functional. Target several likely containers to be robust across Docusaurus versions/builds. */
+.theme-doc-sidebar-container,
+.theme-doc-sidebar,
+.sidebarViewport_aRkj,
+.sidebar_njMd,
+.menu_SIkG,
+.theme-doc-sidebar-menu {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+.theme-doc-sidebar-container::-webkit-scrollbar,
+.theme-doc-sidebar::-webkit-scrollbar,
+.sidebarViewport_aRkj::-webkit-scrollbar,
+.sidebar_njMd::-webkit-scrollbar,
+.menu_SIkG::-webkit-scrollbar,
+.theme-doc-sidebar-menu::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+/* Ensure the sidebar containers keep scroll behavior */
+.theme-doc-sidebar-container,
+.sidebarViewport_aRkj,
+.sidebar_njMd {
+  overflow-y: auto;
 }
 
