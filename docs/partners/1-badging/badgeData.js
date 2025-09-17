@@ -521,7 +521,7 @@ export default {
       provider: 'Panorama Education',
       website: 'https://www.panoramaed.com/products/ai/panorama-solara',
       validThrough: 'September 16, 2027',
-      verifyingAgencies: [''],
+      verifyingAgencies: ['Boston Public Schools'],
       documentation: {
         'Mapping Document':
           'https://edfidocs.blob.core.windows.net/$web/assets/partners/badging/EdFi%20-%20Panorama%20Mapping%20Solara%209.3.2025.xlsx',
