@@ -1,12 +1,15 @@
+:root {
+  --top-bar-height: 28px;
+}
+
 .topBar {
-  /* New blue matching screenshot */
-  background-color: #0433c7;
+  /* New blue matching Figma */
+  background-color: #0031F1;
   color: #fff;
   width: 100%;
-  height: 36px;
+  height: var(--top-bar-height);
   display: flex;
   align-items: center;
-  box-shadow: 0 2px 4px rgba(4,51,199,0.12);
   z-index: 1030; /* above primary nav */
   position: fixed;
   top: 0;
@@ -16,42 +19,45 @@
 .topBarInner {
   width: 100%;
   margin: 0;
-  padding: 0 32px;
-  font-size: 0.95rem;
+  padding: 2px 18px 0 15px;
+  font-size: 0.75rem;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
-  gap: 32px;
 }
 
 .topLeft {
   display: flex;
-  gap: 1rem;
-  align-items: center;
+  align-items: flex-end;
+  height: 100%;
 }
 
 .topLink {
+  display: flex;
+  align-items: center;
+  height: 100%;
   color: #fff;
   text-decoration: none;
-  font-weight: 600;
-  padding: 6px 10px;
-  border-radius: 3px;
-  opacity: 0.95;
+  font-weight: 500;
+  padding: 3px 14px;
+  background-color: transparent;
+  transition: background-color 150ms ease;
 }
 
 .topLink:hover {
-  opacity: 1;
-  background: rgba(255,255,255,0.04);
+  background-color: #00199F;
+  text-decoration: none;
+  color: #fff;
 }
 
 .active {
-  background: rgba(0,0,0,0.12);
-  box-shadow: inset 0 -3px 0 rgba(0,0,0,0.12);
+  background-color: #00199F;
+  pointer-events: none;
 }
 
 .topRight {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.5px;
   align-items: center;
 }
 
@@ -59,25 +65,27 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 30px;
-  height: 30px;
-  color: #fff;
+  width: 22px;
+  height: 22px;
   text-decoration: none;
-  opacity: 0.95;
+  background-color: transparent;
+  transition: background-color 150ms ease;
+  color: #fff;
+  margin-bottom: 2px;
 }
 
 .iconLink svg {
-  width: 18px;
-  height: 18px;
+  width: 13px;
+  height: 13px;
 }
 
 .iconLink:hover {
-  opacity: 1;
-  transform: translateY(-1px);
+  background-color: #00199F;
+  color: #fff;
 }
 
 /* Push the original mobile navbar down below blue bar */
-nav.navbar--fixed-top { top: 36px; }
+nav.navbar--fixed-top { top: var(--top-bar-height); }
 
 /* Hide original navbar on desktop, show on smaller screens */
 .mobileOnly { display:none; }
@@ -90,17 +98,18 @@ nav.navbar--fixed-top { top: 36px; }
 
 @media (max-width: 768px) {
   .topBar {
-    height: 32px;
+    height: var(--top-bar-height);
   }
+
+  .topBarInner {
+    padding: 2px 8px 0;
+  }
+
   nav.navbar--fixed-top {
-    top: 32px;
+    top: var(--top-bar-height);
   }
   .topLink {
-    padding: 4px 8px;
-    font-size: 0.9rem;
-  }
-  .iconLink {
-    width: 26px;
-    height: 26px;
+    padding: 3px 8px;
+    font-size: 0.65rem;
   }
 }

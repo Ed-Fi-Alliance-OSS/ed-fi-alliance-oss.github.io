@@ -28,19 +28,20 @@ export default function PrimaryNav() {
     <div className={styles.primaryNavWrapper} role="region" aria-label="Primary navigation wrapper">
       <nav className={styles.primaryNav} aria-label="Main">
         <div className={styles.inner}>
-          <a href="/" className={styles.brand} aria-label="Ed-Fi Docs home">
-            <img
-              src={colorMode === 'dark' ? '/img/ed-fi-logo-light.webp' : '/img/ed-fi-logo.webp'}
-              alt="Ed-Fi Alliance"
-              className={styles.logoImg}
-              width={160}
-              height={44}
-              loading="eager"
-            />
-          </a>
-          <span className={styles.dividerThin} aria-hidden="true" />
-          <a href="/" className={clsx(styles.docsHome,'docs-home-link')} aria-current={location.pathname === '/' ? 'page' : undefined}>Docs</a>
-          <span className={styles.dividerSection} aria-hidden="true" />
+          <div className={styles.topSideBar}>
+            <a href="/" className={styles.brand} aria-label="Ed-Fi Docs home">
+              <img
+                src={colorMode === 'dark' ? '/img/ed-fi-logo-light.webp' : '/img/ed-fi-logo-light.webp'}
+                alt="Ed-Fi Alliance"
+                className={styles.logoImg}
+                width={160}
+                height={44}
+                loading="eager"
+              />
+            </a>
+            <span className={styles.dividerThin} aria-hidden="true" />
+            <a href="/" className={clsx(styles.docsHome,'docs-home-link')} aria-current={location.pathname === '/' ? 'page' : undefined}>Docs</a>
+          </div>
           <div className={styles.searchRegion}>
             <div className={styles.searchShell} role="search">
               <span className={styles.searchIcon} aria-hidden="true">

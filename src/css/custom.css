@@ -159,6 +159,15 @@ iframe {
 }
 
 /* =============================
+   PrimaryNav Overrides
+   Implements requested visual design for active/inactive parents & leaves
+   ============================= */
+.primaryNav_ByDV {
+  /* height: 83px !important; match CSS variable in layout-overrides.css */
+}
+
+
+/* =============================
    Sidebar (Left Nav) Overrides
    Implements requested visual design for active/inactive parents & leaves
    ============================= */
@@ -531,5 +540,11 @@ button[title="Collapse sidebar"] {
 .sidebarViewport_aRkj,
 .sidebar_njMd {
   overflow-y: auto;
+}
+
+.theme-doc-sidebar-container {
+  @media (min-width: 997px) {
+    width: 280px !important;;
+  }
 }
 
