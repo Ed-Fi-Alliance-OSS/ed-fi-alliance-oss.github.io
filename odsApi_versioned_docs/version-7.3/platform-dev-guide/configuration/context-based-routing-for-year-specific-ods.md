@@ -63,8 +63,43 @@ erDiagram
 
     OdsInstanceContext {
         int OdsInstanceContextId PK
-        int OdsInstanceId FK
+        int OdsInstance_OdsInstanceId FK
         varchar ContextKey
         varchar ContextValue
     }
+```
+
+Note that the `InstanceType` property has no restrictions - this column is for human readers.
+
+## District-Specific Routing Example
+
+To route requests to two district-specific ODS databases, for Local Education Agency ID values 255901 and 255902:
+
+- Set `"OdsContextRouteTemplate": "{instanceId}" in the appsettings file or `ApiSettings__OdsContextRouteTemplate` environment variable.
+- Create the following records in `dbo.OdsInstances`:
+
+  | Name              | InstanceType | ConnectionString |
+  | ----------------- | ------------ | ---------------- |
+  | 'EdFi_Ods_255901' | 'District'   | 'host=??;database=EdFi_Ods_255901;username=??;password=??' |
+  | 'EdFi_Ods_255902' | 'District'   | 'host=??;database=EdFi_Ods_255902;username=??;password=??' |
+
+- Assuming these are the first records in the table, they will have `OdsInstanceId` values of 1 and 2, respectively. Create the following records in the `dbo.OdsInstanceContext`:
+
+  |  OdsInstance_OdsInstanceId | ContextKey   | ContextValue |
+  | -------------------------- | ------------ | ------------ |
+  | 1                          | 'instanceId' | '255901'     |
+  | 2                          | 'instanceId' | '255902'     |
+
+And below are the SQL statements to support this:
+
+```sql
+INSERT INTO dbo.odsinstances ("name", instancetype, connectionstring) 
+VALUES
+	('EdFi_Ods_255901', 'DistrictSpecific', 'host=??;database=EdFi_Ods_255901;username=??;password=??'),
+	('EdFi_Ods_255902', 'DistrictSpecific', 'host=??;database=EdFi_Ods_255902;username=??;password=??');
+
+INSERT INTO dbo.odsinstancecontexts (odsinstance_odsinstanceid, contextkey, contextvalue)
+SELECT odsinstanceid, 'instanceid', '255901' FROM dbo.odsinstances WHERE "name" = 'EdFi_Ods_255901'
+UNION
+SELECT odsinstanceid, 'instanceid', '255902' FROM dbo.odsinstances WHERE "name" = 'EdFi_Ods_255902';
 ```
