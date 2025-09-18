@@ -139,8 +139,8 @@ export default {
       productName: 'Infinite Campus SIS',
       logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/Infinite_Campus_logo.png',
       website: 'https://www.infinitecampus.com',
-      validThrough: 'August 16, 2024',
-      verifyingAgencies: ['Princeton ISD, TX'],
+      validThrough: 'September 16, 2026',
+      verifyingAgencies: ['Delaware Department of Education'],
       versionCompatibility: 'Conformance testing met with version 2321',
       availability: 'Available to any agency (all sizes) in the U.S.',
       documentation: {
