@@ -1,6 +1,6 @@
 /* Offsets for combined fixed top bars (blue global + primary nav) */
 :root {
-  --global-top-bar-height: 36px;
+  --global-top-bar-height: 28px;
   --combined-top-offset: calc(var(--global-top-bar-height) + var(--primary-nav-height));
 }
 

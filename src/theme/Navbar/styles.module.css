@@ -4,7 +4,7 @@
 
 .topBar {
   /* New blue matching Figma */
-  background-color: #0031F1;
+  background-color: var(--ifm-color-primary);
   color: #fff;
   width: 100%;
   height: var(--top-bar-height);
@@ -84,16 +84,12 @@
   color: #fff;
 }
 
-/* Push the original mobile navbar down below blue bar */
-nav.navbar--fixed-top { top: var(--top-bar-height); }
+
 
 /* Hide original navbar on desktop, show on smaller screens */
 .mobileOnly { display:none; }
 @media (max-width:1100px) {
   .mobileOnly { display:block; }
-}
-@media (min-width:1101px) {
-  nav.navbar { display:none; }
 }
 
 @media (max-width: 768px) {

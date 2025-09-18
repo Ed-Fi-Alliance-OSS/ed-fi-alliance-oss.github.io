@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import clsx from 'clsx';
 import {useColorMode} from '@docusaurus/theme-common';
 import SearchBar from '@theme/SearchBar';
@@ -46,10 +46,13 @@ export default function PrimaryNav() {
             <div className={styles.searchShell} role="search">
               <span className={styles.searchIcon} aria-hidden="true">
                 {/* magnifier svg */}
-                <svg viewBox="0 0 24 24" width="18" height="18" focusable="false" aria-hidden="true"><path fill="currentColor" d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5Zm-6 0A4.5 4.5 0 1 1 14 9.5 4.494 4.494 0 0 1 9.5 14Z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16" fill="none" focusable="false" aria-hidden="true">
+                  <path fillRule="evenodd" clipRule="evenodd" d="M6.23366 12.4248C9.20395 12.4248 11.6118 10.0169 11.6118 7.04664C11.6118 4.07635 9.20395 1.66846 6.23366 1.66846C3.26337 1.66846 0.855469 4.07635 0.855469 7.04664C0.855469 10.0169 3.26337 12.4248 6.23366 12.4248Z" stroke="currentColor" strokeWidth="1.39049" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M13.918 14.7309L10.061 10.8739" stroke="currentColor" strokeWidth="1.39049" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
               </span>
               <SearchBar placeholder="Search" />
-              <kbd className={styles.shortcut} aria-label="Keyboard shortcut">{isMac ? '⌘' : 'Ctrl'} K</kbd>
+              <kbd className={styles.shortcut} aria-label="Keyboard shortcut"><div><span>{isMac ? '⌘' : 'Ctrl'}</span></div> <div><span>K</span></div></kbd>
             </div>
           </div>
           <ul className={styles.navLinks}>
@@ -67,14 +70,17 @@ export default function PrimaryNav() {
                 </li>
               );
             })}
-          </ul>
-          <button type="button" onClick={toggle} className={styles.modeToggle} aria-label="Toggle dark mode" aria-pressed={colorMode === 'dark'}>
-            {colorMode === 'dark' ? (
-              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M9.37 5.51A7 7 0 0 0 17 15a7 7 0 0 1-7.63-9.49M12 3a9 9 0 1 0 9 9 9 9 0 0 0-9-9Z"/></svg>
-            ) : (
-              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M6.76 4.84 5.35 3.43 3.93 4.84l1.41 1.42 1.42-1.42ZM4 13H2v-2h2v2Zm10-9h-2v2h2V4Zm7.07 2.93-1.41-1.41-1.42 1.41 1.42 1.42 1.41-1.42ZM17.24 19.16l1.41 1.41 1.42-1.41-1.42-1.42-1.41 1.42ZM20 13v-2h2v2h-2ZM12 20h2v-2h-2v2ZM6.34 17.24l-1.42 1.42 1.42 1.41 1.41-1.41-1.41-1.42ZM12 8a4 4 0 1 1 0 8 4 4 0 0 1 0-8Z"/></svg>
-            )}
+            <button type="button" onClick={toggle} className={styles.modeToggle} aria-label="Toggle dark mode" aria-pressed={colorMode === 'dark'}>
+            <div className={styles.modeToggleInner}>
+              {colorMode === 'dark' ? (
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M9.37 5.51A7 7 0 0 0 17 15a7 7 0 0 1-7.63-9.49M12 3a9 9 0 1 0 9 9 9 9 0 0 0-9-9Z"/></svg>
+              ) : (
+                <img src="/img/light-mode.svg" alt="Light mode" width="20" height="20" />
+              )}
+            </div>
           </button>
+          </ul>
+
         </div>
       </nav>
     </div>
