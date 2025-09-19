@@ -60,10 +60,14 @@ Updated source code is available at:
 
 Review the linked tags above and cherry-pick the commits included in the release.
 
-> **Note**: Database changes are required on the Operational Data Store.
-> Review the relevant [commit](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/commit/6f536794d6ed6d5ed40ac541ad1620b9c7ac52d9) and apply updates.
-> MetaEd extension users may need to update DDL scripts.
+:::note
+Database changes are required on the Operational Data Store.
+Review the relevant [commit](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/commit/6f536794d6ed6d5ed40ac541ad1620b9c7ac52d9) and apply updates.
+MetaEd extension users may need to update DDL scripts.
+:::
 
-> **Reminder**: The Serialized Data feature is optional and can be disabled.
-> To disable, set `ApiSettings:Features:SerializedData` configuration to `false`.
-> Refer to the [Configuration Details](/reference/ods-api/platform-dev-guide/configuration/configuration-details) page.
+:::info
+The Serialized Data feature is optional and can be disabled.
+To disable, set `ApiSettings:Features:SerializedData` configuration to `false`.
+Refer to the [Configuration Details](/reference/ods-api/platform-dev-guide/configuration/configuration-details) page.
+:::
