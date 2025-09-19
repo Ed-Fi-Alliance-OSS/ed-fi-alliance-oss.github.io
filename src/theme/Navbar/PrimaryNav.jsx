@@ -31,7 +31,7 @@ export default function PrimaryNav() {
           <div className={styles.topSideBar}>
             <a href="/" className={styles.brand} aria-label="Ed-Fi Docs home">
               <img
-                src={colorMode === 'dark' ? '/img/logo-dark.svg' : '/img/ed-fi-logo-light.webp'}
+                src={colorMode === 'dark' ? '/img/ed-fi-logo-dark.svg' : '/img/ed-fi-logo-light.svg'}
                 alt="Ed-Fi Alliance"
                 className={styles.logoImg}
                 width={160}
