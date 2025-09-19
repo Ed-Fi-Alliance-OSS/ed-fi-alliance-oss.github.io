@@ -170,8 +170,8 @@ const config = {
       navbar: {
         logo: {
           alt: 'Ed-Fi Docs Logo',
-          src: 'img/ed-fi-logo.webp',
-          srcDark: 'img/ed-fi-logo-light.webp',
+          src: 'img/ed-fi-logo-light.webp',
+          srcDark: 'img/ed-fi-logo-dark.webp',
         },
         items: [
           {

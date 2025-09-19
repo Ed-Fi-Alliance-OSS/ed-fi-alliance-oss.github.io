@@ -120,16 +120,16 @@
 }
 
 .hero__title {
-  background-image: url('/img/Ed-FiLogo-2.png');
+  background-image: url('/img/ed-fi-logo-light.svg');
   background-size: cover;
+  width: 366px;
   height: 180px;
-  width: 344px;
   text-indent: -9999px;
   margin: auto;
 }
 
 [data-theme='dark'] .hero__title {
-  background-image: url('/img/Ed-FiLogo-2-alt.png');
+  background-image: url('/img/ed-fi-logo-dark.svg');
 }
 
 .DocSearch-Modal {
@@ -641,19 +641,6 @@ button[title="Collapse sidebar"] {
   overflow-y: auto;
 }
 
-/* Push the original mobile navbar down below blue bar */
-nav.navbar--fixed-top {
-  position: fixed;
-  top: var(--top-bar-height);
-  width: 100%;
-}
-
-nav.navbar .navbar__items--right {
-  a {
-    display: none;
-  }
-}
-
 @media (min-width: 997px) {
   .theme-doc-sidebar-container {
     width: 275px !important;
@@ -667,6 +654,22 @@ nav.navbar .navbar__items--right {
 }
 
 /* =============================================== End Sidebar (Left Nav) Customizations  ========================================= */
+
+/* =============================================== Navbar Customizations  ========================================= */
+/* Push the original mobile navbar down below blue bar */
+nav.navbar--fixed-top {
+  position: fixed;
+  top: var(--top-bar-height);
+  width: 100%;
+}
+
+nav.navbar .navbar__items--right {
+  a {
+    display: none;
+  }
+}
+
+/* =============================================== End Navbar Customizations  ========================================= */
 
 /* =============================================== Breadcrumb Customizations  ========================================= */
 
@@ -686,6 +689,12 @@ nav.navbar .navbar__items--right {
 
   .edfi-breadcrumbs-wrap .breadcrumbs__link {
     font-size: .6975rem;
+  }
+
+  .edfi-breadcrumbs-wrap .breadcrumbs__item--active .breadcrumbs__link {
+    font-weight: 500;
+    color: var(--ifm-color-primary);
+    background: transparent;
   }
 
   .edfi-breadcrumbs-wrap .breadcrumbs__item::after {
@@ -710,14 +719,21 @@ nav.navbar .navbar__items--right {
   --ifm-h2-font-size: 1.875rem;
 }
 
+.edfi-doc-item .table-of-contents {
+  font-size: .875rem;
+}
+
 @media (min-width: 997px) {
   .edfi-doc-item .theme-doc-markdown {
-    margin-top: 88px;
+    margin: 88px auto 0;
+    padding: 0 6.3%;
   }
 
   .edfi-doc-item > .row > .col--3 {
     margin-top: 114px;
   }
 }
+
+
 
 /* =============================================== End DocItem Customizations  ========================================= */
