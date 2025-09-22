@@ -41,14 +41,21 @@
   --ifm-font-color-base: #474545;
   --ifm-heading-color: var(--ifm-color-primary-darkest);
 
-
   /* Adjust navbar height for content offset (primary nav) */
   --ifm-navbar-height: 83px; /* match increased primary nav height */
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary-dark: #0031F1;
+  --ifm-color-primary: #4099FF;
+  --ifm-color-primary-dark: #004CFF;
+  --ifm-color-primary-darker: #337aff;
+  --ifm-color-primary-darkest: #e6f0ff;
+  --ifm-color-primary-light: #002F8C;
+  --ifm-color-primary-lighter: #2c4d78;
+  --ifm-color-primary-lightest: #02215D;
+  --ifm-font-color-base: #D1D5DB;
+
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
@@ -730,6 +737,14 @@ nav.navbar .navbar__items--right {
   padding: 19px 30px 17px 25px;
 }
 
+.edfi-doc-item .alert.theme-admonition-note {
+  --ifm-alert-background-color: #F2F6FF;
+}
+
+[data-theme='dark'] .edfi-doc-item .alert.theme-admonition-note {
+  --ifm-alert-background-color: #1b3556;
+}
+
 /* ======== Tables  ==================*/
 
 .edfi-doc-item table {
@@ -877,6 +892,7 @@ nav.navbar .navbar__items--right {
 
   .ed-fi-pagination-nav-link.pagination-nav__link--next {
     align-items: flex-end;
+    justify-content: flex-start;
     padding: 10px;
   }
 
