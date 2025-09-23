@@ -504,7 +504,7 @@ export default {
       logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/panorama-education.png',
       productName: 'Panorama Surveys and Engagement',
       provider: 'Panorama Education',
-      website: 'Surveys and Engagement',
+      website: 'https://www.panoramaed.com/products/surveys',
       validThrough: 'September 16, 2027',
       verifyingAgencies: ['Boston Public Schools'],
       documentation: {
