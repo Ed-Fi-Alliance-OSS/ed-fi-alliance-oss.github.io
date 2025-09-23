@@ -149,15 +149,33 @@
   margin-bottom: 2rem;
 }
 
-<<<<<<< HEAD
 .hero--primary h1 {
   color: #fff;
 }
 
+.hero__subtitle {
+  color: #fff;
+}
+
+/* Homepage hero subtitle uses standard font color */
+.hero .hero__subtitle {
+  color: var(--ifm-font-color-base);
+}
+
+h1.title_f1Hy, h2.title_f1Hy {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+/* Four columns under hero section */
+.hero ~ main .container .row .col {
+  border: 1px solid #e3e3e3;
+  margin: 5px;
+  border-radius: 10px;
+  padding: 15px;
+}
+
 table, .table {
-=======
-.table {
->>>>>>> f65f7ae5aee28a36a19a8abe3802598426990bd5
   margin-bottom: 2rem;
 }
 
@@ -352,7 +370,7 @@ iframe {
   line-height: 1.4;
   border-radius: 0;
   transition: background-color .15s ease, color .15s ease;
-  font-size: .875rem;
+  font-size: 1rem;
   color: var(--edfi-sidebar-text-color);
   font-weight: 400;
   background: transparent;

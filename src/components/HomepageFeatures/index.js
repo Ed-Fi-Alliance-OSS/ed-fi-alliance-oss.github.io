@@ -11,7 +11,7 @@ const FeatureList = [
     title: 'Getting Started',
     description: (
       <>
-        Patterns and practices for starting or expanding on your Ed-Fi journey.
+        Patterns and practices for starting or expanding on your Ed-Fi data journey.
       </>
     ),
     href: '/getting-started',
