@@ -15,7 +15,7 @@ function SeaPlaybook() {
   return (
     <div className="margin-bottom--lg">
       <img src="/img/sea-playbook.jpg" alt="[SEA playbook cover image]" />
-      <Heading as="h2">State Education Agency (SEA) Playbook</Heading>
+      <Heading as="h3">State Education Agency (SEA) Playbook</Heading>
       <Link
         to="/getting-started/sea-playbook"
         className="button button--primary button"
@@ -33,7 +33,7 @@ function TechPlaybook() {
         src="/img/tech-playbook.jpg"
         alt="[Tech provider playbook cover image]"
       />
-      <Heading as="h2">Technology Provider Playbook</Heading>
+      <Heading as="h3">Technology Provider Playbook</Heading>
       <Link
         to="/getting-started/provider-playbook"
         className="button button--primary button"
@@ -48,7 +48,7 @@ function EsaPlaybook() {
   return (
     <div className="margin-bottom--lg">
       <img src="/img/esa-playbook.jpg" alt="[ESA playbook cover image]" />
-      <Heading as="h2">Educational Service Agency (ESA) Playbook</Heading>
+      <Heading as="h3">Educational Service Agency (ESA) Playbook</Heading>
       <Link
         to="/getting-started/esa-playbook"
         className="button button--primary button"
@@ -66,30 +66,7 @@ function GetStartedIntro() {
     <div>
       <Heading as="h2">Playbooks</Heading>
       <p>
-        No two Ed-Fi implementations look exactly alike. Each agency has their
-        own priorities and specific challenges that they are attempting to solve
-        with interoperability. That said, the most successful Ed-Fi
-        implementations share many of the same genes, the same foundation. As
-        the Ed-Fi Community has grown, we've seen best practices and patterns of
-        success emerge.
-      </p>
-      <p>
-        Our team has collected valuable field knowledge as we've helped local
-        education agencies, state education agencies, technology providers,
-        collaboratives, and other organizations get running on Ed-Fi. Now, Ed-Fi
-        has a large enough sample size, with enough use case variety, to provide
-        some universal implementation guidance for the benefit of all Ed-Fi
-        users.
-      </p>
-      <p>
-        Our team has done the work to document their knowledge on Ed-Fi
-        implementation best practices. This includes information about how to
-        identify your priority use case, the areas where interoperability can
-        offer a robust solution, how to build an effective implementation team,
-        and resources to help you move through implementation smoothly.
-      </p>
-      <p>
-        We're calling these training resources the Implementation Playbooks.
+      Every Ed-Fi implementation is unique, but the most successful ones share common foundations. Drawing from years of fieldwork with agencies and providers, our team has captured proven practices and patterns into clear guidance. These Implementation Playbooks outline how to set priorities, build effective teams, and apply interoperability where it matters most—helping all Ed-Fi users move from setup to success.
       </p>
     </div>
   );
@@ -97,19 +74,10 @@ function GetStartedIntro() {
 
 function EducatorPipeline() {
   return (
-    <div className="margin-bottom--lg">
+    <div className="margin-top--lg">
       <Heading as="h2">Educator Pipeline</Heading>
       <p>
-        The Ed-Fi Alliance strives to help key stakeholders within Educator
-        Preparation Programs (EPPs), state education agencies (SEAs), local
-        education agencies (LEAs), and education service agencies (ESAs) make
-        sense of their disparate data sets by bringing them all together in one
-        place, the Ed-Fi Data Standard. The data standard, along with the
-        Educator Preparation Data Model (EPDM) (previously the Teacher
-        Preparation Data Model) can manage data on an educator's full-career
-        lifecycle, from pre-enrollment through their time in an educator
-        preparation program, the certification process and in-service work at
-        K-12 institutions, and the outcomes of those students.
+      The Ed-Fi Alliance helps stakeholders in EPPs, SEAs, LEAs, and ESAs unify disparate data through the Ed-Fi Data Standard. Paired with the Educator Preparation Data Model (EPDM), it supports tracking an educator’s full career—from pre-enrollment and certification to K-12 service and student outcomes.
       </p>
       <Link
         to="/getting-started/educator-pipeline"
@@ -123,7 +91,7 @@ function EducatorPipeline() {
 
 function Exchange() {
   return (
-    <div className="margin-bottom--lg">
+    <div className="margin-top--lg margin-bottom--lg">
       <Heading as="h2">Ed-Fi Exchange</Heading>
       <p>
         The Ed-Fi Exchange is a technology hub for community contributions aligned to the Ed-Fi Data Standard and Implementation Suite.
@@ -164,25 +132,29 @@ function Main() {
     <div className="main">
       <div className="container">
         <div className="row">
-          <div className="col col--7">
+          <div className="col col--12">
             <GetStartedIntro></GetStartedIntro>
           </div>
+        </div>
+        <div className="row">
           <div className="col col--4">
             <SeaPlaybook></SeaPlaybook>
+          </div>
+          <div className="col col--4">
             <TechPlaybook></TechPlaybook>
+          </div>
+          <div className="col col--4">
             <EsaPlaybook></EsaPlaybook>
           </div>
         </div>
         <div className="row">
-          <div className="col">
+          <div className="col col--6">
             <EducatorPipeline></EducatorPipeline>
           </div>
-        </div>
-        <div className="row">
-          <div className="col col--10">
+          <div className="col col--6">
             <Exchange></Exchange>
           </div>
-          <div className="col col--2">
+          {/* <div className="col col--2">
             <ThemedImage
               alt="Ed-Fi Exchange Logo"
               sources={{
@@ -190,8 +162,9 @@ function Main() {
                 dark
               }}
             />
-          </div>
+          </div> */}
         </div>
+
       </div>
     </div>
   );

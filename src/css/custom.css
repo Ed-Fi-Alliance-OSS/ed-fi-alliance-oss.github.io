@@ -142,6 +142,10 @@
   margin-bottom: 2rem;
 }
 
+.hero--primary h1 {
+  color: #fff;
+}
+
 table, .table {
   margin-bottom: 2rem;
 }
