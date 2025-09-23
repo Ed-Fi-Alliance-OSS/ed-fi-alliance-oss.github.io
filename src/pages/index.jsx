@@ -19,7 +19,7 @@ function HomepageHeader() {
         <Heading as="h1" className="hero__title">
           {siteConfig.title}
         </Heading>
-        <p className="hero__subtitle">
+        <p className="homepage hero__subtitle">
           Connecting Education Data.
           <br />
           Seamlessly. Securely.

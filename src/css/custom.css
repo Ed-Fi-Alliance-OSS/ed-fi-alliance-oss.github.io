@@ -158,7 +158,7 @@
 }
 
 /* Homepage hero subtitle uses standard font color */
-.hero .hero__subtitle {
+.homepage.hero__subtitle {
   color: var(--ifm-font-color-base);
 }
 
