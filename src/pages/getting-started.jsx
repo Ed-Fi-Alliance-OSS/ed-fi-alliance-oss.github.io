@@ -77,7 +77,7 @@ function EducatorPipeline() {
     <div className="margin-top--lg">
       <Heading as="h2">Educator Pipeline</Heading>
       <p>
-      The Ed-Fi Alliance helps stakeholders in EPPs, SEAs, LEAs, and ESAs unify disparate data through the Ed-Fi Data Standard. Paired with the Educator Preparation Data Model (EPDM), it supports tracking an educator’s full career—from pre-enrollment and certification to K-12 service and student outcomes.
+      The Ed-Fi Alliance helps agencies unify data through the Ed-Fi Standard and EPDM, tracking an educator’s career from pre-enrollment to student outcomes.
       </p>
       <Link
         to="/getting-started/educator-pipeline"

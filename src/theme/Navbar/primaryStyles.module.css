@@ -171,7 +171,7 @@
 }
 
 .shortcut span {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   line-height: 1;
   color: #484545;
@@ -209,7 +209,7 @@
   height: var(--primary-nav-height);
   padding: 0 9px;
   box-sizing: border-box;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   text-decoration: none;
   color: var(--ifm-color-primary-dark);
