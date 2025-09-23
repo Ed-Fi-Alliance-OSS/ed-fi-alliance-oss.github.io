@@ -41,14 +41,21 @@
   --ifm-font-color-base: #474545;
   --ifm-heading-color: var(--ifm-color-primary-darkest);
 
-
   /* Adjust navbar height for content offset (primary nav) */
   --ifm-navbar-height: 83px; /* match increased primary nav height */
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary-dark: #0031F1;
+  --ifm-color-primary: #4099FF;
+  --ifm-color-primary-dark: #004CFF;
+  --ifm-color-primary-darker: #337aff;
+  --ifm-color-primary-darkest: #e6f0ff;
+  --ifm-color-primary-light: #002F8C;
+  --ifm-color-primary-lighter: #2c4d78;
+  --ifm-color-primary-lightest: #02215D;
+  --ifm-font-color-base: #D1D5DB;
+
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
@@ -142,11 +149,15 @@
   margin-bottom: 2rem;
 }
 
+<<<<<<< HEAD
 .hero--primary h1 {
   color: #fff;
 }
 
 table, .table {
+=======
+.table {
+>>>>>>> f65f7ae5aee28a36a19a8abe3802598426990bd5
   margin-bottom: 2rem;
 }
 
@@ -316,7 +327,7 @@ iframe {
 }
 
 /* =========================================================
-   2.5) Fake Tree line #.menu__list-item-collapsible::before (category header row)
+   2) Fake Tree line #.menu__list-item-collapsible::before (category header row)
    ========================================================= */
 
    .theme-doc-sidebar-item-category .menu__list-item:last-child .menu__list-item-collapsible::before {
@@ -396,7 +407,7 @@ iframe {
 }
 
 /* =========================================================
-   3) Link tree horz  — #a.menu__link::before
+   3.5) Link tree horz  — #a.menu__link::before
      3 level+ vert #a.menu__link::after
    ========================================================= */
 
@@ -675,7 +686,91 @@ nav.navbar .navbar__items--right {
 
 /* =============================================== End Navbar Customizations  ========================================= */
 
-/* =============================================== Breadcrumb Customizations  ========================================= */
+/* =============================================== DocItem Customizations  ========================================= */
+
+/* ======== General ==================*/
+.edfi-doc-item .markdown h1:first-child {
+  --ifm-h1-font-size: 2.875rem;
+  margin-bottom: 32px;
+}
+
+.edfi-doc-item .markdown > h2 {
+  --ifm-h2-font-size: 1.875rem;
+}
+
+.edfi-doc-item a {
+  font-weight: 700;
+}
+
+.edfi-doc-item ul li a,
+.edfi-doc-item ol li a{
+  font-weight: 500;
+}
+
+.edfi-doc-item .table-of-contents {
+  font-size: .875rem;
+  padding-left: 16px;
+}
+
+.edfi-doc-item .table-of-contents a.table-of-contents__link {
+  font-weight: 400;
+}
+
+.edfi-doc-item .table-of-contents a.table-of-contents__link--active {
+  font-weight: 500;
+}
+
+/* ======== Layout ==================*/
+@media (min-width: 997px) {
+  .edfi-doc-item .theme-doc-markdown {
+    margin: 88px auto 0;
+    padding: 0 6.3%;
+  }
+
+  /* make room for breadcrumbs */
+  .edfi-doc-item > .row > .col--3 {
+    margin-top: 114px;
+  }
+
+  .edfi-doc-item .tableOfContents_bqdL {
+    top: var(--combined-top-offset);
+  }
+}
+
+/* ======== Admonitions/Alerts  ==================*/
+.edfi-doc-item .alert {
+  border-radius: 5px;
+  box-shadow: none;
+  border: none;
+  padding: 19px 30px 17px 25px;
+}
+
+.edfi-doc-item .alert.theme-admonition-note {
+  --ifm-alert-background-color: #F2F6FF;
+}
+
+[data-theme='dark'] .edfi-doc-item .alert.theme-admonition-note {
+  --ifm-alert-background-color: #1b3556;
+}
+
+/* ======== Tables  ==================*/
+
+.edfi-doc-item table {
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.edfi-doc-item table th,
+.edfi-doc-item table td {
+  color: var(--ifm-font-color-base);
+  font-weight: 400;
+}
+
+.edfi-doc-item table thead tr {
+  border-bottom: none;
+}
+
+/* ======== Breadcrumbs  ==================*/
 
 @media (min-width: 997px) {
   .edfi-doc-item > .row {
@@ -693,6 +788,7 @@ nav.navbar .navbar__items--right {
 
   .edfi-breadcrumbs-wrap .breadcrumbs__link {
     font-size: .6975rem;
+    font-weight: 400;
   }
 
   .edfi-breadcrumbs-wrap .breadcrumbs__item--active .breadcrumbs__link {
@@ -710,34 +806,153 @@ nav.navbar .navbar__items--right {
   }
 }
 
-/* =============================================== End Breadcrumb Customizations  ========================================= */
-
-/* =============================================== DocItem Customizations  ========================================= */
-
-.edfi-doc-item .markdown h1:first-child {
-  --ifm-h1-font-size: 2.875rem;
-  margin-bottom: 32px;
+/* ====== Pagination ======= */
+.ed-fi-pagination-nav-link {
+  display: flex;
+  align-items: center;
+  border-color: #ACB6CA;
+  border-radius: 5px;
+  line-height: 1.15;
+  padding: 13px;
+  padding-right: 30px;
+  color: #0055FA;
 }
 
-.edfi-doc-item .markdown > h2 {
-  --ifm-h2-font-size: 1.875rem;
+.ed-fi-pagination-nav-link.pagination-nav__link--next {
+  justify-content: flex-end;
+  padding-left: 30px;
+  padding-right: 13px;
 }
 
-.edfi-doc-item .table-of-contents {
-  font-size: .875rem;
+.ed-fi-pagination-nav-link .pagination-nav__arrow {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 24px;
+  min-width: 24px;
+  padding-right: 10px;
+  border-right: 1px solid #D3D3D3;
 }
 
-@media (min-width: 997px) {
-  .edfi-doc-item .theme-doc-markdown {
-    margin: 88px auto 0;
-    padding: 0 6.3%;
+.ed-fi-pagination-nav-link .pagination-nav__arrow.next {
+  padding-right: 0;
+  padding-left: 10px;
+  border-right: none;
+  border-left: 1px solid #D3D3D3;
+}
+
+.pagination-nav-info {
+  padding-left: 20px;
+  padding-top: 7px;
+  padding-bottom: 16px;
+}
+
+.pagination-nav__link--next .pagination-nav-info {
+  padding-left: 0;
+  padding-right: 20px;
+}
+
+.ed-fi-pagination-nav-link .pagination-nav__sublabel {
+  font-size: .6875rem;
+  color: #666666;
+  margin-bottom: 8px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+.ed-fi-pagination-nav-link .pagination-nav__label {
+  font-size: 1.25rem;
+  color: var(--ifm-color-primary-darkest);
+}
+
+.ed-fi-pagination-nav-link .pagination-nav__label::before,
+.ed-fi-pagination-nav-link .pagination-nav__label::after {
+  display: none;
+}
+
+.ed-fi-pagination-nav-link:hover {
+  border: 3px solid #004EFF;
+  padding: 11px;
+  padding-right: 28px;
+}
+
+.ed-fi-pagination-nav-link.pagination-nav__link--next:hover {
+  padding-left: 28px;
+  padding-right: 11px;
+}
+
+.ed-fi-pagination-nav-link:hover .pagination-nav__label {
+  color: #0055FA;
+}
+
+.ed-fi-pagination-nav-link:hover .pagination-nav__sublabel {
+  color: var(--ifm-color-primary-darkest);
+}
+
+@media (max-width: 996px) {
+  .ed-fi-pagination-nav-link {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 10px;
   }
 
-  .edfi-doc-item > .row > .col--3 {
-    margin-top: 114px;
+  .ed-fi-pagination-nav-link.pagination-nav__link--next {
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: 10px;
+  }
+
+  .ed-fi-pagination-nav-link .pagination-nav__arrow {
+    order: 1;
+    height: unset;
+    padding: 0;
+    border: none;
+    margin-right: auto;
+    width: 10px;
+    min-width: 10px;
+    margin-bottom: -15px;
+  }
+
+  .ed-fi-pagination-nav-link .pagination-nav__arrow.next {
+    padding: 0;
+    margin-left: auto;
+    margin-right: 0;
+    border: none;
+  }
+
+  .ed-fi-pagination-nav-link .pagination-nav__sublabel {
+    font-size: .625rem;
+    margin-bottom: 4px;
+  }
+
+  .ed-fi-pagination-nav-link .pagination-nav__label {
+    font-size: 1rem;
+  }
+
+  .pagination-nav-info {
+    order: 2;
+    padding-left: 15px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+  }
+
+  .pagination-nav__link--next .pagination-nav-info {
+    padding-left: 0;
+    padding-right: 15px;
+  }
+
+  .ed-fi-pagination-nav-link:hover {
+    border: 3px solid #004EFF;
+    padding: 8px;
+    padding-right: 18px;
+  }
+
+  .ed-fi-pagination-nav-link.pagination-nav__link--next:hover {
+    padding-left: 18px;
+    padding-right: 8px;
   }
 }
-
-
 
 /* =============================================== End DocItem Customizations  ========================================= */

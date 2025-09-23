@@ -72,11 +72,7 @@ export default function PrimaryNav() {
             })}
             <button type="button" onClick={toggle} className={styles.modeToggle} aria-label="Toggle dark mode" aria-pressed={colorMode === 'dark'}>
             <div className={styles.modeToggleInner}>
-              {colorMode === 'dark' ? (
-                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M9.37 5.51A7 7 0 0 0 17 15a7 7 0 0 1-7.63-9.49M12 3a9 9 0 1 0 9 9 9 9 0 0 0-9-9Z"/></svg>
-              ) : (
-                <img src="/img/light-mode.svg" alt="Light mode" width="20" height="20" />
-              )}
+              <img src="/img/light-mode.svg" alt="Light mode" width="20" height="20" />
             </div>
           </button>
           </ul>
