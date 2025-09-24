@@ -496,7 +496,9 @@ export default {
         'Mapping Document':
           'https://edfidocs.blob.core.windows.net/$web/assets/partners/badging/EdFi%20-%20Panorama%20Mapping%20Pathways%209.3.2025.xlsx',
       },
-      versionCompatibility: 'Panorama Pathways has been tested against Ed-Fi API Suite 3, V5.3, 6.1, and 7.3 and Ed-Fi Data Standard versions 3.3.1-b through 5.2.0.',
+      versionCompatibility: [
+        'Panorama Pathways has been tested against Ed-Fi API Suite 3, V5.3, 6.1, and 7.3 and Ed-Fi Data Standard versions 3.3.1-b through 5.2.0.',
+      ],
       availability: 'Available to any agency (all sizes) or vendor in the U.S.',
     },
 
