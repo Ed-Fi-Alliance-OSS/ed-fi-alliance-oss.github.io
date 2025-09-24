@@ -7,3 +7,7 @@ This is pre-release documentation for software that is not yet available.
 :::
 
 Coming soon.
+
+## Contents
+
+- [Configuring an Identity Provider for Ed-Fi Admin App](./identity-provider.md)
