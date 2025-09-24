@@ -342,7 +342,7 @@ Azure and the Ed-Fi ODS / API Cloud Deployment for AWS, both published on the
 
 #### Built-In Support for AB Connect
 
-Admin App v1.5 comes with built-in integration to Certica's Academic Benchmark
+Admin App v1.5 comes with built-in integration to Instructure's Academic Benchmarks
 product, an online resource for academic benchmarks and learning standards. The
 integration includes a free license to several national and state-level learning
 standards. See the Ed-Fi Learning Standards Sync Utility documentation for

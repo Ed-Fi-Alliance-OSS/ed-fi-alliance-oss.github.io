@@ -6,17 +6,17 @@ This section describes how to get started with the Learning Standards Sync Utili
 
 ## Steps
 
-* Step 1. Obtain Credentials from Academic Benchmarks
+* Step 1. Obtain Credentials from Instructure - Elevate Standards Alignment, powered by Academic Benchmarks
 * Step 2. Download and Extract to Location
 * Step 3. Install Academic Benchmarks Vendor Claim Set to the Target ODS
 * Step 4. Create Ed-Fi Key and Secret
 * Step 5. Execute the Learning Standards Sync Utility
 
-### Step 1. Obtain Credentials from Academic Benchmarks
+### Step 1. Obtain Credentials from Elevate Standards Alignment, powered by Academic Benchmarks
 
-To use the Learning Standards Sync Utility, you will need a AB ID and key from Certica Solutions. Have that AB ID and key available when ready for the learning standards synchronization process. Vendors and education agencies can contact Certica Solutions for a free license to AB Connect here.
+To use the Learning Standards Sync Utility, you will need a AB ID and key from Instructure’s Elevate Standards Alignment product, which provides the AB Connect API standards solution. Have that AB ID and key available when ready for the learning standards synchronization process. Vendors and education agencies can contact Instructure for a free license to AB Connect here.
 
-Certica Solutions provides support for Academic Benchmarks via [absupport@certicasolutions.com](mailto://absupport@certicasolutions.com). If you have any trouble with the licensing or synchronization, feel free to reach out.
+Instructure provides support for Academic Benchmarks via [standards-support@instructure.com](mailto://standards-support@instructure.com). If you have any trouble with the licensing or synchronization, feel free to reach out.
 
 ### Step 2. Download and Extract to Location
 
@@ -362,9 +362,9 @@ This section provides troubleshooting information.S
 
 The Ed-Fi Learning Standards Sync Utility contains robust logging, capable of displaying both on-screen messaging and file log messaging. These can be used to provide more information on potential issues that may be encountered when using the tool.
 
-#### Certica AB Product Troubleshooting
+#### Instructure AB Product Troubleshooting
 
-Certica Solutions provides support for Academic Benchmarks via [absupport@certicasolutions.com](mailto://absupport@certicasolutions.com). If you have any trouble with the licensing or issues with the synchronization that appear to originate with the AB solution, feel free to reach out.
+Instructure provides support for AB Connect via [standards-support@instructure.com](mailto://standards-support@instructure.com). If you have any trouble with the licensing or issues with the synchronization that appear to originate with the AB solution, feel free to reach out.
 
 #### Using the [-v | --verbose] Argument
 
