@@ -482,6 +482,60 @@ export default {
       versionCompatibility: ['Works with any ODS/API on DS 3.3.1b and beyond'],
       availability: 'Availability & Preconditions: Runway supports Ed-Fi ODS/API 3.3.1b and later. LEAs must be configured with an active Ed-Fi ODS and appropriate API credentials. Mapping templates (Earthmover bundles) are aligned to the local assessment formats; these may vary by state or LEA. Use requires a support agreement with EA; pricing varies depending on scope. Runway is currently deployed in Texas, as part of the Texas Education Exchange; South Carolina statewide implementation supported automated and manual assessment data uploads for all districts. ',
     },
+
+
+
+    {
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/panorama-education.png',
+      productName: 'Panorama Pathways',
+      provider: 'Panorama Education',
+      website: 'https://www.panoramaed.com/products/pathways-graduation-tracking-tool',
+      validThrough: 'September 16, 2027',
+      verifyingAgencies: ['South Carolina Department of Education'],
+      documentation: {
+        'Mapping Document':
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/badging/EdFi%20-%20Panorama%20Mapping%20Pathways%209.3.2025.xlsx',
+      },
+      versionCompatibility: [
+        'Panorama Pathways has been tested against Ed-Fi API Suite 3, V5.3, 6.1, and 7.3 and Ed-Fi Data Standard versions 3.3.1-b through 5.2.0.',
+      ],
+      availability: 'Available to any agency (all sizes) or vendor in the U.S.',
+    },
+
+    {
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/panorama-education.png',
+      productName: 'Panorama Surveys and Engagement',
+      provider: 'Panorama Education',
+      website: 'https://www.panoramaed.com/products/surveys',
+      validThrough: 'September 16, 2027',
+      verifyingAgencies: ['Boston Public Schools'],
+      documentation: {
+        'Mapping Document':
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/badging/EdFi%20-%20Panorama%20Mapping%20Surveys%209.3.2025.xlsx',
+      },
+      versionCompatibility: [
+        'Panorama Surveys and Engagement has been tested against Ed-Fi API Suite 3, V5.3, 6.1, and 7.3 and Ed-Fi Data Standard versions 3.3.1-b through 5.2.0.',
+      ],
+      availability: 'Ed-Fi related product functionality in Panorama Surveys and Engagement is available to district partners in the US.',
+    },
+
+    {
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/panorama-education.png',
+      productName: 'Panorama Solara',
+      provider: 'Panorama Education',
+      website: 'https://www.panoramaed.com/products/ai/panorama-solara',
+      validThrough: 'September 16, 2027',
+      verifyingAgencies: ['Boston Public Schools'],
+      documentation: {
+        'Mapping Document':
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/badging/EdFi%20-%20Panorama%20Mapping%20Solara%209.3.2025.xlsx',
+      },
+      versionCompatibility: [
+        'Panorama Solara has been tested against Ed-Fi API Suite 3, V5.3, 6.1, and 7.3 and Ed-Fi Data Standard versions 3.3.1-b through 5.2.0.',
+      ],
+      availability: 'Available to any agency (all sizes) or vendor in the U.S.',
+    },
+
   ],
 
   implementationPartner: [
