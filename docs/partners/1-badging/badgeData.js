@@ -513,7 +513,9 @@ export default {
         'Mapping Document':
           'https://edfidocs.blob.core.windows.net/$web/assets/partners/badging/EdFi%20-%20Panorama%20Mapping%20Surveys%209.3.2025.xlsx',
       },
-      versionCompatibility: 'Panorama Surveys and Engagement has been tested against Ed-Fi API Suite 3, V5.3, 6.1, and 7.3 and Ed-Fi Data Standard versions 3.3.1-b through 5.2.0.',
+      versionCompatibility: [
+        'Panorama Surveys and Engagement has been tested against Ed-Fi API Suite 3, V5.3, 6.1, and 7.3 and Ed-Fi Data Standard versions 3.3.1-b through 5.2.0.',
+      ],
       availability: 'Ed-Fi related product functionality in Panorama Surveys and Engagement is available to district partners in the US.',
     },
 
