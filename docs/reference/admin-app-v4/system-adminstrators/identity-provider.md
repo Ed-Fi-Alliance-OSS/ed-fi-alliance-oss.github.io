@@ -32,11 +32,13 @@ To be written:
 
 :::warning
 
-The Ed-Fi Alliance software developers are not network security experts. Please consult your own trusted experts and information sources when applying these notes to your environment.
+The Ed-Fi Alliance software developers are not network security experts. Please consult your own trusted experts and information sources when applying these notes to your environment. The challenges of properly securing an IdP are a strong argument for using third-party managed service.
 
 :::
 
-The Ed-Fi Alliance's development and testing environments use Keycloak hosted inside of a Docker container, with NGiNX providing a reverse proxy layer. We have found the following NGiNX configuration to be useful:
+The Ed-Fi Alliance's development and testing environments use Keycloak hosted inside of a Docker container, with NGiNX providing a reverse proxy layer. Our network configuration is a high trust environment: inside the container network we do not use Transport Layer Security (TLS). In other words, we allow `http` instead of enforcing `https`. This frees up the development team from needing to configure a certificate in Keycloak; the NGiNX reverse proxy handles the TLS termination. However, this is not a universally accepted best practice. Many practitioners prefer a [Zero Trust](https://www.cisa.gov/topics/cybersecurity-best-practices/zero-trust) architecture that assumes the network has been compromised and unsecured connections will be intercepted.
+
+We have found the following NGiNX configuration to be useful for our high-trust configuration:
 
 ```none
 location /auth {
