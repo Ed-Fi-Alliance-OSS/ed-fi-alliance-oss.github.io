@@ -530,7 +530,6 @@ export default {
       availability: 'Available to any agency (all sizes) or vendor in the U.S.',
     },
 
-    
   ],
 
   implementationPartner: [
