@@ -69,34 +69,78 @@ erDiagram
     }
 ```
 
-Note that the `InstanceType` property has no restrictions - this column is for human readers.
+:::note
+The `InstanceType` property has no restrictions - this column is for
+human readers.
+:::
 
-## District-Specific Routing Example
+Examples below outline steps to configure explicit Year-Specific routes and District-Specific routes.
 
-To route requests to two district-specific ODS databases, for Local Education Agency ID values 255901 and 255902:
+## Configuring Year-Specific Routes
 
-- Set `"OdsContextRouteTemplate": "{instanceId}" in the appsettings file or `ApiSettings__OdsContextRouteTemplate` environment variable.
-- Create the following records in `dbo.OdsInstances`:
+To route requests to two year-specific ODS databases, for school years 2026 and
+2027 with explicit school year segment in the route:
 
-  | Name              | InstanceType | ConnectionString |
-  | ----------------- | ------------ | ---------------- |
-  | 'EdFi_Ods_255901' | 'District'   | 'host=??;database=EdFi_Ods_255901;username=??;password=??' |
-  | 'EdFi_Ods_255902' | 'District'   | 'host=??;database=EdFi_Ods_255902;username=??;password=??' |
+- **Step 1:** Set `"OdsContextRouteTemplate": "{schoolYearFromRoute:range(2000,2099)}"` in the
+  appsettings file or`ApiSettings__OdsContextRouteTemplate` environment
+  variable.
 
-- Assuming these are the first records in the table, they will have `OdsInstanceId` values of 1 and 2, respectively. Create the following records in the `dbo.OdsInstanceContext`:
+- **Step 2:** Create the following records in `dbo.OdsInstances`:
 
-  |  OdsInstance_OdsInstanceId | ContextKey   | ContextValue |
-  | -------------------------- | ------------ | ------------ |
-  | 1                          | 'instanceId' | '255901'     |
-  | 2                          | 'instanceId' | '255902'     |
+  OdsInstanceId | Name          | InstanceType | ConnectionString                                         |
+  ------------- | --------------| -------------| ---------------------------------------------------------|
+  1             | EdFi_Ods_2026 | YearSpecific | Server=??;Database=EdFi_Ods_2026;User ID=??;Password=??; |
+  2             | EdFi_Ods_2027 | YearSpecific | Server=??;Database=EdFi_Ods_2027;User ID=??;Password=??; |
 
-And below are the SQL statements to support this:
+- **Step 3:** Create the following records in the `dbo.OdsInstanceContext`:
+
+  OdsInstance_OdsInstanceId | ContextKey          | ContextValue |
+  ------------------------- | --------------------| ------------ |
+  1                         | schoolYearFromRoute | 2026         |
+  2                         | schoolYearFromRoute | 2027         |
+
+SQL statements:
 
 ```sql
-INSERT INTO dbo.odsinstances ("name", instancetype, connectionstring) 
+INSERT INTO dbo.odsinstances ("name", instancetype, connectionstring)
 VALUES
-	('EdFi_Ods_255901', 'DistrictSpecific', 'host=??;database=EdFi_Ods_255901;username=??;password=??'),
-	('EdFi_Ods_255902', 'DistrictSpecific', 'host=??;database=EdFi_Ods_255902;username=??;password=??');
+ ('EdFi_Ods_2026', '2026 ODS', 'Server=localhost;Database=EdFi_Ods_2026;Integrated Security=True;Encrypt=False'),
+ ('EdFi_Ods_2027', '2027 ODS', 'Server=localhost;Database=EdFi_Ods_2027;Integrated Security=True;Encrypt=False');
+
+INSERT INTO dbo.odsinstancecontexts (odsinstance_odsinstanceid, contextkey, contextvalue)
+SELECT odsinstanceid, 'schoolYearFromRoute', '2026' FROM dbo.odsinstances WHERE "name" = 'EdFi_Ods_2026'
+UNION
+SELECT odsinstanceid, 'schoolYearFromRoute', '2027' FROM dbo.odsinstances WHERE "name" = 'EdFi_Ods_2027';
+```
+
+## Configuring District-Specific Routes
+
+To route requests to two district-specific ODS databases, for Local Education
+Agency ID values 255901 and 255902 with explicit district id segment in the route:
+
+- **Step 1:** Set `"OdsContextRouteTemplate": "{instanceId}"` in the appsettings file
+  or `ApiSettings__OdsContextRouteTemplate` environment variable.
+- **Step 2:** Create the following records in `dbo.OdsInstances`:
+
+  OdsInstanceId | Name            | InstanceType     | ConnectionString                                           |
+  --------------| ----------------| -----------------| -----------------------------------------------------------|
+  1             | EdFi_Ods_255901 | DistrictSpecific | Server=??;Database=EdFi_Ods_255901;User ID=??;Password=??; |
+  2             | EdFi_Ods_255902 | DistrictSpecific | Server=??;Database=EdFi_Ods_255902;User ID=??;Password=??; |
+
+- **Step 3:** Create the following records in the `dbo.OdsInstanceContext`:
+
+  OdsInstance_OdsInstanceId | ContextKey | ContextValue |
+  --------------------------| -----------| ------------ |
+  1                         | instanceId | 255901       |
+  2                         | instanceId | 255902       |
+
+SQL statements:
+
+```sql
+INSERT INTO dbo.odsinstances ("name", instancetype, connectionstring)
+VALUES
+ ('EdFi_Ods_255901', 'DistrictSpecific', 'Server=localhost;Database=EdFi_Ods_255901;Integrated Security=True;Encrypt=False;'),
+ ('EdFi_Ods_255902', 'DistrictSpecific', 'Server=localhost;Database=EdFi_Ods_255902;Integrated Security=True;Encrypt=False;');
 
 INSERT INTO dbo.odsinstancecontexts (odsinstance_odsinstanceid, contextkey, contextvalue)
 SELECT odsinstanceid, 'instanceid', '255901' FROM dbo.odsinstances WHERE "name" = 'EdFi_Ods_255901'
