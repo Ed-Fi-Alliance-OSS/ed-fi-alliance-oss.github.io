@@ -225,7 +225,7 @@ optional configuration values include:
   </tr>
 
   <tr style={{verticalAlign: 'top'}}>
-    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>MailSettings:Smtp⮰<br/>:DeliveryMethod</p></td>
+    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>MailSettings:Smtp<br/>:DeliveryMethod</p></td>
     <td>Network</td>
     <td>
     Specifies how email messages are delivered. The valid choices for this are:
@@ -237,7 +237,7 @@ optional configuration values include:
   </tr>
 
   <tr style={{verticalAlign: 'top'}}>
-    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>MailSettings:Smtp⮰<br/>:SpecifiedPickupDirectory⮰<br/>:PickupDirectoryLocation</p></td>
+    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>MailSettings:Smtp<br/>:SpecifiedPickupDirectory<br/>:PickupDirectoryLocation</p></td>
     <td>C:\temp\location\emails</td>
     <td>When a Delivery Method of SpecifiedPickupDirectory is used, this is the folder where email messages will be saved to, to be picked up by an external mail application for processing and sending</td>
   </tr>
@@ -284,115 +284,115 @@ optional configuration values include:
   </tr>
 
   <tr style={{verticalAlign: 'top'}}>
-    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>ApiSettings:Caching⮰<br/>:Security:AbsoluteExpirationMinutes</p></td>
+    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>ApiSettings:Caching<br/>:Security:AbsoluteExpirationMinutes</p></td>
     <td>10</td>
     <td>The amount of time the security metadata from `EdFi_Security` database is cached. E.g., if it is set to 10 mins, the claim set changes will reflect in the API at least after 10 mins without needing to recycle API process.</td>
   </tr>
 
   <tr style={{verticalAlign: 'top'}}>
-    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>ApiSettings:Caching⮰<br/>:Descriptors:AbsoluteExpirationSeconds</p></td>
+    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>ApiSettings:Caching<br/>:Descriptors:AbsoluteExpirationSeconds</p></td>
     <td>1800</td>
     <td>Number of seconds after which the descriptor cache is refreshed.</td>
   </tr>
 
   <tr style={{verticalAlign: 'top'}}>
-    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>ApiSettings:Caching⮰<br/>:Descriptors:UseExternalCache</p></td>
+    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>ApiSettings:Caching<br/>:Descriptors:UseExternalCache</p></td>
     <td>true</td>
     <td>When true, the Descriptor cache will use the configured external cache provider.</td>
   </tr>
 
   <tr style={{verticalAlign: 'top'}}>
-    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>ApiSettings:Caching⮰<br/>:PersonUniqueIdToUsi:AbsoluteExpirationSeconds</p></td>
+    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>ApiSettings:Caching<br/>:PersonUniqueIdToUsi:AbsoluteExpirationSeconds</p></td>
     <td>14400</td>
     <td>Number of seconds after which the PersonUniqueIdToUsi mapping is refreshed. This settings is applied only when SlidingExpirationSeconds is not provided or set to 0.</td>
   </tr>
 
   <tr style={{verticalAlign: 'top'}}>
-    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>ApiSettings:Caching⮰<br/>:PersonUniqueIdToUsi:SlidingExpirationSeconds</p></td>
+    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>ApiSettings:Caching<br/>:PersonUniqueIdToUsi:SlidingExpirationSeconds</p></td>
     <td>14400</td>
     <td>Number of seconds after which a PersonUniqueIdToUsi mapping is refreshed if not accessed.</td>
   </tr>
 
   <tr style={{verticalAlign: 'top'}}>
-    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>ApiSettings:Caching⮰<br/>:PersonUniqueIdToUsi:UseProgressiveLoading</p></td>
+    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>ApiSettings:Caching<br/>:PersonUniqueIdToUsi:UseProgressiveLoading</p></td>
     <td>false</td>
     <td>When set to true, PersonUniqueIdToUsi mapping is loaded progressively as needed to fulfill the API requests (rather than being fully initialized in the background upon first request).</td>
   </tr>
 
   <tr style={{verticalAlign: 'top'}}>
-    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>ApiSettings:Caching⮰<br/>:PersonUniqueIdToUsi:CacheSuppression:Student</p></td>
+    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>ApiSettings:Caching<br/>:PersonUniqueIdToUsi:CacheSuppression:Student</p></td>
     <td>false</td>
     <td>Indicates whether student UniqueId/USI mappings should be cached, or retrieved on demand with each request. When set to true,  caching is suppressed.</td>
   </tr>
 
   <tr style={{verticalAlign: 'top'}}>
-    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>ApiSettings:Caching⮰<br/>:PersonUniqueIdToUsi:CacheSuppression:Staff</p></td>
+    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>ApiSettings:Caching<br/>:PersonUniqueIdToUsi:CacheSuppression:Staff</p></td>
     <td>false</td>
     <td>Indicates whether staff UniqueId/USI mappings should be cached, or retrieved on demand with each request. When set to true,  caching is suppressed.</td>
   </tr>
 
   <tr style={{verticalAlign: 'top'}}>
-    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>ApiSettings:Caching⮰<br/>:PersonUniqueIdToUsi:CacheSuppression:Parent</p></td>
+    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>ApiSettings:Caching<br/>:PersonUniqueIdToUsi:CacheSuppression:Parent</p></td>
     <td>false</td>
     <td>Indicates whether parent UniqueId/USI mappings should be cached, or retrieved on demand with each request. When set to true, caching is suppressed. For use with data standard 4.0 and below. This setting has no affect after data standard 4.0.</td>
   </tr>
 
   <tr style={{verticalAlign: 'top'}}>
-    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>ApiSettings:Caching⮰<br/>:PersonUniqueIdToUsi:CacheSuppression:Contact</p></td>
+    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>ApiSettings:Caching<br/>:PersonUniqueIdToUsi:CacheSuppression:Contact</p></td>
     <td>true</td>
     <td>Indicates whether contact UniqueId/USI mappings should be cached, or retrieved on demand with each request. When set to true, caching is suppressed. For use with data standard 5.0 and above. This setting has no affect before data standard 5.0.</td>
   </tr>
 
   <tr style={{verticalAlign: 'top'}}>
-    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>ApiSettings:Caching⮰<br/>:PersonUniqueIdToUsi:UseExternalCache</p></td>
+    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>ApiSettings:Caching<br/>:PersonUniqueIdToUsi:UseExternalCache</p></td>
     <td>true</td>
     <td>When true, the Person cache will use the configured external cache provider.</td>
   </tr>
 
   <tr style={{verticalAlign: 'top'}}>
-    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>ApiSettings:Caching⮰<br/>:ApiClientDetails:UseExternalCache</p></td>
+    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>ApiSettings:Caching<br/>:ApiClientDetails:UseExternalCache</p></td>
     <td>true</td>
     <td>When true, the API Client cache will use the configured external cache provider.</td>
   </tr>
 
   <tr style={{verticalAlign: 'top'}}>
-    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>ApiSettings:Caching⮰<br/>:ApiClientDetails:AbsoluteExpirationSeconds</p></td>
+    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>ApiSettings:Caching<br/>:ApiClientDetails:AbsoluteExpirationSeconds</p></td>
     <td>14400</td>
     <td>Number of seconds after which API Client information is refreshed if not accessed.</td>
   </tr>
 
   <tr style={{verticalAlign: 'top'}}>
-    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>ApiSettings:Caching⮰<br/>:ExternalCacheProvider</p></td>
+    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>ApiSettings:Caching<br/>:ExternalCacheProvider</p></td>
     <td>Redis</td>
     <td>Currently the only available option is "Redis". When left blank (default), the application will use in-memory caching rather than an external provider, if any of the "UseExternalCache" options is set to true.</td>
   </tr>
 
   <tr style={{verticalAlign: 'top'}}>
-    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>ApiSettings:Services⮰<br/>:Redis:Configuration</p></td>
+    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>ApiSettings:Services<br/>:Redis:Configuration</p></td>
     <td>Example: [see this document](https://stackexchange.github.io/StackExchange.Redis/Configuration.html)</td>
     <td>When `ExternalCacheProvider=="Redis"` , provide the connection string information here. Default: an empty string</td>
   </tr>
 
   <tr style={{verticalAlign: 'top'}}>
-    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>ApiSettings:Caching⮰<br/>:Security:AbsoluteExpirationMinutes</p></td>
+    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>ApiSettings:Caching<br/>:Security:AbsoluteExpirationMinutes</p></td>
     <td>10</td>
     <td>The amount of time the security metadata from `EdFi_Security` database is cached. E.g., if it is set to 10 mins, the claim set changes will reflect in the API at least after 10 mins without needing to recycle API process.</td>
   </tr>
 
   <tr style={{verticalAlign: 'top'}}>
-    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>ApiSettings:Caching⮰<br/>:Profiles:AbsoluteExpirationSeconds</p></td>
+    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>ApiSettings:Caching<br/>:Profiles:AbsoluteExpirationSeconds</p></td>
     <td>1800</td>
     <td>Number of seconds after which API client profile information is refreshed if not accessed.</td>
   </tr>
 
   <tr style={{verticalAlign: 'top'}}>
-    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>ApiSettings:Caching⮰<br/>:OdsInstances:AbsoluteExpirationSeconds</p></td>
+    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>ApiSettings:Caching<br/>:OdsInstances:AbsoluteExpirationSeconds</p></td>
     <td>300</td>
     <td>Number of seconds after which ODS Instance mapping information is refreshed if not accessed.</td>
   </tr>
 
   <tr style={{verticalAlign: 'top'}}>
-    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>ApiSettings:Caching⮰<br/>:Tenants:AbsoluteExpirationSeconds</p></td>
+    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>ApiSettings:Caching<br/>:Tenants:AbsoluteExpirationSeconds</p></td>
     <td>600</td>
     <td>Number of seconds after which Tenant information is refreshed if not accessed.</td>
   </tr>
@@ -437,6 +437,12 @@ optional configuration values include:
     <td>Plugin:Scripts</td>
     <td>`["tpdm"]`</td>
     <td>Configures the script (located in plugin folder by default) responsible for downloading the extension plugins and placing them in the plugin folder.</td>
+  </tr>
+
+  <tr style={{verticalAlign: 'top'}}>
+    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>:new: ApiSettings<br/>:Behaviors:AllowWhitespaceOnlyValues</p></td>
+    <td>false</td>
+    <td>Overrides the default behavior changed in v7.3 of not allowing whitespace-only values in (non-key) properties.</td>
   </tr>
 </table>
 

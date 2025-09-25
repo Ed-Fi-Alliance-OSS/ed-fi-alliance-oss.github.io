@@ -1,8 +1,10 @@
----
-draft: true
----
-
 # Ed-Fi Admin App v4
+
+:::warning
+
+This is pre-release documentation for software that is not yet available.
+
+:::
 
 The Ed-Fi Admin App v4 is a web-based administrative platform designed to manage
 Ed-Fi API deployments across multiple environments and tenants. It replaces
