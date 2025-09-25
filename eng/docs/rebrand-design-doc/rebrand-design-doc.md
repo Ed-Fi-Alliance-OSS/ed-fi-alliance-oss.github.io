@@ -10,7 +10,7 @@ The Ed-Fi Alliance is introducing a new brand identity to premiere at the Annual
 
 The Documentation system utilizes Docusaurus, a node / typescript powered web framework, to manage documents. Each document is written in Markdown (.md or .mdx) and supports the use of JSX style syntax for creating and styling components within the page. Please see here for a comprehensive overview of the Docusaurus system.
 
-![Docs Rebrand Overview](./img/screen-docs-overview.png)
+![Docs Rebrand Overview](https://edfidocs.blob.core.windows.net/$web/img/eng/docs/rebrand-design-doc/screen-docs-overview.png)
 
 ## Design Overview
 
@@ -73,7 +73,7 @@ This section manages the navigation items located on the left side of this page.
 
 A visual overview of the concept seen here:
 
-![Side Nav Bar w/ Annotations](./img/nav-node-annotations.png)
+![Side Nav Bar w/ Annotations](https://edfidocs.blob.core.windows.net/$web/img/eng/docs/rebrand-design-doc/nav-node-annotations.png)
 
 #### Admonitions
 

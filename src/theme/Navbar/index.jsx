@@ -9,7 +9,7 @@ export default function Navbar(props) {
       <div className={styles.topBar} role="region" aria-label="Ed-Fi top bar">
         <div className={styles.topBarInner}>
           <div className={styles.topLeft}>
-            <a href="https://www.ed-fi.org/" className={styles.topLink} target="_blank" rel="noopener noreferrer">Ed-fi.org</a>
+            <a href="https://www.ed-fi.org/" className={styles.topLink} target="_blank" rel="noopener noreferrer">Ed-Fi.org</a>
             <a href="/" className={`${styles.topLink} ${styles.active}`} aria-current="page">Docs</a>
             <a href="/community" className={styles.topLink}>Community</a>
             <a href="https://academy.ed-fi.org/" className={styles.topLink} target="_blank" rel="noopener noreferrer">Academy</a>
