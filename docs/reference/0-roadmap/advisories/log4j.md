@@ -1,5 +1,5 @@
 ---
-sidebar_position: 9
+sidebar_position: 10
 ---
 
 # Advisory: Analysis of the Log4j Vulnerability CVE-2021-44228
