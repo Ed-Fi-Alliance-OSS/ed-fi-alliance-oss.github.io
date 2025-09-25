@@ -45,7 +45,7 @@ function Main() {
         <div className="row margin-bottom--lg">
           <div className="col">
             <Heading as="h2">
-              <img src="/img/edficert-small.jpg" alt="" /> Certification
+              Certification
             </Heading>
             <p>
               Ed-Fi certifications allow product developers to demonstrate a
@@ -71,7 +71,7 @@ function Main() {
           </div>
           <div className="col">
             <Heading as="h2">
-              <img src="/img/edfibadge-small.jpg" alt="" /> Badging
+              Badging
             </Heading>
             <p>
               Ed-Fi Badges allow product developers to demonstrate support for

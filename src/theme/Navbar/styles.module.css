@@ -1,0 +1,111 @@
+:root {
+  --top-bar-height: 28px;
+}
+
+.topBar {
+  /* New blue matching Figma */
+  background-color: var(--ifm-color-primary);
+  color: #fff;
+  width: 100%;
+  height: var(--top-bar-height);
+  display: flex;
+  align-items: center;
+  z-index: 1030; /* above primary nav */
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.topBarInner {
+  width: 100%;
+  margin: 0;
+  padding: 2px 18px 0 15px;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.topLeft {
+  display: flex;
+  align-items: flex-end;
+  height: 100%;
+}
+
+.topLink {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 3px 14px;
+  background-color: transparent;
+  transition: background-color 150ms ease;
+}
+
+.topLink:hover {
+  background-color: #00199F;
+  text-decoration: none;
+  color: #fff;
+}
+
+.active {
+  background-color: #00199F;
+  pointer-events: none;
+}
+
+.topRight {
+  display: flex;
+  gap: 0.5px;
+  align-items: center;
+}
+
+.iconLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  text-decoration: none;
+  background-color: transparent;
+  transition: background-color 150ms ease;
+  color: #fff;
+  margin-bottom: 2px;
+}
+
+.iconLink svg {
+  width: 13px;
+  height: 13px;
+}
+
+.iconLink:hover {
+  background-color: #00199F;
+  color: #fff;
+}
+
+
+
+/* Hide original navbar on desktop, show on smaller screens */
+.mobileOnly { display:none; }
+@media (max-width:1100px) {
+  .mobileOnly { display:block; }
+}
+
+@media (max-width: 768px) {
+  .topBar {
+    height: var(--top-bar-height);
+  }
+
+  .topBarInner {
+    padding: 2px 8px 0;
+  }
+
+  nav.navbar--fixed-top {
+    top: var(--top-bar-height);
+  }
+  .topLink {
+    padding: 3px 8px;
+    font-size: 0.65rem;
+  }
+}
