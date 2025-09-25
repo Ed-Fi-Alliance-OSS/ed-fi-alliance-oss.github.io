@@ -3,7 +3,7 @@
 ## Before You Install
 
 This section provides general information to review before installing the Ed-Fi
-ODS / API Admin API for v2.2.0.
+ODS / API Admin API for v2.2.2.
 
 ## Compatibility & Supported ODS / API Versions
 
@@ -150,7 +150,7 @@ Database engine specific connection information ($dbConnectionInfo):
  $p = @{
      ToolsPath = "C:/temp/tools"
      DbConnectionInfo = $dbConnectionInfo
-     PackageVersion = '2.2.0.0'
+     PackageVersion = '2.2.2.0'
      PackageSource = $adminApiSource
      AuthenticationSettings = $authenticationSettings
  }
@@ -177,7 +177,7 @@ Database engine specific connection information ($dbConnectionInfo):
      IsMultiTenant = $true
      ToolsPath = "C:/temp/tools"
      DbConnectionInfo = $dbConnectionInfo
-     PackageVersion = '2.2.0.0'
+     PackageVersion = '2.2.2.0'
      PackageSource = $adminApiSource
      AuthenticationSettings = $authenticationSettings
      Tenants = @{
@@ -276,9 +276,9 @@ Continue on to [First-Time Configuration for Admin API
 2.x](first-time-configuration-for-admin-api-2x.md).
 
 :::info note:
-  The following is a Nuget package containing the **Admin API v2.2.0**
+  The following is a Nuget package containing the **Admin API v2.2.2**
   binaries and installer scripts for deployment to IIS.
 
 * [EdFi.Suite3.ODS.AdminApi
-     v2.2.0](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.Suite3.ODS.AdminApi/overview/2.2.0)
+     v2.2.2](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.Suite3.ODS.AdminApi/overview/2.2.2)
 :::
