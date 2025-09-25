@@ -9,17 +9,15 @@ import styles from './styles.module.css';
 const FeatureList = [
   {
     title: 'Getting Started',
-    img: require('@site/static/img/ed-fi-chalkboard.png').default,
     description: (
       <>
-        Patterns and practices for starting or expanding on your Ed-Fi journey.
+        Patterns and practices for starting or expanding on your Ed-Fi data journey.
       </>
     ),
     href: '/getting-started',
   },
   {
     title: 'Partners',
-    img: require('@site/static/img/ed-fi-puzzle.png').default,
     description: (
       <>
         Find a certified partner or learn how to earn Ed-Fi badges and
@@ -30,7 +28,6 @@ const FeatureList = [
   },
   {
     title: 'Community',
-    img: require('@site/static/img/ed-fi-exclaim-question.png').default,
     description: (
       <>
         Connect with the Ed-Fi help desk or with the Ed-Fi community for expert
@@ -41,7 +38,6 @@ const FeatureList = [
   },
   {
     title: 'Reference',
-    img: require('@site/static/img/ed-fi-phone-graphic.png').default,
     description: (
       <>
         Reference documentation for the Ed-Fi Data Standard and Ed-Fi technology
@@ -52,11 +48,10 @@ const FeatureList = [
   },
 ];
 //text--center
-function Feature({ img, title, description, href }) {
+function Feature({ title, description, href }) {
   return (
     <div className="col">
       <div className={`shadow--md text--center ${styles.featureBlock}`}>
-        <img src={img} className={`${styles.featureImg}`} alt={title} />
       </div>
       <div className="padding-horiz--md margin-bottom--lg">
         <Heading as="h3">{title}</Heading>

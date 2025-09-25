@@ -11,7 +11,7 @@ certification that can be used across different agencies and organizations,
 alleviating the need for vendors to undergo multiple, overlapping local
 certifications.
 
-![Ed-Fi Logo](https://edfidocs.blob.core.windows.net/$web/img/ed-fi-logo.webp)
+![Ed-Fi Logo](https://edfidocs.blob.core.windows.net/$web/img/ed-fi-logo-light.webp)
 
 ## Program Information
 

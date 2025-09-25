@@ -54,7 +54,10 @@ const config = {
           containerId: 'GTM-KGR2977',
         },
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: [
+            './src/css/custom.css',
+            './src/css/layout-overrides.css'
+          ],
         },
       }),
     ],
@@ -167,8 +170,8 @@ const config = {
       navbar: {
         logo: {
           alt: 'Ed-Fi Docs Logo',
-          src: 'img/ed-fi-logo.webp',
-          srcDark: 'img/ed-fi-logo-light.webp',
+          src: 'img/ed-fi-logo-light.webp',
+          srcDark: 'img/ed-fi-logo-dark.webp',
         },
         items: [
           {

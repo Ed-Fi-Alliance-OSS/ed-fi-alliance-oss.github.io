@@ -1,0 +1,325 @@
+/* Primary (second layer) navigation bar redesign */
+
+:root {
+  --primary-nav-height: 83px;
+  --primary-accent: #0E31E7;
+  --primary-divider-color: rgba(0, 0, 0, 0.10);
+  --primary-search-bg: rgba(245, 245, 245, 0.50);
+  --primary-search-border: #D3D3D3;
+  --primary-search-bg-dark: #1F2530;
+  --primary-search-border-dark: #3A4250;
+}
+
+[data-theme='dark'] :root {
+  --primary-divider-color: #313945;
+}
+
+.primaryNavWrapper {
+  position: fixed;
+  top: var(--top-bar-height); /* sits under blue global bar */
+  left: 0;
+  width: 100%;
+  z-index: 1015;
+  background: var(--ifm-background-surface-color, #fff);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.10);;
+}
+
+[data-theme='dark'] .primaryNavWrapper {
+  background: rgba(25,30,40,0.9);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.primaryNav {
+  height: var(--primary-nav-height);
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.inner {
+  width: 100%;
+  margin: 0;
+  padding: 0 23px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: var(--primary-nav-height);
+}
+
+.topSideBar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: var(--primary-nav-height);
+  min-width: 275px; /* --doc-sidebar-width */
+  width: 275px; /* --doc-sidebar-width */
+  border-right: 1px solid var(--primary-divider-color);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  padding-left: 18px;
+  padding-right: 14px;
+  width: 154px;
+  height: 59px;
+}
+
+.logoImg {
+  height: auto;
+}
+
+.dividerThin {
+  width: 1px;
+  height: 44px;
+  background: var(--primary-divider-color);
+}
+
+.docsHome {
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 27px;
+  margin-left: 11px;
+}
+
+.docsHome:hover {
+  text-decoration: underline;
+  color: var(--ifm-color-primary);
+}
+
+
+.searchRegion {
+  min-width: 200px;
+  max-width: 416px;
+  margin-right: auto;
+  margin-left: 2%;
+  flex-shrink: 100;
+}
+
+.searchShell {
+  position:relative;
+  display:flex;
+  align-items:center;
+  height: 38px;
+  border: 1px solid var(--primary-search-border);
+  border-radius: 999px;
+  background-color: var(--primary-search-bg);
+  padding:0 16px 0 12%; box-shadow:0 0 0 0 rgba(4,51,199,0.1);
+  transition: box-shadow .16s, background-color .16s, border-color .16s;
+}
+
+[data-theme='dark'] .searchShell { background:var(--primary-search-bg-dark); border-color:var(--primary-search-border-dark); }
+
+.searchShell:focus-within { box-shadow:0 0 0 3px rgba(4,51,199,0.35); border-color: var(--primary-accent); }
+
+.searchIcon { position:absolute; left:4.5%; color:#02215D; display:inline-flex; }
+[data-theme='dark'] .searchIcon { color:#93A3B8; }
+
+/* Override inner SearchBar input default styling */
+.searchShell :global(.DocSearch-Button) {
+  all: unset;
+  flex: 1;
+  font-size: 12px;
+  color: var(--ifm-font-color-base);
+  cursor: text;
+}
+
+.searchShell :global(.DocSearch-Button:hover) {
+  background: none;
+}
+
+.searchShell :global(.DocSearch-Button-Placeholder) {
+  font-weight: 400;
+}
+
+.searchShell :global(.DocSearch-Button-Placeholder)::before {
+  content: '';
+}
+
+/* Hide internal default DocSearch magnifier to avoid duplicate icon */
+.searchShell :global(.DocSearch-Search-Icon) {
+  display: none !important;
+}
+
+/* Hide internal DocSearch key hints since we supply our own pill */
+.searchShell :global(.DocSearch-Button-Keys) {
+  display: none !important;
+}
+
+.shortcut {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left:10px;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+}
+
+.shortcut div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  width: 24px;
+  border: 1.2px solid #C0C0C0;
+  border-radius: 2.5px;
+  background: #fff;
+}
+
+.shortcut span {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1;
+  color: #484545;
+  font: var(--edfi-font);
+}
+
+[data-theme='dark'] .shortcut div {
+  background: #2A303B;
+  border-color: #3A4250;
+}
+[data-theme='dark'] .shortcut span {
+  color: #C8D2DD;
+}
+
+.navLinks {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 48%;
+  gap: 2px;
+  margin: 0 0 0 3%;
+  padding: 0;
+  height: 100%;
+}
+.navItem {
+  height: 100%;
+  padding-inline: 2.3%;
+}
+
+.navLink {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: var(--primary-nav-height);
+  padding: 0 9px;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-weight: 400;
+  text-decoration: none;
+  color: var(--ifm-color-primary-dark);
+  border-bottom: 3px solid transparent;
+  white-space: nowrap;
+  transition: color 150ms ease, border-bottom-color 150ms ease;
+}
+
+.navLink:hover {
+  color: var(--ifm-color-primary);
+  border-bottom-color: rgba(var(--ifm-color-primary-rgb), 0.7);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.navLinkActive {
+  border-bottom-color: var(--ifm-color-primary);
+  color: var(--ifm-color-primary);
+  font-weight: 500;
+}
+
+[data-theme='dark'] .navLink {
+  color: #8aaaff;
+}
+
+[data-theme='dark'] .navLink:hover {
+  color: #ffffff;
+  border-bottom-color: rgba(138, 170, 255, 0.45);
+}
+
+[data-theme='dark'] .navLinkActive {
+  border-bottom-color: var(--primary-accent);
+}
+
+
+/* Removed pseudo underline in favor of persistent block border approach */
+.modeToggle {
+  position: relative;
+  width: 71px;
+  min-width: 71px;
+  height: 38px;
+  padding: 2px 5px;
+  border: 1px solid var(--primary-search-border);
+  background-color: var(--primary-search-bg);
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.15s, border-color 0.15s;
+}
+
+[data-theme='dark'] .modeToggle {
+  background: var(--primary-search-bg-dark);
+  border-color: var(--primary-search-border-dark);
+}
+
+.modeToggleInner {
+  position: absolute;
+  left: calc(100% - 34px);
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  border: 2px solid var(--ifm-color-primary);
+  overflow: hidden;
+  transition: left 0.25s ease, background-color 0.15s, border-color 0.15s;
+}
+
+[data-theme='dark'] .modeToggleInner {
+  left: 4px;
+}
+
+.modeToggle svg, .modeToggle img {
+  width: 100%;
+  height: auto;
+}
+
+.modeToggle:hover {
+  background: #F2F5FA;
+}
+
+[data-theme='dark'] .modeToggle:hover {
+  background: #2A303B;
+}
+
+.modeToggle:focus-visible {
+  outline: none;
+  background: #F2F5FA;
+}
+
+@media (min-width: 1301px) {
+  .searchRegion {
+    width: 30%;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 1200px) {
+  .navLink {
+    font-size: 13px;
+    padding: 0 4px;
+  }
+}
+
+/* Hide on smaller screens - use original navbar */
+@media (max-width: 1100px) {
+  .primaryNavWrapper { display:none; }
+}
+
+/* Accessibility: reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .navLink::after { transition:none; }
+  .modeToggle, .searchShell { transition:none; }
+}
