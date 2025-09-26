@@ -139,6 +139,51 @@
   background-image: url('/img/ed-fi-logo-dark.svg');
 }
 
+/* Responsive hero image for homepage */
+.heroBanner_qdFl .hero__title,
+.heroBanner .hero__title {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  max-width: 100%;
+  width: 366px;
+  height: 180px;
+  display: block;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .heroBanner_qdFl .hero__title,
+  .heroBanner .hero__title {
+    width: 280px;
+    height: 138px;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroBanner_qdFl .hero__title,
+  .heroBanner .hero__title {
+    width: 220px;
+    height: 108px;
+  }
+}
+
+@media (max-width: 320px) {
+  .heroBanner_qdFl .hero__title,
+  .heroBanner .hero__title {
+    width: 180px;
+    height: 88px;
+  }
+}
+
+@media (max-width: 280px) {
+  .heroBanner_qdFl .hero__title,
+  .heroBanner .hero__title {
+    width: 160px;
+    height: 78px;
+  }
+}
+
 .DocSearch-Modal {
   margin-top: calc(var(--combined-top-offset) + 20px) !important;
 }
