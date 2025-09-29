@@ -10,8 +10,12 @@ hide_table_of_contents: true
 | Name | Description |
 | --- | --- |
 | Contact | This entity represents a contact of a student, such as a parent, guardian or caretaker. |
+| ContactIdentificationCode| This entity holds different identity codes associated to a contact. |
 | Person | This entity represents a human being. |
 | Student | This entity represents an individual for whom instruction, services, and/or care are provided in an early childhood, elementary, or secondary educational program under the jurisdiction of a school, education agency or other institution or program. A student is a person who has been enrolled in a school or other educational institution. |
+| StudentDemographic| The demographic information associated to a student. |
+| StudentDirectory | The contact information associated to a student. |
+| StudentIdentificationCode | This entity holds different identity codes for a student. |
 | StudentEducationOrganizationAssociation | This association represents student information that is specific to a student's relationship with an EducationOrganization. Often, these student properties are the result of evaluations administered by Local Education Agencies and therefore may have different values if the student is enrolled at more than one Local Education Agency. |
 | StudentContactAssociation | This association relates students to their parents, guardians, or caretakers. |
 
@@ -26,7 +30,7 @@ hide_table_of_contents: true
 | Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
 | Contact | AddressType | The type of address listed for an individual or organization. For example: Physical Address, Mailing Address, Home Address, etc.) | Orthodox |     |     |     |
-| Country | The name of the country. It is strongly recommended that entries use only ISO 3166 2-letter country codes. | Standard |     |     |     |
+| Country | Country | The name of the country. It is strongly recommended that entries use only ISO 3166 2-letter country codes. | Standard |     |     |     |
 | ElectronicMailType | The type of email listed for an individual or organization. For example: Home/Personal, Work, etc.) | Standard |     |     |     |
 | HighestCompletedLevelOfEducation | The extent of formal instruction an individual has received (e.g., the highest grade in school completed or its equivalent or the highest degree received). | Orthodox |     |     |     |
 | IdentificationDocumentUse | The primary function of the document used for establishing identity. | Orthodox |     |     |     |
