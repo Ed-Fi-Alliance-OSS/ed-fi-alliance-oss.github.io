@@ -86,7 +86,7 @@ Docker provides the easiest deployment method with consistent environments acros
    cd ssl && ./generate-certificate.sh && cd ..
    ```
 
-   ::: note
+   :::note
    Only needed if you don't already have a certificate pair to use.
    :::
 
@@ -318,7 +318,7 @@ You can deploy the Node.js backend directly to IIS using only iisnode. This appr
 
 **Handler Order Matters**: When configuring handlers in IIS Manager, ensure the iisnode handler with path `*` is at the **top** of the handler mappings list, above the StaticFile handler.
 
-#### Troubleshooting Direct IIS Deployment
+### Backend Troubleshooting
 
 **Common Issues and Solutions:**
 
@@ -634,7 +634,7 @@ The following configuration has been **tested and verified** to work successfull
 ### Unix Prerequisites
 
 - **NGiNX**: For reverse proxy and static file serving
-- **Node.js**: Version 18.0.0+
+- **Node.js**: Version 22.0.0+
 - **PostgreSQL**: Database server
 - **systemd**: For service management (most modern Linux distributions)
 
