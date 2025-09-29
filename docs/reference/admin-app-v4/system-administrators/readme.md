@@ -1,10 +1,4 @@
-# System Administrator's Guide to Admin App v4
-
-:::warning
-
-This is pre-release documentation for software that is not yet available.
-
-:::
+# Ed-Fi Admin App - System Administrator Installation and Configuration Guide
 
 ## Table of Contents
 
@@ -232,6 +226,309 @@ For production environments, modify the following:
      API_PORT: process.env.PORT || 3333
    };
    ```
+
+### Alternative: Backend API Installation without URL Rewrite
+
+If you prefer not to use the URL Rewrite module, you can deploy the Node.js backend directly to IIS using only iisnode. This approach is simpler but requires a slightly different configuration.
+
+#### Prerequisites for Direct IIS Deployment
+
+- **IIS with iisnode**: Install iisnode from [GitHub Releases](https://github.com/Azure/iisnode/releases)
+- **Node.js**: Install Node.js on the server
+- **No URL Rewrite Module required**
+
+#### Steps for Direct Deployment
+
+1. **Install iisnode only**:
+   - Download the latest iisnode installer from GitHub
+   - Run the installer to integrate iisnode with IIS
+   - No need to install URL Rewrite module
+
+2. **Build the application**:
+
+   ```powershell
+   # Clone and build (same as before)
+   git clone https://github.com/Ed-Fi-Alliance-OSS/AdminApp-v4.git
+   cd AdminApp-v4
+   npm ci
+   npm run build:api
+   ```
+
+3. **Create IIS Website**:
+   - Open IIS Manager
+   - Right-click on "Sites" and choose "Add Website"
+   - Set **Site name**: `EdFi-AdminApp-API`
+   - Set **Physical path**: Point to your built application directory (where `dist/packages/api/main.js` is located)
+   - Set **Port**: 3333 (or your preferred port)
+   - **Important**: Leave **Host name** blank for localhost testing, or set it only if you have proper DNS setup
+
+4. **Configure web.config for Direct IIS Deployment**:
+   Create a `web.config` file in the **same directory** as your `main.js` file:
+
+   ```xml
+   <!-- web.config for Direct IIS Deployment (No URL Rewrite) -->
+   <?xml version="1.0" encoding="utf-8"?>
+   <configuration>
+     <system.webServer>
+       <!-- Configure iisnode to handle ALL requests to Node.js -->
+       <handlers>
+         <add name="iisnode" path="main.js" verb="*" modules="iisnode"/>
+         <!-- Handle all paths through the Node.js application -->
+         <add name="iisnode-api" path="*" verb="*" modules="iisnode" scriptProcessor="main.js"/>
+       </handlers>
+       
+       <!-- Rewrite all requests to main.js (this is different from URL Rewrite module) -->
+       <rewrite>
+         <rules>
+           <rule name="NodeJS" stopProcessing="true">
+             <match url=".*"/>
+             <conditions logicalGrouping="MatchAll">
+               <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true"/>
+             </conditions>
+             <action type="Rewrite" url="main.js"/>
+           </rule>
+         </rules>
+       </rewrite>
+       
+       <!-- iisnode configuration -->
+       <iisnode 
+         nodeProcessCommandLine="C:\Program Files\nodejs\node.exe"
+         watchedFiles="web.config;*.js"
+         loggingEnabled="true"
+         logDirectory="iisnode"
+         debuggingEnabled="true"
+         devErrorsEnabled="true"
+         node_env="production"
+         maxConcurrentRequestsPerProcess="1024"
+         maxNamedPipeConnectionRetry="100"
+         namedPipeConnectionRetryDelay="250"
+         maxNamedPipeConnectionPoolSize="512"
+         maxNamedPipePooledConnectionAge="30000"
+         asyncCompletionThreadCount="0"
+         initialRequestBufferSize="4096"
+         maxRequestBufferSize="65536"
+         uncFileChangesPollingInterval="5000"
+         gracefulShutdownTimeout="60000"
+         recycleSignalEnabled="false"
+         idlePageOutTimePeriod="0"
+         configOverrides="iisnode.yml" />
+       
+       <!-- Security settings -->
+       <security>
+         <requestFiltering>
+           <hiddenSegments>
+             <remove segment="bin"/>
+           </hiddenSegments>
+         </requestFiltering>
+       </security>
+       
+       <!-- Error handling -->
+       <httpErrors existingResponse="PassThrough" />
+       
+       <!-- Default document -->
+       <defaultDocument>
+         <files>
+           <clear />
+           <add value="main.js" />
+         </files>
+       </defaultDocument>
+       
+       <!-- Static content handling -->
+       <staticContent>
+         <!-- Remove existing .json mapping if it exists, then add our own -->
+         <remove fileExtension=".json" />
+         <mimeMap fileExtension=".json" mimeType="application/json" />
+       </staticContent>
+       
+     </system.webServer>
+   </configuration>
+   ```
+
+5. **Environment Configuration**:
+   The configuration remains the same as the URL Rewrite method. Create `packages/api/config/local.js` with your settings.
+
+6. **Set IIS Application Pool**:
+   - In IIS Manager, go to Application Pools
+   - Find your application pool (usually named after your site)
+   - Set **.NET CLR version** to "No Managed Code"
+   - Set **Identity** to an account with appropriate permissions
+   - Set **Start Mode** to "AlwaysRunning" for better performance
+
+#### Troubleshooting Direct IIS Deployment
+
+**Common Issues and Solutions:**
+
+**Node.js Executable Not Found:**
+
+- **Error**: "The iisnode module is unable to start the node.exe process..."
+- **Cause**: IIS cannot find the Node.js executable
+- **Solution**:
+  1. **Find your Node.js installation path**:
+
+     ```powershell
+     # Check where Node.js is installed
+     where node
+     
+     # Or check the version and default location
+     node --version
+     # Default locations:
+     # C:\Program Files\nodejs\node.exe (standard installation)
+     # C:\Program Files (x86)\nodejs\node.exe (32-bit installation)
+     ```
+  
+  2. **Update the `nodeProcessCommandLine` in web.config**:
+
+     ```xml
+     <!-- For standard Node.js installation -->
+     nodeProcessCommandLine="C:\Program Files\nodejs\node.exe"
+     
+     <!-- For NVM (Node Version Manager) installation -->
+     nodeProcessCommandLine="%APPDATA%\nvm\v18.17.0\node.exe"
+     <!-- Replace v18.17.0 with your actual Node.js version -->
+     ```
+  
+  3. **For NVM (Node Version Manager) users**:
+
+     **Find your current Node.js version and path:**
+
+     ```powershell
+     # Check your current Node.js version
+     node --version
+     
+     # Check nvm list to see installed versions
+     nvm list
+     
+     # Check the exact path
+     where node
+     ```
+
+     **Common NVM paths:**
+     - `%APPDATA%\nvm\v{version}\node.exe` (nvm-windows)
+     - `C:\Users\{username}\AppData\Roaming\nvm\v{version}\node.exe` (full path)
+     - `%NVM_HOME%\v{version}\node.exe` (if NVM_HOME is set)
+
+     **Example for Node.js v18.17.0:**
+
+     ```xml
+     nodeProcessCommandLine="%APPDATA%\nvm\v18.17.0\node.exe"
+     ```
+
+     **Alternative approach for NVM - Use symlink:**
+
+     ```xml
+     <!-- If nvm creates a symlink (some nvm versions do this) -->
+     nodeProcessCommandLine="%APPDATA%\nvm\nodejs\node.exe"
+     ```
+
+  4. **Alternative locations to check**:
+     - `C:\Program Files\nodejs\node.exe` (standard installation)
+     - `C:\Program Files (x86)\nodejs\node.exe` (32-bit)
+     - `%APPDATA%\nvm\v{version}\node.exe` (nvm-windows)
+     - `%APPDATA%\npm\node.exe` (npm global installations)
+     - Custom installation directory
+
+**Duplicate MIME Type Error:**
+
+- **Error**: "Cannot add duplicate collection entry of type 'mimeMap' with unique key attribute 'fileExtension' set to '.json'"
+- **Cause**: IIS already has a MIME type mapping for `.json` files
+- **Solution**: Use the `<remove>` element before adding the MIME type:
+
+  ```xml
+  <staticContent>
+    <!-- Remove existing .json mapping if it exists, then add our own -->
+    <remove fileExtension=".json" />
+    <mimeMap fileExtension=".json" mimeType="application/json" />
+  </staticContent>
+  ```
+
+**HTTP Error 403.14 - Forbidden:**
+
+- **Cause**: IIS cannot find the default document or directory browsing is disabled
+- **Solution**:
+  1. Ensure `web.config` is in the same directory as `main.js`
+  2. Verify the `<defaultDocument>` section includes `main.js`
+  3. Check that the physical path in IIS points to the directory containing `main.js`
+  4. Verify iisnode is properly installed and the handler is registered
+
+**HTTP Error 404.0 - Not Found for `/api` routes:**
+
+- **Cause**: Requests aren't being routed through the Node.js application
+- **Solution**:
+  1. The updated `web.config` above includes rewrite rules to handle this
+  2. Ensure the `<rewrite>` section is present (this is different from URL Rewrite module)
+  3. Verify that all API requests go through `main.js`
+
+**Testing Your Deployment:**
+
+1. **Test the root endpoint**: `http://localhost:3333/` should return your Node.js application response
+2. **Test API endpoints**: `http://localhost:3333/api/` should work for API routes
+3. **Test Swagger**: `http://localhost:3333/api/` should show the Swagger documentation if enabled
+4. **Check iisnode logs**: Look in the `iisnode` folder for detailed error logs
+
+**Debugging Steps:**
+
+1. **Enable detailed errors** in the `web.config` (already enabled in the config above):
+
+   ```xml
+   debuggingEnabled="true"
+   devErrorsEnabled="true"
+   ```
+
+2. **Check Windows Event Viewer**: Look for IIS and iisnode related errors
+
+3. **Verify file permissions**: Ensure IIS has read access to your application files
+
+4. **Test Node.js directly**: Before deploying to IIS, test that `node main.js` works locally
+
+**Configuration Issues:**
+
+**NODE_ENV Configuration Warning:**
+
+- **Warning**: "NODE_ENV value of 'production' did not match any deployment config file names"
+- **Cause**: Application running in production mode but no production.js config file exists
+- **Solutions**:
+  1. **Use development mode** in web.config:
+
+     ```xml
+     node_env="development"
+     ```
+
+  2. **Create production.js** config file in the config directory with production settings
+  3. **Add promoteServerVars** to ensure environment variables are passed:
+
+     ```xml
+     promoteServerVars="NODE_ENV"
+     ```
+
+**Database Password Error:**
+
+- **Error**: "SASL: SCRAM-SERVER-FIRST-MESSAGE: client password must be a string"
+- **Cause**: PostgreSQL password not being passed as a proper string
+- **Solution**: Ensure all database credentials in config are strings:
+
+  ```javascript
+  DB_SECRET_VALUE: {
+    DB_HOST: 'localhost',
+    DB_PORT: 5432,
+    DB_USERNAME: 'postgres',
+    DB_DATABASE: 'sbaa',
+    DB_PASSWORD: 'postgres',  // Ensure this is a string
+  }
+  ```
+
+#### Advantages of Direct IIS Deployment
+
+- **Simpler setup**: No need for URL Rewrite module
+- **Direct integration**: Node.js runs directly within IIS worker process
+- **Better error handling**: iisnode provides detailed error logging
+- **Process management**: IIS handles process recycling and monitoring
+
+#### Considerations
+
+- **Single entry point**: All requests go directly to `main.js`
+- **Port binding**: The application runs on the port configured in IIS, not the port in your Node.js code
+- **Process environment**: The Node.js application runs within the IIS worker process context
+- **Logging**: iisnode provides its own logging mechanism in addition to your application logs
 
 ### Frontend Installation
 
