@@ -1,22 +1,5 @@
 # Ed-Fi Admin App - System Administrator Installation and Configuration Guide
 
-## Table of Contents
-
-1. [Overview](#overview)
-2. [Prerequisites](#prerequisites)
-3. [Installation Methods](#installation-methods)
-   - [Docker Installation (Recommended)](#docker-installation-recommended)
-   - [Windows IIS Installation](#windows-iis-installation)
-   - [Unix-like Systems Installation](#unix-like-systems-installation)
-4. [Configuration](#configuration)
-   - [Backend API Configuration](#backend-api-configuration)
-   - [Frontend Configuration](#frontend-configuration)
-   - [Database Configuration](#database-configuration)
-   - [Authentication Configuration](#authentication-configuration)
-5. [Security Considerations](#security-considerations)
-6. [Troubleshooting](#troubleshooting)
-7. [Maintenance](#maintenance)
-
 ## Overview
 
 The Ed-Fi Admin App is a user interface for managing Ed-Fi Technology Suite deployments. It consists of:
@@ -31,6 +14,16 @@ The Ed-Fi Admin App is a user interface for managing Ed-Fi Technology Suite depl
 - **PostgreSQL Database** (Required)
 - **OIDC Provider** (Required) - Keycloak or similar
 - **Reverse Proxy** (Recommended) - NGiNX, IIS, or similar
+  - Provides SSL/TLS termination and security headers
+  - Efficient static file serving and caching
+  - Single entry point for frontend and API (eliminates CORS issues)
+  - Better performance, security, and scalability for production deployments
+
+:::tip
+
+This application _should_ be capable of running with any Open ID Connect provider, not just Keycloak. At this time the Ed-Fi Alliance has not yet tested it with other providers. The product development team intends to test and document the experience working with other systems, beginning first with Microsoft Entra ID.
+
+:::
 
 ### Optional Components
 
@@ -48,15 +41,21 @@ The Ed-Fi Admin App is a user interface for managing Ed-Fi Technology Suite depl
 
 ### Software Dependencies
 
-- **Node.js**: Version 18.0.0 or higher
-- **PostgreSQL**: Version 12 or higher
+- **Node.js**: Version 22.0.0 or higher
+- **PostgreSQL**: Version 16 or higher
 - **SSL/TLS Certificates**: For HTTPS endpoints
+
+:::tip
+
+Microsoft SQL Server support will be added in an upcoming release.
+
+:::
 
 ## Installation Methods
 
-## Docker Installation (Recommended)
+## Quick Start with Docker Compose
 
-Docker provides the easiest deployment method with consistent environments across platforms.
+Docker provides the easiest deployment method with consistent environments across platforms. OCI-compliant containers provide a consistent deployment experience across many platforms, including Docker Desktop, Kubernetes, and other services. The following quick start instructions demonstrate application startup in Docker. They illustrate how to configure the applications, including environment variables, persistent storage, and networking. These notes can also serve as a template for building your own deployment in the container runtime engine of your choice, whether on-premises or in the Cloud.
 
 ### Docker Prerequisites
 
@@ -69,8 +68,8 @@ Docker provides the easiest deployment method with consistent environments acros
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/Ed-Fi-Alliance-OSS/AdminApp-v4.git
-   cd AdminApp-v4/compose
+   git clone https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-AdminApp.git
+   cd Ed-Fi-AdminApp/compose
    ```
 
 2. **Create environment configuration**:
@@ -87,27 +86,31 @@ Docker provides the easiest deployment method with consistent environments acros
    cd ssl && ./generate-certificate.sh && cd ..
    ```
 
+   ::: note
+   Only needed if you don't already have a certificate pair to use.
+   :::
+
 4. **Start core services**:
 
    ```bash
-   # PowerShell (Windows):
-   .\up.ps1
+   # PowerShell Core (Windows/Linux/macOS):
+   ./up.ps1
    
    # Linux/macOS:
    mkdir -p logs
    docker network create edfiadminapp-network --driver bridge
-   docker-compose up -d
+   docker compose up -d
    ```
 
 5. **Start Admin App services**:
 
    ```bash
-   # PowerShell (Windows):
-   .\up.ps1 -AdminApp
+   # PowerShell Core (Windows/Linux/macOS):
+   ./up.ps1 -AdminApp
    
    # Linux/macOS:
    cd adminapp
-   docker-compose up -d
+   docker compose up -d
    ```
 
 ### Production Docker Deployment
@@ -126,15 +129,17 @@ For production environments, modify the following:
    FE_URL=https://yourdomain.com/adminapp
    MY_URL=https://yourdomain.com/adminapp-api
    
-   # Use production SSL certificates
+   # This line is only necessary when you are using a self-signed certificate.
    NODE_EXTRA_CA_CERTS=/app/ssl/your-production-cert.crt
+   
+   # Administrator credentials
+   KEYCLOAK_ADMIN=admin
+   KEYCLOAK_ADMIN_PASSWORD=admin
    ```
 
 2. **SSL Certificates**: Replace self-signed certificates with production certificates
 
 3. **Database**: Consider using external PostgreSQL instance for better reliability
-
-4. **Scaling**: Use Docker Swarm or Kubernetes for high availability
 
 ## Windows IIS Installation
 
@@ -147,60 +152,125 @@ For production environments, modify the following:
 
 ### Backend API Installation
 
-1. **Install IISNode**:
-   Download and install from [GitHub](https://github.com/Azure/iisnode)
+You can deploy the Node.js backend directly to IIS using only iisnode. This approach is simpler but requires a slightly different configuration.
+
+#### Prerequisites for Direct IIS Deployment
+
+- **IIS with iisnode**: Install iisnode from [GitHub Releases](https://github.com/Azure/iisnode/releases)
+- **Node.js**: Install Node.js on the server
+
+#### Steps for Direct Deployment
+
+1. **Install iisnode only**:
+   - Download the latest iisnode installer from GitHub
+   - Run the installer to integrate iisnode with IIS
 
 2. **Build the application**:
 
    ```powershell
-   # Clone and build
-   git clone https://github.com/Ed-Fi-Alliance-OSS/AdminApp-v4.git
-   cd AdminApp-v4
+   # Clone and build (same as before)
+   git clone https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-AdminApp.git
+   cd Ed-Fi-AdminApp
    npm ci
    npm run build:api
    ```
 
-3. **Configure IIS Application**:
+3. **Create IIS Website**:
+   - Open IIS Manager
+   - Right-click on "Sites" and choose "Add Website"
+   - Set **Site name**: `EdFi-AdminApp-API`
+   - Set **Physical path**: Point to your built application directory (where `dist/packages/api/main.js` is located)
+   - Set **Port**: 3333 (or your preferred port)
+   - **Important**: Leave **Host name** blank for localhost testing, or set it only if you have proper DNS setup
+
+4. **Configure web.config for Direct IIS Deployment**:
+   Create a `web.config` file in the **same directory** as your `main.js` file:
 
    ```xml
-   <!-- web.config for API -->
+   <!-- web.config for Direct IIS Deployment with iisnode -->
    <?xml version="1.0" encoding="utf-8"?>
    <configuration>
      <system.webServer>
-       <handlers>
-         <add name="iisnode" path="main.js" verb="*" modules="iisnode"/>
-       </handlers>
+       <!-- URL Rewrite rules - CRITICAL for proper routing -->
        <rewrite>
          <rules>
-           <rule name="NodeInspector" patternSyntax="ECMAScript" stopProcessing="true">
-             <match url="^main.js\/debug[\/]?" />
-           </rule>
-           <rule name="StaticContent">
-             <action type="Rewrite" url="public{REQUEST_URI}"/>
-           </rule>
-           <rule name="DynamicContent">
-             <conditions>
-               <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="True"/>
+           <rule name="NodeJS" stopProcessing="true">
+             <match url=".*"/>
+             <conditions logicalGrouping="MatchAll">
+               <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true"/>
+               <add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true"/>
              </conditions>
              <action type="Rewrite" url="main.js"/>
            </rule>
          </rules>
        </rewrite>
-       <security>
-         <requestFiltering>
-           <hiddenSegments>
-             <remove segment="bin"/>
-           </hiddenSegments>
-         </requestFiltering>
-       </security>
-       <httpErrors existingResponse="PassThrough" />
-       <iisnode watchedFiles="web.config;*.js"/>
+       
+       <!-- iisnode configuration -->
+       <iisnode 
+         nodeProcessCommandLine="node.exe"
+         watchedFiles="web.config;*.js"
+         loggingEnabled="true"
+         logDirectory="iisnode"
+         debuggingEnabled="true"
+         devErrorsEnabled="true"
+         node_env="production"
+         promoteServerVars="PORT"
+         maxConcurrentRequestsPerProcess="1024"
+         maxNamedPipeConnectionRetry="100"
+         namedPipeConnectionRetryDelay="250"
+         maxNamedPipeConnectionPoolSize="512"
+         maxNamedPipePooledConnectionAge="30000"
+         asyncCompletionThreadCount="0"
+         initialRequestBufferSize="4096"
+         maxRequestBufferSize="65536"
+         uncFileChangesPollingInterval="5000"
+         gracefulShutdownTimeout="60000"
+         recycleSignalEnabled="false"
+         idlePageOutTimePeriod="0"
+         configOverrides="iisnode.yml" />
+       
+       <!-- Default document -->
+       <defaultDocument>
+         <files>
+           <clear />
+           <add value="main.js" />
+         </files>
+       </defaultDocument>
+       
+       <!-- Error pages for detailed debugging -->
+       <httpErrors errorMode="Detailed"/>
      </system.webServer>
+     
+     <system.web>
+       <compilation debug="true"/>
+     </system.web>
    </configuration>
    ```
 
-4. **Environment Configuration**:
-   Create `packages/api/config/local.js`:
+   **Key Configuration Notes:**
+   - **URL Rewrite Rules**: Essential for routing API requests (like `/api/*`) to your Node.js application
+   - **Handler Mappings**: Configure these in IIS Manager, not in web.config (due to security restrictions)
+   - **Node.js Path**: Use `node.exe` to let IIS find Node.js in the system PATH
+   - **Environment**: Set `node_env="development"` for easier debugging, change to `"production"` for live deployments
+
+5. **Configure Handler Mappings in IIS Manager**:
+
+   Since handler configuration in web.config may be restricted by IIS security policies, configure handlers through IIS Manager:
+
+   - Open **IIS Manager** as Administrator
+   - Navigate to your website
+   - Double-click **"Handler Mappings"**
+   - Click **"Add Module Mapping..."**
+   - Configure:
+     - **Request path**: `*`
+     - **Module**: `Select iisnode`
+     - **Executable**: empty
+     - **Name**: `iisnode-all`
+     - **Uncheck** "Invoke handler only if request is mapped to: File or Folder"
+   - **Move this handler to the top** of the list (above StaticFile handler)
+
+6. **Environment Configuration**:
+   Create `packages/api/config/production.js` with your settings.
 
    ```javascript
    module.exports = {
@@ -227,132 +297,26 @@ For production environments, modify the following:
    };
    ```
 
-### Alternative: Backend API Installation without URL Rewrite
-
-If you prefer not to use the URL Rewrite module, you can deploy the Node.js backend directly to IIS using only iisnode. This approach is simpler but requires a slightly different configuration.
-
-#### Prerequisites for Direct IIS Deployment
-
-- **IIS with iisnode**: Install iisnode from [GitHub Releases](https://github.com/Azure/iisnode/releases)
-- **Node.js**: Install Node.js on the server
-- **No URL Rewrite Module required**
-
-#### Steps for Direct Deployment
-
-1. **Install iisnode only**:
-   - Download the latest iisnode installer from GitHub
-   - Run the installer to integrate iisnode with IIS
-   - No need to install URL Rewrite module
-
-2. **Build the application**:
-
-   ```powershell
-   # Clone and build (same as before)
-   git clone https://github.com/Ed-Fi-Alliance-OSS/AdminApp-v4.git
-   cd AdminApp-v4
-   npm ci
-   npm run build:api
-   ```
-
-3. **Create IIS Website**:
-   - Open IIS Manager
-   - Right-click on "Sites" and choose "Add Website"
-   - Set **Site name**: `EdFi-AdminApp-API`
-   - Set **Physical path**: Point to your built application directory (where `dist/packages/api/main.js` is located)
-   - Set **Port**: 3333 (or your preferred port)
-   - **Important**: Leave **Host name** blank for localhost testing, or set it only if you have proper DNS setup
-
-4. **Configure web.config for Direct IIS Deployment**:
-   Create a `web.config` file in the **same directory** as your `main.js` file:
-
-   ```xml
-   <!-- web.config for Direct IIS Deployment (No URL Rewrite) -->
-   <?xml version="1.0" encoding="utf-8"?>
-   <configuration>
-     <system.webServer>
-       <!-- Configure iisnode to handle ALL requests to Node.js -->
-       <handlers>
-         <add name="iisnode" path="main.js" verb="*" modules="iisnode"/>
-         <!-- Handle all paths through the Node.js application -->
-         <add name="iisnode-api" path="*" verb="*" modules="iisnode" scriptProcessor="main.js"/>
-       </handlers>
-       
-       <!-- Rewrite all requests to main.js (this is different from URL Rewrite module) -->
-       <rewrite>
-         <rules>
-           <rule name="NodeJS" stopProcessing="true">
-             <match url=".*"/>
-             <conditions logicalGrouping="MatchAll">
-               <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true"/>
-             </conditions>
-             <action type="Rewrite" url="main.js"/>
-           </rule>
-         </rules>
-       </rewrite>
-       
-       <!-- iisnode configuration -->
-       <iisnode 
-         nodeProcessCommandLine="C:\Program Files\nodejs\node.exe"
-         watchedFiles="web.config;*.js"
-         loggingEnabled="true"
-         logDirectory="iisnode"
-         debuggingEnabled="true"
-         devErrorsEnabled="true"
-         node_env="production"
-         maxConcurrentRequestsPerProcess="1024"
-         maxNamedPipeConnectionRetry="100"
-         namedPipeConnectionRetryDelay="250"
-         maxNamedPipeConnectionPoolSize="512"
-         maxNamedPipePooledConnectionAge="30000"
-         asyncCompletionThreadCount="0"
-         initialRequestBufferSize="4096"
-         maxRequestBufferSize="65536"
-         uncFileChangesPollingInterval="5000"
-         gracefulShutdownTimeout="60000"
-         recycleSignalEnabled="false"
-         idlePageOutTimePeriod="0"
-         configOverrides="iisnode.yml" />
-       
-       <!-- Security settings -->
-       <security>
-         <requestFiltering>
-           <hiddenSegments>
-             <remove segment="bin"/>
-           </hiddenSegments>
-         </requestFiltering>
-       </security>
-       
-       <!-- Error handling -->
-       <httpErrors existingResponse="PassThrough" />
-       
-       <!-- Default document -->
-       <defaultDocument>
-         <files>
-           <clear />
-           <add value="main.js" />
-         </files>
-       </defaultDocument>
-       
-       <!-- Static content handling -->
-       <staticContent>
-         <!-- Remove existing .json mapping if it exists, then add our own -->
-         <remove fileExtension=".json" />
-         <mimeMap fileExtension=".json" mimeType="application/json" />
-       </staticContent>
-       
-     </system.webServer>
-   </configuration>
-   ```
-
-5. **Environment Configuration**:
-   The configuration remains the same as the URL Rewrite method. Create `packages/api/config/local.js` with your settings.
-
-6. **Set IIS Application Pool**:
+7. **Set IIS Application Pool**:
    - In IIS Manager, go to Application Pools
    - Find your application pool (usually named after your site)
    - Set **.NET CLR version** to "No Managed Code"
    - Set **Identity** to an account with appropriate permissions
    - Set **Start Mode** to "AlwaysRunning" for better performance
+
+8. **Create Required Directories**:
+   - Create the iisnode log directory: `C:\inetpub\your-app-path\iisnode`
+   - Grant full permissions to the IIS App Pool user: `IIS APPPOOL\DefaultAppPool`
+
+#### Critical Success Factors
+
+**URL Rewrite Rules are Essential**: The `<rewrite>` section in web.config is **critical** for proper routing. Without these rules:
+
+- API requests like `/api/*` will return 404 errors
+- IIS will try to serve requests as static files instead of routing them to Node.js
+- The Node.js application won't receive dynamic requests
+
+**Handler Order Matters**: When configuring handlers in IIS Manager, ensure the iisnode handler with path `*` is at the **top** of the handler mappings list, above the StaticFile handler.
 
 #### Troubleshooting Direct IIS Deployment
 
@@ -516,18 +480,67 @@ If you prefer not to use the URL Rewrite module, you can deploy the Node.js back
   }
   ```
 
+#### Proven Working Configuration
+
+The following configuration has been **tested and verified** to work successfully:
+
+**Essential Components:**
+
+1. **iisnode** installed and registered as an IIS module
+2. **Handler mapping** configured in IIS Manager (not web.config) with path `*`
+3. **URL Rewrite rules** in web.config for proper request routing
+4. **Proper permissions** for IIS App Pool user on application directory
+
+**This minimal web.config configuration is known to work:**
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <system.webServer>
+    <!-- URL Rewrite rules - THE KEY TO SUCCESS -->
+    <rewrite>
+      <rules>
+        <rule name="NodeJS" stopProcessing="true">
+          <match url=".*"/>
+          <conditions logicalGrouping="MatchAll">
+            <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true"/>
+            <add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true"/>
+          </conditions>
+          <action type="Rewrite" url="main.js"/>
+        </rule>
+      </rules>
+    </rewrite>
+    
+    <iisnode 
+      nodeProcessCommandLine="node.exe"
+      loggingEnabled="true"
+      debuggingEnabled="true"
+      devErrorsEnabled="true"
+      node_env="development" />
+      
+    <defaultDocument>
+      <files>
+        <add value="main.js"/>
+      </files>
+    </defaultDocument>
+    
+    <httpErrors errorMode="Detailed"/>
+  </system.webServer>
+</configuration>
+```
+
 #### Advantages of Direct IIS Deployment
 
-- **Simpler setup**: No need for URL Rewrite module
 - **Direct integration**: Node.js runs directly within IIS worker process
 - **Better error handling**: iisnode provides detailed error logging
 - **Process management**: IIS handles process recycling and monitoring
+- **Native Windows integration**: Works seamlessly with Windows authentication and security
 
 #### Considerations
 
-- **Single entry point**: All requests go directly to `main.js`
-- **Port binding**: The application runs on the port configured in IIS, not the port in your Node.js code
-- **Process environment**: The Node.js application runs within the IIS worker process context
+- **URL Rewrite dependency**: Requires URL Rewrite rules for proper routing (not the URL Rewrite module)
+- **Handler configuration**: Must be done via IIS Manager due to security restrictions
+- **Port binding**: The application uses the port configured in IIS, accessed via `process.env.PORT`
 - **Logging**: iisnode provides its own logging mechanism in addition to your application logs
 
 ### Frontend Installation
@@ -563,6 +576,10 @@ If you prefer not to use the URL Rewrite module, you can deploy the Node.js back
          </rules>
        </rewrite>
        <staticContent>
+         <!-- Remove existing MIME types before adding to prevent duplicates -->
+         <remove fileExtension=".json" />
+         <remove fileExtension=".woff" />
+         <remove fileExtension=".woff2" />
          <mimeMap fileExtension=".json" mimeType="application/json" />
          <mimeMap fileExtension=".woff" mimeType="application/font-woff" />
          <mimeMap fileExtension=".woff2" mimeType="application/font-woff2" />
@@ -576,9 +593,41 @@ If you prefer not to use the URL Rewrite module, you can deploy the Node.js back
            <add mimeType="text/css" enabled="true" />
          </staticTypes>
        </httpCompression>
+       <!-- Error handling -->
+       <httpErrors errorMode="Detailed" />
      </system.webServer>
    </configuration>
    ```
+
+   **Important**: The `<remove>` elements are **critical** to prevent duplicate MIME type errors. IIS may already have these MIME types configured at the server level.
+
+### Frontend Troubleshooting
+
+**Common Frontend Deployment Issues:**
+
+**Duplicate MIME Type Error (HTTP 500.19):**
+
+- **Error**: "Cannot add duplicate collection entry of type 'mimeMap' with unique key attribute 'fileExtension' set to '.json'"
+- **Cause**: IIS already has MIME type mappings for certain file extensions
+- **Solution**: Use `<remove>` elements before `<mimeMap>` elements as shown in the web.config above
+
+**React Router 404 Errors:**
+
+- **Symptom**: Direct URLs (like `/dashboard`) return 404 errors, but navigation within the app works
+- **Cause**: IIS tries to serve routes as static files instead of letting React Router handle them
+- **Solution**: Ensure the URL Rewrite rule for React Routes is properly configured
+
+**Static Asset Loading Issues:**
+
+- **Symptom**: CSS, JS, or font files return 404 or MIME type errors
+- **Cause**: Missing or incorrect MIME type mappings
+- **Solution**: Add proper MIME type mappings in the `<staticContent>` section
+
+**API Communication Errors:**
+
+- **Symptom**: Frontend loads but API calls fail
+- **Cause**: CORS issues or incorrect API URL configuration
+- **Solution**: Verify `VITE_API_URL` build variable points to your API endpoint
 
 ## Unix-like Systems Installation
 
