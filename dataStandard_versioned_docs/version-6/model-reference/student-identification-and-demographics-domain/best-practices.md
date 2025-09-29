@@ -15,40 +15,40 @@ Supplemental Services domain, within student program association entities. The
 following is intended to clarify how to distinguish where this data should be
 stored.
 
-## Student Demographic Elements
+## Student Core Elements
 
-Many core student demographic indicators are stored in the
-StudentEducationOrganizationAssociation and Student entities. These elements
-break down as follows:
+The student information was broken out into separate entities reflect the fact that
+the information could be reported with different data by different Local
+Education Agencies (LEAs) where the student had enrolled. The differences could
+be attributed to changes that occurred in the student’s information (e.g.,
+address) or that it was represented differently for different enrollments (e.g.,
+race). To accomplish this, three separate entities track the various IdentificationCode,
+Directory (phone, address, email etc.), and Demographic information for a given student's
+enrollment.
 
 ![Student Demographics v3.1](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Student%20Demographics%20v3.1.png)
+
+![Student Directory v3.1](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Student%20Demographics%20v3.1.png)
+
+![Student Identification Code v3.1](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Student%20Demographics%20v3.1.png)
+
+Please note that StudentDemographics, StudentDirectory, and StudentIdentificationCode
+do not have dates attached: they are intended to capture the current information for a student
+as assessed by the education organization. It is not intended to capture "as of"
+dates, historical changes to the data, enrollment dates, or the like.
 
 ## Use of Student Education Organization Association
 
 ### Purpose
 
-The StudentEducationOrganizationAssociation (SEOA) encapsulates a set of student
-information typically acquired during the enrollment – although it could be
+The StudentEducationOrganizationAssociation (SEOA) encapsulates a set of supporting
+student information typically acquired during the enrollment – although it could be
 collected as part of an application process.  This information includes:
 
-* Contact information, including address, telephone, and email address
-* Demographic information, such as sex, race, ethnicity, tribal affiliation
-* Student characteristics, such as disabilities, language, limited English
-    proficiency, and home situations
-* Student indicators and metrics
-
-This student information was broken out into the SEOA to reflect the fact that
-the information could be reported with different data by different Local
-Education Agencies (LEAs) where the student had enrolled. The differences could
-be attributed to changes that occurred in the student’s information (e.g.,
-address) or that it was represented differently for different enrollments (e.g.,
-race).
-
-In defining the SEOA, the question of which EducationOrganization should be
-referenced was left open.  With the information being captured during the
-enrollment or application process, there is ambiguity as whether the
-EducationOrganization should reference the school where the student enrolled or
-the parent LEA.
+* CohortYear
+* Internet Accessibility
+* Learning Device information
+* Displaced/Disrupted Educational Services
 
 ### Best Practice
 
@@ -60,19 +60,11 @@ Given these, this element should be managed as follows:
     education organization changes, or at the end of a school year.  Rather, the
     association should be thought of as a core part of the student record, but
     scoped to the education organization.
-* The association should be capture demographics at the highest organizational
-    level applicable and generally at the level where the process used to
-    determine the value of these elements is governed. This is generally at the
-    level of the school district/LEA for LEA operations.  We have seen instances
-    where the convention was to store the demographic data at the school level
-    as a strategy to “de-normalize” everyone to the same level for simplicity,
-    but that process adds complexity and often adds complexity to the source
-    system trying to represent the data.
 
-Please note that StudentEducationOrganizationAssociation also does not have
-dates attached: it is intended to capture the current demographics of a student
-as assessed by the education organization. It is not intended to capture "as of"
-dates, historical changes to the data, enrollment dates, or the like.
+Please note that StudentEducationOrganizationAssociation also does not have dates
+attached: it is intended to capture the current indicators of a student as assessed
+by the education organization. It is not intended to capture "as of" dates,
+historical changes to the data, enrollment dates, or the like.
 
 ## Student Program Associations
 
