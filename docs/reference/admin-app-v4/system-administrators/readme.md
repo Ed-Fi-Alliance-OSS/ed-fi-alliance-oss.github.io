@@ -288,8 +288,8 @@ You can deploy the Node.js backend directly to IIS using only iisnode. This appr
        MACHINE_AUDIENCE: 'edfiadminapp-api'
      },
      DB_ENCRYPTION_SECRET_VALUE: {
-       KEY: 'your-32-char-encryption-key',
-       IV: 'your-16-char-iv'
+       // Can replace with `openssl rand -hex 32` or `node -e "console.log('KEY: '+ require('crypto').randomBytes(32).toString('hex'))"`
+       KEY: 'your-32-char-encryption-key'
      },
      FE_URL: 'https://your-domain.com/adminapp',
      MY_URL: 'https://your-domain.com/adminapp-api',
@@ -677,8 +677,7 @@ The following configuration has been **tested and verified** to work successfull
        MACHINE_AUDIENCE: 'edfiadminapp-api'
      },
      DB_ENCRYPTION_SECRET_VALUE: {
-       KEY: 'your-32-char-encryption-key-here',
-       IV: 'your-16-char-iv'
+       KEY: 'your-32-char-encryption-key-here'
      },
      FE_URL: 'https://your-domain.com/adminapp',
      MY_URL: 'https://your-domain.com/adminapp-api',
@@ -687,6 +686,9 @@ The following configuration has been **tested and verified** to work successfull
    EOF
    ```
 
+   :::tip
+   `your-32-char-encryption-key-here` Can be replaced with `openssl rand -hex 32` or `node -e "console.log('KEY: '+ require('crypto').randomBytes(32).toString('hex'))"`
+   :::
 4. **Create systemd service**:
 
    ```bash
@@ -824,8 +826,8 @@ module.exports = {
   
   // Database Encryption (for storing sensitive data)
   DB_ENCRYPTION_SECRET_VALUE: {
-    KEY: 'your-32-character-encryption-key',
-    IV: 'your-16-char-iv'
+    // Can replace with `openssl rand -hex 32` or `node -e "console.log('KEY: '+ require('crypto').randomBytes(32).toString('hex'))"
+    KEY: 'your-32-character-encryption-key'
   },
   
   // Application URLs
