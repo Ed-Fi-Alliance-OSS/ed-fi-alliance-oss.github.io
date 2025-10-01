@@ -175,19 +175,25 @@ You can deploy the Node.js backend directly to IIS using only iisnode. This appr
    npm run build:api
    ```
 
-3. **Create IIS Website**:
+3. **Create a folder for the website**:
+
+   We recommend creating a new folder for your app. Typically IIS uses the path `C:\inetpub` for this purpose so create a folder called `C:\inetpub\EdFi-AdminApp-API` and move the following files into it:
+   - `main.js` file and `assets` folder located in folder `dist/packages/api/`
+   - `node_modules` folder
+   - Create a folder `packages/api/config` and copy the file `default.js` located in folder `packages/api/config` from your source to the new folder
+
+4. **Create IIS Website**:
    - Open IIS Manager
    - Right-click on "Sites" and choose "Add Website"
    - Set **Site name**: `EdFi-AdminApp-API`
-   - Set **Physical path**: Point to your built application directory (where `dist/packages/api/main.js` is located)
+   - Set **Physical path**: Point to your built application directory (eg. `C:\inetpub\EdFi-AdminApp-API`)
    - Set **Port**: 3333 (or your preferred port)
    - **Important**: Leave **Host name** blank for localhost testing, or set it only if you have proper DNS setup
 
-4. **Configure web.config for Direct IIS Deployment**:
+5. **Configure web.config for Direct IIS Deployment**:
    Create a `web.config` file in the **same directory** as your `main.js` file:
 
    ```xml
-   <!-- web.config for Direct IIS Deployment with iisnode -->
    <?xml version="1.0" encoding="utf-8"?>
    <configuration>
      <system.webServer>
@@ -252,8 +258,16 @@ You can deploy the Node.js backend directly to IIS using only iisnode. This appr
    - **Handler Mappings**: Configure these in IIS Manager, not in web.config (due to security restrictions)
    - **Node.js Path**: Use `node.exe` to let IIS find Node.js in the system PATH
    - **Environment**: Set `node_env="development"` for easier debugging, change to `"production"` for live deployments
+   - **configOverrides**: This section allow you to have a separated file to override you `iisnode` configuration. [For more info](https://github.com/tjanczuk/iisnode/blob/master/src/samples/configuration/iisnode.yml). Create a file `iisnode.yml` in the folder root. Eg:
 
-5. **Configure Handler Mappings in IIS Manager**:
+   ```xml
+   loggingEnabled: true
+   debuggingEnabled: true
+   devErrorsEnabled: true
+   node_env: production
+   ```
+
+6. **Configure Handler Mappings in IIS Manager**:
 
    Since handler configuration in web.config may be restricted by IIS security policies, configure handlers through IIS Manager:
 
@@ -269,7 +283,7 @@ You can deploy the Node.js backend directly to IIS using only iisnode. This appr
      - **Uncheck** "Invoke handler only if request is mapped to: File or Folder"
    - **Move this handler to the top** of the list (above StaticFile handler)
 
-6. **Environment Configuration**:
+7. **Environment Configuration**:
    Create `packages/api/config/production.js` with your settings.
 
    ```javascript
@@ -297,16 +311,32 @@ You can deploy the Node.js backend directly to IIS using only iisnode. This appr
    };
    ```
 
-7. **Set IIS Application Pool**:
+8. **Set IIS Application Pool**:
    - In IIS Manager, go to Application Pools
-   - Find your application pool (usually named after your site)
+   - Find your application pool (usually named after your site, in our case `EdFi-AdminApp-API`)
    - Set **.NET CLR version** to "No Managed Code"
    - Set **Identity** to an account with appropriate permissions
    - Set **Start Mode** to "AlwaysRunning" for better performance
 
-8. **Create Required Directories**:
-   - Create the iisnode log directory: `C:\inetpub\your-app-path\iisnode`
-   - Grant full permissions to the IIS App Pool user: `IIS APPPOOL\DefaultAppPool`
+9. **Create Required Directories**:
+   - Create the iisnode log directory. In our case `C:\inetpub\EdFi-AdminApp-API\iisnode`
+   - Grant full permissions to the IIS App Pool user. In our case `IIS APPPOOL\EdFi-AdminApp-API`
+
+   :::note
+   Ensure your IIS directory has:
+
+   ```text
+   C:\inetpub\EdFi-AdminApp-API\
+   ├── assets (the built folder)
+   ├── main.js (the built file)
+   ├── web.config
+   ├── iisnode.yml (optional)
+   ├── node_modules\ (complete folder)
+   ├── packages\api\config (with your config files production.js and default.js)
+   └── iisnode\ (log directory)
+   ```
+
+   :::
 
 #### Critical Success Factors
 
