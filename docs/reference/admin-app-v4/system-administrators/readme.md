@@ -13,6 +13,7 @@ The Ed-Fi Admin App is a user interface for managing Ed-Fi Technology Suite depl
 
 - **PostgreSQL Database** (Required)
 - **OIDC Provider** (Required) - Keycloak or similar
+  - [Configuring an Identity Provider for Ed-Fi Admin App](./identity-provider.md)
 - **Reverse Proxy** (Recommended) - NGiNX, IIS, or similar
   - Provides SSL/TLS termination and security headers
   - Efficient static file serving and caching
