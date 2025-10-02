@@ -577,18 +577,26 @@ The following configuration has been **tested and verified** to work successfull
 
 ### Frontend Installation
 
-1. **Build the frontend**:
+1. In `packages/fe`, copy `.copyme.env.local` to create `.env` and modify the values depending on your environment. This an example:
+
+   ```xml
+   VITE_API_URL=http://localhost:3333
+   VITE_OIDC_ID=1
+   VITE_HELP_GUIDE=http://docs.ed-fi.org/
+   ```
+
+2. **Build the frontend**:
 
    ```powershell
    npm run build:fe
    ```
 
-2. **Create a folder for the website**:
+3. **Create a folder for the website**:
 
    We recommend creating a new folder for your app. Typically IIS uses the path `C:\inetpub` for this purpose so create a folder called `C:\inetpub\EdFi-AdminApp-FE` and move the following files into it:
    - `index.html` file and `assets` folder located in folder `dist/packages/fe/`
 
-3. **Create IIS Website**:
+4. **Create IIS Website**:
    - Open IIS Manager
    - Right-click on "Sites" and choose "Add Website"
    - Set **Site name**: `EdFi-AdminApp-FE`
@@ -597,7 +605,7 @@ The following configuration has been **tested and verified** to work successfull
    - **Important**: Leave **Host name** blank for localhost testing, or set it only if you have proper DNS setup
    - Configure IIS site with proper bindings (HTTPS recommended)
 
-4. **Configure URL Rewrite** for React Router:
+5. **Configure URL Rewrite** for React Router:
 
    ```xml
    <?xml version="1.0" encoding="utf-8"?>
