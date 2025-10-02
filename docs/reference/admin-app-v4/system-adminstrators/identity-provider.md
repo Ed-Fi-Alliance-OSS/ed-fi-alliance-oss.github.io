@@ -1,6 +1,6 @@
 # Configuring an Identity Provider for Ed-Fi Admin App
 
-The Ed-Fi Admin App uses and Open ID Connect (OIDC) compatible Identity Provider (IdP) for managing users accounts. In theory any OIDC-compatible IdP will suffice. The Ed-Fi Alliance development to date has only tested Keycloak. Another development team has used Auth0. Further documentation on alternatives to Keycloak will be provided here when available.
+The Ed-Fi Admin App uses an Open ID Connect (OIDC) compatible Identity Provider (IdP) for managing users accounts. In theory any OIDC-compatible IdP will suffice. The Ed-Fi Alliance development to date has only tested Keycloak. Another development team has used Auth0. Further documentation on alternatives to Keycloak will be provided here when available.
 
 ## General IdP Guidance and Configuration
 
@@ -56,7 +56,7 @@ location /auth {
 
     proxy_hide_header Content-Security-Policy;
 
-    # Allowing 'unsafe-inline' for script-src and style-src are required for using Keylcoak's UI: https://github.com/keycloak/keycloak/issues/16277
+    # Allowing 'unsafe-inline' for script-src and style-src are required for using Keycloak's UI: https://github.com/keycloak/keycloak/issues/16277
     # ... this version is preferred and works in a more production-like deployment
     # add_header Content-Security-Policy "default-src 'self'; frame-ancestors 'self'; form-action 'self'; object-src 'none'; script-src 'self' 'unsafe-inline';  style-src 'self' 'unsafe-inline';";
     # ... and this version works better for localhost development. It removes the form-action restriction.
@@ -82,4 +82,6 @@ X-Content-Type-Options: nosniff
 X-Frame-Options: SAMEORIGIN
 X-Robots-Tag: none
 X-Xss-Protection: 1; mode=block
+```
+
 :::
