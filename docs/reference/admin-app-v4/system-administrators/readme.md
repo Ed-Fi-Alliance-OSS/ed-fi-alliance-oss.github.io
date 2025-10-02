@@ -308,7 +308,8 @@ You can deploy the Node.js backend directly to IIS using only iisnode. This appr
      },
      FE_URL: 'https://your-domain.com/adminapp',
      MY_URL: 'https://your-domain.com/adminapp-api',
-     API_PORT: process.env.PORT || 3333
+     API_PORT: process.env.PORT || 3333,
+     _OPEN_API: true, //Set false in case you want to hide swagger definition
    };
    ```
 
@@ -582,14 +583,23 @@ The following configuration has been **tested and verified** to work successfull
    npm run build:fe
    ```
 
-2. **Deploy to IIS**:
-   - Copy `dist/packages/fe/*` to your IIS website directory
+2. **Create a folder for the website**:
+
+   We recommend creating a new folder for your app. Typically IIS uses the path `C:\inetpub` for this purpose so create a folder called `C:\inetpub\EdFi-AdminApp-FE` and move the following files into it:
+   - `index.html` file and `assets` folder located in folder `dist/packages/fe/`
+
+3. **Create IIS Website**:
+   - Open IIS Manager
+   - Right-click on "Sites" and choose "Add Website"
+   - Set **Site name**: `EdFi-AdminApp-FE`
+   - Set **Physical path**: Point to your built application directory (eg. `C:\inetpub\EdFi-AdminApp-FE`)
+   - Set **Port**: 4200 (or your preferred port)
+   - **Important**: Leave **Host name** blank for localhost testing, or set it only if you have proper DNS setup
    - Configure IIS site with proper bindings (HTTPS recommended)
 
-3. **Configure URL Rewrite** for React Router:
+4. **Configure URL Rewrite** for React Router:
 
    ```xml
-   <!-- web.config for Frontend -->
    <?xml version="1.0" encoding="utf-8"?>
    <configuration>
      <system.webServer>
