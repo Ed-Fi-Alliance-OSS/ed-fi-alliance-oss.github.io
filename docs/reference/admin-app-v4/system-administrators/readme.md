@@ -577,7 +577,7 @@ The following configuration has been **tested and verified** to work successfull
 
 ### Frontend Installation
 
-1. In `packages/fe`, copy `.copyme.env.local` to create `.env` and modify the values depending on your environment. This an example:
+1. In `packages/fe`, copy `.copyme.env.local` to create `.env` and modify the values depending on your environment. This is an example:
 
    ```xml
    VITE_API_URL=http://localhost:3333
