@@ -42,7 +42,7 @@ For an environment to be managed, you must grant ownership to a team. This proce
 1. Select the environment
 2. Click "Grant Ownership"
 
-From step 2, follow the guide in [Managing Resource Ownership](#6-ownerships) to complete this process.
+From step 2, follow the guide in [Managing Resource Ownership](#5-ownerships) to complete this process.
 
 ![Grant ownership view for environment](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/admin-guide/environment/grant-ownership-to-environment.png)
 
@@ -54,11 +54,18 @@ From step 2, follow the guide in [Managing Resource Ownership](#6-ownerships) to
 
 2. When creating an environment, the app autodetects whether it's a v6 or v7 environment. Based on this detection, the app will configure tenants accordingly. For v6 environments, there will be a default tenant created automatically. For v7 environments, you'll be able to create multiple tenants.
 
-### Single Tenant
+### Single Tenant V6
+
 ![Single Tenant](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/admin-guide/environment/environment_single_tenants.png)
 
-### Multi-Tenant
-![Multi Tenant](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/admin-guide/environment/environment_multitenant.png)
+### Single Tenant V7
+
+![Single Tenant](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/admin-guide/environment/environment_v7_singletenant.png)
+
+### Multi-Tenant V7
+
+![Multi Tenant](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/admin-guide/environment/environment_v7_multitenant.png)
+
 ---
 
 ## 2. Teams
@@ -159,10 +166,11 @@ Ownerships define which teams have access to specific resources in the system. M
 
 ### Types of Resources That Can Be Owned
 
-- **Environments**: Grant teams access to manage entire environments
-- **Tenants**: Allow teams to manage specific tenants within an environment
-- **Applications**: Control which teams can manage specific applications
-- **ODS Instances**: Define which teams can access specific ODS instances
+- **Whole environment**: Grant teams access to manage entire environments
+- **Tenant**: Allow teams to manage specific tenants within an environment
+- **Ods**: Define which teams can access specific ODS instances
+- **Ed-Org**: Grant teams access to manage educational organizations
+- **Integration provider**: Allow teams to manage integration providers
 
 ![Resource type based ownership selection](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/admin-guide/ownership/grant-ownership-by-resourcetype.png)
 
