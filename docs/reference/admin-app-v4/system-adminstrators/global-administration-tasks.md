@@ -204,5 +204,5 @@ VALUES
 > **Important:**
 >
 > - Replace `SERVER_1`, `SERVER_2`, and `CHANGEME` with your actual server names and credentials
-> - After inserting these records, you **must restart the ODS/API application container** for the changes to take effectBrav
+> - After inserting these records, you **must restart the ODS/API application container** for the changes to take effect
 > - This manual step will be automated in a future release
