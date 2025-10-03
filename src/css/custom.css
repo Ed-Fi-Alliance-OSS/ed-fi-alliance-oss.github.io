@@ -741,7 +741,7 @@ nav.navbar .navbar__items--right {
 /* ======== Layout ==================*/
 @media (min-width: 997px) {
   .edfi-doc-item .theme-doc-markdown {
-    margin: 88px auto 0;
+    margin: 58px auto 0;
     padding: 0 6.3%;
   }
 
@@ -796,8 +796,9 @@ nav.navbar .navbar__items--right {
   }
 
   .edfi-doc-item .edfi-breadcrumbs-wrap {
-    position: absolute;
+    position: relative;
     top: -5px;
+    margin-right: -30%;
   }
 
   .edfi-breadcrumbs-wrap .breadcrumbHomeIcon_YNFT {

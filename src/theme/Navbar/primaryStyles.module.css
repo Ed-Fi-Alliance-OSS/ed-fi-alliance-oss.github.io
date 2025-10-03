@@ -199,7 +199,7 @@
 }
 .navItem {
   height: 100%;
-  padding-inline: 2.3%;
+  padding-inline: 1.4%;
 }
 
 .navLink {
@@ -222,6 +222,7 @@
   color: var(--ifm-color-primary);
   border-bottom-color: rgba(var(--ifm-color-primary-rgb), 0.7);
   font-weight: 500;
+  font-size: 15.88px; /* adjust for font-weight increase on hover */
   text-decoration: none;
 }
 
