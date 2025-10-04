@@ -225,6 +225,10 @@ The following configuration has been **tested and verified** to work successfull
 - **Port binding**: The application uses the port configured in IIS, accessed via `process.env.PORT`
 - **Logging**: iisnode provides its own logging mechanism in addition to your application logs
 
+### Build errors
+
+Check configuration file `production.js` or `local.js` variables are set correctly. Sometimes you need to execute `nx reset` in order to get a new build without caching files. You can include the command in yout `package.json` as `cache: nx reset` and then use it `npm run cache`
+
 ## Frontend Troubleshooting
 
 **Common Frontend Deployment Issues:**
@@ -287,6 +291,6 @@ sudo journalctl -u edfiadminapp-api -f
 
 ### Frontend Issues
 
-1. **Build errors**: Check environment variables are set correctly
+1. **Build errors**: Check environment variables are set correctly. Sometimes you need to execute `nx reset` in order to get a new build without caching files. You can include the command in yout `package.json` as `cache: nx reset` and then use it `npm run cache`
 2. **Routing issues**: Verify web server is configured for SPA routing
 3. **API connectivity**: Check CORS and network connectivity
