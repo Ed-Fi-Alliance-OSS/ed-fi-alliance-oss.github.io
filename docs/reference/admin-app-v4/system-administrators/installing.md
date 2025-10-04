@@ -248,6 +248,14 @@ You can deploy the Node.js backend directly to IIS using only iisnode. This appr
        CLIENT_SECRET: 'your-client-secret',
        MACHINE_AUDIENCE: 'edfiadminapp-api'
      },
+     SAMPLE_OIDC_CONFIG: {
+      issuer: 'https://your-keycloak-server/auth/realms/edfi',
+      clientId: 'edfiadminapp',
+      clientSecret: 'your-client-secret',
+      scope: '',
+     },
+     //this should match with a user in your Idp
+     ADMIN_USERNAME: 'admin@example.com',
      DB_ENCRYPTION_SECRET_VALUE: {
        // Can replace with `openssl rand -hex 32` or `node -e "console.log('KEY: '+ require('crypto').randomBytes(32).toString('hex'))"`
        KEY: 'your-32-char-encryption-key'
@@ -422,6 +430,14 @@ See [Troubleshooting](troubleshooting.md#frontend-troubleshooting) section in ca
        CLIENT_SECRET: 'your-client-secret',
        MACHINE_AUDIENCE: 'edfiadminapp-api'
      },
+     SAMPLE_OIDC_CONFIG: {
+      issuer: 'https://your-keycloak-server/auth/realms/edfi',
+      clientId: 'edfiadminapp',
+      clientSecret: 'your-client-secret',
+      scope: '',
+     },
+     //this should match with a user in your Idp
+     ADMIN_USERNAME: 'admin@example.com',
      DB_ENCRYPTION_SECRET_VALUE: {
        KEY: 'your-32-char-encryption-key-here'
      },
@@ -569,6 +585,15 @@ module.exports = {
     MANAGEMENT_CLIENT_ID: 'edfiadminapp-machine',
     MANAGEMENT_CLIENT_SECRET: 'machine-client-secret'
   },
+
+  SAMPLE_OIDC_CONFIG: {
+      issuer: 'https://your-keycloak-server/auth/realms/edfi',
+      clientId: 'edfiadminapp',
+      clientSecret: 'your-client-secret',
+      scope: '',
+  },
+  //this should match with a user in your Idp
+  ADMIN_USERNAME: 'admin@example.com',
   
   // Database Encryption (for storing sensitive data)
   DB_ENCRYPTION_SECRET_VALUE: {
