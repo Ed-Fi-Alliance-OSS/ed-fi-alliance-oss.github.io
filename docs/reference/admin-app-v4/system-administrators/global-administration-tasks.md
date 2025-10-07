@@ -114,11 +114,11 @@ Team memberships connect users to teams and determine their level of access with
 
 ![Team membership success](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/admin-guide/team-membership/team-membership-success.png)
 
-> **Available Roles Explained:**
+> **Common Role Types Explained:**
 >
-> - **Tenant Admin**: Can manage tenant-specific settings, resources, and perform administrative functions
-> - **Standard Tenant Access**: Can access and work with tenant resources with standard permissions
-> - **Tenant Viewer**: Has read-only access to tenant resources and settings
+> - **Admin**: Full administrative access to manage settings, resources, and perform all administrative functions
+> - **Standard**: Standard access to work with resources with limited administrative capabilities
+> - **Viewer**: Read-only access to resources and settings without modification privileges
 
 ![Team membership validation](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/admin-guide/team-membership/team-membership-validation.png)
 
@@ -131,11 +131,19 @@ Roles determine what actions users can perform within the Admin App. Each role c
 ### Configuring Role Privileges
 
 1. Navigate to **Global** > **Roles** in the main navigation menu
-2. Find and click on the **Tenant Admin** role
-3. In the privileges list, select or unselect the privilege you want to grant to the role
-4. Click **Save** after modifying each role
+2. Find and click on the role you want to modify (e.g., **Admin**, **Standard**, **Viewer**)
+3. In the privileges list, select or unselect the privileges you want to grant to the role
+4. Click **Save** after modifying the role
 
 ![Role creation form](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/admin-guide/role/role-creation-view.png)
+
+### Role Types
+
+The **Type** field in the role configuration specifies the context where this role applies:
+
+- **User team**: Roles that determine permissions within a specific team context
+- **User global**: Roles that apply globally across the system for users
+- **Resource ownership**: Roles that define permissions for managing specific resources
 
 > **Critical Warning:**
 >
