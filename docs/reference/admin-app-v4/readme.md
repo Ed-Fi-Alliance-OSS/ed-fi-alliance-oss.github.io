@@ -21,5 +21,5 @@ to delegate some maintenance tasks to local education agency staff.
 
 Accordingly, there are two perspectives to the application documentation:
 
-* [System Administrator's Guide](./system-adminstrators/readme.md)
+* [System Administrator's Guide](./system-administrators/readme.md)
 * [User's Guide](./user-guide/readme.md)
