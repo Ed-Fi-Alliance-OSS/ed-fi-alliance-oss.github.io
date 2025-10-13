@@ -38,7 +38,30 @@ hide_table_of_contents: true
 | Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
 | StaffAbsenceEvent | AbsenceEventCategory | The code describing the type of absence. |      |     |     |     |
-| Credential <br /> OpenStaffPosition <br /> Staff <br /> StaffSchoolAssociation | AcademicSubject | "what goes here?" | Orthodox |     |     |     |
+| Credential <br /> OpenStaffPosition <br /> Staff <br /> StaffSchoolAssociation | AcademicSubject | The code describing the of the content or subject area (e.g., arts, mathematics, reading, stenography, or a foreign language). | Orthodox |     |     |     |
+| School | AccreditationStatus | The accreditation status for an education preparation provider. |     |     |     |     |
+| EducationOrganization <br /> StaffDirectory <br /> | AddressType | The set of elements that describes an address, including the street address, city, state, and ZIP code. | Orthodox |     |     |     |
+| School | AdministrativeFundingControl | The type of education institution as classified by its funding source, for example public or private. |     |     |     |     |
+| StaffDemographic | AncestryEthnicOrigin | The original peoples or cultures with which the individual identifies. | Local |     |  Yes   |     |
+| StaffEducationOrganizationEmploymentAssociation | BackgroundCheckStatus | The status of the background check. |     |     |     |     |
+| StaffEducationOrganizationEmploymentAssociation | BackgroundCheckType | The type of background check. |     |     |     |     |
+| Credential | CertificationRoute | The process, program, or pathway used to obtain certification. |     |     |     |     |
+| School | CharterApprovalAgencyType | The type of agency that approved the establishment or continuation of a charter school. |     |     |     |     |
+| School | CharterStatus | A school or agency providing free public elementary or secondary education to eligible students under a specific charter granted by the state legislature or other appropriate authority and designated by such authority to be a charter school. |     |     |     |     |
+| StaffDemographic | CitizenshipStatus | An indicator of whether or not the person is a U.S. citizen. | Orthodox |     |     |     |
+|      | ContactType | This descriptor defines the set of contact types. |     |     |     |     |
+| EducationOrganization <br /> StaffDirectory <br /> | Country | The name of the country. It is strongly recommended that entries use only ISO 3166 2-letter country codes. | Standard |     |     |     |
+| Credential | CredentialField | The field of certification for the credential. | Local |     |     |     |
+| Credential | CredentialStatus | The current status of the credential. | Local |     |     |     |
+| Credential | CredentialType | An indication of the category of the credential a person holds. | Local |     |     |     |
+| EducationOrganization | EducationOrganizationCategory | The classification of the education agency within the geographic boundaries of a state according to the level of administrative and operational control granted by the state. | Orthodox |     |     |     |
+| EducationOrganizationIdentificationCode | EducationOrganizationIdentificationSystem | A coding scheme that is used for identification and record-keeping. |     |     |     |     |
+| Credential | EducatorRole | The specific roles or positions within an organization that the credential is intended to authorize, typically associated with service and administrative certifications. | Local |     |     |     |
+| StaffDirectory | ElectronicMailType | The type of email listed for an individual or organization. (For example: Home/Personal, Work, etc.) | Orthodox |     |     |     |
+| StaffEducationOrganizationEmploymentAssociation | EmploymentStatus | Reflects the type of employment or contract. | Orthodox |     |     |     |
+| School | FederalLocaleCode | The federal locale code associated with an education organization. | Standard |     |     |     |
+| OpenStaffPosition | FundingSource | The funding source for the open staff position. | Flexible |     |     |     |
+| Credential <br /> OpenStaffPosition <br /> < School <br /> StaffSchoolAssociation <br /> | GradeLevel | This defines the set of grade levels. |     |     |     |     |
 
 :::tip
 
