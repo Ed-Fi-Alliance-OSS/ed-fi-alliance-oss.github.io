@@ -56,6 +56,8 @@ Before creating applications and managing claimsets, it's important to understan
 
 **Application:** A software system or service that integrates with the Ed-Fi ODS/API to exchange educational data. Applications are owned by vendors and are assigned claimsets that define their permissions.
 
+**API Client Credentials:** The `client_id` and `client_secret` (aka "key and secret") for authenticating with an Ed-Fi API application. For the ODS/API, these credentials are connected to an application. The ODS/API's security database supports multiple sets of credentials per application, as does ODS Admin API version 2.3. However, the Ed-Fi Admin App only supports a one-to-one mapping and treats the credentials as synonymous with the application itself.
+
 **Claimset:** A collection of permissions (claims) that define what actions an application can perform on specific Ed-Fi Resources. Claimsets provide fine-grained control over data access.
 
 For more detailed information about Ed-Fi security concepts, [**see the documentation here describing the different security concepts in Ed-Fi.**](/reference/ods-api/platform-dev-guide/configuration/single-and-multi-tenant-configuration)
@@ -152,32 +154,41 @@ Applications represent the actual software systems that will connect to the Ed-F
    - Configure monitoring and logging levels
    - Define operational restrictions if needed
 
-:::warning
-**Client Secret Security:** The client secret is only displayed once during application creation. Store it securely and treat it as a password. If lost, you'll need to regenerate the credentials.
+:::warning title="Client Secret Security"
+
+Ed-Fi Admin App has two configuration options for displaying the client credentials when an Application has been created:
+
+- (default) Credentials are displayed directly on the screen for the user to copy and paste. The client secret is only displayed once during application creation.
+- Alternatively, the system may be configured to use Yopass for managing a "self-destructing" one-time link. On application creation, the user is provided with a web link to access the credentials. The web link can be sent to another user so that they can take ownership over the credentials, without the initial (Admin App) user ever seeing or recording the `client_id` and `client_secret`.
+
+In both cases, store the credentials securely and treat them as you would a password. If lost, you will need to regenerate the credentials using the reset button.
+
 :::
 
 ### Managing Application Credentials
 
-- **Credential Rotation**: Regularly rotate client secrets for enhanced security
-- **Access Monitoring**: Monitor application usage and access patterns
-- **Deactivation**: Temporarily disable applications without deleting them
-- **Deletion**: Permanently remove applications that are no longer needed
+- **Credential Rotation**: Regularly rotate client secrets for enhanced security. Because the Ed-Fi Admin App only supports a 1-1 mapping of _applications_ and _credentials_, key rotation can be achieved by either:
+  - Resetting the credentials for a given application, with immediate effect, or
+  - Create a second application, which creates a second set of credentials. Plan to deactivate the first set of credentials after giving the end user enough time to apply the new credentials in their system.
+- **Access Monitoring**: Monitoring application usage and access patterns can help detect any malicious usage of the credentials. The ODS/API does not have support for this monitoring, see [How To: Client Access Token Monitoring](/reference/ods-api/how-to-guides/token-access-monitoring) for one easy approach.
+- **Deactivation**: At this time, the only way to disable an application without deleting it is to reset the credentials and do not share the new `client_secret` until ready to do so.
+- **Deletion**: Permanently remove applications that are no longer needed.
 
 ## Best Practices
 
 ### Security Best Practices
 
-- **Principle of Least Privilege**: Grant only the minimum necessary permissions
-- **Regular Audits**: Periodically review vendor and application access
-- **Credential Management**: Implement secure storage and rotation of API credentials
-- **Monitoring**: Track application usage and identify unusual patterns
+- **Principle of Least Privilege**: Grant only the minimum necessary permissions.
+- **Regular Audits**: Periodically review vendor and application access.
+- **Credential Management**: Implement secure storage and rotation of API credentials.
+- **Monitoring**: Track application usage and identify unusual patterns.
 
 ### Operational Best Practices
 
-- **Documentation**: Maintain detailed records of all vendors, applications, and their purposes
-- **Testing**: Use non-production environments to test new configurations
-- **Change Management**: Follow approval processes for claimset modifications
-- **Backup**: Maintain backups of critical configuration data
+- **Documentation**: Maintain detailed records of all vendors, applications, and their purposes.
+- **Testing**: Use non-production environments to test new configurations.
+- **Change Management**: Follow approval processes for claimset modifications.
+- **Backup**: Maintain backups of critical configuration data.
 
 ## Troubleshooting
 
@@ -185,31 +196,31 @@ Applications represent the actual software systems that will connect to the Ed-F
 
 #### Vendor Creation Problems
 
-- Verify you have the necessary permissions in the selected environment/tenant
-- Ensure the namespace prefix is unique and follows naming conventions
-- Check that all required fields are properly completed
+- Verify you have the necessary permissions in the selected environment/tenant.
+- Ensure the namespace prefix is unique and follows naming conventions.
+- Check that all required fields are properly completed.
 
 #### Application Authentication Failures
 
-- Verify the Client ID and Client Secret are correct
-- Check that the application is active and not disabled
-- Ensure the application's claimsets include the necessary permissions
-- Validate that the Ed-Fi API endpoint URLs are correct
+- Verify the Client ID and Client Secret are correct.
+- Check that the application is active and not disabled.
+- Ensure the application's claimsets include the necessary permissions.
+- Validate that the Ed-Fi API endpoint URLs are correct.
 
 #### Permission Denied Errors
 
-- Review the application's assigned claimsets
-- Verify that the claimsets include the required permissions for the specific operation
-- Check if there are any resource-specific restrictions
-- Ensure the application is accessing the correct tenant/environment
+- Review the application's assigned claimsets.
+- Verify that the claimsets include the required permissions for the specific operation.
+- Check if there are any resource-specific restrictions.
+- Ensure the application is accessing the correct tenant/environment.
 
 ### Getting Support
 
 For additional assistance with vendor and claimset management:
 
-- Review the Ed-Fi technical documentation for detailed API specifications
-- Check application logs for specific error messages
-- Contact your system administrator for environment-specific issues
-- Consult the Ed-Fi community forums for best practices and troubleshooting tips
+- Review the Ed-Fi technical documentation for detailed API specifications.
+- Check application logs for specific error messages.
+- Contact your system administrator for environment-specific issues.
+- Consult the Ed-Fi community forums for best practices and troubleshooting tips.
 
 Proper vendor and claimset management ensures secure and efficient integration between external applications and your Ed-Fi data, while maintaining appropriate access controls and audit capabilities.
