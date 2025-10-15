@@ -808,6 +808,27 @@ export default {
         },
       ],
     },
+    {
+      productName: 'Elevate Standards Alignment',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/Elevate_StandardsAlignment.png',
+      website:
+        'https://www.instructure.com/learning-companies/products/elevate/elevate-standards-alignment',
+      validThrough: 'October 14, 2026',
+      verifyingAgencies: ['Fullerton School District', 'New Caney ISD'],
+      versionCompatibility: 'Ed-Fi ODS API for v4',
+      availability:
+        'Available to states (SEAs) and school districts (LEAs) using Ed-Fi Technology Suite.',
+      documentation: {
+        Mappings:
+          'https://edfi.atlassian.net/wiki/download/attachments/20611183/AB%20Connect%20-%20API%20Provider%20Badge%20-%20Data%20Mapping.xlsx?version=2&modificationDate=1597692936440&cacheVersion=1&api=v2',
+      },
+      supportResources: [
+        {
+          name: 'Learning Standards Sync Utility',
+          link: 'https://edfi.atlassian.net/wiki/spaces/EXCHANGE/pages/22487416/Learning+Standards+Sync+Utility',
+        },
+      ],
+    },
   ],
   domainApiSuite3: [
     {
