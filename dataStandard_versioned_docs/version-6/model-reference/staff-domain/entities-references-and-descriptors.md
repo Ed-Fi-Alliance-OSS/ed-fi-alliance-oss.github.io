@@ -60,8 +60,30 @@ hide_table_of_contents: true
 | StaffDirectory | ElectronicMailType | The type of email listed for an individual or organization. (For example: Home/Personal, Work, etc.) | Orthodox |     |     |     |
 | StaffEducationOrganizationEmploymentAssociation | EmploymentStatus | Reflects the type of employment or contract. | Orthodox |     |     |     |
 | School | FederalLocaleCode | The federal locale code associated with an education organization. | Standard |     |     |     |
-| OpenStaffPosition | FundingSource | The funding source for the open staff position. | Flexible |     |     |     |
+| OpenStaffPosition | FundingSource | The funding source for the open staff position. |     |     |     |     |
 | Credential <br /> OpenStaffPosition <br /> < School <br /> StaffSchoolAssociation <br /> | GradeLevel | This defines the set of grade levels. |     |     |     |     |
+| LocalEducationAgency | GunFreeSchoolsActReportingStatus | An indication of whether the school or Local Education Agency (LEA) submitted a Gun-Free Schools Act (GFSA) of 1994 report to the state, as defined by Title 18, Section 921. |     |     |     |     |
+| EducationOrganization | Indicator | The name or code for the indicator or metric. |     |     |     |     |
+| EducationOrganization | IndicatorGroup | The name for a group of indicators. |     |     |     |     |
+| EducationOrganization | IndicatorLevel | The value of the indicator or metric, as a value from a controlled vocabulary. The semantics of an empty value is ""not submitted."" |     |     |     |     |
+| EducationOrganization | InstitutionTelephoneNumberType | The type of communication number listed for an individual or organization. |     |     |     |     |
+| School | InternetAccess | The type of Internet access available. |     |     |     |     |
+| StaffDemographic | Language | A specification of which written or spoken communication is being used. | Orthodox |     |     |     |
+| StaffDemographic | LanguageUse | A description of how the language is used (e.g. Home Language, Native Language, Spoken Language). | Orthodox |     |     |     |
+| StaffEducationOrganizationEmploymentAssociation | LengthOfContract | The length of contract. |     |     |     |     |
+| Staff | HighestCompletedLevelOfEducation | The extent of formal instruction an individual has received (e.g., the highest grade in school completed or its equivalent or the highest degree received). | Orthodox |     |     |     |
+| EducationOrganization <br /> StaffDirectory  | Locale | A general geographic indicator that categorizes U.S. territory (e.g., City, Suburban). | Standard |     |     |     |
+| LocalEducationAgency | LocalEducationAgencyCategory | The category of local education agency/district. |     |     |     |     |
+| School | MagnetSpecialProgramEmphasisSchool | A school that has been designed: 1) to attract students of different racial/ethnic backgrounds for the purpose of reducing, preventing, or eliminating racial isolation; and/or 2) to provide an academic or social focus on a particular theme (e.g., science/math, performing arts, gifted/talented, or foreign language). |     |     |     |     |
+| OpenStaffPositionEvent | OpenStaffPositionEventStatus | Reflects the status of the milestone event. |     |     |     |     |
+| OpenStaffPositionEvent | OpenStaffPositionEventType | Specifies the type of milestone event. |     |     |     |     |
+| OpenStaffPosition | OpenStaffPositionReason | The reason for the open staff position. |     |     |     |     |
+| EducationOrganization | OperationalStatus | The current operational status of the education organization (e.g., active, inactive). |     |     |     |     |
+| Staff | OtherNameType | The types of alternate names for an individual. | Orthodox |     |     |     |
+| OpenStaffPosition | PostingResult | Indication of whether the OpenStaffPosition was filled or retired without filling. | Orthodox |     |     |     |
+| OpenStaffPosition <br /> StaffSchoolAssociation | ProgramAssignment |The name of the program for which the individual or open staff position will be assigned. | Orthodox |     |     |     |
+| StaffDirectory | Race | The general racial category which most clearly reflects the individual's recognition of his or her community or with the which the individual most identifies as last reported to the education organization. The data model allows for multiple entries so that each individual can specify all appropriate races. | Standard |     |     |     |
+| Staff | RecognitionType | The nature of recognition given to the individual for accomplishments in a co-curricular, or extra-curricular activity. | Flexible |     |     |     |
 
 :::tip
 
