@@ -20,7 +20,7 @@ At the database level, a single pairing of `EdFi_Admin` and `EdFi_Security` data
 
 :::tip
 
-Multi-tenancy was introduced in ODS/API 7.1. This section does not apply to prior versions of the ODS/API
+Multi-tenancy was introduced in ODS/API 7.1. This section does not apply to prior versions of the ODS/API.
 
 For more information, see [Single and Multi-Tenant Configuration](/reference/ods-api/platform-dev-guide/configuration/single-and-multi-tenant-configuration).
 
@@ -52,24 +52,6 @@ Tenant management is not yet fully functional in the Ed-Fi Admin App. At this ti
 If you add additional tenants to a multi-tenant ODS/API 7.x installation _after_ having already created an environment, then start over by creating a new environment.
 
 :::
-
-<!-- ### Creating and Deleting Tenants
-
-1. Navigate to the Ed-Fi environment where you'd like to add an Ed-Fi Tenant. Clicking on an environment under the `Environments` section will bring you to the environment details page.
-
-2. If the user has the appropriate permissions, the user will be able to see the `+ New` button at the top right of the Tenants box on this page. If you do not see this button but you believe you should have permissions to do so, please reach out to your system administrator.
-
-3. After clicking the `+ New` button on the tenants section, a `Create New Tenant` form will pop up on the next page. To create a new tenant in Ed-Fi, you will need to enter the Tenant ID and the Tenant Name. Your new tenant will be available to use after clicking `Save` on the creation page.
-
-   :::info
-   The Tenant ID will be used in the API URL when making calls to that particular tenant. Ensure this ID follows your organization's naming conventions and is easily identifiable.
-   :::
-
-4. To delete a tenant, click on the three dots menu next to the tenant name and select `Delete`.
-
-:::warning
-Deleting a tenant is a permanent action that will remove all associated data, vendors, claimsets, and applications. Ensure you have proper backups and approval before proceeding with tenant deletion.
-::: -->
 
 ## ODS Instance Management
 
