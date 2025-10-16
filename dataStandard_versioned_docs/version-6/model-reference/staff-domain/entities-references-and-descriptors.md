@@ -84,6 +84,25 @@ hide_table_of_contents: true
 | OpenStaffPosition <br /> StaffSchoolAssociation | ProgramAssignment |The name of the program for which the individual or open staff position will be assigned. | Orthodox |     |     |     |
 | StaffDirectory | Race | The general racial category which most clearly reflects the individual's recognition of his or her community or with the which the individual most identifies as last reported to the education organization. The data model allows for multiple entries so that each individual can specify all appropriate races. | Standard |     |     |     |
 | Staff | RecognitionType | The nature of recognition given to the individual for accomplishments in a co-curricular, or extra-curricular activity. | Flexible |     |     |     |
+| StaffEducationOrganizationEmploymentAssociation | SalaryType | The type of salary that a staff member is receiving. |     |     |     |     |
+| School | SchoolCategory | The one or more categories of school. |     |     |     |     |
+| LocalEducationAgency | SchoolChoiceImplementStatus | An indication of whether the LEA was able to implement the provisions for public school choice under Title I, Part A, Section 1116 of ESEA as amended. |     |     |     |     |
+| School | SchoolType | The type of education institution as classified by its primary focus. |     |     |     |     |
+| StaffEducationOrganizationEmploymentAssociation | Separation | Type of employment separation | Orthodox |     |     |     |
+| StaffEducationOrganizationEmploymentAssociation | SeparationReason | Reason for terminating the employment. | Orthodox |     |     |     |
+| StaffDemographic | Sex | The Staff's birth sex as reported to the education organization. | Standard |     |     |     |
+| Person | SourceSystem | This descriptor defines the originating record source system for the person. |     |     |     |     |
+| OpenStaffPosition <br /> StaffEducationOrganizationAssignmentAssociation | StaffClassification | The titles of employment, official status, or rank of education staff. | Flexible |     |     |     |
+|StaffIdentificationCode | StaffIdentificationSystem | A coding scheme that is used for identification and record-keeping purposes by schools, LEAs, SEAs, or other agencies refer to a staff member | Orthodox |     |     |     |
+| StaffLeave | StaffLeaveEventCategory | The code describing the type of leave taken. | Orthodox |     |     |     |
+| EducationOrganization <br /> StaffDirectory | StateAbbreviation | The abbreviation for the state (within the United States) or outlying area in which an address is located. | Standard |     |     |     |
+| Credential | TeachingCredential | An indication of the category of a legal document giving authorization to perform teaching assignment services. | Orthodox |     |     |     |
+| Credential | TeachingCredentialBasis | An indication of the pre-determined criteria for granting the teaching credential that a person holds.| Orthodox |     |     |     |
+| StaffDirectory | TelephoneNumberType | The type of communication number listed for an individual or organization. | Standard |     |     |     |
+| OpenStaffPosition | Term | The first term for the session during the school year for which the open staff position is seeking to fill. |     |     |     |     |
+| School | TitleIPartASchoolDesignation | Denotes the Title I Part A designation for the school. |     |     |     |     |
+| StaffDemographic | TribalAffiliation | An American Indian tribe with which the Staff is affiliated as last reported to the education organization. | Orthodox |     |     |     |
+| StaffDemographic | Visa | An indicator of a non-US citizen's Visa type. | Standard |     |     |     |
 
 :::tip
 
