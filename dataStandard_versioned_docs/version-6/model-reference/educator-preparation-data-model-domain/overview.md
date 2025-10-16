@@ -22,23 +22,19 @@ This domain contains:
     certification provider and is enrolled in a program that will meet the
     necessary requirements for certification as defined by the state, and has
     not yet received certification.
+* The CandidateEducatorPreparationProgramAssociation entity....
+* The CandidateIdentificationCode entity holds the different identity codes for
+    a Candidate member
+* The CandidateRelationshipToStaffAssociation entity ....
 * The EducatorPreparationProgram entity that represents a state approved
     course of study, completion of which signifies a candidate will have met all
     requirements necessary to obtain a certification or licensure to teach
     within K-12 schools.
-* The PerformanceEvaluation entity and related entities that Educator
-    Preparation Programs (EPPs) can use to capture performance data about
-    Candidates and Staff teachers to drive the analysis of effectiveness and
-    improvement.
-* An expansion to the Credential entity which uses the early-access person
-    entity to associate to a credential, so any person-role (e.g., Student,
-    Candidate) can be associated with a credential.
-* An expansion to the Survey entity and related entities to support survey
-    requirements that are a cornerstone of most EPP implementations.
-* The Student Path is a community extension that tracks the progress of an individual
-    from being a student to becoming an educator. This domain tracks various
-    assessments , fieldwork, and certifications from third party and state education
-    agencies. See the [Student Path Domain](student-path.md) community extension for more information.
+* The FieldworkExperience Entity holds information regarding a post-secondary instructional
+    coursework in a particular field of study that typically involves a prescribed number,
+    instruction periods, or meetings.
+* The FieldworkExperienceSectionAssociation entity ....
+* The StaffEducatorPreparationProgramAssociation entity ....
 
 ## Key Concepts
 
