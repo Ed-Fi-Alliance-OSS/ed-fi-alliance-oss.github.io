@@ -8,9 +8,9 @@ We encourage members of the Ed-Fi community to review these proposed changes and
 
 _Annual cadence for credential changes_
 
-| Jan–May                                           | June–Sept                                                       | October-November                                      | December              |
+| Jan–May                                           | June–Sept                                                       | October                                      | November              |
 |--------------------------------------------------|------------------------------------------------------------------|----------------------------------------------|------------------------|
-| Working sessions to source credential changes  | Changes reviewed by SIS, MSP, TAG, GAT working groups         | Changes posted for community review, feedback collected         |Changes go into effect |
+| - Working sessions to source credential changes  | - Changes reviewed by SIS, MSP, TAG, GAT working groups         | - Changes posted for community review, feedback collected         |- Changes go into effect |
 
 ## Summary of SY 26-27 changes
 
@@ -69,7 +69,7 @@ Aligning best practices with certification ensures that required data elements a
 
 | Scenario                                         | Newly Required Elements                                                                 |
 |--------------------------------------------------|------------------------------------------------------------------------------------------|
-| [StudentSchoolAssociation](/docs/partners/2-certification/available-certifications/sis-v5/test-scenarios/student-school-association-scenarios.md)                         | PrimarySchool, SchoolYear, EnrollmentType, CalendarReference, FullTimeEquivalency       |
+| StudentSchoolAssociation                         | PrimarySchool, SchoolYear, EnrollmentType, CalendarReference, FullTimeEquivalency       |
 | StudentEducationOrganizationResponsibilityAssociation | StudentReference, EducationOrganizationReference, ResponsibilityDescriptor, BeginDate, **StudentTransportation.StudentReference (if transportation module)** |
 | StudentProgram scenarios (CTE, Language, Migrant, Homeless, Neglected or Delinquent, Food, Title I) | EndDate                                                                                 |
 | StudentSpecialEducationProgramAssociation        | EndDate, **ReasonExited (if supported)**, SpecialEducationExitDate                      |
