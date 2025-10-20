@@ -65,6 +65,7 @@ hide_table_of_contents: true
 | StudentAssessment | ResultDatatypeType | The datatype of the result. The results can be expressed as a number, percentile, range, level, etc. | Orthodox |  |  | Yes |
 | StudentAssessment | RetestIndicator | Indicator if the test was retaken. For example: Primary administration, First retest, Second retest... | Flexible |  |  |  |
 | StudentAssessment | WhenAssessedGradeLevel | The grade level of a student when assessed. | Orthodox |  | Yes |  |
+| StudentAssessment | AssessedGradeLevel | The grade level for which the assessment form was evaluated for the student on this administration. | Orthodox |     |     |     |
 
 :::tip
 
