@@ -37,8 +37,8 @@ hide_table_of_contents: true
 
 | Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
-| StaffAbsenceEvent | AbsenceEventCategory | The code describing the type of absence. |      |     |     |     |
-| Credential <br /> OpenStaffPosition <br /> Staff <br /> StaffSchoolAssociation | AcademicSubject | The code describing the of the content or subject area (e.g., arts, mathematics, reading, stenography, or a foreign language). | Orthodox |     |     |     |
+| StaffAbsenceEvent | AbsenceEventCategory | The code describing the type of absence. | Orthodox |     |     |     |
+| Credential <br /> OpenStaffPosition <br /> StaffSchoolAssociation | AcademicSubject | The code describing the of the content or subject area (e.g., arts, mathematics, reading, stenography, or a foreign language). | Local |     |     |     |
 | School | AccreditationStatus | The accreditation status for an education preparation provider. |     |     |     |     |
 | EducationOrganization <br /> StaffDirectory <br /> | AddressType | The set of elements that describes an address, including the street address, city, state, and ZIP code. | Orthodox |     |     |     |
 | School | AdministrativeFundingControl | The type of education institution as classified by its funding source, for example public or private. |     |     |     |     |
@@ -49,7 +49,6 @@ hide_table_of_contents: true
 | School | CharterApprovalAgencyType | The type of agency that approved the establishment or continuation of a charter school. |     |     |     |     |
 | School | CharterStatus | A school or agency providing free public elementary or secondary education to eligible students under a specific charter granted by the state legislature or other appropriate authority and designated by such authority to be a charter school. |     |     |     |     |
 | StaffDemographic | CitizenshipStatus | An indicator of whether or not the person is a U.S. citizen. | Orthodox |     |     |     |
-|      | ContactType | This descriptor defines the set of contact types. |     |     |     |     |
 | EducationOrganization <br /> StaffDirectory <br /> | Country | The name of the country. It is strongly recommended that entries use only ISO 3166 2-letter country codes. | Standard |     |     |     |
 | Credential | CredentialField | The field of certification for the credential. | Local |     |     |     |
 | Credential | CredentialStatus | The current status of the credential. | Local |     |     |     |
@@ -61,17 +60,21 @@ hide_table_of_contents: true
 | StaffEducationOrganizationEmploymentAssociation | EmploymentStatus | Reflects the type of employment or contract. | Orthodox |     |     |     |
 | School | FederalLocaleCode | The federal locale code associated with an education organization. | Standard |     |     |     |
 | OpenStaffPosition | FundingSource | The funding source for the open staff position. |     |     |     |     |
-| Credential <br /> OpenStaffPosition <br /> < School <br /> StaffSchoolAssociation <br /> | GradeLevel | This defines the set of grade levels. |     |     |     |     |
+| Credential <br /> School <br /> StaffSchoolAssociation <br /> | GradeLevel | This defines the set of grade levels. | Orthodox |     |     |     |
 | LocalEducationAgency | GunFreeSchoolsActReportingStatus | An indication of whether the school or Local Education Agency (LEA) submitted a Gun-Free Schools Act (GFSA) of 1994 report to the state, as defined by Title 18, Section 921. |     |     |     |     |
+| Staff | HighestCompletedLevelOfEducation | The extent of formal instruction an individual has received (e.g., the highest grade in school completed or its equivalent or the highest degree received). | Orthodox |     |     |     |
+| Staff | HighlyQualifiedAcademicSubject | The academic subject(s) in which the staff is deemed to be "highly qualified". | Orthodox |     |     |     |
+| Staff <br /> StaffDemographic | IdentificationDocumentUse | The primary function of the document used for establishing identity. | Orthodox |     |     |     |
 | EducationOrganization | Indicator | The name or code for the indicator or metric. |     |     |     |     |
 | EducationOrganization | IndicatorGroup | The name for a group of indicators. |     |     |     |     |
 | EducationOrganization | IndicatorLevel | The value of the indicator or metric, as a value from a controlled vocabulary. The semantics of an empty value is ""not submitted."" |     |     |     |     |
-| EducationOrganization | InstitutionTelephoneNumberType | The type of communication number listed for an individual or organization. |     |     |     |     |
+| EducationOrganization | InstitutionTelephoneNumberType | The type of communication number listed for an individual or organization. | Standard |     |     |     |
 | School | InternetAccess | The type of Internet access available. |     |     |     |     |
+| OpenStaffPosition | InstructionalGradeLevel | The set of grade levels for which the position's assignment is responsible. | Orthodox |     |     |     |
+| Staff <br /> StaffDemographic | IssuerCountry | Country of origin of the document. It is strongly recommended that entries use only ISO 3166 2-letter country codes. | Standard |     |     |     |
 | StaffDemographic | Language | A specification of which written or spoken communication is being used. | Orthodox |     |     |     |
 | StaffDemographic | LanguageUse | A description of how the language is used (e.g. Home Language, Native Language, Spoken Language). | Orthodox |     |     |     |
 | StaffEducationOrganizationEmploymentAssociation | LengthOfContract | The length of contract. |     |     |     |     |
-| Staff | HighestCompletedLevelOfEducation | The extent of formal instruction an individual has received (e.g., the highest grade in school completed or its equivalent or the highest degree received). | Orthodox |     |     |     |
 | EducationOrganization <br /> StaffDirectory  | Locale | A general geographic indicator that categorizes U.S. territory (e.g., City, Suburban). | Standard |     |     |     |
 | LocalEducationAgency | LocalEducationAgencyCategory | The category of local education agency/district. |     |     |     |     |
 | School | MagnetSpecialProgramEmphasisSchool | A school that has been designed: 1) to attract students of different racial/ethnic backgrounds for the purpose of reducing, preventing, or eliminating racial isolation; and/or 2) to provide an academic or social focus on a particular theme (e.g., science/math, performing arts, gifted/talented, or foreign language). |     |     |     |     |
@@ -80,6 +83,7 @@ hide_table_of_contents: true
 | OpenStaffPosition | OpenStaffPositionReason | The reason for the open staff position. |     |     |     |     |
 | EducationOrganization | OperationalStatus | The current operational status of the education organization (e.g., active, inactive). |     |     |     |     |
 | Staff | OtherNameType | The types of alternate names for an individual. | Orthodox |     |     |     |
+| StaffDemographic | PersonalInformationVerification | The category of the document relative to its purpose. | Orthodox |     |     |     |
 | OpenStaffPosition | PostingResult | Indication of whether the OpenStaffPosition was filled or retired without filling. | Orthodox |     |     |     |
 | OpenStaffPosition <br /> StaffSchoolAssociation | ProgramAssignment |The name of the program for which the individual or open staff position will be assigned. | Orthodox |     |     |     |
 | StaffDirectory | Race | The general racial category which most clearly reflects the individual's recognition of his or her community or with the which the individual most identifies as last reported to the education organization. The data model allows for multiple entries so that each individual can specify all appropriate races. | Standard |     |     |     |
@@ -96,6 +100,7 @@ hide_table_of_contents: true
 |StaffIdentificationCode | StaffIdentificationSystem | A coding scheme that is used for identification and record-keeping purposes by schools, LEAs, SEAs, or other agencies refer to a staff member | Orthodox |     |     |     |
 | StaffLeave | StaffLeaveEventCategory | The code describing the type of leave taken. | Orthodox |     |     |     |
 | EducationOrganization <br /> StaffDirectory | StateAbbreviation | The abbreviation for the state (within the United States) or outlying area in which an address is located. | Standard |     |     |     |
+| Credential | StateOfIssueStateAbbreviation | The abbreviation for the name of the state (within the United States) or extra-state jurisdiction in which a license/credential was issued. | Standard |     |     |     |
 | Credential | TeachingCredential | An indication of the category of a legal document giving authorization to perform teaching assignment services. | Orthodox |     |     |     |
 | Credential | TeachingCredentialBasis | An indication of the pre-determined criteria for granting the teaching credential that a person holds.| Orthodox |     |     |     |
 | StaffDirectory | TelephoneNumberType | The type of communication number listed for an individual or organization. | Standard |     |     |     |
