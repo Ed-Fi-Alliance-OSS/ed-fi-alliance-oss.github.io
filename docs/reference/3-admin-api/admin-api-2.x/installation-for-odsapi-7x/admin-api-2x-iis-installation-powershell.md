@@ -39,6 +39,17 @@ Each step is outlined in detail below for the PowerShell deployment. Ensure t
 you have permission to execute PowerShell scripts. For more information,
 see [about_Execution_Policies](http://go.microsoft.com/fwlink/?LinkID=135170).
 
+### Installation files
+
+:::note
+  The following is a Nuget package containing the **Admin API v2.2.2**
+  binaries and installer scripts for deployment to IIS.
+
+* [EdFi.Suite3.ODS.AdminApi
+     v2.2.2](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.Suite3.ODS.AdminApi/overview/2.2.2)
+
+:::
+
 #### **Step 1. Rename and Unzip Admin API Source Files**
 
 Download and rename the linked Nuget Package (.npkg) to .zip

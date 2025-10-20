@@ -32,6 +32,17 @@ The following are required to install the Admin API with IIS:
 
 ## Installation Steps
 
+### Installation Files
+
+:::note
+ The following is a Nuget package containing the **Admin API v2.2.0
+ source** **files** for manual deployment to IIS.
+
+* [EdFi.Suite3.ODS.AdminApi
+     v2.2.0](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.Suite3.ODS.AdminApi/overview/2.2.0)
+
+:::
+
 ### **Step 1. Create Admin API Directory**
 
 Create a directory to hold all of the Admin API source files. In this example,
@@ -392,11 +403,3 @@ CREATE TABLE adminapi.Tokens (
 
 Continue on to [First-Time Configuration for Admin
 2.x](first-time-configuration-for-admin-api-2x.md).
-
-:::info note:
- The following is a Nuget package containing the **Admin API v2.2.0
- source** **files** for manual deployment to IIS.
-
-* [EdFi.Suite3.ODS.AdminApi
-     v2.2.0](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.Suite3.ODS.AdminApi/overview/2.2.0)
-:::
