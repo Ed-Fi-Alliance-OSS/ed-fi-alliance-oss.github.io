@@ -25,12 +25,21 @@ install a fresh copy of Admin API to upgrade from prior versions.
 The following are required to install the Admin API with IIS:
 
 * Enable IIS (before installing .NET Hosting Bundle).
-* Install [.NET 7 Hosting Bundle v7.0.20 or
-    higher](https://dotnet.microsoft.com/en-us/download/dotnet/7.0). After
+* Install [.NET 8 Hosting Bundle v8.0.21 or
+    higher](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-aspnetcore-8.0.21-windows-hosting-bundle-installer). After
     installing the .NET Hosting Bundle, it may be necessary to restart the
     computer for the changes to take effect.
 
 ## Installation Steps
+
+### Installation files
+
+:::note
+ The following is a Nuget package containing the **Admin API v2.2.0 source files** for manual deployment to IIS.
+* [EdFi.Suite3.ODS.AdminApi
+     v2.2.0](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.Suite3.ODS.AdminApi/overview/2.2.0)
+
+:::
 
 ### **Step 1. Create Admin API Directory**
 
@@ -392,11 +401,3 @@ CREATE TABLE adminapi.Tokens (
 
 Continue on to [First-Time Configuration for Admin
 2.x](first-time-configuration-for-admin-api-2x.md).
-
-:::info note:
- The following is a Nuget package containing the **Admin API v2.2.0
- source** **files** for manual deployment to IIS.
-
-* [EdFi.Suite3.ODS.AdminApi
-     v2.2.0](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.Suite3.ODS.AdminApi/overview/2.2.0)
-:::

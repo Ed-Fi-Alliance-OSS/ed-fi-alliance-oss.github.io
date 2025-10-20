@@ -42,6 +42,17 @@ Then, apply the below changes to the environment to introduce the Admin API.
 Admin API does not support in-place upgrades from prior versions.  Please
 install a fresh copy of Admin API to upgrade from prior versions.
 
+### Installation Files
+
+:::note
+The following is the DockerHub repo for **Admin API v2.2.0 Docker Image** for inclusion in Docker compose:
+
+* [edfialliance/ods-admin-api:v2.2.0](https://hub.docker.com/layers/edfialliance/ods-admin-api/v2.2.0/images/sha256-0e818c3741e4dea8473af1b52d25a512684f27bf9529fc43a5c9954e00dc5b0d?context=explore)
+
+* [edfialliance/ods-admin-api-db:v2.2.0](https://hub.docker.com/layers/edfialliance/ods-admin-api-db/v2.2.0/images/sha256-ad0563347f65d9c44bfab6fffee302d6793be4ea84e6d0369242c6cd15a17d39?context=explore)
+
+:::
+
 ### 1\. Include Admin API in the ODS Docker Setup
 
 #### Docker Compose
