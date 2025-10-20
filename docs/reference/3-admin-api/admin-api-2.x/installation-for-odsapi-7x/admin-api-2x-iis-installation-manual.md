@@ -32,7 +32,7 @@ The following are required to install the Admin API with IIS:
 
 ## Installation Steps
 
-### Installation Files
+### Installation files
 
 :::note
  The following is a Nuget package containing the **Admin API v2.2.0
