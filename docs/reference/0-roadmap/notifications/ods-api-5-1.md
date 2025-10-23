@@ -9,7 +9,7 @@ Earlier this year, we announced the [end of support for ODS/API 3.4 and
 Alliance to formally support versions 5.1 and 5.2. Therefore we are officially
 ending support immediately.
 
-::: warning
+:::warning
 
 Please reach out via the [Community Hub](https://success.ed-fi.org) if this is
 going to cause your organization a hardship, and we can explore potential
