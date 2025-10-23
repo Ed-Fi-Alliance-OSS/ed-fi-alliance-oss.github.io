@@ -2,7 +2,7 @@
 
 :::warning
 
-Developer note: see the 5.1 to 5.2 document for a good example
+Pluralize the new endpoint names
 
 :::
 
@@ -26,9 +26,9 @@ Developer note: see the 5.1 to 5.2 document for a good example
 #### certificationExam
 
 * `GET /ed-fi/certificationExam`
-    Retrieves specific certification exam using property values.
+    Retrieves specific certification exams using property values.
 * `POST /ed-fi/certificationExam`
-    Creates or updates the certification exam based on natural key values.
+    Creates or updates the certification exams based on natural key values.
 * `GET /certificationExam{id}`
     Retrieves a specific examination by ID.
 * `PUT /ed-fi/certificationExam{id}`
@@ -60,101 +60,101 @@ Developer note: see the 5.1 to 5.2 document for a good example
 * `PUT /ed-fi/credentialEvent{id}`
     Updates a specific credential event by ID.
 * `DELETE /ed-fi/credentialEvent/{id}`
-    Deletes a specific credential event by Id.
+    Deletes a specific credential event by ID.
 
 ### Educator Preparation Program Domain Additions
 
 * `GET /ed-fi/Candidate`
-    Retrieves specific credential events using property values.
+    Retrieves specific candidates using property values.
 * `POST /ed-fi/Candidate`
-   Creates or updates a credential events based on natural key values.
+   Creates or updates candidates events based on natural key values.
 * `GET /Candidate{id}`
-    Retrieves a specific credential event by ID.
+    Retrieves a specific candidate event by ID.
 * `PUT /ed-fi/Candidate{id}`
-    Updates a specific credential event by ID.
+    Updates a specific candidate event by ID.
 * `DELETE /ed-fi/Candidate/{id}`
-    Deletes a specific credential event by Id.
+    Deletes a specific candidate event by ID.
 
 * `GET /ed-fi/CandidateEducatorPreparationProgramAssociation`
-    Retrieves specific credential events using property values.
+    Retrieves specific candidate educator preparation program associations using property values.
 * `POST /ed-fi/CandidateEducatorPreparationProgramAssociation`
-    Creates or updates a credential events based on natural key values.
+    Creates or updates candidate educator preparation program associations based on natural key values.
 * `GET /CandidateEducatorPreparationProgramAssociation{id}`
-    Retrieves a specific credential event by ID.
+    Retrieves a specific candidate educator preparation program association event by ID.
 * `PUT /ed-fi/CandidateEducatorPreparationProgramAssociation{id}`
-    Updates a specific credential event by ID.
+    Updates a specific candidate educator preparation program association event by ID.
 * `DELETE /ed-fi/CandidateEducatorPreparationProgramAssociation/{id}`
-    Deletes a specific credential event by Id.
+    Deletes a specific candidate educator preparation program association event by ID.
 
 * `GET /ed-fi/candidateRelationshipToStaffAssociation`
-    Retrieves specific credential events using property values.
+    Retrieves specific candidate relationship to staff associations using property values.
 * `POST /ed-fi/candidateRelationshipToStaffAssociation`
-    Creates or updates a credential events based on natural key values.
+    Creates or updates specific candidate relationship to staff associations based on natural key values.
 * `GET /candidateRelationshipToStaffAssociation{id}`
-    Retrieves a specific credential event by ID.
+    Retrieves a specific specific candidate relationship to staff association by ID.
 * `PUT /ed-fi/candidateRelationshipToStaffAssociation{id}`
-    Updates a specific credential event by ID.
+    Updates a specific specific candidate relationship to staff association by ID.
 * `DELETE /ed-fi/candidateRelationshipToStaffAssociation/{id}`
-    Deletes a specific credential event by Id.
+    Deletes a specific specific candidate relationship to staff association by ID.
 
 * `GET /ed-fi/staffEducatorPreparationProgramAssociation`
-    Retrieves specific credential events using property values.
+    Retrieves specific staff educator preparation program associations using property values.
 * `POST /ed-fi/staffEducatorPreparationProgramAssociation`
-    Creates or updates a credential events based on natural key values.
+    Creates or updates staff educator preparation program associations based on natural key values.
 * `GET /staffEducatorPreparationProgramAssociation{id}`
-    Retrieves a specific credential event by ID.
+    Retrieves a specific staff educator preparation program association by ID.
 * `PUT /ed-fi/staffEducatorPreparationProgramAssociation{id}`
-    Updates a specific credential event by ID.
+    Updates a specific staff educator preparation program association by ID.
 * `DELETE /ed-fi/staffEducatorPreparationProgramAssociation/{id}`
-    Deletes a specific credential event by Id.
+    Deletes a specific staff educator preparation program association by ID.
 
 * `GET /ed-fi/educatorPreparationProgram`
-    Retrieves specific credential events using property values.
+    Retrieves specific educator preparation programs using property values.
 * `POST /ed-fi/educatorPreparationProgram`
-    Creates or updates a credential events based on natural key values.
+    Creates or updates specific educator preparation programs based on natural key values.
 * `GET /educatorPreparationProgram{id}`
-    Retrieves a specific credential event by ID.
+    Retrieves a specific specific educator preparation program by ID.
 * `PUT /ed-fi/educatorPreparationProgram{id}`
-    Updates a specific credential event by ID.
+    Updates a specific specific educator preparation program by ID.
 * `DELETE /ed-fi/educatorPreparationProgram/{id}`
-    Deletes a specific credential event by Id.
+    Deletes a specific specific educator preparation program by ID.
 
 * `GET /ed-fi/fieldworkExperience`
-    Retrieves specific credential events using property values.
+    Retrieves specific fieldwork experiences using property values.
 * `POST /ed-fi/fieldworkExperience`
-    Creates or updates a credential events based on natural key values.
+    Creates or updates fieldwork experiences based on natural key values.
 * `GET /fieldworkExperience{id}`
-    Retrieves a specific credential event by ID.
+    Retrieves a specific fieldwork experience by ID.
 * `PUT /ed-fi/fieldworkExperience{id}`
-    Updates a specific credential event by ID.
+    Updates a specific fieldwork experience by ID.
 * `DELETE /ed-fi/fieldworkExperience/{id}`
-    Deletes a specific credential event by Id.
+    Deletes a specific fieldwork experience by ID.
 
 #### candidateIdentificationCode
 
 * `GET /ed-fi/candidateIdentificationCode`
-    Retrieves specific credential events using property values.
+    Retrieves specific candidate identification codes using property values.
 * `POST /ed-fi/candidateIdentificationCode`
-    Creates or updates a credential events based on natural key values.
+    Creates or updates candidate identification codes based on natural key values.
 * `GET /candidateIdentificationCode{id}`
-    Retrieves a specific credential event by ID.
+    Retrieves a specific candidate identification code by ID.
 * `PUT /ed-fi/candidateIdentificationCode{id}`
-    Updates a specific credential event by ID.
+    Updates a specific candidate identification code by ID.
 * `DELETE /ed-fi/candidateIdentificationCode/{id}`
-    Deletes a specific credential event by Id.
+    Deletes a specific candidate identification code by ID.
 
 ### Enrollment Domain Additions
 
 * `GET /ed-fi/financialAid`
-    Retrieves specific credential events using property values.
+    Retrieves specific financial aid awards using property values.
 * `POST /ed-fi/financialAid`
-    Creates or updates a credential events based on natural key values.
+    Creates or updates a financial aid awards based on natural key values.
 * `GET /financialAid{id}`
-    Retrieves a specific credential event by ID.
+    Retrieves a specific financial aid award by ID.
 * `PUT /ed-fi/financialAid{id}`
-    Updates a specific credential event by ID.
+    Updates a specific financial aid award by ID.
 * `DELETE /ed-fi/financialAid/{id}`
-    Deletes a specific credential event by Id.
+    Deletes a specific financial aid award by ID.
 
 ### Path Domain Additions
 
@@ -163,15 +163,15 @@ Developer note: see the 5.1 to 5.2 document for a good example
 ### Performance Evaluation Domain Additions
 
 * `GET /ed-fi/evaluation`
-    Retrieves specific credential events using property values.
+    Retrieves specific evaluations using property values.
 * `POST /ed-fi/evaluation`
-    Creates or updates a credential events based on natural key values.
+    Creates or updates evaluations based on natural key values.
 * `GET /evaluation{id}`
-    Retrieves a specific credential event by ID.
+    Retrieves a specific evaluation by ID.
 * `PUT /ed-fi/evaluation{id}`
-    Updates a specific credential event by ID.
+    Updates a specific evaluation by ID.
 * `DELETE /ed-fi/evaluation/{id}`
-    Deletes a specific credential event by Id.
+    Deletes a specific evaluation by ID.
 
 * `GET /ed-fi/evaluationRating`
     Retrieves specific credential events using property values.
@@ -182,7 +182,7 @@ Developer note: see the 5.1 to 5.2 document for a good example
 * `PUT /ed-fi/evaluationRating{id}`
     Updates a specific credential event by ID.
 * `DELETE /ed-fi/evaluationRating/{id}`
-    Deletes a specific credential event by Id.
+    Deletes a specific credential event by ID.
 
 * `GET /ed-fi/evaluationObjective`
     Retrieves specific credential events using property values.
@@ -191,9 +191,9 @@ Developer note: see the 5.1 to 5.2 document for a good example
 * `GET /evaluationObjective{id}`
     Retrieves a specific credential event by ID.
 * `PUT /ed-fi/evaluationObjective{id}`
-    Updates a specific credential event by ID.s
+    Updates a specific credential event by ID.
 * `DELETE /ed-fi/evaluationObjective/{id}`
-    Deletes a specific credential event by Id.
+    Deletes a specific credential event by ID.
 
 * `GET /ed-fi/evaluationObjectiveRating`
     ReRetrieves specific credential events using property values.
@@ -204,7 +204,7 @@ Developer note: see the 5.1 to 5.2 document for a good example
 * `PUT /ed-fi/evaluationObjectiveRating{id}`
     Updates a specific credential event by ID.
 * `DELETE /ed-fi/evaluationObjectiveRating/{id}`
-    Deletes a specific credential event by Id.
+    Deletes a specific credential event by ID.
 
 * `GET /ed-fi/performanceEvaluation`
     Retrieves specific credential events using property values.
@@ -215,7 +215,7 @@ Developer note: see the 5.1 to 5.2 document for a good example
 * `PUT /ed-fi/performanceEvaluation{id}`
     Updates a specific credential event by ID.
 * `DELETE /ed-fi/performanceEvaluation/{id}`
-    Deletes a specific credential event by Id.
+    Deletes a specific credential event by ID.
 
 * `GET /ed-fi/performanceEvaluationRating`
     Retrieves specific credential events using property values.
@@ -226,7 +226,7 @@ Developer note: see the 5.1 to 5.2 document for a good example
 * `PUT /ed-fi/performanceEvaluationRating{id}`
     Updates a specific credential event by ID.
 * `DELETE /ed-fi/performanceEvaluationRating/{id}`
-    Deletes a specific credential event by Id.
+    Deletes a specific credential event by ID.
 
 ### Recruitment And Staffing Domain Additions
 
@@ -239,7 +239,7 @@ Developer note: see the 5.1 to 5.2 document for a good example
 * `PUT /ed-fi/application{id}`
     Updates a specific credential event by ID.
 * `DELETE /ed-fi/application/{id}`
-    Deletes a specific credential event by Id.
+    Deletes a specific credential event by ID.
 
 * `GET /ed-fi/applicationEvent`
     Retrieves specific credential events using property values.
@@ -250,7 +250,7 @@ Developer note: see the 5.1 to 5.2 document for a good example
 * `PUT /ed-fi/applicationEvent{id}`
     Updates a specific credential event by ID.
 * `DELETE /ed-fi/applicationEvent/{id}`
-    Deletes a specific credential event by Id.
+    Deletes a specific credential event by ID.
 
 * `GET /ed-fi/applicantProfile`
     Retrieves specific credential events using property values.
@@ -261,7 +261,7 @@ Developer note: see the 5.1 to 5.2 document for a good example
 * `PUT /ed-fi/applicantProfile{id}`
     Updates a specific credential event by ID.
 * `DELETE /ed-fi/applicantProfile/{id}`
-    Deletes a specific credential event by Id.
+    Deletes a specific credential event by ID.
 
 * `GET /ed-fi/recruitmentEvent`
     Retrieves specific credential events using property values.
@@ -272,7 +272,7 @@ Developer note: see the 5.1 to 5.2 document for a good example
 * `PUT /ed-fi/recruitmentEvent{id}`
     Updates a specific credential event by ID.
 * `DELETE /ed-fi/recruitmentEvent/{id}`
-    Deletes a specific credential event by Id.
+    Deletes a specific credential event by ID.
 
 * `GET /ed-fi/recruitmentEventAttendance`
     Retrieves specific credential events using property values.
@@ -283,7 +283,7 @@ Developer note: see the 5.1 to 5.2 document for a good example
 * `PUT /ed-fi/recruitmentEventAttendance{id}`
     Updates a specific credential event by ID.
 * `DELETE /ed-fi/recruitmentEventAttendance/{id}`
-    Deletes a specific credential event by Id.
+    Deletes a specific credential event by ID.
 
 ### Student Identification and Demographic Domain Additions
 
@@ -298,7 +298,7 @@ Developer note: see the 5.1 to 5.2 document for a good example
 * `PUT /ed-fi/studentDemographics{id}`
     Updates a specific credential event by ID.
 * `DELETE /ed-fi/studentDemographics/{id}`
-    Deletes a specific credential event by Id.
+    Deletes a specific credential event by ID.
 
 #### studentDirectory
 
@@ -311,7 +311,7 @@ Developer note: see the 5.1 to 5.2 document for a good example
 * `PUT /ed-fi/studentDirectory{id}`
     Updates a specific credential event by ID.
 * `DELETE /ed-fi/studentDirectory/{id}`
-    Deletes a specific credential event by Id.
+    Deletes a specific credential event by ID.
 
 #### studentIdentificationCode
 
@@ -324,7 +324,7 @@ Developer note: see the 5.1 to 5.2 document for a good example
 * `PUT /ed-fi/studentIdentificationCode{id}`
     Updates a specific credential event by ID.
 * `DELETE /ed-fi/studentIdentificationCode/{id}`
-    Deletes a specific credential event by Id.
+    Deletes a specific credential event by ID.
 
 ### Staff Domain Additions
 
@@ -339,7 +339,7 @@ Developer note: see the 5.1 to 5.2 document for a good example
 * `PUT /ed-fi/staffDemographic{id}`
     Updates a specific credential event by ID.
 * `DELETE /ed-fi/staffDemographic/{id}`
-    Deletes a specific credential event by Id.
+    Deletes a specific credential event by ID.
 
 #### staffDirectory
 
@@ -352,7 +352,7 @@ Developer note: see the 5.1 to 5.2 document for a good example
 * `PUT /ed-fi/staffDirectory{id}`
     Updates a specific credential event by ID.
 * `DELETE /ed-fi/staffDirectory/{id}`
-    Deletes a specific credential event by Id.
+    Deletes a specific credential event by ID.
 
 #### staffIdentificationCode
 
@@ -365,7 +365,7 @@ Developer note: see the 5.1 to 5.2 document for a good example
 * `PUT /ed-fi/staffIdentificationCode{id}`
     Updates a specific credential event by ID.
 * `DELETE /ed-fi/staffIdentificationCode/{id}`
-    Deletes a specific credential event by Id.
+    Deletes a specific credential event by ID.
 
 ## Modified Endpoints
 
