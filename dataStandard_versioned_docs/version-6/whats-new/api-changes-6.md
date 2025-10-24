@@ -369,219 +369,477 @@ Pluralize the new endpoint names
 
 ## Modified Endpoints
 
-### Alternative And Supplemental Supplemental Services Domain Modifications
+### Schools Endpoint and Associated Domains
 
-* `/ed-fi/school....`
-  * **Parameters**
-    * **Added** FederalLocaleCode
-    * **Added** ImprovingSchool
-    * **Added** AccreditationStatus
+#### Domains Using The Schools Endpoints
 
-### Assessment Domain Modifications
+* Alternative And Supplemental Supplemental Services Domain
+* Assessment Registration Domain
+* BellSchedule Domain
+* CourseCatalog Domain
+* Discipline Domain
+* Enrollment Domain
+* Graduation Domain
+* School Calendar Domain
+* Section and Program Domain
+* Special Education Domain
+* Staff Domain
+* Student Academic Record Domain
+* Student Attendance Domain
+* Teaching and Learning Domain
 
-* `/ed-fi/assessment....`
-  * **Parameters**
-    * **Changed** AcademicSubject
+#### Changes to Schools
 
-* `/ed-fi/objectiveAssessment....`
-  * **Parameters**
-    * **Changed**
-
-* `/ed-fi/StudentAssessment....`
-* **Changed** AcademicSubject
-* **Changed** AssessedGradeLevel
-* **Changed** SchoolYear
-* **Changed** StudentAssessmentIndicator
-* **Changed** ObjectiveAssessment
-
-### AssessmentMetaData Domain Modifications
-
-* `/ed-fi/assessment....`
-  * **Parameters**
-    * **Changed** AcademicSubject
-
-* `/ed-fi/objectiveAssessment....`
-  * **Parameters**
-    * **Changed**
-
-### Assessment Registration Domain Modifications
-
-* `/ed-fi/assessment....`
-  * **Parameters**
-    * **Changed** AcademicSubject
-
-* `/ed-fi/school....`
-  * **Parameters**
-    * **Added** FederalLocaleCode
-    * **Added** ImprovingSchool
-    * **Added** AccreditationStatus
-
-### BellSchedule Domain Modifications
-
-* `/ed-fi/school....`
-  * **Parameters**
-    * **Added** FederalLocaleCode
-    * **Added** ImprovingSchool
-    * **Added** AccreditationStatus
-
-### CourseCatalog Domain Modifications
-
-* `/ed-fi/school....`
-  * **Parameters**
-    * **Added** FederalLocaleCode
-    * **Added** ImprovingSchool
-    * **Added** AccreditationStatus
-
-### Discipline Domain Modifications
-
-* `/ed-fi/school....`
-  * **Parameters**
-    * **Added** FederalLocaleCode
-    * **Added** ImprovingSchool
-    * **Added** AccreditationStatus
-
-* `/ed-fi/staff....`
-  * **Parameters**
-    * **Added** FederalLocaleCode
-    * **Added** ImprovingSchool
-
-### Education Organization Domain Modifications
-
-* `/ed-fi/localEducationAgency....`
-  * **Parameters**
-    * **Added** FederalLocaleCode
-
-* `/ed-fi/school....`
-  * **Parameters**
-    * **Added** FederalLocaleCode
-    * **Added** ImprovingSchool
-    * **Added** AccreditationStatus
-
-* `/ed-fi/postSecondaryInstitution....`
-  * **Parameters**
-    * **Added** FederalLocaleCode
-
-* `/ed-fi/stateEducationAgency....`
-  * **Parameters**
-    * **Added** FederalLocaleCode
-
-### Enrollment Domain Modifications
-
-* `/ed-fi/school....`
-  * **Parameters**
-    * **Added** FederalLocaleCode
-    * **Added** ImprovingSchool
-    * **Added** AccreditationStatus
-
-* `/ed-fi/studentEducationOrganizationAssociations`
+* `GET /ed-fi/schools`
 
   * **Parameters**
-    * **Removed** StudentIdentificationCode (string)
-    * **Removed** Sex
-    * **Removed** GenderIdentity
-    * **Removed** Address
-    * **Removed** InternationalAddress
-    * **Removed** Telephone
-    * **Removed** ElectronicMail
-    * **Removed** HispanicLatinoEthnicity
-    * **Removed** Race
-    * **Removed** TribalAffiliation
-    * **Removed** StudentCharacteristic
-    * **Removed** LimitedEnglishProficiency
-    * **Removed** Language
-    * **Removed** Disability
-    * **Removed** AncestryEthnicOrigin
-    * **Removed** SupporterMilitaryConnection
+    * **Add** federalLocaleCodeDescriptor - The federal locale code given to an education organization.
+    * **Add** improvingSchoolIndicator - Indicates if the school has been identified as "improving".
+    * **Add** accreditationStatusDescriptor - The accreditation status for the education provider.
 
-    * **Add**
-    * **Changed**
+    * **Response**
+    * **Added** property: federalLocaleCode (string)
+    * **Added** property: improvingSchool (boolean)
+    * **Added** property: accreditationStatus (string)
+
+* `POST /ed-fi/schools`
+
+  * **Request**
+    * **Added** property: federalLocaleCode (string)
+    * **Added** property: improvingSchool (boolean)
+    * **Added** property: accreditationStatus (string)
+
+* `GET /ed-fi/schools{id}`
 
   * **Response**
-    * **Added** property: [n].dualCreditEducationOrganizationReference (object)
+    * **Added** property: federalLocaleCode (string)
+    * **Added** property: improvingSchool (boolean)
+    * **Added** property: accreditationStatus (string)
 
-### Finance
+* `PUT /ed-fi/schools{id}`
 
-* `/ed-fi/staff....`
+  * **Request**
+    * **Added** property: federalLocaleCode (string)
+    * **Added** property: improvingSchool (boolean)
+    * **Added** property: accreditationStatus (string)
+
+### Assessments and Objective Assessment Endpoints and Associated Domains
+
+#### Domains Using The Assessments and Objective Assessment Endpoints
+
+* Assessment
+* AssessmentMetadata
+
+#### Changes to Assessments
+
+* `GET /ed-fi/assessments`
+
+  * **Response**
+    * **Changed** property: AcademicSubjectDescriptor (string)
+
+* `POST /ed-fi/assessments`
+
+  * **Request**
+    * **Changed** property: AcademicSubjectDescriptor (string)
+
+* `GET /ed-fi/assessments{id}`
+
+  * **Response**
+    * **Changed** property: AcademicSubjectDescriptor (string)
+
+* `PUT /ed-fi/assessments{id}`
+
+  * **Request**
+    * **Changed** property: AcademicSubjectDescriptor (string)
+
+#### Changes to ObjectiveAssessments
+
+* `GET /ed-fi/objectiveAssessments`
   * **Parameters**
-    * **Added** FederalLocaleCode
-    * **Added** ImprovingSchool
-    * **Added** AccreditationStatus
+    * **Changed** parentObjectiveAssessmentId - The **collection** of unique numbers or alphanumeric codes assigned to an objective assessment by a school, school system, a state, or other agency or entity.
 
-### Graduation Domain Modifications
+    * **Response**
+    * **Changed** property: parentObjectiveAssessmentIdReference (array)
 
-* `/ed-fi/school....`
+* `POST /ed-fi/objectiveAssessments`
+
+  * **Request**
+    * **Changed** property: parentObjectiveAssessmentIdReference (array)
+
+* `GET /ed-fi/objectiveAssessments{id}`
+
+  * **Response**
+    * **Changed** property: parentObjectiveAssessmentIdReference (array)
+
+* `PUT /ed-fi/objectiveAssessments{id}`
+
+  * **Request**
+    * **Changed** property: parentObjectiveAssessmentIdReference (array)
+
+### StudentAssessments Endpoints and Associated Domains
+
+#### Domains Using The StudentAssessment Endpoints
+
+* Assessment
+* StudentAssessment
+
+#### Changes to StudentAssessments
+
+* `GET /ed-fi/studentAssessments`
+
   * **Parameters**
-    * **Added** FederalLocaleCode
-    * **Added** ImprovingSchool
-    * **Added** AccreditationStatus
+    * **Added** assessedGradeLevelDescriptor - The grade level for which the assessment form was evaluated for the student on this administration.
+    * **Changed** schoolYear (required) - The school year for which the assessment was administered to a student. Among other uses, handles cases in which a student takes a prior-year exam in a subsequent school year during an exam re-test.
+  
+  * **Response**
+    * **Added** property: studentAssessmentIndicator.indicator (string)
+    * **Added** property: studentAssessmentIndicator.indicatorName (string)
+    * **Added** property: studentAssessmentIndicator.indicatorGroup (string)
 
-### School Calendar Domain Modifications
+* `POST /ed-fi/studentAssessments`
 
-* `/ed-fi/school....`
+  * **Request**
+    * **Added** property: assessedGradeLevelDescriptor - The grade level for which the assessment form was evaluated for the student on this administration.
+    * **Added** property: studentAssessmentIndicator.indicator (string)
+    * **Added** property: studentAssessmentIndicator.indicatorName (string)
+    * **Added** property: studentAssessmentIndicator.indicatorGroup (string)
+    * **Changed** property: schoolYear (required)
+
+* `GET /ed-fi/studentAssessments{id}`
+
+  * **Response**
+    * **Added** property: assessedGradeLevelDescriptor - The grade level for which the assessment form was evaluated for the student on this administration.
+    * **Added** property: studentAssessmentIndicator.indicator (string)
+    * **Added** property: studentAssessmentIndicator.indicatorName (string)
+    * **Added** property: studentAssessmentIndicator.indicatorGroup (string)
+    * **Changed** property: schoolYear (required)
+
+* `PUT /ed-fi/studentAssessments{id}`
+
+  * **Request**
+    * **Added** property: assessedGradeLevelDescriptor - The grade level for which the assessment form was evaluated for the student on this administration.
+    * **Added** property: studentAssessmentIndicator.indicator (string)
+    * **Added** property: studentAssessmentIndicator.indicatorName (string)
+    * **Added** property: studentAssessmentIndicator.indicatorGroup (string)
+    * **Changed** property: schoolYear (required)
+
+### Staff Endpoints and Associated Domains
+
+#### Domains Using The Staff Endpoints
+
+* AlternativeAndSupplementalServices
+* Discipline
+* Finance
+* Intervention
+* Sections and Programs
+* Special Education
+* Staff
+* StudentAttendance
+* StudentCohort
+* Survey
+* Teaching and Learning
+
+#### Changes to Staffs
+
+* `GET /ed-fi/staffs`
   * **Parameters**
-    * **Added** FederalLocaleCode
-    * **Added** ImprovingSchool
-    * **Added** AccreditationStatus
+    * **Added** highlyQualifiedAcademicSubjectDescriptor - The academic subject(s) in which the staff is deemed to be "highly qualified".
+    * **Removed** assigningOrganizationIdentificationCode - The organization code or name assigning the staff Identification Code.
+    * **Removed** CitizenshipStatusDescriptor - An indicator of whether or not the person is a U.S. citizen.
+    * **Removed** IdentificationCode - A unique number or alphanumeric code assigned to a staff member by a school, school system, a state, or other agency or entity.
+    * **Removed** genderIdentity - The gender the staff member identifies themselves as.
+    * **Removed** hispanicLatinoEthnicity - An indication that the individual traces his or her origin or descent to Mexico, Puerto Rico, Cuba, Central, and South America, and other Spanish cultures, regardless of race. The term, "Spanish origin," can be used in addition to "Hispanic or Latino."
+    * **Removed** sexDescriptor - The birth sex of the staff member.
+    * **Removed** staffIdentificationSystemDescriptor - A coding scheme that is used for identification and record-keeping purposes by schools, social services, or other agencies to refer to a staff member.
 
-### Section And Programs Domain Modifications
+  * **Response**
+    * **Added** property: highlyQualifiedAcademicSubjectDescriptor (string)
+    * **Added** property: educatorResearch (array)
+    * **Added** property: educatorPreparationProgramIdentifier (string)
+    * **Added** property: openStaffPositionIdentifier (string)
+    * **Removed** property: assigningOrganizationIdentificationCode (string)
+    * **Removed** property: CitizenshipStatusDescriptor (string)
+    * **Removed** property: IdentificationCode (string)
+    * **Removed** property: genderIdentityDescriptor (string)
+    * **Removed** property: hispanicLatinoEthnicity (boolean)
+    * **Removed** property: sexDescriptor (string)
+    * **Removed** property: staffIdentificationSystemDescriptor (string)
+    * **Removed** property: address (array)
+    * **Removed** property: electronicMails (array)
+    * **Removed** property: internationalAddresses (array)
+    * **Removed** property: languages (array)
+    * **Removed** property: telephones (array)
 
-* `/ed-fi/school....`
+* `POST /ed-fi/staffs`
+
+  * **Request**
+    * **Added** property: highlyQualifiedAcademicSubjectDescriptor (string)
+    * **Added** property: educatorResearch (array)
+    * **Added** property: educatorPreparationProgramIdentifier (string)
+    * **Added** property: openStaffPositionIdentifier (string)
+    * **Removed** property: assigningOrganizationIdentificationCode (string)
+    * **Removed** property: CitizenshipStatusDescriptor (string)
+    * **Removed** property: IdentificationCode (string)
+    * **Removed** property: genderIdentityDescriptor (string)
+    * **Removed** property: hispanicLatinoEthnicity (boolean)
+    * **Removed** sexDescriptor (string)
+    * **Removed** property: staffIdentificationSystemDescriptor (string)
+    * **Removed** property: address (array)
+    * **Removed** property: electronicMails (array)
+    * **Removed** property: internationalAddresses (array)
+    * **Removed** property: languages (array)
+    * **Removed** property: telephones (array)
+
+* `GET /ed-fi/staffs{id}`
+
+  * **Response**
+    * **Added** property: highlyQualifiedAcademicSubjectDescriptor (string)
+    * **Added** property: educatorResearch (array)
+    * **Added** property: educatorPreparationProgramIdentifier (string)
+    * **Added** property: openStaffPositionIdentifier (string)
+    * **Removed** property: assigningOrganizationIdentificationCode (string)
+    * **Removed** property: CitizenshipStatusDescriptor (string)
+    * **Removed** property: IdentificationCode (string)
+    * **Removed** property: genderIdentityDescriptor (string)
+    * **Removed** property: hispanicLatinoEthnicity (boolean)
+    * **Removed** sexDescriptor (string)
+    * **Removed** property: staffIdentificationSystemDescriptor (string)
+    * **Removed** property: address (array)
+    * **Removed** property: electronicMails (array)
+    * **Removed** property: internationalAddresses (array)
+    * **Removed** property: languages (array)
+    * **Removed** property: telephones (array)
+
+* `PUT /ed-fi/staffs{id}`
+
+  * **Request**
+    * **Added** property: highlyQualifiedAcademicSubjectDescriptor (string)
+    * **Added** property: educatorResearch (array)
+    * **Added** property: educatorPreparationProgramIdentifier (string)
+    * **Added** property: openStaffPositionIdentifier (string)
+    * **Removed** property: assigningOrganizationIdentificationCode (string)
+    * **Removed** property: CitizenshipStatusDescriptor (string)
+    * **Removed** property: IdentificationCode (string)
+    * **Removed** property: genderIdentityDescriptor (string)
+    * **Removed** property: hispanicLatinoEthnicity (boolean)
+    * **Removed** sexDescriptor (string)
+    * **Removed** property: staffIdentificationSystemDescriptor (string)
+    * **Removed** property: address (array)
+    * **Removed** property: electronicMails (array)
+    * **Removed** property: internationalAddresses (array)
+    * **Removed** property: languages (array)
+    * **Removed** property: telephones (array)
+
+### Post Secondary Institution Endpoints and Associated Domains
+
+#### Domains Using The PostSecondary Institution Endpoints
+
+* EducationOrganization
+* Graduation
+
+#### Changes to PostSecondaryInstitution
+
+* `GET /ed-fi/postSecondaryInstitutions`
   * **Parameters**
-    * **Added** FederalLocaleCode
-    * **Added** ImprovingSchool
-    * **Added** AccreditationStatus
+    * **Added** FederalLocaleCode - The federal locale code given to an education organization.
 
-### Special Education Domain Modifications
+  * **Response**
+    * **Added** property: FederalLocaleCode (string)
 
-* `/ed-fi/school....`
+* `POST /ed-fi/postSecondaryInstitutions`
+
+  * **Request**
+    * **Added** property: FederalLocaleCode (string)
+
+* `GET /ed-fi/postSecondaryInstitutions{id}`
+
+  * **Response**
+    * **Added** property: FederalLocaleCode (string)
+
+* `PUT /ed-fi/postSecondaryInstitutions{id}`
+
+  * **Request**
+    * **Added** property: FederalLocaleCode (string)
+
+### State Education Agency Endpoints and Associated Domains
+
+#### Domains Using The StateEducationAgency Endpoints
+
+* EducationOrganization
+* Staff
+
+#### Changes to StateEducationAgency
+
+* `GET /ed-fi/stateEducationAgency`
   * **Parameters**
-    * **Added** FederalLocaleCode
-    * **Added** ImprovingSchool
-    * **Added** AccreditationStatus
+    * **Added** FederalLocaleCode - The federal locale code given to an education organization.
 
-### Staff Domain Modifications
+  * **Response**
+    * **Added** property: FederalLocaleCode (string)
 
-* **Removed** `/ed-fi/studentEducationOrganizationAssociations`
+* `POST /ed-fi/stateEducationAgency`
 
-* `/ed-fi/school....`
+  * **Request**
+    * **Added** property: FederalLocaleCode (string)
+
+* `GET /ed-fi/stateEducationAgency{id}`
+
+  * **Response**
+    * **Added** property: FederalLocaleCode (string)
+
+* `PUT /ed-fi/stateEducationAgency{id}`
+
+  * **Request**
+    * **Added** property: FederalLocaleCode (string)
+
+### Student Education Organization Association Endpoints and Associated Domains
+
+#### Domains Using The Student Education Organization Association Endpoints
+
+* Enrollment
+* StudentIdentificationAndDemographics
+
+#### Changes to StudentEducationOrganizationAssociation
+
+* `GET /ed-fi/studentEducationOrganizationAssociations`
+
   * **Parameters**
-    * **Added** FederalLocaleCode
-    * **Added** ImprovingSchool
-    * **Added** AccreditationStatus
+    * **Removed** assigningOrganizationIdentificationCode - The organization code or name assigning the StudentIdentificationCode.
+    * **Removed** identificationCode - A unique number or alphanumeric code assigned to a student by a school, school system, a state, or other agency or entity.
+    * **Removed** sexDescriptor -The student's birth sex as reported to the education organization.
+    * **Removed** genderIdentity -The student's gender as last reported to the education organization.
+    * **Removed** hispanicLatinoEthnicity -An indication that the individual traces his or her origin or descent to Mexico, Puerto Rico, Cuba, Central, and South America, and other Spanish cultures, regardless of race, as last reported to the education organization. The term, "Spanish origin," can be used in addition to "Hispanic or Latino."
+    * **Removed** limitedEnglishProficiencyDescriptor - An indication that the student has been identified as limited English proficient by the Language Proficiency Assessment Committee (LPAC), or English proficient.
+    * **Removed** studentIdentificationSystemDescriptor - A coding scheme that is used for identification and record-keeping purposes by schools, social services, or other agencies to refer to a student.
 
-### Student Academic Record Domain Modifications
+  * **Response**
+    * **Removed** property: assigningOrganizationIdentificationCode (string)
+    * **Removed** property: identificationCode (string)
+    * **Removed** property: sexDescriptor (string)
+    * **Removed** property: genderIdentity (string)
+    * **Removed** property: hispanicLatinoEthnicity (boolean)
+    * **Removed** property: raceDescriptor (string)
+    * **Removed** property: tribalAffiliation (string)
+    * **Removed** property: studentCharacteristics (array)
+    * **Removed** property: limitedEnglishProficiencyDescriptor (string)
+    * **Removed** property: disability (array)
+    * **Removed** property: ancestryEthnicOriginDescriptor (string)
+    * **Removed** property: supporterMilitaryConnectionDescriptor (string)
+    * **Removed** property: studentIdentificationSystemDescriptor (string)
+    * **Removed** property: address (array)
+    * **Removed** property: electronicMails (array)
+    * **Removed** property: internationalAddresses (array)
+    * **Removed** property: languages (array)
+    * **Removed** property: telephones (array)
 
-* `/ed-fi/school....`
-  * **Parameters**
-    * **Added** FederalLocaleCode
-    * **Added** ImprovingSchool
-    * **Added** AccreditationStatus
+* `POST /ed-fi/studentEducationOrganizationAssociations`
 
-### Student Assessment Domain Modifications
+  * **Request**
+    * **Removed** property: assigningOrganizationIdentificationCode (string)
+    * **Removed** property: identificationCode (string)
+    * **Removed** property: sexDescriptor (string)
+    * **Removed** property: genderIdentity (string)
+    * **Removed** property: hispanicLatinoEthnicity (boolean)
+    * **Removed** property: raceDescriptor (string)
+    * **Removed** property: tribalAffiliation (string)
+    * **Removed** property: studentCharacteristics (array)
+    * **Removed** property: limitedEnglishProficiencyDescriptor (string)
+    * **Removed** property: disability (array)
+    * **Removed** property: ancestryEthnicOriginDescriptor (string)
+    * **Removed** property: supporterMilitaryConnectionDescriptor (string)
+    * **Removed** property: studentIdentificationSystemDescriptor (string)
+    * **Removed** property: address (array)
+    * **Removed** property: electronicMails (array)
+    * **Removed** property: internationalAddresses (array)
+    * **Removed** property: languages (array)
+    * **Removed** property: telephones (array)
 
-* `/ed-fi/StudentAssessment....`
-* **Changed** AcademicSubject
-* **Changed** AssessedGradeLevel
-* **Changed** SchoolYear
-* **Changed** StudentAssessmentIndicator
-* **Changed** ObjectiveAssessment
+* `GET /ed-fi/studentEducationOrganizationAssociations{id}`
 
-### Student Attendance Domain Modifications
+  * **Response**
+    * **Removed** property: assigningOrganizationIdentificationCode (string)
+    * **Removed** property: identificationCode (string)
+    * **Removed** property: sexDescriptor (string)
+    * **Removed** property: genderIdentity (string)
+    * **Removed** property: hispanicLatinoEthnicity (boolean)
+    * **Removed** property: raceDescriptor (string)
+    * **Removed** property: tribalAffiliation (string)
+    * **Removed** property: studentCharacteristics (array)
+    * **Removed** property: limitedEnglishProficiencyDescriptor (string)
+    * **Removed** property: disability (array)
+    * **Removed** property: ancestryEthnicOriginDescriptor (string)
+    * **Removed** property: supporterMilitaryConnectionDescriptor (string)
+    * **Removed** property: studentIdentificationSystemDescriptor (string)
+    * **Removed** property: address (array)
+    * **Removed** property: electronicMails (array)
+    * **Removed** property: internationalAddresses (array)
+    * **Removed** property: languages (array)
+    * **Removed** property: telephones (array)
 
-* `/ed-fi/school....`
-  * **Parameters**
-    * **Added** FederalLocaleCode
-    * **Added** ImprovingSchool
-    * **Added** AccreditationStatus
+* `PUT /ed-fi/studentEducationOrganizationAssociations{id}`
 
-### Student Identification and Demographics Domain Modifications
+  * **Request**
+    * **Removed** property: assigningOrganizationIdentificationCode (string)
+    * **Removed** property: identificationCode (string)
+    * **Removed** property: sexDescriptor (string)
+    * **Removed** property: genderIdentity (string)
+    * **Removed** property: hispanicLatinoEthnicity (boolean)
+    * **Removed** property: raceDescriptor (string)
+    * **Removed** property: tribalAffiliation (string)
+    * **Removed** property: studentCharacteristics (array)
+    * **Removed** property: limitedEnglishProficiencyDescriptor (string)
+    * **Removed** property: disability (array)
+    * **Removed** property: ancestryEthnicOriginDescriptor (string)
+    * **Removed** property: supporterMilitaryConnectionDescriptor (string)
+    * **Removed** property: studentIdentificationSystemDescriptor (string)
+    * **Removed** property: address (array)
+    * **Removed** property: electronicMails (array)
+    * **Removed** property: internationalAddresses (array)
+    * **Removed** property: languages (array)
+    * **Removed** property: telephones (array)
 
-* `/ed-fi/studentEducationOrganizationAssociations`
+### Staff Education Organization Contact Association Endpoints and Associated Domains
 
-### Teaching and Learning Domain Modifications
+#### Domains Using The Staff Education Organization Contact Association Endpoints
 
-* `/ed-fi/school....`
-  * **Parameters**
-    * **Added** FederalLocaleCode
-    * **Added** ImprovingSchool
-    * **Added** AccreditationStatus
+* Staff
+
+#### Removed StaffEducationOrganizationContactAssociation Endpoints
+
+* **Removed** `GET /ed-fi/staffEducationOrganizationContactAssociations`
+* **Removed** `POST /ed-fi/staffEducationOrganizationContactAssociations`
+* **Removed** `GET /ed-fi/staffEducationOrganizationContactAssociations{id}`
+* **Removed** `PUT /ed-fi/staffEducationOrganizationContactAssociations{id}`
+* **Removed** `DELETE /ed-fi/staffEducationOrganizationContactAssociations{id}`
+* **Removed** `GET /ed-fi/staffEducationOrganizationContactAssociations/deletes`
+* **Removed** `GET /ed-fi/staffEducationOrganizationContactAssociations/keyChanges`
+* **Removed** `GET /ed-fi/staffEducationOrganizationContactAssociations/partitions`
+
+### Student Endpoints and Associated Domains
+
+#### Domains Using The Student Endpoints
+
+* AlternativeAndSupplementalServices
+* Assessment
+* Discipline
+* Enrollment
+* Gradebook
+* Graduation
+* Intervention
+* ReportCard
+* SchoolCalendar
+* Sections and Programs
+* Special Education
+* StudentAcademicRecord
+* StudentAssessment
+* StudentCohort
+* StudentHealth
+* StudentIdentificationAndDemographics
+* StudentTranscript
+* Survey
+* Teaching and Learning
+
+#### Changes to Student
+
+* `/ed-fi/students`
+  * **Removed**
