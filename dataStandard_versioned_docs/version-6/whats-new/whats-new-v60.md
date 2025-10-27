@@ -2,40 +2,40 @@
 
 :::warning
 
-This needs to be rewritten for version 6. Right now it is just a copy of Data Standard 5.
+Release on Nov. 14, 2025.
 
 :::
 
 ## Overview
 
-Data Standard v6.0 introduces a series of structural and semantic enhancements aimed at improving data clarity and interoperability, and at reducing update burden.  Data Standard v6.0 contains a series of breaking changes, and is targeted for deployment starting in the 2026-27 school year.  There are 5 major significant changes. This final release version (v5.0.0) introduces important updates that
+Data Standard v6.0 introduces a series of structural and semantic enhancements aimed at improving data clarity and interoperability, and at reducing update burden.  Data Standard v6.0 contains a series of breaking changes, and is targeted for deployment starting in the 2026-27 school year.  There are 5 major significant changes.
+
+* Mainly, we remove the demographics and Contact information from the  SEOA into separate entities, creating new domain entities for Student and staff contact and demographics.  Please note that This final release version (v5.0.0) introduces important updates that
 impact multiple domains of the Ed-Fi data model. The domains impacted include:
 
-* Alternative and Supplemental Services Domain with Federal Programs Subdomain
-* Discipline Domain
-* Enrollment Domain
-* Graduation Domain
-* Intervention Domain
-* Student Academic Record Domain
-* Student Attendance Domain
-* Student Cohort Domain
+* Assessment
 * Student Identification and Demographics Domain
-* Survey Domain
-* Teaching and Learning Domain
+* With the transfer of EPDM (formerly known as TPDM) into core, the following domains are impacted:
+* Credential Domain (new)
+* Educator Preparation Program Domain (new)
+* Path Domain (new)
+* Performance Evaluation Domain (new)
+* Recruiting and Staffing Domain (new)
+* Staff Domain
+* Enrollment Domain
+*
+* Survey Domain ?
+* Teaching and Learning Domain ?
 
-These changes come from field feedback and are designed to help drive the
-community and community innovation forward. There are breaking changes in these
-domains, so implementers are advised to review the changes carefully.
+The major changes originate from supporting obligations with the community (moving EPDM into Core), receiving field feedback to reduce the burden with the StudentEducationOrganizationAssociation (SEOA) and to enable better logic connecting the Assessment dashboards.
 
-Other areas of the model have received minor, non-breaking updates, and API
-bindings and implementations in those areas should continue to function as
-before.
+Other areas minor improvements are also listed  below.
 
 ## Major Changes
 
 ### Split of StudentEducationOrganizationAssociation (SEOA)
 
-Demographic and contact data have been decoupled from SEOA.
+Demographic and contact data have been decoupled from SEOA.  Therefore, we created
 New dedicated entities for students and staff demographics and contact information improve clarity and reduce update complexity.
 
 1. New IdentificationCode Entities
