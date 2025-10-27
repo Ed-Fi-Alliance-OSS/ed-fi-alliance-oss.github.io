@@ -8,8 +8,7 @@ This needs to be rewritten for version 6. Right now it is just a copy of Data St
 
 ## Overview
 
-Data Standard v5.0 is targeted at deployment starting in the 2024-25 school
-year. This final release version (v5.0.0) introduces important updates that
+Data Standard v6.0 introduces a series of structural and semantic enhancements aimed at improving data clarity and interoperability, and at reducing update burden.  Data Standard v6.0 contains a series of breaking changes, and is targeted for deployment starting in the 2026-27 school year.  There are 5 major significant changes. This final release version (v5.0.0) introduces important updates that
 impact multiple domains of the Ed-Fi data model. The domains impacted include:
 
 * Alternative and Supplemental Services Domain with Federal Programs Subdomain
@@ -34,32 +33,33 @@ before.
 
 ## Major Changes
 
-### Adding Special Education Program Eligibility Association
+### Split of StudentEducationOrganizationAssociation (SEOA)
 
-[DATASTD-1898](https://tracker.ed-fi.org/browse/DATASTD-1898)
+Demographic and contact data have been decoupled from SEOA.
+New dedicated entities for students and staff demographics and contact information improve clarity and reduce update complexity.
 
-State Education Agencies (SEA's) need to evaluate their efforts to implement the
-requirements of the Individuals with Disabilities Education Act of 2004 (IDEA
-2004) and to include updates of their continuous improvement of the
-implementation through their Annual Performance Report submitted every year. In
-alignment with IDEA, states need to meet the two monitoring priorities
-identified by the US Department of Education/Office of Special Education
-Programs (ED/OSEP).
+1. New IdentificationCode Entities
 
-An Ed-Fi Special Interest Group (SIG) that focuses on Special Education (SpEd)
-discussed how to to capture the evaluation information. SEAs in this group
-agreed that they need to collect this information at a granular level and ruled
-out the option of extending the existing
-StudentSpecialEducationProgramAssociation entity. Both the Wisconsin Department
-of Public Instruction and the Texas Education Agency had created extensions to
-handle this type of data and that lead to the design of a new
-entity _StudentSpecialEducationProgramEligibilityAssociation_ in Ed-Fi core
-model as presented with this release\*.\*
+Introduction of Identity entities for managing multiple or alternative identifiers.
+Applies to students, staff, contacts, candidates, and education organizations.
 
-This addition to the model allows states to collect data required for
-improvement and monitoring activities communicated to the Office of Special
-Education Program. The details about the entity and the elements that are
-included in this new association is as shown below.
+2. New Demographic Entities
+
+Creation of standalone demographic entities for individuals, enhancing modularity and reducing redundancy.
+
+3. New Directory Entities
+
+Creation of standalone entities with contact information, such as ....  THese entities are named as directory to differentiate from contact entities that refer to parents or guardians.
+
+### Assessment Model Changes
+
+4. Assessment Model Changes
+
+Significant updates to the assessment model to improve structure and usability (details typically found in RFC 27c).
+
+5. Migration from TPDM to Core Entities
+
+Select entities from TPDM have been moved into the Core Ed-Fi data standard, promoting consistency and broader applicability.
 
 | Property | Cardinality | Definition |
 | --- | --- | --- |
