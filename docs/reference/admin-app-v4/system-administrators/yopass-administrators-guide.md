@@ -31,7 +31,6 @@ For local development:
 }
 ```
 
-
 ## Where to add the configuration?
 
 You should add the following lines in the `packages/api/config/local.js` file, inside the `module.exports` object:
@@ -68,7 +67,7 @@ This enables Yopass integration in the local environment or whichever environmen
 
 #### Connection Problems
 
-**Issue**: Admin App can't connect to Yopass service  
+**Issue**: Admin App can't connect to Yopass service
 **Solution**:
 
 - Verify that Yopass service is running
@@ -77,7 +76,7 @@ This enables Yopass integration in the local environment or whichever environmen
 
 #### Secret Creation Failures
 
-**Issue**: Error when creating secrets  
+**Issue**: Error when creating secrets
 **Solution**:
 
 - Check Memcached/Redis is running and accessible
@@ -86,7 +85,7 @@ This enables Yopass integration in the local environment or whichever environmen
 
 #### Expired Secrets
 
-**Issue**: Secrets expire before they can be viewed  
+**Issue**: Secrets expire before they can be viewed
 **Solution**:
 
 - Adjust expiration time settings
@@ -119,10 +118,3 @@ If you need to disable Yopass integration:
 
 1. Set the `USE_YOPASS` configuration flag to `false` in the Admin App configuration
 2. The system will fall back to displaying credentials directly in the UI
-3. See the "Disabling Yopass" design document for more details
-
-## References
-
-- [Yopass GitHub Repository](https://github.com/jhaals/yopass)
-- [Ed-Fi System Architecture Documentation](../ed-fi-system-architecture.md)
-- [Disabling Yopass Design Document](../design/20250821%20Disabling%20Yopass.md)
