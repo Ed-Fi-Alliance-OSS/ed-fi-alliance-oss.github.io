@@ -64,6 +64,8 @@ Pluralize the new endpoint names
 
 ### Educator Preparation Program Domain Additions
 
+#### candidate
+
 * `GET /ed-fi/Candidate`
     Retrieves specific candidates using property values.
 * `POST /ed-fi/Candidate`
@@ -74,6 +76,8 @@ Pluralize the new endpoint names
     Updates a specific candidate event by ID.
 * `DELETE /ed-fi/Candidate/{id}`
     Deletes a specific candidate event by ID.
+
+#### candidateEducatorPrepartionProgramAssociation
 
 * `GET /ed-fi/CandidateEducatorPreparationProgramAssociation`
     Retrieves specific candidate educator preparation program associations using property values.
@@ -86,6 +90,8 @@ Pluralize the new endpoint names
 * `DELETE /ed-fi/CandidateEducatorPreparationProgramAssociation/{id}`
     Deletes a specific candidate educator preparation program association event by ID.
 
+#### candidateEducatorRelationshipToSTaffAssociation
+
 * `GET /ed-fi/candidateRelationshipToStaffAssociation`
     Retrieves specific candidate relationship to staff associations using property values.
 * `POST /ed-fi/candidateRelationshipToStaffAssociation`
@@ -96,6 +102,8 @@ Pluralize the new endpoint names
     Updates a specific specific candidate relationship to staff association by ID.
 * `DELETE /ed-fi/candidateRelationshipToStaffAssociation/{id}`
     Deletes a specific specific candidate relationship to staff association by ID.
+
+#### staffEducatorPreparationProgramAssociation
 
 * `GET /ed-fi/staffEducatorPreparationProgramAssociation`
     Retrieves specific staff educator preparation program associations using property values.
@@ -108,6 +116,8 @@ Pluralize the new endpoint names
 * `DELETE /ed-fi/staffEducatorPreparationProgramAssociation/{id}`
     Deletes a specific staff educator preparation program association by ID.
 
+#### educatorPreparationProgram
+
 * `GET /ed-fi/educatorPreparationProgram`
     Retrieves specific educator preparation programs using property values.
 * `POST /ed-fi/educatorPreparationProgram`
@@ -118,6 +128,8 @@ Pluralize the new endpoint names
     Updates a specific specific educator preparation program by ID.
 * `DELETE /ed-fi/educatorPreparationProgram/{id}`
     Deletes a specific specific educator preparation program by ID.
+
+#### fieldworkExperience
 
 * `GET /ed-fi/fieldworkExperience`
     Retrieves specific fieldwork experiences using property values.
@@ -144,6 +156,8 @@ Pluralize the new endpoint names
     Deletes a specific candidate identification code by ID.
 
 ### Enrollment Domain Additions
+
+#### financialAid
 
 * `GET /ed-fi/financialAid`
     Retrieves specific financial aid awards using property values.
@@ -230,6 +244,8 @@ Pluralize the new endpoint names
 
 ### Recruitment And Staffing Domain Additions
 
+#### application
+
 * `GET /ed-fi/application`
     Retrieves specific applications using property values.
 * `POST /ed-fi/application`
@@ -240,6 +256,8 @@ Pluralize the new endpoint names
     Updates a specific application by ID.
 * `DELETE /ed-fi/application/{id}`
     Deletes a specific application by ID.
+
+#### applicationEvent
 
 * `GET /ed-fi/applicationEvent`
     Retrieves specific application events using property values.
@@ -397,7 +415,7 @@ Pluralize the new endpoint names
     * **Add** improvingSchoolIndicator - Indicates if the school has been identified as "improving".
     * **Add** accreditationStatusDescriptor - The accreditation status for the education provider.
 
-    * **Response**
+  * **Response**
     * **Added** property: federalLocaleCode (string)
     * **Added** property: improvingSchool (boolean)
     * **Added** property: accreditationStatus (string)
@@ -458,7 +476,7 @@ Pluralize the new endpoint names
   * **Parameters**
     * **Changed** parentObjectiveAssessmentId - The **collection** of unique numbers or alphanumeric codes assigned to an objective assessment by a school, school system, a state, or other agency or entity.
 
-    * **Response**
+  * **Response**
     * **Changed** property: parentObjectiveAssessmentIdReference (array)
 
 * `POST /ed-fi/objectiveAssessments`
