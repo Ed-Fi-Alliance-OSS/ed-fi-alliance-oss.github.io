@@ -19,7 +19,7 @@ The Ed-Fi ODS/API's `EdFi_Admin` database manages API client access through a hi
 - **Applications** contain multiple **API Clients**
 - **API Clients** have associated **Client Access Tokens**
 
-Each successful client authentication request generates a client access token in the `dbo.clientaccesstokens` table. Monitoring the usage of these tokens is valuable for security and operational insights. However, monitoring was not included out-of-the-box in the Ed-Fi ODS/API. Without additional logging, it's difficult to:
+Each successful client authentication request generates a client access token in the `dbo.ClientAccessTokens` table. Monitoring the usage of these tokens is valuable for security and operational insights. While, monitoring was not included out-of-the-box in the Ed-Fi ODS/API, it can be added easily by following the steps in this document.
 
 - Track when and how frequently tokens are being used.
 - Identify potentially compromised tokens showing unusual access patterns.
@@ -55,35 +55,35 @@ First, create a table to store access log entries:
       TokenId UNIQUEIDENTIFIER NOT NULL,
       AccessTime DATETIME2 NOT NULL DEFAULT SYSUTCDATETIME(),
       ApiClientId INT NOT NULL,
-      client_id VARCHAR(50) NOT NULL,
+      ApiClientKey VARCHAR(50) NOT NULL,
       ApplicationId INT NOT NULL,
       ApplicationName NVARCHAR(MAX) NOT NULL,
       VendorId INT NOT NULL,
       VendorName NVARCHAR(MAX) NOT NULL
     );
 
-    CREATE INDEX idx_clientaccesstoken_logs_access_time
+    CREATE INDEX IX_ClientAccessTokenLogs_AccessTime
     ON dbo.ClientAccessTokenLogs (AccessTime);
     ```
     </TabItem>
     <TabItem value="PostgreSQL" label="PostgreSQL">
     ```sql
-    CREATE TABLE IF NOT EXISTS dbo.clientaccesstoken_logs
+    CREATE TABLE IF NOT EXISTS dbo.ClientAccessTokenLogs
     (
-        logid bigserial NOT NULL,
-        token_id uuid NOT NULL,
-        access_time timestamp without time zone NOT NULL DEFAULT CURRENT_TIMESTAMP,
-        apiclient_id integer NOT NULL,
-        client_id varchar(50) NOT NULL,
-        application_id integer NOT NULL,
-        application_name varchar NOT NULL,
-        vendor_id integer NOT NULL,
-        vendor_name varchar NOT NULL,
-        CONSTRAINT clientaccesstoken_logs_pk PRIMARY KEY (logid)
+        LogId BIGSERIAL NOT NULL,
+        TokenId UUID NOT NULL,
+        AccessTime TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        ApiClientId INTEGER NOT NULL,
+        ApiClientKey VARCHAR(50) NOT NULL,
+        ApplicationId INTEGER NOT NULL,
+        ApplicationName VARCHAR NOT NULL,
+        VendorId INTEGER NOT NULL,
+        VendorName VARCHAR NOT NULL,
+        CONSTRAINT ClientAccessTokenLogs_PK PRIMARY KEY (LogId)
     );
 
-    CREATE INDEX IF NOT EXISTS idx_clientaccesstoken_logs_access_time
-    ON dbo.clientaccesstoken_logs (access_time);
+    CREATE INDEX IF NOT EXISTS IX_ClientAccessTokenLogs_AccessTime
+    ON dbo.ClientAccessTokenLogs (AccessTime);
     ```
     </TabItem>
   </Tabs>
@@ -95,10 +95,10 @@ Next, create a function to log token access:
 <Tabs>
   <TabItem value="MSSQL" label="SQL Server" default>
   ```sql
-  CREATE TRIGGER trg_LogClientAccessTokenInsert
-  ON dbo.clientaccesstokens
-  AFTER INSERT
-  AS
+  CREATE OR ALTER TRIGGER dbo.dbo_ClientAccessToken_TR_Insert
+    ON dbo.ClientAccessTokens
+    AFTER INSERT
+    AS
   BEGIN
     SET NOCOUNT ON;
 
@@ -106,7 +106,7 @@ Next, create a function to log token access:
       TokenId,
       AccessTime,
       ApiClientId,
-      client_id,
+      ApiClientKey,
       ApplicationId,
       ApplicationName,
       VendorId,
@@ -116,7 +116,7 @@ Next, create a function to log token access:
       i.Id,
       SYSUTCDATETIME(),
       i.ApiClient_ApiClientId,
-      ac.[Key] AS client_id,
+      ac.[Key],
       app.ApplicationId,
       app.ApplicationName,
       v.VendorId,
@@ -132,48 +132,49 @@ Next, create a function to log token access:
   </TabItem>
   <TabItem value="PostgreSQL" label="PostgreSQL">
   ```sql
-  CREATE OR REPLACE FUNCTION dbo.log_token_access()
-  RETURNS TRIGGER AS $$
+  CREATE OR REPLACE FUNCTION dbo.dbo_ClientAccessToken_TR_Insert()
+    RETURNS TRIGGER AS
+  $$
   BEGIN
-      IF TG_OP = 'INSERT' THEN
-          INSERT INTO dbo.clientaccesstoken_logs (
-            token_id,
-            access_time,
-            apiclient_id,
-            client_id,
-            application_id,
-            application_name,
-            vendor_id,
-            vendor_name
-          )
-          SELECT
-            NEW.id,
-            CURRENT_TIMESTAMP,
-            NEW.apiclient_apiclientid,
-            apiclients.key as client_id,
-            applications.applicationid,
-            applications.applicationname,
-            vendors.vendorid,
-            vendors.vendorname
-          FROM
-            dbo.apiclients
-          INNER JOIN
-            dbo.applications on apiclients.application_applicationid = applications.applicationid
-          INNER JOIN
-            dbo.vendors on applications.vendor_vendorid = vendors.vendorid
-          WHERE
-            apiclients.apiclientid = NEW.apiclient_apiclientid;
-      END IF;
+    IF TG_OP = 'INSERT' THEN
+      INSERT INTO dbo.ClientAccessTokenLogs (
+        TokenId,
+        AccessTime,
+        ApiClientId,
+        ApiClientKey,
+        ApplicationId,
+        ApplicationName,
+        VendorId,
+        VendorName
+      )
+      SELECT
+        NEW.id,
+        CURRENT_TIMESTAMP,
+        NEW.apiclient_apiclientid,
+        apiclients.key,
+        applications.applicationid,
+        applications.applicationname,
+        vendors.vendorid,
+        vendors.vendorname
+      FROM
+        dbo.apiclients
+      INNER JOIN
+        dbo.applications on apiclients.application_applicationid = applications.applicationid
+      INNER JOIN
+        dbo.vendors on applications.vendor_vendorid = vendors.vendorid
+      WHERE
+        apiclients.apiclientid = NEW.apiclient_apiclientid;
+    END IF;
 
-      RETURN NEW;
-  END;
-  $$ LANGUAGE plpgsql;
+    RETURN NEW;
+ END;
+ $$ LANGUAGE plpgsql;
 
 
-  CREATE TRIGGER trigger_log_token_access
-      AFTER INSERT ON dbo.clientaccesstokens
+  CREATE TRIGGER dbo_ClientAccessToken_TR_Insert
+      AFTER INSERT ON dbo.ClientAccessTokens
       FOR EACH ROW
-      EXECUTE FUNCTION dbo.log_token_access();
+      EXECUTE FUNCTION dbo.dbo_ClientAccessToken_TR_Insert();
   ```
   </TabItem>
 </Tabs>
@@ -196,8 +197,8 @@ Retrieve access logs with client, application, and vendor information:
   <TabItem value="PostgreSQL" label="PostgreSQL">
   ```sql
   SELECT *
-  FROM dbo.clientaccesstoken_logs
-  ORDER BY vendor_name, application_name, access_time ASC
+  FROM dbo.ClientAccessTokenLogs
+  ORDER BY VendorName, ApplicationName, AccessTime ASC
   ```
   </TabItem>
 </Tabs>
@@ -223,14 +224,14 @@ Monitor recent token activity grouped by vendor:
   <TabItem value="PostgreSQL" label="PostgreSQL">
   ```sql
   SELECT
-      vendor_name,
-      COUNT(*) AS access_count,
-      MAX(access_time) AS last_access,
-      COUNT(DISTINCT token_id) AS unique_tokens
-  FROM dbo.clientaccesstoken_logs
-  WHERE access_time >= CURRENT_TIMESTAMP - INTERVAL '24 hours'
-  GROUP BY vendor_name
-  ORDER BY access_count DESC;
+      VendorName,
+      COUNT(*) AS AccessCount,
+      MAX(AccessTime) AS LastAccess,
+      COUNT(DISTINCT TokenId) AS UniqueTokens
+  FROM dbo.ClientAccessTokenLogs
+  WHERE AccessTime >= CURRENT_TIMESTAMP - INTERVAL '24 hours'
+  GROUP BY VendorName
+  ORDER BY AccessCount DESC;
   ```
   </TabItem>
 </Tabs>
@@ -243,7 +244,7 @@ Identify tokens with unusually high access frequency:
   <TabItem value="MSSQL" label="SQL Server" default>
   ```sql
   SELECT
-      client_id,
+      ApiClientKey,
       ApplicationName,
       VendorName,
       COUNT(*) AS AccessCount,
@@ -251,7 +252,7 @@ Identify tokens with unusually high access frequency:
       MAX(AccessTime) AS LastAccess
   FROM dbo.ClientAccessTokenLogs
   WHERE AccessTime >= DATEADD(day, -1, SYSUTCDATETIME())
-  GROUP BY client_id, ApplicationName, VendorName
+  GROUP BY ApiClientKey, ApplicationName, VendorName
   HAVING COUNT(*) > 100  -- Adjust threshold as needed
   ORDER BY AccessCount DESC;
   ```
@@ -259,17 +260,17 @@ Identify tokens with unusually high access frequency:
   <TabItem value="PostgreSQL" label="PostgreSQL">
   ```sql
   SELECT
-  client_id,
-      application_name,
-      vendor_name,
-      COUNT(*) AS access_count,
-      MIN(access_time) AS first_access,
-      MAX(access_time) AS last_access
-  FROM dbo.clientaccesstoken_logs
-  WHERE access_time >= CURRENT_TIMESTAMP - INTERVAL '1 hour'
-  GROUP BY client_id, application_name, vendor_name
+      ApiClientKey,
+      ApplicationName,
+      VendorName,
+      COUNT(*) AS AccessCount,
+      MIN(AccessTime) AS FirstAccess,
+      MAX(AccessTime) AS LastAccess
+  FROM dbo.ClientAccessTokenLogs
+  WHERE AccessTime >= CURRENT_TIMESTAMP - INTERVAL '1 hour'
+  GROUP BY ApiClientKey, ApplicationName, VendorName
   HAVING COUNT(*) > 100  -- Adjust threshold as needed
-  ORDER BY access_count DESC;
+  ORDER BY AccessCount DESC;
   ```
   </TabItem>
 </Tabs>
@@ -285,26 +286,26 @@ Analyze token usage patterns over time:
     DATEADD(hour, DATEPART(hour, AccessTime), CAST(CAST(AccessTime AS date) AS datetime)) AS AccessHour,
     VendorName,
     ApplicationName,
-    client_id,
-    COUNT(*) AS access_count
+    ApiClientKey,
+    COUNT(*) AS AccessCount
   FROM dbo.ClientAccessTokenLogs
   WHERE AccessTime >= DATEADD(day, -7, SYSUTCDATETIME())
-  GROUP BY DATEADD(hour, DATEPART(hour, AccessTime), CAST(CAST(AccessTime AS date) AS datetime)), VendorName, ApplicationName, client_id
-  ORDER BY AccessHour DESC, access_count DESC;
+  GROUP BY DATEADD(hour, DATEPART(hour, AccessTime), CAST(CAST(AccessTime AS date) AS datetime)), VendorName, ApplicationName, ApiClientKey
+  ORDER BY AccessHour DESC, AccessCount DESC;
   ```
   </TabItem>
   <TabItem value="PostgreSQL" label="PostgreSQL">
   ```sql
   SELECT
-      DATE_TRUNC('hour', access_time) AS access_hour,
-      vendor_name,
-  application_name,
-  client_id,
-      COUNT(*) AS access_count
-  FROM dbo.clientaccesstoken_logs
-  WHERE access_time >= CURRENT_TIMESTAMP - INTERVAL '7 days'
-  GROUP BY DATE_TRUNC('hour', access_time), vendor_name, application_name, client_id
-  ORDER BY access_hour DESC, access_count DESC;
+    DATE_TRUNC('hour', AccessTime) AS AccessHour,
+    VendorName,
+    ApplicationName,
+    ApiClientKey,
+    COUNT(*) AS AccessCount
+  FROM dbo.ClientAccessTokenLogs
+  WHERE AccessTime >= CURRENT_TIMESTAMP - INTERVAL '7 days'
+  GROUP BY DATE_TRUNC('hour', AccessTime), VendorName, ApplicationName, ApiClientKey
+  ORDER BY AccessHour DESC, AccessCount DESC;
   ```
   </TabItem>
 </Tabs>
@@ -327,8 +328,8 @@ To prevent the log table from growing indefinitely, implement a retention policy
   <TabItem value="PostgreSQL" label="PostgreSQL">
   ```sql
   -- Delete logs older than 90 days
-  DELETE FROM dbo.clientaccesstoken_logs
-  WHERE access_time < CURRENT_TIMESTAMP - INTERVAL '90 days';
+  DELETE FROM dbo.ClientAccessTokenLogs
+  WHERE AccessTime < CURRENT_TIMESTAMP - INTERVAL '90 days';
   ```
 
   </TabItem>
@@ -367,23 +368,16 @@ Monitor the performance impact of the logging:
       te.total_worker_time / 1000.0 AS TotalWorkerSeconds
   FROM sys.triggers t
   LEFT JOIN sys.dm_exec_trigger_stats te ON t.object_id = te.object_id
-  WHERE t.name = 'trg_LogClientAccessTokenInsert';
+  WHERE t.name = 'dbo_ClientAccessToken_TR_Insert';
   ```
   </TabItem>
   <TabItem value="PostgreSQL" label="PostgreSQL">
   ```sql
   -- Check log table size
-  SELECT
-      schemaname,
-      tablename,
-      attname,
-      n_distinct,
-      correlation
-  FROM pg_stats
-  WHERE tablename = 'clientaccesstoken_logs';
+  SELECT pg_total_relation_size('dbo.clientaccesstokenlogs');
 
   -- Check trigger performance impact
-  SELECT * FROM pg_stat_user_tables WHERE relname = 'clientaccesstoken_logs';
+  SELECT * FROM pg_stat_user_tables WHERE relname = 'clientaccesstokenlogs';
   ```
   </TabItem>
 </Tabs>
