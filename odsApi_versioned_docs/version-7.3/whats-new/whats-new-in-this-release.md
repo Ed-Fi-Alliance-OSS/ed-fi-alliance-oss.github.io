@@ -27,6 +27,25 @@ Standard v5](/reference/data-exchange/data-standard/whats-new/) for
 details. Additionally, Ed-Fi ODS / API v7.3 continues to support implementations
 of Ed-Fi Data Standard v5.2 and v4.0.
 
+### Domain Metadata in OpenAPI Specification
+
+Ed-Fi ODS / API v7.3.1 introduces [Ed-Fi
+Domains](/reference/data-exchange/udm/getting-started/ed-fi-domains) metadata
+for resources and descriptors in the OpenAPI specification. The
+`x-Ed-Fi-domains` fields have been added to the OpenAPI specification to make it
+easier to identify which Ed-Fi Data Standard domain each resource or descriptor
+belongs to. The Swagger UI application now includes a configuration option to
+enable or disable the display of domain information.
+
+With the inclusion of EPDM, Data Standard v6.0 significantly increases the
+number of resources. To improve readability, the API includes a configuration
+setting that allows implementers to exclude unused domains from the OpenAPI
+spec.
+
+See [Configuration
+Details](./../platform-dev-guide/configuration/configuration-details) page for
+more information on these new settings.
+
 ### MetaEd IDE v4.6
 
 Implementing extensions in Ed-Fi ODS / API v7.3.1 requires implementers to
