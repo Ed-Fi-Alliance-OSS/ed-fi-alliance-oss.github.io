@@ -62,6 +62,6 @@ use them in the following articles:
 :::note
 
 The Visual Studio Extension can be found
-[here](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.ProjectTemplates.Installer/overview/7.3.57).
+[here](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.ProjectTemplates.Installer/overview/7.3.10252).
 
 :::
