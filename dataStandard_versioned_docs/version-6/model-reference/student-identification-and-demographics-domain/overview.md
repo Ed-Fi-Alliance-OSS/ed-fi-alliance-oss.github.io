@@ -9,14 +9,14 @@ sidebar_position: 1
 This domain contains:
 
 * The Contact entity, which spans all variants of a parent or guardian.
-* The ContactIdentificationCode, which captures the system identification codes
+* The ContactIdentificationCode entity, which captures the system identification codes
     associated to a given Contact record and links to an education organization.
 * The Person entity, which captures which Person record the Student is linked to.
 * The Student entity, which captures important information and characteristics
     of a student.
-* The StudentDemographic, which captures demographic characteristics of a student.
-* The StudentDirectory, which captures contact information of a student.
-* The StudentIdentificationCode, which captures the system identification codes
+* The StudentDemographic entity, which captures demographic characteristics of a student.
+* The StudentDirectory entity, which captures contact information of a student.
+* The StudentIdentificationCode entity, which captures the system identification codes
     associated to a given Student record and links to an education organization.
 * The StudentEducationOrganizationAssociation, which captures characteristics of a
     student that are specific to a student's relationship with a particular
@@ -24,7 +24,7 @@ This domain contains:
     is intended to capture specific indicators and characteristics of a student as
     assessed by the education organization. It should be thought of as a core part of
     the student record, but scoped to the education organization.
-* The StudentContactAssociation entity, which links students and parents and
+* The StudentContactAssociation, which links students and parents and
     defines the relationship.
 
 ## Key Concepts

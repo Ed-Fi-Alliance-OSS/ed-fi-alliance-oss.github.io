@@ -17,7 +17,7 @@ stored.
 
 ## Student Core Elements
 
-The student information was broken out into separate entities reflect the fact that
+The student information is broken out into separate entities to reflect the fact that
 the information could be reported with different data by different Local
 Education Agencies (LEAs) where the student had enrolled. The differences could
 be attributed to changes that occurred in the student’s information (e.g.,
