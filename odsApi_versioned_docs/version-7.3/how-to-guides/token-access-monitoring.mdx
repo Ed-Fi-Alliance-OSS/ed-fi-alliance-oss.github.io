@@ -1,0 +1,432 @@
+---
+description: Sample instructions for logging and monitoring access token usage
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# How To: Client Access Token Monitoring
+
+## Overview
+
+This guide describes how to implement monitoring for client access tokens in the Ed-Fi ODS/API. By tracking token usage, administrators can enhance security monitoring, detect unusual access patterns, and maintain audit trails for compliance purposes.
+
+## Use Case
+
+The Ed-Fi ODS/API's `EdFi_Admin` database manages API client access through a hierarchical structure:
+
+- **Vendors** contain multiple **Applications**
+- **Applications** contain multiple **API Clients**
+- **API Clients** have associated **Client Access Tokens**
+
+Each successful client authentication request generates a client access token in the `dbo.ClientAccessTokens` table. Monitoring the usage of these tokens is valuable for security and operational insights. While, monitoring was not included out-of-the-box in the Ed-Fi ODS/API, it can be added easily by following the steps in this document.
+
+- Track when and how frequently tokens are being used.
+- Identify potentially compromised tokens showing unusual access patterns.
+- Maintain audit logs for security compliance.
+- Analyze usage patterns for capacity planning.
+
+## Security Benefits
+
+Implementing client access token monitoring provides several security advantages:
+
+:::tip Security Benefits
+
+- **Anomaly Detection**: Identify tokens being accessed at unusual times or frequencies.
+- **Audit Trail**: Maintain comprehensive logs for compliance and forensic analysis.
+- **Breach Detection**: Quickly identify if tokens are being used from unexpected sources.
+- **Usage Analytics**: Monitor API usage patterns to detect potential abuse.
+- **Token Lifecycle Management**: Track token usage to determine when tokens should be rotated.
+
+:::
+
+## Implementation
+
+### Step 1: Create Access Log Table
+
+First, create a table to store access log entries:
+
+  <Tabs>
+    <TabItem value="MSSQL" label="SQL Server" default>
+    ```sql
+    CREATE TABLE dbo.ClientAccessTokenLogs
+    (
+      LogId BIGINT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+      TokenId UNIQUEIDENTIFIER NOT NULL,
+      AccessTime DATETIME2 NOT NULL DEFAULT SYSUTCDATETIME(),
+      ApiClientId INT NOT NULL,
+      ApiClientKey VARCHAR(50) NOT NULL,
+      ApplicationId INT NOT NULL,
+      ApplicationName NVARCHAR(MAX) NOT NULL,
+      VendorId INT NOT NULL,
+      VendorName NVARCHAR(MAX) NOT NULL
+    );
+
+    CREATE INDEX IX_ClientAccessTokenLogs_AccessTime
+    ON dbo.ClientAccessTokenLogs (AccessTime);
+    ```
+    </TabItem>
+    <TabItem value="PostgreSQL" label="PostgreSQL">
+    ```sql
+    CREATE TABLE IF NOT EXISTS dbo.ClientAccessTokenLogs
+    (
+        LogId BIGSERIAL NOT NULL,
+        TokenId UUID NOT NULL,
+        AccessTime TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        ApiClientId INTEGER NOT NULL,
+        ApiClientKey VARCHAR(50) NOT NULL,
+        ApplicationId INTEGER NOT NULL,
+        ApplicationName VARCHAR NOT NULL,
+        VendorId INTEGER NOT NULL,
+        VendorName VARCHAR NOT NULL,
+        CONSTRAINT ClientAccessTokenLogs_PK PRIMARY KEY (LogId)
+    );
+
+    CREATE INDEX IF NOT EXISTS IX_ClientAccessTokenLogs_AccessTime
+    ON dbo.ClientAccessTokenLogs (AccessTime);
+    ```
+    </TabItem>
+  </Tabs>
+
+### Step 2: Create Logging Trigger
+
+Next, create a function to log token access:
+
+<Tabs>
+  <TabItem value="MSSQL" label="SQL Server" default>
+  ```sql
+  CREATE OR ALTER TRIGGER dbo.dbo_ClientAccessToken_TR_Insert
+    ON dbo.ClientAccessTokens
+    AFTER INSERT
+    AS
+  BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO dbo.ClientAccessTokenLogs (
+      TokenId,
+      AccessTime,
+      ApiClientId,
+      ApiClientKey,
+      ApplicationId,
+      ApplicationName,
+      VendorId,
+      VendorName
+    )
+    SELECT
+      i.Id,
+      SYSUTCDATETIME(),
+      i.ApiClient_ApiClientId,
+      ac.[Key],
+      app.ApplicationId,
+      app.ApplicationName,
+      v.VendorId,
+      v.VendorName
+    FROM
+      inserted i
+      INNER JOIN dbo.ApiClients ac ON i.ApiClient_ApiClientId = ac.ApiClientId
+      INNER JOIN dbo.Applications app ON ac.Application_ApplicationId = app.ApplicationId
+      INNER JOIN dbo.Vendors v ON app.Vendor_VendorId = v.VendorId;
+  END
+  GO
+  ```
+  </TabItem>
+  <TabItem value="PostgreSQL" label="PostgreSQL">
+  ```sql
+  CREATE OR REPLACE FUNCTION dbo.dbo_ClientAccessToken_TR_Insert()
+    RETURNS TRIGGER AS
+  $$
+  BEGIN
+    IF TG_OP = 'INSERT' THEN
+      INSERT INTO dbo.ClientAccessTokenLogs (
+        TokenId,
+        AccessTime,
+        ApiClientId,
+        ApiClientKey,
+        ApplicationId,
+        ApplicationName,
+        VendorId,
+        VendorName
+      )
+      SELECT
+        NEW.id,
+        CURRENT_TIMESTAMP,
+        NEW.apiclient_apiclientid,
+        apiclients.key,
+        applications.applicationid,
+        applications.applicationname,
+        vendors.vendorid,
+        vendors.vendorname
+      FROM
+        dbo.apiclients
+      INNER JOIN
+        dbo.applications on apiclients.application_applicationid = applications.applicationid
+      INNER JOIN
+        dbo.vendors on applications.vendor_vendorid = vendors.vendorid
+      WHERE
+        apiclients.apiclientid = NEW.apiclient_apiclientid;
+    END IF;
+
+    RETURN NEW;
+ END;
+ $$ LANGUAGE plpgsql;
+
+
+  CREATE TRIGGER dbo_ClientAccessToken_TR_Insert
+      AFTER INSERT ON dbo.ClientAccessTokens
+      FOR EACH ROW
+      EXECUTE FUNCTION dbo.dbo_ClientAccessToken_TR_Insert();
+  ```
+  </TabItem>
+</Tabs>
+
+## Monitoring Queries
+
+### Basic Access Log Query
+
+Retrieve access logs with client, application, and vendor information:
+
+
+<Tabs>
+  <TabItem value="MSSQL" label="SQL Server" default>
+  ```sql
+  SELECT *
+  FROM dbo.ClientAccessTokenLogs
+  ORDER BY VendorName, ApplicationName, AccessTime ASC
+  ```
+  </TabItem>
+  <TabItem value="PostgreSQL" label="PostgreSQL">
+  ```sql
+  SELECT *
+  FROM dbo.ClientAccessTokenLogs
+  ORDER BY VendorName, ApplicationName, AccessTime ASC
+  ```
+  </TabItem>
+</Tabs>
+
+### Recent Activity by Vendor
+
+Monitor recent token activity grouped by vendor:
+
+<Tabs>
+  <TabItem value="MSSQL" label="SQL Server" default>
+  ```sql
+  SELECT
+    VendorName,
+    COUNT(*) AS AccessCount,
+    MAX(AccessTime) AS LastAccess,
+    COUNT(DISTINCT TokenId) AS UniqueTokens
+  FROM dbo.ClientAccessTokenLogs
+  WHERE AccessTime >= DATEADD(day, -1, SYSUTCDATETIME())
+  GROUP BY VendorName
+  ORDER BY AccessCount DESC;
+  ```
+  </TabItem>
+  <TabItem value="PostgreSQL" label="PostgreSQL">
+  ```sql
+  SELECT
+      VendorName,
+      COUNT(*) AS AccessCount,
+      MAX(AccessTime) AS LastAccess,
+      COUNT(DISTINCT TokenId) AS UniqueTokens
+  FROM dbo.ClientAccessTokenLogs
+  WHERE AccessTime >= CURRENT_TIMESTAMP - INTERVAL '24 hours'
+  GROUP BY VendorName
+  ORDER BY AccessCount DESC;
+  ```
+  </TabItem>
+</Tabs>
+
+### Suspicious Activity Detection
+
+Identify tokens with unusually high access frequency:
+
+<Tabs>
+  <TabItem value="MSSQL" label="SQL Server" default>
+  ```sql
+  SELECT
+      ApiClientKey,
+      ApplicationName,
+      VendorName,
+      COUNT(*) AS AccessCount,
+      MIN(AccessTime) AS FirstAccess,
+      MAX(AccessTime) AS LastAccess
+  FROM dbo.ClientAccessTokenLogs
+  WHERE AccessTime >= DATEADD(day, -1, SYSUTCDATETIME())
+  GROUP BY ApiClientKey, ApplicationName, VendorName
+  HAVING COUNT(*) > 100  -- Adjust threshold as needed
+  ORDER BY AccessCount DESC;
+  ```
+  </TabItem>
+  <TabItem value="PostgreSQL" label="PostgreSQL">
+  ```sql
+  SELECT
+      ApiClientKey,
+      ApplicationName,
+      VendorName,
+      COUNT(*) AS AccessCount,
+      MIN(AccessTime) AS FirstAccess,
+      MAX(AccessTime) AS LastAccess
+  FROM dbo.ClientAccessTokenLogs
+  WHERE AccessTime >= CURRENT_TIMESTAMP - INTERVAL '1 hour'
+  GROUP BY ApiClientKey, ApplicationName, VendorName
+  HAVING COUNT(*) > 100  -- Adjust threshold as needed
+  ORDER BY AccessCount DESC;
+  ```
+  </TabItem>
+</Tabs>
+
+### Token Usage Timeline
+
+Analyze token usage patterns over time:
+
+<Tabs>
+  <TabItem value="MSSQL" label="SQL Server" default>
+  ```sql
+  SELECT
+    DATEADD(hour, DATEPART(hour, AccessTime), CAST(CAST(AccessTime AS date) AS datetime)) AS AccessHour,
+    VendorName,
+    ApplicationName,
+    ApiClientKey,
+    COUNT(*) AS AccessCount
+  FROM dbo.ClientAccessTokenLogs
+  WHERE AccessTime >= DATEADD(day, -7, SYSUTCDATETIME())
+  GROUP BY DATEADD(hour, DATEPART(hour, AccessTime), CAST(CAST(AccessTime AS date) AS datetime)), VendorName, ApplicationName, ApiClientKey
+  ORDER BY AccessHour DESC, AccessCount DESC;
+  ```
+  </TabItem>
+  <TabItem value="PostgreSQL" label="PostgreSQL">
+  ```sql
+  SELECT
+    DATE_TRUNC('hour', AccessTime) AS AccessHour,
+    VendorName,
+    ApplicationName,
+    ApiClientKey,
+    COUNT(*) AS AccessCount
+  FROM dbo.ClientAccessTokenLogs
+  WHERE AccessTime >= CURRENT_TIMESTAMP - INTERVAL '7 days'
+  GROUP BY DATE_TRUNC('hour', AccessTime), VendorName, ApplicationName, ApiClientKey
+  ORDER BY AccessHour DESC, AccessCount DESC;
+  ```
+  </TabItem>
+</Tabs>
+
+
+## Maintenance
+
+### Log Retention
+
+To prevent the log table from growing indefinitely, implement a retention policy:
+
+<Tabs>
+  <TabItem value="MSSQL" label="SQL Server" default>
+  ```sql
+  -- Delete logs older than 90 days
+  DELETE FROM dbo.ClientAccessTokenLogs
+  WHERE AccessTime < DATEADD(day, -90, SYSUTCDATETIME());
+  ```
+  </TabItem>
+  <TabItem value="PostgreSQL" label="PostgreSQL">
+  ```sql
+  -- Delete logs older than 90 days
+  DELETE FROM dbo.ClientAccessTokenLogs
+  WHERE AccessTime < CURRENT_TIMESTAMP - INTERVAL '90 days';
+  ```
+
+  </TabItem>
+  </Tabs>
+
+Consider setting up a scheduled job to run this cleanup query regularly.
+
+### Performance Monitoring
+
+Monitor the performance impact of the logging:
+
+<Tabs>
+  <TabItem value="MSSQL" label="SQL Server" default>
+  ```sql
+  -- Check log table size
+  EXEC sp_spaceused 'dbo.ClientAccessTokenLogs';
+
+  -- Check index fragmentation
+  SELECT
+      dbschemas.[name] as 'Schema',
+      dbtables.[name] as 'Table',
+      dbindexes.[name] as 'Index',
+      indexstats.avg_fragmentation_in_percent
+  FROM sys.dm_db_index_physical_stats (DB_ID(), OBJECT_ID('dbo.ClientAccessTokenLogs'), NULL, NULL, 'LIMITED') AS indexstats
+  INNER JOIN sys.tables dbtables on dbtables.[object_id] = indexstats.[object_id]
+  INNER JOIN sys.schemas dbschemas on dbtables.[schema_id] = dbschemas.[schema_id]
+  INNER JOIN sys.indexes AS dbindexes ON dbindexes.[object_id] = indexstats.[object_id]
+      AND indexstats.index_id = dbindexes.index_id
+  WHERE dbtables.[name] = 'ClientAccessTokenLogs';
+
+  -- Check trigger performance impact (review recent trigger execution time)
+  SELECT
+      t.name AS TriggerName,
+      te.execution_count,
+      te.total_elapsed_time / 1000.0 AS TotalElapsedSeconds,
+      te.total_worker_time / 1000.0 AS TotalWorkerSeconds
+  FROM sys.triggers t
+  LEFT JOIN sys.dm_exec_trigger_stats te ON t.object_id = te.object_id
+  WHERE t.name = 'dbo_ClientAccessToken_TR_Insert';
+  ```
+  </TabItem>
+  <TabItem value="PostgreSQL" label="PostgreSQL">
+  ```sql
+  -- Check log table size
+  SELECT pg_total_relation_size('dbo.clientaccesstokenlogs');
+
+  -- Check trigger performance impact
+  SELECT * FROM pg_stat_user_tables WHERE relname = 'clientaccesstokenlogs';
+  ```
+  </TabItem>
+</Tabs>
+
+## Best Practices
+
+:::tip Recommendations
+
+1. **Regular Monitoring**: Review access logs daily for unusual patterns
+2. **Alerting**: Set up automated alerts for suspicious activity thresholds
+3. **Data Retention**: Establish appropriate log retention policies based on compliance requirements
+4. **Index Maintenance**: Regularly analyze and optimize database indexes for query performance
+5. **Security Review**: Periodically review and update monitoring queries based on emerging threats
+
+:::
+
+## Troubleshooting
+
+### Common Issues
+
+#### Trigger Not Firing
+
+- Verify the trigger is enabled:
+
+  <Tabs>
+    <TabItem value="MSSQL" label="SQL Server" default>
+    ```sql
+    SELECT name, is_disabled FROM sys.triggers WHERE name = 'trg_LogClientAccessTokenInsert';
+    ```
+    </TabItem>
+    <TabItem value="PostgreSQL" label="PostgreSQL">
+    ```sql
+    SELECT * FROM pg_trigger WHERE tgname = 'trigger_log_token_access';
+    ```
+    </TabItem>
+  </Tabs>
+
+- Check for trigger errors in database server logs
+
+#### Performance Impact
+
+- Monitor query execution times before and after implementation
+- Consider adjusting logging frequency if performance degradation occurs
+
+#### Missing Log Entries
+
+- Verify that token usage actually updates the expiration timestamp
+- Consider modifying the trigger logic to capture other usage indicators
+
+## Conclusion
+
+Implementing client access token monitoring provides essential visibility into API usage patterns and enhances the security posture of your Ed-Fi implementation. Regular analysis of the collected data helps maintain system security and supports compliance requirements.
