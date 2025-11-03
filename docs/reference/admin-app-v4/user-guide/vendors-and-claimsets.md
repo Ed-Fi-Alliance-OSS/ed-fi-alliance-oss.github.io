@@ -154,7 +154,8 @@ Applications represent the actual software systems that will connect to the Ed-F
    - Configure monitoring and logging levels
    - Define operational restrictions if needed
 
-:::warning title="Client Secret Security"
+:::warning
+**Client Secret Security**
 
 Ed-Fi Admin App has two configuration options for displaying the client credentials when an Application has been created:
 
