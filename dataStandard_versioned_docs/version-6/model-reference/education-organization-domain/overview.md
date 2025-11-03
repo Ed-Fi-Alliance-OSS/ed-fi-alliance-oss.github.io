@@ -21,7 +21,7 @@ This domain contains:
 * The EducationOrganization entity represents any public or private institution,
     organization, or agency that provides instructional or support services
     to students or staff at any level.
-* The EducationOrganizationIdentificationCode which captures the system identification
+* The EducationOrganizationIdentificationCode entity which captures the system identification
     codes associated to a given EducationOrganization.
 * The EducationOrganizationNetwork entity represents a self-organized
     membership network of peer-level schools or LEAs intended to provide shared

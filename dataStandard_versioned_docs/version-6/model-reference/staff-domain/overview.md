@@ -18,14 +18,14 @@ This domain contains:
     students.
 * The StaffDemographic entity represents the demographic information associated to a staff member.
 * The StaffDirectory entity represents the contact information associated to a staff member.
-* The StaffEducationOrganizationEmploymentAssociation entity, which represents
+* The StaffEducationOrganizationEmploymentAssociation, which represents
     employment information.
-* The StaffEducationOrganizationAssignmentAssociation entity, which represents
+* The StaffEducationOrganizationAssignmentAssociation, which represents
     position assignments and roles.
 * The StaffIdentificationCode entity holds the different identity codes for a staff member.
 * The StaffLeave entity which tracks staff leave history and StaffAbsenceEvent
     which tracks staff attendance.
-* The StaffSchoolAssociation entity, which captures additional information and
+* The StaffSchoolAssociation, which captures additional information and
     associations relating to instructional duties.
 
 ## Key Concepts
