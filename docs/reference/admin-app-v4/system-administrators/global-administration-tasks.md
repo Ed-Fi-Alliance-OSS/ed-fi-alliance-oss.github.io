@@ -165,7 +165,7 @@ This permission enables the "row count" button on the ODS page, but this feature
 
 :::
 
-## 5. Ownerships
+## Ownerships
 
 Ownerships define which teams have access to specific resources in the system. Managing ownerships is crucial for proper access control and delegation of responsibilities.
 
