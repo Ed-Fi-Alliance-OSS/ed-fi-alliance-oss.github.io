@@ -35,10 +35,6 @@ This domain contains:
     Candidate) can be associated with a credential.
 * An expansion to the Survey entity and related entities to support survey
     requirements that are a cornerstone of most EPP implementations.
-* The Student Path is a community extension that tracks the progress of an individual
-    from being a student to becoming an educator. This domain tracks various
-    assessments , fieldwork, and certifications from third party and state education
-    agencies. See the [Student Path Domain](student-path.md) community extension for more information.
 
 ## Key Concepts
 

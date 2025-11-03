@@ -9,7 +9,6 @@ typically including schools, school districts and other local education agencies
 
 * [Educator Preparation Data Model Domain - Overview](./overview.md)
 * [Educator Preparation Data Model - Model Diagrams](./model-diagrams.md)
-* [Educator Preparation Data Model - Entities and
-    Descriptors](./entities-references-and-descriptors.md)
+* [Educator Preparation Data Model - Entities and Descriptors](./entities-references-and-descriptors.md)
 
 ← [Go back to the UDM Reference page](../readme.md)
