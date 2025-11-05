@@ -39,29 +39,29 @@ hide_table_of_contents: true
 | ProfessionalDevelopmentEventAttendance | AttendanceEventCategory | A code describing the attendance event.  |     |     |     |     |
 | ApplicantProfile | BackgroundCheckStatus | The status of the background check. |     |     |     |     |
 | ApplicantProfile | BackgroundCheckType | The type of background check. |     |     |     |     |
-| ApplicantProfile | CitizenshipStatus | An indicator of whether or not the person is a U.S. citizen. |     |     |     |     |
-| ApplicantProfile | Country | The name of the country. It is strongly recommended that entries use only ISO 3166 2-letter country codes. |     |     |     |     |
-| ApplicantProfile | Disability | A disability category that describes a individual's impairment.  |     |     |     |     |
-| ApplicantProfile | DisabilityDesignation | Whether the disability is IDEA, Section 504, or other disability designation.  |     |     |     |     |
-| ApplicantProfile | DisabilityDeterminationSourceType | The source that provided the disability determination. |     |     |     |     |
-| ApplicantProfile | ElectronicMailType | The type of email listed for an individual or organization. (For example: Home/Personal, Work, etc.) |     |     |     |     |
-| RecruitmentEventAttendance | GradeLevel | The set of grade levels for which the individual's assignment is responsible. |     |     |     |     |
+| ApplicantProfile | CitizenshipStatus | An indicator of whether or not the person is a U.S. citizen. | Orthodox |     |     |     |
+| ApplicantProfile | Country | The name of the country. It is strongly recommended that entries use only ISO 3166 2-letter country codes. | Standard |     |     |     |
+| ApplicantProfile | Disability | A disability category that describes a individual's impairment.  | Orthodox |     |     |     |
+| ApplicantProfile | DisabilityDesignation | Whether the disability is IDEA, Section 504, or other disability designation.  | Orthodox |     |     |     |
+| ApplicantProfile | DisabilityDeterminationSourceType | The source that provided the disability determination. | Orthodox |     |     |     |
+| ApplicantProfile | ElectronicMailType | The type of email listed for an individual or organization. (For example: Home/Personal, Work, etc.) | Standard |     |     |     |
+| RecruitmentEventAttendance | GradeLevel | The set of grade levels for which the individual's assignment is responsible. | Orthodox |     |     |     |
 | ApplicantProfile |GradePointAverageType | The system used for calculating the grade point average for an individual. |     |     |     |     |
 | Application | HireStatus | Indicates the current status of the application for hire. |     |     |     |     |
 | Application | HireStatus | The source for the application. |     |     |     |     |
-| ApplicantProfile | Language | A specification of which written or spoken communication is being used. |     |     |     |     |
-| ApplicantProfile | LanguageUse | A description of how the language is used (e.g. Home Language, Native Language, Spoken Language). |     |     |     |     |
+| ApplicantProfile | Language | A specification of which written or spoken communication is being used. | Orthodox |     |     |     |
+| ApplicantProfile | LanguageUse | A description of how the language is used (e.g. Home Language, Native Language, Spoken Language). | Orthodox |     |     |     |
 | ApplicantProfile | LevelOfEducation | The extent of formal instruction an individual has received. |     |     |     |     |
-| ApplicantProfile | Locale | A general geographic indicator that categorizes U.S. territory (e.g., City, Suburban). |     |     |     |     |
+| ApplicantProfile | Locale | A general geographic indicator that categorizes U.S. territory (e.g., City, Suburban). | Standard |     |     |     |
 | ProfessionalDevelopmentEvent | ProfessionalDevelopmentOfferedBy | A code describing an organization that is offering a specific professional development. |     |     |     |     |
-| ApplicantProfile | Race | The general racial category which most clearly reflects the individual's recognition of his or her community or with which the individual most identifies. The way this data element is listed, it must allow for multiple entries so that each individual can specify all appropriate races. |     |     |     |     |
+| ApplicantProfile | Race | The general racial category which most clearly reflects the individual's recognition of his or her community or with which the individual most identifies. The way this data element is listed, it must allow for multiple entries so that each individual can specify all appropriate races. | Standard |     |     |     |
 | RecruitmentEventAttendance | RecruitmentEventAttendeeType | Reflects the type of prospect, such as EPP Applicant, Hire, or Mentor Teacher. |     |     |     |     |
 | RecruitmentEvent | RecruitmentEventType | The type of event. |     |     |     |     |
 | Application | ResultDatatypeType | The datatype of the result. The results can be expressed as a number, percentile, range, level, etc. |     |     |     |     |
-| ApplicantProfile | Sex | A person's birth sex. |     |     |     |     |
-| ApplicantProfile | StateAbbreviation | The abbreviation for the state (within the United States) or outlying area in which an address is located. |     |     |     |     |
-| ApplicantProfile | StudentCharacteristic | The characteristic designated for the student applicant.  |     |     |     |     |
-| ApplicantProfile | TelephoneNumberType | The type of communication number listed for an individual or organization. |     |     |     |     |
+| ApplicantProfile | Sex | A person's birth sex. | Standard |     |     |     |
+| ApplicantProfile | StateAbbreviation | The abbreviation for the state (within the United States) or outlying area in which an address is located. | Standard |     |     |     |
+| ApplicantProfile | StudentCharacteristic | The characteristic designated for the student applicant. |     |     |     |     |
+| ApplicantProfile | TelephoneNumberType | The type of communication number listed for an individual or organization. | Standard |     |     |     |
 | Application <br /> ApplicationEvent | Term | Defines the intended term of enrollment for which the application is being submitted, or session during the school year. |     |     |     |     |
-| ApplicantProfile | Visa | An indicator of a non-US citizen's Visa type. |     |     |     |     |
-| Application | WithdrawReason | Reason applicant withdrew application. |
+| ApplicantProfile | Visa | An indicator of a non-US citizen's Visa type. | Standard |     |     |     |
+| Application | WithdrawReason | Reason applicant withdrew application. |     |     |     |     |
