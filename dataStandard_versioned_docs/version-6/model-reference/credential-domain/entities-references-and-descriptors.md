@@ -34,14 +34,14 @@ hide_table_of_contents: true
 | CertificationExam | CertificationExamType | The type or category of the certification exam. |     |     |     |     |
 | Certification | CertificationField | The field of certification. |     |     |     |     |
 | Certification | CertificationLevel | The level or category of the certification. |     |     |     |     |
-| Certification <br /> Credential | CertificationRoute | The process, program, or pathway used to obtain the certification. |     |     |     |     |
+| Certification <br /> Credential | CertificationRoute | The process, program, or pathway used to obtain the certification. | Orthodox |     |     |     |
 | Certification | CertificationStandard | The standard, law, opr policy defining the certification. |     |     |     |     |
 | CredentialEvent | CredentialEventType | The type of event associated with a person's credential. |     |     |     |     |
 | Credential | CredentialField | The field of certification for the credential. |     |     |     |     |
-| Credential | CredentialStatus | The current status of the credential. |     |     |     |     |
+| Credential | CredentialStatus | The current status of the credential. | Standard |     |     |     |
 | Credential | CredentialType | An indication of the category of the credential a person holds. |     |     |     |     |
 | Certification | Degree | The minimum level of degree, if any, required for the certification. |     |     |     |     |
-|  Certification <br /> Credential | EducatorRole | The role authorized by the certification, typically associated with service and administrative certifications. |     |     |     |     |
+|  Certification <br /> Credential | EducatorRole | The role authorized by the certification, typically associated with service and administrative certifications. | Standard |     |     |     |
 | Certification <br /> Credential | GradeLevel | The grade level(s) certified for teaching. |     |     |     |     |
 | Certification | InstructionalSetting | The setting authorized by the certification in which a person receives education and related services. |     |     |     |     |
 | Certification | PopulationServed | The type of students that the certification is offered and tailored to. |     |     |     |     |
