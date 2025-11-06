@@ -36,14 +36,14 @@ hide_table_of_contents: true
 
 | Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
-| GraduationPlan | AcademicSubject | The intended major subject area of the graduation requirement. |     |     |     |     |
-| School | AccreditationStatus | The accreditation status for an education preparation provider. |     |     |     |     |
+| GraduationPlan | AcademicSubject | The intended major subject area of the graduation requirement. | Local |     |     |     |
+| School | AccreditationStatus | The accreditation status for an education preparation provider. | Sandard |     |     |     |
 | EducationOrganization | AddressType | The type of address listed for an individual or organization. (For example:  Physical Address, Mailing Address, Home Address, etc.) |     |     |     |     |
 | School | AdministrativeFundingControl | The type of education institution as classified by its funding source, for example public or private. |     |     |     |     |
-| FinancialAid  | AidType | The classification of financial aid awarded to a person for the academic term/year. |     |     |     |     |
+| FinancialAid  | AidType | The classification of financial aid awarded to a person for the academic term/year. | Orthodox |     |     |     |
 | StudentEducationOrganizationAssociation | BarrierToInternetAccessInResidence | An indication of the barrier to having internet access in the student’s primary place of residence. |     |     |     |     |
 | StudentTransportation | BusRoute | Identifies the specific route taken by a bus for student transportation. |     |     |     |     |
-| GraduationPlan | CertificationRoute | The process, program, or pathway used to obtain a certification. |     |     |     |     |
+| GraduationPlan | CertificationRoute | The process, program, or pathway used to obtain a certification. | Orthodox |     |     |     |
 | StudentEducationOrganizationAssociation | DisplacedStudentStatus | Indicates whether a student has been displaced as a result of a crisis event. |     |     |     |     |
 | EducationOrganization | EducationOrganizationCategory | The classification of the education agency within the geographic boundaries of a state according to the level of administrative and operational control granted by the state. |     |     |     |     |
 | StudentSchoolAssociation | EducationPlan | The type of education plan(s) the student is following, if appropriate. |     |     |     |     |
@@ -75,7 +75,7 @@ hide_table_of_contents: true
 | StudentSchoolAssociation | SchoolChoiceBasis | The legal basis for the school choice enrollment according to local, state or federal policy or regulation. (The descriptor provides the list of available bases specific to the state. |     |     |     |     |
 | LocalEducationAgency | SchoolChoiceImplementStatus | An indication of whether the LEA was able to implement the provisions for public school choice under Title I, Part A, Section 1116 of ESEA as amended. |     |     |     |     |
 | School | SchoolType | The type of education institution as classified by its primary focus. |     |     |     |     |
-| EducationOrganization | StateAbbreviation | The abbreviation for the state (within the United States) or outlying area in which an address is located. |     |     |     |     |
+| EducationOrganization | StateAbbreviation | The abbreviation for the state (within the United States) or outlying area in which an address is located. | Standard |     | Yes |     |
 | StudentEducationOrganizationAssociation | Term | The term associated with the cohort year; for example, the intended term of graduation. |     |     |     |     |
 | School | TitleIPartASchoolDesignation | Denotes the Title I Part A designation for the school. |     |     |     |     |
 | StudentTransportation | TransportationPublicExpenseEligibilityType | The primary type of eligibility for transporting a student at public expense. |     |     |     |     |

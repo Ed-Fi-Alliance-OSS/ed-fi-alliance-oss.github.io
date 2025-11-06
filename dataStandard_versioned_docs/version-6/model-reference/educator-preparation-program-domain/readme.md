@@ -1,4 +1,4 @@
-# Educator Preparation Data Model Domain
+# Educator Preparation Program Domain
 
 The Education Organization domain defines the organizational structure,
 hierarchy, and other associations of education organizations. The

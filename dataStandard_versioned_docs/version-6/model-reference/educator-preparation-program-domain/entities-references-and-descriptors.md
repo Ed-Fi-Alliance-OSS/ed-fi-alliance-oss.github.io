@@ -31,40 +31,40 @@ hide_table_of_contents: true
 
 | Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
-| Candidate | AcademicSubject | The description of the content or subject area of a degree. |     |     |     |     |
+| Candidate | AcademicSubject | The description of the content or subject area of a degree. | Local | Yes | Yes |     |
 | EducatorPreparationProgram | AccreditationStatus | The current accreditation status of the educator preparation program. | Standard |     |     |     |
-| Candidate | AddressType | The type of address listed for an individual or organization.    For example:  (Physical Address, Mailing Address, Home Address, etc.) |     |     |     |     |
+| Candidate | AddressType | The type of address listed for an individual or organization.    For example:  (Physical Address, Mailing Address, Home Address, etc.) |Orthodox | Yes | Yes | Yes |
 | Candidate | BackgroundCheckStatus | The status of the background check. |     |     |     |     |
 | Candidate | BackgroundCheckType | The type of background check. |     |     |     |     |
 | Candidate | CandidateCharacteristic | The characteristic designated for the candidate. |     |     |     |     |
 | CandidateIdentificationCode | CandidateIdentificationSystem | A coding scheme that is used for identification and record-keeping. |     |     |     |     |
-| Candidate | CitizenshipStatus | An indicator of whether or not the person is a U.S. citizen. |     |     |     |     |
-| CandidateEducatorPreparationProgramAssociation | CohortYearType | The type of cohort year (9th grade, graduation). |     |     |     |     |
-| Candidate | Country | The country in which an individual is born. It is strongly recommended that entries use only ISO 3166 2-letter country codes. |     |     |     |     |
-| Candidate | Disability | A disability category that describes a individual's impairment. |     |     |     |     |
-| Candidate | DisabilityDesignation | Whether the disability is IDEA, Section 504, or other disability designation. |     |     |     |     |
-| Candidate | DisabilityDeterminationSourceType | The source that provided the disability determination. |     |     |     |     |
-| Candidate | ElectronicMailType | The type of email listed for an individual or organization. (For example: Home/Personal, Work, etc.) |     |     |     |     |
+| Candidate | CitizenshipStatus | An indicator of whether or not the person is a U.S. citizen. | Orthodox |     |     |     |
+| CandidateEducatorPreparationProgramAssociation | CohortYearType | The type of cohort year (9th grade, graduation). | Local |     |     |     |
+| Candidate | Country | The country in which an individual is born. It is strongly recommended that entries use only ISO 3166 2-letter country codes. | Standard |     |     |     |
+| Candidate | Disability | A disability category that describes a individual's impairment. | Orthodox | Yes | Yes |     |
+| Candidate | DisabilityDesignation | Whether the disability is IDEA, Section 504, or other disability designation. | Orthodox |     | Yes |     |
+| Candidate | DisabilityDeterminationSourceType | The source that provided the disability determination. | Orthodox |     | Yes |     |
+| Candidate | ElectronicMailType | The type of email listed for an individual or organization. (For example: Home/Personal, Work, etc.) | Standard |     |     |     |
 | Candidate | EnglishLanguageExam | Indicates that an individual passed, failed, or did not take an English Language assessment. | Standard |     |     |     |
 | Candidate | EPPDegreeType | A code for describing the degree type that a candidate accomplishes. |     |     |     |     |
 | CandidateEducatorPreparationProgramAssociation | EPPProgramPathway | The program pathway the candidate is following. | Standard |     |     |     |
 | FieldworkExperience | FieldworkType | The type of fieldwork being executed by a staff. |     |     |     |     |
-| EducatorPreparationProgram | GradeLevel | The grade levels served at the educator preparation program. |     |     |     |     |
-| Candidate | Language | A specification of which written or spoken communication is being used. |     |     |     |     |
-| Candidate | LanguageUse | A description of how the language is used (e.g. Home Language, Native Language, Spoken Language). |     |     |     |     |
-| Candidate | LimitedEnglishProficiency | Indicates whether the individual has been identified as limited English proficient (LEP) by the Language Proficiency Assessment Committee (LPAC), or is English proficient. |     |     |     |     |
-| Candidate | Locale | A general geographic indicator that categorizes U.S. territory (e.g., City, Suburban). |     |     |     |     |
-| Candidate | OtherNameType | The types of alternate names for an individual. |     |     |     |     |
+| EducatorPreparationProgram | GradeLevel | The grade levels served at the educator preparation program. | Orthodox | Yes | Yes |     |
+| Candidate | Language | A specification of which written or spoken communication is being used. | Orthodox | Yes | Yes | Yes |
+| Candidate | LanguageUse | A description of how the language is used (e.g. Home Language, Native Language, Spoken Language). | Orthodox |     |     |     |
+| Candidate | LimitedEnglishProficiency | Indicates whether the individual has been identified as limited English proficient (LEP) by the Language Proficiency Assessment Committee (LPAC), or is English proficient. | Standard | Yes | Yes | Yes |
+| Candidate | Locale | A general geographic indicator that categorizes U.S. territory (e.g., City, Suburban). | Standard |     |     |     |
+| Candidate | OtherNameType | The types of alternate names for an individual. | Orthodox |     |     |     |
 | Candidate | PreviousCareer | The career previous for an individual. |     |     |     |     |
-| EducatorPreparationProgram | ProgramType | The type of program. |     |     |     |     |
-| Candidate | Race | The general racial category which most clearly reflects the individual's recognition of his or her community or with which the individual most identifies. The data model allows for multiple entries so that each individual can specify all appropriate races. |     |     |     |     |
+| EducatorPreparationProgram | ProgramType | The type of program. | Flexible | Yes | Yes | Yes |
+| Candidate | Race | The general racial category which most clearly reflects the individual's recognition of his or her community or with which the individual most identifies. The data model allows for multiple entries so that each individual can specify all appropriate races. | Standard |     |     |     |
 | CandidateEducatorPreparationProgramAssociation | ReasonExited | The reason exited for the association. |     |     |     |     |
-| Candidate | Sex | The sex of the person. |     |     |     |     |
+| Candidate | Sex | The sex of the person. | Standard |     |     |     |
 | CandidateRelationshipToStaffAssociation | StaffToCandidateRelationship | Defines the staff relationship to the candidate. |     |     |     |     |
-| Candidate | StateAbbreviation | The abbreviation for the name of the state (within the United States) or extra-state jurisdiction in which an individual was born. |     |     |     |     |
-| Candidate | TelephoneNumberType | The type of communication number listed for an individual or organization. |     |     |     |     |
+| Candidate | StateAbbreviation | The abbreviation for the name of the state (within the United States) or extra-state jurisdiction in which an individual was born. | Standard |     | Yes |     |
+| Candidate | TelephoneNumberType | The type of communication number listed for an individual or organization. | Standard |     |     |     |
 | CandidateEducatorPreparationProgramAssociation | Term | The term associated with the cohort year; for example, the intended term of graduation. |     |     |     |     |
-| Candidate | Visa |  An indicator of a non-US citizen's Visa type. |     |     |     |     |
+| Candidate | Visa |  An indicator of a non-US citizen's Visa type. | Standard |     |     |     |
 
 :::tip
 

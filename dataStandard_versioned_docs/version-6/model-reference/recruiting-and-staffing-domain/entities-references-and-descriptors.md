@@ -29,29 +29,29 @@ hide_table_of_contents: true
 
 | Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
-| ApplicantProfile <br /> Application | AcademicSubject | The academic subject for which the (HighNeeds) application is made, teaching field required, or "highly qualified" filed of the applicant. |     |     |     |     |
-| ApplicantProfile | AddressType | The type of address listed for an individual or organization. For example: (Physical Address, Mailing Address, Home Address, etc.) |     |     |     |     |
+| ApplicantProfile <br /> Application | AcademicSubject | The academic subject for which the (HighNeeds) application is made, teaching field required, or "highly qualified" filed of the applicant. | Local | Yes | Yes |     |
+| ApplicantProfile | AddressType | The type of address listed for an individual or organization. For example: (Physical Address, Mailing Address, Home Address, etc.) | Orthodox | Yes | Yes |     |
 | ApplicationEvent | ApplicationEventResult | The recommendation, result or conclusion of the application event. |     |     |     |     |
 | ApplicationEvent |ApplicationEventType | Description of the application event. |     |     |     |     |
 | Application | ApplicationSource | Specifies the source for the application. |     |     |     |     |
 | Application | ApplicationStatus | Indicates the current status of the application. |     |     |     |     |
-| Application | AssessmentReportingMethod | The method that the administrator of the assessment uses to report the performance and achievement of all students. It may be a qualitative method such as performance level descriptors or a quantitative method such as a numerical grade or cut score. More than one type of reporting method may be used. |     |     |     |     |
-| ProfessionalDevelopmentEventAttendance | AttendanceEventCategory | A code describing the attendance event.  |     |     |     |     |
+| Application | AssessmentReportingMethod | The method that the administrator of the assessment uses to report the performance and achievement of all students. It may be a qualitative method such as performance level descriptors or a quantitative method such as a numerical grade or cut score. More than one type of reporting method may be used. | Local | Yes | Yes |     |
+| ProfessionalDevelopmentEventAttendance | AttendanceEventCategory | A code describing the attendance event.  | Local | Yes | Yes |     |
 | ApplicantProfile | BackgroundCheckStatus | The status of the background check. |     |     |     |     |
 | ApplicantProfile | BackgroundCheckType | The type of background check. |     |     |     |     |
 | ApplicantProfile | CitizenshipStatus | An indicator of whether or not the person is a U.S. citizen. | Orthodox |     |     |     |
-| ApplicantProfile | Country | The name of the country. It is strongly recommended that entries use only ISO 3166 2-letter country codes. | Standard |     |     |     |
-| ApplicantProfile | Disability | A disability category that describes a individual's impairment.  | Orthodox |     |     |     |
-| ApplicantProfile | DisabilityDesignation | Whether the disability is IDEA, Section 504, or other disability designation.  | Orthodox |     |     |     |
-| ApplicantProfile | DisabilityDeterminationSourceType | The source that provided the disability determination. | Orthodox |     |     |     |
+| ApplicantProfile | Country | The name of the country. It is strongly recommended that entries use only ISO 3166 2-letter country codes. | Standard |     | Yes |     |
+| ApplicantProfile | Disability | A disability category that describes a individual's impairment.  | Orthodox | Yes | Yes |     |
+| ApplicantProfile | DisabilityDesignation | Whether the disability is IDEA, Section 504, or other disability designation.  | Orthodox |     | Yes |     |
+| ApplicantProfile | DisabilityDeterminationSourceType | The source that provided the disability determination. | Orthodox |     | Yes |     |
 | ApplicantProfile | ElectronicMailType | The type of email listed for an individual or organization. (For example: Home/Personal, Work, etc.) | Standard |     |     |     |
-| RecruitmentEventAttendance | GradeLevel | The set of grade levels for which the individual's assignment is responsible. | Orthodox |     |     |     |
-| ApplicantProfile |GradePointAverageType | The system used for calculating the grade point average for an individual. |     |     |     |     |
+| RecruitmentEventAttendance | GradeLevel | The set of grade levels for which the individual's assignment is responsible. | Orthodox | Yes | Yes |     |
+| ApplicantProfile |GradePointAverageType | The system used for calculating the grade point average for an individual. | Standard |     |     |     |
 | Application | HireStatus | Indicates the current status of the application for hire. |     |     |     |     |
 | Application | HireStatus | The source for the application. |     |     |     |     |
-| ApplicantProfile | Language | A specification of which written or spoken communication is being used. | Orthodox |     |     |     |
+| ApplicantProfile | Language | A specification of which written or spoken communication is being used. | Orthodox | Yes | Yes | Yes |
 | ApplicantProfile | LanguageUse | A description of how the language is used (e.g. Home Language, Native Language, Spoken Language). | Orthodox |     |     |     |
-| ApplicantProfile | LevelOfEducation | The extent of formal instruction an individual has received. |     |     |     |     |
+| ApplicantProfile | LevelOfEducation | The extent of formal instruction an individual has received. | Orthodox |     |     |     |
 | ApplicantProfile | Locale | A general geographic indicator that categorizes U.S. territory (e.g., City, Suburban). | Standard |     |     |     |
 | ProfessionalDevelopmentEvent | ProfessionalDevelopmentOfferedBy | A code describing an organization that is offering a specific professional development. |     |     |     |     |
 | ApplicantProfile | Race | The general racial category which most clearly reflects the individual's recognition of his or her community or with which the individual most identifies. The way this data element is listed, it must allow for multiple entries so that each individual can specify all appropriate races. | Standard |     |     |     |
@@ -59,8 +59,8 @@ hide_table_of_contents: true
 | RecruitmentEvent | RecruitmentEventType | The type of event. |     |     |     |     |
 | Application | ResultDatatypeType | The datatype of the result. The results can be expressed as a number, percentile, range, level, etc. |     |     |     |     |
 | ApplicantProfile | Sex | A person's birth sex. | Standard |     |     |     |
-| ApplicantProfile | StateAbbreviation | The abbreviation for the state (within the United States) or outlying area in which an address is located. | Standard |     |     |     |
-| ApplicantProfile | StudentCharacteristic | The characteristic designated for the student applicant. |     |     |     |     |
+| ApplicantProfile | StateAbbreviation | The abbreviation for the state (within the United States) or outlying area in which an address is located. | Standard |     | Yes |     |
+| ApplicantProfile | StudentCharacteristic | The characteristic designated for the student applicant. | Local |     |     |     |
 | ApplicantProfile | TelephoneNumberType | The type of communication number listed for an individual or organization. | Standard |     |     |     |
 | Application <br /> ApplicationEvent | Term | Defines the intended term of enrollment for which the application is being submitted, or session during the school year. |     |     |     |     |
 | ApplicantProfile | Visa | An indicator of a non-US citizen's Visa type. | Standard |     |     |     |
