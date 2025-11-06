@@ -124,7 +124,7 @@ named **EdFi.OdsApi.Sdk.sln** will be created with the SDK artifacts.
 
 1. **Open** the generated EdFi.OdsApi.Sdk.sln in Visual Studio.
 2. **Download** the sample Console Application project and place it in your
-    solution directory. The download link is in the panel on the right.
+    solution directory. The download link is in the panel on the bottom.
 3. In the **Solution Explorer,** **right-click** on the solution and add a
     reference to the sample project that you downloaded in the previous step.
 4. **Right-click** on **Edfi.OdsApi.SdkClient** \> **Set as Startup Project**.
@@ -136,7 +136,7 @@ named **EdFi.OdsApi.Sdk.sln** will be created with the SDK artifacts.
     launch profiles UI** and set the command line arguments that will be used
     while debugging the application. Use the template below. For this example
     you can use our hosted sandbox environment; the URL, client key and secret
-    are in the Downloads panel on the right.
+    are in the Downloads panel on the bottom.
 
     ```powershell
     --url <ODS API Base URL> --key <client key> --secret <client secret>
