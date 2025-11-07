@@ -14,6 +14,7 @@ hide_table_of_contents: true
 | CommunityProvider | This entity represents an educational organization that includes staff and students who participate in classes and educational activity groups. |
 | CommunityProviderLicense | The legal document held by the CommunityProvider that authorizes the holder to perform certain functions and or services. |
 | EducationOrganization | This entity represents any public or private institution, organization, or agency that provides instructional or support services to students or staff at any level. |
+| EducationOrganizationIdentificationCode | This entity holds different identity codes for an education organization. |
 | EducationOrganizationNetwork | This entity is a self-organized membership network of peer-level education organizations intended to provide shared services or collective procurement. |
 | EducationOrganizationNetworkAssociation | Properties of the association between the EducationOrganization and its network(s). |
 | EducationOrganizationPeerAssociation | The association from an education organization to its peers. |
