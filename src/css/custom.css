@@ -183,11 +183,6 @@ table, .table {
   background-color: var(--ifm-table-stripe-background);
 }
 
-.col--th {
-  background-color: var(--ifm-color-secondary);
-  font-weight: var(--ifm-font-weight-bold);
-}
-
 .col--tr {
   background-color: var(--ifm-table-background);
 }
@@ -776,12 +771,6 @@ nav.navbar .navbar__items--right {
 .edfi-doc-item table {
   margin-bottom: 2rem;
   text-align: left;
-}
-
-.edfi-doc-item table th,
-.edfi-doc-item table td {
-  color: var(--ifm-font-color-base);
-  font-weight: 400;
 }
 
 .edfi-doc-item table thead tr {
