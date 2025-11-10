@@ -31,13 +31,13 @@ hide_table_of_contents: true
 | Person | The person whose performance is being evaluated. |
 | Section | The section associated with a classroom evaluation. |
 
-## Path Domain Descriptors
+## Performance Evaluation Domain Descriptors
 
 | Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
 | PerformanceEvaluation | AcademicSubject | The description of the content or subject area of the performance evaluation. | Local | Yes | Yes |     |
 | PerformanceEvaluationRating | CoteachingStyleObserved | A type of co-teaching observed as part of the performance evaluation. | Standard |     |     |     |
-| EvaluationElementRating | EvaluationElementRatingLevel | The rating level achieved based upon the rating or score. | Flexibile |     |     |     |
+| EvaluationElementRating | EvaluationElementRatingLevel | The rating level achieved based upon the rating or score. | Flexible |     |     |     |
 | PerformanceEvaluation | EvaluationPeriod | The period for the evaluation. | Orthodox |     |     |     |
 | EvaluationRating | EvaluationRatingLevel | The rating level achieved based upon the rating or score. | Flexible |     |     |     |
 | EvaluationRating | EvaluationRatingStatus | The status of the performance evaluation. | Standard |     |     |     |

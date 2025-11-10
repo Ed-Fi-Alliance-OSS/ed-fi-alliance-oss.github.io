@@ -1,6 +1,6 @@
 # Credential Domain
 
-The Credential Domain for the Educator Preparation Data Model, provides background and rationale, and provides guidance for its application in the field.
+The Credential Domain provides background, rationale, and provides guidance for its application in the field.
 
 * [Credential - Overview](./overview.md)
 * [Credential - Model Diagrams](./model-diagrams.md)

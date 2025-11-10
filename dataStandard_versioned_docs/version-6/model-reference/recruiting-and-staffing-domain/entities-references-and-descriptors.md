@@ -29,10 +29,10 @@ hide_table_of_contents: true
 
 | Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
-| ApplicantProfile <br /> Application | AcademicSubject | The academic subject for which the (HighNeeds) application is made, teaching field required, or "highly qualified" filed of the applicant. | Local | Yes | Yes |     |
+| ApplicantProfile <br /> Application | AcademicSubject | The academic subject for which the (HighNeeds) application is made, teaching field required, or "highly qualified" field of the applicant. | Local | Yes | Yes |     |
 | ApplicantProfile | AddressType | The type of address listed for an individual or organization. For example: (Physical Address, Mailing Address, Home Address, etc.) | Orthodox | Yes | Yes |     |
 | ApplicationEvent | ApplicationEventResult | The recommendation, result or conclusion of the application event. |     |     |     |     |
-| ApplicationEvent |ApplicationEventType | Description of the application event. |     |     |     |     |
+| ApplicationEvent | ApplicationEventType | Description of the application event. |     |     |     |     |
 | Application | ApplicationSource | Specifies the source for the application. |     |     |     |     |
 | Application | ApplicationStatus | Indicates the current status of the application. |     |     |     |     |
 | Application | AssessmentReportingMethod | The method that the administrator of the assessment uses to report the performance and achievement of all students. It may be a qualitative method such as performance level descriptors or a quantitative method such as a numerical grade or cut score. More than one type of reporting method may be used. | Local | Yes | Yes |     |
@@ -46,9 +46,9 @@ hide_table_of_contents: true
 | ApplicantProfile | DisabilityDeterminationSourceType | The source that provided the disability determination. | Orthodox |     | Yes |     |
 | ApplicantProfile | ElectronicMailType | The type of email listed for an individual or organization. (For example: Home/Personal, Work, etc.) | Standard |     |     |     |
 | RecruitmentEventAttendance | GradeLevel | The set of grade levels for which the individual's assignment is responsible. | Orthodox | Yes | Yes |     |
-| ApplicantProfile |GradePointAverageType | The system used for calculating the grade point average for an individual. | Standard |     |     |     |
+| ApplicantProfile | GradePointAverageType | The system used for calculating the grade point average for an individual. | Standard |     |     |     |
 | Application | HireStatus | Indicates the current status of the application for hire. |     |     |     |     |
-| Application | HireStatus | The source for the application. |     |     |     |     |
+| Application | HiringSource | The source for the application. |     |     |     |     |
 | ApplicantProfile | Language | A specification of which written or spoken communication is being used. | Orthodox | Yes | Yes | Yes |
 | ApplicantProfile | LanguageUse | A description of how the language is used (e.g. Home Language, Native Language, Spoken Language). | Orthodox |     |     |     |
 | ApplicantProfile | LevelOfEducation | The extent of formal instruction an individual has received. | Orthodox |     |     |     |

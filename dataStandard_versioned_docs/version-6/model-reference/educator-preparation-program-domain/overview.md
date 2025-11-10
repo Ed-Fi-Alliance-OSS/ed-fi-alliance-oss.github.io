@@ -18,15 +18,6 @@ This domain contains:
     course of study, completion of which signifies a candidate will have met all
     requirements necessary to obtain a certification or licensure to teach
     within K-12 schools.
-* The PerformanceEvaluation entity and related entities that Educator
-    Preparation Programs (EPPs) can use to capture performance data about
-    Candidates and Staff teachers to drive the analysis of effectiveness and
-    improvement.
-* An expansion to the Credential entity which uses the early-access person
-    entity to associate to a credential, so any person-role (e.g., Student,
-    Candidate) can be associated with a credential.
-* An expansion to the Survey entity and related entities to support survey
-    requirements that are a cornerstone of most EPP implementations.
 
 ## Key Concepts
 

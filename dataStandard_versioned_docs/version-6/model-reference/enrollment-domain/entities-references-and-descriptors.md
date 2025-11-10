@@ -37,7 +37,7 @@ hide_table_of_contents: true
 | Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
 | GraduationPlan | AcademicSubject | The intended major subject area of the graduation requirement. | Local |     |     |     |
-| School | AccreditationStatus | The accreditation status for an education preparation provider. | Sandard |     |     |     |
+| School | AccreditationStatus | The accreditation status for an education preparation provider. | Standard |     |     |     |
 | EducationOrganization | AddressType | The type of address listed for an individual or organization. (For example:  Physical Address, Mailing Address, Home Address, etc.) |     |     |     |     |
 | School | AdministrativeFundingControl | The type of education institution as classified by its funding source, for example public or private. |     |     |     |     |
 | FinancialAid  | AidType | The classification of financial aid awarded to a person for the academic term/year. | Orthodox |     |     |     |
