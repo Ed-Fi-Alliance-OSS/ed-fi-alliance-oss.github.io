@@ -62,7 +62,7 @@ hide_table_of_contents: true
 | Person | SourceSystem | This descriptor defines the originating record source system for the person. | Local |     |     |     |
 | Contact <br /> StudentDemographic | StateAbbreviation | The abbreviation for the state (within the United States) or outlying area in which an address is located. | Standard |     |     |     |
 | StudentDemographic | StudentCharacteristic | The characteristic designated for the student. | Local |     |     |     |
-| StudentIdentificationCode | StudentIdentificationSystem | A coding scheme that is used for identification and record-keeping purposes by schools, LEAs, SEAs, or other agencies refer to a student. | Orthodox |     |     |     |
+| StudentIdentificationCode | StudentIdentificationSystem | A coding scheme that is used for identification and record-keeping purposes by schools, LEAs, SEAs, or other agencies to refer to a student. | Orthodox |     |     |     |
 | StudentDemographic | SupporterMilitaryConnection | Military connection of the person/people whom the student is a dependent of. | Standard |     |     |     |
 | Contact <br /> StudentDemographic | TelephoneNumberType | The type of communication number listed for an individual or organization. | Standard |     |     |     |
 | StudentEducationOrganizationAssociation | Term | The term associated with the cohort year; for example, the intended term of graduation. |     |     |      |     |

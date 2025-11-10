@@ -97,7 +97,7 @@ hide_table_of_contents: true
 | StaffDemographic | Sex | The Staff's birth sex as reported to the education organization. | Standard |     |     |     |
 | Person | SourceSystem | This descriptor defines the originating record source system for the person. |     |     |     |     |
 | OpenStaffPosition <br /> StaffEducationOrganizationAssignmentAssociation | StaffClassification | The titles of employment, official status, or rank of education staff. | Flexible |     |     |     |
-|StaffIdentificationCode | StaffIdentificationSystem | A coding scheme that is used for identification and record-keeping purposes by schools, LEAs, SEAs, or other agencies refer to a staff member | Orthodox |     |     |     |
+|StaffIdentificationCode | StaffIdentificationSystem | A coding scheme that is used for identification and record-keeping purposes by schools, LEAs, SEAs, or other agencies to refer to a staff member | Orthodox |     |     |     |
 | StaffLeave | StaffLeaveEventCategory | The code describing the type of leave taken. | Orthodox |     |     |     |
 | EducationOrganization <br /> StaffDirectory | StateAbbreviation | The abbreviation for the state (within the United States) or outlying area in which an address is located. | Standard |     |     |     |
 | Credential | StateOfIssueStateAbbreviation | The abbreviation for the name of the state (within the United States) or extra-state jurisdiction in which a license/credential was issued. | Standard |     |     |     |

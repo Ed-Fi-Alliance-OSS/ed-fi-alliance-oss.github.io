@@ -63,7 +63,7 @@ hide_table_of_contents: true
 | LocalEducationAgency | SchoolChoiceImplementStatus | An indication of whether the LEA was able to implement the provisions for public school choice under Title I, Part A, Section 1116 of ESEA as amended. | Standard |     |     |     |
 | School | SchoolType | The type of education institution as classified by its primary focus. | Standard | Yes | Yes |     |
 | EducationOrganization | StateAbbreviation | The abbreviation for the state (within the United States) or outlying area in which an address is located. | Standard |     | Yes |     |
-| School | TitleIPartADesignation | | Standard | Yes | Yes |     |
+| School | TitleIPartADesignation | Denotes the Title I Part A designation for the school. | Standard | Yes | Yes |     |
 
 :::tip
 
