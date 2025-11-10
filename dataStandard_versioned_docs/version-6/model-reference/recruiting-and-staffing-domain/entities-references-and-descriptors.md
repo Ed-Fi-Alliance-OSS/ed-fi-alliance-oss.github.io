@@ -65,3 +65,11 @@ hide_table_of_contents: true
 | Application <br /> ApplicationEvent | Term | Defines the intended term of enrollment for which the application is being submitted, or session during the school year. |     |     |     |     |
 | ApplicantProfile | Visa | An indicator of a non-US citizen's Visa type. | Standard |     |     |     |
 | Application | WithdrawReason | Reason applicant withdrew application. |     |     |     |     |
+
+:::tip
+
+See [Non-normative Descriptor
+Classifications](/reference/data-exchange/technical-articles/non-normative-descriptor-classifications)
+for more information on _Usage Classification_.
+
+:::

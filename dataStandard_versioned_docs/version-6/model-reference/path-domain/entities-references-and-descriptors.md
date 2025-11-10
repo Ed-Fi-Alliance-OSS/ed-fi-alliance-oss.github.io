@@ -31,3 +31,11 @@ hide_table_of_contents: true
 | StudentPathMilestoneStatus | PathMilestoneStatus | The student's status associated with the path milestone. |     |     |     |     |
 | PathMilestone | PathMilestoneType | The type of milestone defined for the student's path of study. |     |     |     |     |
 | StudentPathPhaseStatus | PathPhaseStatus | An event recognizing the change in status for the path phase. |     |     |     |     |
+
+:::tip
+
+See [Non-normative Descriptor
+Classifications](/reference/data-exchange/technical-articles/non-normative-descriptor-classifications)
+for more information on _Usage Classification_.
+
+:::

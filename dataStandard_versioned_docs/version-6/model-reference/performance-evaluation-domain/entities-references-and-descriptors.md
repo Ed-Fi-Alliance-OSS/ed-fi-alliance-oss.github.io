@@ -52,3 +52,11 @@ hide_table_of_contents: true
 | EvaluationElementRating <br /> EvaluationObjectiveRating <br /> EvaluationRating <br /> PerformanceEvaluationRating <br /> | ResultDatatypeType | The datatype of the rating result. | Orthodox |     |     | Yes |
 | RubricDimension | RubricRatingLevel | The rating level achieved for the rubric dimension. | Flexible |     |     |     |
 | PerformanceEvaluation | Term | The term for the session during the school year. | Flexible |     |     |     |
+
+:::tip
+
+See [Non-normative Descriptor
+Classifications](/reference/data-exchange/technical-articles/non-normative-descriptor-classifications)
+for more information on _Usage Classification_.
+
+:::

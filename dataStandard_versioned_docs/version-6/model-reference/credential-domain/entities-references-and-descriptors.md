@@ -48,3 +48,11 @@ hide_table_of_contents: true
 | Credential | StateAbbreviation | The abbreviation for the name of the state (within the United States) or extra-state jurisdiction in which a license/credential was issued. | Standard |     | Yes |     |
 | Credential | TeachingCredential | An indication of the category of a legal document giving authorization to perform teaching assignment services. | Orthodox |     |     |     |
 | Credential | TeachingCredentialBasis | An indication of the pre-determined criteria for granting the teaching credential that a person holds. | Orthodox |     |     |     |
+
+:::tip
+
+See [Non-normative Descriptor
+Classifications](/reference/data-exchange/technical-articles/non-normative-descriptor-classifications)
+for more information on _Usage Classification_.
+
+:::
