@@ -23,7 +23,7 @@
     Retrieves specific certification exams using property values.
 * `POST /ed-fi/certificationExams`
     Creates or updates the certification exams based on natural key values.
-* `GET /ed-fi/certificationExams/{id}}`
+* `GET /ed-fi/certificationExams/{id}`
     Retrieves a specific examination by ID.
 * `PUT /ed-fi/certificationExams/{id}`
     Updates a specific examination by ID.
@@ -56,7 +56,7 @@
 * `DELETE /ed-fi/credentialEvents/{id}`
     Deletes a specific credential event by ID.
 
-### Educator Preparation Program Domain Additions
+### Educator Preparation Program Domain (NEW)
 
 #### candidate
 
@@ -84,7 +84,7 @@
 * `DELETE /ed-fi/CandidateEducatorPreparationProgramAssociations/{id}`
     Deletes a specific candidate educator preparation program association event by ID.
 
-#### candidateEducatorRelationshipToSTaffAssociation
+#### candidateEducatorRelationshipToStaffAssociation
 
 * `GET /ed-fi/candidateRelationshipToStaffAssociations`
     Retrieves specific candidate relationship to staff associations using property values.
@@ -428,7 +428,7 @@
 * `DELETE /ed-fi/surveySectionAggregateResponses/{id}`
     Deletes a specific survey section aggregate response score by ID.
 
-### Recruitment And Staffing Domain Additions
+### Recruitment And Staffing Domain (New)
 
 #### application
 
