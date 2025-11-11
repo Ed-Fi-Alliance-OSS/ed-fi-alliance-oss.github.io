@@ -6,11 +6,10 @@ sidebar_position: 1
 
 ## Key Entities
 
-This domain contains:
-
-* Application
-* RecruitmentEvent
+_Coming Soon_
 
 ## Key Concepts
 
 The key concepts include the following:
+
+_Coming Soon_
