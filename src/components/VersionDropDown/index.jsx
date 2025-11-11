@@ -30,7 +30,7 @@ const odsApi = [
 
 const dataStandard = [
   {
-    path: '/reference/data-exchange/data-standard',
+    path: '/reference/data-exchange/data-standard/',
     number: '6 (Current)',
   },
   {
