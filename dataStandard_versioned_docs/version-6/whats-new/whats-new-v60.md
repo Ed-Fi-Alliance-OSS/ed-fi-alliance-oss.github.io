@@ -1,102 +1,98 @@
 # What's New - v6.0
 
-:::warning
-
-Release on Nov. 14, 2025.
-
-:::
+Release Date: Nov. 14, 2025.
 
 ## Overview
 
-Data Standard v6.0 introduces a series of structural and semantic enhancements aimed at improving data clarity and interoperability, and at reducing update burden.  Data Standard v6.0 contains a series of breaking changes, and is targeted for deployment starting in the 2026-27 school year.  There are 5 major significant changes.
+Data Standard v6.0 delivers significant structural and semantic enhancements designed to improve data clarity, interoperability, and reduce update burden across implementations. This release introduces breaking changes and is targeted for deployment beginning in the 2026–27 school year.
 
-* Mainly, we remove the demographics and Contact information from the  SEOA into separate entities, creating new domain entities for Student and staff contact and demographics.  Please note that This final release version (v5.0.0) introduces important updates that
-impact multiple domains of the Ed-Fi data model. The domains impacted include:
+Community benefits:
+
+* Reduced Update Burden in StudentEducationOrganizationAssociation--SEOA.
+* Improved Handling of Multiple or Alternative Identifiers.
+* Enhanced Assessment model to better support data collection and logic for Assessment dashboards.  These changes originated from initiatives in South Carolina, integrating over thirty assessments, and are broadly beneficial for other states.
+* Expanded core model coverage for Educator preparator use cases and ongoing updates to related entities.
+* Partial handling of Special Education Program events.
+
+Following reviews by state agencies, SIS and assessment vendors, and feedback from RFC 27 (a, b, c), the following updates were implemented to the Data Standard model in 6.0:
+
+* Demographic and contact information were decoupled from the SEOA.
+* New demographic and directory entities were created for students and staff.  The directory entities contain properties that provide contact information about a student or staff.  This is different than the contact entity which contains parent or representative information.
+* The demographic and directory attributes were DELETED from the SEOA and added to the NEW DOMAIN ENTITIES. Note: these specific attributes were not deprecated from the SEOA to avoid redundancy.
+* New Optional Identity entities were introduced to better manage multiple identifiers for the same individual. New identity entities were created for students, staff, contact, candidate, and educationorganization.
+* The use of IdentificationCode commons in EducationOrganization, SEOA, and Staff was updated.
+* The Assessment, ObjectiveAssessment and StudentAssessment entities were revised (no changes to Identities).
+* The EPDM community extensions were moved into Core.  To these effects, new domains were created to support the EPDM related domain entities and descriptors.  Other domains such as Candidate, Survey were updated with EPDM-related entities and descriptors.
+
+Domains impacted:
 
 * Assessment
 * Student Identification and Demographics Domain
-* With the transfer of EPDM (formerly known as TPDM) into core, the following domains are impacted:
 * Credential Domain (new)
-* Educator Preparation Program Domain (new)
+* Educator Preparator Domain (new)
 * Path Domain (new)
 * Performance Evaluation Domain (new)
 * Recruiting and Staffing Domain (new)
 * Staff Domain
 * Enrollment Domain
-*
-* Survey Domain ?
-* Teaching and Learning Domain ?
-
-The major changes originate from supporting obligations with the community (moving EPDM into Core), receiving field feedback to reduce the burden with the StudentEducationOrganizationAssociation (SEOA) and to enable better logic connecting the Assessment dashboards.
-
-Other areas minor improvements are also listed  below.
+* Survey Domain
+* Teaching and Learning Domain
+* Candidate
 
 ## Major Changes
 
-### Split of StudentEducationOrganizationAssociation (SEOA)
+### Split of StudentEducationOrganizationAssociation (SEOA) and new Identity entities
 
-Demographic and contact data have been decoupled from SEOA.  Therefore, we created
-New dedicated entities for students and staff demographics and contact information improve clarity and reduce update complexity.
+The following tables show changes in the SEOA from DS 5.2 to DS 6.0, and the new related entities in 6.0:
 
-1. New IdentificationCode Entities
+* Changes to the SEOA:
 
-Introduction of Identity entities for managing multiple or alternative identifiers.
-Applies to students, staff, contacts, candidates, and education organizations.
+|Property | In DS 5.x | In DS 6.0 |
+| --- | --- | --- | --- |
+| StudentIdentificationCode | part of SEOA |indicate change to IdentificationCode  |
+|StudentIndicator |part of the SEOA | Part of the SEOA |
+|Sex | part of the SEOA | Not in the SEOA|
+|GenderIdentity | part of the SEOA | Not in the SEOA|
+|Address |part of the SEOA | Not in the SEOA |
+|InternationalAddress |part of the SEOA | Not in the SEOA |
+| | |  |
 
-2. New Demographic Entities
+* New entities created:
+Student Demographic
+Staff Demographic
+StudentDirectory
+StaffDirectory
+StudentIdentificationCode
+StaffIdentificationCode
+CandidateIdentificationCode
+ContactIdentificationCode
+EducationOrganizationIdentificationCode
 
-Creation of standalone demographic entities for individuals, enhancing modularity and reducing redundancy.
-
-3. New Directory Entities
-
-Creation of standalone entities with contact information, such as ....  THese entities are named as directory to differentiate from contact entities that refer to parents or guardians.
+Details for these changes are found in [Ed-Fi RFC 27b](https://edfi.atlassian.net/wiki/spaces/rc/pages/998375429/Ed-Fi+RFC+27+b+-+Streamlining+Access+to+Identification+Codes+Contact+Information+and+Demographics)
 
 ### Assessment Model Changes
 
-4. Assessment Model Changes
+There were 5 key changes done to assessments:
 
-Significant updates to the assessment model to improve structure and usability (details typically found in RFC 27c).
+* Assessment.academicSubject changed from Required Descriptor to Required Single Attribute.
+* StudentAssessment.SchoolYear changed from Optional to Required
+* StudentAssessment.AssessedGradeLevel (Optional Descriptor -not a collection) was added to indicate the grade level for which the test form was assessed for the student during the administration. Note: StudentAssessment.WhenAssessedGradeLevel (Optional Descriptor) remains to represent the student’s actual grade level at the time of assessment.
+* StudentAssessment.StudentAssessmentIndicator - new optional collection was added to capture vendor-specific context unrelated to scores.  This eliminates the need to misuse assessmentReportingMethodDescriptors or scoreResults for non-score flags.
+* ObjectiveAssessment.ParentObjectiveAssessment changed from Optional to Optional Collection.  This allows for an objective assessment to be linked to multiple parent objective assessments.
 
-5. Migration from TPDM to Core Entities
+Details for these changes are found in [Ed-Fi RFC 27c](https://edfi.atlassian.net/wiki/spaces/rc/pages/1229094913/Ed-Fi+RFC+27+c+-+Assessment+Model+Changes)
 
-Select entities from TPDM have been moved into the Core Ed-Fi data standard, promoting consistency and broader applicability.
+### Migration from EPDM to Core Entities
 
-| Property | Cardinality | Definition |
-| --- | --- | --- |
-| EducationOrganization | required | Indicates the education organization where the student was evaluated for special education services.  This could be a school or a district. |
-| Student | required | Student who is evaluated by a Local Education Agency or a School.  This is often their resident district.  Students could be enrolled or unenrolled or private schooled or home schooled. |
-| Program | required | Indicates the program that the student is being evaluated for.  Example Value - 'Special Education Program' |
-| ConsentToEvaluationReceivedDate | required | Indicates the date on which the Local Education Agency received written consent for the evaluation from the student's parent.  This is the first day of the evaluation timeframe. |
-| OriginalECIServicesDate | optional | The month, date, and year when an infant or toddler, from birth through age 2, began participating in the early childhood intervention (ECI) program |
-| IDEAPart | required | Indicates if the evaluation is done under Part B IDEA or Part C IDEA |
-| ConsentToEvaluationDate | optional | The date on which the student's parent gave a consent (Parent Consent Date). |
-| EvaluationCompleteIndicator | optional | Indicates the evaluation completed status.  Example Value - 'True' or 'False' |
-| EligibilityEvaluationDate | optional | Indicates the month, day, and year when the written individual evaluation report was completed. |
-| EligibilityEvaluationType | required | Indicates if this is an initial or reevaluation. |
-| EvaluationDelayReason | optional | Refers to the justification as to why the evaluation report was completed beyond the State-established timeframe.  This is a descriptor field and will have allowed reasons as descriptor values. |
-| EvaluationLateReason | optional | Refers to additional information for delay in doing the evaluation.  This is a free flow text. |
-| EvaluationDelayDays | optional | Indicates the number of student absences, if any, beginning the first instructional day following the date on which the Local Education Agency (LEA) received written parental consent for the evaluation. |
-| EligibilityDeterminationDate | optional | Indicates the month, day, and year the LEA held the admission, review, and dismissal committee meeting regarding the child's eligibility determination for special education and related services. An individualized education plan (IEP) would be developed and implemented for a child admitted into special education on this same date |
-| IDEAIndicator | optional | Indicates whether or not the student was determined eligible a result of an evaluation. |
-| EligibilityDelayReason | optional | The reason why the eligibility determination was completed beyond the required timeframe |
-| TransitionNotificationDate | optional | Indicates the month, day, and year the LEA Notification of Potentially Eligible for Special Education Services was sent by the early childhood intervention (ECI) contractor to the local education agency (LEA) to notify them that a child enrolled in ECI will shortly reach the age of eligibility for Part B services and the child is potentially eligible for services under Part B, early childhood special education (ECSE). The LEA Notification constitutes a referral to the LEA for an initial evaluation and eligibility determination of the child which the parent may opt out from the referral. |
-| TransitionConferenceDate | optional | Indicates the month, day, and year when the transition conference was held (for a child receiving early childhood intervention (ECI) services) among the lead agency, the family, and the LEA where the child resides to discuss the child’s potential eligibility for early childhood special education (ECSE) services. |
-| EligibilityConferenceDate | optional | The month, day, and year when the eligibility conference is held between the parent(s)/guardian(s) and the educational organization responsible staff member(s) to review and make decision on special education related services eligibility. |
-
-More details can be found in the [related](https://tracker.ed-fi.org/browse/DATASTD-1898)
-[ticket](https://tracker.ed-fi.org/browse/DATASTD-1898) and the [ED-FI WORKING](https://edfi.atlassian.net/wiki/display/EFDSDRAFT/ED-FI+WORKING+DRAFT+8+-+SPECIAL+EDUCATION+PROGRAM+ELIGIBILITY+MODEL)
-[DRAFT](https://edfi.atlassian.net/wiki/display/EFDSDRAFT/ED-FI+WORKING+DRAFT+8+-+SPECIAL+EDUCATION+PROGRAM+ELIGIBILITY+MODEL)
-[8](https://edfi.atlassian.net/wiki/display/EFDSDRAFT/ED-FI+WORKING+DRAFT+8+-+SPECIAL+EDUCATION+PROGRAM+ELIGIBILITY+MODEL).
+Entities and descriptors from EPDM community have been moved into the Core Ed-Fi data standard, promoting consistency and broader applicability.
 
 #### Updates on Special Education Program Association
 
-[DATASTD-2105](https://tracker.ed-fi.org/browse/DATASTD-2105)
+[DATASTD-](link)
 
-Ed-Fi Alliance's collaborative work with the SEAs through and after the SpEd SIG
-has yielded a decision for adding three new optional attributes to the Student
+New optional attributes to the Student
 Special Education Program Association to allow the community members collect
-data for the program exit date of the student and the short and long explanation
-for the reason(s) of this exit. The additional attributes are listed below.
+data related to events.
 
 | Property | Cardinality | Definition |
 | --- | --- | --- |
@@ -104,338 +100,33 @@ for the reason(s) of this exit. The additional attributes are listed below.
 | SpecialEducationExitReason | optional | The reason why a person stops receiving special education services. |
 | SpecialEducationExitExplained | optional | Explanation on why a person stops receiving special education services. |
 
-The SpecialEducationExitExplained attribute is designed to be used for data
-collection where the long explanation of reason(s) of student's exit from the
-Special Education program where SpecialEducationExitReason is designed as a
-descriptor to capture the short explanation/categorization of the exit reason.
-Ed-Fi Alliance listed seven predetermined categories for this descriptor and -
-as usual feature of descriptors in the model - left the adjustments of these
-categories to the community members for more specific and suitable usage of each
-educational agents.
-
 ### Adding Student Program Evaluation
-
-[DATASTD-1906](https://tracker.ed-fi.org/browse/DATASTD-1906)
-
-A new model for the Student Program Evaluation data domain in the Ed-Fi data
-standard has been created to address multiple state agencies' needs to keep
-track of student program evaluation data. These needs mainly stems from the
-Early Child education program performance tracking of states Wisconsin,
-Minnesota and Indiana as well as the 21st CCLC programs implemented in Arizona.
-For these programs Ed-Fi community member states indicated that a student
-program evaluation model would provide them benefits in
-
-Demonstrating program effectiveness: Program evaluation data can be used to
-demonstrate the effectiveness of educational programs to stakeholders,
-including funders, accrediting bodies, and policymakers. The data can be
-used to show the impact of the program on student outcomes, such as
-graduation rates, academic performance, and career success.
-
-Improving student engagement and satisfaction: Student program evaluation
-data can provide insights into student engagement and satisfaction with the
-program. By using this data, educators can make changes to improve the
-student experience and increase engagement and satisfaction.
-
-Identifying areas of improvement: Student program evaluation data provides
-valuable insights into areas where programs are succeeding and where they
-need improvement. By analyzing the data, educators and administrators can
-identify specific areas that require attention and make changes to better
-serve their students.
-
-Ensuring accountability: Tracking program evaluation data can help ensure
-accountability for educational institutions and programs. By regularly
-collecting and analyzing data, educators and administrators can identify
-areas where they may not be meeting their goals and take action to address
-these issues.
-
-The proposed domain model for the Student Program Evaluation data domain aims to
-capture the child outcomes indicator for early childhood evaluations as well as
-students' performance in programs. The model includes entities such as
-StudentProgramEvaluation, ProgramEvaluation, ProgramEvaluationObjective,
-ProgramEvaluationElement, EvaluationRubricDimension. These entities are related
-to each other to provide insights into the effectiveness of programs and help in
-making data-driven decisions. This model can also accommodate other evaluation
-types and can be extended to accommodate additional entities and relationships
-as needed.
-
-More details can be found in the [related](https://tracker.ed-fi.org/browse/DATASTD-1906)
-[ticket](https://tracker.ed-fi.org/browse/DATASTD-1906) and the [ED-FI WORKING](https://edfi.atlassian.net/wiki/display/EFDSDRAFT/ED-FI+WORKING+DRAFT+12+-+STUDENT+PROGRAM+EVALUATION+DOMAIN+MODEL)
-[DRAFT](https://edfi.atlassian.net/wiki/display/EFDSDRAFT/ED-FI+WORKING+DRAFT+12+-+STUDENT+PROGRAM+EVALUATION+DOMAIN+MODEL)
-[12](https://edfi.atlassian.net/wiki/display/EFDSDRAFT/ED-FI+WORKING+DRAFT+12+-+STUDENT+PROGRAM+EVALUATION+DOMAIN+MODEL).
-
-### Section Model Updates
-
-[DATASTD-1596](https://tracker.ed-fi.org/browse/DATASTD-1596)
-
-Section in the current model combines the aspects of scheduling of instruction
-in a course offering for students and teacher and students' attempted credits,
-grades and the responsible teacher/instructor they work with for that course
-offering.
-
-### Diversity, Equity and Inclusion Related Updates
-
-In 2022, Data Standard team along with some other members of the Ed-Fi
-technology team have received requests from the Ed-Fi community members for a
-discussion on a possible implementation of diversity, equity and inclusion (DEI)
-related topics and data collection. Following the prevalence assessment of the
-request, the Data Standard team established a DEI SIG based on Ed-Fi Governance
-policies so that the community members could guide the team through discussions
-in these group meetings on topics that are predetermined by Ed-Fi community
-members earlier or at these group meetings.
-
-A group of Ed-Fi community members were invited to participate, including local
-and state education agencies as well as members of some research institutes and
-other organizations that have shown a previous interest on the topic. The [Ed-Fi](https://edfi.atlassian.net/wiki/display/ESIG/DEI+Special+Interest+Group)
-[DEI](https://edfi.atlassian.net/wiki/display/ESIG/DEI+Special+Interest+Group)
-[SIG](https://edfi.atlassian.net/wiki/display/ESIG/DEI+Special+Interest+Group)
-was initiated with its first meeting in February. The group has completed three
-meetings with an achievement of fruitful discussions and completion of all
-topics that were pointed before and during the existence of the group. It is
-decided that the group will give the Ed-Fi Data Standard a time to internally
-discuss the guidance provided at these meetings and have a meeting or two later
-based on this internal process and for the possible additional topics during
-that time.
-
-Main topics discussed during DEI SIG meetings are as follow:
-
-* Renaming the Parent domain entity in the Ed-Fi model to have more inclusive
-    approach,
-* Adding Preferred First Name and Preferred Last Name in Name common,
-* Correcting the vocabulary confusions in the definition of Sex descriptor,
-* Considering adding a Gender Identity attribute to the model,
-* Considering to add Pronouns string in the model,
-* Keeping up with the developments on Race and Ethnicity Standards by U.S.
-    Office of Management and Budget Interagency Technical Working Group.
-
-Data standard team have taken these recommendations from the DEI SIG members and
-made necessary model changes to reflect these recommendations on to the Data
-Standard model after another serious discussions internally and other members of
-the Ed-Fi community. Ed-Fi is proud to report that the DEI SIG has been a grate
-success with its reflections on the model.
-
-#### Renaming Parent Domain Entity to Contact
-
-[DATASTD-1536](https://tracker.ed-fi.org/browse/DATASTD-1536)
-[DATASTD-1940](https://tracker.ed-fi.org/browse/DATASTD-1940)
-
-The topic was discussed by the DEI SIG at its first meeting based on the Ed-Fi
-community members' recommendation at the Technical Congress of 2022. The group
-had the consensus at the meeting which suggested that the term Parent that is
-used for this domain entity is not inclusive despite the fact that in the field
-of education the term Parent can be used very liberally. Group discussed if
-responsible adult, caregiver or another alternative will be a better fit. After
-this discussion responsible adult was ruled out since it is not inclusive either
-and data standard team was given the option to have an internal discussion to
-choose between contact or caregiver. Considering the currently available
-ContactType descriptor, the Data Standard team rename the Parent domain entity
-as Contact and downstream that change by updating the name and definition of
-StudentParentAssociation, SurveyResponce domain entity and
-StudentIdentificationAndDemographics domain.
-
-#### Adding Preferred First Name and Preferred Last Name to the Name Common
-
-[DATASTD-1948](https://tracker.ed-fi.org/browse/DATASTD-1948)
-
-Another topic the Data Standard team picked up from the DEI SIG discussion and
-had a conclusion on was the adding the Preferred First Name and Preferred Last
-Name. The DEI SIG discussed multiple use cases from the safety concerns of the
-persona subject to the use of different first and/or last name to the personal
-preference of using an English version or alternative names because of the
-pronunciation difficulties of none English names. Data Standard team found the
-recommended addition trivial and the argument with use cases convincing and
-followed group's recommendation by adding these two field in the Name common.
-
-#### Sex Descriptor Updates and Adding Gender Identity
-
-[DATASTD-1888](https://tracker.ed-fi.org/browse/DATASTD-1888)
-[DATASTD-1938](https://tracker.ed-fi.org/browse/DATASTD-1938)
-
-One of the longest conversations Data Standard team had with the community
-members with the guidance of the DEI SIG members was about the Sex descriptor
-and Gender Identity. As the result of theses conversation, Ed-Fi definition of
-the Sex descriptor and where it is collected has been updated and a new string
-variable to allow the community members to collect data on Gender Identity when
-they needed added to the core model with this release. More details about the
-issue can be tracked in the tickets attached here.
-
-### Removal of Previously Deprecated Elements
-
-[DATASTD-1944](https://tracker.ed-fi.org/browse/DATASTD-1944)
-
-The Data Standard team has the tradition of marking an element that is subject
-to removal form the Ed-Fi model as "Deprecated" once an element of the model
-becomes obsolete based on newly introduce updates in the model. Deprecation
-notices are visible in handbooks and UML diagrams.
-
-The purpose of the deprecation note is to inform the community members of intent
-to remove the element from the core model after giving the community members
-time for preparation. With this intend there has been numerous elements of the
-Ed-Fi model that have been marked as deprecated, but not removed.
-
-[DATASTD-1942](https://tracker.ed-fi.org/browse/DATASTD-1942)
-
-The Data Standard team conducted an assessment to find these elements in the
-model where their removal was recommended and formulated, but has not been
-performed yet. The assessment has shown that there are more than two dozens of
-such cases (from a Common to Domain Entity, Boolean to Shared Decimal) all of
-which were marked since the system upgrade from Suite 2 to Suite 3. The
-assessment has shown that most of the domains listed in the overview section has
-some of these elements.
-
-Based on this assessment results, the Data Standard team worked with other Ed-Fi
-technology team members not only to perform the removal of these elements but
-also to create a policy in guiding future removal. By doing so, Data Standard
-hopes to give the community members a better predictable updates in the model in
-this regard.
-
-The decision is to have these fields or other elements of the model to be
-removed at the second year of breaking changes following the version when the
-deprecation note would be introduced. It is also decided that the sample data
-for the element which is the subject of the removal will be removed from the
-data standard system at the same time when removal will be performed. These two
-practices of removal will be performed in consideration with the Break-Rest
-policy of data standard team (_or data standard release cadence_).
-
-Considering the current data standard release cadence (_Break-Break-Rest_) that
-started implementation with Data Standard v4.0 if an element is marked as
-deprecated in a Data Standard model that is introduced with the first breaking
-year of the cadence, the removal of that element will be performed in the first
-breaking year of the next cycle of the cadence. Similarly, if the deprecation
-mark was introduced in the second break year, the removal will be in the second
-breaking year of the next cycle. In this way, Ed-Fi community members will have
-three years to adopt their system for the removal of obsolete model elements
-assuming the continuity of the current release policy.
-
-### Changes on Student School Association
-
-[DATASTD-1939](https://tracker.ed-fi.org/browse/DATASTD-1939)
-
-As a part of state assessment of school funding process for the upcoming school
-it was reported by an Ed-Fi community member that some additional fields are
-needed as an optional data collection in the Ed-Fi model. Same community member
-also shared an extended use of SchoolChoice. Based on these recommendations Data
-Standard team implemented following updates on the StudentSchoolAssociation.
-
-* Adding
-  * NextYearSchool number,
-  * NextYearGradeLevel descriptor,
-  * SchoolChoice boolean,
-  * SchoolChoiceBasis descriptor,
-  * EnrollmentType descriptor,
-* Marking SchoolChoiceTransfer as deprecated to be removed from the model on
-    Data Standard v7.0 as suggested by the deprecated element removal policy
-    aligned with the Data Standard release cadence mentioned earlier.
-
-### Adding Grading Period Name
-
-[DATASTD-1919](https://tracker.ed-fi.org/browse/DATASTD-1919)
-
-It was brought to Ed-Fi Alliance's attention by some Student Information System
-(SIS) providers that GradingPeriod descriptor is not fulling their need in some
-use cases, specifically for those when SIS vendors need to create a unique
-grading period to match their data representation which is also better align
-with practices at the local level compared to the pre-defined grading periods by
-SEAs. To provide ease to the implementers and local educational agencies in
-their accurate data collection and a freedom that fits in their practices, Ed-Fi
-created GradingPeriodName as a required attribute in Grading Period entity. With
-this addition the definition of the GradingPeriod descriptor in the same entity
-has been updated to reflect that it is the naming pre-defined by the SEA and
-PeriodSequence attribute made optional instead of required.
 
 ## Minor Changes
 
-### Updates on EventDuration Field
+### Updates on XXX Field
 
-[DATASTD-1911](https://tracker.ed-fi.org/browse/DATASTD-1911)
+Description
 
-The documentation of the field in the Ed-Fi system has been updated to reflect
-that EventDuration is the amount of time as a decimal fraction for the event as
-recognized by the school. Minimum and Maximum value constraint are also added to
-the field.
+### Updates on XXX
 
-### Updates on LetterGradeEarned
+[DATASTD-XXX](https://tracker.ed-fi.org/browse/DATASTD-XXXX)
 
-[DATASTD-1912](https://tracker.ed-fi.org/browse/DATASTD-1912)
+Short description.
 
-Definition for the LetterGradeEarned has been updated and the Maximum length
-value is redefined as 64 instead of 20.
+### Updating XXX
 
-### Updating EarnedCredit as optional on CourseTranscript
+[DATASTD-XXX](https://tracker.ed-fi.org/browse/DATASTD-XXXX)
 
-[DATASTD-1934](https://tracker.ed-fi.org/browse/DATASTD-1934)
+Short description.
 
-The cardinality of the EarnedCredit on the CourseTranscript domain entity has
-updated from required to optional based on the feedback collected from Ed-Fi
-community members.
+### Update on XXX
 
-### Update on BeginDate in StaffSectionAssociation
+[DATASTD-XXXX](https://tracker.ed-fi.org/browse/DATASTD-XXX)
 
-[DATASTD-1744](https://tracker.ed-fi.org/browse/DATASTD-1744)
-
-The BeginDate attribute is made an identity field for the
-StaffSectionAssociation to have parallel with the decision made for the same
-attribute in the StudentSectionAssociation as introduced by the new Section
-model updates.
-
-### Update on the Definition of Term and Session
-
-[DATASTD-1973](https://tracker.ed-fi.org/browse/DATASTD-1973)
-
-We have realized that there has been a confusion among the Ed-Fi community
-members about Ed-Fi's definition of Session and Term. To prevent these
-confusions and any misusage of them, the definition of these terms are updated
-in this version.
-
-### Adding AnnualWage
-
-[DATASTD-2068](https://tracker.ed-fi.org/browse/DATASTD-2068)
-
-Upon a report that indicate the misusage of the HourlyWage field in the core
-model because of the lack of attribute for the annual wage of staff in the
-StaffEducationOrganizationEmploymentAssociation and an extension created by
-another state, the AnnualWage attribute is added to the core model as an
-optional data for the association.
-
-### Adding SupporterMilitaryConnection
-
-[DATASTD-2069](https://tracker.ed-fi.org/browse/DATASTD-2069)
-
-After reviewing multiple states' use case for data collection practices on the
-military connection of people who are responsible for students,
-SupporterMilitaryConnection descriptor is added as optional attribute to the
-StudentEducationOrganizationAssociation. Predefined values for this descriptor
-are; Active Duty, Reserve, Veteran, DoD Civilian, Not Military Connected and
-Unknown.
+Short Description.
 
 ## List of All Changes
 
-* [SPED Changes based on SC discussion](https://tracker.ed-fi.org/browse/DATASTD-2105)
-* [Data Standard v5.0 Final Release Punchlist](https://tracker.ed-fi.org/browse/DATASTD-2076)
-* [GradingPeriod Sample Data Updates](https://tracker.ed-fi.org/browse/DATASTD-2074)
-* [Consider adding family members' military connection descriptor to StudentEdOrgAssociation](https://tracker.ed-fi.org/browse/DATASTD-2069)
-* [Adding AnnualWage to Capture Staff Compensation](https://tracker.ed-fi.org/browse/DATASTD-2068)
-* [Entities within StudentProgramEvaluation have duplicate names with TPDM-Core PerformanceEvaluation entities](https://tracker.ed-fi.org/browse/DATASTD-2019)
-* [StudentProgramEvaluation duplicates EPDM Evaluation names](https://tracker.ed-fi.org/browse/DATASTD-2018)
-* [Data Standard v5.0-pre2 Punchlist](https://tracker.ed-fi.org/browse/DATASTD-2006)
-* [Updates to PersonalInformationVerification data in contact data](https://tracker.ed-fi.org/browse/DATASTD-2005)
-* [Fix StudentDiscipline.xml sample data](https://tracker.ed-fi.org/browse/DATASTD-2003)
-* [Sample Data updates for main from pre-contact-branch fixes](https://tracker.ed-fi.org/browse/DATASTD-2002)
-* [Fix sample data for Preferred Names - main](https://tracker.ed-fi.org/browse/DATASTD-1999)
-* [Sample data updates requested by platform team](https://tracker.ed-fi.org/browse/DATASTD-1990)
-* [Remove TPDM related descriptor files from Ed-Fi-Standard repo](https://tracker.ed-fi.org/browse/DATASTD-1988)
-* [Implement Student Program Evaluation Model](https://tracker.ed-fi.org/browse/DATASTD-1986)
-* [Create Sample Data for Student Program Evaluation](https://tracker.ed-fi.org/browse/DATASTD-1984)
-* [Data Standard v5.0-pre1 PunchList](https://tracker.ed-fi.org/browse/DATASTD-1958)
-* [Mobility Rate Indicator](https://tracker.ed-fi.org/browse/DATASTD-1956)
-* [Sample Data for PreferedFirstName and PreferedLastSurname](https://tracker.ed-fi.org/browse/DATASTD-1951)
-* [Sample Data updates for StudentSchoolAssociation](https://tracker.ed-fi.org/browse/DATASTD-1950)
-* [Sample Data updates for Parent to Contact changes](https://tracker.ed-fi.org/browse/DATASTD-1949)
-* [Add PreferredFirstName and PreferredLastName to name common](https://tracker.ed-fi.org/browse/DATASTD-1948)
-* [Implement changes to StudentSchoolAssociation](https://tracker.ed-fi.org/browse/DATASTD-1941)
-* [Updates to Parent and related entities](https://tracker.ed-fi.org/browse/DATASTD-1940)
-* [CLONE - Delaware is implementing some extensions to support its' funding process and has several suggestions.](https://tracker.ed-fi.org/browse/DATASTD-1939)
-* [Sex and Gender Updates](https://tracker.ed-fi.org/browse/DATASTD-1938)
-* [Change schoolId from int32 to varchar 30 or int64](https://tracker.ed-fi.org/browse/DATASTD-1916)
-* [Create best practices documentation for Student Transcript Credit Use Cases](https://tracker.ed-fi.org/browse/DATASTD-1915)
-* [Update to LetterGradeEarned and GradeEarned](https://tracker.ed-fi.org/browse/DATASTD-1912)
-* [Update documentation and add constraints to EventDuration field for StudentSchoolAttendanceEvent](https://tracker.ed-fi.org/browse/DATASTD-1911)
+* [Epic name](https://tracker.ed-fi.org/browse/XXXX)
+* [Ticket name](https://tracker.ed-fi.org/browse/DATASTD-XXXX)
