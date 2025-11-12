@@ -8,8 +8,8 @@ Data Standard v6.0 delivers significant structural and semantic enhancements des
 
 Community benefits:
 
-* Reduced Update Burden in StudentEducationOrganizationAssociation--SEOA.
-* Improved Handling of Multiple or Alternative Identifiers.
+* Simplifies the data update process for student identification codes, demographics, and directory information.
+* Improved handling of multiple or alternative identifiers.
 * Enhanced Assessment model to better support data collection and logic for Assessment dashboards.  These changes originated from initiatives in South Carolina, integrating over thirty assessments, and are broadly beneficial for other states.
 * Expanded core model coverage for Educator preparator use cases and ongoing updates to related entities.
 * Partial handling of Special Education Program events.
