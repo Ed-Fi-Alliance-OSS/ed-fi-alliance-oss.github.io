@@ -4,21 +4,22 @@ Release Date: Nov. 14, 2025.
 
 ## Overview
 
-Data Standard v6.0 delivers significant structural and semantic enhancements designed to improve data clarity, interoperability, and reduce update burden across implementations. This release introduces breaking changes and is targeted for deployment beginning in the 2026–27 school year. Following reviews by state agencies, SIS and assessment vendors, and feedback from [RFC 27 - Ed-Fi Data Standard 6.0](https://edfi.atlassian.net/wiki/x/EgC5P), the following updates were implemented to the Data Standard model in 6.0:
+Data Standard v6.0 delivers significant structural and semantic enhancements designed to improve data clarity, interoperability, and simplify data updates. This release introduces breaking changes and is targeted for deployment beginning in the 2026–27 school year. Following reviews by state agencies, SIS and assessment vendors, and feedback from [RFC 27 - Ed-Fi Data Standard 6.0](https://edfi.atlassian.net/wiki/x/EgC5P), the following updates were implemented to the Data Standard model in 6.0:
 
-* Improved handling of multiple identifiers for Contacts, EducationOrganization, Staff, and Students in the system
-  * Resulting in the creation of new entities for:
-    * CandidateIdentificationCode
-    * ContactIdentificationCode
-    * EducationOrganizationIdentificationCode
-    * StaffIdentificationCode
-    * StudentIdentificationCode
-* Streamline access and storage of Demographic and contact (address, email, telephone) related information of various roles:
-  * Resulting in the creation of new entities for:
-    * StaffDemographic
-    * StaffDirectory
-    * StudentDemographic
-    * StudentDirectory
+Improved handling of multiple identifiers for Contact, EducationOrganization, Staff, and Student in the system resulting in the creation of new entities for:
+
+* CandidateIdentificationCode
+* ContactIdentificationCode
+* EducationOrganizationIdentificationCode
+* StaffIdentificationCode
+* StudentIdentificationCode
+
+Streamline access and storage of Demographic and Directory (i.e. contact information such as address, email, telephone) information of various roles resulting in the creation of new entities for:
+
+* StaffDemographic
+* StaffDirectory
+* StudentDemographic
+* StudentDirectory
 
 :::info
 
@@ -30,19 +31,13 @@ Additional details related to the changes for identification and demographics ca
 * Expanded core model coverage for Educator preparator use cases and ongoing updates to related entities.
 * Partial handling of Special Education Program events.
 
-<!--* Staff Domain
-* Enrollment Domain
-* Survey Domain
-* Teaching and Learning Domain
-* Candidate-->
-
 ## Major Changes
 
 ### Breakout of Staff and StudentEducationOrganizationAssociation (SEOA) Entities
 
 Based on community feedback the StudentEducationOrganizationAssociation and Staff entities were simplified. One pain point that was brought forth by the community is the complexity in updating the StudentEducationOrganizationAssociation and difficulty in searching the IdentificationCode commons. By breaking the StudentEducationOrganizationAssociation into smaller more manageable components vendors and admins will be better able to query records more specifically and updates can now be made in a targeted way that they do not overwrite whole records.
 
-In specific, this release makes a breaking change from DS 5.2 to DS 6.0 by _moving_ the following from the SEOA to the corresponding new entities:
+**In specific, this release makes a breaking change from DS 5.2 to DS 6.0 by _deleting_ the following fields from the SEOA and _migrating_ them to the corresponding new entities as outline below:**
 
 #### Fields to New StudentIdentification Code Entity
 
@@ -69,13 +64,17 @@ In specific, this release makes a breaking change from DS 5.2 to DS 6.0 by _movi
 * InternationalAddress
 * Telephone
 
+### Deleted StaffEducationOrganizationContactAssociation
+
+As discussed during the DataStandard Work group calls and in alignment with the greater effort to simplify the model. Staff is being split apart into StaffIdentificationCode, StaffDemographic, and StaffDirectory (i.e. contact information such as address, email, telephone) entities. With the creation of targeted individual domain entities, the need to maintain a separate duplicate association for tracking Staff members information has been removed.
+
+Information previously tracked on the Staff domain entity has been split apart in a manner substantially similar to the Student entities above.
+
 #### New Staff Related Entities
 
 * StaffDirectory
 * StaffIdentificationCode
 * StaffDemographic
-
-#### Deleted StaffEducationOrganizationContactAssociation
 
 ### Assessment Model Changes
 
@@ -116,9 +115,11 @@ New Domains Created:
 
 More detailed information regarding each domain, their descriptors and related entities can be found in the updated model references pages [here](/dataStandard_versioned_docs/version-6/model-reference/readme.md).
 
-### Updates on Special Education Program Association
+#### Addition of FinancialAid Domain Entity to Enrollment
 
-[DATASTD-???](link)
+In addition to the creation of wholly new domains for the Educator Preparation Data Model one new entity has been created and and added into the existing Enrollment Domain. As part of the 6.0 release users will find a domain entity for Financial Aid has been added and has Student as part of its identity keys.
+
+### Updates on Special Education Program Association
 
 Two optional IEP date fields have been renamed (BREAKING) to provide greater clarity on their purposes, and two new optional date field have been added.
 
@@ -128,8 +129,6 @@ Two optional IEP date fields have been renamed (BREAKING) to provide greater cla
 | IEPLastReviewDate | optional | The date of the last IEP review. BREAKING rename of "IEPReviewDate" |
 | IEPEvaluationDueDate | optional | The due date for the next special education evaluation. NEW |
 | IEPReviewDueDate | optional | The due date for the next IEP review. NEW |
-
-### Adding Student Program Evaluation
 
 ## Minor Changes
 
