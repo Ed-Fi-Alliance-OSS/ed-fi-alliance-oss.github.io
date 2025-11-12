@@ -14,7 +14,7 @@ Community benefits:
 * Expanded core model coverage for Educator preparator use cases and ongoing updates to related entities.
 * Partial handling of Special Education Program events.
 
-Following reviews by state agencies, SIS and assessment vendors, and feedback from RFC 27 (a, b, c), the following updates were implemented to the Data Standard model in 6.0:
+Following reviews by state agencies, SIS and assessment vendors, and feedback from [RFC 27 - Ed-Fi Data Standard 6.0](https://edfi.atlassian.net/wiki/x/EgC5P), the following updates were implemented to the Data Standard model in 6.0:
 
 * Demographic and contact information were decoupled from the SEOA.
 * New demographic and directory entities were created for students and staff.  The directory entities contain properties that provide contact information about a student or staff.  This is different than the contact entity which contains parent or representative information.
