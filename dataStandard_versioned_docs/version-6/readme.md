@@ -32,7 +32,7 @@ The data model is referred to as the Ed-Fi Unifying Data Model, or UDM. The UDM
 is documented via 2 primary artifacts: the **Ed-Fi Data Handbook** and a set of
 **Unifying Modeling Language (UML)** diagrams.
 
-* _Handbook is not yet available_ <!-- <a href="https://edfidocs.blob.core.windows.net/$web/handbook/v6.0/index.html" target="_blank">Ed-Fi Data Handbook for DS v6.0</a> -->
+* <a href="https://edfidocs.blob.core.windows.net/$web/handbook/v6.0/index.html" target="_blank">Ed-Fi Data Handbook for DS v6.0</a>
 * [Ed-Fi UDM UML Diagrams](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Standard/tree/main/Models) (Visio format, on GitHub)
 
 Additional documentation is provided in the [Ed-Fi Unifying Data
