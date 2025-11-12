@@ -1,16 +1,18 @@
-
 # Global Administration Tasks – Setup Guide
 
-This guide walks you through the initial global administration setup in the Ed-Fi Admin App. It is designed to help system administrators configure the core elements required for tenant and environment management. Where additional detail or screenshots are needed, you’ll find clear TODO markers.
+This guide walks you through the initial global administration setup in the Ed-Fi Admin App. It is designed to help system administrators configure the core elements required for tenant and environment management.
 
----
+:::info
 
-## 1. Environments
+The Ed-Fi Admin App shares code with the Starting Blocks Admin App from Education Analytics. Although this documentation is generally the same as that for Starting Blocks Admin App, users of Starting Blocks should preferentially refer to [its official documentation](https://docs.startingblocks.org/StartingBlocks%20Admin%20App/about/) rather than this document.
 
-> **Note:**
-> The default environment setup attempts to connect to AWS. If you are not using AWS, you will encounter errors at this step. You must replace or bypass the AWS-specific configuration to proceed.
+:::
+
+## Environments
 
 ### Creating a New Environment
+
+An environment is a paired deployment of an Ed-Fi ODS/API and an Ed-Fi ODS Admin API application. These deployments can operate with multiple _ODS Instances_ (e.g. for separate school years) and, with ODS/API 7+, can also operate in _multi-tenant_ mode. The environment encompasses both concepts. Any pair of ODS/API and Admin API operating together constitutes the environment.
 
 To create a new environment:
 
@@ -19,8 +21,8 @@ To create a new environment:
 3. Fill in the following fields:
 
    | Field | Description |
-   |-------|-------------|
-   | Using Starting Blocks from Education Analytics? | Toggle this switch ON if you are using Starting Blocks for your Ed-Fi deployment. Otherwise, leave it OFF. |
+   |-|-|
+   | Using Starting Blocks from Education Analytics? | Leave it OFF, otherwise the system will try to connect to a Starting Blocks deployment. |
    | Name | Enter a descriptive name for this environment. |
    | Ed-Fi API Discovery URL | Enter the URL where the Ed-Fi ODS/API discovery endpoint is available (e.g., `https://api.example.org`). |
    | Management API Discovery URL | Enter the URL where the Admin API discovery endpoint is available. |
@@ -28,47 +30,42 @@ To create a new environment:
 
 4. Click **Save** to create the environment.
 
-> **Important:**
->
-> - All URL fields must be valid, accessible endpoints
-> - The system will attempt to validate these connections when you save
+:::note
+
+- All URL fields must be valid, accessible endpoints
+- The system will attempt to validate these connections when you save
 
 ![Required fields for environment](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/admin-guide/environment/environment_requiredfields.png)
 
-### Granting Ownership to Environments
+:::
 
-For an environment to be managed, you must grant ownership to a team. This process allows team members to manage the environment with their different privilege levels. Follow these steps:
+### Global Administrator Access to Environments
 
-1. Select the environment
-2. Click "Grant Ownership"
+Once an environment has been created, the Global Administrator will already have access to perform some tasks. However, the Global Administrator's permissions were not designed for environment management. When regularly using a Global Administrator account, it is best to assign that account to a team that has ownership over all relevant environments. Doing so will ensure the right permissions have been applied.
 
-From step 2, follow the guide in [Managing Resource Ownership](#5-ownerships) to complete this process.
-
-![Grant ownership view for environment](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/admin-guide/environment/grant-ownership-to-environment.png)
+Continue reading for more information about teams and ownerships.
 
 ### Environment Validations
 
 1. When an URL is invalid the error would be shown in the specific field.
 
-![Invalid URL fields validation](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/admin-guide/environment/environment_invalidurls.png)
+   ![Invalid URL fields validation](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/admin-guide/environment/environment_invalidurls.png)
 
 2. When creating an environment, the app autodetects whether it's a v6 or v7 environment. Based on this detection, the app will configure tenants accordingly. For v6 environments, there will be a default tenant created automatically. For v7 environments, you'll be able to create multiple tenants.
 
-### Single Tenant V6
+### Single Tenant v6
 
 ![Single Tenant](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/admin-guide/environment/environment_single_tenants.png)
 
-### Single Tenant V7
+### Single Tenant v7
 
 ![Single Tenant](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/admin-guide/environment/environment_v7_singletenant.png)
 
-### Multi-Tenant V7
+### Multi-Tenant v7
 
 ![Multi Tenant](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/admin-guide/environment/environment_v7_multitenant.png)
 
----
-
-## 2. Teams
+## Teams
 
 Teams allow you to organize users and control their access to resources within the Admin App. Creating teams is essential for proper privilege management.
 
@@ -80,11 +77,24 @@ Teams allow you to organize users and control their access to resources within t
    - **Name**: Enter a descriptive name for the team (e.g., "District Admins", "API Managers")
 4. Click **Save** to create the team
 
-> **Best Practice:**
->
-> - Use clear, descriptive names that indicate the team's purpose
+:::tip **Best Practice:**
+
+- Use clear, descriptive names that indicate the team's purpose
+
+:::
 
 ![Team Creation Success](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/admin-guide/team/team-successfull-creation.png)
+
+### Granting Ownership to Environments
+
+For an environment to be managed, you must grant ownership to a team. This process allows team members to manage the environment with their different privilege levels. Follow these steps:
+
+1. Select the environment
+2. Click "Grant Ownership"
+
+From step 2, follow the guide in [Managing Resource Ownership](#5-ownerships) to complete this process.
+
+![Grant ownership view for environment](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/admin-guide/environment/grant-ownership-to-environment.png)
 
 ### Managing Teams
 
@@ -98,7 +108,7 @@ After creating a team, you'll have access to several important management functi
 
 These management options make it easy to configure exactly what each team can see and do within the Ed-Fi Admin App.
 
-## 3. Team Memberships
+## Team Memberships
 
 Team memberships connect users to teams and determine their level of access within those teams.
 
@@ -114,17 +124,17 @@ Team memberships connect users to teams and determine their level of access with
 
 ![Team membership success](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/admin-guide/team-membership/team-membership-success.png)
 
-> **Common Role Types Explained:**
->
-> - **Admin**: Full administrative access to manage settings, resources, and perform all administrative functions
-> - **Standard**: Standard access to work with resources with limited administrative capabilities
-> - **Viewer**: Read-only access to resources and settings without modification privileges
+:::tip **Common Role Types Explained:**
+
+- **Admin**: Full administrative access to manage settings, resources, and perform all administrative functions
+- **Standard**: Standard access to work with resources with limited administrative capabilities
+- **Viewer**: Read-only access to resources and settings without modification privileges
+
+:::
 
 ![Team membership validation](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/admin-guide/team-membership/team-membership-validation.png)
 
----
-
-## 4. Roles
+## Roles
 
 Roles determine what actions users can perform within the Admin App. Each role contains a set of privileges that can be assigned or revoked.
 
@@ -145,22 +155,25 @@ The **Type** field in the role configuration specifies the context where this ro
 - **User global**: Roles that apply globally across the system for users
 - **Resource ownership**: Roles that define permissions for managing specific resources
 
-> **Critical Warning:**
->
-> **Do NOT enable the "row-count" permission (`team.sb-environment.edfi-tenant.ods:read-row-counts`).**
->
-> This permission enables the "row count" button on the ODS page, but this feature is not yet functional in this release of Admin App. Enabling it will cause errors.
+:::warning
+
+**Do NOT enable the "row-count" permission (`team.sb-environment.edfi-tenant.ods:read-row-counts`).**
+
+This permission enables the "row count" button on the ODS page, but this feature is not yet functional in this release of Admin App. Enabling it will cause errors.
 
 ![row count permission](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/admin-guide/role/role-privilege-not-select-row-count.png)
 
----
+:::
 
-## 5. Ownerships
+## Ownerships
 
 Ownerships define which teams have access to specific resources in the system. Managing ownerships is crucial for proper access control and delegation of responsibilities.
 
-> **Note:**
-> You will not be able to configure ownerships until an environment is created (see Step 1). If you are blocked by AWS dependencies, resolve those first.
+:::Note
+
+You will not be able to configure ownerships until an environment is created (see Step 1). If you are blocked by AWS dependencies, resolve those first.
+
+:::
 
 ### Managing Resource Ownership
 
@@ -203,14 +216,23 @@ To create applications in Admin API v2 mode, you must first populate the ODS ins
 2. Execute the following SQL to insert ODS instance records:
 
 ```sql
-INSERT INTO dbo.odsinstances ("name", instancetype, connectionstring) 
+INSERT INTO dbo.odsinstances ("name", instancetype, connectionstring)
 VALUES
-  ('EdFi_Ods_255901', 'DistrictSpecific', 'host=SERVER_1;port=5432;username=postgres;password=CHANGEME;database=EdFi_Ods_255901'),
-  ('EdFi_Ods_255902', 'DistrictSpecific', 'host=SERVER_2;port=5432;username=postgres;password=CHANGEME;database=EdFi_Ods_255902');
+  ('EdFi_Ods_2026', '2026 ODS', 'host=SERVER_1;port=5432;username=postgres;password=CHANGEME;database=EdFi_Ods_2026'),
+  ('EdFi_Ods_2027', '2027 ODS', 'host=SERVER_2;port=5432;username=postgres;password=CHANGEME;database=EdFi_Ods_2027');
+
+INSERT INTO dbo.odsinstancecontexts (odsinstance_odsinstanceid, contextkey, contextvalue)
+SELECT odsinstanceid, 'schoolYearFromRoute', '2026' FROM dbo.odsinstances WHERE "name" = 'EdFi_Ods_2026'
+UNION
+SELECT odsinstanceid, 'schoolYearFromRoute', '2027' FROM dbo.odsinstances WHERE "name" = 'EdFi_Ods_2027';
 ```
 
-> **Important:**
->
-> - Replace `SERVER_1`, `SERVER_2`, and `CHANGEME` with your actual server names and credentials
-> - After inserting these records, you **must restart the ODS/API application container** for the changes to take effect
-> - This manual step will be automated in a future release
+See [Context-Based Routing for Year-Specific ODS](/reference/ods-api/platform-dev-guide/configuration/context-based-routing-for-year-specific-ods) for more information on this multi-instance feature.
+
+:::note
+
+- Replace `SERVER_1`, `SERVER_2`, and `CHANGEME` with your actual server names and credentials
+- After inserting these records, you **must restart the ODS/API application container** for the changes to take effect
+- This manual step will be automated in a future release
+
+:::
