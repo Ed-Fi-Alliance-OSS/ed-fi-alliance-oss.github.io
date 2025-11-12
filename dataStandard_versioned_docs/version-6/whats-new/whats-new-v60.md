@@ -90,9 +90,7 @@ Entities and descriptors from EPDM community have been moved into the Core Ed-Fi
 
 [DATASTD-](link)
 
-New optional attributes to the Student
-Special Education Program Association to allow the community members collect
-data related to events.
+Two optional IEP date fields have been renamed (BREAKING) to provide greater clarity on their purposes, and two new optional date field have been added.
 
 | Property | Cardinality | Definition |
 | --- | --- | --- |
