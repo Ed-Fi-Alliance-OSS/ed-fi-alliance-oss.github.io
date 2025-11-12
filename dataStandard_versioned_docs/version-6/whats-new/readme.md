@@ -9,7 +9,7 @@ sidebar_position: 1
 Data Standard v6 introduces changes to the Ed-Fi Unifying Data Model (Ed-Fi UDM, aka
 Ed-Fi core model) for domains commonly
 used by student information systems, assessment vendors, and educator pipeline systems. It is the successor
-to the v5 Data Standard, most recent release being [Data Standard v5.2](/reference/data-exchange/data-standard/).
+to the v5 Data Standard, with the most recent release being [Data Standard v5.2](/reference/data-exchange/data-standard/).
 Key breaking changes in Data Standard v6 include:
 
 - decoupling demographics and contact information from StudentEducationOrganizationAssociation into dedicated entities
