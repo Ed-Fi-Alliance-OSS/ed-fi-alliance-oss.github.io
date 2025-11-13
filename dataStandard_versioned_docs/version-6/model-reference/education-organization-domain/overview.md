@@ -8,20 +8,36 @@ sidebar_position: 1
 
 This domain contains:
 
-* A StateEducationAgency entity, which is an optional entity for the state
-    department of education or equivalent.
+* The AccountabilityRating entity holds education organization ratings
+    assigned by an accountability system.
+* The CommunityOrganization entity represents an administrative unit at the
+    state level which exists primarily to operate local community providers.
+* The CommunityProvider entity represents an educational organization that
+    includes staff and students who participate in classes and educational
+    activity groups.
+* The CommunityProviderLicense entity describes the legal document held by the
+    community provider that authorizes the holder to perform certain functions
+    and or services.
+* The EducationOrganization entity represents any public or private institution,
+    organization, or agency that provides instructional or support services
+    to students or staff at any level.
+* The EducationOrganizationIdentificationCode entity which captures the system identification
+    codes associated to a given EducationOrganization.
+* The EducationOrganizationNetwork entity represents a self-organized
+    membership network of peer-level schools or LEAs intended to provide shared
+    services, collective purchasing, or other organizational purpose.
 * An EducationServiceCenter entity, which is an optional entity for a regional
     educational service agency between the district and state level.
 * A LocalEducationAgency entity, which represents a school district or charter
     management organization.
-* A School entity, which represents a point of education instruction.
-* The EducationOrganizationNetwork entity represents a self-organized
-    membership network of peer-level schools or LEAs intended to provide shared
-    services, collective purchasing, or other organizational purpose.
 * The OrganizationDepartment entity represents education organizations under a
     State Education Agency, Local Education Agency, or School.
-* The AccountabilityRating entity holds education organization ratings
-    assigned by an accountability system.
+* The PostSecondaryInstitution entity describes organization that provides educational
+    programs for individuals who have completed or otherwise left educational programs
+    in secondary school(s).
+* A School entity, which represents a point of education instruction.
+* A StateEducationAgency entity, which is an optional entity for the state
+    department of education or equivalent.
 
 ## Key Concepts
 
