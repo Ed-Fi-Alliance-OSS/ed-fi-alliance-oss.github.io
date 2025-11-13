@@ -3,15 +3,7 @@ sidebar_position: 1
 ---
 
 
-# Educator Preparation Data Model Domain - Overview
-
-:::warning
-The Teacher Preparation Data Model has been renamed to the Educator Preparation
-Data Model to better reflect the capability of the model to support all types of
-educator preparation. Read more about the name change [We're renaming TPDM,
-here's
-why](https://edfi.atlassian.net/wiki/display/EPP/We%27re+renaming+TPDM%2C+here%27s+why).
-:::
+# Educator Preparation Program Domain - Overview
 
 ## Key Entities
 
@@ -26,19 +18,6 @@ This domain contains:
     course of study, completion of which signifies a candidate will have met all
     requirements necessary to obtain a certification or licensure to teach
     within K-12 schools.
-* The PerformanceEvaluation entity and related entities that Educator
-    Preparation Programs (EPPs) can use to capture performance data about
-    Candidates and Staff teachers to drive the analysis of effectiveness and
-    improvement.
-* An expansion to the Credential entity which uses the early-access person
-    entity to associate to a credential, so any person-role (e.g., Student,
-    Candidate) can be associated with a credential.
-* An expansion to the Survey entity and related entities to support survey
-    requirements that are a cornerstone of most EPP implementations.
-* The Student Path is a community extension that tracks the progress of an individual
-    from being a student to becoming an educator. This domain tracks various
-    assessments , fieldwork, and certifications from third party and state education
-    agencies. See the [Student Path Domain](student-path.md) community extension for more information.
 
 ## Key Concepts
 

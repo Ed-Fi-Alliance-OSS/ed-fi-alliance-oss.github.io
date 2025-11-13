@@ -51,7 +51,7 @@ hide_table_of_contents: true
 | InterventionClass | The way in which an intervention is used: curriculum, supplement, or practice. | Flexible |     |     |     |
 | InterventionEffectivenessRating | An intervention demonstrates effectiveness if the research has shown that the program caused an improvement in outcomes. Values: positive effects, potentially positive effects, mixed effects, potentially negative effects, negative effects, and no discernible effects. |     |     |     |     |
 | PopulationServed | Population for which effectiveness is measured. | Orthodox |     |     |     |
-| StateAbbreviation | The abbreviation for the state (within the United States) or outlying area, the school system of which the participants of the study are considered to be a part. | Standard |     |     |     |
+| StateAbbreviation | The abbreviation for the state (within the United States) or outlying area, the school system of which the participants of the study are considered to be a part. | Standard |     | Yes |     |
 | StudentInterventionAssociation | Diagnosis | Targeted purpose of the intervention (e.g., attendance issue, dropout risk) for which the effectiveness is measured. | Local |     |     |     |
 | GradeLevel | Grade level for which effectiveness is measured. | Orthodox |     |     |     |
 | InterventionEffectivenessRating | An intervention demonstrates effectiveness if the research has shown that the program caused an improvement in outcomes. Values: positive effects, potentially positive effects, mixed effects, potentially negative effects, negative effects, and no discernible effects. |     |     |     |     |
