@@ -9,9 +9,9 @@ subdomains.
 
 ## Assessment Model UML Diagram
 
-![Assessment Domain Model](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Assessment%20Domain%20for%20DS%20v5.x%2020240712.png)
+![Assessment Domain Model](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/AssessmentUML_Updated10162025.png)
 
-[_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Assessment%20Domain%20for%20DS%20v5.x%2020240712.png)
+[_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/AssessmentUML_Updated10162025.png)
 
 ### Learning Standard Subdomain
 
@@ -64,9 +64,9 @@ stand-alone assessments that do not tie to a particular section or program.
 
 #### Assessment, Assessment Metadata Model UML Diagram
 
-![Assessment - Assessment Metadata Subdomain](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Assesment%20Metadata%20UML.png)
+![Assessment - Assessment Metadata Subdomain](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/AssesmentMetadataUML_Updated10162025.png)
 
-[_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Assesment%20Metadata%20UML.png)
+[_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/AssesmentMetadataUML_Updated10162025.png)
 
 ### Student Assessment Subdomain
 
@@ -106,6 +106,6 @@ metadata.
 
 #### Assessment, Student Assessment Model UML Diagram
 
-![Assessment - Student Assessment Subdomain](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Assessment-StudentAssessment.png)
+![Assessment - Student Assessment Subdomain](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Assessment-StudentAssessmentUML_Updated10162025.png)
 
-[_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Assessment-StudentAssessment.png)
+[_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Assessment-StudentAssessmentUML_Updated10162025.png)
