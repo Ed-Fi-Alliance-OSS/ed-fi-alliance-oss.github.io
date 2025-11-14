@@ -26,8 +26,6 @@ View information about each domain:
 
 ### Version 6.0
 
-_Handbook and diagrams are not yet available_.
-
-<!-- * [Ed-Fi Unifying Data Model (UDM) Handbook (Latest version)](https://edfidocs.blob.core.windows.net/$web/handbook/v6.0/index.html)
+* [Ed-Fi Unifying Data Model (UDM) Handbook (Latest version)](https://edfidocs.blob.core.windows.net/$web/handbook/v6.0/index.html)
 * [Ed-Fi UDM Diagram (Latest version)](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v6.0.0/Models)
-    (Visio format, on GitHub) -->
+    (Visio format, on GitHub)
