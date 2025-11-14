@@ -219,16 +219,7 @@ This entity includes an array called results. The objects in this array formerly
 
 | **Before** | **After** |
 |------------|-----------|
-| ```json
-"results": [
-  { "rating": 999.999, "ratingResultTitle": "string", "resultDatatypeTypeDescriptor": "string" }
-]
-``` | ```json
-"results": [
-  { "numericRating": 999.999, "ratingResultTitle": "string", "resultDatatypeTypeDescriptor": "string" }
-]
-
-``` |
+| `"results": [ { "rating": 999.999, "ratingResultTitle": "string", "resultDatatypeTypeDescriptor": "string" } ]` | `"results": [ { "numericRating": 999.999, "ratingResultTitle": "string", "resultDatatypeTypeDescriptor": "string" } ]` |
 
 ### Replaced GenderDescriptor with GenderIdentity
 
