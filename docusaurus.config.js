@@ -141,10 +141,15 @@ const config = {
         routeBasePath: 'reference/data-exchange/data-standard',
         sidebarPath: './sidebars.js',
         includeCurrentVersion: false,
-        lastVersion: '5',
+        lastVersion: '6',
         versions: {
-          6: { banner: 'unreleased', badge: true, path: 'next'},
-          5: { banner: 'none', badge: true },
+          6: { banner: 'none', badge: true },
+          5: {
+            banner: 'none',
+            badge: true,
+            path: '5',
+            className: 'active',
+          },
           4: {
             banner: 'none',
             badge: true,
