@@ -42,7 +42,7 @@ Following reviews by state agencies, SIS and assessment vendors, and feedback fr
 
 Additional details related to the changes for identification and demographics can be found in [Ed-Fi RFC 27b](https://edfi.atlassian.net/wiki/spaces/rc/pages/998375429/Ed-Fi+RFC+27+b+-+Streamlining+Access+to+Identification+Codes+Contact+Information+and+Demographics).
 
-Attributes decoupled from SEOA were _removed from the SEOA_, rather than deprecated, and _migrated to the new demographic and directory entities_. This approach was reviewed in multiple governance meetings hosted by the Ed-Fi Alliance and endorsed to promote consistency in data standard versioning and to reduce data redundancy.
+Attributes decoupled from StudentEducationOrganizationAssociation, Staff, and other entities were _removed _, rather than deprecated, and _migrated_ to the new demographic and directory entities_ This approach was reviewed in multiple governance meetings hosted by the Ed-Fi Alliance and endorsed to promote consistency in data standard versioning and to reduce data redundancy.
 :::
 
 ## Major Changes
@@ -242,7 +242,7 @@ For example: uri://tpdm.ed-fi.org/CertificationRouteDescriptor becomes uri://ed-
 * Candidate.ApplicationReference
 * EducatorPreparationProgram.EducatorPreparationProgramType
 
-### Removed ProgramGateway Descriptor from PerformanceEvaluation
+### Removed ProgramGateway Descriptor
 
 [DATASTD-2440](https://tracker.ed-fi.org/browse/DATASTD-2440)
 
