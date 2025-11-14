@@ -19,17 +19,17 @@ Following reviews by state agencies, SIS and assessment vendors, and feedback fr
 * The StudentEducationOrganizationAssociation (SEOA) was significantly reduced by the number of attributes, with demographic and directory attributes migrated to new entities.
 
 * The following new entities were created to host the demographic and contact information:
-* StaffDemographic
-* StaffDirectory
-* StudentDemographic
-* StudentDirectory
+  * StaffDemographic
+  * StaffDirectory
+  * StudentDemographic
+  * StudentDirectory
 
 * New optional entities were created to handle multiple identification codes:
-* CandidateIdentificationCode
-* ContactIdentificationCode
-* EducationOrganizationIdentificationCode
-* StaffIdentificationCode
-* StudentIdentificationCode
+  * CandidateIdentificationCode
+  * ContactIdentificationCode
+  * EducationOrganizationIdentificationCode
+  * StaffIdentificationCode
+  * StudentIdentificationCode
 * Consequently, the StudentIdentificationCode (_optional_ common) was removed from the SEOA and became its own entity.
 
 * The Assessment, ObjectiveAssessment and StudentAssessment entities were updated (no key structural changes were introduced).
@@ -45,15 +45,13 @@ Additional details related to the changes for identification and demographics ca
 Attributes decoupled from SEOA were _removed from the SEOA_, rather than deprecated, and _migrated to the new demographic and directory entities_. This approach was reviewed in multiple governance meetings hosted by the Ed-Fi Alliance and endorsed to promote consistency in data standard versioning and to reduce data redundancy.
 :::
 
-*
-
 ## Major Changes
 
 ### Breakout of StudentEducationOrganizationAssociation (SEOA) and Staff entities
 
-Based on community feedback the StudentEducationOrganizationAssociation and Staff entities were simplified. Pain points brought by the community were the complexity in updating the StudentEducationOrganizationAssociation, and difficulty in searching the IdentificationCode commons. By breaking the StudentEducationOrganizationAssociation into smaller more manageable components, vendors and admins will be better able to query records more specifically, and updates can be made in a targeted way that do not overwrite whole records.
+Based on community feedback, the StudentEducationOrganizationAssociation and Staff entities were simplified to address challenges such as the complexity in updating the StudentEducationOrganizationAssociation, and difficulty in searching the IdentificationCode commons. The StudentEducationOrganizationAssociation was divided into smaller more manageable components, so updates can be made in a targeted way that do not overwrite whole records.
 
-**In specific, this release makes a breaking change from DS 5.2 to DS 6.0 by _deleting_ the following fields from the SEOA and _migrating_ them to the corresponding new entities as outlined below:**
+**DS 6.0 introduces breaking updates from DS 5.2 by _removing_ the specific fields from the SEOA and _migrating_ them to corresponding new entities as outlined below:**
 
 #### Fields to New StudentIdentification Code Entity
 
@@ -88,7 +86,7 @@ Based on community feedback the StudentEducationOrganizationAssociation and Staf
 
 ### Simplified SEOA in Data Standard 6.0
 
-The streamlined StudentEducationOrganizationAssociation has these components:
+The streamlined StudentEducationOrganizationAssociation now consists of the following components:
 
 | **Property**                                      | **Type**              | **Cardinality**        | **Definition**                                                                                                                                                                                                 |
 |----------------------------------------------------|------------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -111,11 +109,11 @@ The streamlined StudentEducationOrganizationAssociation has these components:
 
 [DATASTD-2459](https://edfi.atlassian.net/browse/DATASTD-2459)
 
-In agreement with state agencies, the removal of demographic data from the StudentEducationOrganizationAssociation implied that the StudentAssessmentRegistration would refer StudentDemographic.
+In alignment with state agency recommendations, the removal of demographic data from the StudentEducationOrganizationAssociation requires the StudentAssessmentRegistration now reference StudentDemographic instead.
 
 ### Deleted StaffEducationOrganizationContactAssociation
 
-As discussed during the DataStandard Work group calls and in alignment with the greater effort to simplify the model.  Staff was split apart into StaffIdentificationCode, StaffDemographic, and StaffDirectory (i.e. contact information such as address, email, telephone) entities.  With the creation of targeted individual domain entities, the need to maintain a separate duplicate association for tracking Staff members information has been removed.
+As discussed during the DataStandard Work group calls and in alignment with the broader effort to simplify the model, Staff was split apart into entities: StaffIdentificationCode, StaffDemographic, and StaffDirectory (which includes contact information such as address, email, and telephone).  With the creation of focused domain entities, there is no need to maintain a separate duplicate association for tracking Staff members information.
 
 Information previously tracked on the Staff domain entity has been split apart in a manner substantially similar to the Student entities above.
 
@@ -125,7 +123,7 @@ Information previously tracked on the Staff domain entity has been split apart i
 [DATASTD-2492](https://tracker.ed-fi.org/browse/DATASTD-2492)
 [DATASTD-2493](https://tracker.ed-fi.org/browse/DATASTD-2493)
 
-There were 5 key changes done to assessments:
+There were five changes done to assessment model:
 
 * Assessment.academicSubject changed from _Required collection_ to **Required (single value)**.
 * ObjectiveAssessment.ParentObjectiveAssessment changed from _Optional_ to **Optional Collection**.  This allows for an objective assessment to be linked to
@@ -160,7 +158,7 @@ More detailed information regarding each domain, their descriptors and related e
 
 #### Addition of FinancialAid Domain Entity to Enrollment
 
-In addition to the creation of wholly new domains for the Educator Preparation Data Model, one new entity has been created and and added into the existing Enrollment Domain. As part of the 6.0 release users will find a domain entity for Financial Aid has been added and has Student as part of its identity keys.
+In addition to the new domains for the Educator Preparation Data Model, one new entity has been added to the existing Enrollment Domain. As part of the 6.0 release, users will find a domain entity for Financial Aid included, which uses Student as part of its identity keys.
 
 ### Special Education Program Association Updated
 
@@ -225,7 +223,7 @@ This entity includes an array called results. The objects in this array formerly
 
 Changes made to the following entities: ApplicantProfile, Staff, Candidate, RecruitmentEventAttendance.
 
-### Updated the canonical Ed-Fi descriptor from "tpdm" to "ed-fi"
+### Updated the Ed-Fi descriptor namespace from "tpdm" to "ed-fi"
 
 Previously, the canonical Ed-Fi descriptor set for EPDM included “tpdm” in their namespace URI values. This is no longer necessary.
 
