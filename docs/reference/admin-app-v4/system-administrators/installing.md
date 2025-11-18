@@ -90,10 +90,11 @@ For production environments, modify the following:
    VITE_IDP_ACCOUNT_URL=https://yourdomain.com/auth/realms/edfi/account/
    ```
 
-  > [!NOTE]
-  > **Important:** The `VITE_IDP_ACCOUNT_URL` value may differ from your Keycloak admin console URL.
-  > This should point to the **account management interface** (`/auth/realms/{realm-name}/account/`), not the admin console.
-  > Ensure this matches your actual Keycloak realm configuration and domain.
+  :::note
+  **Important:** The `VITE_IDP_ACCOUNT_URL` value may differ from your Keycloak admin console URL.
+  This should point to the **account management interface** (`/auth/realms/{realm-name}/account/`), not the admin console.
+  Ensure this matches your actual Keycloak realm configuration and domain.
+  :::
 
 2. **SSL Certificates**: Replace self-signed certificates with production certificates
 
@@ -340,10 +341,11 @@ See [Troubleshooting](troubleshooting.md#backend-troubleshooting) section in cas
    - `VITE_APPLICATION_NAME`: Display name shown in the UI (customize for branding)
    - `VITE_IDP_ACCOUNT_URL`: Identity provider account management page URL
 
-   > [!NOTE]
-   > **Important:** The `VITE_IDP_ACCOUNT_URL` value may differ from your Keycloak admin console URL.
-   > This should point to the **account management interface** (`/auth/realms/{realm-name}/account/`), not the admin console.
-   > Ensure this matches your actual Keycloak realm configuration and domain.
+   :::note
+   **Important:** The `VITE_IDP_ACCOUNT_URL` value may differ from your Keycloak admin console URL.
+   This should point to the **account management interface** (`/auth/realms/{realm-name}/account/`), not the admin console.
+   Ensure this matches your actual Keycloak realm configuration and domain.
+   :::
 
 2. **Build the frontend**:
 
@@ -713,13 +715,15 @@ VITE_IDP_ACCOUNT_URL=https://your-domain.com/auth/realms/edfi/account/
 - `VITE_APPLICATION_NAME`: Display name for the application shown in the UI (can be customized for branding)
 - `VITE_IDP_ACCOUNT_URL`: URL to the identity provider's account management page where users can manage their profile and authentication settings
 
-> [!NOTE]
-> **Important:** The `VITE_IDP_ACCOUNT_URL` value may differ from your Keycloak admin console URL.
-> This should point to the **account management interface** (`/auth/realms/{realm-name}/account/`), not the admin console.
->
-> - Local development: `https://localhost/auth/realms/edfi/account/`
-> - Production: `https://auth.yourdomain.com/auth/realms/production/account/`
-> - Custom realm: `https://keycloak.example.org/auth/realms/school-district/account/`
+:::note
+**Important:** The `VITE_IDP_ACCOUNT_URL` value may differ from your Keycloak admin console URL.
+This should point to the **account management interface** (`/auth/realms/{realm-name}/account/`), not the admin console.
+
+- Local development: `https://localhost/auth/realms/edfi/account/`
+- Production: `https://auth.yourdomain.com/auth/realms/production/account/`
+- Custom realm: `https://keycloak.example.org/auth/realms/school-district/account/`
+
+:::
 
 These variables must be set during the build process:
 
