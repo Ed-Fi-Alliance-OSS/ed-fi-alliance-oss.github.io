@@ -68,7 +68,7 @@ hide_table_of_contents: true
 | RecognitionType | The nature of recognition given to the learner for accomplishments in a co-curricular, or extra-curricular activity. | Flexible |     |     |     |
 | Sex | A person's gender. | Standard |     |     |     |
 | StaffIdentificationSystem | A coding scheme that is used for identification and record-keeping purposes by schools, social services, or other agencies to refer to a staff member. | Orthodox |     |     |     |
-| StateAbbreviation | The abbreviation for the state (within the United States) or outlying area in which an address is located. | Standard |     |     |     |
+| StateAbbreviation | The abbreviation for the state (within the United States) or outlying area in which an address is located. | Standard |     | Yes |     |
 | TelephoneNumberType | The type of communication number listed for an individual or organization. | Standard |     |     |     |
 | TribalAffiliation | An American Indian tribe with which the staff member is affiliated. | Orthodox |     |     |     |
 | Visa | An indicator of a non-US citizen's Visa type. | Standard |     |     |     |
@@ -78,10 +78,10 @@ hide_table_of_contents: true
 | StaffEducationOrganizationContactAssociation | AddressType | The type of address listed for an individual or organization. For example: Physical Address, Mailing Address, Home Address, etc.) | Orthodox |     |     |     |
 | ContactType | Indicates the type for the contact information. | Local |     |     |     |
 | Locale | A general geographic indicator that categorizes U.S. territory (e.g., City, Suburban). | Standard |     |     |     |
-| StateAbbreviation | The abbreviation for the state (within the United States) or outlying area in which an address is located. | Standard |     |     |     |
+| StateAbbreviation | The abbreviation for the state (within the United States) or outlying area in which an address is located. | Standard |     | Yes |     |
 | TelephoneNumberType | The type of communication number listed for an individual or organization. | Standard |     |     |     |
 | StaffEducationOrganizationEmploymentAssociation | EmploymentStatus | Reflects the type of employment or contract; for example: Probationary, Contractual, Substitute/temporary, Tenured or permanent, Volunteer/no contract... | Orthodox |     |     |     |
-| Separation | Type of employment separation; for example: Voluntary separation, Involuntary separation, Mutual agreement, Other, etc. | Orthodox |     |     |     |
+| Separation | Type of employment separation; for example: Voluntary separation, Involuntary separation, Mutual agreement, Other, etc. |Orthodox |     |     |     |
 | SeparationReason | Reason for terminating the employment; for example: Employment in education, Employment outside of education, Retirement, Family/personal relocation, Change of assignment. | Orthodox |     |     |     |
 | StaffLeave | StaffLeaveEventCategory | The code describing the type of leave taken, for example: Sick, Personal, Vacation. | Orthodox |     |     |     |
 | StaffSchoolAssociation | AcademicSubject | The academic subjects the individual is eligible to teach. | Local |     |     |     |

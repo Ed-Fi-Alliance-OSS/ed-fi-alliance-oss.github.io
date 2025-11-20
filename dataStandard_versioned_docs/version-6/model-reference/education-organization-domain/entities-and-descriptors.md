@@ -50,7 +50,7 @@ hide_table_of_contents: true
 | GunFreeSchoolsActReportingStatus | An indication of whether the school or Local Education Agency (LEA) submitted a Gun-Free Schools Act (GFSA) of 1994 report to the state, as defined by Title 18, Section 921. | Standard | Yes | Yes |     |
 | LocalEducationAgencyCategory | The category of local education agency/district. For example: Independent or Charter. | Local | Yes | Yes |     |
 | SchoolChoiceImplementStatus | An indication of whether the LEA was able to implement the provisions for public school choice under Title I, Part A, Section 1116 of ESEA as amended. | Standard |     |     |     |
-| OrganizationDepartment | AcademicSubject | The intended major subject area of the department. | Local |     |     |     |
+| OrganizationDepartment | AcademicSubject | The intended major subject area of the department. | Local | Yes | Yes |     |
 | PostSecondaryInstitution | AdministrativeFundingControl | A classification of whether a postsecondary institution is operated by publicly elected or appointed officials (public control) or by privately elected or appointed officials and derives its major source of funds from private sources (private control). | Local |     |     |     |
 | MediumOfInstruction | The categories in which an institution serves the students. | Orthodox |     | Yes |     |
 | PostSecondaryInstitutionLevel | A classification of whether a post secondary institution's highest level of offering is a program of 4-years or higher (4 year), 2-but-less-than 4-years (2 year), or less than 2-years. | Orthodox |     |     |     |

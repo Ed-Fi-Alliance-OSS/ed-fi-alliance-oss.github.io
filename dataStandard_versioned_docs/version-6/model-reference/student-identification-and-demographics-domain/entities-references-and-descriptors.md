@@ -37,7 +37,7 @@ hide_table_of_contents: true
 | OtherNameType | The types of alternate names for a person. | Orthodox |     |     |     |
 | PersonalInformationVerification | The category of the document relative to its purpose. | Orthodox |     |     |     |
 | Sex | A person's gender. | Flexible |     |     |     |
-| StateAbbreviation | The abbreviation for the state (within the United States) or outlying area in which an address is located. | Standard |     |     |     |
+| StateAbbreviation | The abbreviation for the state (within the United States) or outlying area in which an address is located. | Standard |     | Yes |     |
 | TelephoneNumberType | The type of communication number listed for an individual or organization. | Standard |     |     |     |
 | Person | SourceSystem | This descriptor defines the originating record source system for the person. | Local |     |     |     |
 | Student | BirthCountry | The country in which an individual is born. It is strongly recommended that entries use only ISO 3166 2-letter country codes. | Standard |     |     |     |
@@ -69,7 +69,7 @@ hide_table_of_contents: true
 | PrimaryLearningDeviceProvider | The provider of the primary learning device. | Flexible |     |     |     |
 | Race | The general racial category which most clearly reflects the individual's recognition of his or her community or with which the individual most identifies as last reported to the education organization. The data model allows for multiple entries so that each individual can specify all appropriate races. | Standard |     |     |     |
 | Sex | The student's gender as last reported to the education organization. | Flexible |     |     |     |
-| StateAbbreviation | The abbreviation for the state (within the United States) or outlying area in which an address is located. | Standard |     |     |     |
+| StateAbbreviation | The abbreviation for the state (within the United States) or outlying area in which an address is located. | Standard |     | Yes |     |
 | StudentCharacteristic | Reflects important characteristics of a student. If a student has a characteristic present, that characteristic is considered true or active for that student. If a characteristic is not present, no assumption is made as to the applicability of the characteristic, but local policy may dictate otherwise. | Local |     |     |     |
 | StudentIdentificationSystem | A coding scheme that is used for identification and record-keeping purposes by schools, social services, or other agencies to refer to a student. | Orthodox |     |     |     |
 | TelephoneNumberType | The type of communication number listed for an individual or organization. | Standard |     |     |     |

@@ -28,7 +28,7 @@ To be written:
 
 :::
 
-### Securing Keycloak
+### HTTP Security for Keycloak
 
 :::warning
 
@@ -85,3 +85,58 @@ X-Xss-Protection: 1; mode=block
 ```
 
 :::
+
+### Key Rotation in Keycloak
+
+The Ed-Fi Admin App has its own client credentials (aka "key and secret") for
+connecting to the OAuth provider, such as Keycloak. As a best practice, many
+organizations require regular rotation of keys and secrets - the longer a secret
+is active, the more opportunity there is for it to be stolen.
+
+Keycloak does not support client secret rotation as a default feature. Secret
+rotation is available as a preview feature; it is disabled by default. To enable
+secret rotation, administrators need to manually configure and activate this
+feature within Keycloak settings.
+
+#### Enable client secret rotation feature on docker
+
+To enable client secret rotation in Keycloak when running in Docker, add this
+under environment in your docker-compose.yml
+
+```yml
+  environment:
+      KC_FEATURES: client-secret-rotation
+```
+
+#### Create a Client Profile with Secret Rotation Executor
+
+- Navigate to Realm Settings > Client Policies > Profiles.
+- Click on Create client profile and provide a name and description.
+- After saving, add an executor of type `secret-rotation`.
+- Configure the executor with parameters such as:
+  1. Secret Expiration: Maximum duration (in seconds) a secret remains valid.
+  2. Rotated Secret Expiration: Duration (in seconds) a rotated (previous)
+     secret remains valid.
+  3. Remain Expiration Time: Time window (in seconds) before secret expiration
+     during which updates trigger rotation.
+
+#### Create a Client Policy
+
+- Still under Client Policies, navigate to the Policies tab.
+- Click on Create client policy and provide a name and description.
+- Add conditions to specify which clients the policy applies to (e.g., clients
+  with a specific access type or role).
+- Associate the previously created client profile with this policy.
+
+#### Apply the Policy to Existing Clients
+
+- During the creation of new clients, if the client secret rotation policy is
+  active, the behavior will be applied automatically.
+- For existing clients to adopt the new secret rotation behavior, an update
+  action is required: Navigate to `Clients > [Select Client] > Credentials` tab.
+  Click on Regenerate Secret to trigger the rotation mechanism as per the defined
+  policy.
+
+For detailed guidance, refer to the [Keycloak Server Administration Guide on
+Client Secret
+Rotation](https://www.keycloak.org/docs/latest/server_admin/index.html#_proc-secret-rotation).

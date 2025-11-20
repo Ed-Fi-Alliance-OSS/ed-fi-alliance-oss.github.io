@@ -42,7 +42,7 @@ Docker provides the easiest deployment method with consistent environments acros
    ```bash
    # PowerShell Core (Windows/Linux/macOS):
    ./up.ps1
-   
+
    # Linux/macOS:
    mkdir -p logs
    docker network create edfiadminapp-network --driver bridge
@@ -54,7 +54,7 @@ Docker provides the easiest deployment method with consistent environments acros
    ```bash
    # PowerShell Core (Windows/Linux/macOS):
    ./up.ps1 -AdminApp
-   
+
    # Linux/macOS:
    cd adminapp
    docker compose up -d
@@ -70,19 +70,31 @@ For production environments, modify the following:
    # Use strong, unique passwords
    POSTGRES_PASSWORD=your-secure-password
    KEYCLOAK_ADMIN_PASSWORD=your-keycloak-password
-   
+
    # Set production URLs
    VITE_API_URL=https://yourdomain.com/adminapp-api
    FE_URL=https://yourdomain.com/adminapp
    MY_URL=https://yourdomain.com/adminapp-api
-   
+
    # This line is only necessary when you are using a self-signed certificate.
    NODE_EXTRA_CA_CERTS=/app/ssl/your-production-cert.crt
-   
+
    # Administrator credentials
    KEYCLOAK_ADMIN=admin
    KEYCLOAK_ADMIN_PASSWORD=admin
+
+   # Frontend UI Configuration
+   VITE_STARTING_GUIDE=https://docs.ed-fi.org/reference/admin-app-v4/system-administrators/global-administration-tasks
+   VITE_CONTACT=https://community.ed-fi.org/
+   VITE_APPLICATION_NAME="Ed-Fi Admin App"
+   VITE_IDP_ACCOUNT_URL=https://yourdomain.com/auth/realms/edfi/account/
    ```
+
+  :::note
+  **Important:** The `VITE_IDP_ACCOUNT_URL` value may differ from your Keycloak admin console URL.
+  This should point to the **account management interface** (`/auth/realms/{realm-name}/account/`), not the admin console.
+  Ensure this matches your actual Keycloak realm configuration and domain.
+  :::
 
 2. **SSL Certificates**: Replace self-signed certificates with production certificates
 
@@ -157,9 +169,9 @@ You can deploy the Node.js backend directly to IIS using only iisnode. This appr
            </rule>
          </rules>
        </rewrite>
-       
+
        <!-- iisnode configuration -->
-       <iisnode 
+       <iisnode
          nodeProcessCommandLine="node.exe"
          watchedFiles="web.config;*.js"
          loggingEnabled="true"
@@ -181,7 +193,7 @@ You can deploy the Node.js backend directly to IIS using only iisnode. This appr
          recycleSignalEnabled="false"
          idlePageOutTimePeriod="0"
          configOverrides="iisnode.yml" />
-       
+
        <!-- Default document -->
        <defaultDocument>
          <files>
@@ -189,11 +201,11 @@ You can deploy the Node.js backend directly to IIS using only iisnode. This appr
            <add value="main.js" />
          </files>
        </defaultDocument>
-       
+
        <!-- Error pages for detailed debugging -->
        <httpErrors errorMode="Detailed"/>
      </system.webServer>
-     
+
      <system.web>
        <compilation debug="true"/>
      </system.web>
@@ -313,8 +325,27 @@ See [Troubleshooting](troubleshooting.md#backend-troubleshooting) section in cas
    ```xml
    VITE_API_URL=http://localhost:3333
    VITE_OIDC_ID=1
-   VITE_HELP_GUIDE=http://docs.ed-fi.org/
+   VITE_HELP_GUIDE=https://docs.ed-fi.org/
+   VITE_STARTING_GUIDE=https://docs.ed-fi.org/reference/admin-app-v4/system-administrators/global-administration-tasks
+   VITE_CONTACT=https://community.ed-fi.org/
+   VITE_APPLICATION_NAME="Ed-Fi Admin App"
+   VITE_IDP_ACCOUNT_URL=https://localhost/auth/realms/edfi/account/
    ```
+
+   **Environment Variable Descriptions:**
+   - `VITE_API_URL`: Backend API endpoint
+   - `VITE_OIDC_ID`: OpenID Connect configuration ID from database
+   - `VITE_HELP_GUIDE`: URL to general help documentation
+   - `VITE_STARTING_GUIDE`: URL to getting started/system administrator guide
+   - `VITE_CONTACT`: URL to community support or contact page
+   - `VITE_APPLICATION_NAME`: Display name shown in the UI (customize for branding)
+   - `VITE_IDP_ACCOUNT_URL`: Identity provider account management page URL
+
+   :::note
+   **Important:** The `VITE_IDP_ACCOUNT_URL` value may differ from your Keycloak admin console URL.
+   This should point to the **account management interface** (`/auth/realms/{realm-name}/account/`), not the admin console.
+   Ensure this matches your actual Keycloak realm configuration and domain.
+   :::
 
 2. **Build the frontend**:
 
@@ -459,7 +490,7 @@ See [Troubleshooting](troubleshooting.md#frontend-troubleshooting) section in ca
    Description=Ed-Fi Admin App API
    After=network.target postgresql.service
    Wants=postgresql.service
-   
+
    [Service]
    Type=simple
    User=edfiadminapp
@@ -469,18 +500,18 @@ See [Troubleshooting](troubleshooting.md#frontend-troubleshooting) section in ca
    Restart=always
    RestartSec=10
    Environment=NODE_ENV=production
-   
+
    # Security settings
    NoNewPrivileges=true
    PrivateTmp=true
    ProtectSystem=strict
    ProtectHome=true
    ReadWritePaths=/opt/edfiadminapp/logs
-   
+
    [Install]
    WantedBy=multi-user.target
    EOF
-   
+
    sudo systemctl daemon-reload
    sudo systemctl enable edfiadminapp-api
    sudo systemctl start edfiadminapp-api
@@ -503,29 +534,29 @@ See [Troubleshooting](troubleshooting.md#frontend-troubleshooting) section in ca
        server_name your-domain.com;
        return 301 https://$server_name$request_uri;
    }
-   
+
    server {
        listen 443 ssl http2;
        server_name your-domain.com;
-       
+
        ssl_certificate /path/to/your/certificate.crt;
        ssl_certificate_key /path/to/your/private.key;
        ssl_protocols TLSv1.2 TLSv1.3;
        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384;
        ssl_prefer_server_ciphers off;
-       
+
        # Frontend application
        location /adminapp/ {
            alias /opt/edfiadminapp/dist/packages/fe/;
            try_files $uri $uri/ /adminapp/index.html;
-           
+
            # Cache static assets
            location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$ {
                expires 1y;
                add_header Cache-Control "public, immutable";
            }
        }
-       
+
        # Backend API
        location /adminapp-api/ {
            proxy_pass http://localhost:3333/;
@@ -541,7 +572,7 @@ See [Troubleshooting](troubleshooting.md#frontend-troubleshooting) section in ca
        }
    }
    EOF
-   
+
    sudo ln -s /etc/nginx/sites-available/edfiadminapp /etc/nginx/sites-enabled/
    sudo nginx -t
    sudo systemctl reload nginx
@@ -574,7 +605,7 @@ module.exports = {
     DB_PORT: 5432,
     DB_DATABASE: 'database_name'
   },
-  
+
   // Authentication Configuration (OIDC)
   AUTH0_CONFIG_SECRET_VALUE: {
     ISSUER: 'https://your-oidc-provider/realms/edfi',
@@ -594,34 +625,34 @@ module.exports = {
   },
   //this should match with a user in your Idp
   ADMIN_USERNAME: 'admin@example.com',
-  
+
   // Database Encryption (for storing sensitive data)
   DB_ENCRYPTION_SECRET_VALUE: {
     // Can replace with `openssl rand -hex 32` or `node -e "console.log('KEY: '+ require('crypto').randomBytes(32).toString('hex'))"
     KEY: 'your-32-character-encryption-key'
   },
-  
+
   // Application URLs
   FE_URL: 'https://your-domain.com/adminapp',
   MY_URL: 'https://your-domain.com/adminapp-api',
   YOPASS_URL: 'https://your-domain.com/yopass', // Optional
-  
+
   // API Configuration
   API_PORT: 3333,
   _OPEN_API: false, // Set to true for Swagger documentation
-  
+
   // Database Options
   DB_SSL: true, // Use SSL for database connections
   DB_RUN_MIGRATIONS: true, // Auto-run database migrations
   DB_SYNCHRONIZE: false, // Never use in production
   TYPEORM_LOGGING: false, // Enable for debugging
-  
+
   // Optional Features
   USE_YOPASS: false, // Enable Yopass integration
-  
+
   // Sync Schedule (cron format)
   SB_SYNC_CRON: '0 2 * * *', // Daily at 2 AM
-  
+
   // Security
   WHITELISTED_REDIRECTS: ['https://your-domain.com/adminapp']
 };
@@ -669,7 +700,30 @@ VITE_BASE_PATH=/adminapp/
 
 # Help Documentation
 VITE_HELP_GUIDE=https://docs.ed-fi.org/
+
+# UI Configuration
+VITE_STARTING_GUIDE=https://docs.ed-fi.org/reference/admin-app-v4/system-administrators/global-administration-tasks
+VITE_CONTACT=https://community.ed-fi.org/
+VITE_APPLICATION_NAME="Ed-Fi Admin App"
+VITE_IDP_ACCOUNT_URL=https://your-domain.com/auth/realms/edfi/account/
 ```
+
+**Variable Descriptions:**
+
+- `VITE_STARTING_GUIDE`: URL to the getting started or system administrator guide, displayed in the help menu
+- `VITE_CONTACT`: URL to the community support or contact page where users can get help
+- `VITE_APPLICATION_NAME`: Display name for the application shown in the UI (can be customized for branding)
+- `VITE_IDP_ACCOUNT_URL`: URL to the identity provider's account management page where users can manage their profile and authentication settings
+
+:::note
+**Important:** The `VITE_IDP_ACCOUNT_URL` value may differ from your Keycloak admin console URL.
+This should point to the **account management interface** (`/auth/realms/{realm-name}/account/`), not the admin console.
+
+- Local development: `https://localhost/auth/realms/edfi/account/`
+- Production: `https://auth.yourdomain.com/auth/realms/production/account/`
+- Custom realm: `https://keycloak.example.org/auth/realms/school-district/account/`
+
+:::
 
 These variables must be set during the build process:
 
@@ -679,6 +733,10 @@ VITE_API_URL=https://your-domain.com/adminapp-api \
 VITE_OIDC_ID=1 \
 VITE_BASE_PATH=/adminapp/ \
 VITE_HELP_GUIDE=https://your-help-site.com/ \
+VITE_STARTING_GUIDE=https://docs.ed-fi.org/reference/admin-app-v4/system-administrators/global-administration-tasks \
+VITE_CONTACT=https://community.ed-fi.org/ \
+VITE_APPLICATION_NAME="Ed-Fi Admin App" \
+VITE_IDP_ACCOUNT_URL=https://your-domain.com/auth/realms/edfi/account/ \
 npm run build:fe
 ```
 
@@ -693,7 +751,7 @@ npm run build:fe
    CREATE DATABASE sbaa;
    CREATE USER edfiadminapp WITH PASSWORD 'your_secure_password';
    GRANT ALL PRIVILEGES ON DATABASE sbaa TO edfiadminapp;
-   
+
    -- Connect to sbaa database
    \c sbaa
    GRANT ALL ON SCHEMA public TO edfiadminapp;
@@ -706,13 +764,13 @@ npm run build:fe
    ssl = on
    ssl_cert_file = 'server.crt'
    ssl_key_file = 'server.key'
-   
+
    # Connection settings
    max_connections = 100
    shared_buffers = 256MB
    effective_cache_size = 1GB
    work_mem = 4MB
-   
+
    # Logging
    log_statement = 'none'  # Don't log SQL statements
    log_min_duration_statement = 1000  # Log slow queries
@@ -795,7 +853,7 @@ The Admin App uses OpenID Connect (OIDC) for authentication. Keycloak is the rec
 The OIDC configuration is stored in the application database. Insert configuration:
 
 ```sql
-INSERT INTO oidc_client (issuer, "clientId", "clientSecret", scope) VALUES 
+INSERT INTO oidc_client (issuer, "clientId", "clientSecret", scope) VALUES
 ('https://your-domain.com/auth/realms/edfi', 'edfiadminapp', 'your-client-secret', '');
 ```
 
