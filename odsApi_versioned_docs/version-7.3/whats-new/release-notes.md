@@ -15,6 +15,33 @@ the Git commit history to find the changes for that specific update.
 
 :::
 
+## Ed-Fi ODS / API v7.3.1 - Release Notes
+
+### Important Epics
+
+* ODS-6652 - Align ODS /API to v6.0 Data Standard
+
+### General Improvements & Enhancements
+
+* ODS-4459 - Use .NET Feature Management library for API features
+* ODS-5622 - Make the ODSStartup configurable
+* ODS-6605 - Update Secret Hash Algorithm
+* ODS-6610 - Update all workflow action dependencies to latest
+* ODS-6623 - Replace use of nuget.exe with dotnet cli
+* ODS-6639 - Sandbox Admin for Support Assigning Multiple EdOrgs and Namespaces to Vendor Applications
+* ODS-6661 - Publish Multi-platform docker images (ARM Architecture Support)
+* ODS-6662 - Add a configuration option to exclude Domains from the OpenAPI spec
+* ODS-6696 - Add Application Name to Discovery API
+* ODS-6699 - Add Domain Information Display to Swagger UI tag description
+* ODS-6717 - Update dependencies
+
+### Bug Fixes
+
+* ODS-6612 - Initialization of Redis cache fails with more than 512k USI/UniqueID entries
+* ODS-6723 - Error Response for Student Delete is reporting an abstract base entity
+* ODS-6725 - Link field is not updated after reference update
+* ODS-6741 - ASP.NET Core Runtime Upgrade for Security Patch (CVE-2025-55315)
+
 ## Ed-Fi ODS / API v7.3-patch2 - Release Notes
 
 ### Bug Fixes

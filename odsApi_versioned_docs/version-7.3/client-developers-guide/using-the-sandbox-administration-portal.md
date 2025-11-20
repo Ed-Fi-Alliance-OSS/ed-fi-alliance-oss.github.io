@@ -50,10 +50,12 @@ for more information.
 
 Access to the Sandbox Administration Portal is by invitation only. In the
 invitation e-mail, a link will be provided that will direct you to set a
-password for your account. Upon logging in, you will see the existing sandboxes
-associated with your user, along with their application key and secret.
+password for your account. Upon logging in, you can navigate to **Manage
+Sandboxes** page to see the existing sandboxes associated with your user, along
+with their application key and secret.
 
-![Sandbox Administration Portal with configured sandboxes](/img/reference/ods-api/sandbox.png)
+![Sandbox Administration Portal with configured
+sandboxes](/img/reference/ods-api/sandbox.webp)
 
 **Figure 2.** Sandbox Administration Portal with configured sandboxes
 
@@ -67,15 +69,8 @@ The "Test Admin" Vendor comes pre-configured with the namespace prefixes
 satisfies your testing requirements, you can skip this section.
 
 Clicking on the **Add Vendor** button opens a modal where you can specify a
-namespace prefix alongside its contact information.
-
-:::info
-
-Although the ODS API supports multiple namespace prefixes associated with a
-Vendor, the Sandbox Administration Portal only supports assigning a single
-namespace prefix in the "Add Vendor" modal.
-
-:::
+namespace prefix alongside its contact information. Multiple namespace prefixes
+may be separated by commas.
 
 To delete a Vendor, click on the trash icon next to it. This action also deletes
 any Applications associated with the Vendor. It does not remove associated
@@ -92,16 +87,9 @@ the `255901` and `19255901` Education Organizations. If this Application
 satisfies your testing requirements, you can skip this section.
 
 Clicking on the **Add Application** button opens a modal dialog box where you
-can specify a Vendor and an Education Organization. You must first create a
+can specify a Vendor and an Education Organization. Multiple
+EducationOrganizationIds may be separated by commas. You must first create a
 Vendor on the "Manage Vendors" page.
-
-:::info
-
-Although the ODS API supports multiple Education Organizations associated with
-an Application, the Sandbox Administration Portal only supports assigning a
-single Education Organization in the "Add Application" modal.
-
-:::
 
 To delete an Application, click on the trash icon next to it. It does not remove
 associated Sandboxes, which will appear in the Sandbox Orphan Report, where you

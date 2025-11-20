@@ -39,9 +39,15 @@ The optional Serialized Data feature was introduced to enhance performance by st
 
 ---
 
+## Affected Versions
+
+The following ODS/API version is affected:
+
+- 7.3.0
+
 ## Patch Availability
 
-Fixes have been released in a patch for **ODS/API v7.3**.
+Fixes have been released in a patch for **ODS/API v7.3.0**.
 
 ### NuGet Packages
 

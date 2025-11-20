@@ -61,7 +61,7 @@ use them in the following articles:
 
 :::note
 
-The Visual Studio Extension can be found
-[here](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.ProjectTemplates.Installer/overview/7.3.57).
-
+The Visual Studio Extension is available at the following links:
+[v7.3.1](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.ProjectTemplates.Installer/overview/7.3.10266).
+[v7.3.0](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.ProjectTemplates.Installer/overview/7.3.57).
 :::

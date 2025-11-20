@@ -671,7 +671,7 @@ can be found in
 or alternatively in `appsettings.Development.json` file. We recommend that you
 change your password as soon as you log in.
 
-![Sandbox Administration Portal](/img/reference/ods-api/sandbox.png)
+![Sandbox Administration Portal](/img/reference/ods-api/sandbox.webp)
 
 As the name implies, Sandbox Administration Portal is useful for development
 machines and sandbox instances of the ODS / API, but should not be present on

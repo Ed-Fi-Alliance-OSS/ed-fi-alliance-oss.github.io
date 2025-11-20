@@ -85,7 +85,7 @@ do this step. Do that now if you haven't already.
 MetaEd allows you to target different Ed-Fi technology stack and data model
 versions. Confirm that your MetaEd IDE is targeting v7.3 by following the
 instructions in the [Version
-Targeting](https://edfi.atlassian.net/wiki/spaces/METAED20/pages/23709491/MetaEd+IDE+-+Creating+and+Maintaining+Your+Extension#MetaEdIDE-CreatingandMaintainingYourExtension-Step4.AddtheCorrectDataModelProject)
+Targeting](/reference/metaed/ide-user-guide/creating-and-maintaining-your-extension#step-4-add-the-correct-data-model-project)
 documentation for the MetaEd IDE.
 
 The desired model for the latest ODS / API is "ed-fi-model-5.2".
@@ -94,7 +94,7 @@ The desired model for the latest ODS / API is "ed-fi-model-5.2".
 
 Create a new extension by following the steps in [MetaEd IDE - Creating and
 Maintaining Your
-Extension](https://edfi.atlassian.net/wiki/spaces/METAED20/pages/23709491/MetaEd+IDE+-+Creating+and+Maintaining+Your+Extension).
+Extension](/reference/metaed/ide-user-guide/creating-and-maintaining-your-extension).
 For this example, place your extension in a folder called
 "AlternativeEducationProgram".
 
@@ -148,7 +148,7 @@ We're going to add an Association source file to the project we just created.
 Note that MetaEd files are required to be organized into subfolders. Folders are
 generally named after their entity type. When you followed the steps in [MetaEd
 IDE - Creating and Maintaining Your
-Extension](https://edfi.atlassian.net/wiki/spaces/METAED20/pages/23709491/MetaEd+IDE+-+Creating+and+Maintaining+Your+Extension)
+Extension](/reference/metaed/ide-user-guide/creating-and-maintaining-your-extension)
 one of the folders you created was called "Association". We will now add a
 MetaEd source file to that folder.
 
@@ -478,7 +478,7 @@ development work into production.
     Working through this example is a great next step if you want to move on to
     more complicated extension scenarios.
 * [The MetaEd
-    Cookbook](https://edfi.atlassian.net/wiki/spaces/METAED20/pages/23709867/Cookbook+-+Introduction).
+    Cookbook](/reference/metaed/cookbook).
     This documentation provides excellent examples of common scenarios, from the
     simple to very complex.
 

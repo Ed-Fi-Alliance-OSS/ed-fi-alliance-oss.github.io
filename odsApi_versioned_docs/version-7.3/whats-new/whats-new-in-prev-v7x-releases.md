@@ -11,6 +11,74 @@ v7.x suite of releases and provides links to additional documentation.
 
 Detail about each change follows.
 
+## Improvements & Enhancements - Version v7.3.0
+
+### Data Model Changes
+
+Ed-Fi ODS / API v7.3.0 adds support for Ed-Fi Data Standard v5.2 implementation
+without introducing breaking changes from the previous Data Standard v5.x.
+Additionally, Ed-Fi ODS/API v7.3.0 continues to support Data Standard v4.0
+implementation.
+
+### Partitioned Cursor-Based Paging
+
+Ed-Fi ODS / API v7.3.0 introduces partitioned cursor-based paging to significantly
+reduce query overhead when paging through large datasets. This approach provides
+an alternative to traditional offset-based pagination. It uses lightweight,
+sequential page tokens while retaining parallel processing capabilities through
+the partitions endpoint. For instructions on using this feature, refer to
+[Improve Paging Performance with Partitioned Cursor
+Paging](./../client-developers-guide/improve-paging-performance-cursor-paging.md).
+To learn more about the design and the performance improvements it offers, refer
+to [Cursor Paging for Improved Data Out
+Performance](./../technical-articles/cursor-paging-implementation-for-improved-data-out-performance.md)
+
+### Serialized Data Storage for Optimized API Request Processing
+
+Ed-Fi ODS / API v7.3.0 offers an optional feature that enhances performance by
+storing resource data in a serialized binary format on the "root" record of the
+resource's underlying table in the ODS. This serialized representation is then
+used as the primary data source for servicing future API requests, significantly
+reducing the SQL executed by the API to retrieve data while processing API
+requests. Refer to [Serialized
+Data](./../platform-dev-guide/features/serialized-data.md) for details.
+
+### Search by Identification Code
+
+Ed-Fi ODS / API v7.3.0 introduces the ability to query resources by identification
+codes, enabling just-in-time lookups instead of requiring maintenance of a local
+mappings of identification codes used within the ecosystem. This enhancement
+simplifies API integration for clients rostered with identification codes that
+differ from identifiers used by the API host.
+
+### Token Info and Permissions
+
+Ed-Fi ODS / API v7.3.0 enhances the `/oauth/token_info` endpoint to include
+resource-level permissions in addition to namespace prefixes, associated
+education organizations, and profiles assigned to a token. Refer to [Token
+Info](./../client-developers-guide/authorization.md#token-info) for details.
+
+### Extensible Authorization Filtering
+
+Ed-Fi ODS / API v7.3.0 introduces powerful and flexible mechanism for defining
+authorization strategies without requiring code changes. Implementers can create
+custom database views tailored to specific authorization needs, such as
+restricting access by student program enrollment or grade level. Granular
+security setup can be achieved simply by creating a custom database view and
+configuring the necessary metadata without requiring recompilation or API
+process restart. This enhancement simplifies implementation of nuanced security
+strategies, offering greater control and adaptability for diverse use cases.
+Refer to articles on [Authorizing Requests Using Custom Database
+Views](./../technical-articles/authorizing-requests-using-custom-database-views.md)
+and [How To: Use Custom View-Based
+Authorization](./../how-to-guides/how-to-use-custom-view-based-authorization.md)
+for additional details.
+
+### MetaEd IDE v4.5
+
+Implementing extensions in Ed-Fi ODS / API v7.3.0 requires implementers to update
+to MetaEd IDE v4.5 or higher.
+
 ## Improvements & Enhancements - Version v7.2
 
 ### Data Model Changes in v7.2
@@ -43,7 +111,7 @@ traceability of API error responses, benefiting both developers and users.
 
 ### MetaEd IDE v4.4
 
-Implementing extensions in Ed-Fi ODS / API v7.0 requires implementers to update
+Implementing extensions in Ed-Fi ODS / API v7.2 requires implementers to update
 to MetaEd IDE v4.4 or higher.
 
 ## Improvements & Enhancements - Version v7.1
