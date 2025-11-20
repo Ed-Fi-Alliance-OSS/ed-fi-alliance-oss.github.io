@@ -20,11 +20,11 @@ ODS / API Platform v7.3.1 and provides links to additional documentation.
 ### Data Model Changes
 
 Ed-Fi ODS / API v7.3.1 adds [Ed-Fi Data Standard
-v5.6](/reference/data-exchange/data-standard/) implementation, which introduced
+v6.0](/reference/data-exchange/data-standard/) implementation, which introduced
 breaking changes to the core data model for domains commonly used by student
 information systems and assessment systems. Refer to [What's New in Data
-Standard v5](/reference/data-exchange/data-standard/whats-new/) for
-details. Additionally, Ed-Fi ODS / API v7.3 continues to support implementations
+Standard v6](/reference/data-exchange/data-standard/whats-new/) for
+details. Additionally, Ed-Fi ODS / API v7.3.1 continues to support implementations
 of Ed-Fi Data Standard v5.2 and v4.0.
 
 ### Domain Metadata in OpenAPI Specification
@@ -63,4 +63,5 @@ Details](./../platform-dev-guide/configuration/configuration-details) page.
 
 Refer to [What's New in Previous v7.x
 Releases](./whats-new-in-prev-v7x-releases.md) for details on the features added
-in previous v7.x releases of the Ed-Fi ODS / API.
+in previous v7.x releases.
+Refer to [Downloads](./../downloads) for the previous v7.3.0 release tags and binaries.
