@@ -24,8 +24,8 @@ v6.0](/reference/data-exchange/data-standard/) implementation, which introduced
 breaking changes to the core data model for domains commonly used by student
 information systems and assessment systems. Refer to [What's New in Data
 Standard v6](/reference/data-exchange/data-standard/whats-new/) for
-details. Additionally, Ed-Fi ODS / API v7.3.1 continues to support implementations
-of Ed-Fi Data Standard v5.2 and v4.0.
+details. Additionally, Ed-Fi ODS / API v7.3.1 continues to support
+implementations of Ed-Fi Data Standard v5.2 and v4.0.
 
 ### Domain Metadata in OpenAPI Specification
 
@@ -37,10 +37,11 @@ easier to identify which Ed-Fi Data Standard domain each resource or descriptor
 belongs to. The Swagger UI application now includes a configuration option to
 enable or disable the display of domain information.
 
-With the inclusion of EPDM, Data Standard v6.0 significantly increases the
-number of resources. To improve readability, the API includes a configuration
-setting that allows implementers to exclude unused domains from the OpenAPI
-spec.
+With the expanded [Educator
+Program](/reference/data-exchange/data-standard/whats-new/whats-new-v60#educator-preparation-data-model-community-edition-migrated-to-core-entities)
+core coverage, Data Standard v6.0 significantly increases the number of
+resources. To improve readability, the API includes a configuration setting that
+allows implementers to exclude unused domains from the OpenAPI spec.
 
 See [Configuration
 Details](./../platform-dev-guide/configuration/configuration-details) page for
@@ -63,5 +64,5 @@ Details](./../platform-dev-guide/configuration/configuration-details) page.
 
 Refer to [What's New in Previous v7.x
 Releases](./whats-new-in-prev-v7x-releases.md) for details on the features added
-in previous v7.x releases.
-Refer to [Downloads](./../downloads) for the previous v7.3.0 release tags and binaries.
+in previous v7.x releases. Refer to [Downloads](./../downloads) for the previous
+v7.3.0 release tags and binaries.
