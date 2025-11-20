@@ -271,7 +271,7 @@ PGPASSFILE                     C:\PGDockerSetup\pgpass.conf
 
 </details>
 
-## Step 3. Download the Ed-Fi ODS / API v7.3 Code
+## Step 3. Download the Ed-Fi ODS / API v7.3.1 Code
 
 The Ed-Fi ODS / API source code is contained in two Ed-Fi repositories hosted
 by GitHub.
@@ -280,8 +280,8 @@ by GitHub.
 
 The Ed-Fi ODS / API can be found in the repository links below:
 
-* [Ed-Fi-ODS/v7.3](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v7.3-patch2)
-* [Ed-Fi-ODS-Implementation/v7.3](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/tree/v7.3-patch2)
+* [Ed-Fi-ODS/v7.3.1](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v7.3.1)
+* [Ed-Fi-ODS-Implementation/v7.3.1](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/tree/v7.3.1)
 
 Use a Git client (such as [GitHub Desktop](https://desktop.github.com/)) or a
 Git command line tool to Git Clone each of the repository links described above.
@@ -319,7 +319,7 @@ When you clone a repository, ensure that you have the correct tag checked out in
 your client before you proceed.
 
 ```powershell
-git checkout tags/v7.3-patch2 -b <branch>
+git checkout tags/v7.3.1 -b <branch>
 ```
 
 :::
@@ -357,12 +357,12 @@ Clone. You can do so by following these instructions:
 2. In Windows Explorer, right-click on each of the downloaded ZIP files and
    select Extract All… Enter C:\\ for the target folder. (You can extract the
    files to any directory, but these instructions assume you've extracted to
-   C:\\.) The ZIP files contain an embedded folder ending in "-v7.3" (or
+   C:\\.) The ZIP files contain an embedded folder ending in "-v7.3.1" (or
    "-main" if downloading latest daily source). For example, the "Ed-Fi ODS
-   ZIP" archive contents will be extracted into C:\\Ed-Fi-ODS-v7.3.
+   ZIP" archive contents will be extracted into C:\\Ed-Fi-ODS-v7.3.1.
 3. After the extractions are complete, rename the folders to remove
-    the -v7.3 (or "-main") from the folder names. For example, change
-    C:\\Ed-Fi-ODS-v7.3 to C:\\Ed-Fi-ODS.
+    the -v7.3.1 (or "-main") from the folder names. For example, change
+    C:\\Ed-Fi-ODS-v7.3.1 to C:\\Ed-Fi-ODS.
 4. When the extraction and renaming are complete, there should be two folders
     for the ODS / API source code.
 
@@ -671,7 +671,7 @@ can be found in
 or alternatively in `appsettings.Development.json` file. We recommend that you
 change your password as soon as you log in.
 
-![Sandbox Administration Portal](/img/reference/ods-api/sandbox.png)
+![Sandbox Administration Portal](/img/reference/ods-api/sandbox.webp)
 
 As the name implies, Sandbox Administration Portal is useful for development
 machines and sandbox instances of the ODS / API, but should not be present on
