@@ -141,13 +141,8 @@ environment variables.
 
 ```json
 {
-    "ApiSettings": {
-        "Features": [
-            {
-                "IsEnabled": true,
-                "Name": "MultiTenancy"
-            }
-        ]
+    "FeatureManagement": {
+        "MultiTenancy": true
     },
     "Tenants": {
         "Tenant1": {
