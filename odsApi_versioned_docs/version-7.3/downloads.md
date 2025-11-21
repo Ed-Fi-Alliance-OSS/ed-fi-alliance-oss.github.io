@@ -14,6 +14,12 @@ repository.
 * [Binary Releases
   7.3.0](./getting-started/binary-installation/binary-releases.md#ods-api-v730-packages)
 
+## Docker Downloads
+
+* [Docker Images](./getting-started/getting-started-docker-deployment.md)
+* [Docker Images
+  7.3.0](./getting-started/getting-started-docker-deployment.md#ods-api-v730-images)
+
 ## Source & Code Downloads
 
 * [Ed-Fi-ODS/v7.3.1](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v7.3.1)
