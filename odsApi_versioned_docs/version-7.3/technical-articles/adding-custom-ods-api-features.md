@@ -26,23 +26,24 @@ namespace EdFi.Ods.Services
 
 ```csharp
 using Autofac;
-using EdFi.Common.Configuration;
-using EdFi.Ods.Common.Configuration;
+using EdFi.Ods.Common.Constants;
 using EdFi.Ods.Common.Container;
+using EdFi.Ods.Common.Infrastructure.Configuration;
 using EdFi.Ods.TestService;
+using Microsoft.FeatureManagement;
 
 namespace EdFi.Ods.Features.Container.Modules
 {
     public class TestModule : ConditionalModule
     {
-  public TestModule(ApiSettings apiSettings) : base(apiSettings, nameof(TestModule)) { }
+      public TestModule(IFeatureManager featureManager) : base(featureManager) { }
 
-     public override bool IsSelected() => IsFeatureEnabled(ApiFeature.TestService);
+      public override bool IsSelected() => IsFeatureEnabled(ApiFeature.TestService);
 
-        public override void ApplyConfigurationSpecificRegistrations(ContainerBuilder builder)
-        {
-   // TODO add components to register.
-        }
+      public override void ApplyConfigurationSpecificRegistrations(ContainerBuilder builder)
+      {
+        // TODO add components to register.
+      }
     }
 }
 ```
@@ -51,14 +52,10 @@ namespace EdFi.Ods.Features.Container.Modules
 
 ```json
 {
-  ...
-  "Features": [
-      {
-        "Name": "TestService",
-        "IsEnabled": true
-      }
-      ...
-  ]
-  ...
+  "FeatureManagement": {
+    ...
+    "TestService": true
+    ...
+  }
 }
 ```

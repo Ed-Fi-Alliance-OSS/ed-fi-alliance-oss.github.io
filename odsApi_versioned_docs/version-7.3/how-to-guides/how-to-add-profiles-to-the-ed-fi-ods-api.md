@@ -77,13 +77,11 @@ Ensure that the API Profiles feature is enabled by looking at the
 Points” folder in the solution.
 
 ```json
-"Features": [
-    {
-        "Name": "Profiles",
-        "IsEnabled": true
-    },
-    ...
-]
+"FeatureManagement": {
+  ...
+  "Profiles": true,
+  ...
+}
 ```
 
 ## Step 3. Verify that the Profile endpoints are visible

@@ -116,17 +116,12 @@ settings by consulting the samples provided below.
     ```json
     {
       "InstallType": "MultiTenant",
+      "FeatureManagement": {
+          "MultiTenancy": true
+      },
       "ApiSettings": {
           "Engine": "SQLServer",
-          "OdsTokens": "Tenant1ODS;Tenant2ODS",
-          "Features": [
-            ...
-            {
-                "IsEnabled": true,
-                "Name": "MultiTenancy"
-            },
-            ...
-          ]
+          "OdsTokens": "Tenant1ODS;Tenant2ODS"
       },
       "Tenants" : {
         "Tenant1": {
@@ -149,17 +144,12 @@ settings by consulting the samples provided below.
     ```json
     {
       "InstallType": "MultiTenant",
+      "FeatureManagement": {
+          "MultiTenancy": true
+      },
       "ApiSettings": {
           "Engine": "PostgreSQL",
-          "OdsTokens": "Tenant1ODS;Tenant2ODS",
-          "Features": [
-            ...
-            {
-                "IsEnabled": true,
-                "Name": "MultiTenancy"
-            },
-            ...
-          ]
+          "OdsTokens": "Tenant1ODS;Tenant2ODS"
       },
       "Tenants" : {
         "Tenant1": {
