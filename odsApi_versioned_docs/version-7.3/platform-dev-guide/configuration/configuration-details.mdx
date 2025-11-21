@@ -133,6 +133,16 @@ optional configuration values include:
       Optionally provides the name of a tenant. This setting is required if using [Multi Tenant Configuration](./single-and-multi-tenant-configuration.md#multi-tenant-configuration). A valid tenant name is required for SwaggerUI to retrieve the API metadata.
     </td>
   </tr>
+  <tr style={{verticalAlign: 'top'}}>
+    <td>:new: ShowDomains</td>
+    <td>true</td>
+    <td>Displays Ed-Fi resource domain badges in Swagger UI (default: true).</td>
+  </tr>
+  <tr style={{verticalAlign: 'top'}}>
+    <td>:new: StartupClassName</td>
+    <td>CustomStartup</td>
+    <td>Specifies the name of the Startup class the application should use. This allows overriding the default Startup class when initializing the SwaggerUI.</td>
+  </tr>
 </table>
 
 ### EdFi.Ods.SandboxAdmin
@@ -398,31 +408,31 @@ optional configuration values include:
   </tr>
 
   <tr style={{verticalAlign: 'top'}}>
-    <td>:new: ApiSettings:Features:SerializedData</td>
+    <td>:new: FeatureManagement:SerializedData</td>
     <td>true</td>
     <td>Activates optimized behavior in the API to [serialize the resource data](./../features/serialized-data.md) into a binary representation that is stored on the "root" record of the resource's underlying table in the ODS. This serialized representation is then used as the primary source for servicing future API requests. While the data in the ODS tables is still maintained, it is only used as the canonical source when the serialized data is invalidated by modification of the ODS data by other processes (detected by a change to `LastModifiedDate`).</td>
   </tr>
 
   <tr style={{verticalAlign: 'top'}}>
-    <td>:new: ApiSettings:Features:ResourceLinks</td>
+    <td>:new: FeatureManagement:ResourceLinks</td>
     <td>true</td>
     <td>Controls the inclusion of `link` objects in references in responses from the Data Management resource endpoints. Disabling this feature is a server-side optimization reducing database load, but comes with the risk of breaking API client integrations that utilize them.</td>
   </tr>
 
   <tr style={{verticalAlign: 'top'}}>
-    <td>ApiSettings:Features:Extensions</td>
+    <td>:new: FeatureManagement:Extensions</td>
     <td>true</td>
     <td>Enables the API endpoints created for all Extensions. An installation that is not customized at all and still has the GrandBend and Sample extensions can disable this feature in production.</td>
   </tr>
 
   <tr style={{verticalAlign: 'top'}}>
-    <td>ApiSettings:Features:UniqueIdValidation</td>
+    <td>:new: FeatureManagement:UniqueIdValidation</td>
     <td>false</td>
     <td>Enables [Unique ID System Integration](../../technical-articles/unique-id-system-integration.md). Must implement IUniqueIdToIdValueMapper and register within the implementation within the WebApi.</td>
   </tr>
 
   <tr style={{verticalAlign: 'top'}}>
-    <td>ApiSettings:Features:TokenInfo</td>
+    <td>:new: FeatureManagement:TokenInfo</td>
     <td>true</td>
     <td>Enables the token\_info introspective endpoint.</td>
   </tr>
@@ -443,6 +453,17 @@ optional configuration values include:
     <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>:new: ApiSettings<br/>:Behaviors:AllowWhitespaceOnlyValues</p></td>
     <td>false</td>
     <td>Overrides the default behavior changed in v7.3 of not allowing whitespace-only values in (non-key) properties.</td>
+  </tr>
+
+  <tr style={{verticalAlign: 'top'}}>
+    <td>:new: StartupClassName</td>
+    <td>CustomStartup</td>
+    <td>Specifies the name of the Startup class the application should use. This allows overriding the default Startup class when initializing the API.</td>
+  </tr>
+  <tr style={{verticalAlign: 'top'}}>
+    <td>:new: DomainsExcludedFromOpenApi</td>
+    <td>Discipline, Staff</td>
+    <td>Specifies which domains should be removed from the OpenAPI specification. Any endpoints or descriptors associated with the listed domains will be excluded.</td>
   </tr>
 </table>
 

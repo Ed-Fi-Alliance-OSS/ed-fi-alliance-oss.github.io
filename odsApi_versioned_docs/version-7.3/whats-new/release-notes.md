@@ -25,6 +25,7 @@ the Git commit history to find the changes for that specific update.
 
 * ODS-4459 - Use .NET Feature Management library for API features
 * ODS-5622 - Make the ODSStartup configurable
+* ODS-5623 - Make the SwaggerStartup configurable
 * ODS-6605 - Update Secret Hash Algorithm
 * ODS-6610 - Update all workflow action dependencies to latest
 * ODS-6623 - Replace use of nuget.exe with dotnet cli
