@@ -33,7 +33,7 @@ hide_table_of_contents: true
 | School | AdministrativeFundingControl | The type of education institution as classified by its funding source, for example public or private. |     |     |     |     |
 | GraduationPlan | CertificationRoute | The process, program, or pathway used to obtain a certification. |     |     |     |     |
 | School | CharterApprovalAgencyType | The type of agency that approved the establishment or continuation of a charter school. |     |     |     |     |
-| School | CharterStatus | A school or agency providing free public elementary or secondary education to eligible students under a specific charter granted by the state legislature or other appropriate authority and designated by such authority to be a charter school. |     |     |     |     |
+| School | CharterStatus | A school or agency providing free public elementary or secondary education to eligible students under a specific charter granted by the state legislature or other appropriate authority and designated by such authority to be a charter school. | Standard | Yes | Yes | Yes |
 | EducationOrganization | Country | The name of the country. It is strongly recommended that entries use only ISO 3166 2-letter country codes. |     |     |     |     |
 | GraduationPlan | CreditCategory |A categorization for the course transcript credits awarded in the course transcript. |     |     |     |     |
 | GraduationPlan | CreditType | The type of credits or units of value awarded for the completion of a course. |     |     |     |     |
