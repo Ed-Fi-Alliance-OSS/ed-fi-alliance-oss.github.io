@@ -37,7 +37,7 @@ These tenants are isolated "virtual environments" that allow users the ability t
 
 The diagram below depicts how an API client is routed to the correct ODS instance:
 
-![multi_tenant_routing.png](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/user-guide/multi_tenant_routing.PNG)
+![multi_tenant_routing.png](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/user-guide/multi_tenant_routing.png)
 
 Notice that the tenant ID that is part of the URL informs how to route API requests through the Ed-Fi API.
 
