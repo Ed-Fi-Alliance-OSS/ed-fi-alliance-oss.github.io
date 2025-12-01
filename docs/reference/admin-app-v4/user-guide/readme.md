@@ -28,7 +28,7 @@ After a successful login, you will be brought to the Admin App homepage which wi
 
 <!-- TODO: copy images into Ed-Fi Azure blob storage -->
 
-![Tenant List](https://docs.startingblocks.org/imgs/tenant_list.png)
+![Tenant List](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/user-guide/tenant_list.png)
 
 :::tip
 
@@ -46,18 +46,18 @@ On the left hand side, there are two sections to be aware of. At the top of the 
 * `Account` - Overview of your user team memberships and user role.
 * `Users` - Shows a list of users with access to your team within Admin App.
 
-![Top Left Navigation](https://docs.startingblocks.org/imgs/top_left_nav.png)
+![Top Left Navigation](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/user-guide/general-overview.png)
 
 The bottom half of the left side navigation bar lists out the Ed-Fi environments that your team has access to. Drilling down into any of these environments will list the Tenants, ODSs, Ed-Orgs, Vendors, Applications and Claimsets available to your team in that specific environment.
 
-![Bottom Left Navigation](https://docs.startingblocks.org/imgs/bottom_left_nav.png)
+![Bottom Left Navigation](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/user-guide/environment-bar-list.png)
 
 The bulk of useful functionality will be within these Ed-Fi environment specific resources.
 
 :::tip
 There is also a search box here for your convenience. Users can navigate directly to their chosen Ed-Fi tenant by typing the name into the search box. Users will be able to navigate to the tenant level resources directly through action buttons within the search results.
 
-![Search Box Example](https://docs.startingblocks.org/imgs/search_box_example.PNG)
+![Search Box Example](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/user-guide/search-box.png)
 :::
 
 ## Creating Applications
@@ -68,7 +68,7 @@ Before creating applications in Admin App make sure to understand the different 
 
 Users are able to create application credentials through Admin App.
 
-![Admin App Create Application](https://docs.startingblocks.org/imgs/sbaa_create_app.gif)
+![Admin App Create Application](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/user-guide/create-application.gif)
 
 1. Login and, on the left hand side under environments, choose the environment to create a new application.
 2. Click into the Ed-Fi tenant that the application will be associated with.
@@ -95,7 +95,7 @@ Users are able to create application credentials through Admin App.
 
 Admin App users are also able to delete or reset existing application credentials.
 
-![Admin App Manage Application](https://docs.startingblocks.org/imgs/sbaa_manage_app.gif)
+![Admin App Manage Application](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/user-guide/manage-credentials.gif)
 
 1. Navigate to `Applications` under the relevant Environment > Ed-Fi Tenant
 2. Search for the application in the table that you would like to delete or reset credentials for.

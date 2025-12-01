@@ -14,15 +14,15 @@ The Ed-Fi Admin App allows appropriately permissioned users to manage Vendors an
 
 1. Navigate to the `Vendors` section under Ed-Fi Environment > Ed-Fi Tenant.
 
-   ![sbaa_vendor_nav.gif](https://docs.startingblocks.org/imgs/sbaa_vendor_nav.gif)
+   ![sbaa_vendor_nav.gif](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/user-guide/vendor_nav.gif)
 
 2. If you have the appropriate permissions, you'll see the `+ New` button at the top right of the Vendors box. If not visible but expected, contact your system administrator.
 
-   ![new_vendor.png](https://docs.startingblocks.org/imgs/new_vendor.PNG)
+   ![new_vendor.png](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/user-guide/new-vendor-button.png)
 
 3. After clicking the `+ New` button on the vendors page, a `Create New Vendor` form will pop up on the next page. To create a new vendor, you will need to enter the Company name, the Namespace prefix that governs data segmentation in the ODS, a Contact name, and a Contact email address. Your new vendor will be available to use after clicking `Save` on the creation page.
 
-   ![vendor_creation.gif](https://docs.startingblocks.org/imgs/vendor_creation.gif)
+   ![vendor-form.png](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/user-guide/vendor-form.png)
 
 :::info
 The **Namespace prefix** is a critical component that ensures data segmentation and prevents conflicts between different vendors' data in the ODS. Choose a meaningful and unique prefix that represents your organization or application.

@@ -40,7 +40,7 @@ A district admin wanting to create a set of API credentials for their SIS integr
 
 <!-- TODO: This image is already from this documentation, don't need to re-upload it. Just find the correct image and reference it here -->
 
-![Ed-Fi Profiles Visual](https://docs.startingblocks.org/imgs/edfi_profiles_visual.PNG)
+![Ed-Fi Profiles Visual](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/user-guide/edfi_profiles_visual.png)
 
 ## Claimsets in the Admin App
 
@@ -48,7 +48,7 @@ Currently in the Admin App, you can export, import, and view claimset definition
 
 To view claimset definitions in the Admin App, navigate to the claimset page in your chosen environment.
 
-![Claimset Viewer](https://docs.startingblocks.org/imgs/claimset_viewer.gif)
+![Claimset Viewer](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/user-guide/claimsets.gif)
 
 ## Authorization Strategies
 
