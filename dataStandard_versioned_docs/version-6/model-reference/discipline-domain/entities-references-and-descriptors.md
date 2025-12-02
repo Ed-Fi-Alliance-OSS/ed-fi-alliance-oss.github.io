@@ -34,7 +34,7 @@ hide_table_of_contents: true
 
 | Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
-| Staff | AcademicSubject | The academic subject(s) in which the staff is deemed to be "highly qualified". |     |     |     |     |
+| Staff | AcademicSubject | The academic subject(s) in which the staff is deemed to be "highly qualified". | Local | Yes | Yes |     |
 | School | AccreditationStatus | The accreditation status for an education preparation provider. |     |     |     |     |
 | School | AdministrativeFundingControl | The type of education institution as classified by its funding source, for example public or private. |     |     |     |     |
 | StudentDisciplineIncidentBehaviorAssociation | Behavior | Describes behavior by category. | Local |     | Yes |     |
