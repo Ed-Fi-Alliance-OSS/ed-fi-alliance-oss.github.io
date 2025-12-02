@@ -36,7 +36,7 @@ hide_table_of_contents: true
 
 | Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
-| Staff | AcademicSubject | The academic subject(s) in which the staff is deemed to be "highly qualified". |     |     |     |     |
+| Staff | AcademicSubject | The academic subject(s) in which the staff is deemed to be "highly qualified". | Local | Yes | Yes |     |
 | ChartOfAccount | AccountType | The type of account used in accounting such as revenue, expenditure, or balance sheet.  |     |     |     |     |
 | EducationOrganization | AddressType | The type of address listed for an individual or organization. | Orthodox | Yes | Yes | Yes |
 | EducationOrganization | Country | The name of the country. It is strongly recommended that entries use only ISO 3166 2-letter country codes. | Standard |     |     |     |

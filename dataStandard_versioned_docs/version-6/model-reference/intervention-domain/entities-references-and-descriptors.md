@@ -31,34 +31,8 @@ hide_table_of_contents: true
 
 | Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
-| Intervention | AppropriateGradeLevel | Grade levels for the Intervention-if omitted, considered generally applicable. | Orthodox |     |     |     |
-| AppropriateSex | Sexes for the Intervention. If omitted, considered generally applicable. | Standard |     |     |     |
-| DeliveryMethod | The way in which an intervention was implemented: individual, small group, whole class, or whole school. | Standard |     |     |     |
-| Diagnosis | Targeted purpose of the Intervention (e.g., attendance issue, dropout risk). | Local |     |     |     |
-| InterventionClass | The way in which an intervention is used: curriculum, supplement, or practice. | Flexible |     |     |     |
-| PopulationServed | A subset of students that are the focus of the Intervention. | Orthodox |     |     |     |
-| InterventionPrescription | AppropriateGradeLevel | Grade levels for the Intervention-if omitted, considered generally applicable. | Orthodox |     |     |     |
-| AppropriateSex | Sexes for the Intervention. If omitted, considered generally applicable. | Standard |     |     |     |
-| DeliveryMethod | The way in which an intervention was implemented: individual, small group, whole class, or whole school. | Standard |     |     |     |
-| Diagnosis | Targeted purpose of the Intervention (e.g., attendance issue, dropout risk). | Local |     |     |     |
-| InterventionClass | The way in which an intervention is used: curriculum, supplement, or practice. | Flexible |     |     |     |
-| PopulationServed | A subset of students that are the focus of the Intervention. | Orthodox |     |     |     |
-| InterventionStudy | AppropriateGradeLevel | Grade levels for the Intervention-if omitted, considered generally applicable. | Orthodox |     |     |     |
-| AppropriateSex | Sexes for the Intervention. If omitted, considered generally applicable. | Standard |     |     |     |
-| DeliveryMethod | The way in which an intervention was implemented: individual, small group, whole class, or whole school. | Standard |     |     |     |
-| Diagnosis | Targeted purpose of the intervention (e.g., attendance issue, dropout risk) for which the effectiveness is measured. | Local |     |     |     |
-| GradeLevel | Grade level for which effectiveness is measured. | Orthodox |     |     |     |
-| InterventionClass | The way in which an intervention is used: curriculum, supplement, or practice. | Flexible |     |     |     |
-| InterventionEffectivenessRating | An intervention demonstrates effectiveness if the research has shown that the program caused an improvement in outcomes. Values: positive effects, potentially positive effects, mixed effects, potentially negative effects, negative effects, and no discernible effects. |     |     |     |     |
-| PopulationServed | Population for which effectiveness is measured. | Orthodox |     |     |     |
-| StateAbbreviation | The abbreviation for the state (within the United States) or outlying area, the school system of which the participants of the study are considered to be a part. | Standard |     | Yes |     |
-| StudentInterventionAssociation | Diagnosis | Targeted purpose of the intervention (e.g., attendance issue, dropout risk) for which the effectiveness is measured. | Local |     |     |     |
-| GradeLevel | Grade level for which effectiveness is measured. | Orthodox |     |     |     |
-| InterventionEffectivenessRating | An intervention demonstrates effectiveness if the research has shown that the program caused an improvement in outcomes. Values: positive effects, potentially positive effects, mixed effects, potentially negative effects, negative effects, and no discernible effects. |     |     |     |     |
-| PopulationServed | Population for which effectiveness is measured. | Orthodox |     |     |     |
-| StudentInterventionAttendanceEvent | AttendanceEventCategory | A code describing the attendance event, for example:  <br/>Present  <br/>Unexcused absence  <br/>Excused absence  <br/>Tardy. | Local |     |     |     |
-| AttendanceEventReason | The reported reason for a student's absence. |     |     |     |     |
-| EducationalEnvironment | The setting in which a child receives education and related services. This attribute is only used if it differs from the EducationalEnvironment of the Section. This is only used in the AttendanceEvent if different from the associated Section. | Orthodox |     |     |     |
+| Cohort <br /> Staff | AcademicSubject | The academic subject associated with an academic intervention, or The academic subject(s) in which the staff is deemed to be "highly qualified". | Local | Yes | Yes |     |
+| EducationOrganization | AddressType | The type of address listed for an individual or organization. (For example:  Physical Address, Mailing Address, Home Address, etc.) | Orthodox | Yes | Yes | Yes |
 
 :::tip
 
