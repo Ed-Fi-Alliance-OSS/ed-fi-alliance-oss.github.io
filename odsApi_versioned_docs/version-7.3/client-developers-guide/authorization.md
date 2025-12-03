@@ -69,38 +69,50 @@ enabling multiple callers to create and manage their own metadata.
 
 API Profiles enable an Ed-Fi ODS / API platform host to constrain the data
 exposed from specific resources to meet the needs of individual use cases. When
-API client is assigned a profile, API responses for resources covered by the
-profile are severed on a profile specific media-type.  To use a profile, callers
-can add media-type information to their requests.
+an API client is assigned a profile, API responses for resources covered by the
+profile are served on a profile-specific media type. To use a profile, callers
+must add media-type information to their requests.
 
-For read operations, this takes the form of an Accept header, shown below, which
-indicates to the server that the caller will accept the profile-based version of
-the Resource.
+### Profile Media Type Format
+
+Profile media types follow this structure:
+
+```text
+application/vnd.{vendor}.{resource}.{profile-name}.{readable|writable}+json
+```
+
+Where:
+
+- `{vendor}` — The vendor namespace (e.g., `ed-fi`)
+- `{resource}` — The API resource name (e.g., `student`, `school`)
+- `{profile-name}` — The assigned profile name (e.g., `nutrition`, `assessment`)
+- `{readable|writable}` — Operation type: `readable` for read operations, `writable` for write operations
+
+### Read Operations
+
+For read operations, use the `Accept` header with `readable+json`:
 
 ```text
 Accept: application/vnd.ed-fi.student.nutrition.readable+json
 ```
 
-For write operations, the Content-Type header, shown below, indicates to the
-server that the caller expects their update to apply to the constrained surface
-area of the Resource as defined by the Profile.
+This indicates to the server that the caller will accept the profile-based version of the resource.
+
+### Write Operations
+
+For write operations, use the `Content-Type` header with `writable+json`:
 
 ```text
 Content-Type: application/vnd.ed-fi.student.nutrition.writable+json
 ```
 
-With this explicit communication style, any extra data passed in the message
-body can (and generally will) be quietly discarded by the server.
+This indicates to the server that the caller expects their update to apply to the constrained surface area of the resource as defined by the profile.
+
+With this explicit communication style, any extra data passed in the message body can (and generally will) be quietly discarded by the server.
 
 :::info
 
-API clients that have been assigned only one profile covering the
-accessed Resource can omit the media-type headers or use standard
-'application/json', and the Ed-Fi ODS /API will auto apply the assigned
-profile. API clients assigned with more than one profile covering the accessed
-Resource MUST include the media-type headers for one of the applicable
-profiles. Failing to provide a valid profile header will result in a error
-response.
+API clients that have been assigned only one profile covering the accessed resource can omit the media-type headers or use standard `application/json`, and the Ed-Fi ODS / API will auto-apply the assigned profile. API clients assigned with more than one profile covering the accessed resource MUST include the media-type headers for one of the applicable profiles. Failing to provide a valid profile header will result in an error response.
 
 :::
 
@@ -207,4 +219,3 @@ let's look at how to design an elegant solution by trapping errors and
 leveraging best practices learned from hard-won experience. The [Error Handling
 &amp; Best Practices](./error-handling-best-practices.md) section walks you through
 the details.
-
