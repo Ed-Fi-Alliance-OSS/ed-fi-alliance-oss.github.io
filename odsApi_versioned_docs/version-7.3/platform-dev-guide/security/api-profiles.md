@@ -143,7 +143,7 @@ Resource members can be explicitly included based on the member selection:
    <Property name="NameOfInstitution" />                               <!-- Inherited property -->
    <Property name="OperationalStatusDescriptor" />                     <!-- Inherited Type property -->
    <Property name="CharterApprovalSchoolYearTypeReference" />          <!-- Property -->
-   <Property name="SchoolType" />                                      <!-- Type property -->
+   <Property name="SchoolTypeDescriptor" />                            <!-- Descriptor property -->
    <Property name="AdministrativeFundingControlDescriptor" />          <!-- Descriptor property -->
    <Collection name="EducationOrganizationAddresses" memberSelection="IncludeAll"/> <!-- Inherited Collection -->
    <Collection name="SchoolCategories" memberSelection="IncludeAll" /> <!-- Collection -->
@@ -152,7 +152,7 @@ Resource members can be explicitly included based on the member selection:
    <Property name="ShortNameOfInstitution" />                          <!-- Inherited property -->
    <Property name="OperationalStatusDescriptor" />                     <!-- Inherited Type property -->
    <Property name="WebSite" />                                         <!-- Property -->
-   <Property name="CharterStatusType" />                               <!-- Type property -->
+   <Property name="CharterStatusDescriptor" />                         <!-- Descriptor property -->
    <Property name="AdministrativeFundingControlDescriptor" />          <!-- Descriptor property -->
    <Collection name="EducationOrganizationInternationalAddresses" memberSelection="IncludeAll" /> <!-- Inherited Collection -->
    <Collection name="SchoolGradeLevels" memberSelection="IncludeAll" /> <!-- Collection -->
@@ -170,7 +170,7 @@ Resource members can be explicitly excluded based on the member selection:
    <Property name="NameOfInstitution" />                               <!-- Inherited property -->
    <Property name="OperationalStatusDescriptor" />                     <!-- Inherited Type property -->
    <Property name="CharterApprovalSchoolYearTypeReference" />          <!-- Property -->
-   <Property name="SchoolType" />                                      <!-- Type property -->
+   <Property name="SchoolTypeDescriptor" />                            <!-- Descriptor property -->
    <Property name="AdministrativeFundingControlDescriptor" />          <!-- Descriptor property -->
    <Collection name="EducationOrganizationAddresses" memberSelection="IncludeAll" /> <!-- Inherited Collection -->
    <Collection name="SchoolCategories" memberSelection="IncludeAll" /> <!-- Collection -->
@@ -179,7 +179,7 @@ Resource members can be explicitly excluded based on the member selection:
    <Property name="ShortNameOfInstitution" />                          <!-- Inherited property -->
    <Property name="OperationalStatusDescriptor" />                     <!-- Inherited Type property -->
    <Property name="WebSite" />                                         <!-- Property -->
-   <Property name="CharterStatusType" />                               <!-- Type property -->
+   <Property name="CharterStatusDescriptor" />                         <!-- Descriptor property -->
    <Property name="AdministrativeFundingControlDescriptor" />          <!-- Descriptor property -->
    <Collection name="EducationOrganizationInternationalAddresses" memberSelection="IncludeAll" /> <!-- Inherited Collection -->
    <Collection name="SchoolGradeLevels" memberSelection="IncludeAll" /> <!-- Collection -->
@@ -250,7 +250,7 @@ Resource members that are part of the identity are automatically included in the
    <Property name="NameOfInstitution" />                               <!-- Inherited property -->
    <Property name="OperationalStatusDescriptor" />                     <!-- Inherited Type property -->
    <Property name="CharterApprovalSchoolYearTypeReference" />          <!-- Property -->
-   <Property name="SchoolType" />                                      <!-- Type property -->
+   <Property name="SchoolTypeDescriptor" />                            <!-- Descriptor property -->
    <Property name="AdministrativeFundingControlDescriptor" />          <!-- Descriptor property -->
    <Collection name="EducationOrganizationAddresses" memberSelection="IncludeAll"/> <!-- Inherited Collection -->
    <Collection name="SchoolCategories" memberSelection="IncludeAll" /> <!-- Collection -->
@@ -259,7 +259,7 @@ Resource members that are part of the identity are automatically included in the
    <Property name="ShortNameOfInstitution" />                          <!-- Inherited property -->
    <Property name="OperationalStatusDescriptor" />                     <!-- Inherited Type property -->
    <Property name="WebSite" />                                         <!-- Property -->
-   <Property name="CharterStatusType" />                               <!-- Type property -->
+   <Property name="CharterStatusDescriptor" />                         <!-- Descriptor property -->
    <Property name="AdministrativeFundingControlDescriptor" />          <!-- Descriptor property -->
    <Collection name="EducationOrganizationInternationalAddresses" memberSelection="IncludeAll" /> <!-- Inherited Collection -->
    <Collection name="SchoolGradeLevels" memberSelection="IncludeAll" /> <!-- Collection -->
