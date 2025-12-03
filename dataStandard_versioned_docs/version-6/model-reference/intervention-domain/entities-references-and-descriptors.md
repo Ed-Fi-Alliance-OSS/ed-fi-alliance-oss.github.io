@@ -32,7 +32,31 @@ hide_table_of_contents: true
 | Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
 | Cohort <br /> Staff | AcademicSubject | The academic subject associated with an academic intervention, or The academic subject(s) in which the staff is deemed to be "highly qualified". | Local | Yes | Yes |     |
-| EducationOrganization | AddressType | The type of address listed for an individual or organization. (For example:  Physical Address, Mailing Address, Home Address, etc.) | Orthodox | Yes | Yes | Yes |
+| EducationOrganization | AddressType | The type of address listed for an individual or organization. (For example: Physical Address, Mailing Address, Home Address, etc.) | Orthodox | Yes | Yes | Yes |
+| StudentInterventionAttendanceEvent | AttendanceEventCategory | A code describing the attendance event. (For example: Present, Unexcused absence, Excused absence,Tardy.) | Local | Yes | Yes |     |
+| Cohort | CohortScope | The scope of cohort (e.g., school, district, classroom). |     |     |     |     |
+| Cohort | CohortType | The type of cohort (e.g., academic intervention, classroom breakout). |     |     |     |     |
+| EducationContent | CostRate | The rate by which the cost applies. |     |     |     |     |
+| EducationOrganization <br /> Student | Country | The name of the country. It is strongly recommended that entries use only ISO 3166 2-letter country codes. | Standard |     | Yes |     |
+| Intervention <br /> InterventionPrescription <br /> InterventionStudy | DeliveryMethod | The way in which an intervention was implemented: individual, small group, whole class, or whole school. | Standard |     |     |     |
+| Intervention <br /> InterventionPrescription | Diagnosis | Targeted purpose of the intervention or intervention prescription. | Local |     |     |     |
+| StudentInterventionAttendanceEvent | EducationalEnvironment | The setting in which a child receives education and related services. This attribute is only used if it differs from the EducationalEnvironment of the Section. This is only used in the AttendanceEvent if different from the associated Section. | Standard |     | Yes |     |
+| EducationOrganization | EducationOrganizationCategory | The classification of the education agency within the geographic boundaries of a state according to the level of administrative and operational control granted by the state. | Standard |     | Yes | Yes |
+| Intervention <br /> InterventionPrescription <br /> InterventionStudy | GradeLevel | Grade levels for the intervention. If omitted, considered generally applicable. | Orthodox | Yes | Yes |     |
+| EducationOrganization | Indicator | The value of the indicator or metric. The semantics of an empty value is "not submitted." | Local |     |     |     |
+| EducationOrganization | IndicatorGroup | The name for a group of indicators. | Local |     |     |     |
+| EducationOrganization | IndicatorLevel | The value of the indicator or metric, as a value from a controlled vocabulary. The semantics of an empty value is "not submitted." | Local |     |     |     |
+| EducationOrganization | InstitutionTelephoneNumberType | The type of communication number listed for an individual or organization. | Orthodox | Yes | Yes | Yes |
+| Intervention <br /> InterventionPrescription <br /> InterventionStudy | InterventionClass | The way in which an intervention is used: curriculum, supplement, or practice. | Flexible |     |     |     |
+| InterventionStudy <br /> StudentInterventionAssociation | InterventionEffectivenessRating | An intervention demonstrates effectiveness if the research has shown that the program caused an improvement in outcomes. Values: positive effects, potentially positive effects, mixed effects, potentially negative effects, negative effects, and no discernible effects. |     |     |     |     |
+| Staff | LevelOfEducation | The extent of formal instruction an individual has received (e.g., the highest grade in school completed or its equivalent or the highest degree received). | Orthodox |     |     |     |
+| EducationOrganization | Locale | A general geographic indicator that categorizes U.S. territory (e.g., City, Suburban). | Orthodox |     | Yes |     |
+| EducationOrganization | OperationalStatus | The current operational status of the education organization (e.g., active, inactive). | Standard | Yes | Yes | Yes |
+| Staff <br /> Student | OtherNameType | The types of alternate names for an individual. | Orthodox |     |     |     |
+| Intervention <br /> InterventionPrescription <br /> InterventionStudy | PopulationServed | A subset of students that are the focus of the intervention, study, or prescription | Orthodox |     |     |     |
+| Staff | RecognitionType | The nature of recognition given to the individual for accomplishments in a co-curricular, or extra-curricular activity. | Flexible |     |     |     |
+| Intervention <br /> InterventionPrescription <br /> InterventionStudy | Sex | Sexes for the intervention. If omitted, considered generally applicable. | Standard |     |     |     |
+| EducationOrganization <br /> InterventionStudy <br /> Student | StateAbbreviation | The abbreviation for the state (within the United States) or outlying area. | Standard |     | Yes |     |
 
 :::tip
 
