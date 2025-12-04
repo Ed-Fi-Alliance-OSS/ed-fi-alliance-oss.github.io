@@ -96,9 +96,9 @@ As shown in the table above:
 Goal timeline:
 
 1. _Release candidate_ in summer 2025, with enough features to satisfy a typical
-   deployment for a Local Education Agency. :exclamation:Only recommended for
+   deployment for a Local Education Agency. ⚠️ Only recommended for
    those who are engaged with the Project Tanager Technical Workgroup.
-2. _Release 1.0_ Q4 of 2025 or Q1 of 2026, available for pilot / parallel usage
+2. _Release 1.0_ Q1 or Q2 of 2026, available for pilot / parallel usage
    in school year 2026-2027.
 
 The first release candidate will be fully-compatible with the _must have_
