@@ -14,9 +14,12 @@ hide_table_of_contents: true
 | Person | This entity represents a human being. |
 | Staff | This entity represents an individual who performs specified activities for any public or private education institution or agency that provides instructional and/or support services to students or staff at the early childhood level through high school completion. For example, this includes:  <br/>1\. An "employee" who performs services under the direction of the employing institution or agency is compensated for such services by the employer and is eligible for employee benefits and wage or salary tax withholdings.  <br/>2\. A "contractor" or "consultant" who performs services for an agreed upon fee or an employee of a management service contracted to work on site.  <br/>3\. A "volunteer" who performs services on a voluntary and uncompensated basis.  <br/>4\. An in-kind service provider.  <br/>5\. An independent contractor or businessperson working at a school site. |
 | StaffAbsenceEvent | This event entity represents the recording of the dates of staff absence. |
+| StaffDemographic | The demographic information associated to a Staff member. |
+| StaffDirectory | The contact information associated to a staff member. |
 | StaffEducationOrganizationAssignmentAssociation | This association indicates the education organization to which a staff member provides services; also known as school of service. |
 | StaffEducationOrganizationContactAssociation | This association provides the contact information of the staff associated with the education organization. |
 | StaffEducationOrganizationEmploymentAssociation | This association indicates the EducationOrganization an employee, contractor, volunteer, or other service provider is formally associated with typically indicated by which organization the staff member has a services contract with or receives compensation from. |
+| StaffIdentificationCode | This entity holds different identity codes for staff member. |
 | StaffLeave | This entity represents the recording of the dates of staff leave (e.g., sick leave, personal time, vacation). |
 | StaffSchoolAssociation | This association indicates the School(s) at which a staff member provides instructional services. |
 
@@ -56,13 +59,48 @@ hide_table_of_contents: true
 | OpenStaffPosition <br /> StaffEducationOrganizationEmploymentAssociation | EmploymentStatus | Reflects the type of employment or contract. | Orthodox |     |     |     |
 | LocalEducationAgency <br /> School <br /> StatEducationAgency | FederalLocaleCode | The federal locale code associated with an education organization. |     |     |     |     |
 | OpenStaffPosition | FundingSource | The funding source for the open staff position. |     |     |     |     |
-| Credential <br /> OpenStaffPosition <br /> School <br /> StaffSchoolAssociation | GradeLevel | The grade levels that are served at the school, which the position assignment is responsible, or which an individual is eligible and/or certified for teaching.
+| Credential <br /> OpenStaffPosition <br /> School <br /> StaffSchoolAssociation | GradeLevel | The grade levels that are served at the school, which the position assignment is responsible, or which an individual is eligible and/or certified for teaching. | Orthodox | Yes | Yes |     |
 | LocalEducationAgency | GunFreeSchoolsActReportingStatus | An indication of whether the school or Local Education Agency (LEA) submitted a Gun-Free Schools Act (GFSA) of 1994 report to the state, as defined by Title 18, Section 921. | Standard | Yes | Yes |     |
 | EducationOrganization | Indicator | The value of the indicator or metric. The semantics of an empty value is "not submitted." | Local |     |     |     |
 | EducationOrganization | IndicatorGroup | The name for a group of indicators. | Local |     |     |     |
 | EducationOrganization | IndicatorLevel | The value of the indicator or metric, as a value from a controlled vocabulary. The semantics of an empty value is "not submitted." | Local |     |     |     |
 | EducationOrganization | InstitutionTelephoneNumberType | The type of communication number listed for an individual or organization. | Orthodox | Yes | Yes | Yes |
 | School | InternetAccess | The type of Internet access available. | Flexible |     |     |     |
+| StaffDemographic | Language | A specification of which written or spoken communication is being used. | Orthodox | Yes | Yes | Yes |
+| StaffDemographic | LanguageUse | A description of how the language is used (e.g. Home Language, Native Language, Spoken Language). | Orthodox |     |     |     |
+| StaffEducationOrganizationEmploymentAssociation | LengthOfContract | The length of contract. |     |     |     |     |
+| Staff | LevelOfEducation | The extent of formal instruction an individual has received (e.g., the highest grade in school completed or its equivalent or the highest degree received). |     |     |     |     |
+| EducationOrganization | Locale | A general geographic indicator that categorizes U.S. territory (e.g., City, Suburban). | Orthodox |     | Yes |     |
+| LocalEducationAgency | LocalEducationAgencyCategory | The category of local education agency/district. | Local | Yes | Yes |     |
+| School | MagnetSpecialProgramEmphasisSchool | A school that has been designed: 1) to attract students of different racial/ethnic backgrounds for the purpose of reducing, preventing, or eliminating racial isolation; and/or 2) to provide an academic or social focus on a particular theme (e.g., science/math, performing arts, gifted/talented, or foreign language) | Standard | Yes | Yes |     |
+| OpenStaffPositionEvent | OpenStaffPositionEventStatus | Reflects the status of the milestone event. |     |     |     |     |
+| OpenStaffPositionEvent | OpenStaffPositionEventType | Specifies the type of milestone event. |     |     |     |     |
+| OpenStaffPosition | OpenStaffPositionReason | The reason for the open staff position. |     |     |     |     |
+| EducationOrganization | OperationalStatus | The current operational status of the education organization (e.g., active, inactive). | Standard | Yes | Yes | Yes |
+| Staff | OtherNameType | The types of alternate names for an individual. | Orthodox |     |     |     |
+| OpenStaffPosition | PostingResult | Indication of whether the OpenStaffPosition was filled or retired without filling. | Orthodox |     |     |     |
+| OpenStaffPosition <br /> StaffSchoolAssociation | ProgramAssignment | The name of the program for which the individual/ open staff position will be assigned. | Orthodox |     |     |     |
+| StaffDemographic | Race | The general racial category which most clearly reflects the individual's recognition of his or her community or with the which the individual most identifies as last reported to the education organization. The data model allows for multiple entries so that each individual can specify all appropriate races." | Standard |     |     |     |
+| Staff | RecognitionType | The nature of recognition given to the individual for accomplishments in a co-curricular, or extra-curricular activity. | Flexible |     |     |     |
+| StaffEducationOrganizationEmploymentAssociation | SalaryType | The type of salary that a staff member is receiving. |     |     |     |     |
+| School | SchoolCategory | The one or more categories of school. | Local |     | Yes |     |
+| LocalEducationAgency |SchoolChoiceImplementStatus | An indication of whether the LEA was able to implement the provisions for public school choice under Title I, Part A, Section 1116 of ESEA as amended. | Standard |     |     |     |
+| School | SchoolType | The type of education institution as classified by its primary focus. | Standard | Yes | Yes |     |
+| StaffEducationOrganizationEmploymentAssociation | Separation | Type of employment separation. | Orthodox |     |     |     |
+| StaffEducationOrganizationEmploymentAssociation | SeparationReason |Reason for terminating the employment. | Orthodox |     |     |     |
+| StaffDemographic | Sex | The Staff's birth sex as reported to the education organization. | Standard |     |     |     |
+| Person | SourceSystem | This descriptor defines the originating record source system for the person. |     |     |     |     |
+| OpenStaffPosition <br /> StaffEducationOrganizationAssignmentAssociation | StaffClassification | The titles of employment, official status, or rank of education staff. | Flexible |     |     |     |
+| StaffIdentificationCode | StaffIdentificationSystem | A coding scheme that is used for identification and record-keeping purposes by schools, LEAs, SEAs, or other agencies refer to a staff member. | Orthodox |     |     |     |
+| StaffLeave | StaffLeaveEventCategory | The code describing the type of leave taken. | Orthodox |     |     |     |
+| Credential <br /> EducationOrganization <br /> StaffDirectory | StateAbbreviation | The abbreviation for the state (within the United States) or outlying area in which an address is located. | Standard |     | Yes |     |
+| Credential | TeachingCredential | An indication of the category of a legal document giving authorization to perform teaching assignment services. | Orthodox |     |     |     |
+| Credential | TeachingCredentialBasis | An indication of the pre-determined criteria for granting the teaching credential that an individual holds. | Orthodox |     |     |     |
+| StaffDirectory | TelephoneNumberType | The type of communication number listed for an individual or organization. | Standard |     |     |     |
+| OpenStaffPosition | Term | The first term for the session during the school year for which the open staff position is seeking to fill. | Flexible |     |     |     |
+| School | TitleIPartASchoolDesignation | Denotes the Title I Part A designation for the school. | Standard | Yes | Yes |     |
+| StaffDemographic | TribalAffiliation | An American Indian tribe with which the Staff is affiliated as last reported to the education organization. | Orthodox |     |     |     |
+| StaffDemographic | Visa | An indicator of a non-US citizen's Visa type. | Standard |     |     |     |
 
 :::tip
 
