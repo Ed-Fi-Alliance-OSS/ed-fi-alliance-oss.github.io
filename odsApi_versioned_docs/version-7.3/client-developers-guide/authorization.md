@@ -78,14 +78,14 @@ must add media-type information to their requests.
 Profile media types follow this structure:
 
 ```text
-application/vnd.{vendor}.{resource}.{profile-name}.{readable|writable}+json
+application/vnd.{schema}.{resource}.{profile-name}.{readable|writable}+json
 ```
 
 Where:
 
-- `{vendor}` — The vendor namespace (e.g., `ed-fi`)
+- `{schema}` — The schema name for the resource. Use ed-fi for core schema resources, or the appropriate extension schema for extension resources (e.g., `ed-fi` ,`tpdm`)
 - `{resource}` — The API resource name (e.g., `student`, `school`)
-- `{profile-name}` — The assigned profile name (e.g., `nutrition`, `assessment`)
+- `{profile-name}` — The name of the profile as declared in the [profile definition](/reference/ods-api/platform-dev-guide/security/api-profiles/#profile-definition) (e.g., nutrition, assessment)
 - `{readable|writable}` — Operation type: `readable` for read operations, `writable` for write operations
 
 ### Read Operations
