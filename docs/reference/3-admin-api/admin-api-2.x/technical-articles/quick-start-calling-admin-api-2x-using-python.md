@@ -216,6 +216,162 @@ The outcome will be JSON formatted.
 Then you can use the token as an authentication method, with the header
 Authorization as the example below.
 
+## Tenants
+
+Use this endpoint to retrieve the configured tenants.
+It can be used even on single tenant environments. In such a case, the tenant
+name is `default`
+
+### Retrieve a Listing of Tenants
+
+See the [Endpoints - Admin
+API](https://edfi.atlassian.net/wiki/spaces/ADMINAPI/pages/21300937/Endpoints+in+Admin+API+2.x)
+page for a complete list of resources and parameters. For this example, we will
+get a list of providers.  
+
+#### GET /v2/tenants
+
+```python
+def get_tenants(
+    base_url: str,
+    access_token: str,
+) -> dict:
+    '''
+        Retrieves all tenants
+
+        Parameters
+        ----------
+        base_url: str
+            URL where API is hosted
+        access_token: str
+            String with the authorization token bearer
+
+        Returns
+        -------
+        r: List[Dict[str, str]]
+            Returns a list of dictionaries from the request
+            converted from JSON format.
+                [{
+                    "tenantName": "tenant1",
+                    "adminConnectionString": {
+                    "host": ".\\",
+                    "database": "EdFi_Admin"
+                    },
+                    "securityConnectionString": {
+                    "host": ".\\",
+                    "database": "EdFi_Security"
+                    }
+                }]
+    '''
+    endpoint = "/v2/tenants?offset=0&limit=25"
+    url = f"{base_url}{endpoint}"
+    headers = {
+        'Authorization': f'Bearer {access_token}',
+        'Content-type': 'application/json',
+        'Accept': 'text/plain',
+        }
+
+    r = requests.get(
+        url=url,
+        headers=headers,
+        verify=False,
+        )
+
+    return r.json()
+```
+
+We will get a list of the tenants, JSON formatted, as in the example below.
+
+#### Sample Output for Retrieve a Listing of Tenants
+
+```json
+[
+  {
+    "tenantName": "tenant1",
+    "adminConnectionString": {
+      "host": ".\\",
+      "database": "EdFi_Admin"
+    },
+    "securityConnectionString": {
+      "host": ".\\",
+      "database": "EdFi_Security"
+    }
+  },
+  {
+    "tenantName": "tenant2",
+    "adminConnectionString": {
+      "host": ".\\",
+      "database": "EdFi_Admin"
+    },
+    "securityConnectionString": {
+      "host": ".\\",
+      "database": "EdFi_Security"
+    }
+  }
+]
+
+```
+
+### Get a tenant
+
+In the case that you want to retrieve information from one of the tenants, you
+will need to use the tenant name.
+
+#### GET /v2/tenants/`{tenant-name}`
+
+```python
+def get_tenant(
+    base_url: str,
+    access_token: str,
+    name: int,
+) -> dict:
+    '''
+        Get an existing tenant using the resource identifier
+
+        Parameters
+        ----------
+        base_url: str
+            URL where API is hosted
+        access_token: str
+            String with the authorization token bearer
+        id: int
+            Resource identifier
+    '''
+    endpoint = "/v2/tenants"
+    url = f"{base_url}{endpoint}/`{name}`"
+    headers = {
+        'Authorization': f'Bearer {access_token}',
+        'Content-type': 'application/json',
+        'Accept': 'text/plain',
+        }
+
+    r = requests.get(
+        url=url,
+        headers=headers,
+        verify=False,
+        )
+
+    return r.json()
+```
+
+In case of success we will obtain an output as follow:
+
+#### Sample Output for Get a Tenant
+
+```json
+{
+  "tenantName": "tenant1",
+  "adminConnectionString": {
+    "host": ".\\",
+    "database": "EdFi_Admin"
+  },
+  "securityConnectionString": {
+    "host": ".\\",
+    "database": "EdFi_Security"
+  }
+}
+```
+
 ## Vendors
 
 ### Retrieve a Listing of Vendors
@@ -2451,6 +2607,384 @@ def import_applications(
 
 As a result, we will obtain multiple 201 Status Code
 
+## Api Clients
+
+By creating an Application you are provided with an initial set of credentials.
+Use ApiClients endpoint to manage additional credentials for a given Application.
+
+### Retrieve a Listing of Api Clients per Application
+
+See the [Endpoints - Admin
+API](https://edfi.atlassian.net/wiki/spaces/ADMINAPI/pages/21300937/Endpoints+in+Admin+API+2.x)
+page for a complete list of resources and parameters. For this example, we will
+get a list of providers.
+
+### GET /v2/apiclients
+
+```python
+def get_apiclients(
+    base_url: str,
+    access_token: str,
+) -> dict:
+    '''
+        Retrieves Api Clients
+
+        Parameters
+        ----------
+        base_url: str
+            URL where API is hosted
+        access_token: str
+            String with the authorization token bearer
+
+        Returns
+        -------
+        r: List[Dict[str, str]]
+            Returns a list of dictionaries from the request
+            converted from JSON format.
+            [
+                {
+                    "id": 0,
+                    "key": "string",
+                    "name": "string",
+                    "isApproved": "boolean",
+                    "useSandbox": "bolean",
+                    "sandboxType": 0,
+                    "applicationId": 1,
+                    "keyStatus": "string",
+                    "educationOrganizationIds": "List[0]",
+                    "odsInstanceIds": "List[0]",
+                }
+            ]
+    '''
+    endpoint = "/v2/apiclients?applicationid=1&offset=0&limit=25"
+    url = f"{base_url}{endpoint}"
+    headers = {
+        'Authorization': f'Bearer {access_token}',
+        'Content-type': 'application/json',
+        'Accept': 'text/plain',
+        }
+
+    r = requests.get(
+        url=url,
+        headers=headers,
+        verify=False,
+        )
+
+    return r.json()
+```
+
+We will get a list of the api clients, JSON formatted, as in the example
+below.
+
+#### Sample Output for Retireve a Listing of Api Clients
+
+```json
+[
+  {
+    "id": 1,
+    "key": "U1wjefWMXhj8",
+    "name": "app1",
+    "isApproved": true,
+    "useSandbox": false,
+    "sandboxType": 0,
+    "applicationId": 1,
+    "keyStatus": "Active",
+    "educationOrganizationIds": [],
+    "odsInstanceIds": [
+      1
+    ]
+  }
+]
+```
+
+Notice how the key is part of the sample response, but the secret is not.
+In addition to that, some of these fields are read-only.
+
+### Create an Api Client
+
+To create a new Api Client, we will use the POST verb.
+
+#### Sample Input for Create an Api Client
+
+```json
+apiclient_payload = {
+  "name": "ApiClient1",
+  "isApproved": true,
+  "applicationId": 1,
+  "odsInstanceIds": [
+    1
+  ]
+}
+```
+
+Which we will pass as a parameter to a function as shown below, or with the
+method of your choice.
+
+#### POST /v2/apiclients
+
+```python
+def create_apiclients(
+    base_url: str,
+    access_token: str,
+    payload: dict,
+) -> dict:
+    '''
+        Creates an Api Client based on supplied values
+
+        Parameters
+        ----------
+        base_url: str
+            URL where API is hosted
+        access_token: str
+            String with the authorization token bearer
+        payload: dict
+            {
+                "name": "ApiClient1",
+                "isApproved": true,
+                "applicationId": 1,
+                "odsInstanceIds": [
+                    1
+                ]
+            }
+    '''
+    endpoint = "/v2/apiclients"
+    url = f"{base_url}{endpoint}"
+    headers = {
+        'Authorization': f'Bearer {access_token}',
+        'Content-type': 'application/json',
+        'Accept': 'text/plain',
+        }
+
+    r = requests.post(
+        url=url,
+        headers=headers,
+        json=payload,
+        verify=False,
+        )
+
+    return r
+```
+
+As a result, we will obtain a 201 Status Code
+
+### Get Api Client
+
+In the case that you want to retrieve information from one of the Api Clients, you
+will need to use the resource ID.
+
+#### GET /v2/apiclients/`{id}`
+
+```python
+def get_apiclient(
+    base_url: str,
+    access_token: str,
+    id: int,
+) -> dict:
+    '''
+        Get an existing Api Client using the resource identifier
+
+        Parameters
+        ----------
+        base_url: str
+            URL where API is hosted
+        access_token: str
+            String with the authorization token bearer
+        id: int
+            Resource identifier
+    '''
+    endpoint = "/v2/apiclients"
+    url = f"{base_url}{endpoint}/`{id}`"
+    headers = {
+        'Authorization': f'Bearer {access_token}',
+        'Content-type': 'application/json',
+        'Accept': 'text/plain',
+        }
+
+    r = requests.get(
+        url=url,
+        headers=headers,
+        verify=False,
+        )
+
+    return r.json()
+```
+
+In case of success we will obtain an output as follow:
+
+#### Sample Output for Get Api Client
+
+```json
+{
+  "id": 1,
+  "key": "U1wjefWMXhj8",
+  "name": "app1",
+  "isApproved": true,
+  "useSandbox": false,
+  "sandboxType": 0,
+  "applicationId": 1,
+  "keyStatus": "Active",
+  "educationOrganizationIds": [],
+  "odsInstanceIds": [
+    1
+  ]
+}
+```
+
+Notice how the key is part of the sample response, but the secret is not.
+In addition to that, some of these fields are read-only.
+
+### Update an Api Client
+
+You can use the following code to update the information in the Api Cient.
+
+#### PUT /v2/apiclients/`{id}`
+
+```python
+def edit_apiclient(
+    base_url: str,
+    access_token: str,
+    payload: dict,
+    id: int,
+) -> dict:
+    '''
+        Updates an Api Client based on resource id
+
+        Parameters
+        ----------
+        base_url: str
+            URL where API is hosted
+        access_token: str
+            String with the authorization token bearer
+        payload: dict
+            {
+                "name": "ApiClient1 updated",
+                "isApproved": true,
+                "applicationId": 1,
+                "odsInstanceIds": [
+                    1
+                ]
+            }
+        id: int
+            Resource ID
+    '''
+    endpoint = "/v2/apiclients"
+    url = f"{base_url}{endpoint}/`{id}`"
+    headers = {
+        'Authorization': f'Bearer {access_token}',
+        'Content-type': 'application/json',
+        'Accept': 'text/plain',
+        }
+    r = requests.put(
+        url=url,
+        headers=headers,
+        json=payload,
+        verify=False,
+        )
+
+    return r
+```
+
+As a result, we will obtain a 200 Status Code
+
+### Delete an Api Client
+
+To delete an Api Client you can use the next point, as the example provided below.
+
+#### DELETE /v2/apiclients/`{id}`
+
+```python
+def delete_apiclient(
+    base_url: str,
+    access_token: str,
+    id: int,
+) -> dict:
+    '''
+        Deletes an existing Api Client using the resource identifier
+
+        Parameters
+        ----------
+        base_url: str
+            URL where API is hosted
+        access_token: str
+            String with the authorization token bearer
+        id: int
+            Resource identifier
+    '''
+    endpoint = "/v2/apiclients"
+    url = f"{base_url}{endpoint}/`{id}`"
+    headers = {
+        'Authorization': f'Bearer {access_token}',
+        'Content-type': 'application/json',
+        'Accept': 'text/plain',
+        }
+
+    r = requests.delete(
+        url=url,
+        headers=headers,
+        verify=False,
+        )
+
+    return r
+```
+
+As a result, we will obtain a 200 Status Code
+
+### Refresh Api Client credentials
+
+In case you want to refresh your credentials or get a new ones you can use the
+next endpoint.
+
+**PUT /v2/apiclients/`{id}`/reset-credential**
+
+```python
+def reset_apiclient_credentials(
+    base_url: str,
+    access_token: str,
+    id: int,
+) -> dict:
+    '''
+        Refresh Api Client credentials using the resource identifier
+
+        Parameters
+        ----------
+        base_url: str
+            URL where API is hosted
+        access_token: str
+            String with the authorization token bearer
+        id: int
+            Resource identifier
+    '''
+    endpoint = "/v2/apiclients"
+    url = f"{base_url}{endpoint}/`{id}`/reset-credential"
+    headers = {
+        'Authorization': f'Bearer {access_token}',
+        'Content-type': 'application/json',
+        'Accept': 'text/plain',
+        }
+
+    r = requests.put(
+        url=url,
+        headers=headers,
+        verify=False,
+        )
+
+    return r.json()
+```
+
+The resulting output will again print the new secret keys.
+
+#### Sample Output for Refresh Api Client credentials
+
+```json
+{
+  "id": 1,
+  "name": "app1",
+  "key": "U1wjefWMXhj8",
+  "secret": "pLs3B2JuRU3YiP78RXSJMLjZ",
+  "applicationId": 1
+}
+```
+
 ## Profiles
 
 ### Retrieve a Listing of Profiles
@@ -2506,7 +3040,7 @@ def get_profiles(
     return r.json()
 ```
 
-We will get a list of the ods instances, JSON formatted, as in the example
+We will get a list of the profiles, JSON formatted, as in the example
 below.
 
 #### Sample Output for Retireve a Listing of Profiles
