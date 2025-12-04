@@ -3,7 +3,27 @@
 This section provides an overview of what's new in the latest versions of the
 Admin API.
 
-## Updates in Admin API v2.2 (Latest Release)
+## Updates in Admin API v2.3 (Latest Release)
+
+### Features
+
+* Tenant endpoints on V2: new read-only and management endpoints.
+* Support for multiple credentials per application.
+* Health check endpoints for Security and Admin databases.
+* Updated OpenAPI specifications for v2.3.0.
+* Docker images now built and published for ARM processors.
+
+### Enhancements
+
+* Improved Dockerfiles and connection string handling.
+* Security updates: .NET vulnerabilities remediated, upgraded to .NET 8.0.21.
+* Logging improvements: fixed double logging, improved configuration logging.
+* Installer workflow improvements.
+* Claimset import now includes grandchild ResourceClaims.
+* Profile endpoint returns clear 400 error for invalid input.
+* Improved log4net initialization for cross-platform compatibility.
+
+## Updates in Admin API v2.2
 
 Please see the [direct source code updates to Admin API v2.2 on GitHub
 here](https://github.com/Ed-Fi-Alliance-OSS/AdminAPI-2.x/releases/tag/v2.2.0).
