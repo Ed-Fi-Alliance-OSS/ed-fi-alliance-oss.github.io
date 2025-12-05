@@ -565,37 +565,6 @@ export default {
 
   ],
   assessmentOutcomesSuite3: [
- /* Istation is no longer a valid certification in the registry, but it is retained here for historical purposes.
- {
-      productName: 'Istation ISIP (Indicators of Progress)',
-      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/Istation_logo.png',
-      website: 'https://www.istation.com/isip-assessment',
-      validThrough: 'December 12, 2024',
-      verifyingAgencies: [
-        'New Mexico Department of Education (NMPED)',
-        'Rio Rancho Public Schools (NM)',
-        'Los Alamos Public Schools (NM)',
-      ],
-      versionCompatibility:
-        'Conformance testing met with iStation single product version (distributed to all customers)',
-      availability:
-        'Available to any agency (all sizes) in the U.S. where iStation is sold',
-      documentation: {
-        'Availability Statement':
-          'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ed-Fi%20Certification%20-%20Availability%20Statement%20-%20Istation.pdf?version=1&modificationDate=1702401431310&cacheVersion=1&api=v2',
-        Mappings:
-          'https://edfi.atlassian.net/wiki/download/attachments/23694066/Istation_score_report.xlsx?version=1&modificationDate=1701698794923&cacheVersion=1&api=v2',
-        usageOverview:
-          'https://edfi.atlassian.net/wiki/download/attachments/23694066/0_Statement%20of%20Purpose.pdf?version=1&modificationDate=1701699015080&cacheVersion=1&api=v2',
-      },
-      supportResources: [
-        {
-          name: 'How to get support',
-          link: 'https://www.istation.com/contact',
-        },
-      ],
-    },
-    */
     {
       productName: 'DnA',
       logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/Renaissance DnA.png',
@@ -641,7 +610,7 @@ export default {
       productName: 'Cambium Assessment',
       logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/2024-09-03_12-46-45.png',
       website: 'https://www.cambiumassessment.com/index.html',
-      validThrough: 'September 3, 2025',
+      validThrough: 'December 5, 2026',
       verifyingAgencies: [
         'Appoquinimink School District',
         'Seaford School District',
@@ -651,11 +620,13 @@ export default {
       availability: 'Available to any agency (all sizes) in the U.S.',
       documentation: {
         'Availability Statement':
-          'https://edfi.atlassian.net/wiki/spaces/EDFICERT/pages/23694066/Registry+of+Ed-Fi+Certified+Products',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Cambium/Ed-Fi%20Certification%20-%20Availability%20Statement.docx',
+        'Pricing Statement':
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Cambium/CAI_%20EdFi_Updated%20Pricing%20Statement%2011.19.2025%20Signed.pdf',
         Mappings:
-          'https://edfi.atlassian.net/wiki/spaces/EDFICERT/pages/23694066/Registry+of+Ed-Fi+Certified+Products',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Cambium/Mapping%20for%20Certification.xlsx ',
         narrative:
-          'https://edfi.atlassian.net/wiki/spaces/EDFICERT/pages/23694066/Registry+of+Ed-Fi+Certified+Products',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Cambium/Usage%20Narrative.rtf',
       },
       supportResources: [
         {
