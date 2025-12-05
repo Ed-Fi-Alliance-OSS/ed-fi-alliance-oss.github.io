@@ -7,11 +7,11 @@ Admin API.
 
 ### Features
 
-* Tenant endpoints on V2: new read-only and management endpoints.
+* Tenant endpoints on V2 `/v2/tenants`: new read-only and management endpoints.
 * Support for multiple credentials per application.
-* Health check endpoints for Security and Admin databases.
 * Updated OpenAPI specifications for v2.3.0.
 * Docker images now built and published for ARM processors.
+* Supports both ODS/API 6.x and 7.x.
 
 ### Enhancements
 
@@ -22,6 +22,7 @@ Admin API.
 * Claimset import now includes grandchild ResourceClaims.
 * Profile endpoint returns clear 400 error for invalid input.
 * Improved log4net initialization for cross-platform compatibility.
+* Improved health check endpoint `/health` for Security and Admin databases availableness.
 
 ## Updates in Admin API v2.2
 

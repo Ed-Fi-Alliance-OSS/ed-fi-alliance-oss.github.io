@@ -8,7 +8,7 @@ This information is relevant if you are using Admin API 2.3 and forward
 
 Admin API 2.3+ now includes an endpoint to manage multiple ODS/API credentials for a single Application.
 
-The `EdFi_Admin` database establishes a hierarchy of with a `Vendor` containing many `Application` records,
+The `EdFi_Admin` database establishes a hierarchy of entities with a `Vendor` containing many `Application` records,
 which in turn can contain many `ApiClient` records containing client credentials for the ODS/API. Previously,
 the Admin API application only allowed management of one `ApiClient` per `Application`, in spite of the 1-
 to-many relationship in the database. The new endpoint now allows for management of an unlimited
@@ -40,7 +40,7 @@ property to false.
 
 ### Key rotation
 
-You can use this new approach to manage planned key rotation. One posibility is:
+You can use this new approach to manage planned key rotation. One possibility is:
 
 1. Issue new credentials for an Application.
 2. Wait for the client application to apply these new credentials.
