@@ -83,6 +83,26 @@ hide_table_of_contents: true
 | EducationOrganization | Locale | A general geographic indicator that categorizes U.S. territory (e.g., City, Suburban). | Orthodox |     | Yes |     |
 | School | MagnetSpecialProgramEmphasisSchool | A school that has been designed: 1) to attract students of different racial/ethnic backgrounds for the purpose of reducing, preventing, or eliminating racial isolation; and/or 2) to provide an academic or social focus on a particular theme (e.g., science/math, performing arts, gifted/talented, or foreign language). | Standard | Yes | Yes |     |
 | Section | MediumOfInstruction | The media through which teachers provide instruction to students and students and teachers communicate about instructional matters. | Orthodox |     | Yes |     |
+| CourseTranscript | MethodCreditEarned | The method the credits were earned. | Orthodox |     |     |     |
+| EducationOrganization | OperationalStatus | The current operational status of the education organization (e.g., active, inactive). | Standard | Yes | Yes | Yes |
+| Student | OtherNameType | The types of alternate names for an individual. | Orthodox |     |     |     |
+| Grade | PerformanceBaseConversion | A conversion of the level to a standard set of performance levels. | Orthodox |     |     |     |
+| Section | PopulationServed | The type of students the section is offered and tailored to. | Orthodox |     |     |     |
+| Program | ProgramCharacteristic | Reflects important characteristics of the program, such as categories or particular indications. | Local | Yes | Yes |     |
+| Program | ProgramSponsor | Ultimate and intermediate providers of funds for a particular educational or service program or activity, or for an individual's participation in the program or activity (e.g., Federal, State, ESC, District, School, Private Organization). | Standard |     | Yes |     |
+| Program | ProgramType | The type of program. | Flexible | Yes | Yes | Yes |
+| LearningStandard | PublicationStatus | The publication status of the document (i.e., Adopted, Draft, Published, Deprecated, Unknown). | Orthodox |     |     |     |
+| StudentAcademicRecord | RecognitionType | The nature of recognition given to the learner for accomplishments in a co-curricular, or extra-curricular activity. | Flexible |     |     |     |
+| StudentSectionAssociation | RepeatIdentifier | An indication as to whether a student has previously taken a given course. | Orthodox |     |     |     |
+| School | SchoolCategory | The one or more categories of school. | Local |     | Yes |     |
+| School | SchoolType | The type of education institution as classified by its primary focus. | Standard | Yes | Yes |     |
+| Section | SectionCharacteristic | Reflects important characteristics of the section, such as whether or not attendance is taken and the section is graded. | Local |     |     |     |
+| Section | SectionType | Specifies whether the section is for attendance only, credit only, or both. | Flexible |     |     |     |
+| StudentProgramAssociation | Service | Indicates the service being provided to the student by the program. | Local |     | Yes |
+| EducationOrganization <br /> Student | StateAbbreviation | The abbreviation for the name of the state (within the United States) or extra-state jurisdiction in which an individual was born. | Standard |     |     |     |
+| StudentGradebookEntry | SubmissionStatus | The status of the student's submission. |     |     |     |     |
+| Session <br /> StudentAcademicRecord | Term | The term or descriptor value for the session during the school year. | Flexible |     |     |     |
+| School | TitleIPartASchoolDesignation | Denotes the Title I Part A designation for the school. | Standard | Yes | Yes |     |
 
 :::tip
 
