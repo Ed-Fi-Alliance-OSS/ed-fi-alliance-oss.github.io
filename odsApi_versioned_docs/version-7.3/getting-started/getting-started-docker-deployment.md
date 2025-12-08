@@ -32,5 +32,5 @@ updated to the latest patch version whenever a patch release becomes available.
 
 | Image Tag         | Purpose                                                          | Example                                                                                                                              |
 |--------------------|------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
-| 7.3.6340-5.2.0    | ODS / API 7.3.0 and Data Standard 5.2                            | [edfialliance/ods-api-web-api:7.3.6340-5.2.0](https://hub.docker.com/layers/edfialliance/ods-api-web-api/7.3.6340-5.2.0/)            |
-| 7.3.6340-4.0.0    | ODS / API 7.3.0 and Data Standard 4.0                            | [edfialliance/ods-api-web-api:7.3.6340-4.0.0](https://hub.docker.com/layers/edfialliance/ods-api-web-api/7.3.6340-4.0.0/)            |
+| 7.3.0_6406-5.2.0    | ODS / API 7.3.0 and Data Standard 5.2                            | [edfialliance/ods-api-web-api:7.3.0_6406-5.2.0](https://hub.docker.com/layers/edfialliance/ods-api-web-api/7.3.0_6406-5.2.0/)            |
+| 7.3.0_6406-4.0.0    | ODS / API 7.3.0 and Data Standard 4.0                            | [edfialliance/ods-api-web-api:7.3.0_6406-4.0.0](https://hub.docker.com/layers/edfialliance/ods-api-web-api/7.3.0_6406-4.0.0/)            |
