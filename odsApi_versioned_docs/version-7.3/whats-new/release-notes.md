@@ -43,6 +43,17 @@ the Git commit history to find the changes for that specific update.
 * ODS-6725 - Link field is not updated after reference update
 * ODS-6741 - ASP.NET Core Runtime Upgrade for Security Patch (CVE-2025-55315)
 
+## Ed-Fi ODS / API v7.3-patch3 - Release Notes
+
+### Bug Fixes
+
+* ODS-6725 - Link field is not updated after reference update.
+
+* ODS-6741 - .NET Security Feature Bypass Vulnerability (CVE-2025-55315).
+
+* ODS-6747 - Program Association child item references return default uuid (only 0s) links.
+  
+
 ## Ed-Fi ODS / API v7.3-patch2 - Release Notes
 
 ### Bug Fixes
