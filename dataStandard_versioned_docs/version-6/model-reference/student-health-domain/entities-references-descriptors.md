@@ -34,6 +34,7 @@ hide_table_of_contents: true
 | StudentHealth | NonMedicalImmunizationExemption | The type of nonmedical exemption from vaccination claimed by the student's parent or guardian. | Local |     | Yes |     |
 | EducationOrganization | OperationalStatus | The current operational status of the education organization (e.g., active, inactive). | Standard | Yes | Yes | Yes |
 | Student | OtherNameType | The types of alternate names for an individual. | Orthodox |     |     |     |
+| Student | Sex | A person's sex at birth. | Standard |     |     |     |
 | EducationOrganization <br /> Student | StateAbbreviation | The abbreviation for the state (within the United States) or outlying area in which an address is located. | Standard |     | Yes |     |
 
 :::tip
