@@ -99,6 +99,7 @@ hide_table_of_contents: true
 | Section | SectionCharacteristic | Reflects important characteristics of the section, such as whether or not attendance is taken and the section is graded. | Local |     |     |     |
 | Section | SectionType | Specifies whether the section is for attendance only, credit only, or both. | Flexible |     |     |     |
 | StudentProgramAssociation | Service | Indicates the service being provided to the student by the program. | Local |     | Yes |
+| Student | Sex | A person's sex at birth. | Standard |     |     |     |
 | EducationOrganization <br /> Student | StateAbbreviation | The abbreviation for the name of the state (within the United States) or extra-state jurisdiction in which an individual was born. | Standard |     |     |     |
 | StudentGradebookEntry | SubmissionStatus | The status of the student's submission. |     |     |     |     |
 | Session <br /> StudentAcademicRecord | Term | The term or descriptor value for the session during the school year. | Flexible |     |     |     |
