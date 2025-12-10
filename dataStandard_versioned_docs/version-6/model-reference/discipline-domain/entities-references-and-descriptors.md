@@ -47,11 +47,12 @@ hide_table_of_contents: true
 | School | GradeLevel | The grade levels served at the school. |     |     |     |     |
 | DisciplineIncident | IncidentLocation | Identifies where the discipline incident occurred and whether or not it occurred on school. |     |     |     |     |
 | School | InternetAccess | The type of Internet access available. |     |     |     |     |
-| Staff | LevelOfEducation | The extent of formal instruction an individual has received (e.g., the highest grade in school completed or its equivalent or the highest degree received). |     |     |     |     |
+| Staff | LevelOfEducation | The extent of formal instruction an individual has received (e.g., the highest grade in school completed or its equivalent or the highest degree received). | Orthodox |     |     |     |
 | School | MagnetSpecialProgramEmphasisSchool | A school that has been designed: 1) to attract students of different racial/ethnic backgrounds for the purpose of reducing, preventing, or eliminating racial isolation; and/or 2) to provide an academic or social focus on a particular theme (e.g., science/math, performing arts, gifted/talented, or foreign language). |     |     |     |     |
 | DisciplineIncident | ReporterDescription | Information on the type of individual who reported the discipline incident. When known and/or if useful, use a more specific option code (e.g., ""Counselor"" rather than ""Professional Staff""). |     |     |     |     |
 | School | SchoolCategory | The one or more categories of school. |     |     |     |     |
 | School | SchoolType | The type of education institution as classified by its primary focus. |     |     |     |     |
+| Student | Sex | A person's sex at birth. | Standard |     |     |     |
 | School | TitleIPartASchoolDesignation | Denotes the Title I Part A designation for the school. |     |     |     |     |
 | DisciplineIncident <br /> StudentDisciplineIncidentBehaviorAssociation | Weapon | Identifies the type of weapon used during an incident. The Federal Gun-Free Schools Act requires states to report the number of students expelled for bringing firearms to school by type of firearm.  |     |     |     |     |
 
