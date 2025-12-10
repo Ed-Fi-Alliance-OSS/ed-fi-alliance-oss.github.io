@@ -30,6 +30,6 @@ last updated.
 
 The data model UML diagram is shown below.
 
-![Student Health UML](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/v51/StudentHealth11072025.png)
+![Student Health UML](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/StudentHealth11072025.png)
 
-[_Largeversion_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/v51/StudentHealth11072025.png)_
+[_Largeversion_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/StudentHealth11072025.png)_

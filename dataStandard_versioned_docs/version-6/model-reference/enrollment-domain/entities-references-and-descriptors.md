@@ -75,6 +75,7 @@ hide_table_of_contents: true
 | StudentSchoolAssociation | SchoolChoiceBasis | The legal basis for the school choice enrollment according to local, state or federal policy or regulation. (The descriptor provides the list of available bases specific to the state. |     |     |     |     |
 | LocalEducationAgency | SchoolChoiceImplementStatus | An indication of whether the LEA was able to implement the provisions for public school choice under Title I, Part A, Section 1116 of ESEA as amended. |     |     |     |     |
 | School | SchoolType | The type of education institution as classified by its primary focus. |     |     |     |     |
+| Student | Sex | A person's sex at birth. | Standard |     |     |     |
 | EducationOrganization | StateAbbreviation | The abbreviation for the state (within the United States) or outlying area in which an address is located. | Standard |     | Yes |     |
 | StudentEducationOrganizationAssociation | Term | The term associated with the cohort year; for example, the intended term of graduation. |     |     |     |     |
 | School | TitleIPartASchoolDesignation | Denotes the Title I Part A designation for the school. |     |     |     |     |
