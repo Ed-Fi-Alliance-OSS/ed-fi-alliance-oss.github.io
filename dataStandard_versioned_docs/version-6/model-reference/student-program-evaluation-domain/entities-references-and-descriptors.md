@@ -31,3 +31,11 @@ hide_table_of_contents: true
 | ProgramEvaluationPeriod | The name of the period for the program evaluation |
 | StudentProgramEvaluation | RatingLevel | The summary rating level achieved based upon the rating or score |
 | EvaluationRubricDimension |
+
+:::tip
+
+See [Non-normative Descriptor
+Classifications](/reference/data-exchange/technical-articles/non-normative-descriptor-classifications)
+for more information on _Usage Classification_.
+
+:::
