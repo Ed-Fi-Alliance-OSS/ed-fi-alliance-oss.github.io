@@ -54,6 +54,20 @@ hide_table_of_contents: true
 | Section | MediumOfInstruction | The media through which teachers provide instruction to students and students and teachers communicate about instructional matters. | Orthodox |     | Yes |     |
 | Staff <br /> Student | OtherNameType | The types of alternate names for an individual. |     |     |     |     |
 | Section | PopulationServed | The type of students the section is offered and tailored to. | Orthodox |     |     |     |
+| Program | ProgramCharacteristic | Reflects important characteristics of the program, such as categories or particular indications. | Local | Yes | Yes |     |
+| Program | ProgramSponsor | Ultimate and intermediate providers of funds for a particular educational or service program or activity, or for an individual's participation in the program or activity (e.g., Federal, State, ESC, District, School, Private Organization). | Standard |     | Yes |     |
+| Program | ProgramType | The type of program. | Flexible | Yes | Yes | Yes |
+| Staff | RecognitionType | The nature of recognition given to the individual for accomplishments in a co-curricular, or extra-curricular activity. | Flexible |     |     |     |
+| StudentSectionAssociation | RepeatIdentifier | An indication as to whether a student has previously taken a given course. | Orthodox |     |     |     |
+| School | SchoolCategory | The one or more categories of school. | Local |     | Yes |     |
+| School | SchoolType | The type of education institution as classified by its primary focus. | Standard | Yes | Yes |     |
+| Section | SectionCharacteristic | Reflects important characteristics of the section, such as whether or not attendance is taken and the section is graded. | Local |     |     |     |
+| Section | SectionType | Specifies whether the section is for attendance only, credit only, or both. | Flexible |     |     |     |
+| StudentProgramAssociation | Service | Indicates the service being provided to the student by the program. | Local |     | Yes |     |
+| Student | Sex | A person's sex at birth. | Standard |     |     |     |
+| Student | StateAbbreviation | The abbreviation for the name of the state (within the United States) or extra-state jurisdiction in which an individual was born. | Standard |     | Yes |     |
+| Session | Term | A descriptor value to indicate the term that the session is associated with. | Flexible |     |     |     |
+| School | TitleIPartASchoolDesignation | Denotes the Title I Part A designation for the school. | Standard | Yes | Yes |     |
 
 :::tip
 
