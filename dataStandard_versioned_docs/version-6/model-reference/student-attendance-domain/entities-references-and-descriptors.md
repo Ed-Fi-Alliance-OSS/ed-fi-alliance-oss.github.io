@@ -49,7 +49,7 @@ hide_table_of_contents: true
 | School <br /> Section | GradeLevel | The grade levels served at the school or grade levels in which the section is offered. | Orthodox | Yes | Yes |     |
 | School | InternetAccess | The type of Internet access available. | Flexible |     |     |     |
 | Section | Language | The primary language of instruction. If omitted, English is assumed. | Orthodox | Yes | Yes | Yes |
-| Staff | LevelOfEducation | The extent of formal instruction an individual has received (e.g., the highest grade in school completed or its equivalent or the highest degree received). |     |     |     |     |
+| Staff | LevelOfEducation | The extent of formal instruction an individual has received (e.g., the highest grade in school completed or its equivalent or the highest degree received). | Orthodox |     |     |     |
 | School | MagnetSpecialProgramEmphasisSchool | A school that has been designed: 1) to attract students of different racial/ethnic backgrounds for the purpose of reducing, preventing, or eliminating racial isolation; and/or 2) to provide an academic or social focus on a particular theme (e.g., science/math, performing arts, gifted/talented, or foreign language). | Standard | Yes | Yes |     |
 | Section | MediumOfInstruction | The media through which teachers provide instruction to students and students and teachers communicate about instructional matters. | Orthodox |     | Yes |     |
 | Staff <br /> Student | OtherNameType | The types of alternate names for an individual. |     |     |     |     |
