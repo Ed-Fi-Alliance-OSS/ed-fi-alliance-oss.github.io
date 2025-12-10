@@ -37,33 +37,34 @@ hide_table_of_contents: true
 
 | Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
-| Course | AcademicSubject | The intended major subject area of the course. | Local |     |     |     |
-| CareerPathway | Indicates the career cluster or pathway the course is associated with as part of a CTE curriculum. | Flexible |     |     |     |
-| CompetencyLevel | The competency levels defined to rate the student for the course. | Flexible |     |     |     |
-| CourseDefinedBy | Specifies whether the course was defined by the SEA, LEA, School, or national organization. | Orthodox |     |     |     |
-| CourseGPAApplicability | An indicator of whether or not the course being described is included in the computation of the student's Grade Point Average, and if so, if it is weighted differently from regular courses. | Orthodox |     |     |     |
-| CourseIdentificationSystem | A system that is used to identify the organization of subject matter and related learning experiences provided for the instruction of students. | Orthodox |     |     |     |
-| CourseLevelCharacteristic | The type of specific program or designation with which the course is associated (e.g., AP, IB, Dual Credit, CTE). | Orthodox |     |     |     |
-| CreditType | The type of credits or units of value awarded for the completion of a course. | Flexible |     |     |     |
-| OfferedGradeLevel | The grade levels in which the course is offered. | Orthodox |     |     |     |
-| CourseOffering | CourseLevelCharacteristic | The type of specific program or designation with which the course offering is associated (e.g., AP, IB, Dual Credit, CTE). This collection should only be populated if it differs from the Course Level Characteristics identified at the Course level. | Orthodox |     |     |     |
-| CurriculumUsed | The type of curriculum used in an early learning classroom or group. | Orthodox |     |     |     |
-| OfferedGradeLevel | The grade levels in which the course is offered. This collection should only be populated if it differs from the Offered Grade Levels identified at the Course level. | Orthodox |     |     |     |
-| Section | CourseLevelCharacteristic | The type of specific program or designation with which the section is associated (e.g., AP, IB, Dual Credit, CTE). This collection should only be populated if it differs from the Course Level Characteristics identified at the Course Offering level. | Orthodox |     |     |     |
-| CreditType | The type of credits or units of value awarded for the completion of a course. | Flexible |     |     |     |
-| EducationalEnvironment | The setting in which a child receives education and related services; for example: Center-based instruction, Home based instruction, Hospital class, Mainstream, Residential care and treatment facility... | Orthodox |     |     |     |
-| InstructionLanguage | The primary language of instruction, if omitted English is assumed. | Orthodox |     |     |     |
-| OfferedGradeLevel | The grade levels in which the section is offered. This collection should only be populated if it differs from the Offered Grade Levels identified at the Course Offering level. | Orthodox |     |     |     |
-| MediumOfInstruction | The media through which teachers provide instruction to students and students and teachers communicate about instructional matters; for example: Technology-based instruction in classroom, Correspondence instruction, Face-to-face instruction, Virtual/On-line Distance learning, Center-based instruction... | Orthodox |     |     |     |
-| PopulationServed | The type of students the Section is offered and tailored to; for example: Bilingual students, Remedial education students, Gifted and talented students, Career and Technical Education students, Special education students... | Orthodox |     |     |     |
-| SectionCharacteristic | Reflects important characteristics of the Section, such as whether or not attendance is taken and the Section is graded. | Local |     |     |     |
-|     | SectionType | Specifies whether the section is for attendance only, credit only, or both | Flexible |     |     |     |
-| StaffSectionAssociation | ClassroomPosition | The type of position the Staff member holds in the specific class/section; for example: Teacher of Record, Assistant Teacher, Support Teacher, Substitute Teacher... | Orthodox |     |     |     |
+| StudentAcademicRecord | AcademicHonorCategory | A designation of the type of academic distinctions earned by or awarded to the individual. | Orthodox |     |     |     |
+| Course <br /> CourseTranscript <br /> LearningStandard <br /> Staff <br /> StaffSchoolAssociation | AcademicSubject | The intended major subject/s area of the course, or the subject area for the course transcript credits awarded in the course transcript. Subject area for the learning standard, or the academic subject(s) in which the staff is deemed to be "highly qualified". The academic subjects the individual is eligible to teach. | Local | Yes | Yes |     |
+| School | AccreditationStatus | The accreditation status for an education preparation provider. | Standard |     |     |     |
+| CourseTranscript | AdditionalCreditType | The type of credits or units of value awarded for the completion of a course. | Orthodox |     |     |     |
+| EducationOrganization | AddressType | The type of address listed for an individual or organization. (For example:  Physical Address, Mailing Address, Home Address, etc.) | Orthodox |     |     |     |
+| School | AdministrativeFundingControl | The type of education institution as classified by its funding source, for example public or private. | Local |     |     |     |
 | StudentSectionAssociation | AttemptStatus | An indication of the student's completion status for the section. | Orthodox |     |     |     |
-| RepeatIdentifier | An indication as to whether a student has previously taken a given course. Repeated, counted in grade point average, Repeated, not counted in grade point average, Not repeated, Other. | Orthodox |     |     |     |
-| StudentSchoolAssociation | EnrollmentType | The type of enrollment reflected by the StudentSchoolAssociation |     |     |     |     |
-|     | NextYearGradlevel | The anticipated grade level for the student for the next school year |     |     |     |     |
-|     | SchoolChoiceBasis | The legal basis for the school choice enrollment according to local, state or federal policy or regulation. |     |     |     |     |
+| Course | CareerPathway | Indicates the career cluster or pathway the course is associated with as part of a CTE curriculum. | Flexible |     |     |     |
+| School | CharterApprovalAgencyType | The type of agency that approved the establishment or continuation of a charter school. | Standard | Yes | Yes |     |
+| School | CharterStatus | A school or agency providing free public elementary or secondary education to eligible students under a specific charter granted by the state legislature or other appropriate authority and designated by such authority to be a charter school. | Standard | Yes | Yes | Yes |
+| StaffSectionAssociation | ClassroomPosition | The type of position the staff member holds in the specific class/section. | Orthodox |     |     |     |
+| Course | CompetencyLevel | The competency levels defined to rate the student for the course. | Flexible |     |     |     |
+| EducationOrganization <br /> Staff <br /> Student | Country | The name of the country. It is strongly recommended that entries use only ISO 3166 2-letter country codes. | Standard |     | Yes |     |
+| CourseTranscript | CourseAttemptResult | The result from the student's attempt to take the course. | Standard |     |     |     |
+| Course | CourseDefinedBy | Specifies whether the course was defined by the SEA, LEA, School, or national organization. | Orthodox |     |     |     |
+| Course | CourseGPAApplicability | An indicator of whether or not the course being described is included in the computation of the student's grade point average, and if so, if it is weighted differently from regular courses. | Orthodox |     |     |     |
+| Course <br /> CourseTranscript | CourseIdentificationSystem | A system that is used to identify the organization of subject matter and related learning experiences provided for the instruction of students. | Orthodox |     |     |     |
+| Course <br /> CourseOffering <br /> Section | CourseLevelCharacteristic | The type of specific program or designation with which the course is associated (e.g., AP, IB, Dual Credit, CTE), or the type of specific program or designation with which the section is associated. | Orthodox |     |     |     |
+| CourseTranscript | CourseRepeatCode | Indicates that an academic course has been repeated by a student and how that repeat is to be computed in the student's academic grade average. | Orthodox |     |     |     |
+| CourseTranscript | CreditCategory | A categorization for the course transcript credits awarded in the course transcript. | Flexible |     |     |     |
+| Course <br /> CourseTranscript <br /> Section <br /> StudentAcademicRecord | CreditType | The type of credits or units of value awarded for the completion of a course. | Flexible |     |     |     |
+| Section | SectionCharacteristic | Reflects important characteristics of the section, such as whether or not attendance is taken and the section is graded. | Local |     |     |     |
+| Section | SectionType | Specifies whether the section is for attendance only, credit only, or both. | Flexible |     |     |     |
+| StudentProgramAssociation | Service | Indicates the service being provided to the student by the program. | Local |     | Yes |     |
+| Student | Sex | A person's sex at birth. | Standard |     |     |     |
+| EducationOrganization <br /> Student | StateAbbreviation | The abbreviation for the name of the state (within the United States) or extra-state jurisdiction in which an individual was born. | Standard |     | Yes |     |
+| Session <br /> StudentAcademicRecord | Term | A descriptor value to indicate the term that the session is associated with. | Flexible |     |     |     |
+| School | TitleIPartASchoolDesignation | Denotes the Title I Part A designation for the school. | Standard | Yes | Yes |     |
 
 :::tip
 

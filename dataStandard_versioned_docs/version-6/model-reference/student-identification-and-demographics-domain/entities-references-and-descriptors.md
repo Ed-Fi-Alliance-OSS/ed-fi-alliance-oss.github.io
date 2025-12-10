@@ -58,7 +58,7 @@ hide_table_of_contents: true
 | StudentEducationOrganizationAssociation | PrimaryLearningDeviceProvider | The provider of the primary learning device. | Flexible |     |     |     |
 | StudentDemographic | Race | The general racial category which most clearly reflects the individual's recognition of his or her community or with the which the individual most identifies as last reported to the education organization. The data model allows for multiple entries so that each individual can specify all appropriate races. | Standard |     |     |     |
 | StudentContactAssociation | Relation | The nature of an individual's relationship to a student, primarily used to capture family relationships. | Orthodox |     |     |     |
-| Contact <br /> StudentDemographic | Sex | The individual's birth sex as reported to the education organization. | Standard |     |     |     |
+| Contact <br /> Student <br /> StudentDemographic | Sex | The individual's birth sex as reported to the education organization. | Standard |     |     |     |
 | Person | SourceSystem | This descriptor defines the originating record source system for the person. | Local |     |     |     |
 | Contact <br /> StudentDemographic | StateAbbreviation | The abbreviation for the state (within the United States) or outlying area in which an address is located. | Standard |     |     |     |
 | StudentDemographic | StudentCharacteristic | The characteristic designated for the student. | Local |     |     |     |

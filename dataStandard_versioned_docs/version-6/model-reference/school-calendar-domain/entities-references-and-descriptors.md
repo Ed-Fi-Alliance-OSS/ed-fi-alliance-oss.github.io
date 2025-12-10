@@ -58,6 +58,7 @@ hide_table_of_contents: true
 | School | SchoolCategory | The one or more categories of school. | Local |     | Yes |     |
 | StudentSchoolAssociation | SchoolChoiceBasis | The legal basis for the school choice enrollment according to local, state or federal policy or regulation. (The descriptor provides the list of available bases specific to the state. |     |     |     |     |
 | School | SchoolType | The type of education institution as classified by its primary focus. | Standard | Yes | Yes |     |
+| Student | Sex | A person's sex at birth. | Standard |     |     |     |
 | EducationOrganization <br /> Student | StateAbbreviation | The abbreviation for the state (within the United States) or outlying area in which an address is located or individual was born. | Standard |     | Yes |     |
 | Session | Term | A descriptor value to indicate the term that the session is associated with. | Flexible |     |     |     |
 | School | TitleIPartASchoolDesignation | Denotes the Title I Part A designation for the school. | Standard | Yes | Yes |     |

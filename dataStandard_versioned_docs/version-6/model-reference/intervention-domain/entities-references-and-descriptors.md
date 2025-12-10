@@ -55,7 +55,7 @@ hide_table_of_contents: true
 | Staff <br /> Student | OtherNameType | The types of alternate names for an individual. | Orthodox |     |     |     |
 | Intervention <br /> InterventionPrescription <br /> InterventionStudy | PopulationServed | A subset of students that are the focus of the intervention, study, or prescription | Orthodox |     |     |     |
 | Staff | RecognitionType | The nature of recognition given to the individual for accomplishments in a co-curricular, or extra-curricular activity. | Flexible |     |     |     |
-| Intervention <br /> InterventionPrescription <br /> InterventionStudy | Sex | Sexes for the intervention. If omitted, considered generally applicable. | Flexible |     |     |     |
+| Intervention <br /> InterventionPrescription <br /> InterventionStudy <br /> Student | Sex | A person's sex at birth, or sexes for the intervention. If omitted, considered generally applicable. | Flexible |     |     |     |
 | EducationOrganization <br /> InterventionStudy <br /> Student | StateAbbreviation | The abbreviation for the state (within the United States) or outlying area. | Standard |     | Yes |     |
 
 :::tip
