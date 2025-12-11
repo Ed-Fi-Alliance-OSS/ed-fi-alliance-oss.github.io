@@ -32,6 +32,7 @@ The Program's educationOrganizationId is the Local Education Agency ID
 | Resource                      | Property Name                       | Is Collection | Data Type                           | Required | Scenario 1: POST               | Scenario 2 PUT                 |
 | ----------------------------- | ----------------------------------- | ------------- | ----------------------------------- | -------- | ------------------------------ | ------------------------------ |
 | StudentCTEProgramAssociations | beginDate                           | FALSE         | date                                | REQUIRED | 8/23/[Current School Year]     | 8/23/[Current School Year]     |
+| StudentCTEProgramAssociations | endDate                             | FALSE         | date                                | REQUIRED | 5/23/[Current School Year]     | 5/23/[Current School Year]     |
 | StudentCTEProgramAssociations | educationOrganizationReference      | FALSE         | educationOrganizationReference      | REQUIRED |                                |                                |
 | StudentCTEProgramAssociations | educationOrganizationId             | FALSE         | integer                             | REQUIRED | 255901                         | 255901                         |
 | StudentCTEProgramAssociations | programReference                    | FALSE         | programReference                    | REQUIRED |                                |                                |
