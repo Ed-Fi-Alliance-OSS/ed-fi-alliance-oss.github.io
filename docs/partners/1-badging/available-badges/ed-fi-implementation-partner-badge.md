@@ -2,9 +2,9 @@
 
 ![Ed-Fi Implementation Partner Badge](https://edfidocs.blob.core.windows.net/$web/img/partners/badging/ed-fi-implementation-badge.webp)
 
-To be awarded this badge, a vendor must be able to demonstrate adherence to
-Ed-Fi best practices and their services must facilitate Ed-Fi data standards
-delivery in their customer's solutions.
+The Ed-Fi Implementation Partner Badge recognizes vendors that consistently deliver services aligned to Ed-Fi best practices and enable successful adoption of the Ed-Fi data standard across multiple implementations.
+
+This badge is awarded based on a demonstrated ability to deliver repeatable, scalable services that lead to aligned, standards-based implementations in a variety of customer contexts. It reflects a partner’s capability, leadership, and alignment with the Ed-Fi community’s goals for data quality, interoperability, and long-term ecosystem impact.
 
 ## Requirements
 
@@ -15,6 +15,40 @@ core requirements listed in [Badging Requirements for Technology
 Providers](../badging-requirements.md).
 
 :::
+
+Applicants for the Implementation Partner Badge must:
+
+* Demonstrate alignment to Ed-Fi best practices and data standards through completed implementations
+* Show repeatable implementation practices across at least two verified projects
+* Participate in project retrospectives to reflect on lessons learned and ensure alignment with Ed-Fi guidance
+* Provide evidence of change management processes relevant to Ed-Fi implementations
+* Provide verifiable documentation of implementation methods, internal tools, and process frameworks
+* Actively participate in the Ed-Fi community and governance structures
+
+### What We Mean by "Repeatable Services"
+
+Repeatability refers to a partner’s ability to consistently deliver effective, scalable services aligned to Ed-Fi implementation guidance. This includes:
+
+* Applying reusable internal playbooks, templates, or code packages
+* Delivering services that can be sustained across agencies, geographies, or vendor ecosystems
+* Following guidance from Ed-Fi’s Implementation Playbooks, Technical Deployment materials, and Solution Guides
+* Contributing to implementations that result in standards-aligned, community-compatible outcomes
+
+### Core Service Areas We Look For
+
+The badge process evaluates whether a partner consistently delivers services that align to the following areas:
+
+* Ed-Fi strategy and implementation planning
+* Technical architecture and environment configuration
+* ODS/API deployment and management
+* Data mapping, validation, and extension minimization
+* Vendor coordination and onboarding
+* Project management and change facilitation
+* Stakeholder engagement and governance support
+* Documentation, training, and LEA enablement
+* Operational and post-deployment support
+
+Partners may also propose additional service areas for review, if those services directly support Ed-Fi-aligned implementations.
 
 ### Verifications - Quality
 
@@ -52,18 +86,13 @@ re-usable project plans, and/or detailed implementation documentation. These
 documents can be internal intellectual property but must be shared with Ed-Fi
 with enough detail to verify their existence and usage.
 
-### Participation in the Ed-Fi community
+### Community Participation
 
-Implementation partners must be in the Ed-Fi partner program. Partnership
-requires active participation in governance and the community. Implementation
-partners enable Ed-Fi throughout the community and provide a conduit between
-their customer base and current Ed-Fi practices.
+Implementation Partners are expected to be active members of the Ed-Fi Partner Program, including:
 
-### Academy Track
-
-Implementation Partner should have at least 1 person on staff for each
-Ed-Fi project that has gone through all the Academy tracks involving Ed-Fi
-overview and best practices.
+* Participation in governance groups and community feedback processes
+* Engagement with other partners and state/local agencies
+* Ongoing contributions to community learning, documentation, or working groups
 
 ### Ed-Fi Project Retrospective Participation
 
@@ -76,10 +105,8 @@ vendor that are not resolved after an appropriate time.
 
 ## Provisional Badges
 
-The requirement for existing successful customers can be a challenging
-obstacle for new companies entering this space. New companies can apply for a
-provisional badge which will require a more thorough review for best practices
-and evidence of repeatability. The badge will be provisional until the
-appropriate verifications are provided.  The first projects will go through the
-project retrospective process so Ed-Fi can evaluate the project’s
-implementations against Ed-Fi standards and best practices.
+New organizations without two completed implementations may apply for a Provisional Badge, which includes:
+
+* A deeper review of tools, methods, and alignment to Ed-Fi implementation guidance
+* Retrospective participation for initial projects
+* Full badge eligibility upon completion and validation of two successful, aligned implementations
