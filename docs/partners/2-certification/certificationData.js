@@ -4,6 +4,46 @@
 // See the LICENSE and NOTICES files in the project root for more information.
 
 export default {
+  sisApiV5: [
+    {
+    productName: 'PowerSchool',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/PowerSchool.png',
+      website: 'https://www.powerschool.com/',
+      validThrough: 'December 12, 2026',
+      verifyingAgencies: [
+        'Franklin Public Schools, WI',
+      ],
+      versionCompatibility: 'Conformance testing met with version 221014',
+      availability: 'Available to any agency (all sizes) in the U.S.',
+      documentation: {
+        'Availability Statement':
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/PowerSchool/Ed-Fi%20Certification%20-%20PowerSchool%20SIS.docx',
+        'Pricing Statement':
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/PowerSchool/Ed-Fi%20Certification%20-%20Pricing%20Statement%20PS%20SIS%2025-26.pdf',
+        'Mappings':
+          'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ed-Fi%20Resources%20and%20Elements%20for%20PowerSchool%20SIS%20Base%20v221014.xlsx?api=v2',
+      },
+      supportResources: [
+        {
+          name: 'Usage Overview',
+          link: 'https://ps-compliance.powerschool-docs.com/pssis-all-states/latest/getting-started-with-ed-fi',
+        },
+        {
+          name: 'Enablement information',
+          link: 'https://ps-compliance.powerschool-docs.com/pssis-all-states/latest/getting-started-with-ed-fi',
+        },
+        {
+          name: 'Configuration Guide',
+          link: 'https://ps-compliance.powerschool-docs.com/pssis-all-states/latest/getting-started-with-ed-fi',
+        },
+        {
+          name: 'How to get support',
+          link: 'https://help.powerschool.com/',
+        },
+      ],
+    }
+  ],
+
   sisApiV4: [
     {
       productName: 'Aeries',
@@ -73,7 +113,7 @@ export default {
       productName: 'PowerSchool',
       logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/PowerSchool.png',
       website: 'https://www.powerschool.com/',
-      validThrough: 'September 23, 2025',
+      validThrough: 'December 12, 2026',
       verifyingAgencies: [
         'Lorena ISD, TX',
         'Buford City Schools, GA',
@@ -83,8 +123,10 @@ export default {
       availability: 'Available to any agency (all sizes) in the U.S.',
       documentation: {
         'Availability Statement':
-          'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ed-Fi%20Certification%20-%20PowerSchool%20SIS.docx?version=1&modificationDate=1705005715627&cacheVersion=1&api=v2',
-        Mappings:
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/PowerSchool/Ed-Fi%20Certification%20-%20Availability%20Statement%20PS%20SIS%2025-26.pdf',
+        'Pricing Statement':
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/PowerSchool/Ed-Fi%20Certification%20-%20Pricing%20Statement%20PS%20SIS%2025-26.pdf',
+        'Mappings':
           'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ed-Fi%20Resources%20and%20Elements%20for%20PowerSchool%20SIS%20Base%20v221014.xlsx?api=v2',
       },
       supportResources: [
@@ -102,7 +144,7 @@ export default {
         },
         {
           name: 'How to get support',
-          link: 'https://ps-compliance.powerschool-docs.com/pssis-all-states/latest/getting-started-with-ed-fi',
+          link: 'https://help.powerschool.com/',
         },
       ],
     },
