@@ -59,15 +59,15 @@ function Main() {
               performance and scalability, making it easier to handle large
               datasets. Learn more about the Ed-Fi Data Management Service
             </p> */}
-            <h2>Ed-Fi Admin API</h2>
+            <h2>Ed-Fi Administration Tools</h2>
             <p>
-              The Ed-Fi Admin API provides an administrative interface for
-              managing the Ed-Fi ODS/API platform. It simplifies common
-              administrative tasks and supports both Docker and Windows
-              installations.{' '}
-              <Link to="/reference/admin-api">
-                Get started with the Ed-Fi Admin API
-              </Link>
+              The Ed-Fi Admin App (for people) and the Ed-Fi ODS Admin API (for
+              systems) provide administrative interfaces for managing the Ed-Fi
+              ODS/API platform. They simplify common administrative tasks and
+              support both Docker and Windows installations. Get started with
+              the{' '}
+              <Link to="/reference/admin-app">Admin App (UI)</Link> and{' '}
+              <Link to="/reference/admin-api">ODS Admin API</Link>
             </p>
             <h2>Ed-Fi API Publisher</h2>
             <p>
@@ -100,7 +100,7 @@ function Main() {
                 <Link to="/reference/data-import">Data Import</Link>
               </li>
               <li>
-                <Link to="/reference/admin-app">Admin App</Link>
+                <Link to="/reference/ods-admin-app">Legacy ODS Admin App</Link>
               </li>
               <li>
                 <Link to="/reference/analytics-middle-tier">

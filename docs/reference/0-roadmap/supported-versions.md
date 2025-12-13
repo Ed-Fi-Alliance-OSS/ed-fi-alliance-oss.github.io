@@ -35,7 +35,7 @@ a production deployment of the Ed-Fi Resources API. The Platform includes:
     applications.
 * [Ed-Fi ODS Admin API](../3-admin-api/readme.md), a REST interface for managing
   client credentials ("key and secret") and security configuration.
-* [Ed-Fi ODS Admin App](../8-admin-app/readme.md), a web application for
+* [Ed-Fi ODS Admin App](../ods-admin-app/readme.md), a web application for
   managing single instances of an Ed-Fi ODS/API.
 
 ### Ed-Fi ODS/API
