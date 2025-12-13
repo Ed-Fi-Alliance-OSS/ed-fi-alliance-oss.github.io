@@ -88,7 +88,7 @@ Install Analytics Middle Tier by following the instructions in the [AMT Deployme
 
 ### Install Admin App
 
-Install Instructions for Admin App can be found in the [Admin App](../../8-admin-app/readme.md) guide.
+Install Instructions for Admin App can be found in the [Admin App](../../ods-admin-app/readme.md) guide.
 
 ### Install Data Import
 
@@ -108,7 +108,7 @@ In this step, you will load data from your SIS, credential, and financial aid pr
 
 ### Add Your Education Organizations in the Admin App
 
-Once you have successfully installed the Admin App following the instructions provided above, you can continue to configure Admin App to add your Education Organizations. This configuration will allow your data to be loaded properly as much of it requires education organizations. You can also find instructions for AdminApp configuration at [Admin App - Next Steps](../../8-admin-app/next-steps.md).
+Once you have successfully installed the Admin App following the instructions provided above, you can continue to configure Admin App to add your Education Organizations. This configuration will allow your data to be loaded properly as much of it requires education organizations. You can also find instructions for AdminApp configuration at [Admin App - Next Steps](../../ods-admin-app/next-steps.md).
 
 1. The first time you open Admin App will ask you to register a new user in order to get access to the utility. The user you set up can be used for any future access to the tool. You will also have the opportunity to create additional users later.
 2. In order to register a new user you will need to provide an email address and create a new password.

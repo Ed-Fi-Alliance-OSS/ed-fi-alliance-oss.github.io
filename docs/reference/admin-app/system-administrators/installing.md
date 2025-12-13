@@ -84,7 +84,7 @@ For production environments, modify the following:
    KEYCLOAK_ADMIN_PASSWORD=admin
 
    # Frontend UI Configuration
-   VITE_STARTING_GUIDE=https://docs.ed-fi.org/reference/admin-app-v4/system-administrators/global-administration-tasks
+   VITE_STARTING_GUIDE=https://docs.ed-fi.org/reference/admin-app/system-administrators/global-administration-tasks
    VITE_CONTACT=https://community.ed-fi.org/
    VITE_APPLICATION_NAME="Ed-Fi Admin App"
    VITE_IDP_ACCOUNT_URL=https://yourdomain.com/auth/realms/edfi/account/
@@ -326,7 +326,7 @@ See [Troubleshooting](troubleshooting.md#backend-troubleshooting) section in cas
    VITE_API_URL=http://localhost:3333
    VITE_OIDC_ID=1
    VITE_HELP_GUIDE=https://docs.ed-fi.org/
-   VITE_STARTING_GUIDE=https://docs.ed-fi.org/reference/admin-app-v4/system-administrators/global-administration-tasks
+   VITE_STARTING_GUIDE=https://docs.ed-fi.org/reference/admin-app/system-administrators/global-administration-tasks
    VITE_CONTACT=https://community.ed-fi.org/
    VITE_APPLICATION_NAME="Ed-Fi Admin App"
    VITE_IDP_ACCOUNT_URL=https://localhost/auth/realms/edfi/account/
@@ -702,7 +702,7 @@ VITE_BASE_PATH=/adminapp/
 VITE_HELP_GUIDE=https://docs.ed-fi.org/
 
 # UI Configuration
-VITE_STARTING_GUIDE=https://docs.ed-fi.org/reference/admin-app-v4/system-administrators/global-administration-tasks
+VITE_STARTING_GUIDE=https://docs.ed-fi.org/reference/admin-app/system-administrators/global-administration-tasks
 VITE_CONTACT=https://community.ed-fi.org/
 VITE_APPLICATION_NAME="Ed-Fi Admin App"
 VITE_IDP_ACCOUNT_URL=https://your-domain.com/auth/realms/edfi/account/
@@ -733,7 +733,7 @@ VITE_API_URL=https://your-domain.com/adminapp-api \
 VITE_OIDC_ID=1 \
 VITE_BASE_PATH=/adminapp/ \
 VITE_HELP_GUIDE=https://your-help-site.com/ \
-VITE_STARTING_GUIDE=https://docs.ed-fi.org/reference/admin-app-v4/system-administrators/global-administration-tasks \
+VITE_STARTING_GUIDE=https://docs.ed-fi.org/reference/admin-app/system-administrators/global-administration-tasks \
 VITE_CONTACT=https://community.ed-fi.org/ \
 VITE_APPLICATION_NAME="Ed-Fi Admin App" \
 VITE_IDP_ACCOUNT_URL=https://your-domain.com/auth/realms/edfi/account/ \
