@@ -235,20 +235,21 @@ use a NoSQL database for the core data store. Instead, it will use a relational
 database to ensure that data integrity is maintained, and that the data model is
 consistent with the Ed-Fi Data Standard.
 
-### Q: Can I run the system without Kafka and OpenSearch?
+### Q: Can I run the system without Kafka?
 
-Yes, the Data Management Service can run without Kafka and OpenSearch. In the
-release candidate (July 2025), the PostgreSQL-only mode is not well optimized
-and not recommended for high performance settings. The development team
-continues to work on improving the performance of the "RDBMS-only" mode, and it
-is expected that by the end of Q1 2026, it will be a viable option for many use
-cases.
+Yes. Kafka is used for optional streaming feature in the Data Management
+Service. If you do not have streaming use cases, you can run the system without
+Kafka.
+
+Core functionality (API operations, data storage, integrity enforcement) does
+not depend on Kafka. You can add Kafka later if you decide to implement
+real-time data flows.
 
 ### Q: When will Microsoft SQL Server be supported?
 
-The release candidate (July 2025) will supports PostgreSQL as the primary data
+Currently Data Management Service supports PostgreSQL as the primary data
 store, and Microsoft SQL Server will be added as an alternative data store in
-the 1.0 release (Q4 2025 or Q1 2026). This will allow agencies to use their
+the 1.0 release (2026). This will allow agencies to use their
 existing SQL Server infrastructure to run the Data Management Service.
 
 ### Q: You promised a compatibility layer. When will it be available?
