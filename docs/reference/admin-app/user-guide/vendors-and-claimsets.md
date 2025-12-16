@@ -1,11 +1,5 @@
 # Vendor and Claimset Management
 
-:::warning
-
-This is pre-release documentation for software that is not yet available.
-
-:::
-
 This guide covers the management of vendors and claimsets in the Ed-Fi Admin App. Vendors represent third-party applications or systems that need access to Ed-Fi API data, while claimsets define the specific permissions granted to those vendors.
 
 The Ed-Fi Admin App allows appropriately permissioned users to manage Vendors and Claimsets for the environments owned by their team. These directions outline steps to create and manage both of these resources.
