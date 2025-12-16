@@ -69,12 +69,11 @@ Aligning best practices with certification ensures that required data elements a
 
 | Scenario                                         | Newly Required Elements                                                                 |
 |--------------------------------------------------|------------------------------------------------------------------------------------------|
-| [StudentSchoolAssociation](/docs/partners/2-certification/available-certifications/sis-v5/test-scenarios/student-school-association-scenarios.md)                         | PrimarySchool, SchoolYear, EnrollmentType, CalendarReference, FullTimeEquivalency       |
-| StudentEducationOrganizationResponsibilityAssociation | StudentReference, EducationOrganizationReference, ResponsibilityDescriptor, BeginDate, **StudentTransportation.StudentReference (if transportation module)** |
-| StudentProgram scenarios (CTE, Language, Migrant, Homeless, Neglected or Delinquent, Food, Title I) | EndDate                                                                                 |
-| StudentSpecialEducationProgramAssociation        | EndDate, **ReasonExited (if supported)**, SpecialEducationExitDate                      |
-| StudentSectionAttendanceEvent                    | CalendarDateReference                                                                   |
-| StaffSectionAssociation                          | EndDate                                                                                 |
+| [StudentSchoolAssociation](/docs/partners/2-certification/available-certifications/sis-v5/test-scenarios/student-school-association-scenarios.md)  | PrimarySchool, SchoolYear, EnrollmentType, CalendarReference, FullTimeEquivalency       |
+| [StudentEducationOrganizationResponsibilityAssociation](/docs/partners/2-certification/available-certifications/sis-v5/test-scenarios/student-ed-org-responsibility-association-scenarios.md) | StudentReference, EducationOrganizationReference, ResponsibilityDescriptor, BeginDate, **StudentTransportation.StudentReference (if transportation module)** |
+|[StudentProgram](/docs/partners/2-certification/available-certifications/sis-v5/test-scenarios/student-program-association-scenarios.md) scenarios (CTE, Language, Migrant, Homeless, Neglected or Delinquent, Food, Title I) | EndDate                                                                                 |
+| [StudentSpecialEducationProgramAssociation](/docs/partners/2-certification/available-certifications/sis-v5/test-scenarios/student-special-education-program-association-scenarios.md)        | EndDate, **ReasonExited (if supported)**, SpecialEducationExitDate                      |
+| [StaffSectionAssociation](/docs/partners/2-certification/available-certifications/sis-v5/test-scenarios/staff-section-association-scenarios.md)                         | EndDate                                                                                 |
 
 ## Intervention Certification: recognize Intervention/MTSS domain as a unique certification
 

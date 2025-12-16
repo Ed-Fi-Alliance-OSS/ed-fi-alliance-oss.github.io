@@ -39,6 +39,7 @@ Additional Requirements for StudentSchoolAssociation
   school year.  Rather, the association should be thought of as a core part of
   the student record, but scoped to the education organization.
 * A student must have an association with a Calendar and the association should not be deleted, only updated.
+* A SEORA is written when the responsibility for a student is a different education organization than the enrollment school in the SSA. See [best practices related to the StudentEducationOrganizationAssociationResponsibilityAssociation](https://docs.ed-fi.org/reference/data-exchange/data-standard/model-reference/enrollment-domain/best-practices/#best-practices-related-to-the-studenteducationorganizationresponsibilityassociation-seora)
 
 | Resource                  | Property Name                | Is Collection | Data Type                    | Required | Scenario 1: POST                       | Scenario 2: POST                       | Scenario 3: PUT                        | Scenario 4: PUT                        | Scenario 4: PUT                        |
 | ------------------------- | ---------------------------- | ------------- | ---------------------------- | -------- | -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
