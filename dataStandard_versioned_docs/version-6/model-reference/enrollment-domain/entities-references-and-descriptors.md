@@ -66,6 +66,7 @@ hide_table_of_contents: true
 | LocalEducationAgency | LocalEducationAgencyCategory | The category of local education agency/district. |     |     |     |     |
 | School | MagnetSpecialProgramEmphasisSchool | A school that has been designed: 1) to attract students of different racial/ethnic backgrounds for the purpose of reducing, preventing, or eliminating racial isolation; and/or 2) to provide an academic or social focus on a particular theme (e.g., science/math, performing arts, gifted/talented, or foreign language). |     |     |     |     |
 | EducationOrganization | OperationalStatus | The current operational status of the education organization (e.g., active, inactive). |     |     |     |     |
+| Student | OtherNameType | The types of alternate names for an individual. | Orthodox |     |     |     |
 | StudentEducationOrganizationAssociation | PrimaryLearningDeviceAccess | An indication of whether the primary learning device is shared or not shared with another individual. |     |     |     |     |
 | StudentEducationOrganizationAssociation | PrimaryLearningDeviceAwayFromSchool | The type of device the student uses most often to complete learning activities away from school. |     |     |     |     |
 | StudentEducationOrganizationAssociation | PrimaryLearningDeviceProvider | The provider of the primary learning device. |     |     |     |     |

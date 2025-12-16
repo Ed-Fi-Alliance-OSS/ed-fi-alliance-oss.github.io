@@ -49,6 +49,7 @@ hide_table_of_contents: true
 | Staff | LevelOfEducation | The extent of formal instruction an individual has received (e.g., the highest grade in school completed or its equivalent or the highest degree received). | Orthodox |     |     |     |
 | EducationOrganization | Locale | A general geographic indicator that categorizes U.S. territory (e.g., City, Suburban). |     |     |     |     |
 | EducationOrganization | OperationalStatus | The current operational status of the education organization (e.g., active, inactive). |     |     |     |     |
+| Staff | OtherNameType | The types of alternate names for an individual. | Orthodox |     |     |     |
 | Staff | RecognitionType | The nature of recognition given to the individual for accomplishments in a co-curricular, or extra-curricular activity. |     |     |     |     |
 | LocalAccount <br /> BalanceSheetDimension <br /> ChartOfAccount <br /> FunctionDimension <br /> FundDimension <br /> ObjectDimension <br /> OperationalUnitDimension <br /> ProgramDimension <br /> ProjectDimension <br /> SourceDimension | ReportingTag | Optional tag for accountability reporting. Used at the dimension and/or chart of account levels to demote specific state needs for reporting.  | Orthodox |     |     |     |
 | EducationOrganization | StateAbbreviation | The abbreviation for the state (within the United States) or outlying area in which an address is located. | Standard |     |     |     |
