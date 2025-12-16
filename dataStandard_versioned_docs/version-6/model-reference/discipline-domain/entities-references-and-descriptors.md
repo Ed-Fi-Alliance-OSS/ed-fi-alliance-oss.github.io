@@ -40,6 +40,7 @@ hide_table_of_contents: true
 | StudentDisciplineIncidentBehaviorAssociation | Behavior | Describes behavior by category. | Local |     | Yes |     |
 | School | CharterApprovalAgencyType | The type of agency that approved the establishment or continuation of a charter school. |     |     |     |     |
 | School | CharterStatus | A school or agency providing free public elementary or secondary education to eligible students under a specific charter granted by the state legislature or other appropriate authority and designated by such authority to be a charter school. |     |     |     |     |
+| Staff <br /> Student | Country | The name of the country. It is strongly recommended that entries use only ISO 3166 2-letter country codes. | Standard |     | Yes |     |
 | DisciplineAction | Discipline | Type of action, such as removal from the classroom, used to discipline the student involved as a perpetrator in a discipline incident. |     |     |     |     |
 | DisciplineAction | DisciplineActionLengthDifferenceReason | Indicates the reason for the difference, if any, between the official and actual lengths of a student's disciplinary assignment. |     |     |     |     |
 | StaffDisciplineIncidentAssociation <br /> StudentDisciplineIncidentBehaviorAssociation <br /> StudentDisciplineIncidentNonOffenderAssociation | DisciplineIncidentParticipationCode | The role or type of participation of a student in a discipline incident. |     |     |     |     |
@@ -49,10 +50,13 @@ hide_table_of_contents: true
 | School | InternetAccess | The type of Internet access available. |     |     |     |     |
 | Staff | LevelOfEducation | The extent of formal instruction an individual has received (e.g., the highest grade in school completed or its equivalent or the highest degree received). | Orthodox |     |     |     |
 | School | MagnetSpecialProgramEmphasisSchool | A school that has been designed: 1) to attract students of different racial/ethnic backgrounds for the purpose of reducing, preventing, or eliminating racial isolation; and/or 2) to provide an academic or social focus on a particular theme (e.g., science/math, performing arts, gifted/talented, or foreign language). |     |     |     |     |
+| Student | OtherNameType | The types of alternate names for an individual. | Orthodox |     |     |     |
+| Staff | RecognitionType | The nature of recognition given to the individual for accomplishments in a co-curricular, or extra-curricular activity. | Flexible |     |     |     |
 | DisciplineIncident | ReporterDescription | Information on the type of individual who reported the discipline incident. When known and/or if useful, use a more specific option code (e.g., ""Counselor"" rather than ""Professional Staff""). |     |     |     |     |
 | School | SchoolCategory | The one or more categories of school. |     |     |     |     |
 | School | SchoolType | The type of education institution as classified by its primary focus. |     |     |     |     |
 | Student | Sex | A person's sex at birth. | Standard |     |     |     |
+| Student | StateAbbreviation | The abbreviation for the state (within the United States) or outlying area in which an address is located. | Standard |     | Yes |     |
 | School | TitleIPartASchoolDesignation | Denotes the Title I Part A designation for the school. |     |     |     |     |
 | DisciplineIncident <br /> StudentDisciplineIncidentBehaviorAssociation | Weapon | Identifies the type of weapon used during an incident. The Federal Gun-Free Schools Act requires states to report the number of students expelled for bringing firearms to school by type of firearm.  |     |     |     |     |
 
