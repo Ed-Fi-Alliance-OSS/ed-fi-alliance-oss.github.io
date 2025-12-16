@@ -1,11 +1,5 @@
 # User's Guide to Admin App v4
 
-:::warning
-
-This is pre-release documentation for software that is not yet available.
-
-:::
-
 The Ed-Fi Admin App is a web-based application that provides administrative capabilities for managing Ed-Fi ODS/API implementations. It allows administrators to configure security, manage vendors, and oversee data access policies.
 
 ## Prerequisites

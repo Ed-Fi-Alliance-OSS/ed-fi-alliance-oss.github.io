@@ -1,11 +1,5 @@
 # Resource Authorization and Admin App
 
-:::warning
-
-This is pre-release documentation for software that is not yet available.
-
-:::
-
 The Ed-Fi Admin App streamlines the process of generating API keys and secrets crucial for seamlessly integrating applications with your organization's Ed-Fi API. These credentials play a pivotal role in ensuring secure data transactions between integrated applications, safeguarding your organization's information flow. It's vital for Admin App users to understand the components that make up an application within the context of an Ed-Fi API. This guide aims to provide a comprehensive understanding of the application components, ensuring users are well-informed when setting up and managing applications in the Admin App.
 
 :::info

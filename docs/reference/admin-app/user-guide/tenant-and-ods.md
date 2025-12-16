@@ -1,11 +1,5 @@
 # ODS Instance and Tenant Management in Admin App
 
-:::warning
-
-This is pre-release documentation for software that is not yet available.
-
-:::
-
 This guide covers the creation and management of tenants and Operational Data Store (ODS) instances using the Ed-Fi Admin App. Proper tenant and ODS instance management is essential for multi-tenant Ed-Fi ODS/API implementations.
 
 ## Understanding ODS Instance and Tenants
