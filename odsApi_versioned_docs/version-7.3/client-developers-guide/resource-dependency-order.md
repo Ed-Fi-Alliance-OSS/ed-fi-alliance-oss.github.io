@@ -28,11 +28,11 @@ database or by authorization.
 
 A high level dependency graph is shown below:
 
-![Dependency Graph](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Ed-Fi-Data-Model-Logical-Loading-Sequence-v1-2025-03.jpg)
+![Dependency Graph](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Ed-Fi%20-%20Data%20Model%20Logical%20Loading%20Sequence%20V2%20-%202025-12.png)
 
 Use the links below to view the diagram in a different format.
 
-[ [PDF Version](https://edfidocs.blob.core.windows.net/$web/assets/reference/ods-api/Ed-Fi%20-%20Data%20Model%20Logical%20Loading%20Sequence%20V2.pdf) | [Vizio format](https://edfidocs.blob.core.windows.net/$web/assets/reference/ods-api/Ed-Fi-Data-Model-Logical-Loading-Sequence-v2.VSD) | [Dependency Graph](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Ed-Fi-Data-Model-Logical-Loading-Sequence-v1-2025-03.jpg)]
+[ [PDF Version](https://edfidocs.blob.core.windows.net/$web/assets/reference/ods-api/Ed-Fi%20-%20Data%20Model%20Logical%20Loading%20Sequence%20V2%20(1).pdf) | [Vizio format](https://edfidocs.blob.core.windows.net/$web/assets/reference/ods-api/Ed-Fi%20-%20Data%20Model%20Logical%20Loading%20Sequence%20V2%20(1).vsdx) ]
 
 ## Dependency Order Endpoint
 
