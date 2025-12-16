@@ -8,7 +8,7 @@ const folderPath = process.argv[2];
 
 if (!folderPath) {
   console.error('Usage: node lint-folder.js <folder-path>');
-  console.error('Example: node lint-folder.js docs/reference/8-admin-app');
+  console.error('Example: node lint-folder.js docs/reference/ods-admin-app');
   process.exit(1);
 }
 
