@@ -4,7 +4,7 @@
 
 The MetaEd IDE generates a number of technical artifacts, which you can find in
 the Explorer in the MetaEdOutput directory. We figure you wouldn't be here if
-you didn't have a solid working knowledge of Ed-Fi technology — but a few pieces
+you didn't have a solid working knowledge of Ed-Fi Technology Suite — but a few pieces
 of information are worth covering.
 
 ![Generated artifacts](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/metaed-output-folder.png)

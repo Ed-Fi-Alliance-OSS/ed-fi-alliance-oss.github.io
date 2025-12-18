@@ -35,15 +35,10 @@ If the app setting doesn't exist, it should be created.
 The following snippet shows the app setting:
 
 ```json
-"ApiSettings": {
+"FeatureManagement": {
     ...
-    "Features": [
-      {
-        "Name": "ChangeQueries",
-        "IsEnabled": true
-      },
+    "ChangeQueries": true,
     ...
-  ]
 }
 ```
 

@@ -28,7 +28,7 @@ Note that best practice at all levels for **code values** and **definitions** is
 
 ## Namespaces
 
-Descriptor **namespaces**should clearly indicate the organization that governs the value; this is often the education agency for local operational code sets, but in some cases code sets may be governed by external organizations (vendors, ESAs, states, etc.).
+Descriptor **namespaces** should clearly indicate the organization that governs the value; this is often the education agency for local operational code sets, but in some cases code sets may be governed by external organizations (vendors, ESAs, states, etc.).
 
 Best practice is to use a URI-format that indicates a domain name owned by the organization, to facilitate the ability of users to discover and learn about the organization that governs the value.
 

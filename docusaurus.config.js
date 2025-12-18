@@ -54,7 +54,10 @@ const config = {
           containerId: 'GTM-KGR2977',
         },
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: [
+            './src/css/custom.css',
+            './src/css/layout-overrides.css'
+          ],
         },
       }),
     ],
@@ -110,7 +113,7 @@ const config = {
             banner: 'none',
             badge: true,
             path: '5.4',
-            className: 'active',
+            className: 'unmaintained',
           },
           6.2: {
             banner: 'none',
@@ -138,9 +141,15 @@ const config = {
         routeBasePath: 'reference/data-exchange/data-standard',
         sidebarPath: './sidebars.js',
         includeCurrentVersion: false,
-        lastVersion: '5',
+        lastVersion: '6',
         versions: {
-          5: { banner: 'none', badge: true },
+          6: { banner: 'none', badge: true },
+          5: {
+            banner: 'none',
+            badge: true,
+            path: '5',
+            className: 'active',
+          },
           4: {
             banner: 'none',
             badge: true,
@@ -148,10 +157,10 @@ const config = {
             className: 'active',
           },
           3: {
-            banner: 'none',
+            banner: 'unmaintained',
             badge: true,
             path: '3',
-            className: 'active',
+            className: 'unmaintained',
           },
         },
       },
@@ -166,8 +175,8 @@ const config = {
       navbar: {
         logo: {
           alt: 'Ed-Fi Docs Logo',
-          src: 'img/ed-fi-logo.webp',
-          srcDark: 'img/ed-fi-logo-light.webp',
+          src: 'img/ed-fi-logo-light.webp',
+          srcDark: 'img/ed-fi-logo-dark.webp',
         },
         items: [
           {

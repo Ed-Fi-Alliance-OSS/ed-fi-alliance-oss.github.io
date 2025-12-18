@@ -4,6 +4,46 @@
 // See the LICENSE and NOTICES files in the project root for more information.
 
 export default {
+  sisApiV5: [
+    {
+    productName: 'PowerSchool',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/PowerSchool.png',
+      website: 'https://www.powerschool.com/',
+      validThrough: 'December 12, 2026',
+      verifyingAgencies: [
+        'Franklin Public Schools, WI',
+      ],
+      versionCompatibility: 'Conformance testing met with version 221014',
+      availability: 'Available to any agency (all sizes) in the U.S.',
+      documentation: {
+        'Availability Statement':
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/PowerSchool/Ed-Fi%20Certification%20-%20PowerSchool%20SIS.docx',
+        'Pricing Statement':
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/PowerSchool/Ed-Fi%20Certification%20-%20Pricing%20Statement%20PS%20SIS%2025-26.pdf',
+        'Mappings':
+          'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ed-Fi%20Resources%20and%20Elements%20for%20PowerSchool%20SIS%20Base%20v221014.xlsx?api=v2',
+      },
+      supportResources: [
+        {
+          name: 'Usage Overview',
+          link: 'https://ps-compliance.powerschool-docs.com/pssis-all-states/latest/getting-started-with-ed-fi',
+        },
+        {
+          name: 'Enablement information',
+          link: 'https://ps-compliance.powerschool-docs.com/pssis-all-states/latest/getting-started-with-ed-fi',
+        },
+        {
+          name: 'Configuration Guide',
+          link: 'https://ps-compliance.powerschool-docs.com/pssis-all-states/latest/getting-started-with-ed-fi',
+        },
+        {
+          name: 'How to get support',
+          link: 'https://help.powerschool.com/',
+        },
+      ],
+    }
+  ],
+
   sisApiV4: [
     {
       productName: 'Aeries',
@@ -73,7 +113,7 @@ export default {
       productName: 'PowerSchool',
       logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/PowerSchool.png',
       website: 'https://www.powerschool.com/',
-      validThrough: 'September 23, 2025',
+      validThrough: 'December 12, 2026',
       verifyingAgencies: [
         'Lorena ISD, TX',
         'Buford City Schools, GA',
@@ -83,8 +123,10 @@ export default {
       availability: 'Available to any agency (all sizes) in the U.S.',
       documentation: {
         'Availability Statement':
-          'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ed-Fi%20Certification%20-%20PowerSchool%20SIS.docx?version=1&modificationDate=1705005715627&cacheVersion=1&api=v2',
-        Mappings:
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/PowerSchool/Ed-Fi%20Certification%20-%20Availability%20Statement%20PS%20SIS%2025-26.pdf',
+        'Pricing Statement':
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/PowerSchool/Ed-Fi%20Certification%20-%20Pricing%20Statement%20PS%20SIS%2025-26.pdf',
+        'Mappings':
           'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ed-Fi%20Resources%20and%20Elements%20for%20PowerSchool%20SIS%20Base%20v221014.xlsx?api=v2',
       },
       supportResources: [
@@ -102,7 +144,7 @@ export default {
         },
         {
           name: 'How to get support',
-          link: 'https://ps-compliance.powerschool-docs.com/pssis-all-states/latest/getting-started-with-ed-fi',
+          link: 'https://help.powerschool.com/',
         },
       ],
     },
@@ -139,8 +181,8 @@ export default {
       productName: 'Infinite Campus SIS',
       logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/Infinite_Campus_logo.png',
       website: 'https://www.infinitecampus.com',
-      validThrough: 'August 16, 2024',
-      verifyingAgencies: ['Princeton ISD, TX'],
+      validThrough: 'September 16, 2026',
+      verifyingAgencies: ['Delaware Department of Education'],
       versionCompatibility: 'Conformance testing met with version 2321',
       availability: 'Available to any agency (all sizes) in the U.S.',
       documentation: {
@@ -565,37 +607,6 @@ export default {
 
   ],
   assessmentOutcomesSuite3: [
- /* Istation is no longer a valid certification in the registry, but it is retained here for historical purposes.
- {
-      productName: 'Istation ISIP (Indicators of Progress)',
-      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/Istation_logo.png',
-      website: 'https://www.istation.com/isip-assessment',
-      validThrough: 'December 12, 2024',
-      verifyingAgencies: [
-        'New Mexico Department of Education (NMPED)',
-        'Rio Rancho Public Schools (NM)',
-        'Los Alamos Public Schools (NM)',
-      ],
-      versionCompatibility:
-        'Conformance testing met with iStation single product version (distributed to all customers)',
-      availability:
-        'Available to any agency (all sizes) in the U.S. where iStation is sold',
-      documentation: {
-        'Availability Statement':
-          'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ed-Fi%20Certification%20-%20Availability%20Statement%20-%20Istation.pdf?version=1&modificationDate=1702401431310&cacheVersion=1&api=v2',
-        Mappings:
-          'https://edfi.atlassian.net/wiki/download/attachments/23694066/Istation_score_report.xlsx?version=1&modificationDate=1701698794923&cacheVersion=1&api=v2',
-        usageOverview:
-          'https://edfi.atlassian.net/wiki/download/attachments/23694066/0_Statement%20of%20Purpose.pdf?version=1&modificationDate=1701699015080&cacheVersion=1&api=v2',
-      },
-      supportResources: [
-        {
-          name: 'How to get support',
-          link: 'https://www.istation.com/contact',
-        },
-      ],
-    },
-    */
     {
       productName: 'DnA',
       logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/Renaissance DnA.png',
@@ -641,7 +652,7 @@ export default {
       productName: 'Cambium Assessment',
       logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/2024-09-03_12-46-45.png',
       website: 'https://www.cambiumassessment.com/index.html',
-      validThrough: 'September 3, 2025',
+      validThrough: 'December 5, 2026',
       verifyingAgencies: [
         'Appoquinimink School District',
         'Seaford School District',
@@ -651,11 +662,13 @@ export default {
       availability: 'Available to any agency (all sizes) in the U.S.',
       documentation: {
         'Availability Statement':
-          'https://edfi.atlassian.net/wiki/spaces/EDFICERT/pages/23694066/Registry+of+Ed-Fi+Certified+Products',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Cambium/Ed-Fi%20Certification%20-%20Availability%20Statement.docx',
+        'Pricing Statement':
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Cambium/CAI_%20EdFi_Updated%20Pricing%20Statement%2011.19.2025%20Signed.pdf',
         Mappings:
-          'https://edfi.atlassian.net/wiki/spaces/EDFICERT/pages/23694066/Registry+of+Ed-Fi+Certified+Products',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Cambium/Mapping%20for%20Certification.xlsx ',
         narrative:
-          'https://edfi.atlassian.net/wiki/spaces/EDFICERT/pages/23694066/Registry+of+Ed-Fi+Certified+Products',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Cambium/Usage%20Narrative.rtf',
       },
       supportResources: [
         {
@@ -808,6 +821,27 @@ export default {
         },
       ],
     },
+    {
+      productName: 'Elevate Standards Alignment',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/Elevate_StandardsAlignment.png',
+      website:
+        'https://www.instructure.com/learning-companies/products/elevate/elevate-standards-alignment',
+      validThrough: 'October 14, 2026',
+      verifyingAgencies: ['Fullerton School District', 'New Caney ISD'],
+      versionCompatibility: 'Ed-Fi ODS API for v4',
+      availability:
+        'Available to states (SEAs) and school districts (LEAs) using Ed-Fi Technology Suite.',
+      documentation: {
+        Mappings:
+          'https://edfi.atlassian.net/wiki/download/attachments/20611183/AB%20Connect%20-%20API%20Provider%20Badge%20-%20Data%20Mapping.xlsx?version=2&modificationDate=1597692936440&cacheVersion=1&api=v2',
+      },
+      supportResources: [
+        {
+          name: 'Learning Standards Sync Utility',
+          link: 'https://edfi.atlassian.net/wiki/spaces/EXCHANGE/pages/22487416/Learning+Standards+Sync+Utility',
+        },
+      ],
+    },
   ],
   domainApiSuite3: [
     {
@@ -819,7 +853,7 @@ export default {
       verifyingAgencies: ['Fullerton School District', 'New Caney ISD'],
       versionCompatibility: 'Ed-Fi ODS API for v2.5 and v3.x',
       availability:
-        'Available to states (SEAs) and school districts (LEAs) using Ed-Fi technology.',
+        'Available to states (SEAs) and school districts (LEAs) using Ed-Fi Technology Suite.',
       documentation: {
         Mappings:
           'https://edfi.atlassian.net/wiki/download/attachments/20611183/AB%20Connect%20-%20API%20Provider%20Badge%20-%20Data%20Mapping.xlsx?version=2&modificationDate=1597692936440&cacheVersion=1&api=v2',

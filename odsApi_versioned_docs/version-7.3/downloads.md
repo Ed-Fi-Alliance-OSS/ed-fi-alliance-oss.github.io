@@ -10,26 +10,28 @@ repository.
 
 ## Binary Downloads
 
-* [Binary
-    Releases](./getting-started/binary-installation/binary-releases.md)
+* [Binary Releases](./getting-started/binary-installation/binary-releases.md)
+* [Binary Releases
+  7.3.0](./getting-started/binary-installation/binary-releases.md#ods-api-v730-packages)
+
+## Docker Downloads
+
+* [Docker Images](./getting-started/getting-started-docker-deployment.md)
+* [Docker Images
+  7.3.0](./getting-started/getting-started-docker-deployment.md#ods-api-v730-images)
 
 ## Source & Code Downloads
 
-* [Ed-Fi-ODS/v7.3](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v7.3)
+* [Ed-Fi-ODS/v7.3.1](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v7.3.1)
     source code (GitHub)
-* [Ed-Fi-ODS-Implementation/v7.3](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/tree/v7.3) source
+* [Ed-Fi-ODS-Implementation/v7.3.1](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/tree/v7.3.1) source
     code (GitHub)
+* [Ed-Fi-ODS/v7.3.0](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v7.3-patch3)
+  source code (GitHub)
+* [Ed-Fi-ODS-Implementation/v7.3.0](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/tree/v7.3-patch3) source
+  code (GitHub)
 * [API Project Templates
     Installer](./getting-started/source-code-installation/project-templates-installation.md) (VSIX)
-* [API Profiles Sample Source
-    Files](./how-to-guides/how-to-add-profiles-to-the-ed-fi-ods-api.md)
-    (XML)
-* [API Composite Sample Source
-    File](./how-to-guides/how-to-add-api-composites-to-the-ed-fi-ods-api-solution.md)
-    (XML)
-* [Using Code Generation to Create an
-    SDK](./client-developers-guide/using-code-generation-to-create-an-sdk.md)
-    (C# Sample Application)
 * API Extensibility Sample Code - [Alternative Education
     Program](./how-to-guides/how-to-extend-the-ed-fi-ods-api-alternative-education-program-example.md)
     and [Student

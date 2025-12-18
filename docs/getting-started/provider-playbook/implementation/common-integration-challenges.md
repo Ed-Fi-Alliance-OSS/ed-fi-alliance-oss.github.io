@@ -40,4 +40,4 @@ Start small and work closely with early customers so that you can understand the
 
 ## Agency Extensions
 
-Some states have created custom extensions for their Ed-Fi technology implementation.  It is important to understand when doing an integration what extensions are in place with the agency you are working with in order to understand how reusable your integration will be for other agencies. If what you are building is highly customized to a specific extension it may not be portable to other implementations.  To learn more about API Extensions read [API Extensions](../implementation/ed-fi-api-fundamentals/api-extensions.md)
+Some states have created custom extensions for their Ed-Fi Technology Suite implementation.  It is important to understand when doing an integration what extensions are in place with the agency you are working with in order to understand how reusable your integration will be for other agencies. If what you are building is highly customized to a specific extension it may not be portable to other implementations.  To learn more about API Extensions read [API Extensions](../implementation/ed-fi-api-fundamentals/api-extensions.md)

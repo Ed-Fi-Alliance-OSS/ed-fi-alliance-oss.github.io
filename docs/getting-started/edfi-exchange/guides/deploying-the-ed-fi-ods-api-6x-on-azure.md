@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This document describes the customer success team’s experiences installing the Ed-Fi platform in Azure.  Based on what we have seen community members being most interested in, these instructions detail an implementation that uses the virtualized Microsoft Sql Server databases and virtualized web applications running as App Services on a Microsoft platform.  These are NOT necessarily the recommendations of the Ed-Fi Alliance, this is just the path we have tested.
+This document describes the customer success team’s experiences installing the Ed-Fi Technology Suite in Azure.  Based on what we have seen community members being most interested in, these instructions detail an implementation that uses the virtualized Microsoft Sql Server databases and virtualized web applications running as App Services on a Microsoft platform.  These are NOT necessarily the recommendations of the Ed-Fi Alliance, this is just the path we have tested.
 
 The basis of this deployment involves having a locally-built version of 6x. Unfortunately, the 6x portable binaries are not compatible with windows-based App Service instances on Azure. Also, we are only doing a build for YearSpecific, OdsSpecific, and SharedInstance mode.  Sandbox mode is not compatible with the completely virtualized SQL databases. Instructions on using a sandbox-compatible SQL Virtual Machine are forthcoming...
 
@@ -14,7 +14,7 @@ The following prerequisites should be addressed before starting the Azure deploy
 
 * Local or virtual machine development environment with the following:
   * Ed-Fi ODS/API installed from source ([Getting Started - Source Code Installation](/reference/ods-api/6.2/downloads)) . We have found that deploying 6.x versions of the ODS/API requires building the solution from source code so that the web application can be explicitly defined as 64-bit. More on that later…
-  * The Ed-Fi ODS Admin App should be installed but NOT run for the first time ([Admin App v3.0 for ODS/API v6.0](/reference/admin-app/getting-started/installation/older-versions-of-admin-app/admin-app-v30-for-odsapi-v60/))
+  * The Ed-Fi ODS Admin App should be installed but NOT run for the first time ([Admin App v3.3 for ODS/API v6.0](/reference/ods-admin-app/getting-started/))
   * [The Azure CLI should be installed](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli)
 
 Step 1. MSSQL Server Setup

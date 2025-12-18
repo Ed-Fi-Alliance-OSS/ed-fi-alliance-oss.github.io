@@ -2,21 +2,18 @@ mayya:
   name: Vinaya Mayya
   title: Senior Technical Program Manager - API
   url: https://www.ed-fi.org/success-stories/category/vinaya-mayya/
-  image_url: https://www.ed-fi.org/assets/2019/11/Vinaya-Mayya-768x768.png
+  image_url: /img/authors/mayya.png
   page: true
 
 hoekstra:
   name: Jason Hoekstra
   title: Senior Program Manager - Tools
-  url: https://www.ed-fi.org/success-stories/category/jason-hoekstra/
-  image_url: https://www.ed-fi.org/assets/2019/11/Jason-Hoekstra-2022-768x768.png
   page: true
 
 fuqua:
   name: Stephen A. Fuqua
   title: Director, Software Engineering
-  url: https://www.ed-fi.org/success-stories/category/stephen-fuqua/
-  image_url: https://www.ed-fi.org/assets/2020/10/Stephen-Fuqua-768x768.png
+  image_url: /img/authors/fuqua.png
   page: true
   socials:
     linkedin: stephenfuqua
@@ -25,8 +22,6 @@ fuqua:
 yilmaz:
   name: Mustafa Yilmaz
   title: Senior Program Manager - Data Standard
-  url: https://www.ed-fi.org/success-stories/category/mustafa-yilmaz/
-  image_url: https://www.ed-fi.org/assets/2022/08/Mustafa-Yilmaz-July-2022-Headshot-768x768.png
   page: true
   socials:
     linkedin: mustafayilmaz4data
@@ -35,7 +30,14 @@ yilmaz:
 hunter:
   name: Robert Hunter, Jr
   title: Software Engineer
+  image_url: /img/authors/hunter.png
 
 ragone:
   name: Maria Ragone
   title: Technical Business Analyst
+  image_url: /img/authors/ragone.png
+
+jimenez:
+  name: David Jiménez
+  title: Software Engineer
+  image_url: /img/authors/jimenez.png

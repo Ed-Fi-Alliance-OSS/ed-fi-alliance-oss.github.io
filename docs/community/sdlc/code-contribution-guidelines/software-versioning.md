@@ -9,7 +9,7 @@ _Suite Number_.
 
 Also see:
 
-* [Ed-Fi Technical Suite Version  Matrix](/reference/roadmap/supported-versions)
+* [Ed-Fi Technology Suite Version  Matrix](/reference/roadmap/supported-versions)
 * [Ed-Fi Data Standard Versioning and Releases](/reference/data-exchange/versioning-and-releases)
 * [Open Source and New
   Versioning](https://www.ed-fi.org/blog/2020/05/open-source-and-new-versioning/)

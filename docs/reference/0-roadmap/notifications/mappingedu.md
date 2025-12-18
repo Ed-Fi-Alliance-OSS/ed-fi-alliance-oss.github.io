@@ -52,7 +52,7 @@ MappingEDU allows both data standards and mapping projects to be exported.
 ## Why is this change being made?
 
 The time and resources spent on MappingEDU can be better used to support growth
-and evolution of other Ed-Fi products and programs. Specifically:
+and evolution of other Ed-Fi Technology Suite and programs. Specifically:
 
 * Usage of MappingEDU as a tool to perform mappings remains very low.
 * There are existing alternatives to the service that are widely available. As
