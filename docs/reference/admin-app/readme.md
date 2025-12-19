@@ -11,6 +11,7 @@ and API health across diverse user roles and deployment models.
 Documentation for the Ed-Fi Admin API is viewable online:
 
 * [What's New](./whats-new.md)
+* [Getting Started](./getting-started.md)
 
 ## Target Audiences
 
