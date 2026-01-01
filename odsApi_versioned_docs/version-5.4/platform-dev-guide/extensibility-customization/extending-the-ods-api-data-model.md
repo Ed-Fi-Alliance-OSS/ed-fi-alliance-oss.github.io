@@ -134,7 +134,7 @@ generally inverse process:
 
 1. Remove any Extension Projects in Visual Studio. **Right-click** on the Project in the Solution Explorer, select **Remove**.
 2. Manually delete the Extension Project files from disk. These will be
-   in {{ Source Code Root }}\Ed-Fi-ODS-Implementation\Application\.
+   in `{{ Source Code Root }}\Ed-Fi-ODS-Implementation\Application\`.
 3. Remove references to the Extension Projects. These references will be in your **OwinStartup** class (e.g., EdFi.Ods.WebApi\Startup\ApiStartup.cs). Remove the using statement
    and the AssemblyLoader call for each project.
 

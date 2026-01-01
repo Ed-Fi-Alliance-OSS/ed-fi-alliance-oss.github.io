@@ -221,7 +221,7 @@ To stop the services and remove them, but retain the data in separate volumes:
 C:\PGDockerSetup>docker-compose down -v
 ```
 
-/details><
+</details>
 
 #### Configure pgpass.conf
 
@@ -248,7 +248,6 @@ C:\> get-item env:pgpassfile
 ```
 </details>
 
-</details>
 
 ## Step 3. Download the Ed-Fi ODS / API v5.4 Code
 

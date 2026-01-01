@@ -273,7 +273,7 @@ The host's process MUST perform the following steps:
 * Generate a short string-based "snapshot identifier" (GUID-based values are discouraged to prevent
 name length problems when possibly combined with other API features that
 increase ODS database name length).
-* Restore the ODS database using following naming convention: {Ed-Fi ODS database name}_SS{snapshot-identifier}.
+* Restore the ODS database using following naming convention: `{Ed-Fi ODS database name}_SS{snapshot-identifier}`.
 * Insert a new record into the `changes.Snapshot` table with the new snapshot identifier and the current date/time.
 
 The host's process SHOULD also perform the following steps:
