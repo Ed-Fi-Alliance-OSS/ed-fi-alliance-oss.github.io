@@ -66,6 +66,7 @@ hide_table_of_contents: true
 | LocalEducationAgency | LocalEducationAgencyCategory | The category of local education agency/district. |     |     |     |     |
 | School | MagnetSpecialProgramEmphasisSchool | A school that has been designed: 1) to attract students of different racial/ethnic backgrounds for the purpose of reducing, preventing, or eliminating racial isolation; and/or 2) to provide an academic or social focus on a particular theme (e.g., science/math, performing arts, gifted/talented, or foreign language). |     |     |     |     |
 | EducationOrganization | OperationalStatus | The current operational status of the education organization (e.g., active, inactive). |     |     |     |     |
+| Student | OtherNameType | The types of alternate names for an individual. | Orthodox |     |     |     |
 | StudentEducationOrganizationAssociation | PrimaryLearningDeviceAccess | An indication of whether the primary learning device is shared or not shared with another individual. |     |     |     |     |
 | StudentEducationOrganizationAssociation | PrimaryLearningDeviceAwayFromSchool | The type of device the student uses most often to complete learning activities away from school. |     |     |     |     |
 | StudentEducationOrganizationAssociation | PrimaryLearningDeviceProvider | The provider of the primary learning device. |     |     |     |     |
@@ -75,6 +76,7 @@ hide_table_of_contents: true
 | StudentSchoolAssociation | SchoolChoiceBasis | The legal basis for the school choice enrollment according to local, state or federal policy or regulation. (The descriptor provides the list of available bases specific to the state. |     |     |     |     |
 | LocalEducationAgency | SchoolChoiceImplementStatus | An indication of whether the LEA was able to implement the provisions for public school choice under Title I, Part A, Section 1116 of ESEA as amended. |     |     |     |     |
 | School | SchoolType | The type of education institution as classified by its primary focus. |     |     |     |     |
+| Student | Sex | A person's sex at birth. | Standard |     |     |     |
 | EducationOrganization | StateAbbreviation | The abbreviation for the state (within the United States) or outlying area in which an address is located. | Standard |     | Yes |     |
 | StudentEducationOrganizationAssociation | Term | The term associated with the cohort year; for example, the intended term of graduation. |     |     |     |     |
 | School | TitleIPartASchoolDesignation | Denotes the Title I Part A designation for the school. |     |     |     |     |
