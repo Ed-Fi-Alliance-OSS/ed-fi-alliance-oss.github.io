@@ -12,7 +12,7 @@ Some implementations find it useful to add a school year in the API root, for ex
 
 ## Routing
 
-When enabled, the base URI follows /{api_area}/{version}/**{year}** pattern. See [API Routes](https://edfi.atlassian.net/wiki/display/ODSAPIS3V53/API+Routes) for details.
+When enabled, the base URI follows `/{api_area}/{version}/**{year}** pattern.` See [API Routes](https://edfi.atlassian.net/wiki/display/ODSAPIS3V53/API+Routes) for details.
 
 ## How to Enable
 

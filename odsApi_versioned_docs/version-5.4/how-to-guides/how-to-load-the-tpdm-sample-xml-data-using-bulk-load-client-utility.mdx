@@ -36,7 +36,7 @@ You can invoke the tool using the following command: EdFi.BulkLoadClient.Console
 Tool 'edfi.suite3.bulkloadclient.console' (version '5.4.480') was successfully installed.
 ```
 
-* You can verify that the EdFi.BulkLoadClient.Console.exe is available by browsing to this location {YourInstallFolder}\EdFi.BulkLoadClient.Console.exe
+* You can verify that the EdFi.BulkLoadClient.Console.exe is available by browsing to this location `{YourInstallFolder}`\EdFi.BulkLoadClient.Console.exe
 
 ## Step 2. Download Scripts and Sample Data
 
@@ -381,7 +381,7 @@ END $$;
 * Navigate to Ed-Fi-TPDMDataLoad directory (e.g., C:\Ed-Fi-TPDMDataLoad).
 * Open the LoadBootstrapData.ps1 file in notepad or Windows PowerShell ISE and update the $apiLoaderExe variable
 Value where EdFi.BulkLoadClient.Console is installed in Step 1.
-* Example $apiLoaderExe= "{YourInstallFolderFullPath}\EdFi.BulkLoadClient.Console.exe"
+* Example $apiLoaderExe= "`{YourInstallFolderFullPath}\EdFi.BulkLoadClient.Console.exe`"
 * Save and Execute LoadBootstrapData.ps1.
 The script will run the Bulk Load Client loading data from the Bootstrap folder
 to the TPDM Populated Sandbox Database.
@@ -421,7 +421,7 @@ END $$
 * Navigate to Ed-Fi-TPDMDataLoad directory (e.g., C:\Ed-Fi-TPDMDataLoad).
 * Open the LoadSampleData.ps1 file in notepad or Windows PowerShell ISE and update the $apiLoaderExe variable
 Value where EdFi.BulkLoadClient.Console is installed in Step 1.
-* Example $apiLoaderExe= "{YourInstallFolderFullPath}\EdFi.BulkLoadClient.Console.exe"
+* Example $apiLoaderExe= "`{YourInstallFolderFullPath}\EdFi.BulkLoadClient.Console.exe`"
 * Save and Execute LoadSampleData.ps1.
 The script will run the Bulk Load Client to load data from the Sample XML folder
 to the Empty Sandbox database.

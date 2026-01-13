@@ -28,7 +28,7 @@ When combined with multi-server deployment (one server per Instance), each set o
 
 ## Routing
 
-When enabled, the base URI follows /{api_area}/{version}/**{instance}/{year}** pattern. 'Instance' must match the regex **`^[A-Za-z0-9-]+$`** (i.e. alphanumerics and dashes, a GUID for example). See [API Routes](https://edfi.atlassian.net/wiki/display/ODSAPIS3V53/API+Routes) for details.
+When enabled, the base URI follows `/{api_area}/{version}/**{instance}/{year}** pattern.` 'Instance' must match the regex **`^[A-Za-z0-9-]+$`** (i.e. alphanumerics and dashes, a GUID for example). See [API Routes](https://edfi.atlassian.net/wiki/display/ODSAPIS3V53/API+Routes) for details.
 
 ## How to enable
 

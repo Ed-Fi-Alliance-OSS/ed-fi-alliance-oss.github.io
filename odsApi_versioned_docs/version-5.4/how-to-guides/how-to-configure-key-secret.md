@@ -1,15 +1,9 @@
 # How To: Configure Key / Secret
 
-API keys and secrets can be administered by the Admin API or Sandbox Admin App,
-but some implementers may prefer to work directly with the data. The SQL queries
-on this page enable a database administrator to create keys and secrets. These
+API keys and secrets can be administered by the Admin API or Sandbox Admin App,  
+but some implementers may prefer to work directly with the data. The SQL queries  
+on this page enable a database administrator to create keys and secrets. These  
 queries run against the `EdFi_Admin` database.
-
-Before you begin:
-
-* Make sure you have configured ODS instance(s) before administering keys and
-    secrets to connect to it. See [How To: Configure ODS
-    Instances](./how-to-configure-ods-instances.md)
 
 :::info
 
@@ -17,7 +11,7 @@ You should replace the values for variables with values you desire.
 
 :::
 
-```sql
+```
 DECLARE @VendorName nvarchar(150) = 'Local Test Vendor'
 DECLARE @NamespacePrefix nvarchar (255) = 'uri://ed-fi.org'
 DECLARE @UserFullName varchar(150) = 'Local Test User'
@@ -124,16 +118,10 @@ BEGIN
         VALUES (@ApiClientName, @IsPopulatedSandbox, @NamespacePrefix)
     END
 END
-
 ```
 
 ## More Information
 
-For additional information on `ApiClients` and keys / secrets refer to the [API
-Authentication](https://techdocs.ed-fi.org/display/ETKB/API+Authentication)
+For additional information on `ApiClients` and keys / secrets refer to the [API](https://techdocs.ed-fi.org/display/ETKB/API+Authentication)  
+[Authentication](https://techdocs.ed-fi.org/display/ETKB/API+Authentication)  
 documentation.
-
-## See also
-
-* [How To: Configure ODS Instances](./how-to-configure-ods-instances.md)
-* [How To: Configure Claim Sets](./how-to-configure-claim-sets.md)

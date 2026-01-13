@@ -76,9 +76,9 @@ Ed-Fi ODS / API traditionally supported different database partitioning strategi
 
 | **Database Provider** | **Partitioning Strategy** | **appsettings.json ApiSettings:Mode value** | **appsettings.json EdFi_ODS Connection String** |
 |----------------------|--------------------------|---------------------------------------------|-------------------------------------------------|
-| **District Specific** | Partitioning by district. Different district data is accessed through district ID associated with the API client. To use this option, the API client must be configured for exactly one district ID during API key and secret configuration. | DistrictSpecific | Database=EdFi_Ods_DISTRICTID<br>Server=Ods_DISTRICTID</br>(substitute actual district ID) |
-| **Instance-Year Specific** | Partitioning by instance and year. Different instance and year data is accessed through changing the URL (e.g., http://website-address/data/v3/inst-1/2021). Partitioning by-district-by-year is one specific example of this strategy. | InstanceYearSpecific | Database=EdFi_Ods_INSTANCEID_YYYY<br>Server=Ods_INSTANCEID_YYYY</br>(substitute actual instance ID and current year) |
-| **Year Specific** | Partitioning by year. Different year data is accessed through changing the URL (e.g., http://website-address/data/v3/2021). | YearSpecific | Database=EdFi_Ods_YYYY<br>Server=Ods_YYYY</br>(substitute actual current year) |
+| **District Specific** | Partitioning by district. Different district data is accessed through district ID associated with the API client. To use this option, the API client must be configured for exactly one district ID during API key and secret configuration. | DistrictSpecific | Database=EdFi_Ods_DISTRICTID<br/>Server=Ods_DISTRICTID<br/>(substitute actual district ID) |
+| **Instance-Year Specific** | Partitioning by instance and year. Different instance and year data is accessed through changing the URL (e.g., http://website-address/data/v3/inst-1/2021). Partitioning by-district-by-year is one specific example of this strategy. | InstanceYearSpecific | Database=EdFi_Ods_INSTANCEID_YYYY<br/>Server=Ods_INSTANCEID_YYYY<br/>(substitute actual instance ID and current year) |
+| **Year Specific** | Partitioning by year. Different year data is accessed through changing the URL (e.g., http://website-address/data/v3/2021). | YearSpecific | Database=EdFi_Ods_YYYY<br/>Server=Ods_YYYY<br/>(substitute actual current year) |
 
 ### MetaEd IDE v2.6
 

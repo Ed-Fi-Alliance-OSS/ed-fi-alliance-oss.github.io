@@ -65,7 +65,4 @@ There are three test databases available to use with Ed-Fi ODS / API.
 | Northridge | 25,000            | Greater breadth. 1 district, 4 schools     |
 | Glendale   | 50,000            | Full breadth. 2 districts, 36 schools      |
 
-## See Also
 
-* [How To: Create a Custom Populated Template](./how-to-create-a-custom-populated-template.md)
-* [How To: Use the Northridge Populated Template](./how-to-use-the-northridge-populated-template.md)

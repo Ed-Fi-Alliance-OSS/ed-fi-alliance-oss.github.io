@@ -7,7 +7,7 @@ sidebar_position: 8
 The Code Generation utility is a .NET 8.0 command-line application that has been
 integrated into the Ed-Fi ODS / API `initdev` process. Its responsibility is to generate C# classes, ORM mapping files for
 the core application, plus all profiles and extensions. It uses logic-less
-{{mustache}} templates that are embedded within the assembly to generate the files. The
+`{{mustache}}` templates that are embedded within the assembly to generate the files. The
 application depends on Castle Windsor for its container.
 
 The code generation tool is located in the ODS repository under the folder
