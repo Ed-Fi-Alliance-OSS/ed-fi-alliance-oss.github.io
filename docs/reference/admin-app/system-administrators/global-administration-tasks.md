@@ -92,7 +92,7 @@ For an environment to be managed, you must grant ownership to a team. This proce
 1. Select the environment
 2. Click "Grant Ownership"
 
-From step 2, follow the guide in [Managing Resource Ownership](#managing-resource-ownership) to complete this process.
+From step 2, follow the guide in [Managing Resource Ownership](#ownerships) to complete this process.
 
 ![Grant ownership view for environment](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/admin-guide/environment/grant-ownership-to-environment.png)
 

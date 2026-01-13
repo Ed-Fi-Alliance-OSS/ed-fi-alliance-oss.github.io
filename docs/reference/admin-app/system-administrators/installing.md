@@ -4,20 +4,27 @@
 
 Docker provides the easiest deployment method with consistent environments across platforms. OCI-compliant containers provide a consistent deployment experience across many platforms, including Docker Desktop, Kubernetes, and other services. The following quick start instructions demonstrate application startup in Docker. They illustrate how to configure the applications, including environment variables, persistent storage, and networking. These notes can also serve as a template for building your own deployment in the container runtime engine of your choice, whether on-premises or in the Cloud.
 
+### Docker Installation Guide for Ed-Fi Admin App
+
+This guide explains how to install and run the Ed-Fi Admin App using Docker
+Compose and the provided `start-services.ps1` script. It covers both building
+images locally and pulling pre-built images from Docker Hub, as well as
+environment variable configuration.
+
 ### Docker Prerequisites
 
-- Docker Engine 20.10+ or Docker Desktop
-- Docker Compose v2.0+
-- Git (for cloning the repository)
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed and running
+- [PowerShell](https://docs.microsoft.com/en-us/powershell/) (Windows)
 
 ### Quick Start
 
-1. **Clone the repository**:
+1. **Clone the Admin App repository:**
 
-   ```bash
-   git clone https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-AdminApp.git
-   cd Ed-Fi-AdminApp/compose
-   ```
+   Reference `compose` folder from [Admin App](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-AdminApp)
+
+   :::tip
+   If you have not cloned the Admin App repository, do so and ensure you are in the correct directory.
+   :::
 
 2. **Create environment configuration**:
 
@@ -25,6 +32,8 @@ Docker provides the easiest deployment method with consistent environments acros
    cp .env.example .env
    # Edit .env file with your specific settings
    ```
+
+   The `.env.example` file is located in the `compose` directory.
 
 3. **Generate SSL certificates**:
 
@@ -37,68 +46,85 @@ Docker provides the easiest deployment method with consistent environments acros
    Only needed if you don't already have a certificate pair to use.
    :::
 
-4. **Start core services**:
+4. **Start core and Admin App services**:
 
-   ```bash
-   # PowerShell Core (Windows/Linux/macOS):
-   ./up.ps1
+- **Using Pre-Built Images**:
+      The recommended way to run the Admin App is to use the official images from Docker Hub.
 
-   # Linux/macOS:
-   mkdir -p logs
-   docker network create edfiadminapp-network --driver bridge
-   docker compose up -d
-   ```
+  - **Frontend:** `edfialliance/admin-app-fe:v4.0`
+  - **API:** `edfialliance/admin-app-api:v4.0`
 
-5. **Start Admin App services**:
+  - Open PowerShell in the `compose` directory:
 
-   ```bash
-   # PowerShell Core (Windows/Linux/macOS):
-   ./up.ps1 -AdminApp
+      ```powershell
+      cd ./compose
+      ```
 
-   # Linux/macOS:
-   cd adminapp
-   docker compose up -d
-   ```
+      :::tip
+      If you encounter permission issues, run PowerShell as Administrator.
+      :::
 
-### Production Docker Deployment
+  - Run the following command to start all services:
 
-For production environments, modify the following:
+    ```powershell
+    ./start-services.ps1
+    ```
 
-1. **Environment Variables** (`.env`):
+      This script will pull the required images and start the containers defined in `adminapp-services.yml` and `edfi-services.yml`.
 
-   ```bash
-   # Use strong, unique passwords
-   POSTGRES_PASSWORD=your-secure-password
-   KEYCLOAK_ADMIN_PASSWORD=your-keycloak-password
+- **Building Images Locally (Advanced)**:
 
-   # Set production URLs
-   VITE_API_URL=https://yourdomain.com/adminapp-api
-   FE_URL=https://yourdomain.com/adminapp
-   MY_URL=https://yourdomain.com/adminapp-api
+    If you want to build the images from source (for development or
+    customization), Ensure you have cloned the repository and installed all
+    dependencies.
+    In the `compose` directory, run:
 
-   # This line is only necessary when you are using a self-signed certificate.
-   NODE_EXTRA_CA_CERTS=/app/ssl/your-production-cert.crt
+    ```powershell
+    ./start-services.ps1 -Rebuild
+    ```
 
-   # Administrator credentials
-   KEYCLOAK_ADMIN=admin
-   KEYCLOAK_ADMIN_PASSWORD=admin
+    This will build the `admin-app-fe` and `admin-app-api` images locally
+    before starting the containers.
 
-   # Frontend UI Configuration
-   VITE_STARTING_GUIDE=https://docs.ed-fi.org/reference/admin-app/system-administrators/global-administration-tasks
-   VITE_CONTACT=https://community.ed-fi.org/
-   VITE_APPLICATION_NAME="Ed-Fi Admin App"
-   VITE_IDP_ACCOUNT_URL=https://yourdomain.com/auth/realms/edfi/account/
-   ```
+### Environment Variables
 
-  :::note
-  **Important:** The `VITE_IDP_ACCOUNT_URL` value may differ from your Keycloak admin console URL.
-  This should point to the **account management interface** (`/auth/realms/{realm-name}/account/`), not the admin console.
-  Ensure this matches your actual Keycloak realm configuration and domain.
-  :::
+Deployment settings can be customized using environment variables. Define these variables in a `.env` file within the `compose` directory, or provide them directly to Docker Compose as needed.
 
-2. **SSL Certificates**: Replace self-signed certificates with production certificates
+For a complete list of available variables and their descriptions, see the [Environment variables example file](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-AdminApp/blob/main/compose/.env.example).
 
-3. **Database**: Consider using external PostgreSQL instance for better reliability
+#### Example `.env` for Production
+
+```bash
+# Use strong, unique passwords
+POSTGRES_PASSWORD=your-secure-password
+KEYCLOAK_ADMIN_PASSWORD=your-keycloak-password
+
+# Set production URLs
+VITE_API_URL=https://yourdomain.com/adminapp-api
+FE_URL=https://yourdomain.com/adminapp
+MY_URL=https://yourdomain.com/adminapp-api
+
+# This line is only necessary when you are using a self-signed certificate.
+NODE_EXTRA_CA_CERTS=/app/ssl/your-production-cert.crt
+
+# Administrator credentials
+KEYCLOAK_ADMIN=admin
+
+# Frontend UI Configuration
+VITE_STARTING_GUIDE=https://docs.ed-fi.org/reference/admin-app/system-administrators/global-administration-tasks
+VITE_CONTACT=https://community.ed-fi.org/
+VITE_APPLICATION_NAME="Ed-Fi Admin App"
+VITE_IDP_ACCOUNT_URL=https://yourdomain.com/auth/realms/edfi/account/
+```
+
+:::note
+**Important:** The `VITE_IDP_ACCOUNT_URL` value may differ from your Keycloak admin console URL.
+This should point to the **account management interface** (`/auth/realms/{realm-name}/account/`), not the admin console.
+Ensure this matches your actual Keycloak realm configuration and domain.
+:::
+
+- **SSL Certificates:** Replace self-signed certificates with production certificates in a live environment.
+- **Database:** For reliability, consider using an external PostgreSQL instance in production.
 
 ## Windows IIS Installation
 
