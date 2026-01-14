@@ -375,7 +375,3 @@ The EconomicDisadvantage boolean was replaced with a descriptor value on the fol
 
 * /applicantProfiles
 * /candidates
-
-**<u>Example Of NEW -- /POST studentIdentificationCode</u>**
-
-```json
