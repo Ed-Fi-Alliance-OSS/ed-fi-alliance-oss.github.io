@@ -20,7 +20,6 @@ by [https://edfi.atlassian.net/wiki/spaces/EDFI/pages/22450000](https://edfi.at
 * Student
 * School
 * StudentSchoolAssociation (enrollment)
-* StudentEducationOrganizationAssociation
 
 ## Scenarios
 
