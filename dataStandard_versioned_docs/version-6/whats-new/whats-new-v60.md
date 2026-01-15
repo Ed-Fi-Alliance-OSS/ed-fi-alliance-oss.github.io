@@ -206,7 +206,7 @@ The new length for CourseTitle is also reflected in CourseOffering.CourseTitle, 
 [DATASTD-2473](https://tracker.ed-fi.org/browse/DATASTD-2473)
 [DATASTD-2488](https://tracker.ed-fi.org/browse/DATASTD-2488)
 
-Previous versions of the Ed-Fi standard used EconomicDisadvantaged as a boolean flag for individuals under financial hardship. Community feedback noted that the absence of this flag does not necessarily indicate the characteristic is false.  To improve accuracy and completeness of state reporting, the EconomicDisadvantaged boolean value was removed, and a new optional descriptor was created.
+Previous versions of the Ed-Fi standard used EconomicDisadvantaged as a boolean flag for individuals under financial hardship. Community feedback noted that the absence of this flag does not necessarily indicate the characteristic is false.  To improve accuracy and completeness of state reporting, the EconomicDisadvantaged boolean value was removed, and a new optional descriptor was created enabling Yes/No/Unknown values.
 
 The EconomicDisadvantaged was:
 
