@@ -1,13 +1,13 @@
 ---
 sidebar_position: 3
-hide_table_of_contents: False
+hide_table_of_contents: false
 ---
 
 # API Migration Guide from 5.0 to 6.0
 
 ## Introduction
 
-The goal of this document is to help ensure a smooth migration for existing clients transitioning from EdFi API 5.x to the 6.0 (or later) release! This page outlines only those endpoints that have changed in a way that breaks existing the existing model and their data. Those endpoints that are brand new to the 6.X release are NOT covered as part of this documentation.
+The goal of this document is to help ensure a smooth migration for existing clients transitioning from EdFi API 5.x to the 6.0 (or later) release! This page outlines only those endpoints that have changed in a way that breaks the existing model and their data. Those endpoints that are brand new to the 6.X release are NOT covered as part of this documentation.
 
 Endpoints, request parameters, and response schemas have changed significantly between the API in this release and the previous versions. Users will need to review the supporting documentation and update their existing integrations in order to support how the highlighted endpoints have changed to support the ingestion of new data.
 
@@ -82,8 +82,6 @@ However, with the new entities introduced as part of 6.X that information now ne
 
 ```json
 {
-[
-  {
     "id": "string",
     "educationOrganizationReference": {
       "educationOrganizationId": 0,
@@ -152,8 +150,6 @@ However, with the new entities introduced as part of 6.X that information now ne
     ],
     "_etag": "string",
     "_lastModifiedDate": "2026-01-14T21:34:23.145Z"
-  }
-]
 }
 ```
 
@@ -195,7 +191,7 @@ The following data should be updated via the StudentDirectory endpoints:
       "apartmentRoomSuiteNumber": "string",
       "buildingSiteNumber": "string",
       "congressionalDistrict": "string",
-      "countyFIPSCode": "strin",
+      "countyFIPSCode": "string",
       "doNotPublishIndicator": true,
       "latitude": "string",
       "longitude": "string",
@@ -211,7 +207,7 @@ The following data should be updated via the StudentDirectory endpoints:
   "electronicMails": [
     {
       "electronicMailTypeDescriptor": "string",
-      "electronicMailAddress": "strings",
+      "electronicMailAddress": "string",
       "doNotPublishIndicator": true,
       "primaryEmailAddressIndicator": true
     }
@@ -433,7 +429,7 @@ The following data should be updated via the staffDirectories endpoints:
       "apartmentRoomSuiteNumber": "string",
       "buildingSiteNumber": "string",
       "congressionalDistrict": "string",
-      "countyFIPSCode": "strin",
+      "countyFIPSCode": "string",
       "doNotPublishIndicator": true,
       "latitude": "string",
       "longitude": "string",
@@ -449,7 +445,7 @@ The following data should be updated via the staffDirectories endpoints:
   "electronicMails": [
     {
       "electronicMailTypeDescriptor": "string",
-      "electronicMailAddress": "strings",
+      "electronicMailAddress": "string",
       "doNotPublishIndicator": true,
       "primaryEmailAddressIndicator": true
     }
