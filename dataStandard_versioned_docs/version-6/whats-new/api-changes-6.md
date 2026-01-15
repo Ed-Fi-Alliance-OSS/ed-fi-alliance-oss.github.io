@@ -1052,7 +1052,7 @@ hide_table_of_contents: true
 
 * Staff Domain
 
-#### Removed StaffEducationOrganizationAssignmentAssociation Endpoints
+#### Changed StaffEducationOrganizationAssignmentAssociation Endpoints
 
 * `GET /ed-fi/StaffEducationOrganizationAssignmentAssociations`
   * **Parameters**

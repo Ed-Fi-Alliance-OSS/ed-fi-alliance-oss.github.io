@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-hide_table_of_contents: true
+hide_table_of_contents: False
 ---
 
 # API Migration Guide from 5.0 to 6.0
@@ -21,43 +21,64 @@ The [Ed-Fi Swagger](<https://api.ed-fi.org/v7.3.1/docs/swagger/index.html?urls.p
 
 :::
 
-<!-- need more text here talking about the various endpoints or something, IDK yet. -->
+## Migrating EconomicDisadvantageBoolean to Descriptor
 
-## Migration of Teacher Education Preparation Data Model (TPDM) Into Core
+The EconomicDisadvantage boolean was replaced with a descriptor value on the following endpoints:
 
-The adoption of TPDM into core will require the user to update the routes on their existing endpoints used by that domain as follows:
+* /applicantProfiles
+* /candidates
 
-* All endpoint URLs that previously contained `tpdm` in their routes should be updated to use `ed-fi` instead.
+## Migrating Updates To Assessment
 
-  * Example : `.../data/v3/tpdm/candidates` --> `.../data/v3/ed-fi/candidates`
+The following changes have been made to the /assessment endpoints:
+
+* AcademicSubject has been changed so it is NO LONGER a collection. It is now just a single required value.
+
+## Migrating Updates To ObjectiveAssessment
+
+The following changes have been made to the /objectiveAssessment endpoints:
+
+* parentObjectiveAssessments is now available as a COLLECTION.
+
+## Migrating Updates To StudentAssessment
+
+The following changes have been made to the /studentAssessment endpoints:
+
+* SchoolYear changed from Optional to **Required**
+
+## Migrating Updates To SpecialEducationProgramAssociation
+
+These two fields have been renamed:
+
+| 5.X Element Renamed | New Name In 6.X |
+| ------------------- | --------------- |
+| LastEvaluationDate | IEPLastEvaluationDate|
+| IEPReviewDate | IEPLastReviewDate |
 
 ## Migration Of StudentEducationOrganizationAssociation
 
-In 6.X the table below shows the data elements that have been migrated off of the StudentEducationOrganizationAssociation and the new Domain Entities and endpoints that will be utilized to capture and store the data.
+Previously users would submit student demographic, directory (addresses/phone numbers), and identification codes to the StudentEducationOrganizationAssociation.
+However, with the new entities introduced as part of 6.X that information now needs to be sent to the following new entities and endpoints:
 
-The new resulting SEOA is much slimmer than its predecessors though this will involve hitting multiple API endpoints in order to update an individual student record depending on the type(s) of information being updated.
-
-| 5.X Fields/Data Element Migrated Off | New Domain Entity For This Data In 6.X | New API Endpoints |
+| Migrated SEOA 5.X Data Element | New Domain Entity For This Data In 6.X | New API Endpoints |
 | ------------------------------------ | -------------------------------------- | ----------------- |
-| StudentIdentificationCodes | StudentIdentificationCode | [/studentIdentificationCode](###StudentIdentificationCode)|
-| Addresses | StudentDirectory | [/studentDirectories](###StudentDirectory) |
-| InternationalAddresses| StudentDirectory |  [/studentDirectories](###StudentDirectory) |
-| ElectronicMail | StudentDirectory | [/studentDirectories](###StudentDirectory) |
-| AncestryEthnicOrigin | StudentDemographic |  [/studentDemographics](###StudentDemographic) |
-| Disabilities | StudentDemographic | [/studentDemographics](###StudentDemographic) |
-| GenderIdentity |  StudentDemographic | [/studentDemographics](###StudentDemographic) |
-| HispanicLatinoEthnicity|   StudentDemographic | [/studentDemographics](###StudentDemographic) |
-| Languages |  StudentDemographic | [/studentDemographics](###StudentDemographic) |
-| Limited EnglishProficiency Descriptor | StudentDemographic | [/studentDemographics](###StudentDemographic) |
-| Race | StudentDemographic | [/studentDemographics](###StudentDemographic) |
-| Sex | StudentDemographic | [/studentDemographics](###StudentDemographic) |
-| StudentCharacteristics | StudentDemographic | [/studentDemographics](###StudentDemographic) |
-| SupporterMilitaryConnection | StudentDemographic | [/studentDemographics](###StudentDemographic) |
-| TribalAffiliation | StudentDemographic | [/studentDemographics](###StudentDemographic) |
+| StudentIdentificationCodes | StudentIdentificationCode | [/studentIdentificationCode](#studentidentificationcode) |
+| Addresses | StudentDirectory | [/studentDirectories](#studentdirectory) |
+| InternationalAddresses | StudentDirectory | [/studentDirectories](#studentdirectory) |
+| ElectronicMail | StudentDirectory | [/studentDirectories](#studentdirectory) |
+| AncestryEthnicOrigin | StudentDemographic | [/studentDemographics](#studentdemographic) |
+| Disabilities | StudentDemographic | [/studentDemographics](#studentdemographic) |
+| GenderIdentity | StudentDemographic | [/studentDemographics](#studentdemographic) |
+| HispanicLatinoEthnicity | StudentDemographic | [/studentDemographics](#studentdemographic) |
+| Languages | StudentDemographic | [/studentDemographics](#studentdemographic) |
+| Limited EnglishProficiency Descriptor | StudentDemographic | [/studentDemographics](#studentdemographic) |
+| Race | StudentDemographic | [/studentDemographics](#studentdemographic) |
+| Sex | StudentDemographic | [/studentDemographics](#studentdemographic) |
+| StudentCharacteristics | StudentDemographic | [/studentDemographics](#studentdemographic) |
+| SupporterMilitaryConnection | StudentDemographic | [/studentDemographics](#studentdemographic) |
+| TribalAffiliation | StudentDemographic | [/studentDemographics](#studentdemographic) |
 
 **<u>Example Of NEW -- /POST studentEducationOrganizationAssociation</u>**
-
-<!--Changes and sample response-->
 
 ```json
 {
@@ -138,7 +159,7 @@ The new resulting SEOA is much slimmer than its predecessors though this will in
 
 ### StudentDirectory
 
-The following data elements now exist and should be updated via the StudentDirectory endpoints:
+The following data should be updated via the StudentDirectory endpoints:
 
 * Addresses
 * InternationalAddresses
@@ -225,7 +246,7 @@ The following data elements now exist and should be updated via the StudentDirec
 
 ### StudentDemographic
 
-The following data elements now exist and should be updated via the StudentDemographic endpoints:
+The following data should be updated via the StudentDemographic endpoints:
 
 * AncestryEthnicOrigin
 * Disabilities
@@ -338,7 +359,7 @@ The following data elements now exist and should be updated via the StudentDemog
 
 ### StudentIdentificationCode
 
-The following data elements now exist and should be updated via the StudentIdentificationCode endpoints:
+The following data should be updated via the StudentIdentificationCode endpoints:
 
 * StudentIdentificationCodes
 
@@ -369,9 +390,102 @@ The following data elements now exist and should be updated via the StudentIdent
 }
 ```
 
-## Migrating EconomicDisadvantageBoolean to Descriptor
+## Migration Of StaffEducationOrganizationContactAssociation
 
-The EconomicDisadvantage boolean was replaced with a descriptor value on the following endpoints:
+The entirety of this association has been removed and the information is now stored and updated through the new [/staffDirectories](#staffdirectory) endpoints as shown below:
 
-* /applicantProfiles
-* /candidates
+### StaffDirectory
+
+The following data should be updated via the staffDirectories endpoints:
+
+* Addresses
+* ElectronicMail
+* InternationalAddresses
+* Telephone
+
+**<u>Example Of NEW -- /POST staffDirectories</u>**
+
+```json
+{
+    "id": "string",
+  "educationOrganizationReference": {
+    "educationOrganizationId": 0,
+    "link": {
+      "rel": "string",
+      "href": "string"
+    }
+  },
+  "staffReference": {
+    "staffUniqueId": "string",
+    "link": {
+      "rel": "string",
+      "href": "string"
+    }
+  },
+  "addresses": [
+    {
+      "addressTypeDescriptor": "string",
+      "stateAbbreviationDescriptor": "string",
+      "city": "string",
+      "postalCode": "string",
+      "streetNumberName": "string",
+      "localeDescriptor": "string",
+      "apartmentRoomSuiteNumber": "string",
+      "buildingSiteNumber": "string",
+      "congressionalDistrict": "string",
+      "countyFIPSCode": "strin",
+      "doNotPublishIndicator": true,
+      "latitude": "string",
+      "longitude": "string",
+      "nameOfCounty": "string",
+      "periods": [
+        {
+          "beginDate": "2026-01-15",
+          "endDate": "2026-01-15"
+        }
+      ]
+    }
+  ],
+  "electronicMails": [
+    {
+      "electronicMailTypeDescriptor": "string",
+      "electronicMailAddress": "strings",
+      "doNotPublishIndicator": true,
+      "primaryEmailAddressIndicator": true
+    }
+  ],
+  "internationalAddresses": [
+    {
+      "addressTypeDescriptor": "string",
+      "countryDescriptor": "string",
+      "addressLine1": "string",
+      "addressLine2": "string",
+      "addressLine3": "string",
+      "addressLine4": "string",
+      "beginDate": "2026-01-15",
+      "endDate": "2026-01-15",
+      "latitude": "string",
+      "longitude": "string"
+    }
+  ],
+  "telephones": [
+    {
+      "telephoneNumberTypeDescriptor": "string",
+      "telephoneNumber": "string",
+      "doNotPublishIndicator": true,
+      "orderOfPriority": 1,
+      "textMessageCapabilityIndicator": true
+    }
+  ],
+  "_etag": "string",
+  "_lastModifiedDate": "2026-01-15T17:35:18.215Z"
+}
+```
+
+## Migration of Teacher Education Preparation Data Model (TPDM) Into Core
+
+The adoption of TPDM into core will require the user to update the routes on their existing endpoints used by that domain as follows:
+
+* All endpoint URLs that previously contained `tpdm` in their routes should be updated to use `ed-fi` instead.
+
+  * Example : `.../data/v3/tpdm/candidates` --> `.../data/v3/ed-fi/candidates`
