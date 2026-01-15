@@ -7,17 +7,17 @@ hide_table_of_contents: false
 
 ## Introduction
 
-The goal of this document is to help ensure a smooth migration for existing clients transitioning from EdFi API 5.x to the 6.0 (or later) release! This page outlines only those endpoints that have changed in a way that breaks the existing model and their data. Those endpoints that are brand new to the 6.X release are NOT covered as part of this documentation.
+The goal of this document is to help ensure a smooth migration for existing clients transitioning from EdFi API 5.x to the 6.0 (or later) release. This page outlines only those endpoints that have changed in a way that breaks the existing model and their data. Those endpoints that are brand new to the 6.X release are NOT covered as part of this documentation.
 
 Endpoints, request parameters, and response schemas have changed significantly between the API in this release and the previous versions. Users will need to review the supporting documentation and update their existing integrations in order to support how the highlighted endpoints have changed to support the ingestion of new data.
 
-Reasons for why these changes are occurring can be found in greater detail [here](whats-new-v60.md) for more information.
+Reasons for why these changes are occurring can be found in greater detail on the [What's New - v6.0](whats-new-v60.md) page.
 
-A complete listing of ALL endpoint changes (including new and modified) can be found [here](api-changes-6.md).
+A complete listing of ALL endpoint changes (including new and modified) can be found on the [API Changes from 5.0 to 6.0](api-changes-6.md) page.
 
 :::tip
 
-The [Ed-Fi Swagger](<https://api.ed-fi.org/v7.3.1/docs/swagger/index.html?urls.primaryName=Resources>) can be used to view the latest version of the API supporting this release.
+The [Ed-Fi Swagger documentation site](https://api.ed-fi.org/v7.3.1/docs/swagger/index.html?urls.primaryName=Resources) can be used to view the latest version of the API supporting this release.
 
 :::
 
@@ -25,14 +25,14 @@ The [Ed-Fi Swagger](<https://api.ed-fi.org/v7.3.1/docs/swagger/index.html?urls.p
 
 The EconomicDisadvantage boolean was replaced with a descriptor value on the following endpoints:
 
-* /applicantProfiles
-* /candidates
+* `/ed-fi/applicantProfiles`
+* `/ed-fi/candidates`
 
 ## Migrating Updates To Assessment
 
 The following changes have been made to the /assessment endpoints:
 
-* AcademicSubject has been changed so it is NO LONGER a collection. It is now just a single required value.
+* AcademicSubject has been changed so it is no longer an array - it is now just a single, required, value.
 
 ## Migrating Updates To ObjectiveAssessment
 
@@ -52,7 +52,7 @@ These two fields have been renamed:
 
 | 5.X Element Renamed | New Name In 6.X |
 | ------------------- | --------------- |
-| LastEvaluationDate | IEPLastEvaluationDate|
+| LastEvaluationDate | IEPLastEvaluationDate |
 | IEPReviewDate | IEPLastReviewDate |
 
 ## Migration Of StudentEducationOrganizationAssociation
@@ -78,24 +78,16 @@ However, with the new entities introduced as part of 6.X that information now ne
 | SupporterMilitaryConnection | StudentDemographic | [/studentDemographics](#studentdemographic) |
 | TribalAffiliation | StudentDemographic | [/studentDemographics](#studentdemographic) |
 
-**<u>Example Of NEW -- /POST studentEducationOrganizationAssociation</u>**
+**Example Of NEW -- /POST studentEducationOrganizationAssociation**
 
 ```json
 {
     "id": "string",
     "educationOrganizationReference": {
       "educationOrganizationId": 0,
-      "link": {
-        "rel": "string",
-        "href": "string"
-      }
     },
     "studentReference": {
       "studentUniqueId": "string",
-      "link": {
-        "rel": "string",
-        "href": "string"
-      }
     },
     "barrierToInternetAccessInResidenceDescriptor": "string",
     "cohortYears": [
@@ -104,10 +96,6 @@ However, with the new entities introduced as part of 6.X that information now ne
         "termDescriptor": "string",
         "schoolYearTypeReference": {
           "schoolYear": 0,
-          "link": {
-            "rel": "string",
-            "href": "string"
-          }
         }
       }
     ],
@@ -119,10 +107,6 @@ However, with the new entities introduced as part of 6.X that information now ne
         "displacedStudentStartDate": "2026-01-14",
         "crisisEventReference": {
           "crisisEventName": "string",
-          "link": {
-            "rel": "string",
-            "href": "string"
-          }
         }
       }
     ],
@@ -147,9 +131,7 @@ However, with the new entities introduced as part of 6.X that information now ne
           }
         ]
       }
-    ],
-    "_etag": "string",
-    "_lastModifiedDate": "2026-01-14T21:34:23.145Z"
+    ]
 }
 ```
 
@@ -161,24 +143,16 @@ The following data should be updated via the StudentDirectory endpoints:
 * InternationalAddresses
 * ElectronicMail
 
-**<u>Example Of NEW -- /POST studentDirectory</u>**
+**Example Of NEW -- /POST studentDirectory**
 
 ```json
 {
   "id": "string",
   "educationOrganizationReference": {
     "educationOrganizationId": 0,
-    "link": {
-      "rel": "string",
-      "href": "string"
-    }
   },
   "studentReference": {
     "studentUniqueId": "string",
-    "link": {
-      "rel": "string",
-      "href": "string"
-    }
   },
   "addresses": [
     {
@@ -234,9 +208,7 @@ The following data should be updated via the StudentDirectory endpoints:
       "orderOfPriority": 1,
       "textMessageCapabilityIndicator": true
     }
-  ],
-  "_etag": "string",
-  "_lastModifiedDate": "2026-01-14T22:07:04.738Z"
+  ]
 }
 ```
 
@@ -256,24 +228,16 @@ The following data should be updated via the StudentDemographic endpoints:
 * SupporterMilitaryConnection
 * TribalAffiliation
 
-**<u>Example Of NEW -- /POST studentDemographics</u>**
+**Example Of NEW -- /POST studentDemographics**
 
 ```json
 {
   "id": "string",
   "educationOrganizationReference": {
     "educationOrganizationId": 0,
-    "link": {
-      "rel": "string",
-      "href": "string"
-    }
   },
   "studentReference": {
     "studentUniqueId": "string",
-    "link": {
-      "rel": "string",
-      "href": "string"
-    }
   },
   "ancestryEthnicOrigins": [
     {
@@ -347,9 +311,7 @@ The following data should be updated via the StudentDemographic endpoints:
     {
       "visaDescriptor": "string"
     }
-  ],
-  "_etag": "string",
-  "_lastModifiedDate": "2026-01-14T22:02:36.658Z"
+  ]
 }
 ```
 
@@ -359,7 +321,7 @@ The following data should be updated via the StudentIdentificationCode endpoints
 
 * StudentIdentificationCodes
 
-**<u>Example Of NEW -- /POST studentIdentificationCode</u>**
+**Example Of NEW -- /POST studentIdentificationCode**
 
 ```json
 {
@@ -367,22 +329,12 @@ The following data should be updated via the StudentIdentificationCode endpoints
   "studentIdentificationSystemDescriptor": "string",
   "educationOrganizationReference": {
     "educationOrganizationId": 0,
-    "link": {
-      "rel": "string",
-      "href": "string"
-    }
   },
   "studentReference": {
     "studentUniqueId": "string",
-    "link": {
-      "rel": "string",
-      "href": "string"
-    }
   },
   "assigningOrganizationIdentificationCode": "string",
-  "identificationCode": "string",
-  "_etag": "string",
-  "_lastModifiedDate": "2026-01-14T22:08:06.495Z"
+  "identificationCode": "string"
 }
 ```
 
@@ -406,17 +358,9 @@ The following data should be updated via the staffDirectories endpoints:
     "id": "string",
   "educationOrganizationReference": {
     "educationOrganizationId": 0,
-    "link": {
-      "rel": "string",
-      "href": "string"
-    }
   },
   "staffReference": {
     "staffUniqueId": "string",
-    "link": {
-      "rel": "string",
-      "href": "string"
-    }
   },
   "addresses": [
     {
@@ -472,9 +416,7 @@ The following data should be updated via the staffDirectories endpoints:
       "orderOfPriority": 1,
       "textMessageCapabilityIndicator": true
     }
-  ],
-  "_etag": "string",
-  "_lastModifiedDate": "2026-01-15T17:35:18.215Z"
+  ]
 }
 ```
 
