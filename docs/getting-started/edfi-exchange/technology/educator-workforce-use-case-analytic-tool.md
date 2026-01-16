@@ -1,6 +1,6 @@
 # Ed-Fi Educator Workforce Use Case - Analytic Tool
 
-![EdNexus Logo](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/technology/ed-fi-logo-new-350x160.png)
+![Ed-Fi Logo](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/technology/ed-fi-logo-new-350x160.png)
 
 ## Description
 
