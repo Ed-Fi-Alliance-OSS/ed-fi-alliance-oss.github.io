@@ -41,7 +41,7 @@ hide_table_of_contents: true
 | StudentDemographic | DisabilityDeterminationSourceType | The source that provided the disability determination. | Orthodox |     |     |     |
 | StudentEducationOrganizationAssociation | DisplacedStudentStatus | Indicates whether a student has been displaced as a result of a crisis event. | Orthodox |     |     |     |
 | StudentDemographic | EconomicDisadvantage | The indication of an inadequate financial condition of an individual's family, as determined by family income, number of family members/dependents, participation in public assistance programs, and/or other characteristics considered relevant by federal, state, and local policy. | Orthodox |     |     |     |
-| Contact <br /> StudentDirectory | ElectronciMailType | The type of email listed for an individual or organization. (For example: Home/Personal, Work, etc.) | Standard |     |     |     |
+| Contact <br /> StudentDirectory | ElectronicMailType | The type of email listed for an individual or organization. (For example: Home/Personal, Work, etc.) | Standard |     |     |     |
 | Contact | HighestCompletedLevelOfEducation | The extent of formal instruction an individual has received (e.g., the highest grade in school completed or its equivalent or the highest degree received). | Orthodox |     |     |     |
 | Student <br /> StudentDemographic | IdentificationDocumentUse | The primary function of the document used for establishing identity. | Orthodox |     |     |     |
 | StudentEducationOrganizationAssociation | InternetAccessTypeInResidence | The primary type of internet service used in the student’s primary place of residence. | Orthodox |     |     |     |
