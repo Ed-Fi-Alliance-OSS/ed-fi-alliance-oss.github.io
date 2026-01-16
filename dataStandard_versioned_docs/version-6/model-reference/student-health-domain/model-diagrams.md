@@ -32,4 +32,4 @@ The data model UML diagram is shown below.
 
 ![Student Health UML](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/StudentHealth11072025.png)
 
-[_Largeversion_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/StudentHealth11072025.png)_
+[_Large version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/StudentHealth11072025.png)

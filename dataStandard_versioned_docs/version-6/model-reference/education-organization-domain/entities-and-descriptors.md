@@ -45,7 +45,7 @@ hide_table_of_contents: true
 | EducationOrganization | Indicator | The name or code for the indicator or metric. | Local |     |     |     |
 | EducationOrganization | IndicatorGroup | The name for a group of indicators. | Local |     |     |     |
 | EducationOrganization | IndicatorLevel | The value of the indicator or metric, as a value from a controlled vocabulary. The semantics of an empty value is "not submitted." | Local |     |     |     |
-| EducationOrganizaiton | InstitutionTelephoneNumberType | The type of communication number listed for an individual or organization. | Orthodox | Yes | Yes | Yes |
+| EducationOrganization | InstitutionTelephoneNumberType | The type of communication number listed for an individual or organization. | Orthodox | Yes | Yes | Yes |
 | School | InternetAccess | The type of Internet access available. | Flexible |     |     |     |
 | CommunityProviderLicense | LicenseStatus | An indication of the status of the license. | Flexible |     |     |     |
 | CommunityProviderLicense | LicenseType | An indication of the category of the license. | Flexible |     |     |     |
