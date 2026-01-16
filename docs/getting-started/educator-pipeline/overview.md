@@ -3,17 +3,26 @@ sidebar_position: 1
 ---
 # EPDM Overview
 
-## Background
+## Overview
 
-The preparation and support of educators is a shared responsibility between educator preparation programs (EPPs), certification agencies, and those hiring program completers. When everyone works together, the quality of the teaching profession is strengthened. To do their part and align their goals with a continuous improvement cycle, each of these groups needs access to better data at specific times in the educator pipeline.
+Preparing and supporting effective educators is a shared responsibility among educator preparation programs (EPPs), certification agencies, and the districts and schools that ultimately hire program completers. When these groups work together, the entire teaching profession benefits. To align their efforts with continuous improvement, each stakeholder needs access to stronger, more connected data about the educator pipeline.
 
-In response to this need, UPD (now Crocus) conducted research, gathered requirements and developed technology to create the Teacher Preparation Data Model (TPDM), involving key players as stakeholders in the process and was developed from 2015-2018.In 2019, the Ed-Fi Alliance received funding from the Bill & Melinda Gates Foundation to further
+To meet this need, the education community conducted research, identified data requirements, and built the first iteration of the **Teacher Preparation Data Model (TPDM)**—an extension of the Ed‑Fi Data Standard designed to capture key data across the educator pipeline. The model enabled comprehensive, longitudinal information spanning an educator’s journey: from application and enrollment in an EPP, to fieldwork experiences and demonstrated competencies, through certification, placement, and performance.
 
-## About the Educator Preparation Data Model
+In 2019, a partnership with the Gates Foundation supported the model’s evolution and renaming, resulting in two versions:
 
-The EPDM (formerly Teacher Preparation Data Model) extension enables comprehensive data aggregation over the span of a educator's entire career, from application to and enrollment into an EPP, through knowledge and skills demonstrated in fieldwork experiences, to placement and performance as an in-service educator. Educator preparation programs (EPPs), State education agencies (SEAs), Local education agencies (LEAs), and schools can access and review data through automated data connections to develop strategies to ensure educators are prepared to meet the needs of their students.
+* Educator Preparation Data Model (EPDM) Core - A streamlined set of foundational entities commonly used across educator‑pipeline implementations.
+* Educator Preparation Data Model (EPDM) Community - A comprehensive, full‑featured extension designed to support broader use cases, including statewide implementations.
 
-The Ed-Fi Alliance in November of 2021 released the EPDM Community and EPDM Core options for the EPP community. /wiki/spaces/GOV/pages/20334458 describes the additions and revisions identified to move a set of entities from the EPDM model into the Ed-Fi Standard- based on Ed-Fi EPP Starter Kit use cases. The  following provides a conceptual overview of the EPDM and the basic technology facts useful for those considering or starting a EPDM based implementation project:
+Following field implementation, the entities and descriptors from the EPDM Community version were incorporated into **Ed‑Fi Data Standard v6,** meaning they are now part of the core standard rather than a separate extension. This change promotes consistency and expands applicability across states and programs.
+
+![Overview](https://edfidocs.blob.core.windows.net/$web/img/getting-started/epp/overview/tpdm_to_epdm_timeline.png)
+
+[Navigate to the Ed-Fi Data Standard reference](https://docs.ed-fi.org/reference/data-exchange/data-standard/) page to access additional Ed-Fi Data Standard v6 Technical Resources, which include information about EPDM related entities.
+
+[Navigate to the Technical reference](https://edfi.atlassian.net/wiki/spaces/EPP/pages/23171694/EPDM+Technical+Resources) page to access additional EPDM Technical Resources.
+
+[Navigate to Educator Pipeline Use Cases](https://docs.ed-fi.org/getting-started/educator-pipeline/use-cases/) for additional context on EPDM backed tools and solutions.
 
 ## Visual Overview of EPDM
 
