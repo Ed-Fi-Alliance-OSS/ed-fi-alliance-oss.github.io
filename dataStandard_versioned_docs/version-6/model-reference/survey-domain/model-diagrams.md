@@ -9,6 +9,6 @@ subdomains.
 
 ## Survey Model UML Diagram
 
-![Survey Domain](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Survey%20Domain.png)
+![Survey Domain](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Survey11072025.png)
 
-[_Survey Domain (click to enlarge)_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Survey%20Domain.png)
+[_Survey Domain (click to enlarge)_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Survey11072025.png)

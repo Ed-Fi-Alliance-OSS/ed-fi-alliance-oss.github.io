@@ -9,9 +9,9 @@ model.
 
 ## Teaching and Learning UML Model Diagram
 
-![Teaching and Learning Domain](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Teaching%20and%20Learning%20UML.png)
+![Teaching and Learning Domain](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/TeachingAndLearning11072025.png)
 
-[_Teaching and Learning Domain (click to enlarge)_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Teaching%20and%20Learning%20UML.png)
+[_Teaching and Learning Domain (click to enlarge)_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/TeachingAndLearning11072025.png)
 
 ### Course Catalog Subdomain
 
@@ -29,9 +29,9 @@ The model is based upon multiple levels of definition, as follows:
 
 #### Teaching and Learning, Course Catalog Model UML Diagram
 
-![Teaching and Learning - Course Catalog Subdomain](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Teaching%20and%20Learning%20-%20Course%20Catalog%20Subdomain.png)
+![Teaching and Learning - Course Catalog Subdomain](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/TeachingAndLearning_CourseCatalog11072025.png)
 
-[_Teaching and Learning - Course Catalog Subdomain (click to enlarge)_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Teaching%20and%20Learning%20-%20Course%20Catalog%20Subdomain.png)
+[_Teaching and Learning - Course Catalog Subdomain (click to enlarge)_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/TeachingAndLearning_CourseCatalog11072025.png)
 
 ### Sections and Programs Subdomain
 
@@ -42,6 +42,6 @@ a ClassPeriod for the Session.
 
 #### Teaching and Learning, Sections and Programs Model UML Diagram
 
-![Teaching and Learning - Sections and Programs Subdomain](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Teaching%20and%20Leaning%20Section&Programs%20UML.png)
+![Teaching and Learning - Sections and Programs Subdomain](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/TeachingAndLearning_SectionsAndPrograms11072025.png)
 
-[_Teaching and Learning - Sections and Programs Subdomain (click to enlarge)_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Teaching%20and%20Leaning%20Section&Programs%20UML.png)
+[_Teaching and Learning - Sections and Programs Subdomain (click to enlarge)_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/TeachingAndLearning_SectionsAndPrograms11072025.png)
