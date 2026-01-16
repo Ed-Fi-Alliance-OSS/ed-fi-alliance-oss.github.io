@@ -48,7 +48,7 @@ consumer is covered by a single _assigned_ Profile, and if so, it will
 implicitly process the request using that Profile. However, if multiple Profiles
 are assigned, or the API consumer is simply choosing to use a particular
 Profile, the API consumer must specify which Profile is to be used by adding the
-appropriate HTTP header to the request (i.e. `Accept` for `GET` requests, and
+appropriate [HTTP header](/reference/ods-api/client-developers-guide/authorization#api-client-profiles) to the request (i.e. `Accept` for `GET` requests, and
 `Content-Type` for `PUT`/`POST` requests).
 
 :::
@@ -143,7 +143,7 @@ Resource members can be explicitly included based on the member selection:
    <Property name="NameOfInstitution" />                               <!-- Inherited property -->
    <Property name="OperationalStatusDescriptor" />                     <!-- Inherited Type property -->
    <Property name="CharterApprovalSchoolYearTypeReference" />          <!-- Property -->
-   <Property name="SchoolType" />                                      <!-- Type property -->
+   <Property name="SchoolTypeDescriptor" />                            <!-- Descriptor property -->
    <Property name="AdministrativeFundingControlDescriptor" />          <!-- Descriptor property -->
    <Collection name="EducationOrganizationAddresses" memberSelection="IncludeAll"/> <!-- Inherited Collection -->
    <Collection name="SchoolCategories" memberSelection="IncludeAll" /> <!-- Collection -->
@@ -152,7 +152,7 @@ Resource members can be explicitly included based on the member selection:
    <Property name="ShortNameOfInstitution" />                          <!-- Inherited property -->
    <Property name="OperationalStatusDescriptor" />                     <!-- Inherited Type property -->
    <Property name="WebSite" />                                         <!-- Property -->
-   <Property name="CharterStatusType" />                               <!-- Type property -->
+   <Property name="CharterStatusDescriptor" />                         <!-- Descriptor property -->
    <Property name="AdministrativeFundingControlDescriptor" />          <!-- Descriptor property -->
    <Collection name="EducationOrganizationInternationalAddresses" memberSelection="IncludeAll" /> <!-- Inherited Collection -->
    <Collection name="SchoolGradeLevels" memberSelection="IncludeAll" /> <!-- Collection -->
@@ -170,7 +170,7 @@ Resource members can be explicitly excluded based on the member selection:
    <Property name="NameOfInstitution" />                               <!-- Inherited property -->
    <Property name="OperationalStatusDescriptor" />                     <!-- Inherited Type property -->
    <Property name="CharterApprovalSchoolYearTypeReference" />          <!-- Property -->
-   <Property name="SchoolType" />                                      <!-- Type property -->
+   <Property name="SchoolTypeDescriptor" />                            <!-- Descriptor property -->
    <Property name="AdministrativeFundingControlDescriptor" />          <!-- Descriptor property -->
    <Collection name="EducationOrganizationAddresses" memberSelection="IncludeAll" /> <!-- Inherited Collection -->
    <Collection name="SchoolCategories" memberSelection="IncludeAll" /> <!-- Collection -->
@@ -179,7 +179,7 @@ Resource members can be explicitly excluded based on the member selection:
    <Property name="ShortNameOfInstitution" />                          <!-- Inherited property -->
    <Property name="OperationalStatusDescriptor" />                     <!-- Inherited Type property -->
    <Property name="WebSite" />                                         <!-- Property -->
-   <Property name="CharterStatusType" />                               <!-- Type property -->
+   <Property name="CharterStatusDescriptor" />                         <!-- Descriptor property -->
    <Property name="AdministrativeFundingControlDescriptor" />          <!-- Descriptor property -->
    <Collection name="EducationOrganizationInternationalAddresses" memberSelection="IncludeAll" /> <!-- Inherited Collection -->
    <Collection name="SchoolGradeLevels" memberSelection="IncludeAll" /> <!-- Collection -->
@@ -239,7 +239,7 @@ addresses. If also applied to the `WriteContentType`, the caller will receive a
 error response if they attempt to write anything other than Physical or Shipping
 addresses.
 
-Resource members that are part of the identity are automatically included in the 
+Resource members that are part of the identity are automatically included in the
 `GET` responses and must be included in the `PUT` and `POST` request bodies.
 
 ```xml
@@ -250,7 +250,7 @@ Resource members that are part of the identity are automatically included in the
    <Property name="NameOfInstitution" />                               <!-- Inherited property -->
    <Property name="OperationalStatusDescriptor" />                     <!-- Inherited Type property -->
    <Property name="CharterApprovalSchoolYearTypeReference" />          <!-- Property -->
-   <Property name="SchoolType" />                                      <!-- Type property -->
+   <Property name="SchoolTypeDescriptor" />                            <!-- Descriptor property -->
    <Property name="AdministrativeFundingControlDescriptor" />          <!-- Descriptor property -->
    <Collection name="EducationOrganizationAddresses" memberSelection="IncludeAll"/> <!-- Inherited Collection -->
    <Collection name="SchoolCategories" memberSelection="IncludeAll" /> <!-- Collection -->
@@ -259,7 +259,7 @@ Resource members that are part of the identity are automatically included in the
    <Property name="ShortNameOfInstitution" />                          <!-- Inherited property -->
    <Property name="OperationalStatusDescriptor" />                     <!-- Inherited Type property -->
    <Property name="WebSite" />                                         <!-- Property -->
-   <Property name="CharterStatusType" />                               <!-- Type property -->
+   <Property name="CharterStatusDescriptor" />                         <!-- Descriptor property -->
    <Property name="AdministrativeFundingControlDescriptor" />          <!-- Descriptor property -->
    <Collection name="EducationOrganizationInternationalAddresses" memberSelection="IncludeAll" /> <!-- Inherited Collection -->
    <Collection name="SchoolGradeLevels" memberSelection="IncludeAll" /> <!-- Collection -->
@@ -268,9 +268,9 @@ Resource members that are part of the identity are automatically included in the
 </Profile>
 ```
 
-In the example above, the API includes schoolId in `GET` responses, and the API 
+In the example above, the API includes schoolId in `GET` responses, and the API
 client must include it in `POST` and `PUT` requests even though it wasn't explicitly
-included in the definition. Additionally, if required fields are excluded, 
+included in the definition. Additionally, if required fields are excluded,
 the profile cannot be used to _create_ the resource (though updates would still be possible).
 
 ## Adding Profiles to the Ed-Fi ODS / API

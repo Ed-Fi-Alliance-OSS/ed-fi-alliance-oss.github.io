@@ -18,23 +18,23 @@
     "lint:fix": "markdownlint-cli2 **/*.md #node_modules --fix"
   },
   "dependencies": {
-    "@docusaurus/core": "^3.7.0",
-    "@docusaurus/plugin-content-docs": "^3.7.0",
-    "@docusaurus/preset-classic": "^3.7.0",
-    "@docusaurus/theme-mermaid": "^3.7.0",
+    "@docusaurus/core": "^3.9.2",
+    "@docusaurus/plugin-content-docs": "^3.9.2",
+    "@docusaurus/preset-classic": "^3.9.2",
+    "@docusaurus/theme-mermaid": "^3.9.2",
     "@mdx-js/react": "^3.1.1",
     "clsx": "^2.0.0",
-    "eslint": "^9.36.0",
+    "eslint": "^9.39.2",
     "prism-react-renderer": "^2.4.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.7.0",
-    "@docusaurus/types": "3.8.1",
+    "@docusaurus/types": "3.9.2",
     "eslint-plugin-mdx": "^3.1.5",
-    "markdownlint-cli2": "^0.18.1",
-    "prettier": "^3.6.2"
+    "markdownlint-cli2": "^0.20.0",
+    "prettier": "^3.7.4"
   },
   "browserslist": {
     "production": [
@@ -49,7 +49,7 @@
     ]
   },
   "engines": {
-    "node": ">=18.0"
+    "node": ">=22.0"
   },
   "markdownlint-cli2": {
     "config": {
