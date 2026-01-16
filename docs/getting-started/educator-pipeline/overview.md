@@ -11,8 +11,8 @@ To meet this need, the education community conducted research, identified data r
 
 In 2019, a partnership with the Gates Foundation supported the model’s evolution and renaming, resulting in two versions:
 
-* Educator Preparation Data Model (EPDM) Core - A streamlined set of foundational entities commonly used across educator‑pipeline implementations.
-* Educator Preparation Data Model (EPDM) Community - A comprehensive, full‑featured extension designed to support broader use cases, including statewide implementations.
+* **Educator Preparation Data Model (EPDM) Core** - A streamlined set of foundational entities commonly used across educator‑pipeline implementations.
+* **Educator Preparation Data Model (EPDM) Community** - A comprehensive, full‑featured extension designed to support broader use cases, including statewide implementations.
 
 Following field implementation, the entities and descriptors from the EPDM Community version were incorporated into **Ed‑Fi Data Standard v6,** meaning they are now part of the core standard rather than a separate extension. This change promotes consistency and expands applicability across states and programs.
 
