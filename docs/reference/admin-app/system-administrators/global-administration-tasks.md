@@ -92,7 +92,7 @@ For an environment to be managed, you must grant ownership to a team. This proce
 1. Select the environment
 2. Click "Grant Ownership"
 
-From step 2, follow the guide in [Managing Resource Ownership](#5-ownerships) to complete this process.
+From step 2, follow the guide in [Managing Resource Ownership](#ownerships) to complete this process.
 
 ![Grant ownership view for environment](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/admin-guide/environment/grant-ownership-to-environment.png)
 
@@ -169,7 +169,7 @@ This permission enables the "row count" button on the ODS page, but this feature
 
 Ownerships define which teams have access to specific resources in the system. Managing ownerships is crucial for proper access control and delegation of responsibilities.
 
-:::Note
+:::note
 
 You will not be able to configure ownerships until an environment is created (see Step 1). If you are blocked by AWS dependencies, resolve those first.
 

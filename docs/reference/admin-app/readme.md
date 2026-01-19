@@ -1,16 +1,17 @@
 # Ed-Fi Admin App v4
 
-:::warning
-
-This is pre-release documentation for software that is not yet available.
-
-:::
-
 The Ed-Fi Admin App v4 is a web-based administrative platform designed to manage
 Ed-Fi API deployments across multiple environments and tenants. It replaces
 legacy tools (Ed-Fi ODS Admin App and Ed-Fi Sandbox Admin UI) and provides a
 unified, scalable interface for managing client credentials, database instances,
 and API health across diverse user roles and deployment models.
+
+## Documentation
+
+Documentation for the Ed-Fi Admin API is viewable online:
+
+* [What's New](./whats-new.md)
+* [Getting Started](./getting-started.md)
 
 ## Target Audiences
 
