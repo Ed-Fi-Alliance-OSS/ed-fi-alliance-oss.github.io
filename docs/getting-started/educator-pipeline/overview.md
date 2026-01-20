@@ -1,9 +1,7 @@
 ---
 sidebar_position: 1
 ---
-# Overview vs. EPDM Overview
-
-## Overview
+# Overview
 
 Preparing and supporting effective educators is a shared responsibility among educator preparation programs (EPPs), certification agencies, and the districts and schools that ultimately hire program completers. When these groups work together, the entire teaching profession benefits. To align their efforts with continuous improvement, each stakeholder needs access to stronger, more connected data about the educator pipeline.
 
