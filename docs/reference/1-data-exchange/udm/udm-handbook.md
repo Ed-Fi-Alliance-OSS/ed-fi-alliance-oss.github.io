@@ -7,6 +7,8 @@ specifications, cardinality, usage, an XSD (normative) and SQL (non-normative)
 expression, and other information about the elements and entities that make up
 the Ed-Fi Unifying Data Model.
 
+* [Handbook for v6.0](https://edfidocs.blob.core.windows.net/$web/handbook/v6.0/index.html)
+* [Handbook for v5.2](https://edfidocs.blob.core.windows.net/$web/handbook/v5.2/index.html)
 * [Handbook for v5.1](https://edfidocs.blob.core.windows.net/$web/handbook/v5.1/index.html)
 * [Handbook for v5.0](https://edfidocs.blob.core.windows.net/$web/handbook/v5.0/index.html)
 * [Handbook for v4.0](https://edfidocs.blob.core.windows.net/$web/handbook/v4.0/index.html)
