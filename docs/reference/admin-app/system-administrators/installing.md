@@ -132,8 +132,11 @@ Ensure this matches your actual Keycloak realm configuration and domain.
 
 - **IIS with URL Rewrite Module**: Install from [Microsoft](https://www.iis.net/downloads/microsoft/url-rewrite)
 - **Node.js**: Download from [nodejs.org](https://nodejs.org/)
-- **PostgreSQL**: Install and configure database server
+- **PostgreSQL** or **SqlServer**: Install and configure database server
+  - Create an empty database, our example will use the name `sbaa`
 - **IISNode**: For running Node.js applications in IIS
+- **An Identity Provider (IdP)**: For more details see [Configuring an Identity Provider for Ed-Fi Admin App](identity-provider.md)
+- **Yopass**: We recommend to use this in order to share secrets correctly. For more details see [Yopass Administrator Guide](yopass-administrators-guide.md)
 
 ### Backend API Installation
 
@@ -142,7 +145,11 @@ You can deploy the Node.js backend directly to IIS using only iisnode. This appr
 #### Prerequisites for Direct IIS Deployment
 
 - **IIS with iisnode**: Install iisnode from [GitHub Releases](https://github.com/Azure/iisnode/releases)
+- **PostgreSQL** or **SqlServer**: Install and configure database server
+  - Create an empty database, our example will use the name `sbaa`
 - **Node.js**: Install Node.js on the server
+- **An Identity Provider (IdP)**: We use Keycloak. For more details see [Configuring an Identity Provider for Ed-Fi Admin App](identity-provider.md)
+- **Yopass**: We recommend to use this in order to share secrets correctly. For more details see [Yopass Administrator Guide](yopass-administrators-guide.md)
 
 #### Steps for Direct Deployment
 
@@ -164,7 +171,7 @@ You can deploy the Node.js backend directly to IIS using only iisnode. This appr
 
    We recommend creating a new folder for your app. Typically IIS uses the path `C:\inetpub` for this purpose so create a folder called `C:\inetpub\EdFi-AdminApp-API` and move the following files into it:
    - `main.js` file and `assets` folder located in folder `dist/packages/api/`
-   - `node_modules` folder
+   - `node_modules` folder located in source code after running the `npm ci` command
    - Create a folder `packages/api/config` and copy the file `default.js` located in folder `packages/api/config` from your source to the new folder
 
 4. **Create IIS Website**:
@@ -262,7 +269,7 @@ You can deploy the Node.js backend directly to IIS using only iisnode. This appr
    - Click **"Add Module Mapping..."**
    - Configure:
      - **Request path**: `*`
-     - **Module**: `Select iisnode`
+     - **Module**: Select `iisnode`
      - **Executable**: empty
      - **Name**: `iisnode-all`
      - **Uncheck** "Invoke handler only if request is mapped to: File or Folder"
@@ -271,37 +278,71 @@ You can deploy the Node.js backend directly to IIS using only iisnode. This appr
 7. **Environment Configuration**:
    Create `packages/api/config/production.js` with your settings.
 
+   :::note
+   You can also use the template located in the source code `Ed-Fi-AdminApp/packages/api/config/production.js-edfi` as an example
+   :::
+
    ```javascript
+   // This the frontend URL we will create in the 'Frontend Installation' section, in this guide we will use http://localhost:4200, change it in case you will use a different port or host
+   const FE_URL = 'http://localhost:4200';
+
    module.exports = {
+     DB_ENGINE: 'pgsql',// 'pgsql' or 'mssql'
+     DB_TRUST_CERTIFICATE: false, // For MSSQL local development using self-signed certs, set to true
+     DB_TTL_IN_MINUTES: 120, // Time to live for DB sessions in minutes
+     DB_SSL: false, //set true if your database server support SSL
      DB_SECRET_VALUE: {
+       // If you are using DB_ENGINE:'pgsql' set the following values
        DB_USERNAME: 'your_db_user',
        DB_PASSWORD: 'your_db_password',
        DB_HOST: 'localhost',
        DB_PORT: 5432,
-       DB_DATABASE: 'sbaa'
+       DB_DATABASE: 'sbaa', //The database must exist in the server
+
+       // If you are using DB_ENGINE:'mssql' set the following values
+       MSSQL_DB_HOST: 'edfiadminapp-mssql',
+       MSSQL_DB_PORT: 1433,
+       MSSQL_DB_USERNAME: 'sa',
+       MSSQL_DB_DATABASE: 'sbaa', //The database must exist in the server
+       MSSQL_DB_PASSWORD: 'YourStrong!Passw0rd',
      },
+     DB_ENCRYPTION_SECRET_VALUE: {
+       // Can replace with `openssl rand -hex 32` or `node -e "console.log('KEY: '+ require('crypto').randomBytes(32).toString('hex'))"`
+       KEY: 'your-32-char-encryption-key'
+     },
+
+     USE_YOPASS: true, //If true, you must provide the YOPASS_URL
+     YOPASS_URL: 'http://your-yopass-site',
+
      AUTH0_CONFIG_SECRET_VALUE: {
        ISSUER: 'https://your-keycloak-server/auth/realms/edfi',
        CLIENT_ID: 'edfiadminapp',
        CLIENT_SECRET: 'your-client-secret',
        MACHINE_AUDIENCE: 'edfiadminapp-api'
      },
+
+     //Identity provider (Idp) information
      SAMPLE_OIDC_CONFIG: {
-      issuer: 'https://your-keycloak-server/auth/realms/edfi',
+      issuer: 'https://your-keycloak-server/realms/edfi',
       clientId: 'edfiadminapp',
       clientSecret: 'your-client-secret',
       scope: '',
      },
-     //this should match with a user in your Idp
+     // If your IdP has enabled PCKE, set to true
+     USE_PKCE: true,
+     //this should match with a user in your IdP
      ADMIN_USERNAME: 'admin@example.com',
-     DB_ENCRYPTION_SECRET_VALUE: {
-       // Can replace with `openssl rand -hex 32` or `node -e "console.log('KEY: '+ require('crypto').randomBytes(32).toString('hex'))"`
-       KEY: 'your-32-char-encryption-key'
-     },
-     FE_URL: 'https://your-domain.com/adminapp',
-     MY_URL: 'https://your-domain.com/adminapp-api',
+
+     FE_URL: FE_URL,
+     // The site you have create in the '4. Create IIS Website' step
+     MY_URL: 'http://localhost:3333',
+     // The port must be match with the port you have set for the site
      API_PORT: process.env.PORT || 3333,
-     _OPEN_API: true, //Set false in case you want to hide swagger definition
+     WHITELISTED_REDIRECTS: [FE_URL],
+     // The time to live in milliseconds
+     RATE_LIMIT_TTL: 60000,
+     // The maximum number of requests within the ttl
+     RATE_LIMIT_LIMIT: 10,
    };
    ```
 
@@ -325,7 +366,7 @@ You can deploy the Node.js backend directly to IIS using only iisnode. This appr
    ├── main.js (the built file)
    ├── web.config
    ├── iisnode.yml (optional)
-   ├── node_modules\ (complete folder)
+   ├── node_modules\ (complete folder after running the `npm ci` command in source code)
    ├── packages\api\config (with your config files production.js and default.js)
    └── iisnode\ (log directory)
    ```
@@ -346,13 +387,14 @@ See [Troubleshooting](troubleshooting.md#backend-troubleshooting) section in cas
 
 ### Frontend Installation
 
-1. In `packages/fe`, copy `.copyme.env.local` to create `.env` and modify the values depending on your environment. This is an example:
+1. We will need to build the frontend, to do so go to `packages/fe` folder of your source code, copy or rename the file `.copyme.env.local` to create `.env` and modify the values depending on your environment. This is an example:
 
    ```xml
    VITE_API_URL=http://localhost:3333
    VITE_OIDC_ID=1
-   VITE_HELP_GUIDE=https://docs.ed-fi.org/
-   VITE_STARTING_GUIDE=https://docs.ed-fi.org/reference/admin-app/system-administrators/global-administration-tasks
+   VITE_BASE_PATH="/"
+   VITE_HELP_GUIDE=https://docs.ed-fi.org/reference/admin-app-v4
+   VITE_STARTING_GUIDE=https://docs.ed-fi.org/reference/admin-app-v4/system-administrators/global-administration-tasks
    VITE_CONTACT=https://community.ed-fi.org/
    VITE_APPLICATION_NAME="Ed-Fi Admin App"
    VITE_IDP_ACCOUNT_URL=https://localhost/auth/realms/edfi/account/
@@ -369,13 +411,16 @@ See [Troubleshooting](troubleshooting.md#backend-troubleshooting) section in cas
 
    :::note
    **Important:** The `VITE_IDP_ACCOUNT_URL` value may differ from your Keycloak admin console URL.
-   This should point to the **account management interface** (`/auth/realms/{realm-name}/account/`), not the admin console.
+   This should point to the **account management interface** (`/realms/{realm-name}/account/`), not the admin console.
    Ensure this matches your actual Keycloak realm configuration and domain.
    :::
 
 2. **Build the frontend**:
 
    ```powershell
+   # Go to the cloned folder
+   cd Ed-Fi-AdminApp
+   # Build the frontend
    npm run build:fe
    ```
 
@@ -394,6 +439,8 @@ See [Troubleshooting](troubleshooting.md#backend-troubleshooting) section in cas
    - Configure IIS site with proper bindings (HTTPS recommended)
 
 5. **Configure URL Rewrite** for React Router:
+
+   Create a `web.config` file in the path (eg. `C:\inetpub\EdFi-AdminApp-FE`) with the following content:
 
    ```xml
    <?xml version="1.0" encoding="utf-8"?>
