@@ -44,6 +44,7 @@ hide_table_of_contents: true
 | Candidate | Disability | A disability category that describes a individual's impairment. | Orthodox | Yes | Yes |     |
 | Candidate | DisabilityDesignation | Whether the disability is IDEA, Section 504, or other disability designation. | Orthodox |     | Yes |     |
 | Candidate | DisabilityDeterminationSourceType | The source that provided the disability determination. | Orthodox |     | Yes |     |
+| Candidate | EconomicDisadvantage | An indication of inadequate financial condition of an individual's family, as determined by family income, number of family members/dependents, participation in public assistance programs, and/or other characteristics considered relevant by federal, state, and local policy. | Orthodox |     |     |     |
 | Candidate | ElectronicMailType | The type of email listed for an individual or organization. (For example: Home/Personal, Work, etc.) | Standard |     |     |     |
 | Candidate | EnglishLanguageExam | Indicates that an individual passed, failed, or did not take an English Language assessment. | Standard |     |     |     |
 | Candidate | EPPDegreeType | A code for describing the degree type that a candidate accomplishes. |     |     |     |     |

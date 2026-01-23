@@ -44,6 +44,7 @@ hide_table_of_contents: true
 | ApplicantProfile | Disability | A disability category that describes a individual's impairment.  | Orthodox | Yes | Yes |     |
 | ApplicantProfile | DisabilityDesignation | Whether the disability is IDEA, Section 504, or other disability designation.  | Orthodox |     | Yes |     |
 | ApplicantProfile | DisabilityDeterminationSourceType | The source that provided the disability determination. | Orthodox |     | Yes |     |
+| ApplicantProfile | EconomicDisadvantage | An indication of inadequate financial condition of an individual's family, as determined by family income, number of family members/dependents, participation in public assistance programs, and/or other characteristics considered relevant by federal, state, and local policy. | Orthodox |     |     |     |
 | ApplicantProfile | ElectronicMailType | The type of email listed for an individual or organization. (For example: Home/Personal, Work, etc.) | Standard |     |     |     |
 | RecruitmentEventAttendance | GradeLevel | The set of grade levels for which the individual's assignment is responsible. | Orthodox | Yes | Yes |     |
 | ApplicantProfile | GradePointAverageType | The system used for calculating the grade point average for an individual. | Standard |     |     |     |
