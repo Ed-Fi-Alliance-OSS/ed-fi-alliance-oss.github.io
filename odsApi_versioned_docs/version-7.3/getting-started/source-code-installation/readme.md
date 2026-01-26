@@ -406,7 +406,7 @@ To set the "StandardVersion" variable:
     settings**. Under **Advanced**, select **Environment Variables**.)
 2. Under **System variables**, select **New...**
 3. For **Variable name**, enter **StandardVersion**
-4. For **Variable value**, enter **5.0.0,** and press **OK**.
+4. For **Variable value**, enter **5.2.0,** and press **OK**.
 
 ## Verify PowerShell Script Permissions
 
