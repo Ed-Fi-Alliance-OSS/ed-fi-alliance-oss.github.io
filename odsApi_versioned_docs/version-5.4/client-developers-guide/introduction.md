@@ -14,7 +14,7 @@ This documentation is for current and prospective ODS / API client implementers.
 Client implementers are generally software developers, database administrators,
 or data integration developers. Client implementers interested in the inner
 workings of an Ed-Fi ODS / API platform may also find the [Platform Developers'
-Guide](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774309/Platform+Developers+Guide)
+Guide](../platform-dev-guide/overview.md)
 useful. Similarly, ODS / API platform hosts may find this information useful.
 
 ## Prerequisites

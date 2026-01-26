@@ -69,14 +69,14 @@ The Ed-Fi ODS / API uses OAuth 2.0 Client Credentials Grant Flow for
 authentication. API platform hosts manage and securely distribute the OAuth keys and secrets
 required to connect to production platforms. Not surprisingly, clients and
 platforms talk to each other over HTTPS. If you've used OAuth before, the steps will
-be familiar — but if you haven't, the [Authentication](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774418/Authentication) section of this documentation has a step-by-step walkthrough of the process.
+be familiar — but if you haven't, the [Authentication](./authentication) section of this documentation has a step-by-step walkthrough of the process.
 
 Once client systems are authenticated, authorization in the Ed-Fi ODS / API
 works like a typical system: client applications are associated with a set of
 permissions that define the API resources available and what operations can be done on
 those resources. Some ODS / API platform hosts assign "profiles" to clients
 according to the general type of system. These profiles work similarly to a
-database view, constraining what a client application can "see." See the [Authorization](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774419/Authorization) section of this documentation for a conceptual overview and implementation
+database view, constraining what a client application can "see." See the [Authorization](./authorization.md) section of this documentation for a conceptual overview and implementation
 details.
 
 ## Code Generation & SDKs for Clients
@@ -94,5 +94,5 @@ their particular coding style and performance needs. Another advantage of these
 SDKs is that they can easily be regenerated to reflect any changes to the
 underlying data model of the host's data model.
 
-The [Using Code Generation to Create an SDK](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774435/Using+Code+Generation+to+Create+an+SDK) section of this documentation has more detail and a complete walkthrough on
+The [Using Code Generation to Create an SDK](./using-code-generation-to-create-an-sdk.md) section of this documentation has more detail and a complete walkthrough on
 generating the SDKs using [Swagger CodeGen](https://swagger.io/swagger-codegen/).

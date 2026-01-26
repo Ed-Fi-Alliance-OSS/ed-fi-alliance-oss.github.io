@@ -66,4 +66,4 @@ above.
 
 With that out of the way, let's look at how to use code generation to create an
 SDK. The [next
-section](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774435/Using+Code+Generation+to+Create+an+SDK) has details.
+section](./using-code-generation-to-create-an-sdk.md) has details.
