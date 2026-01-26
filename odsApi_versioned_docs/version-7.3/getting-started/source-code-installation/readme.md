@@ -390,10 +390,10 @@ described below.
 
 ### Configure StandardVersion
 
-ODS/API 7.x supports building and deploying APIs that adhere to either the Ed-Fi
-Data Standard v4 or Ed-Fi Data Standard v5. By default, Visual Studio is set up
-to build using Ed-Fi Data Standard v5. However, if you are building for Ed-Fi
-Data Standard v4, you must ensure that the “StandardVersion” environment
+ODS/API 7.x supports building and deploying APIs that adhere to either Ed-Fi
+Data Standard v4, v5, or v6. By default, Visual Studio is set up
+to build using Ed-Fi Data Standard v6. However, if you are building for Ed-Fi
+Data Standard v4 or v5, you must ensure that the “StandardVersion” environment
 variable is properly configured.
 
 To set the "StandardVersion" variable:
@@ -406,7 +406,7 @@ To set the "StandardVersion" variable:
     settings**. Under **Advanced**, select **Environment Variables**.)
 2. Under **System variables**, select **New...**
 3. For **Variable name**, enter **StandardVersion**
-4. For **Variable value**, enter **4.0.0,** and press **OK**.
+4. For **Variable value**, enter **5.2.0,** and press **OK**.
 
 ## Verify PowerShell Script Permissions
 
@@ -459,10 +459,10 @@ For a PostgreSQL backing datastore, use the following:
 initdev -Engine PostgreSQL
 ```
 
-For building Data Standard 4.0, use the following:
+For building Data Standard 5.2, use the following:
 
 ```powershell
-initdev -StandardVersion 4.0.0
+initdev -StandardVersion 5.2.0
 ```
 
 To get full details on initdev parameter options, use the following:
