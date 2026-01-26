@@ -48,6 +48,168 @@ jobs:
         with:
           path: build
 
+      - name: Upload Docs Export Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: docs-export
+          path: build/export
+          if-no-files-found: error
+          retention-days: 7
+
+  build-vectorstore:
+    name: Build Chroma Vectorstore
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Download Docs Export Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: docs-export
+          path: export
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Cache HuggingFace models
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: ${{ runner.os }}-huggingface-all-MiniLM-L6-v2
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install "chromadb==1.4.0" langchain-core langchain-community "sentence-transformers" "torch" "numpy<2"
+
+      - name: Build vectorstore
+        run: |
+          python tools/build-chroma/build_vectorstore.py \
+            --source-docs export \
+            --output-dir chroma_db \
+            --collection-name ed-fi-docs \
+            --embedding-model sentence-transformers/all-MiniLM-L6-v2 \
+            --device cpu
+
+      - name: Upload Vectorstore Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: vectorstore
+          path: chroma_db
+          retention-days: 7
+
+  azure-deploy:
+    name: Deploy Vectorstore to Azure (Blue/Green)
+    needs: build-vectorstore
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      AZURE_RESOURCE_GROUP: ${{ secrets.AZURE_RESOURCE_GROUP }}
+      AZURE_STORAGE_ACCOUNT: ${{ secrets.AZURE_STORAGE_ACCOUNT }}
+      AZURE_CONTAINERAPP_NAME: ${{ secrets.AZURE_CONTAINERAPP_NAME }}
+      FILE_SHARE_NAME: vector-data
+      REV_SUFFIX: ${{ github.sha }}
+    steps:
+      - name: Download Vectorstore Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: vectorstore
+          path: vectorstore
+
+      - name: Azure Login (OIDC)
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Ensure Azure File Share exists
+        run: |
+          az storage share-rm show --name "$FILE_SHARE_NAME" --storage-account "$AZURE_STORAGE_ACCOUNT" >/dev/null 2>&1 || \
+          az storage share-rm create --name "$FILE_SHARE_NAME" --storage-account "$AZURE_STORAGE_ACCOUNT"
+
+      - name: Upload vectorstore to Azure Files
+        run: |
+          DEST_PATH="docs-vectordb-${REV_SUFFIX}"
+          az storage file upload-batch \
+            --account-name "$AZURE_STORAGE_ACCOUNT" \
+            --destination "$FILE_SHARE_NAME" \
+            --destination-path "$DEST_PATH" \
+            --source "vectorstore" \
+            --overwrite
+          echo "DEST_PATH=$DEST_PATH" >> $GITHUB_ENV
+
+      - name: Enable multiple revisions
+        run: |
+          az containerapp revision set-mode \
+            --name "$AZURE_CONTAINERAPP_NAME" \
+            --resource-group "$AZURE_RESOURCE_GROUP" \
+            --mode multiple
+
+      - name: Update Container App env (new revision)
+        run: |
+          az containerapp update \
+            --name "$AZURE_CONTAINERAPP_NAME" \
+            --resource-group "$AZURE_RESOURCE_GROUP" \
+            --set-env-vars PERSIST_DIRECTORY="/data/${DEST_PATH}"
+
+      - name: Get revisions
+        id: revisions
+        run: |
+          az containerapp revision list \
+            --name "$AZURE_CONTAINERAPP_NAME" \
+            --resource-group "$AZURE_RESOURCE_GROUP" \
+            --query "[].name" -o tsv | tail -n 1 > new_rev.txt
+          NEW_REV=$(cat new_rev.txt)
+          STABLE_REV=$(az containerapp revision list \
+            --name "$AZURE_CONTAINERAPP_NAME" \
+            --resource-group "$AZURE_RESOURCE_GROUP" \
+            --query "[?properties.active].name" -o tsv | head -n 1)
+          echo "NEW_REV=$NEW_REV" >> $GITHUB_OUTPUT
+          echo "STABLE_REV=$STABLE_REV" >> $GITHUB_OUTPUT
+
+      - name: Initial traffic split
+        run: |
+          az containerapp ingress traffic set \
+            --name "$AZURE_CONTAINERAPP_NAME" \
+            --resource-group "$AZURE_RESOURCE_GROUP" \
+            --revision-weight ${{ steps.revisions.outputs.STABLE_REV }}=90 ${{ steps.revisions.outputs.NEW_REV }}=10
+
+      - name: Health gate
+        run: |
+          FQDN=$(az containerapp show --name "$AZURE_CONTAINERAPP_NAME" --resource-group "$AZURE_RESOURCE_GROUP" --query "properties.configuration.ingress.fqdn" -o tsv)
+          ATTEMPTS=12
+          for i in $(seq 1 $ATTEMPTS); do
+            code=$(curl -sk -o /dev/null -w "%{http_code}" "https://$FQDN/api/v1/heartbeat")
+            if [ "$code" = "200" ]; then
+              echo "Healthy"; exit 0
+            fi
+            sleep 10
+          done
+          echo "Unhealthy"; exit 1
+
+      - name: Ramp traffic to new
+        if: success()
+        run: |
+          az containerapp ingress traffic set \
+            --name "$AZURE_CONTAINERAPP_NAME" \
+            --resource-group "$AZURE_RESOURCE_GROUP" \
+            --revision-weight ${{ steps.revisions.outputs.STABLE_REV }}=0 ${{ steps.revisions.outputs.NEW_REV }}=100
+
+      - name: Rollback traffic
+        if: failure()
+        run: |
+          az containerapp ingress traffic set \
+            --name "$AZURE_CONTAINERAPP_NAME" \
+            --resource-group "$AZURE_RESOURCE_GROUP" \
+            --revision-weight ${{ steps.revisions.outputs.STABLE_REV }}=100 ${{ steps.revisions.outputs.NEW_REV }}=0
+
   deploy:
     name: Deploy to GitHub Pages
     needs: build
