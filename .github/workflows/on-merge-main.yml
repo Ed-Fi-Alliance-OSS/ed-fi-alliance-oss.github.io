@@ -144,7 +144,8 @@ jobs:
             --account-name "$AZURE_STORAGE_ACCOUNT" \
             --destination "$FILE_SHARE_NAME" \
             --destination-path "$DEST_PATH" \
-            --source "vectorstore"
+            --source "vectorstore" \
+            --auth-mode login
           echo "DEST_PATH=$DEST_PATH" >> $GITHUB_ENV
 
       # ========== PRODUCTION PATH (Main Branch) ==========
