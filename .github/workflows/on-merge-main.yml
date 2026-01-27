@@ -172,7 +172,7 @@ jobs:
             --destination "$FILE_SHARE_NAME" \
             --destination-path "$DEST_PATH" \
             --source "vectorstore" \
-            --auth-mode login
+            --auth-mode login \
             --enable-file-backup-request-intent
           echo "DEST_PATH=$DEST_PATH" >> $GITHUB_ENV
 
