@@ -18,6 +18,16 @@ on:
         required: false
         default: '0'
         type: string
+      skip_vectorstore:
+        description: 'Skip vectorstore build job (for testing deploy only)'
+        required: false
+        default: 'false'
+        type: boolean
+      skip_storage_upload:
+        description: 'Skip uploading vectorstore to Azure Files (update env only)'
+        required: false
+        default: 'false'
+        type: boolean
 concurrency:
   group:
     ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -55,11 +65,13 @@ jobs:
         run: npm run build
 
       - name: Upload Build Artifact
+        if: ${{ github.event.inputs.skip_build != 'true' }}
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
         with:
           path: build
 
       - name: Upload Docs Export Artifact
+        if: ${{ github.event.inputs.skip_build != 'true' }}
         uses: actions/upload-artifact@v4
         with:
           name: docs-export
@@ -71,6 +83,7 @@ jobs:
     name: Build Chroma Vectorstore
     needs: build
     runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.skip_vectorstore != 'true' }}
     permissions:
       contents: read
     steps:
@@ -133,6 +146,7 @@ jobs:
       BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
     steps:
       - name: Download Vectorstore Artifact
+        if: ${{ github.event.inputs.skip_storage_upload != 'true' }}
         uses: actions/download-artifact@v4
         with:
           name: vectorstore
@@ -146,6 +160,7 @@ jobs:
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
       - name: Upload vectorstore to Azure Files
+        if: ${{ github.event.inputs.skip_storage_upload != 'true' }}
         run: |
           if [ "${{ env.IS_MAIN }}" = "true" ]; then
             DEST_PATH="docs-vectordb-prod"
