@@ -7,7 +7,17 @@ on:
     branches:
       - main
   workflow_dispatch:
-
+    inputs:
+      skip_build:
+        description: 'Skip Docusaurus build (for testing deploy only)'
+        required: false
+        default: 'false'
+        type: boolean
+      limit_docs:
+        description: 'Limit vectorstore docs to first N (for testing only, 0=unlimited)'
+        required: false
+        default: '0'
+        type: string
 concurrency:
   group:
     ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -41,6 +51,7 @@ jobs:
         run: npm ci
 
       - name: Build website
+        if: ${{ github.event.inputs.skip_build != 'true' }}
         run: npm run build
 
       - name: Upload Build Artifact
@@ -96,7 +107,8 @@ jobs:
             --output-dir chroma_db \
             --collection-name ed-fi-docs \
             --embedding-model sentence-transformers/all-MiniLM-L6-v2 \
-            --device cpu
+            --device cpu \
+            --limit-docs ${{ github.event.inputs.limit_docs || 0 }}
 
       - name: Upload Vectorstore Artifact
         uses: actions/upload-artifact@v4
@@ -146,6 +158,7 @@ jobs:
             --destination-path "$DEST_PATH" \
             --source "vectorstore" \
             --auth-mode login
+            --enable-file-backup-request-intent
           echo "DEST_PATH=$DEST_PATH" >> $GITHUB_ENV
 
       # ========== PRODUCTION PATH (Main Branch) ==========

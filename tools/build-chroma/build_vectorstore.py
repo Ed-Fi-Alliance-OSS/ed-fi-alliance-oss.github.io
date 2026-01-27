@@ -83,7 +83,8 @@ def build_vectorstore(
     collection_name: str,
     embedding_model: str,
     device: str,
-    verbose: bool = False
+    verbose: bool = False,
+    limit_docs: int = 0
 ) -> int:
     logger = setup_logging(verbose)
 
@@ -125,6 +126,11 @@ def build_vectorstore(
         logger.error("No valid documents could be constructed from export JSON")
         return 3
 
+    # Limit documents for testing if specified (0 = unlimited)
+    if limit_docs > 0 and len(docs) > limit_docs:
+        logger.info("Limiting to first %d documents (total: %d)", limit_docs, len(docs))
+        docs = docs[:limit_docs]
+
     logger.info("Preparing embeddings: %s on %s", embedding_model, device)
     embeddings = HuggingFaceEmbeddings(
         model_name=embedding_model,
@@ -162,11 +168,12 @@ def main():
     parser.add_argument('--embedding-model', default='sentence-transformers/all-MiniLM-L6-v2', help='Embedding model')
     parser.add_argument('--device', default='cpu', choices=['cpu', 'cuda'], help='Embedding device')
     parser.add_argument('--verbose', action='store_true', help='Verbose logging')
+        parser.add_argument('--limit-docs', type=int, default=0, help='Limit to first N documents (0=unlimited, for testing)')
     args = parser.parse_args()
 
     source = Path(args.source_docs)
     out = Path(args.output_dir)
-    rc = build_vectorstore(source, out, args.collection_name, args.embedding_model, args.device, args.verbose)
+    rc = build_vectorstore(source, out, args.collection_name, args.embedding_model, args.device, args.verbose, args.limit_docs)
     exit(rc)
 
 
