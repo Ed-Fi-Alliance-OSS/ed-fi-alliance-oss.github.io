@@ -38,7 +38,7 @@ hide_table_of_contents: true
 | Parent | PersonalInformationVerification | The category of the document relative to its purpose. | Orthodox |     |     |     |
 | Parent | Sex | A person's gender. | Flexible |     |     |     |
 | Parent | StateAbbreviation | The abbreviation for the state (within the United States) or outlying area in which an address is located. | Standard |     |     |     |
-| TelephoneNumberType | The type of communication number listed for an individual or organization. | Standard |     |     |     |
+| Parent | TelephoneNumberType | The type of communication number listed for an individual or organization. | Standard |     |     |     |
 | Person | SourceSystem | This descriptor defines the originating record source system for the person. | Local |     |     |     |
 | Student | BirthCountry | The country in which an individual is born. It is strongly recommended that entries use only ISO 3166 2-letter country codes. | Standard |     |     |     |
 | Student | BirthSex | A person's gender at birth. | Standard |     |     |     |
