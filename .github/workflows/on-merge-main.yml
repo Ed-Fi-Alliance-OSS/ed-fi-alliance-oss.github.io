@@ -133,11 +133,6 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-      - name: Ensure Azure File Share exists
-        run: |
-          az storage share-rm show --name "$FILE_SHARE_NAME" --storage-account "$AZURE_STORAGE_ACCOUNT" --resource-group "$AZURE_RESOURCE_GROUP" >/dev/null 2>&1 || \
-          az storage share-rm create --name "$FILE_SHARE_NAME" --storage-account "$AZURE_STORAGE_ACCOUNT" --resource-group "$AZURE_RESOURCE_GROUP"
-
       - name: Upload vectorstore to Azure Files
         run: |
           if [ "${{ env.IS_MAIN }}" = "true" ]; then
