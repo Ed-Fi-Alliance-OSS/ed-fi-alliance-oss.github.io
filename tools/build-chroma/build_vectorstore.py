@@ -168,7 +168,7 @@ def main():
     parser.add_argument('--embedding-model', default='sentence-transformers/all-MiniLM-L6-v2', help='Embedding model')
     parser.add_argument('--device', default='cpu', choices=['cpu', 'cuda'], help='Embedding device')
     parser.add_argument('--verbose', action='store_true', help='Verbose logging')
-        parser.add_argument('--limit-docs', type=int, default=0, help='Limit to first N documents (0=unlimited, for testing)')
+    parser.add_argument('--limit-docs', type=int, default=0, help='Limit to first N documents (0=unlimited, for testing)')
     args = parser.parse_args()
 
     source = Path(args.source_docs)
