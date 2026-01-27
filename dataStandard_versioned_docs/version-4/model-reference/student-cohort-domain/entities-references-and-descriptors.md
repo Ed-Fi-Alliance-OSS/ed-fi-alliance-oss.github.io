@@ -27,8 +27,8 @@
 | Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
 | Cohort | AcademicSubject | The academic subject associated with an academic intervention. | Local |     |     |     |
-| CohortScope | The scope of cohort (e.g., school, district, classroom). | Orthodox |     |     |     |
-| CohortType | The type of cohort (e.g., academic intervention, classroom breakout). | Local |     |     |     |
+| Cohort | CohortScope | The scope of cohort (e.g., school, district, classroom). | Orthodox |     |     |     |
+| Cohort | CohortType | The type of cohort (e.g., academic intervention, classroom breakout). | Local |     |     |     |
 
 :::tip
 
