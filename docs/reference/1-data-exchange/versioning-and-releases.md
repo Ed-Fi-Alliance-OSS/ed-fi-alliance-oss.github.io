@@ -12,7 +12,7 @@ technology as well as generational compatibility.
 ## Use of Semantic Versioning (semver)
 
 Ed-Fi UDM is versioned using semantic versioning, also referred to as "semver".
-For more information, see [Ed-Fi Software
+For more information, see [Software
 Versioning](/community/sdlc/code-contribution-guidelines/software-versioning).
 
 This version number is the one shown in the format MAJOR.MINOR.PATCH with
