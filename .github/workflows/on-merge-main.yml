@@ -106,7 +106,7 @@ jobs:
           retention-days: 7
 
   azure-deploy:
-    name: Deploy Vectorstore to Azure (Blue/Green)
+    name: Deploy Vectorstore to Azure
     needs: build-vectorstore
     runs-on: ubuntu-latest
     permissions:
@@ -117,7 +117,8 @@ jobs:
       AZURE_STORAGE_ACCOUNT: ${{ secrets.AZURE_STORAGE_ACCOUNT }}
       AZURE_CONTAINERAPP_NAME: ${{ secrets.AZURE_CONTAINERAPP_NAME }}
       FILE_SHARE_NAME: vector-data
-      REV_SUFFIX: ${{ github.sha }}
+      IS_MAIN: ${{ github.ref == 'refs/heads/main' }}
+      BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
     steps:
       - name: Download Vectorstore Artifact
         uses: actions/download-artifact@v4
@@ -139,7 +140,11 @@ jobs:
 
       - name: Upload vectorstore to Azure Files
         run: |
-          DEST_PATH="docs-vectordb-${REV_SUFFIX}"
+          if [ "${{ env.IS_MAIN }}" = "true" ]; then
+            DEST_PATH="docs-vectordb-prod"
+          else
+            DEST_PATH="docs-vectordb-${{ env.BRANCH_NAME }}"
+          fi
           az storage file upload-batch \
             --account-name "$AZURE_STORAGE_ACCOUNT" \
             --destination "$FILE_SHARE_NAME" \
@@ -148,28 +153,31 @@ jobs:
             --overwrite
           echo "DEST_PATH=$DEST_PATH" >> $GITHUB_ENV
 
+      # ========== PRODUCTION PATH (Main Branch) ==========
       - name: Enable multiple revisions
+        if: ${{ env.IS_MAIN == 'true' }}
         run: |
           az containerapp revision set-mode \
             --name "$AZURE_CONTAINERAPP_NAME" \
             --resource-group "$AZURE_RESOURCE_GROUP" \
             --mode multiple
 
-      - name: Update Container App env (new revision)
+      - name: Create new revision (production)
+        if: ${{ env.IS_MAIN == 'true' }}
         run: |
           az containerapp update \
             --name "$AZURE_CONTAINERAPP_NAME" \
             --resource-group "$AZURE_RESOURCE_GROUP" \
-            --set-env-vars PERSIST_DIRECTORY="/data/${DEST_PATH}"
+            --set-env-vars PERSIST_DIRECTORY="/data/${{ env.DEST_PATH }}"
 
-      - name: Get revisions
+      - name: Get revisions (production)
+        if: ${{ env.IS_MAIN == 'true' }}
         id: revisions
         run: |
-          az containerapp revision list \
+          NEW_REV=$(az containerapp revision list \
             --name "$AZURE_CONTAINERAPP_NAME" \
             --resource-group "$AZURE_RESOURCE_GROUP" \
-            --query "[].name" -o tsv | tail -n 1 > new_rev.txt
-          NEW_REV=$(cat new_rev.txt)
+            --query "[].name" -o tsv | tail -n 1)
           STABLE_REV=$(az containerapp revision list \
             --name "$AZURE_CONTAINERAPP_NAME" \
             --resource-group "$AZURE_RESOURCE_GROUP" \
@@ -177,14 +185,16 @@ jobs:
           echo "NEW_REV=$NEW_REV" >> $GITHUB_OUTPUT
           echo "STABLE_REV=$STABLE_REV" >> $GITHUB_OUTPUT
 
-      - name: Initial traffic split
+      - name: Initial traffic split (production)
+        if: ${{ env.IS_MAIN == 'true' }}
         run: |
           az containerapp ingress traffic set \
             --name "$AZURE_CONTAINERAPP_NAME" \
             --resource-group "$AZURE_RESOURCE_GROUP" \
             --revision-weight ${{ steps.revisions.outputs.STABLE_REV }}=90 ${{ steps.revisions.outputs.NEW_REV }}=10
 
-      - name: Health gate
+      - name: Health gate (production)
+        if: ${{ env.IS_MAIN == 'true' }}
         run: |
           FQDN=$(az containerapp show --name "$AZURE_CONTAINERAPP_NAME" --resource-group "$AZURE_RESOURCE_GROUP" --query "properties.configuration.ingress.fqdn" -o tsv)
           ATTEMPTS=12
@@ -197,21 +207,33 @@ jobs:
           done
           echo "Unhealthy"; exit 1
 
-      - name: Ramp traffic to new
-        if: success()
+      - name: Ramp traffic to new (production)
+        if: ${{ env.IS_MAIN == 'true' && success() }}
         run: |
           az containerapp ingress traffic set \
             --name "$AZURE_CONTAINERAPP_NAME" \
             --resource-group "$AZURE_RESOURCE_GROUP" \
             --revision-weight ${{ steps.revisions.outputs.STABLE_REV }}=0 ${{ steps.revisions.outputs.NEW_REV }}=100
 
-      - name: Rollback traffic
-        if: failure()
+      - name: Rollback traffic (production)
+        if: ${{ env.IS_MAIN == 'true' && failure() }}
         run: |
           az containerapp ingress traffic set \
             --name "$AZURE_CONTAINERAPP_NAME" \
             --resource-group "$AZURE_RESOURCE_GROUP" \
             --revision-weight ${{ steps.revisions.outputs.STABLE_REV }}=100 ${{ steps.revisions.outputs.NEW_REV }}=0
+
+      # ========== STAGING PATH (Feature Branches) ==========
+      - name: Direct deploy to staging
+        if: ${{ env.IS_MAIN != 'true' }}
+        run: |
+          az containerapp update \
+            --name "$AZURE_CONTAINERAPP_NAME" \
+            --resource-group "$AZURE_RESOURCE_GROUP" \
+            --set-env-vars PERSIST_DIRECTORY="/data/${{ env.DEST_PATH }}"
+          echo "✅ Staging deployment complete"
+          echo "Environment: /data/${{ env.DEST_PATH }}"
+          echo "Branch: ${{ env.BRANCH_NAME }}"
 
   deploy:
     name: Deploy to GitHub Pages
