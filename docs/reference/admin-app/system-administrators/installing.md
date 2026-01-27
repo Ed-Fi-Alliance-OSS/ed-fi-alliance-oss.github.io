@@ -272,7 +272,8 @@ You can deploy the Node.js backend directly to IIS using only iisnode. This appr
      - **Module**: Select `iisnode`
      - **Executable**: empty
      - **Name**: `iisnode-all`
-     - **Uncheck** "Invoke handler only if request is mapped to: File or Folder"
+     - Click on `Request restrictions...` button and then **Uncheck** `Invoke handler only if request is mapped to: File or Folder`in the `Mapping` tab. Click `Ok` button to save nad close this window.
+     - Click `Ok` to close and save.
    - **Move this handler to the top** of the list (above StaticFile handler)
 
 7. **Environment Configuration**:
@@ -731,7 +732,7 @@ module.exports = {
 };
 ```
 
-#### Environment Variables
+#### Environment Variables Unix
 
 Alternatively, you can use environment variables:
 
