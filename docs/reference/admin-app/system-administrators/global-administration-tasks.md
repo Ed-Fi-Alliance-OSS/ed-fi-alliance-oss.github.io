@@ -21,7 +21,7 @@ To create a new environment:
 3. Fill in the following fields:
 
    | Field | Description |
-   |-|-|
+   | - | - |
    | Using Starting Blocks from Education Analytics? | Leave it OFF, otherwise the system will try to connect to a Starting Blocks deployment. |
    | Name | Enter a descriptive name for this environment. |
    | Ed-Fi API Discovery URL | Enter the URL where the Ed-Fi ODS/API discovery endpoint is available (e.g., `https://api.example.org`). |
