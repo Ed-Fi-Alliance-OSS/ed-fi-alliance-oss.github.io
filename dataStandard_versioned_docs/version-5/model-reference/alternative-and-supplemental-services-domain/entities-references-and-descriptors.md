@@ -45,7 +45,7 @@ hide_table_of_contents: true
 | --- | --- | --- | --- | --- | --- | --- |
 | GeneralStudentProgramAssociation | ParticipationStatus | The student's program participation status. | Standard |     | Yes |     |
 | GeneralStudentProgramAssociation | ReasonExited | The reason the child left the Program within a school or district. | Standard | Yes | Yes |     |
-| Program | Program | ProgramCharacteristic | Reflects important characteristics of the Program, such as categories or particular indications. | Local | Yes | Yes |     |
+| Program | ProgramCharacteristic | Reflects important characteristics of the Program, such as categories or particular indications. | Local | Yes | Yes |     |
 | Program | ProgramSponsor | Ultimate and intermediate providers of funds for a particular educational or service program or activity, or for an individual's participation in the program or activity (e.g., Federal, State, ESC, District, School, Private Organization). | Standard |     | Yes |     |
 | Program | ProgramType | The type of program. | Flexible | Yes | Yes | Yes |
 | StudentCTEProgramAssociation | CTEProgramService | Indicates the service being provided to the student by the CTE Program. | Orthodox | Yes | Yes |     |
