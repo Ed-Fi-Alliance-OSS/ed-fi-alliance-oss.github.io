@@ -37,7 +37,7 @@ hide_table_of_contents: true
 | EducationOrganization | AddressType | The type of address listed for an individual or organization. | Orthodox | Yes | Yes | Yes |
 | EducationOrganization | Country | The name of the country. It is strongly recommended that entries use only ISO 3166 2-letter country codes. | Standard |     | Yes |     |
 | EducationOrganization | EducationOrganizationCategory | The classification of the education agency within the geographic boundaries of a state according to the level of administrative and operational control granted by the state. | Standard |     | Yes | Yes |
-| EducationOrganization | EducationOrganizationIdentificationSystem |     | Orthodox |     | Yes |     |
+| EducationOrganization | EducationOrganizationIdentificationSystem | The school system, state, or agency assigning the identification code. | Orthodox |     | Yes |     |
 | EducationOrganization | Indicator | The name or code for the indicator or metric. | Local |     |     |     |
 | EducationOrganization | IndicatorGroup | The name for a group of indicators. | Local |     |     |     |
 | EducationOrganization | IndicatorLevel | The value of the indicator or metric, as a value from a controlled vocabulary. The semantics of an empty value is "not submitted." | Local |     |     |     |

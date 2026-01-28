@@ -30,39 +30,39 @@ hide_table_of_contents: true
 | Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
 | CommunityProvider | ProviderCategory | Indicates the category of the provider. | Local |     |     |     |
-| ProviderProfitability | Indicates the profitability status of the provider. | Standard |     |     |     |
-| ProviderStatus | Indicates the status of the provider. | Flexible |     |     |     |
+| CommunityProvider | ProviderProfitability | Indicates the profitability status of the provider. | Standard |     |     |     |
+| CommunityProvider | ProviderStatus | Indicates the status of the provider. | Flexible |     |     |     |
 | CommunityProviderLicense | LicenseStatus | An indication of the status of the license. | Flexible |     |     |     |
-| LicenseType | An indication of the category of the license. | Flexible |     |     |     |
+| CommunityProviderLicense | LicenseType | An indication of the category of the license. | Flexible |     |     |     |
 | EducationOrganization | AddressType | The type of address listed for an individual or organization. | Orthodox | Yes | Yes | Yes |
-| Country | The name of the country. It is strongly recommended that entries use only ISO 3166 2-letter country codes. | Standard |     | Yes |     |
-| EducationOrganizationCategory | The classification of the education agency within the geographic boundaries of a state according to the level of administrative and operational control granted by the state. | Standard |     | Yes | Yes |
-| EducationOrganizationIdentificationSystem |     | Orthodox |     | Yes |     |
-| Indicator | The name or code for the indicator or metric. | Local |     |     |     |
-| IndicatorGroup | The name for a group of indicators. | Local |     |     |     |
-| IndicatorLevel | The value of the indicator or metric, as a value from a controlled vocabulary. The semantics of an empty value is "not submitted." | Local |     |     |     |
-| InstitutionTelephoneNumberType | The type of communication number listed for an individual or organization. | Orthodox | Yes | Yes | Yes |
-| Locale | A general geographic indicator that categorizes U.S. territory (e.g., City, Suburban). | Orthodox |     | Yes |     |
-| OperationalStatus | The current operational status of the EducationOrganization (e.g., active, inactive). | Standard | Yes | Yes | Yes |
-| StateAbbreviation | The abbreviation for the state (within the United States) or outlying area in which an address is located. | Standard |     | Yes |     |
+| EducationOrganization | Country | The name of the country. It is strongly recommended that entries use only ISO 3166 2-letter country codes. | Standard |     | Yes |     |
+| EducationOrganization | EducationOrganizationCategory | The classification of the education agency within the geographic boundaries of a state according to the level of administrative and operational control granted by the state. | Standard |     | Yes | Yes |
+| EducationOrganization | EducationOrganizationIdentificationSystem | The school system, state, or agency assigning the identification code. | Orthodox |     | Yes |     |
+| EducationOrganization | Indicator | The name or code for the indicator or metric. | Local |     |     |     |
+| EducationOrganization | IndicatorGroup | The name for a group of indicators. | Local |     |     |     |
+| EducationOrganization | IndicatorLevel | The value of the indicator or metric, as a value from a controlled vocabulary. The semantics of an empty value is "not submitted." | Local |     |     |     |
+| EducationOrganization | InstitutionTelephoneNumberType | The type of communication number listed for an individual or organization. | Orthodox | Yes | Yes | Yes |
+| EducationOrganization | Locale | A general geographic indicator that categorizes U.S. territory (e.g., City, Suburban). | Orthodox |     | Yes |     |
+| EducationOrganization | OperationalStatus | The current operational status of the EducationOrganization (e.g., active, inactive). | Standard | Yes | Yes | Yes |
+| EducationOrganization | StateAbbreviation | The abbreviation for the state (within the United States) or outlying area in which an address is located. | Standard |     | Yes |     |
 | EducationOrganizationNetwork | NetworkPurpose | The purpose(s) of the network (e.g., shared services, collective procurement). | Flexible |     |     |     |
 | LocalEducationAgency | CharterStatus | A school or agency providing free public elementary or secondary education to eligible students under a specific charter granted by the state legislature or other appropriate authority and designated by such authority to be a charter school. | Standard | Yes | Yes | Yes |
-| GunFreeSchoolsActReportingStatus | An indication of whether the school or Local Education Agency (LEA) submitted a Gun-Free Schools Act (GFSA) of 1994 report to the state, as defined by Title 18, Section 921. | Standard | Yes | Yes |     |
-| LocalEducationAgencyCategory | The category of local education agency/district. For example: Independent or Charter. | Local | Yes | Yes |     |
-| SchoolChoiceImplementStatus | An indication of whether the LEA was able to implement the provisions for public school choice under Title I, Part A, Section 1116 of ESEA as amended. | Standard |     |     |     |
+| LocalEducationAgency | GunFreeSchoolsActReportingStatus | An indication of whether the school or Local Education Agency (LEA) submitted a Gun-Free Schools Act (GFSA) of 1994 report to the state, as defined by Title 18, Section 921. | Standard | Yes | Yes |     |
+| LocalEducationAgency | LocalEducationAgencyCategory | The category of local education agency/district. For example: Independent or Charter. | Local | Yes | Yes |     |
+| LocalEducationAgency | SchoolChoiceImplementStatus | An indication of whether the LEA was able to implement the provisions for public school choice under Title I, Part A, Section 1116 of ESEA as amended. | Standard |     |     |     |
 | OrganizationDepartment | AcademicSubject | The intended major subject area of the department. | Local |     |     |     |
 | PostSecondaryInstitution | AdministrativeFundingControl | A classification of whether a postsecondary institution is operated by publicly elected or appointed officials (public control) or by privately elected or appointed officials and derives its major source of funds from private sources (private control). | Local |     |     |     |
-| MediumOfInstruction | The categories in which an institution serves the students. | Orthodox |     | Yes |     |
-| PostSecondaryInstitutionLevel | A classification of whether a post secondary institution's highest level of offering is a program of 4-years or higher (4 year), 2-but-less-than 4-years (2 year), or less than 2-years. | Orthodox |     |     |     |
+| PostSecondaryInstitution | MediumOfInstruction | The categories in which an institution serves the students. | Orthodox |     | Yes |     |
+| PostSecondaryInstitution | PostSecondaryInstitutionLevel | A classification of whether a post secondary institution's highest level of offering is a program of 4-years or higher (4 year), 2-but-less-than 4-years (2 year), or less than 2-years. | Orthodox |     |     |     |
 | School | AdministrativeFundingControl | The type of education institution as classified by its funding source, for example public or private. | Local |     |     |     |
-| CharterApprovalAgencyType | The type of agency that approved the establishment or continuation of a charter school. | Standard | Yes | Yes |     |
-| CharterStatus | A school or agency providing free public elementary or secondary education to eligible students under a specific charter granted by the state legislature or other appropriate authority and designated by such authority to be a charter school. | Standard | Yes | Yes | Yes |
-| GradeLevel | The grade levels served at the school. | Orthodox | Yes | Yes |     |
-| InternetAccess | The type of Internet access available. | Flexible |     |     |     |
-| MagnetSpecialProgramEmphasisSchool | A school that has been designed: 1) to attract students of different racial/ethnic backgrounds for the purpose of reducing, preventing, or eliminating racial isolation; and/or 2) to provide an academic or social focus on a particular theme (e.g., science/math, performing arts, gifted/talented, or foreign language). | Standard | Yes | Yes |     |
-| SchoolCategory | The one or more categories of school. For example: High School, Middle School, and/or Elementary School. | Local |     | Yes |     |
-| SchoolType | The type of education institution as classified by its primary focus such as Alternative, Career and Technical Education, Regular, or Special Education schools. | Standard | Yes | Yes |     |
-| TitleIPartASchoolDesignation | Denotes the Title I Part A designation for the school. | Standard | Yes | Yes |     |
+| School | CharterApprovalAgencyType | The type of agency that approved the establishment or continuation of a charter school. | Standard | Yes | Yes |     |
+| School | CharterStatus | A school or agency providing free public elementary or secondary education to eligible students under a specific charter granted by the state legislature or other appropriate authority and designated by such authority to be a charter school. | Standard | Yes | Yes | Yes |
+| School | GradeLevel | The grade levels served at the school. | Orthodox | Yes | Yes |     |
+| School | InternetAccess | The type of Internet access available. | Flexible |     |     |     |
+| School | MagnetSpecialProgramEmphasisSchool | A school that has been designed: 1) to attract students of different racial/ethnic backgrounds for the purpose of reducing, preventing, or eliminating racial isolation; and/or 2) to provide an academic or social focus on a particular theme (e.g., science/math, performing arts, gifted/talented, or foreign language). | Standard | Yes | Yes |     |
+| School | SchoolCategory | The one or more categories of school. For example: High School, Middle School, and/or Elementary School. | Local |     | Yes |     |
+| School | SchoolType | The type of education institution as classified by its primary focus such as Alternative, Career and Technical Education, Regular, or Special Education schools. | Standard | Yes | Yes |     |
+| School | TitleIPartASchoolDesignation | Denotes the Title I Part A designation for the school. | Standard | Yes | Yes |     |
 
 :::tip
 
