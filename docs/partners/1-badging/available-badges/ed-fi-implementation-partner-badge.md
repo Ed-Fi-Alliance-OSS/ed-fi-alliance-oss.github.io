@@ -56,7 +56,7 @@ Like other badges, a verifying agency/company is required. The nature of the
 verification is important due to the custom nature of offering
 implementation services.
 
-* The verified vendor implementation must also be badged/certified to
+* If the verification is for a vendor product, the vendor must also be badged/certified to
   qualify as a verification. This is required to ensure that implementation
   services are following best practices and current certification/badging
   requirements.
