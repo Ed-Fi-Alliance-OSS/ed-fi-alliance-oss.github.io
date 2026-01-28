@@ -23,7 +23,7 @@ provides instructional services.
 2. Create a StaffSectionAssociation for a staff record at Grand Bend High School
    and the ALGEBRA 1 section.
 3. Update the classroomPositionDescriptor on the first StaffSectionAssociation.
-4. Update the beginDate for the second StaffSectionAssociation record
+4. Update the endDate for the second StaffSectionAssociation record
 5. Delete the StaffSectionAssociation for the English Language Arts, Grade 1
    section at Grand Bend Elementary School.
 
@@ -43,4 +43,5 @@ provides instructional services.
 | StaffSectionAssociations | staffReference              | FALSE         | staffReference              | REQUIRED |                                                |                                               |                                                |                                               |
 | staffReference           | staffUniqueId               | FALSE         | string                      | REQUIRED | ["207220" if possible \| system value]         | ["207269" if possible \| system value]        | ["207220" if possible \| system value]         | ["207269" if possible \| system value]        |
 | StaffSectionAssociations | classroomPositionDescriptor | FALSE         | classroomPositionDescriptor | REQUIRED | Teacher of Record                              | Teacher of Record                             | **Assistant Teacher**                          | Teacher of Record                             |
-| StaffSectionAssociations | beginDate                   | FALSE         | date                        | REQUIRED | [Current School Year]-08-31                    | [Current School Year]-08-31                   | [Current School Year]-08-31                    | [Current School Year]-**09-01**               |
+| StaffSectionAssociations | beginDate                   | FALSE         | date                        | REQUIRED | [Current School Year]-08-31                    | [Current School Year]-08-31                   | [Current School Year]-08-31                    |                                               |
+| StaffSectionAssociations | endDate                     | FALSE         | date                        | REQUIRED |                                                |                                               |                                                | [Current School Year]-**06-01**               |
