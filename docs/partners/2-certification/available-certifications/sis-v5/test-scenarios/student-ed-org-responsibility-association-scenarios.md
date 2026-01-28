@@ -8,12 +8,8 @@ The StudentEducationOrganizationResponsibilityAssociation (SEORA) indicates a re
 and generally indicates some kind of accountability or responsibility of the education organization for the student. The kind of responsibility is specified in the Responsibility
 descriptor value according to policy.
 
-Enrollment relationship semantics are covered by [StudentSchoolAssociation. Domain: Enrollment](https://docs.ed-fi.org/reference/data-exchange/data-standard/model-reference/enrollment-domain/best-practices/#best-practices-related-to-the-studenteducationorganizationresponsibilityassociation-seora)
-
 This association represents student information that is specific to a student's
-relationship with an EducationOrganization. Enrollment relationship semantics
-are covered
-by [https://edfi.atlassian.net/wiki/spaces/EDFI/pages/22450000](https://edfi.atlassian.net/wiki/spaces/EDFI/pages/22450000).
+relationship with an EducationOrganization. Enrollment relationship semantics are covered by [StudentSchoolAssociation. Domain: Enrollment](https://docs.ed-fi.org/reference/data-exchange/data-standard/model-reference/enrollment-domain/best-practices/#best-practices-related-to-the-studenteducationorganizationresponsibilityassociation-seora)
 
 ## Prerequisites
 
