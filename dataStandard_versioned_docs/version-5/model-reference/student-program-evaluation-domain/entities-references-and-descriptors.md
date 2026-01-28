@@ -25,8 +25,8 @@ hide_table_of_contents: true
 
 ## Student Program Evaluation Domain Descriptors
 
-| Entity | Name | Description |
-| --- | --- | --- |
+| Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
+| --- | --- | --- | --- | --- | --- | --- |
 | ProgramEvaluation | ProgramEvaluationType | The type of program evaluation conducted |
 | ProgramEvaluationPeriod | The name of the period for the program evaluation |
 | StudentProgramEvaluation | RatingLevel | The summary rating level achieved based upon the rating or score |

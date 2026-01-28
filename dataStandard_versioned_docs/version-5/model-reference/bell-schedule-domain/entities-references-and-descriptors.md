@@ -23,7 +23,7 @@ hide_table_of_contents: true
 
 ## Bell Schedule Domain Descriptors
 
-| Entity | Descriptor | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
+| Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
 | BellSchedule | GradeLevel | The grade levels the particular BellSchedule applies to. | Orthodox | Yes | Yes |     |
 
