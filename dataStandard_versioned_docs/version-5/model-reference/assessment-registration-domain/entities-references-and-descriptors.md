@@ -27,13 +27,13 @@ hide_table_of_contents: true
 
 ## Assessment Domain Descriptors
 
-| Entity | Descriptor | Description |
-| --- | --- | --- |
-| StudentAssessmentRegistration | AssessmentAccommodation | The special variation(s) to be used in how assessments (in general) are presented, how it is administered, or how the test taker is allowed to respond. This generally refers to changes that do not substantially alter what the examination measures. The proper use of accommodations does not substantially change academic level or performance criteria. |
-| StudentAssessmentRegistration | AssessmentGradeLevel | The grade level or primary instructional level at which the student is to be assessed. |
-| StudentAssessmentRegistration | PlatformType | The environment or format in which the assessment is expected to be administered. |
-| StudentAssessmentRegistrationBatteryPartAssociation | Accommodation | The special variation(s) to be used for the specific part of the assessment battery on how is presented, how it is administered, or how the test taker is allowed to respond. |
-| StudentEducationOrganizationAssessmentAccommodation | GeneralAccommodation | The special variation(s) to be used in how assessments (in general) are presented, how it is administered, or how the test taker is allowed to respond. This generally refers to changes that do not substantially alter what the examination measures. The proper use of accommodations does not substantially change academic level or performance criteria. |
+| Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
+| --- | --- | --- | --- | --- | --- | --- |
+| StudentAssessmentRegistration | AssessmentAccommodation | The special variation(s) to be used in how assessments (in general) are presented, how it is administered, or how the test taker is allowed to respond. This generally refers to changes that do not substantially alter what the examination measures. The proper use of accommodations does not substantially change academic level or performance criteria. |     |     |     |     |
+| StudentAssessmentRegistration | AssessmentGradeLevel | The grade level or primary instructional level at which the student is to be assessed. |     |     |     |     |
+| StudentAssessmentRegistration | PlatformType | The environment or format in which the assessment is expected to be administered. |     |     |     |     |
+| StudentAssessmentRegistrationBatteryPartAssociation | Accommodation | The special variation(s) to be used for the specific part of the assessment battery on how is presented, how it is administered, or how the test taker is allowed to respond. |     |     |     |     |
+| StudentEducationOrganizationAssessmentAccommodation | GeneralAccommodation | The special variation(s) to be used in how assessments (in general) are presented, how it is administered, or how the test taker is allowed to respond. This generally refers to changes that do not substantially alter what the examination measures. The proper use of accommodations does not substantially change academic level or performance criteria. |     |     |     |     |
 
 :::tip
 
