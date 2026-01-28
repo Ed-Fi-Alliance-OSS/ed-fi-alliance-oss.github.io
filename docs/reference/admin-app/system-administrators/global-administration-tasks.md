@@ -21,7 +21,7 @@ To create a new environment:
 3. Fill in the following fields:
 
    | Field | Description |
-   |-|-|
+   | - | - |
    | Using Starting Blocks from Education Analytics? | Leave it OFF, otherwise the system will try to connect to a Starting Blocks deployment. |
    | Name | Enter a descriptive name for this environment. |
    | Ed-Fi API Discovery URL | Enter the URL where the Ed-Fi ODS/API discovery endpoint is available (e.g., `https://api.example.org`). |
@@ -92,7 +92,7 @@ For an environment to be managed, you must grant ownership to a team. This proce
 1. Select the environment
 2. Click "Grant Ownership"
 
-From step 2, follow the guide in [Managing Resource Ownership](#5-ownerships) to complete this process.
+From step 2, follow the guide in [Managing Resource Ownership](#ownerships) to complete this process.
 
 ![Grant ownership view for environment](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/admin-guide/environment/grant-ownership-to-environment.png)
 
