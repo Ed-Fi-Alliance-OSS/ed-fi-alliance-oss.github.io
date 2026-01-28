@@ -8,8 +8,9 @@ clarity and uniformity.
 
 ### 1. Product Availability & Pricing Information
 
-See [Requirements - Product Availability Information](../../certification-for-data-providers/product-availability-information.md)  
-See [Requirements - Pricing Statement](../../certification-for-data-providers/pricing-statement.md)
+See [Requirements - Product Availability Information](../../certification-for-data-providers/product-availability-information.md)\
+See [Requirements - Pricing Statement](../../certification-for-data-providers/pricing-statement.md)\
+See [Optional - Security Validations](../../certification-for-data-providers/security-validations.md)
 
 ### 2. Initial Implementation Verification Information**
 
