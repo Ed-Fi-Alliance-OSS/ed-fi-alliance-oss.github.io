@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Student Cohort Domain - Model Diagrams
 
 ## Student Cohort Model UML Diagram
