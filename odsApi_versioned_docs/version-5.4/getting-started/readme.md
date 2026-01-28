@@ -34,16 +34,16 @@ Find out more about how to begin using the Ed-Fi ODS / API:
 <details>
   <summary>Getting Started - Binary Installation</summary>
 
-  * [Sandbox Installation Steps](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774213/Sandbox+Installation+Steps)
-  * [Shared Instance Installation Steps](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774218/Shared+Instance+Installation+Steps)
-  * [Year-Specific Installation Steps](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774223/Year-Specific+Installation+Steps)
-  * [Binary Releases](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774232/Binary+Releases)
+  * [Sandbox Installation Steps](./binary-installation/sandbox-installation-steps.mdx)
+  * [Shared Instance Installation Steps](./binary-installation/shared-instance-installation-steps.md)
+  * [Year-Specific Installation Steps](./binary-installation/year-specifc-installation-steps.md)
+  * [Binary Releases](./binary-installation/binary-releases.md)
 </details>
 
 <details>
   <summary>Getting Started - Source Code Installation</summary>
 
-  * [Project Templates Installation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774290/Project+Templates+Installation)
+  * [Project Templates Installation](./source-code-installation/project-templates-installation.md)
   </details>
 
-[Getting Started - Appendix](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774308/Getting+Started+-+Appendix)
+[Getting Started - Appendix](./getting-started-appendix.md)

@@ -1,6 +1,6 @@
 # XML Lookup Utility
 
-The Ed-Fi Data Standard allows two alternative values for reference types: lookup types and identity types. The [Ed-Fi Bulk Load Client](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774385/Bulk+Load+Client+Utility) requires that identity type references always be used. The XML Lookup Utility is a command-line application that resolves lookup references to identity references in Ed-Fi XML documents. The utility is suitable for interactive or scripted use as part of a larger data-ingestion process.
+The Ed-Fi Data Standard allows two alternative values for reference types: lookup types and identity types. The [Ed-Fi Bulk Load Client](./bulk-load-client-utility.md) requires that identity type references always be used. The XML Lookup Utility is a command-line application that resolves lookup references to identity references in Ed-Fi XML documents. The utility is suitable for interactive or scripted use as part of a larger data-ingestion process.
 
 The utility uses Ed-Fi Standard XSD files (with extensions) combined with a functional Ed-Fi ODS / API to add identity type information to reference types that only contain lookup types, thus allowing the Bulk Load Client to ingest the files. It does not need to be recompiled when the Ed-Fi Data Standard or extensions are changed, as it dynamically maps the Ed-Fi Standard XSD elements to the Ed-Fi REST API endpoints documented in the Swagger metadata.
 

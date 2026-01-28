@@ -37,7 +37,7 @@ Before you begin:
 * This example uses PowerShell scripts and the EdFi.BulkLoadClient.Console
     found in the Ed-Fi ODS / API. You should follow the [Getting Started -
     Source Code
-    Installation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774233/Getting+Started+-+Source+Code+Installation) before
+  Installation](../getting-started/source-code-installation/index.md) before
     you get started.
 * This example uses the XML sample data found in
     the [Ed-Fi-Standard repository on GitHub](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Standard). 
@@ -147,7 +147,7 @@ Before you begin:
 
 * This example assumes you have SQL Server Management Studio (SSMS). You can find
   instructions for installing SSMS in the Step 3. Install and Configure Required
-  Software step of the [Getting Started](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774233/Getting+Started+-+Source+Code+Installation) guide for the Ed-Fi ODS / API.
+  Software step of the [Getting Started](../getting-started/source-code-installation/index.md) guide for the Ed-Fi ODS / API.
 * This example assumes you have NuGet CLI tool. You can follow the instructions
   for [Installing Nuget Client Tools](https://docs.microsoft.com/en-us/nuget/install-nuget-client-tools#nugetexe-cli).
 * This example assumes you have access to a MyGet feed. You can follow MyGet's

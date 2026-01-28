@@ -34,7 +34,7 @@ configurable using application **feature flags** and **mode**.
 
 API provides feature on/off flags for several built in features. Also the system
 can be extended by creating a feature service and registering the service by
-creating an Autofac module class that inherits from ConditionalModule class. See [Adding Custom ODS / API Features](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774921/Adding+Custom+ODS+API+Features) for more information on customizing the application.
+creating an Autofac module class that inherits from ConditionalModule class. See [Adding Custom ODS / API Features](../../technical-articles/adding-custom-ods-api-features.md) for more information on customizing the application.
 
 Changes to the processing pipelines, caching mechanisms, data repository, and
 many other considerations can be adapted by changing the
@@ -54,7 +54,7 @@ threat modeling exercise during the deployment planning cycle.
 
 ### Important Security Information
 
-The technical article [Education Agency Business Process Security Considerations](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774863/Education+Agency+Business+Process+Security+Considerations) contains important background information that all implementers should know
+The technical article [Education Agency Business Process Security Considerations](../../technical-articles/education-agency-business-process-security-considerations.md) contains important background information that all implementers should know
 before deploying a production instance of the Ed-Fi ODS / API.
 
 ### Value Assets

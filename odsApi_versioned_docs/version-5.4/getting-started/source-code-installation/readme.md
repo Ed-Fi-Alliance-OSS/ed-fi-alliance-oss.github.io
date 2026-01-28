@@ -5,7 +5,7 @@ sidebar_position: 1
 
 # Getting Started - Source Code Installation
 
-This section describes how to set up the Ed-Fi ODS / API v5.4 source code on a development machine. For those interested in getting an Ed-Fi ODS / API instance up and running quickly, but do not have developer tools or experience, we recommend you consult [Getting Started - Binary Installation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774182/Getting+Started+-+Binary+Installation).
+This section describes how to set up the Ed-Fi ODS / API v5.4 source code on a development machine. For those interested in getting an Ed-Fi ODS / API instance up and running quickly, but do not have developer tools or experience, we recommend you consult [Getting Started - Binary Installation](../binary-installation/readme.md).
 
 Details on each step follows
 
@@ -445,7 +445,7 @@ Login to Sandbox Administration Portal with Test Admin Account. Login details ca
 
 ![Sandbox Admin](https://edfi.atlassian.net/wiki/download/attachments/22774233/sandbox.png?version=1&modificationDate=1641861346230&cacheVersion=1&api=v2)
 
-As the name implies, Sandbox Administration Portal is useful for development machines and sandbox instances of the ODS / API, but should not be present on production instances. See the [Platform Developers' Guide - Deployment](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774362/Platform+Dev+Guide+-+Deployment) section for details.
+As the name implies, Sandbox Administration Portal is useful for development machines and sandbox instances of the ODS / API, but should not be present on production instances. See the [Platform Developers' Guide - Deployment](../../platform-dev-guide/deployment/readme.md) section for details.
 
 ---
 
@@ -463,7 +463,7 @@ To view the data in your sandbox, click Authorize and enter the key and secret i
 
 ![Swagger Auth](https://edfi.atlassian.net/wiki/download/attachments/22774233/image2020-10-18_16-45-58.png?version=1&modificationDate=1641861345230&cacheVersion=1&api=v2)
 
-Similar to the Sandbox Administration Portal, the ODS / API Documentation Web Page is useful for development machines and sandbox instances of the ODS / API, but is generally not present on production instances. See the [Platform Developers' Guide - Deployment](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774362/Platform+Dev+Guide+-+Deployment) section for details.
+Similar to the Sandbox Administration Portal, the ODS / API Documentation Web Page is useful for development machines and sandbox instances of the ODS / API, but is generally not present on production instances. See the [Platform Developers' Guide - Deployment](../../platform-dev-guide/deployment/readme.md) section for details.
 
 </details>
 

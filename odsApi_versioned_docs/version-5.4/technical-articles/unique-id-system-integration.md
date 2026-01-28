@@ -65,7 +65,7 @@ management for establishing a unique ID, client applications will need some proc
 looking up that unique ID value. This section provides a system flow that most
 clients will follow to look up a unique ID through the Ed-Fi ODS / API.
 
-The unique ID for a person can be obtained from the `/identities` endpoints in the Ed-Fi ODS / API (documented online [here](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774878/Unique+ID+System+Integration)). The workflow for clients to create and obtain IDs are described below. For
+The unique ID for a person can be obtained from the `/identities` endpoints in the Ed-Fi ODS / API (documented online [here](./unique-id-system-integration.md)). The workflow for clients to create and obtain IDs are described below. For
 the purposes of this example, the workflow will focus on the use case of creating
 a new student record, but the same general flow applies to staff and parent
 records.

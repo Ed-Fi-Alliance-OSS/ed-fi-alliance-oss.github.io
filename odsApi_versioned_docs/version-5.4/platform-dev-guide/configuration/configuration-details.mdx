@@ -14,10 +14,10 @@ Key configuration points include:
 
 See the following sections for more details on important configuration options:
 
-* [Required Configuration Settings](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774317/Configuration+Details#ConfigurationDetails-RequiredConfigurationSettings)
-* [Optional Configuration Settings](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774317/Configuration+Details#ConfigurationDetails-OptionalConfigurationSettings)
-* [Environment Configuration](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774317/Configuration+Details#ConfigurationDetails-EnvironmentConfiguration)
-* [Secret Manager](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774317/Configuration+Details#ConfigurationDetails-SecretManager)
+* [Required Configuration Settings](#required-configuration-settings) 
+* [Optional Configuration Settings](#optional-configuration-settings) 
+* [Environment Configuration](#environment-configuration)
+* [Secret Manager](#secret-manager) 
 
 ## Required Configuration Settings
 
@@ -28,10 +28,10 @@ To make it easier for developers to install and run the Ed-Fi ODS / API, the def
 | Application Location | Setting Name | Value | Description |
 |--------------------|--------------|-------|-------------|
 | EdFi.Ods.SandboxAdmin | appsettings.json | OAuthUrl | Example: `http://site-address:port/oauth`<br/>Points to the root of the authorization API in the Ed-Fi ODS / API. |
-| EdFi.Ods.WebApi | appsettings.json | ApiSettings:Mode | Example: Sandbox, SharedInstance, YearSpecific, DistrictSpecific<br/>The component settings for the API. See the [following section](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774339/Platform+Dev+Guide+-+Extensibility+Customization#Db%20Partition) on Developers' Guide for more information on this setting. |
+| EdFi.Ods.WebApi | appsettings.json | ApiSettings:Mode | Example: Sandbox, SharedInstance, YearSpecific, DistrictSpecific<br/>The component settings for the API. See the [following section](../extensibility-customization/readme.md) on Developers' Guide for more information on this setting. |
 | EdFi.Ods.SwaggerUI | appsettings.json | WebApiVersionUrl | Example: `http://site-address:port/`<br/>Points to the version endpoint in the Ed-Fi ODS / API. |
 
-A deployment to a staging or production instance is usually more involved, and requires additional configuration. Required configurations for a production instance can be found in the [Deployment](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774362/Platform+Dev+Guide+-+Deployment) section of this documentation.
+A deployment to a staging or production instance is usually more involved, and requires additional configuration. Required configurations for a production instance can be found in the [Deployment](../readme.md) section of this documentation.
 
 ## Optional Configuration Settings
 
@@ -57,13 +57,13 @@ Although this list of settings is not exhaustive, other important and useful opt
 | EdFi.Ods.WebApi | appsettings.json | BearerTokenTimeoutMinutes | Example: 30<br/>The amount of time that an OAuth token remains valid. |
 | EdFi.Ods.WebApi | appsettings.json | SecurityMetadataCacheTimeoutMinutes | Example: 10<br/>The amount of time the security metadata from EdFi_Security database is cached. E.g., if it is set to 10 mins, the claim set changes will reflect in the API at least after 10 mins without needing to recycle API process. |
 | EdFi.Ods.WebApi | appsettings.json | defaultPageSizeLimit | Example: 500<br/>Maximum number of records that can be fetched in a GET request. |
-| EdFi.Ods.WebApi | appsettings.json | ApiSettings:Features:ChangeQueries | true<br/>Enables the [Changed Record Queries](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774855/Changed+Record+Queries) endpoints (database configuration remains a separate step, see [Using the Changed Record Queries](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774464/Using+the+Changed+Record+Queries)). |
+| EdFi.Ods.WebApi | appsettings.json | ApiSettings:Features:ChangeQueries | true<br/>Enables the [Changed Record Queries](../features/changed-record-queries.md) endpoints (database configuration remains a separate step, see [Using the Changed Record Queries](../../client-developers-guide/using-the-changed-record-queries.md)). |
 | EdFi.Ods.WebApi | appsettings.json | ApiSettings:Features:OpenApiMetadata | true<br/>Enables the metadata API endpoint, used by Swagger UI. Production deployments should disable this by changing the value to false. |
 | EdFi.Ods.WebApi | appsettings.json | ApiSettings:Features:Composites | true<br/>Enables the Composites API endpoints, including the default Enrollments composite and any custom composites that have been added to the installation. |
 | EdFi.Ods.WebApi | appsettings.json | ApiSettings:Features:Profiles | true<br/>Enables the Profiles endpoints, including the default profiles and any custom profiles that have been added to the installation. |
 | EdFi.Ods.WebApi | appsettings.json | ApiSettings:Features:IdentityManagement | false<br/>Enables the Identity API endpoints. |
 | EdFi.Ods.WebApi | appsettings.json | ApiSettings:Features:Extensions | true<br/>Enables the API endpoints created for all Extensions. An installation that is not customized at all and still has the GrandBend and Sample extensions can disable this feature in production. |
-| EdFi.Ods.WebApi | appsettings.json | ApiSettings:Features:UniqueIdValidation | false<br/>Enables [Unique ID System Integration](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774878/Unique+ID+System+Integration). Must implement IUniqueIdToIdValueMapper and register within the implementation within the WebApi. |
+| EdFi.Ods.WebApi | appsettings.json | ApiSettings:Features:UniqueIdValidation | false<br/>Enables [Unique ID System Integration](../../technical-articles/unique-id-system-integration.md). Must implement IUniqueIdToIdValueMapper and register within the implementation within the WebApi. |
 | EdFi.Ods.Web.Api | appsettings.json | ApiSettings:Features:TokenInfo | true<br/>Enables the token_info introspective endpoint. |
 | EdFi.Ods.Web.Api | appsettings.json | Plugin:Folder | Example: ../../Plugin<br/>Configures the plugin folder that API looks to deploy extensions dynamically. |
 | EdFi.Ods.Web.Api | appsettings.json | Plugin:Scripts | Example: [ tpdm ]<br/>Configures the script (located in plugin folder by default) responsible for downloading the extension plugins and placing them in the plugin folder. |

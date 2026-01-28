@@ -7,7 +7,7 @@ sidebar_position: 6
 
 The Ed-Fi Alliance provides a Visual Studio extension that contains project templates for creating Composites, Ed-Fi Extensions, and Profiles. The Visual Studio extension is supported by Visual Studio 2022. Installing the VS extension is useful for many customization needs.
 
-This section describes how to install the Project Templates. It assumes you have Visual Studio installed, and have successfully installed the ODS / API on a development machine per the instructions in the [Getting Started - Source Code Installation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774233/Getting+Started+-+Source+Code+Installation) section of this documentation.
+This section describes how to install the Project Templates. It assumes you have Visual Studio installed, and have successfully installed the ODS / API on a development machine per the instructions in the [Getting Started - Source Code Installation](./readme.md) section of this documentation.
 
 :::info
 Note that the project templates have been updated for the v5.4 release. Developers using previous versions should uninstall the previous version and install the latest.
@@ -67,7 +67,7 @@ Verify that the templates are available under File > New > Project.
 
 Now that you've installed the templates, you can find information on how to use them in the following articles:
 
-* [How To: Add API Composites to the Ed-Fi ODS / API Solution](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774820/How+To+Add+API+Composites+to+the+Ed-Fi+ODS+API+Solution)
-* [How To: Add Profiles to the Ed-Fi ODS / API Solution](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774786/How+To+Add+Profiles+to+the+Ed-Fi+ODS+API+Solution)
-* [How To: Extend the Ed-Fi ODS / API - Student Transportation Example](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774474/How+To+Extend+the+Ed-Fi+ODS+API+-+Student+Transportation+Example)
+* [How To: Add API Composites to the Ed-Fi ODS / API Solution](../../how-to-guides/how-to-add-api-composites-to-the-ed-fi-ods-api-solution.md)
+* [How To: Add Profiles to the Ed-Fi ODS / API Solution](../../how-to-guides/how-to-add-profiles-to-the-ed-fi-ods-api-solution.md)
+* [How To: Extend the Ed-Fi ODS / API - Student Transportation Example](../../how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transportation-example.md)
 

@@ -7,7 +7,7 @@ sidebar\_position: 1
 
 # Getting Started - Binary Installation
 
-This section describes how to set up the Ed-Fi ODS / API v5.4 using the release binaries listed in [Binary Releases](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774232/Binary+Releases). This is a recommended approach for implementations that have no requirement to extend or customize the source code of the Ed-Fi ODS / API.
+This section describes how to set up the Ed-Fi ODS / API v5.4 using the release binaries listed in [Binary Releases](./binary-releases.md). This is a recommended approach for implementations that have no requirement to extend or customize the source code of the Ed-Fi ODS / API.
 
 Before binary installation, install the prerequisites listed in the following steps:
 
@@ -28,7 +28,7 @@ Detail on each step follows.
 Ensure that the following components are installed:
 
 *   **PowerShell 5.0.** PowerShell is used by the database deployment scripts.
-*   **.NET 8.0 SDK.** Required by the [Database Deploy Tool](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774400/Database+Deploy+Tool) used in the database deployment scripts.
+*   **.NET 8.0 SDK.** Required by the [Database Deploy Tool](../../platform-dev-guide/utilities/database-deploy-tool.md) used in the database deployment scripts.
 
 View detail...
 
@@ -89,8 +89,8 @@ Ensure that the following software is installed and configured on the database s
 
 PowerShell installers released with the ODS / API provide varied configuration options. The primary ODS / API install use cases are provided as examples below. Choose the option that suits your need and customize parameters as needed.
 
-*   [Sandbox Installation Steps](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774213/Sandbox+Installation+Steps)
-*   [Shared Instance Installation Steps](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774218/Shared+Instance+Installation+Steps)
-*   [Year-Specific Installation Steps](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774223/Year-Specific+Installation+Steps)
+*   [Sandbox Installation Steps](./sandbox-installation-steps.mdx)
+*   [Shared Instance Installation Steps](./shared-instance-installation-steps.md)
+*   [Year-Specific Installation Steps](./year-specifc-installation-steps.md)
 
 ---

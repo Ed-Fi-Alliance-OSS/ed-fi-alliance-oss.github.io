@@ -5,7 +5,7 @@ sidebar_position: 1
 
 # What's New In v5.4
 
-This section provides an overview of the new features in v5.4 of the Ed-Fi ODS / API for Tech Suite 3. A comprehensive list of all changes is in the [Release Notes](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774180/What+s+New+-+Release+Notes) section.
+This section provides an overview of the new features in v5.4 of the Ed-Fi ODS / API for Tech Suite 3. A comprehensive list of all changes is in the [Release Notes](./release-notes.md) section.
 
 ## Improvements & Enhancements
 
@@ -19,4 +19,4 @@ This release also includes significant fixes for identified issues present in pr
 
 ## Improvements & Enhancements - Previous Releases
 
-For details on the features added in previous v5.x releases, please refer to [What's New in Previous v5.x Releases](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774172/What+s+New+in+Previous+v5.x+Releases).
+For details on the features added in previous v5.x releases, please refer to [What's New in Previous v5.x Releases](./release-notes.md).

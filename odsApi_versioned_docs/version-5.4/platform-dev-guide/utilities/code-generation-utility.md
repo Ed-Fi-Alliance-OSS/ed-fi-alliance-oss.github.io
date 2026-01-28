@@ -9,7 +9,7 @@ the initdev command for local development and how it can be executed from a CICD
 ## Running initdev   
 
 The code generation utility is integrated into the initdev process. When you
-run Initialize-PowershellForDevelopment.ps followed by initdev (as outlined in the [Getting Started Guide](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774233/Getting+Started+-+Source+Code+Installation)), the codegen utility is downloaded from MyGet into the tools folder under
+run Initialize-PowershellForDevelopment.ps followed by initdev (as outlined in the [Getting Started Guide](../../getting-started/readme.md)), the codegen utility is downloaded from MyGet into the tools folder under
 the Ed-Fi-ODS-Implementation repository and is executed after the
 Invoke-NewDevelopmentAppSettings task.
 
@@ -30,7 +30,7 @@ The code generation utility can be run from the command line.
 ### Installation
 
 To Install the code generation tool
-manually, run Initialize-PowershellForDevelopment.ps script from a PowerShell prompt as outlined in the [Getting Started Guide](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774233/Getting+Started+-+Source+Code+Installation), followed by the Install-CodeGen-Utiltity command. This will pull the current
+manually, run Initialize-PowershellForDevelopment.ps script from a PowerShell prompt as outlined in the [Getting Started Guide](../../getting-started/readme.md), followed by the Install-CodeGen-Utiltity command. This will pull the current
 version of the tool, and install it into the tools folder under
 the Ed-Fi-ODS-Implementation repository.
 

@@ -70,7 +70,7 @@ Once you have data in the ODS, you'll want to put it to use and keep it up to da
 
 Like the ODS, the API is harmonized with the Ed-Fi Data Standard. The resources accessible from the API share the same naming conventions, definitions, and organization as the ODS. This makes it easy to understand where data is coming from and what it means.
 
-The API is secure. It uses HTTPS for communication, the OAuth 2 specification for authentication, and comes with a rich and customizable claimset model so platform hosts have fine-grained control over which applications and users can see particular pieces of data. See the [API Claim Sets & Resources](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774347/API+Claim+Sets+Resources) section in this documentation for complete details.
+The API is secure. It uses HTTPS for communication, the OAuth 2 specification for authentication, and comes with a rich and customizable claimset model so platform hosts have fine-grained control over which applications and users can see particular pieces of data. See the [API Claim Sets & Resources](./security/api-claim-sets-resources.md) section in this documentation for complete details.
 
 ## Technology Stack
 
@@ -82,6 +82,6 @@ A high-level view looks something like this:
 
 A few things to note:
 
-* The Ed-Fi ODS / API platform is cross platform and clients of the platform can be written in practically any language for any modern operating system. See the [API Client Developers' Guide](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774415/API+Client+Developers+Guide) for details.
-* The Ed-Fi ODS / API platform can run in a variety of server environments, including on-premises hardware, docker or cloud-based platforms like AWS and Azure. See the [Deployment](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774362/Platform+Dev+Guide+-+Deployment) section in this documentation for details.
+* The Ed-Fi ODS / API platform is cross platform and clients of the platform can be written in practically any language for any modern operating system. See the [API Client Developers' Guide](../client-developers-guide/readme.md) for details.
+* The Ed-Fi ODS / API platform can run in a variety of server environments, including on-premises hardware, docker or cloud-based platforms like AWS and Azure. See the [Deployment](./readme.md) section in this documentation for details.
 

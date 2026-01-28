@@ -55,10 +55,10 @@ The Admin App can be installed using one of the following methods:
 
 ## Administration
 
-Alternatively, API keys and secrets can be administered by database administrators via SQL queries as outlined in the article [How To: Configure Key / Secret](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774840/How+To+Configure+Key+Secret).
+Alternatively, API keys and secrets can be administered by database administrators via SQL queries as outlined in the article [How To: Configure Key / Secret](../../how-to-guides/how-to-configure-key-secret.md).
 
 ## Additional Resources
 
 * [Admin App for Suite 3 Documentation](https://edfi.atlassian.net/wiki/spaces/ADMIN/overview)
 * [Multi-Instance Connections](https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25239521/Multi-Instance+Connections)
-* [Year Specific Installation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774233/Getting+Started+-+Source+Code+Installation)
+* [Year Specific Installation](../../getting-started/readme.md)

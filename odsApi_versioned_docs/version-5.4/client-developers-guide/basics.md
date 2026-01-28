@@ -47,7 +47,7 @@ the following information domains:
 
 The data model used in an Ed-Fi ODS / API is based on the Ed-Fi Data Standard.
 If you're new to the Ed-Fi Data Standard, the [Unifying Data Model](https://edfi.atlassian.net/wiki/display/EFDS33/Ed-Fi+Unifying+Data+Model) documentation is useful in exploring the details of the domain models listed
-above. The [Using the Online Documentation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774456/Using+the+Online+Documentation) section provides a great overview of the API surface — and the [documentation](https://api.ed-fi.org/v5.4/docs) itself is a complete reference for a core API implementation that defines the
+above. The [Using the Online Documentation](./using-the-online-documentation.md) section provides a great overview of the API surface — and the [documentation](https://api.ed-fi.org/v5.4/docs) itself is a complete reference for a core API implementation that defines the
 endpoints, JSON payloads, element definitions, parameter options, and other useful
 technical information.
 
@@ -58,7 +58,7 @@ How do clients exchange information with the API? What format is used?
 The API supports transactional data loading scenarios, so client applications
 can stay connected in near real-time. The API uses JSON for real-time and
 transactional data exchange. However there are utilities that can aid in uploading data
-in batch mode via the API (e.g., [Bulk Load Client Utility](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774385/Bulk+Load+Client+Utility) can be used to bulk load XML data and [Data Import](https://edfi.atlassian.net/wiki/spaces/EDFITOOLS/pages/24119638/Data+Import) can be used to bulk load CSV data).
+in batch mode via the API (e.g., [Bulk Load Client Utility](../platform-dev-guide/utilities/bulk-load-client-utility.md) can be used to bulk load XML data and [Data Import](https://edfi.atlassian.net/wiki/spaces/EDFITOOLS/pages/24119638/Data+Import) can be used to bulk load CSV data).
 
 ## Security
 

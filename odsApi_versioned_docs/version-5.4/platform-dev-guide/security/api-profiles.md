@@ -172,4 +172,4 @@ other than Physical or Shipping addresses.
 
 ## Adding Profiles to the Ed-Fi ODS / API Solution
 
-Refer to [How To: Add Profiles to the Ed-Fi ODS / API Solution](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774786/How+To+Add+Profiles+to+the+Ed-Fi+ODS+API+Solution) for details.
+Refer to [How To: Add Profiles to the Ed-Fi ODS / API Solution](../../how-to-guides/how-to-add-profiles-to-the-ed-fi-ods-api-solution.md) for details.

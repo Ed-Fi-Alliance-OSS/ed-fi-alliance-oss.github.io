@@ -3,7 +3,7 @@
 The Ed-Fi ODS / API primarily uses a relationship-based authorization strategy
 based on education organizations. Ownership based authorization adds an optional
 additional level of authorization that can be used in scenarios where more
-granular access controls are needed. Refer to [API Claim Sets & Resources](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774347/API+Claim+Sets+Resources) for details on various available authorization strategies. This documentation
+granular access controls are needed. Refer to [API Claim Sets & Resources](../security/api-claim-sets-resources.md) for details on various available authorization strategies. This documentation
 covers the essentials for platform hosts to enable and manage the feature.
 
 Ownership based authorization is an optional feature that is turned off by
@@ -20,12 +20,12 @@ filter criteria to apply authorization.
 
 The following steps demonstrate setting up ownership based authorization:
 
-* [Enabling Ownership Based Authorization](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22775117/Ownership+Based+Authorization#OwnershipBasedAuthorization-EnablingOwnershipBasedAuthorization)
-* [Setting up Security Metadata](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22775117/Ownership+Based+Authorization#OwnershipBasedAuthorization-SettingupSecurityMetadata)
-* [Configuring the API Client](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22775117/Ownership+Based+Authorization#OwnershipBasedAuthorization-ConfiguringtheAPIClient)
-* [Preparing an existing ODS](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22775117/Ownership+Based+Authorization#OwnershipBasedAuthorization-PreparinganexistingODS)
-* [Verifying a successful setup](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22775117/Ownership+Based+Authorization#OwnershipBasedAuthorization-Verifyingasuccessfulsetup)
-* [Technical Details](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22775117/Ownership+Based+Authorization#OwnershipBasedAuthorization-TechnicalDetails)
+* [Enabling Ownership Based Authorization](#enabling-ownership-based-authorization)
+* [Setting up Security Metadata](#setting-up-security-metadata) 
+* [Configuring the API Client](#configuring-the-api-client)
+* [Preparing an existing ODS](#preparing-an-existing-ods)
+* [Verifying a successful setup](#verifying-a-successful-setup)
+* [Technical Details](#technical-details)
 
 ## Enabling Ownership Based Authorization
 

@@ -13,8 +13,8 @@ existing ODS instances from one ODS / API version to another. The [Migration Uti
 
 In most cases, you do not need to directly download this tool to use it.
 The Initialize the Development Environment (initdev) script described
-in [Getting Started - Source Code Installation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774233/Getting+Started+-+Source+Code+Installation) and the
-EdFi.Suite3.RestApi.Databases PowerShell deployment package listed in [Binary Releases](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774232/Binary+Releases) uses the Database Deploy Tool to deploy the ODS and related databases used by the API.
+in [Getting Started - Source Code Installation](../../getting-started/source-code-installation/readme.md) and the
+EdFi.Suite3.RestApi.Databases PowerShell deployment package listed in [Binary Releases](../../getting-started/binary-installation/binary-releases.md) uses the Database Deploy Tool to deploy the ODS and related databases used by the API.
 
 :::
 

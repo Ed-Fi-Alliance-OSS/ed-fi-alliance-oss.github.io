@@ -8,7 +8,7 @@ The Ed-Fi ODS / API includes several collections of Postman tests that can be
 executed against a Test Harness included in the ODS / API source code.
 
 The following instructions assume that the Ed-Fi ODS / API has been successfully
-set up and is running in a local environment per the instructions in the [Getting Started](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774181/Getting+Started) documentation. This documentation takes you through running two options for
+set up and is running in a local environment per the instructions in the [Getting Started](../getting-started/readme.md) documentation. This documentation takes you through running two options for
 running postman test collections:
 
 * Running Postman Test Collections via PowerShell
@@ -17,7 +17,7 @@ running postman test collections:
 ## Running Postman Test Collections via PowerShell
 
 1. Install NVM, for windows systems you could use [nvm for Windows](https://github.com/coreybutler/nvm-windows/releases)
-2. As outlined in the [Getting Started Guide](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774233/Getting+Started+-+Source+Code+Installation) from a PowerShell prompt run Initialize-PowershellForDevelopment.ps script
+2. As outlined in the [Getting Started Guide](../getting-started/readme.md) from a PowerShell prompt run Initialize-PowershellForDevelopment.ps script
 followed by Invoke-PostmanIntegrationTests 
 
    ![PowerShell command](https://edfi.atlassian.net/wiki/download/attachments/22774891/image2021-10-5_16-41-25.png?version=1&modificationDate=1641861367870&cacheVersion=1&api=v2)

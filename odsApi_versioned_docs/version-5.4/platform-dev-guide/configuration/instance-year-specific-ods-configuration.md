@@ -66,5 +66,5 @@ Assuming that Instance = my-instance and Year = 2021 in the request URL, databas
 * Since only the database name is interpolated in the connection strings, the databases must reside in the same server.
 * SwaggerUI is not available yet for this strategy. See [ODS-4978](https://tracker.ed-fi.org/browse/ODS-4978) for details.
 
-See the [Extensibility & Customization](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774339/Platform+Dev+Guide+-+Extensibility+Customization) section for information on using Instance-Year-Specific configuration as a facet of a partitioning strategy.
+See the [Extensibility & Customization](../extensibility-customization/readme.md) section for information on using Instance-Year-Specific configuration as a facet of a partitioning strategy.
 

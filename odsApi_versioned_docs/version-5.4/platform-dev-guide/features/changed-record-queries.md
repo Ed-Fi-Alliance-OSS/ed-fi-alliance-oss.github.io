@@ -7,7 +7,7 @@ Change queries allow client systems to narrow requests for data to only data
 that has changed since a specified point in time. This allows client systems to
 stay in sync with the ODS / API without having to pull a complete data set.
 
-Client system interaction is documented in the [Using the Changed Record Queries](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774464/Using+the+Changed+Record+Queries) section of the API Client Developers' Guide.
+Client system interaction is documented in the [Using the Changed Record Queries](../../client-developers-guide/using-the-changed-record-queries.md) section of the API Client Developers' Guide.
 
 Change queries is an optional feature and is turned on by default — but can be turned off through configuration. This feature also provides an option that enables platform hosts to provide API clients with isolated context for processing changes. This documentation covers the essentials for
 platform hosts to enable and manage the feature.

@@ -7,7 +7,7 @@ sidebar\_position: 3
 
 # Shared Instance Installation Steps
 
-This section describes how to set up the Ed-Fi ODS / API v5.4 in shared instance mode. Before you proceed, make sure you have installed the prerequisites listed in [Getting Started - Binary Installation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774182/Getting+Started+-+Binary+Installation).
+This section describes how to set up the Ed-Fi ODS / API v5.4 in shared instance mode. Before you proceed, make sure you have installed the prerequisites listed in [Getting Started - Binary Installation](./readme.md).
 
 *   [Step 1. Download the Ed-Fi ODS / API Installer Packages](#step-1-download-the-ed-fi-ods--api-installer-packages)
     *   [Package Links](#package-links)
@@ -214,7 +214,7 @@ Install-EdFiOdsSwaggerUI @parameters
 
 ## Step 5. Install Admin App
 
-The Admin App provides a graphical interface for platform hosts to administer and manage non-sandbox instances of the Ed-Fi ODS / API. Follow the installation steps [here](https://edfi.atlassian.net/wiki/display/ADMIN/Admin+App+for+Suite+3+v2.3). Alternatively, API keys and secrets can be administered by database administrators via SQL queries as outlined in the article [How To: Configure Key / Secret](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774840/How+To+Configure+Key+Secret).
+The Admin App provides a graphical interface for platform hosts to administer and manage non-sandbox instances of the Ed-Fi ODS / API. Follow the installation steps [here](https://edfi.atlassian.net/wiki/display/ADMIN/Admin+App+for+Suite+3+v2.3). Alternatively, API keys and secrets can be administered by database administrators via SQL queries as outlined in the article [How To: Configure Key / Secret](../../how-to-guides/how-to-configure-key-secret.md).
 
 ---
 

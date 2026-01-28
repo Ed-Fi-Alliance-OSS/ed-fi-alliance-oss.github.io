@@ -17,7 +17,7 @@ Each step is outlined in detail, below.
 
 ### Step 1.1. Add a Composite Project Using the Visual Studio Project Template.
 
-Visual Studio Project Template can be installed by following the steps in the [Project Templates Installation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774290/Project+Templates+Installation) section of this documentation.
+Visual Studio Project Template can be installed by following the steps in the [Project Templates Installation](../getting-started/source-code-installation/project-templates-installation.md) section of this documentation.
 
 * To add a project to your Ed-Fi-Ods Visual Studio Solution, right-click on the "Composites" folder. Select Add > New Project.
 * In the "Add New Project" dialog, find and select the "Ed-Fi API Composites Project Template" entry as shown below. Click Next.
@@ -85,7 +85,7 @@ The Visual Studio Project Template creates an empty sample Composites.xml file, 
 </CompositeMetadata>
 ```
 
-Consult [API Composite Resources](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774341/API+Composite+Resources) for guidance.
+Consult [API Composite Resources](../platform-dev-guide/extensibility-customization/api-composite-resources.md) for guidance.
 
 :::warning
 Composites cannot include resource model members added via Ed-Fi Extensions. ODS

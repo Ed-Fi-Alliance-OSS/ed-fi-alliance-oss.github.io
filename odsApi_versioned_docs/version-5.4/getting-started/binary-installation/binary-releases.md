@@ -8,7 +8,7 @@ sidebar_position: 4
 
 ---
 
-The Ed-Fi Alliance publishes a set of .NET binaries and databases with each ODS / API release. These binaries can be used to deploy a non-extended version of the Ed-Fi ODS / API that has the as-shipped database model. The binaries are useful for system integrators and others wanting to deploy a "core-data-model-only" ODS / API quickly and easily. See [Getting Started - Binary Installation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774182/Getting+Started+-+Binary+Installation) for details.
+The Ed-Fi Alliance publishes a set of .NET binaries and databases with each ODS / API release. These binaries can be used to deploy a non-extended version of the Ed-Fi ODS / API that has the as-shipped database model. The binaries are useful for system integrators and others wanting to deploy a "core-data-model-only" ODS / API quickly and easily. See [Getting Started - Binary Installation](./readme.md) for details.
 
 The following binaries are published to the **Ed-Fi AzureFeed.**
 

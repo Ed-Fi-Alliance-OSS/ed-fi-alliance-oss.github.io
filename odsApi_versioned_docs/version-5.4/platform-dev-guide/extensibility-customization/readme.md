@@ -16,7 +16,7 @@ a few areas where customization is almost always required.
 
 The Ed-Fi ODS / API contains an interface for working with a Unique Identity
 System. There is a naïve implementation provided for the purposes of integration
-testing, but it is anticipated that installations will have their own system. To integrate with your Unique Identity System, implement the `IUniqueIdentity` interface, and register your implementation in Castle Windsor. The [Unique ID System Integration](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774878/Unique+ID+System+Integration) technical article has details.
+testing, but it is anticipated that installations will have their own system. To integrate with your Unique Identity System, implement the `IUniqueIdentity` interface, and register your implementation in Castle Windsor. The [Unique ID System Integration](../../technical-articles/unique-id-system-integration.md) technical article has details.
 
 ### Database Partitioning Strategy
 
@@ -40,7 +40,7 @@ needs of specific implementations.
 ### Security Settings
 
 The ODS / API ships with reasonable default security settings, but every implementer will have specific rules about data access — so developers should always customize the security settings
-in the solution. The [Security](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774345/Platform+Dev+Guide+-+Security) section of this documentation covers the conceptual and how-to material to
+in the solution. The [Security](../security/readme.md) section of this documentation covers the conceptual and how-to material to
 configure security and data access rules.
 
 ## Other Customizations
@@ -57,7 +57,7 @@ API solution handles most of these tasks through code generation.
 
 The [Extending the ODS / API Data Model](./extending-the-ods-api-data-model.md) section of this documentation has an overview of the process, while detailed
 how-to articles provide step-by-step instructions by walking through example
-extensions. See, for example the [How To: Extend the ODS / API - Student Transportation Example](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774474/How+To+Extend+the+Ed-Fi+ODS+API+-+Student+Transportation+Example) and [How To: Extend the Ed-Fi ODS / API - Student Transcript Example](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774579/How+To+Extend+the+Ed-Fi+ODS+API+-+Student+Transcript+Example) articles for a complete walkthrough.
+extensions. See, for example the [How To: Extend the ODS / API - Student Transportation Example](../../how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transportation-example.md) and [How To: Extend the Ed-Fi ODS / API - Student Transcript Example](../../how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transcript-example.md) articles for a complete walkthrough.
 
 ### Existing Resource Extensions
 
@@ -87,7 +87,7 @@ resources into representations that can be accessed with a single API call. Comp
 are simple to set up, and honor the Profile and Claim Set configurations made
 for the standard API, and so do not introduce any new security concerns.
 
-The [API Composite Resources](./api-composite-resources.md) section of this documentation has an overview and basic how-to information. The [ODS / API Composite Resources Technical Approach](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774874/ODS+API+Composite+Resources+Technical+Approach) technical article has information about how API Composite Resources work under
+The [API Composite Resources](./api-composite-resources.md) section of this documentation has an overview and basic how-to information. The [ODS / API Composite Resources Technical Approach](../../technical-articles/ods-api-composite-resources-technical-approach.md) technical article has information about how API Composite Resources work under
 the hood.
 
 ### Support for Cascading Updates
@@ -103,4 +103,4 @@ manage key updates.
 The Ed-Fi ODS / API ships with a core set of cascading updates already in place,
 but platform hosts can expand or modify the cascading updates supported by the
 system. However, these changes may have to be reapplied after ODS / API upgrade
-or after extensions are redeployed by [MetaEd](https://edfi.atlassian.net/wiki/display/METAED20/MetaEd+v2.x+Home) if cascading updates have been customized for extensions. See the article [How To: Enable Cascading Updates on ODS / API Resources](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774844/How+To+Enable+Cascading+Updates+on+ODS+API+Resources) for details.
+or after extensions are redeployed by [MetaEd](https://edfi.atlassian.net/wiki/display/METAED20/MetaEd+v2.x+Home) if cascading updates have been customized for extensions. See the article [How To: Enable Cascading Updates on ODS / API Resources](../../how-to-guides/how-to-enable-cascading-updates-on-ods-api-resources.md) for details.

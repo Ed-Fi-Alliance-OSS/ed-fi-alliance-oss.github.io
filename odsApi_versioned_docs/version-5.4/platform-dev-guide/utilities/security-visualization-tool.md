@@ -39,7 +39,7 @@ not detected in the default installation path.
 
   ![Help Command Output](https://edfi.atlassian.net/wiki/download/attachments/22774402/image2022-3-17_18-2-8.png?version=1&modificationDate=1647558128177&cacheVersion=1&api=v2)
 
-* Execute the tool to generate the visualizations. The example below assumes that you have followed the Ed-Fi ODS / API [Getting Started](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774181/Getting+Started) steps successfully.
+* Execute the tool to generate the visualizations. The example below assumes that you have followed the Ed-Fi ODS / API [Getting Started](../../getting-started/readme.md) steps successfully.
 
   ```powershell
   GenerateSecurityGraphs.exe -o "C:\graphs" -f
@@ -59,7 +59,7 @@ resulting in nine folders.
 ## Example Output
 
 This section provides some examples of output from the Security Visualization
-Tool, along with explanatory notes. An understanding of the concepts described in [API Claim Sets & Resources](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774347/API+Claim+Sets+Resources) is useful to fully understand the visualizations.
+Tool, along with explanatory notes. An understanding of the concepts described in [API Claim Sets & Resources](../security/api-claim-sets-resources.md) is useful to fully understand the visualizations.
 
 Note that the shading of font has relevance:
 

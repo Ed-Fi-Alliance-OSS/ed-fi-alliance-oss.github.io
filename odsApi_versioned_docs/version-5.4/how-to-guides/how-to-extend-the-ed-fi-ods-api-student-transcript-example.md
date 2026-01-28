@@ -11,16 +11,14 @@ Before you begin:
     recommended way to add new fields to the Ed-Fi ODS / API. You
     should [download and install MetaEd](https://edfi.atlassian.net/wiki/spaces/METAED20/pages/23710221/Getting+Started+with+the+MetaEd+IDE) before beginning.
     If you prefer to generate extended artifacts manually instead of using
-    MetaEd, steps are listed in [Appendix
-    A](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774579/How+To+Extend+the+Ed-Fi+ODS+API+-+Student+Transcript+Example#HowTo:ExtendtheEd-FiODS/API-StudentTranscriptExample-AppendixA:AddingManuallyCreatedExtensions) of this page.
+    MetaEd, steps are listed in [Appendix A](./how-to-extend-the-ed-fi-ods-api-student-transcript-example.md) of this page.
 * This example assumes knowledge of the basic concepts described in the [How To: Extend the ODS / API - Student Transportation
     Example](./how-to-extend-the-ed-fi-ods-api-student-transportation-example.md).
     If you're new to the Ed-Fi technology stack, or if you haven't used MetaEd
     before, then we suggest you run through that example first.
 * This example assumes that the Ed-Fi ODS / API has been successfully
     downloaded and is running in a local development environment per the
-    instructions in the [Getting
-    Started](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774181/Getting+Started) documentation.
+    instructions in the [Getting Started](../getting-started/readme.md) documentation.
 * Back up any existing code or scripts, either in source control or on your
     file system. This is important if you or your team have performed these
     steps before. The MetaEd deployment feature replaces existing files, some of
@@ -285,7 +283,7 @@ API in a local development environment per the instructions in the [Getting Star
 
 ### Step 4a. Set Up the C# Project Template
 
-Visual Studio Project Templates can be installed by following steps in [Project Templates Installation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774290/Project+Templates+Installation) section of this documentation.
+Visual Studio Project Templates can be installed by following steps in [Project Templates Installation](../getting-started/source-code-installation/project-templates-installation.md) section of this documentation.
 
 ### Step 4b. Create new Extension Project
 
@@ -488,7 +486,7 @@ the simple to very complex.
 
 ### Step 1. Set Up the C# Project Template
 
-Visual Studio Project Templates can be installed by following steps in [Project Templates Installation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774290/Project+Templates+Installation) section of this documentation.
+Visual Studio Project Templates can be installed by following steps in [Project Templates Installation](../getting-started/source-code-installation/project-templates-installation.md) section of this documentation.
 
 ### Step 2. Create new Extension Project
 

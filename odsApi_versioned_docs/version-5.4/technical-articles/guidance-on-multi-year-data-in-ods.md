@@ -22,7 +22,7 @@ model before using that model.
 The ODS / API provides multiple deployment options for segregating data in the
 ODS. When setting up Ed-Fi ODS / API environment intended for production data
 collection, implementers have the option to configure the API to run on Shared
-Instance, Year Specific, District Specific or Instance-Year Specific modes. See the [Extensibility & Customization](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774339/Platform+Dev+Guide+-+Extensibility+Customization) section for details.
+Instance, Year Specific, District Specific or Instance-Year Specific modes. See the [Extensibility & Customization](../platform-dev-guide/extensibility-customization/readme.md) section for details.
 
 While none of the modes prevent multi-year data being stored in the ODS, some of
 the modes (i.e., Year Specific) are more aligned with single year data capture

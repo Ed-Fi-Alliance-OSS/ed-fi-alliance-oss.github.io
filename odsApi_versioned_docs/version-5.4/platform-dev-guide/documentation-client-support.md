@@ -13,7 +13,7 @@ The REST interface to the Ed-Fi ODS / API exposes metadata based on the open sou
 
 The documentation also supports the ability to make sample calls through the UI, which means client developers can try out calls and review responses before writing a line of code. A key benefit of auto-generating the documentation is that any changes you make to the data model will automatically be reflected in your platform's client-facing documentation.
 
-To get a sense for the appearance and content of the documentation, you can view the docs for an as-shipped version of the ODS / API hosted at [https://api.ed-fi.org/v5.4/docs/](https://api.ed-fi.org/v5.4/docs/). Also, the [Using the Online Documentation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774456/Using+the+Online+Documentation) section of the API Client Developers' Guide provides an overview of the documentation along with information on how to make sample API calls through the UI.
+To get a sense for the appearance and content of the documentation, you can view the docs for an as-shipped version of the ODS / API hosted at [https://api.ed-fi.org/v5.4/docs/](https://api.ed-fi.org/v5.4/docs/). Also, the [Using the Online Documentation](../client-developers-guide/using-the-online-documentation.md) section of the API Client Developers' Guide provides an overview of the documentation along with information on how to make sample API calls through the UI.
 
 ## Client SDK Code Generation for C# and Java
 
@@ -21,11 +21,11 @@ The same metadata that the Ed-Fi ODS / API exposes for documentation also suppor
 
 By supporting flexible, client-side SDK generation, platform hosts can provide excellent tools to support client developers without mandating a particular kind of code or programming model. This flexibility doesn't prevent platform hosts from distributing a preferred SDK — however, the Ed-Fi Alliance recommends supporting client-side SDK generation to ensure that your client system developers can leverage work they may already have done for other Ed-Fi-based APIs.
 
-The Client SDK code generation is based on the Swagger Codegen tools. An excellent overview of how the Swagger Codegen works is available on the [Swagger website](http://swagger.io/swagger-codegen/). More specific documentation on the SDK generation for the Ed-Fi ODS / API is available in the [Using Code Generation to Create an SDK](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774435/Using+Code+Generation+to+Create+an+SDK) section of the API Client Developers' Guide documentation.
+The Client SDK code generation is based on the Swagger Codegen tools. An excellent overview of how the Swagger Codegen works is available on the [Swagger website](http://swagger.io/swagger-codegen/). More specific documentation on the SDK generation for the Ed-Fi ODS / API is available in the [Using Code Generation to Create an SDK](../client-developers-guide/using-code-generation-to-create-an-sdk.md) section of the API Client Developers' Guide documentation.
 
 ## API Client Developers' Guide
 
-The Ed-Fi Alliance also publishes an API Client Developers' Guide that describes the fundamentals of connecting client applications to an Ed-Fi-based ODS / API. Platform hosts can refer clients to this documentation or use the guide as a starting place for documentation describing their own platform instance. See the [API Client Developers' Guide](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774415/API+Client+Developers+Guide) documentation for more details.
+The Ed-Fi Alliance also publishes an API Client Developers' Guide that describes the fundamentals of connecting client applications to an Ed-Fi-based ODS / API. Platform hosts can refer clients to this documentation or use the guide as a starting place for documentation describing their own platform instance. See the [API Client Developers' Guide](../client-developers-guide/readme.md) documentation for more details.
 
 <sup>1</sup> Formerly known as the Swagger specification. In January 2016, the specification changed its name to the OpenAPI specification, though many of the tools retain the Swagger identity.
 

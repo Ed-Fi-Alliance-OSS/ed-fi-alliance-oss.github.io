@@ -336,7 +336,7 @@ Steps to deploy the application:
 
    ![Sandbox Admin](https://edfi.atlassian.net/wiki/download/thumbnails/22774363/image07.png?version=1&modificationDate=1641861350250&cacheVersion=1&api=v2&width=688&height=222)
    
-10. The article [Using the Sandbox Admin Portal](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774465/Using+the+Sandbox+Administration+Portal) has useful information about how to set up accounts for client system
+10. The article [Using the Sandbox Admin Portal](../../client-developers-guide/using-the-sandbox-administration-portal.md) has useful information about how to set up accounts for client system
     developers, additional configuration details, plus general usage instructions.
 
 | Configuration | | |
@@ -432,4 +432,4 @@ large-scale deployment. This section should have provided you with the informati
 needed to get your Sandbox instance up and running.
 
 Once you've done that, you'll want to consider production deployments, which are
-covered in the [next section](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774379/Production+Deployment) of this documentation.
+covered in the [next section](./production-deployment.md) of this documentation.

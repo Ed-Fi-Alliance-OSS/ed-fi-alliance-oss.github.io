@@ -10,7 +10,7 @@ repository.
 
 ## Binary Downloads
 
-* [Binary Releases](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774232/Binary+Releases)
+* [Binary Releases](./getting-started/binary-installation/binary-releases.md)
 
 ## Source & Code Downloads
 
@@ -19,18 +19,18 @@ repository.
 * [Ed-Fi-ODS-Implementation/v5.4](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/tree/v5.4)
     source code (GitHub)
 * [API Project Templates
-    Installer](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774290/Project+Templates+Installation) (VSIX)
+    Installer](./getting-started/source-code-installation/project-templates-installation.md) (VSIX)
 * [API Profiles Sample Source
-    Files](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774786/How+To+Add+Profiles+to+the+Ed-Fi+ODS+API+Solution)
+    Files](./how-to-guides/how-to-add-profiles-to-the-ed-fi-ods-api-solution.md)
     (XML)
 * [API Composite Sample Source
-    File](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774820/How+To+Add+API+Composites+to+the+Ed-Fi+ODS+API+Solution)
+    File](./how-to-guides/how-to-add-api-composites-to-the-ed-fi-ods-api-solution.md)
     (XML)
 * [Using Code Generation to Create an
-    SDK](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774435/Using+Code+Generation+to+Create+an+SDK)
+    SDK](./client-developers-guide/using-code-generation-to-create-an-sdk.md)
     (C# Sample Application)
 * API Extensibility Sample Code - [Student
-    Transportation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774474/How+To+Extend+the+Ed-Fi+ODS+API+-+Student+Transportation+Example)
+    Transportation](./how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transportation-example.md)
     and [Student
-    Transcript](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774579/How+To+Extend+the+Ed-Fi+ODS+API+-+Student+Transcript+Example)
+    Transcript](./how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transcript-example.md)
     (C# Source, SQL, XML)

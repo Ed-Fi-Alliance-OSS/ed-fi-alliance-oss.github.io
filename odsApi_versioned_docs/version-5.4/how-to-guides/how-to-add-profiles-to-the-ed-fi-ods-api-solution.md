@@ -17,7 +17,7 @@ Detail on each step follows.
 
 ### Create the Visual Studio Project
 
-1. Add a Profiles Project Using the Visual Studio Project Template. Visual Studio Project Template can be installed by following steps in [Project Templates Installation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774290/Project+Templates+Installation) section of this documentation.
+1. Add a Profiles Project Using the Visual Studio Project Template. Visual Studio Project Template can be installed by following steps in [Project Templates Installation](../getting-started/source-code-installation/project-templates-installation.md) section of this documentation.
 
    a. Add the Profiles project, right-click on the "Profiles" folder and select File > Add > New Project...
    
@@ -52,7 +52,7 @@ Detail on each step follows.
    must be added to the newly created Profile project.
    
 4. Review and modify Profiles.xml file. The Visual Studio Project Template creates a sample Profiles.xml file. You should open it and modify it to meet the needs of your Profile.
-   Consult [API Profiles](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774352/API+Profiles) for guidance.
+   Consult [API Profiles](../platform-dev-guide/security/api-profiles.md) for guidance.
    
 5. Save the Project.
 

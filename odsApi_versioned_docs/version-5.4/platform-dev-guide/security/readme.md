@@ -44,7 +44,7 @@ resource level – but for convenience, a claims taxonomy has been established t
 allow host administrators to set claims at higher-level conceptual groupings of
 resources.
 
-The article [How To: Configure Claim Sets](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774838/How+To+Configure+Claim+Sets) describes specifics about making adjustments to the API claim sets. (Claim sets
+The article [How To: Configure Claim Sets](../../how-to-guides/how-to-configure-claim-sets.md) describes specifics about making adjustments to the API claim sets. (Claim sets
 are expressed in a database, but the solution doesn't have a UI to manage that
 data, so modifying claim sets is a developer task.)
 
@@ -76,7 +76,7 @@ term "Vendor" to describe an organization that hosts or owns client systems, and
 "Application" to describe an actual client system. Vendors are associated with one
 or more applications. Each application is issued an OAuth key and secret.
 
-The technical article [Securing OAuth Secrets](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774877/Securing+OAuth+Secrets) provides details about how OAuth secrets are stored, plus guidance on how to
+The technical article [Securing OAuth Secrets](../../technical-articles/securing-oauth-secrets.md) provides details about how OAuth secrets are stored, plus guidance on how to
 change the hashing method by which OAuth secrets are secured.
 
 ## API Security Configuration Using Admin App
@@ -96,7 +96,7 @@ in the various security and admin databases.
 ## More Information
 
 Platform host administrators, lead developers, and DevOps personnel will want to
-read the material in the [Education Agency Business Process Security Considerations](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774863/Education+Agency+Business+Process+Security+Considerations) technical article. This article provides important detail about security
+read the material in the [Education Agency Business Process Security Considerations](../../technical-articles/education-agency-business-process-security-considerations.md) technical article. This article provides important detail about security
 concerns and mitigations.
 
 Additional information regarding Ed-Fi ODS / API security concepts can be found

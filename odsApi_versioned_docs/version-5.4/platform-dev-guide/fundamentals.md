@@ -15,7 +15,7 @@ Communication with the API is encrypted and only sent over HTTPS. The ODS / API 
 
 The authorization claim system provides fine-grained control over what information is shared. Access can be limited by table/entity, row/record, or field/element, whichever is appropriate. For example, a student information system might be granted read/write access to a broad set of student profile and registration information, while an online assessment system might have its access limited to a read-only view of a class' student roster and read-write access to assessment results information.
 
-See the [Security](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774345/Platform+Dev+Guide+-+Security) section of this documentation for implementation details.
+See the [Security](./security/readme.md) section of this documentation for implementation details.
 
 ## Made to be Extended
 
@@ -23,7 +23,7 @@ Out of the box, the ODS / API core data model covers a wide swath of information
 
 The database and the API have easy-to-implement design patterns to follow that allow you to do something as simple as add an element to a core object like the student model or as complicated as adding a new domain with its own entities and associations. Further, many of the supporting features are auto-generated. So, for example, the documentation for the API is automatically updated with your additions whenever you extend the core data model.
 
-See the section on [Extensibility & Customization](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774339/Platform+Dev+Guide+-+Extensibility+Customization) in this documentation for details.
+See the section on [Extensibility & Customization](./extensibility-customization/readme.md) in this documentation for details.
 
 ## An Open Source, Customizable System
 
@@ -45,7 +45,7 @@ One integration model is to have the unique ID functionality "integrated" with t
 
 Another approach is a "non-integrated" model, which means that the ODS / API is not wired into an enterprise-wide unique ID system, but rather relies on client applications to either assign or obtain a unique ID outside the context of the ODS / API. This unique ID may be an enterprise-wide ID or simply a GUID assigned by clients – the key point just being that client applications are responsible for populating the unique value in the ODS / API.
 
-See the technical article [Unique ID System Integration](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774878/Unique+ID+System+Integration) for implementation details.
+See the technical article [Unique ID System Integration](../technical-articles/unique-id-system-integration.md) for implementation details.
 
 Keeping the unique ID API endpoints — and behavior — consistent regardless of the underlying Unique ID product allows flexibility for platform implementers. This approach also makes it easy for client application vendors to connect to different implementations of the Ed-Fi ODS / API platform without requiring custom code.
 
@@ -55,17 +55,17 @@ The Ed-Fi ODS / API uses natural keys as its primary means of enforcing uniquene
 
 The data in the ODS / API represents a rich domain with deep relationships. The ODS data model is organized into aggregates based on the principles of [Domain-Driven Design](https://en.wikipedia.org/wiki/Domain-driven_design), and those aggregates are exposed as API resources. Since the ODS is typically not the system of record (i.e., the system that creates and manages the data), primary keys are formed from the well-known, natural keys in the domain.
 
-See the technical article [Key Structure in the Ed-Fi ODS / API](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774867/Key+Structure+in+the+Ed-Fi+ODS+API) for additional details.
+See the technical article [Key Structure in the Ed-Fi ODS / API](../technical-articles/key-structure-in-the-ed-fi-ods-api.md) for additional details.
 
 ## Support for Incremental Updates
 
 The API provides a feature that allows client systems to view updates made to the data in the ODS after a specified point in time, including information about creates, updates, and deletes. This allows client systems to stay in sync with the data in the ODS through incremental updates. The feature is optional for platform hosts, and can be enabled through configuration.
 
-Documentation for client systems is provided in the [Using the Changed Record Queries](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774464/Using+the+Changed+Record+Queries) section of the API Client Developers' Guide.
+Documentation for client systems is provided in the [Using the Changed Record Queries](../client-developers-guide/using-the-changed-record-queries.md) section of the API Client Developers' Guide.
 
 ## Support for Transactional & Bulk Modes
 
-The API supports transactional model for updating data in the ODS using JSON format for data exchange. However there are utilities that can aid in uploading data in batch mode via the API (e.g., [Bulk Load Client Utility](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774385/Bulk+Load+Client+Utility) can be used to bulk load XML data and Data Import [Data Import](https://edfi.atlassian.net/wiki/display/EDFITOOLS/Data+Import) can be used to bulk load CSV data). Bulk loading is useful for solutions where data is updated in batches (e.g., for organizations that feed data on a nightly schedule). Bulk loading is also useful for the initial population of data (e.g., when connecting a new system or at the start of the year). A transactional model is useful once you have data in the system. Individual records and fields can be updated in real-time (or near real-time) by client applications.
+The API supports transactional model for updating data in the ODS using JSON format for data exchange. However there are utilities that can aid in uploading data in batch mode via the API (e.g., [Bulk Load Client Utility](./utilities/bulk-load-client-utility.md) can be used to bulk load XML data and Data Import [Data Import](https://edfi.atlassian.net/wiki/display/EDFITOOLS/Data+Import) can be used to bulk load CSV data). Bulk loading is useful for solutions where data is updated in batches (e.g., for organizations that feed data on a nightly schedule). Bulk loading is also useful for the initial population of data (e.g., when connecting a new system or at the start of the year). A transactional model is useful once you have data in the system. Individual records and fields can be updated in real-time (or near real-time) by client applications.
 
 ## Code Generation Wherever Possible
 
@@ -75,7 +75,7 @@ The Visual Studio solution includes several Mustache templates to generate many 
 
 For implementers extending the data model of the ODS / API, the Ed-Fi Alliance publishes a free, lightweight tool called the MetaEd IDE. The MetaEd IDE uses a simple language to express data model customizations, and generates all the technical artifacts you'll need to implement your extensions.
 
-The [Extensibility & Customization](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774339/Platform+Dev+Guide+-+Extensibility+Customization) section of this documentation provides additional detail on the code generation used by the solution.
+The [Extensibility & Customization](./extensibility-customization/readme.md) section of this documentation provides additional detail on the code generation used by the solution.
 
 Code generation from authoritative sources helps ensure that the API and Documentation are kept up-to-date in a way that manual maintenance cannot.
 

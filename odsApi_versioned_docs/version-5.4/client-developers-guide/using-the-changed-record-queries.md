@@ -15,7 +15,7 @@ The change queries feature was designed to have a simple architecture, and to in
 * The API will return the most recent version of the resource. This is different from, say, a change data capture system that provides a log of every change.
 * The solution offers guaranteed consistency only if the host provides facilities for snapshot isolation for the API client to perform change processing. In the absence of snapshots provided by the host, periodic re-synchronization as described in this documentation may help in achieving eventual consistency. To learn more about some additional considerations refer to the [SQL Server Change Tracking](https://docs.microsoft.com/en-us/sql/relational-databases/track-changes/work-with-change-tracking-sql-server?view=sql-server-ver15) with a particular emphasis on: [Obtain consistent and correct results](https://docs.microsoft.com/en-us/sql/relational-databases/track-changes/work-with-change-tracking-sql-server?view=sql-server-ver15#obtain-consistent-and-correct-results) and [Alternatives to Snapshot Isolation](https://docs.microsoft.com/en-us/sql/relational-databases/track-changes/work-with-change-tracking-sql-server?view=sql-server-ver15#alternatives-to-snapshot-isolation).
 * The solution will work for most use cases, but snapshot isolation requirement could limit the frequency of data synchronization. 
-* The [Changed Record Queries](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774855/Changed+Record+Queries) article has implementation details which may be of interest to some client system developers.
+* The [Changed Record Queries](../platform-dev-guide/features/changed-record-queries.md) article has implementation details which may be of interest to some client system developers.
 
 
 
@@ -116,7 +116,7 @@ The primary purpose of the change queries feature is to support periodic synchro
 The following example shows the logical flow for a daily synchronization process that only looks at Student records.
 
 :::info
-For more expansive processing, consider using the [resource dependency metadata endpoint](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774424/Resource+Dependency+Order).
+For more expansive processing, consider using the [resource dependency metadata endpoint](./resource-dependency-order.md).
 :::
 
 **Initial processing to get all data**

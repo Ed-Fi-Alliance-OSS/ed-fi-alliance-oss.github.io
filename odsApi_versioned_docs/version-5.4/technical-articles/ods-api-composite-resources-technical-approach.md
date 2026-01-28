@@ -38,7 +38,7 @@ with the Ed-Fi ODS / API.
 ## Composite Definition
 
 Composite Definitions are expressed using an XML-based file format (similar in
-style to the [Ed-Fi ODS / API Profiles](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774352/API+Profiles) definition format). Composite Resources are defined in terms of standard API
+style to the [Ed-Fi ODS / API Profiles](../platform-dev-guide/security/api-profiles.md) definition format). Composite Resources are defined in terms of standard API
 resources and their properties, references, collections, embedded objects, and
 linked collections (i.e., joins through the model to other API resources). The
 definition starts with a single "base" resource and then can include other members

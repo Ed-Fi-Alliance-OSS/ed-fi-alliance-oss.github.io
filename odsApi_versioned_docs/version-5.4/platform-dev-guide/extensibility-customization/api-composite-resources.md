@@ -390,4 +390,4 @@ the collection item in the API response.
 
 ## Adding Composites to the Ed-Fi ODS / API Solution
 
-For a complete walkthrough of adding Composites, see the article [How To: Add API Composites to the Ed-Fi ODS / API Solution](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774820/How+To+Add+API+Composites+to+the+Ed-Fi+ODS+API+Solution).
+For a complete walkthrough of adding Composites, see the article [How To: Add API Composites to the Ed-Fi ODS / API Solution](../../how-to-guides/how-to-add-api-composites-to-the-ed-fi-ods-api-solution.md).

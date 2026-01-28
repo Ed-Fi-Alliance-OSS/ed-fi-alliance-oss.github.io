@@ -95,7 +95,7 @@ on all tables and let the database server handle it. Currently, the
 as-shipped Ed-Fi ODS enables this behavior on selected entities such as Class Period, Grade,
 Section, and so forth.
 
-The article [How To: Enable Cascading Updates on Ed-Fi ODS / API Resources](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774844/How+To+Enable+Cascading+Updates+on+ODS+API+Resources) has the full list of entities covered in the as-shipped configuration as well
+The article [How To: Enable Cascading Updates on Ed-Fi ODS / API Resources](../how-to-guides/how-to-enable-cascading-updates-on-ods-api-resources.md) has the full list of entities covered in the as-shipped configuration as well
 as steps for enabling CASCADE UPDATE on additional entities.
 
 ### Key Unification Report

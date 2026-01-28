@@ -111,7 +111,7 @@ This section provides an overview on how to use the Smoke Test Utility.
 
 The following examples show common testing scenarios. The examples below assume
 that you have followed the Ed-Fi ODS / API [Getting
-Started](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774233/Getting+Started+-+Source+Code+Installation) steps
+Started](../../getting-started/readme.md) steps
 successfully.
 
 ### API tests

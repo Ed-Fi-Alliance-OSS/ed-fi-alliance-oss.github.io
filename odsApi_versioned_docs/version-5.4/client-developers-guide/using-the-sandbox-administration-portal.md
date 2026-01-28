@@ -68,7 +68,7 @@ The **Add Sandbox** button allows you to create a new sandbox environment with o
 
 **Figure 3.** Adding a sandbox via the Administration Portal
 
-Clicking the Gear icon brings up features like Delete and the ability to change the assigned application Secret. One useful feature included in that menu is **Get Token**, which performs the OAuth authentication steps using the selected application's credentials and returns an access token. This access token code can be used, for example, in the Swagger documentation or to make sample calls to the ODS / API sandbox as shown in the [Authentication](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774418/Authentication) section of this documentation. 
+Clicking the Gear icon brings up features like Delete and the ability to change the assigned application Secret. One useful feature included in that menu is **Get Token**, which performs the OAuth authentication steps using the selected application's credentials and returns an access token. This access token code can be used, for example, in the Swagger documentation or to make sample calls to the ODS / API sandbox as shown in the [Authentication](./authentication.md) section of this documentation. 
 
 ![Fig 4](https://edfi.atlassian.net/wiki/download/attachments/22774465/Admin-Portal-Figure-3.png?version=1&modificationDate=1641861354080&cacheVersion=1&api=v2)
 **Figure 4.** Getting an access token using an application's credentials
