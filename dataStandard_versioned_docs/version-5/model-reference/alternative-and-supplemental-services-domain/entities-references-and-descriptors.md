@@ -44,41 +44,41 @@ hide_table_of_contents: true
 | Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
 | GeneralStudentProgramAssociation | ParticipationStatus | The student's program participation status. | Standard |     | Yes |     |
-| ReasonExited | The reason the child left the Program within a school or district. | Standard | Yes | Yes |     |
-| Program | ProgramCharacteristic | Reflects important characteristics of the Program, such as categories or particular indications. | Local | Yes | Yes |     |
-| ProgramSponsor | Ultimate and intermediate providers of funds for a particular educational or service program or activity, or for an individual's participation in the program or activity (e.g., Federal, State, ESC, District, School, Private Organization). | Standard |     | Yes |     |
-| ProgramType | The type of program. | Flexible | Yes | Yes | Yes |
+| GeneralStudentProgramAssociation | ReasonExited | The reason the child left the Program within a school or district. | Standard | Yes | Yes |     |
+| Program | Program | ProgramCharacteristic | Reflects important characteristics of the Program, such as categories or particular indications. | Local | Yes | Yes |     |
+| Program | ProgramSponsor | Ultimate and intermediate providers of funds for a particular educational or service program or activity, or for an individual's participation in the program or activity (e.g., Federal, State, ESC, District, School, Private Organization). | Standard |     | Yes |     |
+| Program | ProgramType | The type of program. | Flexible | Yes | Yes | Yes |
 | StudentCTEProgramAssociation | CTEProgramService | Indicates the service being provided to the student by the CTE Program. | Orthodox | Yes | Yes |     |
-| TechnicalSkillsAssessment | Results of technical skills assessment aligned with industry recognized standards. | Standard |     | Yes |     |
+| StudentCTEProgramAssociation | TechnicalSkillsAssessment | Results of technical skills assessment aligned with industry recognized standards. | Standard |     | Yes |     |
 | StudentHomelessProgramAssociation | HomelessPrimaryNighttimeResidence | The primary nighttime residence of the student at the time the student is identified as homeless. | Standard | Yes | Yes |     |
-| HomelessProgramService | Indicates the service being provided to the student by the Homeless Program. | Standard | Yes | Yes |     |
+| StudentHomelessProgramAssociation | HomelessProgramService | Indicates the service being provided to the student by the Homeless Program. | Standard | Yes | Yes |     |
 | StudentLanguageInstructionProgramAssociation | LanguageInstructionProgramService | Indicates the service being provided to the student by the Language Instruction Program. | Standard | Yes | Yes |     |
-| Monitored | Student is monitored on content achievement who are no longer receiving services. | Standard | Yes | Yes |     |
-| Participation | Field indicating the participation in the yearly English language assessment. | Standard | Yes | Yes |     |
-| Proficiency | The proficiency level for the yearly English language assessment. | Standard | Yes | Yes |     |
-| Progress | The yearly progress or growth from last year's assessment. | Standard | Yes | Yes |     |
+| StudentLanguageInstructionProgramAssociation | Monitored | Student is monitored on content achievement who are no longer receiving services. | Standard | Yes | Yes |     |
+| StudentLanguageInstructionProgramAssociation | Participation | Field indicating the participation in the yearly English language assessment. | Standard | Yes | Yes |     |
+| StudentLanguageInstructionProgramAssociation | Proficiency | The proficiency level for the yearly English language assessment. | Standard | Yes | Yes |     |
+| StudentLanguageInstructionProgramAssociation | Progress | The yearly progress or growth from last year's assessment. | Standard | Yes | Yes |     |
 | StudentMigrantEducationProgramAssociation | ContinuationOfServicesReason | The "continuation of services" provision found in Section 1304(e) of the statute provides that (1) a child who ceases to be a migratory child during a school term shall be eligible for services until the end of such term; (2) a child who is no longer a migratory child may continue to receive services for one additional school year, but only if comparable services are not available through other programs; and (3) secondary school students who were eligible for services in secondary school may continue to be served through credit accrual programs until graduation. Only students who received services at any time during their 36 month eligibility period may continue to receive services (not necessarily the same service). | Standard | Yes | Yes |     |
-| MigrantEducationProgramService | Indicates the Service being provided to the student by the Migrant Education Program. | Standard | Yes | Yes |     |
+| StudentMigrantEducationProgramAssociation | MigrantEducationProgramService | Indicates the Service being provided to the student by the Migrant Education Program. | Standard | Yes | Yes |     |
 | StudentNeglectedOrDelinquentProgramAssociation | ELAProgressLevel | The progress measured from pre- to post- test for ELA. | Standard | Yes | Yes |     |
-| MathematicsProgressLevel | The progress measured from pre- to post-test for Mathematics. |     | Yes | Yes |     |
-| NeglectedOrDelinquentProgram | The type of program under ESEA Title I, Part D, Subpart 1 (state programs) or Subpart 2 (LEA). | Standard | Yes | Yes |     |
-| NeglectedOrDelinquentProgramService | Indicates the service being provided to the student by the Neglected or Delinquent Program. | Standard | Yes | Yes |     |
+| StudentNeglectedOrDelinquentProgramAssociation | MathematicsProgressLevel | The progress measured from pre- to post-test for Mathematics. |     | Yes | Yes |     |
+| StudentNeglectedOrDelinquentProgramAssociation | NeglectedOrDelinquentProgram | The type of program under ESEA Title I, Part D, Subpart 1 (state programs) or Subpart 2 (LEA). | Standard | Yes | Yes |     |
+| StudentNeglectedOrDelinquentProgramAssociation | NeglectedOrDelinquentProgramService | Indicates the service being provided to the student by the Neglected or Delinquent Program. | Standard | Yes | Yes |     |
 | StudentProgramAssociation | Service | Indicates the Service being provided to the student by the Program. | Local |     | Yes |     |
 | StudentProgramAttendanceEvent | AttendanceEventCategory | A code describing the attendance event, for example: Present, Unexcused absence, Excused absence, Tardy. | Local | Yes | Yes |     |
-| EducationalEnvironment | The setting in which a child receives education and related services. This attribute is only used if it differs from the EducationalEnvironment of the Section. This is only used in the AttendanceEvent if different from the associated Section. | Standard |     | Yes |     |
+| StudentProgramAttendanceEvent | EducationalEnvironment | The setting in which a child receives education and related services. This attribute is only used if it differs from the EducationalEnvironment of the Section. This is only used in the AttendanceEvent if different from the associated Section. | Standard |     | Yes |     |
 | StudentSchoolFoodServiceProgramAssociation | SchoolFoodServiceProgramService | Indicates the service being provided to the student by the School Food Service Program. | Standard | Yes | Yes |     |
 | StudentSpecialEducationProgramAssociation | Disability | A disability category that describes a child's impairment. | Orthodox | Yes | Yes |     |
-| DisabilityDesignation | Whether the disability is IDEA, Section 504, or other disability designation. | Orthodox |     | Yes |     |
-| DisabilityDeterminationSourceType | The source that provided the disability determination. | Orthodox |     | Yes |     |
-| SpecialEducationProgramService | Indicates the service being provided to the student by the Special Education Program. | Standard |     | Yes |     |
-| SpecialEducationSetting | The major instructional setting (more than 50 percent of a student's special education program). | Standard | Yes | Yes |     |
-| SpecialEducationExitReason | The reason why a person stops receiving special education services. | Standard |     |     |     |
+| StudentSpecialEducationProgramAssociation | DisabilityDesignation | Whether the disability is IDEA, Section 504, or other disability designation. | Orthodox |     | Yes |     |
+| StudentSpecialEducationProgramAssociation | DisabilityDeterminationSourceType | The source that provided the disability determination. | Orthodox |     | Yes |     |
+| StudentSpecialEducationProgramAssociation | SpecialEducationProgramService | Indicates the service being provided to the student by the Special Education Program. | Standard |     | Yes |     |
+| StudentSpecialEducationProgramAssociation | SpecialEducationSetting | The major instructional setting (more than 50 percent of a student's special education program). | Standard | Yes | Yes |     |
+| StudentSpecialEducationProgramAssociation | SpecialEducationExitReason | The reason why a person stops receiving special education services. | Standard |     |     |     |
 | StudentSpecialEducationProgramEligibilityAssociation | EligibilityEvaluationType | Indicates if this is an initial evaluation or a reevaluation | Orthodox |     |     |     |
-| EligibilityDelayReason | The reason why the eligibility determination was completed beyond the required timeframe | Orthodox |     |     |     |
-| EvaluationDelayReason | Refers to the justification as to why the evaluation report was completed beyond the state-established timeframe | Orthodox |     |     |     |
-| IDEAPart | Indicates if the evaluation is done under Part B IDEA or Part C IDEA | Standard |     |     |     |
+| StudentSpecialEducationProgramEligibilityAssociation | EligibilityDelayReason | The reason why the eligibility determination was completed beyond the required timeframe | Orthodox |     |     |     |
+| StudentSpecialEducationProgramEligibilityAssociation | EvaluationDelayReason | Refers to the justification as to why the evaluation report was completed beyond the state-established timeframe | Orthodox |     |     |     |
+| StudentSpecialEducationProgramEligibilityAssociation | IDEAPart | Indicates if the evaluation is done under Part B IDEA or Part C IDEA | Standard |     |     |     |
 | StudentTitleIPartAProgramAssociation | TitleIPartAParticipant | An indication of the type of Title I program, if any, in which the student is participating and by which the student is served: Public Targeted Assistance, Program, Public Schoolwide Program, Private School Students Participating, Local Neglected Program. | Standard | Yes | Yes | Yes |
-| TitleIPartAProgramService | Indicates the service being provided to the student by the Title I Part A Program. | Standard | Yes | Yes |     |
+| StudentTitleIPartAProgramAssociation | TitleIPartAProgramService | Indicates the service being provided to the student by the Title I Part A Program. | Standard | Yes | Yes |     |
 
 :::tip
 
