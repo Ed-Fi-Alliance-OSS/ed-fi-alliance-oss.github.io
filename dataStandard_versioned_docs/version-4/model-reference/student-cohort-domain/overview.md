@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # Student Cohort Domain - Overview
 
 ## Key Entities
