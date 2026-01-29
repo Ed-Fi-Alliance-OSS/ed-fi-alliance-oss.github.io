@@ -41,6 +41,7 @@ hide_table_of_contents: true
 | EducationOrganization | AddressType | The type of address listed for an individual or organization. (For example:  Physical Address, Mailing Address, Home Address, etc.) |     |     |     |     |
 | School | AdministrativeFundingControl | The type of education institution as classified by its funding source, for example public or private. |     |     |     |     |
 | FinancialAid  | AidType | The classification of financial aid awarded to a person for the academic term/year. | Orthodox |     |     |     |
+| GraduationPlan | AssessmentReportingMethod | The method that the administrator of the assessment uses to report the performance and achievement of all students. It may be a qualitative method such as performance level descriptors or a quantitative method such as a numerical grade or cut score. More than one type of reporting method may be used. | Local |     | Yes | Yes |
 | StudentEducationOrganizationAssociation | BarrierToInternetAccessInResidence | An indication of the barrier to having internet access in the student’s primary place of residence. |     |     |     |     |
 | StudentTransportation | BusRoute | Identifies the specific route taken by a bus for student transportation. |     |     |     |     |
 | GraduationPlan | CertificationRoute | The process, program, or pathway used to obtain a certification. | Orthodox |     |     |     |
@@ -55,6 +56,7 @@ hide_table_of_contents: true
 | School <br /> StudentSchoolAssociation | GradeLevel | The grade levels served at and/or primary instructional level at which a student enters and receives services in a school or an educational institution during a given academic session. |     |     |     |     |
 | GraduationPlan | GraduationPlanType | The type of academic plan the student is following for graduation. |     |     |     |     |
 | LocalEducationAgency | GunFreeSchoolsActReportingStatus | An indication of whether the school or Local Education Agency (LEA) submitted a Gun-Free Schools Act (GFSA) of 1994 report to the state, as defined by Title 18, Section 921. |     |     |     |     |
+| Student | IdentificationDocumentUse | The primary function of the document used for establishing identity. | Orthodox |     |     |     |
 | EducationOrganization | Indicator | The name or code for the indicator or metric. |     |     |     |     |
 | EducationOrganization | IndicatorGroup | The name for a group of indicators. |     |     |     |     |
 | EducationOrganization | IndicatorLevel | The value of the indicator or metric, as a value from a controlled vocabulary. The semantics of an empty value is "not submitted." |     |     |     |     |
@@ -67,11 +69,14 @@ hide_table_of_contents: true
 | School | MagnetSpecialProgramEmphasisSchool | A school that has been designed: 1) to attract students of different racial/ethnic backgrounds for the purpose of reducing, preventing, or eliminating racial isolation; and/or 2) to provide an academic or social focus on a particular theme (e.g., science/math, performing arts, gifted/talented, or foreign language). |     |     |     |     |
 | EducationOrganization | OperationalStatus | The current operational status of the education organization (e.g., active, inactive). |     |     |     |     |
 | Student | OtherNameType | The types of alternate names for an individual. | Orthodox |     |     |     |
+| GraduationPlan | PerformanceLevel | The performance level(s) defined for the assessment. | Local | Yes | Yes |      |
+| Student | PersonalInformationVerification | The category of the document relative to its purpose. | Orthodox |     |     |     |
 | StudentEducationOrganizationAssociation | PrimaryLearningDeviceAccess | An indication of whether the primary learning device is shared or not shared with another individual. |     |     |     |     |
 | StudentEducationOrganizationAssociation | PrimaryLearningDeviceAwayFromSchool | The type of device the student uses most often to complete learning activities away from school. |     |     |     |     |
 | StudentEducationOrganizationAssociation | PrimaryLearningDeviceProvider | The provider of the primary learning device. |     |     |     |     |
 | StudentSchoolAssociation | ResidencyStatus | An indication of the location of a persons legal residence relative to (within or outside of) the boundaries of the public school attended and its administrative unit. |     |     |     |     |
 | StudentEducationOrganizationResponsibilityAssociation | Responsibility | Indications of an education organization's responsibility for a student, such as accountability, attendance, funding, etc. |     |     |     |     |
+| GraduationPlan | ResultDatatypeType | The datatype of the result. The results can be expressed as a number, percentile, range, level, etc. | Orthodox |     |     | Yes |
 | School | SchoolCategory | The one or more categories of school. |     |     |     |     |
 | StudentSchoolAssociation | SchoolChoiceBasis | The legal basis for the school choice enrollment according to local, state or federal policy or regulation. (The descriptor provides the list of available bases specific to the state. |     |     |     |     |
 | LocalEducationAgency | SchoolChoiceImplementStatus | An indication of whether the LEA was able to implement the provisions for public school choice under Title I, Part A, Section 1116 of ESEA as amended. |     |     |     |     |

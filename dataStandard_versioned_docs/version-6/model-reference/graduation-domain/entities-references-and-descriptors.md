@@ -29,8 +29,11 @@ hide_table_of_contents: true
 | --- | --- | --- | --- | --- | --- | --- |
 | StudentAcademicRecord | AcademicHonorCategory | "A designation of the type of academic distinctions earned by or awarded to the individual. |     |     |     |     |
 | GraduationPlan | AcademicSubject | The intended major subject area of the graduation requirement. |     |     |     |     |
+| StudentAcademicRecord | AchievementCategory | The category of achievement attributed to the individual. | Local |     |     |     |
+| School | AccreditationStatus | The accreditation status for an education preparation provider. | Standard |     |     |     |
 | EducationOrganization | AddressType | The type of address listed for an individual or organization. (For example:  Physical Address, Mailing Address, Home Address, etc.) |     |     |     |     |
 | School | AdministrativeFundingControl | The type of education institution as classified by its funding source, for example public or private. |     |     |     |     |
+| GraduationPlan | AssessmentReportingMethod | The method that the instructor of the class uses to report the performance and achievement of all students. It may be a qualitative method such as individualized teacher comments or a quantitative method such as a letter or numerical grade. In some cases, more than one type of reporting method may be used. | Local |     | Yes | Yes |
 | GraduationPlan | CertificationRoute | The process, program, or pathway used to obtain a certification. |     |     |     |     |
 | School | CharterApprovalAgencyType | The type of agency that approved the establishment or continuation of a charter school. |     |     |     |     |
 | School | CharterStatus | A school or agency providing free public elementary or secondary education to eligible students under a specific charter granted by the state legislature or other appropriate authority and designated by such authority to be a charter school. | Standard | Yes | Yes | Yes |
@@ -49,6 +52,7 @@ hide_table_of_contents: true
 | School <br /> StudentSchoolAssociation | GradeLevel | The grade levels served at the school. |     |     |     |     |
 | StudentAcademicRecord | GradePointAverageType | The system used for calculating the grade point average for an individual. |     |     |     |     |
 | GraduationPlan | GraduationPlanType | The type of academic plan the student is following for graduation. |     |     |     |     |
+| Student | IdentificationDocumentUse | The primary function of the document used for establishing identity. | Orthodox |     |     |     |
 | EducationOrganization | Indicator |The name or code for the indicator or metric. |     |     |     |     |
 | EducationOrganization | IndicatorLevel | The value of the indicator or metric, as a value from a controlled vocabulary. The semantics of an empty value is "not submitted." |     |     |     |     |
 | EducationOrganization | IndicatorGroup | The name for a group of indicators. |     |     |     |     |
@@ -59,10 +63,13 @@ hide_table_of_contents: true
 | PostSecondaryInstitution | MediumOfInstruction | The categories in which an institution serves the students.  |     |     |     |     |
 | EducationOrganization | OperationalStatus | The current operational status of the education organization (e.g., active, inactive). |     |     |     |     |
 | Student | OtherNameType | The types of alternate names for an individual. |     |     |     |     |
+| GraduationPlan | PerformanceLevel | The performance level(s) defined for the assessment. | Local | Yes | Yes |      |
+| Student | PersonalInformationVerification | The category of the document relative to its purpose. | Orthodox |     |     |     |
 | PostSecondaryEvent | PostSecondaryEventCategory | The post secondary event that is logged. |     |     |     |     |
 | PostSecondaryEvent | PostSecondaryInstitutionLevel | A classification of whether a post secondary institution's highest level of offering is a program of 4-years or higher (4 year), 2-but-less-than 4-years (2 year), or less than 2-years. |     |     |     |     |
 | StudentAcademicRecord | RecognitionType | The nature of recognition given to the individual for accomplishments in a co-curricular, or extra-curricular activity. |     |     |     |     |
 | StudentSchoolAssociation | ResidencyStatus | An indication of the location of a persons legal residence relative to (within or outside of) the boundaries of the public school attended and its administrative unit. |     |     |     |     |
+| GraduationPlan | ResultDatatypeType | The datatype of the result. The results can be expressed as a number, percentile, range, level, etc. |
 | School | SchoolCategory | The one or more categories of school. |     |     |     |     |
 | StudentSchoolAssociation | SchoolChoiceBasis | The legal basis for the school choice enrollment according to local, state or federal policy or regulation. (The descriptor provides the list of available bases specific to the state. |     |     |     |     |
 | School | SchoolType | The type of education institution as classified by its primary focus. |     |     |     |     |

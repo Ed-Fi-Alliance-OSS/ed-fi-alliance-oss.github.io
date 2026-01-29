@@ -45,6 +45,7 @@ hide_table_of_contents: true
 | --- | --- | --- | --- | --- | --- | --- |
 | Staff | AcademicSubject | The academic subject(s) in which the staff is deemed to be "highly qualified". | Local |     |     |     |
 | School | AccreditationStatus | The accreditation status for an education preparation provider. | Standard |     |     |     |
+| Staff | AchievementCategory | The category of achievement attributed to the individual. | Local |     |     |     |
 | EducationOrganization | AddressType | The type of address listed for an individual or organization. (For example:  Physical Address, Mailing Address, Home Address, etc.) | Orthodox |     |     |     |
 | School | AdministrativeFundingControl | The type of education institution as classified by its funding source, for example public or private. | Local |     |     |     |
 | StudentSectionAssociation | AttemptStatus | An indication of the student's completion status for the section. | Orthodox |     |     |     |
@@ -71,6 +72,7 @@ hide_table_of_contents: true
 | StudentHomelessProgramAssociation | HomelessPrimaryNighttimeResidence | The primary nighttime residence of the student at the time the student is identified as homeless. | Standard | Yes | Yes |     |
 | StudentHomelessProgramAssociation | HomelessProgramService | Indicates the service being provided to the student by the homeless program. | Standard | Yes | Yes |     |
 | StudentSpecialEducationProgramEligibilityAssociation | IDEAPart | Indicates if the evaluation is done under Part B IDEA or Part C IDEA. | Standard |     |     |     |
+| Staff <br /> Student | IdentificationDocumentUse | The primary function of the document used for establishing identity. | Orthodox |     |     |     |
 | EducationOrganization | Indicator | The value of the indicator or metric. The semantics of an empty value is "not submitted." | Local |     |     |     |
 | EducationOrganization | IndicatorGroup | The name for a group of indicators. | Local |     |     |     |
 | EducationOrganization | IndicatorLevel | The value of the indicator or metric, as a value from a controlled vocabulary. The semantics of an empty value is "not submitted." | Local |     |     |     |
@@ -90,6 +92,7 @@ hide_table_of_contents: true
 | Staff <br /> Student | OtherNameType | The types of alternate names for an individual. | Orthodox |     |     |     |
 | StudentLanguageInstructionProgramAssociation | Participation | Field indicating the participation in the yearly English language assessment. | Standard | Yes | Yes |     |
 | GeneralStudentProgramAssociation | ParticipationStatus | The student's program participation status. | Standard |     | Yes |     |
+| Staff <br /> Student | PersonalInformationVerification | The category of the document relative to its purpose. | Orthodox |     |     |     |
 | Section | PopulationServed | The type of students the section is offered and tailored to. | Orthodox |     |     |     |
 | StudentLanguageInstructionProgramAssociation | Proficiency | The proficiency level for the yearly English language assessment. | Standard | Yes | Yes |     |
 | Program | ProgramCharacteristic | Reflects important characteristics of the program, such as categories or particular indications. | Local | Yes | Yes |     |

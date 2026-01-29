@@ -42,6 +42,7 @@ hide_table_of_contents: true
 | StudentAcademicRecord | AcademicHonorCategory | A designation of the type of academic distinctions earned by or awarded to the individual. | Orthodox |     |     |     |
 | Course <br /> CourseTranscript <br /> LearningStandard | AcademicSubject | The intended major subject/s, credits, or learning standard of the course. | Local |     |     |     |
 | School | AccreditationStatus | The accreditation status for an education preparation provider. | Standard |     |     |     |
+| Staff <br /> StudentAcademicRecord | AchievementCategory | The category of achievement attributed to the individual. | Local |     |     |     |
 | CourseTranscript | AdditionalCreditType | The type of credits or units of value awarded for the completion of a course. | Orthodox |     |     |     |
 | EducationOrganization | AddressType | The type of address listed for an individual or organization. (For example:  Physical Address, Mailing Address, Home Address, etc.) | Orthodox | Yes | Yes | Yes |
 | School | AdministrativeFundingControl | The type of education institution as classified by its funding source, for example public or private. | Local |     |     |     |
@@ -73,6 +74,7 @@ hide_table_of_contents: true
 | StudentAcademicRecord | GradePointAverageType | The system used for calculating the grade point average for an individual. | Standard |     |     |     |
 | Grade | GradeType | The type of grade reported (e.g., exam, final, grading period). | Orthodox |     |     |     |
 | GradingPeriod | GradingPeriod | The state's name of the period for which grades are reported. | Flexible |     |     |     |
+| Student | IdentificationDocumentUse | The primary function of the document used for establishing identity. | Orthodox |     |     |     |
 | EducationOrganization | Indicator | The value of the indicator or metric. The semantics of an empty value is "not submitted." | Local |     |     |     |
 | EducationOrganization | IndicatorGroup | The name for a group of indicators. | Local |     |     |     |
 | EducationOrganization | IndicatorLevel | The value of the indicator or metric, as a value from a controlled vocabulary. The semantics of an empty value is "not submitted." | Local |     |     |     |
@@ -86,6 +88,7 @@ hide_table_of_contents: true
 | CourseTranscript | MethodCreditEarned | The method the credits were earned. | Orthodox |     |     |     |
 | EducationOrganization | OperationalStatus | The current operational status of the education organization (e.g., active, inactive). | Standard | Yes | Yes | Yes |
 | Student | OtherNameType | The types of alternate names for an individual. | Orthodox |     |     |     |
+| Student | PersonalInformationVerification | The category of the document relative to its purpose. | Orthodox |     |     |     |
 | Grade | PerformanceBaseConversion | A conversion of the level to a standard set of performance levels. | Orthodox |     |     |     |
 | Section | PopulationServed | The type of students the section is offered and tailored to. | Orthodox |     |     |     |
 | Program | ProgramCharacteristic | Reflects important characteristics of the program, such as categories or particular indications. | Local | Yes | Yes |     |
