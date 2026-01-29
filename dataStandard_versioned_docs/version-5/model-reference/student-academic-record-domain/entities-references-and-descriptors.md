@@ -41,25 +41,25 @@ hide_table_of_contents: true
 | --- | --- | --- | --- | --- | --- | --- |
 | CompetencyObjective | ObjectiveGradeLevel | The grade level for which the CompetencyObjective is targeted. | Orthodox |     |     |     |
 | CourseTranscript | AdditionalCreditType | The type of credits or units of value awarded for the completion of a course. | Orthodox |     |     |     |
-| CourseAttemptResult | The result from the student's attempt to take the course, for example: Pass, Fail, Incomplete, Withdrawn. | Standard |     |     |     |
-| CourseRepeatCode | Indicates that an academic course has been repeated by a student and how that repeat is to be computed in the student's academic grade average. | Orthodox |     |     |     |
-| CreditType | The type of credits or units of value awarded for the completion of a course. | Flexible |     |     |     |
-| MethodCreditEarned | The method the credits were earned (e.g., Classroom, Examination, Transfer). | Orthodox |     |     |     |
-| WhenTakenGradeLevel | Student's grade level at time of course. | Orthodox |     |     |     |
-| CreditCategory | A categorization of the course transcript credits. | Flexible |     |     |     |
-| AcademicSubject | The description of the content or subject area. | Local |     |     |     |
+| CourseTranscript | CourseAttemptResult | The result from the student's attempt to take the course, for example: Pass, Fail, Incomplete, Withdrawn. | Standard |     |     |     |
+| CourseTranscript | CourseRepeatCode | Indicates that an academic course has been repeated by a student and how that repeat is to be computed in the student's academic grade average. | Orthodox |     |     |     |
+| CourseTranscript | CreditType | The type of credits or units of value awarded for the completion of a course. | Flexible |     |     |     |
+| CourseTranscript | MethodCreditEarned | The method the credits were earned (e.g., Classroom, Examination, Transfer). | Orthodox |     |     |     |
+| CourseTranscript | WhenTakenGradeLevel | Student's grade level at time of course. | Orthodox |     |     |     |
+| CourseTranscript | CreditCategory | A categorization of the course transcript credits. | Flexible |     |     |     |
+| CourseTranscript | AcademicSubject | The description of the content or subject area. | Local |     |     |     |
 | Grade | GradeType | The type of grade reported (e.g., Exam, Final, Grading Period). | Orthodox |     |     |     |
-| PerformanceBaseConversion | A performance level that describes the student proficiency. | Orthodox |     |     |     |
+| Grade | PerformanceBaseConversion | A performance level that describes the student proficiency. | Orthodox |     |     |     |
 | GradebookEntry | GradebookEntryType | The type of the GradebookEntry; for example, homework, assignment, quiz, unit test, oral presentation, etc. | Orthodox |     |     |     |
 | ReportCard | GradePointAverageType | The system used for calculating the Grade Point Average for an individual. | Standard |     |     |     |
 | StudentAcademicRecord | AcademicHonorCategory | A designation of the type of academic distinctions earned by or awarded to the student. | Orthodox |     |     |     |
-| AchievementCategory | The category of achievement attributed to the learner. | Local |     |     |     |
-| CreditType | The type of credits or units of value awarded for the completion of a course. | Flexible |     |     |     |
-| DiplomaLevel | The level of diploma/credential that is awarded to a student in recognition of his/her completion of the curricular requirements. Minimum high school program, Recommended high school program, Distinguished Achievement Program. | Local |     |     |     |
-| DiplomaType | The type of diploma/credential that is awarded to a student in recognition of his/her completion of the curricular requirements. | Local |     |     |     |
-| GradePointAverageType | The system used for calculating the Grade Point Average. | Standard |     |     |     |
-| RecognitionType | The nature of recognition given to the learner for accomplishments in a co-curricular, or extra-curricular activity. | Flexible |     |     |     |
-| Term | The term for the session during the school year. | Flexible |     |     |     |
+| StudentAcademicRecord | AchievementCategory | The category of achievement attributed to the learner. | Local |     |     |     |
+| StudentAcademicRecord | CreditType | The type of credits or units of value awarded for the completion of a course. | Flexible |     |     |     |
+| StudentAcademicRecord | DiplomaLevel | The level of diploma/credential that is awarded to a student in recognition of his/her completion of the curricular requirements. Minimum high school program, Recommended high school program, Distinguished Achievement Program. | Local |     |     |     |
+| StudentAcademicRecord | DiplomaType | The type of diploma/credential that is awarded to a student in recognition of his/her completion of the curricular requirements. | Local |     |     |     |
+| StudentAcademicRecord | GradePointAverageType | The system used for calculating the Grade Point Average. | Standard |     |     |     |
+| StudentAcademicRecord | RecognitionType | The nature of recognition given to the learner for accomplishments in a co-curricular, or extra-curricular activity. | Flexible |     |     |     |
+| StudentAcademicRecord | Term | The term for the session during the school year. | Flexible |     |     |     |
 | StudentCompetencyObjective | CompetencyLevel | The competency level assessed for the student for the referenced competency objective. | Flexible |     |     |     |
 | StudentGradebookEntry | CompetencyLevel | The CompetencyLevel assessed for the student for the referenced LearningObjective. | Flexible |     |     |     |
 

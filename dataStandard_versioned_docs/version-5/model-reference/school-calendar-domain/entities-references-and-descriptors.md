@@ -29,7 +29,7 @@ hide_table_of_contents: true
 | Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
 | Calendar | CalendarType | Indicates the type of Calendar. | Flexible |     |     |     |
-| GradeLevel | Indicates the GradeLevel associated with the Calendar. | Orthodox |     |     |     |
+| Calendar | GradeLevel | Indicates the GradeLevel associated with the Calendar. | Orthodox |     |     |     |
 | CalendarDate | CalendarEvent | The type of scheduled or unscheduled event for the day. | Flexible |     |     |     |
 | GradingPeriod | GradingPeriod | The name of the period for which grades are reported. | Flexible |     |     |     |
 | Session | Term | An descriptor value indicating the term (e.g., 'Semester', 'Quarter', etc.). | Flexible |     |     |     |
