@@ -36,6 +36,7 @@ hide_table_of_contents: true
 | --- | --- | --- | --- | --- | --- | --- |
 | Staff | AcademicSubject | The academic subject(s) in which the staff is deemed to be "highly qualified". | Local | Yes | Yes |     |
 | School | AccreditationStatus | The accreditation status for an education preparation provider. |     |     |     |     |
+| Staff | AchievementCategory | The category of achievement attributed to the individual. | Local |     |     |     |
 | School | AdministrativeFundingControl | The type of education institution as classified by its funding source, for example public or private. |     |     |     |     |
 | StudentDisciplineIncidentBehaviorAssociation | Behavior | Describes behavior by category. | Local |     | Yes |     |
 | School | CharterApprovalAgencyType | The type of agency that approved the establishment or continuation of a charter school. |     |     |     |     |
@@ -46,11 +47,13 @@ hide_table_of_contents: true
 | StaffDisciplineIncidentAssociation <br /> StudentDisciplineIncidentBehaviorAssociation <br /> StudentDisciplineIncidentNonOffenderAssociation | DisciplineIncidentParticipationCode | The role or type of participation of a student in a discipline incident. |     |     |     |     |
 | School | FederalLocaleCode | The federal locale code associated with an education organization. |     |     |     |     |
 | School | GradeLevel | The grade levels served at the school. |     |     |     |     |
+| Staff <br /> Student | IdentificationDocumentUse | The primary function of the document used for establishing identity. | Orthodox |     |     |     |
 | DisciplineIncident | IncidentLocation | Identifies where the discipline incident occurred and whether or not it occurred on school. |     |     |     |     |
 | School | InternetAccess | The type of Internet access available. |     |     |     |     |
 | Staff | LevelOfEducation | The extent of formal instruction an individual has received (e.g., the highest grade in school completed or its equivalent or the highest degree received). | Orthodox |     |     |     |
 | School | MagnetSpecialProgramEmphasisSchool | A school that has been designed: 1) to attract students of different racial/ethnic backgrounds for the purpose of reducing, preventing, or eliminating racial isolation; and/or 2) to provide an academic or social focus on a particular theme (e.g., science/math, performing arts, gifted/talented, or foreign language). |     |     |     |     |
 | Student | OtherNameType | The types of alternate names for an individual. | Orthodox |     |     |     |
+| Staff <br /> Student | PersonalInformationVerification | The category of the document relative to its purpose. | Orthodox |     |     |     |
 | Staff | RecognitionType | The nature of recognition given to the individual for accomplishments in a co-curricular, or extra-curricular activity. | Flexible |     |     |     |
 | DisciplineIncident | ReporterDescription | Information on the type of individual who reported the discipline incident. When known and/or if useful, use a more specific option code (e.g., ""Counselor"" rather than ""Professional Staff""). |     |     |     |     |
 | School | SchoolCategory | The one or more categories of school. |     |     |     |     |

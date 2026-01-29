@@ -41,6 +41,7 @@ hide_table_of_contents: true
 | Entity | Descriptor | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
 | Course <br /> Staff | AcademicSubject | The intended major subject/s area of the course, or academic subject(s) in which the staff is deemed to be "highly qualified". | Local |     |     |     |
+| Staff | AchievementCategory | The category of achievement attributed to the individual. | Local |     |     |     |
 | Contact <br /> EducationOrganization | AddressType | The type of address listed for an individual or organization. (For example:  Physical Address, Mailing Address, Home Address, etc.) | Orthodox |     |     |     |
 | Course | CareerPathway | Indicates the career cluster or pathway the course is associated with as part of a CTE curriculum. | Flexible |     |     |     |
 | Course | CompetencyLevel | The competency levels defined to rate the student for the course. | Flexible |     |     |     |
@@ -54,6 +55,7 @@ hide_table_of_contents: true
 | EducationOrganization | EducationOrganizationCategory | The classification of the education agency within the geographic boundaries of a state according to the level of administrative and operational control granted by the state. | Standard |     | Yes | Yes |
 | Contact | ElectronicMailType | The type of email listed for an individual or organization. For example: Home/Personal, Work, etc.)  | Standard |     |     |     |
 | Course <br /> Section | GradeLevel | The grade levels in which the course or section is offered. | Orthodox | Yes | Yes |     |
+| Staff <br /> Student | IdentificationDocumentUse | The primary function of the document used for establishing identity. | Orthodox |     |     |     |
 | EducationOrganization | Indicator | The value of the indicator or metric. The semantics of an empty value is "not submitted." | Local |     |     |     |
 | EducationOrganization | IndicatorGroup | The name for a group of indicators. | Local |     |     |     |
 | EducationOrganization | IndicatorLevel | The value of the indicator or metric, as a value from a controlled vocabulary. The semantics of an empty value is "not submitted." | Local |     |     |     |
@@ -65,6 +67,7 @@ hide_table_of_contents: true
 | Section | MediumOfInstruction | The media through which teachers provide instruction to students and students and teachers communicate about instructional matters. | Orthodox |     | Yes |     |
 | EducationOrganization | OperationalStatus | The current operational status of the education organization (e.g., active, inactive). | Standard | Yes | Yes | Yes |
 | Contact <br /> Staff <br /> Student | OtherNameType | The types of alternate names for an individual. | Orthodox |     |     |     |
+| Staff <br /> Student | PersonalInformationVerification | The category of the document relative to its purpose. | Orthodox |     |     |     |
 | Section | PopulationServed | The type of students the section is offered and tailored to. | Orthodox |     |     |     |
 | Program | ProgramCharacteristic | Reflects important characteristics of the program, such as categories or particular indications. | Local | Yes | Yes |     |
 | Program | ProgramSponsor | Ultimate and intermediate providers of funds for a particular educational or service program or activity, or for an individual's participation in the program or activity (e.g., Federal, State, ESC, District, School, Private Organization). | Standard |     | Yes |     |

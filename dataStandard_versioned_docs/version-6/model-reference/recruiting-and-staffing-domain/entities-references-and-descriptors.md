@@ -50,10 +50,12 @@ hide_table_of_contents: true
 | ApplicantProfile | GradePointAverageType | The system used for calculating the grade point average for an individual. | Standard |     |     |     |
 | Application | HireStatus | Indicates the current status of the application for hire. |     |     |     |     |
 | Application | HiringSource | The source for the application. |     |     |     |     |
+| ApplicantProfile | IdentificationDocumentUse | The primary function of the document used for establishing identity. | Orthodox |     |     |     |
 | ApplicantProfile | Language | A specification of which written or spoken communication is being used. | Orthodox | Yes | Yes | Yes |
 | ApplicantProfile | LanguageUse | A description of how the language is used (e.g. Home Language, Native Language, Spoken Language). | Orthodox |     |     |     |
 | ApplicantProfile | LevelOfEducation | The extent of formal instruction an individual has received. | Orthodox |     |     |     |
 | ApplicantProfile | Locale | A general geographic indicator that categorizes U.S. territory (e.g., City, Suburban). | Standard |     |     |     |
+| ApplicantProfile | PersonalInformationVerification | The category of the document relative to its purpose. | Orthodox |     |     |     |
 | ProfessionalDevelopmentEvent | ProfessionalDevelopmentOfferedBy | A code describing an organization that is offering a specific professional development. |     |     |     |     |
 | ApplicantProfile | Race | The general racial category which most clearly reflects the individual's recognition of his or her community or with which the individual most identifies. The way this data element is listed, it must allow for multiple entries so that each individual can specify all appropriate races. | Standard |     |     |     |
 | RecruitmentEventAttendance | RecruitmentEventAttendeeType | Reflects the type of prospect, such as EPP Applicant, Hire, or Mentor Teacher. |     |     |     |     |

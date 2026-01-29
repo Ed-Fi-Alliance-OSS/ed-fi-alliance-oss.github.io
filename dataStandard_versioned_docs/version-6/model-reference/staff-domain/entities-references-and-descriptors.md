@@ -40,6 +40,7 @@ hide_table_of_contents: true
 | StaffAbsenceEvent | AbsenceEventCategory | The code describing the type of absence. | Orthodox |     |     |     |
 | Credential <br /> OpenStaffPosition <br /> Staff <br /> StaffSchoolAssociation | AcademicSubject | The academic subject(s) or teaching fields in which the individual is eligible to teach, is deemed to be "highly qualified", or to which the credential pertains. | Local | Yes | Yes |     |
 | School | AccreditationStatus | The accreditation status for an education preparation provider. | Standard |     |     |     |
+| Staff | AchievementCategory | The category of achievement attributed to the individual. | Local |     |     |     |
 | EducationOrganization <br /> StaffDirectory | AddressType | The type of address listed for an individual or organization. (For example:  Physical Address, Mailing Address, Home Address, etc.) | Orthodox | Yes | Yes | Yes |
 | School | AdministrativeFundingControl | The type of education institution as classified by its funding source, for example public or private. | Local |     |     |     |
 | StaffDemographic | AncestryEthnicOrigin | The original peoples or cultures with which the individual identifies. | Local |     |     | Yes |
@@ -61,6 +62,7 @@ hide_table_of_contents: true
 | OpenStaffPosition | FundingSource | The funding source for the open staff position. |     |     |     |     |
 | Credential <br /> OpenStaffPosition <br /> School <br /> StaffSchoolAssociation | GradeLevel | The grade levels that are served at the school, which the position assignment is responsible, or which an individual is eligible and/or certified for teaching. | Orthodox | Yes | Yes |     |
 | LocalEducationAgency | GunFreeSchoolsActReportingStatus | An indication of whether the school or Local Education Agency (LEA) submitted a Gun-Free Schools Act (GFSA) of 1994 report to the state, as defined by Title 18, Section 921. | Standard | Yes | Yes |     |
+| Staff | IdentificationDocumentUse | The primary function of the document used for establishing identity. | Orthodox |     |     |     |
 | EducationOrganization | Indicator | The value of the indicator or metric. The semantics of an empty value is "not submitted." | Local |     |     |     |
 | EducationOrganization | IndicatorGroup | The name for a group of indicators. | Local |     |     |     |
 | EducationOrganization | IndicatorLevel | The value of the indicator or metric, as a value from a controlled vocabulary. The semantics of an empty value is "not submitted." | Local |     |     |     |
@@ -78,6 +80,7 @@ hide_table_of_contents: true
 | OpenStaffPosition | OpenStaffPositionReason | The reason for the open staff position. |     |     |     |     |
 | EducationOrganization | OperationalStatus | The current operational status of the education organization (e.g., active, inactive). | Standard | Yes | Yes | Yes |
 | Staff | OtherNameType | The types of alternate names for an individual. | Orthodox |     |     |     |
+| Staff | PersonalInformationVerification | The category of the document relative to its purpose. | Orthodox |     |     |     |
 | OpenStaffPosition | PostingResult | Indication of whether the OpenStaffPosition was filled or retired without filling. | Orthodox |     |     |     |
 | OpenStaffPosition <br /> StaffSchoolAssociation | ProgramAssignment | The name of the program for which the individual/ open staff position will be assigned. | Orthodox |     |     |     |
 | StaffDemographic | Race | The general racial category which most clearly reflects the individual's recognition of his or her community or with the which the individual most identifies as last reported to the education organization. The data model allows for multiple entries so that each individual can specify all appropriate races." | Standard |     |     |     |

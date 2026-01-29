@@ -40,6 +40,7 @@ hide_table_of_contents: true
 | StudentAcademicRecord | AcademicHonorCategory | A designation of the type of academic distinctions earned by or awarded to the individual. | Orthodox |     |     |     |
 | Course <br /> CourseTranscript <br /> LearningStandard <br /> Staff <br /> StaffSchoolAssociation | AcademicSubject | The intended major subject/s area of the course, or the subject area for the course transcript credits awarded in the course transcript. Subject area for the learning standard, or the academic subject(s) in which the staff is deemed to be "highly qualified". The academic subjects the individual is eligible to teach. | Local | Yes | Yes |     |
 | School | AccreditationStatus | The accreditation status for an education preparation provider. | Standard |     |     |     |
+| Staff | AchievementCategory | The category of achievement attributed to the individual. | Local |     |     |     |
 | CourseTranscript | AdditionalCreditType | The type of credits or units of value awarded for the completion of a course. | Orthodox |     |     |     |
 | EducationOrganization | AddressType | The type of address listed for an individual or organization. (For example:  Physical Address, Mailing Address, Home Address, etc.) | Orthodox |     |     |     |
 | School | AdministrativeFundingControl | The type of education institution as classified by its funding source, for example public or private. | Local |     |     |     |
@@ -58,7 +59,9 @@ hide_table_of_contents: true
 | CourseTranscript | CourseRepeatCode | Indicates that an academic course has been repeated by a student and how that repeat is to be computed in the student's academic grade average. | Orthodox |     |     |     |
 | CourseTranscript | CreditCategory | A categorization for the course transcript credits awarded in the course transcript. | Flexible |     |     |     |
 | Course <br /> CourseTranscript <br /> Section <br /> StudentAcademicRecord | CreditType | The type of credits or units of value awarded for the completion of a course. | Flexible |     |     |     |
+| Staff <br /> Student | IdentificationDocumentUse | The primary function of the document used for establishing identity. | Orthodox |     |     |     |
 | Section | SectionCharacteristic | Reflects important characteristics of the section, such as whether or not attendance is taken and the section is graded. | Local |     |     |     |
+| Staff <br /> Student | PersonalInformationVerification | The category of the document relative to its purpose. | Orthodox |     |     |     |
 | Section | SectionType | Specifies whether the section is for attendance only, credit only, or both. | Flexible |     |     |     |
 | StudentProgramAssociation | Service | Indicates the service being provided to the student by the program. | Local |     | Yes |     |
 | Student | Sex | A person's sex at birth. | Standard |     |     |     |

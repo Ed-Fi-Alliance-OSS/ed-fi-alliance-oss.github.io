@@ -45,6 +45,7 @@ hide_table_of_contents: true
 | School | FederalLocaleCode | The federal locale code associated with an education organization. |     |     |     |     |
 | Calendar <br /> School <br /> StudentSchoolAssociation | GradeLevel | Indicates the grade level(s) associated with the calendar, school, or student receiving services. | Orthodox | Yes | Yes |     |
 | GradingPeriod | GradingPeriod | The state's name of the period for which grades are reported. | Flexible |     |     |     |
+| Student | IdentificationDocumentUse | The primary function of the document used for establishing identity. | Orthodox |     |     |     |
 | EducationOrganization | Indicator | The value of the indicator or metric. The semantics of an empty value is "not submitted." | Local |     |     |     |
 | EducationOrganization | IndicatorGroup | The name for a group of indicators. | Local |     |     |     |
 | EducationOrganization | IndicatorLevel | The value of the indicator or metric, as a value from a controlled vocabulary. The semantics of an empty value is "not submitted." | Local |     |     |     |
@@ -54,6 +55,7 @@ hide_table_of_contents: true
 | School | MagnetSpecialProgramEmphasisSchool | A school that has been designed: 1) to attract students of different racial/ethnic backgrounds for the purpose of reducing, preventing, or eliminating racial isolation; and/or 2) to provide an academic or social focus on a particular theme (e.g., science/math, performing arts, gifted/talented, or foreign language). | Standard | Yes | Yes |     |
 | EducationOrganization | OperationalStatus | The current operational status of the education organization (e.g., active, inactive). | Standard | Yes | Yes | Yes |
 | Student | OtherNameType | The types of alternate names for an individual. | Orthodox |     |     |     |
+| Student | PersonalInformationVerification | The category of the document relative to its purpose. | Orthodox |     |     |     |
 | StudentSchoolAssociation | ResidencyStatus | An indication of the location of a persons legal residence relative to (within or outside of) the boundaries of the public school attended and its administrative unit. | Local |     | Yes |     |
 | School | SchoolCategory | The one or more categories of school. | Local |     | Yes |     |
 | StudentSchoolAssociation | SchoolChoiceBasis | The legal basis for the school choice enrollment according to local, state or federal policy or regulation. (The descriptor provides the list of available bases specific to the state. |     |     |     |     |

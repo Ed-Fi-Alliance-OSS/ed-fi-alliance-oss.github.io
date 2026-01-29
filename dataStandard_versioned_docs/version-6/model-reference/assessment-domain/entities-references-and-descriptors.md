@@ -47,6 +47,7 @@ hide_table_of_contents: true
 | StudentAssessmentEducationOrganizationAssociation | EducationOrganizationAssociationType | The type of association being represented. |     |     |     |     |
 | StudentAssessment | EventCircumstance | An unusual event occurred during the administration of the assessment. This could include fire alarm, student became ill, etc. | Flexible |     |     |     |
 | Assessment <br /> LearningStandard <br /> Section <br /> StudentAssessment | GradeLevel | The grade level(s) for which an assessment is designed, for the specific learning standard, the grade levels in which the section is offered, or the grade level for which the assessment form was evaluated for the student on this administration. | Orthodox |     |     |     |
+| Student | IdentificationDocumentUse | The primary function of the document used for establishing identity. | Orthodox |     |     |     |
 | Assessment <br /> Section <br /> StudentAssessment | Language | The primary language of instruction, indication of the languages in which the assessment is designed, or language in which an assessment is written and/or administered. | Orthodox | Yes | Yes | Yes |
 | LearningStandard | LearningStandardCategory | An additional classification of the type of a specific learning standard. | Orthodox |     |     |     |
 | LearningStandardEquivalenceAssociation | LearningStandardEquivalenceStrength | A measure that indicates the strength or quality of the equivalence relationship. | Orthodox |     |     |     |
@@ -54,6 +55,7 @@ hide_table_of_contents: true
 | Section | MediumOfInstruction | The media through which teachers provide instruction to students and students and teachers communicate about instructional matters. | Orthodox |     |     |     |
 | Student | OtherNameType | The types of alternate names for an individual. | Orthodox |     |     |     |
 | Assessment <br /> ObjectiveAssessment <br /> StudentAssessment | PerformanceLevel | A specification of which performance level value describes the student proficiency. The performance level(s) achieved for the student assessment, or the performance level(s) defined for the assessment. | Local |     |     |     |
+| Student | PersonalInformationVerification | The primary function of the document used for establishing identity. | Orthodox |     |     |     |
 | Assessment <br /> StudentAssessment | PlatformType | The platforms with which the assessment may be delivered, or the platform with which the assessment was delivered to the student during the assessment session. | Orthodox |     |     |     |
 | Section | PopulationServed | The type of students the section is offered and tailored to. | Orthodox |     |     |     |
 | Program | ProgramCharacteristic | Reflects important characteristics of the program, such as categories or particular indications. | Local | Yes | Yes |     |
