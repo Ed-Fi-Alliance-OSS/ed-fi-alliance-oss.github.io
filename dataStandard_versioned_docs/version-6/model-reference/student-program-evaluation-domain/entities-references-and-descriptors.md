@@ -27,7 +27,6 @@ hide_table_of_contents: true
 
 | Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
-| EvaluationRating | EvaluationRatingStatus | The status of the performance evaluation. | Standard |     |     |     |
 | Program | ProgramCharacteristic | Reflects important characteristics of the program, such as categories or particular indications. | Local | Yes | Yes |     |
 | ProgramEvaluation | ProgramEvaluationPeriod | The name of the period for the program evaluation. |     |     |     |     |
 | ProgramEvaluation | ProgramEvaluationType | The type of program evaluation conducted. |     |     |     |     |
