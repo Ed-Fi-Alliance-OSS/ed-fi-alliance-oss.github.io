@@ -15,10 +15,10 @@ Documentation for the Ed-Fi ODS / API v5.4 for Suite 3 is viewable online:
 * [What's New](./whats-new/readme.mdx)
 * [Getting Started](./getting-started/readme.md)
 * [Platform Developers'
-    Guide](./platform-dev-guide/readme.md)
+    Guide](./platform-dev-guide/overview.md)
 * [API Client Developers'
     Guide](./client-developers-guide/readme.md)
-* [How-To Guides](./how-to-guides/readme.mdx)
+* [How-To Guides](./how-to-guides/readme.md)
 * [Technical
     Articles](./technical-articles/readme.mdx)
 * [Swagger API Sandbox](https://api.ed-fi.org/)
@@ -28,13 +28,13 @@ Documentation for the Ed-Fi ODS / API v5.4 for Suite 3 is viewable online:
 Here are some resource highlights for the ODS / API v5.4:
 
 * [How To: Extend the ODS / API
-    (Basic)](./how-to-guides/how-to-extend-the-ed-fi-ods-api-alternative-education-program-example.md)
+    (Basic)](./how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transportation-example.md)
 * [How To: Extend the ODS / API
     (Advanced)](./how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transcript-example.md)
 * [How To: Add a
     Composite](./how-to-guides/how-to-add-api-composites-to-the-ed-fi-ods-api-solution.md)
 * [How To: Add
-    Profiles](./how-to-guides/how-to-add-profiles-to-the-ed-fi-ods-api.md)
+    Profiles](./how-to-guides/how-to-add-profiles-to-the-ed-fi-ods-api-solution.md)
 * [How To: Create a Client
     SDK](./client-developers-guide/using-code-generation-to-create-an-sdk.md)
 
