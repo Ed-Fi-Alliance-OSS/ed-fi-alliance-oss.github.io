@@ -29,7 +29,7 @@ hide_table_of_contents: true
 
 ## Assessment Domain Descriptors
 
-| Entity | Descriptor | Description | Usage Classification (see tip below) | EDFacts Mapping | Commonly Used | Commonly State-Defined |
+| Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
 | Assessment | AcademicSubject | The description of the content or subject area (e.g., arts, mathematics, reading, stenography, or a foreign language) of an assessment. | Local | Yes | Yes |  |
 | Assessment | AssessedGradeLevel | The grade level(s) for which an assessment is designed. The semantics of null is assumed to mean that the assessment is not associated with any grade level. | Orthodox | Yes | Yes |  |
