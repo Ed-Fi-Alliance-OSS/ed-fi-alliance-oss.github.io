@@ -6,6 +6,7 @@ on:
   push:
     branches:
       - main
+      - '**'
   workflow_dispatch:
     inputs:
       skip_build:
@@ -177,74 +178,13 @@ jobs:
           echo "DEST_PATH=$DEST_PATH" >> $GITHUB_ENV
 
       # ========== PRODUCTION PATH (Main Branch) ==========
-      - name: Enable multiple revisions
-        if: ${{ env.IS_MAIN == 'true' }}
-        run: |
-          az containerapp revision set-mode \
-            --name "$AZURE_CONTAINERAPP_NAME" \
-            --resource-group "$AZURE_RESOURCE_GROUP" \
-            --mode multiple
-
       - name: Create new revision (production)
         if: ${{ env.IS_MAIN == 'true' }}
         run: |
           az containerapp update \
             --name "$AZURE_CONTAINERAPP_NAME" \
             --resource-group "$AZURE_RESOURCE_GROUP" \
-            --set-env-vars PERSIST_DIRECTORY="/data/${{ env.DEST_PATH }}"
-
-      - name: Get revisions (production)
-        if: ${{ env.IS_MAIN == 'true' }}
-        id: revisions
-        run: |
-          NEW_REV=$(az containerapp revision list \
-            --name "$AZURE_CONTAINERAPP_NAME" \
-            --resource-group "$AZURE_RESOURCE_GROUP" \
-            --query "[].name" -o tsv | tail -n 1)
-          STABLE_REV=$(az containerapp revision list \
-            --name "$AZURE_CONTAINERAPP_NAME" \
-            --resource-group "$AZURE_RESOURCE_GROUP" \
-            --query "[?properties.active].name" -o tsv | head -n 1)
-          echo "NEW_REV=$NEW_REV" >> $GITHUB_OUTPUT
-          echo "STABLE_REV=$STABLE_REV" >> $GITHUB_OUTPUT
-
-      - name: Initial traffic split (production)
-        if: ${{ env.IS_MAIN == 'true' }}
-        run: |
-          az containerapp ingress traffic set \
-            --name "$AZURE_CONTAINERAPP_NAME" \
-            --resource-group "$AZURE_RESOURCE_GROUP" \
-            --revision-weight ${{ steps.revisions.outputs.STABLE_REV }}=90 ${{ steps.revisions.outputs.NEW_REV }}=10
-
-      - name: Health gate (production)
-        if: ${{ env.IS_MAIN == 'true' }}
-        run: |
-          FQDN=$(az containerapp show --name "$AZURE_CONTAINERAPP_NAME" --resource-group "$AZURE_RESOURCE_GROUP" --query "properties.configuration.ingress.fqdn" -o tsv)
-          ATTEMPTS=12
-          for i in $(seq 1 $ATTEMPTS); do
-            code=$(curl -sk -o /dev/null -w "%{http_code}" "https://$FQDN/api/v1/heartbeat")
-            if [ "$code" = "200" ]; then
-              echo "Healthy"; exit 0
-            fi
-            sleep 10
-          done
-          echo "Unhealthy"; exit 1
-
-      - name: Ramp traffic to new (production)
-        if: ${{ env.IS_MAIN == 'true' && success() }}
-        run: |
-          az containerapp ingress traffic set \
-            --name "$AZURE_CONTAINERAPP_NAME" \
-            --resource-group "$AZURE_RESOURCE_GROUP" \
-            --revision-weight ${{ steps.revisions.outputs.STABLE_REV }}=0 ${{ steps.revisions.outputs.NEW_REV }}=100
-
-      - name: Rollback traffic (production)
-        if: ${{ env.IS_MAIN == 'true' && failure() }}
-        run: |
-          az containerapp ingress traffic set \
-            --name "$AZURE_CONTAINERAPP_NAME" \
-            --resource-group "$AZURE_RESOURCE_GROUP" \
-            --revision-weight ${{ steps.revisions.outputs.STABLE_REV }}=100 ${{ steps.revisions.outputs.NEW_REV }}=0
+            --set-env-vars CHROMA_PATH="/data/${{ env.DEST_PATH }}"
 
       # ========== STAGING PATH (Feature Branches) ==========
       - name: Direct deploy to staging
@@ -261,6 +201,7 @@ jobs:
   deploy:
     name: Deploy to GitHub Pages
     needs: build
+    if: ${{ github.ref == 'refs/heads/main' }}
 
     # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
     permissions:
