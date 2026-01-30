@@ -84,6 +84,7 @@ jobs:
     name: Build Chroma Vectorstore
     needs: build
     runs-on: ubuntu-latest
+    timeout-minutes: 60
     if: ${{ github.event.inputs.skip_vectorstore != 'true' }}
     permissions:
       contents: read
@@ -123,6 +124,35 @@ jobs:
             --embedding-model sentence-transformers/all-MiniLM-L6-v2 \
             --device cpu \
             --limit-docs ${{ github.event.inputs.limit_docs || 0 }}
+
+      - name: Validate vectorstore build
+        run: |
+          echo "Validating ChromaDB build..."
+          if [ ! -f "chroma_db/chroma.sqlite3" ]; then
+            echo "❌ Error: chroma.sqlite3 not found"
+            exit 1
+          fi
+          
+          # Find collection directories (UUID format)
+          collection_dirs=$(find chroma_db -type d -regex '.*/[a-f0-9-]\{36\}' | wc -l)
+          if [ "$collection_dirs" -eq 0 ]; then
+            echo "❌ Error: No collection directories found"
+            exit 1
+          fi
+          
+          # Check if collection directories have data files
+          for dir in $(find chroma_db -type d -regex '.*/[a-f0-9-]\{36\}'); do
+            file_count=$(find "$dir" -type f | wc -l)
+            if [ "$file_count" -eq 0 ]; then
+              echo "❌ Error: Collection directory $dir is empty"
+              exit 1
+            fi
+            echo "✅ Collection directory $(basename $dir) has $file_count files"
+          done
+          
+          # Display total size
+          total_size=$(du -sh chroma_db | cut -f1)
+          echo "✅ ChromaDB build validated successfully (size: $total_size)"
 
       - name: Upload Vectorstore Artifact
         uses: actions/upload-artifact@v4

@@ -150,11 +150,29 @@ def build_vectorstore(
         vs.add_documents(batch)
         logger.info("Added batch %d-%d", i, min(i+batch_size, len(docs)))
 
-    # Ensure persistence
+    # Ensure persistence and verify
+    logger.info("Persisting vectorstore to disk...")
     try:
         vs.persist()
-    except Exception:
-        pass
+        logger.info("Persist call completed")
+    except AttributeError:
+        # Newer versions of langchain-chroma may not have persist() method
+        # Data is auto-persisted, so this is safe to ignore
+        logger.info("No explicit persist method (auto-persisted)")
+    except Exception as e:
+        logger.error("Failed to persist vectorstore: %s", e)
+        return 4
+
+    # Verify collection was created and has documents
+    try:
+        collection = vs._client.get_collection(collection_name)
+        count = collection.count()
+        logger.info("Verification: collection contains %d embeddings", count)
+        if count != len(docs):
+            logger.warning("Mismatch: indexed %d docs but collection has %d embeddings", len(docs), count)
+    except Exception as e:
+        logger.error("Failed to verify collection: %s", e)
+        return 5
 
     logger.info("Completed: %d documents indexed", len(docs))
     return 0
