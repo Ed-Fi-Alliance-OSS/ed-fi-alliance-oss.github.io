@@ -1,0 +1,444 @@
+# How To: Load the TPDM Sample XML Data using Bulk Load Client Utility
+
+This article describes the steps needed to populate an Ed-Fi ODS with sample TPDM XML data using the [Ed-Fi Bulk Load Client](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/pages/22774385/Bulk+Load+Client+Utility) utility. It assumes you have deployed TPDM plugin as described in the article [How To: Deploy TPDM As Dynamic Plugin](https://edfi.atlassian.net/wiki/display/ODSAPIS3V53/How+To%3A+Deploy+TPDM+As+Dynamic+Plugin). This process works very similarly to [How To: Load the ODS with Sample XML Data using Bulk Load Client Utility](./how-to-load-the-ods-with-sample-xml-data-using-bulk-load-client-utility.mdx).
+
+The steps can be summarized as:
+
+* Step 1. Install the Ed-Fi Bulk Load Client
+* Step 2. Download Scripts and Sample Data
+* Step 3. Create an Empty Sandbox
+* Step 4. Update Claim Set to Load Descriptors and Education Organizations
+* Step 5. Run the Bootstrap Script to Load Descriptors and Education Organizations
+* Step 6. Update Claim Set to Load Sample Data
+* Step 7. Run the Bootstrap Script to Load Sample Data
+
+## Step 1. Install the Ed-Fi Bulk Load Client
+
+* Ensure that you have an instance of the Ed-Fi ODS / API running locally that has been set up following the [Getting Started - Source Code Installation](../getting-started/source-code-installation/readme.md).
+* Ensure .NET 8.0 SDK is installed.
+* Add Ed-Fi package source by running the following command in PowerShell:
+
+```powershell
+if (-not [Net.ServicePointManager]::SecurityProtocol.HasFlag([Net.SecurityProtocolType]::Tls12)) {
+   [Net.ServicePointManager]::SecurityProtocol += [Net.SecurityProtocolType]::Tls12
+}
+
+Register-PackageSource -Name Ed-FiAzureArtifacts -Location https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json -ProviderName NuGet
+```
+
+* Install the Ed-Fi Bulk Load Client from a PowerShell prompt using the following command:
+
+```powershell
+c:\>mkdir {YourInstallFolder}
+c:\> dotnet tool install EdFi.Suite3.BulkLoadClient.Console --version 5.4.480 --tool-path {YourInstallFolder}
+
+You can invoke the tool using the following command: EdFi.BulkLoadClient.Console
+Tool 'edfi.suite3.bulkloadclient.console' (version '5.4.480') was successfully installed.
+```
+
+* You can verify that the EdFi.BulkLoadClient.Console.exe is available by browsing to this location {YourInstallFolder}\EdFi.BulkLoadClient.Console.exe
+
+## Step 2. Download Scripts and Sample Data
+
+* Download and Extract [Ed-Fi-TPDMDataLoad.zip](https://edfi.atlassian.net/wiki/download/attachments/22774832/Ed-Fi-TPDMDataLoad.zip?version=1&modificationDate=1641861363987&cacheVersion=1&api=v2) to a local folder. We recommend C:\Ed-Fi-TPDMDataLoad. Ed-Fi-TPDMDataLoad.zip contains all the scripts and directory structure used in this how-to article.
+* Download the [Sample XML](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Standard/tree/v3.3.1-b/Samples/Sample%20XML) to Ed-Fi-TPDMDataLoad\Sample XML
+* Download the [Descriptors](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Standard/tree/v3.3.1-b/Descriptors) to Ed-Fi-TPDMDataLoad\Bootstrap
+* Move the following files from Ed-Fi-TPDMDataLoad\Sample XML to Ed-Fi-TPDMDataLoad\Bootstrap
+  * Standards.xml
+  * EducationOrganization.xml
+  * CreditCategoryDescriptor.xml
+  * IndicatorDescriptor.xml
+  * IndicatorGroupDescriptor.xml
+  * IndicatorLevelDescriptor.xml
+  * ProgramCharacteristicDescriptor.xml
+* Download the [TPDM Sample XML](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-TPDM-Artifacts/tree/Data-Standard-v3.3.1-b/Samples/Sample%20XML) to Ed-Fi-TPDMDataLoad\Sample XML\TPDM.
+* Download the [TPDM Descriptors](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-TPDM-Artifacts/tree/Data-Standard-v3.3.1-b/Descriptors) to Ed-Fi-TPDMDataLoad\Bootstrap\TPDM.
+* Copy the file TPDM Sample XML\EducationOrganization.xml to the Ed-Fi-TPDMDataLoad\Bootstrap\TPDM folder:
+
+:::note
+Note that the TPDM Sample data depends on the Grand Bend, so we are loading them
+together in this how-to article.
+
+The Bootstrap folder is used to load the necessary Descriptors and Education
+Organization used by the ODS / API. Since they require a special claimset (enabled
+in Step 4, below), they must be loaded separately from the other sample files.
+:::
+
+## Step 3. Create an Empty Sandbox
+
+* Open a PowerShell session.
+* Navigate to \Ed-Fi-ODS-Implementation\ directory
+* Execute .\Initialize-PowershellForDevelopment.ps1 and then Reset-EmptySandboxDatabase.
+The script will create EdFi_Ods_Sandbox_Empty Database.
+
+## Step 4. Update Claim Set to Load Descriptors and Education Organizations
+
+* Execute CreateApiClienforEmptySandbox.sql by executing the file against the EdFi_Admin database using any database query
+tool. Use the version appropriate to your database.
+
+<details>
+<summary>SQL Server - CreateApiClienforEmptySandbox.sql</summary>
+
+```sql
+DECLARE @VendorName nvarchar(150) = 'Empty Test Vendor'
+DECLARE @NamespacePrefix nvarchar (255) = 'uri://ed-fi.org'
+DECLARE @NamespacePrefixEdu nvarchar (255) = 'uri://gbisd.edu'
+DECLARE @NamespacePrefixTPDM nvarchar (255) = 'uri://tpdm.ed-fi.org'
+DECLARE @UserFullName varchar(150) = 'Empty Test User'
+DECLARE @UserEmailAddress varchar(150) = 'EmptyTestUser@test.com'
+DECLARE @ApplicationName varchar(150) = 'Default Sandbox Application Empty'
+
+DECLARE @vendorId INT
+
+-- Update if vendor already exists
+UPDATE [dbo].[Vendors]
+SET [VendorName] = @VendorName
+WHERE [VendorName] = @VendorName
+
+-- Create vendor if it does not exist
+IF (NOT EXISTS (SELECT * FROM [dbo].[Vendors] WHERE [VendorName] = @VendorName))
+BEGIN
+    INSERT [dbo].[Vendors] ([VendorName])
+    VALUES (@VendorName)
+END
+
+SELECT @vendorId = [VendorId] FROM [dbo].[Vendors] WHERE [VendorName] = @VendorName
+
+DECLARE @userId INT
+
+-- Update if user already exists
+UPDATE [dbo].[Users]
+SET [FullName] = @UserFullName
+    ,[Email] = @UserEmailAddress
+    ,[Vendor_VendorId] = @vendorId
+WHERE [Email] = @UserEmailAddress
+
+-- Create user if it does not exist
+IF (NOT EXISTS (SELECT * FROM [dbo].[Users] WHERE [Email] = @UserEmailAddress))
+BEGIN
+    INSERT [dbo].[Users] ([FullName]
+        ,[Email]
+        ,[Vendor_VendorId])
+    VALUES (@UserFullName
+        ,@UserEmailAddress
+        ,@vendorId)
+END
+
+SELECT @userId = [UserId] FROM [dbo].[Users] WHERE [Email] = @UserEmailAddress
+
+DECLARE @applicationId INT
+
+-- Create application if it does not exist
+IF (NOT EXISTS (SELECT * FROM [dbo].[Applications] WHERE [ApplicationName] = @ApplicationName))
+BEGIN
+    INSERT [dbo].[Applications] ([ApplicationName]
+        ,[OdsInstance]
+        ,[OperationalContextUri]
+        ,[ClaimSetName]
+        ,[IsEnabled])
+    VALUES (@ApplicationName
+        ,'Ods_Sandbox_Empty'
+        ,NULL
+        ,'Bootstrap Descriptors and EdOrgs'
+        ,1)
+END
+
+SELECT @applicationId = [ApplicationId] FROM [dbo].[Applications] WHERE [ApplicationName] = @ApplicationName
+
+-- Update existing application data
+IF (EXISTS (SELECT * FROM [dbo].[ApplicationEducationOrganizations] WHERE [Application_ApplicationId] = @applicationId))
+BEGIN
+    DELETE [dbo].[ApplicationEducationOrganizations]
+    WHERE [Application_ApplicationId] = @applicationId
+END
+
+-- Create application profiles
+IF (NOT EXISTS (SELECT * FROM [dbo].[ApplicationProfiles] WHERE [Application_ApplicationId] = @applicationId AND [ProfileName] = 'Test Profile'))
+BEGIN
+    INSERT [dbo].[ApplicationProfiles] ([Application_ApplicationId]
+        ,[ProfileName])
+    VALUES (@applicationId
+        ,'Test Profile')
+END
+
+-- Create API client
+DECLARE @Key nvarchar(50) = LOWER(CONVERT(nvarchar(50), NEWID()))
+DECLARE @Secret nvarchar(100) = UPPER(CONVERT(nvarchar(50), NEWID()))
+DECLARE @apiClientId INT
+
+-- Update if one exists for the application
+UPDATE [dbo].[ApiClients]
+SET [Name] = 'Default Sandbox Client Empty'
+    ,[ApplicationId] = @applicationId
+    ,[UseSandbox] = 1
+    ,[SandboxType] = 0
+WHERE [ApplicationId] = @applicationId
+
+-- Create if one does not exist for the application
+IF (NOT EXISTS (SELECT * FROM [dbo].[ApiClients] WHERE [ApplicationId] = @applicationId))
+BEGIN
+    INSERT [dbo].[ApiClients] ([Key]
+        ,[Secret]
+        ,[Name]
+        ,[ApplicationId]
+        ,[UseSandbox]
+        ,[SandboxType])
+    VALUES (@Key
+        ,@Secret
+        ,'Default Sandbox Client Empty'
+        ,@applicationId
+        ,1
+        ,0)
+END
+
+-- Get existing or created api client id
+SELECT @apiClientId = [ApiClientId] FROM [dbo].[ApiClients] WHERE [ApplicationId] = @applicationId
+
+-- Update api client secret if it already exists
+UPDATE [dbo].[ClientAccessTokens]
+SET [ApiKey] = @Key
+    ,[Secret] = @Secret
+    ,[Expiration] = DATEADD(DAY, 365, GETDATE())
+WHERE [ApiClient_ApiClientId] = @apiClientId
+
+IF (NOT EXISTS (SELECT * FROM [dbo].[ClientAccessTokens] WHERE [ApiClient_ApiClientId] = @apiClientId))
+BEGIN
+    INSERT [dbo].[ClientAccessTokens] ([ApiKey]
+        ,[Secret]
+        ,[Expiration]
+        ,[SortOrder]
+        ,[IsRefreshToken]
+        ,[ApiClient_ApiClientId])
+    VALUES (@Key
+        ,@Secret
+        ,DATEADD(DAY, 365, GETDATE())
+        ,1
+        ,0
+        ,@apiClientId)
+END
+
+-- Create namespace if it doesn't exist
+IF (NOT EXISTS (SELECT * FROM [dbo].[ClientAppNamespaces] WHERE [ApiClient_ApiClientId] = @apiClientId AND [NamespacePrefix] = @NamespacePrefix))
+BEGIN
+    INSERT [dbo].[ClientAppNamespaces] ([ApiClient_ApiClientId]
+        ,[NamespacePrefix])
+    VALUES (@apiClientId
+        ,@NamespacePrefix)
+END
+
+-- Create namespace if it doesn't exist
+IF (NOT EXISTS (SELECT * FROM [dbo].[ClientAppNamespaces] WHERE [ApiClient_ApiClientId] = @apiClientId AND [NamespacePrefix] = @NamespacePrefixEdu))
+BEGIN
+    INSERT [dbo].[ClientAppNamespaces] ([ApiClient_ApiClientId]
+        ,[NamespacePrefix])
+    VALUES (@apiClientId
+        ,@NamespacePrefixEdu)
+END
+
+-- Create namespace if it doesn't exist
+IF (NOT EXISTS (SELECT * FROM [dbo].[ClientAppNamespaces] WHERE [ApiClient_ApiClientId] = @apiClientId AND [NamespacePrefix] = @NamespacePrefixTPDM))
+BEGIN
+    INSERT [dbo].[ClientAppNamespaces] ([ApiClient_ApiClientId]
+        ,[NamespacePrefix])
+    VALUES (@apiClientId
+        ,@NamespacePrefixTPDM)
+END
+
+-- Output key and secret
+PRINT 'Key: ' + @Key
+PRINT 'Secret: ' + @Secret
+GO
+```
+</details>
+
+<details>
+<summary>PostgreSQL - CreateApiClienforEmptySandbox.sql</summary>
+
+```sql
+DO $$
+DECLARE 
+   vendor_name varchar(150) := 'Empty Test Vendor';
+   namespace_prefix varchar(255) = 'uri://ed-fi.org';
+   namespace_prefix_edu varchar(255) = 'uri://gbisd.edu';
+   namespace_prefix_tpdm varchar(255) = 'uri://tpdm.ed-fi.org';
+   user_full_name varchar(150) = 'Local Test User';
+   user_email_address varchar(150) = 'EmptyTestUser@test.com';
+   application_name varchar(150) = 'Default Sandbox Application Empty';
+   
+   vendor_id int;
+   user_id int;
+   application_id int;
+   key varchar(50) = lower(cast(gen_random_uuid() as varchar(50)));
+   secret varchar(100) = upper(cast(gen_random_uuid() as varchar(50)));
+   api_client_id int;
+
+BEGIN
+    -- Update if vendor already exists
+    UPDATE dbo.Vendors
+    SET VendorName = vendor_name
+    WHERE VendorName = vendor_name;
+
+    -- Create vendor if it does not exist
+    IF (NOT EXISTS (SELECT * FROM dbo.Vendors WHERE VendorName = vendor_name)) THEN
+        INSERT INTO dbo.Vendors (VendorName)
+        VALUES (vendor_name);
+    END IF;
+    
+    SELECT VendorId INTO vendor_id FROM dbo.Vendors WHERE VendorName = vendor_name;
+    
+    -- Update if user already exists
+    UPDATE dbo.Users
+    SET FullName = user_full_name,
+        Email = user_email_address,
+        Vendor_VendorId = vendor_id
+    WHERE Email = user_email_address;
+    
+    -- Create user if it does not exist
+    IF (NOT EXISTS (SELECT * FROM dbo.Users WHERE Email = user_email_address)) THEN
+        INSERT INTO dbo.Users (FullName, Email, Vendor_VendorId)
+        VALUES (user_full_name, user_email_address, vendor_id);
+    END IF;
+    
+    SELECT UserId INTO user_id FROM dbo.Users WHERE Email = user_email_address;
+    
+    -- Create application if it does not exist
+    IF (NOT EXISTS (SELECT * FROM dbo.Applications WHERE ApplicationName = application_name)) THEN
+        INSERT INTO dbo.Applications (ApplicationName, OdsInstance, OperationalContextUri, ClaimSetName, IsEnabled)
+        VALUES (application_name, 'Ods_Sandbox_Empty', NULL, 'Bootstrap Descriptors and EdOrgs', true);
+    END IF;
+    
+    SELECT ApplicationId INTO application_id FROM dbo.Applications WHERE ApplicationName = application_name;
+    
+    -- Update existing application data
+    IF (EXISTS (SELECT * FROM dbo.ApplicationEducationOrganizations WHERE Application_ApplicationId = application_id)) THEN
+        DELETE FROM dbo.ApplicationEducationOrganizations
+        WHERE Application_ApplicationId = application_id;
+    END IF;
+    
+    -- Create application profiles
+    IF (NOT EXISTS (SELECT * FROM dbo.ApplicationProfiles WHERE Application_ApplicationId = application_id AND ProfileName = 'Test Profile')) THEN
+        INSERT INTO dbo.ApplicationProfiles (Application_ApplicationId, ProfileName)
+        VALUES (application_id, 'Test Profile');
+    END IF;
+    
+    -- Update if one exists for the application
+    UPDATE dbo.ApiClients
+    SET Name = 'Default Sandbox Client Empty',
+        ApplicationId = application_id,
+        UseSandbox = true,
+        SandboxType = 0
+    WHERE ApplicationId = application_id;
+    
+    -- Create if one does not exist for the application
+    IF (NOT EXISTS (SELECT * FROM dbo.ApiClients WHERE ApplicationId = application_id)) THEN
+        INSERT INTO dbo.ApiClients (Key, Secret, Name, ApplicationId, UseSandbox, SandboxType)
+        VALUES (key, secret, 'Default Sandbox Client Empty', application_id, true, 0);
+    END IF;
+    
+    -- Get existing or created api client id
+    SELECT ApiClientId INTO api_client_id FROM dbo.ApiClients WHERE ApplicationId = application_id;
+    
+    -- Update api client secret if it already exists
+    UPDATE dbo.ClientAccessTokens
+    SET ApiKey = key,
+        Secret = secret,
+        Expiration = NOW() + INTERVAL '365 days'
+    WHERE ApiClient_ApiClientId = api_client_id;
+    
+    IF (NOT EXISTS (SELECT * FROM dbo.ClientAccessTokens WHERE ApiClient_ApiClientId = api_client_id)) THEN
+        INSERT INTO dbo.ClientAccessTokens (ApiKey, Secret, Expiration, SortOrder, IsRefreshToken, ApiClient_ApiClientId)
+        VALUES (key, secret, NOW() + INTERVAL '365 days', 1, false, api_client_id);
+    END IF;
+    
+    -- Create namespace if it doesn't exist
+    IF (NOT EXISTS (SELECT * FROM dbo.ClientAppNamespaces WHERE ApiClient_ApiClientId = api_client_id AND NamespacePrefix = namespace_prefix)) THEN
+        INSERT INTO dbo.ClientAppNamespaces (ApiClient_ApiClientId, NamespacePrefix)
+        VALUES (api_client_id, namespace_prefix);
+    END IF;
+    
+    -- Create namespace if it doesn't exist
+    IF (NOT EXISTS (SELECT * FROM dbo.ClientAppNamespaces WHERE ApiClient_ApiClientId = api_client_id AND NamespacePrefix = namespace_prefix_edu)) THEN
+        INSERT INTO dbo.ClientAppNamespaces (ApiClient_ApiClientId, NamespacePrefix)
+        VALUES (api_client_id, namespace_prefix_edu);
+    END IF;
+    
+    -- Create namespace if it doesn't exist
+    IF (NOT EXISTS (SELECT * FROM dbo.ClientAppNamespaces WHERE ApiClient_ApiClientId = api_client_id AND NamespacePrefix = namespace_prefix_tpdm)) THEN
+        INSERT INTO dbo.ClientAppNamespaces (ApiClient_ApiClientId, NamespacePrefix)
+        VALUES (api_client_id, namespace_prefix_tpdm);
+    END IF;
+    
+    -- Output key and secret
+    RAISE NOTICE 'Key: %', key;
+    RAISE NOTICE 'Secret: %', secret;
+END $$;
+```
+</details>
+
+## Step 5. Run the Bootstrap Script to Load Descriptors and Education Organizations
+
+* Open a PowerShell session.
+* Navigate to Ed-Fi-TPDMDataLoad directory (e.g., C:\Ed-Fi-TPDMDataLoad).
+* Open the LoadBootstrapData.ps1 file in notepad or Windows PowerShell ISE and update the $apiLoaderExe variable
+Value where EdFi.BulkLoadClient.Console is installed in Step 1.
+* Example $apiLoaderExe= "{YourInstallFolderFullPath}\EdFi.BulkLoadClient.Console.exe"
+* Save and Execute LoadBootstrapData.ps1.
+The script will run the Bulk Load Client loading data from the Bootstrap folder
+to the TPDM Populated Sandbox Database.
+
+## Step 6. Update Claim Set to Load Sample Data
+
+* Execute EnableSandboxClaimset.sql by executing the file against the EdFi_Admin database using any database query
+tool. Use the version appropriate to your database.
+
+<details>
+<summary>SQL Server - EnableSandboxClaimset.sql</summary>
+
+```sql
+UPDATE [dbo].[Applications]
+SET [ClaimSetName] = 'Ed-Fi Sandbox'
+WHERE [ApplicationName] = 'Default Sandbox Application Empty'
+GO
+```
+</details>
+
+<details>
+<summary>PostgreSQL - EnableSandboxClaimset.sql</summary>
+
+```sql
+DO $$
+BEGIN
+ UPDATE dbo.Applications 
+ SET ClaimSetName = 'Ed-Fi Sandbox' 
+ WHERE ApplicationName = 'Default Sandbox Application Empty';
+END $$
+```
+</details>
+
+## Step 7. Run the Bootstrap Script to Load Sample Data
+
+* Open a PowerShell session.
+* Navigate to Ed-Fi-TPDMDataLoad directory (e.g., C:\Ed-Fi-TPDMDataLoad).
+* Open the LoadSampleData.ps1 file in notepad or Windows PowerShell ISE and update the $apiLoaderExe variable
+Value where EdFi.BulkLoadClient.Console is installed in Step 1.
+* Example $apiLoaderExe= "{YourInstallFolderFullPath}\EdFi.BulkLoadClient.Console.exe"
+* Save and Execute LoadSampleData.ps1.
+The script will run the Bulk Load Client to load data from the Sample XML folder
+to the Empty Sandbox database.
+
+## Downloads
+The following link contains the scripts and directory setup used in this how-to article:
+
+[Ed-Fi-TPDMDataLoad.zip](https://edfi.atlassian.net/wiki/download/attachments/22774832/Ed-Fi-TPDMDataLoad.zip?version=1&modificationDate=1641861363987&cacheVersion=1&api=v2)
+
+The following GitHub links contain the sample XML files and the as-shipped Ed-Fi
+Descriptor XML:
+
+* [Sample XML](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Standard/tree/v3.3.1-b/Samples/Sample%20XML)
+* [Descriptors](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Standard/tree/v3.3.1-b/Descriptors)
+
+The following GitHub links contain the sample XML files and the as-shipped TPDM
+Descriptor XML:
+
+* [TPDM Sample XML](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-TPDM-Artifacts/tree/Data-Standard-v3.3.1-b/Samples/Sample%20XML)
+* [TPDM Descriptors](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-TPDM-Artifacts/tree/Data-Standard-v3.3.1-b/Descriptors)
