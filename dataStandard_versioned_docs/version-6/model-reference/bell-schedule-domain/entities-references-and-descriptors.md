@@ -27,7 +27,7 @@ hide_table_of_contents: true
 
 ## Bell Schedule Domain Descriptors
 
-| Entity | Descriptor | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
+| Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
 | School | AccreditationStatus | The accreditation status for an education preparation provider. |     |     |     |     |
 | EducationOrganization | AddressType | The type of address listed for an individual or organization. (For example:  Physical Address, Mailing Address, Home Address, etc.) | Orthodox | Yes | Yes | Yes |
@@ -44,7 +44,7 @@ hide_table_of_contents: true
 | EducationOrganization | Indicator | The name or code for the indicator or metric. |     |     |     |     |
 | EducationOrganization | IndicatorLevel | The value of the indicator or metric, as a value from a controlled vocabulary. The semantics of an empty value is "not submitted." | Local |     |     |     |
 | EducationOrganization | IndicatorGroup | The name for a group of indicators. | Local |     |     |     |
-| EducationOrganization | InstitutionTelephone | The type of communication number listed for an individual or organization. | Orthodox | Yes | Yes | Yes |
+| EducationOrganization | InstitutionTelephoneNumberType | The type of communication number listed for an individual or organization. | Orthodox | Yes | Yes | Yes |
 | School | InternetAccess | The type of Internet access available. | Flexible |     |     |     |
 | Section | Language | The primary language of instruction. If omitted, English is assumed. | Orthodox | Yes | Yes | Yes |
 | EducationOrganization | Locale | A general geographic indicator that categorizes U.S. territory (e.g., City, Suburban). | Orthodox |     | Yes |     |

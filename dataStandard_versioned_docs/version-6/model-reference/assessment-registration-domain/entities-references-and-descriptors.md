@@ -28,7 +28,7 @@ hide_table_of_contents: true
 
 ## Assessment Domain Descriptors
 
-| Entity | Descriptor | Description |
+| Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
 | StudentAssessmentRegistration <br /> StudentEducationOrganizationAssessmentAccommodation <br /> StudentAssessmentRegistrationBatteryPartAssociation | Accommodation | The special variation(s) to be used for the specific part of the assessment battery on how is presented, how it is administered, or how the test taker is allowed to respond.| Local |     | Yes |     |
 | StudentAssessmentRegistration | GradeLevel | The grade level or primary instructional level at which the student is to be assessed. | Orthodox | Yes | Yes |     |

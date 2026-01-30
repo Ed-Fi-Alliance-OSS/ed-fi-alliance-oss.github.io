@@ -45,6 +45,13 @@ hide_table_of_contents: true
 | StudentEducationOrganizationAssociation | BarrierToInternetAccessInResidence | An indication of the barrier to having internet access in the student’s primary place of residence. |     |     |     |     |
 | StudentTransportation | BusRoute | Identifies the specific route taken by a bus for student transportation. |     |     |     |     |
 | GraduationPlan | CertificationRoute | The process, program, or pathway used to obtain a certification. | Orthodox |     |     |     |
+| School | CharterApprovalAgencyType | The type of agency that approved the establishment or continuation of a charter school. | Standard | Yes | Yes |     |
+| LocalEducationAgency <br /> School | CharterStatus | A school or agency providing free public elementary or secondary education to eligible students under a specific charter granted by the state legislature or other appropriate authority and designated by such authority to be a charter school. | Standard | Yes | Yes | Yes |
+| StudentEducationOrganizationAssociation | CohortYearType | The type of cohort year (9th grade, graduation). | Local |     |     |     |
+| EducationOrganization <br /> Student | Country | The name of the country. It is strongly recommended that entries use only ISO 3166 2-letter country codes. | Standard |     | Yes |     |
+| GraduationPlan | CreditCategory | "A categorization for the course transcript credits awarded in the course transcript. | Flexible |     |     |     |
+| GraduationPlan | CreditType | The type of credits or units of value awarded for the completion of a course. | Flexible |     |     |     |
+| CrisisEvent | CrisisType | The type or category of crisis. | Standard |     | Yes | Yes |
 | StudentEducationOrganizationAssociation | DisplacedStudentStatus | Indicates whether a student has been displaced as a result of a crisis event. |     |     |     |     |
 | EducationOrganization | EducationOrganizationCategory | The classification of the education agency within the geographic boundaries of a state according to the level of administrative and operational control granted by the state. |     |     |     |     |
 | StudentSchoolAssociation | EducationPlan | The type of education plan(s) the student is following, if appropriate. |     |     |     |     |

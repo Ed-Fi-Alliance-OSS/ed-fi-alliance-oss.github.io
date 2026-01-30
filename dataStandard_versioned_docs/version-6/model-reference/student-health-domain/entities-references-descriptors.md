@@ -26,7 +26,7 @@ hide_table_of_contents: true
 | EducationOrganization <br /> Student | Country | The name of the country. It is strongly recommended that entries use only ISO 3166 2-letter country codes. | Standard |     |     |     |
 | EducationOrganization | EducationOrganizationCategory | The classification of the education agency within the geographic boundaries of a state according to the level of administrative and operational control granted by the state. | Standard |     | Yes | Yes |
 | Student | IdentificationDocumentUse | The primary function of the document used for establishing identity. | Orthodox |     |     |     |
-| StudentHealth | RequiredImmunization | An indication of the type of immunization that the student has received. |     |     |     |     |
+| StudentHealth | ImmunizationType | An indication of the type of immunization that the student has received. |     |     |     |     |
 | EducationOrganization | Indicator | The value of the indicator or metric. The semantics of an empty value is "not submitted." | Local |     |     |     |
 | EducationOrganization | IndicatorGroup | The name for a group of indicators. | Local |     |     |     |
 | EducationOrganization | IndicatorLevel | The value of the indicator or metric, as a value from a controlled vocabulary. The semantics of an empty value is "not submitted." | Local |     |     |     |

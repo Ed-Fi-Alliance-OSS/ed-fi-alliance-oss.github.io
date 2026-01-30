@@ -88,8 +88,8 @@ hide_table_of_contents: true
 | CourseTranscript | MethodCreditEarned | The method the credits were earned. | Orthodox |     |     |     |
 | EducationOrganization | OperationalStatus | The current operational status of the education organization (e.g., active, inactive). | Standard | Yes | Yes | Yes |
 | Student | OtherNameType | The types of alternate names for an individual. | Orthodox |     |     |     |
-| Student | PersonalInformationVerification | The category of the document relative to its purpose. | Orthodox |     |     |     |
 | Grade | PerformanceBaseConversion | A conversion of the level to a standard set of performance levels. | Orthodox |     |     |     |
+| Student | PersonalInformationVerification | The category of the document relative to its purpose. | Orthodox |     |     |     |
 | Section | PopulationServed | The type of students the section is offered and tailored to. | Orthodox |     |     |     |
 | Program | ProgramCharacteristic | Reflects important characteristics of the program, such as categories or particular indications. | Local | Yes | Yes |     |
 | Program | ProgramSponsor | Ultimate and intermediate providers of funds for a particular educational or service program or activity, or for an individual's participation in the program or activity (e.g., Federal, State, ESC, District, School, Private Organization). | Standard |     | Yes |     |

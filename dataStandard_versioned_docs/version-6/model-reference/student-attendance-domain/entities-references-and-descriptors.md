@@ -48,8 +48,8 @@ hide_table_of_contents: true
 | Section | EducationalEnvironment | The setting in which a student receives education and related services. | Orthodox |     |     |     |
 | School | FederalLocaleCode | The federal locale code associated with an education organization. |     |     |     |     |
 | School <br /> Section | GradeLevel | The grade levels served at the school or grade levels in which the section is offered. | Orthodox | Yes | Yes |     |
-| School | InternetAccess | The type of Internet access available. | Flexible |     |     |     |
 | Staff <br /> Student | IdentificationDocumentUse | The primary function of the document used for establishing identity. | Orthodox |     |     |     |
+| School | InternetAccess | The type of Internet access available. | Flexible |     |     |     |
 | Section | Language | The primary language of instruction. If omitted, English is assumed. | Orthodox | Yes | Yes | Yes |
 | Staff | LevelOfEducation | The extent of formal instruction an individual has received (e.g., the highest grade in school completed or its equivalent or the highest degree received). | Orthodox |     |     |     |
 | School | MagnetSpecialProgramEmphasisSchool | A school that has been designed: 1) to attract students of different racial/ethnic backgrounds for the purpose of reducing, preventing, or eliminating racial isolation; and/or 2) to provide an academic or social focus on a particular theme (e.g., science/math, performing arts, gifted/talented, or foreign language). | Standard | Yes | Yes |     |
