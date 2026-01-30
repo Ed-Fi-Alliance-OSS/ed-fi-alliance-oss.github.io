@@ -38,28 +38,28 @@ hide_table_of_contents: true
 | Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
 | Course | AcademicSubject | The intended major subject area of the course. | Local |     |     |     |
-| CareerPathway | Indicates the career cluster or pathway the course is associated with as part of a CTE curriculum. | Flexible |     |     |     |
-| CompetencyLevel | The competency levels defined to rate the student for the course. | Flexible |     |     |     |
-| CourseDefinedBy | Specifies whether the course was defined by the SEA, LEA, School, or national organization. | Orthodox |     |     |     |
-| CourseGPAApplicability | An indicator of whether or not the course being described is included in the computation of the student's Grade Point Average, and if so, if it is weighted differently from regular courses. | Orthodox |     |     |     |
-| CourseIdentificationSystem | A system that is used to identify the organization of subject matter and related learning experiences provided for the instruction of students. | Orthodox |     |     |     |
-| CourseLevelCharacteristic | The type of specific program or designation with which the course is associated (e.g., AP, IB, Dual Credit, CTE). | Orthodox |     |     |     |
-| CreditType | The type of credits or units of value awarded for the completion of a course. | Flexible |     |     |     |
-| OfferedGradeLevel | The grade levels in which the course is offered. | Orthodox |     |     |     |
+| Course | CareerPathway | Indicates the career cluster or pathway the course is associated with as part of a CTE curriculum. | Flexible |     |     |     |
+| Course | CompetencyLevel | The competency levels defined to rate the student for the course. | Flexible |     |     |     |
+| Course | CourseDefinedBy | Specifies whether the course was defined by the SEA, LEA, School, or national organization. | Orthodox |     |     |     |
+| Course | CourseGPAApplicability | An indicator of whether or not the course being described is included in the computation of the student's Grade Point Average, and if so, if it is weighted differently from regular courses. | Orthodox |     |     |     |
+| Course | CourseIdentificationSystem | A system that is used to identify the organization of subject matter and related learning experiences provided for the instruction of students. | Orthodox |     |     |     |
+| Course | CourseLevelCharacteristic | The type of specific program or designation with which the course is associated (e.g., AP, IB, Dual Credit, CTE). | Orthodox |     |     |     |
+| Course | CreditType | The type of credits or units of value awarded for the completion of a course. | Flexible |     |     |     |
+| Course | OfferedGradeLevel | The grade levels in which the course is offered. | Orthodox |     |     |     |
 | CourseOffering | CourseLevelCharacteristic | The type of specific program or designation with which the course offering is associated (e.g., AP, IB, Dual Credit, CTE). This collection should only be populated if it differs from the Course Level Characteristics identified at the Course level. | Orthodox |     |     |     |
-| CurriculumUsed | The type of curriculum used in an early learning classroom or group. | Orthodox |     |     |     |
-| OfferedGradeLevel | The grade levels in which the course is offered. This collection should only be populated if it differs from the Offered Grade Levels identified at the Course level. | Orthodox |     |     |     |
+| CourseOffering | CurriculumUsed | The type of curriculum used in an early learning classroom or group. | Orthodox |     |     |     |
+| CourseOffering | OfferedGradeLevel | The grade levels in which the course is offered. This collection should only be populated if it differs from the Offered Grade Levels identified at the Course level. | Orthodox |     |     |     |
 | Section | CourseLevelCharacteristic | The type of specific program or designation with which the section is associated (e.g., AP, IB, Dual Credit, CTE). This collection should only be populated if it differs from the Course Level Characteristics identified at the Course Offering level. | Orthodox |     |     |     |
-| CreditType | The type of credits or units of value awarded for the completion of a course. | Flexible |     |     |     |
-| EducationalEnvironment | The setting in which a child receives education and related services; for example: Center-based instruction, Home based instruction, Hospital class, Mainstream, Residential care and treatment facility... | Orthodox |     |     |     |
-| InstructionLanguage | The primary language of instruction, if omitted English is assumed. | Orthodox |     |     |     |
-| OfferedGradeLevel | The grade levels in which the section is offered. This collection should only be populated if it differs from the Offered Grade Levels identified at the Course Offering level. | Orthodox |     |     |     |
-| MediumOfInstruction | The media through which teachers provide instruction to students and students and teachers communicate about instructional matters; for example: Technology-based instruction in classroom, Correspondence instruction, Face-to-face instruction, Virtual/On-line Distance learning, Center-based instruction... | Orthodox |     |     |     |
-| PopulationServed | The type of students the Section is offered and tailored to; for example: Bilingual students, Remedial education students, Gifted and talented students, Career and Technical Education students, Special education students... | Orthodox |     |     |     |
-| SectionCharacteristic | Reflects important characteristics of the Section, such as whether or not attendance is taken and the Section is graded. | Local |     |     |     |
+| Section | CreditType | The type of credits or units of value awarded for the completion of a course. | Flexible |     |     |     |
+| Section | EducationalEnvironment | The setting in which a child receives education and related services; for example: Center-based instruction, Home based instruction, Hospital class, Mainstream, Residential care and treatment facility... | Orthodox |     |     |     |
+| Section | InstructionLanguage | The primary language of instruction, if omitted English is assumed. | Orthodox |     |     |     |
+| Section | OfferedGradeLevel | The grade levels in which the section is offered. This collection should only be populated if it differs from the Offered Grade Levels identified at the Course Offering level. | Orthodox |     |     |     |
+| Section | MediumOfInstruction | The media through which teachers provide instruction to students and students and teachers communicate about instructional matters; for example: Technology-based instruction in classroom, Correspondence instruction, Face-to-face instruction, Virtual/On-line Distance learning, Center-based instruction... | Orthodox |     |     |     |
+| Section | PopulationServed | The type of students the Section is offered and tailored to; for example: Bilingual students, Remedial education students, Gifted and talented students, Career and Technical Education students, Special education students... | Orthodox |     |     |     |
+| Section | SectionCharacteristic | Reflects important characteristics of the Section, such as whether or not attendance is taken and the Section is graded. | Local |     |     |     |
 | StaffSectionAssociation | ClassroomPosition | The type of position the Staff member holds in the specific class/section; for example: Teacher of Record, Assistant Teacher, Support Teacher, Substitute Teacher... | Orthodox |     |     |     |
 | StudentSectionAssociation | AttemptStatus | An indication of the student's completion status for the section. | Orthodox |     |     |     |
-| RepeatIdentifier | An indication as to whether a student has previously taken a given course. Repeated, counted in grade point average, Repeated, not counted in grade point average, Not repeated, Other. | Orthodox |     |     |     |
+| StudentSectionAssociation | RepeatIdentifier | An indication as to whether a student has previously taken a given course. Repeated, counted in grade point average, Repeated, not counted in grade point average, Not repeated, Other. | Orthodox |     |     |     |
 
 :::tip
 
