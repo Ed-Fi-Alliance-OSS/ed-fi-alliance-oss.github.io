@@ -44,17 +44,20 @@ hide_table_of_contents: true
 | Candidate | Disability | A disability category that describes a individual's impairment. | Orthodox | Yes | Yes |     |
 | Candidate | DisabilityDesignation | Whether the disability is IDEA, Section 504, or other disability designation. | Orthodox |     | Yes |     |
 | Candidate | DisabilityDeterminationSourceType | The source that provided the disability determination. | Orthodox |     | Yes |     |
+| Candidate | EconomicDisadvantage | An indication of inadequate financial condition of an individual's family, as determined by family income, number of family members/dependents, participation in public assistance programs, and/or other characteristics considered relevant by federal, state, and local policy. | Orthodox |     |     |     |
 | Candidate | ElectronicMailType | The type of email listed for an individual or organization. (For example: Home/Personal, Work, etc.) | Standard |     |     |     |
 | Candidate | EnglishLanguageExam | Indicates that an individual passed, failed, or did not take an English Language assessment. | Standard |     |     |     |
 | Candidate | EPPDegreeType | A code for describing the degree type that a candidate accomplishes. |     |     |     |     |
 | CandidateEducatorPreparationProgramAssociation | EPPProgramPathway | The program pathway the candidate is following. | Standard |     |     |     |
 | FieldworkExperience | FieldworkType | The type of fieldwork being executed by a staff. |     |     |     |     |
 | EducatorPreparationProgram | GradeLevel | The grade levels served at the educator preparation program. | Orthodox | Yes | Yes |     |
+| Candidate | IdentificationDocumentUse | The primary function of the document used for establishing identity. | Orthodox |     |     |     |
 | Candidate | Language | A specification of which written or spoken communication is being used. | Orthodox | Yes | Yes | Yes |
 | Candidate | LanguageUse | A description of how the language is used (e.g. Home Language, Native Language, Spoken Language). | Orthodox |     |     |     |
 | Candidate | LimitedEnglishProficiency | Indicates whether the individual has been identified as limited English proficient (LEP) by the Language Proficiency Assessment Committee (LPAC), or is English proficient. | Standard | Yes | Yes | Yes |
 | Candidate | Locale | A general geographic indicator that categorizes U.S. territory (e.g., City, Suburban). | Standard |     |     |     |
 | Candidate | OtherNameType | The types of alternate names for an individual. | Orthodox |     |     |     |
+| Candidate | PersonalInformationVerification | The category of the document relative to its purpose. | Orthodox |     |     |     |
 | Candidate | PreviousCareer | The career previous for an individual. |     |     |     |     |
 | EducatorPreparationProgram | ProgramType | The type of program. | Flexible | Yes | Yes | Yes |
 | Candidate | Race | The general racial category which most clearly reflects the individual's recognition of his or her community or with which the individual most identifies. The data model allows for multiple entries so that each individual can specify all appropriate races. | Standard |     |     |     |

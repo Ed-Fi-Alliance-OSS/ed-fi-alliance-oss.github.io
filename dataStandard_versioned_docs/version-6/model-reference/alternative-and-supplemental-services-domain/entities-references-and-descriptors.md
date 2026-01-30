@@ -43,47 +43,86 @@ hide_table_of_contents: true
 
 | Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
-| GeneralStudentProgramAssociation | ParticipationStatus | The student's program participation status. | Standard |     | Yes |     |
-| ReasonExited | The reason the child left the Program within a school or district. | Standard | Yes | Yes |     |
-| Program | ProgramCharacteristic | Reflects important characteristics of the Program, such as categories or particular indications. | Local | Yes | Yes |     |
-| ProgramSponsor | Ultimate and intermediate providers of funds for a particular educational or service program or activity, or for an individual's participation in the program or activity (e.g., Federal, State, ESC, District, School, Private Organization). | Standard |     | Yes |     |
-| ProgramType | The type of program. | Flexible | Yes | Yes | Yes |
-| StudentCTEProgramAssociation | CTEProgramService | Indicates the service being provided to the student by the CTE Program. | Orthodox | Yes | Yes |     |
-| TechnicalSkillsAssessment | Results of technical skills assessment aligned with industry recognized standards. | Standard |     | Yes |     |
-| StudentHomelessProgramAssociation | HomelessPrimaryNighttimeResidence | The primary nighttime residence of the student at the time the student is identified as homeless. | Standard | Yes | Yes |     |
-| HomelessProgramService | Indicates the service being provided to the student by the Homeless Program. | Standard | Yes | Yes |     |
-| StudentLanguageInstructionProgramAssociation | LanguageInstructionProgramService | Indicates the service being provided to the student by the Language Instruction Program. | Standard | Yes | Yes |     |
-| Monitored | Student is monitored on content achievement who are no longer receiving services. | Standard | Yes | Yes |     |
-| Participation | Field indicating the participation in the yearly English language assessment. | Standard | Yes | Yes |     |
-| Proficiency | The proficiency level for the yearly English language assessment. | Standard | Yes | Yes |     |
-| Progress | The yearly progress or growth from last year's assessment. | Standard | Yes | Yes |     |
+| Staff | AcademicSubject | The academic subject(s) in which the staff is deemed to be "highly qualified". | Local |     |     |     |
+| School | AccreditationStatus | The accreditation status for an education preparation provider. | Standard |     |     |     |
+| Staff | AchievementCategory | The category of achievement attributed to the individual. | Local |     |     |     |
+| EducationOrganization | AddressType | The type of address listed for an individual or organization. (For example:  Physical Address, Mailing Address, Home Address, etc.) | Orthodox |     |     |     |
+| School | AdministrativeFundingControl | The type of education institution as classified by its funding source, for example public or private. | Local |     |     |     |
+| StudentSectionAssociation | AttemptStatus | An indication of the student's completion status for the section. | Orthodox |     |     |     |
+| StudentProgramAttendanceEvent <br /> StudentSchoolAttendanceEvent <br /> StudentSectionAttendanceEvent | AttendanceEventCategory | A code describing the attendance event, for example: ( Present, Unexcused absence, Excused absence, Tardy.) | Local |     |     |     |
+| School | CharterApprovalAgencyType | The type of agency that approved the establishment or continuation of a charter school. | Standard | Yes | Yes |     |
+| School | CharterStatus | A school or agency providing free public elementary or secondary education to eligible students under a specific charter granted by the state legislature or other appropriate authority and designated by such authority to be a charter school. | Standard | Yes | Yes | Yes |
 | StudentMigrantEducationProgramAssociation | ContinuationOfServicesReason | The "continuation of services" provision found in Section 1304(e) of the statute provides that (1) a child who ceases to be a migratory child during a school term shall be eligible for services until the end of such term; (2) a child who is no longer a migratory child may continue to receive services for one additional school year, but only if comparable services are not available through other programs; and (3) secondary school students who were eligible for services in secondary school may continue to be served through credit accrual programs until graduation. Only students who received services at any time during their 36 month eligibility period may continue to receive services (not necessarily the same service). | Standard | Yes | Yes |     |
-| MigrantEducationProgramService | Indicates the Service being provided to the student by the Migrant Education Program. | Standard | Yes | Yes |     |
-| StudentNeglectedOrDelinquentProgramAssociation | ELAProgressLevel | The progress measured from pre- to post- test for ELA. | Standard | Yes | Yes |     |
-| MathematicsProgressLevel | The progress measured from pre- to post-test for Mathematics. |     | Yes | Yes |     |
-| NeglectedOrDelinquentProgram | The type of program under ESEA Title I, Part D, Subpart 1 (state programs) or Subpart 2 (LEA). | Standard | Yes | Yes |     |
-| NeglectedOrDelinquentProgramService | Indicates the service being provided to the student by the Neglected or Delinquent Program. | Standard | Yes | Yes |     |
-| StudentProgramAssociation | Service | Indicates the Service being provided to the student by the Program. | Local |     | Yes |     |
-| StudentProgramAttendanceEvent | AttendanceEventCategory | A code describing the attendance event, for example: Present, Unexcused absence, Excused absence, Tardy. | Local | Yes | Yes |     |
-| EducationalEnvironment | The setting in which a child receives education and related services. This attribute is only used if it differs from the EducationalEnvironment of the Section. This is only used in the AttendanceEvent if different from the associated Section. | Standard |     | Yes |     |
-| StudentSchoolFoodServiceProgramAssociation | SchoolFoodServiceProgramService | Indicates the service being provided to the student by the School Food Service Program. | Standard | Yes | Yes |     |
-| StudentSpecialEducationProgramAssociation | Disability | A disability category that describes a child's impairment. | Orthodox | Yes | Yes |     |
-| DisabilityDesignation | Whether the disability is IDEA, Section 504, or other disability designation. | Orthodox |     | Yes |     |
-| DisabilityDeterminationSourceType | The source that provided the disability determination. | Orthodox |     | Yes |     |
-| SpecialEducationProgramService | Indicates the service being provided to the student by the Special Education Program. | Standard |     | Yes |     |
-| SpecialEducationSetting | The major instructional setting (more than 50 percent of a student's special education program). | Standard | Yes | Yes |     |
-| SpecialEducationExitReason | The reason why a person stops receiving special education services. | Standard |     |     |     |
-| StudentSpecialEducationProgramEligibilityAssociation | EligibilityEvaluationType | Indicates if this is an initial evaluation or a reevaluation | Orthodox |     |     |     |
-| EligibilityDelayReason | The reason why the eligibility determination was completed beyond the required timeframe | Orthodox |     |     |     |
-| EvaluationDelayReason | Refers to the justification as to why the evaluation report was completed beyond the state-established timeframe | Orthodox |     |     |     |
-| IDEAPart | Indicates if the evaluation is done under Part B IDEA or Part C IDEA | Standard |     |     |     |
-| StudentTitleIPartAProgramAssociation | TitleIPartAParticipant | An indication of the type of Title I program, if any, in which the student is participating and by which the student is served: Public Targeted Assistance, Program, Public Schoolwide Program, Private School Students Participating, Local Neglected Program. | Standard | Yes | Yes | Yes |
-| TitleIPartAProgramService | Indicates the service being provided to the student by the Title I Part A Program. | Standard | Yes | Yes |     |
+| EducationOrganization <br /> Student | Country | The name of the country. It is strongly recommended that entries use only ISO 3166 2-letter country codes. | Standard |     |     |     |
+| Section | CourseLevelCharacteristic | The type of specific program or designation with which the section is associated. This collection should only be populated if it differs from the course level characteristics identified at the course offering level. | Orthodox |     |     |     |
+| Section | CreditType | The type of credits or units of value awarded for the completion of a course. | Flexible |     |     |     |
+| StudentCTEProgramAssociation | CTEProgramService | Indicates the service being provided to the student by the CTE program. | Orthodox | Yes | Yes |     |
+| StudentSpecialEducationProgramAssociation | Disability | A disability category that describes a individual's impairment. | Orthodox |     |     |     |
+| StudentSpecialEducationProgramAssociation | DisabilityDesignation | Whether the disability is IDEA, Section 504, or other disability designation. | Orthodox |     |     |     |
+| StudentSpecialEducationProgramAssociation | DisabilityDeterminationSourceType | The source that provided the disability determination. | Orthodox |     | Yes |     |
+| StudentSectionAssociation | DualCreditInstitution | Descriptor for the postsecondary institution offering college credit. This descriptor may be used to select a postsecondary institution that is not defined as an education organization, and/or select a general type of postsecondary institution. |     |     |     |     |
+| StudentSectionAssociation | DualCreditType | For a student taking a dual credit course in a college or high school setting, indicates the type of dual credit program. |     |     |     |     |
+| Section | EducationalEnvironment | The setting in which a student receives education and related services. | Standard |     | Yes |     |
+| EducationOrganization | EducationOrganizationCategory | The classification of the education agency within the geographic boundaries of a state according to the level of administrative and operational control granted by the state. | Standard |     | Yes | Yes |
+| StudentSpecialEducationProgramEligibilityAssociation | EligibilityDelayReason | The reason why the eligibility determination was completed beyond the required timeframe. | Orthodox |     |     |     |
+| StudentSpecialEducationProgramEligibilityAssociation | EligibilityEvaluationType | Indicates if this is an initial evaluation or a reevaluation. | Orthodox |     |     |     |
+| StudentSpecialEducationProgramEligibilityAssociation | EvaluationDelayReason | Refers to the justification as to why the evaluation report was completed beyond the state-established timeframe. This descriptor field will have allowed reasons as descriptor values. | Orthodox |     |     |     |
+| School | FederalLocaleCode | The federal locale code associated with an education organization. |     |     |     |     |
+| School <br /> Section | GradeLevel | The grade levels in which the section is offered or served at the school. | Orthodox |     |     |     |
+| StudentHomelessProgramAssociation | HomelessPrimaryNighttimeResidence | The primary nighttime residence of the student at the time the student is identified as homeless. | Standard | Yes | Yes |     |
+| StudentHomelessProgramAssociation | HomelessProgramService | Indicates the service being provided to the student by the homeless program. | Standard | Yes | Yes |     |
+| StudentSpecialEducationProgramEligibilityAssociation | IDEAPart | Indicates if the evaluation is done under Part B IDEA or Part C IDEA. | Standard |     |     |     |
+| Staff <br /> Student | IdentificationDocumentUse | The primary function of the document used for establishing identity. | Orthodox |     |     |     |
+| EducationOrganization | Indicator | The value of the indicator or metric. The semantics of an empty value is "not submitted." | Local |     |     |     |
+| EducationOrganization | IndicatorGroup | The name for a group of indicators. | Local |     |     |     |
+| EducationOrganization | IndicatorLevel | The value of the indicator or metric, as a value from a controlled vocabulary. The semantics of an empty value is "not submitted." | Local |     |     |     |
+| EducationOrganization | InstitutionTelephoneNumberType | The type of communication number listed for an individual or organization. | Orthodox | Yes | Yes | Yes |
+| School | InternetAccess | The type of Internet access available. | Flexible |     |     |     |
+| Section | Language | The primary language of instruction. If omitted, English is assumed. | Orthodox | Yes | Yes | Yes |
+| StudentLanguageInstructionProgramAssociation | LanguageInstructionProgramService | Indicates the service being provided to the student by the language instruction program. | Standard | Yes | Yes |     |
+| Staff | LevelOfEducation | The extent of formal instruction an individual has received (e.g., the highest grade in school completed or its equivalent or the highest degree received). | Orthodox |     |     |     |
+| EducationOrganization | Locale | A general geographic indicator that categorizes U.S. territory (e.g., City, Suburban). | Orthodox |     | Yes |     |
+| School | MagnetSpecialProgramEmphasisSchool | A school that has been designed: 1) to attract students of different racial/ethnic backgrounds for the purpose of reducing, preventing, or eliminating racial isolation; and/or 2) to provide an academic or social focus on a particular theme (e.g., science/math, performing arts, gifted/talented, or foreign language). | Standard | Yes | Yes |     |
+| Section | MediumOfInstruction | The media through which teachers provide instruction to students and students and teachers communicate about instructional matters. | Orthodox |     |     |     |
+| StudentMigrantEducationProgramAssociation | MigrantEducationProgramService | Indicates the service being provided to the student by the migrant education program. | Standard | Yes | Yes |     |
+| StudentLanguageInstructionProgramAssociation | Monitored | Student is monitored on content achievement who are no longer receiving services. | Standard | Yes | Yes |     |
+| StudentNeglectedOrDelinquentProgramAssociation | NeglectedOrDelinquentProgram | The type of program under ESEA Title I, Part D, Subpart 1 (state programs) or Subpart 2 (LEA). | Standard | Yes | Yes |     |
+| StudentNeglectedOrDelinquentProgramAssociation | NeglectedOrDelinquentProgramService | Indicates the service being provided to the student by the neglected or delinquent program. | Standard | Yes | Yes |     |
+| EducationOrganization | OperationalStatus | The current operational status of the education organization (e.g., active, inactive). | Standard | Yes | Yes | Yes |
+| Staff <br /> Student | OtherNameType | The types of alternate names for an individual. | Orthodox |     |     |     |
+| StudentLanguageInstructionProgramAssociation | Participation | Field indicating the participation in the yearly English language assessment. | Standard | Yes | Yes |     |
+| GeneralStudentProgramAssociation | ParticipationStatus | The student's program participation status. | Standard |     | Yes |     |
+| Staff <br /> Student | PersonalInformationVerification | The category of the document relative to its purpose. | Orthodox |     |     |     |
+| Section | PopulationServed | The type of students the section is offered and tailored to. | Orthodox |     |     |     |
+| StudentLanguageInstructionProgramAssociation | Proficiency | The proficiency level for the yearly English language assessment. | Standard | Yes | Yes |     |
+| Program | ProgramCharacteristic | Reflects important characteristics of the program, such as categories or particular indications. | Local | Yes | Yes |     |
+| Program | ProgramSponsor | Ultimate and intermediate providers of funds for a particular educational or service program or activity, or for an individual's participation in the program or activity (e.g., Federal, State, ESC, District, School, Private Organization). | Standard |     | Yes |     |
+| Program | ProgramType | The type of program. | Flexible | Yes | Yes | Yes |
+| StudentLanguageInstructionProgramAssociation | Progress | The yearly progress or growth from last year's assessment. | Standard | Yes | Yes |     |
+| StudentNeglectedOrDelinquentProgramAssociation | ProgressLevel | The progress measured from pre- to post- test. |     |     |     |     |
+| GeneralStudentProgramAssociation | ReasonExited | The reason the student left the program within a school or district. | Standard | Yes | Yes |     |
+| Staff | RecognitionType | The nature of recognition given to the individual for accomplishments in a co-curricular, or extra-curricular activity. | Flexible |     |     |     |
+| StudentSectionAssociation | RepeatIdentifier | An indication as to whether a student has previously taken a given course. | Flexible |     |     |     |
+| School | SchoolCategory | The one or more categories of school. | Local |     | Yes |     |
+| StudentSchoolFoodServiceProgramAssociation | SchoolFoodServiceProgramService | Indicates the service(s) being provided to the student by the school food service program. | Standard | Yes | Yes |     |
+| School | SchoolType | The type of education institution as classified by its primary focus. | Standard | Yes | Yes |     |
+| StudentSection504ProgramAssociation | Section504Disability | Defines one or more disabilities student has that qualifies them for a Section 504 plan. |     |     |     |     |
+| Section | SectionCharacteristic | Reflects important characteristics of the section, such as whether or not attendance is taken and the section is graded. | Local |     |     |     |
+| Section | SectionType | Specifies whether the section is for attendance only, credit only, or both. | Flexible |     |     |     |
+| StudentProgramAssociation | Service | Indicates the service being provided to the student by the program. | Local |     | Yes |     |
+| Student | Sex | A person's sex at birth. | Standard |     |     |     |
+| StudentSpecialEducationProgramAssociation | SpecialEducationExitReason | The reason why a person stops receiving special education services. | Standard |     |     |     |
+| StudentSpecialEducationProgramAssociation | SpecialEducationProgramService | Indicates the service being provided to the student by the special education program. | Standard |     | Yes |     |
+| StudentSpecialEducationProgramAssociation | SpecialEducationSetting | The major instructional setting (more than 50 percent of a student's special education program). | Standard | Yes | Yes |     |
+| EducationOrganization <br /> Student | StateAbbreviation | The abbreviation for the state (within the United States) or outlying area in which an address is located. | Standard |     |     |     |
+| StudentCTEProgramAssociation | TechnicalSkillsAssessment | Results of technical skills assessment aligned with industry recognized standards. | Standard |     | Yes |     |
+| StudentTitleIPartAProgramAssociation | TitleIPartAParticipant | An indication of the type of Title I program, if any, in which the student is participating and by which the student is served. | Standard | Yes | Yes | Yes |
+| StudentTitleIPartAProgramAssociation | TitleIPartAProgramService | Indicates the service(s) being provided to the student by the Title I Part A program. | Standard | Yes | Yes |     |
+| School | TitleIPartASchoolDesignation | Denotes the Title I Part A designation for the school. | Standard | Yes | Yes |     |
 
 :::tip
 
-See [Non-normative Descriptor
-Classifications](/reference/data-exchange/technical-articles/non-normative-descriptor-classifications)
+See [Non-normative Descriptor Classifications](/reference/data-exchange/technical-articles/non-normative-descriptor-classifications)
 for more information on _Usage Classification_.
 
 :::
