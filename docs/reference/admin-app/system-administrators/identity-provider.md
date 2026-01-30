@@ -4,29 +4,173 @@ The Ed-Fi Admin App uses an Open ID Connect (OIDC) compatible Identity Provider 
 
 ## General IdP Guidance and Configuration
 
-:::note
+### Backend Configuration Settings
 
-To be written:
+The Ed-Fi Admin App backend requires specific configuration settings to connect to your OIDC-compatible Identity Provider. These settings are typically configured in the application's environment variables or configuration files.
 
-- Describe the backend config file settings for the IdP.
-- Describe the bootstrap user concept.
-- The application uses cookie-based authentication, and Admin App's backend API service has its own authorization scheme. This means that the user setup through an IdP does not need any special claims or scopes; they simply need to have a valid account.
+Key configuration parameters include:
 
+- **Authority URL**: The base URL of your IdP (e.g., `https://your-keycloak-server/realms/edfi`)
+- **Client ID**: The client identifier registered in your IdP (e.g., `edfiadminapp`)
+- **Client Secret**: The confidential secret associated with the client
+- **Redirect URI**: The callback URL where the IdP sends authentication responses (e.g., `https://your-admin-app-url/api/auth/callback/1`)
+- **Post Logout Redirect URI**: Where users are redirected after logging out (e.g., `https://your-admin-app-url/api/auth/post-logout`)
+- **Response Type**: Typically set to `code` for authorization code flow
+- **Scope**: The OIDC scopes requested, typically `openid profile email`
+
+These settings must match the configuration in your IdP to ensure proper authentication flow.
+
+### Bootstrap User Concept
+
+The Ed-Fi Admin App uses a **bootstrap user** mechanism to initialize the system with its first administrative user. This is necessary because:
+
+1. The application requires at least one user with administrative privileges to configure the system
+2. User permissions and roles are managed within the Admin App itself, separate from the IdP
+3. The bootstrap user provides the initial entry point to set up additional users and permissions
+
+**How it works:**
+
+- When the Admin App starts for the first time (or when the database is empty), it looks for a configured bootstrap user
+- This user's email address or username is specified in the application configuration
+- When this user first authenticates through the IdP, they are automatically granted administrative privileges in the Admin App
+- Subsequent users who authenticate must be granted permissions by an existing administrator
+
+:::tip
+Configure the bootstrap user email/username before deploying the application to production. This ensures you can immediately access the system after initial deployment.
 :::
+
+### Authentication and Authorization Architecture
+
+The Ed-Fi Admin App implements a two-layer security model:
+
+**Authentication (IdP Layer):**
+
+- The Identity Provider handles user authentication and session management
+- Users log in through the IdP interface (e.g., Keycloak login page)
+- The IdP validates credentials and issues authentication tokens
+- The application uses cookie-based authentication to maintain user sessions
+
+**Authorization (Admin App Layer):**
+
+- The Admin App maintains its own authorization system independent of the IdP
+- User permissions, roles, and access controls are managed within the Admin App database
+- The IdP does not need to provide special claims, scopes, or role information
+- Users only need a valid IdP account; all authorization decisions are made by the Admin App
+
+**What this means for IdP configuration:**
+
+- You do not need to configure custom claims or scopes in your IdP
+- You do not need to map roles or permissions from the IdP to the Admin App
+- Users simply need a valid account in the IdP with basic profile information (username, email, name)
+- All permission management happens within the Admin App after successful authentication
+
+This separation of concerns allows for flexible user management while maintaining security and simplifying IdP setup.
 
 ## Using Keycloak
 
-:::note
+This guide walks you through setting up Keycloak as the identity provider for the Ed-Fi Admin App. Keycloak is used for OpenID Connect (OIDC) authentication, managing user sessions, and providing secure authentication for both the web interface and machine-to-machine (M2M) clients.
+More info in the [Official Keycloak Website](https://www.keycloak.org/guides)
 
-To be written:
+### Prerequisites
 
-- Short paragraph describing Keycloak as a well-supported open source project
-- Notes on creating a realm
-- Notes on creating a client for the Admin App backend service
-- Brief notes on creating users
-- Keep this brief and do not add screenshots. Refer to Keycloak help for more detailed guidance.
+Before starting, ensure you have:
 
+- Install Keycloak
+  - Option A: Use the compose file cloned Ed-Fi Admin App repository
+  - Option B: Physical or virtual server. See details [Keycloak installation and setup](https://www.keycloak.org/getting-started/getting-started-zip)
+- The Ed-Fi Admin App repository cloned
+- Basic familiarity with Keycloak concepts (realms, clients, users)
+
+### Create the Ed-Fi Realm
+
+1. In the Keycloak admin console, click the realm dropdown (top-left)
+2. Click "Create Realm"
+3. Enter realm name: `edfi`
+4. Click "Create"
+
+#### Configure Realm Settings
+
+Navigate to **Realm Settings** → **General**:
+
+- **Enabled**: ON
+- **Display Name**: `Ed-Fi`
+- **HTML Display Name**: `Ed-Fi Technology Suite`
+
+#### Configure Session Timeouts
+
+Navigate to **Realm Settings** → **Sessions**:
+
+```text
+SSO Session Idle: 2 hours (7200 seconds)
+SSO Session Max: 2 hours (7200 seconds)
+Client Session Idle: 2 hours
+Client Session Max: 2 hours
+Offline Session Idle: 30 days
+Offline Session Max: 60 days
+```
+
+:::warning
+These settings should align with your Admin App's express session timeout configured in `main.ts` to ensure consistent authentication behavior.
 :::
+
+Click **Save**.
+
+### Client Configuration
+
+If you need to create the client manually:
+
+1. In the Keycloak admin console, select the `edfi` realm
+2. Go to **Clients** in the left sidebar
+3. Click **Create client**
+4. **General Settings**:
+   - **Client type**: OpenID Connect
+   - **Client ID**: `edfiadminapp`
+   - Click **Next**
+5. **Capability config**:
+   - **Client authentication**: ON
+   - **Authorization**: OFF
+   - **Authentication flow**: Check only "Standard flow"
+   - Click **Next**
+6. **Login settings**:
+   - **Root URL**: `https://your-admin-app-url`
+   - **Valid redirect URIs**:
+
+     ```text
+     https://your-admin-app-url/*
+     https://your-admin-app-url/auth/callback
+     https://your-admin-app-url-api-url/api/auth/callback/1
+     https://your-admin-app-url-api-url/api/auth/post-logout
+     ```
+
+   - **Valid post logout redirect URIs**: `https://your-admin-app-url/*`
+   - **Web origins**: `https://your-admin-app-api-url`
+   - Click **Save**
+
+### User Creation
+
+#### 1. Create Your First Admin User
+
+1. In the Keycloak admin console, select the `edfi` realm
+2. Go to **Users** in the left sidebar
+3. Click **Add user**
+4. Fill in the user details:
+   - **Username**: Choose a username (e.g., `admin`)
+   - **Email**: `admin@example.com` (or your email)
+   - **First Name**: Your first name
+   - **Last Name**: Your last name
+   - **Email Verified**: ON (toggle this to avoid verification emails)
+5. Click **Create**
+
+#### 2. Set User Password
+
+After creating the user:
+
+1. Click on the **Credentials** tab
+2. Click **Set password**
+3. Enter a password
+4. Toggle **Temporary** to OFF (so the user won't be forced to change it on first login)
+5. Click **Save**
+6. Confirm by clicking **Set password** in the dialog
 
 ### HTTP Security for Keycloak
 
