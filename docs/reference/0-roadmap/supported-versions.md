@@ -66,10 +66,12 @@ With version 2.3 (October, 2025), ODS Admin API version 2 will consolidate
 functionality from version 1, allowing the single application to support both
 ODS/API 6.x and ODS/API 7.x.
 
-| Version | Timeline                             | Supports ODS/API |
-| ------- | ------------------------------------ | ---------------- |
-| 1.x.y   | Active through 2025-2026 school year | 5.x.y, 6.x.y     |
-| 2.x.y   | Active through 2028-2029 school year | 6.x.y, 7.x.y     |
+| Version        | Timeline                             | Supports ODS/API |
+| -------------- | ------------------------------------ | ---------------- |
+| 1.x.y          | Active through 2025-2026 school year | 5.x.y, 6.x.y     |
+| 2.0.0 - 2.2.x  | Active through 2028-2029 school year | 7.x.y            |
+| 2.3.y on       | Active through 2028-2029 school year | 6.x.y, 7.x.y     |
+
 
 ### Ed-Fi Admin App
 
