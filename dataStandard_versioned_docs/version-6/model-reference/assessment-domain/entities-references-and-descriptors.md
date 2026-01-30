@@ -29,7 +29,7 @@ hide_table_of_contents: true
 
 ## Assessment Domain Descriptors
 
-| Entity | Descriptor | Description | Usage Classification (see tip below) | EDFacts Mapping | Commonly Used | Commonly State-Defined |
+| Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
 | Assessment <br /> LearningStandard <br /> ObjectiveAssessment | AcademicSubject | The description of the content or subject area (e.g., arts, mathematics, reading, stenography, a foreign language, or composite if multi-subject) of an assessment, learning standard, or objective assessment. | Local | Yes | Yes |     |
 | StudentAssessment | Accommodation | The specific type of special variation used in how an examination is presented, how it is administered, or how the test taker is allowed to respond. This generally refers to changes that do not substantially alter what the examination measures. The proper use of accommodations does not substantially change academic level or performance criteria. | Local |     | Yes |     |
@@ -37,7 +37,7 @@ hide_table_of_contents: true
 | Assessment | AssessmentCategory | The category of an assessment based on format and content. | Orthodox | Yes | Yes |     |
 | Assessment |AssessmentIdentificationSystem | A coding scheme that is used for identification and record-keeping purposes by schools, social services, or other agencies to refer to an assessment. | Orthodox |     |     |     |
 | AssessmentItem | AssessmentItemCategory | Category or type of the assessment item. | Orthodox |     | Yes |     |
-| StudentAssessment | AssessmentItem | The assessment item responded to by the student. | Orthodox |     | Yes |     |
+| StudentAssessment | AssessmentItemResult | The assessment item responded to by the student. | Orthodox |     | Yes |     |
 | Assessment <br /> StudentAssessment | AssessmentPeriod | The period of time in which an assessment is supposed to be administered (e.g., Beginning of Year, Middle of Year, End of Year). | Local |     | Yes |     |
 | AssessmentScoreRangeLearningStandard | AssessmentReportingMethod | The assessment reporting method defined (e.g., scale score, RIT scale score) associated with the referenced learning standard(s). | Local |     | Yes | Yes |
 | Student | Country | The name of the country. It is strongly recommended that entries use only ISO 3166 2-letter country codes. | Standard |     |     |     |

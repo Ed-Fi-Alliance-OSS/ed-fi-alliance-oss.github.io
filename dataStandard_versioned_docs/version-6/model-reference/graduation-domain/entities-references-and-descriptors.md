@@ -29,8 +29,8 @@ hide_table_of_contents: true
 | --- | --- | --- | --- | --- | --- | --- |
 | StudentAcademicRecord | AcademicHonorCategory | "A designation of the type of academic distinctions earned by or awarded to the individual. |     |     |     |     |
 | GraduationPlan | AcademicSubject | The intended major subject area of the graduation requirement. |     |     |     |     |
-| StudentAcademicRecord | AchievementCategory | The category of achievement attributed to the individual. | Local |     |     |     |
 | School | AccreditationStatus | The accreditation status for an education preparation provider. | Standard |     |     |     |
+| StudentAcademicRecord | AchievementCategory | The category of achievement attributed to the individual. | Local |     |     |     |
 | EducationOrganization | AddressType | The type of address listed for an individual or organization. (For example:  Physical Address, Mailing Address, Home Address, etc.) |     |     |     |     |
 | School | AdministrativeFundingControl | The type of education institution as classified by its funding source, for example public or private. |     |     |     |     |
 | GraduationPlan | AssessmentReportingMethod | The method that the instructor of the class uses to report the performance and achievement of all students. It may be a qualitative method such as individualized teacher comments or a quantitative method such as a letter or numerical grade. In some cases, more than one type of reporting method may be used. | Local |     | Yes | Yes |
