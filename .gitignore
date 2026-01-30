@@ -8,6 +8,20 @@
 .docusaurus
 .cache-loader
 
+# ChromaDB artifacts
+chroma_db/
+chroma_db_test/
+federated-credential.json
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env.txt
+
 # Misc
 .DS_Store
 .env.local
