@@ -80,6 +80,7 @@ hide_table_of_contents: true
 | Contact <br /> EducationOrganization <br /> Student | StateAbbreviation | The abbreviation for the state (within the United States) or outlying area in which an address is located. | Standard |     |     |     |
 | Survey | SurveyCategory | The category or type of survey. | Local |     |     |     |
 | SurveyResponse | SurveyLevel | Provides information about the respondents of a survey and how they can be grouped together. | Local |     |     |     |
+| Contact | TelephoneNumberType | The type of communication number listed for an individual or organization. | Standard |     |     |     |
 | Session | Term | A descriptor value to indicate the term that the session is associated with. | Flexible |     |     |     |
 
 :::tip
