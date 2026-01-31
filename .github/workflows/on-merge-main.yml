@@ -126,14 +126,21 @@ jobs:
       - name: Get ChromaDB server URL
         id: get-server-url
         run: |
-          FQDN=$(az containerapp show \
+          # Get base FQDN
+          BASE_FQDN=$(az containerapp show \
             --name ${{ secrets.AZURE_CONTAINERAPP_NAME }} \
             --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} \
             --query properties.configuration.ingress.fqdn \
             -o tsv)
-          SERVER_URL="https://${FQDN}"
+
+          # Construct label-prefixed URL: app-name---ci.rest-of-domain
+          APP_NAME="${{ secrets.AZURE_CONTAINERAPP_NAME }}"
+          LABELED_FQDN="${BASE_FQDN/$APP_NAME./$APP_NAME---ci.}"
+          SERVER_URL="https://${LABELED_FQDN}"
+
           echo "SERVER_URL=$SERVER_URL" >> $GITHUB_OUTPUT
           echo "🌐 ChromaDB Server: $SERVER_URL"
+          echo "📍 Connecting to 'ci' labeled revision"
 
       - name: Build vectorstore (HTTP mode)
         env:
@@ -185,7 +192,7 @@ jobs:
       - name: Label current revision as CI
         if: ${{ env.IS_MAIN == 'true' }}
         run: |
-          CI_LABEL="ci-${SHORT_SHA:0:7}"
+          CI_LABEL="ci"
           CURRENT_REVISION=$(az containerapp revision list \
             --name "$AZURE_CONTAINERAPP_NAME" \
             --resource-group "$AZURE_RESOURCE_GROUP" \
@@ -194,18 +201,20 @@ jobs:
 
           echo "📦 Labeling revision $CURRENT_REVISION with: $CI_LABEL"
 
-          # Remove existing label with same name if present
+          # Remove existing 'ci' label if present
           az containerapp revision label remove \
             --name "$AZURE_CONTAINERAPP_NAME" \
             --resource-group "$AZURE_RESOURCE_GROUP" \
             --label "$CI_LABEL" || true
 
-          # Add CI label to current revision
+          # Add 'ci' label to current revision
           az containerapp revision label add \
             --name "$AZURE_CONTAINERAPP_NAME" \
             --resource-group "$AZURE_RESOURCE_GROUP" \
             --label "$CI_LABEL" \
             --revision "$CURRENT_REVISION"
+
+          echo "✅ Deployment labeled: $CURRENT_REVISION -> $CI_LABEL"
 
           echo "✅ Deployment labeled!"
           echo "  Revision: $CURRENT_REVISION"
