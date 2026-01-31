@@ -193,6 +193,14 @@ jobs:
             -o tsv | head -n 1)
 
           echo "📦 Labeling revision $CURRENT_REVISION with: $CI_LABEL"
+
+          # Remove existing label with same name if present
+          az containerapp revision label remove \
+            --name "$AZURE_CONTAINERAPP_NAME" \
+            --resource-group "$AZURE_RESOURCE_GROUP" \
+            --label "$CI_LABEL" || true
+
+          # Add CI label to current revision
           az containerapp revision label add \
             --name "$AZURE_CONTAINERAPP_NAME" \
             --resource-group "$AZURE_RESOURCE_GROUP" \
