@@ -174,29 +174,28 @@ def build_vectorstore(
         logger.info("Connecting to remote ChromaDB server: %s", server_url)
         use_ssl = server_url.startswith("https://")
         host = server_url.replace("https://", "").replace("http://", "").rstrip("/")
-        
+
         # Remove any path from host
         if "/" in host:
             host = host.split("/")[0]
-        
+
         # Determine port
         if ":" in host:
             port = int(host.split(":")[-1])
             host = host.split(":")[0]
         else:
             port = 443 if use_ssl else 8000
-        
-        logger.info("  Host: %s, Port: %d, SSL: %s, Timeout: %ds", host, port, use_ssl, http_timeout)
-        
+
+        logger.info("  Host: %s, Port: %d, SSL: %s", host, port, use_ssl)
+
         settings = Settings(
             anonymized_telemetry=False,
             allow_reset=False,
-            chroma_server_ssl_verify=False,  # For corporate proxies
-            chroma_server_http_timeout=http_timeout
+            chroma_server_ssl_verify=False  # For corporate proxies
         )
-        
+
         client = chromadb.HttpClient(host=host, port=port, ssl=use_ssl, settings=settings)
-        
+
         # Test connection
         try:
             client.heartbeat()
@@ -204,7 +203,7 @@ def build_vectorstore(
         except Exception as e:
             logger.error("✗ Failed to connect to remote ChromaDB: %s", e)
             return 4
-        
+
         # Create or get collection
         try:
             # Try to get existing collection
@@ -215,7 +214,7 @@ def build_vectorstore(
             # Create new collection
             collection = client.create_collection(name=collection_name)
             logger.info("Created new collection '%s'", collection_name)
-        
+
         vs = Chroma(
             client=client,
             collection_name=collection_name,
