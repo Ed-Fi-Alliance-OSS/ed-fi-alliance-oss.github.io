@@ -115,54 +115,54 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r tools/build-chroma/requirements.txt
 
-      - name: Build vectorstore
+      - name: Azure Login (for HTTP mode)
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Get ChromaDB server URL
+        id: get-server-url
+        run: |
+          FQDN=$(az containerapp show \
+            --name ${{ secrets.AZURE_CONTAINERAPP_NAME }} \
+            --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} \
+            --query properties.configuration.ingress.fqdn \
+            -o tsv)
+          SERVER_URL="https://${FQDN}"
+          echo "SERVER_URL=$SERVER_URL" >> $GITHUB_OUTPUT
+          echo "🌐 ChromaDB Server: $SERVER_URL"
+
+      - name: Build vectorstore (HTTP mode)
+        env:
+          SERVER_URL: ${{ steps.get-server-url.outputs.SERVER_URL }}
         run: |
           python tools/build-chroma/build_vectorstore.py \
             --source-docs export \
-            --output-dir chroma_db \
+            --server-url "$SERVER_URL" \
             --collection-name ed-fi-docs \
             --embedding-model sentence-transformers/all-MiniLM-L6-v2 \
             --device cpu \
+            --batch-size 500 \
+            --http-timeout 300 \
             --limit-docs ${{ github.event.inputs.limit_docs || 0 }}
 
-      - name: Validate vectorstore build
+      - name: Verify remote collection
+        env:
+          SERVER_URL: ${{ steps.get-server-url.outputs.SERVER_URL }}
         run: |
-          echo "Validating ChromaDB build..."
-          if [ ! -f "chroma_db/chroma.sqlite3" ]; then
-            echo "❌ Error: chroma.sqlite3 not found"
+          echo "Verifying remote ChromaDB collection..."
+          # Simple verification via heartbeat
+          if curl -f "${SERVER_URL}/api/v1/heartbeat" > /dev/null 2>&1; then
+            echo "✅ ChromaDB server is responsive"
+          else
+            echo "❌ ChromaDB server healthcheck failed"
             exit 1
           fi
-
-          # Find collection directories (UUID format)
-          collection_dirs=$(find chroma_db -type d -regex '.*/[a-f0-9-]\{36\}' | wc -l)
-          if [ "$collection_dirs" -eq 0 ]; then
-            echo "❌ Error: No collection directories found"
-            exit 1
-          fi
-
-          # Check if collection directories have data files
-          for dir in $(find chroma_db -type d -regex '.*/[a-f0-9-]\{36\}'); do
-            file_count=$(find "$dir" -type f | wc -l)
-            if [ "$file_count" -eq 0 ]; then
-              echo "❌ Error: Collection directory $dir is empty"
-              exit 1
-            fi
-            echo "✅ Collection directory $(basename $dir) has $file_count files"
-          done
-
-          # Display total size
-          total_size=$(du -sh chroma_db | cut -f1)
-          echo "✅ ChromaDB build validated successfully (size: $total_size)"
-
-      - name: Upload Vectorstore Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: vectorstore
-          path: chroma_db
-          retention-days: 7
 
   azure-deploy:
-    name: Deploy Vectorstore to Azure
+    name: Label Deployment
     needs: build-vectorstore
     runs-on: ubuntu-latest
     permissions:
@@ -170,20 +170,10 @@ jobs:
       id-token: write
     env:
       AZURE_RESOURCE_GROUP: ${{ secrets.AZURE_RESOURCE_GROUP }}
-      AZURE_STORAGE_ACCOUNT: ${{ secrets.AZURE_STORAGE_ACCOUNT }}
       AZURE_CONTAINERAPP_NAME: ${{ secrets.AZURE_CONTAINERAPP_NAME }}
-      FILE_SHARE_NAME: vector-data
       IS_MAIN: ${{ github.ref == 'refs/heads/main' }}
-      BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
       SHORT_SHA: ${{ github.sha }}
     steps:
-      - name: Download Vectorstore Artifact
-        if: ${{ github.event.inputs.skip_storage_upload != 'true' }}
-        uses: actions/download-artifact@v4
-        with:
-          name: vectorstore
-          path: vectorstore
-
       - name: Azure Login (OIDC)
         uses: azure/login@v2
         with:
@@ -191,67 +181,26 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-      # ========== STAGING PATH (Feature Branches) ==========
-      - name: Upload vectorstore to Azure Files (staging)
-        if: ${{ env.IS_MAIN != 'true' && github.event.inputs.skip_storage_upload != 'true' }}
-        run: |
-          DEST_PATH="docs-vectordb-${{ env.BRANCH_NAME }}"
-          az storage file upload-batch \
-            --account-name "$AZURE_STORAGE_ACCOUNT" \
-            --destination "$FILE_SHARE_NAME" \
-            --destination-path "$DEST_PATH" \
-            --source "vectorstore" \
-            --auth-mode login \
-            --enable-file-backup-request-intent
-          echo "DEST_PATH=$DEST_PATH" >> $GITHUB_ENV
-
-      - name: Direct deploy to staging
-        if: ${{ env.IS_MAIN != 'true' }}
-        run: |
-          az containerapp update \
-            --name "$AZURE_CONTAINERAPP_NAME" \
-            --resource-group "$AZURE_RESOURCE_GROUP" \
-            --set-env-vars CHROMA_DATA_PATH="/data/${{ env.DEST_PATH }}"
-          echo "✅ Staging deployment complete"
-          echo "Environment: /data/${{ env.DEST_PATH }}"
-          echo "Branch: ${{ env.BRANCH_NAME }}"
-
-      # ========== PRODUCTION PATH (Main Branch) - CI Revision ==========
-      - name: Set CI revision name
+      - name: Label current revision as CI
         if: ${{ env.IS_MAIN == 'true' }}
         run: |
-          CI_REVISION="ci-${SHORT_SHA:0:7}"
-          DEST_PATH="docs-vectordb-ci-${SHORT_SHA:0:7}"
-          echo "CI_REVISION=$CI_REVISION" >> $GITHUB_ENV
-          echo "DEST_PATH=$DEST_PATH" >> $GITHUB_ENV
-          echo "📦 CI Revision: $CI_REVISION"
-          echo "📁 Data Path: /data/$DEST_PATH"
-
-      - name: Upload vectorstore to Azure Files (production CI path)
-        if: ${{ env.IS_MAIN == 'true' && github.event.inputs.skip_storage_upload != 'true' }}
-        run: |
-          az storage file upload-batch \
-            --account-name "$AZURE_STORAGE_ACCOUNT" \
-            --destination "$FILE_SHARE_NAME" \
-            --destination-path "${{ env.DEST_PATH }}" \
-            --source "vectorstore" \
-            --auth-mode login \
-            --enable-file-backup-request-intent
-          echo "✓ Uploaded to /data/${{ env.DEST_PATH }}"
-
-      - name: Update container app with new vectorstore
-        if: ${{ env.IS_MAIN == 'true' }}
-        run: |
-          echo "🚀 Updating container app with CI revision: ${{ env.CI_REVISION }}"
-          az containerapp update \
+          CI_LABEL="ci-${SHORT_SHA:0:7}"
+          CURRENT_REVISION=$(az containerapp revision list \
             --name "$AZURE_CONTAINERAPP_NAME" \
             --resource-group "$AZURE_RESOURCE_GROUP" \
-            --set-env-vars CHROMA_DATA_PATH="/data/${{ env.DEST_PATH }}" \
-            --revision-suffix "${{ env.CI_REVISION }}"
-
-          echo "✅ Deployment complete!"
-          echo "  CI Revision: ${{ env.CI_REVISION }}"
-          echo "  Data Path: /data/${{ env.DEST_PATH }}"
+            --query "[?properties.active==\`true\`].name" \
+            -o tsv | head -n 1)
+          
+          echo "📦 Labeling revision $CURRENT_REVISION with: $CI_LABEL"
+          az containerapp revision label add \
+            --name "$AZURE_CONTAINERAPP_NAME" \
+            --resource-group "$AZURE_RESOURCE_GROUP" \
+            --label "$CI_LABEL" \
+            --revision "$CURRENT_REVISION"
+          
+          echo "✅ Deployment labeled!"
+          echo "  Revision: $CURRENT_REVISION"
+          echo "  Label: $CI_LABEL"
 
   deploy:
     name: Deploy to GitHub Pages
