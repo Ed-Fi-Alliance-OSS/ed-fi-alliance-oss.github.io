@@ -89,7 +89,6 @@ jobs:
     permissions:
       contents: read
       id-token: write
-      id-token: write
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
@@ -192,14 +191,14 @@ jobs:
             --resource-group "$AZURE_RESOURCE_GROUP" \
             --query "[?properties.active==\`true\`].name" \
             -o tsv | head -n 1)
-          
+
           echo "📦 Labeling revision $CURRENT_REVISION with: $CI_LABEL"
           az containerapp revision label add \
             --name "$AZURE_CONTAINERAPP_NAME" \
             --resource-group "$AZURE_RESOURCE_GROUP" \
             --label "$CI_LABEL" \
             --revision "$CURRENT_REVISION"
-          
+
           echo "✅ Deployment labeled!"
           echo "  Revision: $CURRENT_REVISION"
           echo "  Label: $CI_LABEL"
