@@ -174,6 +174,64 @@ def build_vectorstore(
         logger.info("Connecting to remote ChromaDB server: %s", server_url)
         use_ssl = server_url.startswith("https://")
         host = server_url.replace("https://", "").replace("http://", "").rstrip("/")
+        
+        # Remove any path from host
+        if "/" in host:
+            host = host.split("/")[0]
+        
+        # Determine port
+        if ":" in host:
+            port = int(host.split(":")[-1])
+            host = host.split(":")[0]
+        else:
+            port = 443 if use_ssl else 8000
+        
+        logger.info("  Host: %s, Port: %d, SSL: %s, Timeout: %ds", host, port, use_ssl, http_timeout)
+        
+        settings = Settings(
+            anonymized_telemetry=False,
+            allow_reset=False,
+            chroma_server_ssl_verify=False,  # For corporate proxies
+            chroma_server_http_timeout=http_timeout
+        )
+        
+        client = chromadb.HttpClient(host=host, port=port, ssl=use_ssl, settings=settings)
+        
+        # Test connection
+        try:
+            client.heartbeat()
+            logger.info("✓ Remote ChromaDB connection successful")
+        except Exception as e:
+            logger.error("✗ Failed to connect to remote ChromaDB: %s", e)
+            return 4
+        
+        # Create or get collection
+        try:
+            # Try to get existing collection
+            collection = client.get_collection(name=collection_name)
+            logger.warning("Collection '%s' already exists with %d documents", collection_name, collection.count())
+            logger.warning("Will append to existing collection. Use --recreate to start fresh.")
+        except:
+            # Create new collection
+            collection = client.create_collection(name=collection_name)
+            logger.info("Created new collection '%s'", collection_name)
+        
+        vs = Chroma(
+            client=client,
+            collection_name=collection_name,
+            embedding_function=embeddings
+        )
+    else:
+        # Local mode - persist to directory
+        output_dir.mkdir(parents=True, exist_ok=True)
+        logger.info("Building Chroma collection '%s' at %s", collection_name, output_dir)
+        vs = Chroma(
+            persist_directory=str(output_dir),
+            collection_name=collection_name,
+            embedding_function=embeddings
+        )
+
+    # Add documents in batches to avoid ChromaDB batch size limit
     # Use smaller batch size for HTTP mode to reduce timeout risk
     for i in range(0, len(docs), batch_size):
         batch = docs[i:i+batch_size]
@@ -194,65 +252,7 @@ def build_vectorstore(
             logger.info("No explicit persist method (auto-persisted)")
         except Exception as e:
             logger.error("Failed to persist vectorstore: %s", e)
-                chroma_server_ssl_verify=False,  # For corporate proxies
-            chroma_server_http_timeout=http_timeout
-        )
-
-        client = chromadb.HttpClient(host=host, port=port, ssl=use_ssl, settings=settings)
-
-        # Test connection
-        try:
-            client.heartbeat()
-            logger.info("✓ Remote ChromaDB connection successful")
-        except Exception as e:
-            logger.error("✗ Failed to connect to remote ChromaDB: %s", e)
             return 4
-
-        # Create or get collection
-        try:
-            # Try to get existing collection
-            collection = client.get_collection(name=collection_name)
-            logger.warning("Collection '%s' already exists with %d documents", collection_name, collection.count())
-            logger.warning("Will append to existing collection. Use --recreate to start fresh.")
-        except:
-            # Create new collection
-            collection = client.create_collection(name=collection_name)
-            logger.info("Created new collection '%s'", collection_name)
-
-        vs = Chroma(
-            client=client,
-            collection_name=collection_name,
-            embedding_function=embeddings
-        )
-    else:
-        # Local mode - persist to directory
-        output_dir.mkdir(parents=True, exist_ok=True)
-        logger.info("Building Chroma collection '%s' at %s", collection_name, output_dir)
-        vs = Chroma(
-            persist_directory=str(output_dir),
-            collection_name=collection_name,
-            embedding_function=embeddings
-        )
-
-    # Add documents in batches to avoid ChromaDB batch size limit
-    batch_size = 5000
-    for i in range(0, len(docs), batch_size):
-        batch = docs[i:i+batch_size]
-        vs.add_documents(batch)
-        logger.info("Added batch %d-%d", i, min(i+batch_size, len(docs)))
-
-    # Ensure persistence and verify
-    logger.info("Persisting vectorstore to disk...")
-    try:
-        vs.persist()
-        logger.info("Persist call completed")
-    except AttributeError:
-        # Newer versions of langchain-chroma may not have persist() method
-        # Data is auto-persisted, so this is safe to ignore
-        logger.info("No explicit persist method (auto-persisted)")
-    except Exception as e:
-        logger.error("Failed to persist vectorstore: %s", e)
-        return 4
 
     # Verify collection was created and has documents
     try:
@@ -269,7 +269,10 @@ def build_vectorstore(
     return 0
 
 
-def main():help='Output directory for Chroma persistence (local mode)')
+def main():
+    parser = argparse.ArgumentParser(description='Build Chroma vectorstore from Docusaurus export')
+    parser.add_argument('--source-docs', required=True, help='Path to exported docs folder')
+    parser.add_argument('--output-dir', help='Output directory for Chroma persistence (local mode)')
     parser.add_argument('--server-url', help='Remote ChromaDB server URL (HTTP mode, e.g., https://ci--app.azurecontainerapps.io)')
     parser.add_argument('--collection-name', default='ed-fi-docs', help='Chroma collection name')
     parser.add_argument('--embedding-model', default='sentence-transformers/all-MiniLM-L6-v2', help='Embedding model')
@@ -293,10 +296,7 @@ def main():help='Output directory for Chroma persistence (local mode)')
         args.server_url,
         args.batch_size,
         args.http_timeout
-
-    source = Path(args.source_docs)
-    out = Path(args.output_dir)
-    rc = build_vectorstore(source, out, args.collection_name, args.embedding_model, args.device, args.verbose, args.limit_docs)
+    )
     exit(rc)
 
 
