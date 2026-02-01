@@ -154,7 +154,8 @@ jobs:
             --device cpu \
             --batch-size 500 \
             --http-timeout 300 \
-            --limit-docs ${{ github.event.inputs.limit_docs || 0 }}
+            --limit-docs ${{ github.event.inputs.limit_docs || 0 }} \
+            --recreate
 
       - name: Verify remote collection
         env:

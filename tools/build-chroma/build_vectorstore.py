@@ -103,7 +103,8 @@ def build_vectorstore(
     limit_docs: int = 0,
     server_url: Optional[str] = None,
     batch_size: int = 5000,
-    http_timeout: int = 300
+    http_timeout: int = 300,
+    recreate: bool = False
 ) -> int:
     logger = setup_logging(verbose)
 
@@ -204,6 +205,14 @@ def build_vectorstore(
             logger.error("✗ Failed to connect to remote ChromaDB: %s", e)
             return 4
 
+        # Delete existing collection if recreate is requested
+        if recreate:
+            try:
+                client.delete_collection(name=collection_name)
+                logger.info("Deleted existing collection '%s'", collection_name)
+            except Exception as e:
+                logger.info("Collection '%s' did not exist or could not be deleted: %s", collection_name, e)
+
         # Create or get collection
         try:
             # Try to get existing collection
@@ -280,6 +289,7 @@ def main():
     parser.add_argument('--http-timeout', type=int, default=300, help='HTTP timeout in seconds (HTTP mode only)')
     parser.add_argument('--verbose', action='store_true', help='Verbose logging')
     parser.add_argument('--limit-docs', type=int, default=0, help='Limit to first N documents (0=unlimited, for testing)')
+    parser.add_argument('--recreate', action='store_true', help='Force cleanup/recreation of existing collection')
     args = parser.parse_args()
 
     source = Path(args.source_docs)
@@ -294,7 +304,8 @@ def main():
         args.limit_docs,
         args.server_url,
         args.batch_size,
-        args.http_timeout
+        args.http_timeout,
+        args.recreate
     )
     exit(rc)
 
