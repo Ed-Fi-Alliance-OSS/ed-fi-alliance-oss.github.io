@@ -48,7 +48,7 @@ $imageExists = docker images -q $imageName
 if (-not $imageExists -or $Rebuild) {
     Write-Host "🔨 Building production Docker image..." -ForegroundColor Green
     Write-Host "   Context: $dockerContext" -ForegroundColor Gray
-    
+
     Push-Location $dockerContext
     try {
         docker build -t $imageName .

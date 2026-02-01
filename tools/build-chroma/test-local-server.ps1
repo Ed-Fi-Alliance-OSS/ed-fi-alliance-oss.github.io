@@ -106,12 +106,12 @@ if ($buildResult -eq 0) {
     Write-Host "✅ Build completed successfully!" -ForegroundColor Green
     Write-Host ""
     Write-Host "📊 Verifying collection..." -ForegroundColor Yellow
-    
+
     # Query the collection via HTTP API
     try {
         $response = Invoke-RestMethod -Uri "$ServerUrl/api/v1/collections" -Method GET
         Write-Host "   Collections: $($response.Count)" -ForegroundColor Gray
-        
+
         if ($response.Count -gt 0) {
             foreach ($coll in $response) {
                 Write-Host "   - $($coll.name): $($coll.metadata)" -ForegroundColor Gray

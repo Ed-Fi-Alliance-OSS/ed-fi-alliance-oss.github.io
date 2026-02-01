@@ -1,12 +1,15 @@
 # ChromaDB HTTP Mode Testing Summary
 
 ## Date
+
 2026-01-31
 
 ## Objective
+
 Test the ChromaDB HTTP mode build against a locally running production container to validate the complete workflow before GitHub Actions deployment.
 
 ## Test Environment
+
 - **Container**: `fiona-vector-search:local` (built from `Ed-Fi-Chatbot/apps/fiona-vector-search`)
 - **Port**: 8000
 - **Data Path**: `./test-data`
@@ -16,11 +19,13 @@ Test the ChromaDB HTTP mode build against a locally running production container
 ## Test Execution
 
 ### Step 1: Build and Start Production Container
+
 ```powershell
 .\run-prod-container.ps1 -Port 8000
 ```
 
 **Results**:
+
 - ✅ Container image built successfully
 - ✅ Container started (ID: cd4b4937c54a)
 - ✅ ChromaDB server initialized on 0.0.0.0:8000
@@ -28,11 +33,13 @@ Test the ChromaDB HTTP mode build against a locally running production container
 - ✅ Server responded to heartbeat checks
 
 ### Step 2: Run HTTP Mode Build Test
+
 ```powershell
 .\test-local-server.ps1 -ServerUrl http://localhost:8000 -LimitDocs 10
 ```
 
 **Results**:
+
 - ✅ Connected to remote ChromaDB server at `http://localhost:8000`
 - ✅ Collection `ed-fi-docs` created successfully
 - ✅ 10 documents processed and stored
@@ -42,7 +49,9 @@ Test the ChromaDB HTTP mode build against a locally running production container
 ## Key Findings
 
 ### HTTP Client Configuration
+
 The following `Settings` configuration works correctly:
+
 ```python
 Settings(
     anonymized_telemetry=False,
@@ -54,12 +63,14 @@ Settings(
 **Note**: `chroma_server_http_timeout` is **not** a valid setting and causes validation errors.
 
 ### Server Connection
+
 - Connection established successfully with `HttpClient`
 - SSL verification disabled for local testing
 - Heartbeat endpoint responding correctly
 - API v2 endpoints functioning as expected
 
 ### Data Persistence
+
 - Documents added via `upsert` endpoint
 - Data automatically persisted to server (no manual save required)
 - Collection metadata properly stored
@@ -67,6 +78,7 @@ Settings(
 ## GitHub Actions Readiness
 
 ### Recent Commits
+
 1. `62a139d` - Fixed invalid Settings parameter
 2. `571bfab` - Removed duplicate permission
 3. `916398e` - Added id-token:write for Azure OIDC
@@ -74,6 +86,7 @@ Settings(
 5. `f9da9d8` - Fixed IndentationError
 
 ### Workflow Configuration
+
 - ✅ `id-token: write` permission configured correctly
 - ✅ Azure Login step added to `build-vectorstore` job
 - ✅ Build step uses `--server-url` instead of `--output-dir`
@@ -82,6 +95,7 @@ Settings(
 - ✅ `azure-deploy` job simplified to revision labeling only
 
 ### Expected Workflow Behavior
+
 1. **Build Job**: Docs build and deploy to GitHub Pages (unchanged)
 2. **Build Vectorstore Job**:
    - Login to Azure
@@ -97,12 +111,14 @@ Settings(
 ## Production Deployment Differences
 
 ### Local Container
+
 - **Telemetry**: Azure Monitor disabled (no connection string)
 - **SSL**: Disabled for testing
 - **Data Path**: `./test-data`
 - **Network**: Exposed on localhost:8000
 
 ### Azure Container App
+
 - **Telemetry**: Azure Monitor enabled with connection string
 - **SSL**: Enabled (HTTPS)
 - **Data Path**: Azure Files mount at `/data`
@@ -118,12 +134,14 @@ Settings(
 ## Test Scripts Available
 
 ### `run-prod-container.ps1`
+
 - Builds and runs production Docker container locally
 - Auto-detects Ed-Fi-Chatbot repo location
 - Manages container lifecycle
 - Parameters: `-Port`, `-DataPath`, `-Rebuild`
 
 ### `test-local-server.ps1`
+
 - Tests HTTP mode build against running ChromaDB server
 - Creates virtual environment
 - Installs dependencies
@@ -132,11 +150,13 @@ Settings(
 - Parameters: `-ServerUrl`, `-LimitDocs`
 
 ## Conclusion
+
 ✅ **HTTP mode is fully functional and ready for GitHub Actions deployment**
 
 The local testing validated the complete workflow from connection to data persistence. All known issues have been resolved and committed. The workflow is configured correctly with proper Azure OIDC authentication.
 
 ## Next Steps
+
 1. Merge PR to trigger GitHub Actions workflow
 2. Monitor workflow execution
 3. Verify revision labeling in Azure Container App
