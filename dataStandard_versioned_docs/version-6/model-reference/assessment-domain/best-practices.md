@@ -15,7 +15,8 @@ The guiding principle is to reflect the source assessment’s structure, context
 Ed-Fi enables K–12 assessment data to be seamlessly and interoperably integrated for it is imperative that the integrated data and downstream visualizations are as reflective of the actual test’s intent, structure, and context as possible. Ed-Fi-compliant assessment vendors structure their integrations to best represent their assessment tools within the Ed-Fi model; however, the national P-20 system leverages hundreds of assessments to monitor student development, readiness, performance, and outcomes.
 
 * Mapping of assessment model to samples (flat file, and theoretical)
-* Industry implementation of assessment mapping (open source) To  support standardization, implementers have shared their mappings  for dozens of assessments representing major categories, including state summative assessments, benchmark assessments, college readiness exams, and early childhood assessments. Analysts may replicate these mappings or use them as guidance if mapping an assessment is not included in the repository.
+* Industry implementation of assessment mapping (open source)
+  * To  support standardization, implementers have shared their [mappings](https://github.com/edanalytics) for dozens of assessments representing major categories, including state summative assessments, benchmark assessments, college readiness exams, and early childhood assessments. Analysts may replicate these mappings or use them as guidance if mapping an assessment is not included in the repository.
 
 When mapping a new assessment or designing a downstream visualization, it is important that analysts take advantage of an array of documentation and vendor guidance, including:
 
