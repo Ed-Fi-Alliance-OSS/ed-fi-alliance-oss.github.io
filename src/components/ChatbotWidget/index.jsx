@@ -37,7 +37,7 @@ const ChatbotWidget = () => {
           className={styles.chatbotIframe}
           title="AI Chatbot Widget"
           allow="microphone"
-          sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
+          sandbox="allow-scripts allow-forms allow-popups"
         />
       )}
     </div>

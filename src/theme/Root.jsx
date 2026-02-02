@@ -11,7 +11,7 @@ import ChatbotWidget from '@site/src/components/ChatbotWidget';
  * This component wraps the entire application and is used to add global elements
  * like the chatbot widget that should appear on every page.
  *
- * See: https://docusaurus.io/docs/swizzling#wrapper-your-site-with-root
+ * See: https://docusaurus.io/docs/swizzling#wrap-your-site-with-root
  */
 export default function Root({ children }) {
   return (
