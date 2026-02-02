@@ -2,52 +2,82 @@
 sidebar_position: 4
 ---
 
-# Assessment Domain - Best Practices
+# Assessment Domain - Best Practices and Use Cases
 
-The Ed-Fi assessment specification is purposefully non-restrictive when it comes
-to the types of result data than can be sent to the Assessment Outcomes API, so
-that vendors with different types of data can be accommodated. While differences
-exist between assessment platforms, there are enough similarities to warrant a
-suggested method of returning data to the API for the most common use cases.
-These suggested methods will help assure consistent data types for the most
-common use cases. This document addresses six of those use cases, for typical,
-point-based assessments.
+The Ed-Fi Assessment Domain is intentionally designed to support a wide range of assessment types, from state summative assessments, college readiness assessments to classroom benchmarks and quizzes. Its flexibility allows for assessment data to be modeled in a way that preserves the structure, scoring logic, and instructional intent of the source assessment.
 
-## An assessment’s overall maximum and minimum score
+Successful implementation depends less on the terminology of individual entities and more on a conceptual understanding of the model’s hierarchy, components, and relationships. By applying consistent modeling practices and aligning to the assessment’s underlying design, vendors and implementers can ensure that results are structured and visualized accurately across diverse use cases.
 
-For a typical point-based assessment’s overall maximum and minimum score we
-suggest an AssessmentReportingType descriptor value of "Number score" and a
-ResultDataType descriptor value of "Decimal".
+The guiding principle is to reflect the source assessment’s structure, context, and nuance as faithfully as possible, enabling accurate analysis and meaningful interpretation.educators, program leaders, and policy professionals to support decision-making in the classroom and beyond.
 
-The score elements should reflect the total number of points available. We
-recommend you round to two decimal places which are always present. For
-instance, for an assessment that has a maximum of 50 points, the suggested
-formulation for the “scores” element in json is:
+## Resources for Understanding Assessments
+
+Ed-Fi enables K–12 assessment data to be seamlessly and interoperably integrated for it is imperative that the integrated data and downstream visualizations are as reflective of the actual test’s intent, structure, and context as possible. Ed-Fi-compliant assessment vendors structure their integrations to best represent their assessment tools within the Ed-Fi model; however, the national P-20 system leverages hundreds of assessments to monitor student development, readiness, performance, and outcomes.
+
+* Mapping of assessment model to samples (flat file, and theoretical)
+* Industry implementation of assessment mapping (open source) To  support standardization, implementers have shared their mappings  for dozens of assessments representing major categories, including state summative assessments, benchmark assessments, college readiness exams, and early childhood assessments. Analysts may replicate these mappings or use them as guidance if mapping an assessment is not included in the repository.
+
+When mapping a new assessment or designing a downstream visualization, it is important that analysts take advantage of an array of documentation and vendor guidance, including:
+
+* Technical documentation and flat results files that show the data available and define elements and values;
+* Educator-facing classroom-level score reports that offer important metadata, context or descriptions and show the hierarchical structure and how scores do or do not roll up; and  
+* Professional development and training resources that guide educators’ understanding and interpretation of test components, scores, and performance levels .
+
+Effective assessment implementation is a combination of the successful application of the domain model, mapping, data and business analysis, visualization design, and governance. Suggested best practices are provided below. For a full review of assessment implementation, see the [Ed-Fi Technology Providers Implementation Playbook](/getting-started/provider-playbook/).
+
+## Assessment Hierarchy
+
+Determining the assessment’s hierarchy is one of the most important steps in mapping. The hierarchy has implications for titles, identifiers, descriptors and score structures.
+
+Best practices and notes regarding hierarchy are included below. To better understand the conceptual structure of the domain, see the [Assessment Domain Overview](overview.md).
+
+* Assessment titles should be defined in a way that is distinct, descriptive, and consistent to allow for student performance to be compared across years.
+* Assessment is the highest level of the hierarchy. Assessments have at minimum, a title and a single subject (including “composite” ). This level includes the overall score and performance level. Except in the case of redesign, top-level scores and performance levels can be generally compared across years and administrations.
+* Assessments can have one or more objective levels, usually called sub-tests or component tests. They also have their own scores that inform, but do not always directly add up to, the overall score. ObjectiveAssessment.ParentObjective nests these levels correctly within the hierarchy and creates relationships between the objectives.
+* An objective level may be related to one or more parent objectives, allowing for more robust or nuanced analysis. Some assessments, including developmental screeners, may include objectives comprised of skills assessed in isolation in other parts of the test.
+
+    Example: A theoretical assessment includes three objectives--Listening, Speaking, and Language. Each objective is defined separately and has its own score. Due to the compound nature of the Language objective on this assessment, its score considers and weights items from the Listening and Speaking objectives.
+
+    Ed-Fi allows the analyst to relate the Language objective to both the Listening and Speaking subject areas. However, the analyst should not attempt to recalculate an overall Listening or Speaking score/performance level by splitting components of the Language objective (unless such a rollup is available in the assessment vendor’s score report).
+
+Note that when a use case requires multiple related assessments to be compared in a visualization or analysis, it can be helpful to define the assessments using a similar structure, if possible.
+
+Creating a diagram of the assessment, its sections, and their scores prior to mapping allows the analyst to more easily visualize how it fits into the Ed-Fi model. It also helps to identify the level of granularity necessary to meet the requirements of selected use cases. See an example hierarchy diagram for a college readiness exam and its translation to Ed-Fi below.
+
+![College Readiness Exam](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Assessment_CollegeReadinessExam.png)
+
+![Assessment Ed-Fi Mapping](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Assessment_Ed-FiMapping.png)
+
+## Scores and Performance Levels
+
+Scores at all levels of the assessment hierarchy should be loaded as defined and provided by the assessment vendor. Implementers should not attempt to calculate scores, as information related to weighting or score composition may be unavailable or inconsistent across administrations.
+
+Guidance for defining Assessment and StudentAssessment for a basic summative assessment are included below.
+
+### Assessment
+
+#### Overall Scores
+
+Score elements should reflect the total number of points available. To define an assessment’s overall minimum and maximum score, use an AssessmentReportingType descriptor value of “Number score” and a ResultDataType descriptor value of “Decimal.” Round to two decimal places which are always present.
+
+For a test with a maximum score of 50 points:
 
 ```json
-`"scores": [`
-    `{`
-        `"assessmentReportingMethodType": "Number score",`
-        `"resultDatatypeType": "Decimal",`
-        `"maximumScore": "50.00",`
-        `"minimumScore": "0"`
-    `}`
-`]`
+"scores": [
+    {
+        "assessmentReportingMethodType": "Number score",
+        "resultDatatypeType": "Decimal",
+        "maximumScore": "50.00",
+        "minimumScore": "0"
+    }
+]
 ```
 
-## An assessment’s performance levels
+#### Performance Levels
 
-For a typical point-based assessment’s performance levels we suggest an
-AssessmentReportingMethodType descriptor value of "Raw score" and a
-ResultDataType descriptor value of "Percentage". We recommend no decimal places.
+The assessment may also define performance levels that are linked to a student’s overall score. A unique consideration is that performance levels may be either inclusive or exclusive. Best practice is to make the MinimumScore for the performance level band to be inclusive, while the MaximumScore would not be considered part of the band. If it is possible for students to achieve better than 100% on a performance level, omit the MaximumScore value for the top performance level.
 
-A unique consideration with performance levels is that the level cutoffs can be
-either inclusive or exclusive. We suggest that the MinimumScore be inclusive
-while the MaximumScore not be considered part of the performance band. In the
-example json shown below, this would indicate that a score of 80 would be
-considered “Proficient”. In addition, if it is possible for your students to
-achieve better than 100% on a performance level, we suggest that a MaximumScore
-value for the top performance level be omitted.
+In the example below, the four performance levels are expressed as percentages of the overall points score.
 
 ```json
 "performanceLevels": [
@@ -81,223 +111,125 @@ value for the top performance level be omitted.
 ]
 ```
 
-## An objective’s scores designation
+Defining scores and performance levels for the Assessment will allow for the loading of the student’s overall/composite score and overall/composite performance level (see StudentAssessment section below). This may be sufficient to power an overview dashboard or determine if a student has taken and passed or achieved the desired performance level on an assessment but will include no information about sub-tests, which are defined through ObjectiveAssessment.
 
-For a typical point-based assessment objective’s scores designations we suggest
-an AssessmentReportingType descriptor value of "Raw score" and for the
-ResultDataType descriptor value we recommend "Percentage", as shown in the
-example json below.
+#### ObjectiveAssessment
 
-```json
-`"scores": [`
-      `{`
-          `"assessmentReportingMethodType": "Raw score",`
-          `"resultDatatypeType": "Percentage"`
-      `},`
-```
-
-## An objective’s performance levels
-
-For a typical point-based objective’s performance levels we suggest an
-AssessmentReportingMethodType descriptor value of "Raw score" and a
-ResultDataType descriptor value of "Percentage". We recommend no decimal places.
-
-A unique consideration with performance levels is that the level cutoffs can be
-either inclusive or exclusive. We suggest that the MinimumScore be inclusive
-while the MaximumScore not be considered part of the performance band. In the
-example json shown below, this would indicate that a score of 80 would be
-considered “Proficient”. In addition, if it is possible for your students to
-achieve better than 100% on a performance level, we suggest that a MaximumScore
-value for the top performance level be omitted.
+For objective-level scores, use an AssessmentReportingType descriptor value of "Raw score" and for the ResultDataType descriptor value we recommend "Percentage", as shown in the example json below.
 
 ```json
-`"performanceLevels": [`
-           `{`
-               `"assessmentReportingMethodType": "Raw score",`
-               `"performanceLevelDescriptor": "[http://namespace.com/Advanced](http://namespace.com/Advanced)",`
-               `"minimumScore”: "90",`
-               `"resultDatatypeType”: "Percentage”`
-           `},`
-           `{`
-               `"assessmentReportingMethodType": "Raw score",`
-               `"performanceLevelDescriptor": "[http://namespace.com/Proficient](http://namespace.com/Proficient)",`
-               `"minimumScore”: "80",`
-               `"maximumScore": "90",`
-               `"resultDatatypeType”: "Percentage”`
-           `},`
-           `{`
-               `"assessmentReportingMethodType": "Raw score",`
-               `"performanceLevelDescriptor": "[http://namespace.com/Basic](http://namespace.com/Basic)",`
-               `"minimumScore”: "70",`
-               `"maximumScore": "80",`
-               `"resultDatatypeType”: "Percentage”`
-           `},`
-           `{`
-               `"assessmentReportingMethodType": "Raw score",`
-               `"performanceLevelDescriptor": "[http://namespace.com/Below](http://namespace.com/Below) Basic",`
-               `"minimumScore”: "0",`
-               `"maximumScore": "70",`
-               `"resultDatatypeType”: "Percentage”`
-           `}`
-       `],`
+"scores": [
+      {
+          "assessmentReportingMethodType": "Raw score",
+          "resultDatatypeType": "Percentage"
+      },
 ```
 
-## A student’s final score for the overall assessment
-
-For a student’s final score on a typical point-based assessment we suggest an
-AssessmentReportingType descriptor value of "Number score" and for the
-ResultDataType descriptor value we recommend "Decimal".
-
-For the result, we recommend you round to two decimal places which are always
-present. The result should reflect the raw score of the student’s final result.
-For instance, for a score of 37 out of 50 points, the result would be shown as
-37.00.
+When performance levels are reported at the objective level, use an AssessmentReportingMethodType descriptor value of "Raw score" and a ResultDataType descriptor value of "Percentage". We recommend no decimal places. The same considerations regarding the inclusive or exclusive nature of the performance level from the overall assessment should be considered at the objective level.
 
 ```json
-`"scoreResults": [`
-    `{`
-        `"assessmentReportingMethodType": "Number score",`
-        `"result": "37.00",`
-        `"resultDatatypeType": "Decimal"`
-    `},`
-`],`
+"performanceLevels": [
+    { 
+        "assessmentReportingMethodType": "Raw score",
+        "performanceLevelDescriptor": "[http://namespace.com/Advanced](http://namespace.com/Advanced)",
+        "minimumScore": "90",
+        "resultDatatypeType": "Percentage"
+    },
+    {
+        "assessmentReportingMethodType": "Raw score",
+        "performanceLevelDescriptor": "[http://namespace.com/Proficient](http://namespace.com/Proficient)",
+        "minimumScore": "80",
+        "maximumScore": "90",
+        "resultDatatypeType": "Percentage"
+    },
+    {
+        "assessmentReportingMethodType": "Raw score",
+        "performanceLevelDescriptor": "[http://namespace.com/Basic](http://namespace.com/Basic)",
+        "minimumScore": "70",
+        "maximumScore": "80",
+        "resultDatatypeType": "Percentage"
+    },
+    {
+        "assessmentReportingMethodType": "Raw score",
+        "performanceLevelDescriptor": "[http://namespace.com/Below](http://namespace.com/Below) Basic",
+        "minimumScore": "0",
+        "maximumScore": "70",
+        "resultDatatypeType": "Percentage"
+    },
+]
 ```
 
-## A student’s final score on an objective
+### StudentAssessment
 
-For a student’s score on a typical point-based objective’s performance levels we
-suggest an AssessmentReportingMethodType descriptor value of "Raw score" and a
-ResultDataType descriptor value of "Percentage".
+#### OverallScore
 
-For the result we recommend two decimal places, reflecting the percent correct
-the student achieved for the objective.
+Because Assessment and StudentAssessment are structured in parallel, the same descriptor values should be used when reporting a student’s assessment reports.
+
+For a student who scored 37 out of the maximum 50 points:
 
 ```json
-`"scoreResults": [`
-   `{`
-       `"assessmentReportingMethodType": "Raw score",`
-       `"result": "42.86",`
-       `"resultDatatypeType": "Percentage"`
-   `}`
- `],`
+"scoreResults": [
+    {
+        "assessmentReportingMethodType": "Number score",
+        "result": "37.00",
+        "resultDatatypeType": "Decimal"
+    },
+],
 ```
 
-## Assigning Assessment Identifiers
+The score represents a 74%, which falls in the Basic performance level.
 
-When assigning identifiers for Assessment, ObjectiveAssessment, and Assessment
-metadata and StudentAssessment
+#### ObjectiveScore
 
-:::info
+For performance on an objective, the score results will appear as follows:
 
-"Identifiers" were introduced into the assessment domain as _partial surrogate
-keys_ to allow the source systems employed by assessment organizations to use
-their internally unique identifiers instead of adhering to a natural key system
-created by the education organizations. A namespace was created to ensure that
-the identifiers created by an assessment organization were unique within a
-district or state ODS.
+```json
+"scoreResults": [
+   {
+       "assessmentReportingMethodType": "Raw score",
+       "result": "42.86",
+       "resultDatatypeType": "Percentage"
+   }
+ ],
+```
 
-:::
+This score also falls in the Basic performance level at the objective level.
 
-The original intent was to allow Assessment to be identified by:
+## Learning Standards
 
-1. An internal key for the assessment, potentially even a computer-generated
-    number, that is used to populate the data into the API.
-2. A namespace reflecting the uri for the assessment organization.
+Learning standards alignment provides curricular and conceptual context and can power visualizations that let educators who use multiple classroom assessments review student performance across concepts.  If aligning to learning standards, ensure that you are referring to the correct version—not just the correct standard number. Many classroom or formative assessments have an item bank that is built over time and may include valid questions that are tied to multiple versions of a standard. This is especially important following a new issuance or update to standards.
 
-This pattern of an Identifier +Namespace was introduced for Assessment,
-ObjectiveAssessment, and Assessment metadata and StudentAssessment.
+## Grade Levels and School Year
 
-However, assessment results are often being obtained from files that provide the
-assessment results and may not directly contain metadata about the assessment or
-objective assessments.  These files are loaded into the ODS in batch mode.
-These loaders must create these identifiers by convention and thus there is
-great amount of variance and in some cases misunderstanding on how best to do
-this.  The is a temptation to create complex patterns of identifiers – **but
-this is not necessary.**
+Grade level and school year are very important contextual information.
 
-To best understand, it is important that one consider the key structures, as
-follows:
+Grade level is included in Assessment and StudentAssessment. Assessment.AssessedGradeLevel defines one or more grade levels for which the assessment is explicitly designed. StudentAssessment includes two types of grade level information—AssessedGradeLevel and WhenAssessedGradeLevel. AssessedGradeLevel represents the grade level the student was assessed at through the exam form and often has implications for performance level determination. WhenAssessedGradeLevel represents the grade in which the student was enrolled at the time of assessment. These values may or may not be the same, though widely it may be a point for review during validation testing.
 
-| Entity | Composite Key |
-| --- | --- |
-| Assessment | _AssessmentIdentifier<br/>_   Namespace |
-| ObjectiveAsessment | _·Assessment reference<br/>_   AssessmentIdentifer<br/>    _Namespace<br/>_   IdentificationCode |
-| AssessmentItem | _·Assessment reference<br/>_   AssessmentIdentifer<br/>    _Namespace<br/>_   IdentificationCode |
-| StudentAssessment | _Assessment reference<br/>_   AssessmentIdentifer<br/>    _Namespace<br/>_   Student reference<br/>    _StudentUniqueID<br/>_   StudentAssessmentIdentifier |
+StudentAssessment.SchoolYear is required and represents the school year in which or for which the assessment was administered. School year provides important context for visualizations and allows for the appropriate categorization of the scores, regardless of the actual administration date. This eliminates the need to arbitrarily define a cut-off date to decide which school year to attach to a specific administration or score.
 
-### For Assessment Identifier
+This is especially important for assessments taken during the summer, as it can be unclear how to group the scores in a school year-based visualization. Take care to follow the convention laid out by the implementing state or district. For example, if a student takes a make-up exam or is attempting to pass a state summative exam after multiple administrations, their scores will likely be attributed to the prior school year including for purposes of accountability or state or federal reporting. In another case, a student may be accelerating their coursework during the summer and district practice may be to attribute the exam to the upcoming year.
 
-The composite key for Assessment is:
+## Use Cases and Visualization Design
 
-1. **Namespace** is the uri of the source assessment organization. Thus, for
-    the ACT assessment, the namespace would be “[uri://act.org]”
-2. **AssessmentIdentifer** needs to unique identify the specific assessment
-    within the context of the assessment organization, consisting of:
+Assessments are an important part of assessing a student’s mastery of academic concepts, skills acquisition, and readiness to pursue specific academic tracks. The Assessment domain in Ed-Fi allows for expanded insights from linkages to other systems and use cases that leverage other academic or student performance data.
 
-* * **Internal ID for the assessment by the assessment organization**, or
-  * **Short identifier for the assessment** that is unique within the
-        organization across the various assessments they offer. For example,
-        there could be “ACT” and “ACT Practice” assessments that are offered.
-  * **Optionally a string representing the version of the assessment,** as
-        it may be pertinent such as:
-    * **Version number**, such as 3.2; or
-    * **Year or school year**, such as 2021
-  * **NOT the assessment organization**, since this is reflected in the
-        namespace
+The domain is designed to deliver on or contribute to use cases such as:
 
-### For ObjectiveAssessment IdentificationCode
+* holistic review of a student’s academic performance
+* performance against dropout prevention, early warning system, or on-/off-track metrics
+* completion of one or more college readiness assessments
+* achievement of specific performance levels on one or more assessments, including college readiness benchmarks
+* student participation in and performance trends over multiple assessment administrations
+* strengths and weaknesses in specific curricular learning standards, both through grades and assessment performance
+* comparison of student performance across multiple related exams
 
-The composite key for ObjectiveAssessment is:
+The domain is not designed to deliver on use cases such as:
 
-1. **Namespace** is the uri of the source assessment organization. Thus, for
-    the ACT assessment, the namespace would be “[uri://act.org]”
-2. **AssessmentIdentifer** is the unique identifier for the specific assessment
-    within the context of the assessment organization.
-3. **IdentificationCode for the ObjectiveAssessment** needs to uniquely reflect
-    the “subtest” in the context of the AssessmentIdentifier and the Namespace.
+* recreating assessment instruments fully or providing for assessment or assessment item portability across systems
+* capturing precise algorithmic or technical details of scoring systems
+* recreating or recalculating scores
+* gathering all data generated from a student’s interaction with an assessment instrument
 
-* * **Internal ID for the objective assessment by the assessment
-        organization**, or
-  * **Reflect the topic of the objective assessment**, for example
-        Mathematics, Reading, Science, Writing, etc.
-  * **NOT the assessment or assessment organization**, since that is
-        reflected in the AssessmentIdentifer and the Namespace.
+Assessment systems often include robust item-level reporting and details of the student’s interaction with the assessment, especially for computer-adaptive testing.
 
-### For AssessmentItem IdentificationCode
-
-The composite key for AssessmentItem is:
-
-1. **Namespace** is the uri of the source assessment organization. Thus, for
-    the ACT assessment, the namespace would be “[uri://act.org]”
-2. **AssessmentIdentifer** is the unique identifier for the specific assessment
-    within the context of the assessment organization.
-3. **IdentificationCode for the AssessmentItem** needs to uniquely reflect the
-    item in the context of the AssessmentIdentifier and the Namespace. This is
-    typically either:
-
-* * **Internal ID for the assessment item by the assessment organization**,
-        or
-  * **A unique identifier of the item from the test bank;** or
-  * **A generated number**, potentially even a sequence number
-
-### For StudentAssessment IdentificationCode
-
-The composite key for StudentAssessment is:
-
-1. **Namespace** is the uri of the source assessment organization. Thus, for
-    the ACT assessment, the namespace would be “[uri://act.org]”
-2. **AssessmentIdentifer** is the unique identifier for the specific assessment
-    within the context of the assessment organization.
-3. **StudentReference** consisting of the StudentUniqueID
-4. **StudentAssessmentIdentifier for the student’s results from an
-    Assessment.** The only uniqueness requirement is to distinguish between
-    multiple times the student takes the same assessment.  
-
-* * **Possible values:**
-    * A booklet (if paper) or session ID (if electronic). or
-    * The assessment vendor’s ID for the student, or
-    * The ID for the student obtained from rostering, or
-    * An internal ID for the student’s results for this administration
-  * **NOT the assessment or assessment organization**, since that is
-        reflected in the AssessmentIdentifer and the Namespace.
-  * **NOT the Ed-Fi StudentUniqueID** since it is already part of the key.
+Educators often receive professional development designed to help them read and interpret the reports generated by the assessment source vendor. Source systems may also offer detailed item-level analysis or configurable reports. Ed-Fi use cases should not seek to replicate these features, but rather to enhance an educator’s understanding of student performance by using data from other domains to provide expanded context for participation or scores. Item-level definition is available in Ed-Fi, but its use requires a strong and somewhat unique use case.
