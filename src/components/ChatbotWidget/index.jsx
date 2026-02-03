@@ -4,6 +4,7 @@
 // See the LICENSE and NOTICES files in the project root for more information.
 
 import { useEffect, useState } from 'react';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './styles.module.css';
 
 /**
@@ -11,15 +12,20 @@ import styles from './styles.module.css';
  * Renders a floating iframe that loads the chatbot widget.
  * Uses lazy loading to improve initial page load performance.
  *
- * NOTE: The widget URL is currently set to localhost for development.
- * Update WIDGET_URL to production server before deploying to production.
+ * Environment Variables:
+ * - CHATBOT_WIDGET_URL: The URL of the chatbot widget (defaults to localhost:3080 for development)
+ *   Set this in your build environment or CI/CD pipeline.
  */
 const ChatbotWidget = () => {
+  const { siteConfig } = useDocusaurusContext();
   const [shouldLoadIframe, setShouldLoadIframe] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
 
-  // TODO: Change this URL to production server when ready
-  const WIDGET_URL = 'http://localhost:3080/widget/';
+  // Read widget URL from Docusaurus site config (injected at build time)
+  const WIDGET_URL = siteConfig.customFields.chatbotWidgetUrl;
+
+  // Derive the origin from the widget URL for security validation
+  const widgetOrigin = new URL(WIDGET_URL).origin;
 
   useEffect(() => {
     // Lazy load the iframe after a short delay to ensure main content loads first
@@ -34,7 +40,7 @@ const ChatbotWidget = () => {
     // Listen for postMessage events from the widget iframe
     const handleMessage = (event) => {
       // Validate origin for security (update in production)
-      if (event.origin !== 'http://localhost:3080') {
+      if (event.origin !== widgetOrigin) {
         return;
       }
 
@@ -48,7 +54,7 @@ const ChatbotWidget = () => {
 
     window.addEventListener('message', handleMessage);
     return () => window.removeEventListener('message', handleMessage);
-  }, []);
+  }, [widgetOrigin]);
 
   return (
     <div className={styles.chatbotContainer}>
