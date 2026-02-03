@@ -32,7 +32,7 @@ education data. The Ed-Fi UDM provides a standard means for:
     unifies the semantics of data artifacts into common entities.
 
 As such, the Ed-Fi UDM forms the foundation for all Ed-Fi data standards and the
-products in the Ed-Fi Technical Suite.
+products in the Ed-Fi Technology Suite.
 
 ## Scope
 

@@ -16,7 +16,7 @@ Ed-Fi Alliance
 Contact: ~~Eric Jansson~~ Mustafa Yilmaz \
 May 31, 2018
 
-This section provides design guidelines for the Ed-Fi XML data standards, which are technically expressed as XML Schema Definition (XSD) files. These guidelines describe the properties to which an XML specification and related implementation must adhere in order to be considered aligned with Ed-Fi technology standards. They are guidelines only. They do not describe a specific implementation or particular XSD specification. Where helpful, a rationale for specific guidelines is also provided.
+This section provides design guidelines for the Ed-Fi XML data standards, which are technically expressed as XML Schema Definition (XSD) files. These guidelines describe the properties to which an XML specification and related implementation must adhere in order to be considered aligned with Ed-Fi Technology Suite standards. They are guidelines only. They do not describe a specific implementation or particular XSD specification. Where helpful, a rationale for specific guidelines is also provided.
 
 ## Version History
 

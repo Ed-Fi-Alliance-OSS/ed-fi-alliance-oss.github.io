@@ -23,10 +23,10 @@ links below. We recommend you stay current with the latest patch update that has
 been promoted to
 [release](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging?_a=feed&feed=EdFi%40Release).
 
-* [EdFi.Suite3.Installer.WebApi](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Installer.WebApi/versions/7.3.27)
-* [EdFi.Suite3.Installer.SwaggerUI](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Installer.SwaggerUI/versions/7.3.33) (Optional,
+* [EdFi.Suite3.Installer.WebApi](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Installer.WebApi/overview/7.3.10039)
+* [EdFi.Suite3.Installer.SwaggerUI](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Installer.SwaggerUI/overview/7.3.10012) (Optional,
     not for production)
-* [EdFi.Suite3.RestApi.Databases.5.2.0](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.RestApi.Databases.Standard.5.2.0/versions/7.3.1277)
+* [EdFi.Suite3.RestApi.Databases.Standard.6.0.0](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.RestApi.Databases.Standard.6.0.0/overview/7.3.10629)
 
 For each of the downloads, **right-click** and select "Properties." Update the
 file extension (from .nupkg to .zip). Remove the version number (optional).
@@ -58,6 +58,10 @@ paths in Windows.
 :::
 
 ## Step 2. Install the Ed-Fi Databases
+
+:::info
+When deploying to SQL Server, this tool must be executed locally on the DB server (e.g., via RDP).
+:::
 
 Extract the contents of the EdFi.Suite3.RestApi.Databases package. The paths in
 these instructions assume that the package was extracted to a folder with the
@@ -112,17 +116,12 @@ settings by consulting the samples provided below.
     ```json
     {
       "InstallType": "MultiTenant",
+      "FeatureManagement": {
+          "MultiTenancy": true
+      },
       "ApiSettings": {
           "Engine": "SQLServer",
-          "OdsTokens": "Tenant1ODS;Tenant2ODS",
-          "Features": [
-            ...
-            {
-                "IsEnabled": true,
-                "Name": "MultiTenancy"
-            },
-            ...
-          ]
+          "OdsTokens": "Tenant1ODS;Tenant2ODS"
       },
       "Tenants" : {
         "Tenant1": {
@@ -145,17 +144,12 @@ settings by consulting the samples provided below.
     ```json
     {
       "InstallType": "MultiTenant",
+      "FeatureManagement": {
+          "MultiTenancy": true
+      },
       "ApiSettings": {
           "Engine": "PostgreSQL",
-          "OdsTokens": "Tenant1ODS;Tenant2ODS",
-          "Features": [
-            ...
-            {
-                "IsEnabled": true,
-                "Name": "MultiTenancy"
-            },
-            ...
-          ]
+          "OdsTokens": "Tenant1ODS;Tenant2ODS"
       },
       "Tenants" : {
         "Tenant1": {
@@ -260,8 +254,8 @@ Copy and modify the following parameter code to fit your connection information:
   <TabItem value="MSSQL" label="SQL Server" default>
     ```powershell
     $parameters = @{
-        PackageVersion = "7.3.1574"
-        PackageName = "EdFi.Suite3.Ods.WebApi.Standard.5.2.0"
+        PackageVersion = "7.3.10629"
+        PackageName = "EdFi.Suite3.Ods.WebApi.Standard.6.0.0"
         DbConnectionInfo = @{
             Engine="SqlServer"
             Server="localhost"
@@ -274,8 +268,8 @@ Copy and modify the following parameter code to fit your connection information:
   <TabItem value="PostgreSQL" label="PostgreSQL">
     ```powershell
     $parameters = @{
-        PackageVersion = "7.3.1574"
-        PackageName = "EdFi.Suite3.Ods.WebApi.Standard.5.2.0"
+        PackageVersion = "7.3.10629"
+        PackageName = "EdFi.Suite3.Ods.WebApi.Standard.6.0.0"
         DbConnectionInfo = @{
             Engine="PostgreSQL"
             Server="localhost"
@@ -288,8 +282,8 @@ Copy and modify the following parameter code to fit your connection information:
     ```powershell
     $parameters = @{
         IsMultiTenant = $true
-        PackageVersion = "7.3.1574"
-        PackageName = "EdFi.Suite3.Ods.WebApi.Standard.5.2.0"
+        PackageVersion = "7.3.10629"
+        PackageName = "EdFi.Suite3.Ods.WebApi.Standard.6.0.0"
         DbConnectionInfo = @{
             Engine="SqlServer"
             Server="localhost"
@@ -313,8 +307,8 @@ Copy and modify the following parameter code to fit your connection information:
     ```powershell
     $parameters = @{
         IsMultiTenant = $true
-        PackageVersion = "7.3.1574"
-        PackageName = "EdFi.Suite3.Ods.WebApi.Standard.5.2.0"
+        PackageVersion = "7.3.10629"
+        PackageName = "EdFi.Suite3.Ods.WebApi.Standard.6.0.0"
         DbConnectionInfo = @{
             Engine="PostgreSQL"
             Server="localhost"
@@ -378,7 +372,7 @@ Key must be 256 bits and base 64 encoded.
 To enable [Context-Based Routing for Year-Specific
 ODS](../../platform-dev-guide/configuration/context-based-routing-for-year-specific-ods.md),
 set a valid value for OdsContextRouteTemplate parameter. An example of a valid
-value is `{schoolYear:range(2020,2030)}` Where schoolYear is the Route section,
+value is `{schoolYearFromRoute:range(2020,2030)}` Where schoolYear is the Route section,
 and the range will accept values between 2020 and 2030
 
 :::
@@ -452,7 +446,7 @@ Copy and modify the following parameter code to add your site name:
 
 ```powershell
 $parameters = @{
-    PackageVersion = "7.3.1277"
+    PackageVersion = "7.3.10629"
     WebApiVersionUrl = "https://YOUR_SITE_OR_SERVER_NAME_HERE/WebApi"
 }
 ```
@@ -466,7 +460,7 @@ To deploy Swagger for MultiTenant, use parameters `Tenants` and `DefaultTenant`
 
 ```powershell
 $parameters = @{
-    PackageVersion = "7.3.1277"
+    PackageVersion = "7.3.10629"
     WebApiVersionUrl = "https://YOUR_SITE_OR_SERVER_NAME_HERE/WebApi"
     Tenants = @("Tenant1", "Tenant2")
 }

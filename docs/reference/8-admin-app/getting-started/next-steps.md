@@ -12,7 +12,7 @@ After installation, consider exploring the Admin App itself:
   installed the Admin App for a new, empty ODS / API, this provides you with an
   easy setup. If your Admin App is pointing to an existing ODS / API, you can
   confirm that the education organization information is as you expect.
-* **Review Ed-Fi Descriptors.** Ed-Fi technology allows you to configure value
+* **Review Ed-Fi Descriptors.** Ed-Fi Technology Suite allows you to configure value
   lists (i.e., code sets) specific to your context using Ed-Fi Descriptors. You
   can review Descriptors in the Admin App to make sure the as-shipped ODS / API
   contains values appropriate for your environment.
@@ -23,14 +23,14 @@ After installation, consider exploring the Admin App itself:
   administrators with credentials to get data into your new ODS / API. If your
   Admin App is connected to an existing instance, you can verify that the
   vendors and applications are set up as you expect.
-* **Add learning standards.** The Ed-Fi Alliance and Certica Solutions partnered
+* **Add learning standards.** The Ed-Fi Alliance and Instructure partnered
   to offer the Academic Benchmarks system of learning standards mappings
   available through the Ed-Fi Operational Data Store (Ed-Fi ODS/API). This
   partnership will make Academic Benchmarks’ digitized learning standards
   readily available to education agencies and vendors. The Admin App has
-  built-in synchronization to populate an ODS / API directly from Certica AB.
+  built-in synchronization to populate an ODS / API directly from Instructure AB.
   The license is free, and can be obtained online by [visiting this
-  link](https://certicasolutions.com/products/academic-benchmarks/#demo).
+  link](https://www.instructure.com/landing/elevate/ed-fi).
 
 ## Admin App Walkthrough
 
@@ -156,10 +156,9 @@ Standards** tab. You'll be presented with the screen below:
 
 ![Learning Standards](https://edfidocs.blob.core.windows.net/$web/img/reference/admin-app/getting-started/image2020-4-17_13-18-44.png)
 
-The screen contains instructions on how to get an API ID and Key from Certica
-Solutions. Following the instructions on screen to obtain an ID and Key.
+The screen contains instructions on how to get an API ID and Key from Instructure. Following the instructions on screen to obtain an ID and Key.
 
-Please enter AB connect ID and Key obtained from Certica and click **Enable
+Please enter AB connect ID and Key obtained from Instructure and click **Enable
 Learning Standards.** Syncing will begin. A progress bar will show you the
 current status, and you'll see a "completed successfully" message once done.
 

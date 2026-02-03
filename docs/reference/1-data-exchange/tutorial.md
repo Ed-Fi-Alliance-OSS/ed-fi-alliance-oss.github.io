@@ -79,7 +79,7 @@ version number is at path `$.dataModels[1].version`.
 
 * The `$.urls.dataManagementApi` provides the base path for access to Ed-Fi
   Resources and Ed-Fi Descriptors &mdash; the entities you are managing via an
-  Ed-Fi API application. The Ed-Fi API Standard defines the complete URL for
+  Ed-Fi API application. The Ed-Fi API Specifications defines the complete URL for
   accessing a resource as the combination of this base URL, a namespace
   representing the core Ed-Fi UDM ("ed-fi") or an extension (e.g. "tpdm"), and
   the name of the resource to access. In template form:

@@ -7,18 +7,13 @@ multi-tenant configuration, each tenant has its own `EdFi_Admin` and
 `EdFi_Security` databases and the API clients must include the well-known tenant
 identifier in the base route of their API requests.
 
-MultiTenancy can be enabled in the appsettings "Features" section, as follows:
+MultiTenancy can be enabled in the appsettings "FeatureManagement" section, as follows:
 
 ```json
-"ApiSettings": {
+"FeatureManagement": {
   ...
-  "Features": [
-    ...
-    {
-      "Name": "MultiTenancy",
-      "IsEnabled": true
-    }
-  ],
+  "MultiTenancy": true,
+  ...
 }
 ```
 

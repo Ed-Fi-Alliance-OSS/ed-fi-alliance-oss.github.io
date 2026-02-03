@@ -22,7 +22,7 @@ The Toolkit consists of several components.
 
 | Components | Role | Input | Output |
 | --- | --- | --- | --- |
-| Extractors | Utilities that extracts data from important K12 instructional systems and merges that data into a common format (LMS Unifying Data Model).Note that these can be used independent of the Ed-Fi technology infrastructure and platform if desired. | Pull from Canvas, Google Classroom, or Schoology | CSV files |
+| Extractors | Utilities that extracts data from important K12 instructional systems and merges that data into a common format (LMS Unifying Data Model).Note that these can be used independent of the Ed-Fi Technology Suite infrastructure and platform if desired. | Pull from Canvas, Google Classroom, or Schoology | CSV files |
 | Loaders | Utilities that push the data into a SQL Server database store. | CSV files created by the extractors | `lms.*`  tables in SQL Server |
 | Harmonizers | Utilities that help make the LMS data queryable alongside SIS data, by addressing problems such as entity identity mismatch, filtering of irrelevant MLS data, etc. | `edfi.*`  tables in SQL Server and `lms.*`  tables in SQL Server | `lms**x**.*`  tables in SQL Server |
 | [Ed-Fi ODS/API Extension](./lmsx-extension-to-the-ed-fi-odsapi.md) | Builds support for the LMSX extension directly into the Ed-Fi ODS/API, allowing LMS vendors to push data directly into the API, and thus making the tools above unnecessary | Push from an LMS vendor | `lms**x**.*`  tables in SQL Server |

@@ -15,9 +15,10 @@ in _appSettings.json_:
 1. Enable the Notifications feature.
 
     ```json
-    {
-        "Name": "Notifications",
-        "IsEnabled": true
+    "FeatureManagement": {
+        ...
+        "Notifications": true,
+        ...
     }
     ```
 

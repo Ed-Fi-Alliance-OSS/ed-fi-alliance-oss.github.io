@@ -29,7 +29,7 @@ covered in the Unifying Data Model.
 ## Revisions
 
 The Ed-Fi Alliance manages and revises the Unify Data Model annually. Please see
-the [Ed-Fi Technology Roadmap](../../0-roadmap/readme.mdx) for announcements about
+the [Roadmap for the Ed-Fi Technology Suite](../../0-roadmap/readme.mdx) for announcements about
 upcoming releases. Each revision is given a version number that follows the
 SemVer labeling conventions: major.minor.patch number (ex: 1.2.3), where a
 change in the major number denotes that there are breaking changes, the minor
@@ -40,7 +40,8 @@ Please see [Ed-Fi Technology Suite Supported
 Versions](../../0-roadmap/supported-versions.md) for the version history of the
 _Data Standard_, which encompasses the Data Model.
 
-* [Data Standard 5.x Model Reference](/reference/data-exchange/data-standard/model-reference)
+* [Data Standard 6.x Model Reference](/reference/data-exchange/data-standard/model-reference)
+* [Data Standard 5.0 Model Reference](/reference/data-exchange/data-standard/5/model-reference)
 * [Data Standard 4.0 Model Reference](https://edfi.atlassian.net/wiki/spaces/EFDS4X/pages/24412244/Unifying+Data+Model+-+v4.0+Model+Reference) (opens in Confluence)
 * [Data Standard 3.3 Model Reference](https://edfi.atlassian.net/wiki/spaces/EFDS33/pages/26968275/Unifying+Data+Model+-+v3.3+Model+Reference) (opens in Confluence)
 * [Data Standard 3.2 Model Reference](https://edfi.atlassian.net/wiki/spaces/EFDS32/pages/20186084/Unifying+Data+Model+-+v3.2+Model+Reference) (opens in Confluence)

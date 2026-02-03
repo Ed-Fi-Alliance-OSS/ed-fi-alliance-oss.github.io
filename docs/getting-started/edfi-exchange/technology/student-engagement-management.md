@@ -4,7 +4,7 @@
 
 ## Description
 
-This project aims to create an Ed-Fi Technical Suite 3-powered Student Engagement Management application that provides executives, district and campus administrators, and teachers with a set of dashboards and custom reports to help raise warning signs of disengaged students.
+This project aims to create an Ed-Fi Technology Suite 3-powered Student Engagement Management application that provides executives, district and campus administrators, and teachers with a set of dashboards and custom reports to help raise warning signs of disengaged students.
 
 ## Download
 
