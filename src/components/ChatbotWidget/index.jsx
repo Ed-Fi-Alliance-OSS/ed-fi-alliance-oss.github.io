@@ -3,7 +3,7 @@
 // The Ed-Fi Alliance licenses this file to you under the Apache License, Version 2.0.
 // See the LICENSE and NOTICES files in the project root for more information.
 
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './styles.module.css';
 
 /**
@@ -37,7 +37,9 @@ const ChatbotWidget = () => {
           className={styles.chatbotIframe}
           title="AI Chatbot Widget"
           allow="microphone"
-          sandbox="allow-scripts allow-forms allow-popups"
+          sandbox="allow-scripts allow-forms allow-popups allow-same-origin"
+          referrerPolicy="no-referrer"
+          loading="lazy"
         />
       )}
     </div>
