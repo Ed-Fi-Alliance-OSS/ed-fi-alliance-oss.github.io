@@ -20,7 +20,7 @@ When implementing an API Client that will be given an API key and secret that us
 
 For example, a SIS system using an API key and secret combination that uses the relationship-based authorization strategy will be able to add a student, but will not be able to perform any other operation on that resource until it is associated with an education agency that the SIS system API key and secret are associated with. This association is usually done through an enrollment record (studentSchoolAssociation). Once that relationship is created, then the SIS system will be able to perform other operations on that student record. The same is applicable to staff and parents.
 
-If there is an education organization reference on the resource created, this should not be an issue. If no education organization reference is on the resource created, an association record would need to be created to perform other operations on the newly created resource. More information can be found on the [API Claim Sets & Resources](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V71/pages/25493663/API+Claim+Sets+Resources) page.
+If there is an education organization reference on the resource created, this should not be an issue. If no education organization reference is on the resource created, an association record would need to be created to perform other operations on the newly created resource. More information can be found on the [API Claim Sets & Resources](../platform-dev-guide/security/api-claim-sets-resources) page.
 
 An ownership-based authorization strategy is used for assessment metadata, enabling multiple callers to create and manage their own metadata.
 

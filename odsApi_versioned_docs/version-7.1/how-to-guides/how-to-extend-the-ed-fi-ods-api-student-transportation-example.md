@@ -237,7 +237,7 @@ Save all modified files, close **Ed-Fi-ODS.sln**, and re-run the code generation
 
 Congratulations, you've successfully extended an instance of the Ed-Fi ODS / API. The Ed-Fi Extension in this example is fairly simple. It's a good place to start, but most enterprise users have more complicated needs. The following links are useful for developing more complex extensions and getting the development work into production.
 
-* [**Student Transcript Extension Example**](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V71/pages/25493733/How+To+Extend+the+Ed-Fi+ODS+API+-+Student+Transcript+Example). Working through this example is a great next step if you want to move on to more complicated extension scenarios.
+* [**Student Transcript Extension Example**](./how-to-extend-the-ed-fi-ods-api-student-transcript-example.md). Working through this example is a great next step if you want to move on to more complicated extension scenarios.
 * [**The MetaEd Cookbook**](https://edfi.atlassian.net/wiki/spaces/METAED20/pages/23709491/MetaEd+IDE+-+Creating+and+Maintaining+Your+Extension). This documentation provides excellent examples of common scenarios, from the simple to very complex.
 
 ## Appendix A: **Adding Manually Created Extensions**

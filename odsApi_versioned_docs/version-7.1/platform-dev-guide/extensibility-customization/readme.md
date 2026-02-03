@@ -54,7 +54,7 @@ corresponding API configuration setting (OdsContextRouteTemplate) to define the
 | **District-Specific** | Implicit | Segmentation by district. Multiple API clients may share a district-specific ODS database, but the district id is not part of the route. Each API client is associated with only one district-specific ODS instance. |
 | **District-Specific** | Explicit | Segmentation by district. Multiple API clients may share multiple district-specific ODS database. Data for different districts is explicitly accessed by changing the base path of the URL (e.g., http://website-address/northridge/data/v3/schools). (Note: API configuration changes for ODS context route template is required.) |
 | **Instance-Year Specific** | Implicit | Segmentation by instance and year. Multiple API clients may share an instance/year-specific ODS database. Each API client is only associated with a single instance/year-specific ODS instance. |
-| **Instance-Year Specific** | Explicit | Segmentation by instance and year. Different instance and year data is accessed by changing the base path of the URL (e.g., http://website-address/inst-1/2021/data/v3). Two contextual name/value pairs must be defined for each ODS instance and the API must be configured with a multiple segment ODS context route template (e.g. {instanceId}/{schoolYearFromRoute}). |
+| **Instance-Year Specific** | Explicit | Segmentation by instance and year. Different instance and year data is accessed by changing the base path of the URL (e.g., http://website-address/inst-1/2021/data/v3). Two contextual name/value pairs must be defined for each ODS instance and the API must be configured with a multiple segment ODS context route template (e.g. `{instanceId}/{schoolYearFromRoute}`). |
 
 Other segmentation strategies are possible as the design is flexible enough to
 satisfy custom requirements.
@@ -140,7 +140,7 @@ to manage key updates.
 The Ed-Fi ODS / API ships with a core set of cascading updates already in place,
 but platform hosts can expand or modify the cascading updates supported by the
 system. However, these changes may have to be reapplied after ODS / API upgrade
-or after extensions are redeployed by [MetaEd](/reference/meated if cascading
+or after extensions are redeployed by [MetaEd](/reference/metaed) if cascading
 updates have been customized for extensions. See the article [Cascading Key
 Updates on ODS / API
 Resources](../../technical-articles/cascading-key-updates-on-ods-api-resources.md)

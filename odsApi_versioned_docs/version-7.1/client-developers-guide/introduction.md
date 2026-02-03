@@ -8,7 +8,7 @@ This documentation describes concepts and techniques necessary for a technical p
 
 ## Audience
 
-This documentation is for current and prospective ODS / API client implementers. Client implementers are generally software developers, database administrators, or data integration developers. Client implementers interested in the inner workings of an Ed-Fi ODS / API platform may also find the [Platform Developers' Guide](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V71/pages/25493625/Platform+Developers+Guide) useful. Similarly, ODS / API platform hosts may find this information useful.
+This documentation is for current and prospective ODS / API client implementers. Client implementers are generally software developers, database administrators, or data integration developers. Client implementers interested in the inner workings of an Ed-Fi ODS / API platform may also find the [Platform Developers' Guide](../platform-dev-guide/readme.md) useful. Similarly, ODS / API platform hosts may find this information useful.
 
 ## Prerequisites
 

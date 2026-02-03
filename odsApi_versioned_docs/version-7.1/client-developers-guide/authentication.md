@@ -10,7 +10,7 @@ The steps below walk you through the process that a client uses to supply creden
 
 ### Step 1. Obtain an Access Token
 
-POST to the `/oauth/token` endpoint with an Authorization header of "Basic <base64 encoded client key : client secret>". The `grant_type` will be set to `client_credentials`. This follows the process described by the [Basic Authentication Scheme](https://tools.ietf.org/html/rfc2617#section-2).
+POST to the `/oauth/token` endpoint with an Authorization header of `"Basic <base64 encoded client key : client secret>"`. The `grant_type` will be set to `client_credentials`. This follows the process described by the [Basic Authentication Scheme](https://tools.ietf.org/html/rfc2617#section-2).
 
 **PowerShell Token Request:**
 ```powershell

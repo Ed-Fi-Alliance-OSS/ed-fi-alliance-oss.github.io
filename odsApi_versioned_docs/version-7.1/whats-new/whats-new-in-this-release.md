@@ -63,7 +63,7 @@ transition for users while providing compatibility with previous specification.
 
 ### MetaEd IDE v4.3
 
-Implementing extensions in Ed-Fi ODS / API v7.1 requires implementers to update to [MetaEd IDE v4.3](/reference/metaed). Refer to [MetaEd What's New](/reference/metaed/whats-new) for details on latest updates and improvements.
+Implementing extensions in Ed-Fi ODS / API v7.1 requires implementers to update to [MetaEd IDE v4.3](/reference/metaed). Refer to [MetaEd What's New](/reference/metaed/releases/4.3.0) for details on latest updates and improvements.
 
 ## Improvements & Enhancements - Previous v7.0
 
