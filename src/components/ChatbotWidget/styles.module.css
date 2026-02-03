@@ -27,6 +27,13 @@
   background: transparent;
 }
 
+/* When minimized, disable pointer events to allow clicks to pass through */
+.chatbotIframe.minimized {
+  width: 200px;
+  height: 65px;
+  box-shadow: none;
+}
+
 /* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
   .chatbotContainer {

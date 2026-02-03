@@ -16,6 +16,7 @@ import styles from './styles.module.css';
  */
 const ChatbotWidget = () => {
   const [shouldLoadIframe, setShouldLoadIframe] = useState(false);
+  const [isMinimized, setIsMinimized] = useState(false);
 
   // TODO: Change this URL to production server when ready
   const WIDGET_URL = 'http://localhost:3080/widget/';
@@ -29,12 +30,32 @@ const ChatbotWidget = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    // Listen for postMessage events from the widget iframe
+    const handleMessage = (event) => {
+      // Validate origin for security (update in production)
+      if (event.origin !== 'http://localhost:3080') {
+        return;
+      }
+
+      // Handle minimize/maximize state changes
+      if (event.data?.type === 'ed-fi-chat-minimized') {
+        setIsMinimized(true);
+      } else if (event.data?.type === 'ed-fi-chat-maximized') {
+        setIsMinimized(false);
+      }
+    };
+
+    window.addEventListener('message', handleMessage);
+    return () => window.removeEventListener('message', handleMessage);
+  }, []);
+
   return (
     <div className={styles.chatbotContainer}>
       {shouldLoadIframe && (
         <iframe
           src={WIDGET_URL}
-          className={styles.chatbotIframe}
+          className={`${styles.chatbotIframe} ${isMinimized ? styles.minimized : ''}`}
           title="AI Chatbot Widget"
           allow="microphone"
           sandbox="allow-scripts allow-forms allow-popups allow-same-origin"
