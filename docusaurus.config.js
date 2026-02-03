@@ -32,6 +32,11 @@ const config = {
     locales: ['en'],
   },
 
+  customFields: {
+    // Chatbot widget URL - reads from environment variable at build time
+    chatbotWidgetUrl: process.env.CHATBOT_WIDGET_URL || 'http://localhost:3080/widget/',
+  },
+
   presets: [
     [
       'classic',
