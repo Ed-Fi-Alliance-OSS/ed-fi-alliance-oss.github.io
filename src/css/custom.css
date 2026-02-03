@@ -5,58 +5,81 @@
  */
 
 /* You can override the default Infima variables here. */
+@font-face {
+  font-display: swap;
+  font-family: Figtree;
+  font-style: normal;
+  src: url('/static/fonts/Figtree.ttf') format('truetype');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: Figtree;
+  font-style: italic;
+  src: url('/static/fonts/Figtree-Italic.ttf') format('truetype');
+}
+
+
 :root {
-  /* --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e; */
-  --ifm-color-primary: #a0298c;
-  --ifm-color-primary-dark: #7a2e8c;
-  --ifm-color-primary-darker: #55206e;
-  --ifm-color-primary-darkest: #320d43;
-  --ifm-color-primary-light: #d832af;
-  --ifm-color-primary-lighter: #e259bf;
-  --ifm-color-primary-lightest: #f97ad9;
+  --ifm-color-primary: #0031F1;
+  --ifm-color-primary-rgb: 4, 51, 199;
+  --ifm-color-primary-dark: #002F8C;
+  --ifm-color-primary-darker: #2c4d78;
+  --ifm-color-primary-darkest: #02215D;
+  --ifm-color-primary-light: #004CFF;
+  --ifm-color-primary-lighter: #337aff;
+  --ifm-color-primary-lightest: #e6f0ff;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
-  --ifm-font-family-base: Montserrat, system-ui, -apple-system, Segoe UI, Roboto,
+
+  --ifm-font-family-base: Figtree, system-ui, -apple-system, Segoe UI, Roboto,
     Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, 'Segoe UI',
     Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
     'Segoe UI Symbol';
+  --edfi-font: var(--ifm-font-size-base) / var(--ifm-line-height-base) var(--ifm-font-family-base);
+
+  --ifm-font-color-base: #474545;
+  --ifm-heading-color: var(--ifm-color-primary-darkest);
+
+  /* Adjust navbar height for content offset (primary nav) */
+  --ifm-navbar-height: 83px; /* match increased primary nav height */
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
+  --ifm-color-primary: #4099FF;
+  --ifm-color-primary-dark: #004CFF;
+  --ifm-color-primary-darker: #337aff;
+  --ifm-color-primary-darkest: #e6f0ff;
+  --ifm-color-primary-light: #002F8C;
+  --ifm-color-primary-lighter: #2c4d78;
+  --ifm-color-primary-lightest: #02215D;
+  --ifm-font-color-base: #D1D5DB;
+
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
 /* Ed-Fi customizations */
 
-.footer {
-  background-color: #636567;
+:root {
+  /* Sidebar design tokens */
+  --edfi-sidebar-active-parent-bg: var(--ifm-color-primary-darkest); /* dark blue for active top-level & active parents */
+  --edfi-sidebar-active-group-bg: #ECF2FF; /* faint blue grouping background */
+  --edfi-sidebar-leaf-fg: #BECAE1; /* standard leaf link color */
+  --edfi-sidebar-leaf-active-fg: #004c99; /* active leaf text (bold + white bg) */
+  --edfi-sidebar-text-color: #002670;
+  --edfi-sidebar-caret-size: 20px;
+  --edfi-sidebar-item-vertical-pad: 12px; /* consistent vertical sizing (updated) */
+  --edfi-sidebar-caret-royal: #1d56c9; /* royal blue circle for top-level + active parents */
 }
 
-.hero__title {
-  background-image: url('/img/Ed-FiLogo-2.png');
-  background-size: cover;
-  height: 180px;
-  width: 344px;
-  text-indent: -9999px;
-  margin: auto;
-}
-
-[data-theme='dark'] .hero__title {
-  background-image: url('/img/Ed-FiLogo-2-alt.png');
+[data-theme='dark'] {
+  --edfi-sidebar-active-parent-bg: #0a2a4d;
+  --edfi-sidebar-active-group-bg: #132f54;
+  --edfi-sidebar-leaf-fg: #6fb3ff;
+  --edfi-sidebar-leaf-active-fg: #8fc4ff;
+  --edfi-sidebar-text-color: #a8caff;
+  --edfi-sidebar-caret-royal: #3a6ee8;
 }
 
 [data-theme='light'] .DocSearch {
@@ -99,10 +122,57 @@
   );
 }
 
+.footer {
+  background-color: #636567;
+}
+
+.hero__title {
+  background-image: url('/img/ed-fi-logo-light.svg');
+  background-size: cover;
+  width: 366px;
+  height: 180px;
+  text-indent: -9999px;
+  margin: auto;
+}
+
+[data-theme='dark'] .hero__title {
+  background-image: url('/img/ed-fi-logo-dark.svg');
+}
+
+.DocSearch-Modal {
+  margin-top: calc(var(--combined-top-offset) + 20px) !important;
+}
+
 .hero--primary {
   background: linear-gradient(180deg, #a0298c, #7a2e8c);
   height: 12rem;
   margin-bottom: 2rem;
+}
+
+.hero--primary h1 {
+  color: #fff;
+}
+
+.hero__subtitle {
+  color: #fff;
+}
+
+/* Homepage hero subtitle uses standard font color */
+.homepage.hero__subtitle {
+  color: var(--ifm-font-color-base);
+}
+
+h1.title_f1Hy, h2.title_f1Hy {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+/* Four columns under hero section */
+.hero ~ main .container .row .col {
+  border: 1px solid #e3e3e3;
+  margin: 5px;
+  border-radius: 10px;
+  padding: 15px;
 }
 
 table, .table {
@@ -111,11 +181,6 @@ table, .table {
 
 .row--thead {
   background-color: var(--ifm-table-stripe-background);
-}
-
-.col--th {
-  background-color: var(--ifm-color-secondary);
-  font-weight: var(--ifm-font-weight-bold);
 }
 
 .col--tr {
@@ -155,3 +220,747 @@ iframe {
   color: var(--ifm-font-color-base);
   margin: var(--ifm-spacing-vertical);
 }
+
+/* =============================================== Sidebar (Left Nav) Customizations  ========================================= */
+
+/* ===========================
+   Legacy caret styling - keeping for backwards compatibility but overridden by wrapper
+   =========================== */
+.theme-doc-sidebar-item-category > .menu__list-item-collapsible .menu__caret {
+  background: #ffffff;
+  color: var(--edfi-sidebar-leaf-fg);
+  width: var(--edfi-sidebar-caret-size);
+  height: var(--edfi-sidebar-caret-size);
+  border-radius: 50%;
+  border: 1px solid #d4dbe3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+[data-theme='dark'] .theme-doc-sidebar-item-category > .menu__list-item-collapsible .menu__caret {
+  background: #1e3a60;
+  border-color: #2c4d78;
+  color: var(--edfi-sidebar-leaf-fg);
+}
+
+[data-theme='dark'] .theme-doc-sidebar-item-category > .menu__list-item-collapsible .menu__caret-btn {
+  color: var(--edfi-sidebar-leaf-fg);
+}
+
+/* Caret icon (triangle) coloring */
+.theme-doc-sidebar-item-category .menu__caret:before {
+  border-color: currentColor;
+}
+
+/* Caret rotation: default points right (collapsed); when the list item is expanded, point down */
+.theme-doc-sidebar-item-category .menu__caret:before {
+  transition: transform .15s ease;
+  transform-origin: center;
+  transform: rotate(0deg);
+}
+
+/* legacy: royal circle + white arrow when parent is active */
+.theme-doc-sidebar-item-category:has(> .menu__list-item-collapsible > .menu__link--active)
+  > .menu__list-item-collapsible .menu__caret {
+  background: var(--edfi-sidebar-caret-royal);
+  border-color: var(--edfi-sidebar-caret-royal);
+  color: #ffffff;
+}
+
+/* legacy level-1 sizing */
+.theme-doc-sidebar-item-category-level-1
+  > .menu__list-item-collapsible .menu__caret {
+  background: var(--edfi-sidebar-caret-royal);
+  border-color: var(--edfi-sidebar-caret-royal);
+  color: #ffffff;
+  width: calc(var(--edfi-sidebar-caret-size) + 4px);
+  height: calc(var(--edfi-sidebar-caret-size) + 4px);
+  font-size: .9rem;
+}
+
+/* legacy arrow contrast on active background */
+.theme-doc-sidebar-item-category:has(> .menu__list-item-collapsible > .menu__link--active)
+  .menu__caret::before {
+  border-color: #ffffff;
+}
+
+/* legacy: caret arrow white for level-1 */
+.theme-doc-sidebar-item-category-level-1
+  > .menu__list-item-collapsible .menu__caret::before {
+  border-color: #ffffff;
+}
+
+/* =============================
+   Sidebar (Left Nav) Overrides
+   Implements requested visual design for active/inactive parents & leaves
+   ============================= */
+
+.menu__link--sublist-caret:after {
+  display: none;
+}
+
+/* =========================================================
+   1) PARENT <li> — .theme-doc-sidebar-item-category  #.menu__list-item-collapsible / Tree line (category header row)
+   ========================================================= */
+
+/* default non-active parent rows */
+.theme-doc-sidebar-item-category > .menu__list-item-collapsible {
+  align-items: center;
+  background: transparent;
+  border-radius: 0;
+  padding-right: 13px;
+  border-left: 1px solid var(--edfi-sidebar-leaf-fg);
+  transition: background-color .15s ease, color .15s ease;
+}
+
+.menu__list-item-collapsible.menu__list-item-collapsible-level-1,
+.menu__list-item-collapsible.menu__list-item-collapsible-level-2 {
+  padding-left: 12px;
+  margin-left: 0;
+  border: none;
+}
+
+.theme-doc-sidebar-item-category .menu__list-item:last-child .menu__list-item-collapsible {
+  position: relative;
+  border: none;
+}
+
+/* collapsed category: keep transparent */
+.theme-doc-sidebar-item-category
+  > .menu__list-item-collapsible.menu__list-item--collapsed {
+  background: transparent;
+}
+
+/* level-1 active category header row */
+.theme-doc-sidebar-item-category-level-1:not(.menu__list-item--collapsed) .menu__list-item-collapsible-level-1 {
+  background: var(--edfi-sidebar-active-parent-bg);
+  color: #ffffff;
+  font-weight: 500;
+}
+
+/* =========================================================
+   2) Fake Tree line #.menu__list-item-collapsible::before (category header row)
+   ========================================================= */
+
+   .theme-doc-sidebar-item-category .menu__list-item:last-child .menu__list-item-collapsible::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 20px;
+    background: var(--edfi-sidebar-leaf-fg);
+   }
+
+/* =========================================================
+   3) CHILD ANCHOR — #a.menu__link (base, hover, active, fallbacks)
+   ========================================================= */
+
+/* base link sizing & spacing (global) */
+.theme-doc-sidebar-menu .menu__link {
+  position: relative;
+  padding-top: var(--edfi-sidebar-item-vertical-pad);
+  padding-bottom: var(--edfi-sidebar-item-vertical-pad);
+  line-height: 1.4;
+  border-radius: 0;
+  transition: background-color .15s ease, color .15s ease;
+  font-size: 1rem;
+  color: var(--edfi-sidebar-text-color);
+  font-weight: 400;
+  background: transparent;
+}
+
+/* remove underline on active items */
+.theme-doc-sidebar-menu .menu__link.menu__link--active {
+  text-decoration: none;
+  color: var(--ifm-color-primary);
+  font-weight: 500;
+}
+
+/* active leaf link */
+.theme-doc-sidebar-item-link .menu__link.menu__link--active {
+  color: var( --ifm-color-primary);
+  font-weight: 500;
+  box-shadow: none;
+  border: none;
+}
+
+/* dark: active leaf link */
+[data-theme='dark'] .theme-doc-sidebar-item-link .menu__link.menu__link--active {
+
+}
+
+/* fallback emphasis for active links (progressive enhancement) */
+.theme-doc-sidebar-item-category .menu__link.menu__link--active {
+  font-weight: 500;
+}
+
+/* level-1 fallback active header (when :has unsupported) */
+
+.theme-doc-sidebar-item-category-level-1:not(.menu__list-item--collapsed) .menu__list-item-collapsible-level-1 .menu__link {
+  background: var(--edfi-sidebar-active-parent-bg);
+  color: #ffffff;
+  border-radius: 0;
+}
+
+/* collapsed category header text */
+.theme-doc-sidebar-item-category
+  > .menu__list-item-collapsible.menu__list-item--collapsed
+  > .menu__link {
+  color: var(--edfi-sidebar-leaf-fg);
+  background: transparent;
+  font-weight: 500;
+}
+
+/* hover */
+.theme-doc-sidebar-menu .menu__list-item--collapsed .menu__list-item-collapsible:hover > .menu__link,
+.theme-doc-sidebar-menu .theme-doc-sidebar-item-link:hover > .menu__link {
+  color: var(--ifm-color-primary);
+}
+
+/* =========================================================
+   3.5) Link tree horz  — #a.menu__link::before
+     3 level+ vert #a.menu__link::after
+   ========================================================= */
+
+   .theme-doc-sidebar-menu .menu__link::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 0;
+    height: 1px;
+    width: 8px;
+    background: var(--edfi-sidebar-leaf-fg);
+   }
+
+   .theme-doc-sidebar-menu .menu__list-item-collapsible-level-1 > .menu__link::before,
+  .theme-doc-sidebar-menu .menu__list-item-collapsible-level-2 > .menu__link::before,
+  .theme-doc-sidebar-item-link.theme-doc-sidebar-item-link-level-1 > .menu__link::before,
+  .theme-doc-sidebar-item-category .menu__list .theme-doc-sidebar-item-link.theme-doc-sidebar-item-link-level-2 > .menu__link::before {
+    display: none;
+  }
+
+   .theme-doc-sidebar-item-category .menu__list-item:not(.theme-doc-sidebar-item-link-level-1, .theme-doc-sidebar-item-category-level-1, .theme-doc-sidebar-item-link-level-2, .theme-doc-sidebar-item-category-level-2) > .menu__link::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 100%;
+    background: var(--edfi-sidebar-leaf-fg);
+  }
+
+  .theme-doc-sidebar-item-category .menu__list-item:not(.theme-doc-sidebar-item-link-level-1, .theme-doc-sidebar-item-category-level-1, .theme-doc-sidebar-item-link-level-2, .theme-doc-sidebar-item-category-level-2):last-child > .menu__link::after {
+    height: 20px;
+  }
+
+/* =========================================================
+   4) #.menu__caret-wrapper (circle container)
+   ========================================================= */
+
+/* base (utility) */
+.menu__caret-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(var(--edfi-sidebar-caret-size) + 4px);
+  height: calc(var(--edfi-sidebar-caret-size) + 4px);
+  background: var(--edfi-sidebar-caret-royal);
+  border-radius: 50%;
+  margin-left: 4px; /* slightly tighter spacing */
+  flex-shrink: 0;
+}
+
+/* scoped inside category header rows */
+.theme-doc-sidebar-item-category .menu__caret-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--edfi-sidebar-caret-size);
+  height: var(--edfi-sidebar-caret-size);
+  border-radius: 50%;
+  background: var(--edfi-sidebar-active-group-bg);
+  border-color: var(--edfi-sidebar-caret-royal); /* arrow inherits this */
+  transition: background-color .15s ease, border-color .15s ease;
+}
+
+/* below level-1 inactive */
+.theme-doc-sidebar-item-category-level-1 .theme-doc-sidebar-item-category.menu__list-item--collapsed .menu__caret-wrapper {
+  background: #fff;
+  border-color: var(--edfi-sidebar-caret-royal);
+  }
+
+.theme-doc-sidebar-menu .menu__list-item-collapsible:hover > .menu__caret-wrapper,
+.theme-doc-sidebar-menu .menu__link.menu__link--active + .menu__caret-wrapper,
+.theme-doc-sidebar-menu .menu__list-item:not(.menu__list-item--collapsed) > .menu__list-item-collapsible > .menu__caret-wrapper {
+  border-color: #fff;
+  background-color: var(--edfi-sidebar-caret-royal);
+}
+
+/* =========================================================
+   5) CHILD OF WRAPPER — #button.menu__caret-btn (button only)
+   ========================================================= */
+
+/* base button */
+.menu__caret-btn {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  position: relative;
+  cursor: pointer;
+}
+
+/* inheritance helper so ::before can pick up parent border-color */
+.theme-doc-sidebar-menu .menu__caret-btn {
+  border-color: inherit;
+}
+
+/* scoped inside category header rows */
+.theme-doc-sidebar-item-category > .menu__list-item-collapsible .menu__caret-btn {
+  background: transparent !important;
+  color: var(--edfi-sidebar-leaf-fg);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+/* =========================================================
+   6) PSEUDO OF BUTTON — #.menu__caret-btn::before (arrow)
+   ========================================================= */
+
+/* base arrow (inherits border-color from parent wrapper/button rule) */
+.menu__caret-btn::before {
+  content: '';
+  position: absolute;
+  left: calc(50% - 0.4px);
+  top: 50%;
+  width: 4px;
+  height: 4px;
+  border-bottom: 1px solid var(--ifm-color-primary);
+  border-right: 1px solid var(--ifm-color-primary);
+  border-color: inherit; /* IMPORTANT: control via parent border-color */
+  transform: translate(-50%, -50%) rotate(-45deg);
+  transform-origin: center;
+  transition: transform .12s ease, border-color .12s ease;
+  display: block;
+}
+
+/* expanded state (rotate down) */
+.menu__caret-btn[aria-expanded='true']::before {
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+/* =========================================================
+   7) SIBLING OF DIV — #ul.menu__list (child group container)
+   ========================================================= */
+
+/* level-1 active group container (around children) */
+.theme-doc-sidebar-item-category-level-1:not(.menu__list-item--collapsed)
+  > ul.menu__list {
+  background: var(--edfi-sidebar-active-group-bg);
+  margin-top: 0;
+  border-radius: 0;
+}
+
+/* dark: higher contrast for group container */
+[data-theme='dark']
+  .theme-doc-sidebar-item-category-level-1:not(.menu__list-item--collapsed)
+  > ul.menu__list {
+  background: #1b3556;
+  border-left-color: var(--edfi-sidebar-active-parent-bg);
+}
+
+/* inner lists indentation refinement */
+.theme-doc-sidebar-item-category .menu__list {
+  padding-left: 0;
+}
+
+/* global UL tree line */
+.theme-doc-sidebar-menu .menu__list {
+  border: none; /* faint light grey */
+}
+
+.theme-doc-sidebar-menu .menu__list .menu__list {
+  margin-block: 0;
+}
+
+/* =========================================================
+   8) list items — #li.menu__list-item. #li.theme-doc-sidebar-item-link
+      Link tree vertical
+   ========================================================= */
+
+.theme-doc-sidebar-item-category .menu__list-item {
+  position: relative;
+  padding-left: 12px;
+  margin: 0;
+}
+
+.theme-doc-sidebar-item-category .menu__list-item:not(:first-child) {
+  margin-top: 0;
+}
+
+.theme-doc-sidebar-item-category .menu__list-item.theme-doc-sidebar-item-category-level-2 {
+  padding-left: 0;
+}
+
+.theme-doc-sidebar-item-category .menu__list-item.theme-doc-sidebar-item-link-level-2,
+.theme-doc-sidebar-item-link.theme-doc-sidebar-item-link-level-1 {
+  padding-left: 12px;
+}
+
+.theme-doc-sidebar-item-link.theme-doc-sidebar-item-link-level-3.menu__list-item,
+.theme-doc-sidebar-item-category .menu__list-item.theme-doc-sidebar-item-category-level-3 {
+  padding-left: 27px;
+}
+
+.theme-doc-sidebar-item-category .menu__list-item:not(.theme-doc-sidebar-item-link-level-1, .theme-doc-sidebar-item-category-level-1, .theme-doc-sidebar-item-link-level-2, .theme-doc-sidebar-item-category-level-2, .theme-doc-sidebar-item-link-level-3, .theme-doc-sidebar-item-category-level-3) {
+  border-left: 1px solid var(--edfi-sidebar-leaf-fg);
+}
+
+.theme-doc-sidebar-item-category:last-child > .menu__list .menu__list-item {
+  border-left: none;
+}
+
+/* ==========================================
+   UI tweaks: hide sidebar collapse button and
+   visually hide vertical scrollbar on the docs sidebar
+   ========================================== */
+
+/* Hide the persistent "Collapse sidebar" control (use attribute selectors so builds with hashed classes still match) */
+button[aria-label="Collapse sidebar"],
+button[title="Collapse sidebar"] {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Hide native scrollbars on the docs sidebar while keeping scrolling functional. Target several likely containers to be robust across Docusaurus versions/builds. */
+.theme-doc-sidebar-container,
+.theme-doc-sidebar,
+.sidebarViewport_aRkj,
+.sidebar_njMd,
+.menu_SIkG,
+.theme-doc-sidebar-menu {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+.theme-doc-sidebar-container::-webkit-scrollbar,
+.theme-doc-sidebar::-webkit-scrollbar,
+.sidebarViewport_aRkj::-webkit-scrollbar,
+.sidebar_njMd::-webkit-scrollbar,
+.menu_SIkG::-webkit-scrollbar,
+.theme-doc-sidebar-menu::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+/* Ensure the sidebar containers keep scroll behavior */
+.theme-doc-sidebar-container,
+.sidebarViewport_aRkj,
+.sidebar_njMd {
+  overflow-y: auto;
+}
+
+@media (min-width: 997px) {
+  .theme-doc-sidebar-container {
+    width: 275px !important;
+    margin-top: 0 !important;
+  }
+
+
+  .sidebarViewport_aRkj {
+    max-height: 100% !important;
+  }
+}
+
+/* =============================================== End Sidebar (Left Nav) Customizations  ========================================= */
+
+/* =============================================== Navbar Customizations  ========================================= */
+/* Push the original mobile navbar down below blue bar */
+nav.navbar--fixed-top {
+  position: fixed;
+  top: var(--top-bar-height);
+  width: 100%;
+}
+
+nav.navbar .navbar__items--right {
+  a {
+    display: none;
+  }
+}
+
+/* =============================================== End Navbar Customizations  ========================================= */
+
+/* =============================================== DocItem Customizations  ========================================= */
+
+/* ======== General ==================*/
+.edfi-doc-item .markdown h1:first-child {
+  --ifm-h1-font-size: 2.875rem;
+  margin-bottom: 32px;
+}
+
+.edfi-doc-item .markdown > h2 {
+  --ifm-h2-font-size: 1.875rem;
+}
+
+.edfi-doc-item a {
+  font-weight: 700;
+}
+
+.edfi-doc-item ul li a,
+.edfi-doc-item ol li a{
+  font-weight: 500;
+}
+
+.edfi-doc-item .table-of-contents {
+  font-size: .875rem;
+  padding-left: 16px;
+}
+
+.edfi-doc-item .table-of-contents a.table-of-contents__link {
+  font-weight: 400;
+}
+
+.edfi-doc-item .table-of-contents a.table-of-contents__link--active {
+  font-weight: 500;
+}
+
+/* ======== Layout ==================*/
+@media (min-width: 997px) {
+  .edfi-doc-item .theme-doc-markdown {
+    margin: 58px auto 0;
+    padding: 0 6.3%;
+  }
+
+  /* make room for breadcrumbs */
+  .edfi-doc-item > .row > .col--3 {
+    margin-top: 114px;
+  }
+
+  .edfi-doc-item .tableOfContents_bqdL {
+    top: var(--combined-top-offset);
+  }
+}
+
+/* ======== Admonitions/Alerts  ==================*/
+.edfi-doc-item .alert {
+  border-radius: 5px;
+  box-shadow: none;
+  border: none;
+  padding: 19px 30px 17px 25px;
+}
+
+.edfi-doc-item .alert.theme-admonition-note {
+  --ifm-alert-background-color: #F2F6FF;
+}
+
+[data-theme='dark'] .edfi-doc-item .alert.theme-admonition-note {
+  --ifm-alert-background-color: #1b3556;
+}
+
+/* ======== Tables  ==================*/
+
+.edfi-doc-item table {
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.edfi-doc-item table thead tr {
+  border-bottom: none;
+}
+
+/* ======== Breadcrumbs  ==================*/
+
+@media (min-width: 997px) {
+  .edfi-doc-item > .row {
+    position: relative;
+  }
+
+  .edfi-doc-item .edfi-breadcrumbs-wrap {
+    position: relative;
+    top: -5px;
+    margin-right: -30%;
+  }
+
+  .edfi-breadcrumbs-wrap .breadcrumbHomeIcon_YNFT {
+    top: -1px;
+  }
+
+  .edfi-breadcrumbs-wrap .breadcrumbs__link {
+    font-size: .6975rem;
+    font-weight: 400;
+  }
+
+  .edfi-breadcrumbs-wrap .breadcrumbs__item--active .breadcrumbs__link {
+    font-weight: 500;
+    color: var(--ifm-color-primary);
+    background: transparent;
+  }
+
+  .edfi-breadcrumbs-wrap .breadcrumbs__item::after {
+    margin: 0 6px;
+  }
+
+  .edfi-breadcrumbs-wrap .breadcrumbs__item:first-child::after {
+    margin-left: 0;
+  }
+}
+
+/* ====== Pagination ======= */
+.ed-fi-pagination-nav-link {
+  display: flex;
+  align-items: center;
+  border-color: #ACB6CA;
+  border-radius: 5px;
+  line-height: 1.15;
+  padding: 13px;
+  padding-right: 30px;
+  color: #0055FA;
+}
+
+.ed-fi-pagination-nav-link.pagination-nav__link--next {
+  justify-content: flex-end;
+  padding-left: 30px;
+  padding-right: 13px;
+}
+
+.ed-fi-pagination-nav-link .pagination-nav__arrow {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 24px;
+  min-width: 24px;
+  padding-right: 10px;
+  border-right: 1px solid #D3D3D3;
+}
+
+.ed-fi-pagination-nav-link .pagination-nav__arrow.next {
+  padding-right: 0;
+  padding-left: 10px;
+  border-right: none;
+  border-left: 1px solid #D3D3D3;
+}
+
+.pagination-nav-info {
+  padding-left: 20px;
+  padding-top: 7px;
+  padding-bottom: 16px;
+}
+
+.pagination-nav__link--next .pagination-nav-info {
+  padding-left: 0;
+  padding-right: 20px;
+}
+
+.ed-fi-pagination-nav-link .pagination-nav__sublabel {
+  font-size: .6875rem;
+  color: #666666;
+  margin-bottom: 8px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+.ed-fi-pagination-nav-link .pagination-nav__label {
+  font-size: 1.25rem;
+  color: var(--ifm-color-primary-darkest);
+}
+
+.ed-fi-pagination-nav-link .pagination-nav__label::before,
+.ed-fi-pagination-nav-link .pagination-nav__label::after {
+  display: none;
+}
+
+.ed-fi-pagination-nav-link:hover {
+  border: 3px solid #004EFF;
+  padding: 11px;
+  padding-right: 28px;
+}
+
+.ed-fi-pagination-nav-link.pagination-nav__link--next:hover {
+  padding-left: 28px;
+  padding-right: 11px;
+}
+
+.ed-fi-pagination-nav-link:hover .pagination-nav__label {
+  color: #0055FA;
+}
+
+.ed-fi-pagination-nav-link:hover .pagination-nav__sublabel {
+  color: var(--ifm-color-primary-darkest);
+}
+
+@media (max-width: 996px) {
+  .ed-fi-pagination-nav-link {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 10px;
+  }
+
+  .ed-fi-pagination-nav-link.pagination-nav__link--next {
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: 10px;
+  }
+
+  .ed-fi-pagination-nav-link .pagination-nav__arrow {
+    order: 1;
+    height: unset;
+    padding: 0;
+    border: none;
+    margin-right: auto;
+    width: 10px;
+    min-width: 10px;
+    margin-bottom: -15px;
+  }
+
+  .ed-fi-pagination-nav-link .pagination-nav__arrow.next {
+    padding: 0;
+    margin-left: auto;
+    margin-right: 0;
+    border: none;
+  }
+
+  .ed-fi-pagination-nav-link .pagination-nav__sublabel {
+    font-size: .625rem;
+    margin-bottom: 4px;
+  }
+
+  .ed-fi-pagination-nav-link .pagination-nav__label {
+    font-size: 1rem;
+  }
+
+  .pagination-nav-info {
+    order: 2;
+    padding-left: 15px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+  }
+
+  .pagination-nav__link--next .pagination-nav-info {
+    padding-left: 0;
+    padding-right: 15px;
+  }
+
+  .ed-fi-pagination-nav-link:hover {
+    border: 3px solid #004EFF;
+    padding: 8px;
+    padding-right: 18px;
+  }
+
+  .ed-fi-pagination-nav-link.pagination-nav__link--next:hover {
+    padding-left: 18px;
+    padding-right: 8px;
+  }
+}
+
+/* =============================================== End DocItem Customizations  ========================================= */

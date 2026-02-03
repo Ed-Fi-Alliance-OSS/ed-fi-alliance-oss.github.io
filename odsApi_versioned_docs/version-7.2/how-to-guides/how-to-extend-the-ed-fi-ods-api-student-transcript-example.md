@@ -96,7 +96,7 @@ Do that now if you haven't already.
 MetaEd allows you to target different versions of the Ed-Fi technology stack and
 data model. Confirm that your MetaEd IDE is targeting v7.2 by following the
 instructions in the [Version
-Targeting](https://edfi.atlassian.net/wiki/spaces/METAED20/pages/23709491/MetaEd+IDE+-+Creating+and+Maintaining+Your+Extension#MetaEdIDE-CreatingandMaintainingYourExtension-Step4.AddtheCorrectDataModelProject)
+Targeting](/reference/metaed/ide-user-guide/creating-and-maintaining-your-extension/#step-4-add-the-correct-data-model-project)
 documentation for the MetaEd IDE.
 
 The desired model for the latest ODS / API is "ed-fi-model-5.1".
@@ -105,7 +105,7 @@ The desired model for the latest ODS / API is "ed-fi-model-5.1".
 
 Create a new extension by following the steps in [MetaEd IDE - Creating and
 Maintaining Your
-Extension](https://edfi.atlassian.net/wiki/display/METAED20/MetaEd+IDE+-+Creating+and+Maintaining+Your+Extension).
+Extension](/reference/metaed/ide-user-guide/creating-and-maintaining-your-extension).
 In this example our extension is in a folder called "StudentTranscript"
 
 <details>

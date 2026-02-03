@@ -76,7 +76,7 @@ points not obvious from the UML model structure or class names.
 The Ed-Fi UDM uses the following association labels. These were originally
 adapted from the National Education Data Model (NEDM) project.
 
-### Table 1: Association Labels and Definitions in the Ed-Fi Data Model
+### Table 1: Association Labels and Definitions in the Ed-Fi Unifying Data Model
 
 | **Label** | **Definition** |
 | --- | --- |

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 # Advisory: Implementation Error When Using Profiles with Multi-Tenant Deployments
@@ -42,7 +42,7 @@ NuGet Packages
 
 * 7.1:
   * [EdFi.Suite3.Ods.WebApi for DS
-    4](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Ods.WebApi.Standard.4.0.0/versions/7.1.3646)
+    4](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Ods.WebApi.Standard.4.0.0/overview/7.1.3646)
   * [EdFi.Suite3.Ods.WebApi for DS
     5](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Ods.WebApi.Standard.5.0.0/overview/7.1.3646)
 * 7.2:
@@ -52,9 +52,9 @@ NuGet Packages
     5](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Ods.WebApi.Standard.5.1.0/overview/7.2.2682)
 * 7.3:
   * [EdFi.Suite3.Ods.WebApi for DS
-    4](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Ods.WebApi.Standard.4.0.0/overview/7.3.1574)
+    4](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Ods.WebApi.Standard.4.0.0/overview/7.3.2041)
   * [EdFi.Suite3.Ods.WebApi for DS
-    5](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Ods.WebApi.Standard.5.2.0/overview/7.3.1574)
+    5](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Ods.WebApi.Standard.5.2.0/overview/7.3.2041)
 
 Source code branches
 

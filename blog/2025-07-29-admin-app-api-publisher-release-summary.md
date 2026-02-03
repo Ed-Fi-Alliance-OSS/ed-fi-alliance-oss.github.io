@@ -1,5 +1,5 @@
 ---
-title: '📢 Announcing! Ed-Fi Admin App v3.3.4 and API Publisher v1.3.0 Release'
+title: '📢 Announcing! Ed-Fi ODS Admin App v3.3.4 and API Publisher v1.3.0 Release'
 authors: hunter
 tags: [api-pub, admin-app, release]
 ---
@@ -10,10 +10,10 @@ Welcome to the July 2025 Ed-Fi release update! This post highlights the latest f
 
 ## 📌 Key Updates
 
-### Ed-Fi Admin App v3.3.4
+### Ed-Fi ODS Admin App v3.3.4
 
 - Accessibility & UX improvements (aria-hidden fixes, maxlength attributes, pagination, validation)
-- Bug fixes for modals, font loading, email validation, delete button, vendor management, and more
+- Bug fixes for modal dialogs, font loading, email validation, delete button, vendor management, and more
 - Security updates (input sanitization, dependency bumps, CodeQL)
 - Docker and developer experience enhancements
 
@@ -26,7 +26,7 @@ Welcome to the July 2025 Ed-Fi release update! This post highlights the latest f
 
 ## 🚀 Features Delivered So Far
 
-### Ed-Fi Admin App
+### Ed-Fi ODS Admin App
 
 - ODS instance and vendor management
 - Claim set and API client management
@@ -48,7 +48,7 @@ Welcome to the July 2025 Ed-Fi release update! This post highlights the latest f
 
 ## 🛠️ Try It Out
 
-### Ed-Fi Admin App
+### Ed-Fi ODS Admin App
 
 See the [Admin App Documentation](/reference/admin-app) and [Docker deployment guide](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-AdminApp/tree/v3.3.4/Docker) for installation and upgrade instructions.
 

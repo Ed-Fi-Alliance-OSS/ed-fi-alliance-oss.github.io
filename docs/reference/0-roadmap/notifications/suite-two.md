@@ -1,4 +1,4 @@
-# Ed-Fi Technical Suite 2 - End of Support Notice
+# Ed-Fi Technology Suite 2 - End of Support Notice
 
 27 Jul 2021
 
@@ -45,6 +45,14 @@ to upgrade.
   Technical Suite 2.
 * The Alliance starts allocating additional resources and budgets towards
   working on defining and developing Technical Suite 4.
+* Which applications are included?
+  * Ed-Fi ODS/API Platform version 2.x
+  * Admin App version 1.x
+  * Data Import version 1.x
+  * Ed-Fi Dashboards 2.x
+  * Ed-Fi Validation Tool
+  * MetaEd IDE 2.x
+  * Analytics Middle Tier 2.x
 
 ### What Does Not Change
 
