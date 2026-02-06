@@ -15,7 +15,7 @@ Open‑source versions of the dashboards are available in both Power BI and Supe
 The dashboards and other related artifacts can be found in the Ed-Fi Exchange GitHub Repository:
 [**https://github.com/Ed-Fi-Exchange-OSS/Ed-Fi-Educator-Workforce-Analytics-Tool**](https://github.com/Ed-Fi-Exchange-OSS/Ed-Fi-Educator-Workforce-Analytics-Tool)
 
-Documentation for this tool can be found in the docs folder of this repository: [**https://github.com/Ed-Fi-Exchange-OSS/Ed-Fi-Educator-Workforce-Analytics-Tool/docs**](**https://github.com/Ed-Fi-Exchange-OSS/Ed-Fi-Educator-Workforce-Analytics-Tool/docs).
+Documentation for this tool can be found in the docs folder of this repository: [**https://github.com/Ed-Fi-Exchange-OSS/Ed-Fi-Educator-Workforce-Analytics-Tool/tree/main/docs**](https://github.com/Ed-Fi-Exchange-OSS/Ed-Fi-Educator-Workforce-Analytics-Tool/tree/main/docs).
 
 The documentation includes:
 
