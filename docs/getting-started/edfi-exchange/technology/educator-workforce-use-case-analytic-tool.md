@@ -15,12 +15,15 @@ Open‑source versions of the dashboards are available in both Power BI and Supe
 The dashboards and other related artifacts can be found in the Ed-Fi Exchange GitHub Repository:
 [**https://github.com/Ed-Fi-Exchange-OSS/Ed-Fi-Educator-Workforce-Analytics-Tool**](https://github.com/Ed-Fi-Exchange-OSS/Ed-Fi-Educator-Workforce-Analytics-Tool)
 
-Documentation for this tool can be found at: [**Documentation**](https://github.com/crocusllc/Ed-Fi-Educator-Workforce-Analytics-Tool/wiki). It includes:
+Documentation for this tool can be found in the docs folder of this repository: [**https://github.com/Ed-Fi-Exchange-OSS/Ed-Fi-Educator-Workforce-Analytics-Tool/docs**](**https://github.com/Ed-Fi-Exchange-OSS/Ed-Fi-Educator-Workforce-Analytics-Tool/docs).
+
+The documentation includes:
 
 * Educator Workforce Dashboard Details - Understand how dashboard pages are organized and secured to provide relevant insight to users.
 * Getting Started – Instructions and support for installing and launching the dashboards.
 * User Guides - that provide step-by-step information for navigating/interpreting the Educator Workforce Dashboards.
 * Educator Workforce Data Overview – Explore how local data utilizes the Ed-Fi Data Standard to transform and prepare information for integration into Power BI reports.
+
 ## Details
 
 * **By:**  [Ed-Fi Alliance](https://ed-fi.org/)
