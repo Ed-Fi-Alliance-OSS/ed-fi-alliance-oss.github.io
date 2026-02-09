@@ -62,19 +62,19 @@ However, with the new entities introduced as part of 6.X that information now ne
 
 | Migrated SEOA 5.X Data Element | New Domain Entity For This Data In 6.X | New API Endpoints |
 | ------------------------------------ | -------------------------------------- | ----------------- |
-| StudentIdentificationCodes | StudentIdentificationCode | [/studentIdentificationCode](#studentidentificationcode) |
 | Addresses | StudentDirectory | [/studentDirectories](#studentdirectory) |
-| InternationalAddresses | StudentDirectory | [/studentDirectories](#studentdirectory) |
-| ElectronicMail | StudentDirectory | [/studentDirectories](#studentdirectory) |
 | AncestryEthnicOrigin | StudentDemographic | [/studentDemographics](#studentdemographic) |
 | Disabilities | StudentDemographic | [/studentDemographics](#studentdemographic) |
+| ElectronicMail | StudentDirectory | [/studentDirectories](#studentdirectory) |
 | GenderIdentity | StudentDemographic | [/studentDemographics](#studentdemographic) |
 | HispanicLatinoEthnicity | StudentDemographic | [/studentDemographics](#studentdemographic) |
+| InternationalAddresses | StudentDirectory | [/studentDirectories](#studentdirectory) |
 | Languages | StudentDemographic | [/studentDemographics](#studentdemographic) |
 | Limited EnglishProficiency Descriptor | StudentDemographic | [/studentDemographics](#studentdemographic) |
 | Race | StudentDemographic | [/studentDemographics](#studentdemographic) |
 | Sex | StudentDemographic | [/studentDemographics](#studentdemographic) |
 | StudentCharacteristics | StudentDemographic | [/studentDemographics](#studentdemographic) |
+| StudentIdentificationCodes | StudentIdentificationCode | [/studentIdentificationCode](#studentidentificationcode) |
 | SupporterMilitaryConnection | StudentDemographic | [/studentDemographics](#studentdemographic) |
 | TribalAffiliation | StudentDemographic | [/studentDemographics](#studentdemographic) |
 
@@ -338,7 +338,30 @@ The following data should be updated via the StudentIdentificationCode endpoints
 }
 ```
 
-## Migration Of StaffEducationOrganizationContactAssociation
+## Migration Of Staff
+
+Previously users would submit staff demographic, directory (addresses/phone numbers), and identification codes to the StudentEducationOrganizationAssociation.
+However, with the new entities introduced as part of 6.X that information now needs to be sent to the following new entities and endpoints:
+
+| Migrated SEOA 5.X Staff Data Element | New Domain Entity For Staff Data In 6.X | New API Endpoints |
+| ------------------------------------ | -------------------------------------- | ----------------- |
+
+| Addresses | StaffDirectory | [/staffDirectories](#staffdirectory) |
+| AncestryEthnicOrigin | StaffDemographic | [/staffDemographics](#staffdemographic) |
+| Citizenship | StaffDirectory | [/staffDirectories](#staffdirectory) |
+| ElectronicMail | StaffDirectory | [/staffDirectories](#staffdirectory) |
+| GenderIdentity | StaffDemographic | [/staffDemographics](#staffdemographic) |
+| HispanicLatinoEthnicity | StaffDemographic | [/staffDemographics](#staffdemographic) |
+| InternationalAddresses | StaffDirectory | [/staffDirectories](#staffdirectory) |
+| Languages | StudentDemographic | [/staffDemographics](#staffdemographic) |
+| Limited EnglishProficiency Descriptor | StudentDemographic | [/studentDemographics](#studentdemographic) |
+| Telephones | StaffDirectory | [/staffDirectories](#staffdirectory) |
+| Race | StaffDemographic | [/staffDemographics](#staffdemographic) |
+| Sex | StaffDemographic | [/staffDemographics](#staffdemographic) |
+| StaffIdentificationSystem | StaffIdentificationCode | [/staffIentificationCode](#staffidentificationcode) |
+| TribalAffiliation | StaffDirectory | [/staffDirectories](#staffdirectory) |
+
+### Removal Of StaffEducationOrganizationContactAssociation
 
 The entirety of this association has been removed and the information is now stored and updated through the new [/staffDirectories](#staffdirectory) endpoints as shown below:
 
