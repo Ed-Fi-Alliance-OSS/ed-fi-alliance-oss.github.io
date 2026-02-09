@@ -348,18 +348,17 @@ However, with the new entities introduced as part of 6.X that information now ne
 
 | Addresses | StaffDirectory | [/staffDirectories](#staffdirectory) |
 | AncestryEthnicOrigin | StaffDemographic | [/staffDemographics](#staffdemographic) |
-| Citizenship | StaffDirectory | [/staffDirectories](#staffdirectory) |
+| Citizenship | StaffDemographic | [/staffDemographics](#staffdemographic) |
 | ElectronicMail | StaffDirectory | [/staffDirectories](#staffdirectory) |
 | GenderIdentity | StaffDemographic | [/staffDemographics](#staffdemographic) |
 | HispanicLatinoEthnicity | StaffDemographic | [/staffDemographics](#staffdemographic) |
 | InternationalAddresses | StaffDirectory | [/staffDirectories](#staffdirectory) |
 | Languages | StudentDemographic | [/staffDemographics](#staffdemographic) |
-| Limited EnglishProficiency Descriptor | StudentDemographic | [/studentDemographics](#studentdemographic) |
-| Telephones | StaffDirectory | [/staffDirectories](#staffdirectory) |
 | Race | StaffDemographic | [/staffDemographics](#staffdemographic) |
 | Sex | StaffDemographic | [/staffDemographics](#staffdemographic) |
-| StaffIdentificationSystem | StaffIdentificationCode | [/staffIentificationCode](#staffidentificationcode) |
-| TribalAffiliation | StaffDirectory | [/staffDirectories](#staffdirectory) |
+| StaffIdentificationCode| StaffIdentificationCode | [/staffIentificationCode](#staffidentificationcode) |
+| Telephones | StaffDirectory | [/staffDirectories](#staffdirectory) |
+| TribalAffiliation | StaffDemographic | [/staffDemographic](#staffdirectory) |
 
 ### Removal Of StaffEducationOrganizationContactAssociation
 
