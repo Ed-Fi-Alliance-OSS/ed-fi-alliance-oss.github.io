@@ -61,13 +61,21 @@ function Main() {
             </p> */}
             <h2>Ed-Fi Administration Tools</h2>
             <p>
-              The Ed-Fi Admin App (for people) and the Ed-Fi ODS Admin API (for
-              systems) provide administrative interfaces for managing the Ed-Fi
+              <Link to="/reference/admin-app">Ed-Fi Admin App</Link> (human-to-system) and the <Link to="/reference/admin-api">Ed-Fi ODS Admin API</Link> (system-to-system) provide administrative interfaces for managing the Ed-Fi
               ODS/API platform. They simplify common administrative tasks and
-              support both Docker and Windows installations. Get started with
-              the{' '}
-              <Link to="/reference/admin-app">Admin App (UI)</Link> and{' '}
-              <Link to="/reference/admin-api">ODS Admin API</Link>
+              support both Docker and Windows installations. See out tools below to get started.
+              the
+              <ul>
+                <li>
+                  <Link to="/reference/admin-app">Ed-Fi Admin App (version 4.0+)</Link>
+                </li>
+                <li>
+                  <Link to="/reference/admin-api">Ed-Fi ODS Admin API</Link>
+                </li>
+                <li>
+                  <Link to="/reference/ods-admin-app">ODS Admin App (legacy version 3 and earlier)</Link>
+                </li>
+              </ul>
             </p>
             <h2>Ed-Fi API Publisher</h2>
             <p>
