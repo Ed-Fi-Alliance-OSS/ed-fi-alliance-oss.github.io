@@ -345,7 +345,6 @@ However, with the new entities introduced as part of 6.X that information now ne
 
 | Migrated SEOA 5.X Staff Data Element | New Domain Entity For Staff Data In 6.X | New API Endpoints |
 | ------------------------------------ | -------------------------------------- | ----------------- |
-
 | Addresses | StaffDirectory | [/staffDirectories](#staffdirectory) |
 | AncestryEthnicOrigin | StaffDemographic | [/staffDemographics](#staffdemographic) |
 | Citizenship | StaffDemographic | [/staffDemographics](#staffdemographic) |
@@ -353,16 +352,88 @@ However, with the new entities introduced as part of 6.X that information now ne
 | GenderIdentity | StaffDemographic | [/staffDemographics](#staffdemographic) |
 | HispanicLatinoEthnicity | StaffDemographic | [/staffDemographics](#staffdemographic) |
 | InternationalAddresses | StaffDirectory | [/staffDirectories](#staffdirectory) |
-| Languages | StudentDemographic | [/staffDemographics](#staffdemographic) |
+| Languages | StaffDemographic | [/staffDemographics](#staffdemographic) |
 | Race | StaffDemographic | [/staffDemographics](#staffdemographic) |
 | Sex | StaffDemographic | [/staffDemographics](#staffdemographic) |
-| StaffIdentificationCode| StaffIdentificationCode | [/staffIentificationCode](#staffidentificationcode) |
+| StaffIdentificationCode| StaffIdentificationCode | [/staffIdentificationCode](#staffidentificationcode) |
 | Telephones | StaffDirectory | [/staffDirectories](#staffdirectory) |
 | TribalAffiliation | StaffDemographic | [/staffDemographic](#staffdirectory) |
 
 ### Removal Of StaffEducationOrganizationContactAssociation
 
-The entirety of this association has been removed and the information is now stored and updated through the new [/staffDirectories](#staffdirectory) endpoints as shown below:
+The entirety of this association has been removed and the information is now stored and updated through the new [/staffDirectories](#staffdirectory) endpoints.
+
+### StaffDemographic
+
+The following data should be updated via the staffDemographic endpoints:
+
+* AncestryEthnicOrigin
+* Citizenship
+* GenderIdentity
+* HispanicLatinoEthnicity
+* Languages
+* Race
+* Sex
+* StaffDemographic
+
+**<u>Example Of NEW -- /POST staffDemographics</u>**
+
+```json
+{
+  "id": "string",
+  "educationOrganizationReference": {
+    "educationOrganizationId": 0,
+  },
+  "staffReference": {
+    "staffUniqueId": "string",
+  },
+  "ancestryEthnicOrigins": [
+    {
+      "ancestryEthnicOriginDescriptor": "string"
+    }
+  ],
+  "citizenshipStatusDescriptor": "string",
+  "genderIdentity": "string",
+  "hispanicLatinoEthnicity": true,
+  "identificationDocuments": [
+    {
+      "identificationDocumentUseDescriptor": "string",
+      "personalInformationVerificationDescriptor": "string",
+      "issuerCountryDescriptor": "string",
+      "documentExpirationDate": "2026-02-10",
+      "documentTitle": "string",
+      "issuerDocumentIdentificationCode": "string",
+      "issuerName": "string"
+    }
+  ],
+  "languages": [
+    {
+      "languageDescriptor": "string",
+      "uses": [
+        {
+          "languageUseDescriptor": "string"
+        }
+      ]
+    }
+  ],
+  "races": [
+    {
+      "raceDescriptor": "string"
+    }
+  ],
+  "sexDescriptor": "string",
+  "tribalAffiliations": [
+    {
+      "tribalAffiliationDescriptor": "string"
+    }
+  ],
+  "visas": [
+    {
+      "visaDescriptor": "string"
+    }
+  ],
+}
+```
 
 ### StaffDirectory
 
@@ -439,6 +510,31 @@ The following data should be updated via the staffDirectories endpoints:
       "textMessageCapabilityIndicator": true
     }
   ]
+}
+```
+
+### StaffIdentificationCode
+
+The following data should be updated via the staffIdentificationCode endpoints:
+
+The following data should be updated via the StudentIdentificationCode endpoints:
+
+* StaffIdentificationCodes
+
+**<u>Example Of NEW -- /POST staffIdentificationCode</u>**
+
+```json
+{
+  "id": "string",
+  "staffIdentificationSystemDescriptor": "string",
+  "educationOrganizationReference": {
+    "educationOrganizationId": 0,
+  },
+  "staffReference": {
+    "staffUniqueId": "string",
+  },
+  "assigningOrganizationIdentificationCode": "string",
+  "identificationCode": "string",
 }
 ```
 
