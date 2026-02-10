@@ -20,6 +20,7 @@ Applicants for the Implementation Partner Badge must:
 
 * Demonstrate alignment to Ed-Fi best practices and data standards through completed implementations
 * Show repeatable implementation practices across at least two verified projects
+* Demonstrate collaboration with the Ed-Fi Alliance at the start of projects
 * Participate in project retrospectives to reflect on lessons learned and ensure alignment with Ed-Fi guidance
 * Provide evidence of change management processes relevant to Ed-Fi implementations
 * Provide verifiable documentation of implementation methods, internal tools, and process frameworks
@@ -93,6 +94,12 @@ Implementation Partners are expected to be active members of the Ed-Fi Partner P
 * Participation in governance groups and community feedback processes
 * Engagement with other partners and state/local agencies
 * Ongoing contributions to community learning, documentation, or working groups
+
+### Ed-Fi Alliance Collaboration During Project Start
+
+* Early Engagement: Partners must engage with the Ed‑Fi Alliance at project initiation to align on scope, standards usage, and implementation approach before significant design or build decisions are made.
+* Shared Understanding: Early collaboration ensures a common understanding of Ed‑Fi best practices, current guidance, and known risks, reducing rework and downstream issues.
+* Ongoing Partnership: This engagement establishes a clear collaboration model and points of contact, supporting successful delivery and long‑term sustainability of the implementation.
 
 ### Ed-Fi Project Retrospective Participation
 
