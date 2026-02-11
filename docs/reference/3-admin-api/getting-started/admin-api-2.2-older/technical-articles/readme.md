@@ -10,4 +10,4 @@ This section contains technical details regarding the Ed-Fi Admin API.
 * [Support for multiple credentials per application](multiple-credentials-per-application.md)
 * [Quick Start Calling Admin API 2.x using
   Python](quick-start-calling-admin-api-2x-using-python.md)
-* [Securing Admin API](../../securing-admin-api.md)
+* [Securing Admin API](/reference/admin-api/securing-admin-api)

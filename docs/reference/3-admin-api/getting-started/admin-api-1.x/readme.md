@@ -10,9 +10,9 @@ v5.x-6.x](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V62/overview).
 
 Documentation for the Ed-Fi Admin API is viewable online:
 
-* [What's New](../whats-new.md)
-* [Getting Started](../getting-started.md)
-* [Technical Articles](../admin-api-1.x/technical-articles)
+* [What's New](/reference/admin-api/whats-new)
+* [Getting Started](/reference/admin-api/getting-started/)
+* [Technical Articles](./technical-articles/)
 
 ## Installation
 

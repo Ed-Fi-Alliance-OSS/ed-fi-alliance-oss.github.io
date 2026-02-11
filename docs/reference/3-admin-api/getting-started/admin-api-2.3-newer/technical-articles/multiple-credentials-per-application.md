@@ -13,7 +13,7 @@ which in turn can contain many `ApiClient` records containing client credentials
 the Admin API application only allowed management of one `ApiClient` per `Application`, in spite of the 1-
 to-many relationship in the database. The new endpoint now allows for management of an unlimited
 number of `ApiClient` records. The benefits include support for manual key rotation and the ability
-to link the distinct `ApiClient` credentials to separate [ODS Instances](../../../ods-api/how-to-guides/how-to-configure-ods-instances).
+to link the distinct `ApiClient` credentials to separate [ODS Instances](/reference/ods-api/how-to-guides/how-to-configure-ods-instances).
 
 It now implements two different approaches
 
