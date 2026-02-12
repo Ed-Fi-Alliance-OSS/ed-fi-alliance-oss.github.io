@@ -63,8 +63,7 @@ function Main() {
             <p>
               <Link to="/reference/admin-app">Ed-Fi Admin App</Link> (human-to-system) and the <Link to="/reference/admin-api">Ed-Fi ODS Admin API</Link> (system-to-system) provide administrative interfaces for managing the Ed-Fi
               ODS/API platform. They simplify common administrative tasks and
-              support both Docker and Windows installations. See out tools below to get started.
-              the
+              support both Docker and Windows installations. See our tools below to get started.
               <ul>
                 <li>
                   <Link to="/reference/admin-app">Ed-Fi Admin App (version 4.0+)</Link>
