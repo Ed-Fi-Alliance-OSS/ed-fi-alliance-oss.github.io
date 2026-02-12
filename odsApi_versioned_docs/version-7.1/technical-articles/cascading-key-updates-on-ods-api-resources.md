@@ -62,7 +62,7 @@ resources that are not preconfigured for cascading updates.  
     4. Copy each of the the ALTER TABLE scripts to a separate text document
     5. Add a ALTER TABLE `<TableName>` DROP CONSTRAINT `<ConstraintName>` to the
         line before each of the copied ALTER TABLE Scripts
-    6. Add ON UPDATE CASCADE1 to each of the copied ALTER TABLE scripts
+    6. Add ON UPDATE CASCADE to each of the copied ALTER TABLE scripts
     7. Execute all of these SQL Scripts on the target ODS
 
 <details>
@@ -88,7 +88,7 @@ the primary key identifier and update the isUpdatable property to true.
   "identifiers": [
     {
       "identifierName": "Account_PK",
-      "identifyPropertNames": [
+      "identifyPropertyNames": [
         "AccountIdentifier",
         "EducationOrganizationId",
         "FiscalYear"

@@ -5,15 +5,15 @@ Client SDK using a Windows environment targeting C#.
 
 :::warning
 
-ODS / API v7.2 metadata endpoints return documents adhering to the OpenApi
+ODS / API v7.1 metadata endpoints return documents adhering to the OpenApi
 v3.0.1 specification by default. A client can request OpenApi v2.0 metadata
 documents using the **query string parameter** `**version=2**`. OpenApi CodeGen
 can consume metadata in either version and generate the SDK. e.g.
-[https://api.ed-fi.org/v7.2/api/metadata/data/v3/swagger.json?version=2](https://api.ed-fi.org/v7.2/api/metadata/data/v3/swagger.json?version=3)
+[https://api.ed-fi.org/v7.1/api/metadata/data/v3/swagger.json?version=2](https://api.ed-fi.org/v7.1/api/metadata/data/v3/swagger.json?version=2)
 for OpenApi v2.0
-[https://api.ed-fi.org/v7.2/api/metadata/data/v3/swagger.json?version=3](https://api.ed-fi.org/v7.2/api/metadata/data/v3/swagger.json?version=3)
+[https://api.ed-fi.org/v7.1/api/metadata/data/v3/swagger.json?version=3](https://api.ed-fi.org/v7.1/api/metadata/data/v3/swagger.json?version=3)
 or
-[https://api.ed-fi.org/v7.2/api/metadata/data/v3/swagger.json](https://api.ed-fi.org/v7.2/api/metadata/data/v3/swagger.json)
+[https://api.ed-fi.org/v7.1/api/metadata/data/v3/swagger.json](https://api.ed-fi.org/v7.1/api/metadata/data/v3/swagger.json)
 for OpenApi v3.0
 
 :::

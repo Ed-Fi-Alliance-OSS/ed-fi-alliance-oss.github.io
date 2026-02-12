@@ -24,7 +24,7 @@ can be used. With this setting, the same API key/secret can be used to connect
 to more than one ODS instance by using the entries in the ODSInstanceContext
 table. The combination of API client and ODS instance association, along with
 the context provided in the request route, will be used to identify the
-appropriate ODS instance for the API request."
+appropriate ODS instance for the API request.
 
 ## Ed-Fi ODS "Derivatives"
 

@@ -4,11 +4,10 @@ sidebar_position: 1
 
 # Overview
 
-This section provides important conceptual materialIf you're new to the Ed-Fi Data Standard, the [Unifying Data Model - Model Reference](https://edfi.atlassian.net/wiki/spaces/DATASTDDEV/pages/26313312) documentation
-is useful in exploring the domain models.lated to the Ed-Fi ODS /
-API platform.
+This section provides important conceptual material related to the Ed-Fi ODS / API platform. If you're new to the Ed-Fi Data Standard, the [Unifying Data Model - Model Reference](https://edfi.atlassian.net/wiki/spaces/DATASTDDEV/pages/26313312) documentation is useful in exploring the domain models.
 
 ## Solution Overview
+
 
 The Ed-Fi Alliance publishes the [Ed-Fi Data
 Standard](/reference/data-exchange/data-standard), which models a broad spectrum

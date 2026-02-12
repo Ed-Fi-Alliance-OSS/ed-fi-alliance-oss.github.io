@@ -12,7 +12,7 @@ Each step is outlined in detail below.
 
 ## Step 1. Install and Configure GraphViz (Optional)
 
-The security visualization tool uses [GraphViz](http://www.graphviz.org/)open
+The security visualization tool uses [GraphViz](http://www.graphviz.org/) open
 source visualization software. You can install the latest stable MSI release for
 Windows [here](https://graphviz.org/download/#windows).
 

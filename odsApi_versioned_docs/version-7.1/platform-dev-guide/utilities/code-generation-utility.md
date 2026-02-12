@@ -33,7 +33,7 @@ To Install the code generation tool
 manually, run `Initialize-PowershellForDevelopment.ps1` script from a PowerShell
 prompt as outlined in the [Getting Started
 Guide](../../getting-started/source-code-installation/readme.md), followed by
-the `Install-CodeGenUtiltity` command. This will pull the current version of the
+the `Install-CodeGenUtility` command. This will pull the current version of the
 tool, and install it into the tools folder under the Ed-Fi-ODS-Implementation
 repository.
 

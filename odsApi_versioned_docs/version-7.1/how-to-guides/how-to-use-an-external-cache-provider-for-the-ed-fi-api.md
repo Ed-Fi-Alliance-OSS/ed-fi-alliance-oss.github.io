@@ -55,7 +55,7 @@ accurate for all deployment scenarios:
     completely, or at least using the external cache to relieve memory pressure
     on the API processes. Cache Configuration to use External Cache. **"Parent"
     entity was changed to "Contact" in data standard 5, therefore this setting
-    only applies to data standard version 4 and below and has no affect on data
+    only applies to data standard version 4 and below and has no effect on data
     standard version 5 and above.**
 * The contact cache (which maps ContactUniqueIds to ODS-specific USIs)
     probably represents the largest cache size (considering there are one or
@@ -153,7 +153,7 @@ In order to use the external cache feature, update the following values in
     "Security": {
         "AbsoluteExpirationMinutes": 10
     }
-}
+},
 "Services": {
     "Redis": {
         "Configuration": "localhost"
