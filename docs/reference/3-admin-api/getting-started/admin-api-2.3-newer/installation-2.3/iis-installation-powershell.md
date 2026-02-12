@@ -79,7 +79,7 @@ complete.
     1. `Server`. The name of the database server. For a local server, we can use
         "(local)" for SQL and "localhost" for PostgreSQL.
 
-    2. `Engine.` Admin App supports SQL and PostgreSQL database engines. So
+    2. `Engine.` Admin API supports SQL and PostgreSQL database engines. So
         setting up the `Engine` will decide which database engine to be used.
         Valid values are "SQLServer" and "PostgreSQL".
     3. `UseIntegratedSecurity.` Will either be "$true" or "$false".
