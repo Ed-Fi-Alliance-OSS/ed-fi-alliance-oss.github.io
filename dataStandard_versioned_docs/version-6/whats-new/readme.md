@@ -1,5 +1,6 @@
 ---
-sidebar_position: 1
+sidebar_position: 0
+hide_table_of_contents: true
 ---
 
 # What's New
