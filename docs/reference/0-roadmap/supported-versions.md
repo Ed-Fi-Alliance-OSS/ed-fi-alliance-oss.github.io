@@ -12,14 +12,12 @@ for more information on the versioning practices.
 
 See [Ed-Fi Data Exchange Standards](../1-data-exchange/readme.md) for more information.
 
-| Version                                            | Timeline                               | Ed-Fi API Software                                      |
-| -------------------------------------------------- | -------------------------------------- | ------------------------------------------------------- |
-| 3.3.1                                              | Active through 2024-2025 school year   | Ed-FI ODS/API 5.3                                       |
-| 4.0.0                                              | Active through 2025-2026 school year   | Ed-Fi ODS/API 6.2 and Ed-Fi ODS/API 7.2                 |
-| [5.0.0](/reference/data-exchange/data-standard/5/) | Active through 2027-2028 school year   | Ed-FI ODS/API 7.1                                       |
-| [5.1.0](/reference/data-exchange/data-standard/5/) | Active through 2027-2028 school year   | Ed-Fi ODS/API 7.2                                       |
-| [5.2.0](/reference/data-exchange/data-standard/5/) | Active through 2027-2028 school year   | Ed-Fi ODS/API 7.3                                       |
-| [6.0.0](/reference/data-exchange/data-standard)    | Active through 2029-2030 school year   | Ed-Fi ODS/API 7.3 and Ed-Fi Data Management Service 1.0 |
+| Version                                          | Timeline                             | Ed-Fi API Software                                      |
+| ------------------------------------------------ | ------------------------------------ | ------------------------------------------------------- |
+| 3.3.1                                            | Active through 2024-2025 school year | Ed-FI ODS/API 5.3                                       |
+| 4.0.0                                            | Active through 2025-2026 school year | Ed-Fi ODS/API 6.2 and Ed-Fi ODS/API 7.2                 |
+| [5.x](/reference/data-exchange/data-standard/5/) | Active through 2027-2028 school year | Ed-FI ODS/API 7.1                                       |
+| [6.x](/reference/data-exchange/data-standard)    | Active through 2029-2030 school year | Ed-Fi ODS/API 7.3 and Ed-Fi Data Management Service 1.0 |
 
 Development of extensions for the Ed-Fi Data Standard relies on
 [MetaEd](../4-metaed/readme.md) version 4.x. As Visual Studio Code extension,
@@ -37,19 +35,18 @@ a production deployment of the Ed-Fi Resources API. The Platform includes:
     applications.
 * [Ed-Fi ODS Admin API](../3-admin-api/readme.md), a REST interface for managing
   client credentials ("key and secret") and security configuration.
-* [Ed-Fi ODS Admin App](../8-admin-app/readme.md), a web application for
+* [Ed-Fi ODS Admin App](../ods-admin-app/readme.md), a web application for
   managing single instances of an Ed-Fi ODS/API.
 
 ### Ed-Fi ODS/API
 
-| Version                         | Timeline                             | Data Standard(s)    |
-| ------------------------------- | ------------------------------------ | ------------------- |
-| [6.2.x](/reference/ods-api/6.2) | Active through 2025-2026 school year | 4.0.0               |
-| 7.0.0                           | Replaced by 7.1                      | 4.0.0, 5.0.0        |
-| [7.1.x](/reference/ods-api/7.1) | Active through 2025-2026 school year | 4.0.0, 5.0.0        |
-| [7.2.x](/reference/ods-api/7.2) | ⚠️ inactive - upgrade to 7.3         | 4.0.0, 5.1.0        |
-| [7.3.0](/reference/ods-api/)    | Active through 2025-2026 school year | 4.0.0, 5.2.0        |
-| [7.3.1](/reference/ods-api/)    | Active through 2029-2030 school year | 4.0.0, 5.2.0, 6.0.0 |
+| Version                                       | Timeline                             | Data Standard(s)    |
+| --------------------------------------------- | ------------------------------------ | ------------------- |
+| [6.2.x](/reference/ods-api/6.2)               | Active through 2025-2026 school year | 4.0.0               |
+| 7.0.0                                         | Replaced by 7.1                      | 4.0.0, 5.0.0        |
+| [7.1.x](/reference/ods-api/7.1)               | Active through 2025-2026 school year | 4.0.0, 5.0.0        |
+| [7.2.x](/reference/ods-api/7.2)               | ⚠️ inactive - upgrade to 7.3         | 4.0.0, 5.1.0        |
+| [7.3.x](/reference/ods-api/) (current: 7.3.1) | Active through 2028-2029 school year | 4.0.0, 5.2.0, 6.0.0 |
 
 Out of Support: all releases prior to ODS/API 6.2.
 
@@ -69,10 +66,12 @@ With version 2.3 (October, 2025), ODS Admin API version 2 will consolidate
 functionality from version 1, allowing the single application to support both
 ODS/API 6.x and ODS/API 7.x.
 
-| Version | Timeline                             | Supports ODS/API |
-| ------- | ------------------------------------ | ---------------- |
-| 1.x.y   | Active through 2025-2026 school year | 5.x.y, 6.x.y     |
-| 2.x.y   | Active through 2028-2029 school year | 6.x.y, 7.x.y     |
+| Version        | Timeline                             | Supports ODS/API |
+| -------------- | ------------------------------------ | ---------------- |
+| 1.x.y          | Active through 2025-2026 school year | 5.x.y, 6.x.y     |
+| 2.0.0 - 2.2.x  | Active through 2028-2029 school year | 7.x.y            |
+| 2.3.y on       | Active through 2028-2029 school year | 6.x.y, 7.x.y     |
+
 
 ### Ed-Fi Admin App
 
@@ -144,4 +143,4 @@ All versions of these applications are no longer supported.
 | Sample Data Generator               | not available                                                                     | [Ed-Fi Sample Data Generator](https://edfi.atlassian.net/wiki/spaces/EXCHANGE/pages/22495849/Ed-Fi+Sample+Data+Generator) |
 | Ed-Fi Technology Suite 2            | [End of Support Notice](./notifications/suite-two.md)                             | not applicable                                                                                                            |
 | Ed-Fi ODS 1.x                       | not available                                                                     | not applicable                                                                                                            |
-| Ed-Fi Dashboards                    | not available                                                                     | Not applicable                                                                                                             |
+| Ed-Fi Dashboards                    | not available                                                                     | Not applicable                                                                                                            |

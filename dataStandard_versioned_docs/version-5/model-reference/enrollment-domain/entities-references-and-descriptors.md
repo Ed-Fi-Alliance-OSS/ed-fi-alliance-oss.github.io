@@ -30,19 +30,19 @@ hide_table_of_contents: true
 | --- | --- | --- | --- | --- | --- | --- |
 | StudentEducationOrganizationResponsibilityAssociation | Responsibility | Indications of an education organization's responsibility for a student, such as accountability, attendance, funding, etc. | Local |     | Yes |     |
 | StudentSchoolAssociation | EducationPlan | The type of education plan(s) the student is following, if appropriate. | Local |     | Yes |     |
-| EntryGradeLevel | The grade level or primary instructional level at which a student enters and receives services in a school or an educational institution during a given academic session. | Orthodox | Yes | Yes |     |
-| EntryGradeLevelReason | The primary reason as to why a staff member determined that a student should be promoted or not (or be demoted) at the end of a given school term. | Local |     |     |     |
-| EntryType | The process by which a student enters a school during a given academic session. | Local |     | Yes |     |
-| ExitWithdrawType | The circumstances under which the student exited from membership in an educational institution. | Local |     | Yes |     |
-| GraduationPlanType | The type of academic plan the student is following for graduation: for example, Minimum, Recommended, Distinguished, or Standard. | Local |     |     |     |
-| ResidencyStatus | An indication of the location of a persons legal residence relative to (within or outside of) the boundaries of the public school attended and its administrative unit. | Local |     | Yes |     |
+| StudentSchoolAssociation | EntryGradeLevel | The grade level or primary instructional level at which a student enters and receives services in a school or an educational institution during a given academic session. | Orthodox | Yes | Yes |     |
+| StudentSchoolAssociation | EntryGradeLevelReason | The primary reason as to why a staff member determined that a student should be promoted or not (or be demoted) at the end of a given school term. | Local |     |     |     |
+| StudentSchoolAssociation | EntryType | The process by which a student enters a school during a given academic session. | Local |     | Yes |     |
+| StudentSchoolAssociation | ExitWithdrawType | The circumstances under which the student exited from membership in an educational institution. | Local |     | Yes |     |
+| StudentSchoolAssociation | GraduationPlanType | The type of academic plan the student is following for graduation: for example, Minimum, Recommended, Distinguished, or Standard. | Local |     |     |     |
+| StudentSchoolAssociation | ResidencyStatus | An indication of the location of a persons legal residence relative to (within or outside of) the boundaries of the public school attended and its administrative unit. | Local |     | Yes |     |
 | StudentEducationOrganizationAssociation | DisplacedStudentStatus | Indicates whether a student has been displaced as a result of a crisis event. | Orthodox |     |     | Yes |
 | CrisisEvent | CrisisType | The type or category of crisis. | Standard |     | Yes | Yes |
 | StudentTransportation | TransportationPublicExpenseEligibilityType | The primary type of eligibility for transporting a student at public expense. | Standard |     |     | Yes |
-| TransportationType | The mode or type of transportation utilized by a student to commute to and from school. | Flexible |     | Yes |     |
-| BusRoute | Identifies the specific route taken by a bus for student transportation. | Local |     |     | Yes |
-| TravelDayofWeek | Specifies the day(s) of the week on which student transportation occurs. | Flexible |     |     |     |
-| TravelDirection | Indicates the direction of travel for the student transportation route (e.g., to school, from school). | Local |     | Yes |     |
+| StudentTransportation | TransportationType | The mode or type of transportation utilized by a student to commute to and from school. | Flexible |     | Yes |     |
+| StudentTransportation | BusRoute | Identifies the specific route taken by a bus for student transportation. | Local |     |     | Yes |
+| StudentTransportation | TravelDayofWeek | Specifies the day(s) of the week on which student transportation occurs. | Flexible |     |     |     |
+| StudentTransportation | TravelDirection | Indicates the direction of travel for the student transportation route (e.g., to school, from school). | Local |     | Yes |     |
 
 :::tip
 
