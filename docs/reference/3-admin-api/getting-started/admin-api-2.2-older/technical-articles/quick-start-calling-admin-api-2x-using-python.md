@@ -68,7 +68,7 @@ Our output should bring the information from the Restful API.
 
 In a new installation, it is necessary to previously register the client to
 connect, for which we will follow the instructions within the document in
-[Securing Admin API](../../securing-admin-api.md).
+[Securing Admin API](/reference/admin-api/securing-admin-api).
 
 ### Register a new client
 
@@ -144,7 +144,7 @@ The successful output will be JSON formatted.
 ### Token
 
 Once we register our client according to the parameters specified in the
-document [Securing Admin API](../../securing-admin-api.md).
+document [Securing Admin API](/reference/admin-api/securing-admin-api).
 
 We can obtain the token we will use for each API query. Just pass the same
 ClientID and ClientSecret we use to register it, with two new variables.

@@ -191,4 +191,4 @@ Admin database deploy first and the Security database deploy will fail.
 
 Admin API v2.3 supports management of credentials for a multi-tenant ODS/API
 deployment. Please see [Multi-tenant Configuration for Admin API
-2.x](/reference/admin-api/admin-api-2.x/technical-articles/multi-tenant-configuration-for-admin-api-2x).
+2.x](/reference/admin-api/getting-started/admin-api-2.3-newer/technical-articles/multi-tenant-configuration-for-admin-api-2x).
