@@ -13,4 +13,4 @@ Documentation and resources for the Ed-Fi Admin API v2.3 is available below
 
 * [Installation](./installation-2.3/readme.md)
 * [First Time Configuration](./first-time-configuration.md)
-* [Usage guides and technical articles](./technical-articles/)
+* [Usage guides and technical articles](./technical-articles/readme.md)
