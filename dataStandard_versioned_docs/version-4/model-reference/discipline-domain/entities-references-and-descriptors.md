@@ -29,17 +29,17 @@ hide_table_of_contents: true
 | Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
 | DisciplineAction | Discipline | Type of action, such as removal from the classroom, used to discipline the student involved as a perpetrator in a discipline incident. | Local | Yes | Yes |     |
-| DisciplineActionLengthDifferenceReason | Indicates the reason for the difference, if any, between the official and actual lengths of a student's disciplinary assignment. | Local |     | Yes |     |
+| DisciplineAction | DisciplineActionLengthDifferenceReason | Indicates the reason for the difference, if any, between the official and actual lengths of a student's disciplinary assignment. | Local |     | Yes |     |
 | DisciplineIncident | IncidentLocation | Identifies where the DisciplineIncident occurred and whether or not it occurred on school, for example: On school, Administrative offices area, Cafeteria area, Classroom, Hallway or stairs... | Orthodox |     | Yes |     |
-| ReporterDescription | Information on the type of individual who reported the DisciplineIncident. When known and/or if useful, use a more specific option code (e.g., "Counselor" rather than "Professional Staff"); for example: Student, Parent/guardian, Law enforcement officer, Nonschool personnel, Representative of visiting school... | Local |     | Yes |     |
-| Behavior | Describes behavior by category and provides a detailed description. | Local |     | Yes |     |
-| Weapon | Identifies the type of weapon used during an incident. The Federal Gun-Free Schools Act requires states to report the number of students expelled for bringing firearms to school by type of firearm. | Local |     | Yes |     |
-| DisciplineIncidentParticipationCode | The role or type of participation of a student in a discipline incident; for example: Victim, Perpetrator, Witness, Reporter. | Local |     | Yes |     |
+| DisciplineIncident | ReporterDescription | Information on the type of individual who reported the DisciplineIncident. When known and/or if useful, use a more specific option code (e.g., "Counselor" rather than "Professional Staff"); for example: Student, Parent/guardian, Law enforcement officer, Nonschool personnel, Representative of visiting school... | Local |     | Yes |     |
+| DisciplineIncident | Behavior | Describes behavior by category and provides a detailed description. | Local |     | Yes |     |
+| DisciplineIncident | Weapon | Identifies the type of weapon used during an incident. The Federal Gun-Free Schools Act requires states to report the number of students expelled for bringing firearms to school by type of firearm. | Local |     | Yes |     |
+| DisciplineIncident | DisciplineIncidentParticipationCode | The role or type of participation of a student in a discipline incident; for example: Victim, Perpetrator, Witness, Reporter. | Local |     | Yes |     |
 | StaffDisciplineIncidentAssociation | DisciplineIncidentParticipationCode | The role or type of participation of a student in a discipline incident (e.g., Victim, Perpetrator, Witness, Reporter). | Local |     | Yes |     |
 | StudentDisciplineIncidentAssociation | StudentParticipationCode | The role or type of participation of a student in a discipline incident;  <br/>for example: Victim, Perpetrator, Witness, Reporter. | Local |     | Yes |     |
-| Behavior | Describes behavior by category and provides a detailed description. | Local |     | Yes |     |
+| StudentDisciplineIncidentAssociation | Behavior | Describes behavior by category and provides a detailed description. | Local |     | Yes |     |
 | StudentDisciplineIncidentBehaviorAssociation | Behavior | Describes behavior by category. | Local |     | Yes |     |
-| DisciplineIncidentParticipationCode | The role or type of participation of a student in a discipline incident. | Local |     | Yes |     |
+| StudentDisciplineIncidentBehaviorAssociation | DisciplineIncidentParticipationCode | The role or type of participation of a student in a discipline incident. | Local |     | Yes |     |
 | StudentDisciplineIncidentNonOffenderAssociation | DisciplineIncidentParticipationCode | The role or type of participation of a student in a discipline incident. | Local |     | Yes |     |
 
 :::tip
