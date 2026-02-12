@@ -41,3 +41,9 @@ jimenez:
   name: David Jiménez
   title: Software Engineer
   image_url: /img/authors/jimenez.png
+
+gandomi:
+  name: Nathan Gandomi
+  title: Manager, Programs
+  image_url: /img/authors/gandomi.png
+  page: true
