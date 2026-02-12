@@ -33,7 +33,7 @@ An Ed-Fi ODS / API platform supports a rich and detailed data model about studen
   * Special Education
   * Title I Part A Services
 
-The data model used in an Ed-Fi ODS / API is based on the Ed-Fi Data Standard. If you’re new to the Ed-Fi Data Standard, the [Unifying Data Model](https://edfi.atlassian.net/wiki/display/EFDS5/Ed-Fi+Unifying+Data+Model) documentation is useful in exploring the details of the domain models listed above.
+The data model used in an Ed-Fi ODS / API is based on the Ed-Fi Data Standard. If you’re new to the Ed-Fi Data Standard, the [Unifying Data Model](https://docs.ed-fi.org/reference/data-exchange/data-standard/5/) documentation is useful in exploring the details of the domain models listed above.
 
 ## Resources
 
@@ -43,7 +43,7 @@ The endpoints or Resources in Ed-Fi ODS / API are domain aggregates that have be
 | --- | --- |
 | Course | Course, CourseAcademicSubject, CourseCompetencyLevel, CourseIdentificationCode, CourseLearningStandard, CourseLevelCharacteristic, CourseOfferedGradeLevel |
 
-API applies name shortening to remove redundancy in the property names by dropping the parent entity prefix from the property names of object and collection properties as defined in the data model. This rule is applied to the embedded object and collection properties and not to scalar properties. While this removes unnecessary redundancy from the JSON object names, this can result in property names in the API differing from those in the [Data Handbook](https://edfi.atlassian.net/wiki/display/EFDS5/Unifying+Data+Model+-+v5.0+Handbook).
+API applies name shortening to remove redundancy in the property names by dropping the parent entity prefix from the property names of object and collection properties as defined in the data model. This rule is applied to the embedded object and collection properties and not to scalar properties. While this removes unnecessary redundancy from the JSON object names, this can result in property names in the API differing from those in the [Data Handbook](https://edfidocs.blob.core.windows.net/$web/handbook/v5.0/index.html#/).
 
 Examples of name shortening:
 

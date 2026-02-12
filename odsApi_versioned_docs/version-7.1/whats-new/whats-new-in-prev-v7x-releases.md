@@ -29,8 +29,8 @@ to review the changes carefully.
 In the past, each release of the Ed-Fi ODS / API implemented a specific version
 of the Data Standard. Ed-Fi ODS / API v7.0 introduces the capability to build
 and deploy APIs that adhere to either the [Ed-Fi Data Standard
-v4](https://edfi.atlassian.net/wiki/display/EFDS4X/) or [Ed-Fi Data Standard
-v5](https://edfi.atlassian.net/wiki/display/EFDS5/Ed-Fi+Data+Standard+v5). This
+v4](https://docs.ed-fi.org/reference/data-exchange/data-standard/4/) or [Ed-Fi Data Standard
+v5](https://docs.ed-fi.org/reference/data-exchange/data-standard/5/). This
 enhancement involves updates to the source code structure, build process,
 packaging, and deployment components of the technology stack to process either
 one of the data standard versions. This flexibility empowers implementations to
@@ -42,17 +42,17 @@ It is important for implementers to note that Ed-Fi ODS / API v7.0 introduces
 breaking changes listed in the [release
 notes](./../whats-new/release-notes.md#ed-fi-ods--api-v7x---breaking-changes).
 These changes will impact the behavior of the API in both [Ed-Fi Data Standard
-v4](https://edfi.atlassian.net/wiki/display/EFDS4X/) and [Ed-Fi Data Standard
-v5](https://edfi.atlassian.net/wiki/display/EFDS5/Ed-Fi+Data+Standard+v5) implementations.
+v4](https://docs.ed-fi.org/reference/data-exchange/data-standard/4/) and [Ed-Fi Data Standard
+v5](https://docs.ed-fi.org/reference/data-exchange/data-standard/5/) implementations.
 Additionally, Ed-Fi ODS / API v7.0 brings non-breaking changes to the ODS
 database schema, aimed at enhancing performance. Implementers are advised to
 upgrade their existing ODS to incorporate these schema changes, particularly
 when upgrading from an existing [Ed-Fi Data Standard
-v4](https://edfi.atlassian.net/wiki/display/EFDS4X/) (ODS / API v6.1)
+v4](https://docs.ed-fi.org/reference/data-exchange/data-standard/4/) (ODS / API v6.1)
 implementation. Beyond the ODS, it's essential to update the Admin and Security
 database schemas to the latest versions when upgrading to Ed-Fi ODS / API v7.0
 for implementing [Ed-Fi Data Standard
-v4](https://edfi.atlassian.net/wiki/display/EFDS4X/).
+v4](https://docs.ed-fi.org/reference/data-exchange/data-standard/4/).
 
 ### Dynamic Profile Configuration
 

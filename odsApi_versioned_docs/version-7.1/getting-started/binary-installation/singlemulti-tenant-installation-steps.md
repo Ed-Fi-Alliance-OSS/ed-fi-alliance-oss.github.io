@@ -468,6 +468,8 @@ API keys and secrets can be administered via SQL queries as outlined in the
 article [How To: Configure Key /
 Secret](../../how-to-guides/how-to-configure-key-secret.md).
 
+For more information, see the Admin API documentation [here](https://docs.ed-fi.org/reference/admin-api/getting-started).
+
 ## Step 6. Restart your Website
 
 Just a few more tasks to complete your installation:
