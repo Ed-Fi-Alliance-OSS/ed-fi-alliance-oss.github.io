@@ -861,7 +861,7 @@ export default {
       supportResources: [
         {
           name: 'Learning Standards Sync Utility',
-          link: 'https://edfi.atlassian.net/wiki/spaces/EXCHANGE/pages/22487416/Learning+Standards+Sync+Utility',
+          link: 'https://docs.ed-fi.org/getting-started/edfi-exchange/technology/learning-standards-sync/getting-started/',
         },
       ],
     },
