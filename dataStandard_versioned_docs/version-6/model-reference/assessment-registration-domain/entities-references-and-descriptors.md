@@ -31,8 +31,26 @@ hide_table_of_contents: true
 | Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
 | StudentAssessmentRegistration <br /> StudentEducationOrganizationAssessmentAccommodation <br /> StudentAssessmentRegistrationBatteryPartAssociation | Accommodation | The special variation(s) to be used for the specific part of the assessment battery on how is presented, how it is administered, or how the test taker is allowed to respond.| Local |     | Yes |     |
+| StudentDemographic | AncestryEthnicOrigin | The original peoples or cultures with which the individual identifies. | Local |     |     | Yes |
+| StudentDemographic | CitizenshipStatus | An indicator of whether or not the person is a U.S. citizen. | Orthodox |     |     |     |
+| StudentDemographic | Country | The name of the country. It is strongly recommended that entries use only ISO 3166 2-letter country codes. | Standard |     | Yes |     |
+| StudentDemographic | Disability | A disability category that describes a individual's impairment. | Orthodox | Yes | Yes |     |
+| StudentDemographic | DisabilityDesignation | Whether the disability is IDEA, Section 504, or other disability designation. | Orthodox |     | Yes |     |
+| StudentDemographic | DisabilityDeterminationSourceType | The source that provided the disability determination. | Orthodox |     | Yes |     |
+| StudentDemographic | EconomicDisadvantage | The indication of an inadequate financial condition of an individual's family, as determined by family income, number of family members/dependents, participation in public assistance programs, and/or other characteristics considered relevant by federal, state, and local policy. |     |     |     |     |
 | StudentAssessmentRegistration | GradeLevel | The grade level or primary instructional level at which the student is to be assessed. | Orthodox | Yes | Yes |     |
 | StudentAssessmentRegistration | PlatformType | The environment or format in which the assessment is expected to be administered. | Orthodox |     |     |     |
+| StudentDemographic | IdentificationDocumentUse | The primary function of the document used for establishing identity. | Orthodox |     |     |     |
+| StudentDemographic | Language | A specification of which written or spoken communication is being used.   | Standard | Yes | Yes |     |
+| StudentDemographic | LanguageUse | A description of how the language is used (e.g. Home Language, Native Language, Spoken Language). | Orthodox |     |     |     |
+| StudentDemographic | LimitedEnglishProficiency | An indication that the student has been identified as limited English proficient by the Language Proficiency Assessment Committee (LPAC), or English proficient. | Standard | Yes |     |     |
+| StudentDemographic | PersonalInformationVerification | The category of the document relative to its purpose. | Orthodox |     |     |     |
+| StudentDemographic | Race | The general racial category which most clearly reflects the individual's recognition of his or her community or with the which the individual most identifies as last reported to the education organization. The data model allows for multiple entries so that each individual can specify all appropriate races. | Standard |     |     |     |
+| StudentDemographic | Sex | The student's birth sex as reported to the education organization. | Standard |     |     |     |
+| StudentDemographic | StudentCharacteristic | The characteristic designated for the student. | Local |     |     |     |
+| StudentDemographic | SupporterMilitaryConnection | Military connection of the person/people whom the student is a dependent of. | Standard |     |     |     |
+| StudentDemographic | TribalAffiliation | An American Indian tribe with which the student is affiliated as last reported to the education organization. | Orthodox |     |     |     |
+| StudentDemographic | Visa | An indicator of a non-US citizen's Visa type. | Standard |     |     |     |
 
 :::tip
 
