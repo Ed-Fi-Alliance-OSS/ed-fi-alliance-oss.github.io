@@ -36,7 +36,7 @@ Find out more about how to begin using the Ed-Fi ODS / API:
 
   * [Sandbox Installation Steps](./binary-installation/sandbox-installation-steps.mdx)
   * [Shared Instance Installation Steps](./binary-installation/shared-instance-installation-steps.md)
-  * [Year-Specific Installation Steps](./binary-installation/year-specifc-installation-steps.md)
+  * [Year-Specific Installation Steps](./binary-installation/year-specific-installation-steps.md)
   * [Binary Releases](./binary-installation/binary-releases.md)
 </details>
 

@@ -58,7 +58,7 @@ invitation e-mail, a link will be provided that will direct you to set a
 password for your account. Upon logging in, you will see the existing sandboxes
 associated with your user, along with their application key and secret.
 
-![Sandbox Administration Portal with configured sandboxes](https://edfi.atlassian.net/wiki/download/attachments/22774465/Admin-Portal-Figure-1.png?version=1&modificationDate=1641861354127&cacheVersion=1&api=v2)
+![Sandbox Administration Portal with configured sandboxes](/img/reference/ods-api/sandbox.webp)
 
 **Figure 2.** Sandbox Administration Portal with configured sandboxes
 

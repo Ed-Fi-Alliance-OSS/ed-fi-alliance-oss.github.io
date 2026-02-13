@@ -91,6 +91,6 @@ PowerShell installers released with the ODS / API provide varied configuration o
 
 *   [Sandbox Installation Steps](./sandbox-installation-steps.mdx)
 *   [Shared Instance Installation Steps](./shared-instance-installation-steps.md)
-*   [Year-Specific Installation Steps](./year-specifc-installation-steps.md)
+*   [Year-Specific Installation Steps](./year-specific-installation-steps.md)
 
 ---

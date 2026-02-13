@@ -24,7 +24,7 @@ This section describes how to set up the Ed-Fi ODS / API v5.4 in shared instance
 *   [Step 6. Restart your Website](#step-6-restart-your-website)
 
 > **Warning**  
-> There are considerable limitations to storing multiple years of data in a single ODS. If you are using "Shared Instance" deployment, plan on starting with a fresh ODS each school year. Please refer to [Guidance on Multi-Year Data in ODS](https://edfi.atlassian.net/wiki/display/ODSAPIS3V54/Guidance+on+Multi-Year+Data+in+ODS?src=contextnavpagetreemode) for details.
+> There are considerable limitations to storing multiple years of data in a single ODS. If you are using "Shared Instance" deployment, plan on starting with a fresh ODS each school year. Please refer to [Guidance on Multi-Year Data in ODS](../../technical-articles/guidance-on-multi-year-data-in-ods.md) for details.
 
 ---
 

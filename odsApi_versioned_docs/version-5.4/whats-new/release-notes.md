@@ -6,7 +6,7 @@ description: Release notes for ODS/API v5.4
 
 This section provides a comprehensive list of the improvements, updates, fixes, and changes in the Ed-Fi ODS / API for Suite 3 v5.4 release, with links to the relevant issue in the Ed-Fi Tracker.
 
-## Ed-Fi ODS / API v5.3 - Release Notes
+## Ed-Fi ODS / API v5.4 - Release Notes
 
 ### Important Epics
 
