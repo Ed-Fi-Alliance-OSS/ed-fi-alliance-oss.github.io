@@ -35,7 +35,7 @@ Detail on each step follows.
 
 Verify that there are no previous versions of the templates installed under Extensions > Manage Extensions > Installed > Templates. "Uninstall" previous versions of "Ed-Fi Alliance Project Templates".
 
-![Uninstall Templates](https://edfi.atlassian.net/wiki/download/thumbnails/22774290/image2020-10-18_16-6-25.png?version=1&modificationDate=1641861346743&cacheVersion=1&api=v2&width=937&height=263)
+![Uninstall Templates](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-10-18_16-6-25.png)
 
 ## Step 2. Download the Ed-Fi Visual Studio Extension
 
@@ -49,19 +49,19 @@ Close Visual Studio. Ensure you close all instances.
 
 Double-click the downloaded EdFi.ProjectTemplates.Installer.vsix file and install the templates.
 
-![Install Templates 1](https://edfi.atlassian.net/wiki/download/attachments/22774290/image2022-2-7_14-42-7.png?version=1&modificationDate=1644270127673&cacheVersion=1&api=v2)
+![Install Templates 1](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2022-2-7_14-42-7.png)
 
-![Install Templates 2](https://edfi.atlassian.net/wiki/download/attachments/22774290/image2022-2-7_14-43-35.png?version=1&modificationDate=1644270216400&cacheVersion=1&api=v2)
+![Install Templates 2](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2022-2-7_14-43-35.png)
 
 ## Step 5. Verify Install
 
 Verify that the extension installed under Extensions > Manage Extensions > Installed > Templates.
 
-![Verify Templates 1](https://edfi.atlassian.net/wiki/download/thumbnails/22774290/image2020-10-18_16-16-34.png?version=1&modificationDate=1641861346700&cacheVersion=1&api=v2&width=693&height=274)
+![Verify Templates 1](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-10-18_16-16-34.png)
 
 Verify that the templates are available under File > New > Project.
 
-![Verify Templates 2](https://edfi.atlassian.net/wiki/download/thumbnails/22774290/image2020-10-18_16-21-35.png?version=1&modificationDate=1641861346690&cacheVersion=1&api=v2&width=1012&height=643)
+![Verify Templates 2](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-10-18_16-21-35.png)
 
 ## Next Steps
 

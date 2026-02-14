@@ -42,7 +42,7 @@ The required release packages to install the Ed-Fi ODS / API can be found at the
 
 For each of the downloads, **right-click** and select "Properties." Update the file extension (from .nupkg to .zip). Remove the version number (optional). Check the box next to **Unblock** (this will prevent PowerShell from asking for permission to load every module in the installer) and click **OK**.
 
-![Sample.nupkg](https://edfi.atlassian.net/wiki/download/thumbnails/22774218/image2024-7-25_6-30-30.png?version=1&modificationDate=1721907033718&cacheVersion=1&api=v2&width=725&height=977)
+![Sample.nupkg](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2024-7-25_6-36-11.png)
 
 :::info  
 You may need to configure TLS while running the installation scripts described in steps below.
@@ -226,11 +226,11 @@ Open IIS (Press the **Windows key** ![Windows logo](https://lh5.googleuserconten
 
 **Right-click** on the server (alternatively, you can right-click the EdFi web site), and select **Stop**.
 
-![Sample SandboxAdmin $parameters for SQL Server](https://edfi.atlassian.net/wiki/download/attachments/22774218/image2021-2-12_17-5-39.png?version=1&modificationDate=1641861344017&cacheVersion=1&api=v2)
+![Sample SandboxAdmin $parameters for SQL Server](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-2-12_17-5-39.png)
 
 **Right-click** the server (or EdFi website) again and select **Start**.
 
-![Sample SandboxAdmin $parameters for PostgreSQL](https://edfi.atlassian.net/wiki/download/thumbnails/22774218/image2021-2-12_17-7-5.png?version=1&modificationDate=1641861344027&cacheVersion=1&api=v2&width=466&height=555)
+![Sample SandboxAdmin $parameters for PostgreSQL](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-2-12_17-7-5.png)
 
 You are now ready to use the Ed-Fi ODS / API. The following URLs are available:
 

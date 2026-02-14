@@ -47,7 +47,7 @@ Verify that PowerShell 5.0 or above is installed:
 
 Download and install the latest release of the [.NET 8.0 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0).
 
-![PowerShell Version Screenshot 2](https://edfi.atlassian.net/wiki/download/thumbnails/22774182/image2024-10-31_13-58-28.png?version=1&modificationDate=1730401110139&cacheVersion=1&api=v2&width=812&height=491)
+![PowerShell Version Screenshot 2](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2024-10-31_13-58-28.png)
 
 ### Web Server
 
@@ -64,13 +64,13 @@ View detail...
 2.  Check the box next to **Internet Information Services**. The default selections will be good for most cases.
 3.  Click **OK**.
 
-![IIS Windows Features Screenshot](https://edfi.atlassian.net/wiki/download/thumbnails/22774182/image2021-10-13_16-25-43.png?version=1&modificationDate=1641861342317&cacheVersion=1&api=v2&width=412&height=364)
+![IIS Windows Features Screenshot](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-10-13_16-25-43.png)
 
 **.NET 8.0 Hosting Bundle**
 
 Download and install the latest release of the [.NET Hosting Bundle 8.0](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) after IIS is installed.
 
-![Hosting Bundle Screenshot](https://edfi.atlassian.net/wiki/download/thumbnails/22774182/image2024-10-31_13-58-48.png?version=1&modificationDate=1730401130359&cacheVersion=1&api=v2&width=808&height=510)
+![Hosting Bundle Screenshot](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2024-10-31_13-58-48.png)
 
 ---
 

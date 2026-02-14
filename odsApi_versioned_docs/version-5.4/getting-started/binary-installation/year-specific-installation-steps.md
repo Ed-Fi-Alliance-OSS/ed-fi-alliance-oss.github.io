@@ -18,7 +18,7 @@ This section describes how to set up the Ed-Fi ODS / API in year-specific mode. 
 
 For each of the downloads, right-click and select "Properties." Update the file extension (from `.nupkg` to `.zip`). Remove the version number (optional). Check the box next to **Unblock** and click OK.
 
-![Unblock File](https://edfi.atlassian.net/wiki/download/thumbnails/22774223/image2024-7-25_6-36-11.png?version=1&modificationDate=1721907374811&cacheVersion=1&api=v2&width=713&height=965)
+![Unblock File](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2024-7-25_6-36-11.png)
 
 :::info
 You may need to configure TLS while running the installation scripts described in steps below:
@@ -235,11 +235,11 @@ Just a few more tasks to complete your installation:
 * Open IIS (Press the Windows key ![Windows logo](https://lh5.googleusercontent.com/o2iqf0j70YV3B-1NQxBFj1Ne-JeToRq5PiZeMtvF05l3jpyp4kseJn-zEs3BULgpAS_TFr8Qyacu5JZkiyXNllygq2EGhPII-PcxYyxkwCUqC4fPhMJ0QbovAD16R7T2StuDemW_) on your keyboard, type IIS, select Internet Information Services (IIS), and press Enter.)
 * Right-click on the server (alternatively, you can right-click the EdFi web site), and select **Stop**.
 
-![IIS Stop](https://edfi.atlassian.net/wiki/download/attachments/22774223/image2021-2-12_17-5-39.png?version=1&modificationDate=1641861344367&cacheVersion=1&api=v2)
+![IIS Stop](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-2-12_17-5-39.png)
 
 * Right-click the server (or EdFi website) again and select **Start**.
 
-![IIS Start](https://edfi.atlassian.net/wiki/download/thumbnails/22774223/image2021-2-12_17-7-5.png?version=1&modificationDate=1641861344357&cacheVersion=1&api=v2&width=466&height=555)
+![IIS Start](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-2-12_17-7-5.png)
 
 You are now ready to use the Ed-Fi ODS / API. The following URLs are available:
 

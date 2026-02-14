@@ -25,7 +25,7 @@ By logging into the Sandbox Administration Portal using an Admin account,
 platform hosts can provision access to vendors to manage their sandboxes. In the
 navigation bar at the top, click on **Manage Accounts** > **Create Account**
 
-![Creating new users using Administration Portal](https://edfi.atlassian.net/wiki/download/attachments/22774465/image2020-4-3_11-7-54.png?version=1&modificationDate=1641861354053&cacheVersion=1&api=v2)
+![Creating new users using Administration Portal](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-4-3_11-7-54.png)
 
 **Figure 1.** Creating new users using Administration Portal
 
@@ -64,13 +64,13 @@ associated with your user, along with their application key and secret.
 
 The **Add Sandbox** button allows you to create a new sandbox environment with or without sample data. A sandbox with sample data includes standard lookup data (e.g., grade level types, attendance event types) as well as anonymized sample data (e.g., students, schools, grades, assessments scores). A sandbox created without sample data will still include the lookup data.
 
-![Add Sandbox](https://edfi.atlassian.net/wiki/download/attachments/22774465/Admin-Portal-Figure-2.png?version=1&modificationDate=1641861354093&cacheVersion=1&api=v2)
+![Add Sandbox](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Admin-Portal-Figure-2.png)
 
 **Figure 3.** Adding a sandbox via the Administration Portal
 
 Clicking the Gear icon brings up features like Delete and the ability to change the assigned application Secret. One useful feature included in that menu is **Get Token**, which performs the OAuth authentication steps using the selected application's credentials and returns an access token. This access token code can be used, for example, in the Swagger documentation or to make sample calls to the ODS / API sandbox as shown in the [Authentication](./authentication.md) section of this documentation. 
 
-![Fig 4](https://edfi.atlassian.net/wiki/download/attachments/22774465/Admin-Portal-Figure-3.png?version=1&modificationDate=1641861354080&cacheVersion=1&api=v2)
+![Fig 4](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Admin-Portal-Figure-3.png)
 **Figure 4.** Getting an access token using an application's credentials
 
 
