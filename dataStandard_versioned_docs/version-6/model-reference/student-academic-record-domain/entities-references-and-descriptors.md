@@ -39,29 +39,74 @@ hide_table_of_contents: true
 
 | Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
-| CompetencyObjective | ObjectiveGradeLevel | The grade level for which the CompetencyObjective is targeted. | Orthodox |     |     |     |
+| StudentAcademicRecord | AcademicHonorCategory | A designation of the type of academic distinctions earned by or awarded to the individual. | Orthodox |     |     |     |
+| Course <br /> CourseTranscript <br /> LearningStandard | AcademicSubject | The intended major subject/s, credits, or learning standard of the course. | Local |     |     |     |
+| School | AccreditationStatus | The accreditation status for an education preparation provider. | Standard |     |     |     |
+| Staff <br /> StudentAcademicRecord | AchievementCategory | The category of achievement attributed to the individual. | Local |     |     |     |
 | CourseTranscript | AdditionalCreditType | The type of credits or units of value awarded for the completion of a course. | Orthodox |     |     |     |
-| CourseAttemptResult | The result from the student's attempt to take the course, for example: Pass, Fail, Incomplete, Withdrawn. | Standard |     |     |     |
-| CourseRepeatCode | Indicates that an academic course has been repeated by a student and how that repeat is to be computed in the student's academic grade average. | Orthodox |     |     |     |
-| CreditType | The type of credits or units of value awarded for the completion of a course. | Flexible |     |     |     |
-| MethodCreditEarned | The method the credits were earned (e.g., Classroom, Examination, Transfer). | Orthodox |     |     |     |
-| WhenTakenGradeLevel | Student's grade level at time of course. | Orthodox |     |     |     |
-| CreditCategory | A categorization of the course transcript credits. | Flexible |     |     |     |
-| AcademicSubject | The description of the content or subject area. | Local |     |     |     |
-| Grade | GradeType | The type of grade reported (e.g., Exam, Final, Grading Period). | Orthodox |     |     |     |
-| PerformanceBaseConversion | A performance level that describes the student proficiency. | Orthodox |     |     |     |
-| GradebookEntry | GradebookEntryType | The type of the GradebookEntry; for example, homework, assignment, quiz, unit test, oral presentation, etc. | Orthodox |     |     |     |
-| ReportCard | GradePointAverageType | The system used for calculating the Grade Point Average for an individual. | Standard |     |     |     |
-| StudentAcademicRecord | AcademicHonorCategory | A designation of the type of academic distinctions earned by or awarded to the student. | Orthodox |     |     |     |
-| AchievementCategory | The category of achievement attributed to the learner. | Local |     |     |     |
-| CreditType | The type of credits or units of value awarded for the completion of a course. | Flexible |     |     |     |
-| DiplomaLevel | The level of diploma/credential that is awarded to a student in recognition of his/her completion of the curricular requirements. Minimum high school program, Recommended high school program, Distinguished Achievement Program. | Local |     |     |     |
-| DiplomaType | The type of diploma/credential that is awarded to a student in recognition of his/her completion of the curricular requirements. | Local |     |     |     |
-| GradePointAverageType | The system used for calculating the Grade Point Average. | Standard |     |     |     |
-| RecognitionType | The nature of recognition given to the learner for accomplishments in a co-curricular, or extra-curricular activity. | Flexible |     |     |     |
-| Term | The term for the session during the school year. | Flexible |     |     |     |
-| StudentCompetencyObjective | CompetencyLevel | The competency level assessed for the student for the referenced competency objective. | Flexible |     |     |     |
-| StudentGradebookEntry | CompetencyLevel | The CompetencyLevel assessed for the student for the referenced LearningObjective. | Flexible |     |     |     |
+| EducationOrganization | AddressType | The type of address listed for an individual or organization. (For example:  Physical Address, Mailing Address, Home Address, etc.) | Orthodox | Yes | Yes | Yes |
+| School | AdministrativeFundingControl | The type of education institution as classified by its funding source, for example public or private. | Local |     |     |     |
+| StudentGradebookEntry | AssignmentLateStatus | Status of whether the assignment was submitted after the due date and/or marked as.  |     |     |     |     |
+| StudentSectionAssociation | AttemptStatus | An indication of the student's completion status for the section. | Orthodox |     |     |     |
+| Course | CareerPathway | Indicates the career cluster or pathway the course is associated with as part of a CTE curriculum. | Flexible |     |     |     |
+| School | CharterApprovalAgencyType | The type of agency that approved the establishment or continuation of a charter school. | Standard | Yes | Yes |     |
+| School | CharterStatus | A school or agency providing free public elementary or secondary education to eligible students under a specific charter granted by the state legislature or other appropriate authority and designated by such authority to be a charter school. | Standard | Yes | Yes | Yes |
+| Course <br /> StudentCompetencyObjective <br /> StudentGradebookEntry | CompetencyLevel | The competency levels defined to rate the student for the course, or The competency level assessed for the student for the referenced learning objective. | Flexible |     |     |     |
+| EducationOrganization <br /> Student | Country | The name of the country. It is strongly recommended that entries use only ISO 3166 2-letter country codes. | Standard |     | Yes |     |
+| CourseTranscript | CourseAttemptResult | The result from the student's attempt to take the course. | Standard |     |     |     |
+| Course | CourseDefinedBy | Specifies whether the course was defined by the SEA, LEA, School, or national organization. | Orthodox |     |     |     |
+| Course | CourseGPAApplicability | An indicator of whether or not the course being described is included in the computation of the student's grade point average, and if so, if it is weighted differently from regular courses. | Orthodox |     |     |     |
+| Course <br /> CourseTranscript | CourseIdentificationSystem | A system that is used to identify the organization of subject matter and related learning experiences provided for the instruction of students. | Orthodox |     |     |     |
+| Course <br /> CourseOffering <br /> Section | CourseLevelCharacteristic | The type of specific program or designation with which the course is associated (e.g., AP, IB, Dual Credit, CTE). | Orthodox |     |     |     |
+| CourseTranscript | CourseRepeatCode | Indicates that an academic course has been repeated by a student and how that repeat is to be computed in the student's academic grade average. | Orthodox |     |     |     |
+| CourseTranscript | CreditCategory | A categorization for the course transcript credits awarded in the course transcript. | Flexible |     |     |     |
+| Course <br /> CourseTranscript <br /> Section <br /> StudentAcademicRecord | CreditType | The type of credits or units of value awarded for the completion of a course. | Flexible |     |     |     |
+| CourseOffering | CurriculumUsed | The type of curriculum used in an early learning classroom or group. | Orthodox |     |     |     |
+| StudentAcademicRecord | DiplomaLevel | The level of diploma/credential that is awarded to a student in recognition of completion of the curricular requirements. | Local |     |     |     |
+| StudentAcademicRecord | DiplomaType | The type of diploma/credential that is awarded to a student in recognition of his/her completion of the curricular requirements. | Local |     |     |     |
+| StudentSectionAssociation | DualCreditInstitution | Descriptor for the postsecondary institution offering college credit. This descriptor may be used to select a postsecondary institution that is not defined as an education organization, and/or select a general type of postsecondary institution. |     |     |     |     |
+| StudentSectionAssociation | DualCreditType | For a student taking a dual credit course in a college or high school setting, indicates the type of dual credit program. |     |     |     |     |
+| Section | EducationalEnvironment | The setting in which a student receives education and related services. | Orthodox |     |     |     |
+| EducationOrganization | EducationOrganizationCategory | The classification of the education agency within the geographic boundaries of a state according to the level of administrative and operational control granted by the state. | Standard |     | Yes | Yes |
+| School | FederalLocaleCode | The federal locale code associated with an education organization. |     |     |     |     |
+| GradebookEntry | GradebookEntryType | The type of the gradebook entry. | Orthodox |     |     |     |
+| Course <br /> CourseOffering <br /> CourseTranscript <br /> LearningStandard <br /> School <br /> Section | GradeLevel | The grade levels in which the course is offered. Student's grade level at time of course. The grade levels for the specific learning standard. The grade levels served at the school. The grade levels in which the section is offered. | Orthodox | Yes | Yes |     |
+| StudentAcademicRecord | GradePointAverageType | The system used for calculating the grade point average for an individual. | Standard |     |     |     |
+| Grade | GradeType | The type of grade reported (e.g., exam, final, grading period). | Orthodox |     |     |     |
+| GradingPeriod | GradingPeriod | The state's name of the period for which grades are reported. | Flexible |     |     |     |
+| Student | IdentificationDocumentUse | The primary function of the document used for establishing identity. | Orthodox |     |     |     |
+| EducationOrganization | Indicator | The value of the indicator or metric. The semantics of an empty value is "not submitted." | Local |     |     |     |
+| EducationOrganization | IndicatorGroup | The name for a group of indicators. | Local |     |     |     |
+| EducationOrganization | IndicatorLevel | The value of the indicator or metric, as a value from a controlled vocabulary. The semantics of an empty value is "not submitted." | Local |     |     |     |
+| School | InternetAccess | The type of Internet access available. | Flexible |     |     |     |
+| Section | Language | The primary language of instruction. If omitted, English is assumed. | Orthodox |     |     |     |
+| LearningStandard | LearningStandardCategory | An additional classification of the type of a specific learning standard. | Orthodox |     |     |     |
+| LearningStandard | LearningStandardScope | Signals the scope of usage the standard. Does not necessarily relate the standard to the governing body. | Orthodox |     |     |     |
+| EducationOrganization | Locale | A general geographic indicator that categorizes U.S. territory (e.g., City, Suburban). | Orthodox |     | Yes |     |
+| School | MagnetSpecialProgramEmphasisSchool | A school that has been designed: 1) to attract students of different racial/ethnic backgrounds for the purpose of reducing, preventing, or eliminating racial isolation; and/or 2) to provide an academic or social focus on a particular theme (e.g., science/math, performing arts, gifted/talented, or foreign language). | Standard | Yes | Yes |     |
+| Section | MediumOfInstruction | The media through which teachers provide instruction to students and students and teachers communicate about instructional matters. | Orthodox |     | Yes |     |
+| CourseTranscript | MethodCreditEarned | The method the credits were earned. | Orthodox |     |     |     |
+| EducationOrganization | OperationalStatus | The current operational status of the education organization (e.g., active, inactive). | Standard | Yes | Yes | Yes |
+| Student | OtherNameType | The types of alternate names for an individual. | Orthodox |     |     |     |
+| Grade | PerformanceBaseConversion | A conversion of the level to a standard set of performance levels. | Orthodox |     |     |     |
+| Student | PersonalInformationVerification | The category of the document relative to its purpose. | Orthodox |     |     |     |
+| Section | PopulationServed | The type of students the section is offered and tailored to. | Orthodox |     |     |     |
+| Program | ProgramCharacteristic | Reflects important characteristics of the program, such as categories or particular indications. | Local | Yes | Yes |     |
+| Program | ProgramSponsor | Ultimate and intermediate providers of funds for a particular educational or service program or activity, or for an individual's participation in the program or activity (e.g., Federal, State, ESC, District, School, Private Organization). | Standard |     | Yes |     |
+| Program | ProgramType | The type of program. | Flexible | Yes | Yes | Yes |
+| LearningStandard | PublicationStatus | The publication status of the document (i.e., Adopted, Draft, Published, Deprecated, Unknown). | Orthodox |     |     |     |
+| StudentAcademicRecord | RecognitionType | The nature of recognition given to the learner for accomplishments in a co-curricular, or extra-curricular activity. | Flexible |     |     |     |
+| StudentSectionAssociation | RepeatIdentifier | An indication as to whether a student has previously taken a given course. | Orthodox |     |     |     |
+| School | SchoolCategory | The one or more categories of school. | Local |     | Yes |     |
+| School | SchoolType | The type of education institution as classified by its primary focus. | Standard | Yes | Yes |     |
+| Section | SectionCharacteristic | Reflects important characteristics of the section, such as whether or not attendance is taken and the section is graded. | Local |     |     |     |
+| Section | SectionType | Specifies whether the section is for attendance only, credit only, or both. | Flexible |     |     |     |
+| StudentProgramAssociation | Service | Indicates the service being provided to the student by the program. | Local |     | Yes |
+| Student | Sex | A person's sex at birth. | Standard |     |     |     |
+| EducationOrganization <br /> Student | StateAbbreviation | The abbreviation for the name of the state (within the United States) or extra-state jurisdiction in which an individual was born. | Standard |     |     |     |
+| StudentGradebookEntry | SubmissionStatus | The status of the student's submission. |     |     |     |     |
+| Session <br /> StudentAcademicRecord | Term | The term or descriptor value for the session during the school year. | Flexible |     |     |     |
+| School | TitleIPartASchoolDesignation | Denotes the Title I Part A designation for the school. | Standard | Yes | Yes |     |
 
 :::tip
 
