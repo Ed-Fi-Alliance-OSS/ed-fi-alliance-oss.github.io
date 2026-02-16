@@ -37,7 +37,7 @@ hosted as part of that ecosystem.
 To install Admin API on Docker, first Install the [ODS / API
 Docker](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Docker) environment
 [following these
-instructions](https://edfi.atlassian.net/wiki/display/EDFITOOLS/Docker+Deployment).
+instructions](https://docs.ed-fi.org/reference/docker).
 Then, apply the below changes to the environment to introduce the Admin API.
 Admin API does not support in-place upgrades from prior versions.  Please
 install a fresh copy of Admin API to upgrade from prior versions.
@@ -64,30 +64,37 @@ instead of or in addition to the `adminapp`  service.
 
 Docker compose
 
-```none title="Single-Tenant"
 This service depends on the `pb-admin` and subsequently `db-admin` services to run.
-# ... above are other services adminapi:
-image: edfialliance/ods-admin-api:${ADMIN_API_TAG}
-environment: ADMIN_POSTGRES_HOST: pb-admin
-POSTGRES_PORT: "$PGBOUNCER_LISTEN_PORT:-6432}"
-POSTGRES_USER: "${POSTGRES_USER}"
-POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
-DATABASEENGINE: "PostgreSql"
-AUTHORITY: ${AUTHORITY}
-ISSUER_URL: $ISSUER_URL}
-SIGNING_KEY: ${SIGNING_KEY}
-ADMIN_API_VIRTUAL_NAME: ${ADMIN_API_VIRTUAL_NAME:-adminapi}
-API_INTERNAL_URL: ${API_INTERNAL_URL}
-AppSettings__DefaultPageSizeOffset: ${PAGING_OFFSET:-0}
-AppSettings__DefaultPageSizeLimit: ${PAGING_LIMIT:-25}
-volumes: - ../../Docker/ssl:/ssl/
-depends_on: - pb-admin
-restart: always
-hostname: ${ADMIN_API_VIRTUAL_NAME:-adminapi}
-container_name: adminapi
-healthcheck: test: $$ADMIN_API_HEALTHCHECK_TEST
-start_period: "60s" retries: 3 # ...
-below are network and volume configs
+
+```yaml title="Single-Tenant"
+# ... above are other services
+adminapi:
+  image: edfialliance/ods-admin-api:${ADMIN_API_TAG}
+  environment:
+    ADMIN_POSTGRES_HOST: pb-admin
+    POSTGRES_PORT: "${PGBOUNCER_LISTEN_PORT:-6432}"
+    POSTGRES_USER: "${POSTGRES_USER}"
+    POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+    DATABASEENGINE: "PostgreSql"
+    AUTHORITY: ${AUTHORITY}
+    ISSUER_URL: ${ISSUER_URL}
+    SIGNING_KEY: ${SIGNING_KEY}
+    ADMIN_API_VIRTUAL_NAME: ${ADMIN_API_VIRTUAL_NAME:-adminapi}
+    API_INTERNAL_URL: ${API_INTERNAL_URL}
+    AppSettings__DefaultPageSizeOffset: ${PAGING_OFFSET:-0}
+    AppSettings__DefaultPageSizeLimit: ${PAGING_LIMIT:-25}
+  volumes:
+    - ../../Docker/ssl:/ssl/
+  depends_on:
+    - pb-admin
+  restart: always
+  hostname: ${ADMIN_API_VIRTUAL_NAME:-adminapi}
+  container_name: adminapi
+  healthcheck:
+    test: ${ADMIN_API_HEALTHCHECK_TEST}
+    start_period: "60s"
+    retries: 3
+# ... below are network and volume configs
 ```
 
 :::note
@@ -97,8 +104,8 @@ File content example:
 
 :::
 
- ```json title="Multi-Tenant"
- {
+```json title="Multi-Tenant"
+{
    "Tenants": {
      "tenant1": {
        "ConnectionStrings": {
@@ -117,11 +124,12 @@ File content example:
        }
      }
    }
- }
+}
+```
 
- Compose file section:  This service depends on db-admin-tenant1, db-admin-tenant2 services to run
+Compose file section: This service depends on db-admin-tenant1, db-admin-tenant2 services to run
 
- ```none
+```yaml
  # ... above are other services
  adminapi:
      image: edfialliance/ods-admin-api:${ADMIN_API_TAG}
@@ -176,7 +184,7 @@ the volume mapping configuration in order to preserve your data**. Only
 change the image and tag of the existing service. The below block is a sample of
 this, based on an example ODS / API Docker environment composition.
 
- ```docker title="Single-Tenant"
+```yaml title="Single-Tenant"
  # ... above are other services
  db-admin:
      image: edfialliance/ods-admin-api-db:${ADMIN_API_DB_TAG}
@@ -190,7 +198,7 @@ this, based on an example ODS / API Docker environment composition.
  # ... below are other services
  ```
 
- ```docker title="Multi-Tenant"
+```yaml title="Multi-Tenant"
  # ... above are other services
  db-admin-tenant1:
      image: edfialliance/ods-admin-api-db:${ADMIN_API_DB_TAG}
@@ -232,7 +240,7 @@ Add the following to your environment settings file to support Admin API. Note
 that when running both Admin App and Admin API, some of these settings may
 overlap. This is expected, and the same values can be used.
 
-```docker title=".env for Admin API"
+```bash title=".env for Admin API"
 ADMIN_API_TAG=<version of image to run>
 ADMIN_API_DB_TAG=<version of image to run>
 ADMIN_API_VIRTUAL_NAME=<virtual name for the Admin API endpoint>
@@ -263,7 +271,7 @@ ADMIN_API_HEALTHCHECK_TEST="curl -f http://${ADMIN_API_VIRTUAL_NAME}/health"
 Update your nginx server configuration to include the Admin API in the reverse
 proxy.
 
-```json title="default.conf.template"
+```nginx title="default.conf.template"
 # upstream server config...
 
 server {

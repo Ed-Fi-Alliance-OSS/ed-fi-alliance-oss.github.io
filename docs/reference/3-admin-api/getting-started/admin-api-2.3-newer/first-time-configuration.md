@@ -84,7 +84,7 @@ API](/reference/admin-api/securing-admin-api) for more info.
 
 If using a self-signed certificate for a developer or other non-production
 instances of Admin API, add "Encrypt=False" to appSettings.json in the
-ConnectingStrings section to allow them to function.  Below is a screen capture
+ConnectionStrings section to allow them to function.  Below is a screen capture
 of the error that will display using self-signed certificates.  The ASP.NET Core
 client does not trust these certificates by default and this parameter will
 allow development environments to continue with self-signed certificates.

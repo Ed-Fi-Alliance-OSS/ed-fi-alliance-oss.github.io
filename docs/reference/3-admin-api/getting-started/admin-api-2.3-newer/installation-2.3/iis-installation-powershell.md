@@ -111,100 +111,90 @@ complete.
 
 Database engine specific connection information ($dbConnectionInfo):
 
-:::info note:
+:::note SQL Server
 
- SQL Server
-
- ```json
- $dbConnectionInfo = @{
-         Server = "(local)"
-         Engine = "SqlServer"
-         UseIntegratedSecurity = $false
-         Username = "exampleAdmin"
-         Password = "examplePassword"
- }
- ```
+```powershell
+$dbConnectionInfo = @{
+        Server = "(local)"
+        Engine = "SqlServer"
+        UseIntegratedSecurity = $false
+        Username = "exampleAdmin"
+        Password = "examplePassword"
+}
+```
 
 :::
 
-:::info note:
+:::note PostgreSQL Server
 
- PostgreSQL Server
-
- ```json
- $dbConnectionInfo = @{
-         Server = "localhost"
-         Engine = "PostgreSQL"
-         UseIntegratedSecurity = $false
-         Username = "postgres"
-         Password = "examplePassword"
- }
- ```
+```powershell
+$dbConnectionInfo = @{
+        Server = "localhost"
+        Engine = "PostgreSQL"
+        UseIntegratedSecurity = $false
+        Username = "postgres"
+        Password = "examplePassword"
+}
+```
 
 :::
 
-:::info note:
+:::note Single-Tenant
 
- Single-Tenant
+```powershell
+$authenticationSettings = @{
+    Authority = "https://localhost/adminapi"
+    IssuerUrl = "https://localhost/adminapi"
+    SigningKey = "Base64-encoded string"
+    AllowRegistration = $false
+}
 
- ```json
- $authenticationSettings = @{
-     Authority = "[https://localhost/adminapi](https://localhost/adminapi)"
-     IssuerUrl = ""[https://localhost/adminapi](https://localhost/adminapi)"
-     SigningKey = "Base64-encoded string"
-     AllowRegistration = $false
- }
+$packageSource = Split-Path $PSScriptRoot -Parent
+$adminApiSource = "$packageSource/AdminApi"
 
- $packageSource = Split-Path $PSScriptRoot -Parent
- $adminApiSource = "$packageSource/AdminApi"
-
- $p = @{
-     ToolsPath = "C:/temp/tools"
-     DbConnectionInfo = $dbConnectionInfo
-     PackageVersion = '2.2.2.0'
-     PackageSource = $adminApiSource
-     AuthenticationSettings = $authenticationSettings
- }
- ```
+$p = @{
+    ToolsPath = "C:/temp/tools"
+    DbConnectionInfo = $dbConnectionInfo
+    PackageVersion = '2.3.0'
+    PackageSource = $adminApiSource
+    AuthenticationSettings = $authenticationSettings
+}
+```
 
 :::
 
-:::info note:
+:::note Multi-Tenant
 
- Multi-Tenant
+```powershell
+$authenticationSettings = @{
+    Authority = "https://localhost/adminapi"
+    IssuerUrl = "https://localhost/adminapi"
+    SigningKey = "Base64-encoded string"
+    AllowRegistration = $false
+}
 
- ```json
- $authenticationSettings = @{
-     Authority = "[https://localhost/adminapi](https://localhost/adminapi)"
-     IssuerUrl = ""[https://localhost/adminapi](https://localhost/adminapi)"
-     SigningKey = "Base64-encoded string"
-     AllowRegistration = $false
- }
+$packageSource = Split-Path $PSScriptRoot -Parent
+$adminApiSource = "$packageSource/AdminApi"
 
- $packageSource = Split-Path $PSScriptRoot -Parent
- $adminApiSource = "$packageSource/AdminApi"
-
- $p = @{
-     IsMultiTenant = $true
-     ToolsPath = "C:/temp/tools"
-     DbConnectionInfo = $dbConnectionInfo
-     PackageVersion = '2.2.2.0'
-     PackageSource = $adminApiSource
-     AuthenticationSettings = $authenticationSettings
-     Tenants = @{
-             Tenant1 = @{
-                 AdminDatabaseName = "EdFi_Admin_Tenant1"
-                 SecurityDatabaseName = "EdFi_Security_Tenant1"
-             }
-             Tenant2 = @{
-                 AdminDatabaseName = "EdFi_Admin_Tenant2"
-                 SecurityDatabaseName = "EdFi_Security_Tenant2"
-             }
-     }
- }
- ```
-
-:::
+$p = @{
+    IsMultiTenant = $true
+    ToolsPath = "C:/temp/tools"
+    DbConnectionInfo = $dbConnectionInfo
+    PackageVersion = '2.3.0'
+    PackageSource = $adminApiSource
+    AuthenticationSettings = $authenticationSettings
+    Tenants = @{
+            Tenant1 = @{
+                AdminDatabaseName = "EdFi_Admin_Tenant1"
+                SecurityDatabaseName = "EdFi_Security_Tenant1"
+            }
+            Tenant2 = @{
+                AdminDatabaseName = "EdFi_Admin_Tenant2"
+                SecurityDatabaseName = "EdFi_Security_Tenant2"
+            }
+    }
+}
+```
 
 #### **Step 3. Open a PowerShell Prompt in Administrator Mode**
 
@@ -245,7 +235,7 @@ database tables.
 
 ![Installation Complete](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/installation-v2/Screenshot%202023-09-18%20at%2013.31.52.png)
 
-#### **Step 5. Verify SQL Server Login**
+#### Step 5. Verify SQL Server Login
 
 The installation process sets up an appropriate SQL Login for use with the
 dedicated AdminApi Application Pool in IIS. You can verify this in SQL Server
@@ -257,7 +247,7 @@ On the Server Roles page, make sure that  "public" and "sysadmin" checkboxes ar
 checked. Once you have confirmed a proper SQL Server login exists, continue to
 the next step.
 
-#### **Step 6. Update Application Pool Identity (Optional)**
+#### Step 6. Update Application Pool Identity (Optional)
 
 As mentioned on Step 5, installation process sets up an appropriate SQL Login
 for use with the dedicated AdminApi Application Pool in IIS. If you would like
@@ -276,12 +266,12 @@ Application Pools page.
 
 #### Step 7. Confirming appSettings.json
 
-Change `EnableSwagger`  to `true` to enable generation of the Swagger UI
+Change `EnableSwagger`  to `true` to enable generation of the Swagger UI
 documentation.
 
-* This is **not** recommended for production.
+* This is **not** recommended for production.
 
-#### **Step 9. Execute First-Time Configuration**
+#### Step 8. Execute First-Time Configuration
 
 Continue on to [First-Time Configuration for Admin API
 2.3](../first-time-configuration).
