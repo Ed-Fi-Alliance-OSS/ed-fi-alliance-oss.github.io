@@ -17,6 +17,9 @@ hide_table_of_contents: true
 | LocalEducationAgency | This entity represents an administrative unit at the local level which exists primarily to operate schools or to contract for educational services. It includes school districts, charter schools, charter management organizations, or other local administrative organizations. |
 | School | This entity represents an educational organization that includes staff and students who participate in classes and educational activity groups. |
 | Student | This entity represents an individual for whom instruction, services, and/or care are provided in an early childhood, elementary, or secondary educational program under the jurisdiction of a school, education agency or other institution or program. A student is a person who has been enrolled in a school or other educational institution. |
+| StudentDemographic | The demographic information associated to a student. |
+| StudentDirectory | The contact information associated to a student. |
+| StudentIdentificationCode | This entity holds different identity codes for a student. |
 | StudentTransportation | This entity captures detailed information about student transportation arrangements, including the responsible organization, eligibility for public expense coverage, transportation type, special accommodations, and specific bus details. |
 | StudentEducationOrganizationAssociation | This association represents student information as reported in the context of the student's relationship to the education organization. Enrollment relationship semantics are covered by StudentSchoolAssociation. |
 | StudentEducationOrganizationResponsibilityAssociation | This association indicates a relationship between a student and an education organization other than an enrollment relationship, and generally indicating some kind of responsibility of the education organization for the student. Enrollment relationship semantics are covered by StudentSchoolAssociation. |
