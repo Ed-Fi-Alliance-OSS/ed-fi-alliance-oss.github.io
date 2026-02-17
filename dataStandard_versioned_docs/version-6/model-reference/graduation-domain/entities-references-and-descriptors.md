@@ -31,6 +31,7 @@ hide_table_of_contents: true
 | GraduationPlan | AcademicSubject | The intended major subject area of the graduation requirement. |     |     |     |     |
 | School | AccreditationStatus | The accreditation status for an education preparation provider. | Standard |     |     |     |
 | StudentAcademicRecord | AchievementCategory | The category of achievement attributed to the individual. | Local |     |     |     |
+| EducationOrganization | AddressCharacteristic | The address characteristic mainly to reflect if Primary and type of communication to be received, e.g.: Primary, Validated, Gets Copy of Report, Discipline Correspondence. |     |     |     |     |
 | EducationOrganization | AddressType | The type of address listed for an individual or organization. (For example:  Physical Address, Mailing Address, Home Address, etc.) |     |     |     |     |
 | School | AdministrativeFundingControl | The type of education institution as classified by its funding source, for example public or private. |     |     |     |     |
 | GraduationPlan | AssessmentReportingMethod | The method that the instructor of the class uses to report the performance and achievement of all students. It may be a qualitative method such as individualized teacher comments or a quantitative method such as a letter or numerical grade. In some cases, more than one type of reporting method may be used. | Local |     | Yes | Yes |

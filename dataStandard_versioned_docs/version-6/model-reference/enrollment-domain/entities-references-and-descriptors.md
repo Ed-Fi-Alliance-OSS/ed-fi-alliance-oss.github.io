@@ -42,6 +42,7 @@ hide_table_of_contents: true
 | GraduationPlan | AcademicSubject | The intended major subject area of the graduation requirement. | Local |     |     |     |
 | StudentDemographic | Accommodation | The special variation(s) to be used for the specific part of the assessment battery on how is presented, how it is administered, or how the test taker is allowed to respond.| Local |     | Yes |     |
 | School | AccreditationStatus | The accreditation status for an education preparation provider. | Standard |     |     |     |
+| EducationOrganization <br /> StudentDirectory | AddressCharacteristic | The address characteristic mainly to reflect if Primary and type of communication to be received, e.g.: Primary, Validated, Gets Copy of Report, Discipline Correspondence. |     |     |     |     |
 | EducationOrganization <br /> StudentDirectory | AddressType | The type of address listed for an individual or organization. (For example:  Physical Address, Mailing Address, Home Address, etc.) |     |     |     |     |
 | School | AdministrativeFundingControl | The type of education institution as classified by its funding source, for example public or private. |     |     |     |     |
 | FinancialAid  | AidType | The classification of financial aid awarded to a person for the academic term/year. | Orthodox |     |     |     |

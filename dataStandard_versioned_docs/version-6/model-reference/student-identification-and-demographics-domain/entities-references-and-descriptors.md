@@ -29,6 +29,7 @@ hide_table_of_contents: true
 
 | Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
+| Contact <br /> StudentDirectory | AddressCharacteristic | The address characteristic mainly to reflect if Primary and type of communication to be received, e.g.: Primary, Validated, Gets Copy of Report, Discipline Correspondence. |     |     |     |     |
 | Contact <br /> StudentDirectory | AddressType | The type of address listed for an individual or organization. (For example: Physical Address, Mailing Address, Home Address, etc.) | Orthodox |     |     |     |
 | StudentDirectory | AncestryEthnicOrigin | The original peoples or cultures with which the individual identifies. | Local |     |     | Yes |
 | StudentEducationOrganizationAssociation | BarrierToInternetAccessInResidence| An indication of the barrier to having internet access in the student’s primary place of residence.| Flexible |     |     |     |

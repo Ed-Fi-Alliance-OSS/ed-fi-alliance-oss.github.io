@@ -42,6 +42,7 @@ hide_table_of_contents: true
 | --- | --- | --- | --- | --- | --- | --- |
 | Course <br /> Staff | AcademicSubject | The intended major subject/s area of the course, or academic subject(s) in which the staff is deemed to be "highly qualified". | Local |     |     |     |
 | Staff | AchievementCategory | The category of achievement attributed to the individual. | Local |     |     |     |
+| Contact <br /> EducationOrganization | AddressCharacteristic | The address characteristic mainly to reflect if Primary and type of communication to be received, e.g.: Primary, Validated, Gets Copy of Report, Discipline Correspondence. |     |     |     |     |
 | Contact <br /> EducationOrganization | AddressType | The type of address listed for an individual or organization. (For example:  Physical Address, Mailing Address, Home Address, etc.) | Orthodox |     |     |     |
 | Course | CareerPathway | Indicates the career cluster or pathway the course is associated with as part of a CTE curriculum. | Flexible |     |     |     |
 | Course | CompetencyLevel | The competency levels defined to rate the student for the course. | Flexible |     |     |     |

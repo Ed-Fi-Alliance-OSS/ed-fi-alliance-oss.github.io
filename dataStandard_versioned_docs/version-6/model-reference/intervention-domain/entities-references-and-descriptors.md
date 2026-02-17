@@ -33,6 +33,7 @@ hide_table_of_contents: true
 | --- | --- | --- | --- | --- | --- | --- |
 | Cohort <br /> Staff | AcademicSubject | The academic subject associated with an academic intervention, or The academic subject(s) in which the staff is deemed to be "highly qualified". | Local | Yes | Yes |     |
 | Staff | AchievementCategory | The category of achievement attributed to the individual. | Local |     |     |     |
+| EducationOrganization | AddressCharacteristic | The address characteristic mainly to reflect if Primary and type of communication to be received, e.g.: Primary, Validated, Gets Copy of Report, Discipline Correspondence. |     |     |     |     |
 | EducationOrganization | AddressType | The type of address listed for an individual or organization. (For example: Physical Address, Mailing Address, Home Address, etc.) | Orthodox | Yes | Yes | Yes |
 | StudentInterventionAttendanceEvent | AttendanceEventCategory | A code describing the attendance event. (For example: Present, Unexcused absence, Excused absence,Tardy.) | Local | Yes | Yes |     |
 | Cohort | CohortScope | The scope of cohort (e.g., school, district, classroom). |     |     |     |     |

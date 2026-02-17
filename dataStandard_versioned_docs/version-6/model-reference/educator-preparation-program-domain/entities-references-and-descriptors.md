@@ -33,6 +33,7 @@ hide_table_of_contents: true
 | --- | --- | --- | --- | --- | --- | --- |
 | Candidate | AcademicSubject | The description of the content or subject area of a degree. | Local | Yes | Yes |     |
 | EducatorPreparationProgram | AccreditationStatus | The current accreditation status of the educator preparation program. | Standard |     |     |     |
+| Candidate | AddressCharacteristic | The address characteristic mainly to reflect if Primary and type of communication to be received, e.g.: Primary, Validated, Gets Copy of Report, Discipline Correspondence. |     |     |     |     |
 | Candidate | AddressType | The type of address listed for an individual or organization.    For example:  (Physical Address, Mailing Address, Home Address, etc.) |Orthodox | Yes | Yes | Yes |
 | Candidate | BackgroundCheckStatus | The status of the background check. |     |     |     |     |
 | Candidate | BackgroundCheckType | The type of background check. |     |     |     |     |

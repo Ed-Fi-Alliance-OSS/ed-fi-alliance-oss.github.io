@@ -41,6 +41,7 @@ hide_table_of_contents: true
 | Credential <br /> OpenStaffPosition <br /> Staff <br /> StaffSchoolAssociation | AcademicSubject | The academic subject(s) or teaching fields in which the individual is eligible to teach, is deemed to be "highly qualified", or to which the credential pertains. | Local | Yes | Yes |     |
 | School | AccreditationStatus | The accreditation status for an education preparation provider. | Standard |     |     |     |
 | Staff | AchievementCategory | The category of achievement attributed to the individual. | Local |     |     |     |
+| EducationOrganization <br /> StaffDirectory | AddressCharacteristic | The address characteristic mainly to reflect if Primary and type of communication to be received, e.g.: Primary, Validated, Gets Copy of Report, Discipline Correspondence. |     |     |     |     |
 | EducationOrganization <br /> StaffDirectory | AddressType | The type of address listed for an individual or organization. (For example:  Physical Address, Mailing Address, Home Address, etc.) | Orthodox | Yes | Yes | Yes |
 | School | AdministrativeFundingControl | The type of education institution as classified by its funding source, for example public or private. | Local |     |     |     |
 | StaffDemographic | AncestryEthnicOrigin | The original peoples or cultures with which the individual identifies. | Local |     |     | Yes |
