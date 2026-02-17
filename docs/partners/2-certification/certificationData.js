@@ -681,10 +681,8 @@ export default {
       productName: 'Amplify mCLASS DIBELS 8th Edition and mCLASS Lectura',
       logo: 'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/amplify/AmplifyWordmark_Screen.png',
       website: 'https://amplify.com/',
-      validThrough: 'January 31, 2026',
-      verifyingAgencies: [
-        'Mesquite ISD, TX',
-      ],
+      validThrough: 'February 17, 2027',
+      verifyingAgencies: ['Richardson ISD, TX', 'Midland ISD, TX', 'Aldine ISD, TX'],
       versionCompatibility: 'All versions',
       availability: 'Available to any agency (all sizes) in the U.S.',
       documentation: {
