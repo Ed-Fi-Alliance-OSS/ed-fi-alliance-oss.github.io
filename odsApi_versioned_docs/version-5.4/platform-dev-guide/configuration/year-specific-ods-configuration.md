@@ -12,7 +12,7 @@ Some implementations find it useful to add a school year in the API root, for ex
 
 ## Routing
 
-When enabled, the base URI follows `/{api_area}/{version}/**{year}** pattern.` See [API Routes](https://edfi.atlassian.net/wiki/display/ODSAPIS3V53/API+Routes) for details.
+When enabled, the base URI follows `/{api_area}/{version}/**{year}** pattern.` See [API Routes](/reference/ods-api/5.4/client-developers-guide/api-routes) for details.
 
 ## How to Enable
 
@@ -26,7 +26,7 @@ The ODS / API can be configured for year-specific configuration through the foll
 initdev -InstallType YearSpecific -OdsTokens '2020;2021'
 ```
 
-* The same parameters noted above can be used with the deployment script packaged with [EdFi.Suite3.RestApi.Databases](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging?_a=package&feed=EdFi%40Local&package=EdFi.Suite3.RestApi.Databases&protocolType=NuGet&version=5.3.139) NuGet for non-development environments. See [Getting Started - Binary Installation Steps](https://edfi.atlassian.net/wiki/display/ODSAPIS3V53/Getting+Started+-+Binary+Installation) for details.
+* The same parameters noted above can be used with the deployment script packaged with [EdFi.Suite3.RestApi.Databases](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging?_a=package&feed=EdFi%40Local&package=EdFi.Suite3.RestApi.Databases&protocolType=NuGet&version=5.3.139) NuGet for non-development environments. See [Getting Started - Binary Installation Steps](../../getting-started/binary-installation/readme.md) for details.
 
 See the [Extensibility & Customization](../extensibility-customization/readme.md) section for information on using year-specific configuration as a facet of a partitioning strategy.
 

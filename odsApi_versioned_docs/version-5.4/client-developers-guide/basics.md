@@ -46,7 +46,7 @@ the following information domains:
   * Title I Part A Services
 
 The data model used in an Ed-Fi ODS / API is based on the Ed-Fi Data Standard.
-If you're new to the Ed-Fi Data Standard, the [Unifying Data Model](https://edfi.atlassian.net/wiki/display/EFDS33/Ed-Fi+Unifying+Data+Model) documentation is useful in exploring the details of the domain models listed
+If you're new to the Ed-Fi Data Standard, the [Unifying Data Model](/reference/data-exchange/udm/#introduction) documentation is useful in exploring the details of the domain models listed
 above. The [Using the Online Documentation](./using-the-online-documentation.md) section provides a great overview of the API surface — and the [documentation](https://api.ed-fi.org/v5.4/docs) itself is a complete reference for a core API implementation that defines the
 endpoints, JSON payloads, element definitions, parameter options, and other useful
 technical information.

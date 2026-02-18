@@ -67,7 +67,7 @@ The desired model for the latest ODS / API is "ed-fi-model-3.3b".
 
 ### Step 2b. Create a New Extension Project
 
-Create a new extension by following the steps in [MetaEd IDE - Creating and Maintaining Your Extension](https://edfi.atlassian.net/wiki/display/METAED20/MetaEd+IDE+-+Creating+and+Maintaining+Your+Extension). In this example our extension is in a folder called "StudentTranscript"
+Create a new extension by following the steps in [MetaEd IDE - Creating and Maintaining Your Extension](/reference/metaed/ide-user-guide/creating-and-maintaining-your-extension/). In this example our extension is in a folder called "StudentTranscript"
 
 ![Image](https://edfi.atlassian.net/wiki/download/attachments/22774579/NewProject.png?version=1&modificationDate=1721395802742&cacheVersion=1&api=v2)
 

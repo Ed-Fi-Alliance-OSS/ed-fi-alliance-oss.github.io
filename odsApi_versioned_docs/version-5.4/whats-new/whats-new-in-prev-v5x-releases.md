@@ -50,13 +50,13 @@ Ed-Fi ODS / API v5.3 implements [Ed-Fi Data Standard v3.3.1-b](https://edfi.atla
 Data Standard v3.3.1-b can also be reviewed in the context of API specifications:
 
 * [Ed-Fi Assessment Outcomes API for Suite 3 v1.0.1](https://edfi.atlassian.net/wiki/spaces/EFDS/pages/17727736/Ed-Fi+Assessment+Outcomes+API+for+Suite+3)
-* [ED-FI RFC 24 - CORE STUDENT API](https://edfi.atlassian.net/wiki/display/EFDSRFC/ED-FI+RFC+24+-+CORE+STUDENT+API)
-* [ED-FI RFC 25 - SURVEY API](https://edfi.atlassian.net/wiki/display/EFDSRFC/ED-FI+RFC+25+-+SURVEY+API)
+* [ED-FI RFC 24 - CORE STUDENT API](https://edfi.atlassian.net/wiki/spaces/rc/pages/25363210/ED-FI+RFC+24+-+CORE+STUDENT+API)
+* [ED-FI RFC 25 - SURVEY API](https://edfi.atlassian.net/wiki/spaces/rc/pages/25363230/ED-FI+RFC+25+-+SURVEY+API)
 * [/wiki/spaces/EFTD/pages/25363200](https://edfi.atlassian.net/wiki/spaces/EFTD/pages/25363200)
 
 ### Educator Preparation Data Model
 
-Ed-Fi ODS / API v5.3 brings in EPDM core v1.1.0 (previously TPDM) as a dynamic extension plugin. Educator Preparation Providers can use this extension to evaluate program improvements based on how their graduates perform in the classroom rather than on general or anecdotal evidence. See the [Educator Preparation Data Model](https://edfi.atlassian.net/wiki/display/EPP/Educator+Preparation+Programs) documentation for more details. Out of the box, the Ed-Fi ODS / API installs the EPDM core plugin. If you are interested in the EPDM community edition, see the article [Installing Ed-Fi ODS / API 5.3 with EPDM-Community v1.1](https://edfi.atlassian.net/wiki/spaces/EPP/pages/23169945/Installing+Ed-Fi+ODS+API+5.3+with+EPDM-Community+v1.1).
+Ed-Fi ODS / API v5.3 brings in EPDM core v1.1.0 (previously TPDM) as a dynamic extension plugin. Educator Preparation Providers can use this extension to evaluate program improvements based on how their graduates perform in the classroom rather than on general or anecdotal evidence. See the [Educator Preparation Data Model](/getting-started/educator-pipeline/) documentation for more details. Out of the box, the Ed-Fi ODS / API installs the EPDM core plugin. If you are interested in the EPDM community edition, see the article [Installing Ed-Fi ODS / API 5.3 with EPDM-Community v1.1](https://edfi.atlassian.net/wiki/spaces/EPP/pages/23169945/Installing+Ed-Fi+ODS+API+5.3+with+EPDM-Community+v1.1).
 
 ### Authorization Simplification
 
@@ -93,8 +93,8 @@ Ed-Fi ODS / API v5.2 implements Ed-Fi Data Standard v3.3.0-a, which introduces c
 Data Standard v3.3.0-a can also be reviewed in the context of API specifications:
 
 * [Ed-Fi Assessment Outcomes API for Suite 3 v1.0.1](https://edfi.atlassian.net/wiki/spaces/EFDS/pages/17727736/Ed-Fi+Assessment+Outcomes+API+for+Suite+3)
-* [ED-FI RFC 24 - CORE STUDENT API](https://edfi.atlassian.net/wiki/display/EFDSRFC/ED-FI+RFC+24+-+CORE+STUDENT+API)
-* [ED-FI RFC 25 - SURVEY API](https://edfi.atlassian.net/wiki/display/EFDSRFC/ED-FI+RFC+25+-+SURVEY+API)
+* [ED-FI RFC 24 - CORE STUDENT API](https://edfi.atlassian.net/wiki/spaces/rc/pages/25363210/ED-FI+RFC+24+-+CORE+STUDENT+API)
+* [ED-FI RFC 25 - SURVEY API]( https://edfi.atlassian.net/wiki/spaces/rc/pages/25363230/ED-FI+RFC+25+-+SURVEY+API)
 
 ### XSD Metadata Endpoint in ODS / API
 
@@ -122,7 +122,7 @@ In previous versions of ODS / API, the .NET binaries were released on MyGet. Thi
 
 ### Teacher Preparation Data Model as a Plugin
 
-Ed-Fi ODS / API v5.2 supports TPDM v1.0 as optional dynamic extension plugin. Teacher preparation providers can use this extension to evaluate program improvements based on how their graduates perform in the classroom rather than on general or anecdotal evidence. See the [Teacher Preparation Data Model](https://edfi.atlassian.net/wiki/display/TPDMX/Teacher+Preparation+Data+Model)) documentation for more details on this extension. For instructions on how to deploy the extension see the article [Getting Started with TPDM v1.0](https://edfi.atlassian.net/wiki/pages/viewpage.action?pageId=23039729).
+Ed-Fi ODS / API v5.2 supports TPDM v1.0 as optional dynamic extension plugin. Teacher preparation providers can use this extension to evaluate program improvements based on how their graduates perform in the classroom rather than on general or anecdotal evidence. See the [Teacher Preparation Data Model](/reference/data-exchange/data-standard/5/model-reference/educator-preparation-data-model-domain/overview/) documentation for more details on this extension. For instructions on how to deploy the extension see the article [Getting Started with TPDM v1.0](https://edfi.atlassian.net/wiki/pages/viewpage.action?pageId=23039729).
 
 ### MetaEd IDE v2.5
 
@@ -154,7 +154,7 @@ ODS / API v5.0.0 implements Ed-Fi Data Standard v3.2.0-c. Noteworthy additions t
 
 The data model changes introduced in Data Standard v3.2.0-c can also be reviewed in the context of API specification updates:
 
-* SIS API. This release implements the latest [Ed-Fi RFC 24 - Core Student API](https://edfi.atlassian.net/wiki/display/EFDSRFC/ED-FI+RFC+24+-+CORE+STUDENT+API). The changes were designed to be non-breaking for most existing API client systems.
+* SIS API. This release implements the latest [Ed-Fi RFC 24 - Core Student API](https://edfi.atlassian.net/wiki/spaces/rc/pages/25363210/ED-FI+RFC+24+-+CORE+STUDENT+API). The changes were designed to be non-breaking for most existing API client systems.
 * Survey API. This release implements [Ed-Fi RFC 25 - Survey API](https://edfi.atlassian.net/wiki/spaces/EFTD/pages/25363230/ED-FI+RFC+25+-+SURVEY+API), which is newly added in this release.
 
 This release also implements [Ed-Fi RFC 22 - Assessment Outcomes API](https://edfi.atlassian.net/wiki/spaces/EFTD/pages/25363177/ED-FI+RFC+22+-+ASSESSMENT+OUTCOMES+API), which is the same as previous Ed-Fi ODS / API v3.x releases. This means there are no new Assessment API changes accompanying this release.

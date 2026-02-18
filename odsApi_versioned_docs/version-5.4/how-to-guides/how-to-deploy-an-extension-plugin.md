@@ -76,7 +76,7 @@ data models are listed in your API landing page.
 
 #### Step 1. Download EdFi.Suite3.RestApi.Databases
 
-* Download the EdFi.Suite3.RestApi.Databases from [Binary Releases](https://edfi.atlassian.net/wiki/display/ODSAPIS3V53/Binary+Releases).
+* Download the EdFi.Suite3.RestApi.Databases from [Binary Releases](../getting-started/binary-installation/binary-releases.md).
 * Change package extension from nupkg to zip.
 * Right-click the zip file, click **unblock** and unzip the package.
 

@@ -15,7 +15,7 @@ Documentation for the Ed-Fi ODS / API v5.4 for Suite 3 is viewable online:
 * [What's New](./whats-new/readme.mdx)
 * [Getting Started](./getting-started/readme.md)
 * [Platform Developers'
-    Guide](./platform-dev-guide/overview.md)
+    Guide](./platform-dev-guide/readme.md)
 * [API Client Developers'
     Guide](./client-developers-guide/readme.md)
 * [How-To Guides](./how-to-guides/readme.md)

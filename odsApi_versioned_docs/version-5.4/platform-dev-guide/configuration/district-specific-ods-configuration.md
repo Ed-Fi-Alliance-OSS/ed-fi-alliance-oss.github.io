@@ -24,7 +24,7 @@ initdev -InstallType DistrictSpecific -OdsTokens '255901;255902'
 
 * The same parameters noted above can be used with the deployment script packaged with [EdFi.Suite3.RestApi.Databases](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging?_a=package&feed=EdFi%40Local&package=EdFi.Suite3.RestApi.Databases&protocolType=NuGet&version=5.3.139) NuGet for non-development environments. See [Getting Started - Binary Installation](../../getting-started/binary-installation/readme.md) for details.
 
-* Configure API Clients to be associated with one district. If you are using the [ODS / API Admin App](https://edfi.atlassian.net/wiki/display/ADMIN/Admin+App+for+Suite+3+v2.2) administrative application for setting up client keys and secrets, you can configure the client to be associated with a particular district in the "Add Application Vendor" screen. This will ensure that all transactions from the client will land in the ODS partition specific to the district associated with the API Client.
+* Configure API Clients to be associated with one district. If you are using the [ODS / API Admin App](/reference/ods-admin-app/) administrative application for setting up client keys and secrets, you can configure the client to be associated with a particular district in the "Add Application Vendor" screen. This will ensure that all transactions from the client will land in the ODS partition specific to the district associated with the API Client.
 
 ![Add Application Vendor](https://edfi.atlassian.net/wiki/download/attachments/22774329/image2020-3-22_15-48-50.png?version=1&modificationDate=1641861348647&cacheVersion=1&api=v2)
 

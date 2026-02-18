@@ -103,4 +103,4 @@ manage key updates.
 The Ed-Fi ODS / API ships with a core set of cascading updates already in place,
 but platform hosts can expand or modify the cascading updates supported by the
 system. However, these changes may have to be reapplied after ODS / API upgrade
-or after extensions are redeployed by [MetaEd](https://edfi.atlassian.net/wiki/display/METAED20/MetaEd+v2.x+Home) if cascading updates have been customized for extensions. See the article [How To: Enable Cascading Updates on ODS / API Resources](../../how-to-guides/how-to-enable-cascading-updates-on-ods-api-resources.md) for details.
+or after extensions are redeployed by [MetaEd](/reference/metaed) if cascading updates have been customized for extensions. See the article [How To: Enable Cascading Updates on ODS / API Resources](../../how-to-guides/how-to-enable-cascading-updates-on-ods-api-resources.md) for details.
