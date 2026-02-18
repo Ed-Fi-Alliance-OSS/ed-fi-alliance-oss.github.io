@@ -23,6 +23,7 @@ hide_table_of_contents: true
 
 | Name | Description |
 | --- | --- |
+| FinancialAid | This entity represents the financial aid a person is awarded. |
 | EducationOrganization | This entity represents any public or private institution, organization, or agency that provides instructional or support services to students or staff at any level. |
 
 ### Student Identification and Demographics Domain Descriptors
@@ -31,6 +32,7 @@ hide_table_of_contents: true
 | --- | --- | --- | --- | --- | --- | --- |
 | Contact <br /> StudentDirectory | AddressCharacteristic | The address characteristic mainly to reflect if Primary and type of communication to be received, e.g.: Primary, Validated, Gets Copy of Report, Discipline Correspondence. |     |     |     |     |
 | Contact <br /> StudentDirectory | AddressType | The type of address listed for an individual or organization. (For example: Physical Address, Mailing Address, Home Address, etc.) | Orthodox |     |     |     |
+| FinancialAid  | AidType | The classification of financial aid awarded to a person for the academic term/year. | Orthodox |     |     |     |
 | StudentDirectory | AncestryEthnicOrigin | The original peoples or cultures with which the individual identifies. | Local |     |     | Yes |
 | StudentEducationOrganizationAssociation | BarrierToInternetAccessInResidence| An indication of the barrier to having internet access in the student’s primary place of residence.| Flexible |     |     |     |
 | StudentDemographic | CitizenshipStatus | An indicator of whether or not the person is a U.S. citizen. | Orthodox |

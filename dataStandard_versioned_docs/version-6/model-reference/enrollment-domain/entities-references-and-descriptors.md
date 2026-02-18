@@ -12,7 +12,6 @@ hide_table_of_contents: true
 | AccountabilityRating| An accountability rating for a school or district. |
 | CrisisEvent | This entity represents natural or man-made event that causes the disruption of school-level activities and temporary or permanent displacement of students. |
 | EducationOrganization | This entity represents any public or private institution, organization, or agency that provides instructional or support services to students or staff at any level. |
-| FinancialAid | This entity represents the financial aid a person is awarded. |
 | GraduationPlan | This entity is a plan outlining the required credits, credits by subject, credits by course, and other criteria required for graduation. A graduation plan may be one or more standard plans defined by an education organization and/or individual plans for some or all students. |
 | LocalEducationAgency | This entity represents an administrative unit at the local level which exists primarily to operate schools or to contract for educational services. It includes school districts, charter schools, charter management organizations, or other local administrative organizations. |
 | School | This entity represents an educational organization that includes staff and students who participate in classes and educational activity groups. |
@@ -45,7 +44,6 @@ hide_table_of_contents: true
 | EducationOrganization <br /> StudentDirectory | AddressCharacteristic | The address characteristic mainly to reflect if Primary and type of communication to be received, e.g.: Primary, Validated, Gets Copy of Report, Discipline Correspondence. |     |     |     |     |
 | EducationOrganization <br /> StudentDirectory | AddressType | The type of address listed for an individual or organization. (For example:  Physical Address, Mailing Address, Home Address, etc.) |     |     |     |     |
 | School | AdministrativeFundingControl | The type of education institution as classified by its funding source, for example public or private. |     |     |     |     |
-| FinancialAid  | AidType | The classification of financial aid awarded to a person for the academic term/year. | Orthodox |     |     |     |
 | StudentDemographic | AncestryEthnicOrigin |  The original peoples or cultures with which the individual identifies. | Local |     |     | Yes |
 | GraduationPlan | AssessmentReportingMethod | The method that the administrator of the assessment uses to report the performance and achievement of all students. It may be a qualitative method such as performance level descriptors or a quantitative method such as a numerical grade or cut score. More than one type of reporting method may be used. | Local |     | Yes | Yes |
 | StudentEducationOrganizationAssociation | BarrierToInternetAccessInResidence | An indication of the barrier to having internet access in the student’s primary place of residence. |     |     |     |     |
