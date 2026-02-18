@@ -10,7 +10,6 @@ also available for deployments on Docker. The Admin API v2.2 is available for
 Documentation for the Ed-Fi Admin API is viewable online:
 
 * [What's New](/reference/admin-api/whats-new#updates-in-admin-api-v22)
-* [Getting Started](/reference/admin-api/getting-started/#admin-api-version-20---22-odsapi-7x-only)
 * [Technical Articles](./technical-articles/)
 
 ## Installation
