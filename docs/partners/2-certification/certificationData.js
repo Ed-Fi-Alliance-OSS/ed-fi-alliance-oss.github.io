@@ -41,7 +41,36 @@ export default {
           link: 'https://help.powerschool.com/',
         },
       ],
-    }
+    },
+    {
+      productName: 'Focus School Software',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/Focus_logo.png',
+      website: 'https://focusschoolsoftware.com/',
+      validThrough: 'February 19, 2027',
+      verifyingAgencies: ['Higley Unified School District, AZ', 'Glendale Union High School District, AZ'],
+      versionCompatibility: 'Conformance testing met with version 11 and 12',
+      availability: 'Available to any agency (all sizes) in the U.S.',
+      documentation: {
+        'Availability Statement':
+          'https://edfi.atlassian.net/wiki/download/attachments/23694066/Focus%20Ed-Fi%20v4%20Availability%20Statement%20-%20Signed.pdf?version=1&modificationDate=1688731324490&cacheVersion=1&api=v2',
+        Mappings:
+          'https://edfi.atlassian.net/wiki/download/attachments/23694066/Field%20Mappings.xlsx?version=2&modificationDate=1663104029430&cacheVersion=1&api=v2',
+      },
+      supportResources: [
+        {
+          name: 'Usage overview',
+          link: 'https://edfi.atlassian.net/wiki/download/attachments/23694066/Usage%20Overview.pdf?version=1&modificationDate=1660926004610&cacheVersion=1&api=v2',
+        },
+        {
+          name: 'Enablement & configuration guide',
+          link: 'https://focus.screenstepslive.com/s/admins/m/sis/l/1485666-ed-fi-setup',
+        },
+        {
+          name: 'How to get support',
+          link: 'https://focusschoolsoftware.zendesk.com/hc/en-us',
+        },
+      ],
+    },
   ],
 
   sisApiV4: [
@@ -681,10 +710,8 @@ export default {
       productName: 'Amplify mCLASS DIBELS 8th Edition and mCLASS Lectura',
       logo: 'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/amplify/AmplifyWordmark_Screen.png',
       website: 'https://amplify.com/',
-      validThrough: 'January 31, 2026',
-      verifyingAgencies: [
-        'Mesquite ISD, TX',
-      ],
+      validThrough: 'February 17, 2027',
+      verifyingAgencies: ['Richardson ISD, TX', 'Midland ISD, TX', 'Aldine ISD, TX'],
       versionCompatibility: 'All versions',
       availability: 'Available to any agency (all sizes) in the U.S.',
       documentation: {
@@ -838,7 +865,7 @@ export default {
       supportResources: [
         {
           name: 'Learning Standards Sync Utility',
-          link: 'https://edfi.atlassian.net/wiki/spaces/EXCHANGE/pages/22487416/Learning+Standards+Sync+Utility',
+          link: 'https://docs.ed-fi.org/getting-started/edfi-exchange/technology/learning-standards-sync/getting-started/',
         },
       ],
     },
@@ -861,7 +888,7 @@ export default {
       supportResources: [
         {
           name: 'Learning Standards Sync Utility',
-          link: 'https://edfi.atlassian.net/wiki/spaces/EXCHANGE/pages/22487416/Learning+Standards+Sync+Utility',
+          link: 'https://docs.ed-fi.org/getting-started/edfi-exchange/technology/learning-standards-sync/getting-started/',
         },
       ],
     },
