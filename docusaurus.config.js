@@ -275,8 +275,8 @@ const config = {
                 href: 'https://www.ed-fi.org',
               },
               {
-                label: 'Ed-Fi News',
-                href: 'https://www.ed-fi.org/blog',
+                label: 'Ed-Fi Insights and Resources',
+                href: 'https://www.ed-fi.org/resources',
               },
               {
                 label: 'Ed-Fi Events',
