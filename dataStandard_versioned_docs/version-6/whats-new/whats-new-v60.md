@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # What's New - v6.0
 
 Release Date: Nov. 14, 2025.
@@ -197,14 +201,14 @@ Vendor feedback highlighted misalignment in field lengths when importing learnin
 
 The new length for CourseTitle is also reflected in CourseOffering.CourseTitle, CourseTranscript.CourseTitle, and LearningStandard.CourseTitle.
 
-### Replaced EconomicDisadvantage _Boolean_ with Optional Collection
+### Replaced EconomicDisadvantage _Boolean_ with Descriptor
 
-[DATASTD-2473](https://tracker.ed-fi.org/browse/DATASTD-2468)
+[DATASTD-2473](https://tracker.ed-fi.org/browse/DATASTD-2473)
 [DATASTD-2488](https://tracker.ed-fi.org/browse/DATASTD-2488)
 
-Previous versions of the Ed-Fi standard used EconomicDisadvantaged as a boolean flag for individuals under financial hardship. Community feedback noted that the absence of this flag does not necessarily indicate the characteristic is false.  To improve accuracy and completeness of state reporting, the EconomicDisadvantaged boolean value was removed, and a new optional collection (descriptor) was created enabling Yes/No/Unknown values.
+Previous versions of the Ed-Fi standard used EconomicDisadvantaged as a boolean flag for individuals under financial hardship. Community feedback noted that the absence of this flag does not necessarily indicate the characteristic is false.  To improve accuracy and completeness of state reporting, the EconomicDisadvantaged boolean value was removed, and a new optional descriptor was created enabling Yes/No/Unknown values.
 
-The EconomicDisadvantaged (optional collection) was:
+The EconomicDisadvantaged was:
 
 * Added to the newly created StudentDemographic entity.
 * Updated in Candidate.

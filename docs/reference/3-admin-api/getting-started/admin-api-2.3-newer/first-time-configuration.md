@@ -1,7 +1,11 @@
-# First-Time Configuration for Admin API 2.x
+---
+sidebar_position: 2
+---
+
+# First-Time Config
 
 After [Installing the Admin
-API](admin-api-2x-docker-installation.md),
+API](./installation-2.3/readme.md),
 there are a couple manual steps that must be completed before the application
 can be used.
 
@@ -63,7 +67,7 @@ curl -X POST https://your-admin-api/connect/token -H "Content-Type: application/
 This should return a JSON result including a bearer token. Note that the above
 request does _not_ include a request scope, so the token will be invalid for
 accessing most endpoints. See [Securing Admin
-API](../../securing-admin-api.md) for more info.
+API](/reference/admin-api/securing-admin-api) for more info.
 
 ```json
 {
@@ -80,7 +84,7 @@ API](../../securing-admin-api.md) for more info.
 
 If using a self-signed certificate for a developer or other non-production
 instances of Admin API, add "Encrypt=False" to appSettings.json in the
-ConnectingStrings section to allow them to function.  Below is a screen capture
+ConnectionStrings section to allow them to function.  Below is a screen capture
 of the error that will display using self-signed certificates.  The ASP.NET Core
 client does not trust these certificates by default and this parameter will
 allow development environments to continue with self-signed certificates.
