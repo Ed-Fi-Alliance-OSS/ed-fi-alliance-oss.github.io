@@ -37,10 +37,10 @@ Before you begin:
 * This example uses PowerShell scripts and the EdFi.BulkLoadClient.Console
     found in the Ed-Fi ODS / API. You should follow the [Getting Started -
     Source Code
-  Installation](../getting-started/source-code-installation/index.md) before
+  Installation](../getting-started/source-code-installation/readme.md) before
     you get started.
 * This example uses the XML sample data found in
-    the [Ed-Fi-Standard repository on GitHub](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Standard). 
+    the [Ed-Fi-Standard repository on GitHub](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Standard).
     You will need to clone or download these sample data
     files in order to follow along.
 
@@ -91,10 +91,9 @@ Once you understand the parameters above, you're ready to run the `Initialize-Po
 
 **Executing the Initialize-PopulatedTempate Script**
 
-
 ```powershell
 PS C:\> Initialize-PopulatedTemplate -samplePath "C:\Ed-Fi-Standard\"
- 
+
 apiClientNameBootstrap         BulkLoadClientBootstrap
 apiClientNameSandbox           BulkLoadClientSandbox
 apiUrlBase                     http://localhost:8765
@@ -112,9 +111,10 @@ bulkLoadBootstrapInterchanges  {InterchangeDescriptors, InterchangeStandards, In
 The script will run through the tasks noted above. The process will take a few minutes to complete. You should see task output similar to the following when the script has finished successfully:
 
 **Initialize-PopulatedTemplate Script Results**
+
 ```
 ...
- 
+
 Duration  Task
 --------  ----
 00:00.04  New-TempDirectory
@@ -134,12 +134,12 @@ Duration  Task
 00:00.11  New-DatabaseTemplateNuspec
 -         -
 11:41.25  Initialize-PopulatedTemplate
- 
- 
+
+
 PS C:\>
 ```
-You should see the above task output when the script has finished successfully.
 
+You should see the above task output when the script has finished successfully.
 
 ## Option 2. Creating a NuGet Package
 
@@ -147,7 +147,7 @@ Before you begin:
 
 * This example assumes you have SQL Server Management Studio (SSMS). You can find
   instructions for installing SSMS in the Step 3. Install and Configure Required
-  Software step of the [Getting Started](../getting-started/source-code-installation/index.md) guide for the Ed-Fi ODS / API.
+  Software step of the [Getting Started](../getting-started/source-code-installation/readme.md) guide for the Ed-Fi ODS / API.
 * This example assumes you have NuGet CLI tool. You can follow the instructions
   for [Installing Nuget Client Tools](https://docs.microsoft.com/en-us/nuget/install-nuget-client-tools#nugetexe-cli).
 * This example assumes you have access to a MyGet feed. You can follow MyGet's
@@ -182,6 +182,7 @@ The nuspec file created by the `New-PopulatedTemplateNuspec` script will be crea
 The contents of the Populated.Template.nuspec file needs to be modified with your information. The default information is shown below as an example of the structure:
 
 **Populated.Template.nuspec**
+
 ```xml
 <?xml version="1.0"?>
 <package>
@@ -206,6 +207,7 @@ The contents of the Populated.Template.nuspec file needs to be modified with you
 Once you have your information in your nuspec file, you can navigate to the `<source directory>\Ed-Fi-ODS-Implementation\DatabaseTemplate\Database\` folder and execute `nuget pack`.
 
 **NuGet CLI Pack Command**
+
 ```powershell
 PS C:\edfi\Ed-Fi-ODS-Implementation\DatabaseTemplate\Database> nuget pack
 Attempting to build package from 'Populated.Template.nuspec'.
@@ -235,7 +237,7 @@ When successful, you should see something similar to the following:
 
 ![MyGet Feed](https://edfi.atlassian.net/wiki/download/thumbnails/22774845/2018-11-12%2012_18_06-ed-fi%20-%20Packages%20_%20MyGet.png?version=1&modificationDate=1641861365673&cacheVersion=1&api=v2&width=771&height=99)
 
-In your MyGet feed you should see your new package. 
+In your MyGet feed you should see your new package.
 
 Additional detail:
 

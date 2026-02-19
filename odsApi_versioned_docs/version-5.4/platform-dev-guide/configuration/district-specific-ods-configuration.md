@@ -15,7 +15,7 @@ Some implementations find it useful to partition data based on school districts 
 The ODS / API can be configured for district-specific configuration through the following steps:
 
 * Update ApiSettings:Mode key in the appsettings.json of the EdFi.Ods.WebApi project to: `"Mode": "DistrictSpecific"`
-* Initialize the development environment for district-specific configuration using the `initdev` command as outlined in the [Getting Started Guide](../../getting-started/source-code-installation/index.md).
+* Initialize the development environment for district-specific configuration using the `initdev` command as outlined in the [Getting Started Guide](../../getting-started/source-code-installation/readme.md).
 * As an example: from a PowerShell prompt, navigate to the Ed-Fi-ODS-Implementation folder and run the `Initialize-PowershellForDevelopment.ps` script, followed by the `initdev` command passing InstallType and OdsTokens parameters. OdsTokens is a list of semicolon-separated district IDs.
 
 ```powershell
