@@ -30,7 +30,7 @@ repository.
     SDK](./client-developers-guide/using-code-generation-to-create-an-sdk.md)
     (C# Sample Application)
 * API Extensibility Sample Code - [Student
-    Transportation](./how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transportation-example.md)
+    Transportation](./how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transportation-example.mdx)
     and [Student
     Transcript](./how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transcript-example.md)
     (C# Source, SQL, XML)

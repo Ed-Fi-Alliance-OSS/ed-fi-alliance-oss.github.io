@@ -7,7 +7,7 @@ extend it.
 Before you begin:
 
 * This walkthrough assumes you have a working extension project.
-* This article uses the [student transportation extension](./how-to-extend-the-ed-fi-ods-api-student-transportation-example.md) as an example.
+* This article uses the [student transportation extension](./how-to-extend-the-ed-fi-ods-api-student-transportation-example.mdx) as an example.
 * This example assumes you have the NuGet CLI tool. You can follow the
 instructions for [Installing NuGet Client Tools](https://docs.microsoft.com/en-us/nuget/install-nuget-client-tools#nugetexe-cli).
 * This example assumes you have access to a MyGet feed.
@@ -30,10 +30,10 @@ Each step is outlined in detail, below.
 ### Step 1. Run CodeGen
 
 :::note
-This step is optional. If you have followed through [How To: Extend the Ed-Fi ODS / API - Student Transportation Example](./how-to-extend-the-ed-fi-ods-api-student-transportation-example.md) and have run initdev, code generation is already completed.
+This step is optional. If you have followed through [How To: Extend the Ed-Fi ODS / API - Student Transportation Example](./how-to-extend-the-ed-fi-ods-api-student-transportation-example.mdx) and have run initdev, code generation is already completed.
 :::
 
-After creating your extension project by following the example on [How To: Extend the Ed-Fi ODS / API - Student Transportation Example](./how-to-extend-the-ed-fi-ods-api-student-transportation-example.md),
+After creating your extension project by following the example on [How To: Extend the Ed-Fi ODS / API - Student Transportation Example](./how-to-extend-the-ed-fi-ods-api-student-transportation-example.mdx),
 
 Open a PowerShell session and navigate to Ed-Fi-ODS-Implementation folder
 and execute the following command to run code generation.
@@ -46,10 +46,10 @@ Invoke-CodeGen -Engine SQLServer -ExtensionPaths <source directory>\Ed-Fi-ODS-Im
 
 ![Image](https://edfi.atlassian.net/wiki/download/thumbnails/22774761/image2021-3-29_14-14-50.png?version=1&modificationDate=1641861361260&cacheVersion=1&api=v2&width=1280&height=443)
 
-### Step 2. Build Your Extension Project 
+### Step 2. Build Your Extension Project
 
 From a PowerShell session, run the following command to build your extension
-project. If you followed the example on [How To: Extend the Ed-Fi ODS / API - Student Transportation Example](./how-to-extend-the-ed-fi-ods-api-student-transportation-example.md) to create the EdFi.Ods.Extensions.SampleStudentTransportation project,
+project. If you followed the example on [How To: Extend the Ed-Fi ODS / API - Student Transportation Example](./how-to-extend-the-ed-fi-ods-api-student-transportation-example.mdx) to create the EdFi.Ods.Extensions.SampleStudentTransportation project,
 your extension will be in Ed-Fi-ODS-Implementation\Application folder.
 
 ```powershell
@@ -58,7 +58,7 @@ C:\Program Files\dotnet\dotnet.exe build <source directory>\Ed-Fi-ODS-Implementa
 
 ![Image](https://edfi.atlassian.net/wiki/download/thumbnails/22774761/image2020-11-4_13-44-34.png?version=1&modificationDate=1641861360863&cacheVersion=1&api=v2&width=1280&height=398)
 
-### Step 3. Create a NuGet Package 
+### Step 3. Create a NuGet Package
 
 Go to the location of NuGet.exe in your system and execute the following command
 in a command prompt. Make sure to update the contents of the nuspec file with

@@ -21,7 +21,7 @@ Implementing an extension involves making changes to the following components:
 * API Metadata
 
 Implementation details for each of these components are described below. In
-addition, see the [How To: Extend the ODS / API - Student Transportation Example](../../how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transportation-example.md) and [How To: Extend the Ed-Fi ODS / API - Student Transcript Example](../../how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transcript-example.md) articles for a complete walkthrough.
+addition, see the [How To: Extend the ODS / API - Student Transportation Example](../../how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transportation-example.mdx) and [How To: Extend the Ed-Fi ODS / API - Student Transcript Example](../../how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transcript-example.md) articles for a complete walkthrough.
 
 ## XSD Schema
 
@@ -50,7 +50,7 @@ database are skipped (by number). As described above, MetaEd IDE automatically
 handles naming and placement of these scripts. If you need to provide additional
 database objects to support your customization, they should be placed here as well.
 
-The [How To: Extend the ODS / API - Student Transportation Example](../../how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transportation-example.md) and [How To: Extend the Ed-Fi ODS / API - Student Transcript Example](../../how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transcript-example.md) articles explain how to set up security for your extensions using this
+The [How To: Extend the ODS / API - Student Transportation Example](../../how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transportation-example.mdx) and [How To: Extend the Ed-Fi ODS / API - Student Transcript Example](../../how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transcript-example.md) articles explain how to set up security for your extensions using this
 technique. You can also populate descriptors and education organizations using this
 technique.
 
@@ -129,7 +129,7 @@ convention for acronyms over two characters in length. For more information, see
 
 ## Removing Extensions
 
-Instructions on how to add Extensions can be found in the article [How To: Extend the Ed-Fi ODS / API - Student Transportation Example](../../how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transportation-example.md). Once added, Extensions can be removed from a development instance by a
+Instructions on how to add Extensions can be found in the article [How To: Extend the Ed-Fi ODS / API - Student Transportation Example](../../how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transportation-example.mdx). Once added, Extensions can be removed from a development instance by a
 generally inverse process:
 
 1. Remove any Extension Projects in Visual Studio. **Right-click** on the Project in the Solution Explorer, select **Remove**.

@@ -7,10 +7,9 @@ sidebar_position: 5
 This section contains How-To Guides and other instructional material useful to
 developers in implementing the Ed-Fi ODS / API.
 
+## Contents
 
-## Contents:
-
-* [How To: Extend the Ed-Fi ODS / API - Student Transportation Example](./how-to-extend-the-ed-fi-ods-api-student-transportation-example.md)
+* [How To: Extend the Ed-Fi ODS / API - Student Transportation Example](./how-to-extend-the-ed-fi-ods-api-student-transportation-example.mdx)
 * [How To: Extend the Ed-Fi ODS / API - Student Transcript Example](./how-to-extend-the-ed-fi-ods-api-student-transcript-example.md)
 * [How To: Deploy an Extension Plugin](./how-to-deploy-an-extension-plugin.md)
 * [How To: Create an Extension Plugin](./how-to-create-an-extension-plugin.md)

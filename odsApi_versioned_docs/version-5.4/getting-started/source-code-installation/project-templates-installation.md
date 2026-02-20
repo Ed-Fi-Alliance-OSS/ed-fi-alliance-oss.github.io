@@ -17,8 +17,6 @@ Note that the project templates have been updated for the v5.4 release. Develope
 
 * [EdFi.ProjectTemplates.Installer.vsix](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.ProjectTemplates.Installer/overview/5.4.396)
 
-
-
 ## Installation Steps
 
 The installation steps can be summarized as:
@@ -69,5 +67,4 @@ Now that you've installed the templates, you can find information on how to use 
 
 * [How To: Add API Composites to the Ed-Fi ODS / API Solution](../../how-to-guides/how-to-add-api-composites-to-the-ed-fi-ods-api-solution.md)
 * [How To: Add Profiles to the Ed-Fi ODS / API Solution](../../how-to-guides/how-to-add-profiles-to-the-ed-fi-ods-api-solution.md)
-* [How To: Extend the Ed-Fi ODS / API - Student Transportation Example](../../how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transportation-example.md)
-
+* [How To: Extend the Ed-Fi ODS / API - Student Transportation Example](../../how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transportation-example.mdx)

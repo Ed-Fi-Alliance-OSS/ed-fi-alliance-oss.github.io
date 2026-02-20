@@ -28,7 +28,7 @@ Documentation for the Ed-Fi ODS / API v5.4 for Suite 3 is viewable online:
 Here are some resource highlights for the ODS / API v5.4:
 
 * [How To: Extend the ODS / API
-    (Basic)](./how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transportation-example.md)
+    (Basic)](./how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transportation-example.mdx)
 * [How To: Extend the ODS / API
     (Advanced)](./how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transcript-example.md)
 * [How To: Add a

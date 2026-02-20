@@ -13,7 +13,7 @@ Before you begin:
     If you prefer to generate extended artifacts manually instead of using
     MetaEd, steps are listed in [Appendix A](./how-to-extend-the-ed-fi-ods-api-student-transcript-example.md) of this page.
 * This example assumes knowledge of the basic concepts described in the [How To: Extend the ODS / API - Student Transportation
-    Example](./how-to-extend-the-ed-fi-ods-api-student-transportation-example.md).
+    Example](./how-to-extend-the-ed-fi-ods-api-student-transportation-example.mdx).
     If you're new to the Ed-Fi technology stack, or if you haven't used MetaEd
     before, then we suggest you run through that example first.
 * This example assumes that the Ed-Fi ODS / API has been successfully
@@ -124,6 +124,7 @@ Domain Entity PostSecondaryOrganization
         documentation "An indication of acceptance."
         is required
 ```
+
 </details>
 
 We'll now create a Domain Entity source file, called **StudentAcademicRecordExtension**, to add our new elements to the existing Student Academic Record entity. Note
@@ -144,9 +145,10 @@ Domain Entity EdFi.StudentAcademicRecord additions
         documentation "The postsecondary institution to which information is being sent."
         is optional
 ```
+
 </details>
 
-#### 2d.2. In this step, we'll extend the Class Ranking entity to add our new Special Education Graduation Status element. 
+#### 2d.2. In this step, we'll extend the Class Ranking entity to add our new Special Education Graduation Status element
 
 The steps are generally the same as the ones you
 used to add the domain entities above.
@@ -169,9 +171,10 @@ Common EdFi.ClassRanking additions
         documentation "An indication of the special education graduation status of the student."
         is optional
 ```
+
 </details>
 
-#### 2d.3. In this step, we'll add the new Ed-Fi Descriptor entities.
+#### 2d.3. In this step, we'll add the new Ed-Fi Descriptor entities
 
 If you're new to Ed-Fi technology, it's worth understanding the Ed-Fi Descriptor
 pattern because it occurs throughout the model. In essence, Descriptors provide
@@ -201,6 +204,7 @@ Add an InstitutionLevel.metaed file.
 Descriptor InstitutionLevelDescriptor
     documentation "A classification of whether a postsecondary institution's highest level of offering is a program of 4-years or higher (4 year), 2-but-less-than 4-years (2 year), or less than 2-years."
 ```
+
 </details>
 
 Add a SpecialEducationGraduationStatus.metaed file.
@@ -214,6 +218,7 @@ Add a SpecialEducationGraduationStatus.metaed file.
 Descriptor SpecialEducationGraduationStatusDescriptor
     documentation "An indication of the special education graduation status of the student."
 ```
+
 </details>
 
 Add a SubmissionCertification.metaed file.
@@ -227,9 +232,10 @@ Add a SubmissionCertification.metaed file.
 Descriptor SubmissionCertificationDescriptor
     documentation "An indication of the certification of the reported data."
 ```
+
 </details>
 
-#### 2d.4. In this step, we'll add the new Interchange file.
+#### 2d.4. In this step, we'll add the new Interchange file
 
 If you want to bulk load this extension, you need to create an interchange file.
 
@@ -245,6 +251,7 @@ Interchange StudentTranscript
     documentation "The Student Transcript interchange describes transcript information for a student from schools and/or school districts. The transcript is a record of courses and grades."
     domain entity PostSecondaryOrganization
 ```
+
 </details>
 
 At this point, your project in the MetaEd IDE should look like the following:
@@ -435,6 +442,7 @@ BEGIN
     END IF;
 END $$;
 ```
+
 </details>
 
 ### Preventing Resource Name Conflicts
@@ -446,7 +454,7 @@ the resource, but instead uses the ClaimName. To prevent possible naming
 conflicts, the claim name's URI value should include the schema representation, using
 the following format:
 
-http://ed-fi.org/ods/identity/claims/{schema}/{resourceName}
+`<http://ed-fi.org/ods/identity/claims/{schema}/{resourceName}>`
 
 The URI representation of the schema name should be derived by splitting the
 terms in the name of the extension, inserting hyphens and converting to lower case.
@@ -459,9 +467,9 @@ singularized name of the resource (e.g., "postSecondaryOrganization" not
 "PostSecondaryOrganization" or "postSecondaryOrganizations").
 
 Note that in 0001-PostSecondaryOrganization_No_Further_Auth_Required.sql script
-above, the resulting ClaimName value is "http://ed-fi.org/ods/identity/claims/sample-student-transcript/postSecondaryOrganization".
+above, the resulting ClaimName value is `<http://ed-fi.org/ods/identity/claims/sample-student-transcript/postSecondaryOrganization>`.
 
-## Step 7. Run Code Generation and Verify Changes 
+## Step 7. Run Code Generation and Verify Changes
 
 Save all modified files, close Ed-Fi-ODS.sln, and re-run the code generation
 steps outlined in the [Getting Started Guide](../getting-started/readme.md) (i.e., from a PowerShell prompt run `Initialize-PowershellForDevelopment.ps1` script, followed by the `initdev` command). Then, run the application and view the Ed-Fi ODS / API in the Swagger UI.
@@ -615,6 +623,7 @@ BEGIN
     END IF;
 END $$;
 ```
+
 </details>
 
 ### Step 7. Run Initdev
@@ -628,6 +637,7 @@ UI. The following new API resource should be visible:
 ![Image](https://edfi.atlassian.net/wiki/download/attachments/22774579/extension%20swagger2.png?version=1&modificationDate=1641861359347&cacheVersion=1&api=v2)
 
 ## Downloads
+
 The following GitHub links contain source files for this extensibility sample.
 
 * [Student Transcript MetaEd Source](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v5.4/Samples/Extensions/StudentTranscript/StudentTranscriptMetaEd)
