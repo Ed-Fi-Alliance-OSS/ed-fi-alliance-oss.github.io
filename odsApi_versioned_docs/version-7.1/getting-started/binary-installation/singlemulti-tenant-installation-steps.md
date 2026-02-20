@@ -460,7 +460,7 @@ Install-EdFiOdsSwaggerUI @parameters
 The Admin API provides an API-based programmatic interface for platform hosts to
 administer and manage non-sandbox instances of the Ed-Fi ODS / API. Follow the
 installation steps
-[here](https://edfi.atlassian.net/wiki/display/ADMINAPI/Getting+Started).
+[here](/reference/admin-api/getting-started/).
 Alternatively, ODS instances can be configured by database administrators via
 SQL queries as outlined in the article [How To: Configure ODS
 Instances](../../how-to-guides/how-to-configure-ods-instances.md).
