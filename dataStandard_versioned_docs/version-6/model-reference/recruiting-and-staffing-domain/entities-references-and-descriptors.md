@@ -30,6 +30,7 @@ hide_table_of_contents: true
 | Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
 | ApplicantProfile <br /> Application | AcademicSubject | The academic subject for which the (HighNeeds) application is made, teaching field required, or "highly qualified" field of the applicant. | Local | Yes | Yes |     |
+| ApplicantProfile | AddressCharacteristic | The address characteristic mainly to reflect if Primary and type of communication to be received, e.g.: Primary, Validated, Gets Copy of Report, Discipline Correspondence. |     |     |     |     |
 | ApplicantProfile | AddressType | The type of address listed for an individual or organization. For example: (Physical Address, Mailing Address, Home Address, etc.) | Orthodox | Yes | Yes |     |
 | ApplicationEvent | ApplicationEventResult | The recommendation, result or conclusion of the application event. |     |     |     |     |
 | ApplicationEvent | ApplicationEventType | Description of the application event. |     |     |     |     |
@@ -44,15 +45,18 @@ hide_table_of_contents: true
 | ApplicantProfile | Disability | A disability category that describes a individual's impairment.  | Orthodox | Yes | Yes |     |
 | ApplicantProfile | DisabilityDesignation | Whether the disability is IDEA, Section 504, or other disability designation.  | Orthodox |     | Yes |     |
 | ApplicantProfile | DisabilityDeterminationSourceType | The source that provided the disability determination. | Orthodox |     | Yes |     |
+| ApplicantProfile | EconomicDisadvantage | An indication of inadequate financial condition of an individual's family, as determined by family income, number of family members/dependents, participation in public assistance programs, and/or other characteristics considered relevant by federal, state, and local policy. | Orthodox |     |     |     |
 | ApplicantProfile | ElectronicMailType | The type of email listed for an individual or organization. (For example: Home/Personal, Work, etc.) | Standard |     |     |     |
 | RecruitmentEventAttendance | GradeLevel | The set of grade levels for which the individual's assignment is responsible. | Orthodox | Yes | Yes |     |
 | ApplicantProfile | GradePointAverageType | The system used for calculating the grade point average for an individual. | Standard |     |     |     |
 | Application | HireStatus | Indicates the current status of the application for hire. |     |     |     |     |
 | Application | HiringSource | The source for the application. |     |     |     |     |
+| ApplicantProfile | IdentificationDocumentUse | The primary function of the document used for establishing identity. | Orthodox |     |     |     |
 | ApplicantProfile | Language | A specification of which written or spoken communication is being used. | Orthodox | Yes | Yes | Yes |
 | ApplicantProfile | LanguageUse | A description of how the language is used (e.g. Home Language, Native Language, Spoken Language). | Orthodox |     |     |     |
 | ApplicantProfile | LevelOfEducation | The extent of formal instruction an individual has received. | Orthodox |     |     |     |
 | ApplicantProfile | Locale | A general geographic indicator that categorizes U.S. territory (e.g., City, Suburban). | Standard |     |     |     |
+| ApplicantProfile | PersonalInformationVerification | The category of the document relative to its purpose. | Orthodox |     |     |     |
 | ProfessionalDevelopmentEvent | ProfessionalDevelopmentOfferedBy | A code describing an organization that is offering a specific professional development. |     |     |     |     |
 | ApplicantProfile | Race | The general racial category which most clearly reflects the individual's recognition of his or her community or with which the individual most identifies. The way this data element is listed, it must allow for multiple entries so that each individual can specify all appropriate races. | Standard |     |     |     |
 | RecruitmentEventAttendance | RecruitmentEventAttendeeType | Reflects the type of prospect, such as EPP Applicant, Hire, or Mentor Teacher. |     |     |     |     |
