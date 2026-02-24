@@ -4,168 +4,135 @@ sidebar_position: 1
 
 # Assessment Domain - Overview
 
+The Ed-Fi Assessment domain was intentionally designed to accommodate the significant variability inherent in K–12 assessment data. Assessment providers differ widely in structure, purpose, scoring models, and reporting conventions, and these characteristics continue to evolve over time. To address this diversity, the Assessment domain adopts a flexible conceptual model that enables a broad range of assessment types, formative, interim, summative, diagnostic, and specialized measures to be faithfully represented. Rather than enforcing a rigid or prescriptive structure, the domain allows exam data from disparate assessment frameworks to be modeled in a consistent yet adaptable way, ensuring interoperability while preserving the integrity and intent of each assessment’s results.
+
+This overview introduces the Ed-Fi Assessment domain’s design and its approach to conceptualizing assessment the structures and student performance data across a diverse set of assessment exam models.
+
+Once the conceptual structure is clear, review Assessment Best Practices and Use Cases. Detailed technical guidance for assessment implementation is available in the [Technology Providers Implementation Playbook](/getting-started/provider-playbook/).  
+
 ## Key Entities
 
 The key entities in the Assessment domain are:
 
-* An Assessment entity that describes assessments along with associated
-    metadata.  The ObjectiveAssessment entity describes the structure of the
-    assessment subcomponents or subtests that are separately scored or
-    administered. The AsessmentItem represent the individual questions for cases
-    when the student's score on each question is reported.
-* A LearningStandard entity that drives the curriculum and the assessments.
-    The ObjectiveAssessment and AssessmentItem may reference the learning
-    standards which they assess.
-* A StudentAssessment entity that holds assessment scores/results and
-    administration attributes for a student's attempt at the assessment.  
+* Assessment describes assessments and their metadata, including the overall structure and scoring.
+* ObjectiveAssessment describes subcomponents or subtests that may have their own score, performance levels, or academic subject.
+* AssessmentItem represents the individual questions that comprise the exam. AssessmentItem is used when the score report includes—and use cases call for—a
+    student’s performance on each item.
+* LearningStandard ties the assessment to the curricular standards assessed and models the hierarchical organization of learning standards that are used to
+    drive the assessment. ObjectiveAssessment and AssessmentItem may also reference LearningStandard.
+* StudentAssessment represents a student’s performance or score results for a specific assessment administration .
 
 ## Key Concepts
 
-The assessment model is flexible enough to convey results from complex tests
-such as the SAT and ACT exams, large summative assessments such as state-level
-standardized tests, formative assessments, and simple tests such as classroom
-benchmark assessments or quizzes.
-
-The key concepts include the following:
-
-* The overall domain is primarily designed to collect and exchange data that
-    is useful in the interpretation of student assessment results at a classroom
-    and school-level. The domain is therefore not designed to deliver on use
-    cases such as:
-
-  * to recreate assessment instruments fully or provide for assessment or
-        assessment item portability across systems
-  * to capture precise algorithmic or technical details of scoring systems
-  * to gather all data generated from a student's interaction with an
-        assessment instrument.
-* On this last point, note that there is some focus on gathering student
-    inputs during the assessment process, but those are generally limited: the
-    assumption is that a  "replay" or more full account of student interactions
-    (for example with a complex question or technology-enabled item) would be
-    better accomplished by some facility on the host system and that therefore
-    the focus is on providing for such linkages to other systems in these cases.
-* The LearningStandard entity models the hierarchical organization of learning
-    standards for skills and comprehension that are used to drive instruction
-    and assessment.
-* The ObjectiveAssessment entity reflects a subset of items on an assessment
-    that may have its own score, performance levels, or academic subject and
-    that can be tied to learning standards.  Objective assessments, when used,
-    reflect the subcomponents or subtests of the assessment, and may be arranged
-    hierarchically into multiple levels as required.
+The Assessment model is designed to collect and exchange data that is useful to education professionals in interpreting student performance at the classroom, school, and district levels. It is structured to allow implementers to define and load information in a way that most closely reflects and preserves the original exam’s structure, hierarchy, curricular or learning standard alignment and scoring protocols. It is flexible enough to convey the structure and results for a variety of exams, ranging from developmental screeners to state summative exams.
 
 ## Parallel Assessment Metadata and Student Results Data
 
-The Ed-Fi data model for assessments have parallel structures, depicted below,
-to:
+The  Assessment data model defines assessment metadata (Assessment) and student results (StudentAssessment) data into parallel structures. Assessment reflects the assessment’s structure and key attributes and StudentAssessment provides the results for students taking the assessment. Every assessment will include at least one Assessment instance that provides the assessment metadata. Every attempt by a student taking the assessment will have a StudentAssessment instance providing key details about the attempt and score(s).
 
-1. Define the metadata for the assessment in terms of its structure and key
-    attributes
-2. Provide the results from students' taking the assessment
+Likewise, when an assessment is organized into subcomponents or subtests that score specific skills or competencies, this more granular structure is defined by ObjectiveAssessment. This may be expressed as a single sublevel or multiple sublevels that are organized hierarchically, as needed. For each defined ObjectiveAssessment, the student’s results are reflected in StudentAssessment.StudentObjectiveAssessment.
 
-Every assessment will minimally have an Assessment instance providing the
-assessment metadata.  Similarly, every attempt by a student taking the
-assessment will minimally have a StudentAssessment instance, providing key
-attributes about the attempt and the highest-level assessment score(s).
+If an assessment report includes results for individual questions, the metadata defining each question is reflected as an AssessmentItem instance. For each AssessmentItem defined in the metadata, the student’s results are reflected in parallel instances of the complex attribute StudentAssessment.StudentAssessmentItem.
 
-If an assessment is organized into subcomponents or subtests that score specific
-skills or competencies, the structure is defined by ObjectiveAssessment
-instances that may be organized into a single sublevel, or may be organized
-hierarchically, as needed.  For each ObjectiveAssessment that is defined in the
-metadata, the student's results are reflected in  separate parallel instances of
-the complex attribute StudentAssessment.StudentObjectiveAssessment.
+![StudentAssessment](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Assessment_StudentAssessment.png)
 
-If an assessment reports results on individual questions, the metadata defining
-those questions are reflected as AssessmentItem instances.  For each
-AssessmentItem that is defined in the metadata, the student's results are
-reflected in parallel instances of the complex attribute
-StudentAssessment.StudentAssessmentItem.
+## Hierarchical Modeling of Assessments and Objectives
 
-![Assessment Explained](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Assessment%20Explained.png)
+To accommodate such a range of assessment approaches, as well as the granularity of a variety of use cases, assessment vendors and implementers need to leverage the model’s hierarchical structure to nest objectives within higher-level concepts and items within objectives. The Assessment entity represents the top-level assessment definition and ObjectiveAssessment represents the skill areas. This structure is recursive, so there can be any number of levels of ObjectiveAssessments.
 
-[_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Assessment%20Explained.png)
+Many assessments provide multiple scores or result sets. For example, a single “Reading” assessment may test multiple skill areas, including “Reading Comprehension”, “Accuracy and Fluency”, and “Phonemic Awareness”. These would be defined as ObjectiveAssessments and associated with the highest-level Assessment.
 
-## Hierarchical Model
+![ObjectiveAssessment](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Assessment_ObjectiveAssessment.png)
 
-The Ed-Fi data model for assessments contains a number of entities and reference
-patterns. While its scope may make it a bit imposing to newcomers, understanding
-a few design principles enable it to be easily understood and adopted.
+Domain Key entities:
 
-### Assessment and ObjectiveAssessment Example
+![AssessmentKeyEntities](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Assessment_KeyEntities.png)
 
-Many assessments are multi-tier in the sense that they provide multiple scores
-or result sets for each assessment. An example would be a single "reading"
-assessment that tested multiple skill areas, such as "Reading Comprehension,"
-"Accuracy and Fluency," "Phonemic Awareness," and so forth.
+[_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Assessment_KeyEntities.png)
 
-In the Assessment domain, the top-level assessment is an Assessment entity and
-the skill areas are ObjectiveAssessment entities. This structure is recursive,
-so that there can be any number of levels of
-ObjectiveAssessments.
+The Assessment hierarchy can be imposing to newcomers. Additional design principles and examples are available under [Assessment Domain Best Practices and Use Cases](best-practices.md).
 
-![ObjectiveAssessments](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/ObjectiveAssessments.png)
+A student’s results on the assessment can be modeled in the StudentAssessment entity with parallel StudentObjectiveAssessment complex attributes, each of which has references back to its parent or peer entities.
 
-Once a student takes an assessment, the results can be modeled in the
-StudentAssessment entity with parallel StudentObjectiveAssessment complex
-attributes, each of which has references back to its parent or peer entities.
+![StudentAssessment](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Assessment_StudentAssessment.png)
 
-![StudentObjectiveAsessments](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/StudentObjectiveAsessments.png)
+## Providing Curricular Context through LearningStandard
 
-[_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/StudentObjectiveAsessments.png)
+The LearningStandard entity enables the ObjectiveAssessment to be mapped to an education standard. The standard may be created, defined, and governed at a national level by a consortium of educators, by a state department of education or governing body, or by the local district. LearningStandards should also be defined in Ed-Fi in a way that accurately reflects their hierarchical definition, and the analyst should take care to ensure that the selected standard is the correct match for each level of ObjectiveAssessment.
 
-### Support for Mapping to Local Learning Standards
+The relationship looks like this:
 
-Field implementation has shown that, while school systems will intake into their
-systems the results of student assessments in areas like "Reading Comprehension"
-(in other words, the ObjectiveAssessment entity with student results held in the
-StudentObjectiveAssessment entity), they also commonly need to map those
-"Reading Comprehension" results to learning benchmarks. The LearningStandard
-entity enables the ObjectiveAssessment to be mapped to an education standard.
-Further, the LearningStandard entity may be a locally defined benchmark or a
-formal, external learning standard, such as one provided by the state or Common
-Core State Standards.
+![ObjectiveAssessmentLearningStandard](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Assessment_ObjectiveAssessmentLearningStandard.png)
 
-The structure looks like this:
+LearningStandard modeling aligns to the standards guidance used by the assessment creator and depends upon the purpose of the exam. Learning standards are also often structured hierarchically, beginning with top-level concepts and moving down to more specific curricular points.
 
-![LearningStandards](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/LearningStandards.png)
+## Assessment Identifiers
 
-[_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/LearningStandards.png)
+"Identifiers" were introduced into the Assessment domain as partial surrogate keys to allow the source systems employed by assessment organizations to use their internally unique identifiers instead of adhering to a natural key system created by the education organizations. Namespace ensures that the identifiers created by an assessment organization are unique within a district or state ODS.
+The intent was to allow Assessment to be identified by:
 
-The source of the data is typically as follows:
+1. An internal key for the assessment, potentially even a computer-generated number that is used to populate the data into the API.
+2. A namespace reflecting the uri for the assessment organization.
+This pattern of an Identifier + Namespace was introduced for Assessment, ObjectiveAssessment, and StudentAssessment.
+However, assessment scores are often obtained from results files that may not directly contain metadata about the assessment or objective assessments.  These files are loaded into the ODS in batch mode. These loaders must create identifiers by convention and thus there is great amount of variance and in some cases misunderstanding on how best to do this. There is a temptation to create complex patterns of identifiers, **but this is not necessary**.
 
-|     |     |     |
-| --- | --- | --- |
-|     | **Ed-Fi Entity** |     |
-|     | **ObjectiveAssessment** | **LearningStandard** |
-| **Who provides ("owns") the entity data?** | The assessment provider | A third party |
-| **Example of a provider** | "DIBELS" | "Common Core State Standards" |
+To best understand, it is important to consider the key structures, as follows:
 
-## Sample Mapping
+| Entity | Composite Key |
+| --- | --- |
+| Assessment | _AssessmentIdentifier_ Namespace |
+| ObjectiveAssessment | ·Assessment reference <br /> AssessmentIdentifer _Namespace_ IdentificationCode |
+| AssessmentItem | ·Assessment reference <br /> AssessmentIdentifer _Namespace_ IdentificationCode |
+| StudentAssessment | ·Assessment reference <br /> AssessmentIdentifer _Namespace_ Student reference _StudentUniqueId_ StudentAssessmentIdentifier |
 
-For assessment vendors, it may be helpful to review a sample score report and
-see how the individual elements would map to the Ed-Fi Assessment model. The
-following is a fictitious math assessment score report, Math Whale followed by a
-breakdown of where we would expect the different data points to land within the
-Assessment model.
+### Assessment Identifier
 
-For assessment vendors, it may be helpful to review a sample score report and
-see how the individual elements would map to the Ed-Fi Assessment model. The
-following is a fictitious math assessment score report, Math Whale followed by a
-breakdown of where we would expect the different data points to land within the
-Assessment model. Additional information for Assessment Vendors can be found in
-the
+The composite key for Assessment is:
 
-### A Sample Score Report
+1. Namespace is the uri of the source assessment organization (ex. the namespace “[uri://act.org]” for the ACT exam).
+2. AssessmentIdentifer needs to uniquely identify the specific assessment within the context of the assessment organization, consisting of:
+    * Internal ID for the assessment by the assessment organization, or
+    * Short identifier for the assessment that is unique within the organization across the various assessments they offer. For example, there could be “ACT”
+      and “ACT Practice” assessments that are offered.
+    * Optionally a string representing the version of the assessment, as it may be pertinent such as:
+        * Version number, such as 3.2; or
+        * Year or school year, such as 2021
+    * NOT the assessment organization, since this is reflected in the namespace
 
-A typical classroom score report (for a fictitious provider) might look like
-this:
+### ObjectiveAssessment IdentificationCode
 
-![mathwhale score report](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/mathwhale.png)
+The composite key for ObjectiveAssessment is:
 
-[_Figure 1: a sample score report (click to expand)_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/mathwhale.png)
+1. Namespace is the uri of the source assessment organization (ex. the namespace “[uri://act.org]” for the ACT exam).
+2. AssessmentIdentifer is the unique identifier for the specific assessment within the context of the assessment organization.
+3. IdentificationCode for the ObjectiveAssessment needs to uniquely reflect the “subtest” in the context of the AssessmentIdentifier and the Namespace.
+    * Internal ID for the objective assessment by the assessment organization, or
+    * Reflect the topic of the objective assessment, for example Mathematics, Reading, Science, Writing, etc.
+    * NOT the assessment or assessment organization, since that is reflected in the AssessmentIdentifer and the Namespace.
 
-A mapping of the main elements might look like this (you will see a few new
-elements appear here):
+### AssessmentItem IdentificationCode
 
-![mathwhale annotated](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/mathwhale-annotated.png)
+The composite key for AssessmentItem is:
 
-[_Figure 2: mappings for sample score report (click to expand)_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/mathwhale-annotated.png)
+1. Namespace is the uri of the source assessment organization (ex. the namespace “[uri://act.org]” for the ACT exam).
+2. AssessmentIdentifer is the unique identifier for the specific assessment within the context of the assessment organization.
+3. IdentificationCode for the AssessmentItem needs to uniquely reflect the item in the context of the AssessmentIdentifier and the Namespace. This is typically either:
+    * Internal ID for the assessment item by the assessment organization, or
+    * A unique identifier of the item from the test bank; or
+    * A generated number, potentially even a sequence number
+
+### StudentAssessment IdentificationCode  
+
+The composite key for StudentAssessment is:
+
+1. Namespace is the uri of the source assessment organization (ex. the namespace “[uri://act.org]” for the ACT exam).
+2. AssessmentIdentifer is the unique identifier for the specific assessment within the context of the assessment organization.
+3. StudentReference consisting of the StudentUniqueID
+4. StudentAssessmentIdentifier for the student’s results from an Assessment. The only uniqueness requirement is to distinguish between multiple times the student takes the same assessment.  
+    * Possible Values
+        * A booklet (if paper) or session ID (if electronic), or
+        * The assessment vendor’s ID for the student, or
+        * The ID for the student obtained from rostering, or
+        * An internal ID for the student’s results for this administration
+    * NOT the assessment or assessment organization, since that is reflected in the AssessmentIdentifer and the Namespace.
+    * NOT the Ed-Fi StudentUniqueID since it is already part of the key.
