@@ -43,31 +43,31 @@ export default {
       ],
     },
     {
-      productName: 'Focus School Software',
-      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/Focus_logo.png',
-      website: 'https://focusschoolsoftware.com/',
-      validThrough: 'February 19, 2027',
-      verifyingAgencies: ['Higley Unified School District, AZ', 'Glendale Union High School District, AZ'],
-      versionCompatibility: 'Conformance testing met with version 11 and 12',
+      productName: 'EduPoint Synergy',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/EduPointLogo_RGB-400x120.png',
+      website:
+        'http://www.edupoint.com/Products/Student-Information-Management',
+      validThrough: 'April 28, 2026',
+      verifyingAgencies: ['Lincoln Public Schools, NE', 'Higley Unified School District, Gilbert, AZ', 'Phoenix Union High School District, AZ'],
+      versionCompatibility: 'Conformance testing met with version 2023',
       availability: 'Available to any agency (all sizes) in the U.S.',
       documentation: {
-        'Availability Statement':
-          'https://edfi.atlassian.net/wiki/download/attachments/23694066/Focus%20Ed-Fi%20v4%20Availability%20Statement%20-%20Signed.pdf?version=1&modificationDate=1688731324490&cacheVersion=1&api=v2',
-        Mappings:
-          'https://edfi.atlassian.net/wiki/download/attachments/23694066/Field%20Mappings.xlsx?version=2&modificationDate=1663104029430&cacheVersion=1&api=v2',
+        'Availability Statement':'https://edfi.atlassian.net/wiki/download/attachments/23702484/Edupoint%20Ed-Fi%20Certification%20-%20Availibility%20Statement%20V2.pdf?api=v2',
+        'Pricing Statement':'https://edfi.atlassian.net/wiki/download/attachments/23702484/Edupoint%20Ed-Fi%20Certification%20-%20Pricing%20Statement.pdf?api=v2',
+        'Mappings':'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Edupoint/Edupoint%20-%20Base%20Ed-Fi%20Certification%20Mappings.xlsx',
       },
       supportResources: [
         {
           name: 'Usage overview',
-          link: 'https://edfi.atlassian.net/wiki/download/attachments/23694066/Usage%20Overview.pdf?version=1&modificationDate=1660926004610&cacheVersion=1&api=v2',
+          link: 'https://edfi.atlassian.net/wiki/download/attachments/23694066/edupoint_Usage%20narrative.docx?version=1&modificationDate=1673960206427&cacheVersion=1&api=v2',
         },
         {
-          name: 'Enablement & configuration guide',
-          link: 'https://focus.screenstepslive.com/s/admins/m/sis/l/1485666-ed-fi-setup',
+          name: 'Edupoint customer FTP site',
+          link: 'ftp://ftp.edupoint.com/',
         },
         {
-          name: 'How to get support',
-          link: 'https://focusschoolsoftware.zendesk.com/hc/en-us',
+          name: 'Edupoint customer support site',
+          link: 'https://support.edupoint.com/',
         },
       ],
     },
