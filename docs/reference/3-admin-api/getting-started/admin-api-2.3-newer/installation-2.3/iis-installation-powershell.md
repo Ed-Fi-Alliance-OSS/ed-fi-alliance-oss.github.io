@@ -46,7 +46,7 @@ see [about_Execution_Policies](http://go.microsoft.com/fwlink/?LinkID=135170).
   binaries and installer scripts for deployment to IIS.
 
 * [EdFi.Suite3.ODS.AdminApi
-     v2.3](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.Suite3.ODS.AdminApi/overview/2.3.0)
+     v2.3](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.Suite3.ODS.AdminApi/overview/2.3.1)
 
 :::
 
@@ -70,44 +70,62 @@ with your configuration details. If a value is not present for any of the
 parameters, it will use its default value.
 
 :::info note:
-Editing Items 2(a, b) below are mandatory for installation to
+Editing Items 2(a, b) and 3(c, d, e) below are mandatory for installation to
 complete.
 :::
 
 1. Configure `$dbConnectionInfo`. These values are used to construct the
     connection strings.
-    1. `Server`. The name of the database server. For a local server, we can use
+
+    a. `Server`. The name of the database server. For a local server, we can use
         "(local)" for SQL and "localhost" for PostgreSQL.
 
-    2. `Engine.` Admin API supports SQL and PostgreSQL database engines. So
+    b. `Engine.` Admin API supports SQL and PostgreSQL database engines. So
         setting up the `Engine` will decide which database engine to be used.
         Valid values are "SQLServer" and "PostgreSQL".
-    3. `UseIntegratedSecurity.` Will either be "$true" or "$false".
+
+    c. `UseIntegratedSecurity.` Will either be "$true" or "$false".
+
         1. If you plan to use Windows authentication, this value will be "$true"
+
         2. If you plan to use SQL Server/ PostgreSQL server authentication, this
             value will be "$false" and the Username and `Password` must be
             provided.
-    4. `Username`. Optional. The username to connect to the database.
+
+    d. `Username`. Optional. The username to connect to the database.
         If `UseIntegratedSecurity` is set to $true, this entry is not needed
-    5. `Password`. Optional. The password to connect to the
+
+    e. `Password`. Optional. The password to connect to the
         database. If `UseIntegratedSecurity` is set to $true, this entry is not
         needed
-    6. `Port.` Optional. Used to specify the database server port, presuming the
+
+    f. `Port.` Optional. Used to specify the database server port, presuming the
         server is configured to use the specific port.
+
 2. Configure `$authenticationSettings`. These values are mandatory for
     authentication process.
 
-               a. `SigningKey:` must be a Base64-encoded string
-               b. `Authority and IssuerUrl:` should be the same URL as your application
-               c. `AllowRegistration:` to true allows unrestricted registration of new Admin API clients.
+    a. `SigningKey:` must be a Base64-encoded string
 
-     3. Configure `$p`. This is the variable used to send all the information to
-     the installation process.
+    b. `Authority and IssuerUrl:` should be the same URL as your application
 
-1. 1. `ToolsPath`. Path for storing installation tools, e.g., nuget.exe.
+    c. `AllowRegistration:` to true allows unrestricted registration of new Admin API clients.
+
+3. Configure `$p`. This is the variable used to send all the information to
+     installation process.
+
+    a. `ToolsPath`. Path for storing installation tools, e.g., nuget.exe.
         Defaults to "C:/temp/tools"
-   2. `PackageVersion`. Optional. If not set, will retrieve the latest full
+
+    b. `PackageVersion`. Optional. If not set, will retrieve the latest full
         release package.
+
+    c. `AdminApiMode`. Required. The Admin API version, could be v1 or v2
+
+    d. `StandardVersion` Required. For v1 use 4.0.0, for v2 5.2.0 or 6.0.0
+
+    e. `EncryptionKey` Required. Use the same as your ODS/API appsettings
+       called OdsConnectionStringEncryptionKey
 
 Database engine specific connection information ($dbConnectionInfo):
 
@@ -149,15 +167,23 @@ $authenticationSettings = @{
     AllowRegistration = $false
 }
 
+# IMPORTANT: This key MUST match the OdsConnectionStringEncryptionKey
+# used in your Ed-Fi ODS / API installation. See:
+# https://docs.ed-fi.org/reference/ods-api/getting-started/binary-installation/singlemulti-tenant-installation-steps/#prepare-installation-script
+$odsEncryptionKey = "Base64-encoded string" 
+
 $packageSource = Split-Path $PSScriptRoot -Parent
 $adminApiSource = "$packageSource/AdminApi"
 
 $p = @{
     ToolsPath = "C:/temp/tools"
+    AdminApiMode = "v2"
     DbConnectionInfo = $dbConnectionInfo
-    PackageVersion = '2.3.0'
+    PackageVersion = '2.3.1.0'
     PackageSource = $adminApiSource
     AuthenticationSettings = $authenticationSettings
+    StandardVersion = '5.2.0'
+    EncryptionKey = $odsEncryptionKey
 }
 ```
 
@@ -173,16 +199,24 @@ $authenticationSettings = @{
     AllowRegistration = $false
 }
 
+# IMPORTANT: This key MUST match the OdsConnectionStringEncryptionKey
+# used in your Ed-Fi ODS / API installation. See:
+# https://docs.ed-fi.org/reference/ods-api/getting-started/binary-installation/singlemulti-tenant-installation-steps/#prepare-installation-script
+$odsEncryptionKey = "Base64-encoded string" 
+
 $packageSource = Split-Path $PSScriptRoot -Parent
 $adminApiSource = "$packageSource/AdminApi"
 
 $p = @{
     IsMultiTenant = $true
     ToolsPath = "C:/temp/tools"
+    AdminApiMode = "v2"
     DbConnectionInfo = $dbConnectionInfo
-    PackageVersion = '2.3.0'
+    PackageVersion = '2.3.1.0'
     PackageSource = $adminApiSource
     AuthenticationSettings = $authenticationSettings
+    StandardVersion = '5.2.0'
+    EncryptionKey = $odsEncryptionKey
     Tenants = @{
             Tenant1 = @{
                 AdminDatabaseName = "EdFi_Admin_Tenant1"
@@ -281,5 +315,5 @@ Continue on to [First-Time Configuration for Admin API
   binaries and installer scripts for deployment to IIS.
 
 * [EdFi.Suite3.ODS.AdminApi
-     v2.3](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.Suite3.ODS.AdminApi/overview/2.3.0)
+     v2.3](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.Suite3.ODS.AdminApi/overview/2.3.1)
 :::
