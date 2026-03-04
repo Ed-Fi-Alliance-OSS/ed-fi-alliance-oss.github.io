@@ -125,7 +125,7 @@ complete.
     d. `StandardVersion` Required. For v1 use 4.0.0, for v2 5.2.0 or 6.0.0
 
     e. `EncryptionKey` Required. Use the same as your ODS/API appsettings
-       called OdsConnectionStringEncryptionKey
+       called `OdsConnectionStringEncryptionKey`
 
 Database engine specific connection information ($dbConnectionInfo):
 
