@@ -40,6 +40,12 @@ a production deployment of the Ed-Fi Resources API. The Platform includes:
 
 ### Ed-Fi ODS/API
 
+:::tip
+
+The Ed-Fi ODS/API application is being phased out with 2028-2029 as the final planned year of support. It will be replaced by the [Data Management Service](#data-management-service).
+
+:::
+
 | Version                                       | Timeline                             | Data Standard(s)    |
 | --------------------------------------------- | ------------------------------------ | ------------------- |
 | [6.2.x](/reference/ods-api/6.2)               | Active through 2025-2026 school year | 4.0.0               |
@@ -62,9 +68,8 @@ fixed in 2.2.1 rather than creating a 2.1.1 release.
 
 :::
 
-With version 2.3 (October, 2025), ODS Admin API version 2 will consolidate
-functionality from version 1, allowing the single application to support both
-ODS/API 6.x and ODS/API 7.x.
+ODS Admin API version 2.3 consolidates functionality from version 1, allowing
+the single application to support either ODS/API 6.x and ODS/API 7.x. 
 
 | Version        | Timeline                             | Supports ODS/API |
 | -------------- | ------------------------------------ | ---------------- |
@@ -72,17 +77,16 @@ ODS/API 6.x and ODS/API 7.x.
 | 2.0.0 - 2.2.x  | Active through 2028-2029 school year | 7.x.y            |
 | 2.3.y on       | Active through 2028-2029 school year | 6.x.y, 7.x.y     |
 
-
 ### Ed-Fi Admin App
 
 The legacy ODS Admin App user interface supports ODS/API 5.x and 6.x. It is now
 in "maintenance mode", meaning it will only receive critical updates. Formal
 support [will end June 30, 2025](./notifications/admin-app-to-exchange.md).
 
-Coming soon (October 2025), the new Ed-Fi Admin App user interface will support
-ODS/API 6.x and ODS/API 7.x, and it will be extended to support the new Data
-Management Service (DMS) in 2026. This application provides an all new front-end
-application paired with the ODS Admin API on the backend.
+The new Ed-Fi Admin App user interface was released in December 2025.
+This application provides an all new front-end application paired with the
+ODS Admin API on the backend. It supports ODS/API 6.x and ODS/API 7.x, and
+it will be extended to support the new Data Management Service (DMS) in 2026. 
 
 | Version | Timeline                             | Supports ODS/API |
 | ------- | ------------------------------------ | ---------------- |
@@ -111,10 +115,10 @@ This is the future replacement for the Ed-Fi ODS/API. See
 [Ed-Fi ODS/API and Data Management Service FAQ](./api-faq.md) for more
 information.
 
-| Version           | Timeline                                 | Data Standard(s) |
-| ----------------- | ---------------------------------------- | ---------------- |
-| Release Candidate | Summer 2025                              | 5.2.0            |
-| 1.0               | Coming Q1 2026 for school year 2026-2027 | 6.0, others      |
+| Version           | Timeline             | Data Standard(s) |
+| ----------------- | -------------------- | ---------------- |
+| Release Candidate | Summer 2025          | 5.2.0            |
+| 1.0               | Coming summer 2026   | 6.0, others      |
 
 ## Tools
 
