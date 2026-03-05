@@ -12,4 +12,4 @@ insights into the effectiveness of programs.
 
 ## Student Program Evaluation  UML Model Diagram
 
-![Student Program Evaluation](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Student%20Program%20Evaluation.png)
+![Student Program Evaluation](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/StudentProgramEvaluation_v6.X.png)
