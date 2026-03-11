@@ -1,4 +1,5 @@
 // @ts-check
+const path = require('path');
 // `@type` JSDoc annotations allow editor autocompletion and type checking
 // (when paired with `@ts-check`).
 // There are various equivalent ways to declare your Docusaurus config.
@@ -64,6 +65,14 @@ const config = {
   ],
 
   plugins: [
+    // Local plugin to export docs JSON (per-doc and per-chunk)
+    [
+      path.resolve('./src/plugins/docs-export'),
+      {
+        // Explicitly list plugin IDs to process; adjust as needed
+        pluginIds: ['getting-started', 'partners', 'community', 'reference', 'odsApi', 'dataStandard'],
+      },
+    ],
     [
       '@docusaurus/plugin-content-docs',
       {
