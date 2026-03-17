@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.ed-fi.org)",
+      "WebFetch(domain:docs.ed-fi.org)"
+    ]
+  }
+}
