@@ -9,9 +9,9 @@ subdomains.
 
 ## Assessment Model UML Diagram
 
-![Assessment Domain Model](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Assessment11072025.png)
+![Assessment Domain Model](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Assessment_v6.X.png)
 
-[_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Assessment11072025.png)
+[_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Assessment_v6.X.png)
 
 ### Learning Standard Subdomain
 
@@ -40,9 +40,9 @@ equivalence.
 
 #### Assessment, Learning Standards Model UML Diagram
 
-![Assessment - Standards Subdomain](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Assessment_Standards11072025.png)
+![Assessment - Standards Subdomain](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Assessment_Standards_v6.X.png)
 
-[_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Assessment_Standards11072025.png)
+[_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Assessment_Standards_v6.X.png)
 
 ### Assessment Metadata Subdomain
 
@@ -64,9 +64,9 @@ stand-alone assessments that do not tie to a particular section or program.
 
 #### Assessment, Assessment Metadata Model UML Diagram
 
-![Assessment - Assessment Metadata Subdomain](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Assessment_Metadata11072025.png)
+![Assessment - Assessment Metadata Subdomain](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Assessment_Metadata_v6.X.png)
 
-[_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Assessment_Metadata11072025.png)
+[_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Assessment_Metadata_v6.X.png)
 
 ### Student Assessment Subdomain
 
@@ -106,6 +106,6 @@ metadata.
 
 #### Assessment, Student Assessment Model UML Diagram
 
-![Assessment - Student Assessment Subdomain](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Assessment_StudentAssessment11072025.png)
+![Assessment - Student Assessment Subdomain](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Assessment_StudentAssessment_v6.X.png)
 
-[_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Assessment_StudentAssessment11072025.png)
+[_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Assessment_StudentAssessment_v6.X.png)
