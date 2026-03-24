@@ -33,11 +33,11 @@ hide_table_of_contents: true
 | Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
 | StudentProgramAttendanceEvent | AttendanceEventCategory | A code describing the attendance event, for example: Present, Unexcused absence, Excused absence, Tardy. | Local |     |     |     |
-| EducationalEnvironment | The setting in which a child receives education and related services. This attribute is only used if it differs from the EducationalEnvironment of the Section. This is only used in the AttendanceEvent if different from the associated Section. | Orthodox |     |     |     |
+| StudentProgramAttendanceEvent | EducationalEnvironment | The setting in which a child receives education and related services. This attribute is only used if it differs from the EducationalEnvironment of the Section. This is only used in the AttendanceEvent if different from the associated Section. | Orthodox |     |     |     |
 | StudentSchoolAttendanceEvent | AttendanceEventCategory | A code describing the attendance event, for example: Present, Unexcused absence, Excused absence, Tardy. | Local |     |     |     |
-| EducationalEnvironment | The setting in which a child receives education and related services. This attribute is only used if it differs from the EducationalEnvironment of the Section. This is only used in the AttendanceEvent if different from the associated Section. | Orthodox |     |     |     |
+| StudentSchoolAttendanceEvent | EducationalEnvironment | The setting in which a child receives education and related services. This attribute is only used if it differs from the EducationalEnvironment of the Section. This is only used in the AttendanceEvent if different from the associated Section. | Orthodox |     |     |     |
 | StudentSectionAttendanceEvent | AttendanceEventCategory | A code describing the attendance event, for example: Present, Unexcused absence, Excused absence, Tardy. | Local |     |     |     |
-| EducationalEnvironment | The setting in which a child receives education and related services. This attribute is only used if it differs from the EducationalEnvironment of the Section. This is only used in the AttendanceEvent if different from the associated Section. | Orthodox |     |     |     |
+| StudentSectionAttendanceEvent | EducationalEnvironment | The setting in which a child receives education and related services. This attribute is only used if it differs from the EducationalEnvironment of the Section. This is only used in the AttendanceEvent if different from the associated Section. | Orthodox |     |     |     |
 
 :::tip
 

@@ -25,9 +25,19 @@ hide_table_of_contents: true
 
 ## Student Program Evaluation Domain Descriptors
 
-| Entity | Name | Description |
-| --- | --- | --- |
-| ProgramEvaluation | ProgramEvaluationType | The type of program evaluation conducted |
-| ProgramEvaluationPeriod | The name of the period for the program evaluation |
-| StudentProgramEvaluation | RatingLevel | The summary rating level achieved based upon the rating or score |
-| EvaluationRubricDimension |
+| Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
+| --- | --- | --- | --- | --- | --- | --- |
+| Program | ProgramCharacteristic | Reflects important characteristics of the program, such as categories or particular indications. | Local | Yes | Yes |     |
+| ProgramEvaluation | ProgramEvaluationPeriod | The name of the period for the program evaluation. |     |     |     |     |
+| ProgramEvaluation | ProgramEvaluationType | The type of program evaluation conducted. |     |     |     |     |
+| Program | ProgramSponsor | Ultimate and intermediate providers of funds for a particular educational or service program or activity, or for an individual's participation in the program or activity (e.g., Federal, State, ESC, District, School, Private Organization). | Standard |     | Yes |     |
+| Program | ProgramType | The type of program. | Flexible | Yes | Yes | Yes |
+| EvaluationRubricDimension <br /> StudentProgramEvaluation | RatingLevel | The summary rating level achieved based upon the rating, score, or the rating level achieved for the evaluation rubric dimension. |     |     |     |     |
+
+:::tip
+
+See [Non-normative Descriptor
+Classifications](/reference/data-exchange/technical-articles/non-normative-descriptor-classifications)
+for more information on _Usage Classification_.
+
+:::

@@ -48,7 +48,7 @@ To view claimset definitions in the Admin App, navigate to the claimset page in 
 
 Admin App users who create claimsets and provision API credentials must be aware of the different authorization methods in the Ed-Fi API. Authorization strategies represent *how* an API client can access certain resources within the API.
 
-**The current list of authorization strategies used in the Ed-Fi ODS/API version 7**
+### The current list of authorization strategies used in the Ed-Fi ODS/API version 7
 
 * No Further Authorization Required
 * Relationships with Education Organizations and People

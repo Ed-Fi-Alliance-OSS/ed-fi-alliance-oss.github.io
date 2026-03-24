@@ -41,7 +41,36 @@ export default {
           link: 'https://help.powerschool.com/',
         },
       ],
-    }
+    },
+    {
+      productName: 'EduPoint Synergy',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/EduPointLogo_RGB-400x120.png',
+      website:
+        'http://www.edupoint.com/Products/Student-Information-Management',
+      validThrough: 'April 28, 2026',
+      verifyingAgencies: ['Lincoln Public Schools, NE', 'Higley Unified School District, Gilbert, AZ', 'Phoenix Union High School District, AZ'],
+      versionCompatibility: 'Conformance testing met with version 2023',
+      availability: 'Available to any agency (all sizes) in the U.S.',
+      documentation: {
+        'Availability Statement':'https://edfi.atlassian.net/wiki/download/attachments/23702484/Edupoint%20Ed-Fi%20Certification%20-%20Availibility%20Statement%20V2.pdf?api=v2',
+        'Pricing Statement':'https://edfi.atlassian.net/wiki/download/attachments/23702484/Edupoint%20Ed-Fi%20Certification%20-%20Pricing%20Statement.pdf?api=v2',
+        'Mappings':'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Edupoint/Edupoint%20-%20Base%20Ed-Fi%20Certification%20Mappings.xlsx',
+      },
+      supportResources: [
+        {
+          name: 'Usage overview',
+          link: 'https://edfi.atlassian.net/wiki/download/attachments/23694066/edupoint_Usage%20narrative.docx?version=1&modificationDate=1673960206427&cacheVersion=1&api=v2',
+        },
+        {
+          name: 'Edupoint customer FTP site',
+          link: 'ftp://ftp.edupoint.com/',
+        },
+        {
+          name: 'Edupoint customer support site',
+          link: 'https://support.edupoint.com/',
+        },
+      ],
+    },
   ],
 
   sisApiV4: [
@@ -681,10 +710,8 @@ export default {
       productName: 'Amplify mCLASS DIBELS 8th Edition and mCLASS Lectura',
       logo: 'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/amplify/AmplifyWordmark_Screen.png',
       website: 'https://amplify.com/',
-      validThrough: 'January 31, 2026',
-      verifyingAgencies: [
-        'Mesquite ISD, TX',
-      ],
+      validThrough: 'February 17, 2027',
+      verifyingAgencies: ['Richardson ISD, TX', 'Midland ISD, TX', 'Aldine ISD, TX'],
       versionCompatibility: 'All versions',
       availability: 'Available to any agency (all sizes) in the U.S.',
       documentation: {
@@ -838,7 +865,7 @@ export default {
       supportResources: [
         {
           name: 'Learning Standards Sync Utility',
-          link: 'https://edfi.atlassian.net/wiki/spaces/EXCHANGE/pages/22487416/Learning+Standards+Sync+Utility',
+          link: 'https://docs.ed-fi.org/getting-started/edfi-exchange/technology/learning-standards-sync/getting-started/',
         },
       ],
     },
@@ -861,7 +888,7 @@ export default {
       supportResources: [
         {
           name: 'Learning Standards Sync Utility',
-          link: 'https://edfi.atlassian.net/wiki/spaces/EXCHANGE/pages/22487416/Learning+Standards+Sync+Utility',
+          link: 'https://docs.ed-fi.org/getting-started/edfi-exchange/technology/learning-standards-sync/getting-started/',
         },
       ],
     },

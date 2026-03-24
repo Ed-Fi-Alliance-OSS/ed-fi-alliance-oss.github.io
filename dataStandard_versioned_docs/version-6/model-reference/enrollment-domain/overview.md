@@ -8,6 +8,12 @@ sidebar_position: 1
 
 This domain contains:
 
+* The StudentDemographic entity, which represents demographic information associated to a student.
+
+* The StudentDirectory entity, which represents contact information associated to a student.
+
+* The StudentIdentificationCode entity, which represents different identity codes for a student.
+
 * The StudentSchoolAssociation entity, which represents a student's enrollment
     in a school.
 
