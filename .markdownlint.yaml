@@ -1,3 +1,16 @@
-MD004:
+default: true
+line-length: false
+no-inline-html:
+  allowed_elements:
+    - codapi-snippet
+    - kbd
+    - DocCardList
+    - details
+    - summary
+    - br
+    - iframe
+    - sup
+emphasis-style:
+  style: underscore
+ul-style:
   style: consistent
-MD013: false
