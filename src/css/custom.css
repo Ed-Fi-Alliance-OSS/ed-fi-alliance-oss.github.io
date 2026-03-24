@@ -139,30 +139,6 @@
   background-image: url('/img/ed-fi-logo-dark.svg');
 }
 
-/* Theme-aware Ed-Fi logo used in content pages */
-.edfi-logo-wrap {
-  text-align: center;
-  margin: 1rem 0 1.25rem;
-}
-.edfi-logo {
-  max-width: 360px;
-  width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
-.edfi-logo-dark { display: none; }
-
-/* Prefer system dark mode */
-@media (prefers-color-scheme: dark) {
-  .edfi-logo-light { display: none; }
-  .edfi-logo-dark { display: block; }
-}
-
-/* Also respond to site theme toggle (Docusaurus sets data-theme) */
-[data-theme='dark'] .edfi-logo-light { display: none; }
-[data-theme='dark'] .edfi-logo-dark  { display: block; }
-
 .DocSearch-Modal {
   margin-top: calc(var(--combined-top-offset) + 20px) !important;
 }
