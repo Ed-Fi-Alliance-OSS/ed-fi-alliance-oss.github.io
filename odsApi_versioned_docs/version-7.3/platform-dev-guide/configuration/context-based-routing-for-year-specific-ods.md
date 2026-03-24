@@ -21,7 +21,7 @@ route template in the "OdsContextRouteTemplate" setting of the "ApiSettings"
 section of the configuration. This route template can contain multiple segments
 (e.g. `{instanceId}/{schoolYearFromRoute}`) if multiple context values are
 required and can include ASP.NET [route
-constraints](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/routing?view=aspnetcore-7.0#route-constraints).
+constraints](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/routing?view=aspnetcore-10.0#route-constraints).
 
 ```json
 {

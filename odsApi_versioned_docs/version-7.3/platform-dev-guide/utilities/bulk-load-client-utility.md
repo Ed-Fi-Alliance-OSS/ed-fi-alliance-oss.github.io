@@ -30,7 +30,7 @@ repository ([v5.2.0 Descriptors](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Da
 
 ## Overview of Solution Architecture
 
-The Bulk Load Client consists of a .NET 8 solution. It uses C# as the primary
+The Bulk Load Client consists of a .NET 10 solution. It uses C# as the primary
 language, with TPL (Task Parallel Library) for pipeline processing support.
 Infrastructure libraries include log4net for logging, nUnit for unit test, and
 Newtonsoft.Json and Microsoft's WebApi client libraries for web API integration.

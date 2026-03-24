@@ -16,7 +16,7 @@ Ensure that the following components are installed:
 
 * **PowerShell 5.0, 7.2, or 7.3.** PowerShell is used to initialize the development
     environment.
-* **.NET 8.0 SDK**. The .NET 8.0 Software Developer Kit is required for
+* **.NET 10.0 SDK**. The .NET 10.0 Software Developer Kit is required for
     compiling the solution.
 
 <details>
@@ -43,10 +43,10 @@ If the required version is not installed, download and install [PowerShell 5.0
 or
 above](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-5.1).
 
-## .NET 8.0 SDK
+## .NET 10.0 SDK
 
-Download and install the latest [.NET SDK 8.0 (Compatible with Visual Studio
-2022)](https://dotnet.microsoft.com/en-us/download/dotnet/8.0).
+Download and install the latest [.NET SDK 10.0 (Compatible with Visual Studio
+2022)](https://dotnet.microsoft.com/en-us/download/dotnet/10.0).
 
 :::tip
 
