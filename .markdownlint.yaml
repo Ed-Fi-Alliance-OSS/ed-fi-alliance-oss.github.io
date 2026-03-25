@@ -14,3 +14,7 @@ emphasis-style:
   style: underscore
 ul-style:
   style: consistent
+table-pipe-style:
+  style: leading_and_trailing
+no-duplicate-heading:
+  siblings_only: true
