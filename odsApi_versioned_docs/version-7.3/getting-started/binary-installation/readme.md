@@ -21,7 +21,7 @@ Ensure that the following components are installed:
 
 * **PowerShell 5.0,7.2,7.3.** PowerShell is used by the database deployment
   scripts.
-* **.NET 8.0 SDK.** Required by the [Database Deploy
+* **.NET 10.0 SDK.** Required by the [Database Deploy
   Tool](../../platform-dev-guide/utilities/database-deploy-tool) used in
   the database deployment scripts.
 
@@ -49,10 +49,10 @@ Ensure that the following components are installed:
           5.0](https://www.microsoft.com/en-us/download/details.aspx?id=50395), which
           includes PowerShell 5.0.
 
-      **.NET 8.0 SDK**
+      **.NET 10.0 SDK**
 
-      Download and install the latest release of the [.NET 8.0
-      SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
+      Download and install the latest release of the [.NET 10.0
+      SDK](https://dotnet.microsoft.com/en-us/download/dotnet/10.0)
     </details>
 
 ### Web Server
@@ -73,7 +73,7 @@ Ensure that the following components are installed:
 
 * **Internet Information Services.** IIS is the web server that will run the ODS
   / API.
-* **.NET 8.0 Hosting Bundle.** The .NET 8.0 Hosting Bundle is required for
+* **.NET 10.0 Hosting Bundle.** The .NET 10.0 Hosting Bundle is required for
   running the API on IIS. Must be installed after IIS.
 
   <details>
@@ -87,10 +87,10 @@ Ensure that the following components are installed:
         selections will be good for most cases.
     3. Click **OK**.
 
-    **.NET 8.0 Hosting Bundle**
+    **.NET 10.0 Hosting Bundle**
 
     Download and install [.NET Hosting Bundle
-    8.0](https://dotnet.microsoft.com/en-us/download/dotnet/8.0).
+    10.0](https://dotnet.microsoft.com/en-us/download/dotnet/10.0).
 
   </details>
 
