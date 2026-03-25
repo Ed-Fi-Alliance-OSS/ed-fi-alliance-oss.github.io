@@ -29,7 +29,7 @@ applications described below, though the .NET architecture provides support for
 additional configuration sources such as environment variables, command-line
 arguments, and other sources (such as services from cloud providers). See the
 [Configuration in ASP.NET
-Core](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-8.0)
+Core](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-10.0)
 documentation for more information.
 
 ### EdFi.Ods.SwaggerUI
@@ -502,7 +502,7 @@ environments. In development environment, initdev creates
 _appsettings.**Development**.json_ to override settings for development
 environment. Note that the settings in _appsettings.**Development**.json_ are
 overwritten every time initdev is executed. See [Configuration in ASP.NET
-Core](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-8.0)
+Core](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-10.0)
 for more details.
 
 ## Secret Manager
@@ -511,7 +511,7 @@ In development environments ASP.NET Core applications in the ODS / API solution
 uses secret manager tool to provide a way for setting overrides away from the
 projects so that they aren't accidentally checked into source control. To set
 overrides, you can either use the [.NET
-CLI Tool](https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-8.0&tabs=windows#set-a-secret)
+CLI Tool](https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-10.0&tabs=windows#set-a-secret)
 
 ```powershell
 PS D:\Ed-Fi-ODS-Implementation\Application\EdFi.Ods.WebApi> dotnet user-secrets set "ApiSettings:PopulatedTemplateScript" "Glendale"
@@ -519,7 +519,7 @@ Successfully saved ApiSettings:PopulatedTemplateScript = Glendale to the secret 
 ```
 
 or [Manage User
-Secrets](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows#json-structure-flattening-in-visual-studio)
+Secrets](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-10.0&tabs=windows#json-structure-flattening-in-visual-studio)
 in Visual Studio.
 
 ![Manage User Secrets](/img/reference/ods-api/manage-user-secrets.webp)
@@ -546,5 +546,5 @@ deploys with 'Glendale' sample dataset.
 ```
 
 See [Safe storage of app secrets in development in ASP.NET
-Core](https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-8.0&tabs=windows)
+Core](https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-10.0&tabs=windows)
 for more details.

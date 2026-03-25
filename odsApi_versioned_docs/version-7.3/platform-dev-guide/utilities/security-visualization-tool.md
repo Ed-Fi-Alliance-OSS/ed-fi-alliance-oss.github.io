@@ -29,12 +29,12 @@ not detected in the default installation path.
   \\Ed-Fi-ODS\\Utilities\\GenerateSecurityGraphs\\GenerateSecurityGraphs.sln,
   and build the solution.
 * Open a Console window and navigate to
-  \\Ed-Fi-ODS\\Utilities\\GenerateSecurityGraphs\\GenerateSecurityGraphs\\bin\\Debug\\net6.0.
+  \\Ed-Fi-ODS\\Utilities\\GenerateSecurityGraphs\\GenerateSecurityGraphs\\bin\\Debug\\net10.0.
 * Run `GenerateSecurityGraphs.exe --help` to view the parameters that can be
   passed to the application.
 
   ```powershell
-  PS D:\Ed-Fi-ODS\Utilities\GenerateSecurityGraphs\GenerateSecurityGraphs> .\bin\Debug\net8.0\GenerateSecurityGraphs.exe --help
+  PS D:\Ed-Fi-ODS\Utilities\GenerateSecurityGraphs\GenerateSecurityGraphs> .\bin\Debug\net10.0\GenerateSecurityGraphs.exe --help
   GenerateSecurityGraphs 1.0.0+04569d4fea5fc8935768fdff50cf64d61da58fa7
   Copyright c 2024 Ed-Fi Alliance, LLC and Contributors
 

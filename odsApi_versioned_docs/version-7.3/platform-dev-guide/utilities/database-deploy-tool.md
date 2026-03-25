@@ -29,8 +29,8 @@ Database Deploy Tool to deploy the ODS and related databases used by the API.
 
 As a [.NET Global
 Tool](https://docs.microsoft.com/en-us/dotnet/core/tools/global-tools), the
-application runs on a machine with [.NET 8.0 SDK (Compatible with Visual Studio
-2022)](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) and is installed
+application runs on a machine with [.NET 10.0 SDK (Compatible with Visual Studio
+2022)](https://dotnet.microsoft.com/en-us/download/dotnet/10.0) and is installed
 from Azure Artifacts with one of the following commands:
 
 ```powershell
