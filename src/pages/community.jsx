@@ -134,7 +134,7 @@ function Main() {
                   CEDS and Ed-Fi Collaboration Guidelines
                 </Link>
               </li>
-              {/* <li><Link to="">Code Contribution Guidelines</Link></li> */}
+              <li><Link to="/community/involved/communications-toolkit">Ed-Fi Alliance Communications Toolkit</Link></li>
             </ul>
           </div>
         </div>
