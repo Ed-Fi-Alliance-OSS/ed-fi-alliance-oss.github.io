@@ -19,12 +19,12 @@ Use the toolkit to empower yourself to advocate for data interoperability in edu
 
 Follow these steps to make the most of this resource:
 
-1. Identify Your Audience: Determine which user group you'll engage with-Planners, Practitioners, Local and State Decision-makers, or Facilitators.
-2. Explore the Resources: Familiarize yourself with the materials available in the toolkit. Use the guidance and best practices for engaging your audience type to ensure your messaging templates, designed materials, success stories, case studies, and talking points.
-3. **Create a Plan:**Develop a plan for your engagement, including setting objectives and goals, creating a timeline, identifying which communication channels and materials you will use, and planning follow-up strategies.
-4. Customize Your Approach: Adapt your chosen materials to illustrate the relevance and benefits of the Ed-Fi Data Standard in your context, incorporating any relevant materials created by you or your organization.
-5. Prepare for Your Engagement: Practice your presentation or engagement approach beforehand to ensure clarity and confidence in delivering your message effectively. Review the guidance and best practices for your audience type to anticipate the kinds of questions they may ask.
-6. Measure and Iterate: After engaging with your audience, take note of feedback and outcomes. Use this information to refine your approach and further tailor your communications efforts for future engagements.
+1. **Identify Your Audience:** Determine which user group you'll engage with-Planners, Practitioners, Local and State Decision-makers, or Facilitators.
+2. **Explore the Resources:** Familiarize yourself with the materials available in the toolkit. Use the guidance and best practices for engaging your audience type to ensure your messaging templates, designed materials, success stories, case studies, and talking points.
+3. **Create a Plan:** Develop a plan for your engagement, including setting objectives and goals, creating a timeline, identifying which communication channels and materials you will use, and planning follow-up strategies.
+4. **Customize Your Approach:** Adapt your chosen materials to illustrate the relevance and benefits of the Ed-Fi Data Standard in your context, incorporating any relevant materials created by you or your organization.
+5. **Prepare for Your Engagement:** Practice your presentation or engagement approach beforehand to ensure clarity and confidence in delivering your message effectively. Review the guidance and best practices for your audience type to anticipate the kinds of questions they may ask.
+6. **Measure and Iterate:** After engaging with your audience, take note of feedback and outcomes. Use this information to refine your approach and further tailor your communications efforts for future engagements.
 
 For any questions or feedback on using the toolkit, please contact [communications@edfi.org](mailto:communications@edfi.org).
 
@@ -102,15 +102,16 @@ LEVERAGING EDUCATION DATA TO DRIVE MEANINGFUL CHANGE
 
 Access to reliable, consistent data and insights is crucial for making informed decisions that positively impact students. The Ed-Fi Data Standard offers an effective solution to enhance efficiency and drive student success by providing standardized data management practices.
 
-WHAT IS THE ED-Fl DATA STANDARD?
+##### What is the Ed-Fi Data Standard?
 
 A set of rules for collecting, managing, and organizing educational data that allows multiple systems to seamlessly and securely share actionable information. The Ed-Fi Data Standard is a community-driven, open-source standard developed by the Ed-Fi Alliance, a nonprofit organization, in partnership with education agencies and technology providers.
 
-BENEFITS OF THE ED-Fl DATA STANDARD
+##### Benefits of the Ed-Fi Data Standard
 
 Adopting the Ed-Fi Data Standard opens doors for you to maximize the value of data and drive student progress effectively. The Ed-Fi Data Standard is a dependable framework for organizing, managing, and collecting data, which streamlines processes and improves data quality.
 
 The Ed-Fi Data Standard can help you:
+
 - Optimize Resource Allocation: Make evidence-based recommendations about resource allocation, ensuring that funding, staffing, and other resources are directed where they can have the greatest impact on student outcomes.
 - Access Data Efficiently: Streamline your data management processes, simplifying data collection and reducing the time and effort required to compile information.
 - Facilitate Evidence-Based Decision-making: Enable data-driven decision-making processes that drive positive change and improvement in education by providing evidence-based insights.
@@ -121,14 +122,16 @@ By leveraging the power of the Ed-Fi Data Standard, you can make more informed, 
 #### Talking points
 
 The Ed-Fi Data Standard offers a standardized framework for organizing, managing, and exchanging education data. Adopting the standard streamlines data management processes, reducing the time and effort required to compile and analyze information from various sources.
+
 - With the Ed-Fi Data Standard, you can ensure data consistency and accuracy across your systems. By adhering to standardized data definitions and formats, you can minimize errors and discrepancies, leading to higher data quality and reliability.
 
-Access to high-quality, well-organized data empowers you to make informed, evidence-based decisions. The Ed-Fi Data Standard provides valuable insights into student performance, attendance, and other key metrics, enabling you to identify trends, pinpoint areas for improvement, and develop targeted interventions to support student success.
+- Access to high-quality, well-organized data empowers you to make informed, evidence-based decisions. The Ed-Fi Data Standard provides valuable insights into student performance, attendance, and other key metrics, enabling you to identify trends, pinpoint areas for improvement, and develop targeted interventions to support student success.
+- You can optimize resource allocation within your schools and districts by leveraging standardized data. Whether it's allocating funding, staffing, or other resources, the Ed-Fi Data Standard helps you make data-driven decisions that maximize impact and efficiency.
 
-You can optimize resource allocation within your schools and districts by leveraging standardized data. Whether it's allocating funding, staffing, or other resources, the Ed-Fi Data Standard helps you make data-driven decisions that maximize impact and efficiency.
 - The Ed-Fi Data Standard facilitates collaboration among stakeholders by providing a common language for discussing and analyzing education data. With standardized data practices in place, you can engage in collaborative planning processes that drive positive change and improvement in your classrooms and schools.
 
 The Ed-Fi Data Standard aligns with industry best practices for data management in education. By adopting this standard, you ensure your data practices and products are the right fit for your students and teachers, demonstrating a commitment to excellence and compliance with the latest requirements.
+
 - Investing in the Ed-Fi Data Standard helps future-proof your data systems by ensuring compatibility and interoperability with other Ed-Fi-compliant systems and tools. As technology evolves and new tools emerge, you can rest assured that your data will remain accessible and usable for years to come.
 
 #### Draft email outreach
@@ -187,45 +190,35 @@ Develop evidence-based policies and regulations that support educational excelle
 
 #### Roles included in this audience group
 
-Superintendents School Board Members State Legislators
-
-Local Education Agency Staff
-
-State Education Agency Representatives
-
+- Superintendents School Board Members State Legislators
+- Local Education Agency Staff
+- State Education Agency Representatives
 - Chief Technology Officers (CTOs)
 - Chief Academic Officers (CAOs)
 - Chief Financial Officers (CFOs)
 - School Business Managers
 - Budget Directors
-
-Policy Directors Assessment Directors Grant Administrators Human Resources Directors
+- Policy Directors Assessment Directors Grant Administrators Human Resources Directors
 
 #### Guidance and Best Practices for Engaging Local and State Decision-makers
 
 Engaging with Local and State Decision-makers requires a strategic approach that emphasizes the broader impact and benefits of the Ed-Fi Data Standard on education policy, resource allocation, and student outcomes. Here are some key guidance and best practices for effectively engaging with this audience type:
 
-1. **Focus on Student Success Metrics:**Decision-makers are interested in initiatives and tools that have a measurable impact on student success metrics, such as graduation rates, standardized test scores, and college readiness. Highlight how the Ed-Fi Data Standard can improve data accuracy, provide valuable insights into student performance, and inform evidence-based policy decisions that drive positive outcomes for students.
-2. **Align with Education Priorities:**Tailor your messaging to align with local and state education priorities and initiatives. Emphasize how the Ed-Fi Data Standard supports key objectives such as data-driven decision-making, equity and access, personalized learning, and accountability. When applicable, Highlight how the standard aligns with legislative mandates and policy requirements, helping to ensure compliance. Position the standard as a valuable tool for achieving these broader goals and objectives.
-3. Demonstrate Return on Investment: Decision-makers are often concerned with the return on investment (ROI) of adopting new initiatives or technologies. Provide evidence and case studies demonstrating the ROI of the
-
-Ed-Fi Data Standard in terms of improved data quality, standard can help maximize the impact of education funding and resources.
-4. Highlight Interoperability and Collaboration: Decision-makers value interoperability and collaboration among education systems and stakeholders. Showcase how the Ed-Fi Data Standard facilitates data interoperability and integration across systems, enabling seamless and secure data sharing and collaboration among schools, districts, and state agencies. Highlight examples of successful collaborations and partnerships enabled by the standard.
-5. Focus on Privacy and Security: Emphasize the importance of privacy and security in data management. Implementing an API with the Ed-Fi Data Standard creates a more secure infrastructure for data movement, eliminating the need for riskier activities like file uploads or sharing via email. Highlight how the Ed-Fi Data Standard not only enhances data security but also builds trust with students, parents, and educators by safeguarding their personal.
+1. **Focus on Student Success Metrics:** Decision-makers are interested in initiatives and tools that have a measurable impact on student success metrics, such as graduation rates, standardized test scores, and college readiness. Highlight how the Ed-Fi Data Standard can improve data accuracy, provide valuable insights into student performance, and inform evidence-based policy decisions that drive positive outcomes for students.
+2. **Align with Education Priorities:** Tailor your messaging to align with local and state education priorities and initiatives. Emphasize how the Ed-Fi Data Standard supports key objectives such as data-driven decision-making, equity and access, personalized learning, and accountability. When applicable, Highlight how the standard aligns with legislative mandates and policy requirements, helping to ensure compliance. Position the standard as a valuable tool for achieving these broader goals and objectives.
+3. **Demonstrate Return on Investment**: Decision-makers are often concerned with the return on investment (ROI) of adopting new initiatives or technologies. Provide evidence and case studies demonstrating the ROI of the Ed-Fi Data Standard in terms of improved data quality, standard can help maximize the impact of education funding and resources.
+4. **Highlight Interoperability and Collaboration**: Decision-makers value interoperability and collaboration among education systems and stakeholders. Showcase how the Ed-Fi Data Standard facilitates data interoperability and integration across systems, enabling seamless and secure data sharing and collaboration among schools, districts, and state agencies. Highlight examples of successful collaborations and partnerships enabled by the standard.
+5. **Focus on Privacy and Security**: Emphasize the importance of privacy and security in data management. Implementing an API with the Ed-Fi Data Standard creates a more secure infrastructure for data movement, eliminating the need for riskier activities like file uploads or sharing via email. Highlight how the Ed-Fi Data Standard not only enhances data security but also builds trust with students, parents, and educators by safeguarding their personal.
 
 #### Questions to anticipate
 
 Decision-makers may have questions or concerns about the practical implications, costs, and implementation challenges of adopting the Ed-Fi Data Standard. Be prepared to address common questions, such as:
 
-How will adopting the Ed-Fi Data Standard impact our current data management systems and processes?
-
+- How will adopting the Ed-Fi Data Standard impact our current data management systems and processes?
 - What are the costs associated with implementing the standard, and how do they compare to potential benefits?
-
-How does the standard ensure data interoperability and compatibility with existing systems and applications?
-
-What support and resources are available to help with the implementation and ongoing maintenance of the standard?
-
-How does implementing the Ed-Fi Data Standard help to ensure student data remains private and secure?
+- How does the standard ensure data interoperability and compatibility with existing systems and applications?
+- What support and resources are available to help with the implementation and ongoing maintenance of the standard?
+- How does implementing the Ed-Fi Data Standard help to ensure student data remains private and secure?
 
 #### Tailored Communications Resources for Decision-makers
 
@@ -247,15 +240,17 @@ BENEFITS OF THE ED-Fl DATA STANDARD
 In today's dynamic educational landscape, informed decision-making is paramount to driving positive outcomes for students and communities. The Ed-Fi Data Standard empowers education leaders and their organizations with invaluable insights and tools to make data-driven decisions that truly matter.
 
 The Ed-Fi Data Standard can help you:
-- Make data-driven decisions confidently: Access to high-quality, timely data enables educators and education systems to make informed decisions about resource allocation, program effectiveness, and education policy initiatives.
-- Align education policy and initiatives: The Ed-Fi Data Standard enables you and your teams to develop evidence-based policies and programs that address the unique needs of students and drive positive outcomes at the local and state levels.
-- Maximize the impact of education funding and resources: By standardizing data practices and promoting interoperability, the Ed-Fi Data Standard helps optimize the use of resources and funding in education. Leaders can allocate resources more effectively, targeting interventions and initiatives where they are needed most to support student success.
-- Promote transparency and accountability: The Ed-Fi Data Standard provides stakeholders access to accurate, up-to-date data on student performance, school outcomes, and education equity. Leaders can track progress, identify disparities, and hold schools and districts accountable for student outcomes.
-- Foster collaboration and interoperability among systems and stakeholders: The Ed-Fi Data Standard facilitates seamless data sharing and integration across systems, enabling collaboration among schools, districts, state agencies, and a powerful nationwide community of leaders to improve data-driven decision-making and support student success.
+
+- **Make data-driven decisions confidently**: Access to high-quality, timely data enables educators and education systems to make informed decisions about resource allocation, program effectiveness, and education policy initiatives.
+- **Align education policy and initiatives**: The Ed-Fi Data Standard enables you and your teams to develop evidence-based policies and programs that address the unique needs of students and drive positive outcomes at the local and state levels.
+- **Maximize the impact of education funding and resources**: By standardizing data practices and promoting interoperability, the Ed-Fi Data Standard helps optimize the use of resources and funding in education. Leaders can allocate resources more effectively, targeting interventions and initiatives where they are needed most to support student success.
+- **Promote transparency and accountability**: The Ed-Fi Data Standard provides stakeholders access to accurate, up-to-date data on student performance, school outcomes, and education equity. Leaders can track progress, identify disparities, and hold schools and districts accountable for student outcomes.
+- **Foster collaboration and interoperability among systems and stakeholders**: The Ed-Fi Data Standard facilitates seamless data sharing and integration across systems, enabling collaboration among schools, districts, state agencies, and a powerful nationwide community of leaders to improve data-driven decision-making and support student success.
 
 By embracing the Ed-Fi Data Standard, you can unlock the full potential of education data to drive student success, inform policy and practice, and increase your students' access to greater opportunities within and beyond their experience in your school system.
 
 #### Talking points
+
 - The Ed-Fi Data Standard promotes standardized data management practices, ensuring consistency, accuracy, and accessibility of education data across systems and applications.
 
 With access to comprehensive, timely data insights, decision-makers can make informed decisions about education policy, resource allocation, and program effectiveness. The Ed-Fi Data Standard provides the
@@ -263,6 +258,7 @@ With access to comprehensive, timely data insights, decision-makers can make inf
 foundation for evidence-based decision-making that maximizes the impact of education investments and initiatives.
 
 By standardizing data practices and promoting interoperability, the Ed-Fi Data Standard streamlines data management processes for education systems and stakeholders. Decision-makers can reduce administrative burdens, improve operational efficiency, and redirect resources toward initiatives directly supporting student success.
+
 - The Ed-Fi Data Standard promotes transparency and accountability in education by providing stakeholders with access to accurate, up-to-date data on student performance, learning outcomes, and education equity. Decision-makers can track progress, identify disparities, and hold schools and districts accountable for student outcomes, ensuring equitable access to education for all students.
 - Interoperable data systems enabled by the Ed-Fi Data Standard facilitate collaboration and partnership among education stakeholders, including schools, districts, state agencies, educator prep programs, and community organizations. Decision-makers can work together to develop coordinated strategies and initiatives that address complex challenges and improve student outcomes, leveraging the power of data to drive systemic change.
 
@@ -307,7 +303,7 @@ Hashtags: #EducationData #DataDrivenDecisions #EducationTransformation #EdFiAlli
 
 This template provides a structured format for proposing a session at a conference, highlighting the importance and impact of the Ed-Fi Data Standard in improving student outcomes. This draft content should be customized to match specific conference requirements and your organizational details.
 
-Title: Unlocking the Power of Education Data Through the Ed-Fi Standard
+**Title**: Unlocking the Power of Education Data Through the Ed-Fi Standard
 
 **Abstract:**In today's education landscape, having access to high-quality, actionable data is more crucial than ever for improving student outcomes. However, inconsistent, untimely data has long been a barrier, leading to siloed information and wasted time trying to connect the dots.
 
@@ -327,34 +323,28 @@ Insights regarding trends, longer-term outcomes, and disaggregated results to be
 
 #### Roles included in this audience group
 
-Teachers Counselors
-
-Instructional Coaches School Administrators
-
-Special Education Coordinators
-
+- Teachers
+- Counselors
+- Instructional Coaches
+- School Administrators
+- Special Education Coordinators
 - School Nurses
-
-Subject Area Specialists
-
-(e.g., Math Specialists, Literacy Coaches)
-
-Gifted and Talented Coordinators Behavior Intervention Specialists School Psychologists
-
-ESL/ELL Teachers
-
-Career and Technical Education (CTE) Instructors
+- Subject Area Specialists (e.g., Math Specialists, Literacy Coaches)
+- Gifted and Talented Coordinators
+- Behavior Intervention Specialists
+- School Psychologists
+- ESL/ELL Teachers
+- Career and Technical Education (CTE) Instructors
 - Librarians and Library Media Specialists
-
-Speech-Language Pathologists
+- Speech-Language Pathologists
 
 #### Guidance and Best Practices for Engaging Practitioners
 
 Engagement with Practitioners should emphasize the practical benefits and relevance of the Ed-Fi Data Standard to their day-to-day work. Here are some key considerations and best practices for effectively engaging with this audience type:
 
-1. Highlight Impact on Classroom Practices: Practitioners are primarily concerned with how initiatives and tools will impact their work in the classroom. Emphasize how the Ed-Fi Data Standard can streamline administrative tasks, provide valuable insights into student performance, and support data-informed instructional practices that ultimately enhance teaching and learning experiences.
-2. **Empower Data-Driven Instruction:**Demonstrate how the Ed-Fi Data Standard can empower Practitioners to leverage data to personalize instruction, identify student needs, and track progress over time. Showcase examples of how other educators have successfully used data to inform instructional decisions and improve student outcomes whenever possible.
-3. **Address Concerns about Time and Effort:**Practitioners often face time constraints and competing priorities. Emphasize how adoption of the Ed-Fi Data Standard can streamline data entry and access processes, providing them with the data they need efficiently.
+1. **Highlight Impact on Classroom Practices:** Practitioners are primarily concerned with how initiatives and tools will impact their work in the classroom. Emphasize how the Ed-Fi Data Standard can streamline administrative tasks, provide valuable insights into student performance, and support data-informed instructional practices that ultimately enhance teaching and learning experiences.
+2. **Empower Data-Driven Instruction:** Demonstrate how the Ed-Fi Data Standard can empower Practitioners to leverage data to personalize instruction, identify student needs, and track progress over time. Showcase examples of how other educators have successfully used data to inform instructional decisions and improve student outcomes whenever possible.
+3. **Address Concerns about Time and Effort:** Practitioners often face time constraints and competing priorities. Emphasize how adoption of the Ed-Fi Data Standard can streamline data entry and access processes, providing them with the data they need efficiently.
 
 #### Questions to anticipate
 
@@ -386,10 +376,11 @@ BENEFITS OF THE ED-Fl DATA STANDARD
 Adopting the Ed-Fi Data Standard opens doors for you to maximize the value of data and drive student progress effectively. The Ed-Fi Data Standard is a reliable framework for organizing, classifying, managing, and collecting data, streamlining processes and enhancing data quality.
 
 The Ed-Fi Data Standard can help you:
-- **Increase efficiency:**Say goodbye to tedious data entry across multiple systems. The Ed-Fi Data Standard automates data collection processes, saving you time and effort so you can focus on what you do best: teaching.
-- Personalize instruction for every student: With comprehensive student information at your fingertips, you'll have the insights you need to meet the unique needs of each student by creating personalized learning experiences that inspire growth and success.
-- Make data-driven decisions with confidence: The Ed-Fi Data Standard provides real-time insights into student progress, helping you identify areas for improvement and implement targeted interventions that make a difference.
-- Collaborate with your fellow educators: With the Ed-Fi Data Standard, you and your colleagues will be on the same page, working from a shared understanding of education data. Together, you'll have the tools you need to collaborate and develop effective strategies and initiatives that benefit your students.
+
+- **Increase efficiency:** Say goodbye to tedious data entry across multiple systems. The Ed-Fi Data Standard automates data collection processes, saving you time and effort so you can focus on what you do best: teaching.
+- **Personalize instruction for every student:** With comprehensive student information at your fingertips, you'll have the insights you need to meet the unique needs of each student by creating personalized learning experiences that inspire growth and success.
+- **Make data-driven decisions with confidence:** The Ed-Fi Data Standard provides real-time insights into student progress, helping you identify areas for improvement and implement targeted interventions that make a difference.
+- **Collaborate with your fellow educators:** With the Ed-Fi Data Standard, you and your colleagues will be on the same page, working from a shared understanding of education data. Together, you'll have the tools you need to collaborate and develop effective strategies and initiatives that benefit your students.
 
 By leveraging the power of the Ed-Fi Data Standard, you can make more informed, data-driven decisions to support the progress and success of every learner.
 
@@ -402,6 +393,7 @@ Gain access to comprehensive student information, including academic performance
 Make informed decisions about instructional practices and interventions based on real-time data insights. The Ed-Fi Data Standard enables you to track student progress, identify areas for improvement, and implement targeted interventions to support student growth and achievement.
 
 Collaborate with colleagues and stakeholders to develop effective strategies and initiatives that benefit students. With standardized data and insights, you can work together to identify trends, share best practices, and develop evidence-based approaches to improve student outcomes.
+
 - The Ed-Fi Data Standard is aligned with industry best practices and guidelines for data management in education. By adopting the standard, you demonstrate a commitment to excellence and ensure that your data practices are in line with the latest standards and requirements.
 
 #### Draft email outreach
@@ -444,11 +436,13 @@ Facilitators represent a diverse group of individuals and organizations who play
 - Developing and/or funding programs, technologies, and solutions that advance student outcomes
 
 #### Roles included in this audience group
+
 - Funders (e.g., Foundation Staff, Grant Managers)
 
 Advocates Community Leaders
 
 Education Policy Experts
+
 - Nonprofit Organization Representatives
 - Education Consultants
 - Researchers and Research Institutions
@@ -460,9 +454,9 @@ Education Policy Experts
 
 Facilitators can play an important role in advocating for the adoption of the Ed-Fi Data Standard. Communications with Facilitators should be less formal and focus on building allyship with them. Here are some key approaches to engage Facilitators and enlist their support:
 
-1. **Highlight the Benefits for Communities:**Emphasize the potential of the Ed-Fi Data Standard in improving education outcomes. Facilitators are often motivated by initiatives that drive meaningful change, so focus on how the standard can positively impact students, educators, and communities.
-2. **Demonstrate Scalability:**Facilitators are interested in initiatives that can scale and have a broad impact. Highlight how the Ed-Fi Data Standard is scalable across different education systems, from individual schools to entire states. Showcase success stories and examples of how the standard has been implemented effectively in different contexts.
-3. Provide Resources and Support: Facilitators may need resources and support to advocate for the adoption of the Ed-Fi Data Standard. Provide them with informational materials, case studies, and talking points that they can use to educate others about the benefits of the standard.
+1. **Highlight the Benefits for Communities:** Emphasize the potential of the Ed-Fi Data Standard in improving education outcomes. Facilitators are often motivated by initiatives that drive meaningful change, so focus on how the standard can positively impact students, educators, and communities.
+2. **Demonstrate Scalability:** Facilitators are interested in initiatives that can scale and have a broad impact. Highlight how the Ed-Fi Data Standard is scalable across different education systems, from individual schools to entire states. Showcase success stories and examples of how the standard has been implemented effectively in different contexts.
+3. **Provide Resources and Support:** Facilitators may need resources and support to advocate for the adoption of the Ed-Fi Data Standard. Provide them with informational materials, case studies, and talking points that they can use to educate others about the benefits of the standard.
 
 #### Questions to anticipate
 
@@ -477,12 +471,15 @@ Facilitators may have questions about how the benefits of the Ed-Fi Data Standar
 #### Talking points
 
 The Ed-Fi Data Standard empowers communities with comprehensive insights to drive positive outcomes for their students. Your advocacy can play a pivotal role in promoting the adoption of this standard, leading to systemic improvements in education.
+
 - By adopting the Ed-Fi Data Standard, education systems can streamline data management processes, reducing administrative burdens and enabling more efficient use of resources. Your efforts can help educators and decision-makers recognize the tangible benefits of standardized data practices in enhancing operational efficiency and effectiveness.
 
 The Ed-Fi Data Standard promotes collaboration and partnership among education stakeholders, fostering a culture of transparency and collective action. Adoption of the standard can encourage collaboration among schools, districts, state agencies, and community organizations, driving coordinated initiatives that support student success.
+
 - With greater visibility into key performance indicators and student-level insights, your organization can make more informed, data-driven decisions that positively impact students.
 
 The Ed-Fi Data Standard promotes equity and access in education by providing standardized data practices that support data-driven equity initiatives. Your advocacy can help ensure that all students, regardless of background or circumstance, have access to high-quality education data that informs equitable policies and practices.
+
 - Through the Ed-Fi Community, you will have access to resources, tools, and support to help you advocate for the adoption of the Ed-Fi Data Standard effectively.
 
 Please join us in our efforts to promote the adoption of the Ed-Fi Data Standard and drive positive change in education.
@@ -510,10 +507,11 @@ PV&SPs are interested in enhancing the usability and scalability of their produc
 Guidance and Best Practices
 
 Read the [Best Practices for Coordinating with Technology Providers](https://edfi.atlassian.net/wiki/spaces/TNG/pages/22905342/Best%2BPractices%2Bfor%2BCoordinating%2Bwith%2BTechnology%2BProviders) for deeper guidance on engaging PV&SPS. Keep these top-level points in mind as you communication with PV&SPs:
-- **Highlight ROI Opportunities: **Demonstrate how adopting the Ed-Fi Data Standard can lead to cost savings and increased revenue opportunities for PV&SPs. Emphasize the potential for reducing development time and costs associated with custom integrations and the ability to scale products more effectively across different settings.
-- Showcase Replicability and Scalability: Illustrate how the Ed-Fi Data Standard offers a framework that is replicable across various educational environments. PV&SPs are interested in solutions that can scale easily and integrate seamlessly with existing infrastructure without extensive customization.
-- **Community-Defined Requirements: **Discuss how community-defined requirements provide clear guidelines and expectations for PV&SPs. These requirements are connected to proven, visible value that PV&SPs can build into their products, ensuring alignment with market needs and reducing the risk of developing one-off solutions.
-- **Integration and Interoperability: **Address concerns about integration challenges by highlighting how the Ed-Fi Data Standard facilitates interoperability between different systems and applications. Showcase case studies or success stories where other PV&SPs have successfully integrated the standard into their products, resulting in improved data management and operational efficiency for their clients.
+
+- **Highlight ROI Opportunities:** Demonstrate how adopting the Ed-Fi Data Standard can lead to cost savings and increased revenue opportunities for PV&SPs. Emphasize the potential for reducing development time and costs associated with custom integrations and the ability to scale products more effectively across different settings.
+- **Showcase Replicability and Scalability**: Illustrate how the Ed-Fi Data Standard offers a framework that is replicable across various educational environments. PV&SPs are interested in solutions that can scale easily and integrate seamlessly with existing infrastructure without extensive customization.
+- **Community-Defined Requirements:** Discuss how community-defined requirements provide clear guidelines and expectations for PV&SPs. These requirements are connected to proven, visible value that PV&SPs can build into their products, ensuring alignment with market needs and reducing the risk of developing one-off solutions.
+- **Integration and Interoperability:** Address concerns about integration challenges by highlighting how the Ed-Fi Data Standard facilitates interoperability between different systems and applications. Showcase case studies or success stories where other PV&SPs have successfully integrated the standard into their products, resulting in improved data management and operational efficiency for their clients.
 
 #### Questions to anticipate
 
@@ -524,14 +522,17 @@ What are the potential ROI opportunities for integrating the Ed-Fi Data Standard
 What are examples of other vendors who have successfully integrated the Ed-Fi Data Standard and seen measurable benefits?
 
 What community-defined requirements are currently in place, and how do they align with our product development roadmap?
+
 - How does the Ed-Fi Data Standard ensure data security and compliance with industry regulations?
 
 #### Tailored Communications Resources for Product Vendors & Service Providers
 
 #### Talking points
+
 - Adopting the Ed-Fi Data Standard allows you to reduce the need for custom integrations and one-off solutions. Standardized data practices streamline development efforts, saving time and resources in creating bespoke products.
 
 The Ed-Fi Data Standard facilitates data exchange in known and repeatable patterns, making it easier for you to integrate with educational systems and applications. This standardization ensures consistency and interoperability across different environments.
+
 - You can leverage the Ed-Fi Data Standard to connect data sources that were previously challenging to access or integrate. By consolidating disparate data streams into a unified format, you can enhance your products and services with richer, more comprehensive datasets.
 
 The Ed-Fi Data Standard aligns with community-wide requirements, reducing development costs and enhancing product marketability. Standardized solutions drive ROI by ensuring compatibility with a broad range of educational systems and applications.
@@ -551,6 +552,7 @@ GIVING EDUCATORS DEEPER INSIGHT INTO LEARNERS' PROGRESS
 San Diego County Office of Education (SDCOE) used the Ed-Fi Standard to create a high-quality dashboard that gives educators more insight into how students progress in college and career readiness week to week.
 
 The dashboard captures real-time information in categories including:
+
 - Attendance - Schools can see and address absenteeism.
 - Grades - The dashboard allows educators to see how individual students are doing at any given moment as course grading is submitted.
 - CTE and dual-enrollment courses - The Dashboard shows educators how students are progressing and which life paths they may be interested in pursuing.
@@ -583,12 +585,13 @@ Explore other ideas, innovations, and resources at [www.ed-fi.org/resources](htt
 - Definition: The Ed-Fi Alliance unites educators and technology providers to ensure K-12 systems produce useful insights that support student success.
 - We say "the Ed-Fi Data Standard" when referencing the standard specifically. We do not lead with this message when defining who we are externally.
 
-- **Definition: **The Ed-Fi Alliance drives national adoption of the Ed-Fi Data Standard, a common language for education technology systems to securely exchange information. When all that information is united together, student needs are more quickly recognized, assessed, and met.
+- **Definition:**The Ed-Fi Alliance drives national adoption of the Ed-Fi Data Standard, a common language for education technology systems to securely exchange information. When all that information is united together, student needs are more quickly recognized, assessed, and met.
 - We say "the Ed-Fi community" when referencing those who support and contribute to the organization's mission.
 
 - Definition: The Ed-Fi Alliance is supported by a national community of educators and technology providers who contribute their feedback and expertise to help advance the Ed-Fi Data Standard and technology suite.
 
 We only communicate about the "technology suite" when needed to describe implementation or adoption, preferably with a more technical audience.
+
 - Definition: To maximize the impact of the standard, the Alliance's technology suite gives education agencies and technology providers a roadmap to build on the proven success of others.
 - Words to Use - Terminology that would be understandable to all audiences:
 
