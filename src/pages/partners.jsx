@@ -49,9 +49,9 @@ function Main() {
             </Heading>
             <p>
               Certifications allow product developers to demonstrate a
-              product's fidelity to Ed-Fi standards and guidelines, and for
+              product's fidelity to the Ed-Fi Data Standard and guidelines, and for
               purchasers or users to be confident that a product conforms to
-              those same Ed-Fi standards and guidelines.
+              those same standard and guidelines.
             </p>
             <p>
               The Ed-Fi Certification program was developed from the experience
@@ -75,11 +75,11 @@ function Main() {
             </Heading>
             <p>
               Ed-Fi Badges allow product developers to demonstrate support for
-              Ed-Fi standards and technology, particularly in areas that are not
+              Ed-Fi Data Standard and the Ed-Fi Technology Suite, particularly in areas that are not
               yet covered by an Ed-Fi Certification.
             </p>
             <p>
-              Many products that use Ed-Fi standardized APIs or integrate
+              Many products that use Ed-Fi Data Standardized APIs or integrate
               natively with Ed-Fi technology tools (such as the Ed-Fi
               Operational Data Store and API) are forging new ground in terms of
               defining data integration use cases valuable to schools. Badges
@@ -93,9 +93,8 @@ function Main() {
               precursors to new certifications.
             </p>
             <p>
-              Unlike certification, badges also focus on both the Ed-Fi Data Standards as
-              well as the Ed-Fi Technology Suite; by contrast, certifications
-              only focus on Ed-Fi standards.
+              Unlike certification, badges also focus on both the Ed-Fi Data Standard and the Ed-Fi Technology Suite; by contrast, certifications
+              only focus on the Ed-Fi Data Standard.
             </p>
             <Link
               to="/partners/badging"

@@ -54,7 +54,7 @@ discussion](./product-availability-information.md).
 ## Rationale
 
 The main goal of implementation verification is to create a community-centric
-way to validate the quality and usability of Ed-Fi standards-based integrations.
+way to validate the quality and usability of the Ed-Fi Data Standard-based integrations.
 
 In the initial years of certification, a number of complaints emerged
 about certifying products under-investing in features or support critical to

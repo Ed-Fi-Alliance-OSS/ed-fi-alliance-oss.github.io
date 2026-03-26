@@ -1,18 +1,20 @@
-# Guidelines and Expectations for States Using Ed-Fi Standards
+# Guidelines and Expectations for States Using the Ed-Fi Technology Suite
 
-By using Ed-Fi API standards for data collection, states are basing their data collections on the Ed-Fi API Data Standard and its semantics. The expectation is that states will follow these standards to the maximum extent permitted. This document describes some of the most important ways that states can align to Ed-Fi standards.
+By using Ed-Fi Technology Suite for data collection, states are basing their data collections on the Ed-Fi API Specifications and its semantics. The expectation is that states will follow these specifications to the maximum extent permitted. This document describes some of the most important ways that states can align to the Ed-Fi Data Standard.
 
 There are important reasons why it is important for states to be strongly aligned.
 
-* **Following the standard supports the vendor market and lowers costs to LEAs.** Vendors and other community stakeholders rely on states for alignment so that their support for Ed-Fi is portable across state boundaries. Unnecessary deviations result in costs to vendors to support non-standard elements, and those costs are ultimately borne by LEAs.
+* **Following the standard supports the vendor market and lowers costs to LEAs.** Vendors and other community stakeholders rely on states for alignment so that their support for the Ed-Fi Data Standard is portable across state boundaries. Unnecessary deviations result in costs to vendors to support non-standard elements, and those costs are ultimately borne by LEAs.
 
-* **State data ecosystems depend on standardization.** In adopting Ed-Fi, a state is beginning to build a standards-based data ecosystem in their state. Over time, states who do not follow the standards closely also come to understand their own internal costs for these decisions and costs that are borne by their state ecosystem (poor vendor access and additional costs of customized data flows). Over time, states that did not align well to Ed-Fi standards end up re-aligning and absorbing additional, unnecessary change management costs.
+* **State data ecosystems depend on standardization.** In adopting the Ed-Fi Data Standard, a state is beginning to build a standards-based data ecosystem in their state. Over time, states who do not follow the standards closely also come to understand their own internal costs for these decisions and costs that are borne by their state ecosystem (poor vendor access and additional costs of customized data flows). Over time, states that did not align well to the Ed-Fi Data Standard end up re-aligning and absorbing additional, unnecessary change management costs.
 
-States may perceive that they cannot meet some of these expectations due to policy reasons. On this point it is important to remember that Ed-Fi is a standard, and that – in using a standard – states have a responsibility to align to ensure that the entire community benefits from industry-standard interfaces.
+## **Align to the Ed-Fi Data Standard, even when it requires policy changes**
+
+States may perceive that they cannot meet some of these expectations due to policy reasons. On this point it is important to remember that the Ed-Fi Data Standard is a standard, and that – in using a standard – states have a responsibility to align to ensure that the entire community benefits from industry-standard interfaces.
 
 ## **Avoid unnecessary API Extensions**
 
-Ed-Fi API Extensions are available in recognition that each state will have unique data elements not present in Ed-Fi. However, extensions should not be used when unnecessary, and in particular should not duplicate elements that are already present in the data model.
+Ed-Fi API Extensions are available in recognition that each state will have unique data elements not present in the Ed-Fi API Specifications. However, extensions should not be used when unnecessary, and in particular should not duplicate elements that are already present in the data model.
 
 ## **Avoid aggregate data elements**
 

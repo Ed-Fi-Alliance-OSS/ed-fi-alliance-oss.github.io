@@ -22,9 +22,9 @@ Standards.docx](https://edfi.atlassian.net/wiki/download/attachments/23695618/Gl
 ## What is Covered in Certification?
 
 Ed-Fi Certification is a technical verification that a vendor system conforms to
-an Ed-Fi API standard. By "conform" we mean that the vendor system:
+an Ed-Fi API Specification. By "conform" we mean that the vendor system:
 
-* Demonstrates it has implemented an API standard or can communicate with (as a
+* Demonstrates it has implemented an API specification or can communicate with (as a
   client) an implementation of the API across all API resources and fields
   marked as "required" in the API specification
 

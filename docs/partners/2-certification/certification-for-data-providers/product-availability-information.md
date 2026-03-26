@@ -46,7 +46,7 @@ expectations on availability.
 
 In the initial years of certification, a number of issues emerged from the
 lack of clarity on where and if an education agency could get access to data
-exchange functionality defined by Ed-Fi standards. In some cases, an education
+exchange functionality defined by the Ed-Fi Data Standard. In some cases, an education
 agency took a dependency on certified functionality based on a certification
 record only to later discover that they did not have access to that
 functionality.

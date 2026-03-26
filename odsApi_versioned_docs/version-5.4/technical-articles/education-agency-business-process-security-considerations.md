@@ -81,7 +81,7 @@ for connections originating from outside the state or outside of known provider
 
 ### Discussion
 
-A core principle of the Ed-Fi standards is to support the natural keys to data
+A core principle of the Ed-Fi Data Standard is to support the natural keys to data
 records, such as using state-provided student IDs to uniquely identify students,
 rather than requiring the use of API-assigned surrogate keys. This practice
 enables disparate systems to more easily coordinate, because such keys are "natural"
@@ -158,7 +158,7 @@ often built into existing cloud-based infrastructure.
 ### Recommendations
 
 The Alliance recommends that API deployments configure deployment security
-(using firewalls or other security tools) to detect brute-force login attempts. 
+(using firewalls or other security tools) to detect brute-force login attempts.
 
 This recommendation does not preclude also including security against other
 types of brute-force attacks such as denial-of-service attacks, brute-force SQL or

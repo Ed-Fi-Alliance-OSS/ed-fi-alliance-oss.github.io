@@ -6,7 +6,7 @@ title: Versioning and Releases
 # Ed-Fi Data Standard Versioning and Releases
 
 The Ed-Fi data model uses semantic versioning. It is also organized into
-numbered "suites" that reflect generational changes across Ed-Fi standards and
+numbered "suites" that reflect generational changes across the Ed-Fi Data Standard and
 technology as well as generational compatibility.
 
 ## Use of Semantic Versioning (semver)
@@ -63,7 +63,7 @@ Each version of the Ed-Fi Unifying Data Model (UDM) is part of a numbered Ed-Fi
 suite.  The suite number will generally appear as a suffix on the name; it can
 de facto be considered part of the product name.
 
-The suite number communicates the "generation" of Ed-Fi standards and technology
+The suite number communicates the "generation" of the Ed-Fi Data Standard and technology
 in which the product participates. However, note that strict compatibility will
 be defined in technical contexts using semver versions.
 
