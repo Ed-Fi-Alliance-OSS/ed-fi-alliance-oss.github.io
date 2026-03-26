@@ -224,7 +224,7 @@ The URI representation of the schema name should be derived by splitting the ter
 
 The resource name should be the camel-cased (also known as **"medial capitals"**), singularized name of the resource (e.g., **"studentTransportation"** not **"StudentTransportation"** or **"studentTransportations"**).
 
-Note that in **0001-StudentTransportation_ResourceClaims.sql** script above, the resulting **ClaimName** value is **"<http://ed-fi.org/ods/identity/claims/sample-student-transportation/studentTransportation>"**.
+Note that in **0001-StudentTransportation_ResourceClaims.sql** script above, the resulting **ClaimName** value is `"http://ed-fi.org/ods/identity/claims/sample-student-transportation/studentTransportation\"`.
 
 ## Step 7. **Run Code Generation and Verify Changes**
 
