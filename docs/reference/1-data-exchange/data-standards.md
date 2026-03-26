@@ -104,9 +104,9 @@ Request for Comment (RFC) versions contain data elements and models proposed for
 
 The Ed-Fi Alliance has a certification program that covers many use cases based on its Core Standards.
 
-Ed-Fi certifications allow product developers to demonstrate a product's fidelity to Ed-Fi standards and guidelines, and for purchasers or users to be confident that a product conforms to those same Ed-Fi standards and guidelines. The program's goal is to ensure that systems can inter-operate and exchange data using Ed-Fi standards and technology.
+Certifications allow product developers to demonstrate a product's fidelity to Ed-Fi standards and guidelines, and for purchasers or users to be confident that a product conforms to those same Ed-Fi standards and guidelines. The program's goal is to ensure that systems can inter-operate and exchange data using Ed-Fi standards and technology.
 
-The Ed-Fi certification program was developed from the experience of education agencies in certifying Ed-Fi-compliant data exchanges for their enterprise systems. The Ed-Fi Alliance has built on that foundation to provide a certification that can be used across different agencies and organizations, alleviating the need for vendors to undergo multiple, overlapping local quality assurance efforts.
+The Ed-Fi Certification program was developed from the experience of education agencies in certifying Ed-Fi-compliant data exchanges for their enterprise systems. The Ed-Fi Alliance has built on that foundation to provide a certification that can be used across different agencies and organizations, alleviating the need for vendors to undergo multiple, overlapping local quality assurance efforts.
 
 Information about the Ed-Fi Certification Program [can be found here](/partners/certification).
 

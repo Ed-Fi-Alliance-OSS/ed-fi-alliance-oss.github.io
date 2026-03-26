@@ -5,7 +5,7 @@
 Agencies are encouraged to ask for their data provider products to be Ed-Fi
 certified; however, agencies should first understand their needs sufficiently to
 request specific vendors be certified on specific Ed-Fi Alliance certifications.
-Note that there are many areas with no applicable Ed-Fi certification. Hence,
+Note that there are many areas with no applicable Ed-Fi Certification. Hence,
 specific knowledgeable requests are much more likely to be successful and
 serviceable than blanket ambiguous ones.
 
@@ -40,7 +40,7 @@ API integration.
 
 ## What is Not Covered?
 
-Ed-Fi certification does not cover these elements of a vendor implementation:
+Certification does not cover these elements of a vendor implementation:
 
 * Under what conditions the certified functionality is made available to the
   vendor's customers. For example, this would include if the certified
@@ -67,7 +67,7 @@ data, but also the meaning of the data. This is critical to the Ed-Fi community
 mission of enabling seamless exchange of complex and diverse data in K–12 to
 improve student performance.
 
-Accordingly, Ed-Fi certification validates that elements in the certified system
+Accordingly, certification validates that elements in the certified system
 sent via API conform to data definitions in Ed-Fi API specifications. Those
 specifications in turn draw their vocabularies from the applicable the Ed-Fi
 Data Handbook (see [Unifying Data
@@ -102,7 +102,7 @@ local customizations. In many cases even the meaning or value of an element may
 depend on local and configurable business logic. Attendance is a good example:
 is a student who misses the first period of the school day counted as being in
 attendance? For some schools, yes, and for others, no; others may say the
-student was "tardy." Ed-Fi certification can only test that the vendor system
+student was "tardy." Certification can only test that the vendor system
 can transmit attendance values, but can't validate the business logic used to
 make semantic determinations, and whether those determinations (i.e., the
 default logic in the student information system) are accurate for a particular
@@ -112,8 +112,8 @@ local context.
 
 An LEA implementation can escalate any gaps if they are within a supported
 region and are using the credentialed data model and on a recent supported
-version. Ed-Fi will evaluate the gaps with the vendor to review their product's
-ability to support all requirements of the specific Ed-Fi certification within
+version. The Ed-Fi Alliance will evaluate the gaps with the vendor to review their product's
+ability to support all requirements of the specific Ed-Fi Certification within
 the region.  If there are any Ed-Fi gaps to the data that cannot be resolved,
 then the vendor’s certification will no longer apply for that region. See [this
 page for further

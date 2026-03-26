@@ -4,7 +4,7 @@ Ed-Fi has two different types of credentials, Certifications and Badges.  
 
 ## Certifications
 
-Ed-Fi certifications allow:
+Ed-Fi Certification allows:
 
 * Product developers to demonstrate a product's fidelity to Ed-Fi standards and guidelines
 * Purchasers and users to be confident that a product conforms to those same Ed-Fi standards and guidelines

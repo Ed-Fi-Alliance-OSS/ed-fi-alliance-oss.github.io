@@ -48,13 +48,13 @@ function Main() {
               Certification
             </Heading>
             <p>
-              Ed-Fi certifications allow product developers to demonstrate a
+              Certifications allow product developers to demonstrate a
               product's fidelity to Ed-Fi standards and guidelines, and for
               purchasers or users to be confident that a product conforms to
               those same Ed-Fi standards and guidelines.
             </p>
             <p>
-              The Ed-Fi certification program was developed from the experience
+              The Ed-Fi Certification program was developed from the experience
               of many education agencies in certifying Ed-Fi-compliant data
               exchanges for their enterprise systems. The Ed-Fi Alliance has
               built on that foundation to provide a certification that can be
@@ -93,8 +93,8 @@ function Main() {
               precursors to new certifications.
             </p>
             <p>
-              Unlike certification, badges also focus on both Ed-Fi standards as
-              well as Ed-Fi technology tools; by contrast, Ed-Fi certifications
+              Unlike certification, badges also focus on both the Ed-Fi Data Standards as
+              well as the Ed-Fi Technology Suite; by contrast, certifications
               only focus on Ed-Fi standards.
             </p>
             <Link

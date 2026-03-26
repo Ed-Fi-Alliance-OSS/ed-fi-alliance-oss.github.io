@@ -44,10 +44,8 @@ discretion determine that the product is not a candidate for the certification.
 
 ### a. Semantics Must be Preserved in the Serialization to Ed-Fi Formats
 
-Among other factors involved in data exchange, Ed-Fi certifications test that
-systems can correctly represent their data in Ed-Fi format, and in so doing
-accurately translate local semantics into Ed-Fi data semantics. If semantics are
-not preserved, the test is not considered to have passed.
+Among other factors involved in data exchange, certifications test that
+systems can correctly represent their data according to the Ed-Fi Data Standard, and in so doing accurately translate local semantics into the Ed-Fi Data Standard data semantics. If semantics are not preserved, the test is not considered to have passed.
 
 * Datatype transitions are fine as long as the values map according to customary
   mapping logic (e.g., the number 101 becomes represented as the string "101").

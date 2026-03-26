@@ -32,7 +32,7 @@ certification record.
   is or is not within the specified geography.
 * Version information MUST be for versions generally available on the market
   (i.e., version information MUST not include development or future versions).
-  Note that for Ed-Fi certification generally, only functionality actually
+  Note that for certification generally, only functionality actually
   available in the market can be certified, not functionality under development.
 * Non-specific information MUST NOT be included (e.g., “Please contact us for
   availability information").
@@ -44,7 +44,7 @@ certification records to determine if they have access to certified product
 functionality, and for providers to clarify their customers or users
 expectations on availability.
 
-In the initial years of Ed-Fi certification, a number of issues emerged from the
+In the initial years of certification, a number of issues emerged from the
 lack of clarity on where and if an education agency could get access to data
 exchange functionality defined by Ed-Fi standards. In some cases, an education
 agency took a dependency on certified functionality based on a certification
