@@ -169,7 +169,7 @@ This permission enables the "row count" button on the ODS page, but this feature
 
 Ownerships define which teams have access to specific resources in the system. Managing ownerships is crucial for proper access control and delegation of responsibilities.
 
-:::Note
+:::note
 
 You will not be able to configure ownerships until an environment is created (see Step 1). If you are blocked by AWS dependencies, resolve those first.
 
