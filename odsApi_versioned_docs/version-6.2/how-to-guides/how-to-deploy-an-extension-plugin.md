@@ -43,102 +43,19 @@ Initdev
 This will execute configured script from _**secret.json**_ to download sample
 extension plugin and deploy the plugin artifacts to local database.
 
-```json title="secret.json"
-{
-  "Plugin:Folder": "../../Plugin",
-  "Plugin:Scripts:0": "tpdm",
-  "Plugin:Scripts:1": "sample"
-}
-```
+![Image](https://edfi.atlassian.net/wiki/download/thumbnails/22774717/image2021-10-26_16-35-10.png?version=1&modificationDate=1641861360153&cacheVersion=1&api=v2&width=312&height=89)
 
-```powershell title="Deployment output"
-packages:TPDMCorePopulatedTemplate:PackageVersion                 7.2.202
-packages:TPDMCorePostgreSqlMinimalTemplate:PackageName            EdFi.Suite3.Ods.Minimal.Template.TPDM.Core.{ExtensionVersion}.PostgreSQL.Standard.{StandardVersion}
-packages:TPDMCorePostgreSqlMinimalTemplate:PackageSource          https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json
-packages:TPDMCorePostgreSqlMinimalTemplate:PackageVersion         7.2.189
-packages:TPDMCorePostgreSqlPopulatedTemplate:PackageName          EdFi.Suite3.Ods.Populated.Template.TPDM.Core.{ExtensionVersion}.PostgreSQL.Standard.{StandardVersion}
-packages:TPDMCorePostgreSqlPopulatedTemplate:PackageSource        https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json
-packages:TPDMCorePostgreSqlPopulatedTemplate:PackageVersion       7.2.194
-Plugin:Folder                                                     ../../Plugin
-Plugin:Scripts:0                                                  tpdm
-Plugin:Scripts:1                                                  sample
-Urls                                                              http://localhost:54746
-
-WARNING: The following settings are being overridden by the EdFi.Ods.WebApi project's user secrets:
-
-Plugin:Folder   ../../Plugin
-Plugin:Scripts:0 tpdm
-Plugin:Scripts:1 sample
-
-Invoke-NewDevelopmentAppSettings done in 2s.
-
-
------------------------
-    Install-Plugins
------------------------
-
-& D:\Ed-Fi-ODS-Implementation\Plugin\tpdm.ps1
-D:\Ed-Fi-ODS-Implementation\tools/nuget install EdFi.Suite3.Ods.Extensions.TPDM.Core.1.1.0.Standard -source https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json -outputDirectory D:\ed-fi\Ed-Fi-ODS-Implementation\Plugin -ExcludeVersion -version 7.2.159
-D:\Ed-Fi-ODS-Implementation\Plugin\EdFi.Suite3.Ods.Extensions.TPDM.Core.1.1.0.7.2.159
-& D:\Ed-Fi-ODS-Implementation\Plugin\sample.ps1
-D:\Ed-Fi-ODS-Implementation\tools/nuget install EdFi.Suite3.Ods.Extensions.Sample -source https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json -outputDirectory D:\ed-fi\Ed-Fi-ODS-Implementation\Plugin -ExcludeVersion -version 7.2.24
-D:\Ed-Fi-ODS-Implementation\Plugin\EdFi.Suite3.Ods.Extensions.Sample.7.2.24
-Install-Plugins done in 10s.
-```
+![Image](https://edfi.atlassian.net/wiki/download/thumbnails/22774717/image2021-10-26_16-39-14.png?version=1&modificationDate=1641861360143&cacheVersion=1&api=v2&width=1257&height=615)
 
 After the successful execution of initdev, you will find the sample extension in
 `<source directory>`\\Ed-Fi-ODS-Implementation\\Plugin folder.
 
-```none title="Directory Listing"
-Ed-Fi-ODS-Implementation/
-├─ Plugin/
-| ├─ EdFi.Suite3.Ods.Extensions.Sample.7.2.24/
-| ├─ EdFi.Suite3.Ods.Extensions.TPDM.Core.1.1.0.7.2.159/
-| ├─ homograph.ps1
-| ├─ profiles.sample.ps1
-| ├─ sample.ps1
-| ├─ tpdm.ps1
-```
+![Image](https://edfi.atlassian.net/wiki/download/thumbnails/22774717/image2021-10-26_16-49-9.png?version=1&modificationDate=1641861360133&cacheVersion=1&api=v2&width=872&height=210)
 
 Run the "Ed-Fi-Ods.sln" solution from Visual Studio and verify that the sample
 data models are listed in your API landing page ("Discovery API" endpoint).
 
-```json
-{
-    "version": "7.2",
-    "informationalVersion": "7.2",
-    "suite": "3",
-    "build": "7.2.1201.0",
-    "dataModels": [
-        {
-            "name": "Ed-Fi",
-            "version": "5.1.0",
-            "informationalVersion": "The Ed-Fi Data Model 5.1"
-        },
-        // highlight-start
-        {
-            "name": "Sample",           <-- THIS IS NEW
-            "version": "1.0.0"
-        },
-        // highlight-end
-        {
-            "name": "TPDM",
-            "version": "1.1.0",
-            "informationalVersion": "TPDM-Core"
-        }
-    ],
-    "urls": {
-        "dependencies": "https://api.ed-fi.org/v7.2/api/metadata/data/v3/dependencies",
-        "openApiMetadata": "https://api.ed-fi.org/v7.2/api/metadata/",
-        "oauth": "https://api.ed-fi.org/v7.2/api/oauth/token",
-        "dataManagementApi": "https://api.ed-fi.org/v7.2/api/data/v3/",
-        "xsdMetadata": "https://api.ed-fi.org/v7.2/api/metadata/xsd",
-        "changeQueries": "https://api.ed-fi.org/v7.2/api/changeQueries/v1/",
-        "composites": "https://api.ed-fi.org/v7.2/api/composites/v1/",
-        "identity": "https://api.ed-fi.org/v7.2/api/identity/v2/"
-    }
-}
-```
+![Image](https://edfi.atlassian.net/wiki/download/thumbnails/22774717/image2021-10-26_16-52-9.png?version=1&modificationDate=1641861360127&cacheVersion=1&api=v2&width=644&height=573)
 
 You can also verify the Sample API endpoints in the Swagger UI documentation:
 
@@ -175,20 +92,15 @@ You can also verify the Sample API endpoints in the Swagger UI documentation:
   Import-Module .\Deployment.psm1
   Initialize-DeploymentEnvironment
 
-  <trimmed output...>
+![Image](https://edfi.atlassian.net/wiki/download/thumbnails/22774717/image2021-3-26_11-26-51.png?version=1&modificationDate=1641861360513&cacheVersion=1&api=v2&width=474&height=111)
 
-  Duration Task
-  -------- ----
-  00:00.95 Install-Plugins
-  00:01.49 Reset-AdminDatabase
-  00:01.49 Reset-SecurityDatabase
-  00:13.08 Reset-OdsDatabase
-  -        -
-  00:17:55 InitializeDeploymentEnvironment
-  ```
+![Image](https://edfi.atlassian.net/wiki/download/thumbnails/22774717/image2021-10-26_17-20-22.png?version=1&modificationDate=1641861360080&cacheVersion=1&api=v2&width=823&height=212)
 
 * After the successful execution, you will find sample schema tables in the
   deployed ODS database, under the `sample` schema.
+
+  ![Image](https://edfi.atlassian.net/wiki/download/thumbnails/22774717/image2021-10-26_17-0-27.png?version=1&modificationDate=1641861360107&cacheVersion=1&api=v2&width=350&height=605)
+
 
 ### Deploy Sample Extension Binaries to Web Server
 
@@ -201,15 +113,8 @@ You can also verify the Sample API endpoints in the Swagger UI documentation:
 * Copy the extracted folder and paste it in `C:\inetpub\Ed-Fi\WebApi\Plugin` in
   your WebAPI directory.
 
-  ```none title="File Listing"
-  c:/
-  ├─ inetpub/
-  | ├─ Ed-Fi/
-  |   ├─ WebApi/
-  |     ├─ Plugin
-  |       ├─ EdFi.Suite3.Ods.Extensions.Sample.7.2.24/
-  |       ├─ EdFi.Suite3.Ods.Extensions.TPDM.Core.1.1.0.7.2.159/
-  ```
+  ![Image](https://edfi.atlassian.net/wiki/download/thumbnails/22774717/image2021-10-26_17-10-52.png?version=1&modificationDate=1641861360097&cacheVersion=1&api=v2&width=808&height=193)
+
 
 * Update appsettings.json, for plugin settings as shown below:
 
@@ -226,6 +131,10 @@ You can also verify the Sample API endpoints in the Swagger UI documentation:
 
 * Browse to the Discovery API endpoint and verify that sample data models are
   listed, as described above.
+
+![Image](https://edfi.atlassian.net/wiki/download/thumbnails/22774717/image2021-10-26_16-52-9.png?version=1&modificationDate=1641861360127&cacheVersion=1&api=v2&width=644&height=573)
+
+
 * You can also verify the Sample extension API endpoints in the Swagger UI
   documentation.
 
