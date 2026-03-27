@@ -66,3 +66,9 @@ This command generates static content into the `build` directory and can be serv
 
 > [!TIP]
 > It is a good idea to run the `build` command before pushing a branch to GitHub for review. Among other things, it will help you detect broken links.
+
+## AI Tool Usage
+
+We are using AI tools to help with writing and editing content. If you are using an AI tool to assist with writing or editing, please be sure to review the output carefully before including it in the repository. AI tools can be helpful for generating ideas and providing suggestions, but they may not always produce accurate or appropriate content. Always use your judgment and ensure that the final content meets our standards for quality and accuracy.
+
+The hook in the `.claude` directory requires a local copy of the `jq` utility to parse JSON output from the AI tools. If you don't have `jq` installed, you can install it from [https://stedolan.github.io/jq/download/](https://stedolan.github.io/jq/download/). Make sure to add it to your system's PATH so that it can be accessed from the command line.

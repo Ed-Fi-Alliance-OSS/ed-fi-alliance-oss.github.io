@@ -1,0 +1,1 @@
+Read the `CLAUDE.md` file for guidance on how to use AI tools effectively when working with this repository. The `SKILL.md` file in the `.claude/skills/verify` directory provides a specific skill for running pre-PR validation, which includes linting all files and building the site to catch style issues and broken internal links before submitting a PR.
