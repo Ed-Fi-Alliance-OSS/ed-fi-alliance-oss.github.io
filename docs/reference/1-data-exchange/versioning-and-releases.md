@@ -78,7 +78,7 @@ Early access materials are described as such with keywords "EARLY ACCESS" in the
 * reference documentation
 
 When early access material is verified to be stable, we will remove "EARLY
-ACCESS" from the description in the next release. The principal for this
+ACCESS" from the description in the next release. The principle for this
 promotion is to ask for burden of proof that is commensurate with the risk or
 scope of the change:
 
@@ -103,7 +103,7 @@ considered “non-breaking”, so can be incorporated into a minor-point release
 ### Avoiding Early Access Material
 
 If an agency wishes to avoid early access material, it can do so by using only
-elements defined in the previous release.
+elements defined in the previous release. For example, Data Standard 6.1 has a new Special Education Data Model (SEDM) component defined as EARLY ACCESS. There are existing Special Education domain entities that continue to be available from prior releases - they have not been removed, and the new approach is available in parallel with the old one.
 
 ### Purpose of Early Access
 
