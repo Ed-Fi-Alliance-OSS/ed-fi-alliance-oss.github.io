@@ -27,7 +27,7 @@ There may be applicable cases where multiple years of data can be collected in
 the ODS, but agencies are cautioned to understand limitations of that deployment
 model before using that model.
 
-# ODS Deployment Modes
+## ODS Deployment Modes
 
 The ODS / API provides multiple deployment options for segregating data in the ODS. When setting up Ed-Fi ODS / API environment intended for production data collection, implementers have the option to configure the API to run on Shared Instance, Year Specific, District Specific or Instance-Year Specific modes. See the [Extensibility & Customization](../platform-dev-guide/extensibility-customization/readme.md) section for details.
 

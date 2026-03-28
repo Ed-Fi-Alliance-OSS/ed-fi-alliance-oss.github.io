@@ -46,10 +46,7 @@ and actionable information to developers and users. Key benefits include:
   response reduces the number of submission attempts.
 
 Overall, this feature significantly enhances the clarity, usability, and
-traceability of API error responses, benefiting both developers and users. For
-details and examples of the new error response format, please refer to [Error
-Response Knowledge
-Base](../client-developers-guide/error-response-knowledge-base.md).
+traceability of API error responses, benefiting both developers and users.
 
 ### MetaEd IDE v4.4
 

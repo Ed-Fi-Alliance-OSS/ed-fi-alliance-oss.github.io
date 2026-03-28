@@ -94,7 +94,7 @@ institution's needs.
 
 It is important for implementers to note that Ed-Fi ODS / API v7.0 introduces
 breaking changes listed in the [release
-notes](./../whats-new/release-notes.md#ed-fi-ods--api-v7x---breaking-changes).
+notes](./../whats-new/release-notes.md).
 These changes will impact the behavior of the API in both [Ed-Fi Data Standard
 v4](https://edfi.atlassian.net/wiki/display/EFDS4X/) and [Ed-Fi Data Standard
 v5](https://edfi.atlassian.net/wiki/display/EFDS5/Ed-Fi+Data+Standard+v5) implementations.
@@ -142,11 +142,11 @@ setup enables ODS instances to reside on separate database servers, ensuring
 improved performance and security. Refer to [API Client and ODS Instance
 Configuration](./../platform-dev-guide/configuration/api-client-and-ods-instance-configuration.md)
 for details. API administrators retain the ability to implement previously
-supported [database segmentation
-strategies](./../platform-dev-guide/extensibility-customization/readme.md#database-segmentation-strategy).
-API administrators can opt for implicit routes (segmentation information not
+supported [database partition
+strategies](./../platform-dev-guide/extensibility-customization/readme.md#database-partitioning-strategy).
+API administrators can opt for implicit routes (partitioning information not
 visible in the routes). Additionally, administrators have the option to
-configure database segmentation for explicit routes with [Context-Based
+configure database partitioning for explicit routes with [Context-Based
 Routing](./../platform-dev-guide/configuration/context-based-routing-for-year-specific-ods.md).
 Streamlined routes in ODS / API v7.0 offer simplified route configurations
 within client applications. Details on route patterns can be found in the [API
