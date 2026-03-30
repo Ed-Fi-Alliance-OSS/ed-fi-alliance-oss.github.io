@@ -271,8 +271,10 @@ documentation.
 
 * This is **not** recommended for production.
 
-:::info note: 
-	Once the installation is complete, make sure the EncryptionKey value matches the OdsConnectionStringEncryptionKey value from your ODS/API. 
+:::tip
+
+Once the installation is complete, make sure the EncryptionKey value matches the OdsConnectionStringEncryptionKey value from your ODS/API. 
+
 :::
 
 #### Step 8. Execute First-Time Configuration
