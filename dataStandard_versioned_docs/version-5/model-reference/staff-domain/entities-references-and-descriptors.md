@@ -35,58 +35,58 @@ hide_table_of_contents: true
 | Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
 | Credential | AcademicSubject | The academic subjects to which the credential pertains. | Local |     |     |     |
-| CredentialField | The field of certification for the certificate (e.g., Mathematics, Music). | Local |     |     |     |
-| CredentialType | An indication of the category of credential an individual holds. | Local |     |     |     |
-| GradeLevel | The grade level(s) certified for teaching. | Orthodox |     |     |     |
-| StateOfIssueStateAbbreviation | The abbreviation for the name of the state (within the United States) or extra-state jurisdiction in which a license/credential was issued. | Standard |     |     |     |
-| TeachingCredential | An indication of the category of a legal document giving authorization to perform teaching assignment services. | Orthodox |     |     |     |
-| TeachingCredentialBasis | An indication of the pre-determined criteria for granting the teaching credential that an individual holds. | Orthodox |     |     |     |
+| Credential | CredentialField | The field of certification for the certificate (e.g., Mathematics, Music). | Local |     |     |     |
+| Credential | CredentialType | An indication of the category of credential an individual holds. | Local |     |     |     |
+| Credential | GradeLevel | The grade level(s) certified for teaching. | Orthodox |     |     |     |
+| Credential | StateOfIssueStateAbbreviation | The abbreviation for the name of the state (within the United States) or extra-state jurisdiction in which a license/credential was issued. | Standard |     |     |     |
+| Credential | TeachingCredential | An indication of the category of a legal document giving authorization to perform teaching assignment services. | Orthodox |     |     |     |
+| Credential | TeachingCredentialBasis | An indication of the pre-determined criteria for granting the teaching credential that an individual holds. | Orthodox |     |     |     |
 | OpenStaffPosition | AcademicSubject | The teaching field required for the OpenStaffPosition, for example English/Language Arts, Reading, Mathematics, Science, Social Sciences, etc. | Local |     |     |     |
-| EmploymentStatus | Reflects the type of employment or contract desired for the position; for example: Probationary, Contractual, Substitute/temporary, Tenured or permanent, Volunteer/no contract... | Orthodox |     |     |     |
-| InstructionalGradeLevel | The set of grade levels for which the position's assignment is responsible. | Orthodox |     |     |     |
-| PostingResult | Indication of whether the OpenStaffPosition was filled or retired without filling. | Orthodox |     |     |     |
-| ProgramAssignment | The name of the program for which the OpenStaffPosition will be assigned; for example: Regular education, Title I, Academic, Title I-Non-Academic, Special Education', Bilingual/English as a Second Language. | Orthodox |     |     |     |
-| StaffClassification | The titles of employment, official status, or rank of education staff. | Flexible |     |     |     |
+| OpenStaffPosition | EmploymentStatus | Reflects the type of employment or contract desired for the position; for example: Probationary, Contractual, Substitute/temporary, Tenured or permanent, Volunteer/no contract... | Orthodox |     |     |     |
+| OpenStaffPosition | InstructionalGradeLevel | The set of grade levels for which the position's assignment is responsible. | Orthodox |     |     |     |
+| OpenStaffPosition | PostingResult | Indication of whether the OpenStaffPosition was filled or retired without filling. | Orthodox |     |     |     |
+| OpenStaffPosition | ProgramAssignment | The name of the program for which the OpenStaffPosition will be assigned; for example: Regular education, Title I, Academic, Title I-Non-Academic, Special Education', Bilingual/English as a Second Language. | Orthodox |     |     |     |
+| OpenStaffPosition | StaffClassification | The titles of employment, official status, or rank of education staff. | Flexible |     |     |     |
 | Person | SourceSystem | This descriptor defines the originating record source system for the person. |     |     |     |     |
 | Staff | AchievementCategory | The category of achievement attributed to the learner. | Local |     |     |     |
-| AchievementCategorySystem | The system that defines the categories by which an achievement is attributed to the learner. |     |     |     |     |
-| AddressType | The type of address listed for an individual or organization. For example: Physical Address, Mailing Address, Home Address, etc.) | Orthodox |     |     |     |
-| AncestryEthnicOrigin | The original peoples or cultures with which the individual identifies. | Local |     |     | Yes |
-| CitizenshipStatus | An indicator of whether or not the person is a U.S. citizen. | Orthodox |     |     |     |
-| Country | The name of the country. It is strongly recommended that entries use only ISO 3166 2-letter country codes. | Standard |     |     |     |
-| ElectronicMailType | The type of email listed for an individual or organization. For example: Home/Personal, Work, etc.) | Standard |     |     |     |
-| HighestCompletedLevelOfEducation | The extent of formal instruction an individual has received (e.g., the highest grade in school completed or its equivalent or the highest degree received). | Orthodox |     |     |     |
-| IdentificationDocumentUse | The primary function of the document used for establishing identity. | Orthodox |     |     |     |
-| IssuerCountry | Country of origin of the document. It is strongly recommended that entries use only ISO 3166 2-letter country codes. | Standard |     |     |     |
-| Language | A specification of which written or spoken communication is being used. | Orthodox |     |     |     |
-| LanguageUse | A description of how the language is used (e.g. Home Language, Native Language, Spoken Language). | Orthodox |     |     |     |
-| Locale | A general geographic indicator that categorizes U.S. territory (e.g., City, Suburban). | Standard |     |     |     |
-| OldEthnicity | **Deprecated.** Previous definition of Ethnicity combining Hispanic/Latino and race: 1 - American Indian or Alaskan Native, 2 - Asian or Pacific Islander, 3 - Black, not of Hispanic origin, 4 - Hispanic, 5 - White, not of Hispanic origin. | Standard |     |     |     |
-| OtherNameType | The types of alternate names for a person. | Orthodox |     |     |     |
-| PersonalInformationVerification | The category of the document relative to its purpose. | Orthodox |     |     |     |
-| Race | The general racial category which most clearly reflects the individual's recognition of his or her community or with which the individual most identifies. The way this data element is listed, it must allow for multiple entries so that each individual can specify all appropriate races. | Standard |     |     |     |
-| RecognitionType | The nature of recognition given to the learner for accomplishments in a co-curricular, or extra-curricular activity. | Flexible |     |     |     |
-| Sex | A person's gender. | Standard |     |     |     |
-| StaffIdentificationSystem | A coding scheme that is used for identification and record-keeping purposes by schools, social services, or other agencies to refer to a staff member. | Orthodox |     |     |     |
-| StateAbbreviation | The abbreviation for the state (within the United States) or outlying area in which an address is located. | Standard |     |     |     |
-| TelephoneNumberType | The type of communication number listed for an individual or organization. | Standard |     |     |     |
-| TribalAffiliation | An American Indian tribe with which the staff member is affiliated. | Orthodox |     |     |     |
-| Visa | An indicator of a non-US citizen's Visa type. | Standard |     |     |     |
+| Staff | AchievementCategorySystem | The system that defines the categories by which an achievement is attributed to the learner. |     |     |     |     |
+| Staff | AddressType | The type of address listed for an individual or organization. For example: Physical Address, Mailing Address, Home Address, etc.) | Orthodox |     |     |     |
+| Staff | AncestryEthnicOrigin | The original peoples or cultures with which the individual identifies. | Local |     |     | Yes |
+| Staff | CitizenshipStatus | An indicator of whether or not the person is a U.S. citizen. | Orthodox |     |     |     |
+| Staff | Country | The name of the country. It is strongly recommended that entries use only ISO 3166 2-letter country codes. | Standard |     |     |     |
+| Staff | ElectronicMailType | The type of email listed for an individual or organization. For example: Home/Personal, Work, etc.) | Standard |     |     |     |
+| Staff | HighestCompletedLevelOfEducation | The extent of formal instruction an individual has received (e.g., the highest grade in school completed or its equivalent or the highest degree received). | Orthodox |     |     |     |
+| Staff | IdentificationDocumentUse | The primary function of the document used for establishing identity. | Orthodox |     |     |     |
+| Staff | IssuerCountry | Country of origin of the document. It is strongly recommended that entries use only ISO 3166 2-letter country codes. | Standard |     |     |     |
+| Staff | Language | A specification of which written or spoken communication is being used. | Orthodox |     |     |     |
+| Staff | LanguageUse | A description of how the language is used (e.g. Home Language, Native Language, Spoken Language). | Orthodox |     |     |     |
+| Staff | Locale | A general geographic indicator that categorizes U.S. territory (e.g., City, Suburban). | Standard |     |     |     |
+| Staff | OldEthnicity | **Deprecated.** Previous definition of Ethnicity combining Hispanic/Latino and race: 1 - American Indian or Alaskan Native, 2 - Asian or Pacific Islander, 3 - Black, not of Hispanic origin, 4 - Hispanic, 5 - White, not of Hispanic origin. | Standard |     |     |     |
+| Staff | OtherNameType | The types of alternate names for a person. | Orthodox |     |     |     |
+| Staff | PersonalInformationVerification | The category of the document relative to its purpose. | Orthodox |     |     |     |
+| Staff | Race | The general racial category which most clearly reflects the individual's recognition of his or her community or with which the individual most identifies. The way this data element is listed, it must allow for multiple entries so that each individual can specify all appropriate races. | Standard |     |     |     |
+| Staff | RecognitionType | The nature of recognition given to the learner for accomplishments in a co-curricular, or extra-curricular activity. | Flexible |     |     |     |
+| Staff | Sex | A person's gender. | Standard |     |     |     |
+| Staff | StaffIdentificationSystem | A coding scheme that is used for identification and record-keeping purposes by schools, social services, or other agencies to refer to a staff member. | Orthodox |     |     |     |
+| Staff | StateAbbreviation | The abbreviation for the state (within the United States) or outlying area in which an address is located. | Standard |     |     |     |
+| Staff | TelephoneNumberType | The type of communication number listed for an individual or organization. | Standard |     |     |     |
+| Staff | TribalAffiliation | An American Indian tribe with which the staff member is affiliated. | Orthodox |     |     |     |
+| Staff | Visa | An indicator of a non-US citizen's Visa type. | Standard |     |     |     |
 | StaffAbsenceEvent | AbsenceEventCategory | The code describing the type of absence. | Orthodox |     |     |     |
 | StaffEducationOrganizationAssignmentAssociation | PositionTitle | The descriptive name of an individual's position. |     |     |     |     |
-| StaffClassification | The titles of employment, official status, or rank of education staff. | Flexible |     |     |     |
+| StaffEducationOrganizationAssignmentAssociation | StaffClassification | The titles of employment, official status, or rank of education staff. | Flexible |     |     |     |
 | StaffEducationOrganizationContactAssociation | AddressType | The type of address listed for an individual or organization. For example: Physical Address, Mailing Address, Home Address, etc.) | Orthodox |     |     |     |
-| ContactType | Indicates the type for the contact information. | Local |     |     |     |
-| Locale | A general geographic indicator that categorizes U.S. territory (e.g., City, Suburban). | Standard |     |     |     |
-| StateAbbreviation | The abbreviation for the state (within the United States) or outlying area in which an address is located. | Standard |     |     |     |
-| TelephoneNumberType | The type of communication number listed for an individual or organization. | Standard |     |     |     |
+| StaffEducationOrganizationContactAssociation | ContactType | Indicates the type for the contact information. | Local |     |     |     |
+| StaffEducationOrganizationContactAssociation | Locale | A general geographic indicator that categorizes U.S. territory (e.g., City, Suburban). | Standard |     |     |     |
+| StaffEducationOrganizationContactAssociation | StateAbbreviation | The abbreviation for the state (within the United States) or outlying area in which an address is located. | Standard |     |     |     |
+| StaffEducationOrganizationContactAssociation | TelephoneNumberType | The type of communication number listed for an individual or organization. | Standard |     |     |     |
 | StaffEducationOrganizationEmploymentAssociation | EmploymentStatus | Reflects the type of employment or contract; for example: Probationary, Contractual, Substitute/temporary, Tenured or permanent, Volunteer/no contract... | Orthodox |     |     |     |
-| Separation | Type of employment separation; for example: Voluntary separation, Involuntary separation, Mutual agreement, Other, etc. | Orthodox |     |     |     |
-| SeparationReason | Reason for terminating the employment; for example: Employment in education, Employment outside of education, Retirement, Family/personal relocation, Change of assignment. | Orthodox |     |     |     |
+| StaffEducationOrganizationEmploymentAssociation | Separation | Type of employment separation; for example: Voluntary separation, Involuntary separation, Mutual agreement, Other, etc. | Orthodox |     |     |     |
+| StaffEducationOrganizationEmploymentAssociation | SeparationReason | Reason for terminating the employment; for example: Employment in education, Employment outside of education, Retirement, Family/personal relocation, Change of assignment. | Orthodox |     |     |     |
 | StaffLeave | StaffLeaveEventCategory | The code describing the type of leave taken, for example: Sick, Personal, Vacation. | Orthodox |     |     |     |
 | StaffSchoolAssociation | AcademicSubject | The academic subjects the individual is eligible to teach. | Local |     |     |     |
-| GradeLevel | The grade levels the individual is eligible to teach. | Orthodox |     |     |     |
-| ProgramAssignment | The name of the program for which the individual is assigned; for example: Regular education, Title I-Academic, Title I-Non-Academic, Special Education, Bilingual/English as a Second Language. | Orthodox |     |     |     |
+| StaffSchoolAssociation | GradeLevel | The grade levels the individual is eligible to teach. | Orthodox |     |     |     |
+| StaffSchoolAssociation | ProgramAssignment | The name of the program for which the individual is assigned; for example: Regular education, Title I-Academic, Title I-Non-Academic, Special Education, Bilingual/English as a Second Language. | Orthodox |     |     |     |
 
 :::tip
 

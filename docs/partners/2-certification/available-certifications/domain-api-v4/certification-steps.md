@@ -11,7 +11,9 @@ Table of Contents
 
 I. [Pre-Certification Documentation](#i-pre-certification-documentation)
 
-  1. [Product Availability Information](/partners/certification/certification-for-data-providers/product-availability-information) and [Pricing Statement](../../certification-for-data-providers/pricing-statement.md)
+  1. See [Requirements - Product Availability Information](../../certification-for-data-providers/product-availability-information.md)\
+See [Requirements - Pricing Statement](../../certification-for-data-providers/pricing-statement.md)\
+See [Optional - Security Validations](../../certification-for-data-providers/security-validations.md)
   2. [Initial Implementation Verification Information](/partners/certification/certification-for-data-providers/implementation-verification)
   3. [Data Mapping](/partners/certification/certification-for-data-providers/data-mapping)
 

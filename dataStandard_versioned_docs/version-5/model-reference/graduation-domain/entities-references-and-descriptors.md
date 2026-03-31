@@ -28,13 +28,13 @@ hide_table_of_contents: true
 | Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
 | GraduationPlan | AcademicSubject | The intended major subject area of the graduation requirement. | Local |     |     |     |
-| AssessmentReportingMethod | The method that the administrator of the assessment uses to report the performance and achievement of all students. It may be a qualitative method such as performance level descriptors or a quantitative method such as a numerical grade or cut score. More than one type of reporting method may be used. | Local |     |     |     |
-| CreditType | The type of credits or units of value awarded for the completion of a course. | Flexible |     |     |     |
-| GraduationPlanType | The type of academic plan the student is following for graduation: for example, Minimum, Recommended, Distinguished, or Standard. | Local |     |     |     |
-| PerformanceLevel | The performance level(s) defined for the assessment. | Local |     |     |     |
-| ResultDatatypeType | The datatype of the result. The results can be expressed as a number, percentile, range, level, etc. | Orthodox |     |     |     |
-| WhenTakenGradeLevel | The grade level when the student is planned to take the course. | Orthodox |     |     |     |
-| PostSecondaryEvent | PostSecondaryEventCategory | The PostSecondaryEvent that is logged (e.g., FAFSA application, college application, college acceptance). | Orthodox |     |     |     |
+| GraduationPlan | AssessmentReportingMethod | The method that the administrator of the assessment uses to report the performance and achievement of all students. It may be a qualitative method such as performance level descriptors or a quantitative method such as a numerical grade or cut score. More than one type of reporting method may be used. | Local |     |     |     |
+| GraduationPlan | CreditType | The type of credits or units of value awarded for the completion of a course. | Flexible |     |     |     |
+| GraduationPlan | GraduationPlanType | The type of academic plan the student is following for graduation: for example, Minimum, Recommended, Distinguished, or Standard. | Local |     |     |     |
+| GraduationPlan | PerformanceLevel | The performance level(s) defined for the assessment. | Local |     |     |     |
+| GraduationPlan | ResultDatatypeType | The datatype of the result. The results can be expressed as a number, percentile, range, level, etc. | Orthodox |     |     |     |
+| GraduationPlan | WhenTakenGradeLevel | The grade level when the student is planned to take the course. | Orthodox |     |     |     |
+| GraduationPlan | PostSecondaryEvent | PostSecondaryEventCategory | The PostSecondaryEvent that is logged (e.g., FAFSA application, college application, college acceptance). | Orthodox |     |     |     |
 
 :::tip
 

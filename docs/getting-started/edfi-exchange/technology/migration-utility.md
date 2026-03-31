@@ -2,7 +2,7 @@
 
 ::: note
 
-**March 31st, 2022:** Ed-Fi Alliance announced [End of Life](/reference/roadmap/notifications/migration) for ODS Migration utility. While the utility could be used for upgrade to [Ed-Fi ODS / API v5.4](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V54/overview) version for both SQL Server and PostgreSQL, there will be no new migration support or enhancements to this product.
+**March 31st, 2022:** Ed-Fi Alliance announced [End of Life](/reference/roadmap/notifications/migration) for ODS Migration utility. While the utility could be used for upgrade to [Ed-Fi ODS / API v5.4](/reference/ods-api/5.4/) version for both SQL Server and PostgreSQL, there will be no new migration support or enhancements to this product.
 
 :::
 
