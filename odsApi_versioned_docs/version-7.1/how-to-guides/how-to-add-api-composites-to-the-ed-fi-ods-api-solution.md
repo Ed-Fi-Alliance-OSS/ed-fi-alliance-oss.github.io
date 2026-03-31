@@ -83,5 +83,5 @@ You may have to clear your browser cache in order for Swagger UI to display the 
 The `organizationCode` mentioned in Step 1.3 ("ed-fi" in this example) can be seen in the Composite URLs above (e.g., `/ed-fi/composites/MyComposite/Students`). To successfully retrieve a composite, this value (defined in the XML definition) must be present as the first segment of a composite URL.
 
 :::note
-The following GitHub link contains source files for the Composite described in this article: [ODS/API 7.2](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v7.2/Samples/Composites)
+The following GitHub link contains source files for the Composite described in this article: [ODS/API 7.1](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v7.1/Samples/Composites)
 :::
