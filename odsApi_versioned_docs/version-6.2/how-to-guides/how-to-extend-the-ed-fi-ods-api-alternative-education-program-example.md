@@ -615,10 +615,3 @@ ODS / API in the Swagger UI. The following new API resource should be visible:
 
 ![New API Resource](/img/reference/ods-api/image2024-5-30_17-5-2.png)
 
-:::note
-The following GitHub links contain source files for this extensibility sample.
-
-* [Alternative Education Program MetaEd Source](https://github.com/Ed-Fi-Alliance-oss/Ed-Fi-ODS/tree/v6.2/Samples/Extensions/AlternativeEducationProgram/AlternativeEducationProgramMetaEd)
-* [Alternative Education Program Generated Artifacts](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v6.2/Samples/Extensions/AlternativeEducationProgram/AlternativeEducationProgramMetaEd/MetaEdOutput/SampleAlternativeEducationProgram)
-
-:::
