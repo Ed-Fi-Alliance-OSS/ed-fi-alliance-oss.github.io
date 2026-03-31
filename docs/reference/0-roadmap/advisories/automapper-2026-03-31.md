@@ -1,9 +1,6 @@
----
-title: Threat assessment and mitigation for AutoMapper Denial of Service GHSA-rvv3-g6hj-g44
-authors: fuqua
-tags: [security, ods-api]
-date: 2026-03-30
----
+# Threat assessment and mitigation for AutoMapper Denial of Service GHSA-rvv3-g6hj-g44
+
+31 March 2026
 
 Some community members have expressed concern about the recently published AutoMapper denial of service vulnerability. This post provides a threat assessment for the Ed-Fi software and guidance on how to mitigate the build failures caused by this vulnerability.
 
