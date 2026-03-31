@@ -15,7 +15,7 @@ No runtime threat.
 * The Ed-Fi ODS/API 6.x source code uses AutoMapper exclusively in two unit test projects. No API request path invokes that code. An external attacker has no vector to trigger the vulnerable mapping behavior through the ODS/API. This was already removed in the ODS/API 7.x source code, so there is no runtime vulnerability in either supported version of the ODS/API.
 * Other applications — ODS Admin API, ODS Admin App, and Data Import — do not utilize AutoMapper in the user registration or authentication flows. All API requests that _do_ use AutoMapper are protected by authentication and authorization, so an attacker would need to first compromise a valid user account to trigger the vulnerability. Since these user accounts are for system administrator usage only, the attack surface is minimal and we have not further analyzed to see if a deeply nested JSON object could be used to trigger the vulnerability through an API request.
 
-### The Actual Problem: Build Failures
+## The Actual Problem: Build Failures
 
 Even without an exploitable attack surface, this vulnerability will break your source code builds. The code solutions treat NuGet vulnerability warnings as errors, so `dotnet build` will fail with:
 
