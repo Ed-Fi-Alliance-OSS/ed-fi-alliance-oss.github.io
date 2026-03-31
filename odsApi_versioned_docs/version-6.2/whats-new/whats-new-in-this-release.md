@@ -20,10 +20,10 @@ Ed-Fi ODS / API Platform v6.2 and provides links to additional documentation.
 ### Data Model Changes
 
 Ed-Fi ODS / API v6.2 adds support for [Ed-Fi Data Standard
-v5.1](https://edfi.atlassian.net/wiki/spaces/EFDS5/overview) implementation, with
+v4](/reference/data-exchange/data-standard/4/) implementation, with
 no breaking changes from the previous Data Standard v5.0. Refer to [What's New
 in Data Standard
-v5](https://edfi.atlassian.net/wiki/spaces/EFDS5/pages/26706990/What%27s+New) for
+v4](/reference/data-exchange/data-standard/4/whats-new/whats-new-v40) for
 details. Additionally, Ed-Fi ODS/API v6.2 continues to support Data Standard
 v4.0 implementation.
 
@@ -52,8 +52,7 @@ traceability of API error responses, benefiting both developers and users.
 
 Implementing extensions in Ed-Fi ODS / API v6.2 requires implementers to update
 to [MetaEd IDE
-v4.4](https://edfi.atlassian.net/wiki/display/METAED20/MetaEd+Home). Refer to
-[MetaEd 4.4 What's
-New](https://edfi.atlassian.net/wiki/spaces/METAED20/pages/23711107/What%27s+New)
+v4.4](/reference/metaed/). Refer to
+[MetaEd 4.4](/reference/metaed/releases/4.4.0)
 for details on latest updates and improvements.
 
