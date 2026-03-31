@@ -1,5 +1,5 @@
 ---
-description: Release notes for ODS/API v7.2
+description: Release notes for ODS/API v6.2
 ---
 
 # What's New - Release Notes

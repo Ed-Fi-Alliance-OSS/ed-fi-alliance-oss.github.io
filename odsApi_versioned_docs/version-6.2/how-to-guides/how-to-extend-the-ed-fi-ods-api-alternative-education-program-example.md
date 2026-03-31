@@ -83,7 +83,7 @@ do this step. Do that now if you haven't already.
 ### Step 2a. Set or Confirm MetaEd Target Version
 
 MetaEd allows you to target different Ed-Fi technology stack and data model
-versions. Confirm that your MetaEd IDE is targeting v7.2 by following the
+versions. Confirm that your MetaEd IDE is targeting v6.2 by following the
 instructions in the [Version
 Targeting](/reference/metaed/ide-user-guide/creating-and-maintaining-your-extension#step-4-add-the-correct-data-model-project)
 documentation for the MetaEd IDE.
@@ -618,7 +618,7 @@ ODS / API in the Swagger UI. The following new API resource should be visible:
 :::note
 The following GitHub links contain source files for this extensibility sample.
 
-* [Alternative Education Program MetaEd Source](https://github.com/Ed-Fi-Alliance-oss/Ed-Fi-ODS/tree/v7.2/Samples/Extensions/AlternativeEducationProgram/AlternativeEducationProgramMetaEd)
-* [Alternative Education Program Generated Artifacts](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v7.2/Samples/Extensions/AlternativeEducationProgram/AlternativeEducationProgramMetaEd/MetaEdOutput/SampleAlternativeEducationProgram)
+* [Alternative Education Program MetaEd Source](https://github.com/Ed-Fi-Alliance-oss/Ed-Fi-ODS/tree/v6.2/Samples/Extensions/AlternativeEducationProgram/AlternativeEducationProgramMetaEd)
+* [Alternative Education Program Generated Artifacts](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v6.2/Samples/Extensions/AlternativeEducationProgram/AlternativeEducationProgramMetaEd/MetaEdOutput/SampleAlternativeEducationProgram)
 
 :::

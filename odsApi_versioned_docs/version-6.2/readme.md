@@ -10,7 +10,7 @@ turn data from something you have into something you can use.
 
 ## Documentation
 
-Documentation for the Ed-Fi ODS / API v7.2 for Suite 3 is viewable online:
+Documentation for the Ed-Fi ODS / API v6.2 for Suite 3 is viewable online:
 
 * [What's New](./whats-new/readme.mdx)
 * [Getting Started](./getting-started/readme.md)
@@ -25,7 +25,7 @@ Documentation for the Ed-Fi ODS / API v7.2 for Suite 3 is viewable online:
 
 ## Resources
 
-Here are some resource highlights for the ODS / API v7.2:
+Here are some resource highlights for the ODS / API v6.2:
 
 * [How To: Extend the ODS / API
     (Basic)](./how-to-guides/how-to-extend-the-ed-fi-ods-api-alternative-education-program-example.md)
