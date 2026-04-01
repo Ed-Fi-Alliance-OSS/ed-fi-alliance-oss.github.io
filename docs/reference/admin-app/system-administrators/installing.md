@@ -51,8 +51,8 @@ environment variable configuration.
 - **Using Pre-Built Images**:
       The recommended way to run the Admin App is to use the official images from Docker Hub.
 
-  - **Frontend:** `edfialliance/admin-app-fe:v4.0`
-  - **API:** `edfialliance/admin-app-api:v4.0`
+  - **Frontend:** `edfialliance/admin-app-fe:v4.0.1`
+  - **API:** `edfialliance/admin-app-api:v4.0.1`
 
   - Open PowerShell in the `compose` directory:
 
