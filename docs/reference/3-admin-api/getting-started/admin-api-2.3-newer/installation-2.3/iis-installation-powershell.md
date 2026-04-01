@@ -305,6 +305,12 @@ documentation.
 
 * This is **not** recommended for production.
 
+:::tip
+
+Once the installation is complete, make sure the EncryptionKey value matches the OdsConnectionStringEncryptionKey value from your ODS/API. 
+
+:::
+
 #### Step 8. Execute First-Time Configuration
 
 Continue on to [First-Time Configuration for Admin API
