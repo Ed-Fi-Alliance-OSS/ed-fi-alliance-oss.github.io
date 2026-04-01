@@ -35,10 +35,10 @@ The following are required to install the Admin API with IIS:
 ### Installation files
 
 :::note
- The following is a Nuget package containing the **Admin API v2.3.0 source files** for manual deployment to IIS.
+ The following is a Nuget package containing the **Admin API v2.3.1 source files** for manual deployment to IIS.
 
 * [EdFi.Suite3.ODS.AdminApi
-     v2.3.0](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.Suite3.ODS.AdminApi/overview/2.3.0)
+     v2.3.1](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.Suite3.ODS.AdminApi/overview/2.3.1)
 
 :::
 
@@ -87,6 +87,8 @@ step.
 You will need to manually edit connection strings, authorization settings, and
 keys in `AdminApi\appsettings.json`. Some values to note:
 
+* Change `EncryptionKey` to the same value you have used in your ODS / API
+    appsetting `OdsConnectionStringEncryptionKey`.
 * Authentication Settings
   * `Authentication:SigningKey`  must be a Base64-encoded 256-bit string. The
         following script demonstrates how to generate it, but you can use
@@ -101,7 +103,7 @@ keys in `AdminApi\appsettings.json`. Some values to note:
     # Convert to base-64
     $StringBytes = [System.Text.Encoding]::Unicode.GetBytes($buffer)
     $Base64EncodedKey =[Convert]::ToBase64String($StringBytes)
-    Write-Host "Your EncryptionKey: " $Base64EncodedKey
+    Write-Host "Your Signing Key: " $Base64EncodedKey
     ```
 
   * `Authentication:Authority`  and `Authentication:IssuerUrl`  should be the
@@ -110,53 +112,81 @@ keys in `AdminApi\appsettings.json`. Some values to note:
         registration of new Admin API clients
     * Keeping this is flag enabled all the time is **not** recommended for
             production
-* Change `EnableSwagger`  to `true` to enable generation of the Swagger UI
+* Change `EnableSwagger` to `true` to enable generation of the Swagger UI
     documentation
   * This is **not** recommended for production.
 * The connection strings will need to be accurately configured by the user. For
     more information on how to determine connection strings for your database,
     please reference Microsoft documentation.
+* Change `PreventDuplicateApplications` to `true` if you want to ensure unique
+    applications per vendor.
+* Change `EnableApplicationResetEndpoint` to `true` to allow
+   regenerating API client credentials for an existing applications.
 * Please refer [Multi-tenant Configuration for Admin API
     2.x](../technical-articles/multi-tenant-configuration-for-admin-api-2x.md)
     for configuring Multi-Tenant specific AppSettings and ConnectionStrings.
+* Please refer [IP Rate Limiting Configuration
+    Guide](../technical-articles/ip-rate-limit-configuration.md)
+   for configuring IP Rate Limiting specific AppSettings.
 
 Here is a snippet from a properly configured application settings file:
 
 ```json title="appsettings.json"
     {
-    "AppSettings": {
-        "DatabaseEngine": "SqlServer",
-        "PathBase": "",
-           "DefaultPageSizeOffset": 0,
-        "DefaultPageSizeLimit": 25,
-           "MultiTenancy": false
-          },
-    "Authentication": {
-        "Authority": "https://YOUR_SERVER_NAME_HERE/AdminApi",
-        "IssuerUrl": "https://YOUR_SERVER_NAME_HERE/AdminApi",
-        "SigningKey": "YOUR_BASE64_ENCODED_256_BIT_STRING",
-        "AllowRegistration": false
-    },
-        "SwaggerSettings": {
-        "EnableSwagger": false,
-        "DefaultTenant": ""
-    },
-        "EnableDockerEnvironment": false,
-    "ConnectionStrings": {
-        "Admin": "Data Source=(local);Initial Catalog=EdFi_Admin;Trusted_Connection=True",
-        "Security": "Data Source=(local);Initial Catalog=EdFi_Security;Trusted_Connection=True"
-    },
-    "Log4NetCore": {
-        "Log4NetConfigFileName": "log4net\\log4net.config"
-    },
-    "Logging": {
-        "LogLevel": {
-            "Default": "Information",
-            "Microsoft": "Warning",
-            "Microsoft.Hosting.Lifetime": "Information"
-        }
-    },
-    "AllowedHosts": "*"
+        "AppSettings": {
+            "DatabaseEngine": "SqlServer",
+            "PathBase": "",
+            "DefaultPageSizeOffset": 0,
+            "DefaultPageSizeLimit": 25,
+            "MultiTenancy": false,
+            "EncryptionKey": "{ BASE_64_ENCRYPTION_KEY }",
+            "PreventDuplicateApplications": false,
+            "EnableApplicationResetEndpoint": false,
+            "adminApiMode": "v2"
+        },
+        "Authentication": {
+            "Authority": "https://YOUR_SERVER_NAME_HERE/AdminApi",
+            "IssuerUrl": "https://YOUR_SERVER_NAME_HERE/AdminApi",
+            "SigningKey": "YOUR_BASE64_ENCODED_256_BIT_STRING",
+            "AllowRegistration": false,
+            "RoleClaimAttribute": "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
+        },
+        "SwaggerSettings": {
+            "EnableSwagger": false,
+            "DefaultTenant": ""
+        },
+        "EnableDockerEnvironment": false,
+        "ConnectionStrings": {
+            "Admin": "Data Source=(local);Initial Catalog=EdFi_Admin;Trusted_Connection=True",
+            "Security": "Data Source=(local);Initial Catalog=EdFi_Security;Trusted_Connection=True"
+        },
+        "Log4NetCore": {
+            "Log4NetConfigFileName": "log4net\\log4net.config"
+        },
+        "Logging": {
+            "LogLevel": {
+                "Default": "Information",
+                "Microsoft": "Warning",
+                "Microsoft.Hosting.Lifetime": "Information"
+            }
+        },
+        "IpRateLimiting": {
+            "EnableEndpointRateLimiting": true,
+            "StackBlockedRequests": false,
+            "RealIpHeader": "X-Real-IP",
+            "ClientIdHeader": "X-ClientId",
+            "HttpStatusCode": 429,
+            "IpWhitelist": [],
+            "EndpointWhitelist": [],
+            "GeneralRules": [
+                {
+                    "Endpoint": "POST:/Connect/Register",
+                    "Period": "1m",
+                    "Limit": 3
+                }
+            ]
+        },
+        "AllowedHosts": "*"
     }
 ```
 
