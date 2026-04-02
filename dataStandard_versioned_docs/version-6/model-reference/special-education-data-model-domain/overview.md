@@ -4,9 +4,15 @@ sidebar_position: 1
 
 # Special Education Data Model Domain - Overview
 
-EARLY ACCESS DOMAIN
+:::important
+
+EARLY ACCESS DOMAIN - This domain is being released in order to allow early adopters a chance to preview and test the proposed update and provide feedback
+on its viability for possible future enhancements. This domain should not be considered fully stable at this time. See [Early Access Material](https://docs.ed-fi.org/reference/data-exchange/versioning-and-releases/#early-access-material) for more information.
+
+:::
+
 The Special Education Data Model Domain provides the ability to record and track a student's special education program journey as it evolves.
-The new domain focuses on the IDEAEvents and StudentIEP as the foundational concepts but allows Organizations to expand their data and reporting beyond.
+The **new** domain focuses on the IDEAEvents and StudentIEP as the foundational concepts but allows Organizations to expand their data and reporting beyond.
 The IDEAEvent entity can be utilized to track the initial set of  occurrences that identify the Student as needing additional support, such as the
 initial request for evaluation, consent of parent or guardian, and beginning of services to the Student. From there the domain expands with the ability
 to record the Student's IEP  dates associated for reporting, related IDEAEvents, as well as accommodations and disabilities for the student. The StudentIEP
@@ -35,5 +41,5 @@ The key concepts include the following:
 
 * IDEAEvents can be referenced as an optional collection to all other entities in the SEDM Model.
 
-* The Provider Common used on the StudentIEPServiceDelivery entity can be used to capture both staff and non-staff
+* New Provider Common used on the StudentIEPServiceDelivery entity can be used to capture both staff and non-staff
     related service providers.
