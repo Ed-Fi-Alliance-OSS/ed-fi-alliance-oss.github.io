@@ -4,6 +4,17 @@ sidebar_position: 1
 
 # Special Education Data Model Domain - Overview
 
+EARLY ACCESS DOMAIN
+The Special Education Data Model Domain provides the ability to record and track a student's special education program journey as it evolves.
+The new domain focuses on the IDEAEvents and StudentIEP as the foundational concepts but allows Organizations to expand their data and reporting beyond.
+The IDEAEvent entity can be utilized to track the initial set of  occurrences that identify the Student as needing additional support, such as the
+initial request for evaluation, consent of parent or guardian, and beginning of services to the Student. From there the domain expands with the ability
+to record the Student's IEP  dates associated for reporting, related IDEAEvents, as well as accommodations and disabilities for the student. The StudentIEP
+forms the foundation for the additional entities in the domain. Supporting these entities the SEDM Domain allows for Organizations to track the Prescribed
+Services for a student and if/when those services were delivered to the Student as it relates to their IEP via the StudentIEPPrescription and
+StudentIEPDelivery entities. Ideally the prescribed services and their delivery culminate in a desired outcome for the student which is recorded on the
+StudentIEPGoal entity which define the objectives that each StudentIEP is targeting to accomplish within a defined period.
+
 ## Key Entities
 
 This domain contains:
