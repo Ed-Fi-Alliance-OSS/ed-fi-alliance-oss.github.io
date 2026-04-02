@@ -78,19 +78,14 @@ erDiagram
 
 The IDEAEvent entity captures legally significant events required under IDEA—such as referrals, evaluations, parental consent, meetings, and IEP approval—as discrete, auditable records. Explicitly modeling these events enables systems to reconstruct procedural timelines, understand why actions were taken, and demonstrate compliance based on evidence rather than inference.
 
-#### IDEAEvent Identity
-
-| Field | Type | Required |
-| --- | --- | --- |
-| Student | Reference | :heavy_exclamation_mark: Part of Identity |
-| EducationOrganization | Reference | :heavy_exclamation_mark: Part of Identity |
-| IDEAEventIdentifier | String (120) | :heavy_exclamation_mark: Part of Identity |
-| IDEAEvent | Descriptor | :heavy_exclamation_mark: Part of Identity |
-
 #### IDEAEvent Properties
 
 | Field | Type | Required / Optional |
 | --- | --- | --- |
+| Student | Reference | :triangular_flag_on_post: Part of Identity |
+| EducationOrganization | Reference | :triangular_flag_on_post: Part of Identity |
+| IDEAEventIdentifier | String (120) | :triangular_flag_on_post: Part of Identity |
+| IDEAEvent | Descriptor | :triangular_flag_on_post: Part of Identity |
 | BeginDate | Date | :white_check_mark: Yes |
 | EndDate | Date | Optional [0..1] |
 | EventCompliance | Descriptor | Optional [0..1] |
@@ -103,19 +98,14 @@ The StudentIEP entity represents the Individualized Education Program as a first
 
 When an IEP is amended, a new StudentIEP record should be created with the amended data rather than modifying the existing record. The IEPAmendedDate field records the date of amendment on the new record to maintain a clear audit trail.
 
-#### StudentIEP Identity
+#### StudentIEP Properties
 
-| Field | Type | Required |
+| Field | Type | Required / Optional |
 | --- | --- | --- |
-| Student | Reference | :heavy_exclamation_mark: Part of Identity |
-| EducationOrganization | Reference | :heavy_exclamation_mark: Part of Identity |
-| StudentIEPIdentifier | String (120) | :heavy_exclamation_mark: Part of Identity |
-| IEPFinalizedDate | Date | :heavy_exclamation_mark: Part of Identity |
-
-#### StudentIEP Property
-
-| Field | Type | Required |
-| --- | --- | --- |
+| Student | Reference | :triangular_flag_on_post: Part of Identity |
+| EducationOrganization | Reference | :triangular_flag_on_post: Part of Identity |
+| StudentIEPIdentifier | String (120) | :triangular_flag_on_post: Part of Identity |
+| IEPFinalizedDate | Date | :triangular_flag_on_post: Part of Identity |
 | IEPBeginDate | Date | :white_check_mark: Yes |
 | IEPEndDate | Date | :white_check_mark: Yes |
 | IEPStatus | Descriptor | :white_check_mark: Yes |
@@ -134,17 +124,12 @@ When an IEP is amended, a new StudentIEP record should be created with the amend
 
 StudentIEPGoal represents the goals established as part of an IEP, including their achievement periods and intended outcomes. By tying goals directly to the IEP document, the model preserves the context needed to evaluate progress relative to the plan in effect at the time goals were set. This supports consistent progress monitoring over time, even as IEPs are revised or replaced.
 
-#### StudentIEPGoal Identity
-
-| Field | Type | Required |
-| --- | --- | --- |
-| StudentIEP | Reference | :heavy_exclamation_mark: Part of Identity |
-| IEPGoalIdentifier | String (120) | :heavy_exclamation_mark: Part of Identity |
-
 #### StudentIEPGoal Properties
 
-| Field | Type | Required |
+| Field | Type | Required / Optional |
 | --- | --- | --- |
+| StudentIEP | Reference | :triangular_flag_on_post: Part of Identity |
+| IEPGoalIdentifier | String (120) | :triangular_flag_on_post: Part of Identity |
 | IEPGoalDetails | String (2048) | :white_check_mark: Yes |
 | IEPGoalType | Descriptor | :white_check_mark: Yes |
 | GoalAchievementPeriod | Common | Optional [0..1] |
@@ -154,18 +139,13 @@ StudentIEPGoal represents the goals established as part of an IEP, including the
 
 StudentIEPServicePrescription defines the services a student is entitled to receive under a specific IEP, including frequency, duration, and effective dates. Separating prescribed services from delivery clarifies what was planned versus what was implemented and ensures that service obligations are evaluated relative to the IEP in effect at the time. This entity provides a stable reference for compliance checks, progress monitoring, and service continuity when plans are amended.
 
-#### StudentIEPServicePrescription Identity
-
-| Field | Type | Required |
-| --- | --- | --- |
-| StudentIEP | Reference | :heavy_exclamation_mark: Part of Identity |
-| ServicePrescription | Descriptor | :heavy_exclamation_mark: Part of Identity |
-| ServicePrescriptionDate | Date | :heavy_exclamation_mark: Part of Identity |
-
 #### StudentIEPServicePrescription Properties
 
-| Field | Type | Required |
+| Field | Type | Required / Optional |
 | --- | --- | --- |
+| StudentIEP | Reference | :triangular_flag_on_post: Part of Identity |
+| ServicePrescription | Descriptor | :triangular_flag_on_post: Part of Identity |
+| ServicePrescriptionDate | Date | :triangular_flag_on_post: Part of Identity |
 | BeginDate | Date | :white_check_mark: Yes |
 | Duration | Integer | :white_check_mark: Yes |
 | DurationInterval | Descriptor | :white_check_mark: Yes |
@@ -180,29 +160,24 @@ StudentIEPServicePrescription defines the services a student is entitled to rece
 
 The StudentIEPServiceDelivery entity records the actual delivery of services prescribed in the IEP, including when services occurred and who provided them. Modeling service delivery explicitly enables districts and states to assess whether services were provided as required, rather than assuming delivery based on enrollment or staffing data. This distinction supports evidence-based compliance reviews, operational monitoring, and retrospective analysis of service implementation.
 
-#### StudentIEPServiceDelivery Identity
-
-| Field | Type | Required |
-| --- | --- | --- |
-| StudentIEP | Reference | :heavy_exclamation_mark: Part of Identity |
-| IEPServiceDeliveryIdentifier | String (120) | :heavy_exclamation_mark: Part of Identity |
-| ServiceDelivery | Descriptor | :heavy_exclamation_mark: Part of Identity |
-| ServiceDeliveryDate | Date | :heavy_exclamation_mark: Part of Identity |
-
 #### StudentIEPServiceDelivery Properties
 
-| Field | Type | Required |
+| Field | Type | Required / Optional |
 | --- | --- | --- |
+| StudentIEP | Reference | :triangular_flag_on_post: Part of Identity |
+| IEPServiceDeliveryIdentifier | String (120) | :triangular_flag_on_post: Part of Identity |
+| ServiceDelivery | Descriptor | :triangular_flag_on_post: Part of Identity |
+| ServiceDeliveryDate | Date | :triangular_flag_on_post: Part of Identity |
 | IDEAEvent | Reference | Optional [0..n] |
-| Provider | Common | Optional [0..n] |
-| StudentIEPServicePrescription | Reference | [0..1] |
+| Provider (See below) | Common | Optional [0..n] |
+| StudentIEPServicePrescription | Reference | Optional [0..1] |
 
-#### Provider Common (NEW)
+#### NEW Common - Provider
 
-| Field | Type | Required |
+| Field | Type | Required / Optional |
 | --- | --- | --- |
-| FirstName | String (75) | :heavy_exclamation_mark: Part of Identity |
-| LastSurname | String (75) | :heavy_exclamation_mark: Part of Identity |
+| FirstName | String (75) | :triangular_flag_on_post: Part of Identity |
+| LastSurname | String (75) | :triangular_flag_on_post: Part of Identity |
 | MiddleName | String (75) | Optional [0..1] |
 | PrimaryProvider | Boolean | Optional [0..1] |
 | ProviderCode | String (16) | Optional [0..1] |
