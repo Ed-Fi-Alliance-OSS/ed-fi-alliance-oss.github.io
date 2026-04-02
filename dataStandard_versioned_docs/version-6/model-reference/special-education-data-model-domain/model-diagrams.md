@@ -166,7 +166,7 @@ StudentIEPServicePrescription defines the services a student is entitled to rece
 
 | Field | Type | Required |
 | --- | --- | --- |
-| BeginDate | Date |  :white_check_mark: Yes |
+| BeginDate | Date | :white_check_mark: Yes |
 | Duration | Integer | :white_check_mark: Yes |
 | DurationInterval | Descriptor | :white_check_mark: Yes |
 | Frequency | Decimal (5,2) | :white_check_mark: Yes |
