@@ -18,19 +18,51 @@ the Ed-Fi-ODS-Implementation repository and is executed after the
 `Invoke-NewDevelopmentAppSettings` task.
 
 ```powershell
-<trimmed output...>
+Caching: Descriptors: AbsoluteExpirationSeconds          1800
+Caching: PersonUniqueIdToUsi: AbsoluteExpirationSeconds  0
+Caching: PersonUniqueIdToUsi: SlidingExpirationSeconds   14400
+ConnectionStrings: EdFi_Admin                            server=(local); trusted_connection=True; database=EdFi_Admin; Application Name=EdFi.Ods.WebApi
+ConnectionStrings: EdFi_Master                           server=(local); trusted_connection=True; database=master; Application Name=EdFi.Ods.WebApi
+ConnectionStrings: EdFi_Ods                              server=(local); trusted_connection=True; database=EdFi_{0}; Application Name=EdFi.Ods.WebApi
+ConnectionStrings: EdFi_Security                         server=(local); trusted_connection=True; database=EdFi_Security; persist security info=True; Application Name=EdFi.Ods.WebApi
+DefaultPageSizeLimit                                     500
+Logging: LogLevel: Default                               Debug
+Logging: LogLevel: Microsoft                             Warning
+Plugin: Folder                                           ../../Plugin
+Plugin: Scripts:0                                        development
+SecurityMetadataCacheTimeoutMinutes                      0
+Urls                                                     http://localhost:54746
 
-2024-10-28 20:11:28,067 [.NET TP Worker] INFO  TemplateProcessor - Processing started for assembly: ODS Database Specific in folder: D:\ed-fi\Ed-Fi-ODS\Application\EdFi.Ods.Standard\Standard\5.1.0\Artifacts
-2024-10-28 20:11:28,477 [.NET TP Worker] INFO  TemplateProcessor - Processing complete for assembly: ODS Database Specific in 00:00:00.4101082.
-2024-10-28 20:11:28,478 [.NET TP Worker] INFO  Program - Finished code generation in 00:00:07.8224338.
-Invoke-CodeGen done in 8s.
-Invoke-RebuildSolution NoRestore is  False
+Invoke-NewDevelopmentAppSettings done in 1s.
 
 ------------------------------
-    Invoke-RebuildSolution
+    Install-ToolDbDeploy
 ------------------------------
 
-<trimmed output...>
+EdFi.Suite3.Db. Deploy version 2.0.0 is already installed at C:\source\repososs\Ed-Fi-ODS-Implementation\tools
+Install-ToolDbDeploy done in 339ms.
+
+------------------------------
+    Install-ToolCodeGenUtility
+------------------------------
+
+EdFi.Suite3.Ods.CodeGen version 5.1.0-b11157 is already installed at C:\source\repososs\Ed-Fi-ODS-Implementation\tools
+Install-ToolCodeGenUtility done in 244ms.
+
+------------------------------
+    Invoke-CodeGen
+------------------------------
+
+2020-11-03 09:08:43,781 [1] INFO Program Starting code generation.
+2020-11-03 09:08:44,012 [1] INFO TemplateProcessor Processing started for assembly: EdFi.Ods.Profiles.Sample in folde
+r: C:\source\repososs\Ed-Fi-ODS\Application\EdFi.Ods.Profiles.Sample
+2020-11-03 09:08:45,019 [8] INFO TemplateProcessor Processing complete for assembly: EdFi.Ods.Profiles.Sample in 00:0
+0:01.0064703.
+2020-11-03 09:08:45,019 [8] INFO TemplateProcessor Processing started for assembly : EdFi.Ods.Profiles. Test in folder:
+C:\source\repososs\Ed-Fi-ODS\Application\EdFi.Ods.Profiles.Test
+2020-11-03 09:08:47,451 [12] INFO TemplateProcessor Processing complete for assembly: EdFi.Ods.Profiles. Test in 00:00
+-: 02.4316482.
+2020-11-03 09:08:47,451 [12] INFO TemplateProcessor Processing started for assembly: EdFi.Ods.Standard in folder: C:\
 ```
 
 A successful `initdev` execution will display the tasks executed and their
@@ -74,18 +106,17 @@ tool, and install it into the tools folder under the Ed-Fi-ODS-Implementation
 repository.
 
 ```powershell
-PS D:\ed-fi\Ed-Fi-ODS-Implementation> Install-CodeGenUtility
+C:\Source\ReposOss\Ed-Fi-ODS-Implementation [main =]> Install-CodeGenUtility
 
 ------------------------------
-    Install-CodeGenUtility
+  Install-ToolCodeGenUtility
 ------------------------------
 
-EdFi.Suite3.Ods.CodeGen version 7.2.1119 is already installed at D:\ed-fi\Ed-Fi-ODS-Implementation\tools
-Install-CodeGenUtility done in 1s.
-
+Installing EdFi.Suite3.Ods.CodeGen version 5.1.0-b11157 to C:\source\repososs\Ed-Fi-ODS-Implementation\tools
+Install-ToolCodeGenUtility done in 6s.
 Duration Task
--------- ----
-00:01.75 Install-CodeGenUtility
+00:06.35 Install-ToolCodeGenUtility
+C:\Source\ReposOss\Ed-Fi-ODS-Implementation [main =]>
 ```
 
 ### Execution
@@ -95,30 +126,38 @@ executed by calling the PowerShell command `Run-CodeGen`. This will execute the
 generation process for all required classes.
 
 ```powershell
-PS D:\ed-fi\Ed-Fi-ODS-Implementation> Run-CodeGen -StandardVersion 4.0.0 -ExtensionVersion 1.0.0
+C:\Source\ReposOss\Ed-Fi-ODS-Implementation [main =]> Run-CodeGen
 
 ------------------------------
-    Install-CodeGenUtility
+  Install-ToolCodeGenUtility
 ------------------------------
 
-EdFi.Suite3.Ods.CodeGen version 7.2.1119 is already installed at D:\ed-fi\Ed-Fi-ODS-Implementation\tools
-Install-CodeGenUtility done in 1s.
+EdFi.Suite3.Ods.CodeGen version 5.1.0-b11157 is already installed at C:\source\repososs\Ed-Fi-ODS-Implementation\tools
+Install-ToolCodeGenUtility done in 249ms.
 
+------------------------------
+        Invoke-CodeGen
+------------------------------
 
-----------------------
-    Invoke-CodeGen
-----------------------
-
-& D:\ed-fi\Ed-Fi-ODS-Implementation\tools\EdFi.Ods.CodeGen -r D:\ed-fi\ -e SQLServer --standardVersion 4.0.0 --extensionVersion 1.0.0
-2024-10-28 20:18:29,468 [1] INFO  Program - Starting code generation.
-2024-10-28 20:18:29,601 [1] INFO  TemplateProcessor - Processing started for assembly: EdFi.Ods.Standard in folder: D:\ed-fi\Ed-Fi-ODS\Application\EdFi.Ods.Standard\Standard\4.0.0
-2024-10-28 20:18:35,957 [.NET TP Worker] INFO  TemplateProcessor - Processing complete for assembly: EdFi.Ods.Standard in 00:00:06.3560937.
-2024-10-28 20:18:35,958 [.NET TP Worker] INFO  TemplateProcessor - Processing started for assembly: ODS Database Specific in folder: D:\ed-fi\Ed-Fi-ODS\Application\EdFi.Ods.Standard\Standard\4.0.0\Artifacts
-2024-10-28 20:18:36,319 [.NET TP Worker] INFO  TemplateProcessor - Processing complete for assembly: ODS Database Specific in 00:00:00.3606704.
-2024-10-28 20:18:36,319 [.NET TP Worker] INFO  Program - Finished code generation in 00:00:06.8515808.
-Invoke-CodeGen done in 7s.
+2020-11-03 11:30:23,642 [1] INFO Program Starting code generation.
+2020-11-03 11:30:23,832 [1] INFO TemplateProcessor Processing started for assembly: EdFi.Ods.Profiles. Sample in folde
+r: C:\source\repososs\Ed-Fi-ODS\Application\EdFi.Ods.Profiles.Sample
+2020-11-03 11:30:24,741 [12] INFO TemplateProcessor
+00:00.9081311. Processing complete for assembly: EdFi.Ods.Profiles.Sample in 00:
+2020-11-03 11:30:24,741 [12] INFO TemplateProcessor Processing started for assembly: EdFi.Ods.Profiles. Test in folder
+: C:\source\repososs\Ed-Fi-ODS\Application\EdFi.Ods.Profiles.Test
+2020-11-03 11:30:27,246 [18] INFO TemplateProcessor Processing complete for assembly: EdFi.Ods.Profiles.Test in 00:00
+:02.5047302.
+2020-11-03 11:30:27,246 [18] INFO TemplateProcessor Processing started for assembly: EdFi.Ods.Standard in folder: C:\
+source\repososs\Ed-Fi-ODS\Application\EdFi.Ods.Standard
+2020-11-03 11:30:37,531 [12] INFO TemplateProcessor Processing complete for assembly: EdFi.Ods.Standard in 00:00:10.2
+846803.
+2020-11-03 11:30:37,531 [12] INFO TemplateProcessor Processing started for assembly: ODS Database Specific in folder:
+C:\source\repososs\Ed-Fi-ODS\Artifacts
+2020-11-03 11:30:37,754 [4] INFO TemplateProcessor 0.2235156. Processing complete for assembly: ODS Database Specific in 00:00:0
+2020-11-03 11:30:37,755 [4] INFO Program Finished code generation in 00:00:14.1136747.
+Invoke-CodeGen done in 14s.
 Duration Task
--------- ----
-00:01.59 Install-CodeGenUtility
-00:07.97 Invoke-CodeGen
+00:00.24 Install-ToolCodeGenUtility
+00:14.41 Invoke-CodeGen
 ```

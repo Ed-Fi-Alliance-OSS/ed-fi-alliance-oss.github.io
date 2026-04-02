@@ -61,14 +61,15 @@ When an element is POSTed (i.e., created in the ODS / API), the resource ID is
 provided via a HTTP Header. It will look something like:
 
 ```none
- access-control-allow-origin: *
- access-control-expose-headers: *
- connection: keep-alive
- content-length: 0
- date: Mon,28 Oct 2024 20:38:26 GMT
- etag: "5250293317838108944"
- location: https://api.ed-fi.org:443/v7.2/api/data/v3/ed-fi/courseOfferings/de5a5c02513a433d80099b63dde98441
- strict-transport-security: max-age=31536000
+{
+"date": "Fri, 15 Mar 2019 21:51:24 GMT",
+"etag": "\"636882654845800000\"",
+'strict-transport-security": "max-age=31536000",
+"location": "https://api.ed-fi.org/v2.5.0/api/v2.0/2019/courseOfferings/dba76850635c4bf793bc1d1f4a539cla",
+"access-control-expose-headers": "*",
+"content-length": "0",
+"content-type": null
+}
 ```
 
 ## USIs (Unique Surrogate Identifiers)
