@@ -19,13 +19,13 @@ The Enrollment API composite remains functional in ODS/API 7.3.x releases, but w
 The Enrollment API was designed to support compositing patterns for rostering data. The OneRoster 1.2 standard—now integrated directly into the Ed-Fi ODS/API—addresses the same use cases more effectively:
 
 - **Community alignment**: OneRoster is maintained by 1EdTech and used across the K–12 EdTech ecosystem, reducing the need for custom integrations.
-- **Simplified operations**: Agencies can now serve a standards-compliant OneRoster endpoint directly from their Ed-Fi ODS, without maintaining separate rostering infrastructure.
-- **Unified security**: OneRoster and standard Ed-Fi APIs share authentication and authorization, reducing operational complexity.
+- **Simplified operations**: Agencies can now serve a standards-compliant OneRoster endpoint directly from their Ed-Fi ODS database, using the new Ed-Fi OneRoster API application (coming May 2026).
+- **Unified security**: Ed-Fi OneRoster API and the Ed-Fi ODS/API share authentication and authorization, reducing operational complexity.
 - **Broader support**: OneRoster is backed by 1EdTech and a cross-industry Rostering Steering Committee, whereas the Enrollment API composite had limited adoption.
 
 ## Next Steps for Users
 
-- **If you're building new integrations**: Use the Ed-Fi OneRoster API instead of the Enrollment API composite. Documentation and getting started guidance are available in the [Ed-Fi documentation](https://docs.ed-fi.org).
+- **If you're building new integrations**: Use the Ed-Fi OneRoster API instead of the Enrollment API composite. Documentation and getting started guidance are forthcoming.
 - **If you're using Enrollment API today**: Begin evaluating a migration to the Ed-Fi OneRoster API. The Enrollment API composite remains functional in ODS/API 7.3.x, giving you time to plan the transition. Contact the Ed-Fi Alliance help desk if you need guidance on migration timelines or technical planning.
 - **Questions or concerns?**: Reach out to the Ed-Fi Alliance via the support contact form or your regional support channel.
 
