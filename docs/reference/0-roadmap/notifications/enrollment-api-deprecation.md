@@ -29,4 +29,4 @@ The Enrollment API was designed to support compositing patterns for rostering da
 - **If you're using Enrollment API today**: Begin evaluating a migration to the Ed-Fi OneRoster API. The Enrollment API composite remains functional in ODS/API 7.3.x, giving you time to plan the transition. Contact the Ed-Fi Alliance help desk if you need guidance on migration timelines or technical planning.
 - **Questions or concerns?**: Reach out to the Ed-Fi Alliance via the support contact form or your regional support channel.
 
-See the blog post [Upcoming Ed-Fi OneRoster® Support in ODS/API 7.3.2](../../blog/2026-01-30.md) for more context on the OneRoster release and its integration with the ODS/API.
+See the blog post [Upcoming Ed-Fi OneRoster® Support in ODS/API 7.3.2](/reference/blog/2026-01-30.md) for more context on the OneRoster release and its integration with the ODS/API.
