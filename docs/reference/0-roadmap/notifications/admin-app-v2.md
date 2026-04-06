@@ -5,7 +5,7 @@ June 19, 2023
 ## What Is Happening
 
 As of June 30, 2023, the Ed-Fi Admin App 2.x will have reached the [end of
-support](./readme.md).
+support](./readme.mdx).
 
 ## What Should I Do Now?
 
