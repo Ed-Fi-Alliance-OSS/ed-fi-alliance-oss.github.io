@@ -4,6 +4,12 @@ sidebar_position: 5
 
 # ODS / API Composite Resources Technical Approach
 
+:::warning
+
+The Ed-Fi Alliance is phasing out support for Composite and recommends against implementing any new composites in 2026 or beyond.
+
+:::
+
 As part of the evolution of the Ed-Fi ODS / API from primarily supporting data collection use cases to a widening set of data integration use cases, a mechanism is needed for exposing Composite Resources. A Composite
 Resource is a read-only resource which combines data from multiple standard API
 resources in a single call, effectively reducing the "chattiness" of the API

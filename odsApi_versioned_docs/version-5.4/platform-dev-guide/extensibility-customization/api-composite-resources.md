@@ -1,5 +1,9 @@
 # API Composite Resources
 
+:::warning
+The Ed-Fi Alliance is phasing out support for Composite and recommends against implementing any new composites in 2026 or beyond.
+:::
+
 ## Overview
 
 An Ed-Fi API Composite resource definition enables the Ed-Fi ODS / API to provide subject-oriented
@@ -73,7 +77,7 @@ The basic structure of a Composite Definition is as follows:
       </Composite>
     </Composites>
   </Category>
-  
+
   <Category...
 ```
 
@@ -107,7 +111,7 @@ the Ed-Fi ODS / API. For example, a Composite resource of "Section" defined by
 Ed-Fi with a category `name` of "Enrollment" would be exposed on the following URL:
 
 `http://{host}/api/composites/v1/ed-fi/enrollment/Sections`
-  
+
 Note: The composites feature is now versioned independently of the primary API.
 
 The `name` attribute is used in the routes, and is also normalized (introducing spaces, if
