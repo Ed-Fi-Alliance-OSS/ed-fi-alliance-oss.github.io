@@ -26,7 +26,7 @@ In contrast, a model such as SEDM treats the IEP as a first-class, time-bound le
 
 #### Model Details
 
-<!--TODO Add Link for SEDM Pages created under DATASTD-2567-->
+To allow community members to track data in the ED-Fi UDM, the Special Education Data Model domain is created with teh following entities and associations:
 
 #### Use Cases/Best Practices
 
