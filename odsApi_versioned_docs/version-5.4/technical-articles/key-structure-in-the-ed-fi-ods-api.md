@@ -25,12 +25,12 @@ GET on a path like: `/courseOfferings/d0fd729db6ee4a7bbc989720e4f833f5`.
 
 In the returned JSON, the resource ID appears as the `id` element:
 
-![JSON resource ID](https://edfi.atlassian.net/wiki/download/attachments/22774867/json-resourceid.png?version=1&modificationDate=1641921865048&cacheVersion=1&api=v2)
+![JSON resource ID](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/json-resourceid.png)
 
 When an element is POSTed (i.e., created in the ODS / API), the resource ID is
 provided via a HTTP Header. It will look something like:
 
-![API new resource header](https://edfi.atlassian.net/wiki/download/attachments/22774867/api-newresourceheader.png?version=1&modificationDate=1641921864972&cacheVersion=1&api=v2)
+![API new resource header](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/api-newresourceheader.png)
 
 ## USIs (Unique Surrogate Identifiers)
 
@@ -71,7 +71,7 @@ This section provides an example of how natural keys in the ODS / API work in
 practice. Consider the following diagram, noting the composite key structure of
 BellScheduleClassPeriod:
 
-![Composite Key Model](https://edfi.atlassian.net/wiki/download/attachments/22774867/composite-key-model.png?version=1&modificationDate=1641921865000&cacheVersion=1&api=v2)
+![Composite Key Model](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/composite-key-model.png)
 
 While SchoolId is present as a key in both BellSchedule and ClassPeriod, there
 is only one SchoolId on the BellScheduleClassPeriod. This process of "merging"

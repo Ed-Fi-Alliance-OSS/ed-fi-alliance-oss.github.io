@@ -67,7 +67,7 @@ a single query that contains a specific slice of data.
 The approach is depicted in the images below for the Ed-Fi Enrollment API's
 Section resource:
 
-![Composite Table 01](https://edfi.atlassian.net/wiki/download/attachments/22774874/Composite-Table-01-1.png?version=1&modificationDate=1641861367247&cacheVersion=1&api=v2)
+![Composite Table 01](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Composite-Table-01-1.png)
 
 The results of all the queries are then processed into a generic structure of `IDictionary<string, object>` instances (representing individual objects) and `IList<IDictionary<string, object>>` representing collections of objects. These generic structures are then provided
 to the Json.NET library and serialized directly to form the API response.
@@ -144,7 +144,7 @@ D, they have no permissions to read Resource C (as depicted by the
 (and any resources that are structurally dependent on it, even if authorization
 would have been granted on the dependent resources).
 
-![Effect of Profiles and Authorization on Composite Resources](https://edfi.atlassian.net/wiki/download/attachments/22774874/composite-fig-01.png?version=1&modificationDate=1641861368285&cacheVersion=1&api=v2)
+![Effect of Profiles and Authorization on Composite Resources](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/composite-fig-01.png)
 
 Example of the effects of Profiles, Authorization on a Composite Resource
 Response

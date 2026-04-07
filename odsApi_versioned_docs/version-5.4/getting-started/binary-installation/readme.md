@@ -47,7 +47,7 @@ Verify that PowerShell 5.0 or above is installed:
 
 Download and install the latest release of the [.NET 8.0 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0).
 
-![PowerShell Version Screenshot 2](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2024-10-31_13-58-28.png)
+![PowerShell Version Screenshot 2](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2024-10-31_13-58-28.png)
 
 ### Web Server
 
@@ -64,13 +64,13 @@ View detail...
 2.  Check the box next to **Internet Information Services**. The default selections will be good for most cases.
 3.  Click **OK**.
 
-![IIS Windows Features Screenshot](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-10-13_16-25-43.png)
+![IIS Windows Features Screenshot](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-10-13_16-25-43.png)
 
 **.NET 8.0 Hosting Bundle**
 
 Download and install the latest release of the [.NET Hosting Bundle 8.0](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) after IIS is installed.
 
-![Hosting Bundle Screenshot](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2024-10-31_13-58-48.png)
+![Hosting Bundle Screenshot](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2024-10-31_13-58-48.png)
 
 ---
 

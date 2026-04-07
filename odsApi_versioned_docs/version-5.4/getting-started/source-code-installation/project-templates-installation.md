@@ -33,7 +33,7 @@ Detail on each step follows.
 
 Verify that there are no previous versions of the templates installed under Extensions > Manage Extensions > Installed > Templates. "Uninstall" previous versions of "Ed-Fi Alliance Project Templates".
 
-![Uninstall Templates](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-10-18_16-6-25.png)
+![Uninstall Templates](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-10-18_16-6-25.png)
 
 ## Step 2. Download the Ed-Fi Visual Studio Extension
 
@@ -47,19 +47,19 @@ Close Visual Studio. Ensure you close all instances.
 
 Double-click the downloaded EdFi.ProjectTemplates.Installer.vsix file and install the templates.
 
-![Install Templates 1](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2022-2-7_14-42-7.png)
+![Install Templates 1](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2022-2-7_14-42-7.png)
 
-![Install Templates 2](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2022-2-7_14-43-35.png)
+![Install Templates 2](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2022-2-7_14-43-35.png)
 
 ## Step 5. Verify Install
 
 Verify that the extension installed under Extensions > Manage Extensions > Installed > Templates.
 
-![Verify Templates 1](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-10-18_16-16-34.png)
+![Verify Templates 1](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-10-18_16-16-34.png)
 
 Verify that the templates are available under File > New > Project.
 
-![Verify Templates 2](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-10-18_16-21-35.png)
+![Verify Templates 2](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-10-18_16-21-35.png)
 
 ## Next Steps
 

@@ -159,19 +159,19 @@ If you have already created a backup using the `Initialize-PopulatedTemplate` sc
 
 Within SSMS, select the database you would like to back up, select Tasks > Back Up...
 
-![Image](https://edfi.atlassian.net/wiki/download/attachments/22774845/2018-11-07%2009_03_53-Greenshot.png?version=1&modificationDate=1641861365887&cacheVersion=1&api=v2)
+![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/2018-11-07%252009_03_53-Greenshot.png)
 
 In the **Back Up Database** dialog, select the default backup destination, click **Remove**, then click **Add** to create the backup.
 
-![Back Up Database Dialog](https://edfi.atlassian.net/wiki/download/thumbnails/22774845/2018-11-07%2009_01_57-Microsoft%20SQL%20Server%20Management%20Studio.png?version=1&modificationDate=1641861365880&cacheVersion=1&api=v2&width=927&height=684)
+![Back Up Database Dialog](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/2018-11-07%252009_01_57-Microsoft%2520SQL%2520Server%2520Management%2520Studio.png)
 
 In the **Select Backup Destination** Dialog, select a location to save the backup file:
 
-![Select Backup Destination](https://edfi.atlassian.net/wiki/download/thumbnails/22774845/2018-11-07%2009_09_22-Select%20Backup%20Destination.png?version=1&modificationDate=1641861365870&cacheVersion=1&api=v2&width=444&height=276)
+![Select Backup Destination](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/2018-11-07%252009_09_22-Select%2520Backup%2520Destination.png)
 
 The database must be placed in `<source directory>\Ed-Fi-ODS-Implementation\DatabaseTemplate\Database` and the file name must end in .bak in order for the initialize development and deploy scripts to pick it up.
 
-![Locate Database Files](https://edfi.atlassian.net/wiki/download/attachments/22774845/2018-11-07%2009_16_54-Locate%20Database%20Files%20-%20TRAVIS-MEADOR-O.png?version=1&modificationDate=1641861365857&cacheVersion=1&api=v2)
+![Locate Database Files](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/2018-11-07%252009_16_54-Locate%2520Database%2520Files%2520-%2520TRAVIS-MEADOR-O.png)
 
 ### Step 2: Create a Nuspec File
 
@@ -235,7 +235,7 @@ Your package was pushed.
 
 When successful, you should see something similar to the following:
 
-![MyGet Feed](https://edfi.atlassian.net/wiki/download/thumbnails/22774845/2018-11-12%2012_18_06-ed-fi%20-%20Packages%20_%20MyGet.png?version=1&modificationDate=1641861365673&cacheVersion=1&api=v2&width=771&height=99)
+![MyGet Feed](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/2018-11-12%252012_18_06-ed-fi%2520-%2520Packages%2520_%2520MyGet.png)
 
 In your MyGet feed you should see your new package.
 

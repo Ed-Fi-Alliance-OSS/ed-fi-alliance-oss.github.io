@@ -33,7 +33,7 @@ Verify that PowerShell 5.0 or above is installed:
 
 Download and install the latest [NET SDK 8.0 (Compatible with Visual Studio 2022)](https://dotnet.microsoft.com/en-us/download/dotnet/8.0).
 
-![.NET 8.0 SDK](https://edfi.atlassian.net/wiki/download/thumbnails/22774233/image2024-10-31_14-12-25.png?version=1&modificationDate=1730401946958&cacheVersion=1&api=v2&width=812&height=491)
+![.NET 8.0 SDK](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2024-10-31_14-12-25.png)
 </details>
 
 
@@ -53,10 +53,10 @@ Ensure that the following software is installed and configured:
 
 Install Microsoft SQL Server 2019:
 
-![SQL Server Install 1](https://edfi.atlassian.net/wiki/download/thumbnails/22774233/SQLServerInstallationStep1.png?version=2&modificationDate=1651250190223&cacheVersion=1&api=v2&width=1218&height=581)
+![SQL Server Install 1](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/SQLServerInstallationStep1.png)
 
 1. When prompted, select the following features: 
-![SQL Server Features](https://edfi.atlassian.net/wiki/download/attachments/22774233/Feature%20Installation.png?version=1&modificationDate=1641861346173&cacheVersion=1&api=v2)
+![SQL Server Features](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Feature%2520Installation.png)
 2. Use the default instance named MSSQLSERVER.
  ![SQL Server Instance](https://lh6.googleusercontent.com/qOzdSg0rMADabs7fFr27XNBu_v2zyG5A5vzp55cx-20gPED_ahSihYeHuEiXRDoo1iw29IoKnvEabogFX1VG79e59fmqbMoGEUUqiiYKKH71IoaEEpA8o6cxx7gTyZQnbPN1WrYf)
 3. Select either Windows Authentication Mode or Mixed Mode. ![SQL Server Auth](https://lh5.googleusercontent.com/Hh96mComsyLGxATCP0oPKisGCCbotT0nqRSSSG19f7rYcbl1zHvLYM1HVdZuFk4WqQH55Tje-HBHumahscVcfB7SxStr-vcYAT3oyhqxgyalHkv5Ku4YKyudHAfsMpZkfe4YtrE9)
@@ -64,7 +64,7 @@ Install Microsoft SQL Server 2019:
 
 Install SQL Server Management Studio:
 
-![SQL Server Install 2](https://edfi.atlassian.net/wiki/download/thumbnails/22774233/SQLServerInstallationStep2.png?version=1&modificationDate=1651250349463&cacheVersion=1&api=v2&width=1030&height=625)
+![SQL Server Install 2](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/SQLServerInstallationStep2.png)
 
 ### Visual Studio 2022
 
@@ -114,49 +114,49 @@ Installation of PostgreSQL can be done either using the binaries or using Docker
   * Note the installer includes pgAdmin as an option.
   * The [PostgreSQL installation guide](https://www.enterprisedb.com/docs/supported-open-source/postgresql/installer/) has details.
 
-![Postgres Download](https://edfi.atlassian.net/wiki/download/attachments/24543713/postgres%20download.jpg?version=1&modificationDate=1619701514713&cacheVersion=1&api=v2)
+![Postgres Download](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/postgres%2520download.jpg)
 
 Download the version 13.x installer.
 
-![Postgres Download 2](https://edfi.atlassian.net/wiki/download/thumbnails/22774233/postgresqldbdownload2.png?version=1&modificationDate=1655848356913&cacheVersion=1&api=v2&width=550&height=433)
+![Postgres Download 2](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/postgresqldbdownload2.png)
 
 Click Next.
 
-![Postgres Install 2](https://edfi.atlassian.net/wiki/download/thumbnails/24543713/postgres-install-2.jpg?version=1&modificationDate=1619701514877&cacheVersion=1&api=v2&width=559&height=443)
+![Postgres Install 2](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/postgres-install-2.jpg)
 
 Click Next.
 
-![Postgres Install 3](https://edfi.atlassian.net/wiki/download/thumbnails/22774233/postgres-install-3.jpg?version=1&modificationDate=1641861345693&cacheVersion=1&api=v2&width=558&height=437)
+![Postgres Install 3](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/postgres-install-3.jpg)
 
 If you want to install only the tools uncheck PostgreSQL Server, pgAdmin 4 and Stack Builder.
 
 Click Next.
 
-![Postgres Install 4](https://edfi.atlassian.net/wiki/download/thumbnails/24543713/postgres-install-4.jpg?version=1&modificationDate=1619701515040&cacheVersion=1&api=v2&width=558&height=442)
+![Postgres Install 4](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/postgres-install-4.jpg)
 
 Click Next.
 
-![Postgres Install 5](https://edfi.atlassian.net/wiki/download/thumbnails/22774233/postgres-install-5.jpg?version=1&modificationDate=1641861345677&cacheVersion=1&api=v2&width=561&height=439)
+![Postgres Install 5](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/postgres-install-5.jpg)
 
 Enter a password for the postgres superuser.
 
 Click Next.
 
-![Postgres Install 6](https://edfi.atlassian.net/wiki/download/thumbnails/22774233/postgres-install-6.jpg?version=1&modificationDate=1641861345247&cacheVersion=1&api=v2&width=564&height=445)
+![Postgres Install 6](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/postgres-install-6.jpg)
 
 Enter port 5432 (default).
 
 Click Next.
 
-![Postgres Install 7](https://edfi.atlassian.net/wiki/download/thumbnails/22774233/postgres-install-7.jpg?version=1&modificationDate=1641861345667&cacheVersion=1&api=v2&width=559&height=442)
+![Postgres Install 7](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/postgres-install-7.jpg)
 
 Click Next.
 
-![Postgres Install 8](https://edfi.atlassian.net/wiki/download/thumbnails/24543713/postgres-install-8.jpg?version=1&modificationDate=1619701515277&cacheVersion=1&api=v2&width=558&height=436)
+![Postgres Install 8](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/postgres-install-8.jpg)
 
 Click Next.
 
-![Postgres Install 9](https://edfi.atlassian.net/wiki/download/thumbnails/22774233/postgres-install-9.jpg?version=1&modificationDate=1641861345647&cacheVersion=1&api=v2&width=559&height=439)
+![Postgres Install 9](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/postgres-install-9.jpg)
 
 Click Next to finish the installation.
 
@@ -235,7 +235,7 @@ localhost:5432:*:postgres:P@ssw0rd
 
 Set the environment variable PGPASSFILE to the location of the pgpass file that was created, which is the recommended approach. Optionally, the file can be saved in `%APPDATA%/postgresql/pgpass.conf.`
 
-![pgpass.conf Example](https://edfi.atlassian.net/wiki/download/thumbnails/22774233/image2020-4-9_16-43-3.png?version=1&modificationDate=1641861345637&cacheVersion=1&api=v2&width=612&height=232)
+![pgpass.conf Example](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-4-9_16-43-3.png)
 
 You can test the environment variable setup using:
 
@@ -260,7 +260,7 @@ The Ed-Fi ODS / API source code is contained in two Ed-Fi repositories hosted by
 
 Use a Git client (such as [GitHub Desktop](https://desktop.github.com/)) or a Git command line tool to Git Clone each of the repository links described above. It is important that both repositories are extracted to the same root directory (for example C:\). When both repositories have been cloned, there will be two folders for the ODS / API source code as shown below:
 
-![Cloned Folders](https://edfi.atlassian.net/wiki/download/thumbnails/22774233/Step-3-Fig-2.png?version=1&modificationDate=1641861345380&cacheVersion=1&api=v2&width=203&height=42)
+![Cloned Folders](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Step-3-Fig-2.png)
 
 :::info
 When you clone a repository, ensure that you have the correct tag checked out in your client before you proceed.
@@ -272,7 +272,7 @@ git checkout tags/v5.4-patch1 -b <branch>
 
 If you download the code via a ZIP file, ensure that you check Unblock in the file's Properties dialog to allow the contents of the contained scripts to execute properly.
 
-![Unblock ZIP](https://edfi.atlassian.net/wiki/download/thumbnails/22774233/unblock.png?version=1&modificationDate=1641861345267&cacheVersion=1&api=v2&width=363&height=509)
+![Unblock ZIP](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/unblock.png)
 
 <details>
 <summary>View detail and options...</summary>
@@ -289,18 +289,18 @@ Some developers prefer simply to download the code rather than perform a Git Clo
 
 1. Navigate to each of the repository links described above (for latest release or daily source) and use the Download ZIP button to download the repository to your local drive.
 
-    ![Download ZIP](https://edfi.atlassian.net/wiki/download/thumbnails/22774233/download_zip.PNG?version=1&modificationDate=1641861346307&cacheVersion=1&api=v2&width=404&height=207)
+    ![Download ZIP](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/download_zip.PNG)
 
 2. In Windows Explorer, right-click on each of the downloaded ZIP files and select Extract All… Enter C:\ for the target folder. (You can extract the files to any directory, but these instructions assume you've extracted to C:\.) The ZIP files contain an embedded folder ending in "-v5.4-patch1" (or "-main" if downloading latest daily source). For example, the "Ed-Fi ODS ZIP" archive contents will be extracted into C:\Ed-Fi-ODS-v5.4-patch1.
 3. After the extractions are complete, rename the folders to remove the -v5.4-patch1 (or "-main") from the folder names. For example, change C:\Ed-Fi-ODS-v5.4-patch1 to C:\Ed-Fi-ODS.
 4. When the extraction and renaming are complete, there should be two folders for the ODS / API source code as shown below:
-    ![Cloned Folders](https://edfi.atlassian.net/wiki/download/thumbnails/22774233/Step-3-Fig-2.png?version=1&modificationDate=1641861345380&cacheVersion=1&api=v2&width=203&height=42)
+    ![Cloned Folders](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Step-3-Fig-2.png)
 
 #### Troubleshooting the File Extract
 
 If you get a warning or error when attempting to extract the downloaded ZIP files, right-click each of the downloaded ZIP files and select Properties. On the General tab, check Unblock to allow the contents of the contained scripts to execute properly.
 
-![Unblock Dialog](https://edfi.atlassian.net/wiki/download/thumbnails/22774233/image2021-11-1_10-31-3.png?version=1&modificationDate=1641861344807&cacheVersion=1&api=v2&width=480&height=627)
+![Unblock Dialog](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-11-1_10-31-3.png)
 
 </details>
 
@@ -328,7 +328,7 @@ C:\Ed-Fi-ODS-Implementation\Initialize-PowershellForDevelopment.ps1
 
 When the scripts are loaded, you should see the results shown below:
 
-![PowerShell Init](https://edfi.atlassian.net/wiki/download/thumbnails/22774233/image2021-2-4_12-2-23.png?version=1&modificationDate=1641861346370&cacheVersion=1&api=v2&width=856&height=211)
+![PowerShell Init](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-2-4_12-2-23.png)
 
 ### Initialize the Development Environment
 
@@ -346,11 +346,11 @@ For a PostgreSQL backing datastore, use the following:
 initdev -Engine PostgreSQL
 ```
 
-![Initdev Output](https://edfi.atlassian.net/wiki/download/thumbnails/22774233/image2021-2-4_12-2-39.png?version=1&modificationDate=1641861346377&cacheVersion=1&api=v2&width=857&height=329)
+![Initdev Output](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-2-4_12-2-39.png)
 
 A successful `initdev` execution will display the tasks executed and their duration as shown below:
 
-![Initdev Success](https://edfi.atlassian.net/wiki/download/thumbnails/22774233/image2021-2-4_12-3-8.png?version=1&modificationDate=1641861346387&cacheVersion=1&api=v2&width=462&height=262)
+![Initdev Success](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-2-4_12-3-8.png)
 
 ---
 
@@ -367,7 +367,7 @@ To build the solution from within Visual Studio:
 
 The following diagram shows how MeatEd generated artifacts are used to create the API for the Ed-Fi ODS using code generators within the solution. Code generation uses Api Model JSON file to understand the structure that it uses to generate data access code. Code generation also depends on the DatabaseViews.generated.json which is generated one time using the "EdFi_Ods_Empty" database and subsequently provided by the source code repository.
 
-![Code Generation Diagram](https://edfi.atlassian.net/wiki/download/thumbnails/22774233/Step-5-Fig-1.png?version=1&modificationDate=1641861346360&cacheVersion=1&api=v2&width=871&height=365)
+![Code Generation Diagram](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Step-5-Fig-1.png)
 
 ### Alternatively Building from the Developer Command Prompt
 
@@ -379,7 +379,7 @@ To do a clean build from the command prompt:
 
 1. Open the Developer Command Prompt for Visual Studio. 
    
-   ![VS Command Prompt](https://edfi.atlassian.net/wiki/download/thumbnails/22774233/vs_step5.png?version=1&modificationDate=1641861346290&cacheVersion=1&api=v2&width=232&height=61)
+   ![VS Command Prompt](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/vs_step5.png)
 2. Navigate to your C:\Ed-Fi-ODS-Implementation\Application directory.
 3. Issue a command similar to the following:
 
@@ -395,13 +395,13 @@ The Visual Studio Solution for the Ed-Fi ODS / API consists of several "Startup 
 
 To set the Startup Projects:
 
-1. Select the **Set StartUp Projects…** context menu by right-clicking on the solution file in the Solution Explorer. ![Startup Projects](https://edfi.atlassian.net/wiki/download/thumbnails/22774233/startup2.png?version=1&modificationDate=1641861346280&cacheVersion=1&api=v2&width=850&height=883)
+1. Select the **Set StartUp Projects…** context menu by right-clicking on the solution file in the Solution Explorer. ![Startup Projects](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/startup2.png)
 2. Within the Startup Project property page, select the Multiple startup projects radio button and enable the following projects:
    * EdFi.Ods.SandboxAdmin
    * EdFi.Ods.SwaggerUI
    * EdFi.Ods.WebApi
 
-    ![Startup Projects 2](https://edfi.atlassian.net/wiki/download/thumbnails/22774233/startup3.png?version=1&modificationDate=1641861346267&cacheVersion=1&api=v2&width=1057&height=757)
+    ![Startup Projects 2](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/startup3.png)
 
 3. Click OK to accept the changes to your local development settings.
 
@@ -413,7 +413,7 @@ To set the Startup Projects:
 * To run the Ed-Fi ODS / API without debugging, press Ctrl+F5.
 * To interactively debug the Ed-Fi ODS / API solution, press F5 (or press Start in the Standard Toolbar).
 
-![Run Solution](https://edfi.atlassian.net/wiki/download/attachments/22774233/Step-7-Fig-1.png?version=1&modificationDate=1641861346237&cacheVersion=1&api=v2)
+![Run Solution](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Step-7-Fig-1.png)
 
 ### Notes on Running the Solution
 
@@ -443,7 +443,7 @@ The Sandbox Administration Portal is a web application used to create sandbox da
 
 Login to Sandbox Administration Portal with Test Admin Account. Login details can be found in Ed-Fi-ODS-Implementation\Application\EdFi.Ods.SandboxAdmin\appsettings.json or alternatively in appsettings.Development.json file. We recommend that you change your password as soon as you log in.
 
-![Sandbox Admin](https://edfi.atlassian.net/wiki/download/attachments/22774233/sandbox.png?version=1&modificationDate=1641861346230&cacheVersion=1&api=v2)
+![Sandbox Admin](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/sandbox.png)
 
 As the name implies, Sandbox Administration Portal is useful for development machines and sandbox instances of the ODS / API, but should not be present on production instances. See the [Platform Developers' Guide - Deployment](../../platform-dev-guide/deployment/readme.md) section for details.
 
@@ -453,7 +453,7 @@ As the name implies, Sandbox Administration Portal is useful for development mac
 
 The ODS / API Documentation Web Page provides an overview of the ODS / API, and links to more detailed API documentation.
 
-![API Docs](https://edfi.atlassian.net/wiki/download/thumbnails/22774233/image2024-7-25_3-13-35.png?version=1&modificationDate=1721895221520&cacheVersion=1&api=v2&width=1280&height=1016)
+![API Docs](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2024-7-25_3-13-35.png)
 
 The REST interface to the Ed-Fi ODS / API exposes metadata describing the exposed resources as well as the inputs, HTTP verbs, and schema of the exposed entities. This metadata enables a user interface (based on the [Swagger](http://swagger.io/) framework) to display API documentation.
 
@@ -461,7 +461,7 @@ The Swagger-based documentation web page uses a key and secret (typically the sa
 
 To view the data in your sandbox, click Authorize and enter the key and secret in the appropriate fields and retrieve a token (the key and secret values for the default sandbox are pre-populated). This token is used throughout your session to access your sandbox. This is the same process used by other applications to access their data.
 
-![Swagger Auth](https://edfi.atlassian.net/wiki/download/attachments/22774233/image2020-10-18_16-45-58.png?version=1&modificationDate=1641861345230&cacheVersion=1&api=v2)
+![Swagger Auth](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-10-18_16-45-58.png)
 
 Similar to the Sandbox Administration Portal, the ODS / API Documentation Web Page is useful for development machines and sandbox instances of the ODS / API, but is generally not present on production instances. See the [Platform Developers' Guide - Deployment](../../platform-dev-guide/deployment/readme.md) section for details.
 

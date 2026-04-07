@@ -52,23 +52,23 @@ To do so, simply open PowerShell and navigate to "<source/>
 
 This will execute configured script from **secret.json** to download sample extension plugin and deploy the plugin artifacts to local database.
 
-![Image](https://edfi.atlassian.net/wiki/download/thumbnails/22774717/image2021-10-26_16-35-10.png?version=1&modificationDate=1641861360153&cacheVersion=1&api=v2&width=312&height=89)
+![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-10-26_16-35-10.png)
 
-![Image](https://edfi.atlassian.net/wiki/download/thumbnails/22774717/image2021-10-26_16-39-14.png?version=1&modificationDate=1641861360143&cacheVersion=1&api=v2&width=1257&height=615)
+![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-10-26_16-39-14.png)
 
 After the successful execution of initdev, you will find the sample extension in
 <directory/><source/>\Ed-Fi-ODS-Implementation\Plugin folder.
 
-![Image](https://edfi.atlassian.net/wiki/download/thumbnails/22774717/image2021-10-26_16-49-9.png?version=1&modificationDate=1641861360133&cacheVersion=1&api=v2&width=872&height=210)
+![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-10-26_16-49-9.png)
 
 Run the "Ed-Fi-Ods.sln" solution from Visual Studio and verify that the sample
 data models are listed in your API landing page.
 
-![Image](https://edfi.atlassian.net/wiki/download/thumbnails/22774717/image2021-10-26_16-52-9.png?version=1&modificationDate=1641861360127&cacheVersion=1&api=v2&width=644&height=573)
+![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-10-26_16-52-9.png)
 
 **You can also verify the Sample API endpoints in the Swagger UI documentation:**
 
-![Image](https://edfi.atlassian.net/wiki/download/thumbnails/22774717/image2021-10-26_16-58-21.png?version=1&modificationDate=1641861360113&cacheVersion=1&api=v2&width=1280&height=357)
+![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-10-26_16-58-21.png)
 
 ## Install Sample Extension in an Existing Production Environment
 
@@ -101,14 +101,14 @@ command to install sample extension on your existing ODS database:
 Initialize-DeploymentEnvironment**
 ```
 
-![Image](https://edfi.atlassian.net/wiki/download/thumbnails/22774717/image2021-3-26_11-26-51.png?version=1&modificationDate=1641861360513&cacheVersion=1&api=v2&width=474&height=111)
+![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-3-26_11-26-51.png)
 
-![Image](https://edfi.atlassian.net/wiki/download/thumbnails/22774717/image2021-10-26_17-20-22.png?version=1&modificationDate=1641861360080&cacheVersion=1&api=v2&width=823&height=212)
+![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-10-26_17-20-22.png)
 
 * After the successful execution, you will find sample schema tables in the
 deployed ODS database.
 
-![Image](https://edfi.atlassian.net/wiki/download/thumbnails/22774717/image2021-10-26_17-0-27.png?version=1&modificationDate=1641861360107&cacheVersion=1&api=v2&width=350&height=605)
+![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-10-26_17-0-27.png)
 
 ### Deploy Sample Extension Binaries to Web Server
 
@@ -120,7 +120,7 @@ deployed ODS database.
 * Copy the extracted folder and paste it in C:\inetpub\Ed-Fi\WebApi\Plugin in your
 WebAPI directory.
 
-![Image](https://edfi.atlassian.net/wiki/download/thumbnails/22774717/image2021-10-26_17-10-52.png?version=1&modificationDate=1641861360097&cacheVersion=1&api=v2&width=808&height=193)
+![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-10-26_17-10-52.png)
 
 * Update appsettings.json, for plugin settings as shown below:
 
@@ -137,9 +137,9 @@ WebAPI directory.
 
 * Browse to the API landing page and verify that sample data models are listed.
 
-![Image](https://edfi.atlassian.net/wiki/download/thumbnails/22774717/image2021-10-26_16-52-9.png?version=1&modificationDate=1641861360127&cacheVersion=1&api=v2&width=644&height=573)
+![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-10-26_16-52-9.png)
 
 * **You can also verify the Sample extension API endpoints in the Swagger UI
 documentation.**
 
-![Image](https://edfi.atlassian.net/wiki/download/thumbnails/22774717/image2021-10-26_16-58-21.png?version=1&modificationDate=1641861360113&cacheVersion=1&api=v2&width=1280&height=357)
+![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-10-26_16-58-21.png)

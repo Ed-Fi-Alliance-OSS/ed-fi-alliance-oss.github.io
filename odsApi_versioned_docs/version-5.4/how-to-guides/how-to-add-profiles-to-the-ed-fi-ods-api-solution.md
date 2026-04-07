@@ -23,11 +23,11 @@ Detail on each step follows.
    
    b. In the "Add New Project" dialog, find and select the "Ed-Fi API Profiles Project Template" entry as shown below. Click Next.
    
-   ![Image](https://edfi.atlassian.net/wiki/download/thumbnails/22774786/profiles1.PNG?version=1&modificationDate=1641861361677&cacheVersion=1&api=v2&width=1024&height=680)
+   ![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/profiles1.webp)
    
    c. Enter the project name for the new project and click Create. The suggested naming convention for this type of project is something like EdFi.Ods.Profiles.MyProfiles.
    
-   ![Image](https://edfi.atlassian.net/wiki/download/thumbnails/22774786/profiles2.PNG?version=1&modificationDate=1641861361537&cacheVersion=1&api=v2&width=1024&height=680)
+   ![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/profiles2.PNG)
    
 2. Update the Marker Interface File. To integrate the Profiles with the API, start by ensuring you have a marker interface in the root of your Profiles project.
 
@@ -73,7 +73,7 @@ You may have to clear your browser cache in order for Swagger UI to display the
 new resource.
 :::
 
-![Image](https://edfi.atlassian.net/wiki/download/thumbnails/22774786/image2017-12-18_16-23-55.png?version=1&modificationDate=1641861361583&cacheVersion=1&api=v2&width=1280&height=505)
+![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2017-12-18_16-23-55.png)
 
 ## Profiles in Use
 
@@ -98,7 +98,7 @@ API configuration.
 
 The EdFi_Admin tables related to this process are shown below.
 
-![Image](https://edfi.atlassian.net/wiki/download/attachments/22774786/image2015-9-3%2019-33-12.png?version=1&modificationDate=1641861361643&cacheVersion=1&api=v2)
+![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2015-9-3%252019-33-12.png)
 
 ## Downloads
 The following GitHub link contains source files for this Profile sample:

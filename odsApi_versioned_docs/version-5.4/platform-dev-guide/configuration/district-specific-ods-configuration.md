@@ -26,6 +26,6 @@ initdev -InstallType DistrictSpecific -OdsTokens '255901;255902'
 
 * Configure API Clients to be associated with one district. If you are using the [ODS / API Admin App](/reference/ods-admin-app/) administrative application for setting up client keys and secrets, you can configure the client to be associated with a particular district in the "Add Application Vendor" screen. This will ensure that all transactions from the client will land in the ODS partition specific to the district associated with the API Client.
 
-![Add Application Vendor](https://edfi.atlassian.net/wiki/download/attachments/22774329/image2020-3-22_15-48-50.png?version=1&modificationDate=1641861348647&cacheVersion=1&api=v2)
+![Add Application Vendor](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-3-22_15-48-50.png)
 
 See the [Extensibility & Customization](../extensibility-customization/readme.md) section for information on using district-specific configuration as a facet of a partitioning strategy.

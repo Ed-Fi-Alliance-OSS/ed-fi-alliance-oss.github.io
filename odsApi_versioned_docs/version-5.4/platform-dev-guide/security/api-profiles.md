@@ -10,12 +10,12 @@ assigned to API consumer applications in the [ODS / API Admin App](https://edfi.
 Profile's data policy use the Profile-specific content types, and thus are
 appropriately constrained.
 
-|  ![Figure 1](https://edfi.atlassian.net/wiki/download/attachments/22774352/image2015-8-26%2011-40-33.png?version=1&modificationDate=1641861349347&cacheVersion=1&api=v2) |  ![Figure 2](https://edfi.atlassian.net/wiki/download/attachments/22774352/image2015-8-26%2011-42-57.png?version=1&modificationDate=1641861349340&cacheVersion=1&api=v2) |
+|  ![Figure 1](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2015-8-26%252011-40-33.png) |  ![Figure 2](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2015-8-26%252011-42-57.png) |
 | --- | --- |
 | **Figure 1.** Depiction of the inclusion of all properties | **Figure 2.** Depiction of the inclusion of specific properties |
-| ![Figure 3](https://edfi.atlassian.net/wiki/download/attachments/22774352/image2015-8-25%2016-56-57.png?version=1&modificationDate=1641861349333&cacheVersion=1&api=v2) | ![Figure 4](https://edfi.atlassian.net/wiki/download/attachments/22774352/image2015-8-26%2011-37-23.png?version=1&modificationDate=1641861349327&cacheVersion=1&api=v2) |
+| ![Figure 3](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2015-8-25%252016-56-57.png) | ![Figure 4](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2015-8-26%252011-37-23.png) |
 | **Figure 3.** Depiction of the inclusion of a specific collection | **Figure 4.** Depiction of the inclusion or exclusion of specific collection items |
-| ![Figure 5](https://edfi.atlassian.net/wiki/download/attachments/22774352/image2015-8-26%2018-42-12.png?version=1&modificationDate=1641861349313&cacheVersion=1&api=v2) | |
+| ![Figure 5](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2015-8-26%252018-42-12.png) | |
 | **Figure 5.** Depiction of the inclusion of specific properties on a child collection's items | |
 
 ## Include-Only vs. Exclude-Only Strategies
@@ -33,7 +33,7 @@ automatically included, resulting in a more flexible definition that will not
 necessarily require adjustments over time. The implications of these two approaches is
 depicted in the diagram below:
 
-![Image](https://edfi.atlassian.net/wiki/download/attachments/22774352/image2015-8-26%2011-45-58.png?version=1&modificationDate=1641861349300&cacheVersion=1&api=v2)
+![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2015-8-26%252011-45-58.png)
 
 Figure 6. Depiction of the implications on Profile flexibility using Inclusion vs.
 Exclusion
