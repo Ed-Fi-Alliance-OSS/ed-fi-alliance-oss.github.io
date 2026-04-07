@@ -21,10 +21,6 @@ To make it easier for developers to install and run the Ed-Fi ODS / API, the
 default download from source control is pre-configured with values appropriate
 for a developer or single-server test instance of the system.
 
-# Developers' Guide Contents
-
-Find out more about how to develop platforms based on the Ed-Fi ODS / API v6.2:
-
 | Application | Location | Setting Name | Value | Description |
 | --- | --- | --- | --- | --- |
 | EdFi.Ods.SandboxAdmin | appsettings.json | OAuthUrl | Example: `<http://site-address:port/oauth>` | Points to the root of the authorization API in the Ed-Fi ODS / API. |
@@ -78,19 +74,14 @@ optional configuration values include:
 | EdFi.Ods.Web.Api | appsettings.json | Plugin:Folder | Example: ../../Plugin | Configures the plugin folder that API looks to deploy extensions dynamically. |
 | EdFi.Ods.Web.Api | appsettings.json | Plugin:Scripts | Example: \[ tpdm \] | Configures the script (located in plugin folder by default) responsible for downloading the extension plugins and placing them in the plugin folder. |
 | EdFi.Ods.WebApi | appsettings.json | ApiSettings:Caching:Tenants:AbsoluteExpirationSeconds | Example: 600 | Number of seconds after which Tenant information is refreshed if not accessed. |
-| EdFi.Ods.WebApi | appsettings.json | ApiSettings:Features:Extensions | true | Enables the API endpoints created for all Extensions. An installation that is not customized at all and still has the GrandBend and Sample extensions can disable this feature in production. |
-| EdFi.Ods.WebApi | appsettings.json | ApiSettings:Features:UniqueIdValidation | false | Enables [Unique ID System Integration](../../technical-articles/unique-id-system-integration.md). Must implement IUniqueIdToIdValueMapper and register within the implementation within the WebApi. |
-| EdFi.Ods.Web.Api | appsettings.json | ApiSettings:Features:TokenInfo | true | Enables the token\_info introspective endpoint. |
-| EdFi.Ods.Web.Api | appsettings.json | Plugin:Folder | Example: ../../Plugin | Configures the plugin folder that API looks to deploy extensions dynamically. |
-| EdFi.Ods.Web.Api | appsettings.json | Plugin:Scripts | Example: `[ tpdm ]` | Configures the script (located in plugin folder by default) responsible for downloading the extension plugins and placing them in the plugin folder. |
 
 ## Environment Configuration
 
-While *appsettings.json* provides the primary configuration for the ASP.NET Core applications in the ODS / API solution, *appsettings.**Environment**.json* can be used to override the settings in *appsettings.json* in deployment environments. In development environment, initdev creates *appsettings.**Development**.json* to override settings for development environment. Note that the settings in *appsettings.**Development**.json* are overwritten every time initdev is executed. See [Configuration in ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-3.1) for more details. 
+While _appsettings.json_ provides the primary configuration for the ASP.NET Core applications in the ODS / API solution, _appsettings.**Environment**.json_ can be used to override the settings in _appsettings.json_ in deployment environments. In development environment, initdev creates _appsettings.**Development**.json_ to override settings for development environment. Note that the settings in _appsettings.**Development**.json_ are overwritten every time initdev is executed. See [Configuration in ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-8.0) for more details.
 
 ## Secret Manager
 
-In development environments ASP.NET Core applications in the ODS / API solution uses secret manager tool to provide a way for setting overrides away from the projects so that they aren't accidentally checked into source control. To set overrides, you can either use the [.NET CLI Tool](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-5.0&tabs=windows#set-a-secret) 
+In development environments ASP.NET Core applications in the ODS / API solution uses secret manager tool to provide a way for setting overrides away from the projects so that they aren't accidentally checked into source control. To set overrides, you can either use the [.NET CLI Tool](https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-8.0&tabs=windows#set-a-secret)
 
 ```powershell
 PS D:\Ed-Fi-ODS-Implementation\Application\EdFi.Ods.WebApi> dotnet user-secrets set "ApiSettings:PopulatedTemplateScript" "Glendale"
@@ -98,7 +89,7 @@ Successfully saved ApiSettings:PopulatedTemplateScript = Glendale to the secret 
 ```
 
 or [Manage User
-Secrets](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows#json-structure-flattening-in-visual-studio)
+Secrets](https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-8.0&tabs=windows#json-structure-flattening-in-visual-studio)
 in Visual Studio.
 
 ![Manage User Secrets](/img/reference/ods-api/manage-user-secrets.webp)
@@ -124,4 +115,4 @@ deploys with 'Glendale' sample dataset.
 }
 ```
 
-See [Safe storage of app secrets in development in ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows) for more details.
+See [Safe storage of app secrets in development in ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-8.0&tabs=windows) for more details.

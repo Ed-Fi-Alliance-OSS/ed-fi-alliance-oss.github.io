@@ -21,7 +21,7 @@ Ed-Fi ODS / API Platform v6.2 and provides links to additional documentation.
 
 Ed-Fi ODS / API v6.2 adds support for [Ed-Fi Data Standard
 v4](/reference/data-exchange/data-standard/4/) implementation, with
-no breaking changes from the previous Data Standard v5.0. Refer to [What's New
+no breaking changes from the previous Data Standard v3.3. Refer to [What's New
 in Data Standard
 v4](/reference/data-exchange/data-standard/4/whats-new/whats-new-v40) for
 details. Additionally, Ed-Fi ODS/API v6.2 continues to support Data Standard
@@ -55,4 +55,3 @@ to [MetaEd IDE
 v4.4](/reference/metaed/). Refer to
 [MetaEd 4.4](/reference/metaed/releases/4.4.0)
 for details on latest updates and improvements.
-

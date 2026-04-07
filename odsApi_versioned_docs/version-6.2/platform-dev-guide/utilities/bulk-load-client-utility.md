@@ -23,7 +23,7 @@ The minimal template is generatedÂ with the Loader by loading Ed-Fi descriptorsÂ
 
 ## Overview of Solution Architecture
 
-The Bulk Load Client consists of a .NET 6 solution. It uses C# as the primary language, with TPL (Task Parallel Library) for pipeline processing support. Infrastructure libraries include log4net for logging, nUnit for unit test, and Newtonsoft.Json and Microsoft's WebApi client libraries for web API integration. The solution consists of five projects, with the primary output being a console application for use on the command line.
+The Bulk Load Client consists of a .NET 8 solution. It uses C# as the primary language, with TPL (Task Parallel Library) for pipeline processing support. Infrastructure libraries include log4net for logging, nUnit for unit test, and Newtonsoft.Json and Microsoft's WebApi client libraries for web API integration. The solution consists of five projects, with the primary output being a console application for use on the command line.
 
 The projects involved are:
 

@@ -67,7 +67,7 @@ java -jar openApi-codegen-cli.jar generate -g csharp-netcore
   -i https://api.ed-fi.org/v6.2/api/metadata/data/v3/swagger.json 
   --api-package Apis.All 
   --model-package Models.All -o ./csharp
-  --additional-properties packageName=EdFi.OdsApi.Sdk,targetFramework=net6.0,netCoreProjectFile=true 
+  --additional-properties packageName=EdFi.OdsApi.Sdk,targetFramework=net8.0,netCoreProjectFile=true 
   --global-property modelTests=false --global-property apiTests=false --skip-validate-spec
 ```
 
@@ -77,7 +77,7 @@ java -jar openApi-codegen-cli.jar generate -g csharp-netcore
 java -jar openApi-codegen-cli.jar generate -g csharp-netcore 
 -i https://api.ed-fi.org/v6.2/api/metadata/data/v3/ed-fi/swagger.json 
 --api-package Apis.All 
---model-package Models.All -o ./csharp --additional-properties packageName=EdFi.OdsApi.Sdk,targetFramework=net6.0,netCoreProjectFile=true 
+--model-package Models.All -o ./csharp --additional-properties packageName=EdFi.OdsApi.Sdk,targetFramework=net8.0,netCoreProjectFile=true 
 --global-property modelTests=false --global-property apiTests=false --skip-validate-spec
 ```
 
@@ -88,25 +88,25 @@ descriptors, enrollment composites, and Identity API endpoints as follows:
 java -jar openApi-codegen-cli.jar generate -g csharp-netcore 
 -i https://api.ed-fi.org/v6.2/api/metadata/data/v3/resources/swagger.json 
 --api-package Api.Resources --model-package Models.Resources  -o ./csharp 
---additional-properties packageName=EdFi.OdsApi.Sdk,targetFramework=net6.0,netCoreProjectFile=true 
+--additional-properties packageName=EdFi.OdsApi.Sdk,targetFramework=net8.0,netCoreProjectFile=true 
 --global-property modelTests=false --global-property apiTests=false --skip-validate-spec
 
 java -jar openApi-codegen-cli.jar generate -g csharp-netcore 
 -i https://api.ed-fi.org/v6.2/api/metadata/composites/v1/ed-fi/enrollment/swagger.json 
 --api-package Api.EnrollmentComposites --model-package Models.EnrollmentComposites -o ./csharp 
---additional-properties packageName=EdFi.OdsApi.Sdk,targetFramework=net6.0,netCoreProjectFile=true --global-property modelTests=false 
+--additional-properties packageName=EdFi.OdsApi.Sdk,targetFramework=net8.0,netCoreProjectFile=true --global-property modelTests=false 
 --global-property apiTests=false --skip-validate-spec
 
 java -jar openApi-codegen-cli.jar generate -g csharp-netcore 
 -i https://api.ed-fi.org/v6.2/api/metadata/identity/v2/swagger.json 
 --api-package Api.Identities --model-package Models.Identities -o ./csharp 
---additional-properties packageName=EdFi.OdsApi.Sdk,targetFramework=net6.0,netCoreProjectFile=true 
+--additional-properties packageName=EdFi.OdsApi.Sdk,targetFramework=net8.0,netCoreProjectFile=true 
 --global-property modelTests=false --global-property apiTests=false --skip-validate-spec
 
 java -jar openApi-codegen-cli.jar generate -g csharp-netcore 
 -i https://api.ed-fi.org/v6.2/api/metadata/data/v3/descriptors/swagger.json 
 --api-package Api.Descriptors --model-package Models.Descriptors -o ./csharp 
---additional-properties packageName=EdFi.OdsApi.Sdk,targetFramework=net6.0,netCoreProjectFile=true 
+--additional-properties packageName=EdFi.OdsApi.Sdk,targetFramework=net8.0,netCoreProjectFile=true 
 --global-property modelTests=false --global-property apiTests=false --skip-validate-spec
 ```
 

@@ -114,13 +114,13 @@ a single computer.
 
 :::info
 
-In this document we are discussing deployment to Internet Information Server (IIS) on a Windows Server and using SQL Server for the database. However the web applications, being a .NET 6 application, can run cross-platform and PostgreSQL is another choice for database.
+In this document we are discussing deployment to Internet Information Server (IIS) on a Windows Server and using SQL Server for the database. However the web applications, being a .NET 8 application, can run cross-platform and PostgreSQL is another choice for database.
 
 :::
 
 ### ODS / API Server
 
-This logical server requires Internet Information Server (IIS) to be installed as well as the [ASP.NET Core Hosting Bundle](https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/iis/?view=aspnetcore-6.0#install-the-aspnet-core-modulehosting-bundle).
+This logical server requires Internet Information Server (IIS) to be installed as well as the [ASP.NET Core Hosting Bundle](https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/iis/?view=aspnetcore-8.0#install-the-aspnet-core-modulehosting-bundle).
 
 ### ODS Database Server
 
@@ -293,7 +293,7 @@ directory (like `C:\temp`):
     for the server. From the Server Properties, Security page, select SQL Server
     and Windows Authentication mode.
 
-*   Create Logins for each of the database users in your `appsettings.json` file for your websites and applications.
+* Create Logins for each of the database users in your `appsettings.json` file for your websites and applications.
 
 * Assign permissions to the corresponding databases.
 
@@ -346,7 +346,7 @@ website are provided in the sections that follow.
 ### Prerequisites
 
 * IIS is running on the target machine.
-* [ASP.NET Core Hosting Bundle](https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/iis/?view=aspnetcore-6.0#install-the-aspnet-core-modulehosting-bundle) is installed.
+* [ASP.NET Core Hosting Bundle](https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/iis/?view=aspnetcore-8.0#install-the-aspnet-core-modulehosting-bundle) is installed.
 * The local IIS site used to host your web application has site bindings
     configured for https.  This only needs to be done once per IIS site.
     1. Open IIS in the target machine, expand the Sites, right-click on
@@ -372,13 +372,13 @@ API over the web.
 
 #### Dependencies
 
-*   `EdFi_Admin` (Database)
-*   `EdFi_Security` (Database)
-*   `EdFi_Ods` (Database)
-*   `EdFi_Ods_YYYY` (Database)
-*   `EdFi_Ods_Populated_Template` (Database)
-*   `EdFi_Ods_Minimal_Template` (Database)
-*   `EdFi.Ods.WebApi`
+* `EdFi_Admin` (Database)
+* `EdFi_Security` (Database)
+* `EdFi_Ods` (Database)
+* `EdFi_Ods_YYYY` (Database)
+* `EdFi_Ods_Populated_Template` (Database)
+* `EdFi_Ods_Minimal_Template` (Database)
+* `EdFi.Ods.WebApi`
 
 #### Deployment Steps (for an on-premises IIS)
 
@@ -412,7 +412,7 @@ about the API.
 | --- | --- | --- |
 | **Configuration** |     |     |
 | **App Settings** |     |     |
-| ApiSettings:Mode\* | Configures the Database Partitioning Strategy. These are the out of the box options:<br/><br/>*   Sandbox. Separate databases for each client application key/secret.<br/>*   SharedInstance. A single database is shared by all client applications.<br/>*   YearSpecific. One database per year (as specified in the URL) is shared by all client applications.<br/>*   DistrictSpecific. One database per district. <br/><br/>Other modes may be created to address other scenarios. | The default development value is `Sandbox`. |
+| ApiSettings:Mode\* | Configures the Database Partitioning Strategy. These are the out of the box options:<br/><br/>_Sandbox. Separate databases for each client application key/secret.<br/>_   SharedInstance. A single database is shared by all client applications.<br/>_YearSpecific. One database per year (as specified in the URL) is shared by all client applications.<br/>_   DistrictSpecific. One database per district. <br/><br/>Other modes may be created to address other scenarios. | The default development value is `Sandbox`. |
 | BearerTokenTimeoutMinutes | The amount of time in minutes that an OAuth session token is valid between calls. | Default value is `30`. |
 | **Connection Strings** |     |     |
 | EdFi\_Ods | Points to the main ODS database in Shared, or provides the connection string template for reaching the specific ODS in YearSpecific or Sandbox. |     |
@@ -444,7 +444,7 @@ Prerequisites:
 
 1. IIS must be running on the target machine.
 
-2.  All dependent databases are in place.
+2. All dependent databases are in place.
 
 Steps to deploy the application:
 

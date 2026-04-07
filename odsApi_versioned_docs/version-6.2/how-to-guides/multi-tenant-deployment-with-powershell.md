@@ -4,7 +4,7 @@ description: Instructions for local configuration for multi-tenancy.
 
 # How-To: Perform Multi-Tenant Database Deployment from Source Code
 
-Version 7.0 of the Ed-Fi ODS/API introduced a multi-tenant concept that supports
+The Ed-Fi ODS/API supports a multi-tenant concept that enables
 segregation of tenant ODS database and security information into different
 databases on different servers. For example, an education service agency (ESA)
 might serve multiple local education agencies (LEA), and segregate each LEA as a
@@ -17,7 +17,7 @@ properly configured.
 ```mermaid
 C4Container
     System_Boundary(webapps, "Ed-Fi web applications") {
-        Container(webapi, "Ed-Fi ODS/API v7", "REST API")
+        Container(webapi, "Ed-Fi ODS/API v6.2", "REST API")
         Container(swaggerui, "Ed-Fi Swagger UI", "Documentation")
         Container(adminapi, "Ed-Fi ODS Admin API", "Administrative REST API")
     }
