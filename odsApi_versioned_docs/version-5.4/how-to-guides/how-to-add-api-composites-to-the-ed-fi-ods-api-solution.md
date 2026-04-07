@@ -1,5 +1,11 @@
 # How To: Add API Composites to the Ed-Fi ODS / API Solution
 
+:::warning
+
+The Ed-Fi Alliance is phasing out support for Composite and recommends against implementing any new composites in 2026 or beyond.
+
+:::
+
 This section outlines the steps necessary to integrate and activate the Ed-Fi
 Composite definitions for use in an Ed-Fi ODS / API. It is assumed that the Ed-Fi
 ODS / API has been successfully downloaded and is running in a local environment
@@ -15,7 +21,7 @@ Each step is outlined in detail, below.
 
 ## Step 1. Create the Composites Project
 
-### Step 1.1. Add a Composite Project Using the Visual Studio Project Template.
+### Step 1.1. Add a Composite Project Using the Visual Studio Project Template
 
 Visual Studio Project Template can be installed by following the steps in the [Project Templates Installation](../getting-started/source-code-installation/project-templates-installation.md) section of this documentation.
 
@@ -28,7 +34,7 @@ Visual Studio Project Template can be installed by following the steps in the [P
 
 ![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/composite-project-template2.png)
 
-### Step 1.2. Update the Marker Interface file.
+### Step 1.2. Update the Marker Interface file
 
 To integrate the Composite with the API, start by ensuring you have a marker
 interface in the root of your Composites project.
@@ -46,7 +52,7 @@ namespace EdFi.Ods.Composites.MyComposites
 }
 ```
 
-### Step 1.3. Update the Composites.xml file to add the appropriate composite definition.
+### Step 1.3. Update the Composites.xml file to add the appropriate composite definition
 
 The Visual Studio Project Template creates an empty sample Composites.xml file, replace its contents with the following:
 
@@ -97,14 +103,14 @@ The `CompositeMetadata` attribute organizationCode is a required attribute and i
 Organization to which the composite belongs. This value is carried from the XML definition
 all the way into the API route definitions. The `organizationCode` in combination with the `Category` name are used to identify the composite being requested from the API.
 
-### Step 1.4. Save the Project.
+### Step 1.4. Save the Project
 
 ## Step 2. Integrate Composites into the Solution
 
 To integrate the Composite Resources into the solution, add a reference to new
 Composites project you constructed in the previous step in the EdFi.Ods.WebApi project (located in the "Entry Points" folder).
 
-## Step 3. Verify Changes 
+## Step 3. Verify Changes
 
 Save all modified files, then run the application and view the Ed-Fi ODS / API
 using Swagger. The following new API Composite resource should be available:
@@ -121,6 +127,7 @@ URLs above (e.g., `/ed-fi/composites/MyComposite/Students`). To successfully ret
 definition) must be present as the first segment of a composite URL.
 
 ## Downloads
+
 The following GitHub link contains source files for the Composite described in
 this article:
 

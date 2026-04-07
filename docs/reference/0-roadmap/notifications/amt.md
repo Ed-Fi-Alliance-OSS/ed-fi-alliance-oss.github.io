@@ -6,9 +6,9 @@ Oct 11, 2023
 
 The next planned release of Analytics Middle Tier (AMT), version 4.1, will be
 the last fully supported release. From that point, it will be in [maintenance
-mode](./readme.md) until June, 2025. While in maintenance mode, new patch
+mode](./readme.mdx) until June, 2025. While in maintenance mode, new patch
 releases will occur for critical bugs and security updates. In 2025, AMT will
-move to the [Ed-Fi Exchange](https://exchange.ed-fi.org) and the source
+move to the [Ed-Fi Exchange](/getting-started/edfi-exchange) and the source
 repository will be set into archive, signaling that the application support has
 formally ended.
 

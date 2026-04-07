@@ -21,9 +21,6 @@ const config = {
   organizationName: 'ed-fi-alliance-oss', // Usually your GitHub org/user name.
   projectName: 'ed-fi-alliance-oss.github.io', // Usually your repo name.
 
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
-
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
@@ -330,6 +327,9 @@ const config = {
   ],
   markdown: {
     mermaid: true,
+    hooks: {
+      onBrokenMarkdownLinks: 'throw',
+    }
   },
   themes: ['@docusaurus/theme-mermaid'],
 };

@@ -1,0 +1,58 @@
+# Threat assessment and mitigation for AutoMapper Denial of Service GHSA-rvv3-g6hj-g44
+
+31 March 2026
+
+Some community members have expressed concern about the recently published AutoMapper denial of service vulnerability. This post provides a threat assessment for the Ed-Fi software and guidance on how to mitigate the build failures caused by this vulnerability.
+
+## Background
+
+On March 13, 2026, a high-severity denial of service vulnerability was published for AutoMapper ([GHSA-rvv3-g6hj-g44x](https://github.com/LuckyPennySoftware/AutoMapper/security/advisories/GHSA-rvv3-g6hj-g44x), [CVE-2026-32933](https://www.cvedetails.com/cve/CVE-2026-32933/), CVSS 7.5). The root cause is uncontrolled recursion: when mapping self-referential or deeply nested object graphs, AutoMapper recurses without enforcing any maximum depth. At or around 30,000 nesting levels, the .NET thread stack is exhausted and the process terminates with a StackOverflowException — which cannot be caught or recovered from in modern .NET.
+
+## Threat Assessment for the Ed-Fi Software
+
+No runtime threat.
+
+* The Ed-Fi ODS/API 6.x source code uses AutoMapper exclusively in two unit test projects. No API request path invokes that code. An external attacker has no vector to trigger the vulnerable mapping behavior through the ODS/API. This was already removed in the ODS/API 7.x source code, so there is no runtime vulnerability in either supported version of the ODS/API.
+* Other applications — ODS Admin API, ODS Admin App, and Data Import — do not utilize AutoMapper in the user registration or authentication flows. All API requests that _do_ use AutoMapper are protected by authentication and authorization, so an attacker would need to first compromise a valid user account to trigger the vulnerability. Since these user accounts are for system administrator usage only, the attack surface is minimal and we have not further analyzed to see if a deeply nested JSON object could be used to trigger the vulnerability through an API request.
+
+## The Actual Problem: Build Failures
+
+Even without an exploitable attack surface, this vulnerability will break your source code builds. The code solutions treat NuGet vulnerability warnings as errors, so `dotnet build` will fail with:
+
+```none
+error NU1903: Warning As Error: Package 'AutoMapper' 13.0.1 has a known high severity vulnerability, https://github.com/advisories/GHSA-rvv3-g6hj-g44x
+```
+
+### Mitigation
+
+#### Remove the Dependency
+
+:::warning
+
+Only applies to ODS/API.
+
+:::
+
+The ODS/API 6.x and 7.x removed usage of AutoMapper, but may have left the dependency in place. Try removing the dependency in files `EdFi.Ods.Tests.csproj` and `Test.Common.csproj`. If the application builds, then you are now in good shape.
+
+#### If Your Code Still Uses AutoMapper
+
+Suppress the warning in the affected project files by adding `NoWarn="NU1903"` to the AutoMapper reference:
+
+```xml
+ <!-- Before -->
+ <PackageReference Include="AutoMapper" Version="14.0.1" />
+
+ <!-- After -->
+ <PackageReference Include="AutoMapper" Version="14.0.1" NoWarn="NU1903" />
+```
+
+:::warning
+
+We do not recommend trying to upgrade to a version of AutoMapper newer than 14; the patched versions require a paid license, whereas version 13 and 14 were on the open source MIT license.
+
+:::
+
+## Conclusion
+
+The AutoMapper denial of service vulnerability is a non-issue for the Ed-Fi software, as there is no exploitable attack surface. The only impact is build failures due to the NuGet vulnerability warning, which can be mitigated by removing the dependency (ODS/API only) or suppressing the warning.

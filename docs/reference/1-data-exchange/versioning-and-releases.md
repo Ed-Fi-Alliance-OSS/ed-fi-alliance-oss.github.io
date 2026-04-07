@@ -54,59 +54,33 @@ integration.
 Possible downstream database or other schema changes, or changes to other
 bindings outside of a published Ed-Fi API are not considered.
 
-## Suites - the "Generations" of Ed-Fi Technology
-
-It is important not to confuse the suite information with the semantic version
-number.
-
-Each version of the Ed-Fi Unifying Data Model (UDM) is part of a numbered Ed-Fi
-suite.  The suite number will generally appear as a suffix on the name; it can
-de facto be considered part of the product name.
-
-The suite number communicates the "generation" of Ed-Fi standards and technology
-in which the product participates. However, note that strict compatibility will
-be defined in technical contexts using semver versions.
-
-Semantic version numbers reset between suites in order to support the fact that
-a previous suite releases may diverge from the current suite releases.
-
 ## Example of Full Product Name with Version
 
-A sample that one might see is: _**Ed-Fi Data Standard for Suite 3 version
-4.5.0-b**_
+A sample that one might see is: _**Ed-Fi Data Standard version 4.5.0**_
 
-| Product Name | Suite Information | Semantic Versioning Information |
-| -- | -- | -- |
-| Ed-Fi Data Standard | for Suite 3 | version 4.5.0-b |
+| Product Name | Semantic Versioning Information |
+| -- | -- |
+| Ed-Fi Data Standard | version 4.5.0 |
 
 The semver string shows this release to be major version 4, minor version 5,
-patch version 0 (i.e. no patches have been released) and that the model contains
-pre-release material (denoted by the "-b" an by convention material that is
-subsequent to a set of "-a" material).
+patch version 0 (i.e. no patches have been released).
 
 ## Early Access Material
 
-New data model material is first published in "early access" releases. Over
-time, early access material is incorporated into a "final" version.
+New data model material may be first published as "early access" when it is not
+yet fully verified as stable. This allows early adopters to try out the proposed
+changes and provide feedback on their viability.
 
-### Releases with Early Access Material
+Early access materials are described as such with keywords "EARLY ACCESS" in the:
 
-An early access release is signaled by an appended letter, e.g., "-a", "-b" etc.
-(this is a standard convention adopted from semver as well - see above section
-on "Use of Semantic Versioning"). It is possible for there to be multiple
-sequential releases; by convention, these letters are incremented alphabetically
-when such a sequence occurs. For example:
+* UDM Handbook
+* Open API specifications (Swagger)
+* reference documentation
 
-* v4.5.0-a
-* v4.5.0-b
-* v4.5.0-c
-* etc.
-
-### Promotion to Final
-
-When early access material is verified to be stable, it is included in a final
-release. The principal for this promotion is to ask for burden of proof that is
-commensurate with the risk or scope of the change:
+When early access material is verified to be stable, we will remove "EARLY
+ACCESS" from the description in the next release. The principle for this
+promotion is to ask for burden of proof that is commensurate with the risk or
+scope of the change:
 
 Trivial changes may need very little verification – it may be enough to promote
 them to final based on some time period as early access Aggressive changes will
@@ -119,33 +93,27 @@ material, as it is more subject to change than most other material. Substantial
 work has been done to validate that this change is viable, but the change has
 likely not been field tested.
 
-Also, any subsequent change to material introduced in an early access version is
+:::note
+
+Any subsequent change to material introduced in an early access version is
 considered “non-breaking”, so can be incorporated into a minor-point release.
+
+:::
 
 ### Avoiding Early Access Material
 
 If an agency wishes to avoid early access material, it can do so by using only
-elements defined in the previous final release. For example, if the
-chronological release sequence was as follows:
+elements defined in the previous release. For example, Data Standard 6.1 has a new Special Education Data Model (SEDM) component defined as EARLY ACCESS. There are existing Special Education domain entities that continue to be available from prior releases - they have not been removed, and the new approach is available in parallel with the old one.
 
-* v4.3.0
-* v4.4.0-a
-* v4.4.0-b
-* v4.4.0
-* v4.5.0-a
-* v4.4.0 would be the latest final release, and using only elements defined
-  within that model would avoid use of early access material that is included in
-  v4.5.0-a
+### Purpose of Early Access
 
-### Purpose of Early Access Releases
-
-Early access releases exist because of two factors
+Early access materials exist because of two factors
 
 * data model changes are not easily verified due to wide variation in ecosystem
   patterns
 * once released, a standard is difficult and expensive to change
 
-Early access releases provide an important mechanism – or invitation – for early
+Early access materials provide an important mechanism – or invitation – for early
 adopters to try out proposed changes. The Alliance has also discovered over time
 that the burden of proof that a change is viable needs to be actual field usage.
 Previous processes that used community review (i.e., soliciting broad feedback
