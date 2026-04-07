@@ -28,15 +28,15 @@ In contrast, a model such as SEDM treats the IEP as a first-class, time-bound le
 
 To allow community members to track data in the ED-Fi UDM, the Special Education Data Model domain is created with the following entities and associations:
 
-<u>_IDEAEvent_:</u>
+<u>_IDEAEvent_:</u> Records significant events under the Individuals with Disabilities Education Act. It has references to Student and EducationOrganization.
 
-<u>_StudentIEP_:</u>
+<u>_StudentIEP_:</u> Records the Individualized Education Program which is a legally required document that outlines a student's special education services over a span of time. When an IEP is amended, a new StudentIEP record should be created with the amended data rather than modifying the existing record. The IEPAmendedDate field records the date of amendment on the new record to maintain a clear audit trail. It has references to Student, EducationOrganization and IDEAEvent.
 
-<u>_StudentIEPServicePrescription_:</u>
+<u>_StudentIEPServicePrescription_:</u> Records the services the student has been prescribed to receive as part of their IEP. One or more StudentIEPServicePrescriptions may exist for a single IEP. It has references to StudentIEP and IDEAEvent.
 
-<u>_StudentIEPServiceDelivery_:</u>
+<u>_StudentIEPServiceDelivery_:</u> Records the actual delivery/reception of the services for a given Student as defined by their prescription. Also records the information of the provider of the delivered service. It has references to StudentIEP, StudentIEPServicePrescription and IDEAEvent.
 
-<u>_StudentIEPGoal_:</u>
+<u>_StudentIEPGoal_:</u> Records a desired outcome for the Student's IEP. It has references to StudentIEP and IDEAEvent.
 
 ```mermaid
 ---
@@ -120,6 +120,7 @@ IEP portability is essential because the Individualized Education Program is a s
 ### Enhance StudentEducationOrganizationResponsibility Association To Include Responsible EducationOrganization
 
 [DATASTD-2571](https://edfi.atlassian.net/browse/DATASTD-2571)
+[DATASTD-2577](https://edfi.atlassian.net/browse/DATASTD-2577)
 
 The complexity analysis initiated in 2025 identified a gap in the Data Standard: the Reporting EdOrg cannot explicitly represent the Responsible EdOrg that provides services such as residency, accountability, or funding—information required for state funding. To address this limitation, state agencies extended SEORA, StudentSchoolAssociation, or SEOA, increasing SIS complexity. In Data Standard v6.1, this need is addressed by adding an optional ResponsibleEducationOrganizationReference to the SEORA and clarifying that the Responsibility Descriptor refers to the Responsible EdOrg. This enables reporting districts to indicate alternate responsible districts and allows states to accurately identify all responsible organizations for funding allocation.
 
@@ -130,14 +131,14 @@ The complexity analysis initiated in 2025 identified a gap in the Data Standard:
 In some state implementations, StudentSchoolAssociation (SSA).ResidencyStatus is used—along with extensions—to indicate the District of Residency. This pattern emerged because, prior to Data Standard v6.1, there was no way for a reporting (enrolled) EdOrg to explicitly identify the EdOrg of residency. Data Standard v6.1 addresses this gap by introducing an optional SEORA.ResponsibleEducationOrganizationReference and clarifying that the SEORA.Responsibility Descriptor refers to the Responsible EdOrg. With this enhancement, alternate responsibilities such as district of residency can be modeled directly and consistently in SEORA.
 As a result, SSA.ResidencyStatus becomes redundant and potentially misleading, as it can be misused to represent alternate responsibilities that now belong in SEORA. The ResidencyStatus Descriptor has been marked for removal in DS v8.0.
 
-## Minor Changes
-
 ### Address Characteristic Update
 
 [DATASTD-2543](https://edfi.atlassian.net/browse/DATASTD-2543)
 [DATASTD-2544](https://edfi.atlassian.net/browse/DATASTD-2544)
 
 The community presented a need to enhance an address record associated to a student which would allow for greater flexibility to indicate values such as “Primary”, “Billing”, or “Shipping” onto that address. The community discussed this request in Data Standard Work Group 14 and it was determined that in order to meed the needs of all parties the Ed-Fi Model should support a set of values beyond a simple boolean. As a result the community agreed the best way to handle this would be to add a new "AddressCharacteristic" descriptor onto the existing Address common. This change would not be breaking since the new data field would be a new added optional collection for areas utilizing the Address common.
+
+## Minor Changes
 
 ### Update Domain Descriptor Lists In MetaEd
 
@@ -159,9 +160,9 @@ In order to improve transparency within the API the description values for the S
 
 ### Maintenance Related Updates
 
-[DATASTD-2531](https://edfi.atlassian.net/browse/DATASTD-2531): Missing links on DS 5.2 and 6.0 Handbooks
-[DATASTD-2532](https://edfi.atlassian.net/browse/DATASTD-2532): Update Spacing Issue On Descriptor Tables For Version 5.X Documentation
-[DATASTD-2533](https://edfi.atlassian.net/browse/DATASTD-2533): Update Spacing Issue On Descriptor Tables For Version 4.X Documentation
+* [DATASTD-2531](https://edfi.atlassian.net/browse/DATASTD-2531): Missing links on DS 5.2 and 6.0 Handbooks
+* [DATASTD-2532](https://edfi.atlassian.net/browse/DATASTD-2532): Update Spacing Issue On Descriptor Tables For Version 5.X Documentation
+* [DATASTD-2533](https://edfi.atlassian.net/browse/DATASTD-2533): Update Spacing Issue On Descriptor Tables For Version 4.X Documentation
 
 ## List of All Changes
 
@@ -181,5 +182,6 @@ In order to improve transparency within the API the description values for the S
 * [Create SEDM Sample Data And Descriptor Values](https://edfi.atlassian.net/browse/DATASTD-2568)
 * [Add ResponsibleEdOrg Reference To StudentEducationOrganizationResponsibilityAssociation (SEORA)](https://edfi.atlassian.net/browse/DATASTD-2571)
 * [Mark StudentSchoolAssociation.ResidencyStatus As Deprecated](https://edfi.atlassian.net/browse/DATASTD-2572)
+* [Update Sample Data To Include ResponsibleEdOrg On StudentEducationOrganizationResponsibilityAssociation](https://edfi.atlassian.net/browse/DATASTD-2577)
 * [Change Descriptor Name IDEAEvent To IDEAEvent Type](https://edfi.atlassian.net/browse/DATASTD-2584)
 * [Update Documentation For Student School Association](https://edfi.atlassian.net/browse/DATASTD-2585)

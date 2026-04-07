@@ -15,7 +15,7 @@ Descriptor section of this article are subject for removal at the time of
 meeting the removal policy requirements. The removal policy was put in use with
 the Data Standard v5.0. According to this policy, the removal of a data element
 is suggested at the second year of breaking changes following the version of the
-marking of the element for deprecation. See [What's New](../whats-new/whats-new-v60.md)
+marking of the element for deprecation. See [What's New](../whats-new/whats-new-v61.md)
 for more details.
 
 :::
@@ -23,6 +23,11 @@ for more details.
 ## Domain Reference Contents
 
 View information about each domain:
+
+### Version 6.1
+
+* [Ed-Fi Unifying Data Model (UDM) Handbook](https://edfidocs.blob.core.windows.net/$web/handbook/v6.1/index.html)
+* Ed-Fi UDM Diagram <!--TODO ADD MERMAID/UML LINK-->
 
 ### Version 6.0
 
