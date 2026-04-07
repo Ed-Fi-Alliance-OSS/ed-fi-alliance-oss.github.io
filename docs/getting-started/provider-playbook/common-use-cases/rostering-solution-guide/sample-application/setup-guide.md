@@ -1,3 +1,7 @@
+---
+draft: true
+---
+
 # Setup Guide
 
 Full source code for the Roster Starter Kit is available on GitHub as denoted on
