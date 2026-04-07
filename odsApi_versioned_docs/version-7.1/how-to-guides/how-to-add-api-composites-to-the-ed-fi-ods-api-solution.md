@@ -1,5 +1,11 @@
 # How To: Add API Composites to the Ed-Fi ODS / API Solution
 
+:::warning
+
+The Ed-Fi Alliance is phasing out support for Composite and recommends against implementing any new composites in 2026 or beyond.
+
+:::
+
 This section outlines the steps necessary to integrate and activate the Ed-Fi Composite definitions for use in an Ed-Fi ODS / API. It is assumed that the Ed-Fi ODS / API has been successfully downloaded and is running in a local environment per the instructions in the [Getting Started](../getting-started/readme.md) documentation.
 
 ## Step 1. Create the Composites Project

@@ -1,3 +1,7 @@
+---
+draft: true
+---
+
 # Ed-Fi Roster Sample Application
 
 The Rostering Solution Guide Sample application shows how to access roster

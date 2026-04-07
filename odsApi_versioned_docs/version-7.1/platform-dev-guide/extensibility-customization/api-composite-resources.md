@@ -1,5 +1,11 @@
 # API Composite Resources
 
+:::warning
+
+The Ed-Fi Alliance is phasing out support for Composite and recommends against implementing any new composites in 2026 or beyond.
+
+:::
+
 ## Overview
 
 An Ed-Fi API Composite resource definition enables the Ed-Fi ODS / API to
