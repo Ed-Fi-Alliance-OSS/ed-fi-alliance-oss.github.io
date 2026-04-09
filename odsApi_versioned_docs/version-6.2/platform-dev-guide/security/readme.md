@@ -112,5 +112,5 @@ technical article. This article provides important detail about security
 concerns and mitigations.
 
 Additional information regarding Ed-Fi ODS / API security concepts can be found
-in the [Ed-Fi ODS/API Security & Profiles Deep Dive](/reference/ods-api/platform-dev-guide/configuration/single-and-multi-tenant-configuration), which was
-presented at the 2021 'In the Weeds' session.
+in the Ed-Fi ODS/API Security & Profiles Deep Dive, presented at the 2021
+'In the Weeds' session.

@@ -494,7 +494,7 @@ Testing C:\projects\Ed-Fi-DOS\Application\EdFi.Ods.Standard\Requests\Requests.ge
 Testing C:\projects\Ed-Fi-DOS\Application\EdFi.Ods.Standard\Resources\Resources.generated.cs
 Testing C:\projects\Ed-Fi-DOS\Application\EdFi.Ods.Standard\Security\Authorization\EntityAuthorizationContextProviders.generated.cs
 Testing C:\projects\Ed-Fi-DOS\Artifacts\PgSql\Data\Security\0001-ResourceClaimMetadata_generated.sql
-Passed: 0, Failed: 137, Skipped: 0, Total: 127, Duration: 6m - EdFi.Ods.CodeGen.Tests.dll (net6.0)
+Passed: 0, Failed: 137, Skipped: 0, Total: 127, Duration: 6m - EdFi.Ods.CodeGen.Tests.dll (net8.0)
 ```
 
 ## Running Approval Tests

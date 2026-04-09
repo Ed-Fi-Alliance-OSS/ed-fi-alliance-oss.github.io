@@ -73,7 +73,6 @@ optional configuration values include:
 | EdFi.Ods.Web.Api | appsettings.json | ApiSettings:Features:TokenInfo | true | Enables the token\_info introspective endpoint. |
 | EdFi.Ods.Web.Api | appsettings.json | Plugin:Folder | Example: ../../Plugin | Configures the plugin folder that API looks to deploy extensions dynamically. |
 | EdFi.Ods.Web.Api | appsettings.json | Plugin:Scripts | Example: \[ tpdm \] | Configures the script (located in plugin folder by default) responsible for downloading the extension plugins and placing them in the plugin folder. |
-| EdFi.Ods.WebApi | appsettings.json | ApiSettings:Caching:Tenants:AbsoluteExpirationSeconds | Example: 600 | Number of seconds after which Tenant information is refreshed if not accessed. |
 
 ## Environment Configuration
 

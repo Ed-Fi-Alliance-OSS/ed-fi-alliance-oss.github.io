@@ -37,7 +37,6 @@ erDiagram
         varchar ApplicationName
         int Vendor_VendorId
         varchar ClaimSetName
-        int OdsInstance_OdsInstanceId
         varchar OperationalContextUri
     }
 ```

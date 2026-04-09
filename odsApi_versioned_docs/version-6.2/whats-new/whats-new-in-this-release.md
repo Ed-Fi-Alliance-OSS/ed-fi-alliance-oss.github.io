@@ -17,6 +17,15 @@ Detail about each change follows.
 This section briefly describes the new features and enhancements built into the
 Ed-Fi ODS / API Platform v6.2 and provides links to additional documentation.
 
+### Upgrade to .NET 8
+
+Ed-Fi ODS / API v6.2 upgrades the platform target framework from .NET 6 to
+.NET 8. .NET 8 is a Long Term Support (LTS) release with support through
+November 2026. Implementers should update their environments to use the
+[.NET 8.0 Hosting Bundle](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
+for IIS deployments and the [.NET 8.0 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
+for development environments.
+
 ### Data Model Changes
 
 Ed-Fi ODS / API v6.2 adds support for [Ed-Fi Data Standard

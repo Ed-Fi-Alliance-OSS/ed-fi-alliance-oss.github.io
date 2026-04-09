@@ -98,7 +98,7 @@ This section provides an overview on how to use the Smoke Test Utility.
 * Start Visual Studio, open \\Ed-Fi-ODS\\Utilities\\DataLoading\\LoadTools.sln
     and build.
 * Open a Console window and navigate to
-    \\Ed-Fi-ODS\\Utilities\\DataLoading\\EdFi.SmokeTest.Console\\bin\\Debug\\net6.0
+    \\Ed-Fi-ODS\\Utilities\\DataLoading\\EdFi.SmokeTest.Console\\bin\\Debug\\net8.0
 * Execute the tool to run the smoke tests.
 
 The following examples show common testing scenarios. The examples below assume
@@ -117,14 +117,14 @@ EdFi.SmokeTest.Console.exe -k {yourSandboxKey} -s {yourSandboxSecret} -b "http:/
 
 ```powershell
 EdFi.SmokeTest.Console.exe -k {yourSandboxKey} -s {yourSandboxSecret} -b "http://localhost:54746" `
-  -t NonDestructiveSdk -l "..\\..\\..\\..\\EdFi.LoadTools.Test\\bin\\Debug\\net6.0\\EdFi.OdsApi.Sdk.dll"
+  -t NonDestructiveSdk -l "..\\..\\..\\..\\EdFi.LoadTools.Test\\bin\\Debug\\net8.0\\EdFi.OdsApi.Sdk.dll"
 ```
 
 ### Destructive SDK tests
 
 ```powershell
 EdFi.SmokeTest.Console.exe -k {yourSandboxKey} -s {yourSandboxSecret} -b "http://localhost:54746" `
-  -t DestructiveSdk -l "..\\..\\..\\..\\EdFi.LoadTools.Test\\bin\\Debug\\net6.0\\EdFi.OdsApi.Sdk.dll"
+  -t DestructiveSdk -l "..\\..\\..\\..\\EdFi.LoadTools.Test\\bin\\Debug\\net8.0\\EdFi.OdsApi.Sdk.dll"
 ```
 
 :::caution

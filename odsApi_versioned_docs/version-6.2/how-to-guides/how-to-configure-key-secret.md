@@ -5,7 +5,6 @@ but some implementers may prefer to work directly with the data. The SQL queries
 on this page enable a database administrator to create keys and secrets. These
 queries run against the `EdFi_Admin` database.
 
-
 :::info
 
 You should replace the values for variables with values you desire.
@@ -23,8 +22,6 @@ DECLARE @ApiClientName nvarchar(50) = 'Local Test Api Client'
 DECLARE @EducationOrganizationId int = 255901 --Must be an ed-org in the ODS
 DECLARE @Key nvarchar(50) = 'testkey'
 DECLARE @Secret nvarchar(100) = 'testsecret'
-DECLARE @OdsInstanceId int = 1 -- Must be a valid OdsInstanceId from the OdsInstances table
-
 DECLARE @IsPopulatedSandbox bit = 1
 -- For Shared/YearSpecific/DistrictSpecific
 DECLARE @UseSandbox bit = 0

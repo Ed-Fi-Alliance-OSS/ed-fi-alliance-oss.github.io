@@ -8,7 +8,7 @@ Before you begin:
 
 * This example uses MetaEd to generate extended artifacts and documentation.
   MetaEd is a free tool developed by the Ed-Fi Alliance, and is the recommended way to
-  add new fields to the Ed-Fi ODS / API. You should [download and install MetaEd](https://edfi.atlassian.net/wiki/spaces/METAED20/pages/23710221/Getting+Started+with+the+MetaEd+IDE) before beginning. This example goes step-by-step, so it's okay if you've never
+  add new fields to the Ed-Fi ODS / API. You should [download and install MetaEd](/reference/metaed) before beginning. This example goes step-by-step, so it's okay if you've never
   used MetaEd before. If you prefer to generate extended artifacts manually
   instead of using MetaEd, steps are listed in Appendix A of this page.
 * This example assumes that the Ed-Fi ODS / API has been successfully downloaded
@@ -53,7 +53,7 @@ API. Let's continue with the mechanics.
 ## Step 2. Author Your Extension Using MetaEd
 
 In this step, we'll create a new project in MetaEd, and author our new entity.
-It's easy — but you do need to [download and install MetaEd](https://edfi.atlassian.net/wiki/spaces/METAED20/pages/23710221/Getting+Started+with+the+MetaEd+IDE) to do this step. Do that now if you haven't already.
+It's easy — but you do need to [download and install MetaEd](/reference/metaed) to do this step. Do that now if you haven't already.
 
 ### Step 2a. Set or Confirm MetaEd Target Version
 
