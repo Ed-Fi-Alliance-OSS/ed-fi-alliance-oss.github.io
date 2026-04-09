@@ -44,7 +44,7 @@ The projects involved are:
 The general design of the application is a pipeline that takes XML files as
 input. The pipeline has the following general flow:
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/DedupeApiLoaderProcess.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/DedupeApiLoaderProcess.png)
 
 | Step | Action |
 | --- | --- |

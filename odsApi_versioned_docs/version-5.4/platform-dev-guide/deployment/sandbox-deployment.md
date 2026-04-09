@@ -63,7 +63,7 @@ At its most basic level, the Ed-Fi ODS / API platform consists of two logical
 servers: a web server (for the ODS / API), a database server (for the ODS
 database). A diagram showing a typical configuration follows:
 
-![Logical Configuration](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2015-11-16%25208-35-34.png)
+![Logical Configuration](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2015-11-16%208-35-34.png)
 
 These logical functions may be combined into one or more physical (or virtual)
 machines depending upon the scale and preferences of the hosting organization.
@@ -115,7 +115,7 @@ Sandbox deployments. A typical single-server specification follows:
 
 A diagram of a simple two-server deployment follows:
 
-![Two-Server Deployment](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image17.png)
+![Two-Server Deployment](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image17.png)
 
 The two-server deployment of an Ed-Fi ODS / API Sandbox provides greater
 security and performance than the single server configuration. This is a common
@@ -246,7 +246,7 @@ can be:
 The following diagram shows the relationship between the various databases and
 their corresponding ODS / API websites.
 
-![Websites and Databases](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2015-11-16%25208-58-14.png)
+![Websites and Databases](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2015-11-16%208-58-14.png)
 
 Detailed instructions regarding the installation and configuration of each
 website are provided in the sections that follow.
@@ -275,7 +275,7 @@ website are provided in the sections that follow.
 7. Fill in the application name and the server location that you have published the
    application:
    
-   ![Add Application](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image18.png)
+   ![Add Application](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image18.png)
    
 8. Click **OK.**
 9. The application is ready to use. You can browse and see version information
@@ -329,12 +329,12 @@ Steps to deploy the application:
 7. Fill in the application name and the server location that you have published the
    application:
    
-   ![Add Application](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image05.png)
+   ![Add Application](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image05.png)
    
 8. Click **OK**.
 9. The application is ready to use.
 
-   ![Sandbox Admin](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image07.png)
+   ![Sandbox Admin](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image07.png)
    
 10. The article [Using the Sandbox Admin Portal](../../client-developers-guide/using-the-sandbox-administration-portal.md) has useful information about how to set up accounts for client system
     developers, additional configuration details, plus general usage instructions.
@@ -379,12 +379,12 @@ API in sandbox environments.
 7. Fill in the application name and the server location that you have published the
    application:
    
-   ![Add Application](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image16.png)
+   ![Add Application](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image16.png)
    
 8. Click **OK**.
 9. The application is ready to use.
 
-   ![Swagger UI](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image08.png)
+   ![Swagger UI](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image08.png)
 
 | Configuration | | |
 | ------------- | --- | --- |

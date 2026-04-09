@@ -37,7 +37,7 @@ not detected in the default installation path.
 * Run `GenerateSecurityGraphs.exe --help` to view the parameters that can be
   passed to the application.
 
-  ![Help Command Output](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2022-3-17_18-2-8.png)
+  ![Help Command Output](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2022-3-17_18-2-8.png)
 
 * Execute the tool to generate the visualizations. The example below assumes that you have followed the Ed-Fi ODS / API [Getting Started](../../getting-started/readme.md) steps successfully.
 
@@ -54,7 +54,7 @@ possible, and there is a sub-folder for each authorization claim set that has
 been configured. The as-shipped ODS / API v5.4 contains nine claim sets,
 resulting in nine folders.
 
-![Output Folder Structure](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-8-13_7-36-37.png)
+![Output Folder Structure](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-8-13_7-36-37.png)
 
 ## Example Output
 
@@ -79,14 +79,14 @@ entities for the "Ed-Fi Sandbox" claim set, where full Create, Read, Update, and
 (CRUD) operations are authorized. The diagram also indicates that the
 authorization strategy associated with the claim is NoFurtherAuthorizationRequired.
 
-![Education Organizations Sandbox](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/educationOrganizations_sb.png)
+![Education Organizations Sandbox](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/educationOrganizations_sb.png)
 
 The diagram below shows permissions for accessing education organization
 entities for the "SIS Vendor" claim set. In this case, it is assumed that the education
 agency implementing the Ed-Fi ODS / API will load and manage education
 organizations, so SIS vendor applications are only granted Read authorization.
 
-![Education Organizations SIS Vendor](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/educationOrganizations.png)
+![Education Organizations SIS Vendor](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/educationOrganizations.png)
 
 ### Descriptors
 
@@ -100,7 +100,7 @@ which ensures that only API clients with the appropriate Namespace prefix can ad
 or change a managed Descriptor, while the NoFurtherAuthorizationRequired strategy is applied to Read operations, meaning that other API clients read a
 managed Descriptor.
 
-![Managed Descriptors](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/managedDescriptors.png)
+![Managed Descriptors](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/managedDescriptors.png)
 
 The diagram below shows permissions for accessing System Descriptors for the
 "SIS Vendor" claim set, where only Read access is allowed.

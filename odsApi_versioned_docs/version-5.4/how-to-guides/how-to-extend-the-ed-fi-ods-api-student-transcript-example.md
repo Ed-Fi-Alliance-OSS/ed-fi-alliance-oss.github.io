@@ -42,7 +42,7 @@ postsecondary institutions) and we need to add some elements to existing entitie
 following is a diagram is a sketch showing the additional entity and the new
 elements we're bolting on to existing Ed-Fi entities.
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Student-Transcript-Visio-Diagram.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Student-Transcript-Visio-Diagram.png)
 
 You'll notice that a few elements are shown with a type of "descriptor." The
 Ed-Fi Descriptor is analogous to an enumeration. It's an Ed-Fi-specific design
@@ -69,7 +69,7 @@ The desired model for the latest ODS / API is "ed-fi-model-3.3b".
 
 Create a new extension by following the steps in [MetaEd IDE - Creating and Maintaining Your Extension](/reference/metaed/ide-user-guide/creating-and-maintaining-your-extension/). In this example our extension is in a folder called "StudentTranscript"
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/NewProject.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/NewProject.png)
 
 ### Step 2c. Update the package.json File
 
@@ -79,7 +79,7 @@ call it "SampleStudentTranscript".
 
 Click "Save" under the "File" menu or press Ctrl + S to save your changes.
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/NewProjectPackageJson.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/NewProjectPackageJson.png)
 
 ### Step 2d. Add MetaEd Source Files to Your Project
 
@@ -92,15 +92,15 @@ subfolder naming.
 
 Now we'll add two MetaEd source files to the DomainEntity folder. **Right-click** on the folder **DomainEntity**, and select New File.
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/NewFile.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/NewFile.png)
 
 Name the new file **PostSecondaryOrganization.metaed** to match the name of the new entity to be created.
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/PostSecondaryOrgName.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/PostSecondaryOrgName.png)
 
 Note the new file appears in the tree view to the left. **Double-click** on the file in the tree view to open it. Type or copy and paste the code listing below into your MetaEd file:
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/PostSecondaryOrgCode.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/PostSecondaryOrgCode.png)
 
 Note that errors will be listed in the linter panel until the referenced
 Descriptors are created in a future step.
@@ -130,7 +130,7 @@ Domain Entity PostSecondaryOrganization
 We'll now create a Domain Entity source file, called **StudentAcademicRecordExtension**, to add our new elements to the existing Student Academic Record entity. Note
 that we can extend an existing entity using the `additions` keyword (line 1 in the example below).
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/StudentAcademicRecordExtensionCode.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/StudentAcademicRecordExtensionCode.png)
 
 <details>
 <summary><strong>MetaEd Source for StudentAcademicRecordExtensions Entity</strong></summary>
@@ -159,7 +159,7 @@ Similar to how you extended the Student Academic Record domain entity above,
 you'll extend the Class Ranking entity with the keyword `additions`. Replace the template text in your new Common source file with the following
 code.
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/ClassRankingExtensions.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/ClassRankingExtensions.png)
 
 <details>
 <summary><strong>MetaEd Source for ClassRankingExtensions Common Type</strong></summary>
@@ -188,14 +188,14 @@ Right-click on the Descriptor folder, select New File. We'll be adding four Desc
 Replace the template text in your new Descriptor source file with the following
 code.
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/InstitutionControlDescriptor.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/InstitutionControlDescriptor.png)
 
 Voilà! Almost done. Follow the steps above and add the remaining three
 Descriptors.
 
 Add an InstitutionLevel.metaed file.
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/InstitutionLevelDescriptor.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/InstitutionLevelDescriptor.png)
 
 <details>
 <summary><strong>MetaEd Source for InstitutionLevel Descriptor</strong></summary>
@@ -209,7 +209,7 @@ Descriptor InstitutionLevelDescriptor
 
 Add a SpecialEducationGraduationStatus.metaed file.
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/SpecialEducationGradStatusDescriptor.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/SpecialEducationGradStatusDescriptor.png)
 
 <details>
 <summary><strong>MetaEd Source for SpecialEducationGraduationStatus Descriptor</strong></summary>
@@ -223,7 +223,7 @@ Descriptor SpecialEducationGraduationStatusDescriptor
 
 Add a SubmissionCertification.metaed file.
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/SubmissionCertificationDescriptor.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/SubmissionCertificationDescriptor.png)
 
 <details>
 <summary><strong>MetaEd Source for SubmissionCertification Descriptor</strong></summary>
@@ -241,7 +241,7 @@ If you want to bulk load this extension, you need to create an interchange file.
 
 Right-click on the Interchange folder, select New File. Name your file StudentTranscript.metaed. Replace the template text in your new Interchange source file with the following code.
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/StudentTranscriptInterchangeFile.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/StudentTranscriptInterchangeFile.png)
 
 <details>
 <summary><strong>MetaEd Source for StudentTranscript Interchange</strong></summary>
@@ -256,7 +256,7 @@ Interchange StudentTranscript
 
 At this point, your project in the MetaEd IDE should look like the following:
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Finished.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Finished.png)
 
 ## Step 3. Generate Extended Technical Artifacts Using MetaEd
 
@@ -268,7 +268,7 @@ Click Build in the VS Code menu to generate artifacts.
 
 Artifacts build successfully.
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Build.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Build.png)
 
 ### Step 3b. View MetaEd Output
 
@@ -277,7 +277,7 @@ generated artifacts. The artifacts include technical output such as SQL scripts
 and XSD used by the code generation, but also updated documentation such as data
 dictionaries that add your extension definitions to the ODS / API documentation.
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/BuildOutput.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/BuildOutput.png)
 
 We'll look at how to use this MetaEd output in your code below. First, we'll
 need to set up our extension project in Visual Studio.
@@ -296,15 +296,15 @@ Visual Studio Project Templates can be installed by following steps in [Project 
 
 4b.1. To add a project to your Ed-Fi-Ods Visual Studio Solution, right-click on the Ed-Fi Extensions Folder. Select Add > New Project.
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/VisualStudio-AddNewProject.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/VisualStudio-AddNewProject.png)
 
 4b.2. Search and select the Ed-Fi API Extensions Project Template option and Click Next.
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/vs-create%2520extension%2520project.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/vs-create%20extension%20project.png)
 
 In the Project Name field, enter EdFi.Ods.Extensions.SampleStudentTranscript and click Create.
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/vs-create%2520extension%2520project2.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/vs-create%20extension%20project2.png)
 
 :::note
 To ensure MetaEd outputs are correctly deployed to ODS / API extension project,
@@ -316,11 +316,11 @@ Step 2.c with the first character in upper case.
 
 4c.1. Right-click on the Marker_EdFi_Ods_Extensions_ExtensionName.cs file in newly created EdFi.Ods.Extensions.SampleStudentTranscript project and Rename the file to Marker_EdFi_Ods_Extensions_SampleStudentTranscript.cs.
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/vs-remane%2520marker.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/vs-remane%20marker.png)
 
 4c.2. When prompted choose to rename all references to the code element Marker_EdFi_Ods_Extensions_ExtensionName.
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/extension-rename-marker-confirm.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/extension-rename-marker-confirm.png)
 
 ### Step 4d. Integrate Extension into the Solution
 
@@ -328,7 +328,7 @@ In this step, we'll integrate the extension into the solution.
 
 4d.1. Locate the EdFi.Ods.WebApi project, within the "Entry Points" folder. Right-click, select Add > Project Reference..., then select the EdFi.Ods.Extensions.SampleStudentTranscript project.
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/vs-extension%2520add%2520reference.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/vs-extension%20add%20reference.png)
 
 4d.2. Locate any profile projects in the solution. Right-click, select Add > Project Reference..., then select the EdFi.Ods.Extensions.SampleStudentTranscript project. This step is needed only if any of the Profile resources in the
 Profiles.xml document are extended, or extension entities are being constrained by a
@@ -351,7 +351,7 @@ Extension settings. In VS Code open Settings (Ctrl+,) and switch to the Workspac
 Api Deployment Directory" to point to the folder that contains the Ed-Fi-ODS and
 Ed-Fi-ODS-Implementation folders.
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Settings.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Settings.png)
 
 ### Step 5b. Deploy Your Extended Artifacts
 
@@ -364,7 +364,7 @@ running deployment.
 
 Deploy by clicking Deploy on the VSCode menu
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Deploy.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Deploy.png)
 
 This will run a new build of all artifacts, and the artifacts required for your
 Extended ODS / API project will be copied over to the correct locations.
@@ -477,9 +477,9 @@ steps outlined in the [Getting Started Guide](../getting-started/readme.md) (i.e
 The new postSecondaryOrganizations API resource should be visible, as well as
 the postSecondaryOrganizationReference in the studentAcademicRecord resource.
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/extension%2520swagger1.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/extension%20swagger1.png)
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/extension%2520swagger2.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/extension%20swagger2.png)
 
 ## Next Steps & Further Information
 
@@ -500,25 +500,25 @@ Visual Studio Project Templates can be installed by following steps in [Project 
 
 2.1. To add a project to your Ed-Fi-Ods Visual Studio Solution, right-click on the Ed-Fi Extensions Folder. Select Add > New Project.
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/VisualStudio-AddNewProject.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/VisualStudio-AddNewProject.png)
 
 2.2. Search and select the Ed-Fi API Extensions Project Template option and click Next.
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/vs-create%2520extension%2520project.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/vs-create%20extension%20project.png)
 
 In the Project Name field, enter EdFi.Ods.Extensions.SampleStudentTranscript and click Create.
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/vs-create%2520extension%2520project2.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/vs-create%20extension%20project2.png)
 
 ### Step 3. Rename the "Marker" Interface File
 
 3.1. Right-click on the Marker_EdFi_Ods_Extensions_ExtensionName.cs file in newly created EdFi.Ods.Extensions.SampleStudentTranscript project and Rename the file to Marker_EdFi_Ods_Extensions_SampleStudentTranscript.cs.
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/vs-remane%2520marker.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/vs-remane%20marker.png)
 
 3.2. When prompted choose to rename all references to the code element Marker_EdFi_Ods_Extensions_ExtensionName.
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/extension-rename-marker-confirm.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/extension-rename-marker-confirm.png)
 
 ### Step 4. Integrate Extension into the Solution
 
@@ -526,7 +526,7 @@ In this step, we'll integrate the extension into the solution.
 
 4.1. Locate the EdFi.Ods.WebApi project, within the "Entry Points" folder. Right-click, select Add > Reference..., then select the EdFi.Ods.Extensions.SampleStudentTranscript project.
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/vs-extension%2520add%2520reference.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/vs-extension%20add%20reference.png)
 
 4.2. Locate any profile projects in the solution. Right-click, select Add > Project Reference..., then select the EdFi.Ods.Extensions.SampleStudentTranscript project. This step is needed only if any of the Profile resources in the Profiles.xml document are extended, or extension entities are being constrained by a particular Profile.
 
@@ -632,9 +632,9 @@ Save all modified files, close Ed-Fi-ODS.sln, and re-run the code generation
 steps outlined in the [Getting Started Guide](../getting-started/readme.md) (i.e., from a PowerShell prompt run `Initialize-PowershellForDevelopment.ps1` script, followed by the `initdev` command). Then, run the application and view the Ed-Fi ODS / API in the Swagger
 UI. The following new API resource should be visible:
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/extension%2520swagger1.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/extension%20swagger1.png)
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/extension%2520swagger2.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/extension%20swagger2.png)
 
 ## Downloads
 

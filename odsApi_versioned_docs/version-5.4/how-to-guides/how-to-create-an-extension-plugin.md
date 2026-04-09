@@ -44,7 +44,7 @@ cd <source directory>\Ed-Fi-ODS-Implementation
 Invoke-CodeGen -Engine SQLServer -ExtensionPaths <source directory>\Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleStudentTransportation\
 ```
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-3-29_14-14-50.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-3-29_14-14-50.png)
 
 ### Step 2. Build Your Extension Project
 
@@ -56,7 +56,7 @@ your extension will be in Ed-Fi-ODS-Implementation\Application folder.
 C:\Program Files\dotnet\dotnet.exe build <source directory>\Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleStudentTransportation --configuration release
 ```
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-11-4_13-44-34.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-11-4_13-44-34.png)
 
 ### Step 3. Create a NuGet Package
 
@@ -69,9 +69,9 @@ the same version as the ODS / API for which it was built.
 NuGet.exe pack <source directory>\Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleStudentTransportation\EdFi.Ods.Extensions.SampleStudentTransportation.nuspec -OutputDirectory <output directory> -Properties configuration=release -NoPackageAnalysis -NoDefaultExcludes
 ```
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-4-7_18-22-23.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-4-7_18-22-23.png)
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-3-29_14-18-15.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-3-29_14-18-15.png)
 
 ### Step 4. Publish NuGet Package
 
@@ -81,7 +81,7 @@ In this step, execute the following command to publish NuGet package.
 NuGet.exe push -source https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json -apikey <PAT> <nuget directory>\EdFi.Ods.Extensions.SampleStudentTransportation.1.0.0.nupkg
 ```
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-4-7_19-8-54.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-4-7_19-8-54.png)
 
 ## Consuming Extension Plugins
 

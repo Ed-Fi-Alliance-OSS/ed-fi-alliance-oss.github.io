@@ -52,23 +52,23 @@ To do so, simply open PowerShell and navigate to "<source/>
 
 This will execute configured script from **secret.json** to download sample extension plugin and deploy the plugin artifacts to local database.
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-10-26_16-35-10.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-10-26_16-35-10.png)
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-10-26_16-39-14.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-10-26_16-39-14.png)
 
 After the successful execution of initdev, you will find the sample extension in
 <directory/><source/>\Ed-Fi-ODS-Implementation\Plugin folder.
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-10-26_16-49-9.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-10-26_16-49-9.png)
 
 Run the "Ed-Fi-Ods.sln" solution from Visual Studio and verify that the sample
 data models are listed in your API landing page.
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-10-26_16-52-9.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-10-26_16-52-9.png)
 
 **You can also verify the Sample API endpoints in the Swagger UI documentation:**
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-10-26_16-58-21.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-10-26_16-58-21.png)
 
 ## Install Sample Extension in an Existing Production Environment
 
@@ -101,14 +101,14 @@ command to install sample extension on your existing ODS database:
 Initialize-DeploymentEnvironment**
 ```
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-3-26_11-26-51.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-3-26_11-26-51.png)
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-10-26_17-20-22.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-10-26_17-20-22.png)
 
 * After the successful execution, you will find sample schema tables in the
 deployed ODS database.
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-10-26_17-0-27.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-10-26_17-0-27.png)
 
 ### Deploy Sample Extension Binaries to Web Server
 
@@ -120,7 +120,7 @@ deployed ODS database.
 * Copy the extracted folder and paste it in C:\inetpub\Ed-Fi\WebApi\Plugin in your
 WebAPI directory.
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-10-26_17-10-52.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-10-26_17-10-52.png)
 
 * Update appsettings.json, for plugin settings as shown below:
 
@@ -137,9 +137,9 @@ WebAPI directory.
 
 * Browse to the API landing page and verify that sample data models are listed.
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-10-26_16-52-9.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-10-26_16-52-9.png)
 
 * **You can also verify the Sample extension API endpoints in the Swagger UI
 documentation.**
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-10-26_16-58-21.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-10-26_16-58-21.png)

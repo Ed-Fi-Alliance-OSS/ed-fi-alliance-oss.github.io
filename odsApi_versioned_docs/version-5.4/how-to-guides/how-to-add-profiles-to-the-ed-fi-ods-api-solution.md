@@ -23,11 +23,11 @@ Detail on each step follows.
    
    b. In the "Add New Project" dialog, find and select the "Ed-Fi API Profiles Project Template" entry as shown below. Click Next.
    
-   ![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/profiles1.webp)
+   ![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/profiles1.webp)
    
    c. Enter the project name for the new project and click Create. The suggested naming convention for this type of project is something like EdFi.Ods.Profiles.MyProfiles.
    
-   ![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/profiles2.PNG)
+   ![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/profiles2.PNG)
    
 2. Update the Marker Interface File. To integrate the Profiles with the API, start by ensuring you have a marker interface in the root of your Profiles project.
 
@@ -73,7 +73,7 @@ You may have to clear your browser cache in order for Swagger UI to display the
 new resource.
 :::
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2017-12-18_16-23-55.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2017-12-18_16-23-55.png)
 
 ## Profiles in Use
 
@@ -98,7 +98,7 @@ API configuration.
 
 The EdFi_Admin tables related to this process are shown below.
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2015-9-3%252019-33-12.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2015-9-3%2019-33-12.png)
 
 ## Downloads
 The following GitHub link contains source files for this Profile sample:

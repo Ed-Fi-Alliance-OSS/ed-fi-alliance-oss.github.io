@@ -355,7 +355,7 @@ The tables involved in ownership based authorization are as follows:
 The application of an "ownership-based" authorization strategy is done in an
 additive fashion. To facilitate this, EdFi_Security database schema has been updated to allow configuration of multiple authorization strategies for the default resource claim/action "tuples" as well as for claim set-specific overrides.
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2022-2-3_10-42-35.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2022-2-3_10-42-35.png)
 
 ### EdFi_Admin Database
 
@@ -367,7 +367,7 @@ identify which resource items they currently "own", and the authorization
 process will filter results and access against this list against based on the target
 resource's "CretedByOwnershipTokenId" value.
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2022-2-3_10-36-52.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2022-2-3_10-36-52.png)
 
 ### Ed-Fi ODS Database
 
@@ -376,4 +376,4 @@ used to assign an ownership token to each record.
 
 Eg. Student Table
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2022-2-3_10-37-3.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2022-2-3_10-37-3.png)

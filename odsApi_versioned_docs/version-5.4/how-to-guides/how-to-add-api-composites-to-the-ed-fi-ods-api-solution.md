@@ -28,11 +28,11 @@ Visual Studio Project Template can be installed by following the steps in the [P
 * To add a project to your Ed-Fi-Ods Visual Studio Solution, right-click on the "Composites" folder. Select Add > New Project.
 * In the "Add New Project" dialog, find and select the "Ed-Fi API Composites Project Template" entry as shown below. Click Next.
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/composite-project-template.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/composite-project-template.png)
 
 * Enter the project name for the new project and click Create. The suggested naming convention for this type of project is something like EdFi.Ods.Composites.MyComposites.
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/composite-project-template2.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/composite-project-template2.png)
 
 ### Step 1.2. Update the Marker Interface file
 
@@ -120,7 +120,7 @@ You may have to clear your browser cache in order for Swagger UI to display the
 new resource.
 :::
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/composites3.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/composites3.png)
 
 The `organizationCode` mentioned in Step 1.3 ("ed-fi" in this example) can be seen in the Composite
 URLs above (e.g., `/ed-fi/composites/MyComposite/Students`). To successfully retrieve a composite, this value (defined in the XML

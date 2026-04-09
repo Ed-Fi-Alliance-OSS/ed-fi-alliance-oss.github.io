@@ -8,7 +8,7 @@ Some implementations find it useful to add a school year in the API root, for ex
 
 ## Configuration
 
-![Year-Specific deployment diagram](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/YearSpecific%2520deployment.png)
+![Year-Specific deployment diagram](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/YearSpecific%20deployment.png)
 
 ## Routing
 

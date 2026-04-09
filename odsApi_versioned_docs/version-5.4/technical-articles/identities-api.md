@@ -34,7 +34,7 @@ The Result endpoint will return a `200 Success` response with a search response 
 "Complete" with the results. The following diagram provides an overview of the program
 workflow:
 
-![Identities API workflow](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/identities1.PNG)
+![Identities API workflow](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/identities1.PNG)
 
 Figure 1. Identities API workflow
 
@@ -180,7 +180,7 @@ The following diagram shows a process flow that illustrates how additional
 properties are transparently passed through the Identities API for processing by the
 back-end Identity System:
 
-![Identity API process flow](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/identities2.PNG)
+![Identity API process flow](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/identities2.PNG)
 
 Figure 2. Identity API process flow
 

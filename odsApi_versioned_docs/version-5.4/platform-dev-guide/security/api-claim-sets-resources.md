@@ -59,7 +59,7 @@ back-references from the children can be represented as direct URLs).
 
 The figure below shows a sample of resources related to restraint events.
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/fig1.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/fig1.png)
 
 ## Claims
 
@@ -101,7 +101,7 @@ example, rather than issue resource claims for each individual type of descripto
 the broader "systemDescriptors" or "managedDescriptors" resource claims will be
 issued instead.
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/fig2.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/fig2.png)
 
 #### Resource Claim Values
 
@@ -135,9 +135,9 @@ taxonomy also identifies authorization strategies for the various claims that ar
 applied after the basic "action" checks have been performed. The figure below shows
 a representative piece of the Ed-Fi ODS / API claims taxonomy.
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/fig3_a.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/fig3_a.png)
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/fig3_b-1.PNG)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/fig3_b-1.PNG)
 
 The strategy used to authorize a request for an Ed-Fi Type is different from the
 one used to authorize a request to modify student-related data. The former is a

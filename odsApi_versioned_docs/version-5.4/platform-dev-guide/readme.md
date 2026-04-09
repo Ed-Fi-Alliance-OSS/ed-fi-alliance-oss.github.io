@@ -78,7 +78,7 @@ The core ODS / API technologies are essentially built on a Microsoft stack, incl
 
 A high-level view looks something like this:
 
-![Technology Stack Diagram](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-10-20_11-33-39.png)
+![Technology Stack Diagram](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-10-20_11-33-39.png)
 
 A few things to note:
 

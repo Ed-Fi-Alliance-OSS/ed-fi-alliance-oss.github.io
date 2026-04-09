@@ -93,18 +93,18 @@ Wait for the Swagger Codegen to finish generating code. A Visual Studio Solution
 
 1. **Open** the generated EdFi.OdsApi.Sdk.sln in Visual Studio.
 2. **Right-click** on the solution and click **Restore NuGet Packages**.
-![SDK Sample Program Output](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/pic5.png)
+![SDK Sample Program Output](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/pic5.png)
 3. **Build** the solution.
 4. **Right-click** on the solution and add a new project. Choose the type **Console App**. Name the project **EdFi.OdsApi.SdkClient**.
-![Add New Console Project](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2022-3-8_11-22-19.png)
-![Configure New project](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2022-3-8_11-23-15.png)
+![Add New Console Project](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2022-3-8_11-22-19.png)
+![Configure New project](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2022-3-8_11-23-15.png)
 
 5. **Right-click** on **Edfi.OdsApi.SdkClient** > **Set as Startup Project**.
-![Set Startup project](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/pic10.png)
+![Set Startup project](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/pic10.png)
 6. In Solution Explorer, **right-click** **EdFi.OdsApi.SdkClient Dependencies node** and click **Add Project Reference**.
-![Add project reference](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-9-13_17-45-36.png)
+![Add project reference](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-9-13_17-45-36.png)
 7. In the **Add Reference** > **Projects** tab, select **EdFi.OdsApi.Sdk**, and then click **OK**.
-![Reference manager](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/pic8.png)
+![Reference manager](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/pic8.png)
 8. Open the **Program.cs** file and add the following `using` statements at the top of the file:
 
    ```csharp
@@ -236,7 +236,7 @@ Wait for the Swagger Codegen to finish generating code. A Visual Studio Solution
     ```
 
 11.  Build the project and run it without debugging (**Ctrl+F5**) and you should see the following results:
-![Step 11](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2022-3-31_14-46-32.png)
+![Step 11](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2022-3-31_14-46-32.png)
 
 
 With that, you're done!

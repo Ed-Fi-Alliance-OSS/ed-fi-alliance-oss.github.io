@@ -199,14 +199,14 @@ The tool accepts the following command line argument:
 The solution can be built using Visual Studio 2022 or Rider 2021.3. Also, it can
 be built from the command line using the following command: `dotnet build`.
 
-![Building Code Generation](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2022-3-8_9-19-26.png)
+![Building Code Generation](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2022-3-8_9-19-26.png)
 
 ## Running Tests
 
 Tests can be run using Visual Studio Test Explorer, R# Test Runner of Rider
 2021.3. Alternatively, the tests can be run using the command `dotnet test`.
 
-![Running Tests](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2022-3-8_9-21-38.png)
+![Running Tests](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2022-3-8_9-21-38.png)
 
 ## Running Approval Tests
 
@@ -221,13 +221,13 @@ To run the tests, the following steps are required:
 
 **Step 3:** Run the solution within Visual Studio.
 
-![Running solution](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2022-3-8_9-26-45.png)
+![Running solution](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2022-3-8_9-26-45.png)
 
 **Step 4:** Open Test Explorer and look for the Verify_All test and run it to see if there
 are any failures
 
-![Test Explorer](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2022-3-8_10-17-36.png)
+![Test Explorer](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2022-3-8_10-17-36.png)
 
 **Step 5:** Approve any changes, if appropriate.
 
-![Approve Changes](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2022-3-8_10-18-8.png)
+![Approve Changes](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2022-3-8_10-18-8.png)

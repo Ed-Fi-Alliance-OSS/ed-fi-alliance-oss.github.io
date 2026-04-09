@@ -32,7 +32,7 @@ which function as a public and private key for the Ed-Fi ODS / API, respectively
 The following entity relationship diagram (ERD) provides additional data on the
 structure of the EdFi_Admin database:
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Ed-Fi%2520Admin.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Ed-Fi%20Admin.png)
 
 ## Ed-Fi Security Database
 
@@ -67,4 +67,4 @@ table for reference by resource claim-authorization strategies.
 The following ERD further outlines the entities and entity relationships in the
 EdFi_Security database:
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Security-Config-Figure-02.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Security-Config-Figure-02.png)

@@ -13,15 +13,15 @@ run Initialize-PowershellForDevelopment.ps followed by initdev (as outlined in t
 the Ed-Fi-ODS-Implementation repository and is executed after the
 Invoke-NewDevelopmentAppSettings task.
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-11-3_11-23-42.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-11-3_11-23-42.png)
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-11-3_11-26-46.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-11-3_11-26-46.png)
 
 A successful `initdev` execution will display the tasks executed and their duration as shown, and you
 can see that code generation utility is downloaded and installed during the
 process.
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-11-3_11-21-9.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-11-3_11-21-9.png)
 
 ##   Manual Execution
 
@@ -34,7 +34,7 @@ manually, run Initialize-PowershellForDevelopment.ps script from a PowerShell pr
 version of the tool, and install it into the tools folder under
 the Ed-Fi-ODS-Implementation repository.
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-11-3_11-29-58.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-11-3_11-29-58.png)
 
 ### Execution
 
@@ -42,4 +42,4 @@ To run code generation independently from the build process, the tool can be
 executed by calling the PowerShell command Run-CodeGen. This will execute the
 generation process for all required classes.
 
-![Image](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-11-3_11-31-4.png)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-11-3_11-31-4.png)

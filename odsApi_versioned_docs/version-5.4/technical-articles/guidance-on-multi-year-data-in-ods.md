@@ -72,7 +72,7 @@ Following configurations show how multiple years of data can be collected using
 Ed-Fi technology where each ODS collects data for single school year and data
 for multiple years can be brought together downstream at the data warehouse layer.
 
-![Multi-Year Configuration](https://edfidocs.blob.core.windows.net/$webhttps://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Possible%2520Multi-Year%2520Configuration.jpg)
+![Multi-Year Configuration](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Possible%20Multi-Year%20Configuration.jpg)
 
 ## End of Year Considerations
 
