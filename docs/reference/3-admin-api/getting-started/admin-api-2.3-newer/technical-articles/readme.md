@@ -6,6 +6,7 @@ This section contains technical details regarding the Ed-Fi Admin API.
 
 * [Multi-tenant Configuration for Admin API
   2.x](multi-tenant-configuration-for-admin-api-2x.md)
+* [IP Rate Limiting Configuration Guide](ip-rate-limit-configuration.md)
 * [Endpoints in Admin API 2.x](https://github.com/Ed-Fi-Alliance-OSS/AdminAPI-2.x/tree/main/docs/api-specifications/markdown)
 * [Support for multiple credentials per application](multiple-credentials-per-application.md)
 * [Quick Start Calling Admin API 2.x using

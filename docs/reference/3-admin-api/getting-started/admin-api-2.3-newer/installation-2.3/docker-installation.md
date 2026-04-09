@@ -45,7 +45,7 @@ install a fresh copy of Admin API to upgrade from prior versions.
 ### Installation Files
 
 :::note
-The following is the DockerHub repo for **Admin API v2.3.0 Docker Image** for inclusion in Docker compose:
+The following is the DockerHub repo for **Admin API v2.3.1 Docker Image** for inclusion in Docker compose:
 
 * [edfialliance/ods-admin-api:v2.3](https://hub.docker.com/layers/edfialliance/ods-admin-api/v2.3/images/sha256-c2784fb555fa13116e2347f4a81d50d9d5b06ab9fb1a0ad1a2d90514153a370d)
 
