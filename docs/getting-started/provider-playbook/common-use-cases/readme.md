@@ -1,17 +1,5 @@
 # Common Use Cases
 
-## Rostering
-
-**This guide is for vendors who want to assist their clients in setting up an
-Ed-Fi Rostering solution.** An Ed-Fi rostering solution helps organizations of
-all kinds eliminate data gaps and human error by provisioning roster information
-directly from source systems.
-
-* [Rostering Solution Guide Home](./rostering-solution-guide/readme.md)
-
-![Image depicting people working by a big
-phone](https://edfidocs.blob.core.windows.net/$web/img/getting-started/solution-guides/Aaah-Big-Phone@0.33x.png)
-
 ## Assessment Solution Guide
 
 **This guide is for vendors who want to assist their clients in setting up an

@@ -62,13 +62,12 @@ Section 5: [Specifics by Provider Type](./specifics-by-provider-type/readme.md)
 
 ## Common Use Case Solution Guides
 
-* [Rostering](./common-use-cases/rostering-solution-guide/readme.md)
 * [Chronic Absenteeism](./common-use-cases/chronic-absenteeism-solution-guide/readme.md)
+* [Assessment Solution Guide](./common-use-cases/assessment-solution-guide/readme.md)
+* [Student Equity Solution Guide](./common-use-cases/student-equity-solution-guide/readme.md)
 
 ## Useful Links
 
 * [Ed-Fi Certification](/partners/certification)
-* [Rostering Solution Guide](https://edfi.atlassian.net/wiki/spaces/SG/pages/20611776/Rostering+Solution+Guide)
-* [Assessment Solution Guide](https://edfi.atlassian.net/wiki/spaces/SG/pages/20611639/Assessment+Solution+Guide)
 * [Ed-Fi ODS / API Sandbox](https://api.ed-fi.org/)
 * [Ed-Fi ODS / API Platform (Latest)](/reference/ods-api)

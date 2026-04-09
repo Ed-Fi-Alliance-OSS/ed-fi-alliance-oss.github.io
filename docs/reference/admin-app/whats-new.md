@@ -3,6 +3,12 @@
 This section provides an overview of what's new in the latest versions of the
 Ed-Fi Admin App v4.
 
+## Updates in Admin App v4
+
+### Bug Fixes in Admin App 4.0.1
+
+* [AC-458] - Fix on show secret page and Docker improvements.
+
 ## Initial Release
 
 ### Features
