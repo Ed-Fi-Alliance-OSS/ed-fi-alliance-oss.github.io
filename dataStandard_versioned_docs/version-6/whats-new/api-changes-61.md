@@ -159,22 +159,22 @@
     * **Added** addressCharacteristicDescriptor - A characteristic of the address, such as physically located at the address.
 
   * **Response**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 * `POST /ed-fi/applicantProfiles`
 
   * **Request**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 * `GET /ed-fi/applicantProfiles/{id}`
 
   * **Response**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 * `PUT /ed-fi/applicantProfiles/{id}`
 
   * **Request**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 ## candidates Endpoints and Associated Domains
 
@@ -188,22 +188,22 @@
     * **Added** addressCharacteristicDescriptor - A characteristic of the address, such as physically located at the address.
 
   * **Response**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 * `POST /ed-fi/candidates`
 
   * **Request**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 * `GET /ed-fi/candidates/{id}`
 
   * **Response**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 * `PUT /ed-fi/candidates/{id}`
 
   * **Request**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 ## communityOrganizations Endpoints and Associated Domains
 
@@ -217,22 +217,22 @@
     * **Added** addressCharacteristicDescriptor - A characteristic of the address, such as physically located at the address.
 
   * **Response**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 * `POST /ed-fi/communityOrganizations`
 
   * **Request**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 * `GET /ed-fi/communityOrganizations/{id}`
 
   * **Response**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 * `PUT /ed-fi/communityOrganizations/{id}`
 
   * **Request**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 ## communityProviders Endpoints and Associated Domains
 
@@ -246,22 +246,22 @@
     * **Added** addressCharacteristicDescriptor - A characteristic of the address, such as physically located at the address.
 
   * **Response**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 * `POST /ed-fi/communityProviders`
 
   * **Request**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 * `GET /ed-fi/communityProviders/{id}`
 
   * **Response**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 * `PUT /ed-fi/communityProviders/{id}`
 
   * **Request**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 ## contacts Endpoints and Associated Domains
 
@@ -276,22 +276,22 @@
     * **Added** addressCharacteristicDescriptor - A characteristic of the address, such as physically located at the address.
 
   * **Response**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 * `POST /ed-fi/contacts`
 
   * **Request**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 * `GET /ed-fi/contacts/{id}`
 
   * **Response**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 * `PUT /ed-fi/contacts/{id}`
 
   * **Request**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 ## educationOrganizationNetworks Endpoints and Associated Domains
 
@@ -305,22 +305,22 @@
     * **Added** addressCharacteristicDescriptor - A characteristic of the address, such as physically located at the address.
 
   * **Response**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 * `POST /ed-fi/educationOrganizationNetworks`
 
   * **Request**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 * `GET /ed-fi/educationOrganizationNetworks/{id}`
 
   * **Response**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 * `PUT /ed-fi/educationOrganizationNetworks/{id}`
 
   * **Request**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 ## educationServiceCenters Endpoints and Associated Domains
 
@@ -335,22 +335,22 @@
     * **Added** addressCharacteristicDescriptor - A characteristic of the address, such as physically located at the address.
 
   * **Response**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 * `POST /ed-fi/educationServiceCenters`
 
   * **Request**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 * `GET /ed-fi/educationServiceCenters/{id}`
 
   * **Response**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 * `PUT /ed-fi/educationServiceCenters/{id}`
 
   * **Request**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 ## localEducationAgencies Endpoints and Associated Domains
 
@@ -366,22 +366,22 @@
     * **Added** addressCharacteristicDescriptor - A characteristic of the address, such as physically located at the address.
 
   * **Response**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 * `POST /ed-fi/localEducationAgencies`
 
   * **Request**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 * `GET /ed-fi/localEducationAgencies/{id}`
 
   * **Response**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 * `PUT /ed-fi/localEducationAgencies/{id}`
 
   * **Request**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 ## organizationDepartments Endpoints and Associated Domains
 
@@ -395,22 +395,22 @@
     * **Added** addressCharacteristicDescriptor - A characteristic of the address, such as physically located at the address.
 
   * **Response**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 * `POST /ed-fi/organizationDepartments`
 
   * **Request**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 * `GET /ed-fi/organizationDepartments/{id}`
 
   * **Response**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 * `PUT /ed-fi/organizationDepartments/{id}`
 
   * **Request**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 ## postSecondaryInstitutions Endpoints and Associated Domains
 
@@ -425,22 +425,22 @@
     * **Added** addressCharacteristicDescriptor - A characteristic of the address, such as physically located at the address.
 
   * **Response**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 * `POST /ed-fi/postSecondaryInstitutions`
 
   * **Request**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 * `GET /ed-fi/postSecondaryInstitutions/{id}`
 
   * **Response**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 * `PUT /ed-fi/postSecondaryInstitutions/{id}`
 
   * **Request**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 ## schools Endpoints and Associated Domains
 
@@ -467,22 +467,22 @@
     * **Added** addressCharacteristicDescriptor - A characteristic of the address, such as physically located at the address.
 
   * **Response**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 * `POST /ed-fi/schools`
 
   * **Request**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 * `GET /ed-fi/schools/{id}`
 
   * **Response**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 * `PUT /ed-fi/schools/{id}`
 
   * **Request**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 ## staffDirectories Endpoints and Associated Domains
 
@@ -496,22 +496,22 @@
     * **Added** addressCharacteristicDescriptor - A characteristic of the address, such as physically located at the address.
 
   * **Response**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 * `POST /ed-fi/staffDirectories`
 
   * **Request**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 * `GET /ed-fi/staffDirectories/{id}`
 
   * **Response**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 * `PUT /ed-fi/staffDirectories/{id}`
 
   * **Request**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 ## stateEducationAgencies Endpoints and Associated Domains
 
@@ -526,22 +526,22 @@
     * **Added** addressCharacteristicDescriptor - A characteristic of the address, such as physically located at the address.
 
   * **Response**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 * `POST /ed-fi/stateEducationAgencies`
 
   * **Request**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 * `GET /ed-fi/stateEducationAgencies/{id}`
 
   * **Response**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 * `PUT /ed-fi/stateEducationAgencies/{id}`
 
   * **Request**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 ## studentDirectories Endpoints and Associated Domains
 
@@ -556,19 +556,19 @@
     * **Added** addressCharacteristicDescriptor - A characteristic of the address, such as physically located at the address.
 
   * **Response**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 * `POST /ed-fi/studentDirectories`
 
   * **Request**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 * `GET /ed-fi/studentDirectories/{id}`
 
   * **Response**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
 
 * `PUT /ed-fi/studentDirectories/{id}`
 
   * **Request**
-    * **Added** property: addresses[].characteristics[].addressCharacteristicDescriptor (string)
+    * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
