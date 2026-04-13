@@ -752,7 +752,6 @@ export default {
         },
       ],
     },
-
   ],
   domainApiV4: [
     {
