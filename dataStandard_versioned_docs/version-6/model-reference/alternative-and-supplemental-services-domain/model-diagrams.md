@@ -7,11 +7,52 @@ sidebar_position: 2
 This section contains reference information for the Alternative and Supplemental
 Services domain model and subdomains.
 
-## Alternative and Supplemental Services Model UML Diagram
-
-![Alternative and Supplemental Services Model UML Diagram](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/AlternativeAndSupplementalServices_v6.X.png)
-
-[_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/AlternativeAndSupplementalServices_v6.X.png)
+```mermaid
+erDiagram
+    Program {
+    }
+    Staff {
+    }
+    GeneralStudentProgramAssociation {
+    }
+    StaffProgramAssociation {
+    }
+    Section {
+    }
+    StudentSectionAssociation {
+    }
+    Student {
+    }
+    EducationOrganization {
+    }
+    StudentSectionAttendanceEvent {
+    }
+    StudentSchoolAttendanceEvent {
+    }
+    StudentProgramAttendanceEvent {
+    }
+    StudentSpecialEducationProgramEligibilityAssociation {
+    }
+    School {
+    }
+    EducationOrganization ||--o{ Program : "relates to"
+    Student ||--o{ Program : "relates to"
+    Program ||--o{ Staff : "relates to"
+    Section ||--o{ Program : "relates to"
+    Student ||--o{ School : "relates to"
+    Student ||--o{ GeneralStudentProgramAssociation : "relates to"
+    Student ||--o{ StaffProgramAssociation : "relates to"
+    Staff ||--o{ StaffProgramAssociation : "relates to"
+    Student ||--o{ StudentSectionAssociation : "relates to"
+    Section ||--o{ StudentSectionAssociation : "relates to"
+    Student ||--o{ StudentSpecialEducationProgramEligibilityAssociation : "relates to"
+    StudentSectionAttendanceEvent ||--o{ Student : "relates to"
+    StudentSectionAttendanceEvent ||--o{ Section : "relates to"
+    StudentSchoolAttendanceEvent ||--o{ School : "relates to"
+    StudentSchoolAttendanceEvent ||--o{ Student : "relates to"
+    StudentProgramAttendanceEvent ||--o{ EducationOrganization : "relates to"
+    StudentProgramAttendanceEvent ||--o{ Program : "relates to"
+```
 
 ### Federal Programs Subdomain
 
