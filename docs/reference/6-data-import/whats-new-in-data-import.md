@@ -4,13 +4,16 @@ This section provides an overview of what's new for Data Import releases:
 
 ## What's New in Data Import v2.4
 
+:::note
+This is the last planned release of Ed-Fi Data Import. For more information, visit [Data Import Transitioning to Ed-Fi Exchange in 2026](https://docs.ed-fi.org/reference/roadmap/notifications/data-import/).
+:::
+
 The following improvements and fixes were made in Data Import v2.4:
 
-* DI-1407 - Updates Ed-Fi Logo
-* DI-1406 - Adds Issue Workflow Management
-* DI-1402 - Adds Code of Conduct File
-* DI-1405 - NuGet packages Updates
-* DI-1413 - .NET 10 Update and replaced Automapper with static C# mapper classes.
+* Updated NuGet packages
+* Updated to .NET 10
+* Replaced AutoMapper with static C# mapper classes
+* Improved error logging when a timeout occurs
 
 ## What's New in Data Import v2.3
 
