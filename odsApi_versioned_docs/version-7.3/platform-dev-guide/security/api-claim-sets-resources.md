@@ -177,9 +177,7 @@ claims that are applied after the basic "action" checks have been performed. The
 figure below shows a representative piece of the Ed-Fi ODS / API claims
 taxonomy.
 
-![Claims Taxonomy](/img/reference/ods-api/fig3_a.png)
-
-![Claims Taxonomy](/img/reference/ods-api/fig3_b-1.png)
+![Claims Taxonomy](/img/reference/ods-api/fig3.webp)
 
 The strategy used to authorize a request for an Ed-Fi type or descriptor is
 different from the one used to authorize a request to modify student-related
@@ -253,10 +251,11 @@ strategies, applied to the claims taxonomy shown in the figure above.
 
 ## How Authorization Is Enforced
 
-With the concepts of resource claims, actions, and the claims taxonomy in place,
-authorization for every API request is enforced in two sequential phases:
+With the concepts of resource claims, actions, the claims taxonomy and authorization
+strategies in place, authorization for every API request is enforced in two
+sequential phases:
 
-1. **Resource claim + action check.** Does the caller's assigned claim set
+1. **Resource claim and action check.** Does the caller's assigned claim set
    include the requested resource and the action being performed (Create, Read,
    Update, or Delete)?
 2. **Authorization strategy check.** Given that the claim exists, does the
@@ -392,8 +391,8 @@ combined with AND logic and are evaluated first.
 ### Example
 
 When a SIS vendor sends a request to create a restraint event (see the figure
-above in the [API Resources](#api-resources) section), the resource to be written
-will be associated with a particular school and student. The
+above in the [API Resources](#api-resources) section), the resource to be
+written will be associated with a particular school and student. The
 "RelationshipsWithEdOrgsAndPeople" authorization strategy will evaluate whether
 the SIS vendor's education organization(s) have an established path to that
 school (via the education organization hierarchy) and to that student (via
