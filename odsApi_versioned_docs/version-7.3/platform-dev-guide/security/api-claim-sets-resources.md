@@ -255,9 +255,9 @@ strategies, applied to the claims taxonomy shown in the figure above.
   security setup can be achieved simply by creating a custom database view and
   configuring the necessary metadata, without requiring recompilation or an API
   process restart. See [Authorizing Requests Using Custom Database
-  Views](../../technical-articles/authorizing-requests-using-custom-database-views)
+  Views](../../technical-articles/authorizing-requests-using-custom-database-views.md)
   and [How To: Use Custom View-Based
-  Authorization](../../how-to-guides/how-to-use-custom-view-based-authorization)
+  Authorization](../../how-to-guides/how-to-use-custom-view-based-authorization.md)
   for additional details.
 
 ## How Authorization Is Enforced
