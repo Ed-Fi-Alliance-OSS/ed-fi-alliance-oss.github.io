@@ -18,3 +18,13 @@ support. Over time, some badges may act as precursors to new certifications.
 Unlike certification, badges also focus on both Ed-Fi standards as well as Ed-Fi
 technology tools; by contrast, Ed-Fi certifications only focus on Ed-Fi
 standards.
+
+:::info
+
+When describing your product’s integration with the Ed‑Fi Data
+Standard, it’s important to communicate clearly, accurately, and
+consistently with the Ed‑Fi Alliance’s brand, trademark, and
+language guidelines. For more information, see the
+[Ed-Fi Alliance Brand Guidelines for Partners](../brand-guidelines.md).
+
+:::
