@@ -729,6 +729,29 @@ export default {
         },
       ],
     },
+    {
+      productName: 'i-Ready Math and ELA Diagnostic',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/iReady/i-Ready-logo.svg',
+      website: 'https://www.curriculumassociates.com/programs/i-ready-assessment/diagnostic',
+      validThrough: 'April 13, 2027',
+      verifyingAgencies: ['South Carolina Department of Education'],
+      versionCompatibility: 'All versions',
+      availability: 'Available to any agency (all sizes) in the U.S.',
+      documentation: {
+        'Availability Statement':
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/iReady/Ed-Fi%20Certification%20-%20Availability%20Statement%20V2.docx',
+        Mappings:
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/iReady/i-Ready%20Diagnostic%20to%20Ed-Fi%20Mapping.xlsx',
+        narrative:
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/iReady/i-Ready%20Usage%20Narrative.docx',
+      },
+      supportResources: [
+        {
+          name: 'Support Email',
+          link: 'mailto:rosters-support@cainc.com',
+        },
+      ],
+    },
   ],
   domainApiV4: [
     {
