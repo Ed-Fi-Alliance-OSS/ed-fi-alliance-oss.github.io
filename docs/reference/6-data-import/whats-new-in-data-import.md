@@ -2,9 +2,9 @@
 
 This section provides an overview of what's new for Data Import releases:
 
-## What's New in Data Import v2.4.0
+## What's New in Data Import v2.4
 
-The following improvements and fixes were made in Data Import v2.4.0:
+The following improvements and fixes were made in Data Import v2.4:
 
 * DI-1407 - Updates Ed-Fi Logo
 * DI-1406 - Adds Issue Workflow Management
