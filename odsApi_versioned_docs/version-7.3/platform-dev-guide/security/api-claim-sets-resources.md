@@ -248,6 +248,17 @@ strategies, applied to the claims taxonomy shown in the figure above.
   feature is enabled by the API host, which is required to capture the ownership
   token at each aggregate root at write time. See [Ownership-Based
   Authorization](#ownership-based-authorization) for more details.
+- **Custom View-Based Authorization.** Provides a powerful and flexible
+  mechanism for defining custom authorization strategies. API Hosts can create
+  custom database views tailored to specific authorization needs, such as
+  restricting access by student program enrollment or grade level. Granular
+  security setup can be achieved simply by creating a custom database view and
+  configuring the necessary metadata, without requiring recompilation or an API
+  process restart. See [Authorizing Requests Using Custom Database
+  Views](../../technical-articles/authorizing-requests-using-custom-database-views)
+  and [How To: Use Custom View-Based
+  Authorization](../../how-to-guides/how-to-use-custom-view-based-authorization)
+  for additional details.
 
 ## How Authorization Is Enforced
 
