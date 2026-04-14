@@ -2,6 +2,16 @@
 
 This section provides an overview of what's new for Data Import releases:
 
+## What's New in Data Import v2.3.5
+
+The following improvements and fixes were made in Data Import v2.3.5:
+
+* DI-1407 - Updates Ed-Fi Logo
+* DI-1406 - Adds Issue Workflow Management
+* DI-1402 - Adds Code of Conduct File
+* DI-1405 - NuGet packages Updates
+* DI-1413 - .NET 10 Update and replaced Automapper with static C# mapper classes.
+
 ## What's New in Data Import v2.3
 
 The following improvements and fixes were made in Data Import v2.3:
