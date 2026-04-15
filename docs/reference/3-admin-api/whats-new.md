@@ -3,7 +3,17 @@
 This section provides an overview of what's new in the latest versions of the
 Admin API.
 
-## Updates in Admin API v2.3 (Latest Release)
+## Updates in Admin API v2.3.2 (Latest Release)
+
+### Bug Fix
+
+* When creating additional credentials for an application, each credential is now enabled or disabled according to the user payload, instead of always being created as enabled.
+
+### Enhancements
+
+* Replaced AutoMapper with static C# mapper classes.
+
+## Updates in Admin API v2.3
 
 ### Features
 
