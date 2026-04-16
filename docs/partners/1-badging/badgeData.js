@@ -551,7 +551,7 @@ export default {
         'IDOE Ed-Fi 2.4 to 6.0 Data mapping':
           'https://edfi.atlassian.net/wiki/download/attachments/20611183/IDOE+Ed-Fi+2.4+to+6.0+Data+mapping.xlsx?version=1',
       },
-      validThrough: 'February 10, 2027',
+      validThrough: 'February 10, 2028',
       verifyingAgencies: ['Indiana DoE', 'Nebraska DoE'],
       servicesPerformed: {
         description: 'Ed-Fi strategy and implementation planning, Technical architecture and environment setup, Data mapping and validation, Vendor coordination and onboarding, Stakeholder engagement and project governance, Project management and change facilitation, Documentation and training',
