@@ -25,7 +25,7 @@ erDiagram
     }
     EducationOrganization {
     }
-    StudentSectionAttendanceEvent {
+    StudentSectionAttendanceEvent["StudentSection<br/>AttendanceEvent"] {
     }
     StudentSchoolAttendanceEvent {
     }
