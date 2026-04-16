@@ -1,5 +1,6 @@
 ---
 sidebar_position: 2
+hide_table_of_contents: true
 ---
 
 # Alternative and Supplemental Services Domain - Model Diagrams
@@ -7,13 +8,15 @@ sidebar_position: 2
 This section contains reference information for the Alternative and Supplemental
 Services domain model and subdomains.
 
+## Alternative and Supplemental Services Model UML Diagram
+
 ```mermaid
 erDiagram
     Program {
     }
     Staff {
     }
-    GeneralStudentProgramAssociation {
+    GeneralStudentProgramAssociation["GeneralStudent<br/>ProgramAssociation"] {
     }
     StaffProgramAssociation {
     }
@@ -27,11 +30,11 @@ erDiagram
     }
     StudentSectionAttendanceEvent["StudentSection<br/>AttendanceEvent"] {
     }
-    StudentSchoolAttendanceEvent {
+    StudentSchoolAttendanceEvent["StudentSchool<br/>AttendanceEvent"] {
     }
-    StudentProgramAttendanceEvent {
+    StudentProgramAttendanceEvent["StudentProgram<br/>AttendanceEvent"] {
     }
-    StudentSpecialEducationProgramEligibilityAssociation {
+    StudentSpecialEducationProgramEligibilityAssociation["StudentSpecialEducation<br/>ProgramEligibility<br/>Association"] {
     }
     School {
     }
@@ -58,6 +61,50 @@ erDiagram
 
 #### Alternative and Supplemental Services, Federal Programs Model UML Diagram
 
-![Federal Programs Subdomain](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/AlternativeAndSupplementalServices_FederalPrograms_v6.X.png)
-
-[_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/AlternativeAndSupplementalServices_FederalPrograms_v6.X.png)
+```mermaid
+erDiagram
+    Program {
+    }
+    Student {
+    }
+    EducationOrganization {
+    }
+    GeneralStudentProgramAssociation {
+    }
+    StudentCTEProgramAssociation {
+    }
+    StudentHomelessProgramAssociation {
+    }
+    StudentLanguageInstructionProgramAssociation {
+    }
+    StudentMigrantEducationProgramAssociation {
+    }
+    StudentNeglectedOrDelinquentProgramAssociation {
+    }
+    StudentProgramAssociation {
+    }
+    StudentSchoolFoodServiceProgramAssociation {
+    }
+    StudentSpecialEducationProgramAssociation {
+    }
+    StudentTitleIPartAProgramAssociation {
+    }
+    StudentSpecialEducationProgramEligibilityAssociation {
+    }
+    StudentSection504ProgramAssociation {
+    }
+    EducationOrganization ||--o{ Program : "relates to"
+    Student ||--o{ Program : "relates to"
+    GeneralStudentProgramAssociation ||--o{ EducationOrganization : "relates to"
+    StudentSpecialEducationProgramEligibilityAssociation ||--o{ EducationOrganization : "relates to"
+    StudentCTEProgramAssociation ||--o{ GeneralStudentProgramAssociation : "relates to"
+    StudentHomelessProgramAssociation ||--o{ GeneralStudentProgramAssociation : "relates to"
+    StudentLanguageInstructionProgramAssociation ||--o{ GeneralStudentProgramAssociation : "relates to"
+    StudentMigrantEducationProgramAssociation ||--o{ GeneralStudentProgramAssociation : "relates to"
+    StudentNeglectedOrDelinquentProgramAssociation ||--o{ GeneralStudentProgramAssociation : "relates to"
+    StudentProgramAssociation ||--o{ GeneralStudentProgramAssociation : "relates to"
+    StudentSchoolFoodServiceProgramAssociation ||--o{ GeneralStudentProgramAssociation : "relates to"
+    StudentSpecialEducationProgramAssociation ||--o{ GeneralStudentProgramAssociation : "relates to"
+    StudentTitleIPartAProgramAssociation ||--o{ GeneralStudentProgramAssociation : "relates to"
+    StudentSection504ProgramAssociation ||--o{ GeneralStudentProgramAssociation : "relates to"
+```
