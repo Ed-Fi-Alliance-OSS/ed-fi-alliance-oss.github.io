@@ -1,5 +1,6 @@
 ---
 sidebar_position: 2
+hide_table_of_contents: true
 ---
 
 # Assessment Domain - Model Diagrams
@@ -9,9 +10,55 @@ subdomains.
 
 ## Assessment Model UML Diagram
 
-![Assessment Domain Model](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Assessment_v6.X.png)
-
-[_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Assessment_v6.X.png)
+```mermaid
+erDiagram
+    Assessment {
+    }
+    StudentAssessment {
+    }
+    ObjectiveAssessment {
+    }
+    AssessmentItem {
+    }
+    LearningStandard {
+    }
+    LearningStandardEquivalenceAssociation {
+    }
+    AssessmentScoreRangeLearningStandard {
+    }
+    StudentAssessmentEducationOrganizationAssociation {
+    }
+    Student {
+    }
+    EducationOrganization {
+    }
+    Section {
+    }
+    Program {
+    }
+    School {
+    }
+    StudentAssessment ||--o{ Student : "relates to"
+    StudentAssessment ||--o{ Assessment : "relates to"
+    StudentAssessment ||--o{ EducationOrganization : "relates to"
+    StudentAssessmentEducationOrganizationAssociation ||--o{ StudentAssessment : "relates to"
+    StudentAssessmentEducationOrganizationAssociation ||--o{ EducationOrganization : "relates to"
+    Assessment ||--o{ EducationOrganization : "relates to"
+    Assessment ||--o{ Section : "relates to"
+    Assessment ||--o{ Program : "relates to"
+    ObjectiveAssessment ||--o{ Assessment : "relates to"
+    ObjectiveAssessment ||--o{ ObjectiveAssessment : "relates to"
+    ObjectiveAssessment ||--o{ AssessmentItem : "relates to"
+    ObjectiveAssessment ||--o{ LearningStandard : "relates to"
+    AssessmentItem ||--o{ LearningStandard : "relates to"
+    AssessmentScoreRangeLearningStandard ||--o{ LearningStandard : "relates to"
+    LearningStandardEquivalenceAssociation ||--o{ LearningStandard : "relates to"
+    LearningStandard ||--o{ LearningStandard : "relates to"
+    Program ||--o{ LearningStandard : "relates to"
+    Section ||--o{ Program : "relates to"
+    Student ||--o{ Section : "relates to"
+    Student ||--o{ Program : "relates to"
+```
 
 ### Learning Standard Subdomain
 
@@ -40,9 +87,15 @@ equivalence.
 
 #### Assessment, Learning Standards Model UML Diagram
 
-![Assessment - Standards Subdomain](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Assessment_Standards_v6.X.png)
-
-[_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Assessment_Standards_v6.X.png)
+```mermaid
+erDiagram
+    LearningStandard {
+    }
+    LearningStandardEquivalenceAssociation["LearningStandard<br/>EquivalenceAssociation"] {
+    }
+    LearningStandard ||--o{ LearningStandard : "relates to"
+    LearningStandardEquivalenceAssociation ||--o{ LearningStandard : "relates to"
+```
 
 ### Assessment Metadata Subdomain
 
@@ -64,9 +117,29 @@ stand-alone assessments that do not tie to a particular section or program.
 
 #### Assessment, Assessment Metadata Model UML Diagram
 
-![Assessment - Assessment Metadata Subdomain](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Assessment_Metadata_v6.X.png)
-
-[_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Assessment_Metadata_v6.X.png)
+```mermaid
+erDiagram
+    Assessment {
+    }
+    ObjectiveAssessment {
+    }
+    AssessmentItem {
+    }
+    EducationOrganization {
+    }
+    Section {
+    }
+    Program {
+    }
+    ObjectiveAssessment ||--o{ ObjectiveAssessment : "relates to"
+    ObjectiveAssessment ||--o{ AssessmentItem : "relates to"
+    ObjectiveAssessment ||--o{ Assessment : "relates to"
+    AssessmentItem ||--o{ Assessment : "relates to"
+    Assessment ||--o{ EducationOrganization : "relates to"
+    Assessment ||--o{ Section : "relates to"
+    Assessment ||--o{ Program : "relates to"
+    Section ||--o{ Program : "relates to"
+```
 
 ### Student Assessment Subdomain
 
@@ -106,6 +179,11 @@ metadata.
 
 #### Assessment, Student Assessment Model UML Diagram
 
-![Assessment - Student Assessment Subdomain](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Assessment_StudentAssessment_v6.X.png)
-
-[_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Assessment_StudentAssessment_v6.X.png)
+```mermaid
+erDiagram
+    Student {
+    }
+    StudentAssessment {
+    }
+    StudentAssessment ||--o{ Student : "relates to"
+```

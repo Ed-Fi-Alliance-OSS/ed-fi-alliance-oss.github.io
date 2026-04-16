@@ -1,11 +1,30 @@
 ---
 sidebar_position: 2
+hide_table_of_contents: true
 ---
 
 # Bell Schedule Domain - Model Diagrams
 
 ## Bell Schedule Model UML Diagram
 
-![Bell Schedule UML](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/BellSchedule_v6.X.png)
-
-[_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/BellSchedule_v6.X.png)
+```mermaid
+erDiagram
+    BellSchedule {
+    }
+    ClassPeriod {
+    }
+    Session {
+    }
+    Section {
+    }
+    EducationOrganization {
+    }
+    School {
+    }
+    School ||--o{ EducationOrganization : "relates to"
+    BellSchedule ||--o{ School : "relates to"
+    BellSchedule ||--o{ ClassPeriod : "relates to"
+    ClassPeriod ||--o{ School : "relates to"
+    Session ||--o{ School : "relates to"
+    Section ||--o{ ClassPeriod : "relates to"
+```
