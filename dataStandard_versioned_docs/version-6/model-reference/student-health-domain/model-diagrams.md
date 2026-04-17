@@ -1,5 +1,6 @@
 ---
 sidebar_position: 2
+hide_table_of_contents: true
 ---
 
 # Student Health Domain - Model Diagrams
@@ -30,6 +31,14 @@ last updated.
 
 The data model UML diagram is shown below.
 
-![Student Health UML](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/StudentHealth_v6.X.png)
-
-[_Large version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/StudentHealth_v6.X.png)
+```mermaid
+erDiagram
+    Student {
+    }
+    StudentHealth {
+    }
+    EducationOrganization {
+    }
+    StudentHealth ||--o{ Student : "relates to"
+    StudentHealth ||--o{ EducationOrganization : "relates to"
+```
