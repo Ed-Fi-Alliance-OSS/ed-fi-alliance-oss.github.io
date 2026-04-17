@@ -1,0 +1,275 @@
+---
+sidebar_position: 1
+---
+
+import ImageCarousel from '@site/src/components/ImageCarousel';
+
+# Educator Workforce Use Case
+
+## Background and Purpose
+
+Persistent teacher shortages across the U.S. are particularly acute in areas
+such as science, bilingual education, special education, and math. This
+situation is further exacerbated by fewer new educators entering the profession
+and ongoing retention challenges.
+
+In response, the Ed-Fi Alliance conducted a structured essential question (EQ)
+and visual design process aimed at addressing these staffing challenges through
+data-informed insights and visual reporting tools. This collaborative process
+surfaced and prioritized the essential questions that matter most to districts
+and Education Service Agencies (ESAs), reflecting shared staffing challenges
+across diverse contexts. From this work, three core EQs emerged. These EQs
+guided the creation of dashboard mockups designed to deliver targeted,
+actionable insights that support stronger staffing decisions. Together, the EQs
+and dashboards help education leaders visualize key workforce data and drive
+improvements in hiring, staffing equity, and educator retention.
+
+Open‑source versions of these dashboards are available in both Power BI and
+Superset, along with resources to support data mapping for Ed‑Fi–powered
+Educator Workforce dashboards. This document outlines each essential question
+(EQ) and links to related technical and non-technical documentation.
+
+:::info Demo Version and Resources Explore the Power BI demo version of the
+[Educator Workforce Tool](https://app.powerbi.com/view?r=eyJrIjoiOTgyNGEwMDQtYTE4NC00MTY5LWIxZTQtNzJjY2NjYzEwYjZjIiwidCI6IjRiYzIxMDI0LTAxZjEtNDM3Yy1hMjVhLTZmMGRkNTYzYjE3MSIsImMiOjN9)
+report.
+
+Make sure you visit the
+[Ed-FI Exchange to access related technical documentation and assets](/getting-started/edfi-exchange/technology/educator-workforce-use-case-analytic-tool/).
+:::
+
+## Essential Questions Summary
+
+### EQ 1: Educator Vacancies
+
+- **Essential Question**: How do educator vacancies vary across the
+  district/Education Service Agency (ESA)?
+- **Purpose**: Guide strategic planning, identify vacancy patterns, promote
+  staffing equity, and support policy development by visualizing where staffing
+  gaps exist. Designed for education service agencies (ESAs) and local education
+  agencies (LEAs).
+- **Use Case Documentation**:
+  [EQ1 Hiring Summary/Vacancies Use Case Documentation](https://docs.google.com/document/d/e/2PACX-1vRv7iUy4hi77-iyWRpqt54IsEC3mVbgrlLKYrJAxkT1kRsJMsdX83RuT9tGBbyP8g/pub)
+- **Technical Overview Documentation**:
+  - [Staff Data Overview Technical Documentation](https://docs.google.com/document/d/1rjTYxZjUpd2Gp08ymFoH07l5cLEr-RRlAh1r3rj4Nag/edit?tab=t.0)
+  - [Vacancy Data Overview Technical Documentation](https://docs.google.com/document/d/1JcrgwkUAoSlBU5kz6VE6KHwsLi_Zm8XhyJNXRyQ483E/edit?tab=t.0)
+- **Superset Dashboard Examples**:
+
+<ImageCarousel
+  images={[
+    {
+      src: 'https://edfidocs.blob.core.windows.net/$web/img/getting-started/use-cases/epp/Superset_District-CurrentVacancies.png',
+      alt: 'Superset District - Current Vacancies',
+      caption: 'District: Current Vacancies',
+    },
+    {
+      src: 'https://edfidocs.blob.core.windows.net/$web/img/getting-started/use-cases/epp/Superset_District-VacanciesThroughTime.png',
+      alt: 'Superset District - Vacancies Through Time',
+      caption: 'District: Vacancies Through Time',
+    },
+    {
+      src: 'https://edfidocs.blob.core.windows.net/$web/img/getting-started/use-cases/epp/Superset_County-Current%20Vacancies.png',
+      alt: 'Superset County - Current Vacancies',
+      caption: 'County: Current Vacancies',
+    },
+    {
+      src: 'https://edfidocs.blob.core.windows.net/$web/img/getting-started/use-cases/epp/Superset_County-VacanciesThroughTime.png',
+      alt: 'Superset County - Vacancies Through Time',
+      caption: 'County: Vacancies Through Time',
+    },
+  ]}
+/>
+
+- **Power BI Dashboard Examples**:
+
+<ImageCarousel
+  images={[
+    {
+      src: 'https://edfidocs.blob.core.windows.net/$web/img/getting-started/use-cases/epp/PowerBI_County%20Vacancy%20snap%20shot.png',
+      alt: 'Power BI County - Vacancy Snapshot',
+      caption: 'County: Vacancy Snapshot',
+    },
+    {
+      src: 'https://edfidocs.blob.core.windows.net/$web/img/getting-started/use-cases/epp/PowerBI_County%20Vacancy%20through%20time.png',
+      alt: 'Power BI County - Vacancy Through Time',
+      caption: 'County: Vacancy Through Time',
+    },
+    {
+      src: 'https://edfidocs.blob.core.windows.net/$web/img/getting-started/use-cases/epp/PowerBI_District%20vacancy%20snap%20shot.png',
+      alt: 'Power BI District - Vacancy Snapshot',
+      caption: 'District: Vacancy Snapshot',
+    },
+    {
+      src: 'https://edfidocs.blob.core.windows.net/$web/img/getting-started/use-cases/epp/PowerBI_District%20Vacancy%20through%20time.png',
+      alt: 'Power BI District - Vacancy Through Time',
+      caption: 'District: Vacancy Through Time',
+    },
+  ]}
+/>
+
+### EQ 2: Educator Retention by Assignment
+
+- **Essential Question**: Are there certain assignments of educators that are
+  connected to higher retention?
+- **Purpose**: Identify factors impacting educator retention, inform support
+  strategies, and enable targeted retention interventions for assignments facing
+  high turnover. Designed for education service agencies (ESAs) and local
+  education agencies (LEAs).
+- **Use Case Documentation**:
+  [EQ 2 Educator Retention Use Case Documentation](https://docs.google.com/document/d/e/2PACX-1vSILA0Wx6zCQRgXUD4J_uRm4B9Zdwfp2RrX4qKxHP4hoRj3iPeB-wzhpXcEIdkF3A/pub)
+- **Technical Overview Documentation**:
+  - [Staff Data Overview Technical Documentation](https://docs.google.com/document/d/1rjTYxZjUpd2Gp08ymFoH07l5cLEr-RRlAh1r3rj4Nag/edit?tab=t.0)
+- **Power BI Dashboard Examples**:
+
+<ImageCarousel
+  images={[
+    {
+      src: 'https://edfidocs.blob.core.windows.net/$web/img/getting-started/use-cases/epp/PowerBI_County%20Education%20retention%20trends.png',
+      alt: 'Power BI County - Educator Retention Trends',
+      caption: 'County: Educator Retention Trends',
+    },
+    {
+      src: 'https://edfidocs.blob.core.windows.net/$web/img/getting-started/use-cases/epp/PowerBI_County%20Educator%20retention%20summary.png',
+      alt: 'Power BI County - Educator Retention Summary',
+      caption: 'County: Educator Retention Summary',
+    },
+    {
+      src: 'https://edfidocs.blob.core.windows.net/$web/img/getting-started/use-cases/epp/PowerBI_District%20Education%20Retention%20Trends.png',
+      alt: 'Power BI District - Educator Retention Trends',
+      caption: 'District: Educator Retention Trends',
+    },
+    {
+      src: 'https://edfidocs.blob.core.windows.net/$web/img/getting-started/use-cases/epp/PowerBI_District%20educator%20retention%20summary.png',
+      alt: 'Power BI District - Educator Retention Summary',
+      caption: 'District: Educator Retention Summary',
+    },
+  ]}
+/>
+
+- **Superset Dashboard Examples**:
+
+<ImageCarousel
+  images={[
+    {
+      src: 'https://edfidocs.blob.core.windows.net/$web/img/getting-started/use-cases/epp/Superset_District-StaffRetention.png',
+      alt: 'Superset District - Staff Retention',
+      caption: 'District: Staff Retention',
+    },
+    {
+      src: 'https://edfidocs.blob.core.windows.net/$web/img/getting-started/use-cases/epp/Superset_District-StaffRetentionThroughTime.png',
+      alt: 'Superset District - Staff Retention Through Time',
+      caption: 'District: Staff Retention Through Time',
+    },
+    {
+      src: 'https://edfidocs.blob.core.windows.net/$web/img/getting-started/use-cases/epp/Superset_County-StaffRetention.png',
+      alt: 'Superset County - Staff Retention',
+      caption: 'County: Staff Retention',
+    },
+    {
+      src: 'https://edfidocs.blob.core.windows.net/$web/img/getting-started/use-cases/epp/Superset_County-StaffRetentionThroughTime.png',
+      alt: 'Superset County - Staff Retention Through Time',
+      caption: 'County: Staff Retention Through Time',
+    },
+  ]}
+/>
+
+
+### EQ 3: Educator Staffing Snapshot
+
+- **Essential Question**: How do educator (including newly hired and
+  paraprofessionals) counts and characteristics vary across districts/campuses?
+- **Purpose**: Ensure equitable access to qualified, certified teachers who
+  reflect the demographic characteristics of their students, address staffing
+  equity, and guide strategic staffing decisions. Designed for education service
+  agencies (ESAs) and local education agencies (LEAs).
+- **Use Case Documentation**:
+  [EQ 3 Educator Staffing Use Case Documentation](https://docs.google.com/document/d/e/2PACX-1vTUQ5DP97pgWOBtXqRnIKmia2xjOhQe9UGR5Tzc4Wqp8aIofFGPfZPAaE2lG9oD-w/pub)
+- **Technical Overview Documentation**:
+  - [Staff Data Overview Technical Documentation](https://docs.google.com/document/d/1rjTYxZjUpd2Gp08ymFoH07l5cLEr-RRlAh1r3rj4Nag/edit?tab=t.0)
+  - [Student Data Overview Technical Documentation](https://docs.google.com/document/d/1rjTYxZjUpd2Gp08ymFoH07l5cLEr-RRlAh1r3rj4Nag/edit?tab=t.0)
+- **Power BI Dashboard Examples**:
+
+<ImageCarousel
+  images={[
+    {
+      src: 'https://edfidocs.blob.core.windows.net/$web/img/getting-started/use-cases/epp/PowerBI_District%20Educator%20Summary.png',
+      alt: 'Power BI District - Educator Summary',
+      caption: 'District: Educator Summary',
+    },
+    {
+      src: 'https://edfidocs.blob.core.windows.net/$web/img/getting-started/use-cases/epp/PowerBI_District%20Educator%20Summary%20w%20student.png',
+      alt: 'Power BI District - Educator Summary with Students',
+      caption: 'District: Educator Summary with Students',
+    },
+    {
+      src: 'https://edfidocs.blob.core.windows.net/$web/img/getting-started/use-cases/epp/PowerBI_County%20Educator%20Summary.png',
+      alt: 'Power BI County - Educator Summary',
+      caption: 'County: Educator Summary',
+    },
+    {
+      src: 'https://edfidocs.blob.core.windows.net/$web/img/getting-started/use-cases/epp/PowerBI_County%20Educator%20Summary%20w%20student.png',
+      alt: 'Power BI County - Educator Summary with Students',
+      caption: 'County: Educator Summary with Students',
+    },
+  ]}
+/>
+
+- **Superset Dashboard Examples**:
+
+<ImageCarousel
+  images={[
+    {
+      src: 'https://edfidocs.blob.core.windows.net/$web/img/getting-started/use-cases/epp/Superset_County-StaffSummary.png',
+      alt: 'Superset County - Staff Summary',
+      caption: 'County: Staff Summary',
+    },
+    {
+      src: 'https://edfidocs.blob.core.windows.net/$web/img/getting-started/use-cases/epp/Superset_County-StaffSummarywStudents.png',
+      alt: 'Superset County - Staff Summary with Students',
+      caption: 'County: Staff Summary with Students',
+    },
+    {
+      src: 'https://edfidocs.blob.core.windows.net/$web/img/getting-started/use-cases/epp/Superset_District-StaffSummary.png',
+      alt: 'Superset District - Staff Summary',
+      caption: 'District: Staff Summary',
+    },
+    {
+      src: 'https://edfidocs.blob.core.windows.net/$web/img/getting-started/use-cases/epp/Superset_District-StaffSummaryWStudents.png',
+      alt: 'Superset District - Staff Summary with Students',
+      caption: 'District: Staff Summary with Students',
+    },
+  ]}
+/>
+
+## Staff and Vacancy Details
+
+Provides a detailed, tabular view of staff data and associated attributes, along
+with a dedicated table providing insight into current staff vacancies.
+
+- **Technical Overview Documentation**:
+  - [Staff Data Overview Technical Documentation](https://docs.google.com/document/d/1rjTYxZjUpd2Gp08ymFoH07l5cLEr-RRlAh1r3rj4Nag/edit?tab=t.0)
+  - [Vacancy Data Overview Technical Documentation](https://docs.google.com/document/d/1JcrgwkUAoSlBU5kz6VE6KHwsLi_Zm8XhyJNXRyQ483E/edit?tab=t.0)
+
+- **Power BI Dashboard Examples**:
+
+<ImageCarousel
+  images={[
+    {
+      src: 'https://edfidocs.blob.core.windows.net/$web/img/getting-started/use-cases/epp/PowerBI_Staff%20Details.png',
+      alt: 'Power BI - Staff Details',
+      caption: 'Staff Details',
+    },
+    {
+      src: 'https://edfidocs.blob.core.windows.net/$web/img/getting-started/use-cases/epp/PowerBI_Vacancy%20Details.png',
+      alt: 'Power BI - Vacancy Details',
+      caption: 'Vacancy Details',
+    },
+  ]}
+/>
+
+## Related Resources for Reference
+
+- Technical Documentation and Resources:
+  - [Ed-Fi Alliance Exchange: Technical Specifications and Documentation](/getting-started/edfi-exchange/technology/educator-workforce-use-case-analytic-tool/)
+  - [Staff Data Overview Technical Documentation](https://docs.google.com/document/d/1rjTYxZjUpd2Gp08ymFoH07l5cLEr-RRlAh1r3rj4Nag/edit?tab=t.0)
+  - [Student Data Overview Technical Documentation](https://docs.google.com/document/d/1rjTYxZjUpd2Gp08ymFoH07l5cLEr-RRlAh1r3rj4Nag/edit?tab=t.0)
+  - [Vacancy Data Overview Technical Documentation](https://docs.google.com/document/d/1JcrgwkUAoSlBU5kz6VE6KHwsLi_Zm8XhyJNXRyQ483E/edit?tab=t.0)
