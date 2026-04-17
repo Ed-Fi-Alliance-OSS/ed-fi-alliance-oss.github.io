@@ -1,11 +1,55 @@
 ---
 sidebar_position: 2
+hide_table_of_contents: true
 ---
 
 # Student Attendance Domain - Model Diagrams
 
 ## Student Attendance Model UML Diagram
 
-![Student Attendance UML](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/StudentAttendance_v6.X.png)
-
-[_Student Attendance Domain (click to enlarge)_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/StudentAttendance_v6.X.png)
+```mermaid
+erDiagram
+    Student {
+    }
+    StudentSchoolAttendanceEvent {
+    }
+    StudentSectionAttendanceEvent {
+    }
+    StudentProgramAttendanceEvent {
+    }
+    StudentSectionAssociation {
+    }
+    GeneralStudentProgramAssociation {
+    }
+    SectionAttendanceTakenEvent {
+    }
+    Session {
+    }
+    Section {
+    }
+    Program {
+    }
+    School {
+    }
+    Staff {
+    }
+    StudentSchoolAttendanceEvent ||--o{ Student : "relates to"
+    StudentSchoolAttendanceEvent ||--o{ School : "relates to"
+    StudentSchoolAttendanceEvent ||--o{ Session : "relates to"
+    StudentSectionAttendanceEvent ||--o{ Student : "relates to"
+    StudentSectionAttendanceEvent ||--o{ Section : "relates to"
+    StudentSectionAttendanceEvent ||--o{ StudentSectionAssociation : "relates to"
+    StudentProgramAttendanceEvent ||--o{ Student : "relates to"
+    StudentProgramAttendanceEvent ||--o{ Program : "relates to"
+    SectionAttendanceTakenEvent ||--o{ Section : "relates to"
+    SectionAttendanceTakenEvent ||--o{ Staff : "relates to"
+    Student ||--o{ School : "relates to"
+    Student ||--o{ Section : "relates to"
+    Student ||--o{ Program : "relates to"
+    Session ||--o{ School : "relates to"
+    Section ||--o{ School : "relates to"
+    Section ||--o{ Program : "relates to"
+    Program ||--o{ Staff : "relates to"
+    Staff ||--o{ School : "relates to"
+    Staff ||--o{ Section : "relates to"
+```

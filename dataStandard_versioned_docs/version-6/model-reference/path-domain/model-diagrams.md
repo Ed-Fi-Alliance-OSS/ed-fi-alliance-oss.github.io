@@ -1,11 +1,41 @@
 ---
 sidebar_position: 2
+hide_table_of_contents: true
 ---
 
 # Path Data Model Domain - Model Diagrams
 
 ## Path UML Diagram
 
-![Path Model Diagram](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Path_v6.X.png)
-
-[_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Path_v6.X.png)
+```mermaid
+erDiagram
+    Student {
+    }
+    EducationOrganization {
+    }
+    GraduationPlan {
+    }
+    Path {
+    }
+    PathPhase {
+    }
+    PathMilestone {
+    }
+    StudentPath {
+    }
+    StudentPathPhaseStatus {
+    }
+    StudentPathMilestoneStatus {
+    }
+    Path ||--o{ EducationOrganization : "relates to"
+    Path ||--o{ GraduationPlan : "relates to"
+    PathPhase ||--o{ Path : "relates to"
+    PathPhase ||--o{ PathMilestone : "relates to"
+    StudentPath ||--o{ Student : "relates to"
+    StudentPath ||--o{ Path : "relates to"
+    StudentPathPhaseStatus ||--o{ StudentPath : "relates to"
+    StudentPathPhaseStatus ||--o{ PathPhase : "relates to"
+    StudentPathMilestoneStatus ||--o{ StudentPath : "relates to"
+    StudentPathMilestoneStatus ||--o{ PathPhase : "relates to"
+    StudentPathMilestoneStatus ||--o{ PathMilestone : "relates to"
+```
