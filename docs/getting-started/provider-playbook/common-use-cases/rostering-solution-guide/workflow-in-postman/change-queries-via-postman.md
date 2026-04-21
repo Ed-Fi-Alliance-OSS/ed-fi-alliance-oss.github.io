@@ -1,3 +1,7 @@
+---
+draft: true
+---
+
 # Change Queries via Postman
 
 ## Prerequisites
