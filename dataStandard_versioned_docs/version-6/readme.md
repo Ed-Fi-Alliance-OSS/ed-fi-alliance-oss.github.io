@@ -19,8 +19,8 @@ data systems.
 
 :::warning
 
-Please note that the current version of Data Standard v6 is v6.0 (full version
-number v6.0.0). See the [Ed-Fi Technology Suite Roadmap](/reference/roadmap)
+Please note that the current version of Data Standard v6 is v6.1 (full version
+number v6.1.0). See the [Ed-Fi Technology Suite Roadmap](/reference/roadmap)
 for previous and future Data Standard release versions. Also see the [What's New](./whats-new/readme.md)
 page for information on the changes in this release.
 
@@ -34,7 +34,7 @@ is documented via 2 primary artifacts: the **Ed-Fi Data Handbook** and a set of
 
 * <a href="https://edfidocs.blob.core.windows.net/$web/handbook/v6.1/index.html" target=" blank">Ed-Fi Data Handbook for DS v6.1</a>
 * <a href="https://edfidocs.blob.core.windows.net/$web/handbook/v6.0/index.html" target="_blank">Ed-Fi Data Handbook for DS v6.0</a>
-* [Ed-Fi UDM UML Diagrams](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Standard/tree/main/Models) (Visio format, on GitHub) <!--TODO ADD MERMAID/UML LINK-->
+* [Ed-Fi UDM UML Diagrams](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Standard/tree/main/Models) (Visio format, on GitHub)
 
 Additional documentation is provided in the [Ed-Fi Unifying Data
 Model](/reference/data-exchange/udm) documentation. This additional documentation provides narrative overviews of domains and
