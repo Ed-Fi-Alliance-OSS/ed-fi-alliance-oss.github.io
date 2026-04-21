@@ -1,13 +1,13 @@
 # Descriptor Mappings
 
-Several OneRoster fields are produced by translating Ed-Fi descriptor values
-(for example, `SexDescriptor.Female`) into OneRoster enumeration values
+Several OneRoster© fields are produced by translating Ed-Fi descriptor values
+(for example, `SexDescriptor.Female`) into OneRoster© enumeration values
 (`sex = 'female'`). The translation is done entirely through rows in
-`edfi.descriptormapping`, which are seeded when OneRoster SQL artifacts are
+`edfi.descriptormapping`, which are seeded when OneRoster© SQL artifacts are
 deployed and can be extended per implementation.
 
 This page lists the six shipped descriptor mappings, documents the behavior
-each mapping produces in the OneRoster output, describes what happens to
+each mapping produces in the OneRoster© output, describes what happens to
 Ed-Fi descriptor values that are _not_ in the mapping, and provides an
 INSERT template for adding custom entries.
 
@@ -15,11 +15,11 @@ INSERT template for adding custom entries.
 
 Two SQL files define the shipped mappings:
 
-- `01_descriptors.sql` — inserts the OneRoster-namespaced descriptor rows
+- `01_descriptors.sql` — inserts the OneRoster©-namespaced descriptor rows
   (for example, `uri://1edtech.org/oneroster12/SexDescriptor / female`) into
   `edfi.descriptor` so that `edfi.descriptormapping` can reference them as
   the _mapped_ side.
-- `02_descriptorMappings.sql` — inserts the Ed-Fi-namespaced-to-OneRoster
+- `02_descriptorMappings.sql` — inserts the Ed-Fi-namespaced-to-OneRoster©
   mapping rows into `edfi.descriptormapping`.
 
 Both files live under
@@ -30,7 +30,7 @@ deployment script (`deploy-postgres.sh` / `deploy-mssql.js`) executes both.
 
 Each shipped mapping has a `mappedNamespace` of
 `uri://1edtech.org/oneroster12/{Descriptor}`. The tables below list the
-exact Ed-Fi value → OneRoster value pairs and the OneRoster field each
+exact Ed-Fi value → OneRoster© value pairs and the OneRoster© field each
 mapping populates.
 
 ### `CalendarEventDescriptor` → instructional-day flag
@@ -51,12 +51,12 @@ school days when computing the school-year start and end dates.
 | `Teacher only day` | `FALSE` | No |
 | `Weather day` | `FALSE` | No |
 
-### `TermDescriptor` → OneRoster `academicSession.type`
+### `TermDescriptor` → OneRoster© `academicSession.type`
 
 Populates the `type` field on academic session records derived from
 `edfi.session`.
 
-| Ed-Fi value | OneRoster `type` |
+| Ed-Fi value | OneRoster© `type` |
 | --- | --- |
 | `Semester`, `Fall Semester`, `Spring Semester`, `Summer Semester` | `semester` |
 | `Quarter`, `First Quarter`, `Second Quarter`, `Third Quarter`, `Fourth Quarter` | `term` |
@@ -65,25 +65,25 @@ Populates the `type` field on academic session records derived from
 | `Trimester`, `First Trimester`, `Second Trimester`, `Third Trimester` | `gradingPeriod` |
 | `Year Round` | `schoolYear` |
 
-### `SexDescriptor` → OneRoster `demographics.sex`
+### `SexDescriptor` → OneRoster© `demographics.sex`
 
 Populates the `sex` field on `/demographics` records.
 
-| Ed-Fi value | OneRoster `sex` |
+| Ed-Fi value | OneRoster© `sex` |
 | --- | --- |
 | `Female` | `female` |
 | `Male` | `male` |
 | `Non-binary` | `other` |
 | `Not Selected` | `unspecified` |
 
-### `RaceDescriptor` → OneRoster race booleans
+### `RaceDescriptor` → OneRoster© race booleans
 
 Populates the five race-flag fields
 (`americanIndianOrAlaskaNative`, `asian`, `blackOrAfricanAmerican`,
 `nativeHawaiianOrOtherPacificIslander`, `white`) and
 `demographicRaceTwoOrMoreRaces` on `/demographics` records.
 
-| Ed-Fi value | OneRoster value |
+| Ed-Fi value | OneRoster© value |
 | --- | --- |
 | `American Indian or Alaska Native` | `americanIndianOrAlaskaNative` |
 | `Asian` | `asian` |
@@ -94,12 +94,12 @@ Populates the five race-flag fields
 A student associated with two or more _mapped_ race values gets
 `demographicRaceTwoOrMoreRaces = 'true'`.
 
-### `StaffClassificationDescriptor` → OneRoster `user.role`
+### `StaffClassificationDescriptor` → OneRoster© `user.role`
 
 Populates the `role` field on staff `/users` records. Twenty-five Ed-Fi
 values ship mapped; the most commonly used are:
 
-| Ed-Fi value (selection) | OneRoster `role` |
+| Ed-Fi value (selection) | OneRoster© `role` |
 | --- | --- |
 | `Teacher`, `Elementary Teacher`, `Secondary Teacher`, `Substitute Teacher`, `Instructional Coordinator`, `Ungraded Teacher`, `Pre-Kindergarten Teacher`, `Kindergarten Teacher` | `teacher` |
 | `Paraprofessional/Instructional Aide`, `Instructional Aide` | `aide` |
@@ -110,9 +110,9 @@ values ship mapped; the most commonly used are:
 
 The full list is in `02_descriptorMappings.sql`. Several Ed-Fi staff
 classifications are _deliberately unmapped_ because 1EdTech does not define
-a corresponding OneRoster role — see _Unmapped values_ below.
+a corresponding OneRoster© role — see _Unmapped values_ below.
 
-### `ClassroomPositionDescriptor` → OneRoster `enrollment.primary`
+### `ClassroomPositionDescriptor` → OneRoster© `enrollment.primary`
 
 :::warning
 
@@ -125,7 +125,7 @@ for all staff-section associations and does not read this mapping.
 
 Until the enrollments view is updated to consume the mapping, extending or
 customizing `ClassroomPositionDescriptor` entries has no effect on
-OneRoster output.
+OneRoster© output.
 
 :::
 
@@ -134,7 +134,7 @@ OneRoster output.
 An _unmapped_ descriptor is an Ed-Fi descriptor value that either:
 
 - Has no row in `edfi.descriptormapping` whose `mappednamespace` is the
-  OneRoster 1.2 namespace for that descriptor, or
+  OneRoster© 1.2 namespace for that descriptor, or
 - Is a locally-added Ed-Fi descriptor value that a deployment has not
   explicitly mapped.
 
@@ -145,7 +145,7 @@ differences:
 | Descriptor | Join style | Unmapped behavior |
 | --- | --- | --- |
 | `CalendarEventDescriptor` | Inner join + `WHERE mappedvalue = 'TRUE'` | Unmapped calendar-event values are not counted as school days. School-year start/end dates are computed from only mapped-TRUE events. |
-| `TermDescriptor` | Inner join | **The entire session is dropped from `/academicSessions`.** Any `edfi.session` whose `TermDescriptor` is unmapped will not appear in OneRoster output. |
+| `TermDescriptor` | Inner join | **The entire session is dropped from `/academicSessions`.** Any `edfi.session` whose `TermDescriptor` is unmapped will not appear in OneRoster© output. |
 | `SexDescriptor` | Left join | `sex` is emitted as `null` on `/demographics`. The student is still returned. |
 | `RaceDescriptor` | Left join + `array_remove(..., null)` | Unmapped race values are silently dropped from the student's race array. If _all_ of a student's race values are unmapped, every race boolean is `'false'` and `demographicRaceTwoOrMoreRaces = 'false'`. The student is still returned. |
 | `StaffClassificationDescriptor` | Left join + `coalesce(..., 'teacher')` when staff has any section assignment | If the staff member has _any_ `edfi.staffSectionAssociation`, their role defaults to `'teacher'` when unmapped. If they have no section assignment _and_ no mapped classification, **they are filtered out of `/users`** entirely. |
@@ -157,7 +157,7 @@ The two high-impact cases are `TermDescriptor` and `StaffClassificationDescripto
 
 - Custom `TermDescriptor` values (for example, district-specific term names)
   require a descriptor mapping or the corresponding sessions will be invisible
-  to OneRoster clients.
+  to OneRoster© clients.
 - Staff with an unmapped `StaffClassificationDescriptor` who do not teach
   sections are filtered out. A principal or counselor with a non-shipped
   local classification and no section assignments will not appear in
@@ -168,7 +168,7 @@ The two high-impact cases are `TermDescriptor` and `StaffClassificationDescripto
 ## Extending a mapping
 
 Additional mappings are added by inserting rows into `edfi.descriptormapping`.
-Use the OneRoster 1.2 namespace for the `mappednamespace` and the same
+Use the OneRoster© 1.2 namespace for the `mappednamespace` and the same
 `mappedvalue` as one of the shipped rows for that descriptor so the view's
 downstream logic keeps working.
 
@@ -233,7 +233,7 @@ ON CONFLICT DO NOTHING;
 
 ### Applying changes
 
-After inserting new `descriptormapping` rows, refresh the OneRoster views so
+After inserting new `descriptormapping` rows, refresh the OneRoster© views so
 the new mapping takes effect:
 
 - PostgreSQL: run the refresh via pg-boss or manually:
@@ -247,7 +247,7 @@ cadence.
 
 ## Known unmapped Ed-Fi `StaffClassificationDescriptor` values
 
-Several Ed-Fi-shipped values have no corresponding OneRoster `RoleEnum`
+Several Ed-Fi-shipped values have no corresponding OneRoster© `RoleEnum`
 entry and are intentionally left unmapped by the service. They are listed
 (as comments) at the bottom of `02_descriptorMappings.sql`:
 
@@ -265,5 +265,5 @@ entry and are intentionally left unmapped by the service. They are listed
 - `Support Services Staff`
 
 Teams using these values should add their own mapping rows pointing at the
-OneRoster role that best fits their deployment's conventions (commonly
+OneRoster© role that best fits their deployment's conventions (commonly
 `teacher`, `aide`, or `siteAdministrator`).

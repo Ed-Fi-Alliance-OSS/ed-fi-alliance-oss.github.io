@@ -1,6 +1,6 @@
 # CORS, Rate Limiting, and Proxy
 
-The OneRoster service exposes three cross-cutting runtime controls that
+The OneRoster© service exposes three cross-cutting runtime controls that
 govern how requests are admitted into the application:
 
 - CORS origin allowlisting (`CORS_ORIGINS`)
@@ -79,7 +79,7 @@ to the integrators consuming the API.
 
 ## Trust proxy
 
-The OneRoster service reads `X-Forwarded-Proto`, `X-Forwarded-Host`, and
+The OneRoster© service reads `X-Forwarded-Proto`, `X-Forwarded-Host`, and
 `X-Forwarded-Prefix` to generate self-referencing discovery URLs (the
 Swagger UI `servers` entry and the JSON returned by `GET /`). Express
 only honors these headers when the application has `trust proxy` enabled.

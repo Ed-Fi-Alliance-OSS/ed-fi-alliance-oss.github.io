@@ -1,6 +1,6 @@
 # Deploy on PostgreSQL
 
-This page walks through installing the Ed-Fi OneRoster service against an
+This page walks through installing the Ed-Fi OneRoster© service against an
 Ed-Fi ODS that runs on PostgreSQL. The service ships SQL artifacts for Ed-Fi
 Data Standard 4.0 and 5.0–5.2; the deployment script picks the right set
 based on the argument you pass.
@@ -8,7 +8,7 @@ based on the argument you pass.
 ## Prerequisites
 
 - An Ed-Fi ODS PostgreSQL database (PostgreSQL 13 or later) reachable from
-  where the OneRoster Node service will run
+  where the OneRoster© Node service will run
 - A database user that can create schemas, tables, indexes, and materialized
   views in the ODS database
 - Node.js 18 LTS or later (for running the service)
@@ -17,10 +17,10 @@ based on the argument you pass.
 ## Step 1 — Deploy the SQL artifacts
 
 The SQL artifacts create a separate `oneroster12` schema in the ODS
-database, seed the OneRoster-namespaced descriptors and mappings, and
+database, seed the OneRoster©-namespaced descriptors and mappings, and
 create the materialized views that back each endpoint.
 
-Clone the OneRoster service repository, then run the PostgreSQL deployment
+Clone the OneRoster© service repository, then run the PostgreSQL deployment
 script from the repo root:
 
 ```bash
@@ -94,7 +94,7 @@ curl -i http://localhost:3000/ims/oneroster/rostering/v1p2/orgs \
 ```
 
 The bearer token must be issued by `OAUTH2_ISSUERBASEURL`, have audience
-`OAUTH2_AUDIENCE`, and contain at least one OneRoster 1.2 scope
+`OAUTH2_AUDIENCE`, and contain at least one OneRoster© 1.2 scope
 (`roster.readonly`, `roster-core.readonly`, or `roster-demographics.readonly`).
 
 ## Refresh behavior
@@ -112,7 +112,7 @@ REFRESH MATERIALIZED VIEW CONCURRENTLY oneroster12.orgs;
 ## Standing up a local Ed-Fi ODS for testing
 
 The Ed-Fi Alliance publishes sandbox container images with a pre-populated
-template database. They are useful for local testing of OneRoster queries:
+template database. They are useful for local testing of OneRoster© queries:
 
 ```bash
 # Data Standard 5.0

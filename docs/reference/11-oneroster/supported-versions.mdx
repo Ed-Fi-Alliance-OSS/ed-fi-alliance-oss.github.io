@@ -3,14 +3,14 @@ import TabItem from '@theme/TabItem';
 
 # Supported Versions
 
-The Ed-Fi OneRoster service supports two Ed-Fi Data Standard lines and two
+The Ed-Fi OneRoster© service supports two Ed-Fi Data Standard lines and two
 database engines from a single code base. The SQL artifacts for each Data
 Standard version live in the service repository under
 `standard/{dataStandardVersion}/artifacts/{pgsql|mssql}/core/`.
 
-## OneRoster specification
+## OneRoster© specification
 
-All releases implement the 1EdTech [OneRoster 1.2
+All releases implement the 1EdTech [OneRoster© 1.2
 Rostering](https://www.imsglobal.org/spec/oneroster/v1p2) REST binding.
 
 ## Ed-Fi Data Standard support
@@ -18,7 +18,7 @@ Rostering](https://www.imsglobal.org/spec/oneroster/v1p2) REST binding.
 | Data Standard | Supported | Notes |
 | --- | --- | --- |
 | 5.2 | Yes | Default artifact set; used with ODS/API 7.3 |
-| 5.1 | Yes | Same SQL artifacts as 5.2 (no breaking changes consumed by OneRoster) |
+| 5.1 | Yes | Same SQL artifacts as 5.2 (no breaking changes consumed by OneRoster©) |
 | 5.0 | Yes | Same SQL artifacts as 5.2 |
 | 4.0 | Yes | Separate artifact set under `standard/4.0.0/` |
 
@@ -37,7 +37,7 @@ schema, refreshed on a schedule by [pg-boss](https://timgit.github.io/pg-boss/).
 </TabItem>
 <TabItem value="mssql" label="SQL Server">
 
-The Microsoft SQL Server implementation stores OneRoster output in tables that
+The Microsoft SQL Server implementation stores OneRoster© output in tables that
 are repopulated by stored procedures on a schedule driven by SQL Server Agent.
 
 - SQL Server 2016 or later (required for JSON support)
@@ -50,7 +50,7 @@ are repopulated by stored procedures on a schedule driven by SQL Server Agent.
 
 ## Ed-Fi ODS/API image tags
 
-The OneRoster service reads directly from an Ed-Fi ODS database, so it works
+The OneRoster© service reads directly from an Ed-Fi ODS database, so it works
 with any ODS/API deployment on a supported Data Standard. The ODS/API image
 tags below can be used to stand up a compatible ODS for local testing:
 
@@ -62,9 +62,9 @@ tags below can be used to stand up a compatible ODS for local testing:
 
 For Data Standard 4.0, use the matching 6.x ODS/API image line.
 
-## OneRoster service versioning
+## OneRoster© service versioning
 
-The OneRoster service follows an independent release cadence from the Ed-Fi
+The OneRoster© service follows an independent release cadence from the Ed-Fi
 ODS/API. This documentation is not versioned at launch; if the service
 accumulates breaking changes in the future, per-version documentation will be
 introduced at that time.

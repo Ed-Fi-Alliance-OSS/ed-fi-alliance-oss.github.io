@@ -1,6 +1,6 @@
 # Deploy on IIS (Windows)
 
-This page walks through hosting the Ed-Fi OneRoster Node service on
+This page walks through hosting the Ed-Fi OneRoster© Node service on
 Internet Information Services (IIS). Two architectures are supported:
 
 - **`iisnode`** — IIS owns the Node worker process lifecycle. Simplest to
@@ -21,7 +21,7 @@ Microsoft SQL Server](./deploy-mssql.md).
 - **Node.js** 18 LTS or later, with `npm` on the system `PATH`
 - Administrator access to the server
 - Connectivity from the server to the Ed-Fi ODS (PostgreSQL or SQL Server)
-- A free TCP port for the OneRoster API (default 3000)
+- A free TCP port for the OneRoster© API (default 3000)
 
 ### Required IIS components
 
@@ -76,7 +76,7 @@ OAUTH2_PUBLIC_KEY_PEM=
 
 :::note
 
-If IIS serves OneRoster under a virtual directory such as `/oneroster`,
+If IIS serves OneRoster© under a virtual directory such as `/oneroster`,
 set `API_BASE_PATH=/oneroster` in `.env` so self-referencing URLs
 (Swagger discovery, etc.) are generated correctly.
 
@@ -384,7 +384,7 @@ Useful WinSW commands:
 
 ## TLS / HTTPS
 
-To serve OneRoster over HTTPS, install or import a certificate into the
+To serve OneRoster© over HTTPS, install or import a certificate into the
 Windows certificate store and add an HTTPS binding (port 443) to the IIS
 site through **Bindings…** in IIS Manager. Both architectures benefit;
 with the reverse-proxy architecture, HTTPS is terminated at IIS and the

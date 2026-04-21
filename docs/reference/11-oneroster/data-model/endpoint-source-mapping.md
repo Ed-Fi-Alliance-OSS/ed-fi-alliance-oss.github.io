@@ -1,17 +1,17 @@
 # Endpoint to Ed-Fi Source Mapping
 
-Each OneRoster endpoint is served from a derived `oneroster12` object that is
+Each OneRoster© endpoint is served from a derived `oneroster12` object that is
 built from one or more Ed-Fi ODS tables. On PostgreSQL the objects are
 materialized views; on Microsoft SQL Server they are tables populated by
 refresh stored procedures. Both variants follow the same logical mapping.
 
-The table below lists every OneRoster 1.2 rostering endpoint implemented by
+The table below lists every OneRoster© 1.2 rostering endpoint implemented by
 the service, the primary Ed-Fi entities it reads from, and the SQL artifact
 that defines the derivation. See [Descriptor
 mappings](./descriptor-mappings.md) for how individual descriptor-backed
 fields (sex, race, term type, staff role) are resolved.
 
-| OneRoster endpoint | `oneroster12` object | Primary Ed-Fi sources | Defined in |
+| OneRoster© endpoint | `oneroster12` object | Primary Ed-Fi sources | Defined in |
 | --- | --- | --- | --- |
 | `/academicSessions`, `/academicSessions/{id}` | `academicsessions` | `edfi.session`, `edfi.school`, `edfi.calendardate`, `edfi.calendardatecalendarevent` | `academic_sessions.sql` |
 | `/classes`, `/classes/{id}` | `classes` | `edfi.section`, `edfi.courseoffering`, `edfi.school`, `edfi.sectionclassperiod` | `classes.sql` |
@@ -26,12 +26,12 @@ fields (sex, race, term type, staff role) are resolved.
 | `/terms`, `/terms/{id}` | `academicsessions` (filtered) | see `/academicSessions` | `academic_sessions.sql` |
 | `/users`, `/users/{id}` | `users` | `edfi.student`, `edfi.staff`, `edfi.contact` plus their school / EdOrg associations; `edfi.studentSchoolAssociation`, `edfi.staffSchoolAssociation`, `edfi.staffEducationOrganizationAssignmentAssociation`, `edfi.studentContactAssociation` | `users.sql` |
 
-The SQL artifacts live in the OneRoster service repository under
+The SQL artifacts live in the OneRoster© service repository under
 `standard/{dataStandardVersion}/artifacts/{pgsql,mssql}/core/`.
 
 ## `sourcedId` construction
 
-OneRoster requires a globally unique `sourcedId` on every record. The service
+OneRoster© requires a globally unique `sourcedId` on every record. The service
 builds these deterministically from Ed-Fi natural keys using MD5 (PostgreSQL
 `md5()`, Microsoft SQL Server `HASHBYTES('MD5', ...)`):
 
@@ -55,7 +55,7 @@ across refreshes so long as the source Ed-Fi identifiers do not change.
 
 ## Ed-Fi natural key metadata
 
-Every OneRoster record includes a `metadata.edfi` object that echoes the
+Every OneRoster© record includes a `metadata.edfi` object that echoes the
 source resource name and its natural key values, for example:
 
 ```json
@@ -74,12 +74,12 @@ source resource name and its natural key values, for example:
 }
 ```
 
-This lets integrators trace a OneRoster record back to the underlying Ed-Fi
+This lets integrators trace a OneRoster© record back to the underlying Ed-Fi
 resource without joining on the hashed `sourcedId`.
 
 ## What is not mapped
 
-The following OneRoster fields are intentionally `null` in the current
+The following OneRoster© fields are intentionally `null` in the current
 release. They require Ed-Fi extensions or configuration that are not
 uniformly available across deployments:
 
