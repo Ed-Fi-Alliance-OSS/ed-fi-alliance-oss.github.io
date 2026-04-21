@@ -197,7 +197,7 @@ EXEC msdb.dbo.sp_update_schedule
 ## Troubleshooting
 
 | Symptom | First thing to check |
-|---|---|
+| --- | --- |
 | Data not refreshing on schedule | SQL Server Agent is running; `enabled = 1` on the `OneRoster Data Refresh` job |
 | `CREATE SCHEMA` or `CREATE PROCEDURE` fails during deployment | The deployment user has `db_owner` (or equivalent) on the target database |
 | JSON-related errors during refresh | SQL Server is 2016 or later; run `SELECT @@VERSION` |

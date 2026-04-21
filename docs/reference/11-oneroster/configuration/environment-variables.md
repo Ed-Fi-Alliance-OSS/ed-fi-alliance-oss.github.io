@@ -29,7 +29,7 @@ is missing.
 ## Application
 
 | Variable | Default | Notes |
-|---|---|---|
+| --- | --- | --- |
 | `PORT` | `3000` | TCP port the Node service listens on |
 | `API_BASE_PATH` | _(empty)_ | Set when the service is hosted under a virtual directory (e.g., `/oneroster` behind IIS). Used to generate deterministic discovery URLs. |
 | `NODE_ENV` | `dev` | Set to `prod` (or empty) for production. Currently influences logging verbosity. |
@@ -43,13 +43,13 @@ ignored.
 ### Common
 
 | Variable | Default | Notes |
-|---|---|---|
+| --- | --- | --- |
 | `DB_TYPE` | `postgres` | `postgres` or `mssql` |
 
 ### PostgreSQL (`DB_TYPE=postgres`)
 
 | Variable | Default | Notes |
-|---|---|---|
+| --- | --- | --- |
 | `DB_HOST` | `localhost` | PostgreSQL server hostname |
 | `DB_PORT` | `5432` | |
 | `DB_USER` | `postgres` | |
@@ -61,7 +61,7 @@ ignored.
 ### Microsoft SQL Server (`DB_TYPE=mssql`)
 
 | Variable | Default | Notes |
-|---|---|---|
+| --- | --- | --- |
 | `MSSQL_SERVER` | `localhost` | |
 | `MSSQL_DATABASE` | `EdFi_Ods` | ODS database name |
 | `MSSQL_USER` | `sa` | |
@@ -76,7 +76,7 @@ See [OAuth and JWT](./oauth-and-jwt.md) for the detailed behavior and
 trade-offs between JWKS and PEM-based verification.
 
 | Variable | Default | Notes |
-|---|---|---|
+| --- | --- | --- |
 | `OAUTH2_ISSUERBASEURL` | — | **Required.** Base URL of the OAuth 2.0 issuer (typically your Ed-Fi ODS/API's `/oauth/` endpoint). The `/.well-known/jwks.json` path is resolved against this when PEM verification is not configured. |
 | `OAUTH2_AUDIENCE` | — | **Required.** Expected `aud` claim on inbound JWTs |
 | `OAUTH2_TOKENSIGNINGALG` | `RS256` | JWT signing algorithm |
@@ -87,7 +87,7 @@ trade-offs between JWKS and PEM-based verification.
 ### PostgreSQL
 
 | Variable | Default | Notes |
-|---|---|---|
+| --- | --- | --- |
 | `PGBOSS_CRON` | `*/15 * * * *` | Cron expression for the pg-boss job that refreshes materialized views. Accepts standard 5-field cron syntax. |
 
 ### Microsoft SQL Server
@@ -103,7 +103,7 @@ See [CORS, rate limiting, and proxy](./cors-rate-limit-proxy.md) for the
 behavior details.
 
 | Variable | Default | Notes |
-|---|---|---|
+| --- | --- | --- |
 | `CORS_ORIGINS` | `http://localhost:3000` | Comma-separated allowed origins. Leave empty to allow all (not recommended in production). |
 | `RATE_LIMIT_WINDOW_MS` | `60000` | Rate-limit window in milliseconds (`express-rate-limit`) |
 | `RATE_LIMIT_MAX_REQUESTS` | `60` | Max requests per window per IP. (The bundled `.env.example` shows `100`; in the service code the default when unset is `60`.) |
@@ -117,7 +117,7 @@ that are not used by the standalone Node service. These are present in the
 ones include:
 
 | Variable | Purpose |
-|---|---|
+| --- | --- |
 | `POSTGRES_USER`, `POSTGRES_PASSWORD`, `POSTGRES_PORT` | Credentials shared between the ODS, admin, and OneRoster containers |
 | `ODS_DB_IMAGE_7X`, `ODS_DB_TAG_7X`, `ODS_API_TAG_7X`, `SWAGGER_TAG_7X`, `ADMIN_DB_TAG_7X` | Pin Ed-Fi image versions |
 | `BASE_URL`, `V7_SINGLE_API_VIRTUAL_NAME`, `ONEROSTER_API_VIRTUAL_NAME`, `DOCS_VIRTUAL_NAME` | Hostnames used by NGINX routing and TLS |

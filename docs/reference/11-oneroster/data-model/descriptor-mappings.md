@@ -39,7 +39,7 @@ Used by `academic_sessions.sql` to decide which Ed-Fi calendar dates count as
 school days when computing the school-year start and end dates.
 
 | Ed-Fi value | Mapped value | Contributes to school year? |
-|---|---|---|
+| --- | --- | --- |
 | `Emergency day` | `FALSE` | No |
 | `Holiday` | `FALSE` | No |
 | `Instructional day` | `TRUE` | Yes |
@@ -57,7 +57,7 @@ Populates the `type` field on academic session records derived from
 `edfi.session`.
 
 | Ed-Fi value | OneRoster `type` |
-|---|---|
+| --- | --- |
 | `Semester`, `Fall Semester`, `Spring Semester`, `Summer Semester` | `semester` |
 | `Quarter`, `First Quarter`, `Second Quarter`, `Third Quarter`, `Fourth Quarter` | `term` |
 | `MiniTerm` | `term` |
@@ -70,7 +70,7 @@ Populates the `type` field on academic session records derived from
 Populates the `sex` field on `/demographics` records.
 
 | Ed-Fi value | OneRoster `sex` |
-|---|---|
+| --- | --- |
 | `Female` | `female` |
 | `Male` | `male` |
 | `Non-binary` | `other` |
@@ -84,7 +84,7 @@ Populates the five race-flag fields
 `demographicRaceTwoOrMoreRaces` on `/demographics` records.
 
 | Ed-Fi value | OneRoster value |
-|---|---|
+| --- | --- |
 | `American Indian or Alaska Native` | `americanIndianOrAlaskaNative` |
 | `Asian` | `asian` |
 | `Black or African American` | `blackOrAfricanAmerican` |
@@ -100,7 +100,7 @@ Populates the `role` field on staff `/users` records. Twenty-five Ed-Fi
 values ship mapped; the most commonly used are:
 
 | Ed-Fi value (selection) | OneRoster `role` |
-|---|---|
+| --- | --- |
 | `Teacher`, `Elementary Teacher`, `Secondary Teacher`, `Substitute Teacher`, `Instructional Coordinator`, `Ungraded Teacher`, `Pre-Kindergarten Teacher`, `Kindergarten Teacher` | `teacher` |
 | `Paraprofessional/Instructional Aide`, `Instructional Aide` | `aide` |
 | `Counselor`, `School Counselor`, `Elementary School Counselor`, `Secondary School Counselor` | `counselor` |
@@ -143,7 +143,7 @@ unmapped values differently, and implementers should be aware of the
 differences:
 
 | Descriptor | Join style | Unmapped behavior |
-|---|---|---|
+| --- | --- | --- |
 | `CalendarEventDescriptor` | Inner join + `WHERE mappedvalue = 'TRUE'` | Unmapped calendar-event values are not counted as school days. School-year start/end dates are computed from only mapped-TRUE events. |
 | `TermDescriptor` | Inner join | **The entire session is dropped from `/academicSessions`.** Any `edfi.session` whose `TermDescriptor` is unmapped will not appear in OneRoster output. |
 | `SexDescriptor` | Left join | `sex` is emitted as `null` on `/demographics`. The student is still returned. |
@@ -242,7 +242,7 @@ the new mapping takes effect:
   `EXEC oneroster12.sp_refresh_<table_name>;`
   (or `EXEC oneroster12.sp_refresh_all;` to refresh everything)
 
-See [Configuration](../configuration/readme.md) for the scheduled refresh
+See [Configuration](../configuration/readme.mdx) for the scheduled refresh
 cadence.
 
 ## Known unmapped Ed-Fi `StaffClassificationDescriptor` values

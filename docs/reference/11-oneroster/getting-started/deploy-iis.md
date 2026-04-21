@@ -393,7 +393,7 @@ back-end Node service continues to listen on plain HTTP loopback.
 ## Troubleshooting
 
 | Symptom | First thing to check |
-|---|---|
+| --- | --- |
 | HTTP 500 on any request | `C:\inetpub\oneroster\logs\*.log` (iisnode stdout) |
 | HTTP 404 on all routes | URL Rewrite module installed; `web.config` rewrite rules present; application pool's .NET CLR version is **No Managed Code** |
 | Self-referencing URLs (Swagger discovery) use `http` instead of `https` | `HTTP_X_FORWARDED_PROTO` is registered under **View Server Variables**; `TRUST_PROXY=true` in `.env` |

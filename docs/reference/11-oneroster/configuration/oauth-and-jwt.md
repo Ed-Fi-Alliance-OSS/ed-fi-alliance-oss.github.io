@@ -81,7 +81,7 @@ For every request to `/ims/oneroster/rostering/v1p2/*` the service
 validates:
 
 | Claim | Source |
-|---|---|
+| --- | --- |
 | Signature | JWKS key or `OAUTH2_PUBLIC_KEY_PEM` |
 | `iss` | Must match `OAUTH2_ISSUERBASEURL` |
 | `aud` | Must match `OAUTH2_AUDIENCE` |
@@ -103,7 +103,7 @@ Tokens must present at least one of the following scopes (space- or
 comma-separated in the `scope` claim, per OAuth 2.0 conventions):
 
 | Scope | Grants read access to |
-|---|---|
+| --- | --- |
 | `roster-core.readonly` | `academicSessions`, `classes`, `courses`, `enrollments`, `orgs`, `schools`, `terms`, `gradingPeriods`, and the non-demographic fields of `users`, `students`, and `teachers` |
 | `roster-demographics.readonly` | The `/demographics` endpoint |
 | `roster.readonly` | All of the above — equivalent to both `roster-core.readonly` and `roster-demographics.readonly` |

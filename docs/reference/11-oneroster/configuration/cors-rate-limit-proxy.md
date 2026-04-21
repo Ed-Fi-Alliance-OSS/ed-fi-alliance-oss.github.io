@@ -53,7 +53,7 @@ using the IP address of the client. Other routes (`/health-check`,
 `/docs`, `/swagger.json`, `/`) are not rate-limited.
 
 | Variable | Default | Behavior |
-|---|---|---|
+| --- | --- | --- |
 | `RATE_LIMIT_WINDOW_MS` | `60000` (1 minute) | Sliding window length |
 | `RATE_LIMIT_MAX_REQUESTS` | `60` | Max requests per IP per window |
 
@@ -85,7 +85,7 @@ Swagger UI `servers` entry and the JSON returned by `GET /`). Express
 only honors these headers when the application has `trust proxy` enabled.
 
 | `TRUST_PROXY` | Behavior |
-|---|---|
+| --- | --- |
 | `false` (default) | `X-Forwarded-*` headers are ignored. Discovery URLs use the protocol and host the Node process observes directly. |
 | `true` | `X-Forwarded-*` headers are trusted. Discovery URLs reflect the public-facing protocol and host from the proxy. |
 

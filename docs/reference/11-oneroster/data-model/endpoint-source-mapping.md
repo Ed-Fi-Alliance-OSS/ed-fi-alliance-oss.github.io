@@ -12,7 +12,7 @@ mappings](./descriptor-mappings.md) for how individual descriptor-backed
 fields (sex, race, term type, staff role) are resolved.
 
 | OneRoster endpoint | `oneroster12` object | Primary Ed-Fi sources | Defined in |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `/academicSessions`, `/academicSessions/{id}` | `academicsessions` | `edfi.session`, `edfi.school`, `edfi.calendardate`, `edfi.calendardatecalendarevent` | `academic_sessions.sql` |
 | `/classes`, `/classes/{id}` | `classes` | `edfi.section`, `edfi.courseoffering`, `edfi.school`, `edfi.sectionclassperiod` | `classes.sql` |
 | `/courses`, `/courses/{id}` | `courses` | `edfi.course`, `edfi.courseoffering` | `courses.sql` |
@@ -36,7 +36,7 @@ builds these deterministically from Ed-Fi natural keys using MD5 (PostgreSQL
 `md5()`, Microsoft SQL Server `HASHBYTES('MD5', ...)`):
 
 | Record | `sourcedId` input |
-|---|---|
+| --- | --- |
 | School | `md5(schoolId)` |
 | LEA (district) | `md5(localEducationAgencyId)` |
 | SEA (state) | `md5(stateEducationAgencyId)` |

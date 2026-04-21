@@ -16,7 +16,7 @@ Rostering](https://www.imsglobal.org/spec/oneroster/v1p2) REST binding.
 ## Ed-Fi Data Standard support
 
 | Data Standard | Supported | Notes |
-|---|---|---|
+| --- | --- | --- |
 | 5.2 | Yes | Default artifact set; used with ODS/API 7.3 |
 | 5.1 | Yes | Same SQL artifacts as 5.2 (no breaking changes consumed by OneRoster) |
 | 5.0 | Yes | Same SQL artifacts as 5.2 |
@@ -25,7 +25,7 @@ Rostering](https://www.imsglobal.org/spec/oneroster/v1p2) REST binding.
 ## Database engine support
 
 <Tabs>
-  <TabItem value="pg" label="PostgreSQL" default>
+<TabItem value="pg" label="PostgreSQL" default>
 
 The PostgreSQL implementation uses materialized views in the `oneroster12`
 schema, refreshed on a schedule by [pg-boss](https://timgit.github.io/pg-boss/).
@@ -34,8 +34,8 @@ schema, refreshed on a schedule by [pg-boss](https://timgit.github.io/pg-boss/).
 - Refresh cadence is configured via `PGBOSS_CRON` (default `*/15 * * * *`)
 - See [Deploy on PostgreSQL](./getting-started/deploy-postgres.md)
 
-  </TabItem>
-  <TabItem value="mssql" label="SQL Server">
+</TabItem>
+<TabItem value="mssql" label="SQL Server">
 
 The Microsoft SQL Server implementation stores OneRoster output in tables that
 are repopulated by stored procedures on a schedule driven by SQL Server Agent.
@@ -45,7 +45,7 @@ are repopulated by stored procedures on a schedule driven by SQL Server Agent.
 - Default refresh cadence is every 15 minutes
 - See [Deploy on Microsoft SQL Server](./getting-started/deploy-mssql.md)
 
-  </TabItem>
+</TabItem>
 </Tabs>
 
 ## Ed-Fi ODS/API image tags
@@ -55,7 +55,7 @@ with any ODS/API deployment on a supported Data Standard. The ODS/API image
 tags below can be used to stand up a compatible ODS for local testing:
 
 | Data Standard | ODS/API image tag | Image |
-|---|---|---|
+| --- | --- | --- |
 | 5.2 | `7.3` | `edfialliance/ods-api-db-ods-sandbox:7.3` |
 | 5.1 | `7.2` | `edfialliance/ods-api-db-ods-sandbox:7.2` |
 | 5.0 | `7.1` | `edfialliance/ods-api-db-ods-sandbox:7.1` |

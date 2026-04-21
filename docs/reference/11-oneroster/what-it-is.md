@@ -34,7 +34,7 @@ OAuth 2.0 bearer token with a OneRoster scope (see
 [OAuth and JWT](./configuration/oauth-and-jwt.md)).
 
 | Endpoint | Ed-Fi source entities |
-|---|---|
+| --- | --- |
 | `GET /academicSessions`, `GET /academicSessions/{id}` | `sessions`, `schools`, `schoolCalendars` |
 | `GET /classes`, `GET /classes/{id}` | `sections`, `courseOfferings`, `schools` |
 | `GET /courses`, `GET /courses/{id}` | `courses`, `courseOfferings`, `schools` |

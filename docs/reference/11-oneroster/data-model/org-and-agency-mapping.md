@@ -16,7 +16,7 @@ OneRoster `org.type` is derived from the Ed-Fi _entity table_ each row comes
 from, not from any descriptor value:
 
 | OneRoster `type` | Ed-Fi source table | OneRoster `identifier` | `sourcedId` input |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `school` | `edfi.school` (joined to `edfi.educationOrganization` on `schoolId`) | `schoolId` | `md5(schoolId)` |
 | `district` | `edfi.localEducationAgency` (joined on `localEducationAgencyId`) | `localEducationAgencyId` | `md5(localEducationAgencyId)` |
 | `state` | `edfi.stateEducationAgency` (joined on `stateEducationAgencyId`) | `stateEducationAgencyId` | `md5(stateEducationAgencyId)` |

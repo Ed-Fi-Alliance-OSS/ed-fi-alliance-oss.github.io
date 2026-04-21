@@ -21,7 +21,7 @@ wired together on a shared Docker network.
 ## What gets deployed
 
 | Service | Role |
-|---|---|
+| --- | --- |
 | `db-ods`, `db-admin` | PostgreSQL containers seeded from the Ed-Fi populated template |
 | `v7-single-api` | Ed-Fi ODS/API v7 (used as the OAuth issuer and Ed-Fi resource API) |
 | `swagger` | Bundled Swagger UI for the Ed-Fi v7 API |
@@ -75,7 +75,7 @@ file, or via `-GenerateSigningKeys`) before starting containers.
 Once the containers are healthy:
 
 | Service | URL |
-|---|---|
+| --- | --- |
 | Ed-Fi API | `https://localhost/<V7_SINGLE_API_VIRTUAL_NAME>` |
 | OneRoster API | `https://localhost/<ONEROSTER_API_VIRTUAL_NAME>` |
 | Swagger UI | `https://localhost/<DOCS_VIRTUAL_NAME>` |
@@ -87,7 +87,7 @@ template under `compose/ssl/` so TLS certificates resolve correctly.
 ## Picking an env file
 
 | File | Target Data Standard |
-|---|---|
+| --- | --- |
 | `compose/.env.5.2.0.example` | Ed-Fi Data Standard 5.2.0 (default) |
 | `compose/.env.4.0.0.example` | Ed-Fi Data Standard 4.0.0 |
 
