@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # What is the Ed-Fi OneRoster© Service
 
 The Ed-Fi OneRoster© service is an independently deployed Node.js application
