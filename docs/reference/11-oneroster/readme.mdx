@@ -8,21 +8,13 @@ import DocCardList from '@theme/DocCardList';
 
 The Ed-Fi OneRoster© service serves a [1EdTech OneRoster© v1.2
 Rostering](https://www.imsglobal.org/spec/oneroster/v1p2) API from data in an
-existing Ed-Fi ODS. It is implemented as a Node.js/Express application that
-reads from the ODS via materialized views (PostgreSQL) or stored-procedure-fed
-tables (Microsoft SQL Server) and exposes the standard OneRoster© rostering
-endpoints over OAuth 2.0.
+existing Ed-Fi ODS. It is a Node.js / Express application that reads the ODS
+through a separate `oneroster12` schema (materialized views on PostgreSQL,
+tables fed by stored procedures on Microsoft SQL Server) and exposes the
+standard OneRoster© rostering endpoints over OAuth 2.0.
 
-It is released and versioned independently from the Ed-Fi ODS/API and currently supports
-Ed-Fi Data Standard 4.0 and 5.0 – 5.2 from the same code base.
-
-:::tip
-
-Already running an Ed-Fi ODS/API and want to expose OneRoster© to a vendor
-application? Start with _What is the Ed-Fi OneRoster© service_ to confirm it
-fits your use case, then pick a deployment path under _Getting Started_.
-
-:::
+The service is released independently of the Ed-Fi ODS / API and currently
+supports Ed-Fi Data Standard 4.0 and 5.0 through 5.2 from a single code base.
 
 ## Contents
 

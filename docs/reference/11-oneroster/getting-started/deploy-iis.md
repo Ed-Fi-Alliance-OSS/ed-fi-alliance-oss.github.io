@@ -3,41 +3,43 @@
 This page walks through hosting the Ed-Fi OneRoster© Node service on
 Internet Information Services (IIS). Two architectures are supported:
 
-- **`iisnode`** — IIS owns the Node worker process lifecycle. Simplest to
-  install, recommended when you already host other IIS Node applications.
-- **Reverse proxy (ARR)** — Node runs as a Windows service under WinSW;
-  IIS handles TLS, routing, and forwards requests to Node over loopback.
-  Preferred for production deployments that need independent Node process
-  management.
+- **`iisnode`**. IIS owns the Node worker process lifecycle. Simplest
+  to install. A good choice when you already host other IIS Node
+  applications.
+- **Reverse proxy (ARR)**. Node runs as a Windows service under WinSW.
+  IIS handles TLS, routing, and forwards requests to Node over
+  loopback. A good choice for production deployments that need
+  independent Node process management.
 
-This page covers the shared prerequisites and both patterns. For database
-deployment, see [Deploy on PostgreSQL](./deploy-postgres.md) or [Deploy on
-Microsoft SQL Server](./deploy-mssql.md).
+This page covers the shared prerequisites and both patterns. For
+database deployment, see [Deploy on PostgreSQL](./deploy-postgres.md) or
+[Deploy on Microsoft SQL Server](./deploy-mssql.md).
 
 ## Prerequisites
 
-- **Windows Server 2016** or later (2019 / 2022 recommended)
-- **IIS 8.5** or later
-- **Node.js** 18 LTS or later, with `npm` on the system `PATH`
+- Windows Server 2016 or later (2019 or 2022 recommended)
+- IIS 8.5 or later
+- Node.js 18 LTS or later, with `npm` on the system `PATH`
 - Administrator access to the server
-- Connectivity from the server to the Ed-Fi ODS (PostgreSQL or SQL Server)
+- Connectivity from the server to the Ed-Fi ODS (PostgreSQL or SQL
+  Server)
 - A free TCP port for the OneRoster© API (default 3000)
 
 ### Required IIS components
 
-- **iisnode** — required for the `iisnode` architecture. Install from the
-  [iisnode GitHub releases](https://github.com/Azure/iisnode/releases),
+- **iisnode**, required for the `iisnode` architecture. Install from
+  the [iisnode GitHub releases](https://github.com/Azure/iisnode/releases),
   then run `iisreset`.
-- **URL Rewrite module** — required for both architectures. Install from
+- **URL Rewrite module**, required for both architectures. Install from
   [Microsoft](https://www.iis.net/downloads/microsoft/url-rewrite).
-- **Application Request Routing (ARR)** — required only for the reverse
+- **Application Request Routing (ARR)**, required only for the reverse
   proxy architecture. Install from
   [Microsoft](https://www.iis.net/downloads/microsoft/application-request-routing).
 
 ## Application preparation (both architectures)
 
-Clone the repository and install dependencies to your chosen application
-folder:
+Clone the repository and install dependencies to your chosen
+application folder:
 
 ```powershell
 git clone https://github.com/Ed-Fi-Alliance-OSS/edfi-oneroster.git C:\inetpub\oneroster
@@ -49,7 +51,7 @@ npm run build
 Create `.env` at the application root
 (`C:\inetpub\oneroster\.env`). See [Environment
 variables](../configuration/environment-variables.md) for the full
-reference; a minimal PostgreSQL variant looks like:
+reference. A minimal PostgreSQL variant looks like:
 
 ```env
 DB_TYPE=postgres
@@ -76,16 +78,17 @@ OAUTH2_PUBLIC_KEY_PEM=
 
 :::note
 
-If IIS serves OneRoster© under a virtual directory such as `/oneroster`,
-set `API_BASE_PATH=/oneroster` in `.env` so self-referencing URLs
-(Swagger discovery, etc.) are generated correctly.
+If IIS serves OneRoster© under a virtual directory such as
+`/oneroster`, set `API_BASE_PATH=/oneroster` in `.env` so
+self-referencing URLs (such as Swagger discovery) are generated
+correctly.
 
 :::
 
 ### Lock down the `.env` file
 
-The `.env` file contains database credentials and JWT validation settings;
-restrict access to it:
+The `.env` file contains database credentials and JWT validation
+settings. Restrict access to it:
 
 ```powershell
 $envPath = "C:\inetpub\oneroster\.env"
@@ -95,17 +98,18 @@ icacls $envPath /grant:r "Administrators:(F)"
 icacls $envPath /grant:r "IIS AppPool\OneRosterPool:(F)"
 ```
 
-The `web.config` samples below also block `.env` / `.yml` / `.yaml` files
-from being served over HTTP.
+The `web.config` samples below also block `.env`, `.yml`, and `.yaml`
+files from being served over HTTP.
 
 ## Architecture A: hosting with `iisnode`
 
 IIS runs the Node worker itself via the `iisnode` module. The bundled
 `web.config` already wires up the handler and rewrite rules.
 
-### Step 1 — Create the Application Pool
+### Step 1. Create the application pool
 
-1. Open **IIS Manager** → **Application Pools** → **Add Application Pool**
+1. Open **IIS Manager**, then **Application Pools**, then **Add
+   Application Pool**.
 2. Name: `OneRosterPool`
 3. **.NET CLR version**: **No Managed Code** (important for Node)
 4. **Managed pipeline mode**: Integrated
@@ -114,9 +118,9 @@ IIS runs the Node worker itself via the `iisnode` module. The bundled
    - **Idle Time-out (minutes)**: `0`
    - **Regular Time Interval (minutes)**: `0`
 
-### Step 2 — Create the website
+### Step 2. Create the website
 
-1. **Sites** → **Add Website…**
+1. **Sites** > **Add Website**.
 2. Configure:
    - **Site name**: `OneRoster`
    - **Application pool**: `OneRosterPool`
@@ -127,15 +131,15 @@ IIS runs the Node worker itself via the `iisnode` module. The bundled
 If you use a host name such as `oneroster` on a single server, add a
 matching DNS record or a hosts-file entry (`127.0.0.1   oneroster`).
 
-Remove any legacy virtual directory mappings under **Default Web Site** to
-avoid duplicate routes.
+Remove any legacy virtual directory mappings under **Default Web Site**
+to avoid duplicate routes.
 
-### Step 3 — Create `web.config`
+### Step 3. Create `web.config`
 
 `web.config` at `C:\inetpub\oneroster\web.config` should contain the
 following. The configuration wires `iisnode` to `server.js`, adds URL
-Rewrite rules that preserve original protocol and host, blocks `.env`
-from being served, and sets basic security headers.
+Rewrite rules that preserve the original protocol and host, blocks
+`.env` from being served, and sets basic security headers.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -219,16 +223,16 @@ from being served, and sets basic security headers.
 </configuration>
 ```
 
-### Step 4 — Register forwarded-header server variables
+### Step 4. Register forwarded-header server variables
 
 For the URL Rewrite rules above to set `HTTP_X_FORWARDED_PROTO` and
 `HTTP_X_FORWARDED_HOST`, register them as allowed server variables:
 
-1. **IIS Manager** → your site → **URL Rewrite**
-2. **View Server Variables** (right panel)
-3. Add `HTTP_X_FORWARDED_PROTO` and `HTTP_X_FORWARDED_HOST`
+1. **IIS Manager** > your site > **URL Rewrite**.
+2. Click **View Server Variables** in the right panel.
+3. Add `HTTP_X_FORWARDED_PROTO` and `HTTP_X_FORWARDED_HOST`.
 
-### Step 5 — Grant directory permissions
+### Step 5. Grant directory permissions
 
 ```powershell
 $appPath = "C:\inetpub\oneroster"
@@ -236,7 +240,7 @@ $appPool = "OneRosterPool"
 icacls $appPath /grant "IIS AppPool\${appPool}:(OI)(CI)F" /T /C
 ```
 
-### Step 6 — Warm up and verify
+### Step 6. Warm up and verify
 
 With `iisnode`, the application starts on the first request.
 
@@ -247,38 +251,38 @@ Get-Content C:\inetpub\oneroster\logs\*.log -Tail 50
 
 ## Architecture B: reverse proxy to a Node Windows service
 
-This architecture runs Node independently (e.g., as a Windows service on
-port 3000) and uses IIS with ARR + URL Rewrite to terminate TLS and
-forward traffic to it.
+This architecture runs Node independently (for example, as a Windows
+service on port 3000) and uses IIS with ARR and URL Rewrite to
+terminate TLS and forward traffic to it.
 
 ```text
-Client → IIS (80/443) → ARR + URL Rewrite → Node (localhost:3000)
+Client -> IIS (80/443) -> ARR + URL Rewrite -> Node (localhost:3000)
 ```
 
-### Step 1 — Install Required IIS Modules
+### Step 1. Install required IIS modules
 
-Install the URL Rewrite module and Application Request Routing (ARR) from
-Microsoft (see _Required IIS components_ above). After install, both
-features should appear in IIS Manager at the server level.
+Install the URL Rewrite module and Application Request Routing (ARR)
+from Microsoft (see _Required IIS components_ above). After installing,
+both features should appear in IIS Manager at the server level.
 
-### Step 2 — Enable the proxy in ARR
+### Step 2. Enable the proxy in ARR
 
-1. In IIS Manager, click the server node
-2. Open **Application Request Routing Cache**
-3. Click **Server Proxy Settings** (right panel)
-4. Check **Enable proxy**, then **Apply**
+1. In IIS Manager, click the server node.
+2. Open **Application Request Routing Cache**.
+3. Click **Server Proxy Settings** in the right panel.
+4. Check **Enable proxy**, then click **Apply**.
 
-### Step 3 — Create the IIS site
+### Step 3. Create the IIS site
 
-1. **Sites** → **Add Website**
+1. **Sites** > **Add Website**.
 2. Configure:
    - **Site name**: `NodeProxy` (or similar)
-   - **Physical path**: `C:\inetpub\node-proxy` (just a placeholder for
-     `web.config`)
-   - **Binding**: HTTP on port `8082` (or 80), HTTPS on port 443 if you
-     want TLS termination
+   - **Physical path**: `C:\inetpub\node-proxy`. This is a placeholder
+     for `web.config`.
+   - **Binding**: HTTP on port `8082` (or 80). Add HTTPS on port 443 if
+     you want TLS termination.
 
-### Step 4 — Configure the reverse proxy rules
+### Step 4. Configure the reverse proxy rules
 
 At `C:\inetpub\node-proxy\web.config`:
 
@@ -324,20 +328,20 @@ At `C:\inetpub\node-proxy\web.config`:
 ```
 
 Register `HTTP_X_FORWARDED_PROTO` and `HTTP_X_FORWARDED_HOST` under the
-site's URL Rewrite → **View Server Variables** so the rules are allowed to
-set them.
+site's URL Rewrite **View Server Variables** so the rules are allowed
+to set them.
 
-### Step 5 — Run Node as a Windows service with WinSW
+### Step 5. Run Node as a Windows service with WinSW
 
 Running Node as a Windows service makes it start on boot, run in the
-background, and restart on failure. Both `NSSM` and `PM2` are possible
-alternatives; WinSW is recommended because it is actively maintained and
-XML-configured.
+background, and restart on failure. NSSM and PM2 are possible
+alternatives. WinSW is recommended because it is actively maintained
+and XML-configured.
 
 1. Download `WinSW-x64.exe` from the [WinSW
-   releases](https://github.com/winsw/winsw/releases)
+   releases](https://github.com/winsw/winsw/releases).
 2. Create `C:\services\oneroster-api\` and copy the binary there as
-   `OneRosterApi.exe`
+   `OneRosterApi.exe`.
 3. Create `OneRosterApi.xml` next to it:
 
    ```xml
@@ -363,10 +367,10 @@ XML-configured.
    .\OneRosterApi.exe start
    ```
 
-5. Confirm the service is running in `services.msc` and that it restarts
-   on reboot (`Startup type = Automatic`).
+5. Confirm the service is running in `services.msc` and that `Startup
+   type = Automatic` so it restarts on reboot.
 
-### Step 6 — Verify
+### Step 6. Verify
 
 ```text
 Direct Node:       http://localhost:3000/health-check
@@ -384,24 +388,25 @@ Useful WinSW commands:
 
 ## TLS / HTTPS
 
-To serve OneRoster© over HTTPS, install or import a certificate into the
-Windows certificate store and add an HTTPS binding (port 443) to the IIS
-site through **Bindings…** in IIS Manager. Both architectures benefit;
-with the reverse-proxy architecture, HTTPS is terminated at IIS and the
-back-end Node service continues to listen on plain HTTP loopback.
+To serve OneRoster© over HTTPS, install or import a certificate into
+the Windows certificate store and add an HTTPS binding (port 443) to
+the IIS site through **Bindings** in IIS Manager. Both architectures
+benefit. With the reverse-proxy architecture, HTTPS is terminated at
+IIS and the back-end Node service continues to listen on plain HTTP
+loopback.
 
 ## Troubleshooting
 
 | Symptom | First thing to check |
 | --- | --- |
 | HTTP 500 on any request | `C:\inetpub\oneroster\logs\*.log` (iisnode stdout) |
-| HTTP 404 on all routes | URL Rewrite module installed; `web.config` rewrite rules present; application pool's .NET CLR version is **No Managed Code** |
-| Self-referencing URLs (Swagger discovery) use `http` instead of `https` | `HTTP_X_FORWARDED_PROTO` is registered under **View Server Variables**; `TRUST_PROXY=true` in `.env` |
-| Database connection failures | `Test-NetConnection` to the DB host on 5432 / 1433; verify credentials in `.env` |
-| App seems to "sleep" after idle | Application pool `Idle Time-out = 0`; `Start Mode = AlwaysRunning`; site-level `Preload Enabled = true`; iisnode `idlePageOutTimePeriod="0"` |
+| HTTP 404 on all routes | URL Rewrite module installed, `web.config` rewrite rules present, application pool's .NET CLR version is **No Managed Code** |
+| Self-referencing URLs (Swagger discovery) use `http` instead of `https` | `HTTP_X_FORWARDED_PROTO` is registered under **View Server Variables**, `TRUST_PROXY=true` in `.env` |
+| Database connection failures | `Test-NetConnection` to the DB host on 5432 or 1433, credentials in `.env` |
+| App seems to "sleep" after idle | Application pool `Idle Time-out = 0`, `Start Mode = AlwaysRunning`, site-level `Preload Enabled = true`, iisnode `idlePageOutTimePeriod="0"` |
 
 To enable detailed iisnode error pages for a short debugging window
-(development only — revert before production):
+(development only, revert before production):
 
 ```xml
 <iisnode
