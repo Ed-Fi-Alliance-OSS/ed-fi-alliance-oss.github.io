@@ -139,9 +139,9 @@ taxonomy also identifies authorization strategies for the various claims that
 are applied after the basic “action” checks have been performed. The figure
 below shows a representative piece of the Ed-Fi ODS / API claims taxonomy.
 
-![Claims Taxonomy](/img/reference/ods-api/fig3_a.png)
+![Claims Taxonomy](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/fig3_a.png)
 
-![Claims Taxonomy](/img/reference/ods-api/fig3_b-1.png)
+![Claims Taxonomy](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/fig3_b-1.png)
 
 The strategy used to authorize a request for an Ed-Fi Type is different from the
 one used to authorize a request to modify student-related data. The former is a
@@ -167,8 +167,8 @@ strategies, applied to the claims taxonomy shown in the figure above.
 
 * **NoFurtherAuthorizationRequired.** Explicitly performs no additional
     authorization (beyond resource/action verification).
-*   **NamespaceBased.** Allows access to items based on the caller’s NamespacePrefix claim. NamespacePrefix values are assigned when a vendor's record is created in the [ODS / API Admin App](/reference/admin-app/).
-*   **Ownership based**. Allows access to items based on ownership tokens associated with the caller. Somewhat similar to the namespace-based strategy, in this case, the caller is granted access to the resource when token associated with the resource matches an ownership token associated with the caller. This strategy is available when “OwnershipBasedAuthorization” feature is turned on by the API hosts, which is necessary to capture ownership token at each aggregate root.
+* **NamespaceBased.** Allows access to items based on the caller’s NamespacePrefix claim. NamespacePrefix values are assigned when a vendor's record is created in the [ODS / API Admin App](/reference/admin-app/).
+* **Ownership based**. Allows access to items based on ownership tokens associated with the caller. Somewhat similar to the namespace-based strategy, in this case, the caller is granted access to the resource when token associated with the resource matches an ownership token associated with the caller. This strategy is available when “OwnershipBasedAuthorization” feature is turned on by the API hosts, which is necessary to capture ownership token at each aggregate root.
 * **Relationship-based strategies.** A family of strategies that authorize
     access to student and education organization-related data through ODS
     relationships from the perspective of the education organization(s)
