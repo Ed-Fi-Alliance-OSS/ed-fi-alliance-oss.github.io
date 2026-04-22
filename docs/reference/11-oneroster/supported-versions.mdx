@@ -7,14 +7,14 @@ import TabItem from '@theme/TabItem';
 
 # Supported Versions
 
-The Ed-Fi OneRoster© service supports two Ed-Fi Data Standard lines and two
+The Ed-Fi OneRoster® service supports two Ed-Fi Data Standard lines and two
 database engines from a single code base. The SQL artifacts for each Data
 Standard version live in the service repository under
 `standard/{dataStandardVersion}/artifacts/{pgsql|mssql}/core/`.
 
-## OneRoster© specification
+## OneRoster specification
 
-All releases implement the 1EdTech [OneRoster© v1.2
+All releases implement the 1EdTech® [OneRoster v1.2
 Rostering](https://www.imsglobal.org/spec/oneroster/v1p2) REST binding.
 
 ## Ed-Fi Data Standard support
@@ -41,7 +41,7 @@ schema, refreshed on a schedule by [pg-boss](https://timgit.github.io/pg-boss/).
 </TabItem>
 <TabItem value="mssql" label="SQL Server">
 
-The Microsoft SQL Server implementation stores OneRoster© output in tables
+The Microsoft SQL Server implementation stores OneRoster output in tables
 that are repopulated by stored procedures on a schedule driven by SQL Server
 Agent.
 
@@ -57,7 +57,7 @@ Agent.
 
 ## Ed-Fi ODS / API image tags
 
-The OneRoster© service reads directly from an Ed-Fi ODS database and works
+The OneRoster service reads directly from an Ed-Fi ODS database and works
 with any ODS / API deployment on a supported Data Standard. The ODS / API
 sandbox image tags below can be used to stand up a compatible ODS for local
 testing:
@@ -70,9 +70,9 @@ testing:
 
 For Data Standard 4.0, use the matching 6.x ODS / API image line.
 
-## OneRoster© service versioning
+## OneRoster service versioning
 
-The OneRoster© service follows a release cadence independent of the Ed-Fi
+The OneRoster service follows a release cadence independent of the Ed-Fi
 ODS / API. This documentation is not versioned at launch. If the service
 accumulates breaking changes in the future, per-version documentation will
 be introduced at that time.

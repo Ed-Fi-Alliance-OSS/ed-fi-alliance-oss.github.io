@@ -1,8 +1,8 @@
 # Org and Agency Mapping
 
-The OneRoster© v1.2 `/orgs` endpoint exposes schools, districts, and state
+The OneRoster® v1.2 `/orgs` endpoint exposes schools, districts, and state
 agencies from an Ed-Fi ODS, keeping the parent / child hierarchy intact.
-This page documents how OneRoster© org records are derived, how the `type`
+This page documents how OneRoster org records are derived, how the `type`
 field is assigned, and how custom or non-standard Ed-Fi education
 organizations are treated.
 
@@ -12,16 +12,16 @@ or the equivalent `mssql/core/` script (refresh procedure).
 
 ## Source entities and `type` derivation
 
-OneRoster© `org.type` is derived from the Ed-Fi entity table that each row
+OneRoster `org.type` is derived from the Ed-Fi entity table that each row
 comes from. No descriptor value participates in the decision.
 
-| OneRoster© `type` | Ed-Fi source table | OneRoster© `identifier` | `sourcedId` input |
+| OneRoster `type` | Ed-Fi source table | OneRoster `identifier` | `sourcedId` input |
 | --- | --- | --- | --- |
 | `school` | `edfi.school` joined to `edfi.educationOrganization` on `schoolId` | `schoolId` | `md5(schoolId)` |
 | `district` | `edfi.localEducationAgency` joined on `localEducationAgencyId` | `localEducationAgencyId` | `md5(localEducationAgencyId)` |
 | `state` | `edfi.stateEducationAgency` joined on `stateEducationAgencyId` | `stateEducationAgencyId` | `md5(stateEducationAgencyId)` |
 
-The OneRoster© v1.2 `OrgType` enumeration also defines `local` and
+The OneRoster v1.2 `OrgType` enumeration also defines `local` and
 `national`. Neither value is emitted by the service. Every row produced by
 `orgs.sql` is one of `school`, `district`, or `state`.
 
@@ -38,7 +38,7 @@ Each row also includes:
 :::info
 
 **Custom `EducationOrganizationCategoryDescriptor` values have no effect on
-OneRoster© `org.type`.** The view keys off which Ed-Fi entity table the row
+OneRoster `org.type`.** The view keys off which Ed-Fi entity table the row
 lives in (`edfi.school`, `edfi.localEducationAgency`, or
 `edfi.stateEducationAgency`). It does not read
 `edfi.descriptor` for `EducationOrganizationCategory`.
@@ -47,20 +47,20 @@ lives in (`edfi.school`, `edfi.localEducationAgency`, or
 
 Implications:
 
-- An `edfi.school` row is always emitted as OneRoster© `type = 'school'`,
+- An `edfi.school` row is always emitted as OneRoster `type = 'school'`,
   regardless of the `EducationOrganizationCategoryDescriptor` assigned to
   it.
 - Deployments with custom school or LEA categories (for example, charter
   school networks) do not need to add any descriptor mapping to have those
   organizations appear correctly in `/orgs`.
 - There is no supported way, in the current release, to project Ed-Fi rows
-  into OneRoster© `type = 'local'` or `type = 'national'`. Teams that
-  require those values should raise an issue against the OneRoster©
+  into OneRoster `type = 'local'` or `type = 'national'`. Teams that
+  require those values should raise an issue against the OneRoster
   service.
 
 ## Parent / children composition
 
-OneRoster© `parent` and `children` are assembled from the Ed-Fi ODS
+OneRoster `parent` and `children` are assembled from the Ed-Fi ODS
 `educationOrganization` hierarchy.
 
 ### Schools
@@ -119,9 +119,9 @@ transitively through the SEA's LEAs.
 (for example `educationServiceCenter`, `organizationDepartment`,
 `postSecondaryInstitution`, `communityOrganization`, `communityProvider`)
 have rows in `edfi.educationOrganization` but no row in the three tables
-above, so they are not emitted to OneRoster© `/orgs`.
+above, so they are not emitted to OneRoster `/orgs`.
 
-If an implementation needs to expose an intermediate unit as a OneRoster©
+If an implementation needs to expose an intermediate unit as a OneRoster
 organization, a workable approach is to record it as an Ed-Fi
 `localEducationAgency` (setting `stateEducationAgencyId` as appropriate)
 and associate its schools through `edfi.school.localEducationAgencyId`.
@@ -133,7 +133,7 @@ This uses only the supported mapping and keeps the hierarchy intact.
 `edfi.educationOrganization`. A school that exists in `edfi.school` but
 has no matching row in `edfi.educationOrganization` will not appear in
 `/orgs`. This is uncommon in a healthy ODS but can arise from partial
-imports. If schools are missing from OneRoster© output, confirm that
+imports. If schools are missing from OneRoster output, confirm that
 `edfi.educationOrganization` contains a row for each `schoolId`.
 
 ## Authorization scope

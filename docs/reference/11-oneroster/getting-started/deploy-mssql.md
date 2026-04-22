@@ -1,6 +1,6 @@
 # Deploy on Microsoft SQL Server
 
-This page walks through installing the Ed-Fi OneRoster© service against
+This page walks through installing the Ed-Fi OneRoster® service against
 an Ed-Fi ODS that runs on Microsoft SQL Server. The SQL Server variant
 uses tables and stored procedures in the `oneroster12` schema (rather
 than materialized views) and relies on SQL Server Agent to drive
@@ -11,7 +11,7 @@ scheduled refreshes.
 - SQL Server 2016 or later. This is required for the JSON functions used
   by the refresh procedures.
 - An Ed-Fi ODS database on SQL Server, reachable from where the
-  OneRoster© Node service will run.
+  OneRoster Node service will run.
 - A database account with permissions to create schemas, tables, stored
   procedures, and SQL Server Agent jobs. `db_owner` on the target
   database is typical.
@@ -26,13 +26,13 @@ The deployment is scripted in `standard/deploy-mssql.js`, a Node.js
 program that connects to the target SQL Server, checks prerequisites,
 and applies the SQL artifacts in phases:
 
-1. Foundation: schema, OneRoster© descriptors, and descriptor mappings
+1. Foundation: schema, OneRoster descriptors, and descriptor mappings
 2. Core: tables, indexes, and refresh stored procedures for each
-   OneRoster© entity
+   OneRoster entity
 3. Orchestration: the master refresh procedure and the SQL Server Agent
    job that drives scheduled refreshes
 
-From a clone of the OneRoster© service repository:
+From a clone of the OneRoster service repository:
 
 ```bash
 git clone https://github.com/Ed-Fi-Alliance-OSS/edfi-oneroster.git
@@ -70,7 +70,7 @@ They live under `standard/{dataStandardVersion}/artifacts/mssql/core/`
 (core scripts) and `mssql/orchestration/` (master refresh and the Agent
 job).
 
-## Step 2. Populate the OneRoster© tables
+## Step 2. Populate the OneRoster tables
 
 The deployment script creates the tables and procedures but does not
 run the initial population. Execute the refresh procedures once, in
@@ -209,5 +209,5 @@ EXEC msdb.dbo.sp_update_schedule
 The SQL Server variant matches the PostgreSQL variant's output
 record-for-record (verified by `tests/compare-api.js` and
 `tests/compare-database.js` in the service repository). Differences in
-OneRoster© response content between engines usually point to an
+OneRoster response content between engines usually point to an
 environmental issue rather than a mapping difference.

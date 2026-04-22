@@ -4,7 +4,7 @@
 
 **The bundled Docker Compose stack is for demo and evaluation only.** It
 runs a small, self-contained environment for development, testing against
-a known data set, or trying OneRoster© end-to-end with a bundled Ed-Fi
+a known data set, or trying OneRoster® end-to-end with a bundled Ed-Fi
 ODS / API and OAuth token issuer. Do not use it for production.
 
 For production-supported deployments, use one of the native paths:
@@ -13,10 +13,10 @@ Server](./deploy-mssql.md), or [IIS](./deploy-iis.md).
 
 :::
 
-The Docker Compose configuration lives in the OneRoster© service
+The Docker Compose configuration lives in the OneRoster service
 repository under `compose/`. It starts the Ed-Fi ODS / API v7 stack, an
 OAuth issuer, a Swagger UI, an NGINX TLS reverse proxy, and the
-OneRoster© Node service, wired together on a shared Docker network.
+OneRoster Node service, wired together on a shared Docker network.
 
 ## What gets deployed
 
@@ -27,7 +27,7 @@ OneRoster© Node service, wired together on a shared Docker network.
 | `swagger` | Bundled Swagger UI for the Ed-Fi v7 API |
 | `pgadmin4` | Optional database browser at `http://localhost:5050` |
 | `nginx` | Terminates TLS on `https://localhost:443` and routes to the APIs |
-| `oneroster-api` | The OneRoster© Node service, built from the repository root |
+| `oneroster-api` | The OneRoster Node service, built from the repository root |
 
 ## Prerequisites
 
@@ -64,8 +64,8 @@ Key flags:
 - `-InitializeAdminClients` seeds test vendors and clients (using
   `LEA_KEY`, `LEA_SECRET`, `SCHOOL_KEY`, and `SCHOOL_SECRET` from the env
   file) via the bootstrap script.
-- `-Rebuild` rebuilds the OneRoster© image before starting. Use this
-  after changing OneRoster© source.
+- `-Rebuild` rebuilds the OneRoster image before starting. Use this
+  after changing OneRoster source.
 
 The script validates that JWT signing keys exist (in the environment,
 env file, or via `-GenerateSigningKeys`) before starting containers.
@@ -77,7 +77,7 @@ Once the containers are healthy:
 | Service | URL |
 | --- | --- |
 | Ed-Fi API | `https://localhost/<V7_SINGLE_API_VIRTUAL_NAME>` |
-| OneRoster© API | `https://localhost/<ONEROSTER_API_VIRTUAL_NAME>` |
+| OneRoster API | `https://localhost/<ONEROSTER_API_VIRTUAL_NAME>` |
 | Swagger UI | `https://localhost/<DOCS_VIRTUAL_NAME>` |
 | pgAdmin | `http://localhost:5050` |
 
@@ -124,7 +124,7 @@ other Docker workload:
 - Do _not_ use `privileged: true`, host namespaces, or broad device
   mounts
 
-Example service hardening for the OneRoster© Node container:
+Example service hardening for the OneRoster Node container:
 
 ```yaml
 services:

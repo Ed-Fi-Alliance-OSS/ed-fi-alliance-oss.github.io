@@ -1,6 +1,6 @@
 # Environment Variables
 
-The OneRoster© Node service reads configuration from environment
+The OneRoster® Node service reads configuration from environment
 variables, typically supplied via a `.env` file at the application
 root. The sample `.env.example` in the service repository lists every
 variable. The tables below group them by concern and note defaults and
@@ -118,14 +118,14 @@ documented there. Common ones:
 
 | Variable | Purpose |
 | --- | --- |
-| `POSTGRES_USER`, `POSTGRES_PASSWORD`, `POSTGRES_PORT` | Credentials shared between the ODS, admin, and OneRoster© containers. |
+| `POSTGRES_USER`, `POSTGRES_PASSWORD`, `POSTGRES_PORT` | Credentials shared between the ODS, admin, and OneRoster containers. |
 | `ODS_DB_IMAGE_7X`, `ODS_DB_TAG_7X`, `ODS_API_TAG_7X`, `SWAGGER_TAG_7X`, `ADMIN_DB_TAG_7X` | Pin Ed-Fi image versions. |
 | `BASE_URL`, `V7_SINGLE_API_VIRTUAL_NAME`, `ONEROSTER_API_VIRTUAL_NAME`, `DOCS_VIRTUAL_NAME` | Hostnames used by NGINX routing and TLS. |
 | `SECURITY__JWT__PRIVATEKEY`, `SECURITY__JWT__PUBLICKEY` | JWT signing keys used by the Ed-Fi v7 API. Required before start, or generated via `-GenerateSigningKeys`. |
 | `NODE_EXTRA_CA_CERTS` | Path to the self-signed CA bundled under `compose/ssl`. |
 | `LOGS_FOLDER` | Bind-mounted into the v7 API container. |
 
-These variables govern the Compose stack only. A production OneRoster©
+These variables govern the Compose stack only. A production OneRoster
 deployment reads an externally-operated Ed-Fi ODS and OAuth issuer and
 does not need them.
 

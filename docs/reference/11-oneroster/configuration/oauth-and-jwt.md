@@ -1,6 +1,6 @@
 # OAuth and JWT
 
-The OneRoster© service requires every request to
+The OneRoster® service requires every request to
 `/ims/oneroster/rostering/v1p2/*` to present a valid OAuth 2.0 bearer
 token. The service does not issue tokens. It validates tokens issued
 by an external OAuth 2.0 authorization server, typically the Ed-Fi
@@ -92,7 +92,7 @@ error:
 }
 ```
 
-## OneRoster© v1.2 scopes
+## OneRoster v1.2 scopes
 
 Tokens must present at least one of the following scopes (space- or
 comma-separated in the `scope` claim, per OAuth 2.0 conventions):
@@ -103,8 +103,8 @@ comma-separated in the `scope` claim, per OAuth 2.0 conventions):
 | `roster-demographics.readonly` | The `/demographics` endpoint |
 | `roster.readonly` | All of the above. Equivalent to both `roster-core.readonly` and `roster-demographics.readonly`. |
 
-These are the standard OneRoster© v1.2 rostering scopes defined in the
-[1EdTech OneRoster© v1.2 REST
+These are the standard OneRoster v1.2 rostering scopes defined in the
+[1EdTech® OneRoster v1.2 REST
 specification](https://www.imsglobal.org/sites/default/files/spec/oneroster/v1p2/rostering-restbinding/OneRosterv1p2RosteringService_RESTBindv1p0.html#OpenAPI_Security).
 
 Vendor applications should request the minimum scope their use case
@@ -116,20 +116,20 @@ needs to read `/demographics`.
 Version 7.3 of the Ed-Fi ODS / API includes a
 `FeatureManagement:OneRoster` setting and supporting claim-set
 configuration that enable the ODS / API's built-in OAuth endpoint to
-issue tokens bearing the OneRoster© scopes above. The ODS / API's
-token endpoint becomes the `OAUTH2_ISSUERBASEURL` the OneRoster©
+issue tokens bearing the OneRoster scopes above. The ODS / API's
+token endpoint becomes the `OAUTH2_ISSUERBASEURL` the OneRoster
 service points at. The Ed-Fi Web API signs the JWTs, and the
-OneRoster© service validates them via JWKS.
+OneRoster service validates them via JWKS.
 
 For the ODS / API-side configuration (enabling the feature, creating
-OneRoster© claim-set entries, issuing keys and secrets to vendor
+OneRoster claim-set entries, issuing keys and secrets to vendor
 apps), see the [Features
 reference](/reference/ods-api/platform-dev-guide/features/) in the
 ODS / API v7.3 platform developer guide.
 
 :::note
 
-**Open question: claim-set wiring.** Whether the OneRoster© scopes are
+**Open question: claim-set wiring.** Whether the OneRoster scopes are
 granted automatically to claim sets when `FeatureManagement:OneRoster
 = true`, or whether an operator must manually edit `ClaimSet` or
 `ResourceClaim` rows, is defined on the ODS / API side. This page will
@@ -140,17 +140,17 @@ live.
 
 ## Issuing tokens outside of the ODS / API
 
-The OneRoster© service only validates JWTs. It will accept tokens from
+The OneRoster service only validates JWTs. It will accept tokens from
 any OAuth 2.0 authorization server that:
 
 1. Signs with `OAUTH2_TOKENSIGNINGALG` (default `RS256`).
 2. Places `{OAUTH2_ISSUERBASEURL}` in the `iss` claim.
 3. Places `{OAUTH2_AUDIENCE}` in the `aud` claim.
-4. Includes one of the three OneRoster© v1.2 scopes.
+4. Includes one of the three OneRoster v1.2 scopes.
 
 This enables bridging to Auth0, Keycloak, Azure AD, or any other
 OIDC-compatible identity provider for deployments that prefer a
-dedicated identity provider for OneRoster© clients.
+dedicated identity provider for OneRoster clients.
 
 ## Quick verification
 
@@ -173,5 +173,5 @@ curl -i http://localhost:3000/ims/oneroster/rostering/v1p2/orgs \
 
 A 401 response with `"imsx_description": "Authentication failed"` on a
 valid-looking request usually indicates an `iss` or `aud` mismatch or
-a missing OneRoster© scope. Check the decoded token at
+a missing OneRoster scope. Check the decoded token at
 [jwt.io](https://jwt.io) against the values in `.env`.
