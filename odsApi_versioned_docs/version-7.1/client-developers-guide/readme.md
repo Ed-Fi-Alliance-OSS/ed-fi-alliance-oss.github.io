@@ -21,4 +21,3 @@ This documentation provides essential information for building client applicatio
 * [Using the Online Documentation](./using-the-online-documentation.md)
 * [Using the Changed Record Queries](./using-the-changed-record-queries.md)
 * [Using the Sandbox Administration Portal](./using-the-sandbox-administration-portal.md)
-* [Improve Paging Performance on Large API Resources](./improve-paging-performance-on-large-api-resources.md)

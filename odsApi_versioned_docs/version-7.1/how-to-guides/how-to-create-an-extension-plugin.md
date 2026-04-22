@@ -67,6 +67,3 @@ In this step, execute the following command to publish NuGet package.
   <nuget directory>\EdFi.Ods.Extensions.SampleAlternativeEducationProgram.1.0.0.Standard.5.1.0.1.0.0.nupkg
 ```
 
-## Consuming Extension Plugins
-
-Follow the approach described in [How To: Deploy an Extension Plugin](./how-to-deploy-an-extension-plugin.md) to consume the published extension package.
