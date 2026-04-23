@@ -1,4 +1,4 @@
-# Guidelines and Expectations for States Using the Ed-Fi Technology Suite
+# Guidelines and Expectations for States Using the Ed-Fi Data Standard
 
 By using Ed-Fi Technology Suite for data collection, states are basing their data collections on the Ed-Fi API Specifications and its semantics. The expectation is that states will follow these specifications to the maximum extent permitted. This document describes some of the most important ways that states can align to the Ed-Fi Data Standard.
 
