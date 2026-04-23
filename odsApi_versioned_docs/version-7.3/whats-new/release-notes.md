@@ -15,6 +15,24 @@ the Git commit history to find the changes for that specific update.
 
 :::
 
+## Ed-Fi ODS / API v7.3.2 - Release Notes
+
+### Important Epics
+
+* ODS-6781 - Update to .net version 10
+* ODS-6816 - Align ODS /API to v6.1 Data Standard
+* ODS-6832 - Ed-Fi OneRoster API Integration
+
+### General Improvements & Enhancements
+
+* ODS-6789 - Add Central Package Management
+* ODS-6833 - Update dependencies
+
+### Bug Fixes
+
+* ODS-6824 - Improve response codes and token matching in the token_info controller
+* ODS-6808 - UniqueID validation not working
+
 ## Ed-Fi ODS / API v7.3.1 - Release Notes
 
 ### Important Epics

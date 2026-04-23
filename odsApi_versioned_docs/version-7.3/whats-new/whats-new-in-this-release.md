@@ -5,53 +5,57 @@ sidebar_position: 1
 
 # What's New In This Release
 
-This section provides an overview of the new features in Ed-Fi ODS / API v7.3.1,
-targeted for deployment starting in the 2026–2027 school year. A comprehensive
-list of all changes can be found in the [Release Notes](./release-notes.md)
-section.
+This section provides an overview of the new features in Ed-Fi ODS / API v7.3.2,
+targeted for deployment beginning with the 2026–2027 school year. A
+comprehensive list of all changes is available in the [Release
+Notes](./release-notes.md) section.
 
 Details about each change are outlined below.
 
 ## Improvements & Enhancements
 
 This section highlights the new features and improvements introduced in Ed-Fi
-ODS / API Platform v7.3.1 and provides links to additional documentation.
+ODS / API Platform v7.3.2 and provides links to additional documentation.
 
 ### Data Model Changes
 
-Ed-Fi ODS / API v7.3.1 adds [Ed-Fi Data Standard
-v6.0](/reference/data-exchange/data-standard/) implementation, which introduced
-breaking changes to the core data model for domains commonly used by student
-information systems and assessment systems. Refer to [What's New in Data
-Standard v6](/reference/data-exchange/data-standard/whats-new/) for
-details. Additionally, Ed-Fi ODS / API v7.3.1 continues to support
-implementations of Ed-Fi Data Standard v5.2 and v4.0.
+Ed-Fi ODS / API v7.3.2 adds [Ed-Fi Data Standard
+v6.1](/reference/data-exchange/data-standard/) implementation, with no breaking
+changes from the previous Data Standard v6.0. For more information, refer to
+[What's New in Data Standard
+v6](/reference/data-exchange/data-standard/whats-new/). Additionally, Ed-Fi ODS
+/ API v7.3.2 continues to support implementations of Ed-Fi Data Standard v5.2
+and v4.0.
 
-### Domain Metadata in OpenAPI Specification
+### Ed-Fi OneRoster API Integration
 
-Ed-Fi ODS / API v7.3.1 introduces [Ed-Fi
-Domains](/reference/data-exchange/udm/getting-started/ed-fi-domains) metadata
-for resources and descriptors in the OpenAPI specification. The
-`x-Ed-Fi-domains` fields have been added to the OpenAPI specification to make it
-easier to identify which Ed-Fi Data Standard domain each resource or descriptor
-belongs to. The Swagger UI application now includes a configuration option to
-enable or disable the display of domain information.
+Ed-Fi ODS / API v7.3.2 introduces the Ed-Fi OneRoster API, a new optional
+platform feature that exposes rostering data from the ODS using the 1EdTech
+OneRoster® 1.2 specification. This enables API Hosts to support common rostering
+use cases—such as LMS provisioning and instructional tool onboarding—without
+introducing new data pipelines or duplicating security infrastructure.
 
-With the expanded [Educator
-Program](/reference/data-exchange/data-standard/whats-new/whats-new-v60#educator-preparation-data-model-community-edition-migrated-to-core-entities)
-core coverage, Data Standard v6.0 significantly increases the number of
-resources. To improve readability, the API includes a configuration setting that
-allows implementers to exclude unused domains from the OpenAPI spec.
+The OneRoster API is deployed as a separate service that reads from database
+tables and views on the Ed-Fi ODS, ensuring data consistency while remaining
+operationally independent from the core ODS / API. Supported resources include
+organizations, schools, academic sessions, courses, classes, users (students and
+teachers), enrollments, and demographics.
 
-See [Configuration
-Details](/reference/ods-api/platform-dev-guide/configuration/configuration-details) page for
-more information on these new settings.
+API clients use the same OAuth 2.0 key and secret to access both the ODS / API
+and the OneRoster API service. Authorization is enforced through the existing
+Ed-Fi claims-based access control model, requiring no separate credential
+management.
 
-### MetaEd IDE v4.6
+Refer to [OneRoster API](./../platform-dev-guide/features/oneroster.md) for a
+platform feature overview and design details. For a step-by-step configuration
+walkthrough, refer to [How To: Enable OneRoster with the Ed-Fi ODS /
+API](./../how-to-guides/how-to-oneroster-with-the-ed-fi-ods-api.md).
 
-Implementing extensions in Ed-Fi ODS / API v7.3.1 requires implementers to
-update to [MetaEd IDE v4.6](/reference/metaed). Refer to [MetaEd 4.6 What's
-New](/reference/metaed/releases/4.6.0) for details on latest updates and
+### MetaEd IDE v4.7
+
+Implementing extensions in Ed-Fi ODS / API v7.3.2 requires implementers to
+update to [MetaEd IDE v4.7](/reference/metaed). Refer to [MetaEd 4.7 What's
+New](/reference/metaed/releases/4.7.0) for details on latest updates and
 improvements.
 
 ### Configuration Updates

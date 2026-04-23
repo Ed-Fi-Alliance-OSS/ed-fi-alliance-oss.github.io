@@ -11,6 +11,40 @@ v7.x suite of releases and provides links to additional documentation.
 
 Detail about each change follows.
 
+## Improvements & Enhancements - Version v7.3.1
+
+### Data Model Changes
+
+Ed-Fi ODS / API v7.3.1 adds Ed-Fi Data Standard v6.0 implementation, which
+introduced breaking changes to the core data model for domains commonly used by
+student information systems and assessment systems. Additionally, Ed-Fi ODS /
+API v7.3.1 continues to support implementations of Ed-Fi Data Standard v5.2 and
+v4.0.
+
+### Domain Metadata in OpenAPI Specification
+
+Ed-Fi ODS / API v7.3.1 introduces [Ed-Fi
+Domains](/reference/data-exchange/udm/getting-started/ed-fi-domains) metadata
+for resources and descriptors in the OpenAPI specification. The
+`x-Ed-Fi-domains` fields have been added to the OpenAPI specification to make it
+easier to identify which Ed-Fi Data Standard domain each resource or descriptor
+belongs to. The Swagger UI application now includes a configuration option to
+enable or disable the display of domain information.
+
+With the expanded Educator Program core coverage, Data Standard v6.0
+significantly increases the number of resources. To improve readability, the API
+includes a configuration setting that allows implementers to exclude unused
+domains from the OpenAPI spec.
+
+See [Configuration
+Details](/reference/ods-api/platform-dev-guide/configuration/configuration-details) page for
+more information on these new settings.
+
+### MetaEd IDE v4.6
+
+Implementing extensions in Ed-Fi ODS / API v7.3.1 requires implementers to
+update to MetaEd IDE v4.6 or higher.
+
 ## Improvements & Enhancements - Version v7.3.0
 
 ### Data Model Changes
