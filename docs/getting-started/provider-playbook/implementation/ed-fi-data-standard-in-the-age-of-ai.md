@@ -116,8 +116,11 @@ What this model does _not_ support is user-level authorization. When a teacher l
 
 The Ed-Fi [Analytics Middle Tier](/reference/analytics-middle-tier/amt-overview) addressed this gap for direct database consumers by providing [row-level security views](/reference/analytics-middle-tier/user-guide/patterns-for-row-level-user-security) that map users to authorization scopes — district, school, section, or individual student. These views support both dynamic authorization (time-sensitive, based on current enrollment) and static authorization (broader access without temporal restrictions). But these views are SQL constructs tied to the ODS database; they are not accessible through the API, and they are not designed for the kinds of downstream data stores where AI and analytics workloads should run.
 
-> [!WARNING]
-> The Analytics Middle Tier is no longer supported by the Ed-Fi Alliance. The patterns it introduced remain relevant, but the community needs to develop new implementations for modern data platforms.
+:::warning
+
+The Analytics Middle Tier is no longer supported by the Ed-Fi Alliance. The patterns it introduced remain relevant, but the community needs to develop new implementations for modern data platforms.
+
+:::
 
 ### The Prompt Injection Threat
 
@@ -368,8 +371,11 @@ In this model, the AI system cannot construct arbitrary queries. It can only inv
 
 Whether the Ed-Fi Alliance should provide an official MCP server interface — and whether it should sit on top of the semantic layer, the Ed-Fi API, or both — is an important architectural question that warrants community input.
 
-> [!NOTE]
-> A generally accepted best practice is to implement business logic such as aggregations and calculations on the semantic layer; an MCP server should focus on orchestrating these operations rather than performing complex computations itself. This ensures consistency, accuracy, and adherence to authorization rules.
+:::note
+
+A generally accepted best practice is to implement business logic such as aggregations and calculations on the semantic layer; an MCP server should focus on orchestrating these operations rather than performing complex computations itself. This ensures consistency, accuracy, and adherence to authorization rules.
+
+:::
 
 ## Designing for Trustworthy AI Responses
 
