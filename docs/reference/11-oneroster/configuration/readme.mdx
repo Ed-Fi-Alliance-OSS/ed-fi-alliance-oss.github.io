@@ -2,24 +2,24 @@ import DocCardList from '@theme/DocCardList';
 
 # Configuration
 
-The Ed-Fi OneRoster® Node service is configured through environment
-variables, supplied via `.env` or the hosting environment. This section
-documents the supported variables, their runtime behavior, and the
-measured performance envelope on a reference dataset.
+The Ed-Fi OneRoster® Node service is configured through environment variables,
+supplied via `.env` or the hosting environment. This section documents the
+supported variables, their runtime behavior, and the tuning decisions that
+affect refresh cadence and API response time.
 
-- [Environment variables](./environment-variables.md). Full table of
-  supported variables grouped by concern (database, OAuth, CORS, rate
-  limiting, scheduling).
-- [OAuth and JWT](./oauth-and-jwt.md). Token validation modes, JWKS
-  versus PEM-based verification, OneRoster v1.2 scope expectations,
-  and integration with the Ed-Fi ODS / API token issuer.
+- [Environment variables](./environment-variables.md). Full table of supported
+  variables grouped by concern (database, OAuth, CORS, rate limiting,
+  scheduling).
+- [OAuth and JWT](./oauth-and-jwt.md). Token validation modes, JWKS versus
+  PEM-based verification, OneRoster v1.2 scope expectations, and integration
+  with the Ed-Fi ODS / API token issuer.
 - [CORS, rate limiting, and proxy](./cors-rate-limit-proxy.md). Origin
-  allowlisting, request rate limits, and trust-proxy behavior when the
-  service runs behind IIS, NGINX, or another reverse proxy.
-- [Performance](./performance.md). Measured refresh and API latency on
-  a reference dataset, for sizing and cadence planning.
+  allowlisting, request rate limits, and trust-proxy behavior when the service
+  runs behind IIS, NGINX, or another reverse proxy.
+- [Performance](./performance.md). Tuning guidance for refresh cadence, client
+  access patterns, and sizing; measured numbers live with the service source.
 
-Deployment-specific setup steps are covered under [Getting
-Started](../getting-started/readme.mdx).
+Deployment-specific setup steps are covered under
+[Getting Started](../getting-started/readme.mdx).
 
 <DocCardList />
