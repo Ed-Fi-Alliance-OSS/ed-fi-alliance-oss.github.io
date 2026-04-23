@@ -1,6 +1,6 @@
 # Testing Requirements
 
-The Ed-Fi Data Standard have as their goal the capture and exchange of deep
+The Ed-Fi Data Standard has as its goal the capture and exchange of deep
 semantics in K–12 data via efficient processes that do not overburden K–12
 teachers, staff, or other stakeholders, nor lead to overly complex school IT
 systems. These factors place a high bar on acceptable product behavior. The
