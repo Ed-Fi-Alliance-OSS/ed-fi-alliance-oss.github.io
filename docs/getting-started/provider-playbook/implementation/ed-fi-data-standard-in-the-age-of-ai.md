@@ -538,3 +538,7 @@ The Ed-Fi Alliance invites the community to a **short-term special interest grou
 7. **Prioritization.** Given the Alliance's limited resources, which of these problems and solutions should be addressed first? Where can the community contribute most effectively?
 
 We believe that the Ed-Fi Data Standard is not just compatible with the AI era — it is essential to it. But realizing that potential requires deliberate investment in the architectures, patterns, and standards that bridge operational interoperability and AI-ready analytics. We look forward to building that future together.
+
+---
+
+_This white paper was developed by the Ed-Fi Alliance. It was substantially written with the help of an AI assistant based on a detailed outline and additional conversational elicitation with Stephen Fuqua, Head of Product Development. For questions, comments, or to express interest in the summer 2026 SIG, please respond [to this survey](https://forms.gle/J5iCPb7AoUKWixqU6)._
