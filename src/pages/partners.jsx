@@ -35,18 +35,28 @@ function Main() {
       <div className="container">
         <div className="row margin-bottom--lg">
           <div className="col">
-            For general information on the Ed-Fi Alliance Partner Program, see{' '}
-            <Link to="https://www.ed-fi.org/partner-program/">
-              Become an Ed-Fi Alliance Partner
-            </Link>{' '}
-            on the main website.
+            <p>
+              For general information on the Ed-Fi Alliance Partner Program, see{' '}
+              <Link to="https://www.ed-fi.org/partner-program/">
+                Become an Ed-Fi Alliance Partner
+              </Link>{' '}
+              on the main website.
+            </p>
+            <p>
+              When describing your product’s integration with the Ed‑Fi Data
+              Standard, it’s important to communicate clearly, accurately, and
+              consistently with the Ed‑Fi Alliance’s brand, trademark, and
+              language guidelines. For more information, see the{' '}
+              <Link to="/partners/brand-guidelines">
+                Ed-Fi Alliance Brand Guidelines for Partners
+              </Link>
+              .
+            </p>
           </div>
         </div>
         <div className="row margin-bottom--lg">
           <div className="col">
-            <Heading as="h2">
-              Certification
-            </Heading>
+            <Heading as="h2">Certification</Heading>
             <p>
               Certifications allow product developers to demonstrate a
               product's fidelity to the Ed-Fi Data Standard and guidelines, and for
@@ -70,9 +80,7 @@ function Main() {
             </Link>
           </div>
           <div className="col">
-            <Heading as="h2">
-              Badging
-            </Heading>
+            <Heading as="h2">Badging</Heading>
             <p>
               Ed-Fi Badges allow product developers to demonstrate support for
               Ed-Fi Data Standard and the Ed-Fi Technology Suite, particularly in areas that are not

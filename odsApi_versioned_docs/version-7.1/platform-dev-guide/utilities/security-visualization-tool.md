@@ -29,7 +29,7 @@ not detected in the default installation path.
   \\Ed-Fi-ODS\\Utilities\\GenerateSecurityGraphs\\GenerateSecurityGraphs.sln,
   and build the solution.
 * Open a Console window and navigate to
-  \\Ed-Fi-ODS\\Utilities\\GenerateSecurityGraphs\\GenerateSecurityGraphs\\bin\\Debug\\net6.0.
+  \\Ed-Fi-ODS\\Utilities\\GenerateSecurityGraphs\\GenerateSecurityGraphs\\bin\\Debug\\net8.0.
 * Run `GenerateSecurityGraphs.exe --help` to view the parameters that can be
   passed to the application.
 
