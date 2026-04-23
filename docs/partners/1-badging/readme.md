@@ -4,7 +4,7 @@ Ed-Fi Badges allow product developers to demonstrate support for the Ed-Fi Data 
 and Technology Suite, particularly in areas that are not yet covered by an [Ed-Fi
 Certification](../certification).
 
-Many products that use Ed-Fi Data Standardized APIs or integrate natively with Ed-Fi
+Many products that use the Ed-Fi Data Standard or integrate natively with Ed-Fi
 technology tools (such as
 the [Ed-Fi ODS/API](/reference/ods-api-platform))
 are forging new ground in terms of defining data integration use cases valuable
