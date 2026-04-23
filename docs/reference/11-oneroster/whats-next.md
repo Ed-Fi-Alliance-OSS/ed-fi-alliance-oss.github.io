@@ -4,6 +4,18 @@ sidebar_position: 7
 
 # What's Next
 
+:::warning Reviewer question — Ed-Fi Alliance and 1EdTech®
+
+This page mixes exploratory direction with items the Steering Committee
+has not yet scoped. Its public presence on docs.ed-fi.org may create
+expectations the joint effort does not want to set. Reviewers:
+**decide whether this page should remain published**, move to a
+partner-only location, or be reduced to a pointer at
+[1edtech.org/about/partners/ed-fi](https://www.1edtech.org/about/partners/ed-fi).
+Resolve before GA.
+
+:::
+
 This page lists the OneRoster® service work areas that are under
 active discussion or exploration beyond the current release. The
 items below are informed by community input gathered at Ed-Fi Tech
@@ -14,14 +26,6 @@ community.
 
 For the contextual background on the joint effort, see the section
 landing's [Why this exists](./readme.mdx#why-this-exists) beat.
-
-:::note
-
-This page describes exploratory work. Treat it as a statement of
-direction, not a release plan. Specifics, including delivery timing,
-will land in the affected pages when a decision is made.
-
-:::
 
 ## In active exploration
 

@@ -1,108 +1,65 @@
 # Deploy on Microsoft SQL Server
 
-This page walks through installing the Ed-Fi OneRoster® service against
-an Ed-Fi ODS that runs on Microsoft SQL Server. The SQL Server variant
+This page covers running the Ed-Fi OneRoster® Node service against an
+Ed-Fi ODS that runs on Microsoft SQL Server. The SQL Server variant
 uses tables and stored procedures in the `oneroster12` schema (rather
 than materialized views) and relies on SQL Server Agent to drive
 scheduled refreshes.
+
+Two distinct steps are involved:
+
+- **Schema deployment.** A one-time install of the `oneroster12`
+  schema, refresh stored procedures, and SQL Server Agent job into
+  each ODS database the service will serve. Uses direct ODS
+  credentials.
+- **Runtime configuration.** The running service connects to the ODS
+  API's `EdFi_Admin` database (not an ODS directly) and resolves the
+  correct ODS from JWT claims on each request.
 
 ## Prerequisites
 
 - SQL Server 2016 or later. This is required for the JSON functions used
   by the refresh procedures.
-- An Ed-Fi ODS database on SQL Server, reachable from where the
-  OneRoster Node service will run.
-- A database account with permissions to create schemas, tables, stored
-  procedures, and SQL Server Agent jobs. `db_owner` on the target
-  database is typical.
+- An Ed-Fi ODS database on SQL Server reachable from where the
+  deployment script will run, plus the ODS API's `EdFi_Admin` database
+  reachable from where the OneRoster Node service will run.
 - SQL Server Agent must be running. For SQL Server in Docker, add
   `MSSQL_AGENT_ENABLED=True` to the SQL Server container environment.
-- Node.js 18 LTS or later, for running both the deployment script and
-  the service.
+- The ODS API's `ApiSettings:OdsConnectionStringEncryptionKey` value.
+  The OneRoster service uses the same key to decrypt the ODS
+  connection strings it reads from `EdFi_Admin.OdsInstances`.
+- Node.js 18 LTS or later
 
-## Step 1. Deploy the SQL artifacts
+## Step 1. Deploy the SQL artifacts and seed data
 
-The deployment is scripted in `standard/deploy-mssql.js`, a Node.js
-program that connects to the target SQL Server, checks prerequisites,
-and applies the SQL artifacts in phases:
+Install the `oneroster12` schema, refresh stored procedures, and the
+SQL Server Agent job into your ODS database, then run the initial
+population of the OneRoster tables. The commands and the
+`standard/.env.deploy` template live with the schema source:
 
-1. Foundation: schema, OneRoster descriptors, and descriptor mappings
-2. Core: tables, indexes, and refresh stored procedures for each
-   OneRoster entity
-3. Orchestration: the master refresh procedure and the SQL Server Agent
-   job that drives scheduled refreshes
+- [standard/README_mssql.md](https://github.com/Ed-Fi-Alliance-OSS/edfi-oneroster/blob/main/standard/README_mssql.md)
+  — automated (`node standard/deploy-mssql.js`) and manual paths for
+  Data Standard 4.0 and 5.x, plus the initial `sp_refresh_*` calls to
+  seed data.
 
-From a clone of the OneRoster service repository:
+Run the deployment once per ODS instance you intend to serve. After
+the initial population, the Agent job takes over and refreshes every
+15 minutes.
 
-```bash
-git clone https://github.com/Ed-Fi-Alliance-OSS/edfi-oneroster.git
-cd edfi-oneroster
-npm install
+## Step 2. Configure the Node service
 
-# Default (Data Standard 5.0 through 5.2)
-node standard/deploy-mssql.js
-
-# Data Standard 4.0
-node standard/deploy-mssql.js ds4
-```
-
-The script reads connection settings from `.env`. See [Environment
-variables](../configuration/environment-variables.md).
-
-To run the SQL manually instead, apply the files in this order:
-
-```text
-00_setup.sql
-01_descriptors.sql
-02_descriptorMappings.sql
-academic_sessions.sql
-orgs.sql
-courses.sql
-classes.sql
-demographics.sql
-users.sql
-enrollments.sql
-master_refresh.sql
-sql_agent_job.sql
-```
-
-They live under `standard/{dataStandardVersion}/artifacts/mssql/core/`
-(core scripts) and `mssql/orchestration/` (master refresh and the Agent
-job).
-
-## Step 2. Populate the OneRoster tables
-
-The deployment script creates the tables and procedures but does not
-run the initial population. Execute the refresh procedures once, in
-order, to seed data:
-
-```sql
-EXEC oneroster12.sp_refresh_orgs;
-EXEC oneroster12.sp_refresh_academicsessions;
-EXEC oneroster12.sp_refresh_courses;
-EXEC oneroster12.sp_refresh_classes;
-EXEC oneroster12.sp_refresh_demographics;
-EXEC oneroster12.sp_refresh_users;
-EXEC oneroster12.sp_refresh_enrollments;
-
--- Verify row counts
-SELECT 'orgs' AS [Table], COUNT(*) FROM oneroster12.orgs
-UNION ALL SELECT 'users', COUNT(*) FROM oneroster12.users
-UNION ALL SELECT 'classes', COUNT(*) FROM oneroster12.classes;
-```
-
-After the initial run, the SQL Server Agent job takes over and
-refreshes every 15 minutes.
-
-## Step 3. Configure the Node service
-
-Copy `.env.example` to `.env` and set at least:
+Copy `.env.example` to `.env` at the repository root and set at least:
 
 - `DB_TYPE=mssql`
-- `MSSQL_SERVER`, `MSSQL_DATABASE`, `MSSQL_USER`, `MSSQL_PASSWORD`, and
-  `MSSQL_PORT`
-- `MSSQL_ENCRYPT` and `MSSQL_TRUST_SERVER_CERTIFICATE` per your
-  server's TLS setup
+- `CONNECTION_CONFIG` — JSON with an `adminConnection` value pointing
+  at the ODS API's `EdFi_Admin` database. Example:
+
+  ```env
+  CONNECTION_CONFIG={"adminConnection":"server=localhost;database=EdFi_Admin;user id=sa;password=P@ssw0rd;encrypt=false;TrustServerCertificate=true"}
+  ```
+
+- `ODS_CONNECTION_STRING_ENCRYPTION_KEY` — the base64 AES key that
+  matches the ODS API's `ApiSettings:OdsConnectionStringEncryptionKey`
 - `OAUTH2_AUDIENCE`, `OAUTH2_ISSUERBASEURL`, `OAUTH2_TOKENSIGNINGALG`.
   The server fails fast on startup if the first two are missing.
 - `OAUTH2_PUBLIC_KEY_PEM` if you want PEM-based JWT verification.
@@ -110,11 +67,18 @@ Copy `.env.example` to `.env` and set at least:
 - `PORT`, `CORS_ORIGINS`, and `TRUST_PROXY` as appropriate for your
   environment
 
+For multi-tenant deployments, set `MULTITENANCY_ENABLED=true` and use
+`TENANTS_CONNECTION_CONFIG` (a JSON map of tenant → `adminConnection`)
+instead of `CONNECTION_CONFIG`. For school-year or other context
+routing, set `ODS_CONTEXT_ROUTE_TEMPLATE`. See [Environment
+variables](../configuration/environment-variables.md#connection-and-tenancy)
+for the full reference.
+
 See [OAuth and JWT](../configuration/oauth-and-jwt.md) and [Environment
 variables](../configuration/environment-variables.md) for the full
 list.
 
-## Step 4. Install and run
+## Step 3. Install and run
 
 ```bash
 cd edfi-oneroster
@@ -130,72 +94,19 @@ curl -i http://localhost:3000/ims/oneroster/rostering/v1p2/orgs \
   -H "Authorization: Bearer <token>"
 ```
 
+The bearer token must carry the `odsInstanceId` claim (and `tenantId`
+in multi-tenant mode). See [JWT claims used for ODS
+resolution](../configuration/oauth-and-jwt.md#jwt-claims-used-for-ods-resolution).
+
 ## Refresh behavior
 
 A SQL Server Agent job named `OneRoster Data Refresh` runs the master
-refresh procedure every 15 minutes. Common operations:
-
-```sql
--- Refresh all tables immediately
-EXEC oneroster12.sp_refresh_all;
-
--- Refresh a single table
-EXEC oneroster12.sp_refresh_users;
-
--- Continue past errors
-EXEC oneroster12.sp_refresh_all @SkipOnError = 1;
-
--- Ignore "recently completed" check
-EXEC oneroster12.sp_refresh_all @ForceRefresh = 1;
-```
-
-Job management:
-
-```sql
--- Start the refresh job manually
-EXEC msdb.dbo.sp_start_job @job_name = 'OneRoster Data Refresh';
-
--- Temporarily disable scheduled refreshes
-EXEC msdb.dbo.sp_update_job
-  @job_name = 'OneRoster Data Refresh',
-  @enabled  = 0;
-
--- Re-enable
-EXEC msdb.dbo.sp_update_job
-  @job_name = 'OneRoster Data Refresh',
-  @enabled  = 1;
-```
-
-Status and history live in `oneroster12.refresh_history` and
-`oneroster12.refresh_errors`:
-
-```sql
--- Recent refreshes
-SELECT * FROM oneroster12.refresh_history
-ORDER BY refresh_start DESC;
-
--- Recent errors
-SELECT * FROM oneroster12.refresh_errors
-ORDER BY error_date DESC;
-```
-
-## Changing the refresh cadence
-
-To change from 15-minute intervals, adjust the SQL Server Agent
-schedule:
-
-```sql
--- Every 30 minutes
-EXEC msdb.dbo.sp_update_schedule
-  @name = 'OneRoster Refresh Schedule',
-  @freq_subday_interval = 30;
-
--- Hourly
-EXEC msdb.dbo.sp_update_schedule
-  @name = 'OneRoster Refresh Schedule',
-  @freq_subday_type     = 8,  -- 8 = Hours
-  @freq_subday_interval = 1;
-```
+refresh procedure every 15 minutes. Refresh status and errors are
+tracked in the `oneroster12.refresh_history` and
+`oneroster12.refresh_errors` tables. For the full set of operational
+commands — manually triggering a refresh, enabling or disabling the
+job, changing cadence, and querying refresh history — see
+[standard/README_mssql.md](https://github.com/Ed-Fi-Alliance-OSS/edfi-oneroster/blob/main/standard/README_mssql.md).
 
 ## Troubleshooting
 
@@ -204,7 +115,8 @@ EXEC msdb.dbo.sp_update_schedule
 | Data not refreshing on schedule | SQL Server Agent is running. Confirm `enabled = 1` on the `OneRoster Data Refresh` job. |
 | `CREATE SCHEMA` or `CREATE PROCEDURE` fails during deployment | The deployment user has `db_owner` (or equivalent) on the target database. |
 | JSON-related errors during refresh | SQL Server is 2016 or later. Run `SELECT @@VERSION`. |
-| Slow refresh | Review `sys.dm_db_index_usage_stats` for the `oneroster12` schema and consider updating statistics. |
+| HTTP 403 "ODS Instance identifier is required" | The JWT is missing the `odsInstanceId` claim. Check the issuer is populating it. |
+| HTTP 401 on every request with a valid-looking token | `ODS_CONNECTION_STRING_ENCRYPTION_KEY` does not match the ODS API's `ApiSettings:OdsConnectionStringEncryptionKey`, so the resolved ODS connection string cannot be decrypted. |
 
 The SQL Server variant matches the PostgreSQL variant's output
 record-for-record (verified by `tests/compare-api.js` and

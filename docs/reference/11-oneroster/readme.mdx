@@ -3,166 +3,160 @@ import DocCardList from '@theme/DocCardList';
 # Ed-Fi OneRoster®
 
 The Ed-Fi OneRoster service is a Node.js application that serves a
-[1EdTech® OneRoster v1.2
-Rostering](https://www.imsglobal.org/spec/oneroster/v1p2) API from data
-in an Ed-Fi ODS. It complements the Ed-Fi ODS / API, which remains the
-system of record and continues to serve the full Ed-Fi Data Standard
+[1EdTech® OneRoster v1.2 Rostering](https://www.imsglobal.org/spec/oneroster/v1p2)
+API from data in an Ed-Fi ODS. It complements the Ed-Fi ODS / API, which remains
+the system of record and continues to serve the full Ed-Fi Data Standard
 resource set.
 
-Use the OneRoster service when a vendor application expects a
-OneRoster v1.2 feed and the source of truth for rostering data lives
-in an Ed-Fi ODS. The service reads the ODS through a separate
-`oneroster12` schema (materialized views on PostgreSQL, tables fed by
-stored procedures on Microsoft SQL Server) and exposes the standard
-OneRoster rostering endpoints over OAuth 2.0. It is released
-independently of the Ed-Fi ODS / API and currently supports Ed-Fi Data
-Standard 4.0 and 5.0 through 5.2 from a single code base.
+Use the OneRoster service when a vendor application expects a OneRoster v1.2
+feed and the source of truth for rostering data lives in an Ed-Fi ODS. The
+service reads the ODS through a separate `oneroster12` schema (materialized
+views on PostgreSQL, tables fed by stored procedures on Microsoft SQL Server)
+and exposes the standard OneRoster rostering endpoints over OAuth 2.0. It
+connects to the ODS / API's `EdFi_Admin` database and selects the correct ODS
+instance at request time based on claims on the inbound JWT, supporting
+single-tenant, multi-tenant, and context-routed (for example, school-year-based)
+deployments. It is released independently of the Ed-Fi ODS / API and currently
+supports Ed-Fi Data Standard 4.0 and 5.0 through 5.2 from a single code base.
 
 ## Why this exists
 
-Rostering data in US K-12 is fragmented. Vendors consume it through
-some combination of OneRoster CSV drops, custom SIS feeds,
-district-by-district pipelines, and ad-hoc metadata extensions.
-States and service providers carry the support cost. That pattern
-produces inconsistent data across vendor deployments, slow onboarding
-at the start of each school year, and ongoing integration tickets
-that take educator and IT time away from instruction.
+Rostering data in US K-12 is fragmented. Vendors consume it through some
+combination of OneRoster CSV drops, custom SIS feeds, district-by-district
+pipelines, and ad-hoc metadata extensions. States and service providers carry
+the support cost. That pattern produces inconsistent data across vendor
+deployments, slow onboarding at the start of each school year, and ongoing
+integration tickets that take educator and IT time away from instruction.
 
-The Ed-Fi OneRoster service is the first production artifact of a
-joint effort between the Ed-Fi Alliance and 1EdTech® to address that
-fragmentation. The two standards are kept in their respective lanes:
-the Ed-Fi Data Standard remains the system of record for the full
-K-12 data set, and OneRoster v1.2 remains the standard vendors
-already use for rostering reads. The service bridges them by serving
-a standards-compliant OneRoster v1.2 feed from data that already
-exists in an Ed-Fi ODS.
+The Ed-Fi OneRoster service is the first production artifact of a joint effort
+between the Ed-Fi Alliance and 1EdTech® to address that fragmentation. The two
+standards are kept in their respective lanes: the Ed-Fi Data Standard remains
+the system of record for the full K-12 data set, and OneRoster v1.2 remains the
+standard vendors already use for rostering reads. The service bridges them by
+serving a standards-compliant OneRoster v1.2 feed from data that already exists
+in an Ed-Fi ODS.
 
-The service replaces three patterns a state or MSP typically assembles
-on its own: bespoke OneRoster CSV generators, vendor-specific
-integration endpoints, and custom extensions layered onto the
-OneRoster specification to carry Ed-Fi data it does not model.
-Because the OneRoster views read from the same ODS database that the
-Ed-Fi ODS / API writes to, a consumer reading a roster through
-OneRoster and a consumer reading the equivalent Ed-Fi resources
-through the Ed-Fi API see the same source of truth.
+The service replaces three patterns a state or MSP typically assembles on its
+own: bespoke OneRoster CSV generators, vendor-specific integration endpoints,
+and custom extensions layered onto the OneRoster specification to carry Ed-Fi
+data it does not model. Because the OneRoster views read from the same ODS
+databases that the Ed-Fi ODS / API writes to, a consumer reading a roster
+through OneRoster and a consumer reading the equivalent Ed-Fi resources through
+the Ed-Fi API see the same source of truth.
 
-The direction of the work, including which use cases the service
-should expand to cover next, is set by a joint Ed-Fi Alliance and
-1EdTech Steering Committee in consultation with the pilot community.
-See [What's next](./whats-next.md) for the in-flight items and
+The direction of the work, including which use cases the service should expand
+to cover next, is set by a joint Ed-Fi Alliance and 1EdTech Steering Committee
+in consultation with the pilot community. See [What's next](./whats-next.md) for
+the in-flight items and
 [1edtech.org/about/partners/ed-fi](https://www.1edtech.org/about/partners/ed-fi)
 for the current public summary.
 
 ## How the service fits with the Ed-Fi ODS / API and Data Standard
 
-The service does not replace the Ed-Fi ODS / API. It sits alongside
-it, reads from the same ODS database, and translates a slice of the
-Ed-Fi Data Standard into the smaller OneRoster v1.2 model.
+The service does not replace the Ed-Fi ODS / API. It sits alongside it, reads
+from the same ODS databases, and translates a slice of the Ed-Fi Data Standard
+into the smaller OneRoster v1.2 model.
 
-- The ODS / API continues to write and read Ed-Fi resources against
-  the ODS database.
-- The OneRoster service reads from the same ODS database through a
-  separate `oneroster12` schema.
-- OAuth 2.0 tokens for OneRoster clients are issued by the Ed-Fi
-  ODS / API or by an external identity provider configured to match.
-  See [OAuth and JWT](./configuration/oauth-and-jwt.md) for the
-  specifics.
-- Refresh of the derived OneRoster views runs on a schedule,
-  independent of ODS / API traffic. The default cadence is every 15
-  minutes.
+- The ODS / API continues to write and read Ed-Fi resources against the ODS
+  database.
+- The OneRoster service connects to the ODS / API's `EdFi_Admin` database and,
+  for each request, resolves the correct ODS instance from the `odsInstanceId`
+  (and optionally `tenantId` / `odsInstances`) claims on the inbound JWT. Once
+  the ODS is resolved, the service reads through a separate `oneroster12` schema
+  installed in that ODS.
+- The same deployment can serve a single ODS, multiple tenants, or multiple ODS
+  instances selected by a URL segment such as school year. See
+  [Environment variables](./configuration/environment-variables.md#connection-and-tenancy).
+- OAuth 2.0 tokens for OneRoster clients are issued by the Ed-Fi ODS / API or by
+  an external identity provider configured to match (the issuer populates the
+  Ed-Fi-specific claims above). See
+  [OAuth and JWT](./configuration/oauth-and-jwt.md) for the specifics.
+- Refresh of the derived OneRoster views runs on a schedule, independent of ODS
+  / API traffic. The default cadence is every 15 minutes.
 
-OneRoster v1.2 defines a smaller, rostering-focused set of entities
-than the Ed-Fi Data Standard. The service bridges the two in three
-ways:
+OneRoster v1.2 defines a smaller, rostering-focused set of entities than the
+Ed-Fi Data Standard. The service bridges the two in three ways:
 
-- OneRoster `org.type` is derived from Ed-Fi entity tables (school,
-  LEA, SEA), not from `EducationOrganizationCategoryDescriptor`. See
+- OneRoster `org.type` is derived from Ed-Fi entity tables (school, LEA, SEA),
+  not from `EducationOrganizationCategoryDescriptor`. See
   [Organization mapping](./data-model/organization-mapping.md).
-- A small set of Ed-Fi descriptors is mapped to OneRoster
-  enumerations through rows in `edfi.descriptormapping` that are
-  seeded during deployment. See [Descriptor
-  mappings](./data-model/descriptor-mappings.md).
-- OneRoster school-year academic sessions are synthesized from
-  Ed-Fi calendar events.
+- A small set of Ed-Fi descriptors is mapped to OneRoster enumerations through
+  rows in `edfi.descriptormapping` that are seeded during deployment. See
+  [Descriptor mappings](./data-model/descriptor-mappings.md).
+- OneRoster school-year academic sessions are synthesized from Ed-Fi calendar
+  events.
 
-Clients receive OneRoster-spec-compliant JSON. The Ed-Fi natural
-keys are preserved in each record's `metadata` field so that records
-can be traced back to the ODS without joining on the hashed
-`sourcedId`.
+Clients receive OneRoster-spec-compliant JSON. The Ed-Fi natural keys are
+preserved in each record's `metadata` field so that records can be traced back
+to the ODS without joining on the hashed `sourcedId`.
 
 ## Supported OneRoster v1.2 endpoints
 
-The service implements the core Rostering endpoints of OneRoster
-v1.2 under `/ims/oneroster/rostering/v1p2/`, accessed with an
-OAuth 2.0 bearer token. See [Endpoint to Ed-Fi source
-mapping](./data-model/endpoint-source-mapping.md) for the full 
-list of supported endpoints, query parameters, and how Ed-Fi entities are mapped to OneRoster entities.
+The service implements the core Rostering endpoints of OneRoster v1.2 under
+`/ims/oneroster/rostering/v1p2/`, accessed with an OAuth 2.0 bearer token. See
+[Endpoint to Ed-Fi source mapping](./data-model/endpoint-source-mapping.md) for
+the full list of supported endpoints, query parameters, and how Ed-Fi entities
+are mapped to OneRoster entities.
 
 ## Live API reference
 
-The OneRoster service mounts an interactive Swagger UI at `/docs` and
-exposes the raw OpenAPI 3.0 specification at `/swagger.json`. The
-live docs let a consumer exercise every endpoint, inspect the full
-schema, and authenticate with an OAuth 2.0 bearer token directly from
-the page.
+The OneRoster service mounts an interactive Swagger UI at `/docs` and exposes
+the raw OpenAPI 3.0 specification at `/swagger.json`. The live docs let a
+consumer exercise every endpoint, inspect the full schema, and authenticate with
+an OAuth 2.0 bearer token directly from the page.
 
-- Staging: [oneroster.touchdownllc.com/docs](https://oneroster.touchdownllc.com/docs/).
-- Production: to be hosted under [api.ed-fi.org](https://api.ed-fi.org/)
-  at general-availability release. The production URL will be added
-  here when it is published.
+- Staging:
+  [oneroster.touchdownllc.com/docs](https://oneroster.touchdownllc.com/docs/).
+- Production: to be hosted under [api.ed-fi.org](https://api.ed-fi.org/) at
+  general-availability release. The production URL will be added here when it is
+  published.
 
-{/* Review (Vinaya): once the OneRoster service is published at the
-production host under api.ed-fi.org, paste the final URL into the
-Production bullet above and remove this reviewer note. */}
+:::note
 
-This mirrors the live-docs experience the Ed-Fi ODS / API has long
-offered (for example, the ODS / API 7.1 Swagger UI at
-[api.ed-fi.org/v7.1/docs/swagger](https://api.ed-fi.org/v7.1/docs/swagger)),
-so an operator already familiar with the ODS / API live docs should
-find the OneRoster equivalent immediately recognizable.
+The staging URL is a temporary preview host and will be removed once the
+production Swagger UI is published under `api.ed-fi.org`. Do not rely on it for
+anything beyond evaluation.
+
+:::
+
+This mirrors the live-docs experience the Ed-Fi ODS / API has long offered (for
+example, the ODS / API 7.1 Swagger UI at
+[api.ed-fi.org/v7.1/docs/swagger](https://api.ed-fi.org/v7.1/docs/swagger)), so
+an operator already familiar with the ODS / API live docs should find the
+OneRoster equivalent immediately recognizable.
 
 ## OneRoster conformance
 
-The service is certified by 1EdTech® against the OneRoster v1.2
-Rostering Core service. See [OneRoster
-conformance](./conformance.md) for the certified scope, the
-endpoints in and out of the Core, and how to reproduce the
-conformance result on your own deployment.
+The service is certified by 1EdTech® against the OneRoster v1.2 Rostering Core
+service. See [OneRoster conformance](./conformance.md) for the certified scope,
+the endpoints in and out of the Core, and how to reproduce the conformance
+result on your own deployment.
 
 ## Integration with the Ed-Fi ODS / API
 
-The Ed-Fi ODS / API (version 7.3 and later) exposes feature-management
-settings and claim-set entries that govern how OneRoster clients are
-issued tokens and which scopes they may request. For the ODS / API-side
-configuration, see the [Features
-reference](/reference/ods-api/platform-dev-guide/features/) in the ODS / API
-v7.3 platform developer guide. The OneRoster entry on that page
-documents the `FeatureManagement:OneRoster` setting and the related
-claim-set wiring.
+The Ed-Fi ODS / API (version 7.3 and later) exposes feature-management settings
+and claim-set entries that govern how OneRoster clients are issued tokens and
+which scopes they may request. For the ODS / API-side configuration, see the
+[Features reference](/reference/ods-api/platform-dev-guide/features/) in the ODS
+/ API v7.3 platform developer guide. The OneRoster entry on that page documents
+the `FeatureManagement:OneRoster` setting and the related claim-set wiring.
 
 ## Supported Data Standard versions
 
-The SQL artifacts for each Data Standard version live in the service
-repository under `standard/{dataStandardVersion}/artifacts/{pgsql|mssql}/core/`.
+The SQL artifacts for each Data Standard version live in the service repository
+under `standard/{dataStandardVersion}/artifacts/{pgsql|mssql}/core/`.
 
-{/* Review (Vinaya): confirm target timing for Data Standard 6 support
-in the OneRoster service. The row below is marked "No" with no date
-attached. Update once the roadmap position is settled — either with a
-target release, a "Planned for <year>" note, or by moving 6 out of
-the table if it is not on the near-term roadmap. */}
+| Data Standard | Supported | Notes                                                |
+| ------------- | --------- | ---------------------------------------------------- |
+| 6             | No        | Not yet supported. Planned for a future release.     |
+| 5.2           | Yes       | Default artifact set. Compatible with ODS / API 7.3. |
+| 5.1           | Yes       | Uses the 5.2 SQL artifacts.                          |
+| 5.0           | Yes       | Uses the 5.2 SQL artifacts.                          |
+| 4.0           | Yes       | Separate artifact set under `standard/4.0.0/`.       |
 
-| Data Standard | Supported | Notes |
-| --- | --- | --- |
-| 6 | No | Not yet supported. Planned for a future release. |
-| 5.2 | Yes | Default artifact set. Compatible with ODS / API 7.3. |
-| 5.1 | Yes | Uses the 5.2 SQL artifacts. |
-| 5.0 | Yes | Uses the 5.2 SQL artifacts. |
-| 4.0 | Yes | Separate artifact set under `standard/4.0.0/`. |
-
-The OneRoster service follows a release cadence independent of the
-Ed-Fi ODS / API. This documentation is not versioned. If the service
-accumulates breaking changes, per-version documentation will be
-introduced at that time.
+The OneRoster service follows a release cadence independent of the Ed-Fi ODS /
+API. This documentation is not versioned. If the service accumulates breaking
+changes, per-version documentation will be introduced at that time.
 
 ## Continue reading
 

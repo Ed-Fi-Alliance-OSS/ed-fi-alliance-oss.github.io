@@ -92,6 +92,82 @@ error:
 }
 ```
 
+## JWT claims used for ODS resolution
+
+In addition to the standard OAuth claims above, the service reads
+Ed-Fi-specific claims from the token payload to determine which ODS
+database to query for the request. These claims are issued by the
+Ed-Fi ODS / API as part of its OneRoster token endpoint.
+
+| Claim | Type | Purpose |
+| --- | --- | --- |
+| `odsInstanceId` | integer | Identifies the authorized ODS instance for the caller. The service uses this ID to look up the ODS connection string in `EdFi_Admin.OdsInstances`. Required on all data-plane requests; missing values return HTTP 403. |
+| `odsInstances` | JSON string | Optional. When the caller is authorized for multiple ODS instances (for example, different school years in a single-tenant-with-context deployment), carries the full list. Shape: `{"OdsInstances":[{"OdsInstanceId":1,"OdsInstanceContext":{"ContextKey":"schoolYearFromRoute","ContextValue":"2026"}}, ...]}`. |
+| `tenantId` | string | Required when the service is running with `MULTITENANCY_ENABLED=true`. Must match the `:tenantId` segment in the request URL (case-insensitive). A mismatch returns HTTP 401; an unknown tenant returns HTTP 404. |
+
+The service also reads the alternate spellings `ods_instance_id` and
+`OdsInstanceId` for `odsInstanceId`, for compatibility with
+non-Ed-Fi issuers.
+
+### How routing is resolved
+
+The service supports four flows, chosen by whether multi-tenancy and
+ODS context routing are enabled. ODS context routing is configured
+via [`ODS_CONTEXT_ROUTE_TEMPLATE`](./environment-variables.md#ods-context-routing-optional).
+
+| Flow | `MULTITENANCY_ENABLED` | `ODS_CONTEXT_ROUTE_TEMPLATE` | Route shape | ODS chosen by |
+| --- | --- | --- | --- | --- |
+| Single-tenant | `false` | _(empty)_ | `/ims/oneroster/...` | `odsInstanceId` from JWT |
+| Single-tenant with context | `false` | set | `/{contextValue}/ims/oneroster/...` | Entry in `odsInstances` whose `OdsInstanceContext` matches the route's context parameter and value |
+| Multi-tenant | `true` | _(empty)_ | `/{tenantId}/ims/oneroster/...` | `odsInstanceId` from JWT, against the tenant's admin DB |
+| Multi-tenant with context | `true` | set | `/{tenantId}/{contextValue}/ims/oneroster/...` | Matching `odsInstances` entry, against the tenant's admin DB |
+
+In all four flows:
+
+- The ODS connection string is read from `EdFi_Admin.OdsInstances` by
+  ID and decrypted with
+  [`ODS_CONNECTION_STRING_ENCRYPTION_KEY`](./environment-variables.md#admin-database-single-tenant-default).
+- In multi-tenant mode, the admin database is selected from
+  [`TENANTS_CONNECTION_CONFIG`](./environment-variables.md#multi-tenant-mode)
+  by `tenantId`. In single-tenant mode, the admin database is the one
+  named in `CONNECTION_CONFIG`.
+
+### Example token payloads
+
+**Single-tenant, single ODS:**
+
+```json
+{
+  "iss": "https://api.example.org/oauth",
+  "aud": "https://oneroster.example.org",
+  "scope": "roster-core.readonly",
+  "odsInstanceId": 1
+}
+```
+
+**Single-tenant with context (school year routing):**
+
+```json
+{
+  "iss": "https://api.example.org/oauth",
+  "aud": "https://oneroster.example.org",
+  "scope": "roster-core.readonly",
+  "odsInstances": "{\"OdsInstances\":[{\"OdsInstanceId\":1,\"OdsInstanceContext\":{\"ContextKey\":\"schoolYearFromRoute\",\"ContextValue\":\"2026\"}},{\"OdsInstanceId\":2,\"OdsInstanceContext\":{\"ContextKey\":\"schoolYearFromRoute\",\"ContextValue\":\"2027\"}}]}"
+}
+```
+
+**Multi-tenant:**
+
+```json
+{
+  "iss": "https://api.example.org/oauth",
+  "aud": "https://oneroster.example.org",
+  "scope": "roster-core.readonly",
+  "tenantId": "Tenant1",
+  "odsInstanceId": 1
+}
+```
+
 ## OneRoster v1.2 scopes
 
 Tokens must present at least one of the following scopes (space- or
@@ -118,8 +194,16 @@ Version 7.3 of the Ed-Fi ODS / API includes a
 configuration that enable the ODS / API's built-in OAuth endpoint to
 issue tokens bearing the OneRoster scopes above. The ODS / API's
 token endpoint becomes the `OAUTH2_ISSUERBASEURL` the OneRoster
-service points at. The Ed-Fi Web API signs the JWTs, and the
-OneRoster service validates them via JWKS.
+service points at. The Ed-Fi Web API signs the JWTs and populates the
+Ed-Fi-specific claims (`odsInstanceId`, `odsInstances`, and `tenantId`
+when applicable); the OneRoster service validates them via JWKS and
+uses them to resolve the correct ODS.
+
+The ODS API's `ApiSettings:OdsConnectionStringEncryptionKey` is the
+same key the OneRoster service expects as
+[`ODS_CONNECTION_STRING_ENCRYPTION_KEY`](./environment-variables.md#admin-database-single-tenant-default).
+The two must match; otherwise the service cannot decrypt the ODS
+connection strings it reads from `EdFi_Admin.OdsInstances`.
 
 For the ODS / API-side configuration (enabling the feature, creating
 OneRoster claim-set entries, issuing keys and secrets to vendor
@@ -136,10 +220,15 @@ any OAuth 2.0 authorization server that:
 2. Places `{OAUTH2_ISSUERBASEURL}` in the `iss` claim.
 3. Places `{OAUTH2_AUDIENCE}` in the `aud` claim.
 4. Includes one of the three OneRoster v1.2 scopes.
+5. Includes `odsInstanceId` (or `odsInstances` for context-routed
+   deployments) identifying the ODS instance the caller is authorized
+   for, plus `tenantId` in multi-tenant mode. See [JWT claims used for
+   ODS resolution](#jwt-claims-used-for-ods-resolution) above.
 
 This enables bridging to Auth0, Keycloak, Azure AD, or any other
 OIDC-compatible identity provider for deployments that prefer a
-dedicated identity provider for OneRoster clients.
+dedicated identity provider for OneRoster clients, provided the issuer
+can be configured to emit the Ed-Fi-specific claims.
 
 ## Quick verification
 

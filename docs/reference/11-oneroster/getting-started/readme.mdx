@@ -7,25 +7,24 @@ import TabItem from '@theme/TabItem';
 The Ed-Fi OneRoster® service is deployed on top of an existing Ed-Fi ODS
 database. Pick the deployment path that matches your environment.
 
-| Path | When to use | Status |
-| --- | --- | --- |
-| [Docker Compose (demo)](./docker-compose.md) | Spin up a local end-to-end stack (ODS / API, OneRoster, NGINX, OAuth issuer) to try the service. | Demo only, not production |
-| [Deploy on PostgreSQL](./deploy-postgres.md) | You operate an Ed-Fi ODS on PostgreSQL and want to run the OneRoster Node service natively against it. | Production-supported |
-| [Deploy on Microsoft SQL Server](./deploy-mssql.md) | You operate an Ed-Fi ODS on SQL Server and want to run the OneRoster Node service natively against it. | Production-supported |
-| [Deploy on IIS (Windows)](./deploy-iis.md) | You run the Node service on Windows Server and want IIS to host it (via `iisnode`) or front it (via a reverse proxy). | Production-supported |
+| Path                                                | When to use                                                                                                           | Status                    |
+| --------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | ------------------------- |
+| [Docker Compose (demo)](./docker-compose.md)        | Spin up a local end-to-end stack (ODS / API, OneRoster, NGINX, OAuth issuer) to try the service.                      | Demo only, not production |
+| [Deploy on PostgreSQL](./deploy-postgres.md)        | You operate an Ed-Fi ODS on PostgreSQL and want to run the OneRoster Node service natively against it.                | Production-supported      |
+| [Deploy on Microsoft SQL Server](./deploy-mssql.md) | You operate an Ed-Fi ODS on SQL Server and want to run the OneRoster Node service natively against it.                | Production-supported      |
+| [Deploy on IIS (Windows)](./deploy-iis.md)          | You run the Node service on Windows Server and want IIS to host it (via `iisnode`) or front it (via a reverse proxy). | Production-supported      |
 
 All paths end with the service listening on an OAuth-protected
-`/ims/oneroster/rostering/v1p2/` URL backed by the same Ed-Fi ODS schema.
-Only the hosting and database specifics differ.
+`/ims/oneroster/rostering/v1p2/` URL backed by the same Ed-Fi ODS schema. Only
+the hosting and database specifics differ.
 
 ## Database engines
 
 <Tabs>
 <TabItem value="pg" label="PostgreSQL" default>
 
-The PostgreSQL implementation uses materialized views in the
-`oneroster12` schema, refreshed on a schedule by
-[pg-boss](https://timgit.github.io/pg-boss/).
+The PostgreSQL implementation uses materialized views in the `oneroster12`
+schema, refreshed on a schedule by [pg-boss](https://timgit.github.io/pg-boss/).
 
 - Any PostgreSQL version supported by the corresponding Ed-Fi ODS / API line
 - Refresh cadence is configured via `PGBOSS_CRON` (default `*/15 * * * *`)
@@ -34,12 +33,11 @@ The PostgreSQL implementation uses materialized views in the
 </TabItem>
 <TabItem value="mssql" label="SQL Server">
 
-The Microsoft SQL Server implementation stores OneRoster output in
-tables that are repopulated by stored procedures on a schedule
-driven by SQL Server Agent.
+The Microsoft SQL Server implementation stores OneRoster output in tables that
+are repopulated by stored procedures on a schedule driven by SQL Server Agent.
 
-- SQL Server 2016 or later (required for the JSON functions used by
-  the refresh procedures)
+- SQL Server 2016 or later (required for the JSON functions used by the refresh
+  procedures)
 - SQL Server Agent must be running. For SQL Server in Docker, add
   `MSSQL_AGENT_ENABLED=True` to the container environment.
 - Default refresh cadence is every 15 minutes
@@ -48,26 +46,12 @@ driven by SQL Server Agent.
 </TabItem>
 </Tabs>
 
-## ODS / API sandbox images for local testing
-
-The OneRoster service reads directly from an Ed-Fi ODS database and
-works with any ODS / API deployment on a supported Data Standard.
-The ODS / API sandbox image tags below can be used to stand up a
-compatible ODS for local testing:
-
-| Data Standard | ODS / API image tag | Image |
-| --- | --- | --- |
-| 5.2 | `7.3` | `edfialliance/ods-api-db-ods-sandbox:7.3` |
-| 5.1 | `7.2` | `edfialliance/ods-api-db-ods-sandbox:7.2` |
-| 5.0 | `7.1` | `edfialliance/ods-api-db-ods-sandbox:7.1` |
-
-For Data Standard 4.0, use the matching 6.x ODS / API image line.
-
 :::tip
 
 Before deploying, confirm your ODS / API version against the
-[Supported Data Standard
-versions](../readme.mdx#supported-data-standard-versions) matrix.
+[Supported Data Standard versions](../readme.mdx#supported-data-standard-versions)
+matrix. For the current Ed-Fi ODS / API sandbox images and tags, see the
+[Ed-Fi ODS / API reference](/reference/ods-api/).
 
 :::
 

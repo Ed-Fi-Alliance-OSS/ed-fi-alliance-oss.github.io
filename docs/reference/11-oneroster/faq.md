@@ -170,9 +170,23 @@ It is not designed for real-time updates or event streaming.
 
 ### Q: Does the service support multi-tenancy?
 
-Yes. A single OneRoster service deployment can serve multiple Ed-Fi
-ODS databases as separate tenants, each with its own OneRoster
-client credentials and scope grants.
+Yes, in two forms, which can be combined:
+
+- _Multi-tenant mode._ Multiple Ed-Fi tenants, each with its own
+  `EdFi_Admin` database. Each OneRoster request carries a tenant
+  identifier in both the URL and the JWT, and the service routes to
+  the tenant's admin database before resolving the ODS.
+- _Multi-instance within a tenant._ A single `EdFi_Admin` that hosts
+  multiple ODS instances (for example, one per school year). The JWT
+  carries the list of ODS instances the caller is authorized for, and
+  the service selects among them by matching the URL's context
+  segment (typically school year).
+
+See [Connection and
+tenancy](./configuration/environment-variables.md#connection-and-tenancy)
+for how to enable each mode and [JWT claims used for ODS
+resolution](./configuration/oauth-and-jwt.md#jwt-claims-used-for-ods-resolution)
+for the claims the authorization server must populate.
 
 ## Adoption and next steps
 
