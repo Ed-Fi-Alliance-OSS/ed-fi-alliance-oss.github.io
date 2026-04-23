@@ -445,7 +445,7 @@ AI systems that consume educational data must be able to trace every recommendat
 - **Versioning.** How should changes to the Data Standard, the semantic layer schema, or the AI models themselves be versioned and documented to maintain a clear historical record?
 - **Compliance reporting.** What tools can help education agencies generate reports demonstrating compliance with data access and privacy regulations in the context of AI systems?
 
-An effective data cataloguing regime can help address these questions, though data cataloguing by itself is not sufficient for proper data stewardship and decision support. Furthermore, the question of data lineage needs to be addressed programatically - not only through data cataloguing - so that the API records _precisely which application updated the records_. This functionality [does not yet exist](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Technology-Roadmap/issues/20) in the Ed-Fi API.
+An effective data cataloguing regime can help address these questions, though data cataloguing by itself is not sufficient for proper data stewardship and decision support. Furthermore, the question of data lineage needs to be addressed programmatically - not only through data cataloguing - so that the API records _precisely which application updated the records_. This functionality [does not yet exist](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Technology-Roadmap/issues/20) in the Ed-Fi API.
 
 ### Permission Models for AI Systems
 
