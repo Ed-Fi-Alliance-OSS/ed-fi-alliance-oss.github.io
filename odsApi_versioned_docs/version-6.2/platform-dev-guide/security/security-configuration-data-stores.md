@@ -4,7 +4,7 @@ Security settings for the Ed-Fi ODS / API are stored in two separate databases,
 `EdFi_Admin` and `EdFi_Security`. Both databases are required. The `EdFi_Admin`
 mainly holds data pertaining to Authentication (i.e., Identifying the API
 client) while the `EdFi_Security` database mainly holds security metadata
-pertaining to Authorization (i.e., Establishing API client's assess rights to
+pertaining to Authorization (i.e., Establishing API client's access rights to
 serve the request).
 
 ## Ed-Fi Admin Database

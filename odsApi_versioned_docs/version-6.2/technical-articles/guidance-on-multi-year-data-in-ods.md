@@ -74,7 +74,7 @@ onto the SIS as the SIS now has to now explicitly version entities for the API
 that are only implicitly versioned (by school year)  in the SIS. This complexity
 also affects business analysts and others who have to use the ODS database. This
 strategy ends up mixing operational and historical data into a very "muddled"
-schema optimized for neither case._
+schema optimized for neither case.
 
 ## What Does a Multi-Year Deployment Look Like?
 
@@ -84,8 +84,7 @@ Following configurations show how multiple years of data can be collected using 
 
 ## End of Year Considerations
 
-When configurating your ODS to collect "single-year" data, there are a few of
-things to consider during yearly rollover process:
+When configuring your ODS to collect "single-year" data, there are a few things to consider during yearly rollover process:
 
 | End of Year Rollover | Details |
 | --- | --- |

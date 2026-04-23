@@ -22,7 +22,7 @@ By logging into the Sandbox Administration Portal using an Admin account,
 platform hosts can provision access to vendors to manage their sandboxes. In the
 navigation bar at the top, click on **Manage Accounts** > **Create Account**
 
-![](https://edfi.atlassian.net/6603db42-b9f2-48d5-a97d-97132fec93a6#media-blob-url=true&id=da33f7aa-97aa-464f-895e-4f21f4366806&collection=contentId-18219467&contextId=18219467&width=1280&height=339&alt=)
+![](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-4-3_11-7-54.png)
 
 **Figure 1.** Creating new users using the Administration Portal
 
@@ -77,7 +77,7 @@ Clicking the Gear icon brings up features like Delete and the ability to change 
 ![Fig 4](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Admin-Portal-Figure-3.png)
 
 
-**Fogure 4.** Getting an access token using an application's credentials
+**Figure 4.** Getting an access token using an application's credentials
 
 ## Access to Production
 

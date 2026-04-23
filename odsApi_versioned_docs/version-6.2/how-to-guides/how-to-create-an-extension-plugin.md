@@ -27,7 +27,7 @@ This step is optional. If you have followed through [How To: Extend the Ed-Fi O
 
 :::
 
-After creating your extension project by following the example on [How To: Extend the Ed-Fi ODS / API - Student Transportation Example](../how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transportation-example.md),,
+After creating your extension project by following the example on [How To: Extend the Ed-Fi ODS / API - Student Transportation Example](../how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transportation-example.md),
 
 Open a PowerShell session and navigate to Ed-Fi-ODS-Implementation folder
 and execute the following command to run code generation.
@@ -35,7 +35,7 @@ and execute the following command to run code generation.
 ```powershell
 cd <source dir>\Ed-Fi-ODS-Implementation
 .\Initialize-PowershellForDevelopment.ps1
-Invoke-CodeGen -Engine -ExtensionPaths <source directory>\Ed -Fi -ODS -Implementation \Application\EdFi.Ods.Extensions.SampleStudentTransportation\
+Invoke-CodeGen -Engine -ExtensionPaths <source directory>\Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleStudentTransportation\
 ```
 
 ### Step 2. Build Your Extension Project
@@ -43,7 +43,7 @@ Invoke-CodeGen -Engine -ExtensionPaths <source directory>\Ed -Fi -ODS -Implemen
 From a PowerShell session, run the following command to build your extension project. If you followed the example on [How To: Extend the Ed-Fi ODS / API - Student Transportation Example](../how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transportation-example.md) to create the EdFi.Ods.Extensions.SampleStudentTransportation project, your extension will be in Ed-Fi-ODS-Implementation\\Application folder.
 
 ```powershell
-`C:\Program Files\dotnet\dotnet.exe build <source directory>\Ed``-Fi``-ODS``-Implementation``\Application\EdFi.Ods.Extensions.SampleStudentTransportation -``-configuration` `release` 
+& `C:\Program Files\dotnet\dotnet.exe` build `<source directory>\Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleStudentTransportation` --configuration Release
 ```
 ![Image](https://edfi.atlassian.net/wiki/download/thumbnails/22774761/image2020-11-4_13-44-34.png?version=1&modificationDate=1641861360863&cacheVersion=1&api=v2&width=1280&height=398)
 
@@ -69,7 +69,7 @@ In this step, execute the following command to publish NuGet package.
 NuGet.exe push -source https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json -apikey <PAT> <nuget directory>\EdFi.Ods.Extensions.SampleStudentTransportation.1.0.0.nupkg
 ```
 
-# ![Image](https://edfi.atlassian.net/wiki/download/thumbnails/22774761/image2021-4-7_19-8-54.png?version=1&modificationDate=1641861361283&cacheVersion=1&api=v2&width=838&height=96)
+![Image](https://edfi.atlassian.net/wiki/download/thumbnails/22774761/image2021-4-7_19-8-54.png?version=1&modificationDate=1641861361283&cacheVersion=1&api=v2&width=838&height=96)
 
 ## Consuming Extension Plugins
 

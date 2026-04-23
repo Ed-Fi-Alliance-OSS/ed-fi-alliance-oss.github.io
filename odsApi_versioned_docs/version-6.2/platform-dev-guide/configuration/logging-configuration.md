@@ -123,7 +123,3 @@ troubleshooting.
   </root>
 </log4net>
 ```
-
-# Developers' Guide Contents
-
-Find out more about how to develop platforms based on the Ed-Fi ODS / API v6.2:
