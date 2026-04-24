@@ -8,6 +8,12 @@ hide_table_of_contents: true
 ## Credential UML Diagram
 
 ```mermaid
+---
+
+config:
+  layout: elk
+---
+
 erDiagram
     Credential {
     }

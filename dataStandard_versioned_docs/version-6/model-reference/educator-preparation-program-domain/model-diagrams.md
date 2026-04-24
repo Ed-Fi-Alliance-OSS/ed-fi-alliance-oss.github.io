@@ -8,6 +8,12 @@ hide_table_of_contents: true
 ## Educator Preparation Program Model Domain UML Diagram
 
 ```mermaid
+---
+
+config:
+  layout: elk
+---
+
 erDiagram
     Candidate {
     }

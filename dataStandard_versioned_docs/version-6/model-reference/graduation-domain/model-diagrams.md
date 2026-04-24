@@ -9,6 +9,12 @@ hide_table_of_contents: true
 ## Graduation Model UML Diagram
 
 ```mermaid
+---
+
+config:
+  layout: elk
+---
+
 erDiagram
     Student {
     }

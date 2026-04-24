@@ -9,6 +9,12 @@ The UML diagram below illustrates the model for the Assessment Registration doma
 with its entities, attributes and associations.
 
 ```mermaid
+---
+
+config:
+  layout: elk
+---
+
 erDiagram
     Assessment {
     }

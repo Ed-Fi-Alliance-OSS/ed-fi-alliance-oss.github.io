@@ -14,6 +14,12 @@ insights into the effectiveness of programs.
 ## Student Program Evaluation  UML Model Diagram
 
 ```mermaid
+---
+
+config:
+  layout: elk
+---
+
 erDiagram
     ProgramEvaluation {
     }
