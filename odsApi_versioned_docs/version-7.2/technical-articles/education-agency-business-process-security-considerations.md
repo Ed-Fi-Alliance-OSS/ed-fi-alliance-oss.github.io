@@ -75,7 +75,7 @@ for connections originating from outside the state or outside of known provider
 
 ## State-Issued Sequential Student IDs
 
-A core principle of the Ed-Fi standards is to support the natural keys to data
+A core principle of the Ed-Fi Data Standard is to support the natural keys to data
 records, such as using state-provided student IDs to uniquely identify students,
 rather than requiring the use of API-assigned surrogate keys. This practice
 enables disparate systems to more easily coordinate, because such keys are
