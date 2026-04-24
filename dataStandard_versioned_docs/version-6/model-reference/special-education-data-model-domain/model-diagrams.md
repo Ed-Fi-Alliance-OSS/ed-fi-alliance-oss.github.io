@@ -69,16 +69,14 @@ erDiagram
  StudentIEPServiceDelivery}o..o{IDEAEvent:"includes"
  StudentIEPServicePrescription}o..||Staff:"  "
  StudentIEPServicePrescription}o..o{IDEAEvent:"includes"
-
- style StudentIEP fill:#E1BEE7,stroke:#AA00FF
- style IDEAEvent fill:#E1BEE7,stroke:#AA00FF
- style EducationOrganization fill:#FFE0B2
- style StudentIEPServicePrescription fill:#E1BEE7,stroke:#AA00FF
- style StudentIEPServiceDelivery fill:#E1BEE7,stroke:#AA00FF
- style Student fill:#FFE0B2,stroke:#FF6D00
- style Staff fill:#FFE0B2,stroke:#FF6D00
- style StudentIEPGoal fill:#E1BEE7,stroke:#AA00FF
-
+ style StudentIEP color:#000000
+ style IDEAEvent color:#000000
+ style EducationOrganization color:#000000
+ style StudentIEPServicePrescription color:#000000
+ style StudentIEPServiceDelivery color:#000000
+ style Student color:#000000
+ style Staff color:#000000
+ style StudentIEPGoal color:#000000
 ```
 
 ### IDEAEvent
