@@ -9,15 +9,13 @@ hide_table_of_contents: true
 
 ```mermaid
 ---
-
 config:
   layout: elk
 ---
-
 erDiagram
     PerformanceEvaluation {
     }
-    PerformanceEvaluationRating {
+    PerformanceEvaluationRating["PerformanceEvaluation<br/>Rating"] {
     }
     Evaluation {
     }
@@ -41,7 +39,7 @@ erDiagram
     }
     Section {
     }
-    SurveySectionAggregateResponse {
+    SurveySectionAggregateResponse["SurveySection<br/>AggregateResponse"] {
     }
     EducationOrganization {
     }
@@ -66,4 +64,19 @@ erDiagram
     Goal ||--o{ Goal : "relates to"
     Section ||--o{ EvaluationRating : "relates to"
     SurveySectionAggregateResponse ||--o{ EvaluationElementRating : "relates to"
+    style PerformanceEvaluation color:#000000
+    style PerformanceEvaluationRating color:#000000
+    style Evaluation color:#000000
+    style EvaluationRating color:#000000
+    style EvaluationObjective color:#000000
+    style EvaluationObjectiveRating color:#000000
+    style EvaluationElement color:#000000
+    style EvaluationElementRating color:#000000
+    style QuantitativeMeasure color:#000000
+    style QuantitativeMeasureScore color:#000000
+    style Goal color:#000000
+    style Person color:#000000
+    style Section color:#000000
+    style SurveySectionAggregateResponse color:#000000
+    style EducationOrganization color:#000000
 ```

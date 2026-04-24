@@ -1,5 +1,6 @@
 ---
 sidebar_position: 2
+hide_table_of_contents: true
 ---
 
 # Teaching and Learning Domain - Model Diagrams
@@ -80,6 +81,24 @@ erDiagram
     LearningStandard ||--o{ Section : "HasAssociated"
     LearningStandard ||--o{ LearningStandard : "HasAssociatedEquivalence"
     LearningStandard ||--o{ Course : "HasAssociated"
+    style EducationOrganization color:#000000
+    style School color:#000000
+    style Session color:#000000
+    style Student color:#000000
+    style Staff color:#000000
+    style Course color:#000000
+    style CourseOffering color:#000000
+    style Section color:#000000
+    style ClassPeriod color:#000000
+    style Location color:#000000
+    style Program color:#000000
+    style LearningStandard color:#000000
+    style StudentSchoolAssociation color:#000000
+    style StaffSchoolAssociation color:#000000
+    style StaffProgramAssociation color:#000000
+    style GeneralStudentProgramAssociation color:#000000
+    style StudentSectionAssociation color:#000000
+    style StaffSectionAssociation color:#000000
 ```
 
 ### Course Catalog Subdomain
@@ -128,6 +147,12 @@ erDiagram
     Course ||--o{ LearningStandard : "HasAssociated"
     LearningStandard ||--o{ LearningStandard : "HasFunctionalComponent"
     LearningStandard ||--o{ LearningStandard : "HasAssociatedEquivalence"
+    style EducationOrganization color:#000000
+    style School color:#000000
+    style Session color:#000000
+    style Course color:#000000
+    style CourseOffering color:#000000
+    style LearningStandard color:#000000
 ```
 
 ### Sections and Programs Subdomain
@@ -213,4 +238,23 @@ erDiagram
     StudentSectionAssociation ||--o{ Program : "HasAssociated"
     StudentAcademicRecord ||--o{ CourseTranscript : "HasAssociated"
     CourseTranscript ||--o{ Course : "HasAssociated"
+    style EducationOrganization color:#000000
+    style School color:#000000
+    style Session color:#000000
+    style Student color:#000000
+    style Staff color:#000000
+    style Program color:#000000
+    style ClassPeriod color:#000000
+    style Location color:#000000
+    style Course color:#000000
+    style CourseOffering color:#000000
+    style Section color:#000000
+    style StudentSchoolAssociation color:#000000
+    style StaffSchoolAssociation color:#000000
+    style StaffProgramAssociation color:#000000
+    style GeneralStudentProgramAssociation color:#000000
+    style StudentSectionAssociation color:#000000
+    style StaffSectionAssociation color:#000000
+    style StudentAcademicRecord color:#000000
+    style CourseTranscript color:#000000
 ```

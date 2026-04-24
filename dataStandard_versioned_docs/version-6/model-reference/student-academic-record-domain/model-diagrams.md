@@ -12,11 +12,9 @@ domain model.
 
 ```mermaid
 ---
-
 config:
   layout: elk
 ---
-
 erDiagram
     Student {
     }
@@ -28,11 +26,11 @@ erDiagram
     }
     Grade {
     }
-    StudentCompetencyObjective {
+    StudentCompetencyObjective["StudentCompetency<br/>Objective"] {
     }
     StudentSectionAssociation {
     }
-    GeneralStudentProgramAssociation {
+    GeneralStudentProgramAssociation["GeneralStudent<br/>ProgramAssociation"] {
     }
     GradebookEntry {
     }
@@ -105,6 +103,26 @@ erDiagram
     Student ||--o{ Section : "relates to"
     Student ||--o{ Program : "relates to"
     LearningStandard ||--o{ LearningStandard : "relates to"
+    style Student color:#000000
+    style StudentAcademicRecord color:#000000
+    style CourseTranscript color:#000000
+    style ReportCard color:#000000
+    style Grade color:#000000
+    style StudentCompetencyObjective color:#000000
+    style StudentSectionAssociation color:#000000
+    style GeneralStudentProgramAssociation color:#000000
+    style GradebookEntry color:#000000
+    style StudentGradebookEntry color:#000000
+    style CompetencyObjective color:#000000
+    style Course color:#000000
+    style CourseOffering color:#000000
+    style Section color:#000000
+    style Program color:#000000
+    style GradingPeriod color:#000000
+    style Session color:#000000
+    style LearningStandard color:#000000
+    style EducationOrganization color:#000000
+    style School color:#000000
 ```
 
 ### Student Transcript Subdomain
@@ -115,11 +133,9 @@ The Student Transcript Model provides an academic history for a student.
 
 ```mermaid
 ---
-
 config:
   layout: elk
 ---
-
 erDiagram
     Student {
     }
@@ -137,6 +153,11 @@ erDiagram
     StudentAcademicRecord ||--o{ Student : "relates to"
     StudentAcademicRecord ||--o{ EducationOrganization : "relates to"
     Course ||--o{ EducationOrganization : "relates to"
+    style Student color:#000000
+    style StudentAcademicRecord color:#000000
+    style CourseTranscript color:#000000
+    style Course color:#000000
+    style EducationOrganization color:#000000
 ```
 
 ### Report Card Subdomain
@@ -151,11 +172,9 @@ to CompetencyObjectives.
 
 ```mermaid
 ---
-
 config:
   layout: elk
 ---
-
 erDiagram
     Student {
     }
@@ -163,11 +182,11 @@ erDiagram
     }
     Grade {
     }
-    StudentCompetencyObjective {
+    StudentCompetencyObjective["StudentCompetency<br/>Objective"] {
     }
     StudentSectionAssociation {
     }
-    GeneralStudentProgramAssociation {
+    GeneralStudentProgramAssociation["GeneralStudent<br/>ProgramAssociation"] {
     }
     GradingPeriod {
     }
@@ -203,6 +222,18 @@ erDiagram
     Program ||--o{ EducationOrganization : "relates to"
     CompetencyObjective ||--o{ EducationOrganization : "relates to"
     LearningStandard ||--o{ LearningStandard : "relates to"
+    style Student color:#000000
+    style ReportCard color:#000000
+    style Grade color:#000000
+    style StudentCompetencyObjective color:#000000
+    style StudentSectionAssociation color:#000000
+    style GeneralStudentProgramAssociation color:#000000
+    style GradingPeriod color:#000000
+    style CompetencyObjective color:#000000
+    style Section color:#000000
+    style Program color:#000000
+    style LearningStandard color:#000000
+    style EducationOrganization color:#000000
 ```
 
 ### Student Academic Record, Gradebook Model
@@ -217,11 +248,9 @@ entry is a StudentGradebookEntry which can be a grade or a CompetencyLevel.
 
 ```mermaid
 ---
-
 config:
   layout: elk
 ---
-
 erDiagram
     Course {
     }
@@ -245,4 +274,11 @@ erDiagram
     StudentGradebookEntry ||--o{ StudentSectionAssociation : "relates to"
     StudentSectionAssociation ||--o{ Student : "relates to"
     Student ||--o{ Section : "relates to"
+    style Course color:#000000
+    style LearningStandard color:#000000
+    style GradebookEntry color:#000000
+    style StudentGradebookEntry color:#000000
+    style StudentSectionAssociation color:#000000
+    style Section color:#000000
+    style Student color:#000000
 ```

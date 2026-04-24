@@ -9,25 +9,23 @@ hide_table_of_contents: true
 
 ```mermaid
 ---
-
 config:
   layout: elk
 ---
-
 erDiagram
     Student {
     }
-    StudentSchoolAttendanceEvent {
+    StudentSchoolAttendanceEvent["StudentSchool<br/>AttendanceEvent"] {
     }
-    StudentSectionAttendanceEvent {
+    StudentSectionAttendanceEvent["StudentSection<br/>AttendanceEvent"] {
     }
-    StudentProgramAttendanceEvent {
+    StudentProgramAttendanceEvent["StudentProgram<br/>AttendanceEvent"] {
     }
     StudentSectionAssociation {
     }
-    GeneralStudentProgramAssociation {
+    GeneralStudentProgramAssociation["GeneralStudent<br/>ProgramAssociation"] {
     }
-    SectionAttendanceTakenEvent {
+    SectionAttendanceTakenEvent["SectionAttendance<br/>TakenEvent"] {
     }
     Session {
     }
@@ -58,4 +56,16 @@ erDiagram
     Program ||--o{ Staff : "relates to"
     Staff ||--o{ School : "relates to"
     Staff ||--o{ Section : "relates to"
+    style Student color:#000000
+    style StudentSchoolAttendanceEvent color:#000000
+    style StudentSectionAttendanceEvent color:#000000
+    style StudentProgramAttendanceEvent color:#000000
+    style StudentSectionAssociation color:#000000
+    style GeneralStudentProgramAssociation color:#000000
+    style SectionAttendanceTakenEvent color:#000000
+    style Session color:#000000
+    style Section color:#000000
+    style Program color:#000000
+    style School color:#000000
+    style Staff color:#000000
 ```

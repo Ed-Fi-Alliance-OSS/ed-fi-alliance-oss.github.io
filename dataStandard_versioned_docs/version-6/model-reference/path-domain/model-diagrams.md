@@ -9,11 +9,9 @@ hide_table_of_contents: true
 
 ```mermaid
 ---
-
 config:
   layout: elk
 ---
-
 erDiagram
     Student {
     }
@@ -44,4 +42,13 @@ erDiagram
     StudentPathMilestoneStatus ||--o{ StudentPath : "relates to"
     StudentPathMilestoneStatus ||--o{ PathPhase : "relates to"
     StudentPathMilestoneStatus ||--o{ PathMilestone : "relates to"
+    style Student color:#000000
+    style EducationOrganization color:#000000
+    style GraduationPlan color:#000000
+    style Path color:#000000
+    style PathPhase color:#000000
+    style PathMilestone color:#000000
+    style StudentPath color:#000000
+    style StudentPathPhaseStatus color:#000000
+    style StudentPathMilestoneStatus color:#000000
 ```

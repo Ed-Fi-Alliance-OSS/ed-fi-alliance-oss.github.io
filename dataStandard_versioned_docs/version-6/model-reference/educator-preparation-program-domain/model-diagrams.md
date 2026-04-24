@@ -9,25 +9,24 @@ hide_table_of_contents: true
 
 ```mermaid
 ---
-
 config:
   layout: elk
 ---
-
 erDiagram
     Candidate {
     }
-    CandidateIdentificationCode {
+    CandidateIdentificationCode["CandidateIdentification<br/>Code"] {
     }
-    EducatorPreparationProgram {
+    EducatorPreparationProgram["EducatorPreparation<br/>Program"] {
     }
     FieldworkExperience {
     }
-    CandidateEducatorPreparationProgramAssociation {
+    CandidateEducatorPreparationProgramAssociation["CandidateEducator<br/>PreparationProgram<br/>Association"] {
     }
-    CandidateRelationshipToStaffAssociation {
+    CandidateRelationshipToStaffAssociation["Candidate<br/>RelationshipTo<br/>StaffAssociation"] {
     }
-    StaffEducatorPreparationProgramAssociation {
+    StaffEducatorPreparationProgramAssociation["StaffEducatorPreparation<br/>ProgramAssociation"] {
+    }
     Person {
     }
     Staff {
@@ -53,4 +52,15 @@ erDiagram
     CandidateIdentificationCode ||--o{ Candidate : "relates to"
     CandidateIdentificationCode ||--o{ EducationOrganization : "relates to"
     EducationOrganization ||--o{ EducationOrganization : "relates to"
+    style Candidate color:#000000
+    style CandidateIdentificationCode color:#000000
+    style EducatorPreparationProgram color:#000000
+    style FieldworkExperience color:#000000
+    style CandidateEducatorPreparationProgramAssociation color:#000000
+    style CandidateRelationshipToStaffAssociation color:#000000
+    style StaffEducatorPreparationProgramAssociation color:#000000
+    style Person color:#000000
+    style Staff color:#000000
+    style EducationOrganization color:#000000
+    style Section color:#000000
 ```
