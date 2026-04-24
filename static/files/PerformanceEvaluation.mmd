@@ -3,12 +3,12 @@ title: PerformanceEvaluation
 config:
   layout: elk
   themeCSS: |
-    [id|=EducationOrganization] rect:nth-of-type(2), 
-    [id|=EducationOrganization] rect:nth-of-type(3) { 
-      fill: #ffcc00; 
+    [id|=EducationOrganization] rect:nth-of-type(2),
+    [id|=EducationOrganization] rect:nth-of-type(3) {
+      fill: #ffcc00;
     }
 ---
-%%{init: {'themeVariables': { 'fontSize': '20px'}}}%%
+%%{init: {'themeVariables': { }}}%%
 erDiagram
     PerformanceEvaluation {
         string PerformanceEvaluationTitle "I"
@@ -27,7 +27,7 @@ erDiagram
         reference PerformanceEvaluation PK
         date ActualDate "R"
         bool Announced "O New in v6.0"
-        string Comments "O" 
+        string Comments "O"
         descriptor CoteachingStyleObserved "O"
         integer ActualDuration "O"
         common PerformanceEvaluationRatingResult "OC"
@@ -184,4 +184,3 @@ erDiagram
     SurveySectionAggregateResponse ||--o{ EvaluationElementRating : "relates to"
     style Goal fill:#E1BEE7,stroke:#AA00FF,color:#000000
     style PerformanceEvaluation fill:#98FF98,stroke:#AA00FF,color:#000000
-    
