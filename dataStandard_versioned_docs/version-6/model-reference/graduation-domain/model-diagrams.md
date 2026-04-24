@@ -10,11 +10,9 @@ hide_table_of_contents: true
 
 ```mermaid
 ---
-
 config:
   layout: elk
 ---
-
 erDiagram
     Student {
     }
@@ -43,4 +41,12 @@ erDiagram
     PostSecondaryEvent ||--o{ PostSecondaryInstitution : "relates to"
     PostSecondaryInstitution ||--o{ EducationOrganization : "relates to"
     School ||--o{ EducationOrganization : "relates to"
+    style Student color:#000000
+    style StudentSchoolAssociation color:#000000
+    style StudentAcademicRecord color:#000000
+    style GraduationPlan color:#000000
+    style PostSecondaryEvent color:#000000
+    style PostSecondaryInstitution color:#000000
+    style EducationOrganization color:#000000
+    style School color:#000000
 ```

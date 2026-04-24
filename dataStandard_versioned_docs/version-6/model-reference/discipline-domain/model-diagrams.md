@@ -9,21 +9,19 @@ hide_table_of_contents: true
 
 ```mermaid
 ---
-
 config:
   layout: elk
 ---
-
 erDiagram
     DisciplineIncident {
     }
     DisciplineAction {
     }
-    StaffDisciplineIncidentAssociation {
+    StaffDisciplineIncidentAssociation["StaffDiscipline<br/>IncidentAssociation"] {
     }
-    StudentDisciplineIncidentBehaviorAssociation {
+    StudentDisciplineIncidentBehaviorAssociation["StudentDiscipline<br/>IncidentBehaviorAssociation"] {
     }
-    StudentDisciplineIncidentNonOffenderAssociation {
+    StudentDisciplineIncidentNonOffenderAssociation["StudentDiscipline<br/>IncidentNonOffender<br/>Association"] {
     }
     Student {
     }
@@ -43,4 +41,12 @@ erDiagram
     StudentDisciplineIncidentBehaviorAssociation ||--o{ DisciplineIncident : "relates to"
     StudentDisciplineIncidentNonOffenderAssociation ||--o{ DisciplineIncident : "relates to"
     Staff ||--o{ School : "relates to"
+    style DisciplineIncident color:#000000
+    style DisciplineAction color:#000000
+    style StaffDisciplineIncidentAssociation color:#000000
+    style StudentDisciplineIncidentBehaviorAssociation color:#000000
+    style StudentDisciplineIncidentNonOffenderAssociation color:#000000
+    style Student color:#000000
+    style Staff color:#000000
+    style School color:#000000
 ```

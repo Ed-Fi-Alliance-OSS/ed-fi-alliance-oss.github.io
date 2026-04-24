@@ -13,11 +13,9 @@ subdomains.
 
 ```mermaid
 ---
-
 config:
   layout: elk
 ---
-
 erDiagram
     Survey {
     }
@@ -29,21 +27,21 @@ erDiagram
     }
     SurveySectionResponse {
     }
-    SurveyQuestionResponse {
+    SurveyQuestionResponse["SurveyQuestion<br/>Response"] {
     }
-    SurveyProgramAssociation {
+    SurveyProgramAssociation["SurveyProgram<br/>Association"] {
     }
     SurveyCourseAssociation {
     }
     SurveySectionAssociation {
     }
-    SurveyResponseEducationOrganizationTargetAssociation {
+    SurveyResponseEducationOrganizationTargetAssociation["SurveyResponse<br/>EducationOrganization<br/>TargetAssociation"] {
     }
-    SurveyResponseStaffTargetAssociation {
+    SurveyResponseStaffTargetAssociation["SurveyResponse<br/>StaffTarget<br/>Association"] {
     }
-    SurveySectionResponseEducationOrganizationTargetAssociation {
+    SurveySectionResponseEducationOrganizationTargetAssociation["SurveySection<br/>ResponseEducationOrganization<br/>TargetAssociation"] {
     }
-    SurveySectionResponseStaffTargetAssociation {
+    SurveySectionResponseStaffTargetAssociation["SurveySection<br/>ResponseStaff<br/>TargetAssociation<"] {
     }
     Session {
     }
@@ -90,4 +88,26 @@ erDiagram
     Staff ||--o{ SurveyResponseStaffTargetAssociation : "relates to"
     EducationOrganization ||--o{ SurveySectionResponseEducationOrganizationTargetAssociation : "relates to"
     Contact ||--o{ SurveySectionResponseStaffTargetAssociation : "relates to"
+    style Survey color:#000000
+    style SurveySection color:#000000
+    style SurveyQuestion color:#000000
+    style SurveyResponse color:#000000
+    style SurveySectionResponse color:#000000
+    style SurveyQuestionResponse color:#000000
+    style SurveyProgramAssociation color:#000000
+    style SurveyCourseAssociation color:#000000
+    style SurveySectionAssociation color:#000000
+    style SurveyResponseEducationOrganizationTargetAssociation color:#000000
+    style SurveyResponseStaffTargetAssociation color:#000000
+    style SurveySectionResponseEducationOrganizationTargetAssociation color:#000000
+    style SurveySectionResponseStaffTargetAssociation color:#000000
+    style Session color:#000000
+    style Course color:#000000
+    style Program color:#000000
+    style Section color:#000000
+    style Student color:#000000
+    style Contact color:#000000
+    style Staff color:#000000
+    style Person color:#000000
+    style EducationOrganization color:#000000
 ```

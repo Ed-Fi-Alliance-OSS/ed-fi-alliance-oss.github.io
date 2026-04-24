@@ -9,11 +9,9 @@ hide_table_of_contents: true
 
 ```mermaid
 ---
-
 config:
   layout: elk
 ---
-
 erDiagram
     Credential {
     }
@@ -48,4 +46,14 @@ erDiagram
     CertificationExamResult ||--o{ CertificationExam : "relates to"
     CertificationExamResult ||--o{ Person : "relates to"
     CertificationExamResult ||--o{ StudentAssessment : "relates to"
+    style Credential color:#000000
+    style CredentialEvent color:#000000
+    style Certification color:#000000
+    style CertificationExam color:#000000
+    style CertificationExamResult color:#000000
+    style Person color:#000000
+    style Staff color:#000000
+    style StudentAcademicRecord color:#000000
+    style EducationOrganization color:#000000
+    style StudentAssessment color:#000000
 ```

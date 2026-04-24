@@ -9,11 +9,9 @@ hide_table_of_contents: true
 
 ```mermaid
 ---
-
 config:
   layout: elk
 ---
-
 erDiagram
     Session {
     }
@@ -44,4 +42,13 @@ erDiagram
     School ||--o{ StudentSchoolAssociation : "relates to"
     School ||--o{ EducationOrganization : "relates to"
     Student ||--o{ School : "relates to"
+    style Session color:#000000
+    style GradingPeriod color:#000000
+    style AcademicWeek color:#000000
+    style Calendar color:#000000
+    style CalendarDate color:#000000
+    style StudentSchoolAssociation color:#000000
+    style Student color:#000000
+    style EducationOrganization color:#000000
+    style School color:#000000
 ```

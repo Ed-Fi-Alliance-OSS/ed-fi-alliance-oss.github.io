@@ -12,11 +12,9 @@ subdomains.
 
 ```mermaid
 ---
-
 config:
   layout: elk
 ---
-
 erDiagram
     Assessment {
     }
@@ -28,11 +26,11 @@ erDiagram
     }
     LearningStandard {
     }
-    LearningStandardEquivalenceAssociation {
+    LearningStandardEquivalenceAssociation["LearningStandard<br/>EquivalenceAssociation"] {
     }
-    AssessmentScoreRangeLearningStandard {
+    AssessmentScoreRangeLearningStandard["AssessmentScore<br/>RangeLearningStandard"] {
     }
-    StudentAssessmentEducationOrganizationAssociation {
+    StudentAssessmentEducationOrganizationAssociation["StudentAssessment<br/>EducationOrganization<br/>Association"] {
     }
     Student {
     }
@@ -64,6 +62,19 @@ erDiagram
     Section ||--o{ Program : "relates to"
     Student ||--o{ Section : "relates to"
     Student ||--o{ Program : "relates to"
+    style Assessment color:#000000
+    style StudentAssessment color:#000000
+    style ObjectiveAssessment color:#000000
+    style AssessmentItem color:#000000
+    style LearningStandard color:#000000
+    style LearningStandardEquivalenceAssociation color:#000000
+    style AssessmentScoreRangeLearningStandard color:#000000
+    style StudentAssessmentEducationOrganizationAssociation color:#000000
+    style Student color:#000000
+    style EducationOrganization color:#000000
+    style Section color:#000000
+    style Program color:#000000
+    style School color:#000000
 ```
 
 ### Learning Standard Subdomain
@@ -94,6 +105,10 @@ equivalence.
 #### Assessment, Learning Standards Model UML Diagram
 
 ```mermaid
+---
+config:
+  layout: elk
+---
 erDiagram
     LearningStandard {
     }
@@ -101,6 +116,8 @@ erDiagram
     }
     LearningStandard ||--o{ LearningStandard : "relates to"
     LearningStandardEquivalenceAssociation ||--o{ LearningStandard : "relates to"
+    style LearningStandard color:#000000
+    style LearningStandardEquivalenceAssociation color:#000000
 ```
 
 ### Assessment Metadata Subdomain
@@ -124,6 +141,10 @@ stand-alone assessments that do not tie to a particular section or program.
 #### Assessment, Assessment Metadata Model UML Diagram
 
 ```mermaid
+---
+config:
+  layout: elk
+---
 erDiagram
     Assessment {
     }
@@ -145,6 +166,12 @@ erDiagram
     Assessment ||--o{ Section : "relates to"
     Assessment ||--o{ Program : "relates to"
     Section ||--o{ Program : "relates to"
+    style Assessment color:#000000
+    style ObjectiveAssessment color:#000000
+    style AssessmentItem color:#000000
+    style EducationOrganization color:#000000
+    style Section color:#000000
+    style Program color:#000000
 ```
 
 ### Student Assessment Subdomain
@@ -186,10 +213,16 @@ metadata.
 #### Assessment, Student Assessment Model UML Diagram
 
 ```mermaid
+---
+config:
+  layout: elk
+---
 erDiagram
     Student {
     }
     StudentAssessment {
     }
     StudentAssessment ||--o{ Student : "relates to"
+    style Student color:#000000
+    style StudentAssessment color:#000000
 ```

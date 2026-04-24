@@ -33,11 +33,9 @@ The data model UML diagram is shown below.
 
 ```mermaid
 ---
-
 config:
   layout: elk
 ---
-
 erDiagram
     Student {
     }
@@ -47,4 +45,7 @@ erDiagram
     }
     StudentHealth ||--o{ Student : "relates to"
     StudentHealth ||--o{ EducationOrganization : "relates to"
+    style Student color:#000000
+    style StudentHealth color:#000000
+    style EducationOrganization color:#000000
 ```

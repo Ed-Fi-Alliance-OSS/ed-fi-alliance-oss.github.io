@@ -9,11 +9,9 @@ hide_table_of_contents: true
 
 ```mermaid
 ---
-
 config:
   layout: elk
 ---
-
 erDiagram
     Student {
     }
@@ -32,6 +30,7 @@ erDiagram
     ContactIdentificationCode {
     }
     FinancialAid {
+    }
     Person {
     }
     EducationOrganization {
@@ -53,4 +52,15 @@ erDiagram
     ContactIdentificationCode ||--o{ EducationOrganization : "relates to"
     Contact ||--o{ Person : "relates to"
     FinancialAid ||--o{ Student : "relates to"
+    style Student color:#000000
+    style StudentIdentificationCode color:#000000
+    style StudentDirectory color:#000000
+    style StudentDemographic color:#000000
+    style StudentEducationOrganizationAssociation color:#000000
+    style StudentContactAssociation color:#000000
+    style Contact color:#000000
+    style ContactIdentificationCode color:#000000
+    style FinancialAid color:#000000
+    style Person color:#000000
+    style EducationOrganization color:#000000
 ```

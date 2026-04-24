@@ -12,18 +12,15 @@ Services domain model and subdomains.
 
 ```mermaid
 ---
-
 config:
   layout: elk
 ---
-
 erDiagram
-
     Program {
     }
     Staff {
     }
-    GeneralStudentProgramAssociation["GeneralStudent<br/>ProgramAssociation"] {
+    GeneralStudentProgramAssociation["GeneralStudent<br/>ProgramAssociation"]  {
     }
     StaffProgramAssociation {
     }
@@ -62,6 +59,19 @@ erDiagram
     StudentSchoolAttendanceEvent ||--o{ Student : "relates to"
     StudentProgramAttendanceEvent ||--o{ EducationOrganization : "relates to"
     StudentProgramAttendanceEvent ||--o{ Program : "relates to"
+    style Program color:#000000
+    style Staff color:#000000
+    style GeneralStudentProgramAssociation color:#000000
+    style StaffProgramAssociation color:#000000
+    style Section color:#000000
+    style StudentSectionAssociation color:#000000
+    style Student color:#000000
+    style EducationOrganization color:#000000
+    style StudentSectionAttendanceEvent color:#000000
+    style StudentSchoolAttendanceEvent color:#000000
+    style StudentProgramAttendanceEvent color:#000000
+    style StudentSpecialEducationProgramEligibilityAssociation color:#000000
+    style School color:#000000
 ```
 
 ### Federal Programs Subdomain
@@ -70,11 +80,9 @@ erDiagram
 
 ```mermaid
 ---
-
 config:
   layout: elk
 ---
-
 erDiagram
     Program {
     }
@@ -120,4 +128,19 @@ erDiagram
     StudentSpecialEducationProgramAssociation ||--o{ GeneralStudentProgramAssociation : "relates to"
     StudentTitleIPartAProgramAssociation ||--o{ GeneralStudentProgramAssociation : "relates to"
     StudentSection504ProgramAssociation ||--o{ GeneralStudentProgramAssociation : "relates to"
+    style Program color:#000000
+    style Student color:#000000
+    style EducationOrganization color:#000000
+    style GeneralStudentProgramAssociation color:#000000
+    style StudentCTEProgramAssociation color:#000000
+    style StudentHomelessProgramAssociation color:#000000
+    style StudentLanguageInstructionProgramAssociation color:#000000
+    style StudentMigrantEducationProgramAssociation color:#000000
+    style StudentNeglectedOrDelinquentProgramAssociation color:#000000
+    style StudentProgramAssociation color:#000000
+    style StudentSchoolFoodServiceProgramAssociation color:#000000
+    style StudentSpecialEducationProgramAssociation color:#000000
+    style StudentTitleIPartAProgramAssociation color:#000000
+    style StudentSpecialEducationProgramEligibilityAssociation color:#000000
+    style StudentSection504ProgramAssociation color:#000000
 ```

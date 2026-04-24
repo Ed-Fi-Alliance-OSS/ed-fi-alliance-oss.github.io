@@ -9,11 +9,9 @@ hide_table_of_contents: true
 
 ```mermaid
 ---
-
 config:
   layout: elk
 ---
-
 erDiagram
     InterventionStudy {
     }
@@ -23,11 +21,11 @@ erDiagram
     }
     Intervention {
     }
-    EducationOrganizationInterventionPrescriptionAssociation {
+    EducationOrganizationInterventionPrescriptionAssociation["EducationOrganization<br/>InterventionPrescription<br/>Association"] {
     }
-    StudentInterventionAssociation {
+    StudentInterventionAssociation["StudentIntervention<br/>Association"] {
     }
-    StudentInterventionAttendanceEvent {
+    StudentInterventionAttendanceEvent["StudentIntervention<br/>AttendanceEvent"] {
     }
     StudentCohortAssociation {
     }
@@ -60,4 +58,16 @@ erDiagram
     Cohort ||--o{ Student : "relates to"
     Cohort ||--o{ Staff : "relates to"
     Staff ||--o{ EducationOrganization : "relates to"
+    style InterventionStudy color:#000000
+    style EducationContent color:#000000
+    style InterventionPrescription color:#000000
+    style Intervention color:#000000
+    style EducationOrganizationInterventionPrescriptionAssociation color:#000000
+    style StudentInterventionAssociation color:#000000
+    style StudentInterventionAttendanceEvent color:#000000
+    style StudentCohortAssociation color:#000000
+    style Cohort color:#000000
+    style Student color:#000000
+    style EducationOrganization color:#000000
+    style Staff color:#000000
 ```

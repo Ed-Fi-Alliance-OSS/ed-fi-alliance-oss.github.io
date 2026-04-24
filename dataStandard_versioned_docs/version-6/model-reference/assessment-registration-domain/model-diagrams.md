@@ -10,11 +10,9 @@ with its entities, attributes and associations.
 
 ```mermaid
 ---
-
 config:
   layout: elk
 ---
-
 erDiagram
     Assessment {
     }
@@ -26,7 +24,7 @@ erDiagram
     }
     ObjectiveAssessment {
     }
-    StudentAssessmentRegistration["StudentAssessment<br/>Registration"] {
+    StudentAssessmentRegistration {
     }
     StudentAssessmentRegistrationBatteryPartAssociation["StudentAssessment<br/>RegistrationBattery<br/>PartAssociation"] {
     }
@@ -65,4 +63,18 @@ erDiagram
     StudentSchoolAssociation ||--o{ Student : "relates to"
     StudentSchoolAssociation ||--o{ EducationOrganization : "relates to"
     StudentDemographic ||--o{ Student : "relates to"
+    style Assessment color:#000000
+    style AssessmentAdministration color:#000000
+    style AssessmentAdministrationParticipation color:#000000
+    style AssessmentBatteryPart color:#000000
+    style ObjectiveAssessment color:#000000
+    style StudentAssessmentRegistration color:#000000
+    style StudentAssessmentRegistrationBatteryPartAssociation color:#000000
+    style StudentEducationOrganizationAssessmentAccommodation color:#000000
+    style Student color:#000000
+    style StudentDemographic color:#000000
+    style StudentSchoolAssociation color:#000000
+    style EducationOrganization color:#000000
+    style LocalEducationAgency color:#000000
+    style School color:#000000
 ```
