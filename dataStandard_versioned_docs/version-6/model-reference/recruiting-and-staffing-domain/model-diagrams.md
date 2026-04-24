@@ -8,6 +8,12 @@ hide_table_of_contents: true
 ## Recruitment And Staffing UML Diagram
 
 ```mermaid
+---
+
+config:
+  layout: elk
+---
+
 erDiagram
     ApplicantProfile {
     }

@@ -32,6 +32,12 @@ last updated.
 The data model UML diagram is shown below.
 
 ```mermaid
+---
+
+config:
+  layout: elk
+---
+
 erDiagram
     Student {
     }

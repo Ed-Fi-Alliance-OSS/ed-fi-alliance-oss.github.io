@@ -8,6 +8,12 @@ hide_table_of_contents: true
 ## Discipline Model UML Diagram
 
 ```mermaid
+---
+
+config:
+  layout: elk
+---
+
 erDiagram
     DisciplineIncident {
     }

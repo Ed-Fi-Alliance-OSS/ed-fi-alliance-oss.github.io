@@ -8,6 +8,12 @@ hide_table_of_contents: true
 ## Performance Evaluation UML Diagram
 
 ```mermaid
+---
+
+config:
+  layout: elk
+---
+
 erDiagram
     PerformanceEvaluation {
     }

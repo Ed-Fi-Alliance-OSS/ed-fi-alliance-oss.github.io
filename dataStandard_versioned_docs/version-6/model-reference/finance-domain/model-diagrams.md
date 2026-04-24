@@ -9,6 +9,12 @@ hide_table_of_contents: true
 ## Finance Domain UML Diagram
 
 ```mermaid
+---
+
+config:
+  layout: elk
+---
+
 erDiagram
     EducationOrganization {
     }

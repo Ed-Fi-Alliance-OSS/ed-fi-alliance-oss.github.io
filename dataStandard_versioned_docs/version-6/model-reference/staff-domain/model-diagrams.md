@@ -10,6 +10,12 @@ hide_table_of_contents: true
 # StaffDataModel
 
 ```mermaid
+---
+
+config:
+  layout: elk
+---
+
 erDiagram
     Staff {
     }

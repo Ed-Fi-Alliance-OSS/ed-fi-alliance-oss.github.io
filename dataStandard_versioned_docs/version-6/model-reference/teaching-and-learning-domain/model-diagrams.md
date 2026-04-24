@@ -10,6 +10,12 @@ model.
 ## Teaching and Learning UML Model Diagram
 
 ```mermaid
+---
+
+config:
+  layout: elk
+---
+
 erDiagram
     EducationOrganization {
     }
@@ -93,6 +99,12 @@ The model is based upon multiple levels of definition, as follows:
 #### Teaching and Learning, Course Catalog Model UML Diagram
 
 ```mermaid
+---
+
+config:
+  layout: elk
+---
+
 erDiagram
     EducationOrganization {
     }
@@ -128,6 +140,12 @@ a ClassPeriod for the Session.
 #### Teaching and Learning, Sections and Programs Model UML Diagram
 
 ```mermaid
+---
+
+config:
+  layout: elk
+---
+
 erDiagram
     EducationOrganization {
     }

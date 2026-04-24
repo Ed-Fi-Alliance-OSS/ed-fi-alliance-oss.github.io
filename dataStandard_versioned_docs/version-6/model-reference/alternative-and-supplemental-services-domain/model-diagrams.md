@@ -11,7 +11,14 @@ Services domain model and subdomains.
 ## Alternative and Supplemental Services Model UML Diagram
 
 ```mermaid
+---
+
+config:
+  layout: elk
+---
+
 erDiagram
+
     Program {
     }
     Staff {
@@ -62,6 +69,12 @@ erDiagram
 #### Alternative and Supplemental Services, Federal Programs Model UML Diagram
 
 ```mermaid
+---
+
+config:
+  layout: elk
+---
+
 erDiagram
     Program {
     }

@@ -12,6 +12,12 @@ subdomains.
 ## Survey Model UML Diagram
 
 ```mermaid
+---
+
+config:
+  layout: elk
+---
+
 erDiagram
     Survey {
     }

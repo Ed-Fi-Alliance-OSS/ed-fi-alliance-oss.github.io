@@ -11,6 +11,12 @@ subdomains.
 ## Assessment Model UML Diagram
 
 ```mermaid
+---
+
+config:
+  layout: elk
+---
+
 erDiagram
     Assessment {
     }

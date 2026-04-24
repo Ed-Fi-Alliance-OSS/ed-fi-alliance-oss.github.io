@@ -11,6 +11,12 @@ domain model.
 ## Student Academic Record Model UML Diagram
 
 ```mermaid
+---
+
+config:
+  layout: elk
+---
+
 erDiagram
     Student {
     }
@@ -108,6 +114,12 @@ The Student Transcript Model provides an academic history for a student.
 #### Student Academic Record, Student Transcript Model UML Diagram
 
 ```mermaid
+---
+
+config:
+  layout: elk
+---
+
 erDiagram
     Student {
     }
@@ -138,6 +150,12 @@ to CompetencyObjectives.
 # StudentAcademicRecordReportCardDataModel
 
 ```mermaid
+---
+
+config:
+  layout: elk
+---
+
 erDiagram
     Student {
     }
@@ -198,6 +216,12 @@ entry is a StudentGradebookEntry which can be a grade or a CompetencyLevel.
 # StudentAcademicRecordGradebookDataModel
 
 ```mermaid
+---
+
+config:
+  layout: elk
+---
+
 erDiagram
     Course {
     }
