@@ -8,4 +8,185 @@ sidebar_position: 2
 
 ![Path Model Diagram](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/PerformanceEvaluation.png)
 
+[Mermaid Version](/static/files/PerformanceEvaluation.mmd)
+<!-- ![Mermaid Version](/static/files/PerformanceEvaluation.mmd) -->
+```mermaid
+erDiagram
+    PerformanceEvaluation {
+        string PerformanceEvaluationTitle "I"
+        string PerformanceEvaluationDescription "O"
+        descriptor Term "I"
+        descriptor PerformanceEvaluationType "I"
+        common PerformanceEvaluationRatingLevel "OC"
+        enumeration SchoolYear "I"
+        descriptor EvaluationPeriod "I"
+        reference EducationOrganization "I"
+        descriptor AcademicSubject "O"
+        descriptor GradeLevel "OC"
+    }
+    PerformanceEvaluationRating {
+        reference Person PK
+        reference PerformanceEvaluation PK
+        date ActualDate "R"
+        bool Announced "O New in v6.0"
+        string Comments "O"
+        descriptor CoteachingStyleObserved "O"
+        integer ActualDuration "O"
+        common PerformanceEvaluationRatingResult "OC"
+        descriptor PerformanceEvaluationRatingLevel "O"
+        common Reviewer "OC"
+        date ScheduleDate "O"
+        time ActualTime "O"
+    }
+    Evaluation {
+        reference PerformanceEvaluation "I"
+        string EvaluationTitle "I"
+        string EvaluationDescription "O"
+        decimal MinNumericRating "O"
+        decimal MaxNumericRating "O"
+        descriptor EvaluationType "O"
+        common EvaluationRatingLevel "OC"
+        integer InterRaterReliabilityScore "O"
+    }
+    EvaluationRating {
+        reference PerformanceEvaluationRating "I"
+        reference Evaluation "I"
+        datetime EvaluationDate "I"
+        common Reviewer "OC"
+        common EvaluationRatingResult "OC"
+        descriptor EvaluationRatingLevel "O"
+        reference Section "O"
+        descriptor EvaluationRatingStatus "O"
+        string Comments "O"
+        integer ActualDuration "O"
+    }
+    EvaluationObjective {
+        reference Evaluation "I"
+        string EvaluationObjectiveTitle "I"
+        string EvaluationObjectiveDescription "O"
+        integer SortOrder "O"
+        decimal MinNumericRating "O"
+        decimal MaxNumericRating "O"
+        descriptor EvaluationType "O"
+        common ObjectiveRatingLevel "OC"
+    }
+    EvaluationObjectiveRating {
+        reference EvaluationRating "I"
+        reference EvaluationObjective "I"
+        common ObjectiveRatingResult "OC"
+        descriptor ObjectiveRatingLevel "O"
+        string Comments "O"
+    }
+    EvaluationElement {
+        reference EvaluationObjective "I"
+        string EvaluationElementTitle "I"
+        integer SortOrder "O"
+        decimal MinNumericRating "O"
+        decimal MaxNumericRating "O"
+        descriptor EvaluationType "O"
+        common ElementRatingLevel "OC"
+    }
+    EvaluationElementRating {
+        reference EvaluationObjectiveRating "I"
+        reference EvaluationElement "I"
+        common ElementRatingResult "OC"
+        descriptor EvaluationElementRatingLevel "O"
+        string AreaOfRefinement "O"
+        string AreaOfReinforcement "O"
+        string Comments "O"
+        string Feedback "O"
+    }
+    QuantitativeMeasure {
+        reference EvaluationElement "I"
+        string QuantitativeMeasureIdentifier "I"
+        descriptor QuantitativeMeasureType "O"
+        descriptor QuantitativeMeasureDatatype "O"
+    }
+    QuantitativeMeasureScore {
+        reference EvaluationElementRating "I"
+        reference QuantitativeMeasure "I"
+        decimal ScoreValue "R"
+        decimal StandardError "O"
+    }
+    Goal {
+        reference Person "I"
+        string GoalTitle "I"
+        date AssignmentDate "I"
+        reference EvaluationElement "O"
+        reference EvaluationObjective "O"
+        descriptor GoalType "O"
+        string GoalDescription "O"
+        date DueDate "O"
+        bool CompletedIndicator "O"
+        date CompletedDate "O"
+        string Comments "O"
+        reference ParentGoal "O"
+    }
+    Person {
+        string PersonId "I"
+        descriptor SourceSystem "I"
+    }
+    Section {
+        string SectionIdentifier "I"
+        descriptor SectionType "O"
+        integer SequenceOfCourse "O"
+        descriptor EducationalEnvironment "O"
+        descriptor MediumOfInstruction "O"
+        descriptor PopulationServed "O"
+        common AvailableCredits "O"
+        descriptor SectionCharacteristic "OC"
+        descriptor InstructionLanguage "O"
+        reference CourseOffering "I"
+        reference LocationSchool "O"
+        reference Location "O"
+        reference ClassPeriod "OC"
+        reference Program "OC"
+        descriptor CourseLevelCharacteristic "OC"
+        descriptor OfferedGradeLevel "OC"
+        bool OfficialAttendancePeriod "O"
+        string SectionName "O"
+    }
+    SurveySectionAggregateResponse {
+        reference EvaluationElementRating "I"
+        reference SurveySection "I"
+        decimal ScoreValue "R"
+    }
+    EducationOrganization {
+        integer EducationOrganizationId "I"
+        string NameOfInstitution "R"
+        string ShortNameOfInstitution "O"
+        descriptor EducationOrganizationCategory "RC"
+        common Address "OC"
+        common InternationalAddress "OC"
+        common InstitutionTelephone "OC"
+        string WebSite "O"
+        descriptor OperationalStatus "O"
+        common EducationOrganizationIndicator "OC"
+    }
+    PerformanceEvaluation ||--o{ EducationOrganization : "relates to"
+    PerformanceEvaluation ||--o{ Evaluation : "relates to"
+    PerformanceEvaluationRating ||--o{ PerformanceEvaluation : "relates to"
+    PerformanceEvaluationRating ||--o{ EvaluationRating : "relates to"
+    PerformanceEvaluationRating ||--o{ Person : "relates to"
+    EvaluationRating ||--o{ Evaluation : "relates to"
+    EvaluationRating ||--o{ EvaluationObjectiveRating : "relates to"
+    Evaluation ||--o{ EvaluationObjective : "relates to"
+    EvaluationObjective ||--o{ EvaluationElement : "relates to"
+    EvaluationObjectiveRating ||--o{ EvaluationObjective : "relates to"
+    EvaluationObjectiveRating ||--o{ EvaluationElementRating : "relates to"
+    EvaluationElementRating ||--o{ EvaluationElement : "relates to"
+    EvaluationElementRating ||--o{ QuantitativeMeasureScore : "relates to"
+    EvaluationElement ||--o{ QuantitativeMeasure : "relates to"
+    QuantitativeMeasureScore ||--o{ QuantitativeMeasure : "relates to"
+    Goal ||--o{ Person : "relates to"
+    Goal ||--o{ EvaluationObjective : "relates to"
+    Goal ||--o{ EvaluationElement : "relates to"
+    Goal ||--o{ Goal : "relates to"
+    Section ||--o{ EvaluationRating : "relates to"
+    SurveySectionAggregateResponse ||--o{ EvaluationElementRating : "relates to"
+    style Goal fill:#E1BEE7,stroke:#AA00FF,color:#000000
+    style PerformanceEvaluation fill:#98FF98,stroke:#AA00FF,color:#000000
+
+```
+
 [_Large Version_](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/PerformanceEvaluation.png)
