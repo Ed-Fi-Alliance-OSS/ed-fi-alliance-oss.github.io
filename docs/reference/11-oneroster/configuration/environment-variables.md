@@ -19,7 +19,7 @@ single-tenant `EdFi_Admin`:
 
 ```env
 DB_TYPE=postgres
-CONNECTION_CONFIG={"adminConnection":"host=localhost;port=5432;database=EdFi_Admin;username=postgres;password=P@ssw0rd"}
+CONNECTION_CONFIG={"adminConnection":"host=localhost;port=5432;database=EdFi_Admin;username=<your-username>;password=<your-password>"}
 ODS_CONNECTION_STRING_ENCRYPTION_KEY=<base64 key matching the ODS API's ApiSettings:OdsConnectionStringEncryptionKey>
 
 OAUTH2_ISSUERBASEURL=https://your-issuer/
@@ -64,13 +64,13 @@ time using `ODS_CONNECTION_STRING_ENCRYPTION_KEY`.
 PostgreSQL example:
 
 ```env
-CONNECTION_CONFIG={"adminConnection":"host=localhost;port=5432;database=EdFi_Admin;username=postgres;password=P@ssw0rd"}
+CONNECTION_CONFIG={"adminConnection":"host=localhost;port=5432;database=EdFi_Admin;username=<your-username>;password=<your-password>"}
 ```
 
 Microsoft SQL Server example:
 
 ```env
-CONNECTION_CONFIG={"adminConnection":"server=localhost;database=EdFi_Admin;user id=sa;password=P@ssw0rd;encrypt=false;TrustServerCertificate=true"}
+CONNECTION_CONFIG={"adminConnection":"server=localhost;database=EdFi_Admin;user id=<your-username>;password=<your-password>;encrypt=false;TrustServerCertificate=true"}
 ```
 
 ### Multi-tenant mode
@@ -84,7 +84,7 @@ PostgreSQL example:
 
 ```env
 MULTITENANCY_ENABLED=true
-TENANTS_CONNECTION_CONFIG={"Tenant1":{"adminConnection":"host=localhost;port=5432;database=EdFi_Admin_Tenant1;username=postgres;password=pass1"},"Tenant2":{"adminConnection":"host=localhost;port=5432;database=EdFi_Admin_Tenant2;username=postgres;password=pass2"}}
+TENANTS_CONNECTION_CONFIG={"Tenant1":{"adminConnection":"host=localhost;port=5432;database=EdFi_Admin_Tenant1;username=<your-username>;password=<your-password>"},"Tenant2":{"adminConnection":"host=localhost;port=5432;database=EdFi_Admin_Tenant2;username=<your-username>;password=<your-password>"}}
 ```
 
 When multi-tenancy is enabled, every OneRoster route is prefixed with

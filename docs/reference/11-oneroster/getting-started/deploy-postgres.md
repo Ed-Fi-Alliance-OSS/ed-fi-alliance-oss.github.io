@@ -41,7 +41,7 @@ Copy `.env.example` to `.env` at the repository root and set at least:
   at the ODS API's `EdFi_Admin` database. Example:
 
   ```env
-  CONNECTION_CONFIG={"adminConnection":"host=localhost;port=5432;database=EdFi_Admin;username=postgres;password=P@ssw0rd"}
+  CONNECTION_CONFIG={"adminConnection":"host=localhost;port=5432;database=EdFi_Admin;username=<your-username>;password=<your-password>"}
   ```
 
 - `ODS_CONNECTION_STRING_ENCRYPTION_KEY` — the base64 AES key that
