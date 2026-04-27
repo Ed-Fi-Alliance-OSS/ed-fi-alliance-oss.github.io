@@ -69,18 +69,4 @@ erDiagram
     School ||--o{ EducationOrganization : "relates to"
     Student ||--o{ Program : "relates to"
     Student ||--o{ School : "relates to"
-    style ProgramEvaluation color:#000000
-    style ProgramEvaluationObjective color:#000000
-    style ProgramEvaluationElement color:#000000
-    style EvaluationRubricDimension color:#000000
-    style StudentProgramEvaluation color:#000000
-    style StudentEvaluationObjective color:#000000
-    style StudentEvaluationElement color:#000000
-    style GeneralStudentProgramAssociation color:#000000
-    style StaffProgramAssociation color:#000000
-    style Program color:#000000
-    style Student color:#000000
-    style Staff color:#000000
-    style EducationOrganization color:#000000
-    style School color:#000000
 ```

@@ -69,22 +69,4 @@ erDiagram
     LocalContractedStaff ||--o{ Staff : "relates to"
     LocalPayroll ||--o{ LocalAccount : "relates to"
     LocalPayroll ||--o{ Staff : "relates to"
-    style EducationOrganization color:#000000
-    style LocalAccount color:#000000
-    style ChartOfAccount color:#000000
-    style LocalBudget color:#000000
-    style LocalActual color:#000000
-    style LocalEncumbrance color:#000000
-    style LocalContractedStaff color:#000000
-    style LocalPayroll color:#000000
-    style FundDimension color:#000000
-    style ProgramDimension color:#000000
-    style FunctionDimension color:#000000
-    style ObjectDimension color:#000000
-    style ProjectDimension color:#000000
-    style BalanceSheetDimension color:#000000
-    style OperationalUnitDimension color:#000000
-    style SourceDimension color:#000000
-    style NewDimension color:#000000
-    style Staff color:#000000
 ```

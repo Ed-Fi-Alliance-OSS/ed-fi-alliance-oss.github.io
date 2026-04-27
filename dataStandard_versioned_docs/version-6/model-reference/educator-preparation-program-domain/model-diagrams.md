@@ -52,15 +52,4 @@ erDiagram
     CandidateIdentificationCode ||--o{ Candidate : "relates to"
     CandidateIdentificationCode ||--o{ EducationOrganization : "relates to"
     EducationOrganization ||--o{ EducationOrganization : "relates to"
-    style Candidate color:#000000
-    style CandidateIdentificationCode color:#000000
-    style EducatorPreparationProgram color:#000000
-    style FieldworkExperience color:#000000
-    style CandidateEducatorPreparationProgramAssociation color:#000000
-    style CandidateRelationshipToStaffAssociation color:#000000
-    style StaffEducatorPreparationProgramAssociation color:#000000
-    style Person color:#000000
-    style Staff color:#000000
-    style EducationOrganization color:#000000
-    style Section color:#000000
 ```

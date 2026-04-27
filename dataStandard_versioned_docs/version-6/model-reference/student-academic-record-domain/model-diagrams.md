@@ -222,18 +222,6 @@ erDiagram
     Program ||--o{ EducationOrganization : "relates to"
     CompetencyObjective ||--o{ EducationOrganization : "relates to"
     LearningStandard ||--o{ LearningStandard : "relates to"
-    style Student color:#000000
-    style ReportCard color:#000000
-    style Grade color:#000000
-    style StudentCompetencyObjective color:#000000
-    style StudentSectionAssociation color:#000000
-    style GeneralStudentProgramAssociation color:#000000
-    style GradingPeriod color:#000000
-    style CompetencyObjective color:#000000
-    style Section color:#000000
-    style Program color:#000000
-    style LearningStandard color:#000000
-    style EducationOrganization color:#000000
 ```
 
 ### Student Academic Record, Gradebook Model
