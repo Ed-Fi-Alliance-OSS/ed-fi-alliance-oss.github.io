@@ -75,21 +75,4 @@ erDiagram
     EducationServiceCenter ||--o{ EducationOrganization : "relates to"
     EducationServiceCenter ||--o{ StateEducationAgency : "relates to"
     StateEducationAgency ||--o{ EducationOrganization : "relates to"
-    style Staff color:#000000
-    style StaffIdentificationCode color:#000000
-    style StaffDirectory color:#000000
-    style StaffDemographic color:#000000
-    style Person color:#000000
-    style Credential color:#000000
-    style StaffAbsenceEvent color:#000000
-    style StaffLeave color:#000000
-    style StaffEducationOrganizationEmploymentAssociation color:#000000
-    style StaffEducationOrganizationAssignmentAssociation color:#000000
-    style StaffSchoolAssociation color:#000000
-    style OpenStaffPosition color:#000000
-    style EducationOrganization color:#000000
-    style EducationServiceCenter color:#000000
-    style LocalEducationAgency color:#000000
-    style StateEducationAgency color:#000000
-    style School color:#000000
 ```

@@ -65,18 +65,4 @@ erDiagram
     School ||--o{ LocalEducationAgency : "relates to"
     LocalEducationAgency ||--o{ EducationOrganization : "relates to"
     LocalEducationAgency ||--o{ LocalEducationAgency : "relates to"
-    style Student color:#000000
-    style StudentDirectory color:#000000
-    style StudentDemographic color:#000000
-    style StudentIdentificationCode color:#000000
-    style StudentSchoolAssociation color:#000000
-    style StudentEducationOrganizationAssociation color:#000000
-    style StudentEducationOrganizationResponsibilityAssociation color:#000000
-    style GraduationPlan color:#000000
-    style CrisisEvent color:#000000
-    style StudentTransportation color:#000000
-    style AccountabilityRating color:#000000
-    style EducationOrganization color:#000000
-    style LocalEducationAgency color:#000000
-    style School color:#000000
 ```

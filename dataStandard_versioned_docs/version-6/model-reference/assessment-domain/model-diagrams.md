@@ -62,19 +62,6 @@ erDiagram
     Section ||--o{ Program : "relates to"
     Student ||--o{ Section : "relates to"
     Student ||--o{ Program : "relates to"
-    style Assessment color:#000000
-    style StudentAssessment color:#000000
-    style ObjectiveAssessment color:#000000
-    style AssessmentItem color:#000000
-    style LearningStandard color:#000000
-    style LearningStandardEquivalenceAssociation color:#000000
-    style AssessmentScoreRangeLearningStandard color:#000000
-    style StudentAssessmentEducationOrganizationAssociation color:#000000
-    style Student color:#000000
-    style EducationOrganization color:#000000
-    style Section color:#000000
-    style Program color:#000000
-    style School color:#000000
 ```
 
 ### Learning Standard Subdomain

@@ -31,10 +31,4 @@ erDiagram
     ClassPeriod ||--o{ School : "relates to"
     Session ||--o{ School : "relates to"
     Section ||--o{ ClassPeriod : "relates to"
-    style BellSchedule color:#000000
-    style ClassPeriod color:#000000
-    style Session color:#000000
-    style Section color:#000000
-    style EducationOrganization color:#000000
-    style School color:#000000
 ```

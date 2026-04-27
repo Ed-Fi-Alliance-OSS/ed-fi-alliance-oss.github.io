@@ -59,16 +59,4 @@ erDiagram
     Program ||--o{ Staff : "relates to"
     EducationOrganization ||--o{ Program : "relates to"
     Section ||--o{ Program : "relates to"
-    style Student color:#000000
-    style Staff color:#000000
-    style Cohort color:#000000
-    style StudentCohortAssociation color:#000000
-    style StaffCohortAssociation color:#000000
-    style StudentInterventionAssociation color:#000000
-    style Intervention color:#000000
-    style StudentSectionAssociation color:#000000
-    style StaffSectionAssociation color:#000000
-    style Program color:#000000
-    style Section color:#000000
-    style EducationOrganization color:#000000
 ```

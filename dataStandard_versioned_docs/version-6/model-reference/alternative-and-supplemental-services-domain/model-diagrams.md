@@ -59,19 +59,6 @@ erDiagram
     StudentSchoolAttendanceEvent ||--o{ Student : "relates to"
     StudentProgramAttendanceEvent ||--o{ EducationOrganization : "relates to"
     StudentProgramAttendanceEvent ||--o{ Program : "relates to"
-    style Program color:#000000
-    style Staff color:#000000
-    style GeneralStudentProgramAssociation color:#000000
-    style StaffProgramAssociation color:#000000
-    style Section color:#000000
-    style StudentSectionAssociation color:#000000
-    style Student color:#000000
-    style EducationOrganization color:#000000
-    style StudentSectionAttendanceEvent color:#000000
-    style StudentSchoolAttendanceEvent color:#000000
-    style StudentProgramAttendanceEvent color:#000000
-    style StudentSpecialEducationProgramEligibilityAssociation color:#000000
-    style School color:#000000
 ```
 
 ### Federal Programs Subdomain

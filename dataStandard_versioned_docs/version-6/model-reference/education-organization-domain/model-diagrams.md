@@ -63,19 +63,4 @@ erDiagram
     CommunityProvider ||--o{ CommunityOrganization : "relates to"
     CommunityProviderLicense ||--o{ CommunityProvider : "relates to"
     EducationOrganizationIdentificationCode ||--o{ EducationOrganization : "relates to"
-    style EducationOrganization color:#000000
-    style EducationOrganizationIdentificationCode color:#000000
-    style StateEducationAgency color:#000000
-    style LocalEducationAgency color:#000000
-    style EducationServiceCenter color:#000000
-    style School color:#000000
-    style PostSecondaryInstitution color:#000000
-    style AccountabilityRating color:#000000
-    style EducationOrganizationNetwork color:#000000
-    style EducationOrganizationNetworkAssociation color:#000000
-    style FeederSchoolAssociation color:#000000
-    style CommunityOrganization color:#000000
-    style CommunityProvider color:#000000
-    style CommunityProviderLicense color:#000000
-    style OrganizationDepartment color:#000000
 ```
