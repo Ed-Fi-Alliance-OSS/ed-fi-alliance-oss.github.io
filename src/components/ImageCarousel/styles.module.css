@@ -40,8 +40,13 @@
   line-height: 1;
 }
 
-.btn:hover {
+.btn:hover:not(:disabled) {
   background: var(--ifm-color-primary-dark);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .counter {

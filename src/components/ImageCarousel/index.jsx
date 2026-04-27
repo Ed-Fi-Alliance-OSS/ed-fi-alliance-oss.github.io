@@ -3,7 +3,7 @@
 // The Ed-Fi Alliance licenses this file to you under the Apache License, Version 2.0.
 // See the LICENSE and NOTICES files in the project root for more information.
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './styles.module.css';
 
 export default function ImageCarousel({ images }) {
@@ -13,11 +13,18 @@ export default function ImageCarousel({ images }) {
   const imageCount = safeImages.length;
   const hasMultipleImages = imageCount > 1;
 
+  useEffect(() => {
+    if (current >= imageCount && imageCount > 0) {
+      setCurrent(imageCount - 1);
+    }
+  }, [imageCount, current]);
+
   if (imageCount === 0) {
     return null;
   }
 
-  const currentImage = safeImages[current];
+  const safeIndex = Math.min(current, imageCount - 1);
+  const currentImage = safeImages[safeIndex];
 
   const prev = () => {
     if (!hasMultipleImages) return;
