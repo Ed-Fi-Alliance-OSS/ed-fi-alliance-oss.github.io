@@ -59,7 +59,7 @@ time using `ODS_CONNECTION_STRING_ENCRYPTION_KEY`.
 | Variable | Default | Notes |
 | --- | --- | --- |
 | `CONNECTION_CONFIG` | _(none)_ | Required in single-tenant mode. JSON with an `adminConnection` key whose value is an `EdFi_Admin` connection string for the configured `DB_TYPE`. Ignored when `MULTITENANCY_ENABLED=true`. |
-| `ODS_CONNECTION_STRING_ENCRYPTION_KEY` | _(none)_ | Required. Base64-encoded AES key used to decrypt the ODS connection strings stored in `EdFi_Admin.OdsInstances`. **Must match** the ODS API's `ApiSettings:OdsConnectionStringEncryptionKey`. Generate with `openssl rand -base64 32`. Without it, the service cannot connect to any ODS. |
+| `ODS_CONNECTION_STRING_ENCRYPTION_KEY` | _(none)_ | Required. Base64-encoded AES key used to decrypt the ODS connection strings stored in `EdFi_Admin.OdsInstances`. **Must match** the ODS API's `ApiSettings:OdsConnectionStringEncryptionKey`. Without this key, the service cannot connect to any ODS. |
 
 PostgreSQL example:
 

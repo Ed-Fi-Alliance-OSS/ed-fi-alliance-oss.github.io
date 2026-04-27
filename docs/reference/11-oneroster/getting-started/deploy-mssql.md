@@ -28,7 +28,7 @@ Two distinct steps are involved:
 - The ODS API's `ApiSettings:OdsConnectionStringEncryptionKey` value.
   The OneRoster service uses the same key to decrypt the ODS
   connection strings it reads from `EdFi_Admin.OdsInstances`.
-- Node.js 18 LTS or later
+- Node.js 22 LTS or later
 
 ## Step 1. Deploy the SQL artifacts and seed data
 
