@@ -382,7 +382,7 @@ To ensure MetaEd outputs are correctly deployed to ODS / API extension project, 
 
 **Right-click** on the `Marker_EdFi_Ods_Extensions_ExtensionName.cs` file in newly created **EdFi.Ods.Extensions.SampleStudentTranscript** project and Rename the file to `Marker_EdFi_Ods_Extensions_SampleStudentTranscript.cs`.
 
-#### 4c.2. When prompted choose to rename all references to the code element `Marker_EdFi_Ods_Extensions_ExtensionName`.
+#### 4c.2. When prompted choose to rename all references to the code element `Marker_EdFi_Ods_Extensions_ExtensionName`
 
 ### Step 4d. Integrate Extension into the Solution
 
@@ -424,8 +424,6 @@ previous work before running deployment.
 :::
 
 Deploy by clicking **Deploy** on the VSCode menu
-
-
 
 ![image](https://edfi.atlassian.net/wiki/download/attachments/25493733/Deploy.png?version=1&modificationDate=1699456119803&cacheVersion=1&api=v2)
 
@@ -576,7 +574,7 @@ WHERE r.ResourceName = 'postSecondaryOrganization'
 ### Preventing Resource Name Conflicts
 
 With MetaEd 2+, it is possible to create extension resources that use the same
-name as an Ed-Fi standard resource. The authorization metadata supports this
+name as an Ed-Fi Data Standard resource. The authorization metadata supports this
 through a change in behavior so it no longer uses just the resource name to
 identify the resource, but instead uses the ClaimName. To prevent possible
 naming conflicts, the claim name's URI value should include the schema

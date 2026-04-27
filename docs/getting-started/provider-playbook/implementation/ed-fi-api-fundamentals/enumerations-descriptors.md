@@ -2,7 +2,7 @@
 
 Controlled vocabularies are common in data modeling and provide a useful way of classifying data elements. These "code sets" are often distributed and managed by state education agencies or local education agencies, and some technology providers have developed highly elaborate sets also in wide use. As such, these classifications often carry deep semantics that are important to those who use the data.
 
-In the Ed-Fi Data Model, enumerations are called **Ed-Fi Descriptors**. Below we describe how they work in Ed-Fi API standards.
+In the Ed-Fi Data Model, enumerations are called **Ed-Fi Descriptors**. Below we describe how they work in Ed-Fi API Specifications.
 
 ## Parts of an Ed-Fi Descriptor
 
