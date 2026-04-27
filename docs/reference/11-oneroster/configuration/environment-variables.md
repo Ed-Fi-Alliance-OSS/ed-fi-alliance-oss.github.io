@@ -159,7 +159,7 @@ the behavior details.
 | --- | --- | --- |
 | `CORS_ORIGINS` | `http://localhost:3000` | Comma-separated allowed origins. Leave empty to allow all (not recommended in production). |
 | `RATE_LIMIT_WINDOW_MS` | `60000` | Rate-limit window in milliseconds (`express-rate-limit`). |
-| `RATE_LIMIT_MAX_REQUESTS` | `60` | Maximum requests per window per IP. The bundled `.env.example` sets this to `100`. The service code uses `60` as the fallback when the variable is unset. |
+| `RATE_LIMIT_MAX_REQUESTS` | `100` | Maximum requests per window per IP. |
 | `TRUST_PROXY` | `false` | When `true`, the service trusts `X-Forwarded-*` headers. Required when running behind IIS, NGINX, or ARR. |
 
 ## Deployment-script variables

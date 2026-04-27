@@ -56,7 +56,7 @@ using the IP address of the client. Other routes (`/health-check`,
 | Variable | Default | Behavior |
 | --- | --- | --- |
 | `RATE_LIMIT_WINDOW_MS` | `60000` (1 minute) | Sliding window length. |
-| `RATE_LIMIT_MAX_REQUESTS` | `60` | Maximum requests per IP per window. |
+| `RATE_LIMIT_MAX_REQUESTS` | `100` | Maximum requests per IP per window. |
 
 Response headers follow the RFC draft for rate-limit headers
 (`RateLimit-Limit`, `RateLimit-Remaining`, `RateLimit-Reset`). The
