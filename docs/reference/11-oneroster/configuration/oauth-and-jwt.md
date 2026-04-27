@@ -189,7 +189,7 @@ needs to read `/demographics`.
 
 ## Integration with the Ed-Fi ODS / API
 
-Version 7.3 of the Ed-Fi ODS / API includes a
+Version 7.3.2 of the Ed-Fi ODS / API includes a
 `FeatureManagement:OneRoster` setting and supporting claim-set
 configuration that enable the ODS / API's built-in OAuth endpoint to
 issue tokens bearing the OneRoster scopes above. The ODS / API's
