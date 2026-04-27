@@ -27,27 +27,27 @@ hide_table_of_contents: true
 
 ## Credential Domain Descriptors
 
-| Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
+| Name | Entity | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
-| Credential | AcademicSubject | The academic subjects to which the credential pertains. | Local | Yes | Yes |     |
-| CertificationExamResult | CertificationExamStatus | The status of the certification exam attempt. |     |     |     |     |
-| CertificationExam | CertificationExamType | The type or category of the certification exam. |     |     |     |     |
-| Certification | CertificationField | The field of certification. |     |     |     |     |
-| Certification | CertificationLevel | The level or category of the certification. |     |     |     |     |
-| Certification <br /> Credential | CertificationRoute | The process, program, or pathway used to obtain the certification. | Orthodox |     |     |     |
-| Certification | CertificationStandard | The standard, law, opr policy defining the certification. |     |     |     |     |
-| CredentialEvent | CredentialEventType | The type of event associated with a person's credential. |     |     |     |     |
-| Credential | CredentialField | The field of certification for the credential. | Local |     |     |     |
-| Credential | CredentialStatus | The current status of the credential. | Standard |     |     |     |
-| Credential | CredentialType | An indication of the category of the credential a person holds. | Local |     |     |     |
-| Certification | Degree | The minimum level of degree, if any, required for the certification. | Orthodox |     |     |     |
-|  Certification <br /> Credential | EducatorRole | The role authorized by the certification, typically associated with service and administrative certifications. | Standard |     |     |     |
-| Certification <br /> Credential | GradeLevel | The grade level(s) certified for teaching. | Orthodox | Yes | Yes |     |
-| Certification | InstructionalSetting | The setting authorized by the certification in which a person receives education and related services. |     |     |     |     |
-| Certification | PopulationServed | The type of students that the certification is offered and tailored to. | Orthodox |     |     |     |
-| Credential | StateAbbreviation | The abbreviation for the name of the state (within the United States) or extra-state jurisdiction in which a license/credential was issued. | Standard |     | Yes |     |
-| Credential | TeachingCredential | An indication of the category of a legal document giving authorization to perform teaching assignment services. | Orthodox |     |     |     |
-| Credential | TeachingCredentialBasis | An indication of the pre-determined criteria for granting the teaching credential that a person holds. | Orthodox |     |     |     |
+| AcademicSubject | Credential | The academic subjects to which the credential pertains. | Local | Yes | Yes |     |
+| CertificationExamStatus | CertificationExamResult | The status of the certification exam attempt. |     |     |     |     |
+| CertificationExamType | CertificationExam | The type or category of the certification exam. |     |     |     |     |
+| CertificationField | Certification | The field of certification. |     |     |     |     |
+| CertificationLevel | Certification | The level or category of the certification. |     |     |     |     |
+| CertificationRoute | Certification <br /> Credential | The process, program, or pathway used to obtain the certification. | Orthodox |     |     |     |
+| CertificationStandard | Certification | The standard, law, or policy defining the certification. |     |     |     |     |
+| CredentialEventType | CredentialEvent | The type of event associated with a person's credential. |     |     |     |     |
+| CredentialField | Credential | The field of certification for the credential. | Local |     |     |     |
+| CredentialStatus | Credential | The current status of the credential. | Standard |     |     |     |
+| CredentialType | Credential | An indication of the category of the credential a person holds. | Local |     |     |     |
+| Degree | Certification | The minimum level of degree, if any, required for the certification. | Orthodox |     |     |     |
+| EducatorRole | Certification <br /> Credential | The role authorized by the certification, typically associated with service and administrative certifications. | Standard |     |     |     |
+| GradeLevel | Certification <br /> Credential | The grade level(s) certified for teaching. | Orthodox | Yes | Yes |     |
+| InstructionalSetting | Certification | The setting authorized by the certification in which a person receives education and related services. |     |     |     |     |
+| PopulationServed | Certification | The type of students that the certification is offered and tailored to. | Orthodox |     |     |     |
+| StateAbbreviation | Credential | The abbreviation for the name of the state (within the United States) or extra-state jurisdiction in which a license/credential was issued. | Standard |     | Yes |     |
+| TeachingCredential | Credential | An indication of the category of a legal document giving authorization to perform teaching assignment services. | Orthodox |     |     |     |
+| TeachingCredentialBasis | Credential | An indication of the pre-determined criteria for granting the teaching credential that a person holds. | Orthodox |     |     |     |
 
 :::tip
 
