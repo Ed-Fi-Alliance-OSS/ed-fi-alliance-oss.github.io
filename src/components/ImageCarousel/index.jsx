@@ -50,6 +50,7 @@ export default function ImageCarousel({ images }) {
           onClick={prev}
           aria-label="Previous image"
           disabled={!hasMultipleImages}
+          aria-disabled={!hasMultipleImages}
         >
           &#8592;
         </button>
@@ -62,6 +63,7 @@ export default function ImageCarousel({ images }) {
           onClick={next}
           aria-label="Next image"
           disabled={!hasMultipleImages}
+          aria-disabled={!hasMultipleImages}
         >
           &#8594;
         </button>
@@ -74,7 +76,7 @@ export default function ImageCarousel({ images }) {
             className={`${styles.dot} ${i === current ? styles.dotActive : ''}`}
             onClick={() => setCurrent(i)}
             aria-label={`Go to image ${i + 1}`}
-            aria-current={i === current ? 'true' : undefined}
+            aria-current={i === current || undefined}
           />
         ))}
       </div>
