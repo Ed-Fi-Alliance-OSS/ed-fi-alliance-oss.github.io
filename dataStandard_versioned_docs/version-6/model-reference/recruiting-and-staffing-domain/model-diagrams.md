@@ -33,14 +33,14 @@ erDiagram
     }
     EducationOrganization {
     }
-    Application ||--o{ ApplicantProfile : "relates to"
-    Application ||--o{ EducationOrganization : "relates to"
-    Application ||--o{ OpenStaffPosition : "relates to"
-    Application ||--o{ RecruitmentEventAttendance : "relates to"
-    ApplicationEvent ||--o{ Application : "relates to"
-    RecruitmentEventAttendance ||--o{ RecruitmentEvent : "relates to"
-    RecruitmentEventAttendance ||--o{ RecruitmentEventAttendance : "relates to"
-    RecruitmentEvent ||--o{ EducationOrganization : "relates to"
-    ProfessionalDevelopmentEvent ||--o{ ProfessionalDevelopmentEventAttendance : "relates to"
-    ProfessionalDevelopmentEventAttendance ||--o{ Person : "relates to"
+    Application ||--o{ ApplicantProfile : "has associated"
+    Application ||--o{ EducationOrganization : "has associated"
+    Application ||--o{ OpenStaffPosition : "has associated"
+    Application ||--o{ RecruitmentEventAttendance : "has associated"
+    ApplicationEvent ||--o{ Application : "has associated"
+    RecruitmentEventAttendance ||--o{ RecruitmentEvent : "has associated"
+    RecruitmentEventAttendance ||--o{ RecruitmentEventAttendance : "has associated"
+    RecruitmentEvent ||--o{ EducationOrganization : "has associated"
+    ProfessionalDevelopmentEvent ||--o{ ProfessionalDevelopmentEventAttendance : "has associated"
+    ProfessionalDevelopmentEventAttendance ||--o{ Person : "has associated"
 ```

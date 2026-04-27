@@ -31,15 +31,15 @@ erDiagram
     }
     School {
     }
-    Session ||--o{ School : "relates to"
-    Session ||--o{ AcademicWeek : "relates to"
-    Session ||--o{ GradingPeriod : "relates to"
-    GradingPeriod ||--o{ School : "relates to"
-    Calendar ||--o{ School : "relates to"
-    CalendarDate ||--o{ Calendar : "relates to"
-    StudentSchoolAssociation ||--o{ Calendar : "relates to"
-    StudentSchoolAssociation ||--o{ Student : "relates to"
-    School ||--o{ StudentSchoolAssociation : "relates to"
-    School ||--o{ EducationOrganization : "relates to"
-    Student ||--o{ School : "relates to"
+    Session ||--o{ School : "has associated"
+    Session ||--o{ AcademicWeek : "has associated"
+    Session ||--o{ GradingPeriod : "has associated"
+    GradingPeriod ||--o{ School : "has associated"
+    Calendar ||--o{ School : "has associated"
+    CalendarDate ||--o{ Calendar : "has associated"
+    StudentSchoolAssociation ||--o{ Calendar : "has associated"
+    StudentSchoolAssociation ||--o{ Student : "has associated"
+    School ||--o{ StudentSchoolAssociation : "has associated"
+    School ||--o{ EducationOrganization : "has associated"
+    Student ||--o{ School : "has associated"
 ```

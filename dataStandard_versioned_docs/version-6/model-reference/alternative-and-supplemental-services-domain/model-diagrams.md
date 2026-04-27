@@ -42,23 +42,23 @@ erDiagram
     }
     School {
     }
-    EducationOrganization ||--o{ Program : "relates to"
-    Student ||--o{ Program : "relates to"
-    Program ||--o{ Staff : "relates to"
-    Section ||--o{ Program : "relates to"
-    Student ||--o{ School : "relates to"
-    Student ||--o{ GeneralStudentProgramAssociation : "relates to"
-    Student ||--o{ StaffProgramAssociation : "relates to"
-    Staff ||--o{ StaffProgramAssociation : "relates to"
-    Student ||--o{ StudentSectionAssociation : "relates to"
-    Section ||--o{ StudentSectionAssociation : "relates to"
-    Student ||--o{ StudentSpecialEducationProgramEligibilityAssociation : "relates to"
-    StudentSectionAttendanceEvent ||--o{ Student : "relates to"
-    StudentSectionAttendanceEvent ||--o{ Section : "relates to"
-    StudentSchoolAttendanceEvent ||--o{ School : "relates to"
-    StudentSchoolAttendanceEvent ||--o{ Student : "relates to"
-    StudentProgramAttendanceEvent ||--o{ EducationOrganization : "relates to"
-    StudentProgramAttendanceEvent ||--o{ Program : "relates to"
+    EducationOrganization ||--o{ Program : "has associated"
+    Student ||--o{ Program : "has associated"
+    Program ||--o{ Staff : "has associated"
+    Section ||--o{ Program : "has associated"
+    Student ||--o{ School : "has associated"
+    Student ||--o{ GeneralStudentProgramAssociation : "has associated"
+    Student ||--o{ StaffProgramAssociation : "has associated"
+    Staff ||--o{ StaffProgramAssociation : "has associated"
+    Student ||--o{ StudentSectionAssociation : "has associated"
+    Section ||--o{ StudentSectionAssociation : "has associated"
+    Student ||--o{ StudentSpecialEducationProgramEligibilityAssociation : "has associated"
+    StudentSectionAttendanceEvent ||--o{ Student : "has associated"
+    StudentSectionAttendanceEvent ||--o{ Section : "has associated"
+    StudentSchoolAttendanceEvent ||--o{ School : "has associated"
+    StudentSchoolAttendanceEvent ||--o{ Student : "has associated"
+    StudentProgramAttendanceEvent ||--o{ EducationOrganization : "has associated"
+    StudentProgramAttendanceEvent ||--o{ Program : "has associated"
 ```
 
 ### Federal Programs Subdomain
@@ -101,33 +101,18 @@ erDiagram
     }
     StudentSection504ProgramAssociation {
     }
-    EducationOrganization ||--o{ Program : "relates to"
-    Student ||--o{ Program : "relates to"
-    GeneralStudentProgramAssociation ||--o{ EducationOrganization : "relates to"
-    StudentSpecialEducationProgramEligibilityAssociation ||--o{ EducationOrganization : "relates to"
-    StudentCTEProgramAssociation ||--o{ GeneralStudentProgramAssociation : "relates to"
-    StudentHomelessProgramAssociation ||--o{ GeneralStudentProgramAssociation : "relates to"
-    StudentLanguageInstructionProgramAssociation ||--o{ GeneralStudentProgramAssociation : "relates to"
-    StudentMigrantEducationProgramAssociation ||--o{ GeneralStudentProgramAssociation : "relates to"
-    StudentNeglectedOrDelinquentProgramAssociation ||--o{ GeneralStudentProgramAssociation : "relates to"
-    StudentProgramAssociation ||--o{ GeneralStudentProgramAssociation : "relates to"
-    StudentSchoolFoodServiceProgramAssociation ||--o{ GeneralStudentProgramAssociation : "relates to"
-    StudentSpecialEducationProgramAssociation ||--o{ GeneralStudentProgramAssociation : "relates to"
-    StudentTitleIPartAProgramAssociation ||--o{ GeneralStudentProgramAssociation : "relates to"
-    StudentSection504ProgramAssociation ||--o{ GeneralStudentProgramAssociation : "relates to"
-    style Program color:#000000
-    style Student color:#000000
-    style EducationOrganization color:#000000
-    style GeneralStudentProgramAssociation color:#000000
-    style StudentCTEProgramAssociation color:#000000
-    style StudentHomelessProgramAssociation color:#000000
-    style StudentLanguageInstructionProgramAssociation color:#000000
-    style StudentMigrantEducationProgramAssociation color:#000000
-    style StudentNeglectedOrDelinquentProgramAssociation color:#000000
-    style StudentProgramAssociation color:#000000
-    style StudentSchoolFoodServiceProgramAssociation color:#000000
-    style StudentSpecialEducationProgramAssociation color:#000000
-    style StudentTitleIPartAProgramAssociation color:#000000
-    style StudentSpecialEducationProgramEligibilityAssociation color:#000000
-    style StudentSection504ProgramAssociation color:#000000
+    EducationOrganization ||--o{ Program : "has associated"
+    Student ||--o{ Program : "has associated"
+    GeneralStudentProgramAssociation ||--o{ EducationOrganization : "has associated"
+    StudentSpecialEducationProgramEligibilityAssociation ||--o{ EducationOrganization : "has associated"
+    StudentCTEProgramAssociation ||--o{ GeneralStudentProgramAssociation : "has associated"
+    StudentHomelessProgramAssociation ||--o{ GeneralStudentProgramAssociation : "has associated"
+    StudentLanguageInstructionProgramAssociation ||--o{ GeneralStudentProgramAssociation : "has associated"
+    StudentMigrantEducationProgramAssociation ||--o{ GeneralStudentProgramAssociation : "has associated"
+    StudentNeglectedOrDelinquentProgramAssociation ||--o{ GeneralStudentProgramAssociation : "has associated"
+    StudentProgramAssociation ||--o{ GeneralStudentProgramAssociation : "has associated"
+    StudentSchoolFoodServiceProgramAssociation ||--o{ GeneralStudentProgramAssociation : "has associated"
+    StudentSpecialEducationProgramAssociation ||--o{ GeneralStudentProgramAssociation : "has associated"
+    StudentTitleIPartAProgramAssociation ||--o{ GeneralStudentProgramAssociation : "has associated"
+    StudentSection504ProgramAssociation ||--o{ GeneralStudentProgramAssociation : "has associated"
 ```

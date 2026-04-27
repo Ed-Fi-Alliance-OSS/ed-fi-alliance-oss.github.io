@@ -56,31 +56,31 @@ erDiagram
     }
 
     School ||--o{ EducationOrganization : "extends"
-    EducationOrganization ||--o{ Session : "HasAssociated"
-    EducationOrganization ||--o{ School : "HasAssociated"
-    EducationOrganization ||--o{ Course : "HasAssociated"
-    Student ||--o{ StudentSchoolAssociation : "ParticipatesIn"
-    Student ||--o{ GeneralStudentProgramAssociation : "ParticipatesIn"
-    Student ||--o{ StudentSectionAssociation : "ParticipatesIn"
-    Staff ||--o{ StaffSchoolAssociation : "HasAssociated"
-    Staff ||--o{ StaffProgramAssociation : "HasAssociated"
-    Staff ||--o{ StaffSectionAssociation : "HasAssociated"
-    School ||--o{ StudentSchoolAssociation : "HasAssociated"
-    School ||--o{ StaffSchoolAssociation : "HasAssociated"
-    School ||--o{ Session : "HasAssociated"
-    Program ||--o{ GeneralStudentProgramAssociation : "HasAssociated"
-    Program ||--o{ StaffProgramAssociation : "HasAssociated"
-    EducationOrganization ||--o{ GeneralStudentProgramAssociation : "HasAssociated"
-    Course ||--o{ CourseOffering : "HasAssociated"
-    School ||--o{ CourseOffering : "HasAssociated"
-    CourseOffering ||--o{ Section : "HasAssociated"
-    Section ||--o{ StudentSectionAssociation : "HasAssociated"
-    Section ||--o{ StaffSectionAssociation : "HasAssociated"
-    Section ||--o{ ClassPeriod : "HasFunctionalComponent"
-    Section ||--o{ Location : "HasAssociated"
-    LearningStandard ||--o{ Section : "HasAssociated"
-    LearningStandard ||--o{ LearningStandard : "HasAssociatedEquivalence"
-    LearningStandard ||--o{ Course : "HasAssociated"
+    EducationOrganization ||--o{ Session : "has associated"
+    EducationOrganization ||--o{ School : "has associated"
+    EducationOrganization ||--o{ Course : "has associated"
+    Student ||--o{ StudentSchoolAssociation : "participates in"
+    Student ||--o{ GeneralStudentProgramAssociation : "participates in"
+    Student ||--o{ StudentSectionAssociation : "participates in"
+    Staff ||--o{ StaffSchoolAssociation : "has associated"
+    Staff ||--o{ StaffProgramAssociation : "has associated"
+    Staff ||--o{ StaffSectionAssociation : "has associated"
+    School ||--o{ StudentSchoolAssociation : "has associated"
+    School ||--o{ StaffSchoolAssociation : "has associated"
+    School ||--o{ Session : "has associated"
+    Program ||--o{ GeneralStudentProgramAssociation : "has associated"
+    Program ||--o{ StaffProgramAssociation : "has associated"
+    EducationOrganization ||--o{ GeneralStudentProgramAssociation : "has associated"
+    Course ||--o{ CourseOffering : "has associated"
+    School ||--o{ CourseOffering : "has associated"
+    CourseOffering ||--o{ Section : "has associated"
+    Section ||--o{ StudentSectionAssociation : "has associated"
+    Section ||--o{ StaffSectionAssociation : "has associated"
+    Section ||--o{ ClassPeriod : "has functional component"
+    Section ||--o{ Location : "has associated"
+    LearningStandard ||--o{ Section : "has associated"
+    LearningStandard ||--o{ LearningStandard : "has associated equivalence"
+    LearningStandard ||--o{ Course : "has associated"
 ```
 
 ### Course Catalog Subdomain
@@ -121,20 +121,14 @@ erDiagram
     }
 
     School ||--o{ EducationOrganization : "extends"
-    EducationOrganization ||--o{ Course : "HasAssociated"
-    School ||--o{ Session : "HasAssociated"
-    School ||--o{ CourseOffering : "HasAssociated"
-    Session ||--o{ CourseOffering : "HasAssociated"
-    Course ||--o{ CourseOffering : "HasAssociated"
-    Course ||--o{ LearningStandard : "HasAssociated"
-    LearningStandard ||--o{ LearningStandard : "HasFunctionalComponent"
-    LearningStandard ||--o{ LearningStandard : "HasAssociatedEquivalence"
-    style EducationOrganization color:#000000
-    style School color:#000000
-    style Session color:#000000
-    style Course color:#000000
-    style CourseOffering color:#000000
-    style LearningStandard color:#000000
+    EducationOrganization ||--o{ Course : "has associated"
+    School ||--o{ Session : "has associated"
+    School ||--o{ CourseOffering : "has associated"
+    Session ||--o{ CourseOffering : "has associated"
+    Course ||--o{ CourseOffering : "has associated"
+    Course ||--o{ LearningStandard : "has associated"
+    LearningStandard ||--o{ LearningStandard : "has functional component"
+    LearningStandard ||--o{ LearningStandard : "has associated equivalence"
 ```
 
 ### Sections and Programs Subdomain
@@ -194,49 +188,30 @@ erDiagram
     }
 
     School ||--o{ EducationOrganization : "extends"
-    EducationOrganization ||--o{ Program : "IsDirectProviderOf"
-    EducationOrganization ||--o{ GeneralStudentProgramAssociation : "HasAssociated"
-    School ||--o{ Session : "HasAssociated"
-    School ||--o{ CourseOffering : "HasAssociated"
-    School ||--o{ StudentSchoolAssociation : "HasAssociated"
-    School ||--o{ StaffSchoolAssociation : "HasAssociated"
-    School ||--o{ Location : "HasAssociated"
-    Staff ||--o{ StaffSchoolAssociation : "HasAssociated"
-    Staff ||--o{ StaffSectionAssociation : "HasAssociated"
-    Staff ||--o{ StaffProgramAssociation : "HasAssociated"
-    Student ||--o{ StudentSchoolAssociation : "ParticipatesIn"
-    Student ||--o{ StudentSectionAssociation : "ParticipatesIn"
-    Student ||--o{ GeneralStudentProgramAssociation : "ParticipatesIn"
-    Student ||--o{ StudentAcademicRecord : "HasAssociated"
-    Program ||--o{ GeneralStudentProgramAssociation : "HasAssociated"
-    Program ||--o{ StaffProgramAssociation : "HasAssociated"
-    CourseOffering ||--o{ Section : "HasAssociated"
-    Section ||--o{ StudentSectionAssociation : "HasAssociated"
-    Section ||--o{ StaffSectionAssociation : "HasAssociated"
-    Section ||--o{ ClassPeriod : "HasFunctionalComponent"
-    Section ||--o{ Location : "HasAssociated"
-    Section ||--o{ Staff : "HasResponsibleTeacher"
-    CourseOffering ||--o{ ClassPeriod : "HasAssociated"
-    StudentSectionAssociation ||--o{ Program : "HasAssociated"
-    StudentAcademicRecord ||--o{ CourseTranscript : "HasAssociated"
-    CourseTranscript ||--o{ Course : "HasAssociated"
-    style EducationOrganization color:#000000
-    style School color:#000000
-    style Session color:#000000
-    style Student color:#000000
-    style Staff color:#000000
-    style Program color:#000000
-    style ClassPeriod color:#000000
-    style Location color:#000000
-    style Course color:#000000
-    style CourseOffering color:#000000
-    style Section color:#000000
-    style StudentSchoolAssociation color:#000000
-    style StaffSchoolAssociation color:#000000
-    style StaffProgramAssociation color:#000000
-    style GeneralStudentProgramAssociation color:#000000
-    style StudentSectionAssociation color:#000000
-    style StaffSectionAssociation color:#000000
-    style StudentAcademicRecord color:#000000
-    style CourseTranscript color:#000000
+    EducationOrganization ||--o{ Program : "Is DirectProviderOf"
+    EducationOrganization ||--o{ GeneralStudentProgramAssociation : "has associated"
+    School ||--o{ Session : "has associated"
+    School ||--o{ CourseOffering : "has associated"
+    School ||--o{ StudentSchoolAssociation : "has associated"
+    School ||--o{ StaffSchoolAssociation : "has associated"
+    School ||--o{ Location : "has associated"
+    Staff ||--o{ StaffSchoolAssociation : "has associated"
+    Staff ||--o{ StaffSectionAssociation : "has associated"
+    Staff ||--o{ StaffProgramAssociation : "has associated"
+    Student ||--o{ StudentSchoolAssociation : "participates in"
+    Student ||--o{ StudentSectionAssociation : "participates in"
+    Student ||--o{ GeneralStudentProgramAssociation : "participates in"
+    Student ||--o{ StudentAcademicRecord : "has associated"
+    Program ||--o{ GeneralStudentProgramAssociation : "has associated"
+    Program ||--o{ StaffProgramAssociation : "has associated"
+    CourseOffering ||--o{ Section : "has associated"
+    Section ||--o{ StudentSectionAssociation : "has associated"
+    Section ||--o{ StaffSectionAssociation : "has associated"
+    Section ||--o{ ClassPeriod : "has functional component"
+    Section ||--o{ Location : "has associated"
+    Section ||--o{ Staff : "has responsible teacher"
+    CourseOffering ||--o{ ClassPeriod : "has associated"
+    StudentSectionAssociation ||--o{ Program : "has associated"
+    StudentAcademicRecord ||--o{ CourseTranscript : "has associated"
+    CourseTranscript ||--o{ Course : "has associated"
 ```

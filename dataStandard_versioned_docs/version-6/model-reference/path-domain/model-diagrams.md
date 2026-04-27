@@ -31,15 +31,15 @@ erDiagram
     }
     StudentPathMilestoneStatus {
     }
-    Path ||--o{ EducationOrganization : "relates to"
-    Path ||--o{ GraduationPlan : "relates to"
-    PathPhase ||--o{ Path : "relates to"
-    PathPhase ||--o{ PathMilestone : "relates to"
-    StudentPath ||--o{ Student : "relates to"
-    StudentPath ||--o{ Path : "relates to"
-    StudentPathPhaseStatus ||--o{ StudentPath : "relates to"
-    StudentPathPhaseStatus ||--o{ PathPhase : "relates to"
-    StudentPathMilestoneStatus ||--o{ StudentPath : "relates to"
-    StudentPathMilestoneStatus ||--o{ PathPhase : "relates to"
-    StudentPathMilestoneStatus ||--o{ PathMilestone : "relates to"
+    Path ||--o{ EducationOrganization : "has associated"
+    Path ||--o{ GraduationPlan : "has associated"
+    PathPhase ||--o{ Path : "has associated"
+    PathPhase ||--o{ PathMilestone : "has associated"
+    StudentPath ||--o{ Student : "has associated"
+    StudentPath ||--o{ Path : "has associated"
+    StudentPathPhaseStatus ||--o{ StudentPath : "has associated"
+    StudentPathPhaseStatus ||--o{ PathPhase : "has associated"
+    StudentPathMilestoneStatus ||--o{ StudentPath : "has associated"
+    StudentPathMilestoneStatus ||--o{ PathPhase : "has associated"
+    StudentPathMilestoneStatus ||--o{ PathMilestone : "has associated"
 ```

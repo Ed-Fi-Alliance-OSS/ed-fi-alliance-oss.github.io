@@ -25,10 +25,10 @@ erDiagram
     }
     School {
     }
-    School ||--o{ EducationOrganization : "relates to"
-    BellSchedule ||--o{ School : "relates to"
-    BellSchedule ||--o{ ClassPeriod : "relates to"
-    ClassPeriod ||--o{ School : "relates to"
-    Session ||--o{ School : "relates to"
-    Section ||--o{ ClassPeriod : "relates to"
+    School ||--o{ EducationOrganization : "has associated"
+    BellSchedule ||--o{ School : "has associated"
+    BellSchedule ||--o{ ClassPeriod : "has associated"
+    ClassPeriod ||--o{ School : "has associated"
+    Session ||--o{ School : "has associated"
+    Section ||--o{ ClassPeriod : "has associated"
 ```
