@@ -35,15 +35,6 @@ API Guidelines](./api-guidelines/).
 
 :::
 
-### 1EdTech® OneRoster® interoperability
-
-The [Ed-Fi OneRoster service](../11-oneroster/readme.mdx) serves a 1EdTech
-OneRoster v1.2 rostering API from data in an Ed-Fi ODS. It is released and
-deployed independently of the Ed-Fi ODS / API, supports Ed-Fi Data Standard
-4.0 and 5.0 through 5.2, and runs against either PostgreSQL or Microsoft
-SQL Server. Use it when a vendor application expects a OneRoster feed and
-the rostering source of truth lives in Ed-Fi.
-
 ## Resources
 
 ### Standard Information & Publications

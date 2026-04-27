@@ -51,6 +51,17 @@ function Main() {
               applications.{' '}
               <Link to="/reference/ods-api">Explore the Ed-Fi ODS/API</Link>
             </p>
+            <h2>Ed-Fi OneRoster Service</h2>
+            <p>
+              The Ed-Fi OneRoster® Service serves a 1EdTech® OneRoster v1.2
+              Rostering API from data in an Ed-Fi ODS. It gives vendor
+              applications that expect OneRoster a consistent way to read
+              rostering data, and is certified by 1EdTech against the
+              OneRoster v1.2 Rostering Core service.{' '}
+              <Link to="/reference/oneroster">
+                Explore the Ed-Fi OneRoster Service
+              </Link>
+            </p>
             {/* useful text for future use, not ready to include here yet. */}
             {/* <h2>Ed-Fi Data Management Service</h2>
             <p>
@@ -92,17 +103,6 @@ function Main() {
               artifacts. It supports the development of Ed-Fi extensions and
               core components.{' '}
               <Link to="/reference/metaed">Discover MetaEd</Link>
-            </p>
-            <h2>Ed-Fi OneRoster Service</h2>
-            <p>
-              The Ed-Fi OneRoster® Service serves a 1EdTech® OneRoster v1.2
-              Rostering API from data in an Ed-Fi ODS. It gives vendor
-              applications that expect OneRoster a consistent way to read
-              rostering data, and is certified by 1EdTech against the
-              OneRoster v1.2 Rostering Core service.{' '}
-              <Link to="/reference/oneroster">
-                Explore the Ed-Fi OneRoster Service
-              </Link>
             </p>
             <h2>Other Ed-Fi Tools</h2>
             <ul>

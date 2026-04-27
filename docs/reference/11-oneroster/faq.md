@@ -150,11 +150,6 @@ field so that records can be traced back to the ODS. Beyond that,
 OneRoster v1.2 metadata extensions are supported as the
 specification allows.
 
-Beyond what the service emits today, shared extension guidance is a
-live work item. See
-[What's next](./whats-next.md#extension-guidance-and-governance) for
-the direction.
-
 ## Performance, scale, and operations
 
 ### Q: Is the service suitable for statewide use?
