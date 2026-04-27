@@ -56,73 +56,53 @@ erDiagram
     }
     School {
     }
-    School ||--o{ EducationOrganization : "relates to"
-    StudentAcademicRecord ||--o{ Student : "relates to"
-    StudentAcademicRecord ||--o{ EducationOrganization : "relates to"
-    StudentAcademicRecord ||--o{ ReportCard : "relates to"
-    CourseTranscript ||--o{ StudentAcademicRecord : "relates to"
-    CourseTranscript ||--o{ Course : "relates to"
-    CourseTranscript ||--o{ EducationOrganization : "relates to"
-    ReportCard ||--o{ Student : "relates to"
-    ReportCard ||--o{ EducationOrganization : "relates to"
-    ReportCard ||--o{ GradingPeriod : "relates to"
-    ReportCard ||--o{ Grade : "relates to"
-    ReportCard ||--o{ StudentCompetencyObjective : "relates to"
-    Grade ||--o{ GradingPeriod : "relates to"
-    Grade ||--o{ StudentSectionAssociation : "relates to"
-    Grade ||--o{ LearningStandard : "relates to"
-    StudentCompetencyObjective ||--o{ Student : "relates to"
-    StudentCompetencyObjective ||--o{ GradingPeriod : "relates to"
-    StudentCompetencyObjective ||--o{ StudentSectionAssociation : "relates to"
-    StudentCompetencyObjective ||--o{ GeneralStudentProgramAssociation : "relates to"
-    StudentCompetencyObjective ||--o{ CompetencyObjective : "relates to"
-    StudentSectionAssociation ||--o{ Student : "relates to"
-    StudentGradebookEntry ||--o{ GradebookEntry : "relates to"
-    StudentGradebookEntry ||--o{ StudentSectionAssociation : "relates to"
-    GeneralStudentProgramAssociation ||--o{ EducationOrganization : "relates to"
-    GeneralStudentProgramAssociation ||--o{ StudentGradebookEntry : "relates to"
-    GradebookEntry ||--o{ Section : "relates to"
-    GradebookEntry ||--o{ GradingPeriod : "relates to"
-    GradebookEntry ||--o{ LearningStandard : "relates to"
-    CourseOffering ||--o{ Course : "relates to"
-    CourseOffering ||--o{ Session : "relates to"
-    CourseOffering ||--o{ School : "relates to"
-    Section ||--o{ CourseOffering : "relates to"
-    Section ||--o{ Program : "relates to"
-    Section ||--o{ School : "relates to"
-    Course ||--o{ EducationOrganization : "relates to"
-    Course ||--o{ LearningStandard : "relates to"
-    Program ||--o{ EducationOrganization : "relates to"
-    Program ||--o{ LearningStandard : "relates to"
-    EducationOrganization ||--o{ Program : "relates to"
-    CompetencyObjective ||--o{ EducationOrganization : "relates to"
-    Session ||--o{ School : "relates to"
-    Session ||--o{ GradingPeriod : "relates to"
-    GradingPeriod ||--o{ School : "relates to"
-    Student ||--o{ School : "relates to"
-    Student ||--o{ Section : "relates to"
-    Student ||--o{ Program : "relates to"
-    LearningStandard ||--o{ LearningStandard : "relates to"
-    style Student color:#000000
-    style StudentAcademicRecord color:#000000
-    style CourseTranscript color:#000000
-    style ReportCard color:#000000
-    style Grade color:#000000
-    style StudentCompetencyObjective color:#000000
-    style StudentSectionAssociation color:#000000
-    style GeneralStudentProgramAssociation color:#000000
-    style GradebookEntry color:#000000
-    style StudentGradebookEntry color:#000000
-    style CompetencyObjective color:#000000
-    style Course color:#000000
-    style CourseOffering color:#000000
-    style Section color:#000000
-    style Program color:#000000
-    style GradingPeriod color:#000000
-    style Session color:#000000
-    style LearningStandard color:#000000
-    style EducationOrganization color:#000000
-    style School color:#000000
+    School ||--o{ EducationOrganization : "has associated"
+    StudentAcademicRecord ||--o{ Student : "has associated"
+    StudentAcademicRecord ||--o{ EducationOrganization : "has associated"
+    StudentAcademicRecord ||--o{ ReportCard : "has associated"
+    CourseTranscript ||--o{ StudentAcademicRecord : "has associated"
+    CourseTranscript ||--o{ Course : "has associated"
+    CourseTranscript ||--o{ EducationOrganization : "has associated"
+    ReportCard ||--o{ Student : "has associated"
+    ReportCard ||--o{ EducationOrganization : "has associated"
+    ReportCard ||--o{ GradingPeriod : "has associated"
+    ReportCard ||--o{ Grade : "has associated"
+    ReportCard ||--o{ StudentCompetencyObjective : "has associated"
+    Grade ||--o{ GradingPeriod : "has associated"
+    Grade ||--o{ StudentSectionAssociation : "has associated"
+    Grade ||--o{ LearningStandard : "has associated"
+    StudentCompetencyObjective ||--o{ Student : "has associated"
+    StudentCompetencyObjective ||--o{ GradingPeriod : "has associated"
+    StudentCompetencyObjective ||--o{ StudentSectionAssociation : "has associated"
+    StudentCompetencyObjective ||--o{ GeneralStudentProgramAssociation : "has associated"
+    StudentCompetencyObjective ||--o{ CompetencyObjective : "has associated"
+    StudentSectionAssociation ||--o{ Student : "has associated"
+    StudentGradebookEntry ||--o{ GradebookEntry : "has associated"
+    StudentGradebookEntry ||--o{ StudentSectionAssociation : "has associated"
+    GeneralStudentProgramAssociation ||--o{ EducationOrganization : "has associated"
+    GeneralStudentProgramAssociation ||--o{ StudentGradebookEntry : "has associated"
+    GradebookEntry ||--o{ Section : "has associated"
+    GradebookEntry ||--o{ GradingPeriod : "has associated"
+    GradebookEntry ||--o{ LearningStandard : "has associated"
+    CourseOffering ||--o{ Course : "has associated"
+    CourseOffering ||--o{ Session : "has associated"
+    CourseOffering ||--o{ School : "has associated"
+    Section ||--o{ CourseOffering : "has associated"
+    Section ||--o{ Program : "has associated"
+    Section ||--o{ School : "has associated"
+    Course ||--o{ EducationOrganization : "has associated"
+    Course ||--o{ LearningStandard : "has associated"
+    Program ||--o{ EducationOrganization : "has associated"
+    Program ||--o{ LearningStandard : "has associated"
+    EducationOrganization ||--o{ Program : "has associated"
+    CompetencyObjective ||--o{ EducationOrganization : "has associated"
+    Session ||--o{ School : "has associated"
+    Session ||--o{ GradingPeriod : "has associated"
+    GradingPeriod ||--o{ School : "has associated"
+    Student ||--o{ School : "has associated"
+    Student ||--o{ Section : "has associated"
+    Student ||--o{ Program : "has associated"
+    LearningStandard ||--o{ LearningStandard : "has associated"
 ```
 
 ### Student Transcript Subdomain
@@ -147,17 +127,12 @@ erDiagram
     }
     EducationOrganization {
     }
-    CourseTranscript ||--o{ StudentAcademicRecord : "relates to"
-    CourseTranscript ||--o{ Course : "relates to"
-    CourseTranscript ||--o{ EducationOrganization : "relates to"
-    StudentAcademicRecord ||--o{ Student : "relates to"
-    StudentAcademicRecord ||--o{ EducationOrganization : "relates to"
-    Course ||--o{ EducationOrganization : "relates to"
-    style Student color:#000000
-    style StudentAcademicRecord color:#000000
-    style CourseTranscript color:#000000
-    style Course color:#000000
-    style EducationOrganization color:#000000
+    CourseTranscript ||--o{ StudentAcademicRecord : "has associated"
+    CourseTranscript ||--o{ Course : "has associated"
+    CourseTranscript ||--o{ EducationOrganization : "has associated"
+    StudentAcademicRecord ||--o{ Student : "has associated"
+    StudentAcademicRecord ||--o{ EducationOrganization : "has associated"
+    Course ||--o{ EducationOrganization : "has associated"
 ```
 
 ### Report Card Subdomain
@@ -200,28 +175,28 @@ erDiagram
     }
     EducationOrganization {
     }
-    ReportCard ||--o{ Student : "relates to"
-    ReportCard ||--o{ GradingPeriod : "relates to"
-    ReportCard ||--o{ EducationOrganization : "relates to"
-    ReportCard ||--o{ Grade : "relates to"
-    ReportCard ||--o{ StudentCompetencyObjective : "relates to"
-    Grade ||--o{ GradingPeriod : "relates to"
-    Grade ||--o{ StudentSectionAssociation : "relates to"
-    Grade ||--o{ LearningStandard : "relates to"
-    StudentCompetencyObjective ||--o{ Student : "relates to"
-    StudentCompetencyObjective ||--o{ GradingPeriod : "relates to"
-    StudentCompetencyObjective ||--o{ CompetencyObjective : "relates to"
-    StudentCompetencyObjective ||--o{ GeneralStudentProgramAssociation : "relates to"
-    StudentCompetencyObjective ||--o{ StudentSectionAssociation : "relates to"
-    StudentSectionAssociation ||--o{ Student : "relates to"
-    GeneralStudentProgramAssociation ||--o{ EducationOrganization : "relates to"
-    GeneralStudentProgramAssociation ||--o{ StudentSectionAssociation : "relates to"
-    Student ||--o{ Section : "relates to"
-    Student ||--o{ Program : "relates to"
-    Section ||--o{ Program : "relates to"
-    Program ||--o{ EducationOrganization : "relates to"
-    CompetencyObjective ||--o{ EducationOrganization : "relates to"
-    LearningStandard ||--o{ LearningStandard : "relates to"
+    ReportCard ||--o{ Student : "has associated"
+    ReportCard ||--o{ GradingPeriod : "has associated"
+    ReportCard ||--o{ EducationOrganization : "has associated"
+    ReportCard ||--o{ Grade : "has associated"
+    ReportCard ||--o{ StudentCompetencyObjective : "has associated"
+    Grade ||--o{ GradingPeriod : "has associated"
+    Grade ||--o{ StudentSectionAssociation : "has associated"
+    Grade ||--o{ LearningStandard : "has associated"
+    StudentCompetencyObjective ||--o{ Student : "has associated"
+    StudentCompetencyObjective ||--o{ GradingPeriod : "has associated"
+    StudentCompetencyObjective ||--o{ CompetencyObjective : "has associated"
+    StudentCompetencyObjective ||--o{ GeneralStudentProgramAssociation : "has associated"
+    StudentCompetencyObjective ||--o{ StudentSectionAssociation : "has associated"
+    StudentSectionAssociation ||--o{ Student : "has associated"
+    GeneralStudentProgramAssociation ||--o{ EducationOrganization : "has associated"
+    GeneralStudentProgramAssociation ||--o{ StudentSectionAssociation : "has associated"
+    Student ||--o{ Section : "has associated"
+    Student ||--o{ Program : "has associated"
+    Section ||--o{ Program : "has associated"
+    Program ||--o{ EducationOrganization : "has associated"
+    CompetencyObjective ||--o{ EducationOrganization : "has associated"
+    LearningStandard ||--o{ LearningStandard : "has associated"
 ```
 
 ### Student Academic Record, Gradebook Model
@@ -254,19 +229,12 @@ erDiagram
     }
     Student {
     }
-    Course ||--o{ LearningStandard : "relates to"
-    LearningStandard ||--o{ LearningStandard : "relates to"
-    GradebookEntry ||--o{ LearningStandard : "relates to"
-    GradebookEntry ||--o{ Section : "relates to"
-    StudentGradebookEntry ||--o{ GradebookEntry : "relates to"
-    StudentGradebookEntry ||--o{ StudentSectionAssociation : "relates to"
-    StudentSectionAssociation ||--o{ Student : "relates to"
-    Student ||--o{ Section : "relates to"
-    style Course color:#000000
-    style LearningStandard color:#000000
-    style GradebookEntry color:#000000
-    style StudentGradebookEntry color:#000000
-    style StudentSectionAssociation color:#000000
-    style Section color:#000000
-    style Student color:#000000
+    Course ||--o{ LearningStandard : "has associated"
+    LearningStandard ||--o{ LearningStandard : "has associated"
+    GradebookEntry ||--o{ LearningStandard : "has associated"
+    GradebookEntry ||--o{ Section : "has associated"
+    StudentGradebookEntry ||--o{ GradebookEntry : "has associated"
+    StudentGradebookEntry ||--o{ StudentSectionAssociation : "has associated"
+    StudentSectionAssociation ||--o{ Student : "has associated"
+    Student ||--o{ Section : "has associated"
 ```

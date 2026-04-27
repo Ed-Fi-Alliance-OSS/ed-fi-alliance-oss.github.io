@@ -42,26 +42,26 @@ erDiagram
     }
     School {
     }
-    StudentAssessment ||--o{ Student : "relates to"
-    StudentAssessment ||--o{ Assessment : "relates to"
-    StudentAssessment ||--o{ EducationOrganization : "relates to"
-    StudentAssessmentEducationOrganizationAssociation ||--o{ StudentAssessment : "relates to"
-    StudentAssessmentEducationOrganizationAssociation ||--o{ EducationOrganization : "relates to"
-    Assessment ||--o{ EducationOrganization : "relates to"
-    Assessment ||--o{ Section : "relates to"
-    Assessment ||--o{ Program : "relates to"
-    ObjectiveAssessment ||--o{ Assessment : "relates to"
-    ObjectiveAssessment ||--o{ ObjectiveAssessment : "relates to"
-    ObjectiveAssessment ||--o{ AssessmentItem : "relates to"
-    ObjectiveAssessment ||--o{ LearningStandard : "relates to"
-    AssessmentItem ||--o{ LearningStandard : "relates to"
-    AssessmentScoreRangeLearningStandard ||--o{ LearningStandard : "relates to"
-    LearningStandardEquivalenceAssociation ||--o{ LearningStandard : "relates to"
-    LearningStandard ||--o{ LearningStandard : "relates to"
-    Program ||--o{ LearningStandard : "relates to"
-    Section ||--o{ Program : "relates to"
-    Student ||--o{ Section : "relates to"
-    Student ||--o{ Program : "relates to"
+    StudentAssessment ||--o{ Student : "has associated"
+    StudentAssessment ||--o{ Assessment : "has associated"
+    StudentAssessment ||--o{ EducationOrganization : "has associated"
+    StudentAssessmentEducationOrganizationAssociation ||--o{ StudentAssessment : "has associated"
+    StudentAssessmentEducationOrganizationAssociation ||--o{ EducationOrganization : "has associated"
+    Assessment ||--o{ EducationOrganization : "has associated"
+    Assessment ||--o{ Section : "has associated"
+    Assessment ||--o{ Program : "has associated"
+    ObjectiveAssessment ||--o{ Assessment : "has associated"
+    ObjectiveAssessment ||--o{ ObjectiveAssessment : "has associated"
+    ObjectiveAssessment ||--o{ AssessmentItem : "has associated"
+    ObjectiveAssessment ||--o{ LearningStandard : "has associated"
+    AssessmentItem ||--o{ LearningStandard : "has associated"
+    AssessmentScoreRangeLearningStandard ||--o{ LearningStandard : "has associated"
+    LearningStandardEquivalenceAssociation ||--o{ LearningStandard : "has associated"
+    LearningStandard ||--o{ LearningStandard : "has associated"
+    Program ||--o{ LearningStandard : "has associated"
+    Section ||--o{ Program : "has associated"
+    Student ||--o{ Section : "has associated"
+    Student ||--o{ Program : "has associated"
 ```
 
 ### Learning Standard Subdomain
@@ -101,10 +101,8 @@ erDiagram
     }
     LearningStandardEquivalenceAssociation["LearningStandard<br/>EquivalenceAssociation"] {
     }
-    LearningStandard ||--o{ LearningStandard : "relates to"
-    LearningStandardEquivalenceAssociation ||--o{ LearningStandard : "relates to"
-    style LearningStandard color:#000000
-    style LearningStandardEquivalenceAssociation color:#000000
+    LearningStandard ||--o{ LearningStandard : "has associated"
+    LearningStandardEquivalenceAssociation ||--o{ LearningStandard : "has associated"
 ```
 
 ### Assessment Metadata Subdomain
@@ -145,20 +143,14 @@ erDiagram
     }
     Program {
     }
-    ObjectiveAssessment ||--o{ ObjectiveAssessment : "relates to"
-    ObjectiveAssessment ||--o{ AssessmentItem : "relates to"
-    ObjectiveAssessment ||--o{ Assessment : "relates to"
-    AssessmentItem ||--o{ Assessment : "relates to"
-    Assessment ||--o{ EducationOrganization : "relates to"
-    Assessment ||--o{ Section : "relates to"
-    Assessment ||--o{ Program : "relates to"
-    Section ||--o{ Program : "relates to"
-    style Assessment color:#000000
-    style ObjectiveAssessment color:#000000
-    style AssessmentItem color:#000000
-    style EducationOrganization color:#000000
-    style Section color:#000000
-    style Program color:#000000
+    ObjectiveAssessment ||--o{ ObjectiveAssessment : "has associated"
+    ObjectiveAssessment ||--o{ AssessmentItem : "has associated"
+    ObjectiveAssessment ||--o{ Assessment : "has associated"
+    AssessmentItem ||--o{ Assessment : "has associated"
+    Assessment ||--o{ EducationOrganization : "has associated"
+    Assessment ||--o{ Section : "has associated"
+    Assessment ||--o{ Program : "has associated"
+    Section ||--o{ Program : "has associated"
 ```
 
 ### Student Assessment Subdomain
@@ -209,7 +201,5 @@ erDiagram
     }
     StudentAssessment {
     }
-    StudentAssessment ||--o{ Student : "relates to"
-    style Student color:#000000
-    style StudentAssessment color:#000000
+    StudentAssessment ||--o{ Student : "has associated"
 ```

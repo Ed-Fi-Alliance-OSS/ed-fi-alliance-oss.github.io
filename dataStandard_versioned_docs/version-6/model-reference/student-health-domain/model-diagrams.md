@@ -43,6 +43,6 @@ erDiagram
     }
     EducationOrganization {
     }
-    StudentHealth ||--o{ Student : "relates to"
-    StudentHealth ||--o{ EducationOrganization : "relates to"
+    StudentHealth ||--o{ Student : "has associated"
+    StudentHealth ||--o{ EducationOrganization : "has associated"
 ```

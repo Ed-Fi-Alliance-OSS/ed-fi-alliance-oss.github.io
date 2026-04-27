@@ -30,15 +30,15 @@ erDiagram
     }
     School {
     }
-    Student ||--o{ EducationOrganization : "relates to"
-    Student ||--o{ School : "relates to"
-    StudentSchoolAssociation ||--o{ GraduationPlan : "relates to"
-    StudentAcademicRecord ||--o{ Student : "relates to"
-    StudentAcademicRecord ||--o{ EducationOrganization : "relates to"
-    GraduationPlan ||--o{ EducationOrganization : "relates to"
-    PostSecondaryEvent ||--o{ Student : "relates to"
-    PostSecondaryEvent ||--o{ StudentSchoolAssociation : "relates to"
-    PostSecondaryEvent ||--o{ PostSecondaryInstitution : "relates to"
-    PostSecondaryInstitution ||--o{ EducationOrganization : "relates to"
-    School ||--o{ EducationOrganization : "relates to"
+    Student ||--o{ EducationOrganization : "has associated"
+    Student ||--o{ School : "has associated"
+    StudentSchoolAssociation ||--o{ GraduationPlan : "has associated"
+    StudentAcademicRecord ||--o{ Student : "has associated"
+    StudentAcademicRecord ||--o{ EducationOrganization : "has associated"
+    GraduationPlan ||--o{ EducationOrganization : "has associated"
+    PostSecondaryEvent ||--o{ Student : "has associated"
+    PostSecondaryEvent ||--o{ StudentSchoolAssociation : "has associated"
+    PostSecondaryEvent ||--o{ PostSecondaryInstitution : "has associated"
+    PostSecondaryInstitution ||--o{ EducationOrganization : "has associated"
+    School ||--o{ EducationOrganization : "has associated"
 ```
