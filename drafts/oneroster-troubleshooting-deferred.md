@@ -172,7 +172,7 @@ view refreshes. Default cadence is every 15 minutes.
 
 _Fix:_ check the service logs for `[CronService]` entries confirming
 the refresh queue is scheduled, or for errors from the refresh
-procedure. See [Refresh, forcing a refresh manually](../docs/reference/11-oneroster/data-model/refresh.md#forcing-a-refresh-manually).
+procedure.
 
 ## Refresh stalls
 
@@ -187,8 +187,6 @@ environment and restart.
 Confirm pg-boss connectivity. The service logs `[CronService] Error
 starting CRON jobs` if pg-boss cannot connect to PostgreSQL with the
 same credentials the service uses for data reads.
-
-See [Refresh, PostgreSQL section](../docs/reference/11-oneroster/data-model/refresh.md#postgresql).
 
 ### Symptom: PostgreSQL, `REFRESH MATERIALIZED VIEW CONCURRENTLY` fails
 
