@@ -1,6 +1,5 @@
 ---
 sidebar_position: 2
-title: Implementation
 ---
 
 # Technology Providers - Implementation
@@ -17,6 +16,8 @@ title: Implementation
   * [API Extensions](./ed-fi-api-fundamentals/api-extensions.md)
 * [Technology Partner - Implementation](./technology-partner-implementation/readme.md)
   * [Best Practices - API Integration](./best-practices-api-integration.md)
+  * [Ed-Fi in the Data Lake](./ed-fi-in-the-data-lake.md)
+  * [The Ed-Fi Data Standard in the Age of AI: Benefits, Limitations, and a Path Forward](./ed-fi-data-standard-in-the-age-of-ai.md)
   * [Invest in a Strong UX](./technology-partner-implementation/invest-in-a-strong-ux.md)
   * [Support Multiple Versions](./technology-partner-implementation/support-multiple-versions.md)
   * [Support User Configuration of Identifiers](./technology-partner-implementation/support-user-configuration-of-identifiers.md)
@@ -25,7 +26,9 @@ title: Implementation
   * [Implement Data Reconciliation](./technology-partner-implementation/implement-data-reconciliation.md)
 * [Common Integration Challenges](./common-integration-challenges.md)
 
-### [API Client Developers' Guide](/reference/ods-api/client-developers-guide/)
+:::tip
+
+Also see the [API Client Developers' Guide](/reference/ods-api/client-developers-guide/) in the reference documentation.
 
 This documentation provides essential information for building client applications that interact with an Ed-Fi ODS / API platform. It includes instructions on generating SDKs with Swagger Tools and considerations for developing a robust and scalable solution.
 
@@ -45,3 +48,5 @@ This documentation provides essential information for building client applicatio
 * Using the Online Documentation
 * Using the Sandbox Administration Portal
 * Using the Changed Record Queries
+
+:::
