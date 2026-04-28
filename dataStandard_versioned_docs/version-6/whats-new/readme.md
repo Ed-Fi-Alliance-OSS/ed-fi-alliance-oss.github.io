@@ -1,5 +1,5 @@
 ---
-sidebar_position: 0
+sidebar_position: 1
 hide_table_of_contents: true
 ---
 
@@ -23,6 +23,7 @@ This documentation describes important properties and features of this release.
 
 - [What's New - v6.0](./whats-new-v60.md)
 - [API Changes for v6.0](./api-changes-6.md)
+- [What's New - v6.1](./whats-new-v61.md)
 
 For more on data standard versioning and where to find source materials, please
 consult [Ed-Fi Data Exchange Standards](/reference/data-exchange/).
