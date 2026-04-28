@@ -6,8 +6,6 @@
 
 The methodology evaluates **state‑specific business logic, calculations, and structural deviations** introduced on top of the Ed‑Fi Data Standard that increase implementation effort for SIS and other vendors.
 
----
-
 ## Program Goal
 
 The goal of the NACHOS program is to:
@@ -66,7 +64,7 @@ Adjusted NACHOS more accurately reflects a **full implementation burden** experi
 
 ---
 
-## What is a good NACHOS Score?
+## What Is A Good NACHOS Score?
 
 It is still early to define a single benchmark for a “good” NACHOS score. Complexity drivers vary based on the breadth of use cases supported by a state, and the version of the Ed‑Fi Data Standard in use.
 

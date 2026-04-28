@@ -32,9 +32,9 @@ For example, a state could publish a rule for a data element such as “if a stu
 
 ## Review the NACHOS score and identify opportunities for alignment
 
-The Ed-Fi Alliance created the NACHOS methodology to help states objectively assess where additional business logic, extensions, or customizations introduce complexity beyond the Ed‑Fi Data Standard.  States are encouraged to review their NACHOS and Adjusted NACHOS scores to identify areas that create the **highest implementation burden for SIS vendors**, and to work collaboratively with the Ed‑Fi Alliance to better align to the standard and address recurring gaps in the data model. Over time, using NACHOS results alongside Data Standard versioning can help states converge toward lower‑complexity implementations while continuing to meet policy and reporting requirements. For additional context of this methodology, refer to the [Overview of the NACHOS Scoring](../overview-of-the-NACHOS-scoring.md).
+The Ed-Fi Alliance created the NACHOS methodology to help states objectively assess where additional business logic, extensions, or customizations introduce complexity beyond the Ed‑Fi Data Standard.  States are encouraged to review their NACHOS and Adjusted NACHOS scores to identify areas that create the **highest implementation burden for SIS vendors**, and to work collaboratively with the Ed‑Fi Alliance to better align to the standard and address recurring gaps in the data model. Over time, using NACHOS results alongside Data Standard versioning can help states converge toward lower‑complexity implementations while continuing to meet policy and reporting requirements. For additional context of this methodology, refer to the [Overview of the NACHOS Scoring](./overview-of-the-NACHOS-scoring.md).
 
-## **Avoid re-writing the definitions of Ed-Fi data elements**
+## Avoid re-writing the definitions of Ed-Fi data elements
 
 States should avoid changing the semantics of the Ed-Fi data elements unnecessarily, and instead default to the Ed-Fi definitions to the maximum extent possible.
 
