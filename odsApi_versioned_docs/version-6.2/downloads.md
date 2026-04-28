@@ -1,4 +1,8 @@
-# Downloads for 6.2
+---
+sidebar_position: 7
+---
+
+# Downloads
 
 This section contains an index of all downloadable content available in this
 documentation plus links to source code projects in the Ed-Fi Alliance GitHub
@@ -6,29 +10,14 @@ repository.
 
 ## Binary Downloads
 
-* [Binary
-  Releases](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V62/pages/18219127/Binary+Releases)
+* [Binary Releases](./getting-started/binary-installation/binary-releases.md)
 
 ## Source & Code Downloads
 
-* [Ed-Fi-ODS/v6.2](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v6.2)
-  source code (GitHub)
-* [Ed-Fi-ODS-Implementation/v6.2](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/tree/v6.2)
-  source code (GitHub)
-* [API Project Templates
-  Installer](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V62/pages/18219164/Project+Templates+Installation)
-  (VSIX)
-* [API Profiles Sample Source
-  Files](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V62/pages/18219544/How+To+Add+Profiles+to+the+Ed-Fi+ODS+API+Solution)
-  (XML)
-* [API Composite Sample Source
-  File](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V62/pages/18219560/How+To+Add+API+Composites+to+the+Ed-Fi+ODS+API+Solution)
-  (XML)
-* [Using Code Generation to Create an
-  SDK](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V62/pages/18219495/Using+Code+Generation+to+Create+an+SDK)
-  (C# Sample Application)
-* API Extensibility Sample Code - [Student
-  Transportation](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V62/pages/18219492/How+To+Extend+the+Ed-Fi+ODS+API+-+Student+Transportation+Example)
-  and [Student
-  Transcript](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V62/pages/18219516/How+To+Extend+the+Ed-Fi+ODS+API+-+Student+Transcript+Example))
-  (C# Source, SQL, XML)
+*   [Ed-Fi-ODS/v6.2](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v6.2) source code (GitHub)
+*   [Ed-Fi-ODS-Implementation/v6.2](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/tree/v6.2) source code (GitHub)
+*   [API Project Templates Installer](./getting-started/source-code-installation/project-templates-installation.md) (VSIX)
+*   [API Profiles Sample Source Files](./how-to-guides/how-to-add-profiles-to-the-ed-fi-ods-api.md) (XML)
+*   [API Composite Sample Source File](./how-to-guides/how-to-add-api-composites-to-the-ed-fi-ods-api-solution.md) (XML)
+*   [Using Code Generation to Create an SDK](./client-developers-guide/using-code-generation-to-create-an-sdk.md) (C# Sample Application)
+*   API Extensibility Sample Code - [Student Transportation](./how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transportation-example.md) and [Student Transcript](./how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transcript-example.md) (C# Source, SQL, XML)

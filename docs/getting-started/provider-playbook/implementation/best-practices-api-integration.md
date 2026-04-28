@@ -36,4 +36,4 @@
 ![Data Flow Consumer Applications](https://edfi.atlassian.net/wiki/download/attachments/23700360/API%20data%20flow%20-%20Data%20Consumer%20Applications.png?api=v2)
 _Recommended pattern for usage of the Ed-Fi API by a data consuming application_
 
-* For clients retrieving data from the ODS/API, use Change Queries when available to optimize the data retrieval process. For more information, see [Using the Changed Record Queries](/reference/ods-api/client-developers-guide/using-the-changed-record-queries) and [Improve Paging Performance on Large API Resources](/reference/ods-api/client-developers-guide/improve-paging-performance-on-large-api-resources/)
+* For clients retrieving data from the ODS/API, use Change Queries when available to optimize the data retrieval process. For more information, see [Using the Changed Record Queries](/reference/ods-api/client-developers-guide/using-the-changed-record-queries)
