@@ -1,6 +1,6 @@
 # Advanced Details for Data Import in Docker
 
-Data Import v2.3 is now in Docker configuration to run in containers.  This page
+Data Import v2.4 is now in Docker configuration to run in containers.  This page
 includes details for custom implementations and advanced usage of Data Import
 running within Docker.  For information on the ODS / API running in Docker,
 please see [Docker Deployment 2.x].
@@ -42,7 +42,7 @@ version: "3.8"
 
 services:
   dataimport:
-    image: edfialliance/data-import:v2.3.1
+    image: edfialliance/data-import:v2.4.0
     ports:
       - "8080:80"
     environment:

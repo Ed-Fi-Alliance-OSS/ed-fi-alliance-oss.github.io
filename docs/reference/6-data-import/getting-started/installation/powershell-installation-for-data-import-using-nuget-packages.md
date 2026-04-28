@@ -1,6 +1,6 @@
 # PowerShell Installation for Data Import using NuGet Packages
 
-Below are instructions to install Data Import 2.3 in a Windows environment using
+Below are instructions to install Data Import 2.4 in a Windows environment using
 Internet Information Server (IIS) using NuGet Packages and PowerShell for the
 installation.
 
@@ -11,10 +11,7 @@ The following are required to install the Data Import:
 * Ed-Fi ODS / API instance (Tech Suite 3 is supported) with a valid key and
   secret.
 * The IIS Server Role or Windows Feature must be enabled.
-* The [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) and
-  [.NET 8 Hosting
-  Bundle](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-aspnetcore-8.0.6-windows-hosting-bundle-installer)
-  is required on the destination server before installation of Data Import
+* The [.NET 10 SDK and .NET 10 Hosting Bundle](https://dotnet.microsoft.com/en-us/download/dotnet/10.0) are required on the destination server before installation of Data Import
   * After installing .NET, it is necessary to restart the computer for the
     changes to take effect.
 * An instance of SQL Server 2012 or higher, or Postgres 11 or higher database
@@ -38,8 +35,8 @@ proceeding document. See the instructions to download
 
 The Data Import package can be downloaded from the following link:
 
-*  [Installer and binaries for Data
-   Import:](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging?_a=package&feed=EdFi%40Release&package=DataImport.Web&version=2.1.1&protocolType=NuGet) [DataImport.Web.2.3.2.nupkg](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/DataImport.Web/overview/2.3.2)
+*  Installer and binaries for Data
+   Import: [DataImport.Web.2.4.0.nupkg](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/DataImport.Web/overview/2.4.0)
 
 We recommend you stay current with the latest patch update that has been
 promoted to
@@ -58,7 +55,7 @@ package (if you already have NuGet CLI)
 ```powershell title="download-data-import-installer.ps1"
 $pathToNuget = "Path\To\NuGet.exe"
 $pathToOutputDirectory = "Path\To\Output\Directory"
-$releaseVersion = "2.3.2"
+$releaseVersion = "2.4.0"
 $parameters = @(
     "install", "DataImport.Web",
     "-source", "https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json",
@@ -168,7 +165,7 @@ Minimal configuration samples for the "install.ps1" file:
 
 Ensure that you have permission to execute PowerShell scripts. For more
 information,
-see [http://go.microsoft.com/fwlink/?LinkID=135170](http://go.microsoft.com/fwlink/?LinkID=135170).
+see [About Execution Policies](http://go.microsoft.com/fwlink/?LinkID=135170).
 Launch PowerShell as an administrator, cd to the directory containing the
 installation files, and run the "install.ps1" script.
 
@@ -176,7 +173,7 @@ installation files, and run the "install.ps1" script.
 
 During the installation process, you will be prompted to choose database login
 details. Entering "Y" will continue with default option( Installation process
-will create IIS APPPOOL\\DataImport database login on the server). Choosing 'n'
+will create `IIS APPPOOL\\DataImport` database login on the server). Choosing 'n'
 will prompt you to enter windows username. The installation process will
 validate and create database login using entered username, if the login does not
 exist on the database server already.
@@ -243,19 +240,18 @@ launch in the browser. The initial installation will take a minute since the
 database is being created.
 
 Proceed to instructions in
-the [Configuration](https://edfi.atlassian.net/wiki/display/EDFITOOLS/First-Time+Configuration) section.
+the [Configuration](../first-time-configuration.md) section.
 
 ![Login](https://edfi.atlassian.net/wiki/download/attachments/24119784/image2019-7-16_12-58-41.png?version=1&modificationDate=1652395321510&cacheVersion=1&api=v2)
 
 **Once you see the log in screen above, proceed
-with [Configuration](https://edfi.atlassian.net/wiki/display/EDFITOOLS/First-Time+Configuration).**
+with [Configuration](../first-time-configuration.md).**
 
 ## Installation Errors
 
 If an error is encountered during installation, use the output from the
 PowerShell install command for information on the cause of the error. If you
-require support, please open a ticket
-on [https://tracker.ed-fi.org/projects/EDFI](https://tracker.ed-fi.org/projects/EDFI) and
+require support, please reach out on Slack or open a support case in the [Ed-Fi Community Hub](https://community.ed-fi.org/) and
 include this output.
 
 ## Upgrading From a Prior Data Import Release
