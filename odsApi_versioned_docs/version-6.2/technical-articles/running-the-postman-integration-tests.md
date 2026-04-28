@@ -13,17 +13,13 @@ collections.
 
 1. Install [Node.js 18+](https://nodejs.org)
 
-   :::tip
+:::tip
+Many Windows users choose [nvm for Windows](https://github.com/coreybutler/nvm-windows/releases) to manage Node.js installations.
+:::
 
-   Many Windows users choose [nvm for
-   Windows](https://github.com/coreybutler/nvm-windows/releases) to manage
-   Node.js installations.
-
-    :::
-
-2. As outlined in the [Getting Started
+2. As outlined in the [Getting Started - Source Code Installation guide](../getting-started/source-code-installation/readme.md), from a PowerShell prompt run the `Initialize-PowershellForDevelopment.ps1` script followed by `Invoke-PostmanIntegrationTests`.
     Guide](../getting-started/source-code-installation/readme.md)
-    from a PowerShell prompt run `Initialize-PowershellForDevelopment.ps` script followed by `Invoke-PostmanIntegrationTests`
+    from a PowerShell prompt run `Initialize-PowershellForDevelopment.ps1` script followed by `Invoke-PostmanIntegrationTests`
     ![PowerShell command](https://edfi.atlassian.net/wiki/download/attachments/22774891/image2021-10-5_16-41-25.png?version=1&modificationDate=1641861367870&cacheVersion=1&api=v2)
 
 

@@ -102,10 +102,7 @@ the primary key identifier and update the isUpdatable property to true.
   ]
 }
 ```
-
-Run the code generation steps outlined in the [Getting Started Guide](./../getting-started/source-code-installation/readme.md) (i.e.,
-from a PowerShell prompt run `[Initialize-PowershellForDevelopment.ps](http://Initialize-PowershellForDevelopment.ps)` script,
-followed by the `initdev` command). At this point, the API would allow for
+Run the code generation steps outlined in the [Getting Started Guide](../getting-started/source-code-installation/readme.md) (i.e., from a PowerShell prompt run `Initialize-PowershellForDevelopment.ps1`, followed by the `initdev` command). At this point, the API will allow cascading natural-key updates for the modified resource via PUT, provided the database foreign-key constraints are also updated to use ON UPDATE CASCADE.
 natural key cascading updates, but database is not set to support the cascading
 updates yet. We need to update the foreign key constraints that dependencies of
 Account have on the target ODS.
@@ -120,7 +117,7 @@ REFERENCES [edfi].[Account] ([AccountIdentifier], [EducationOrganizationId], [Fi
 ON UPDATE CASCADE
 ON DELETE CASCADE
 
-ALTER TABLE [edfi].[Actual] DROP [FK_Actual_Account]
+ALTER TABLE [edfi].[Actual] DROP CONSTRAINT [FK_Actual_Account]
 ALTER TABLE [edfi].[Actual] WITH CHECK ADD CONSTRAINT [FK_Actual_Account] FOREIGN KEY ([AccountIdentifier], [EducationOrganizationId], [FiscalYear])
 REFERENCES [edfi].[Account] ([AccountIdentifier], [EducationOrganizationId], [FiscalYear])
 ON UPDATE CASCADE
