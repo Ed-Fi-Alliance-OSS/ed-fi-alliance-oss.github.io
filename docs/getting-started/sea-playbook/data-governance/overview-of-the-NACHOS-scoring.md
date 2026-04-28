@@ -18,8 +18,6 @@ The goals of the NACHOS program are to:
 
 NACHOS enables the community to move from anecdotal feedback (“this is hard to implement”) to **measurable, comparable evidence** of complexity and its root causes.
 
----
-
 ## Basis of the Methodology
 
 NACHOS analyzes **state reporting artifacts** (such as API definitions, extensions, and documentation) at the **data‑element level**, assessing the business logic required to populate each element.
