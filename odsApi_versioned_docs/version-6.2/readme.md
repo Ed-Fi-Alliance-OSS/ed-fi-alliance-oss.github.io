@@ -28,6 +28,8 @@ Documentation for the Ed-Fi ODS / API v6.2 for Suite 3 is viewable online:
 Here are some resource highlights for the ODS / API v6.2:
 
 * [How To: Extend the ODS / API
+    (Basic)](./how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transportation-example.md)
+* [How To: Extend the ODS / API
     (Advanced)](./how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transcript-example.md)
 * [How To: Add a
     Composite](./how-to-guides/how-to-add-api-composites-to-the-ed-fi-ods-api-solution.md)
