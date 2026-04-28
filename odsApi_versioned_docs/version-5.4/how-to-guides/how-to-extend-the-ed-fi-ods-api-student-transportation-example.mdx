@@ -48,7 +48,7 @@ These existing entities are shown in gray (on the right).This example is simple,
 but illustrates most of the essential concepts required to extend the Ed-Fi ODS /
 API. Let's continue with the mechanics.
 
-![Student Transportation Diagram](https://edfi.atlassian.net/wiki/download/attachments/22774474/Student-Transportation-Visio-Diagram.png?version=1&modificationDate=1641861355467&cacheVersion=1&api=v2)
+![Student Transportation Diagram](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Student-Transportation-Visio-Diagram.png)
 
 ## Step 2. Author Your Extension Using MetaEd
 
@@ -66,7 +66,7 @@ The desired model for the latest ODS / API is "ed-fi-model-3.3b".
 Create a new extension by following the steps in [MetaEd IDE - Creating and Maintaining Your Extension](https://edfi.atlassian.net/wiki/spaces/METAED20/pages/23709491/MetaEd+IDE+-+Creating+and+Maintaining+Your+Extension). For this example, place your extension in a folder called
 "StudentTransportation".
 
-![Create New Extension Project](https://edfi.atlassian.net/wiki/download/attachments/22774474/image-2023-4-14_10-49-55.png?version=1&modificationDate=1721395154124&cacheVersion=1&api=v2)
+![Create New Extension Project](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image-2023-4-14_10-49-55.png)
 
 ### Step 2c. Update the package.json File
 
@@ -74,7 +74,7 @@ Open the package.json file by double-clicking on the file in the tree view to
 the left and provide an appropriate name for your project. In this case we will
 call it "SampleStudentTransportation".
 
-![Update package.json](https://edfi.atlassian.net/wiki/download/attachments/22774474/image-2023-4-14_10-52-47.png?version=1&modificationDate=1721395154524&cacheVersion=1&api=v2)
+![Update package.json](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image-2023-4-14_10-52-47.png)
 
 Click File > Save (Ctrl + S) to save your changes.
 
@@ -87,11 +87,11 @@ MetaEd source file to that folder.
 
 Right-click on the folder DomainEntity, and select New File.
 
-![New File](https://edfi.atlassian.net/wiki/download/attachments/22774474/NewFile.png?version=1&modificationDate=1721395154965&cacheVersion=1&api=v2)
+![New File](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/NewFile.png)
 
 Name the new file StudentTransportation.metaed to match the name of the new entity to be created.
 
-![New StudentTransportation File](https://edfi.atlassian.net/wiki/download/attachments/22774474/NewFile-StudentTransportation.png?version=1&modificationDate=1721395155342&cacheVersion=1&api=v2)
+![New StudentTransportation File](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/NewFile-StudentTransportation.png)
 
 Note the new file appears in the tree view to the left. Double-click on the file in the tree view to open it.
 
@@ -99,7 +99,7 @@ Note the new file appears in the tree view to the left. Double-click on the file
 
 Type or copy and paste the code listing below into your MetaEd file:
 
-![StudentTransportation Code](https://edfi.atlassian.net/wiki/download/attachments/22774474/NewFile-StudentTransportation-Code.png?version=1&modificationDate=1721395155721&cacheVersion=1&api=v2)
+![StudentTransportation Code](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/NewFile-StudentTransportation-Code.png)
 
 <details>
 <summary>MetaEd Source for StudentTransportation Entity</summary>
@@ -134,7 +134,7 @@ If you want to bulk load this extension, you need to create an interchange file.
 Right-click on the Interchange folder, select New File. Name your file StudentTransportation.metaed. Replace the template text in your new Interchange source file with the
 following code:
 
-![StudentTransportation Interchange](https://edfi.atlassian.net/wiki/download/attachments/22774474/NewFile-Interchange-StudentTransportation-Code.png?version=1&modificationDate=1721395156200&cacheVersion=1&api=v2)
+![StudentTransportation Interchange](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/NewFile-Interchange-StudentTransportation-Code.png)
 
 <details>
 <summary>MetaEd Source for StudentTransportation Interchange</summary>
@@ -158,12 +158,12 @@ straightforward.
 
 Click Build in the VSCode Editor to generate artifacts.
 
-![Build](https://edfi.atlassian.net/wiki/download/attachments/22774474/Build.png?version=1&modificationDate=1721395156631&cacheVersion=1&api=v2)
+![Build](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Build.png)
 
 Artifacts build successfully. Note that you may have to refresh the Explorer
 tree to see the MetaEd Output
 
-![Successful Build](https://edfi.atlassian.net/wiki/download/attachments/22774474/Successful%20Build%20Refresh%20Explorer.png?version=1&modificationDate=1721395156985&cacheVersion=1&api=v2)
+![Successful Build](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Successful%20Build%20Refresh%20Explorer.png)
 
 ### Step 3b. View MetaEd Output
 
@@ -173,7 +173,7 @@ API metadata, and XSD used by the code generation, but also updated
 documentation such as data dictionaries that add your extension definitions to the ODS /
 API documentation.
 
-![MetaEd Output](https://edfi.atlassian.net/wiki/download/attachments/22774474/MetaEdOutput.png?version=1&modificationDate=1721395157357&cacheVersion=1&api=v2)
+![MetaEd Output](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/MetaEdOutput.png)
 
 We'll look at how to use this MetaEd output in your code below. First, we'll
 need to set up our extension project in Visual Studio.
@@ -192,15 +192,15 @@ Visual Studio Project Templates can be installed by following steps in [Project 
 
 1. To add a project to your Ed-Fi-Ods Visual Studio Solution, right-click on the Ed-Fi Extensions Folder. Select Add > New Project.
 
-   ![Add New Project](https://edfi.atlassian.net/wiki/download/attachments/22774474/VisualStudio-AddNewProject.png?version=1&modificationDate=1641861355517&cacheVersion=1&api=v2)
+   ![Add New Project](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/VisualStudio-AddNewProject.png)
 
 2. Search and select the Ed-Fi API Extensions Project Template option and click Next.
 
-   ![Create Extension Project](https://edfi.atlassian.net/wiki/download/attachments/22774474/vs-create%20extension%20project.png?version=1&modificationDate=1641861354793&cacheVersion=1&api=v2)
+   ![Create Extension Project](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/vs-create%20extension%20project.png)
 
    In the Project Name field enter EdFi.Ods.Extensions.SampleStudentTransportation and click Create.
 
-   ![Name Extension Project](https://edfi.atlassian.net/wiki/download/attachments/22774474/vs-create%20extension%20project%202.png?version=1&modificationDate=1641861354803&cacheVersion=1&api=v2)
+   ![Name Extension Project](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/vs-create%20extension%20project%202.png)
 
 :::note
 To ensure MetaEd outputs are correctly deployed to ODS / API extension project,
@@ -214,11 +214,11 @@ Step 2.c.
 
    Right-click on the Marker_EdFi_Ods_Extensions_ExtensionName.cs file and Rename the file to Marker_EdFi_Ods_Extensions_SampleStudentTransportation.cs.
 
-   ![Rename Marker File](https://edfi.atlassian.net/wiki/download/attachments/22774474/image2021-4-7_17-27-38.png?version=1&modificationDate=1641861356487&cacheVersion=1&api=v2)
+   ![Rename Marker File](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-4-7_17-27-38.png)
 
 2. When prompted choose to rename all references to the code element Marker_EdFi_Ods_Extensions_ExtensionName.
 
-   ![Confirm Rename](https://edfi.atlassian.net/wiki/download/attachments/22774474/extension-rename-marker-confirm.png?version=1&modificationDate=1641861355343&cacheVersion=1&api=v2)
+   ![Confirm Rename](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/extension-rename-marker-confirm.png)
 
 ### Step 4d. Integrate Extension into the Solution
 
@@ -226,7 +226,7 @@ In this step, we'll integrate the extension into the solution.
 
 1. Locate the EdFi.Ods.WebApi project, within the "Entry Points" folder. Right-click, select Add > Project Reference..., then select the EdFi.Ods.Extensions.SampleStudentTransportation project.
 
-   ![Add Reference](https://edfi.atlassian.net/wiki/download/attachments/22774474/vs-extension%20add%20reference.png?version=1&modificationDate=1641861354787&cacheVersion=1&api=v2)
+   ![Add Reference](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/vs-extension%20add%20reference.png)
 
 2. Locate any profile projects in the solution. Right-click, select Add > Project Reference..., then select the EdFi.Ods.Extensions.SampleStudentTransportation project. This step is needed only if any of the Profile resources in the
 Profiles.xml document are extended, or extension entities are being constrained by a
@@ -249,7 +249,7 @@ Extension settings. In VS Code open Settings Ctrl+, and switch to the Workspace 
 Api Deployment Directory" to point to the folder that contains the Ed-Fi-ODS and
 Ed-Fi-ODS-Implementation folders.
 
-![Settings](https://edfi.atlassian.net/wiki/download/attachments/22774474/Settings.png?version=1&modificationDate=1721395157849&cacheVersion=1&api=v2)
+![Settings](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Settings.png)
 
 ### Step 5b. Deploy Your Extended Artifacts
 
@@ -262,7 +262,7 @@ running deployment.
 
 Deploy by clicking Deploy on the VSCode menu
 
-![Deploy](https://edfi.atlassian.net/wiki/download/attachments/22774474/Deploy.png?version=1&modificationDate=1721395158307&cacheVersion=1&api=v2)
+![Deploy](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Deploy.png)
 
 This will run a new build of all artifacts, and the artifacts required for your
 Extended ODS / API project will be copied over to the correct locations. For
@@ -397,7 +397,7 @@ Save all modified files, close Ed-Fi-ODS.sln, and re-run the code generation
 steps outlined in the [Getting Started Guide](../getting-started/source-code-installation/readme.md) (i.e., from a PowerShell prompt run `Initialize-PowershellForDevelopment.ps` script, followed by the `initdev` command). Then, run the application and view the Ed-Fi ODS / API in the Swagger
 UI. The following new API resource should be visible:
 
-![Swagger UI](https://edfi.atlassian.net/wiki/download/attachments/22774474/extension%20swagger.png?version=1&modificationDate=1641861356440&cacheVersion=1&api=v2)
+![Swagger UI](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/extension%20swagger.png)
 
 ## Next Steps & Further Information
 
@@ -422,15 +422,15 @@ Visual Studio Project Templates can be installed by following steps in [Project 
 
 1. To add a project to your Ed-Fi-Ods Visual Studio Solution, right-click on the Ed-Fi Extensions Folder. Select Add > New Project.
 
-   ![Add New Project](https://edfi.atlassian.net/wiki/download/attachments/22774474/VisualStudio-AddNewProject.png?version=1&modificationDate=1641861355517&cacheVersion=1&api=v2)
+   ![Add New Project](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/VisualStudio-AddNewProject.png)
 
 2. Search and select the Ed-Fi API Extensions Project Template option and click Next.
 
-   ![Create Extension Project](https://edfi.atlassian.net/wiki/download/attachments/22774474/vs-create%20extension%20project.png?version=1&modificationDate=1641861354793&cacheVersion=1&api=v2)
+   ![Create Extension Project](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/vs-create%20extension%20project.png)
 
    In the Project Name field, enter EdFi.Ods.Extensions.SampleStudentTransportation and click Create.
 
-   ![Name Extension Project](https://edfi.atlassian.net/wiki/download/attachments/22774474/vs-create%20extension%20project%202.png?version=1&modificationDate=1641861354803&cacheVersion=1&api=v2)
+   ![Name Extension Project](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/vs-create%20extension%20project%202.png)
 
 ### Step 3. Rename the "Marker" Interface File
 
@@ -438,11 +438,11 @@ Visual Studio Project Templates can be installed by following steps in [Project 
 
    Right-click on the Marker_EdFi_Ods_Extensions_ExtensionName.cs file and Rename the file to Marker_EdFi_Ods_Extensions_SampleStudentTransportation.cs.
 
-   ![Rename Marker File](https://edfi.atlassian.net/wiki/download/attachments/22774474/image2021-4-7_17-31-14.png?version=1&modificationDate=1641861356493&cacheVersion=1&api=v2)
+   ![Rename Marker File](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-4-7_17-31-14.png)
 
 2. When prompted choose to rename all references to the code element Marker_EdFi_Ods_Extensions_SampleStudentTransportation.
 
-   ![Confirm Rename](https://edfi.atlassian.net/wiki/download/attachments/22774474/extension-rename-marker-confirm.png?version=1&modificationDate=1641861355343&cacheVersion=1&api=v2)
+   ![Confirm Rename](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/extension-rename-marker-confirm.png)
 
 ### Step 4. Integrate Extension into the Solution
 
@@ -450,7 +450,7 @@ In this step, we'll integrate the extension into the solution.
 
 1. Locate the EdFi.Ods.WebApi project, within the "Entry Points" folder. Right-click, select Add > Project Reference..., then select the EdFi.Ods.Extensions.SampleStudentTransportation project.
 
-   ![Add Reference](https://edfi.atlassian.net/wiki/download/attachments/22774474/vs-extension%20add%20reference.png?version=1&modificationDate=1641861354787&cacheVersion=1&api=v2)
+   ![Add Reference](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/vs-extension%20add%20reference.png)
 
 2. Locate any profile projects in the solution. Right-click, select Add > Project Reference..., then select the EdFi.Ods.Extensions.SampleStudentTransportation project. This step is needed only if any of the Profile resources in the
 Profiles.xml document are extended, or extension entities are being constrained by a
@@ -587,7 +587,7 @@ Save all modified files, close Ed-Fi-ODS.sln, and re-run the code generation
 steps outlined in the [Getting Started Guide](../getting-started/readme.md) (i.e., from a PowerShell prompt run `Initialize-PowershellForDevelopment.ps` script, followed by the `initdev` command). Then, run the application and view the Ed-Fi ODS / API in the Swagger
 UI. The following new API resource should be visible:
 
-![Swagger UI](https://edfi.atlassian.net/wiki/download/attachments/22774474/extension%20swagger.png?version=1&modificationDate=1641861356440&cacheVersion=1&api=v2)
+![Swagger UI](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/extension%20swagger.png)
 
 ## Downloads
 

@@ -74,7 +74,7 @@ It is assumed that once a unique ID is obtained by a client, it will be stored
 in client applications as a way to easily sync data between the client and
 platform from that point forward.
 
-![Client-Side ID Lookup in the Integrated Model](https://edfi.atlassian.net/wiki/download/thumbnails/22774878/image2019-8-2_12-17-37.png?version=1&modificationDate=1641861367367&cacheVersion=1&api=v2&width=651&height=786)
+![Client-Side ID Lookup in the Integrated Model](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2019-8-2_12-17-37.png)
 
 A description of each step follows.
 
