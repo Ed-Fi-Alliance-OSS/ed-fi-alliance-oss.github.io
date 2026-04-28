@@ -74,8 +74,6 @@ Scoring is the beginning—not the end—of the NACHOS process. After scoring, t
 
 This continuous cycle supports measurable reductions in complexity and stronger alignment across states.
 
----
-
 ## Why NACHOS Matters to the Ed‑Fi Community
 
 By making complexity measurable and actionable, NACHOS:
