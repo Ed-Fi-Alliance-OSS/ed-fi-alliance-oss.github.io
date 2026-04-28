@@ -63,8 +63,6 @@ erDiagram
 
 ## Detailed - Alternative and Supplemental Services Model UML Diagram
 
-[Detailed - Alternative and Supplemental Services Model UML Diagram](/files/dataStandard/uml-diagrams/v6/alternative-and-supplemental-services/alternative-and-supplemental-services.mmd)
-
 ```mermaid
 ---
 title: AlternativeAndSupplementalServices
