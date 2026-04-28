@@ -6,9 +6,9 @@
 
 The methodology evaluates **state‑specific business logic, calculations, and structural deviations** introduced on top of the Ed‑Fi Data Standard that increase implementation effort for SIS and other vendors.
 
-## Program Goal
+## Program Goals
 
-The goal of the NACHOS program is to:
+The goals of the NACHOS program are to:
 
 - Provide an **objective way to quantify implementation complexity**
 - Identify **avoidable vs. necessary deviations** from the Ed‑Fi Data Standard
@@ -60,7 +60,7 @@ The **Adjusted NACHOS score** extends the base score to account for additional *
 - Use of **extensions**, particularly when equivalent Ed‑Fi core elements exist
 - Dependencies that span **multiple entities**
 
-Adjusted NACHOS more accurately reflects a **full implementation burden** experienced by vendors and is often used for impact analysis.  The base NACHOS score may be incremented (by 0.5 or 1) to account for added effort introduced by extensions or by logic that references multiple entities.  These adjustments are not meant to penalize state implementations.  In many cases, the extensions are necessary and carry a lower weight to reflect the added effort for vendors.  This approach helps the Ed-Fi Alliance better understand where gaps in the data model may be driving additional work, informing both state conversations and future improvements to the standard.
+Adjusted NACHOS more accurately reflects a **full implementation burden** experienced by vendors and is often used for impact analysis.  The base NACHOS score for each data attribute may be incremented (by 0.5 or 1) to account for additional effort introduced when the attribute is an extension or when its logic references multiple entities.  These adjustments are not meant to penalize state implementations.  When extensions are required because the base model version lacks the necessary elements, the Adjusted NACHOS scores are increased at a lower weight.  Therefore, the Adjusted NACHOS scores show a picture of added work to send the data, resulting from either state-specific deviation or gaps in the model itself.  This approach helps the Ed-Fi Alliance better understand where gaps in the data model may be driving additional work, informing both state conversations and future improvements to the standard.
 
 ---
 
@@ -95,4 +95,4 @@ By making complexity measurable and actionable, NACHOS:
 - Encourages cross‑state alignment
 - Strengthens the value of the Ed‑Fi Data Standard as a shared foundation
 
-NACHOS provides the Ed‑Fi community with a **an evidence‑based approach** to improving implementation fidelity and reducing fragmentation.
+NACHOS provides the Ed‑Fi community with **an evidence‑based approach** to improving implementation fidelity and reducing fragmentation.

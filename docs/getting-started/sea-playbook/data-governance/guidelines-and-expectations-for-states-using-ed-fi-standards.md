@@ -8,21 +8,21 @@ There are important reasons why it is important for states to be strongly aligne
 
 * **State data ecosystems depend on standardization.** In adopting the Ed-Fi Data Standard, a state is beginning to build a standards-based data ecosystem in their state. Over time, states who do not follow the standards closely also come to understand their own internal costs for these decisions and costs that are borne by their state ecosystem (poor vendor access and additional costs of customized data flows). Over time, states that did not align well to the Ed-Fi Data Standard end up re-aligning and absorbing additional, unnecessary change management costs.
 
-## **Align to the Ed-Fi Data Standard, even when it requires policy changes**
+## Align to the Ed-Fi Data Standard, even when it requires policy changes
 
 States may perceive that they cannot meet some of these expectations due to policy reasons. On this point it is important to remember that the Ed-Fi Data Standard is a standard, and that – in using a standard – states have a responsibility to align to ensure that the entire community benefits from industry-standard interfaces.
 
-## **Avoid unnecessary API Extensions**
+## Avoid unnecessary API Extensions
 
 Ed-Fi API Extensions are available in recognition that each state will have unique data elements not present in the Ed-Fi API Specifications. However, extensions should not be used when unnecessary, and in particular should not duplicate elements that are already present in the data model.
 
-## **Avoid aggregate data elements**
+## Avoid aggregate data elements
 
 The Ed-Fi Data Standard is based on granular student-level data, as it is modeled and represented in source systems. In the design of extensions, states should avoid creating data elements which aggregate data across multiple data elements. States should avoid “counts” of elements and instead opt to collect the granular elements that make up the collection.
 
 For example, instead of an extension “numCollegeCounselorMeetings” to designate the number of times a student met with the school college counselor the state should collect a record of each individual meeting.
 
-## **Avoid data elements that encapsulate business logic, and instead derive downstream metrics from the granular data**
+## Avoid data elements that encapsulate business logic, and instead derive downstream metrics from the granular data
 
 States should avoid creating data elements that require complex business logic calculations by vendors and instead derive those calculations on their systems from the raw, granular data.
 
