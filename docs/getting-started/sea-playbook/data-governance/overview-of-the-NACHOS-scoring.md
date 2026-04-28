@@ -58,8 +58,6 @@ The **Adjusted NACHOS score** extends the base score to account for additional *
 
 Adjusted NACHOS more accurately reflects a **full implementation burden** experienced by vendors and is often used for impact analysis.  The base NACHOS score for each data attribute may be incremented (by 0.5 or 1) to account for additional effort introduced when the attribute is an extension or when its logic references multiple entities.  These adjustments are not meant to penalize state implementations.  When extensions are required because the base model version lacks the necessary elements, the Adjusted NACHOS scores are increased at a lower weight.  Therefore, the Adjusted NACHOS scores show a picture of added work to send the data, resulting from either state-specific deviation or gaps in the model itself.  This approach helps the Ed-Fi Alliance better understand where gaps in the data model may be driving additional work, informing both state conversations and future improvements to the standard.
 
----
-
 ## What Is A Good NACHOS Score?
 
 It is still early to define a single benchmark for a “good” NACHOS score. Complexity drivers vary based on the breadth of use cases supported by a state, and the version of the Ed‑Fi Data Standard in use.
