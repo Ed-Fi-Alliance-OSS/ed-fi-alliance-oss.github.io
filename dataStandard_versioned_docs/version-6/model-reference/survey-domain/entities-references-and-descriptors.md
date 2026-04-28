@@ -38,51 +38,51 @@ hide_table_of_contents: true
 
 ## Survey Domain Descriptors
 
-| Entity | Descriptor | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
+| Name | Entity | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
-| Course <br /> Staff | AcademicSubject | The intended major subject/s area of the course, or academic subject(s) in which the staff is deemed to be "highly qualified". | Local |     |     |     |
-| Staff | AchievementCategory | The category of achievement attributed to the individual. | Local |     |     |     |
-| Contact <br /> EducationOrganization | AddressCharacteristic | The address characteristic mainly to reflect if Primary and type of communication to be received, e.g.: Primary, Validated, Gets Copy of Report, Discipline Correspondence. |     |     |     |     |
-| Contact <br /> EducationOrganization | AddressType | The type of address listed for an individual or organization. (For example:  Physical Address, Mailing Address, Home Address, etc.) | Orthodox |     |     |     |
-| Course | CareerPathway | Indicates the career cluster or pathway the course is associated with as part of a CTE curriculum. | Flexible |     |     |     |
-| Course | CompetencyLevel | The competency levels defined to rate the student for the course. | Flexible |     |     |     |
-| Contact <br /> EducationOrganization <br /> Staff <br /> Student | Country | The name of the country. It is strongly recommended that entries use only ISO 3166 2-letter country codes. | Standard |     | Yes |     |
-| Course | CourseDefinedBy | Specifies whether the course was defined by the SEA, LEA, School, or national organization. | Orthodox |     |     |     |
-| Course | CourseGPAApplicability | An indicator of whether or not the course being described is included in the computation of the student's grade point average, and if so, if it is weighted differently from regular courses. | Orthodox |     |     |     |
-| Course | CourseIdentificationSystem | A system that is used to identify the organization of subject matter and related learning experiences provided for the instruction of students. | Orthodox |     |     |     |
-| Course <br /> Section | CourseLevelCharacteristic | The type of specific program or designation with which the course is associated (e.g., AP, IB, Dual Credit, CTE), or the type of specific program or designation with which the section is associated. | Orthodox |     |     |     |
-| Course <br /> Section | CreditType | The type of credits or units of value awarded for the completion of a course. | Flexible |     |     |     |
-| Section | EducationalEnvironment | The setting in which a student receives education and related services. | Standard |     | Yes |     |
-| EducationOrganization | EducationOrganizationCategory | The classification of the education agency within the geographic boundaries of a state according to the level of administrative and operational control granted by the state. | Standard |     | Yes | Yes |
-| Contact | ElectronicMailType | The type of email listed for an individual or organization. For example: Home/Personal, Work, etc.)  | Standard |     |     |     |
-| Course <br /> Section | GradeLevel | The grade levels in which the course or section is offered. | Orthodox | Yes | Yes |     |
-| Staff <br /> Student | IdentificationDocumentUse | The primary function of the document used for establishing identity. | Orthodox |     |     |     |
-| EducationOrganization | Indicator | The value of the indicator or metric. The semantics of an empty value is "not submitted." | Local |     |     |     |
-| EducationOrganization | IndicatorGroup | The name for a group of indicators. | Local |     |     |     |
-| EducationOrganization | IndicatorLevel | The value of the indicator or metric, as a value from a controlled vocabulary. The semantics of an empty value is "not submitted." | Local |     |     |     |
-| EducationOrganization | InstitutionTelephoneNumberType | The type of communication number listed for an individual or organization. | Orthodox | Yes | Yes | Yes |
-| Contact <br /> Section | Language | The primary language of instruction, or a specification of which written or spoken communication is being used. | Orthodox | Yes | Yes | Yes |
-| Contact | LanguageUse | A description of how the language is used (e.g. Home Language, Native Language, Spoken Language). | Orthodox |     |     |     |
-| Contact <br /> Staff | LevelOfEducation | The extent of formal instruction an individual has received (e.g., the highest grade in school completed or its equivalent or the highest degree received). | Orthodox |     |     |     |
-| Contact <br /> EducationOrganization | Locale | A general geographic indicator that categorizes U.S. territory (e.g., City, Suburban). | Orthodox |     | Yes |     |
-| Section | MediumOfInstruction | The media through which teachers provide instruction to students and students and teachers communicate about instructional matters. | Orthodox |     | Yes |     |
-| EducationOrganization | OperationalStatus | The current operational status of the education organization (e.g., active, inactive). | Standard | Yes | Yes | Yes |
-| Contact <br /> Staff <br /> Student | OtherNameType | The types of alternate names for an individual. | Orthodox |     |     |     |
-| Staff <br /> Student | PersonalInformationVerification | The category of the document relative to its purpose. | Orthodox |     |     |     |
-| Section | PopulationServed | The type of students the section is offered and tailored to. | Orthodox |     |     |     |
-| Program | ProgramCharacteristic | Reflects important characteristics of the program, such as categories or particular indications. | Local | Yes | Yes |     |
-| Program | ProgramSponsor | Ultimate and intermediate providers of funds for a particular educational or service program or activity, or for an individual's participation in the program or activity (e.g., Federal, State, ESC, District, School, Private Organization). | Standard |     | Yes |     |
-| Program | ProgramType | The type of program. | Flexible | Yes | Yes | Yes |
-| Survey | QuestionForm | The form or type of question. | Local |     |     |     |
-| Staff | RecognitionType | The nature of recognition given to the individual for accomplishments in a co-curricular, or extra-curricular activity. | Flexible |     |     |     |
-| Section | SectionCharacteristic | Reflects important characteristics of the section, such as whether or not attendance is taken and the section is graded. | Local |     |     |     |
-| Section | SectionType | Specifies whether the section is for attendance only, credit only, or both. | Flexible |     |     |     |
-| Contact <br /> Student | Sex | A person's birth sex. | Standard |     |     |     |
-| Contact <br /> EducationOrganization <br /> Student | StateAbbreviation | The abbreviation for the state (within the United States) or outlying area in which an address is located. | Standard |     |     |     |
-| Survey | SurveyCategory | The category or type of survey. | Local |     |     |     |
-| SurveyResponse | SurveyLevel | Provides information about the respondents of a survey and how they can be grouped together. | Local |     |     |     |
-| Contact | TelephoneNumberType | The type of communication number listed for an individual or organization. | Standard |     |     |     |
-| Session | Term | A descriptor value to indicate the term that the session is associated with. | Flexible |     |     |     |
+| AcademicSubject | Course <br /> Staff | The intended major subject/s area of the course, or academic subject(s) in which the staff is deemed to be "highly qualified". | Local |     |     |     |
+| AchievementCategory | Staff | The category of achievement attributed to the individual. | Local |     |     |     |
+| AddressCharacteristic | Contact <br /> EducationOrganization | The address characteristic mainly to reflect if Primary and type of communication to be received, e.g.: Primary, Validated, Gets Copy of Report, Discipline Correspondence. |     |     |     |     |
+| AddressType | Contact <br /> EducationOrganization | The type of address listed for an individual or organization. (For example:  Physical Address, Mailing Address, Home Address, etc.) | Orthodox |     |     |     |
+| CareerPathway | Course | Indicates the career cluster or pathway the course is associated with as part of a CTE curriculum. | Flexible |     |     |     |
+| CompetencyLevel | Course | The competency levels defined to rate the student for the course. | Flexible |     |     |     |
+| Country | Contact <br /> EducationOrganization <br /> Staff <br /> Student | The name of the country. It is strongly recommended that entries use only ISO 3166 2-letter country codes. | Standard |     | Yes |     |
+| CourseDefinedBy | Course | Specifies whether the course was defined by the SEA, LEA, School, or national organization. | Orthodox |     |     |     |
+| CourseGPAApplicability | Course | An indicator of whether or not the course being described is included in the computation of the student's grade point average, and if so, if it is weighted differently from regular courses. | Orthodox |     |     |     |
+| CourseIdentificationSystem | Course | A system that is used to identify the organization of subject matter and related learning experiences provided for the instruction of students. | Orthodox |     |     |     |
+| CourseLevelCharacteristic | Course <br /> Section | The type of specific program or designation with which the course is associated (e.g., AP, IB, Dual Credit, CTE), or the type of specific program or designation with which the section is associated. | Orthodox |     |     |     |
+| CreditType | Course <br /> Section | The type of credits or units of value awarded for the completion of a course. | Flexible |     |     |     |
+| EducationalEnvironment | Section | The setting in which a student receives education and related services. | Standard |     | Yes |     |
+| EducationOrganizationCategory | EducationOrganization | The classification of the education agency within the geographic boundaries of a state according to the level of administrative and operational control granted by the state. | Standard |     | Yes | Yes |
+| ElectronicMailType | Contact | The type of email listed for an individual or organization. (For example: Home/Personal, Work, etc.) | Standard |     |     |     |
+| GradeLevel | Course <br /> Section | The grade levels in which the course or section is offered. | Orthodox | Yes | Yes |     |
+| IdentificationDocumentUse | Staff <br /> Student | The primary function of the document used for establishing identity. | Orthodox |     |     |     |
+| Indicator | EducationOrganization | The value of the indicator or metric. The semantics of an empty value is "not submitted." | Local |     |     |     |
+| IndicatorGroup | EducationOrganization | The name for a group of indicators. | Local |     |     |     |
+| IndicatorLevel | EducationOrganization | The value of the indicator or metric, as a value from a controlled vocabulary. The semantics of an empty value is "not submitted." | Local |     |     |     |
+| InstitutionTelephoneNumberType | EducationOrganization | The type of communication number listed for an individual or organization. | Orthodox | Yes | Yes | Yes |
+| Language | Contact <br /> Section | The primary language of instruction, or a specification of which written or spoken communication is being used. | Orthodox | Yes | Yes | Yes |
+| LanguageUse | Contact | A description of how the language is used (e.g. Home Language, Native Language, Spoken Language). | Orthodox |     |     |     |
+| LevelOfEducation | Contact <br /> Staff | The extent of formal instruction an individual has received (e.g., the highest grade in school completed or its equivalent or the highest degree received). | Orthodox |     |     |     |
+| Locale | Contact <br /> EducationOrganization | A general geographic indicator that categorizes U.S. territory (e.g., City, Suburban). | Orthodox |     | Yes |     |
+| MediumOfInstruction | Section | The media through which teachers provide instruction to students and students and teachers communicate about instructional matters. | Orthodox |     | Yes |     |
+| OperationalStatus | EducationOrganization | The current operational status of the education organization (e.g., active, inactive). | Standard | Yes | Yes | Yes |
+| OtherNameType | Contact <br /> Staff <br /> Student | The types of alternate names for an individual. | Orthodox |     |     |     |
+| PersonalInformationVerification | Staff <br /> Student | The category of the document relative to its purpose. | Orthodox |     |     |     |
+| PopulationServed | Section | The type of students the section is offered and tailored to. | Orthodox |     |     |     |
+| ProgramCharacteristic | Program | Reflects important characteristics of the program, such as categories or particular indications. | Local | Yes | Yes |     |
+| ProgramSponsor | Program | Ultimate and intermediate providers of funds for a particular educational or service program or activity, or for an individual's participation in the program or activity (e.g., Federal, State, ESC, District, School, Private Organization). | Standard |     | Yes |     |
+| ProgramType | Program | The type of program. | Flexible | Yes | Yes | Yes |
+| QuestionForm | Survey | The form or type of question. | Local |     |     |     |
+| RecognitionType | Staff | The nature of recognition given to the individual for accomplishments in a co-curricular, or extra-curricular activity. | Flexible |     |     |     |
+| SectionCharacteristic | Section | Reflects important characteristics of the section, such as whether or not attendance is taken and the section is graded. | Local |     |     |     |
+| SectionType | Section | Specifies whether the section is for attendance only, credit only, or both. | Flexible |     |     |     |
+| Sex | Contact <br /> Student | A person's birth sex. | Standard |     |     |     |
+| StateAbbreviation | Contact <br /> EducationOrganization <br /> Student | The abbreviation for the state (within the United States) or outlying area in which an address is located. | Standard |     |     |     |
+| SurveyCategory | Survey | The category or type of survey. | Local |     |     |     |
+| SurveyLevel | SurveyResponse | Provides information about the respondents of a survey and how they can be grouped together. | Local |     |     |     |
+| TelephoneNumberType | Contact | The type of communication number listed for an individual or organization. | Standard |     |     |     |
+| Term | Session | A descriptor value to indicate the term that the session is associated with. | Flexible |     |     |     |
 
 :::tip
 
