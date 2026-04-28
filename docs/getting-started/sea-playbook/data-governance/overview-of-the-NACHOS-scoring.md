@@ -47,8 +47,6 @@ At a high level:
 
 Base NACHOS scores are applied consistently across domains to support aggregation, and to identify common needs that drive complex business logic.
 
----
-
 ## What Is an Adjusted NACHOS Score?
 
 The **Adjusted NACHOS score** extends the base score to account for additional **structural or architectural complexity**, including:
