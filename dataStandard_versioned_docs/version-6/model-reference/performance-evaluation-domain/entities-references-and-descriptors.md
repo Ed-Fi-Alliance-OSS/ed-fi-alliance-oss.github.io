@@ -33,25 +33,25 @@ hide_table_of_contents: true
 
 ## Performance Evaluation Domain Descriptors
 
-| Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
+| Name | Entity | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
-| PerformanceEvaluation | AcademicSubject | The description of the content or subject area of the performance evaluation. | Local | Yes | Yes |     |
-| PerformanceEvaluationRating | CoteachingStyleObserved | A type of co-teaching observed as part of the performance evaluation. | Standard |     |     |     |
-| EvaluationElementRating | EvaluationElementRatingLevel | The rating level achieved based upon the rating or score. | Flexible |     |     |     |
-| PerformanceEvaluation | EvaluationPeriod | The period for the evaluation. | Orthodox |     |     |     |
-| EvaluationRating | EvaluationRatingLevel | The rating level achieved based upon the rating or score. | Flexible |     |     |     |
-| EvaluationRating | EvaluationRatingStatus | The status of the performance evaluation. | Standard |     |     |     |
-| Evaluation <br /> EvaluationElement <br /> EvaluationObjective | EvaluationType | The type of the evaluation or evaluation objective. | Standard |     |     |     |
-| Goal | GoalType | The type of the goal. |     |     |     |     |
-| PerformanceEvaluation | GradeLevel | The grade levels involved with the performance evaluation. | Orthodox | Yes | Yes |     |
-| EvaluationObjectiveRating | ObjectiveRatingLevel | The rating level achieved based upon the rating or score. | Flexible |     |     |     |
-| PerformanceEvaluation | PerformanceEvaluationType | The type of performance evaluation conducted. | Orthodox |     |     |     |
-| PerformanceEvaluationRating | PerformanceEvaluationRatingLevel | The rating level achieved based upon the rating or score. | Flexible |     |     |     |
-| QuantitativeMeasure | QuantitativeMeasureDatatype | The datatype of the result. The results can be expressed as a number, percentile, range, level, etc. |     |     |     |     |
-| QuantitativeMeasure | QuantitativeMeasureType | The type of the quantitative measure. |     |     |     |     |
-| EvaluationElementRating <br /> EvaluationObjectiveRating <br /> EvaluationRating <br /> PerformanceEvaluationRating <br /> | ResultDatatypeType | The datatype of the rating result. | Orthodox |     |     | Yes |
-| RubricDimension | RubricRatingLevel | The rating level achieved for the rubric dimension. | Flexible |     |     |     |
-| PerformanceEvaluation | Term | The term for the session during the school year. | Flexible |     |     |     |
+| AcademicSubject | PerformanceEvaluation | The description of the content or subject area of the performance evaluation. | Local | Yes | Yes |     |
+| CoteachingStyleObserved | PerformanceEvaluationRating | A type of co-teaching observed as part of the performance evaluation. | Standard |     |     |     |
+| EvaluationElementRatingLevel | EvaluationElementRating | The rating level achieved based upon the rating or score. | Flexible |     |     |     |
+| EvaluationPeriod | PerformanceEvaluation | The period for the evaluation. | Orthodox |     |     |     |
+| EvaluationRatingLevel | EvaluationRating | The rating level achieved based upon the rating or score. | Flexible |     |     |     |
+| EvaluationRatingStatus | EvaluationRating | The status of the performance evaluation. | Standard |     |     |     |
+| EvaluationType | Evaluation <br /> EvaluationElement <br /> EvaluationObjective | The type of the evaluation or evaluation objective. | Standard |     |     |     |
+| GoalType | Goal | The type of the goal. |     |     |     |     |
+| GradeLevel | PerformanceEvaluation | The grade levels involved with the performance evaluation. | Orthodox | Yes | Yes |     |
+| ObjectiveRatingLevel | EvaluationObjectiveRating | The rating level achieved based upon the rating or score. | Flexible |     |     |     |
+| PerformanceEvaluationType | PerformanceEvaluation | The type of performance evaluation conducted. | Orthodox |     |     |     |
+| PerformanceEvaluationRatingLevel | PerformanceEvaluationRating | The rating level achieved based upon the rating or score. | Flexible |     |     |     |
+| QuantitativeMeasureDatatype | QuantitativeMeasure | The datatype of the result. The results can be expressed as a number, percentile, range, level, etc. |     |     |     |     |
+| QuantitativeMeasureType | QuantitativeMeasure | The type of the quantitative measure. |     |     |     |     |
+| ResultDatatypeType | EvaluationElementRating <br /> EvaluationObjectiveRating <br /> EvaluationRating <br /> PerformanceEvaluationRating | The datatype of the rating result. | Orthodox |     |     | Yes |
+| RubricRatingLevel | RubricDimension | The rating level achieved for the rubric dimension. | Flexible |     |     |     |
+| Term | PerformanceEvaluation | The term for the session during the school year. | Flexible |     |     |     |
 
 :::tip
 

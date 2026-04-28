@@ -20,25 +20,25 @@ hide_table_of_contents: true
 
 ## Student Health Domain Descriptors
 
-| Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
+| Name | Entity | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
-| EducationOrganization | AddressCharacteristic | The address characteristic mainly to reflect if Primary and type of communication to be received, e.g.: Primary, Validated, Gets Copy of Report, Discipline Correspondence. |     |     |     |     |
-| EducationOrganization | AddressType | The type of address listed for an individual or organization. (For example:  Physical Address, Mailing Address, Home Address, etc.) | Orthodox |     |     |     |
-| EducationOrganization <br /> Student | Country | The name of the country. It is strongly recommended that entries use only ISO 3166 2-letter country codes. | Standard |     |     |     |
-| EducationOrganization | EducationOrganizationCategory | The classification of the education agency within the geographic boundaries of a state according to the level of administrative and operational control granted by the state. | Standard |     | Yes | Yes |
-| Student | IdentificationDocumentUse | The primary function of the document used for establishing identity. | Orthodox |     |     |     |
-| StudentHealth | ImmunizationType | An indication of the type of immunization that the student has received. |     |     |     |     |
-| EducationOrganization | Indicator | The value of the indicator or metric. The semantics of an empty value is "not submitted." | Local |     |     |     |
-| EducationOrganization | IndicatorGroup | The name for a group of indicators. | Local |     |     |     |
-| EducationOrganization | IndicatorLevel | The value of the indicator or metric, as a value from a controlled vocabulary. The semantics of an empty value is "not submitted." | Local |     |     |     |
-| EducationOrganization | InstitutionTelephoneNumberType | The type of communication number listed for an individual or organization. | Orthodox | Yes | Yes | Yes |
-| EducationOrganization | Locale | A general geographic indicator that categorizes U.S. territory (e.g., City, Suburban). | Orthodox |     | Yes |     |
-| StudentHealth | NonMedicalImmunizationExemption | The type of nonmedical exemption from vaccination claimed by the student's parent or guardian. | Local |     | Yes |     |
-| EducationOrganization | OperationalStatus | The current operational status of the education organization (e.g., active, inactive). | Standard | Yes | Yes | Yes |
-| Student | OtherNameType | The types of alternate names for an individual. | Orthodox |     |     |     |
-| Student | PersonalInformationVerification | The category of the document relative to its purpose. | Orthodox |     |     |     |
-| Student | Sex | A person's sex at birth. | Standard |     |     |     |
-| EducationOrganization <br /> Student | StateAbbreviation | The abbreviation for the state (within the United States) or outlying area in which an address is located. | Standard |     | Yes |     |
+| AddressCharacteristic | EducationOrganization | The address characteristic mainly to reflect if Primary and type of communication to be received, e.g.: Primary, Validated, Gets Copy of Report, Discipline Correspondence. |     |     |     |     |
+| AddressType | EducationOrganization | The type of address listed for an individual or organization. (For example:  Physical Address, Mailing Address, Home Address, etc.) | Orthodox |     |     |     |
+| Country | EducationOrganization <br /> Student | The name of the country. It is strongly recommended that entries use only ISO 3166 2-letter country codes. | Standard |     |     |     |
+| EducationOrganizationCategory | EducationOrganization | The classification of the education agency within the geographic boundaries of a state according to the level of administrative and operational control granted by the state. | Standard |     | Yes | Yes |
+| IdentificationDocumentUse | Student | The primary function of the document used for establishing identity. | Orthodox |     |     |     |
+| ImmunizationType | StudentHealth | An indication of the type of immunization that the student has received. |     |     |     |     |
+| Indicator | EducationOrganization | The value of the indicator or metric. The semantics of an empty value is "not submitted." | Local |     |     |     |
+| IndicatorGroup | EducationOrganization | The name for a group of indicators. | Local |     |     |     |
+| IndicatorLevel | EducationOrganization | The value of the indicator or metric, as a value from a controlled vocabulary. The semantics of an empty value is "not submitted." | Local |     |     |     |
+| InstitutionTelephoneNumberType | EducationOrganization | The type of communication number listed for an individual or organization. | Orthodox | Yes | Yes | Yes |
+| Locale | EducationOrganization | A general geographic indicator that categorizes U.S. territory (e.g., City, Suburban). | Orthodox |     | Yes |     |
+| NonMedicalImmunizationExemption | StudentHealth | The type of nonmedical exemption from vaccination claimed by the student's parent or guardian. | Local |     | Yes |     |
+| OperationalStatus | EducationOrganization | The current operational status of the education organization (e.g., active, inactive). | Standard | Yes | Yes | Yes |
+| OtherNameType | Student | The types of alternate names for an individual. | Orthodox |     |     |     |
+| PersonalInformationVerification | Student | The category of the document relative to its purpose. | Orthodox |     |     |     |
+| Sex | Student | A person's sex at birth. | Standard |     |     |     |
+| StateAbbreviation | EducationOrganization <br /> Student | The abbreviation for the state (within the United States) or outlying area in which an address is located. | Standard |     | Yes |     |
 
 :::tip
 

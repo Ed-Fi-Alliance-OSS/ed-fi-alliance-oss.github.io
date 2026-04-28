@@ -29,46 +29,46 @@ hide_table_of_contents: true
 
 ## Educator Preparation Program Domain Descriptors
 
-| Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
+| Name | Entity | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
-| Candidate | AcademicSubject | The description of the content or subject area of a degree. | Local | Yes | Yes |     |
-| EducatorPreparationProgram | AccreditationStatus | The current accreditation status of the educator preparation program. | Standard |     |     |     |
-| Candidate | AddressCharacteristic | The address characteristic mainly to reflect if Primary and type of communication to be received, e.g.: Primary, Validated, Gets Copy of Report, Discipline Correspondence. |     |     |     |     |
-| Candidate | AddressType | The type of address listed for an individual or organization.    For example:  (Physical Address, Mailing Address, Home Address, etc.) |Orthodox | Yes | Yes | Yes |
-| Candidate | BackgroundCheckStatus | The status of the background check. |     |     |     |     |
-| Candidate | BackgroundCheckType | The type of background check. |     |     |     |     |
-| Candidate | CandidateCharacteristic | The characteristic designated for the candidate. |     |     |     |     |
-| CandidateIdentificationCode | CandidateIdentificationSystem | A coding scheme that is used for identification and record-keeping. |     |     |     |     |
-| Candidate | CitizenshipStatus | An indicator of whether or not the person is a U.S. citizen. | Orthodox |     |     |     |
-| CandidateEducatorPreparationProgramAssociation | CohortYearType | The type of cohort year (9th grade, graduation). | Local |     |     |     |
-| Candidate | Country | The country in which an individual is born. It is strongly recommended that entries use only ISO 3166 2-letter country codes. | Standard |     |     |     |
-| Candidate | Disability | A disability category that describes a individual's impairment. | Orthodox | Yes | Yes |     |
-| Candidate | DisabilityDesignation | Whether the disability is IDEA, Section 504, or other disability designation. | Orthodox |     | Yes |     |
-| Candidate | DisabilityDeterminationSourceType | The source that provided the disability determination. | Orthodox |     | Yes |     |
-| Candidate | EconomicDisadvantage | An indication of inadequate financial condition of an individual's family, as determined by family income, number of family members/dependents, participation in public assistance programs, and/or other characteristics considered relevant by federal, state, and local policy. | Orthodox |     |     |     |
-| Candidate | ElectronicMailType | The type of email listed for an individual or organization. (For example: Home/Personal, Work, etc.) | Standard |     |     |     |
-| Candidate | EnglishLanguageExam | Indicates that an individual passed, failed, or did not take an English Language assessment. | Standard |     |     |     |
-| Candidate | EPPDegreeType | A code for describing the degree type that a candidate accomplishes. |     |     |     |     |
-| CandidateEducatorPreparationProgramAssociation | EPPProgramPathway | The program pathway the candidate is following. | Standard |     |     |     |
-| FieldworkExperience | FieldworkType | The type of fieldwork being executed by a staff. |     |     |     |     |
-| EducatorPreparationProgram | GradeLevel | The grade levels served at the educator preparation program. | Orthodox | Yes | Yes |     |
-| Candidate | IdentificationDocumentUse | The primary function of the document used for establishing identity. | Orthodox |     |     |     |
-| Candidate | Language | A specification of which written or spoken communication is being used. | Orthodox | Yes | Yes | Yes |
-| Candidate | LanguageUse | A description of how the language is used (e.g. Home Language, Native Language, Spoken Language). | Orthodox |     |     |     |
-| Candidate | LimitedEnglishProficiency | Indicates whether the individual has been identified as limited English proficient (LEP) by the Language Proficiency Assessment Committee (LPAC), or is English proficient. | Standard | Yes | Yes | Yes |
-| Candidate | Locale | A general geographic indicator that categorizes U.S. territory (e.g., City, Suburban). | Standard |     |     |     |
-| Candidate | OtherNameType | The types of alternate names for an individual. | Orthodox |     |     |     |
-| Candidate | PersonalInformationVerification | The category of the document relative to its purpose. | Orthodox |     |     |     |
-| Candidate | PreviousCareer | The career previous for an individual. |     |     |     |     |
-| EducatorPreparationProgram | ProgramType | The type of program. | Flexible | Yes | Yes | Yes |
-| Candidate | Race | The general racial category which most clearly reflects the individual's recognition of his or her community or with which the individual most identifies. The data model allows for multiple entries so that each individual can specify all appropriate races. | Standard |     |     |     |
-| CandidateEducatorPreparationProgramAssociation | ReasonExited | The reason exited for the association. |     |     |     |     |
-| Candidate | Sex | The sex of the person. | Standard |     |     |     |
-| CandidateRelationshipToStaffAssociation | StaffToCandidateRelationship | Defines the staff relationship to the candidate. |     |     |     |     |
-| Candidate | StateAbbreviation | The abbreviation for the name of the state (within the United States) or extra-state jurisdiction in which an individual was born. | Standard |     | Yes |     |
-| Candidate | TelephoneNumberType | The type of communication number listed for an individual or organization. | Standard |     |     |     |
-| CandidateEducatorPreparationProgramAssociation | Term | The term associated with the cohort year; for example, the intended term of graduation. |     |     |     |     |
-| Candidate | Visa |  An indicator of a non-US citizen's Visa type. | Standard |     |     |     |
+| AcademicSubject | Candidate | The description of the content or subject area of a degree. | Local | Yes | Yes |     |
+| AccreditationStatus | EducatorPreparationProgram | The current accreditation status of the educator preparation program. | Standard |     |     |     |
+| AddressCharacteristic | Candidate | The address characteristic mainly to reflect if Primary and type of communication to be received, e.g.: Primary, Validated, Gets Copy of Report, Discipline Correspondence. |     |     |     |     |
+| AddressType | Candidate | The type of address listed for an individual or organization. For example: (Physical Address, Mailing Address, Home Address, etc.) | Orthodox | Yes | Yes | Yes |
+| BackgroundCheckStatus | Candidate | The status of the background check. |     |     |     |     |
+| BackgroundCheckType | Candidate | The type of background check. |     |     |     |     |
+| CandidateCharacteristic | Candidate | The characteristic designated for the candidate. |     |     |     |     |
+| CandidateIdentificationSystem | CandidateIdentificationCode | A coding scheme that is used for identification and record-keeping. |     |     |     |     |
+| CitizenshipStatus | Candidate | An indicator of whether or not the person is a U.S. citizen. | Orthodox |     |     |     |
+| CohortYearType | CandidateEducatorPreparationProgramAssociation | The type of cohort year (9th grade, graduation). | Local |     |     |     |
+| Country | Candidate | The country in which an individual is born. It is strongly recommended that entries use only ISO 3166 2-letter country codes. | Standard |     |     |     |
+| Disability | Candidate | A disability category that describes a individual's impairment. | Orthodox | Yes | Yes |     |
+| DisabilityDesignation | Candidate | Whether the disability is IDEA, Section 504, or other disability designation. | Orthodox |     | Yes |     |
+| DisabilityDeterminationSourceType | Candidate | The source that provided the disability determination. | Orthodox |     | Yes |     |
+| EconomicDisadvantage | Candidate | An indication of inadequate financial condition of an individual's family, as determined by family income, number of family members/dependents, participation in public assistance programs, and/or other characteristics considered relevant by federal, state, and local policy. | Orthodox |     |     |     |
+| ElectronicMailType | Candidate | The type of email listed for an individual or organization. (For example: Home/Personal, Work, etc.) | Standard |     |     |     |
+| EnglishLanguageExam | Candidate | Indicates that an individual passed, failed, or did not take an English Language assessment. | Standard |     |     |     |
+| EPPDegreeType | Candidate | A code for describing the degree type that a candidate accomplishes. |     |     |     |     |
+| EPPProgramPathway | CandidateEducatorPreparationProgramAssociation | The program pathway the candidate is following. | Standard |     |     |     |
+| FieldworkType | FieldworkExperience | The type of fieldwork being executed by a staff. |     |     |     |     |
+| GradeLevel | EducatorPreparationProgram | The grade levels served at the educator preparation program. | Orthodox | Yes | Yes |     |
+| IdentificationDocumentUse | Candidate | The primary function of the document used for establishing identity. | Orthodox |     |     |     |
+| Language | Candidate | A specification of which written or spoken communication is being used. | Orthodox | Yes | Yes | Yes |
+| LanguageUse | Candidate | A description of how the language is used (e.g. Home Language, Native Language, Spoken Language). | Orthodox |     |     |     |
+| LimitedEnglishProficiency | Candidate | Indicates whether the individual has been identified as limited English proficient (LEP) by the Language Proficiency Assessment Committee (LPAC), or is English proficient. | Standard | Yes | Yes | Yes |
+| Locale | Candidate | A general geographic indicator that categorizes U.S. territory (e.g., City, Suburban). | Standard |     |     |     |
+| OtherNameType | Candidate | The types of alternate names for an individual. | Orthodox |     |     |     |
+| PersonalInformationVerification | Candidate | The category of the document relative to its purpose. | Orthodox |     |     |     |
+| PreviousCareer | Candidate | The career previous for an individual. |     |     |     |     |
+| ProgramType | EducatorPreparationProgram | The type of program. | Flexible | Yes | Yes | Yes |
+| Race | Candidate | The general racial category which most clearly reflects the individual's recognition of his or her community or with which the individual most identifies. The data model allows for multiple entries so that each individual can specify all appropriate races. | Standard |     |     |     |
+| ReasonExited | CandidateEducatorPreparationProgramAssociation | The reason exited for the association. |     |     |     |     |
+| Sex | Candidate | The sex of the person. | Standard |     |     |     |
+| StaffToCandidateRelationship | CandidateRelationshipToStaffAssociation | Defines the staff relationship to the candidate. |     |     |     |     |
+| StateAbbreviation | Candidate | The abbreviation for the name of the state (within the United States) or extra-state jurisdiction in which an individual was born. | Standard |     | Yes |     |
+| TelephoneNumberType | Candidate | The type of communication number listed for an individual or organization. | Standard |     |     |     |
+| Term | CandidateEducatorPreparationProgramAssociation | The term associated with the cohort year; for example, the intended term of graduation. |     |     |     |     |
+| Visa | Candidate | An indicator of a non-US citizen's Visa type. | Standard |     |     |     |
 
 :::tip
 

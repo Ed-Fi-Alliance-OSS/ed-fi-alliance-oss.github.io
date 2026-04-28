@@ -106,7 +106,7 @@ In this release, Ed-Fi ODS / API adds another metadata endpoint that exposes the
 
 These metadata endpoints are listed in the API root for easy access:
 
-![Ed-Fi ODS / API Bulk XML Metadata Endpoint Example](https://edfi.atlassian.net/wiki/download/thumbnails/22774172/image2021-3-26_17-30-50.png?version=1&modificationDate=1641861341980&cacheVersion=1&api=v2&width=500&height=311)
+![Ed-Fi ODS / API Bulk XML Metadata Endpoint Example](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-3-26_17-30-50.png)
 
 The Bulk Load Client Utility has been enhanced to read these metadata endpoints from the API root, and validate and load the source XML in the correct dependency order.
 
