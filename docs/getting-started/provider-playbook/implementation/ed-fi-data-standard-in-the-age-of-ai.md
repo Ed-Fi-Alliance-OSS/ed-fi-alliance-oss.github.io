@@ -40,6 +40,8 @@ Some vendors and commentators argue that interoperability standards like the Ed-
 
 This argument fundamentally misunderstands what data standards provide. A data standard is not merely a schema. It is a contract — a shared agreement about what terms mean, how entities relate to one another, and what guarantees consumers can rely on. When a student record arrives through the Ed-Fi API, the consuming system knows that the student has been matched to a verified unique identifier, that the enrollment is associated with a real school and district in the education organization hierarchy, and that basic referential integrity has been enforced. None of this is inferable from a CSV file, no matter how sophisticated the model reading it.
 
+Furthermore, ingesting raw, unmapped CSVs forces the LLM to use more tokens to understand the data structure, which increases costs and latency. It also increases the risk of misinterpretation: a column labeled `SCORE` could be a test score, an attendance score, or a behavior score — and the model has no way to know which without additional context.
+
 ### Semantic Drift and Hallucination Risk
 
 When AI systems infer structure from raw data, they are making probabilistic guesses. A column labeled `SCH_ID` in one system and `SchoolCode` in another might refer to the same concept — or they might not. A model trained on one district's data export may silently misinterpret another district's export where the same field name carries a different meaning or uses a different coding scheme.
