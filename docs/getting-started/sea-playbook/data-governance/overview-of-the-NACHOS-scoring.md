@@ -34,8 +34,6 @@ The NACHOS methodology has been validated with vendors and applied consistently 
 
 In practice, the effort implied by Halstead-style metrics for a script that performs an aggregation (for example, calculating a value using a SUM function) is significantly higher than for code that simply sends granular data elements. NACHOS captures this relative difference in effort. However, it does not account for additional optimizations a developer may apply when implementing logic across the full set of state requirements.
 
----
-
 ## What Is a NACHOS Score?
 
 A **NACHOS score** represents the **base complexity** of populating a data element, based on the level of business logic required. The NACHOS score for a given data element therefore serves as a reference indicator of the relative effort required to populate that element when modified business logic is introduced. Scores range from 0 to 3.
