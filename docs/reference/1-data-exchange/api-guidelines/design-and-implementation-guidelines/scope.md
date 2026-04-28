@@ -40,11 +40,11 @@ _Also see_ [Discovery API](./api-design-guidelines/discovery-api.md).
 
 ### Other API Specifications
 
-Ed-Fi API software _must_ utilize the OAuth 2.0 API specification for managing authentication, though the implementation _may_ use non-Ed-Fi software to provision OAuth-related services.
+Ed-Fi API software _must_ utilize the OAuth 2.0 API specification for managing authentication, though the implementation _may_ use software not maintained by the Ed-Fi Alliance to provision OAuth-related services.
 
 :::tip
 
-The Ed-Fi ODS/API Platform exclusively uses a built-in OAuth 2.0 provider, which cannot be replaced by an off-the-shelf component. This need not be true of other implementations.
+The Ed-Fi ODS/API exclusively uses a built-in OAuth 2.0 provider, which cannot be replaced by an off-the-shelf component. This need not be true of other implementations.
 
 :::
 

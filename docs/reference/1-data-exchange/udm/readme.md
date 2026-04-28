@@ -7,7 +7,7 @@ title: Unifying Data Model
 
 ## Introduction
 
-The Ed-Fi Data Standards are built upon a Unifying Data Model (UDM), an
+The Ed-Fi Data Standard is built upon a Unifying Data Model (UDM), an
 enterprise data model of commonly exchanged and shared K–12 education data. The
 model includes entities such as students, teachers, assessment results,
 attendance, and many others that will be easily recognized by professionals in

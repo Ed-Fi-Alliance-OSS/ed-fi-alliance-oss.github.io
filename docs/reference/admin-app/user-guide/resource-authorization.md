@@ -8,7 +8,7 @@ The Ed-Fi Admin App streamlines the process of generating API keys and secrets c
 
 ## Key Concepts
 
-**ODS:** Operational Data Store. A database that holds operational data for the current school year in the Ed-Fi API. The data is stored in accordance to Ed-Fi Data Standards.
+**ODS:** Operational Data Store. A database that holds operational data for the current school year in the Ed-Fi API. The data is stored in accordance to the Ed-Fi Data Standard.
 
 **Tenant:** A virtual environment that allows for the ability to locally control claimsets, vendors, and applications without impacting other tenants hosted in the same Ed-Fi API environment.
 
@@ -21,7 +21,7 @@ The Ed-Fi Admin App streamlines the process of generating API keys and secrets c
 **Application:** A named entity that makes an association between resource authorizations and API clients. This association is crucial for managing and tracking who has access to various data within the system. All applications belong to a vendor.
 
 :::tip Example
-A district admin wanting to create a set of API credentials for their SIS integration would create an *application* using the Admin App. The admin would provide a name for the application, and select the vendor, the claimset and education organizations they'd like the integrating SIS to be bound to. Saving this information in the Admin App will generate a set of API credentials that can then be shared or input into the integrating system.
+A district admin wanting to create a set of API credentials for their SIS integration would create an _application_ using the Admin App. The admin would provide a name for the application, and select the vendor, the claimset and education organizations they'd like the integrating SIS to be bound to. Saving this information in the Admin App will generate a set of API credentials that can then be shared or input into the integrating system.
 :::
 
 **Claimset:** A collection of rules that define which resources can be accessed, what actions can be performed on them, and the authorization strategies that apply. It serves as a blueprint for access control, outlining the specific permissions for a given use case. For additional comprehensive documentation around claimsets and Resources, please read the technical documentation [**located here.**](/reference/ods-api/platform-dev-guide/security/api-claim-sets-resources)
@@ -46,7 +46,7 @@ To view claimset definitions in the Admin App, navigate to the claimset page in 
 
 ## Authorization Strategies
 
-Admin App users who create claimsets and provision API credentials must be aware of the different authorization methods in the Ed-Fi API. Authorization strategies represent *how* an API client can access certain resources within the API.
+Admin App users who create claimsets and provision API credentials must be aware of the different authorization methods in the Ed-Fi API. Authorization strategies represent _how_ an API client can access certain resources within the API.
 
 ### The current list of authorization strategies used in the Ed-Fi ODS/API version 7
 

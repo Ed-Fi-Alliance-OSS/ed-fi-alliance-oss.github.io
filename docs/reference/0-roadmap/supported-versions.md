@@ -3,7 +3,7 @@
 Version numbers are sometimes given like 1.2.x below. This indicates that the
 software may receive bug and security fixes from time to time, and the latest
 precise patch number will not be updated on this page. See
-[Ed-Fi Software Versioning](/community/sdlc/code-contribution-guidelines/software-versioning)
+[Software Versioning](/community/sdlc/code-contribution-guidelines/software-versioning)
 and
 [Ed-Fi Data Standard Versioning and Releases](../1-data-exchange/versioning-and-releases.md)
 for more information on the versioning practices.

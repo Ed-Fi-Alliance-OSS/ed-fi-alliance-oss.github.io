@@ -321,13 +321,13 @@ We have created a
 that will scan a repository to compare its use of Actions to the approved list.
 If the custom action finds an actions that "use" an unapproved 3rd party action,
 it will causes the job to fail. The list of actions can only be modified by the
-Ed-Fi tech team and other designated individuals. However, anyone can submit a
+Ed-Fi Alliance tech team and other designated individuals. However, anyone can submit a
 pull request asking for a new Action.
 
 ### 3. Stick With Ubuntu (when feasible)
 
-Ed-Fi software development has historically focused on Windows usage. The move
-to .NET Core (now .NET 5+), the core Ed-Fi software can now be built and run in
+Software development for the Ed-Fi Alliance has historically focused on Windows usage. With the move
+to .NET Core (now .NET 5+), the core software can now be built and run in
 Linux, including as Docker containers.
 
 The Ubuntu-based runners provided by GitHub include most of the development

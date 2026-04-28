@@ -65,7 +65,7 @@ Simplicity is critical. There should be some functionality to “pre-map” obvi
 
 ### Frequency of Synching & Scheduling
 
-* The Ed-Fi standard specifies “near” real time transmission. This means:
+* The Ed-Fi Alliance encourages “near” real time transmission. This means:
   * That the data submission should not be dependent on the data steward to manually push - there should be scheduling/automated approaches easily accessible.
   * That whenever possible updates (including adds and deletes) should be sent immediately upon saving the record.
   * When immediate sends are not possible (such as when a system calculation needs to occur) that they happen quickly (5-15 minute batching).
