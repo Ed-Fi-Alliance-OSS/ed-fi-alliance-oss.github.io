@@ -62,8 +62,6 @@ It is still early to define a single benchmark for a “good” NACHOS score. Co
 
 Importantly, NACHOS is designed to quantify the gap between state needs, implementation and model coverage. As common use cases are evaluated across states, NACHOS helps surface where similar needs are being addressed through different customizations or business logic.  By identifying these patterns, states can work collaboratively with the Ed‑Fi Alliance to converge toward lower complexity over time, either by aligning implementations or by informing improvements to the Ed‑Fi Data Standard that reduce the need for custom logic.
 
----
-
 ## What Happens After NACHOS Is Scored?
 
 Scoring is the beginning—not the end—of the NACHOS process. After scoring, the program focuses on action and improvement:
