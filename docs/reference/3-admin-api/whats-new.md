@@ -7,7 +7,7 @@ Admin API.
 
 ### Bug Fix
 
-* When creating additional credentials for an application, each credential is now enabled or disabled according to the user payload, instead of always being created as enabled.
+* When creating additional credentials for an application, each credential now honors the enabled or disabled value in the request payload instead of always defaulting to enabled.
 
 ### Enhancements
 
