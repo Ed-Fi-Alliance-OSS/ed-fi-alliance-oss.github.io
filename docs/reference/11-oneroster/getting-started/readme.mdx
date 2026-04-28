@@ -1,0 +1,73 @@
+import DocCardList from '@theme/DocCardList';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Getting Started
+
+The Ed-Fi OneRoster® service is deployed on top of an existing Ed-Fi ODS
+database. Pick the deployment path that matches your environment.
+
+| Path                                                | When to use                                                                                                           | Status                    |
+| --------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | ------------------------- |
+| [Docker Compose (demo)](./docker-compose.md)        | Spin up a local end-to-end stack (ODS / API, OneRoster, NGINX, OAuth issuer) to try the service.                      | Demo only, not production |
+| [Deploy on PostgreSQL](./deploy-postgres.md)        | You operate an Ed-Fi ODS on PostgreSQL and want to run the OneRoster Node service natively against it.                | Production-supported      |
+| [Deploy on Microsoft SQL Server](./deploy-mssql.md) | You operate an Ed-Fi ODS on SQL Server and want to run the OneRoster Node service natively against it.                | Production-supported      |
+| [Deploy on IIS (Windows)](./deploy-iis.md)          | You run the Node service on Windows Server and want IIS to host it (via `iisnode`) or front it (via a reverse proxy). | Production-supported      |
+
+For production Docker deployments, use the official
+[`edfialliance/one-roster-api`](https://hub.docker.com/r/edfialliance/one-roster-api)
+image — the in-repo Docker Compose stack is for demo only.
+
+:::info Before you begin: ODS / API configuration
+
+The OneRoster service runs against an existing Ed-Fi ODS / API, not a standalone
+ODS database. Before deploying via any path above (except the Docker Compose
+demo, which stands up its own preconfigured stack), configure feature
+management, claim sets, and the OneRoster vendor application in your ODS / API.
+See
+[How to use OneRoster with the Ed-Fi ODS / API](/reference/ods-api/how-to-guides/how-to-oneroster-with-the-ed-fi-ods-api).
+
+:::
+
+All paths end with the service listening on an OAuth-protected
+`/ims/oneroster/rostering/v1p2/` URL backed by the same Ed-Fi ODS schema. Only
+the hosting and database specifics differ.
+
+## Database engines
+
+<Tabs>
+<TabItem value="pg" label="PostgreSQL" default>
+
+The PostgreSQL implementation uses materialized views in the `oneroster12`
+schema, refreshed on a schedule by [pg-boss](https://timgit.github.io/pg-boss/).
+
+- Any PostgreSQL version supported by the corresponding Ed-Fi ODS / API line
+- Refresh cadence is configured via `PGBOSS_CRON` (default `*/15 * * * *`)
+- See [Deploy on PostgreSQL](./deploy-postgres.md)
+
+</TabItem>
+<TabItem value="mssql" label="SQL Server">
+
+The Microsoft SQL Server implementation stores OneRoster output in tables that
+are repopulated by stored procedures on a schedule driven by SQL Server Agent.
+
+- SQL Server 2016 or later (required for the JSON functions used by the refresh
+  procedures)
+- SQL Server Agent must be running. For SQL Server in Docker, add
+  `MSSQL_AGENT_ENABLED=True` to the container environment.
+- Default refresh cadence is every 15 minutes
+- See [Deploy on Microsoft SQL Server](./deploy-mssql.md)
+
+</TabItem>
+</Tabs>
+
+:::tip
+
+Before deploying, confirm your ODS / API version against the
+[Supported Data Standard versions](../readme.mdx#supported-data-standard-versions)
+matrix. For the current Ed-Fi ODS / API sandbox images and tags, see the
+[Ed-Fi ODS / API reference](/reference/ods-api/).
+
+:::
+
+<DocCardList />
