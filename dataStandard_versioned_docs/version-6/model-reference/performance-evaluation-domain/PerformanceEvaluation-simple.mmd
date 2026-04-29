@@ -1,0 +1,52 @@
+﻿erDiagram
+    PerformanceEvaluation {
+    }
+    PerformanceEvaluationRating {
+    }
+    Evaluation {
+    }
+    EvaluationRating {
+    }
+    EvaluationObjective {
+    }
+    EvaluationObjectiveRating {
+    }
+    EvaluationElement {
+    }
+    EvaluationElementRating {
+    }
+    QuantitativeMeasure {
+    }
+    QuantitativeMeasureScore {
+    }
+    Goal {
+    }
+    Person {
+    }
+    Section {
+    }
+    SurveySectionAggregateResponse {
+    }
+    EducationOrganization {
+    }
+    PerformanceEvaluation ||--o{ EducationOrganization : "has associated"
+    PerformanceEvaluation ||--o{ Evaluation : "has associated"
+    PerformanceEvaluationRating ||--o{ PerformanceEvaluation : "has associated"
+    PerformanceEvaluationRating ||--o{ EvaluationRating : "has associated"
+    PerformanceEvaluationRating ||--o{ Person : "has associated"
+    EvaluationRating ||--o{ Evaluation : "has associated"
+    EvaluationRating ||--o{ EvaluationObjectiveRating : "has associated"
+    Evaluation ||--o{ EvaluationObjective : "has associated"
+    EvaluationObjective ||--o{ EvaluationElement : "has associated"
+    EvaluationObjectiveRating ||--o{ EvaluationObjective : "has associated"
+    EvaluationObjectiveRating ||--o{ EvaluationElementRating : "has associated"
+    EvaluationElementRating ||--o{ EvaluationElement : "has associated"
+    EvaluationElementRating ||--o{ QuantitativeMeasureScore : "has associated"
+    EvaluationElement ||--o{ QuantitativeMeasure : "has associated"
+    QuantitativeMeasureScore ||--o{ QuantitativeMeasure : "has associated"
+    Goal ||--o{ Person : "has associated"
+    Goal ||--o{ EvaluationObjective : "has associated"
+    Goal ||--o{ EvaluationElement : "has associated"
+    Goal ||--o{ Goal : "has associated"
+    Section ||--o{ EvaluationRating : "has associated"
+    SurveySectionAggregateResponse ||--o{ EvaluationElementRating : "has associated"

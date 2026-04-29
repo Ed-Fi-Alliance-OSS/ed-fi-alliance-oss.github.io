@@ -1,0 +1,83 @@
+---
+sidebar_position: 2
+hide_table_of_contents: true
+---
+
+import Mermaid from '@theme/Mermaid';
+import diagramSimple from './StudentAcademicRecord-simple.mmd?raw';
+import diagramDetailed from './StudentAcademicRecord.mmd?raw';
+import diagramGradebookSimple from './StudentAcademicRecord-Gradebook-simple.mmd?raw';
+import diagramGradebookDetailed from './StudentAcademicRecord-Gradebook.mmd?raw';
+import diagramReportCardSimple from './StudentAcademicRecord-ReportCard-simple.mmd?raw';
+import diagramReportCardDetailed from './StudentAcademicRecord-ReportCard.mmd?raw';
+import diagramStudentTranscriptSimple from './StudentAcademicRecord-StudentTranscript-simple.mmd?raw';
+import diagramStudentTranscriptDetailed from './StudentAcademicRecord-StudentTranscript.mmd?raw';
+
+# Student Academic Record Domain - Model Diagrams
+
+This section contains reference information for the Student Academic Record
+domain model.
+
+## Student Academic Record Model UML Diagram
+
+<Mermaid value={diagramSimple} />
+
+[Link to Large Diagram](./StudentAcademicRecord-simple.mmd)
+
+## Detailed Student Academic Record Model UML Diagram
+
+<Mermaid value={diagramDetailed} />
+
+[Link to Large Diagram](./StudentAcademicRecord.mmd)
+
+### Student Transcript Subdomain
+
+The Student Transcript Model provides an academic history for a student.
+
+#### Student Academic Record, Student Transcript Model UML Diagram
+
+<Mermaid value={diagramStudentTranscriptSimple} />
+
+[Link to Large Diagram](./StudentAcademicRecord-StudentTranscript-simple.mmd)
+
+#### Detailed Student Academic Record, Student Transcript Model UML Diagram
+
+<Mermaid value={diagramStudentTranscriptDetailed} />
+
+[Link to Large Diagram](./StudentAcademicRecord-StudentTranscript.mmd)
+
+### Report Card Subdomain
+
+A Student has a ReportCard for each GradingPeriod. A Grade is associated with
+each Section. For early grade levels, a StudentCompetencyObjective is assigned
+to CompetencyObjectives.
+
+#### Student Academic Record, Report Card Model UML Diagram
+
+<Mermaid value={diagramReportCardSimple} />
+
+[Link to Large Diagram](./StudentAcademicRecord-ReportCard-simple.mmd)
+
+#### Detailed Student Academic Record, Report Card Model UML Diagram
+
+<Mermaid value={diagramReportCardDetailed} />
+
+[Link to Large Diagram](./StudentAcademicRecord-ReportCard.mmd)
+
+### Student Academic Record, Gradebook Model
+
+An individual assignment in a gradebook is represented as a GradebookEntry. A
+GradebookEntry may be mapped to LearningStandards. Each student's score for that
+entry is a StudentGradebookEntry which can be a grade or a CompetencyLevel.
+
+#### StudentAcademicRecordGradebookDataModel
+
+<Mermaid value={diagramGradebookSimple} />
+
+[Link to Large Diagram](./StudentAcademicRecord-Gradebook-simple.mmd)
+
+#### Detailed StudentAcademicRecordGradebookDataModel
+
+<Mermaid value={diagramGradebookDetailed} />
+
+[Link to Large Diagram](./StudentAcademicRecord-Gradebook.mmd)

@@ -1,0 +1,21 @@
+﻿erDiagram
+    Assessment {
+    }
+    ObjectiveAssessment {
+    }
+    AssessmentItem {
+    }
+    EducationOrganization {
+    }
+    Section {
+    }
+    Program {
+    }
+    ObjectiveAssessment ||--o{ ObjectiveAssessment : "has associated"
+    ObjectiveAssessment ||--o{ AssessmentItem : "has associated"
+    ObjectiveAssessment ||--o{ Assessment : "has associated"
+    AssessmentItem ||--o{ Assessment : "has associated"
+    Assessment ||--o{ EducationOrganization : "has associated"
+    Assessment ||--o{ Section : "has associated"
+    Assessment ||--o{ Program : "has associated"
+    Section ||--o{ Program : "has associated"

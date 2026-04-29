@@ -7,7 +7,7 @@ elements, providing a more comprehensive view of student health within the K–1
 education system.
 
 * [Student Health Domain - Overview](./overview.md)
-* [Student Health Domain - Model Diagrams](./model-diagrams.md)
+* [Student Health Domain - Model Diagrams](./model-diagrams.mdx)
 * [Student Health Domain - Entities, References, and
   Descriptors](./entities-references-descriptors.md)
 * [Student Health Domain - Best Practices](./best-practices.md)

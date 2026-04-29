@@ -1,0 +1,51 @@
+﻿erDiagram
+    ProgramEvaluation {
+    }
+    ProgramEvaluationObjective {
+    }
+    ProgramEvaluationElement {
+    }
+    EvaluationRubricDimension {
+    }
+    StudentProgramEvaluation {
+    }
+    StudentEvaluationObjective {
+    }
+    StudentEvaluationElement {
+    }
+    GeneralStudentProgramAssociation {
+    }
+    StaffProgramAssociation {
+    }
+    Program {
+    }
+    Student {
+    }
+    Staff {
+    }
+    EducationOrganization {
+    }
+    School {
+    }
+    ProgramEvaluation ||--o{ Program : "has associated"
+    ProgramEvaluationObjective ||--o{ ProgramEvaluation : "has associated"
+    ProgramEvaluationElement ||--o{ ProgramEvaluationObjective : "has associated"
+    ProgramEvaluationElement ||--o{ ProgramEvaluation : "has associated"
+    EvaluationRubricDimension ||--o{ ProgramEvaluationElement : "has associated"
+    StudentProgramEvaluation ||--o{ Student : "has associated"
+    StudentProgramEvaluation ||--o{ Staff : "has associated"
+    StudentProgramEvaluation ||--o{ ProgramEvaluation : "has associated"
+    StudentProgramEvaluation ||--o{ EducationOrganization : "has associated"
+    StudentProgramEvaluation ||--o{ StudentEvaluationElement : "has associated"
+    StudentProgramEvaluation ||--o{ StudentEvaluationObjective : "has associated"
+    StudentEvaluationObjective ||--o{ ProgramEvaluationObjective : "has associated"
+    StudentEvaluationElement ||--o{ ProgramEvaluationElement : "has associated"
+    GeneralStudentProgramAssociation ||--o{ EducationOrganization : "has associated"
+    GeneralStudentProgramAssociation ||--o{ GeneralStudentProgramAssociation : "has associated"
+    Program ||--o{ EducationOrganization : "has associated"
+    Program ||--o{ Staff : "has associated"
+    Program ||--o{ StaffProgramAssociation : "has associated"
+    EducationOrganization ||--o{ Program : "has associated"
+    School ||--o{ EducationOrganization : "has associated"
+    Student ||--o{ Program : "has associated"
+    Student ||--o{ School : "has associated"

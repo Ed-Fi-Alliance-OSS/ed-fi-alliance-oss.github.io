@@ -1,0 +1,47 @@
+﻿erDiagram
+    Assessment {
+    }
+    StudentAssessment {
+    }
+    ObjectiveAssessment {
+    }
+    AssessmentItem {
+    }
+    LearningStandard {
+    }
+    LearningStandardEquivalenceAssociation {
+    }
+    AssessmentScoreRangeLearningStandard {
+    }
+    StudentAssessmentEducationOrganizationAssociation {
+    }
+    Student {
+    }
+    EducationOrganization {
+    }
+    Section {
+    }
+    Program {
+    }
+    School {
+    }
+    StudentAssessment ||--o{ Student : "has associated"
+    StudentAssessment ||--o{ Assessment : "has associated"
+    StudentAssessment ||--o{ EducationOrganization : "has associated"
+    StudentAssessmentEducationOrganizationAssociation ||--o{ StudentAssessment : "has associated"
+    StudentAssessmentEducationOrganizationAssociation ||--o{ EducationOrganization : "has associated"
+    Assessment ||--o{ EducationOrganization : "has associated"
+    Assessment ||--o{ Section : "has associated"
+    Assessment ||--o{ Program : "has associated"
+    ObjectiveAssessment ||--o{ Assessment : "has associated"
+    ObjectiveAssessment ||--o{ ObjectiveAssessment : "has associated"
+    ObjectiveAssessment ||--o{ AssessmentItem : "has associated"
+    ObjectiveAssessment ||--o{ LearningStandard : "has associated"
+    AssessmentItem ||--o{ LearningStandard : "has associated"
+    AssessmentScoreRangeLearningStandard ||--o{ LearningStandard : "has associated"
+    LearningStandardEquivalenceAssociation ||--o{ LearningStandard : "has associated"
+    LearningStandard ||--o{ LearningStandard : "has associated"
+    Program ||--o{ LearningStandard : "has associated"
+    Section ||--o{ Program : "has associated"
+    Student ||--o{ Section : "has associated"
+    Student ||--o{ Program : "has associated"

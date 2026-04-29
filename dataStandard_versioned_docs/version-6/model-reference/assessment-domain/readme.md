@@ -13,7 +13,7 @@ entrance exams, and simple tests like benchmark and course assessments.
 * [Assessment Domain - Entities, References, and
     Descriptors](./entities-references-and-descriptors.md)
 * [Assessment Domain - Model
-    Diagrams](./model-diagrams.md)
+    Diagrams](./model-diagrams.mdx)
 * [Assessment Domain - Overview](./overview.md)
 
 ← [Go back to the UDM Reference page](../readme.md)

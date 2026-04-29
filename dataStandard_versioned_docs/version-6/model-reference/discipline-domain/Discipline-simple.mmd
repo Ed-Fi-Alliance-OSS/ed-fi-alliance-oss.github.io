@@ -1,0 +1,29 @@
+﻿erDiagram
+    DisciplineIncident {
+    }
+    DisciplineAction {
+    }
+    StaffDisciplineIncidentAssociation {
+    }
+    StudentDisciplineIncidentBehaviorAssociation {
+    }
+    StudentDisciplineIncidentNonOffenderAssociation {
+    }
+    Student {
+    }
+    Staff {
+    }
+    School {
+    }
+    Student ||--o{ School : "has associated"
+    Student ||--o{ DisciplineIncident : "has associated"
+    DisciplineAction ||--o{ Student : "has associated"
+    DisciplineAction ||--o{ StudentDisciplineIncidentBehaviorAssociation : "has associated"
+    DisciplineAction ||--o{ Staff : "has associated"
+    DisciplineAction ||--o{ School : "has associated"
+    DisciplineIncident ||--o{ School : "has associated"
+    DisciplineIncident ||--o{ StaffDisciplineIncidentAssociation : "has associated"
+    StaffDisciplineIncidentAssociation ||--o{ DisciplineIncident : "has associated"
+    StudentDisciplineIncidentBehaviorAssociation ||--o{ DisciplineIncident : "has associated"
+    StudentDisciplineIncidentNonOffenderAssociation ||--o{ DisciplineIncident : "has associated"
+    Staff ||--o{ School : "has associated"

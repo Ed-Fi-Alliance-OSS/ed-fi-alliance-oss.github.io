@@ -1,0 +1,72 @@
+﻿erDiagram
+    Survey {
+    }
+    SurveySection {
+    }
+    SurveyQuestion {
+    }
+    SurveyResponse {
+    }
+    SurveySectionResponse {
+    }
+    SurveyQuestionResponse {
+    }
+    SurveyProgramAssociation {
+    }
+    SurveyCourseAssociation {
+    }
+    SurveySectionAssociation {
+    }
+    SurveyResponseEducationOrganizationTargetAssociation {
+    }
+    SurveyResponseStaffTargetAssociation {
+    }
+    SurveySectionResponseEducationOrganizationTargetAssociation {
+    }
+    SurveySectionResponseStaffTargetAssociation {
+    }
+    Session {
+    }
+    Course {
+    }
+    Program {
+    }
+    Section {
+    }
+    Student {
+    }
+    Contact {
+    }
+    Staff {
+    }
+    Person {
+    }
+    EducationOrganization {
+    }
+    Survey ||--o{ EducationOrganization : "has associated"
+    Survey ||--o{ Session : "has associated"
+    Survey ||--o{ Program : "has associated"
+    Survey ||--o{ Course : "has associated"
+    Survey ||--o{ Section : "has associated"
+    SurveySection ||--o{ Survey : "has associated"
+    SurveyQuestion ||--o{ Survey : "has associated"
+    SurveyQuestion ||--o{ SurveySection : "has associated"
+    SurveyResponse ||--o{ Survey : "has associated"
+    SurveyResponse ||--o{ Student : "has associated"
+    SurveyResponse ||--o{ Staff : "has associated"
+    SurveyResponse ||--o{ Contact : "has associated"
+    SurveyResponse ||--o{ EducationOrganization : "has associated"
+    SurveyResponse ||--o{ Person : "has associated"
+    SurveySectionResponse ||--o{ SurveyResponse : "has associated"
+    SurveySectionResponse ||--o{ SurveySection : "has associated"
+    SurveySectionResponse ||--o{ EducationOrganization : "has associated"
+    SurveySectionResponse ||--o{ Contact : "has associated"
+    SurveyQuestionResponse ||--o{ SurveyQuestion : "has associated"
+    SurveyQuestionResponse ||--o{ SurveyResponse : "has associated"
+    SurveyProgramAssociation ||--o{ Survey : "has associated"
+    SurveyCourseAssociation ||--o{ Survey : "has associated"
+    SurveySectionAssociation ||--o{ SurveyResponse : "has associated"
+    Session ||--o{ SurveyResponseEducationOrganizationTargetAssociation : "has associated"
+    Staff ||--o{ SurveyResponseStaffTargetAssociation : "has associated"
+    EducationOrganization ||--o{ SurveySectionResponseEducationOrganizationTargetAssociation : "has associated"
+    Contact ||--o{ SurveySectionResponseStaffTargetAssociation : "has associated"
