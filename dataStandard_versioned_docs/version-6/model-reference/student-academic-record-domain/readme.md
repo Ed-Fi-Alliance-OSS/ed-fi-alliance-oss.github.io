@@ -9,7 +9,7 @@ significant accomplishments.
 * [Student Academic Record Domain - Overview](./overview.md)
 * [Student Academic Record Domain - Model Diagrams](./model-diagrams.md)
 * [Student Academic Record Domain - Entities, References, and
-  Descriptors](./entities-references-and-descriptors.md)
+  Descriptors](./entities-references-and-descriptors.mdx)
 * [Student Academic Record Domain - Best Practices](./best-practices.md)
 
 ← [Go back to the UDM Reference page](../readme.md)
