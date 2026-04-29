@@ -3,6 +3,10 @@ sidebar_position: 2
 hide_table_of_contents: true
 ---
 
+import Mermaid from '@theme/Mermaid';
+import diagramSimple from './StudentHealth-simple.mmd?raw';
+import diagramDetailed from './StudentHealth.mmd?raw';
+
 # Student Health Domain - Model Diagrams
 
 ## Student Health Model UML Diagram
@@ -31,18 +35,12 @@ last updated.
 
 The data model UML diagram is shown below.
 
-```mermaid
----
-config:
-  layout: elk
----
-erDiagram
-    Student {
-    }
-    StudentHealth {
-    }
-    EducationOrganization {
-    }
-    StudentHealth ||--o{ Student : "has associated"
-    StudentHealth ||--o{ EducationOrganization : "has associated"
-```
+<Mermaid value={diagramSimple} />
+
+[Link to Large Diagram](./StudentHealth-simple.mmd)
+
+## Detailed Student Health Model UML Diagram
+
+<Mermaid value={diagramDetailed} />
+
+[Link to Large Diagram](./StudentHealth.mmd)

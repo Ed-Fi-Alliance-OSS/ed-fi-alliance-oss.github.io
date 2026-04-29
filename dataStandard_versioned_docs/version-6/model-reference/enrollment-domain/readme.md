@@ -9,7 +9,7 @@ grade level when promoted.
 * [Enrollment Domain -
     Overview](./overview.md)
 * [Enrollment Domain - Model
-    Diagrams](./model-diagrams.md)
+    Diagrams](./model-diagrams.mdx)
 * [Enrollment Domain - Entities, References, and
     Descriptors](./entities-references-and-descriptors.md)
 * [Enrollment Domain - Best

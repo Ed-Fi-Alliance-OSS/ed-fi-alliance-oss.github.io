@@ -3,6 +3,16 @@ sidebar_position: 2
 hide_table_of_contents: true
 ---
 
+import Mermaid from '@theme/Mermaid';
+import diagramSimple from './Assessment-simple.mmd?raw';
+import diagramDetailed from './Assessment.mmd?raw';
+import diagramStandardsSimple from './Assessment-Standards-simple.mmd?raw';
+import diagramStandardsDetailed from './Assessment-Standards.mmd?raw';
+import diagramStudentAssessmentSimple from './Assessment-StudentAssessment-simple.mmd?raw';
+import diagramStudentAssessmentDetailed from './Assessment-StudentAssessment.mmd?raw';
+import diagramMetaDataSimple from './Assessment-AssessmentMetaData-simple.mmd?raw';
+import diagramMetaDataDetailed from './Assessment-AssessmentMetaData.mmd?raw';
+
 # Assessment Domain - Model Diagrams
 
 This section contains reference information for the Assessment domain model and
@@ -10,59 +20,15 @@ subdomains.
 
 ## Assessment Model UML Diagram
 
-```mermaid
----
-config:
-  layout: elk
----
-erDiagram
-    Assessment {
-    }
-    StudentAssessment {
-    }
-    ObjectiveAssessment {
-    }
-    AssessmentItem {
-    }
-    LearningStandard {
-    }
-    LearningStandardEquivalenceAssociation["LearningStandard<br/>EquivalenceAssociation"] {
-    }
-    AssessmentScoreRangeLearningStandard["AssessmentScore<br/>RangeLearningStandard"] {
-    }
-    StudentAssessmentEducationOrganizationAssociation["StudentAssessment<br/>EducationOrganization<br/>Association"] {
-    }
-    Student {
-    }
-    EducationOrganization {
-    }
-    Section {
-    }
-    Program {
-    }
-    School {
-    }
-    StudentAssessment ||--o{ Student : "has associated"
-    StudentAssessment ||--o{ Assessment : "has associated"
-    StudentAssessment ||--o{ EducationOrganization : "has associated"
-    StudentAssessmentEducationOrganizationAssociation ||--o{ StudentAssessment : "has associated"
-    StudentAssessmentEducationOrganizationAssociation ||--o{ EducationOrganization : "has associated"
-    Assessment ||--o{ EducationOrganization : "has associated"
-    Assessment ||--o{ Section : "has associated"
-    Assessment ||--o{ Program : "has associated"
-    ObjectiveAssessment ||--o{ Assessment : "has associated"
-    ObjectiveAssessment ||--o{ ObjectiveAssessment : "has associated"
-    ObjectiveAssessment ||--o{ AssessmentItem : "has associated"
-    ObjectiveAssessment ||--o{ LearningStandard : "has associated"
-    AssessmentItem ||--o{ LearningStandard : "has associated"
-    AssessmentScoreRangeLearningStandard ||--o{ LearningStandard : "has associated"
-    LearningStandardEquivalenceAssociation ||--o{ LearningStandard : "has associated"
-    LearningStandard ||--o{ LearningStandard : "has associated"
-    Program ||--o{ LearningStandard : "has associated"
-    Section ||--o{ Program : "has associated"
-    Student ||--o{ Section : "has associated"
-    Student ||--o{ Program : "has associated"
-```
+<Mermaid value={diagramSimple} />
+
+[Link to Large Diagram](./Assessment-simple.mmd)
+
+## Detailed Assessment Model UML Diagram
+
+<Mermaid value={diagramDetailed} />
+
+[Link to Large Diagram](./Assessment.mmd)
 
 ### Learning Standard Subdomain
 
@@ -91,19 +57,15 @@ equivalence.
 
 #### Assessment, Learning Standards Model UML Diagram
 
-```mermaid
----
-config:
-  layout: elk
----
-erDiagram
-    LearningStandard {
-    }
-    LearningStandardEquivalenceAssociation["LearningStandard<br/>EquivalenceAssociation"] {
-    }
-    LearningStandard ||--o{ LearningStandard : "has associated"
-    LearningStandardEquivalenceAssociation ||--o{ LearningStandard : "has associated"
-```
+<Mermaid value={diagramStandardsSimple} />
+
+[Link to Large Diagram](./Assessment-Standards-simple.mmd)
+
+#### Assessment, Detailed Learning Standards Model UML Diagram
+
+<Mermaid value={diagramStandardsDetailed} />
+
+[Link to Large Diagram](./Assessment-Standards.mmd)
 
 ### Assessment Metadata Subdomain
 
@@ -125,33 +87,15 @@ stand-alone assessments that do not tie to a particular section or program.
 
 #### Assessment, Assessment Metadata Model UML Diagram
 
-```mermaid
----
-config:
-  layout: elk
----
-erDiagram
-    Assessment {
-    }
-    ObjectiveAssessment {
-    }
-    AssessmentItem {
-    }
-    EducationOrganization {
-    }
-    Section {
-    }
-    Program {
-    }
-    ObjectiveAssessment ||--o{ ObjectiveAssessment : "has associated"
-    ObjectiveAssessment ||--o{ AssessmentItem : "has associated"
-    ObjectiveAssessment ||--o{ Assessment : "has associated"
-    AssessmentItem ||--o{ Assessment : "has associated"
-    Assessment ||--o{ EducationOrganization : "has associated"
-    Assessment ||--o{ Section : "has associated"
-    Assessment ||--o{ Program : "has associated"
-    Section ||--o{ Program : "has associated"
-```
+<Mermaid value={diagramMetaDataSimple} />
+
+[Link to Large Diagram](./Assessment-AssessmentMetaData-simple.mmd)
+
+#### Assessment, Detailed Assessment Metadata Model UML Diagram
+
+<Mermaid value={diagramMetaDataDetailed} />
+
+[Link to Large Diagram](./Assessment-AssessmentMetaData.mmd)
 
 ### Student Assessment Subdomain
 
@@ -191,15 +135,14 @@ metadata.
 
 #### Assessment, Student Assessment Model UML Diagram
 
-```mermaid
----
-config:
-  layout: elk
----
-erDiagram
-    Student {
-    }
-    StudentAssessment {
-    }
-    StudentAssessment ||--o{ Student : "has associated"
-```
+<Mermaid value={diagramStudentAssessmentSimple} />
+
+[Link to Large Diagram](./Assessment-StudentAssessment-simple.mmd)
+
+#### Assessment, Detailed Student Assessment Model UML Diagram
+
+<Mermaid value={diagramStudentAssessmentDetailed} />
+
+[Link to Large Diagram](./Assessment-StudentAssessment.mmd)
+
+

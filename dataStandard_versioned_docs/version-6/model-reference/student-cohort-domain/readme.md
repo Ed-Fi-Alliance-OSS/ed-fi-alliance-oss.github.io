@@ -13,6 +13,6 @@ student performance.
 * [Student Cohort Domain -
     Overview](./overview.md)
 * [Student Cohort Domain - Model
-    Diagrams](./model-diagrams.md)
+    Diagrams](./model-diagrams.mdx)
 * [Student Cohort Domain - Entities, References, and
     Descriptors](./entities-references-and-descriptors.md)

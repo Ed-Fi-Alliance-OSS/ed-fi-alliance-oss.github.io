@@ -23,7 +23,7 @@ educational institutions.
 
 * [Assessment Domain Registration - Overview](./overview.md)
 * [Assessment Registration Domain - Model
-    Diagrams](./model-diagrams.md)
+    Diagrams](./model-diagrams.mdx)
 * [Assessment Registration Domain - Entities, References, and
     Descriptors](./entities-references-and-descriptors.md)
 * [Assessment Registration Domain - Best Practices](./best-practices.md)
