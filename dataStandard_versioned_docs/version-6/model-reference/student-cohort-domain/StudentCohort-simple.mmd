@@ -1,0 +1,52 @@
+﻿---
+title: StudentCohort
+config:
+  layout: elk
+---
+erDiagram
+    Student {
+    }
+    Staff {
+    }
+    Cohort {
+    }
+    StudentCohortAssociation {
+    }
+    StaffCohortAssociation {
+    }
+    StudentInterventionAssociation {
+    }
+    Intervention {
+    }
+    StudentSectionAssociation {
+    }
+    StaffSectionAssociation {
+    }
+    Program {
+    }
+    Section {
+    }
+    EducationOrganization {
+    }
+    Cohort ||--o{ Student : "has associated"
+    Cohort ||--o{ Program : "has associated"
+    Cohort ||--o{ EducationOrganization : "has associated"
+    Cohort ||--o{ Staff : "has associated"
+    StudentCohortAssociation ||--o{ StudentCohortAssociation : "has associated"
+    StudentCohortAssociation ||--o{ Section : "has associated"
+    StaffCohortAssociation ||--o{ StaffCohortAssociation : "has associated"
+    StudentInterventionAssociation ||--o{ Cohort : "has associated"
+    StudentInterventionAssociation ||--o{ Student : "has associated"
+    StudentSectionAssociation ||--o{ StudentSectionAssociation : "has associated"
+    StaffSectionAssociation ||--o{ Section : "has associated"
+    Student ||--o{ Intervention : "has associated"
+    Student ||--o{ Program : "has associated"
+    Student ||--o{ Section : "has associated"
+    Staff ||--o{ EducationOrganization : "has associated"
+    Staff ||--o{ Section : "has associated"
+    Intervention ||--o{ EducationOrganization : "has associated"
+    Intervention ||--o{ Staff : "has associated"
+    Program ||--o{ EducationOrganization : "has associated"
+    Program ||--o{ Staff : "has associated"
+    EducationOrganization ||--o{ Program : "has associated"
+    Section ||--o{ Program : "has associated"

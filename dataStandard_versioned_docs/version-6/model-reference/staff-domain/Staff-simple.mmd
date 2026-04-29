@@ -1,0 +1,66 @@
+﻿---
+title: Staff
+config:
+  layout: elk
+---
+erDiagram
+    Staff {
+    }
+    StaffIdentificationCode {
+    }
+    StaffDirectory {
+    }
+    StaffDemographic {
+    }
+    Person {
+    }
+    Credential {
+    }
+    StaffAbsenceEvent {
+    }
+    StaffLeave {
+    }
+    StaffEducationOrganizationEmploymentAssociation {
+    }
+    StaffEducationOrganizationAssignmentAssociation {
+    }
+    StaffSchoolAssociation {
+    }
+    OpenStaffPosition {
+    }
+    EducationOrganization {
+    }
+    EducationServiceCenter {
+    }
+    LocalEducationAgency {
+    }
+    StateEducationAgency {
+    }
+    School {
+    }
+    Staff ||--o{ Person : "has associated"
+    Staff ||--o{ Credential : "has associated"
+    Staff ||--o{ School : "has associated"
+    Staff ||--o{ EducationOrganization : "has associated"
+    StaffIdentificationCode ||--o{ Staff : "has associated"
+    StaffDirectory ||--o{ Staff : "has associated"
+    StaffDirectory ||--o{ EducationOrganization : "has associated"
+    StaffDemographic ||--o{ Staff : "has associated"
+    StaffAbsenceEvent ||--o{ Staff : "has associated"
+    StaffLeave ||--o{ Staff : "has associated"
+    StaffEducationOrganizationEmploymentAssociation ||--o{ StaffLeave : "has associated"
+    StaffEducationOrganizationAssignmentAssociation ||--o{ StaffEducationOrganizationEmploymentAssociation : "has associated"
+    StaffEducationOrganizationAssignmentAssociation ||--o{ Credential : "has associated"
+    EducationOrganization ||--o{ StaffDirectory : "has associated"
+    EducationOrganization ||--o{ StaffIdentificationCode : "has associated"
+    EducationOrganization ||--o{ StaffDemographic : "has associated"
+    OpenStaffPosition ||--o{ EducationOrganization : "has associated"
+    School ||--o{ EducationOrganization : "has associated"
+    School ||--o{ LocalEducationAgency : "has associated"
+    LocalEducationAgency ||--o{ EducationOrganization : "has associated"
+    LocalEducationAgency ||--o{ EducationServiceCenter : "has associated"
+    LocalEducationAgency ||--o{ StateEducationAgency : "has associated"
+    LocalEducationAgency ||--o{ LocalEducationAgency : "has associated"
+    EducationServiceCenter ||--o{ EducationOrganization : "has associated"
+    EducationServiceCenter ||--o{ StateEducationAgency : "has associated"
+    StateEducationAgency ||--o{ EducationOrganization : "has associated"

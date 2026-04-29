@@ -1,0 +1,22 @@
+﻿---
+title: StudentAcademicRecord-StudentTranscript
+config:
+  layout: elk
+---
+erDiagram
+    Student {
+    }
+    StudentAcademicRecord {
+    }
+    CourseTranscript {
+    }
+    Course {
+    }
+    EducationOrganization {
+    }
+    CourseTranscript ||--o{ StudentAcademicRecord : "has associated"
+    CourseTranscript ||--o{ Course : "has associated"
+    CourseTranscript ||--o{ EducationOrganization : "has associated"
+    StudentAcademicRecord ||--o{ Student : "has associated"
+    StudentAcademicRecord ||--o{ EducationOrganization : "has associated"
+    Course ||--o{ EducationOrganization : "has associated"

@@ -1,0 +1,51 @@
+﻿---
+title: Intervention
+config:
+  layout: elk
+---
+erDiagram
+    InterventionStudy {
+    }
+    EducationContent {
+    }
+    InterventionPrescription {
+    }
+    Intervention {
+    }
+    EducationOrganizationInterventionPrescriptionAssociation {
+    }
+    StudentInterventionAssociation {
+    }
+    StudentInterventionAttendanceEvent {
+    }
+    StudentCohortAssociation {
+    }
+    Cohort {
+    }
+    Student {
+    }
+    EducationOrganization {
+    }
+    Staff {
+    }
+    Intervention ||--o{ InterventionPrescription : "has associated"
+    Intervention ||--o{ EducationContent : "has associated"
+    Intervention ||--o{ EducationOrganization : "has associated"
+    Intervention ||--o{ Staff : "has associated"
+    InterventionPrescription ||--o{ EducationContent : "has associated"
+    InterventionPrescription ||--o{ EducationOrganization : "has associated"
+    InterventionStudy ||--o{ InterventionPrescription : "has associated"
+    InterventionStudy ||--o{ EducationOrganization : "has associated"
+    EducationOrganization ||--o{ EducationOrganizationInterventionPrescriptionAssociation : "has associated"
+    EducationOrganizationInterventionPrescriptionAssociation ||--o{ InterventionPrescription : "has associated"
+    Student ||--o{ Intervention : "has associated"
+    StudentInterventionAssociation ||--o{ Student : "has associated"
+    StudentInterventionAssociation ||--o{ Cohort : "has associated"
+    StudentInterventionAttendanceEvent ||--o{ Student : "has associated"
+    StudentInterventionAttendanceEvent ||--o{ Intervention : "has associated"
+    StudentCohortAssociation ||--o{ Student : "has associated"
+    StudentCohortAssociation ||--o{ Cohort : "has associated"
+    Cohort ||--o{ EducationOrganization : "has associated"
+    Cohort ||--o{ Student : "has associated"
+    Cohort ||--o{ Staff : "has associated"
+    Staff ||--o{ EducationOrganization : "has associated"

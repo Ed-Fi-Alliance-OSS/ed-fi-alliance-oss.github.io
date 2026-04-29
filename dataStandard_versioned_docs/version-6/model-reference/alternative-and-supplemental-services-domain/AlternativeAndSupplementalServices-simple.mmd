@@ -1,0 +1,49 @@
+﻿---
+title: AlternativeAndSupplementalServices
+config:
+  layout: elk
+---
+erDiagram
+    Program {
+    }
+    Staff {
+    }
+    GeneralStudentProgramAssociation {
+    }
+    StaffProgramAssociation {
+    }
+    Section {
+    }
+    StudentSectionAssociation {
+    }
+    Student {
+    }
+    EducationOrganization {
+    }
+    StudentSectionAttendanceEvent {
+    }
+    StudentSchoolAttendanceEvent {
+    }
+    StudentProgramAttendanceEvent {
+    }
+    StudentSpecialEducationProgramEligibilityAssociation {
+    }
+    School {
+    }
+    EducationOrganization ||--o{ Program : "has associated"
+    Student ||--o{ Program : "has associated"
+    Program ||--o{ Staff : "has associated"
+    Section ||--o{ Program : "has associated"
+    Student ||--o{ School : "has associated"
+    Student ||--o{ GeneralStudentProgramAssociation : "has associated"
+    Student ||--o{ StaffProgramAssociation : "has associated"
+    Staff ||--o{ StaffProgramAssociation : "has associated"
+    Student ||--o{ StudentSectionAssociation : "has associated"
+    Section ||--o{ StudentSectionAssociation : "has associated"
+    Student ||--o{ StudentSpecialEducationProgramEligibilityAssociation : "has associated"
+    StudentSectionAttendanceEvent ||--o{ Student : "has associated"
+    StudentSectionAttendanceEvent ||--o{ Section : "has associated"
+    StudentSchoolAttendanceEvent ||--o{ School : "has associated"
+    StudentSchoolAttendanceEvent ||--o{ Student : "has associated"
+    StudentProgramAttendanceEvent ||--o{ EducationOrganization : "has associated"
+    StudentProgramAttendanceEvent ||--o{ Program : "has associated"

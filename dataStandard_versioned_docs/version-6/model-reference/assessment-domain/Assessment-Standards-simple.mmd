@@ -1,0 +1,12 @@
+﻿---
+title: Assessment-Standards
+config:
+  layout: elk
+---
+erDiagram
+    LearningStandard {
+    }
+    LearningStandardEquivalenceAssociation {
+    }
+    LearningStandard ||--o{ LearningStandard : "has associated"
+    LearningStandardEquivalenceAssociation ||--o{ LearningStandard : "has associated"

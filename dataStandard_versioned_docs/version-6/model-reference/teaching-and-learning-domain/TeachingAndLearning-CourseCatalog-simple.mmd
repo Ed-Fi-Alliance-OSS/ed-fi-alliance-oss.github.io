@@ -1,0 +1,28 @@
+---
+title: TeachingAndLearning-CourseCatalog
+config:
+  layout: elk
+---
+erDiagram
+    EducationOrganization {
+    }
+    School {
+    }
+    Session {
+    }
+    Course {
+    }
+    CourseOffering {
+    }
+    LearningStandard {
+    }
+
+    School ||--o{ EducationOrganization : "extends"
+    EducationOrganization ||--o{ Course : "has associated"
+    School ||--o{ Session : "has associated"
+    School ||--o{ CourseOffering : "has associated"
+    Session ||--o{ CourseOffering : "has associated"
+    Course ||--o{ CourseOffering : "has associated"
+    Course ||--o{ LearningStandard : "has associated"
+    LearningStandard ||--o{ LearningStandard : "has functional component"
+    LearningStandard ||--o{ LearningStandard : "has associated equivalence"

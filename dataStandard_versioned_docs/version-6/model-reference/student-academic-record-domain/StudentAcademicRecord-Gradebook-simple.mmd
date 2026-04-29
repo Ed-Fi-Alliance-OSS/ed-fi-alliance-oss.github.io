@@ -1,0 +1,28 @@
+﻿---
+title: StudentAcademicRecord-Gradebook
+config:
+  layout: elk
+---
+erDiagram
+    Course {
+    }
+    LearningStandard {
+    }
+    GradebookEntry {
+    }
+    StudentGradebookEntry {
+    }
+    StudentSectionAssociation {
+    }
+    Section {
+    }
+    Student {
+    }
+    Course ||--o{ LearningStandard : "has associated"
+    LearningStandard ||--o{ LearningStandard : "has associated"
+    GradebookEntry ||--o{ LearningStandard : "has associated"
+    GradebookEntry ||--o{ Section : "has associated"
+    StudentGradebookEntry ||--o{ GradebookEntry : "has associated"
+    StudentGradebookEntry ||--o{ StudentSectionAssociation : "has associated"
+    StudentSectionAssociation ||--o{ Student : "has associated"
+    Student ||--o{ Section : "has associated"

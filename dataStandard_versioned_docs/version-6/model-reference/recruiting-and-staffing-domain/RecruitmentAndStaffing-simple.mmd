@@ -1,0 +1,36 @@
+﻿---
+title: RecruitmentAndStaffing
+config:
+  layout: elk
+---
+erDiagram
+    ApplicantProfile {
+    }
+    Application {
+    }
+    ApplicationEvent {
+    }
+    OpenStaffPosition {
+    }
+    RecruitmentEvent {
+    }
+    RecruitmentEventAttendance {
+    }
+    ProfessionalDevelopmentEvent {
+    }
+    ProfessionalDevelopmentEventAttendance {
+    }
+    Person {
+    }
+    EducationOrganization {
+    }
+    Application ||--o{ ApplicantProfile : "has associated"
+    Application ||--o{ EducationOrganization : "has associated"
+    Application ||--o{ OpenStaffPosition : "has associated"
+    Application ||--o{ RecruitmentEventAttendance : "has associated"
+    ApplicationEvent ||--o{ Application : "has associated"
+    RecruitmentEventAttendance ||--o{ RecruitmentEvent : "has associated"
+    RecruitmentEventAttendance ||--o{ RecruitmentEventAttendance : "has associated"
+    RecruitmentEvent ||--o{ EducationOrganization : "has associated"
+    ProfessionalDevelopmentEvent ||--o{ ProfessionalDevelopmentEventAttendance : "has associated"
+    ProfessionalDevelopmentEventAttendance ||--o{ Person : "has associated"
