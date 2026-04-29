@@ -1,0 +1,55 @@
+﻿---
+title: AssessmentRegistration
+config:
+  layout: elk
+---
+erDiagram
+    Assessment {
+    }
+    AssessmentAdministration {
+    }
+    AssessmentAdministrationParticipation {
+    }
+    AssessmentBatteryPart {
+    }
+    ObjectiveAssessment {
+    }
+    StudentAssessmentRegistration {
+    }
+    StudentAssessmentRegistrationBatteryPartAssociation {
+    }
+    StudentEducationOrganizationAssessmentAccommodation {
+    }
+    Student {
+    }
+    StudentDemographic {
+    }
+    StudentSchoolAssociation {
+    }
+    EducationOrganization {
+    }
+    LocalEducationAgency {
+    }
+    School {
+    }
+    School ||--o{ EducationOrganization : "has associated"
+    School ||--o{ LocalEducationAgency : "has associated"
+    LocalEducationAgency ||--o{ EducationOrganization : "has associated"
+    AssessmentBatteryPart ||--o{ Assessment : "has associated"
+    AssessmentBatteryPart ||--o{ ObjectiveAssessment : "has associated"
+    ObjectiveAssessment ||--o{ Assessment : "has associated"
+    AssessmentAdministration ||--o{ AssessmentBatteryPart : "has associated"
+    AssessmentAdministration ||--o{ EducationOrganization : "has associated"
+    AssessmentAdministrationParticipation ||--o{ AssessmentAdministration : "has associated"
+    AssessmentAdministrationParticipation ||--o{ EducationOrganization : "has associated"
+    StudentAssessmentRegistration ||--o{ AssessmentAdministration : "has associated"
+    StudentAssessmentRegistration ||--o{ StudentSchoolAssociation : "has associated"
+    StudentAssessmentRegistration ||--o{ EducationOrganization : "has associated"
+    StudentAssessmentRegistration ||--o{ StudentEducationOrganizationAssessmentAccommodation : "has associated"
+    StudentAssessmentRegistrationBatteryPartAssociation ||--o{ StudentAssessmentRegistration : "has associated"
+    StudentAssessmentRegistrationBatteryPartAssociation ||--o{ AssessmentBatteryPart : "has associated"
+    StudentEducationOrganizationAssessmentAccommodation ||--o{ Student : "has associated"
+    StudentEducationOrganizationAssessmentAccommodation ||--o{ EducationOrganization : "has associated"
+    StudentSchoolAssociation ||--o{ Student : "has associated"
+    StudentSchoolAssociation ||--o{ EducationOrganization : "has associated"
+    StudentDemographic ||--o{ Student : "has associated"

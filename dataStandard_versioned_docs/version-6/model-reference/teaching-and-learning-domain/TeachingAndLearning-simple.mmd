@@ -1,0 +1,69 @@
+---
+title: TeachingAndLearning
+config:
+  layout: elk
+---
+erDiagram
+    EducationOrganization {
+    }
+    School {
+    }
+    Session {
+    }
+    Student {
+    }
+    Staff {
+    }
+    Course {
+    }
+    CourseOffering {
+    }
+    Section {
+    }
+    ClassPeriod {
+    }
+    Location {
+    }
+    Program {
+    }
+    LearningStandard {
+    }
+    StudentSchoolAssociation {
+    }
+    StaffSchoolAssociation {
+    }
+    StaffProgramAssociation {
+    }
+    GeneralStudentProgramAssociation {
+    }
+    StudentSectionAssociation {
+    }
+    StaffSectionAssociation {
+    }
+
+    School ||--o{ EducationOrganization : "extends"
+    EducationOrganization ||--o{ Session : "has associated"
+    EducationOrganization ||--o{ School : "has associated"
+    EducationOrganization ||--o{ Course : "has associated"
+    Student ||--o{ StudentSchoolAssociation : "ParticipatesIn"
+    Student ||--o{ GeneralStudentProgramAssociation : "participates in"
+    Student ||--o{ StudentSectionAssociation : "participates in"
+    Staff ||--o{ StaffSchoolAssociation : "has associated"
+    Staff ||--o{ StaffProgramAssociation : "has associated"
+    Staff ||--o{ StaffSectionAssociation : "has associated"
+    School ||--o{ StudentSchoolAssociation : "has associated"
+    School ||--o{ StaffSchoolAssociation : "has associated"
+    School ||--o{ Session : "has associated"
+    Program ||--o{ GeneralStudentProgramAssociation : "has associated"
+    Program ||--o{ StaffProgramAssociation : "has associated"
+    EducationOrganization ||--o{ GeneralStudentProgramAssociation : "has associated"
+    Course ||--o{ CourseOffering : "has associated"
+    School ||--o{ CourseOffering : "has associated"
+    CourseOffering ||--o{ Section : "has associated"
+    Section ||--o{ StudentSectionAssociation : "has associated"
+    Section ||--o{ StaffSectionAssociation : "has associated"
+    Section ||--o{ ClassPeriod : "has functional component"
+    Section ||--o{ Location : "has associated"
+    LearningStandard ||--o{ Section : "has associated"
+    LearningStandard ||--o{ LearningStandard : "has associated equivalence"
+    LearningStandard ||--o{ Course : "has associated"

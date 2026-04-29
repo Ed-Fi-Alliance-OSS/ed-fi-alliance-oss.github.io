@@ -1,0 +1,14 @@
+﻿---
+title: StudentHealth
+config:
+  layout: elk
+---
+erDiagram
+    Student {
+    }
+    StudentHealth {
+    }
+    EducationOrganization {
+    }
+    StudentHealth ||--o{ Student : "has associated"
+    StudentHealth ||--o{ EducationOrganization : "has associated"
