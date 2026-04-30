@@ -1,7 +1,10 @@
 # Data Import
 
-August 2024: On behalf of the Ed-Fi community, we are pleased to announce the
-release of Data Import v2.3. For more details see What's New in Data Import.
+:::warning
+
+Data Import 2.4 was released in April 2026 with .NET 10 support. [This closes out the product](../0-roadmap/notifications/data-import.md). Also see: [What's new in Data Import](./whats-new-in-data-import.md).
+
+:::
 
 ## Update
 
