@@ -1,11 +1,11 @@
-# Ed-Fi ODS/API and Data Management Service FAQ
+# Ed-Fi ODS/API and Ed-Fi API v8 FAQ
 
-The Ed-Fi Alliance is actively developing the
-[Ed-Fi Data Management Service](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service)
-(DMS) to enhance data integration and management capabilities for educational
-agencies. Designed to be robust and flexible, the DMS will address the evolving
+The Ed-Fi Alliance is actively developing
+[Ed-Fi API v8](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service)
+(formerly the Ed-Fi Data Management Service) to enhance data integration and management capabilities for educational
+agencies. Designed to be robust and flexible, Ed-Fi API v8 will address the evolving
 needs of the Ed-Fi community. The Ed-Fi Alliance plans to fully replace the
-current ODS/API Platform with the DMS by the 2029-2030 school year. In the
+current ODS/API Platform with Ed-Fi API v8 by the 2029-2030 school year. In the
 meantime, the Alliance remains committed to supporting the ODS/API Platform
 through the 2028-2029 school year.
 
@@ -61,7 +61,7 @@ may add additional features.
       <td>&nbsp;</td>
     </tr>
     <tr>
-      <td>DMS 1.x</td>
+      <td>Ed-Fi API v8.x</td>
       <td>&nbsp;</td>
       <td style={{ backgroundColor: 'var(--ifm-color-warning-lightest)' }}>
         testing
@@ -84,56 +84,49 @@ As shown in the table above:
   year. It implements Data Standard 3 (current: 3.3).
 * ODS/API 6.2, released in February 2024, implements Data Standard 4.0. No
   further feature enhancements are planned. It will be supported in production
-  at least through the 2025-2026 school year;
+  at least through the 2025-2026 school year.
 * ODS/API 7.3.x will continue to receive annual feature enhancements (and bug
   fixes) for the next several years, including an update to .NET 10 in 2026.
   This version supports Data Standard versions 4 and 5, and will support Data
   Standard version 6. It will be fully supported at least through school year
   2028-2029.
 
-### Q: When will the Data Management Service be available?
+### Q: When will Ed-Fi API v8 be available?
 
 Goal timeline:
 
-1. _Release candidate_ in summer 2025, with enough features to satisfy a typical
-   deployment for a Local Education Agency. ⚠️ Only recommended for
-   those who are engaged with the Project Tanager Technical Workgroup.
-2. _Release 1.0_ Q1 or Q2 of 2026, available for pilot / parallel usage
+1. _Release 8.0_ Q2 of 2026, available for pilot / parallel usage
    in school year 2026-2027.
+2. _Release 8.1_ Q4 of 2026, available for parallel / production usage
+   in school year 2027-2028.
 
-The first release candidate will be fully-compatible with the _must have_
-requirements described in the
-[Ed-Fi API Design and Implementation Guidelines, 4.0](../1-data-exchange/api-guidelines/readme.md).
-The _release 1.0_ will expand further into the _should have_ and _optional_
-requirements and features. State Education Agencies (SEA) frequently have more
-detailed technical requirements for client authorization and for access to raw
-data for warehousing and reporting. Tentatively, those features will be given a
-longer timeline; this will provide more opportunity for co-development with the
-SEA community. The SEA-oriented release 1.1 should be available for production
-use in the 2027-2028 school year.
+The _release 8.0_ will be fully compatible with the _must have_ requirements
+described in the [Ed-Fi API Design and Implementation Guidelines,
+4.0](../1-data-exchange/api-guidelines/readme.md) and will expand further into
+the _should have_ and _optional_ requirements and features. State Education
+Agencies (SEA) frequently have more detailed technical requirements for client
+authorization and for access to raw data for warehousing and reporting. The
+SEA-oriented release 8.1 should be available for production use in the 2027-2028
+school year.
 
-The 1.0 release will not have complete parity with the optional features in the
-ODS/API Platform (see note below). The Project Tanager Technical Workgroup
+The 8.0 release will not have complete parity with the optional features in the
+ODS/API Platform (see note below). The Ed-Fi API Technical Workgroup
 and/or Technical Advisory Group (TAG) will help guide prioritization of
 features.
 
 ```mermaid
 %%{init: { 'theme': 'neutral' } }%%
 timeline
-    Q4 2024 : Preview
-         : General Testing
-    Q3 2025 : Release Candidate
-         : Testing LEA context
-    Q4 25/Q1 26 : 1.0
+    Q1 26 : 8.0
          : MSPs, Early adopters
-    Q1/Q2 26 : 1.1
+    Q2 26 : 8.1
          : SEA
 ```
 
 :::note
 
-An example of an ODS/API feature that is _not_ planned for the Data Management
-Service: `link` elements in the `xyzReference` sections when retrieving a
+An example of an ODS/API feature that is _not_ planned for Ed-Fi API v8:
+`link` elements in the `xyzReference` sections when retrieving a
 resource with a `GET` request. See
 [Deprecation of Links](../1-data-exchange/api-guidelines/design-and-implementation-guidelines/api-design-guidelines/rest-api-conventions/get-requests.md#deprecation-of-links)
 for more information.
@@ -144,25 +137,27 @@ for more information.
 
 ### Q: Will integrations built for the ODS/API continue to work with the new system?
 
-The Data Management Service will be a fully compatible Ed-Fi API implementation.
-Client applications that interact with the REST API will continue to work\*.
+Ed-Fi API v8 will be a fully compatible implementation of the Ed-Fi API
+specification. Client applications that interact with the REST API will continue
+to work.
 
-The backend data store will be very different from the ODS/API. Existing
-database integrations will not be able to work directly with the core set of
-database tables. The application will introduce new integration capabilities,
-such as the use of streaming events in Kafka. However, we recognize that many
-existing Ed-Fi installations have critical reporting and analytics systems that
-currently integrate directly with the ODS database. We are committed to working
-with the community to create a pathway that allows agencies to leverage their
-existing data integrations.
+The backend data store in Ed-Fi API v8 differs from the ODS/API, but it remains
+ODS-like and relational. To support existing reporting, analytics, and
+downstream integrations, the platform is evolving toward a relational data model
+similar to the ODS, exposing data in a familiar, tabular form. This approach
+allows agencies to continue using SQL-based reporting patterns. We recognize that
+many current Ed-Fi implementations depend on database-level integrations for
+critical analytics and reporting. The Alliance is committed to working with the
+community to create clear migration paths that allow agencies to leverage their
+existing data integrations. The platform also introduces new integration
+capabilities such as streaming events via Kafka for real-time data flows.
 
 :::note
 
-The base URLs will be different in the Data Management Service compared to the
+The base URLs will be different in Ed-Fi API v8 compared to the
 ODS/API. The differences between the two can easily be bridged if needed by
 changing client code to query the root endpoint (Discovery API), or with special
-redirection rules in an API Gateway application sitting in front of the Data
-Management Service.
+redirection rules in an API Gateway application sitting in front of Ed-Fi API v8.
 
 :::
 
@@ -171,17 +166,18 @@ Management Service.
 Yes &mdash; if referring to the Management API
 [specification](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-API-Standards/blob/main/api-specifications/admin-api/admin-api-2.2.0.yaml).
 No &mdash; if referring to the specific software application called "Admin API".
-The Data Management Service will have a different database system than the
+Ed-Fi API v8 will have a different database system than the
 ODS/API, including restructuring of the data currently housed in the
 `EdFi_Admin` and `EdFi_Security` databases. The project will introduce a new
-application, called the DMS Configuration Service. The plan is to implement the
-Management API specification (version 2), so that applications and scripts
+application, called the Configuration Service, which implements the Ed-Fi
+Management API specification. The plan is to implement the
+Management API specification (version 3), so that applications and scripts
 developed on this specification can interact seamlessly either with the platform
 of today or of tomorrow.
 
 ## Process
 
-### Q: How can I / my team prepare for the upgrade
+### Q: How can I / my team prepare for the upgrade?
 
 Start by identifying all direct ODS, Admin, and Security database integrations
 in your environment:
@@ -189,19 +185,18 @@ in your environment:
 * ETLs that extract from a metadata catalog and load into the ODS.
   * Replace with direct calls to the Ed-Fi API.
 * ETLs that extract from the ODS and load into a data warehouse.
-  * Replace with direct calls to the Ed-Fi API, using Change Queries.
+  * Plan to continue SQL-based reporting or transition to direct calls to the
+    Ed-Fi API, using Change Queries.
 * Data Validation procedures that run directly on ODS.
   * Replace with validation off of a data mart of data warehouse.
 * Client credential management directly in the Admin database.
-  * Deploy Admin API and replace with calls with calls to its implementation of
-    the Ed-Fi Management API, which will be implemented in the Data Management
-    Service.
+  * Deploy Admin API and replace with calls to its implementation of
+    the Ed-Fi Management API, which will be implemented in the Configuration
+    Service in Ed-Fi API v8.
 
-Some of the functions may still work in the Data Management Service, depending
-on the final data storage design, but direct database integration is
-discouraged. Whenever possible, use the REST API to load or extract data. Doing
-so both prepares you for the Data Management Service and helps you ensure data
-integrity and security.
+While some database‑level access patterns may continue to work in Ed-Fi API v8,
+whenever possible, use the REST API to load or extract data. Doing so both
+prepares you for Ed-Fi API v8 and helps you ensure data integrity and security.
 
 You can work with your Ed-Fi liaison to build a plan for transitioning ahead of
 the 2028-2029 school year.
@@ -209,8 +204,7 @@ the 2028-2029 school year.
 ### Q: How can I / my team get involved?
 
 The Ed-Fi Alliance is running a technical workgroup that will meet regularly
-until the 1.0 release, helping with prioritization, review, and testing of the
-software.
+to help with prioritization, review, and testing of the software.
 
 Anyone wishing to contribute at the level of design or application code level is
 invited to review the
@@ -221,24 +215,18 @@ for more information.
 
 ## Technical Design
 
-### Q: How does the Data Management Service enforce data integrity?
+### Q: How does Ed-Fi API v8 enforce data integrity?
 
-All data storage designs in the Data Management Service will be based on
-ACID-level transactions, ensuring that data operations are processed reliably
-and maintain data integrity. All data will be stored in a relational database
-(PostgreSQL or Microsoft SQL Server), and referential integrity is enforced
-through the use of foreign keys.
-
-This is different than the earlier experimentation in "Project Meadowlark",
-which used MongoDB as the storage engine. The Data Management Service will not
-use a NoSQL database for the core data store. Instead, it will use a relational
-database to ensure that data integrity is maintained, and that the data model is
-consistent with the Ed-Fi Data Standard.
+All data storage designs in Ed-Fi API v8 will be based on ACID-level
+transactions, ensuring that data operations are processed reliably and maintain
+data integrity. All data will be stored in a relational database (PostgreSQL or
+Microsoft SQL Server), and referential integrity is enforced through the use of
+foreign keys, ensuring the data model remains consistent with the Ed-Fi Data Standard.
 
 ### Q: Can I run the system without Kafka?
 
-Yes. Kafka is used for optional streaming feature in the Data Management
-Service. If you do not have streaming use cases, you can run the system without
+Yes. Kafka is used for an optional streaming feature in Ed-Fi API v8.
+If you do not have streaming use cases, you can run the system without
 Kafka.
 
 Core functionality (API operations, data storage, integrity enforcement) does
@@ -247,14 +235,9 @@ real-time data flows.
 
 ### Q: When will Microsoft SQL Server be supported?
 
-Currently Data Management Service supports PostgreSQL as the primary data
-store, and Microsoft SQL Server will be added as an alternative data store in
-the 1.0 release (2026). This will allow agencies to use their
-existing SQL Server infrastructure to run the Data Management Service.
+Ed-Fi API v8 supports PostgreSQL as the primary data store. Microsoft SQL Server
+is being added as an alternative data store in parallel with the 8.0 release
+(2026). Any remaining gaps will be addressed in the 8.1 release.
 
-### Q: You promised a compatibility layer. When will it be available?
-
-Please stay tuned for more information on the compatibility layer, as it is
-still under design. The goal is to provide a way for existing ODS-databases to
-migrate to the new Data Management Service with minimal disruption, for example
-by having tables or views that nearly match those defined in the ODS database.
+This approach allows agencies to continue using their existing SQL Server
+infrastructure to run Ed-Fi API v8.
