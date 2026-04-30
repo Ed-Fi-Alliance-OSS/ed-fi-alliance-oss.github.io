@@ -46,8 +46,9 @@ Copy `.env.example` to `.env` at the repository root and set at least:
 
 - `ODS_CONNECTION_STRING_ENCRYPTION_KEY` — the base64 AES key that
   matches the ODS API's `ApiSettings:OdsConnectionStringEncryptionKey`
-- `DB_SSL`, and `DB_SSL_CA` if `EdFi_Admin` requires TLS with a
-  private CA
+- `sslmode` (and optionally `sslrootcert`, `sslcert`, `sslkey`) embedded in the
+  `adminConnection` value if `EdFi_Admin` requires TLS. See
+  [PostgreSQL SSL](../configuration/environment-variables.md#postgresql-ssl).
 - `PG_BOSS_CONNECTION_CONFIG` — same JSON shape as
   `CONNECTION_CONFIG`. Points at the PostgreSQL database pg-boss uses
   to store its job metadata. Reusing `EdFi_Admin` is the simplest
@@ -74,6 +75,22 @@ limiting, and proxy](../configuration/cors-rate-limit-proxy.md) for the
 remaining configuration groups.
 
 ## Step 3. Install and run
+
+### Option A: Official Docker image (recommended for production)
+
+Pull and run the official image from Docker Hub, passing the `.env`
+file from Step 2:
+
+```bash
+docker run --env-file .env -p 3000:3000 edfialliance/one-roster-api
+```
+
+Pin a specific version by appending a tag (for example,
+`edfialliance/one-roster-api:1.0.0`). See
+[Docker Hub](https://hub.docker.com/r/edfialliance/one-roster-api/tags)
+for available tags.
+
+### Option B: Run from source
 
 ```bash
 cd edfi-oneroster
@@ -114,7 +131,4 @@ REFRESH MATERIALIZED VIEW CONCURRENTLY oneroster12.orgs;
 
 For end-to-end local testing that stands up an ODS, `EdFi_Admin`, and
 an Ed-Fi ODS / API configured as the OAuth issuer, use the [Docker
-Compose demo stack](./docker-compose.md). For a standalone ODS
-container (without the API or admin DB), see the Ed-Fi ODS / API
-sandbox images in the [Ed-Fi ODS / API
-documentation](/reference/ods-api/).
+Compose demo stack](./docker-compose.md).

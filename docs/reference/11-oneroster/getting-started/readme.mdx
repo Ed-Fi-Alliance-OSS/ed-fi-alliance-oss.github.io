@@ -22,10 +22,10 @@ image — the in-repo Docker Compose stack is for demo only.
 
 The OneRoster service runs against an existing Ed-Fi ODS / API, not a standalone
 ODS database. Before deploying via any path above (except the Docker Compose
-demo, which stands up its own preconfigured stack), configure feature
-management, claim sets, and the OneRoster vendor application in your ODS / API.
-See
-[How to use OneRoster with the Ed-Fi ODS / API](/reference/ods-api/how-to-guides/how-to-oneroster-with-the-ed-fi-ods-api).
+demo, which stands up its own preconfigured stack), enable the OneRoster feature
+and configure JWT-based token signing in your ODS / API. See [How to use
+OneRoster with the Ed-Fi ODS /
+API](/reference/ods-api/how-to-guides/how-to-oneroster-with-the-ed-fi-ods-api).
 
 :::
 
@@ -60,14 +60,5 @@ are repopulated by stored procedures on a schedule driven by SQL Server Agent.
 
 </TabItem>
 </Tabs>
-
-:::tip
-
-Before deploying, confirm your ODS / API version against the
-[Supported Data Standard versions](../readme.mdx#supported-data-standard-versions)
-matrix. For the current Ed-Fi ODS / API sandbox images and tags, see the
-[Ed-Fi ODS / API reference](/reference/ods-api/).
-
-:::
 
 <DocCardList />

@@ -21,16 +21,19 @@ single-tenant `EdFi_Admin`:
 DB_TYPE=postgres
 CONNECTION_CONFIG={"adminConnection":"host=localhost;port=5432;database=EdFi_Admin;username=<your-username>;password=<your-password>"}
 ODS_CONNECTION_STRING_ENCRYPTION_KEY=<base64 key matching the ODS API's ApiSettings:OdsConnectionStringEncryptionKey>
+PG_BOSS_CONNECTION_CONFIG={"adminConnection":"host=localhost;port=5432;database=EdFi_Admin;username=<your-username>;password=<your-password>"}
 
 OAUTH2_ISSUERBASEURL=https://your-issuer/
 OAUTH2_AUDIENCE=http://localhost:3000
 OAUTH2_TOKENSIGNINGALG=RS256
 ```
 
-The server fails to start if `OAUTH2_ISSUERBASEURL` or
-`OAUTH2_AUDIENCE` is missing, if `CONNECTION_CONFIG` is unset (or,
-in multi-tenant mode, if `TENANTS_CONNECTION_CONFIG` is unset), or if
-`DB_SSL_CA` is set but unreadable.
+The server fails to start if any required variable is missing or invalid. Required
+variables validated at startup include `OAUTH2_ISSUERBASEURL`, `OAUTH2_AUDIENCE`,
+`ODS_CONNECTION_STRING_ENCRYPTION_KEY`, `CONNECTION_CONFIG` (or `TENANTS_CONNECTION_CONFIG`
+in multi-tenant mode), and `PG_BOSS_CONNECTION_CONFIG` (PostgreSQL only). The process
+also exits immediately if `ENABLE_HTTPS=true` but `TLS_KEY_PATH` or `TLS_CERT_PATH`
+is missing.
 
 ## Application
 
@@ -123,10 +126,25 @@ These settings apply when `DB_TYPE=postgres`.
 
 | Variable | Default | Notes |
 | --- | --- | --- |
-| `DB_SSL` | `false` | When `true`, enables TLS with certificate validation (`rejectUnauthorized: true`). |
-| `DB_SSL_CA` | _(empty)_ | Optional path to a CA PEM file. Only used when `DB_SSL=true`. Startup fails fast if set but unreadable. |
-| `PG_BOSS_CONNECTION_CONFIG` | _(empty)_ | PostgreSQL connection used by [pg-boss](https://timgit.github.io/pg-boss/) as its job-metadata store. Same JSON shape as `CONNECTION_CONFIG`. Point at one tenant's admin DB (multi-tenant), the same DB as `CONNECTION_CONFIG` (single-tenant), or a dedicated database reserved for pg-boss. |
+| `PG_BOSS_CONNECTION_CONFIG` | _(none)_ | Required when `DB_TYPE=postgres`. PostgreSQL connection used by [pg-boss](https://timgit.github.io/pg-boss/) as its job-metadata store. Same JSON shape as `CONNECTION_CONFIG`. Point at one tenant's admin DB (multi-tenant), the same DB as `CONNECTION_CONFIG` (single-tenant), or a dedicated database reserved for pg-boss. |
 | `PGBOSS_CRON` | `*/15 * * * *` | Cron expression for the pg-boss job that refreshes materialized views. Accepts standard 5-field cron syntax. |
+
+### PostgreSQL SSL
+
+SSL for the admin database connection is configured through parameters embedded directly in the `adminConnection` connection string (inside `CONNECTION_CONFIG`, `TENANTS_CONNECTION_CONFIG`, or `PG_BOSS_CONNECTION_CONFIG`).
+
+| Parameter | Description |
+| --- | --- |
+| `sslmode` | `disable` turns SSL off. `require`, `verify-ca`, and `verify-full` enable SSL with certificate validation (`rejectUnauthorized: true`). Omitting `sslmode` leaves SSL inactive unless a certificate file parameter is also set. |
+| `sslrootcert` | File-system path to a CA certificate (PEM). Used to verify the server certificate. |
+| `sslcert` | File-system path to a client certificate (PEM). Required for mutual TLS. |
+| `sslkey` | File-system path to a client private key (PEM). Required for mutual TLS. |
+
+Example with CA verification:
+
+```env
+CONNECTION_CONFIG={"adminConnection":"host=localhost;port=5432;database=EdFi_Admin;username=<user>;password=<pass>;sslmode=verify-ca;sslrootcert=/etc/ssl/certs/ca.pem"}
+```
 
 ## Microsoft SQL Server
 
@@ -137,6 +155,23 @@ the `mssql` connection string embedded in `CONNECTION_CONFIG` (or
 `TENANTS_CONNECTION_CONFIG`). See [Deploy on Microsoft SQL
 Server](../getting-started/deploy-mssql.md) for commands to change the
 cadence.
+
+### Microsoft SQL Server SSL
+
+SSL/TLS for the admin database connection is configured through parameters
+embedded directly in the `adminConnection` connection string. The Tedious
+driver (used by Knex for SQL Server) exposes two relevant options:
+
+| Parameter | Default | Description |
+| --- | --- | --- |
+| `encrypt` | `false` | Set to `true` to enable TLS encryption between the service and SQL Server. Required for Azure SQL and recommended for any remote SQL Server. |
+| `TrustServerCertificate` | `true` | Set to `false` to enforce certificate validation (recommended in production). When `false`, the server's TLS certificate must be trusted by the system certificate store. |
+
+Example with encryption enabled and certificate validation enforced:
+
+```env
+CONNECTION_CONFIG={"adminConnection":"server=sql.example.com;database=EdFi_Admin;user id=<user>;password=<pass>;encrypt=true;TrustServerCertificate=false"}
+```
 
 ## OAuth 2.0 and JWT
 
@@ -157,10 +192,23 @@ the behavior details.
 
 | Variable | Default | Notes |
 | --- | --- | --- |
-| `CORS_ORIGINS` | `http://localhost:3000` | Comma-separated allowed origins. Leave empty to allow all (not recommended in production). |
+| `CORS_ORIGINS` | _(empty — allow all)_ | Comma-separated allowed origins. When unset or empty, all origins are allowed. Restrict to specific origins in production. |
 | `RATE_LIMIT_WINDOW_MS` | `60000` | Rate-limit window in milliseconds (`express-rate-limit`). |
 | `RATE_LIMIT_MAX_REQUESTS` | `100` | Maximum requests per window per IP. |
 | `TRUST_PROXY` | `false` | When `true`, the service trusts `X-Forwarded-*` headers. Required when running behind IIS, NGINX, or ARR. |
+
+## HTTPS / TLS
+
+By default the service listens over plain HTTP. Set `ENABLE_HTTPS=true` to
+switch to HTTPS.
+
+| Variable | Default | Notes |
+| --- | --- | --- |
+| `ENABLE_HTTPS` | `false` | When `true`, the service starts an HTTPS server instead of HTTP. `TLS_KEY_PATH` and `TLS_CERT_PATH` become required. Minimum TLS version enforced: TLSv1.2. |
+| `TLS_KEY_PATH` | _(empty)_ | Required when `ENABLE_HTTPS=true`. File-system path to the PEM-encoded TLS private key. |
+| `TLS_CERT_PATH` | _(empty)_ | Required when `ENABLE_HTTPS=true`. File-system path to the PEM-encoded TLS certificate. |
+| `TLS_CA_PATH` | _(empty)_ | Optional. Path to a CA bundle for client certificate chain validation. Only used when `ENABLE_HTTPS=true`. |
+| `ONEROSTER_API_HEALTHCHECK_TEST` | `["CMD","curl","-f","http://localhost:3000/health-check"]` | Docker Compose health-check command array. When `ENABLE_HTTPS=true`, change the scheme to `https://` and add `"--insecure"` (e.g., `["CMD","curl","-f","https://localhost:3000/health-check","--insecure"]`). |
 
 ## Deployment-script variables
 
@@ -199,9 +247,12 @@ After populating `.env`, confirm the service can start:
 
 ```bash
 node server.js
-# The process exits immediately with an error if OAUTH2_AUDIENCE or
-# OAUTH2_ISSUERBASEURL is missing, if CONNECTION_CONFIG / TENANTS_CONNECTION_CONFIG
-# cannot be parsed, or if DB_SSL_CA is set but unreadable.
+# The process exits immediately with an error if any required variable is
+# missing or invalid (OAUTH2_AUDIENCE, OAUTH2_ISSUERBASEURL, DB_TYPE,
+# ODS_CONNECTION_STRING_ENCRYPTION_KEY, CONNECTION_CONFIG /
+# TENANTS_CONNECTION_CONFIG, PG_BOSS_CONNECTION_CONFIG on PostgreSQL,
+# or TLS_KEY_PATH / TLS_CERT_PATH when ENABLE_HTTPS=true).
 
-curl -i http://localhost:3000/health-check
+curl -i http://localhost:3000/health-check   # HTTP (default)
+# curl -ik https://localhost:3000/health-check  # HTTPS (when ENABLE_HTTPS=true)
 ```

@@ -58,6 +58,9 @@ Copy `.env.example` to `.env` at the repository root and set at least:
   CONNECTION_CONFIG={"adminConnection":"server=localhost;database=EdFi_Admin;user id=<your-username>;password=<your-password>;encrypt=false;TrustServerCertificate=true"}
   ```
 
+  To enable TLS, set `encrypt=true` and `TrustServerCertificate=false` in the
+  connection string. See [Microsoft SQL Server SSL](../configuration/environment-variables.md#microsoft-sql-server-ssl).
+
 - `ODS_CONNECTION_STRING_ENCRYPTION_KEY` — the base64 AES key that
   matches the ODS API's `ApiSettings:OdsConnectionStringEncryptionKey`
 - `OAUTH2_AUDIENCE`, `OAUTH2_ISSUERBASEURL`, `OAUTH2_TOKENSIGNINGALG`.
@@ -79,6 +82,22 @@ variables](../configuration/environment-variables.md) for the full
 list.
 
 ## Step 3. Install and run
+
+### Option A: Official Docker image (recommended for production)
+
+Pull and run the official image from Docker Hub, passing the `.env`
+file from Step 2:
+
+```bash
+docker run --env-file .env -p 3000:3000 edfialliance/one-roster-api
+```
+
+Pin a specific version by appending a tag (for example,
+`edfialliance/one-roster-api:1.0.0`). See
+[Docker Hub](https://hub.docker.com/r/edfialliance/one-roster-api/tags)
+for available tags.
+
+### Option B: Run from source
 
 ```bash
 cd edfi-oneroster
