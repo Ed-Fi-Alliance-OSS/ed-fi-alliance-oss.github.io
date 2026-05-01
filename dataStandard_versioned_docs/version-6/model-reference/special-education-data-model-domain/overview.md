@@ -13,7 +13,7 @@ on its viability for possible future enhancements. This domain may change outsid
 
 ## Overview
 
-The Special Education Data Model (SEDM) was designed by PCG, AEM, and Education Analytics to be included in the Common Education Data Standards. Built with six business drivers in mind, SEDM focuses on both Individuals with Disabilities Education Act (IDEA) requirements and the Individual Education Program (IEP) as core entities, SEDM supports longitudinal analysis, evidence-based compliance reporting, and clearer interpretation of special education obligations. For Ed-Fi Data Standard adopters, it has the potential to solve many of the problems found in the existing StudentSpecialEducationProgramAssoication.
+The Special Education Data Model (SEDM) was designed by PCG, AEM, and Education Analytics to be included in the Common Education Data Standards. Built with six business drivers in mind, SEDM focuses on both Individuals with Disabilities Education Act (IDEA) requirements and the Individual Education Program (IEP) as core entities, SEDM supports longitudinal analysis, evidence-based compliance reporting, and clearer interpretation of special education obligations. For Ed-Fi Data Standard adopters, it has the potential to solve many of the problems found in the existing StudentSpecialEducationProgramAssociation.
 
 ## Key Entities
 
