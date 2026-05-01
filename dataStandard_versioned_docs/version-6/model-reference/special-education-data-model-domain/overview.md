@@ -36,8 +36,6 @@ The key concepts include the following:
 
 ## Business Drivers
 
-![Business Drivers](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/SEDM_Business_Drivers.png)
-
 ### IDEA Reporting and Compliance
 
 Accurate IDEA reporting depends on representing special education activities as discrete, time-bound, auditable records rather than as side effects of enrollment or program participation. Modeling IDEA events, IEPs, service prescriptions, and service delivery as explicit entities enables precise reconstruction of statutory timelines and procedural safeguards required for federal and state reporting. The model preserves when decisions were made, why they were required, and what actions resulted—without overwriting historical context as IEPs are reviewed, amended, or replaced.
