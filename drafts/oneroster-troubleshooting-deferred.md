@@ -221,15 +221,21 @@ connection error or a permissions error on the first query.
 _Fix:_ confirm the service's database credentials match the
 credentials used to deploy the `oneroster12` schema, and that the
 role has `USAGE` on the schema and `SELECT` on each view or table.
-See [Environment variables, Database section](../docs/reference/11-oneroster/configuration/environment-variables.md#database).
+See [Environment variables](../docs/reference/11-oneroster/configuration/environment-variables.md#connection-and-tenancy).
 
-### Symptom: service fails to start with TLS error
+### Symptom: SSL connection to the database fails
 
-With `DB_SSL=true` and `DB_SSL_CA` pointing to a missing or empty
-file, the service fails fast at startup.
+PostgreSQL SSL is configured through connection string parameters
+(`sslmode`, `sslrootcert`, `sslcert`, `sslkey`) embedded in
+`CONNECTION_CONFIG`, `TENANTS_CONNECTION_CONFIG`, or
+`PG_BOSS_CONNECTION_CONFIG`. If a certificate file path is set but
+the file cannot be read, the service logs an error to stderr, skips
+that certificate option, and attempts the connection without it —
+which may result in a failed connection or unintentionally weaker TLS.
 
-_Fix:_ confirm the CA PEM path is correct and readable by the
-service process.
+_Fix:_ confirm the certificate file paths in the `adminConnection`
+string are correct and readable by the service process. See
+[PostgreSQL SSL](../docs/reference/11-oneroster/configuration/environment-variables.md#postgresql-ssl).
 
 ## Getting more help
 

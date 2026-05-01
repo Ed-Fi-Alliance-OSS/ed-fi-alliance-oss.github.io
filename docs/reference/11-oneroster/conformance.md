@@ -11,7 +11,7 @@ rostering endpoints that make up the Core service; the
 scope.
 
 <!--
-Review (Vinaya): confirm and paste the 1EdTech certified-products
+TODO: confirm and paste the 1EdTech certified-products
 directory URL for the Ed-Fi OneRoster service here, along with the
 formal certification date and certification identifier if one is
 issued by 1EdTech. The page currently says "certified" without
