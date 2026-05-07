@@ -34,7 +34,7 @@ is documented via 2 primary artifacts: the **Ed-Fi Data Handbook** and a set of
 
 * <a href="https://edfidocs.blob.core.windows.net/$web/handbook/v6.1/index.html" target=" blank">Ed-Fi Data Handbook for DS v6.1</a>
 * <a href="https://edfidocs.blob.core.windows.net/$web/handbook/v6.0/index.html" target="_blank">Ed-Fi Data Handbook for DS v6.0</a>
-* [Ed-Fi UDM UML Diagrams](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Standard/tree/main/Models) (Visio format, on GitHub)
+* [Ed-Fi UDM UML Diagrams](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Standard/tree/main/Models) (Mermaid files)
 
 Additional documentation is provided in the [Ed-Fi Unifying Data
 Model](/reference/data-exchange/udm) documentation. This additional documentation provides narrative overviews of domains and
@@ -52,7 +52,7 @@ Standard for Suite 3 v6.1.0.**
 
 #### REST API Bindings
 
-This release causes the Ed-Fi Resources API to contain breaking changes. Review the What's New documentation for more information.
+The DS v6.0 release causes the Ed-Fi Resources API to contain breaking changes, while DS v6.1 does not contain breaking changes. Review the What's New documentation for more information.
 
 #### Bulk / XML Bindings
 
