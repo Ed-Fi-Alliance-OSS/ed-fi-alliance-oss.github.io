@@ -6,7 +6,7 @@ The aim of this article is to offer a better understanding of the process of dat
 
 Data validation stands as a critical and necessary element in successful Ed-Fi ODS/API implementations. Its role is central in ensuring the integrity and accuracy of data, which directly influences the strategies and outcomes in education. This article is dedicated to underscoring the importance of data validation within the Ed-Fi ODS/API implementation and guiding education organizations on how to implement these practices effectively.
 
-In the context of the Ed-Fi ODS/API, where standardization and interoperability of data are key, robust data validation processes are indispensable. They ensure that the data driving educational decisions and policies is reliable and aligns with the structured data models of the Ed-Fi Data Standard.  
+In the context of the Ed-Fi ODS/API, where standardization and interoperability of data are key, robust data validation processes are indispensable. They ensure that the data driving educational decisions and policies is reliable and aligns with the structured data models of the Ed-Fi Data Standard.
 
 This article assumes prerequisite knowledge from:
 
@@ -32,7 +32,7 @@ As the Ed-Fi API is a standard designed for interoperability, the consequences o
 * **Risk of Inaccurate Decisions and Impaired Decision-Making:** Data inaccuracies resulting from poor validation can lead to flawed decisions, impacting everything from student performance tracking to resource distribution and policy planning. Inaccurate data undermines the accuracy and effectiveness of strategies and policies.
 * **Erosion of Trust:** Stakeholders' confidence in data systems is vital. Poor validation can erode trust in the data, impacting the credibility of institutions and their decision-makers.
 * **Operational Inefficiencies:** Handling inaccuracies and inconsistencies due to poor validation can strain resources, leading to operational inefficiencies and wasted effort that could be better spent on educational initiatives.
-* **Barrier to Data-Driven Culture:** The Ed-Fi Alliance aims to foster a data-driven culture in education. Inadequate validation undermines this goal by affecting the reliability of data, crucial for building this culture.  
+* **Barrier to Data-Driven Culture:** The Ed-Fi Alliance aims to foster a data-driven culture in education. Inadequate validation undermines this goal by affecting the reliability of data, crucial for building this culture.
 
 ## Proactive Data Validation: A Key to Success
 
@@ -41,7 +41,7 @@ Proactive data validation is fundamental to the success of any Ed-Fi implementat
 * **Cost Efficiency:** Proactively incorporating data validation avoids the higher costs associated with retrofitting a solution later. Early integration allows for a more cost-effective approach, both in time and resources.
 * **Resource Planning:** Early consideration of data validation facilitates better planning for the necessary resources. This includes determining whether existing data validations are in place, how they can be adapted to the Ed-Fi Data Standard, and what resources are required for implementation.
 * **Preventing Data Propagation Issues:** A proactive approach helps prevent or reduce the propagation of bad data. By addressing data validation at the outset, institutions can ensure that the data entering their systems is clean from the start, reducing the likelihood of errors spreading through interconnected systems.
-* **Documentation and Implementation of Business Rules:** Proactive validation includes assessing and documenting existing business rules in an easily understood way. This step is crucial for transforming these rules into ones that align with the Ed-Fi Data Standard and deciding on the best implementation strategy e.g. custom SQL, programming, or an Ed-Fi Alliance badged solution.  
+* **Documentation and Implementation of Business Rules:** Proactive validation includes assessing and documenting existing business rules in an easily understood way. This step is crucial for transforming these rules into ones that align with the Ed-Fi Data Standard and deciding on the best implementation strategy e.g. custom SQL, programming, or an Ed-Fi Alliance badged solution.
 
 ## Starting Point: Downloadable Self-Assessment
 
@@ -55,15 +55,15 @@ We highly recommend downloading and completing this self-assessment as your firs
 
 ## Documenting Data Validation Rules
 
-Documenting data validation rules is a critical step in ensuring the success of data validation within an Ed-Fi ODS/API implementation. By thoroughly documenting your data validation rules, you not only ensure a smoother implementation process but also lay a foundation for consistent data quality.  
+Documenting data validation rules is a critical step in ensuring the success of data validation within an Ed-Fi ODS/API implementation. By thoroughly documenting your data validation rules, you not only ensure a smoother implementation process but also lay a foundation for consistent data quality.
 
-### Tips for Documentation  
+### Tips for Documentation
 
 Below are some tips for documenting your data validation rules.
 
 * **Start with Existing Rules:** Begin by identifying and documenting any existing business rules your institution currently employs. Consider how these align with the Ed-Fi Data Standard and what modifications might be necessary.
 * **Documentation and Accessibility of Business Rules:** Evaluate how your business rules are documented and whether they are easily understandable for implementation within the Ed-Fi Data Standard.
-* **Plan for Presenting Business Rules:** Think about how you will present these business rules to your users, distribute requirements, and convey essential information.  
+* **Plan for Presenting Business Rules:** Think about how you will present these business rules to your users, distribute requirements, and convey essential information.
 * **Map Rules for Ed-Fi ODS/API Implementation:** Contemplate how to take your existing rules and map them into rules leveraging the Ed-Fi Data Standard. This will help in visualizing how they will be implemented and how they interconnect within your data system.
 * **Define New Rules:** You may choose to develop new validation rules that are specific to your needs within the Ed\-Fi Data Standard. Keep the existing rules in mind when adding new ones.
 * **Develop a System of Error Codes and Messages:** Determine if your organization has an established system of error codes and messages and how these can be aligned or modified for the Ed-Fi Data Standard.
@@ -83,7 +83,7 @@ The workbook contains three different worksheets. Each of these worksheets has a
 
 * **Error Codes, Messages, and Resolutions:** This worksheet is designed to catalog all error codes, corresponding messages, and their resolutions.
 * **Validation Rules:** This worksheet is designed to document the details of each validation rule in both natural language and technical terms. This is the heart of the documentation process for documenting validation rules.
-* **Validation Rule Mapping:** This worksheet is designed to help plan and track the transition of validation rules from your current system to the Ed-Fi standards.
+* **Validation Rule Mapping:** This worksheet is designed to help plan and track the transition of validation rules from your current system to the Ed-Fi Data Standard.
 
 **[Click Here to Download the Data Validation Documentation Workbook](https://edfi.atlassian.net/wiki/download/attachments/19334220/Data_Validation_Documentation_Workbook.xlsx?version=1&modificationDate=1711423298007&cacheVersion=1&api=v2)**
 
@@ -112,7 +112,7 @@ Here are links to the tools referenced in this article along with a few other us
 
 * [Self-Assessment for Data Validation Readiness](https://edfi.atlassian.net/wiki/download/attachments/19334220/Self_Assessment_For_Data_Validation_Readiness.docx?version=1&modificationDate=1711424183807&cacheVersion=1&api=v2)
 * [Data Validation Documentation: Excel Workbook](https://edfi.atlassian.net/wiki/download/attachments/19334220/Data_Validation_Documentation_Workbook.xlsx?version=1&modificationDate=1711423298007&cacheVersion=1&api=v2)
-* [Open-Source Rules Engine and Validation API Special Interest Group](https://edfi.atlassian.net/wiki/display/ESIG/Open+Source+Rules+Engine+and+Validation+API)  
-* Example: Texas Student Data System Data Validation Rules, see link on [TSDS ODS Upgrade Data Standards page](https://www.texasstudentdatasystem.org/tsds/teds/ods-upgrade-data-standards)  
+* [Open-Source Rules Engine and Validation API Special Interest Group](https://edfi.atlassian.net/wiki/display/ESIG/Open+Source+Rules+Engine+and+Validation+API)
+* Example: Texas Student Data System Data Validation Rules, see link on [TSDS ODS Upgrade Data Standards page](https://www.texasstudentdatasystem.org/tsds/teds/ods-upgrade-data-standards)
 * [Example: WISEdata Validation Rule List (GoogleSheet)](https://docs.google.com/spreadsheets/d/10Wk6o20-HSw6qed7EK7nso0-eK9n1W9Ped9MRcM_4Mo/edit#gid=0)
 * [Example: Nebraska Adviser Validation Guide (PDF)](https://www.education.ne.gov/wp-content/uploads/2019/05/ADVISER-Validation-Quick-Reference-Guide_Apr-2019.pdf)

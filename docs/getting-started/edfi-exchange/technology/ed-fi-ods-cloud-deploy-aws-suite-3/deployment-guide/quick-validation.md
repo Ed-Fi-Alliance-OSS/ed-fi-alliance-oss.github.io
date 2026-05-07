@@ -151,4 +151,4 @@ ODS/API Software Version used in steps below: 3.4.0
 
 24. To sign in again to the Admin Application again, your credentials are the email address and password you provided when creating your account in Step #4.
 
-For more information on the Ed-Fi software suites, please see the documentation for the products at [Welcome to TechDocs](/#).
+For more information on the Ed-Fi Technology Suites, please see the documentation for the products at [Welcome to Docs](/#).

@@ -35,26 +35,36 @@ function Main() {
       <div className="container">
         <div className="row margin-bottom--lg">
           <div className="col">
-            For general information on the Ed-Fi Alliance Partner Program, see{' '}
-            <Link to="https://www.ed-fi.org/partner-program/">
-              Become an Ed-Fi Alliance Partner
-            </Link>{' '}
-            on the main website.
+            <p>
+              For general information on the Ed-Fi Alliance Partner Program, see{' '}
+              <Link to="https://www.ed-fi.org/partner-program/">
+                Become an Ed-Fi Alliance Partner
+              </Link>{' '}
+              on the main website.
+            </p>
+            <p>
+              When describing your product’s integration with the Ed‑Fi Data
+              Standard, it’s important to communicate clearly, accurately, and
+              consistently with the Ed‑Fi Alliance’s brand, trademark, and
+              language guidelines. For more information, see the{' '}
+              <Link to="/partners/brand-guidelines">
+                Ed-Fi Alliance Brand Guidelines for Partners
+              </Link>
+              .
+            </p>
           </div>
         </div>
         <div className="row margin-bottom--lg">
           <div className="col">
-            <Heading as="h2">
-              Certification
-            </Heading>
+            <Heading as="h2">Certification</Heading>
             <p>
-              Ed-Fi certifications allow product developers to demonstrate a
-              product's fidelity to Ed-Fi standards and guidelines, and for
+              Certifications allow product developers to demonstrate a
+              product's fidelity to the Ed-Fi Data Standard and guidelines, and for
               purchasers or users to be confident that a product conforms to
-              those same Ed-Fi standards and guidelines.
+              those same standard and guidelines.
             </p>
             <p>
-              The Ed-Fi certification program was developed from the experience
+              The Ed-Fi Certification program was developed from the experience
               of many education agencies in certifying Ed-Fi-compliant data
               exchanges for their enterprise systems. The Ed-Fi Alliance has
               built on that foundation to provide a certification that can be
@@ -70,16 +80,14 @@ function Main() {
             </Link>
           </div>
           <div className="col">
-            <Heading as="h2">
-              Badging
-            </Heading>
+            <Heading as="h2">Badging</Heading>
             <p>
               Ed-Fi Badges allow product developers to demonstrate support for
-              Ed-Fi standards and technology, particularly in areas that are not
+              Ed-Fi Data Standard and the Ed-Fi Technology Suite, particularly in areas that are not
               yet covered by an Ed-Fi Certification.
             </p>
             <p>
-              Many products that use Ed-Fi standardized APIs or integrate
+              Many products that use Ed-Fi Data Standardized APIs or integrate
               natively with Ed-Fi technology tools (such as the Ed-Fi
               Operational Data Store and API) are forging new ground in terms of
               defining data integration use cases valuable to schools. Badges
@@ -93,9 +101,8 @@ function Main() {
               precursors to new certifications.
             </p>
             <p>
-              Unlike certification, badges also focus on both Ed-Fi standards as
-              well as Ed-Fi technology tools; by contrast, Ed-Fi certifications
-              only focus on Ed-Fi standards.
+              Unlike certification, badges also focus on both the Ed-Fi Data Standard and the Ed-Fi Technology Suite; by contrast, certifications
+              only focus on the Ed-Fi Data Standard.
             </p>
             <Link
               to="/partners/badging"

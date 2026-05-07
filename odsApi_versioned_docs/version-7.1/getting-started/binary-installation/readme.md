@@ -21,7 +21,7 @@ Ensure that the following components are installed:
 
 * **PowerShell 5.0,7.2,7.3.** PowerShell is used by the database deployment
   scripts.
-* **.NET 6.0 SDK.** Required by the [Database Deploy
+* **.NET 8.0 SDK.** Required by the [Database Deploy
   Tool](../../platform-dev-guide/utilities/database-deploy-tool)
   used in the database deployment scripts.
   
@@ -43,9 +43,9 @@ Ensure that the following components are installed:
           5.0](https://www.microsoft.com/en-us/download/details.aspx?id=50395), which
           includes PowerShell 5.0.
 
-    **.NET 6.0 SDK**
+    **.NET 8.0 SDK**
 
-    Download and install the latest release of the [.NET 6.0 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
+    Download and install the latest release of the [.NET 8.0 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
 
     ![SDK 6.0](https://edfi.atlassian.net/wiki/download/thumbnails/25493611/image2022-3-8_10-52-30.png?version=1&modificationDate=1699456099517&cacheVersion=1&api=v2&width=666&height=390)
     </details>
@@ -68,7 +68,7 @@ Ensure that the following components are installed:
 
 * **Internet Information Services.** IIS is the web server that will run the
   ODS / API.
-* **.NET 6.0 Hosting Bundle.** The .NET 6.0 Hosting Bundle is required for
+* **.NET 8.0 Hosting Bundle.** The .NET 8.0 Hosting Bundle is required for
   running the API on IIS. Must be installed after IIS.
 
   <details>
@@ -84,7 +84,7 @@ Ensure that the following components are installed:
 
     ![windows feature](https://edfi.atlassian.net/wiki/download/thumbnails/25493611/image2021-10-13_16-25-43.png?version=1&modificationDate=1699456099243&cacheVersion=1&api=v2&width=412&height=364)
     
-    **.NET 6.0 Hosting Bundle**
+    **.NET 8.0 Hosting Bundle**
 
     Download and install [.NET Hosting Bundle 6.0](https://dotnet.microsoft.com/en-us/download/dotnet/6.0).
 

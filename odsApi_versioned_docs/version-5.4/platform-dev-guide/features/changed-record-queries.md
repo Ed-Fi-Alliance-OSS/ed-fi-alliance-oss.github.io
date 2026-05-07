@@ -196,7 +196,7 @@ sequence on all inserts and updates, whether they come from the API or through
 scripts. Queries done against the API to find changed records function by adding an
 additional where clause to based on this ChangeVersion column.
 
-![Image](https://edfi.atlassian.net/wiki/download/attachments/22774855/image2022-5-11_10-27-25.png?version=1&modificationDate=1652290046740&cacheVersion=1&api=v2)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2022-5-11_10-27-25.png)
 
 Supporting delete tracking requires another common change tracking concept,
 using a "tombstone" table. This concept involves tracking all deletes and storing a
@@ -215,7 +215,7 @@ being losing visibility into any deletes that are removed by this truncation. Gi
 truncation was introduced by default since it's unlikely to be an issue for most
 implementations.
 
-![Image](https://edfi.atlassian.net/wiki/download/attachments/22774855/image2022-5-11_10-28-49.png?version=1&modificationDate=1652290130367&cacheVersion=1&api=v2)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2022-5-11_10-28-49.png)
 
 The patterns described above are used for both the standard, as-shipped Ed-Fi
 ODS database tables, as well as tables generated to serve Ed-Fi Extensions. By

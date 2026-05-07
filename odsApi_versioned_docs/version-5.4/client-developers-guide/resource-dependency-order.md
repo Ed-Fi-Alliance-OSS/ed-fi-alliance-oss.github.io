@@ -28,7 +28,7 @@ database or by authorization.
 
 A high level dependency graph is shown below:
 
-![Ed-Fi API Dependency Graph](https://edfi.atlassian.net/wiki/download/attachments/22774424/Ed-Fi%20API%20Dependency%20Graph.png?version=1&modificationDate=1641861352460&cacheVersion=1&api=v2)
+![Ed-Fi API Dependency Graph](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Ed-Fi%20API%20Dependency%20Graph.png)
 
 ## Dependency Order Endpoint
 
@@ -47,7 +47,7 @@ use it programmatically for orchestration of API calls.
 
 The Postman screenshot below shows the GET call:
 
-![Dependency Endpoint JSON](https://edfi.atlassian.net/wiki/download/attachments/22774424/Dependency%20Endpoint%20-json%20endpoint.jpg?version=1&modificationDate=1641861352473&cacheVersion=1&api=v2)
+![Dependency Endpoint JSON](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Dependency%20Endpoint%20-json%20endpoint.jpg)
 
 
 Adding a header `Accept` with a value of `application/graphml` can be passed to
@@ -55,19 +55,19 @@ obtain dependency output in the graphml XML
 format. The
 Postman screenshot below shows the GET call with the added header:
 
-![Dependency Endpoint GraphML](https://edfi.atlassian.net/wiki/download/attachments/22774424/Dependency%20Endpoint%20-%20Graphml%20output.png?version=1&modificationDate=1641861352703&cacheVersion=1&api=v2)
+![Dependency Endpoint GraphML](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Dependency%20Endpoint%20-%20Graphml%20output.png)
 
 
 The screenshots bellow show the dependency order enforced by authorization on the Students resource. You can see that Student creation is at order 3, StudentSchoolAssociation creation is at order 18 the Student update is at order 19. This shows that a client cannot edit a student record it has created until an enrollment record has been established.
 
 A Postman screen shot showing the Student creation at order 3:
 
-![Student Create Dependency](https://edfi.atlassian.net/wiki/download/attachments/22774424/Dependency%20Endpoint%20-%20Student%20Create.png?version=1&modificationDate=1641861352737&cacheVersion=1&api=v2)
+![Student Create Dependency](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Dependency%20Endpoint%20-%20Student%20Create.png)
 
 A screenshot showing the StudentSchoolAssociation creation at order 18:
 
-![Student School Association Create Dependency](https://edfi.atlassian.net/wiki/download/attachments/22774424/Dependency%20Endpoint%20-%20Student%20School%20Association%20Create.png?version=1&modificationDate=1641861352727&cacheVersion=1&api=v2)
+![Student School Association Create Dependency](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Dependency%20Endpoint%20-%20Student%20School%20Association%20Create.png)
 
 A final screenshot showing the Student update at order 19, after the StudentSchoolAssociation creation:
 
-![Student Update Dependency](https://edfi.atlassian.net/wiki/download/attachments/22774424/Dependency%20Endpoint%20-%20Student%20Update.png?version=1&modificationDate=1641861352717&cacheVersion=1&api=v2)
+![Student Update Dependency](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Dependency%20Endpoint%20-%20Student%20Update.png)

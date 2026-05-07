@@ -428,7 +428,7 @@ VALUES ('studentAlternativeEducationProgramAssociation'
 ### Preventing Resource Name Conflicts
 
 It is possible to create extension resources that use the same
-name as an Ed-Fi standard resource. The authorization metadata supports this
+name as an Ed-Fi Data Standard resource. The authorization metadata supports this
 through a change in behavior so it no longer uses just the resource name to
 identify the resource, but instead uses the ClaimName. To prevent possible
 naming conflicts, the claim name's URI value should include the schema

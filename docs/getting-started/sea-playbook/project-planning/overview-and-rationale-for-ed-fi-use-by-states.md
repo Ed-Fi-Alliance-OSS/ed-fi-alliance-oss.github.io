@@ -1,16 +1,16 @@
 # Overview and Rationale for Ed-Fi Use by States
 
-## Overview of Ed-Fi Standards and Technology
+## Overview of the Ed-Fi Data Standard and Ed-Fi Technology Suite
 
-Ed-Fi standards allow data to move seamlessly across many domains—including assessment, enrollment, attendance, grades, demographics, etc.—which, in turn, empowers educators to improve student performance.
+The Ed-Fi Data Standard allows data to move seamlessly across many domains—including assessment, enrollment, attendance, grades, demographics, etc.—which, in turn, empowers educators to improve student performance.
 
 These standards are reflected principally as REST API specifications implemented by education agencies. This provides external systems a common API surface to build an integration around and removes the management of custom data formats.
 
 The Ed-Fi Alliance is also an open-source software community. The principal software tool for this community is the Ed-Fi Operational Data Store (ODS) and API, a software platform that many education agencies use to exchange and publish across disparate organizations and systems.
 
-Please note: The Data Standard and the technology that implements the standard are two separate things. Any system is welcome to implement the API specifications via different technologies.
+Please note: The Ed-Fi Data Standard and the Ed-Fi Technology Suite that implements the standard are two separate things. Any system is welcome to implement the API specifications via different technologies.
 
-## Why Adopt the Ed-Fi Data Standard and Technology?
+## Why Adopt the Ed-Fi Data Standard and Ed-Fi Technology Suite?
 
 Most state agencies are experiencing several of the problems outlined in the table below. By adopting the Ed-Fi Data Standard, states can eliminate these hurdles, streamline data collection processes, and add value back to school districts. Review the challenge descriptions below along with how Ed-Fi helps solve those challenges.
 

@@ -36,7 +36,7 @@ function Main() {
               language that allows educational technology systems to securely
               exchange data. It helps educators and administrators gain a
               comprehensive understanding of student progress and make informed
-              decisions. The Ed-Fi API Standard define criteria for creation of
+              decisions. The Ed-Fi API Specifications define criteria for creation of
               HTTP-based API applications that use or support the Ed-Fi Data
               Standard.{' '}
               <Link to="/reference/data-exchange">

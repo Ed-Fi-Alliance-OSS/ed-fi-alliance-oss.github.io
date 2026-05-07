@@ -67,7 +67,7 @@ implementation services.
   for best practices (e.g. look for multi-threading in code to support best
   practice)
 * Verifications from individual LEAs/SEAs require a deeper validation than other
-  means to ensure adherence to Ed-Fi standards and repetability.  Vendors should
+  means to ensure adherence to the Ed-Fi Data Standard and repeatability.  Vendors should
   consider productizing their service for more streamlined scale-ability.  Part
   of this verification includes validation Ed-Fi core components are used, code
   inspection to validate that best practices are being used, and reviewing

@@ -18,7 +18,7 @@ some of the most essential questions that stakeholder's are asking, through the
 following use case documents.
 
 * [Overview](./overview.md)
-* [Educator Workforce Use Case](./use-cases/1-educator-workforce.md)
+* [Educator Workforce Use Case](./use-cases/educator-workforce/readme.mdx)
 * [Apprenticeship Use Case](./use-cases/apprenticeship.mdx)
 * [Clinical Experience Use Case](./use-cases/clinical-experience.md)
 * [Program Diversity and Persistence Use Case](./use-cases/program-diversity.md)

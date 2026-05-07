@@ -2,7 +2,7 @@
 sidebar_position: 0
 ---
 
-# About the Ed-Fi Data Standards
+# About the Ed-Fi Data Standard
 
 ## Active Versions
 
@@ -39,28 +39,28 @@ Data Standard 3.3.1; older 3.x releases are already out of support.
 
 ## Data Standard Principles
 
-Those new to the Ed-Fi Community, particularly those with expertise in other data domains, often have questions about the data covered by the Ed-Fi Data Standards — why some pieces of information are included while others are not, why we bother with an extension model in a "standard," and other good questions. Brief answers to the big questions follow.
+Those new to the Ed-Fi Community, particularly those with expertise in other data domains, often have questions about the data covered by the Ed-Fi Data Standard — why some pieces of information are included while others are not, why we bother with an extension model in a "standard," and other good questions. Brief answers to the big questions follow.
 
 ### Our Core Principles
 
 There are a number of standards in the K–12 education space or that intersect with that space, and understanding how organizations develop those standards is important. The core principles that inform how we work are:
 
-* **The standards center on exchange of data related to student academic outcomes.** This is not to say that the standards won't evolve to cover related areas, like teacher credentialing, student food service eligibility, bus routes, or a myriad of other things that make up the school life of a student. All of those things are important and contribute to student performance. But, the polestar for the Ed-Fi Data Standards is to surface and make useful the data that is most directly relevant in decision making related to teaching and learning.
+* **The standards center on exchange of data related to student academic outcomes.** This is not to say that the standards won't evolve to cover related areas, like teacher credentialing, student food service eligibility, bus routes, or a myriad of other things that make up the school life of a student. All of those things are important and contribute to student performance. But, the polestar for the Ed-Fi Data Standard is to surface and make useful the data that is most directly relevant in decision making related to teaching and learning.
 * **The standards rely on proven field work.** The standards focus on what has already been shown to work in field projects, not on what might theoretically work. This is one reason why the Alliance and community focus their efforts on producing robust software components that implement and use the standards. Of course, it is not always possible or efficient to implement first given the competing demand for timeliness and community agreement. In such cases, tiebreakers between designs are made based on the weight of available field evidence.
-* **The standards work hard to balance standardization with customization.** The real world demands flexibility that challenges the power of standardization, but that also drives adoption. Handled correctly as a community, customization is an opportunity for further exploration and evolution of standards. Ed-Fi standards recognize both sides of this equation, and this is seen most specifically in the extension system for the Ed-Fi Data Standards.
+* **The standards work hard to balance standardization with customization.** The real world demands flexibility that challenges the power of standardization, but that also drives adoption. Handled correctly as a community, customization is an opportunity for further exploration and evolution of standards. The Ed-Fi Data Standard recognizes both sides of this equation, and this is seen most specifically in the extension system for the Ed-Fi Data Standard.
 
-### What do the Ed-Fi Data Standards cover?
+### What does the Ed-Fi Data Standard cover?
 
-The Ed-Fi Data Standards focus on K–12 information related to students and their academic performance. The standards cover:
+The Ed-Fi Data Standard focuses on K–12 information related to students and their academic performance. The standard covers:
 
 * Directly related information, such as student names, assessment scores, report card data, and transcript data.
 * Indirect-but-relevant information, such as enrollments, student class schedules, graduation plans, links to teachers, and links to programs.
 * Common leading indicator and common research information, such as attendance and discipline records.
 * Common disaggregation variables, such as demographic data.
 * Useful roster information such as contact information, student IDs, and parent/guardian information.
-* Basic information from students' Pre-K and postsecondary experiences.
+* Basic information from students' Pre-K and post-secondary experiences.
 
-The standards are student-centric, meaning that detailed data is described at the individual student level. Many Ed-Fi Technology Suite aggregate or otherwise process information to give a look at school, district, and state-level trends – but central to our philosophy is that any aggregation should be calculated based on student-level information, since each student's story is unique.
+The standard is student-centric, meaning that detailed data is described at the individual student level. Many Ed-Fi Technology Suite aggregate or otherwise process information to give a look at school, district, and state-level trends – but central to our philosophy is that any aggregation should be calculated based on student-level information, since each student's story is unique.
 
 ### What standards do the Ed-Fi Alliance publish?
 
@@ -70,23 +70,23 @@ Normative standards include API endpoint descriptions and JSON messages. The [AP
 
 ### What is the purpose of the Ed-Fi Unifying Data Model?
 
-The Ed-Fi Unifying Data Model (UDM) serves a special function in the Ed-Fi Technology Suite. The Ed-Fi UDM is an abstract model that specifies the organization, structure, and types for all concrete Ed-Fi Data Standards and Ed-Fi Technology Suite – meaning that elements like Student First Name will contain similar and analogous definitions in all Ed-Fi Technology Suite, including API endpoints, XSD definitions, ODS SQL tables, and so forth.
+The Ed-Fi Unifying Data Model (UDM) serves a special function in the Ed-Fi Technology Suite. The Ed-Fi UDM is an abstract model that specifies the organization, structure, and types for all concrete Ed-Fi Data Standard and Ed-Fi Technology Suite – meaning that elements like Student First Name will contain similar and analogous definitions in all Ed-Fi Technology Suite, including API endpoints, XSD definitions, ODS SQL tables, and so forth.
 
-The UDM exists primarily to reconcile all published Ed-Fi standards to ensure they work together. It takes more effort as a community to maintain and ensure this harmonization via the UDM, but the experience of many data standards efforts shows that it is common to produce specifications with conflicting underlying data models, which results in complexity and incompatibility in actual data systems in the field.
+The UDM exists primarily to reconcile all Ed-Fi Data Standard specifications to ensure they work together consistently. It takes more effort as a community to maintain and ensure this harmonization via the UDM, but the experience of many data standards efforts shows that it is common to produce specifications with conflicting underlying data models, which results in complexity and incompatibility in actual data systems in the field.
 
-### Why are Ed-Fi Data Standards extensible? Doesn't that work against interoperability?
+### Why is the Ed-Fi Data Standard extensible? Doesn't that work against interoperability?
 
-Extensibility exists in a natural state of tension with standardization – and the Ed-Fi Data Standards are no exception. However, all our field work has shown that extensions are a necessary complexity in the K–12 education space. Schools, districts, and state education agencies are often required by law to track or report certain data unique to their environment, but that otherwise directly relates to the information covered by the Ed-Fi Data Standards.
+Extensibility exists in a natural state of tension with standardization – and the Ed-Fi Data Standard is no exception. However, all our field work has shown that extensions are a necessary complexity in the K–12 education space. Schools, districts, and state education agencies are often required by law to track or report certain data unique to their environment, but that otherwise directly relates to the information covered by the Ed-Fi Data Standard.
 
-Rather than deny implementers the means to extend the standards, the Alliance issues non-normative Extension Framework Guidelines for each technology component. These guidelines are updated with each version, with the goal of increasing flexibility while getting as close as possible to perfect interoperability.
+Rather than deny implementers the means to extend the standard, the Alliance issues non-normative Extension Framework Guidelines for each technology component. These guidelines are updated with each version, with the goal of increasing flexibility while getting as close as possible to perfect interoperability.
 
 ## Data Standard Governance
 
-The Ed-Fi Data Standards are not static, nor is the Ed-Fi Unifying Data Model intended to fulfill every possible use case. For this reason, the Alliance has a governance process that allows for gradual change.
+The Ed-Fi Data Standard is not static, nor is the Ed-Fi Unifying Data Model intended to fulfill every possible use case. For this reason, the Alliance has a governance process that allows for gradual change.
 
 The process also supports the creation and publication of standards for leading-edge work, and the publication of standards that support technology aligned to the Alliance's mission – even if that technology is not baked into the Ed-Fi core technology offerings.
 
-### What are the classes of Ed-Fi Data Standards?
+### What are the classes of Ed-Fi Data Standard?
 
 As noted, the Alliance may publish standards that aren't necessarily part of the Ed-Fi Technology Suite core offerings. This section outlines the distinctions.
 
@@ -94,7 +94,7 @@ As noted, the Alliance may publish standards that aren't necessarily part of the
 
 The Core Standard contains data elements that are part of our student-centric, academically focused K–12 data model. These standards are directly developed by (or under the auspices of) the Ed-Fi Alliance.
 
-Data elements in Core Standards are found in the Ed-Fi Unifying Data Model and the Ed-Fi Data Handbook, and generally adhere to Ed-Fi Design and Implementation Guidelines.
+Data elements in Core Standard are found in the Ed-Fi Unifying Data Model and the Ed-Fi Data Handbook, and generally adhere to Ed-Fi Design and Implementation Guidelines.
 
 #### Request for Comment
 
@@ -104,9 +104,9 @@ Request for Comment (RFC) versions contain data elements and models proposed for
 
 The Ed-Fi Alliance has a certification program that covers many use cases based on its Core Standards.
 
-Ed-Fi certifications allow product developers to demonstrate a product's fidelity to Ed-Fi standards and guidelines, and for purchasers or users to be confident that a product conforms to those same Ed-Fi standards and guidelines. The program's goal is to ensure that systems can inter-operate and exchange data using Ed-Fi standards and technology.
+Certifications allow product developers to demonstrate a product's fidelity to the Ed-Fi Data Standard, and for purchasers or users to be confident that a product conforms to that same standard's specifications. The program's goal is to ensure that systems can inter-operate and exchange data using the Ed-Fi Data Standard and the Ed-Fi Technology Suite.
 
-The Ed-Fi certification program was developed from the experience of education agencies in certifying Ed-Fi-compliant data exchanges for their enterprise systems. The Ed-Fi Alliance has built on that foundation to provide a certification that can be used across different agencies and organizations, alleviating the need for vendors to undergo multiple, overlapping local quality assurance efforts.
+The Ed-Fi Certification program was developed from the experience of education agencies in certifying Ed-Fi-compliant data exchanges for their enterprise systems. The Ed-Fi Alliance has built on that foundation to provide a certification that can be used across different agencies and organizations, alleviating the need for vendors to undergo multiple, overlapping local quality assurance efforts.
 
 Information about the Ed-Fi Certification Program [can be found here](/partners/certification).
 

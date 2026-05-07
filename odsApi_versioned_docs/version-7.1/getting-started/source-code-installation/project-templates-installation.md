@@ -24,8 +24,10 @@ Verify that there are no previous versions of the templates installed under
 
 ## Step 2. Download the Ed-Fi Visual Studio Extension
 
-Download the Ed-Fi Visual Studio Extension from the download panel on the right.
-
+Download the Ed-Fi Visual Studio Extension from the download panel below.
+:::tip[Download]
+[Edfi.ProjectTemplates.Installer.vsix](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.Suite3.ProjectTemplates.Installer/overview/7.1.126)
+:::
 
 ## Step 3. Close Visual Studio
 
@@ -53,6 +55,7 @@ Verify that the templates are available under **File** > **New** >
 ![Templates in New Project Dialog](https://edfi.atlassian.net/wiki/download/thumbnails/25493621/image2020-10-18_16-21-35.png?version=1&modificationDate=1699456102393&cacheVersion=1&api=v2&width=650&height=412)
 
 ## Next Steps
+
 
 Now that you've installed the templates, you can find information on how to
 use them in the following articles:

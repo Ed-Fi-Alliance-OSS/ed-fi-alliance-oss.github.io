@@ -12,7 +12,7 @@ partners
 
 ## Background and Description
 
-Ed-Fi certification represents an agreement between agency customers and vendor
+Certification represents an agreement between agency customers and vendor
 providers. This agreement comprises:
 
 * a scope of data

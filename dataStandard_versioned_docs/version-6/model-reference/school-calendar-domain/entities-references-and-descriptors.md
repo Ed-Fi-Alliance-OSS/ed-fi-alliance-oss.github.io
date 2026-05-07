@@ -26,45 +26,45 @@ hide_table_of_contents: true
 
 ## School Calendar Domain Descriptors
 
-| Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
+| Name | Entity | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
-| School | AccreditationStatus | The accreditation status for an education preparation provider. | Standard |     |     |     |
-| EducationOrganization | AddressCharacteristic | The address characteristic mainly to reflect if Primary and type of communication to be received, e.g.: Primary, Validated, Gets Copy of Report, Discipline Correspondence. |     |     |     |     |
-| EducationOrganization | AddressType | The type of address listed for an individual or organization. (For example: Physical Address, Mailing Address, Home Address, etc.) | Orthodox | Yes | Yes | Yes |
-| School | AdministrativeFundingControl | The type of education institution as classified by its funding source, for example public or private. | Local |     |     |     |
-| CalendarDate | CalendarEvent | The type of scheduled or unscheduled event for the day. | Flexible |     |     |     |
-| Calendar | CalendarType | Indicates the type of calendar. | Flexible |     |     |     |
-| School | CharterApprovalAgencyType | The type of agency that approved the establishment or continuation of a charter school. | Standard | Yes | Yes |     |
-| School | CharterStatus | A school or agency providing free public elementary or secondary education to eligible students under a specific charter granted by the state legislature or other appropriate authority and designated by such authority to be a charter school. | Standard | Yes | Yes | Yes |
-| Education Organization <br /> Student | Country | The name of the country. It is strongly recommended that entries use only ISO 3166 2-letter country codes. | Standard |     | Yes |     |
-| EducationOrganization | EducationOrganizationCategory | The classification of the education agency within the geographic boundaries of a state according to the level of administrative and operational control granted by the state. | Standard |     | Yes | Yes |
-| StudentSchoolAssociation | EducationPlan | The type of education plan(s) the student is following, if appropriate. | Local |     | Yes |     |
-| StudentSchoolAssociation | EnrollmentType | The type of enrollment reflected by the StudentSchoolAssociation. |     |     |     |     |
-| StudentSchoolAssociation | EntryGradeLevelReason | The primary reason as to why a staff member determined that a student should be promoted or not (or be demoted) at the end of a given school term. | Local |     |     |     |
-| StudentSchoolAssociation | EntryType | The process by which a student enters a school during a given academic session. | Local |     | Yes |     |
-| StudentSchoolAssociation | ExitWithdrawType | The circumstances under which the student exited from membership in an educational institution. | Local |     | Yes |     |
-| School | FederalLocaleCode | The federal locale code associated with an education organization. |     |     |     |     |
-| Calendar <br /> School <br /> StudentSchoolAssociation | GradeLevel | Indicates the grade level(s) associated with the calendar, school, or student receiving services. | Orthodox | Yes | Yes |     |
+| AccreditationStatus | School | The accreditation status for an education preparation provider. | Standard |     |     |     |
+| AddressCharacteristic | EducationOrganization | The address characteristic mainly to reflect if Primary and type of communication to be received, e.g.: Primary, Validated, Gets Copy of Report, Discipline Correspondence. |     |     |     |     |
+| AddressType | EducationOrganization | The type of address listed for an individual or organization. (For example: Physical Address, Mailing Address, Home Address, etc.) | Orthodox | Yes | Yes | Yes |
+| AdministrativeFundingControl | School | The type of education institution as classified by its funding source, for example public or private. | Local |     |     |     |
+| CalendarEvent | CalendarDate | The type of scheduled or unscheduled event for the day. | Flexible |     |     |     |
+| CalendarType | Calendar | Indicates the type of calendar. | Flexible |     |     |     |
+| CharterApprovalAgencyType | School | The type of agency that approved the establishment or continuation of a charter school. | Standard | Yes | Yes |     |
+| CharterStatus | School | A school or agency providing free public elementary or secondary education to eligible students under a specific charter granted by the state legislature or other appropriate authority and designated by such authority to be a charter school. | Standard | Yes | Yes | Yes |
+| Country | Education Organization <br /> Student | The name of the country. It is strongly recommended that entries use only ISO 3166 2-letter country codes. | Standard |     | Yes |     |
+| EducationOrganizationCategory | EducationOrganization | The classification of the education agency within the geographic boundaries of a state according to the level of administrative and operational control granted by the state. | Standard |     | Yes | Yes |
+| EducationPlan | StudentSchoolAssociation | The type of education plan(s) the student is following, if appropriate. | Local |     | Yes |     |
+| EnrollmentType | StudentSchoolAssociation | The type of enrollment reflected by the StudentSchoolAssociation. |     |     |     |     |
+| EntryGradeLevelReason | StudentSchoolAssociation | The primary reason as to why a staff member determined that a student should be promoted or not (or be demoted) at the end of a given school term. | Local |     |     |     |
+| EntryType | StudentSchoolAssociation | The process by which a student enters a school during a given academic session. | Local |     | Yes |     |
+| ExitWithdrawType | StudentSchoolAssociation | The circumstances under which the student exited from membership in an educational institution. | Local |     | Yes |     |
+| FederalLocaleCode | School | The federal locale code associated with an education organization. |     |     |     |     |
+| GradeLevel | Calendar <br /> School <br /> StudentSchoolAssociation | Indicates the grade level(s) associated with the calendar, school, or student receiving services. | Orthodox | Yes | Yes |     |
 | GradingPeriod | GradingPeriod | The state's name of the period for which grades are reported. | Flexible |     |     |     |
-| Student | IdentificationDocumentUse | The primary function of the document used for establishing identity. | Orthodox |     |     |     |
-| EducationOrganization | Indicator | The value of the indicator or metric. The semantics of an empty value is "not submitted." | Local |     |     |     |
-| EducationOrganization | IndicatorGroup | The name for a group of indicators. | Local |     |     |     |
-| EducationOrganization | IndicatorLevel | The value of the indicator or metric, as a value from a controlled vocabulary. The semantics of an empty value is "not submitted." | Local |     |     |     |
-| EducationOrganization | InstitutionTelephoneNumberType | The type of communication number listed for an individual or organization. | Orthodox | Yes | Yes | Yes |
-| School | InternetAccess | The type of Internet access available. | Flexible |     |     |     |
-| EducationOrganization | Locale | A general geographic indicator that categorizes U.S. territory (e.g., City, Suburban). | Orthodox |     | Yes |     |
-| School | MagnetSpecialProgramEmphasisSchool | A school that has been designed: 1) to attract students of different racial/ethnic backgrounds for the purpose of reducing, preventing, or eliminating racial isolation; and/or 2) to provide an academic or social focus on a particular theme (e.g., science/math, performing arts, gifted/talented, or foreign language). | Standard | Yes | Yes |     |
-| EducationOrganization | OperationalStatus | The current operational status of the education organization (e.g., active, inactive). | Standard | Yes | Yes | Yes |
-| Student | OtherNameType | The types of alternate names for an individual. | Orthodox |     |     |     |
-| Student | PersonalInformationVerification | The category of the document relative to its purpose. | Orthodox |     |     |     |
-| StudentSchoolAssociation | ResidencyStatus | An indication of the location of a persons legal residence relative to (within or outside of) the boundaries of the public school attended and its administrative unit. | Local |     | Yes |     |
-| School | SchoolCategory | The one or more categories of school. | Local |     | Yes |     |
-| StudentSchoolAssociation | SchoolChoiceBasis | The legal basis for the school choice enrollment according to local, state or federal policy or regulation. (The descriptor provides the list of available bases specific to the state. |     |     |     |     |
-| School | SchoolType | The type of education institution as classified by its primary focus. | Standard | Yes | Yes |     |
-| Student | Sex | A person's sex at birth. | Standard |     |     |     |
-| EducationOrganization <br /> Student | StateAbbreviation | The abbreviation for the state (within the United States) or outlying area in which an address is located or individual was born. | Standard |     | Yes |     |
-| Session | Term | A descriptor value to indicate the term that the session is associated with. | Flexible |     |     |     |
-| School | TitleIPartASchoolDesignation | Denotes the Title I Part A designation for the school. | Standard | Yes | Yes |     |
+| IdentificationDocumentUse | Student | The primary function of the document used for establishing identity. | Orthodox |     |     |     |
+| Indicator | EducationOrganization | The value of the indicator or metric. The semantics of an empty value is "not submitted." | Local |     |     |     |
+| IndicatorGroup | EducationOrganization | The name for a group of indicators. | Local |     |     |     |
+| IndicatorLevel | EducationOrganization | The value of the indicator or metric, as a value from a controlled vocabulary. The semantics of an empty value is "not submitted." | Local |     |     |     |
+| InstitutionTelephoneNumberType | EducationOrganization | The type of communication number listed for an individual or organization. | Orthodox | Yes | Yes | Yes |
+| InternetAccess | School | The type of Internet access available. | Flexible |     |     |     |
+| Locale | EducationOrganization | A general geographic indicator that categorizes U.S. territory (e.g., City, Suburban). | Orthodox |     | Yes |     |
+| MagnetSpecialProgramEmphasisSchool | School | A school that has been designed: 1) to attract students of different racial/ethnic backgrounds for the purpose of reducing, preventing, or eliminating racial isolation; and/or 2) to provide an academic or social focus on a particular theme (e.g., science/math, performing arts, gifted/talented, or foreign language). | Standard | Yes | Yes |     |
+| OperationalStatus | EducationOrganization | The current operational status of the education organization (e.g., active, inactive). | Standard | Yes | Yes | Yes |
+| OtherNameType | Student | The types of alternate names for an individual. | Orthodox |     |     |     |
+| PersonalInformationVerification | Student | The category of the document relative to its purpose. | Orthodox |     |     |     |
+| ResidencyStatus | StudentSchoolAssociation | An indication of the location of a persons legal residence relative to (within or outside of) the boundaries of the public school attended and its administrative unit. | Local |     | Yes |     |
+| SchoolCategory | School | The one or more categories of school. | Local |     | Yes |     |
+| SchoolChoiceBasis | StudentSchoolAssociation | The legal basis for the school choice enrollment according to local, state or federal policy or regulation. (The descriptor provides the list of available bases specific to the state.) |     |     |     |     |
+| SchoolType | School | The type of education institution as classified by its primary focus. | Standard | Yes | Yes |     |
+| Sex | Student | A person's sex at birth. | Standard |     |     |     |
+| StateAbbreviation | EducationOrganization <br /> Student | The abbreviation for the state (within the United States) or outlying area in which an address is located or individual was born. | Standard |     | Yes |     |
+| Term | Session | A descriptor value to indicate the term that the session is associated with. | Flexible |     |     |     |
+| TitleIPartASchoolDesignation | School | Denotes the Title I Part A designation for the school. | Standard | Yes | Yes |     |
 
 :::tip
 

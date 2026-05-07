@@ -199,7 +199,7 @@ uses the original common as a base and adds new data.
 
 Descriptors represent "option sets" - standardized sets of values, often
 categorizations, for data model entities. Descriptor values are customizable,
-but those who customize should consult relevant Ed-Fi standards to understand if
+but those who customize should consult relevant Ed-Fi Data Standard to understand if
 particular values are mandated for compliance to certain standards. The
 descriptor values (the "code sets" and their definitions) provided by the Ed-Fi
 Alliance are provided in the Ed-Fi Standard GitHub repo.

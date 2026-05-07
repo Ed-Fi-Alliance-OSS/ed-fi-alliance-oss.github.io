@@ -1,6 +1,6 @@
 # Unifying Data Model - Getting Started
 
-## Ed-Fi Data Standards in Action
+## Ed-Fi Data Standard in Action
 
 A primary component of the Ed-Fi technical solution is an educational data model
 that empowers educators with real-time, actionable information on every student
@@ -25,8 +25,8 @@ agency today.
 The model is expressed in Unified Modeling Language (UML), and includes entities
 such as students, teachers, assessment results, attendance, and many others. The
 role of the Ed-Fi UDM is to harmonize the information model and data types
-across all Ed-Fi standards and implementation technologies. This means that
-Ed-Fi standards and technologies share common models and data definitions.
+across all standards and implementation technologies. This means that
+Ed-Fi Data Standard and the Ed-Fi Technology Suite share common models and data definitions.
 
 The Unifying Data Model is built on open industry protocols and conventions and
 is therefore vendor-neutral. The Unifying Data Model and its derivative products

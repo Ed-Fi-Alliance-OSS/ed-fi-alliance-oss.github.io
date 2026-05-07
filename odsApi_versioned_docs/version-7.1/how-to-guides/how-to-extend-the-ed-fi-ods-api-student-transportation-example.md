@@ -60,7 +60,7 @@ Click **File > Save** (**Ctrl + S**) to save your changes.
 
 We're going to add a **Domain Entity** source file to the project we just created. Note that MetaEd files are required to be organized into subfolders. Folders are generally named after their entity type. When you followed the steps in [MetaEd IDE - Creating and Maintaining Your Extension](https://edfi.atlassian.net/wiki/spaces/METAED20/pages/23709491/MetaEd+IDE+-+Creating+and+Maintaining+Your+Extension) one of the folders you created was called **"DomainEntity"**. We will now add a MetaEd source file to that folder.
 
-**Right-click** on the folder 
+**Right-click** on the folder
 
 ![Add Domain Entity file](https://edfi.atlassian.net/wiki/download/attachments/25493729/NewFile.png?version=1&modificationDate=1699456117180&cacheVersion=1&api=v2)
 
@@ -103,7 +103,6 @@ Domain Entity StudentTransportation
 
 </details>
 
-
 Click **File > Save** (**Ctrl + S**) to save your changes.
 
 ## Step 3. **Generate Extended Technical Artifacts Using MetaEd**
@@ -142,11 +141,11 @@ Visual Studio Project Templates can be installed by following steps in [Project 
 
 ![Add new project in Visual Studio](https://edfi.atlassian.net/wiki/download/attachments/25493729/VisualStudio-AddNewProject.png?version=1&modificationDate=1699456118393&cacheVersion=1&api=v2)
 
-2. Search and select the **Ed-Fi API Extensions Project Template** option and click **Next**.
+1. Search and select the **Ed-Fi API Extensions Project Template** option and click **Next**.
 
 ![Select Ed-Fi API Extensions Project Template](https://edfi.atlassian.net/wiki/download/attachments/25493729/vs-create%20extension%20project.png?version=1&modificationDate=1699456117240&cacheVersion=1&api=v2)
 
-3. In the **Project Name** field enter **EdFi.Ods.Extensions.SampleStudentTransportation** and click **Create**.
+1. In the **Project Name** field enter **EdFi.Ods.Extensions.SampleStudentTransportation** and click **Create**.
 
 ![Name the new extension project](https://edfi.atlassian.net/wiki/download/attachments/25493729/vs-create%20extension%20project%202.png?version=1&modificationDate=1699456117250&cacheVersion=1&api=v2)
 
@@ -174,7 +173,7 @@ In this step, we'll integrate the extension into the solution.
 
 ![Add project reference](https://edfi.atlassian.net/wiki/download/attachments/25493729/vs-extension%20add%20reference.png?version=1&modificationDate=1699456117233&cacheVersion=1&api=v2)
 
-4d.2. Locate any **profile projects** in the solution. **Right-click**, select **Add > Project Reference...**, then select the **EdFi.Ods.Extensions.SampleStudentTransportation** project. This step is needed only if any of the **Profile resources** in the **Profiles.xml** document are extended, or extension entities are being constrained by a particular Profile. 
+4d.2. Locate any **profile projects** in the solution. **Right-click**, select **Add > Project Reference...**, then select the **EdFi.Ods.Extensions.SampleStudentTransportation** project. This step is needed only if any of the **Profile resources** in the **Profiles.xml** document are extended, or extension entities are being constrained by a particular Profile.
 
 ## Step 5. **Deploy your Extended Artifacts to the ODS / API Solution**
 
@@ -217,7 +216,7 @@ Create a security SQL script called **0001-StudentTransportation_ResourceClaims.
 
 ### **Preventing Resource Name Conflicts**
 
-With MetaEd 2.0+, it is possible to create extension resources that use the same name as an Ed-Fi standard resource. The authorization metadata supports this through a change in behavior so it no longer uses just the resource name to identify the resource, but instead uses the **ClaimName**. To prevent possible naming conflicts, the claim name's URI value should include the schema representation, using the following format:
+With MetaEd 2.0+, it is possible to create extension resources that use the same name as an Ed-Fi Data Standard resource. The authorization metadata supports this through a change in behavior so it no longer uses just the resource name to identify the resource, but instead uses the **ClaimName**. To prevent possible naming conflicts, the claim name's URI value should include the schema representation, using the following format:
 
     http://ed-fi.org/ods/identity/claims/{schema}/{resourceName}
 
@@ -225,7 +224,7 @@ The URI representation of the schema name should be derived by splitting the ter
 
 The resource name should be the camel-cased (also known as **"medial capitals"**), singularized name of the resource (e.g., **"studentTransportation"** not **"StudentTransportation"** or **"studentTransportations"**).
 
-Note that in **0001-StudentTransportation_ResourceClaims.sql** script above, the resulting **ClaimName** value is **"http://ed-fi.org/ods/identity/claims/sample-student-transportation/studentTransportation"**.
+Note that in **0001-StudentTransportation_ResourceClaims.sql** script above, the resulting **ClaimName** value is `"http://ed-fi.org/ods/identity/claims/sample-student-transportation/studentTransportation\"`.
 
 ## Step 7. **Run Code Generation and Verify Changes**
 
@@ -278,7 +277,7 @@ In this step, we'll integrate the extension into the solution.
 
 ![Add project reference](https://edfi.atlassian.net/wiki/download/thumbnails/25493729/vs-extension%20add%20reference.png?version=1&modificationDate=1699456117233&cacheVersion=1&api=v2&width=900&height=493)
 
-4.2. Locate any **profile projects** in the solution. **Right-click**, select **Add > Project Reference...**, then select the **EdFi.Ods.Extensions.SampleStudentTransportation** project. This step is needed only if any of the **Profile resources** in the **Profiles.xml** document are extended, or extension entities are being constrained by a particular Profile. 
+4.2. Locate any **profile projects** in the solution. **Right-click**, select **Add > Project Reference...**, then select the **EdFi.Ods.Extensions.SampleStudentTransportation** project. This step is needed only if any of the **Profile resources** in the **Profiles.xml** document are extended, or extension entities are being constrained by a particular Profile.
 
 ### Step 5. **Add Extension Metadata**
 
@@ -290,13 +289,13 @@ Copy the metadata files to the implementation project.
 
 ```powershell
 xcopy /y "Ed-Fi-ODS\Samples\Extensions\StudentTransportation\StudentTransportationMetaEd\MetaEdOutput\samplestudenttransportation\Database\SQLServer\ODS\Structure" "Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleStudentTransportation\Versions\1.0.0\Standard\5.0.0\Artifacts\MsSql\Structure\Ods\*"
-   
+
 xcopy /y "Ed-Fi-ODS\Samples\Extensions\StudentTransportation\StudentTransportationMetaEd\MetaEdOutput\samplestudenttransportation\Database\PostgreSQL\ODS\Structure" "Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleStudentTransportation\Versions\1.0.0\Standard\5.0.0\Artifacts\PgSql\Structure\Ods\*"
- 
+
 xcopy /y "Ed-Fi-ODS\Samples\Extensions\StudentTransportation\StudentTransportationMetaEd\MetaEdOutput\samplestudenttransportation\ApiMetadata" "Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleStudentTransportation\Versions\1.0.0\Standard\5.0.0\Artifacts\Metadata\*"
-   
+
 xcopy /y "Ed-Fi-ODS\Samples\Extensions\StudentTransportation\StudentTransportationMetaEd\MetaEdOutput\samplestudenttransportation\XSD" "Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleStudentTransportation\Versions\1.0.0\Standard\5.0.0\Artifacts\Schemas\*"
-   
+
 xcopy /y "Ed-Fi-ODS\Samples\Extensions\StudentTransportation\StudentTransportationMetaEd\MetaEdOutput\samplestudenttransportation\Interchange" "Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleStudentTransportation\Versions\1.0.0\Standard\5.0.0\Artifacts\Schemas\*"
 ```
 
