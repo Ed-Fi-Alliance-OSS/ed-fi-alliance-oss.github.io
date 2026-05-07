@@ -27,5 +27,5 @@
         descriptor OperationalStatus "O"
         common EducationOrganizationIndicator "OC"
     }
-    StudentHealth ||--o{ Student : "has associated"
-    StudentHealth ||--o{ EducationOrganization : "has associated"
+    StudentHealth }o--|| Student : "HasAssociated"
+    StudentHealth }o--|| EducationOrganization : "HasAssociated"

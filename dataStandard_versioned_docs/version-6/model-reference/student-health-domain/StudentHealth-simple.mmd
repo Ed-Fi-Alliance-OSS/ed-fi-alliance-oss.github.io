@@ -5,5 +5,5 @@
     }
     EducationOrganization {
     }
-    StudentHealth ||--o{ Student : "has associated"
-    StudentHealth ||--o{ EducationOrganization : "has associated"
+    StudentHealth }o--|| Student : "HasAssociated"
+    StudentHealth }o--|| EducationOrganization : "HasAssociated"

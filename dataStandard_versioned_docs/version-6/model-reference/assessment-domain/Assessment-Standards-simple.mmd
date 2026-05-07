@@ -3,5 +3,6 @@
     }
     LearningStandardEquivalenceAssociation {
     }
-    LearningStandard ||--o{ LearningStandard : "has associated"
-    LearningStandardEquivalenceAssociation ||--o{ LearningStandard : "has associated"
+    LearningStandard ||--o{ LearningStandard : "hasFunctionalComponent"
+    LearningStandardEquivalenceAssociation }o..|| LearningStandard : "hasAssociatedEquivalence"
+    LearningStandard }o--o{ LearningStandard : "hasAssociatedEquivalence"
