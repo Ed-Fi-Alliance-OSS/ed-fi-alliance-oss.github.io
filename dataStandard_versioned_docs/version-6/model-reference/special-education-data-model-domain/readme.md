@@ -11,5 +11,5 @@ The Special Education Data Model Domain provides the ability to record and track
 This **new** domain focuses on the Individuals with Disabilities Education Act (IDEA) related events and a Student's Individual Eduction Program (IEP). It also allows for the tracking for annual goals related to an IEP, services prescribed, and services delivered to the student as part of their IEP.
 
 * [Special Education Data Model Domain - Overview](./overview.md)
-* [Special Education Data Model Domain - Model Diagrams](./model-diagrams.md)
+* [Special Education Data Model Domain - Model Diagrams](./model-diagrams.mdx)
 * [Special Education Data Model Domain - Entities, References, and Descriptors](./entities-references-and-descriptors.md)

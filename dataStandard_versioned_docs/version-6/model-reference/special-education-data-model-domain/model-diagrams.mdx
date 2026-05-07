@@ -1,8 +1,11 @@
 ---
 sidebar_position: 2
+hide_table_of_contents: true
 ---
 
-# Special Education Data Model Domain - Model Diagrams
+import Mermaid from '@theme/Mermaid';
+import diagramSimple from './SpecialEducationDataModel-simple.mmd';
+import diagramDetailed from './SpecialEducationDataModel.mmd';
 
 :::important
 
@@ -13,71 +16,9 @@ on its viability for possible future enhancements. This domain should not be con
 
 ## Special Education Data Model Domain Model ER Diagram
 
-```mermaid
----
+<Mermaid value={diagramSimple} />
 
-config:
-  layout: elk
----
-
-erDiagram
- direction TB
- StudentIEP {
-
- }
-
- IDEAEvent {
-
- }
-
- EducationOrganization {
-
- }
-
- StudentIEPServicePrescription["StudentIEP<br/>ServicePrescription"] {
-
- }
-
- StudentIEPServiceDelivery {
-
- }
-
- Student {
-
- }
-
- Staff {
-
- }
-
- StudentIEPGoal {
-
- }
-
- Student}o..o{EducationOrganization:"has associated"
- Student}o--||StudentIEP:"has"
- Student||--o{IDEAEvent:"has"
- IDEAEvent||--o{EducationOrganization:"has associated"
- IDEAEvent}o..o{StudentIEP:"includes"
- StudentIEPGoal}o--o{IDEAEvent:"has associated"
- StudentIEP||--o{EducationOrganization:"  "
- StudentIEP||--o{StudentIEPServicePrescription:"includes"
- StudentIEP||--o{StudentIEPServiceDelivery:"includes"
- StudentIEP||..o{StudentIEPGoal:"includes"
- StudentIEPServicePrescription||..o{StudentIEPServiceDelivery:"implements"
- StudentIEPServiceDelivery}o..o{Staff:"provides service"
- StudentIEPServiceDelivery}o..o{IDEAEvent:"includes"
- StudentIEPServicePrescription}o..||Staff:"  "
- StudentIEPServicePrescription}o..o{IDEAEvent:"includes"
- style StudentIEP color:#000000
- style IDEAEvent color:#000000
- style EducationOrganization color:#000000
- style StudentIEPServicePrescription color:#000000
- style StudentIEPServiceDelivery color:#000000
- style Student color:#000000
- style Staff color:#000000
- style StudentIEPGoal color:#000000
-```
+[Link to Large Diagram](./SpecialEducationDataModel-simple.mmd)
 
 ### IDEAEvent
 
