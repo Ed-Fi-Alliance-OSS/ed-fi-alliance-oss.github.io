@@ -7,6 +7,8 @@ import Mermaid from '@theme/Mermaid';
 import diagramSimple from './SpecialEducationDataModel-simple.mmd?raw';
 import diagramDetailed from './SpecialEducationDataModel.mmd?raw';
 
+# Special Education Data Model Domain - Model Diagrams
+
 :::important
 
 EARLY ACCESS DOMAIN (Released in version 6.1) - This domain is being released in order to allow early adopters a chance to preview and test the proposed update and provide feedback
@@ -38,7 +40,7 @@ The IDEAEvent entity captures legally significant events required under IDEA—s
 | EventNarrative | String (2048) | Optional [0..1] |
 | EventReason | Descriptor | Optional [0..1] |
 
-### StudentIEP
+#### StudentIEP
 
 The StudentIEP entity represents the Individualized Education Program as a first-class, time-bound legal document, independent of program enrollment. It anchors special education data to the plan that was finalized at a specific point in time, preserving IEP effective periods, amendments, and historical continuity across school years and organizational changes.
 
