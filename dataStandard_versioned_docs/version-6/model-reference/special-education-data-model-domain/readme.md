@@ -7,7 +7,9 @@ on its viability for possible future enhancements. This domain may change outsid
 
 :::
 
-The Special Education Data Model Domain provides the ability to record and track a student's special education journey as it evolves.
+This model is expected to evolve, initial implementation is recommended through special education vendors rather than general SIS vendors. This approach helps maintain SIS code stability while the SEDM model matures.
+
+The Special Education Data Model Domain provides the ability to record and track a student's special education journey as it develops.
 This **new** domain focuses on the Individuals with Disabilities Education Act (IDEA) related events and a Student's Individual Eduction Program (IEP). It also allows for the tracking for annual goals related to an IEP, services prescribed, and services delivered to the student as part of their IEP.
 
 * [Special Education Data Model Domain - Overview](./overview.md)
