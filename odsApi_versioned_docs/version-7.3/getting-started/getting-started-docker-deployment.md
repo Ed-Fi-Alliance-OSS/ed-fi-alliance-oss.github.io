@@ -26,7 +26,7 @@ updated to the latest patch version whenever a patch release becomes available.
 | 7-5.2.0            | Latest patch release of ODS / API 7.x and Data Standard 5.2      | [edfialliance/ods-api-web-api:7-5.2.0](https://hub.docker.com/layers/edfialliance/ods-api-web-api/7-5.2.0/)                         |
 | 7-4.0.0            | Latest patch release of ODS / API 7.x and Data Standard 4.0      | [edfialliance/ods-api-web-api:7-4.0.0](https://hub.docker.com/layers/edfialliance/ods-api-web-api/7-4.0.0/)                         |
 | 7.3.2-mssql        | Latest patch release of ODS / API 7.3.2 and Data Standard 6.1 with SQL Server backend  | [edfialliance/ods-api-web-api:7.3.2-mssql](https://hub.docker.com/layers/edfialliance/ods-api-web-api/7.3.2-mssql/)       |
-| 7.3.2_20290-6.1.0  | Specific release build of ODS / API 7.3 and Data Standard 6.1    | [edfialliance/ods-api-web-api:7.3.2_20290-6.0.0](https://hub.docker.com/layers/edfialliance/ods-api-web-api/7.3.2_20290-6.1.0/)      |
+| 7.3.2_6447-6.1.0   | Specific release build of ODS / API 7.3 and Data Standard 6.1    | [edfialliance/ods-api-web-api:7.3.2_6447-6.1.0](https://hub.docker.com/layers/edfialliance/ods-api-web-api/7.3.2_6447-6.1.0/)      |
 
 ## ODS API v7.3.1 Images
 
