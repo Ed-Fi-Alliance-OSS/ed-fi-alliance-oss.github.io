@@ -1,0 +1,50 @@
+﻿erDiagram
+    Program {
+    }
+    Student {
+    }
+    EducationOrganization {
+    }
+    GeneralStudentProgramAssociation {
+    }
+    StudentCTEProgramAssociation {
+    }
+    StudentHomelessProgramAssociation {
+    }
+    StudentLanguageInstructionProgramAssociation {
+    }
+    StudentMigrantEducationProgramAssociation {
+    }
+    StudentNeglectedOrDelinquentProgramAssociation {
+    }
+    StudentProgramAssociation {
+    }
+    StudentSchoolFoodServiceProgramAssociation {
+    }
+    StudentSpecialEducationProgramAssociation {
+    }
+    StudentTitleIPartAProgramAssociation {
+    }
+    StudentSpecialEducationProgramEligibilityAssociation {
+    }
+    StudentSection504ProgramAssociation {
+    }
+    EducationOrganization ||--o{ Program : "HasAssociated"
+    EducationOrganization }o--o{ Program : "IsDirectProviderOf"
+    Student ||..o{ GeneralStudentProgramAssociation : "ParticipatesIn"
+    Program ||..o{ GeneralStudentProgramAssociation : "ParticipatesIn"
+    Student }o--o{ Program : "ParticipatesIn IsEvaluated"
+    GeneralStudentProgramAssociation }o--|| EducationOrganization : "HasAssociated"
+    Student ||..o{ StudentSpecialEducationProgramEligibilityAssociation : "IsEvaluated"
+    Program ||..o{ StudentSpecialEducationProgramEligibilityAssociation : "IsEvaluated"
+    StudentSpecialEducationProgramEligibilityAssociation }o--|| EducationOrganization : "HasAssociated"
+    StudentCTEProgramAssociation ||--|| GeneralStudentProgramAssociation : "IsA"
+    StudentHomelessProgramAssociation ||--|| GeneralStudentProgramAssociation : "IsA"
+    StudentLanguageInstructionProgramAssociation ||--|| GeneralStudentProgramAssociation : "IsA"
+    StudentMigrantEducationProgramAssociation ||--|| GeneralStudentProgramAssociation : "IsA"
+    StudentNeglectedOrDelinquentProgramAssociation ||--|| GeneralStudentProgramAssociation : "IsA"
+    StudentProgramAssociation ||--|| GeneralStudentProgramAssociation : "IsA"
+    StudentSchoolFoodServiceProgramAssociation ||--|| GeneralStudentProgramAssociation : "IsA"
+    StudentSpecialEducationProgramAssociation ||--|| GeneralStudentProgramAssociation : "IsA"
+    StudentTitleIPartAProgramAssociation ||--|| GeneralStudentProgramAssociation : "IsA"
+    StudentSection504ProgramAssociation ||--|| GeneralStudentProgramAssociation : "IsA"

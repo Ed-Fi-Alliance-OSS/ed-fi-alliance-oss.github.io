@@ -1,7 +1,3 @@
----
-sidebar_position: 1
----
-
 # What's New - v6.0
 
 Release Date: Nov. 14, 2025.

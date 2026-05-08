@@ -1,0 +1,67 @@
+﻿erDiagram
+    Staff {
+    }
+    StaffIdentificationCode {
+    }
+    StaffDirectory {
+    }
+    StaffDemographic {
+    }
+    Person {
+    }
+    Credential {
+    }
+    StaffAbsenceEvent {
+    }
+    StaffLeave {
+    }
+    StaffEducationOrganizationEmploymentAssociation {
+    }
+    StaffEducationOrganizationAssignmentAssociation {
+    }
+    StaffSchoolAssociation {
+    }
+    OpenStaffPosition {
+    }
+    EducationOrganization {
+    }
+    EducationServiceCenter {
+    }
+    LocalEducationAgency {
+    }
+    StateEducationAgency {
+    }
+    School {
+    }
+    EducationServiceCenter }o--o| StateEducationAgency : "IsOrganizationComponentOf"
+    LocalEducationAgency }o--o| EducationServiceCenter : "IsOrganizationComponentOf"
+    LocalEducationAgency }o--o| LocalEducationAgency : "IsOrganizationComponentOf"
+    School }o--o| LocalEducationAgency : "IsOrganizationComponentOf"
+    Staff }o--o{ School : "HasAssociated"
+    Staff }o--o{ Credential : "HasAssociated"
+    Staff }o--o| Person : "HasAssociated"
+    Staff }o--o{ EducationOrganization : "ProvidesServicesTo"
+    Staff }o--o{ EducationOrganization : "HasAssociated"
+    StaffAbsenceEvent }o--|| Staff : "HasAssociated"
+    StaffEducationOrganizationAssignmentAssociation |o--o| StaffEducationOrganizationEmploymentAssociation : "HasAssociated"
+    OpenStaffPosition }o--|| EducationOrganization : "HasAssociated"
+    LocalEducationAgency }o--o| StateEducationAgency : "IsOrganizationComponentOf"
+    StaffLeave }o--|| Staff : "HasAssociated"
+    StaffEducationOrganizationAssignmentAssociation }o--o| Credential : "IsBasedOn"
+    StaffEducationOrganizationEmploymentAssociation }o--o| Credential : "IsBasedOn"
+    EducationOrganization ||--o{ StaffDirectory : "HasAssociated"
+    EducationOrganization ||--o{ StaffDemographic : "HasAssociated"
+    EducationOrganization ||--o{ StaffIdentificationCode : "HasAssociated"
+    StaffDirectory }o--|| Staff : "HasAssociated"
+    StaffIdentificationCode }o--|| Staff : "HasAssociated"
+    StaffDemographic }o--|| Staff : "HasAssociated"
+    EducationOrganization ||--|| StateEducationAgency : "IsA"
+    EducationOrganization ||--|| EducationServiceCenter : "IsA"
+    EducationOrganization ||--|| LocalEducationAgency : "IsA"
+    EducationOrganization ||--|| School : "IsA"
+    StaffEducationOrganizationEmploymentAssociation }o..|| Staff : "HasAssociated"
+    StaffEducationOrganizationEmploymentAssociation }o..|| EducationOrganization : "HasAssociated"
+    StaffEducationOrganizationAssignmentAssociation }o..|| Staff: "ProvidesServicesTo"
+    StaffEducationOrganizationAssignmentAssociation }o..|| EducationOrganization: "ProvidesServicesTo"
+    StaffSchoolAssociation }o..|| Staff : "HasAssociated"
+    StaffSchoolAssociation }o..|| School : "HasAssociated"

@@ -1,0 +1,48 @@
+﻿erDiagram
+    InterventionStudy {
+    }
+    EducationContent {
+    }
+    InterventionPrescription {
+    }
+    Intervention {
+    }
+    EducationOrganizationInterventionPrescriptionAssociation {
+    }
+    StudentInterventionAssociation {
+    }
+    StudentInterventionAttendanceEvent {
+    }
+    StudentCohortAssociation {
+    }
+    Cohort {
+    }
+    Student {
+    }
+    EducationOrganization {
+    }
+    Staff {
+    }
+    Intervention }o--o{ InterventionPrescription : "HasAssociated"
+    Intervention }o--o{ EducationContent : "HasFunctionalComponent"
+    Intervention }o--|| EducationOrganization : "HasAssociated"
+    Intervention }o--o{ Staff : "HasAssociated"
+    Student }o--o{ Intervention : "HasAssociated"
+    StudentInterventionAssociation }o..|| Student : "HasAssociated"
+    StudentInterventionAssociation }o..|| Intervention : "HasAssociated"
+    InterventionPrescription }o--o{ EducationContent : "HasFunctionalComponent"
+    InterventionPrescription }o--|| EducationOrganization : "HasAssociated"
+    InterventionStudy }o--|| InterventionPrescription : "HasAssociated"
+    InterventionStudy }o--|| EducationOrganization : "HasAssociated"
+    EducationOrganization ||--o{ EducationOrganizationInterventionPrescriptionAssociation : "HasAssociated"
+    InterventionPrescription ||--o{ EducationOrganizationInterventionPrescriptionAssociation : "HasAssociated"  
+    StudentInterventionAssociation }o--o| Cohort : "HasAssociated"
+    StudentInterventionAttendanceEvent }o--|| Student : "HasAssociated"
+    StudentInterventionAttendanceEvent }o--|| Intervention : "HasAssociated"
+    StudentCohortAssociation }o--|| Student : "HasAssociated"
+    StudentCohortAssociation }o--|| Cohort : "HasAssociated"
+    Cohort }o--|| EducationOrganization : "HasAssociated"
+    Cohort }o--o{ Student : "HasAssociated"
+    Cohort }o--o{ Staff : "HasAssociated"
+    Staff }o--o{ EducationOrganization : "HasAssociated"
+    Staff }o--o{ EducationOrganization : "ProvidesServiceTo"
