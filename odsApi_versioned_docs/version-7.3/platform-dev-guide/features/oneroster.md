@@ -3,18 +3,18 @@
 
 ## Overview
 
-The Ed‑Fi OneRoster API provides a standards‑based, secure way for Ed-Fi API
+The Ed‑Fi OneRoster service provides a standards‑based, secure way for Ed-Fi API
 Hosts to expose rostering data using the 1EdTech OneRoster® 1.2 specification,
 powered by data already present in an Ed‑Fi Operational Data Store (ODS). This
 capability enables organizations to support common rostering use cases—such as
 LMS provisioning and instructional tool onboarding—without introducing new data
 pipelines or duplicating security infrastructure.
 
-The OneRoster API is delivered as a separate API deployment, built from the
+The OneRoster service is delivered as a separate deployment, built from the
 open‑source project, while relying on database views deployed directly on the
-ODS for data access and consistency. This approach allows states and districts to
-adopt a widely supported rostering standard while continuing to leverage their
-existing Ed‑Fi data investments.
+ODS for data access and consistency. This approach allows states and districts
+to adopt a widely supported rostering standard while continuing to leverage
+their existing Ed‑Fi data investments.
 
 ## Key Design Principles
 
@@ -23,11 +23,11 @@ existing Ed‑Fi data investments.
 The Ed-Fi OneRoster API service is **logically and operationally distinct** from the core
 Ed‑Fi ODS/API.
 
-- **Separate API service** The OneRoster API is deployed independently from the
+- **Separate API service:** The OneRoster API is deployed independently from the
   ODS/API application, allowing organizations to scale, secure, and operate it
   according to rostering‑specific needs.
 
-- **Shared ODS data layer** The OneRoster API reads from **database views
+- **Shared ODS data layer:** The OneRoster API reads from **database views
   created on the Ed‑Fi ODS**, ensuring data consistency while avoiding
   duplication or synchronization overhead.
 
@@ -68,7 +68,7 @@ management while maintaining consistent authorization patterns across APIs.
 
 ### Consistent Authorization Semantics
 
-OneRoster authorization is integrated into the existing Ed‑Fi claims‑based security mode:
+OneRoster authorization is integrated into the existing Ed‑Fi claims‑based security model:
 
 - OAuth scopes align to OneRoster resources
 - Authorization decisions are enforced consistently with Ed‑Fi claims‑based
@@ -79,11 +79,15 @@ OneRoster authorization is integrated into the existing Ed‑Fi claims‑based s
 This ensures OneRoster access follows the same governance and policy controls
 already established for Ed‑Fi API consumers.
 
-### Enabling the OneRoster Feature
+## Enabling the OneRoster Feature
 
-For a complete walkthrough of enabling OneRoster integration with Ed-Fi ODS/API,
-see the article [How To: Enable OneRoster with the Ed-Fi ODS /
+For a walkthrough on enabling OneRoster integration with the Ed-Fi ODS/API, see
+the article [How To: Enable OneRoster with the Ed-Fi ODS /
 API](../../how-to-guides/how-to-oneroster-with-the-ed-fi-ods-api.md).
+
+For the complete service reference covering configuration, deployment, data
+model mappings, and conformance, see the [Ed-Fi OneRoster® Service
+Reference](/reference/oneroster).
 
 ## Downloads
 

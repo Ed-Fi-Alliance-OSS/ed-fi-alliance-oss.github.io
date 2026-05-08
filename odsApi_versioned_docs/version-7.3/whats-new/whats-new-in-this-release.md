@@ -27,29 +27,31 @@ v6](/reference/data-exchange/data-standard/whats-new/). Additionally, Ed-Fi ODS
 / API v7.3.2 continues to support implementations of Ed-Fi Data Standard v5.2
 and v4.0.
 
-### Ed-Fi OneRoster API Integration
+### Ed-Fi OneRoster Service Integration
 
-Ed-Fi ODS / API v7.3.2 introduces the Ed-Fi OneRoster API, a new optional
+Ed-Fi ODS / API v7.3.2 introduces the Ed-Fi OneRoster service, a new optional
 platform feature that exposes rostering data from the ODS using the 1EdTech
 OneRoster® 1.2 specification. This enables API Hosts to support common rostering
 use cases—such as LMS provisioning and instructional tool onboarding—without
 introducing new data pipelines or duplicating security infrastructure.
 
-The OneRoster API is deployed as a separate service that reads from database
-tables and views on the Ed-Fi ODS, ensuring data consistency while remaining
-operationally independent from the core ODS / API. Supported resources include
-organizations, schools, academic sessions, courses, classes, users (students and
-teachers), enrollments, and demographics.
+The Ed-Fi OneRoster API service is deployed as a separate service that reads
+from database tables and views on the Ed-Fi ODS, ensuring data consistency while
+remaining operationally independent from the core ODS / API. Supported resources
+include organizations, schools, academic sessions, courses, classes, users
+(students and teachers), enrollments, and demographics.
 
 API clients use the same OAuth 2.0 key and secret to access both the ODS / API
 and the OneRoster API service. Authorization is enforced through the existing
 Ed-Fi claims-based access control model, requiring no separate credential
 management.
 
-Refer to [OneRoster API](./../platform-dev-guide/features/oneroster.md) for a
+Refer to [OneRoster Feature](./../platform-dev-guide/features/oneroster.md) for a
 platform feature overview and design details. For a step-by-step configuration
 walkthrough, refer to [How To: Enable OneRoster with the Ed-Fi ODS /
-API](./../how-to-guides/how-to-oneroster-with-the-ed-fi-ods-api.md).
+API](./../how-to-guides/how-to-oneroster-with-the-ed-fi-ods-api.md). For the
+full service reference covering configuration, deployment, data model mappings,
+and conformance, see [Ed-Fi OneRoster® Service Reference](/reference/oneroster).
 
 ### MetaEd IDE v4.7
 

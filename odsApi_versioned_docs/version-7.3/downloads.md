@@ -12,11 +12,15 @@ repository.
 
 * [Binary Releases](./getting-started/binary-installation/binary-releases.md)
 * [Binary Releases
+  7.3.1](./getting-started/binary-installation/binary-releases.md#ods-api-v731-packages)
+* [Binary Releases
   7.3.0](./getting-started/binary-installation/binary-releases.md#ods-api-v730-packages)
 
 ## Docker Downloads
 
 * [Docker Images](./getting-started/getting-started-docker-deployment.md)
+* [Docker Images
+  7.3.1](./getting-started/getting-started-docker-deployment.md#ods-api-v731-images)
 * [Docker Images
   7.3.0](./getting-started/getting-started-docker-deployment.md#ods-api-v730-images)
 
