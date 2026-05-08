@@ -1,0 +1,40 @@
+﻿erDiagram
+    Student {
+    }
+    StudentIdentificationCode {
+    }
+    StudentDirectory {
+    }
+    StudentDemographic {
+    }
+    StudentEducationOrganizationAssociation {
+    }
+    StudentContactAssociation {
+    }
+    Contact {
+    }
+    ContactIdentificationCode {
+    }
+    FinancialAid {
+    }
+    Person {
+    }
+    EducationOrganization {
+    }
+    Student }|--o{ Contact : "HasAssociated"
+    Student }|--o{ EducationOrganization : "HasAssociated"
+    Student }o--o| Person : "HasAssociated"
+    Contact }o--o| Person : "HasAssociated"
+    EducationOrganization ||--o{ StudentDemographic : "HasAssociated"
+    EducationOrganization ||--o{ StudentIdentificationCode : "HasAssociated"
+    EducationOrganization ||--o{ StudentDirectory : "HasAssociated"
+    StudentIdentificationCode }o--|| Student : "HasAssociated"
+    StudentDemographic }o--|| Student : "HasAssociated"
+    StudentDirectory }o--|| Student : "HasAssociated"
+    ContactIdentificationCode }o--|| EducationOrganization : "HasAssociated"
+    ContactIdentificationCode }o--|| Contact : "HasAssociated"
+    FinancialAid }o--|| Student : "HasAssociated"
+    StudentContactAssociation }o..|| Student : "HasAssociated"
+    StudentContactAssociation }o..|| Contact : "HasAssociated"
+    StudentEducationOrganizationAssociation }o--|| Student : "HasAssociated"
+    StudentEducationOrganizationAssociation }o--|| EducationOrganization : "HasAssociated"

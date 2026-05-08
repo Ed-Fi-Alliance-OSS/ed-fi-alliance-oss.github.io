@@ -1,0 +1,93 @@
+﻿erDiagram
+    Student {
+    }
+    StudentAcademicRecord {
+    }
+    CourseTranscript {
+    }
+    ReportCard {
+    }
+    Grade {
+    }
+    StudentCompetencyObjective {
+    }
+    StudentSectionAssociation {
+    }
+    GeneralStudentProgramAssociation {
+    }
+    GradebookEntry {
+    }
+    StudentGradebookEntry {
+    }
+    CompetencyObjective {
+    }
+    Course {
+    }
+    CourseOffering {
+    }
+    Section {
+    }
+    Program {
+    }
+    GradingPeriod {
+    }
+    Session {
+    }
+    LearningStandard {
+    }
+    EducationOrganization {
+    }
+    School {
+    }
+    EducationOrganization }o--o{ Program : "IsDirectProviderOf"
+    EducationOrganization ||--|| School : "IsA"
+    Course }o--|| EducationOrganization : "HasAssociated"
+    Course }o--o{ LearningStandard : "HasAssociated"
+    Session }o--|| School : "HasAssociated"
+    CompetencyObjective }o--|| EducationOrganization : "HasAssociated"
+    StudentAcademicRecord }o--|| EducationOrganization : "HasAssociated"
+    StudentAcademicRecord }o--|| Student : "HasAssociated"
+    StudentAcademicRecord ||--o{ ReportCard : "HasFunctionalComponent"
+    ReportCard }o--|| Student : "HasAssociated"
+    ReportCard ||--o{ Grade : "HasFunctionalComponent"
+    ReportCard }o--o{ StudentCompetencyObjective : "HasAssociated"
+    ReportCard }o--|| GradingPeriod : "HasAssociated"
+    ReportCard }o--|| EducationOrganization : "HasAssociated"
+    StudentCompetencyObjective }o--|| GradingPeriod : "HasAssociated"
+    StudentCompetencyObjective }o--o{ StudentSectionAssociation : "HasAssociated"
+    StudentCompetencyObjective }o--o{ GeneralStudentProgramAssociation : "HasAssociated"
+    StudentCompetencyObjective }o--|| CompetencyObjective : "HasAssociated"
+    StudentCompetencyObjective }o--|| Student : "HasAssociated"
+    Program }o--|| EducationOrganization : "HasAssociated"
+    Program }o--o{ LearningStandard : "HasAssociated"
+    GeneralStudentProgramAssociation }o--|| EducationOrganization : "HasAssociated"
+    GradebookEntry }o--o| GradingPeriod : "HasAssociated"
+    GradebookEntry }o--|| Section : "HasAssociated"
+    GradebookEntry }o--o{ LearningStandard : "HasAssociated"
+    CourseOffering }o--|| Session : "HasAssociated"
+    CourseOffering }o--|| School : "HasAssociated"
+    CourseOffering }o--|| Course : "HasAssociated"
+    Grade }o--|| GradingPeriod : "HasAssociated"
+    Grade }o--|| StudentSectionAssociation : "HasAssociated"
+    Grade }o--o{ LearningStandard : "HasAssociated"
+    StudentGradebookEntry }o--|| GradebookEntry : "HasAssociated"
+    StudentGradebookEntry }o--|| StudentSectionAssociation : "HasAssociated"
+    CourseTranscript }o--|| StudentAcademicRecord : "HasAssociated"
+    CourseTranscript }o--|| Course : "HasAssociated"
+    CourseTranscript }o--o| EducationOrganization : "HasAssociatedExternal"
+    Section }o--o{ Program : "HasAssociated"
+    Section }|--o| School : "HasAssociated"
+    Section }o--|| CourseOffering : "HasAssociated"
+    Student }o--o{ School : "HasAssociated"
+    Student }o--o{ Section : "ParticipatesIn"
+    Student }o--o{ Program : "ParticipatesIn"
+    Session }|--o{ GradingPeriod : "HasAssociated"
+    GradingPeriod }o--|| School : "HasAssociated"
+    LearningStandard }o--o| LearningStandard : "HasFunctionalComponent"
+    LearningStandard }o--o{ LearningStandard : "HasAssociatedPrerequisite"
+    LearningStandard }o--o{ LearningStandard : "HasAssociatedEquivalence"
+    LearningStandard }o--o| LearningStandard : "HasFunctional Component"
+    StudentSectionAssociation }o..|| Student : "ParticipatesIn"
+    StudentSectionAssociation }o..|| Section : "ParticipatesIn"
+    GeneralStudentProgramAssociation }o..|| Student : "ParticipatesIn"
+    GeneralStudentProgramAssociation }o..|| Program : "ParticipatesIn"

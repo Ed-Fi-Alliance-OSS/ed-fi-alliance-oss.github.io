@@ -1,0 +1,57 @@
+﻿erDiagram
+    EducationOrganization {
+    }
+    EducationOrganizationIdentificationCode {
+    }
+    StateEducationAgency {
+    }
+    LocalEducationAgency {
+    }
+    EducationServiceCenter {
+    }
+    School {
+    }
+    PostSecondaryInstitution {
+    }
+    AccountabilityRating {
+    }
+    EducationOrganizationNetwork {
+    }
+    EducationOrganizationNetworkAssociation {
+    }
+    FeederSchoolAssociation {
+    }
+    CommunityOrganization {
+    }
+    CommunityProvider {
+    }
+    CommunityProviderLicense {
+    }
+    OrganizationDepartment {
+    }
+    StateEducationAgency ||--|| EducationOrganization : "IsA"
+    EducationServiceCenter ||--|| EducationOrganization : "IsA"
+    School ||--|| EducationOrganization : "IsA"
+    PostSecondaryInstitution ||--|| EducationOrganization : "IsA"
+    CommunityOrganization ||--|| EducationOrganization : "IsA"
+    OrganizationDepartment }o--o| EducationOrganization : "IsOrganizationComponentOf"
+    OrganizationDepartment ||--|| EducationOrganization : "IsA"
+    EducationOrganization }o--o{ EducationOrganizationPeerAssociation : "hasAssociatedPeer"
+     EducationOrganizationNetwork ||--|| EducationOrganization : "IsA"
+    EducationOrganizationNetwork }o--o{ EducationOrganization : "HasAssociated"
+    EducationOrganization ||..o{ EducationOrganizationNetworkAssociation : "HasAssociated"
+    EducationOrganizationNetworkAssociation }o..|| EducationOrganizationNetwork : "HasAssociated"
+    AccountabilityRating }o--|| EducationOrganization : "HasAssociated"
+    School }o--o| LocalEducationAgency : "IsOrganizationComponentOf"
+    LocalEducationAgency }o--o| EducationServiceCenter : "IsOrganizationComponentOf"
+    LocalEducationAgency |o--o{ LocalEducationAgency : "IsOrganizationComponentOf"
+    EducationServiceCenter }o--o| StateEducationAgency : "IsOrganizationComponentOf"
+    LocalEducationAgency }o--o| StateEducationAgency : "IsOrganizationComponentOf"
+    LocalEducationAgency ||--|| EducationOrganization : "IsA"
+    FeederSchoolAssociation }o..|| School : "HasAssociated"
+    FeederSchoolAssociation ||..}o School : "HasAssociated"
+    School }o--o{ School : "HasAssociated"
+    CommunityProvider }o--o| CommunityOrganization : "IsOrganizationComponentOf"
+    CommunityProviderLicense }o--|| CommunityProvider : "HasAssociated"
+    EducationOrganizationIdentificationCode }o--|| EducationOrganization : "HasAssociated"
+    School |o--o{ PostSecondaryInstitution : "IsOrganizationComponentOf"

@@ -1,0 +1,17 @@
+﻿erDiagram
+    Student {
+    }
+    StudentAcademicRecord {
+    }
+    CourseTranscript {
+    }
+    Course {
+    }
+    EducationOrganization {
+    }
+    CourseTranscript }o--|| StudentAcademicRecord : "HasAssociated"
+    CourseTranscript }o--o| EducationOrganization : "HasAssociatedExternal"
+    CourseTranscript }o--|| Course : "HasAssociated"
+    StudentAcademicRecord }o--|| Student : "HasAssociated"
+    StudentAcademicRecord }o--|| EducationOrganization : "HasAssociated"
+    Course }o--|| EducationOrganization : "HasAssociated"

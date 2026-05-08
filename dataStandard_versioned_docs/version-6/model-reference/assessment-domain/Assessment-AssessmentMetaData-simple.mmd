@@ -1,0 +1,21 @@
+﻿erDiagram
+    Assessment {
+    }
+    ObjectiveAssessment {
+    }
+    AssessmentItem {
+    }
+    EducationOrganization {
+    }
+    Section {
+    }
+    Program {
+    }
+    ObjectiveAssessment }o--o{ ObjectiveAssessment : "HasFunctionalComponent"
+    ObjectiveAssessment }o--o{ AssessmentItem : "HasFunctionalComponent"
+    Assessment ||--o{ ObjectiveAssessment : "HasAssociated"
+    Assessment ||--o{ AssessmentItem : "HasAssociated"
+    Assessment }o--o| EducationOrganization : "HasAssociated"
+    Assessment }o--o{ Section : "HasAssociated"
+    Assessment }o--o{ Program : "HasAssociated"
+    Section }o--o{ Program : "HasAssociated"

@@ -1,0 +1,72 @@
+erDiagram
+    EducationOrganization {
+    }
+    School {
+    }
+    Session {
+    }
+    Student {
+    }
+    Staff {
+    }
+    Course {
+    }
+    CourseOffering {
+    }
+    Section {
+    }
+    ClassPeriod {
+    }
+    Location {
+    }
+    Program {
+    }
+    LearningStandard {
+    }
+    StudentSchoolAssociation {
+    }
+    StaffSchoolAssociation {
+    }
+    StaffProgramAssociation {
+    }
+    GeneralStudentProgramAssociation {
+    }
+    StudentSectionAssociation {
+    }
+    StaffSectionAssociation {
+    }
+
+    CourseOffering }o--|| Course : "HasAssociated"
+    CourseOffering }o--|| Session : "HasAssociated"
+    CourseOffering }o--|| School : "HasAssociated"
+    EducationOrganization }o--o{ Program : "IsDirectProviderOf"
+    EducationOrganization ||--|| School : "IsA"
+    Course }o--|| EducationOrganization : "HasAssociated"
+    Course }o--o{ LearningStandard : "HasAssociated"
+    GeneralStudentProgramAssociation }o--|| EducationOrganization : "HasAssociated"
+    Staff }|--|{ EducationOrganization : "HasAssociated"
+    Staff }o--o{ EducationOrganization : "ProvidesServicesTo"
+    Staff }o--o{ School : "HasAssociated"
+    Staff }o--o{ Section : "HasAssociated"
+    Program }o--o{ Staff : "HasAssociated"
+    Session }o--|| School : "HasAssociated"
+    Location }o--|| School : "HasAssociated"
+    ClassPeriod }o--|| School : "HasAssociated"
+    Student }o--o{ School : "HasAssociated"
+    Program }o--o{ LearningStandard : "HasAssociated"
+    Program }o--|| EducationOrganization : "HasAssociated"
+    LearningStandard }o--o| LearningStandard : "HasFunctionalComponent"
+    LearningStandard }o--o{ LearningStandard : "HasAssociatedEquivalence"
+    Section }o--o{ ClassPeriod : "HasAssociated"
+    Section }o--o| Location : "HasAssociated"
+    Section }o--o{ Program : "HasAssociated"
+    Section }o--|| CourseOffering : "HasAssociated"
+    Section }|--o| School : "HasAssociated"
+    Student }o--o{ Section : "ParticipatesIn"
+    Student }o--o{ Program : "ParticipatesIn"
+    StudentSchoolAssociation }o..|| Student : "HasAssociated"
+    StudentSchoolAssociation }o..|| School : "HasAssociated"
+    StudentSectionAssociation }o..|| Student : "ParticipatesIn"
+    StudentSectionAssociation }o..|| Section : "ParticipatesIn"
+    GeneralStudentProgramAssociation }o..|| Program : "ParticipatesIn"
+    GeneralStudentProgramAssociation }o..|| Student : "ParticipatesIn"
