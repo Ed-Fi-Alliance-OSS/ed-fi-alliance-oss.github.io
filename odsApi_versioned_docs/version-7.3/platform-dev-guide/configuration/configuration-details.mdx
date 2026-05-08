@@ -29,7 +29,7 @@ applications described below, though the .NET architecture provides support for
 additional configuration sources such as environment variables, command-line
 arguments, and other sources (such as services from cloud providers). See the
 [Configuration in ASP.NET
-Core](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-8.0)
+Core](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-10.0)
 documentation for more information.
 
 ### EdFi.Ods.SwaggerUI
@@ -408,6 +408,30 @@ optional configuration values include:
   </tr>
 
   <tr style={{verticalAlign: 'top'}}>
+    <td>Plugin:Scripts</td>
+    <td>`["tpdm"]`</td>
+    <td>Configures the script (located in plugin folder by default) responsible for downloading the extension plugins and placing them in the plugin folder.</td>
+  </tr>
+
+  <tr style={{verticalAlign: 'top'}}>
+    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>:new: ApiSettings<br/>:Behaviors:AllowWhitespaceOnlyValues</p></td>
+    <td>false</td>
+    <td>Overrides the default behavior changed in v7.3 of not allowing whitespace-only values in (non-key) properties.</td>
+  </tr>
+
+  <tr style={{verticalAlign: 'top'}}>
+    <td>:new: ApiSettings:OneRosterVersionUrl</td>
+    <td>`localhost:3000`</td>
+    <td>Configures the root URL of the OneRoster service. The ODS / API uses this value to retrieve the OneRoster OpenAPI specification for integration into the ODS / API Swagger documentation.</td>
+  </tr>
+
+  <tr style={{verticalAlign: 'top'}}>
+    <td>:new: FeatureManagement:OneRoster</td>
+    <td>true</td>
+    <td>Enables OneRoster integration in the Ed‑Fi ODS / API. When enabled, the ODS / API recognizes OneRoster as a supported feature and uses the configured `ApiSettings:OneRosterVersionUrl` to retrieve the OneRoster OpenAPI specification and include OneRoster endpoints in the ODS / API Swagger documentation. This feature also requires `Security:AccessTokenType` to be set to `jwt`</td>
+  </tr>
+
+  <tr style={{verticalAlign: 'top'}}>
     <td>:new: FeatureManagement:SerializedData</td>
     <td>true</td>
     <td>Activates optimized behavior in the API to [serialize the resource data](./../features/serialized-data.md) into a binary representation that is stored on the "root" record of the resource's underlying table in the ODS. This serialized representation is then used as the primary source for servicing future API requests. While the data in the ODS tables is still maintained, it is only used as the canonical source when the serialized data is invalidated by modification of the ODS data by other processes (detected by a change to `LastModifiedDate`).</td>
@@ -444,27 +468,29 @@ optional configuration values include:
   </tr>
 
   <tr style={{verticalAlign: 'top'}}>
-    <td>Plugin:Scripts</td>
-    <td>`["tpdm"]`</td>
-    <td>Configures the script (located in plugin folder by default) responsible for downloading the extension plugins and placing them in the plugin folder.</td>
-  </tr>
-
-  <tr style={{verticalAlign: 'top'}}>
-    <td><p style={{paddingLeft: '22px', textIndent: '-22px'}}>:new: ApiSettings<br/>:Behaviors:AllowWhitespaceOnlyValues</p></td>
-    <td>false</td>
-    <td>Overrides the default behavior changed in v7.3 of not allowing whitespace-only values in (non-key) properties.</td>
-  </tr>
-
-  <tr style={{verticalAlign: 'top'}}>
     <td>:new: StartupClassName</td>
     <td>CustomStartup</td>
     <td>Specifies the name of the Startup class the application should use. This allows overriding the default Startup class when initializing the API.</td>
   </tr>
+
   <tr style={{verticalAlign: 'top'}}>
     <td>:new: DomainsExcludedFromOpenApi</td>
     <td>Discipline, Staff</td>
     <td>Specifies which domains should be removed from the OpenAPI specification. Any endpoints or descriptors associated with the listed domains will be excluded.</td>
   </tr>
+
+  <tr style={{verticalAlign: 'top'}}>
+    <td>:new: Security:AccessTokenType</td>
+    <td>guid</td>
+    <td>Configures the type of access token issued by the API. By default, the APIuses legacy `guid`-based access tokens. Set this value to `jwt` enable issuance and validation of JWT-based OAuth 2.0 access tokens.</td>
+  </tr>
+
+  <tr style={{verticalAlign: 'top'}}>
+    <td>:new: Security:Jwt</td>
+    <td>Example: [see this document](../../how-to-guides/how-to-oneroster-with-the-ed-fi-ods-api.md#step-2-configure-jwtbased-security-in-the-ods--api)</td>
+    <td>Required when `Security:AccessTokenType` is set to `jwt` for the API issue and validate JWT tokens. Configures JWT token issuance and validation, including issuer, audience, and public/private key material used for token signing.</td>
+  </tr>
+
 </table>
 
 ## Environment Configuration
@@ -476,7 +502,7 @@ environments. In development environment, initdev creates
 _appsettings.**Development**.json_ to override settings for development
 environment. Note that the settings in _appsettings.**Development**.json_ are
 overwritten every time initdev is executed. See [Configuration in ASP.NET
-Core](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-8.0)
+Core](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-10.0)
 for more details.
 
 ## Secret Manager
@@ -485,7 +511,7 @@ In development environments ASP.NET Core applications in the ODS / API solution
 uses secret manager tool to provide a way for setting overrides away from the
 projects so that they aren't accidentally checked into source control. To set
 overrides, you can either use the [.NET
-CLI Tool](https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-8.0&tabs=windows#set-a-secret)
+CLI Tool](https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-10.0&tabs=windows#set-a-secret)
 
 ```powershell
 PS D:\Ed-Fi-ODS-Implementation\Application\EdFi.Ods.WebApi> dotnet user-secrets set "ApiSettings:PopulatedTemplateScript" "Glendale"
@@ -493,7 +519,7 @@ Successfully saved ApiSettings:PopulatedTemplateScript = Glendale to the secret 
 ```
 
 or [Manage User
-Secrets](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows#json-structure-flattening-in-visual-studio)
+Secrets](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-10.0&tabs=windows#json-structure-flattening-in-visual-studio)
 in Visual Studio.
 
 ![Manage User Secrets](/img/reference/ods-api/manage-user-secrets.webp)
@@ -520,5 +546,5 @@ deploys with 'Glendale' sample dataset.
 ```
 
 See [Safe storage of app secrets in development in ASP.NET
-Core](https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-8.0&tabs=windows)
+Core](https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-10.0&tabs=windows)
 for more details.
