@@ -21,8 +21,7 @@ data systems.
 
 Please note that the current version of Data Standard v6 is v6.1 (full version
 number v6.1.0). See the [Ed-Fi Technology Suite Roadmap](/reference/roadmap)
-for previous and future Data Standard release versions. Also see the [What's New](./whats-new/readme.md)
-page for information on the changes in this release.
+for information on past and upcoming Data Standard releases. For details on changes introduced in v6, refer to the [What's New](./whats-new/readme.md) page.
 
 :::
 

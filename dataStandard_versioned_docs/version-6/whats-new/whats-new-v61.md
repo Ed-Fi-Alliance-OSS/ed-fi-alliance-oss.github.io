@@ -1,10 +1,12 @@
 # What's New - v6.1
 
+Release Date: May 7, 2026.
+
 ## Overview
 
 Data Standard v6.1 delivers **non breaking** enhancements that address key community needs: reducing state-specific extensions and improving support for Special Education data.
 • Expanded responsibility modeling:
-An optional ResponsibleEducationOrganization reference has been added to the StudentEducationOrganizationResponsibilityAssociation (SEORA).  This allows reporting education organizations to indicate additional organizations with defined responsibilities (e.g., residency, funding, services).
+An optional ResponsibleEducationOrganization reference has been added to the StudentEducationOrganizationResponsibilityAssociation (SEORA).  This allows reporting education organizations (Ed Org) to indicate additional organizations with defined responsibilities (e.g., residency, funding, services).
 To align with this approach, the residency descriptor in StudentSchoolAssociation is now deprecated and scheduled for removal in v8.0.
 
 • Early access Special Education data model (SEDM):
@@ -35,11 +37,11 @@ To minimize maintenance overhead while the model matures, initial adoption is re
 
 Comments or other feedback about the new SEDM can be shared via [Data Standard RFC 28b](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Technology-Roadmap/discussions/60).
 
-### A New Optional Alternate Responsible Ed Org reference is introduced to the StudentEducationOrganizationResponsibilityAssociation (SEORA)
+### A New Optional Responsible Ed Org reference is introduced to the StudentEducationOrganizationResponsibilityAssociation (SEORA)
 
 [DATASTD-2577](https://edfi.atlassian.net/browse/DATASTD-2577)
 
-This enhancement addresses a key modeling gap: previously, reporting education organizations could not consistently represent other organizations responsible for services such as residency, funding, accountability, or transportation when those organizations did not submit their own records.  This often led to state-specific extensions and increased implementation complexity.
+This enhancement addresses a key modeling gap: due to authorization controls, reporting education organizations could not represent other organizations responsible for services (e.g., residency, funding, accountability, transportation).  When those organizations with alternate responsibilities did not submit their own records, gaps emerged that impacted reporting and funding. This limitation led to state-specific extensions and increased implementation complexity.
 
 With this update:
 

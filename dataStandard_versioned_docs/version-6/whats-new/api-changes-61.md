@@ -130,22 +130,22 @@
 * `GET /ed-fi/addressCharacteristicDescriptors`
 
   * **Response**
-    * **Added** property: addressCharacteristicDescriptor (string) - A characteristic of the address, such as physically located at the address.
+    * **Added** property: addressCharacteristicDescriptor (string) - Identifies characteristics of the address (e.g., primary).
 
 * `POST /ed-fi/addressCharacteristicDescriptors`
 
   * **Request**
-    * **Added** property: addressCharacteristicDescriptor (string) - A characteristic of the address, such as physically located at the address.
+    * **Added** property: addressCharacteristicDescriptor (string) - Identifies characteristics of the address (e.g., primary).
 
 * `GET /ed-fi/addressCharacteristicDescriptors/{id}`
 
   * **Response**
-    * **Added** property: addressCharacteristicDescriptor (string) - A characteristic of the address, such as physically located at the address.
+    * **Added** property: addressCharacteristicDescriptor (string) - Identifies characteristics of the address (e.g., primary).
 
 * `PUT /ed-fi/addressCharacteristicDescriptors/{id}`
 
   * **Request**
-    * **Added** property: addressCharacteristicDescriptor (string) - A characteristic of the address, such as physically located at the address.
+    * **Added** property: addressCharacteristicDescriptor (string) - Identifies characteristics of the address (e.g., primary).
 
 ## applicantProfiles Endpoints and Associated Domains
 
@@ -156,7 +156,7 @@
 * `GET /ed-fi/applicantProfiles`
 
   * **Parameters**
-    * **Added** addressCharacteristicDescriptor - A characteristic of the address, such as physically located at the address.
+    * **Added** addressCharacteristicDescriptor - Identifies characteristics of the address (e.g., primary).
 
   * **Response**
     * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
@@ -185,7 +185,7 @@
 * `GET /ed-fi/candidates`
 
   * **Parameters**
-    * **Added** addressCharacteristicDescriptor - A characteristic of the address, such as physically located at the address.
+    * **Added** addressCharacteristicDescriptor - Identifies characteristics of the address (e.g., primary).
 
   * **Response**
     * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
@@ -214,7 +214,7 @@
 * `GET /ed-fi/communityOrganizations`
 
   * **Parameters**
-    * **Added** addressCharacteristicDescriptor - A characteristic of the address, such as physically located at the address.
+    * **Added** addressCharacteristicDescriptor - Identifies characteristics of the address (e.g., primary).
 
   * **Response**
     * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
@@ -243,7 +243,7 @@
 * `GET /ed-fi/communityProviders`
 
   * **Parameters**
-    * **Added** addressCharacteristicDescriptor - A characteristic of the address, such as physically located at the address.
+    * **Added** addressCharacteristicDescriptor - Identifies characteristics of the address (e.g., primary).
 
   * **Response**
     * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
@@ -273,7 +273,7 @@
 * `GET /ed-fi/contacts`
 
   * **Parameters**
-    * **Added** addressCharacteristicDescriptor - A characteristic of the address, such as physically located at the address.
+    * **Added** addressCharacteristicDescriptor - Identifies characteristics of the address (e.g., primary).
 
   * **Response**
     * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
@@ -302,7 +302,7 @@
 * `GET /ed-fi/educationOrganizationNetworks`
 
   * **Parameters**
-    * **Added** addressCharacteristicDescriptor - A characteristic of the address, such as physically located at the address.
+    * **Added** addressCharacteristicDescriptor - Identifies characteristics of the address (e.g., primary).
 
   * **Response**
     * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
@@ -332,7 +332,7 @@
 * `GET /ed-fi/educationServiceCenters`
 
   * **Parameters**
-    * **Added** addressCharacteristicDescriptor - A characteristic of the address, such as physically located at the address.
+    * **Added** addressCharacteristicDescriptor - Identifies characteristics of the address (e.g., primary).
 
   * **Response**
     * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
@@ -363,7 +363,7 @@
 * `GET /ed-fi/localEducationAgencies`
 
   * **Parameters**
-    * **Added** addressCharacteristicDescriptor - A characteristic of the address, such as physically located at the address.
+    * **Added** addressCharacteristicDescriptor - Identifies characteristics of the address (e.g., primary).
 
   * **Response**
     * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
@@ -392,7 +392,7 @@
 * `GET /ed-fi/organizationDepartments`
 
   * **Parameters**
-    * **Added** addressCharacteristicDescriptor - A characteristic of the address, such as physically located at the address.
+    * **Added** addressCharacteristicDescriptor - Identifies characteristics of the address (e.g., primary).
 
   * **Response**
     * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
@@ -422,7 +422,7 @@
 * `GET /ed-fi/postSecondaryInstitutions`
 
   * **Parameters**
-    * **Added** addressCharacteristicDescriptor - A characteristic of the address, such as physically located at the address.
+    * **Added** addressCharacteristicDescriptor - Identifies characteristics of the address (e.g., primary).
 
   * **Response**
     * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
@@ -464,7 +464,7 @@
 * `GET /ed-fi/schools`
 
   * **Parameters**
-    * **Added** addressCharacteristicDescriptor - A characteristic of the address, such as physically located at the address.
+    * **Added** addressCharacteristicDescriptor - Identifies characteristics of the address (e.g., primary).
 
   * **Response**
     * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
@@ -493,7 +493,7 @@
 * `GET /ed-fi/staffDirectories`
 
   * **Parameters**
-    * **Added** addressCharacteristicDescriptor - A characteristic of the address, such as physically located at the address.
+    * **Added** addressCharacteristicDescriptor - Identifies characteristics of the address (e.g., primary).
 
   * **Response**
     * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
@@ -523,7 +523,7 @@
 * `GET /ed-fi/stateEducationAgencies`
 
   * **Parameters**
-    * **Added** addressCharacteristicDescriptor - A characteristic of the address, such as physically located at the address.
+    * **Added** addressCharacteristicDescriptor - Identifies characteristics of the address (e.g., primary).
 
   * **Response**
     * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
@@ -553,7 +553,7 @@
 * `GET /ed-fi/studentDirectories`
 
   * **Parameters**
-    * **Added** addressCharacteristicDescriptor - A characteristic of the address, such as physically located at the address.
+    * **Added** addressCharacteristicDescriptor - Identifies characteristics of the address (e.g., primary).
 
   * **Response**
     * **Added** property: addresses[].addressCharacteristics[].addressCharacteristicDescriptor (string)
