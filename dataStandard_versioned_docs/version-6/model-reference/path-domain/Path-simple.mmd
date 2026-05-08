@@ -1,0 +1,30 @@
+﻿erDiagram
+    Student {
+    }
+    EducationOrganization {
+    }
+    GraduationPlan {
+    }
+    Path {
+    }
+    PathPhase {
+    }
+    PathMilestone {
+    }
+    StudentPath {
+    }
+    StudentPathPhaseStatus {
+    }
+    StudentPathMilestoneStatus {
+    }
+    Path }o--|| EducationOrganization : "HasAssociated"
+    Path }o--o| GraduationPlan : "HasAssociated"
+    Path ||--o{ PathPhase : "HasAssociated"
+    PathPhase }o--o{ PathMilestone : "HasAssociated"
+    StudentPath }o--|| Student : "HasAssociated"
+    StudentPath }o--|| Path : "HasAssociated"
+    StudentPathPhaseStatus }o--|| StudentPath : "HasAssociated"
+    StudentPathPhaseStatus }o--|| PathPhase : "HasAssociated"
+    StudentPathMilestoneStatus }o--|| StudentPath : "HasAssociated"
+    StudentPathMilestoneStatus }o--o| PathPhase : "HasAssociated"
+    StudentPathMilestoneStatus }o--|| PathMilestone : "HasAssociated"
