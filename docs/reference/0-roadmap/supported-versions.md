@@ -52,7 +52,7 @@ The Ed-Fi ODS/API application is being phased out with 2028-2029 as the final pl
 | 7.0.0                                         | Replaced by 7.1                      | 4.0.0, 5.0.0        |
 | [7.1.x](/reference/ods-api/7.1)               | Active through 2025-2026 school year | 4.0.0, 5.0.0        |
 | [7.2.x](/reference/ods-api/7.2)               | ⚠️ inactive - upgrade to 7.3         | 4.0.0, 5.1.0        |
-| [7.3.x](/reference/ods-api/) (current: 7.3.1) | Active through 2028-2029 school year | 4.0.0, 5.2.0, 6.0.0 |
+| [7.3.x](/reference/ods-api/) (current: 7.3.2) | Active through 2028-2029 school year | 4.0.0, 5.2.0, 6.1.0 |
 
 Out of Support: all releases prior to ODS/API 6.2.
 
