@@ -43,11 +43,11 @@ dotnet tool install EdFi.Suite3.Db.Deploy --tool-path <directory> `
   --add-source https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json
 
 # Install a specific version
-dotnet tool install EdFi.Suite3.Db.Deploy --tool-path <directory> --version 4.1.52 `
+dotnet tool install EdFi.Suite3.Db.Deploy --tool-path <directory> --version 4.3.2 `
   --add-source https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json
 
-# Install the most recent patch-release of 4.1 by adding -* wildcard to the version
-dotnet tool install EdFi.Suite3.Db.Deploy --tool-path <directory> --version 4.1.* `
+# Install the most recent patch-release of 4.3 by adding -* wildcard to the version
+dotnet tool install EdFi.Suite3.Db.Deploy --tool-path <directory> --version 4.3.* `
   --add-source https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json
 ```
 
