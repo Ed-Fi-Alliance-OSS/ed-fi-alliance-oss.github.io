@@ -9,42 +9,21 @@ ODS / API's built-in OAuth endpoints.
 For the variable list, see [Environment
 variables](./environment-variables.md).
 
-## Token validation modes
+## Token validation
 
-The service supports two verification modes and picks between them at
-startup based on whether `OAUTH2_PUBLIC_KEY_PEM` is set.
-
-### JWKS mode (default)
-
-If `OAUTH2_PUBLIC_KEY_PEM` is empty, the service uses
-[`express-oauth2-jwt-bearer`](https://www.npmjs.com/package/express-oauth2-jwt-bearer)
-to fetch the authorization server's JWKS from
-`{OAUTH2_ISSUERBASEURL}/.well-known/jwks.json` and verify JWTs against
-it.
+The service uses the [`jose`](https://github.com/panva/jose) library to
+verify JWT signatures against a PEM-encoded public key.
 
 Required variables:
 
-- `OAUTH2_ISSUERBASEURL`. Base URL of the authorization server (for
-  example, your Ed-Fi ODS / API's OAuth endpoint).
-- `OAUTH2_AUDIENCE`. The expected `aud` claim.
+- `OAUTH2_ISSUERBASEURL`. Base URL of the authorization server — the
+  root URL of your Ed-Fi ODS / API (for example, `http://localhost:54746`).
+- `OAUTH2_AUDIENCE`. The expected `aud` claim — typically the base URL
+  of the OneRoster service itself (for example, `http://localhost:3000`).
 - `OAUTH2_TOKENSIGNINGALG`. Typically `RS256`.
-
-The JWKS is fetched and cached automatically. No additional
-configuration is required for key rotation beyond what the
-authorization server already supports.
-
-### PEM mode
-
-If `OAUTH2_PUBLIC_KEY_PEM` is set, the service uses the
-[`jose`](https://github.com/panva/jose) library to verify JWT
-signatures against the PEM-encoded public key directly. JWKS discovery
-is not attempted.
-
-Required variables (same as JWKS mode), plus:
-
 - `OAUTH2_PUBLIC_KEY_PEM`. The PEM public key on a single line, with
-  `\n` between lines and including the `-----BEGIN/END PUBLIC KEY-----`
-  markers.
+  `\n` between lines and including the `-----BEGIN PUBLIC KEY-----` and
+  `-----END PUBLIC KEY-----` markers.
 
 Example:
 
@@ -52,22 +31,8 @@ Example:
 OAUTH2_PUBLIC_KEY_PEM=-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8A...\n-----END PUBLIC KEY-----
 ```
 
-PEM mode is useful when:
-
-- The authorization server does not expose a JWKS endpoint
-- You want a static, air-gapped key bundle distributed with the
-  deployment
-- You are bridging to a non-Ed-Fi IdP that publishes PEM-formatted keys
-
 The public key is imported on first use and cached for subsequent
 verifications.
-
-:::note
-
-If both modes appear configured (`OAUTH2_PUBLIC_KEY_PEM` is set), PEM
-mode wins and JWKS is not consulted.
-
-:::
 
 ## Claims inspected
 
@@ -76,7 +41,7 @@ validates:
 
 | Claim | Source |
 | --- | --- |
-| Signature | JWKS key or `OAUTH2_PUBLIC_KEY_PEM` |
+| Signature | `OAUTH2_PUBLIC_KEY_PEM` |
 | `iss` | Must match `OAUTH2_ISSUERBASEURL` |
 | `aud` | Must match `OAUTH2_AUDIENCE` |
 | `exp` | Must not be in the past |
@@ -101,13 +66,9 @@ Ed-Fi ODS / API as part of its OneRoster token endpoint.
 
 | Claim | Type | Purpose |
 | --- | --- | --- |
-| `odsInstanceId` | integer | Identifies the authorized ODS instance for the caller. The service uses this ID to look up the ODS connection string in `EdFi_Admin.OdsInstances`. Required on all data-plane requests; missing values return HTTP 403. |
+| `educationOrganizationId` | comma-separated list | Identifies the education organizations the caller is authorized for. If this claim is absent from the token, endpoints return empty or null responses. |
 | `odsInstances` | JSON string | Optional. When the caller is authorized for multiple ODS instances (for example, different school years in a single-tenant-with-context deployment), carries the full list. Shape: `{"OdsInstances":[{"OdsInstanceId":1,"OdsInstanceContext":{"ContextKey":"schoolYearFromRoute","ContextValue":"2026"}}, ...]}`. |
 | `tenantId` | string | Required when the service is running with `MULTITENANCY_ENABLED=true`. Must match the `:tenantId` segment in the request URL (case-insensitive). A mismatch returns HTTP 401; an unknown tenant returns HTTP 404. |
-
-The service also reads the alternate spellings `ods_instance_id` and
-`OdsInstanceId` for `odsInstanceId`, for compatibility with
-non-Ed-Fi issuers.
 
 ### How routing is resolved
 
@@ -138,10 +99,11 @@ In all four flows:
 
 ```json
 {
-  "iss": "https://api.example.org/oauth",
+  "iss": "https://api.example.org",
   "aud": "https://oneroster.example.org",
-  "scope": "roster-core.readonly",
-  "odsInstanceId": 1
+  "scope": "https://purl.imsglobal.org/spec/or/v1p2/scope/roster-core.readonly",
+  "educationOrganizationId": "1,2,3",
+  "odsInstances": "{\"OdsInstances\":[{\"OdsInstanceId\":2,\"OdsInstanceContext\":null}]}"
 }
 ```
 
@@ -149,9 +111,12 @@ In all four flows:
 
 ```json
 {
-  "iss": "https://api.example.org/oauth",
+  "iss": "https://api.example.org",
   "aud": "https://oneroster.example.org",
-  "scope": "roster-core.readonly",
+  "scope": [
+    "https://purl.imsglobal.org/spec/or/v1p2/scope/roster-core.readonly",
+    "https://purl.imsglobal.org/spec/or/v1p2/scope/roster.readonly"],
+  "educationOrganizationId": "1,2,3",
   "odsInstances": "{\"OdsInstances\":[{\"OdsInstanceId\":1,\"OdsInstanceContext\":{\"ContextKey\":\"schoolYearFromRoute\",\"ContextValue\":\"2026\"}},{\"OdsInstanceId\":2,\"OdsInstanceContext\":{\"ContextKey\":\"schoolYearFromRoute\",\"ContextValue\":\"2027\"}}]}"
 }
 ```
@@ -160,11 +125,12 @@ In all four flows:
 
 ```json
 {
-  "iss": "https://api.example.org/oauth",
+  "iss": "https://api.example.org",
   "aud": "https://oneroster.example.org",
-  "scope": "roster-core.readonly",
+  "scope": "https://purl.imsglobal.org/spec/or/v1p2/scope/roster-core.readonly",
   "tenantId": "Tenant1",
-  "odsInstanceId": 1
+  "educationOrganizationId": "1,2,3",
+  "odsInstances": "{\"OdsInstances\":[{\"OdsInstanceId\":2,\"OdsInstanceContext\":null}]}"
 }
 ```
 
@@ -175,9 +141,9 @@ comma-separated in the `scope` claim, per OAuth 2.0 conventions):
 
 | Scope | Grants read access to |
 | --- | --- |
-| `roster-core.readonly` | `academicSessions`, `classes`, `courses`, `enrollments`, `orgs`, `schools`, `terms`, `gradingPeriods`, and the non-demographic fields of `users`, `students`, and `teachers` |
-| `roster-demographics.readonly` | The `/demographics` endpoint |
-| `roster.readonly` | All of the above. Equivalent to both `roster-core.readonly` and `roster-demographics.readonly`. |
+| `https://purl.imsglobal.org/spec/or/v1p2/scope/roster-core.readonly` | `academicSessions`, `classes`, `courses`, `enrollments`, `orgs`, `schools`, `terms`, `gradingPeriods`, and the non-demographic fields of `users`, `students`, and `teachers` |
+| `https://purl.imsglobal.org/spec/or/v1p2/scope/roster-demographics.readonly` | The `/demographics` endpoint |
+| `https://purl.imsglobal.org/spec/or/v1p2/scope/roster.readonly` | Same access as `roster-core.readonly`. Per OneRoster v1.2 spec §4.3.3, this scope does not grant access to demographics. |
 
 These are the standard OneRoster v1.2 rostering scopes defined in the
 [1EdTech® OneRoster v1.2 REST
@@ -193,10 +159,10 @@ Version 7.3.2 of the Ed-Fi ODS / API includes a
 `FeatureManagement:OneRoster` setting and supporting claim-set
 configuration that enable the ODS / API's built-in OAuth endpoint to
 issue tokens bearing the OneRoster scopes above. The ODS / API's
-token endpoint becomes the `OAUTH2_ISSUERBASEURL` the OneRoster
+root url becomes the `OAUTH2_ISSUERBASEURL` the OneRoster
 service points at. The Ed-Fi Web API signs the JWTs and populates the
-Ed-Fi-specific claims (`odsInstanceId`, `odsInstances`, and `tenantId`
-when applicable); the OneRoster service validates them via JWKS and
+Ed-Fi-specific claims (`educationOrganizationId`, `odsInstances`, and `tenantId`
+when applicable); the OneRoster service validates them via PEM-encoded public key and
 uses them to resolve the correct ODS.
 
 The ODS API's `ApiSettings:OdsConnectionStringEncryptionKey` is the
@@ -211,25 +177,6 @@ apps), see the [Features
 reference](/reference/ods-api/platform-dev-guide/features/) in the
 ODS / API v7.3 platform developer guide.
 
-## Issuing tokens outside of the ODS / API
-
-The OneRoster service only validates JWTs. It will accept tokens from
-any OAuth 2.0 authorization server that:
-
-1. Signs with `OAUTH2_TOKENSIGNINGALG` (default `RS256`).
-2. Places `{OAUTH2_ISSUERBASEURL}` in the `iss` claim.
-3. Places `{OAUTH2_AUDIENCE}` in the `aud` claim.
-4. Includes one of the three OneRoster v1.2 scopes.
-5. Includes `odsInstanceId` (or `odsInstances` for context-routed
-   deployments) identifying the ODS instance the caller is authorized
-   for, plus `tenantId` in multi-tenant mode. See [JWT claims used for
-   ODS resolution](#jwt-claims-used-for-ods-resolution) above.
-
-This enables bridging to Auth0, Keycloak, Azure AD, or any other
-OIDC-compatible identity provider for deployments that prefer a
-dedicated identity provider for OneRoster clients, provided the issuer
-can be configured to emit the Ed-Fi-specific claims.
-
 ## Quick verification
 
 Once the service is running and an issuer is configured, obtain a
@@ -241,7 +188,7 @@ curl -X POST <issuer-token-endpoint> \
   -d "grant_type=client_credentials" \
   -d "client_id=<client_id>" \
   -d "client_secret=<client_secret>" \
-  -d "scope=roster-core.readonly" \
+  -d "scope=https://purl.imsglobal.org/spec/or/v1p2/scope/roster-core.readonly" \
   -d "audience=<OAUTH2_AUDIENCE>"
 
 # Then:

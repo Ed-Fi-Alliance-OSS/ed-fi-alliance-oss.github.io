@@ -88,8 +88,7 @@ validated against the configured issuer. Likely causes:
 
 _Fix:_ decode the token at [jwt.io](https://jwt.io) and compare the
 `iss`, `aud`, and `exp` claims against the values in the service
-`.env`. Confirm that `{OAUTH2_ISSUERBASEURL}/.well-known/jwks.json`
-is reachable from the service host with `curl`.
+`.env`.
 
 See [OAuth and JWT, Claims inspected](../docs/reference/11-oneroster/configuration/oauth-and-jwt.md#claims-inspected).
 

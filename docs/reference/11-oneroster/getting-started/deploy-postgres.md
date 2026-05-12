@@ -58,9 +58,9 @@ Copy `.env.example` to `.env` at the repository root and set at least:
 - `OAUTH2_AUDIENCE` and `OAUTH2_ISSUERBASEURL`. The server fails fast
   on startup if either is missing.
 - `OAUTH2_TOKENSIGNINGALG` (typically `RS256`)
-- `OAUTH2_PUBLIC_KEY_PEM` if you want PEM-based JWT verification.
-  Otherwise leave it blank to use JWKS discovery from
-  `OAUTH2_ISSUERBASEURL`.
+- `OAUTH2_PUBLIC_KEY_PEM`. Required. The PEM-encoded public key used to
+  verify JWT signatures. See [OAuth and JWT](../configuration/oauth-and-jwt.md)
+  for the expected format.
 - `PORT` (defaults to `3000`)
 
 For multi-tenant deployments, set `MULTITENANCY_ENABLED=true` and use
