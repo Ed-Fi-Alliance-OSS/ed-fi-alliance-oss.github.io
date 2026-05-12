@@ -65,8 +65,9 @@ Copy `.env.example` to `.env` at the repository root and set at least:
   matches the ODS API's `ApiSettings:OdsConnectionStringEncryptionKey`
 - `OAUTH2_AUDIENCE`, `OAUTH2_ISSUERBASEURL`, `OAUTH2_TOKENSIGNINGALG`.
   The server fails fast on startup if the first two are missing.
-- `OAUTH2_PUBLIC_KEY_PEM` if you want PEM-based JWT verification.
-  Otherwise leave it blank to use JWKS discovery.
+- `OAUTH2_PUBLIC_KEY_PEM`. Required. The PEM-encoded public key used to
+  verify JWT signatures. See [OAuth and JWT](../configuration/oauth-and-jwt.md)
+  for the expected format.
 - `PORT`, `CORS_ORIGINS`, and `TRUST_PROXY` as appropriate for your
   environment
 

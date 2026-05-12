@@ -22,8 +22,8 @@ Required variables:
   of the OneRoster service itself (for example, `http://localhost:3000`).
 - `OAUTH2_TOKENSIGNINGALG`. Typically `RS256`.
 - `OAUTH2_PUBLIC_KEY_PEM`. The PEM public key on a single line, with
-  `\n` between lines and including the `-----BEGIN/END PUBLIC KEY-----`
-  markers.
+  `\n` between lines and including the `-----BEGIN PUBLIC KEY-----` and
+  `-----END PUBLIC KEY-----` markers.
 
 Example:
 
@@ -102,7 +102,8 @@ In all four flows:
   "iss": "https://api.example.org",
   "aud": "https://oneroster.example.org",
   "scope": "https://purl.imsglobal.org/spec/or/v1p2/scope/roster-core.readonly",
-  "odsInstanceId": 1
+  "educationOrganizationId": "1,2,3",
+  "odsInstances": "{\"OdsInstances\":[{\"OdsInstanceId\":2,\"OdsInstanceContext\":null}]}"
 }
 ```
 
@@ -115,6 +116,7 @@ In all four flows:
   "scope": [
     "https://purl.imsglobal.org/spec/or/v1p2/scope/roster-core.readonly",
     "https://purl.imsglobal.org/spec/or/v1p2/scope/roster.readonly"],
+  "educationOrganizationId": "1,2,3",
   "odsInstances": "{\"OdsInstances\":[{\"OdsInstanceId\":1,\"OdsInstanceContext\":{\"ContextKey\":\"schoolYearFromRoute\",\"ContextValue\":\"2026\"}},{\"OdsInstanceId\":2,\"OdsInstanceContext\":{\"ContextKey\":\"schoolYearFromRoute\",\"ContextValue\":\"2027\"}}]}"
 }
 ```
@@ -123,11 +125,12 @@ In all four flows:
 
 ```json
 {
-  "iss": "https://api.example.org/oauth",
+  "iss": "https://api.example.org",
   "aud": "https://oneroster.example.org",
   "scope": "https://purl.imsglobal.org/spec/or/v1p2/scope/roster-core.readonly",
   "tenantId": "Tenant1",
-  "odsInstanceId": 1
+  "educationOrganizationId": "1,2,3",
+  "odsInstances": "{\"OdsInstances\":[{\"OdsInstanceId\":2,\"OdsInstanceContext\":null}]}"
 }
 ```
 
@@ -140,7 +143,7 @@ comma-separated in the `scope` claim, per OAuth 2.0 conventions):
 | --- | --- |
 | `https://purl.imsglobal.org/spec/or/v1p2/scope/roster-core.readonly` | `academicSessions`, `classes`, `courses`, `enrollments`, `orgs`, `schools`, `terms`, `gradingPeriods`, and the non-demographic fields of `users`, `students`, and `teachers` |
 | `https://purl.imsglobal.org/spec/or/v1p2/scope/roster-demographics.readonly` | The `/demographics` endpoint |
-| `roster.readonly` | All of the above. Equivalent to both `roster-core.readonly` except `roster-demographics.readonly`. |
+| `https://purl.imsglobal.org/spec/or/v1p2/scope/roster.readonly` | Same access as `roster-core.readonly`. Per OneRoster v1.2 spec §4.3.3, this scope does not grant access to demographics. |
 
 These are the standard OneRoster v1.2 rostering scopes defined in the
 [1EdTech® OneRoster v1.2 REST
@@ -173,26 +176,6 @@ OneRoster claim-set entries, issuing keys and secrets to vendor
 apps), see the [Features
 reference](/reference/ods-api/platform-dev-guide/features/) in the
 ODS / API v7.3 platform developer guide.
-
-## Issuing tokens outside of the ODS / API
-
-The OneRoster service only validates JWTs. It will accept tokens from
-any OAuth 2.0 authorization server that:
-
-1. Signs with `OAUTH2_TOKENSIGNINGALG` (default `RS256`).
-2. Places `{OAUTH2_ISSUERBASEURL}` in the `iss` claim.
-3. Places `{OAUTH2_AUDIENCE}` in the `aud` claim.
-4. Includes required OneRoster v1.2 scopes.
-5. Includes `educationOrganizationId` (the authorized education organizations)
-   and, when ODS context routing is enabled, `odsInstances` (the authorized
-   ODS instance or instances with their routing context). In multi-tenant
-   deployments, also includes `tenantId`. See [JWT claims used for ODS
-   resolution](#jwt-claims-used-for-ods-resolution) above.
-
-This enables bridging to Auth0, Keycloak, Azure AD, or any other
-OIDC-compatible identity provider for deployments that prefer a
-dedicated identity provider for OneRoster clients, provided the issuer
-can be configured to emit the Ed-Fi-specific claims.
 
 ## Quick verification
 
