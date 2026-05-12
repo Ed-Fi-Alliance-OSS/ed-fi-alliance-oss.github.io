@@ -159,7 +159,7 @@ Version 7.3.2 of the Ed-Fi ODS / API includes a
 `FeatureManagement:OneRoster` setting and supporting claim-set
 configuration that enable the ODS / API's built-in OAuth endpoint to
 issue tokens bearing the OneRoster scopes above. The ODS / API's
-discovery endpoint becomes the `OAUTH2_ISSUERBASEURL` the OneRoster
+root url becomes the `OAUTH2_ISSUERBASEURL` the OneRoster
 service points at. The Ed-Fi Web API signs the JWTs and populates the
 Ed-Fi-specific claims (`educationOrganizationId`, `odsInstances`, and `tenantId`
 when applicable); the OneRoster service validates them via PEM-encoded public key and
