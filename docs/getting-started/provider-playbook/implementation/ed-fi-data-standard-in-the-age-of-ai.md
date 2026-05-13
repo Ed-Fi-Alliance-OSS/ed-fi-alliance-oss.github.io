@@ -76,9 +76,9 @@ The Ed-Fi API is a transactional system. It is optimized for the exchange of ope
 But the operational characteristics that make the Ed-Fi API effective for interoperability make it poorly suited for analytics and AI workloads:
 
 - **Granularity.** The API exposes individual resources — a single student, a single assessment result, a single attendance event. Analytics and AI systems typically need aggregated, joined, or denormalized views across thousands or millions of records.
-- **Performance.** The underlying ODS database uses a highly normalized relational schema optimized for write-heavy transactional workloads. Read-heavy analytical queries — especially those involving complex joins across multiple domains — can be slow and resource-intensive.
+- **Performance.** The underlying ODS database uses a highly normalized relational schema optimized for write-heavy transactional workloads. Read-heavy analytical queries should be served from a dedicated data store, which can be populated by reading from the Ed-Fi API.
 - **Pagination and rate limiting.** Extracting large data sets through the API requires paginated requests, which adds latency and complexity compared to direct analytical queries. Rate limits designed to protect the API from abuse can further constrain large-scale data extraction.
-- **Authorization model.** The Ed-Fi API's authorization framework is designed for system-to-system interactions using claim sets. It controls which API client applications can access which resources, not which individual human users can see which records.
+- **Authorization model.** The Ed-Fi API's authorization framework is designed for organization-to-organization interactions using claim sets. It controls which API client applications can access which resources, not which individual human users can see which records.
 
 ```mermaid
 flowchart LR
@@ -120,7 +120,7 @@ The Ed-Fi [Analytics Middle Tier](/reference/analytics-middle-tier/amt-overview)
 
 :::warning
 
-The Analytics Middle Tier is no longer supported by the Ed-Fi Alliance. The patterns it introduced remain relevant, but the community needs to develop new implementations for modern data platforms.
+The Analytics Middle Tier is no longer supported by the Ed-Fi Alliance. The patterns it introduced remain relevant, and the Ed-Fi Community has now developed several implementations providing a modern data analytics platforms.
 
 :::
 
@@ -284,7 +284,7 @@ Knowledge graphs are particularly valuable for AI applications because they:
 - Facilitate **data discovery** by allowing analysts to explore connections they did not anticipate
 - Provide **explainability** — the graph traversal path documents exactly how the system arrived at a result
 
-The Ed-Fi Data Standard is inherently relational, with well-defined entities and associations. This makes it a strong candidate for expression as a graph. The Resource Description Framework (RDF), a W3C standard for representing knowledge graphs, could serve as a formal graph representation of the Ed-Fi Data Standard. Graph databases such as Neo4j, Amazon Neptune, or Azure Cosmos DB (with Gremlin API) could then store and query the resulting knowledge graph.
+The Ed-Fi Data Standard is based on a formal relational domain model, with well-defined entities and associations. This makes it a strong candidate for expression as a graph. The Resource Description Framework (RDF), a W3C standard for representing knowledge graphs, could serve as a formal graph representation of the Ed-Fi Data Standard. Graph databases such as Neo4j, Amazon Neptune, or Azure Cosmos DB (with Gremlin API) could then store and query the resulting knowledge graph.
 
 Whether the Ed-Fi Alliance should invest in building and maintaining an official graph representation of the Data Standard is an open question — one that this paper's call to action proposes for community discussion.
 
@@ -304,7 +304,7 @@ Open-source vector databases such as pgvector (a PostgreSQL extension), Milvus, 
 
 The [Ed-Fi in the Data Lake](https://edfi.atlassian.net/wiki/spaces/rc/pages/24806739/Ed-Fi+in+the+Data+Lake) paper identified three options for extracting data from the Ed-Fi platform. These options remain relevant:
 
-1. **Direct database reads.** ETL processes query the ODS database directly, or use Change Data Capture (CDC) to read from the transaction log. This is the highest-performance option but yields data in the ODS schema (which diverges slightly from the Data Standard due to database normalization).
+1. **Direct database reads.** ETL processes query the ODS database directly, or use Change Data Capture (CDC) to read from the transaction log. This is the highest-performance option but yields data in the ODS schema. Note: the Ed-Fi Alliance considers this an anti-pattern; while it can be effective, it bypasses the API’s security model and leads to tight coupling with the database schema instead of a tight coupling with the Ed-Fi Data Standard.
 
 2. **API-based extraction with Changed Record Queries.** An API client uses the Changed Record Queries feature to retrieve only records that have changed since the last extraction. The retrieved data conform to the Data Standard schema. This is the most standards-compliant option and works with any Ed-Fi API installation from version 3.1 onward.
 
@@ -495,8 +495,8 @@ The Ed-Fi Data Standard's entity-relationship model is a natural fit for graph r
 
 Key questions include:
 
-- Should the Ed-Fi Alliance maintain an official graph representation alongside the existing UDM and API specifications?
-- How would the graph representation handle extensions to the Ed-Fi Data Standard?
+- Should the Ed-Fi Community develop a  graph representation alongside the existing UDM and API specifications?
+- How would a graph representation handle extensions to the Ed-Fi Data Standard?
 - What tooling would be needed to generate and maintain the graph schema as the Data Standard evolves? Depending on complexity, this could be an [additional output](/reference/metaed/ide-user-guide/using-the-generated-artifacts) from the MetaEd build process.
 
 ### Reference Architectures
@@ -521,7 +521,7 @@ If the Ed-Fi community decides to invest in MCP as an AI access pattern, several
 
 ## Important Considerations
 
-**The Ed-Fi Alliance has limited resources.** The Alliance cannot build all of this alone. Its most effective role is to convene the community, define standards and reference patterns, and provide guidance — not to build and maintain every component of the AI data stack. The solutions described in this paper will require contributions from technology vendors, managed service providers, state education agencies, and the broader open-source community.
+**The Ed-Fi Alliance has limited resources.** The Alliance cannot build all of this alone. Its most effective role is to convene the community, define standards and reference patterns, and provide guidance — not to build and maintain every component of the AI data stack. The solutions described in this paper will require leadership and contributions from technology vendors, managed service providers, state education agencies, and the broader open-source community.
 
 **This is urgent, not optional.** AI systems are already being deployed in education. If the Ed-Fi community does not provide guidance on how to use standardized data with these systems, organizations will build ad hoc solutions that bypass the Data Standard entirely — reintroducing the interoperability and data quality problems that Ed-Fi was created to solve.
 
