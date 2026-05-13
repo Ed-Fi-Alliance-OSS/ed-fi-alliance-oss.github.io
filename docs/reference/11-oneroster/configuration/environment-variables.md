@@ -26,6 +26,7 @@ PG_BOSS_CONNECTION_CONFIG={"adminConnection":"host=localhost;port=5432;database=
 OAUTH2_ISSUERBASEURL=https://your-issuer/
 OAUTH2_AUDIENCE=http://localhost:3000
 OAUTH2_TOKENSIGNINGALG=RS256
+OAUTH2_PUBLIC_KEY_PEM=-----BEGIN PUBLIC KEY-----\nMIIBIjAN...\n-----END PUBLIC KEY-----
 ```
 
 The server fails to start if any required variable is missing or invalid. Required
@@ -180,10 +181,10 @@ including the JWT claims used to pick the authorized ODS instance.
 
 | Variable | Default | Notes |
 | --- | --- | --- |
-| `OAUTH2_ISSUERBASEURL` | _(none)_ | Required. Base URL of the OAuth 2.0 issuer (typically your Ed-Fi ODS / API's `/oauth/` endpoint). The `/.well-known/jwks.json` path is resolved against this when PEM verification is not configured. |
+| `OAUTH2_ISSUERBASEURL` | _(none)_ | Required. Base URL of the OAuth 2.0 issuer (typically your Ed-Fi ODS / API's root URL). The `iss` claim on inbound JWTs must match this value. |
 | `OAUTH2_AUDIENCE` | _(none)_ | Required. Expected `aud` claim on inbound JWTs. |
 | `OAUTH2_TOKENSIGNINGALG` | `RS256` | JWT signing algorithm. |
-| `OAUTH2_PUBLIC_KEY_PEM` | _(empty)_ | If set, the service verifies JWTs with this PEM public key instead of fetching JWKS. Use `\n` for line breaks when storing in `.env`. Must match the ODS API's `Security:Jwt:SigningKey:PublicKey`. |
+| `OAUTH2_PUBLIC_KEY_PEM` | _(none)_ | Required. PEM-encoded RSA public key used to verify JWT signatures. Provide on a single line using `\n` for line breaks. Must match the ODS API's `Security:Jwt:SigningKey:PublicKey`. |
 
 ## CORS, rate limiting, and proxy
 
