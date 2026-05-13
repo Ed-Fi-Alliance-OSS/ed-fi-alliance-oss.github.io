@@ -14,7 +14,7 @@ keywords:
 
 # The Ed-Fi Data Standard in the Age of AI: Benefits, Limitations, and a Path Forward
 
-23 April 2026
+13 May 2026
 
 ## Executive Summary
 
@@ -42,7 +42,7 @@ This argument fundamentally misunderstands what data standards provide. A data s
 
 Furthermore, ingesting raw, unmapped CSVs forces the LLM to use more tokens to understand the data structure, which increases costs and latency. It also increases the risk of misinterpretation: a column labeled `SCORE` could be a test score, an attendance score, or a behavior score — and the model has no way to know which without additional context.
 
-### Semantic Drift and Hallucination Risk
+### Semantic Drift Creates Tangible Risks When Analyzing Students
 
 When AI systems infer structure from raw data, they are making probabilistic guesses. A column labeled `SCH_ID` in one system and `SchoolCode` in another might refer to the same concept — or they might not. A model trained on one district's data export may silently misinterpret another district's export where the same field name carries a different meaning or uses a different coding scheme.
 
@@ -54,6 +54,7 @@ A well-defined Data Standard mitigates this risk at the source. The Ed-Fi Data S
 - **Referential integrity** that ensures relationships between entities (students, schools, sections, assessments) are valid
 - **Controlled vocabularies** through Ed-Fi Descriptors that constrain values to known, documented sets
 - **Consistent unique identifiers** that make it possible to join data across domains with confidence
+- **Constrained semantic interpretation** across a web of inter-operating applications and AI systems
 
 These properties do not merely make data _easier_ to work with. They make data _trustworthy_ — a prerequisite for any AI system that claims to deliver actionable insights.
 
