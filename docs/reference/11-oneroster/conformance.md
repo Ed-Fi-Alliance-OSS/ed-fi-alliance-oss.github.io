@@ -4,19 +4,12 @@ sidebar_position: 5
 
 # OneRoster® Conformance
 
-The Ed-Fi OneRoster service is certified by 1EdTech® against the
-OneRoster v1.2 Rostering Core service. The certification covers the
-rostering endpoints that make up the Core service; the
-`/demographics` endpoint is implemented but is not in the certified
-scope.
+:::tip 1EdTech® Certified
 
-<!--
-TODO: confirm and paste the 1EdTech certified-products
-directory URL for the Ed-Fi OneRoster service here, along with the
-formal certification date and certification identifier if one is
-issued by 1EdTech. The page currently says "certified" without
-pointing to the directory entry.
--->
+The Ed-Fi OneRoster service is certified against OneRoster 1.2 Rostering Core.<br/>
+Issued: May 13, 2026<br/>
+Registration: [IMSM3ei2026W1](https://site.imsglobal.org/certifications/ed-fi-alliance/ed-fi-oneroster-api)
+:::
 
 ## Certified scope
 
