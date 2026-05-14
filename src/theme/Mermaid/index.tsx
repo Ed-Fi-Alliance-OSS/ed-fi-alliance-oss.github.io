@@ -175,18 +175,30 @@ function MermaidViewport({
   const zoomAt = useCallback(
     (factor: number, sx: number, sy: number) => {
       const container = containerRef.current;
+      const svg = svgRef.current;
       const vb = currentVB.current;
-      if (!container || !vb) return;
-      const cw = container.offsetWidth;
-      const ch = container.offsetHeight;
-      const newW = vb.w / factor;
-      const newH = vb.h / factor;
-      // Keep the SVG point under (sx, sy) fixed during zoom.
-      const svgX = vb.x + (sx / cw) * vb.w;
-      const svgY = vb.y + (sy / ch) * vb.h;
+      if (!container || !svg || !vb) return;
+
+      // Use the actual rendered SVG bounds so that coordinate mapping is correct
+      // even when the container height cap causes the SVG to be letterboxed.
+      const containerRect = container.getBoundingClientRect();
+      const svgRect = svg.getBoundingClientRect();
+      const cw = svgRect.width;
+      const ch = svgRect.height;
+      // Convert container-relative coords to SVG-rendered-area-relative coords.
+      const localX = sx - (svgRect.left - containerRect.left);
+      const localY = sy - (svgRect.top - containerRect.top);
+
+      // Clamp the new width *before* computing x/y so the anchor point under
+      // the cursor does not drift when the zoom limit is already reached.
+      const newW = Math.max(minVBW.current, Math.min(vb.w / factor, maxVBW.current));
+      const newH = newW * (vb.h / vb.w);
+      // Keep the SVG point under (localX, localY) fixed during zoom.
+      const svgX = vb.x + (localX / cw) * vb.w;
+      const svgY = vb.y + (localY / ch) * vb.h;
       writeVB({
-        x: svgX - (sx / cw) * newW,
-        y: svgY - (sy / ch) * newH,
+        x: svgX - (localX / cw) * newW,
+        y: svgY - (localY / ch) * newH,
         w: newW,
         h: newH,
       });
@@ -221,10 +233,12 @@ function MermaidViewport({
   const handlePointerDown = useCallback((e: ReactPointerEvent<HTMLDivElement>) => {
     isDragging.current = true;
     lastPos.current = {x: e.clientX, y: e.clientY};
-    // Capture container size once so handlePointerMove avoids per-event layout reads.
-    const container = containerRef.current;
-    if (container) {
-      dragContainerSize.current = {w: container.offsetWidth, h: container.offsetHeight};
+    // Capture SVG rendered size (not container size) so drag distances are mapped
+    // correctly even when the container height cap letterboxes the SVG.
+    const svg = svgRef.current;
+    if (svg) {
+      const svgRect = svg.getBoundingClientRect();
+      dragContainerSize.current = {w: svgRect.width, h: svgRect.height};
     }
     (e.currentTarget as HTMLDivElement).setPointerCapture(e.pointerId);
   }, []);
@@ -254,12 +268,20 @@ function MermaidViewport({
     isDragging.current = false;
   }, []);
 
-  // ── button zoom (centered on viewport) ───────────────────────────────────
+  // ── button zoom (centered on SVG rendered area) ───────────────────────────
   const zoomAround = useCallback(
     (factor: number) => {
       const container = containerRef.current;
-      if (!container) return;
-      zoomAt(factor, container.offsetWidth / 2, container.offsetHeight / 2);
+      const svg = svgRef.current;
+      if (!container || !svg) return;
+      const containerRect = container.getBoundingClientRect();
+      const svgRect = svg.getBoundingClientRect();
+      // Zoom center = center of the SVG's rendered area, in container-relative coords.
+      zoomAt(
+        factor,
+        svgRect.left - containerRect.left + svgRect.width / 2,
+        svgRect.top - containerRect.top + svgRect.height / 2,
+      );
     },
     [zoomAt],
   );
