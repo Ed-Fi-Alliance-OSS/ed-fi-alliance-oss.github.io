@@ -213,7 +213,7 @@ The EconomicDisadvantaged was:
 
 ### Renamed Results Proprty in Performance Evaluation Domain
 
-Each primary rating entity in the Performance Evaluation domain (PerformanceEvaluationRating, EvaluationRating, EvaluationObjectiveRating, and EvaluationElementRating) have a results array. In the EPDM extension the numerical rating property was called `results` this has been updated to `numericalResults` in the data standard. This can be seen in the following JSON snippet:
+Each primary rating entity in the Performance Evaluation domain (PerformanceEvaluationRating, EvaluationRating, EvaluationObjectiveRating, and EvaluationElementRating) has a results array. In the EPDM extension the numerical rating property was called `results`; this has been updated to `numericalResults` in the data standard. This can be seen in the following JSON snippet:
 
 | **Before** | **After** |
 |------------|-----------|
