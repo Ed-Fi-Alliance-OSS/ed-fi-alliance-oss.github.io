@@ -5,7 +5,7 @@ education and the exchange of education data. This article collects links to The
 Ed-Fi Alliance coordinates and publishes community-led standards for resources
 and key publications.
 
-## Ed-Fi Data Standards
+## Ed-Fi Data Standard
 
 The [Ed-Fi Data Standard](./data-standards.md) is the widely
 adopted, CEDS-aligned, open-source data standard developed by the educational

@@ -162,6 +162,23 @@ const config = {
         },
       },
     ],
+    function rawLoaderPlugin() {
+      return {
+        name: 'raw-loader-plugin',
+        configureWebpack() {
+          return {
+            module: {
+              rules: [
+                {
+                  resourceQuery: /raw/,
+                  type: 'asset/source',
+                },
+              ],
+            },
+          };
+        },
+      };
+    },
   ],
 
   themeConfig:

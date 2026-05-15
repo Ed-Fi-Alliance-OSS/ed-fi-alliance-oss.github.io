@@ -26,11 +26,11 @@ hide_table_of_contents: true
 
 ## Path Domain Descriptors
 
-| Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
+| Name | Entity | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
-| StudentPathMilestoneStatus | PathMilestoneStatus | The student's status associated with the path milestone. |     |     |     |     |
-| PathMilestone | PathMilestoneType | The type of milestone defined for the student's path of study. |     |     |     |     |
-| StudentPathPhaseStatus | PathPhaseStatus | An event recognizing the change in status for the path phase. |     |     |     |     |
+| PathMilestoneStatus | StudentPathMilestoneStatus | The student's status associated with the path milestone. |     |     |     |     |
+| PathMilestoneType | PathMilestone | The type of milestone defined for the student's path of study. |     |     |     |     |
+| PathPhaseStatus | StudentPathPhaseStatus | An event recognizing the change in status for the path phase. |     |     |     |     |
 
 :::tip
 

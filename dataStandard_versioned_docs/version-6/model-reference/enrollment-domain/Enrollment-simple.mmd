@@ -1,0 +1,53 @@
+﻿erDiagram
+    Student {
+    }
+    StudentDirectory {
+    }
+    StudentDemographic {
+    }
+    StudentIdentificationCode {
+    }
+    StudentSchoolAssociation {
+    }
+    StudentEducationOrganizationAssociation {
+    }
+    StudentEducationOrganizationResponsibilityAssociation {
+    }
+    GraduationPlan {
+    }
+    CrisisEvent {
+    }
+    StudentTransportation {
+    }
+    AccountabilityRating {
+    }
+    EducationOrganization {
+    }
+    LocalEducationAgency {
+    }
+    School {
+    }
+    StudentDirectory }o--|| Student : "HasAssociated"
+    StudentDirectory }o--|| EducationOrganization : "HasAssociated"
+    StudentDemographic }o--|| Student : "HasAssociated"
+    StudentDemographic }o--|| EducationOrganization : "HasAssociated"
+    StudentIdentificationCode }o--|| Student : "HasAssociated"
+    StudentIdentificationCode }o--|| EducationOrganization : "HasAssociated"
+    Student }o--o{ EducationOrganization : "HasAssociated"
+    Student }o--o{ School : "HasAssociated"
+    StudentSchoolAssociation }o..|| Student : "HasAssociated"
+    StudentSchoolAssociation }o..|| School : "HasAssociated"
+    StudentSchoolAssociation }o--}o GraduationPlan : "HasAssociated"
+    StudentEducationOrganizationAssociation }o..|| Student : "HasAssociated"
+    StudentEducationOrganizationAssociation }o..|| EducationOrganization : "HasAssociated"
+    StudentEducationOrganizationAssociation }o--o{ CrisisEvent : "HasAssociated"
+    StudentEducationOrganizationResponsibilityAssociation }o..|| Student : "HasAssociated"
+    StudentEducationOrganizationResponsibilityAssociation }o..|| EducationOrganization : "HasAssociated"
+    StudentTransportation }o--|| Student : "HasAssociated"
+    StudentTransportation }o--|| EducationOrganization : "HasAssociated"
+    GraduationPlan }o--|| EducationOrganization : "HasAssociated"
+    AccountabilityRating }o--|| EducationOrganization : "HasAssociated"
+    School ||--|| EducationOrganization : "IsA"
+    School }o--o| LocalEducationAgency : "IsOrganizationalComponentOf"
+    LocalEducationAgency }o--|| EducationOrganization : "IsA"
+    LocalEducationAgency }o--o| LocalEducationAgency : "IsOrganizationalComponentOf"

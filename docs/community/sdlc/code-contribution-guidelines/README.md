@@ -218,7 +218,7 @@ You may wish to also review some or all of the following documents:
 
 * [Coding Standards - General Principles](./coding-standards)
 * [Testing Standards](./testing-standards)
-* [Ed-Fi Software Development Lifecycle Home](../)
+* [Software Development Lifecycle Home](../)
 
 ## Child Pages
 

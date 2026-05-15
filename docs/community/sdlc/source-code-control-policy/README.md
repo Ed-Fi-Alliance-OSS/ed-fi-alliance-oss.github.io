@@ -2,11 +2,11 @@
 
 :::note
 
-Describes source code control practices for Ed-Fi software development.
+Describes source code control practices for  software maintained by the Ed-Fi Alliance.
 
 :::
 
-1. All Ed-Fi source code should be stored in git repositories and synchronized
+1. All source code should be stored in git repositories and synchronized
    between developers using GitHub.
 2. The Ed-Fi Alliance has several different GitHub organizations, aligned to
    different purposes. Each new repository must go into an appropriate location.

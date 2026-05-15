@@ -49,15 +49,15 @@ The rest of this guide will instruct you on how to:
 
   :::
 
-## Step 1. Install the Ed-Fi Solution
+## Step 1. Install the Solution
 
 :::warning
 
-These instructions were developed with older versions of the Ed-Fi software, though they should remain compatible with newer versions.
+These instructions were developed with older versions of the Ed-Fi Technology Suite, though they should remain compatible with newer versions.
 
 :::
 
-In this step, you will install the components of the Ed-Fi solution needed for the Dashboard. These components are:
+In this step, you will install the components of the solution needed for the Dashboard. These components are:
 
 * ODS / API for Suite 3
 * Analytics Middle Tier

@@ -7,7 +7,7 @@ listing or register of regularly occurring events.
 * [Bell Schedule Domain -
     Overview](./overview.md)
 * [Bell Schedule Domain - Model
-    Diagrams](./model-diagrams.md)
+    Diagrams](./model-diagrams.mdx)
 * [Bell Schedule Domain - Entities, References, and
     Descriptors](./entities-references-and-descriptors.md)
 

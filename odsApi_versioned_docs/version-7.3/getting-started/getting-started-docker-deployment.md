@@ -16,22 +16,31 @@ include all available tags but provides enough information to understand the
 patterns and identify the images that suit your use case. Release tags are
 updated to the latest patch version whenever a patch release becomes available.
 
-## ODS API v7.3.1 Images
+## ODS API v7.3.2 Images
 
 | Image Tag          | Purpose                                                          | Example                                                                                                                             |
 |--------------------|------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
-| 7                  | Latest patch release of ODS / API 7.x and Data Standard 6.0      | [edfialliance/ods-api-web-api:7](https://hub.docker.com/layers/edfialliance/ods-api-web-api/7/)                                     |
-| 7.3                | Latest patch release of ODS / API 7.3.x and Data Standard 6.0    | [edfialliance/ods-api-web-api:7.3](https://hub.docker.com/layers/edfialliance/ods-api-web-api/7.3/)                                 |
-| 7.3.1              | Latest patch release of ODS / API 7.3.1 and Data Standard 6.0    | [edfialliance/ods-api-web-api:7.3.1](https://hub.docker.com/layers/edfialliance/ods-api-web-api/7.3.1/)                             |
+| 7                  | Latest patch release of ODS / API 7.x and Data Standard 6.1      | [edfialliance/ods-api-web-api:7](https://hub.docker.com/layers/edfialliance/ods-api-web-api/7/)                                     |
+| 7.3                | Latest patch release of ODS / API 7.3.x and Data Standard 6.1    | [edfialliance/ods-api-web-api:7.3](https://hub.docker.com/layers/edfialliance/ods-api-web-api/7.3/)                                 |
+| 7.3.2              | Latest patch release of ODS / API 7.3.2 and Data Standard 6.1    | [edfialliance/ods-api-web-api:7.3.2](https://hub.docker.com/layers/edfialliance/ods-api-web-api/7.3.2/)                             |
 | 7-5.2.0            | Latest patch release of ODS / API 7.x and Data Standard 5.2      | [edfialliance/ods-api-web-api:7-5.2.0](https://hub.docker.com/layers/edfialliance/ods-api-web-api/7-5.2.0/)                         |
 | 7-4.0.0            | Latest patch release of ODS / API 7.x and Data Standard 4.0      | [edfialliance/ods-api-web-api:7-4.0.0](https://hub.docker.com/layers/edfialliance/ods-api-web-api/7-4.0.0/)                         |
-| 7.3.1_6399-6.0.0   | Specific release build of ODS / API 7.3 and Data Standard 6.0    | [edfialliance/ods-api-web-api:7.3.1_6399-6.0.0](https://hub.docker.com/layers/edfialliance/ods-api-web-api/7.3.1_6399-6.0.0/)       |
-| 7.3.1-mssql        | Latest patch release of ODS / API 7.3.1 and Data Standard 6.0 with SQL Server backend  | [edfialliance/ods-api-web-api:7.3.1-mssql](https://hub.docker.com/layers/edfialliance/ods-api-web-api/7.3.1-mssql/)       |
+| 7.3.2-mssql        | Latest patch release of ODS / API 7.3.2 and Data Standard 6.1 with SQL Server backend  | [edfialliance/ods-api-web-api:7.3.2-mssql](https://hub.docker.com/layers/edfialliance/ods-api-web-api/7.3.2-mssql/)       |
+| 7.3.2_6447-6.1.0   | Specific release build of ODS / API 7.3 and Data Standard 6.1    | [edfialliance/ods-api-web-api:7.3.2_6447-6.1.0](https://hub.docker.com/layers/edfialliance/ods-api-web-api/7.3.2_6447-6.1.0/)      |
+
+## ODS API v7.3.1 Images
+
+| Image Tag          | Purpose                                                          | Example                                                                                                                        |
+|--------------------|------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
+| 7.3.1              | ODS / API 7.3.1 and Data Standard 6.0                            | [edfialliance/ods-api-web-api:7.3.1](https://hub.docker.com/layers/edfialliance/ods-api-web-api/7.3.1/)                        |
+| 7.3.1-4.0.0        | ODS / API 7.3 and Data Standard 4.0                              | [edfialliance/ods-api-web-api:7.3.1-4.0.0](https://hub.docker.com/layers/edfialliance/ods-api-web-api/7.3.1-4.0.0/)            |
+| 7.3.1-5.2.0        | ODS / API 7.3 and Data Standard 5.2                              | [edfialliance/ods-api-web-api:7.3.1-5.2.0](https://hub.docker.com/layers/edfialliance/ods-api-web-api/7.3.1-5.2.0/)            |
+| 7.3.1_6399-6.0.0   | Specific release build of ODS / API 7.3 and Data Standard 6.0    | [edfialliance/ods-api-web-api:7.3.1_6399-6.0.0](https://hub.docker.com/layers/edfialliance/ods-api-web-api/7.3.1_6399-6.0.0/)  |
 
 ## ODS API v7.3.0 Images
 
-| Image Tag         | Purpose                                                          | Example                                                                                                                              |
-|--------------------|------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
-| 7.3.0    | ODS / API 7.3.0 and Data Standard 5.2                            | [edfialliance/ods-api-web-api:7.3.0](https://hub.docker.com/repository/docker/edfialliance/ods-api-web-api/tags/7.3.0/)            |
-| 7.3.0_6406-5.2.0    | ODS / API 7.3.0 and Data Standard 5.2                            | [edfialliance/ods-api-web-api:7.3.0_6406-5.2.0](https://hub.docker.com/layers/edfialliance/ods-api-web-api/7.3.0_6406-5.2.0/)            |
-| 7.3.0_6406-4.0.0    | ODS / API 7.3.0 and Data Standard 4.0                            | [edfialliance/ods-api-web-api:7.3.0_6406-4.0.0](https://hub.docker.com/layers/edfialliance/ods-api-web-api/7.3.0_6406-4.0.0/)            |
+| Image Tag          | Purpose                                                          | Example                                                                                                                            |
+|--------------------|------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|
+| 7.3.0              | ODS / API 7.3.0 and Data Standard 5.2                            | [edfialliance/ods-api-web-api:7.3.0](https://hub.docker.com/layers/edfialliance/ods-api-web-api/7.3.0/)            |
+| 7.3.0_6406-5.2.0   | ODS / API 7.3.0 and Data Standard 5.2                            | [edfialliance/ods-api-web-api:7.3.0_6406-5.2.0](https://hub.docker.com/layers/edfialliance/ods-api-web-api/7.3.0_6406-5.2.0/)      |
+| 7.3.0_6406-4.0.0   | ODS / API 7.3.0 and Data Standard 4.0                            | [edfialliance/ods-api-web-api:7.3.0_6406-4.0.0](https://hub.docker.com/layers/edfialliance/ods-api-web-api/7.3.0_6406-4.0.0/)      |

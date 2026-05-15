@@ -13,15 +13,15 @@ run Initialize-PowershellForDevelopment.ps followed by initdev (as outlined in t
 the Ed-Fi-ODS-Implementation repository and is executed after the
 Invoke-NewDevelopmentAppSettings task.
 
-![Image](https://edfi.atlassian.net/wiki/download/thumbnails/22774387/image2020-11-3_11-23-42.png?version=1&modificationDate=1641861351010&cacheVersion=1&api=v2&width=841&height=701)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-11-3_11-23-42.png)
 
-![Image](https://edfi.atlassian.net/wiki/download/thumbnails/22774387/image2020-11-3_11-26-46.png?version=1&modificationDate=1641861351000&cacheVersion=1&api=v2&width=848&height=511)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-11-3_11-26-46.png)
 
 A successful `initdev` execution will display the tasks executed and their duration as shown, and you
 can see that code generation utility is downloaded and installed during the
 process.
 
-![Image](https://edfi.atlassian.net/wiki/download/thumbnails/22774387/image2020-11-3_11-21-9.png?version=1&modificationDate=1641861351030&cacheVersion=1&api=v2&width=839&height=263)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-11-3_11-21-9.png)
 
 ##   Manual Execution
 
@@ -34,7 +34,7 @@ manually, run Initialize-PowershellForDevelopment.ps script from a PowerShell pr
 version of the tool, and install it into the tools folder under
 the Ed-Fi-ODS-Implementation repository.
 
-![Image](https://edfi.atlassian.net/wiki/download/thumbnails/22774387/image2020-11-3_11-29-58.png?version=1&modificationDate=1641861350990&cacheVersion=1&api=v2&width=839&height=228)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-11-3_11-29-58.png)
 
 ### Execution
 
@@ -42,4 +42,4 @@ To run code generation independently from the build process, the tool can be
 executed by calling the PowerShell command Run-CodeGen. This will execute the
 generation process for all required classes.
 
-![Image](https://edfi.atlassian.net/wiki/download/thumbnails/22774387/image2020-11-3_11-31-4.png?version=1&modificationDate=1641861350977&cacheVersion=1&api=v2&width=841&height=529)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-11-3_11-31-4.png)

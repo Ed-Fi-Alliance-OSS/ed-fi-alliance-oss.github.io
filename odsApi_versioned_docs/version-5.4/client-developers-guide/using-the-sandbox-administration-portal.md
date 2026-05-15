@@ -58,7 +58,7 @@ invitation e-mail, a link will be provided that will direct you to set a
 password for your account. Upon logging in, you will see the existing sandboxes
 associated with your user, along with their application key and secret.
 
-![Sandbox Administration Portal with configured sandboxes](/img/reference/ods-api/sandbox.webp)
+![Sandbox Administration Portal with configured sandboxes](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/sandbox.webp)
 
 **Figure 2.** Sandbox Administration Portal with configured sandboxes
 

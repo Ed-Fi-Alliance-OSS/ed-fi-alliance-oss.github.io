@@ -1,0 +1,20 @@
+﻿erDiagram
+    BellSchedule {
+    }
+    ClassPeriod {
+    }
+    Session {
+    }
+    Section {
+    }
+    EducationOrganization {
+    }
+    School {
+    }
+    School ||--|| EducationOrganization : "IsA"
+    BellSchedule }o--|| School : "HasAssociated"
+    BellSchedule ||--|{ ClassPeriod : "HasAssociated"
+    ClassPeriod }o--|| School : "HasAssociated"
+    Session }|--|| School : "HasAssociated"
+    Section ||--o{ ClassPeriod : "HasAssociated"
+

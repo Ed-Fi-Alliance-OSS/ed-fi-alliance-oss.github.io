@@ -3,7 +3,7 @@
 ## Technical Conformance
 
 To be certified, a product MUST pass technical conformance testing demonstrating
-that the product implements a targeted set of Ed-Fi standards.
+that the product implements a targeted subset of the Ed-Fi Data Standard.
 
 ## Product Updates and Editions
 

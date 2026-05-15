@@ -29,8 +29,8 @@ Database Deploy Tool to deploy the ODS and related databases used by the API.
 
 As a [.NET Global
 Tool](https://docs.microsoft.com/en-us/dotnet/core/tools/global-tools), the
-application runs on a machine with [.NET 8.0 SDK (Compatible with Visual Studio
-2022)](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) and is installed
+application runs on a machine with [.NET 10.0 SDK (Compatible with Visual Studio
+2022)](https://dotnet.microsoft.com/en-us/download/dotnet/10.0) and is installed
 from Azure Artifacts with one of the following commands:
 
 ```powershell
@@ -43,11 +43,11 @@ dotnet tool install EdFi.Suite3.Db.Deploy --tool-path <directory> `
   --add-source https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json
 
 # Install a specific version
-dotnet tool install EdFi.Suite3.Db.Deploy --tool-path <directory> --version 4.1.52 `
+dotnet tool install EdFi.Suite3.Db.Deploy --tool-path <directory> --version 4.3.2 `
   --add-source https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json
 
-# Install the most recent patch-release of 4.1 by adding -* wildcard to the version
-dotnet tool install EdFi.Suite3.Db.Deploy --tool-path <directory> --version 4.1.* `
+# Install the most recent patch-release of 4.3 by adding -* wildcard to the version
+dotnet tool install EdFi.Suite3.Db.Deploy --tool-path <directory> --version 4.3.* `
   --add-source https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json
 ```
 

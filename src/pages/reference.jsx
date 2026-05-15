@@ -36,7 +36,7 @@ function Main() {
               language that allows educational technology systems to securely
               exchange data. It helps educators and administrators gain a
               comprehensive understanding of student progress and make informed
-              decisions. The Ed-Fi API Standard define criteria for creation of
+              decisions. The Ed-Fi API Specifications define criteria for creation of
               HTTP-based API applications that use or support the Ed-Fi Data
               Standard.{' '}
               <Link to="/reference/data-exchange">
@@ -50,6 +50,17 @@ function Main() {
               It enables seamless data exchange and supports various educational
               applications.{' '}
               <Link to="/reference/ods-api">Explore the Ed-Fi ODS/API</Link>
+            </p>
+            <h2>Ed-Fi OneRoster Service</h2>
+            <p>
+              The Ed-Fi OneRoster® Service serves a 1EdTech® OneRoster v1.2
+              Rostering API from data in an Ed-Fi ODS. It gives vendor
+              applications that expect OneRoster a consistent way to read
+              rostering data, and is certified by 1EdTech against the
+              OneRoster v1.2 Rostering Core service.{' '}
+              <Link to="/reference/oneroster">
+                Explore the Ed-Fi OneRoster Service
+              </Link>
             </p>
             {/* useful text for future use, not ready to include here yet. */}
             {/* <h2>Ed-Fi Data Management Service</h2>

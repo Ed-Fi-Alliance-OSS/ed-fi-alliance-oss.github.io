@@ -19,18 +19,18 @@ Utility](../../how-to-guides/how-to-load-the-ods-with-sample-xml-data-using-bulk
 The populated template is generated with the Loader using sample XML data
 contained in the public Ed-Fi-Standard GitHub repository:
 
-* [v6.0.0 Descriptors](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v6.0.0/Descriptors)
-* [v6.0.0 Samples Sample XML](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v6.0.0/Samples/Sample%20XML)
+* [v6.1.0 Descriptors](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v6.1.0/Descriptors)
+* [v6.1.0 Samples Sample XML](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v6.1.0/Samples/Sample%20XML)
 
 ## Ed-Fi ODS Minimal Template
 
 The minimal template is generated with the Loader by loading Ed-Fi
 descriptors contained in the public Ed-Fi-Standard GitHub
-repository ([v6.0.0 Descriptors](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v6.0.0/Descriptors)).
+repository ([v6.1.0 Descriptors](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v6.1.0/Descriptors)).
 
 ## Overview of Solution Architecture
 
-The Bulk Load Client consists of a .NET 8 solution. It uses C# as the primary
+The Bulk Load Client consists of a .NET 10 solution. It uses C# as the primary
 language, with TPL (Task Parallel Library) for pipeline processing support.
 Infrastructure libraries include log4net for logging, nUnit for unit test, and
 Newtonsoft.Json and Microsoft's WebApi client libraries for web API integration.

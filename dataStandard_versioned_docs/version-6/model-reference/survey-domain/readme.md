@@ -8,7 +8,7 @@ can handle both identified and anonymous responses.
 ## Subsections
 
 * [Survey Domain - Overview](./overview.md)
-* [Survey Domain - Model Diagrams](./model-diagrams.md)
+* [Survey Domain - Model Diagrams](./model-diagrams.mdx)
 * [Survey Domain - Entities, References, and Descriptors](./entities-references-and-descriptors.md)
 
 ← [Go back to the UDM Reference page](../readme.md)

@@ -116,7 +116,7 @@ a single computer.
 
 In this document we are discussing deployment to Internet Information Server
 (IIS) on a Windows Server and using SQL Server for the database. However the web
-applications, being a .NET 8 application, can run cross-platform and PostgreSQL
+applications, being a .NET 10 application, can run cross-platform and PostgreSQL
 is another choice for database.
 
 :::
@@ -125,7 +125,7 @@ is another choice for database.
 
 This logical server requires Internet Information Server (IIS) to be installed
 as well as the [ASP.NET Core Hosting
-Bundle](https://dotnet.microsoft.com/en-us/download/dotnet/8.0).
+Bundle](https://dotnet.microsoft.com/en-us/download/dotnet/10.0).
 
 ### ODS Database Server
 
@@ -353,7 +353,7 @@ website are provided in the sections that follow.
 
 * IIS is running on the target machine.
 * [ASP.NET Core Hosting
-    Bundle](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) is
+    Bundle](https://dotnet.microsoft.com/en-us/download/dotnet/10.0) is
     installed.
 * The local IIS site used to host your web application has site bindings
     configured for https.  This only needs to be done once per IIS site.

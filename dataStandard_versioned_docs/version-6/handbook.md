@@ -13,9 +13,9 @@ entities that make up the Ed-Fi Data Model.
 
 :::tip
 
-<a href="https://edfidocs.blob.core.windows.net/$web/handbook/v6.0/index.html" target="_blank">Open the handbook in a separate tab</a>
+<a href="https://edfidocs.blob.core.windows.net/$web/handbook/v6.1/index.html" target="_blank">Open the handbook in a separate tab</a>
 
 :::
 
-<iframe src="https://edfidocs.blob.core.windows.net/$web/handbook/v6.0/index.html"
-  title="Data Standard v6.0 Handbook" />
+<iframe src="https://edfidocs.blob.core.windows.net/$web/handbook/v6.1/index.html"
+  title="Data Standard v6.1 Handbook" />

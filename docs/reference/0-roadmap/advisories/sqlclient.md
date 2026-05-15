@@ -11,7 +11,7 @@ February 9, 2024
 In January 2024, Microsoft released a [Security
 Advisory](https://github.com/dotnet/announcements/issues/292) concerning the
 versions of the Microsoft.Data.SqlClient and System.Data.SqlClient packages
-utilized in certain Ed-Fi software releases. The advisory strongly recommends
+utilized in certain software released by the Ed-Fi Alliance. The advisory strongly recommends
 upgrading these packages to address potential security vulnerabilities.
 
 ## Affected Versions

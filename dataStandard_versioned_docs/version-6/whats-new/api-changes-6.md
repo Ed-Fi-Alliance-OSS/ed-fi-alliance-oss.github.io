@@ -1,8 +1,3 @@
----
-sidebar_position: 2
-hide_table_of_contents: true
----
-
 # API Changes from 5.0 to 6.0
 
 ## New Endpoints

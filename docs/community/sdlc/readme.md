@@ -2,12 +2,12 @@
 sidebar_position: 1
 ---
 
-# Ed-Fi Software Development Lifecycle Home
+# Software Development Lifecycle Home
 
 :::note
 
-Landing page for policies, guidelines, and procedures related to Ed-Fi software
-development. Intended for use by open-source contributors and staff /
+Landing page for policies, guidelines, and procedures related to software
+developed for the Ed-Fi Alliance. Intended for use by open-source contributors and staff /
 contractors alike.
 
 :::

@@ -5,10 +5,10 @@ title: Data Governance
 
 # State Education Agencies - Data Governance
 
-This section covers topics relating to SEA data governance processes and how implementing the Ed-Fi Data Standards changes those. It also provides information on where and how to learn about the Ed-Fi standards.
+This section covers topics relating to SEA data governance processes and how implementing the Ed-Fi Data Standard changes those. It also provides information on where and how to learn about the Ed-Fi Data Standard.
 
 * [Developing State Data Specifications](./developing-state-data-specifications/readme.md)
-* [Guidelines and Expectations for States Using Ed-Fi Standards](./guidelines-and-expectations-for-states-using-ed-fi-standards.md)
+* [Guidelines and Expectations for States Using the Ed-Fi Data Standard](./guidelines-and-expectations-for-states-using-ed-fi-standards.md)
 * [Overview of Ed-Fi Data Domains](./overview-of-ed-fi-data-domains/readme.md)
   * [How To: Calculate Instructional Days and Instructional Time](./overview-of-ed-fi-data-domains/how-to-calculate-instructional-days-and-instructional-time/readme.md)
     * [Use Case: Minutes per Day](./overview-of-ed-fi-data-domains/how-to-calculate-instructional-days-and-instructional-time/use-case-minutes-per-day.md)

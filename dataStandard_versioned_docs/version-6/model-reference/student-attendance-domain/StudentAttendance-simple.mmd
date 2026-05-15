@@ -1,0 +1,47 @@
+﻿erDiagram
+    Student {
+    }
+    StudentSchoolAttendanceEvent {
+    }
+    StudentSectionAttendanceEvent {
+    }
+    StudentProgramAttendanceEvent {
+    }
+    StudentSectionAssociation {
+    }
+    GeneralStudentProgramAssociation {
+    }
+    SectionAttendanceTakenEvent {
+    }
+    Session {
+    }
+    Section {
+    }
+    Program {
+    }
+    School {
+    }
+    Staff {
+    }
+    Session }o--|| School : "HasAssociated"
+    Section }|--o| School : "HasAssociated"
+    Section }o--o{ Program : "HasAssociated"
+    SectionAttendanceTakenEvent }o--o| Staff : "HasAssociated"
+    SectionAttendanceTakenEvent }o--|| Section : "HasAssociated"
+    Staff }o--o{ School : "HasAssociated"
+    Staff }o--o{ Section : "HasAssociated"
+    Program }o--o{ Staff : "HasAssociated"
+    StudentProgramAttendanceEvent }o--|| Program : "HasAssociated"
+    StudentProgramAttendanceEvent }o--|| Student : "HasAssociated"
+    StudentSchoolAttendanceEvent }o--|| Session : "HasAssociated"
+    StudentSchoolAttendanceEvent }o--|| School : "HasAssociated"
+    StudentSchoolAttendanceEvent }o--|| Student : "HasAssociated"
+    StudentSectionAttendanceEvent }o--|| Section : "HasAssociated"
+    StudentSectionAttendanceEvent }o--|| Student : "HasAssociated"
+    Student }o--o{ School : "HasAssociated"
+    Student }o--o| Section : "ParticipatesIn"
+    Student }o--o{ Program : "ParticipatesIn"
+    GeneralStudentProgramAssociation }o..|| Student : "ParticipatesIn"
+    GeneralStudentProgramAssociation }o..|| Program : "ParticipatesIn"
+    StudentSectionAssociation }o--|| Student : "ParticipatesIn"
+    StudentSectionAssociation }o--|| Section : "ParticipatesIn"

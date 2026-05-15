@@ -1,0 +1,53 @@
+﻿erDiagram
+    ProgramEvaluation {
+    }
+    ProgramEvaluationObjective {
+    }
+    ProgramEvaluationElement {
+    }
+    EvaluationRubricDimension {
+    }
+    StudentProgramEvaluation {
+    }
+    StudentEvaluationObjective {
+    }
+    StudentEvaluationElement {
+    }
+    GeneralStudentProgramAssociation {
+    }
+    StaffProgramAssociation {
+    }
+    Program {
+    }
+    Student {
+    }
+    Staff {
+    }
+    EducationOrganization {
+    }
+    School {
+    }
+    EducationOrganization ||--|| School : "IsA"
+    EducationOrganization }o--o{ Program : "IsDirectProviderOf"
+    Program }o--o{ Staff : "HasAssociated"
+    Program }o--|| EducationOrganization : "HasAssociated"
+    GeneralStudentProgramAssociation }o--|| EducationOrganization : "HasAssociated"
+    Student }o--o{ School : "HasAssociated"
+    Student }o--o{ Program : "ParticipatesIn"
+    Student ||--o{ StudentProgramEvaluation : "HasAssociated"
+    StudentProgramEvaluation }o--o| EducationOrganization : "HasAssociated"
+    StudentProgramEvaluation }o--|| ProgramEvaluation : "HasAssociated"
+    ProgramEvaluation }o--|| Program : "HasAssociated"
+    ProgramEvaluationObjective }o--|| ProgramEvaluation : "HasAssociated"
+    ProgramEvaluationElement }o--o| ProgramEvaluationObjective : "HasAssociated"
+    EvaluationRubricDimension }o--|| ProgramEvaluationElement : "HasAssociated"
+    StudentEvaluationObjective }o--|| ProgramEvaluationObjective : "HasAssociated"
+    StudentEvaluationElement }o--|| ProgramEvaluationElement : "HasAssociated"
+    ProgramEvaluationElement }o--|| ProgramEvaluation : "HasAssociated"
+    StudentProgramEvaluation }o--o{ Staff : "EvaluatedBy"
+    StudentEvaluationObjective }o..|| StudentProgramEvaluation : "HasAssociated"
+    StudentEvaluationElement }o..|| StudentProgramEvaluation : "HasAssociated"
+    StaffProgramAssociation }o..|| Staff : "HasAssociated"
+    StaffProgramAssociation }o..|| Program : "HasAssociated"
+    GeneralStudentProgramAssociation }o..|| Program : "HasAssociated"
+    GeneralStudentProgramAssociation }o..|| Student : "HasAssociated"

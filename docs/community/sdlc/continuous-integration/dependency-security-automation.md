@@ -6,7 +6,7 @@ description: Guidance for open- and closed-source projects.
 
 ## Overview
 
-Most Ed-Fi software projects involve the use of pre-packaged libraries or
+Most projects maintained by the Ed-Fi Alliance involve the use of pre-packaged libraries or
 packages, collectively referred to as "dependencies". These are potentially
 vulnerable to supply chain attacks: a malicious agent hijacks a the dependency,
 injecting malicious code. Then an unwitting downstream user (such as the Ed-Fi

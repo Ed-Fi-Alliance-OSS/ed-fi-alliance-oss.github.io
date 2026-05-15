@@ -34,28 +34,28 @@ hide_table_of_contents: true
 
 ## Finance Domain Descriptors
 
-| Entity | Name | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
+| Name | Entity | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
-| Staff | AcademicSubject | The academic subject(s) in which the staff is deemed to be "highly qualified". | Local | Yes | Yes |     |
-| ChartOfAccount | AccountType | The type of account used in accounting such as revenue, expenditure, or balance sheet.  |     |     |     |     |
-| Staff | AchievementCategory | The category of achievement attributed to the individual. | Local |     |     |     |
-| EducationOrganization | AddressType | The type of address listed for an individual or organization. | Orthodox | Yes | Yes | Yes |
-| EducationOrganization | Country | The name of the country. It is strongly recommended that entries use only ISO 3166 2-letter country codes. | Standard |     |     |     |
-| EducationOrganization | EducationOrganizationCategory | The classification of the education agency within the geographic boundaries of a state according to the level of administrative and operational control granted by the state. |     |     |     |     |
-| LocalBudget,<br /> LocalActual <br /> LocalContractedStaff <br /> LocalEncumbrance <br /> LocalPayroll | FinancialCollection | The accounting period or grouping for which the amount is collected. | Flexible |     |     |     |
-| Staff | IdentificationDocumentUse | The primary function of the document used for establishing identity. | Orthodox |     |     |     |
-| EducationOrganization | Indicator |The name or code for the indicator or metric. |     |     |     |     |
-| EducationOrganization | IndicatorGroup | The name for a group of indicators. |     |     |     |     |
-| EducationOrganization | IndicatorLevel | The value of the indicator or metric, as a value from a controlled vocabulary. The semantics of an empty value is "not submitted." |     |     |     |     |
-| EducationOrganization | InstitutionTelephoneNumberType | The type of communication number listed for an individual or organization. |     |     |     |     |
-| Staff | LevelOfEducation | The extent of formal instruction an individual has received (e.g., the highest grade in school completed or its equivalent or the highest degree received). | Orthodox |     |     |     |
-| EducationOrganization | Locale | A general geographic indicator that categorizes U.S. territory (e.g., City, Suburban). |     |     |     |     |
-| EducationOrganization | OperationalStatus | The current operational status of the education organization (e.g., active, inactive). |     |     |     |     |
-| Staff | OtherNameType | The types of alternate names for an individual. | Orthodox |     |     |     |
-| Staff | PersonalInformationVerification | The category of the document relative to its purpose. | Orthodox |     |     |     |
-| Staff | RecognitionType | The nature of recognition given to the individual for accomplishments in a co-curricular, or extra-curricular activity. |     |     |     |     |
-| LocalAccount <br /> BalanceSheetDimension <br /> ChartOfAccount <br /> FunctionDimension <br /> FundDimension <br /> ObjectDimension <br /> OperationalUnitDimension <br /> ProgramDimension <br /> ProjectDimension <br /> SourceDimension | ReportingTag | Optional tag for accountability reporting. Used at the dimension and/or chart of account levels to demote specific state needs for reporting.  | Orthodox |     |     |     |
-| EducationOrganization | StateAbbreviation | The abbreviation for the state (within the United States) or outlying area in which an address is located. | Standard |     |     |     |
+| AcademicSubject | Staff | The academic subject(s) in which the staff is deemed to be "highly qualified". | Local | Yes | Yes |     |
+| AccountType | ChartOfAccount | The type of account used in accounting such as revenue, expenditure, or balance sheet. |     |     |     |     |
+| AchievementCategory | Staff | The category of achievement attributed to the individual. | Local |     |     |     |
+| AddressType | EducationOrganization | The type of address listed for an individual or organization. | Orthodox | Yes | Yes | Yes |
+| Country | EducationOrganization | The name of the country. It is strongly recommended that entries use only ISO 3166 2-letter country codes. | Standard |     |     |     |
+| EducationOrganizationCategory | EducationOrganization | The classification of the education agency within the geographic boundaries of a state according to the level of administrative and operational control granted by the state. |     |     |     |     |
+| FinancialCollection | LocalBudget <br /> LocalActual <br /> LocalContractedStaff <br /> LocalEncumbrance <br /> LocalPayroll | The accounting period or grouping for which the amount is collected. | Flexible |     |     |     |
+| IdentificationDocumentUse | Staff | The primary function of the document used for establishing identity. | Orthodox |     |     |     |
+| Indicator | EducationOrganization | The name or code for the indicator or metric. |     |     |     |     |
+| IndicatorGroup | EducationOrganization | The name for a group of indicators. |     |     |     |     |
+| IndicatorLevel | EducationOrganization | The value of the indicator or metric, as a value from a controlled vocabulary. The semantics of an empty value is "not submitted." |     |     |     |     |
+| InstitutionTelephoneNumberType | EducationOrganization | The type of communication number listed for an individual or organization. |     |     |     |     |
+| LevelOfEducation | Staff | The extent of formal instruction an individual has received (e.g., the highest grade in school completed or its equivalent or the highest degree received). | Orthodox |     |     |     |
+| Locale | EducationOrganization | A general geographic indicator that categorizes U.S. territory (e.g., City, Suburban). |     |     |     |     |
+| OperationalStatus | EducationOrganization | The current operational status of the education organization (e.g., active, inactive). |     |     |     |     |
+| OtherNameType | Staff | The types of alternate names for an individual. | Orthodox |     |     |     |
+| PersonalInformationVerification | Staff | The category of the document relative to its purpose. | Orthodox |     |     |     |
+| RecognitionType | Staff | The nature of recognition given to the individual for accomplishments in a co-curricular, or extra-curricular activity. |     |     |     |     |
+| ReportingTag | LocalAccount <br /> BalanceSheetDimension <br /> ChartOfAccount <br /> FunctionDimension <br /> FundDimension <br /> ObjectDimension <br /> OperationalUnitDimension <br /> ProgramDimension <br /> ProjectDimension <br /> SourceDimension | Optional tag for accountability reporting. Used at the dimension and/or chart of account levels to demote specific state needs for reporting. | Orthodox |     |     |     |
+| StateAbbreviation | EducationOrganization | The abbreviation for the state (within the United States) or outlying area in which an address is located. | Standard |     |     |     |
 
 :::tip
 

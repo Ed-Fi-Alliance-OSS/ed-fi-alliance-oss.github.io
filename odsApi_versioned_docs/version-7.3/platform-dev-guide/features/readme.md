@@ -14,6 +14,7 @@ contains additional reference documentation for these configurable features.
 | tokenInfo | true | Enables oauth [token\_info](https://tools.ietf.org/html/rfc7662#section-2) introspective endpoint which provides the additional security configuration information for the token. See [Token Info](./../../client-developers-guide/authorization.md#token-info) section for mode details. |
 | :new: serializedData | true | Activates optimized behavior in the API to [serialize the resource data](./serialized-data.md) into a binary representation that is stored on the "root" record of the resource's underlying table in the ODS. This serialized representation is then used as the primary source for servicing future API requests, significantly reducing the SQL that executed by the API to retrieve data while processing API requests. |
 | :new: resourceLinks | true | Controls the inclusion of `link` objects in references in responses from the Data Management resource endpoints. Disabling this feature is a server-side optimization reducing database load, but comes with the risk of breaking API client integrations that utilize them. |
+| :new: oneRoster | false | Enables the [OneRoster API](./oneroster.md) endpoints. |
 | identityManagement | false | Enables the [Identity API](../../technical-articles/identities-api.md) endpoints. |
 | uniqueIdValidation | false | Enables [Unique ID Validation](../../technical-articles/unique-id-system-integration.md). This requires custom implementation of IUniqueIdToIdValueMapper and its registration within the WebApi. |
 
@@ -21,6 +22,7 @@ contains additional reference documentation for these configurable features.
 
 * [Changed Record Queries](./changed-record-queries.md)
 * [Notifications Expiring Local Caches Remotely](./notifications-expiring-local-caches-remotely.md)
+* [OneRoster](./oneroster.md)
 * [Ownership Based Authorization](./ownership-based-authorization.md)
 * [Read Replicas](./read-replicas.md)
 * [Serialized Data](./serialized-data.md)

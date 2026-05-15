@@ -28,7 +28,7 @@ consistent with the core value provided by the product.
 For the format, the mapping must
 
 * be in a spreadsheet format.
-* in header information, state the version numbers of the Ed-Fi standards or
+* in header information, state the version numbers of the Ed-Fi Data Standard or
   products which apply to the data elements (e.g. "The data elements listed are
   for Ed-Fi Data Standard 3.1"). If the product has multiple version support, it
   is permitted to default these to the most recent Ed-Fi version supported.
