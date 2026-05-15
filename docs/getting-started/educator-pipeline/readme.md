@@ -22,3 +22,5 @@ following use case documents.
 * [Apprenticeship Use Case](./use-cases/apprenticeship.mdx)
 * [Clinical Experience Use Case](./use-cases/clinical-experience.md)
 * [Program Diversity and Persistence Use Case](./use-cases/program-diversity.md)
+* [EPP Resources](./epp-resources.md)
+* [Technical Resources](/reference/educator-pipeline/)
