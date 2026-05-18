@@ -126,7 +126,7 @@ Additional applications formally maintained and supported by the Ed-Fi Alliance:
 
 * [API Publisher](../6-api-publisher/readme.md) works with all supported
   versions of the Ed-Fi ODS/API
-* [Data Import](../6-data-import/readme.md) works with all supported versions of
+* [Data Import](../9-data-import/readme.md) works with all supported versions of
   the Ed-Fi ODS/API (supported through June 30, 2026)
 
 In all of these cases, only the latest version is formally supported.

@@ -92,7 +92,7 @@ Install Instructions for Admin App can be found in the [Admin App](/getting-star
 
 ### Install Data Import
 
-Install Instructions for Data Import can be found in the [PowerShell Installation for Data Import using NuGet Packages](../../6-data-import/readme.md) guide. Data Import configuration is also described below.
+Install Instructions for Data Import can be found in the [PowerShell Installation for Data Import using NuGet Packages](../../9-data-import/readme.md) guide. Data Import configuration is also described below.
 
 :::tip Time to complete
 
@@ -153,7 +153,7 @@ Note: Treat the **Key** and **Secret** as secure information for your organi
 
 ## Step 3. Configure Data Import and Load Data
 
-The [Data Import tool](../../6-data-import/readme.md) is used for loading export files (typically in CSV format) generated manually, by the EPP, or one of their automated services. There are 5 steps to load data to the ODS/API:
+The [Data Import tool](../../9-data-import/readme.md) is used for loading export files (typically in CSV format) generated manually, by the EPP, or one of their automated services. There are 5 steps to load data to the ODS/API:
 
 1. Configure Data Import for First Time Use
 2. Create your map
