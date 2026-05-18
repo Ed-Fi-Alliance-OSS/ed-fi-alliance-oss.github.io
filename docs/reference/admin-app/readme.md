@@ -8,14 +8,14 @@ and API health across diverse user roles and deployment models.
 
 ## Documentation
 
-Documentation for the Ed-Fi Admin API is viewable online:
+Documentation for the Ed-Fi Admin App is viewable online:
 
 * [What's New](./whats-new.md)
 * [Getting Started](./getting-started.md)
 
 ## Target Audiences
 
-This applications is designed to support IT staff who are managing large-scale
+This application is designed to support IT staff who are managing large-scale
 deployments of the Ed-Fi API applications: managed service providers, state
 agencies, data hubs. In turn, the hosting agency can provide configurable access
 to delegate some maintenance tasks to local education agency staff.
