@@ -26,6 +26,7 @@ You may need to configure TLS while running the installation scripts described i
 ```powershell
 [Net.ServicePointManager]::SecurityProtocol += [Net.SecurityProtocolType]::Tls12
 ```
+
 :::
 
 ---
@@ -56,6 +57,7 @@ There are several settings in the configuration file that are left empty as they
     "PopulatedTemplateScript": "TPDMCorePopulatedTemplate"
   }
   ```
+
 </details>
 
 <details>
@@ -76,6 +78,7 @@ There are several settings in the configuration file that are left empty as they
     "PopulatedTemplateScript": "TPDMCorePostgreSqlPopulatedTemplate"
   }
   ```
+
 </details>
 
 <details>
@@ -142,6 +145,7 @@ The WebApi installer can take a number of parameters to tailor the installation 
     InstallType = "YearSpecific"
   }
   ```
+
 </details>
 
 <details>
@@ -158,9 +162,8 @@ The WebApi installer can take a number of parameters to tailor the installation 
     InstallType = "YearSpecific"
   }
   ```
+
 </details>
-
-
 
 Paste the modified parameter code into your PowerShell window and hit Enter.
 
@@ -171,6 +174,7 @@ Run the following command in the PowerShell window:
 ```powershell
 Install-EdFiOdsWebApi @parameters
 ```
+
 <details>
   <summary>Optional: Custom Extension Plugin Deployment Steps</summary>
 
@@ -224,7 +228,7 @@ Install-EdFiOdsSwaggerUI @parameters
 
 ## Step 5. Install Admin App
 
-The Admin App provides a graphical interface for platform hosts to administer and manage non-sandbox instances of the Ed-Fi ODS / API. Follow the installation steps [here](https://docs.ed-fi.org/reference/ods-admin-app) to install Admin App for administration of Ed-Fi ODS / API in YearSpecific mode and then configure your year specific instances as described [here](https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25239521/Multi-Instance+Connections). Alternatively, API keys and secrets can be administered by database administrators via SQL queries as outlined in the article [How To: Configure Key / Secret](../../how-to-guides/how-to-configure-key-secret.md).
+The Admin App provides a graphical interface for platform hosts to administer and manage non-sandbox instances of the Ed-Fi ODS / API. Follow the installation steps [here](https://docs.ed-fi.org/getting-started/edfi-exchange/technology/ods-admin-app) to install Admin App for administration of Ed-Fi ODS / API in YearSpecific mode and then configure your year specific instances as described [here](https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25239521/Multi-Instance+Connections). Alternatively, API keys and secrets can be administered by database administrators via SQL queries as outlined in the article [How To: Configure Key / Secret](../../how-to-guides/how-to-configure-key-secret.md).
 
 ---
 
@@ -248,4 +252,3 @@ You are now ready to use the Ed-Fi ODS / API. The following URLs are available:
 | Ed-Fi ODS / API | https://YOUR_SERVER_NAME_HERE/WebApi/ |
 | Ed-Fi Admin App | https://YOUR_SERVER_NAME_HERE/AdminApp/ |
 | Ed-Fi ODS / API Documentation (Optional, not for production) | https://YOUR_SERVER_NAME_HERE/SwaggerUI |
-

@@ -32,13 +32,14 @@ permission to load every module in the installer) and click **OK**.
 
 ![Package Properties](https://edfi.atlassian.net/wiki/download/thumbnails/25493615/image-2023-8-21_11-25-34.png?version=1&modificationDate=1699456100277&cacheVersion=1&api=v2&width=359&height=503)
 
-:::info 
+:::info
 You may need to configure TLS while running the installation scripts described
 in steps below.
 
 ```powershell
 [Net.ServicePointManager]::SecurityProtocol += [Net.SecurityProtocolType]::Tls12
 ```
+
 :::
 
 ## Step 2. Install the Ed-Fi Databases
@@ -73,6 +74,7 @@ settings by consulting the samples provided below.
   }
 }
 ```
+
 </details>
 
 <details>
@@ -95,6 +97,7 @@ settings by consulting the samples provided below.
   }
 }
 ```
+
 </details>
 
 <details>
@@ -102,7 +105,7 @@ settings by consulting the samples provided below.
 
 ```json
 {
-  "InstallType": "MultiTenant", 
+  "InstallType": "MultiTenant",
   "ApiSettings": {
       "Engine": "SQLServer",
       "OdsTokens": "Tenant1ODS;Tenant2ODS",
@@ -131,6 +134,7 @@ settings by consulting the samples provided below.
   }
 }
 ```
+
 </details>
 
 <details>
@@ -138,7 +142,7 @@ settings by consulting the samples provided below.
 
 ```json
 {
-  "InstallType": "MultiTenant", 
+  "InstallType": "MultiTenant",
   "ApiSettings": {
       "Engine": "PostgreSQL",
       "OdsTokens": "Tenant1ODS;Tenant2ODS",
@@ -167,8 +171,8 @@ settings by consulting the samples provided below.
   }
 }
 ```
-</details>
 
+</details>
 
 <details>
 <summary>Optional: Click here to see custom extension Plugin deployment steps...</summary>
@@ -197,7 +201,6 @@ Scripts values to the following:
 ```
 
 </details>
-
 
 ## Run Installation Script
 
@@ -253,6 +256,7 @@ $parameters = @{
     UnEncryptedConnection = $true
 }
 ```
+
 </details>
 
 <details>
@@ -269,6 +273,7 @@ $parameters = @{
     }
 }
 ```
+
 </details>
 
 <details>
@@ -297,6 +302,7 @@ $parameters = @{
     }
 }
 ```
+
 </details>
 
 <details>
@@ -324,9 +330,10 @@ $parameters = @{
     }
 }
 ```
+
 </details>
 
-:::info 
+:::info
 **Use of UnEncryptedConnection parameter**
 
 UnEncryptedConnection = $true will add Encrypt=false to the connection strings
@@ -338,8 +345,7 @@ valid certificate on the
 server.](https://learn.microsoft.com/en-us/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)
 :::
 
-
-:::info 
+:::info
 ODS Connection String Encryption
 
 By default, an Encryption key will be generated using member
@@ -429,7 +435,7 @@ $parameters = @{
 
 Paste the modified parameter into your PowerShell window and execute the code.
 
-:::info 
+:::info
 
 To deploy Swagger for MultiTenant, use parameters `Tenants` and `DefaultTenant`
 (Optional. Used to specify one tenant to be displayed as default).
@@ -487,5 +493,5 @@ You are now ready to use the Ed-Fi ODS / API. The following URLs are available:
 | Website                                                            | URL                                          |
 | ------------------------------------------------------------------ | -------------------------------------------- |
 | Ed-Fi ODS / API                                                    | `https://YOUR_SERVER_NAME_HERE/WebApi`    |
-| Ed-Fi Admin API                                                    | `https://YOUR_SERVER_NAME_HERE/AdminApi`  |
+| Ed-Fi ODS Admin API                                                | `https://YOUR_SERVER_NAME_HERE/AdminApi`  |
 | Ed-Fi ODS / API Documentation  <br/>(Optional, not for production) | `https://YOUR_SERVER_NAME_HERE/SwaggerUI` |
