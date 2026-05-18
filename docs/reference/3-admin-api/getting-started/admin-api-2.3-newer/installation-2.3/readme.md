@@ -6,7 +6,7 @@ sidebar_position: 0
 
 ## About
 
-Ed-Fi Admin API provides support for both ODS/API 7.x and ODS/API 6.x product lines. For more information, please see the installation guides provided below.
+Ed-Fi ODS Admin API provides support for both ODS/API 7.x and ODS/API 6.x product lines. For more information, please see the installation guides provided below.
 
 ## Installation Resources
 

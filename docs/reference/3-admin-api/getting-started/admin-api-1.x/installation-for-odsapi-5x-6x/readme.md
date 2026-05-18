@@ -1,4 +1,4 @@
-# Ed-Fi Admin API 1.x (for ODS/API 3.4-6.1)
+# Ed-Fi ODS Admin API 1.x (for ODS/API 3.4-6.1)
 
 Below are pages that support the installation Admin API 1.x:
 

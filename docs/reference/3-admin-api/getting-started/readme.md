@@ -1,4 +1,4 @@
-# Ed-Fi Admin API - Getting Started
+# Ed-Fi ODS Admin API - Getting Started
 
 This documentation outlines the steps necessary to deploy and set up the Ed-Fi
 ODS / API Admin API. The Admin API provides an API interface to perform common
@@ -9,9 +9,9 @@ administrative tasks for an instance of an Ed-Fi ODS / API.
 This documentation is for System administrators, IT professionals, and DevOps personnel who will be
 installing the Admin API to an environment suitable for production.
 
-## Ed-Fi Admin API Overview
+## Ed-Fi ODS Admin API Overview
 
-Each Ed-Fi Admin API product line has a set of steps outlining a one-time config, installation steps, and technical documentation outlining different use cases. Each section below is separated by product version and should reference the necessary ODS/API configuration needed in the steps.
+Each Ed-Fi ODS Admin API product line has a set of steps outlining a one-time config, installation steps, and technical documentation outlining different use cases. Each section below is separated by product version and should reference the necessary ODS/API configuration needed in the steps.
 
 ### Admin API version 2.3 and later (ODS/API 6.x and 7.x)
 
@@ -27,6 +27,6 @@ For Admin API versions 1.4 and earlier users are required to match the proper Ad
 
 ## Additional Resources
 
-### Securing the Ed-Fi Admin API - Best Practices
+### Securing the Ed-Fi ODS Admin API - Best Practices
 
 [Securing the Admin API](/reference/admin-api/securing-admin-api)

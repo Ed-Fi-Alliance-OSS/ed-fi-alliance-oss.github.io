@@ -2,7 +2,7 @@
 
 ## Overview
 
-The `IpRateLimiting` configuration section provides endpoint-level rate limiting capabilities for the Ed-Fi Admin API. This feature protects the API from abuse by limiting the number of requests that can be made to specific endpoints within a given time period.
+The `IpRateLimiting` configuration section provides endpoint-level rate limiting capabilities for the Ed-Fi ODS Admin API. This feature protects the API from abuse by limiting the number of requests that can be made to specific endpoints within a given time period.
 
 ## Configuration Structure
 
@@ -29,8 +29,8 @@ The `IpRateLimiting` configuration section provides endpoint-level rate limiting
 
 ### EnableEndpointRateLimiting
 
-**Type:** `boolean`  
-**Default:** `true`  
+**Type:** `boolean`
+**Default:** `true`
 **Purpose:** Master switch to enable or disable the entire rate limiting feature.
 
 * When set to `true`: Rate limiting is active and enforces the configured rules.
@@ -42,8 +42,8 @@ The `IpRateLimiting` configuration section provides endpoint-level rate limiting
 
 ### StackBlockedRequests
 
-**Type:** `boolean`  
-**Default:** `false`  
+**Type:** `boolean`
+**Default:** `false`
 **Purpose:** Determines whether blocked requests should count against the rate limit.
 
 * When set to `true`: Blocked requests are queued and count toward the limit.
@@ -55,8 +55,8 @@ The `IpRateLimiting` configuration section provides endpoint-level rate limiting
 
 ### RealIpHeader
 
-**Type:** `string`  
-**Default:** `"X-Real-IP"`  
+**Type:** `string`
+**Default:** `"X-Real-IP"`
 **Purpose:** Specifies the HTTP header name used to identify the real IP address of the client.
 
 **Use Cases:**
@@ -77,8 +77,8 @@ The `IpRateLimiting` configuration section provides endpoint-level rate limiting
 
 ### ClientIdHeader
 
-**Type:** `string`  
-**Default:** `"X-ClientId"`  
+**Type:** `string`
+**Default:** `"X-ClientId"`
 **Purpose:** Specifies an optional HTTP header that can be used to identify specific clients.
 
 **Use Cases:**
@@ -93,8 +93,8 @@ The `IpRateLimiting` configuration section provides endpoint-level rate limiting
 
 ### HttpStatusCode
 
-**Type:** `integer`  
-**Default:** `429`  
+**Type:** `integer`
+**Default:** `429`
 **Purpose:** The HTTP status code returned when a request is rate-limited.
 
 **Standard Value:** `429 Too Many Requests` (RFC 6585)
@@ -111,8 +111,8 @@ The `IpRateLimiting` configuration section provides endpoint-level rate limiting
 
 ### IpWhitelist
 
-**Type:** `array of strings`  
-**Default:** `[]` (empty array)  
+**Type:** `array of strings`
+**Default:** `[]` (empty array)
 **Purpose:** List of IP addresses that should be exempt from rate limiting.
 
 **Use Cases:**
@@ -138,8 +138,8 @@ The `IpRateLimiting` configuration section provides endpoint-level rate limiting
 
 ### EndpointWhitelist
 
-**Type:** `array of strings`  
-**Default:** `[]` (empty array)  
+**Type:** `array of strings`
+**Default:** `[]` (empty array)
 **Purpose:** List of endpoints that should be exempt from rate limiting.
 
 **Use Cases:**
@@ -164,16 +164,16 @@ The `IpRateLimiting` configuration section provides endpoint-level rate limiting
 
 ### GeneralRules
 
-**Type:** `array of objects`  
-**Default:** Contains one default rule for the registration endpoint  
+**Type:** `array of objects`
+**Default:** Contains one default rule for the registration endpoint
 **Purpose:** Defines the specific rate limiting rules for endpoints.
 
 Each rule object contains:
 
 #### Endpoint
 
-**Type:** `string`  
-**Format:** `"HTTP_METHOD:/path"`  
+**Type:** `string`
+**Format:** `"HTTP_METHOD:/path"`
 **Purpose:** Identifies the endpoint to apply rate limiting to.
 
 **Format Rules:**
@@ -193,8 +193,8 @@ Each rule object contains:
 
 #### Period
 
-**Type:** `string`  
-**Format:** `"<number>m"` (minutes)  
+**Type:** `string`
+**Format:** `"<number>m"` (minutes)
 **Purpose:** Defines the time window for the rate limit.
 
 **Supported Format:**
@@ -212,7 +212,7 @@ Each rule object contains:
 
 #### Limit
 
-**Type:** `integer`  
+**Type:** `integer`
 **Purpose:** Maximum number of requests allowed within the specified period.
 
 **Examples:**

@@ -1,6 +1,6 @@
 # Usage Guides
 
-This section contains technical details regarding the Ed-Fi Admin API.
+This section contains technical details regarding the Ed-Fi ODS Admin API.
 
 **Contents:**
 
