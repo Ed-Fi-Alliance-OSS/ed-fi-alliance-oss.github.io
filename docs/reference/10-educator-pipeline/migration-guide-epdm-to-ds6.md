@@ -49,19 +49,19 @@ namespace and consolidated entities.
 
 ### 3. Remove Deprecated Properties
 
-Ensure your data scripts exclude properties removed in v6 to maintain standard
-compliance:
+Ensure your data scripts exclude properties removed in v6 to maintain standard compliance. Use the following table to understand how to handle data previously stored in deprecated fields.
 
-- `Candidate.OldEthnicityDescriptor`
-- `Candidate.ProgramComplete`
-- `Candidate.DegreeSpecialization`
-- `Candidate.CohortYear`
-- `Candidate.Aid`
-- `Candidate.ApplicationReference`
-- `CandidateEducatorPreparationProgramAssociation.MajorSpecialization`
-- `CandidateEducatorPreparationProgramAssociation.MinorSpecialization`
-- `CandidateIndicator.Period`
-- `EducatorPreparationProgram.EducatorPreparationProgramType`
+| Deprecated Property | Migration Strategy / Mapping in DS 6.0+ |
+| --------- | ----------------------------------------- |
+| `Candidate.OldEthnicityDescriptor` | Use `Candidate.Race` |
+| `Candidate.ProgramComplete` | Map to Path Domain: Use the `Path` domain entities, which are designed to track progress toward a specific educational goal or licensure status. |
+| `Candidate.DegreeSpecialization` | Use `CandidateEducatorPreparationProgramAssociation.DegreeSpecialization` |
+| `CandidateEducatorPreparationProgramAssociation .MajorSpecialization` & `MinorSpecialization` | Use `CandidateEducatorPreparationProgramAssociation.DegreeSpecialization` |
+| `Candidate.CohortYear` | Map to Student Associations: Utilize the `StudentCohortAssociation` or specific program identifiers to track groups of candidates entering at the same time. |
+| `Candidate.Aid` | Use `FinancialAid` Domain: This property is replaced by the new, dedicated FinancialAid entity within the Enrollment Domain. |
+| `Candidate.ApplicationReference` | Use Recruiting & Staffing Domain: Reference the new Recruiting and Staffing domain, which provides a comprehensive model for applications and recruitment events. |
+| `EducatorPreparationProgram.EducatorPreparationProgramType` | Consolidate Descriptors: This is now handled through refined Program and Organization descriptors within the EPP Domain |
+| `CandidateIndicator.Period` | Use `CandidateIndicator.BeginDate` & `CandidateIndicator.EndDate` |
 
 ## Phase 3: Domain Implementation
 

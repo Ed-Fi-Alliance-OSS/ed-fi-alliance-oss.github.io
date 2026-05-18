@@ -6,7 +6,7 @@ hide_table_of_contents: true
 
 # Educator Pipeline Use Cases
 
-The table below contains a sample of the use cases that were used to define the EPDM/TPDM Extension set. [cite: 38]
+The table below contains a sample of the use cases that were used to define the legacy EPDM/TPDM Extension set.
 The sample use cases are organized by the educator preparation lifecycle: pre-program activities such as recruitment and selection, activities during the prep program such as program design and partner activities, and post-program activities such as observations and surveys.
 
 For further documentation on use cases see the Educator Preparation use cases [TPP Use Cases (Excel Workbook)](https://edfi.atlassian.net/wiki/download/attachments/23169685/TPP%20Use%20Cases%20and%20Data_final.xlsx?version=3D1&amp;modificationDate=3D1641999170717&amp;cacheVersion=3D1&amp;api=3Dv2)
