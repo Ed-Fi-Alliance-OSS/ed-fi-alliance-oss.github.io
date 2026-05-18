@@ -117,9 +117,6 @@ function Main() {
               <li>
                 <Link to="/reference/data-import">Data Import</Link>
               </li>
-              <li>
-                <Link to="/reference/ods-admin-app">Legacy ODS Admin App</Link>
-              </li>
             </ul>
           </div>
         </div>
