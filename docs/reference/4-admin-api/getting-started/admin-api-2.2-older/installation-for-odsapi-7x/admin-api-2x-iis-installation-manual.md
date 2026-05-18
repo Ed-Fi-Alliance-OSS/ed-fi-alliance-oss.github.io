@@ -1,19 +1,19 @@
-# IIS Installation (Manual)
+# Admin API 2.x - IIS Installation (Manual)
 
 ## Before You Install
 
 This section provides general information you should review before installing
-the Ed-Fi ODS / API Admin API for v2.3 and later.
+the Ed-Fi ODS / API Admin API for v2.2.0.
 
 ### Compatibility & Supported ODS / API Versions
 
 This version of the Admin API has been tested and can be installed for use with
-both the Ed-Fi ODS/API v7.x and v6.x product lines. See the [Ed-Fi Technology Suite Supported Versions](/reference/roadmap/supported-versions) for
+the Ed-Fi ODS / API v7.1.  See the [Ed-Fi Technology Suite Supported Versions](/reference/roadmap/supported-versions) for
 more details.
 
 ### Prerequisites
 
-A running instance of the ODS / API (v7.x or v6.x) platform must be configured and running
+A running instance of the ODS / API v7.1 platform must be configured and running
 before installing Admin API.
 
 Admin API only supports running one instance of the application at a time in an
@@ -35,10 +35,10 @@ The following are required to install the Admin API with IIS:
 ### Installation files
 
 :::note
- The following is a Nuget package containing the **Admin API v2.3.1 source files** for manual deployment to IIS.
+ The following is a Nuget package containing the **Admin API v2.2.0 source files** for manual deployment to IIS.
 
 * [EdFi.Suite3.ODS.AdminApi
-     v2.3.1](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.Suite3.ODS.AdminApi/overview/2.3.1)
+     v2.2.0](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.Suite3.ODS.AdminApi/overview/2.2.0)
 
 :::
 
@@ -47,7 +47,7 @@ The following are required to install the Admin API with IIS:
 Create a directory to hold all of the Admin API source files. In this example,
 we'll use a directory on the following path: `C:\Ed-Fi\AdminAPI`.
 
-![Empty Installation Folder](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/installation-v2/Empty%20Installation%20Folder.png)
+![Empty Installation Folder](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/installation-v2/Empty%20Installation%20Folder.png)
 
 ### **Step 2. Rename and Unzip Admin API Source Files**
 
@@ -55,9 +55,9 @@ Download and rename the linked Nuget Package (.npkg) to .zip
 
 Unzip the contents into the folder created in Step 1.
 
-![Populated Installation Folder](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/installation-v2/Populated%20Installation%20Folder.png)
+![Populated Installation Folder](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/installation-v2/Populated%20Installation%20Folder.png)
 
-![Installation Image](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/installation-v2/image2024-5-7_13-7-50.png)
+![Installation Image](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/installation-v2/image2024-5-7_13-7-50.png)
 
 There will be two folders. AdminApi folder will have binaries. Installer folder
 contains PowerShell scripts required for installation.
@@ -87,8 +87,6 @@ step.
 You will need to manually edit connection strings, authorization settings, and
 keys in `AdminApi\appsettings.json`. Some values to note:
 
-* Change `EncryptionKey` to the same value you have used in your ODS / API
-    appsetting `OdsConnectionStringEncryptionKey`.
 * Authentication Settings
   * `Authentication:SigningKey`  must be a Base64-encoded 256-bit string. The
         following script demonstrates how to generate it, but you can use
@@ -103,7 +101,7 @@ keys in `AdminApi\appsettings.json`. Some values to note:
     # Convert to base-64
     $StringBytes = [System.Text.Encoding]::Unicode.GetBytes($buffer)
     $Base64EncodedKey =[Convert]::ToBase64String($StringBytes)
-    Write-Host "Your Signing Key: " $Base64EncodedKey
+    Write-Host "Your EncryptionKey: " $Base64EncodedKey
     ```
 
   * `Authentication:Authority`  and `Authentication:IssuerUrl`  should be the
@@ -112,81 +110,53 @@ keys in `AdminApi\appsettings.json`. Some values to note:
         registration of new Admin API clients
     * Keeping this is flag enabled all the time is **not** recommended for
             production
-* Change `EnableSwagger` to `true` to enable generation of the Swagger UI
+* Change `EnableSwagger`  to `true` to enable generation of the Swagger UI
     documentation
   * This is **not** recommended for production.
 * The connection strings will need to be accurately configured by the user. For
     more information on how to determine connection strings for your database,
     please reference Microsoft documentation.
-* Change `PreventDuplicateApplications` to `true` if you want to ensure unique
-    applications per vendor.
-* Change `EnableApplicationResetEndpoint` to `true` to allow
-   regenerating API client credentials for an existing applications.
 * Please refer [Multi-tenant Configuration for Admin API
     2.x](../technical-articles/multi-tenant-configuration-for-admin-api-2x.md)
     for configuring Multi-Tenant specific AppSettings and ConnectionStrings.
-* Please refer [IP Rate Limiting Configuration
-    Guide](../technical-articles/ip-rate-limit-configuration.md)
-   for configuring IP Rate Limiting specific AppSettings.
 
 Here is a snippet from a properly configured application settings file:
 
 ```json title="appsettings.json"
     {
-        "AppSettings": {
-            "DatabaseEngine": "SqlServer",
-            "PathBase": "",
-            "DefaultPageSizeOffset": 0,
-            "DefaultPageSizeLimit": 25,
-            "MultiTenancy": false,
-            "EncryptionKey": "{ BASE_64_ENCRYPTION_KEY }",
-            "PreventDuplicateApplications": false,
-            "EnableApplicationResetEndpoint": false,
-            "adminApiMode": "v2"
-        },
-        "Authentication": {
-            "Authority": "https://YOUR_SERVER_NAME_HERE/AdminApi",
-            "IssuerUrl": "https://YOUR_SERVER_NAME_HERE/AdminApi",
-            "SigningKey": "YOUR_BASE64_ENCODED_256_BIT_STRING",
-            "AllowRegistration": false,
-            "RoleClaimAttribute": "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
-        },
-        "SwaggerSettings": {
-            "EnableSwagger": false,
-            "DefaultTenant": ""
-        },
-        "EnableDockerEnvironment": false,
-        "ConnectionStrings": {
-            "Admin": "Data Source=(local);Initial Catalog=EdFi_Admin;Trusted_Connection=True",
-            "Security": "Data Source=(local);Initial Catalog=EdFi_Security;Trusted_Connection=True"
-        },
-        "Log4NetCore": {
-            "Log4NetConfigFileName": "log4net\\log4net.config"
-        },
-        "Logging": {
-            "LogLevel": {
-                "Default": "Information",
-                "Microsoft": "Warning",
-                "Microsoft.Hosting.Lifetime": "Information"
-            }
-        },
-        "IpRateLimiting": {
-            "EnableEndpointRateLimiting": true,
-            "StackBlockedRequests": false,
-            "RealIpHeader": "X-Real-IP",
-            "ClientIdHeader": "X-ClientId",
-            "HttpStatusCode": 429,
-            "IpWhitelist": [],
-            "EndpointWhitelist": [],
-            "GeneralRules": [
-                {
-                    "Endpoint": "POST:/Connect/Register",
-                    "Period": "1m",
-                    "Limit": 3
-                }
-            ]
-        },
-        "AllowedHosts": "*"
+    "AppSettings": {
+        "DatabaseEngine": "SqlServer",
+        "PathBase": "",
+           "DefaultPageSizeOffset": 0,
+        "DefaultPageSizeLimit": 25,
+           "MultiTenancy": false
+          },
+    "Authentication": {
+        "Authority": "https://YOUR_SERVER_NAME_HERE/AdminApi",
+        "IssuerUrl": "https://YOUR_SERVER_NAME_HERE/AdminApi",
+        "SigningKey": "YOUR_BASE64_ENCODED_256_BIT_STRING",
+        "AllowRegistration": false
+    },
+        "SwaggerSettings": {
+        "EnableSwagger": false,
+        "DefaultTenant": ""
+    },
+        "EnableDockerEnvironment": false,
+    "ConnectionStrings": {
+        "Admin": "Data Source=(local);Initial Catalog=EdFi_Admin;Trusted_Connection=True",
+        "Security": "Data Source=(local);Initial Catalog=EdFi_Security;Trusted_Connection=True"
+    },
+    "Log4NetCore": {
+        "Log4NetConfigFileName": "log4net\\log4net.config"
+    },
+    "Logging": {
+        "LogLevel": {
+            "Default": "Information",
+            "Microsoft": "Warning",
+            "Microsoft.Hosting.Lifetime": "Information"
+        }
+    },
+    "AllowedHosts": "*"
     }
 ```
 
@@ -200,36 +170,36 @@ Here is a snippet from a properly configured application settings file:
 Open IIS Manager, and double-click on "Server Certificates". Note that we must
 select a server/machine in the left sidebar to see this option.
 
-![Server Certificate](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/installation-v2/image2019-7-17_14-17-7.png)
+![Server Certificate](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/installation-v2/image2019-7-17_14-17-7.png)
 
 On the Server Certificate page, click on "Create Self-Signed Certificate..." on
 the Actions bar to the right.
 
-![Self-Signed Certificate](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/installation-v2/image2019-7-17_14-19-7.png)
+![Self-Signed Certificate](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/installation-v2/image2019-7-17_14-19-7.png)
 
 For the certificate, use "Ed-Fi-ODS" as the friendly name and make sure the
 certificate store is set to "Personal". Click OK. We will use this certificate
 in an upcoming step.
 
-![Personal Certificate](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/installation-v2/image2019-7-17_14-21-50.png)
+![Personal Certificate](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/installation-v2/image2019-7-17_14-21-50.png)
 
 ### **Step 6. Create Necessary Application Pools**
 
 Back in the IIS Manager main page, expand the server/machine on the left sidebar
 and click on Application Pools.
 
-![Application Pools](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/installation-v2/image2019-7-17_15-53-53.png)
+![Application Pools](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/installation-v2/image2019-7-17_15-53-53.png)
 
 Click on "Add Application Pool..." on the Actions bar to the right, enter
 "Ed-Fi" as the name. Click OK.
 
-![Add Application Pools](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/installation-v2/image2019-7-17_15-57-20.png)
+![Add Application Pools](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/installation-v2/image2019-7-17_15-57-20.png)
 
 Once that is created, click on the "Ed-Fi" application pool and select "Advanced
 Settings..." on the Actions bar to the right. Change the Start Mode to
 "AlwaysRunning".
 
-![Always Running](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/installation-v2/image2019-7-17_16-1-46.png)
+![Always Running](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/installation-v2/image2019-7-17_16-1-46.png)
 
 This next bit is optional if you want to use an app pool identity. If you would
 like to use the default "ApplicationPoolIdentity", then you can skip this
@@ -244,12 +214,12 @@ where "localhost" is the app pool domain. Once you've entered the correct
 credentials, click OK on all screens until you're back to the main Application
 Pools page.
 
-![Identity](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/installation-v2/image2019-7-17_16-8-37.png)
+![Identity](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/installation-v2/image2019-7-17_16-8-37.png)
 
 After that's done, we'll repeat the exact same steps in this section, but enter
 "Admin API" as the Application Pool name. We should now have 2 app pools.
 
-![Pool Names](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/installation-v2/image2022-8-12_11-59-40.png)
+![Pool Names](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/installation-v2/image2022-8-12_11-59-40.png)
 
 ### **Step 8. Create Admin API Website**
 
@@ -262,7 +232,7 @@ select "Add Application...", and perform the following:
     in directory with Admin API source files).
 4. Hit OK.
 
-![Web Site](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/installation-v2/image2019-7-17_16-31-47.png)
+![Web Site](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/installation-v2/image2019-7-17_16-31-47.png)
 
 ### **Step 9.** Initialize Admin API Database Tables
 
@@ -431,4 +401,4 @@ CREATE TABLE adminapi.Tokens (
 ### **Step 10. Execute First-Time Configuration**
 
 Continue on to [First-Time Configuration for Admin
-2.3](../first-time-configuration.md).
+2.x](first-time-configuration-for-admin-api-2x.md).

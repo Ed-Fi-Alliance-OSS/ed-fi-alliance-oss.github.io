@@ -1,13 +1,7 @@
----
-sidebar_position: 2
----
+# First-Time Configuration for Admin API 1.x
 
-# First-Time Config
-
-After [Installing the Admin
-API](./installation-2.3/readme.md),
-there are a couple manual steps that must be completed before the application
-can be used.
+After [Installing the Admin API](admin-api-1x-docker-installation.md), there are
+a couple manual steps that must be completed before the application can be used.
 
 ## 1\. Launch the Application
 
@@ -21,12 +15,12 @@ is enabled in appsettings and view the web-based documentation.
 
 ```json
 {
-  "version": "2.0",
-  "build": "2.0.0.0"
+  "version": "1.0",
+  "build": "1.0.0.0"
 }
 ```
 
-![Swagger](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/installation-v2/image-2023-9-18_13-54-38.png)
+![Swagger](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/installation-v1/image2022-8-3_17-32-20.png)
 
 ## 2\. Create the First API Client
 
@@ -40,14 +34,13 @@ users in Admin App. By default, **this endpoint is only available when no
 clients have been created**. After the first client is created, the endpoint is
 disabled. The endpoint can be re-enabled with the
 `Authentication/AllowRegistration`  setting or environment variable (`false`  by
-default).  Please use long and complex strings for client id and client secret
-to safeguard the credentials for Admin API.
+default).
 
 :::warning
-  Since the `/connect/register`  endpoint does not require any
-  authentication, it is recommended that it remains disabled when not
-  registering a new client. Admin API does not include any scope limitations, so
-  all clients are able to utilize all endpoints.
+ Since the `/connect/register`  endpoint does not require any
+ authentication, it is recommended that it remains disabled when not registering
+ a new client. Admin API v1.0 does not include any scope limitations, so all
+ clients are able to utilize all endpoints.
 :::
 
 The sample below is using `curl,`  however this request can be performed from
@@ -61,13 +54,14 @@ After registering the client, verify it was created by retrieving an
 authorization token.
 
 ```shell
-curl -X POST https://your-admin-api/connect/token -H "Content-Type: application/x-www-form-urlencoded" -d "client_id=YourClientId&client_secret=YourClientSecret&grant_type=client_credentials"
+curl -X POST https://your-admin-api/connect/token-H "Content-Type: application/x-www-form-urlencoded" -d "client_id=YourClientId&client_secret=YourClientSecret&grant_type=client_credentials"
 ```
 
 This should return a JSON result including a bearer token. Note that the above
 request does _not_ include a request scope, so the token will be invalid for
 accessing most endpoints. See [Securing Admin
-API](/reference/admin-api/securing-admin-api) for more info.
+API](/reference/admin-api/securing-admin-api) for more
+info.
 
 ```json
 {
@@ -84,12 +78,12 @@ API](/reference/admin-api/securing-admin-api) for more info.
 
 If using a self-signed certificate for a developer or other non-production
 instances of Admin API, add "Encrypt=False" to appSettings.json in the
-ConnectionStrings section to allow them to function.  Below is a screen capture
+ConnectingStrings section to allow them to function.  Below is a screen capture
 of the error that will display using self-signed certificates.  The ASP.NET Core
 client does not trust these certificates by default and this parameter will
 allow development environments to continue with self-signed certificates.
 
-![Self-Signed Certificates](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/installation-v2/image-2023-6-22_17-44-17.png)
+![Self-Signed Certificates](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/installation-v1/image-2023-6-22_17-44-17.png)
 
 Example below:
 

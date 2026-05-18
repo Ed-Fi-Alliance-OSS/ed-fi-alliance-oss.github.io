@@ -130,7 +130,7 @@
 
     ```
 
-![Signing Key](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/technical-information/Screenshot%202024-06-28%20at%206.59.40%E2%80%AFPM.png)
+![Signing Key](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/technical-information/Screenshot%202024-06-28%20at%206.59.40%E2%80%AFPM.png)
 
 After having everything configured we can now create the images and upload them.
 Command:
@@ -139,7 +139,7 @@ Command:
 docker-compose -f Docker/Compose/mssql/compose-build-binaries.yml --env-file Docker/Settings/mssql/.env up -d
 ```
 
-![Container Started](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/technical-information/Screenshot%202024-06-28%20at%206.45.15%E2%80%AFPM.png)
+![Container Started](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/technical-information/Screenshot%202024-06-28%20at%206.45.15%E2%80%AFPM.png)
 
 then enter the url:
 
@@ -147,4 +147,4 @@ then enter the url:
 https://localhost/adminapi/swagger
 ```
 
-![Swagger](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/technical-information/Screenshot%202024-06-28%20at%206.53.19%E2%80%AFPM.png)
+![Swagger](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/technical-information/Screenshot%202024-06-28%20at%206.53.19%E2%80%AFPM.png)

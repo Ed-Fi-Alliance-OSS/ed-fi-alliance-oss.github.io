@@ -33,7 +33,7 @@ a production deployment of the Ed-Fi Resources API. The Platform includes:
   defined by the Ed-Fi Data Standard.
   * Also includes the _Ed-Fi ODS Sandbox Admin_ and _Ed-Fi Swagger UI_ web
     applications.
-* [Ed-Fi ODS Admin API](../3-admin-api/readme.md), a REST interface for managing
+* [Ed-Fi ODS Admin API](../4-admin-api/readme.md), a REST interface for managing
   client credentials ("key and secret") and security configuration.
 * [Ed-Fi ODS Admin App](/getting-started/edfi-exchange/technology/ods-admin-app), a web application for
   managing single instances of an Ed-Fi ODS/API.

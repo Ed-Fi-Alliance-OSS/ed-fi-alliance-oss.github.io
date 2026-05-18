@@ -17,7 +17,7 @@ more details.
 ### Prerequisites
 
 A running instance of the ODS / API v3.4 - 6.1 platform must be configured and
-running before installing Admin API.  
+running before installing Admin API.
 
 Admin API only supports running one instance of the application at a time in an
 ODS / API ecosystem. Future versions may allow for scaling and load balancing.
@@ -45,7 +45,7 @@ Download and rename the linked Nuget Package (.npkg) to .zip
 
 Unzip the contents.
 
-![Installation Folder](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/installation-v1/image2023-1-19_12-43-31.png)
+![Installation Folder](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/installation-v1/image2023-1-19_12-43-31.png)
 
 There will be two folders. AdminApi folder will have binaries. Installer folder
 contains PowerShell scripts required for installation.
@@ -176,13 +176,13 @@ Method 1: Open \[Windows Key\]-R which will open a Run dialog for tasks needing
 administrative privileges. Type "PowerShell" to open a PowerShell prompt in
 Administrator mode.
 
-![Open Terminal](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/installation-v1/image2020-4-20_12-37-43.png)
+![Open Terminal](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/installation-v1/image2020-4-20_12-37-43.png)
 
 Method 2: Click on the Windows icon in the lower-left corner. Type "PowerShell"
 and right-click the "Windows PowerShell" option when provided. Select "Run as
 Administrator" to open a PowerShell prompt in Administrator mode.
 
-![Run As Administrator](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/installation-v1/image2020-4-20_12-37-57.png)
+![Run As Administrator](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/installation-v1/image2020-4-20_12-37-57.png)
 
 Change the directory to the unzipped directory for the Admin Api Installer.
 
@@ -200,7 +200,7 @@ Choosing 'n' will prompt you to enter windows username. The installation process
 will validate and create database login using entered username, if the login
 does not exist on the database server already.
 
-![Set Logins](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/installation-v1/image2023-1-19_13-38-10.png)
+![Set Logins](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/installation-v1/image2023-1-19_13-38-10.png)
 
 #### **Step 5. Verify SQL Server Login**
 
@@ -208,7 +208,7 @@ The installation process sets up an appropriate SQL Login for use with the
 dedicated AdminApi Application Pool in IIS. You can verify this in SQL Server
 Management Studio:
 
-![SQL Server Login](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/installation-v1/image2023-1-19_13-45-17.png)
+![SQL Server Login](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/installation-v1/image2023-1-19_13-45-17.png)
 
 On the Server Roles page, make sure that  "public" and "sysadmin" checkboxes are
 checked. Once you have confirmed a proper SQL Server login exists, continue to
@@ -229,7 +229,7 @@ where "localhost" is the app pool domain. Once we have entered the correct
 credentials, we'll click OK on all screens until we're back to the main
 Application Pools page.
 
-![Application Pool Identity](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/installation-v1/image2022-9-20_12-24-43.png)
+![Application Pool Identity](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/installation-v1/image2022-9-20_12-24-43.png)
 
 #### Step 7. Confirming appSettings.json
 

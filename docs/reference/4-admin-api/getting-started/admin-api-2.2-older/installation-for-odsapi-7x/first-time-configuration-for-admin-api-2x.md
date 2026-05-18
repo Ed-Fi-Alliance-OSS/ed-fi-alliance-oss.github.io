@@ -22,7 +22,7 @@ is enabled in appsettings and view the web-based documentation.
 }
 ```
 
-![Swagger](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/installation-v2/image-2023-9-18_13-54-38.png)
+![Swagger](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/installation-v2/image-2023-9-18_13-54-38.png)
 
 ## 2\. Create the First API Client
 
@@ -85,7 +85,7 @@ of the error that will display using self-signed certificates.  The ASP.NET Cor
 client does not trust these certificates by default and this parameter will
 allow development environments to continue with self-signed certificates.
 
-![Self-Signed Certificates](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/installation-v2/image-2023-6-22_17-44-17.png)
+![Self-Signed Certificates](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/installation-v2/image-2023-6-22_17-44-17.png)
 
 Example below:
 
