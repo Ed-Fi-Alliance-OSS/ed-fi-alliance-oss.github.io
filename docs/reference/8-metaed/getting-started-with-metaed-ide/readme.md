@@ -29,4 +29,4 @@ familiar with the following knowledge areas:
 * The Ed-Fi Extensions Framework, see, for example, the relevant sections of
     the [Ed-Fi Extension
     Framework](docs/reference/1-data-exchange/extensions-framework/readme.md) documentation
-    and the [Ed-Fi ODS/API Platform](../../ods-api-platform.mdx) documentation
+    and the [Ed-Fi ODS/API Platform](../../2-ods-api-platform.mdx) documentation

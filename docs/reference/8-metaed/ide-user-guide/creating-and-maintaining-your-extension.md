@@ -126,8 +126,8 @@ Simply add one or more folders with the "Add Folder to Workspace..." command.
     the available settings.
 4. Available settings:
     1. **Accepted License:** Usage of the Ed-Fi Unifying Data Model requires acceptance of the
-        [Ed-Fi License agreement](../../4-metaed/getting-started-with-metaed-ide/installation/ed-fi-license-agreement.md).
-        Check the box to accept the license terms. <!-- https://www.ed-fi.org/getting-started/license-ed-fi-technology -->
+        [Ed-Fi License agreement](../getting-started-with-metaed-ide/installation/ed-fi-license-agreement.md).
+        Check the box to accept the license terms.
     2. **Target Ods Api Version**: The target Ed-Fi ODS/API version.
 
         :::tip

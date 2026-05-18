@@ -68,13 +68,9 @@ the Ed-Fi suite of products.
 * The prior ODS/API Cloud Deployment for Azure deployment methods used PowerShell
 and features-specific to the Azure platform, which were state-of-the-art at time
 of development.  These deployment methods have modernized and updated now
-available as the [Docker Deployment 2.x](../7-docker/v2/readme.mdx),
+available as the [Docker Deployment 2.x](/reference/docker/v2),
 for which Admin App has been updated to run in that context.  The prior methods
-tied to Azure have been removed here.  Ed-Fi Docker Deployments are known to run on Azure.  The [Ed-Fi on
-Azure](https://github.com/K12-Analytics-Engineering/edfi-on-azure) repository on
-GitHub, by Marcos Alcozer of K12 Analytics Engineering, provides documentation
-and scripts to help deploy Ed-Fi ODS/API and Admin App images to the Azure cloud
-platform as an updated method.
+tied to Azure have been removed here.  Ed-Fi Docker Deployments are known to run on Azure.
 * The following implementation issues have been reported by the community and have
 been resolved
   * A bug has been fixed in the Claim Set Editor of not preserving an intended
@@ -146,9 +142,7 @@ limitations have been removed for broader usage of Admin App in these scenarios.
 ### ODS / API 5.2 and Docker Deployment 2.0 Support
 
 Admin App has been updated and tested to work with ODS / API 5.2 and packaged as
-part of the [Docker Deployment
-2.0](https://edfi.atlassian.net/wiki/display/EDFITOOLS/Docker+Deployment)
-release.
+part of the [Docker Deployment 2.0](/reference/docker/v2) release.
 
 ## Updates in Admin App for Suite 3 v2.1.0
 
@@ -160,7 +154,7 @@ Docker](https://www.docker.com/resources/what-container) containers. This
 requirement has been signaled by our [Technical Advisory
 Group](https://edfi.atlassian.net/wiki/display/GOV/Technical+Advisory+Group) and
 Ed-Fi community members, which we're excited by this release to deliver on. As
-related, the Ed-Fi [Docker Deployment](../7-docker/v2/readme.mdx) offering
+related, the Ed-Fi [Docker Deployment](/reference/docker/v2) offering
 has been updated to include Admin App v2.1.0 and configured to run with ODS /
 API v5.1.0.
 

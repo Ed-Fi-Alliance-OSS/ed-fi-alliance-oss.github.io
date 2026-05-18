@@ -1,11 +1,5 @@
 # Analytics Middle Tier
 
-:::warning December 2023:
-
-* [Analytics Middle Tier Transitioning to Ed-Fi Exchange in 2025](../0-roadmap/notifications/amt.md)
-
-:::
-
 :::caution
 
 The Ed-Fi Alliance no longer recommends new production dependencies
@@ -18,7 +12,7 @@ information.
 
 The Analytics Middle Tier is a set of denormalized analytics views over the
 database tables backing an
-[Ed-Fi ODS/API deployment](../ods-api-platform.mdx),
+[Ed-Fi ODS/API deployment](/reference/ods-api-platform),
 satisfying the user story:
 
 As a district data analyst, I want to build intelligent reporting on the Ed-Fi
@@ -55,12 +49,3 @@ confusion and/or misleading analyses.
 
 For more information, see the [AMT User
 Guide](./user-guide/readme.md).
-
-## Related Content From the Ed-Fi Blog
-
-* February 14, 2020: [The Analytics Middle Tier Grows
-    Up](https://www.ed-fi.org/blog/2020/02/the-analytics-middle-tier-grows-up/)
-* January 16, 2019: [(Re)New on the Ed-Fi Exchange: Analytics Starter
-    Kits](https://www.ed-fi.org/blog/2019/01/renew-ed-fi-exchange-analytics-starter-kits/)
-* August 7, 2018: [From Diagrams & Definitions: Solving the Analytics Reporting
-    Gap]

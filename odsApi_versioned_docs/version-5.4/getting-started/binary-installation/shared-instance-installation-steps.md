@@ -1,6 +1,6 @@
 ---
 
-title: Shared Instance Installation Steps  
+title: Shared Instance Installation Steps
 sidebar\_position: 3
 
 ---
@@ -9,21 +9,21 @@ sidebar\_position: 3
 
 This section describes how to set up the Ed-Fi ODS / API v5.4 in shared instance mode. Before you proceed, make sure you have installed the prerequisites listed in [Getting Started - Binary Installation](./readme.md).
 
-*   [Step 1. Download the Ed-Fi ODS / API Installer Packages](#step-1-download-the-ed-fi-ods--api-installer-packages)
-    *   [Package Links](#package-links)
-*   [Step 2. Install the Ed-Fi Databases](#step-2-install-the-ed-fi-databases)
-    *   [Edit the configuration.json File](#edit-the-configurationjson-file)
-    *   [Run Installation Script](#run-installation-script)
-*   [Step 3. Install WebApi](#step-3-install-webapi)
-    *   [Prepare Installation script](#prepare-installation-script)
-    *   [Run the Installation Script](#run-the-installation-script)
-*   [Step 4. Install Swagger](#step-4-install-swagger)
-    *   [Prepare Installation Script](#prepare-installation-script-1)
-    *   [Run the Installation Script](#run-the-installation-script-1)
-*   [Step 5. Install Admin App](#step-5-install-admin-app)
-*   [Step 6. Restart your Website](#step-6-restart-your-website)
+* [Step 1. Download the Ed-Fi ODS / API Installer Packages](#step-1-download-the-ed-fi-ods--api-installer-packages)
+  * [Package Links](#package-links)
+* [Step 2. Install the Ed-Fi Databases](#step-2-install-the-ed-fi-databases)
+  * [Edit the configuration.json File](#edit-the-configurationjson-file)
+  * [Run Installation Script](#run-installation-script)
+* [Step 3. Install WebApi](#step-3-install-webapi)
+  * [Prepare Installation script](#prepare-installation-script)
+  * [Run the Installation Script](#run-the-installation-script)
+* [Step 4. Install Swagger](#step-4-install-swagger)
+  * [Prepare Installation Script](#prepare-installation-script-1)
+  * [Run the Installation Script](#run-the-installation-script-1)
+* [Step 5. Install Admin App](#step-5-install-admin-app)
+* [Step 6. Restart your Website](#step-6-restart-your-website)
 
-> **Warning**  
+> **Warning**
 > There are considerable limitations to storing multiple years of data in a single ODS. If you are using "Shared Instance" deployment, plan on starting with a fresh ODS each school year. Please refer to [Guidance on Multi-Year Data in ODS](../../technical-articles/guidance-on-multi-year-data-in-ods.md) for details.
 
 ---
@@ -36,15 +36,15 @@ The Ed-Fi ODS / API installation packages can be downloaded from the following l
 
 The required release packages to install the Ed-Fi ODS / API can be found at the links below. We recommend you stay current with the latest patch update that has been promoted to [release](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging?_a=feed&feed=EdFi@Release).
 
-*   [EdFi.Suite3.Installer.WebApi](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Installer.WebApi/versions/5.4.57)
-*   [EdFi.Suite3.Installer.SwaggerUI](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Installer.SwaggerUI/overview/5.4.57) (Optional, not for production)
-*   [EdFi.Suite3.RestApi.Databases](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.RestApi.Databases/overview/5.4.2272)
+* [EdFi.Suite3.Installer.WebApi](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Installer.WebApi/versions/5.4.57)
+* [EdFi.Suite3.Installer.SwaggerUI](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.Installer.SwaggerUI/overview/5.4.57) (Optional, not for production)
+* [EdFi.Suite3.RestApi.Databases](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Suite3.RestApi.Databases/overview/5.4.2272)
 
 For each of the downloads, **right-click** and select "Properties." Update the file extension (from .nupkg to .zip). Remove the version number (optional). Check the box next to **Unblock** (this will prevent PowerShell from asking for permission to load every module in the installer) and click **OK**.
 
 ![Sample.nupkg](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2024-7-25_6-36-11.png)
 
-:::info  
+:::info
 You may need to configure TLS while running the installation scripts described in steps below.
 
 ```
@@ -147,7 +147,7 @@ $parameters = @{
        Server="localhost"
        UseIntegratedSecurity=$true
     }
-    InstallType = "SharedInstance"   
+    InstallType = "SharedInstance"
 }
 ```
 
@@ -161,7 +161,7 @@ $parameters = @{
        Server="localhost"
        Username="postgres"
     }
-    InstallType = "SharedInstance"   
+    InstallType = "SharedInstance"
 }
 ```
 
@@ -214,7 +214,7 @@ Install-EdFiOdsSwaggerUI @parameters
 
 ## Step 5. Install Admin App
 
-The Admin App provides a graphical interface for platform hosts to administer and manage non-sandbox instances of the Ed-Fi ODS / API. Follow the installation steps [here](/reference/ods-admin-app/). Alternatively, API keys and secrets can be administered by database administrators via SQL queries as outlined in the article [How To: Configure Key / Secret](../../how-to-guides/how-to-configure-key-secret.md).
+The Admin App provides a graphical interface for platform hosts to administer and manage non-sandbox instances of the Ed-Fi ODS / API. Follow the installation steps [here](/getting-started/edfi-exchange/technology/ods-admin-app/). Alternatively, API keys and secrets can be administered by database administrators via SQL queries as outlined in the article [How To: Configure Key / Secret](../../how-to-guides/how-to-configure-key-secret.md).
 
 ---
 

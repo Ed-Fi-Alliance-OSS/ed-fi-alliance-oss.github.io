@@ -26,4 +26,4 @@ Extensions.
   Extensions
   Framework](docs/reference/1-data-exchange/extensions-framework/readme.md)
   documentation.
-* Extending the Ed-Fi ODS / API is covered in the [ODS / API Platform documentation](../../ods-api-platform.mdx)
+* Extending the Ed-Fi ODS / API is covered in the [ODS / API Platform documentation](../../2-ods-api-platform.mdx)
