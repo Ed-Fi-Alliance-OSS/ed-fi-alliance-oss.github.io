@@ -87,7 +87,7 @@ the steps below to make this determination:
    Data Standard. Identify any gaps or instances where the standard does not
    adequately address your specific use cases. As you identify gaps, work with
    the appropriate business owners to see if their process can be modified to
-   align with the standard instead of defaulting to the other way around.  
+   align with the standard instead of defaulting to the other way around.
 2. **Engage the Ed-Fi Data Standard team.** If your data mapping reveals a gap
    in the Ed-Fi Data Standard that cannot be resolved through modification of an
    internal business process, don't hesitate to engage with the Ed-Fi Data
@@ -111,7 +111,7 @@ overview of the steps involved:
 1. **Understand the MetaEd IDE.** Start by familiarizing yourself with the
    MetaEd IDE. This tool serves as the central hub for extension development
    within the Ed-Fi ecosystem. For an in-depth understanding, refer to the
-   [MetaEd Page](../../4-metaed/readme.md).
+   [MetaEd Page](../../8-metaed/readme.md).
 2. **Define and build the extension.** See the [How To: Extend the Ed-Fi ODS /
    API - Alternative Education Program
    Example](/reference/ods-api/how-to-guides/how-to-extend-the-ed-fi-ods-api-alternative-education-program-example)
@@ -142,7 +142,7 @@ Framework.
 * **Be cautious about aggregate data.**The idea of using extensions to hold
   aggregate data elements comes up often in data mapping exercises. In general,
   the Ed-Fi Alliance recommends avoiding aggregates in favor of the underlying
-  discrete data used to compute them.  
+  discrete data used to compute them.
 * **Assess the impact and long-term viability of an extension.** Consider the
   potential impact of introducing an extension on your system and data ecosystem
   (including your vendors). Evaluate whether the extension aligns with your
