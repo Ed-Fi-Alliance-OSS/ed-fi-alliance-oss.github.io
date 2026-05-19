@@ -45,9 +45,9 @@ systems, including database administrators and software developers.
 
 ### Database Templates
 
-- EPDM/TPDM Community Populated Template — A populated template for the ODS/API with
+- [EPDM/TPDM Community Populated Template](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.Suite3.Ods.Populated.Template.TPDM.Community.1.2.0.Standard.5.1.0/overview/7.2.351) — A populated template for the ODS/API with
   EPDM/TPDM data.
-- EPDM/TPDM Community Minimal Template — A minimal template with EPDM/TPDM descriptors
+- [EPDM/TPDM Community Minimal Template](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.Suite3.Ods.Minimal.Template.TPDM.Community.1.2.0.Standard.5.1.0/overview/7.2.671) — A minimal template with EPDM/TPDM descriptors
   only.
 
 ### ODS/API Platform Documentation

@@ -54,7 +54,7 @@ Ensure your data scripts exclude properties removed in v6 to maintain standard c
 | Deprecated Property | Migration Strategy / Mapping in DS 6.0+ |
 | --------- | ----------------------------------------- |
 | `Candidate.OldEthnicityDescriptor` | Use `Candidate.Race` |
-| `Candidate.ProgramComplete` | Map to Path Domain: Use the `Path` domain entities, which are designed to track progress toward a specific educational goal or licensure status. |
+| `Candidate.ProgramComplete` | Use `CandidateEducatorPreparationProgramAssociation.ReasonExited` descriptor (e.g.  ‘Program Complete’) |
 | `Candidate.DegreeSpecialization` | Use `CandidateEducatorPreparationProgramAssociation.DegreeSpecialization` |
 | `CandidateEducatorPreparationProgramAssociation .MajorSpecialization` & `MinorSpecialization` | Use `CandidateEducatorPreparationProgramAssociation.DegreeSpecialization` |
 | `Candidate.CohortYear` | Map to Student Associations: Utilize the `StudentCohortAssociation` or specific program identifiers to track groups of candidates entering at the same time. |
