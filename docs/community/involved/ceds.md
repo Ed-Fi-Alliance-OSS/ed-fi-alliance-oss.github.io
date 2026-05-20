@@ -1,8 +1,14 @@
 ---
-description: Collaboration Guidelines
+title: CEDS and Ed-Fi Collaboration Guidelines
+description: HTML version of the CEDS and Ed-Fi Collaboration Guidelines.
+sidebar_label: CEDS Collaboration Guidelines
 ---
 
-# CEDS and Ed-Fi
+:::info
+This page provides the HTML version of the CEDS and Ed-Fi Collaboration
+Guidelines for online reading and indexing. Download the
+[PDF version](/files/CEDS-and-Ed-Fi-Collaboration-Guidelines.pdf) if needed.
+:::
 
 ## Introduction
 
@@ -178,10 +184,3 @@ current N+1 version.
    critical.
 3. To the extent possible, release cycles will be coordinated in a way to reduce
    the lag time between release and incorporation of mutually desired elements.
-
-:::note
-
-The CEDS and Ed-Fi Collaboration Guidelines can be downloaded in PDF format.
-**[CEDS and Ed-Fi Collaboration Guidelines (PDF)](/files/CEDS-and-Ed-Fi-Collaboration-Guidelines.pdf)**
-
-:::
