@@ -3,7 +3,6 @@ title: "Part IV: Student Identity and Rostering"
 sidebar_position: 5
 ---
 
-<!-- markdownlint-disable -->
 
 ## 8. Student Identity Resolution
 
@@ -202,6 +201,7 @@ This includes:
 - Ensuring rostering workflows remain operationally maintainable over time
 
 #### Prohibited Patterns
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::
@@ -257,6 +257,7 @@ deterministic, and consistently applied across implementations:
 - Maintain consistent matching logic across implementations
 
 #### Prohibited Patterns
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::
@@ -312,6 +313,7 @@ The assessment provider is responsible for ensuring that identity mapping is imp
 - Support reprocessing of corrected records
 
 #### Prohibited Patterns
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::
@@ -361,6 +363,7 @@ The assessment provider is responsible for ensuring that identity is fully resol
 - Maintain referential integrity across all data
 
 #### Prohibited Patterns
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::
@@ -396,6 +399,7 @@ The assessment provider is responsible for ensuring that identity failures are v
 - Maintain visibility into data completeness
 
 #### Prohibited Patterns
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::
@@ -441,6 +445,7 @@ The assessment provider is responsible for enabling district-level visibility an
 - Support operational resolution without vendor dependency
 
 #### Prohibited Patterns
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::

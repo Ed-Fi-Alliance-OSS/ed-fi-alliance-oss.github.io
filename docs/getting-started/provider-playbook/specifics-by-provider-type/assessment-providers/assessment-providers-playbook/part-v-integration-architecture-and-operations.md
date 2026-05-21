@@ -3,7 +3,6 @@ title: "Part V: Integration Architecture and Operations"
 sidebar_position: 6
 ---
 
-<!-- markdownlint-disable -->
 
 true native integration that districts can operationalize safely at scale. The focus here is transport and execution discipline: how data is transformed, validated, transmitted, secured, reprocessed, and monitored without introducing fragility, tenant risk, or silent duplication.
 
@@ -39,7 +38,7 @@ _**What it looks like in practice:**_
 
 - The vendor is responsible for sequencing, error handling, retries, and safe reprocessing.
 
-#### Why this pattern works when done correctly:
+#### Why this pattern works when done correctly
 
 - It enforces alignment to the Ed-Fi system of record for both identity and results, eliminating the need for downstream reconciliation.
 
@@ -51,7 +50,7 @@ _**What it looks like in practice:**_
 
 - It enables scalable, repeatable integrations across multiple districts and states.
 
-#### What can go wrong if it is implemented carelessly:
+#### What can go wrong if it is implemented carelessly
 
 - If the vendor does not pull roster data from Ed-Fi and instead relies on external sources, identity mismatches occur, leading to misaligned student records and broken longitudinal analysis.
 
@@ -63,7 +62,7 @@ _**What it looks like in practice:**_
 
 - If the vendor pushes data without pre-validation, districts become the validation environment and spend significant time triaging avoidable errors.
 
-#### Minimum enforcement expectations:
+#### Minimum enforcement expectations
 
 - The API-only rule must be respected. No direct database writes, no “patching the ODS,” and no shadow tables that bypass the API contract.
 
@@ -81,7 +80,7 @@ _**What it looks like in practice:**_
 
 In this pattern, transformation, validation, and loading are explicitly separated into distinct stages prior to API submission, using a repeatable “bundle” workflow. Earthmover is used to transform and shape data, and Lightbeam is used to validate and load data into the Ed-Fi ODS/API reliably. The key concept is that these stages are independently managed, observable, and reusable across implementations.
 
-#### What it looks like in practice:
+#### What it looks like in practice
 
 - tooling.
 
@@ -91,7 +90,7 @@ In this pattern, transformation, validation, and loading are explicitly separate
 
 - Lightbeam submits resources to the ODS/API in dependency order with robust retry logic and error reporting.
 
-#### Why this pattern works when done correctly:
+#### Why this pattern works when done correctly
 
 - It creates reusable mapping patterns and repeatable pipelines that can be operationalized across districts and states, especially when vendors provide consistent input structures. Bundles can often be reused across states with minimal adaptation when the same source data format is available.
 
@@ -101,7 +100,7 @@ In this pattern, transformation, validation, and loading are explicitly separate
 
 - • It is often the fastest path to consistency across multiple vendor integrations because the same enforcement scaffolding is reused.
 
-#### What can go wrong if it is implemented carelessly:
+#### What can go wrong if it is implemented carelessly
 
 - If the bundle does not include stable natural keys, reruns create duplicates or overwrite the wrong records.
 
@@ -111,7 +110,7 @@ In this pattern, transformation, validation, and loading are explicitly separate
 
 - If Lightbeam loads are not monitored with clear error outputs, districts lose trust and stop operationalizing the feed.
 
-#### Minimum enforcement expectations:
+#### Minimum enforcement expectations
 
 - Transform → validate → send is mandatory. If validation is skipped, the architecture is not bundle-based; it is just a delayed failure.
 
@@ -172,6 +171,7 @@ preserved exactly as reported:
 - Ensure consistency of descriptor behavior across implementations
 
 #### Prohibited Patterns
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::
@@ -219,6 +219,7 @@ aligned to the receiving environment:
 - Ensure mappings are repeatable and version-controlled
 
 #### Prohibited Patterns
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::
@@ -280,6 +281,7 @@ externalized:
 - Ensure portability across implementations
 
 #### Prohibited Patterns
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::
@@ -333,6 +335,7 @@ The assessment provider is responsible for ensuring full transparency of descrip
 - Enable audit and troubleshooting without code inspection
 
 #### Prohibited Patterns
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::
@@ -392,6 +395,7 @@ The assessment provider is responsible for ensuring that descriptor mapping scal
 - Avoid per-partner customization
 
 #### Prohibited Patterns
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::
@@ -451,6 +455,7 @@ The assessment provider is responsible for ensuring that descriptor changes are 
 - Align changes with governance processes
 
 #### Prohibited Patterns
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::
@@ -528,6 +533,7 @@ The assessment provider is responsible for ensuring that all integration behavio
 - Avoid any mechanism that bypasses API enforcement
 
 #### Prohibited Patterns
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::
@@ -609,6 +615,7 @@ The assessment provider is responsible for enforcing dependency order and ensuri
 - Detect and handle dependency failures before continuing
 
 #### Prohibited Patterns
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::
@@ -687,9 +694,9 @@ Stable natural keys must exist for all resources
 
 - Keys must align to both:
 
-   - The StudentAssessment event
+  - The StudentAssessment event
 
-   -
+  -
 
 - Must not rely on parsing score names
 
@@ -738,6 +745,7 @@ The assessment provider is responsible for ensuring that reprocessing is safe, d
 - Validate reprocessing behavior before production
 
 #### Prohibited Patterns
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::
@@ -795,6 +803,7 @@ The assessment provider is responsible for ensuring that credentials are properl
 - Support credential revocation and re-issuance
 
 #### Prohibited Patterns
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::
@@ -844,6 +853,7 @@ The assessment provider is responsible for ensuring that claimsets are restricte
 - Update permissions when integration scope changes
 
 #### Prohibited Patterns
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::
@@ -951,6 +961,7 @@ The assessment provider is responsible for ensuring that security operations are
 - Prevent any cross-tenant data access or exposure
 
 #### Prohibited Patterns
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::
@@ -1102,6 +1113,7 @@ The assessment provider is responsible for ensuring that runtime behavior is sca
 - Prevent duplicate or conflicting writes
 
 #### Prohibited Patterns
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::
@@ -1233,6 +1245,7 @@ The assessment provider is responsible for ensuring that integration behavior is
 - Support troubleshooting without requiring code access
 
 #### Prohibited Patterns
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::
@@ -1338,6 +1351,7 @@ Versioning must include:
 Without versioning, districts cannot diagnose changes in data behavior.
 
 #### Governance Triggers
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::
@@ -1389,6 +1403,7 @@ The assessment provider is responsible for ensuring that all changes are control
 - Prevent silent or undocumented updates
 
 #### Prohibited Patterns
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::

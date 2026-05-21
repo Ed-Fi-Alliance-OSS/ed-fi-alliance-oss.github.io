@@ -3,7 +3,6 @@ title: "Part VI: Validation and Certification"
 sidebar_position: 7
 ---
 
-<!-- markdownlint-disable -->
 
 Testing is the enforcement layer of the playbook. An integration can produce technically valid Ed-Fi payloads and still fail the definition of a native integration if the data are ambiguous, incomplete for local use, or unstable under reprocessing.
 
@@ -25,29 +24,29 @@ Structural validation must verify:
 
 - Hierarchy integrity
 
-   -
+  -
 
-   - ObjectiveAssessment exists when subscores are present
+  - ObjectiveAssessment exists when subscores are present
 
-   - ObjectiveAssessment is recursive when the vendor structure is multi-level
+  - ObjectiveAssessment is recursive when the vendor structure is multi-level
 
-   - StudentAssessment and StudentObjectiveAssessment mirror that structure
+  - StudentAssessment and StudentObjectiveAssessment mirror that structure
 
 - Subject resolution
 
-   - Each Assessment resolves to a single AcademicSubject
+  - Each Assessment resolves to a single AcademicSubject
 
-   - Composite is used only when representing cross-subject outcomes
+  - Composite is used only when representing cross-subject outcomes
 
-   - Subject meaning is not derived from score names
+  - Subject meaning is not derived from score names
 
 - Result grain alignment
 
-   - Overall results are stored at StudentAssessment
+  - Overall results are stored at StudentAssessment
 
-   - Subcomponent results are stored in StudentObjectiveAssessment
+  - Subcomponent results are stored in StudentObjectiveAssessment
 
-   - No mixing of grains across levels
+  - No mixing of grains across levels
 
 #### Common Failure Patterns
 
@@ -59,7 +58,7 @@ Structural validation must verify:
 
 - Composite results modeled at the wrong level
 
-#### Passing Result
+#### Passing Result (Cross-category integrity)
 
 The hierarchy is complete, faithful to the vendor score report, and directly interpretable without vendorspecific logic.
 
@@ -69,27 +68,27 @@ Dependency Order).
 
 It ensures that all relationships between entities are complete and navigable.
 
-#### Validation must verify:
+#### Validation must verify
 
 - Complete dependency chain:
 
-   - Assessment → ObjectiveAssessment → StudentAssessment
+  - Assessment → ObjectiveAssessment → StudentAssessment
 
 - All references resolve:
 
-   - StudentAssessment references a valid Assessment
+  - StudentAssessment references a valid Assessment
 
-   - StudentObjectiveAssessment aligns to a valid ObjectiveAssessment
+  - StudentObjectiveAssessment aligns to a valid ObjectiveAssessment
 
 - No orphaned records:
 
-   - No StudentObjectiveAssessment without a matching structure
+  - No StudentObjectiveAssessment without a matching structure
 
-   - No hierarchy elements missing parents
+  - No hierarchy elements missing parents
 
 -
 
-   -
+-
 
 #### Common Failure Patterns
 
@@ -101,7 +100,7 @@ It ensures that all relationships between entities are complete and navigable.
 
 - Structure loaded separately from results
 
-#### Passing Result
+#### Passing Result (Detection and semantic integrity)
 
 breaks in the chain.
 
@@ -115,29 +114,29 @@ Validation must verify:
 
 - Namespace alignment
 
-   - Vendor descriptors remain in vendor namespace
+  - Vendor descriptors remain in vendor namespace
 
-   - Shared descriptors use Ed-Fi namespace
+  - Shared descriptors use Ed-Fi namespace
 
-   - Namespace usage is consistent across environments
+  - Namespace usage is consistent across environments
 
 - Vendor semantics preserved
 
-   - Performance levels are not remapped at ingestion
+  - Performance levels are not remapped at ingestion
 
-   -
+  -
 
 - No reuse errors
 
-   - Score descriptors used only for quantitative results
+  - Score descriptors used only for quantitative results
 
-   - Performance descriptors used only for categorical interpretation
+  - Performance descriptors used only for categorical interpretation
 
 - No semantic flattening
 
-   - Distinct values are not collapsed
+  - Distinct values are not collapsed
 
-   - Differences remain auditable
+  - Differences remain auditable
 
 #### Common Failure Patterns
 
@@ -149,7 +148,7 @@ Validation must verify:
 
 - Flattening multiple values into one
 
-#### Passing Result
+#### Passing Result (Detection and semantic integrity)
 
 Descriptors retain their intended meaning, are consistently applied, and remain governable over time.
 
@@ -163,33 +162,33 @@ Validation must verify:
 
 -
 
-   - SchoolYear
+- SchoolYear
 
-   - AdministrationDate
+- AdministrationDate
 
-   - AssessmentPeriod (when applicable)
+- AssessmentPeriod (when applicable)
 
-   - WhenAssessedGradeLevel
+- WhenAssessedGradeLevel
 
-   - RetestIndicator (when applicable)
+- RetestIndicator (when applicable)
 
 - Attempt distinguishability:
 
-   - Multiple attempts do not collide
+  - Multiple attempts do not collide
 
-   - AdministrationDate differentiates events
+  - AdministrationDate differentiates events
 
 - Enrollment alignment:
 
-   - Results can be aligned to enrollment context
+  - Results can be aligned to enrollment context
 
-   - Off-cycle testing is handled correctly
+  - Off-cycle testing is handled correctly
 
 - Longitudinal stability:
 
-   - SchoolYear is consistent
+  - SchoolYear is consistent
 
-   - Multi-year comparisons are valid
+  - Multi-year comparisons are valid
 
 #### Common Failure Patterns
 
@@ -281,29 +280,29 @@ Validation must verify:
 
 - Correct load order:
 
-   - Assessment
+  - Assessment
 
-   - ObjectiveAssessment
+  - ObjectiveAssessment
 
-   - StudentAssessment
+  - StudentAssessment
 
 - Runtime behavior:
 
-   - API rejects out-of-order submissions
+  - API rejects out-of-order submissions
 
-   - Errors are clearly logged
+  - Errors are clearly logged
 
 - Retry and recovery:
 
-   - Dependencies retried correctly
+  - Dependencies retried correctly
 
-   - No skipping forward
+  - No skipping forward
 
-   - No duplicate creation
+  - No duplicate creation
 
 - Completeness:
 
-   - No partial loads treated as success
+  - No partial loads treated as success
 
 #### Common Failure Patterns
 
@@ -353,7 +352,7 @@ Manual review must validate:
 
 - Alignment with vendor score reports
 
-#### Passing Result
+#### Passing Result (Detection and semantic integrity)
 
 No prohibited patterns are present, and the integration does not rely on downstream reconstruction of meaning.
 
@@ -483,21 +482,21 @@ Safe reprocessing must be tested across all required scenarios:
 
 - Version tracking is documented across:
 
-   - Assessment
+  - Assessment
 
-   - Ed-Fi Data Standard
+  - Ed-Fi Data Standard
 
-   - Integration
+  - Integration
 
 - Descriptor mappings are:
 
-   -
+  -
 
-   - Not hard-coded in transformation logic
+  - Not hard-coded in transformation logic
 
-   - Transparent and documented
+  - Transparent and documented
 
-   - Traceable over time
+  - Traceable over time
 
 -
 

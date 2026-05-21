@@ -3,7 +3,6 @@ title: "Part II: How Ed-Fi Assessment Data Works"
 sidebar_position: 3
 ---
 
-<!-- markdownlint-disable -->
 
 ## 2. The Ed-Fi Ecosystem
 
@@ -103,7 +102,7 @@ For example, consider a vendor that reports a score called “ _Lexile Measure_ 
 
 The score is sent using an AssessmentReportingMethodDescriptor in the vendor namespace, for example:
 
-_uri://vendor.org/AssessmentReportingMethodDescriptor#LexileMeasure_
+`uri://vendor.org/AssessmentReportingMethodDescriptor#LexileMeasure`
 
 #### Within the Ed-Fi ODS
 
@@ -291,6 +290,7 @@ ClearPath is a hypothetical assessment vendor offering a benchmark screener for 
 |**Subscores**|CP-RD-PA (Phonological Awareness), CP-RD-FL (Fluency), CP-RD-VC<br />(Vocabulary)|
 
 #### GOVERNANCE — SECTION 4: ONE SUBJECT PER ASSESSMENT
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::
@@ -312,7 +312,7 @@ structure. The event layer records what a specific student did on a specific dat
 
 StudentObjectiveAssessment is not a standalone entity posted via a separate API call. It is a collection nested within the StudentAssessment body. The definition layer (Assessment + ObjectiveAssessments) describes the map. The event layer (StudentAssessment + the nested collection) records the student's journey through that map.
 
-##
+### Step 1 — Assessment definition
 
 Benchmark. ClearPath owns the namespace, the assessmentIdentifier, and all vendor-specific descriptors. These values must remain stable across all school years and all states where this assessment is deployed.
 
@@ -399,6 +399,7 @@ Benchmark. ClearPath owns the namespace, the assessmentIdentifier, and all vendo
 \}
 
 #### GOVERNANCE — SECTION 3: ASSESSMENT IDENTITY
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::
@@ -409,7 +410,7 @@ Both values must remain identical across every school year and every state deplo
 
 AssessmentReportingMethodDescriptor and PerformanceLevelDescriptor values carry the vendor namespace prefix (uri://clearpath.example.com/...). These are vendor-owned descriptors and must not be overridden, normalized, or replaced at ingestion. GradeLevelDescriptor, AcademicSubjectDescriptor, and ResultDatatypeTypeDescriptor use the Ed-Fi shared namespace (uri://ed-fi.org/...) because they are cross-domain descriptors governed by the Ed-Fi Alliance.
 
-##
+### Step 2 — ObjectiveAssessments definition
 
 Reading Benchmark has three subscores, each requiring one ObjectiveAssessment record. All three reference the same parent Assessment via assessmentReference. Each carries its own score range and performance level vocabulary.
 
@@ -640,13 +641,14 @@ Reading Benchmark has three subscores, each requiring one ObjectiveAssessment re
 "uri://clearpath.example.com/assessment/clearpath-reading/AssessmentReportingMethodDescriptor#Subtest Level", "performanceLevelDescriptor": "uri://clearpath.example.com/assessment/clearpath-reading/PerformanceLevelDescriptor#Higher than Average", "resultDatatypeTypeDescriptor": "uri://ed-fi.org/ResultDatatypeTypeDescriptor#Level" \} ] \}
 
 #### GOVERNANCE — SECTION 5: HIERARCHY MUST MIRROR THE SCORE REPORT
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::
 
 The ObjectiveAssessment hierarchy must exactly mirror the structure of ClearPath's score report. Three subscores reported by the vendor means exactly three ObjectiveAssessment records — not fewer (which would collapse the hierarchy), not more (which would invent structure that does not exist on the score report). The identificationCode value is the stable key for each subtest and must not change between school years.
 
-##
+### Step 3 — StudentAssessment event record
 
 The StudentAssessment records the event — one record per student per administration. This example shows fake_student_1, a Kindergartener, taking the Reading Benchmark in the fall window on January 1, 2024. All event context fields are required: administrationDate, schoolYearTypeReference, whenAssessedGradeLevelDescriptor, and assessmentPeriodDescriptor. Together they form the event identity anchor for longitudinal tracking.
 
@@ -723,6 +725,7 @@ reading/AssessmentReportingMethodDescriptor#Composite Score",
 \}
 
 #### GOVERNANCE — SECTION 6: EVENT IDENTITY AND LONGITUDINAL INTEGRITY
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::
@@ -743,7 +746,7 @@ place a performance level label inside scoreResults, and never place a numeric s
 
 The studentObjectiveAssessments array is nested inside the StudentAssessment body — it is not a separate API call. Each element references one ObjectiveAssessment by its identificationCode and carries that subtest's score result and performance level. All three subtest results for fake_student_1 are shown below with values drawn from the sample source data.
 
-**Nested array — studentObjectiveAssessments inside StudentAssessment body (not a separate POST)**
+#### Nested array — studentObjectiveAssessments inside StudentAssessment body (not a separate POST)
 
 // studentObjectiveAssessments array -- nested inside StudentAssessment body
 
@@ -876,6 +879,7 @@ The studentObjectiveAssessments array is nested inside the StudentAssessment bod
 ]
 
 #### GOVERNANCE — SECTION 5.2: CORRECT GRAIN ENFORCEMENT
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::
@@ -912,13 +916,10 @@ and supplied as part of the integration evidence artifact package.
 |ResultDatatypeTypeDescriptor#Integer|ResultDatatypeType|**Ed-Fi shared**|
 |ResultDatatypeTypeDescriptor#Decimal|ResultDatatypeType|**Ed-Fi shared**|
 
-ResultDatatypeTypeDescriptor#Level
-
-**Ed-Fi shared**
-
-ResultDatatypeType
+- `ResultDatatypeTypeDescriptor#Level` — `ResultDatatypeType` — **Ed-Fi shared**
 
 #### GOVERNANCE — SECTION 7: DESCRIPTOR AND NAMESPACE GOVERNANCE
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::

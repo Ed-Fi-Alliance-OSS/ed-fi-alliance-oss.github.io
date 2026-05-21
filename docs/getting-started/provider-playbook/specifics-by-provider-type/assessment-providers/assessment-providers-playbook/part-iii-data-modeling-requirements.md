@@ -3,7 +3,6 @@ title: "Part III: Data Modeling Requirements"
 sidebar_position: 4
 ---
 
-<!-- markdownlint-disable -->
 
 ## 3. Assessment Identity
 
@@ -31,7 +30,7 @@ A consistent identity strategy ensures that:
 
 - Form or administration differences are handled outside of identity unless they change the meaning of the score
 
-#### Assessment Provider Responsibility
+#### Assessment Provider Responsibility (Score and performance level separation)
 
 applied, and governed across implementations:
 
@@ -41,7 +40,8 @@ applied, and governed across implementations:
 
 - Aligning identity decisions with governance expectations
 
-#### Prohibited Patterns
+#### Prohibited Patterns (Score and performance level separation)
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::
@@ -86,7 +86,7 @@ For example:
 
 belong within the assessment structure and are represented through ObjectiveAssessment and the StudentObjectiveAssessment collection within the StudentAssessment record.
 
-#### Assessment Provider Responsibility
+#### Assessment Provider Responsibility (Section 5.4)
 
 grain and aligned to how results are reported and interpreted:
 
@@ -98,7 +98,8 @@ grain and aligned to how results are reported and interpreted:
 
 The chosen grain must remain stable and must not vary across deployments.
 
-#### Prohibited Patterns
+#### Prohibited Patterns (Section 5.4)
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::
@@ -145,7 +146,7 @@ and meaning of results have not changed. This stability is foundational to longi
 
 Version indicators should only be included when the assessment has materially changed in a way that affects comparability or interpretation.
 
-#### Assessment Provider Responsibility
+#### Assessment Provider Responsibility (Section 5.4)
 
 time and change only when the structure or meaning of results materially changes.
 
@@ -159,7 +160,8 @@ time and change only when the structure or meaning of results materially changes
 
 -
 
-#### Prohibited Patterns
+#### Prohibited Patterns (Section 5.4)
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::
@@ -207,6 +209,7 @@ The assessment provider is responsible for ensuring that assessment family relat
 AssessmentFamily must not be used as a substitute for proper identity design or to compensate for inconsistent identifier strategies.
 
 #### Prohibited Patterns
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::
@@ -248,6 +251,7 @@ The assessment provider is responsible for ensuring that each assessment resolve
 - Aligning subject decisions with governance expectations
 
 #### Prohibited Patterns
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::
@@ -311,6 +315,7 @@ The assessment provider is responsible for ensuring that subject meaning is expl
 - Aligning subject modeling decisions with governance expectations
 
 #### Prohibited Patterns
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::
@@ -406,6 +411,7 @@ consistently applied, and aligned to the vendor score report across implementati
 - Maintain consistent hierarchy across implementations
 
 #### Prohibited Patterns
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::
@@ -479,6 +485,7 @@ The assessment provider is responsible for ensuring that the full score report i
 - Maintain consistency across administrations and integrations
 
 #### Prohibited Patterns
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::
@@ -532,6 +539,7 @@ The assessment provider is responsible for ensuring that recursive objective str
 - Ensure all results are delivered within StudentObjectiveAssessment
 
 #### Prohibited Patterns
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::
@@ -568,7 +576,7 @@ When these concepts are conflated:
 
 - Analytical meaning is lost
 
-#### Assessment Provider Responsibility
+#### Assessment Provider Responsibility (Section 5.4)
 
 The assessment provider is responsible for ensuring that scores and performance levels are clearly separated, correctly represented, and consistently applied across implementations:
 
@@ -582,7 +590,8 @@ The assessment provider is responsible for ensuring that scores and performance 
 
 - Use descriptor categories consistently
 
-#### Prohibited Patterns
+#### Prohibited Patterns (Section 5.4)
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::
@@ -644,6 +653,7 @@ The assessment provider is responsible for ensuring that indicators are correctl
 - Align indicator modeling with governance expectations
 
 #### Prohibited Patterns
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::
@@ -701,6 +711,7 @@ represented, and consistently applied across implementations:
 - Ensure multiple attempts are distinguishable through event context rather than identity
 
 #### Prohibited Patterns
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::
@@ -758,6 +769,7 @@ support longitudinal analysis and consistent interpretation across implementatio
 -
 
 #### Prohibited Patterns
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::
@@ -801,6 +813,7 @@ The assessment provider is responsible for ensuring that event identity is model
 - • Align event modeling decisions with governance expectations
 
 #### Prohibited Patterns
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::
@@ -820,6 +833,7 @@ The following patterns are not allowed because they conflate identity and event 
 while event context remains interpretable, enabling consistent longitudinal analysis without requiring downstream systems to reconstruct meaning.
 
 ## 7. Descriptor and Namespace Governance
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::
@@ -881,6 +895,7 @@ names and performance level semantics, are preserved exactly as defined and cons
 - Align descriptor usage with governance expectations
 
 #### Prohibited Patterns
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::
@@ -936,6 +951,7 @@ The assessment provider is responsible for ensuring that shared descriptors are 
 - Ensure consistent usage across integrations
 
 #### Prohibited Patterns
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::
@@ -999,6 +1015,7 @@ consistently applied across implementations:
 - Maintain consistent descriptor governance across integrations
 
 #### Prohibited Patterns
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::

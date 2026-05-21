@@ -3,9 +3,8 @@ title: "Part I: Executive Summary"
 sidebar_position: 2
 ---
 
-<!-- markdownlint-disable -->
 
-#### Assessment Vendor Ed-Fi Native Integration Playbook
+## Assessment Vendor Ed-Fi Native Integration Playbook
 
 Part I
 
@@ -74,6 +73,7 @@ Assessment results must resolve to a valid StudentUniqueId to be usable. In prac
 Even low rates of identity misalignment can undermine longitudinal analysis, distort reporting, and require manual reconciliation efforts that do not scale.
 
 #### Descriptor Governance Failures
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::
@@ -116,9 +116,9 @@ Adopting a native Ed-Fi assessment integration is not just a technical decision.
 
 Today, most assessment integrations are built and maintained as one-off implementations. Variability across states, districts, and partners—particularly in areas such as rostering, student identity, descriptor usage, and data expectations—forces vendors into a repeated cycle of customization, support, and rework.
 
-#### Without a standardized approach, vendors incur ongoing operational and engineering costs:
+#### Without a standardized approach, vendors incur ongoing operational and engineering costs
 
-_Per-site customization cycles_
+#### Per-site customization cycles
 
 expectations. Inconsistent rostering approaches across implementations create significant overhead in aligning student identity and preparing data for integration.
 
@@ -126,11 +126,11 @@ expectations. Inconsistent rostering approaches across implementations create si
 
 Fragmented integrations lead to recurring issues with identity mismatches, missing data, and inconsistent behavior across environments. Support teams must continuously troubleshoot problems that stem from a lack of standardization rather than product defects.
 
-##
+### Limited portability and retrofit costs
 
 Integrations built for one state or partner often require redesign when deployed elsewhere. As expectations evolve, especially with emerging standards, vendors are forced to revisit and retrofit prior work.
 
-#### With a native integration aligned to this playbook, vendors establish a scalable and repeatable foundation for growth:
+### With a native integration aligned to this playbook, vendors establish a scalable and repeatable foundation for growth
 
 #### Scalable, repeatable deployment model
 
@@ -148,7 +148,7 @@ Implementing these principles positions vendors for compatibility with Data Stan
 
 Standardized integrations reduce fragmentation and enable vendors to operate in a more predictable, consistent data exchange environment.
 
-#### A native integration requires upfront investment and a shift from one-off delivery to standardized implementation:
+#### A native integration requires upfront investment and a shift from one-off delivery to standardized implementation
 
 #### Initial investment in modeling and architecture
 
@@ -207,6 +207,7 @@ Assessment results must include the contextual information required to interpret
 Without full event context, results cannot be reliably aligned to enrollment, compared across time, or used for longitudinal analysis.
 
 #### Align to Governance Oversight
+
 :::warning
 This guidance is normative and should be enforced as written.
 :::
