@@ -8,7 +8,7 @@ sidebar_position: 2
 
 Part I
 
-## 1 Executive Summary
+### 1 Executive Summary
 
 ### 1.1 Purpose
 
@@ -126,11 +126,11 @@ expectations. Inconsistent rostering approaches across implementations create si
 
 Fragmented integrations lead to recurring issues with identity mismatches, missing data, and inconsistent behavior across environments. Support teams must continuously troubleshoot problems that stem from a lack of standardization rather than product defects.
 
-### Limited portability and retrofit costs
+### Cross-site redesign and retrofit costs
 
 Integrations built for one state or partner often require redesign when deployed elsewhere. As expectations evolve, especially with emerging standards, vendors are forced to revisit and retrofit prior work.
 
-### With a native integration aligned to this playbook, vendors establish a scalable and repeatable foundation for growth
+#### With a native integration aligned to this playbook, vendors establish a scalable and repeatable foundation for growth
 
 #### Scalable, repeatable deployment model
 

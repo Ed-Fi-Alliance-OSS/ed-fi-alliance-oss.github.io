@@ -30,7 +30,7 @@ A consistent identity strategy ensures that:
 
 - Form or administration differences are handled outside of identity unless they change the meaning of the score
 
-#### Assessment Provider Responsibility (Score and performance level separation)
+#### 5.4 Assessment Provider Responsibility
 
 applied, and governed across implementations:
 
@@ -40,7 +40,7 @@ applied, and governed across implementations:
 
 - Aligning identity decisions with governance expectations
 
-#### Prohibited Patterns (Score and performance level separation)
+#### 5.4 Prohibited Patterns
 
 :::warning
 This guidance is normative and should be enforced as written.
@@ -86,7 +86,7 @@ For example:
 
 belong within the assessment structure and are represented through ObjectiveAssessment and the StudentObjectiveAssessment collection within the StudentAssessment record.
 
-#### Assessment Provider Responsibility (Section 5.4)
+#### Assessment Provider Responsibility
 
 grain and aligned to how results are reported and interpreted:
 
@@ -98,7 +98,7 @@ grain and aligned to how results are reported and interpreted:
 
 The chosen grain must remain stable and must not vary across deployments.
 
-#### Prohibited Patterns (Section 5.4)
+#### Prohibited Patterns
 
 :::warning
 This guidance is normative and should be enforced as written.
@@ -146,7 +146,7 @@ and meaning of results have not changed. This stability is foundational to longi
 
 Version indicators should only be included when the assessment has materially changed in a way that affects comparability or interpretation.
 
-#### Assessment Provider Responsibility (Section 5.4)
+#### Assessment Provider Responsibility (Score vs. Performance Levels)
 
 time and change only when the structure or meaning of results materially changes.
 
@@ -160,7 +160,7 @@ time and change only when the structure or meaning of results materially changes
 
 -
 
-#### Prohibited Patterns (Section 5.4)
+#### Prohibited Patterns (Score vs. Performance Levels)
 
 :::warning
 This guidance is normative and should be enforced as written.

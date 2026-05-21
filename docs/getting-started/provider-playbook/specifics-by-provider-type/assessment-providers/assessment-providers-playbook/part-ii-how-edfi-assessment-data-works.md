@@ -312,7 +312,7 @@ structure. The event layer records what a specific student did on a specific dat
 
 StudentObjectiveAssessment is not a standalone entity posted via a separate API call. It is a collection nested within the StudentAssessment body. The definition layer (Assessment + ObjectiveAssessments) describes the map. The event layer (StudentAssessment + the nested collection) records the student's journey through that map.
 
-### Step 1 — Assessment definition
+### 2.5.1 Assessment definition resource
 
 Benchmark. ClearPath owns the namespace, the assessmentIdentifier, and all vendor-specific descriptors. These values must remain stable across all school years and all states where this assessment is deployed.
 
@@ -410,7 +410,7 @@ Both values must remain identical across every school year and every state deplo
 
 AssessmentReportingMethodDescriptor and PerformanceLevelDescriptor values carry the vendor namespace prefix (uri://clearpath.example.com/...). These are vendor-owned descriptors and must not be overridden, normalized, or replaced at ingestion. GradeLevelDescriptor, AcademicSubjectDescriptor, and ResultDatatypeTypeDescriptor use the Ed-Fi shared namespace (uri://ed-fi.org/...) because they are cross-domain descriptors governed by the Ed-Fi Alliance.
 
-### Step 2 — ObjectiveAssessments definition
+### 2.5.2 ObjectiveAssessment resources
 
 Reading Benchmark has three subscores, each requiring one ObjectiveAssessment record. All three reference the same parent Assessment via assessmentReference. Each carries its own score range and performance level vocabulary.
 
@@ -648,7 +648,7 @@ This guidance is normative and should be enforced as written.
 
 The ObjectiveAssessment hierarchy must exactly mirror the structure of ClearPath's score report. Three subscores reported by the vendor means exactly three ObjectiveAssessment records — not fewer (which would collapse the hierarchy), not more (which would invent structure that does not exist on the score report). The identificationCode value is the stable key for each subtest and must not change between school years.
 
-### Step 3 — StudentAssessment event record
+### 2.5.3 StudentAssessment resource
 
 The StudentAssessment records the event — one record per student per administration. This example shows fake_student_1, a Kindergartener, taking the Reading Benchmark in the fall window on January 1, 2024. All event context fields are required: administrationDate, schoolYearTypeReference, whenAssessedGradeLevelDescriptor, and assessmentPeriodDescriptor. Together they form the event identity anchor for longitudinal tracking.
 
@@ -916,7 +916,7 @@ and supplied as part of the integration evidence artifact package.
 |ResultDatatypeTypeDescriptor#Integer|ResultDatatypeType|**Ed-Fi shared**|
 |ResultDatatypeTypeDescriptor#Decimal|ResultDatatypeType|**Ed-Fi shared**|
 
-- `ResultDatatypeTypeDescriptor#Level` — `ResultDatatypeType` — **Ed-Fi shared**
+ResultDatatypeTypeDescriptor#Level is an Ed-Fi shared ResultDatatypeType.
 
 #### GOVERNANCE — SECTION 7: DESCRIPTOR AND NAMESPACE GOVERNANCE
 

@@ -58,7 +58,7 @@ Structural validation must verify:
 
 - Composite results modeled at the wrong level
 
-#### Passing Result (Cross-category integrity)
+#### Passing Result (Prohibited Pattern Detection)
 
 The hierarchy is complete, faithful to the vendor score report, and directly interpretable without vendorspecific logic.
 
@@ -100,7 +100,7 @@ It ensures that all relationships between entities are complete and navigable.
 
 - Structure loaded separately from results
 
-#### Passing Result (Detection and semantic integrity)
+#### Passing Result (14.8)
 
 breaks in the chain.
 
@@ -148,7 +148,7 @@ Validation must verify:
 
 - Flattening multiple values into one
 
-#### Passing Result (Detection and semantic integrity)
+#### Passing Result
 
 Descriptors retain their intended meaning, are consistently applied, and remain governable over time.
 
@@ -352,7 +352,7 @@ Manual review must validate:
 
 - Alignment with vendor score reports
 
-#### Passing Result (Detection and semantic integrity)
+#### Passing Result (14.8 Prohibited Pattern Detection)
 
 No prohibited patterns are present, and the integration does not rely on downstream reconstruction of meaning.
 
