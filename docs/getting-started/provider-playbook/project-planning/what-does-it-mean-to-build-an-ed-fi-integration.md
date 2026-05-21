@@ -6,7 +6,7 @@ From this section on, the content is mostly technical. This info applies to soft
 
 ## Push model
 
-The Ed-Fi API is a "push" model for data flow, and not a "pull" model where the data provider (you) stands up or "publishes" an API.  This model is intended to be near real time, meaning it is important that the data is pushed quickly, versus waiting a long time to send.  If you are an assessment vendor this "push" model may not work for you - you can look at [Assessment Providers: Data PULL Model](../specifics-by-provider-type/assessment-providers/assessment-providers-implementation/assessment-providers-data-pull-model.md) to learn more about an alternate approach.
+The Ed-Fi API is a "push" model for data flow, and not a "pull" model where the data provider (you) stands up or "publishes" an API.  This model is intended to be near real time, meaning it is important that the data is pushed quickly, versus waiting a long time to send.  If you are an assessment vendor this "push" model may not work for you - you can look at [Assessment Providers: Data PULL Model](../specifics-by-provider-type/assessment-providers/domain-api-tutorial/assessment-providers-implementation/assessment-providers-data-pull-model.md) to learn more about an alternate approach.
 
 ![push model diagram](https://edfi.atlassian.net/wiki/download/thumbnails/22907299/figure2.png?version=1&modificationDate=1659385195573&cacheVersion=1&api=v2&width=300&height=106)
 
