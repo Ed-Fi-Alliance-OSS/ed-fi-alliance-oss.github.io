@@ -203,15 +203,13 @@ the 2028-2029 school year.
 
 ### Q: How can I / my team get involved?
 
-The Ed-Fi Alliance is running a technical workgroup that will meet regularly
-to help with prioritization, review, and testing of the software.
+The Ed-Fi Alliance is running a technical workgroup that will meet regularly to
+help with prioritization, review, and testing of the software.
 
 Anyone wishing to contribute at the level of design or application code level is
-invited to review the
-[Project Tanager design repository](https://github.com/Ed-Fi-Alliance-OSS/Project-Tanager)
-to understand current and upcoming work. Please see
-[How to Contribute](https://github.com/Ed-Fi-Alliance-OSS/Project-Tanager/CONTRIBUTING.md)
-for more information.
+invited to review the [Design
+Documents](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/tree/main/reference/design)
+to understand current and upcoming work.
 
 ## Technical Design
 
