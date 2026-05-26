@@ -35,6 +35,7 @@ Knowledge base (KB) articles in this online guide present more detailed informat
 
 Below, please find links to additional KB articles that your teams will find helpful.
 
+* [Ed-Fi Overview and Implementation Playbook](./ed-fi-overview-and-implementation-playbook.md)
 * [Project Planning](./project-planning/readme.md)
   * [Upgrade](./project-planning/upgrade.md)
   * [Overview and Rationale for Ed-Fi Use by States](./project-planning/overview-and-rationale-for-ed-fi-use-by-states.md)
