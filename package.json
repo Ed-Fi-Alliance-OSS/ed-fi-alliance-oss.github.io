@@ -13,9 +13,9 @@
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "format": "npx prettier . --write",
-    "lint": "markdownlint-cli2 **/*.md #node_modules #.venv #venv && eslint **/*.mdx",
+    "lint": "markdownlint-cli2 **/*.md #node_modules #.venv #venv #.worktrees && eslint **/*.mdx",
     "lint:folder": "node eng/lint-folder.js",
-    "lint:fix": "markdownlint-cli2 **/*.md #node_modules #.venv #venv --fix"
+    "lint:fix": "markdownlint-cli2 **/*.md #node_modules #.venv #venv #.worktrees --fix"
   },
   "dependencies": {
     "@docusaurus/core": "^3.10.1",
