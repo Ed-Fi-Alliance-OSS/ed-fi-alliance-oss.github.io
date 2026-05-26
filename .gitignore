@@ -23,3 +23,8 @@ chroma_db_test/
 # Claude Code personal instructions
 CLAUDE.local.md
 .claude/settings.local.json
+
+# Asset upload utility
+asset-upload-manifest.json
+.asset-backup/
+eng/upload-assets/.tmp/

@@ -15,9 +15,14 @@
     "format": "npx prettier . --write",
     "lint": "markdownlint-cli2 **/*.md #node_modules && eslint **/*.mdx",
     "lint:folder": "node eng/lint-folder.js",
-    "lint:fix": "markdownlint-cli2 **/*.md #node_modules --fix"
+    "lint:fix": "markdownlint-cli2 **/*.md #node_modules --fix",
+    "assets:prepare": "node eng/upload-assets.js --prepare",
+    "assets:upload": "node eng/upload-assets.js --upload",
+    "assets": "node eng/upload-assets.js --prepare && node eng/upload-assets.js --upload"
   },
   "dependencies": {
+    "@azure/identity": "^4.13.1",
+    "@azure/storage-blob": "^12.31.0",
     "@docusaurus/core": "^3.10.1",
     "@docusaurus/plugin-content-docs": "^3.10.1",
     "@docusaurus/preset-classic": "^3.10.1",
@@ -27,7 +32,8 @@
     "eslint": "^10.3.0",
     "prism-react-renderer": "^2.4.1",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "sharp": "^0.34.5"
   },
   "overrides": {
     "@babel/plugin-transform-modules-systemjs": ">=7.29.4"
