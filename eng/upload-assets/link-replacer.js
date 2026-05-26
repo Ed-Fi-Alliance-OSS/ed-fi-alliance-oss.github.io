@@ -54,9 +54,10 @@ function replaceLinks(entries, docsRoot) {
 
     for (const entry of uploadedEntries) {
       for (const oldLink of entry.oldLinks) {
-        if (content.includes(oldLink)) {
-          content = content.split(oldLink).join(entry.newLink);
-          totalReplacements++;
+        const parts = content.split(oldLink);
+        if (parts.length > 1) {
+          content = parts.join(entry.newLink);
+          totalReplacements += parts.length - 1;
           changed = true;
         }
       }
