@@ -16,7 +16,7 @@ Ensure that the following components are installed:
 
 * **PowerShell 5.0, 7.2, or 7.3.** PowerShell is used to initialize the development
     environment.
-* **.NET 8.0 SDK**. The .NET 8.0 Software Developer Kit is required for
+* **.NET 10.0 SDK**. The .NET 10.0 Software Developer Kit is required for
     compiling the solution.
 
 <details>
@@ -43,10 +43,10 @@ If the required version is not installed, download and install [PowerShell 5.0
 or
 above](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-5.1).
 
-## .NET 8.0 SDK
+## .NET 10.0 SDK
 
-Download and install the latest [.NET SDK 8.0 (Compatible with Visual Studio
-2022)](https://dotnet.microsoft.com/en-us/download/dotnet/8.0).
+Download and install the latest [.NET SDK 10.0 (Compatible with Visual Studio
+2022)](https://dotnet.microsoft.com/en-us/download/dotnet/10.0).
 
 :::tip
 
@@ -271,7 +271,7 @@ PGPASSFILE                     C:\PGDockerSetup\pgpass.conf
 
 </details>
 
-## Step 3. Download the Ed-Fi ODS / API v7.3.1 Code
+## Step 3. Download the Ed-Fi ODS / API v7.3.2 Code
 
 The Ed-Fi ODS / API source code is contained in two Ed-Fi repositories hosted
 by GitHub.
@@ -280,8 +280,8 @@ by GitHub.
 
 The Ed-Fi ODS / API can be found in the repository links below:
 
-* [Ed-Fi-ODS/v7.3.1](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v7.3.1)
-* [Ed-Fi-ODS-Implementation/v7.3.1](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/tree/v7.3.1)
+* [Ed-Fi-ODS/v7.3.2](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v7.3.2)
+* [Ed-Fi-ODS-Implementation/v7.3.2](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/tree/v7.3.2)
 
 Use a Git client (such as [GitHub Desktop](https://desktop.github.com/)) or a
 Git command line tool to Git Clone each of the repository links described above.
@@ -319,7 +319,7 @@ When you clone a repository, ensure that you have the correct tag checked out in
 your client before you proceed.
 
 ```powershell
-git checkout tags/v7.3.1 -b <branch>
+git checkout tags/v7.3.2 -b <branch>
 ```
 
 :::
@@ -357,12 +357,12 @@ Clone. You can do so by following these instructions:
 2. In Windows Explorer, right-click on each of the downloaded ZIP files and
    select Extract All… Enter C:\\ for the target folder. (You can extract the
    files to any directory, but these instructions assume you've extracted to
-   C:\\.) The ZIP files contain an embedded folder ending in "-v7.3.1" (or
+   C:\\.) The ZIP files contain an embedded folder ending in "-v7.3.2" (or
    "-main" if downloading latest daily source). For example, the "Ed-Fi ODS
-   ZIP" archive contents will be extracted into C:\\Ed-Fi-ODS-v7.3.1.
+   ZIP" archive contents will be extracted into C:\\Ed-Fi-ODS-v7.3.2.
 3. After the extractions are complete, rename the folders to remove
-    the -v7.3.1 (or "-main") from the folder names. For example, change
-    C:\\Ed-Fi-ODS-v7.3.1 to C:\\Ed-Fi-ODS.
+    the -v7.3.2 (or "-main") from the folder names. For example, change
+    C:\\Ed-Fi-ODS-v7.3.2 to C:\\Ed-Fi-ODS.
 4. When the extraction and renaming are complete, there should be two folders
     for the ODS / API source code.
 

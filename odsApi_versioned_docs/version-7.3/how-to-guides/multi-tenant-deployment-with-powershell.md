@@ -76,7 +76,7 @@ and extensions.
 ## Deploy the Databases
 
 Create a [user secrets
-file](https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-8.0&tabs=windows)
+file](https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-10.0&tabs=windows)
 in the WebAPI project.
 
 ```json

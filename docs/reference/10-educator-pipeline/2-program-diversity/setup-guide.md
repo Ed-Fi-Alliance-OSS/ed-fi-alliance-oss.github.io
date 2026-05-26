@@ -84,15 +84,15 @@ Install the ODS / API for Suite 3 by following instructions in the [Getting Star
 
 ### Install Analytics Middle Tier
 
-Install Analytics Middle Tier by following the instructions in the [AMT Deployment Guide](../../9-analytics-middle-tier/deployment-guide/readme.mdx) to install the 'EPP' and 'RLS' collections
+Install Analytics Middle Tier by following the instructions in the [AMT Deployment Guide](/getting-started/edfi-exchange/technology/analytics-middle-tier/deployment-guide/) to install the 'EPP' and 'RLS' collections
 
 ### Install Admin App
 
-Install Instructions for Admin App can be found in the [Admin App](../../ods-admin-app/readme.md) guide.
+Install Instructions for Admin App can be found in the [Admin App](/getting-started/edfi-exchange/technology/ods-admin-app) guide.
 
 ### Install Data Import
 
-Install Instructions for Data Import can be found in the [PowerShell Installation for Data Import using NuGet Packages](../../6-data-import/readme.md) guide. Data Import configuration is also described below.
+Install Instructions for Data Import can be found in the [PowerShell Installation for Data Import using NuGet Packages](../../9-data-import/readme.md) guide. Data Import configuration is also described below.
 
 :::tip Time to complete
 
@@ -108,7 +108,7 @@ In this step, you will load data from your SIS, credential, and financial aid pr
 
 ### Add Your Education Organizations in the Admin App
 
-Once you have successfully installed the Admin App following the instructions provided above, you can continue to configure Admin App to add your Education Organizations. This configuration will allow your data to be loaded properly as much of it requires education organizations. You can also find instructions for AdminApp configuration at [Admin App - Next Steps](../../ods-admin-app/next-steps.md).
+Once you have successfully installed the Admin App following the instructions provided above, you can continue to configure Admin App to add your Education Organizations. This configuration will allow your data to be loaded properly as much of it requires education organizations. You can also find instructions for AdminApp configuration at [Admin App - Next Steps](/getting-started/edfi-exchange/technology/ods-admin-app/next-steps).
 
 1. The first time you open Admin App will ask you to register a new user in order to get access to the utility. The user you set up can be used for any future access to the tool. You will also have the opportunity to create additional users later.
 2. In order to register a new user you will need to provide an email address and create a new password.
@@ -153,7 +153,7 @@ Note: Treat the **Key** and **Secret** as secure information for your organi
 
 ## Step 3. Configure Data Import and Load Data
 
-The [Data Import tool](../../6-data-import/readme.md) is used for loading export files (typically in CSV format) generated manually, by the EPP, or one of their automated services. There are 5 steps to load data to the ODS/API:
+The [Data Import tool](../../9-data-import/readme.md) is used for loading export files (typically in CSV format) generated manually, by the EPP, or one of their automated services. There are 5 steps to load data to the ODS/API:
 
 1. Configure Data Import for First Time Use
 2. Create your map

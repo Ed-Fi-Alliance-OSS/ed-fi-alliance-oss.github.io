@@ -33,7 +33,7 @@ Webinar Link: [Advancing Educator Preparation Through State-Level Data Innovatio
 
 * [Performance Diversity and Persistence Use Case/Dashboard](/getting-started/educator-pipeline/use-cases/program-diversity)
 
-* [Educator Preparation Data Model (EPDM) Technical Resources](https://edfi.atlassian.net/wiki/spaces/EPP/pages/23171694/EPDM+Technical+Resources)
+* [Educator Preparation Data Model (EPDM) Technical Resources](/reference/educator-pipeline/)
 
 ## Ed-Fi Academy Content
 

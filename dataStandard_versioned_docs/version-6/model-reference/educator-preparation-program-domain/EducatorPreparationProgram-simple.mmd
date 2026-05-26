@@ -1,0 +1,40 @@
+﻿erDiagram
+    Candidate {
+    }
+    CandidateIdentificationCode {
+    }
+    EducatorPreparationProgram {
+    }
+    FieldworkExperience {
+    }
+    CandidateEducatorPreparationProgramAssociation {
+    }
+    CandidateRelationshipToStaffAssociation {
+    }
+    StaffEducatorPreparationProgramAssociation {
+    }
+    Person {
+    }
+    Staff {
+    }
+    EducationOrganization {
+    }
+    Section {
+    }
+    Candidate }o--o| Person : "HasAssociated"
+    Staff }o--o| Person : "IsA"
+    Candidate |o--o{ EducatorPreparationProgram : "ParticipatesIn"
+    CandidateEducatorPreparationProgramAssociation }o..|| Candidate : "ParticipatesIn"
+    CandidateEducatorPreparationProgramAssociation }o..|| EducatorPreparationProgram : "ParticipatesIn"
+    Staff }o--o{ Candidate : "HasAssociated"
+    CandidateRelationshipToStaffAssociation }o..|| Candidate : "HasAssociated"
+    CandidateRelationshipToStaffAssociation }o..|| Staff : "HasAssociated"
+    Staff }o--o{ EducatorPreparationProgram : "ParticipatesIn"
+    StaffEducatorPreparationProgramAssociation }o..|| Staff : "ParticipatesIn"
+    StaffEducatorPreparationProgramAssociation }o..|| EducatorPreparationProgram : "ParticipatesIn"
+    EducationOrganization ||--o{ EducatorPreparationProgram : "HasAssociated"
+    Staff }o--o{ EducationOrganization : "HasAssociated"
+    FieldworkExperience }o--o| EducatorPreparationProgram : "HasAssociated"
+    FieldworkExperience |o--o{ Section : "HasAssociated"
+    CandidateIdentificationCode }o--|| Candidate : "HasAssociated"
+    CandidateIdentificationCode |o--|| EducationOrganization : "HasAssociated"

@@ -48,7 +48,7 @@ Instructions for adding education organizations in Admin App can be found in the
 
 ### Set up Data Import
 
-Installation Instructions for Data Import can be found [here](../../6-data-import/readme.md).
+Installation Instructions for Data Import can be found [here](../../9-data-import/readme.md).
 
 Once you've installed Data Import, initial setup and post installation steps are [here](./setup-guide.md#configure-data-import-for-first-time-use).
 
@@ -56,7 +56,7 @@ Once you've installed Data Import, initial setup and post installation steps are
 
 Data Import requires a map for each piece of CSV data that will loaded into the ODS. Basic information on creating maps and agents for the Diversity and Persistence Dashboard can be found [here](./setup-guide.md#create-or-import-a-mapping-template).
 
-More in-depth documentation on Import Maps and Agents can be found in the Data Import [documentation](../../6-data-import/readme.md).
+More in-depth documentation on Import Maps and Agents can be found in the Data Import [documentation](../../9-data-import/readme.md).
 
 ### Upload File to Agent
 

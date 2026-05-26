@@ -42,4 +42,4 @@ The key concepts include the following:
         gradebook.
 * While data in each subdomain model can influence others, they aren’t a
     hierarchy. The subdomain documentation in [Student Academic Record Domain -
-    Model Diagrams](./model-diagrams.md) provides additional detail.
+    Model Diagrams](./model-diagrams.mdx) provides additional detail.
