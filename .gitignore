@@ -23,3 +23,6 @@ chroma_db_test/
 # Claude Code personal instructions
 CLAUDE.local.md
 .claude/settings.local.json
+
+# Python virtual environment
+.venv/
