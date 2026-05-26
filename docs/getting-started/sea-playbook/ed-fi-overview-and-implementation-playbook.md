@@ -62,12 +62,12 @@ flowchart LR
 
 State adoption of the Ed-Fi standard has accelerated significantly:
 
-![State adoption growth chart](/img/sea-playbook/page-04.png)
+![State adoption growth chart](/img/sea-playbook/page-04.webp)
 
 District adoption for data services has grown substantially — roughly an 8× increase from 2019 to
 2022, separate from the approximately 1,900 districts in states using Ed-Fi for state reporting:
 
-![District adoption growth chart](/img/sea-playbook/page-05.png)
+![District adoption growth chart](/img/sea-playbook/page-05.webp)
 
 ## Impact
 
@@ -106,7 +106,7 @@ Michigan demonstrates how Ed-Fi enables district-level impact beyond state repor
 
 There are three primary ways to implement Ed-Fi:
 
-![Three implementation approaches comparison](/img/sea-playbook/page-08.png)
+![Three implementation approaches comparison](/img/sea-playbook/page-08.webp)
 
 :::tip Best Practice
 The **Reporting + Data Hub** approach is considered best practice where a strong ESA model exists
@@ -152,7 +152,7 @@ flowchart LR
 
 ### Core Implementation Team
 
-![Core implementation team](/img/sea-playbook/page-11.png)
+![Core implementation team](/img/sea-playbook/page-11.webp)
 
 ### Risk Mitigation
 
@@ -322,7 +322,7 @@ Stakeholder activities in production:
 
 ### Technical Task Assignment
 
-![Technical task assignment recommendations](/img/sea-playbook/page-30.png)
+![Technical task assignment recommendations](/img/sea-playbook/page-30.webp)
 
 ### Vendor Communication
 
