@@ -28,3 +28,6 @@ CLAUDE.local.md
 .venv/
 venv/
 tools/build-chroma/.venv/
+
+# Git worktrees
+.worktrees/
