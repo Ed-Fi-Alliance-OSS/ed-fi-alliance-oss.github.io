@@ -118,9 +118,109 @@ async function runPrepare({ source, noConvert }) {
 }
 
 async function runUpload({ yes, deleteAfter }) {
-  // Implemented in Task 7
-  console.error('--upload not yet implemented');
-  process.exit(1);
+  const manifest = readManifest(REPO_ROOT);
+  if (!manifest) {
+    console.error('❌ No manifest found. Run: npm run assets:prepare first.');
+    process.exit(1);
+  }
+
+  const ageMs = Date.now() - new Date(manifest.preparedAt).getTime();
+  if (ageMs > 24 * 60 * 60 * 1000) {
+    console.warn(`⚠️  Manifest is ${Math.round(ageMs / 3600000)}h old. Consider re-running prepare.`);
+  }
+
+  const pending = manifest.entries.filter((e) => e.status === 'ready');
+  if (pending.length === 0) {
+    console.log('No entries with status=ready. Nothing to upload.');
+    process.exit(0);
+  }
+
+  console.log(`\n📋 ${pending.length} file(s) to upload:\n`);
+  for (const entry of pending) {
+    console.log(`  ${entry.originalPath}`);
+    console.log(`    → ${entry.azureUrl}`);
+  }
+
+  if (!yes) {
+    const { createInterface } = require('readline');
+    const rl = createInterface({ input: process.stdin, output: process.stdout });
+    const answer = await new Promise((resolve) =>
+      rl.question('\nProceed with upload? (y/N) ', resolve)
+    );
+    rl.close();
+    if (answer.trim().toLowerCase() !== 'y') {
+      console.log('Aborted.');
+      process.exit(0);
+    }
+  }
+
+  console.log('\n🔐 Checking Azure credentials...');
+  let credential;
+  try {
+    credential = await getCredential();
+    console.log('   Authenticated via DefaultAzureCredential ✓');
+  } catch (err) {
+    console.error('❌ Azure authentication failed. Run: az login');
+    console.error(`   Details: ${err.message}`);
+    process.exit(1);
+  }
+
+  console.log('\n☁️  Uploading...');
+  let uploadedCount = 0;
+  let failedCount = 0;
+
+  for (const entry of manifest.entries) {
+    if (entry.status !== 'ready') continue;
+    const processedAbsPath = path.join(REPO_ROOT, entry.processedPath);
+    const blobName = entry.azureUrl.replace(`${STORAGE_ACCOUNT_URL}/$web/`, '');
+    try {
+      await uploadBlob(processedAbsPath, blobName, credential);
+      entry.status = 'uploaded';
+      uploadedCount++;
+      console.log(`   ✓ ${entry.originalPath}`);
+    } catch (err) {
+      entry.status = 'failed';
+      failedCount++;
+      console.error(`   ✗ ${entry.originalPath}: ${err.message}`);
+    }
+    writeManifest(REPO_ROOT, manifest);
+  }
+
+  console.log('\n🔗 Replacing links in docs...');
+  const replacements = replaceLinks(manifest.entries, DOCS_ROOT);
+  console.log(`   ${replacements} link(s) replaced.`);
+
+  if (deleteAfter) {
+    console.log('\n🗑️  Deleting source files...');
+    for (const entry of manifest.entries) {
+      if (entry.status !== 'uploaded') continue;
+      const absPath = path.join(REPO_ROOT, entry.originalPath);
+      if (fs.existsSync(absPath)) {
+        fs.unlinkSync(absPath);
+        console.log(`   Deleted: ${entry.originalPath}`);
+      }
+    }
+  } else {
+    const remaining = manifest.entries
+      .filter((e) => e.status === 'uploaded')
+      .map((e) => e.originalPath);
+    if (remaining.length > 0) {
+      console.log('\n📁 Source files still in static/ (remove before committing):');
+      for (const p of remaining) console.log(`   ${p}`);
+    }
+  }
+
+  console.log(`\n✅ Upload complete`);
+  console.log(`   Uploaded  : ${uploadedCount}`);
+  console.log(`   Failed    : ${failedCount}`);
+  console.log(`   Links replaced: ${replacements}`);
+
+  if (failedCount > 0) {
+    console.log('\n⚠️  Some uploads failed. Re-run: npm run assets:upload to retry.');
+    process.exit(1);
+  }
+
+  console.log('\nRun `npm run build` to verify no broken links.');
 }
 
 (async () => {
