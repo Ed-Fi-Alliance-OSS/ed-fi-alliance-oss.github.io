@@ -26,7 +26,7 @@ function scanImages(sourceDir) {
   return results;
 }
 
-async function backup(files, sourceDir, backupRoot) {
+function backup(files, sourceDir, backupRoot) {
   const timestamp = new Date()
     .toISOString()
     .replace(/:/g, '-')
@@ -56,7 +56,7 @@ async function processImage(srcPath, destPath, noConvert) {
 
   if (PASSTHROUGH_EXTENSIONS.has(ext) || ext === '.webp') {
     fs.copyFileSync(srcPath, destPath);
-    return { originalSize: stat.size, processedSize: fs.statSync(destPath).size };
+    return { originalSize: stat.size, processedSize: stat.size };
   }
 
   if (noConvert) {

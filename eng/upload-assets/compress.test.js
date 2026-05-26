@@ -1,4 +1,4 @@
-const { test, before, after } = require('node:test');
+const { test } = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('fs');
 const os = require('os');
@@ -79,7 +79,7 @@ test('backup aborts if timestamp folder already exists', async () => {
   fs.mkdirSync(path.join(backupRoot, ts));
 
   await assert.rejects(
-    () => backup([file], srcDir, backupRoot),
+    () => Promise.resolve().then(() => backup([file], srcDir, backupRoot)),
     /already exists/
   );
 });
@@ -122,6 +122,24 @@ test('processImage compresses PNG without converting when noConvert=true', async
   // Verify it's still a valid PNG (sharp can read it back)
   const meta = await sharp(dest).metadata();
   assert.equal(meta.format, 'png');
+});
+
+test('processImage compresses JPG without converting when noConvert=true', async () => {
+  const dir = makeTmpDir();
+  const src = path.join(dir, 'large.jpg');
+  const dest = path.join(dir, 'large-compressed.jpg');
+  // Create a large JPG using sharp
+  const noise = Buffer.alloc(300 * 300 * 3);
+  for (let i = 0; i < noise.length; i++) noise[i] = Math.floor(Math.random() * 256);
+  await sharp(noise, { raw: { width: 300, height: 300, channels: 3 } }).jpeg().toFile(src);
+  assert.ok(fs.statSync(src).size > SKIP_BELOW_BYTES, 'test jpg should be > SKIP_BELOW_BYTES');
+
+  const result = await processImage(src, dest, true);
+
+  assert.ok(result !== null);
+  assert.ok(fs.existsSync(dest), 'compressed jpg should exist');
+  const meta = await sharp(dest).metadata();
+  assert.equal(meta.format, 'jpeg');
 });
 
 test('processImage copies SVG as-is regardless of size or noConvert flag', async () => {
