@@ -126,6 +126,9 @@ files.
 
 4. **Replace links** — scans `docs/**/*.md` and `docs/**/*.mdx`, replaces exact
    string matches of `oldLink` → `newLink` for all `"uploaded"` entries only.
+   Note: Docusaurus serves `static/img/foo.png` at `/img/foo.png` — the link
+   replacer searches for both the filesystem path (`static/img/...`) and the
+   served path (`/img/...`) to catch all reference styles.
 
 5. **Cleanup** — if `--delete` is set, removes original files from `static/` for
    all `"uploaded"` entries. Otherwise prints a list of source files that can be
@@ -145,7 +148,7 @@ files.
       "processedPath": "eng/upload-assets/.tmp/sdlc/foo.webp",
       "azureUrl": "https://edfidocs.blob.core.windows.net/$web/img/sdlc/foo.webp",
       "referencedIn": ["docs/reference/sdlc.md"],
-      "oldLink": "static/img/sdlc/foo.png",
+      "oldLinks": ["static/img/sdlc/foo.png", "/img/sdlc/foo.png"],
       "newLink": "https://edfidocs.blob.core.windows.net/$web/img/sdlc/foo.webp",
       "status": "ready"
     }
