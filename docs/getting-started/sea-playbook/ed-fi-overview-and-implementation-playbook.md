@@ -34,7 +34,7 @@ States and districts share related but distinct data challenges.
 - _Assessments_ — lack access to a consolidated student-level view of assessment results
 - _College and Career Readiness_ — limited visibility into performance against state targets
 
-## Ed-Fi's Mission
+## Ed-Fi Alliance's Mission
 
 Ed-Fi enables data interoperability across K–12 states, districts, and vendors through four
 pillars:
