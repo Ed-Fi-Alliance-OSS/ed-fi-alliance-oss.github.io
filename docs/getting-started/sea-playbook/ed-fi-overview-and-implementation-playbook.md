@@ -73,7 +73,7 @@ District adoption for data services has grown substantially — roughly an 8× i
 
 ### State Reporting Savings: Nebraska Example
 
-Adopting Ed-Fi for state reporting delivers substantial savings:
+Adopting the Ed-Fi Data Standard for state reporting delivers substantial savings:
 
 | Area | Impact |
 | ------ | -------- |
