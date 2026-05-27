@@ -87,7 +87,7 @@ Source: Nebraska Department of Education
 
 ### District Use Cases: Michigan Example
 
-Michigan demonstrates how Ed-Fi enables district-level impact beyond state reporting:
+Michigan demonstrates how Ed-Fi Data Standard enables district-level impact beyond state reporting:
 
 | Category | Example |
 | -------- | ------- |
