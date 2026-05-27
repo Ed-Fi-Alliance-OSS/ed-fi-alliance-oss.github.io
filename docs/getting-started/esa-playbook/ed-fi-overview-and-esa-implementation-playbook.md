@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Ed-Fi Overview and ESA Implementation
 
-This playbook covers how Educational Service Agencies (ESAs) can leverage Ed-Fi standards to provide data services for their member districts. The first section makes the case for Ed-Fi adoption; the second walks through the implementation journey.
+This playbook covers how Educational Service Agencies (ESAs) can leverage the Ed-Fi Data Standard to provide data services for their member districts. The first section makes the case for Ed-Fi Data Standard adoption; the second walks through the implementation journey.
 
 ## Ed-Fi and the ESA Opportunity
 
