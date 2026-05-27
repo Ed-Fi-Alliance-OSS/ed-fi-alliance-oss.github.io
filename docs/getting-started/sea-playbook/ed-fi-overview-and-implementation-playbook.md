@@ -53,7 +53,7 @@ flowchart LR
   EdFi --> Community
 ```
 
-## Adoption Growth
+{/* ## Adoption Growth
 
 State adoption of the Ed-Fi Data Standard has accelerated significantly:
 
@@ -63,6 +63,8 @@ District adoption for data services has grown substantially — roughly an 8× i
 2022, separate from the approximately 1,900 districts in states using Ed-Fi for state reporting:
 
 ![District adoption growth chart](/img/sea-playbook/page-05.webp)
+
+*/}
 
 ## Impact
 
@@ -82,7 +84,7 @@ Source: Nebraska Department of Education
 
 ### District Use Cases: Michigan Example
 
-Michigan demonstrates how Ed-Fi Data Standard enables district-level impact beyond state reporting:
+Michigan demonstrates how the Ed-Fi Data Standard enables district-level impact beyond state reporting:
 
 | Category | Example |
 | -------- | ------- |
@@ -99,9 +101,13 @@ Michigan demonstrates how Ed-Fi Data Standard enables district-level impact beyo
 
 ## Implementation Approaches
 
-There are three primary ways to implement Ed-Fi:
+There are three primary ways to implement the Ed-Fi Data Standard:
 
-![Three implementation approaches comparison](/img/sea-playbook/page-08.webp)
+| Approach | Description | Best For |
+| -------- | ----------- | -------- |
+| _Reporting Only_ | Use Ed-Fi API for state reporting data collection only | States beginning modernization with limited scope |
+| _Data Hub Only_ | ESA-led data hub providing local use cases and data services for districts | States prioritizing district-level benefits |
+| _Reporting + Data Hub_ | Combined approach: Ed-Fi reporting plus ESA-led data hub | States seeking maximum impact — both reporting savings and district services |
 
 :::tip Best Practice
 The **Reporting + Data Hub** approach is considered best practice where a strong ESA model exists
