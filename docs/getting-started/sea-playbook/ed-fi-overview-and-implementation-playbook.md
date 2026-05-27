@@ -60,7 +60,7 @@ flowchart LR
 
 ## Adoption Growth
 
-State adoption of the Ed-Fi standard has accelerated significantly:
+State adoption of the Ed-Fi Data Standard has accelerated significantly:
 
 ![State adoption growth chart](/img/sea-playbook/page-04.webp)
 
