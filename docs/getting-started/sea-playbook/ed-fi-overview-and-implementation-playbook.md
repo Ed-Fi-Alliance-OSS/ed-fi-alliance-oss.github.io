@@ -10,11 +10,6 @@ This playbook provides an overview of the Ed-Fi Technology Suite and practical g
 (SEAs) implementing Ed-Fi Data Standard for data modernization. It covers the problem space, available
 implementation approaches, a phased timeline, and best practices for vendor and LEA coordination.
 
-**Download the original slide deck:**
-
-- [PowerPoint Version](https://edfi.atlassian.net/wiki/download/attachments/22905309/SEA%20Ed-Fi%20Overview%20and%20Implementation%20Playbook.pptx?api=v2)
-- [PDF Version](https://edfi.atlassian.net/wiki/download/attachments/22905309/SEA%20Ed-Fi%20Overview%20and%20Implementation%20Playbook.pdf?api=v2)
-
 ## Data Pain Points
 
 States and districts share related but distinct data challenges.
