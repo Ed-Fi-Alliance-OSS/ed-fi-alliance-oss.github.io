@@ -6,8 +6,8 @@ sidebar_position: 2
 
 Last updated: December 16, 2024
 
-This playbook provides an overview of Ed-Fi and practical guidance for State Education Agencies
-(SEAs) implementing Ed-Fi for data modernization. It covers the problem space, available
+This playbook provides an overview of the Ed-Fi Technology Suite and practical guidance for State Education Agencies
+(SEAs) implementing Ed-Fi Data Standard for data modernization. It covers the problem space, available
 implementation approaches, a phased timeline, and best practices for vendor and LEA coordination.
 
 **Download the original slide deck:**
