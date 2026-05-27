@@ -4,13 +4,13 @@ sidebar_position: 2
 
 # Ed-Fi Overview and ESA Implementation
 
-## Ed-Fi Overview and ESA Implementation
+This playbook covers how Educational Service Agencies (ESAs) can leverage Ed-Fi standards to provide data services for their member districts. The first section makes the case for Ed-Fi adoption; the second walks through the implementation journey.
 
-The cover introduces an Ed-Fi Alliance presentation about Ed-Fi and Educational Service Agency implementation.
+## Ed-Fi and the ESA Opportunity
 
-## State, ESA, and district pain points
+### State, ESA, and district pain points
 
-The slide groups pain points by stakeholder. State education agencies struggle with timeliness, inconsistent district formats, missing information, and costly data processing. ESAs are framed as change agents that fill LEA staffing and data-management gaps. Local districts face reporting burden, delayed absenteeism alerts, limited assessment views, and limited visibility into college and career readiness.
+State education agencies struggle with timeliness, inconsistent district formats, missing information, and costly data processing. ESAs are framed as change agents that fill LEA staffing and data-management gaps. Local districts face reporting burden, delayed absenteeism alerts, limited assessment views, and limited visibility into college and career readiness.
 
 | Stakeholder | Pain points |
 | --- | --- |
@@ -18,9 +18,9 @@ The slide groups pain points by stakeholder. State education agencies struggle w
 | Education Service Agencies | Change-agent responsibilities, visibility into district data needs, and shared cost pressure. |
 | Local Districts | Reporting burden (avg 6 staff at $0.5M per district), delayed absenteeism alerts, limited consolidated assessment views, and limited college/career readiness visibility. |
 
-## Ed-Fi interoperability mission
+### Ed-Fi interoperability mission
 
-The diagram shows districts connecting through an ESA to Ed-Fi, while states and vendors also connect to Ed-Fi. The right side identifies three core supports: data standard, open-source APIs, and community resources.
+Districts connect through an ESA to Ed-Fi, while states and vendors also connect directly. Ed-Fi provides three core supports: a data standard, open-source APIs, and community resources.
 
 ```mermaid
 flowchart LR
@@ -35,45 +35,21 @@ flowchart LR
   EdFi --> Community["Community<br/>Knowledge base, vendor directory, support, events"]
 ```
 
-## State Ed-Fi adoption for reporting
+### Michigan local-use-case examples
 
-The bar chart shows state adoption increasing from 3 states in 2013 to 5 in 2016, 6 in 2019, and 14 total states in 2022, split between 8 production and 6 implementing.
-
-```mermaid
-xychart-beta
-  title "State Ed-Fi adoption for reporting"
-  x-axis ["2013", "2016", "2019", "2022 Production", "2022 Implementing"]
-  y-axis "Number of states" 0 --> 14
-  bar [3, 5, 6, 8, 6]
-```
-
-## District adoption through ESAs
-
-The chart shows LEA adoption via ESAs growing from 65 districts in 2013 to 1,283 in 2022, described as a 7.8x increase from 2019 to 2022. The slide notes that this local-use-case adoption is separate from 1.9k districts in states using Ed-Fi for state reporting.
-
-```mermaid
-xychart-beta
-  title "LEA Ed-Fi adoption via ESAs"
-  x-axis ["2013", "2016", "2019", "2022"]
-  y-axis "Number of districts" 0 --> 1300
-  bar [65, 120, 165, 1283]
-```
-
-## Michigan local-use-case examples
-
-Michigan examples are grouped into new analytics, new tools, and vendor integrations. MiRead and Digital Equity Data Collection support analytics; MiStrategyBank and MiEWIMS provide tools; Ed-Fi reduces the need for LEAs to manage separate integrations.
+Michigan examples show three categories of local impact enabled by Ed-Fi.
 
 | Category | Description of impact |
 | --- | --- |
 | New analytics | MiRead identifies students struggling to read at grade level; Digital Equity Data Collection identifies internet-access equity gaps. |
 | New tools | MiStrategyBank provides evidence-based strategies; MiEWIMS creates plans for attendance and behavior issues. |
-| Vendor integrations | LEAs do not need to implement and manage all vendor integrations; the slide says Ed-Fi provides 10 integrations per school. |
+| Vendor integrations | LEAs do not need to implement and manage all vendor integrations; Ed-Fi provides 10 integrations per school. |
 
-> “The ability to obtain immediate information on newly enrolled students has improved our ability to provide timely services. Before we would have to wait for the previous school to send student status related to special education, English language, homelessness, etc., which caused a delay in needed services.” — Sarah Mohler, Madison District
+> "The ability to obtain immediate information on newly enrolled students has improved our ability to provide timely services. Before we would have to wait for the previous school to send student status related to special education, English language, homelessness, etc., which caused a delay in needed services." — Sarah Mohler, Madison District
 
-## Common ESA-driven local use cases
+### Common ESA-driven local use cases
 
-The slide lists local data services that ESAs can drive, ranging from assessment and attendance to data warehousing and rostering.
+ESAs can drive a broad range of local data services, from assessment and attendance to data warehousing and rostering.
 
 ```mermaid
 mindmap
@@ -95,25 +71,25 @@ mindmap
       OneRoster and similar applications
 ```
 
-## Why ESAs are positioned to provide data services
+### Why ESAs are positioned to provide data services
 
-This slide frames the ESA opportunity across existing market relationships, an expanded service offering, and the broader state/district/vendor ecosystem.
+ESAs occupy a unique position across existing market relationships, an expanded service opportunity, and the broader state/district/vendor ecosystem.
 
 | Area | Description of impact |
 | --- | --- |
 | Existing Market | ESAs are involved in contracts and services, while districts struggle with data access and interoperability. |
-| Your Opportunity | ESAs can offer a technology stack that helps districts now and supports layered ESA services later; the slide says this is better when ESAs work with others and share resources. |
+| Your Opportunity | ESAs can offer a technology stack that helps districts now and supports layered ESA services later; the approach is stronger when ESAs collaborate and share resources. |
 | Ecosystem | ESAs may not determine state direction, but they can enable district needs, include the state to drive vendor requirements, and reduce district burden. |
 
-## Examples working today
+### Examples working today
 
-The slide presents South Carolina District Data Governance, Texas Education Exchange, and Michigan DataHub as examples of ESA/state data-service models working today.
+South Carolina District Data Governance, Texas Education Exchange, and Michigan DataHub are examples of ESA/state data-service models operating today.
 
 ![Slide showing South Carolina District Data Governance, Texas Education Exchange, and Michigan DataHub as examples of Ed-Fi-related work already operating.](/img/esa-playbook/page-09.webp)
 
-## Three implementation approaches
+### Three approaches to implementing Ed-Fi
 
-The comparison table presents three approaches. “Do It Together + State Vendor Support” is marked as the best-practice option because it combines implementation partners, state involvement, vendor expectations, and local use-case support.
+"Do It Together + State Vendor Support" is the best-practice option — it combines implementation partners, state involvement, vendor expectations, and local use-case support.
 
 ```mermaid
 flowchart LR
@@ -131,9 +107,9 @@ flowchart LR
 | Tradeoffs | Expensive custom development and maintenance; hard to get vendor participation; challenging sustainability plan. | May lack state legislative extension support in the region; extra expenses and services for offering a core platform. | State focus may be on legislative rather than local use cases; requires SEA/ESA coordination. |
 | When to adopt | Unique legislative requirements and use cases in the region. | State reporting modernization is not a priority, but ESAs can deliver use cases on a common platform. | ESA model drives local use cases and wants to de-risk reporting modernization. |
 
-## District challenges in using data
+### District challenges in using data
 
-The slide emphasizes that an ESA data hub does not compete with district SaaS tools. Instead, it helps districts extract value across those tools and wrap ESA programs and services around them.
+An ESA data hub does not compete with district SaaS tools — it helps districts extract value across those tools and wrap ESA programs and services around them.
 
 | Challenge | Meaning |
 | --- | --- |
@@ -142,9 +118,9 @@ The slide emphasizes that an ESA data hub does not compete with district SaaS to
 | Expensive walled gardens | Vendor systems make it hard to use district data across tools or choose best-of-breed tools. |
 | Timeliness | Data visibility can be too slow and disconnected to be useful. |
 
-## Reporting + data hub architecture
+### Reporting and data hub architecture
 
-LEA systems such as SIS, assessment, HR, LMS, and other applications send data through Ed-Fi APIs into an ESA data hub. The ESA hub supports analytics, data warehousing, and data services, and can send reporting data to the SEA Ed-Fi environment, where state/federal reporting is produced.
+LEA systems (SIS, assessment, HR, LMS, and others) send data through Ed-Fi APIs into an ESA data hub. The ESA hub supports analytics, data warehousing, and data services, and can forward reporting data to the SEA Ed-Fi environment for state and federal reporting.
 
 ```mermaid
 flowchart LR
@@ -179,24 +155,13 @@ flowchart LR
   SEAWarehouse --> Reporting
 ```
 
-## Contact slide
+## Implementation Guide
 
-The slide provides Ed-Fi Alliance contacts for follow-up questions.
+_The following sections are intended for leaders working to bring their team on board. Additional details are available in the [Ed-Fi knowledge base](https://edfi.atlassian.net/wiki/spaces/ETKB/overview)._
 
-| Name | Role | Email |
-| --- | --- | --- |
-| David Clements | Solutions Architect | [david.clements@ed-fi.org](mailto:david.clements@ed-fi.org) |
-| Eric Jansson | VP, Solutions | [eric.jansson@ed-fi.org](mailto:eric.jansson@ed-fi.org) |
+### Organizational roles
 
-## Implementation section divider
-
-This divider introduces the implementation portion of the playbook. A note says the remaining slides are for leaders trying to bring their team on board and that additional details are available in the knowledge base repository.
-
-_Note: The remaining slides are intended for leaders working to bring their team on board. Additional details are available in the Ed-Fi knowledge base repository._
-
-## Organizational roles
-
-Four vertical role columns describe responsibilities for SEA, LEAs, vendors, and ESAs/data hubs.
+Four organizations share responsibility during implementation.
 
 ```mermaid
 flowchart LR
@@ -217,9 +182,9 @@ flowchart LR
 | Vendors | Understand project goals and impacts and initiate communications with LEAs. |
 | ESAs / Data Hub | Build business plans collaboratively with members and explore candidates for initial data services. |
 
-## The four phases
+### The four phases
 
-The implementation roadmap has four phases: market research, planning, pilot, and growth. The key success message is to be in production within a year, align with the school calendar, and use vendor awareness, MSPs, and established best practices to accelerate production.
+The implementation roadmap runs through four phases: market research, planning, pilot, and growth.
 
 ```mermaid
 timeline
@@ -241,9 +206,9 @@ timeline
 Best practice is to be in production within a year and align with the school calendar. A faster timeline helps with project sustainability and creates a clear connection between the project and LEA valuable use cases. With vendor awareness, use of MSPs, and access to well-known best practices, the timeline to production has become much more rapid than in years past.
 :::
 
-## Market Research Phase: ESA tasks
+### Market Research Phase
 
-The slide instructs ESAs to define their value proposition by talking to districts and stakeholders, exploring existing services, identifying market fit, and checking support for standards in their region.
+Define your value proposition by talking to districts and stakeholders, exploring existing services, identifying market fit, and checking support for standards in your region.
 
 | Task area | Questions or actions |
 | --- | --- |
@@ -253,9 +218,9 @@ The slide instructs ESAs to define their value proposition by talking to distric
 | Identify market fit | Where can the ESA grow through new services and regional partners? |
 | Identify product support | Are SIS vendors Ed-Fi certified? Are state initiatives blockers? Which implementation partners and MSPs can help? |
 
-## Engage Ed-Fi expertise
+### Engage Ed-Fi expertise
 
-The slide recommends hiring a badged Ed-Fi Managed Service Provider or consultant, arguing that MSPs accelerate work, know common gotchas, understand hosting and maintenance, debug integrations, and provide vendor support.
+Hiring a badged Ed-Fi Managed Service Provider (MSP) or consultant dramatically accelerates progress. MSPs have done this work many times and understand hosting, maintenance, integration debugging, vendor support, and other common gotchas.
 
 | Recommendation | Rationale |
 | --- | --- |
@@ -264,9 +229,7 @@ The slide recommends hiring a badged Ed-Fi Managed Service Provider or consultan
 | Use subcontracting when needed | Existing consultants or preferred vendors can subcontract with experienced Ed-Fi MSPs. |
 | Get references | Ed-Fi maintains a list of badged MSPs, and other Ed-Fi ESAs can provide references. |
 
-## Data mapping and specifications development
-
-The slide contrasts recommended and not-recommended practices for initial mapping and specifications.
+### Data mapping and specifications development
 
 | Recommended | Not recommended |
 | --- | --- |
@@ -274,9 +237,9 @@ The slide contrasts recommended and not-recommended practices for initial mappin
 | Follow Ed-Fi Descriptor Guidance for code sets in specifications. | Using default Ed-Fi Descriptor values for data elements critical to collections. |
 | Train staff on Ed-Fi Data Standard language through the MSP and participation in the process. | Letting this process take more than two months; refinement can continue during the pilot. |
 
-## Planning Phase: ESA tasks
+### Planning Phase
 
-Planning is organized into building a timeline, building a business plan, and seeking funding. The slide also offers examples of minimal viable products and common funding sources.
+Planning is organized into three workstreams: building a timeline, building a business plan, and seeking funding.
 
 | Workstream | Actions |
 | --- | --- |
@@ -284,11 +247,11 @@ Planning is organized into building a timeline, building a business plan, and se
 | Build Business Plan | Identify MSPs and implementation partners, build costs, marketing costs, and sustainability costs. |
 | Seek Funding | Explore state grants, philanthropic grants, self-funding, and mixed funding models. |
 
-**MVP examples from the slide:** Texas Education Exchange started with 4 apps; Indiana INSite started with a dashboard; Michigan DataHub started with 3rd-grade reading intervention using MIRead.
+**MVP examples:** Texas Education Exchange started with 4 apps; Indiana INSite started with a dashboard; Michigan DataHub started with 3rd-grade reading intervention using MIRead.
 
-## Pilot Phase: ESA tasks
+### Pilot Phase
 
-The pilot phase should last 3–6 months and align to the academic calendar. District budgeting around February and district catalog timing are called out as important constraints.
+The pilot phase should last 3–6 months and align to the academic calendar.
 
 ```mermaid
 flowchart LR
@@ -312,9 +275,9 @@ flowchart LR
 Be careful not to let the first three phases run long — it greatly impacts project sustainability and success. Stakeholders will start to lose interest and may see extended timelines as an inability to execute. Align with the academic calendar: districts tend to set budgets in February and publish solutions to their district catalog on a fixed cycle.
 :::
 
-## Growth and Expansion Phase
+### Growth and Expansion Phase
 
-Growth and expansion should occur during the school year after the pilot. The slide warns that longer periods can affect sustainability, word of mouth, and bridge funding requirements.
+Growth and expansion should occur during the school year after the pilot. Longer periods affect sustainability, word of mouth, and bridge funding requirements.
 
 ```mermaid
 flowchart LR
@@ -327,20 +290,31 @@ flowchart LR
 | Execute go-to-market plan heavily | Expand adoption after the pilot and convert project momentum into ongoing service demand. |
 | Coordinate across the state | Work with other ESAs for statewide service coverage and work with the state on vendor and data governance support. |
 
-## Do this, not that
+### Do this, not that
 
-The slide advises focus, scaling, state relevance, and ecosystem building while warning against over-scoping, working in isolation, and targeting LEA subgroups that cannot scale.
+:::tip Recommended
 
-| Recommended | Not recommended |
-| --- | --- |
-| Go to market with focused core use cases and add additional use cases over time. | Boiling the ocean with too many vendor dependencies, use cases, or drill-downs. |
-| Continue to grow districts. | Doing the project in isolation without vendors, MSPs, and district support. |
-| Identify use cases that could also be interesting to the state. | Targeting LEA subgroups that cannot scale. |
-| Establish a statewide ecosystem by engaging multiple ESAs. | Depending on only a couple willing LEAs rather than building a path for wider adoption. |
+- Go to market with focused core use cases. Add additional use cases over time.
+- Continue to grow districts.
+- Identify use cases that could also be interesting to the state.
+- Establish a statewide ecosystem by engaging multiple ESAs.
 
-## When the state already uses Ed-Fi for reporting
+:::
 
+:::danger Avoid
+
+- **Boiling the ocean** — too many vendor dependencies, use cases, or drill-downs will stall projects.
+- **Working in isolation** — you need vendors, MSPs, and districts to support the initiative.
+- **Targeting LEA subgroups that can't scale** — you need LEAs that will create a path for more LEAs to use your services.
+- **Depending on only a couple of willing LEAs** rather than building a path for wider adoption.
+
+:::
+
+### When your state already uses Ed-Fi for reporting
+
+:::note Vendor Readiness Advantage
 If your state is already using Ed-Fi for state reporting, vendors in your state already have some ability to work with Ed-Fi standards — that's a significant advantage. However, SEA specifications are often a subset of the data LEAs actually need, and state specifications serve different goals than local analytics. ESAs still need their own specifications, vendor engagement, and SEA collaboration.
+:::
 
 ```mermaid
 flowchart TB
