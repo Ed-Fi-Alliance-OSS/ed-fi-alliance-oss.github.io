@@ -14,8 +14,7 @@ The intended audience for the SEA Playbook is leadership of state data efforts. 
 
 ### View Playbook Online
 
-Prefer to read rather than download? The full playbook content is available as an online,
-readable page with diagrams and structured sections:
+The full playbook content is available as an online, readable page with diagrams and structured sections:
 
 * [Ed-Fi Overview and Implementation Playbook](./ed-fi-overview-and-implementation-playbook.md)
 

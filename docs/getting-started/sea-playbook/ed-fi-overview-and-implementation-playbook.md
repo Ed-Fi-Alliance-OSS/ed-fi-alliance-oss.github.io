@@ -61,11 +61,11 @@ Adopting the Ed-Fi Data Standard for state reporting delivers substantial saving
 
 | Area | Impact |
 | ------ | -------- |
-| District data burden | Reduced by ~25% or 1.5 FTEs per district (~$125K savings × 244 districts) |
+| District data burden | Reduced by \~25% or 1.5 FTEs per district (\~$125K savings × 244 districts) |
 | EDFacts quarterly reporting | Reduced from 10 weeks to less than 1 day |
 | Average Daily Membership reporting | Reduced from 10 days to less than 4 hours |
 | SEA FTEs for district data collection | Reduced from 10 to 7 |
-| **Total annual savings** | **~$30.7M (state) + ~$0.4M (SEA operations)** |
+| **Total annual savings** | **\~$30.7M (state) + \~$0.4M (SEA operations)** |
 
 Source: Nebraska Department of Education
 
