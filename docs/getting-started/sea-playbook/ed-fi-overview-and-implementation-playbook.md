@@ -6,8 +6,8 @@ sidebar_position: 2
 
 Last updated: December 16, 2024
 
-This playbook provides an overview of Ed-Fi and practical guidance for State Education Agencies
-(SEAs) implementing Ed-Fi for data modernization. It covers the problem space, available
+This playbook provides an overview of the Ed-Fi Technology Suite and practical guidance for State Education Agencies
+(SEAs) implementing Ed-Fi Data Standard for data modernization. It covers the problem space, available
 implementation approaches, a phased timeline, and best practices for vendor and LEA coordination.
 
 **Download the original slide deck:**
@@ -34,9 +34,9 @@ States and districts share related but distinct data challenges.
 - _Assessments_ — lack access to a consolidated student-level view of assessment results
 - _College and Career Readiness_ — limited visibility into performance against state targets
 
-## Ed-Fi's Mission
+## Ed-Fi Alliance's Mission
 
-Ed-Fi enables data interoperability across K–12 states, districts, and vendors through four
+The Ed-Fi Data Standard enables data interoperability across K–12 states, districts, and vendors through four
 pillars:
 
 ```mermaid
@@ -60,7 +60,7 @@ flowchart LR
 
 ## Adoption Growth
 
-State adoption of the Ed-Fi standard has accelerated significantly:
+State adoption of the Ed-Fi Data Standard has accelerated significantly:
 
 ![State adoption growth chart](/img/sea-playbook/page-04.webp)
 
@@ -73,7 +73,7 @@ District adoption for data services has grown substantially — roughly an 8× i
 
 ### State Reporting Savings: Nebraska Example
 
-Adopting Ed-Fi for state reporting delivers substantial savings:
+Adopting the Ed-Fi Data Standard for state reporting delivers substantial savings:
 
 | Area | Impact |
 | ------ | -------- |
@@ -87,7 +87,7 @@ Source: Nebraska Department of Education
 
 ### District Use Cases: Michigan Example
 
-Michigan demonstrates how Ed-Fi enables district-level impact beyond state reporting:
+Michigan demonstrates how Ed-Fi Data Standard enables district-level impact beyond state reporting:
 
 | Category | Example |
 | -------- | ------- |

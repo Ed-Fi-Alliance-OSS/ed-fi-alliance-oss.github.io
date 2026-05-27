@@ -24,5 +24,10 @@ chroma_db_test/
 CLAUDE.local.md
 .claude/settings.local.json
 
-# Python virtual environment
+# Python virtual environments
 .venv/
+venv/
+tools/build-chroma/.venv/
+
+# Git worktrees
+.worktrees/
