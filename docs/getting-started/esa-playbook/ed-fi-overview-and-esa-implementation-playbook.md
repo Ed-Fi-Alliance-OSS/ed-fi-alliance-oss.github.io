@@ -83,9 +83,7 @@ ESAs occupy a unique position across existing market relationships, an expanded 
 
 ### Examples working today
 
-South Carolina District Data Governance, Texas Education Exchange, and Michigan DataHub are examples of ESA/state data-service models operating today.
-
-![Slide showing South Carolina District Data Governance, Texas Education Exchange, and Michigan DataHub as examples of Ed-Fi-related work already operating.](/img/esa-playbook/page-09.webp)
+[Palmetto Data Collaborative](https://palmettodc.org/) (South Carolina), [Texas Education Exchange](https://txedexchange.net/), and [Michigan DataHub](https://www.midatahub.org/) are examples of ESA/state data-service models operating today.
 
 ### Three approaches to implementing Ed-Fi
 
