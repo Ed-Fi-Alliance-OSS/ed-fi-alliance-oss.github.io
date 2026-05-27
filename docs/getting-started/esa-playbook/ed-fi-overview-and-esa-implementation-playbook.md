@@ -37,7 +37,7 @@ flowchart LR
 
 ### Michigan local-use-case examples
 
-Michigan examples show three categories of local impact enabled by Ed-Fi.
+Michigan examples show three categories of local impact enabled by the Ed-Fi Data Standard.
 
 | Category | Description of impact |
 | --- | --- |
