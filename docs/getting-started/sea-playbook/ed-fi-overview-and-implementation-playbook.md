@@ -36,7 +36,7 @@ States and districts share related but distinct data challenges.
 
 ## Ed-Fi Alliance's Mission
 
-Ed-Fi enables data interoperability across K–12 states, districts, and vendors through four
+The Ed-Fi Data Standard enables data interoperability across K–12 states, districts, and vendors through four
 pillars:
 
 ```mermaid
