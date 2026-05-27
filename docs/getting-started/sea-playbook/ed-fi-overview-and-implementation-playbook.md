@@ -53,19 +53,6 @@ flowchart LR
   EdFi --> Community
 ```
 
-{/* ## Adoption Growth
-
-State adoption of the Ed-Fi Data Standard has accelerated significantly:
-
-![State adoption growth chart](/img/sea-playbook/page-04.webp)
-
-District adoption for data services has grown substantially — roughly an 8× increase from 2019 to
-2022, separate from the approximately 1,900 districts in states using Ed-Fi for state reporting:
-
-![District adoption growth chart](/img/sea-playbook/page-05.webp)
-
-*/}
-
 ## Impact
 
 ### State Reporting Savings: Nebraska Example
@@ -103,11 +90,13 @@ Michigan demonstrates how the Ed-Fi Data Standard enables district-level impact 
 
 There are three primary ways to implement the Ed-Fi Data Standard:
 
-| Approach | Description | Best For |
-| -------- | ----------- | -------- |
-| _Reporting Only_ | Use Ed-Fi API for state reporting data collection only | States beginning modernization with limited scope |
-| _Data Hub Only_ | ESA-led data hub providing local use cases and data services for districts | States prioritizing district-level benefits |
-| _Reporting + Data Hub_ | Combined approach: Ed-Fi reporting plus ESA-led data hub | States seeking maximum impact — both reporting savings and district services |
+| Approach | Description | Benefits | Tradeoffs |
+| -------- | ----------- | -------- | --------- |
+| _Reporting Only_ | Deploy Ed-Fi to modernize state reporting | Drives cost savings ($30M+); not dependent on having ESAs | Longest (2.5+ years) time to impact; doesn't address local use cases |
+| _Data Hub Only_ | ESAs-led data hub providing local use cases and data services for districts | Shared (2-3 year) time to impact; addresses local use cases; State funds offset (75%) up to limited services | Requires ESA compliance on vendor; Vendor compliance can be mixed |
+| _Reporting + Data Hub_ | Data hub addresses local use cases and state defines reporting specs. ESAs map local; state defines reporting | Greatest impact; $30M+ local use cases; Most (1 school year) time to impact; Addresses all of reporting and LEA burden | Requires ESA services model; State + ESA alignment required |
+
+![Three primary approaches to implementing Ed-Fi](/img/sea-playbook/page-08.webp)
 
 :::tip Best Practice
 The **Reporting + Data Hub** approach is considered best practice where a strong ESA model exists
@@ -322,6 +311,17 @@ Stakeholder activities in production:
 ## Implementation Best Practices
 
 ### Technical Task Assignment
+
+Recommendations for "Who does what?":
+
+| Task | MSP | SEA |
+| ---- | --- | --- |
+| Handle all Ed-Fi technology components: ODS, administrative tooling, hosting, config, extensions, performance testing, etc. | MSPs have specialized expertise and stay current with the Ed-Fi technical roadmap | — |
+| Determine the scope of the data specifications and initial targets | — | Requires a detailed understanding of outcomes and interacting with other teams at your organization. _Best practice_ |
+| Mapping your data needs into Ed-Fi data specifications | MSPs understand Ed-Fi details and stay current with Ed-Fi Data Standard updates | — |
+| Publish and maintain an SDK for vendors | MSPs are familiar with the process and tooling | — |
+| Design and development of LEA administrative interfaces | _Options to consider:_ MSPs have development teams and experience in this area… | _Options to consider:_ …your organization likely does as well, and has been maintaining this critical UX. |
+| ETL/ELT to data warehouse | _Options to consider:_ MSPs often understand the latest tools and techniques available for data pipelines… | _Options to consider:_ …you may want consistency with how pipelines to the DW currently operate across your organization. |
 
 ![Technical task assignment recommendations](/img/sea-playbook/page-30.webp)
 
