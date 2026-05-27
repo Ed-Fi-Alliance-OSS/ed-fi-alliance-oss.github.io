@@ -38,8 +38,7 @@ Playbook](https://edfidocs.blob.core.windows.net/$web/assets/getting-started/esa
 Knowledge base (KB) articles in this online guide present more detailed
 information that goes deeper into the topics in the playbook.
 
-At the bottom, please find links to additional KB articles that your teams will
-find helpful.
+* [Ed-Fi Overview and ESA Implementation Playbook](./ed-fi-overview-and-esa-implementation-playbook.md)
 
 ## Ed-Fi Academy Content
 
