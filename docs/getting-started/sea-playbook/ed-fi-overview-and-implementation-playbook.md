@@ -96,7 +96,7 @@ There are three primary ways to implement the Ed-Fi Data Standard:
 | _Data Hub Only_ | ESAs-led data hub providing local use cases and data services for districts | Shared (2-3 year) time to impact; addresses local use cases; State funds offset (75%) up to limited services | Requires ESA compliance on vendor; Vendor compliance can be mixed |
 | _Reporting + Data Hub_ | Data hub addresses local use cases and state defines reporting specs. ESAs map local; state defines reporting | Greatest impact; $30M+ local use cases; Most (1 school year) time to impact; Addresses all of reporting and LEA burden | Requires ESA services model; State + ESA alignment required |
 
-![Three primary approaches to implementing Ed-Fi](/img/sea-playbook/page-08.webp)
+![Three primary approaches to implementing Ed-Fi](https://edfidocs.blob.core.windows.net/$web/static/img/sea-playbook/page-08.webp)
 
 :::tip Best Practice
 The **Reporting + Data Hub** approach is considered best practice where a strong ESA model exists
@@ -142,7 +142,7 @@ flowchart LR
 
 ### Core Implementation Team
 
-![Core implementation team](/img/sea-playbook/page-11.webp)
+![Core implementation team](https://edfidocs.blob.core.windows.net/$web/static/img/sea-playbook/page-11.webp)
 
 ### Risk Mitigation
 
@@ -323,7 +323,7 @@ Recommendations for "Who does what?":
 | Design and development of LEA administrative interfaces | _Options to consider:_ MSPs have development teams and experience in this area… | _Options to consider:_ …your organization likely does as well, and has been maintaining this critical UX. |
 | ETL/ELT to data warehouse | _Options to consider:_ MSPs often understand the latest tools and techniques available for data pipelines… | _Options to consider:_ …you may want consistency with how pipelines to the DW currently operate across your organization. |
 
-![Technical task assignment recommendations](/img/sea-playbook/page-30.webp)
+![Technical task assignment recommendations](https://edfidocs.blob.core.windows.net/$web/static/img/sea-playbook/page-30.webp)
 
 ### Vendor Communication
 
