@@ -33,3 +33,5 @@ Recognize that your agency clients are not seeking to replicate your software fu
 Supplying raw data in the Ed-Fi Data Standard offers a strategic advantage, enabling you to reduce the need for custom reporting requests and exports. Over time, this translates to significant cost savings. Unlike custom reporting, each Ed-Fi interoperability project streamlines subsequent efforts, with most requests becoming readily answerable through existing code.
 
 Embracing the core standard facilitates a transition away from the cumbersome process of handling custom and one-off reports. Instead, you can focus on delivering data for more comprehensive reporting tools, enhancing the overall value of your offerings.
+
+### Next Steps
