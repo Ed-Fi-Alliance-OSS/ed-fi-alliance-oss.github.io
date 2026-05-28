@@ -202,76 +202,59 @@ This includes:
 
 #### Prohibited Patterns
 
-:::warning
-This guidance is normative and should be enforced as written.
-:::
-
 The following patterns are not allowed because they weaken identity integrity and require downstream systems to reconstruct or infer student identity:
 
 - Using roster data that cannot be deterministically aligned to StudentUniqueId
-
 - Allowing identity matching behavior to vary unpredictably across implementations
-
 - Treating identity reconciliation as a downstream responsibility
-
 - Silently dropping unmatched students or unresolved records
-
 - Using rostering workflows that cannot be audited or explained operationally
-
 - Relying on manual or undocumented identity repair processes as part of normal operations
 
+Rostering is not defined by the specific tool or platform being used. It is defined by whether student
 identity can be consistently aligned to the Ed-Fi system, where assessment results are stored.
 
 The closer the rostering source is to the Ed-Fi system of record, the stronger the referential integrity, the lower the reconciliation burden, and the more reliable the integration becomes over time.
 
-### 8.3 Student Identifiier Selection and Confiiguration
+### 8.3 Student Identifier Selection and Configuration
 
 - District student IDs
-
 - State student IDs
+- SIS identifiers
+- Platform-specific identifiers
 
--
+A native integration must support explicit configuration of which identifier is used for matching.
 
--
+This configuration must be:
 
 - Visible
-
 - Testable
-
 - Consistently applied
 
-Identifiers such as names or loosely defined attributes must not be used as primary matching keys.
+The integration must not assume that any given identifier will automatically align with StudentUniqueId. Identifiers such as names or loosely defined attributes must not be used as primary matching keys.
 
 #### Assessment Provider Responsibility
 
+The assessment provider is responsible for ensuring that identity matching is configurable,
 deterministic, and consistently applied across implementations:
 
--
-
--
-
+- Provide configurable identifier selection
+- Support multiple identifier types
 - Ensure matching resolves to StudentUniqueId
-
--
-
+- Prevent use of non-deterministic identifiers
 - Maintain consistent matching logic across implementations
 
 #### Prohibited Patterns
 
-:::warning
-This guidance is normative and should be enforced as written.
-:::
+The following patterns are not allowed because they introduce ambiguity in identity and require
+downstream systems to reconstruct or infer matches:
 
-The following patterns are not allowed because they introduce ambiguity in identity and require downstream systems to reconstruct or infer matches:
-
--
-
+- Using names or non-unique attributes as primary identifiers
 - Relying on implicit or undocumented matching logic
+- Hardcoding identifier selection per implementation
+- Using identifiers that cannot be mapped to StudentUniqueId
 
--
-
--
-
+Using explicit, governed identifier configuration ensures that identity resolution is reliable, auditable,
 and consistent across systems.
 
 ### 8.4 Identity Mapping and Crosswalk
@@ -313,10 +296,6 @@ The assessment provider is responsible for ensuring that identity mapping is imp
 - Support reprocessing of corrected records
 
 #### Prohibited Patterns
-
-:::warning
-This guidance is normative and should be enforced as written.
-:::
 
 The following patterns are not allowed because they obscure identity resolution and create untraceable data inconsistencies:
 
@@ -364,10 +343,6 @@ The assessment provider is responsible for ensuring that identity is fully resol
 
 #### Prohibited Patterns
 
-:::warning
-This guidance is normative and should be enforced as written.
-:::
-
 The following patterns are not allowed because they break referential integrity and result in incomplete or unreliable data:
 
 - Submitting records with unresolved student identity
@@ -399,10 +374,6 @@ The assessment provider is responsible for ensuring that identity failures are v
 - Maintain visibility into data completeness
 
 #### Prohibited Patterns
-
-:::warning
-This guidance is normative and should be enforced as written.
-:::
 
 The following patterns are not allowed because they hide data loss and undermine data integrity:
 
@@ -445,10 +416,6 @@ The assessment provider is responsible for enabling district-level visibility an
 - Support operational resolution without vendor dependency
 
 #### Prohibited Patterns
-
-:::warning
-This guidance is normative and should be enforced as written.
-:::
 
 The following patterns are not allowed because they create dependency and prevent timely resolution:
 
