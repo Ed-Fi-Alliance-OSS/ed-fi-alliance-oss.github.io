@@ -161,7 +161,7 @@ You can deploy the Node.js backend directly to IIS using only iisnode. This appr
 
    ```powershell
    # Clone and build (same as before)
-   git clone https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-AdminApp.git
+   git clone --branch v4.0.1 --depth 1 https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-AdminApp.git
    cd Ed-Fi-AdminApp
    npm ci
    npm run build:api
