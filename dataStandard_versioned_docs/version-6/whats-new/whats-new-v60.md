@@ -211,7 +211,7 @@ The EconomicDisadvantaged was:
 
 ## Minor Changes in the Educator Preparation Domain
 
-### Renamed Results Proprty in Performance Evaluation Domain
+### Renamed Results.rating to Results.numericRating in the Performance Evaluation Domain
 
 Each primary rating entity in the Performance Evaluation domain `PerformanceEvaluationRating`, `EvaluationRating`, `EvaluationObjectiveRating`, and `EvaluationElementRating` includes a `Results` array.  When these entities were EPDM extensions, the numeric rating component within Result was named `rating`.
 
