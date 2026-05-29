@@ -93,27 +93,20 @@ In this pattern, transformation, validation, and loading are explicitly separate
 #### Why this pattern works when done correctly
 
 - It creates reusable mapping patterns and repeatable pipelines that can be operationalized across districts and states, especially when vendors provide consistent input structures. Bundles can often be reused across states with minimal adaptation when the same source data format is available.
-
 - It allows strict technical enforcement before submission, which reduces the “district as QA environment” problem.
-
 - It supports governance because the mapping logic is visible, reviewable, and version-controlled.
-
-- • It is often the fastest path to consistency across multiple vendor integrations because the same enforcement scaffolding is reused.
+- It is often the fastest path to consistency across multiple vendor integrations because the same enforcement scaffolding is reused.
 
 #### What can go wrong if it is implemented carelessly
 
 - If the bundle does not include stable natural keys, reruns create duplicates or overwrite the wrong records.
-
 - If the pipeline treats validation as optional, bad data gets loaded and becomes harder to unwind.
-
-- and fragile.
-
+- If the transformation logic embeds district-specific hacks, the workflow becomes non-portable and fragile.
 - If Lightbeam loads are not monitored with clear error outputs, districts lose trust and stop operationalizing the feed.
 
 #### Minimum enforcement expectations
 
 - Transform → validate → send is mandatory. If validation is skipped, the architecture is not bundle-based; it is just a delayed failure.
-
 - Mapping logic must be designed to be reusable across districts without rewriting the model each time.
 
 ## 10. Descriptor Mapping Infrastructure
@@ -233,27 +226,20 @@ Descriptor handling must never be hard-coded into transformation logic.
 Hard-coded descriptors create:
 
 - Non-portable pipelines that break across implementations
-
--
-
+- Hidden dependencies that are difficult to diagnose
 - Barriers to reuse across districts and states
 
 Instead, descriptor logic must be:
 
 - Parameterized (e.g., namespace variables)
-
--
-
+- Externalized into mapping layers or configuration files
 - Adjustable without requiring code changes
 
 This applies to all descriptor categories, including:
 
 - Reporting methods
-
 - Performance levels
-
 - Assessment periods
-
 - Result data types
 
 #### Assessment Provider Responsibility
@@ -298,10 +284,8 @@ A native integration must make it possible to answer:
 
 To support this, descriptor handling must include:
 
--
-
+- Explicit mapping tables or configuration artifacts
 - Clear documentation of namespace usage and mapping rules
-
 - Version tracking of descriptor mappings over time
 
 Mappings must not be hidden in code or dependent on institutional knowledge.
@@ -349,9 +333,7 @@ A native integration should be able to:
 This requires:
 
 - Separation of mapping logic from transformation logic
-
--
-
+- Environment-specific configuration layers
 - Consistent input structures
 
 When implemented correctly, this enables:

@@ -18,7 +18,7 @@ _Figure 1: natural key fields are shown by looking at the "identity" column in t
 You can see that the entity has two key fields: an AssessmentIdentifier and a Namespace – in the API, these appear as the fields identifier and namespace in the JSON:
 
 ![swagger screenshot](https://edfidocs.blob.core.windows.net/$web/assets/getting-started/technology-playbook/swagger-assessment-key-structure.png)
-_Figure 2: the key fields shown in the Assessment JSON - "identifer" and "namespace" fields_
+_Figure 2: the key fields shown in the Assessment JSON - "identifier" and "namespace" fields_
 
 So where do we get these values from in our sample score report? If we look at the original report we find some data that looks appropriate to identify the assessment…
 

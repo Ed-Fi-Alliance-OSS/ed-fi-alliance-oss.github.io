@@ -140,7 +140,7 @@ ClearPath is a hypothetical assessment vendor offering a benchmark screener for 
 |**Assessed grades**|Kindergarten, Grade 1, Grade 2, Grade 3|
 |**Administration periods**|Fall, Winter, Spring|
 |**Vendor namespace**|uri://clearpath.example.com/assessment/clearpath-reading|
-|**Assessment identifer**|ClearPathBenchmark-Reading|
+|**Assessment identifier**|ClearPathBenchmark-Reading|
 |**Subscores**|CP-RD-PA (Phonological Awareness), CP-RD-FL (Fluency), CP-RD-VC (Vocabulary)|
 
 #### GOVERNANCE — SECTION 4: ONE SUBJECT PER ASSESSMENT
@@ -255,7 +255,7 @@ performance level vocabulary.
 
 #### CP-RD-PA — Phonological Awareness
 
-**[POST]** /ed-fii/objectiveAssessments — CP-RD-PA
+**[POST]** /ed-fi/objectiveAssessments — CP-RD-PA
 
 ```json
 {
@@ -296,7 +296,7 @@ performance level vocabulary.
 
 #### CP-RD-FL — Fluency
 
-**[POST]** /ed-fii/objectiveAssessments — CP-RD-FL
+**[POST]** /ed-fi/objectiveAssessments — CP-RD-FL
 
 ```json
 {
@@ -337,7 +337,7 @@ performance level vocabulary.
 
 #### CP-RD-VC — Vocabulary
 
-**[POST]** /ed-fii/objectiveAssessments — CP-RD-VC
+**[POST]** /ed-fi/objectiveAssessments — CP-RD-VC
 
 ```json
 {
@@ -384,7 +384,7 @@ The ObjectiveAssessment hierarchy must exactly mirror the structure of ClearPath
 
 The StudentAssessment records the event — one record per student per administration. This example shows fake_student_1, a Kindergartner, taking the Reading Benchmark in the fall window on January 1, 2024. All event context fields are required: administrationDate, schoolYearTypeReference, whenAssessedGradeLevelDescriptor, and assessmentPeriodDescriptor. Together they form the event identity anchor for longitudinal tracking.
 
-**[POST]** /ed-fii/studentAssessments — fake_student_1, Reading, Fall 2024
+**[POST]** /ed-fi/studentAssessments — fake_student_1, Reading, Fall 2024
 
 ```json
 {
@@ -561,9 +561,9 @@ All resources must be POSTed in the dependency order shown below. Steps 1 and 2 
 |||||
 |---|---|---|---|
 |**#**|**Resource**|**Records**|**Dependency**|
-|**1**|POST /ed-fii/assessments|1|None|
-|**2**|POST /ed-fii/objectiveAssessments|3 (one per subscore)|Assessment (Step 1) must exist|
-|**3**|POST /ed-fii/studentAssessments|1 per student per window|Assessment + ObjectiveAssessments (Steps 1 and 2) must exist|
+|**1**|POST /ed-fi/assessments|1|None|
+|**2**|POST /ed-fi/objectiveAssessments|3 (one per subscore)|Assessment (Step 1) must exist|
+|**3**|POST /ed-fi/studentAssessments|1 per student per window|Assessment + ObjectiveAssessments (Steps 1 and 2) must exist|
 
 #### REPROCESSING — SECTION 11.3
 
