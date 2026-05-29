@@ -1,6 +1,6 @@
 ---
 title: "Part V: Integration Architecture and Operations"
-sidebar_position: 6
+sidebar_position: 5
 ---
 
 
@@ -82,7 +82,7 @@ In this pattern, transformation, validation, and loading are explicitly separate
 
 #### What it looks like in practice
 
-- The vendor sources assessment output data from its internal platform or data pipeline, using standard export tooling.
+- Vendor exports results in a defined vendor format, or a district extracts results via vendor export tooling.
 
 - Earthmover applies vendor-specific transformation logic (housed in Bundles), often producing staged outputs that map 1:1 to Ed-Fi resources.
 
@@ -439,6 +439,8 @@ If these requirements are not met, integrations may:
 - Create duplicate records or corrupt longitudinal data
 
 - Require manual intervention to repair data integrity
+
+A production-ready integration is not defined by whether it can load data once. It is defined by whether it can be executed repeatedly without corruption.
 
 ### 11.1 API Interaction Rules
 

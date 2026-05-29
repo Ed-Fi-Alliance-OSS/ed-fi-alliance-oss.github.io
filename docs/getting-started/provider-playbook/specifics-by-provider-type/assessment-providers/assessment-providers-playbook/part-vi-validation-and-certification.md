@@ -1,6 +1,6 @@
 ---
 title: "Part VI: Validation and Certification"
-sidebar_position: 7
+sidebar_position: 6
 ---
 
 

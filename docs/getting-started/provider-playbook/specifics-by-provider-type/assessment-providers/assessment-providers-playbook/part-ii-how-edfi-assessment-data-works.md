@@ -1,6 +1,6 @@
 ---
 title: "Part II: How Ed-Fi Assessment Data Works"
-sidebar_position: 3
+sidebar_position: 2
 ---
 
 
@@ -197,7 +197,7 @@ The Assessment resource defines the map. One Assessment record is posted for the
       "resultDatatypeTypeDescriptor": "uri://ed-fi.org/ResultDatatypeTypeDescriptor#Integer"
     }
   ],
-    "performanceLevels": [
+  "performanceLevels": [
     {
       "assessmentReportingMethodDescriptor": "uri://clearpath.example.com/assessment/clearpath-reading/AssessmentReportingMethodDescriptor#Benchmark Level",
       "performanceLevelDescriptor": "uri://clearpath.example.com/assessment/clearpath-reading/PerformanceLevelDescriptor#Did not yet meet expectations",
@@ -212,10 +212,12 @@ The Assessment resource defines the map. One Assessment record is posted for the
       "assessmentReportingMethodDescriptor": "uri://clearpath.example.com/assessment/clearpath-reading/AssessmentReportingMethodDescriptor#Benchmark Level",
       "performanceLevelDescriptor": "uri://clearpath.example.com/assessment/clearpath-reading/PerformanceLevelDescriptor#Met expectations",
       "resultDatatypeTypeDescriptor": "uri://ed-fi.org/ResultDatatypeTypeDescriptor#Level"
+    },
     {
       "assessmentReportingMethodDescriptor": "uri://clearpath.example.com/assessment/clearpath-reading/AssessmentReportingMethodDescriptor#Benchmark Level",
       "performanceLevelDescriptor": "uri://clearpath.example.com/assessment/clearpath-reading/PerformanceLevelDescriptor#Exceeded expectations",
       "resultDatatypeTypeDescriptor": "uri://ed-fi.org/ResultDatatypeTypeDescriptor#Level"
+    }
   ]
 }
 ```
@@ -416,7 +418,7 @@ The natural key for this record is the combination of studentUniqueId + assessme
 
 #### STUDENT IDENTITY — SECTION 8
 
-ClearPath's internal vendor identifier fake_student_1 via the identity crosswalk at integration time. The vendor's internal identifier must never be placed in studentUniqueId. Correct identity resolution at this step determines whether every downstream assessment record links accurately to the right student enrollment, demographic, and program data.
+The studentUniqueId value 1000 is the Ed-Fi state identifier for this student, resolved from ClearPath's internal vendor identifier fake_student_1 via the identity crosswalk at integration time. The vendor's internal identifier must never be placed in studentUniqueId. Correct identity resolution at this step determines whether every downstream assessment record links accurately to the right student enrollment, demographic, and program data.
 
 #### COMMON ERROR — SECTION 5.4: SCORES VS. PERFORMANCE LEVELS
 
@@ -504,7 +506,7 @@ Overall composite results belong on StudentAssessment.scoreResults and StudentAs
 
 #### API SEQUENCING — SECTION 11
 
-ObjectiveAssessments (which reference the Assessment), then StudentAssessments (which reference both). Posting a StudentAssessment before its parent Assessment exists will fail with a referential integrity error. This dependency order must be deterministic and repeatable across every ingestion run.
+Resources must be POSTed in dependency order: Assessment first, then ObjectiveAssessments (which reference the Assessment), then StudentAssessments (which reference both). Posting a StudentAssessment before its parent Assessment exists will fail with a referential integrity error. This dependency order must be deterministic and repeatable across every ingestion run.
 
 #### Descriptor reference — ClearPath Reading Benchmark
 

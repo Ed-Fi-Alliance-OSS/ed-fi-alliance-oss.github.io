@@ -1,6 +1,6 @@
 ---
 title: "Part IV: Student Identity and Rostering"
-sidebar_position: 5
+sidebar_position: 4
 ---
 
 

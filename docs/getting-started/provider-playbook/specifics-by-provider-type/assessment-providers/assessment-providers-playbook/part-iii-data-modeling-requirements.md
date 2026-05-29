@@ -1,6 +1,6 @@
 ---
 title: "Part III: Data Modeling Requirements"
-sidebar_position: 4
+sidebar_position: 3
 ---
 
 
@@ -124,7 +124,7 @@ AssessmentIdentifier must not include:
 
 Version indicators should only be included when the assessment has materially changed in a way that affects comparability or interpretation.
 
-#### Assessment Provider Responsibility (Score vs. Performance Levels)
+#### Assessment Provider Responsibility
 
 The assessment provider is responsible for ensuring that assessment identifiers remain stable over time and change only when the structure or meaning of results materially changes.
 
@@ -134,7 +134,7 @@ The assessment provider is responsible for ensuring that assessment identifiers 
 - Ensuring that identifier decisions are applied consistently across implementations
 - Aligning identifier changes with governance expectations and documentation
 
-#### Prohibited Patterns (Score vs. Performance Levels)
+#### Prohibited Patterns
 
 The following patterns are not allowed because they break longitudinal integrity by fragmenting assessment identity and requiring downstream systems to reconstruct meaning:
 
@@ -631,7 +631,7 @@ The impact is immediate and systemic:
 
 - Without _AdministrationDate_ , retakes cannot be ordered, and attempt history becomes unreliable
 
-- • Without _AssessmentPeriod_ and grade context, systems must invent heuristics for growth interpretation, leading to inconsistent results
+- Without _AssessmentPeriod_ and grade context, systems must invent heuristics for growth interpretation, leading to inconsistent results
 
 - Without a clear attempt context, longitudinal grouping becomes fragmented
 

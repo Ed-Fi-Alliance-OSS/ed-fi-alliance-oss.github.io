@@ -1,8 +1,7 @@
 ---
+title: "Assessment Vendor Ed-Fi Native Integration Playbook"
 sidebar_position: 1
 ---
-
-# Assessment Vendor Ed-Fi Native Integration Playbook
 
 - Part I: Executive Summary (you are here)
 - [Part II: How Ed-Fi Assessment Data Works](./part-ii-how-edfi-assessment-data-works.md)
