@@ -29,7 +29,7 @@ A consistent identity strategy ensures that:
 
 #### Assessment Provider Responsibility
 
-The assessment provider is responsible for ensuring that assessment identity is consistently deﬁned, applied, and governed across implementations:
+The assessment provider is responsible for ensuring that assessment identity is consistently defined, applied, and governed across implementations:
 
 - Defining the identifier convention
 - Ensuring consistency across implementations
