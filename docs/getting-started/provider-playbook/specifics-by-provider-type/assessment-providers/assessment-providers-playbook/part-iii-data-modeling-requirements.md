@@ -10,173 +10,140 @@ Assessment identity must be established and consistently applied across implemen
 
 ### 3.1 What Makes an Assessment Unique?
 
-Together, these form the identity contract that determines analytic grain, ownership, and comparability across implementations and over time. Namespace establishes ownership and prevents collisions, while AssessmentIdentifier defines meaning and analytic grain.
+An Assessment is uniquely defined by the combination of Namespace and AssessmentIdentifier. Together, these form the identity contract that determines analytic grain, ownership, and comparability across implementations and over time. Namespace establishes ownership and prevents collisions, while AssessmentIdentifier defines meaning and analytic grain.
+
+When identity is inconsistently defined:
 
 - The same assessment may appear at different grains
-
 - Subject meaning may be ambiguous
-
 - Longitudinal results may fragment
-
--
+- Downstream systems must rely on vendor-specific logic to interpret the data
 
 This breaks interoperability and undermines one of Ed-Fi’s core goals: eliminating custom transformation logic.
 
 A consistent identity strategy ensures that:
 
 - A math benchmark and a reading benchmark are represented as distinct assessments
-
-- changed
-
+- The same assessment across years retains a stable identifier when the structure has not changed
 - Form or administration differences are handled outside of identity unless they change the meaning of the score
 
-#### 5.4 Assessment Provider Responsibility
+#### Assessment Provider Responsibility
 
-applied, and governed across implementations:
+The assessment provider is responsible for ensuring that assessment identity is consistently deﬁned, applied, and governed across implementations:
 
--
-
+- Defining the identifier convention
 - Ensuring consistency across implementations
-
 - Aligning identity decisions with governance expectations
 
-#### 5.4 Prohibited Patterns
-
-:::warning
-This guidance is normative and should be enforced as written.
-:::
+#### Prohibited Patterns
 
 The following patterns are not allowed because they introduce ambiguity in identity and require downstream systems to reconstruct meaning:
 
--
-
+- Encoding subject inconsistently (sometimes in the identifier, sometimes not)
 - Collapsing multiple subjects into a single top-level assessment
-
 - Treating forms or versions inconsistently across implementations
-
-- unchanged
+- Encoding time elements (BOY, MOY, EOY, school year) into the identifier when the structure is unchanged
 
 Establishing a consistent identity strategy ensures that assessment results remain interpretable, comparable across implementations, and usable for longitudinal analysis without requiring downstream systems to infer or reconstruct meaning through custom logic.
 
 ### 3.2 The Highest-Grain Rule
 
-means the identifier defines the level at which a student receives a complete, top-level outcome for the assessment. Assessment identity must align with how results are actually reported and interpreted. The highest grain is the level at which overall outcomes, such as composite scores, overall performance levels, or total scores, are defined.
+The AssessmentIdentifier must represent the highest grain at which overall results are defined. This means the identifier defines the level at which a student receives a complete, top-level outcome for the assessment. Assessment identity must align with how results are actually reported and interpreted. The highest grain is the level at which overall outcomes, such as composite scores, overall performance levels, or total scores, are defined.
+
+If identity is defined below this level:
 
 - Overall results may be fragmented across multiple assessments
-
 - Relationships between subscores and overall outcomes may be lost
-
 - Downstream systems must reconstruct hierarchy to interpret results
 
+If identity is defined above this level:
+
 - Multiple distinct results may be incorrectly combined
-
 - Subject meaning may become ambiguous
-
 - Analytic comparisons become unreliable
 
-consumed in reporting and analysis.
+Defining identity at the correct grain ensures that the structure of results aligns with how they are consumed in reporting and analysis.
 
 In practice, the highest grain should align with the assessment title and subject, because this is the level at which overall results are defined and interpreted.
 
 For example:
 
 - A math benchmark and a reading benchmark should be represented as separate assessments
+- A multi-subject instrument should not collapse multiple subjects into a single top-level assessment unless the vendor explicitly reports a composite at that level
 
-- • A multi-subject instrument should not collapse multiple subjects into a single top-level assessment unless the vendor explicitly reports a composite at that level
-
-belong within the assessment structure and are represented through ObjectiveAssessment and the StudentObjectiveAssessment collection within the StudentAssessment record.
+Subscores, strands, domains, and other breakdowns must not define separate assessments. These belong within the assessment structure and are represented through ObjectiveAssessment and the StudentObjectiveAssessment collection within the StudentAssessment record.
 
 #### Assessment Provider Responsibility
 
-grain and aligned to how results are reported and interpreted:
+The assessment provider is responsible for ensuring that assessment identity is defined at the correct grain and aligned to how results are reported and interpreted:
 
--
-
+- Aligning identifier design to the vendor’s score report structure
 - Ensuring consistency across implementations
-
--
+- Avoiding adjustments to grain based on partner-specific requirements
 
 The chosen grain must remain stable and must not vary across deployments.
 
 #### Prohibited Patterns
 
-:::warning
-This guidance is normative and should be enforced as written.
-:::
-
 The following patterns are not allowed because they break alignment between identity and results by distorting the relationship between structure and outcomes and requiring downstream systems to reconstruct meaning:
 
--
-
+- Defining separate assessments for subscores, strands, or domains
 - Collapsing multiple subjects into a single assessment when results are reported separately
+- Defining identity at a level that does not include overall results
 
--
+Defining identity at the correct grain ensures that downstream systems can support growth analysis, subgroup reporting, and cross-assessment comparisons without reconstructing meaning through custom logic.
 
-subgroup reporting, and cross-assessment comparisons without reconstructing meaning through custom logic.
+### 3.3 Identifier Stability
 
-### 3.3 Identifiier Stability
+AssessmentIdentifier values must remain stable over time for the same assessment when the structure and meaning of results have not changed. This stability is foundational to longitudinal analysis, ensuring that results can be compared across administrations, school years, and implementations.
 
-and meaning of results have not changed. This stability is foundational to longitudinal analysis, ensuring that results can be compared across administrations, school years, and implementations.
+When identifiers change unnecessarily:
 
 - Longitudinal trends are broken
-
 - Historical results cannot be reliably compared
-
 - Duplicate assessments appear in downstream systems
-
 - Analytics require custom logic to reconcile identity over time
 
-- The same assessment administered across multiple years retains the same AssessmentIdentifier when the structure and meaning of results remain consistent
+Identifier stability means that:
 
+- The same assessment administered across multiple years retains the same AssessmentIdentifier when the structure and meaning of results remain consistent
 - Routine operational differences, such as administration window (BOY, MOY, EOY), school year, or minor form variations, do not require a new identifier
 
+A new AssessmentIdentifier is required when:
+
 - The assessment structure changes (e.g., new hierarchy, different scoring model)
-
--
-
+- The meaning of results changes (e.g., scale reset, redefinition of performance levels)
 - The assessment is redesigned in a way that affects interpretation
 
+AssessmentIdentifier must not include:
+
 - Vendor name (Namespace already communicates ownership)
-
 - Administration window (BOY, MOY, EOY)
-
 - Random or unstable numeric codes that are not interpretable
-
 - State labels unless the assessment is structurally different in that state in a way that affects scoring, hierarchy, or interpretation
 
 Version indicators should only be included when the assessment has materially changed in a way that affects comparability or interpretation.
 
 #### Assessment Provider Responsibility (Score vs. Performance Levels)
 
-time and change only when the structure or meaning of results materially changes.
+The assessment provider is responsible for ensuring that assessment identifiers remain stable over time and change only when the structure or meaning of results materially changes.
 
--
-
--
-
--
-
--
-
--
+- Maintaining identifier stability
+- Defining clear versioning rules
+- Establishing criteria for when a new identifier is required
+- Ensuring that identifier decisions are applied consistently across implementations
+- Aligning identifier changes with governance expectations and documentation
 
 #### Prohibited Patterns (Score vs. Performance Levels)
 
-:::warning
-This guidance is normative and should be enforced as written.
-:::
-
 The following patterns are not allowed because they break longitudinal integrity by fragmenting assessment identity and requiring downstream systems to reconstruct meaning:
 
--
+- Changing AssessmentIdentifier values for routine administration differences
+- Encoding time-based elements or versioning information directly into the identifier when the assessment meaning has not changed
+- Reusing an AssessmentIdentifier when the assessment structure or meaning has materially changed
+- Creating new identifiers for the same assessment across different implementations or partners
 
-- assessment meaning has not changed
-
-- changed
-
--
-
-comparisons remain accurate and do not require downstream systems to reconcile fragmented assessment identities through custom logic.
+Maintaining identifier stability ensures that longitudinal analysis, growth measurement, and cross-year comparisons remain accurate and do not require downstream systems to reconcile fragmented assessment identities through custom logic.
 
 ### 3.4 Assessment Family
 
@@ -191,9 +158,7 @@ However, these relationships must not be used to collapse or blur distinctions b
 A correct use of AssessmentFamily ensures that:
 
 - Each assessment retains a clear and consistent identity aligned to its results
-
--
-
+- Relationships between assessments are explicitly defined without altering their meaning
 - Grouping supports organization and navigation without impacting analytic interpretation
 
 #### Assessment Provider Responsibility
@@ -201,28 +166,22 @@ A correct use of AssessmentFamily ensures that:
 The assessment provider is responsible for ensuring that assessment family relationships are clearly defined, consistently applied, and do not override or conflict with assessment identity:
 
 - Establishing clear criteria for which assessments belong to the same family
-
 - Ensuring consistent grouping across implementations
-
--
+- Aligning family definitions with governance expectations and documentation
 
 AssessmentFamily must not be used as a substitute for proper identity design or to compensate for inconsistent identifier strategies.
 
 #### Prohibited Patterns
 
-:::warning
-This guidance is normative and should be enforced as written.
-:::
-
 The following patterns are not allowed because they obscure assessment meaning and create ambiguity in how results should be interpreted:
 
 - Using AssessmentFamily to group assessments that should be represented as a single assessment
-
-- definitions
-
-- Grouping assessments with materially different structures or scoring models without a clear distinction
-
-- assessment identity
+- Using AssessmentFamily to compensate for inconsistent or incorrect AssessmentIdentifier
+definitions
+- Grouping assessments with materially different structures or scoring models without a clear
+distinction
+- Relying on AssessmentFamily to drive analytic logic instead of using a properly defined
+assessment identity
 
 Proper use of AssessmentFamily ensures that related assessments can be organized and understood together while preserving a clear, consistent identity. This allows downstream systems to group, filter, and analyze related assessments without compromising interpretability or requiring custom logic to reconstruct relationships.
 
@@ -242,26 +201,17 @@ If an assessment cannot resolve to a single subject, it must use a subject of _C
 
 The assessment provider is responsible for ensuring that each assessment resolves to a single, explicitly defined subject that aligns with how results are reported and interpreted:
 
--
-
+- Defining a single AcademicSubject for each assessment
 - Ensuring subject assignment is consistent across implementations
-
 - Avoiding reliance on downstream systems to infer subject meaning
-
 - Aligning subject decisions with governance expectations
 
 #### Prohibited Patterns
 
-:::warning
-This guidance is normative and should be enforced as written.
-:::
-
 The following patterns are not allowed because they introduce subject ambiguity and require downstream systems to reconstruct meaning:
 
 - Assigning multiple subjects to a single top-level Assessment
-
 - Requiring downstream systems to infer subject from score names or objective structure
-
 - Inconsistently assigning subject across implementations for the same assessment
 
 Establishing a single, explicit subject ensures that assessment results remain interpretable, comparable across implementations, and usable for subject-based analysis without requiring downstream systems to infer meaning through custom logic.
@@ -272,13 +222,10 @@ Subject integrity must be established at ingestion and must not depend on downst
 
 Subject integrity ensures that:
 
--
-
+- Results can be filtered and compared consistently
 - Cross-vendor analysis remains valid
-
 - Subject-based reporting does not require custom logic
-
--
+- Composite and subject-specific results remain analytically distinct
 
 #### Composite Handling
 
@@ -287,149 +234,111 @@ Cross-subject instruments are the primary case where subject integrity must be e
 For any assessment that spans multiple subjects:
 
 - The top-level Assessment subject must be Composite
-
--
+- Subject-specific results must be represented through ObjectiveAssessment
 
 This approach ensures that:
 
 - Composite results are not misattributed to a single subject
-
 - Subject-level results remain available for analysis
-
 - Subject-based queries behave predictably
 
-unintentionally include composite results due to ambiguous modeling.
+Subject meaning must be clear at every level of the model. A subject-specific query should not unintentionally include composite results due to ambiguous modeling.
 
 #### Assessment Provider Responsibility
 
 The assessment provider is responsible for ensuring that subject meaning is explicit, stable, and consistently applied across all aspects of the assessment model.
 
 - Assign Composite as the top-level subject for cross-subject assessments
-
--
-
--
-
+- Ensuring subject meaning is explicitly defined at the assessment level
+- Preventing ambiguity between composite and subject-specific results
 - Maintaining consistency across implementations and over time
-
 - Aligning subject modeling decisions with governance expectations
 
 #### Prohibited Patterns
 
-:::warning
-This guidance is normative and should be enforced as written.
-:::
-
 The following patterns are not allowed because they break subject integrity and introduce ambiguity in interpretation:
 
 - Multi-subject top-level assessments without Composite designation
-
 - Any design that requires subject inference from score names or structure
-
 - Inconsistent subject modeling across implementations of the same assessment
 
 Enforcing subject integrity at ingestion ensures that assessment data remains reliable, comparable, and analytically usable across systems, preventing ambiguity and eliminating the need for downstream systems to infer or reconstruct subject meaning.
 
 ## 5. Hierarchy and Results Placement
 
-(results) are represented in the Ed-Fi model.
+Hierarchy and results placement define how assessment structure (metadata) and student outcomes (results) are represented in the Ed-Fi model.
 
--
+This section operationalizes the core entities defined in Section 2.2:
 
+- Assessment and ObjectiveAssessment define the structure
 - StudentAssessment and StudentObjectiveAssessment deliver results within that structure
 
 These two layers must remain strictly aligned. The structure declared by the assessment must match the placement of student results.
 
 This is the primary enforcement point for a native Ed-Fi assessment integration.
 
-the vendor score report. This allows results to be interpreted directly, without vendor-specific logic, reconstruction, or score-name parsing.
+Correct implementation preserves the relationship between structure and results exactly as defined in the vendor score report. This allows results to be interpreted directly, without vendor-specific logic, reconstruction, or score-name parsing.
 
 Incorrect implementation breaks that relationship. Data may load into Ed-Fi, but:
 
 - Hierarchy must be inferred rather than represented
-
 - Subject and grain become ambiguous
-
 - Downstream systems must reconstruct the structure
-
 - Cross-vendor comparability is lost
 
+This section defines the rules that eliminate these failure modes by ensuring that:
+
 - The full score report is represented
-
 - Hierarchy is modeled explicitly and completely
-
 - Results are placed at the correct grain
-
 - Structure and results remain aligned across all implementations
 
 These rules are not optional. They are required for an integration to be considered complete, interoperable, and analytically usable.
 
 ### 5.1 Modeling the Hierarchy
 
-score report.
+The assessment hierarchy must faithfully and completely represent the structure defined in the vendor score report.
 
 This is where the conceptual model from Section 2.2 becomes operational:
 
-- _Assessment_
-
-- _ObjectiveAssessment_
-
+- _Assessment_ defines the top-level instrument at the highest grain where overall results exist
+- _ObjectiveAssessment_ defines the hierarchical components of the assessment
 - _StudentAssessment_ records a student’s attempt and holds the overall results
-
 - _StudentObjectiveAssessment_ (a collection within _StudentAssessment_ ) records results aligned to ObjectiveAssessment
 
-exactly. A native integration is not simply sending scores. It is sending a structured representation of the assessment and results that conform to that structure.
+Assessment metadata must declare the structure first. Student results must then align to that structure exactly. A native integration is not simply sending scores. It is sending a structured representation of the assessment and results that conform to that structure.
 
 If the vendor score report includes subscores, domains, strands, subtests, measures, skills, or reporting categories, those structures must be represented using ObjectiveAssessment. The corresponding results must be delivered through StudentObjectiveAssessment. If the score report contains hierarchy, the model must reflect it exactly.
 
 When hierarchy is not faithfully modeled:
 
 - Structural meaning is lost
-
 - Subscore relationships become ambiguous
-
--
-
+- Results must be interpreted through score names or vendor-specific conventions
 - Downstream systems must reconstruct the structure
-
 - Cross-vendor comparison becomes unreliable
 
 #### Assessment Provider Responsibility
 
-consistently applied, and aligned to the vendor score report across implementations:
+The assessment provider is responsible for ensuring that the assessment hierarchy is faithfully defined, consistently applied, and aligned to the vendor score report across implementations:
 
--
-
+- Define Assessment at the correct top-level grain
 - Model ObjectiveAssessment structures wherever hierarchy exists
-
 - Apply recursive hierarchy when multiple levels are present
-
 - Preserve all parent-child relationships across levels
-
--
-
+- Ensure StudentObjectiveAssessment results align with ObjectiveAssessment definitions
 - Maintain consistent hierarchy across implementations
 
 #### Prohibited Patterns
 
-:::warning
-This guidance is normative and should be enforced as written.
-:::
-
 The following patterns are not allowed because they break the relationship between assessment structure and results and require downstream systems to reconstruct hierarchy or infer meaning:
 
 - Omitting ObjectiveAssessment when hierarchy exists
-
 - Collapsing multi-level hierarchy into a single level
-
 - Flattening structure into score names instead of modeling it
-
--
-
--
-
+- Defining ObjectiveAssessment structures that do not match the score report
+- Defining structure without delivering corresponding results
 - Treating StudentObjectiveAssessment as a standalone entity or payload
-
 - Modeling the same assessment with different hierarchies across implementations
 
 Modeling the true hierarchy ensures that structure and results remain aligned and eliminates the need for downstream reconstruction.
@@ -445,9 +354,7 @@ All results present in the vendor score report must be represented and placed at
 Every reported value must be delivered:
 
 - If a value appears on the vendor score report, it must appear in the integration
-
--
-
+- If a structure is defined (via ObjectiveAssessment), corresponding results must be present
 - If results exist, they must be delivered at the level where they are reported
 
 A native integration is a faithful transmission of the full score report, not an interpretation or reduction of it.
@@ -457,17 +364,11 @@ A native integration is a faithful transmission of the full score report, not an
 The integration must include all available result types, including:
 
 - Scale scores
-
 - Performance levels
-
 - Percentiles and rankings
-
 - Growth Measures
-
 - Subscores at all reported levels
-
 - Subtest, domain, strand, or skill-level results
-
 - And additional reported metrics or indicators
 
 If the vendor reports it, the integration must deliver it.
@@ -478,17 +379,13 @@ The assessment provider is responsible for ensuring that the full score report i
 
 - Deliver all reported results, not a subset
 
--
+- Ensure every defined structure has corresponding results
 
 - Preserve all reported values and levels of detail
 
 - Maintain consistency across administrations and integrations
 
 #### Prohibited Patterns
-
-:::warning
-This guidance is normative and should be enforced as written.
-:::
 
 The following patterns are not allowed because they result in incomplete or distorted representations of the score report:
 
@@ -498,7 +395,7 @@ The following patterns are not allowed because they result in incomplete or dist
 
 - Delivering different levels of detail across implementations
 
--
+- Defining structure without delivering corresponding results
 
 - Filtering results based on perceived importance or use
 
@@ -530,7 +427,7 @@ The assessment provider is responsible for ensuring that recursive objective str
 
 - Identify all levels of hierarchy in the score report
 
--
+- Define ObjectiveAssessment relationships to match that hierarchy
 
 - Model all levels consistently
 
@@ -539,10 +436,6 @@ The assessment provider is responsible for ensuring that recursive objective str
 - Ensure all results are delivered within StudentObjectiveAssessment
 
 #### Prohibited Patterns
-
-:::warning
-This guidance is normative and should be enforced as written.
-:::
 
 The following patterns are not allowed because they collapse or distort hierarchical structure and require downstream systems to reconstruct relationships or infer meaning:
 
@@ -564,7 +457,7 @@ Scores and performance levels are distinct and must be modeled separately.
 
 - _Scores_ are quantitative (scale scores, raw scores, percentiles, growth metrics)
 
-- _Performance levels_
+- _Performance levels_ are categorical (proficiency levels, risk bands, achievement categories)
 
 They are not interchangeable and are not inherently one-to-one.
 
@@ -582,19 +475,15 @@ The assessment provider is responsible for ensuring that scores and performance 
 
 - Model quantitative results as scores
 
--
+- Represent performance levels using descriptor-based fields
 
--
+- Preserve vendor-defined performance level semantics
 
 - Avoid implicit mappings between scores and levels
 
 - Use descriptor categories consistently
 
 #### Prohibited Patterns (Section 5.4)
-
-:::warning
-This guidance is normative and should be enforced as written.
-:::
 
 The following patterns are not allowed because they conflate distinct concepts and require downstream systems to reinterpret or infer analytical meaning:
 
@@ -626,7 +515,7 @@ Indicators include:
 
 These provide context, not performance outcomes.
 
-assessment entity and must not be included in score results.
+Indicators must be represented using other appropriate fields or constructs within the student assessment entity and must not be included in score results.
 
 When indicators are stored as scores:
 
@@ -654,15 +543,11 @@ The assessment provider is responsible for ensuring that indicators are correctl
 
 #### Prohibited Patterns
 
-:::warning
-This guidance is normative and should be enforced as written.
-:::
-
 The following patterns are not allowed because they misrepresent contextual data as performance and require downstream systems to reinterpret or infer meaning:
 
 - Storing indicators as score results
 
--
+- Using score fields for participation or status
 
 - Mixing indicators with performance data
 
@@ -672,9 +557,9 @@ Separating indicators from scores ensures that performance data remains accurate
 
 ## 6. Event Identity and Longitudinal Integrity
 
-complete and consistent event definition, assessment results cannot be reliably interpreted, aligned to enrollment, or used for longitudinal analysis.
+Event identity defines how a student's assessment attempt is anchored in time and context. Without a complete and consistent event definition, assessment results cannot be reliably interpreted, aligned to enrollment, or used for longitudinal analysis.
 
-student. That event must include the contextual fields required to distinguish when the assessment occurred, under what conditions, and how it relates to other attempts over time.
+A StudentAssessment is not just a container for results. It represents a specific assessment event for a student. That event must include the contextual fields required to distinguish when the assessment occurred, under what conditions, and how it relates to other attempts over time.
 
 This section enforces the foundational principle of including full event context. Without it, results may load successfully, but cannot support growth analysis, cohort tracking, enrollment alignment, or reporting pipelines such as CCR and CCMR.
 
@@ -682,7 +567,7 @@ This section enforces the foundational principle of including full event context
 
 A StudentAssessment must include the event context necessary to uniquely identify and interpret a student’s assessment attempt.
 
-not required by a state reporting specification.
+These fields anchor the assessment in time and context and must be populated when available, even if not required by a state reporting specification.
 
 - _SchoolYear_ ensures that results are grouped into the correct academic year
 
@@ -692,29 +577,25 @@ not required by a state reporting specification.
 
 - _WhenAssessedGradeLevel_ anchors the result to the student’s grade at the time of assessment
 
-- _RetestIndicator_ administrations occur
+- _RetestIndicator_ distinguishes first attempts from subsequent attempts when multiple administrations occur
 
-across systems.
+Without these fields, assessment results lose temporal meaning and cannot be reliably interpreted across systems.
 
 #### Assessment Provider Responsibility
 
-represented, and consistently applied across implementations:
+The assessment provider is responsible for ensuring that event context is fully defined, accurately represented, and consistently applied across implementations:
 
--
+- Populate all required event context fields when available
 
 - Ensure event context reflects the actual timing and conditions of the assessment
 
 - Align event context values to the vendor’s source data and score report
 
--
+- Maintain consistent use of event context fields across implementations
 
 - Ensure multiple attempts are distinguishable through event context rather than identity
 
 #### Prohibited Patterns
-
-:::warning
-This guidance is normative and should be enforced as written.
-:::
 
 The following patterns are not allowed because they remove temporal context and require downstream systems to reconstruct or infer event identity:
 
@@ -722,7 +603,7 @@ The following patterns are not allowed because they remove temporal context and 
 
 - Omitting AdministrationDate when it is available
 
--
+- Omitting AssessmentPeriod when the vendor defines one
 
 - Omitting WhenAssessedGradeLevel when available
 
@@ -758,7 +639,7 @@ The result is not just incomplete data. It is ambiguous data that cannot be cons
 
 #### Assessment Provider Responsibility
 
-support longitudinal analysis and consistent interpretation across implementations:
+The assessment provider is responsible for ensuring that event identity is complete and sufficient to support longitudinal analysis and consistent interpretation across implementations:
 
 - Provide complete event context for every StudentAssessment record
 
@@ -766,21 +647,17 @@ support longitudinal analysis and consistent interpretation across implementatio
 
 - Align event context to enrollment and reporting timelines
 
--
+- Maintain consistency in how event context is defined and populated across implementations
 
 #### Prohibited Patterns
 
-:::warning
-This guidance is normative and should be enforced as written.
-:::
-
 The following patterns are not allowed because they break longitudinal integrity and require downstream systems to reconstruct or infer event meaning:
 
--
+- Delivering results without sufficient context to distinguish attempts
 
 - Relying on downstream systems to infer academic year or reporting period
 
--
+- Using inconsistent or ambiguous definitions of assessment period
 
 - Providing incomplete event context that prevents reliable grouping or sequencing of results
 
@@ -788,9 +665,9 @@ Ensuring complete event identity preserves longitudinal integrity, enabling accu
 
 ### 6.3 Event Identity Modeling Rules
 
-implied through naming conventions.
+Event identity must be represented through explicit context fields, not encoded into identifiers or implied through naming conventions.
 
-responsibilities must remain separate.
+Identifiers define what the assessment is. Event context defines when and how it occurred. These responsibilities must remain separate.
 
 - Assessment identity becomes unstable
 
@@ -804,39 +681,31 @@ responsibilities must remain separate.
 
 The assessment provider is responsible for ensuring that event identity is modeled explicitly through context fields and not embedded in identifiers or naming conventions across implementations:
 
--
+- Represent timing and attempt context using defined event fields
 
 - Keep assessment identity separate from event context
 
 - Ensure consistency in how event identity is modeled across implementations
 
-- • Align event modeling decisions with governance expectations
+- Align event modeling decisions with governance expectations
 
 #### Prohibited Patterns
 
-:::warning
-This guidance is normative and should be enforced as written.
-:::
-
 The following patterns are not allowed because they conflate identity and event context and require downstream systems to reconstruct or infer meaning:
 
--
+- Encoding BOY, MOY, EOY, or time-based labels in AssessmentIdentifier
 
 - Using school year as part of the assessment identity when structure is unchanged
 
--
+- Encoding event timing in identifiers instead of context fields
 
 - Using AssessmentPeriod as a substitute for event identity instead of context
 
 - Relying on naming conventions to convey timing or attempt information
 
-while event context remains interpretable, enabling consistent longitudinal analysis without requiring downstream systems to reconstruct meaning.
+Modeling event identity through explicit context fields ensures that assessment identity remains stable while event context remains interpretable, enabling consistent longitudinal analysis without requiring downstream systems to reconstruct meaning.
 
 ## 7. Descriptor and Namespace Governance
-
-:::warning
-This guidance is normative and should be enforced as written.
-:::
 
 Descriptors are not just technical values. They carry semantic meaning that must remain consistent, interpretable, and traceable back to the source assessment. Namespaces define ownership of that meaning.
 
@@ -852,11 +721,11 @@ Native integrations must preserve vendor-native score names, reporting methods, 
 
 A native integration does not alter, simplify, or normalize vendor meaning during ingestion.
 
-This applies to all descriptors, including:
+This applies to all assessment-specific descriptors, including:
 
 - Assessment reporting method descriptors (e.g., score names)
 
--
+- Performance level descriptors (e.g., proficiency categories)
 
 - Assessment category descriptors
 
@@ -866,7 +735,7 @@ If interpretation or grouping is required for analytics, it must be implemented 
 
 - governed downstream mapping layers, or
 
--
+- clearly defined metadata aligned to vendor-specific values
 
 At ingestion, preservation of meaning is the priority.
 
@@ -882,13 +751,13 @@ This ensures:
 
 #### Assessment Provider Responsibility
 
-names and performance level semantics, are preserved exactly as defined and consistently applied across implementations:
+The assessment provider is responsible for ensuring that vendor-specific descriptors, including score names and performance level semantics, are preserved exactly as defined and consistently applied across implementations:
 
--
+- Publish descriptor values exactly as defined in the vendor score report
 
--
+- Use a vendor-specific namespace for all assessment-owned descriptors
 
--
+- Preserve performance level definitions without remapping or simplification
 
 - Ensure consistency of descriptor values across implementations
 
@@ -896,17 +765,13 @@ names and performance level semantics, are preserved exactly as defined and cons
 
 #### Prohibited Patterns
 
-:::warning
-This guidance is normative and should be enforced as written.
-:::
-
 The following patterns are not allowed because they alter source meaning and require downstream systems to reconstruct or reinterpret vendor semantics:
 
 - Normalizing or renaming vendor score descriptors at ingestion
 
--
+- Mapping performance levels to simplified or local categories during ingestion
 
--
+- Overwriting vendor descriptor values with implementation-specific definitions
 
 - Collapsing distinct vendor measures into a single generic descriptor
 
@@ -934,9 +799,9 @@ Maintaining these descriptors in the default namespace ensures:
 
 - Reliable cross-domain analysis
 
--
+- Elimination of conflicting definitions across implementations
 
-through governed configuration layers when required to align with local Ed-Fi environments. However, assessment-specific descriptors, including vendor-defined score names and performance levels, must remain vendor-defined at ingestion and must not be locally overridden during load processing.
+Implementations may apply environment-specific mappings for shared cross-domain descriptors through governed configuration layers when required to align with local Ed-Fi environments. However, assessment-specific descriptors, including vendor-defined score names and performance levels, must remain vendor-defined at ingestion and must not be locally overridden during load processing.
 
 #### Assessment Provider Responsibility
 
@@ -944,23 +809,19 @@ The assessment provider is responsible for ensuring that shared descriptors are 
 
 - Use default Ed-Fi descriptors for shared dimensions
 
--
+- Align descriptor values to those defined in the target implementation
 
--
+- Avoid redefining shared descriptors within the vendor namespace
 
 - Ensure consistent usage across integrations
 
 #### Prohibited Patterns
 
-:::warning
-This guidance is normative and should be enforced as written.
-:::
-
 The following patterns are not allowed because they introduce inconsistency across domains and require downstream systems to reconcile conflicting definitions:
 
--
+- Defining AcademicSubject within a vendor namespace
 
--
+- Defining GradeLevel within a vendor namespace
 
 - Creating duplicate descriptor sets for shared dimensions
 
@@ -970,9 +831,9 @@ Using default namespace descriptors ensures cross-domain consistency and support
 
 ### 7.3 Descriptor Governance by Domain
 
-descriptors used across domains.
+Descriptor governance must clearly distinguish between assessment-specific descriptors and shared descriptors used across domains.
 
-maintained within the vendor namespace. Assessment-specific descriptors must not be locally overridden or remapped at ingestion because doing so compromises the semantic integrity of the assessment results.
+Assessment-specific descriptors are owned by the assessment provider and must be defined and maintained within the vendor namespace. Assessment-specific descriptors must not be locally overridden or remapped at ingestion because doing so compromises the semantic integrity of the assessment results.
 
 These include:
 
@@ -984,9 +845,9 @@ These include:
 
 - Assessment period descriptors
 
-remapped to local or simplified categories at ingestion.
+Performance level semantics must be preserved as vendor-defined descriptor values. They must not be remapped to local or simplified categories at ingestion.
 
-modification.
+These descriptors are intrinsic to the assessment and must reflect vendor-defined meaning without modification.
 
 In contrast, non-assessment descriptors:
 
@@ -1002,29 +863,25 @@ Failure to separate these responsibilities introduces ambiguity and breaks inter
 
 #### Assessment Provider Responsibility
 
-consistently applied across implementations:
+The assessment provider is responsible for ensuring that descriptor ownership is clearly defined and consistently applied across implementations:
 
--
+- Define assessment-specific descriptors within the vendor namespace
 
--
+- Preserve vendor-defined meaning for all assessment descriptors
 
 - Reference shared descriptors from the default namespace
 
--
+- Avoid redefining or overriding shared descriptors
 
 - Maintain consistent descriptor governance across integrations
 
 #### Prohibited Patterns
 
-:::warning
-This guidance is normative and should be enforced as written.
-:::
-
 The following patterns are not allowed because they blur ownership boundaries and require downstream systems to infer or reconcile descriptor meaning:
 
 - Mixing assessment and non-assessment descriptors within the same namespace
 
--
+- Redefining shared descriptors within the vendor namespace
 
 - Using vendor namespaces for cross-domain descriptors
 

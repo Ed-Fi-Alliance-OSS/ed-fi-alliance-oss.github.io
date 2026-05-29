@@ -8,7 +8,7 @@ Testing is the enforcement layer of the playbook. An integration can produce tec
 
 The purpose of this validation framework is not to restate modeling rules, but to enforce them. Each validation category confirms that the requirements defined in Parts III–V are implemented correctly and consistently.
 
-validations ensure that the requirement is met before an integration is considered production-ready.
+A native integration must be analytically usable without vendor-specific downstream logic. These validations ensure that the requirement is met before an integration is considered production-ready.
 
 ## 14. Validation Framework
 
@@ -16,15 +16,15 @@ Validation requirements are grouped into categories that reflect the core failur
 
 ### 14.1 Structural Validation
 
-Hierarchy, and Results Placement).
+Structural validation enforces the requirements defined in Part III (Assessment Definition and Identity, Hierarchy, and Results Placement).
 
-without inference.
+It confirms that the dataset reflects the true structure of the assessment and can be interpreted without inference.
 
 Structural validation must verify:
 
 - Hierarchy integrity
 
-  -
+  - Assessment exists at the level where overall results are defined
 
   - ObjectiveAssessment exists when subscores are present
 
@@ -52,7 +52,7 @@ Structural validation must verify:
 
 - Flat modeling with all scores at StudentAssessment
 
--
+- Objectives defined, but no student objective results provided
 
 - Multi-subject assessments requiring inference
 
@@ -64,7 +64,7 @@ The hierarchy is complete, faithful to the vendor score report, and directly int
 
 ### 14.2 Referential Integrity
 
-Dependency Order).
+Referential integrity enforces the dependency chain defined in Part III and Part V (API Interaction and Dependency Order).
 
 It ensures that all relationships between entities are complete and navigable.
 
@@ -86,9 +86,9 @@ It ensures that all relationships between entities are complete and navigable.
 
   - No hierarchy elements missing parents
 
--
+- No "ghost definitions":
 
--
+  - No structure defined without corresponding results when expected
 
 #### Common Failure Patterns
 
@@ -96,17 +96,17 @@ It ensures that all relationships between entities are complete and navigable.
 
 - Broken references to missing objectives
 
--
+- Inconsistent identifiers across runs
 
 - Structure loaded separately from results
 
-#### Passing Result (14.8)
+#### Passing Result
 
-breaks in the chain.
+All data is fully connected and navigable from assessment definition to student outcomes with no breaks in the chain.
 
 ### 14.3 Descriptor Validation
 
-10 (Descriptor Mapping Infrastructure).
+Descriptor validation enforces the requirements defined in Part II (Descriptor Governance) and Section 10 (Descriptor Mapping Infrastructure).
 
 It ensures that meaning is preserved and governed.
 
@@ -124,7 +124,7 @@ Validation must verify:
 
   - Performance levels are not remapped at ingestion
 
-  -
+  - Descriptor meaning matches vendor definitions
 
 - No reuse errors
 
@@ -154,23 +154,23 @@ Descriptors retain their intended meaning, are consistently applied, and remain 
 
 ### 14.4 Event Completeness
 
-Integrity).
+Event completeness enforces the requirements defined in Section 6 (Event Identity and Longitudinal Integrity).
 
 It ensures that every StudentAssessment represents a complete, interpretable event.
 
 Validation must verify:
 
--
+- Required fields:
 
-- SchoolYear
+  - SchoolYear
 
-- AdministrationDate
+  - AdministrationDate
 
-- AssessmentPeriod (when applicable)
+  - AssessmentPeriod (when applicable)
 
-- WhenAssessedGradeLevel
+  - WhenAssessedGradeLevel
 
-- RetestIndicator (when applicable)
+  - RetestIndicator (when applicable)
 
 - Attempt distinguishability:
 
@@ -196,17 +196,17 @@ Validation must verify:
 
 - Missing SchoolYear
 
--
+- Period embedded in identifiers
 
 - Missing grade context
 
 #### Passing Result
 
-longitudinally without guesswork.
+Every StudentAssessment represents a clearly defined event that can be interpreted and used longitudinally without guesswork.
 
 ### 14.5 Student Identity Validation
 
-Rostering).
+Student identity validation enforces the requirements defined in Part IV (Student Identity and Rostering).
 
 It ensures that results resolve to the correct student records.
 
@@ -228,7 +228,7 @@ Validation must verify:
 
 - Low match rates without visibility
 
--
+- Inconsistent identifier usage
 
 #### Passing Result
 
@@ -236,7 +236,9 @@ All student results resolve to valid Ed-Fi student records, with unmatched cases
 
 ### 14.6 Safe Reprocessing Simulation
 
-Duplicate Prevention).
+Safe reprocessing validation enforces the requirements defined in Section 11 (Safe Reprocessing and Duplicate Prevention).
+
+It confirms that the integration behaves deterministically under repeated execution.
 
 Validation must verify:
 
@@ -256,7 +258,7 @@ Required simulation scenarios:
 
 - Full-year reload simulation
 
--
+- Backfill simulation
 
 #### Common Failure Patterns
 
@@ -273,6 +275,8 @@ Required simulation scenarios:
 Reprocessing is safe, deterministic, and does not corrupt data or create duplicates.
 
 ### 14.7 Dependency Order Validation
+
+Dependency validation enforces the requirements defined in Section 11.2 (Dependency Order).
 
 It ensures that sequencing and recovery behavior are correct.
 
@@ -316,15 +320,21 @@ Validation must verify:
 
 #### Passing Result
 
-The integration enforces sequencing, handles failures predictably, and produces complete datasets. 14.8 Prohibited Pattern Detection
+The integration enforces sequencing, handles failures predictably, and produces complete datasets.
+
+### 14.8 Prohibited Pattern Detection
+
+This validation enforces all prohibited patterns defined across Parts III–V. Rather than restating them, this section defines how they are detected.
+
+Validation must confirm the absence of:
 
 - Multi-subject top-level assessments
 
 - Composite results stored as objectives
 
--
+- Time elements embedded in identifiers
 
--
+- Missing event identity fields
 
 - Pull-only architectures without a load path
 
@@ -338,7 +348,7 @@ Automated checks may include:
 
 - Missing SchoolYear or AdministrationDate
 
--
+- Identifier pattern detection (BOY/MOY/EOY)
 
 - Score placement inconsistencies
 
@@ -356,13 +366,13 @@ Manual review must validate:
 
 No prohibited patterns are present, and the integration does not rely on downstream reconstruction of meaning.
 
-## 15. Certifiication Checklist
+## 15. Certification Checklist
 
-Design Principles across modeling, architecture, runtime behavior, and governance. Certification requires that integration behavior is transparent and explainable without reliance on transformation code inspection.
+Certification is the formal confirmation that an integration meets the Native Integration Foundational Design Principles across modeling, architecture, runtime behavior, and governance. Certification requires that integration behavior is transparent and explainable without reliance on transformation code inspection.
 
-correctly under real-world conditions.
+Certification is not a single test. It is a lifecycle validation that confirms the integration behaves correctly under real-world conditions.
 
-the requirements defined in Parts III–VI have been implemented and validated.
+This checklist is a verification instrument. No requirements are introduced here. Each item confirms that the requirements defined in Parts III–VI have been implemented and validated.
 
 An integration must pass all applicable checks to be considered native, production-ready, and certifiable.
 
@@ -396,7 +406,7 @@ An integration must pass all applicable checks to be considered native, producti
 
 (Validates: Part IV, Validation 14.5)
 
--
+- Student identifier source is explicitly configured and documented
 
 - Identity mapping or crosswalk process is implemented
 
@@ -440,7 +450,9 @@ Safe reprocessing must be tested across all required scenarios:
 
 - Full-year reload
 
--
+- Historical backfill
+
+And must confirm:
 
 - Duplicate prevention is enforced
 
@@ -476,7 +488,7 @@ Safe reprocessing must be tested across all required scenarios:
 
 - Descriptor governance rules are followed
 
--
+- AssessmentIdentifier stability is confirmed
 
 - AssessmentFamily grouping is correctly implemented
 
@@ -490,7 +502,7 @@ Safe reprocessing must be tested across all required scenarios:
 
 - Descriptor mappings are:
 
-  -
+  - Configurable per environment
 
   - Not hard-coded in transformation logic
 
@@ -498,6 +510,6 @@ Safe reprocessing must be tested across all required scenarios:
 
   - Traceable over time
 
--
+- Descriptor override capability exists and is externally configurable
 
 - Integration behavior (identity resolution, descriptor mapping, event modeling) is explainable without inspecting transformation code

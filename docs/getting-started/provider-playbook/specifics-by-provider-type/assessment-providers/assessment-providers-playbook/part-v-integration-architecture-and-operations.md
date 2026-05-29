@@ -4,7 +4,7 @@ sidebar_position: 6
 ---
 
 
-true native integration that districts can operationalize safely at scale. The focus here is transport and execution discipline: how data is transformed, validated, transmitted, secured, reprocessed, and monitored without introducing fragility, tenant risk, or silent duplication.
+This section defines how an assessment integration moves from "a payload that can be loaded" to a true native integration that districts can operationalize safely at scale. The focus here is transport and execution discipline: how data is transformed, validated, transmitted, secured, reprocessed, and monitored without introducing fragility, tenant risk, or silent duplication.
 
 Architecture is where good modeling either survives the real world or dies in production.
 
@@ -24,7 +24,7 @@ In this pattern, the vendor owns the full integration runtime. The vendor maps a
 
 This bidirectional pattern is foundational to a compliant integration. Pulling roster data from Ed-Fi ensures that student identity, enrollment context, and assessment registration are aligned to the system of record where results will be stored. Pushing results back to Ed-Fi completes the integration by delivering outcomes that are already resolved to that same identity framework.
 
-from it. If this pattern is not followed, identity mismatches become unavoidable. Vendors that rely on external rostering sources or delayed reconciliation introduce inconsistencies that break referential integrity, fragment longitudinal data, and increase operational burden on districts. Bidirectionality is not a convenience. It is the mechanism that ensures assessment data is accurate at load time and usable over time.
+Every other integration pattern represents a deviation from it. If this pattern is not followed, identity mismatches become unavoidable. Vendors that rely on external rostering sources or delayed reconciliation introduce inconsistencies that break referential integrity, fragment longitudinal data, and increase operational burden on districts. Bidirectionality is not a convenience. It is the mechanism that ensures assessment data is accurate at load time and usable over time.
 
 _**What it looks like in practice:**_
 
@@ -82,9 +82,9 @@ In this pattern, transformation, validation, and loading are explicitly separate
 
 #### What it looks like in practice
 
-- tooling.
+- The vendor sources assessment output data from its internal platform or data pipeline, using standard export tooling.
 
-- transformation logic (housed in Bundles), often producing staged outputs that map 1:1 to Ed-Fi resources.
+- Earthmover applies vendor-specific transformation logic (housed in Bundles), often producing staged outputs that map 1:1 to Ed-Fi resources.
 
 - Validation occurs before loading, including schema checks, dependency checks, descriptor checks, and key consistency checks.
 
@@ -132,13 +132,11 @@ At ingestion, descriptor values must reflect exactly what the assessment provide
 
 - Assessment reporting method descriptors (score names)
 
--
+- Performance level descriptors
 
 - Assessment category descriptors
 
 - Assessment period descriptors
-
--
 
 These values must:
 
@@ -146,7 +144,7 @@ These values must:
 
 - Retain their original code values
 
--
+- Not be altered or normalized before submission
 
 Preserving vendor semantics ensures that:
 
@@ -154,15 +152,15 @@ Preserving vendor semantics ensures that:
 
 - Meaning is not altered before governance is applied
 
--
+- Multiple analytical interpretations remain possible without altering source data
 
 #### Assessment Provider Responsibility
 
-preserved exactly as reported:
+The assessment provider is responsible for ensuring that vendor-native descriptor values are preserved exactly as reported:
 
 - Preserve vendor-native descriptor values at ingestion
 
--
+- Maintain vendor namespace alignment for all assessment-specific descriptors
 
 - Maintain alignment with the vendor score report
 
@@ -172,10 +170,6 @@ preserved exactly as reported:
 
 #### Prohibited Patterns
 
-:::warning
-This guidance is normative and should be enforced as written.
-:::
-
 The following patterns are not allowed because they alter source meaning and require downstream systems to reconstruct interpretation:
 
 - Renaming descriptor values during ingestion
@@ -184,7 +178,7 @@ The following patterns are not allowed because they alter source meaning and req
 
 - Collapsing distinct descriptor values into generalized categories
 
--
+- Applying local simplification or normalization categories at ingestion
 
 Preserving descriptor values at ingestion ensures that meaning remains intact and that all downstream interpretation is explicit and governed.
 
@@ -202,35 +196,31 @@ This requires the ability to map descriptor values to match:
 
 This alignment is essential because these descriptors are used across domains. Misalignment prevents accurate joins between assessment results and enrollment, course, and student data.
 
-the vendor namespace and must not be overridden.
+Assessment-specific descriptors—including vendor-defined score names and performance levels—must remain in the vendor namespace and must not be overridden.
 
 #### Assessment Provider Responsibility
 
-aligned to the receiving environment:
+The assessment provider is responsible for ensuring that shared descriptor mappings are configured and aligned to the receiving environment:
 
--
+- Support configurable mapping for shared descriptor types
 
 - Align shared descriptors to the target Ed-Fi implementation
 
--
+- Validate shared descriptor values against the target environment before submission
 
--
+- Document mapping configuration for each implementation
 
 - Ensure mappings are repeatable and version-controlled
 
 #### Prohibited Patterns
 
-:::warning
-This guidance is normative and should be enforced as written.
-:::
-
 The following patterns are not allowed because they create inconsistency and break interoperability:
 
 - Assuming default descriptor values apply across all environments
 
--
+- Hardcoding shared descriptor values without environment alignment
 
--
+- Using the same shared descriptor values across environments without validation
 
 - Applying undocumented or inconsistent mappings
 
@@ -268,11 +258,11 @@ This applies to all descriptor categories, including:
 
 #### Assessment Provider Responsibility
 
-externalized:
+The assessment provider is responsible for ensuring that all descriptor handling logic is externalized:
 
 - Parameterize descriptor values and namespaces
 
--
+- Externalize descriptor configuration into editable mapping files
 
 - Support updates without code changes
 
@@ -281,10 +271,6 @@ externalized:
 - Ensure portability across implementations
 
 #### Prohibited Patterns
-
-:::warning
-This guidance is normative and should be enforced as written.
-:::
 
 The following patterns are not allowed because they prevent scalability and governance:
 
@@ -336,10 +322,6 @@ The assessment provider is responsible for ensuring full transparency of descrip
 
 #### Prohibited Patterns
 
-:::warning
-This guidance is normative and should be enforced as written.
-:::
-
 The following patterns are not allowed because they obscure behavior and prevent governance:
 
 - Hiding mappings in transformation code
@@ -386,9 +368,9 @@ The assessment provider is responsible for ensuring that descriptor mapping scal
 
 - Reuse transformation logic across implementations
 
--
+- Support environment-specific configuration
 
--
+- Separate configuration from code
 
 - Maintain consistent data structures
 
@@ -396,15 +378,11 @@ The assessment provider is responsible for ensuring that descriptor mapping scal
 
 #### Prohibited Patterns
 
-:::warning
-This guidance is normative and should be enforced as written.
-:::
-
 The following patterns are not allowed because they prevent scalability:
 
 - Rewriting descriptor logic per district
 
--
+- Embedding partner-specific mappings in core logic
 
 - Maintaining separate pipelines without governance
 
@@ -417,10 +395,8 @@ Scalable descriptor mapping ensures consistent behavior across all implementatio
 Descriptor mappings evolve over time as:
 
 - Vendors introduce new values
-
 - States update standards
-
--
+- Districts refine reporting definitions
 
 A native integration must support:
 
@@ -455,10 +431,6 @@ The assessment provider is responsible for ensuring that descriptor changes are 
 - Align changes with governance processes
 
 #### Prohibited Patterns
-
-:::warning
-This guidance is normative and should be enforced as written.
-:::
 
 The following patterns are not allowed because they create inconsistency and loss of trust:
 
@@ -506,7 +478,7 @@ Core rules:
 
 - No direct database writes. Ever.
 
--
+- No temporary database patches to fix vendor modeling
 
 - No bypass mechanisms that write directly to ODS tables
 
@@ -534,15 +506,11 @@ The assessment provider is responsible for ensuring that all integration behavio
 
 #### Prohibited Patterns
 
-:::warning
-This guidance is normative and should be enforced as written.
-:::
-
 The following patterns are not allowed because they bypass governance and introduce instability:
 
 - Direct database writes into the ODS
 
--
+- Manual table patches to fix integration errors
 
 - Shadow write mechanisms outside the API
 
@@ -568,11 +536,11 @@ Required load order:
 
 This order reflects how the data model is constructed:
 
--
+- Assessment defines the overall instrument
 
--
+- ObjectiveAssessment defines the structure and hierarchy
 
--
+- StudentAssessment defines the student event
 
 - StudentObjectiveAssessment represents detailed results within that event
 
@@ -616,15 +584,11 @@ The assessment provider is responsible for enforcing dependency order and ensuri
 
 #### Prohibited Patterns
 
-:::warning
-This guidance is normative and should be enforced as written.
-:::
-
 The following patterns are not allowed because they create incomplete or misleading data states:
 
 - Loading student results before assessment metadata
 
--
+- Loading objective-level results before hierarchy definitions
 
 - Continuing loads after dependency failures
 
@@ -648,7 +612,7 @@ A native integration must be engineered so that it can be executed repeatedly wi
 
 Reprocessing scenarios are not edge cases. They are routine and must be supported:
 
--
+- Historical backfills
 
 - Vendor score corrections
 
@@ -696,7 +660,7 @@ Stable natural keys must exist for all resources
 
   - The StudentAssessment event
 
-  -
+  - The ObjectiveAssessment definition
 
 - Must not rely on parsing score names
 
@@ -730,7 +694,7 @@ When AdministrationDate is missing, reprocessing behavior becomes guesswork—an
 
 The assessment provider is responsible for ensuring that reprocessing is safe, deterministic, and governed:
 
--
+- Define stable natural keys for all resources
 
 - Ensure deterministic behavior across runs
 
@@ -745,10 +709,6 @@ The assessment provider is responsible for ensuring that reprocessing is safe, d
 - Validate reprocessing behavior before production
 
 #### Prohibited Patterns
-
-:::warning
-This guidance is normative and should be enforced as written.
-:::
 
 The following patterns are not allowed because they create data corruption and unreliable longitudinal behavior:
 
@@ -772,7 +732,7 @@ Security is not an add-on. In assessment integrations, security failures often b
 
 A native integration must demonstrate strong data separation, appropriate access controls, and auditable behavior across all environments. Security must be designed into the integration architecture from the beginning, not layered on after implementation.
 
-and tenant isolation required for a production-ready integration.
+This section defines the minimum expectations for credential management, access control, auditability, and tenant isolation required for a production-ready integration.
 
 ### 12.1 District-Scoped Credentials
 
@@ -786,7 +746,7 @@ This requirement ensures that:
 
 - The impact of a credential compromise is limited to a single tenant
 
--
+- Audit trails can accurately trace actions to a specific district
 
 #### Assessment Provider Responsibility
 
@@ -803,10 +763,6 @@ The assessment provider is responsible for ensuring that credentials are properl
 - Support credential revocation and re-issuance
 
 #### Prohibited Patterns
-
-:::warning
-This guidance is normative and should be enforced as written.
-:::
 
 The following patterns are not allowed because they break tenant isolation and increase security risk:
 
@@ -854,10 +810,6 @@ The assessment provider is responsible for ensuring that claimsets are restricte
 
 #### Prohibited Patterns
 
-:::warning
-This guidance is normative and should be enforced as written.
-:::
-
 The following patterns are not allowed because they create unnecessary access risk:
 
 - Granting broad or administrative claimsets
@@ -870,7 +822,7 @@ The following patterns are not allowed because they create unnecessary access ri
 
 - Leaving unused or outdated permissions in place
 
-boundaries.
+Least-privilege claimsets ensure that integrations operate within clearly defined and controlled boundaries.
 
 ### 12.3 Audit, Rotation, and Tenant Model
 
@@ -962,10 +914,6 @@ The assessment provider is responsible for ensuring that security operations are
 
 #### Prohibited Patterns
 
-:::warning
-This guidance is normative and should be enforced as written.
-:::
-
 The following patterns are not allowed because they create security gaps and risk data exposure:
 
 - Lack of audit logging for integration activity
@@ -978,7 +926,7 @@ The following patterns are not allowed because they create security gaps and ris
 
 - Cross-tenant access paths in processing or storage
 
--
+- Inability to trace actions to a specific credential or tenant
 
 Security and tenant isolation are required conditions for a native integration.
 
@@ -992,11 +940,11 @@ A native integration must not only produce correct data—it must do so reliably
 
 An integration that requires manual intervention for routine operation is not production-ready.
 
-for a scalable and trustworthy integration.
+This section defines the expectations for runtime design, observability, and change governance required for a scalable and trustworthy integration.
 
 ### 13.1 Batch Planning and Runtime Design
 
-testing windows, including:
+Assessment integrations are inherently bursty. Large volumes of data are generated during defined testing windows, including:
 
 - Beginning-of-year assessments
 
@@ -1020,7 +968,7 @@ Batch planning must account for:
 
 The integration must explicitly support:
 
--
+- Initial historical loads (large backfills)
 
 - Incremental loads (daily or periodic updates)
 
@@ -1040,7 +988,7 @@ The integration must:
 
 - Respect HTTP response codes
 
--
+- Avoid infinite retry loops
 
 - Log retry behavior clearly
 
@@ -1114,15 +1062,11 @@ The assessment provider is responsible for ensuring that runtime behavior is sca
 
 #### Prohibited Patterns
 
-:::warning
-This guidance is normative and should be enforced as written.
-:::
-
 The following patterns are not allowed because they create instability and operational risk:
 
 - Designing only for incremental loads
 
--
+- Infinite or uncontrolled retry loops
 
 - Ignoring API rate limits
 
@@ -1148,7 +1092,7 @@ Error logs must be:
 
 - Tenant-scoped
 
--
+- Resource-specific
 
 - Time-stamped
 
@@ -1246,10 +1190,6 @@ The assessment provider is responsible for ensuring that integration behavior is
 
 #### Prohibited Patterns
 
-:::warning
-This guidance is normative and should be enforced as written.
-:::
-
 The following patterns are not allowed because they prevent governance and troubleshooting:
 
 - Opaque or unreadable logs
@@ -1280,7 +1220,7 @@ Examples of changes include:
 
 - Score calculation changes
 
--
+- Performance level definition changes
 
 - Statistical model recalibration
 
@@ -1290,7 +1230,7 @@ Examples of changes include:
 
 These changes require governance decisions:
 
--
+- Should the AssessmentIdentifier change?
 
 - Does comparability across years remain valid?
 
@@ -1302,9 +1242,9 @@ Failure to properly manage assessment versioning results in misleading longitudi
 
 Ed-Fi Data Standard versions evolve and may introduce:
 
--
+- New fields
 
--
+- Deprecated fields
 
 - Updated validation rules
 
@@ -1336,7 +1276,7 @@ This includes:
 
 - Performance improvements
 
--
+- Bug fixes
 
 Versioning must include:
 
@@ -1352,23 +1292,19 @@ Without versioning, districts cannot diagnose changes in data behavior.
 
 #### Governance Triggers
 
-:::warning
-This guidance is normative and should be enforced as written.
-:::
-
 The following events require formal governance review:
 
 - Structural hierarchy changes
 
 - Score method changes
 
--
+- Performance level definition changes
 
 - Statistical model changes
 
 - Descriptor namespace changes
 
--
+- Identifier construction changes
 
 - Addition or removal of objective levels
 
@@ -1403,10 +1339,6 @@ The assessment provider is responsible for ensuring that all changes are control
 - Prevent silent or undocumented updates
 
 #### Prohibited Patterns
-
-:::warning
-This guidance is normative and should be enforced as written.
-:::
 
 The following patterns are not allowed because they introduce instability and loss of trust:
 

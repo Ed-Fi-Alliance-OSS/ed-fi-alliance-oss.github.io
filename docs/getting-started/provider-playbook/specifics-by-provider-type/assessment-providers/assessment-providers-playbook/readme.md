@@ -73,8 +73,7 @@ Even low rates of identity misalignment can undermine longitudinal analysis, dis
 
 #### Descriptor Governance Failures
 
-The purpose of this playbook is to define clear guidance and foundational design principles for what
-constitutes a native Ed-Fi assessment integration.
+Descriptors define the meaning of data elements. When vendor-specific values are overwritten, reused incorrectly, or inconsistently mapped, the data's semantic integrity is lost.
 
 This results in ambiguity between scores and performance levels, inconsistency across domains such as assessment and courses, and a lack of transparency in how values are interpreted downstream.
 
@@ -96,15 +95,15 @@ workstreams. Each workstream represents a critical component of a complete, scal
 analytically usable integration, and together they establish the expectations for moving from raw
 assessment data to a production-ready implementation.
 
-_**Data Modeling**_ student assessment record, and descriptors must be represented in the Ed-Fi data model. It establishes the rules that ensure assessment data is complete, interpretable, and consistent across vendors and environments.
+_**Data Modeling**_ defines how assessments, hierarchical structure, results, their placement within the student assessment record, and descriptors must be represented in the Ed-Fi data model. It establishes the rules that ensure assessment data is complete, interpretable, and consistent across vendors and environments.
 
 _**Student Identity and Rostering**_ establishes how assessment results are aligned to StudentUniqueId and connected to the broader data ecosystem. It defines how identity is resolved, validated, and maintained, enabling results to support longitudinal analysis and enrollment-aligned reporting.
 
-_**Descriptor Governance**_ namespaces and descriptor categories. It also establishes how mapping and interpretation are handled transparently, ensuring data remains consistent across domains and implementations.
+_**Descriptor Governance**_ defines how meaning is preserved at ingestion through proper use of namespaces and descriptor categories. It also establishes how mapping and interpretation are handled transparently, ensuring data remains consistent across domains and implementations.
 
-_**Integration Architecture**_ ODS/API. It defines the technical patterns that ensure integrations are reliable, repeatable, and scalable across multiple partners.
+_**Integration Architecture**_ specifies how data is transformed, validated, and transmitted into the Ed-Fi ODS/API. It defines the technical patterns that ensure integrations are reliable, repeatable, and scalable across multiple partners.
 
-_**Operational Readiness**_ includes scheduling, retry behavior, monitoring, error handling, and change management to ensure ongoing stability and maintainability.
+_**Operational Readiness**_ defines the runtime expectations for operating an integration in production. This includes scheduling, retry behavior, monitoring, error handling, and change management to ensure ongoing stability and maintainability.
 
 _**Testing and Certification**_ establishes the validation criteria for confirming that the integration meets the
 requirements of this playbook. It ensures that integrations are not only technically correct but also
@@ -121,7 +120,7 @@ Today, most assessment integrations are built and maintained as one-off implemen
 
 This playbook defines a different model: build once, implement consistently, and scale across partners.
 
-#### Without a standardized approach, vendors incur ongoing operational and engineering costs
+**Without a standardized approach, vendors incur ongoing operational and engineering costs:**
 
 #### Per-site customization cycles
 
@@ -133,11 +132,11 @@ aligning student identity and preparing data for integration.
 
 Fragmented integrations lead to recurring issues with identity mismatches, missing data, and inconsistent behavior across environments. Support teams must continuously troubleshoot problems that stem from a lack of standardization rather than product defects.
 
-### Cross-site redesign and retrofit costs
+#### Cross-site redesign and retrofit costs
 
 Integrations built for one state or partner often require redesign when deployed elsewhere. As expectations evolve, especially with emerging standards, vendors are forced to revisit and retrofit prior work.
 
-#### With a native integration aligned to this playbook, vendors establish a scalable and repeatable foundation for growth
+**With a native integration aligned to this playbook, vendors establish a scalable and repeatable foundation for growth:**
 
 #### Scalable, repeatable deployment model
 
@@ -155,7 +154,7 @@ Implementing these principles positions vendors for compatibility with Data Stan
 
 Standardized integrations reduce fragmentation and enable vendors to operate in a more predictable, consistent data exchange environment.
 
-#### A native integration requires upfront investment and a shift from one-off delivery to standardized implementation
+**A native integration requires upfront investment and a shift from one-off delivery to standardized implementation:**
 
 #### Initial investment in modeling and architecture
 
@@ -181,9 +180,7 @@ These principles apply across all workstreams in this playbook and should guide 
 
 #### Send the Full Score Report
 
-The following principles define the governing logic of a native Ed-Fi assessment integration. They are
-not implementation details. They are the constraints that ensure assessment data remains complete,
-interpretable, and reusable across systems and over time.
+If a data element appears on the official score report and is available in vendor exports, it belongs in Ed-Fi unless a regulatory constraint prohibits it. This includes composite scores, subscores, percentiles, growth metrics, performance levels, risk indicators, contextual flags, accommodations, and administration conditions.
 
 Publishing only the minimum required for state reporting results in incomplete datasets that cannot support real-world use. Ed-Fi is not a reporting file destination. It is an interoperability standard.
 
@@ -207,7 +204,7 @@ Treating performance levels as scores or assuming a one-to-one relationship betw
 
 #### Preserve Vendor Semantics
 
-defined meaning within the vendor namespace. Normalization to shared analytic categories should occur downstream, where context is known.
+Assessment-specific descriptors, including score names and performance levels, must retain vendor-defined meaning within the vendor namespace. Normalization to shared analytic categories should occur downstream, where context is known.
 
 Preserving vendor semantics maintains transparency, avoids hidden transformation logic, and allows multiple interpretations of the same data without loss of meaning.
 
@@ -219,9 +216,7 @@ Without full event context, results cannot be reliably aligned to enrollment, co
 
 #### Align to Governance Oversight
 
-The following principles define the governing logic of a native Ed-Fi assessment integration. They are
-not implementation details. They are the constraints that ensure assessment data remains complete,
-interpretable, and reusable across systems and over time.
+Assessment modeling carries inherent ambiguity, including how identifiers are defined, how descriptors are managed, and how changes are versioned over time. A native integration must align with a governance framework that defines identifier strategy, namespace ownership, descriptor management, versioning rules, and change control expectations. Without governance alignment, consistency degrades over time, even if the initial implementation is correct.
 
 These principles establish the expectations for how assessment data must be represented, interpreted, and maintained. The sections that follow translate these principles into concrete modeling, identity, architecture, and validation requirements.
 
