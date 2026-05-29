@@ -451,7 +451,7 @@ The following patterns are not allowed because they collapse or distort hierarch
 
 Recursive modeling ensures that complex assessments retain their full meaning without downstream reconstruction.
 
-5.4 Score vs. Performance Level Separation
+### 5.4 Score vs. Performance Level Separation
 
 Scores and performance levels are distinct and must be modeled separately.
 
@@ -523,7 +523,7 @@ When indicators are stored as scores:
 
 - Non-performance values are misinterpreted
 
-- • Analytics produce incorrect conclusions
+- Analytics produce incorrect conclusions
 
 _- Ed Fi Data Standard 6.0_ introduces structured support for indicators not otherwise captured in a specific property, reinforcing this separation.
 
