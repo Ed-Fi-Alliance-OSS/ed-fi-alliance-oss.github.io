@@ -186,54 +186,36 @@ The Assessment resource defines the map. One Assessment record is posted for the
     { "academicSubjectDescriptor": "uri://ed-fi.org/AcademicSubjectDescriptor#English Language Arts" }
   ],
   "scores": [
-  {
-    "assessmentReportingMethodDescriptor":
-    "uri://clearpath.example.com/assessment/clearpath-
-    reading/AssessmentReportingMethodDescriptor#Composite Score",
-    "resultDatatypeTypeDescriptor": "uri://ed-�i.org/ResultDatatypeTypeDescriptor#Integer",
-    "minimumScore": "0",
-    "maximumScore": "1000"
-  },
-  {
-    "assessmentReportingMethodDescriptor":
-    "uri://clearpath.example.com/assessment/clearpath-reading/AssessmentReportingMethodDescriptor#SEM",
-    "resultDatatypeTypeDescriptor": "uri://ed-�i.org/ResultDatatypeTypeDescriptor#Integer"
-  }
+    {
+      "assessmentReportingMethodDescriptor": "uri://clearpath.example.com/assessment/clearpath-reading/AssessmentReportingMethodDescriptor#Composite Score",
+      "resultDatatypeTypeDescriptor": "uri://ed-fi.org/ResultDatatypeTypeDescriptor#Integer",
+      "minimumScore": "0",
+      "maximumScore": "1000"
+    },
+    {
+      "assessmentReportingMethodDescriptor": "uri://clearpath.example.com/assessment/clearpath-reading/AssessmentReportingMethodDescriptor#SEM",
+      "resultDatatypeTypeDescriptor": "uri://ed-fi.org/ResultDatatypeTypeDescriptor#Integer"
+    }
   ],
     "performanceLevels": [
     {
-      "assessmentReportingMethodDescriptor":
-      "uri://clearpath.example.com/assessment/clearpath-
-      reading/AssessmentReportingMethodDescriptor#Benchmark Level",
-      "performanceLevelDescriptor":
-      "uri://clearpath.example.com/assessment/clearpath-reading/PerformanceLevelDescriptor#Did not yet meet
-      expectations",
-      "resultDatatypeTypeDescriptor": "uri://ed-�i.org/ResultDatatypeTypeDescriptor#Level"
+      "assessmentReportingMethodDescriptor": "uri://clearpath.example.com/assessment/clearpath-reading/AssessmentReportingMethodDescriptor#Benchmark Level",
+      "performanceLevelDescriptor": "uri://clearpath.example.com/assessment/clearpath-reading/PerformanceLevelDescriptor#Did not yet meet expectations",
+      "resultDatatypeTypeDescriptor": "uri://ed-fi.org/ResultDatatypeTypeDescriptor#Level"
     },
     {
-      "assessmentReportingMethodDescriptor":
-      "uri://clearpath.example.com/assessment/clearpath-
-      reading/AssessmentReportingMethodDescriptor#Benchmark Level",
-      "performanceLevelDescriptor":
-      "uri://clearpath.example.com/assessment/clearpath-reading/PerformanceLevelDescriptor#Approaching
-      expectations",
-      "resultDatatypeTypeDescriptor": "uri://ed-�i.org/ResultDatatypeTypeDescriptor#Level"
+      "assessmentReportingMethodDescriptor": "uri://clearpath.example.com/assessment/clearpath-reading/AssessmentReportingMethodDescriptor#Benchmark Level",
+      "performanceLevelDescriptor": "uri://clearpath.example.com/assessment/clearpath-reading/PerformanceLevelDescriptor#Approaching expectations",
+      "resultDatatypeTypeDescriptor": "uri://ed-fi.org/ResultDatatypeTypeDescriptor#Level"
     },
     {
-      "assessmentReportingMethodDescriptor":
-      "uri://clearpath.example.com/assessment/clearpath-
-      reading/AssessmentReportingMethodDescriptor#Benchmark Level",
-      "performanceLevelDescriptor":
-      "uri://clearpath.example.com/assessment/clearpath-reading/PerformanceLevelDescriptor#Met expectations",
-      "resultDatatypeTypeDescriptor": "uri://ed-�i.org/ResultDatatypeTypeDescriptor#Level"
-    },
+      "assessmentReportingMethodDescriptor": "uri://clearpath.example.com/assessment/clearpath-reading/AssessmentReportingMethodDescriptor#Benchmark Level",
+      "performanceLevelDescriptor": "uri://clearpath.example.com/assessment/clearpath-reading/PerformanceLevelDescriptor#Met expectations",
+      "resultDatatypeTypeDescriptor": "uri://ed-fi.org/ResultDatatypeTypeDescriptor#Level"
     {
-      "assessmentReportingMethodDescriptor":
-        "uri://clearpath.example.com/assessment/clearpath-reading/AssessmentReportingMethodDescriptor#Benchmark Level",
-      "performanceLevelDescriptor":
-        "uri://clearpath.example.com/assessment/clearpath-reading/PerformanceLevelDescriptor#Exceededexpectations",
-      "resultDatatypeTypeDescriptor": "uri://ed-�i.org/ResultDatatypeTypeDescriptor#Level"
-    }
+      "assessmentReportingMethodDescriptor": "uri://clearpath.example.com/assessment/clearpath-reading/AssessmentReportingMethodDescriptor#Benchmark Level",
+      "performanceLevelDescriptor": "uri://clearpath.example.com/assessment/clearpath-reading/PerformanceLevelDescriptor#Exceeded expectations",
+      "resultDatatypeTypeDescriptor": "uri://ed-fi.org/ResultDatatypeTypeDescriptor#Level"
   ]
 }
 ```
