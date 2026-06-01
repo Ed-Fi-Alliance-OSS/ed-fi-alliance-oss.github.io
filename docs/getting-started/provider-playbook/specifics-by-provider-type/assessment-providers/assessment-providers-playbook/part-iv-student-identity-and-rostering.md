@@ -22,7 +22,7 @@ A native Ed-Fi assessment integration must ensure that:
 
 ### 8.1 Why Identity Is the Foundation
 
-All assessment results depend on a single requirement: each record must resolve to a valid _StudentUniqueId_ in the Ed-Fi ODS.
+All assessment results depend on a single requirement: each record must resolve to a valid _StudentUniqueId_ in the Ed-Fi API.
 
 This is not simply an API constraint. It is the mechanism that enables:
 

@@ -6,21 +6,23 @@ sidebar_position: 2
 
 ## 2. The Ed-Fi Ecosystem
 
-### 2.1 What the ODS is and How the API Works
+### 2.1 How the Ed-Fi API Works
 
-Ed-Fi provides a standardized way for education systems and technology providers to exchange data across domains, including assessment, enrollment, attendance, grades, and demographics. This is accomplished through two core components: the Operational Data Store (ODS) and the RESTful API.
+The Ed-Fi Alliance provides a standardized way for education systems and technology providers to exchange data across domains, including assessment, enrollment, attendance, grades, and demographics. This is accomplished through the Ed-Fi API applications: the legacy [Ed-Fi ODS/API v7.3](/reference/ods-api) or, beginning in mid 2026, the [Ed-Fi API v8](/reference/roadmap/api-faq).
 
-The _**Operational Data Store (ODS)**_ is where data is stored. It is a structured database that organizes information according to the Ed-Fi data model, enabling data from different sources to be represented consistently. Assessment data does not exist in isolation within the ODS. It is connected to other domains such as students, schools, courses, and programs, enabling a more complete and integrated view of student outcomes.
-
-The _**API**_ is how data enters and exits the system. It provides a standardized interface that allows external systems, including assessment platforms, to submit and retrieve data using common patterns. Rather than exchanging custom files or managing one-off data extracts, vendors interact with a consistent set of endpoints that represent Ed-Fi resources such as Assessment, StudentAssessment, and its associated structures.
-
-These two components work together as a single system. The API serves as the access layer, handling validation, authorization, and data exchange, while the ODS serves as the storage layer, maintaining the structured data that supports downstream reporting and analytics. Vendors do not interact directly with the database. All data exchange occurs through the API.
+The _**API**_ is how data enters and exits the system. It provides a standardized interface based on the [Unifying Data Model](/reference/data-exchange/udm/) that allows external systems, including assessment platforms, to submit and retrieve data using common patterns. Rather than exchanging custom files or managing one-off data extracts, vendors interact with a consistent set of endpoints that represent Ed-Fi Data Standard resources such as Assessment, StudentAssessment, and its associated structures. The API serves as the access layer, handling validation, authorization, and data exchange.
 
 Access to the API is controlled by implementation-specific credentials issued for each environment. These credentials determine what data can be submitted and accessed. Permissions are managed through predefined access configurations, often called claimsets, that define the scope of allowed interactions with the API.
 
 In practice, this means that an assessment vendor integrates into a defined environment by authenticating with the API and submitting data in alignment with the Ed-Fi data model. The system receiving the data may represent a district, a state, or another education agency implementation, but the interaction model remains consistent.
 
-The key concept is straightforward: the API is how data is exchanged, and the ODS is where that data is stored and connected to the broader ecosystem. Understanding this relationship is essential before deciding how assessment data should be modeled, transmitted, and validated within an Ed-Fi integration.
+:::tip
+
+Historically, the backend database for the API has been called the _**Operational Data Store (ODS)**_, which serves as the storage layer for all data submitted through the API. The ODS maintains the structured data that supports downstream reporting, analytics, and interoperability across systems.
+
+The Ed-Fi Alliance is phasing out the use of the terms "Operational Data Store" and "ODS" in favor of simply referring to the API as the primary interface for data exchange.
+
+:::
 
 ### 2.2 The Assessment Domain: Core Entities
 

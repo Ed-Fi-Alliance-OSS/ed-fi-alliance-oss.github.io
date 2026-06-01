@@ -42,7 +42,7 @@ _**What it looks like in practice:**_
 
 - It enforces alignment to the Ed-Fi system of record for both identity and results, eliminating the need for downstream reconciliation.
 
-- It aligns with the Ed-Fi architectural intent that integrations interact with the ODS through the API layer, not through database writes.
+- It aligns with the Ed-Fi architectural intent that integrations interact with the Ed-Fi API layer, not through database writes.
 
 - It creates a clean operational boundary: the vendor produces standards-aligned resources, and the Ed-Fi implementation is responsible for storage and access.
 
@@ -185,7 +185,7 @@ This requires the ability to map descriptor values to match:
 
 - The namespace used by the implementation
 
-- The code values used in the Ed-Fi ODS
+- The code values used in the Ed-Fi API
 
 This alignment is essential because these descriptors are used across domains. Misalignment prevents accurate joins between assessment results and enrollment, course, and student data.
 
@@ -470,7 +470,7 @@ Direct database interaction:
 
 - Breaks validation and consistency rules
 
-- Creates incompatibility across ODS versions
+- Creates incompatibility across API versions
 
 - Removes the ability for districts to govern and troubleshoot using standard tools
 
@@ -548,7 +548,7 @@ A practical enforcement pattern:
 
 - Stage and validate Assessment and ObjectiveAssessment
 
-- Load metadata into the ODS
+- Load metadata into the Ed-Fi API
 
 - Then construct and submit StudentAssessment payloads
 
@@ -594,7 +594,7 @@ A native integration must be engineered so that it can be executed repeatedly wi
 
 - Overwriting unrelated events
 
-Reprocessing scenarios are not edge cases. They are routine and must be supported:
+Reprocessing scenarios are not edge cases. They are routine and must be supported for situations including:
 
 - Historical backfills
 
@@ -606,7 +606,7 @@ Reprocessing scenarios are not edge cases. They are routine and must be supporte
 
 - Environment rebuilds
 
-- ODS upgrades
+- Data Standard / API upgrades
 
 If an integration cannot safely handle these scenarios, it is not production-ready.
 
@@ -1132,7 +1132,7 @@ Reconciliation is critical during:
 
 - Vendor correction resends
 
-- ODS upgrades
+- Data Standard / API upgrades
 
 Without reconciliation, districts are forced to trust integration outcomes without validation.
 
