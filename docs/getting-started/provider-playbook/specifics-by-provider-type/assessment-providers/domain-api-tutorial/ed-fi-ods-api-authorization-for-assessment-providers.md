@@ -4,7 +4,7 @@
 Note that the information in this section covers assessment authorization and applies ONLY to users of the Ed-Fi ODS/API. Other API implementations may have different authorization features. Please consult the API developer's documentation for those details.
 :::
 
-The Ed-Fi ODS/API uses namespace-based authorization to secure the data entities in the assessment domain. API clients must have first been granted a claim set that covers access to the assessment domain API resources. Also, each API client for the ODS/API is assigned – by the API host – a namespace; this namespace is usually a URI formatted domain name under the providers control, e.g. '[http://mathwhale.org](http://mathwhale.org)'.
+The Ed-Fi ODS/API uses namespace-based authorization to secure the data entities in the assessment domain. API clients must have first been granted a claim set that covers access to the assessment domain API resources. Also, each API client for the ODS/API is assigned – by the API host – a namespace; this namespace is usually a URI formatted domain name under the providers control, e.g. `http://mathwhale.org`.
 
 With these in place, according to this authorization strategy:
 
