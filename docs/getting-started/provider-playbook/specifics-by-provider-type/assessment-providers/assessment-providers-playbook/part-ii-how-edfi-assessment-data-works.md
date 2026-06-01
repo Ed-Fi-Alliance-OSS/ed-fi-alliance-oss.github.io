@@ -135,7 +135,7 @@ This worked example introduces a hypothetical single-subject benchmark assessmen
 
 ClearPath is a hypothetical assessment vendor offering a benchmark screener for grades K–3. The Reading Benchmark yields a composite score plus three subscore areas: Phonological Awareness, Fluency, and Vocabulary. The assessment is administered three times per year (fall, winter, spring). This example covers one student’s fall administration.
 
-|**Attribute**|**Value**|
+|Attribute|Value|
 |---|---|
 |**Assessment name**|ClearPath K–3 Reading Benchmark|
 |**Subject**|English Language Arts (one subject — one Assessment record)|
@@ -145,24 +145,72 @@ ClearPath is a hypothetical assessment vendor offering a benchmark screener for 
 |**Assessment identifier**|ClearPathBenchmark-Reading|
 |**Subscores**|CP-RD-PA (Phonological Awareness), CP-RD-FL (Fluency), CP-RD-VC (Vocabulary)|
 
-#### GOVERNANCE — SECTION 4: ONE SUBJECT PER ASSESSMENT
+:::note GOVERNANCE — SECTION 4: ONE SUBJECT PER ASSESSMENT
 
 This example intentionally covers one subject only. If ClearPath also offers a Math screener, that is a separate Assessment record with its own assessmentIdentifier, its own ObjectiveAssessments, and its own StudentAssessment events. A single Assessment record must never span two academic subjects. The two assessments share a vendor and a namespace but are otherwise independent entities in Ed-Fi. Placing both Reading and Math results under one Assessment identifier collapses the subject boundary, prevents subject-level analytics, and violates the single-subject rule defined in Section 4.
+
+:::
 
 #### Entity hierarchy
 
 The Ed-Fi assessment domain uses two parallel layers. The definition layer describes the assessment structure. The event layer records what a specific student did on a specific date. One Assessment record anchors three ObjectiveAssessments. One StudentAssessment event carries three nested StudentObjectiveAssessment results — one per subscore. The relationships are shown in the table below.
 
-|**Layer**|**Entity**|**Role**|
+```mermaid
+graph TD
+      A["<b>Assessment</b><br/>ClearPathBenchmark-Reading"]
+      A1["POST /assessments"]
+
+      A --> B["<b>CP-RD-PA</b><br/>Phonological awareness"]
+      A --> C["<b>CP-RD-FL</b><br/>Fluency"]
+      A --> D["<b>CP-RD-VC</b><br/>Vocabulary"]
+
+      A1 -.->|endpoint| A
+
+      B --> E["<b>POST /objectiveAssessments</b>"]
+      C --> E
+      D --> E
+
+      C -.->|references| F["<b>StudentAssessment</b><br/>One per student per administration<br/>includes nested
+  studentObjectiveAssessments"]
+
+      F1["POST /studentAssessments"]
+      F1 -.->|endpoint| F
+
+      F --> G["<b>CP-RD-PA result</b><br/>Score + performance level"]
+      F --> H["<b>CP-RD-FL result</b><br/>Score + performance level"]
+      F --> I["<b>CP-RD-VC result</b><br/>Score + performance level"]
+
+      J["nested<br/>not a POST"]
+      G -.-> J
+      H -.-> J
+      I -.-> J
+
+      style A fill:#e6d9f7
+      style F fill:#f0d9f7
+      style B fill:#d0f0e6
+      style C fill:#d0f0e6
+      style D fill:#d0f0e6
+      style G fill:#d0f0e6
+      style H fill:#d0f0e6
+      style I fill:#d0f0e6
+      style A1 fill:#3d4a7f,color:#fff
+      style E fill:#3d4a7f,color:#fff
+      style F1 fill:#a8368a,color:#fff
+      style J fill:#2d7d5f,color:#fff
+```
+
+|Layer|Entity|Role|
 |---|---|---|
 |Definition|**Assessment**|Defines the map: one record for the Reading<br />Benchmark|
 |Definition|**ObjectiveAssessment**|Defines the landmarks: one record per subscore (CP-RD-PA, CP-RD-FL, CP-RD-VC)|
 |Event|**StudentAssessment**|Records the journey: one record per student per<br />administration|
 |Event|**StudentObjectiveAssessment**|Records results at each landmark: a collection<br />nested inside StudentAssessment, not a separate POST|
 
-#### PLAYBOOK REFERENCE — SECTION 2.2: PARALLEL LAYERS
+:::note PLAYBOOK REFERENCE — SECTION 2.2: PARALLEL LAYERS
 
 StudentObjectiveAssessment is not a standalone entity posted via a separate API call. It is a collection nested within the StudentAssessment body. The definition layer (Assessment + ObjectiveAssessments) describes the map. The event layer (StudentAssessment + the nested collection) records the student's journey through that map.
+
+:::
 
 #### Step 1 - [POST] /ed-fi/assessments
 
@@ -224,13 +272,17 @@ The Assessment resource defines the map. One Assessment record is posted for the
 }
 ```
 
-#### GOVERNANCE — SECTION 3: ASSESSMENT IDENTITY
+:::note GOVERNANCE — SECTION 3: ASSESSMENT IDENTITY
 
 Both values must remain identical across every school year and every state deployment. Changing either value breaks longitudinal tracking and creates orphaned student records that can no longer be matched to their assessment definition. The namespace must use a domain owned and controlled by ClearPath, not by any state or district.
 
-#### DESCRIPTOR OWNERSHIP — SECTION 7
+:::
+
+:::note DESCRIPTOR OWNERSHIP — SECTION 7
 
 AssessmentReportingMethodDescriptor and PerformanceLevelDescriptor values carry the vendor namespace prefix (uri://clearpath.example.com/...). These are vendor-owned descriptors and must not be overridden, normalized, or replaced at ingestion. GradeLevelDescriptor, AcademicSubjectDescriptor, and ResultDatatypeTypeDescriptor use the Ed-Fi shared namespace (uri://ed-fi.org/...) because they are cross-domain descriptors governed by the Ed-Fi Alliance.
+
+:::
 
 #### Step 2 — POST /ed-fi/objectiveAssessments (three records)
 
@@ -362,9 +414,11 @@ performance level vocabulary.
 }
 ```
 
-#### GOVERNANCE — SECTION 5: HIERARCHY MUST MIRROR THE SCORE REPORT
+:::note GOVERNANCE — SECTION 5: HIERARCHY MUST MIRROR THE SCORE REPORT
 
 The ObjectiveAssessment hierarchy must exactly mirror the structure of ClearPath's score report. Three subscores reported by the vendor means exactly three ObjectiveAssessment records — not fewer (which would collapse the hierarchy), not more (which would invent structure that does not exist on the score report). The identificationCode value is the stable key for each subtest and must not change between school years.
+
+:::
 
 #### Step 3 — POST /ed-fi/studentAssessments
 
@@ -414,17 +468,23 @@ The StudentAssessment records the event — one record per student per administr
 }
 ```
 
-#### GOVERNANCE — SECTION 6: EVENT IDENTITY AND LONGITUDINAL INTEGRITY
+:::note GOVERNANCE — SECTION 6: EVENT IDENTITY AND LONGITUDINAL INTEGRITY
 
 The natural key for this record is the combination of studentUniqueId + assessmentIdentifier + namespace + administrationDate + schoolYear. Every field must be deterministic and stable across all ingestion runs. If administrationDate changes between runs for the same test event — for example, a processing timestamp is substituted — the system will create a duplicate record instead of updating the original, resulting in doubled student data and broken longitudinal analysis.
 
-#### STUDENT IDENTITY — SECTION 8
+:::
+
+:::note STUDENT IDENTITY — SECTION 8
 
 The studentUniqueId value 1000 is the Ed-Fi state identifier for this student, resolved from ClearPath's internal vendor identifier fake_student_1 via the identity crosswalk at integration time. The vendor's internal identifier must never be placed in studentUniqueId. Correct identity resolution at this step determines whether every downstream assessment record links accurately to the right student enrollment, demographic, and program data.
 
-#### COMMON ERROR — SECTION 5.4: SCORES VS. PERFORMANCE LEVELS
+:::
+
+:::warning COMMON ERROR — SECTION 5.4: SCORES VS. PERFORMANCE LEVELS
 
 Scores and performance levels are separate arrays serving distinct analytical purposes. scoreResults carries numeric values (Composite Score = 100, SEM = 10). performanceLevels carries categorical classification (Did not yet meet expectations). Never place a performance level label inside scoreResults, and never place a numeric score value inside performanceLevels. Both errors produce data that is analytically unusable and will fail validation.
+
+:::
 
 #### Step 4 — studentObjectiveAssessments collection (nested in StudentAssessment)
 
@@ -432,9 +492,8 @@ The studentObjectiveAssessments array is nested inside the StudentAssessment bod
 
 #### Nested array — studentObjectiveAssessments inside StudentAssessment body (not a separate POST)
 
-// studentObjectiveAssessments array -- nested inside StudentAssessment body
-
 ```json
+// studentObjectiveAssessments array -- nested inside StudentAssessment body
 [
   {
     "objectiveAssessmentReference": {
@@ -502,13 +561,17 @@ The studentObjectiveAssessments array is nested inside the StudentAssessment bod
 ]
 ```
 
-#### GOVERNANCE — SECTION 5.2: CORRECT GRAIN ENFORCEMENT
+:::note GOVERNANCE — SECTION 5.2: CORRECT GRAIN ENFORCEMENT
 
 Overall composite results belong on StudentAssessment.scoreResults and StudentAssessment.performanceLevels. Subtest results belong in the studentObjectiveAssessments collection, each nested under its corresponding objectiveAssessmentReference. Placing a composite score inside a studentObjectiveAssessment element — or placing a subtest score directly on StudentAssessment — violates grain enforcement. Both errors produce analytically unusable data and will fail certification validation.
 
-#### API SEQUENCING — SECTION 11
+:::
+
+:::note API SEQUENCING — SECTION 11
 
 Resources must be POSTed in dependency order: Assessment first, then ObjectiveAssessments (which reference the Assessment), then StudentAssessments (which reference both). Posting a StudentAssessment before its parent Assessment exists will fail with a referential integrity error. This dependency order must be deterministic and repeatable across every ingestion run.
+
+:::
 
 #### Descriptor reference — ClearPath Reading Benchmark
 
@@ -536,9 +599,11 @@ Every descriptor used in this example is listed below with its namespace, type, 
 
 ResultDatatypeTypeDescriptor#Level is an Ed-Fi shared ResultDatatypeType.
 
-#### GOVERNANCE — SECTION 7: DESCRIPTOR AND NAMESPACE GOVERNANCE
+:::note GOVERNANCE — SECTION 7: DESCRIPTOR AND NAMESPACE GOVERNANCE
 
 Vendor-owned descriptors must use the vendor's registered namespace prefix. They must not be normalized, translated, or replaced with Ed-Fi default namespace values at ingestion. A state or district implementer is not permitted to change PerformanceLevelDescriptor#Did not yet meet expectations to a locally preferred label during load. Doing so destroys the semantic integrity that enables cross-vendor and cross-state comparability. Shared cross-domain descriptors (GradeLevel, AcademicSubject, ResultDatatypeType) use the Ed-Fi default namespace and may be configured through governed mapping layers.
+
+:::
 
 #### API call sequence summary
 
@@ -550,6 +615,8 @@ All resources must be POSTed in the dependency order shown below. Steps 1 and 2 
 |**2**|POST /ed-fi/objectiveAssessments|3 (one per subscore)|Assessment (Step 1) must exist|
 |**3**|POST /ed-fi/studentAssessments|1 per student per window|Assessment + ObjectiveAssessments (Steps 1 and 2) must exist|
 
-#### REPROCESSING — SECTION 11.3
+:::note REPROCESSING — SECTION 11.3
 
 All three resource types are safe to reprocess. A repeated POST with the same natural key will upsert rather than duplicate, provided all identity fields remain identical across runs. Never substitute a processing timestamp for administrationDate — doing so breaks idempotent reprocessing and will generate duplicate student records that cannot be deduplicated without manual intervention.
+
+:::
