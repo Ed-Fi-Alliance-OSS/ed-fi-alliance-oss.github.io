@@ -224,5 +224,3 @@ These principles establish the expectations for how assessment data must be repr
 A native Ed-Fi assessment integration is one that publishes a complete, hierarchically accurate, subject-safe, and governance-aligned representation of an assessment that enables stakeholders to analyze student performance reliably, measure growth over time, and compare outcomes across systems without requiring custom downstream reconstruction, score parsing, or vendor-specific transformation logic.
 
 An integration that merely loads data is not sufficient. An integration must interoperate.
-
-_Continue to [Part II - How Ed-Fi Assessment Data Works](./part-ii-how-edfi-assessment-data-works.md)..._
