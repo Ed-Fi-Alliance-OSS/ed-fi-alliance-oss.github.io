@@ -159,13 +159,20 @@ You can deploy the Node.js backend directly to IIS using only iisnode. This appr
 
 2. **Build the application**:
 
-   ```powershell
-   # Clone and build (same as before)
-   git clone --branch v4.0.1 --depth 1 https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-AdminApp.git
-   cd Ed-Fi-AdminApp
-   npm ci
-   npm run build:api
-   ```
+  :::note
+  Always install from a **stable release tag**, not the default `main` branch (which reflects active development).
+  Visit the [Releases page](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-AdminApp/releases) to find the latest stable release tag, then use it in the command below.
+  :::
+
+  ```powershell
+    # Replace the TAG value with the latest release from the Releases page
+    $TAG = "v4.0.1"
+  
+    git clone --branch $TAG --depth 1 https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-AdminApp.git
+    cd Ed-Fi-AdminApp
+    npm ci
+    npm run build:api
+  ```
 
 3. **Create a folder for the website**:
 
