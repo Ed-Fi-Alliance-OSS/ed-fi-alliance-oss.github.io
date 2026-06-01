@@ -542,8 +542,8 @@ Vendor-owned descriptors must use the vendor's registered namespace prefix. They
 
 All resources must be POSTed in the dependency order shown below. Steps 1 and 2 are one-time setup for the assessment definition and are re-posted only when the assessment version changes. Step 3 is executed once per student per administration window.
 
+|#|Resource|Records|Dependency|
 |---|---|---|---|
-|**#**|**Resource**|**Records**|**Dependency**|
 |**1**|POST /ed-fi/assessments|1|None|
 |**2**|POST /ed-fi/objectiveAssessments|3 (one per subscore)|Assessment (Step 1) must exist|
 |**3**|POST /ed-fi/studentAssessments|1 per student per window|Assessment + ObjectiveAssessments (Steps 1 and 2) must exist|
