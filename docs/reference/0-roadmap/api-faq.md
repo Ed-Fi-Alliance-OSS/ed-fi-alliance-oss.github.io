@@ -109,7 +109,7 @@ authorization and for access to raw data for warehousing and reporting. The
 SEA-oriented release 8.1 should be available for production use in the 2027-2028
 school year.
 
-The 8.0 release will not have complete parity with the optional features in the
+The 8.0 release will not have complete parity with the _optional_ features in the
 ODS/API Platform (see note below). The Ed-Fi API Technical Workgroup
 and/or Technical Advisory Group (TAG) will help guide prioritization of
 features.
@@ -134,6 +134,72 @@ for more information.
 :::
 
 ## Technical Integrations
+
+### Q: What will the system architecture look like?
+
+The following diagram shows the core system architecture for Ed-Fi API v8.
+
+```mermaid
+graph LR
+
+    subgraph Vendor["Vendor Application"]
+        vendor["SIS<br/>Assessment</br>etc."]
+    end
+
+    subgraph Application["<b>Application Layer</b>"]
+        edfi["🏫<br/>Ed-Fi API"]
+        config["⚙️<br/>Configuration<br />Service"]
+        admin["Ed-Fi Admin App"]
+
+        edfi -->|read|config
+
+        admin -->|read/write|config
+    end
+
+    subgraph Data["<b>Data Layer</b>"]
+        dmsDb[(edfi_datamanagementservice)]
+        configDb[(edfi_configurationservice)]
+    end
+
+    vendor --> edfi
+
+    edfi -->|read/write| dmsDb
+    config -->|read/write| configDb
+
+    style Vendor fill:#c6d9f0
+    style Data fill:#c6e6c6
+    style Application fill:#fffacd
+```
+
+The next diagram shows the optional streaming components. Note: the streaming
+architecture, although it was an original design goal for the system, has taken
+a lower priority for the initial release, and is not expected to be fully tested
+and supported until the 8.1 release.
+
+```mermaid
+graph LR
+
+    subgraph Application["<b>Application Layer</b>"]
+        edfi["🏫<br/>Ed-Fi API"]
+    end
+
+    subgraph Data["<b>Data Layer</b>"]
+        dmsDb[(edfi_datamanagementservice)]
+    end
+
+    subgraph Stream["<b>Streaming Layer</b>"]
+        cdc[Change Data Capture]
+        kafka[(Kafka)]
+    end
+
+    edfi -->|read/write|dmsDb
+
+    cdc -->|read log|dmsDb
+    cdc -->|write|kafka
+
+    style Data fill:#c6e6c6
+    style Stream fill:#fffacd
+```
 
 ### Q: Will integrations built for the ODS/API continue to work with the new system?
 
@@ -164,7 +230,7 @@ redirection rules in an API Gateway application sitting in front of Ed-Fi API v8
 ### Q: Will integrations built for the Admin API continue to work with the new system?
 
 Yes &mdash; if referring to the Management API
-[specification](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-API-Standards/blob/main/api-specifications/admin-api/admin-api-2.2.0.yaml).
+[specification](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-API-Standards/blob/main/api-specifications/admin-api/admin-api-2.2.0.yaml)[^1].
 No &mdash; if referring to the specific software application called "Admin API".
 Ed-Fi API v8 will have a different database system than the
 ODS/API, including restructuring of the data currently housed in the
@@ -174,6 +240,8 @@ Management API specification. The plan is to implement the
 Management API specification (version 3), so that applications and scripts
 developed on this specification can interact seamlessly either with the platform
 of today or of tomorrow.
+
+[^1]: Caveat: the claimset data structure is sufficiently different that the Management API specification will need to fork to version 3. The development teams responsible for the Ed-Fi API v8 and legacy Ed-Fi ODS Admin API v2 are working together to define the updated specification and provide a clear migration path for client applications.
 
 ## Process
 
@@ -199,7 +267,7 @@ whenever possible, use the REST API to load or extract data. Doing so both
 prepares you for Ed-Fi API v8 and helps you ensure data integrity and security.
 
 You can work with your Ed-Fi liaison to build a plan for transitioning ahead of
-the 2028-2029 school year.
+the 2029-2030 school year.
 
 ### Q: How can I / my team get involved?
 
