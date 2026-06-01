@@ -109,7 +109,7 @@ authorization and for access to raw data for warehousing and reporting. The
 SEA-oriented release 8.1 should be available for production use in the 2027-2028
 school year.
 
-The 8.0 release will not have complete parity with the optional features in the
+The 8.0 release will not have complete parity with the _optional_ features in the
 ODS/API Platform (see note below). The Ed-Fi API Technical Workgroup
 and/or Technical Advisory Group (TAG) will help guide prioritization of
 features.
@@ -134,6 +134,72 @@ for more information.
 :::
 
 ## Technical Integrations
+
+### Q: What will the system architecture look like?
+
+The following diagram shows the core system architecture for Ed-Fi API v8.
+
+```mermaid
+graph LR
+
+    subgraph Vendor["Vendor Application"]
+        vendor["SIS<br/>Assessment</br>etc."]
+    end
+
+    subgraph Application["<b>Application Layer</b>"]
+        edfi["🏫<br/>Ed-Fi API"]
+        config["⚙️<br/>Configuration<br />Service"]
+        admin["Ed-Fi Admin App"]
+
+        edfi -->|read|config
+
+        admin -->|read/write|config
+    end
+
+    subgraph Data["<b>Data Layer</b>"]
+        dmsDb[(edfi_datamanagementservice)]
+        configDb[(edfi_configurationservice)]
+    end
+
+    vendor --> edfi
+
+    edfi -->|read/write| dmsDb
+    config -->|read/write| configDb
+
+    style Vendor fill:#c6d9f0
+    style Data fill:#c6e6c6
+    style Application fill:#fffacd
+```
+
+The next diagram shows the optional streaming components. Note: the streaming
+architecture, although it was an original design goal for the system, has taken
+a lower priority for the initial release, and is not expected to be fully tested
+and supported until the 8.1 release.
+
+```mermaid
+graph LR
+
+    subgraph Application["<b>Application Layer</b>"]
+        edfi["🏫<br/>Ed-Fi API"]
+    end
+
+    subgraph Data["<b>Data Layer</b>"]
+        dmsDb[(edfi_datamanagementservice)]
+    end
+
+    subgraph Stream["<b>Streaming Layer</b>"]
+        cdc[Change Data Capture]
+        kafka[(Kafka)]
+    end
+
+    edfi -->|read/write|dmsDb
+
+    cdc -->|read log|dmsDb
+    cdc -->|write|kafka
+
+    style Data fill:#c6e6c6
+    style Stream fill:#fffacd
+```
 
 ### Q: Will integrations built for the ODS/API continue to work with the new system?
 
