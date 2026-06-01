@@ -230,7 +230,7 @@ redirection rules in an API Gateway application sitting in front of Ed-Fi API v8
 ### Q: Will integrations built for the Admin API continue to work with the new system?
 
 Yes &mdash; if referring to the Management API
-[specification](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-API-Standards/blob/main/api-specifications/admin-api/admin-api-2.2.0.yaml).
+[specification](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-API-Standards/blob/main/api-specifications/admin-api/admin-api-2.2.0.yaml)[^1].
 No &mdash; if referring to the specific software application called "Admin API".
 Ed-Fi API v8 will have a different database system than the
 ODS/API, including restructuring of the data currently housed in the
@@ -240,6 +240,8 @@ Management API specification. The plan is to implement the
 Management API specification (version 3), so that applications and scripts
 developed on this specification can interact seamlessly either with the platform
 of today or of tomorrow.
+
+[^1]: Caveat: the claimset data structure is sufficiently different that the Management API specification will need to fork to version 3. The development teams responsible for the Ed-Fi API v8 and legacy Ed-Fi ODS Admin API v2 are working together to define the updated specification and provide a clear migration path for client applications.
 
 ## Process
 
@@ -265,7 +267,7 @@ whenever possible, use the REST API to load or extract data. Doing so both
 prepares you for Ed-Fi API v8 and helps you ensure data integrity and security.
 
 You can work with your Ed-Fi liaison to build a plan for transitioning ahead of
-the 2028-2029 school year.
+the 2029-2030 school year.
 
 ### Q: How can I / my team get involved?
 
