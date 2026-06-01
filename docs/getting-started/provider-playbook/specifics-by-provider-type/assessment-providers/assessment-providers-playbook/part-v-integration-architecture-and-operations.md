@@ -78,7 +78,13 @@ _**What it looks like in practice:**_
 
 ### 9.2 Pattern B: Bundle-Based (Earthmover + Lightbeam)
 
-In this pattern, transformation, validation, and loading are explicitly separated into distinct stages prior to API submission, using a repeatable “bundle” workflow. Earthmover is used to transform and shape data, and Lightbeam is used to validate and load data into the Ed-Fi ODS/API reliably. The key concept is that these stages are independently managed, observable, and reusable across implementations.
+In this pattern, transformation, validation, and loading are explicitly separated into distinct stages prior to API submission, using a repeatable “bundle” workflow. [Earthmover](https://github.com/edanalytics/earthmover) is used to transform and shape data, and [Lightbeam](https://github.com/edanalytics/lightbeam) is used to validate and load data into the Ed-Fi ODS/API reliably. The key concept is that these stages are independently managed, observable, and reusable across implementations.
+
+:::tip
+
+Earthmover and Lightbeam are open source utilities developed by Education Analytics. Although the Ed-Fi Alliance does not directly maintain these tools, they are endorsed as a strong replacement for the now-deprecated [Ed-Fi Data Import](/reference/data-import) utility.
+
+:::
 
 #### What it looks like in practice
 
