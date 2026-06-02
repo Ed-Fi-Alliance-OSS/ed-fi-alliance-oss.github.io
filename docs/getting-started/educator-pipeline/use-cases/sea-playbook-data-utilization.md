@@ -1,4 +1,6 @@
 ---
+sidebar_position: 5
+sidebar_label: SEA Playbook
 ---
 
 # SEA Playbook: Advancing Data Utilization to Support Educator Preparation and Teacher Workforce
