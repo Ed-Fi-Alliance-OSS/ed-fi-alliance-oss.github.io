@@ -299,7 +299,7 @@ Surveys in the Clinical Experience and Performance Dashboard allow Educator Prep
 
 ![Survey workbook](https://edfidocs.blob.core.windows.net/$web/img/reference/epp-sk/survey-workbook.webp)
 
-Survey acts as a vessel to tie a set of questions together. With the natural [Key Structure in the Ed-Fi ODS / API](/reference/ods-api/technical-articles/key-structure-in-the-ed-fi-ods-api) the questions that belong to a survey reference the survey rather than the survey having a list of questions. Because of this, the survey model is fairly simple.
+Survey acts as a vessel to tie a set of questions together. With the natural [Key Structure in the Ed-Fi ODS / API](/reference/ed-fi-api/technical-articles/key-structure-in-the-ed-fi-ods-api) the questions that belong to a survey reference the survey rather than the survey having a list of questions. Because of this, the survey model is fairly simple.
 
 The required fields for Survey are:
 

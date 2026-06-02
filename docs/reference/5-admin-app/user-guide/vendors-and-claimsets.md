@@ -54,7 +54,7 @@ Before creating applications and managing claimsets, it's important to understan
 
 **Claimset:** A collection of permissions (claims) that define what actions an application can perform on specific Ed-Fi Resources. Claimsets provide fine-grained control over data access.
 
-For more detailed information about Ed-Fi security concepts, [**see the documentation here describing the different security concepts in Ed-Fi.**](/reference/ods-api/platform-dev-guide/configuration/single-and-multi-tenant-configuration)
+For more detailed information about Ed-Fi security concepts, [**see the documentation here describing the different security concepts in Ed-Fi.**](/reference/ed-fi-api/platform-dev-guide/configuration/single-and-multi-tenant-configuration)
 
 ## Claimset Management
 
@@ -165,7 +165,7 @@ In both cases, store the credentials securely and treat them as you would a pass
 - **Credential Rotation**: Regularly rotate client secrets for enhanced security. Because the Ed-Fi Admin App only supports a 1-1 mapping of _applications_ and _credentials_, key rotation can be achieved by either:
   - Resetting the credentials for a given application, with immediate effect, or
   - Create a second application, which creates a second set of credentials. Plan to deactivate the first set of credentials after giving the end user enough time to apply the new credentials in their system.
-- **Access Monitoring**: Monitoring application usage and access patterns can help detect any malicious usage of the credentials. The ODS/API does not have support for this monitoring, see [How To: Client Access Token Monitoring](/reference/ods-api/how-to-guides/token-access-monitoring) for one easy approach.
+- **Access Monitoring**: Monitoring application usage and access patterns can help detect any malicious usage of the credentials. The ODS/API does not have support for this monitoring, see [How To: Client Access Token Monitoring](/reference/ed-fi-api/how-to-guides/token-access-monitoring) for one easy approach.
 - **Deactivation**: At this time, the only way to disable an application without deleting it is to reset the credentials and do not share the new `client_secret` until ready to do so.
 - **Deletion**: Permanently remove applications that are no longer needed.
 

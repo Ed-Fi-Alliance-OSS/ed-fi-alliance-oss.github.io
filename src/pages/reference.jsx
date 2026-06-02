@@ -49,7 +49,7 @@ function Main() {
               managing educational data through a REST-inspired HTTP interface.
               It enables seamless data exchange and supports various educational
               applications.{' '}
-              <Link to="/reference/ods-api">Explore the Ed-Fi ODS/API</Link>
+              <Link to="/reference/ed-fi-api">Explore the Ed-Fi ODS/API</Link>
             </p>
             <h2>Ed-Fi OneRoster Service</h2>
             <p>

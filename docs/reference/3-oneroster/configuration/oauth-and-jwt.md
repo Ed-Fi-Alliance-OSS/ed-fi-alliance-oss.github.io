@@ -174,7 +174,7 @@ connection strings it reads from `EdFi_Admin.OdsInstances`.
 For the ODS / API-side configuration (enabling the feature, creating
 OneRoster claim-set entries, issuing keys and secrets to vendor
 apps), see the [Features
-reference](/reference/ods-api/platform-dev-guide/features/) in the
+reference](/reference/ed-fi-api/platform-dev-guide/features/) in the
 ODS / API v7.3 platform developer guide.
 
 ## Quick verification

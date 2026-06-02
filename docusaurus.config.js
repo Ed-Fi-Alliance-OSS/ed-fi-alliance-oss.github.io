@@ -101,7 +101,7 @@ const config = {
         // path: 'docs/reference/2-ods-api',
         editUrl: ({ docPath,versionDocsDirPath }) =>
           `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/${versionDocsDirPath}/${docPath}/`,
-        routeBasePath: 'reference/ods-api',
+        routeBasePath: 'reference/ed-fi-api',
         sidebarPath: './sidebars.js',
         includeCurrentVersion: false,
         lastVersion: '7.3',
@@ -126,6 +126,7 @@ const config = {
           },
           7.2: { banner: 'unmaintained', badge: true, path: '7.2' },
           7.3: { banner: 'none', badge: true },
+          '8.0': { banner: 'unreleased', badge: true, path: '8.0' },
         },
       },
     ],
@@ -159,6 +160,17 @@ const config = {
             path: '3',
             className: 'unmaintained',
           },
+        },
+      },
+    ],
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        createRedirects(existingPath) {
+          if (existingPath.includes('/reference/ed-fi-api')) {
+            return [existingPath.replace('/reference/ed-fi-api', '/reference/ods-api')];
+          }
+          return undefined;
         },
       },
     ],

@@ -227,7 +227,7 @@ UNION
 SELECT odsinstanceid, 'schoolYearFromRoute', '2027' FROM dbo.odsinstances WHERE "name" = 'EdFi_Ods_2027';
 ```
 
-See [Context-Based Routing for Year-Specific ODS](/reference/ods-api/platform-dev-guide/configuration/context-based-routing-for-year-specific-ods) for more information on this multi-instance feature.
+See [Context-Based Routing for Year-Specific ODS](/reference/ed-fi-api/platform-dev-guide/configuration/context-based-routing-for-year-specific-ods) for more information on this multi-instance feature.
 
 :::note
 

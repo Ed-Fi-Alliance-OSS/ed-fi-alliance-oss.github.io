@@ -111,7 +111,7 @@ flowchart LR
 
 ### The Authorization Gap
 
-The Ed-Fi API's authorization framework operates through [claim sets and resource-based authorization](/reference/ods-api/platform-dev-guide/security/api-claim-sets-resources). An API client is granted a claim set that defines which resources it can read, create, update, or delete. These claims are further constrained by authorization strategies — relationship-based, namespace-based, or ownership-based — that determine which specific records within a resource the client can access.
+The Ed-Fi API's authorization framework operates through [claim sets and resource-based authorization](/reference/ed-fi-api/platform-dev-guide/security/api-claim-sets-resources). An API client is granted a claim set that defines which resources it can read, create, update, or delete. These claims are further constrained by authorization strategies — relationship-based, namespace-based, or ownership-based — that determine which specific records within a resource the client can access.
 
 This model works well for its intended purpose. A district's student information system might have broad write access, while an assessment vendor might have narrower access limited to assessment-related resources. The relationship-based authorization strategy ensures that a system associated with School A cannot access records belonging to School B.
 

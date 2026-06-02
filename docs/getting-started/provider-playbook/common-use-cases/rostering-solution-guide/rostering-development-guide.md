@@ -59,9 +59,9 @@ sample data in the Ed-Fi JSON format.
 Change Queries is a feature of the Ed-Fi API. When the Change Queries feature is
 enabled on the host Ed-Fi API, clients are able to query for changes between
 specific "version" of the data. The [Using the Changed Record
-Queries](/reference/ods-api/client-developers-guide/using-the-changed-record-queries) page
+Queries](/reference/ed-fi-api/client-developers-guide/using-the-changed-record-queries) page
 of the [API Client Developers'
-Guide](/reference/ods-api/client-developers-guide/) walks through using the
+Guide](/reference/ed-fi-api/client-developers-guide/) walks through using the
 functionality to pull the data that has changed since the last pull.
 
 The Change Queries functionality is not available on the Ed-Fi Enrollment API,
@@ -116,7 +116,7 @@ available to generate API SDKs from an OpenAPI specification file. A thorough
 list of SDK generators is available in the [SDK
 Generators](https://openapi.tools/#sdk) section of the
 OpenAPI [Tools](https://openapi.tools/) page. You canrefer to the [Ed-Fi ODS / API SDK
-Guide](/reference/ods-api/client-developers-guide/using-code-generation-to-create-an-sdk) to
+Guide](/reference/ed-fi-api/client-developers-guide/using-code-generation-to-create-an-sdk) to
 walk through generating a client SDK. Once you have the foundational SDK
 generated, the data mapping information compiled in the previous step can be
 used to transform the data retrieved from the Ed-Fi API into the format needed
@@ -125,13 +125,13 @@ by the target platform.
 ### API Client Best Practices
 
 Take the time to read through all the pages available in the [Ed-Fi API Client
-Developers' Guide](/reference/ods-api/client-developers-guide/). It contains
+Developers' Guide](/reference/ed-fi-api/client-developers-guide/). It contains
 information that is helpful to round out the backend of the API client code that
 is being developed. The guide includes information from the initial OAuth2
 client credentials flow
-[authentication](/reference/ods-api/client-developers-guide/authentication) to
+[authentication](/reference/ed-fi-api/client-developers-guide/authentication) to
 obtain a bearer token to [Error Handling and Best
-Practices](/reference/ods-api/client-developers-guide/error-handling-best-practices).
+Practices](/reference/ed-fi-api/client-developers-guide/error-handling-best-practices).
 These best practices are drawn from experience gathered from implementation in
 the Ed-Fi community.
 
@@ -167,7 +167,7 @@ environment is needed, there are a number of ways to quickly set up an
 environment for internal testing purposes.
 
 *  [Ed-Fi ODS / API for Suite 3 - Getting
-   Started](/reference/ods-api/getting-started/) walks developers through
+   Started](/reference/ed-fi-api/getting-started/) walks developers through
    setting up the Ed-Fi ODS / API (latest version) on a development machine.
 * [A Quick Deploy of the Ed-Fi ODS / API Development
   Server](https://github.com/Ed-Fi-Exchange-OSS/Ed-Fi-BinariesPowerShellInstaller) has

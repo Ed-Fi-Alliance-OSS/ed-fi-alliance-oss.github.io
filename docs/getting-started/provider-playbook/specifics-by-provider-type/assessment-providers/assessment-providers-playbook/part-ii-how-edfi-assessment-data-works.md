@@ -8,7 +8,7 @@ sidebar_position: 2
 
 ### 2.1 How the Ed-Fi API Works
 
-The Ed-Fi Alliance provides a standardized way for education systems and technology providers to exchange data across domains, including assessment, enrollment, attendance, grades, and demographics. This is accomplished through the Ed-Fi API applications: the legacy [Ed-Fi ODS/API v7.3](/reference/ods-api) or, beginning in mid 2026, the [Ed-Fi API v8](/reference/roadmap/api-faq).
+The Ed-Fi Alliance provides a standardized way for education systems and technology providers to exchange data across domains, including assessment, enrollment, attendance, grades, and demographics. This is accomplished through the Ed-Fi API applications: the legacy [Ed-Fi ODS/API v7.3](/reference/ed-fi-api) or, beginning in mid 2026, the [Ed-Fi API v8](/reference/roadmap/api-faq).
 
 The _**API**_ is how data enters and exits the system. It provides a standardized interface based on the [Unifying Data Model](/reference/data-exchange/udm/) that allows external systems, including assessment platforms, to submit and retrieve data using common patterns. Rather than exchanging custom files or managing one-off data extracts, vendors interact with a consistent set of endpoints that represent Ed-Fi Data Standard resources such as Assessment, StudentAssessment, and its associated structures. The API serves as the access layer, handling validation, authorization, and data exchange.
 

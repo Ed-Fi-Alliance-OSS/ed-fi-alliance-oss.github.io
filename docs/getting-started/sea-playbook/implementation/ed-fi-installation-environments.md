@@ -20,13 +20,13 @@ The recommended practice from the field is to at least have a Sandbox, a UAT and
 
 The development environment is what the state uses to prepare their data specifications and APIs. This is usually in a single server model hosting both the Web API and the databases in one server
 
-**Link to Detailed Instructions:** [Source Code Installation](/reference/ods-api/getting-started/source-code-installation)
+**Link to Detailed Instructions:** [Source Code Installation](/reference/ed-fi-api/getting-started/source-code-installation)
 
 ### UAT and QA environments
 
 This environment generally mimics the production installation, and is used to validate that the environment is ready for production usage, using test data. The test data you use can be a backup of your production data populated in the Ed-Fi ODS.
 
-**Link to Detailed Instructions:** [Production Deployment](/reference/ods-api/platform-dev-guide/deployment)
+**Link to Detailed Instructions:** [Production Deployment](/reference/ed-fi-api/platform-dev-guide/deployment)
 
 ### Sandbox
 
@@ -34,12 +34,12 @@ A sandbox environment is generally used to support technology providers in prepa
 
 Before installing the Sandbox instance, please visit the Sandbox Deployment document to learn about the Sandbox fundamentals, possible logical models, hardware requirements, sandbox security, and installation procedure.
 
-You can start your implementation with a development environment setup by doing the source code install following the [Getting Started](/reference/ods-api/getting-started) installation instructions. Once your development environment is complete, you can migrate the code from the development environment to the Sandbox environment by following the instructions stated in the "Migrating from a Development Instance" section on the Sandbox Deployment page.
+You can start your implementation with a development environment setup by doing the source code install following the [Getting Started](/reference/ed-fi-api/getting-started) installation instructions. Once your development environment is complete, you can migrate the code from the development environment to the Sandbox environment by following the instructions stated in the "Migrating from a Development Instance" section on the Sandbox Deployment page.
 
-**Link to Detailed Instructions:** [Sandbox Deployment](/reference/ods-api/platform-dev-guide/deployment/sandbox-deployment)
+**Link to Detailed Instructions:** [Sandbox Deployment](/reference/ed-fi-api/platform-dev-guide/deployment/sandbox-deployment)
 
 ### Production
 
 This is an operational environment hosting real student data, and is the ones that the LEA-based vendor systems connect to.
 
-**Link to Detailed Instructions:** [Production Deployment](/reference/ods-api/platform-dev-guide/deployment/production-deployment)
+**Link to Detailed Instructions:** [Production Deployment](/reference/ed-fi-api/platform-dev-guide/deployment/production-deployment)
