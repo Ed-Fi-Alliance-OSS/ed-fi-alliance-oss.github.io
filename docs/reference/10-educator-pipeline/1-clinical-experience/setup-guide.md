@@ -80,7 +80,7 @@ It is always recommended to follow your institution's best practices for mainten
 
 ### Install Ed-Fi ODS/API
 
-Install the ODS / API for Suite 3 by following instructions in the [Getting Started - Binary Installation](/reference/ods-api/getting-started/binary-installation/) guide
+Install the ODS / API for Suite 3 by following instructions in the [Getting Started - Binary Installation](/reference/ed-fi-api/getting-started/binary-installation/) guide
 
 ### Install Analytics Middle Tier
 

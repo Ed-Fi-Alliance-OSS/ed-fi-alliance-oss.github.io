@@ -29,7 +29,7 @@ A REST API is a common pattern in software development; if you are not familiar 
 
 ![LEA SIS Ed-Fi ODS/API Interaction Diagram](https://edfi.atlassian.net/wiki/download/thumbnails/19334211/image-2024-2-11_19-30-9.png?version=1&modificationDate=1707701409610&cacheVersion=1&api=v2&width=884&height=300)
 
-See the Data Exchange section of [API Developers Guide: Basics](/reference/ods-api/client-developers-guide/basics) to understand more about the difference between the GET, PUT, POST and DELETE endpoints.  It is important to note that most of the Core API endpoints have all HTTP methods implemented, and what each technology provider can do is controlled by the platform host via the security setup which we will discuss later in this article.
+See the Data Exchange section of [API Developers Guide: Basics](/reference/ed-fi-api/client-developers-guide/basics) to understand more about the difference between the GET, PUT, POST and DELETE endpoints.  It is important to note that most of the Core API endpoints have all HTTP methods implemented, and what each technology provider can do is controlled by the platform host via the security setup which we will discuss later in this article.
 
 ### How Ed-Fi Technology Suite Utilizes APIs
 
@@ -41,7 +41,7 @@ To use the Ed-Fi API you must know how the routes are constructed.  The route c
 
 * Configuration – an example of configuration is school year
 * Schema – this denotes if the API being addressed is in the Ed-Fi Core or an extension data model
-* Resource – the denotes the specific type of resource being retrieved – e.g. Student or SchoolThe route construction rarely changes, and you can find the details as of version 7.1 here: [API Client Developers Guide: API Routes](/reference/ods-api/client-developers-guide/api-routes)
+* Resource – the denotes the specific type of resource being retrieved – e.g. Student or SchoolThe route construction rarely changes, and you can find the details as of version 7.1 here: [API Client Developers Guide: API Routes](/reference/ed-fi-api/client-developers-guide/api-routes)
 
 ### Understanding Resources
 
@@ -69,7 +69,7 @@ The Ed-Fi Data Standard contains many different entities which are aggregated in
 
 Every resource will have an ID that will be returned with the API. It is important to note this is for convention and while they will be unique, they are not the actual key for the resource in the database.  Instead, the Ed-Fi API relies on a composite key approach based on the natural keys from the upstream datasource.  This allows the database to maintain a high level of referential integrity and ensure that the data is correctly linked throughout the database.
 
-To learn more about why composite keys are used in the database see: [Technical Articles: Key Structure in the Ed-Fi ODS / API](/reference/ods-api/technical-articles/key-structure-in-the-ed-fi-ods-api/#unified-keys-in-the-as-shipped-ed-fi-ods)
+To learn more about why composite keys are used in the database see: [Technical Articles: Key Structure in the Ed-Fi ODS / API](/reference/ed-fi-api/technical-articles/key-structure-in-the-ed-fi-ods-api/#unified-keys-in-the-as-shipped-ed-fi-ods)
 
 ## Overview of Deployment Options
 
@@ -81,11 +81,11 @@ In the sample technology stack for an Ed-Fi Technology Suite installation that i
 
 When planning your Ed-Fi Technology Suite deployment you have three options, each with its own benefits and drawbacks.
 
-1. **Binary Deployment –** This is the easiest of the deployment options as there is little configuration.  The downside is that other than the configuration there is little customization to be done. To learn more about Binary Deployment see: [Getting Started – Binary Installation](/reference/ods-api/getting-started/binary-installation)
+1. **Binary Deployment –** This is the easiest of the deployment options as there is little configuration.  The downside is that other than the configuration there is little customization to be done. To learn more about Binary Deployment see: [Getting Started – Binary Installation](/reference/ed-fi-api/getting-started/binary-installation)
 
 2. **Core Binary Deployment + Source Code Extension Deployment –** This gives your organization the same fast deployment benefit of the binary deployment, with the ability to extend the Ed-Fi Unifying Data Model with an extension deployment. To see an example of this type of deployment see the following GitHub repository and build: C# Extension Project and [Extension Project Plugin Build](https://github.com/Ed-Fi-Alliance-OSS/Starter-Kit-SEA-Modernization/actions)
 
-3. **Source Code Deployment –** This deployment will take the longest to set up as it is more involved, with more customization.  This gives full control of the deployment, including ability to extend the data model, customize the Identity API, and deploy bug fixes from the Ed-Fi source ahead of Ed-Fi releases. To learn more about Source Code Deployment see: [Getting Started – Source Code Installation](/reference/ods-api/getting-started/source-code-installation)
+3. **Source Code Deployment –** This deployment will take the longest to set up as it is more involved, with more customization.  This gives full control of the deployment, including ability to extend the data model, customize the Identity API, and deploy bug fixes from the Ed-Fi source ahead of Ed-Fi releases. To learn more about Source Code Deployment see: [Getting Started – Source Code Installation](/reference/ed-fi-api/getting-started/source-code-installation)
 
 In all cases, the compiled code can run directly on a machine, e.g. in IIS on a Windows server, or they can run as a Docker image in a container network.  
 
@@ -95,7 +95,7 @@ The Ed-Fi ODS can be run on either Microsoft SQL Server or PostgreSQL, the choic
 
 ### Ed-Fi ODS Database Segmentation
 
-Segmenting the Ed-Fi ODS allows your organization to break it into smaller databases.  There are different segmentation options depending on what you are trying to achieve, two of the most common are segmenting by school district and/or by school year. To learn more about the segmentation options and what each can achieve see: [Platform Dev Guide - Extensibility & Customization: Database Segmentation](/reference/ods-api/platform-dev-guide/extensibility-customization/#database-segmentation-strategy)
+Segmenting the Ed-Fi ODS allows your organization to break it into smaller databases.  There are different segmentation options depending on what you are trying to achieve, two of the most common are segmenting by school district and/or by school year. To learn more about the segmentation options and what each can achieve see: [Platform Dev Guide - Extensibility & Customization: Database Segmentation](/reference/ed-fi-api/platform-dev-guide/extensibility-customization/#database-segmentation-strategy)
 
 ## Overview of API Versioning
 
@@ -119,24 +119,24 @@ The Ed-Fi API is extendable to allow for use cases that are not already in place
 
 ### Security Setup
 
-Security is imperative when dealing with student data.  The Ed-Fi ODS/API provide keys and secrets to the client applications that require access, and those determine what access is provided.  All communication is done over HTTPS which is more secure the HTTP.  To learn more about how the Authentication works see: [API Client Developers’ Guide: Authentication](/reference/ods-api/client-developers-guide/authentication)
+Security is imperative when dealing with student data.  The Ed-Fi ODS/API provide keys and secrets to the client applications that require access, and those determine what access is provided.  All communication is done over HTTPS which is more secure the HTTP.  To learn more about how the Authentication works see: [API Client Developers’ Guide: Authentication](/reference/ed-fi-api/client-developers-guide/authentication)
 
 ### Working with Key/Secrets
 
-The platform host for the Ed-Fi Technology Suite implementation will provide your organization with key/secret pairs to use as authorization credentials for their Ed-Fi ODS/API instance.  If you have multiple users of your system with varied access levels, you will be provided with multiple key and secret pairs.  It is imperative that these are kept secure to ensure no one unauthorized can gain access to the Ed-Fi ODS/API.  To learn more about Authorization see: [API Client Developers' Guide: Authorization](/reference/ods-api/client-developers-guide/authorization)
+The platform host for the Ed-Fi Technology Suite implementation will provide your organization with key/secret pairs to use as authorization credentials for their Ed-Fi ODS/API instance.  If you have multiple users of your system with varied access levels, you will be provided with multiple key and secret pairs.  It is imperative that these are kept secure to ensure no one unauthorized can gain access to the Ed-Fi ODS/API.  To learn more about Authorization see: [API Client Developers' Guide: Authorization](/reference/ed-fi-api/client-developers-guide/authorization)
 
 ### Resource Loading Dependencies
 
 When loading resources into the Ed-Fi ODS/API there is a set dependency order.  This can change between versions, Ed-Fi API provides a dependency order endpoint which can be used by your client application to programmatically load data in the dependency order
 
-To learn more about resource loading dependencies see: [API Client Developers' Guide: Resource Dependency Order](/reference/ods-api/client-developers-guide/resource-dependency-order)
+To learn more about resource loading dependencies see: [API Client Developers' Guide: Resource Dependency Order](/reference/ed-fi-api/client-developers-guide/resource-dependency-order)
 
 ## Closing Summary/Useful Links
 
 Here are a few other useful links to continue your learning:
 
-* [API Developers Guide: Basics](/reference/ods-api/client-developers-guide/basics)
-* [API Client Developers’ Guide](/reference/ods-api/client-developers-guide)
-* [Platform Developers’ Guide](/reference/ods-api/platform-dev-guide)
+* [API Developers Guide: Basics](/reference/ed-fi-api/client-developers-guide/basics)
+* [API Client Developers’ Guide](/reference/ed-fi-api/client-developers-guide)
+* [Platform Developers’ Guide](/reference/ed-fi-api/platform-dev-guide)
 * [Ed-Fi Technology Suite Supported Versions](/reference/roadmap/supported-versions)
 * [Ed-Fi Data Standard Extension Framework Best Practices](/reference/data-exchange/extensions-framework/#best-practices)

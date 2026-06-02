@@ -423,7 +423,7 @@ application:
   to build a compliant Ed-Fi API application. Those who are writing client
   applications that interact with a compatible Ed-Fi API application can also
   benefit by learning more about what to expect from the system.
-* [API Client Developers' Guide](../ods-api/7.2/client-developers-guide): provides
+* [API Client Developers' Guide](/reference/ed-fi-api/7.2/client-developers-guide): provides
   more detail on many of the topics explored in this tutorial, and covers
   additional details not reviewed here. This link is to the Ed-Fi ODS/API
   version 7.2 documentation. Most if not all content there applies equally to

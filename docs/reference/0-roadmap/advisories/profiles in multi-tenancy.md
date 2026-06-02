@@ -9,9 +9,9 @@ Feb 15, 2025
 ## Issue
 
 We have identified an implementation error that affects usage of the
-[profiles](/reference/ods-api/platform-dev-guide/security/api-profiles) feature
+[profiles](/reference/ed-fi-api/platform-dev-guide/security/api-profiles) feature
 with [multi-tenant
-deployments](/reference/ods-api/platform-dev-guide/configuration/single-and-multi-tenant-configuration#multi-tenant-configuration),
+deployments](/reference/ed-fi-api/platform-dev-guide/configuration/single-and-multi-tenant-configuration#multi-tenant-configuration),
 which can lead to service interruptions. In ODS / API 7.x, profile
 configurations are stored in the database and cached at the application level to
 reduce repetitive database queries. However, the profile cache does not

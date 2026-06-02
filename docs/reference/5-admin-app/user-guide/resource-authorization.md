@@ -3,7 +3,7 @@
 The Ed-Fi Admin App streamlines the process of generating API keys and secrets crucial for seamlessly integrating applications with your organization's Ed-Fi API. These credentials play a pivotal role in ensuring secure data transactions between integrated applications, safeguarding your organization's information flow. It's vital for Admin App users to understand the components that make up an application within the context of an Ed-Fi API. This guide aims to provide a comprehensive understanding of the application components, ensuring users are well-informed when setting up and managing applications in the Admin App.
 
 :::info
-[See the documentation here describing the different security concepts in the Ed-Fi ODS/API](/reference/ods-api/platform-dev-guide/security/security-configuration-data-stores).
+[See the documentation here describing the different security concepts in the Ed-Fi ODS/API](/reference/ed-fi-api/platform-dev-guide/security/security-configuration-data-stores).
 :::
 
 ## Key Concepts
@@ -24,13 +24,13 @@ The Ed-Fi Admin App streamlines the process of generating API keys and secrets c
 A district admin wanting to create a set of API credentials for their SIS integration would create an _application_ using the Admin App. The admin would provide a name for the application, and select the vendor, the claimset and education organizations they'd like the integrating SIS to be bound to. Saving this information in the Admin App will generate a set of API credentials that can then be shared or input into the integrating system.
 :::
 
-**Claimset:** A collection of rules that define which resources can be accessed, what actions can be performed on them, and the authorization strategies that apply. It serves as a blueprint for access control, outlining the specific permissions for a given use case. For additional comprehensive documentation around claimsets and Resources, please read the technical documentation [**located here.**](/reference/ods-api/platform-dev-guide/security/api-claim-sets-resources)
+**Claimset:** A collection of rules that define which resources can be accessed, what actions can be performed on them, and the authorization strategies that apply. It serves as a blueprint for access control, outlining the specific permissions for a given use case. For additional comprehensive documentation around claimsets and Resources, please read the technical documentation [**located here.**](/reference/ed-fi-api/platform-dev-guide/security/api-claim-sets-resources)
 
 **Authorization Strategy:** A method through which the Ed-Fi API determines whether an application should be allowed to carry out a specific action on a resource, such as reading student data or updating teacher information. At this time, authorization strategies are not user defined, but rather pre-defined by the Ed-Fi API. [**More details here.**](#authorization-strategies)
 
-**Action:** The types of operations that can be performed on a resource, aligning with the CRUD acronym: `Create`, `Read`, `Update`, and `Delete` (in the Ed-Fi API there is also a `ReadChanges` action). Each action represents a different way in which resources can be accessed or manipulated. [**Read more about actions**](/reference/ods-api/platform-dev-guide/security/api-claim-sets-resources#actions).
+**Action:** The types of operations that can be performed on a resource, aligning with the CRUD acronym: `Create`, `Read`, `Update`, and `Delete` (in the Ed-Fi API there is also a `ReadChanges` action). Each action represents a different way in which resources can be accessed or manipulated. [**Read more about actions**](/reference/ed-fi-api/platform-dev-guide/security/api-claim-sets-resources#actions).
 
-**Profiles:** Complement the function of claimsets by controlling access at a more granular level, specifically at the columnar or sub-collection level within resources. While claimsets determine who has access to which resources and what actions they can perform, profiles define access to specific parts of the data within those resources. [**Please read technical documentation about profiles in the Ed-Fi ODS/API here.**](/reference/ods-api/platform-dev-guide/security/api-profiles)
+**Profiles:** Complement the function of claimsets by controlling access at a more granular level, specifically at the columnar or sub-collection level within resources. While claimsets determine who has access to which resources and what actions they can perform, profiles define access to specific parts of the data within those resources. [**Please read technical documentation about profiles in the Ed-Fi ODS/API here.**](/reference/ed-fi-api/platform-dev-guide/security/api-profiles)
 
 <!-- TODO: This image is already from this documentation, don't need to re-upload it. Just find the correct image and reference it here -->
 
@@ -63,7 +63,7 @@ Admin App users who create claimsets and provision API credentials must be aware
 * Relationships with Education Organizations and People (Inverted)
 * Relationships with Students only (through - StudentEducationOrganizationResponsibilityAssociation, including deletes)
 
-For more information about how authorization works [**please read the docs here.**](/reference/ods-api/platform-dev-guide/security/api-claim-sets-resources#authorization-strategies).
+For more information about how authorization works [**please read the docs here.**](/reference/ed-fi-api/platform-dev-guide/security/api-claim-sets-resources#authorization-strategies).
 
 ## Security Best Practices
 

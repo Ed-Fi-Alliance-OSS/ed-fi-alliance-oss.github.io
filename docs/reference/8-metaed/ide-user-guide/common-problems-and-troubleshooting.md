@@ -220,7 +220,7 @@ There are two possible explanations:
 
   * Reference: [How To: Extend the Ed-Fi ODS / API - Alternative Education
     Program Example - Step 4. Create Extension Project in ODS/API
-    Solution](/reference/ods-api/how-to-guides/how-to-extend-the-ed-fi-ods-api-alternative-education-program-example#step-4-create-extension-project-in-ods--api-solution).
+    Solution](/reference/ed-fi-api/how-to-guides/how-to-extend-the-ed-fi-ods-api-alternative-education-program-example#step-4-create-extension-project-in-ods--api-solution).
 
 ### I ran a successful build, but re-running the build now results in an "Unable to delete output directory..." error
 

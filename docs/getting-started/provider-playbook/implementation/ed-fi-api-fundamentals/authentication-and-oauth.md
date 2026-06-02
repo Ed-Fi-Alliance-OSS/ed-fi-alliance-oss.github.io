@@ -6,4 +6,4 @@ In its _data exchange standards_ efforts (distinct from Ed-Fi's _technology d
 
 Accordingly, in the Ed-Fi open source technology development effort, the Ed-Fi ODS / API uses a version of OAuth for API authentication. More information can be found here:
 
-* [Authentication](/reference/ods-api/client-developers-guide/authentication).
+* [Authentication](/reference/ed-fi-api/client-developers-guide/authentication).

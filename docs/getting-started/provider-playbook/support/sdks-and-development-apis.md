@@ -11,7 +11,7 @@
 
 Software Development Kits (SDKs) can be very useful for developers of API clients.  For those technology providers connecting to an API implemented by the Ed-Fi ODS API, there are instructions for generating an SDK.
 
-* [Using Code Generation to Create an SDK](/reference/ods-api/client-developers-guide/using-code-generation-to-create-an-sdk)
+* [Using Code Generation to Create an SDK](/reference/ed-fi-api/client-developers-guide/using-code-generation-to-create-an-sdk)
 
 The Ed-Fi ODS API generation process uses OpenAPI (or OpenAPI's predecessor, Swagger) specification files to generate the SDK.
 

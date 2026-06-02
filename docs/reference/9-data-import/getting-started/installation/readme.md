@@ -31,9 +31,9 @@ The following are functional requirements to use Data Import:
 
 * An API key and secret is needed with access permissions to create data for
     targeted entities. Please see [How To: View Security Configuration
-    Details](/reference/ods-api/how-to-guides/how-to-view-security-configuration-details) and [How
+    Details](/reference/ed-fi-api/how-to-guides/how-to-view-security-configuration-details) and [How
     To: Configure Claim
-    Sets](/reference/ods-api/how-to-guides/how-to-configure-claim-sets) for
+    Sets](/reference/ed-fi-api/how-to-guides/how-to-configure-claim-sets) for
     more information on managing security configuration and access permissions
     via claim sets.
 * A SQL login for Data Import to use. This login can use either Windows
