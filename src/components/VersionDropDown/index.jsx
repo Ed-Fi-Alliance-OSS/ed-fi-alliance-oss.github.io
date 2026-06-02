@@ -7,23 +7,27 @@ import { useLocation } from '@docusaurus/router';
 
 const odsApi = [
   {
-    path: '/reference/ods-api/',
+    path: '/reference/ed-fi-api/8.0/',
+    number: '8.0 (Upcoming)',
+  },
+  {
+    path: '/reference/ed-fi-api/',
     number: '7.3 (Current)',
   },
   {
-    path: '/reference/ods-api/7.2/',
+    path: '/reference/ed-fi-api/7.2/',
     number: '7.2 (Unsupported)',
   },
   {
-    path: '/reference/ods-api/7.1/',
+    path: '/reference/ed-fi-api/7.1/',
     number: '7.1 (Supported)',
   },
   {
-    path: '/reference/ods-api/6.2/',
+    path: '/reference/ed-fi-api/6.2/',
     number: '6.2 (Supported)',
   },
   {
-    path: '/reference/ods-api/5.4/',
+    path: '/reference/ed-fi-api/5.4/',
     number: '5.4 (Unsupported)',
   },
 ];
@@ -76,7 +80,7 @@ function DataStandardDropDown() {
 
 function SideBarVersionDropDown() {
   const { pathname } = useLocation();
-  if (pathname.includes('/ods-api/')) {
+  if (pathname.includes('/ed-fi-api/')) {
     return OdsApiDropDown();
   }
   else if (pathname.includes('/data-standard/')) {

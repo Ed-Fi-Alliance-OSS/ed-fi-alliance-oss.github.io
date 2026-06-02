@@ -10,8 +10,8 @@ State education agencies often need a plan to secure the resources necessary for
 
 **Pro Tip:** Most states have two publicly-accessible deployment environments (in addition to development and environments). See the full list in [Ed-Fi Installation Environments](../implementation/ed-fi-installation-environments.md). These two deployment environments are:
 
-* **Sandbox Environment**: This environment is used to assist technology providers in preparing to integrate with your agency. For more info, see [Sandbox Deployment](/reference/ods-api/platform-dev-guide/deployment/sandbox-deployment).
-* **Production Environment**: This is the live environment used to collect student records from school districts. For more info, see [Production Deployment](/reference/ods-api/platform-dev-guide/deployment/production-deployment)
+* **Sandbox Environment**: This environment is used to assist technology providers in preparing to integrate with your agency. For more info, see [Sandbox Deployment](/reference/ed-fi-api/platform-dev-guide/deployment/sandbox-deployment).
+* **Production Environment**: This is the live environment used to collect student records from school districts. For more info, see [Production Deployment](/reference/ed-fi-api/platform-dev-guide/deployment/production-deployment)
 
 :::note
 These are recommendations, not requirements. They are based on field practice. You should consider the specific needs of your implementation. We also recommend consulting with other Ed-Fi SEAs directly for their input. We will gladly arrange these introductions.

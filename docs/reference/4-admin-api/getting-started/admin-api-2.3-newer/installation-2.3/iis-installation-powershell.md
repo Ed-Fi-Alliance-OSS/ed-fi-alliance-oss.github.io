@@ -169,7 +169,7 @@ $authenticationSettings = @{
 
 # IMPORTANT: This key MUST match the OdsConnectionStringEncryptionKey
 # used in your Ed-Fi ODS / API installation. See:
-# https://docs.ed-fi.org/reference/ods-api/getting-started/binary-installation/singlemulti-tenant-installation-steps/#prepare-installation-script
+# https://docs.ed-fi.org/reference/ed-fi-api/getting-started/binary-installation/singlemulti-tenant-installation-steps/#prepare-installation-script
 $odsEncryptionKey = "Base64-encoded string"
 
 $packageSource = Split-Path $PSScriptRoot -Parent
@@ -201,7 +201,7 @@ $authenticationSettings = @{
 
 # IMPORTANT: This key MUST match the OdsConnectionStringEncryptionKey
 # used in your Ed-Fi ODS / API installation. See:
-# https://docs.ed-fi.org/reference/ods-api/getting-started/binary-installation/singlemulti-tenant-installation-steps/#prepare-installation-script
+# https://docs.ed-fi.org/reference/ed-fi-api/getting-started/binary-installation/singlemulti-tenant-installation-steps/#prepare-installation-script
 $odsEncryptionKey = "Base64-encoded string"
 
 $packageSource = Split-Path $PSScriptRoot -Parent

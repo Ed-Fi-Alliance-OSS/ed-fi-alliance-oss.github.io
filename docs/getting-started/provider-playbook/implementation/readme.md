@@ -28,7 +28,7 @@ sidebar_position: 2
 
 :::tip
 
-Also see the [API Client Developers' Guide](/reference/ods-api/client-developers-guide/) in the reference documentation.
+Also see the [API Client Developers' Guide](/reference/ed-fi-api/client-developers-guide/) in the reference documentation.
 
 This documentation provides essential information for building client applications that interact with an Ed-Fi ODS / API platform. It includes instructions on generating SDKs with Swagger Tools and considerations for developing a robust and scalable solution.
 

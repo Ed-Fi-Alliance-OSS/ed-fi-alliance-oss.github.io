@@ -12,7 +12,7 @@ Some implementations find it useful to add a school year in the API root, for ex
 
 ## Routing
 
-When enabled, the base URI follows `/{api_area}/{version}/**{year}** pattern.` See [API Routes](/reference/ods-api/5.4/client-developers-guide/api-routes) for details.
+When enabled, the base URI follows `/{api_area}/{version}/**{year}** pattern.` See [API Routes](/reference/ed-fi-api/5.4/client-developers-guide/api-routes) for details.
 
 ## How to Enable
 

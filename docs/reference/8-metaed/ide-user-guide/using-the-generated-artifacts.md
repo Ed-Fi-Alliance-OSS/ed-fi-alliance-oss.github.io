@@ -37,7 +37,7 @@ The generated files are:
     update for extensions, using the default "extension" namespace.
 
 See the [Ed-Fi ODS / API
-documentation](/reference/ods-api/platform-dev-guide/extensibility-customization/extending-the-ods-api-data-model) for more detail
+documentation](/reference/ed-fi-api/platform-dev-guide/extensibility-customization/extending-the-ods-api-data-model) for more detail
 on the SQL files and the code generation process.
 
 ## Generated XSD
@@ -58,7 +58,7 @@ The generated files are:
 * `EXTENSION-Interchange-\*.xsd` - the interchanges for the extension, using the
     default "extension" namespace.
 
-See the [Ed-Fi ODS / API documentation](/reference/ods-api) for more detail.
+See the [Ed-Fi ODS / API documentation](/reference/ed-fi-api) for more detail.
 
 ## Generated API Metadata
 
@@ -145,7 +145,7 @@ locations for the ODS / API project.
 :::tip
 
 See [How To: Extend the Ed-Fi ODS / API - Student Transportation
-Example](/reference/ods-api/how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transcript-example) for
+Example](/reference/ed-fi-api/how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transcript-example) for
 more information on creating the related C# project.
 
 :::

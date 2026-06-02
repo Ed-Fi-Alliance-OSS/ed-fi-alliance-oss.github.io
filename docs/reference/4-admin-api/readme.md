@@ -50,5 +50,5 @@ For Admin API versions 2.2 and earlier, users are required to match their versio
 For Admin API versions 1.4 and earlier users are required to match the proper Admin API version with their corresponding Ed-Fi ODS/API version. For Admin API 1.x, this requires matching an ODS version between ODS/API v5.4 and ODS/API v6.3. Note, if you are on ODS/API v6.x and can upgrade to Admin API 2.3, Ed-Fi **highly** recommends doing so to maintain forward compatibility with upcoming features. Please see our [Getting Started 1.x](./getting-started/admin-api-1.x/readme.md) page for more information.
 
 The Admin API v2.x is available for
-[Ed-Fi ODS / API v7.x](/reference/ods-api) and Admin API
-v1.x is available for [Ed-Fi ODS / API 6.x](/reference/ods-api/6.2/).
+[Ed-Fi ODS / API v7.x](/reference/ed-fi-api) and Admin API
+v1.x is available for [Ed-Fi ODS / API 6.x](/reference/ed-fi-api/6.2/).

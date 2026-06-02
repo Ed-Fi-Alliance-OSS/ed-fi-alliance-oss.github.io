@@ -64,7 +64,7 @@ improvements.
 
 There are updates to the configuration settings in this release and the previous
 v7.3.0 release. New entries are marked with 🆕 icon in the [Configuration
-Details](/reference/ods-api/platform-dev-guide/configuration/configuration-details) page.
+Details](/reference/ed-fi-api/platform-dev-guide/configuration/configuration-details) page.
 
 ## Improvements & Enhancements - Previous v7.x
 

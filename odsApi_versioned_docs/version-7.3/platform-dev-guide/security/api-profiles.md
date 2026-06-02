@@ -48,7 +48,7 @@ consumer is covered by a single _assigned_ Profile, and if so, it will
 implicitly process the request using that Profile. However, if multiple Profiles
 are assigned, or the API consumer is simply choosing to use a particular
 Profile, the API consumer must specify which Profile is to be used by adding the
-appropriate [HTTP header](/reference/ods-api/client-developers-guide/authorization#api-client-profiles) to the request (i.e. `Accept` for `GET` requests, and
+appropriate [HTTP header](/reference/ed-fi-api/client-developers-guide/authorization#api-client-profiles) to the request (i.e. `Accept` for `GET` requests, and
 `Content-Type` for `PUT`/`POST` requests).
 
 :::

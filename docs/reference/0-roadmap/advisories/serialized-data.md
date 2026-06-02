@@ -6,7 +6,7 @@ sidebar_position: 1
 
 Sept 18, 2025
 
-This advisory outlines recently identified issues in the Ed-Fi ODS/API platform's [Serialized Data](/reference/ods-api/platform-dev-guide/features/serialized-data) feature. The identified issues affect the **accuracy and consistency** of serialized representations.
+This advisory outlines recently identified issues in the Ed-Fi ODS/API platform's [Serialized Data](/reference/ed-fi-api/platform-dev-guide/features/serialized-data) feature. The identified issues affect the **accuracy and consistency** of serialized representations.
 
 The optional Serialized Data feature was introduced to enhance performance by storing resource data in a serialized binary format. To ensure data integrity during cascading key changes, the feature compares the `LastModifiedDate` of the resource table with the `LastModifiedDate` embedded in the binary data to determine whether the serialized data is current.
 
@@ -51,7 +51,7 @@ Fixes have been released in a patch for **ODS/API v7.3.0**.
 
 ### NuGet Packages
 
-- Refer [7.3 Binary Releases](https://docs.ed-fi.org/reference/ods-api/getting-started/binary-installation/binary-releases) for updated packages.
+- Refer [7.3 Binary Releases](https://docs.ed-fi.org/reference/ed-fi-api/getting-started/binary-installation/binary-releases) for updated packages.
 - To install:
   - Rename the download by changing the extension `.nupkg` to `.zip`.
   - Open the zip file, extract the DLL files.
@@ -75,5 +75,5 @@ MetaEd extension users may need to update DDL scripts.
 :::info
 The Serialized Data feature is optional and can be disabled.
 To disable, set `ApiSettings:Features:SerializedData` configuration to `false`.
-Refer to the [Configuration Details](/reference/ods-api/platform-dev-guide/configuration/configuration-details) page.
+Refer to the [Configuration Details](/reference/ed-fi-api/platform-dev-guide/configuration/configuration-details) page.
 :::

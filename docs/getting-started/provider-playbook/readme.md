@@ -70,4 +70,4 @@ Section 5: [Specifics by Provider Type](./specifics-by-provider-type/readme.md)
 
 * [Ed-Fi Certification](/partners/certification)
 * [Ed-Fi ODS / API Sandbox](https://api.ed-fi.org/)
-* [Ed-Fi ODS / API Platform (Latest)](/reference/ods-api)
+* [Ed-Fi ODS / API Platform (Latest)](/reference/ed-fi-api)

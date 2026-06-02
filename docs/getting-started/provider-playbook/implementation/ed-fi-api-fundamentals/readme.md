@@ -10,4 +10,4 @@ For most provider types (e.g. assessment, student information system, etc.) this
 * [Authorization](./authorization.md)
 * [API Extensions](./api-extensions.md)
 
-Dig into additional essential information for building client applications that interact with an Ed-Fi ODS / API platform and the read [API Client Developer's Guide](/reference/ods-api/client-developers-guide).
+Dig into additional essential information for building client applications that interact with an Ed-Fi ODS / API platform and the read [API Client Developer's Guide](/reference/ed-fi-api/client-developers-guide).

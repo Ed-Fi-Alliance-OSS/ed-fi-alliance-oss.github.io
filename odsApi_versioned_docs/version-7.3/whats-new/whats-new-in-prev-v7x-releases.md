@@ -37,7 +37,7 @@ includes a configuration setting that allows implementers to exclude unused
 domains from the OpenAPI spec.
 
 See [Configuration
-Details](/reference/ods-api/platform-dev-guide/configuration/configuration-details) page for
+Details](/reference/ed-fi-api/platform-dev-guide/configuration/configuration-details) page for
 more information on these new settings.
 
 ### MetaEd IDE v4.6
