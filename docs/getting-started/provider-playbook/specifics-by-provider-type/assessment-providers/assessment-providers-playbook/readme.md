@@ -4,7 +4,7 @@ sidebar_position: 1
 ---
 
 - Part I: Executive Summary (you are here)
-- [Part II: How Ed-Fi Assessment Data Works](./part-ii-how-edfi-assessment-data-works.md)
+- [Part II: How Ed-Fi Data Standard Assessment Data Works](./part-ii-how-edfi-assessment-data-works.md)
 - [Part III: Data Modeling Requirements](./part-iii-data-modeling-requirements.md)
 - [Part IV: Student Identity and Rostering](./part-iv-student-identity-and-rostering.md)
 - [Part V: Integration Architecture and Operations](./part-v-integration-architecture-and-operations.md)
@@ -19,9 +19,9 @@ constitutes a native Ed-Fi Data Standard assessment integration.
 
 The Ed-Fi Alliance provides a data standard and an API-based interoperability framework used by education agencies to exchange data consistently across domains such as assessment, enrollment, attendance, grades, and demographics. In many implementations, this standard is operationalized through the Ed-Fi API, which provides a common interface for data exchange. For assessment providers, supporting the Ed-Fi Data Standard is not simply about delivering a file or exposing data elsewhere. It means integrating into a common, structured exchange model that enables assessment data to flow into a broader educational data ecosystem in a usable, governed way.
 
-The Ed-Fi Assessment domain is intentionally flexible. It was designed to accommodate the wide variety of assessment instruments used across K–12 systems, including state summative assessments, formative screeners, interim benchmarks, college-readiness exams, diagnostic tools, and classroom-level measures. The model supports hierarchical structures, multiple score types, performance levels, and alignment to learning standards. That flexibility is powerful, and it is not self-governing. Without modeling discipline and governance alignment, the same assessment can be implemented in materially different ways across vendors, states, and districts. Data may technically load yet fail to support real-world analytics.
+The Ed-Fi Data Standard Assessment domain is intentionally flexible. It was designed to accommodate the wide variety of assessment instruments used across K–12 systems, including state summative assessments, formative screeners, interim benchmarks, college-readiness exams, diagnostic tools, and classroom-level measures. The model supports hierarchical structures, multiple score types, performance levels, and alignment to learning standards. That flexibility is powerful, and it is not self-governing. Without modeling discipline and governance alignment, the same assessment can be implemented in materially different ways across vendors, states, and districts. Data may technically load yet fail to support real-world analytics.
 
-This playbook establishes a clear standard: a native Ed-Fi integration is not simply a data feed that posts results to an Ed-Fi API. It is an integration that publishes a complete, hierarchically accurate, subject-safe, and governance-aligned representation of an assessment, suitable for both compliance reporting and local analytic use without requiring custom downstream logic.
+This playbook establishes a clear standard: a native Ed-Fi Data Standard integration is not simply a data feed that posts results to an Ed-Fi API. It is an integration that publishes a complete, hierarchically accurate, subject-safe, and governance-aligned representation of an assessment, suitable for both compliance reporting and local analytic use without requiring custom downstream logic.
 
 This playbook also makes it explicit that native integration is a full lifecycle responsibility, not just a data modeling exercise. It covers the major implementation workstreams required to move from raw vendor data to a production-ready integration, including data modeling, student identity and rostering, descriptor governance, integration architecture, operational readiness, and testing and certification.
 
@@ -46,7 +46,7 @@ As a result, critical elements of the assessment are often lost or inconsistentl
 
 The impact is predictable. Districts and states must reconstruct missing structures, reverse-engineer meaning, maintain vendor-specific transformation logic, and reconcile inconsistencies across systems and over time. This increases cost, delays access to insights, and limits the usability of the data.
 
-A native Ed-Fi assessment integration is designed to eliminate these gaps.
+A native Ed-Fi ODS/API assessment integration is designed to eliminate these gaps.
 
 It ensures that assessment data supports state reporting, district and school-level dashboards, longitudinal growth analysis, subgroup and program evaluation, and cross-vendor comparability— without requiring additional downstream engineering.
 
@@ -54,13 +54,13 @@ Completeness at ingestion enables usability downstream. When the full structure,
 
 ### 1.3 The Problem This Playbook Addresses
 
-Despite widespread adoption of Ed-Fi, assessment integrations remain inconsistent, fragile, and difficult to scale. Limitations in the standard itself do not cause these challenges; rather, they stem from variability in how integrations are implemented across vendors and environments.
+Despite widespread adoption of the Ed-Fi Data Standard, assessment integrations remain inconsistent, fragile, and difficult to scale. Limitations in the standard itself do not cause these challenges; rather, they stem from variability in how integrations are implemented across vendors and environments.
 
 Four core problem areas consistently emerge:
 
 #### Data Modeling Inconsistency
 
-Vendors make different decisions about how to represent the same assessment in Ed-Fi, including how to define assessment identity, structure the hierarchy, assign subjects, and place results at the correct level in the student assessment record. These variations often produce datasets that pass API validation but cannot be analyzed consistently across districts, states, or vendors.
+Vendors make different decisions about how to represent the same assessment in the Ed-Fi ODS/API, including how to define assessment identity, structure the hierarchy, assign subjects, and place results at the correct level in the student assessment record. These variations often produce datasets that pass API validation but cannot be analyzed consistently across districts, states, or vendors.
 
 Without a shared modeling approach, analytics must be rewritten for each integration, undermining interoperability and increasing implementation cost.
 
@@ -89,12 +89,12 @@ assessment integrations should be modeled, implemented, and operated.
 
 ### 1.4 What This Playbook Covers
 
-This playbook defines the full lifecycle of a native Ed-Fi assessment integration across six core
+This playbook defines the full lifecycle of a native Ed-Fi ODS/API assessment integration across six core
 workstreams. Each workstream represents a critical component of a complete, scalable, and
 analytically usable integration, and together they establish the expectations for moving from raw
 assessment data to a production-ready implementation.
 
-_**Data Modeling**_ defines how assessments, hierarchical structure, results, their placement within the student assessment record, and descriptors must be represented in the Ed-Fi data model. It establishes the rules that ensure assessment data is complete, interpretable, and consistent across vendors and environments.
+_**Data Modeling**_ defines how assessments, hierarchical structure, results, their placement within the student assessment record, and descriptors must be represented in the Ed-Fi Data Standard data model. It establishes the rules that ensure assessment data is complete, interpretable, and consistent across vendors and environments.
 
 _**Student Identity and Rostering**_ establishes how assessment results are aligned to StudentUniqueId and connected to the broader data ecosystem. It defines how identity is resolved, validated, and maintained, enabling results to support longitudinal analysis and enrollment-aligned reporting.
 
@@ -113,7 +113,7 @@ that can be trusted, reused, and scaled across districts, states, and vendors.
 
 ### 1.5 The Business Case for Vendors
 
-Adopting a native Ed-Fi assessment integration is not just a technical decision. It is a business decision that directly affects costs, scalability, and the long-term product strategy.
+Adopting a native Ed-Fi ODS/API assessment integration is not just a technical decision. It is a business decision that directly affects costs, scalability, and the long-term product strategy.
 
 Today, most assessment integrations are built and maintained as one-off implementations. Variability across states, districts, and partners—particularly in areas such as rostering, student identity, descriptor usage, and data expectations—forces vendors into a repeated cycle of customization, support, and rework.
 
@@ -165,13 +165,13 @@ The value of this approach lies in applying the same integration patterns across
 
 #### Ongoing operational discipline
 
-Integrations must be maintained with clear versioning, monitoring, and governance practices to ensure stability as both vendor products and Ed-Fi standards evolve.
+Integrations must be maintained with clear versioning, monitoring, and governance practices to ensure stability as both vendor products and the Ed-Fi Data Standard evolve.
 
-A native Ed-Fi integration shifts that model by establishing a consistent, repeatable approach that reduces long-term cost, improves reliability, and aligns with emerging expectations across states and the broader ecosystem. The investment is upfront. The return is sustained.
+A native Ed-Fi Data Standard integration shifts that model by establishing a consistent, repeatable approach that reduces long-term cost, improves reliability, and aligns with emerging expectations across states and the broader ecosystem. The investment is upfront. The return is sustained.
 
 ### 1.6 Foundational Design Principles
 
-The following principles define the governing logic of a native Ed-Fi assessment integration. They are
+The following principles define the governing logic of a native Ed-Fi ODS/API assessment integration. They are
 not implementation details. They are the constraints that ensure assessment data remains complete,
 interpretable, and reusable across systems and over time.
 
@@ -179,13 +179,13 @@ These principles apply across all workstreams in this playbook and should guide 
 
 #### Send the Full Score Report
 
-If a data element appears on the official score report and is available in vendor exports, it belongs in Ed-Fi unless a regulatory constraint prohibits it. This includes composite scores, subscores, percentiles, growth metrics, performance levels, risk indicators, contextual flags, accommodations, and administration conditions.
+If a data element appears on the official score report and is available in vendor exports, it belongs in the Ed-Fi ODS/API unless a regulatory constraint prohibits it. This includes composite scores, subscores, percentiles, growth metrics, performance levels, risk indicators, contextual flags, accommodations, and administration conditions.
 
-Publishing only the minimum required for state reporting results in incomplete datasets that cannot support real-world use. Ed-Fi is not a reporting file destination. It is an interoperability standard.
+Publishing only the minimum required for state reporting results in incomplete datasets that cannot support real-world use. The Ed-Fi Data Standard is not a reporting file destination. It is an interoperability standard.
 
 #### Model the Assessment Hierarchy
 
-Assessment data must reflect the structure of the vendor’s scorebook. The Ed-Fi model provides explicit constructs to represent this hierarchy, including Assessment, ObjectiveAssessment, and StudentAssessment, which contains StudentObjectiveAssessment as a collection of objective-level results.
+Assessment data must reflect the structure of the vendor’s scorebook. The Ed-Fi Data Standard provides explicit constructs to represent this hierarchy, including Assessment, ObjectiveAssessment, and StudentAssessment, which contains StudentObjectiveAssessment as a collection of objective-level results.
 
 Top-level results belong at the student assessment level. Subscores belong within the StudentObjectiveAssessment collection inside the StudentAssessment record. If the vendor presents a hierarchical score report, the integration must preserve that structure. Collapsing hierarchy for convenience compromises analytical integrity.
 
@@ -221,6 +221,6 @@ These principles establish the expectations for how assessment data must be repr
 
 ### 1.7 The Standard
 
-A native Ed-Fi assessment integration is one that publishes a complete, hierarchically accurate, subject-safe, and governance-aligned representation of an assessment that enables stakeholders to analyze student performance reliably, measure growth over time, and compare outcomes across systems without requiring custom downstream reconstruction, score parsing, or vendor-specific transformation logic.
+A native Ed-Fi ODS/API assessment integration is one that publishes a complete, hierarchically accurate, subject-safe, and governance-aligned representation of an assessment that enables stakeholders to analyze student performance reliably, measure growth over time, and compare outcomes across systems without requiring custom downstream reconstruction, score parsing, or vendor-specific transformation logic.
 
 An integration that merely loads data is not sufficient. An integration must interoperate.

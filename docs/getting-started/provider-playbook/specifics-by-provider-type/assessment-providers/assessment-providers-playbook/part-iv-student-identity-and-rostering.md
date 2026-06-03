@@ -6,7 +6,7 @@ sidebar_position: 4
 
 ## 8. Student Identity Resolution
 
-Student identity and rostering define how assessment results are aligned to the correct student within the Ed-Fi ecosystem.
+Student identity and rostering define how assessment results are aligned to the correct student within the Ed-Fi ODS/API ecosystem.
 
 This section establishes the requirements for ensuring that every StudentAssessment record resolves to a valid student and can be used for reporting, analysis, and longitudinal tracking.
 
@@ -14,7 +14,7 @@ Unlike data modeling, which determines how results are structured, identity and 
 
 A dataset that does not resolve to a valid student identity may load partially or fail entirely, but in either case, it cannot support reliable analytics.
 
-A native Ed-Fi assessment integration must ensure that:
+A native Ed-Fi ODS/API assessment integration must ensure that:
 
 - Student identity is explicitly defined and consistently applied
 - Rostering is aligned to the system of record
@@ -40,11 +40,11 @@ In practice, the majority of assessment integration challenges are not caused by
 
 ### 8.2 Rostering Strategy
 
-Rostering defines how students included in assessment data are aligned to the Ed-Fi environment, where assessment results are submitted.
+Rostering defines how students included in assessment data are aligned to the Ed-Fi ODS/API environment, where assessment results are submitted.
 
 The critical requirement is not the rostering platform itself. The requirement is that student identity alignment is explicit, consistent, and verifiable across systems.
 
-Assessment integrations depend on accurate identity resolution. If rostered students cannot reliably align to the Ed-Fi StudentUniqueId values used by the receiving environment, assessment results become difficult to reconcile, longitudinal analysis becomes fragmented, and downstream systems must compensate for identity inconsistencies through custom logic and manual intervention.
+Assessment integrations depend on accurate identity resolution. If rostered students cannot reliably align to the Ed-Fi ODS/API StudentUniqueId values used by the receiving environment, assessment results become difficult to reconcile, longitudinal analysis becomes fragmented, and downstream systems must compensate for identity inconsistencies through custom logic and manual intervention.
 
 #### Core Principle
 
@@ -52,44 +52,44 @@ Assessment vendors should roster from the same environment that receives assessm
 
 This ensures that:
 
-- Student identifiers align to Ed-Fi StudentUniqueId
+- Student identifiers align to Ed-Fi Data Standard StudentUniqueId
 - Enrollment and assessment participation context remain consistent
 - Identity mismatches are minimized
-- Assessment results can be resolved directly to the Ed-Fi student record
+- Assessment results can be resolved directly to the Ed-Fi API student record
 
-Rostering is the operational bridge between vendor systems and the Ed-Fi identity model.
+Rostering is the operational bridge between vendor systems and the Ed-Fi Data Standard identity model.
 
 #### Recommended Implementation Model
 
 A native integration typically follows a bidirectional pattern:
 
-- The vendor retrieves roster and identity data from Ed-Fi
-- The vendor submits assessment results back to Ed-Fi
+- The vendor retrieves roster and identity data from the Ed-Fi API
+- The vendor submits assessment results back to the Ed-Fi API
 
-This model establishes Ed-Fi as the system of record for both identity and assessment outcomes, reducing reconciliation complexity and strengthening longitudinal integrity across systems.
+This model establishes the Ed-Fi API as the system of record for both identity and assessment outcomes, reducing reconciliation complexity and strengthening longitudinal integrity across systems.
 
 While this represents the strongest alignment pattern, implementations across the ecosystem vary in maturity and operational readiness. Multiple rostering approaches are currently used successfully across states and districts. These approaches are not operationally identical, but each can support a compliant integration when identity alignment is managed appropriately.
 
 #### Rostering Approaches and Identity Alignment
 
-The following rostering approaches represent common implementation patterns across the Ed-Fi ecosystem.
+The following rostering approaches represent common implementation patterns across the Ed-Fi API ecosystem.
 
 #### 8.2.1 Native OneRoster API from Ed-Fi
 
 An emerging implementation pattern is the exposure of OneRoster endpoints directly from the Ed-Fi API environment.
 
-Beginning with Ed-Fi API v7.3.2, the Ed-Fi Alliance introduced support for native OneRoster API endpoints. This creates a standardized rostering model that aligns directly to the Ed-Fi system of record while leveraging a roster specification already familiar to many assessment vendors.
+Beginning with Ed-Fi API v7.3.2, the Ed-Fi Alliance introduced support for native OneRoster API endpoints. This creates a standardized rostering model that aligns directly to the Ed-Fi API system of record while leveraging a roster specification already familiar to many assessment vendors.
 
 This approach provides several advantages:
 
-- Ed-Fi remains the authoritative source for student identity and roster data
+- The Ed-Fi ODS/API remains the authoritative source for student identity and roster data
 - Rostering aligns directly to StudentUniqueId
 - Rostering workflows can operate through standardized APIs
 - Intermediate transformation and synchronization layers are minimized
 
-This pattern represents a strong, long-term interoperability model because it combines Ed-Fi's identity and integrity with OneRoster's operational familiarity.
+This pattern represents a strong, long-term interoperability model because it combines the Ed-Fi API's identity and integrity with OneRoster's operational familiarity.
 
-At the same time, implementation maturity varies across the ecosystem, and not all current Ed-Fi environments expose or operationalize these endpoints consistently.
+At the same time, implementation maturity varies across the ecosystem, and not all current Ed-Fi API environments expose or operationalize these endpoints consistently.
 
 #### 8.2.2 StudentAssessmentRegistration via Ed-Fi API
 
@@ -105,36 +105,36 @@ This resource provides:
 
 Using StudentAssessmentRegistration helps ensure that:
 
-- Ed-Fi remains the system of record
+- The Ed-Fi ODS/API remains the system of record
 - Student identity aligns directly to StudentUniqueId
 - Assessment participation is explicitly defined and governed
 
 This approach supports the automation of assessment registration workflows that have historically depended on manual processes and spreadsheet-based coordination.
 
-Operational adoption varies because not all Ed-Fi implementations currently operationalize these endpoints consistently. In those environments, additional coordination with student and enrollment resources may still be required.
+Operational adoption varies because not all Ed-Fi ODS/API implementations currently operationalize these endpoints consistently. In those environments, additional coordination with student and enrollment resources may still be required.
 
-#### 8.2.3 OneRoster CSV Exports Derived from Ed-Fi
+#### 8.2.3 OneRoster CSV Exports Derived from the Ed-Fi ODS/API
 
-Some implementations generate OneRoster-compliant CSV exports directly from the Ed-Fi environment.
+Some implementations generate OneRoster-compliant CSV exports directly from the Ed-Fi ODS/API environment.
 
-This approach preserves alignment to the Ed-Fi system of record while supporting vendors that already consume standard OneRoster CSV workflows.
+This approach preserves alignment to the Ed-Fi ODS/API system of record while supporting vendors that already consume standard OneRoster CSV workflows.
 
 This pattern:
 
-- Preserves Ed-Fi as the authoritative source
+- Preserves the Ed-Fi ODS/API as the authoritative source
 - Supports batch-based rostering workflows
 - Enables large-scale operational exchanges
 - Provides a practical interoperability bridge for implementations not yet supporting native roster APIs
 
 This model is commonly used in exchange-based implementations where standardized roster exports are generated centrally and distributed to vendors.
 
-While this approach introduces more operational coordination than API-based patterns, it remains strongly aligned to Ed-Fi identity because the roster source originates from the Ed-Fi environment itself
+While this approach introduces more operational coordination than API-based patterns, it remains strongly aligned to the Ed-Fi ODS/API's identity model because the roster source originates from the Ed-Fi ODS/API environment itself
 
 #### 8.2.4 External Rostering Systems
 
 External rostering platforms such as ClassLink, Clever, and SIS-driven rostering workflows may also support successful assessment integrations when identity alignment is managed appropriately.
 
-Some implementations successfully leverage external rostering providers in coordination with Ed-Fi environments, including models where roster synchronization and identity reconciliation processes are already operationally established.
+Some implementations successfully leverage external rostering providers in coordination with Ed-Fi ODS/API environments, including models where roster synchronization and identity reconciliation processes are already operationally established.
 
 These approaches can:
 
@@ -143,14 +143,14 @@ These approaches can:
 - Leverage existing district rostering investments
 - Simplify operational coordination for vendors already integrated with these platforms
 
-At the same time, these systems are not typically the Ed-Fi system of record. As a result, additional identity reconciliation and governance controls are often required to ensure accurate alignment with StudentUniqueId.
+At the same time, these systems are not typically the Ed-Fi ODS/API system of record. As a result, additional identity reconciliation and governance controls are often required to ensure accurate alignment with StudentUniqueId.
 
-When rostering does not originate directly from the Ed-Fi environment, vendors assume additional responsibility for:
+When rostering does not originate directly from the Ed-Fi ODS/API environment, vendors assume additional responsibility for:
 
 - Deterministic identity matching
 - Cross-system reconciliation transparency
 - Match rate monitoring
-- Referential integrity validation between rostered students and Ed-Fi identity records
+- Referential integrity validation between rostered students and Ed-Fi ODS/API identity records
 
 The success of these implementations depends on whether student identity alignment remains consistent, auditable, and operationally manageable over time.
 
@@ -180,13 +180,13 @@ The following patterns are not allowed because they weaken identity integrity an
 - Relying on manual or undocumented identity repair processes as part of normal operations
 
 Rostering is not defined by the specific tool or platform being used. It is defined by whether student
-identity can be consistently aligned to the Ed-Fi system, where assessment results are stored.
+identity can be consistently aligned to the Ed-Fi ODS/API, where assessment results are stored.
 
-The closer the rostering source is to the Ed-Fi system of record, the stronger the referential integrity, the lower the reconciliation burden, and the more reliable the integration becomes over time.
+The closer the rostering source is to the Ed-Fi ODS/API, the stronger the referential integrity, the lower the reconciliation burden, and the more reliable the integration becomes over time.
 
 ### 8.3 Student Identifier Selection and Configuration
 
-Student identity must resolve to StudentUniqueId, which is the canonical identifier in Ed-Fi. Rostering systems often provide multiple identifiers, including:
+Student identity must resolve to StudentUniqueId, which is the canonical identifier in the Ed-Fi Data Standard. Rostering systems often provide multiple identifiers, including:
 
 - District student IDs
 - State student IDs
