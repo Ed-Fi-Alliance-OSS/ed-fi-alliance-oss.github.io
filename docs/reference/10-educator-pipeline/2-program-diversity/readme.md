@@ -1,3 +1,7 @@
+---
+sidebar_position: 5
+---
+
 # Program Diversity and Persistence Dashboard
 
 :::tip

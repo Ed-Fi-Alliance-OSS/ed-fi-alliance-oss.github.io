@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 ---
 
 # Ed-Fi Data Standard v6.0 EPDM Related Domains
