@@ -20,7 +20,7 @@ Following field implementation, the entities and descriptors from the EPDM Commu
 * EPDM Technical Resources
   * [Ed-Fi Data Standard v6.0 EPDM Related Domains](../10-educator-pipeline/v6-epdm-related-domains.md)
   * [Migration Guide: EPDM to DS 6.0](../10-educator-pipeline/migration-guide-epdm-to-ds6.md)
-  * [EPDM/TPDM Legacy Extension Versions](../10-educator-pipeline//3-legacy-extensions/readme.md) — historical docs for EPDM Community and Core extension releases prior to Data Standard v6
+  * [EPDM/TPDM Legacy Extension Versions](../10-educator-pipeline/3-legacy-extensions/readme.md) — historical docs for EPDM Community and Core extension releases prior to Data Standard v6
 
 :::note
 [Navigate to Educator Pipeline Use Cases](/getting-started/educator-pipeline/use-cases/) for additional context on EPDM backed tools and solutions.
