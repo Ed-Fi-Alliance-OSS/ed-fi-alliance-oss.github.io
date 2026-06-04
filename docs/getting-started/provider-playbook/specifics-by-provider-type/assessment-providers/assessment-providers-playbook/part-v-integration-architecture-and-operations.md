@@ -24,7 +24,7 @@ In this pattern, the vendor owns the full integration runtime. The vendor maps a
 
 This bidirectional pattern is foundational to a compliant integration. Pulling roster data from the Ed-Fi ODS/API ensures that student identity, enrollment context, and assessment registration are aligned to the system of record where results will be stored. Pushing results back to the Ed-Fi ODS/API completes the integration by delivering outcomes that are already resolved to that same identity framework.
 
-Every other integration pattern represents a deviation from it. If this pattern is not followed, identity mismatches become unavoidable. Vendors that rely on external rostering sources or delayed reconciliation introduce inconsistencies that break referential integrity, fragment longitudinal data, and increase operational burden on districts. Bi-directionality is not a convenience. It is the mechanism that ensures assessment data is accurate at load time and usable over time.
+Every other integration pattern represents a deviation from it. If this pattern is not followed, identity mismatches become unavoidable. Vendors that rely on external rostering sources or delayed reconciliation introduce inconsistencies that break referential integrity, fragment longitudinal data, and increase operational burden on districts. Bidirectionality is not a convenience. It is the mechanism that ensures assessment data is accurate at load time and usable over time.
 
 _**What it looks like in practice:**_
 
