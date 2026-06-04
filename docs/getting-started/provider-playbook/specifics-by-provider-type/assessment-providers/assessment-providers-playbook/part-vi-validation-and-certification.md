@@ -116,7 +116,7 @@ Validation must verify:
 
   - Vendor descriptors remain in vendor namespace
 
-  - Shared descriptors use Ed-Fi Alliance namespace
+  - Shared descriptors use the ed-fi.org namespace
 
   - Namespace usage is consistent across environments
 
