@@ -84,7 +84,7 @@ A _**descriptor**_ represents a controlled vocabulary value. It is how the Ed-Fi
 
 A _**namespace**_ represents _ownership of meaning_. It defines who is responsible for the definition and lifecycle of a descriptor. This is a critical distinction in the Ed-Fi Data Standard:
 
-- The default Ed-Fi Alliance namespace is used for shared, cross-domain concepts (such as AcademicSubject or GradeLevel).
+- The default ed-fi.org namespace (governed by the Ed-Fi Alliance) is used for shared, cross-domain concepts (such as AcademicSubject or GradeLevel).
 - A vendor namespace is used for assessment-specific semantics that originate from the provider (such as score names or performance levels).
 
 The Ed-Fi Data Standard separates these namespaces intentionally. This separation ensures that:
