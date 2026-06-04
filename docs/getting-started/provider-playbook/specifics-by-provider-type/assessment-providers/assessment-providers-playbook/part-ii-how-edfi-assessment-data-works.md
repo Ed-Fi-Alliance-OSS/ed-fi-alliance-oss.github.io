@@ -476,7 +476,7 @@ The natural key for this record is the combination of studentUniqueId + assessme
 
 :::note STUDENT IDENTITY — SECTION 8
 
-The studentUniqueId value 1000 is the Ed-Fi Alliance state identifier for this student, resolved from ClearPath's internal vendor identifier fake_student_1 via the identity crosswalk at integration time. The vendor's internal identifier must never be placed in studentUniqueId. Correct identity resolution at this step determines whether every downstream assessment record links accurately to the right student enrollment, demographic, and program data.
+The studentUniqueId value 1000 is the Ed-Fi ODS/API state identifier for this student, resolved from ClearPath's internal vendor identifier fake_student_1 via the identity crosswalk at integration time. The vendor's internal identifier must never be placed in studentUniqueId. Correct identity resolution at this step determines whether every downstream assessment record links accurately to the right student enrollment, demographic, and program data.
 
 :::
 
