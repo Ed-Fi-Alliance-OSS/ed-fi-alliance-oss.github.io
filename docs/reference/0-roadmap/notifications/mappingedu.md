@@ -25,7 +25,7 @@ There are two changes.
 2. The MappingEDU code will be made available under the standard Ed-Fi open
    source license, Apache2. This is intended to allow any users who would like
    to continue to use the service to install and run it locally. The code will
-   be published on the Ed-Fi Exchange on or prior to February 15, 2022 to allow
+   be published on the Ed-Fi Community Tools on or prior to February 15, 2022 to allow
    organizations wishing to continue use of the service time to set it up
    locally before the service EOL date.
 
@@ -72,8 +72,8 @@ recommendations from community colleagues.
 
 ## Where can I find information on running the service using the open source code?
 
-The code will be published on the [Ed-Fi
-Exchange](https://edfi.atlassian.net/wiki/display/EXCHANGE/MappingEDU)
+The code will be published on [Ed-Fi Community
+Tools](https://edfi.atlassian.net/wiki/display/EXCHANGE/MappingEDU)
 
 Follow the README file in the repository for information on installation.
 

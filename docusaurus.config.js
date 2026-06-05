@@ -51,10 +51,7 @@ const config = {
           containerId: 'GTM-KGR2977',
         },
         theme: {
-          customCss: [
-            './src/css/custom.css',
-            './src/css/layout-overrides.css'
-          ],
+          customCss: ['./src/css/custom.css', './src/css/layout-overrides.css'],
         },
       }),
     ],
@@ -99,7 +96,7 @@ const config = {
       {
         id: 'odsApi',
         // path: 'docs/reference/2-ods-api',
-        editUrl: ({ docPath,versionDocsDirPath }) =>
+        editUrl: ({ docPath, versionDocsDirPath }) =>
           `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/${versionDocsDirPath}/${docPath}/`,
         routeBasePath: 'reference/ed-fi-api',
         sidebarPath: './sidebars.js',
@@ -134,7 +131,7 @@ const config = {
       '@docusaurus/plugin-content-docs',
       {
         id: 'dataStandard',
-        editUrl: ({ docPath,versionDocsDirPath }) =>
+        editUrl: ({ docPath, versionDocsDirPath }) =>
           `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/${versionDocsDirPath}/${docPath}`,
         routeBasePath: 'reference/data-exchange/data-standard',
         sidebarPath: './sidebars.js',
@@ -168,7 +165,20 @@ const config = {
       {
         createRedirects(existingPath) {
           if (existingPath.includes('/reference/ed-fi-api')) {
-            return [existingPath.replace('/reference/ed-fi-api', '/reference/ods-api')];
+            return [
+              existingPath.replace(
+                '/reference/ed-fi-api',
+                '/reference/ods-api',
+              ),
+            ];
+          }
+          if (existingPath.includes('/getting-started/community-tools')) {
+            return [
+              existingPath.replace(
+                '/getting-started/community-tools',
+                '/getting-started/edfi-exchange',
+              ),
+            ];
           }
           return undefined;
         },
@@ -227,7 +237,14 @@ const config = {
         ],
       },
       prism: {
-        additionalLanguages: ['powershell', 'csharp', 'sql', 'json', 'ini', 'bash'],
+        additionalLanguages: [
+          'powershell',
+          'csharp',
+          'sql',
+          'json',
+          'ini',
+          'bash',
+        ],
       },
       algolia: {
         // The application ID provided by Algolia
@@ -287,8 +304,8 @@ const config = {
                 position: 'right',
               },
               {
-                href: '/getting-started/edfi-exchange/',
-                label: 'Exchange',
+                href: '/getting-started/community-tools/',
+                label: 'Community Tools',
                 position: 'right',
               },
             ],
@@ -358,7 +375,7 @@ const config = {
     mermaid: true,
     hooks: {
       onBrokenMarkdownLinks: 'throw',
-    }
+    },
   },
   themes: ['@docusaurus/theme-mermaid'],
 };

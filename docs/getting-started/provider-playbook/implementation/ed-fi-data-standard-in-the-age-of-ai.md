@@ -117,7 +117,7 @@ This model works well for its intended purpose. A district's student information
 
 What this model does _not_ support is user-level authorization. When a teacher logs into a dashboard or an AI-powered assistant, the system needs to determine: _which students is this teacher authorized to see?_ The answer depends on the teacher's current section assignments, and it may need to respect temporal boundaries (a teacher should not see data for students who were in their class last year but are not this year).
 
-The Ed-Fi [Analytics Middle Tier](/getting-started/edfi-exchange/technology/analytics-middle-tier/amt-overview) addressed this gap for direct database consumers by providing [row-level security views](/getting-started/edfi-exchange/technology/analytics-middle-tier/user-guide/patterns-for-row-level-user-security) that map users to authorization scopes — district, school, section, or individual student. These views support both dynamic authorization (time-sensitive, based on current enrollment) and static authorization (broader access without temporal restrictions). But these views are SQL constructs tied to the ODS database; they are not accessible through the API, and they are not designed for the kinds of downstream data stores where AI and analytics workloads should run.
+The Ed-Fi [Analytics Middle Tier](/getting-started/community-tools/technology/analytics-middle-tier/amt-overview) addressed this gap for direct database consumers by providing [row-level security views](/getting-started/community-tools/technology/analytics-middle-tier/user-guide/patterns-for-row-level-user-security) that map users to authorization scopes — district, school, section, or individual student. These views support both dynamic authorization (time-sensitive, based on current enrollment) and static authorization (broader access without temporal restrictions). But these views are SQL constructs tied to the ODS database; they are not accessible through the API, and they are not designed for the kinds of downstream data stores where AI and analytics workloads should run.
 
 :::warning
 
@@ -329,7 +329,7 @@ Any architecture that connects AI systems to education data must satisfy three s
 
 ### Enforcing Row-Level Security in the Semantic Layer
 
-The Analytics Middle Tier's [row-level security patterns](/getting-started/edfi-exchange/technology/analytics-middle-tier/user-guide/patterns-for-row-level-user-security) provide a proven model for user-level authorization in educational data. The semantic layer must implement equivalent controls:
+The Analytics Middle Tier's [row-level security patterns](/getting-started/community-tools/technology/analytics-middle-tier/user-guide/patterns-for-row-level-user-security) provide a proven model for user-level authorization in educational data. The semantic layer must implement equivalent controls:
 
 - **User-to-scope mapping.** Each authenticated user is mapped to an authorization scope (district, school, section, or individual student) based on their role and current assignments. This mapping is derived from the Ed-Fi data itself — staff-to-education-organization assignments, teacher-to-section assignments, parent-to-student relationships, and student enrollment records.
 

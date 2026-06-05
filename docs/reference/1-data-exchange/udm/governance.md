@@ -60,7 +60,7 @@ UDM.
 * Adding domains or major entities also generally happens in conjunction with
     field work such as proof-of-concept implementations, or deconstruction of
     technology submitted to the [Ed-Fi
-    Exchange](/getting-started/edfi-exchange).
+    Exchange](/getting-started/community-tools).
 * Adding elements to an existing entity requires a lower burden of proof, but
     still requires documentation of specific use cases from field work.
 * The Alliance periodically reviews how field work is extending concrete
