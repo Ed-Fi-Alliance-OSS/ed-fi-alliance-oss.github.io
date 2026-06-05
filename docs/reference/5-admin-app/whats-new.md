@@ -1,3 +1,7 @@
+---
+sidebar_position: 7
+---
+
 # What's New
 
 This section provides an overview of what's new in the latest versions of the

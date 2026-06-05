@@ -166,6 +166,87 @@ const config = {
     [
       '@docusaurus/plugin-client-redirects',
       {
+        redirects: [
+          // Legacy /system-administrators/* routes redirect directly to their
+          // final destinations (no redirect chains).
+          {
+            from: '/reference/admin-app/system-administrators',
+            to: '/reference/admin-app/getting-started',
+          },
+          {
+            from: '/reference/admin-app/system-administrators/installing',
+            to: '/reference/admin-app/getting-started/installing',
+          },
+          {
+            from: '/reference/admin-app/system-administrators/identity-provider',
+            to: '/reference/admin-app/configuration/identity-provider',
+          },
+          {
+            from: '/reference/admin-app/system-administrators/global-administration-tasks',
+            to: '/reference/admin-app/configuration/global-administration-tasks',
+          },
+          {
+            from: '/reference/admin-app/system-administrators/maintenance',
+            to: '/reference/admin-app/maintenance',
+          },
+          {
+            from: '/reference/admin-app/system-administrators/troubleshooting',
+            to: '/reference/admin-app/troubleshooting',
+          },
+          {
+            from: '/reference/admin-app/system-administrators/yopass-administrators-guide',
+            to: '/reference/admin-app/configuration/yopass-administrators-guide',
+          },
+          {
+            from: '/reference/admin-app/system-administrators/yopass-user-guide',
+            to: '/reference/admin-app/configuration/yopass-administrators-guide/yopass-user-guide',
+          },
+          // Routes changed by the 2025 Admin App docs reorganization.
+          {
+            from: '/reference/admin-app/getting-started/installing/docker-installation',
+            to: '/reference/admin-app/getting-started/docker-installation',
+          },
+          {
+            from: '/reference/admin-app/getting-started/installing/windows-iis-installation',
+            to: '/reference/admin-app/getting-started/windows-iis-installation',
+          },
+          {
+            from: '/reference/admin-app/getting-started/installing/unix-installation',
+            to: '/reference/admin-app/getting-started/unix-installation',
+          },
+          {
+            from: '/reference/admin-app/getting-started/identity-provider',
+            to: '/reference/admin-app/configuration/identity-provider',
+          },
+          {
+            from: '/reference/admin-app/getting-started/security-considerations',
+            to: '/reference/admin-app/configuration/security-considerations',
+          },
+          {
+            from: '/reference/admin-app/getting-started/global-administration-tasks',
+            to: '/reference/admin-app/configuration/global-administration-tasks',
+          },
+          {
+            from: '/reference/admin-app/getting-started/configuration',
+            to: '/reference/admin-app/configuration/configuring-admin-app',
+          },
+          {
+            from: '/reference/admin-app/getting-started/yopass-administrators-guide',
+            to: '/reference/admin-app/configuration/yopass-administrators-guide',
+          },
+          {
+            from: '/reference/admin-app/getting-started/yopass-user-guide',
+            to: '/reference/admin-app/configuration/yopass-administrators-guide/yopass-user-guide',
+          },
+          {
+            from: '/reference/admin-app/getting-started/maintenance',
+            to: '/reference/admin-app/maintenance',
+          },
+          {
+            from: '/reference/admin-app/getting-started/troubleshooting',
+            to: '/reference/admin-app/troubleshooting',
+          },
+        ],
         createRedirects(existingPath) {
           if (existingPath.includes('/reference/ed-fi-api')) {
             return [existingPath.replace('/reference/ed-fi-api', '/reference/ods-api')];
