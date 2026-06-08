@@ -377,6 +377,9 @@ See [Troubleshooting](../troubleshooting.md#backend-troubleshooting) section in 
 
 See [Troubleshooting](../troubleshooting.md#frontend-troubleshooting) section in case you have errors.
 
-## Next Steps
+## Next steps
 
-Once both sites are running, review the [Configuring Ed-Fi Admin App](../configuration/configuring-admin-app.md) page for backend, frontend, and database configuration details, and the [Security Considerations](../configuration/security-considerations.md) page before going to production. Then continue with [Configuring an Identity Provider for Ed-Fi Admin App](../configuration/identity-provider.md) and [Global Administration Tasks](../configuration/global-administration-tasks.md).
+- [Configuring Ed-Fi Admin App](../configuration/configuring-admin-app.md)
+- [Configuring an Identity Provider for Ed-Fi Admin App](../configuration/identity-provider.md)
+- [Security Considerations](../configuration/security-considerations.md)
+- [Global Administration Tasks](../configuration/global-administration-tasks.md)

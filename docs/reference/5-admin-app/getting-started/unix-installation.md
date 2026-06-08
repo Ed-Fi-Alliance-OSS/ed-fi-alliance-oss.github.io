@@ -29,10 +29,19 @@ This is one of three alternative installation paths. If you instead want to run 
 
 2. **Install and build application**:
 
+   :::note
+     Always install from a **stable release tag**, not the default `main` branch (which reflects active development).
+     Visit the [Releases page](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-AdminApp/releases) to find the latest stable release tag, then use it in the command below.
+   :::
+
    ```bash
    sudo -u edfiadminapp bash
    cd /opt/edfiadminapp
-   git clone https://github.com/Ed-Fi-Alliance-OSS/AdminApp-v4.git .
+
+   # Replace the TAG value with the latest release from the Releases page
+   TAG="v4.0.1"
+
+   git clone --branch "$TAG" --depth 1 https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-AdminApp.git .
    npm ci
    npm run build:api
    ```
@@ -173,6 +182,9 @@ This is one of three alternative installation paths. If you instead want to run 
    sudo systemctl reload nginx
    ```
 
-## Next Steps
+## Next steps
 
-Once the service and NGiNX are running, review the [Configuring Ed-Fi Admin App](../configuration/configuring-admin-app.md) page for backend, frontend, and database configuration details, and the [Security Considerations](../configuration/security-considerations.md) page before going to production. Then continue with [Configuring an Identity Provider for Ed-Fi Admin App](../configuration/identity-provider.md) and [Global Administration Tasks](../configuration/global-administration-tasks.md).
+- [Configuring Ed-Fi Admin App](../configuration/configuring-admin-app.md)
+- [Configuring an Identity Provider for Ed-Fi Admin App](../configuration/identity-provider.md)
+- [Security Considerations](../configuration/security-considerations.md)
+- [Global Administration Tasks](../configuration/global-administration-tasks.md)
