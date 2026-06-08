@@ -43,6 +43,7 @@ environment variable configuration.
 
    git clone --branch $TAG --depth 1 https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-AdminApp.git
    ```
+
 2. **Create environment configuration**:
 
    ```bash
