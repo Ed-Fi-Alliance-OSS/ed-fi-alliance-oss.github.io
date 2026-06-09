@@ -34,7 +34,7 @@ number can be loaded **in parallel** within that tier. The **(xx)** notation
 indicates loading dependency order number.
 
 | Color | Domain Category |
-| ----- | --------------- |
+|-------|-----------------|
 | Green | Core structure (descriptors, ed org, calendar, teaching & learning, graduation) |
 | Blue | Student-related entities |
 | Amber | Staff-related entities |
@@ -204,7 +204,7 @@ Download the diagram: [ [PDF Version](https://edfidocs.blob.core.windows.net/$we
 ### Core Structure
 
 | Entity | Order | Notes |
-| ------ | ----- | ----- |
+|--------|-------|-------|
 | Descriptors | 1 | Foundation for all coded values |
 | Local Education Agency | 4 | Required before School |
 | School | 5 | Required before calendar/schedule entities |
@@ -223,7 +223,7 @@ Download the diagram: [ [PDF Version](https://edfidocs.blob.core.windows.net/$we
 ### Student Entities
 
 | Entity | Order | Notes |
-| ------ | ----- | ----- |
+|--------|-------|-------|
 | Student | 3 | Insert only at this stage |
 | Contact | 3 | Insert only at this stage |
 | Student School Assoc. | 13 | Requires Student + School |
@@ -242,7 +242,7 @@ Download the diagram: [ [PDF Version](https://edfidocs.blob.core.windows.net/$we
 ### Staff Entities
 
 | Entity | Order | Notes |
-| ------ | ----- | ----- |
+|--------|-------|-------|
 | Staff | 16 | Insert only at this stage |
 | Staff Ed Org Employment Assoc. | 17 | OR use Assignment Assoc. |
 | Staff Ed Org Assignment Assoc. | 18 | OR use Employment Assoc. |
@@ -254,7 +254,7 @@ Download the diagram: [ [PDF Version](https://edfidocs.blob.core.windows.net/$we
 ### Behavioral & Supplemental Services
 
 | Entity | Order | Notes |
-| ------ | ----- | ----- |
+|--------|-------|-------|
 | Discipline Incident | 6 | Requires Ed Org (no student yet) |
 | Program | 8 | Requires Ed Org |
 | Student Incident Behavior | 14 | Requires Student + Discipline Incident |
@@ -271,7 +271,7 @@ Download the diagram: [ [PDF Version](https://edfidocs.blob.core.windows.net/$we
 ### Cohort Entities
 
 | Entity | Order | Notes |
-| ------ | ----- | ----- |
+|--------|-------|-------|
 | Cohort | 9 | Requires Ed Org |
 | Student Cohort | 14 | Requires Student + Cohort |
 | Staff Cohort | 19 | Requires Staff + Cohort |
