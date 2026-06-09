@@ -1,3 +1,7 @@
+---
+sidebar_position: 4
+---
+
 # Global Administration Tasks – Setup Guide
 
 This guide walks you through the initial global administration setup in the Ed-Fi Admin App. It is designed to help system administrators configure the core elements required for tenant and environment management.
@@ -212,7 +216,13 @@ To create applications in Admin API v2 mode, you must first populate the ODS ins
 
 ### Required Manual Database Configuration
 
-1. Connect to your database using your preferred SQL client
+:::note
+
+Run this script against the **`EdFi_Admin`** database. The `dbo.OdsInstances` and `dbo.OdsInstanceContexts` tables live in `EdFi_Admin`, not in any `EdFi_Ods` database. Connect to `EdFi_Admin` before executing the statements below.
+
+:::
+
+1. Connect to the **`EdFi_Admin`** database using your preferred SQL client
 2. Execute the following SQL to insert ODS instance records:
 
 ```sql
