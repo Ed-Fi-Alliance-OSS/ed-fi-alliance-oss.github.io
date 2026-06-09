@@ -42,7 +42,6 @@ indicates loading dependency order number.
 | Purple | Cohort entities |
 
 ```mermaid
-%%{init: { 'flowchart': {'htmlLabels': true}, 'interaction': { 'navigationEnabled': true }, 'pan': { 'type': 'mouse', 'amount': 50 }, 'zoom': { 'type': 'mouse', 'amount': 0.3 } } }%%
 flowchart TD
     %% ─── Styles ───────────────────────────────────────────────────
     classDef core    fill:#b2f2bb,stroke:#2f9e44,color:#1a4a1f,font-weight:bold
