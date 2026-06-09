@@ -22,7 +22,7 @@ considerations for developing a robust and scalable solution.
 * [Error Response Knowledge Base](./error-response-knowledge-base.md)
 * [Improve Paging Performance on Large API Resources](./improve-paging-performance-on-large-api-resources.md)
 * [Improve Paging Performance with Partitioned Cursor Paging](./improve-paging-performance-cursor-paging.md)
-* [Resource Dependency Order](./resource-dependency-order.mdx)
+* [Resource Dependency Order](./resource-dependency-order.md)
 * [Using Code Generation To Create an SDK](./using-code-generation-to-create-an-sdk.md)
 * [Using the Online Documentation](./using-the-online-documentation.md)
 * [Using the Sandbox Administration Portal](./using-the-sandbox-administration-portal.md)
