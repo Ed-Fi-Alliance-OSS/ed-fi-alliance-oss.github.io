@@ -175,7 +175,7 @@ const config = {
           },
           {
             from: '/reference/admin-app/system-administrators/installing',
-            to: '/reference/admin-app/getting-started/installing',
+            to: '/reference/admin-app/getting-started',
           },
           {
             from: '/reference/admin-app/system-administrators/identity-provider',

@@ -16,13 +16,14 @@ deployments. It consists of:
 
 - **Frontend**: React-based single-page application (SPA)
 - **Backend API**: Node.js/NestJS application
-- **Database**: PostgreSQL database for application data
+- **Database**: PostgreSQL or SQL Server database for application data
 - **Authentication**: OpenID Connect (OIDC) integration (typically Keycloak)
 
 ### Required Components
 
-- **PostgreSQL Database** (Required)
-- **OIDC Provider** (Required) - Keycloak or similar
+- **PostgreSQL or SQL Server Database** (Required) — an empty database created
+  for the Admin App (the examples use the name `sbaa`)
+- **OIDC Provider** (Required) - Keycloak or similar see
   - [Configuring an Identity Provider for Ed-Fi Admin App](../configuration/identity-provider.md)
 - **Reverse Proxy** (Recommended) - NGiNX, IIS, or similar
   - Provides SSL/TLS termination and security headers
@@ -58,18 +59,31 @@ Microsoft Entra ID.
 ### Software Dependencies
 
 - **Node.js**: Version 22.0.0 or higher
-- **PostgreSQL**: Version 16 or higher
 - **SSL/TLS Certificates**: For HTTPS endpoints
 
-:::tip
+## Choose an installation path
 
-Microsoft SQL Server support will be added in an upcoming release.
+The Ed-Fi Admin App can be installed in one of three **alternative** ways. These
+are independent paths, not sequential steps — pick the one that matches your
+target environment and follow that page from start to finish.
 
+| Path | When to use |
+| --- | --- |
+| [Docker Compose Installation](./docker-installation.md) | The easiest path. Run the Admin App and its dependencies as containers, on-premises or in the Cloud. |
+| [Windows IIS Installation](./windows-iis-installation.md) | Host the backend API and frontend on Windows Server using Internet Information Services (IIS). |
+| [Unix-like Systems Installation](./unix-installation.md) | Host the backend API with systemd and serve the frontend with NGiNX on a Linux or other Unix-like server. |
+
+:::note
+You only need to complete **one** of the paths above. After installing,
+configure the application using the
+[Configuring Ed-Fi Admin App](../configuration/configuring-admin-app.md) page and review the
+[Security Considerations](../configuration/security-considerations.md) before going to
+production.
 :::
 
-## Contents
+## Next steps
 
-- [Installing Ed-Fi Admin App](./installing.md)
-- [Docker Compose Installation](./docker-installation.md)
-- [Windows IIS Installation](./windows-iis-installation.md)
-- [Unix-like Systems Installation](./unix-installation.md)
+- [Configuring Ed-Fi Admin App](../configuration/configuring-admin-app.md)
+- [Configuring an Identity Provider for Ed-Fi Admin App](../configuration/identity-provider.md)
+- [Security Considerations](../configuration/security-considerations.md)
+- [Global Administration Tasks](../configuration/global-administration-tasks.md)
