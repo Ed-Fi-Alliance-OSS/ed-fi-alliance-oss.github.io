@@ -24,11 +24,12 @@ graph LR
 
     subgraph AdminLayer["<b>Administration Layer</b>"]
         adminapp["Ed-Fi Admin App"]
+        adminappapi["Ed-Fi Admin App API"]
     end
 
     subgraph ApiLayer["<b>API Layer</b>"]
         odsapi["Ed-Fi ODS/API"]
-        adminapi["Ed-Fi Admin API"]
+        adminapi["Ed-Fi ODS Admin API"]
     end
 
     subgraph Data["<b>Data Layer</b>"]
@@ -39,10 +40,11 @@ graph LR
     end
 
     idp -->|authenticates users| adminapp
-    adminapi -->|read/write| appDb
-    adminapp -->|read/write| adminapi
+    adminappapi -->|read/write| appDb
+    adminapp -->|read/write| adminappapi
     adminapi -->|read/write| adminDb
     adminapi -->|read/write| securityDb
+    adminappapi -->|read/write| adminapi
     odsapi -->|read config| adminDb
     odsapi -->|read config| securityDb
     odsapi -->|read/write| ods
@@ -55,8 +57,9 @@ graph LR
 
 How the components relate:
 
-- The **Ed-Fi Admin App** is the web user interface that administrators sign in to. It stores its own application state (users, teams, ownership) in the **Admin App database**, and it performs all credential and configuration management by calling the **Ed-Fi ODS Admin API**.
-- The **Ed-Fi Admin API** reads and writes the **EdFi\_Admin** database (vendors, applications, claimset assignments, credentials) and the **EdFi\_Security** database (claim/resource authorization metadata).
+- The **Ed-Fi Admin App** is the web user interface (a single-page application) that administrators sign in to. It does not access any database directly; instead it sends every request to its backend, the **Ed-Fi Admin App API**.
+- The **Ed-Fi Admin App API** is the backend for the Admin App. It stores the application's own state (users, teams, ownership) in the **Admin App database**, and it performs all credential and configuration management by calling the **Ed-Fi ODS Admin API**.
+- The **Ed-Fi ODS Admin API** reads and writes the **EdFi\_Admin** database (vendors, applications, claimset assignments, credentials) and the **EdFi\_Security** database (claim/resource authorization metadata).
 - The **Ed-Fi ODS/API** serves data to vendors and integrating systems from one or more **ODS instances** (the `EdFi_Ods_*` databases), and reads the same `EdFi_Admin` and `EdFi_Security` databases at runtime to authenticate and authorize API clients.
 - The **Identity Provider** authenticates Admin App users; it is not involved in authenticating API clients (which use the credentials managed in `EdFi_Admin`).
 
