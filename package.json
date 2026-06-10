@@ -25,7 +25,7 @@
     "@docusaurus/theme-mermaid": "^3.10.1",
     "@mdx-js/react": "^3.1.1",
     "clsx": "^2.0.0",
-    "eslint": "^10.3.0",
+    "eslint": "^10.4.1",
     "prism-react-renderer": "^2.4.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
@@ -36,9 +36,9 @@
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.7.0",
     "@docusaurus/types": "3.10.1",
-    "eslint-plugin-mdx": "^3.7.0",
+    "eslint-plugin-mdx": "^3.8.1",
     "markdownlint-cli2": "^0.22.1",
-    "prettier": "^3.8.3"
+    "prettier": "^3.8.4"
   },
   "browserslist": {
     "production": [
