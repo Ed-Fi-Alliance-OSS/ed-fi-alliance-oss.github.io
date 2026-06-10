@@ -58,4 +58,3 @@ Below, please find links to additional KB articles that your teams will find hel
   * [Year 2 and Beyond](./support-plan/year-2-and-beyond.md)
   * [Parallel Year - Vendor Participation Best Practices](./support-plan/parallel-year-vendor-participation-best-practices.md)
 * [Admin App Deployment Guide](./deployment-guide/readme.md)
-  * [Roadmap to Success](./deployment-guide/roadmap-to-success.md)
