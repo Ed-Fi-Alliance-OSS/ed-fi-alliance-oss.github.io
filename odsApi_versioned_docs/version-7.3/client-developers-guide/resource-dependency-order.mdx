@@ -31,18 +31,26 @@ database or by authorization.
 
 ## Loading Sequence
 
-The flow runs **top-to-bottom** following dependency order. Each tier must be
-fully loaded before proceeding to the next. Entities sharing the same order
-number can be loaded **in parallel** within that tier. The **(xx)** notation
-indicates loading dependency order number.
+The diagram is organized into two sections:
+
+**Core Loading Sequence (top)** — flows top-to-bottom following dependency
+order. Each tier must be fully loaded before proceeding to the next. Nodes at
+the same tier can be loaded **in parallel**. The **(xx)** notation indicates
+loading dependency order number. The dashed _Enrollment Data Domain_ node is an
+abstraction placeholder — it expands into the full detail shown in the lower
+section.
+
+**Enrollment Data Domain (bottom)** — shows the entities loaded after student
+enrollment is established. These nodes are largely independent of each other
+and can be loaded in parallel. Only Teaching & Learning #2 has a dependency
+within this group, flowing into Student Grade Domain.
 
 | Color | Domain Category |
 | ----- | --------------- |
-| Green | Core structure (descriptors, ed org, calendar, teaching & learning, graduation) |
+| Green | Core structure (descriptors, ed org, calendar, teaching & learning, graduation, cohort) |
 | Blue | Student-related entities |
-| Amber | Staff-related entities |
-| Red/Pink | Behavioral & supplemental services |
-| Purple | Cohort entities |
+| Amber/Gold | Staff-related entities |
+| Dashed border | Abstraction placeholder (expands into Enrollment Data Domain) |
 
 <Mermaid value={diagram} viewport />
 
