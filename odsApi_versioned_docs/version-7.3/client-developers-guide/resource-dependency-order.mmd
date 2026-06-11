@@ -16,18 +16,13 @@ flowchart TD
     %% ─── Tier 3 — parallel ────────────────────────────────────────
     CAL["<b>School Calendar Domain</b><br/><small>Grading Period (6)</small><br/><small>Calendar (6)</small><br/><small>Calendar Date (7)</small><br/><small>Session (7)</small>"]:::core
 
-    TL1["<b>Teaching &amp; Learning Domain #1</b><br/><small>Location (6) · Class Period (6)</small><br/><small>Bell Schedule (7)</small><br/><small>Course (8)</small><br/><small>Course Offering (9)</small><br/><small>Section (10)</small>"]:::core
-
-    %% ─── Discipline Incident hangs early ──────────────────────────
-    DISCI["<b>Discipline Domain</b><br/><small>Discipline Incident (6)</small>"]:::supp
+    TL1["<b>Teaching &amp; Learning Domain</b><br/><small>Location (6) · Class Period (6)</small><br/><small>Bell Schedule (7)</small><br/><small>Course (8)</small><br/><small>Course Offering (9)</small><br/><small>Section (10)</small>"]:::core
 
     %% ─── Tier 4 ───────────────────────────────────────────────────
     GRAD["<b>Graduation Domain</b><br/><small>Graduation Plans (12)</small>"]:::core
 
-    %% ─── Tier 5 — four parallel branches ──────────────────────────
+    %% ─── Tier 5 — parallel branches ──────────────────────────────
     STAFF["<b>Staff</b> (16)<br/><small>(Insert Only)</small>"]:::staff
-
-    COH9["<b>Cohort</b> (9)"]:::cohort
 
     STU["<b>Student</b> (3)<br/><small>(Insert Only)</small>"]:::student
 
@@ -38,48 +33,46 @@ flowchart TD
 
     ENROLL["<b>Student Enrollment Domain</b><br/><small>Student School Assoc. (13)</small>"]:::student
 
-    %% ─── Tier 7 — Dependency order 14 (parallel) ──────────────────
-    STUDENTID["<b>Student ID &amp; Demographics</b><br/><small>Student (Update) (14)</small><br/><small>Student Ed Org Assoc. (14)</small><br/><small>Student Contact Assoc. (14)</small>"]:::student
+    %% ─── Cohort chain ─────────────────────────────────────────────
+    COH14["<b>Student Cohort Domain</b><br/><small>Cohort (9)</small>"]:::core
 
-    COH14["<b>Student Cohort Domain</b><br/><small>Student Cohort (14)</small>"]:::cohort
-
-    TL2["<b>Teaching &amp; Learning #2</b><br/><small>Student Section Assoc. (14)</small>"]:::core
-
-    ATT["<b>Student Attendance Domain</b><br/><small>School Attendance Event (14)</small><br/><small>Section Attendance Event (14)</small>"]:::student
-
-    DIS14["<b>Discipline Domain</b><br/><small>Student Incident Behavior (14)</small>"]:::supp
-
-    ACADREC["<b>Student Academic Record</b><br/><small>Academic Record (14)</small>"]:::student
-
-    ALTSUPP["<b>Alt. Supplemental Services</b><br/><small>Program (8)</small><br/><small>Student Program (14)</small><br/><small>Student CTE (14)</small><br/><small>Student Homeless (14)</small><br/><small>Lang. Instruction (14)</small><br/><small>Student Migrant (14)</small><br/><small>Neglected / Delinquent (14)</small><br/><small>School Food Service (14)</small><br/><small>Title I Part A (14)</small>"]:::supp
-
-    %% ─── Tier 8 — Dependency order 15 ────────────────────────────
-    CONTUPD["<b>Contact</b> (Update) (15)"]:::student
-    GRADE["<b>Student Grade Domain</b><br/><small>Grade (15)</small>"]:::core
-
-    %% ─── Tier 9 — Dependency order 19 ────────────────────────────
+    %% ─── Tier 9 — Staff domains ───────────────────────────────────
     STAFFREM["<b>Remaining Staff Domains</b><br/><small>Staff (Update) (19)</small><br/><small>Staff School Assoc. (19)</small>"]:::staff
 
-    STAFFSEC["<b>Teaching &amp; Learning #3</b><br/><small>Staff Section Assoc. (19)</small>"]:::core
+    STAFFSEC["<b>Teaching &amp; Learning #3</b><br/><small>Staff Section Assoc. (19)</small>"]:::staff
 
-    STAFFCOH["<b>Student Cohort Domain</b><br/><small>Staff Cohort (19)</small>"]:::cohort
+    STAFFCOH["<b>Student Cohort Domain</b><br/><small>Staff Cohort (19)</small>"]:::staff
 
-    TRANSCRIPT["<b>Student Academic Record</b><br/><small>Course Transcript (19)</small><br/><small>Student Special Ed. (19)</small>"]:::student
+    %% ─── Enrollment Data Subsystem ────────────────────────────────
+    subgraph ENROLL_DATA["Enrollment Data Domain"]
+        direction LR
+        STUDENTID["<b>Student ID &amp; Demographics</b><br/><small>Student (Update) (14)</small><br/><small>Student Ed Org Assoc. (14)</small><br/><small>Student Contact Assoc. (14)</small><br/><small>Contact (Update) (15)</small>"]:::student
 
-    DISACTION["<b>Discipline Domain</b><br/><small>Discipline Action (19)</small>"]:::supp
+        ATT["<b>Student Attendance Domain</b><br/><small>School Attendance Event (14)</small><br/><small>Section Attendance Event (14)</small>"]:::student
+
+        TL2["<b>Teaching &amp; Learning #2</b><br/><small>Student Section Assoc. (14)</small>"]:::core
+        GRADE["<b>Student Grade Domain</b><br/><small>Grade (15)</small>"]:::core
+
+        COH_STU["<b>Student Cohort Domain</b><br/><small>Student Cohort (14)</small>"]:::student
+
+        ACADREC["<b>Student Academic Record</b><br/><small>Academic Record (14)</small><br/><small>Course Transcript (19)</small>"]:::student
+
+        ALTSUPP["<b>Alt. Supplemental Services</b><br/><small>Program (8)</small><br/><small>Student Program (14)</small><br/><small>Student CTE (14)</small><br/><small>Student Homeless (14)</small><br/><small>Lang. Instruction (14)</small><br/><small>Student Migrant (14)</small><br/><small>Neglected / Delinquent (14)</small><br/><small>School Food Service (14)</small><br/><small>Title I Part A (14)</small>"]:::student
+
+        DIS14["<b>Discipline Domain</b><br/><small>Discipline Incident (6)</small><br/><small>Student Incident Behavior (14)</small><br/><small>Discipline Action (19)</small>"]:::student
+
+        TL2 --> GRADE
+    end
 
     %% ─── Connections ───────────────────────────────────────────────
     DESC --> EDORG
 
     EDORG --> CAL
-    EDORG --> TL1
-
-    CAL --> DISCI
-    CAL --> GRAD
+    CAL --> TL1
     TL1 --> GRAD
 
     GRAD --> STAFF
-    GRAD --> COH9
+    GRAD --> COH14
     GRAD --> STU
     GRAD --> CONT
 
@@ -87,22 +80,10 @@ flowchart TD
     STU --> ENROLL
     CONT --> ENROLL
 
-    STAFFEDORG --> STUDENTID
-    COH9 --> COH14
-    ENROLL --> STUDENTID
-    ENROLL --> TL2
-    ENROLL --> ATT
-    ENROLL --> DIS14
-    ENROLL --> ACADREC
-    ENROLL --> ALTSUPP
-    DISCI --> DIS14
-
-    STUDENTID --> CONTUPD
-    TL2 --> GRADE
+    ENROLL --> ENROLL_DATA
 
     STAFFEDORG --> STAFFREM
-    TL2 --> STAFFSEC
+    STAFFEDORG --> STAFFSEC
+    STAFFEDORG --> STAFFCOH
+    COH14 --> ENROLL_DATA
     COH14 --> STAFFCOH
-    ACADREC --> TRANSCRIPT
-    ALTSUPP --> TRANSCRIPT
-    DIS14 --> DISACTION
