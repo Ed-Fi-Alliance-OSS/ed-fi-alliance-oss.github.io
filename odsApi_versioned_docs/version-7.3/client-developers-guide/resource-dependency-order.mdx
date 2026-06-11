@@ -1,5 +1,6 @@
 import Mermaid from '@theme/Mermaid';
-import diagram from './resource-dependency-order.mmd?raw';
+import coreDiagram from './resource-dependency-order-core.mmd?raw';
+import enrollmentDiagram from './resource-dependency-order-enrollment.mmd?raw';
 
 # Resource Dependency Order
 
@@ -49,54 +50,72 @@ within this group, flowing into Student Grade Domain.
 | ----- | --------------- |
 | Green | Core structure (descriptors, ed org, calendar, teaching & learning, graduation, cohort) |
 | Blue | Student-related entities |
-| Amber/Gold | Staff-related entities |
+| Gold | Staff-related entities |
 | Dashed border | Abstraction placeholder (expands into Enrollment Data Domain) |
 
-<Mermaid value={diagram} viewport />
+### Core Loading Sequence
+
+<Mermaid value={coreDiagram} viewport />
+
+### Enrollment Data Domain
+
+<Mermaid value={enrollmentDiagram} viewport />
 
 Download the diagram: [ [PDF Version](https://edfidocs.blob.core.windows.net/$web/assets/reference/ed-fi-api/Ed-Fi%20-%20Data%20Model%20Logical%20Loading%20Sequence%20V2%20(1).pdf) | [Vizio format](https://edfidocs.blob.core.windows.net/$web/assets/reference/ed-fi-api/Ed-Fi%20-%20Data%20Model%20Logical%20Loading%20Sequence%20V2%20(1).vsdx) ]
 
 ## Domain Reference
 
-### Core Structure
+### Core Loading Sequence
+
+#### Education Organization Domain
 
 | Entity | Order | Notes |
 | ------ | ----- | ----- |
 | Descriptors | 1 | Foundation for all coded values |
 | Local Education Agency | 4 | Required before School |
 | School | 5 | Required before calendar/schedule entities |
+
+#### School Calendar Domain
+
+| Entity | Order | Notes |
+| ------ | ----- | ----- |
 | Grading Period | 6 | Parallel with Calendar |
 | Calendar | 6 | Parallel with Grading Period |
 | Calendar Date | 7 | Requires Calendar |
 | Session | 7 | Requires Grading Period |
+
+#### Teaching & Learning Domain
+
+| Entity | Order | Notes |
+| ------ | ----- | ----- |
 | Location | 6 | Parallel with Class Period |
 | Class Period | 6 | Parallel with Location |
 | Bell Schedule | 7 | Requires Class Period |
 | Course | 8 | Requires Ed Org |
 | Course Offering | 9 | Requires Course + Session |
 | Section | 10 | Requires Course Offering + Location + Class Period |
+
+#### Graduation Domain
+
+| Entity | Order | Notes |
+| ------ | ----- | ----- |
 | Graduation Plans | 12 | Requires Section |
 
-### Student Entities
+#### Student & Contact
 
 | Entity | Order | Notes |
 | ------ | ----- | ----- |
 | Student | 3 | Insert only at this stage |
 | Contact | 3 | Insert only at this stage |
 | Student School Assoc. | 13 | Requires Student + School |
-| Student (Update) | 14 | Full demographic update |
-| Student Ed Org Assoc. | 14 | Requires Student + Ed Org |
-| Student Contact Assoc. | 14 | Requires Student + Contact |
-| Student Section Assoc. | 14 | Requires Student + Section |
-| School Attendance Event | 14 | Requires Student School Assoc. |
-| Section Attendance Event | 14 | Requires Student Section Assoc. |
-| Academic Record | 14 | Requires Student School Assoc. |
-| Contact (Update) | 15 | Full contact detail update |
-| Grade | 15 | Requires Student Section Assoc. + Grading Period |
-| Course Transcript | 19 | Requires Academic Record + Section |
-| Student Special Education | 19 | Requires Student Program |
 
-### Staff Entities
+#### Student Cohort Domain
+
+| Entity | Order | Notes |
+| ------ | ----- | ----- |
+| Cohort | 9 | Requires Ed Org |
+
+#### Staff Ed Org Assoc. Domain
 
 | Entity | Order | Notes |
 | ------ | ----- | ----- |
@@ -108,13 +127,49 @@ Download the diagram: [ [PDF Version](https://edfidocs.blob.core.windows.net/$we
 | Staff Section Assoc. | 19 | Requires Staff + Section |
 | Staff Cohort | 19 | Requires Staff + Cohort |
 
-### Behavioral & Supplemental Services
+### Enrollment Data Domain
+
+#### Student ID & Demographics
 
 | Entity | Order | Notes |
 | ------ | ----- | ----- |
-| Discipline Incident | 6 | Requires Ed Org (no student yet) |
+| Student (Update) | 14 | Full demographic update |
+| Student Ed Org Assoc. | 14 | Requires Student + Ed Org |
+| Student Contact Assoc. | 14 | Requires Student + Contact |
+| Contact (Update) | 15 | Full contact detail update |
+
+#### Student Attendance Domain
+
+| Entity | Order | Notes |
+| ------ | ----- | ----- |
+| School Attendance Event | 14 | Requires Student School Assoc. |
+| Section Attendance Event | 14 | Requires Student Section Assoc. |
+
+#### Teaching & Learning #2
+
+| Entity | Order | Notes |
+| ------ | ----- | ----- |
+| Student Section Assoc. | 14 | Requires Student + Section |
+| Grade | 15 | Requires Student Section Assoc. + Grading Period |
+
+#### Student Cohort Domain
+
+| Entity | Order | Notes |
+| ------ | ----- | ----- |
+| Student Cohort | 14 | Requires Student + Cohort |
+
+#### Student Academic Record
+
+| Entity | Order | Notes |
+| ------ | ----- | ----- |
+| Academic Record | 14 | Requires Student School Assoc. |
+| Course Transcript | 19 | Requires Academic Record + Section |
+
+#### Alt. Supplemental Services
+
+| Entity | Order | Notes |
+| ------ | ----- | ----- |
 | Program | 8 | Requires Ed Org |
-| Student Incident Behavior | 14 | Requires Student + Discipline Incident |
 | Student Program | 14 | Requires Student + Program |
 | Student CTE | 14 | Requires Student Program |
 | Student Homeless | 14 | Requires Student Program |
@@ -123,15 +178,14 @@ Download the diagram: [ [PDF Version](https://edfidocs.blob.core.windows.net/$we
 | Neglected / Delinquent | 14 | Requires Student Program |
 | School Food Service | 14 | Requires Student Program |
 | Title I Part A | 14 | Requires Student Program |
-| Discipline Action | 19 | Requires Student Incident Behavior |
 
-### Cohort Entities
+#### Discipline Domain
 
 | Entity | Order | Notes |
 | ------ | ----- | ----- |
-| Cohort | 9 | Requires Ed Org |
-| Student Cohort | 14 | Requires Student + Cohort |
-| Staff Cohort | 19 | Requires Staff + Cohort |
+| Discipline Incident | 6 | Requires Ed Org |
+| Student Incident Behavior | 14 | Requires Student + Discipline Incident |
+| Discipline Action | 19 | Requires Student Incident Behavior |
 
 ## Dependency Order Endpoint
 
