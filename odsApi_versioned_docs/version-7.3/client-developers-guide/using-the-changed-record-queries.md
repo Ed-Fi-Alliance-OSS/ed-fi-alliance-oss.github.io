@@ -194,7 +194,7 @@ following elements:
 
 While some use cases may be very focused on a small subset of Ed-Fi data, for
 more expansive processing consider using the [resource dependency metadata
-endpoint](../client-developers-guide/resource-dependency-order.mdx) to
+endpoint](../client-developers-guide/resource-dependency-order/readme.mdx) to
 correctly order the processing for the referential integrity defined in the
 Ed-Fi model.
 
