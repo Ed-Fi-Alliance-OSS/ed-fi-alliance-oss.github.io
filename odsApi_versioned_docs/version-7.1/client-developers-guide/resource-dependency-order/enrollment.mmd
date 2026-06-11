@@ -1,0 +1,21 @@
+%%{init: { 'flowchart': {'htmlLabels': true} } }%%
+flowchart TD
+    %% ─── Styles ───────────────────────────────────────────────────
+    classDef student fill:#a5d8ff,stroke:#1971c2,color:#0c2e5c,padding:10px 16px,border-radius:6px
+
+    STUDENTID["<b>Student ID &amp; Demographics</b><br/><small>Student (Update) (14)</small><br/><small>Student Ed Org Assoc. (14)</small><br/><small>Student Contact Assoc. (14)</small><br/><small>Contact (Update) (15)</small>"]:::student
+
+    ATT["<b>Student Attendance Domain</b><br/><small>School Attendance Event (14)</small><br/><small>Section Attendance Event (14)</small>"]:::student
+
+    TL2["<b>Teaching &amp; Learning #2</b><br/><small>Student Section Assoc. (14)</small>"]:::student
+    GRADE["<b>Student Grade Domain</b><br/><small>Grade (15)</small>"]:::student
+
+    COH_STU["<b>Student Cohort Domain</b><br/><small>Student Cohort (14)</small>"]:::student
+
+    ACADREC["<b>Student Academic Record</b><br/><small>Academic Record (14)</small><br/><small>Course Transcript (19)</small>"]:::student
+
+    ALTSUPP["<b>Alt. Supplemental Services</b><br/><small>Program (8)</small><br/><small>Student Program (14)</small><br/><small>Student CTE (14)</small><br/><small>Student Homeless (14)</small><br/><small>Lang. Instruction (14)</small><br/><small>Student Migrant (14)</small><br/><small>Neglected / Delinquent (14)</small><br/><small>School Food Service (14)</small><br/><small>Title I Part A (14)</small>"]:::student
+
+    DIS14["<b>Discipline Domain</b><br/><small>Discipline Incident (6)</small><br/><small>Student Incident Behavior (14)</small><br/><small>Discipline Action (19)</small>"]:::student
+
+    TL2 --> GRADE
