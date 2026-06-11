@@ -37,11 +37,11 @@ The diagram is organized into two sections:
 **Core Loading Sequence (top)** — flows top-to-bottom following dependency
 order. Each tier must be fully loaded before proceeding to the next. Nodes at
 the same tier can be loaded **in parallel**. The **(xx)** notation indicates
-loading dependency order number. The dashed _Enrollment Data Domain_ node is an
+loading dependency order number. The dashed _Additional Student Domain_ node is an
 abstraction placeholder — it expands into the full detail shown in the lower
 section.
 
-**Enrollment Data Domain (bottom)** — shows the entities loaded after student
+**Additional Student Domain (bottom)** — shows the entities loaded after student
 enrollment is established. These nodes are largely independent of each other
 and can be loaded in parallel. Only Teaching & Learning #2 has a dependency
 within this group, flowing into Student Grade Domain.
@@ -51,13 +51,13 @@ within this group, flowing into Student Grade Domain.
 | Green | Core structure (descriptors, ed org, calendar, teaching & learning, graduation, cohort) |
 | Blue | Student-related entities |
 | Gold | Staff-related entities |
-| Dashed border | Abstraction placeholder (expands into Enrollment Data Domain) |
+| Dashed border | Abstraction placeholder (expands into Additional Student Domain) |
 
 ### Core Loading Sequence
 
 <Mermaid value={coreDiagram} viewport />
 
-### Enrollment Data Domain
+### Additional Student Domain
 
 <Mermaid value={enrollmentDiagram} viewport />
 
@@ -127,7 +127,7 @@ Download the diagram: [ [PDF Version](https://edfidocs.blob.core.windows.net/$we
 | Staff Section Assoc. | 19 | Requires Staff + Section |
 | Staff Cohort | 19 | Requires Staff + Cohort |
 
-### Enrollment Data Domain
+### Additional Student Domain
 
 #### Student ID & Demographics
 
