@@ -31,7 +31,7 @@ The Ed-Fi ODS / API is an enterprise-class customizable system. The source code 
 
 The Ed-Fi ODS / API is open source, meaning that all the source code is available to licensees who are free to modify and enhance the system. Many implementers choose to start with a core installation to get running quickly, and then customize or swap out modules to improve fit with their environment and to ready the solution for production deployment. For example, the solution includes log4net, a highly performant, configurable, and free system for event logging — but users can swap that module out and use the logging system of their choice.
 
-The Ed-Fi Alliance also welcomes code contributions from field implementers and hosts a platform called the Ed-Fi Exchange that allows licensees to share code modules. For a listing of available technology and information about how to contribute code, see [exchange.ed-fi.org](http://exchange.ed-fi.org/).
+The Ed-Fi Alliance also welcomes code contributions from field implementers and hosts a platform called the Ed-Fi Community Tools that allows licensees to share code modules. For a listing of available technology and information about how to contribute code, see [exchange.ed-fi.org](http://exchange.ed-fi.org/).
 
 ## Unique ID Endpoints: Some Assembly Required
 

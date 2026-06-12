@@ -633,7 +633,7 @@ accounts be used as connection criteria from the API.
 ### Sandbox Deployment in Azure and AWS Environments
 
 Documentation and scripts for deployment of an Ed-Fi ODS / API instance in
-Microsoft Azure and Amazon Web Services can be found in the Ed-Fi Exchange. To
+Microsoft Azure and Amazon Web Services can be found in the Ed-Fi Community Tools. To
 locate these, navigate
 to [https://exchange.ed-fi.org](https://exchange.ed-fi.org), and browse to the
 following entries:
@@ -643,7 +643,7 @@ following entries:
 
 :::warning
 
-These scripts in the Ed-Fi Exchange may have been developed for older versions
+These scripts in the Ed-Fi Community Tools may have been developed for older versions
 of the Ed-Fi ODS/API, and therefore may need modification to work with this
 version.
 

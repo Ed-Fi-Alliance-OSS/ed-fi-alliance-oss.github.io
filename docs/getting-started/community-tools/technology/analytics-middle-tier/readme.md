@@ -3,7 +3,7 @@
 :::caution
 
 The Ed-Fi Alliance no longer recommends new production dependencies
-on Analytics Middle Tier; see the Ed-Fi Exchange announcement above for more
+on Analytics Middle Tier; see the Ed-Fi Community Tools announcement above for more
 information.
 
 :::

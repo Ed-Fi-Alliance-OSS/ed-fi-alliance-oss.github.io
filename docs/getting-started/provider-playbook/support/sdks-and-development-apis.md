@@ -28,7 +28,7 @@ A few notes:
 * Please note that these installers are community-maintained, so may not track the latest versions of the APIs.
 * These installers produce a non-extended Ed-Fi API (see section [API Extensions](../../provider-playbook/implementation/ed-fi-api-fundamentals/api-extensions.md)). If the API you are using is extended, you will need to work with the API host on resources to support your development.
 
-These cloud-based installers are available on the [Ed-Fi Exchange](https://exchange.ed-fi.org/):
+These cloud-based installers are available on the [Ed-Fi Community Tools](https://exchange.ed-fi.org/):
 
 * [AWS](https://edfi.atlassian.net/wiki/pages/viewpage.action?pageId=22492394)
 * [Azure](https://edfi.atlassian.net/wiki/pages/viewpage.action?pageId=22487832)

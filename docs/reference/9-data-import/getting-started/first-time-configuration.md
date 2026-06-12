@@ -41,7 +41,7 @@ Configure the following fields:
   provided needs to enable authorized access read the Ed-Fi ODS / API /schools
   resource. If you use an "out of box" claimset, then you will need to use
   either the "Ed-Fi Sandbox" or "SIS Vendor" claim sets. The "Assessment Vendor"
-  claim set does not enabled with this access. Alternatively, you can use [Admin App](/getting-started/edfi-exchange/technology/ods-admin-app)
+  claim set does not enabled with this access. Alternatively, you can use [Admin App](/getting-started/community-tools/technology/ods-admin-app)
   to create a custom claim set.
 :::
 

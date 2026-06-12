@@ -14,7 +14,7 @@ This documentation is for technical professionals who work with educational data
 :::info
 **Additional installation options**
 
-For those interested in getting an Ed-Fi ODS / API instance up and running quickly, but do not have developer tools or experience, we recommend you consult the [Docker Deployment 2.x](https://edfi.atlassian.net/wiki/spaces/EDFITOOLS/pages/24119348/Docker+Deployment+2.x) page and the Ed-Fi Exchange, which provides a number of alternatives for installing the Ed-Fi ODS / API. These options include support for deploying into public cloud platforms including Amazon Web Services, Google Cloud, and Microsoft Azure as well as on-premises and virtual machine targets.
+For those interested in getting an Ed-Fi ODS / API instance up and running quickly, but do not have developer tools or experience, we recommend you consult the [Docker Deployment 2.x](https://edfi.atlassian.net/wiki/spaces/EDFITOOLS/pages/24119348/Docker+Deployment+2.x) page and the Ed-Fi Community Tools, which provides a number of alternatives for installing the Ed-Fi ODS / API. These options include support for deploying into public cloud platforms including Amazon Web Services, Google Cloud, and Microsoft Azure as well as on-premises and virtual machine targets.
 :::
 
 ## Tested Configurations
