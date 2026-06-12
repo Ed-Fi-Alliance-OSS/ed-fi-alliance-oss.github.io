@@ -71,6 +71,38 @@ export default {
         },
       ],
     },
+    {
+      productName: 'EschoolPlus',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/ESP_Logo.png',
+      website:
+        'https://www.powerschool.com/operations/student-information-systems/eschoolplus-sis/',
+      validThrough: 'June 5, 2027',
+      verifyingAgencies: ['San Angelo, TX', 'Cypress-Fairbanks ISD, TX', 'Tomball ISD, TX'],
+      versionCompatibility: 'Conformance testing met with version 23.4.0.0',
+      availability: 'Available to any agency (all sizes) in the U.S.',
+      documentation: {
+        'Availability Statement':
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/eSchoolPlus/Ed-Fi%20Certification%20-%20Availability%20Statement%20eSchoolPlus.pdf',
+        'Pricing Statement':
+         'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/eSchoolPlus/Ed-Fi%20Certification%20-%20Pricing%20Statement%20eSchoolPlus.pdf',
+         'Mapping Document':
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/eSchoolPlus/Ed-Fi%20Resources%20and%20Elements%20for%20eSchoolPlus%20Base%20v250501.xlsx'
+      },
+      supportResources: [
+        {
+          name: 'How to get support',
+          link: 'https://esp.powerschool-docs.com/espsis-sys-admin/latest/',
+        },
+        {
+          name: 'Using DEX Cloud (general)',
+          link: 'https://edfi.atlassian.net/wiki/download/attachments/23694066/Using%20DEX%20Cloud%20-%202023-10-24.docx?version=1&modificationDate=1704980608687&cacheVersion=1&api=v2',
+        },
+        {
+          name: 'Using TX DEX Cloud',
+          link: 'https://edfi.atlassian.net/wiki/download/attachments/23694066/Using%20TX%20DEX%20Cloud%202024_01_12.pdf?version=1&modificationDate=1705085207093&cacheVersion=1&api=v2',
+        },
+      ],
+    },
   ],
 
   sisApiV4: [
@@ -111,8 +143,8 @@ export default {
       logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/ESP_Logo.png',
       website:
         'https://www.powerschool.com/operations/student-information-systems/eschoolplus-sis/',
-      validThrough: 'May 2, 2026',
-      verifyingAgencies: ['San Angelo, TX', 'Round Rock ISD, TX', 'North Canton ISD, OH'],
+      validThrough: 'June 5, 2027',
+      verifyingAgencies: ['San Angelo, TX', 'Cypress-Fairbanks ISD, TX', 'Tomball ISD, TX'],
       versionCompatibility: 'Conformance testing met with version 23.4.0.0',
       availability: 'Available to any agency (all sizes) in the U.S.',
       documentation: {
