@@ -84,9 +84,9 @@ export default {
         'Availability Statement':
           'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/eSchoolPlus/Ed-Fi%20Certification%20-%20Availability%20Statement%20eSchoolPlus.pdf',
         'Pricing Statement':
-         'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/eSchoolPlus/Ed-Fi%20Certification%20-%20Pricing%20Statement%20eSchoolPlus.pdf',
-         'Mapping Document':
-          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/eSchoolPlus/Ed-Fi%20Resources%20and%20Elements%20for%20eSchoolPlus%20Base%20v250501.xlsx'
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/eSchoolPlus/Ed-Fi%20Certification%20-%20Pricing%20Statement%20eSchoolPlus.pdf',
+        'Mapping Document':
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/eSchoolPlus/Ed-Fi%20Resources%20and%20Elements%20for%20eSchoolPlus%20Base%20v250501.xlsx',
       },
       supportResources: [
         {
