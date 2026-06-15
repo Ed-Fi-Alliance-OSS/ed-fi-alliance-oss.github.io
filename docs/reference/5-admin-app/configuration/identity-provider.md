@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # Configuring an Identity Provider for Ed-Fi Admin App
 
 The Ed-Fi Admin App uses an Open ID Connect (OIDC) compatible Identity Provider (IdP) for managing users accounts. In theory any OIDC-compatible IdP will suffice. The Ed-Fi Alliance development to date has only tested Keycloak. Another development team has used Auth0. Further documentation on alternatives to Keycloak will be provided here when available.
