@@ -76,16 +76,44 @@ Save the following as `quick-start-via-api.ps1`.
   Provisions an Ed-Fi environment by POSTing to the Admin App API
   (POST /adminapp-api/api/sb-environments) instead of injecting rows into the
   "sbaa" database directly. Letting the API do the work means it runs the real
-  create() flow: validate URLs, auto-detect version/tenant-mode, register OAuth
-  credentials at the Admin API /connect/register, AES-encrypt the secret into
-  configPrivate, and sync ODS instances / Education Organizations.
+  create() flow:
+
+    * validates the Admin API URL and the ODS/API discovery URL,
+    * auto-detects the version (v1/v2) and tenant mode from ODS metadata,
+    * registers OAuth client credentials at the Admin API "/connect/register",
+    * AES-ENCRYPTS the per-tenant secret into sb_environment.configPrivate, and
+    * syncs the ODS instances / Education Organizations into the local tables.
+
+  The result is a FULLY FUNCTIONAL environment: the Applications and Ed-Org
+  pages authenticate against the live Admin API, which the SQL seed scripts
+  (quick-start-global-admin.{pgsql,mssql}.sql) cannot achieve because they
+  cannot encrypt configPrivate. Those SQL scripts are left in place as the
+  offline / "lists only" alternative; this script is the connected alternative.
 
   AUTHENTICATION
-  The /sb-environments endpoints require a passport session cookie (default name
-  "connect.sid"). Sign in to the Admin App UI as the global admin, copy the
-  "connect.sid" cookie value (DevTools -> Application/Storage -> Cookies ->
-  https://localhost), and pass it as -SessionCookie. (-BearerToken is also
-  accepted for an Auth0-backed, non-Keycloak deployment.)
+  The /sb-environments endpoints sit behind the Admin App AuthenticatedGuard,
+  which authenticates via a passport session cookie (default name "connect.sid").
+  Sign in to the Admin App UI as the global admin, copy the "connect.sid" cookie
+  value (DevTools -> Application/Storage -> Cookies -> https://localhost), and
+  pass it as -SessionCookie. (-BearerToken is also accepted for an Auth0-backed,
+  non-Keycloak deployment.)
+
+  Ownership is NOT seeded manually: create() stamps createdBy with the calling
+  user, which is why a global admin sees the environment without an explicit
+  ownership row.
+
+.EXAMPLE
+  ./quick-start-via-api.ps1 -SessionCookie 's:abc123...'
+
+.EXAMPLE
+  ./quick-start-via-api.ps1 -SessionCookie 's:abc123...' `
+    -AdminApiUrl 'https://localhost/AdminApi' `
+    -OdsApiDiscoveryUrl 'https://localhost/WebApi'
+
+.NOTES
+  Requires PowerShell 7+. The ODS instance ids passed in -Odss must match real
+  rows in EdFi_Admin.dbo.OdsInstances on the target ODS/API, or the sync will
+  not find them.
 #>
 param(
     # Base URL of the Admin App API (through the reverse proxy).
@@ -100,7 +128,7 @@ param(
     [string]$TeamName = "Quick Start",
     # Role for the user's team membership. MUST be a UserTenant role.
     # 6 = "Tenant admin": this is the role that carries the team-scoped
-    # team.sb-environment.edfi-tenant.* privileges (incl. profile:read).
+    # `team.sb-environment.edfi-tenant.*` privileges (incl. profile:read).
     # Do NOT use 2 ("Global admin"): that UserGlobal role was seeded before the
     # profile privileges existed and never backfilled, so a role-2 membership
     # yields 403 on the Applications/profiles page. (The user is still a global
@@ -131,9 +159,9 @@ param(
 
 $ErrorActionPreference = "Stop"
 
-# PowerShell 7.4+ refuses HTTPS->HTTP redirects (the local nginx 302s can resolve
-# to an insecure hop) unless -AllowInsecureRedirect is passed. The switch does
-# not exist before 7.4, so probe for it.
+# PowerShell 7.4+ refuses HTTPS->HTTP redirects (the local Keycloak/nginx 302s
+# can resolve to an insecure hop) unless -AllowInsecureRedirect is passed. The
+# switch does not exist before 7.4, so probe for it.
 $script:allowInsecureRedirect = (Get-Command Invoke-WebRequest).Parameters.ContainsKey('AllowInsecureRedirect')
 
 if (-not $SessionCookie -and -not $BearerToken)
@@ -235,46 +263,60 @@ else
     Write-Host "Added user $userId to team $teamId with roleId $MembershipRoleId." -ForegroundColor Green
 }
 
-# ---- Step 4: create the environment (POST /sb-environments) -------------------
-# version and isMultitenant are intentionally omitted: create() auto-detects them
-# from the ODS/API metadata. configPrivate is produced + encrypted by the API.
-$payload = @{
-    name               = $EnvironmentName
-    environmentLabel   = $EnvironmentLabel
-    adminApiUrl        = $AdminApiUrl
-    odsApiDiscoveryUrl = $OdsApiDiscoveryUrl
-    startingBlocks     = $false
-    tenants            = @(
-        @{
-            name = $TenantName
-            odss = @($Odss | ForEach-Object {
-                @{
-                    id            = [int]$_.id
-                    name          = [string]$_.name
-                    dbName        = [string]$_.dbName
-                    allowedEdOrgs = [string]$_.allowedEdOrgs
-                }
-            })
-        }
-    )
-}
-
-Write-Host "POST /sb-environments" -ForegroundColor Cyan
-Write-Host ($payload | ConvertTo-Json -Depth 10)
-try
+# ---- Step 4: create (or reuse) the environment --------------------------------
+# Idempotent: reuse an existing environment with the same name instead of
+# POSTing a duplicate. The API has no uniqueness constraint on the name, so a
+# blind POST on re-run would create a second environment.
+$envId = $null
+$existingEnv = @(Invoke-Api -Method Get -Path "/sb-environments") |
+    Where-Object { $_.name -eq $EnvironmentName } | Select-Object -First 1
+if ($existingEnv)
 {
-    $response = Invoke-Api -Method Post -Path "/sb-environments" -Body $payload
+    $envId = $existingEnv.id
+    Write-Host "Environment '$EnvironmentName' already exists (id $envId); reusing." -ForegroundColor Yellow
 }
-catch
+else
 {
-    Write-Host "Create environment failed: $($_.Exception.Message)" -ForegroundColor Red
-    if ($_.ErrorDetails.Message) { Write-Host $_.ErrorDetails.Message -ForegroundColor Red }
-    throw
-}
+    # version and isMultitenant are intentionally omitted: create() auto-detects them
+    # from the ODS/API metadata. configPrivate is produced + encrypted by the API.
+    $payload = @{
+        name               = $EnvironmentName
+        environmentLabel   = $EnvironmentLabel
+        adminApiUrl        = $AdminApiUrl
+        odsApiDiscoveryUrl = $OdsApiDiscoveryUrl
+        startingBlocks     = $false
+        tenants            = @(
+            @{
+                name = $TenantName
+                odss = @($Odss | ForEach-Object {
+                    @{
+                        id            = [int]$_.id
+                        name          = [string]$_.name
+                        dbName        = [string]$_.dbName
+                        allowedEdOrgs = [string]$_.allowedEdOrgs
+                    }
+                })
+            }
+        )
+    }
 
-Write-Host "`nEnvironment created." -ForegroundColor Green
-$response | ConvertTo-Json -Depth 10
-$envId = $response.id
+    Write-Host "POST /sb-environments" -ForegroundColor Cyan
+    Write-Host ($payload | ConvertTo-Json -Depth 10)
+    try
+    {
+        $response = Invoke-Api -Method Post -Path "/sb-environments" -Body $payload
+    }
+    catch
+    {
+        Write-Host "Create environment failed: $($_.Exception.Message)" -ForegroundColor Red
+        if ($_.ErrorDetails.Message) { Write-Host $_.ErrorDetails.Message -ForegroundColor Red }
+        throw
+    }
+
+    Write-Host "`nEnvironment created." -ForegroundColor Green
+    $response | ConvertTo-Json -Depth 10
+    $envId = $response.id
+}
 
 # ---- Step 5: grant the team ownership of the environment + tenant(s) ----------
 # create() only stamps createdBy; it does NOT write ownership rows, and the
@@ -386,9 +428,10 @@ For an Auth0-backed (non-Keycloak) deployment, pass a machine token (audience =
 3. **`POST /teams/:id/user-team-memberships`** — adds the user with role 6
    (Tenant admin). If a membership already exists with a different role, it is
    updated with `PUT … /user-team-memberships/:membershipId`.
-4. **`POST /sb-environments`** — creates the environment. The API validates the
-   URLs, detects version/tenant-mode, registers and encrypts the Admin API
-   credentials, and syncs the ODS instances / Ed-Orgs.
+4. **`POST /sb-environments`** — creates the environment (or reuses an existing
+   one with the same name, so re-runs do not create duplicates). The API
+   validates the URLs, detects version/tenant-mode, registers and encrypts the
+   Admin API credentials, and syncs the ODS instances / Ed-Orgs.
 5. **`POST /ownerships`** — grants the team **Full ownership** (role 5) of the
    environment and of each tenant under it.
 
@@ -401,6 +444,12 @@ pages should load without a 403.
 
 ## Troubleshooting
 
+- **`Create environment failed: ... 400 (Bad Request)`.** The API could not
+  reach the ODS/API or Admin API while creating the environment — for example
+  `Connection to Ed-Fi API Discovery URL timed out. Please ensure the URL is correct and the server is reachable.`
+  Confirm the ODS/API and Admin API are up and reachable at the
+  `-OdsApiDiscoveryUrl` / `-AdminApiUrl` values (open them in a browser or
+  `curl` them), then run the script again.
 - **403 Forbidden on Applications / Profiles**
   (`{"message":"Forbidden resource"...}` at
   `…/edfi-tenants/<id>/admin-api/v2/profiles/`). This is the Admin App's own
