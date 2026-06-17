@@ -249,11 +249,20 @@ Check configuration file `production.js` or `local.js` variables are set correct
 - **Cause**: IIS tries to serve routes as static files instead of letting React Router handle them
 - **Solution**: Ensure the URL Rewrite rule for React Routes is properly configured
 
-**Static Asset Loading Issues:**
+**Static Asset Loading Issues (fonts / `.woff2` return 404):**
 
-- **Symptom**: CSS, JS, or font files return 404 or MIME type errors
-- **Cause**: Missing or incorrect MIME type mappings
-- **Solution**: Add proper MIME type mappings in the `<staticContent>` section
+- **Symptom**: CSS, JS, or font files (commonly `.woff2`) return 404 or a wrong MIME type
+- **Cause**: The IIS install is missing a MIME type mapping for the extension. Some IIS versions do not register `.woff2` by default
+- **Solution**: Add the missing MIME types to the frontend site's `web.config`, inside `<system.webServer>`. Use `<remove>` before each `<mimeMap>` to avoid a duplicate-entry error (HTTP 500.19) if IIS already defines it:
+
+  ```xml
+  <staticContent>
+    <remove fileExtension=".woff" />
+    <remove fileExtension=".woff2" />
+    <mimeMap fileExtension=".woff" mimeType="application/font-woff" />
+    <mimeMap fileExtension=".woff2" mimeType="application/font-woff2" />
+  </staticContent>
+  ```
 
 **API Communication Errors:**
 
