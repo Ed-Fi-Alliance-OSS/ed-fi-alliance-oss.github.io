@@ -1,13 +1,7 @@
 ---
 sidebar_position: 5
-title: Admin App Deployment Guide
+title: Roadmap to Success
 ---
-
-This section is the Ed-Fi Admin App deployment guide for State Education Agencies (SEAs). It helps you understand the deployment architecture and make the critical decisions you need to make _before_ beginning the installation process, so that your team can move through setup quickly and with confidence.
-
-Most detailed product documentation for the Ed-Fi Admin App lives in the [Admin App Reference](/reference/admin-app) section of Docs. The pages here orient SEA teams to the bigger picture and to the choices that matter most up front.
-
-## Roadmap to success
 
 The Ed-Fi Admin App manages vendor credentials for integrating with one or more deployments of the Ed-Fi ODS/API. Each deployment contains one or more ODS database instances — for example, one instance per school year. The Admin App gives administrators a single place to create and manage the vendors, applications, claimsets, and credentials that vendors and integrating systems use to exchange data with each ODS instance.
 
