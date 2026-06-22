@@ -131,7 +131,7 @@ resources are accessible and which operations are allowed (Create, Delete, etc.)
 
 :::tip
 
-Combining the `/oauth/token_info` endpoint with the [Dependency Order](./resource-dependency-order.md) endpoint could make integrating with Ed-Fi API easier.
+Combining the `/oauth/token_info` endpoint with the [Dependency Order](./resource-dependency-order/readme.mdx) endpoint could make integrating with Ed-Fi API easier.
 
 :::
 

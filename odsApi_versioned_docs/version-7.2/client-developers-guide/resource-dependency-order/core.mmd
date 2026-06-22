@@ -1,0 +1,53 @@
+%%{init: { 'flowchart': {'htmlLabels': true} } }%%
+flowchart TD
+    %% ─── Styles ───────────────────────────────────────────────────
+    classDef core    fill:#b2f2bb,stroke:#2f9e44,color:#1a4a1f,padding:10px 16px,border-radius:6px
+    classDef student fill:#a5d8ff,stroke:#1971c2,color:#0c2e5c,padding:10px 16px,border-radius:6px
+    classDef staff   fill:#fff3bf,stroke:#e67700,color:#5c3a00,padding:10px 16px,border-radius:6px
+    classDef stub    fill:#e8f4fd,stroke:#1971c2,stroke-dasharray:6 3,color:#0c2e5c,padding:10px 16px,border-radius:6px,font-style:italic
+
+    DESC["<b>Descriptors</b> (1)"]:::core
+
+    EDORG["<b>Education Organization Domain</b><br/><small>Local Education Agency (4)</small><br/><small>School (5)</small>"]:::core
+
+    CAL["<b>School Calendar Domain</b><br/><small>Grading Period (6)</small><br/><small>Calendar (6)</small><br/><small>Calendar Date (7)</small><br/><small>Session (7)</small>"]:::core
+
+    TL1["<b>Teaching &amp; Learning Domain</b><br/><small>Location (6) · Class Period (6)</small><br/><small>Bell Schedule (7)</small><br/><small>Course (8)</small><br/><small>Course Offering (9)</small><br/><small>Section (10)</small>"]:::core
+
+    GRAD["<b>Graduation Domain</b><br/><small>Graduation Plans (12)</small>"]:::core
+
+    STAFF["<b>Staff</b> (16)<br/><small>(Insert Only)</small>"]:::staff
+    STU["<b>Student</b> (3)<br/><small>(Insert Only)</small>"]:::student
+    CONT["<b>Contact</b> (3)<br/><small>(Insert Only)</small>"]:::student
+
+    STAFFEDORG["<b>Staff Ed Org Assoc. Domain</b><br/><small>Employment Assoc. (17)</small><br/><small>Assignment Assoc. (18)</small>"]:::staff
+    ENROLL["<b>Student Enrollment Domain</b><br/><small>Student School Assoc. (13)</small>"]:::student
+    COH14["<b>Student Cohort Domain</b><br/><small>Cohort (9)</small>"]:::core
+
+    STAFFREM["<b>Remaining Staff Domains</b><br/><small>Staff (Update) (19)</small><br/><small>Staff School Assoc. (19)</small>"]:::staff
+    STAFFSEC["<b>Teaching &amp; Learning #3</b><br/><small>Staff Section Assoc. (19)</small>"]:::staff
+    STAFFCOH["<b>Student Cohort Domain</b><br/><small>Staff Cohort (19)</small>"]:::staff
+
+    ENROLL_STUB["<i>Additional Student Domain</i><br/><small>see detail below</small>"]:::stub
+
+    DESC --> EDORG
+    EDORG --> CAL
+    CAL --> TL1
+    TL1 --> GRAD
+
+    GRAD --> STAFF
+    GRAD --> COH14
+    GRAD --> STU
+    GRAD --> CONT
+
+    STAFF --> STAFFEDORG
+    STU --> ENROLL
+    CONT --> ENROLL
+
+    STAFFEDORG --> STAFFREM
+    STAFFEDORG --> STAFFSEC
+    STAFFEDORG --> STAFFCOH
+    COH14 --> STAFFCOH
+
+    ENROLL --> ENROLL_STUB
+    COH14 --> ENROLL_STUB
