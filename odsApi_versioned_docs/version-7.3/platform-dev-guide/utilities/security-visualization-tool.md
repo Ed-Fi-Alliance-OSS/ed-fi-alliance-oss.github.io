@@ -26,10 +26,10 @@ not detected in the default installation path.
 ## Step 2. Build and Run the Security Visualization Tool
 
 * Start Visual Studio, open the Security Visualization Tool solution from
-  \\Ed-Fi-ODS\\Utilities\\GenerateSecurityGraphs\\GenerateSecurityGraphs.sln,
+  `\Ed-Fi-ODS\Utilities\GenerateSecurityGraphs\GenerateSecurityGraphs.sln`,
   and build the solution.
 * Open a Console window and navigate to
-  \\Ed-Fi-ODS\\Utilities\\GenerateSecurityGraphs\\GenerateSecurityGraphs\\bin\\Debug\\net10.0.
+  `\Ed-Fi-ODS\Utilities\GenerateSecurityGraphs\GenerateSecurityGraphs\bin\Debug\net8.0`.
 * Run `GenerateSecurityGraphs.exe --help` to view the parameters that can be
   passed to the application.
 
@@ -68,7 +68,7 @@ output folder you specified. There are .png and .svg versions for each
 schema. The root of the folder contains visualizations for the set of
 authorizations that are possible, and there is a sub-folder for each
 authorization claim set that has been configured. The as-shipped ODS / API
-v6.1 contains nine claim sets, resulting in nine folders.
+v6.1 contains eight claim sets, resulting in eight folders.
 
 | Type | Name |
 | -- | -- |
@@ -82,8 +82,8 @@ v6.1 contains nine claim sets, resulting in nine folders.
 | Directory | SIS Vendor |
 | File | _icon.png |
 | File | assessmentMetadata |
-| File | assesmentMetadata.png |
-| File | assesmentMetadata.svg |
+| File | assessmentMetadata.png |
+| File | assessmentMetadata.svg |
 | File | AssessmentMetadata_icon.png |
 | File | educationOrganizations |
 | File | educationOrganizations.png |
@@ -98,7 +98,7 @@ useful to fully understand the visualizations.
 
 Note that the shading of font has relevance:
 
-|     |     |
+| Font Style | Description |
 | --- | --- |
 | Black | Indicates permissions explicitly set for the resource claim. |
 | _Italic gray_ | Indicates inherited permissions from the higher-level logical groupings in the claims taxonomy. |
