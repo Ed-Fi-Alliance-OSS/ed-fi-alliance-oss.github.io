@@ -5,9 +5,17 @@
 Ed-Fi Alliance documentation, published to
 [https://docs.ed-fi.org](https://docs.ed-fi.org).
 
+## Problems? Clarifications?
+
+If you have questions or need clarification about the documentation, please
+[open an
+issue](https://github.com/Ed-Fi-Alliance-OSS/ed-fi-alliance-oss.github.io/issues).
+If you know the answer, please consider submitting a pull request to improve the
+documentation.
+
 ## Legal Information
 
-Copyright (c) 2024 Ed-Fi Alliance, LLC and contributors.
+Copyright (c) 2026 Ed-Fi Alliance, LLC and contributors.
 
 Licensed under the [Apache License, Version 2.0](LICENSE) (the "License").
 

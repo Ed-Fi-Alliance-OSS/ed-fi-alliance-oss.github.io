@@ -82,10 +82,13 @@ drive unnecessary API transactions and generate even more errors that degrade th
 
 * During API synchronization, use exponential back off when receiving non-Ed-Fi errors from an Ed-Fi
 API (e.g., HTTP/S 500s; request time outs)​.
-* During synchronization, demonstrate the API client does not send multiple dependency order children
+* During synchronization, demonstrate the API client does not send multiple [dependency order](/reference/ed-fi-api/client-developers-guide/resource-dependency-order) children
 POST/PUT requests to an API if the parent entity already failed or is missing​.
 * For any failed transactions, provide the LEA’s administrative user a view of the JSON document that
 was submitted.
+
+See the [Resource Dependency Order](/reference/ed-fi-api/client-developers-guide/resource-dependency-order)
+diagram for the full entity loading sequence and dependency relationships.
 
 ## UI/UX for admin user to solve errors
 
