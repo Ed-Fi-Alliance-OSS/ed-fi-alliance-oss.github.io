@@ -60,12 +60,6 @@ Section 5: [Specifics by Provider Type](./specifics-by-provider-type/readme.md)
 * [Assessment Providers](./specifics-by-provider-type/assessment-providers/readme.md)
 * [Student Information System Providers](./specifics-by-provider-type/student-information-system-providers/readme.md)
 
-## Common Use Case Solution Guides
-
-* [Chronic Absenteeism](./common-use-cases/chronic-absenteeism-solution-guide/readme.md)
-* [Assessment Solution Guide](./common-use-cases/assessment-solution-guide/readme.md)
-* [Student Equity Solution Guide](./common-use-cases/student-equity-solution-guide/readme.md)
-
 ## Useful Links
 
 * [Ed-Fi Certification](/partners/certification)
