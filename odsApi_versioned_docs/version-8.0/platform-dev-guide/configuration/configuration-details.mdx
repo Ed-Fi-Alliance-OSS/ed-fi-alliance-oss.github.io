@@ -1,0 +1,227 @@
+---
+sidebar_position: 1
+---
+
+# Configuration Details
+
+Ed-Fi API v8 is configurable through `appsettings.json` in each service. This
+page documents all available settings. Environment variables override
+`appsettings.json` values using the double-underscore `__` separator for
+hierarchy — for example, `AppSettings__Datastore=mssql`. No special prefix is
+required.
+
+## Data Management Service Settings
+
+### Required Settings
+
+The Data Management Service requires a database connection and an identity
+provider to start. In the Docker Compose setup these are provided via the `.env`
+file; in other deployments configure them directly in `appsettings.json` or via
+environment variables.
+
+- **`AppSettings:Datastore`**
+
+  |             |                                                                          |
+  | ----------- | ------------------------------------------------------------------------ |
+  | Example     | `postgresql`                                                             |
+  | Description | Primary database engine for the DMS. Valid values: `postgresql`, `mssql` |
+
+- **`AppSettings:IdentityProvider`**
+
+  |             |                                                                                                                                         |
+  | ----------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+  | Example     | `self-contained`                                                                                                                        |
+  | Description | Authentication provider. Valid values: `self-contained` (OpenIddict, default), `keycloak`. See [Identity Provider](./identity-provider) |
+
+- **`ConfigurationServiceSettings:BaseUrl`**
+
+  |             |                                                                                                                                      |
+  | ----------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+  | Example     | `http://ed-fi-api-config:8081`                                                                                                       |
+  | Description | Base URL of the Configuration Service. DMS contacts this URL at runtime to retrieve claim sets, data stores, and application context |
+
+- **`ConfigurationServiceSettings:EncryptionKey`**
+
+  |             |                                                                                                                                                                                                                                                                              |
+  | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Example     | `MySecretKey1234567890123456789012`                                                                                                                                                                                                                                          |
+  | Description | Key used to decrypt data store connection strings stored in the Configuration Service. Must match `DatabaseSettings:EncryptionKey` in the Configuration Service. Recommended: a 32-character ASCII string. Set via `DMS_CONFIG_DATABASE_ENCRYPTION_KEY` environment variable |
+
+### Optional Settings
+
+- **`AppSettings:DeployDatabaseOnStartup`**
+
+  |             |                                                                                                                                                       |
+  | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `false`                                                                                                                                               |
+  | Description | When `true`, DMS creates and initializes the database schema on startup. Equivalent to running `dms-schema ddl provision` before starting the service |
+
+- **`AppSettings:MultiTenancy`**
+
+  |             |                                                                                                                                              |
+  | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `false`                                                                                                                                      |
+  | Description | When `true`, enables multi-tenancy mode. The tenant identifier is extracted from the URL route. See [Multi-Tenancy](../multi-tenancy/readme.md) |
+
+- **`AppSettings:RouteQualifierSegments`**
+
+  |             |                                                                                                                                                                                                                                                                  |
+  | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | _(empty)_                                                                                                                                                                                                                                                        |
+  | Description | Comma-separated list of route qualifier segments extracted from the URL path. Example: `districtId,schoolYear`. Segments must match `dataStoreContexts` configured in the Configuration Service. See [School Year Routing](../multi-tenancy/school-year-routing.md) |
+
+- **`AppSettings:BypassTypeCoercion`**
+
+  |             |                                                                                                                                                                                                                        |
+  | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `false`                                                                                                                                                                                                                |
+  | Description | When `true`, disables automatic type coercion on `POST` and `PUT` request values. Submitted values must already match the JSON Schema type. Improves performance but requires clients to submit correctly typed values |
+
+- **`AppSettings:AllowIdentityUpdateOverrides`**
+
+  |             |                                                                                                                                                  |
+  | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+  | Default     | _(empty)_                                                                                                                                        |
+  | Description | Comma-separated list of resource names that allow natural key (identity) updates. By default all resources reject identity updates with HTTP 400 |
+
+- **`AppSettings:MaskRequestBodyInLogs`**
+
+  |             |                                                                                                                                                                                                            |
+  | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `true`                                                                                                                                                                                                     |
+  | Description | When `true`, suppresses request body content in `DEBUG`-level log statements. Prevents PII from appearing in logs even when debug logging is enabled. See [Logging Configuration](./logging-configuration) |
+
+- **`AppSettings:UseApiSchemaPath`**
+
+  |             |                                                                                                                                                                             |
+  | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `true`                                                                                                                                                                      |
+  | Description | When `true`, loads the API schema (core and extensions) from the directory specified by `ApiSchemaPath`. When `false`, loads the bundled schema from the application output |
+
+- **`AppSettings:ApiSchemaPath`**
+
+  |             |                                                                                                                                                                                                                                                                                          |
+  | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `/app/ApiSchema`                                                                                                                                                                                                                                                                         |
+  | Description | Directory containing `bootstrap-api-schema-manifest.json` and the declared schema files. Used when `UseApiSchemaPath` is `true`. Extension `APISchema.json` files placed in this directory are automatically loaded. See [Extending with MetaEd](../extensibility/extending-with-metaed.md) |
+
+- **`AppSettings:DomainsExcludedFromOpenApi`**
+
+  |             |                                                                                                                                                                               |
+  | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | _(empty)_                                                                                                                                                                     |
+  | Description | Comma-separated list of Ed-Fi domain names to exclude from the generated OpenAPI specification. Case-insensitive. Useful for reducing Swagger UI noise in focused deployments |
+
+- **`ConfigurationServiceSettings:CacheExpirationMinutes`**
+
+  |             |                                                                                                                                 |
+  | ----------- | ------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `10`                                                                                                                            |
+  | Description | Minutes before cached claim sets, data stores, and application context expire and are re-fetched from the Configuration Service |
+
+- **`AppSettings:PathBase`**
+
+  |             |                                                                                                                                                                            |
+  | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | _(empty)_; Docker Compose env var `PATH_BASE` defaults to `api` in `.env.example`                                                                                          |
+  | Description | URL path prefix for all DMS API endpoints. With `PATH_BASE=api`, resource endpoints are at `/api/data/ed-fi/...`. Leave empty to serve from the root path with no prefix |
+
+- **`DatabaseOptions:IsolationLevel`**
+
+  |             |                                                                                                                                                        |
+  | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+  | Default     | `RepeatableRead` (container default); `.env.example` sets `ReadCommitted`                                                                              |
+  | Description | Transaction isolation level. Valid values from [`System.Data.IsolationLevel`](https://learn.microsoft.com/en-us/dotnet/api/system.data.isolationlevel) |
+
+- **`RateLimit:PermitLimit`**, **`RateLimit:Window`**,
+  **`RateLimit:QueueLimit`**
+
+  |             |                                                                                                                                                                                                                                                                                       |
+  | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Defaults    | `5000`, `10`, `0`                                                                                                                                                                                                                                                                     |
+  | Description | Fixed-window rate limiting, partitioned by hostname. `PermitLimit` requests are allowed per `Window` seconds. Excess requests queue up to `QueueLimit` (0 = no queuing); requests beyond the queue receive HTTP 429. Remove the `RateLimit` section entirely to disable rate limiting |
+
+---
+
+## Configuration Service Settings
+
+### Required Settings
+
+- **`AppSettings:Datastore`**
+
+  |             |                                                              |
+  | ----------- | ------------------------------------------------------------ |
+  | Example     | `postgresql`                                                 |
+  | Description | Primary database engine. Valid values: `postgresql`, `mssql` |
+
+- **`AppSettings:IdentityProvider`**
+
+  |             |                                                                                                                                |
+  | ----------- | ------------------------------------------------------------------------------------------------------------------------------ |
+  | Default     | `self-contained`                                                                                                               |
+  | Description | Authentication provider. Valid values: `self-contained` (OpenIddict), `keycloak`. See [Identity Provider](./identity-provider) |
+
+- **`DatabaseSettings:EncryptionKey`**
+
+  |             |                                                                                                                                                                                                                                                |
+  | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Example     | `MySecretKey1234567890123456789012`                                                                                                                                                                                                            |
+  | Description | AES key used to encrypt data store connection strings at rest. Must match `ConfigurationServiceSettings:EncryptionKey` in the DMS. Set via `DMS_CONFIG_DATABASE_ENCRYPTION_KEY` environment variable. Recommended: a 32-character ASCII string |
+
+### Optional Settings
+
+- **`AppSettings:DeployDatabaseOnStartup`**
+
+  |             |                                                                                    |
+  | ----------- | ---------------------------------------------------------------------------------- |
+  | Default     | `true`                                                                             |
+  | Description | When `true`, creates and initializes the Configuration Service database on startup |
+
+- **`AppSettings:MultiTenancy`**
+
+  |             |                                                                                                         |
+  | ----------- | ------------------------------------------------------------------------------------------------------- |
+  | Default     | `false`                                                                                                 |
+  | Description | When `true`, enables multi-tenancy. The tenant identifier is extracted from the `Tenant` request header |
+
+- **`AppSettings:PathBase`**
+
+  |             |                                                                                                                                          |
+  | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `config`                                                                                                                                 |
+  | Description | URL base segment for all Configuration Service endpoints. Example: with `PathBase=config`, the management API is at `/config/v3/vendors` |
+
+- **`AppSettings:TokenRequestTimeoutSeconds`**
+
+  |             |                                                |
+  | ----------- | ---------------------------------------------- |
+  | Default     | `30`                                           |
+  | Description | Timeout in seconds for outbound token requests |
+
+- **`AppSettings:UseReverseProxyHeaders`**
+
+  |             |                                                                                                                                 |
+  | ----------- | ------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `false`                                                                                                                         |
+  | Description | When `true`, respects `X-Forwarded-*` headers for URL generation. Enable when deploying behind a reverse proxy or load balancer |
+
+- **`AppSettings:EnableApplicationResetEndpoint`**
+
+  |             |                                                                                                                                                                                                                                            |
+  | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+  | Default     | `false`                                                                                                                                                                                                                                    |
+  | Description | When `true`, enables `POST /applications/{id}/reset-credential` for resetting API client credentials via API. Disable when an application supports multiple API clients, as resetting credentials affects all clients for that application |
+
+- **`IdentitySettings:ClientSecretValidation:MinimumLength`**
+
+  |             |                                                                                                                                                                                                                                  |
+  | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `32`                                                                                                                                                                                                                             |
+  | Description | Minimum length for client secrets registered with the Configuration Service. Secrets must also contain at least one uppercase letter, one lowercase letter, one number, and one special character from `!@#$%^&*()-_=+[]{}:;,.?` |
+
+- **`IdentitySettings:ClientSecretValidation:MaximumLength`**
+
+  |             |                                   |
+  | ----------- | --------------------------------- |
+  | Default     | `128`                             |
+  | Description | Maximum length for client secrets |
