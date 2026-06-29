@@ -2,7 +2,7 @@
 hide_table_of_contents: true
 ---
 
-# v5 Student Program > StudentNeglectedOrDeliquentProgramAssociation Scenarios
+# v5 Student Program > StudentNeglectedOrDelinquentProgramAssociation Scenarios
 
 The Student Program interchange loads students' participation in programs.
 
