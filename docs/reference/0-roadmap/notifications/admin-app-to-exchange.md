@@ -1,4 +1,4 @@
-# Admin App Transitioning to Ed-Fi Exchange in 2026
+# Admin App Transitioning to Ed-Fi Community Tools in 2026
 
 First published: 12 Dec 2023 \
 Updated: 14 August 2025
@@ -8,8 +8,8 @@ Updated: 14 August 2025
 The next planned release of Admin App, version 3.3, will be the last supported
 release of Admin App. From that point, it will be in maintenance mode until
 June, ~~2025~~ 2026. While in maintenance mode, a new patch release will only occur for
-critical bugs and security updates. In ~~2025~~ 2026, Admin App will move to the Ed-Fi
-Exchange and the source repository will be set into archive, signaling that the
+critical bugs and security updates. In ~~2025~~ 2026, Admin App will move to Ed-Fi
+Community Tools and the source repository will be set into archive, signaling that the
 application support has formally ended.
 
 Because no replacement was ready yet, the Alliance decided in June 2025 to extend the

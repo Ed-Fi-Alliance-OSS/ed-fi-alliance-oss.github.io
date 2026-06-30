@@ -26,7 +26,7 @@ distribution (where applicable) of compiled software to the Ed-Fi Community.
    3. [Ed-Fi-Closed](https://github.com/Ed-Fi-Closed): for closed source, core
       software projects
    4. [Ed-Fi-Exchange-OSS](https://github.com/Ed-Fi-Exchange-OSS): for open
-      source non-core (Ed-Fi Exchange) software projects
+      source non-core (Ed-Fi Community Tools) software projects
 2. **2FA:** all GitHub users in the Ed-Fi organizations are required to have
    two-factor authentication, enforced through GitHub itself.
 3. **Authorization by role**
@@ -40,7 +40,7 @@ distribution (where applicable) of compiled software to the Ed-Fi Community.
       1. Ed-Fi core software contractors are granted Member in any of the
          organizations needed.
       2. Open source contributors can be granted Outside Collaborator access;
-         this particularly useful for Ed-Fi Exchange projects.
+         this particularly useful for Ed-Fi Community Tools projects.
       3. Each person should receive the least privilege applicable to their role
          on a given project.
       4. Access to the "Ed-Fi-Closed" organization is more restricted than the
@@ -179,7 +179,7 @@ enforced across the Alliance's repositories.
 
       :::
 
-   3. ⚠️ The Alliance generally will not distribute packages from Ed-Fi Exchange
+   3. ⚠️ The Alliance generally will not distribute packages from Ed-Fi Community Tools
       repositories.
 
 ## Procedures

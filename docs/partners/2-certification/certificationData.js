@@ -6,13 +6,11 @@
 export default {
   sisApiV5: [
     {
-    productName: 'PowerSchool',
+      productName: 'PowerSchool',
       logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/PowerSchool.png',
       website: 'https://www.powerschool.com/',
       validThrough: 'December 12, 2026',
-      verifyingAgencies: [
-        'Franklin Public Schools, WI',
-      ],
+      verifyingAgencies: ['Franklin Public Schools, WI'],
       versionCompatibility: 'Conformance testing met with version 221014',
       availability: 'Available to any agency (all sizes) in the U.S.',
       documentation: {
@@ -20,7 +18,7 @@ export default {
           'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/PowerSchool/Ed-Fi%20Certification%20-%20PowerSchool%20SIS.docx',
         'Pricing Statement':
           'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/PowerSchool/Ed-Fi%20Certification%20-%20Pricing%20Statement%20PS%20SIS%2025-26.pdf',
-        'Mappings':
+        Mappings:
           'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ed-Fi%20Resources%20and%20Elements%20for%20PowerSchool%20SIS%20Base%20v221014.xlsx?api=v2',
       },
       supportResources: [
@@ -48,13 +46,20 @@ export default {
       website:
         'http://www.edupoint.com/Products/Student-Information-Management',
       validThrough: 'April 28, 2026',
-      verifyingAgencies: ['Lincoln Public Schools, NE', 'Higley Unified School District, Gilbert, AZ', 'Phoenix Union High School District, AZ'],
+      verifyingAgencies: [
+        'Lincoln Public Schools, NE',
+        'Higley Unified School District, Gilbert, AZ',
+        'Phoenix Union High School District, AZ',
+      ],
       versionCompatibility: 'Conformance testing met with version 2023',
       availability: 'Available to any agency (all sizes) in the U.S.',
       documentation: {
-        'Availability Statement':'https://edfi.atlassian.net/wiki/download/attachments/23702484/Edupoint%20Ed-Fi%20Certification%20-%20Availibility%20Statement%20V2.pdf?api=v2',
-        'Pricing Statement':'https://edfi.atlassian.net/wiki/download/attachments/23702484/Edupoint%20Ed-Fi%20Certification%20-%20Pricing%20Statement.pdf?api=v2',
-        'Mappings':'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Edupoint/Edupoint%20-%20Base%20Ed-Fi%20Certification%20Mappings.xlsx',
+        'Availability Statement':
+          'https://edfi.atlassian.net/wiki/download/attachments/23702484/Edupoint%20Ed-Fi%20Certification%20-%20Availibility%20Statement%20V2.pdf?api=v2',
+        'Pricing Statement':
+          'https://edfi.atlassian.net/wiki/download/attachments/23702484/Edupoint%20Ed-Fi%20Certification%20-%20Pricing%20Statement.pdf?api=v2',
+        Mappings:
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Edupoint/Edupoint%20-%20Base%20Ed-Fi%20Certification%20Mappings.xlsx',
       },
       supportResources: [
         {
@@ -88,7 +93,7 @@ export default {
           'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Aeries/Ed-Fi%20Cert%20-%20Availabiity%20Statement%2007.25.pdf',
         'Pricing Statement':
           'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Aeries/Ed-Fi%20Pricing%20Statement%20July_2025_signed.pdf',
-        'Mappings':
+        Mappings:
           'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ed-Fi%20Mappings%2010-21.xlsx?version=1&modificationDate=1668719714227&cacheVersion=1&api=v2',
       },
       supportResources: [
@@ -112,16 +117,20 @@ export default {
       website:
         'https://www.powerschool.com/operations/student-information-systems/eschoolplus-sis/',
       validThrough: 'May 2, 2026',
-      verifyingAgencies: ['San Angelo, TX', 'Round Rock ISD, TX', 'North Canton ISD, OH'],
+      verifyingAgencies: [
+        'San Angelo, TX',
+        'Round Rock ISD, TX',
+        'North Canton ISD, OH',
+      ],
       versionCompatibility: 'Conformance testing met with version 23.4.0.0',
       availability: 'Available to any agency (all sizes) in the U.S.',
       documentation: {
         'Availability Statement':
           'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/eSchoolPlus/Ed-Fi%20Certification%20-%20Availability%20Statement%20eSchoolPlus.pdf',
         'Pricing Statement':
-         'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/eSchoolPlus/Ed-Fi%20Certification%20-%20Pricing%20Statement%20eSchoolPlus.pdf',
-         'Mapping Document':
-          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/eSchoolPlus/Ed-Fi%20Resources%20and%20Elements%20for%20eSchoolPlus%20Base%20v250501.xlsx'
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/eSchoolPlus/Ed-Fi%20Certification%20-%20Pricing%20Statement%20eSchoolPlus.pdf',
+        'Mapping Document':
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/eSchoolPlus/Ed-Fi%20Resources%20and%20Elements%20for%20eSchoolPlus%20Base%20v250501.xlsx',
       },
       supportResources: [
         {
@@ -155,7 +164,7 @@ export default {
           'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/PowerSchool/Ed-Fi%20Certification%20-%20Availability%20Statement%20PS%20SIS%2025-26.pdf',
         'Pricing Statement':
           'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/PowerSchool/Ed-Fi%20Certification%20-%20Pricing%20Statement%20PS%20SIS%2025-26.pdf',
-        'Mappings':
+        Mappings:
           'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ed-Fi%20Resources%20and%20Elements%20for%20PowerSchool%20SIS%20Base%20v221014.xlsx?api=v2',
       },
       supportResources: [
@@ -270,7 +279,11 @@ export default {
       website:
         'http://www.edupoint.com/Products/Student-Information-Management',
       validThrough: 'April 28, 2026',
-      verifyingAgencies: ['Lincoln Public Schools, NE', 'Higley Unified School District, Gilbert, AZ', 'Phoenix Union High School District, AZ'],
+      verifyingAgencies: [
+        'Lincoln Public Schools, NE',
+        'Higley Unified School District, Gilbert, AZ',
+        'Phoenix Union High School District, AZ',
+      ],
       versionCompatibility: 'Conformance testing met with version 2023',
       availability: 'Available to any agency (all sizes) in the U.S.',
       documentation: {
@@ -382,10 +395,15 @@ export default {
       logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/Skyward-logo.jpg',
       website: 'https://www.skyward.com/ed-fi',
       validThrough: 'December 4, 2025',
-      verifyingAgencies: ['Sharyland ISD, TX', 'New Caney ISD, TX', 'Mesquite ISD, TX'],
+      verifyingAgencies: [
+        'Sharyland ISD, TX',
+        'New Caney ISD, TX',
+        'Mesquite ISD, TX',
+      ],
       versionCompatibility:
         'Conformance testing met with SMS 2.0 single product version (distributed to all customers)',
-      availability: 'Available to any LEA in Florida, New Jersey, Rhode Island, South Dakota, Tennessee, Texas, Washington, Utah, others by request',
+      availability:
+        'Available to any LEA in Florida, New Jersey, Rhode Island, South Dakota, Tennessee, Texas, Washington, Utah, others by request',
       documentation: {
         'Availability Statement':
           'https://edfi.atlassian.net/wiki/download/attachments/23691441/SMS%20-%20Ed-Fi%20Certification%20-%20Availability%20Statement%20Form.docx?api=v2',
@@ -633,7 +651,6 @@ export default {
         },
       ],
     },
-
   ],
   assessmentOutcomesSuite3: [
     {
@@ -711,7 +728,11 @@ export default {
       logo: 'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/amplify/AmplifyWordmark_Screen.png',
       website: 'https://amplify.com/',
       validThrough: 'February 17, 2027',
-      verifyingAgencies: ['Richardson ISD, TX', 'Midland ISD, TX', 'Aldine ISD, TX'],
+      verifyingAgencies: [
+        'Richardson ISD, TX',
+        'Midland ISD, TX',
+        'Aldine ISD, TX',
+      ],
       versionCompatibility: 'All versions',
       availability: 'Available to any agency (all sizes) in the U.S.',
       documentation: {
@@ -732,7 +753,8 @@ export default {
     {
       productName: 'i-Ready Math and ELA Diagnostic',
       logo: 'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/iReady/i-Ready-logo.svg',
-      website: 'https://www.curriculumassociates.com/programs/i-ready-assessment/diagnostic',
+      website:
+        'https://www.curriculumassociates.com/programs/i-ready-assessment/diagnostic',
       validThrough: 'April 13, 2027',
       verifyingAgencies: ['South Carolina Department of Education'],
       versionCompatibility: 'All versions',
@@ -888,7 +910,7 @@ export default {
       supportResources: [
         {
           name: 'Learning Standards Sync Utility',
-          link: 'https://docs.ed-fi.org/getting-started/edfi-exchange/technology/learning-standards-sync/getting-started/',
+          link: 'https://docs.ed-fi.org/getting-started/community-tools/technology/learning-standards-sync/getting-started/',
         },
       ],
     },
@@ -911,7 +933,7 @@ export default {
       supportResources: [
         {
           name: 'Learning Standards Sync Utility',
-          link: 'https://docs.ed-fi.org/getting-started/edfi-exchange/technology/learning-standards-sync/getting-started/',
+          link: 'https://docs.ed-fi.org/getting-started/community-tools/technology/learning-standards-sync/getting-started/',
         },
       ],
     },

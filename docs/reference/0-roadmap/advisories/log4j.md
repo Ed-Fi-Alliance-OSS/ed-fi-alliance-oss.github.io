@@ -41,7 +41,7 @@ None of these products is subject to the Log4j vulnerability.
 | Migration Utility                       | C#                  | No         |
 | Tech Suite Installer                    | InstallShield       | No         |
 
-### Ed-Fi Exchange Contributions
+### Ed-Fi Community Tools Contributions
 
 After a manual scan through the solutions posted to the [Ed-Fi
 Exchange](http://exchange.ed-fi.org), one was found that is potentially
@@ -52,7 +52,7 @@ Metabase is a business intelligence tool built on Java, and it does use Log4j.
 Metabase has published [their own security
 advisory](https://github.com/metabase/metabase/security/advisories/GHSA-vmm4-cwrm-38rj)on
 this with information on how to upgrade or work around the problem. The
-maintainer of this Exchange contribution has been notified of the need to
+maintainer of this Ed-Fi Community Tools contribution has been notified of the need to
 upgrade.
 
 ### Popular in the Ed-Fi Community

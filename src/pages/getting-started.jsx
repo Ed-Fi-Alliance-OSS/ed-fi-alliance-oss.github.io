@@ -6,7 +6,6 @@
 import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
-import ThemedImage from '@theme/ThemedImage';
 
 /* Refactor opportunity: convert the two Playbooks into a list and use a single
 component to define structure */
@@ -66,7 +65,12 @@ function GetStartedIntro() {
     <div>
       <Heading as="h2">Playbooks</Heading>
       <p>
-      Every Ed-Fi implementation is unique, but the most successful ones share common foundations. Drawing from years of fieldwork with agencies and providers, our team has captured proven practices and patterns into clear guidance. These Implementation Playbooks outline how to set priorities, build effective teams, and apply interoperability where it matters most—helping all Ed-Fi users move from setup to success.
+        Every Ed-Fi implementation is unique, but the most successful ones share
+        common foundations. Drawing from years of fieldwork with agencies and
+        providers, our team has captured proven practices and patterns into
+        clear guidance. These Implementation Playbooks outline how to set
+        priorities, build effective teams, and apply interoperability where it
+        matters most—helping all Ed-Fi users move from setup to success.
       </p>
     </div>
   );
@@ -77,7 +81,9 @@ function EducatorPipeline() {
     <div className="margin-top--lg">
       <Heading as="h2">Educator Pipeline</Heading>
       <p>
-      The Ed-Fi Alliance helps agencies unify data through the Ed-Fi Standard and EPDM, tracking an educator’s career from pre-enrollment to student outcomes.
+        The Ed-Fi Alliance helps agencies unify data through the Ed-Fi Standard
+        and EPDM, tracking an educator’s career from pre-enrollment to student
+        outcomes.
       </p>
       <Link
         to="/getting-started/educator-pipeline"
@@ -89,21 +95,22 @@ function EducatorPipeline() {
   );
 }
 
-function Exchange() {
+function CommunityTools() {
   return (
-    <div className="margin-top--lg margin-bottom--lg">
-      <Heading as="h2">Ed-Fi Exchange</Heading>
+    <div className="card shadow--md margin-top--lg margin-bottom--lg padding--lg">
+      <Heading as="h2">Ed-Fi Community Tools</Heading>
       <p>
-        The Ed-Fi Exchange is a technology hub for community contributions aligned to the Ed-Fi Data Standard and Implementation Suite.
+        Ed-Fi Community Tools is a technology hub for community contributions
+        aligned to the Ed-Fi Data Standard and Implementation Suite.
       </p>
       <Link
-        to="/getting-started/edfi-exchange"
-        className="button button--primary button"
+        to="/getting-started/community-tools"
+        className="button button--primary button--lg"
       >
-        Go »
+        Explore Community Tools »
       </Link>
     </div>
-  )
+  );
 }
 
 function Header() {
@@ -125,9 +132,6 @@ function Header() {
 }
 
 function Main() {
-  const dark = 'https://edfidocs.blob.core.windows.net/$web/img/exchange-logo_white_250px.png';
-  const light = 'https://edfidocs.blob.core.windows.net/$web/img/exchange-logo_black_250px.png';
-
   return (
     <div className="main">
       <div className="container">
@@ -148,23 +152,15 @@ function Main() {
           </div>
         </div>
         <div className="row">
+          <div className="col col--12">
+            <CommunityTools></CommunityTools>
+          </div>
+        </div>
+        <div className="row">
           <div className="col col--6">
             <EducatorPipeline></EducatorPipeline>
           </div>
-          <div className="col col--6">
-            <Exchange></Exchange>
-          </div>
-          {/* <div className="col col--2">
-            <ThemedImage
-              alt="Ed-Fi Exchange Logo"
-              sources={{
-                light,
-                dark
-              }}
-            />
-          </div> */}
         </div>
-
       </div>
     </div>
   );

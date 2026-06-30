@@ -453,8 +453,8 @@ selected and configured by Ed-Fi staff. Example:
 When a GitHub token is needed to perform an action - for example, posting to the
 REST API to create a release - the token should be fine-grained, limited to the
 specific functionality needed (in this case, "Content" is the correct scope).
-Store the token as an organizational Secret; if in the Exchange organization,
-restrict its use to the particular repository/ies needed. In the Exchange we
+Store the token as an organizational Secret; if in the Ed-Fi Community Tools organization,
+restrict its use to the particular repository/ies needed. In Ed-Fi Community Tools we
 sometimes give non Ed-Fi staff/contractors write access to a repository, and
 generally we wouldn't want those repositories to have access to this secret.
 
