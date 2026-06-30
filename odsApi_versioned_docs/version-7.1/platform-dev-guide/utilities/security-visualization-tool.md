@@ -26,20 +26,40 @@ not detected in the default installation path.
 ## Step 2. Build and Run the Security Visualization Tool
 
 * Start Visual Studio, open the Security Visualization Tool solution from
-  \\Ed-Fi-ODS\\Utilities\\GenerateSecurityGraphs\\GenerateSecurityGraphs.sln,
+  `\Ed-Fi-ODS\Utilities\GenerateSecurityGraphs\GenerateSecurityGraphs.sln`,
   and build the solution.
 * Open a Console window and navigate to
-  \\Ed-Fi-ODS\\Utilities\\GenerateSecurityGraphs\\GenerateSecurityGraphs\\bin\\Debug\\net8.0.
+  `\Ed-Fi-ODS\Utilities\GenerateSecurityGraphs\GenerateSecurityGraphs\bin\Debug\net8.0`.
 * Run `GenerateSecurityGraphs.exe --help` to view the parameters that can be
   passed to the application.
 
-  ![Help output](https://edfi.atlassian.net/wiki/download/attachments/25493687/image2022-3-17_18-2-8.png?version=1&modificationDate=1699456110727&cacheVersion=1&api=v2)
+  ```powershell
+  PS D:\Ed-Fi-ODS\Utilities\GenerateSecurityGraphs\GenerateSecurityGraphs> .\bin\Debug\net8.0\GenerateSecurityGraphs.exe --help
+  GenerateSecurityGraphs 1.0.0+04569d4fea5fc8935768fdff50cf64d61da58fa7
+  Copyright c 2024 Ed-Fi Alliance, LLC and Contributors
+
+    -o, --out                 Required. The path to the folder where the graphs should be generated.
+
+    -f, --force               (Default: false) Create a folder at that path if one doesn't already exist.
+
+    -c, --connectionString    (Default: Server=(local);Database=EdFi_Security;Trusted_Connection=True;Encrypt=False) The
+                              connection string for connecting to the authorization metadata database. Leave blank to
+                              connect to the local 'EdFi_Security' database using integrated security.
+
+    -g, --graphviz            (Default: C:/Program Files/Graphviz/) Graphviz installation path.
+
+    --help                    Display this help screen.
+
+    --version                 Display version information.
+  ```
 
 * Execute the tool to generate the visualizations. The example below assumes
   that you have followed the Ed-Fi ODS / API [Getting
   Started](../../getting-started/readme.md) steps successfully.
 
-  ![Example command](https://edfi.atlassian.net/wiki/download/thumbnails/25493687/image2021-8-13_7-36-37.png?version=1&modificationDate=1699456110240&cacheVersion=1&api=v2&width=292&height=354)
+  ```powershell
+  GenerateSecurityGraphs.exe -o "C:\graphs" -f
+  ```
 
 ## Step 3. Review Output
 
@@ -48,7 +68,7 @@ output folder you specified. There are .png and .svg versions for each
 schema. The root of the folder contains visualizations for the set of
 authorizations that are possible, and there is a sub-folder for each
 authorization claim set that has been configured. The as-shipped ODS / API
-v6.1 contains nine claim sets, resulting in nine folders.
+v7.1 contains eight claim sets, resulting in eight folders.
 
 | Type | Name |
 | -- | -- |
@@ -78,7 +98,7 @@ useful to fully understand the visualizations.
 
 Note that the shading of font has relevance:
 
-|     |     |
+| Font Style | Description |
 | --- | --- |
 | Black | Indicates permissions explicitly set for the resource claim. |
 | _Italic gray_ | Indicates inherited permissions from the higher-level logical groupings in the claims taxonomy. |
