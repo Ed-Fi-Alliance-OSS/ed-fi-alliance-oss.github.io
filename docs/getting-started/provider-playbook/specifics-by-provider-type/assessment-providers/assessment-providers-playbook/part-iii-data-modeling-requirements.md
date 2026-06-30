@@ -781,7 +781,7 @@ Preserving vendor namespace semantics ensures that meaning remains intact at ing
 
 ### 7.2 Default Namespace Usage
 
-Certain descriptors represent shared dimensions across the Ed-Fi Data Standard data model and must remain in the default ed-fi.org namespace (governed by the Ed-Fi Alliance) unless a defined extension applies.
+Certain descriptors represent shared dimensions across the Ed-Fi data model and must remain in the default ed-fi.org namespace (governed by the Ed-Fi Alliance) unless a defined extension applies.
 
 These include:
 
@@ -807,7 +807,7 @@ Implementations may apply environment-specific mappings for shared cross-domain 
 
 The assessment provider is responsible for ensuring that shared descriptors are correctly referenced from the default namespace and consistently applied across implementations:
 
-- Use default Ed-Fi Alliance descriptors for shared dimensions
+- Use default Ed-Fi descriptors for shared dimensions
 
 - Align descriptor values to those defined in the target implementation
 

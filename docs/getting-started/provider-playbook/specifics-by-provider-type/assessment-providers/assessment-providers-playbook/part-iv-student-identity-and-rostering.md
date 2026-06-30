@@ -52,7 +52,7 @@ Assessment vendors should roster from the same environment that receives assessm
 
 This ensures that:
 
-- Student identifiers align to Ed-Fi Data Standard StudentUniqueId
+- Student identifiers align to Ed-Fi StudentUniqueId
 - Enrollment and assessment participation context remain consistent
 - Identity mismatches are minimized
 - Assessment results can be resolved directly to the Ed-Fi API student record

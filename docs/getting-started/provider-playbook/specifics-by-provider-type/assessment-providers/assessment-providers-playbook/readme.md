@@ -4,7 +4,7 @@ sidebar_position: 1
 ---
 
 - Part I: Executive Summary (you are here)
-- [Part II: How Ed-Fi Data Standard Assessment Data Works](./part-ii-how-edfi-assessment-data-works.md)
+- [Part II: How Ed-Fi Data Works](./part-ii-how-edfi-assessment-data-works.md)
 - [Part III: Data Modeling Requirements](./part-iii-data-modeling-requirements.md)
 - [Part IV: Student Identity and Rostering](./part-iv-student-identity-and-rostering.md)
 - [Part V: Integration Architecture and Operations](./part-v-integration-architecture-and-operations.md)
@@ -19,7 +19,7 @@ constitutes a native Ed-Fi Data Standard assessment integration.
 
 The Ed-Fi Alliance provides a data standard and an API-based interoperability framework used by education agencies to exchange data consistently across domains such as assessment, enrollment, attendance, grades, and demographics. In many implementations, this standard is operationalized through the Ed-Fi API, which provides a common interface for data exchange. For assessment providers, supporting the Ed-Fi Data Standard is not simply about delivering a file or exposing data elsewhere. It means integrating into a common, structured exchange model that enables assessment data to flow into a broader educational data ecosystem in a usable, governed way.
 
-The Ed-Fi Data Standard Assessment domain is intentionally flexible. It was designed to accommodate the wide variety of assessment instruments used across K–12 systems, including state summative assessments, formative screeners, interim benchmarks, college-readiness exams, diagnostic tools, and classroom-level measures. The model supports hierarchical structures, multiple score types, performance levels, and alignment to learning standards. That flexibility is powerful, and it is not self-governing. Without modeling discipline and governance alignment, the same assessment can be implemented in materially different ways across vendors, states, and districts. Data may technically load yet fail to support real-world analytics.
+The Ed-Fi Assessment domain is intentionally flexible. It was designed to accommodate the wide variety of assessment instruments used across K–12 systems, including state summative assessments, formative screeners, interim benchmarks, college-readiness exams, diagnostic tools, and classroom-level measures. The model supports hierarchical structures, multiple score types, performance levels, and alignment to learning standards. That flexibility is powerful, and it is not self-governing. Without modeling discipline and governance alignment, the same assessment can be implemented in materially different ways across vendors, states, and districts. Data may technically load yet fail to support real-world analytics.
 
 This playbook establishes a clear standard: a native Ed-Fi Data Standard integration is not simply a data feed that posts results to an Ed-Fi API. It is an integration that publishes a complete, hierarchically accurate, subject-safe, and governance-aligned representation of an assessment, suitable for both compliance reporting and local analytic use without requiring custom downstream logic.
 
@@ -94,7 +94,7 @@ workstreams. Each workstream represents a critical component of a complete, scal
 analytically usable integration, and together they establish the expectations for moving from raw
 assessment data to a production-ready implementation.
 
-_**Data Modeling**_ defines how assessments, hierarchical structure, results, their placement within the student assessment record, and descriptors must be represented in the Ed-Fi Data Standard data model. It establishes the rules that ensure assessment data is complete, interpretable, and consistent across vendors and environments.
+_**Data Modeling**_ defines how assessments, hierarchical structure, results, their placement within the student assessment record, and descriptors must be represented in the Ed-Fi data model. It establishes the rules that ensure assessment data is complete, interpretable, and consistent across vendors and environments.
 
 _**Student Identity and Rostering**_ establishes how assessment results are aligned to StudentUniqueId and connected to the broader data ecosystem. It defines how identity is resolved, validated, and maintained, enabling results to support longitudinal analysis and enrollment-aligned reporting.
 
