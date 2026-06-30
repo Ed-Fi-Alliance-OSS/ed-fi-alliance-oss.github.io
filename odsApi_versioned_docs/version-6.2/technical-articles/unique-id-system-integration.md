@@ -452,7 +452,7 @@ using Autofac;
 using EdFi.Common.Configuration;
 using EdFi.Ods.Common.Configuration;
 using EdFi.Ods.Common.Container;
-using My.Custom.IdentityService
+using My.Custom.IdentityService;
 
 namespace EdFi.Ods.Features.Container.Modules
 {
