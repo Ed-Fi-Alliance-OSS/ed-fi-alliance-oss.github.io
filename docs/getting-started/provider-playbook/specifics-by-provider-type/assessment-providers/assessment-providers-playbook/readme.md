@@ -4,7 +4,7 @@ sidebar_position: 1
 ---
 
 - Part I: Executive Summary (you are here)
-- [Part II: How Ed-Fi Data Works](./part-ii-how-edfi-assessment-data-works.md)
+- [Part II: How Assessment Data Works](./part-ii-how-edfi-assessment-data-works.md)
 - [Part III: Data Modeling Requirements](./part-iii-data-modeling-requirements.md)
 - [Part IV: Student Identity and Rostering](./part-iv-student-identity-and-rostering.md)
 - [Part V: Integration Architecture and Operations](./part-v-integration-architecture-and-operations.md)
