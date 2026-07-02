@@ -6,8 +6,8 @@ sidebar_position: 2
 
 After the services are running, this step creates the initial data store and
 client credentials via the Configuration Service. A _data store_ is a
-database connection that the Data Management Service uses to persist and serve
-Ed-Fi resource data.
+database connection that the Ed-Fi API uses to persist and serve Ed-Fi resource
+data.
 
 ## What This Step Creates
 
@@ -15,7 +15,7 @@ Running the configuration script provisions:
 
 - A **vendor** and **application** in the Configuration Service
 - A default **claim set** granting the application access to Ed-Fi resources
-- A **data store** (PostgreSQL database) linked to the application
+- A **data store** (PostgreSQL or SQL Server database) linked to the application
 - A **client key and secret** for authenticating API requests
 
 ## Step 1 — Run the Configuration Script
@@ -46,7 +46,7 @@ A successful response returns a JSON object containing `access_token`,
 
 ## Step 3 — Make an API Request
 
-Use the token to call the DMS API:
+Use the token to call the Ed-Fi API:
 
 ```powershell
 curl http://localhost:8080/api/data/ed-fi/schools \
@@ -56,7 +56,7 @@ curl http://localhost:8080/api/data/ed-fi/schools \
 An empty array `[]` is a valid response. It means the data store is connected
 and no schools have been loaded yet.
 
-## Optional: School Year Routing
+## Optional: Context-Based Routing
 
 To create separate data stores for multiple school years, use the
 `-SchoolYearRange` flag:
@@ -72,7 +72,7 @@ http://localhost:8080/api/2024/data/ed-fi/schools
 http://localhost:8080/api/2025/data/ed-fi/schools
 ```
 
-See [School Year Routing](../platform-dev-guide/multi-tenancy/school-year-routing.md)
+See [Context-Based Routing for Year-Specific Data Store](../platform-dev-guide/configuration/context-based-routing-for-year-specific-datastore.md)
 for details on multi-year deployments.
 
 ## Optional: Add Smoke Test Credentials

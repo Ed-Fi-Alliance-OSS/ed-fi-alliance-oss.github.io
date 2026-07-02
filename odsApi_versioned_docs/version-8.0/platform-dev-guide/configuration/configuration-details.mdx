@@ -10,12 +10,11 @@ page documents all available settings. Environment variables override
 hierarchy — for example, `AppSettings__Datastore=mssql`. No special prefix is
 required.
 
-## Data Management Service Settings
+## Ed-Fi API Settings
 
 ### Required Settings
 
-The Data Management Service requires a database connection and an identity
-provider to start. In the Docker Compose setup these are provided via the `.env`
+The Ed-Fi API requires a database connection and an identity provider to start. In the Docker Compose setup these are provided via the `.env`
 file; in other deployments configure them directly in `appsettings.json` or via
 environment variables.
 
@@ -38,7 +37,7 @@ environment variables.
   |             |                                                                                                                                      |
   | ----------- | ------------------------------------------------------------------------------------------------------------------------------------ |
   | Example     | `http://ed-fi-api-config:8081`                                                                                                       |
-  | Description | Base URL of the Configuration Service. DMS contacts this URL at runtime to retrieve claim sets, data stores, and application context |
+  | Description | Base URL of the Configuration Service. The Ed-Fi API contacts this URL at runtime to retrieve claim sets, data stores, and application context |
 
 - **`ConfigurationServiceSettings:EncryptionKey`**
 
@@ -49,26 +48,19 @@ environment variables.
 
 ### Optional Settings
 
-- **`AppSettings:DeployDatabaseOnStartup`**
-
-  |             |                                                                                                                                                       |
-  | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-  | Default     | `false`                                                                                                                                               |
-  | Description | When `true`, DMS creates and initializes the database schema on startup. Equivalent to running `dms-schema ddl provision` before starting the service |
-
 - **`AppSettings:MultiTenancy`**
 
   |             |                                                                                                                                              |
   | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
   | Default     | `false`                                                                                                                                      |
-  | Description | When `true`, enables multi-tenancy mode. The tenant identifier is extracted from the URL route. See [Multi-Tenancy](../multi-tenancy/readme.md) |
+  | Description | When `true`, enables multi-tenancy mode. The tenant identifier is extracted from the URL route. See [Single and Multi-Tenant Configuration](./single-and-multi-tenant-configuration.md) |
 
 - **`AppSettings:RouteQualifierSegments`**
 
   |             |                                                                                                                                                                                                                                                                  |
   | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
   | Default     | _(empty)_                                                                                                                                                                                                                                                        |
-  | Description | Comma-separated list of route qualifier segments extracted from the URL path. Example: `districtId,schoolYear`. Segments must match `dataStoreContexts` configured in the Configuration Service. See [School Year Routing](../multi-tenancy/school-year-routing.md) |
+  | Description | Comma-separated list of route qualifier segments extracted from the URL path. Example: `districtId,schoolYear`. Segments must match `dataStoreContexts` configured in the Configuration Service. See [Context-Based Routing for Year-Specific Data Store](./context-based-routing-for-year-specific-datastore.md) |
 
 - **`AppSettings:BypassTypeCoercion`**
 
@@ -95,15 +87,15 @@ environment variables.
 
   |             |                                                                                                                                                                             |
   | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-  | Default     | `true`                                                                                                                                                                      |
+  | Default     | `false`; Docker Compose env var `USE_API_SCHEMA_PATH` defaults to `true` in `.env.example`                                                                                                                                                                      |
   | Description | When `true`, loads the API schema (core and extensions) from the directory specified by `ApiSchemaPath`. When `false`, loads the bundled schema from the application output |
 
 - **`AppSettings:ApiSchemaPath`**
 
   |             |                                                                                                                                                                                                                                                                                          |
   | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-  | Default     | `/app/ApiSchema`                                                                                                                                                                                                                                                                         |
-  | Description | Directory containing `bootstrap-api-schema-manifest.json` and the declared schema files. Used when `UseApiSchemaPath` is `true`. Extension `APISchema.json` files placed in this directory are automatically loaded. See [Extending with MetaEd](../extensibility/extending-with-metaed.md) |
+  | Default     | _(empty)_; Docker Compose env var `API_SCHEMA_PATH` defaults to `/app/ApiSchema` in `.env.example`                                                                                                                                                                                                                                                                         |
+  | Description | Directory containing `bootstrap-api-schema-manifest.json` and the declared schema files. Used when `UseApiSchemaPath` is `true`. Extension `ApiSchema.json` files placed in this directory are automatically loaded. See [Extending with MetaEd](../extensibility/extending-with-metaed.md) |
 
 - **`AppSettings:DomainsExcludedFromOpenApi`**
 
@@ -112,19 +104,54 @@ environment variables.
   | Default     | _(empty)_                                                                                                                                                                     |
   | Description | Comma-separated list of Ed-Fi domain names to exclude from the generated OpenAPI specification. Case-insensitive. Useful for reducing Swagger UI noise in focused deployments |
 
-- **`ConfigurationServiceSettings:CacheExpirationMinutes`**
+- **`CacheSettings:ClaimSetsCacheExpirationSeconds`**
 
-  |             |                                                                                                                                 |
-  | ----------- | ------------------------------------------------------------------------------------------------------------------------------- |
-  | Default     | `10`                                                                                                                            |
-  | Description | Minutes before cached claim sets, data stores, and application context expire and are re-fetched from the Configuration Service |
+  |             |                                                                                                    |
+  | ----------- | -------------------------------------------------------------------------------------------------- |
+  | Default     | `600`                                                                                              |
+  | Description | Seconds before cached claim sets (the claims taxonomy) expire and are re-fetched from the Configuration Service |
+
+- **`CacheSettings:ApplicationContextCacheExpirationSeconds`**
+
+  |             |                                                                                              |
+  | ----------- | -------------------------------------------------------------------------------------------- |
+  | Default     | `600`                                                                                        |
+  | Description | Seconds before cached application context expires and is re-fetched from the Configuration Service |
+
+- **`CacheSettings:TokenCacheExpirationSeconds`**
+
+  |             |                                                                                     |
+  | ----------- | ----------------------------------------------------------------------------------- |
+  | Default     | `1500`                                                                              |
+  | Description | Seconds before the cached Configuration Service access token expires and is renewed |
+
+- **`CacheSettings:ProfileCacheExpirationSeconds`**
+
+  |             |                                                                                    |
+  | ----------- | ---------------------------------------------------------------------------------- |
+  | Default     | `1800`                                                                             |
+  | Description | Seconds before cached profile definitions expire and are re-fetched from the Configuration Service |
+
+- **`CacheSettings:DataStoreCacheExpirationSeconds`**
+
+  |             |                                                                                       |
+  | ----------- | ------------------------------------------------------------------------------------- |
+  | Default     | `600`                                                                                 |
+  | Description | Seconds before cached data store configuration expires and is re-fetched from the Configuration Service. Requires `DataStoreCacheRefreshEnabled` to be `true`. Set to `0` or a negative value to keep the cache until the next explicit reload |
+
+- **`CacheSettings:DataStoreCacheRefreshEnabled`**
+
+  |             |                                                                                       |
+  | ----------- | ------------------------------------------------------------------------------------- |
+  | Default     | `true`                                                                                |
+  | Description | Enables TTL-based automatic refresh of the cached data store configuration from the Configuration Service. When `true`, DMS re-fetches data store settings once a cache entry is older than `DataStoreCacheExpirationSeconds`, so changes made in the Configuration Service propagate without a restart. When `false`, the cached configuration is kept until the next explicit reload |
 
 - **`AppSettings:PathBase`**
 
   |             |                                                                                                                                                                            |
   | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
   | Default     | _(empty)_; Docker Compose env var `PATH_BASE` defaults to `api` in `.env.example`                                                                                          |
-  | Description | URL path prefix for all DMS API endpoints. With `PATH_BASE=api`, resource endpoints are at `/api/data/ed-fi/...`. Leave empty to serve from the root path with no prefix |
+  | Description | URL path prefix for all Ed-Fi API endpoints. With `PATH_BASE=api`, resource endpoints are at `/api/data/ed-fi/...`. Leave empty to serve from the root path with no prefix |
 
 - **`DatabaseOptions:IsolationLevel`**
 
@@ -166,7 +193,7 @@ environment variables.
   |             |                                                                                                                                                                                                                                                |
   | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
   | Example     | `MySecretKey1234567890123456789012`                                                                                                                                                                                                            |
-  | Description | AES key used to encrypt data store connection strings at rest. Must match `ConfigurationServiceSettings:EncryptionKey` in the DMS. Set via `DMS_CONFIG_DATABASE_ENCRYPTION_KEY` environment variable. Recommended: a 32-character ASCII string |
+  | Description | AES key used to encrypt data store connection strings at rest. Must match `ConfigurationServiceSettings:EncryptionKey` in the Ed-Fi API. Set via `DMS_CONFIG_DATABASE_ENCRYPTION_KEY` environment variable. Recommended: a 32-character ASCII string |
 
 ### Optional Settings
 
@@ -210,7 +237,7 @@ environment variables.
   |             |                                                                                                                                                                                                                                            |
   | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
   | Default     | `false`                                                                                                                                                                                                                                    |
-  | Description | When `true`, enables `POST /applications/{id}/reset-credential` for resetting API client credentials via API. Disable when an application supports multiple API clients, as resetting credentials affects all clients for that application |
+  | Description | When `true`, enables `PUT /v3/applications/{id}/reset-credential` for resetting API client credentials via API. Disable when an application supports multiple API clients, as resetting credentials affects all clients for that application |
 
 - **`IdentitySettings:ClientSecretValidation:MinimumLength`**
 

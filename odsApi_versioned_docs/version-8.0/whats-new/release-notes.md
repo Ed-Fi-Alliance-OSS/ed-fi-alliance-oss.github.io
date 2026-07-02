@@ -36,7 +36,7 @@ GitHub repository to find the changes for that specific update.
 * DMS-861 - Multi-tenancy support (data segmentation)
 * DMS-321 - Extension support (extensibility)
 
-## Ed-Fi API v8.0 - Breaking Changes from ODS/API
+## Ed-Fi API v8.0 - Breaking Changes from Previous Releases
 
 This section summarizes the changes that may require updates to existing client
 applications, platform configurations, or integration workflows when moving from
@@ -75,8 +75,9 @@ fails with HTTP 400.
 
 **How to audit:** retrieve the OpenAPI specification from the API's metadata
 endpoint and compare property names in your request bodies against the spec. The
-correct property names for every resource are published at
-`/metadata/{project}/swagger.json`.
+correct property names for every resource are published in the resources OpenAPI
+specification at `/metadata/specifications/resources-spec.json` (the available
+specification sections are listed at `/metadata/specifications`).
 
 #### URL Path Changes
 
@@ -147,9 +148,10 @@ a flat tables-per-resource model. Data must be re-loaded via the Ed-Fi API.
 #### Direct Database Access Patterns
 
 If your reporting, analytics, or ETL processes query the ODS database directly,
-the table structure has changed. Ed-Fi API v8 continues to use dedicated tables
-per resource (e.g., `edfi_School`, `edfi_Student`); however, there are structural
-changes. Existing SQL queries against ODS tables will need to be updated. See
+the table structure has changed. Ed-Fi API v8 uses dedicated tables per
+resource, schema-qualified per project (e.g., `edfi.School`, `edfi.Student`);
+however, there are structural changes. Existing SQL queries against ODS tables
+will need to be updated. See
 [Relational Data Model](../technical-articles/relational-data-model.md) for the
 new schema structure.
 
@@ -163,25 +165,12 @@ table shows the current status.
 | Resources and Descriptors API | Yes | Yes |
 | Discovery API | Yes | Yes |
 | Profiles (readable and writable) | Yes | Yes |
-| Built-in multi-tenancy | No | Yes |
+| Authorization | Yes | Yes, except ownership-based and custom view-based authorization |
+| Multi-tenancy | Yes | Yes |
 | School-year / district routing | Yes | Yes |
-| Changed record queries | Yes | Yes, with limitations (see below) |
+| Changed record queries | Yes | Yes, with [minor limitations](../platform-dev-guide/features/changed-record-queries.md#current-limitations) |
 | MetaEd extensions | Yes | Yes (different workflow — see [Extending with MetaEd](../platform-dev-guide/extensibility/extending-with-metaed.md)) |
 | OneRoster | Yes | Not available in v8.0 |
 | Bulk Load Client utility | Yes | Yes (same tool, updated for v8 URLs) |
 | Sandbox Administration Portal | Yes | Not available in v8.0 |
 | Admin App (UI) | Yes | Not available in v8.0 |
-
-### Changed Record Query Limitations
-
-Changed record queries (`/availableChangeVersions`, `/deletes`, `/keyChanges`)
-are supported in Ed-Fi API v8.0 with the following limitations compared to the
-ODS/API:
-
-* **No snapshot support** — the ODS/API allowed clients to create and query
-  against a consistent point-in-time snapshot. Snapshot support is planned for a
-  future release.
-* **Always enabled** — the feature cannot be disabled through configuration.
-* **No custom view-based authorization** — the ODS/API supported custom database
-  view-based authorization strategies on change query endpoints. This is not
-  available in v8.0.

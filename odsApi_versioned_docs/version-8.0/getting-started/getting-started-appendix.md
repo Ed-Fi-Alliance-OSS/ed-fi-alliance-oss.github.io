@@ -2,13 +2,13 @@
 sidebar_position: 3
 ---
 
-# Getting Started — Appendix
+# Getting Started - Appendix
 
 ## Default Service Ports
 
 | Service | Default Port |
 | --- | --- |
-| Data Management Service | 8080 |
+| Ed-Fi API | 8080 |
 | Configuration Service | 8081 |
 | Swagger UI _(optional)_ | 8082 |
 | PostgreSQL | 5435 |
@@ -22,18 +22,17 @@ The `.env` file in `eng/docker-compose/` controls Docker Compose service
 configuration. Copy `.env.example` to `.env` and edit as needed before running
 `start-local-dms.ps1`.
 
-### Data Management Service
+### Ed-Fi API
 
 | Variable | Default | Description |
 | --- | --- | --- |
 | `DMS_DATASTORE` | `postgresql` | Database engine: `postgresql` or `mssql` |
-| `DMS_DEPLOY_DATABASE_ON_STARTUP` | `false` | Provision database schema automatically on container start |
 | `DMS_MULTI_TENANCY` | `false` | Enable multi-tenancy |
 | `ROUTE_QUALIFIER_SEGMENTS` | _(empty)_ | Route qualifier path segments, e.g. `schoolYear` or `districtId,schoolYear` |
 | `MAXIMUM_PAGE_SIZE` | `500` | Maximum number of results per paginated request |
 | `MASK_REQUEST_BODY_IN_LOGS` | `true` | Mask request body in DEBUG-level logs |
 | `LOG_LEVEL` | `DEBUG` | Log verbosity: `DEBUG`, `INFORMATION`, `WARNING`, `ERROR` |
-| `DMS_HTTP_PORTS` | `8080` | Port the DMS container listens on |
+| `DMS_HTTP_PORTS` | `8080` | Port the Ed-Fi API container listens on |
 
 ### PostgreSQL
 
@@ -52,7 +51,7 @@ configuration. Copy `.env.example` to `.env` and edit as needed before running
 | `DMS_CONFIG_MULTI_TENANCY` | `false` | Enable multi-tenancy for the Configuration Service |
 | `DMS_CONFIG_DEPLOY_DATABASE` | `true` | Provision Configuration Service database on start |
 | `DMS_CONFIG_LOG_LEVEL` | `Information` | Configuration Service log verbosity |
-| `CONFIG_SERVICE_URL` | `http://ed-fi-api-config:8081` | URL DMS uses to reach the Configuration Service (internal Docker network name) |
+| `CONFIG_SERVICE_URL` | `http://ed-fi-api-config:8081` | URL the Ed-Fi API uses to reach the Configuration Service (internal Docker network name) |
 
 :::info
 
@@ -89,17 +88,28 @@ for Keycloak-specific setup steps.
 
 ## Database Overview
 
-Ed-Fi API v8 uses the following databases, all created automatically on first
-startup when `DMS_DEPLOY_DATABASE_ON_STARTUP=true`:
+Ed-Fi API v8 stores its data in a relational database — PostgreSQL or SQL
+Server — organized into separate schemas by concern. By default, the Docker
+Compose stack uses PostgreSQL and creates a single database — named
+by `POSTGRES_DB_NAME` (default `edfi_datamanagementservice`) — that both services
+use, with the Configuration Service's data isolated in the `dmscs` schema.
+Alternatively, the Configuration Service can be pointed at its own database (for
+example, `edfi_configurationservice`) via the
+`DMS_CONFIG_DATABASE_CONNECTION_STRING` environment variable.
 
-| Database | Purpose |
-| --- | --- |
-| `edfi_datamanagementservice` | Ed-Fi resource and descriptor data (managed by DMS) |
-| `edfi_configurationservice` | Vendors, applications, claim sets, and data store configuration |
-| `edfi_identity` | OAuth client credentials (OpenIddict; used with self-contained identity provider) |
+The Configuration Service schema is deployed automatically on startup when
+`DMS_CONFIG_DEPLOY_DATABASE=true` (the default). The Data Management Service
+schema is not deployed by the DMS container on startup; it is provisioned as a
+separate phase by the startup scripts (using the `dms-schema` CLI), which
+`start-local-dms.ps1` orchestrates for you.
 
-To provision databases manually, see
-[Database Provisioning](../platform-dev-guide/deployment/database-provisioning.md).
+| Schema | Application | Purpose |
+| --- | --- | --- |
+| `dms`, `edfi`, `tracked_changes`, and other model extension schemas | Ed-Fi API | Ed-Fi resource and descriptor data |
+| `dmscs` | Configuration Service | Vendors, applications, claim sets, data store configuration, and OAuth client credentials (OpenIddict, used with the self-contained identity provider) |
+
+To provision the database manually, see
+[Database Provisioning](../platform-dev-guide/utilities/database-provisioning.md).
 
 ## SQL Server
 
@@ -125,7 +135,7 @@ If `start-local-dms.ps1` times out waiting for a service to become healthy:
 1. Confirm Docker is running: `docker info`
 2. Check for port conflicts: `netstat -an | grep -E "8080|8081|5435"`
 3. Review container logs: `docker compose logs dms` or
-   `docker compose logs config-service`
+   `docker compose logs config`
 4. Try a clean restart:
 
 ```powershell
@@ -135,14 +145,20 @@ If `start-local-dms.ps1` times out waiting for a service to become healthy:
 
 ### Schema Fingerprint Mismatch
 
-DMS validates a schema fingerprint on startup. If the deployed database schema
-does not match the bundled API schema — for example, after upgrading DMS to a
-new version — DMS will refuse to start. Resolve with a full reset:
+The Ed-Fi API validates a schema fingerprint on first use. If the deployed
+database schema does not match the API schema the service loaded — for example,
+after upgrading to a new version — the API responds with **HTTP 503** until the
+database is re-provisioned for the current schema. Because the result is cached
+for the process lifetime, resolve it locally with a full reset (which
+re-provisions a fresh database and restarts the services):
 
 ```powershell
 ./start-local-dms.ps1 -d -v
 ./start-local-dms.ps1
 ```
+
+For details, see [Database
+Provisioning](../platform-dev-guide/utilities/database-provisioning.md#schema-fingerprint-validation).
 
 ### PowerShell Execution Policy (Windows)
 

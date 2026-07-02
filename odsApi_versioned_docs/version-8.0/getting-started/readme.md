@@ -7,8 +7,7 @@ sidebar_position: 2
 This documentation covers how to deploy and configure Ed-Fi API v8, which
 comprises two services:
 
-- **Data Management Service (DMS)** — the Ed-Fi REST API for reading and
-  writing education data
+- **Ed-Fi API** — the Ed-Fi REST API for reading and writing education data
 - **Configuration Service** — the management API for administering
   vendors, applications, claim sets, and data stores
 
@@ -31,7 +30,7 @@ developers evaluating or implementing Ed-Fi API v8.
 
 :::info
 
-These instructions use the startup scripts provided in the DMS source
+These instructions use the startup scripts provided in the Ed-Fi API source
 repository. The scripts orchestrate Docker Compose, database provisioning,
 and initial configuration in the correct order. Running `docker compose up`
 directly is not recommended for first-time setup.
@@ -49,7 +48,7 @@ Ed-Fi API v8 has been tested with the following configurations:
 
 ## Steps Overview
 
-1. [Docker Deployment](docker-deployment) — start DMS and the Configuration
-   Service using Docker Compose
+1. [Docker Deployment](docker-deployment) — start the Ed-Fi API and
+   Configuration Service using Docker Compose
 2. [Configure a Data Store](configure-data-store) — create the initial client
    credentials and data store via the Configuration Service

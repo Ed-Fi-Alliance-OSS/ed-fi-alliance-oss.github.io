@@ -11,9 +11,9 @@ Ed-Fi API v8 supports two identity providers for OAuth 2.0 authentication:
 - **Keycloak** — delegates authentication to an external Keycloak instance.
   Suitable for environments that require enterprise identity management or SSO.
 
-The identity provider is selected independently for DMS and the Configuration
-Service, but both must be configured consistently to point at the same token and
-metadata endpoints.
+The identity provider is selected independently for the Ed-Fi API and the
+Configuration Service, but both must be configured consistently to point at the
+same token and metadata endpoints.
 
 ## Self-Contained (OpenIddict)
 
@@ -35,7 +35,7 @@ credentials, token issuance, and OIDC metadata.
 }
 ```
 
-### DMS settings
+### Ed-Fi API settings
 
 ```json
 "AppSettings": {
@@ -71,7 +71,7 @@ SELF_CONTAINED_DMS_JWT_METADATA_ADDRESS=http://ed-fi-api-config:8081/.well-known
 
 Use Keycloak when your environment requires centralized identity management,
 user federation, or single sign-on. Keycloak must be provisioned and configured
-separately; the DMS repository includes a local development Keycloak setup via
+separately; the repository includes a local development Keycloak setup via
 Docker Compose.
 
 **Token endpoint:** `http://{keycloak-host}:{port}/realms/edfi/protocol/openid-connect/token`
@@ -87,7 +87,7 @@ Docker Compose.
 }
 ```
 
-### DMS settings
+### Ed-Fi API settings
 
 ```json
 "AppSettings": {
@@ -117,8 +117,8 @@ KEYCLOAK_DMS_JWT_METADATA_ADDRESS=http://dms-keycloak:8080/realms/edfi/.well-kno
 KEYCLOAK_PORT=8045
 ```
 
-See `eng/docker-compose/KEYCLOAK-SETUP.md` in the DMS repository for Keycloak
-realm and client configuration details.
+See `eng/docker-compose/KEYCLOAK-SETUP.md` in the Ed-Fi API repository for
+Keycloak realm and client configuration details.
 
 ---
 

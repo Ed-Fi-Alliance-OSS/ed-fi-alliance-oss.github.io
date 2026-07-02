@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 4
 ---
 
 # Configuration
@@ -7,9 +7,9 @@ sidebar_position: 1
 Ed-Fi API v8 consists of two separately configured services, each with its own
 `appsettings.json`:
 
-- **Data Management Service (DMS)** — handles the Ed-Fi REST API (resources,
-  descriptors, discovery, and OAuth token validation). The primary configuration
-  file is `appsettings.json` in the DMS application.
+- **Ed-Fi API** — handles the Ed-Fi REST API (resources, descriptors,
+  discovery, and OAuth token validation). The primary configuration file is
+  `appsettings.json` in the Ed-Fi API application.
 - **Configuration Service** — handles the management API (vendors, applications,
   claim sets, data stores, and identity). Configuration is also stored in
   `appsettings.json`.

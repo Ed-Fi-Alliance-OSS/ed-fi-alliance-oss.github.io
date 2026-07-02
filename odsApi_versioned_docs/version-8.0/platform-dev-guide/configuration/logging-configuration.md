@@ -1,17 +1,17 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
 ---
 
 # Logging Configuration
 
 Ed-Fi API v8 uses [Serilog](https://serilog.net/) for structured logging in
-both the Data Management Service and the Configuration Service. Logs are written
+both the Ed-Fi API and the Configuration Service. Logs are written
 to the console in structured format, suitable for ingestion by log-monitoring
 platforms such as Splunk, CloudWatch, Datadog, or the ELK stack.
 
 The log level for each service is controlled independently:
 
-- DMS: `LOG_LEVEL` environment variable (maps to `Serilog__MinimumLevel__Default`
+- Ed-Fi API: `LOG_LEVEL` environment variable (maps to `Serilog__MinimumLevel__Default`
   in `appsettings.json`)
 - Configuration Service: `DMS_CONFIG_LOG_LEVEL` environment variable
 
@@ -48,7 +48,8 @@ Sample log output at `INFORMATION` level:
 ### Local Development (DEBUG)
 
 The Docker Compose `.env.example` ships with `LOG_LEVEL=DEBUG`. At this level,
-DMS logs anonymized request payloads to aid integration troubleshooting. See
+the Ed-Fi API logs anonymized request payloads to aid integration
+troubleshooting. See
 [PII Protection](#pii-protection-at-debug-level) for how anonymization works.
 
 ```ini
@@ -72,7 +73,7 @@ appropriate before enabling `DEBUG` in a production environment.
 
 ## PII Protection at DEBUG Level
 
-At `DEBUG` level, DMS logs anonymized HTTP request payloads. Before logging, all
+At `DEBUG` level, the Ed-Fi API logs anonymized HTTP request payloads. Before logging, all
 string and numeric field values in the request body are replaced with `null`,
 leaving only the structure and descriptor URI values visible. This provides
 enough information to diagnose request shape issues (missing fields, incorrect
@@ -104,7 +105,7 @@ for that request and is included in error response bodies. The correlation ID
 makes it possible to trace a specific failed request across multiple log lines
 and across service boundaries.
 
-If a request does not include a correlation ID, DMS generates a UUID for the
+If a request does not include a correlation ID, the Ed-Fi API generates a UUID for the
 request's lifetime. The header name used to pass or read a correlation ID is
 configurable via the `CORRELATION_ID_HEADER` environment variable (default:
 `correlationid`).
@@ -146,13 +147,10 @@ allowing the two to be linked:
 
 ### Specifying the Correlation ID for a Request
 
-Client applications can supply their own correlation ID in one of two ways:
-
-- As an HTTP header named `correlationid` (or the value of
-  `CORRELATION_ID_HEADER`)
-- As a query string parameter named `correlationId`
-
-When both are present, the HTTP header takes precedence.
+Client applications can supply their own correlation ID by including an HTTP
+header named `correlationid` (or the value of `CORRELATION_ID_HEADER`) on the
+request. If no such header is present, the Ed-Fi API generates one for the
+request's lifetime.
 
 Using a client-supplied correlation ID is particularly useful when the API sits
 behind a gateway or proxy that logs its own correlation IDs — matching them
@@ -173,17 +171,6 @@ Host: localhost:8080
 Content-Type: application/json
 Authorization: Bearer <access_token>
 correlationid: b9567d36-91c1-4bae-aff5-3fde8367b969
-
-{ ... }
-```
-
-### Example 4: Correlation ID supplied as a query string parameter
-
-```text
-POST /api/data/ed-fi/schools?correlationId=b9567d36-91c1-4bae-aff5-3fde8367b969 HTTP/1.1
-Host: localhost:8080
-Content-Type: application/json
-Authorization: Bearer <access_token>
 
 { ... }
 ```
