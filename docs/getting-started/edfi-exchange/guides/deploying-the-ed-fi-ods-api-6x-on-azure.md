@@ -75,108 +75,99 @@ In this section we will be deploying the local databases up to the Azure SQL Ser
 
 We have two options for deploying databases, either the databases can be pushed to an Azure storage account from SSMS or they can be published directly from SSMS
 
-> [!NOTE]
->
-> Deploy via Storage accounts
->
-> * In your local computer open **SQL Server Management Studio.** You can download it from this site: [https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16)
-> * Select Database Engine as **Server Type**
-> * Select your local DB server name and choose **Windows Authentication**
-> * Click **Connect**
->
-> **![SSMS SQL connection](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/guides/image-2023-3-27_0-27-12.png)
->
-> **
->
-> * Under the server object > "Databases", right-click any of the local databases. Select "Tasks" > "Export Data-Tier Application"
-> * Click on "Next" on "Introduction"
-> * On "Export Settings", under "Settings", click on "Save to Microsoft Azure"
-> * Click on "Connect", and "Sign in..."
-> * Sign in to your Azure account
-> * Select the appropriate Storage account and Blob Container to store the backup file. Click "OK"
->
-> ![Azure connect to a storage container](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/guides/image-2023-3-27_1-13-22.png)
->
-> * After returning to the export wizard, corroborate the information provided and click "Next"
->
-> ![SSMS Configure export settings](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/guides/image-2023-3-27_1-15-45.png)
->
-> * Corroborate the information and click "Finish"
->
-> ![Complete export](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/guides/image-2023-3-27_1-17-31.png)
->
-> * On your Azure portal page, navigate to the SQL Server created in Step 1
-> * On the "Overview" section of the resource page, click on "+ Import Database"
->
-> ![Azure select import database](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/guides/image-2023-3-27_0-49-24.png)
->
-> * Fill the requirements with the corresponding information
->   * Database name: type the same database name it had from the backup or leave blank
->   * Collation: leave as is
->   * Authentication type: SQL Server
->   * Server admin login: The name of the administrator account of the SQL server
->   * Password: The password of the administrator account of the SQL server
->
-> ![Azure import database](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/guides/image-2023-3-27_0-53-37.png)
->
-> * For "Storage", click on "Select backup"
-> * Navigate to the storage account containing the backup file
-> * Navigate to the container containing the backup file
-> * Select the corresponding backup file and click "Select"
->
-> ![Azure db backup configuration](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/guides/image-2023-3-27_0-57-46.png)
->
-> * You should get a notification with the database import request on your Azure portal notifications tab
->
-> ![Notifications](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/guides/image-2023-3-27_1-0-18.png)
->
-> * You can monitor the process of the import status on the SQL Server resource page, under "Data management" > "Import/Export History"
->
-> ![Import Export History](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/guides/image-2023-3-27_1-2-54.png)
->
-> * Once the process is finished, status under "Import/Export history" should be "Completed" and the database should appear under "Settings" > "SQL Databases"
->
-> Deploy direct from Sql Server Management Studio (SSMS)
->
-> * In your local computer open **SQL Server Management Studio.** You can download it from this site: [https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16)
-> * Select Database Engine as **Server Type**
-> * Write your **Server name**. This is the name of the Azure SQL Server that you just created.
-> * Select SQL Server Authentication as **Authentication** method and enter the username and password you created
-> * Click **Connect**
-> * Now connect to your local SQL Server by clicking on **Connect**
->
-> **![SSMS Login Screen](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/guides/image-2023-3-27_0-27-12.png)
->
-> **
->
-> * Select your local DB server name and choose **Windows Authentication**
-> * Click on **Connect**
-> * There are three databases that we need to import into Azure. By default, these are called: EdFi \_Admin, EdFi\_ODS, EdFI\_Security. If this is a yearspecific instance, there could be more than one EdFi\_ODS for each year. After successfully connecting, locate the databases by expanding the **Databases** folder
->
-> ![SSMS Connect](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/guides/image-2023-3-27_0-29-52.png)
->
-> * Choose the database that you wish to import (they can be imported in any desired order)
-> * Right click on that database, go to **Tasks** and then to **Deploy Database to Microsoft Azure SQL Database**
->
-> **![SSMS Deploy](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/guides/image-2023-3-27_0-35-54.png)
->
-> **
->
-> * Skip the **Introduction**
-> * Click on **Connect**
-> * Set the **Server name** with the Azure SQL Server
-> * Choose **SQL Server Authentication** and set your Username and **Password** info
-> * Click on **Connect**
-> * Set the name for the database that will be deployed to the Azure SQL Server
-> * Choose the parameters accordingly to the database that will be imported
->     \*This parameters are still undergoing testing and may change over time
+### Deploy via Storage accounts
 
-|     |     |     |     |
-| --- | --- | --- | --- |
-|     | **EdFi\_Admin** | **EdFi\_Security** | **EdFi\_Ods\_** |
-| **Edition** | Standard | Standard | Standard |
-| **Maximum** **database size** | 1 GB | 1 GB | 50 GB |
-| **Service Objective** | S1  | S1  | S1  |
+* In your local computer open **SQL Server Management Studio.** You can download it from this site: [https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16)
+* Select Database Engine as **Server Type**
+* Select your local DB server name and choose **Windows Authentication**
+* Click **Connect**
+
+  ![SSMS SQL connection](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/guides/image-2023-3-27_0-27-12.png)
+
+* Under the server object > "Databases", right-click any of the local databases. Select "Tasks" > "Export Data-Tier Application"
+* Click on "Next" on "Introduction"
+* On "Export Settings", under "Settings", click on "Save to Microsoft Azure"
+* Click on "Connect", and "Sign in..."
+* Sign in to your Azure account
+* Select the appropriate Storage account and Blob Container to store the backup file. Click "OK"
+
+  ![Azure connect to a storage container](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/guides/image-2023-3-27_1-13-22.png)
+
+* After returning to the export wizard, corroborate the information provided and click "Next"
+
+  ![SSMS Configure export settings](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/guides/image-2023-3-27_1-15-45.png)
+
+* Corroborate the information and click "Finish"
+
+  ![Complete export](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/guides/image-2023-3-27_1-17-31.png)
+
+* On your Azure portal page, navigate to the SQL Server created in Step 1
+* On the "Overview" section of the resource page, click on "+ Import Database"
+
+  ![Azure select import database](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/guides/image-2023-3-27_0-49-24.png)
+
+* Fill the requirements with the corresponding information
+  * Database name: type the same database name it had from the backup or leave blank
+  * Collation: leave as is
+  * Authentication type: SQL Server
+  * Server admin login: The name of the administrator account of the SQL server
+  * Password: The password of the administrator account of the SQL server
+
+  ![Azure import database](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/guides/image-2023-3-27_0-53-37.png)
+
+* For "Storage", click on "Select backup"
+* Navigate to the storage account containing the backup file
+* Navigate to the container containing the backup file
+* Select the corresponding backup file and click "Select"
+
+  ![Azure db backup configuration](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/guides/image-2023-3-27_0-57-46.png)
+
+* You should get a notification with the database import request on your Azure portal notifications tab
+
+  ![Notifications](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/guides/image-2023-3-27_1-0-18.png)
+
+* You can monitor the process of the import status on the SQL Server resource page, under "Data management" > "Import/Export History"
+
+  ![Import Export History](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/guides/image-2023-3-27_1-2-54.png)
+
+* Once the process is finished, status under "Import/Export history" should be "Completed" and the database should appear under "Settings" > "SQL Databases"
+
+### Deploy direct from Sql Server Management Studio (SSMS)
+
+* In your local computer open **SQL Server Management Studio.** You can download it from this site: [https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16)
+* Select Database Engine as **Server Type**
+* Write your **Server name**. This is the name of the Azure SQL Server that you just created.
+* Select SQL Server Authentication as **Authentication** method and enter the username and password you created
+* Click **Connect**
+* Now connect to your local SQL Server by clicking on **Connect**
+
+  ![SSMS Login Screen](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/guides/image-2023-3-27_0-27-12.png)
+
+* Select your local DB server name and choose **Windows Authentication**
+* Click on **Connect**
+* There are three databases that we need to import into Azure. By default, these are called: EdFi \_Admin, EdFi\_ODS, EdFI\_Security. If this is a yearspecific instance, there could be more than one EdFi\_ODS for each year. After successfully connecting, locate the databases by expanding the **Databases** folder
+
+ ![SSMS Connect](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/guides/image-2023-3-27_0-29-52.png)
+
+* Choose the database that you wish to import (they can be imported in any desired order)
+* Right click on that database, go to **Tasks** and then to **Deploy Database to Microsoft Azure SQL Database**
+
+  ![SSMS Deploy](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/guides/image-2023-3-27_0-35-54.png)
+
+* Skip the **Introduction**
+* Click on **Connect**
+* Set the **Server name** with the Azure SQL Server
+* Choose **SQL Server Authentication** and set your Username and **Password** info
+* Click on **Connect**
+* Set the name for the database that will be deployed to the Azure SQL Server
+* Choose the parameters accordingly to the database that will be imported
+    \*These parameters are still undergoing testing and may change over time
+
+  | | EdFi_Admin | EdFi_Security | EdFi_Ods_ |
+  | --- | --- | --- | --- |
+  | **Edition** | Standard | Standard | Standard |
+  | **Maximum** **database size** | 1 GB | 1 GB | 50 GB |
+  | **Service Objective** | S1  | S1  | S1  |
 
 * Click on **Next**
 * Review the summary and click **Finish** to deploy the Database
@@ -303,60 +294,53 @@ Once done you will end up with 2 access Policy
 
 This section describes how to deploy these two applications. They will need to be built from Visual Studio.
 
-Click here to expand...
-
-* Open up the EdFi.sln file in the Ed-Fi-Ods-Implementation/application/EdFi.sln file in Visual Studio. You should sign into visual studio using the same credentials that have access to the Azure Portal.
+* Open up the Ed-Fi-Ods.sln file in the Ed-Fi-Ods-Implementation/application/Ed-Fi-Ods.sln file in Visual Studio. You should sign into visual studio using the same credentials that have access to the Azure Portal.
 * Right-click on the "Entry Points" → Edfi.Ods.WebApi folder and select "deploy"
 * On the deployment screen that comes up select the green plus sign to build a new deployment
-* > [!NOTE]
-    >
-    > Deploy Direct to Azure
-    >
-    > * Option 1- deploy straight to Azure
-    > * Select a target of "Azure"
-    > * select a specific target of "Azure App Service Windows"
-    > * choose the appropriate Resource Group and region
-    > * Choose the App Service that you created the WebApi and "save"
-    > * Change the target Runtime from Portable to "win-x64"
-    >
-    > ![Visual Studio Publish target](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/guides/VsPublishHL.png)
-    >
-    > * Click Publish.
-    >
-    > Deploy to Azure-ready .zip binary
-    >
-    > * Option 2 - build a portable zip file
-    > * Select a target of "Folder"
-    > * Choose a file location
-    > * Change the target Runtime from Portable to "win-x64"
-    >
-    > ![Visual Studio Publish target complete](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/guides/VsPublishHL.png)
-    >
-    > * Click Publish.
-    > * Open up the folder that you deployed to is located and zip up the contents of the deploy directory, not including the directory, with the following PowerShell commands:
-    >
-    > ```sh
-    > $compress = @{
-    >   Path = "WebApi\*"
-    >   CompressionLevel = "Fastest"
-    >   DestinationPath = "WebApi.zip"}
-    >
-    > Compress-Archive @compress
-    > ```
-    >
-    > * This should make a WebApi.zip file.
-    > * In the Portal, Navigate to the Web Api App Service Plan.
-    > * On the sidebar search box look for **Advanced Tools**, click on it and then click **Go**
-    > * You’ll be redirected to a service named **Kudu**. Locate **Tools** and click **Zip Push Deploy**
-    > * Drag and drop the .zip file and wait until it is uploaded, decompressed and deployed
 
+### Deploy Direct to Azure
+
+* Option 1- deploy straight to Azure
+* Select a target of "Azure"
+* select a specific target of "Azure App Service Windows"
+* choose the appropriate Resource Group and region
+* Choose the App Service that you created the WebApi and "save"
+* Change the target Runtime from Portable to "win-x64"
+
+![Visual Studio Publish target](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/guides/VsPublishHL.png)
+
+* Click Publish.
+
+### Deploy to Azure-ready .zip binary
+
+* Option 2 - build a portable zip file
+* Select a target of "Folder"
+* Choose a file location
+* Change the target Runtime from Portable to "win-x64"
+
+  ![Visual Studio Publish target complete](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/guides/VsPublishHL.png)
+
+* Click Publish.
+* Open up the folder that you deployed to is located and zip up the contents of the deploy directory, not including the directory, with the following PowerShell commands:
+
+  ```powershell
+  $compress = @{
+    Path = "WebApi\*"
+    CompressionLevel = "Fastest"
+    DestinationPath = "WebApi.zip"}
+  Compress-Archive @compress
+  ```
+
+* This should make a WebApi.zip file.
+* In the Portal, Navigate to the Web Api App Service Plan.
+* On the sidebar search box look for **Advanced Tools**, click on it and then click **Go**
+* You’ll be redirected to a service named **Kudu**. Locate **Tools** and click **Zip Push Deploy**
+* Drag and drop the .zip file and wait until it is uploaded, decompressed and deployed
 * Repeat for the Swagger application
 
 ## Step 6. Deploy Admin App to Azure App Service
 
 The Admin App is not deployed from Visual Studio. Instead, it is installed locally with the installer and then pushed up to the app service as a zip file.
-
-Click here to expand...
 
 * Copy the AdminApp web application folder (usually c:\\inetpub\\ed-fi\\AdminApp) to a working directory.
 * Edit the web.config and set stdoutLogEnabled="true". Check what log4netconfig file that appsettings.json is pointing to and in that file make sure that all of the logging files are NOT going to $program\_data or something like that. I use ./logs directory
@@ -375,16 +359,16 @@ Compress-Archive @compress
 * This should make an “AdminApp.zip” file.
 * Log into Azure from the command line with the command;
 
-```sh
-   az login
-```
+  ```sh
+  az login
+  ```
 
 * If you get an SSL error in your browser, put this command in the address bar  “[chrome://net-internals/#hsts]” and delete the localhost security policy.
 * Send it up. The “--src” tag should have the name of the zip file, “-g” is the name of the resource group, and “-n” is the name of the App Service that was created on the portal :
 
-    ```sh
-     az functionapp deployment source config-zip -g customer-success -n AdminAppYsGeorgiaCstEdfi--src AdminApp.zip
-    ```
+  ```sh
+  az functionapp deployment source config-zip -g customer-success -n AdminAppYsGeorgiaCstEdfi--src AdminApp.zip
+  ```
 
 ## Step 7. Configure App services
 
@@ -424,130 +408,119 @@ Make sure when you finish adding the settings you save the changes**
 
 There are two methods of database configuring database connection strings we are describing. The first one has the database credentials hardcoded in the settings for that App Service. This is a violation of some organization's security policy. The second method uses the key vault set up in step 4 to hold the credentials.
 
-> [!NOTE]
->
-> Credentials hard coded in the connection string
->
-> In this section, we will configure AdminApp and WebApi connection strings directly.
->
-> ### WebApi
->
-> * From the azure portal home page, search for **App Services**
-> * Select the WebApi App Service
-> * Go to select **Settings => Configuration**
-> * Under the Connection string section, select **Advance Edit**
-> * Paste the following code into the text area that is prompted, replacing the Server, User Id, and Passwords with the details for the Azure Sql Server.
->
-> ```json
-> [
->   {
->     "name": "EdFi_Admin",
->     "value": "Server=<Your SQL server name here>; Database=EdFi_Admin; User Id=<Your SQL username here>; Password= <your SQL Password here>; Application Name=EdFi.Ods.WebApi;",
->     "type": "SQLAzure",
->     "slotSetting": false
->   },
->   {
->     "name": "EdFi_Ods",
->     "value": "Server=<Your SQL server name here>; Database=EdFi_{0}; User Id=<Your SQL username here>; Password= <your SQL Password here>; Application Name=EdFi.Ods.WebApi;",
->     "type": "SQLAzure",
->     "slotSetting": false
->   },
->   {
->     "name": "EdFi_Security",
->     "value": "Server=<Your SQL server name here>; Database=EdFi_Security; User Id=<Your SQL username here>; Password= <your SQL Password here>; Application Name=EdFi.Ods.WebApi;",
->     "type": "SQLAzure",
->     "slotSetting": false
->   }
-> ]
-> ```
->
-> ### Admin App
->
-> * From the azure portal home page, search for **App Services**
-> * Select the Admin App app service
-> * Go to select **Settings => Configuration**
-> * Under the Connection string section, select **Advance Edit**
-> * Paste the following code into the text area that is prompted, replacing the Server, User Id, and Passwords with the details for the Azure Sql Server.
->
-> ```json
-> [
->   {
->     "name": "Admin",
->     "value": "Server=<Your SQL server name here>; Database=EdFi_Admin; User Id=<Your SQL username here>; Password= <your SQL Password here>; Application Name=EdFi.Ods.WebApi;",
->     "type": "SQLAzure",
->     "slotSetting": false
->   },
->   {
->     "name": "ProductionOds",
->     "value": "Server=<Your SQL server name here>; Database=EdFi_{0}; User Id=<Your SQL username here>; Password= <your SQL Password here>; Application Name=EdFi.Ods.WebApi;",
->     "type": "SQLAzure",
->     "slotSetting": false
->   },
->   {
->     "name": "Security",
->     "value": "Server=<Your SQL server name here>; Database=EdFi_Security; User Id=<Your SQL username here>; Password= <your SQL Password here>; Application Name=EdFi.Ods.WebApi;",
->     "type": "SQLAzure",
->     "slotSetting": false
->   }
-> ]
->
->
-> ```
->
->
-> Using Key vault
->
-> In this section, we will configure AdminApp and WebApi to pull the database connection string from the key vault
->
-> **Prerequisite:** you must have followed the instruction in step 4 on how to set up the azure key vault
->
-> * From the azure portal home page, search for **App Services**
-> * Select the App service on which you have the WebApi configured
-> * Inside WebApi Service, select **Settings => Configuration**
-> * Under the Connection string section, select **Advance Edit**
-> * Paste the following code into the text area that is prompted
->
-> ```json
-> [
->  {
->    "name": "EdFi_Admin",
->    "value": "@Microsoft.KeyVault(SecretUri={Secret Identifier})",
->    "type": "SQLAzure",
->    "slotSetting": false
->  },
->  {
->    "name": "EdFi_Ods",
->    "value": "@Microsoft.KeyVault(SecretUri={Secret Identifier})",
->    "type": "SQLAzure",
->    "slotSetting": false
->  },
->  {
->    "name": "EdFi_Security",
->    "value": "@Microsoft.KeyVault(SecretUri={Secret Identifier})",
->    "type": "SQLAzure",
->    "slotSetting": false
->  }
-> ]
-> ```
->
-> Configure the following properties inside the above JSON
->
-> **value:**`{Secret Identifier}`  must be replaced with the secret identifier value that is auto-generated from the secret (Step 4.2)
->
-> ![Key secret value screen](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/guides/image-2023-3-26_22-45-43.png)
->
-> * **name:** must match the name of the database that you have in your `appsettings.json`
->
-> ![Ed-Fi connection strings](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/guides/image-2023-3-26_22-51-56.png)
->
-> Once done, you will end up with something similar to this
->
-> ![Collection of connection strings](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/guides/image-2023-3-26_22-57-35.png)
->
-> ![Connection string per db](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/guides/image-2023-3-26_23-0-51.png)
->
->
->
-> * Once done and verified that everything is correct, **save the changes**
->
-> **Important: Repeat** all the above **steps** for **AdminApp**
+:::warning
+
+Credentials hard coded in the connection string
+
+:::
+
+In this section, we will configure AdminApp and WebApi connection strings directly.
+
+### WebApi
+
+* From the azure portal home page, search for **App Services**
+* Select the WebApi App Service
+* Go to select **Settings => Configuration**
+* Under the Connection string section, select **Advance Edit**
+* Paste the following code into the text area that is prompted, replacing the Server, User Id, and Passwords with the details for the Azure Sql Server.
+
+```json
+[
+  {
+    "name": "EdFi_Admin",
+    "value": "Server=<Your SQL server name here>; Database=EdFi_Admin; User Id=<Your SQL username here>; Password= <your SQL Password here>; Application Name=EdFi.Ods.WebApi;",
+    "type": "SQLAzure",
+    "slotSetting": false
+  },
+  {
+    "name": "EdFi_Ods",
+    "value": "Server=<Your SQL server name here>; Database=EdFi_{0}; User Id=<Your SQL username here>; Password= <your SQL Password here>; Application Name=EdFi.Ods.WebApi;",
+    "type": "SQLAzure",
+    "slotSetting": false
+  },
+  {
+    "name": "EdFi_Security",
+    "value": "Server=<Your SQL server name here>; Database=EdFi_Security; User Id=<Your SQL username here>; Password= <your SQL Password here>; Application Name=EdFi.Ods.WebApi;",
+    "type": "SQLAzure",
+    "slotSetting": false
+  }
+]
+```
+
+### Admin App
+
+* From the azure portal home page, search for **App Services**
+* Select the Admin App app service
+* Go to select **Settings => Configuration**
+* Under the Connection string section, select **Advance Edit**
+* Paste the following code into the text area that is prompted, replacing the Server, User Id, and Passwords with the details for the Azure Sql Server.
+
+```json
+[
+  {
+    "name": "Admin",
+    "value": "Server=<Your SQL server name here>; Database=EdFi_Admin; User Id=<Your SQL username here>; Password= <your SQL Password here>; Application Name=EdFi.Ods.WebApi;",
+    "type": "SQLAzure",
+    "slotSetting": false
+  },
+  {
+    "name": "ProductionOds",
+    "value": "Server=<Your SQL server name here>; Database=EdFi_{0}; User Id=<Your SQL username here>; Password= <your SQL Password here>; Application Name=EdFi.Ods.WebApi;",
+    "type": "SQLAzure",
+    "slotSetting": false
+  },
+  {
+    "name": "Security",
+    "value": "Server=<Your SQL server name here>; Database=EdFi_Security; User Id=<Your SQL username here>; Password= <your SQL Password here>; Application Name=EdFi.Ods.WebApi;",
+    "type": "SQLAzure",
+    "slotSetting": false
+  }
+]
+```
+
+### Using Key vault
+
+In this section, we will configure AdminApp and WebApi to pull the database connection string from the key vault
+**Prerequisite:** you must have followed the instruction in step 4 on how to set up the azure key vault
+
+* From the azure portal home page, search for **App Services**
+* Select the App service on which you have the WebApi configured
+* Inside WebApi Service, select **Settings => Configuration**
+* Under the Connection string section, select **Advance Edit**
+* Paste the following code into the text area that is prompted
+
+```json
+[
+ {
+   "name": "EdFi_Admin",
+   "value": "@Microsoft.KeyVault(SecretUri={Secret Identifier})",
+   "type": "SQLAzure",
+   "slotSetting": false
+ },
+ {
+   "name": "EdFi_Ods",
+   "value": "@Microsoft.KeyVault(SecretUri={Secret Identifier})",
+   "type": "SQLAzure",
+   "slotSetting": false
+ },
+ {
+   "name": "EdFi_Security",
+   "value": "@Microsoft.KeyVault(SecretUri={Secret Identifier})",
+   "type": "SQLAzure",
+   "slotSetting": false
+ }
+]
+```
+
+Configure the following properties inside the above JSON
+**value:**`{Secret Identifier}`  must be replaced with the secret identifier value that is auto-generated from the secret (Step 4.2)
+
+![Key secret value screen](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/guides/image-2023-3-26_22-45-43.png)
+
+* **name:** must match the name of the database that you have in your `appsettings.json`
+![Ed-Fi connection strings](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/guides/image-2023-3-26_22-51-56.png)
+Once done, you will end up with something similar to this
+![Collection of connection strings](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/guides/image-2023-3-26_22-57-35.png)
+![Connection string per db](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/guides/image-2023-3-26_23-0-51.png)
+* Once done and verified that everything is correct, **save the changes**
+**Important: Repeat** all the above **steps** for **AdminApp**
