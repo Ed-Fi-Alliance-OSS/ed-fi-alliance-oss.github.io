@@ -2,7 +2,33 @@
 
 **Target path:** `odsApi_versioned_docs/version-8.0/`
 **Based on:** 7.3 structure, adapted for DMS architecture
-**Last updated:** 2026-06-25
+**Last updated:** 2026-06-30
+
+---
+
+## Writing Conventions
+
+These rules apply to every page written for v8.0 docs.
+
+- **Style baseline:** Match the equivalent 7.3 page for heading structure, prose
+  tone, and content organization. Read the 7.3 source before writing each page.
+- **File scope:** Only write to `odsApi_versioned_docs/version-8.0/`. Do not
+  touch blogs, CSS, JSX, config files, or other versioned docs.
+- **Lint after each page:** Run `npm run lint:folder odsApi_versioned_docs/version-8.0/<section>`
+  immediately after writing each page. Do not batch across sections.
+- **Page order:** Keep `sidebar_position` values consistent with 7.3 where possible.
+- **Terminology:** Use "Ed-Fi API" or "the API" in prose. Only use "Data Management
+  Service" or "DMS" when the technical distinction from the Configuration Service is
+  necessary (e.g., environment variable names like `DMS_DATASTORE` are fine as-is).
+- **SQL Server:** Treat SQL Server as a fully supported option alongside PostgreSQL in
+  all pages. The only exception is What's New and Release Notes.
+- **Features:** Features are always-on in v8 — no FeatureManagement config section.
+  Do not document `composites`, `serializedData`, `oneRoster`, `identityManagement`,
+  `uniqueIdValidation`, or `resourceLinks` (not implemented).
+- **Stub files:** When a new page links to a page that does not yet exist in
+  `version-8.0/`, create a stub at that path immediately and note which stubs were
+  added. A stub contains only the page title and a `:::note This page is under
+  development. :::` admonition.
 
 ---
 
@@ -22,9 +48,10 @@
   2. Author security setup (claim sets for extension resources)
   3. Run `dms-schema` CLI to provision/update database DDL
 - `dms-schema` CLI — schema hash, DDL emit, DDL provision commands
-- Change queries — document endpoints exist; note `/deletes` and `/keyChanges` are
-  placeholder shims returning `[]` (not yet fully implemented)
+- Change queries — fully supported; `/deletes` and `/keyChanges` work.
+  Snapshot isolation planned for a future release.
 - Breaking changes from ODS/API (case sensitivity, URL pattern, no `v3/` segment)
+- Bulk Load Client utility — same codebase as ODS/API, updated for v8 URLs
 
 ### Out of scope for v8.0 docs (future releases)
 
@@ -33,8 +60,8 @@
 - Binary / non-Docker installation
 - In-place schema migration / hot reload of schema
 - Extension plugin model (dynamic plugin `.dll` drop-in, as in ODS/API)
-- Bulk Load Client utility (ODS/API-specific)
 - OneRoster feature (not available in v8)
+- Sandbox Administration Portal (not available in v8)
 
 ---
 
@@ -42,12 +69,12 @@
 
 ```
 odsApi_versioned_docs/version-8.0/
-├── readme.md                                        ✅ done
-├── downloads.md
+├── readme.md
 │
 ├── whats-new/
 │   ├── readme.mdx
-│   └── breaking-changes-from-ods-api.md
+│   ├── whats-new-in-this-release.md
+│   └── release-notes.md                             (includes breaking changes)
 │
 ├── getting-started/
 │   ├── readme.md
@@ -59,28 +86,29 @@ odsApi_versioned_docs/version-8.0/
 │   ├── readme.md
 │   ├── overview.md
 │   ├── fundamentals.md
+│   ├── coding-patterns.md
 │   │
 │   ├── configuration/
 │   │   ├── readme.md
 │   │   ├── configuration-details.mdx
+│   │   ├── api-client-and-data-store-configuration.md
+│   │   ├── single-and-multi-tenant-configuration.md
+│   │   ├── context-based-routing-for-year-specific-datastore.md
 │   │   ├── identity-provider.md
 │   │   └── logging-configuration.md
 │   │
 │   ├── deployment/
 │   │   ├── readme.md
-│   │   ├── docker-deployment.md
 │   │   └── database-provisioning.md
 │   │
 │   ├── security/
 │   │   ├── readme.md
-│   │   ├── claim-sets.md
-│   │   ├── roles-and-scopes.md
-│   │   └── profiles.md
+│   │   ├── api-claim-sets-resources.md
+│   │   ├── api-profiles.md
+│   │   └── security-configuration-data-stores.md
 │   │
 │   ├── multi-tenancy/
 │   │   ├── readme.md
-│   │   ├── single-tenant.md
-│   │   ├── multi-tenant-setup.md
 │   │   └── school-year-routing.md
 │   │
 │   ├── extensibility/
@@ -89,12 +117,15 @@ odsApi_versioned_docs/version-8.0/
 │   │
 │   ├── features/
 │   │   ├── readme.md
-│   │   └── change-queries.md
+│   │   ├── changed-record-queries.md
+│   │   ├── notifications-expiring-local-caches-remotely.md
+│   │   ├── ownership-based-authorization.md
+│   │   └── read-replicas.md
 │   │
 │   └── utilities/
 │       ├── readme.md
-│       ├── dms-schema-cli.md
-│       ├── cms-hierarchy.md
+│       ├── database-provisioning.md
+│       ├── cms-hierarchy-tool.md
 │       ├── smoke-test-utility.md
 │       └── bulk-load-client-utility.md
 │
@@ -105,45 +136,39 @@ odsApi_versioned_docs/version-8.0/
 │   ├── api-routes.md
 │   ├── authentication.md
 │   ├── authorization.md
+│   ├── date-datetime-elements.md
 │   ├── descriptor-references.md
 │   ├── error-handling-best-practices.md
-│   ├── paging.md
-│   └── using-the-online-documentation.md
+│   ├── error-response-knowledge-base.md
+│   ├── improve-paging-performance-on-large-api-resources.md
+│   ├── resource-dependency-order/
+│   │   └── readme.mdx
+│   ├── using-code-generation-to-create-an-sdk.md
+│   ├── using-the-online-documentation.md
+│   └── using-the-changed-record-queries.md
 │
-├── how-to-guides/
+├── technical-articles/
 │   ├── readme.mdx
-│   ├── how-to-configure-key-secret.md
-│   ├── how-to-configure-claim-sets.md
-│   ├── how-to-add-profiles.md
-│   ├── how-to-configure-multi-tenancy.md
-│   ├── how-to-configure-school-year-routing.md
-│   ├── how-to-extend-with-metaed.md
-│   └── how-to-provision-database.md
+│   ├── relational-data-model.md
+│   ├── migrating-from-ods-api.md
+│   ├── caching-strategy.md
+│   ├── api-schema-structure.md
+│   └── authorization-model.md
 │
-└── technical-articles/
+└── how-to-guides/
     ├── readme.mdx
-    ├── relational-data-model.md
-    ├── migrating-from-ods-api.md
-    ├── caching-strategy.md
-    ├── api-schema-structure.md
-    └── authorization-model.md
+    ├── how-to-configure-key-secret.md
+    ├── how-to-configure-claim-sets.md
+    ├── how-to-add-profiles.md
+    ├── how-to-configure-multi-tenancy.md
+    ├── how-to-configure-school-year-routing.md
+    ├── how-to-extend-with-metaed.md
+    └── how-to-provision-database.md
 ```
 
 ---
 
 ## Section-by-Section Notes
-
-### `readme.md` ✅
-Already written. Landing page with upcoming-release warning, timeline, key highlights,
-and source code link. Content drawn from `docs/reference/0-roadmap/api-faq.md`.
-
----
-
-### `downloads.md`
-List Docker Hub image tags for DMS and Configuration Service. Link to GitHub releases.
-No binary installer. No NuGet packages (not user-facing).
-
----
 
 ### `whats-new/`
 
@@ -151,63 +176,67 @@ No binary installer. No NuGet packages (not user-facing).
 Service, built-in multi-tenancy, writable profiles, self-contained identity provider.
 Audience: existing ODS/API users evaluating upgrade.
 
-**`breaking-changes-from-ods-api.md`** — Migration-critical changes:
-- Property names are **case-sensitive** in request bodies (ODS/API was case-insensitive)
-- No `v3/` URL segment (URLs are now `/data/ed-fi/schools`, not `/data/v3/ed-fi/schools`)
-- URL path for tenant/qualifier routing is prepended, not a query string
-- Configuration Service (not Admin API 2) for managing vendors, applications, claim sets
-- Claim set XML format differences (if any)
-- No bulk load client utility in v8 — use Config Service + API for seeding
+**`whats-new-in-this-release.md`** — New features and improvements listed per Epic.
+
+**`release-notes.md`** — Comprehensive release notes including breaking changes from
+ODS/API (case sensitivity, URL pattern, token endpoint location, Config Service replacing
+Admin API, deployment model, no in-place migration) and feature availability table.
 
 ---
 
 ### `getting-started/`
 
-**`readme.md`** — Overview of prerequisites (Docker, PowerShell 7+) and two paths:
-(1) pre-built Docker images from Docker Hub, (2) local source build. Links to docker-compose
-files in the DMS repo. Call out tested configurations.
+**`readme.md`** — Overview of prerequisites (Docker, PowerShell 7+) and the getting
+started path. Links to docker-compose files in the DMS repo.
 
 **`docker-deployment.md`** — Step-by-step using `start-local-dms.ps1`:
 1. Clone repo / pull images
-2. Run `./start-local-dms.ps1 -EnableConfig` (flags for Keycloak, Kafka UI, etc.)
-3. Access DMS at `http://localhost:8080`, Config Service at `http://localhost:8081`
-Cover environment variable overrides for `AppSettings__Datastore`, etc.
+2. Run `./start-local-dms.ps1` (flags for Swagger UI, Keycloak, etc.)
+3. Register a data store with `./configure-local-data-store.ps1`
+4. Access Ed-Fi API at `http://localhost:8080`, Config Service at `http://localhost:8081`
 
 **`configure-data-store.md`** — After startup, run `./configure-local-data-store.ps1` to
-create the initial data store (tenant + route context + app credentials). Explain the
-DMS-1153 requirement. Show how to get client key/secret.
+create the initial data store and client credentials. Show how to get client key/secret.
 
-**`getting-started-appendix.md`** — Connection string patterns for PostgreSQL and SQL
-Server, TLS notes, common startup errors.
+**`getting-started-appendix.md`** — Default ports, full `.env` variable reference,
+Keycloak setup pointer.
 
 ---
 
 ### `platform-dev-guide/`
 
-**`overview.md`** — Two-service architecture diagram (DMS ↔ Config Service). Describe:
-- DMS: handles Ed-Fi REST API (resources, descriptors, discovery, OAuth token)
-- Config Service: handles management API (vendors, applications, claim sets, data stores)
-- Identity flow: client gets token from DMS `/connect/token`, uses it against DMS API
-- Config Service manages what scopes/claim sets each client has
+**`overview.md`** — Two-service architecture diagram (Ed-Fi API ↔ Config Service).
 
-**`fundamentals.md`** — Core concepts: claim-sets, OAuth2 client-credentials, JWT
-validation, how DMS consults Config Service for application context.
+**`fundamentals.md`** — Core concepts: claim sets, OAuth2 client-credentials, JWT
+validation, how the Ed-Fi API consults the Config Service for application context.
 
 #### `configuration/`
 
-**`configuration-details.mdx`** — Full `appsettings.json` reference table (all
-`AppSettings.*`, `DatabaseOptions.*`, `RateLimit.*`, `Cors.*`, `JwtAuthentication.*`).
-Show environment variable override syntax (`AppSettings__Datastore=mssql`).
+Note: single/multi-tenant configuration and context-based routing live under
+`configuration/` (matching 7.3 structure), not under `multi-tenancy/`. The
+`multi-tenancy/` folder retains stub pages for sidebar navigation.
 
-**`identity-provider.md`** — Compare OpenIddict (self-contained, default, no external
-dependency) vs Keycloak (enterprise, external). Show config for each.
+**`configuration-details.mdx`** — Full `appsettings.json` reference table. Show
+environment variable override syntax (`AppSettings__Datastore=mssql`).
+
+**`api-client-and-data-store-configuration.md`** — Vendor, application, API client,
+and data store setup via the Configuration Service API.
+
+**`single-and-multi-tenant-configuration.md`** — Single-tenant (default) and
+multi-tenant setup. `MultiTenancy` setting, tenant header, per-tenant data stores.
+
+**`context-based-routing-for-year-specific-datastore.md`** — `RouteQualifierSegments`
+setting, year-specific and district-specific route patterns, multi-tenant combinations.
+
+**`identity-provider.md`** — Compare OpenIddict (self-contained, default) vs Keycloak
+(enterprise, external). Show config for each.
 
 **`logging-configuration.md`** — Serilog configuration, `MaskRequestBodyInLogs` flag,
 structured logging fields.
 
 #### `deployment/`
 
-**`database-provisioning.md`** — Cover `dms-schema` CLI in depth:
+**`database-provisioning.md`** — `dms-schema` CLI in depth:
 - `dms-schema ddl emit` — generate DDL scripts
 - `dms-schema ddl provision` — apply DDL to a target database
 - `dms-schema hash` — compute schema fingerprint
@@ -216,112 +245,88 @@ structured logging fields.
 
 #### `security/`
 
-**`claim-sets.md`** — How claim sets work in v8 (backward-compatible with ODS/API
-claim set semantics). How to manage via Config Service API vs Admin App UI.
-
-**`roles-and-scopes.md`** — `dms-client` vs `cms-client` roles, `edfi_admin_api/full_access`
-and `edfi_admin_api/readonly_access` scopes. How scopes map to Config Service permissions.
-
-**`profiles.md`** — Profiles support both readable (filter response fields) and
-writable (filter accepted input fields) configurations — this was also supported
-in ODS/API, not new in v8. How to define profiles in XML and upload to
-Config Service. How hidden data is preserved on PUT (not silently deleted).
+Files follow 7.3 naming: `api-claim-sets-resources.md`, `api-profiles.md`,
+`security-configuration-data-stores.md`. The data stores page covers the `dmscs`
+schema (replaces `EdFi_Admin` + `EdFi_Security`).
 
 #### `multi-tenancy/`
 
-**`readme.md`** — Overview: tenant isolation (Config data) vs instance routing (data stores).
-`AppSettings__MultiTenancy=true` flag.
-
-**`single-tenant.md`** — Default configuration. Single data store, no tenant header.
-
-**`multi-tenant-setup.md`** — Enable multi-tenancy, set `Tenant` header in Config Service
-calls, create per-tenant data stores, configure route contexts.
-
-**`school-year-routing.md`** — `RouteQualifierSegments: schoolYear` pattern.
-URL: `/{schoolYear}/data/ed-fi/schools`. Matches `SCHOOL_YEAR_INSTANCES.md` in source repo.
+Stub pages for sidebar navigation only. Full content is in `configuration/`.
 
 #### `extensibility/`
 
-**`readme.md`** — Overview of extension support in v8 vs ODS/API. The approach is
-metadata-driven: DMS reads `APISchema.json` files at startup, not compiled plugins.
+**`readme.md`** — Overview of extension support in v8 vs ODS/API. Metadata-driven:
+the Ed-Fi API reads `APISchema.json` files at startup, not compiled plugins.
 
-**`extending-with-metaed.md`** — Step-by-step:
+**`extending-with-metaed.md`** — Step-by-step extension authoring:
 1. Author extension data model in MetaEd
 2. MetaEd generates extension `APISchema.json`
 3. Place `APISchema.json` in the directory pointed to by `AppSettings__ApiSchemaPath`
-   (or alongside the bundled schema if `UseApiSchemaPath=false`)
-4. Author security setup: create claim set entries for extension resources via Config
-   Service (same claim set authoring flow as core resources)
+4. Author security setup via Config Service
 5. Run `dms-schema ddl provision` to add extension tables to the database
-6. Restart DMS (schema is loaded at startup, not hot-reloaded)
-
-Contrast with ODS/API plugin model: no `.dll` drop-in, no Visual Studio project
-templates needed. The API schema drives everything.
+6. Restart the Ed-Fi API (schema is loaded at startup, not hot-reloaded)
 
 #### `features/`
 
-**`change-queries.md`** — Document `availableChangeVersions` endpoint. Note that `/deletes`
-and `/keyChanges` endpoints exist in the API but return empty results in v8.0; full
-implementation is planned for a future release.
+**`changed-record-queries.md`** — Change version tracking, tombstone tables,
+snapshot isolation (planned for future release), current limitations.
+
+**`notifications-expiring-local-caches-remotely.md`** — Verify v8 applicability
+before porting from 7.3.
+
+**`ownership-based-authorization.md`** — Port from 7.3 with v8 terminology updates.
+
+**`read-replicas.md`** — `DataStoreDerivative` with `DerivativeType = 'ReadReplica'`.
 
 #### `utilities/`
 
-**`readme.md`** — Overview table of all utilities with brief purpose and audience.
+**`database-provisioning.md`** — Full command reference for the `dms-schema` tool.
+Cover installation, all subcommands, common workflows.
 
-**`dms-schema-cli.md`** — Full command reference for the `dms-schema` tool. Cover
-installation (shipped as part of DMS release), all subcommands, common workflows
-(fresh provision, update after extension, hash validation).
+**`cms-hierarchy-tool.md`** — The CmsHierarchy tool: `ParseXml` and `Transform`
+commands, input/output formats, typical workflow when adding extension claim sets.
+Note: as of DMS-777 this workflow may change in a future release.
 
-**`cms-hierarchy.md`** — The CmsHierarchy tool is a build-time CLI utility for
-working with authorization claim hierarchies. It has two commands:
-- `ParseXml` — converts ODS/API XML security metadata files into DMS JSON claim
-  hierarchy format (useful when migrating ODS/API security configuration to v8)
-- `Transform` — merges ClaimSet JSON definition files into the base
-  `AuthorizationHierarchy.json`, producing the combined hierarchy consumed by the
-  Config Service for authorization decisions
+**`smoke-test-utility.md`** — Same codebase as ODS/API. Note v8-specific differences
+(base URL, token endpoint). Link to 7.3 smoke test docs for full background.
 
-Source: `C:\Sources\RepoOss\Data-Management-Service\eng\CmsHierarchy`
-
-Cover: the two commands and their flags (`--command`, `--input`, `--output`,
-`--outputFormat`, `--skipAuths`), input file formats (XML for ParseXml, JSON for
-Transform), typical workflow when adding extension claim sets, and the base hierarchy
-file (`ClaimSetFiles/AuthorizationHierarchy.json`).
-
-Note: as of DMS-777 the ClaimSet JSON files this tool produces are being superseded by
-runtime claims loading with embedded resources. Document current usage but flag that
-this workflow may change in a future release.
-
-**`smoke-test-utility.md`** — Same codebase as ODS/API. Runs a suite of basic API
-calls against a running DMS instance to verify core endpoints are responding correctly.
-Note any v8-specific invocation differences (base URL, token endpoint). Link to the
-7.3 smoke test docs for full background; document only the delta.
-
-**`bulk-load-client-utility.md`** — Same codebase as ODS/API. Loads Ed-Fi XML data
-files into DMS via the REST API. Note any v8-specific differences (URL pattern, auth
-endpoint). Link to the 7.3 bulk load docs for full background; document only the delta.
+**`bulk-load-client-utility.md`** — Same codebase as ODS/API. Note v8-specific
+differences (URL pattern, auth endpoint). Link to 7.3 docs for full background.
 
 ---
 
 ### `client-developers-guide/`
 
-Largely parallel to 7.3. Update these specifics for v8:
+Follows 7.3 structure. Key v8 differences:
 
-**`api-routes.md`** — No `v3/` segment. Pattern is `/data/{project}/{resource}` (e.g.,
-`/data/ed-fi/schools`). With route qualifiers: `/{qualifier}/data/{project}/{resource}`.
+- `api-routes.md`: no `v3/` segment; `/{pathBase}/data/{schema}/{resource}` pattern;
+  composites and identity rows removed.
+- `authentication.md`: token endpoint is `POST /connect/token` on the **Configuration
+  Service** (port 8081). Credentials in request body (`client_id`/`client_secret`),
+  not Basic auth header.
+- `using-the-sandbox-administration-portal.md`: drop entirely (no sandbox in v8).
+- `improve-paging-performance-on-large-api-resources.md`: cursor paging page
+  omitted (not implemented in v8).
 
-**`authentication.md`** — Token endpoint is `POST /connect/token` on DMS (not a separate
-auth server unless Keycloak is used). Client credentials flow only. Show curl example.
+---
 
-**`paging.md`** — Combine 7.3's two paging docs. Cover offset paging and cursor paging.
-Note cursor paging is the recommended approach for large datasets.
+### `technical-articles/`
 
-**`using-the-online-documentation.md`** — Swagger UI at `/swagger`. OpenAPI spec at
-`/openapi/{version}.json`. No Sandbox Administration Portal in v8.
+**`relational-data-model.md`** — Tables-per-resource model. Core tables, per-resource
+structure, FK integrity. Audience: DBAs and advanced implementers.
 
-Drop from 7.3:
-- `using-the-sandbox-administration-portal.md` (no sandbox admin portal)
-- `using-code-generation-to-create-an-sdk.md` (SDK generation via Swagger still works,
-  but this is lower priority for v8.0)
+**`migrating-from-ods-api.md`** — Primary migration guide: case sensitivity audit,
+URL pattern changes, Admin API 2 → Config Service, data migration strategy (no
+in-place migration; re-load via API), extension flow changes, feature gaps.
+
+**`caching-strategy.md`** — In-memory, per-instance caches. TTLs for data stores,
+claim sets, profiles. No distributed cache. Eventual consistency window.
+
+**`api-schema-structure.md`** — What `APISchema.json` is, how the Ed-Fi API uses it,
+how extensions add to it.
+
+**`authorization-model.md`** — Relationship-based authorization. Claim sets, ownership
+tokens, educational organization hierarchy.
 
 ---
 
@@ -329,65 +334,21 @@ Drop from 7.3:
 
 Adapt from 7.3. New guides:
 
-**`how-to-configure-multi-tenancy.md`** — Enable flag, create tenant, create data store,
-configure route context, test with a request.
+**`how-to-configure-multi-tenancy.md`** — Enable flag, create tenant, create data
+store, configure route context, test with a request.
 
 **`how-to-configure-school-year-routing.md`** — Set `RouteQualifierSegments`, create
 school-year-specific data stores, test routing.
 
-**`how-to-extend-with-metaed.md`** — Walk through the extension flow end-to-end (mirrors
-`extending-with-metaed.md` in platform guide but in tutorial style).
+**`how-to-extend-with-metaed.md`** — Extension flow end-to-end in tutorial style.
 
-**`how-to-provision-database.md`** — Using `dms-schema ddl provision` for fresh install
-and for updating after adding extensions.
+**`how-to-provision-database.md`** — Using `dms-schema ddl provision` for fresh
+install and for updating after adding extensions.
 
 Carry over from 7.3 (with updates):
 - `how-to-configure-key-secret.md` — via Config Service API now, not Admin App
 - `how-to-configure-claim-sets.md` — via Config Service API
 - `how-to-add-profiles.md` — upload profile XML to Config Service
-
----
-
-### `technical-articles/`
-
-**`relational-data-model.md`** — Tables-per-resource model. Core tables (`dms.Document`,
-`dms.ReferentialIdentity`, `dms.Descriptor`). Per-resource root and child tables.
-FK referential integrity and cascade behavior. Schema fingerprint (`dms.EffectiveSchema`).
-Audience: DBAs and advanced implementers.
-
-**`migrating-from-ods-api.md`** — The primary migration guide. Cover:
-- Case sensitivity breaking change (how to audit existing client code)
-- URL pattern changes
-- Admin API 2 → Config Service (API surface comparison)
-- Claim set format differences (if any)
-- Data migration strategy (no in-place migration; re-load via API or bulk import)
-- Extensions: MetaEd flow changes
-- What features are not available in v8.0 yet (Kafka, change queries, etc.)
-
-**`caching-strategy.md`** — In-memory, per-instance caches. TTLs for data stores, claim
-sets, profiles. No distributed cache. Eventual consistency window.
-
-**`api-schema-structure.md`** — What `APISchema.json` is, how DMS uses it, how extensions
-add to it. Audience: advanced users customizing or debugging schema loading.
-
-**`authorization-model.md`** — Relationship-based authorization enforced at SQL layer.
-Claim sets, ownership tokens, educational organization hierarchy.
-
----
-
-## Suggested Writing Order
-
-1. **Getting Started** (`getting-started/`) — highest reader value; lets anyone try v8
-2. **Breaking Changes** (`whats-new/breaking-changes-from-ods-api.md`) — critical for
-   anyone coming from 7.x
-3. **Platform Guide: Configuration** (`platform-dev-guide/configuration/`) — reference
-   table; unblocks everyone configuring deployments
-4. **Platform Guide: Security + Multi-tenancy** — needed for real deployments
-5. **Platform Guide: Extensibility** (`extending-with-metaed.md`) — key differentiator
-   from the existing DMS readme; not documented elsewhere yet
-6. **Client Developers' Guide** — adapt from 7.3, update for v8 specifics
-7. **How-To Guides** — fill in with concrete task walkthroughs
-8. **Technical Articles** — migration guide + relational model
 
 ---
 
