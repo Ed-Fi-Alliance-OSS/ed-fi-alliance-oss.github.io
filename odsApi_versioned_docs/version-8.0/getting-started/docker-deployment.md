@@ -93,7 +93,7 @@ describing the available data models and API endpoints.
 
 Health endpoints are also available:
 
-- `http://localhost:8080/health` — Data Management Service
+- `http://localhost:8080/health` — Ed-FI API
 - `http://localhost:8081/health` — Configuration Service
 
 ### Swagger UI

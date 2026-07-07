@@ -13,7 +13,7 @@ Notes](./release-notes.md) section.
 Ed-Fi API v8.0 is a new platform, not an incremental update to the ODS/API. It
 replaces the Ed-Fi ODS/API and Ed-Fi Admin API with two new services:
 
-- **Data Management Service (DMS)** — implements the Ed-Fi Resources,
+- **Ed-Fi API** — implements the Ed-Fi Resources,
   Descriptors, and Discovery API specifications
 - **Configuration Service** — implements the Ed-Fi Management API specification
   v3, replacing the Admin API
@@ -110,3 +110,10 @@ database with a single command.
 
 There is no binary installer or Windows Service at this time. See [Getting
 Started](../getting-started/readme.md) for deployment instructions.
+
+### MetaEd IDE v4.8
+
+Implementing extensions in Ed-Fi API v8.0 requires implementers to update to
+[MetaEd IDE v4.8](/reference/metaed). Refer to [MetaEd 4.8 What's
+New](/reference/metaed/releases/) for details on latest updates and
+improvements.

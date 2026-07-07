@@ -16,11 +16,11 @@ implementation of a relational database and a companion API harmonized with the
 Ed-Fi Data Standard. Ed-Fi API v8 is tuned to the security and performance needs
 of K–12 organizations and the education technology vendors who serve them.
 
-Ed-Fi API v8 consists of two services: the **Data Management Service (DMS)**,
-which implements the Ed-Fi Resources, Descriptors, and Discovery API
-specifications, and the **Configuration Service**, which implements the Ed-Fi
-Management API specification v3. Both services are implemented in C# and ASP.NET
-Core. PostgreSQL and SQL Server are supported as database platforms.
+Ed-Fi API v8 consists of two services: the **Ed-Fi API**, which implements the
+Ed-Fi Resources, Descriptors, and Discovery API specifications, and the
+**Configuration Service**, which implements the Ed-Fi Management API
+specification v3. Both services are implemented in C# and ASP.NET Core.
+PostgreSQL and SQL Server are supported as database platforms.
 
 The platform is vendor neutral — client applications may be written in any
 language.
