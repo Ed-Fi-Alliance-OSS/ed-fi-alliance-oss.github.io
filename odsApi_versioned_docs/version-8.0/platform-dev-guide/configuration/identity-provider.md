@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 # Identity Provider Configuration
@@ -11,9 +11,9 @@ Ed-Fi API v8 supports two identity providers for OAuth 2.0 authentication:
 - **Keycloak** — delegates authentication to an external Keycloak instance.
   Suitable for environments that require enterprise identity management or SSO.
 
-The identity provider is selected independently for the Ed-Fi API and the
-Configuration Service, but both must be configured consistently to point at the
-same token and metadata endpoints.
+The Configuration Service selects and hosts the identity provider. The Ed-Fi API
+validates tokens by pointing its `JwtAuthentication` settings at the same
+authority and metadata endpoints. Both services must be configured consistently.
 
 ## Self-Contained (OpenIddict)
 
@@ -38,9 +38,6 @@ credentials, token issuance, and OIDC metadata.
 ### Ed-Fi API settings
 
 ```json
-"AppSettings": {
-  "IdentityProvider": "self-contained"
-},
 "JwtAuthentication": {
   "Authority": "http://ed-fi-api-config:8081",
   "MetadataAddress": "http://ed-fi-api-config:8081/.well-known/openid-configuration"
@@ -74,7 +71,8 @@ user federation, or single sign-on. Keycloak must be provisioned and configured
 separately; the repository includes a local development Keycloak setup via
 Docker Compose.
 
-**Token endpoint:** `http://{keycloak-host}:{port}/realms/edfi/protocol/openid-connect/token`
+**Token endpoint:**
+`http://{keycloak-host}:{port}/realms/edfi/protocol/openid-connect/token`
 
 ### Configuration Service settings
 
@@ -90,9 +88,6 @@ Docker Compose.
 ### Ed-Fi API settings
 
 ```json
-"AppSettings": {
-  "IdentityProvider": "keycloak"
-},
 "JwtAuthentication": {
   "Authority": "http://dms-keycloak:8080/realms/edfi",
   "MetadataAddress": "http://dms-keycloak:8080/realms/edfi/.well-known/openid-configuration"

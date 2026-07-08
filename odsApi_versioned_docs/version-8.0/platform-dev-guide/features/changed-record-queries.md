@@ -16,8 +16,8 @@ schema is provisioned as part of the standard database setup via
 `dms-schema ddl provision`. No additional configuration is required to enable
 the feature.
 
-This feature also provides an [option](#changed-record-queries-with-snapshot-isolation)
-that enables platform hosts to provide API clients with an isolated snapshot
+A future release will also add an [option](#changed-record-queries-with-snapshot-isolation)
+that will allow platform hosts to serve API clients from an isolated snapshot
 context for processing changes.
 
 ## Technical Details
@@ -102,52 +102,44 @@ top-level entities introduced by Extension projects.
 
 ## Changed Record Queries with Snapshot Isolation
 
-In order to provide an environment for API clients that can guarantee data
-consistency for downstream processing of Ed-Fi data, it is _highly recommended_
-that API hosts set up snapshots and provide isolated snapshots to use with the
-Change Queries workflow.
-
-This feature provides a mechanism for API clients to make API requests that are
-served from a static copy of the database isolated from ongoing changes in the
-underlying operational database. This isolation avoids data consistency
-problems, processing failures, and, significantly, undetected missing data (or
-data changes) in the target system.
-
-The following artifacts are relevant for snapshot isolation:
-
-- A `DataStoreDerivative` record in the Configuration Service with
-  `DerivativeType = 'Snapshot'` to capture the connection string for the static
-  copy of the database.
-- API support for processing the `Use-Snapshot` HTTP header to service API
-  requests using the corresponding static data source rather than the live
-  operational database.
-
 :::info
 
-Snapshot support is planned for a future release. See [Current
-Limitations](#current-limitations) for details.
+Snapshot isolation is planned for a future release and is **not available in
+Ed-Fi API v8.0**. The description below documents the intended design.
 
 :::
 
-## Creating and Managing Snapshots
+When available, snapshot isolation will allow API hosts to serve change-query
+requests from a static copy of the database isolated from ongoing writes. This
+avoids data consistency problems, processing failures, and undetected missing
+data in downstream systems.
 
-In order to provide an isolated context for API clients' processing, platform
-hosts must implement DevOps processes to maintain a periodically refreshed
-static copy of the API's main database and the corresponding `DataStoreDerivative`
-record in the Configuration Service.
+The planned design involves two artifacts:
 
-This would typically be implemented as a basic scheduled database
-backup-and-restore operation. For PostgreSQL or SQL Server users, it could also
-be implemented using the respective database's lightweight snapshot features
-where available.
+- A `DataStoreDerivative` record in the Configuration Service with
+  `DerivativeType = 'Snapshot'` pointing to the snapshot database connection
+  string.
+- API support for the `Use-Snapshot` HTTP request header, which routes the
+  request to the static snapshot rather than the live operational database.
 
-The host's process must perform the following steps:
+## Creating and Managing Snapshots (Planned)
+
+When snapshot support is available, platform hosts will implement a DevOps
+process to maintain a periodically refreshed static copy of the API's main
+database and the corresponding `DataStoreDerivative` record in the
+Configuration Service.
+
+This would typically be a scheduled database backup-and-restore operation. For
+PostgreSQL or SQL Server, the respective database's lightweight snapshot
+features can also be used where available.
+
+The process will need to:
 
 - Back up the current operational database.
-- Restore the database as a snapshot copy.
+- Restore it as a snapshot copy.
 - Create or update a `DataStoreDerivative` record in the Configuration Service
-  with `DerivativeType = 'Snapshot'` and the snapshot database connection
-  string, associated with the appropriate `DataStore`.
+  with `DerivativeType = 'Snapshot'` and the snapshot connection string,
+  associated with the appropriate `DataStore`.
 
 ## Current Limitations
 

@@ -46,7 +46,7 @@ the following information domains:
 
 The data model used in an Ed-Fi API is based on the Ed-Fi Data Standard. If
 you're new to the Ed-Fi Data Standard, the [Unifying Data
-Model](https://edfi.atlassian.net/wiki/display/EFDS5/Ed-Fi+Unifying+Data+Model)
+Model](/reference/data-exchange/data-standard/model-reference)
 documentation is useful in exploring the details of the domain models listed
 above.
 
@@ -77,7 +77,7 @@ collection properties as defined in the data model. This rule is applied to the
 embedded object and collection properties and not to scalar properties. While
 this removes unnecessary redundancy from the JSON object names, this can result
 in property names in the API differing from those in the [Data
-Handbook](https://edfi.atlassian.net/wiki/display/EFDS5/Unifying+Data+Model+-+v5.0+Handbook).
+Handbook](https://edfidocs.blob.core.windows.net/$web/handbook/v6.1/index.html).
 
 ### Examples of name shortening
 

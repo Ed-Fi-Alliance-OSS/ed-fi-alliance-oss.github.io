@@ -13,8 +13,8 @@ Notes](./release-notes.md) section.
 Ed-Fi API v8.0 is a new platform, not an incremental update to the ODS/API. It
 replaces the Ed-Fi ODS/API and Ed-Fi Admin API with two new services:
 
-- **Ed-Fi API** — implements the Ed-Fi Resources,
-  Descriptors, and Discovery API specifications
+- **Ed-Fi API** — implements the Ed-Fi Resources, Descriptors, and Discovery API
+  specifications
 - **Configuration Service** — implements the Ed-Fi Management API specification
   v3, replacing the Admin API
 
@@ -22,7 +22,7 @@ Ed-Fi API v8.0 is **API-compatible with the ODS/API**: client applications built
 against the ODS/API REST interface continue to work without changes, with one
 important exception — property names in request bodies are now
 **case-sensitive**. See the [Breaking
-Changes](./release-notes.md#ed-fi-api-v80---breaking-changes-from-odsapi)
+Changes](./release-notes.md#ed-fi-api-v80---breaking-changes-from-previous-releases)
 section of the release notes for a full migration checklist.
 
 ## Improvements & Enhancements

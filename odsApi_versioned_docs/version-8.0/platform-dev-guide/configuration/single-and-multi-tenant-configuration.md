@@ -1,11 +1,20 @@
+---
+sidebar_position: 5
+---
+
 # Single and Multi-Tenant Configuration
 
-In a single-tenant configuration (the default), all API clients share the same
-set of data stores managed through the Configuration Service. In a multi-tenant
-configuration, each tenant has its own isolated set of data stores, vendors,
-claim sets, and API clients. The tenant identifier is embedded in the API
-request URL, and all Configuration Service API calls include a `Tenant` header
-to identify the target tenant.
+In a single-tenant configuration (the default), all API clients operate within
+a single tenant context. Data stores, vendors, claim sets, and API clients are
+all configured without a tenant scope. Multiple data stores can still be used
+within a single-tenant deployment — for example, to serve different school years
+or districts via [context-based routing](./context-based-routing-for-year-specific-datastore.md)
+— but they all belong to the same shared tenant context.
+
+In a multi-tenant configuration, each tenant has its own isolated set of data
+stores, vendors, claim sets, and API clients. The tenant identifier is embedded
+in the API request URL for Ed-Fi API calls, and all Configuration Service API
+calls include a `Tenant` header to identify the target tenant.
 
 Multi-tenancy is controlled by the `AppSettings:MultiTenancy` setting (default:
 `false`) and must be set consistently in both the Ed-Fi API and Configuration

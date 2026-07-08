@@ -160,8 +160,8 @@ The snippet below shows an example POST:
 
 ```powershell
 $response = Invoke-RestMethod -Method Post -Uri "http://localhost:8080/api/oauth/token_info" `
-  -Headers @{ "Authorization" = "Bearer 385432d854194fd5bb09fe08092353b5" } `
-  -Body @{ "token" = "385432d854194fd5bb09fe08092353b5" }
+  -Headers @{ "Authorization" = "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJSdmNvaEt6OXpISTQiLCJqdGkiOiJhMWIyYzNkNC01ZTZmLTc4OTAifQ.signature" } `
+  -Body @{ "token" = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJSdmNvaEt6OXpISTQiLCJqdGkiOiJhMWIyYzNkNC01ZTZmLTc4OTAifQ.signature" }
 
 $response | ConvertTo-Json
 ```

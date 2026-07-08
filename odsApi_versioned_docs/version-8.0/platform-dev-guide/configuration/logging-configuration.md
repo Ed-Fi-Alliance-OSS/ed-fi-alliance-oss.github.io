@@ -4,15 +4,15 @@ sidebar_position: 2
 
 # Logging Configuration
 
-Ed-Fi API v8 uses [Serilog](https://serilog.net/) for structured logging in
-both the Ed-Fi API and the Configuration Service. Logs are written
-to the console in structured format, suitable for ingestion by log-monitoring
-platforms such as Splunk, CloudWatch, Datadog, or the ELK stack.
+Ed-Fi API v8 uses [Serilog](https://serilog.net/) for structured logging in both
+the Ed-Fi API and the Configuration Service. Logs are written to the console in
+structured format, suitable for ingestion by log-monitoring platforms such as
+Splunk, CloudWatch, Datadog, or the ELK stack.
 
 The log level for each service is controlled independently:
 
-- Ed-Fi API: `LOG_LEVEL` environment variable (maps to `Serilog__MinimumLevel__Default`
-  in `appsettings.json`)
+- Ed-Fi API: `LOG_LEVEL` environment variable (maps to
+  `Serilog__MinimumLevel__Default` in `appsettings.json`)
 - Configuration Service: `DMS_CONFIG_LOG_LEVEL` environment variable
 
 ## Log Levels
@@ -30,8 +30,8 @@ The log level for each service is controlled independently:
 ### Production (INFORMATION)
 
 The recommended log level for production deployments. Logs request lifecycle
-events — method, URL, client ID, response code, and duration — without
-including request or response body content.
+events — method, URL, client ID, response code, and duration — without including
+request or response body content.
 
 ```ini
 LOG_LEVEL=INFORMATION
@@ -49,8 +49,8 @@ Sample log output at `INFORMATION` level:
 
 The Docker Compose `.env.example` ships with `LOG_LEVEL=DEBUG`. At this level,
 the Ed-Fi API logs anonymized request payloads to aid integration
-troubleshooting. See
-[PII Protection](#pii-protection-at-debug-level) for how anonymization works.
+troubleshooting. See [PII Protection](#pii-protection-at-debug-level) for how
+anonymization works.
 
 ```ini
 LOG_LEVEL=DEBUG
@@ -66,36 +66,38 @@ left on indefinitely.
 :::warning
 
 `DEBUG` logging includes anonymized request bodies. Although sensitive field
-values are replaced with `null`, ensure your log storage and access policies are
+values are replaced with `"*"`, ensure your log storage and access policies are
 appropriate before enabling `DEBUG` in a production environment.
 
 :::
 
 ## PII Protection at DEBUG Level
 
-At `DEBUG` level, the Ed-Fi API logs anonymized HTTP request payloads. Before logging, all
-string and numeric field values in the request body are replaced with `null`,
-leaving only the structure and descriptor URI values visible. This provides
-enough information to diagnose request shape issues (missing fields, incorrect
-nesting, wrong property names) without exposing student or staff data.
+At `DEBUG` level, the Ed-Fi API logs anonymized HTTP request payloads. Before
+logging, every scalar value in the request body (strings, numbers, booleans,
+`null`) is replaced with `"*"`, leaving only the JSON structure and property
+names visible. This provides enough information to diagnose request shape issues
+(missing fields, incorrect nesting, wrong property names) without exposing
+student or staff data.
 
-Example: a `POST /data/ed-fi/students` request body is logged as:
+Example: a `POST /api/data/ed-fi/students` request body is logged as:
 
 ```json
 {
-  "studentUniqueId": null,
-  "birthDate": null,
-  "firstName": null,
-  "lastSurname": null,
-  "sexDescriptor": "uri://ed-fi.org/SexDescriptor#Male"
+  "studentUniqueId": "*",
+  "birthDate": "*",
+  "firstName": "*",
+  "lastSurname": "*",
+  "sexDescriptor": "*"
 }
 ```
 
-To suppress request body logging entirely — even at `DEBUG` level — set
-`MaskRequestBodyInLogs=true`:
+This masking behavior is the default (`MaskRequestBodyInLogs=true`). To log the
+full unmasked request body — for example, when debugging a parsing issue in a
+controlled environment — set `MaskRequestBodyInLogs=false`:
 
 ```ini
-MASK_REQUEST_BODY_IN_LOGS=true
+MASK_REQUEST_BODY_IN_LOGS=false
 ```
 
 ## Correlation IDs
@@ -105,10 +107,10 @@ for that request and is included in error response bodies. The correlation ID
 makes it possible to trace a specific failed request across multiple log lines
 and across service boundaries.
 
-If a request does not include a correlation ID, the Ed-Fi API generates a UUID for the
-request's lifetime. The header name used to pass or read a correlation ID is
-configurable via the `CORRELATION_ID_HEADER` environment variable (default:
-`correlationid`).
+If a request does not include a correlation ID, the Ed-Fi API generates a UUID
+for the request's lifetime. The header name used to pass or read a correlation
+ID is configurable via the `CORRELATION_ID_HEADER` environment variable
+(default: `correlationid`).
 
 :::info
 
@@ -158,8 +160,8 @@ allows a single request to be traced end-to-end.
 
 :::tip
 
-Assign a unique correlation ID per request as early as possible in your
-client code. A GUID per request is a simple and reliable approach.
+Assign a unique correlation ID per request as early as possible in your client
+code. A GUID per request is a simple and reliable approach.
 
 :::
 

@@ -98,14 +98,14 @@ example, `edfi_configurationservice`) via the
 `DMS_CONFIG_DATABASE_CONNECTION_STRING` environment variable.
 
 The Configuration Service schema is deployed automatically on startup when
-`DMS_CONFIG_DEPLOY_DATABASE=true` (the default). The data stores used by Ed-Fi
-API is not deployed by the API container on startup; it is provisioned as a
+`DMS_CONFIG_DEPLOY_DATABASE=true` (the default). The data stores used by the Ed-Fi
+API are not deployed by the API container on startup; it is provisioned as a
 separate phase by the startup scripts (using the `dms-schema` CLI), which
 `start-local-dms.ps1` orchestrates for you.
 
 | Schema | Application | Purpose |
 | --- | --- | --- |
-| `dms`, `edfi`, `tracked_changes`, and other model extension schemas | Ed-Fi API | Ed-Fi resource and descriptor data |
+| `dms`, `edfi`, `tracked_changes_<project>` (e.g. `tracked_changes_edfi`, `tracked_changes_tpdm`) | Ed-Fi API | Ed-Fi resource and descriptor data |
 | `dmscs` | Configuration Service | Vendors, applications, claim sets, data store configuration, and OAuth client credentials (OpenIddict, used with the self-contained identity provider) |
 
 To provision the database manually, see

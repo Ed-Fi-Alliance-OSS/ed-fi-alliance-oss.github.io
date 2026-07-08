@@ -40,8 +40,9 @@ environment variable reference.
 ./start-local-dms.ps1
 ```
 
-This command starts PostgreSQL, the Configuration Service, and the Ed-Fi API. The script waits for each service to become healthy before
-proceeding. Initial startup typically takes 1–2 minutes.
+This command starts PostgreSQL, the Configuration Service, and the Ed-Fi API.
+The script waits for each service to become healthy before proceeding. Initial
+startup typically takes 1–2 minutes.
 
 ### Common Startup Options
 
@@ -61,8 +62,8 @@ proceeding. Initial startup typically takes 1–2 minutes.
 
 :::warning
 
-The `-v` flag permanently deletes all persisted data. Use it only when you
-want a clean environment.
+The `-v` flag permanently deletes all persisted data. Use it only when you want
+a clean environment.
 
 :::
 
@@ -85,7 +86,7 @@ school-year options, and other available settings.
 Once the data store is registered, confirm the Ed-Fi API is responding:
 
 ```powershell
-curl http://localhost:8080
+curl http://localhost:8080/api
 ```
 
 A successful response returns the Ed-Fi Discovery API payload — a JSON object
@@ -93,8 +94,8 @@ describing the available data models and API endpoints.
 
 Health endpoints are also available:
 
-- `http://localhost:8080/health` — Ed-FI API
-- `http://localhost:8081/health` — Configuration Service
+- `http://localhost:8080/api/health` — Ed-Fi API
+- `http://localhost:8081/config/health` — Configuration Service
 
 ### Swagger UI
 
@@ -104,6 +105,6 @@ endpoints directly from the browser.
 
 ## Next Step
 
-With the services running and a data store registered, proceed to
-[Configure a Data Store](configure-data-store) for the full details on client
-credentials and data store options, then begin interacting with the API.
+With the services running and a data store registered, proceed to [Configure a
+Data Store](configure-data-store) for the full details on client credentials and
+data store options, then begin interacting with the API.

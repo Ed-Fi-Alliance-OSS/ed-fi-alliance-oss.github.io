@@ -14,9 +14,12 @@ required.
 
 ### Required Settings
 
-The Ed-Fi API requires a database connection and an identity provider to start. In the Docker Compose setup these are provided via the `.env`
-file; in other deployments configure them directly in `appsettings.json` or via
-environment variables.
+The Ed-Fi API requires a database connection, a reachable Configuration Service,
+and JWT authentication settings to start. In the Docker Compose setup these are
+provided via the `.env` file; in other deployments configure them directly in
+`appsettings.json` or via environment variables. The `JwtAuthentication` section
+points the Ed-Fi API at the token authority — see [Identity
+Provider](./identity-provider.md) for the required keys.
 
 - **`AppSettings:Datastore`**
 
@@ -24,13 +27,6 @@ environment variables.
   | ----------- | ------------------------------------------------------------------------ |
   | Example     | `postgresql`                                                             |
   | Description | Primary database engine for the DMS. Valid values: `postgresql`, `mssql` |
-
-- **`AppSettings:IdentityProvider`**
-
-  |             |                                                                                                                                         |
-  | ----------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-  | Example     | `self-contained`                                                                                                                        |
-  | Description | Authentication provider. Valid values: `self-contained` (OpenIddict, default), `keycloak`. See [Identity Provider](./identity-provider) |
 
 - **`ConfigurationServiceSettings:BaseUrl`**
 
@@ -80,8 +76,8 @@ environment variables.
 
   |             |                                                                                                                                                                                                            |
   | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-  | Default     | `true`                                                                                                                                                                                                     |
-  | Description | When `true`, suppresses request body content in `DEBUG`-level log statements. Prevents PII from appearing in logs even when debug logging is enabled. See [Logging Configuration](./logging-configuration) |
+  | Default     | `true`                                                                                                                                                                                                          |
+  | Description | When `true`, masks request body content in `DEBUG`-level log statements by replacing all scalar values with `"*"`. When `false`, the full unmasked body is logged. See [Logging Configuration](./logging-configuration.md) |
 
 - **`AppSettings:UseApiSchemaPath`**
 
@@ -157,7 +153,7 @@ environment variables.
 
   |             |                                                                                                                                                        |
   | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-  | Default     | `RepeatableRead` (container default); `.env.example` sets `ReadCommitted`                                                                              |
+  | Default     | `ReadCommitted`                                                                                                                                        |
   | Description | Transaction isolation level. Valid values from [`System.Data.IsolationLevel`](https://learn.microsoft.com/en-us/dotnet/api/system.data.isolationlevel) |
 
 - **`RateLimit:PermitLimit`**, **`RateLimit:Window`**,
@@ -186,7 +182,7 @@ environment variables.
   |             |                                                                                                                                |
   | ----------- | ------------------------------------------------------------------------------------------------------------------------------ |
   | Default     | `self-contained`                                                                                                               |
-  | Description | Authentication provider. Valid values: `self-contained` (OpenIddict), `keycloak`. See [Identity Provider](./identity-provider) |
+  | Description | Authentication provider. Valid values: `self-contained` (OpenIddict), `keycloak`. See [Identity Provider](./identity-provider.md) |
 
 - **`DatabaseSettings:EncryptionKey`**
 
@@ -225,12 +221,26 @@ environment variables.
   | Default     | `30`                                           |
   | Description | Timeout in seconds for outbound token requests |
 
-- **`AppSettings:UseReverseProxyHeaders`**
+- **`AppSettings:ReverseProxy:UseForwardedHeaders`**
 
   |             |                                                                                                                                 |
   | ----------- | ------------------------------------------------------------------------------------------------------------------------------- |
   | Default     | `false`                                                                                                                         |
   | Description | When `true`, respects `X-Forwarded-*` headers for URL generation. Enable when deploying behind a reverse proxy or load balancer |
+
+- **`AppSettings:ReverseProxy:KnownProxies`**
+
+  |             |                                                                                                                    |
+  | ----------- | ------------------------------------------------------------------------------------------------------------------ |
+  | Default     | _(empty)_                                                                                                          |
+  | Description | Comma-separated list of trusted proxy IP addresses (e.g. `10.0.0.1,10.0.0.2`). Restricts which proxies may supply forwarded-header values |
+
+- **`AppSettings:ReverseProxy:KnownNetworks`**
+
+  |             |                                                                                                                                     |
+  | ----------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | _(empty)_                                                                                                                           |
+  | Description | Comma-separated list of trusted proxy CIDR networks (e.g. `192.168.1.0/24,10.0.0.0/8`). Extends `KnownProxies` to cover a range of addresses |
 
 - **`AppSettings:EnableApplicationResetEndpoint`**
 

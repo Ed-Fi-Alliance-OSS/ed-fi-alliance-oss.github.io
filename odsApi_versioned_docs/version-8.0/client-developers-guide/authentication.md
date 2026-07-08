@@ -39,7 +39,7 @@ is used to transfer information between systems using a variety of protocols
 (including HTTP and HTTPS). For our purposes, it serves as a concise shorthand
 for the HTTP information included to make the various calls to the Ed-Fi API.
 Compiled executables for a variety of platforms can be downloaded from the
-[cURL website](http://curl.haxx.se/dlwiz/?type=bin).
+[cURL website](https://curl.se/download.html).
 
 :::
 

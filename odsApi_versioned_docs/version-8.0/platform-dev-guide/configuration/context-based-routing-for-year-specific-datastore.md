@@ -1,3 +1,7 @@
+---
+sidebar_position: 6
+---
+
 # Context-Based Routing for Year-Specific Data Store
 
 The Ed-Fi API v8 routing provides a simple, predictable base path for all API
