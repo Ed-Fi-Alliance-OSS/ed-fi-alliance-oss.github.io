@@ -23,7 +23,7 @@ GitHub repository to find the changes for that specific update.
 
 * DMS-928 - Relational storage model (foundation)
 * DMS-935 - DDL emission for PostgreSQL and SQL Server (schema tooling)
-* DMS-948 - Provisioning workflow (deployment tooling: `dms-schema ddl
+* DMS-948 - Provisioning workflow (deployment tooling: `api-schema-tools ddl
   provision`)
 * DMS-1027 - Runtime plan compilation and caching (runtime engine)
 * DMS-980 - Relational write path (core API: POST/PUT)
@@ -135,7 +135,7 @@ binary installer or Windows Service.
 | | ODS/API | Ed-Fi API v8 |
 | --- | --- | --- |
 | Deployment | Binary installer, Windows Service, IIS, Docker | Docker Compose |
-| Database setup | PowerShell scripts, Visual Studio | `dms-schema` CLI or `DeployDatabaseOnStartup` |
+| Database setup | PowerShell scripts, Visual Studio | `api-schema-tools` CLI or `DeployDatabaseOnStartup` |
 | Admin interface | Admin App (UI) or Admin API | Configuration Service API |
 
 #### No In-Place Database Migration

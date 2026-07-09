@@ -99,7 +99,7 @@ Ed-Fi API v8 stores each resource in its own set of dedicated relational tables
 using a tables-per-resource model. Tables are organized into a schema per
 project — for example, the `ed-fi` project maps to the `edfi` schema, giving
 tables such as `edfi.School` and `edfi.Student`.
-The `dms-schema` CLI tool manages database provisioning — creating tables,
+The `api-schema-tools` CLI tool manages database provisioning — creating tables,
 indexes, and authorization structures for a given API schema version. The
 RESTful interface makes it easy for client systems to keep the data up to date
 in real time.

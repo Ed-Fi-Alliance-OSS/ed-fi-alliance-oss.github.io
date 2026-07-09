@@ -4,30 +4,57 @@ sidebar_position: 2
 
 # Getting Started - Configure a Data Store
 
-After the services are running, this step creates the initial data store and
-client credentials via the Configuration Service. A _data store_ is a database
-connection that the Ed-Fi API uses to persist and serve Ed-Fi resource data.
+The bootstrap startup script (`bootstrap-local-dms.ps1`) creates a default data
+store and provisions the database schema automatically. This page covers the
+remaining step: creating API client credentials so you can authenticate and make
+requests.
 
-## What This Step Creates
+## What the Bootstrap Created
 
-Running the configuration script provisions:
+Running `bootstrap-local-dms.ps1` provisioned:
 
-- A **vendor** and **application** in the Configuration Service
-- A default **claim set** granting the application access to Ed-Fi resources
-- A **data store** (PostgreSQL or SQL Server database) linked to the application
-- A **client key and secret** for authenticating API requests
+- A **data store** (PostgreSQL or SQL Server database) registered in the
+  Configuration Service
+- The **Ed-Fi database schema** provisioned via the `api-schema-tools` CLI
 
-## Step 1: Run the Configuration Script
+API client credentials are not created by the bootstrap. You create them
+separately so you control which vendor, claim set, and education organizations
+are associated with the client.
+
+## Step 1: Create API Credentials
+
+For local development, use the `Get-SmokeTestCredential` helper from the
+repository's smoke test module. It creates a vendor and application in the
+Configuration Service and returns a key and secret.
 
 From the `eng/docker-compose` directory:
 
 ```powershell
-./configure-local-data-store.ps1
+Import-Module ../smoke_test/modules/SmokeTest.psm1 -Force
+$cred = Get-SmokeTestCredential -ConfigServiceUrl "http://localhost:8081"
+Write-Host "Key:    $($cred.Key)"
+Write-Host "Secret: $($cred.Secret)"
 ```
 
-The script connects to the Configuration Service, creates the data store, and
-outputs the client credentials. Record the key and secret from the output. You
-will need them to request API tokens.
+Record the key and secret. You will need them to request API tokens.
+
+:::info
+
+`Get-SmokeTestCredential` creates a vendor named "Smoke Test Vendor" with an
+application using the `EdFiSandbox` claim set, pre-associated with the data
+store created by the bootstrap. It is intended for local development and
+testing, not production deployments.
+
+:::
+
+:::note
+
+The `bootstrap-local-dms.ps1` script accepts an `-AddSmokeTestCredentials`
+flag that calls this same helper internally, but the credentials are not
+surfaced in the script output. Call `Get-SmokeTestCredential` directly (as
+shown above) to capture the key and secret.
+
+:::
 
 ## Step 2: Request an OAuth Token
 
@@ -71,40 +98,23 @@ and no schools have been loaded yet.
 If you receive a 403 `Authorization Denied` response with the message "No
 database instances are authorized for this client," the credentials you are
 using were not linked to a data store when they were created. Ensure you are
-using the key and secret output by `configure-local-data-store.ps1`. If you
-created a vendor or application manually through the Configuration Service, you
-must also associate it with a data store before API requests will succeed. Refer
-to the Configuration Service API reference for the relevant endpoints.
+using the key and secret from `Get-SmokeTestCredential`, which associates the
+application with the data store created by the bootstrap. If you created a
+vendor or application manually through the Configuration Service, you must also
+associate it with a data store before API requests will succeed.
+
+If you receive a 503 response with a message about database provisioning, run
+`bootstrap-local-dms.ps1` again from a clean state (`./start-local-dms.ps1 -d
+-v`) — the data store exists but the schema was not provisioned.
 
 :::
 
-## Optional: Context-Based Routing
+## Optional: Add Smoke Test Credentials at Bootstrap
 
-To create separate data stores for multiple school years, use the
-`-SchoolYearRange` flag:
-
-```powershell
-./configure-local-data-store.ps1 -SchoolYearRange "2024-2025"
-```
-
-This creates route-qualified data stores accessible at:
-
-```text
-http://localhost:8080/api/2024/data/ed-fi/schools
-http://localhost:8080/api/2025/data/ed-fi/schools
-```
-
-See [Context-Based Routing for Year-Specific Data
-Store](../platform-dev-guide/configuration/context-based-routing-for-year-specific-datastore.md)
-for details on multi-year deployments.
-
-## Optional: Add Smoke Test Credentials
-
-To generate credentials pre-configured for use with the Smoke Test utility:
-
-```powershell
-./configure-local-data-store.ps1 -AddSmokeTestCredentials
-```
+The `-AddSmokeTestCredentials` flag on `bootstrap-local-dms.ps1` creates the
+same vendor and application setup as `Get-SmokeTestCredential`. Use it when you
+want the CMS objects created during startup (for example, in a CI pipeline), and
+then call `Get-SmokeTestCredential` separately to retrieve the key and secret.
 
 See [Smoke Test Utility](../platform-dev-guide/utilities/smoke-test-utility.md)
 for how to run smoke tests against a running instance.

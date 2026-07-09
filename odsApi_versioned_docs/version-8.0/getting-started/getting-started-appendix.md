@@ -20,7 +20,7 @@ Ports can be overridden in the `.env` file before starting the services.
 
 The `.env` file in `eng/docker-compose/` controls Docker Compose service
 configuration. Copy `.env.example` to `.env` and edit as needed before running
-`start-local-dms.ps1`.
+`bootstrap-local-dms.ps1`.
 
 ### Ed-Fi API
 
@@ -80,7 +80,7 @@ Uses an external Keycloak instance. Suitable for environments that require
 enterprise identity management or single sign-on.
 
 ```powershell
-./start-local-dms.ps1 -IdentityProvider keycloak
+./bootstrap-local-dms.ps1 -IdentityProvider keycloak
 ```
 
 See [Identity Provider Configuration](../platform-dev-guide/configuration/identity-provider)
@@ -90,8 +90,8 @@ for Keycloak-specific setup steps.
 
 Ed-Fi API v8 stores its data in a relational database — PostgreSQL or SQL
 Server — organized into separate schemas by concern. By default, the Docker
-Compose stack uses PostgreSQL and creates a single database — named
-by `POSTGRES_DB_NAME` (default `edfi_datamanagementservice`) — that both services
+Compose stack uses PostgreSQL and creates a single database — named by
+`POSTGRES_DB_NAME` (default `edfi_datamanagementservice`) — that both services
 use, with the Configuration Service's data isolated in the `dmscs` schema.
 Alternatively, the Configuration Service can be pointed at its own database (for
 example, `edfi_configurationservice`) via the
@@ -100,8 +100,8 @@ example, `edfi_configurationservice`) via the
 The Configuration Service schema is deployed automatically on startup when
 `DMS_CONFIG_DEPLOY_DATABASE=true` (the default). The data stores used by the Ed-Fi
 API are not deployed by the API container on startup; it is provisioned as a
-separate phase by the startup scripts (using the `dms-schema` CLI), which
-`start-local-dms.ps1` orchestrates for you.
+separate phase by the startup scripts (using the `api-schema-tools` CLI), which
+`bootstrap-local-dms.ps1` orchestrates for you.
 
 | Schema | Application | Purpose |
 | --- | --- | --- |
@@ -130,7 +130,7 @@ externally (e.g., a local instance or Azure SQL).
 
 ### Timeout Waiting for a Service
 
-If `start-local-dms.ps1` times out waiting for a service to become healthy:
+If `bootstrap-local-dms.ps1` times out waiting for a service to become healthy:
 
 1. Confirm Docker is running: `docker info`
 2. Check for port conflicts: `netstat -an | grep -E "8080|8081|5435"`
@@ -140,7 +140,7 @@ If `start-local-dms.ps1` times out waiting for a service to become healthy:
 
 ```powershell
 ./start-local-dms.ps1 -d -v
-./start-local-dms.ps1
+./bootstrap-local-dms.ps1
 ```
 
 ### Schema Fingerprint Mismatch
@@ -154,7 +154,7 @@ re-provisions a fresh database and restarts the services):
 
 ```powershell
 ./start-local-dms.ps1 -d -v
-./start-local-dms.ps1
+./bootstrap-local-dms.ps1
 ```
 
 For details, see [Database

@@ -45,6 +45,14 @@ The core operations for Change Queries processing are as follows:
 
 ### Snapshots
 
+:::info
+
+Snapshot support is planned for a future release. See [Current
+Limitations](../platform-dev-guide/features/changed-record-queries.md#current-limitations)
+for details.
+
+:::
+
 Snapshots are configured through the Configuration Service by creating a
 `DataStoreDerivative` record with `DerivativeType = 'Snapshot'` and the
 snapshot database connection string, associated with the appropriate
@@ -55,14 +63,6 @@ request.
 
 If a 404 Snapshot Not Found response is returned, it means that the host has
 not set up snapshots for change query processing.
-
-:::info
-
-Snapshot support is planned for a future release. See [Current
-Limitations](../platform-dev-guide/features/changed-record-queries.md#current-limitations)
-for details.
-
-:::
 
 ### Available Change Versions Resource
 
@@ -187,9 +187,10 @@ following elements:
     processing and add 1 (a.k.a., the _starting change version_).
   - Obtain the system's current change version (a.k.a., the _synchronization
     version_).
-  - Confirm [snapshot isolation](#use-snapshot-isolation) is enabled and
-    process the following API calls by applying `Use-Snapshot` HTTP header set
-    to true.
+  - _(Optional — not available in Ed-Fi API v8.0)_ If
+    [snapshot isolation](#use-snapshot-isolation) is supported by the host,
+    apply the `Use-Snapshot: true` header to all API calls in this processing
+    run.
   - Process for key changes on identified resources (as applicable, in
     dependency order).
   - Process for changes on identified resources (in dependency order).

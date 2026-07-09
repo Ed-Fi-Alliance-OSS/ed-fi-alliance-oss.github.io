@@ -13,7 +13,7 @@ section of the API Client Developers' Guide.
 
 Change queries are always enabled in Ed-Fi API v8. The change query database
 schema is provisioned as part of the standard database setup via
-`dms-schema ddl provision`. No additional configuration is required to enable
+`api-schema-tools ddl provision`. No additional configuration is required to enable
 the feature.
 
 A future release will also add an [option](#changed-record-queries-with-snapshot-isolation)

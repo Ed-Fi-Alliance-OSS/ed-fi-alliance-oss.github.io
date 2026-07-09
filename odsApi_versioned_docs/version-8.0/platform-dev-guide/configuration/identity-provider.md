@@ -50,7 +50,7 @@ When using the provided startup scripts, pass no `-IdentityProvider` flag (or
 pass `-IdentityProvider self-contained`) — self-contained is the default:
 
 ```powershell
-./start-local-dms.ps1
+./bootstrap-local-dms.ps1
 ```
 
 The relevant `.env` variables:
@@ -99,7 +99,7 @@ Docker Compose.
 Pass `-IdentityProvider keycloak` to the startup script:
 
 ```powershell
-./start-local-dms.ps1 -IdentityProvider keycloak
+./bootstrap-local-dms.ps1 -IdentityProvider keycloak
 ```
 
 The relevant `.env` variables:
@@ -124,8 +124,7 @@ re-provisioning the identity state:
 
 1. Stop all services and remove volumes: `./start-local-dms.ps1 -d -v`
 2. Update the `.env` file with the new identity provider settings
-3. Start fresh: `./start-local-dms.ps1 -IdentityProvider <provider>`
-4. Re-run `./configure-local-data-store.ps1` to create client credentials
+3. Start fresh: `./bootstrap-local-dms.ps1 -IdentityProvider <provider>`
 
 :::warning
 

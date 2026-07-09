@@ -43,7 +43,7 @@ analytics queries written against ODS/API database tables will require rewriting
 to accommodate the new schema structure. See [Relational Data
 Model](../technical-articles/relational-data-model.md) for the new schema.
 
-The `dms-schema` CLI tool manages database provisioning — creating tables,
+The `api-schema-tools` CLI tool manages database provisioning — creating tables,
 indexes, triggers, and authorization structures for a given API schema version.
 See [Database
 Provisioning](../platform-dev-guide/utilities/database-provisioning.md) for

@@ -209,9 +209,9 @@ Provider](./identity-provider.md) for the required keys.
 
 - **`AppSettings:PathBase`**
 
-  |             |                                                                                                                                          |
-  | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-  | Default     | `config`                                                                                                                                 |
+  |             |                                                                                                                                                                 |
+  | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | _(empty)_; Docker Compose env var `DMS_CONFIG_PATH_BASE` defaults to `config` in `.env.example`                                                                 |
   | Description | URL base segment for all Configuration Service endpoints. Example: with `PathBase=config`, the management API is at `/config/v3/vendors` |
 
 - **`AppSettings:TokenRequestTimeoutSeconds`**

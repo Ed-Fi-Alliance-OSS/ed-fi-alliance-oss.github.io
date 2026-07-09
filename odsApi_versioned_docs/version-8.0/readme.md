@@ -23,13 +23,15 @@ and Ed-Fi API v8 FAQ](/reference/roadmap/api-faq).
 
 ## Key Highlights
 
-- **API-compatible** — Client applications built for the ODS/API REST interface
-  will continue to work without changes. Ed-Fi API v8 is a fully conformant
-  implementation of the [Ed-Fi API Design and Implementation Guidelines
-  4.0](/reference/data-exchange/api-guidelines/).
+- **API-compatible** — Ed-Fi API v8 is a fully conformant implementation of the
+  [Ed-Fi API Design and Implementation Guidelines
+  4.0](/reference/data-exchange/api-guidelines/). Most client applications built
+  for the ODS/API REST interface are compatible, but there are breaking changes
+  — see the [release
+  notes](./whats-new/release-notes.md#client-application-changes) for the
+  migration checklist.
 - **Modern architecture** — Adopts a service-oriented architecture with a
-  Configuration Service and optional Kafka-based streaming for real-time data
-  flows.
+  Configuration Service for API management and deployment configuration.
 - **Relational data model** — The backend remains relational (PostgreSQL or SQL
   Server), preserving existing SQL-based reporting and analytics patterns.
 - **New admin surface** — Replaces the Admin API with a Configuration Service

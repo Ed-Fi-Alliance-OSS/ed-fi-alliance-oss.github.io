@@ -96,8 +96,8 @@ updates, and deletes. This allows client systems to stay in sync with the data
 through incremental updates.
 
 Documentation for client systems is provided in the [Using the Changed Record
-Queries](../client-developers-guide/readme.md) section of the API Client
-Developers' Guide.
+Queries](../client-developers-guide/using-the-changed-record-queries.md) section
+of the API Client Developers' Guide.
 
 ## Support for Transactional & Bulk Modes
 
@@ -120,7 +120,7 @@ The Ed-Fi API v8 API surface — resources, properties, validations, and OpenAPI
 documentation — is generated from a single authoritative source: the
 `ApiSchema.json` file produced by the [MetaEd](https://techdocs.ed-fi.org/x/JwEJBQ)
 toolchain. The same schema file drives database provisioning (via the
-`dms-schema` CLI), authorization structures, and Swagger documentation.
+`api-schema-tools` CLI), authorization structures, and Swagger documentation.
 
 For implementers extending the data model, MetaEd provides a lightweight
 language to express data model customizations. The toolchain generates the

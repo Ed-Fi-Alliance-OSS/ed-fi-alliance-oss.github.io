@@ -1,5 +1,4 @@
 ---
-sidebar_position: 4
 ---
 
 # Deployment
@@ -20,5 +19,5 @@ provisioned. This includes creating tables, indexes, triggers, and authorization
 structures for the configured API schema version.
 
 The [Database Provisioning](../utilities/database-provisioning.md) page, covers
-the `dms-schema` CLI tool, how the Configuration Service and Data Management
+the `api-schema-tools` CLI tool, how the Configuration Service and Data Management
 Service databases are provisioned, and schema fingerprint validation.

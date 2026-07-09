@@ -10,7 +10,7 @@ Swagger UI is an optional service in the Ed-Fi API v8 deployment. It must be
 started explicitly using the `-EnableSwaggerUI` flag:
 
 ```powershell
-./start-local-dms.ps1 -EnableSwaggerUI
+./bootstrap-local-dms.ps1 -EnableSwaggerUI
 ```
 
 Once running, the Swagger UI is available at `http://localhost:8082`.

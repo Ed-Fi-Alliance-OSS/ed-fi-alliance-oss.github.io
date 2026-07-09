@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-description: How to provision the Ed-Fi API v8.0 database schema with the dms-schema CLI.
+description: How to provision the Ed-Fi API v8.0 database schema with the api-schema-tools CLI.
 ---
 
 # Database Provisioning
@@ -18,7 +18,7 @@ Ed-Fi API v8.0 uses two databases — or two schemas within one database (see
 | Database | Provisioning |
 | --- | --- |
 | **Configuration Service** (`dmscs` schema) | Deployed automatically on startup when `DeployDatabaseOnStartup` is `true` (the default; set via the `DMS_CONFIG_DEPLOY_DATABASE` environment variable). No manual step is required. |
-| **Ed-Fi API** (resource data) | Provisioned explicitly with the `dms-schema` CLI. The API container does **not** deploy or migrate this schema on startup. |
+| **Ed-Fi API** (resource data) | Provisioned explicitly with the `api-schema-tools` CLI. The API container does **not** deploy or migrate this schema on startup. |
 
 :::info
 
@@ -31,19 +31,38 @@ resource database has been provisioned, the API responds with **HTTP 503**. See
 ## Provisioning in a Local (Getting Started) Environment
 
 For local development, provisioning is fully automated. The
-`start-local-dms.ps1` script orchestrates the provisioning phase for you, and
-`configure-local-data-store.ps1` registers the data store — you do not need to
-run the `dms-schema` CLI directly. See [Getting
+`bootstrap-local-dms.ps1` script orchestrates the full provisioning phase for
+you — you do not need to run `api-schema-tools` directly. See [Getting
 Started](../../getting-started/readme.md) for the guided walkthrough.
 
-The rest of this page describes the underlying `dms-schema` tooling, which is
-what you use for a production or other non-scripted deployment.
+The rest of this page describes the `api-schema-tools` CLI, which is what you
+use for production or other non-scripted deployments.
 
-## The `dms-schema` CLI
+## Installation
 
-`dms-schema` is a command-line tool that generates deterministic SQL from one or
-more `ApiSchema.json` inputs and, optionally, executes it against a database. It
-provides three commands:
+`api-schema-tools` is published as a .NET global tool on the Ed-Fi Azure
+Artifacts feed.
+
+```powershell
+$feed = "https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json"
+$version = "<published-version>"
+dotnet tool install --global EdFi.Api.SchemaTools --source $feed --version $version
+```
+
+Omit `--version $version` to install the latest stable release. The installed
+command is `api-schema-tools`.
+
+To build from source instead, run:
+
+```bash
+dotnet build src/dms/clis/EdFi.DataManagementService.SchemaTools
+```
+
+## The `api-schema-tools` CLI
+
+`api-schema-tools` is a command-line tool that generates deterministic SQL from
+one or more `ApiSchema.json` inputs and, optionally, executes it against a
+database. It provides three commands:
 
 | Command | Purpose |
 | --- | --- |
@@ -59,13 +78,38 @@ MetaEd](../extensibility/extending-with-metaed.md) and the `ApiSchemaPath`
 setting in [Configuration Details](../configuration/configuration-details) for
 how the runtime locates these files.
 
+### Computing the schema fingerprint (`hash`)
+
+`hash` loads one or more `ApiSchema.json` files, normalizes them, and prints
+the effective schema hash (SHA-256, lowercase hex).
+
+```bash
+api-schema-tools hash <coreSchemaPath> [extensionSchemaPath...]
+```
+
+| Argument | Required | Description |
+| --- | --- | --- |
+| `coreSchemaPath` | Yes | Path to the core `ApiSchema.json` file |
+| `extensionSchemaPath` | No | Path(s) to extension `ApiSchema.json` file(s) |
+
+```bash
+# Core schema only
+api-schema-tools hash core/ApiSchema.json
+
+# Core + extension
+api-schema-tools hash core/ApiSchema.json extensions/tpdm/ApiSchema.json
+```
+
+The hash printed here is the same fingerprint stored in `dms.EffectiveSchema`
+after provisioning, and the value the Ed-Fi API checks at startup.
+
 ### Provisioning a database (`ddl provision`)
 
 `ddl provision` generates the DDL for a single dialect and executes it inside
 one transaction against the target database.
 
 ```bash
-dms-schema ddl provision --schema <paths...> --connection-string <connstr> --dialect <dialect> [--create-database] [--timeout <seconds>]
+api-schema-tools ddl provision --schema <paths...> --connection-string <connstr> --dialect <dialect> [--create-database] [--timeout <seconds>]
 ```
 
 | Option | Short | Required | Default | Description |
@@ -79,7 +123,7 @@ dms-schema ddl provision --schema <paths...> --connection-string <connstr> --dia
 **PostgreSQL:**
 
 ```bash
-dms-schema ddl provision \
+api-schema-tools ddl provision \
   --schema core/ApiSchema.json \
   --connection-string "Host=localhost;Port=5432;Database=edfi_datamanagementservice;Username=postgres;Password=<secret>" \
   --dialect pgsql \
@@ -89,7 +133,7 @@ dms-schema ddl provision \
 **SQL Server:**
 
 ```bash
-dms-schema ddl provision \
+api-schema-tools ddl provision \
   -s core/ApiSchema.json \
   -c "Server=localhost;Initial Catalog=edfi_datamanagementservice;User Id=sa;Password=<secret>;TrustServerCertificate=true" \
   -d mssql \
@@ -97,10 +141,10 @@ dms-schema ddl provision \
 ```
 
 To include extensions, pass additional `--schema` paths in the same order the
-DMS loads them:
+Ed-Fi API loads them:
 
 ```bash
-dms-schema ddl provision \
+api-schema-tools ddl provision \
   -s core/ApiSchema.json \
   -s extensions/tpdm/ApiSchema.json \
   -c "Host=localhost;Database=edfi_datamanagementservice;Username=postgres;Password=<secret>" \
@@ -123,19 +167,21 @@ which writes the scripts and manifests to a directory without connecting to a
 database:
 
 ```bash
-dms-schema ddl emit --schema core/ApiSchema.json --output ./ddl-output --dialect both
+api-schema-tools ddl emit --schema core/ApiSchema.json --output ./ddl-output
 ```
 
-This produces `pgsql.sql` and/or `mssql.sql`, a relational-model manifest per
-dialect, and an `effective-schema.manifest.json` describing the schema
-fingerprint. For a fixed set of schema inputs, dialect, and mapping version, the
-output is byte-for-byte identical across runs.
+The `--dialect` option defaults to `both`, producing `pgsql.sql` and
+`mssql.sql`. Pass `--dialect pgsql` or `--dialect mssql` to generate only one.
+The output also includes a relational-model manifest per dialect and an
+`effective-schema.manifest.json` describing the schema fingerprint. For a fixed
+set of schema inputs, dialect, and mapping version, the output is byte-for-byte
+identical across runs.
 
 ## Schema Fingerprint Validation
 
-At provisioning time, `dms-schema` records a **fingerprint** of the effective
-schema in a single row of the `dms.EffectiveSchema` table. The Data Management
-Service reads this fingerprint on first use and compares it to the schema it
+At provisioning time, `api-schema-tools` records a **fingerprint** of the
+effective schema in a single row of the `dms.EffectiveSchema` table. The
+Ed-Fi API reads this fingerprint on first use and compares it to the schema it
 loaded, guaranteeing that the running service and the database agree on exactly
 one effective schema.
 

@@ -1,5 +1,4 @@
 ---
-sidebar_position: 5
 ---
 
 # Extensibility & Customization
@@ -67,7 +66,7 @@ One of the features that draws implementers to the Ed-Fi API is the support for
 extending the data model. In v8, extensions are driven by the MetaEd toolchain,
 which generates an `ApiSchema.json` file describing the additional resources,
 properties, or associations. Placing this file in the configured `ApiSchemaPath`
-directory and running `dms-schema ddl provision` extends both the API surface
+directory and running `api-schema-tools ddl provision` extends both the API surface
 and the database schema without manual code changes.
 
 The [Extending with MetaEd](./extending-with-metaed.md) page has an overview of
