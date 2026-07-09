@@ -42,11 +42,6 @@ graph LR
     odsapi -->|read config| adminDb
     odsapi -->|read config| securityDb
     odsapi -->|read/write| ods
-
-    style Users fill:#c6d9f0
-    style AdminLayer fill:#fffacd
-    style ApiLayer fill:#fffacd
-    style Data fill:#c6e6c6
 ```
 
 How the components relate:
@@ -59,7 +54,7 @@ How the components relate:
 
 ## Authentication (Identity Provider)
 
-User authentication for the Admin App requires an Open ID Connect (OIDC) compatible Identity Provider (IdP), such as Keycloak, Microsoft Entra ID or Google Workspace. The IdP authenticates the administrators who sign in to the Admin App; permissions and roles for those users are then managed within the Admin App itself.
+User authentication for the Admin App requires an Open ID Connect (OIDC) compatible Identity Provider (IdP). The IdP authenticates the administrators who sign in to the Admin App; permissions and roles for those users are then managed within the Admin App itself.
 
 For configuration details and supported providers, see [Configuring an Identity Provider for Ed-Fi Admin App](/reference/admin-app/configuration/identity-provider).
 
@@ -73,11 +68,36 @@ Initially, place the Ed-Fi Admin App _inside_ your network security firewall, ac
 
 ## Optional: Yopass
 
+Yopass is an optional component that provides higher security for sharing credentials, at the cost of additional components to install and configure. For installation and configuration details, see the [Yopass Administrator Guide](/reference/admin-app/configuration/yopass-administrators-guide).
+
+The diagram below shows how Yopass fits into the credential-sharing flow. When an administrator creates or resets an application's credentials, the Admin App API stores the encrypted credentials in Yopass and returns a one-time link instead of displaying the key and secret directly. The vendor opens the link once; after that, the secret is permanently deleted.
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Admin as Administrator
+    participant UI as Ed-Fi Admin App
+    participant API as Ed-Fi Admin App API
+    participant AdminAPI as Ed-Fi ODS Admin API
+    participant Yopass
+    actor Vendor
+
+    Admin->>UI: Create or reset application credentials
+    UI->>API: Request credentials
+    API->>AdminAPI: Create or reset credentials
+    AdminAPI-->>API: client_id + client_secret
+    API->>Yopass: Store encrypted credentials as one-time secret
+    Yopass-->>API: One-time link
+    API-->>UI: Secure link (credentials are not displayed)
+    Admin->>Vendor: Share the secure link
+    Vendor->>Yopass: Open link and decrypt secret (first view)
+    Yopass-->>Vendor: client_id + client_secret (displayed once)
+    Note over Yopass: Secret is deleted after viewing,<br/>or expires after 24 hours if unviewed
+```
+
 :::note
 
-Yopass is an optional component that provides higher security for sharing credentials, at the cost of additional components to install and configure. Because vendors need to retrieve the credentials you share with them, a Yopass deployment must be reachable by vendors through the firewall.
-
-For installation and configuration details, see the [Yopass Administrator Guide](/reference/admin-app/configuration/yopass-administrators-guide).
+Because vendors must be able to open the links you share with them, the Yopass web interface must be reachable by vendors through the firewall, while the Admin App itself stays inside it.
 
 :::
 
@@ -87,22 +107,18 @@ The Ed-Fi Admin App organizes everything it manages around a small set of core c
 
 - **Teams** — A collection of owned resources. Most installations will have a single team consisting of all environments at the top level, and all the related owned resources therein.
 - **Environments** — A single deployment of the Ed-Fi ODS/API. Drilling into an environment lists its Tenants, ODSs, Ed-Orgs, Vendors, Applications, and Claimsets.
-- **Instances (ODS)** — Operational Data Store. A database that holds operational data for the current school year in the Ed-Fi API, stored per the Ed-Fi Data Standard. A single `EdFi_Admin` + `EdFi_Security` pairing can support one or more `EdFi_Ods` instances (for example, one instance per school year).
-- **Education Organizations (Ed-Orgs)** — The education organization with which API credentials are associated. Data in the environment that is related to that Ed-Org is accessible via the application's credentials.
-- **Vendors** — A named entity that owns multiple applications within the system. They are the main link between applications and namespace prefixes — for example, an assessment vendor like iReady or ACT, or a SIS vendor like PowerSchool.
-- **Profiles** — Complement claimsets by controlling access at a more granular level — at the columnar or sub-collection level within resources.
+- **Instances (ODS)** — Operational Data Store. A database that holds operational data for the current school year in the Ed-Fi API, stored per the Ed-Fi Data Standard. A single/multi tenant `EdFi_Admin` + `EdFi_Security` pairing can support one or more `EdFi_Ods` instances (for example, one instance per school year).
+- **Education Organizations (Ed-Orgs)** — The education organizations with which API credentials are associated. An application can be associated with one or more Ed-Orgs, and data in the environment related to those Ed-Orgs is accessible via the application's credentials.
+- **Vendors** — A named entity that owns one or more applications within the system. They are the main link between applications and namespace prefixes — for example, an assessment vendor like iReady or ACT, or a SIS vendor like PowerSchool.
 - **Claimsets** — A collection of rules/permissions that define which resources can be accessed, what actions can be performed, and the authorization strategies that apply.
-- **Applications** — A named entity that associates resource authorizations with API clients. All applications belong to a vendor and are assigned a claimset (and optionally a profile).
-- **Credentials** — The `client_id` and `client_secret` (key and secret) for authenticating with an Ed-Fi API application. The Admin App treats credentials as a one-to-one mapping with the application.
+- **Profiles** — Complement claimsets by controlling access at a more granular level — at the columnar or sub-collection level within resources.
+- **Applications** — A named entity that associates resource authorizations with API clients. All applications belong to a vendor and are assigned a claimset (and optionally one or more profiles).
+- **API Clients** — The client entities through which an application connects to the Ed-Fi ODS/API. An application has one or more API clients, each with its own set of credentials and its own ODS instance assignments. Creating an application automatically creates its first (default) API client.
+- **Credentials** — The `client_id` and `client_secret` (aka "key and secret") for authenticating with an Ed-Fi API application. The ODS/API's security database supports multiple sets of credentials per application, as does ODS Admin API version 2.3. However, the Ed-Fi Admin App only supports a one-to-one mapping and treats the credentials as synonymous with the application itself.
 
 The diagram below shows how these concepts relate to one another.
 
 ```mermaid
----
-config:
-  layout: elk
-  theme: redux-color
----
 erDiagram
     %% Environment & Management
     TEAM ||--o{ ENVIRONMENT : manages
@@ -114,29 +130,30 @@ erDiagram
     %% Security & Application
     VENDOR ||--o{ APPLICATION : owns
     APPLICATION ||--|| CLAIMSET : assigned
-    APPLICATION ||--o| PROFILE : "optionally assigned"
-    APPLICATION ||--|| CREDENTIALS : "has (1:1)"
-    APPLICATION }o--|| EDUCATION_ORGANIZATION : "associated with"
+    APPLICATION }o--o{ PROFILE : "optionally assigned"
+    APPLICATION ||--|{ API_CLIENT : has
+    API_CLIENT ||--|| CREDENTIALS : "has (1:1)"
+    APPLICATION }o--|{ EDUCATION_ORGANIZATION : "associated with"
 
     %% ODS Entities
     ODS_INSTANCE ||--o{ EDUCATION_ORGANIZATION : "scoped to"
 
     %% Apply color classes
-    classDef environment stroke:#818cf8,fill:#eef2ff
-    classDef security stroke:#2dd4bf,fill:#f0fdfa
-    classDef ods stroke:#a78bfa,fill:#f5f3ff
+    classDef environment stroke:#818cf8,fill:transparent,stroke-width:2px
+    classDef security stroke:#2dd4bf,fill:transparent,stroke-width:2px
+    classDef ods stroke:#a78bfa,fill:transparent,stroke-width:2px
 
     class TEAM,ENVIRONMENT,ODS_INSTANCE,VENDOR,PROFILE,CLAIMSET environment
-    class APPLICATION,CREDENTIALS security
+    class APPLICATION,API_CLIENT,CREDENTIALS security
     class EDUCATION_ORGANIZATION ods
 ```
 
 In words:
 
 - One **team** manages one or many **environments**.
-- One **environment** can contain many **ODS instances** (each scoped to one or more Ed-Orgs/LEAs), as well as many **vendors**, **profiles**, and **claimsets**.
-- One **vendor** owns many **applications**.
-- An **application** is assigned one **claimset** and, optionally, one **profile**, is associated with an **education organization**, and has one set of **credentials** (a one-to-one mapping in the Admin App).
+- One **environment** can contain one or many **ODS instances** (each scoped to one or more Ed-Orgs/LEAs), as well as many **vendors**, **profiles**, and **claimsets**.
+- One **vendor** owns one or many **applications**.
+- An **application** is assigned one **claimset** and, optionally, one or more **profiles**, is associated with one or more **education organizations**, and has one or more **API clients**, each with its own set of **credentials** (key and secret).
 
 ## What this guide covers
 
