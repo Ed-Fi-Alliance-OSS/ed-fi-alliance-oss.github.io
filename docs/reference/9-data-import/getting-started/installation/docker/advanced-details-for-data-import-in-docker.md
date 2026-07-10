@@ -30,7 +30,7 @@ Some possible adaptations include:
 
     ase, updating the `POSTGRES_HOST`  and other DB settings accordingly
 
-**docker-compose.yml** Expand source
+**docker-compose.yml**:
 
 ```docker
 # SPDX-License-Identifier: Apache-2.0
@@ -100,7 +100,7 @@ service configuration for `Data Import` . Make sure configured values are passed
 through to the service in the `environment`  section.
 :::
 
-**.env** Expand source
+**.env**:
 
 ```ini
 POSTGRES_USER=<default postgres database user>

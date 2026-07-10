@@ -73,8 +73,6 @@ if errors continue to occur.
 
     :::
 
-     Expand source
-
     ```powershell
     # Create the new project directory
     mkdir MyExtension
