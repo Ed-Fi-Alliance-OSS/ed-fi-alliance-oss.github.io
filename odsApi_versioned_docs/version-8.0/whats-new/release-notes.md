@@ -104,8 +104,11 @@ Ed-Fi API v8, the token endpoint is hosted by the **Configuration Service**.
 | ODS/API | `https://{host}/oauth/token` |
 | Ed-Fi API v8 | `https://{config-service-host}/connect/token` |
 
-Client applications that construct the token URL from configuration will need
-this endpoint updated.
+To ease migration, the Ed-Fi API continues to expose an `/oauth/token`
+compatibility proxy that forwards token requests to the Configuration Service,
+so existing clients that construct the token URL from the API host are **not
+required** to change it. New and updated clients are, however, encouraged to
+call the Configuration Service `/connect/token` endpoint directly.
 
 ### Platform Operator Changes
 

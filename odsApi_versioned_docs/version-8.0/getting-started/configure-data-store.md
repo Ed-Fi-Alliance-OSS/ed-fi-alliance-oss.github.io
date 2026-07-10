@@ -41,9 +41,27 @@ Record the key and secret. You will need them to request API tokens.
 :::info
 
 `Get-SmokeTestCredential` creates a vendor named "Smoke Test Vendor" with an
-application using the `EdFiSandbox` claim set, pre-associated with the data
+application using the `EdFiSandbox` claim set, pre-associated with a data
 store created by the bootstrap. It is intended for local development and
 testing, not production deployments.
+
+:::
+
+:::note Multiple data stores
+
+If you created year-specific data stores (for example, with `-SchoolYearRange`),
+the default `Get-SmokeTestCredential` call above associates the client with only
+the **first** data store, so requests to the other school-year routes return a
+403. List the data store IDs and pass them all so the client is authorized for
+every route:
+
+```powershell
+# List data store IDs (requires an admin token from the Configuration Service)
+Invoke-RestMethod -Uri "http://localhost:8081/v3/dataStores" `
+  -Headers @{ Authorization = "Bearer <admin_token>" }
+
+$cred = Get-SmokeTestCredential -ConfigServiceUrl "http://localhost:8081" -DataStoreIds @(1, 2, 3)
+```
 
 :::
 
@@ -62,9 +80,13 @@ Use the client credentials to obtain a bearer token from the Configuration
 Service:
 
 ```powershell
-curl -X POST http://localhost:8081/connect/token `
-  -H "Content-Type: application/x-www-form-urlencoded" `
-  -d "grant_type=client_credentials&client_id=<key>&client_secret=<secret>"
+$token = Invoke-RestMethod -Method Post -Uri "http://localhost:8081/connect/token" `
+  -ContentType "application/x-www-form-urlencoded" `
+  -Body @{
+    "grant_type"    = "client_credentials"
+    "client_id"     = "<key>"
+    "client_secret" = "<secret>"
+  }
 ```
 
 A successful response returns a JSON object containing `access_token`,
@@ -86,8 +108,8 @@ Keycloak token endpoint and setup instructions.
 Use the token to call the Ed-Fi API:
 
 ```powershell
-curl http://localhost:8080/api/data/ed-fi/schools `
-  -H "Authorization: Bearer <access_token>"
+Invoke-RestMethod -Uri "http://localhost:8080/api/data/ed-fi/schools" `
+  -Headers @{ Authorization = "Bearer $($token.access_token)" }
 ```
 
 An empty array `[]` is a valid response. It means the data store is connected
@@ -101,7 +123,10 @@ using were not linked to a data store when they were created. Ensure you are
 using the key and secret from `Get-SmokeTestCredential`, which associates the
 application with the data store created by the bootstrap. If you created a
 vendor or application manually through the Configuration Service, you must also
-associate it with a data store before API requests will succeed.
+associate it with a data store before API requests will succeed. If you have
+multiple data stores (for example, from `-SchoolYearRange`), see [Multiple data
+stores](#step-1-create-api-credentials) above — the credential must be
+associated with every data store you intend to reach.
 
 If you receive a 503 response with a message about database provisioning, run
 `bootstrap-local-dms.ps1` again from a clean state (`./start-local-dms.ps1 -d

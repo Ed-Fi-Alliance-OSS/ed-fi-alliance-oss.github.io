@@ -71,32 +71,35 @@ follow the pattern `http://ed-fi.org/identity/claims/domains/{domainName}`.
 
 :::
 
-```bash
-curl -X POST \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer $TOKEN" \
-  -d '{
-    "claimSetName": "CustomVendor",
-    "resourceClaims": [
-      {
-        "name": "systemDescriptors",
-        "claimName": "http://ed-fi.org/identity/claims/domains/systemDescriptors",
-        "actions": [
-          { "name": "Read", "enabled": true }
-        ]
-      },
-      {
-        "name": "academicSubjectDescriptor",
-        "claimName": "http://ed-fi.org/identity/claims/ed-fi/academicSubjectDescriptor",
-        "parentClaimName": "http://ed-fi.org/identity/claims/domains/systemDescriptors",
-        "actions": [
-          { "name": "Create", "enabled": true },
-          { "name": "Read", "enabled": true }
-        ]
-      }
-    ]
-  }' \
-  http://localhost:8081/v3/claimSets/import
+```powershell
+$body = @'
+{
+  "claimSetName": "CustomVendor",
+  "resourceClaims": [
+    {
+      "name": "systemDescriptors",
+      "claimName": "http://ed-fi.org/identity/claims/domains/systemDescriptors",
+      "actions": [
+        { "name": "Read", "enabled": true }
+      ]
+    },
+    {
+      "name": "academicSubjectDescriptor",
+      "claimName": "http://ed-fi.org/identity/claims/ed-fi/academicSubjectDescriptor",
+      "parentClaimName": "http://ed-fi.org/identity/claims/domains/systemDescriptors",
+      "actions": [
+        { "name": "Create", "enabled": true },
+        { "name": "Read", "enabled": true }
+      ]
+    }
+  ]
+}
+'@
+
+Invoke-RestMethod -Method Post -Uri "http://localhost:8081/v3/claimSets/import" `
+  -Headers @{ Authorization = "Bearer $($token.access_token)" } `
+  -ContentType "application/json" `
+  -Body $body
 ```
 
 The response includes the new claim set ID in the `Location` response header.
@@ -120,33 +123,36 @@ deployment.
 
 :::
 
-```bash
-curl -X POST \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer $TOKEN" \
-  -d '{
-    "claimSetName": "CustomVendor",
-    "resourceClaims": [
-      {
-        "name": "studentEducationOrganizationResponsibilityAssociation",
-        "claimName": "http://ed-fi.org/identity/claims/ed-fi/studentEducationOrganizationResponsibilityAssociation",
-        "parentClaimName": "http://ed-fi.org/identity/claims/domains/relationshipBasedData",
-        "actions": [
-          { "name": "Create", "enabled": true },
-          { "name": "Read", "enabled": true }
-        ],
-        "authorizationStrategyOverrides": [
-          {
-            "actionName": "Create",
-            "authorizationStrategies": [
-              { "name": "RelationshipsWithStudentsOnly" }
-            ]
-          }
-        ]
-      }
-    ]
-  }' \
-  http://localhost:8081/v3/claimSets/import
+```powershell
+$body = @'
+{
+  "claimSetName": "CustomVendor",
+  "resourceClaims": [
+    {
+      "name": "studentEducationOrganizationResponsibilityAssociation",
+      "claimName": "http://ed-fi.org/identity/claims/ed-fi/studentEducationOrganizationResponsibilityAssociation",
+      "parentClaimName": "http://ed-fi.org/identity/claims/domains/relationshipBasedData",
+      "actions": [
+        { "name": "Create", "enabled": true },
+        { "name": "Read", "enabled": true }
+      ],
+      "authorizationStrategyOverrides": [
+        {
+          "actionName": "Create",
+          "authorizationStrategies": [
+            { "name": "RelationshipsWithStudentsOnly" }
+          ]
+        }
+      ]
+    }
+  ]
+}
+'@
+
+Invoke-RestMethod -Method Post -Uri "http://localhost:8081/v3/claimSets/import" `
+  -Headers @{ Authorization = "Bearer $($token.access_token)" } `
+  -ContentType "application/json" `
+  -Body $body
 ```
 
 The override applies only to the specified claim set; all other claim sets

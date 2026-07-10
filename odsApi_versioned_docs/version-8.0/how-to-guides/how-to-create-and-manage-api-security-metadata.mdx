@@ -389,7 +389,7 @@ source mode.
 
 #### Embedded (Production Default)
 
-```bash
+```ini
 DMS_CONFIG_CLAIMS_SOURCE=Embedded
 ```
 
@@ -407,7 +407,7 @@ modifications.
 
 #### Hybrid
 
-```bash
+```ini
 DMS_CONFIG_CLAIMS_SOURCE=Hybrid
 DMS_CONFIG_CLAIMS_DIRECTORY=/app/claims-fragments
 ```
@@ -420,7 +420,7 @@ claim sets without modifying the embedded resource.
 
 #### Filesystem
 
-```bash
+```ini
 DMS_CONFIG_CLAIMS_SOURCE=Filesystem
 DMS_CONFIG_CLAIMS_DIRECTORY=/app/claims-files
 ```
@@ -434,7 +434,7 @@ their own complete claims document outside the service binary.
 Runtime upload is a separate capability that can be combined with any of the
 three source modes above. It is enabled by:
 
-```bash
+```ini
 DMS_CONFIG_DANGEROUSLY_ENABLE_UNRESTRICTED_CLAIMS_LOADING=true
 ```
 
@@ -472,26 +472,30 @@ hierarchy must also appear in `claimSets`.
 
 **Retrieve the current claims** to use as a starting point:
 
-```bash
-curl -H "Authorization: Bearer $TOKEN" \
-  http://localhost:8081/management/current-claims \
-  > claims.json
+```powershell
+$headers = @{ Authorization = "Bearer $($token.access_token)" }
+
+Invoke-RestMethod -Uri "http://localhost:8081/management/current-claims" -Headers $headers |
+  ConvertTo-Json -Depth 100 |
+  Set-Content claims.json
 ```
 
 **Modify** the `claimsHierarchy` array in the downloaded file. Add any new claim
 set names to the `claimSets` catalog as well.
 
 **Upload** the modified document to replace the active claims hierarchy. The
-endpoint requires the document wrapped in a top-level `claims` property:
+endpoint requires the document wrapped in a top-level `claims` property, which
+the `@{ claims = ... }` hashtable adds before serializing:
 
-```bash
-jq '{claims: .}' claims.json > claims-upload.json
+```powershell
+$claims = Get-Content claims.json -Raw | ConvertFrom-Json
+$body = @{ claims = $claims } | ConvertTo-Json -Depth 100
 
-curl -X POST \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer $TOKEN" \
-  --data-binary @claims-upload.json \
-  http://localhost:8081/management/upload-claims
+Invoke-RestMethod -Method Post `
+  -Uri "http://localhost:8081/management/upload-claims" `
+  -Headers @{ Authorization = "Bearer $($token.access_token)" } `
+  -ContentType "application/json" `
+  -Body $body
 ```
 
 The uploaded document must include both the `claimSets` catalog and the

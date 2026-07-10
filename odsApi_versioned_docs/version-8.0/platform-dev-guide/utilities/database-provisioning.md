@@ -54,7 +54,7 @@ command is `api-schema-tools`.
 
 To build from source instead, run:
 
-```bash
+```powershell
 dotnet build src/dms/clis/EdFi.DataManagementService.SchemaTools
 ```
 
@@ -83,7 +83,7 @@ how the runtime locates these files.
 `hash` loads one or more `ApiSchema.json` files, normalizes them, and prints
 the effective schema hash (SHA-256, lowercase hex).
 
-```bash
+```powershell
 api-schema-tools hash <coreSchemaPath> [extensionSchemaPath...]
 ```
 
@@ -92,7 +92,7 @@ api-schema-tools hash <coreSchemaPath> [extensionSchemaPath...]
 | `coreSchemaPath` | Yes | Path to the core `ApiSchema.json` file |
 | `extensionSchemaPath` | No | Path(s) to extension `ApiSchema.json` file(s) |
 
-```bash
+```powershell
 # Core schema only
 api-schema-tools hash core/ApiSchema.json
 
@@ -108,7 +108,7 @@ after provisioning, and the value the Ed-Fi API checks at startup.
 `ddl provision` generates the DDL for a single dialect and executes it inside
 one transaction against the target database.
 
-```bash
+```powershell
 api-schema-tools ddl provision --schema <paths...> --connection-string <connstr> --dialect <dialect> [--create-database] [--timeout <seconds>]
 ```
 
@@ -122,32 +122,32 @@ api-schema-tools ddl provision --schema <paths...> --connection-string <connstr>
 
 **PostgreSQL:**
 
-```bash
-api-schema-tools ddl provision \
-  --schema core/ApiSchema.json \
-  --connection-string "Host=localhost;Port=5432;Database=edfi_datamanagementservice;Username=postgres;Password=<secret>" \
-  --dialect pgsql \
+```powershell
+api-schema-tools ddl provision `
+  --schema core/ApiSchema.json `
+  --connection-string "Host=localhost;Port=5432;Database=edfi_datamanagementservice;Username=postgres;Password=<secret>" `
+  --dialect pgsql `
   --create-database
 ```
 
 **SQL Server:**
 
-```bash
-api-schema-tools ddl provision \
-  -s core/ApiSchema.json \
-  -c "Server=localhost;Initial Catalog=edfi_datamanagementservice;User Id=sa;Password=<secret>;TrustServerCertificate=true" \
-  -d mssql \
+```powershell
+api-schema-tools ddl provision `
+  -s core/ApiSchema.json `
+  -c "Server=localhost;Initial Catalog=edfi_datamanagementservice;User Id=sa;Password=<secret>;TrustServerCertificate=true" `
+  -d mssql `
   --create-database
 ```
 
 To include extensions, pass additional `--schema` paths in the same order the
 Ed-Fi API loads them:
 
-```bash
-api-schema-tools ddl provision \
-  -s core/ApiSchema.json \
-  -s extensions/tpdm/ApiSchema.json \
-  -c "Host=localhost;Database=edfi_datamanagementservice;Username=postgres;Password=<secret>" \
+```powershell
+api-schema-tools ddl provision `
+  -s core/ApiSchema.json `
+  -s extensions/tpdm/ApiSchema.json `
+  -c "Host=localhost;Database=edfi_datamanagementservice;Username=postgres;Password=<secret>" `
   -d pgsql --create-database
 ```
 
@@ -166,7 +166,7 @@ source control or run it through a separate migration process — use `ddl emit`
 which writes the scripts and manifests to a directory without connecting to a
 database:
 
-```bash
+```powershell
 api-schema-tools ddl emit --schema core/ApiSchema.json --output ./ddl-output
 ```
 

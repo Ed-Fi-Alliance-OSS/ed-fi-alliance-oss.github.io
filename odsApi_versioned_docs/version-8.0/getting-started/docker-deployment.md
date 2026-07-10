@@ -114,7 +114,7 @@ a clean environment.
 Once startup completes, confirm the Ed-Fi API is responding:
 
 ```powershell
-curl http://localhost:8080/api
+Invoke-RestMethod http://localhost:8080/api
 ```
 
 A successful response returns the Ed-Fi Discovery API payload — a JSON object

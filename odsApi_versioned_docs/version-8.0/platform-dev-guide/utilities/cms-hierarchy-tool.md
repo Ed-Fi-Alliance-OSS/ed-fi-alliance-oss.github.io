@@ -51,20 +51,20 @@ against your ODS/API database to produce the input XML file.
 
 Write the converted JSON to a file:
 
-```bash
-dotnet run --no-launch-profile \
-  --command ParseXml \
-  --input security-metadata.xml \
-  --output AuthorizationHierarchy.json \
+```powershell
+dotnet run --no-launch-profile `
+  --command ParseXml `
+  --input security-metadata.xml `
+  --output AuthorizationHierarchy.json `
   --outputFormat ToFile
 ```
 
 Print the converted JSON to stdout:
 
-```bash
-dotnet run --no-launch-profile \
-  --command ParseXml \
-  --input security-metadata.xml \
+```powershell
+dotnet run --no-launch-profile `
+  --command ParseXml `
+  --input security-metadata.xml `
   --outputFormat Json
 ```
 
@@ -135,41 +135,41 @@ for a complete example. A minimal fragment looks like this:
 
 Apply a single extension fragment:
 
-```bash
-dotnet run --no-launch-profile \
-  --command Transform \
-  --input my-extension-claims.json \
-  --output Claims.json \
+```powershell
+dotnet run --no-launch-profile `
+  --command Transform `
+  --input my-extension-claims.json `
+  --output Claims.json `
   --outputFormat ToFile
 ```
 
 Apply multiple fragments in order (fragments are applied sequentially):
 
-```bash
-dotnet run --no-launch-profile \
-  --command Transform \
-  --input 001-my-extension.json;002-another-extension.json \
-  --output Claims.json \
+```powershell
+dotnet run --no-launch-profile `
+  --command Transform `
+  --input "001-my-extension.json;002-another-extension.json" `
+  --output Claims.json `
   --outputFormat ToFile
 ```
 
 Print to stdout (useful for inspection before writing to a file):
 
-```bash
-dotnet run --no-launch-profile \
-  --command Transform \
-  --input my-extension-claims.json \
+```powershell
+dotnet run --no-launch-profile `
+  --command Transform `
+  --input my-extension-claims.json `
   --outputFormat Json
 ```
 
 Strip authorization strategies that are not implemented in your environment:
 
-```bash
-dotnet run --no-launch-profile \
-  --command Transform \
-  --input my-extension-claims.json \
-  --outputFormat Json \
-  --skipAuths NotImplementedAuth;AnotherStrategy
+```powershell
+dotnet run --no-launch-profile `
+  --command Transform `
+  --input my-extension-claims.json `
+  --outputFormat Json `
+  --skipAuths "NotImplementedAuth;AnotherStrategy"
 ```
 
 ## Delivering the Output to the Configuration Service
