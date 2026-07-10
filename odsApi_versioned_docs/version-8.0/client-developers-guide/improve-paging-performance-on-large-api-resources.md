@@ -18,11 +18,11 @@ series of paged requests (using Offset Paging via the `offset` and `limit`
 parameters) that look something like the following:
 
 ```text
-GET /data/ed-fi/studentSectionAttendanceEvents?offset=0&limit=500
+GET /api/data/ed-fi/studentSectionAttendanceEvents?offset=0&limit=500
 
-GET /data/ed-fi/studentSectionAttendanceEvents?offset=500&limit=500
+GET /api/data/ed-fi/studentSectionAttendanceEvents?offset=500&limit=500
 
-GET /data/ed-fi/studentSectionAttendanceEvents?offset=1000&limit=500
+GET /api/data/ed-fi/studentSectionAttendanceEvents?offset=1000&limit=500
 ```
 
 On large data sets, you may notice increasing levels of performance degradation
@@ -68,7 +68,7 @@ the newest change version value from your source API by sending a GET request to
 the _availableChangeVersions_ resource:
 
 ```none
-GET <host>/changeQueries/v1/availableChangeVersions
+GET <host>/api/changeQueries/v1/availableChangeVersions
 accept: application/json
 authorization: Bearer fghjklrftyuiofghjk
 
@@ -86,13 +86,13 @@ Send a request to the resource with the `totalCount=true` query string
 parameter and get the total item count from the `Total-Count` response header.
 
 ```none
-GET <host>/data/ed-fi/studentSectionAttendanceEvents?totalCount=true
+GET <host>/api/data/ed-fi/studentSectionAttendanceEvents?totalCount=true
 accept: application/json
 authorization: Bearer fghjklrftyuiofghjk
 
 --> Reply headers:
 
-total-count: 4332
+Total-Count: 4332
 ```
 
 ### Step 3 - Define the partitions as ranges of Change Version values
@@ -148,7 +148,7 @@ On the populated sample database, the Change Version value ranges defined above
 for partitions 1, 3, 4 and 5 actually return no items.
 
 ```none
-GET <host>/data/ed-fi/studentSectionAttendanceEvents?offset=0&limit=500&minChangeVersion=0&maxChangeVersion=22463
+GET <host>/api/data/ed-fi/studentSectionAttendanceEvents?offset=0&limit=500&minChangeVersion=0&maxChangeVersion=22463
 accept: application/json
 authorization: Bearer fghjklrftyuiofghjk
 
@@ -169,7 +169,7 @@ The following image shows that data is returned for the first page of the second
 partition:
 
 ```none
-GET <host>/data/ed-fi/studentSectionAttendanceEvents?offset=0&limit=500&minChangeVersion=22464&maxChangeVersion=49929
+GET <host>/api/data/ed-fi/studentSectionAttendanceEvents?offset=0&limit=500&minChangeVersion=22464&maxChangeVersion=49929
 accept: application/json
 authorization: Bearer fghjklrftyuiofghjk
 
@@ -191,39 +191,39 @@ So for this example, the following requests would be sent to the API:
 #### Partition 1 (0 items)
 
 ```text
-GET /data/ed-fi/studentSectionAttendanceEvents?offset=0&limit=500&maxChangeVersion=22464
+GET /api/data/ed-fi/studentSectionAttendanceEvents?offset=0&limit=500&maxChangeVersion=22464
 ```
 
 #### Partition 2 (4,332 items)
 
 ```text
-GET /data/ed-fi/studentSectionAttendanceEvents?offset=0&limit=500&minChangeVersion=22465&maxChangeVersion=49929
-GET /data/ed-fi/studentSectionAttendanceEvents?offset=500&limit=500&minChangeVersion=22465&maxChangeVersion=49929
-GET /data/ed-fi/studentSectionAttendanceEvents?offset=1000&limit=500&minChangeVersion=22465&maxChangeVersion=49929
-GET /data/ed-fi/studentSectionAttendanceEvents?offset=1500&limit=500&minChangeVersion=22465&maxChangeVersion=49929
-GET /data/ed-fi/studentSectionAttendanceEvents?offset=2000&limit=500&minChangeVersion=22465&maxChangeVersion=49929
-GET /data/ed-fi/studentSectionAttendanceEvents?offset=2500&limit=500&minChangeVersion=22465&maxChangeVersion=49929
-GET /data/ed-fi/studentSectionAttendanceEvents?offset=3000&limit=500&minChangeVersion=22465&maxChangeVersion=49929
-GET /data/ed-fi/studentSectionAttendanceEvents?offset=3500&limit=500&minChangeVersion=22465&maxChangeVersion=49929
-GET /data/ed-fi/studentSectionAttendanceEvents?offset=4000&limit=500&minChangeVersion=22465&maxChangeVersion=49929
+GET /api/data/ed-fi/studentSectionAttendanceEvents?offset=0&limit=500&minChangeVersion=22465&maxChangeVersion=49929
+GET /api/data/ed-fi/studentSectionAttendanceEvents?offset=500&limit=500&minChangeVersion=22465&maxChangeVersion=49929
+GET /api/data/ed-fi/studentSectionAttendanceEvents?offset=1000&limit=500&minChangeVersion=22465&maxChangeVersion=49929
+GET /api/data/ed-fi/studentSectionAttendanceEvents?offset=1500&limit=500&minChangeVersion=22465&maxChangeVersion=49929
+GET /api/data/ed-fi/studentSectionAttendanceEvents?offset=2000&limit=500&minChangeVersion=22465&maxChangeVersion=49929
+GET /api/data/ed-fi/studentSectionAttendanceEvents?offset=2500&limit=500&minChangeVersion=22465&maxChangeVersion=49929
+GET /api/data/ed-fi/studentSectionAttendanceEvents?offset=3000&limit=500&minChangeVersion=22465&maxChangeVersion=49929
+GET /api/data/ed-fi/studentSectionAttendanceEvents?offset=3500&limit=500&minChangeVersion=22465&maxChangeVersion=49929
+GET /api/data/ed-fi/studentSectionAttendanceEvents?offset=4000&limit=500&minChangeVersion=22465&maxChangeVersion=49929
 ```
 
 #### Partition 3 (0 items)
 
 ```text
-GET /data/ed-fi/studentSectionAttendanceEvents?offset=0&limit=500&minChangeVersion=49930&maxChangeVersion=67393
+GET /api/data/ed-fi/studentSectionAttendanceEvents?offset=0&limit=500&minChangeVersion=49930&maxChangeVersion=67393
 ```
 
 #### Partition 4 (0 items)
 
 ```text
-GET /data/ed-fi/studentSectionAttendanceEvents?offset=0&limit=500&minChangeVersion=67394&maxChangeVersion=89857
+GET /api/data/ed-fi/studentSectionAttendanceEvents?offset=0&limit=500&minChangeVersion=67394&maxChangeVersion=89857
 ```
 
 #### Partition 5 (0 items)
 
 ```text
-GET /data/ed-fi/studentSectionAttendanceEvents?offset=0&limit=500&minChangeVersion=89858
+GET /api/data/ed-fi/studentSectionAttendanceEvents?offset=0&limit=500&minChangeVersion=89858
 ```
 
 ## Conclusion

@@ -22,9 +22,12 @@ Ed-Fi API v8.0 uses two databases — or two schemas within one database (see
 
 :::info
 
-The Ed-Fi API validates (but does not create) its schema at startup. Until the
-resource database has been provisioned, the API responds with **HTTP 503**. See
-[Schema Fingerprint Validation](#schema-fingerprint-validation) below.
+The Ed-Fi API validates (but does not create) its schema on first use of a
+selected resource database — not at startup. Until that database has been
+provisioned, data-resource requests against it respond with **HTTP 503** (the
+Discovery API and health endpoint remain available); the result is cached per
+database until the service restarts. See [Schema Fingerprint
+Validation](#schema-fingerprint-validation) below.
 
 :::
 
@@ -101,7 +104,8 @@ api-schema-tools hash core/ApiSchema.json extensions/tpdm/ApiSchema.json
 ```
 
 The hash printed here is the same fingerprint stored in `dms.EffectiveSchema`
-after provisioning, and the value the Ed-Fi API checks at startup.
+after provisioning, and the value the Ed-Fi API checks on first use of the
+database.
 
 ### Provisioning a database (`ddl provision`)
 
@@ -185,7 +189,7 @@ Ed-Fi API reads this fingerprint on first use and compares it to the schema it
 loaded, guaranteeing that the running service and the database agree on exactly
 one effective schema.
 
-The check runs before any request is served:
+The check runs before any data-resource request is served:
 
 - If the resource database has **not been provisioned** (no
   `dms.EffectiveSchema` row), requests receive **HTTP 503**. Run `ddl provision`

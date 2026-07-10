@@ -47,6 +47,18 @@ testing, not production deployments.
 
 :::
 
+:::note Run it once per environment
+
+`Get-SmokeTestCredential` **creates** a new vendor and application on each call —
+it does not retrieve existing credentials, and the generated secret cannot be
+recovered afterward. Because the vendor company name ("Smoke Test Vendor") must
+be unique, running it a second time against the same environment fails with an
+HTTP 400. To obtain a fresh credential, either reset the local stack
+(`./start-local-dms.ps1 -d -v`, then re-run the bootstrap) or pass a different
+`-VendorName`.
+
+:::
+
 :::note Multiple data stores
 
 If you created year-specific data stores (for example, with `-SchoolYearRange`),
@@ -62,15 +74,6 @@ Invoke-RestMethod -Uri "http://localhost:8081/v3/dataStores" `
 
 $cred = Get-SmokeTestCredential -ConfigServiceUrl "http://localhost:8081" -DataStoreIds @(1, 2, 3)
 ```
-
-:::
-
-:::note
-
-The `bootstrap-local-dms.ps1` script accepts an `-AddSmokeTestCredentials`
-flag that calls this same helper internally, but the credentials are not
-surfaced in the script output. Call `Get-SmokeTestCredential` directly (as
-shown above) to capture the key and secret.
 
 :::
 
@@ -133,13 +136,3 @@ If you receive a 503 response with a message about database provisioning, run
 -v`) — the data store exists but the schema was not provisioned.
 
 :::
-
-## Optional: Add Smoke Test Credentials at Bootstrap
-
-The `-AddSmokeTestCredentials` flag on `bootstrap-local-dms.ps1` creates the
-same vendor and application setup as `Get-SmokeTestCredential`. Use it when you
-want the CMS objects created during startup (for example, in a CI pipeline), and
-then call `Get-SmokeTestCredential` separately to retrieve the key and secret.
-
-See [Smoke Test Utility](../platform-dev-guide/utilities/smoke-test-utility.md)
-for how to run smoke tests against a running instance.

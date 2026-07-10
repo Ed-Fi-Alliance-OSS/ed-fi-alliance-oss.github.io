@@ -107,10 +107,10 @@ for that request and is included in error response bodies. The correlation ID
 makes it possible to trace a specific failed request across multiple log lines
 and across service boundaries.
 
-If a request does not include a correlation ID, the Ed-Fi API generates a UUID
-for the request's lifetime. The header name used to pass or read a correlation
-ID is configurable via the `CORRELATION_ID_HEADER` environment variable
-(default: `correlationid`).
+If a request does not include a correlation ID, the Ed-Fi API uses the
+request's trace identifier for the request's lifetime. The header name used to
+pass or read a correlation ID is configurable via the `CORRELATION_ID_HEADER`
+environment variable (default: `correlationid`).
 
 :::info
 
@@ -151,8 +151,8 @@ allowing the two to be linked:
 
 Client applications can supply their own correlation ID by including an HTTP
 header named `correlationid` (or the value of `CORRELATION_ID_HEADER`) on the
-request. If no such header is present, the Ed-Fi API generates one for the
-request's lifetime.
+request. If no such header is present, the Ed-Fi API uses the request's trace
+identifier for the request's lifetime.
 
 Using a client-supplied correlation ID is particularly useful when the API sits
 behind a gateway or proxy that logs its own correlation IDs — matching them

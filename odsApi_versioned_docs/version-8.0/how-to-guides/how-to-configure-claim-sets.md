@@ -71,6 +71,21 @@ follow the pattern `http://ed-fi.org/identity/claims/domains/{domainName}`.
 
 :::
 
+The `POST /v3/claimSets/import` and `POST /v3/claimSets/copy` endpoints require a
+Configuration Service token for a client with the `edfi_admin_api/full_access`
+scope. Obtain one and store the response:
+
+```powershell
+$token = Invoke-RestMethod -Method Post -Uri "http://localhost:8081/connect/token" `
+  -ContentType "application/x-www-form-urlencoded" `
+  -Body @{
+    "grant_type"    = "client_credentials"
+    "client_id"     = "<config-admin-key>"
+    "client_secret" = "<config-admin-secret>"
+    "scope"         = "edfi_admin_api/full_access"
+  }
+```
+
 ```powershell
 $body = @'
 {

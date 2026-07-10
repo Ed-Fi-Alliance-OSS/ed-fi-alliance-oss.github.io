@@ -83,7 +83,7 @@ the `x-Ed-Fi-isUpdatable` specification extension.
 HTTP Request
 
 ```text
-POST http://localhost:8080/api/data/ed-fi/programs/092a2f5eaaa5491aa575ffdd5ec662ef
+PUT http://localhost:8080/api/data/ed-fi/programs/092a2f5eaaa5491aa575ffdd5ec662ef
 Authorization: bearer 6f5bb488a65948b5b847b561b23e
 Content-Type: application/json
 

@@ -184,15 +184,18 @@ using the loading mode configured for your deployment.
 | **Embedded** | Rebuild and redeploy the Configuration Service binary with the updated embedded `Claims.json` |
 | **Management API** | Wrap the hierarchy array in the two-section upload format and `POST` to `/management/upload-claims` |
 
-For the management API upload, the hierarchy array produced by `Transform` must
-be wrapped in the container document format:
+For the management API upload, wrap the document produced by `Transform` in the
+two-section container **and** nest it under a top-level `claims` property (the
+`/management/upload-claims` endpoint requires this wrapper):
 
 ```json
 {
-  "claimSets": [
-    { "claimSetName": "MyExtensionClaimSet", "isSystemReserved": false }
-  ],
-  "claimsHierarchy": [ ... ]
+  "claims": {
+    "claimSets": [
+      { "claimSetName": "MyExtensionClaimSet", "isSystemReserved": false }
+    ],
+    "claimsHierarchy": [ ... ]
+  }
 }
 ```
 

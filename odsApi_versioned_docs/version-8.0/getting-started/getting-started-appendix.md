@@ -120,8 +120,16 @@ startup script:
 ./bootstrap-local-dms.ps1 -DatabaseEngine mssql
 ```
 
-To connect to an external SQL Server instead, set
-`DATABASE_CONNECTION_STRING_ADMIN` in `.env` before running the startup script.
+`-DatabaseEngine mssql` runs against the bundled SQL Server container
+(`dms-mssql`), configured by the `.env.mssql` overlay; the local startup scripts
+always register the data store against that container. Pointing the local stack
+at an **external** SQL Server is not supported by these scripts. To run against
+an external or production SQL Server, provision it with the `api-schema-tools`
+CLI and register a data store that targets it through the Configuration Service —
+see [Database
+Provisioning](../platform-dev-guide/utilities/database-provisioning.md) and [API
+Client and Data Store
+Configuration](../platform-dev-guide/configuration/api-client-and-data-store-configuration.md).
 
 ## Common Startup Issues
 
