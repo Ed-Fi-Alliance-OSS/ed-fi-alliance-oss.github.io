@@ -79,14 +79,15 @@ The `DerivativeType` column accepts the following values:
 
 | Value | Description |
 | --- | --- |
-| `ReadReplica` | A read-only replica of the primary data store, used to offload GET request workloads |
-| `Snapshot` | A point-in-time copy of the primary data store, used for consistent change processing by API clients |
+| `ReadReplica` | A read-only replica of the primary data store, intended to offload GET request workloads (not yet used by Ed-Fi API v8.0) |
+| `Snapshot` | A point-in-time copy of the primary data store, intended for consistent change processing by API clients (not yet used by Ed-Fi API v8.0) |
 
 :::info
 
-Snapshot support is planned for a future release. See [Current
-Limitations](../features/changed-record-queries.md#current-limitations)
-for details.
+`ReadReplica` and `Snapshot` derivative support are planned for future releases
+and are not yet consumed by Ed-Fi API v8.0. See [Current
+Limitations](../features/changed-record-queries.md#current-limitations) for
+details.
 
 :::
 

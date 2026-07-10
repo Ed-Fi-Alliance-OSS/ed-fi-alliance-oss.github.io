@@ -113,18 +113,15 @@ To provision the database manually, see
 
 ## SQL Server
 
-To use SQL Server instead of PostgreSQL:
+To use SQL Server instead of PostgreSQL, pass `-DatabaseEngine mssql` to the
+startup script:
 
-1. Set `DMS_DATASTORE=mssql` in `.env`
-2. Provide a `DATABASE_CONNECTION_STRING` pointing to your SQL Server instance
-3. Ensure SQL Server is reachable from the Docker network
+```powershell
+./bootstrap-local-dms.ps1 -DatabaseEngine mssql
+```
 
-:::info
-
-The bundled Docker Compose files use PostgreSQL. SQL Server must be provided
-externally (e.g., a local instance or Azure SQL).
-
-:::
+To connect to an external SQL Server instead, set
+`DATABASE_CONNECTION_STRING_ADMIN` in `.env` before running the startup script.
 
 ## Common Startup Issues
 

@@ -57,10 +57,18 @@ The relevant `.env` variables:
 
 ```ini
 DMS_CONFIG_IDENTITY_PROVIDER=self-contained
-SELF_CONTAINED_OAUTH_TOKEN_ENDPOINT=http://localhost:8081/connect/token
+SELF_CONTAINED_OAUTH_TOKEN_ENDPOINT=http://ed-fi-api-config:8081/connect/token
 SELF_CONTAINED_DMS_JWT_AUTHORITY=http://ed-fi-api-config:8081
 SELF_CONTAINED_DMS_JWT_METADATA_ADDRESS=http://ed-fi-api-config:8081/.well-known/openid-configuration
 ```
+
+:::note
+
+`SELF_CONTAINED_OAUTH_TOKEN_ENDPOINT` is consumed by the Ed-Fi API **inside the
+Docker network** to forward `/oauth/token` proxy requests. Use the container
+hostname (`ed-fi-api-config`), not `localhost`.
+
+:::
 
 ---
 
@@ -106,11 +114,19 @@ The relevant `.env` variables:
 
 ```ini
 DMS_CONFIG_IDENTITY_PROVIDER=keycloak
-KEYCLOAK_OAUTH_TOKEN_ENDPOINT=http://localhost:8045/realms/edfi/protocol/openid-connect/token
+KEYCLOAK_OAUTH_TOKEN_ENDPOINT=http://dms-keycloak:8080/realms/edfi/protocol/openid-connect/token
 KEYCLOAK_DMS_JWT_AUTHORITY=http://dms-keycloak:8080/realms/edfi
 KEYCLOAK_DMS_JWT_METADATA_ADDRESS=http://dms-keycloak:8080/realms/edfi/.well-known/openid-configuration
 KEYCLOAK_PORT=8045
 ```
+
+:::note
+
+`KEYCLOAK_OAUTH_TOKEN_ENDPOINT` is consumed by the Ed-Fi API **inside the
+Docker network**. Use the container hostname (`dms-keycloak:8080`), not
+`localhost:8045`.
+
+:::
 
 See `eng/docker-compose/KEYCLOAK-SETUP.md` in the Ed-Fi API repository for
 Keycloak realm and client configuration details.

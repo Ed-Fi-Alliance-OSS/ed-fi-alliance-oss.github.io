@@ -62,8 +62,8 @@ Use the client credentials to obtain a bearer token from the Configuration
 Service:
 
 ```powershell
-curl -X POST http://localhost:8081/connect/token \
-  -H "Content-Type: application/x-www-form-urlencoded" \
+curl -X POST http://localhost:8081/connect/token `
+  -H "Content-Type: application/x-www-form-urlencoded" `
   -d "grant_type=client_credentials&client_id=<key>&client_secret=<secret>"
 ```
 
@@ -86,7 +86,7 @@ Keycloak token endpoint and setup instructions.
 Use the token to call the Ed-Fi API:
 
 ```powershell
-curl http://localhost:8080/api/data/ed-fi/schools \
+curl http://localhost:8080/api/data/ed-fi/schools `
   -H "Authorization: Bearer <access_token>"
 ```
 

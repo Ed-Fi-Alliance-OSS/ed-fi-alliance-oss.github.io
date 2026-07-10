@@ -18,12 +18,14 @@ replaces the Ed-Fi ODS/API and Ed-Fi Admin API with two new services:
 - **Configuration Service** — implements the Ed-Fi Management API specification
   v3, replacing the Admin API
 
-Ed-Fi API v8.0 is **API-compatible with the ODS/API**: client applications built
-against the ODS/API REST interface continue to work without changes, with one
-important exception — property names in request bodies are now
-**case-sensitive**. See the [Breaking
+Ed-Fi API v8.0 is **API-compatible with the ODS/API** in terms of the data model
+and resource API design. However, client migration is required. Breaking changes
+include **resource URL path changes** (the `v3` version segment is removed),
+**case-sensitive property names**, and a **relocated token endpoint** (now on
+the Configuration Service; the Ed-Fi API retains an `/oauth/token` compatibility
+proxy). See the [Breaking
 Changes](./release-notes.md#ed-fi-api-v80---breaking-changes-from-previous-releases)
-section of the release notes for a full migration checklist.
+section of the release notes for the full migration checklist.
 
 ## Improvements & Enhancements
 

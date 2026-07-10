@@ -27,6 +27,8 @@ Out of the box, the Ed-Fi API ships with the following built-in claim sets:
   organizations and local descriptors).
 - **EducationPreparationProgram** - Provides CRUD permissions on resources from
   the Education Preparation Domain and any TPDM extensions.
+- **FinanceVendor** - Provides CRUD permissions on a set of resources used for
+  financial (Finance domain) data.
 - **RosterVendor** - Provides Read-only permissions on a set of resources used
   for rostering Student and Staff Section data.
 - **SISVendor** - Provides CRUD permissions on the most common resources
@@ -100,7 +102,7 @@ curl -X POST \
 The response includes the new claim set ID in the `Location` response header.
 To start from an existing claim set as a template, use
 `POST /v3/claimSets/copy` with the `originalId` of the claim set to copy and
-the `name` for the new one.
+the `claimSetName` for the new one.
 
 ## Define Claim Set Specific Authorization Strategy Overrides for a Resource Action
 

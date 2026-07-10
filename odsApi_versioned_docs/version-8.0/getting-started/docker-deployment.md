@@ -12,14 +12,31 @@ scripts in the Ed-Fi API repository.
 
 ```powershell
 git clone https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service.git
-cd Data-Management-Service/eng/docker-compose
+cd Data-Management-Service
 ```
 
-## Step 2 — Configure the Environment File
+## Step 2 — Build the Schema Tool
 
-Copy the example environment file:
+The startup script relies on `api-schema-tools` to prepare and hash the database
+schema. Build it from the repository root before starting services:
 
 ```powershell
+dotnet build src/dms/clis/EdFi.DataManagementService.SchemaTools
+```
+
+:::info Prerequisite
+
+The [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0) must be
+installed.
+
+:::
+
+## Step 3 — Configure the Environment File
+
+Move into the Docker Compose directory and copy the example environment file:
+
+```powershell
+cd eng/docker-compose
 Copy-Item .env.example .env
 ```
 
@@ -34,7 +51,7 @@ The defaults work for local development. Key settings you may want to review:
 See [Getting Started — Appendix](getting-started-appendix) for a full
 environment variable reference.
 
-## Step 3 — Start the Services
+## Step 4 — Start the Services
 
 ```powershell
 ./bootstrap-local-dms.ps1
@@ -92,7 +109,7 @@ a clean environment.
 
 :::
 
-## Step 4 — Verify the Services
+## Step 5 — Verify the Services
 
 Once startup completes, confirm the Ed-Fi API is responding:
 

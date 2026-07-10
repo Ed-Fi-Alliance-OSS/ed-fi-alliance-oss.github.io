@@ -19,7 +19,7 @@ repository](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service).
 
 ## Prerequisites
 
-- .NET 8 SDK
+- .NET 10 SDK
 - Repository cloned locally
 
 ## Command Line Arguments

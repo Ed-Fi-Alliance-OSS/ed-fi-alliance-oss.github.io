@@ -481,16 +481,20 @@ curl -H "Authorization: Bearer $TOKEN" \
 **Modify** the `claimsHierarchy` array in the downloaded file. Add any new claim
 set names to the `claimSets` catalog as well.
 
-**Upload** the modified document to replace the active claims hierarchy:
+**Upload** the modified document to replace the active claims hierarchy. The
+endpoint requires the document wrapped in a top-level `claims` property:
 
 ```bash
+jq '{claims: .}' claims.json > claims-upload.json
+
 curl -X POST \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $TOKEN" \
-  --data-binary @claims.json \
+  --data-binary @claims-upload.json \
   http://localhost:8081/management/upload-claims
 ```
 
 The uploaded document must include both the `claimSets` catalog and the
-`claimsHierarchy` array. It atomically replaces the current configuration and
-re-seeds the `ResourceClaim` catalog with any new claim names.
+`claimsHierarchy` array, wrapped as `{"claims": {"claimSets": [...],
+"claimsHierarchy": [...]}}`. It atomically replaces the current configuration
+and re-seeds the `ResourceClaim` catalog with any new claim names.

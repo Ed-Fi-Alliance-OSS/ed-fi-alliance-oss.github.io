@@ -42,6 +42,20 @@ Provider](./identity-provider.md) for the required keys.
   | Example     | `MySecretKey1234567890123456789012`                                                                                                                                                                                                                                          |
   | Description | Key used to decrypt data store connection strings stored in the Configuration Service. Must match `DatabaseSettings:EncryptionKey` in the Configuration Service. Recommended: a 32-character ASCII string. Set via `DMS_CONFIG_DATABASE_ENCRYPTION_KEY` environment variable |
 
+- **`AppSettings:AuthenticationService`**
+
+  |             |                                                                                                                                                                                                                           |
+  | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Example     | `http://ed-fi-api-config:8081/connect/token`                                                                                                                                                                              |
+  | Description | Token endpoint the Ed-Fi API forwards `/oauth/token` proxy requests to. Must use the container-network hostname in Docker deployments. Set via `SELF_CONTAINED_OAUTH_TOKEN_ENDPOINT` or `KEYCLOAK_OAUTH_TOKEN_ENDPOINT` |
+
+- **`ConfigurationServiceSettings:ClientSecret`**
+
+  |             |                                                                                                                                                                                                                              |
+  | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Example     | _(generated secret)_                                                                                                                                                                                                         |
+  | Description | Client secret the Ed-Fi API uses to authenticate to the Configuration Service as the `CMSReadOnlyAccess` client. Must match the secret configured in the Configuration Service. Set via `CONFIG_SERVICE_CLIENT_SECRET` env var |
+
 ### Optional Settings
 
 - **`AppSettings:MultiTenancy`**
