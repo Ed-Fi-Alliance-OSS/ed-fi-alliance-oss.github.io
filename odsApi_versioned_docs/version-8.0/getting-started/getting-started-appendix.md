@@ -141,11 +141,12 @@ If `bootstrap-local-dms.ps1` times out waiting for a service to become healthy:
 2. Check for port conflicts: `netstat -an | grep -E "8080|8081|5435"`
 3. Review container logs: `docker compose logs dms` or
    `docker compose logs config`
-4. Try a clean restart:
+4. Try a clean restart, passing the same flags you used at startup
+   (e.g. `-DatabaseEngine mssql`, `-IdentityProvider keycloak`):
 
 ```powershell
-./bootstrap-local-dms.ps1 -d -v
-./bootstrap-local-dms.ps1
+./bootstrap-local-dms.ps1 -d -v   # add your original flags here
+./bootstrap-local-dms.ps1         # add your original flags here
 ```
 
 ### Schema Fingerprint Mismatch
@@ -155,11 +156,12 @@ database schema does not match the API schema the service loaded — for example
 after upgrading to a new version — the API responds with **HTTP 503** until the
 database is re-provisioned for the current schema. Because the result is cached
 for the process lifetime, resolve it locally with a full reset (which
-re-provisions a fresh database and restarts the services):
+re-provisions a fresh database and restarts the services. Pass the same flags
+you used at startup (e.g. `-DatabaseEngine mssql`, `-IdentityProvider keycloak`):
 
 ```powershell
-./bootstrap-local-dms.ps1 -d -v
-./bootstrap-local-dms.ps1
+./bootstrap-local-dms.ps1 -d -v   # add your original flags here
+./bootstrap-local-dms.ps1          # add your original flags here
 ```
 
 For details, see [Database

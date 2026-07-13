@@ -54,7 +54,7 @@ it does not retrieve existing credentials, and the generated secret cannot be
 recovered afterward. Because the vendor company name ("Smoke Test Vendor") must
 be unique, running it a second time against the same environment fails with an
 HTTP 400. To obtain a fresh credential, either reset the local stack
-(`./start-local-dms.ps1 -d -v`, then re-run the bootstrap) or pass a different
+(`./bootstrap-local-dms.ps1 -d -v`, then re-run it without flags) or pass a different
 `-VendorName`.
 
 :::
@@ -132,7 +132,6 @@ stores](#step-1-create-api-credentials) above — the credential must be
 associated with every data store you intend to reach.
 
 If you receive a 503 response with a message about database provisioning, run
-`bootstrap-local-dms.ps1` again from a clean state (`./start-local-dms.ps1 -d
--v`) — the data store exists but the schema was not provisioned.
+`bootstrap-local-dms.ps1` again from a clean state (`./bootstrap-local-dms.ps1 -d -v`) — the data store exists but the schema was not provisioned.
 
 :::

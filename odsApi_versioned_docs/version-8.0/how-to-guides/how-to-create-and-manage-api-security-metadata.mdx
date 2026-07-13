@@ -470,12 +470,28 @@ array uses the same JSON array format described in [The Security Metadata
 Format](#the-security-metadata-format). Any new claim set referenced in the
 hierarchy must also appear in `claimSets`.
 
+These management endpoints require a Configuration Service bearer token. Write
+operations (`POST /management/upload-claims`, `POST /management/reload-claims`)
+require the `edfi_admin_api/full_access` scope; the read operation
+(`GET /management/current-claims`) accepts `edfi_admin_api/read_only` or
+`edfi_admin_api/full_access`. Obtain a token:
+
+```powershell
+$token = Invoke-RestMethod -Method Post -Uri "http://localhost:8081/connect/token" `
+  -ContentType "application/x-www-form-urlencoded" `
+  -Body @{
+    "grant_type"    = "client_credentials"
+    "client_id"     = "<config-admin-key>"
+    "client_secret" = "<config-admin-secret>"
+    "scope"         = "edfi_admin_api/full_access"
+  }
+```
+
 **Retrieve the current claims** to use as a starting point:
 
 ```powershell
-$headers = @{ Authorization = "Bearer $($token.access_token)" }
-
-Invoke-RestMethod -Uri "http://localhost:8081/management/current-claims" -Headers $headers |
+Invoke-RestMethod -Uri "http://localhost:8081/management/current-claims" `
+  -Headers @{ Authorization = "Bearer $($token.access_token)" } |
   ConvertTo-Json -Depth 100 |
   Set-Content claims.json
 ```

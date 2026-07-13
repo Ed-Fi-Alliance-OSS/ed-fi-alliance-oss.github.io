@@ -111,15 +111,14 @@ fully clean environment.
 
 :::info
 
-Pass the same compose-shape flags you used at startup so teardown targets the
-same containers and volumes. Two common cases:
+Pass the same flags you used at startup so teardown targets the same containers
+and volumes. Two common cases:
 
 - **SQL Server**: `./bootstrap-local-dms.ps1 -d -v -DatabaseEngine mssql` —
-  omitting `-DatabaseEngine` defaults to the PostgreSQL compose shape and leaves
-  the SQL Server data volume behind.
+  omitting `-DatabaseEngine` defaults to PostgreSQL and leaves the SQL Server
+  data volume behind.
 - **Keycloak**: `./bootstrap-local-dms.ps1 -d -v -IdentityProvider keycloak` —
-  omitting `-IdentityProvider` excludes `keycloak.yml` from the down command and
-  leaves the Keycloak data volume behind.
+  omitting `-IdentityProvider` leaves the Keycloak data volume behind.
 
 :::
 
