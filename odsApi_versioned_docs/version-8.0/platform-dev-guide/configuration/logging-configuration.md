@@ -237,16 +237,27 @@ strings:
 
 | `EventId.Id` | `EventName` | `Level` | Meaning |
 | --- | --- | --- | --- |
-| `1228001` | `HttpRequestCompleted` | `Information` | Request completed — includes all 4xx responses |
+| `1228001` | `HttpRequestCompleted` | `Information` (Ed-Fi API); `Information` or `Debug` (Configuration Service, see note) | Request completed — includes all 4xx responses |
 | `1228002` | `HttpRequestFailed` | `Error` | Request failed with a 5xx or unhandled exception |
+
+:::note
+
+The Configuration Service logs `HttpRequestCompleted` at `Debug` level for
+`/.well-known/*` paths (OIDC discovery endpoints). An `Information`-level
+collector will not receive these events. All other paths follow the `Information`
+rule above.
+
+:::
 
 ### RequestLayer (Ed-Fi API only)
 
-The Ed-Fi API emits two log events per external HTTP request: one from the
+The Ed-Fi API emits two log events per resource API request: one from the
 ASP.NET frontend (`RequestLayer = "Frontend"`) and one from the core pipeline
-(`RequestLayer = "Core"`). For request-count dashboards and failure-rate alerts,
-filter to `RequestLayer = "Frontend"` to count only externally visible HTTP
-requests and avoid double-counting.
+(`RequestLayer = "Core"`). Endpoints that are handled directly without entering
+the core pipeline — such as the Discovery and Health endpoints — emit only the
+`Frontend` event. For request-count dashboards and failure-rate alerts, filter
+to `RequestLayer = "Frontend"` to count only externally visible HTTP requests
+and avoid double-counting.
 
 The Configuration Service does not emit `RequestLayer`.
 

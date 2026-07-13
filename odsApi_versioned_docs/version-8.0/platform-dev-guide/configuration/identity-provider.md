@@ -138,7 +138,10 @@ Keycloak realm and client configuration details.
 Switching from one provider to another after initial setup requires
 re-provisioning the identity state:
 
-1. Stop all services and remove volumes: `./start-local-dms.ps1 -d -v`
+1. Stop all services and remove volumes, passing your current identity provider
+   so its named volume is included in the teardown. For example, when switching
+   away from Keycloak: `./bootstrap-local-dms.ps1 -d -v -IdentityProvider
+   keycloak`
 2. Update the `.env` file with the new identity provider settings
 3. Start fresh: `./bootstrap-local-dms.ps1 -IdentityProvider <provider>`
 

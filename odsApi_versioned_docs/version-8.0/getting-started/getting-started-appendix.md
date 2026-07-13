@@ -144,7 +144,7 @@ If `bootstrap-local-dms.ps1` times out waiting for a service to become healthy:
 4. Try a clean restart:
 
 ```powershell
-./start-local-dms.ps1 -d -v
+./bootstrap-local-dms.ps1 -d -v
 ./bootstrap-local-dms.ps1
 ```
 
@@ -158,7 +158,7 @@ for the process lifetime, resolve it locally with a full reset (which
 re-provisions a fresh database and restarts the services):
 
 ```powershell
-./start-local-dms.ps1 -d -v
+./bootstrap-local-dms.ps1 -d -v
 ./bootstrap-local-dms.ps1
 ```
 

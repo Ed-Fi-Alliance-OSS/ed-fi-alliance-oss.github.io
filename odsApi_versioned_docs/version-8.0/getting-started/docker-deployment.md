@@ -95,17 +95,31 @@ for details.
 
 ### Stopping the Services
 
-Teardown is done via `start-local-dms.ps1`:
+Use `bootstrap-local-dms.ps1` to stop the stack started by the same wrapper:
 
 | Command | Effect |
 | --- | --- |
-| `./start-local-dms.ps1 -d` | Stop all services, keep data volumes |
-| `./start-local-dms.ps1 -d -v` | Stop all services and delete all data volumes |
+| `./bootstrap-local-dms.ps1 -d` | Stop all services; keep data volumes and the `.bootstrap` workspace |
+| `./bootstrap-local-dms.ps1 -d -v` | Stop all services, delete data volumes, and remove the `.bootstrap` workspace |
 
 :::warning
 
-The `-v` flag permanently deletes all persisted data. Use it only when you want
-a clean environment.
+`-d -v` permanently deletes all persisted data. Use it only when you want a
+fully clean environment.
+
+:::
+
+:::info
+
+Pass the same compose-shape flags you used at startup so teardown targets the
+same containers and volumes. Two common cases:
+
+- **SQL Server**: `./bootstrap-local-dms.ps1 -d -v -DatabaseEngine mssql` —
+  omitting `-DatabaseEngine` defaults to the PostgreSQL compose shape and leaves
+  the SQL Server data volume behind.
+- **Keycloak**: `./bootstrap-local-dms.ps1 -d -v -IdentityProvider keycloak` —
+  omitting `-IdentityProvider` excludes `keycloak.yml` from the down command and
+  leaves the Keycloak data volume behind.
 
 :::
 
