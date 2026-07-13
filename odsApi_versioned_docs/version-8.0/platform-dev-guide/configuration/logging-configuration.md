@@ -22,7 +22,7 @@ The log level for each service is controlled independently:
 | `FATAL` | Application cannot start or must shut down | Investigate immediately. Check for missing required configuration or resource exhaustion. Report bugs through the [Ed-Fi Community Hub](https://success.ed-fi.org) |
 | `ERROR` | Unexpected error that interrupts service, or an external failure (e.g., database unavailable after retries) | Investigate and resolve the external issue. Report application bugs through the [Ed-Fi Community Hub](https://success.ed-fi.org) |
 | `WARN` | Unexpected condition the system recovered from automatically (e.g., a database retry that succeeded) | Monitor frequency. Frequent warnings may indicate an underlying issue worth investigating |
-| `INFORMATION` | Normal request lifecycle events — method, URL, client ID, response code, duration | Generally no action required |
+| `INFORMATION` | Normal request lifecycle events — method, path, response code, duration, trace ID | Generally no action required |
 | `DEBUG` | Detailed diagnostics, including anonymized request payloads (see [PII Protection](#pii-protection-at-debug-level)) | Use for integration troubleshooting. Do not leave enabled in production |
 
 ## Default Configuration
@@ -30,20 +30,51 @@ The log level for each service is controlled independently:
 ### Production (INFORMATION)
 
 The recommended log level for production deployments. Logs request lifecycle
-events — method, URL, client ID, response code, and duration — without including
+events — method, path, response code, duration, and trace ID — without including
 request or response body content.
 
 ```ini
-LOG_LEVEL=INFORMATION
+LOG_LEVEL=Information
 DMS_CONFIG_LOG_LEVEL=Information
 ```
 
-Sample log output at `INFORMATION` level:
+Both services write structured JSON to the console — one JSON object per log entry.
+Sample output at `INFORMATION` level (formatted for readability):
 
-```text
-[INF] POST /api/data/ed-fi/schools 201 clientId=abc123 correlationId=b9567d36-91c1-4bae-aff5-3fde8367b969 duration=18ms
-[INF] GET /api/data/ed-fi/schools 200 clientId=abc123 correlationId=c1d2e3f4-... duration=5ms
+```json
+{
+  "Timestamp": "2026-06-29T14:23:45.123Z",
+  "Level": "Information",
+  "MessageTemplate": "{EventName}: DMS request completed: {Method} {Path} responded {StatusCode} in {DurationMs} ms with TraceId {TraceId}",
+  "RenderedMessage": "HttpRequestCompleted: DMS request completed: POST /data/ed-fi/schools responded 201 in 18 ms with TraceId 0HN...",
+  "Properties": {
+    "Application": "EdFi.DataManagementService",
+    "EventName": "HttpRequestCompleted",
+    "EventId": { "Id": 1228001, "Name": "HttpRequestCompleted" },
+    "SourceContext": "EdFi.DataManagementService.Frontend.AspNetCore.Infrastructure.LoggingMiddleware",
+    "RequestLayer": "Frontend",
+    "TraceId": "0HN...",
+    "ActivityTraceId": "4bf92f3577b34da6a3ce929d0e0e4736",
+    "SpanId": "00f067aa0ba902b7",
+    "Method": "POST",
+    "Path": "/data/ed-fi/schools",
+    "StatusCode": 201,
+    "DurationMs": 18,
+    "PathBase": ""
+  }
+}
 ```
+
+`ActivityTraceId` and `SpanId` are present only when an ASP.NET `Activity` is active (e.g., when OpenTelemetry tracing is enabled). Failure events use `EventId` `1228002` and `Level` `Error`. The file sink writes the same structured properties but omits `RenderedMessage`.
+
+:::warning
+
+Do not set `Serilog:WriteTo:*:Args:outputTemplate` in a local
+`appsettings.Development.json` override. Serilog's configuration array merging
+causes `outputTemplate` to silently replace the JSON formatter with plain text,
+breaking log collection. Override `MinimumLevel` only.
+
+:::
 
 ### Local Development (DEBUG)
 
@@ -53,7 +84,7 @@ troubleshooting. See [PII Protection](#pii-protection-at-debug-level) for how
 anonymization works.
 
 ```ini
-LOG_LEVEL=DEBUG
+LOG_LEVEL=Debug
 ```
 
 ### Production Troubleshooting
@@ -108,9 +139,13 @@ makes it possible to trace a specific failed request across multiple log lines
 and across service boundaries.
 
 If a request does not include a correlation ID, the Ed-Fi API uses the
-request's trace identifier for the request's lifetime. The header name used to
-pass or read a correlation ID is configurable via the `CORRELATION_ID_HEADER`
-environment variable (default: `correlationid`).
+request's trace identifier for the request's lifetime. The header name used to pass or read a correlation ID is configurable via the
+`CORRELATION_ID_HEADER` environment variable. This is **disabled by default**
+(empty string); set it explicitly to enable header-based extraction:
+
+```ini
+CORRELATION_ID_HEADER=correlationid
+```
 
 :::info
 
@@ -138,13 +173,26 @@ not-found responses) are logged at `Information` level.
 
 ### Example 2: Log entry for the same request
 
-The log entry for the request in Example 1 contains the same correlation ID,
-allowing the two to be linked:
+The log entry for the request in Example 1 contains the same value as `TraceId`,
+linking the structured log event to the error response body:
 
-```text
-[ERR] POST /api/data/ed-fi/schools 400 clientId=abc123
-  correlationId=b9567d36-91c1-4bae-aff5-3fde8367b969 duration=12ms
-  validationErrors={"$.gradeLevels":["gradeLevels is required."]}
+```json
+{
+  "Timestamp": "2026-06-29T14:23:45.123Z",
+  "Level": "Information",
+  "MessageTemplate": "{EventName}: DMS request completed: {Method} {Path} responded {StatusCode} in {DurationMs} ms with TraceId {TraceId}",
+  "RenderedMessage": "HttpRequestCompleted: DMS request completed: POST /data/ed-fi/schools responded 400 in 12 ms with TraceId b9567d36-91c1-4bae-aff5-3fde8367b969",
+  "Properties": {
+    "Application": "EdFi.DataManagementService",
+    "EventName": "HttpRequestCompleted",
+    "EventId": { "Id": 1228001, "Name": "HttpRequestCompleted" },
+    "TraceId": "b9567d36-91c1-4bae-aff5-3fde8367b969",
+    "Method": "POST",
+    "Path": "/data/ed-fi/schools",
+    "StatusCode": 400,
+    "DurationMs": 12
+  }
+}
 ```
 
 ### Specifying the Correlation ID for a Request
@@ -176,3 +224,42 @@ correlationid: b9567d36-91c1-4bae-aff5-3fde8367b969
 
 { ... }
 ```
+
+## Log Collection
+
+Both services emit the same structured request-log contract. Collector rules
+should target structured properties — not parse `RenderedMessage`.
+
+### Event IDs
+
+Use `EventId.Id` to target request lifecycle events without matching on message
+strings:
+
+| `EventId.Id` | `EventName` | `Level` | Meaning |
+| --- | --- | --- | --- |
+| `1228001` | `HttpRequestCompleted` | `Information` | Request completed — includes all 4xx responses |
+| `1228002` | `HttpRequestFailed` | `Error` | Request failed with a 5xx or unhandled exception |
+
+### RequestLayer (Ed-Fi API only)
+
+The Ed-Fi API emits two log events per external HTTP request: one from the
+ASP.NET frontend (`RequestLayer = "Frontend"`) and one from the core pipeline
+(`RequestLayer = "Core"`). For request-count dashboards and failure-rate alerts,
+filter to `RequestLayer = "Frontend"` to count only externally visible HTTP
+requests and avoid double-counting.
+
+The Configuration Service does not emit `RequestLayer`.
+
+### Exception Field
+
+The `Exception` field is present only when the logging middleware itself
+observed an exception. It is **omitted entirely** — not set to `null` — when a
+5xx status is produced without an observable exception (for example, when a
+downstream pipeline returned a 5xx status code). Collector rules must treat
+`Exception` as optional.
+
+### HTTP 413 Responses
+
+Oversized request body rejections (HTTP 413) are emitted as
+`HttpRequestCompleted` events, not `HttpRequestFailed`, because they are handled
+as client errors. The `StatusCode` property carries `413`.

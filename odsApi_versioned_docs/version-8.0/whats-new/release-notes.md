@@ -138,7 +138,7 @@ binary installer or Windows Service.
 | | ODS/API | Ed-Fi API v8 |
 | --- | --- | --- |
 | Deployment | Binary installer, Windows Service, IIS, Docker | Docker Compose |
-| Database setup | PowerShell scripts, Visual Studio | `api-schema-tools` CLI or `DeployDatabaseOnStartup` |
+| Database setup | PowerShell scripts, Visual Studio | `api-schema-tools` CLI (Ed-Fi API resource database); `DeployDatabaseOnStartup` setting (Configuration Service database only) |
 | Admin interface | Admin App (UI) or Admin API | Configuration Service API |
 
 #### No In-Place Database Migration
