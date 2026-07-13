@@ -114,9 +114,9 @@ environment variable (default: `correlationid`).
 
 :::info
 
-Requests that result in an error response (HTTP 4xx or 5xx) generate
-corresponding log entries at `ERROR` level, making it straightforward to find
-failures in log output.
+Requests that result in an HTTP 5xx response are logged at `ERROR` level.
+Requests that result in an HTTP 4xx response (including validation errors and
+not-found responses) are logged at `Information` level.
 
 :::
 

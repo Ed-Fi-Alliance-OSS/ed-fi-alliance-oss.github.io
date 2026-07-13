@@ -68,15 +68,17 @@ for configuration details.
 
 Profiles (both readable and writable) are supported in Ed-Fi API v8.0. Profiles
 allow implementers to define data policies that restrict the resources and
-properties visible to a specific API client type. Profiles are authored in the
-Configuration Service and applied to applications via claim sets.
+properties visible to a specific API client application. Profiles are authored
+in the Configuration Service and assigned directly to applications. See [API
+Profiles](../platform-dev-guide/security/api-profiles.md) for details.
 
 ### Changed Record Query
 
 The changed record query endpoints (`/availableChangeVersions`, `/deletes`,
 `/keyChanges`) are supported in Ed-Fi API v8.0. These endpoints allow API
 clients to efficiently retrieve only records that have changed since their last
-synchronization.
+synchronization. See [Changed Record Queries](../platform-dev-guide/features/changed-record-queries.md)
+for details.
 
 ### Configuration Service Replaces Admin API
 

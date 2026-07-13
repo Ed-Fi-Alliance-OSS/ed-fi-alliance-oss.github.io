@@ -133,9 +133,19 @@ for a complete example. A minimal fragment looks like this:
 
 ### Running Transform
 
+:::info
+
+The `--input` filename is resolved relative to the `ClaimSetFiles/` subdirectory
+of the tool's working directory (`eng/CmsHierarchy/ClaimSetFiles/`). Place your
+fragment file there before running, or supply an absolute path to read from
+another location.
+
+:::
+
 Apply a single extension fragment:
 
 ```powershell
+# Place my-extension-claims.json in eng/CmsHierarchy/ClaimSetFiles/ first
 dotnet run --no-launch-profile `
   --command Transform `
   --input my-extension-claims.json `
