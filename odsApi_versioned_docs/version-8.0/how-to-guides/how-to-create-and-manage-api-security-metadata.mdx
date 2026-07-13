@@ -470,14 +470,12 @@ array uses the same JSON array format described in [The Security Metadata
 Format](#the-security-metadata-format). Any new claim set referenced in the
 hierarchy must also appear in `claimSets`.
 
-These management endpoints are not authenticated — they are gated solely by
-`DMS_CONFIG_DANGEROUSLY_ENABLE_UNRESTRICTED_CLAIMS_LOADING` (another reason to
-keep it disabled outside local development), so no bearer token is required.
-
 **Retrieve the current claims** to use as a starting point:
 
 ```powershell
-Invoke-RestMethod -Uri "http://localhost:8081/management/current-claims" |
+$headers = @{ Authorization = "Bearer $($token.access_token)" }
+
+Invoke-RestMethod -Uri "http://localhost:8081/management/current-claims" -Headers $headers |
   ConvertTo-Json -Depth 100 |
   Set-Content claims.json
 ```
@@ -495,6 +493,7 @@ $body = @{ claims = $claims } | ConvertTo-Json -Depth 100
 
 Invoke-RestMethod -Method Post `
   -Uri "http://localhost:8081/management/upload-claims" `
+  -Headers @{ Authorization = "Bearer $($token.access_token)" } `
   -ContentType "application/json" `
   -Body $body
 ```
