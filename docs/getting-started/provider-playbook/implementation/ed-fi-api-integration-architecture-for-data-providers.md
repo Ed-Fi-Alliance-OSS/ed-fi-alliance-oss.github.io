@@ -133,4 +133,4 @@ POST and PUT calls should run in dependency order and DELETE calls should run in
 
 Leveraging an architecture as described in this knowledgebase article can provide you with an Ed-Fi API integration that is efficient, does not make unnecessary API calls, and runs in a such a way where your application’s production system is not impacted (using an orchestrator).
 
-We hope this article has helped you understand how to approach architecting an Ed-Fi API integration for your application. For further reading on best practices related to interfacing with the Ed-Fi API, we recommend you read our article [Best Practices - API Integration](https://edfi.atlassian.net/wiki/display/EDFICERT/Best+Practices+-+API+Integration).
+We hope this article has helped you understand how to approach architecting an Ed-Fi API integration for your application. For further reading on best practices related to interfacing with the Ed-Fi API, we recommend you read our article [Best Practices - API Integration](./best-practices-api-integration.md).
