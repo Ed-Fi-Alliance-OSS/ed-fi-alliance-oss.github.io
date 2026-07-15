@@ -11,12 +11,12 @@ repository.
 ## Docker Images
 
 * [Ed-Fi API v8.0.0 Docker
-  Images](./getting-started/package-releases#ed-fi-api-v800-docker-images)
+  Images](./getting-started/package-releases.md#ed-fi-api-v800-docker-images)
 
 ## Package Downloads
 
 * [Ed-Fi API v8.0.0
-  Packages](./getting-started/package-releases#ed-fi-api-v800-packages)
+  Packages](./getting-started/package-releases.md#ed-fi-api-v800-packages)
 
 ## Source & Code Downloads
 

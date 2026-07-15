@@ -11,7 +11,7 @@ extensions makes up the **effective API schema**. Provisioning creates the
 tables, indexes, triggers, sequences, and authorization structures that back the
 Ed-Fi Resources and Descriptors APIs.
 
-Ed-Fi API v8.0 uses two databases, or two schemas within a single database (see
+Ed-Fi API v8 uses two databases, or two schemas within a single database (see
 [Getting Started -
 Appendix](../../getting-started/getting-started-appendix.md)), and each is
 provisioned differently:
@@ -46,7 +46,7 @@ use for production or other non-scripted deployments.
 
 `api-schema-tools` is published as a .NET global tool on the Ed-Fi Azure
 Artifacts feed. See [Package
-Releases](../../getting-started/package-releases#ed-fi-api-v800-packages)
+Releases](../../getting-started/package-releases.md#ed-fi-api-v800-packages)
 for the current published version.
 
 ```powershell

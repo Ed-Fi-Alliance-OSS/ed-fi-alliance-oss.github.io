@@ -16,14 +16,14 @@ database and a companion REST API:
   or PostgreSQL as a database platform, and the API is written in C#.
 - **Ed-Fi API** (v8 and later) is the next-generation platform. It is not an
   incremental update to the ODS / API, but instead replaces the Ed-Fi ODS / API
-  and Admin API with two new services, the Ed-Fi API and a Configuration
+  and ODS Admin API with two new services, the Ed-Fi API and a Configuration
   Service, built on a new relational storage model (also on SQL Server or
   PostgreSQL) and deployed using Docker images.
 
 Both platforms are vendor neutral, meaning that the client applications may be
-written in any language. See the [Ed-Fi ODS/API and Ed-Fi API v8
-FAQ](./0-roadmap/api-faq.md) for a detailed comparison, roadmap, and migration
-timeline.
+written in any language. See the
+[Ed-Fi ODS/API and Ed-Fi API v8 FAQ](./0-roadmap/api-faq.md) for a detailed
+comparison, roadmap, and migration timeline.
 
 Please see the
 [Ed-Fi Technology Suite Supported Versions](./0-roadmap/supported-versions.md)
@@ -34,6 +34,6 @@ Use the dropdown version control below to select which platform and version's
 documentation you wish to view. Both the legacy Ed-Fi ODS / API (7.x) and the
 new Ed-Fi API (8.x) are available:
 
-import { OdsApiDropDown } from '@site/src/components/VersionDropDown';
+import { EdFiApiDropDown } from '@site/src/components/VersionDropDown';
 
-<OdsApiDropDown />
+<EdFiApiDropDown />

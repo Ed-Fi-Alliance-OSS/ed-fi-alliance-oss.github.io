@@ -49,8 +49,8 @@ function Main() {
               managing educational data through a REST-inspired HTTP interface.
               It enables seamless data exchange and supports various educational
               applications. Explore the{' '}
-              <Link to="/reference/ed-fi-api">Ed-Fi ODS/API</Link> or the{' '}
-              <Link to="/reference/ed-fi-api/8.0">Ed-Fi API v8</Link>.
+              <Link to="/reference/ed-fi-api/">Ed-Fi ODS/API</Link> or the{' '}
+              <Link to="/reference/ed-fi-api/8.0/">Ed-Fi API v8</Link>.
             </p>
             <h2>Ed-Fi OneRoster Service</h2>
             <p>

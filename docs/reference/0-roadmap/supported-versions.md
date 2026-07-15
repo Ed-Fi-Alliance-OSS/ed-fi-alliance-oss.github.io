@@ -115,10 +115,10 @@ This is the future replacement for the Ed-Fi ODS/API. See
 [Ed-Fi ODS/API and Ed-Fi API v8 FAQ](./api-faq.md) for more
 information.
 
-| Version                          | Timeline                                | Data Standard(s) |
-| -------------------------------- | --------------------------------------- | ---------------- |
-| [8.0](/reference/ed-fi-api/8.0)  | Released. Target school year: 2027-2028 | 5.2.0, 6.1       |
-| 8.1                              | Releasing November 2026                 | 5.2.0, 6.1       |
+| Version                         | Timeline                                | Data Standard(s) |
+| ------------------------------- | --------------------------------------- | ---------------- |
+| [8.0](/reference/ed-fi-api/8.0) | Released. Target school year: 2027-2028 | 5.2.0, 6.1.0     |
+| 8.1                             | Releasing November 2026                 | 5.2.0, 6.1.0     |
 
 ## Tools
 

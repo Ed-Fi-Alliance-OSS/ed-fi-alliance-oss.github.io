@@ -70,9 +70,12 @@ function VersionDropDown(product, versions) {
   );
 }
 
-function OdsApiDropDown() {
+function EdFiApiDropDown() {
   return VersionDropDown('Ed-Fi API', edFiApi);
 }
+
+// Backward-compatible alias; prefer EdFiApiDropDown in new code.
+const OdsApiDropDown = EdFiApiDropDown;
 
 function DataStandardDropDown() {
   return VersionDropDown('Data Standard', dataStandard);
@@ -81,7 +84,7 @@ function DataStandardDropDown() {
 function SideBarVersionDropDown() {
   const { pathname } = useLocation();
   if (pathname.includes('/ed-fi-api/')) {
-    return OdsApiDropDown();
+    return EdFiApiDropDown();
   }
   else if (pathname.includes('/data-standard/')) {
     return DataStandardDropDown();
@@ -91,4 +94,4 @@ function SideBarVersionDropDown() {
   }
 }
 
-export { VersionDropDown, OdsApiDropDown, SideBarVersionDropDown, DataStandardDropDown };
+export { VersionDropDown, EdFiApiDropDown, OdsApiDropDown, SideBarVersionDropDown, DataStandardDropDown };
