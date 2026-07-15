@@ -27,14 +27,14 @@ the API.
 
 :::
 
-*   [Installing the Application](#installing-the-application)
-*   [Running the Application](#running-the-application)
-    *   [As a Dotnet Tool](#as-a-dotnet-tool)
-    *   [Using Dotnet Run on the Project](#using-dotnet-run-on-the-project)
-    *   [Verbs](#verbs)
-    *   [Arguments](#arguments)
-    *   [Examples](#examples)
-    *   [Npgsql Connection String Encryption](#npgsql-connection-string-encryption)
+* [Installing the Application](#installing-the-application)
+* [Running the Application](#running-the-application)
+  * [As a Dotnet Tool](#as-a-dotnet-tool)
+  * [Using Dotnet Run on the Project](#using-dotnet-run-on-the-project)
+  * [Verbs](#verbs)
+  * [Arguments](#arguments)
+  * [Examples](#examples)
+  * [Npgsql Connection String Encryption](#npgsql-connection-string-encryption)
 
 ## Installing the Application
 
@@ -121,9 +121,9 @@ Verbs describe the action that the tool needs to take.
 | --- | --- | --- | --- |
 | \-d | \--database | no (default=Ods) | Database to install (ODS, Admin, or Security) |
 | \-e | \--engine | yes | Database engine type (SqlServer or PostgreSql) |
-| \-c | \--connectionString | yes | Full SQL Server or PostgreSQL connection string. *This will install the scripts into the specified database.* |
+| \-c | \--connectionString | yes | Full SQL Server or PostgreSQL connection string. _This will install the scripts into the specified database._ |
 | \-t | \--timeOut | no (default=60) | Connection time out in seconds |
-| \-p | \--filePaths | no  | Comma-separated list of base paths containing files to install<br/><br/> [!WARNING]<br/> The application will install all files directly in `<basePath>\Artifacts\<engine>\Structure\<database>\`  and `<basePath>\``Artifacts\<engine>\Data\<database>` . Files in sub-directories are treated as features, to be installed with `--features.` |
+| \-p | \--filePaths | no  | Comma-separated list of base paths containing files to install<br/><br/> WARNING: The application will install all files directly in `<basePath>\Artifacts\<engine>\Structure\<database>\`  and `<basePath>\``Artifacts\<engine>\Data\<database>` . Files in sub-directories are treated as features, to be installed with `--features.` |
 | \-f | \--features | no  | Optional features to install, as comma-separated list |
 
 ### Examples
@@ -148,32 +148,32 @@ For more information on connection string formats, see:
 #### Ex: SQL Server with Minimal Arguments
 
 ```powershell
-EdFi.Db.Deploy.exe deploy 
-    --engine SqlServer 
+EdFi.Db.Deploy.exe deploy
+    --engine SqlServer
     --connectionString "Server=localhost; Database=EdFi_Ods_Empty_Template; Integrated Security=True;" `
-    --filePaths 
-        "Ed-Fi-Ods\" 
+    --filePaths
+        "Ed-Fi-Ods\"
         "Ed-Fi-ODS\Application\EdFi.Ods.Standard"
 ```
 
 #### Ex: Test If Deployment Needed
 
 ```powershell
-EdFi.Db.Deploy.exe whatif 
+EdFi.Db.Deploy.exe whatif
     --engine SqlServer
-    --connectionString "Server=localhost; Database=EdFi_Ods_Empty_Template; Integrated Security=True;" 
-    --filePaths 
-        "Ed-Fi-Ods\" 
+    --connectionString "Server=localhost; Database=EdFi_Ods_Empty_Template; Integrated Security=True;"
+    --filePaths
+        "Ed-Fi-Ods\"
         "Ed-Fi-ODS\Application\EdFi.Ods.Standard"
 ```
 
 #### Ex: SQL Server Install with Extensions
 
 ```powershell
-EdFi.Db.Deploy.exe deploy 
-    --engine SqlServer 
-    --connectionString "Server=localhost; Database=EdFi_Ods_Empty_Template; Integrated Security=True;" 
-    --filePaths 
+EdFi.Db.Deploy.exe deploy
+    --engine SqlServer
+    --connectionString "Server=localhost; Database=EdFi_Ods_Empty_Template; Integrated Security=True;"
+    --filePaths
         "Ed-Fi-Ods\"
         "Ed-Fi-ODS\Application\EdFi.Ods.Standard"
         "Ed-Fi-Ods-Implementation\Application\EdFi.Ods.Extensions.TPDM"
@@ -183,24 +183,24 @@ EdFi.Db.Deploy.exe deploy
 #### Ex: SQL Server with Minimal Arguments, Admin database
 
 ```powershell
-EdFi.Db.Deploy.exe deploy 
-    --database Admin 
-    --engine SqlServer 
+EdFi.Db.Deploy.exe deploy
+    --database Admin
+    --engine SqlServer
     --connectionString "Server=localhost; Database=EdFi_Admin; Integrated Security=True;"
-    --filePaths 
-        "Ed-Fi-Ods\" 
-        "Ed-Fi-ODS-Implementation\" 
+    --filePaths
+        "Ed-Fi-Ods\"
+        "Ed-Fi-ODS-Implementation\"
         "Ed-Fi-ODS\Application\EdFi.Ods.Standard"
 ```
 
 #### Ex: SQL Server with Optional Arguments
 
 ```powershell
-EdFi.Db.Deploy.exe deploy 
-    --engine SqlServer 
-    --connectionString "Server=localhost; Database=EdFi_Ods_Empty_Template; Integrated Security=True;" 
-    --filePaths 
-        "Ed-Fi-Ods\" 
+EdFi.Db.Deploy.exe deploy
+    --engine SqlServer
+    --connectionString "Server=localhost; Database=EdFi_Ods_Empty_Template; Integrated Security=True;"
+    --filePaths
+        "Ed-Fi-Ods\"
         "Ed-Fi-ODS\Application\EdFi.Ods.Standard"
     --features "Changes", "RecordOwnership"
 ```
@@ -208,23 +208,23 @@ EdFi.Db.Deploy.exe deploy
 #### Ex: PostgreSQL with Minimal Arguments
 
 ```powershell
-EdFi.Db.Deploy.exe deploy 
-    --engine PostgreSql 
+EdFi.Db.Deploy.exe deploy
+    --engine PostgreSql
     --connectionString "Host=localhost; Port=5432; Database=EdFi_Ods_Empty_Template; username=postgres; password=docker;"
-    --filePaths 
-        "Ed-Fi-Ods\" 
+    --filePaths
+        "Ed-Fi-Ods\"
         "Ed-Fi-ODS\Application\EdFi.Ods.Standard"
 ```
 
 #### Ex: PostgreSQL on Alternate Port with Optional Arguments
 
 ```powershell
-EdFi.Db.Deploy.exe deploy 
-    --engine PostgreSql 
+EdFi.Db.Deploy.exe deploy
+    --engine PostgreSql
     --connectionString "Host=localhost; Port=1234; Database=EdFi_Ods_Empty_Template; username=postgres; password=docker;"
     --timeOut 360
-    --filePaths 
-        "Ed-Fi-Ods\" 
+    --filePaths
+        "Ed-Fi-Ods\"
         "Ed-Fi-ODS\Application\EdFi.Ods.Standard"
 ```
 
