@@ -2,19 +2,11 @@
 sidebar_position: 0
 ---
 
-# Ed-Fi API v8 (Upcoming)
+# Ed-Fi API v8
 
-:::warning Upcoming Release
-
-Ed-Fi API v8 is under active development and is not yet available for production
-use. Documentation will be expanded as the release approaches.
-
-:::
-
-The Ed-Fi Alliance is developing **Ed-Fi API v8** as the next-generation
-platform for data integration and management. It is designed to be a fully
-compatible replacement for the current ODS/API Platform, built on a modern
-architecture.
+**Ed-Fi API v8** is the next-generation platform for data integration and
+management. It is designed to be a fully compatible replacement for the current
+ODS/API Platform, built on a modern architecture.
 
 The Ed-Fi Alliance plans to fully replace the ODS/API Platform with Ed-Fi API v8
 by the 2029–2030 school year. The ODS/API Platform will continue to receive

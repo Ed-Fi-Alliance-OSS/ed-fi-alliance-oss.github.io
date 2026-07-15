@@ -5,9 +5,9 @@ description: Reference for the CmsHierarchy tool, which converts ODS/API XML sec
 
 # CmsHierarchy Tool
 
-The CmsHierarchy tool is a .NET command-line utility in the DMS repository that
-helps prepare and transform the JSON security metadata used by the Ed-Fi API
-Configuration Service. It provides two commands:
+The CmsHierarchy tool is a .NET command-line utility in the source code
+repository that helps prepare and transform the JSON security metadata used by
+the Ed-Fi API Configuration Service. It provides two commands:
 
 | Command | Purpose |
 | --- | --- |
