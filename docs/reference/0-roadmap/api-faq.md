@@ -1,13 +1,12 @@
 # Ed-Fi ODS/API and Ed-Fi API v8 FAQ
 
-[Ed-Fi API v8.0](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service)
-(formerly the Ed-Fi Data Management Service) has been released to enhance data
-integration and management capabilities for educational agencies. Designed to
-be robust and flexible, Ed-Fi API v8 addresses the evolving needs of the Ed-Fi
-community. The Ed-Fi Alliance plans to fully replace the current ODS/API
-Platform with Ed-Fi API v8 by the 2029-2030 school year. In the meantime, the
-Alliance remains committed to supporting the ODS/API Platform through the
-2028-2029 school year.
+[Ed-Fi API v8.0](/reference/ed-fi-api/8) (formerly the Ed-Fi Data Management
+Service) has been released to enhance data integration and management
+capabilities for educational agencies. Designed to be robust and flexible, Ed-Fi
+API v8 addresses the evolving needs of the Ed-Fi community. The Ed-Fi Alliance
+plans to fully replace the current ODS/API Platform with Ed-Fi API v8 by the
+2029-2030 school year. In the meantime, the Alliance remains committed to
+supporting the ODS/API Platform through the 2028-2029 school year.
 
 ## Roadmap
 

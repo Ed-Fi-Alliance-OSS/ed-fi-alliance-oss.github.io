@@ -7,7 +7,7 @@ import { useLocation } from '@docusaurus/router';
 
 const edFiApi = [
   {
-    path: '/reference/ed-fi-api/8.0/',
+    path: '/reference/ed-fi-api/8/',
     number: '8.0 (Latest)',
   },
   {
