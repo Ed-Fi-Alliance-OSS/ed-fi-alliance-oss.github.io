@@ -126,7 +126,11 @@ const config = {
           },
           7.2: { banner: 'unmaintained', badge: true, path: '7.2' },
           7.3: { banner: 'none', badge: true },
-          '8.0': { banner: 'unreleased', badge: true, path: '8.0' },
+          8: {
+            banner: 'none',
+            badge: true,
+            path: '8',
+          },
         },
       },
     ],

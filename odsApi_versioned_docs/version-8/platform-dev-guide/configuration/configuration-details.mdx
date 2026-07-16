@@ -23,10 +23,10 @@ Provider](./identity-provider.md) for the required keys.
 
 - **`AppSettings:Datastore`**
 
-  |             |                                                                          |
-  | ----------- | ------------------------------------------------------------------------ |
-  | Example     | `postgresql`                                                             |
-  | Description | Primary database engine for the DMS. Valid values: `postgresql`, `mssql` |
+  |             |                                                                                |
+  | ----------- | ------------------------------------------------------------------------------ |
+  | Example     | `postgresql`                                                                   |
+  | Description | Primary database engine for the Ed-Fi API. Valid values: `postgresql`, `mssql` |
 
 - **`ConfigurationServiceSettings:BaseUrl`**
 
@@ -154,7 +154,7 @@ Provider](./identity-provider.md) for the required keys.
   |             |                                                                                       |
   | ----------- | ------------------------------------------------------------------------------------- |
   | Default     | `true`                                                                                |
-  | Description | Enables TTL-based automatic refresh of the cached data store configuration from the Configuration Service. When `true`, DMS re-fetches data store settings once a cache entry is older than `DataStoreCacheExpirationSeconds`, so changes made in the Configuration Service propagate without a restart. When `false`, the cached configuration is kept until the next explicit reload |
+  | Description | Enables TTL-based automatic refresh of the cached data store configuration from the Configuration Service. When `true`, Ed-Fi API re-fetches data store settings once a cache entry is older than `DataStoreCacheExpirationSeconds`, so changes made in the Configuration Service propagate without a restart. When `false`, the cached configuration is kept until the next explicit reload |
 
 - **`AppSettings:PathBase`**
 

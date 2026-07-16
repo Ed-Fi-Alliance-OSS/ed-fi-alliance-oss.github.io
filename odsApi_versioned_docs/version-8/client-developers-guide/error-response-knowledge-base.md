@@ -2691,7 +2691,7 @@ Content-Type: application/json; charset=utf-8
 
 ### urn:ed-fi:api:optimistic-lock-failed
 
-The only occurs when opting into the eTag feature. First, the API client must
+This only occurs when opting into the eTag feature. First, the API client must
 have retrieved a record by ID or by any query. The response body will contain an
 `_etag` property. That `_etag` value can then be used in a `If-Match` header
 on a PUT request. If a different API client updates the resource before your

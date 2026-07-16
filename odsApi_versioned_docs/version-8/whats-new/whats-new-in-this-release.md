@@ -85,12 +85,12 @@ for details.
 The Ed-Fi Admin API is replaced by the **Configuration Service**, which
 implements the [Ed-Fi Management API specification
 v3](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-API-Specifications/tree/main/api-specifications/management).
-All platform administration — managing vendors, applications, API client
-credentials, claim sets, and data stores — is performed through the
+All platform administration tasks, including managing vendors, applications, API
+client credentials, claim sets, and data stores, are performed through the
 Configuration Service API.
 
 The Configuration Service uses the same database engine (PostgreSQL or SQL
-Server) as the DMS and runs as a separate containerized service.
+Server) as the Ed-Fi API and runs as a separate containerized service.
 
 ### Self-Contained Identity Provider
 
@@ -108,9 +108,9 @@ details.
 ### Docker-Based Deployment
 
 Ed-Fi API v8.0 is distributed as Docker images and deployed using Docker
-Compose. The DMS repository includes startup scripts and a reference
-`docker-compose.yml` that bring up DMS, Configuration Service, and a PostgreSQL
-database with a single command.
+Compose. The Ed-Fi API repository includes startup scripts and a reference
+`docker-compose.yml` that bring up the Ed-Fi API, Configuration Service, and a
+PostgreSQL database with a single command.
 
 There is no binary installer or Windows Service at this time. See [Getting
 Started](../getting-started/readme.md) for deployment instructions.
