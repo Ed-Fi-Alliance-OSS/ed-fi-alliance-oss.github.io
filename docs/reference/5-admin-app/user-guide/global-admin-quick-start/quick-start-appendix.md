@@ -6,7 +6,7 @@ sidebar_position: 3
 
 ## Environment Variable Reference
 
-The `.env` file in the repository's `quick-start/` folder configures all three
+The `.env` file in the repository's `quick-start/` folder configures all the
 scripts. Copy
 [`.env.example`](https://github.com/Ed-Fi-Exchange-OSS/Admin-App-Installation-Scripts/blob/main/quick-start/.env.example)
 to `.env` and edit as needed before running `run.ps1`. The defaults match the
@@ -59,8 +59,25 @@ Used by `bootstrap.ps1` to seed the machine user and by `cleanup.ps1`.
 | `ADMIN_API_URL` | `https://localhost/AdminApi` | ODS Admin API URL |
 | `ODS_API_DISCOVERY_URL` | `https://localhost/WebApi` | ODS/API discovery URL |
 | `TENANT_NAME` | `default` | Ed-Fi tenant to create under the environment |
-| `ODSS_JSON` | _(two sample instances)_ | JSON array of ODS instances to attach; ids must match `EdFi_Admin.dbo.OdsInstances` on the target ODS/API |
+| `ODSS_JSON` | _(two sample instances)_ | JSON array of ODS instances to attach; ids **and names** must match existing rows in `EdFi_Admin.dbo.OdsInstances` on the target ODS/API — the scripts do not create or correct them (see [Set Up the ODS Instances](run-the-quick-start#set-up-the-ods-instances-odss_json)) |
 | `SKIP_CERTIFICATE_CHECK` | `true` | `true`: skip TLS validation (local self-signed certificates) |
+
+### Claim set copies (EdFi_Security)
+
+Used by `copy-claimsets.ps1` to copy the built-in claim sets in the ODS/API's
+`EdFi_Security` database. The connection reuses `DB_ENGINE`, `SA_PASSWORD`, and
+the `POSTGRES_*` values above; only the settings below are specific to this
+step.
+
+| Variable | Default | Description |
+| --- | --- | --- |
+| `COPY_CLAIMSETS` | `true` | `false`: skip the claim set copy step entirely |
+| `CLAIMSET_NAMES` | _(empty = every built-in claim set)_ | Claim sets to copy, semicolon-separated; blank copies all built-ins except internal-use ones (e.g. `Bootstrap Descriptors and EdOrgs`) |
+| `CLAIMSET_PREFIX` | `"AA "` | Prefix for the copies; quote it to keep the trailing space |
+| `SECURITY_DATABASE_NAME` | `EdFi_Security` | Security database name |
+| `SECURITY_SQL_SERVER` | `tcp:localhost,1433` | SQL Server hosting `EdFi_Security` |
+| `SECURITY_USE_INTEGRATED_SECURITY` | `false` | `true`: Windows integrated authentication (`SA_PASSWORD` not needed) |
+| `SECURITY_POSTGRES_CONTAINER` | `ed-fi-db-admin` | With `USE_POSTGRES_DOCKER=true`: the ODS stack's admin/security db container |
 
 ## Finding your token endpoint
 
@@ -84,7 +101,8 @@ $disco.token_endpoint                          # use this as TOKEN_URL
 | Option | Purpose |
 | --- | --- |
 | `-EnvFile <path>` | Use a different env file (default: `./.env`) |
-| `-SkipBootstrap` | Skip `bootstrap.ps1` (IdP client + machine-user seed) and only run `quick-start.ps1` |
+| `-SkipBootstrap` | Skip `bootstrap.ps1` (IdP client + machine-user seed) |
+| `-SkipClaimsets` | Skip `copy-claimsets.ps1` (built-in claim set copies in `EdFi_Security`) |
 
 ### cleanup.ps1
 
@@ -95,23 +113,27 @@ parameter passed explicitly overrides the `.env` value.
 | --- | --- |
 | `-Force` | Skip the confirmation prompt (automation) |
 | `-EnvFile <path>` | Use a different env file (default: `./.env`) |
-| `-EnvironmentName` / `-TeamName` / `-MachineUsername` | Override the names to delete |
-| `-DbEngine`, `-DatabaseName`, `-SaPassword`, `-PostgresAppPassword`, … | Override the database connection |
+| `-SkipClaimsets` | Leave the claim set copies in `EdFi_Security` (e.g. an application still uses one) |
+| `-EnvironmentName` / `-TeamName` / `-MachineUsername` / `-ClaimSetNames` | Override the names to delete |
+| `-DbEngine`, `-DatabaseName`, `-SaPassword`, `-PostgresAppPassword`, … | Override the Admin App database connection |
+| `-SecuritySqlServer` | Override the SQL Server hosting `EdFi_Security` (everything else reuses the database values above and the `SECURITY_*` `.env` settings) |
 
 ### Running the scripts directly
 
-`bootstrap.ps1` and `quick-start.ps1` are plain parameter-driven scripts —
-`run.ps1` only maps `.env` values onto their parameters. To run either one
-directly (for example, to provision a second environment with different
-values), see its comment-based help:
+`bootstrap.ps1`, `quick-start.ps1`, and `copy-claimsets.ps1` are plain
+parameter-driven scripts — `run.ps1` only maps `.env` values onto their
+parameters. To run one directly (for example, to provision a second
+environment with different values, or to copy additional claim sets), see its
+comment-based help:
 
 ```powershell
 Get-Help ./bootstrap.ps1 -Full
 Get-Help ./quick-start.ps1 -Full
+Get-Help ./copy-claimsets.ps1 -Full
 ```
 
-Both scripts are idempotent: re-runs update or reuse existing resources instead
-of duplicating them.
+All the scripts are idempotent: re-runs update, reuse, or skip existing
+resources instead of duplicating them.
 
 ## Troubleshooting
 
@@ -130,7 +152,18 @@ of duplicating them.
   membership automatically) or `PUT` the membership's `roleId` to 6.
 - **Empty ODS instances list.** The ids in `ODSS_JSON` must exist in
   `EdFi_Admin.dbo.OdsInstances` on the target ODS/API; otherwise the sync finds
-  nothing to attach.
+  nothing to attach. Query the table and use its real `OdsInstanceId` values —
+  see
+  [Set Up the ODS Instances](run-the-quick-start#set-up-the-ods-instances-odss_json).
+- **`ODS instance "<name>" does not exist in Admin API` when creating an
+  application.** The Admin App matches the environment's ODS against the Admin
+  API's `GET /v2/odsInstances` list **by name**, and that list comes from
+  `EdFi_Admin.dbo.OdsInstances`. The named instance is missing from that table,
+  or its `Name` differs from the `name` in `ODSS_JSON`. Check with
+  `SELECT OdsInstanceId, Name FROM dbo.OdsInstances` against `EdFi_Admin`; if
+  the row is missing, create it (see
+  [Set Up the ODS Instances](run-the-quick-start#set-up-the-ods-instances-odss_json)),
+  restart the ODS/API, and make sure `ODSS_JSON` uses the exact same name.
 - **`/auth/me` returns 401 with `"Token claim validation failed"`.** The token's
   `iss` does not equal the Admin App's configured `AUTH0_CONFIG_SECRET.ISSUER`,
   or its `aud` does not include `MACHINE_AUDIENCE`. Mint the token from the
