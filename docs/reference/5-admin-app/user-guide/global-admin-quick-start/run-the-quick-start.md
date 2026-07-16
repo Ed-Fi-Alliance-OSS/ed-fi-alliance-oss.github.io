@@ -41,11 +41,11 @@ reference.
 
 ### Set Up the ODS Instances (`ODSS_JSON`)
 
-The scripts do **not** create ODS instances. Every entry in `ODSS_JSON` must
-match a real row in the `dbo.OdsInstances` table of the **`EdFi_Admin`**
-database on the target ODS/API — by `id` **and** by `name` — because when an
-application is created, the Admin App looks the instance up in the Admin API
-**by name**, and that list comes straight from this table. Set the table up
+The scripts do **not** create or register ODS instances in the ODS/API's
+**`EdFi_Admin`** database. Every entry in `ODSS_JSON` must match an existing row
+in `dbo.OdsInstances` — by `id` **and** by `name` — because when an application
+is created, the Admin App looks the instance up in the Admin API **by name**,
+and that list comes straight from this table. Set the table up
 before running the scripts:
 
 **If the ODS instances already exist** (the usual case — the ODS/API
