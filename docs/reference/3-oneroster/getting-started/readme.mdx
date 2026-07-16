@@ -12,7 +12,7 @@ database. Pick the deployment path that matches your environment.
 | [Docker Compose (demo)](./docker-compose.md)        | Spin up a local end-to-end stack (ODS / API, OneRoster, NGINX, OAuth issuer) to try the service.                      | Demo only, not production |
 | [Deploy on PostgreSQL](./deploy-postgres.md)        | You operate an Ed-Fi ODS on PostgreSQL and want to run the OneRoster Node service natively against it.                | Production-supported      |
 | [Deploy on Microsoft SQL Server](./deploy-mssql.md) | You operate an Ed-Fi ODS on SQL Server and want to run the OneRoster Node service natively against it.                | Production-supported      |
-| [Deploy on IIS (Windows)](./deploy-iis.md)          | You run the Node service on Windows Server and want IIS to host it (via `iisnode`) or front it (via a reverse proxy). | Production-supported      |
+| [Deploy on IIS (Windows)](./deploy-iis.md)          | You are running the Node service on Windows Server and want to use IIS as a reverse proxy in front of it.             | Production-supported      |
 
 For production Docker deployments, use the official
 [`edfialliance/one-roster-api`](https://hub.docker.com/r/edfialliance/one-roster-api)
