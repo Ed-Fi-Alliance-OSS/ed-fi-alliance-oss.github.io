@@ -83,8 +83,8 @@ v7.1 contains nine claim sets, resulting in nine folders.
 | Directory | SIS Vendor |
 | File | _icon.png |
 | File | assessmentMetadata |
-| File | assesmentMetadata.png |
-| File | assesmentMetadata.svg |
+| File | assessmentMetadata.png |
+| File | assessmentMetadata.svg |
 | File | AssessmentMetadata_icon.png |
 | File | educationOrganizations |
 | File | educationOrganizations.png |
