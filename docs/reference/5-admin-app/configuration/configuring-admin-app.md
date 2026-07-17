@@ -37,10 +37,7 @@ module.exports = {
     ISSUER: 'https://your-oidc-provider/realms/edfi',
     CLIENT_ID: 'edfiadminapp',
     CLIENT_SECRET: 'your-client-secret',
-    MACHINE_AUDIENCE: 'edfiadminapp-api',
-    MANAGEMENT_DOMAIN: 'your-domain.com',
-    MANAGEMENT_CLIENT_ID: 'edfiadminapp-machine',
-    MANAGEMENT_CLIENT_SECRET: 'machine-client-secret'
+    MACHINE_AUDIENCE: 'edfiadminapp-api', // only used for direct bearer-token API access
   },
 
   SAMPLE_OIDC_CONFIG: {
@@ -54,8 +51,10 @@ module.exports = {
 
   // Database Encryption (for storing sensitive data)
   DB_ENCRYPTION_SECRET_VALUE: {
-    // Can replace with `openssl rand -hex 32` or `node -e "console.log('KEY: '+ require('crypto').randomBytes(32).toString('hex'))"
-    KEY: 'your-32-character-encryption-key'
+    // A 32-byte key, hex-encoded (64 hex characters).
+    // Generate with: openssl rand -hex 32
+    // or: node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+    KEY: 'your-64-hex-char-encryption-key'
   },
 
   // Application URLs
@@ -65,13 +64,18 @@ module.exports = {
 
   // API Configuration
   API_PORT: 3333,
-  _OPEN_API: false, // Set to true for Swagger documentation
+  ENABLE_OPEN_API: false, // Set to true for Swagger documentation
 
   // Database Options
   DB_SSL: true, // Use SSL for database connections
   DB_RUN_MIGRATIONS: true, // Auto-run database migrations
   DB_SYNCHRONIZE: false, // Never use in production
   TYPEORM_LOGGING: false, // Enable for debugging
+
+  // Outbound TLS: verify the certificate of the ODS/API and Admin API the app calls.
+  // Keep true. For a local upstream with a self-signed cert, trust it via
+  // NODE_EXTRA_CA_CERTS rather than disabling this.
+  SSL_VERIFICATION: true,
 
   // Optional Features
   USE_YOPASS: false, // Enable Yopass integration
@@ -83,6 +87,10 @@ module.exports = {
   WHITELISTED_REDIRECTS: ['https://your-domain.com/adminapp']
 };
 ```
+
+:::note
+These URL examples assume a single public origin behind a reverse proxy (path-based `/adminapp` and `/adminapp-api`). For a direct two-site deployment such as the Windows/IIS install, use each site's own HTTPS URL (for example `https://host:3443`) instead.
+:::
 
 ### Environment Variables Unix
 
@@ -96,7 +104,7 @@ DATABASE_SECRET={"username":"user","password":"pass","host":"localhost","port":5
 AUTH0_CONFIG_SECRET={"ISSUER":"https://keycloak/realms/edfi","CLIENT_ID":"edfiadminapp","CLIENT_SECRET":"secret","MACHINE_AUDIENCE":"edfiadminapp-api"}
 
 # Encryption
-DB_ENCRYPTION_SECRET={"KEY":"your-32-char-key","IV":"your-16-char-iv"}
+DB_ENCRYPTION_SECRET={"KEY":"your-64-hex-char-key"}
 
 # URLs
 FE_URL=https://your-domain.com/adminapp
@@ -125,7 +133,7 @@ VITE_OIDC_ID=1  # ID of OIDC configuration in database
 VITE_BASE_PATH=/adminapp/
 
 # Help Documentation
-VITE_HELP_GUIDE=https://docs.ed-fi.org/
+VITE_HELP_GUIDE=https://docs.ed-fi.org/reference/admin-app
 
 # UI Configuration
 VITE_STARTING_GUIDE=https://docs.ed-fi.org/reference/admin-app/configuration/global-administration-tasks
@@ -133,6 +141,10 @@ VITE_CONTACT=https://community.ed-fi.org/
 VITE_APPLICATION_NAME="Ed-Fi Admin App"
 VITE_IDP_ACCOUNT_URL=https://your-domain.com/auth/realms/edfi/account/
 ```
+
+:::note
+`VITE_API_URL` and `VITE_BASE_PATH` depend on how the app is exposed. Behind a reverse proxy on a single origin, use path-based values (`.../adminapp-api` and `/adminapp/`) as shown. For a direct two-site deployment such as the Windows/IIS install, use the API site's own HTTPS URL (for example `https://host:3443`) and serve the frontend from root (`VITE_BASE_PATH="/"`).
+:::
 
 **Variable Descriptions:**
 
@@ -151,18 +163,9 @@ This should point to the **account management interface** (`/auth/realms/{realm-
 
 :::
 
-These variables must be set during the build process:
+Set these before building — put them in `packages/fe/.env` (copy `.copyme.env.local` to `.env`) or export them in the shell — because they are baked into the bundle at build time:
 
 ```bash
-# Build with custom configuration
-VITE_API_URL=https://your-domain.com/adminapp-api \
-VITE_OIDC_ID=1 \
-VITE_BASE_PATH=/adminapp/ \
-VITE_HELP_GUIDE=https://your-help-site.com/ \
-VITE_STARTING_GUIDE=https://docs.ed-fi.org/reference/admin-app/configuration/global-administration-tasks \
-VITE_CONTACT=https://community.ed-fi.org/ \
-VITE_APPLICATION_NAME="Ed-Fi Admin App" \
-VITE_IDP_ACCOUNT_URL=https://your-domain.com/auth/realms/edfi/account/ \
 npm run build:fe
 ```
 
@@ -173,14 +176,16 @@ npm run build:fe
 1. **Create database and user**:
 
    ```sql
-   -- Connect as postgres superuser
+   -- Connect as the postgres superuser
    CREATE DATABASE sbaa;
    CREATE USER edfiadminapp WITH PASSWORD 'your_secure_password';
-   GRANT ALL PRIVILEGES ON DATABASE sbaa TO edfiadminapp;
 
-   -- Connect to sbaa database
+   -- Least privilege: CONNECT + CREATE on the database (so the app can create the
+   -- citext extension and its pgboss job-queue schema at first boot) and ownership
+   -- of the public schema so it can create its own tables. Not database-wide ALL.
+   GRANT CONNECT, CREATE ON DATABASE sbaa TO edfiadminapp;
    \c sbaa
-   GRANT ALL ON SCHEMA public TO edfiadminapp;
+   ALTER SCHEMA public OWNER TO edfiadminapp;
    ```
 
 2. **Configure PostgreSQL** (`postgresql.conf`):
@@ -255,7 +260,7 @@ The Admin App uses OpenID Connect (OIDC) for authentication. Keycloak is the rec
    }
    ```
 
-3. **Create Client for Machine-to-Machine**:
+3. **Create Client for Machine-to-Machine** _(optional — only for direct bearer-token API access, e.g. Postman/curl/CI; the browser login flow does not need it)_:
 
    ```json
    {
@@ -268,7 +273,7 @@ The Admin App uses OpenID Connect (OIDC) for authentication. Keycloak is the rec
    }
    ```
 
-4. **Create Client Scope**:
+4. **Create Client Scope** _(optional — used by the machine-to-machine client above)_:
    - Name: `login:app`
    - Type: Default
    - Protocol: openid-connect
@@ -279,7 +284,7 @@ The Admin App uses OpenID Connect (OIDC) for authentication. Keycloak is the rec
 The OIDC configuration is stored in the application database. Insert configuration:
 
 ```sql
-INSERT INTO oidc_client (issuer, "clientId", "clientSecret", scope) VALUES
+INSERT INTO oidc (issuer, "clientId", "clientSecret", scope) VALUES
 ('https://your-domain.com/auth/realms/edfi', 'edfiadminapp', 'your-client-secret', '');
 ```
 

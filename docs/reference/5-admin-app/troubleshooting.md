@@ -6,232 +6,86 @@ sidebar_position: 6
 
 ## Backend Troubleshooting
 
-**Common Issues and Solutions:**
+The API is hosted in IIS through the **httpPlatform handler**: IIS launches the
+Node process (`main.js`) and forwards requests to a loopback port it assigns via
+`HTTP_PLATFORM_PORT`. Most backend failures surface in the Node stdout log at
+`logs\node-stdout.log` under the API site folder (for example
+`C:\inetpub\EdFi-AdminApp-API\logs\`). Start there.
 
-**Node.js Executable Not Found:**
+**HTTP 500.19 — configuration locked:**
 
-- **Error**: "The iisnode module is unable to start the node.exe process..."
-- **Cause**: IIS cannot find the Node.js executable
-- **Solution**:
-  1. **Find your Node.js installation path**:
+- **Cause**: the `system.webServer/handlers` section is locked at the server
+  level, so the `httpPlatformHandler` mapping in the site's `web.config` cannot
+  be applied.
+- **Solution**: unlock it from an elevated PowerShell, then retry:
 
-     ```powershell
-     # Check where Node.js is installed
-     where node
-     
-     # Or check the version and default location
-     node --version
-     # Default locations:
-     # C:\Program Files\nodejs\node.exe (standard installation)
-     # C:\Program Files (x86)\nodejs\node.exe (32-bit installation)
-     ```
-  
-  2. **Update the `nodeProcessCommandLine` in web.config**:
-
-     ```xml
-     <!-- For standard Node.js installation -->
-     nodeProcessCommandLine="C:\Program Files\nodejs\node.exe"
-     
-     <!-- For NVM (Node Version Manager) installation -->
-     nodeProcessCommandLine="%APPDATA%\nvm\v18.17.0\node.exe"
-     <!-- Replace v18.17.0 with your actual Node.js version -->
-     ```
-  
-  3. **For NVM (Node Version Manager) users**:
-
-     **Find your current Node.js version and path:**
-
-     ```powershell
-     # Check your current Node.js version
-     node --version
-     
-     # Check nvm list to see installed versions
-     nvm list
-     
-     # Check the exact path
-     where node
-     ```
-
-     **Common NVM paths:**
-     - `%APPDATA%\nvm\v{version}\node.exe` (nvm-windows)
-     - `C:\Users\{username}\AppData\Roaming\nvm\v{version}\node.exe` (full path)
-     - `%NVM_HOME%\v{version}\node.exe` (if NVM_HOME is set)
-
-     **Example for Node.js v18.17.0:**
-
-     ```xml
-     nodeProcessCommandLine="%APPDATA%\nvm\v18.17.0\node.exe"
-     ```
-
-     **Alternative approach for NVM - Use symlink:**
-
-     ```xml
-     <!-- If nvm creates a symlink (some nvm versions do this) -->
-     nodeProcessCommandLine="%APPDATA%\nvm\nodejs\node.exe"
-     ```
-
-  4. **Alternative locations to check**:
-     - `C:\Program Files\nodejs\node.exe` (standard installation)
-     - `C:\Program Files (x86)\nodejs\node.exe` (32-bit)
-     - `%APPDATA%\nvm\v{version}\node.exe` (nvm-windows)
-     - `%APPDATA%\npm\node.exe` (npm global installations)
-     - Custom installation directory
-
-**Duplicate MIME Type Error:**
-
-- **Error**: "Cannot add duplicate collection entry of type 'mimeMap' with unique key attribute 'fileExtension' set to '.json'"
-- **Cause**: IIS already has a MIME type mapping for `.json` files
-- **Solution**: Use the `<remove>` element before adding the MIME type:
-
-  ```xml
-  <staticContent>
-    <!-- Remove existing .json mapping if it exists, then add our own -->
-    <remove fileExtension=".json" />
-    <mimeMap fileExtension=".json" mimeType="application/json" />
-  </staticContent>
+  ```powershell
+  & "$env:SystemRoot\System32\inetsrv\appcmd.exe" unlock config -section:system.webServer/handlers
   ```
 
-**HTTP Error 403.14 - Forbidden:**
+  See [IIS modules and configuration](./getting-started/windows-iis-installation.md#iis-modules).
 
-- **Cause**: IIS cannot find the default document or directory browsing is disabled
-- **Solution**:
-  1. Ensure `web.config` is in the same directory as `main.js`
-  2. Verify the `<defaultDocument>` section includes `main.js`
-  3. Check that the physical path in IIS points to the directory containing `main.js`
-  4. Verify iisnode is properly installed and the handler is registered
+**HTTP 502.5 — process failure (Node not machine-wide):**
 
-**HTTP Error 404.0 - Not Found for `/api` routes:**
+- **Cause**: `processPath` points at a `node.exe` under a user profile (an
+  nvm-windows default). The App Pool virtual account (`IIS APPPOOL\EdFi-AdminApp-API`)
+  cannot execute it.
+- **Solution**: install Node.js machine-wide (`C:\Program Files\nodejs\node.exe`)
+  and set `processPath` to that path in `web.config`.
 
-- **Cause**: Requests aren't being routed through the Node.js application
-- **Solution**:
-  1. The updated `web.config` above includes rewrite rules to handle this
-  2. Ensure the `<rewrite>` section is present (this is different from URL Rewrite module)
-  3. Verify that all API requests go through `main.js`
+**HTTP 502 — IIS and Node disagree on the port:**
 
-**Testing Your Deployment:**
+- **Cause**: `API_PORT` is hard-coded instead of reading the port httpPlatform assigns.
+- **Solution**: set `API_PORT: process.env.HTTP_PLATFORM_PORT || 3333` in `production.js`.
 
-1. **Test the root endpoint**: `http://localhost:3333/` should return your Node.js application response
-2. **Test API endpoints**: `http://localhost:3333/api/` should work for API routes
-3. **Test Swagger**: `http://localhost:3333/api/` should show the Swagger documentation if enabled
-4. **Check iisnode logs**: Look in the `iisnode` folder for detailed error logs
+**Site will not start over HTTPS:**
 
-**Debugging Steps:**
+- **Cause**: no certificate is bound to the HTTPS port (3443 API, 4443 frontend).
+- **Solution**: bind a certificate to the site's HTTPS binding (a self-signed one
+  is fine for local use). See [TLS and certificates](./getting-started/windows-iis-installation.md#tls-and-certificates).
 
-1. **Enable detailed errors** in the `web.config` (already enabled in the config above):
+**Adding an Environment fails with a certificate error:**
 
-   ```xml
-   debuggingEnabled="true"
-   devErrorsEnabled="true"
-   ```
+- **Error**: `DEPTH_ZERO_SELF_SIGNED_CERT` (or a similar TLS error) in
+  `logs\node-stdout.log` when connecting an ODS/API or Admin API.
+- **Cause**: `SSL_VERIFICATION` is on (the secure default) and the upstream
+  presents a self-signed or dev certificate Node does not trust.
+- **Solution**: make Node trust the upstream certificate via `NODE_EXTRA_CA_CERTS`
+  rather than disabling verification. See [Production considerations](./getting-started/windows-iis-installation.md#production-considerations).
 
-2. **Check Windows Event Viewer**: Look for IIS and iisnode related errors
+**"NODE_ENV value of 'production' did not match any deployment config file names":**
 
-3. **Verify file permissions**: Ensure IIS has read access to your application files
+- **Cause**: the app runs with `NODE_ENV=production` but no `production.js` exists
+  in `packages/api/config`.
+- **Solution**: create `production.js` from the `production.js-edfi` template. The
+  `web.config` sets `NODE_ENV=production` through httpPlatform's `environmentVariables`.
 
-4. **Test Node.js directly**: Before deploying to IIS, test that `node main.js` works locally
+**Database password error ("client password must be a string"):**
 
-**Configuration Issues:**
-
-**NODE_ENV Configuration Warning:**
-
-- **Warning**: "NODE_ENV value of 'production' did not match any deployment config file names"
-- **Cause**: Application running in production mode but no production.js config file exists
-- **Solutions**:
-  1. **Use development mode** in web.config:
-
-     ```xml
-     node_env="development"
-     ```
-
-  2. **Create production.js** config file in the config directory with production settings
-  3. **Add promoteServerVars** to ensure environment variables are passed:
-
-     ```xml
-     promoteServerVars="NODE_ENV"
-     ```
-
-**Database Password Error:**
-
-- **Error**: "SASL: SCRAM-SERVER-FIRST-MESSAGE: client password must be a string"
-- **Cause**: PostgreSQL password not being passed as a proper string
-- **Solution**: Ensure all database credentials in config are strings:
+- **Error**: `SASL: SCRAM-SERVER-FIRST-MESSAGE: client password must be a string` (PostgreSQL).
+- **Cause**: a database credential is not a string.
+- **Solution**: ensure every value in `DB_SECRET_VALUE` is a string:
 
   ```javascript
   DB_SECRET_VALUE: {
     DB_HOST: 'localhost',
     DB_PORT: 5432,
-    DB_USERNAME: 'postgres',
+    DB_USERNAME: 'edfiadminapp',
     DB_DATABASE: 'sbaa',
-    DB_PASSWORD: 'postgres',  // Ensure this is a string
+    DB_PASSWORD: 'your_secure_password', // must be a string
   }
   ```
 
-### Proven Working Configuration
+**Testing the deployment:**
 
-The following configuration has been **tested and verified** to work successfully:
-
-**Essential Components:**
-
-1. **iisnode** installed and registered as an IIS module
-2. **Handler mapping** configured in IIS Manager (not web.config) with path `*`
-3. **URL Rewrite rules** in web.config for proper request routing
-4. **Proper permissions** for IIS App Pool user on application directory
-
-**This minimal web.config configuration is known to work:**
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<configuration>
-  <system.webServer>
-    <!-- URL Rewrite rules - THE KEY TO SUCCESS -->
-    <rewrite>
-      <rules>
-        <rule name="NodeJS" stopProcessing="true">
-          <match url=".*"/>
-          <conditions logicalGrouping="MatchAll">
-            <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true"/>
-            <add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true"/>
-          </conditions>
-          <action type="Rewrite" url="main.js"/>
-        </rule>
-      </rules>
-    </rewrite>
-    
-    <iisnode 
-      nodeProcessCommandLine="node.exe"
-      loggingEnabled="true"
-      debuggingEnabled="true"
-      devErrorsEnabled="true"
-      node_env="development" />
-      
-    <defaultDocument>
-      <files>
-        <add value="main.js"/>
-      </files>
-    </defaultDocument>
-    
-    <httpErrors errorMode="Detailed"/>
-  </system.webServer>
-</configuration>
-```
-
-### Advantages of Direct IIS Deployment
-
-- **Direct integration**: Node.js runs directly within IIS worker process
-- **Better error handling**: iisnode provides detailed error logging
-- **Process management**: IIS handles process recycling and monitoring
-- **Native Windows integration**: Works seamlessly with Windows authentication and security
-
-### Considerations
-
-- **URL Rewrite dependency**: Requires URL Rewrite rules for proper routing (not the URL Rewrite module)
-- **Handler configuration**: Must be done via IIS Manager due to security restrictions
-- **Port binding**: The application uses the port configured in IIS, accessed via `process.env.PORT`
-- **Logging**: iisnode provides its own logging mechanism in addition to your application logs
+- Browse to `https://localhost:3443/api/healthcheck`; it should return a healthy
+  response. The HTTP binding (`http://localhost:3333`) should 301-redirect to HTTPS.
+- Check `logs\node-stdout.log` first for any startup error.
 
 ### Build errors
 
-Check configuration file `production.js` or `local.js` variables are set correctly. Sometimes you need to execute `nx reset` in order to get a new build without caching files. You can include the command in yout `package.json` as `cache: nx reset` and then use it `npm run cache`
+Check that the `production.js` (or `local.js`) values are set correctly. If a
+stale build cache causes problems, run `nx reset` to clear it before rebuilding.
 
 ## Frontend Troubleshooting
 
@@ -241,7 +95,7 @@ Check configuration file `production.js` or `local.js` variables are set correct
 
 - **Error**: "Cannot add duplicate collection entry of type 'mimeMap' with unique key attribute 'fileExtension' set to '.json'"
 - **Cause**: IIS already has MIME type mappings for certain file extensions
-- **Solution**: Use `<remove>` elements before `<mimeMap>` elements as shown in the web.config above
+- **Solution**: Use `<remove>` elements before `<mimeMap>` elements (see the `.woff2` example below)
 
 **React Router 404 Errors:**
 
@@ -249,11 +103,20 @@ Check configuration file `production.js` or `local.js` variables are set correct
 - **Cause**: IIS tries to serve routes as static files instead of letting React Router handle them
 - **Solution**: Ensure the URL Rewrite rule for React Routes is properly configured
 
-**Static Asset Loading Issues:**
+**Static Asset Loading Issues (fonts / `.woff2` return 404):**
 
-- **Symptom**: CSS, JS, or font files return 404 or MIME type errors
-- **Cause**: Missing or incorrect MIME type mappings
-- **Solution**: Add proper MIME type mappings in the `<staticContent>` section
+- **Symptom**: CSS, JS, or font files (commonly `.woff2`) return 404 or a wrong MIME type
+- **Cause**: The IIS install is missing a MIME type mapping for the extension. Some IIS versions do not register `.woff2` by default
+- **Solution**: Add the missing MIME types to the frontend site's `web.config`, inside `<system.webServer>`. Use `<remove>` before each `<mimeMap>` to avoid a duplicate-entry error (HTTP 500.19) if IIS already defines it:
+
+  ```xml
+  <staticContent>
+    <remove fileExtension=".woff" />
+    <remove fileExtension=".woff2" />
+    <mimeMap fileExtension=".woff" mimeType="application/font-woff" />
+    <mimeMap fileExtension=".woff2" mimeType="application/font-woff2" />
+  </staticContent>
+  ```
 
 **API Communication Errors:**
 

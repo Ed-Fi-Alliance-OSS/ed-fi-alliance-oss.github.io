@@ -25,11 +25,9 @@ deployments. It consists of:
   for the Admin App (the examples use the name `sbaa`)
 - **OIDC Provider** (Required) - Keycloak or similar see
   - [Configuring an Identity Provider for Ed-Fi Admin App](../configuration/identity-provider.md)
-- **Reverse Proxy** (Recommended) - NGiNX, IIS, or similar
-  - Provides SSL/TLS termination and security headers
-  - Efficient static file serving and caching
-  - Single entry point for frontend and API (eliminates CORS issues)
-  - Better performance, security, and scalability for production deployments
+- **Reverse Proxy** (Recommended for production) - NGiNX, IIS, or similar
+  - Provides a single public entry point for the frontend and API — this avoids cross-origin/CORS between the two sites — plus caching, load balancing, and a place to enforce edge security (e.g. a WAF).
+  - Not required to obtain HTTPS: each installation path terminates TLS itself. The Windows install scripts deploy the API and frontend as two IIS sites directly (no front-facing proxy) with TLS and enforcing security headers, and the app is architecturally optional behind a proxy (v4.0 PRD), honoring `X-Forwarded-*` headers when used.
 
 :::tip
 
@@ -67,18 +65,18 @@ The Ed-Fi Admin App can be installed in one of three **alternative** ways. These
 are independent paths, not sequential steps — pick the one that matches your
 target environment and follow that page from start to finish.
 
-| Path | When to use |
+| Path | What it does |
 | --- | --- |
-| [Docker Compose Installation](./docker-installation.md) | The easiest path. Run the Admin App and its dependencies as containers, on-premises or in the Cloud. |
-| [Windows IIS Installation](./windows-iis-installation.md) | Host the backend API and frontend on Windows Server using Internet Information Services (IIS). |
-| [Unix-like Systems Installation](./unix-installation.md) | Host the backend API with systemd and serve the frontend with NGiNX on a Linux or other Unix-like server. |
+| [Docker Compose Installation](./docker-installation.md) | Runs the Admin App and its dependencies as containers, on-premises or in the Cloud. |
+| [Windows IIS Installation](./windows-iis-installation.md) | Hosts the backend API and frontend on Windows Server using Internet Information Services (IIS). |
+| [Unix-like Systems Installation](./unix-installation.md) | Hosts the backend API with systemd and serves the frontend with NGiNX on a Linux or other Unix-like server. |
 
 :::note
-You only need to complete **one** of the paths above. After installing,
-configure the application using the
-[Configuring Ed-Fi Admin App](../configuration/configuring-admin-app.md) page and review the
-[Security Considerations](../configuration/security-considerations.md) before going to
-production.
+You only need to complete **one** of the paths above — each one installs and
+configures the Admin App. The [Configuring Ed-Fi Admin App](../configuration/configuring-admin-app.md)
+page is a reference for the available configuration options, and it is worth
+reviewing [Security Considerations](../configuration/security-considerations.md)
+before going to production.
 :::
 
 ## Next steps

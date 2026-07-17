@@ -130,8 +130,8 @@ VITE_API_URL=https://yourdomain.com/adminapp-api
 FE_URL=https://yourdomain.com/adminapp
 MY_URL=https://yourdomain.com/adminapp-api
 
-# This line is only necessary when you are using a self-signed certificate.
-NODE_EXTRA_CA_CERTS=/app/ssl/your-production-cert.crt
+# Only needed when the app must trust a self-signed/private-CA certificate.
+NODE_EXTRA_CA_CERTS=/app/ssl/your-cert.crt
 
 # Administrator credentials
 KEYCLOAK_ADMIN=admin

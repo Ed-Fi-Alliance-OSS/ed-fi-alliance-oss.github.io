@@ -17,7 +17,7 @@ Key configuration parameters include:
 - **Authority URL**: The base URL of your IdP (e.g., `https://your-keycloak-server/realms/edfi`)
 - **Client ID**: The client identifier registered in your IdP (e.g., `edfiadminapp`)
 - **Client Secret**: The confidential secret associated with the client
-- **Redirect URI**: The callback URL where the IdP sends authentication responses (e.g., `https://your-admin-app-url/api/auth/callback/1`)
+- **Redirect URI**: The callback URL where the IdP sends authentication responses (e.g., `https://your-admin-app-api-url/api/auth/callback/<oidc-id>`, where `<oidc-id>` is the id of the `oidc` table row)
 - **Post Logout Redirect URI**: Where users are redirected after logging out (e.g., `https://your-admin-app-url/api/auth/post-logout`)
 - **Response Type**: Typically set to `code` for authorization code flow
 - **Scope**: The OIDC scopes requested, typically `openid profile email`
@@ -142,9 +142,12 @@ If you need to create the client manually:
      ```text
      https://your-admin-app-url/*
      https://your-admin-app-url/auth/callback
-     https://your-admin-app-url-api-url/api/auth/callback/1
-     https://your-admin-app-url-api-url/api/auth/post-logout
+     https://your-admin-app-api-url/api/auth/callback/<oidc-id>
+     https://your-admin-app-api-url/api/auth/post-logout
      ```
+
+     `<oidc-id>` is the id of the row in the `oidc` database table — resolve it
+     from that table; it is not always `1`.
 
    - **Valid post logout redirect URIs**: `https://your-admin-app-url/*`
    - **Web origins**: `https://your-admin-app-api-url`
