@@ -23,7 +23,7 @@ Node process (`main.js`) and forwards requests to a loopback port it assigns via
   & "$env:SystemRoot\System32\inetsrv\appcmd.exe" unlock config -section:system.webServer/handlers
   ```
 
-  See [IIS modules and configuration](./getting-started/windows-iis-installation.md#iis-modules).
+  See [IIS modules and configuration](./getting-started/windows-iis-installation/manual.md#iis-modules).
 
 **HTTP 502.5 — process failure (Node not machine-wide):**
 
@@ -42,7 +42,7 @@ Node process (`main.js`) and forwards requests to a loopback port it assigns via
 
 - **Cause**: no certificate is bound to the HTTPS port (3443 API, 4443 frontend).
 - **Solution**: bind a certificate to the site's HTTPS binding (a self-signed one
-  is fine for local use). See [TLS and certificates](./getting-started/windows-iis-installation.md#tls-and-certificates).
+  is fine for local use). See [TLS and certificates](./getting-started/windows-iis-installation/manual.md#tls-and-certificates).
 
 **Adding an Environment fails with a certificate error:**
 
@@ -51,7 +51,7 @@ Node process (`main.js`) and forwards requests to a loopback port it assigns via
 - **Cause**: `SSL_VERIFICATION` is on (the secure default) and the upstream
   presents a self-signed or dev certificate Node does not trust.
 - **Solution**: make Node trust the upstream certificate via `NODE_EXTRA_CA_CERTS`
-  rather than disabling verification. See [Production considerations](./getting-started/windows-iis-installation.md#production-considerations).
+  rather than disabling verification. See [Production considerations](./getting-started/windows-iis-installation/manual.md#production-considerations).
 
 **"NODE_ENV value of 'production' did not match any deployment config file names":**
 
