@@ -22,6 +22,14 @@ environment variable configuration.
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed and running
 - [PowerShell](https://docs.microsoft.com/en-us/powershell/) (Windows)
 
+## Database engine
+
+The Docker Compose stack supports **both** PostgreSQL and SQL Server — you need only one. **PostgreSQL is the default.** To use SQL Server instead, set `DB_ENGINE=mssql` in `.env`, uncomment the `MSSQL_*` variables there (`MSSQL_SA_PASSWORD`, `MSSQL_ACCEPT_EULA=Y`), and start the stack with the `-MSSQL` switch:
+
+```powershell
+./start-services.ps1 -MSSQL
+```
+
 ## Quick Start
 
 1. **Clone the Admin App repository:**
