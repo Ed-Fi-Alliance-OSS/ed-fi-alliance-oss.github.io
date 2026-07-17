@@ -25,6 +25,12 @@ On a fresh machine, run `setup-vm-prereqs.ps1` first (it installs the OS-level p
 
 `install-all.ps1` fetches the Admin App source for you — by default it clones the latest stable release of `Ed-Fi-AdminApp` as a sibling folder (for example `C:\Ed-Fi\Ed-Fi-AdminApp`). To build from a checkout you already have, pass `-SourcePath`; to pin a specific version, pass `-AdminAppRef <tag>` (for example `-AdminAppRef v4.0.1`).
 
+:::tip
+Run the examples below **exactly as written** — do not substitute your own passwords into them. Each `(Read-Host -AsSecureString '...')` tells PowerShell to **prompt you for that value at the console** when the command runs (your input stays hidden). Paste the whole command, press Enter, and type each secret when prompted. Replacing the `Read-Host` calls with literal password text is what causes errors, so leave them as-is.
+:::
+
+For the full list of parameters and configuration options, see the [`windows-install/README.md`](https://github.com/Ed-Fi-Exchange-OSS/Admin-App-Installation-Scripts/blob/main/windows-install/README.md) in the scripts repository, or run `Get-Help .\install-all.ps1 -Full`.
+
 **Local Keycloak, SQL Server** — the default:
 
 ```powershell
