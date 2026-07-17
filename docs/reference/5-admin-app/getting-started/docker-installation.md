@@ -7,7 +7,7 @@ sidebar_position: 2
 Docker provides the easiest deployment method with consistent environments across platforms. OCI-compliant containers provide a consistent deployment experience across many platforms, including Docker Desktop, Kubernetes, and other services. The following quick start instructions demonstrate application startup in Docker. They illustrate how to configure the applications, including environment variables, persistent storage, and networking. These notes can also serve as a template for building your own deployment in the container runtime engine of your choice, whether on-premises or in the Cloud.
 
 :::note
-This is one of three alternative installation paths. If you instead want to host the Admin App on Windows IIS or on a Unix-like server, see [Windows IIS Installation](./windows-iis-installation.md) or [Unix-like Systems Installation](./unix-installation.md).
+This is one of three alternative installation paths. If you instead want to host the Admin App on Windows IIS or on a Unix-like server, see [Windows IIS Installation](./windows-iis-installation/readme.md) or [Unix-like Systems Installation](./unix-installation.md).
 :::
 
 ## Docker Installation Guide for Ed-Fi Admin App

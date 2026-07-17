@@ -24,7 +24,7 @@ Review the following recommendations before running the Ed-Fi Admin App in a pro
 - **Environment variables**: Never commit secrets to source control
 - **Input validation**: All inputs are validated on both client and server
 - **CORS configuration**: Properly configure allowed origins
-- **Security headers**: The Windows/IIS install ships enforcing security headers by default (HSTS, an enforcing Content-Security-Policy, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`) on both sites; if you front the app with a reverse proxy, set equivalent headers there. See the [Windows IIS Installation guide](../getting-started/windows-iis-installation.md#security-headers).
+- **Security headers**: The Windows/IIS install ships enforcing security headers by default (HSTS, an enforcing Content-Security-Policy, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`) on both sites; if you front the app with a reverse proxy, set equivalent headers there. See the [Windows IIS Installation guide](../getting-started/windows-iis-installation/manual.md#security-headers).
 
 ## Authentication Security
 

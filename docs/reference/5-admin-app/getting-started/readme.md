@@ -68,7 +68,7 @@ target environment and follow that page from start to finish.
 | Path | What it does |
 | --- | --- |
 | [Docker Compose Installation](./docker-installation.md) | Runs the Admin App and its dependencies as containers, on-premises or in the Cloud. |
-| [Windows IIS Installation](./windows-iis-installation.md) | Hosts the backend API and frontend on Windows Server using Internet Information Services (IIS). |
+| [Windows IIS Installation](./windows-iis-installation/readme.md) | Hosts the backend API and frontend on Windows Server using Internet Information Services (IIS). |
 | [Unix-like Systems Installation](./unix-installation.md) | Hosts the backend API with systemd and serves the frontend with NGiNX on a Linux or other Unix-like server. |
 
 :::note

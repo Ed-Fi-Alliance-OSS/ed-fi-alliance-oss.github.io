@@ -7,7 +7,7 @@ sidebar_position: 4
 This page describes how to install the Ed-Fi Admin App on a Unix-like server (for example, Linux), using systemd to run the backend API and NGiNX to serve the frontend and proxy the API.
 
 :::note
-This is one of three alternative installation paths. If you instead want to run the Admin App in containers or on Windows IIS, see [Docker Compose Installation](./docker-installation.md) or [Windows IIS Installation](./windows-iis-installation.md).
+This is one of three alternative installation paths. If you instead want to run the Admin App in containers or on Windows IIS, see [Docker Compose Installation](./docker-installation.md) or [Windows IIS Installation](./windows-iis-installation/readme.md).
 :::
 
 ## Unix Prerequisites
@@ -18,7 +18,7 @@ This is one of three alternative installation paths. If you instead want to run 
 - **systemd**: For service management (most modern Linux distributions)
 
 :::note
-This path uses **PostgreSQL**. The Admin App is database-engine-agnostic, but SQL Server is not documented or validated for the Unix path; for SQL Server, use the [Docker Compose](./docker-installation.md) or [Windows IIS](./windows-iis-installation.md) path.
+This path uses **PostgreSQL**. The Admin App is database-engine-agnostic, but SQL Server is not documented or validated for the Unix path; for SQL Server, use the [Docker Compose](./docker-installation.md) or [Windows IIS](./windows-iis-installation/readme.md) path.
 :::
 
 ## Unix Backend API Installation

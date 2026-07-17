@@ -1,93 +1,24 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 ---
 
-# Windows IIS Installation
+# Manual
 
-This page describes how to install the Ed-Fi Admin App on Windows using Internet Information Services (IIS). It covers the backend API and the frontend single-page application, deployed as two standalone IIS sites over HTTPS.
-
-:::note
-This is one of three alternative installation paths. If you instead want to run the Admin App in containers or on a Unix-like server, see [Docker Compose Installation](./docker-installation.md) or [Unix-like Systems Installation](./unix-installation.md).
-:::
-
-Every section can be completed **manually** or with an **optional PowerShell script** that automates it. The scripts ship in the [Admin App Installation Scripts repository](https://github.com/Ed-Fi-Exchange-OSS/Admin-App-Installation-Scripts) under `windows-install/`. You can mix the two: automate some sections, do others by hand.
-
-## Before you start: decide three things
-
-1. **Database engine** — SQL Server (default) or PostgreSQL. You need only one.
-2. **Identity provider (IdP)** — the Admin App authenticates against an OIDC provider. This guide sets up **Keycloak**, running locally, as the example identity provider (a setup script provisions it). The Admin App's auth engine uses generic OIDC discovery, but Keycloak is the identity provider documented for this release.
-3. **Manual or automated** — follow the manual steps in each section, or run the script that automates it.
-
-:::info
-Both IIS sites are served over **HTTPS by default** — API on port **3443** and frontend on port **4443**. Each also keeps an HTTP binding (**3333** / **4200**) that returns a 301 redirect to its HTTPS URL. When no certificate is supplied, a self-signed certificate is generated and trusted on the local machine; supply a real certificate for anything beyond this host (see [TLS and certificates](#tls-and-certificates)). **IIS 10 or newer is required.**
-:::
-
-## Fast path: automation scripts
-
-To automate, clone the [Admin App Installation Scripts repository](https://github.com/Ed-Fi-Exchange-OSS/Admin-App-Installation-Scripts) and run the scripts in `windows-install/` from an elevated PowerShell, in the order below. Each script maps to a manual section later on this page; any script can be skipped in favor of its manual steps.
-
-```powershell
-git clone https://github.com/Ed-Fi-Exchange-OSS/Admin-App-Installation-Scripts.git
-cd Admin-App-Installation-Scripts\windows-install
-```
-
-:::note
-On a bare machine without Git, download the repository as a ZIP from GitHub (**Code → Download ZIP**) and extract it — `setup-vm-prereqs.ps1` installs Git afterward. If PowerShell refuses to run the scripts (they carry the internet Mark of the Web), `setup-vm-prereqs.ps1` unblocks them and sets the execution policy; to do it by hand, run `Get-ChildItem *.ps1 | Unblock-File` and `Set-ExecutionPolicy -Scope Process Bypass`.
-:::
-
-| Order | Script | What it automates | Manual section |
-| --- | --- | --- | --- |
-| 0 (fresh VM) | `setup-vm-prereqs.ps1` | OS-level installs: IIS feature set, SQL Server Developer, Git. Scans first, installs only what is missing; also sets the execution policy and unblocks the scripts. | [Windows Prerequisites](#windows-prerequisites) |
-| 1 | `01-prereqs-iis.ps1` | URL Rewrite Module + the httpPlatform handler (HttpBridge by default, or Microsoft HttpPlatformHandler); unlocks the `handlers` configuration section. | [Windows Prerequisites](#windows-prerequisites) |
-| 2 | `02-prereqs-sql.ps1` | SQL Server Mixed Mode + TCP/IP + `sa`; creates the `sbaa` database and a dedicated least-privilege login (`edfi_adminapp`) the app connects as. | [Windows Prerequisites](#windows-prerequisites) |
-| 3 | `03-prereqs-node.ps1` | Installs Node.js (the major version pinned in `engines.node`); remediates a too-old Node via nvm-windows. | [Windows Prerequisites](#windows-prerequisites) |
-| 4 | `04-build.ps1` | `npm ci` + build API + build frontend. Seeds the frontend `.env` before building. | [Backend API](#backend-api-installation) / [Frontend](#frontend-installation) |
-| 5 | `05-deploy-api.ps1` | Deploys the API as standalone site `EdFi-AdminApp-API` (HTTPS :3443; HTTP :3333 redirects): web.config, App Pool, `production.js`, App-Pool-scoped npm cache. | [Backend API](#backend-api-installation) |
-| 6 | `06-deploy-fe.ps1` | Deploys the frontend as standalone site `EdFi-AdminApp-FE` (HTTPS :4443; HTTP :4200 redirects). | [Frontend](#frontend-installation) |
-| verify | `00-check-prereqs.ps1` | Read-only diagnostic: IIS (and version), database, Node, build artifacts, and whether ports 3333/4200/3443/4443 are free. | [Verify prerequisites](#verify-prerequisites) |
-| optional | `idp-keycloak-setup.ps1` | Installs a JDK, downloads and starts a local Keycloak, provisions realm `edfi`, client `edfiadminapp`, and a test user. | [Identity provider](#identity-provider) |
-| optional | `idp-keycloak-start.ps1` | Restarts the local Keycloak (e.g. after a reboot). | [Identity provider](#identity-provider) |
-| optional | `yopass-docker.ps1` | Stands up a local Yopass via Docker. | [Yopass](#yopass-optional) |
-| optional | `install-all.ps1` | Runs the whole sequence end to end, including the local Keycloak IdP setup. | (whole page) |
-
-To remove an install, use `uninstall.ps1` (generic) and, for the local Keycloak, `uninstall-keycloak.ps1` (removes Keycloak and unsets `JAVA_HOME`; leaves the JDK installed).
-
-## Run everything at once
-
-To install the whole stack in one command, `install-all.ps1` runs the entire sequence end to end: the pre-flight check, all prerequisites, the build, the identity-provider setup, both deployments, and a smoke test. This is the fastest path; the manual sections below are for installing a piece by hand or understanding what each step does.
-
-On a fresh machine, run `setup-vm-prereqs.ps1` first (it installs the OS-level pieces: IIS, SQL Server, Git), then `install-all.ps1`. Run both from an elevated PowerShell in the `windows-install` folder. Choose the identity provider with the mandatory `-IdpProvider` parameter; this guide uses `keycloak`.
-
-`install-all.ps1` fetches the Admin App source for you — by default it clones the latest stable release of `Ed-Fi-AdminApp` as a sibling folder (for example `C:\Ed-Fi\Ed-Fi-AdminApp`). To build from a checkout you already have, pass `-SourcePath`; to pin a specific version, pass `-AdminAppRef <tag>` (for example `-AdminAppRef v4.0.1`).
-
-Local Keycloak example (SQL Server):
-
-```powershell
-.\install-all.ps1 -IdpProvider keycloak `
-  -SaPassword (Read-Host -AsSecureString 'SQL Server sa password') `
-  -AppDbPassword (Read-Host -AsSecureString 'Admin App DB login password') `
-  -KeycloakAdminPassword (Read-Host -AsSecureString 'Keycloak admin password') `
-  -OidcClientSecret (Read-Host -AsSecureString 'OIDC client secret') `
-  -TestUserPassword (Read-Host -AsSecureString 'Keycloak test-user password')
-```
-
-The password parameters are `SecureString`s, so pass them with `Read-Host -AsSecureString` (as above) rather than plain quoted strings. `-AppDbPassword` sets the password for the least-privilege `edfi_adminapp` login the script creates; it is required for SQL Server. This stands up the local Keycloak (realm `edfi`, client `edfiadminapp`, and a test user) and deploys the API and frontend as part of the run.
-
-:::note
-By default the sites use a self-signed certificate (auto-trusted on this machine only). To bind a real certificate, pass `-CertificateThumbprint`, or `-CertificatePfxPath` with `-CertificatePassword` (see [TLS and certificates](#tls-and-certificates)). Yopass is off by default; add `-SetupYopassDocker` to stand up a local Yopass via Docker, or `-YopassUrl <url>` to point at an existing one.
-:::
-
-The script is idempotent: if a step fails, fix the cause and re-run. `-SkipPhase1` (skip prerequisites) and `-SkipPhase2` (skip build) speed up re-runs.
+This page documents the full manual Windows/IIS installation — every prerequisite, both IIS sites, and the exact `web.config` and `production.js` that a working install contains. It is the authoritative reference for what gets configured; the [Automated](./automated.md) and [Semi-automated](./semi-automated.md) paths produce the same result.
 
 ## Windows Prerequisites
 
-:::tip Automation shortcut
-On a fresh VM, `setup-vm-prereqs.ps1` installs the operating-system pieces (the IIS feature set, SQL Server, Git). Then automate the rest with `01-prereqs-iis.ps1`, `02-prereqs-sql.ps1`, and `03-prereqs-node.ps1`, plus the identity provider below. Or follow the manual steps in each subsection. **IIS 10 or newer is required.**
-:::
+Prepare the following on the Windows host before deploying the API and frontend. Each item is detailed in its own subsection below.
+
+- **[Operating-system components](#operating-system-components-iis-sql-server-git)** — IIS (**version 10 or newer**), SQL Server, and, optionally, Git.
+- **[IIS modules](#iis-modules)** — the URL Rewrite Module and an httpPlatform handler.
+- **[Database](#database)** — SQL Server (default) or PostgreSQL.
+- **[Node.js](#nodejs)** — the major version pinned in the Admin App's `package.json` (currently `>=22`).
+- **[Identity provider](../../configuration/identity-provider.md)** — an OIDC provider; this guide uses a local Keycloak example.
+- **[TLS certificate](#tls-and-certificates)** — a CA-issued certificate, or a self-signed one for local use.
+- **[Yopass](../../configuration/yopass-administrators-guide/readme.md)** (optional) — for one-time credential links.
 
 ### Operating system components (IIS, SQL Server, Git)
-
-_Automated by `setup-vm-prereqs.ps1` (scans first, installs only what is missing)._
 
 - **IIS**: Enable the IIS web server role and management tools. From an elevated PowerShell:
 
@@ -103,13 +34,11 @@ _Automated by `setup-vm-prereqs.ps1` (scans first, installs only what is missing
 
 ### IIS modules and configuration (URL Rewrite + httpPlatform handler) {#iis-modules}
 
-_Automated by `01-prereqs-iis.ps1` (assumes the IIS role above is already installed)._
-
 IIS hosts the Node.js API through the **httpPlatform handler**: IIS acts as a reverse proxy, launching the Node process (`main.js`) and forwarding requests to a loopback port it assigns via the `HTTP_PLATFORM_PORT` environment variable.
 
 1. Install the [IIS URL Rewrite Module](https://www.iis.net/downloads/microsoft/url-rewrite). It is used for the HTTP→HTTPS redirect and the frontend's SPA fallback.
 2. Install an httpPlatform handler. Two are compatible, and both register the same `httpPlatformHandler` module name:
-   - **HttpBridge** — the [LeXtudio fork](https://github.com/lextudio/httpbridge) (MIT, actively maintained). This is the scripts' default.
+   - **HttpBridge** — the [LeXtudio fork](https://github.com/lextudio/httpbridge) (MIT, actively maintained).
    - **Microsoft HttpPlatformHandler** — the [original v1.2](https://www.iis.net/downloads/microsoft/httpplatformhandler) (signed, stable, frozen since ~2016).
 3. **Unlock the handlers configuration section** so the application's `web.config` can register the handler. From an elevated PowerShell:
 
@@ -123,9 +52,7 @@ Without unlocking the `handlers` section, requests to the API return **HTTP 500.
 
 ### Database
 
-_Automated by `02-prereqs-sql.ps1` (SQL Server path)._
-
-The Admin App supports PostgreSQL 16+ and SQL Server 2017+, and needs only one. This guide uses **SQL Server** by default on Windows; PostgreSQL is available via Docker (`install-all.ps1 -DbEngine pgsql`; requires Docker Desktop in Linux-container mode).
+The Admin App supports PostgreSQL 16+ and SQL Server 2017+, and needs only one. This guide uses **SQL Server** by default on Windows; PostgreSQL is available via Docker (requires Docker Desktop in Linux-container mode).
 
 For SQL Server:
 
@@ -148,19 +75,15 @@ For SQL Server:
 Installing the Admin App database in its own SQL Server instance, separate from the ODS/API databases (`EdFi_Admin`, `EdFi_Security`), is recommended.
 :::
 
-For PostgreSQL, see [Configuring the Admin App](../configuration/configuring-admin-app.md); the automated PostgreSQL path runs through `install-all.ps1 -DbEngine pgsql`.
+For PostgreSQL, see [Configuring the Admin App](../../configuration/configuring-admin-app.md).
 
 ### Node.js
 
-_Automated by `03-prereqs-node.ps1` (upgrades a too-old version via nvm-windows)._
-
-Install the Node.js major version pinned in the Admin App's `package.json` (`engines.node`, currently `>=22`) from [nodejs.org](https://nodejs.org/). `03-prereqs-node.ps1` reads `engines.node` at runtime and remediates a too-old Node via nvm-windows.
+Install the Node.js major version pinned in the Admin App's `package.json` (`engines.node`, currently `>=22`) from [nodejs.org](https://nodejs.org/).
 
 ### Identity provider
 
-_Automated by `idp-keycloak-setup.ps1`._
-
-This guide uses **Keycloak**, running locally, as the example OIDC identity provider. `idp-keycloak-setup.ps1` installs a JDK, downloads and starts Keycloak, and provisions the `edfi` realm, the `edfiadminapp` confidential client, and a test user. To do it manually: install a supported LTS JDK — Keycloak 26 supports OpenJDK 17, 21, or 25 (the setup script installs OpenJDK 21) — download and start [Keycloak](https://www.keycloak.org/), then create the realm, a confidential client, and a user.
+This guide uses **Keycloak**, running locally, as the example OIDC identity provider. Install a supported LTS JDK — Keycloak 26.6 supports OpenJDK 17, 21, or 25 — then download and start [Keycloak](https://www.keycloak.org/) and create the `edfi` realm, the `edfiadminapp` confidential client, and a test user.
 
 :::note
 Register these in the Keycloak client (HTTPS, matching the default ports):
@@ -169,26 +92,18 @@ Register these in the Keycloak client (HTTPS, matching the default ports):
 - Post-logout redirect URI: `https://localhost:3443/api/auth/post-logout`
 - Web origin: `https://localhost:4443`
 
-`<oidc-id>` is the id of the row in the `oidc` database table; `install-all.ps1` resolves it and prints the exact callback URI to register (it is not always `1`). A user must exist in Keycloak whose email/username claim matches the Admin App admin user (`-AdminUsername`, default `admin@example.com`). Java is required **only** for the local Keycloak example.
+`<oidc-id>` is the id of the row in the `oidc` database table (it is not always `1`; resolve it from that table). A user must exist in Keycloak whose email/username claim matches the Admin App admin user (default `admin@example.com`). Java is required **only** for the local Keycloak example.
 :::
 
-For more detail, see [Configuring an Identity Provider for Ed-Fi Admin App](../configuration/identity-provider.md).
+For more detail, see [Configuring an Identity Provider for Ed-Fi Admin App](../../configuration/identity-provider.md).
 
 ### Yopass (optional)
 
-_Automated by `yopass-docker.ps1`._
-
-Yopass lets the Admin App share newly created API client credentials as one-time, self-destructing links instead of showing them inline. Stand up a local Yopass via Docker, point the app at an existing Yopass, or leave it disabled (credentials are then shown inline, a supported configuration). See the [Yopass Administrator Guide](../configuration/yopass-administrators-guide/readme.md).
+Yopass lets the Admin App share newly created API client credentials as one-time, self-destructing links instead of showing them inline. Stand up a local Yopass via Docker, point the app at an existing Yopass, or leave it disabled (credentials are then shown inline, a supported configuration). See the [Yopass Administrator Guide](../../configuration/yopass-administrators-guide/readme.md).
 
 ### TLS and certificates
 
-_Automated by the deploy scripts: `05-deploy-api.ps1` / `06-deploy-fe.ps1` bind the certificate (a supplied `-CertificateThumbprint` / `-CertificatePfxPath`, or a generated self-signed one); `install-all.ps1` forwards the same parameters._
-
-Both IIS sites are served over HTTPS (API `:3443`, frontend `:4443`). Each also keeps an HTTP binding (`:3333` / `:4200`) that returns a 301 redirect to its HTTPS URL. The certificate is resolved in this order:
-
-1. **`-CertificateThumbprint`** — bind an existing certificate already in `LocalMachine\My`.
-2. **`-CertificatePfxPath`** + **`-CertificatePassword`** — import and bind a PFX you supply.
-3. **None supplied** — a **self-signed** certificate (CN/SAN `localhost` plus the machine name) is generated, bound, and added to `LocalMachine\Root` so local browsers trust it. Opt out of the trust step with `-SkipSelfSignedTrust`.
+Both IIS sites are served over HTTPS (API `:3443`, frontend `:4443`). Each also keeps an HTTP binding (`:3333` / `:4200`) that returns a 301 redirect to its HTTPS URL. Use a CA-issued certificate where you can; for local use, a self-signed certificate (CN/SAN `localhost` plus the machine name) is sufficient. Place the certificate in `LocalMachine\My` and bind it to each site's HTTPS binding.
 
 :::warning
 A self-signed certificate is auto-trusted **only on this machine**; other machines browsing to it still see a trust warning. Supply a real certificate (thumbprint or PFX) for anything beyond this host.
@@ -205,26 +120,16 @@ Then add an HTTPS binding to each IIS site (in IIS Manager, or with `New-WebBind
 
 ### Verify prerequisites
 
-Run the read-only diagnostic before continuing:
-
-```powershell
-.\00-check-prereqs.ps1
-```
-
-It reports IIS (and that it is version 10 or newer), the database, Node.js, build artifacts, and whether ports 3333, 4200, 3443, and 4443 are free. It does not check the identity provider.
+Before deploying, confirm the prerequisites above are in place and that the four ports the two sites use — **3333**, **4200**, **3443**, and **4443** — are free.
 
 ## Backend API Installation
-
-:::tip Automation shortcut
-The build (step 1) is automated by `04-build.ps1`; the deploy (steps 2-8) by `05-deploy-api.ps1`. Or follow the manual steps.
-:::
 
 The API is deployed as a standalone IIS site, `EdFi-AdminApp-API`, with an HTTP binding on port 3333 and an HTTPS binding on port 3443; the HTTP binding only 301-redirects to HTTPS. IIS hosts the Node.js process through the **httpPlatform handler** (reverse proxy), which comes from [IIS modules and configuration](#iis-modules).
 
 1. **Build the application**:
 
    :::note
-   Always install from a **stable release tag**, not the default `main` branch (which reflects active development). Use the **latest stable release tag** — the same release the automated `install-all.ps1` path resolves for you. Find it on the [Releases page](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-AdminApp/releases), then use it below.
+   Always install from a **stable release tag**, not the default `main` branch (which reflects active development). Find the **latest stable release tag** on the [Releases page](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-AdminApp/releases), then use it below.
    :::
 
    ```powershell
@@ -394,7 +299,7 @@ The API is deployed as a standalone IIS site, `EdFi-AdminApp-API`, with an HTTP 
 
 8. **Set the App-Pool npm cache (if npm runs under the pool)**:
 
-   `05-deploy-api.ps1` sets `NPM_CONFIG_CACHE` on the `EdFi-AdminApp-API` App Pool's environment (an IIS 10+ feature) and grants that identity write access, so npm has a writable cache scoped to the pool. If you configure manually and npm fails to write its cache, set that environment variable on the pool to a writable folder such as `C:\npm-cache`.
+   If npm runs under the App Pool and fails to write its cache, set `NPM_CONFIG_CACHE` on the `EdFi-AdminApp-API` App Pool's environment (an IIS 10+ feature) to a writable folder such as `C:\npm-cache`, and grant that identity write access.
 
 ### Critical success factors
 
@@ -403,13 +308,9 @@ The API is deployed as a standalone IIS site, `EdFi-AdminApp-API`, with an HTTP 
 - **`API_PORT` must read `HTTP_PLATFORM_PORT`.** httpPlatform assigns the loopback port at runtime; a hard-coded port makes IIS and Node disagree and the site returns 502.
 - **The HTTPS binding needs a certificate.** Without one bound to port 3443, the site cannot start over HTTPS. See [TLS and certificates](#tls-and-certificates).
 
-See the [Troubleshooting](../troubleshooting.md#backend-troubleshooting) section if you hit errors.
+See the [Troubleshooting](../../troubleshooting.md#backend-troubleshooting) section if you hit errors.
 
 ## Frontend Installation
-
-:::tip Automation shortcut
-The `.env` and build (steps 1-2) are automated by `04-build.ps1`; the deploy (steps 3-6) by `06-deploy-fe.ps1`. Or follow the manual steps.
-:::
 
 The frontend is a Vite single-page application, deployed as a second standalone IIS site, `EdFi-AdminApp-FE`, with an HTTP binding on port 4200 and an HTTPS binding on port 4443; the HTTP binding only 301-redirects to HTTPS.
 
@@ -514,10 +415,10 @@ The frontend is a Vite single-page application, deployed as a second standalone 
    :::
 
    :::note
-   If your web fonts fail to load (HTTP 404 for `.woff2` files), your IIS may be missing that MIME type. See [Troubleshooting](../troubleshooting.md#frontend-troubleshooting).
+   If your web fonts fail to load (HTTP 404 for `.woff2` files), your IIS may be missing that MIME type. See [Troubleshooting](../../troubleshooting.md#frontend-troubleshooting).
    :::
 
-See the [Troubleshooting](../troubleshooting.md#frontend-troubleshooting) section if you hit errors.
+See the [Troubleshooting](../../troubleshooting.md#frontend-troubleshooting) section if you hit errors.
 
 ## Security headers
 
@@ -532,7 +433,7 @@ The API additionally sets `X-Content-Type-Options` and `X-Frame-Options` in appl
 
 The default install is suitable for a local or trusted-network deployment. Before exposing the Admin App more broadly:
 
-- **Use a CA-issued certificate.** The default self-signed certificate is trusted only on the install host. Bind a real certificate (`-CertificateThumbprint` or `-CertificatePfxPath`) so other machines trust the sites without warnings.
+- **Use a CA-issued certificate.** The default self-signed certificate is trusted only on the install host. Bind a CA-issued certificate (see [TLS and certificates](#tls-and-certificates)) so other machines trust the sites without warnings.
 - **Do not run the example Keycloak in production.** The local Keycloak example runs in `start-dev` (HTTP, embedded H2 database, hostname strictness off) and is for local development only. For production, run `kc.bat start` with `--hostname`, a real database, and TLS — or use your own OIDC provider.
 - **Keep upstream TLS verification on.** `SSL_VERIFICATION` defaults to `true`, so the API verifies the certificate of the ODS/API and Admin API it calls. If an upstream presents a self-signed or dev certificate, make Node trust it rather than disabling verification:
   1. Export the upstream's certificate (or its issuing CA) to a PEM file (`.crt`/`.pem`).
@@ -540,29 +441,33 @@ The default install is suitable for a local or trusted-network deployment. Befor
   3. Restart the API site so Node re-reads the value.
 
   On Node 22.15+ you can instead set `NODE_OPTIONS=--use-system-ca`, which honors the Windows certificate store.
-- **Review secrets handling.** A manual install keeps credentials in `production.js`; a scripted `install-all.ps1` run keeps them in the API App Pool's environment and writes the generated encryption key to an ACL-restricted `install-summary.txt`. Protect or rotate them wherever they live, per your policy.
+- **Review secrets handling.** A manual install keeps credentials in `production.js`. Protect or rotate them per your policy.
 - **Harden the database and App Pool identities.** This guide already connects as a least-privilege SQL login (`edfi_adminapp`, not `sa`); keep that separation in production.
 
 ## Uninstall
 
-This works the same whether you installed with the scripts or by hand, as long as you used the site names, paths, and database name from this guide.
+To remove a manual install, reverse the steps:
 
-- `uninstall.ps1` removes the generic Admin App install: the `EdFi-AdminApp-API` and `EdFi-AdminApp-FE` sites, the App Pool, the deployed directories, the `sbaa` database, the dockerized PostgreSQL/Yopass stacks (if used), and the npm cache folder. It leaves Node.js, SQL Server, and IIS in place. It prompts for confirmation; pass `-Force` for a non-interactive run, and `-SaPassword` to drop the SQL Server database over SQL authentication.
-- `uninstall-keycloak.ps1` tears down the local Keycloak example: it stops the Keycloak process, deletes the Keycloak install directory, and unsets the machine `JAVA_HOME`. The JDK itself is left installed.
+- In IIS Manager, remove the `EdFi-AdminApp-API` and `EdFi-AdminApp-FE` sites and their App Pool.
+- Delete the deployed folders (for example `C:\inetpub\EdFi-AdminApp-API` and `C:\inetpub\EdFi-AdminApp-FE`), and the npm cache folder if you created one.
+- Drop the `sbaa` database and the `edfi_adminapp` login.
+- If you set up the local Keycloak example, stop its process, delete its install directory, and unset the machine `JAVA_HOME` (the JDK can stay installed).
+
+Node.js, SQL Server, and IIS can remain in place.
 
 ## Next steps
 
 The Admin App is now running, but it manages **Ed-Fi ODS/API** instances that run separately — this guide does not install an ODS/API. To start using the Admin App, sign in and connect a running ODS/API environment (ODS/API 6.x or 7.x) by its Discovery API URL.
 
 :::note First sign-in
-Open the frontend at `https://localhost:4443` and sign in through the identity provider. For the local Keycloak example, use the seeded user — email `admin@example.com` (the `-AdminUsername` / `-TestUserEmail` default) and the password you passed as `-TestUserPassword`. This first user is the bootstrap administrator; additional users must be granted access from within the Admin App afterward.
+Open the frontend at `https://localhost:4443` and sign in through the identity provider. For the local Keycloak example, use the Keycloak user you created — its email must match `ADMIN_USERNAME` in `production.js` (default `admin@example.com`). This first user is the bootstrap administrator; additional users must be granted access from within the Admin App afterward.
 :::
 
 :::note
 If the ODS/API or Admin API presents a self-signed or dev certificate — common for a local ODS/API — adding an Environment fails with a certificate error (`DEPTH_ZERO_SELF_SIGNED_CERT`) in the API log (`logs\node-stdout.log`). Make Node trust the upstream certificate via `NODE_EXTRA_CA_CERTS`; see [Production considerations](#production-considerations).
 :::
 
-- [Configuring Ed-Fi Admin App](../configuration/configuring-admin-app.md)
-- [Configuring an Identity Provider for Ed-Fi Admin App](../configuration/identity-provider.md)
-- [Security Considerations](../configuration/security-considerations.md)
-- [Global Administration Tasks](../configuration/global-administration-tasks.md)
+- [Configuring Ed-Fi Admin App](../../configuration/configuring-admin-app.md)
+- [Configuring an Identity Provider for Ed-Fi Admin App](../../configuration/identity-provider.md)
+- [Security Considerations](../../configuration/security-considerations.md)
+- [Global Administration Tasks](../../configuration/global-administration-tasks.md)
