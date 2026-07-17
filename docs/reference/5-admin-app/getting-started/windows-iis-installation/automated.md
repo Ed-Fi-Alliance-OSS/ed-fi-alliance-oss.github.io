@@ -65,6 +65,31 @@ Pass a parameter only to change something the defaults do not cover. PostgreSQL 
 
 The script prompts for `-SqlAdminPassword`, `-AppDbPassword`, and the rest, the same as any other run. It provisions the Admin App login as a contained user, connects with encryption and validates the server certificate, and configures the API to do the same — nothing to set by hand. For a remote server that presents a self-signed certificate rather than a CA-issued one, add `-TrustServerCertificate`, which turns that validation off. Azure rejects a database password containing the login name, so avoid `edfi_adminapp` in the value; the script checks this up front.
 
+**Microsoft Entra ID, SQL Server** — an external OIDC provider. Register the application and its redirect URIs in Entra first, and make sure a user exists there whose email matches `-AdminUsername`:
+
+```powershell
+.\install-all.ps1 -IdpProvider microsoft `
+  -SaPassword (Read-Host -AsSecureString 'SQL Server sa password') `
+  -AppDbPassword (Read-Host -AsSecureString 'Admin App DB login password') `
+  -OidcIssuer 'https://login.microsoftonline.com/<tenant-id>/v2.0' `
+  -OidcClientId '<application-id>' `
+  -OidcClientSecret (Read-Host -AsSecureString 'Entra client secret') `
+  -AdminUsername 'you@yourtenant.onmicrosoft.com'
+```
+
+**Google Workspace, SQL Server** — an external OIDC provider. The issuer is defaulted for Google; register the OAuth client first:
+
+```powershell
+.\install-all.ps1 -IdpProvider google `
+  -SaPassword (Read-Host -AsSecureString 'SQL Server sa password') `
+  -AppDbPassword (Read-Host -AsSecureString 'Admin App DB login password') `
+  -OidcClientId '<google-client-id>' `
+  -OidcClientSecret (Read-Host -AsSecureString 'Google client secret') `
+  -AdminUsername 'you@yourdomain.com'
+```
+
+`-IdpProvider` accepts `keycloak`, `microsoft`, `google`, or `other` (a generic OIDC provider you register yourself). Pass `-OidcIssuer` and `-OidcClientId` for `microsoft` and `other`; for `keycloak` and `google` the issuer is defaulted. In every external-provider example, `-AdminUsername` is the email of the first (bootstrap) administrator — it must exactly match the `email` claim your identity provider returns for that user. See [Configuring an Identity Provider](../../configuration/identity-provider/readme.md) for how to register the application with each provider.
+
 :::note
 By default the sites use a self-signed certificate (auto-trusted on this machine only). To bind a real certificate, pass `-CertificateThumbprint`, or `-CertificatePfxPath` with `-CertificatePassword` (see [TLS and certificates](./manual.md#tls-and-certificates)). Yopass is off by default; add `-SetupYopassDocker` to stand up a local Yopass via Docker, or `-YopassUrl <url>` to point at an existing one.
 :::
@@ -109,6 +134,6 @@ A fresh install has no users, teams, or environments yet. The Global Admin Quick
 
 - [Global Admin Quick Start](../../user-guide/global-admin-quick-start/readme.md)
 - [Configuring Ed-Fi Admin App](../../configuration/configuring-admin-app.md)
-- [Configuring an Identity Provider for Ed-Fi Admin App](../../configuration/identity-provider.md)
+- [Configuring an Identity Provider for Ed-Fi Admin App](../../configuration/identity-provider/readme.md)
 - [Security Considerations](../../configuration/security-considerations.md)
 - [Global Administration Tasks](../../configuration/global-administration-tasks.md)
