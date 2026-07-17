@@ -17,6 +17,10 @@ This is one of three alternative installation paths. If you instead want to run 
 - **PostgreSQL**: Database server
 - **systemd**: For service management (most modern Linux distributions)
 
+:::note
+This path uses **PostgreSQL**. The Admin App is database-engine-agnostic, but SQL Server is not documented or validated for the Unix path; for SQL Server, use the [Docker Compose](./docker-installation.md) or [Windows IIS](./windows-iis-installation.md) path.
+:::
+
 ## Unix Backend API Installation
 
 1. **Create application user**:
