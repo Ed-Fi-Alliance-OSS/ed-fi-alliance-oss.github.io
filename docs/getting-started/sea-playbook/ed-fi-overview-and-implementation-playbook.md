@@ -6,6 +6,8 @@ sidebar_position: 2
 
 Last updated: December 16, 2024
 
+**[Download SEA Ed-Fi Overview and Implementation Playbook V2 (PDF)](https://edfidocs.blob.core.windows.net/$web/assets/getting-started/sea-playbook/SEA%20Ed-Fi%20Overview%20and%20Implementation%20Playbook%20V2.pdf)**
+
 This playbook provides an overview of the Ed-Fi Technology Suite and practical guidance for State Education Agencies
 (SEAs) implementing Ed-Fi Data Standard for data modernization. It covers the problem space, available
 implementation approaches, a phased timeline, and best practices for vendor and LEA coordination.
