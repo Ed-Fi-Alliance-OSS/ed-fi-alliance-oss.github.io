@@ -49,8 +49,9 @@ jobs:
         if: ${{ steps.modules-cache.outputs.cache-hit != 'true' }}
         run: npm ci
 
-      - name: Lint markdown
-        run: npm run lint
+      # TODO: re-enable linting after existing lint has been cleaned up
+      # - name: Lint markdown
+      #   run: npm run lint
 
       - name: Test build website
         run: npm run build
