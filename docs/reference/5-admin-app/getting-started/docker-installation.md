@@ -148,9 +148,7 @@ Some special characters are not currently supported in the database password (fo
 :::
 
 :::note
-**Important:** The `VITE_IDP_ACCOUNT_URL` value may differ from your Keycloak admin console URL.
-This should point to the **account management interface** (`/auth/realms/{realm-name}/account/`), not the admin console.
-Ensure this matches your actual Keycloak realm configuration and domain.
+**Important:** `VITE_IDP_ACCOUNT_URL` should point to your identity provider's **end-user account-management page**, not its admin console. It is provider-specific: Keycloak `https://<host>/auth/realms/{realm}/account/`, Microsoft Entra ID `https://myaccount.microsoft.com/`, Google Workspace `https://myaccount.google.com/`.
 :::
 
 - **SSL Certificates:** Replace self-signed certificates with production certificates in a live environment.
@@ -162,6 +160,6 @@ A fresh install has no users, teams, or environments yet. The Global Admin Quick
 
 - [Global Admin Quick Start](../user-guide/global-admin-quick-start/readme.md)
 - [Configuring Ed-Fi Admin App](../configuration/configuring-admin-app.md)
-- [Configuring an Identity Provider for Ed-Fi Admin App](../configuration/identity-provider.md)
+- [Configuring an Identity Provider for Ed-Fi Admin App](../configuration/identity-provider/readme.md)
 - [Security Considerations](../configuration/security-considerations.md)
 - [Global Administration Tasks](../configuration/global-administration-tasks.md)
