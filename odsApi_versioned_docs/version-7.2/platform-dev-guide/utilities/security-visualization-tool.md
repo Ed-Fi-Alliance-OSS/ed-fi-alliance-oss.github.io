@@ -68,7 +68,7 @@ output folder you specified. There are .png and .svg versions for each
 schema. The root of the folder contains visualizations for the set of
 authorizations that are possible, and there is a sub-folder for each
 authorization claim set that has been configured. The as-shipped ODS / API
-v6.1 contains eight claim sets, resulting in eight folders.
+v7.2 contains nine claim sets, resulting in nine folders.
 
 | Type | Name |
 | -- | -- |
@@ -77,6 +77,7 @@ v6.1 contains eight claim sets, resulting in eight folders.
 | Directory | Assessment Vendor |
 | Directory | Bootstrap Descriptors and EdOrgs |
 | Directory | District Hosted SIS Vendor |
+| Directory | Ed-Fi ODS Admin App |
 | Directory | Ed-Fi Sandbox |
 | Directory | Roster Vendor |
 | Directory | SIS Vendor |
