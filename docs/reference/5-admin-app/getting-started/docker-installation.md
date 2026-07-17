@@ -27,7 +27,7 @@ environment variable configuration.
 The Docker Compose stack supports **both** PostgreSQL and SQL Server — you need only one. **PostgreSQL is the default.** To use SQL Server instead, set `DB_ENGINE=mssql` in `.env`, uncomment the `MSSQL_*` variables there (`MSSQL_SA_PASSWORD`, `MSSQL_ACCEPT_EULA=Y`), and start the stack with the `-MSSQL` switch:
 
 ```powershell
-./start-services.ps1 -MSSQL
+compose/start-services.ps1 -MSSQL
 ```
 
 ## Quick Start
