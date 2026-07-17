@@ -77,7 +77,7 @@ This path uses **PostgreSQL**. The Admin App is database-engine-agnostic, but SQ
      //this should match with a user in your Idp
      ADMIN_USERNAME: 'admin@example.com',
      DB_ENCRYPTION_SECRET_VALUE: {
-       KEY: 'your-32-char-encryption-key-here'
+       KEY: 'your-64-hex-char-encryption-key' // 32-byte key, hex-encoded (64 hex chars); see tip below
      },
      FE_URL: 'https://your-domain.com/adminapp',
      MY_URL: 'https://your-domain.com/adminapp-api',
@@ -87,7 +87,7 @@ This path uses **PostgreSQL**. The Admin App is database-engine-agnostic, but SQ
    ```
 
    :::tip
-   `your-32-char-encryption-key-here` Can be replaced with `openssl rand -hex 32` or `node -e "console.log('KEY: '+ require('crypto').randomBytes(32).toString('hex'))"`
+   `your-64-hex-char-encryption-key` can be generated with `openssl rand -hex 32` or `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`
    :::
 
 4. **Create systemd service**:
