@@ -144,9 +144,7 @@ VITE_IDP_ACCOUNT_URL=https://yourdomain.com/auth/realms/edfi/account/
 ```
 
 :::note
-**Important:** The `VITE_IDP_ACCOUNT_URL` value may differ from your Keycloak admin console URL.
-This should point to the **account management interface** (`/auth/realms/{realm-name}/account/`), not the admin console.
-Ensure this matches your actual Keycloak realm configuration and domain.
+**Important:** `VITE_IDP_ACCOUNT_URL` should point to your identity provider's **end-user account-management page**, not its admin console. It is provider-specific: Keycloak `https://<host>/auth/realms/{realm}/account/`, Microsoft Entra ID `https://myaccount.microsoft.com/`, Google Workspace `https://myaccount.google.com/`.
 :::
 
 - **SSL Certificates:** Replace self-signed certificates with production certificates in a live environment.
@@ -155,6 +153,6 @@ Ensure this matches your actual Keycloak realm configuration and domain.
 ## Next steps
 
 - [Configuring Ed-Fi Admin App](../configuration/configuring-admin-app.md)
-- [Configuring an Identity Provider for Ed-Fi Admin App](../configuration/identity-provider.md)
+- [Configuring an Identity Provider for Ed-Fi Admin App](../configuration/identity-provider/readme.md)
 - [Security Considerations](../configuration/security-considerations.md)
 - [Global Administration Tasks](../configuration/global-administration-tasks.md)

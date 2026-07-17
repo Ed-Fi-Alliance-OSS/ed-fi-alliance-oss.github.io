@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Configuring an Identity Provider for Ed-Fi Admin App
 
-The Ed-Fi Admin App uses an Open ID Connect (OIDC) compatible Identity Provider (IdP) for managing user accounts. In theory any OIDC-compatible IdP will suffice. The Ed-Fi Alliance has validated three providers end-to-end on the native Windows/IIS deployment: [Keycloak](./keycloak.md) (the default example), [Microsoft Entra ID](./microsoft-entra-id.md), and [Google Workspace](./google-workspace.md). Each has its own guide, linked below. Another development team has used Auth0.
+The Ed-Fi Admin App uses an Open ID Connect (OIDC) compatible Identity Provider (IdP) for managing user accounts. In theory any OIDC-compatible IdP will suffice. The Ed-Fi Alliance has validated three providers end-to-end on the native Windows/IIS deployment: [Keycloak](./keycloak.md) (the default example), [Microsoft Entra ID](./microsoft-entra-id.md), and [Google Workspace](./google-workspace.md). Each has its own guide, linked below.
 
 ## General IdP Guidance and Configuration
 

@@ -189,6 +189,6 @@ This path uses **PostgreSQL**. The Admin App is database-engine-agnostic, but SQ
 ## Next steps
 
 - [Configuring Ed-Fi Admin App](../configuration/configuring-admin-app.md)
-- [Configuring an Identity Provider for Ed-Fi Admin App](../configuration/identity-provider.md)
+- [Configuring an Identity Provider for Ed-Fi Admin App](../configuration/identity-provider/readme.md)
 - [Security Considerations](../configuration/security-considerations.md)
 - [Global Administration Tasks](../configuration/global-administration-tasks.md)

@@ -13,7 +13,7 @@ This is one of three alternative installation paths. If you instead want to run 
 ## Before you start: decide three things
 
 1. **Database engine** — SQL Server (default) or PostgreSQL. You need only one.
-2. **Identity provider (IdP)** — the Admin App authenticates against an OIDC provider. This guide sets up **Keycloak**, running locally, as the example identity provider. The Admin App's auth engine uses generic OIDC discovery, but Keycloak is the identity provider documented for this release. See [Configuring an Identity Provider](../../configuration/identity-provider.md).
+2. **Identity provider (IdP)** — the Admin App authenticates against an OIDC provider. This guide sets up **Keycloak**, running locally, as the example identity provider; the Admin App's auth engine uses generic OIDC discovery, so Microsoft Entra ID and Google Workspace are also supported. See [Configuring an Identity Provider](../../configuration/identity-provider/readme.md).
 3. **How much to automate** — pick one of the three installation paths below.
 
 :::info
