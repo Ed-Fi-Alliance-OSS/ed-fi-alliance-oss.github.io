@@ -57,7 +57,6 @@ Composites are not tested by the Smoke Test Utility at this time.
 | Get All | Yes | Yes | Yes |
 | Get All (skip and limit) | Yes | Yes | No |
 | Get by Id | Yes | Yes | No |
-| Get by Key | Yes | Yes | No |
 | Get by Example | Yes | Yes | No |
 | Post | No | No | Yes |
 | Put | No | No | Yes |

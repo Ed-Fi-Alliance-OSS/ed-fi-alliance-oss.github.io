@@ -118,7 +118,6 @@ of an interchange:
 | `s` | `secret` | The web API OAuth secret |
 | `t` | `taskcapacity` | Maximum concurrent tasks to be buffered |
 | `w` | `working` | Path to a writable folder containing the working files, such as the swagger metadata cache and hash cache |
-| `y` | `year` | The target school year for the web API (e.g., `2018`) |
 |     | `include-stats` | Include timing stats |
 
 ## Use Tips
