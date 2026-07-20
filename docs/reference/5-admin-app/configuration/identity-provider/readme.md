@@ -58,12 +58,13 @@ The Ed-Fi Admin App implements a two-layer security model:
 
 - The Admin App maintains its own authorization system independent of the IdP
 - User permissions, roles, and access controls are managed within the Admin App database
-- The IdP does not need to provide special claims, scopes, or role information
+- The IdP does not need to provide Admin App roles or permissions; those are managed within the Admin App database
+- The Admin App does require a populated `email` claim for each user (typically via the `email` scope; some providers require enabling the claim)
 - Users only need a valid IdP account; all authorization decisions are made by the Admin App
 
 **What this means for IdP configuration:**
 
-- You do not need to configure custom claims or scopes in your IdP
+- Ensure your IdP issues the `email` claim for users (Entra requires adding `email` as an optional claim)
 - You do not need to map roles or permissions from the IdP to the Admin App
 - Users simply need a valid account in the IdP with basic profile information (username, email, name)
 - All permission management happens within the Admin App after successful authentication
