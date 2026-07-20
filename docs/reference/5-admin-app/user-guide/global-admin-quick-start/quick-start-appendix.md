@@ -39,7 +39,8 @@ Used by `bootstrap.ps1` to seed the machine user and by `cleanup.ps1`.
 | --- | --- | --- |
 | `DB_ENGINE` | `mssql` | Database engine: `mssql` or `pgsql` |
 | `DATABASE_NAME` | `sbaa` | Admin App application database name |
-| `SA_PASSWORD` | _(empty)_ | SQL Server `sa` password for `tcp:localhost,1433` — **required** when `DB_ENGINE=mssql` |
+| `APP_DB_USERNAME` | `edfiadminapp` | SQL Server login for the dedicated least-privilege app user created by the Windows installer (`install-all.ps1 -AppDbPassword`) |
+| `APP_DB_PASSWORD` | _(empty)_ | Password for `APP_DB_USERNAME` — **required** when `DB_ENGINE=mssql`. The scripts deliberately never connect as `sa` |
 | `POSTGRES_APP_PASSWORD` | _(empty)_ | PostgreSQL app-user password — **required** when `DB_ENGINE=pgsql` |
 | `POSTGRES_HOST` | `localhost` | PostgreSQL host |
 | `POSTGRES_PORT` | `5432` | PostgreSQL port |
@@ -52,14 +53,15 @@ Used by `bootstrap.ps1` to seed the machine user and by `cleanup.ps1`.
 | --- | --- | --- |
 | `API_BASE_URL` | `https://localhost/adminapp-api/api` | Admin App API base URL (through the reverse proxy) |
 | `TOKEN_URL` | `https://localhost/auth/realms/edfi/protocol/openid-connect/token` | Your issuer's token endpoint (see [Finding your token endpoint](#finding-your-token-endpoint)) |
-| `OAUTH_SCOPE` | `login:app` | OAuth scope requested for the machine token (Keycloak / Auth0: `login:app`) |
+| `OAUTH_SCOPE` | `login:app` | OAuth scope requested for the machine token (Keycloak: `login:app`) |
 | `TEAM_NAME` | `Quick Start` | Team to create |
 | `ENVIRONMENT_NAME` | `Ed-Fi ODS/API v7.3` | Environment to create |
 | `ENVIRONMENT_LABEL` | `QuickStart` | Environment label |
 | `ADMIN_API_URL` | `https://localhost/AdminApi` | ODS Admin API URL |
 | `ODS_API_DISCOVERY_URL` | `https://localhost/WebApi` | ODS/API discovery URL |
 | `TENANT_NAME` | `default` | Ed-Fi tenant to create under the environment |
-| `ODSS_JSON` | _(two sample instances)_ | JSON array of ODS instances to attach; ids **and names** must match existing rows in `EdFi_Admin.dbo.OdsInstances` on the target ODS/API — the scripts do not create or correct them (see [Set Up the ODS Instances](run-the-quick-start#set-up-the-ods-instances-odss_json)) |
+| `ADMIN_USERNAME` | _(empty)_ | Username of the **human** bootstrap admin. When set, `quick-start.ps1` also adds that user to the team (Tenant admin role) so the **Applications** and **Profiles** pages work for them; leave empty to skip |
+| `ODSS_JSON` | _(two sample instances)_ | JSON array of ODS instances to attach; ids must match `EdFi_Admin.dbo.OdsInstances` on the target ODS/API |
 | `SKIP_CERTIFICATE_CHECK` | `true` | `true`: skip TLS validation (local self-signed certificates) |
 
 ### Claim set copies (EdFi_Security)
@@ -114,8 +116,8 @@ parameter passed explicitly overrides the `.env` value.
 | `-Force` | Skip the confirmation prompt (automation) |
 | `-EnvFile <path>` | Use a different env file (default: `./.env`) |
 | `-SkipClaimsets` | Leave the claim set copies in `EdFi_Security` (e.g. an application still uses one) |
-| `-EnvironmentName` / `-TeamName` / `-MachineUsername` / `-ClaimSetNames` | Override the names to delete |
-| `-DbEngine`, `-DatabaseName`, `-SaPassword`, `-PostgresAppPassword`, … | Override the Admin App database connection |
+| `-EnvironmentName` / `-TeamName` / `-MachineUsername` | Override the names to delete |
+| `-DbEngine`, `-DatabaseName`, `-AppDbUsername`, `-AppDbPassword`, `-PostgresAppPassword` | Override the database connection (mssql always uses the app login, never `sa`) |
 | `-SecuritySqlServer` | Override the SQL Server hosting `EdFi_Security` (everything else reuses the database values above and the `SECURITY_*` `.env` settings) |
 
 ### Running the scripts directly
@@ -146,10 +148,14 @@ resources instead of duplicating them.
 - **403 Forbidden on Applications / Profiles**
   (`{"message":"Forbidden resource"...}` at
   `…/edfi-tenants/<id>/admin-api/v2/profiles/`). This is the Admin App's own
-  authorization, not the live Admin API. It almost always means the team
-  membership is role **2 (Global admin)** instead of **6 (Tenant admin)** — role
-  2 lacks the team-scoped profile privilege. Re-run the script (it upgrades the
-  membership automatically) or `PUT` the membership's `roleId` to 6.
+  authorization, not the live Admin API. Two common causes:
+  - **The signed-in user has no team membership** — the Global admin role alone
+    lacks the team-scoped profile privilege. Set `ADMIN_USERNAME` to the human
+    bootstrap admin's username and re-run: `quick-start.ps1` adds them to the
+    team with the Tenant admin role.
+  - **The membership uses role 2 (Global admin)** instead of **6 (Tenant
+    admin)**. Re-run the script (it upgrades the membership automatically) or
+    `PUT` the membership's `roleId` to 6.
 - **Empty ODS instances list.** The ids in `ODSS_JSON` must exist in
   `EdFi_Admin.dbo.OdsInstances` on the target ODS/API; otherwise the sync finds
   nothing to attach. Query the table and use its real `OdsInstanceId` values —

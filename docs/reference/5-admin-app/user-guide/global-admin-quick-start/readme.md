@@ -14,7 +14,8 @@ The scripts configure, in the **Admin App application database** (through the
 Admin App API, running as the authenticated service-account (machine) user):
 
 - An administrative **user** with the global **Global admin** role
-- A single **team** (default `Quick Start`), with the user as a **member** using
+- A single **team** (default `Quick Start`), with the machine user — and the
+  human bootstrap admin, when `ADMIN_USERNAME` is set — as **members** using
   the **Tenant admin** role (id 6) — the role that carries the team-scoped
   privileges (so the Applications and Profiles pages are authorized)
 - A single **environment** (default `Ed-Fi ODS/API v7.3`, label `QuickStart`),

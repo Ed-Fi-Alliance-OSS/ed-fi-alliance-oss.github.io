@@ -30,11 +30,12 @@ review:
 | --- | --- |
 | `PROVIDER` | Identity provider for the machine client: `keycloak` |
 | `KEYCLOAK_ADMIN_PASSWORD` | Keycloak master admin password (required when `PROVIDER=keycloak`) |
-| `DB_ENGINE`, `SA_PASSWORD` / `POSTGRES_APP_PASSWORD` | Admin App database engine and credentials, used to seed the machine user |
+| `DB_ENGINE`, `APP_DB_PASSWORD` / `POSTGRES_APP_PASSWORD` | Admin App database engine and credentials, used to seed the machine user. SQL Server uses the dedicated least-privilege `edfiadminapp` login — never `sa` |
 | `TOKEN_URL` | Your issuer's token endpoint (the default is the Docker-stack Keycloak) |
 | `API_BASE_URL`, `ADMIN_API_URL`, `ODS_API_DISCOVERY_URL` | Where the Admin App API, ODS Admin API, and ODS/API are reachable |
 | `ODSS_JSON` | JSON array of ODS instances to attach; ids **and names** must match existing rows in `EdFi_Admin.dbo.OdsInstances` on the target ODS/API (see below) |
 | `SECURITY_*` | Where the ODS/API's `EdFi_Security` database lives (server, database name, container), used to copy the built-in claim sets — credentials reuse `SA_PASSWORD` / `POSTGRES_*` |
+| `ADMIN_USERNAME` | Username of the human bootstrap admin; when set, the scripts add them to the team so the **Applications** and **Profiles** pages work for that account |
 
 See the [Appendix](quick-start-appendix) for the full environment variable
 reference.
@@ -102,8 +103,9 @@ application later fails with
    database. See [Machine User Setup](machine-user-setup) for what it does and
    how to do it manually instead.
 2. **`quick-start.ps1`** — provisions the team, environment, tenant, ODS
-   instances, and ownerships through the Admin App API. The ODS instances in
-   `ODSS_JSON` must already exist in `EdFi_Admin.dbo.OdsInstances` — see
+   instances, and ownerships through the Admin App API, and adds the machine
+   user — plus the human bootstrap admin when `ADMIN_USERNAME` is set — to the
+   team. `ODSS_JSON` must already exist in `EdFi_Admin.dbo.OdsInstances` — see
    [Set Up the ODS Instances](#set-up-the-ods-instances-odss_json).
 3. **`copy-claimsets.ps1`** — copies every built-in claim set under an `AA`
    prefix — `SIS Vendor` becomes `AA SIS Vendor` — directly in the ODS/API's
@@ -143,6 +145,14 @@ and — because this path registers working credentials — the **Applications**
 `AA`-prefixed claim set copies (e.g. `AA SIS Vendor`) appear in the claim set
 dropdown.
 
+:::tip
+
+The Applications and Profiles pages authorize through a **team membership**,
+which the bootstrap user only gets when `ADMIN_USERNAME` is set in `.env`. If
+those pages return a 403, set it and re-run `./run.ps1 -SkipBootstrap`.
+
+:::
+
 ## Cleaning Up
 
 To tear down the environment and everything attached to it (ownership, ODS
@@ -175,5 +185,10 @@ Deleting a claim set that an application still uses leaves that application's
 credentials without resource access. Delete the application first, or pass
 `-SkipClaimsets`. Only the copies are ever removed — the built-in claim sets
 are never touched.
+
+The Keycloak artifacts `bootstrap.ps1` created (the machine client, the
+`login:app` client scope, and its mappers) are deliberately left in the realm
+so re-runs reuse them; remove them manually in the Keycloak admin console if
+they are no longer wanted.
 
 :::
