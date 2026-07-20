@@ -54,7 +54,7 @@ How the components relate:
 
 ## Authentication (Identity Provider)
 
-User authentication for the Admin App requires an Open ID Connect (OIDC) compatible Identity Provider (IdP). The IdP authenticates the administrators who sign in to the Admin App; permissions and roles for those users are then managed within the Admin App itself.
+User authentication for the Admin App requires an OpenID Connect (OIDC) compatible Identity Provider (IdP). The IdP authenticates the administrators who sign in to the Admin App; permissions and roles for those users are then managed within the Admin App itself.
 
 For configuration details and supported providers, see [Configuring an Identity Provider for Ed-Fi Admin App](/reference/admin-app/configuration/identity-provider).
 
@@ -107,13 +107,13 @@ The Ed-Fi Admin App organizes everything it manages around a small set of core c
 
 - **Teams** — A collection of owned resources. Most installations will have a single team consisting of all environments at the top level, and all the related owned resources therein.
 - **Environments** — A single deployment of the Ed-Fi ODS/API. Drilling into an environment lists its Tenants, ODSs, Ed-Orgs, Vendors, Applications, and Claimsets.
-- **Instances (ODS)** — Operational Data Store. A database that holds operational data for the current school year in the Ed-Fi API, stored per the Ed-Fi Data Standard. A single/multi tenant `EdFi_Admin` + `EdFi_Security` pairing can support one or more `EdFi_Ods` instances (for example, one instance per school year).
+- **Instances (ODS)** — Operational Data Store. A database that holds operational data for the current school year in the Ed-Fi API, stored per the Ed-Fi Data Standard. A single-tenant or multi-tenant `EdFi_Admin` + `EdFi_Security` pairing can support one or more `EdFi_Ods` instances (for example, one instance per school year).
 - **Education Organizations (Ed-Orgs)** — The education organizations with which API credentials are associated. An application can be associated with one or more Ed-Orgs, and data in the environment related to those Ed-Orgs is accessible via the application's credentials.
 - **Vendors** — A named entity that owns one or more applications within the system. They are the main link between applications and namespace prefixes — for example, an assessment vendor like iReady or ACT, or a SIS vendor like PowerSchool.
 - **Claimsets** — A collection of rules/permissions that define which resources can be accessed, what actions can be performed, and the authorization strategies that apply.
 - **Profiles** — Complement claimsets by controlling access at a more granular level — at the columnar or sub-collection level within resources.
 - **Applications** — A named entity that associates resource authorizations with API clients. All applications belong to a vendor and are assigned a claimset (and optionally one or more profiles).
-- **API Clients** — The client entities through which an application connects to the Ed-Fi ODS/API. An application has one or more API clients, each with its own set of credentials and its own ODS instance assignments. Creating an application automatically creates its first (default) API client.
+- **API Clients** — The client entities through which an application connects to the Ed-Fi ODS/API. An application has one on one API clients. Creating an application automatically creates its first (default) API client.
 - **Credentials** — The `client_id` and `client_secret` (aka "key and secret") for authenticating with an Ed-Fi API application. The ODS/API's security database supports multiple sets of credentials per application, as does ODS Admin API version 2.3. However, the Ed-Fi Admin App only supports a one-to-one mapping and treats the credentials as synonymous with the application itself.
 
 The diagram below shows how these concepts relate to one another.
