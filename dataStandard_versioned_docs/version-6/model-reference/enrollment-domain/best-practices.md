@@ -342,9 +342,9 @@ responsibility of the education organization for the student. The kind of
 responsibility is specified in the Responsibility descriptor value according to
 policy.
 
-The _SEORA_ is the primary association for tracking responsibility for a
-student, differentiated from the _SSA_ (which captures enrollment) and the
-_SEOA_ (which captures demographics and student indicators).
+The StudentEducationOrganizationResponsibilityAssociation _SEORA_ is the primary association for tracking responsibility for a
+student, differentiated from the StudentSchoolAssociation (_SSA_) which captures enrollment ,and the
+StudentEducationOrganizationAssociation (_SEOA_) which explains the context of the student's relationship to the education organization.
 
 The _SEORA_ distinguishes two education organization roles:
 
