@@ -30,10 +30,10 @@ not detected in the default installation path.
 ## Step 2. Build and Run the Security Visualization Tool
 
 * Start Visual Studio, open the Security Visualization Tool solution from
-  \\Ed-Fi-ODS\\Utilities\\GenerateSecurityGraphs\\GenerateSecurityGraphs.sln,
+  `\Ed-Fi-ODS\Utilities\GenerateSecurityGraphs\GenerateSecurityGraphs.sln`,
   and build the solution.
 * Open a Console window and navigate to
-  \\Ed-Fi-ODS\\Utilities\\GenerateSecurityGraphs\\GenerateSecurityGraphs\\bin\\Debug\\net8.0.
+  `\Ed-Fi-ODS\Utilities\GenerateSecurityGraphs\GenerateSecurityGraphs\bin\Debug\net8.0`.
 * Run `GenerateSecurityGraphs.exe --help` to view the parameters that can be
   passed to the application.
 
@@ -54,7 +54,25 @@ possible, and there is a sub-folder for each authorization claim set that has
 been configured. The as-shipped ODS / API v5.4 contains nine claim sets,
 resulting in nine folders.
 
-![Output Folder Structure](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-8-13_7-36-37.png)
+| Type | Name |
+| -- | -- |
+| Directory | AB Connect |
+| Directory | Assessment Read |
+| Directory | Assessment Vendor |
+| Directory | Bootstrap Descriptors and EdOrgs |
+| Directory | District Hosted SIS Vendor |
+| Directory | Ed-Fi ODS Admin App |
+| Directory | Ed-Fi Sandbox |
+| Directory | Roster Vendor |
+| Directory | SIS Vendor |
+| File | _icon.png |
+| File | assessmentMetadata |
+| File | assessmentMetadata.png |
+| File | assessmentMetadata.svg |
+| File | AssessmentMetadata_icon.png |
+| File | educationOrganizations |
+| File | educationOrganizations.png |
+| File | ... etc. |
 
 ## Example Output
 

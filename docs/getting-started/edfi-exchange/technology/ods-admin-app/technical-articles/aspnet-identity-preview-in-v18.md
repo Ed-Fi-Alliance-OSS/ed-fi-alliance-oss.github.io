@@ -1,10 +1,14 @@
 # ASP.NET Identity (Preview in v1.8)
 
-> [!INFO] In the Admin App v2.0.0, ASP.NET Identity was promoted to a supported
-> feature. The documentation for the feature can be found in the [Securing the
-> Admin App](../getting-started/securing-the-admin-app.md)
-> section of the Admin App User Guide. Version 1.8 of the Admin App contained a
-> preview version. This is the documentation for the preview in v1.8.
+:::info
+
+In the Admin App v2.0.0, ASP.NET Identity was promoted to a supported
+feature. The documentation for the feature can be found in the [Securing the
+Admin App](../getting-started/securing-the-admin-app.md)
+section of the Admin App User Guide. Version 1.8 of the Admin App contained a
+preview version. This is the documentation for the preview in v1.8.
+
+:::
 
 This section describes how to enable the [ASP.NET
 Identity](https://docs.microsoft.com/en-us/aspnet/identity/overview/getting-started/introduction-to-aspnet-identity)
