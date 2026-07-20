@@ -122,11 +122,11 @@ Audience Resolve mapper adds a second `account` audience, making `aud` an array
 **Microsoft Entra ID** is **not supported** as the machine-token provider in
 Admin App v4.0: Entra client-credentials tokens carry app permissions in the
 `roles` claim rather than `scope`, and Admin App v4.0 does not read the
-`login:app` grant from `roles`. Use Keycloak or Auth0 for the service account
+`login:app` grant from `roles`. Use Keycloak for the service account
 instead.
 
 ## Google Workspace (not supported)
 
 **Google Workspace** is **not supported** for machine-to-machine authentication:
 its service-account tokens cannot carry the `login:app` claim the Admin App
-requires. Use Keycloak or Auth0 for the service account instead.
+requires. Use Keycloak for the service account instead.
