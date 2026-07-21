@@ -35,10 +35,10 @@ The following are required to install the Admin API with IIS:
 ### Installation files
 
 :::note
- The following is a Nuget package containing the **Admin API v2.3.1 source files** for manual deployment to IIS.
+ The following is a Nuget package containing the **Admin API v2.3 source files** for manual deployment to IIS.
 
 * [EdFi.Suite3.ODS.AdminApi
-     v2.3.1](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.Suite3.ODS.AdminApi/overview/2.3.1)
+     v2.3](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.Suite3.ODS.AdminApi/overview/2.3.2)
 
 :::
 
@@ -47,7 +47,7 @@ The following are required to install the Admin API with IIS:
 Create a directory to hold all of the Admin API source files. In this example,
 we'll use a directory on the following path: `C:\Ed-Fi\AdminAPI`.
 
-![Empty Installation Folder](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/installation-v2/Empty%20Installation%20Folder.png)
+![Empty Installation Folder](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/installation-v2/Empty%20Installation%20Folder.png)
 
 ### **Step 2. Rename and Unzip Admin API Source Files**
 
@@ -55,9 +55,9 @@ Download and rename the linked Nuget Package (.npkg) to .zip
 
 Unzip the contents into the folder created in Step 1.
 
-![Populated Installation Folder](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/installation-v2/Populated%20Installation%20Folder.png)
+![Populated Installation Folder](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/installation-v2/Populated%20Installation%20Folder.png)
 
-![Installation Image](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/installation-v2/image2024-5-7_13-7-50.png)
+![Installation Image](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/installation-v2/image2024-5-7_13-7-50.png)
 
 There will be two folders. AdminApi folder will have binaries. Installer folder
 contains PowerShell scripts required for installation.
@@ -200,36 +200,36 @@ Here is a snippet from a properly configured application settings file:
 Open IIS Manager, and double-click on "Server Certificates". Note that we must
 select a server/machine in the left sidebar to see this option.
 
-![Server Certificate](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/installation-v2/image2019-7-17_14-17-7.png)
+![Server Certificate](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/installation-v2/image2019-7-17_14-17-7.png)
 
 On the Server Certificate page, click on "Create Self-Signed Certificate..." on
 the Actions bar to the right.
 
-![Self-Signed Certificate](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/installation-v2/image2019-7-17_14-19-7.png)
+![Self-Signed Certificate](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/installation-v2/image2019-7-17_14-19-7.png)
 
 For the certificate, use "Ed-Fi-ODS" as the friendly name and make sure the
 certificate store is set to "Personal". Click OK. We will use this certificate
 in an upcoming step.
 
-![Personal Certificate](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/installation-v2/image2019-7-17_14-21-50.png)
+![Personal Certificate](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/installation-v2/image2019-7-17_14-21-50.png)
 
 ### **Step 6. Create Necessary Application Pools**
 
 Back in the IIS Manager main page, expand the server/machine on the left sidebar
 and click on Application Pools.
 
-![Application Pools](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/installation-v2/image2019-7-17_15-53-53.png)
+![Application Pools](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/installation-v2/image2019-7-17_15-53-53.png)
 
 Click on "Add Application Pool..." on the Actions bar to the right, enter
 "Ed-Fi" as the name. Click OK.
 
-![Add Application Pools](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/installation-v2/image2019-7-17_15-57-20.png)
+![Add Application Pools](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/installation-v2/image2019-7-17_15-57-20.png)
 
 Once that is created, click on the "Ed-Fi" application pool and select "Advanced
 Settings..." on the Actions bar to the right. Change the Start Mode to
 "AlwaysRunning".
 
-![Always Running](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/installation-v2/image2019-7-17_16-1-46.png)
+![Always Running](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/installation-v2/image2019-7-17_16-1-46.png)
 
 This next bit is optional if you want to use an app pool identity. If you would
 like to use the default "ApplicationPoolIdentity", then you can skip this
@@ -244,12 +244,12 @@ where "localhost" is the app pool domain. Once you've entered the correct
 credentials, click OK on all screens until you're back to the main Application
 Pools page.
 
-![Identity](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/installation-v2/image2019-7-17_16-8-37.png)
+![Identity](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/installation-v2/image2019-7-17_16-8-37.png)
 
 After that's done, we'll repeat the exact same steps in this section, but enter
 "Admin API" as the Application Pool name. We should now have 2 app pools.
 
-![Pool Names](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/installation-v2/image2022-8-12_11-59-40.png)
+![Pool Names](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/installation-v2/image2022-8-12_11-59-40.png)
 
 ### **Step 8. Create Admin API Website**
 
@@ -262,7 +262,7 @@ select "Add Application...", and perform the following:
     in directory with Admin API source files).
 4. Hit OK.
 
-![Web Site](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/installation-v2/image2019-7-17_16-31-47.png)
+![Web Site](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/installation-v2/image2019-7-17_16-31-47.png)
 
 ### **Step 9.** Initialize Admin API Database Tables
 

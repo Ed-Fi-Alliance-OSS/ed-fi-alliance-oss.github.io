@@ -1,0 +1,520 @@
+# How To: Create and Manage API Security Metadata using Declarative Security Policies
+
+## Introduction
+
+The Ed-Fi API security metadata is managed by the configuration service and is
+logically organized into a taxonomy. The security metadata is authored as a JSON
+document that is loaded into the Configuration Service at startup or at runtime
+via the Configuration Service API.
+
+## Choosing an Approach
+
+The Configuration Service provides three mechanisms for managing claims, each
+suited to different scenarios:
+
+| Scenario | Approach |
+| --- | --- |
+| Create a new custom claim set with specific resource permissions | `POST /v3/claimSets/import` |
+| Override authorization strategies for a specific claim set on a resource | `POST /v3/claimSets/import` |
+| Change the default authorization strategy for a resource or domain (dev/test) | `POST /management/upload-claims` |
+| Add extension resources to the claims taxonomy (dev/test) | `POST /management/upload-claims` |
+| Restructure domain groupings or remove claims from the taxonomy (dev/test) | `POST /management/upload-claims` |
+| Change the default authorization strategy for a resource or domain (production) | Deployment-time loading |
+| Add extension resources to the claims taxonomy (production) | Deployment-time loading |
+| Restructure domain groupings or remove claims from the taxonomy (production) | Deployment-time loading |
+
+**`POST /v3/claimSets/import`** operates at the claim set level. It creates a
+new custom claim set and defines which resources it can access and with what
+actions. It is non-destructive (only the imported claim set is affected) and
+does not require the unrestricted claims loading flag. The resource claim names
+referenced must already exist in the taxonomy. See [How To: Configure Claim
+Sets](./how-to-configure-claim-sets.md) for examples.
+
+**`POST /management/upload-claims`** replaces the entire claims hierarchy
+atomically. Use it when the change involves the taxonomy itself: default
+authorization strategies, adding or removing resource claims, or domain-level
+restructuring. This requires
+`DMS_CONFIG_DANGEROUSLY_ENABLE_UNRESTRICTED_CLAIMS_LOADING=true` and should only
+be used in non-production environments.
+
+**Deployment-time loading** is the production-safe way to make taxonomy-level
+changes. The Configuration Service loads claims from an embedded resource, a
+directory of fragment files, or a complete claims file — controlled by the
+`DMS_CONFIG_CLAIMS_SOURCE` environment variable. No dangerous flag is required.
+See [Loading Modes](#loading-modes) for details.
+
+:::caution
+
+Both API approaches write only to the [Configuration Service
+database](../platform-dev-guide/security/security-configuration-data-stores.md#authorization-configuration);
+the embedded `Claims.json` resource is not modified. Changes survive
+redeployment as long as the database persists, but will be lost if the database
+is recreated or cleared, since startup re-seeding restores only what is in the
+embedded file. For changes that must survive a fresh database, update the claims
+source directly and use deployment-time loading.
+
+:::
+
+## Security Metadata Overview
+
+In this section, the building blocks for defining a security policy are
+introduced, along with their JSON representations.
+
+### The Security Metadata Format
+
+The claims hierarchy is a JSON array of domain claim objects. Each domain claim
+can contain child resource claims, default authorization metadata, and
+per-claim-set permission assignments:
+
+```json
+[
+  {
+    "name": "http://ed-fi.org/identity/claims/domains/people",
+    "defaultAuthorization": { ... },
+    "claimSets": [ ... ],
+    "claims": [ ... ]
+  }
+]
+```
+
+The examples throughout this section all use this array format. How the array is
+delivered to the Configuration Service depends on the loading mode; see [Loading
+Your Security Policy](#loading-your-security-policy).
+
+### Managing the Claims Taxonomy
+
+Individual API resources are represented as "leaf nodes" (aka _resource claims_)
+that are grouped under higher-level _domain claims_, as depicted in the table
+below.
+
+|              |                                                               |
+| ------------ | ------------------------------------------------------------- |
+| people       | `http://ed-fi.org/identity/claims/domains/people`            |
+| ⌊_ contact   | `http://ed-fi.org/identity/claims/ed-fi/contact`             |
+| ⌊_ staff     | `http://ed-fi.org/identity/claims/ed-fi/staff`               |
+| ⌊_ student   | `http://ed-fi.org/identity/claims/ed-fi/student`             |
+
+The JSON representation of this structure uses the `claims` array to nest
+resource claims under their parent domain claim:
+
+```json
+[
+  {
+    "name": "http://ed-fi.org/identity/claims/domains/people",
+    "claims": [
+      { "name": "http://ed-fi.org/identity/claims/ed-fi/contact" },
+      { "name": "http://ed-fi.org/identity/claims/ed-fi/staff" },
+      { "name": "http://ed-fi.org/identity/claims/ed-fi/student" }
+    ]
+  }
+]
+```
+
+:::info
+
+In general, when adding new claims to the taxonomy, it is best to define _domain
+claims_ that organize the _resource claims_ according to their business-oriented
+domains rather than according to the similarities in the authorization approach.
+
+:::
+
+:::note
+
+Claim URIs in Ed-Fi API v8 use the pattern
+`http://ed-fi.org/identity/claims/...`, without the `/ods/` segment used in
+previous ODS/API versions. Update any existing security policies accordingly.
+
+:::
+
+### Default Authorization Metadata
+
+Each claim _may_ have default authorization metadata associated with it, which
+tells the API which _authorization strategy_ (or strategies) to use when
+authorizing API requests that are performing specific _actions_ (i.e. CRUD
+operations). This default authorization metadata applies to all descendants in
+the taxonomy unless overridden for a specific _claim set_ (aka "role") and
+domain/resource claim.
+
+The out-of-the-box default authorization metadata for the `people` domain claim
+is represented in JSON as follows:
+
+```json
+[
+  {
+    "name": "http://ed-fi.org/identity/claims/domains/people",
+    "defaultAuthorization": {
+      "actions": [
+        {
+          "name": "Create",
+          "authorizationStrategies": [
+            { "name": "NoFurtherAuthorizationRequired" }
+          ]
+        },
+        {
+          "name": "Read",
+          "authorizationStrategies": [
+            { "name": "RelationshipsWithEdOrgsAndPeople" }
+          ]
+        },
+        {
+          "name": "Update",
+          "authorizationStrategies": [
+            { "name": "RelationshipsWithEdOrgsAndPeople" }
+          ]
+        },
+        {
+          "name": "Delete",
+          "authorizationStrategies": [
+            { "name": "NoFurtherAuthorizationRequired" }
+          ]
+        },
+        {
+          "name": "ReadChanges",
+          "authorizationStrategies": [
+            { "name": "RelationshipsWithEdOrgsAndPeopleIncludingDeletes" }
+          ]
+        }
+      ]
+    }
+  }
+]
+```
+
+This tells the API that unless otherwise specified, it should use the
+`NoFurtherAuthorizationRequired` strategy for Create and Delete operations, the
+`RelationshipsWithEdOrgsAndPeople` strategy for Read and Update operations, and
+`RelationshipsWithEdOrgsAndPeopleIncludingDeletes` for the Change Queries
+`/deletes` and `/keyChanges` endpoints (the `ReadChanges` action).
+
+:::caution
+
+Once established and in use by descendant resource claims, great care should be
+taken when modifying the default authorization strategies. Changes at this level
+will affect all descendant resource claims that haven't specified explicit
+authorization strategies. The intent of default authorization metadata is to
+reduce unnecessary redundancy, so you must be careful not to introduce
+unintended side-effects when changing defaults already in use.
+
+:::
+
+### Claim Set Permissions
+
+Claim sets are the "roles" of the API, to which API clients are assigned. You
+can assign permissions to claim sets on either domain or resource claims, but
+the goal is to organize the taxonomy so that most assignments are made to domain
+claims because those permissions will then apply to all the descendant resource
+claims as well.
+
+The out-of-the-box `SISVendor` claim set is granted full CRUD permissions for
+all people (including the descendant resource claims of contact, staff, and
+student). This is represented in JSON as follows:
+
+```json
+[
+  {
+    "name": "http://ed-fi.org/identity/claims/domains/people",
+    "claimSets": [
+      {
+        "name": "SISVendor",
+        "actions": [
+          { "name": "Create" },
+          { "name": "Read" },
+          { "name": "Update" },
+          { "name": "Delete" }
+        ]
+      }
+    ]
+  }
+]
+```
+
+### Claim Set Authorization Strategy Overrides
+
+In some cases, it may be necessary to override the authorization strategies used
+to authorize specific requests for API clients assigned to a particular claim
+set.
+
+For example, consider an SEA-level implementation where multiple vendors may
+create data that is visible to other vendors, but only the creator should be
+able to update or delete it. In this case, the `OwnershipBased` authorization
+strategy can be used as an override on the Update and Delete actions.
+
+The out-of-the-box default authorization metadata for the
+`relationshipBasedData` domain applies the general-purpose relationship-based
+strategy to all actions. The following JSON adds the `SISVendor` claim set with
+ownership-based overrides on Update and Delete:
+
+```json
+[
+  {
+    "name": "http://ed-fi.org/identity/claims/domains/relationshipBasedData",
+    "defaultAuthorization": {
+      "actions": [
+        {
+          "name": "Create",
+          "authorizationStrategies": [
+            { "name": "RelationshipsWithEdOrgsAndPeople" }
+          ]
+        },
+        {
+          "name": "Read",
+          "authorizationStrategies": [
+            { "name": "RelationshipsWithEdOrgsAndPeople" }
+          ]
+        },
+        {
+          "name": "Update",
+          "authorizationStrategies": [
+            { "name": "RelationshipsWithEdOrgsAndPeople" }
+          ]
+        },
+        {
+          "name": "Delete",
+          "authorizationStrategies": [
+            { "name": "RelationshipsWithEdOrgsAndPeople" }
+          ]
+        }
+      ]
+    },
+    "claimSets": [
+      {
+        "name": "SISVendor",
+        "actions": [
+          { "name": "Create" },
+          { "name": "Read" },
+          {
+            "name": "Update",
+            "authorizationStrategyOverrides": [
+              { "name": "RelationshipsWithEdOrgsAndPeople" },
+              { "name": "OwnershipBased" }
+            ]
+          },
+          {
+            "name": "Delete",
+            "authorizationStrategyOverrides": [
+              { "name": "RelationshipsWithEdOrgsAndPeople" },
+              { "name": "OwnershipBased" }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
+```
+
+Notice that the Create and Read actions rely on the `defaultAuthorization`
+defined for the domain claim rather than repeating the strategy locally, which
+would be redundant.
+
+### Building a Security Policy
+
+Each of the examples in the previous sections is a partial view. A complete
+policy is a single JSON array containing every domain and resource claim you
+want to be active, with all `defaultAuthorization`, `claimSets`, and `claims`
+entries in place. Any claim, claim set assignment, or authorization strategy
+omitted from the array will be absent from the active configuration. The
+[CmsHierarchy Tool](../platform-dev-guide/utilities/cms-hierarchy-tool.md)
+command-line utility can be used to author or update security metadata. It can
+convert ODS/API XML security metadata to JSON, or merge extension claim set
+fragments into the base hierarchy. The generated JSON file can then be delivered
+to the Configuration Service using one of the loading modes described in
+[Loading Your Security Policy](#loading-your-security-policy).
+
+### Adding New Claims
+
+When the hierarchy is loaded, the Configuration Service automatically derives a
+resource claim record for every claim name in the array and registers it in its
+internal catalog (insert-only, idempotent). No separate registration step is
+needed.
+
+### Adding Authorization Strategies and Actions
+
+Authorization strategies and actions cannot be defined through the policy
+document; the values must match those built into the service.
+
+### Introducing Extension Resources into the Taxonomy
+
+To add a new resource under an existing domain claim, include it nested under
+its intended parent in the `claims` array:
+
+```json
+[
+  {
+    "name": "http://ed-fi.org/identity/claims/domains/someDomain",
+    "claims": [
+      {
+        "name": "http://ed-fi.org/identity/claims/myext/myNewResource"
+      }
+    ]
+  }
+]
+```
+
+The new claim inherits the domain's `defaultAuthorization` unless you specify
+its own. Include any `claimSets` entries needed to grant access to it.
+
+Alternatively, write a [fragment
+file](../platform-dev-guide/utilities/cms-hierarchy-tool.md#fragment-file-format)
+and use the CmsHierarchy `Transform` command to merge it with the base hierarchy
+to produce a merged security metadata JSON file. Once generated, deliver the
+output to the Configuration Service using one of the loading modes in [Loading
+Your Security Policy](#loading-your-security-policy).
+
+### Omitting Claims and Claim Sets
+
+Because loading a policy fully replaces the active hierarchy, any claim, claim
+set assignment, or authorization strategy omitted from the final security
+metadata file will be removed from the active configuration. Ensure the array
+represents the complete intended state before loading it.
+
+:::caution
+
+The entire claims hierarchy is replaced atomically. Partial updates are not
+supported. Always start from the current hierarchy and modify it rather than
+authoring a document from scratch.
+
+:::
+
+## Loading Your Security Policy
+
+### Loading Modes
+
+The Configuration Service controls how claims are loaded at startup via the
+`DMS_CONFIG_CLAIMS_SOURCE` environment variable. Three source modes are
+available: **Embedded**, **Hybrid**, and **Filesystem**. Claims can also be
+replaced at runtime via the [management
+API](#runtime-upload-via-configuration-service), independently of the configured
+source mode.
+
+#### Embedded (Production Default)
+
+```ini
+DMS_CONFIG_CLAIMS_SOURCE=Embedded
+```
+
+The
+[`Claims/Standards/ds{version}/Claims.json`](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/tree/main/src/config/backend/EdFi.DmsConfigurationService.Backend/Claims/Standards)
+file in the DmsConfigurationService.Backend project is compiled into the Config
+Service assembly as an embedded resource. On startup, if the database tables are
+empty, the service seeds the `ClaimSet`, `ResourceClaim`, and `ClaimsHierarchy`
+tables from that embedded file. The active hierarchy cannot be changed at
+runtime without redeploying the service. The data standard version to load is
+selected by `DMS_CONFIG_DATA_STANDARD_VERSION` (default: `5.2`).
+
+This is the most secure option for production: no external files, no runtime
+modifications.
+
+#### Hybrid
+
+```ini
+DMS_CONFIG_CLAIMS_SOURCE=Hybrid
+DMS_CONFIG_CLAIMS_DIRECTORY=/app/claims-fragments
+```
+
+Uses the same initial seed as Embedded, but fragment files (`*-claimset.json`)
+from the configured directory are applied on top of the embedded base at
+startup. Files are applied in alphabetical order; use numeric prefixes (e.g.
+`001-`, `002-`) to control the sequence. This is useful for adding extension
+claim sets without modifying the embedded resource.
+
+#### Filesystem
+
+```ini
+DMS_CONFIG_CLAIMS_SOURCE=Filesystem
+DMS_CONFIG_CLAIMS_DIRECTORY=/app/claims-files
+```
+
+The embedded `Claims.json` is not used. The service loads its claims entirely
+from files in the configured directory. This is for deployments that manage
+their own complete claims document outside the service binary.
+
+### Runtime Upload via Configuration Service
+
+Runtime upload is a separate capability that can be combined with any of the
+three source modes above. It is enabled by:
+
+```ini
+DMS_CONFIG_DANGEROUSLY_ENABLE_UNRESTRICTED_CLAIMS_LOADING=true
+```
+
+When enabled, the following management API endpoints become available:
+
+- `GET /management/current-claims` : retrieve the active claims document
+- `POST /management/upload-claims` : atomically replace the active claims
+- `POST /management/reload-claims` : reload from the configured source
+
+:::caution
+
+`DMS_CONFIG_DANGEROUSLY_ENABLE_UNRESTRICTED_CLAIMS_LOADING=true` enables runtime
+modification of security policies and should **never** be enabled in production
+deployments.
+
+:::
+
+The management API works with a container document that wraps the hierarchy
+array together with a claim set catalog:
+
+```json
+{
+  "claimSets": [
+    { "claimSetName": "SISVendor", "isSystemReserved": true }
+  ],
+  "claimsHierarchy": [ ... ]
+}
+```
+
+The `claimSets` array registers every claim set name and whether it is
+system-reserved (protected from modification or deletion). The `claimsHierarchy`
+array uses the same JSON array format described in [The Security Metadata
+Format](#the-security-metadata-format). Any new claim set referenced in the
+hierarchy must also appear in `claimSets`.
+
+These management endpoints require a Configuration Service bearer token. Write
+operations (`POST /management/upload-claims`, `POST /management/reload-claims`)
+require the `edfi_admin_api/full_access` scope; the read operation
+(`GET /management/current-claims`) accepts `edfi_admin_api/read_only` or
+`edfi_admin_api/full_access`. Obtain a token:
+
+```powershell
+$token = Invoke-RestMethod -Method Post -Uri "http://localhost:8081/connect/token" `
+  -ContentType "application/x-www-form-urlencoded" `
+  -Body @{
+    "grant_type"    = "client_credentials"
+    "client_id"     = "<config-admin-key>"
+    "client_secret" = "<config-admin-secret>"
+    "scope"         = "edfi_admin_api/full_access"
+  }
+```
+
+**Retrieve the current claims** to use as a starting point:
+
+```powershell
+Invoke-RestMethod -Uri "http://localhost:8081/management/current-claims" `
+  -Headers @{ Authorization = "Bearer $($token.access_token)" } |
+  ConvertTo-Json -Depth 100 |
+  Set-Content claims.json
+```
+
+**Modify** the `claimsHierarchy` array in the downloaded file. Add any new claim
+set names to the `claimSets` catalog as well.
+
+**Upload** the modified document to replace the active claims hierarchy. The
+endpoint requires the document wrapped in a top-level `claims` property, which
+the `@{ claims = ... }` hashtable adds before serializing:
+
+```powershell
+$claims = Get-Content claims.json -Raw | ConvertFrom-Json
+$body = @{ claims = $claims } | ConvertTo-Json -Depth 100
+
+Invoke-RestMethod -Method Post `
+  -Uri "http://localhost:8081/management/upload-claims" `
+  -Headers @{ Authorization = "Bearer $($token.access_token)" } `
+  -ContentType "application/json" `
+  -Body $body
+```
+
+The uploaded document must include both the `claimSets` catalog and the
+`claimsHierarchy` array, wrapped as `{"claims": {"claimSets": [...],
+"claimsHierarchy": [...]}}`. It atomically replaces the current configuration
+and re-seeds the `ResourceClaim` catalog with any new claim names.

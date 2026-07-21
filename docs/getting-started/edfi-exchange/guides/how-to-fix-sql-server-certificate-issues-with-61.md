@@ -2,7 +2,7 @@
 
 WIth the latest (tags/v6.1-patch2) branch of 6.1, lots of folks are seeing SQL Server Certificate errors during the initdev process. The following work-around can be used until the community has had a chance to come up with some guidance on best practices for trusting SQL Server certificates.
 
-**SQL Server certificate error** Expand source
+**SQL Server certificate error**:
 
 ```sh
 Invoke-SqlScript : ERROR: Microsoft.SqlServer.Management.Common.ConnectionFailureException: Failed to
