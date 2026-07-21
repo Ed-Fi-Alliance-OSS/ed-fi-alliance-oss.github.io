@@ -95,7 +95,7 @@ ADMIN_USERNAME: '<admin-email>',
 Differences from the Keycloak example:
 
 - `issuer` → the Entra v2.0 issuer, not a Keycloak realm URL.
-- `scope` → `openid profile email`. The Keycloak example ships `scope: ''`, which fails for Entra: without the `email` scope the `email` claim is absent and login is rejected with `Invalid email from IdP`.
+- `scope` → `openid profile email`. Keycloak returns the `email` claim through its default client scopes even without an explicit scope, but Entra does not: without the `email` scope the claim is absent and login is rejected with `Invalid email from IdP`.
 - `clientId` / `clientSecret` → the App Registration values from Part A.
 
 :::note
