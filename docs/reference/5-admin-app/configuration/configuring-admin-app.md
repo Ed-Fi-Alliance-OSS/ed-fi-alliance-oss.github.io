@@ -44,7 +44,7 @@ module.exports = {
       issuer: 'https://your-keycloak-server/auth/realms/edfi',
       clientId: 'edfiadminapp',
       clientSecret: 'your-client-secret',
-      scope: '',
+      scope: 'openid email profile',
   },
   //this should match with a user in your Idp
   ADMIN_USERNAME: 'admin@example.com',
@@ -284,7 +284,7 @@ The OIDC configuration is stored in the application database. Insert configurati
 
 ```sql
 INSERT INTO oidc (issuer, "clientId", "clientSecret", scope) VALUES
-('https://your-domain.com/auth/realms/edfi', 'edfiadminapp', 'your-client-secret', '');
+('https://your-domain.com/auth/realms/edfi', 'edfiadminapp', 'your-client-secret', 'openid email profile');
 ```
 
 For more details on configuring an identity provider, see [Configuring an Identity Provider for Ed-Fi Admin App](./identity-provider/readme.md).

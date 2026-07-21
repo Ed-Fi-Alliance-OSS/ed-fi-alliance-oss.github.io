@@ -117,7 +117,7 @@ ADMIN_USERNAME: '<admin-email>',
 Differences from the Keycloak example:
 
 - `issuer` → `https://accounts.google.com` (its discovery document is at `https://accounts.google.com/.well-known/openid-configuration`).
-- `scope` → `openid profile email`; the `email` scope supplies the username claim. The Keycloak example ships `scope: ''`, which would omit the email claim here.
+- `scope` → `openid profile email`; the `email` scope supplies the username claim. Keycloak returns `email` through its default client scopes even without an explicit scope, but Google requires the `email` scope to be requested.
 - `clientId` / `clientSecret` → the OAuth client values from Part A.
 
 A successful sign-in still fails with `USER_NOT_FOUND` unless a user with that email exists with a role. On a fresh install, startup seeding creates the admin from `ADMIN_USERNAME` with roleId `2` (Global admin) when the `user` table is empty. Set `ADMIN_USERNAME` to the admin's Google Workspace email — it must exactly match the email Google sends for that person.
