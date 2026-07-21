@@ -7,7 +7,7 @@ sidebar_position: 2
 Docker provides the easiest deployment method with consistent environments across platforms. OCI-compliant containers provide a consistent deployment experience across many platforms, including Docker Desktop, Kubernetes, and other services. The following quick start instructions demonstrate application startup in Docker. They illustrate how to configure the applications, including environment variables, persistent storage, and networking. These notes can also serve as a template for building your own deployment in the container runtime engine of your choice, whether on-premises or in the Cloud.
 
 :::note
-This is one of three alternative installation paths. If you instead want to host the Admin App on Windows IIS or on a Unix-like server, see [Windows IIS Installation](./windows-iis-installation.md) or [Unix-like Systems Installation](./unix-installation.md).
+This is one of three alternative installation paths. If you instead want to host the Admin App on Windows IIS or on a Unix-like server, see [Windows IIS Installation](./windows-iis-installation/readme.md) or [Unix-like Systems Installation](./unix-installation.md).
 :::
 
 ## Docker Installation Guide for Ed-Fi Admin App
@@ -21,6 +21,14 @@ environment variable configuration.
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed and running
 - [PowerShell](https://docs.microsoft.com/en-us/powershell/) (Windows)
+
+## Database engine
+
+The Docker Compose stack supports **both** PostgreSQL and SQL Server — you need only one. **PostgreSQL is the default.** To use SQL Server instead, set `DB_ENGINE=mssql` in `.env`, uncomment the `MSSQL_*` variables there (`MSSQL_SA_PASSWORD`, `MSSQL_ACCEPT_EULA=Y`), and start the stack with the `-MSSQL` switch:
+
+```powershell
+compose/start-services.ps1 -MSSQL
+```
 
 ## Quick Start
 
@@ -122,8 +130,8 @@ VITE_API_URL=https://yourdomain.com/adminapp-api
 FE_URL=https://yourdomain.com/adminapp
 MY_URL=https://yourdomain.com/adminapp-api
 
-# This line is only necessary when you are using a self-signed certificate.
-NODE_EXTRA_CA_CERTS=/app/ssl/your-production-cert.crt
+# Only needed when the app must trust a self-signed/private-CA certificate.
+NODE_EXTRA_CA_CERTS=/app/ssl/your-cert.crt
 
 # Administrator credentials
 KEYCLOAK_ADMIN=admin

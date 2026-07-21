@@ -7,7 +7,7 @@ sidebar_position: 4
 This page describes how to install the Ed-Fi Admin App on a Unix-like server (for example, Linux), using systemd to run the backend API and NGiNX to serve the frontend and proxy the API.
 
 :::note
-This is one of three alternative installation paths. If you instead want to run the Admin App in containers or on Windows IIS, see [Docker Compose Installation](./docker-installation.md) or [Windows IIS Installation](./windows-iis-installation.md).
+This is one of three alternative installation paths. If you instead want to run the Admin App in containers or on Windows IIS, see [Docker Compose Installation](./docker-installation.md) or [Windows IIS Installation](./windows-iis-installation/readme.md).
 :::
 
 ## Unix Prerequisites
@@ -16,6 +16,10 @@ This is one of three alternative installation paths. If you instead want to run 
 - **Node.js**: Version 22.0.0+
 - **PostgreSQL**: Database server
 - **systemd**: For service management (most modern Linux distributions)
+
+:::note
+This path uses **PostgreSQL**. The Admin App is database-engine-agnostic, but SQL Server is not documented or validated for the Unix path; for SQL Server, use the [Docker Compose](./docker-installation.md) or [Windows IIS](./windows-iis-installation/readme.md) path.
+:::
 
 ## Unix Backend API Installation
 
@@ -73,7 +77,7 @@ This is one of three alternative installation paths. If you instead want to run 
      //this should match with a user in your Idp
      ADMIN_USERNAME: 'admin@example.com',
      DB_ENCRYPTION_SECRET_VALUE: {
-       KEY: 'your-32-char-encryption-key-here'
+       KEY: 'your-64-hex-char-encryption-key' // 32-byte key, hex-encoded (64 hex chars); see tip below
      },
      FE_URL: 'https://your-domain.com/adminapp',
      MY_URL: 'https://your-domain.com/adminapp-api',
@@ -83,7 +87,7 @@ This is one of three alternative installation paths. If you instead want to run 
    ```
 
    :::tip
-   `your-32-char-encryption-key-here` Can be replaced with `openssl rand -hex 32` or `node -e "console.log('KEY: '+ require('crypto').randomBytes(32).toString('hex'))"`
+   `your-64-hex-char-encryption-key` can be generated with `openssl rand -hex 32` or `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`
    :::
 
 4. **Create systemd service**:
