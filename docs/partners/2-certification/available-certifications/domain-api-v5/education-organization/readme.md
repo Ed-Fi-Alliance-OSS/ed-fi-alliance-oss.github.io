@@ -41,10 +41,20 @@ for the conceptual model behind these steps.
 
 ## Phase 1: Descriptors
 
-Each descriptor resource shares the same required-field shape: `codeValue`,
-`namespace`, and `shortDescription`. See the [Bell Schedule domain
-walkthrough](../bell-schedule/readme.md#step-1-gradeleveldescriptor) for an
-example descriptor payload.
+Six descriptors are needed before the entities in later phases can be
+created. Each descriptor resource shares the same required-field shape and
+full CRUD surface.
+
+### Required Fields (all descriptors below)
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `codeValue` | string | A code or abbreviation that is used to refer to the descriptor. |
+| `namespace` | string | A globally unique namespace that identifies this descriptor set. |
+| `shortDescription` | string | A shortened description for the descriptor. |
+
+Each descriptor resource below supports the full CRUD surface:
+`GET`/`POST`/`PUT`/`DELETE` plus `deletes`, `keyChanges`, and `partitions`.
 
 | Descriptor | Resource Endpoint | Used By |
 | --- | --- | --- |
@@ -55,6 +65,74 @@ example descriptor payload.
 | ProviderCategoryDescriptor | `/providerCategoryDescriptors` | `CommunityProvider.providerCategoryDescriptor` |
 | ProviderStatusDescriptor | `/providerStatusDescriptors` | `CommunityProvider.providerStatusDescriptor` |
 | LicenseTypeDescriptor | `/licenseTypeDescriptors` | `CommunityProviderLicense.licenseTypeDescriptor` |
+
+### Example: EducationOrganizationCategoryDescriptor
+
+```json
+{
+  "codeValue": "School",
+  "namespace": "uri://ed-fi.org/EducationOrganizationCategoryDescriptor",
+  "shortDescription": "School"
+}
+```
+
+### Example: LocalEducationAgencyCategoryDescriptor
+
+```json
+{
+  "codeValue": "Independent",
+  "namespace": "uri://ed-fi.org/LocalEducationAgencyCategoryDescriptor",
+  "shortDescription": "Independent"
+}
+```
+
+### Example: GradeLevelDescriptor
+
+```json
+{
+  "codeValue": "Ninth grade",
+  "namespace": "uri://ed-fi.org/GradeLevelDescriptor",
+  "shortDescription": "Ninth grade"
+}
+```
+
+### Example: NetworkPurposeDescriptor
+
+```json
+{
+  "codeValue": "Shared Services",
+  "namespace": "uri://ed-fi.org/NetworkPurposeDescriptor",
+  "shortDescription": "Shared Services"
+}
+```
+
+### Example: ProviderCategoryDescriptor and ProviderStatusDescriptor
+
+```json
+{
+  "codeValue": "Licensed Center",
+  "namespace": "uri://ed-fi.org/ProviderCategoryDescriptor",
+  "shortDescription": "Licensed Center"
+}
+```
+
+```json
+{
+  "codeValue": "Active",
+  "namespace": "uri://ed-fi.org/ProviderStatusDescriptor",
+  "shortDescription": "Active"
+}
+```
+
+### Example: LicenseTypeDescriptor
+
+```json
+{
+  "codeValue": "Child Care Center",
+  "namespace": "uri://ed-fi.org/LicenseTypeDescriptor",
+  "shortDescription": "Child Care Center"
+}
+```
 
 ## Phase 2: SchoolYearType
 
