@@ -19,11 +19,10 @@ by hand.
 
 :::
 
-
 ## Setup Keycloak machine account (manually)
 
 If you prefer to configure Keycloak manually instead of running the
-[bootstrap script](#the-bootstrap-script), follow the steps below.
+[bootstrap script](run-the-quick-start), follow the steps below.
 
 :::info
 

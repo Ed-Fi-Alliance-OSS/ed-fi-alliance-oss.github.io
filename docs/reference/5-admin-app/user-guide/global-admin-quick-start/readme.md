@@ -28,6 +28,13 @@ Admin App API, running as the authenticated service-account (machine) user):
 - **Ownership** of both the environment and the tenant by the team (**Full
   ownership**, role id 5)
 
+In addition, in the ODS/API's **EdFi_Security** database (by direct SQL):
+
+- A copy of every built-in **claim set** (`SIS Vendor`, `Ed-Fi Sandbox`,
+  `Assessment Vendor`, … — excluding internal-use ones) under an `AA` prefix —
+  the Admin App hides built-in claim sets from the application claim set
+  dropdown, so only the copies can be assigned when creating client credentials
+
 ## Prerequisites
 
 | Requirement | Notes |
@@ -37,12 +44,16 @@ Admin App API, running as the authenticated service-account (machine) user):
 | Ed-Fi ODS/API and ODS Admin API | Installed and reachable at the URLs configured in `.env` (defaults assume the local stack at `https://localhost`) |
 | Ed-Fi Admin App | Deployed with its database migrated (migrations seed the built-in roles the scripts reference — `Global admin`, `Tenant admin`, `Full ownership`) |
 | Identity provider (OIDC) | Configured for the Admin App, with a bootstrap global-admin user you can sign in as — see [Configuring an Identity Provider for Ed-Fi Admin App](/reference/admin-app/configuration/identity-provider) |
+| ODS instances registered in `EdFi_Admin` | Every instance listed in `ODSS_JSON` must exist in `EdFi_Admin.dbo.OdsInstances` on the target ODS/API — the scripts do not create them; see [Set Up the ODS Instances](run-the-quick-start#set-up-the-ods-instances-odss_json) |
 
 :::info
 
-The ODS instance ids in `ODSS_JSON` must match real rows in
+The ODS instance ids **and names** in `ODSS_JSON` must match real rows in
 `EdFi_Admin.dbo.OdsInstances` on the target ODS/API — otherwise the sync will
 not find them and the ODS lists will be empty.
+[Set Up the ODS Instances](run-the-quick-start#set-up-the-ods-instances-odss_json)
+covers how to check the table and create missing rows before running the
+scripts.
 
 :::
 
