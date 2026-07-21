@@ -68,11 +68,14 @@ This path uses **PostgreSQL**. The Admin App is database-engine-agnostic, but SQ
        CLIENT_SECRET: 'your-client-secret',
        MACHINE_AUDIENCE: 'edfiadminapp-api'
      },
+     // Identity provider (OIDC). The values below are the Keycloak example;
+     // for Microsoft Entra ID or Google Workspace, set issuer/clientId/clientSecret/scope
+     // per the identity-provider guide linked in "Next steps".
      SAMPLE_OIDC_CONFIG: {
       issuer: 'https://your-keycloak-server/auth/realms/edfi',
       clientId: 'edfiadminapp',
       clientSecret: 'your-client-secret',
-      scope: '',
+      scope: 'openid email profile',
      },
      //this should match with a user in your Idp
      ADMIN_USERNAME: 'admin@example.com',
@@ -88,6 +91,10 @@ This path uses **PostgreSQL**. The Admin App is database-engine-agnostic, but SQ
 
    :::tip
    `your-64-hex-char-encryption-key` can be generated with `openssl rand -hex 32` or `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`
+   :::
+
+   :::note
+   This path uses **Keycloak** as the example OIDC provider. Because the Admin App uses generic OIDC discovery, [Microsoft Entra ID](../configuration/identity-provider/microsoft-entra-id.md) and [Google Workspace](../configuration/identity-provider/google-workspace.md) also work: set `issuer`/`clientId`/`clientSecret`/`scope` and `ADMIN_USERNAME` accordingly, and set the frontend's `VITE_OIDC_ID` and `VITE_IDP_ACCOUNT_URL` in `packages/fe/.env` **before** `npm run build:fe`. The redirect/callback URI is `<MY_URL>/api/auth/callback/<oidc-id>` (here, `https://your-domain.com/adminapp-api/api/auth/callback/<oidc-id>`).
    :::
 
 4. **Create systemd service**:
