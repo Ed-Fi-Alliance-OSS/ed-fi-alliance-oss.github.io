@@ -34,7 +34,7 @@ review:
 | `TOKEN_URL` | Your issuer's token endpoint (the default is the Docker-stack Keycloak) |
 | `API_BASE_URL`, `ADMIN_API_URL`, `ODS_API_DISCOVERY_URL` | Where the Admin App API, ODS Admin API, and ODS/API are reachable |
 | `ODSS_JSON` | JSON array of ODS instances to attach; ids **and names** must match existing rows in `EdFi_Admin.dbo.OdsInstances` on the target ODS/API (see below) |
-| `SECURITY_*` | Where the ODS/API's `EdFi_Security` database lives (server, database name, container), used to copy the built-in claim sets — credentials reuse `SA_PASSWORD` / `POSTGRES_*` |
+| `SECURITY_*` | Where the ODS/API's `EdFi_Security` database lives (server, database name, container) and how to sign in, used to copy the built-in claim sets — SQL Server uses the dedicated `SECURITY_DB_USERNAME` / `SECURITY_DB_PASSWORD` login (or Windows integrated auth); PostgreSQL reuses `POSTGRES_*` |
 | `ADMIN_USERNAME` | Username of the human bootstrap admin; when set, the scripts add them to the team so the **Applications** and **Profiles** pages work for that account |
 
 See the [Appendix](quick-start-appendix) for the full environment variable
@@ -109,13 +109,16 @@ application later fails with
    [Set Up the ODS Instances](#set-up-the-ods-instances-odss_json).
 3. **`copy-claimsets.ps1`** — copies every built-in claim set under an `AA`
    prefix — `SIS Vendor` becomes `AA SIS Vendor` — directly in the ODS/API's
-   `EdFi_Security` database (internal-use claim sets such as
-   `Bootstrap Descriptors and EdOrgs` are excluded; set `CLAIMSET_NAMES` to
+   `EdFi_Security` database (internal-use claim sets — those flagged
+   `ForApplicationUseOnly` in `EdFi_Security`, such as
+   `Bootstrap Descriptors and EdOrgs` — are excluded; set `CLAIMSET_NAMES` to
    copy a specific list instead). The Admin App hides built-in (Ed-Fi preset)
    claim sets from the application claim set dropdown, so credentials cannot
-   be created against them; the copies are selectable. The connection reuses
-   the `SA_PASSWORD` / `POSTGRES_*` values; only the server, database name,
-   and container come from the `SECURITY_*` variables.
+   be created against them; the copies are selectable. The connection comes
+   entirely from the `SECURITY_*` variables — on SQL Server the
+   `SECURITY_DB_USERNAME` / `SECURITY_DB_PASSWORD` login (or Windows
+   integrated auth via `SECURITY_USE_INTEGRATED_SECURITY=true`); on
+   PostgreSQL the `POSTGRES_*` values are reused.
 
 All the scripts are idempotent, so re-running `run.ps1` is safe. If the
 machine client and machine user are already in place (e.g. the Docker stack),
@@ -159,7 +162,7 @@ To tear down the environment and everything attached to it (ownership, ODS
 instances, Ed-Orgs, tenant), plus the team, its membership, the machine user
 seeded by `bootstrap.ps1` (`quick-start-machine`), and the claim set copies
 made by `copy-claimsets.ps1`, run `cleanup.ps1` from the same folder. The
-bootstrap human user (`admin@example.org`) is left in place.
+bootstrap human user (`admin@example.com`) is left in place.
 
 ```powershell
 ./cleanup.ps1                  # shows what will be deleted and prompts for confirmation

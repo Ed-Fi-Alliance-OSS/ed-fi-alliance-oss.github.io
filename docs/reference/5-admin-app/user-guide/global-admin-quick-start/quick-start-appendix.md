@@ -67,18 +67,23 @@ Used by `bootstrap.ps1` to seed the machine user and by `cleanup.ps1`.
 ### Claim set copies (EdFi_Security)
 
 Used by `copy-claimsets.ps1` to copy the built-in claim sets in the ODS/API's
-`EdFi_Security` database. The connection reuses `DB_ENGINE`, `SA_PASSWORD`, and
-the `POSTGRES_*` values above; only the settings below are specific to this
-step.
+`EdFi_Security` database. The connection reuses `DB_ENGINE`, but
+`EdFi_Security` is a different database from the Admin App's, so SQL Server
+uses its own `SECURITY_DB_USERNAME` / `SECURITY_DB_PASSWORD` login (the
+`APP_DB_*` login has no rights there), or Windows integrated authentication
+with `SECURITY_USE_INTEGRATED_SECURITY=true`; PostgreSQL reuses the
+`POSTGRES_*` values above.
 
 | Variable | Default | Description |
 | --- | --- | --- |
 | `COPY_CLAIMSETS` | `true` | `false`: skip the claim set copy step entirely |
-| `CLAIMSET_NAMES` | _(empty = every built-in claim set)_ | Claim sets to copy, semicolon-separated; blank copies all built-ins except internal-use ones (e.g. `Bootstrap Descriptors and EdOrgs`) |
+| `CLAIMSET_NAMES` | _(empty = every built-in claim set)_ | Claim sets to copy, semicolon-separated; blank copies all built-ins except internal-use ones (`ForApplicationUseOnly = 1`, e.g. `Bootstrap Descriptors and EdOrgs`) |
 | `CLAIMSET_PREFIX` | `"AA "` | Prefix for the copies; quote it to keep the trailing space |
 | `SECURITY_DATABASE_NAME` | `EdFi_Security` | Security database name |
 | `SECURITY_SQL_SERVER` | `tcp:localhost,1433` | SQL Server hosting `EdFi_Security` |
-| `SECURITY_USE_INTEGRATED_SECURITY` | `false` | `true`: Windows integrated authentication (`SA_PASSWORD` not needed) |
+| `SECURITY_DB_USERNAME` | _(empty)_ | SQL Server login with rights on `EdFi_Security`; required unless `SECURITY_USE_INTEGRATED_SECURITY=true` |
+| `SECURITY_DB_PASSWORD` | _(empty)_ | Password for `SECURITY_DB_USERNAME` |
+| `SECURITY_USE_INTEGRATED_SECURITY` | `false` | `true`: Windows integrated authentication (`SECURITY_DB_*` not needed) |
 | `SECURITY_POSTGRES_CONTAINER` | `ed-fi-db-admin` | With `USE_POSTGRES_DOCKER=true`: the ODS stack's admin/security db container |
 
 ## Finding your token endpoint
