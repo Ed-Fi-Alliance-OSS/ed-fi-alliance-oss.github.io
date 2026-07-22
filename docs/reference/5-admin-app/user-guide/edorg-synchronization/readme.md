@@ -1,3 +1,7 @@
+---
+sidebar_position: 0
+---
+
 # Education Organization Sync
 
 When the Ed-Fi Admin App is installed against an ODS/API whose ODS databases
