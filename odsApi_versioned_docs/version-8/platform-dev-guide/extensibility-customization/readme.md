@@ -71,5 +71,5 @@ and the database schema without manual code changes. The Ed-Fi API loads
 `ApiSchema.json` at startup (it is not hot-reloaded), so restart the service
 after provisioning for the extension to take effect.
 
-The [Extending with MetaEd](./extending-with-metaed.md) page has an overview of
+The [Extending API DataModel](./extending-api-datamodel.md) page has an overview of
 the process with step-by-step instructions.
