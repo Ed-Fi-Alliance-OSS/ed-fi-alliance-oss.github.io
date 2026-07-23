@@ -45,7 +45,7 @@ are never modified.
 
 | Requirement | Notes |
 | --- | --- |
-| PowerShell 7.0+ | Cross-platform; required to run the scripts. `sqlcmd` (SQL Server) and/or `psql` (PostgreSQL) must be available for the engines in play |
+| Windows PowerShell 5.1 or PowerShell 7.0+ | Windows PowerShell 5.1 ships with Windows Server 2016+; PowerShell 7 is cross-platform. `sqlcmd` (SQL Server) and/or `psql` (PostgreSQL) must be available for the engines in play |
 | Git | For cloning the scripts repository |
 | Read access to the source ODS | The `EdFi_ODS` database whose education organizations are being exported |
 | Ed-Fi Admin App | Deployed with its database migrated and reachable from this machine |
