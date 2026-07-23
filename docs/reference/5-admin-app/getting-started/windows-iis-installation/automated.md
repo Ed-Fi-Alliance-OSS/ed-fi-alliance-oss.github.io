@@ -56,7 +56,7 @@ The password parameters are `SecureString`s, so pass them with `Read-Host -AsSec
   -TestUserPassword (Read-Host -AsSecureString 'Keycloak test-user password')
 ```
 
-**Microsoft Entra ID, SQL Server** — an external OIDC provider. Register the application and its redirect URIs in Entra first, and make sure a user exists there whose email matches `-AdminUsername`:
+**Microsoft Entra ID, SQL Server** — an external OIDC provider. Register the application and its redirect URIs in Entra first (or script that step with `idp-entra-setup.ps1` — see [Microsoft Entra ID](../../configuration/identity-provider/microsoft-entra-id.md#part-a--register-the-application-in-microsoft-entra-id)), and make sure a user exists there whose email matches `-AdminUsername`:
 
 ```powershell
 .\install-all.ps1 -IdpProvider microsoft `
