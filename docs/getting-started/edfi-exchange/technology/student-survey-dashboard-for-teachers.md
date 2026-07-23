@@ -16,7 +16,7 @@ Project Buzz also provides a way for teachers to add notes/feedback on their stu
 
 :::info
 
-View a 3 minute overview of the Buzz tool [here](https://vimeo.com/edfialliance/review/476016090/458295ac13).
+View a 3-minute overview of the Buzz tool [here](https://vimeo.com/edfialliance/review/476016090/458295ac13).
 
 :::
 
