@@ -141,12 +141,23 @@ VITE_STARTING_GUIDE=https://docs.ed-fi.org/reference/admin-app/configuration/glo
 VITE_CONTACT=https://community.ed-fi.org/
 VITE_APPLICATION_NAME="Ed-Fi Admin App"
 VITE_IDP_ACCOUNT_URL=https://yourdomain.com/auth/realms/edfi/account/
+
+# OIDC provider selector: the id of the `oidc` table row to sign in with
+# (must match the redirect-URI callback id). On a fresh single-provider
+# install this is 1.
+VITE_OIDC_ID=1
 ```
 
 :::note
-**Important:** The `VITE_IDP_ACCOUNT_URL` value may differ from your Keycloak admin console URL.
-This should point to the **account management interface** (`/auth/realms/{realm-name}/account/`), not the admin console.
-Ensure this matches your actual Keycloak realm configuration and domain.
+**Important:** `VITE_IDP_ACCOUNT_URL` should point to your identity provider's **end-user account-management page**, not its admin console. It is provider-specific: Keycloak `https://<host>/auth/realms/{realm}/account/`, Microsoft Entra ID `https://myaccount.microsoft.com/`, Google Workspace `https://myaccount.google.com/`.
+:::
+
+:::note
+The bundled stack ships **Keycloak** as the example OIDC provider. Because the Admin App uses generic OIDC discovery, [Microsoft Entra ID](../configuration/identity-provider/microsoft-entra-id.md) and [Google Workspace](../configuration/identity-provider/google-workspace.md) also work: set the provider values (`issuer`, `clientId`, `clientSecret`, `scope`) in `packages/api/config/production.js-edfi` (baked into the API image as `production.js`), rebuild with `./start-services.ps1 -Rebuild`, and select it from the frontend with `VITE_OIDC_ID`.
+:::
+
+:::note
+For an external provider, the redirect/callback URI is `<MY_URL>/api/auth/callback/<oidc-id>` — with the Compose stack's default NGiNX proxy (all services served from `https://localhost`), that is `https://localhost/adminapp-api/api/auth/callback/1`.
 :::
 
 - **SSL Certificates:** Replace self-signed certificates with production certificates in a live environment.
@@ -155,6 +166,6 @@ Ensure this matches your actual Keycloak realm configuration and domain.
 ## Next steps
 
 - [Configuring Ed-Fi Admin App](../configuration/configuring-admin-app.md)
-- [Configuring an Identity Provider for Ed-Fi Admin App](../configuration/identity-provider.md)
+- [Configuring an Identity Provider for Ed-Fi Admin App](../configuration/identity-provider/readme.md)
 - [Security Considerations](../configuration/security-considerations.md)
 - [Global Administration Tasks](../configuration/global-administration-tasks.md)

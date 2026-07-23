@@ -44,7 +44,7 @@ module.exports = {
       issuer: 'https://your-keycloak-server/auth/realms/edfi',
       clientId: 'edfiadminapp',
       clientSecret: 'your-client-secret',
-      scope: '',
+      scope: 'openid email profile',
   },
   //this should match with a user in your Idp
   ADMIN_USERNAME: 'admin@example.com',
@@ -154,12 +154,11 @@ VITE_IDP_ACCOUNT_URL=https://your-domain.com/auth/realms/edfi/account/
 - `VITE_IDP_ACCOUNT_URL`: URL to the identity provider's account management page where users can manage their profile and authentication settings
 
 :::note
-**Important:** The `VITE_IDP_ACCOUNT_URL` value may differ from your Keycloak admin console URL.
-This should point to the **account management interface** (`/auth/realms/{realm-name}/account/`), not the admin console.
+**Important:** `VITE_IDP_ACCOUNT_URL` should point to your identity provider's **end-user account-management page**, not its admin console. It is provider-specific:
 
-- Local development: `https://localhost/auth/realms/edfi/account/`
-- Production: `https://auth.yourdomain.com/auth/realms/production/account/`
-- Custom realm: `https://keycloak.example.org/auth/realms/school-district/account/`
+- Keycloak: `https://<host>/auth/realms/{realm}/account/`
+- Microsoft Entra ID: `https://myaccount.microsoft.com/`
+- Google Workspace: `https://myaccount.google.com/`
 
 :::
 
@@ -235,9 +234,9 @@ npm run migrations:revert
 
 ## Authentication Configuration
 
-The Admin App uses OpenID Connect (OIDC) for authentication. Keycloak is the recommended provider.
+The Admin App uses OpenID Connect (OIDC) for authentication. It works with any OIDC-compatible provider; Keycloak is the bundled default example, and Microsoft Entra ID and Google Workspace are also validated. See [Configuring an Identity Provider for Ed-Fi Admin App](./identity-provider/readme.md) for provider-specific guides.
 
-### Keycloak Configuration
+### Example: Keycloak
 
 1. **Create Realm**: Create a new realm called `edfi`
 
@@ -285,10 +284,10 @@ The OIDC configuration is stored in the application database. Insert configurati
 
 ```sql
 INSERT INTO oidc (issuer, "clientId", "clientSecret", scope) VALUES
-('https://your-domain.com/auth/realms/edfi', 'edfiadminapp', 'your-client-secret', '');
+('https://your-domain.com/auth/realms/edfi', 'edfiadminapp', 'your-client-secret', 'openid email profile');
 ```
 
-For more details on configuring an identity provider, see [Configuring an Identity Provider for Ed-Fi Admin App](./identity-provider.md).
+For more details on configuring an identity provider, see [Configuring an Identity Provider for Ed-Fi Admin App](./identity-provider/readme.md).
 
 ## Next Steps
 
