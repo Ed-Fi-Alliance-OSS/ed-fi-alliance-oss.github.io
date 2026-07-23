@@ -34,7 +34,7 @@ review:
 | `TOKEN_URL` | Your issuer's token endpoint (the default is the Docker-stack Keycloak) |
 | `API_BASE_URL`, `ADMIN_API_URL`, `ODS_API_DISCOVERY_URL` | Where the Admin App API, ODS Admin API, and ODS/API are reachable |
 | `ODSS_JSON` | JSON array of ODS instances to attach; ids **and names** must match existing rows in `EdFi_Admin.dbo.OdsInstances` on the target ODS/API (see below) |
-| `SECURITY_*` | Where the ODS/API's `EdFi_Security` database lives (server, database name, container) and how to sign in, used to copy the built-in claim sets — SQL Server uses the dedicated `SECURITY_DB_USERNAME` / `SECURITY_DB_PASSWORD` login (or Windows integrated auth); PostgreSQL reuses `POSTGRES_*` |
+| `SECURITY_*` | Where the ODS/API's `EdFi_Security` database lives (engine via `SECURITY_DB_ENGINE` — it may differ from `DB_ENGINE` — plus server, database name, container) and how to sign in, used to copy the built-in claim sets — SQL Server uses the dedicated `SECURITY_DB_USERNAME` / `SECURITY_DB_PASSWORD` login (or Windows integrated auth); PostgreSQL uses `POSTGRES_SECURITY_*`, falling back to `POSTGRES_*` |
 | `ADMIN_USERNAME` | Username of the human bootstrap admin; when set, the scripts add them to the team so the **Applications** and **Profiles** pages work for that account |
 
 See the [Appendix](quick-start-appendix) for the full environment variable
@@ -115,10 +115,13 @@ application later fails with
    copy a specific list instead). The Admin App hides built-in (Ed-Fi preset)
    claim sets from the application claim set dropdown, so credentials cannot
    be created against them; the copies are selectable. The connection comes
-   entirely from the `SECURITY_*` variables — on SQL Server the
-   `SECURITY_DB_USERNAME` / `SECURITY_DB_PASSWORD` login (or Windows
-   integrated auth via `SECURITY_USE_INTEGRATED_SECURITY=true`); on
-   PostgreSQL the `POSTGRES_*` values are reused.
+   entirely from the `SECURITY_*` variables, and `EdFi_Security` can even run
+   on a different engine than the Admin App database (`SECURITY_DB_ENGINE`,
+   defaulting to `DB_ENGINE`) — on SQL Server the `SECURITY_DB_USERNAME` /
+   `SECURITY_DB_PASSWORD` login (or Windows integrated auth via
+   `SECURITY_USE_INTEGRATED_SECURITY=true`); on PostgreSQL the
+   `POSTGRES_SECURITY_*` values, each falling back to the app-side
+   `POSTGRES_*` value when empty.
 
 All the scripts are idempotent, so re-running `run.ps1` is safe. If the
 machine client and machine user are already in place (e.g. the Docker stack),

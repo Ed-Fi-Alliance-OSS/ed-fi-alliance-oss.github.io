@@ -12,6 +12,11 @@ scripts. Copy
 to `.env` and edit as needed before running `run.ps1`. The defaults match the
 local Docker stack.
 
+Passwords (`KEYCLOAK_ADMIN_PASSWORD`, `APP_DB_PASSWORD`,
+`POSTGRES_APP_PASSWORD`, `SECURITY_DB_PASSWORD`, `POSTGRES_SECURITY_PASSWORD`)
+may be left empty: `run.ps1` and `cleanup.ps1` prompt for the ones they need,
+with the input masked. Set them in the file only for unattended runs.
+
 ### Identity provider
 
 | Variable | Default | Description |
@@ -19,7 +24,7 @@ local Docker stack.
 | `PROVIDER` | `keycloak` | Identity provider for the machine client: `keycloak` |
 | `KEYCLOAK_BASE_URL` | `http://localhost:8080` | Keycloak admin API base URL (bootstrap; Keycloak only) |
 | `KEYCLOAK_ADMIN_USER` | `admin` | Keycloak master admin user |
-| `KEYCLOAK_ADMIN_PASSWORD` | _(empty)_ | Keycloak master admin password — **required** when `PROVIDER=keycloak` |
+| `KEYCLOAK_ADMIN_PASSWORD` | _(empty)_ | Keycloak master admin password — used when `PROVIDER=keycloak`; prompted when empty |
 | `KEYCLOAK_REALM` | `edfi` | Realm holding the machine client |
 
 ### Machine (service-account) client
@@ -40,8 +45,8 @@ Used by `bootstrap.ps1` to seed the machine user and by `cleanup.ps1`.
 | `DB_ENGINE` | `mssql` | Database engine: `mssql` or `pgsql` |
 | `DATABASE_NAME` | `sbaa` | Admin App application database name |
 | `APP_DB_USERNAME` | `edfiadminapp` | SQL Server login for the dedicated least-privilege app user created by the Windows installer (`install-all.ps1 -AppDbPassword`) |
-| `APP_DB_PASSWORD` | _(empty)_ | Password for `APP_DB_USERNAME` — **required** when `DB_ENGINE=mssql`. The scripts deliberately never connect as `sa` |
-| `POSTGRES_APP_PASSWORD` | _(empty)_ | PostgreSQL app-user password — **required** when `DB_ENGINE=pgsql` |
+| `APP_DB_PASSWORD` | _(empty)_ | Password for `APP_DB_USERNAME` — used when `DB_ENGINE=mssql`; prompted when empty. The scripts deliberately never connect as `sa` |
+| `POSTGRES_APP_PASSWORD` | _(empty)_ | PostgreSQL app-user password — used when `DB_ENGINE=pgsql`; prompted when empty |
 | `POSTGRES_HOST` | `localhost` | PostgreSQL host |
 | `POSTGRES_PORT` | `5432` | PostgreSQL port |
 | `POSTGRES_APP_USER` | `edfiadminapp` | PostgreSQL user |
@@ -67,24 +72,32 @@ Used by `bootstrap.ps1` to seed the machine user and by `cleanup.ps1`.
 ### Claim set copies (EdFi_Security)
 
 Used by `copy-claimsets.ps1` to copy the built-in claim sets in the ODS/API's
-`EdFi_Security` database. The connection reuses `DB_ENGINE`, but
-`EdFi_Security` is a different database from the Admin App's, so SQL Server
-uses its own `SECURITY_DB_USERNAME` / `SECURITY_DB_PASSWORD` login (the
-`APP_DB_*` login has no rights there), or Windows integrated authentication
-with `SECURITY_USE_INTEGRATED_SECURITY=true`; PostgreSQL reuses the
-`POSTGRES_*` values above.
+`EdFi_Security` database. `EdFi_Security` is a different database from the
+Admin App's — it can even run on a different engine (`SECURITY_DB_ENGINE`,
+defaulting to `DB_ENGINE`). SQL Server uses its own `SECURITY_DB_USERNAME` /
+`SECURITY_DB_PASSWORD` login (the `APP_DB_*` login has no rights there), or
+Windows integrated authentication with
+`SECURITY_USE_INTEGRATED_SECURITY=true`; PostgreSQL uses the
+`POSTGRES_SECURITY_*` values, each falling back to the app-side `POSTGRES_*`
+value above when empty.
 
 | Variable | Default | Description |
 | --- | --- | --- |
 | `COPY_CLAIMSETS` | `true` | `false`: skip the claim set copy step entirely |
 | `CLAIMSET_NAMES` | _(empty = every built-in claim set)_ | Claim sets to copy, semicolon-separated; blank copies all built-ins except internal-use ones (`ForApplicationUseOnly = 1`, e.g. `Bootstrap Descriptors and EdOrgs`) |
 | `CLAIMSET_PREFIX` | `"AA "` | Prefix for the copies; quote it to keep the trailing space |
+| `SECURITY_DB_ENGINE` | _(empty = same as `DB_ENGINE`)_ | Engine hosting `EdFi_Security`: `mssql` or `pgsql`. Set it when the ODS/API side runs a different engine than the Admin App database |
 | `SECURITY_DATABASE_NAME` | `EdFi_Security` | Security database name |
 | `SECURITY_SQL_SERVER` | `tcp:localhost,1433` | SQL Server hosting `EdFi_Security` |
 | `SECURITY_DB_USERNAME` | _(empty)_ | SQL Server login with rights on `EdFi_Security`; required unless `SECURITY_USE_INTEGRATED_SECURITY=true` |
-| `SECURITY_DB_PASSWORD` | _(empty)_ | Password for `SECURITY_DB_USERNAME` |
+| `SECURITY_DB_PASSWORD` | _(empty)_ | Password for `SECURITY_DB_USERNAME`; prompted when empty |
 | `SECURITY_USE_INTEGRATED_SECURITY` | `false` | `true`: Windows integrated authentication (`SECURITY_DB_*` not needed) |
-| `SECURITY_POSTGRES_CONTAINER` | `ed-fi-db-admin` | With `USE_POSTGRES_DOCKER=true`: the ODS stack's admin/security db container |
+| `POSTGRES_SECURITY_PASSWORD` | _(empty = `POSTGRES_APP_PASSWORD`)_ | PostgreSQL password for `EdFi_Security`; prompted when both are empty |
+| `POSTGRES_SECURITY_HOST` | _(empty = `POSTGRES_HOST`)_ | PostgreSQL host for `EdFi_Security` |
+| `POSTGRES_SECURITY_PORT` | _(empty = `POSTGRES_PORT`)_ | PostgreSQL port for `EdFi_Security` |
+| `POSTGRES_SECURITY_USER` | _(empty = `POSTGRES_APP_USER`)_ | PostgreSQL user for `EdFi_Security` |
+| `SECURITY_USE_POSTGRES_DOCKER` | _(empty = `USE_POSTGRES_DOCKER`)_ | `true`: run `psql` inside the `SECURITY_POSTGRES_CONTAINER` container |
+| `SECURITY_POSTGRES_CONTAINER` | `ed-fi-db-admin` | The ODS stack's admin/security db container (PostgreSQL in Docker) |
 
 ## Finding your token endpoint
 
@@ -123,7 +136,7 @@ parameter passed explicitly overrides the `.env` value.
 | `-SkipClaimsets` | Leave the claim set copies in `EdFi_Security` (e.g. an application still uses one) |
 | `-EnvironmentName` / `-TeamName` / `-MachineUsername` | Override the names to delete |
 | `-DbEngine`, `-DatabaseName`, `-AppDbUsername`, `-AppDbPassword`, `-PostgresAppPassword` | Override the database connection (mssql always uses the app login, never `sa`) |
-| `-SecuritySqlServer` | Override the SQL Server hosting `EdFi_Security` (everything else reuses the database values above and the `SECURITY_*` `.env` settings) |
+| `-SecuritySqlServer` | Override the SQL Server hosting `EdFi_Security` (everything else comes from the `SECURITY_*` / `POSTGRES_SECURITY_*` `.env` settings, with the engine from `SECURITY_DB_ENGINE` defaulting to `DB_ENGINE`) |
 
 ### Running the scripts directly
 
