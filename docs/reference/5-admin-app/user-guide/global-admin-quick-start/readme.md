@@ -39,7 +39,7 @@ In addition, in the ODS/API's **EdFi_Security** database (by direct SQL):
 
 | Requirement | Notes |
 | --- | --- |
-| PowerShell 7.0+ | Cross-platform; required to run the scripts |
+| Windows PowerShell 5.1 or PowerShell 7.0+|
 | Git | For cloning the scripts repository |
 | Ed-Fi ODS/API and ODS Admin API | Installed and reachable at the URLs configured in `.env` (defaults assume the local stack at `https://localhost`) |
 | Ed-Fi Admin App | Deployed with its database migrated (migrations seed the built-in roles the scripts reference — `Global admin`, `Tenant admin`, `Full ownership`) |
