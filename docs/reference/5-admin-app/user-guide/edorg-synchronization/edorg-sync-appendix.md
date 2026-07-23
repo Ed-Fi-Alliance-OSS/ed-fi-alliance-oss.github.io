@@ -75,6 +75,11 @@ single transaction.
 
 ## Environment variable reference
 
+Passwords (`ODS_DB_PASSWORD`, `ODS_POSTGRES_PASSWORD`,
+`ADMIN_APP_DB_PASSWORD`, `POSTGRES_APP_PASSWORD`) may be left empty:
+`run.ps1` and `cleanup-edorgs.ps1` prompt for the ones they need, with the
+input masked. Set them in the file only for unattended runs.
+
 Source ODS (read-only):
 
 | Variable | Default | Purpose |
@@ -82,10 +87,10 @@ Source ODS (read-only):
 | `ODS_DB_ENGINE` | `mssql` | `mssql` or `pgsql` |
 | `ODS_DATABASE_NAME` | — | The ODS to export from. Required |
 | `ODS_SQL_SERVER` | `tcp:localhost,1433` | SQL Server hosting the ODS |
-| `ODS_DB_USERNAME` / `ODS_DB_PASSWORD` | `sa` / — | SQL Server login |
+| `ODS_DB_USERNAME` / `ODS_DB_PASSWORD` | `sa` / — | SQL Server login; the password is prompted when empty |
 | `ODS_USE_INTEGRATED_SECURITY` | `false` | `true` = Windows authentication (no password needed) |
 | `ODS_POSTGRES_HOST` / `ODS_POSTGRES_PORT` | `localhost` / `5432` | PostgreSQL host/port |
-| `ODS_POSTGRES_USER` / `ODS_POSTGRES_PASSWORD` | `postgres` / — | PostgreSQL login |
+| `ODS_POSTGRES_USER` / `ODS_POSTGRES_PASSWORD` | `postgres` / — | PostgreSQL login; the password is prompted when empty |
 | `ODS_USE_POSTGRES_DOCKER` | `false` | `true` = run `psql` inside the ODS stack's database container |
 | `ODS_POSTGRES_CONTAINER` | `ed-fi-db-ods` | That container's name |
 
@@ -96,10 +101,10 @@ Target Admin App database:
 | `DB_ENGINE` | `mssql` | `mssql` or `pgsql` |
 | `DATABASE_NAME` | `sbaa` | The Admin App application database |
 | `SQL_SERVER` | `tcp:localhost,1433` | SQL Server hosting it |
-| `ADMIN_APP_DB_USER` / `ADMIN_APP_DB_PASSWORD` | `sa` / — | SQL Server login |
+| `ADMIN_APP_DB_USER` / `ADMIN_APP_DB_PASSWORD` | `sa` / — | SQL Server login; the password is prompted when empty |
 | `USE_INTEGRATED_SECURITY` | `false` | `true` = Windows authentication |
 | `POSTGRES_HOST` / `POSTGRES_PORT` | `localhost` / `5432` | PostgreSQL host/port |
-| `POSTGRES_APP_USER` / `POSTGRES_APP_PASSWORD` | `edfiadminapp` / — | PostgreSQL login |
+| `POSTGRES_APP_USER` / `POSTGRES_APP_PASSWORD` | `edfiadminapp` / — | PostgreSQL login; the password is prompted when empty |
 | `USE_POSTGRES_DOCKER` | `false` | `true` = run `psql` inside the Admin App stack's database container |
 | `POSTGRES_CONTAINER` | `edfiadminapp-postgres` | That container's name |
 
