@@ -65,7 +65,7 @@ Pass a parameter only to change something the defaults do not cover. PostgreSQL 
 
 The script prompts for `-SqlAdminPassword`, `-AppDbPassword`, and the rest, the same as any other run. It provisions the Admin App login as a contained user, connects with encryption and validates the server certificate, and configures the API to do the same — nothing to set by hand. For a remote server that presents a self-signed certificate rather than a CA-issued one, add `-TrustServerCertificate`, which turns that validation off. Azure rejects a database password containing the login name, so avoid `edfi_adminapp` in the value; the script checks this up front.
 
-**Microsoft Entra ID, SQL Server** — an external OIDC provider. Register the application and its redirect URIs in Entra first, and make sure a user exists there whose email matches `-AdminUsername`:
+**Microsoft Entra ID, SQL Server** — an external OIDC provider. Register the application and its redirect URIs in Entra first (or script that step with `idp-entra-setup.ps1` — see [Microsoft Entra ID](../../configuration/identity-provider/microsoft-entra-id.md#part-a--register-the-application-in-microsoft-entra-id)), and make sure a user exists there whose email matches `-AdminUsername`:
 
 ```powershell
 .\install-all.ps1 -IdpProvider microsoft `

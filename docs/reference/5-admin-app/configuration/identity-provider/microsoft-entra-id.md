@@ -15,12 +15,27 @@ Register the Entra application **first** — its issuer, client id, and secret g
 ## Prerequisites
 
 - A Windows/IIS server with SQL Server prepared per the [Windows IIS installation guide](../../getting-started/windows-iis-installation/readme.md).
-- Access to the Microsoft Entra admin center with permission to create App Registrations and grant admin consent (for example, Cloud Application Administrator).
+- Sufficient Microsoft Entra directory roles: **Cloud Application Administrator** (or higher) to create the App Registration, and **Privileged Role Administrator** or **Global Administrator** to grant admin consent in step A3. Cloud Application Administrator alone can create the app but cannot grant tenant-wide admin consent; if your account lacks that privilege, have a Global Administrator grant consent afterward.
 - The host where the Admin App **API** is served — used in the redirect URI. In the two-site Windows/IIS layout this is the API site, for example `https://localhost:3443`.
 - Your Entra **Tenant ID**.
 - The **email of the first admin user** — it must equal the email Entra sends for that person. It is set as `ADMIN_USERNAME` during installation, so decide it beforehand.
 
 ## Part A — Register the application in Microsoft Entra ID
+
+:::tip Automate Part A with a script
+
+Instead of the manual steps below, you can script this entire section with `idp-entra-setup.ps1` from the [Admin App Installation Scripts repository](https://github.com/Ed-Fi-Exchange-OSS/Admin-App-Installation-Scripts) (`windows-install` folder). Using the Microsoft Graph PowerShell SDK, it creates a single-tenant App Registration with the Web redirect URI, the `email` ID-token optional claim, the delegated `openid`/`email` permissions, and a client secret, and grants tenant-wide admin consent (or prints the exact manual consent URL when your account lacks the privilege). It outputs the client id, issuer, and redirect URI, and writes the secret to an ACL-restricted file — the values you need for Part B or the [automated install](../../getting-started/windows-iis-installation/automated.md).
+
+It needs the same Entra roles as the manual path (see [Prerequisites](#prerequisites)) plus the Microsoft Graph `Application.ReadWrite.All` scope, and does not require an elevated session.
+
+```powershell
+# From the windows-install folder:
+$r = .\idp-entra-setup.ps1 -DisplayName 'Ed-Fi Admin App' -TenantId '<tenant-id>'
+```
+
+By default the redirect URI targets `https://localhost:3443/api/auth/callback/1`; pass `-ApiBaseUrl` for a different API host, or `-RedirectCallbackId <id>` if the install reports an `oidc` row id other than `1`. Run `Get-Help .\idp-entra-setup.ps1 -Full` for all parameters.
+
+:::
 
 ### A1. Create the App Registration
 
