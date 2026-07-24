@@ -205,7 +205,7 @@ _Best Practices for the use of the SSA Attributes_
 
 | Required | Must Have | Recommended | As Needed |
 | --- | --- | --- | --- |
-| Student (key)<br/><br/>School (key)<br/><br/>EntryDate (key)<br/><br/>EntryGradeLevel | EntryType<br/><br/>PrimarySchool<br/><br/>SchoolYear<br/><br/>EnrollmentType<br/><br/>ResidencyStatus<br/><br/>ExitWithdrawDate<br/><br/>ExitWithdrawType<br/><br/>Calendar<br/><br/>FullTimeEquivalency | EntryGradeLevelReason<br/><br/>RepeatGradeIndicator<br/><br/>ClassOfSchoolYear<br/><br/>GraduationPlan | EducationPlan<br/><br/>AlternativeGraduationPlan<br/><br/>EmployedWhileEnrolled<br/><br/>SchoolChoice<br/><br/>SchoolChoiceBasis<br/><br/>TermCompletionIndicator<br/><br/>NextYearSchool<br/><br/>NextYearGradeLevel |
+| Student (key)<br/><br/>School (key)<br/><br/>EntryDate (key)<br/><br/>EntryGradeLevel | EntryType<br/><br/>PrimarySchool<br/><br/>SchoolYear<br/><br/>EnrollmentType<br/><br/>ResidencyStatus (deprecated in v6.1)<br/><br/>ExitWithdrawDate<br/><br/>ExitWithdrawType<br/><br/>Calendar<br/><br/>FullTimeEquivalency | EntryGradeLevelReason<br/><br/>RepeatGradeIndicator<br/><br/>ClassOfSchoolYear<br/><br/>GraduationPlan | EducationPlan<br/><br/>AlternativeGraduationPlan<br/><br/>EmployedWhileEnrolled<br/><br/>SchoolChoice<br/><br/>SchoolChoiceBasis<br/><br/>TermCompletionIndicator<br/><br/>NextYearSchool<br/><br/>NextYearGradeLevel |
 
 :::note Keys in reading the table and following ones:
 
@@ -295,11 +295,14 @@ attribute must be used, as follows.
 
 :::info
 
-* Use the _ResidencyStatus_ descriptor to record the location of a student’s legal
-  residence with respect to the boundaries of the school being enrolled in; for
-  example, within the school boundaries, outside the school boundaries but in
-  the district boundaries, outside the district boundaries but within the state,
-  etc.
+* The _ResidencyStatus_ descriptor, previously used to record the location of
+  a student’s legal residence with respect to the boundaries of the school
+  being enrolled in, is deprecated as of Data Standard v6.1 and scheduled for
+  removal in Data Standard v8.0. To clearly distinguish enrollment from
+  responsibility, residency should instead be captured with a
+  _StudentEducationOrganizationResponsibilityAssociation_ (_SEORA_) using an
+  appropriate _Responsibility_ descriptor value (see the _SEORA_ best
+  practices below).
 * _FullTimeEquivalency_ represents whether the student’s enrollment to the
   school for instruction and services is considered full time or some lesser
   portion. Use the _FullTimeEquivalency_ value to denote the planned level of
@@ -337,22 +340,68 @@ relationship between a student and an education organization other than an
 enrollment relationship, and generally indicates some kind of accountability or
 responsibility of the education organization for the student. The kind of
 responsibility is specified in the Responsibility descriptor value according to
-policy.
+policy. Prior to Data Standard v6.1, the Responsibility descriptor applied to the
+EducationOrganization. Starting with v6.1, the recipient of the responsibility
+changed to the ResponsibleEducationOrganization.
 
-_Best Practices _for the use of the_
+The StudentEducationOrganizationResponsibilityAssociation _SEORA_ is the primary association for tracking responsibility for a
+student, differentiated from the StudentSchoolAssociation (_SSA_) which captures enrollment ,and the
+StudentEducationOrganizationAssociation (_SEOA_) which explains the context of the student's relationship to the education organization.
+
+Starting on Data Standard version 6.1, The _SEORA_ distinguishes two education organization roles:
+
+* The _EducationOrganization_ (key) is the _reporting_ education organization,
+  the organization that reports the _SEORA_ record.
+* The optional _ResponsibleEducationOrganization_ reference identifies the
+  _responsible_ education organization, the organization that holds the
+  responsibility indicated by the _Responsibility_ descriptor, when it is a
+  different organization than the reporting one.
+
+:::note Changes in Data Standard v6.1
+
+* An optional _ResponsibleEducationOrganization_ reference was added to the
+  _SEORA_. In prior versions, authorization controls prevented a reporting
+  education organization from representing other organizations responsible
+  for a student (e.g., for residency, funding, accountability, or
+  transportation), which led to reporting gaps and state-specific extensions.
+  Reporting organizations can now explicitly identify alternate responsible
+  organizations.
+* The _Responsibility_ descriptor is clarified to refer to the responsible
+  education organization (the _ResponsibleEducationOrganization_, when
+  populated) and no longer to the reporting one.
+* To align with this approach, the _ResidencyStatus_ descriptor in the _SSA_
+  is deprecated and scheduled for removal in Data Standard v8.0. Residency
+  responsibility should instead be captured with a _SEORA_ using an
+  appropriate _Responsibility_ descriptor value.
+
+The _Responsibility_ descriptor value applies to the responsible education
+organization: the _ResponsibleEducationOrganization_ when populated;
+otherwise, the reporting _EducationOrganization_ is understood to also be the
+responsible organization.
+
+:::
+
+_Best Practices for the use of the
 StudentEducationOrganizationResponsibilityAssociation Attributes_
 
 | Required | Must Have | Recommended | As Needed |
 | --- | --- | --- | --- |
-| Student (key)<br/><br/>EducationOrganization (key)<br/><br/>Responsibility<br/><br/>BeginDate | EndDate |     |     |
+| Student (key)<br/><br/>EducationOrganization (key)<br/><br/>Responsibility<br/><br/>BeginDate | EndDate | ResponsibleEducationOrganization |     |
 
-Business Rules that considered as best practices for the usage of the _SEORA_ as
+Business Rules that considered as best practices for the usage of the _SEORA_ as
 follows
 
 :::info
 
-* A _SEORA_ is written when the responsibility for a student is a different
-  education organization than the enrollment school in the _SSA_.
+* A _SEORA_ is written when an education organization other than the
+  enrollment school in the _SSA_ has an accountability or responsibility
+  relationship with the student.
+* When the organization holding the responsibility is different from the
+  reporting _EducationOrganization_, populate the
+  _ResponsibleEducationOrganization_ reference to identify it. Although the
+  reference is optional, consistently populate the education organization that
+  holds the alternate responsibility, as indicated by the _Responsibility_
+  descriptor.
 * The _BeginDate_ and _EndDate_ of the _SEORA_ should be informed by the
   _EntryDate_ and _ExitWithdrawDate_ of a student’s _SSA_(s). There may be
   circumstances when they may be legitimately different.
