@@ -12,7 +12,7 @@ First clone the scripts (see [Automated](./automated.md#get-the-scripts)), then 
 | --- | --- | --- | --- |
 | 0 (fresh VM) | `setup-vm-prereqs.ps1` | OS-level installs: IIS feature set, SQL Server Developer, Git. Scans first, installs only what is missing; also sets the execution policy and unblocks the scripts. | [Windows Prerequisites](./manual.md#windows-prerequisites) |
 | 1 | `01-prereqs-iis.ps1` | URL Rewrite Module + the httpPlatform handler (HttpBridge by default, or Microsoft HttpPlatformHandler); unlocks the `handlers` configuration section. | [Windows Prerequisites](./manual.md#iis-modules) |
-| 2 | `02-prereqs-sql.ps1` | SQL Server Mixed Mode + TCP/IP + `sa`; creates the `sbaa` database and a dedicated least-privilege login (`edfi_adminapp`) the app connects as. | [Database](./manual.md#database) |
+| 2 | `02-prereqs-sql.ps1` | SQL Server Mixed Mode + TCP/IP; creates the `sbaa` database and a dedicated least-privilege login (`edfi_adminapp`) the app connects as. Server setup uses Windows Authentication, not `sa`. | [Database](./manual.md#database) |
 | 3 | `03-prereqs-node.ps1` | Installs Node.js (the major version pinned in `engines.node`); remediates a too-old Node via nvm-windows. | [Node.js](./manual.md#nodejs) |
 | 4 | `04-build.ps1` | `npm ci` + build API + build frontend. Seeds the frontend `.env` before building. | [Backend API](./manual.md#backend-api-installation) / [Frontend](./manual.md#frontend-installation) |
 | 5 | `05-deploy-api.ps1` | Deploys the API as standalone site `EdFi-AdminApp-API` (HTTPS :3443; HTTP :3333 redirects): web.config, App Pool, `production.js`, App-Pool-scoped npm cache. | [Backend API](./manual.md#backend-api-installation) |

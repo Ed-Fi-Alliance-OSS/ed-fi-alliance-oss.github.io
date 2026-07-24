@@ -35,7 +35,6 @@ For the full list of parameters and configuration options, see the [`windows-ins
 
 ```powershell
 .\install-all.ps1 -IdpProvider keycloak `
-  -SaPassword (Read-Host -AsSecureString 'SQL Server sa password') `
   -AppDbPassword (Read-Host -AsSecureString 'Admin App DB login password') `
   -KeycloakAdminPassword (Read-Host -AsSecureString 'Keycloak admin password') `
   -OidcClientSecret (Read-Host -AsSecureString 'OIDC client secret') `

@@ -54,13 +54,12 @@ Without unlocking the `handlers` section, requests to the API return **HTTP 500.
 
 The Admin App supports PostgreSQL 16+ and SQL Server 2017+, and needs only one. This guide uses **SQL Server** by default on Windows; PostgreSQL is available via Docker (requires Docker Desktop in Linux-container mode).
 
-For SQL Server:
+For SQL Server, run these steps as a Windows account that is a SQL Server sysadmin (Windows Authentication); the `sa` login is not required:
 
 1. Enable **Mixed Mode (SQL Server and Windows) authentication** (the Node `mssql` driver connects with SQL authentication).
 2. Enable the **TCP/IP** protocol and confirm it listens on port **1433** (the driver requires TCP).
-3. Enable the **`sa`** login and set a password. `sa` is used **only for setup** (enabling Mixed Mode and creating the database and app login); the Admin App itself does not connect as `sa`.
-4. Create an empty database. This guide uses the name **`sbaa`**.
-5. Create a dedicated least-privilege login for the Admin App to connect as. It is `db_owner` on the Admin App database **only** and holds no server-level role (it is not a sysadmin like `sa`). `db_owner` — rather than just `db_datareader`/`db_datawriter` — is required because the app creates and migrates its own schema on startup.
+3. Create an empty database. This guide uses the name **`sbaa`**.
+4. Create a dedicated least-privilege login for the Admin App to connect as. It is `db_owner` on the Admin App database **only** and holds no server-level role (it is not a sysadmin like `sa`). `db_owner` — rather than just `db_datareader`/`db_datawriter` — is required because the app creates and migrates its own schema on startup.
 
    ```sql
    CREATE LOGIN [edfi_adminapp] WITH PASSWORD = N'YourStrong!AppPassw0rd', CHECK_POLICY = ON;
