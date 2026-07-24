@@ -14,7 +14,7 @@ installing the Admin App.
 The Ed-Fi Admin App is a user interface for managing Ed-Fi Technology Suite
 deployments. It consists of:
 
-- **Frontend**: React-based single-page application (SPA)
+- **Web Application**: React-based single-page application (SPA)
 - **Backend API**: Node.js/NestJS application
 - **Database**: PostgreSQL or SQL Server database for application data
 - **Authentication**: OpenID Connect (OIDC) integration (typically Keycloak)
@@ -25,9 +25,9 @@ deployments. It consists of:
   for the Admin App (the examples use the name `sbaa`)
 - **OIDC Provider** (Required) - Keycloak or similar see
   - [Configuring an Identity Provider for Ed-Fi Admin App](../configuration/identity-provider.md)
-- **Reverse Proxy** (Recommended for production) - NGiNX, IIS, or similar
-  - Provides a single public entry point for the frontend and API — this avoids cross-origin/CORS between the two sites — plus caching, load balancing, and a place to enforce edge security (e.g. a WAF).
-  - Not required to obtain HTTPS: each installation path terminates TLS itself. The Windows install scripts deploy the API and frontend as two IIS sites directly (no front-facing proxy) with TLS and enforcing security headers, and the app is architecturally optional behind a proxy (v4.0 PRD), honoring `X-Forwarded-*` headers when used.
+- **Reverse Proxy** (Recommended for production) - Nginx, IIS, or similar
+  - Provides a single public entry point for the Web Application and API (this avoids cross-origin/CORS between the two sites), plus caching, load balancing, and a place to enforce edge security (for example, a web application firewall).
+  - Not required to obtain HTTPS: each installation path terminates TLS itself. The Windows install scripts deploy the API and Web Application as two IIS sites directly (no front-facing proxy) with TLS and enforcing security headers, and the app is architecturally optional behind a proxy by design, honoring `X-Forwarded-*` headers when used.
 
 :::tip
 
@@ -68,8 +68,8 @@ target environment and follow that page from start to finish.
 | Path | What it does |
 | --- | --- |
 | [Docker Compose Installation](./docker-installation.md) | Runs the Admin App and its dependencies as containers, on-premises or in the Cloud. |
-| [Windows IIS Installation](./windows-iis-installation/readme.md) | Hosts the backend API and frontend on Windows Server using Internet Information Services (IIS). |
-| [Unix-like Systems Installation](./unix-installation.md) | Hosts the backend API with systemd and serves the frontend with NGiNX on a Linux or other Unix-like server. |
+| [Windows IIS Installation](./windows-iis-installation/readme.md) | Hosts the backend API and Web Application on Windows Server using Internet Information Services (IIS). |
+| [Unix-like Systems Installation](./unix-installation.md) | Hosts the backend API with systemd and serves the Web Application with Nginx on a Linux or other Unix-like server. |
 
 :::note
 You only need to complete **one** of the paths above — each one installs and

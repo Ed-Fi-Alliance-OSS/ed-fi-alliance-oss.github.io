@@ -8,7 +8,7 @@ This page documents the full manual Windows/IIS installation — every prerequis
 
 ## Windows Prerequisites
 
-Prepare the following on the Windows host before deploying the API and frontend. Each item is detailed in its own subsection below.
+Prepare the following on the Windows host before deploying the API and Web Application. Each item is detailed in its own subsection below.
 
 - **[Operating-system components](#operating-system-components-iis-sql-server-git)** — IIS (**version 10 or newer**), SQL Server, and, optionally, Git.
 - **[IIS modules](#iis-modules)** — the URL Rewrite Module and an httpPlatform handler.
@@ -36,7 +36,7 @@ Prepare the following on the Windows host before deploying the API and frontend.
 
 IIS hosts the Node.js API through the **httpPlatform handler**: IIS acts as a reverse proxy, launching the Node process (`main.js`) and forwarding requests to a loopback port it assigns via the `HTTP_PLATFORM_PORT` environment variable.
 
-1. Install the [IIS URL Rewrite Module](https://www.iis.net/downloads/microsoft/url-rewrite). It is used for the HTTP→HTTPS redirect and the frontend's SPA fallback.
+1. Install the [IIS URL Rewrite Module](https://www.iis.net/downloads/microsoft/url-rewrite). It is used for the HTTP→HTTPS redirect and the Web Application's SPA fallback.
 2. Install an httpPlatform handler. Two are compatible, and both register the same `httpPlatformHandler` module name:
    - **HttpBridge** — the [LeXtudio fork](https://github.com/lextudio/httpbridge) (MIT, actively maintained).
    - **Microsoft HttpPlatformHandler** — the [original v1.2](https://www.iis.net/downloads/microsoft/httpplatformhandler) (signed, stable, frozen since ~2016).
@@ -106,7 +106,7 @@ Yopass lets the Admin App share newly created API client credentials as one-time
 
 ### TLS and certificates
 
-Both IIS sites are served over HTTPS (API `:3443`, frontend `:4443`). Each also keeps an HTTP binding (`:3333` / `:4200`) that returns a 301 redirect to its HTTPS URL. Use a CA-issued certificate where you can; for local use, a self-signed certificate (CN/SAN `localhost` plus the machine name) is sufficient. Place the certificate in `LocalMachine\My` and bind it to each site's HTTPS binding.
+Both IIS sites are served over HTTPS (API `:3443`, Web Application `:4443`). Each also keeps an HTTP binding (`:3333` / `:4200`) that returns a 301 redirect to its HTTPS URL. Use a CA-issued certificate where you can; for local use, a self-signed certificate (CN/SAN `localhost` plus the machine name) is sufficient. Place the certificate in `LocalMachine\My` and bind it to each site's HTTPS binding.
 
 :::warning
 A self-signed certificate is auto-trusted **only on this machine**; other machines browsing to it still see a trust warning. Supply a real certificate (thumbprint or PFX) for anything beyond this host.
@@ -224,7 +224,7 @@ The API is deployed as a standalone IIS site, `EdFi-AdminApp-API`, with an HTTP 
    Copy `production.js-edfi` to `production.js` in `packages/api/config`, then set the values. The example below is a local SQL Server install with the local Keycloak example identity provider.
 
    ```javascript
-   // Frontend URL from the 'Frontend Installation' section (HTTPS).
+   // Web Application URL from the 'Web Application Installation' section (HTTPS).
    const FE_URL = 'https://localhost:4443';
 
    module.exports = {
@@ -270,7 +270,7 @@ The API is deployed as a standalone IIS site, `EdFi-AdminApp-API`, with an HTTP 
        scope: 'openid email profile',
      },
      USE_PKCE: true,
-     ADMIN_USERNAME: 'admin@example.com', // must match a user in your IdP
+     ADMIN_USERNAME: 'admin@example.com', // must match a user in your identity provider
 
      FE_URL: FE_URL,
      MY_URL: 'https://localhost:3443', // the API site's HTTPS URL
@@ -313,9 +313,9 @@ The API is deployed as a standalone IIS site, `EdFi-AdminApp-API`, with an HTTP 
 
 See the [Troubleshooting](../../troubleshooting.md#backend-troubleshooting) section if you hit errors.
 
-## Frontend Installation
+## Web Application Installation
 
-The frontend is a Vite single-page application, deployed as a second standalone IIS site, `EdFi-AdminApp-FE`, with an HTTP binding on port 4200 and an HTTPS binding on port 4443; the HTTP binding only 301-redirects to HTTPS.
+The Web Application is a Vite single-page application, deployed as a second standalone IIS site, `EdFi-AdminApp-FE`, with an HTTP binding on port 4200 and an HTTPS binding on port 4443; the HTTP binding only 301-redirects to HTTPS.
 
 1. **Configure the build-time environment (`.env`)**:
 
@@ -335,7 +335,7 @@ The frontend is a Vite single-page application, deployed as a second standalone 
    **Environment variable descriptions:**
    - `VITE_API_URL`: Backend API endpoint (the API site's HTTPS URL, `https://localhost:3443`).
    - `VITE_OIDC_ID`: OpenID Connect configuration ID from the database (the id of the `oidc` row; must match the redirect-URI callback id).
-   - `VITE_BASE_PATH`: URL path the app is served from. Keep it `"/"`: the frontend is served from the root of its own site.
+   - `VITE_BASE_PATH`: URL path the app is served from. Keep it `"/"`: the Web Application is served from the root of its own site.
    - `VITE_HELP_GUIDE`: URL to general help documentation.
    - `VITE_STARTING_GUIDE`: URL to the getting-started / system administrator guide.
    - `VITE_CONTACT`: URL to a community support or contact page.
@@ -346,7 +346,7 @@ The frontend is a Vite single-page application, deployed as a second standalone 
    These values are baked into the bundle at build time, so set `.env` **before** building (step 2); changing it afterward has no effect. For the local Keycloak example, `VITE_IDP_ACCOUNT_URL` is the account-management interface (`/realms/{realm-name}/account/`), not the admin console.
    :::
 
-2. **Build the frontend**:
+2. **Build the Web Application**:
 
    ```powershell
    # From the cloned repository
@@ -373,7 +373,7 @@ The frontend is a Vite single-page application, deployed as a second standalone 
 
 6. **Configure `web.config`**:
 
-   Create a `web.config` in the site folder. It redirects HTTP to HTTPS, falls back client-side routes to `index.html`, and sets the frontend's security headers.
+   Create a `web.config` in the site folder. It redirects HTTP to HTTPS, falls back client-side routes to `index.html`, and sets the Web Application's security headers.
 
    ```xml
    <?xml version="1.0" encoding="utf-8"?>
@@ -414,7 +414,7 @@ The frontend is a Vite single-page application, deployed as a second standalone 
    ```
 
    :::note
-   The `connect-src` in the Content-Security-Policy must name the exact API origin the bundle calls (`VITE_API_URL`), or the browser blocks the frontend's API requests. Here it is `https://localhost:3443`.
+   The `connect-src` in the Content-Security-Policy must name the exact API origin the bundle calls (`VITE_API_URL`), or the browser blocks the Web Application's API requests. Here it is `https://localhost:3443`.
    :::
 
    :::note
@@ -428,7 +428,7 @@ See the [Troubleshooting](../../troubleshooting.md#frontend-troubleshooting) sec
 Both IIS sites emit a baseline set of response headers (shown in each site's `web.config` above) and remove `X-Powered-By`. Both send `Strict-Transport-Security` (HSTS) and `Referrer-Policy`, and each carries an **enforcing** `Content-Security-Policy`:
 
 - **API** — `default-src 'none'`, since it serves only JSON in production (Swagger UI is disabled there).
-- **Frontend** — allows its own origin plus the API origin in `connect-src`; `style-src` allows `'unsafe-inline'` because the UI framework injects styles at runtime.
+- **Web Application** — allows its own origin plus the API origin in `connect-src`; `style-src` allows `'unsafe-inline'` because the UI framework injects styles at runtime.
 
 The API additionally sets `X-Content-Type-Options` and `X-Frame-Options` in application code. Adjust these headers if you place the sites behind a reverse proxy that sets its own.
 
@@ -463,7 +463,7 @@ Node.js, SQL Server, and IIS can remain in place.
 The Admin App is now running, but it manages **Ed-Fi ODS/API** instances that run separately — this guide does not install an ODS/API. To start using the Admin App, sign in and connect a running ODS/API environment (ODS/API 6.x or 7.x) by its Discovery API URL.
 
 :::note First sign-in
-Open the frontend at `https://localhost:4443` and sign in through the identity provider. For the local Keycloak example, use the Keycloak user you created — its email must match `ADMIN_USERNAME` in `production.js` (default `admin@example.com`). This first user is the bootstrap administrator; additional users must be granted access from within the Admin App afterward.
+Open the Web Application at `https://localhost:4443` and sign in through the identity provider. For the local Keycloak example, use the Keycloak user you created — its email must match `ADMIN_USERNAME` in `production.js` (default `admin@example.com`). This first user is the bootstrap administrator; additional users must be granted access from within the Admin App afterward.
 :::
 
 :::note
