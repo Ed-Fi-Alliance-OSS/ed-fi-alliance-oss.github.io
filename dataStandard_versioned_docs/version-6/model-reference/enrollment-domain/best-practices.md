@@ -340,13 +340,15 @@ relationship between a student and an education organization other than an
 enrollment relationship, and generally indicates some kind of accountability or
 responsibility of the education organization for the student. The kind of
 responsibility is specified in the Responsibility descriptor value according to
-policy.
+policy. Prior to Data Standard v6.1, the Responsibility descriptor applied to the
+EducationOrganization. Starting with v6.1, the recipient of the responsibility
+changed to the ResponsibleEducationOrganization.
 
 The StudentEducationOrganizationResponsibilityAssociation _SEORA_ is the primary association for tracking responsibility for a
 student, differentiated from the StudentSchoolAssociation (_SSA_) which captures enrollment ,and the
 StudentEducationOrganizationAssociation (_SEOA_) which explains the context of the student's relationship to the education organization.
 
-The _SEORA_ distinguishes two education organization roles:
+Starting on Data Standard version 6.1, The _SEORA_ distinguishes two education organization roles:
 
 * The _EducationOrganization_ (key) is the _reporting_ education organization,
   the organization that reports the _SEORA_ record.
@@ -354,11 +356,6 @@ The _SEORA_ distinguishes two education organization roles:
   _responsible_ education organization, the organization that holds the
   responsibility indicated by the _Responsibility_ descriptor, when it is a
   different organization than the reporting one.
-
-The _Responsibility_ descriptor value applies to the responsible education
-organization: the _ResponsibleEducationOrganization_ when populated;
-otherwise, the reporting _EducationOrganization_ is understood to also be the
-responsible organization.
 
 :::note Changes in Data Standard v6.1
 
@@ -376,6 +373,11 @@ responsible organization.
   is deprecated and scheduled for removal in Data Standard v8.0. Residency
   responsibility should instead be captured with a _SEORA_ using an
   appropriate _Responsibility_ descriptor value.
+
+The _Responsibility_ descriptor value applies to the responsible education
+organization: the _ResponsibleEducationOrganization_ when populated;
+otherwise, the reporting _EducationOrganization_ is understood to also be the
+responsible organization.
 
 :::
 
