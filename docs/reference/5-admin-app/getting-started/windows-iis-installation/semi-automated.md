@@ -8,6 +8,10 @@ Automate some sections and hand-configure others — for example, script the pre
 
 First clone the scripts (see [Automated](./automated.md#get-the-scripts)), then run the ones you want from an elevated PowerShell in `windows-install/`, in the order below.
 
+:::note
+On **Windows Server 2019/2022**, install the Windows Package Manager (`winget`) before running `setup-vm-prereqs.ps1` (it ships only on Windows 10/11). See [Automated → Windows Server prerequisite: install winget](./automated.md#windows-server-prerequisite-install-winget).
+:::
+
 | Order | Script | What it automates | Manual section |
 | --- | --- | --- | --- |
 | 0 (fresh VM) | `setup-vm-prereqs.ps1` | OS-level installs: IIS feature set, SQL Server Developer, Git. Scans first, installs only what is missing; also sets the execution policy and unblocks the scripts. | [Windows Prerequisites](./manual.md#windows-prerequisites) |

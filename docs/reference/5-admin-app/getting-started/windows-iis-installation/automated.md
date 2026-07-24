@@ -19,6 +19,13 @@ cd Admin-App-Installation-Scripts\windows-install
 On a bare machine without Git, download the repository as a ZIP from GitHub (**Code → Download ZIP**) and extract it — `setup-vm-prereqs.ps1` installs Git afterward. If PowerShell refuses to run the scripts (they carry the internet Mark of the Web), `setup-vm-prereqs.ps1` unblocks them and sets the execution policy; to do it by hand, run `Get-ChildItem *.ps1 | Unblock-File` and `Set-ExecutionPolicy -Scope Process Bypass`.
 :::
 
+## Windows Server prerequisite: install winget
+
+The scripts use the Windows Package Manager (`winget`) to install Node.js, OpenJDK, SQL Server, and Git. It ships with Windows 10 and Windows 11 but is **not** included on Windows Server 2019 or 2022, so install it there before running `setup-vm-prereqs.ps1`. (`00-check-prereqs.ps1` reports when winget is missing.)
+
+- **Official Microsoft guidance:** see [Install WinGet](https://learn.microsoft.com/en-us/windows/package-manager/winget/#install-winget). Because Windows Server 2019/2022 do not include the Microsoft Store, install the App Installer package directly from the official [microsoft/winget-cli releases](https://github.com/microsoft/winget-cli/releases).
+- **Community helper (optional):** the [`winget-install`](https://www.powershellgallery.com/packages/winget-install) PowerShell Gallery script is a third-party tool that installs winget in a single command. It downloads only from official Microsoft and GitHub sources, though it is not maintained or endorsed by Ed-Fi or Microsoft.
+
 ## Run everything at once
 
 On a fresh machine, run `setup-vm-prereqs.ps1` first (it installs the OS-level pieces: IIS, SQL Server, Git), then `install-all.ps1`. Both run from an elevated PowerShell in the `windows-install` folder. Choose the identity provider with the mandatory `-IdpProvider` parameter; this guide uses `keycloak`.
