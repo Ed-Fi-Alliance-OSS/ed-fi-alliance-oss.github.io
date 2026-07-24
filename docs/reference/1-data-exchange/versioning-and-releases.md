@@ -78,14 +78,15 @@ Early access materials are described as such with keywords "EARLY ACCESS" in the
 * Open API specifications (Swagger)
 * reference documentation
 
-When early access material is verified to be stable, we will remove "EARLY
-ACCESS" from the description in the next release. The principle for this
-promotion is to ask for burden of proof that is commensurate with the risk or
+The early access material can become mature once various states implement the early
+access model and approve the changes. When this occurs and is verified to be stable,
+we will remove "EARLY ACCESS" from the description in the next release. The principle
+for this promotion is to ask for burden of proof that is commensurate with the risk or
 scope of the change:
 
 Trivial changes may need very little verification – it may be enough to promote
 them to final based on some time period as early access Aggressive changes will
-require active validation from multiple sources that the change is viable
+require active validation from multiple sources that the change is viable.
 
 ### Recommendations
 
