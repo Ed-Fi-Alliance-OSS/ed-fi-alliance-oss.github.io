@@ -71,6 +71,10 @@ For SQL Server:
 
    This login and its password become `MSSQL_DB_USERNAME` / `MSSQL_DB_PASSWORD` in `production.js`. `CHECK_POLICY = ON` enforces the Windows password policy, so use a strong password (length ≥ 8 and at least 3 of: uppercase, lowercase, digit, symbol).
 
+:::warning
+Some special characters are not currently supported in the Admin App database username or password. Use only letters, digits, and these symbols: `! $ ( ) * , - . _ ~`. A value that includes other characters (for example `@ : / ? # % & = ;`, `"`, `< >`, `|`, or a space) can stop the API from connecting to the database at startup.
+:::
+
 :::note
 Installing the Admin App database in its own SQL Server instance, separate from the ODS/API databases (`EdFi_Admin`, `EdFi_Security`), is recommended.
 :::

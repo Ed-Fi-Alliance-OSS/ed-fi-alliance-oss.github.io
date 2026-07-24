@@ -86,6 +86,10 @@ This path uses **PostgreSQL**. The Admin App is database-engine-agnostic, but SQ
    EOF
    ```
 
+   :::warning
+   Some special characters are not currently supported in the Admin App database username or password (`DB_USERNAME` / `DB_PASSWORD`). Use only letters, digits, and these symbols: `! $ ( ) * , - . _ ~`. A value that includes other characters (for example `@ : / ? # % & = ;`, `"`, `< >`, `|`, or a space) can stop the API from connecting to the database at startup.
+   :::
+
    :::tip
    `your-64-hex-char-encryption-key` can be generated with `openssl rand -hex 32` or `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`
    :::

@@ -143,6 +143,10 @@ VITE_APPLICATION_NAME="Ed-Fi Admin App"
 VITE_IDP_ACCOUNT_URL=https://yourdomain.com/auth/realms/edfi/account/
 ```
 
+:::warning
+Some special characters are not currently supported in the database password (for example `POSTGRES_PASSWORD`, or `MSSQL_SA_PASSWORD` when using SQL Server). Use only letters, digits, and these symbols: `! $ ( ) * , - . _ ~`. A password that includes other characters (for example `@ : / ? # % & = ;`, `"`, `< >`, `|`, or a space) can stop the API from connecting to the database at startup.
+:::
+
 :::note
 **Important:** The `VITE_IDP_ACCOUNT_URL` value may differ from your Keycloak admin console URL.
 This should point to the **account management interface** (`/auth/realms/{realm-name}/account/`), not the admin console.
