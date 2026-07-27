@@ -39,9 +39,10 @@ In addition, in the ODS/API's **EdFi_Security** database (by direct SQL):
 
 | Requirement | Notes |
 | --- | --- |
-| Windows PowerShell 5.1 or PowerShell 7.0+|
+| Windows PowerShell 5.1 or PowerShell 7.0+ | |
 | Git | For cloning the scripts repository |
 | Ed-Fi ODS/API and ODS Admin API | Installed and reachable at the URLs configured in `.env` (defaults assume the local stack at `https://localhost`) |
+| Admin API client registration enabled | `Authentication:AllowRegistration=true` in the Admin API's `appsettings.json` while the scripts run — the Admin App registers its own client credentials at `POST /connect/register` when creating the environment. Re-enable it if it was turned off after first-time setup; it can be disabled again afterwards |
 | Ed-Fi Admin App | Deployed with its database migrated (migrations seed the built-in roles the scripts reference — `Global admin`, `Tenant admin`, `Full ownership`) |
 | Identity provider (OIDC) | Configured for the Admin App, with a bootstrap global-admin user you can sign in as — see [Configuring an Identity Provider for Ed-Fi Admin App](/reference/admin-app/configuration/identity-provider) |
 | ODS instances registered in `EdFi_Admin` | Every instance listed in `ODSS_JSON` must exist in `EdFi_Admin.dbo.OdsInstances` on the target ODS/API — the scripts do not create them; see [Set Up the ODS Instances](run-the-quick-start#set-up-the-ods-instances-odss_json) |
@@ -54,6 +55,28 @@ not find them and the ODS lists will be empty.
 [Set Up the ODS Instances](run-the-quick-start#set-up-the-ods-instances-odss_json)
 covers how to check the table and create missing rows before running the
 scripts.
+
+:::
+
+:::tip Verify Admin API registration first
+
+Before running the scripts, manually register a first client against the Admin
+API to confirm registration works end to end (the secret must be 32–128
+characters and contain an uppercase letter, a lowercase letter, a digit, and a
+special character):
+
+```powershell
+curl.exe -k -X POST https://localhost/AdminApi/connect/register `
+  -d "ClientId=bootstrap-client" `
+  -d "ClientSecret=<32-128 chars, upper+lower+digit+special>" `
+  -d "DisplayName=Bootstrap"
+```
+
+A `200` response (`Registered client bootstrap-client successfully.`) confirms
+the Admin API is ready. A `403` means registration is disabled
+(`Authentication:AllowRegistration`, see the prerequisites table); a `500`
+means the Admin API itself failed server-side — check its log file and confirm
+its database tables were installed (the `adminapi` schema in `EdFi_Admin`).
 
 :::
 
