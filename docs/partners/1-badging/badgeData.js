@@ -548,7 +548,10 @@ export default {
           'https://edfidocs.blob.core.windows.net/$web/assets/partners/badging/CareerCraft/edfi_entities_fields.csv',
       },
       versionCompatibility: [
-        'Ed-Fi 4.0.0,  TX 2025.2.2,  TX 2026.2.1,  TX 2026.2.2',
+        'Ed-Fi 4.0.0',
+        'TX 2025.2.2',
+        'TX 2026.2.1',
+        'TX 2026.2.2',
       ],
       availability: 'State of Texas versions 2025.2.2 and above',
     },
