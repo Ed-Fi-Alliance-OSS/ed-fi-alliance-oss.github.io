@@ -536,6 +536,26 @@ export default {
       availability: 'Available to any agency (all sizes) or vendor in the U.S.',
     },
 
+    {
+      logo: 'https://edfidocs.blob.core.windows.net/$web/assets/partners/badging/CareerCraft/CareerCraft.jpg',
+      productName: 'CareerCraft',
+      provider: 'CareerCraft, Inc.',
+      website: 'https://careercraft.com/',
+      validThrough: 'July 27, 2028',
+      verifyingAgencies: ['Birdville ISD'],
+      documentation: {
+        'Mapping Document':
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/badging/CareerCraft/edfi_entities_fields.csv',
+      },
+      versionCompatibility: [
+        'Ed-Fi 4.0.0',
+        'TX 2025.2.2',
+        'TX 2026.2.1',
+        'TX 2026.2.2',
+      ],
+      availability: 'State of Texas versions 2025.2.2 and above',
+    },
+
   ],
 
   implementationPartner: [
