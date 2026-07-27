@@ -539,7 +539,7 @@ export default {
     {
       logo: 'https://edfidocs.blob.core.windows.net/$web/assets/partners/badging/CareerCraft/CareerCraft.jpg',
       productName: 'CareerCraft',
-      provider: 'CareerCraft, Inc',
+      provider: 'CareerCraft, Inc.',
       website: 'https://careercraft.com/',
       validThrough: 'July 27, 2028',
       verifyingAgencies: ['Birdville ISD'],
