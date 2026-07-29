@@ -42,7 +42,7 @@ In addition, in the ODS/API's **EdFi_Security** database (by direct SQL):
 | Windows PowerShell 5.1 or PowerShell 7.0+ | |
 | Git | For cloning the scripts repository |
 | Ed-Fi ODS/API and ODS Admin API | Installed and reachable at the URLs configured in `.env` (defaults assume the local stack at `https://localhost`) |
-| Admin API first client registered | `Authentication:AllowRegistration=true` in the Admin API's `appsettings.json` is only needed to register the **first** client (see the tip below). Once a first client exists, the Admin App can register its own client credentials at `POST /connect/register` when creating the environment, even with registration disabled |
+| Admin API client registration enabled | `Authentication:AllowRegistration=true` in the Admin API's `appsettings.json` while the scripts run — the Admin App registers its **own** client credentials at `POST /connect/register` when creating the environment, so this is required even if a client was already registered manually (previously created clients are not reused). Re-enable it if it was turned off after first-time setup; it can be disabled again afterwards |
 | Ed-Fi Admin App | Deployed with its database migrated (migrations seed the built-in roles the scripts reference — `Global admin`, `Tenant admin`, `Full ownership`) |
 | Identity provider (OIDC) | Configured for the Admin App, with a bootstrap global-admin user you can sign in as — see [Configuring an Identity Provider for Ed-Fi Admin App](/reference/admin-app/configuration/identity-provider) |
 | ODS instances registered in `EdFi_Admin` | Every instance listed in `ODSS_JSON` must exist in `EdFi_Admin.dbo.OdsInstances` on the target ODS/API — the scripts do not create them; see [Set Up the ODS Instances](run-the-quick-start#set-up-the-ods-instances-odss_json) |
@@ -58,12 +58,12 @@ scripts.
 
 :::
 
-:::tip Register the first Admin API client
+:::tip Verify Admin API registration first
 
 Before running the scripts, manually register a first client against the Admin
-API — this confirms registration works end to end and satisfies the
-first-client prerequisite (the secret must be 32–128 characters and contain an
-uppercase letter, a lowercase letter, a digit, and a special character):
+API to confirm registration works end to end (the secret must be 32–128
+characters and contain an uppercase letter, a lowercase letter, a digit, and a
+special character):
 
 ```powershell
 curl.exe -k -X POST https://localhost/AdminApi/connect/register `
@@ -78,10 +78,9 @@ the Admin API is ready. A `403` means registration is disabled
 means the Admin API itself failed server-side — check its log file and confirm
 its database tables were installed (the `adminapi` schema in `EdFi_Admin`).
 
-Registering this first client is the step that requires
-`Authentication:AllowRegistration=true`. Once it exists, the Admin App can
-register its own client during environment creation even after registration
-is disabled again.
+This bootstrap client is only a connectivity check — the quick start does not
+use it. The Admin App registers its own client during environment creation,
+which is why registration must remain enabled while the scripts run.
 
 :::
 
