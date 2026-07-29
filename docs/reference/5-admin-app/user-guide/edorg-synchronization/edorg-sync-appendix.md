@@ -19,7 +19,7 @@ header row and these columns:
 | `educationOrganizationId` | The ODS education organization id. Required, unique |
 | `nameOfInstitution` | Required |
 | `shortNameOfInstitution` | Optional |
-| `discriminator` | The organization **type**, exactly as the ODS stores it (e.g. `edfi.School`) — see the supported types below |
+| `discriminator` | The organization **type**, exactly as the ODS stores it (for example `edfi.School`) — see the supported types below |
 | `parentEducationOrganizationId` | Optional; the parent organization's id |
 
 The file can be reviewed, trimmed, or even hand-authored between the export
@@ -34,7 +34,7 @@ with the offending ids named.
 ## Supported organization types
 
 The `discriminator` value must be one of the types the Admin App models;
-rows with any other type (e.g. `edfi.CommunityOrganization`,
+rows with any other type (for example `edfi.CommunityOrganization`,
 `edfi.CommunityProvider`) are skipped with a warning:
 
 | Discriminator | Shown in the Admin App as |

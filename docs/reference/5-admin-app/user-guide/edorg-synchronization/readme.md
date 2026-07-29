@@ -30,7 +30,7 @@ In the **Admin App application database** (default `sbaa`, by direct SQL):
 
 - One **education organization** row per CSV row, carrying the
   `educationOrganizationId`, name, short name, and **type** (the ODS
-  discriminator, e.g. `edfi.School`, `edfi.LocalEducationAgency`), attached to
+  discriminator, for example `edfi.School`, `edfi.LocalEducationAgency`), attached to
   an existing tenant and registered ODS instance
 - The **hierarchy** between them — schools under their local education agency,
   local education agencies under their education service center or state
@@ -53,7 +53,7 @@ registered with allowed education organization ids.
 | Git | For cloning the scripts repository |
 | Read access to the source ODS | The `EdFi_ODS` database whose education organizations are being exported |
 | Ed-Fi Admin App | Deployed with its database migrated and reachable from this machine |
-| Tenant and ODS registered in the Admin App | The import attaches the organizations to an **existing** tenant + ODS registration — create them first through the Admin App UI |
+| Tenant and ODS registered in the Admin App | The import attaches the organizations to an **existing** tenant + ODS registration — create them first through the Admin App UI. A deployment with several registered ODS databases needs one run per ODS |
 
 :::info
 

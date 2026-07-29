@@ -27,7 +27,7 @@ Copy-Item .env.example .env
 
 The source ODS (`ODS_*` variables) and the target Admin App database (the
 unprefixed variables) are configured independently — they can live on
-different servers and even different engines, e.g. an ODS on SQL Server
+different servers and even different engines — for example an ODS on SQL Server
 feeding an Admin App on PostgreSQL.
 
 Every variable is described in the
@@ -37,7 +37,7 @@ in the Appendix.
 :::info
 
 The organizations land under one tenant + registered ODS. A deployment with
-several registered ODS databases (e.g. one per school year) needs one run per
+several registered ODS databases (for example one per school year) needs one run per
 ODS: point `ODS_DATABASE_NAME` / `ODS_DB_NAME` at each in turn and re-run.
 
 :::
@@ -47,6 +47,12 @@ ODS: point `ODS_DATABASE_NAME` / `ODS_DB_NAME` at each in turn and re-run.
 ```powershell
 ./run.ps1
 ```
+
+Passwords left blank in `.env` are prompted for here, with the input masked.
+When both databases use SQL logins there are two prompts in a row: the first
+(`ODS_DB_PASSWORD`) wants the **source ODS** login's password, the second
+(`ADMIN_APP_DB_PASSWORD`) the **Admin App database** login's — each prompt
+names the variable it is filling.
 
 `run.ps1` runs two scripts in order:
 
@@ -60,7 +66,7 @@ ODS: point `ODS_DATABASE_NAME` / `ODS_DB_NAME` at each in turn and re-run.
 2. **`import-edorgs.ps1`** — loads the CSV into the Admin App database: looks
    up the tenant and registered ODS, inserts the missing organization rows
    (type included), corrects the name, short name, and type of rows that
-   already exist when they differ from the CSV (e.g. the `Institution #<id>`
+   already exist when they differ from the CSV (for example the `Institution #<id>`
    placeholders the Admin App writes at ODS registration), wires the
    hierarchy, and fills in the tree rows the Admin App's views expect.
    Unsupported types are skipped with a warning, hierarchy links on existing
