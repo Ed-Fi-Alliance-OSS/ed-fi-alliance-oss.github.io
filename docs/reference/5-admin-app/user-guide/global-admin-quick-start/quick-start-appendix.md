@@ -166,11 +166,13 @@ resources instead of duplicating them.
 - **`Create environment failed: … 403 (Forbidden)`** (or, for Admin API v2
   environments, environment creation reports a failed sync with no clear
   error). The Admin API rejected the Admin App's credential registration at
-  `/connect/register` because `Authentication:AllowRegistration` is `false` —
-  the Admin App registers its own client credentials there when creating the
-  environment. Set the flag to `true` in the Admin API's `appsettings.json`,
-  restart the Admin API, and re-run `./run.ps1 -SkipBootstrap` (the flag can be
-  turned off again afterwards).
+  `/connect/register` — this happens when `Authentication:AllowRegistration` is
+  `false` and no first client has been registered yet (once a first client
+  exists, the Admin App can register its own credentials even with the flag
+  off). Set the flag to `true` in the Admin API's `appsettings.json`, restart
+  the Admin API, register the first client (see the prerequisites in the
+  [Quick Start](readme.md)), and re-run `./run.ps1 -SkipBootstrap` (the flag can
+  be turned off again afterwards).
 - **`Create environment failed:` with
   `"adminApiUrl": … "Internal server error (500) - service may be down"`.** The
   Admin API's root URL responded, but its `POST /connect/register` endpoint

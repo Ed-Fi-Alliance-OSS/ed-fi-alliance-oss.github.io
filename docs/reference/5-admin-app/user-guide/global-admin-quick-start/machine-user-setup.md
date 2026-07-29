@@ -10,6 +10,12 @@ with a **service-account (machine-to-machine) token** obtained via the OAuth2
 password endpoint — human login goes through the OIDC provider's browser flow,
 so the bootstrap user's username and password cannot be passed to a script.
 
+:::warning Keycloak only
+
+Machine-to-machine authentication currently works with **Keycloak** only.
+
+:::
+
 :::info
 
 **You normally do not need this page.** `run.ps1` runs `bootstrap.ps1`, which
@@ -115,17 +121,3 @@ Audience Resolve mapper adds a second `account` audience, making `aud` an array
 — and the Admin App requires `aud` to be the single value `edfiadminapp-api`.
 
 :::
-
-## Setup Microsoft Entra ID (not supported)
-
-**Microsoft Entra ID** is **not supported** as the machine-token provider in
-Admin App v4.0: Entra client-credentials tokens carry app permissions in the
-`roles` claim rather than `scope`, and Admin App v4.0 does not read the
-`login:app` grant from `roles`. Use Keycloak for the service account
-instead.
-
-## Google Workspace (not supported)
-
-**Google Workspace** is **not supported** for machine-to-machine authentication:
-its service-account tokens cannot carry the `login:app` claim the Admin App
-requires. Use Keycloak for the service account instead.

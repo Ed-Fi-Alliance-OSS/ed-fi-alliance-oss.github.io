@@ -68,12 +68,12 @@ Microsoft Entra ID.
   API.
 - **Admin API first-time configuration completed**: When an environment is
   connected, the Admin App registers its own client credentials at the Admin
-  API's `POST /connect/register` endpoint, which requires
-  `Authentication:AllowRegistration=true` in the Admin API's
-  `appsettings.json` (`false` by default). Complete
-  [Create the First API Client](../../4-admin-api/getting-started/admin-api-2.3-newer/first-time-configuration.md#2-create-the-first-api-client)
-  and keep registration enabled while connecting environments (it can be
-  disabled again afterwards).
+  API's `POST /connect/register` endpoint. Registering the **first** client
+  requires `Authentication:AllowRegistration=true` in the Admin API's
+  `appsettings.json` (`false` by default) — complete
+  [Create the First API Client](../../4-admin-api/getting-started/admin-api-2.3-newer/first-time-configuration.md#2-create-the-first-api-client).
+  Once that first client exists, the Admin App can register its own
+  credentials even with registration disabled.
 
 ## Choose an installation path
 
