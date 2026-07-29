@@ -26,7 +26,10 @@ The file can be reviewed, trimmed, or even hand-authored between the export
 and the import — remove rows to exclude organizations, or fix a parent id.
 A `parentEducationOrganizationId` that matches no other row imports as a root
 (the import notes this), unless the parent already exists in the Admin App
-under the same tenant/ODS, in which case the child is linked to it.
+under the same tenant/ODS, in which case the child is linked to it. The
+import validates hand-edited files before touching the database: duplicate
+ids, a row listing itself as its parent, and parent cycles are all rejected
+with the offending ids named.
 
 ## Supported organization types
 
@@ -70,8 +73,18 @@ imported rows are indistinguishable from natively synced ones:
   scope rather than corrupting it
 
 Rows that already exist under the tenant/ODS (same `educationOrganizationId`)
-are left untouched, which is what makes re-runs safe. The whole load is a
-single transaction.
+keep their row and their `parentId` link, but their name, short name, and
+type are corrected to the CSV values when they differ — the same three
+columns the Admin App's own synchronization maintains. This is what fixes the
+`Institution #<id>` / `edfi.Other` placeholder rows the Admin App writes when
+an ODS is registered with allowed education organization ids. Re-runs are
+no-ops, and the whole load is a single transaction.
+
+The import also records the ids it actually **inserted** (never the
+pre-existing ones) in an `imported-ids.csv` manifest next to the CSV, keyed
+by tenant/ODS scope and merged across runs. `cleanup-edorgs.ps1` deletes only
+ids recorded there, and consumes the scope's entries on success — keep the
+manifest for as long as you may want to undo the import.
 
 ## Environment variable reference
 
@@ -101,7 +114,7 @@ Target Admin App database:
 | `DB_ENGINE` | `mssql` | `mssql` or `pgsql` |
 | `DATABASE_NAME` | `sbaa` | The Admin App application database |
 | `SQL_SERVER` | `tcp:localhost,1433` | SQL Server hosting it |
-| `ADMIN_APP_DB_USER` / `ADMIN_APP_DB_PASSWORD` | `sa` / — | SQL Server login; the password is prompted when empty |
+| `ADMIN_APP_DB_USER` / `ADMIN_APP_DB_PASSWORD` | `edfi_adminapp` / — | SQL Server login; the password is prompted when empty |
 | `USE_INTEGRATED_SECURITY` | `false` | `true` = Windows authentication |
 | `POSTGRES_HOST` / `POSTGRES_PORT` | `localhost` / `5432` | PostgreSQL host/port |
 | `POSTGRES_APP_USER` / `POSTGRES_APP_PASSWORD` | `edfiadminapp` / — | PostgreSQL login; the password is prompted when empty |
@@ -115,7 +128,7 @@ Scope and files:
 | `TENANT_NAME` | `default` | The Admin App tenant to import into |
 | `ENVIRONMENT_NAME` | — | Only needed when the same tenant name exists in more than one environment |
 | `ODS_DB_NAME` | `ODS_DATABASE_NAME` | Which registered ODS (the Admin App registration's database name) to attach to; only needed when the registration's name differs or the tenant has several |
-| `CSV_PATH` | `./edorgs.csv` | Where the export writes and the import/cleanup read |
+| `CSV_PATH` | `./edorgs.csv` | Where the export writes and the import reads. The import records the ids it inserts in `imported-ids.csv` next to this file, and the cleanup deletes from that manifest |
 
 ## Troubleshooting
 
@@ -125,5 +138,9 @@ Scope and files:
 | `Tenant ... matches more than one scope` | The tenant has several registered ODS databases (or exists in several environments). Set `ODS_DB_NAME` (and `ENVIRONMENT_NAME` if needed) to pick one |
 | `educationOrganizationId value(s) exceed the SQL Server ... int range` | The Admin App's SQL Server schema stores 32-bit ids. Remove the offending rows from the CSV, or use a PostgreSQL Admin App database |
 | `skipping N row(s) of type ...` | Those ODS organization types are not modeled by the Admin App and cannot be imported |
+| `Row ... lists itself as its parent` / `Parent cycle in the CSV ...` | The (hand-edited) CSV contains a self-parent or a parent loop; fix the `parentEducationOrganizationId` values named in the message. Nothing was written |
+| An organization shows as `Institution #<id>` with type Other | That is the placeholder the Admin App writes when an ODS is registered with allowed organization ids. Running the import corrects its name, short name, and type |
 | Imported organizations missing from a team's dropdown | Global admins see everything; other teams need ownership of the tenant, environment, ODS, or the individual organizations |
-| Organizations imported before the ODS registration was fixed | Run `cleanup-edorgs.ps1` with the same CSV, correct `.env`, and re-import |
+| Cleanup says `Nothing to do: no import manifest at ...` | The import inserted nothing (or the scope was already cleaned up), so there is nothing recorded to delete. To delete ids from an arbitrary CSV instead, pass `-CsvPath` explicitly — that mode deletes every listed id, including rows the Admin App created itself |
+| Cleanup warns `team access was removed for N grant(s)` | A team had been granted ownership of an imported organization; the grant must be removed for the delete to succeed, and the cleanup does so in the same transaction, naming each team/organization pair. Grant the access again after re-importing |
+| Organizations imported before the ODS registration was fixed | Run `cleanup-edorgs.ps1` (it deletes what the import recorded in `imported-ids.csv`), correct `.env`, and re-import |

@@ -39,7 +39,11 @@ In the **Admin App application database** (default `sbaa`, by direct SQL):
 
 Nothing is written to the ODS: the export is read-only, and the import touches
 only the Admin App database. Organizations the Admin App already knows about
-are never modified.
+keep their row and their hierarchy links; only their name, short name, and
+type are corrected to the ODS values when they differ — the same three fields
+the Admin App's own synchronization maintains. In particular this fixes the
+`Institution #<id>` placeholder rows the Admin App writes when an ODS is
+registered with allowed education organization ids.
 
 ## Prerequisites
 

@@ -59,10 +59,15 @@ ODS: point `ODS_DATABASE_NAME` / `ODS_DB_NAME` at each in turn and re-run.
    flagging types the Admin App does not support.
 2. **`import-edorgs.ps1`** — loads the CSV into the Admin App database: looks
    up the tenant and registered ODS, inserts the missing organization rows
-   (type included), wires the hierarchy, and fills in the tree rows the Admin
-   App's views expect. Unsupported types are skipped with a warning, existing
-   rows are never modified, and the whole load runs in a single transaction —
-   on any error nothing is imported.
+   (type included), corrects the name, short name, and type of rows that
+   already exist when they differ from the CSV (e.g. the `Institution #<id>`
+   placeholders the Admin App writes at ODS registration), wires the
+   hierarchy, and fills in the tree rows the Admin App's views expect.
+   Unsupported types are skipped with a warning, hierarchy links on existing
+   rows are never overwritten, and the whole load runs in a single
+   transaction — on any error nothing is imported. The ids it actually
+   inserts are recorded in an `imported-ids.csv` manifest next to the CSV,
+   which is what `cleanup-edorgs.ps1` later deletes from.
 
 Both scripts are idempotent, so re-running `run.ps1` is safe. To review — or
 trim — the CSV before anything is written to the Admin App, split the run:
@@ -100,16 +105,33 @@ ownership of the tenant, environment, ODS, or the individual organizations
 ## Cleaning Up
 
 To remove exactly what was imported, run `cleanup-edorgs.ps1` from the same
-folder — it deletes, from the same tenant/ODS scope, every organization whose
-id appears in the CSV, so keep the CSV you imported with. Organizations not
-in the CSV (including any the Admin App synced itself) are never deleted;
-children of a deleted row that are not themselves in the CSV are kept and
-become roots.
+folder. It deletes, from the same tenant/ODS scope, only the rows the import
+actually inserted — taken from the `imported-ids.csv` manifest the import
+writes — so organizations the Admin App created itself (including the
+placeholders written at ODS registration) are never deleted. Children of a
+deleted row that are not themselves being deleted are kept and become roots.
+On success the scope's manifest entries are consumed, so re-runs are no-ops.
 
 ```powershell
-./cleanup-edorgs.ps1
+./cleanup-edorgs.ps1            # asks for confirmation before deleting
+./cleanup-edorgs.ps1 -WhatIf    # preview only: shows what would be deleted
+./cleanup-edorgs.ps1 -Confirm:$false   # unattended: skips the prompt
 ```
 
 It reads the same `.env` for the connection and scope; any parameter passed
 explicitly overrides the `.env` value. Re-import at any time with
 `./run.ps1 -SkipExport`.
+
+:::note
+
+If a team was granted ownership of an imported organization, the cleanup
+removes that team-access grant in the same transaction (the database would
+otherwise block the delete) and reports each team/organization pair it
+removed. Grant the access again after re-importing.
+
+:::
+
+Passing `-CsvPath` explicitly overrides the manifest and deletes **every** id
+listed in that file from the scope — including rows the Admin App created
+itself. Use it only when the manifest is gone and the file is known to contain
+nothing but imported organizations.
