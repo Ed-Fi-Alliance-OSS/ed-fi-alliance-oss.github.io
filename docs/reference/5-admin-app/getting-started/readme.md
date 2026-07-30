@@ -31,11 +31,9 @@ deployments. It consists of:
 
 :::tip
 
-This application _should_ be capable of running with any Open ID Connect
-provider, not just Keycloak. At this time the Ed-Fi Alliance has not yet tested
-it with other providers. The product development team intends to test and
-document the experience working with other systems, beginning first with
-Microsoft Entra ID.
+This application runs with any Open ID Connect provider. Keycloak is the only
+fully supported provider in this release; Microsoft Entra ID and Google Workspace
+have been tested and gain full support in Admin App v4.1.
 
 :::
 
