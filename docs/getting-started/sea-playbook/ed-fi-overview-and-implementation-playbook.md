@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Ed-Fi Overview and Implementation Playbook
 
-Last updated: July 28, 2026
+Last updated: July 29, 2026
 
 #### [Download Ed-Fi State Education Agency Playbook V2 (PDF)](https://edfidocs.blob.core.windows.net/$web/assets/getting-started/sea-playbook/SEA%20Ed-Fi%20Overview%20and%20Implementation%20Playbook%20V2.pdf)
 
@@ -110,7 +110,7 @@ The state, CEPI, and Intermediate School Districts built the Michigan Data Hub o
 
 ### State Reporting Savings: Nebraska Example
 
-Adopting the Ed-Fi Data Standard for state reporting delivers substantial savings:
+Nebraska replaced manual state reporting with automated, real-time data built on the Ed-Fi Data Standard, giving districts time and money back to support students.​
 
 ##### Challenge
 
@@ -131,9 +131,9 @@ With a federal SLDS grant, Nebraska adopted the Ed-Fi Data Standard to replace m
 
 > $30M in combined state and district savings statewide
 >
-> 10 wks → less than 1 day to compile quarterly EDFacts reporting
+> 10 wks to less than 1 day to compile quarterly EDFacts reporting
 >
-> 25% Reduction in data burden
+> Reduction in data burden saving ~$125k per district​
 
 Source: Nebraska Department of Education
 
@@ -493,6 +493,8 @@ Stakeholder activities in production:
 - _Vendors_ — Continue working with the state on the annual cadence of specification updates
 - _ESAs (Data Hub)_ — Expand scope of services, moving from operational services toward
   instructional support services
+
+---
 
 ## Implementation Best Practices
 
