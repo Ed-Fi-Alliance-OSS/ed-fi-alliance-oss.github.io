@@ -67,6 +67,18 @@ This command generates static content into the `build` directory and can be serv
 > [!TIP]
 > It is a good idea to run the `build` command before pushing a branch to GitHub for review. Among other things, it will help you detect broken links.
 
+## Pull Request Merge Queue
+
+This repository uses GitHub's merge queue for the `main` branch. After a pull request is approved, it is added to the queue instead of merging immediately.
+
+When your pull request enters the queue, GitHub creates a temporary merged context and re-runs required checks (including lint and build) before merging. This extra validation helps catch issues that only appear when multiple approved pull requests are combined.
+
+For maintainers configuring branch protection:
+
+- Enable **Require merge queue** for `main`.
+- Keep required checks aligned with the jobs in the `On Pull Request` workflow so queued pull requests must pass the same validation in the merged queue context.
+- Validate the queue by merging at least one pull request through the queue and confirming required checks complete successfully before auto-merge.
+
 ## AI Tool Usage
 
 We are using AI tools to help with writing and editing content. If you are using an AI tool to assist with writing or editing, please be sure to review the output carefully before including it in the repository. AI tools can be helpful for generating ideas and providing suggestions, but they may not always produce accurate or appropriate content. Always use your judgment and ensure that the final content meets our standards for quality and accuracy.

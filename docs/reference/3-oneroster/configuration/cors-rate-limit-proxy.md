@@ -93,7 +93,7 @@ proxy` enabled.
 
 Set `TRUST_PROXY=true` whenever the service is deployed behind:
 
-- IIS (both `iisnode` and ARR reverse-proxy setups)
+- IIS (ARR reverse-proxy setups)
 - NGINX (including the bundled `stack/nginx-compose.yml`)
 - Any other reverse proxy terminating TLS
 

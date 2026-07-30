@@ -6,7 +6,7 @@ and early learning programs.
 
 * [Alternative and Supplemental Services Domain - Overview](./overview.md)
 * [Alternative and Supplemental Services Domain - Model Diagrams](./model-diagrams.mdx)
-* [Alternative and Supplemental Services Domain - Entities, References, and
-    Descriptors](./entities-references-and-descriptors.md)
+* [Alternative and Supplemental Services Domain - Entities, References, and Descriptors](./entities-references-and-descriptors.md)
+* [Alternative and Supplemental Services Domain - Best Practices](./best-practices.md)
 
 ← [Go back to the UDM Reference page](../readme.md)

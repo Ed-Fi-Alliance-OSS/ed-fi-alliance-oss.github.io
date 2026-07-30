@@ -1,9 +1,9 @@
 # Deploy on IIS (Windows)
 
-The Ed-Fi OneRoster® Node service can be hosted on Internet Information
-Services (IIS) on Windows Server, either with `iisnode` (IIS owns the
-Node process) or as a reverse proxy to a Node Windows service. Both
-patterns are production-supported.
+The Ed-Fi OneRoster® Node service is hosted on Internet Information Services
+(IIS) on Windows Server as a reverse proxy (ARR + URL Rewrite) to a separately
+managed Node.js process, typically run as a Windows service with WinSW. This is the
+supported production deployment pattern.
 
 The authoritative, step-by-step IIS walkthrough is maintained alongside
 the service source in the `edfi-oneroster` repository:

@@ -1303,7 +1303,7 @@ Content-Type: application/json; charset=utf-8
 
 </details>
 
-### urn:ed-fi:api:profile:invalid-method-usage
+### urn:ed-fi:api:profile:method-usage
 
 #### Invalid Method Usage
 
@@ -1339,17 +1339,17 @@ Content-Type: application/vnd.ed-fi.school.test-profile-resource-readonly.writab
 HTTP Response
 
 ```text
-HTTP/1.1 400 Bad Request
+HTTP/1.1 405 Method Not Allowed
 Content-Type: application/json; charset=utf-8
 
 {
-    "detail": "The request construction was invalid with respect to usage of a data policy.",
-    "type": "urn:ed-fi:api:profile:invalid-profile-usage",
-    "title": "Invalid Profile Usage",
-    "status": 400,
+    "detail": "The request construction was invalid with respect to usage of a data policy. An attempt was made to access a resource that is not writable using the profile.",
+    "type": "urn:ed-fi:api:profile:method-usage",
+    "title": "Method Not Allowed with Profile",
+    "status": 405,
     "correlationId": "54e1e704-72a4-4bcd-b455-9c483352a84b",
     "errors": [
-        "A profile-based content type that is readable cannot be used with PUT requests."
+        "A profile-based content type that is readable cannot be used with POST requests."
     ]
 }
 ```
@@ -2662,7 +2662,7 @@ HTTP/1.1 409 Conflict
 Content-Type: application/json; charset=utf-8
 
 {
-  "detail": "The identifying value(s) of the item are the same as another item that already exists."
+  "detail": "The identifying value(s) of the item are the same as another item that already exists.",
   "type": "urn:ed-fi:api:data-conflict:non-unique-identity",
   "title": "Identifying Values Are Not Unique",
   "status": 409,

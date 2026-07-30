@@ -46,7 +46,7 @@ see [about_Execution_Policies](http://go.microsoft.com/fwlink/?LinkID=135170).
   binaries and installer scripts for deployment to IIS.
 
 * [EdFi.Suite3.ODS.AdminApi
-     v2.3](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.Suite3.ODS.AdminApi/overview/2.3.1)
+     v2.3](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.Suite3.ODS.AdminApi/overview/2.3.2)
 
 :::
 
@@ -54,11 +54,11 @@ see [about_Execution_Policies](http://go.microsoft.com/fwlink/?LinkID=135170).
 
 Download and rename the linked Nuget Package (.npkg) to .zip
 
-![Zip Folder](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/installation-v2/Populated%20Installation%20Folder.png)
+![Zip Folder](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/installation-v2/Populated%20Installation%20Folder.png)
 
 Unzip the contents.
 
-![Installation Folder](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/installation-v2/image2024-5-7_13-10-5.png)
+![Installation Folder](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/installation-v2/image2024-5-7_13-10-5.png)
 
 There will be two folders. AdminApi folder will have binaries. Installer folder
 contains PowerShell scripts required for installation.
@@ -179,7 +179,7 @@ $p = @{
     ToolsPath = "C:/temp/tools"
     AdminApiMode = "v2"
     DbConnectionInfo = $dbConnectionInfo
-    PackageVersion = '2.3.1.0'
+    PackageVersion = '2.3.2.0'
     PackageSource = $adminApiSource
     AuthenticationSettings = $authenticationSettings
     StandardVersion = '5.2.0'
@@ -212,7 +212,7 @@ $p = @{
     ToolsPath = "C:/temp/tools"
     AdminApiMode = "v2"
     DbConnectionInfo = $dbConnectionInfo
-    PackageVersion = '2.3.1.0'
+    PackageVersion = '2.3.2.0'
     PackageSource = $adminApiSource
     AuthenticationSettings = $authenticationSettings
     StandardVersion = '5.2.0'
@@ -236,13 +236,13 @@ Method 1: Open \[Windows Key\]-R which will open a Run dialog for tasks needing
 administrative privileges. Type "PowerShell" to open a PowerShell prompt in
 Administrator mode.
 
-![Open Terminal](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/installation-v2/image2020-4-20_12-37-43.png)
+![Open Terminal](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/installation-v2/image2020-4-20_12-37-43.png)
 
 Method 2: Click on the Windows icon in the lower-left corner. Type "PowerShell"
 and right-click the "Windows PowerShell" option when provided. Select "Run as
 Administrator" to open a PowerShell prompt in Administrator mode.
 
-![Run As Administrator](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/installation-v2/image2020-4-20_12-37-57.png)
+![Run As Administrator](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/installation-v2/image2020-4-20_12-37-57.png)
 
 Change the directory to the unzipped directory for the Admin Api Installer.
 
@@ -260,14 +260,14 @@ Choosing 'n' will prompt you to enter windows username. The installation process
 will validate and create database login using entered username, if the login
 does not exist on the database server already.
 
-![Set Logins](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/installation-v2/image2023-1-19_13-38-10.png)
+![Set Logins](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/installation-v2/image2023-1-19_13-38-10.png)
 
 ### Installation Completed
 
 Installation process will install Admin Api application and create required
 database tables.
 
-![Installation Complete](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/installation-v2/Screenshot%202023-09-18%20at%2013.31.52.png)
+![Installation Complete](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/installation-v2/Screenshot%202023-09-18%20at%2013.31.52.png)
 
 #### Step 5. Verify SQL Server Login
 
@@ -275,7 +275,7 @@ The installation process sets up an appropriate SQL Login for use with the
 dedicated AdminApi Application Pool in IIS. You can verify this in SQL Server
 Management Studio:
 
-![Sql Login](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/installation-v2/image2023-1-19_13-45-17.png)
+![Sql Login](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/installation-v2/image2023-1-19_13-45-17.png)
 
 On the Server Roles page, make sure that  "public" and "sysadmin" checkboxes are
 checked. Once you have confirmed a proper SQL Server login exists, continue to
@@ -296,7 +296,7 @@ where "localhost" is the app pool domain. Once we have entered the correct
 credentials, we'll click OK on all screens until we're back to the main
 Application Pools page.
 
-![Application Pool Identity](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/4-admin-api/img/installation-v2/image2022-9-20_12-24-43.png)
+![Application Pool Identity](https://odsassets.blob.core.windows.net/public/docs.ed-fi.org/reference/3-admin-api/img/installation-v2/image2022-9-20_12-24-43.png)
 
 #### Step 7. Confirming appSettings.json
 
@@ -321,5 +321,5 @@ Continue on to [First-Time Configuration for Admin API
   binaries and installer scripts for deployment to IIS.
 
 * [EdFi.Suite3.ODS.AdminApi
-     v2.3](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.Suite3.ODS.AdminApi/overview/2.3.1)
+     v2.3](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.Suite3.ODS.AdminApi/overview/2.3.2)
 :::
