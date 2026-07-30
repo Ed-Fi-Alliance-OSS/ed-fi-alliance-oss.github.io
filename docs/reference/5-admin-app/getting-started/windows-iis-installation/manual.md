@@ -14,9 +14,9 @@ Prepare the following on the Windows host before deploying the API and Web Appli
 - **[IIS modules](#iis-modules)** — the URL Rewrite Module and an httpPlatform handler.
 - **[Database](#database)** — SQL Server (default) or PostgreSQL.
 - **[Node.js](#nodejs)** — the major version pinned in the Admin App's `package.json` (currently `>=22`).
-- **[Identity provider](../../configuration/identity-provider.md)** — an OIDC provider; this guide uses a local Keycloak example.
+- **[Identity provider](#identity-provider)** — an OIDC provider; this guide uses a local Keycloak example.
 - **[TLS certificate](#tls-and-certificates)** — a CA-issued certificate, or a self-signed one for local use.
-- **[Yopass](../../configuration/yopass-administrators-guide/readme.md)** (optional) — for one-time credential links.
+- **[Yopass](#yopass-optional)** (optional) — for one-time credential links.
 
 ### Operating system components (IIS, SQL Server, Git)
 
@@ -95,10 +95,24 @@ Register these in the Keycloak client (HTTPS, matching the default ports):
 - Post-logout redirect URI: `https://localhost:3443/api/auth/post-logout`
 - Web origin: `https://localhost:4443`
 
-`<oidc-id>` is the id of the row in the `oidc` database table (it is not always `1`; resolve it from that table). A user must exist in Keycloak whose email/username claim matches the Admin App admin user (default `admin@example.com`). Java is required **only** for the local Keycloak example.
+`<oidc-id>` is the `id` of the row in the Admin App's `oidc` table. That row does not exist yet — the API creates it on its first start from `SAMPLE_OIDC_CONFIG` in `production.js`, and only if the table is empty. On a clean install the id is `1`, so register `1` here. After the API is running, confirm it with `SELECT id FROM oidc;`; if it differs, update this redirect URI and `VITE_OIDC_ID`, which requires rebuilding the Web Application.
+
+A user must exist in Keycloak whose email/username claim matches the Admin App admin user (default `admin@example.com`). Java is required **only** for the local Keycloak example.
 :::
 
 For more detail, see [Configuring an Identity Provider for Ed-Fi Admin App](../../configuration/identity-provider.md).
+
+:::warning Keycloak does not survive a restart on its own
+A locally installed Keycloak does not come back when the host restarts. The API needs Keycloak already running when the API starts, so it has to start **after** Keycloak is accepting requests. If the API starts first, sign-in fails until the API is recycled.
+
+On a manual install, arrange both after every restart:
+
+1. Start Keycloak.
+2. Wait until its OIDC discovery endpoint responds.
+3. Recycle the `EdFi-AdminApp-API` App Pool.
+
+The [Automated](./automated.md#after-a-restart-the-keycloak-startup-task) and [Semi-automated](./semi-automated.md) paths register a startup scheduled task that performs these three steps, which is the simplest way to cover it. This applies only to a local Keycloak: an external identity provider needs nothing started on this host.
+:::
 
 ### Yopass (optional)
 
@@ -112,14 +126,14 @@ Both IIS sites are served over HTTPS (API `:3443`, Web Application `:4443`). Eac
 A self-signed certificate is auto-trusted **only on this machine**; other machines browsing to it still see a trust warning. Supply a real certificate (thumbprint or PFX) for anything beyond this host.
 :::
 
-To configure TLS manually, generate or obtain a certificate and place it in `LocalMachine\My`. For a self-signed certificate (local use), from an elevated PowerShell:
+To create a self-signed certificate for local use, from an elevated PowerShell:
 
 ```powershell
 New-SelfSignedCertificate -DnsName 'localhost', $env:COMPUTERNAME `
   -CertStoreLocation Cert:\LocalMachine\My -FriendlyName 'Ed-Fi Admin App'
 ```
 
-Then add an HTTPS binding to each IIS site (in IIS Manager, or with `New-WebBinding` + `New-Item IIS:\SslBindings`), selecting that certificate.
+Then add an HTTPS binding to each IIS site in IIS Manager, selecting that certificate.
 
 ### Verify prerequisites
 
@@ -334,7 +348,7 @@ The Web Application is a Vite single-page application, deployed as a second stan
 
    **Environment variable descriptions:**
    - `VITE_API_URL`: Backend API endpoint (the API site's HTTPS URL, `https://localhost:3443`).
-   - `VITE_OIDC_ID`: OpenID Connect configuration ID from the database (the id of the `oidc` row; must match the redirect-URI callback id).
+   - `VITE_OIDC_ID`: OpenID Connect configuration ID from the database — the `id` of the `oidc` row, which must match the id in the Keycloak redirect URI. See [Identity provider](#identity-provider) for how that row is created and how to confirm the id.
    - `VITE_BASE_PATH`: URL path the app is served from. Keep it `"/"`: the Web Application is served from the root of its own site.
    - `VITE_HELP_GUIDE`: URL to general help documentation.
    - `VITE_STARTING_GUIDE`: URL to the getting-started / system administrator guide.
@@ -432,6 +446,10 @@ Both IIS sites emit a baseline set of response headers (shown in each site's `we
 
 The API additionally sets `X-Content-Type-Options` and `X-Frame-Options` in application code. Adjust these headers if you place the sites behind a reverse proxy that sets its own.
 
+## First sign-in
+
+Open the Web Application at `https://localhost:4443` and sign in through the identity provider. For the local Keycloak example, use the Keycloak user you created — its email must match `ADMIN_USERNAME` in `production.js` (default `admin@example.com`). This first user is the bootstrap administrator; additional users must be granted access from within the Admin App afterward.
+
 ## Production considerations
 
 The default install is suitable for a local or trusted-network deployment. Before exposing the Admin App more broadly:
@@ -461,10 +479,6 @@ Node.js, SQL Server, and IIS can remain in place.
 ## Next steps
 
 The Admin App is now running, but it manages **Ed-Fi ODS/API** instances that run separately — this guide does not install an ODS/API. To start using the Admin App, sign in and connect a running ODS/API environment (ODS/API 6.x or 7.x) by its Discovery API URL.
-
-:::note First sign-in
-Open the Web Application at `https://localhost:4443` and sign in through the identity provider. For the local Keycloak example, use the Keycloak user you created — its email must match `ADMIN_USERNAME` in `production.js` (default `admin@example.com`). This first user is the bootstrap administrator; additional users must be granted access from within the Admin App afterward.
-:::
 
 :::note
 If the ODS/API or Admin API presents a self-signed or dev certificate — common for a local ODS/API — adding an Environment fails with a certificate error (`DEPTH_ZERO_SELF_SIGNED_CERT`) in the API log (`logs\node-stdout.log`). Make Node trust the upstream certificate via `NODE_EXTRA_CA_CERTS`; see [Production considerations](#production-considerations).

@@ -17,7 +17,11 @@ This is one of three alternative installation paths. If you instead want to run 
 3. **How much to automate** — pick one of the three installation paths below.
 
 :::info
-Both IIS sites are served over **HTTPS by default** — API on port **3443** and Web Application on port **4443**. Each also keeps an HTTP binding (**3333** / **4200**) that returns a 301 redirect to its HTTPS URL. When no certificate is supplied, a self-signed certificate is generated and trusted on the local machine; supply a real certificate for anything beyond this host (see [TLS and certificates](./manual.md#tls-and-certificates)). **IIS 10 or newer is required.**
+Both IIS sites are served over **HTTPS by default** — API on port **3443** and Web Application on port **4443**. Each also keeps an HTTP binding (**3333** / **4200**) that returns a 301 redirect to its HTTPS URL. When no certificate is supplied, a self-signed certificate is generated and trusted on the local machine; supply a real certificate for anything beyond this host (see [TLS and certificates](./manual.md#tls-and-certificates)).
+:::
+
+:::info IIS version
+**IIS 10 or newer is required.** Windows Server 2019 and 2022, and Windows 10 and 11, all ship IIS 10. The API's configuration is passed to Node through environment variables set on its IIS App Pool, and App Pool environment variables are an IIS 10 feature. `00-check-prereqs.ps1` reports the IIS version it detects.
 :::
 
 ## Installation paths
