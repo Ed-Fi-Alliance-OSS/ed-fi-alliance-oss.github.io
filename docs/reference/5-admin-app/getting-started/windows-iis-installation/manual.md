@@ -450,6 +450,8 @@ The API additionally sets `X-Content-Type-Options` and `X-Frame-Options` in appl
 
 Open the Web Application at `https://localhost:4443` and sign in through the identity provider. For the local Keycloak example, use the Keycloak user you created — its email must match `ADMIN_USERNAME` in `production.js` (default `admin@example.com`). This first user is the bootstrap administrator; additional users must be granted access from within the Admin App afterward.
 
+The Admin App is now running, but it manages **Ed-Fi ODS/API** instances that run separately — this guide does not install an ODS/API. After signing in, connect a running ODS/API environment (ODS/API 6.x or 7.x) by its Discovery API URL. If that fails with a certificate error, see [Troubleshooting](../../troubleshooting.md#backend-troubleshooting).
+
 ## Production considerations
 
 The default install is suitable for a local or trusted-network deployment. Before exposing the Admin App more broadly:
@@ -478,12 +480,9 @@ Node.js, SQL Server, and IIS can remain in place.
 
 ## Next steps
 
-The Admin App is now running, but it manages **Ed-Fi ODS/API** instances that run separately — this guide does not install an ODS/API. To start using the Admin App, sign in and connect a running ODS/API environment (ODS/API 6.x or 7.x) by its Discovery API URL.
+A fresh install has no users, teams, or environments yet. The Global Admin Quick Start seeds that starter configuration, so it is the recommended next step.
 
-:::note
-If the ODS/API or Admin API presents a self-signed or dev certificate — common for a local ODS/API — adding an Environment fails with a certificate error (`DEPTH_ZERO_SELF_SIGNED_CERT`) in the API log (`logs\node-stdout.log`). Make Node trust the upstream certificate via `NODE_EXTRA_CA_CERTS`; see [Production considerations](#production-considerations).
-:::
-
+- [Global Admin Quick Start](../../user-guide/global-admin-quick-start/readme.md)
 - [Configuring Ed-Fi Admin App](../../configuration/configuring-admin-app.md)
 - [Configuring an Identity Provider for Ed-Fi Admin App](../../configuration/identity-provider.md)
 - [Security Considerations](../../configuration/security-considerations.md)

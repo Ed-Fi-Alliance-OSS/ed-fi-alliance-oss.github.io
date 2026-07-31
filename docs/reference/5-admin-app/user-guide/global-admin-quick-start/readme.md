@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # Quick Start
 
 After installing the Ed-Fi Admin App, a global administrator normally has to
