@@ -34,7 +34,7 @@ CMS uses the following values:
 | Setting | Value |
 | --- | --- |
 | Algorithm | PBKDF2-HMAC-SHA-256 |
-| Iterations | `IdentitySettings:ClientSecretHashingIterations`; 210,000 by default |
+| Iterations | 210,000 fixed in the client-secret hasher |
 | Salt | 16 cryptographically random bytes per secret |
 | Derived key | 32 bytes |
 | Comparison | Constant-time comparison |
@@ -45,7 +45,7 @@ the hash format: a version byte, the salt length, the salt, and the derived
 key. The salt is not secret; CMS needs it to verify a submitted secret.
 
 On a token request, CMS reads the stored value, derives a key from the submitted
-secret using the stored salt and configured iteration count, and uses a
+secret using the stored salt and the 210,000-iteration count, and uses a
 constant-time comparison. A failed comparison does not reveal the original
 secret or authenticate the client.
 
