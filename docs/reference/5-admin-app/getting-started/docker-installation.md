@@ -158,6 +158,9 @@ Ensure this matches your actual Keycloak realm configuration and domain.
 
 ## Next steps
 
+A fresh install has no users, teams, or environments yet. The Global Admin Quick Start seeds that starter configuration, so it is the recommended next step.
+
+- [Global Admin Quick Start](../user-guide/global-admin-quick-start/readme.md)
 - [Configuring Ed-Fi Admin App](../configuration/configuring-admin-app.md)
 - [Configuring an Identity Provider for Ed-Fi Admin App](../configuration/identity-provider.md)
 - [Security Considerations](../configuration/security-considerations.md)

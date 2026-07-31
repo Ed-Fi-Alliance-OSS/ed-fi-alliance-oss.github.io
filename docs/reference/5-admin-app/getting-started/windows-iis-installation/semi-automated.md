@@ -28,3 +28,13 @@ On **Windows Server 2019/2022**, install the Windows Package Manager (`winget`) 
 | optional | `install-all.ps1` | Runs the whole sequence end to end (see [Automated](./automated.md)). | (whole install) |
 
 To remove an install, use `uninstall.ps1` (generic) and, for the local Keycloak, `uninstall-keycloak.ps1` (removes Keycloak and its startup task, and unsets `JAVA_HOME`; leaves the JDK installed).
+
+## Next steps
+
+A fresh install has no users, teams, or environments yet. The Global Admin Quick Start seeds that starter configuration, so it is the recommended next step.
+
+- [Global Admin Quick Start](../../user-guide/global-admin-quick-start/readme.md)
+- [Configuring Ed-Fi Admin App](../../configuration/configuring-admin-app.md)
+- [Configuring an Identity Provider for Ed-Fi Admin App](../../configuration/identity-provider.md)
+- [Security Considerations](../../configuration/security-considerations.md)
+- [Global Administration Tasks](../../configuration/global-administration-tasks.md)
