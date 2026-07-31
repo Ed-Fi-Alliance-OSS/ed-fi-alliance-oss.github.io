@@ -57,6 +57,20 @@ have been tested and gain full support in Admin App v4.1.
 - **Node.js**: Version 22.0.0 or higher
 - **SSL/TLS Certificates**: For HTTPS endpoints
 
+### Ed-Fi Services
+
+- **Ed-Fi ODS/API and ODS Admin API**: Installed and reachable — the Admin App
+  performs all credential and configuration management by calling the Admin
+  API.
+- **Admin API first-time configuration completed**: When an environment is
+  connected, the Admin App registers its own client credentials at the Admin
+  API's `POST /connect/register` endpoint, which requires
+  `Authentication:AllowRegistration=true` in the Admin API's
+  `appsettings.json` (`false` by default). Complete
+  [Create the First API Client](../../4-admin-api/getting-started/admin-api-2.3-newer/first-time-configuration.md#2-create-the-first-api-client)
+  and keep registration enabled while connecting environments (it can be
+  disabled again afterwards).
+
 ## Choose an installation path
 
 The Ed-Fi Admin App can be installed in one of three **alternative** ways. These
