@@ -5,6 +5,8 @@ database is exposed. This document describes how CMS secures OAuth client
 secrets when it uses its self-contained identity provider and how secret
 handling differs when CMS uses Keycloak.
 
+CMS-issued OAuth secrets are used to authenticate API clients to DMS.
+
 ## Overview
 
 OAuth client secrets are credentials used by an API client to obtain a token.
@@ -53,7 +55,7 @@ not retain one. If a secret is lost or exposed, reset the credentials and
 replace the client's stored value.
 
 The implementation is in
-`src/config/backend/EdFi.DmsConfigurationService.Backend.OpenIddict/Services/ClientSecretHasher.cs`.
+[`src/config/backend/EdFi.DmsConfigurationService.Backend.OpenIddict/Services/ClientSecretHasher.cs`](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/main/src/config/backend/EdFi.DmsConfigurationService.Backend.OpenIddict/Services/ClientSecretHasher.cs).
 
 ## Keycloak
 
