@@ -67,9 +67,10 @@ Keycloak-managed clients.
 
 Keycloak client secrets should not be treated as non-recoverable CMS hashes. In
 Keycloak's standard JPA storage model, a client's current secret is stored in
-the `SECRET` field. An administrator or service account with permission to
-manage the client can retrieve its current secret or regenerate it through the
-Keycloak administration interface or Admin REST API. Users and service accounts
+the `SECRET` field. A user or service account with `view-clients` access, or
+fine-grained View access on the client, can retrieve its current secret through
+the Keycloak administration interface or Admin REST API. Regenerating the
+secret requires the stronger Configure permission. Users and service accounts
 without the necessary client-management permissions cannot access it.
 
 Therefore, Keycloak administrative access is secret-bearing access. Grant only
