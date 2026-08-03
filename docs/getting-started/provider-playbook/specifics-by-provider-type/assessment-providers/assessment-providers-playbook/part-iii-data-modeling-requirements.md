@@ -19,7 +19,7 @@ When identity is inconsistently defined:
 - Longitudinal results may fragment
 - Downstream systems must rely on vendor-specific logic to interpret the data
 
-This breaks interoperability and undermines one of Ed-Fi’s core goals: eliminating custom transformation logic.
+This breaks interoperability and undermines one of the Ed-Fi Data Standard’s core goals: eliminating custom transformation logic.
 
 A consistent identity strategy ensures that:
 
@@ -266,7 +266,7 @@ Enforcing subject integrity at ingestion ensures that assessment data remains re
 
 ## 5. Hierarchy and Results Placement
 
-Hierarchy and results placement define how assessment structure (metadata) and student outcomes (results) are represented in the Ed-Fi model.
+Hierarchy and results placement define how assessment structure (metadata) and student outcomes (results) are represented in the Ed-Fi Data Standard model.
 
 This section operationalizes the core entities defined in Section 2.2:
 
@@ -275,11 +275,11 @@ This section operationalizes the core entities defined in Section 2.2:
 
 These two layers must remain strictly aligned. The structure declared by the assessment must match the placement of student results.
 
-This is the primary enforcement point for a native Ed-Fi assessment integration.
+This is the primary enforcement point for a native Ed-Fi ODS/API assessment integration.
 
 Correct implementation preserves the relationship between structure and results exactly as defined in the vendor score report. This allows results to be interpreted directly, without vendor-specific logic, reconstruction, or score-name parsing.
 
-Incorrect implementation breaks that relationship. Data may load into Ed-Fi, but:
+Incorrect implementation breaks that relationship. Data may load into the Ed-Fi ODS/API, but:
 
 - Hierarchy must be inferred rather than represented
 - Subject and grain become ambiguous
@@ -525,7 +525,7 @@ When indicators are stored as scores:
 
 - Analytics produce incorrect conclusions
 
-_- Ed Fi Data Standard 6.0_ introduces structured support for indicators not otherwise captured in a specific property, reinforcing this separation.
+_- Ed-Fi Data Standard 6.0_ introduces structured support for indicators not otherwise captured in a specific property, reinforcing this separation.
 
 #### Assessment Provider Responsibility
 
@@ -781,7 +781,7 @@ Preserving vendor namespace semantics ensures that meaning remains intact at ing
 
 ### 7.2 Default Namespace Usage
 
-Certain descriptors represent shared dimensions across the Ed-Fi data model and must remain in the default Ed-Fi namespace unless a defined extension applies.
+Certain descriptors represent shared dimensions across the Ed-Fi data model and must remain in the default ed-fi.org namespace (governed by the Ed-Fi Alliance) unless a defined extension applies.
 
 These include:
 
@@ -801,7 +801,7 @@ Maintaining these descriptors in the default namespace ensures:
 
 - Elimination of conflicting definitions across implementations
 
-Implementations may apply environment-specific mappings for shared cross-domain descriptors through governed configuration layers when required to align with local Ed-Fi environments. However, assessment-specific descriptors, including vendor-defined score names and performance levels, must remain vendor-defined at ingestion and must not be locally overridden during load processing.
+Implementations may apply environment-specific mappings for shared cross-domain descriptors through governed configuration layers when required to align with local Ed-Fi ODS/API environments. However, assessment-specific descriptors, including vendor-defined score names and performance levels, must remain vendor-defined at ingestion and must not be locally overridden during load processing.
 
 #### Assessment Provider Responsibility
 
