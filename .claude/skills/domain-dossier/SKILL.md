@@ -133,5 +133,5 @@ Show the drafted content to the user for review. Do not create the
 Confluence page without explicit confirmation.
 
 Once confirmed, create a new Confluence page under
-https://edfi.atlassian.net/wiki/spaces/DATASTDDEV/overview
-Title: "Domain Dossier: {{DOMAIN_NAME}}"
+https://edfi.atlassian.net/wiki/spaces/DATASTDDEV/folder/2664398901?atlOrigin=eyJpIjoiNThiMGViN2IzN2Q4NGU5NmI2MmExOTBmNGJjNDBkZDIiLCJwIjoiYyJ9
+Title: "Domain: {{DOMAIN_NAME}}"
