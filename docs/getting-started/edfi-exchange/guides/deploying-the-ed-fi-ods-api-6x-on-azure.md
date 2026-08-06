@@ -132,7 +132,7 @@ We have two options for deploying databases, either the databases can be pushed 
 
 * Once the process is finished, status under "Import/Export history" should be "Completed" and the database should appear under "Settings" > "SQL Databases"
 
-### Deploy direct from Sql Server Management Studio (SSMS)
+### Deploy direct from SQL Server Management Studio (SSMS)
 
 * In your local computer open **SQL Server Management Studio.** You can download it from this site: [https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16)
 * Select Database Engine as **Server Type**
@@ -294,7 +294,7 @@ Once done you will end up with 2 access Policy
 
 This section describes how to deploy these two applications. They will need to be built from Visual Studio.
 
-* Open up the Ed-Fi-Ods.sln file in the Ed-Fi-Ods-Implementation/application/Ed-Fi-Ods.sln file in Visual Studio. You should sign into visual studio using the same credentials that have access to the Azure Portal.
+* Open up the Ed-Fi-Ods.sln file in the Ed-Fi-Ods-Implementation/Application/Ed-Fi-Ods.sln file in Visual Studio. You should sign into visual studio using the same credentials that have access to the Azure Portal.
 * Right-click on the "Entry Points" → Edfi.Ods.WebApi folder and select "deploy"
 * On the deployment screen that comes up select the green plus sign to build a new deployment
 
@@ -408,9 +408,9 @@ Make sure when you finish adding the settings you save the changes**
 
 There are two methods of database configuring database connection strings we are describing. The first one has the database credentials hardcoded in the settings for that App Service. This is a violation of some organization's security policy. The second method uses the key vault set up in step 4 to hold the credentials.
 
-:::warning
+:::warning[Credentials hard coded in the connection string]
 
-Credentials hard coded in the connection string
+The connection strings in this section contain credentials in plain text. Do not commit these values to source control; use environment-specific configuration or a secrets manager in production.
 
 :::
 

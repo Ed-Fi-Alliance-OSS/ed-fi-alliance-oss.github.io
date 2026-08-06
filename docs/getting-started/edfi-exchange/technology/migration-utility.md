@@ -80,7 +80,7 @@ CD {YourInstallFolder}
 --DATABASE "YOUR_DATABASE_CONNECTION_STRING_HERE" --DescriptorNamespace "uri://grandbend.org" --CredentialNamespace "uri://grandbend.org" --Engine "YOUR_DATABASE_ENGINE_TYPE"
 ```
 
-1. Set the `EdFi.Ods.Utilities.Migration` project as your startup project.
-2. Launch in debug mode (**F5**).
+4. Set the `EdFi.Ods.Utilities.Migration` project as your startup project.
+5. Launch in debug mode (**F5**).
 
 <!-- this is missing some big tables that don't convert well from https://edfi.atlassian.net/wiki/spaces/EXCHANGE/pages/22492292/Migration+Utility#MigrationUtility-UsageWalkthrough . Consider replacing with PDF? -->
