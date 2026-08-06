@@ -1,6 +1,6 @@
 ---
 name: domain-dossier
-description: Generate a historical knowledge dossier for one Ed-Fi UDM domain (current state, evolution, design rationale, known inconsistencies) and draft it as a Confluence page. Usage: /domain-dossier <domain-name>
+description: "Generate a historical knowledge dossier for one Ed-Fi UDM domain (current state, evolution, design rationale, known inconsistencies) and draft it as a Confluence page. Usage: /domain-dossier <domain-name>"
 ---
 
 If `$ARGUMENTS` is empty, ask the user which domain to run before doing anything else.
