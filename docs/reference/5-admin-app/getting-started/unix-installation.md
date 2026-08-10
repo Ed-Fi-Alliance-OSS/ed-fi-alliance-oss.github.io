@@ -69,8 +69,9 @@ This path uses **PostgreSQL**. The Admin App is database-engine-agnostic, but SQ
        MACHINE_AUDIENCE: 'edfiadminapp-api'
      },
      // Identity provider (OIDC). The values below are the Keycloak example;
-     // for Microsoft Entra ID or Google Workspace, set issuer/clientId/clientSecret/scope
-     // per the identity-provider guide linked in "Next steps".
+     // for Microsoft Entra ID, Google Workspace, or Auth0, set
+     // issuer/clientId/clientSecret/scope per the identity-provider guide
+     // linked in "Next steps".
      SAMPLE_OIDC_CONFIG: {
       issuer: 'https://your-keycloak-server/auth/realms/edfi',
       clientId: 'edfiadminapp',
@@ -98,7 +99,7 @@ This path uses **PostgreSQL**. The Admin App is database-engine-agnostic, but SQ
    :::
 
    :::note
-   This path uses **Keycloak** as the example OIDC provider. Because the Admin App uses generic OIDC discovery, [Microsoft Entra ID](../configuration/identity-provider/microsoft-entra-id.md) and [Google Workspace](../configuration/identity-provider/google-workspace.md) also work: set `issuer`/`clientId`/`clientSecret`/`scope` and `ADMIN_USERNAME` accordingly, and set the frontend's `VITE_OIDC_ID` and `VITE_IDP_ACCOUNT_URL` in `packages/fe/.env` **before** `npm run build:fe`. The redirect/callback URI is `<MY_URL>/api/auth/callback/<oidc-id>` (here, `https://your-domain.com/adminapp-api/api/auth/callback/<oidc-id>`).
+   This path uses **Keycloak** as the example OIDC provider. Because the Admin App uses generic OIDC discovery, [Microsoft Entra ID](../configuration/identity-provider/microsoft-entra-id.md), [Google Workspace](../configuration/identity-provider/google-workspace.md), and [Auth0](../configuration/identity-provider/auth0.md) also work: set `issuer`/`clientId`/`clientSecret`/`scope` and `ADMIN_USERNAME` accordingly, and set the frontend's `VITE_OIDC_ID` and `VITE_IDP_ACCOUNT_URL` in `packages/fe/.env` **before** `npm run build:fe`. The redirect/callback URI is `<MY_URL>/api/auth/callback/<oidc-id>` (here, `https://your-domain.com/adminapp-api/api/auth/callback/<oidc-id>`).
    :::
 
 4. **Create systemd service**:

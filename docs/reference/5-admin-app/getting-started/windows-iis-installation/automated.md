@@ -80,7 +80,19 @@ Pass a parameter only to change something the defaults do not cover. PostgreSQL 
   -AdminUsername 'you@yourdomain.com'
 ```
 
-`-IdpProvider` accepts `keycloak`, `microsoft`, `google`, or `other` (a generic OIDC provider you register yourself). Pass `-OidcIssuer` and `-OidcClientId` for `microsoft` and `other`; for `keycloak` and `google` the issuer is defaulted. In every external-provider example, `-AdminUsername` is the email of the first (bootstrap) administrator — it must exactly match the `email` claim your identity provider returns for that user. See [Configuring an Identity Provider](../../configuration/identity-provider/readme.md) for how to register the application with each provider.
+**Auth0, SQL Server** — an external OIDC provider. Create the Single Page Web Application in the Auth0 dashboard first (see [Auth0](../../configuration/identity-provider/auth0.md)), and make sure an Auth0 user exists whose email matches `-AdminUsername`:
+
+```powershell
+.\install-all.ps1 -IdpProvider auth0 `
+  -SaPassword (Read-Host -AsSecureString 'SQL Server sa password') `
+  -AppDbPassword (Read-Host -AsSecureString 'Admin App DB login password') `
+  -OidcIssuer 'https://your-tenant.us.auth0.com' `
+  -OidcClientId '<Single-Page-App-Client-ID>' `
+  -OidcClientSecret (Read-Host -AsSecureString 'Auth0 client secret') `
+  -AdminUsername 'you@yourorg.com'
+```
+
+`-IdpProvider` accepts `keycloak`, `microsoft`, `google`, `auth0`, or `other` (a generic OIDC provider you register yourself). Pass `-OidcIssuer` and `-OidcClientId` for `microsoft`, `auth0`, and `other`; for `keycloak` and `google` the issuer is defaulted. For `auth0`, either slash form of the issuer works — the installer normalizes it into the forms each setting expects. In every external-provider example, `-AdminUsername` is the email of the first (bootstrap) administrator — it must exactly match the `email` claim your identity provider returns for that user. See [Configuring an Identity Provider](../../configuration/identity-provider/readme.md) for how to register the application with each provider.
 
 :::note
 By default the sites use a self-signed certificate (auto-trusted on this machine only). To bind a real certificate, pass `-CertificateThumbprint`, or `-CertificatePfxPath` with `-CertificatePassword` (see [TLS and certificates](./manual.md#tls-and-certificates)). Yopass is off by default; add `-SetupYopassDocker` to stand up a local Yopass via Docker, or `-YopassUrl <url>` to point at an existing one.

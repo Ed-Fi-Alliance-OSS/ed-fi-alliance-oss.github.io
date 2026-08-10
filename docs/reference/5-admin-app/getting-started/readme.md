@@ -23,7 +23,7 @@ deployments. It consists of:
 
 - **PostgreSQL or SQL Server Database** (Required) — an empty database created
   for the Admin App (the examples use the name `sbaa`)
-- **OIDC Provider** (Required) - Keycloak, Microsoft Entra ID, or Google Workspace; see
+- **OIDC Provider** (Required) - Keycloak, Microsoft Entra ID, Google Workspace, or Auth0; see
   - [Configuring an Identity Provider for Ed-Fi Admin App](../configuration/identity-provider/readme.md)
 - **Reverse Proxy** (Recommended for production) - Nginx, IIS, or similar
   - Provides a single public entry point for the Web Application and API (this avoids cross-origin/CORS between the two sites), plus caching, load balancing, and a place to enforce edge security (for example, a web application firewall).
@@ -32,8 +32,8 @@ deployments. It consists of:
 :::tip
 
 This application runs with any Open ID Connect provider. The Ed-Fi Alliance has
-validated three end-to-end on the Windows/IIS deployment: Keycloak (the bundled
-example), Microsoft Entra ID, and Google Workspace. See
+validated four end-to-end on the Windows/IIS deployment: Keycloak (the bundled
+example), Microsoft Entra ID, Google Workspace, and Auth0. See
 [Configuring an Identity Provider for Ed-Fi Admin App](../configuration/identity-provider/readme.md).
 
 :::

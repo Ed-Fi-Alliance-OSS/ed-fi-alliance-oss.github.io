@@ -12,7 +12,7 @@ Before you begin, ensure you have:
 
 ## Logging in
 
-Admin App uses an OAuth2 identity provider (IdP) that supports Open ID Connect. The Ed-Fi Alliance has validated three providers: Keycloak (the bundled default example), Microsoft Entra ID, and Google Workspace. Your installation may use any of them; see [Configuring an Identity Provider for Ed-Fi Admin App](../configuration/identity-provider/readme.md).
+Admin App uses an OAuth2 identity provider (IdP) that supports Open ID Connect. The Ed-Fi Alliance has validated four providers: Keycloak (the bundled default example), Microsoft Entra ID, Google Workspace, and Auth0. Your installation may use any of them; see [Configuring an Identity Provider for Ed-Fi Admin App](../configuration/identity-provider/readme.md).
 
 Your organization may have setup multi-factor authentication, requiring you to enter a one-time access code to finish signing in.
 
