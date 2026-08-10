@@ -136,4 +136,4 @@ Confluence page without explicit confirmation.
 
 Once confirmed, create a new Confluence page under
 https://edfi.atlassian.net/wiki/spaces/DATASTDDEV/folder/2664398901
-Title: "Domain Dossier: {{DOMAIN_NAME}}"
+Title: "Domain: {{DOMAIN_NAME}}"
