@@ -65,8 +65,10 @@ EducationOrganization). Cite the live docs.ed-fi.org URL for each file
 referenced (see "Linking to live docs" above), not just the repo path.
 
 === STEP 2: Prior versions (local repo) ===
-Check the same relative folder path under version-5, version-4, and version-3
-(`dataStandard_versioned_docs/version-{5,4,3}/model-reference/{{DOMAIN_FOLDER_SLUG}}/`).
+Check the same relative folder path under version-5, version-4, and version-3:
+`dataStandard_versioned_docs/version-5/model-reference/{{DOMAIN_FOLDER_SLUG}}/`,
+`dataStandard_versioned_docs/version-4/model-reference/{{DOMAIN_FOLDER_SLUG}}/`, and
+`dataStandard_versioned_docs/version-3/model-reference/{{DOMAIN_FOLDER_SLUG}}/`.
 If the domain didn't exist in an older version, note when it was introduced
 instead of treating it as missing. Also scan each version's `whats-new/`
 folder for changelog entries mentioning this domain or its key entities.
@@ -133,5 +135,5 @@ Show the drafted content to the user for review. Do not create the
 Confluence page without explicit confirmation.
 
 Once confirmed, create a new Confluence page under
-https://edfi.atlassian.net/wiki/spaces/DATASTDDEV/folder/2664398901?atlOrigin=eyJpIjoiNThiMGViN2IzN2Q4NGU5NmI2MmExOTBmNGJjNDBkZDIiLCJwIjoiYyJ9
-Title: "Domain: {{DOMAIN_NAME}}"
+https://edfi.atlassian.net/wiki/spaces/DATASTDDEV/folder/2664398901
+Title: "Domain Dossier: {{DOMAIN_NAME}}"
