@@ -76,7 +76,10 @@ The application provides health check endpoints:
    
    # Update code
    cd /opt/edfiadminapp
-   git pull origin main
+   # Check out the latest stable release tag (not main, which is active development).
+   # See the Releases page: https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-AdminApp/releases
+   git fetch --tags
+   git checkout v4.0.1  # replace with the latest release tag
    npm ci
    npm run build:api
    npm run build:fe

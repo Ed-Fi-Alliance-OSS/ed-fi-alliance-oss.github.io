@@ -4,14 +4,10 @@ sidebar_position: 2
 
 # Ed-Fi Overview and Implementation Playbook
 
-Last updated: December 16, 2024
+Last updated: July 29, 2026
 
-**[Download SEA Ed-Fi Overview and Implementation Playbook V2 (PDF)](https://edfidocs.blob.core.windows.net/$web/assets/getting-started/sea-playbook/SEA%20Ed-Fi%20Overview%20and%20Implementation%20Playbook%20V2.pdf)**
-:::tip
+#### [Download Ed-Fi State Education Agency Playbook V2 (PDF)](https://edfidocs.blob.core.windows.net/$web/assets/getting-started/sea-playbook/SEA%20Ed-Fi%20Overview%20and%20Implementation%20Playbook%20V2.pdf)
 
-The PDF download above contains the latest version of the playbook, as of July 17, 2026. The content from the PDF will be copied into this documentation repository over the course of the next month. Where there are discrepancies between the two, trust the PDF download as the authoritative version.
-
-:::
 This playbook provides an overview of the Ed-Fi Technology Suite and practical guidance for State Education Agencies
 (SEAs) implementing Ed-Fi Data Standard for data modernization. It covers the problem space, available
 implementation approaches, a phased timeline, and best practices for vendor and LEA coordination.
@@ -37,7 +33,7 @@ States and districts share related but distinct data challenges.
 
 ## Ed-Fi Alliance's Mission
 
-The Ed-Fi Data Standard enables data interoperability across K–12 states, districts, and vendors through four
+The Ed-Fi Data Standard enables data interoperability across K–12 states, districts, and vendors through three
 pillars:
 
 ```mermaid
@@ -48,42 +44,62 @@ flowchart LR
   Vendors(["Vendors"])
   DS["Data standard<br/>Common taxonomy for student performance data"]
   API["Open-source APIs<br/>Real-time standardized data transfer"]
-  ODS["Open-source ODS<br/>Shared platform and tools"]
   Community["Community<br/>Knowledge base, vendor directory, support, events"]
   States --- EdFi
   Districts --- EdFi
   Vendors --- EdFi
   EdFi --> DS
   EdFi --> API
-  EdFi --> ODS
   EdFi --> Community
 ```
 
 ## Impact
 
-### State Reporting Savings: Nebraska Example
+### State's Real-Time Data Usage Case Study: Indiana Example
 
-Adopting the Ed-Fi Data Standard for state reporting delivers substantial savings:
+Indiana turned a compliance system into a real-time, statewide data foundation using the Ed-Fi Data Standard, providing analytics and data services back to districts.
 
-| Area | Impact |
-| ------ | -------- |
-| District data burden | Reduced by \~25% or 1.5 FTEs per district (\~$125K savings × 244 districts) |
-| EDFacts quarterly reporting | Reduced from 10 weeks to less than 1 day |
-| Average Daily Membership reporting | Reduced from 10 days to less than 4 hours |
-| SEA FTEs for district data collection | Reduced from 10 to 7 |
-| **Total annual savings** | **\~$30.7M (state) + \~$0.4M (SEA operations)** |
+##### Challenge
 
-Source: Nebraska Department of Education
+A 20+ year old data system was slow, manual, and error-prone — offering little value beyond meeting compliance deadlines.
 
-### District Use Cases: Michigan Example
+##### Approach
 
-Michigan demonstrates how the Ed-Fi Data Standard enables district-level impact beyond state reporting:
+IDOE partnered with the Ed-Fi Alliance and technology providers to adopt the Ed-Fi Data Standard in phases, with ongoing training and district input.
 
-| Category | Example |
+###### Key Use Cases & Impact
+
+| Use Cases | Impact |
 | -------- | ------- |
-| Vendor integrations | LEAs now have ~10 integrations per school without managing each individually |
-| Analytics | MiRead (reading level identification); Digital Equity Data Collection |
-| Tools | MiStrategyBank (evidence-based strategies); MiEWIMS (attendance and behavior plans) |
+| Student Data Backpack | A complete student profile: enrollment, demographics, special education, and program data. Gives staff key student info instantly when a student changes schools — no more lost records in transfer. |
+| GPS Dashboard | A statewide tool tracking Graduates Prepared to Succeed outcomes for every student. Helps educators and families plan and monitor progress toward college and career readiness. |
+| Early Warning System | Analyzes attendance, behavior, and course outcomes across current and prior years. Flags students at risk of not graduating — or not graduating on time — so educators can act sooner. |
+| Positive Attendance Tracking | A new approach that tracks and celebrates positive attendance trends, not just absences. Helps schools rebuild strong attendance habits after pandemic-related disruptions. |
+
+> "Under the old system, schools certified their data weeks or months after submission. Now we're able to certify within two weeks of the count date."
+>
+> — _John Keller, Chief Information Officer, Indiana Department of Education_
+
+### Statewide District Use Cases: Michigan Example
+
+The Michigan Data Hub turned disconnected district systems into a real-time, statewide data platform built on the Ed-Fi Data Standard.
+
+##### Challenge
+
+Disconnected district systems couldn't share data, making both state reporting and student supports slow and manual.
+
+##### Approach
+
+The state, CEPI, and Intermediate School Districts built the Michigan Data Hub on the Ed-Fi Data Standard —connecting school districts in the state with a modern, flexible way to share information.
+
+###### Key Use Cases & Impact
+
+| Use Cases | Impact |
+| -------- | ------- |
+| MiRead | Supports Individualized Reading Improvement Plans, tracking dyslexia screening and assessments statewide. Turns screening data into instructional strategies teachers use to catch reading gaps early. |
+| Snack-Pack | Delivers state-verified student data — EL status, attendance, and more — into a district's SIS at enrollment. Keeps services uninterrupted for highly mobile students changing schools, no re-entry lag. |
+| Special Population Support | Tracks services and resources for students who need extra support across districts. Helps schools comply with requirements while delivering timely, coordinated help. |
+| Statewide Scale & ROI | 857 of Michigan's 880 districts are live, processing 10M+ transactions a day across the Hub. A 2024 ROI study found $41M+ in annual savings and an 830% return on investment. |
 
 > "The ability to obtain immediate information on newly enrolled students has improved our ability
 > to provide timely services. Before we would have to wait for the previous school to send student
@@ -91,6 +107,85 @@ Michigan demonstrates how the Ed-Fi Data Standard enables district-level impact 
 > in needed services."
 >
 > — _Sarah Mohler, Madison District_
+
+### State Reporting Savings: Nebraska Example
+
+Nebraska replaced manual state reporting with automated, real-time data built on the Ed-Fi Data Standard, giving districts time and money back to support students.​
+
+##### Challenge
+
+Staff pulled data from multiple systems and formatted files by hand, fixing errors after submission — often too late to act before deadlines.
+
+##### Approach
+
+With a federal SLDS grant, Nebraska adopted the Ed-Fi Data Standard to replace manual uploads with automatic data sharing, staying closely aligned to the core standard.
+
+###### Key Use Cases & Impact
+
+| Use Cases | Impact |
+| ------ | -------- |
+| School Funding Calculations | Districts see how enrollment and program data contributes to state funding calculations. Allows districts to catch problems before they affect funding, not after. |
+| Error Validation & Reporting | Real-time validation helps districts fix errors quickly as data is submitted. Improves data quality and speeds up informed, confident decisions. |
+| Accountability Reporting | Faster reporting improves transparency in state accountability results. Builds district and public confidence in reported outcomes. |
+| Assessment Integration | Assessment vendors connect once through the Ed-Fi API, statewide. Eliminates costly district-by-district customization for vendors. |
+
+> $30M in combined state and district savings statewide
+>
+> 10 wks to less than 1 day to compile quarterly EDFacts reporting
+>
+> Reduction in data burden saving ~$125k per district​
+
+Source: Nebraska Department of Education
+
+### State Rostering Case Study: South Carolina Example
+
+South Carolina turned a local rostering challenge into a statewide data services system — built with districts and for districts, on the Ed-Fi Data Standard.
+
+##### Challenge
+
+Data systems were fragmented and outdated —state reports delayed by up to two years, and smaller districts lacking the staff to keep up.
+
+##### Approach
+
+Starting with student rostering, the state built trust district-by-district, forming the Palmetto Data Collaborative and delivering data tools to improve student outcomes.
+
+###### Key Use Cases & Impact
+
+| Use Cases | Impact |
+| ------ | -------- |
+| Early Childhood Data | Integrated preschool data gives educators a fuller picture of young learners. Helps teachers spot needs earlier, before gaps widen in later grades. |
+| IEP System | A modern, centralized platform for tracking and delivering special education services. Cuts paperwork and gives staff a clearer, shared view of student support plans. |
+| College & Career Readiness | One platform combining student perception data with academic progress. Allows educators to tailor support so more students leave ready for what's next. |
+| Timely Alerts | Automatic notifications flag events like course drops as they happen. Reaches counselors within 24 hours, so they can respond while it still matters. |
+
+> "Creating an environment where these resources are shared freely raises the floor for everyone."
+>
+> — _Dan Ralyea, Chief Innovation Officer, South Carolina Department of Education_
+
+### Real-Time Average Daily Membership Case Study: Tennessee Example
+
+Tennessee turned average daily membership (ADM) funding into a transparent, near real-time process built on shared, community-built tools.
+
+##### Challenge
+
+Enrollment data lived across disconnected systems, taking weeks or months to turn into usable funding counts — with no visibility into how the state used it.
+
+##### Approach
+
+Using the Ed-Fi Data Standard and shared community-built tools, the state created a clearer, faster way to organize enrollment data for funding calculations.
+
+###### Key Use Cases & Impact
+
+| Use Cases | Impact |
+| ------ | -------- |
+| ADM Funding Dashboards | Shows districts exactly how their enrollment data drives state funding decisions. Districts see the same numbers the state uses, catching issues before dollars are finalized. |
+| Dual Enrollment Pilots | Connects high school and community college data for students taking both. Gives a clearer view of student progress across two systems that rarely talk to each other. |
+| Statewide Reporting | Aligns assessment, enrollment, and program data into one statewide reporting layer. Cuts duplicate reporting and keeps every dataset speaking the same language. |
+| Research-Ready Datasets | Delivers analysis-ready tables in a modern cloud warehouse, no manual prep needed. Frees analysts to spend time on insights instead of cleaning and reshaping data. |
+
+> "We are building a stronger foundation for better decision-making and improved student outcomes statewide."
+>
+> — _Vijay Gollapudi, Chief Information Officer, Tennessee Department of Education_
 
 ## Implementation Approaches
 
@@ -102,7 +197,9 @@ There are three primary ways to implement the Ed-Fi Data Standard:
 | _Data Hub Only_ | ESAs-led data hub providing local use cases and data services for districts | Shared (2-3 year) time to impact; addresses local use cases; State funds offset (75%) up to limited services | Requires ESA compliance on vendor; Vendor compliance can be mixed |
 | _Reporting + Data Hub_ | Data hub addresses local use cases and state defines reporting specs. ESAs map local; state defines reporting | Greatest impact; $30M+ local use cases; Most (1 school year) time to impact; Addresses all of reporting and LEA burden | Requires ESA services model; State + ESA alignment required |
 
-![Three primary approaches to implementing Ed-Fi](https://edfidocs.blob.core.windows.net/$web/static/img/sea-playbook/page-08.webp)
+![Three primary approaches to implementing Ed-Fi](https://edfidocs.blob.core.windows.net/%24web/static/img/sea-playbook/page-11-v2.webp)
+
+[Three primary approaches to implementing Ed-Fi](https://edfidocs.blob.core.windows.net/%24web/static/img/sea-playbook/page-11-v2.webp)
 
 :::tip Best Practice
 The **Reporting + Data Hub** approach is considered best practice where a strong ESA model exists
@@ -110,45 +207,38 @@ and the state wants to de-risk reporting modernization. It delivers the greatest
 $30M+ in state reporting savings _plus_ local district use case benefits.
 :::
 
+## What is a Data Hub?
+
+A data hub is a shared enterpise system that enables school districts to collect, store, and use data in one place.
+
+It supports sedcure, standards-based integration across vendor systems, providing insights while maintaining district control.
+
+States operate these hubs to streamline data sharing, support smaller districts and advqance key policy initiatives.
+
+![What is a Data Hub](https://edfidocs.blob.core.windows.net/%24web/static/img/sea-playbook/page-12-v2.webp)
+
+[What is a Data Hub](https://edfidocs.blob.core.windows.net/%24web/static/img/sea-playbook/page-12-v2.webp)
+
 ## Reporting + Data Hub: Recommended Approach
 
 ### Implementation Phases
 
 ```mermaid
 flowchart TD
-  Planning["Planning<br/>6 months<br/>RFP, solutioning, data mapping, data hub model, budgeting"]
-  Pilot["Productize / Pilot<br/>6–12 months<br/>Data hub development, launch initial solutions, pilot reporting with 10–20 LEAs and vendors"]
-  Parallel["Parallel<br/>9 months<br/>Dual reporting for a school year to protect funding accuracy"]
+  Planning["Planning<br/>3 months<br/>RFP, solutioning, data hub model, budgeting"]
+  Pilot["Productize / Pilot<br/>9 months<br/>Data hub development, launch initial solutions,turn on Ed-Fi core data submission, perform data gap analysis, pilot reporting with 5-10 LEAs and vendors"]
+  Parallel["Parallel<br/>12 months<br/>Dual reporting for a school year to protect funding accuracy"]
   Planning --> Pilot --> Parallel
 ```
 
 Key activities by phase:
 
-- _Planning_ — RFP to identify a managed provider; ESA-led solution design; SEA data element
-  mapping; data hub funding model; budget ($2.5M for reporting plus any data hub state funding
+- _Planning_ — RFP to identify a managed provider; ESA-led solution design; data hub funding model; budget ($2.5M for reporting plus any data hub state funding
   up to $2M)
 - _Productize / Pilot_ — develop 2–3 initial local use cases (e.g., absenteeism); launch data
-  hub; pilot state reporting with 10–20 LEAs and vendors
+  hub; turn on Ed-Fi core data submission, perform data gap analysis, pilot state reporting with 5-10 LEAs and vendors
 - _Parallel_ — run Ed-Fi-based reporting alongside the legacy system for the full school year
   to ensure accurate funding
-
-### Architecture
-
-```mermaid
-flowchart LR
-  Districts["Districts<br/>Vendor data: SIS, Assessment"]
-  Hub["ESA-led Data Hub<br/>Ed-Fi data<br/>Data warehouse"]
-  SEA["SEA<br/>Ed-Fi data<br/>Data warehouse"]
-  Reporting["Fed & State Reporting"]
-  Districts -- "Reporting & district use case data" --> Hub
-  Hub -- "Reporting data" --> SEA
-  SEA --> Reporting
-  Hub -. "Data services & analytics" .-> Districts
-```
-
-### Core Implementation Team
-
-![Core implementation team](https://edfidocs.blob.core.windows.net/$web/static/img/sea-playbook/page-11.webp)
 
 ### Risk Mitigation
 
@@ -156,8 +246,26 @@ flowchart LR
 flowchart LR
   S1["Scope concern<br/>Data modernization and state reporting is multi-year"] --> P1["Playbook<br/>Limit state role to funding ESA-led effort and signaling support via Ed-Fi compliance"]
   S2["De-risking reporting concern<br/>Downside risk of state reporting errors"] --> P2["Playbook<br/>Address local use cases in 18 months, create district goodwill, and complete change management before reporting"]
-  S3["District alignment concern<br/>Hard to align state and ESAs when reassessing standards"] --> P3["Playbook<br/>Separate ownership: SEA maps state reporting; ESAs map local use cases"]
+  S3["District alignment concern<br/>Hard to align state and ESAs when reassessing standards"] --> P3["Playbook<br/>Separate ownership: SEA owns analysis for state reporting; ESAs own analysis for local use cases"]
 ```
+
+## Ed-Fi Enables CEDS
+
+For states with CEDS on their roadmap, a group of states under the Ed-Tech Collaboratory have developed and maintain an open-source Ed-Fi Data Standard to CEDS pipeline that transforms the Ed-Fi Data Standard via the Ed-Fi API to CEDS data warehouse.
+
+![Ed-Fi Enables CEDS](https://edfidocs.blob.core.windows.net/%24web/static/img/sea-playbook/page-15-v2.webp)
+
+[Ed-Fi Enables CEDS](https://edfidocs.blob.core.windows.net/%24web/static/img/sea-playbook/page-15-v2.webp)
+
+## Ed-Fi and 1EdTech Working Together
+
+For states using 1EdTech standards, the Ed-Fi and 1EdTech communities have been collaborationg to make these standards work together.
+
+![Ed-Fi and 1EdTech Working Together](https://edfidocs.blob.core.windows.net/%24web/static/img/sea-playbook/page-16-v2.webp)
+
+[Ed-Fi and 1EdTech Working Together](https://edfidocs.blob.core.windows.net/%24web/static/img/sea-playbook/page-16-v2.webp)
+
+---
 
 ## Implementation
 
@@ -165,9 +273,9 @@ flowchart LR
 
 ```mermaid
 flowchart TD
-  Planning["Planning<br/>3–6 months<br/>Expertise, RFP, pilot design, budgeting, data mapping"]
-  Pilot["Pilot<br/>3–6 months<br/>Run pilot; develop vendor and support capacity"]
-  Parallel["Parallel<br/>12 months<br/>Expand to 20–30% of LEAs for a school year"]
+  Planning["Planning<br/>3 months<br/>Expertise, RFP, pilot design, budgeting, data mapping"]
+  Pilot["Pilot<br/>9 months<br/>Run pilot with core data elements; run data gap analysis; develop vendor and support capacity"]
+  Parallel["Parallel<br/>12 months<br/>Expand to 20–30% or more of LEAs for a school year"]
   Prod["Production<br/>Ongoing<br/>Modernized production operations"]
   Planning --> Pilot --> Parallel --> Prod
 ```
@@ -178,7 +286,7 @@ waste and builds team confidence. With vendor awareness, use of MSPs, and access
 best practices, the timeline to production has become much more rapid than a few years ago.
 :::
 
-### Planning Phase (3–6 Months)
+### Planning Phase (3 Months)
 
 Stakeholder activities during planning:
 
@@ -195,7 +303,7 @@ SEA tasks proceed in three phases:
 ```mermaid
 flowchart TD
   A["First phase<br/>Secure/onboard Ed-Fi expertise; select initial reporting targets; outreach to ESAs/data hub hosts"]
-  B["Second phase<br/>Communicate intent; announce vendor certification requirement; complete data mapping; recruit pilot LEAs; convene ESA leadership"]
+  B["Second phase<br/>Communicate intent; announce vendor certification requirement; recruit pilot LEAs; convene ESA leadership"]
   C["Third phase<br/>Engage SEA Work Group; update agency/vendor portal; complete pilot LEA recruiting; ESAs hire MSP/consultant"]
   A --> B --> C
 ```
@@ -226,22 +334,22 @@ Moving from file-based to API-based collection requires process changes:
 
 See [Recommended SEA Process Changes for API-based Data Collection](./project-planning/recommended-sea-process-changes-for-api-based-data-collection.md).
 
-#### Select Initial Reporting Targets
+#### Begin with Core Student Information Systems (SIS) Collection
 
 - Start with "core" collections — enrollment counts/ADA, special services populations — and
   expand over time
 - Choose enough scope to enable LEAs to transition from older systems and relieve burden
 - Do not attempt all collections at once; scope can be added in later stages
 
-#### Data Mapping and Specifications Development
+#### Begin with Core
 
 | Recommended | Not Recommended |
 | ----------- | --------------- |
-| Use your MSP for mappings and creating initial data specifications | Do the Ed-Fi mappings on your own with staff new to Ed-Fi standards |
-| Follow Ed-Fi Descriptor Guidance for code sets in your specifications | Use non-standard Descriptor values for elements critical to your collections |
+| Ask vendors to turn on the Ed-Fi core data submission and perform data gap analysis | Do the Ed-Fi mappings on your own with staff new to Ed-Fi standards |
+| Follow Ed-Fi Descriptor Guidance for code sets in your specifications | Use Ed-Fi Descriptor values for elements critical to your collections |
 | Train your staff on the Ed-Fi Data Standard using your MSP | Allow this process to take more than 2 months |
 
-#### Reporting + Data Hub Planning Actions
+#### Data Hub is the Best Path to LEA Value
 
 The SEA's goal during this phase is to recruit ESA interest and identify data hub pilots.
 ESAs should:
@@ -250,11 +358,18 @@ ESAs should:
 - Draft a business model
 - Engage an Ed-Fi Managed Service Provider
 
-### Pilot Phase (3–6 Months)
+#### Join the SEA Workgroup Meetings
+
+The SEA Workgroup meets once a month;
+
+- To provide a forum for the Ed-Fi Alliance to share working solutions and emerging concepts with the community.
+- Enables SEAs to engage with peers to discuss best paractices and explore potential solutions to common challenges.
+
+### Pilot Phase (9 Months)
 
 Stakeholder activities during the pilot:
 
-- _SEA_ — Running a live pilot with 10–20 LEAs to support internal data system updates and
+- _SEA_ — Running a live pilot with 5-10 LEAs to support internal data system updates and
   external vendor and LEA development
 - _LEAs_ — Pilot LEAs actively submitting data; attending trainings and using early support
   resources
@@ -265,18 +380,66 @@ Stakeholder activities during the pilot:
 
 ```mermaid
 flowchart TD
-  A["First phase<br/>Weekly vendor call; API sandboxes; architecture updates; LEA portal updates"]
-  B["Second phase<br/>Publish vendor progress; recruit parallel-year LEAs; plan scaled LEA support"]
-  C["Third phase<br/>Require SIS certification milestone; execute LEA support scale plan"]
+  A["First phase<br/>Weekly vendor call; API sandboxes; submit Ed-Fi core data elements; architecture updates; LEA portal updates"]
+  B["Second phase<br/>Perform data gap analysis; publish vendor progress; recruit parallel-year LEAs; plan scaled LEA support"]
+  C["Third phase<br/>Update requirements based on data gap analysis; require SIS certification milestone; execute LEA support scale plan"]
   A --> B --> C
 ```
 
-SEA goals: (1) Run a live pilot with 10–20 LEAs, (2) Develop initial vendor Ed-Fi capability,
+SEA goals: (1) Run a live pilot with 5-10 LEAs, (2) Develop initial vendor Ed-Fi capability,
 (3) Plan for the Parallel Stage.
 
 During this phase, development teams begin updating dependent systems: validations, ETL/ELT to
 the data warehouse, and LEA reporting interfaces. Live data during a pilot dramatically
 accelerates development team progress.
+
+### Begin with the core Ed-Fi Data Standards
+
+SEA data collection teams are accustomed to making their own data standard, but Ed-Fi is a community-governed cross-state standard.
+
+Avoid trying to "fit" Ed-Fi into legacy standards or processes.
+
+| Recommended | Not Recommended |
+| ----------- | --------------- |
+| Ask vendors to turn on the Ed-Fi core data submission and perform data gap analysis | Change Ed-Fi element defintions |
+| Rewrite your SEA ETLs into downstream data warehouse and other data marts | Requiring Vendors/LEAs to do business logic calculations |
+| Only extend the Ed-Fi model when essential | Extending the standard unneccessarily |
+
+Extensions and modifications to the Ed-Fi data standards "feels right" to SEAs but...
+over time SEAs must '"undo" unnecessary deviations from the Ed-Fi data standard, as vendors and other open-source products that SEAs integrate with expect core Ed-Fi formats and not customized state profiles.
+
+### Updates to Data Architecture
+
+During this phase. SEA teams will initiate work to update dependen systems.
+
+In states with a mature data warehouse, use of the Ed-Fi data standards may not impact the warehouse, but the flow of data into the warehouse will change.
+
+Typical changes to consider include:
+
+- Changes to validations and validation system
+- Updates to ETL/ELT to wharehouse
+- Updates to LEA reporting interfaces
+
+Live data flow during a pilot, dramitically accelerates the development teams progress.
+
+### Resolution Task Force Meetings (RTF)
+
+API issues can be difficult to debug:
+
+- The vendor software may have a bug
+- The LEA mmay be entering data or configurations incorrectly into their SIS
+- The state API may have an error
+- ETC...
+
+To cut through finger-pointing and make process, RTF meetings are essential to create ann agile state supprt system.
+
+SEA-led vendor workshops bring together SEA staff, district data stewards, and a single vendor's technical and product teams together to identify and resolve issues.
+
+Repeat this meeting until major issues are addressed.
+
+![Ed-Fi Governance Playbook](https://edfidocs.blob.core.windows.net/%24web/static/img/sea-playbook/page-32-v2.webp)
+
+See [Recommended Ed-Fi Data Governance Playbook: Resolution Task Force (RTF) Meetings Slide](https://edfidocs.blob.core.windows.net/%24web/assets/getting-started/sea-playbook/Ed-Fi%20Data%20Governance%20Playbook.pdf)
 
 ### Parallel Phase (12 Months)
 
@@ -302,6 +465,23 @@ SEA goals: (1) Run parallel collections with 20–30% of LEAs to validate at sca
 dependent systems for production, (3) Update data specifications for the production year,
 (4) Invest in statewide LEA readiness.
 
+### Data Bootcamp Training
+
+Level 1 & Level 2 Errors can be difficult to debug, as gthere are multiple systems involved:
+
+- Utilize Vendor User Group Sessions
+- Review Vendor API Submission Reports
+- Review State Reporting/Validation Dashboards or Reports
+- Identify Data Quality issues and re-submit data
+
+Bootcamp trainings are an essential in creating an agile state support system.
+
+SEA-led vendors workshops bring together SEA staff, district data sgtewards, and single vendor's product and technical teams to review priorities, gather feedback, and drive improvements at scale.
+
+![Recommended Ed-Fi Data Governance Playbook](https://edfidocs.blob.core.windows.net/%24web/static/img/sea-playbook/page-35-v2.webp)
+
+See [Recommended Ed-Fi Data Goverance Playbook: Data Bootcamp Slide](https://edfidocs.blob.core.windows.net/%24web/static/assets/sea-playbook/Ed-Fi%20Data%20Governance%20Playbook.pdf)
+
 ### Production Phase (Ongoing)
 
 Stakeholder activities in production:
@@ -313,6 +493,8 @@ Stakeholder activities in production:
 - _Vendors_ — Continue working with the state on the annual cadence of specification updates
 - _ESAs (Data Hub)_ — Expand scope of services, moving from operational services toward
   instructional support services
+
+---
 
 ## Implementation Best Practices
 
@@ -331,12 +513,14 @@ Recommendations for "Who does what?":
 
 ![Technical task assignment recommendations](https://edfidocs.blob.core.windows.net/$web/static/img/sea-playbook/page-30.webp)
 
+See [Technical task assignment recommendations](https://edfidocs.blob.core.windows.net/$web/static/img/sea-playbook/page-30.webp)
+
 ### Vendor Communication
 
 ```mermaid
 flowchart TD
-  Planning["Planning<br/>6 months<br/>Communicate intent to use Ed-Fi; release initial data specifications"]
-  Pilot["Pilot<br/>3–6 months<br/>Monitor specifications and update as needed"]
+  Planning["Planning<br/>3 months<br/>Communicate intent to use Ed-Fi; release initial data specifications"]
+  Pilot["Pilot<br/>9 months<br/>Monitor specifications and update as needed"]
   Parallel["Parallel<br/>12 months<br/>Publish final data specifications"]
   Prod["Production<br/>Ongoing<br/>Establish annual cadence for specifications"]
   Planning --> Pilot --> Parallel --> Prod
@@ -367,8 +551,8 @@ See [Best Practices for Coordinating with Technology Providers](./project-planni
 
 ```mermaid
 flowchart TD
-  Planning["Planning<br/>3–6 months<br/>Communicate intent; release initial specs; recruit pilot LEAs"]
-  Pilot["Pilot<br/>3–6 months<br/>Monitor pilots; train LEA supports/help desk; revise admin consoles"]
+  Planning["Planning<br/>3 months<br/>Communicate intent; release initial specs; recruit pilot LEAs"]
+  Pilot["Pilot<br/>9 months<br/>Monitor pilots; train LEA supports/help desk; revise admin consoles"]
   Parallel["Parallel<br/>12 months<br/>Monitor old/new systems; scale support"]
   Prod["Production<br/>Ongoing<br/>Establish annual cadence"]
   Planning --> Pilot --> Parallel --> Prod
