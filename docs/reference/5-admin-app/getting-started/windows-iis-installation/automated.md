@@ -69,7 +69,6 @@ The script prompts for `-SqlAdminPassword`, `-AppDbPassword`, and the rest, the 
 
 ```powershell
 .\install-all.ps1 -IdpProvider microsoft `
-  -SaPassword (Read-Host -AsSecureString 'SQL Server sa password') `
   -AppDbPassword (Read-Host -AsSecureString 'Admin App DB login password') `
   -OidcIssuer 'https://login.microsoftonline.com/<tenant-id>/v2.0' `
   -OidcClientId '<application-id>' `
@@ -81,7 +80,6 @@ The script prompts for `-SqlAdminPassword`, `-AppDbPassword`, and the rest, the 
 
 ```powershell
 .\install-all.ps1 -IdpProvider google `
-  -SaPassword (Read-Host -AsSecureString 'SQL Server sa password') `
   -AppDbPassword (Read-Host -AsSecureString 'Admin App DB login password') `
   -OidcClientId '<google-client-id>' `
   -OidcClientSecret (Read-Host -AsSecureString 'Google client secret') `
