@@ -87,6 +87,15 @@ inconsistencies as concrete, actionable notes (quote both sides, cite the
 live docs.ed-fi.org URL per "Linking to live docs" above — include the repo
 path alongside it if a line number is needed to pinpoint the claim).
 
+A domain with no certification coverage at all, or a certification track that
+simply hasn't caught up to the latest Data Standard version yet, is a normal,
+deliberate state — not every domain or version is certified, and that's a
+scoping decision made elsewhere, not a documentation defect. Do not list the
+absence or version-lag of certification as an inconsistency, gap, or
+actionable item. Only flag certification content as an inconsistency when it
+actively contradicts the current model (e.g., a test scenario asserts a field
+or structure the model no longer has, independent of version lag).
+
 === STEP 4: Design rationale from Jira (Atlassian MCP) ===
 Search Jira projects DATASTD and MODL for tickets relevant to this domain:
   JQL: `project in (DATASTD, MODL) AND text ~ "{{DOMAIN_NAME}}"`
