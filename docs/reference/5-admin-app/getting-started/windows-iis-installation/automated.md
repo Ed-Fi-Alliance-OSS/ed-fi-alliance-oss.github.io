@@ -57,6 +57,14 @@ Pass a parameter only to change something the defaults do not cover. PostgreSQL 
 .\install-all.ps1 -DbEngine pgsql -UsePostgresDocker
 ```
 
+**Example — managed Azure SQL Database** (provision the logical server, a client-IP firewall rule, and an empty database in Azure first — see [Database](./manual.md#database)):
+
+```powershell
+.\install-all.ps1 -SqlServerHost myserver.database.windows.net -SqlAdminUsername sqladmin
+```
+
+The script prompts for `-SqlAdminPassword`, `-AppDbPassword`, and the rest, the same as any other run.
+
 :::note
 By default the sites use a self-signed certificate (auto-trusted on this machine only). To bind a real certificate, pass `-CertificateThumbprint`, or `-CertificatePfxPath` with `-CertificatePassword` (see [TLS and certificates](./manual.md#tls-and-certificates)). Yopass is off by default; add `-SetupYopassDocker` to stand up a local Yopass via Docker, or `-YopassUrl <url>` to point at an existing one.
 :::
