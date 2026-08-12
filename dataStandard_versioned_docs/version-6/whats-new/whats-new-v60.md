@@ -156,7 +156,7 @@ New Domains Created:
 
 More detailed information regarding each domain, their descriptors and related entities can be found in the updated model references pages [here](/dataStandard_versioned_docs/version-6/model-reference/readme.md).
 
-#### Addition of FinancialAid Domain Entity to Enrollment
+#### Addition of FinancialAid Domain Entity to Student Identification and Demographics
 
 In addition to the new domains for the Educator Preparation Data Model, one new entity has been added to the existing Enrollment Domain. As part of the 6.0 release, users will find a domain entity for Financial Aid included, which uses Student as part of its identity keys.
 
