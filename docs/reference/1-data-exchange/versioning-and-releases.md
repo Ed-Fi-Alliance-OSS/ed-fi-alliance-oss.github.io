@@ -18,7 +18,6 @@ Versioning](/community/sdlc/code-contribution-guidelines/software-versioning).
 This version number is the one shown in the format MAJOR.MINOR.PATCH with
 optional -LABEL. Prior to Ed-Fi Data Standard Version 6.0 early access
 material was labeled with sequential alphabetic characters (i.e. 'a', 'b', 'c', etc.)
-to denote the presence of early access/pre-release material in the release.
 Going forward from Ed-Fi Data Standard Version 6.0 this convention will no longer be utilized.
 
 Since the UDM is a conceptual model only, and strict semver versioning requires
