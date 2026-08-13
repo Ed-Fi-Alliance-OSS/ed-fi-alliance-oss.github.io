@@ -84,7 +84,6 @@ Pass a parameter only to change something the defaults do not cover. PostgreSQL 
 
 ```powershell
 .\install-all.ps1 -IdpProvider auth0 `
-  -SaPassword (Read-Host -AsSecureString 'SQL Server sa password') `
   -AppDbPassword (Read-Host -AsSecureString 'Admin App DB login password') `
   -OidcIssuer 'https://your-tenant.us.auth0.com' `
   -OidcClientId '<Single-Page-App-Client-ID>' `
