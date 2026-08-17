@@ -12,7 +12,6 @@ hide_table_of_contents: true
 | Assessment | This entity represents a tool, instrument, process, or exhibition composed of a systematic sampling of behavior for measuring a student's competence, knowledge, skills, or behavior. An assessment can be used to measure differences in individuals or groups and changes in performance from one occasion to the next. |
 | AssessmentItem | This entity represents one of many single measures that make up an assessment. |
 | AssessmentScoreRangeLearningStandard | Score ranges of an assessment associated with one or more learning standards. |
-| LearningObjective | **Deprecated**. Users of this element are advised to use LearningStandard instead. Expect removal of this element in a future release. |
 | LearningStandard | A statement that describes a specific competency or academic standard. |
 | LearningStandardEquivalenceAssociation | Indicates a directional association of equivalence from a source to a target learning standard. |
 | ObjectiveAssessment | This entity represents subtests that assess specific learning objectives. |
