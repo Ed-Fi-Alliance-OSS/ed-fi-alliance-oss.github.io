@@ -234,7 +234,7 @@ npm run migrations:revert
 
 ## Authentication Configuration
 
-The Admin App uses OpenID Connect (OIDC) for authentication. It works with any OIDC-compatible provider; Keycloak is the bundled default example, and Microsoft Entra ID and Google Workspace are also validated. See [Configuring an Identity Provider for Ed-Fi Admin App](./identity-provider/readme.md) for provider-specific guides.
+The Admin App uses OpenID Connect (OIDC) for authentication. It works with any OIDC-compatible provider; Keycloak is the bundled default example, and Microsoft Entra ID, Google Workspace, and Auth0 are also validated. See [Configuring an Identity Provider for Ed-Fi Admin App](./identity-provider/readme.md) for provider-specific guides.
 
 ### Example: Keycloak
 
