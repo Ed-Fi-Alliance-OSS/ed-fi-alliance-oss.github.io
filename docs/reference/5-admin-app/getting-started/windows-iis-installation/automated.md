@@ -57,6 +57,40 @@ Pass a parameter only to change something the defaults do not cover. PostgreSQL 
 .\install-all.ps1 -DbEngine pgsql -UsePostgresDocker
 ```
 
+**Microsoft Entra ID, SQL Server** — an external OIDC provider. Register the application and its redirect URIs in Entra first (or script that step with `idp-entra-setup.ps1` — see [Microsoft Entra ID](../../configuration/identity-provider/microsoft-entra-id.md#part-a--register-the-application-in-microsoft-entra-id)), and make sure a user exists there whose email matches `-AdminUsername`:
+
+```powershell
+.\install-all.ps1 -IdpProvider microsoft `
+  -AppDbPassword (Read-Host -AsSecureString 'Admin App DB login password') `
+  -OidcIssuer 'https://login.microsoftonline.com/<tenant-id>/v2.0' `
+  -OidcClientId '<application-id>' `
+  -OidcClientSecret (Read-Host -AsSecureString 'Entra client secret') `
+  -AdminUsername 'you@yourtenant.onmicrosoft.com'
+```
+
+**Google Workspace, SQL Server** — an external OIDC provider. The issuer is defaulted for Google; register the OAuth client first:
+
+```powershell
+.\install-all.ps1 -IdpProvider google `
+  -AppDbPassword (Read-Host -AsSecureString 'Admin App DB login password') `
+  -OidcClientId '<google-client-id>' `
+  -OidcClientSecret (Read-Host -AsSecureString 'Google client secret') `
+  -AdminUsername 'you@yourdomain.com'
+```
+
+**Auth0, SQL Server** — an external OIDC provider. Create the Single Page Web Application in the Auth0 dashboard first (see [Auth0](../../configuration/identity-provider/auth0.md)), and make sure an Auth0 user exists whose email matches `-AdminUsername`:
+
+```powershell
+.\install-all.ps1 -IdpProvider auth0 `
+  -AppDbPassword (Read-Host -AsSecureString 'Admin App DB login password') `
+  -OidcIssuer 'https://your-tenant.us.auth0.com' `
+  -OidcClientId '<Single-Page-App-Client-ID>' `
+  -OidcClientSecret (Read-Host -AsSecureString 'Auth0 client secret') `
+  -AdminUsername 'you@yourorg.com'
+```
+
+`-IdpProvider` accepts `keycloak`, `microsoft`, `google`, `auth0`, or `other` (a generic OIDC provider you register yourself). Pass `-OidcIssuer` and `-OidcClientId` for `microsoft`, `auth0`, and `other`; for `keycloak` and `google` the issuer is defaulted. For `auth0`, either slash form of the issuer works — the installer normalizes it into the forms each setting expects. In every external-provider example, `-AdminUsername` is the email of the first (bootstrap) administrator — it must exactly match the `email` claim your identity provider returns for that user. See [Configuring an Identity Provider](../../configuration/identity-provider/readme.md) for how to register the application with each provider.
+
 :::note
 By default the sites use a self-signed certificate (auto-trusted on this machine only). To bind a real certificate, pass `-CertificateThumbprint`, or `-CertificatePfxPath` with `-CertificatePassword` (see [TLS and certificates](./manual.md#tls-and-certificates)). Yopass is off by default; add `-SetupYopassDocker` to stand up a local Yopass via Docker, or `-YopassUrl <url>` to point at an existing one.
 :::
@@ -101,6 +135,6 @@ A fresh install has no users, teams, or environments yet. The Global Admin Quick
 
 - [Global Admin Quick Start](../../user-guide/global-admin-quick-start/readme.md)
 - [Configuring Ed-Fi Admin App](../../configuration/configuring-admin-app.md)
-- [Configuring an Identity Provider for Ed-Fi Admin App](../../configuration/identity-provider.md)
+- [Configuring an Identity Provider for Ed-Fi Admin App](../../configuration/identity-provider/readme.md)
 - [Security Considerations](../../configuration/security-considerations.md)
 - [Global Administration Tasks](../../configuration/global-administration-tasks.md)

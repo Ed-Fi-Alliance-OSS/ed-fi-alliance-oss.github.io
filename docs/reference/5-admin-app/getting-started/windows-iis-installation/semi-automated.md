@@ -35,6 +35,6 @@ A fresh install has no users, teams, or environments yet. The Global Admin Quick
 
 - [Global Admin Quick Start](../../user-guide/global-admin-quick-start/readme.md)
 - [Configuring Ed-Fi Admin App](../../configuration/configuring-admin-app.md)
-- [Configuring an Identity Provider for Ed-Fi Admin App](../../configuration/identity-provider.md)
+- [Configuring an Identity Provider for Ed-Fi Admin App](../../configuration/identity-provider/readme.md)
 - [Security Considerations](../../configuration/security-considerations.md)
 - [Global Administration Tasks](../../configuration/global-administration-tasks.md)
