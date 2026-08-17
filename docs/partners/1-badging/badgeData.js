@@ -562,7 +562,7 @@ export default {
   validThrough: 'August 11, 2028',
   verifyingAgencies: ['Monroe County Community School Corporation, IN'],
   documentation: {
-    'Mapping Document': '',
+    'Mapping Document': 'https://edfidocs.blob.core.windows.net/$web/assets/partners/1-badging/EdGraph%20Ed-Fi%20API%20DS%204.0%20or%20DS%205.2%20-%20API%20Consumer%20Badge.xlsx',
   },
   versionCompatibility: [
     'Ed-Fi ODS API for Suite 3 v5.2',
