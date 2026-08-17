@@ -10,8 +10,11 @@ and API health across diverse user roles and deployment models.
 
 Documentation for the Ed-Fi Admin App is viewable online:
 
-* [What's New](./whats-new.md)
-* [Getting Started](./getting-started/readme.md)
+- [What's New](./whats-new.md)
+- [Getting Started](./getting-started/readme.md)
+- [Configuration](./configuration/configuring-admin-app.md)
+- [Troubleshooting](./troubleshooting.md)
+- [Maintenance](./maintenance.md)
 
 ## Target Audiences
 
@@ -22,5 +25,5 @@ to delegate some maintenance tasks to local education agency staff.
 
 Accordingly, there are two perspectives to the application documentation:
 
-* [Getting Started](./getting-started/readme.md)
-* [User's Guide](./user-guide/readme.md)
+- [Getting Started](./getting-started/readme.md)
+- [User's Guide](./user-guide/readme.md)
