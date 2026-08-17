@@ -86,7 +86,7 @@ Install the Node.js major version pinned in the Admin App's `package.json` (`eng
 
 ### Identity provider
 
-This guide uses **Keycloak**, running locally, as the example OIDC identity provider; Microsoft Entra ID and Google Workspace are also supported (see the guide linked below). Install a supported LTS JDK — Keycloak 26.6 supports OpenJDK 17, 21, or 25 — then download and start [Keycloak](https://www.keycloak.org/) and create the `edfi` realm, the `edfiadminapp` confidential client, and a test user.
+This guide uses **Keycloak**, running locally, as the example OIDC identity provider; Microsoft Entra ID, Google Workspace, and Auth0 are also supported (see the guide linked below). Install a supported LTS JDK — Keycloak 26.6 supports OpenJDK 17, 21, or 25 — then download and start [Keycloak](https://www.keycloak.org/) and create the `edfi` realm, the `edfiadminapp` confidential client, and a test user.
 
 :::note
 Register these in the Keycloak client (HTTPS, matching the default ports):

@@ -153,11 +153,11 @@ Some special characters are not currently supported in the database password (fo
 :::
 
 :::note
-**Important:** `VITE_IDP_ACCOUNT_URL` should point to your identity provider's **end-user account-management page**, not its admin console. It is provider-specific: Keycloak `https://<host>/auth/realms/{realm}/account/`, Microsoft Entra ID `https://myaccount.microsoft.com/`, Google Workspace `https://myaccount.google.com/`.
+**Important:** `VITE_IDP_ACCOUNT_URL` should point to your identity provider's **end-user account-management page**, not its admin console. It is provider-specific: Keycloak `https://<host>/auth/realms/{realm}/account/`, Microsoft Entra ID `https://myaccount.microsoft.com/`, Google Workspace `https://myaccount.google.com/`, Auth0 has no hosted account page (use the tenant URL as a placeholder or your own profile page).
 :::
 
 :::note
-The bundled stack ships **Keycloak** as the example OIDC provider. Because the Admin App uses generic OIDC discovery, [Microsoft Entra ID](../configuration/identity-provider/microsoft-entra-id.md) and [Google Workspace](../configuration/identity-provider/google-workspace.md) also work: set the provider values (`issuer`, `clientId`, `clientSecret`, `scope`) in `packages/api/config/production.js-edfi` (baked into the API image as `production.js`), rebuild with `./start-services.ps1 -Rebuild`, and select it from the frontend with `VITE_OIDC_ID`.
+The bundled stack ships **Keycloak** as the example OIDC provider. Because the Admin App uses generic OIDC discovery, [Microsoft Entra ID](../configuration/identity-provider/microsoft-entra-id.md), [Google Workspace](../configuration/identity-provider/google-workspace.md), and [Auth0](../configuration/identity-provider/auth0.md) also work: set the provider values (`issuer`, `clientId`, `clientSecret`, `scope`) in `packages/api/config/production.js-edfi` (baked into the API image as `production.js`), rebuild with `./start-services.ps1 -Rebuild`, and select it from the frontend with `VITE_OIDC_ID`.
 :::
 
 :::note
