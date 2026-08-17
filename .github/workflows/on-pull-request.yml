@@ -79,3 +79,9 @@ jobs:
       - name: Perform CodeQL Analysis
         if: success()
         uses: github/codeql-action/analyze@ff2f1c621b7f889edc0d3c761ac2e6a3f8cdb0dd # v4.37.7
+        with:
+          # Merge group runs use an ephemeral gh-readonly-queue ref that no
+          # longer exists by the time results are uploaded, which fails the
+          # upload step. Skip uploading in that case; the analysis itself
+          # still runs and can still fail the job.
+          upload: ${{ github.event_name != 'merge_group' }}
