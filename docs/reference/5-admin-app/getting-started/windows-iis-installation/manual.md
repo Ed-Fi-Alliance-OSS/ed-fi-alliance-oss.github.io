@@ -78,10 +78,10 @@ Some special characters are not currently supported in the Admin App database us
 Installing the Admin App database in its own SQL Server instance, separate from the ODS/API databases (`EdFi_Admin`, `EdFi_Security`), is recommended.
 :::
 
-For a managed **Azure SQL Database**, provision the logical server (with SQL authentication enabled and an admin login), a firewall rule for the client's public IP, and an empty database through the Azure portal or CLI first — the local-instance steps above (Mixed Mode, TCP/IP) do not apply. Then create the login as a _contained user_ in the target database, since Azure SQL supports neither `CREATE LOGIN` nor `USE`:
+For a managed **Azure SQL Database**, provision the logical server (with SQL authentication enabled and an admin login), a firewall rule for the client's public IP, and an empty database through the Azure portal or CLI first — the local-instance steps above (Mixed Mode, TCP/IP) do not apply. Create the Admin App login as a _contained user_, which lives entirely in the application database and needs no login in `master`. Connect to that database first, since a session cannot switch databases on Azure SQL Database:
 
 ```sql
--- Connect to the target database as the server admin.
+-- Connected to the application database as the server admin.
 CREATE USER [edfi_adminapp] WITH PASSWORD = N'YourStrong!AppPassw0rd';
 ALTER ROLE db_owner ADD MEMBER [edfi_adminapp];
 ```
@@ -253,11 +253,11 @@ The API is deployed as a standalone IIS site, `EdFi-AdminApp-API`, with an HTTP 
 
    module.exports = {
      DB_ENGINE: 'mssql', // 'mssql' (this guide) or 'pgsql'
-     DB_TRUST_CERTIFICATE: true, // true for a local SQL Server using a self-signed certificate; false for a managed Azure SQL Database (valid CA certificate)
+     DB_TRUST_CERTIFICATE: true, // true for a local SQL Server using a self-signed certificate
      DB_TTL_IN_MINUTES: 120,
      DB_SSL: false,
      DB_SECRET_VALUE: {
-       MSSQL_DB_HOST: 'localhost', // or a managed Azure SQL Database FQDN, e.g. myserver.database.windows.net
+       MSSQL_DB_HOST: 'localhost',
        MSSQL_DB_PORT: 1433,
        MSSQL_DB_USERNAME: 'edfi_adminapp', // the least-privilege login, not sa
        MSSQL_DB_DATABASE: 'sbaa', // the database must already exist on the server
@@ -304,6 +304,19 @@ The API is deployed as a standalone IIS site, `EdFi-AdminApp-API`, with an HTTP 
      RATE_LIMIT_LIMIT: 10,
    };
    ```
+
+   For a managed **Azure SQL Database**, change the host and the two values that control the connection's encryption:
+
+   ```javascript
+     DB_TRUST_CERTIFICATE: false, // Azure SQL presents a CA-issued certificate: validate it
+     DB_SSL: true,                // request encryption; Azure SQL requires it
+     DB_SECRET_VALUE: {
+       MSSQL_DB_HOST: 'myserver.database.windows.net',
+       // the remaining values are unchanged
+     },
+   ```
+
+   `DB_SSL` is the driver's `encrypt` flag. Left at `false`, the API cannot connect to Azure SQL at all, because the server requires encryption; and `DB_TRUST_CERTIFICATE: false` only takes effect once encryption is requested.
 
 7. **Create the log directory**:
    - Create `C:\inetpub\EdFi-AdminApp-API\logs` (httpPlatform writes Node's stdout to `logs\node-stdout.log`).
