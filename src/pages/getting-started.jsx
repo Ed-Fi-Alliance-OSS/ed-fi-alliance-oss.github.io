@@ -78,7 +78,7 @@ function GetStartedIntro() {
 
 function EducatorPipeline() {
   return (
-    <div className="margin-top--lg">
+    <div className="card shadow--md margin-top--lg margin-bottom--lg padding--lg">
       <Heading as="h2">Educator Pipeline</Heading>
       <p>
         The Ed-Fi Alliance helps agencies unify data through the Ed-Fi Standard
@@ -87,9 +87,9 @@ function EducatorPipeline() {
       </p>
       <Link
         to="/getting-started/educator-pipeline"
-        className="button button--primary button"
+        className="button button--primary button--lg"
       >
-        Go »
+        Explore Educator Pipeline »
       </Link>
     </div>
   );
@@ -153,12 +153,12 @@ function Main() {
         </div>
         <div className="row">
           <div className="col col--12">
-            <CommunityTools></CommunityTools>
+            <EducatorPipeline></EducatorPipeline>
           </div>
         </div>
         <div className="row">
-          <div className="col col--6">
-            <EducatorPipeline></EducatorPipeline>
+          <div className="col col--12">
+            <CommunityTools></CommunityTools>
           </div>
         </div>
       </div>
