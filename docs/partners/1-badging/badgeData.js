@@ -6,7 +6,7 @@
 export default {
   managedODSAPI: [
     {
-      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/edgraph.png',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/assets/partners/1-badging/EdGraph_Full_4C.jpg',
       productName: 'EdGraph Managed Ed-Fi',
       provider: 'EdWire',
       website: 'https://edgraph.com/',
@@ -555,7 +555,7 @@ export default {
     },
 
     {
-  logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/edgraph.png',
+  logo: 'https://edfidocs.blob.core.windows.net/$web/assets/partners/1-badging/EdGraph_Full_4C.jpg',
   productName: 'EdGraph Analytics',
   provider: 'EdGraph',
   website: 'https://edgraph.com/analytics',
