@@ -45,7 +45,7 @@ Used by `bootstrap.ps1` to seed the machine user and by `cleanup.ps1`.
 | `DB_ENGINE` | `mssql` | Database engine: `mssql` or `pgsql` |
 | `DATABASE_NAME` | `sbaa` | Admin App application database name |
 | `APP_SQL_SERVER` | `tcp:localhost,1433` | SQL Server hosting the Admin App application database. May be a remote server, including a managed Azure SQL Database (see [Managed Azure SQL Database](#managed-azure-sql-database)) |
-| `APP_DB_USERNAME` | `edfiadminapp` | SQL Server login for the dedicated least-privilege app user created by the Windows installer (`install-all.ps1 -AppDbPassword`) |
+| `APP_DB_USERNAME` | `edfi_adminapp` | SQL Server login for the dedicated least-privilege app user created by the Windows installer (`install-all.ps1 -AppDbPassword`) |
 | `APP_DB_PASSWORD` | _(empty)_ | Password for `APP_DB_USERNAME` — used when `DB_ENGINE=mssql`; prompted when empty. The scripts deliberately never connect as `sa` |
 | `POSTGRES_APP_PASSWORD` | _(empty)_ | PostgreSQL app-user password — used when `DB_ENGINE=pgsql`; prompted when empty |
 | `POSTGRES_HOST` | `localhost` | PostgreSQL host |
