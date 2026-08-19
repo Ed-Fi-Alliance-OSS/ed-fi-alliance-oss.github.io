@@ -4,12 +4,14 @@ hide_table_of_contents: true
 
 # v5 Student Transcript > StudentAcademicRecord Scenarios
 
-This interchange defines transcript information for a course and student
-academic records for a given session. Course transcripts link to the student
-academic record for the session in which the course was taken.
+This interchange defines transcript information for a course and student academic records across all available school years. Course transcripts link to the student academic record for the session in which the course was taken.
 
-The Student Academic Record represents the cumulative record of academic
- achievement for a student.
+The StudentAcademicRecord represents the cumulative record of academic achievement for a student.
+
+This SIS certification scenario is intended to verify that the SIS can publish the student’s complete StudentAcademicRecord history, including records from five years ago and any other historical school years present in the source system, not just current-year or prior-year data.
+
+## Requirement
+The SIS must be able to transmit the full historical StudentAcademicRecord for a student, including records from five years ago and other prior school years, not just the current or immediately preceding year.
 
 ## Prerequisites
 
@@ -25,6 +27,7 @@ The Student Academic Record represents the cumulative record of academic
    ago for a student at Grand Bend High School. This should be a course that appears on the student's graduation transcript. Add a graduation plan reference to the High School student's StudentSchoolAssociation.
 3. Update the cumulativeAttemptedCredits, cumulativeEarnedCredits, sessionEarnedCredits
    and sessionAttemptedCredits on the high school Student's record.
+4. Repeat as needed to verify the SIS can send all historical StudentAcademicRecord entries available for the student, not only the current or prior school year.
 
 | Resource                       | Property Name                  | Is Collection | Data Type                      | Required | Scenario 1: POST                 | Scenario 2: POST                   | Scenario 3: PUT                               |
 | ------------------------------ | ------------------------------ | ------------- | ------------------------------ | -------- | -------------------------------- | ---------------------------------- | --------------------------------------------- |
