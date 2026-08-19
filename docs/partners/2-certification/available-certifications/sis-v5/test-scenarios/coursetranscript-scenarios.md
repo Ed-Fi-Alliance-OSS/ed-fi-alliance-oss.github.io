@@ -8,7 +8,9 @@ This interchange defines transcript information for a course and student
 academic records for a given session. Course transcripts link to the student
 academic record for the session in which the course was taken. Course Transcript
 is the final record of a student's performance in their courses at the end of a
-semester or school year.
+semester or school year. 
+
+The SIS certification is intended to verify that the SIS can send the student’s full transcript history, including course transcript records from prior school years, not only current-year data. In scenario 3, the course transcript is explicitly created for a term from five years ago, which shows that the certification expects historical transcript data to be supported.
 
 ## Prerequisites
 
@@ -41,8 +43,8 @@ semester or school year.
 | studentAcademicRecordReference | schoolYear                     | FALSE         | integer                        | REQUIRED | \[Current School Year\] | \[Current School Year\] | \[Five years prior to current school year\] |
 | studentAcademicRecordReference | studentUniqueId                | FALSE         | string                         | REQUIRED | 222222                  | 222222                  | 222222                  |
 | studentAcademicRecordReference | termDescriptor                 | FALSE         | string                         | REQUIRED | Fall Semester           | Fall Semester           | Spring Semester         |
-| CourseTranscripts              | courseAttemptResultDescriptor  | FALSE         | courseAttemptResultDescriptor  | REQUIRED | Pass                    | Pass                    | Pass                    |
-| CourseTranscripts              | attemptedCredits               | FALSE         | number                         | REQUIRED | 3                       | 3                       | 3                       |
-| CourseTranscripts              | earnedCredits                  | FALSE         | number                         | REQUIRED | 3                       | 3                       | 3                       |
-| CourseTranscripts              | finalLetterGradeEarned         | FALSE         | string                         | REQUIRED | A                       | A                       | A                       |
-| CourseTranscripts              | finalNumericGradeEarned        | FALSE         | string                         | REQUIRED | 98                      | 100                     | 92                      |
+| CourseTranscripts              | courseAttemptResultDescriptor  | FALSE         | courseAttemptResultDescriptor  | REQUIRED | Pass                    | Pass                    | [System Value]          |
+| CourseTranscripts              | attemptedCredits               | FALSE         | number                         | REQUIRED | 3                       | 3                       | [System Value]          |
+| CourseTranscripts              | earnedCredits                  | FALSE         | number                         | REQUIRED | 3                       | 3                       | [System Value]          |
+| CourseTranscripts              | finalLetterGradeEarned         | FALSE         | string                         | REQUIRED | A                       | A                       | [System Value]          |
+| CourseTranscripts              | finalNumericGradeEarned        | FALSE         | string                         | REQUIRED | 98                      | 100                     | [System Value]          |
