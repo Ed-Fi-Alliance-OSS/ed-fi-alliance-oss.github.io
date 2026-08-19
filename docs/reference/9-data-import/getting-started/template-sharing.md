@@ -31,6 +31,4 @@ implementation before putting to use.
 Data Import uses the Ed-Fi Community Tools to share templates.  Use the Import/Export
 feature in Data Import to consume and publish new templates.
 
-[https://github.com/Ed-Fi-Exchange-OSS/DataImport-Templates](https://github.com/Ed-Fi-Exchange-OSS/DataImport-Templates)
-
-![Ed-Fi Community Tools logo](https://github.com/Ed-Fi-Exchange-OSS/.github/raw/main/profile/ed-fi-exchange.png)
+[Ed-Fi Community Tools repository](https://github.com/Ed-Fi-Exchange-OSS/DataImport-Templates)

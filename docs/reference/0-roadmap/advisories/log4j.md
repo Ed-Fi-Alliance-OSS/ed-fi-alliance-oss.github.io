@@ -43,8 +43,8 @@ None of these products is subject to the Log4j vulnerability.
 
 ### Ed-Fi Community Tools Contributions
 
-After a manual scan through the solutions posted to the [Ed-Fi
-Exchange](http://exchange.ed-fi.org), one was found that is potentially
+After a manual scan through the solutions posted to
+[Ed-Fi Community Tools](/getting-started/community-tools), one was found that is potentially
 vulnerable: [Chronic Absenteeism Quick Start
 (Metabase)](http://edfi.atlassian.net/wiki/spaces/EXCHANGE/pages/22493734/Chronic+Absenteeism+Quick+Start+Metabase).
 
