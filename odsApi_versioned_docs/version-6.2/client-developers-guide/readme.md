@@ -19,7 +19,7 @@ considerations for developing a robust and scalable solution.
 * [Date and DateTime Elements](./date-datetime-elements.md)
 * [Descriptor References](./descriptor-references.md)
 * [Error Handling Best Practices](./error-handling-best-practices.md)
-* [Resource Dependency Order](./resource-dependency-order.md)
+* [Resource Dependency Order](./resource-dependency-order/readme.mdx)
 * [Using Code Generation To Create an SDK](./using-code-generation-to-create-an-sdk.md)
 * [Using the Online Documentation](./using-the-online-documentation.md)
 * [Using the Sandbox Administration Portal](./using-the-sandbox-administration-portal.md)

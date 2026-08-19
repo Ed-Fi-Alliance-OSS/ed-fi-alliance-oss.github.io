@@ -66,4 +66,4 @@ The Program's educationOrganizationId is the Local Education Agency ID
 | cteProgramServices            | cipCode                             | FALSE         | string                              | REQUIRED            | 11.0103                        | 11.0103                        |
 | cteProgramServices            | serviceBeginDate                    | FALSE         | date                                | OPTIONAL            | 8/23/[Current School Year]     | 8/23/[Current School Year]     |
 | cteProgramServices            | serviceEndDate                      | FALSE         | date                                | OPTIONAL            | 10/02/[Current School Year]    | 10/02/[Current School Year]    |
-| cteProgramServices            | primaryIndicator                    | FALSE         | boolean                             | REQUIRED            | TRUE                           | TRUE                           |
+| cteProgramServices            | primaryIndicator                    | FALSE         | boolean                             | REQUIRED            | TRUE                           | FALSE                           |

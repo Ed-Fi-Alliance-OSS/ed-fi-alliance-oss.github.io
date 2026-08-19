@@ -1,6 +1,6 @@
 # ODS Migration Utility
 
-::: note
+:::note
 
 **March 31st, 2022:** Ed-Fi Alliance announced [End of Life](/reference/roadmap/notifications/migration) for ODS Migration utility. While the utility could be used for upgrade to [Ed-Fi ODS / API v5.4](/reference/ed-fi-api/5.4/) version for both SQL Server and PostgreSQL, there will be no new migration support or enhancements to this product.
 
@@ -41,7 +41,9 @@ mkdir {YourInstallFolder}
 dotnet tool install EdFi.Suite3.Ods.Utilities.Migration --tool-path {YourInstallFolder} --version 2.2.*
 ```
 
-> **Note:** As a one-time setup, you may need to add the Ed-Fi package source by running the following command in PowerShell:
+:::note
+
+As a one-time setup, you may need to add the Ed-Fi package source by running the following command in PowerShell:
 
 ```powershell
 if (-not [Net.ServicePointManager]::SecurityProtocol.HasFlag([Net.SecurityProtocolType]::Tls12)) {
@@ -49,6 +51,8 @@ if (-not [Net.ServicePointManager]::SecurityProtocol.HasFlag([Net.SecurityProtoc
 }
 Register-PackageSource -Name Ed-FiAzureArtifacts -Location https://pkgs.dev.azure.com/ed-fi-alliance-oss/_packaging/EdFi/nuget/v3/index.json -ProviderName NuGet
 ```
+
+:::
 
 **Step 2.** Open a console window and change to the directory containing the executable:
 
@@ -76,7 +80,7 @@ CD {YourInstallFolder}
 --DATABASE "YOUR_DATABASE_CONNECTION_STRING_HERE" --DescriptorNamespace "uri://grandbend.org" --CredentialNamespace "uri://grandbend.org" --Engine "YOUR_DATABASE_ENGINE_TYPE"
 ```
 
-4. Set the `EdFi.Ods.Utilities.Migration` project as your startup project.
-5. Launch in debug mode (**F5**).
+1. Set the `EdFi.Ods.Utilities.Migration` project as your startup project.
+2. Launch in debug mode (**F5**).
 
 <!-- this is missing some big tables that don't convert well from https://edfi.atlassian.net/wiki/spaces/EXCHANGE/pages/22492292/Migration+Utility#MigrationUtility-UsageWalkthrough . Consider replacing with PDF? -->

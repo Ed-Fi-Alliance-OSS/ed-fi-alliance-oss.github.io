@@ -4,8 +4,11 @@
 
 ## Description
 
-> [!INFO]
-> Version 1.0 of Data Checker is now available for download. Please use the slack channel ([users-data-checker](https://ed-fi-alliance.slack.com/archives/C017XGWSREH)) for bug and support requests and to keep up with any new updates.
+:::info
+
+Version 1.0 of Data Checker is now available for download. Please use the slack channel ([users-data-checker](https://ed-fi-alliance.slack.com/archives/C017XGWSREH)) for bug and support requests and to keep up with any new updates.
+
+:::
 
 Data Checker is a solution for automating Ed-Fi ODS. Level 2 data validations.   It consists of 3 parts.
 

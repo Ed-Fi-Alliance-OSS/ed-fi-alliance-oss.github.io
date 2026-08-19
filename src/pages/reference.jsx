@@ -43,13 +43,14 @@ function Main() {
                 Discover the Ed-Fi Data Exchange Standards
               </Link>
             </p>
-            <h2>Ed-Fi ODS/API</h2>
+            <h2>Ed-Fi API</h2>
             <p>
-              The Ed-Fi ODS/API provides a robust platform for integrating and
+              The Ed-Fi API provides a robust platform for integrating and
               managing educational data through a REST-inspired HTTP interface.
               It enables seamless data exchange and supports various educational
-              applications.{' '}
-              <Link to="/reference/ed-fi-api">Explore the Ed-Fi ODS/API</Link>
+              applications. Explore the{' '}
+              <Link to="/reference/ed-fi-api/">Ed-Fi ODS/API</Link> or the{' '}
+              <Link to="/reference/ed-fi-api/8/">Ed-Fi API v8</Link>.
             </p>
             <h2>Ed-Fi OneRoster Service</h2>
             <p>

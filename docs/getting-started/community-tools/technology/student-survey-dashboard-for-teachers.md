@@ -14,8 +14,11 @@ The tool provides an educator with three views into their student’s data:
 
 Project Buzz also provides a way for teachers to add notes/feedback on their students. This functionality provides an important way for teachers to include commentary and updates in conjunction with the contact information and student responses they are already working with.
 
-> [!INFO]
-> View a 3 minute overview of the Buzz tool [here](https://vimeo.com/edfialliance/review/476016090/458295ac13).
+:::info
+
+View a 3 minute overview of the Buzz tool [here](https://vimeo.com/edfialliance/review/476016090/458295ac13).
+
+:::
 
 ## Demonstration
 

@@ -230,7 +230,7 @@ namespace EdFi.Ods.Features.Container.Modules
 
 Sample custom implementation could be:
 
-**My.Custom.UniqueIdToIdValueMapper** Expand source
+**My.Custom.UniqueIdToIdValueMapper**:
 
 ```csharp
     public class My.Custom.UniqueIdToIdValueMapper : IUniqueIdToIdValueMapper
@@ -320,7 +320,7 @@ Sample custom implementation could be:
 This approach resolves supplied unique ID values to resource identifier (`Id`)
 records in the ODS using UniqueIdPersonMapping table:
 
-**UniqueIdPersonMapping Table** Expand source
+**UniqueIdPersonMapping Table**:
 
 ```sql
 --
@@ -354,7 +354,7 @@ system. Specifically, that installer performs the following tasks:
 * Registers the `IPersonUniqueIdToIdCache` with an implementation that caches
     the `UniqueId`\-to-`Id` mappings and calls the value mapper only when needed
     (for performance reasons).
-*   Registers a decorator for the `IPutPipelineStepsProvider` which inserts a `PopulateIdFromUniqueIdOnPeople` step in the processing of all PUT/POST requests just prior to persisting the entity model. This step only engages on person-type entities, but then it looks for an uninitialized `Id` property on the entity and calls the aforementioned `IPersonUniqueIdCache` to obtain the corresponding `Id` for the supplied `UniqueId` value. It then marks this `Id` as server-assigned to allow the API to create the resource if needed. (This is because v3.x of the Ed-Fi ODS / API no longer allows clients to assign IDs — they are now either assigned via UniqueId integration or they are initialized automatically during NHibernate persistence).
+* Registers a decorator for the `IPutPipelineStepsProvider` which inserts a `PopulateIdFromUniqueIdOnPeople` step in the processing of all PUT/POST requests just prior to persisting the entity model. This step only engages on person-type entities, but then it looks for an uninitialized `Id` property on the entity and calls the aforementioned `IPersonUniqueIdCache` to obtain the corresponding `Id` for the supplied `UniqueId` value. It then marks this `Id` as server-assigned to allow the API to create the resource if needed. (This is because v3.x of the Ed-Fi ODS / API no longer allows clients to assign IDs — they are now either assigned via UniqueId integration or they are initialized automatically during NHibernate persistence).
 * Registers two entity validators (which are executed just prior to NHibernate
     persistence):
   * `EnsureUniqueIdAlreadyExistsEntityValidator`. This validator relies on
@@ -453,15 +453,15 @@ using EdFi.Common.Configuration;
 using EdFi.Ods.Common.Configuration;
 using EdFi.Ods.Common.Container;
 using My.Custom.IdentityService
-  
+
 namespace EdFi.Ods.Features.Container.Modules
 {
     public class IdentityModule : ConditionalModule
     {
         public IdentityModule(ApiSettings apiSettings) : base(apiSettings, nameof(IdentityModule)) { }
-  
+
         public override bool IsSelected() => IsFeatureEnabled(ApiFeature.UniqueIdValidation);
-  
+
         public override void ApplyConfigurationSpecificRegistrations(ContainerBuilder builder)
         {
             // Register your implementation

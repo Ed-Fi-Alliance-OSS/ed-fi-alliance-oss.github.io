@@ -7,16 +7,26 @@ export default {
   managedODSAPI: [
     {
       logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/edgraph.png',
-      productName: 'EdGraph',
+      productName: 'EdGraph Managed Ed-Fi',
       provider: 'EdWire',
       website: 'https://edgraph.com/',
-      productInformation: 'https://edgraph.com/',
-      validThrough: 'August 18, 2025',
+      productInformation: 'https://www.edgraph.com/managed-edfi',
+      validThrough: 'August 11, 2028',
       verifyingAgencies: ['NEFEC', 'Sumter County Schools'],
       versionCompatibility: [
-        'Ed-Fi ODS API for Suite 3 v3.4',
-        'Ed-Fi ODS API for Suite 2 v2.5 and v2.6',
-      ],
+    'Ed-Fi ODS API for Suite 2 v2.6',
+    'Ed-Fi ODS API for Suite 3 v5.2',
+    'Ed-Fi ODS API for Suite 3 v5.3',
+    'Ed-Fi ODS API for Suite 3 v6.1',
+    'Ed-Fi ODS API for Suite 3 v7.3 DS4',
+    'Ed-Fi ODS API for Suite 3 v7.3 DS4 TX',
+    'Ed-Fi ODS API for Suite 3 v7.3 DS4 TX IIA',
+    'Ed-Fi ODS API for Suite 3 v7.3 DS5',
+    'Ed-Fi ODS API for Suite 3 v7.3 DS5 IN',
+    'Ed-Fi ODS API for Suite 3 v7.3 DS5 NE',
+    'Ed-Fi ODS API for Suite 3 v7.3 DS5 WI',
+    ]
+      ,
       availability: 'Available to any agency (all sizes) or vendor in the U.S.',
     },
     {
@@ -39,18 +49,6 @@ export default {
       ],
       availability: 'Available to any agency (all sizes) in the U.S.',
     },
-   /* {
-      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/k12-analytics.png',
-      productName: 'K12Analytics',
-      provider: 'K12Analytics Engineering',
-      website: 'https://www.k12analyticsengineering.dev/',
-      productInformation: 'https://www.k12analyticsengineering.dev/',
-      validThrough: 'March 8, 2025',
-      verifyingAgencies: ['BreakThrough Schools'],
-      versionCompatibility: ['Ed-Fi ODS API for Suite 3 v3.1.1'],
-      availability: 'Available to any agency (all sizes) in the U.S.',
-    },
-    */
     {
       logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/esp-group.jpg',
       productName: 'ESP Solutions Group',
@@ -87,8 +85,8 @@ export default {
       provider: 'ClassLink',
       website: 'https://www.classlink.com',
       productInformation: 'https://www.classlink.com/products',
-      validThrough: 'September 12, 2025',
-      verifyingAgencies: ['Clay County', 'Ennis ISD'],
+      validThrough: 'June 30, 2028',
+      verifyingAgencies: ['Darlington County School District'],
       versionCompatibility: ['Ed-Fi ODS / API for Suite 3 v6.1'],
       availability: 'Available to any agency (all sizes) in the U.S.',
     },
@@ -535,6 +533,53 @@ export default {
       ],
       availability: 'Available to any agency (all sizes) or vendor in the U.S.',
     },
+
+    {
+      logo: 'https://edfidocs.blob.core.windows.net/$web/assets/partners/badging/CareerCraft/CareerCraft.jpg',
+      productName: 'CareerCraft',
+      provider: 'CareerCraft, Inc.',
+      website: 'https://careercraft.com/',
+      validThrough: 'July 27, 2028',
+      verifyingAgencies: ['Birdville ISD'],
+      documentation: {
+        'Mapping Document':
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/badging/CareerCraft/edfi_entities_fields.csv',
+      },
+      versionCompatibility: [
+        'Ed-Fi 4.0.0',
+        'TX 2025.2.2',
+        'TX 2026.2.1',
+        'TX 2026.2.2',
+      ],
+      availability: 'State of Texas versions 2025.2.2 and above',
+    },
+
+    {
+  logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/edgraph.png',
+  productName: 'EdGraph Analytics',
+  provider: 'EdGraph',
+  website: 'https://edgraph.com/analytics',
+  validThrough: 'August 11, 2028',
+  verifyingAgencies: ['Monroe County Community School Corporation, IN'],
+  documentation: {
+    'Mapping Document': 'https://edfidocs.blob.core.windows.net/$web/assets/partners/1-badging/EdGraph%20Ed-Fi%20API%20DS%204.0%20or%20DS%205.2%20-%20API%20Consumer%20Badge.xlsx',
+  },
+  versionCompatibility: [
+    'Ed-Fi ODS API for Suite 3 v5.2',
+    'Ed-Fi ODS API for Suite 3 v5.3',
+    'Ed-Fi ODS API for Suite 3 v6.1',
+    'Ed-Fi ODS API for Suite 3 v7.3 DS4',
+    'Ed-Fi ODS API for Suite 3 v7.3 DS4 TX',
+    'Ed-Fi ODS API for Suite 3 v7.3 DS4 TX IIA',
+    'Ed-Fi ODS API for Suite 3 v7.3 DS5',
+    'Ed-Fi ODS API for Suite 3 v7.3 DS5 IN',
+    'Ed-Fi ODS API for Suite 3 v7.3 DS5 NE',
+    'Ed-Fi ODS API for Suite 3 v7.3 DS5 WI',
+  ],
+  availability: 'Available to any agency (all sizes) or vendor in the U.S.',
+},
+
+
 
   ],
 

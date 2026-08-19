@@ -102,7 +102,7 @@ settings page.
 Uploaded CSV files must have the header values NumericSuffix and Description in
 the first row. See the listings below for example content.
 
-**District-Specific sample CSV content** Expand source
+**District-Specific sample CSV content**
 
 ```cs
 NumericSuffix,Description
@@ -112,7 +112,7 @@ NumericSuffix,Description
 255904,Sampledistrict4
 ```
 
-**Year-Specific sample CSV content** Expand source
+**Year-Specific sample CSV content**
 
 ```cs
 NumericSuffix,Description
