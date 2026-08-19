@@ -28,7 +28,10 @@ Copy-Item .env.example .env
 The source ODS (`ODS_*` variables) and the target Admin App database (the
 unprefixed variables) are configured independently — they can live on
 different servers and even different engines — for example an ODS on SQL Server
-feeding an Admin App on PostgreSQL.
+feeding an Admin App on PostgreSQL. Either may be a managed Azure SQL Database:
+set `ODS_SQL_SERVER` and/or `SQL_SERVER` to the server's FQDN and use SQL
+authentication (see
+[Managed Azure SQL Database](edorg-sync-appendix#managed-azure-sql-database)).
 
 Every variable is described in the
 [environment variable reference](edorg-sync-appendix#environment-variable-reference)
