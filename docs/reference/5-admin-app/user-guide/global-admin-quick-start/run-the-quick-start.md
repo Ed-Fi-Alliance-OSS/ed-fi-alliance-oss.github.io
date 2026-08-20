@@ -31,7 +31,7 @@ review:
 | `PROVIDER` | Identity provider for the machine client: `keycloak` |
 | `KEYCLOAK_ADMIN_PASSWORD` | Keycloak master admin password (required when `PROVIDER=keycloak`) |
 | `DB_ENGINE`, `APP_DB_PASSWORD` / `POSTGRES_APP_PASSWORD` | Admin App database engine and credentials, used to seed the machine user. SQL Server uses the dedicated least-privilege `edfi_adminapp` login — never `sa` |
-| `APP_SQL_SERVER` | SQL Server hosting the Admin App application database. Leave the local default, or point it at a remote server such as a managed Azure SQL Database (see [Managed Azure SQL Database](quick-start-appendix#managed-azure-sql-database)) |
+| `APP_SQL_SERVER` | SQL Server hosting the Admin App application database. Leave the local default, or point it at a remote server such as a managed Azure SQL Database (see [Managed Azure SQL Database](./quick-start-appendix.md#managed-azure-sql-database)) |
 | `TOKEN_URL` | Your issuer's token endpoint (the default is the Docker-stack Keycloak) |
 | `API_BASE_URL`, `ADMIN_API_URL`, `ODS_API_DISCOVERY_URL` | Where the Admin App API, ODS Admin API, and ODS/API are reachable |
 | `ODSS_JSON` | JSON array of ODS instances to attach; ids **and names** must match existing rows in `EdFi_Admin.dbo.OdsInstances` on the target ODS/API (see below) |
