@@ -67,8 +67,8 @@ it cannot find the scope to attach to.
 
 ## Steps Overview
 
-1. [Run the Scripts](run-the-edorg-sync) — clone the scripts repository,
+1. [Run the Scripts](./run-the-edorg-sync.md) — clone the scripts repository,
    configure the `.env` file, and run the export + import
 
-See the [Appendix](edorg-sync-appendix) for the CSV format, the environment
+See the [Appendix](./edorg-sync-appendix.md) for the CSV format, the environment
 variable reference, exactly what the import writes, and troubleshooting.
