@@ -81,7 +81,7 @@ the single application to support either ODS/API 6.x and ODS/API 7.x.
 
 The legacy ODS Admin App user interface supports ODS/API 5.x and 6.x. It is now
 in "maintenance mode", meaning it will only receive critical updates. Formal
-support [will end June 30, 2025](./notifications/admin-app-to-exchange.md).
+support [will end June 30, 2025](./notifications/admin-app-to-community-tools.md).
 
 The new Ed-Fi Admin App user interface was released in December 2025.
 This application provides an all new front-end application paired with the

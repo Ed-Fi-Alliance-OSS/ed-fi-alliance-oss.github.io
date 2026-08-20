@@ -247,6 +247,11 @@ const config = {
             from: '/reference/admin-app/getting-started/troubleshooting',
             to: '/reference/admin-app/troubleshooting',
           },
+          // Renamed off of "exchange" as part of the Community Tools rebrand.
+          {
+            from: '/reference/roadmap/notifications/admin-app-to-exchange',
+            to: '/reference/roadmap/notifications/admin-app-to-community-tools',
+          },
         ],
         createRedirects(existingPath) {
           if (existingPath.includes('/reference/ed-fi-api')) {

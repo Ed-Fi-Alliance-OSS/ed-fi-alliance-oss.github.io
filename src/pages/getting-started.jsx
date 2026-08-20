@@ -7,87 +7,62 @@ import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 
-/* Refactor opportunity: convert the two Playbooks into a list and use a single
-component to define structure */
+// Original playbook text sourced from
+// https://www.ed-fi.org/blog/introducing-ed-fi-implementation-playbooks/
+const PLAYBOOKS = [
+  {
+    title: 'State Education Agency (SEA) Playbook',
+    to: '/getting-started/sea-playbook',
+    description: 'Guidance for state agencies managing Ed-Fi implementations.',
+  },
+  {
+    title: 'Technology Provider Playbook',
+    to: '/getting-started/provider-playbook',
+    description: 'Best practices for vendors building Ed-Fi integrations.',
+  },
+  {
+    title: 'Educational Service Agency (ESA) Playbook',
+    to: '/getting-started/esa-playbook',
+    description: 'Patterns for ESAs supporting districts with Ed-Fi data.',
+  },
+];
 
-function SeaPlaybook() {
+function Playbooks() {
   return (
-    <div className="margin-bottom--lg">
-      <img src="/img/sea-playbook.jpg" alt="[SEA playbook cover image]" />
-      <Heading as="h3">State Education Agency (SEA) Playbook</Heading>
-      <Link
-        to="/getting-started/sea-playbook"
-        className="button button--primary button"
-      >
-        Go »
-      </Link>
-    </div>
-  );
-}
-
-function TechPlaybook() {
-  return (
-    <div className="margin-bottom--lg">
-      <img
-        src="/img/tech-playbook.jpg"
-        alt="[Tech provider playbook cover image]"
-      />
-      <Heading as="h3">Technology Provider Playbook</Heading>
-      <Link
-        to="/getting-started/provider-playbook"
-        className="button button--primary button"
-      >
-        Go »
-      </Link>
-    </div>
-  );
-}
-
-function EsaPlaybook() {
-  return (
-    <div className="margin-bottom--lg">
-      <img src="/img/esa-playbook.jpg" alt="[ESA playbook cover image]" />
-      <Heading as="h3">Educational Service Agency (ESA) Playbook</Heading>
-      <Link
-        to="/getting-started/esa-playbook"
-        className="button button--primary button"
-      >
-        Go »
-      </Link>
-    </div>
-  );
-}
-
-function GetStartedIntro() {
-  // Original text sourced from
-  // https://www.ed-fi.org/blog/introducing-ed-fi-implementation-playbooks/
-  return (
-    <div>
+    <div className="card shadow--md margin-top--md margin-bottom--sm padding--md">
       <Heading as="h2">Playbooks</Heading>
       <p>
         Every Ed-Fi implementation is unique, but the most successful ones share
         common foundations. Drawing from years of fieldwork with agencies and
         providers, our team has captured proven practices and patterns into
-        clear guidance. These Implementation Playbooks outline how to set
-        priorities, build effective teams, and apply interoperability where it
-        matters most—helping all Ed-Fi users move from setup to success.
+        clear guidance. Choose the playbook that matches your role:
       </p>
+      <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+        {PLAYBOOKS.map((pb) => (
+          <li key={pb.to} className="margin-bottom--sm">
+            <Link to={pb.to}>
+              <strong>{pb.title}</strong>
+            </Link>
+            {' — '}
+            {pb.description}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
 
 function EducatorPipeline() {
   return (
-    <div className="card shadow--md margin-top--lg margin-bottom--lg padding--lg">
+    <div className="card shadow--md margin-top--sm margin-bottom--sm padding--md">
       <Heading as="h2">Educator Pipeline</Heading>
       <p>
-        The Ed-Fi Alliance helps agencies unify data through the Ed-Fi Standard
-        and EPDM, tracking an educator’s career from pre-enrollment to student
-        outcomes.
+        Track an educator’s career from pre-enrollment to student outcomes using
+        the Ed-Fi Standard and EPDM.
       </p>
       <Link
         to="/getting-started/educator-pipeline"
-        className="button button--primary button--lg"
+        className="button button--primary"
       >
         Explore Educator Pipeline »
       </Link>
@@ -97,15 +72,15 @@ function EducatorPipeline() {
 
 function CommunityTools() {
   return (
-    <div className="card shadow--md margin-top--lg margin-bottom--lg padding--lg">
+    <div className="card shadow--md margin-top--sm margin-bottom--md padding--md">
       <Heading as="h2">Ed-Fi Community Tools</Heading>
       <p>
-        Ed-Fi Community Tools is a technology hub for community contributions
-        aligned to the Ed-Fi Data Standard and Implementation Suite.
+        Browse community-contributed code, guides, and extensions aligned to the
+        Ed-Fi Data Standard.
       </p>
       <Link
         to="/getting-started/community-tools"
-        className="button button--primary button--lg"
+        className="button button--primary"
       >
         Explore Community Tools »
       </Link>
@@ -137,28 +112,17 @@ function Main() {
       <div className="container">
         <div className="row">
           <div className="col col--12">
-            <GetStartedIntro></GetStartedIntro>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col col--4">
-            <SeaPlaybook></SeaPlaybook>
-          </div>
-          <div className="col col--4">
-            <TechPlaybook></TechPlaybook>
-          </div>
-          <div className="col col--4">
-            <EsaPlaybook></EsaPlaybook>
+            <Playbooks />
           </div>
         </div>
         <div className="row">
           <div className="col col--12">
-            <EducatorPipeline></EducatorPipeline>
+            <EducatorPipeline />
           </div>
         </div>
         <div className="row">
           <div className="col col--12">
-            <CommunityTools></CommunityTools>
+            <CommunityTools />
           </div>
         </div>
       </div>
