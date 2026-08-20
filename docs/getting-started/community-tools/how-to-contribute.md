@@ -34,11 +34,15 @@ Example: [Readme](https://github.com/Ed-Fi-Exchange-OSS/SDCOE-Data-Hub/blob/main
 
 ## Creating a New Community Tools Repository on GitHub
 
+:::note
+We have re-branded the Ed-Fi Exchange to Ed-Fi Community Tools, but will keep the GitHub repository named Ed-Fi-Exchange-OSS
+:::
+
+:::warning
 These notes are primarily for the internal audience of users who can create new repositories for community contributions. The community may find them helpful in thinking about creating their own repositories as well.
+:::
 
-1. Preferably create the repository from the "Template-For-GitHub" repository (this is an option on the "Create Repository" page). (warning) This only applies to authorized users when they are creating a repository inside the Ed-Fi-Exchange-OSS organization on GitHub.
-
-![New Community Tools Repository on GitHub](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/new-exchange-repo.png)
+1. Preferably create the repository from the "Template-For-GitHub" repository (this is an option on the "Create Repository" page). (warning) This only applies to authorized users when they are creating a repository inside the Ed-Fi-Exchange-OSS organization on GitHub. ![New Community Tools Repository on GitHub](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/new-exchange-repo.png)
 
 2. Once created, update the README, NOTICES, and CONTRIBUTORS files. Just read the text and the required updates should hopefully be clear.
 
