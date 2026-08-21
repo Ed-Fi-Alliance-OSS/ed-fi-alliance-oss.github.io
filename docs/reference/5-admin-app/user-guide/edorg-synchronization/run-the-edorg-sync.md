@@ -34,7 +34,7 @@ authentication (see
 [Managed Azure SQL Database](./edorg-sync-appendix.md#managed-azure-sql-database)).
 
 Every variable is described in the
-[environment variable reference](edorg-sync-appendix#environment-variable-reference)
+[environment variable reference](./edorg-sync-appendix.md#environment-variable-reference)
 in the Appendix.
 
 :::info

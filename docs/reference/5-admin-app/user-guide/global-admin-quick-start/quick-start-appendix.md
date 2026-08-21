@@ -108,10 +108,23 @@ Database, and independently of one another: the Admin App application database
 (`APP_SQL_SERVER`) and the ODS/API's `EdFi_Security` (`SECURITY_SQL_SERVER`).
 
 ```ini
+# Admin App application database
 APP_SQL_SERVER=tcp:myserver.database.windows.net,1433
+DATABASE_NAME=sbaa
+APP_DB_USERNAME=edfi_adminapp
+APP_DB_PASSWORD=<contained user's password>
+# ODS/API EdFi_Security -- may be the same logical server or a different one
 SECURITY_SQL_SERVER=tcp:myserver.database.windows.net,1433
+SECURITY_DATABASE_NAME=EdFi_Security
+SECURITY_DB_USERNAME=edfi_security
+SECURITY_DB_PASSWORD=<contained user's password>
 SECURITY_USE_INTEGRATED_SECURITY=false
+SQL_TRUST_SERVER_CERTIFICATE=false
 ```
+
+Each database needs its own contained user: `APP_DB_USERNAME` in the
+application database, `SECURITY_DB_USERNAME` in `EdFi_Security`. They are
+separate databases, so one login cannot serve both.
 
 Three things differ from a local instance:
 
@@ -124,12 +137,23 @@ Three things differ from a local instance:
   [Database](/reference/admin-app/getting-started/windows-iis-installation/manual#database)
   for the `CREATE USER` statement, and for the server, firewall rule, and
   database to provision in Azure before installing the Admin App.
-- **The connection is validated.** A remote server is connected to with
-  encryption and certificate validation; Azure SQL presents a CA-issued
-  certificate, so leave `SQL_TRUST_SERVER_CERTIFICATE=false`.
+- **The connection is encrypted and the certificate validated.** A remote
+  server is reached with `sqlcmd -N`, which requires both. Azure SQL presents a
+  CA-issued certificate, so leave `SQL_TRUST_SERVER_CERTIFICATE=false`; setting
+  it to `true` adds `-C`, which turns validation off. A local instance is
+  reached with `-C` alone, because its auto-generated certificate cannot be
+  validated and loopback has no machine-in-the-middle to protect against.
+  Recognized local targets are `localhost`, `127.0.0.1`, `::1`, `.`, `(local)`,
+  this machine's own name, and a local named pipe, each with an optional
+  `tcp:` prefix and `,port` or `\instance` suffix.
 
-The scripts only read and write rows in tables that already exist, so nothing
-here creates or alters a database.
+No schema is created or altered: the scripts only read and write rows in tables
+that already exist. They do delete rows, though. `cleanup.ps1` removes the
+environment, team, ODS instances, education organizations, tenant, and machine
+user the Quick Start created, plus the claim set copies in `EdFi_Security`, and
+it does so on whichever server these variables point at. Confirm the values name
+the intended database before running it against a remote server, and take a
+backup if that database holds anything else.
 
 ## Finding your token endpoint
 

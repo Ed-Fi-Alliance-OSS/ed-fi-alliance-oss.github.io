@@ -138,11 +138,24 @@ independently of the other: the source ODS (`ODS_SQL_SERVER`) and the target
 Admin App application database (`SQL_SERVER`).
 
 ```ini
+# Source ODS (read-only)
 ODS_SQL_SERVER=tcp:myserver.database.windows.net,1433
-SQL_SERVER=tcp:myserver.database.windows.net,1433
+ODS_DATABASE_NAME=EdFi_Ods_2026
+ODS_DB_USERNAME=ods_reader
+ODS_DB_PASSWORD=<contained user's password>
 ODS_USE_INTEGRATED_SECURITY=false
+# Target Admin App application database
+SQL_SERVER=tcp:myserver.database.windows.net,1433
+DATABASE_NAME=sbaa
+ADMIN_APP_DB_USER=edfi_adminapp
+ADMIN_APP_DB_PASSWORD=<contained user's password>
 USE_INTEGRATED_SECURITY=false
+SQL_TRUST_SERVER_CERTIFICATE=false
 ```
+
+Each database needs its own contained user: `ODS_DB_USERNAME` in the ODS, which
+only ever reads, and `ADMIN_APP_DB_USER` in the application database, which
+writes. They are separate databases, so one login cannot serve both.
 
 Three things differ from a local instance:
 
@@ -154,12 +167,22 @@ Three things differ from a local instance:
   [Database](/reference/admin-app/getting-started/windows-iis-installation/manual#database)
   for the `CREATE USER` statement, and for the server, firewall rule, and
   database to provision in Azure.
-- **The connection is validated.** A remote server is connected to with
-  encryption and certificate validation; Azure SQL presents a CA-issued
-  certificate, so leave `SQL_TRUST_SERVER_CERTIFICATE=false`.
+- **The connection is encrypted and the certificate validated.** A remote
+  server is reached with `sqlcmd -N`, which requires both. Azure SQL presents a
+  CA-issued certificate, so leave `SQL_TRUST_SERVER_CERTIFICATE=false`; setting
+  it to `true` adds `-C`, which turns validation off. A local instance is
+  reached with `-C` alone, because its auto-generated certificate cannot be
+  validated and loopback has no machine-in-the-middle to protect against.
+  Recognized local targets are `localhost`, `127.0.0.1`, `::1`, `.`, `(local)`,
+  this machine's own name, and a local named pipe, each with an optional
+  `tcp:` prefix and `,port` or `\instance` suffix.
 
-The export is read-only and the import only writes rows in tables that already
-exist, so nothing here creates or alters a database.
+No schema is created or altered: the export is read-only and the import only
+writes rows in tables that already exist. `cleanup-edorgs.ps1` does delete,
+though: it removes the education organizations recorded in `imported-ids.csv`
+and any team access granted to them, on whichever server `SQL_SERVER` points
+at. Confirm that value names the intended database before running it against a
+remote server.
 
 ## Troubleshooting
 
