@@ -42,11 +42,11 @@ We have re-branded the Ed-Fi Exchange to Ed-Fi Community Tools, but will keep th
 These notes are primarily for the internal audience of users who can create new repositories for community contributions. The community may find them helpful in thinking about creating their own repositories as well.
 :::
 
-1. Preferably create the repository from the "Template-For-GitHub" repository (this is an option on the "Create Repository" page). (warning) This only applies to authorized users when they are creating a repository inside the Ed-Fi-Exchange-OSS organization on GitHub. ![New Community Tools Repository on GitHub](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/new-exchange-repo.png)
+1. Preferably create the repository from the "Template-For-GitHub" repository (this is an option on the "Create Repository" page). ![New Community Tools Repository on GitHub](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/new-exchange-repo.png)
 
 2. Once created, update the README, NOTICES, and CONTRIBUTORS files. Just read the text and the required updates should hopefully be clear.
 
-3. Go to the Settings page: disable Wikis. If the project will be supported by the Ed-Fi / MSDF team, best to disable Issues so that people are forced to post in Tracker rather than in GitHub. But third parties might like to have the Issues.
+3. Go to the Settings page: disable Wikis. If the project will be supported by the Ed-Fi / MSDF team, best to disable Issues so that people are forced to post a support ticket on community.ed-fi.org rather than in GitHub. But third parties might like to have the Issues.
 
 4. In settings, click on Branches, then setup branch protection rules. Branch name pattern: main. Enable: require a pull request before merging; require status checks to pass before merging; require signed commits; require linear history.  If someone else really doesn't want these features, we can turn off - except "Require signed commits".
 5. Give WRITE access to the contributor.
