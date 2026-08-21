@@ -68,8 +68,8 @@ logging — but users can swap that module out and use the logging system of the
 choice.
 
 The Ed-Fi Alliance also welcomes code contributions from field implementers and
-hosts a platform called the Ed-Fi Exchange that allows licensees to share code
-modules. For a listing of available technology and information about how to contribute code, see [exchange.ed-fi.org](http://exchange.ed-fi.org/).
+hosts a platform called the Ed-Fi Community Tools that allows licensees to share code
+modules. For a listing of available technology and information about how to contribute code, see [Ed-Fi Community Tools](/getting-started/community-tools).
 
 ## Unique ID Endpoints: Some Assembly Required
 

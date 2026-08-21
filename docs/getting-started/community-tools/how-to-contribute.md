@@ -32,17 +32,21 @@ Create a case in the [Ed-Fi Community Hub](https://community.ed-fi.org/), provid
 
 Example: [Readme](https://github.com/Ed-Fi-Exchange-OSS/SDCOE-Data-Hub/blob/main/README.md) and [Deployment](https://github.com/Ed-Fi-Exchange-OSS/SDCOE-Data-Hub/blob/main/Docs/README.md) instructions from the SDCOE Data Hub
 
-## Creating a New Exchange Repository on GitHub
+## Creating a New Community Tools Repository on GitHub
 
+:::note
+We have re-branded the Ed-Fi Exchange to Ed-Fi Community Tools, but will keep the GitHub repository named Ed-Fi-Exchange-OSS
+:::
+
+:::warning
 These notes are primarily for the internal audience of users who can create new repositories for community contributions. The community may find them helpful in thinking about creating their own repositories as well.
+:::
 
-1. Preferably create the repository from the "Template-For-GitHub" repository (this is an option on the "Create Repository" page). (warning) This only applies to authorized users when they are creating a repository inside the Ed-Fi-Exchange-OSS organization on GitHub.
-
-![New Exchange Repository on Github](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/new-exchange-repo.png)
+1. Preferably create the repository from the "Template-For-GitHub" repository (this is an option on the "Create Repository" page). ![New Community Tools Repository on GitHub](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/new-exchange-repo.png)
 
 2. Once created, update the README, NOTICES, and CONTRIBUTORS files. Just read the text and the required updates should hopefully be clear.
 
-3. Go to the Settings page: disable Wikis. If the project will be supported by the Ed-Fi / MSDF team, best to disable Issues so that people are forced to post in Tracker rather than in GitHub. But third parties might like to have the Issues.
+3. Go to the Settings page: disable Wikis. If the project will be supported by the Ed-Fi / MSDF team, best to disable Issues so that people are forced to post a support ticket on community.ed-fi.org rather than in GitHub. But third parties might like to have the Issues.
 
 4. In settings, click on Branches, then setup branch protection rules. Branch name pattern: main. Enable: require a pull request before merging; require status checks to pass before merging; require signed commits; require linear history.  If someone else really doesn't want these features, we can turn off - except "Require signed commits".
 5. Give WRITE access to the contributor.
