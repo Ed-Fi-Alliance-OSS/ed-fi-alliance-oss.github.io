@@ -1,6 +1,4 @@
 ---
-labels:
-- exchange-code
 description: R&D project to build a cloud-native Ed-Fi API.
 ---
 

@@ -83,7 +83,7 @@ change the hashing method by which OAuth secrets are secured.
 
 Platform host administrators can manage and distribute keys and secrets for
 applications using the web-based Admin App (released separately). For more
-information, see the [ODS / API Admin App](/getting-started/edfi-exchange/technology/ods-admin-app/) documentation.
+information, see the [ODS / API Admin App](/getting-started/community-tools/technology/ods-admin-app/) documentation.
 
 ## Adaptable Security
 

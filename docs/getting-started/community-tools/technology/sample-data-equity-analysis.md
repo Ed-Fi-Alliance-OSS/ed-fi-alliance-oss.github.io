@@ -15,7 +15,7 @@ To this end, we have developed a [Jupyter Notebook](https://jupyter.org/) for 
 
 ## Details
 
-* **By:** [Ed-Fi Alliance](https://exchange.ed-fi.org)
+* **By:** [Ed-Fi Alliance](/getting-started/community-tools)
 * **License terms:** Apache-2.0
 * **Released: 11 Nov 2022**
 
