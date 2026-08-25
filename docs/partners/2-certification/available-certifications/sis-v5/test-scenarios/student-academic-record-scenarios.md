@@ -11,6 +11,7 @@ The StudentAcademicRecord represents the cumulative record of academic achieveme
 This SIS certification scenario is intended to verify that the SIS can publish the student’s complete StudentAcademicRecord history, including records from five years ago and any other historical school years present in the source system, not just current-year or prior-year data.
 
 ## Requirement
+
 The SIS must be able to transmit the full historical StudentAcademicRecord for a student, including records from five years ago and other prior school years, not just the current or immediately preceding year.
 
 ## Prerequisites
