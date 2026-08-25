@@ -329,7 +329,7 @@ This Admin App v1.5 was the first version of the ODS / API Admin App in its
 current form. However, many of its core features were part of previous products,
 including a version distributed with the Ed-Fi ODS / API Cloud Deployment for
 Azure and the Ed-Fi ODS / API Cloud Deployment for AWS, both published on the
-[Ed-Fi Exchange](/getting-started/edfi-exchange).
+[Ed-Fi Community Tools](/getting-started/community-tools).
 
 <!-- markdownlint-disable-next-line MD024 -->
 ### New Features

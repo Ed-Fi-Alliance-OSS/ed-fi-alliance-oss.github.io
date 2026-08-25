@@ -66,9 +66,9 @@ customize or swap out modules to improve fit with their environment and to ready
 the solution for production deployment.
 
 The Ed-Fi Alliance also welcomes code contributions from field implementers and
-hosts a platform called the Ed-Fi Exchange that allows licensees to share code
+hosts a platform called Ed-Fi Community Tools that allows licensees to share code
 modules. For a listing of available technology and information about how to
-contribute code, see [exchange.ed-fi.org](http://exchange.ed-fi.org).
+contribute code, see [Ed-Fi Community Tools](/getting-started/community-tools).
 
 ## Key Structure
 

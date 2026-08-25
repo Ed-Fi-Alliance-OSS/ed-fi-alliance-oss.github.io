@@ -41,7 +41,7 @@ There are two ways to run these tests:
 
 ## Details
 
-* **By:** [Ed-Fi Alliance](https://exchange.ed-fi.org)
+* **By:** [Ed-Fi Alliance](/getting-started/community-tools)
 * **License terms:** Apache-2.0
 * **Released: 17 Aug 2022**
 

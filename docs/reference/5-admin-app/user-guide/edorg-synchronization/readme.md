@@ -52,6 +52,7 @@ registered with allowed education organization ids.
 | Windows PowerShell 5.1 or PowerShell 7.0+ | Windows PowerShell 5.1 ships with Windows Server 2016+; PowerShell 7 is cross-platform. `sqlcmd` (SQL Server) and/or `psql` (PostgreSQL) must be available for the engines in play |
 | Git | For cloning the scripts repository |
 | Read access to the source ODS | The `EdFi_ODS` database whose education organizations are being exported |
+| SQL Server reachable | The source ODS and the Admin App application database may each be local or remote, including a managed Azure SQL Database, which requires SQL authentication; see [Managed Azure SQL Database](./edorg-sync-appendix.md#managed-azure-sql-database) |
 | Ed-Fi Admin App | Deployed with its database migrated and reachable from this machine |
 | Tenant and ODS registered in the Admin App | The import attaches the organizations to an **existing** tenant + ODS registration — create them first through the Admin App UI. A deployment with several registered ODS databases needs one run per ODS |
 
@@ -66,8 +67,8 @@ it cannot find the scope to attach to.
 
 ## Steps Overview
 
-1. [Run the Scripts](run-the-edorg-sync) — clone the scripts repository,
+1. [Run the Scripts](./run-the-edorg-sync.md) — clone the scripts repository,
    configure the `.env` file, and run the export + import
 
-See the [Appendix](edorg-sync-appendix) for the CSV format, the environment
+See the [Appendix](./edorg-sync-appendix.md) for the CSV format, the environment
 variable reference, exactly what the import writes, and troubleshooting.

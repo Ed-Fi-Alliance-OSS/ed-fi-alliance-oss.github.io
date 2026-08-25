@@ -8,7 +8,7 @@ The Ed-Fi ODS / API Admin App is a web-based administrative interface for the Ed
 
 :::warning
 
-Support for Admin App v3.3 [will end June 30, 2026](/reference/roadmap/notifications/admin-app-to-exchange).
+Support for Admin App v3.3 [will end June 30, 2026](/reference/roadmap/notifications/admin-app-to-community-tools).
 Look for more news about its replacement in October, 2025.
 
 :::
