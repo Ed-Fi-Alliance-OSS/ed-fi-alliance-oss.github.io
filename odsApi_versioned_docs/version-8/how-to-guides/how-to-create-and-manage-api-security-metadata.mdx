@@ -470,6 +470,10 @@ array uses the same JSON array format described in [The Security Metadata
 Format](#the-security-metadata-format). Any new claim set referenced in the
 hierarchy must also appear in `claimSets`.
 
+`GET /management/current-claims` returns this same two-section document, and
+`POST /management/upload-claims` accepts it unchanged, so a document retrieved
+from the service can be edited and posted back exactly as it was downloaded.
+
 These management endpoints require a Configuration Service bearer token. Write
 operations (`POST /management/upload-claims`, `POST /management/reload-claims`)
 require the `edfi_admin_api/full_access` scope; the read operation
@@ -500,21 +504,19 @@ Invoke-RestMethod -Uri "http://localhost:8081/management/current-claims" `
 set names to the `claimSets` catalog as well.
 
 **Upload** the modified document to replace the active claims hierarchy. The
-endpoint requires the document wrapped in a top-level `claims` property, which
-the `@{ claims = ... }` hashtable adds before serializing:
+endpoint accepts the two-section document exactly as downloaded, so post the
+file contents directly as the request body:
 
 ```powershell
-$claims = Get-Content claims.json -Raw | ConvertFrom-Json
-$body = @{ claims = $claims } | ConvertTo-Json -Depth 100
-
 Invoke-RestMethod -Method Post `
   -Uri "http://localhost:8081/management/upload-claims" `
   -Headers @{ Authorization = "Bearer $($token.access_token)" } `
   -ContentType "application/json" `
-  -Body $body
+  -Body (Get-Content claims.json -Raw)
 ```
 
 The uploaded document must include both the `claimSets` catalog and the
-`claimsHierarchy` array, wrapped as `{"claims": {"claimSets": [...],
-"claimsHierarchy": [...]}}`. It atomically replaces the current configuration
-and re-seeds the `ResourceClaim` catalog with any new claim names.
+`claimsHierarchy` array as top-level properties, as
+`{"claimSets": [...], "claimsHierarchy": [...]}`. It atomically replaces the
+current configuration and re-seeds the `ResourceClaim` catalog with any new
+claim names.
