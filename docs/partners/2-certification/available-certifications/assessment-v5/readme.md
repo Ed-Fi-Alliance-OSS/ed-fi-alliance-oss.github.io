@@ -1,8 +1,11 @@
 # Ed-Fi Assessment Outcomes API for Data Standard v5 Certification
 
->[!TIP]
->The Ed-Fi Assessment Outcomes API for Data Standard v5 Certification is currently under revision to align to the requirements of
->the [Ed-Fi Assessment Native Integration Playbook](https://docs.ed-fi.org/getting-started/provider-playbook/specifics-by-provider-type/assessment-providers/assessment-providers-playbook/part-vi-validation-and-certification). 
+:::info
+
+The Ed-Fi Assessment Outcomes API for Data Standard v5 Certification is currently under revision to align to the requirements of
+the [Ed-Fi Assessment Native Integration Playbook](https://docs.ed-fi.org/getting-started/provider-playbook/specifics-by-provider-type/assessment-providers/assessment-providers-playbook/part-vi-validation-and-certification). 
+
+:::
 
 Certification Name: Ed-Fi Assessment Outcomes API for Suite 3 \
 Standards Referenced: \
