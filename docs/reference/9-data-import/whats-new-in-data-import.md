@@ -5,7 +5,7 @@ This section provides an overview of what's new for Data Import releases:
 ## What's New in Data Import v2.4
 
 :::note
-This is the last planned release of Ed-Fi Data Import. For more information, visit [Data Import Transitioning to Ed-Fi Exchange in 2026](../0-roadmap/notifications/data-import.md). If you're running Data Import today, this release keeps you on a supported runtime. If you're evaluating ETL tooling for new implementations, plan around alternatives; Data Import is not the path forward.
+This is the last planned release of Ed-Fi Data Import. For more information, visit [Data Import Transitioning to Ed-Fi Community Tools in 2026](../0-roadmap/notifications/data-import.md). If you're running Data Import today, this release keeps you on a supported runtime. If you're evaluating ETL tooling for new implementations, plan around alternatives; Data Import is not the path forward.
 :::
 
 The following improvements and fixes were made in Data Import v2.4:
@@ -65,7 +65,7 @@ The following improvements and fixes were made in Data Import v2.0:
 * DI-1236 - Implement SSO via OpenID Connect (OIDC) (an EdWire community contribution)
 * DI-1238 - Removing product improvement
 * DI-1237 - Improvements to Data Import documentation to its source repository
-* DI-1244 - Moving templates from the Template Sharing Service to an [Ed-Fi Exchange repository](https://github.com/Ed-Fi-Exchange-OSS/DataImport-Templates)
+* DI-1244 - Moving templates from the Template Sharing Service to an [Ed-Fi Community Tools repository](https://github.com/Ed-Fi-Exchange-OSS/DataImport-Templates)
 * DI-1201 - Implement GitHub code linting for DataImport.Common
 
 ## What's New in Data Import v1.3.2

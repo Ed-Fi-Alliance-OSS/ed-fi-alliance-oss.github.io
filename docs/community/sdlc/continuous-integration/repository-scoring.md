@@ -20,7 +20,7 @@ description: Transparency and improvement through automated scoring.
 The Ed-Fi Alliance uses the [OSSF Scorecard](https://scorecard.dev) as our
 primary vehicle for scoring repositories. The
 [LMS Toolkit](https://github.com/Ed-Fi-Exchange-OSS/LMS-Toolkit) repository in
-the Ed-Fi Exchange served as the initial proof of concept for how to incorporate
+the Ed-Fi Community Tools served as the initial proof of concept for how to incorporate
 the Scorecard automation and for how to correctly configure the repository and
 code.
 

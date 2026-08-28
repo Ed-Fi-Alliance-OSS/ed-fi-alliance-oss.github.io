@@ -1,15 +1,15 @@
 ﻿erDiagram
     EducationOrganization {
         integer EducationOrganizationId "I"
-        string NameOfInstitution "R"
-        string ShortNameOfInstitution "O"
         descriptor EducationOrganizationCategory "RC"
+        string NameOfInstitution "R"
         common Address "OC"
-        common InternationalAddress "OC"
-        common InstitutionTelephone "OC"
-        string WebSite "O"
-        descriptor OperationalStatus "O"
         common EducationOrganizationIndicator "OC"
+        common InstitutionTelephone "OC"
+        common InternationalAddress "OC"
+        descriptor OperationalStatus "O"
+        string ShortNameOfInstitution "O"
+        string WebSite "O"
     }
     EducationOrganizationIdentificationCode {
         reference EducationOrganization "I"
@@ -19,20 +19,20 @@
     }
     StateEducationAgency {
         integer StateEducationAgencyId "I"
+        descriptor FederalLocaleCode "O"
         common StateEducationAgencyAccountability "OC"
         common StateEducationAgencyFederalFunds "OC"
-        descriptor FederalLocaleCode "O"
     }
     LocalEducationAgency {
         integer LocalEducationAgencyId "I"
         descriptor LocalEducationAgencyCategory "R"
         descriptor CharterStatus "O"
+        reference EducationServiceCenter "O"
+        descriptor FederalLocaleCode "O"
         common LocalEducationAgencyAccountability "OC"
         common LocalEducationAgencyFederalFunds "OC"
         reference ParentLocalEducationAgency "O"
-        reference EducationServiceCenter "O"
         reference StateEducationAgency "O"
-        descriptor FederalLocaleCode "O"
     }
     EducationServiceCenter {
         integer EducationServiceCenterId "I"
@@ -41,34 +41,34 @@
     School {
         integer SchoolId "I"
         descriptor GradeLevel "RC"
-        descriptor SchoolCategory "OC"
-        descriptor SchoolType "O"
-        descriptor CharterStatus "O"
-        descriptor TitleIPartASchoolDesignation "O"
-        descriptor MagnetSpecialProgramEmphasisSchool "O"
+        descriptor AccreditationStatus "O"
         descriptor AdministrativeFundingControl "O"
-        descriptor InternetAccess "O"
-        reference LocalEducationAgency "O"
         descriptor CharterApprovalAgencyType "O"
         enumeration CharterApprovalSchoolYear "O"
+        descriptor CharterStatus "O"
         descriptor FederalLocaleCode "O"
-        reference PostSecondaryInstitution "O"
         bool ImprovingSchool "O"
-        descriptor AccreditationStatus "O"
+        descriptor InternetAccess "O"
+        reference LocalEducationAgency "O"
+        descriptor MagnetSpecialProgramEmphasisSchool "O"
+        reference PostSecondaryInstitution "O"
+        descriptor SchoolCategory "OC"
+        descriptor SchoolType "O"
+        descriptor TitleIPartASchoolDesignation "O"
     }
     PostSecondaryInstitution {
         integer PostSecondaryInstitutionId "I"
-        descriptor MediumOfInstruction "OC"
-        descriptor PostSecondaryInstitutionLevel "O"
         descriptor AdministrativeFundingControl "O"
         descriptor FederalLocaleCode "O"
+        descriptor MediumOfInstruction "OC"
+        descriptor PostSecondaryInstitutionLevel "O"
     }
     AccountabilityRating {
         reference EducationOrganization "I"
         string RatingTitle "I"
+        enumeration SchoolYear "I"
         string Rating "R"
         date RatingDate "O"
-        enumeration SchoolYear "I"
         string RatingOrganization "O"
         string RatingProgram "O"
     }
@@ -79,9 +79,9 @@
     EducationOrganizationNetworkAssociation {
     }
     FeederSchoolAssociation {
+        date BeginDate "I"
         reference FeederSchool "I"
         reference School "I"
-        date BeginDate "I"
         date EndDate "O"
         string FeederRelationshipDescription "O"
     }
@@ -90,12 +90,12 @@
     }
     CommunityProvider {
         integer CommunityProviderId "I"
-        reference CommunityOrganization "O"
-        descriptor ProviderProfitability "O"
-        descriptor ProviderStatus "R"
         descriptor ProviderCategory "R"
-        bool SchoolIndicator "O"
+        descriptor ProviderStatus "R"
+        reference CommunityOrganization "O"
         bool LicenseExemptIndicator "O"
+        descriptor ProviderProfitability "O"
+        bool SchoolIndicator "O"
     }
     CommunityProviderLicense {
         reference CommunityProvider "I"
