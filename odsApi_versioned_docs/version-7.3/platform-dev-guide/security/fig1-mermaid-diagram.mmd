@@ -1,0 +1,84 @@
+---
+config:
+theme: redux
+---
+classDiagram
+direction LR
+
+    class RestraintEvent_edfi["RestraintEvent_edfi *"] {
+        PK StudentUSI
+        PK SchoolId
+        PK RestraintEventIdentifier
+        PK EventDate
+        EducationalEnvironmentTypeId
+        Id
+        LastModifiedDate
+        CreateDate
+    }
+
+    class RestraintEventReason_edfi {
+        PK StudentUSI
+        PK SchoolId
+        PK RestraintEventIdentifier
+        PK EventDate
+        PK RestraintEventReasonTypeId
+        CreateDate
+    }
+
+    class RestraintEventReasonType_edfi["RestraintEventReasonType_edfi *"] {
+        PK RestraintEventReasonTypeId
+        CodeValue
+        Description
+        ShortDescription
+        Id
+        LastModifiedDate
+        CreateDate
+    }
+
+    class RestraintEventProgram_edfi {
+        PK StudentUSI
+        PK SchoolId
+        PK RestraintEventIdentifier
+        PK EventDate
+        PK ProgramTypeId
+        PK ProgramName
+        PK EducationOrganizationId
+        CreateDate
+    }
+
+    class Program_edfi["Program_edfi *"] {
+        PK EducationOrganizationId
+        PK ProgramTypeId
+        PK ProgramName
+        ProgramId
+        ProgramSponsorTypeId
+        Id
+        LastModifiedDate
+        CreateDate
+    }
+
+    class ProgramCharacteristic_edfi {
+        PK EducationOrganizationId
+        PK ProgramTypeId
+        PK ProgramCharacteristicDescriptorId
+        PK ProgramName
+        CreateDate
+    }
+
+    class ProgramService_edfi {
+        PK EducationOrganizationId
+        PK ProgramTypeId
+        PK ServiceDescriptorId
+        PK ProgramName
+        CreateDate
+    }
+
+    note "* = Resource / Aggregate Root"
+    note "PK = Primary Key"
+
+    RestraintEvent_edfi "1" --> "0..*" RestraintEventReason_edfi
+    RestraintEventReason_edfi "0..*" --> "1" RestraintEventReasonType_edfi
+    RestraintEvent_edfi "1" --> "0..*" RestraintEventProgram_edfi
+    RestraintEventProgram_edfi "0..*" --> "1" Program_edfi
+    Program_edfi "1" --> "0..*" ProgramCharacteristic_edfi
+    Program_edfi "1" --> "0..*" ProgramService_edfi

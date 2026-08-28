@@ -59,7 +59,7 @@ resource that is created. If there is, this should not be an issue. If no
 education organization reference is on the resource created, an association
 record would need to be created to perform other operations on the newly created
 resource. More information can be found on the [API Claim Sets &
-Resources](../platform-dev-guide/security/api-claim-sets-resources.md)
+Resources](../platform-dev-guide/security/api-claim-sets-resources.mdx)
 page.
 
 An ownership-based authorization strategy is used for assessment metadata,

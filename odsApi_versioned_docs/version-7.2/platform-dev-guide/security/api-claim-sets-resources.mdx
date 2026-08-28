@@ -1,3 +1,8 @@
+import Mermaid from '@theme/Mermaid';
+import fig1Diagram from './fig1-mermaid-diagram.mmd?raw';
+import fig2Diagram from './fig2-resource-claims.mmd?raw';
+import fig3Diagram from './fig3-claims-taxonomy-2026-08-28-173436.mmd?raw';
+
 # API Claim Sets & Resources
 
 The Ed-Fi ODS / API provides access to the data stored in an underlying Ed-Fi
@@ -58,7 +63,7 @@ back-references from the children can be represented as direct URLs).
 
 The figure below shows a sample of resources related to restraint events.
 
-![Resources](/img/reference/ods-api/fig1.png)
+<Mermaid value={fig1Diagram} viewport />
 
 ## Claims
 
@@ -151,7 +156,7 @@ grouping. For example, rather than issue resource claims for each individual
 type of descriptor, the broader "systemDescriptors" or "managedDescriptors"
 resource claims will be issued instead.
 
-![Resource Claims](/img/reference/ods-api/fig2.png)
+<Mermaid value={fig2Diagram} viewport />
 
 #### Resource Claim Values
 
@@ -177,7 +182,7 @@ claims that are applied after the basic "action" checks have been performed. The
 figure below shows a representative piece of the Ed-Fi ODS / API claims
 taxonomy.
 
-![Claims Taxonomy](/img/reference/ods-api/fig3.webp)
+<Mermaid value={fig3Diagram} viewport />
 
 The strategy used to authorize a request for an Ed-Fi type or descriptor is
 different from the one used to authorize a request to modify student-related
@@ -239,32 +244,23 @@ strategies, applied to the claims taxonomy shown in the figure above.
 - **Relationship-based strategies.** A family of strategies that authorize
   access to student and education organization-related data through ODS
   relationships, from the perspective of the education organization(s) contained
-  in the caller's claims. See [Relationship-Based
-  Authorization](#relationship-based-authorization) for more details.
+  in the caller's claims. See
+  [Relationship-Based Authorization](#relationship-based-authorization) for more
+  details.
 - **OwnershipBased.** Allows access to items based on ownership tokens
   associated with the caller. The caller is granted access to a resource when
   the token captured at creation time matches an ownership token in the caller's
   claims. This strategy is available when the "OwnershipBasedAuthorization"
   feature is enabled by the API host, which is required to capture the ownership
-  token at each aggregate root at write time. See [Ownership-Based
-  Authorization](#ownership-based-authorization) for more details.
-- **Custom View-Based Authorization.** Provides a powerful and flexible
-  mechanism for defining custom authorization strategies. API Hosts can create
-  custom database views tailored to specific authorization needs, such as
-  restricting access by student program enrollment or grade level. Granular
-  security setup can be achieved simply by creating a custom database view and
-  configuring the necessary metadata, without requiring recompilation or an API
-  process restart. See [Authorizing Requests Using Custom Database
-  Views](../../technical-articles/authorizing-requests-using-custom-database-views.md)
-  and [How To: Use Custom View-Based
-  Authorization](../../how-to-guides/how-to-use-custom-view-based-authorization.md)
-  for additional details.
+  token at each aggregate root at write time. See
+  [Ownership-Based Authorization](#ownership-based-authorization) for more
+  details.
 
 ## How Authorization Is Enforced
 
-With the concepts of resource claims, actions, the claims taxonomy and authorization
-strategies in place, authorization for every API request is enforced in two
-sequential phases:
+With the concepts of resource claims, actions, the claims taxonomy and
+authorization strategies in place, authorization for every API request is
+enforced in two sequential phases:
 
 1. **Resource claim and action check.** Does the caller's assigned claim set
    include the requested resource and the action being performed (Create, Read,

@@ -4,7 +4,7 @@ The Ed-Fi ODS / API primarily uses a relationship-based authorization strategy
 based on education organizations. Ownership based authorization adds an optional
 additional level of authorization that can be used in scenarios where more
 granular access controls are needed. Refer to [API Claim Sets &
-Resources](../security/api-claim-sets-resources.md)
+Resources](../security/api-claim-sets-resources.mdx)
 for details on various available authorization strategies. This documentation
 covers the essentials for platform hosts to enable and manage the feature.
 
