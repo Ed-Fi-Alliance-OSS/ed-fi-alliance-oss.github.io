@@ -192,20 +192,21 @@ using the loading mode configured for your deployment.
 | **Filesystem** | Copy the output file to the directory set by `DMS_CONFIG_CLAIMS_DIRECTORY` before the service starts |
 | **Hybrid** | Place the fragment file in the directory set by `DMS_CONFIG_CLAIMS_DIRECTORY`; the embedded base loads automatically |
 | **Embedded** | Rebuild and redeploy the Configuration Service binary with the updated embedded `Claims.json` |
-| **Management API** | Wrap the hierarchy array in the two-section upload format and `POST` to `/management/upload-claims` |
+| **Management API** | Place the hierarchy array into the two-section upload document and `POST` that document directly to `/management/upload-claims` |
 
-For the management API upload, wrap the document produced by `Transform` in the
-two-section container **and** nest it under a top-level `claims` property (the
-`/management/upload-claims` endpoint requires this wrapper):
+The `Transform` command emits only the hierarchy array. For the management API
+upload, place that array into the two-section upload document as
+`claimsHierarchy`, add a `claimSets` entry for every claim set the hierarchy
+references, and post that document directly as the request body. Both sections
+are top-level properties; the endpoint does not accept an outer `claims`
+property:
 
 ```json
 {
-  "claims": {
-    "claimSets": [
-      { "claimSetName": "MyExtensionClaimSet", "isSystemReserved": false }
-    ],
-    "claimsHierarchy": [ ... ]
-  }
+  "claimSets": [
+    { "claimSetName": "MyExtensionClaimSet", "isSystemReserved": false }
+  ],
+  "claimsHierarchy": [ ... ]
 }
 ```
 
