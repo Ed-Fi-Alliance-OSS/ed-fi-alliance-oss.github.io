@@ -141,7 +141,7 @@ the same data concept is modeled.
 | [StaffCohortAssociation](./staff-cohort-association-scenarios.md)                                                     | Create, Update, Delete |
 | [StudentCohortAssociation](./student-cohort-association-scenarios.md)                                                 | Create, Update         |
 | [DisciplineIncident](./disciplineincident-scenarios.md)                                                               | Create, Update         |
-| [StudentDisciplineIncidentAssociation](./student-discipline-incident-association.md)                                  | Create, Delete         |
+| [StudentDisciplineIncidentBehaviorAssociation](./student-discipline-incident-behavior-association.md)                 | Create, Delete         |
 | [DisciplineAction](./disciplineaction-scenarios.md)                                                                   | Create, Update, Delete |
 | [StudentProgramAssociation](./student-program-association-scenarios.md)                                               | Create, Update, Delete |
 | [StudentCTEProgramAssociation](./student-cte-program-association-scenarios.md)                                        | Create, Update         |
