@@ -17,10 +17,9 @@ Before you begin:
   Provisioning](../platform-dev-guide/utilities/database-provisioning.md) for
   installation instructions.
 - Step 8 verifies the extension with an authenticated API request, which
-  requires API client credentials. If you don't already have a client, see
-  [Getting Started - Configure a Data
-  Store](../getting-started/configure-data-store.md) to create one with
-  `Get-SmokeTestCredential` before you reach that step.
+  requires API client credentials. Step 5a deletes the database volumes, so any
+  client you created while following Getting Started is removed along with them.
+  You will create a fresh client in Step 8a, after the stack restarts.
 
 ## Step 1. Design Your Extension
 
@@ -79,8 +78,8 @@ this step. Do that now if you haven't already.
 ### Step 2a. Set or Confirm MetaEd Target Version
 
 MetaEd supports multiple Ed-Fi technology stack and data model versions. Confirm
-that your MetaEd IDE is targeting desired data model e.g. **ed-fi-model-5.2** by
-following the instructions in [Version
+that your MetaEd IDE is targeting the desired data model, e.g.
+**ed-fi-model-5.2**, by following the instructions in [Version
 Targeting](/reference/metaed/ide-user-guide/creating-and-maintaining-your-extension#step-4-add-the-correct-data-model-project).
 
 MetaEd **4.8 or later** is required for Ed-Fi API v8.0 support.
@@ -278,17 +277,39 @@ my-schemas/
 └─ ApiSchema-EXTENSION.json         <── extension (Step 3b output, copied as-is)
 ```
 
-**Core schema**: after running `bootstrap-local-dms.ps1` at least once, the core
-schema is available at
-`eng/docker-compose/.bootstrap/ApiSchema/schemas/Ed-Fi/ApiSchema.json`. Copy it
-into your directory. Alternatively, download it from the
-`EdFi.DataStandard52.ApiSchema` NuGet package on the Ed-Fi package feed.
+### Step 4a. Copy the Core Schema
 
-**Extension schema**: copy `ApiSchema-EXTENSION.json` from
+After running `bootstrap-local-dms.ps1` at least once, the core schema is staged
+in your repository checkout. Run from the `eng/docker-compose/` directory:
+
+```powershell
+New-Item -ItemType Directory -Force "C:\path\to\my-schemas" | Out-Null
+Copy-Item ".bootstrap\ApiSchema\schemas\Ed-Fi\ApiSchema.json" "C:\path\to\my-schemas\"
+```
+
+Alternatively, download the `EdFi.DataStandard52.ApiSchema` package; see
+[Package
+Releases](../getting-started/package-releases.md#ed-fi-v800-schema-packages) for
+the package link and version. A `.nupkg` is a ZIP archive, and the core schema
+is inside it at `contentFiles/any/any/ApiSchema/ApiSchema.json`:
+
+```powershell
+$package = Get-Item "edfi.datastandard52.apischema.*.nupkg"
+Expand-Archive $package.FullName -DestinationPath "./apischema-package" -Force
+Copy-Item "./apischema-package/contentFiles/any/any/ApiSchema/ApiSchema.json" "C:\path\to\my-schemas\"
+```
+
+### Step 4b. Copy the Extension Schema
+
+Copy `ApiSchema-EXTENSION.json` from
 `MetaEdOutput/SampleAlternativeEducationProgram/ApiSchema/` (your Step 3b
 output) into the same directory. The filename already follows the
 `ApiSchema-*.json` pattern that `prepare-dms-schema.ps1` discovers, so no
-rename is necessary.
+rename is necessary:
+
+```powershell
+Copy-Item "C:\path\to\AlternativeEducationProgram\MetaEdOutput\SampleAlternativeEducationProgram\ApiSchema\ApiSchema-EXTENSION.json" "C:\path\to\my-schemas\"
+```
 
 ## Step 5. Stage the Extension Schema
 
@@ -492,10 +513,30 @@ Invoke-RestMethod http://localhost:8080/api
 ```
 
 The response should list your extension's data model under the `dataModels`
-array. Then make an authenticated request to one of the new endpoints, using
-the `<api-client-key>`/`<api-client-secret>` from [Configure a Data
-Store](../getting-started/configure-data-store.md) (for example, from
-`Get-SmokeTestCredential`):
+array.
+
+### Step 8a. Create API Client Credentials
+
+The `-d -v` teardown in Step 5a deleted the database volumes, including the
+Configuration Service database that holds vendors and applications. Any client
+you created while following Getting Started is gone, so create a new one against
+the restarted stack. From the `eng/docker-compose/` directory:
+
+```powershell
+Import-Module ../smoke_test/modules/SmokeTest.psm1 -Force
+$cred = Get-SmokeTestCredential -ConfigServiceUrl "http://localhost:8081"
+Write-Host "Key:    $($cred.Key)"
+Write-Host "Secret: $($cred.Secret)"
+```
+
+See [Getting Started - Configure a Data
+Store](../getting-started/configure-data-store.md) for details, including how to
+associate the client with multiple data stores.
+
+### Step 8b. Call the Extension Endpoint
+
+Make an authenticated request to one of the new endpoints, using the
+`<api-client-key>`/`<api-client-secret>` from Step 8a:
 
 ```powershell
 $apiToken = Invoke-RestMethod -Method Post -Uri "http://localhost:8081/connect/token" `
