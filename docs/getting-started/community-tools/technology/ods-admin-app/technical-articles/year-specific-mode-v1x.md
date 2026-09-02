@@ -59,7 +59,7 @@ in the database name. To enable, install the database as usual, either through
 the [`initdev`
 process](https://edfi.atlassian.net/wiki/display/ODSAPI32/Getting+Started+-+Installation+Steps)
 or through the [Windows Installers for the Ed-Fi ODS / API Suite
-3](https://exchange.ed-fi.org/). Once installed, you can manually rename the
+3](/getting-started/community-tools/technology). Once installed, you can manually rename the
 database through SQL Server Management Studio by right-clicking the database
 name and selecting "Rename":
 

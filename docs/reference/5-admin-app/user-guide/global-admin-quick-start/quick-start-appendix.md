@@ -44,7 +44,8 @@ Used by `bootstrap.ps1` to seed the machine user and by `cleanup.ps1`.
 | --- | --- | --- |
 | `DB_ENGINE` | `mssql` | Database engine: `mssql` or `pgsql` |
 | `DATABASE_NAME` | `sbaa` | Admin App application database name |
-| `APP_DB_USERNAME` | `edfiadminapp` | SQL Server login for the dedicated least-privilege app user created by the Windows installer (`install-all.ps1 -AppDbPassword`) |
+| `APP_SQL_SERVER` | `tcp:localhost,1433` | SQL Server hosting the Admin App application database. May be a remote server, including a managed Azure SQL Database (see [Managed Azure SQL Database](#managed-azure-sql-database)) |
+| `APP_DB_USERNAME` | `edfi_adminapp` | SQL Server login for the dedicated least-privilege app user created by the Windows installer (`install-all.ps1 -AppDbPassword`) |
 | `APP_DB_PASSWORD` | _(empty)_ | Password for `APP_DB_USERNAME` — used when `DB_ENGINE=mssql`; prompted when empty. The scripts deliberately never connect as `sa` |
 | `POSTGRES_APP_PASSWORD` | _(empty)_ | PostgreSQL app-user password — used when `DB_ENGINE=pgsql`; prompted when empty |
 | `POSTGRES_HOST` | `localhost` | PostgreSQL host |
@@ -88,7 +89,8 @@ value above when empty.
 | `CLAIMSET_PREFIX` | `"AA "` | Prefix for the copies; quote it to keep the trailing space |
 | `SECURITY_DB_ENGINE` | _(empty = same as `DB_ENGINE`)_ | Engine hosting `EdFi_Security`: `mssql` or `pgsql`. Set it when the ODS/API side runs a different engine than the Admin App database |
 | `SECURITY_DATABASE_NAME` | `EdFi_Security` | Security database name |
-| `SECURITY_SQL_SERVER` | `tcp:localhost,1433` | SQL Server hosting `EdFi_Security` |
+| `SECURITY_SQL_SERVER` | `tcp:localhost,1433` | SQL Server hosting `EdFi_Security`. May be a remote server, including a managed Azure SQL Database, independently of `APP_SQL_SERVER` |
+| `SQL_TRUST_SERVER_CERTIFICATE` | `false` | `true`: accept a SQL Server certificate without validating it. Applies to `APP_SQL_SERVER` and `SECURITY_SQL_SERVER`; a local instance is trusted automatically, so set it only for a remote server presenting a self-signed certificate |
 | `SECURITY_DB_USERNAME` | _(empty)_ | SQL Server login with rights on `EdFi_Security`; required unless `SECURITY_USE_INTEGRATED_SECURITY=true` |
 | `SECURITY_DB_PASSWORD` | _(empty)_ | Password for `SECURITY_DB_USERNAME`; prompted when empty |
 | `SECURITY_USE_INTEGRATED_SECURITY` | `false` | `true`: Windows integrated authentication (`SECURITY_DB_*` not needed) |
@@ -98,6 +100,60 @@ value above when empty.
 | `POSTGRES_SECURITY_USER` | _(empty = `POSTGRES_APP_USER`)_ | PostgreSQL user for `EdFi_Security` |
 | `SECURITY_USE_POSTGRES_DOCKER` | _(empty = `USE_POSTGRES_DOCKER`)_ | `true`: run `psql` inside the `SECURITY_POSTGRES_CONTAINER` container |
 | `SECURITY_POSTGRES_CONTAINER` | `ed-fi-db-admin` | The ODS stack's admin/security db container (PostgreSQL in Docker) |
+
+## Managed Azure SQL Database
+
+Both SQL Server databases the scripts reach may be a managed Azure SQL
+Database, and independently of one another: the Admin App application database
+(`APP_SQL_SERVER`) and the ODS/API's `EdFi_Security` (`SECURITY_SQL_SERVER`).
+
+```ini
+# Admin App application database
+APP_SQL_SERVER=tcp:myserver.database.windows.net,1433
+DATABASE_NAME=sbaa
+APP_DB_USERNAME=edfi_adminapp
+APP_DB_PASSWORD=<contained user's password>
+# ODS/API EdFi_Security -- may be the same logical server or a different one
+SECURITY_SQL_SERVER=tcp:myserver.database.windows.net,1433
+SECURITY_DATABASE_NAME=EdFi_Security
+SECURITY_DB_USERNAME=edfi_security
+SECURITY_DB_PASSWORD=<contained user's password>
+SECURITY_USE_INTEGRATED_SECURITY=false
+SQL_TRUST_SERVER_CERTIFICATE=false
+```
+
+Each database needs its own contained user: `APP_DB_USERNAME` in the
+application database, `SECURITY_DB_USERNAME` in `EdFi_Security`. They are
+separate databases, so one login cannot serve both.
+
+Three things differ from a local instance:
+
+- **SQL authentication is required.** Azure SQL does not accept Windows
+  integrated authentication, so `SECURITY_USE_INTEGRATED_SECURITY` must be
+  `false` and the `APP_DB_*` / `SECURITY_DB_*` logins must be set. The scripts
+  refuse the combination up front rather than failing later with a driver
+  error.
+- **The login is a contained user** in the database itself. See
+  [Database](/reference/admin-app/getting-started/windows-iis-installation/manual#database)
+  for the `CREATE USER` statement, and for the server, firewall rule, and
+  database to provision in Azure before installing the Admin App.
+- **The connection is encrypted and the certificate validated.** A remote
+  server is reached with `sqlcmd -N`, which requires both. Azure SQL presents a
+  CA-issued certificate, so leave `SQL_TRUST_SERVER_CERTIFICATE=false`; setting
+  it to `true` adds `-C`, which turns validation off. A local instance is
+  reached with `-C` alone, because its auto-generated certificate cannot be
+  validated and loopback has no machine-in-the-middle to protect against.
+  Recognized local targets are `localhost`, `127.0.0.1`, `::1`, `.`, `(local)`,
+  this machine's own name, and a local named pipe, each with an optional
+  `tcp:` prefix and `,port` or `\instance` suffix.
+
+No schema is created or altered: the scripts only read and write rows in tables
+that already exist. They do delete rows, though. `cleanup.ps1` removes the
+environment, team, ODS instances, education organizations, tenant, and machine
+user the Quick Start created, plus the claim set copies in `EdFi_Security`, and
+it does so on whichever server these variables point at. Confirm the values name
+the intended database before running it against a remote server, and take a
+backup if that database holds anything else.
 
 ## Finding your token endpoint
 
@@ -136,7 +192,9 @@ parameter passed explicitly overrides the `.env` value.
 | `-SkipClaimsets` | Leave the claim set copies in `EdFi_Security` (e.g. an application still uses one) |
 | `-EnvironmentName` / `-TeamName` / `-MachineUsername` | Override the names to delete |
 | `-DbEngine`, `-DatabaseName`, `-AppDbUsername`, `-AppDbPassword`, `-PostgresAppPassword` | Override the database connection (mssql always uses the app login, never `sa`) |
+| `-AppSqlServer` | Override the SQL Server hosting the Admin App application database |
 | `-SecuritySqlServer` | Override the SQL Server hosting `EdFi_Security` (everything else comes from the `SECURITY_*` / `POSTGRES_SECURITY_*` `.env` settings, with the engine from `SECURITY_DB_ENGINE` defaulting to `DB_ENGINE`) |
+| `-TrustServerCertificate` | Skip certificate validation on a remote SQL Server presenting a self-signed certificate |
 
 ### Running the scripts directly
 

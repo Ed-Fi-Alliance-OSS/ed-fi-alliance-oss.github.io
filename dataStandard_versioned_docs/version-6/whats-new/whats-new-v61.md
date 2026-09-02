@@ -80,6 +80,14 @@ To address this gap, a new optional AddressCharacteristic descriptor has been ad
 
 Minor updates in this release focus on improving documentation clarity and consistency.
 
+### FinancialAid domain entity was moved to Identification and Student Demographics
+
+* [DATASTD-2529](https://edfi.atlassian.net/browse/DATASTD-2529)
+
+The FinancialAid domain entity and its associated descriptor AidType were moved from the Enrollment domain to the Identification and Student Demographic domain.  
+
+In Data Standard v6.0, FinancialAid was classified under the Enrollment domain when the EPDM extensions were incorporated into Core. Subsequent review determined that FinancialAid aligns more appropriately with the Student Identification and Demographics domain because it is not associated with a StudentSchoolAssociation reference. 
+
 ### Documentation and Descriptor Updates In MetaEd
 
 * [DATASTD-2515](https://edfi.atlassian.net/browse/DATASTD-2515)

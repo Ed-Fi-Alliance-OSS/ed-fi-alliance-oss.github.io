@@ -36,8 +36,8 @@ If you don't have an API provided to you, you can set up the Ed-Fi ODS and API
 to get a local implementation of Assessment APIs to test against. Consult
 the [Ed-Fi ODS / API documentation](/reference/ods-api-platform) for more information on
 using the Ed-Fi ODS / API to set up a testing sandbox. There are also
-cloud-based installers available in the [Ed-Fi
-Exchange](http://exchange.ed-fi.org).
+cloud-based installers available in
+[Ed-Fi Community Tools](/getting-started/community-tools/technology).
 
 By default, the testing employs references from the "populated" sandbox (also
 known as the "Grand Bend" data set). We recommend that providers build their

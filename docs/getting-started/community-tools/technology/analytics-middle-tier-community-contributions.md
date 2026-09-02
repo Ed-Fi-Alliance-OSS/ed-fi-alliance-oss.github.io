@@ -11,7 +11,7 @@ The Contributors repository has a simplified contribution process and minimal st
 ## Download
 
 * **Code :** [Published community provided views](https://github.com/Ed-Fi-Exchange-OSS/Analytics-Middle-Tier-Contrib)
-* **Documentation:**  [Contribution and Deployment Guide](/getting-started/edfi-exchange/technology/analytics-middle-tier)
+* **Documentation:**  [Contribution and Deployment Guide](/getting-started/community-tools/technology/analytics-middle-tier)
 
 ## Details
 
