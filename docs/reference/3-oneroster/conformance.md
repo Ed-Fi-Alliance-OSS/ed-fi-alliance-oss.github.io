@@ -33,7 +33,10 @@ conformance tests against a populated Ed-Fi ODS.
 | `/demographics`, `/demographics/{id}` | Implemented, not in the Rostering Core certification |
 
 For the Ed-Fi source mapping of each endpoint, see [Endpoint to
-Ed-Fi source mapping](./data-model/endpoint-source-mapping.md).
+Ed-Fi source mapping](./data-model/endpoint-source-mapping.md). For the
+request and response contract, see the published [Ed-Fi OneRoster API
+1.2](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-API-Specifications/blob/main/api-specifications/oneroster/oneroster-api-1.2.yaml)
+specification.
 
 ## Reproducing conformance on your own deployment
 
