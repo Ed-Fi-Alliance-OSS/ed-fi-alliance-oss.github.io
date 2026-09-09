@@ -380,7 +380,8 @@ Copy-Item ".bootstrap\ApiSchema\schemas\Ed-Fi\ApiSchema.json" "C:\path\to\my-sch
 
 Alternatively, download the `EdFi.DataStandard52.ApiSchema` package; see
 [Package
-Releases](../getting-started/package-releases.md#ed-fi-v800-schema-packages) for
+Releases](../getting-started/package-releases.md#ed-fi-api-v800-schema-packages)
+for
 the package link and version. A `.nupkg` is a ZIP archive, and the core schema
 is inside it at `contentFiles/any/any/ApiSchema/ApiSchema.json`:
 
