@@ -82,7 +82,7 @@ In this pattern, transformation, validation, and loading are explicitly separate
 
 :::tip
 
-Earthmover and Lightbeam are open source utilities developed by Education Analytics. Although the Ed-Fi Alliance does not directly maintain these tools, they are endorsed as a strong replacement for the now-deprecated [Ed-Fi Data Import](/reference/data-import) utility.
+Earthmover and Lightbeam are open source utilities developed by Education Analytics. Although the Ed-Fi Alliance does not directly maintain these tools, they are endorsed as a strong replacement for the now-deprecated [Ed-Fi Data Import](/getting-started/community-tools/technology/data-import) utility.
 
 :::
 

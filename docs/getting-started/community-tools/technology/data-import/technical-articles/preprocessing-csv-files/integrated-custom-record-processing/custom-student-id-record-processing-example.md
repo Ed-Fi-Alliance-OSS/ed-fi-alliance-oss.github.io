@@ -93,7 +93,7 @@ value. The Transform/Load process then performs the mapping and POSTs to the
 ODS. After this, we move on to the next row, where we repeat the same steps.
 
 Similar to the [Quick
-Start](../../../../data-import/getting-started/quick-start), the user sets up
+Start](../../../getting-started/quick-start), the user sets up
 any necessary _Bootstrap_ items, a _Data Map_ for mapping these CSV columns to
 ODS Student Assessements, and an _Agent_ that is set up to use the
 script*.* When setting up the _Data Map_, we added a dummy column named

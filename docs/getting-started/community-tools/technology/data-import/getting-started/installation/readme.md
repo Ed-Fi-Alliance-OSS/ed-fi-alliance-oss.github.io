@@ -7,7 +7,7 @@ Ed-Fi Data Import.
 
 ## Compatibility & Supported ODS / API Versions
 
-Data Import is designed for use with the Ed-Fi ODS / API v5.3+. See [Ed-Fi Technology Suite Supported Versions](../../../0-roadmap/supported-versions.md) sections
+Data Import is designed for use with the Ed-Fi ODS / API v5.3+. See [Ed-Fi Technology Suite Supported Versions](/reference/roadmap/supported-versions) sections
 for more details on the ODS / API and version compatibility.
 
 ## Prerequisites
