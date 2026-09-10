@@ -5,7 +5,7 @@ This section provides an overview of what's new for Data Import releases:
 ## What's New in Data Import v2.4
 
 :::note
-This is the last planned release of Ed-Fi Data Import. For more information, visit [Data Import Transitioning to Ed-Fi Community Tools in 2026](../0-roadmap/notifications/data-import.md). If you're running Data Import today, this release keeps you on a supported runtime. If you're evaluating ETL tooling for new implementations, plan around alternatives; Data Import is not the path forward.
+This is the last planned release of Ed-Fi Data Import. For more information, visit [Data Import Transitioning to Ed-Fi Community Tools in 2026](/reference/roadmap/notifications/data-import). If you're running Data Import today, this release keeps you on a supported runtime. If you're evaluating ETL tooling for new implementations, plan around alternatives; Data Import is not the path forward.
 :::
 
 The following improvements and fixes were made in Data Import v2.4:
@@ -34,7 +34,7 @@ The following improvements and fixes were made in Data Import v2.2:
 
 * DI-1066 - Error saving long Map form
 * DI-1168 - Uploading large CSV file into MAP, error 431 appears and browser is cleared
-* DI-1319 - Delete Support in Data Import. Please see [Bulk Delete using Data Import](../data-import/technical-articles/bulk-delete-using-data-import) for full documentation on this feature.
+* DI-1319 - Delete Support in Data Import. Please see [Bulk Delete using Data Import](./technical-articles/bulk-delete-using-data-import) for full documentation on this feature.
 * DI-1132 - DELETE by id
 * DI-1318 - DELETE by natural key
 
@@ -90,7 +90,7 @@ The following improvements and fixes were made in Data Import v1.3, with major c
 
 The following improvements and fixes were made in Data Import v1.2, with major community contributions from [Instructure](https://www.instructure.com/):
 
-* DI-480 - Major enhancements to PowerShell pre-processing, including security-based sandboxing. For more information see [Integrated Custom File Processors](../data-import/technical-articles/preprocessing-csv-files/integrated-custom-file-processors).
+* DI-480 - Major enhancements to PowerShell pre-processing, including security-based sandboxing. For more information see [Integrated Custom File Processors](./technical-articles/preprocessing-csv-files/integrated-custom-file-processors).
 * DI-929 - Ability to import Template Sharing templates across multiple versions of the ODS / API with same major version of Ed-Fi Data Suite (3.x for example).
 * DI-940 - Currency data handling from Swagger "numeric" type.
 * Bug fixes and changes based on field reports.
@@ -122,7 +122,7 @@ The following improvements and fixes were made in Data Import v1.0.1.
 
 * Consolidation of Transform Load, File Transfer and File Cleanup service into one service for easier setup and maintenance
 * New Activity pane to show status of import jobs in the web application
-* PowerShell integration for row-level or file-level pre-processing (see [Integrated Custom Record Processing](../data-import/technical-articles/preprocessing-csv-files/integrated-custom-record-processing) and [Integrated Custom File Generation](../data-import/technical-articles/preprocessing-csv-files/integrated-custom-file-generation))
+* PowerShell integration for row-level or file-level pre-processing (see [Integrated Custom Record Processing](./technical-articles/preprocessing-csv-files/integrated-custom-record-processing) and [Integrated Custom File Generation](./technical-articles/preprocessing-csv-files/integrated-custom-file-generation))
 * Ed-Fi Product Improvement - Google Analytics and Jira / Ed-Fi Tracker integration
 * Enhancements to run in SaaS contexts and improvements for running on Azure
 * EDFI-183 - "Logs tabs with refresh"

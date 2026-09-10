@@ -24,7 +24,7 @@ Images for Data Import v2.3.2 are available at:
 
 ### Reference
 
-Please refer [Docker Deployment](../../../../7-docker/readme.mdx) for more information about deploying the Ed-Fi Technology Suite in Docker.
+Please refer [Docker Deployment](/reference/docker) for more information about deploying the Ed-Fi Technology Suite in Docker.
 
 ### Feedback
 

@@ -105,7 +105,7 @@ function Main() {
                 <Link to="/reference/docker">Sample Docker Deployments</Link>
               </li>
               <li>
-                <Link to="/reference/data-import">Data Import</Link>
+                <Link to="/getting-started/community-tools/technology/data-import">Data Import</Link>
               </li>
             </ul>
           </div>

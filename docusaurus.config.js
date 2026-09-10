@@ -263,12 +263,26 @@ const config = {
             ];
           }
           if (existingPath.includes('/getting-started/community-tools')) {
-            return [
+            const sources = [
               existingPath.replace(
                 '/getting-started/community-tools',
                 '/getting-started/edfi-exchange',
               ),
             ];
+            // Data Import moved here from the reference section in 2026.
+            if (
+              existingPath.includes(
+                '/getting-started/community-tools/technology/data-import',
+              )
+            ) {
+              sources.push(
+                existingPath.replace(
+                  '/getting-started/community-tools/technology/data-import',
+                  '/reference/data-import',
+                ),
+              );
+            }
+            return sources;
           }
           return undefined;
         },

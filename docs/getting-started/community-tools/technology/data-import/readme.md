@@ -2,7 +2,7 @@
 
 :::warning
 
-Data Import 2.4 was released in April 2026 with .NET 10 support. [This closes out the product](../0-roadmap/notifications/data-import.md). Also see: [What's new in Data Import](./whats-new-in-data-import.md).
+Data Import 2.4 was released in April 2026 with .NET 10 support. [This closes out the product](/reference/roadmap/notifications/data-import). Also see: [What's new in Data Import](./whats-new-in-data-import.md).
 
 :::
 

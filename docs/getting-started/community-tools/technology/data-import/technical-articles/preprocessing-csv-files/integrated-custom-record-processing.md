@@ -93,7 +93,7 @@ adminyear,DistrictNumber,DistrictName,SchoolNumber,SchoolName,sasid,listeningss_
 
 ```
 
-Similar to the [Quick Start](../../../data-import/getting-started/quick-start),
+Similar to the [Quick Start](../../getting-started/quick-start),
 the user sets up any necessary _Bootstrap_ items, a _Data Map_ for mapping these
 CSV columns to ODS Student Assessements, and an _Agent._ Because of the invalid
 excess spaces in the sasid column, though, the first attempt to load the ODS
