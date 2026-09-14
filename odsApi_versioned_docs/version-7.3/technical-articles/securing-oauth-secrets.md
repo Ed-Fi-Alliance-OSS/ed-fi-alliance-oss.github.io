@@ -17,7 +17,7 @@ transformed into the hashed password. There are several mathematically complex
 hashing algorithms that work for this purpose.
 
 By default, the Ed-Fi ODS / API stores OAuth secrets securely using
-PBKDF2-HMACSHA1 algorithm in deployment environments. For ease of use, the
+PBKDF2-HMAC-SHA256 algorithm in deployment environments. For ease of use, the
 development environment does not use hashing by default.
 
 The hash implementation in the Ed-Fi ODS / API is resilient to hash algorithm
