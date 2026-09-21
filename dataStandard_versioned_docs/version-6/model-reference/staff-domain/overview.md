@@ -32,19 +32,22 @@ This domain contains:
 
 The key concepts include the following:
 
-* In prior versions data related to contact, demographic, and identification codes
-    of a staff record were part of the StaffEducationOrganizationContactAssociation
-    entity. This entity has been removed and replaced with three new entities to
-    improve flexibility as follows:
+* In prior versions, demographic and identification code data were maintained
+        within the Staff entity, while contact information was stored in the
+        StaffEducationOrganizationContactAssociation. In DS 6.0, the Staff entity
+        was simplified by moving demographic and identification code data into
+        dedicated entities, improving flexibility and reducing the complexity
+        of maintaining Staff records. As part of this redesign, three new entities
+        were introduced in DS 6.0:
 
-  * StaffDemographic entity which is used to capture demographic information related
+* StaffDemographic entity which is used to capture demographic information related
         to a Staff member at a particular educational organization. Information
         includes data such as Citizenship, Race, Sex, Language etc.
 
-  * StaffDirectory entity which is used to capture contact information to be used for
+* StaffDirectory entity which is used to capture contact information to be used for
         a staff member at a particular educational organization.
 
-  * StaffIdentificationCode entity which is used to capture identification code related
+* StaffIdentificationCode entity which is used to capture identification code related
         to a Staff member at a particular educational organization.
 
 * There are two distinct associations between a Staff member and an
@@ -61,6 +64,11 @@ The key concepts include the following:
   * The StaffEducationOrganizationAssignmentAssociation entity provides
         information on the education organization where a staff member provides
         services (i.e., the staff member's school of service).
+
+* Prior to DS 6.0, there were three associations between Staff and
+    EducationOrganization. This is a breaking change introduced in DS 6.0,
+    resulting from the removal of StaffEducationOrganizationContactAssociation
+    and the consolidation of its functionality into the StaffDirectory entity.
 
 * Some additional information related to the assignment association is
     captured in the StaffSchoolAssociation, but this pertains more to specific
