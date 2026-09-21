@@ -47,11 +47,19 @@ Attributes decoupled from StudentEducationOrganizationAssociation, Staff, and ot
 
 ## Major Changes
 
-### Breakout of StudentEducationOrganizationAssociation (SEOA) and Staff entities
+### Breakout of StudentEducationOrganizationAssociation (SEOA) and Staff; replacement of StaffEducationOrganizationContactAssociation
 
-Based on community feedback, the StudentEducationOrganizationAssociation and Staff entities were simplified to address challenges such as the complexity in updating the StudentEducationOrganizationAssociation, and difficulty in searching the IdentificationCode commons. The StudentEducationOrganizationAssociation was divided into smaller more manageable components, so updates can be made in a targeted way that do not overwrite whole records.
+Based on community feedback, the StudentEducationOrganizationAssociation (SEOA) and Staff model were simplified to address challenges related to maintaining large, complex records and managing identification code information.
 
-**DS 6.0 introduces breaking updates from DS 5.2 by _removing_ the specific fields from the SEOA and _migrating_ them to corresponding new entities as outlined below:**
+The SEOA was divided into smaller, more manageable components, with student identification, contact, and demographic information moved into dedicated entities. This allows updates to be made in a targeted manner without overwriting the entire association record.
+
+Similarly, Staff identification code and demographic information were moved into dedicated entities. As a result, the StaffEducationOrganizationContactAssociation became redundant and was removed, with its functionality consolidated into the StaffDirectory entity.
+
+**DS 6.0 introduces breaking changes from DS 5.2 by _removing_ specific fields from both SEOA and Staff and _migrating_ them to corresponding new entities, as outlined below.**
+
+**In addition, StaffEducationOrganizationContactAssociation was removed because of its functional overlap with StaffDirectory.**
+
+### New SEOA Related Entities
 
 #### Fields to New StudentIdentification Code Entity
 
