@@ -22,7 +22,11 @@ hide_table_of_contents: true
 | StaffLeave | This entity represents the recording of the dates of staff leave (e.g., sick leave, personal time, vacation). |
 | StaffSchoolAssociation | This association indicates the School(s) at which a staff member provides instructional services. |
 
-_**Note:**_ _StaffEducationOrganizationContactAssociation_ was removed in DS 6.0 because its functionality overlaps with the _StaffDirectory_ entity.
+:::note
+
+`StaffEducationOrganizationContactAssociation` was removed in DS 6.0 because its functionality overlaps with the `StaffDirectory` entity.
+
+:::
 
 ## Extended References
 
