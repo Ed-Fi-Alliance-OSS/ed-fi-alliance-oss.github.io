@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # Advisory: Assessment of the Polly Open Source Maintenance Fee
 
 9 September 2026
