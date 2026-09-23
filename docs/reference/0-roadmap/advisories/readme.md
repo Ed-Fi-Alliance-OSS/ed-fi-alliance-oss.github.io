@@ -6,6 +6,8 @@ important and timely information related to Ed-Fi offerings.
 The following list is sorted with the latest advisory at the top.
 
 * [Advisory: Assessment of the Polly Open Source Maintenance Fee - September, 2026](./polly-osmf-2026-09-09.md)
+* [Advisory: Threat Assessment and Mitigation for AutoMapper Denial of Service - March, 2026](./automapper-2026-03-31.md)
+* [Advisory: Issues in Serialized Data Feature - September, 2025](./serialized-data.md)
 * [Advisory: Implementation Error When Using Profiles with Multi-Tenant Deployments - February, 2025](./profiles%20in%20multi-tenancy.md)
 * [Advisory: String Validation Divergence - June, 2024](./string-validation.md)
 * [Advisory: Microsoft SqlClient Vulnerability - February, 2024](./sqlclient.md)
