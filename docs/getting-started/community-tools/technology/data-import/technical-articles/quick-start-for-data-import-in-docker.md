@@ -72,7 +72,7 @@ and key files. Else can generate the new certificate and key files as follows:
 export MSYS_NO_PATHCONV=1 cd '{your repo root}' ./generate-cert.sh
 ```
 
-Please refer [Docker Deployment - Step 4. Provide SSL Certificate](../../7-docker/readme.mdx#step-4-provide-ssl-certificate) for
+Please refer [Docker Deployment - Step 4. Provide SSL Certificate](/reference/docker#step-4-provide-ssl-certificate) for
 more details.
 
 #### **Step 4. Setup the docker containers**

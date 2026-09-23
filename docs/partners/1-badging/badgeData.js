@@ -123,7 +123,7 @@ export default {
       logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/badging/innive-k12.png',
       productName: 'Ed-Fi Data Vault by Innive',
       provider: 'Innive Inc.',
-      website: 'https://k12360.com/data-as-a-service',
+      website: 'https://innive.com/services/ed-fi-interoperability-services/',
       validThrough: 'October 20, 2025',
       verifyingAgencies: ['Austin ISD, TX'],
       documentation: {
@@ -353,7 +353,7 @@ export default {
       verifyingAgencies: ['Tomball ISD'],
       documentation: {
         'Mapping Document':
-          'https://edfi.atlassian.net/wiki/download/attachments/20611183/ODS+Ed-Fi+Data+Model+Reference.pdf?version=1',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/1-badging/ODS%20Ed-Fi%20Data%20Model%20Reference.pdf',
         'Go-Live 2024-2025 Ed-Fi Overview':
           'https://kb.ondatasuite.com/article-categories/go-live-2024-2025-ed-fi-overview/',
       },
