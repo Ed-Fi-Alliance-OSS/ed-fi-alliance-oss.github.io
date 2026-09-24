@@ -4,7 +4,7 @@ sidebar_position: 2
 ---
 
 
-## 2. The Ed-Fi Ecosystem
+## 2. The Ed-Fi Data Standard and API Ecosystem
 
 ### 2.1 How the Ed-Fi API Works
 
@@ -14,7 +14,7 @@ The _**API**_ is how data enters and exits the system. It provides a standardize
 
 Access to the API is controlled by implementation-specific credentials issued for each environment. These credentials determine what data can be submitted and accessed. Permissions are managed through predefined access configurations, often called claimsets, that define the scope of allowed interactions with the API.
 
-In practice, this means that an assessment vendor integrates into a defined environment by authenticating with the API and submitting data in alignment with the Ed-Fi data model. The system receiving the data may represent a district, a state, or another education agency implementation, but the interaction model remains consistent.
+In practice, this means that an assessment vendor integrates into a defined environment by authenticating with the API and submitting data in alignment with the Ed-Fi Data Standard. The system receiving the data may represent a district, a state, or another education agency implementation, but the interaction model remains consistent.
 
 :::tip
 
@@ -78,16 +78,16 @@ The Ed-Fi Assessment domain provides a flexible structure that can represent a w
 
 ### 2.3 Descriptors and Namespaces
 
-Two foundational concepts when working with Ed-Fi are _descriptors_ and _namespaces_ both the representation of categorical meaning and its ownership, which are critical for preserving semantic integrity across integrations.
+Two foundational concepts when working with the Ed-Fi Data Standard are _descriptors_ and _namespaces_ both the representation of categorical meaning and its ownership, which are critical for preserving semantic integrity across integrations.
 
-A _**descriptor**_ represents a controlled vocabulary value. It is how Ed-Fi expresses categorical meaning in a consistent, machine-readable way. Examples include score types, performance levels, and assessment periods. Descriptors are not just labels. They are governed values that must be interpreted consistently across systems.
+A _**descriptor**_ represents a controlled vocabulary value. It is how the Ed-Fi Data Standard expresses categorical meaning in a consistent, machine-readable way. Examples include score types, performance levels, and assessment periods. Descriptors are not just labels. They are governed values that must be interpreted consistently across systems.
 
-A _**namespace**_ represents _ownership of meaning_. It defines who is responsible for the definition and lifecycle of a descriptor. This is a critical distinction in Ed-Fi:
+A _**namespace**_ represents _ownership of meaning_. It defines who is responsible for the definition and lifecycle of a descriptor. This is a critical distinction in the Ed-Fi Data Standard:
 
-- The default Ed-Fi namespace is used for shared, cross-domain concepts (such as AcademicSubject or GradeLevel).
+- The default ed-fi.org namespace (governed by the Ed-Fi Alliance) is used for shared, cross-domain concepts (such as AcademicSubject or GradeLevel).
 - A vendor namespace is used for assessment-specific semantics that originate from the provider (such as score names or performance levels).
 
-Ed-Fi separates these namespaces intentionally. This separation ensures that:
+The Ed-Fi model separates these namespaces intentionally. This separation ensures that:
 
 - Vendor meaning is preserved exactly as reported
 - Shared concepts remain consistent across domains
@@ -111,11 +111,11 @@ This pattern is essential. It ensures that:
 - Local interpretations are explicit and auditable
 - Multiple vendors can coexist without forcing premature standardization
 
-### 2.4 Student Identity in Ed-Fi
+### 2.4 Student Identity in the Ed-Fi Data Standard
 
-A foundational concept in Ed-Fi is the use of the _StudentUniqueId_ as the canonical anchor for student identity. All student-level data, including assessment results, must resolve to the student represented by this identifier in order to be successfully ingested, linked, and reported.
+A foundational concept in the Ed-Fi Data Standard is the use of the _StudentUniqueId_ as the canonical anchor for student identity. All student-level data, including assessment results, must resolve to the student represented by this identifier in order to be successfully ingested, linked, and reported.
 
-This requirement is critical because Ed-Fi does not rely on names or local identifiers for matching. Instead, the StudentUniqueId ensures that records are consistently associated with the correct student across systems, time, and data domains.
+This requirement is critical because the Ed-Fi Data Standard does not rely on names or local identifiers for matching. Instead, the StudentUniqueId ensures that records are consistently associated with the correct student across systems, time, and data domains.
 
 When assessment data does not correctly resolve to the student represented by a valid StudentUniqueId, several issues can occur:
 
@@ -129,7 +129,7 @@ This section introduces the concept at a high level. A more detailed treatment o
 
 ### 2.5 Worked Example: A Benchmark Assessment End to End
 
-This worked example introduces a hypothetical single-subject benchmark assessment — the **ClearPath K–3 Reading Benchmark** — and walks through how it is completely represented in Ed-Fi. It covers the Assessment definition, the three ObjectiveAssessment records that define its subscore hierarchy, a StudentAssessment event record, and the StudentObjectiveAssessment results collection nested within it. Descriptor usage, namespace ownership, and event context fields are shown in concrete annotated payloads. This example serves as the primary reference point throughout the remainder of the Playbook.
+This worked example introduces a hypothetical single-subject benchmark assessment — the **ClearPath K–3 Reading Benchmark** — and walks through how it is completely represented using the Ed-Fi Data Standard. It covers the Assessment definition, the three ObjectiveAssessment records that define its subscore hierarchy, a StudentAssessment event record, and the StudentObjectiveAssessment results collection nested within it. Descriptor usage, namespace ownership, and event context fields are shown in concrete annotated payloads. This example serves as the primary reference point throughout the remainder of the Playbook.
 
 #### Assessment overview
 
@@ -147,13 +147,13 @@ ClearPath is a hypothetical assessment vendor offering a benchmark screener for 
 
 :::note GOVERNANCE — SECTION 4: ONE SUBJECT PER ASSESSMENT
 
-This example intentionally covers one subject only. If ClearPath also offers a Math screener, that is a separate Assessment record with its own assessmentIdentifier, its own ObjectiveAssessments, and its own StudentAssessment events. A single Assessment record must never span two academic subjects. The two assessments share a vendor and a namespace but are otherwise independent entities in Ed-Fi. Placing both Reading and Math results under one Assessment identifier collapses the subject boundary, prevents subject-level analytics, and violates the single-subject rule defined in Section 4.
+This example intentionally covers one subject only. If ClearPath also offers a Math screener, that is a separate Assessment record with its own assessmentIdentifier, its own ObjectiveAssessments, and its own StudentAssessment events. A single Assessment record must never span two academic subjects. The two assessments share a vendor and a namespace but are otherwise independent entities in the Ed-Fi Data Standard. Placing both Reading and Math results under one Assessment identifier collapses the subject boundary, prevents subject-level analytics, and violates the single-subject rule defined in Section 4.
 
 :::
 
 #### Entity hierarchy
 
-The Ed-Fi assessment domain uses two parallel layers. The definition layer describes the assessment structure. The event layer records what a specific student did on a specific date. One Assessment record anchors three ObjectiveAssessments. One StudentAssessment event carries three nested StudentObjectiveAssessment results — one per subscore. The relationships are shown in the table below.
+The Ed-Fi Assessment domain uses two parallel layers. The definition layer describes the assessment structure. The event layer records what a specific student did on a specific date. One Assessment record anchors three ObjectiveAssessments. One StudentAssessment event carries three nested StudentObjectiveAssessment results — one per subscore. The relationships are shown in the table below.
 
 ```mermaid
 graph TD
@@ -476,7 +476,7 @@ The natural key for this record is the combination of studentUniqueId + assessme
 
 :::note STUDENT IDENTITY — SECTION 8
 
-The studentUniqueId value 1000 is the Ed-Fi state identifier for this student, resolved from ClearPath's internal vendor identifier fake_student_1 via the identity crosswalk at integration time. The vendor's internal identifier must never be placed in studentUniqueId. Correct identity resolution at this step determines whether every downstream assessment record links accurately to the right student enrollment, demographic, and program data.
+The studentUniqueId value 1000 is the Ed-Fi ODS/API state identifier for this student, resolved from ClearPath's internal vendor identifier fake_student_1 via the identity crosswalk at integration time. The vendor's internal identifier must never be placed in studentUniqueId. Correct identity resolution at this step determines whether every downstream assessment record links accurately to the right student enrollment, demographic, and program data.
 
 :::
 
@@ -575,7 +575,7 @@ Resources must be POSTed in dependency order: Assessment first, then ObjectiveAs
 
 #### Descriptor reference — ClearPath Reading Benchmark
 
-Every descriptor used in this example is listed below with its namespace, type, and ownership classification. Vendor-owned descriptors use the clearpath.example.com namespace prefix. Ed-Fi shared descriptors use the ed-fi.org namespace. This table should be included in vendor documentation and supplied as part of the integration evidence artifact package.
+Every descriptor used in this example is listed below with its namespace, type, and ownership classification. Vendor-owned descriptors use the clearpath.example.com namespace prefix. The Ed-Fi shared descriptors use the ed-fi.org namespace. This table should be included in vendor documentation and supplied as part of the integration evidence artifact package.
 
 |**Descriptor value**|**Type**|**Owner**|
 |---|---|---|
@@ -593,9 +593,9 @@ Every descriptor used in this example is listed below with its namespace, type, 
 |PerformanceLevelDescriptor#Average|PerformanceLevel (subtest)|**Vendor**|
 |PerformanceLevelDescriptor#Higher than Average|PerformanceLevel (subtest)|**Vendor**|
 |GradeLevelDescriptor#Kindergarten (and Grade 1–3)|GradeLevel|**Ed-Fi shared**|
-|AcademicSubjectDescriptor#English Language Arts|AcademicSubject|**Ed-Fi shared**|
-|ResultDatatypeTypeDescriptor#Integer|ResultDatatypeType|**Ed-Fi shared**|
-|ResultDatatypeTypeDescriptor#Decimal|ResultDatatypeType|**Ed-Fi shared**|
+|AcademicSubjectDescriptor#English Language Arts|AcademicSubject|**Ed-Fi Alliance shared**|
+|ResultDatatypeTypeDescriptor#Integer|ResultDatatypeType|**Ed-Fi Alliance shared**|
+|ResultDatatypeTypeDescriptor#Decimal|ResultDatatypeType|**Ed-Fi Alliance shared**|
 
 ResultDatatypeTypeDescriptor#Level is an Ed-Fi shared ResultDatatypeType.
 
