@@ -580,7 +580,7 @@ export default {
 },
 
  {
-  logo: 'https://edfidocs.blob.core.windows.net/$web/assets/partners/1-badging/Cloudwick%20_%20Amorphic%20Logo%20Lockup_Square.png'
+  logo: 'https://edfidocs.blob.core.windows.net/$web/assets/partners/1-badging/Cloudwick%20_%20Amorphic%20Logo%20Lockup_Square.png',
   productName: 'Amorphic',
   provider: 'Cloudwick',
   website: 'https://cloudwick.com/',
