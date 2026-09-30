@@ -37,7 +37,8 @@
     "js-yaml": "4.2.0",
     "gray-matter": {
       "js-yaml": "^3.13.1"
-    }
+    },
+    "qs": ">=6.16.0"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.7.0",
