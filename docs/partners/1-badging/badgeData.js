@@ -579,7 +579,21 @@ export default {
   availability: 'Available to any agency (all sizes) or vendor in the U.S.',
 },
 
-
+ {
+  logo: 'https://edfidocs.blob.core.windows.net/$web/assets/partners/1-badging/Cloudwick%20_%20Amorphic%20Logo%20Lockup_Square.png',
+  productName: 'Amorphic',
+  provider: 'Cloudwick',
+  website: 'https://cloudwick.com/',
+  validThrough: 'September 25, 2028',
+  verifyingAgencies: ['Michigan Association of Intermediate School Administrators (MAISA)'],
+  documentation: {
+    'Mapping Document': 'https://edfidocs.blob.core.windows.net/$web/assets/partners/1-badging/Cloudwick%20ED-FI%20MAPPING%20SHEET.xlsx',
+  },
+  versionCompatibility: [
+    'Amorphic Platform supports integration with the Ed-Fi ODS/API Version 6.2 and Ed-Fi Data Standard Version 4.0.0.',
+  ],
+  availability: 'Available to any agency (all sizes) or vendor in the U.S. on version 3.2 and above.',
+},
 
   ],
 
