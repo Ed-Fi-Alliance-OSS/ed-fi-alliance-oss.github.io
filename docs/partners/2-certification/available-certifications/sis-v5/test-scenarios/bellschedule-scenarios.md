@@ -29,4 +29,4 @@ This entity represents the schedule of class period meeting times.
 | classPeriodReference | classPeriodName      | FALSE         | string               | REQUIRED            | Class Period 1       | Class Period 4       | Class Period 1       | Class Period 4       |
 | classPeriodReference | classPeriodName      | FALSE         | string               | REQUIRED            | Class Period 2       | Class Period 5       | Class Period 2       | Class Period 5       |
 | classPeriodReference | classPeriodName      | FALSE         | string               | REQUIRED            | Class Period 3       | Class Period 6       |                      |                      |
-| BellSchedule         | alternateDayName     | FALSE         | boolean              | REQUIRED            | A                    | B                    | A                    | B                    |
+| BellSchedule         | alternateDayName     | FALSE         | string               | REQUIRED            | A                    | B                    | A                    | B                    |

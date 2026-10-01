@@ -7,9 +7,9 @@ sidebar_position: 4
 The Ed-Fi Alliance publishes a set of Docker images and NuGet packages with each
 Ed-Fi API release. Docker images are the primary way to run Ed-Fi API v8; see
 [Docker Deployment](./docker-deployment.md) for deployment instructions. The
-NuGet packages below provide supporting artifacts, including client SDKs,
-database provisioning tools, and sample-data templates, published to the
-**Ed-Fi AzureFeed**.
+NuGet packages below provide supporting artifacts, including API schema
+packages, client SDKs, database provisioning tools, and sample-data templates,
+published to the **Ed-Fi AzureFeed**.
 
 ## Ed-Fi API v8.0.0 Docker Images
 
@@ -33,3 +33,15 @@ database provisioning tools, and sample-data templates, published to the
 | EdFi.Api.Minimal.Template.PostgreSql.6.1.0 | Minimal seed-data template (PostgreSQL), Data Standard 6.1 | [EdFi.Api.Minimal.Template.PostgreSql.6.1.0 8.0.0](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.Api.Minimal.Template.PostgreSql.6.1.0/overview/8.0.0) |
 | EdFi.Api.Populated.Template.PostgreSql.5.2.0 | Populated sample-data template (PostgreSQL), Data Standard 5.2 | [EdFi.Api.Populated.Template.PostgreSql.5.2.0 8.0.0](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.Api.Populated.Template.PostgreSql.5.2.0/overview/8.0.0) |
 | EdFi.Api.Populated.Template.PostgreSql.6.1.0 | Populated sample-data template (PostgreSQL), Data Standard 6.1 | [EdFi.Api.Populated.Template.PostgreSql.6.1.0 8.0.0](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.Api.Populated.Template.PostgreSql.6.1.0/overview/8.0.0) |
+
+## Ed-Fi API v8.0.0 Schema Packages
+
+The API schema for each supported Data Standard is published as a separate
+package. Each contains the core `ApiSchema.json` that the Ed-Fi API loads at
+startup.
+
+| Package | Data Standard | Location |
+| --- | --- | --- |
+| EdFi.DataStandard40.ApiSchema | 4.0.0 | [EdFi.DataStandard40.ApiSchema 1.0.333](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.DataStandard40.ApiSchema/overview/1.0.333) |
+| EdFi.DataStandard52.ApiSchema | 5.2.0 | [EdFi.DataStandard52.ApiSchema 1.0.333](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.DataStandard52.ApiSchema/overview/1.0.333) |
+| EdFi.DataStandard61.ApiSchema | 6.1.0 | [EdFi.DataStandard61.ApiSchema 1.0.333](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.DataStandard61.ApiSchema/overview/1.0.333) |

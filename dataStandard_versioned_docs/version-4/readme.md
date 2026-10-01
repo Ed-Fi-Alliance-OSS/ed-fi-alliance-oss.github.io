@@ -24,7 +24,7 @@ is documented via 2 primary artifacts: the **Ed-Fi Data Handbook** and a set of
 **Unified Modeling Language (UML)** diagrams.
 
 * <a href="https://edfidocs.blob.core.windows.net/$web/handbook/v4.0/index.html" target="_blank">Ed-Fi Data Handbook for DS v4.0</a>
-* [Ed-Fi UDM UML Diagrams](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Standard/tree/main/Models) (Visio format, on GitHub)
+* [Ed-Fi UDM UML Diagrams](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v4.0.1/Models) (Visio format, on GitHub)
 
 Additional documentation is provided in the [Ed-Fi Unifying Data
 Model](/reference/data-exchange/udm) documentation. This additional documentation provides narrative overviews of domains and

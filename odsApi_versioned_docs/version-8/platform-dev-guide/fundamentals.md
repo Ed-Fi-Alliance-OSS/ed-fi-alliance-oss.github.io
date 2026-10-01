@@ -48,7 +48,7 @@ generated automatically from the data model description, so extensions are
 reflected consistently across the platform without manual maintenance.
 
 See the section on
-[Extensibility & Customization](./extensibility/readme.md) in this documentation
+[Extensibility & Customization](./extensibility-customization/readme.md) in this documentation
 for details.
 
 ## An Open Source, Customizable System
@@ -66,9 +66,9 @@ customize or swap out modules to improve fit with their environment and to ready
 the solution for production deployment.
 
 The Ed-Fi Alliance also welcomes code contributions from field implementers and
-hosts a platform called the Ed-Fi Exchange that allows licensees to share code
+hosts a platform called Ed-Fi Community Tools that allows licensees to share code
 modules. For a listing of available technology and information about how to
-contribute code, see [exchange.ed-fi.org](http://exchange.ed-fi.org).
+contribute code, see [Ed-Fi Community Tools](/getting-started/community-tools).
 
 ## Key Structure
 
@@ -125,7 +125,7 @@ toolchain. The same schema file drives database provisioning (via the
 For implementers extending the data model, MetaEd provides a lightweight
 language to express data model customizations. The toolchain generates the
 `ApiSchema.json` extension artifact automatically, and the API picks it up on
-startup. See [Extending with MetaEd](./extensibility/extending-with-metaed.md)
+startup. See [Extending API DataModel](./extensibility-customization/extending-api-datamodel.md)
 for details.
 
 Schema-driven generation from an authoritative source ensures that the API,

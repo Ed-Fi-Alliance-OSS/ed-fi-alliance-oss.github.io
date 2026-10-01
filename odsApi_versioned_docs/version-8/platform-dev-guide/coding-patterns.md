@@ -49,6 +49,6 @@ extensions following the patterns defined in the Ed-Fi Extensions Framework and
 produces the core technical artifact required by Ed-Fi API v8: the
 `ApiSchema.json` file. This single file drives the API surface, database
 provisioning, authorization structures, and Swagger documentation. The
-[Extensibility & Customization](./extensibility/readme.md) section in this
+[Extensibility & Customization](./extensibility-customization/readme.md) section in this
 documentation provides information on integrating data model extensions with
 Ed-Fi API v8.

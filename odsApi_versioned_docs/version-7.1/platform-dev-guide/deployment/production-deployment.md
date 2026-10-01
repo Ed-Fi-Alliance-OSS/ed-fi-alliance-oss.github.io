@@ -159,9 +159,9 @@ server. In a load-balanced configuration, an external cache should be used.
 ### Cloud-Based Deployment Models
 
 Documentation and scripts for deployment of an Ed-Fi ODS / API instance in
-Microsoft Azure and Amazon Web Services can be found in the Ed-Fi Exchange. To
+Microsoft Azure and Amazon Web Services can be found in the Ed-Fi Community Tools. To
 locate these, navigate
-to [https://exchange.ed-fi.org](https://exchange.ed-fi.org/) and browse to the
+to [Ed-Fi Community Tools](/getting-started/community-tools/technology) and browse to the
 following entries:
 
 * **Ed-Fi ODS/API on AWS**

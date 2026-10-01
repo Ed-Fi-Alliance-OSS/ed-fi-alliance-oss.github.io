@@ -1,5 +1,12 @@
 # Ed-Fi Assessment Outcomes API for Data Standard v4 Certification
 
+:::warning
+
+The  Ed-Fi Assessment Outcomes API for Data Standard v4 Certification is no longer supported. Please refer to
+[Ed-Fi Assessment API for Data Standard V5 Certification](https://docs.ed-fi.org/partners/certification/available-certifications/assessment-v5/). 
+
+:::
+
 Certification Name: Ed-Fi Assessment Outcomes API for Suite 3\
 
 Standards Referenced:\
@@ -7,8 +14,8 @@ Standards Referenced:\
    Ed-Fi API Design & Implementation Guidelines v3.1\
 Technical Suite: Suite 3\
 Obsoletes: –\
-Obsoleted By: –\
-Status: Active
+Obsoleted By: August 2026
+Status: Not active
 
 Certifying Organization: Ed-Fi Alliance\
 Contact: [certification@ed-fi.org](mailto:certification@ed-fi.org)\

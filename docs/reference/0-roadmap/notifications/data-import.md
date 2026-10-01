@@ -1,4 +1,4 @@
-# Data Import Transitioning to Ed-Fi Exchange in 2026
+# Data Import Transitioning to Ed-Fi Community Tools in 2026
 
 Originally published: Dec 12, 2023
 
@@ -11,8 +11,8 @@ Data Import version 2.3 will be the last supported release of the application,
 arriving in the second or third quarter of 2024. From that point, it will be
 in [maintenance mode](./readme.mdx) until June 30, 2026. While in maintenance
 mode, a new patch release will only occur for critical bugs and security
-updates. In 2026, Data Import will move to the [Ed-Fi
-Exchange](/getting-started/edfi-exchange) and the source repository will be set into
+updates. In 2026, Data Import will move to [Ed-Fi Community
+Tools](/getting-started/community-tools) and the source repository will be set into
 archive, signaling that the application support has formally ended.
 
 ## Why?

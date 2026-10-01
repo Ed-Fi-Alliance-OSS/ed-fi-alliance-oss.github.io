@@ -172,7 +172,7 @@ table shows the current status.
 | Multi-tenancy | Yes | Yes |
 | School-year / district routing | Yes | Yes |
 | Changed record queries | Yes | Yes, with [minor limitations](../platform-dev-guide/features/changed-record-queries.md#current-limitations) |
-| MetaEd extensions | Yes | Yes (different workflow — see [Extending with MetaEd](../platform-dev-guide/extensibility/extending-with-metaed.md)) |
+| MetaEd extensions | Yes | Yes (different workflow — see [Extending API DataModel](../platform-dev-guide/extensibility-customization/extending-api-datamodel.md)) |
 | OneRoster | Yes | Not available in v8.0 |
 | Bulk Load Client utility | Yes | Yes (same tool, updated for v8 URLs) |
 | Sandbox Administration Portal | Yes | Not available in v8.0 |

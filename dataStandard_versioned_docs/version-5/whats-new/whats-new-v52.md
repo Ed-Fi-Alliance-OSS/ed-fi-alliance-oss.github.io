@@ -10,7 +10,7 @@ Beside these main updates, DS v5.2 also introduces some minor changes to the Ed-
 
 ### A new domain is added for Assessment Registration
 
-[DATASTD-2168](https://edfi.atlassian.net/browse/DATASTD-2168)
+[DATASTD-2270](https://edfi.atlassian.net/browse/DATASTD-2270)
 
 The Assessment Registration domain outlines the entities and relationships necessary for SEAs and LEAs to register students for assessments and share registration data with the assessment vendor. This domain covers various assessments, ensuring that educational organizations have a protocol to communicate student registrations to the vendor promptly. Key concepts for the domain are assessment, assessment administration, assessment battery part, and assessment accommodations.
 

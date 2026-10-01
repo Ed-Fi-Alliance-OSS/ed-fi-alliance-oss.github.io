@@ -1,5 +1,12 @@
 # Proposed Credentialing Changes for School Year 2026-27
 
+:::tip
+
+Update: these changes are now in effect.
+
+:::
+
+
 The Ed-Fi Alliance conducts an annual review of its credentialing process, soliciting input from education agencies, vendor partners, and community members. This comprehensive approach ensures transparency and predictability in credentialing changes while providing the community with opportunities for feedback at multiple stages.
 
 As part of this yearly process, we are presenting proposed credentialing updates for community review. These changes are scheduled to take effect in November 2024, targeting School Year 2025-25 implementations. The proposed updates are designed to align with the official release of Data Standard version 5.2. By aligning these updates, the Ed-Fi Alliance aims to streamline adoption and maintain consistency across its ecosystem.

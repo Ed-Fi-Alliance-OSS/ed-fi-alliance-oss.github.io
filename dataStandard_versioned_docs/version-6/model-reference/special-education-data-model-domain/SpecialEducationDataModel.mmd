@@ -1,9 +1,9 @@
 ﻿erDiagram
  StudentIEP {
-     reference Student "I"
      reference EducationOrganization "I"
-     string StudentIEPIdentifier "I"
      date IEPFinalizedDate "I"
+     reference Student "I"
+     string StudentIEPIdentifier "I"
      date IEPBeginDate "R"
      date IEPEndDate "R"
      descriptor IEPStatus "R"
@@ -20,10 +20,10 @@
  }
 
  IDEAEvent {
-     reference Student "I"
      reference EducationOrganization "I"
      string IDEAEventIdentifier "I"
      descriptor IDEAEventType "I"
+     reference Student "I"
      date BeginDate "R"
      date EndDate "O"
      descriptor EventCompliance "O"
@@ -33,15 +33,15 @@
 
  EducationOrganization {
      integer EducationOrganizationId "I"
-     string NameOfInstitution "R"
-     string ShortNameOfInstitution "O"
      descriptor EducationOrganizationCategory "RC"
+     string NameOfInstitution "R"
      common Address "OC"
-     common InternationalAddress "OC"
-     common InstitutionTelephone "OC"
-     string WebSite "O"
-     descriptor OperationalStatus "O"
      common EducationOrganizationIndicator "OC"
+     common InstitutionTelephone "OC"
+     common InternationalAddress "OC"
+     descriptor OperationalStatus "O"
+     string ShortNameOfInstitution "O"
+     string WebSite "O"
  }
 
  StudentIEPServicePrescription["StudentIEP<br/>ServicePrescription"] {
@@ -60,10 +60,10 @@
  }
 
  StudentIEPServiceDelivery {
-     reference StudentIEP "I"
      string IEPServiceDeliveryIdentifier "I"
      descriptor ServiceDelivery "I"
      date ServiceDeliveryDate "I"
+     reference StudentIEP "I"
      reference IDEAEvent "OC"
      common Provider "OC"
      reference StudentIEPServicePrescription "O"
@@ -71,34 +71,34 @@
 
  Student {
      string StudentUniqueId "I"
+     common BirthData "R"
      common Name "R"
      common OtherName "OC"
-     common BirthData "R"
      reference Person "O"
  }
 
  Staff {
      string StaffUniqueId "I"
      common Name "R"
-     common OtherName "OC"
      date BirthDate "O"
+     reference Credential "OC"
+     reference EducatorPreparationProgram "OC"
+     common EducatorResearch "O"
      descriptor HighestCompletedLevelOfEducation "O"
+     descriptor HighlyQualifiedAcademicSubject "OC"
+     bool HighlyQualifiedTeacher "O"
+     string LoginId "O"
+     reference OpenStaffPosition "O"
+     common OtherName "OC"
+     reference Person "O"
+     common Recognition "OC"
      decimal YearsOfPriorProfessionalExperience "O"
      decimal YearsOfPriorTeachingExperience "O"
-     string LoginId "O"
-     bool HighlyQualifiedTeacher "O"
-     common Recognition "OC"
-     reference Credential "OC"
-     reference Person "O"
-     descriptor HighlyQualifiedAcademicSubject "OC"
-     common EducatorResearch "O"
-     reference EducatorPreparationProgram "OC"
-     reference OpenStaffPosition "O"
  }
 
  StudentIEPGoal {
-     reference StudentIEP "I"
      string IEPGoalIdentifier "I"
+     reference StudentIEP "I"
      string IEPGoalDetails "R"
      descriptor IEPGoalType "R"
      common GoalAchievementPeriod "O"

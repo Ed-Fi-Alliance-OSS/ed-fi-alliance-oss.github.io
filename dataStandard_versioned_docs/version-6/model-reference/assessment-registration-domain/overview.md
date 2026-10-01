@@ -24,7 +24,7 @@ The key entities in the Assessment Registration domain are:
   customization of an assessment. The entity has references to AssessmentAdministration,
   TestingEducationOrganization, ReportingEducationOrganization and
   StudentEducationOrganizationAssessmentAccommodation entities, and
-  StudentEducationOrganizationAssociation as well as StudentSchoolAssociation.
+  StudentDemographic as well as StudentSchoolAssociation.
 * An _AssessmentBatteryPart_ entity that defines the parts organized for administering
   the assessment for a comprehensive assessment of the student. It has reference to Assessment
   and the ObjectiveAssessment.

@@ -50,7 +50,6 @@ These use cases apply to the Early Warning community priority.
 | ------------------------------------------------- | ----- |
 | /disciplineActions                                |       |
 | /disciplineIncidents                              |       |
-| /studentDisciplineIncidentAssociations            |       |
 | /grades                                           |       |
 | /studentDisciplineIncidentBehaviorAssociations    |       |
 | /calendars                                        |       |
