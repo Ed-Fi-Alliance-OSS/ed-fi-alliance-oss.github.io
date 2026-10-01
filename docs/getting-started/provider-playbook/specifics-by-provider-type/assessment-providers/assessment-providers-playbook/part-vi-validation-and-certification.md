@@ -4,7 +4,7 @@ sidebar_position: 6
 ---
 
 
-Testing is the enforcement layer of the playbook. An integration can produce technically valid Ed-Fi payloads and still fail the definition of a native integration if the data are ambiguous, incomplete for local use, or unstable under reprocessing.
+Testing is the enforcement layer of the playbook. An integration can produce technically valid Ed-Fi API payloads and still fail the definition of a native integration if the data are ambiguous, incomplete for local use, or unstable under reprocessing.
 
 The purpose of this validation framework is not to restate modeling rules, but to enforce them. Each validation category confirms that the requirements defined in Parts III–V are implemented correctly and consistently.
 
@@ -116,7 +116,7 @@ Validation must verify:
 
   - Vendor descriptors remain in vendor namespace
 
-  - Shared descriptors use Ed-Fi namespace
+  - Shared descriptors use the ed-fi.org namespace
 
   - Namespace usage is consistent across environments
 
@@ -232,7 +232,7 @@ Validation must verify:
 
 #### Passing Result
 
-All student results resolve to valid Ed-Fi student records, with unmatched cases clearly surfaced and actionable.
+All student results resolve to valid Ed-Fi ODS/API student records, with unmatched cases clearly surfaced and actionable.
 
 ### 14.6 Safe Reprocessing Simulation
 
