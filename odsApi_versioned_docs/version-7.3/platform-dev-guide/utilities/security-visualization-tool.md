@@ -93,7 +93,7 @@ v7.3 contains eight claim sets, resulting in eight folders.
 
 This section provides some examples of output from the Security Visualization
 Tool, along with explanatory notes. An understanding of the concepts described
-in [API Claim Sets &amp; Resources](../security/api-claim-sets-resources.md) is
+in [API Claim Sets &amp; Resources](../security/api-claim-sets-resources.mdx) is
 useful to fully understand the visualizations.
 
 Note that the shading of font has relevance:
