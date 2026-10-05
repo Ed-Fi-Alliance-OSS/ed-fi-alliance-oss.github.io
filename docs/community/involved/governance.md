@@ -26,7 +26,7 @@ Current groups:
 - [State Education Agencies](https://edfi.atlassian.net/wiki/spaces/GOV/pages/20332626/State+Education+Agency+Work+Group)
 - [Educator Prep Program (EPP)](https://edfi.atlassian.net/wiki/spaces/GOV/pages/20335903/Educator+Prep+Program+EPP+Work+Group)
 
-From time to time, these long-lived workgroups are complemented by temporary Special Interest Groups (SIGs). Unlike governance workgroups, SIGs are initiated by the Alliance with a more narrow focus and designed to produce specific, discrete outputs. SIGs report their work out to to the Technical Advisory Group, who connect SIG outputs to to other Ed-Fi governance processes. Visit the [SIG page in Confluence](https://edfi.atlassian.net/wiki/spaces/ESIG/overview) for a list of current and past SIGs and their meeting notes.
+From time to time, these long-lived workgroups are complemented by temporary Special Interest Groups (SIGs). Unlike governance workgroups, SIGs are initiated by the Alliance with a more narrow focus and designed to produce specific, discrete outputs. SIGs report their work out to the Technical Advisory Group, who connect SIG outputs to other Ed-Fi governance processes. Visit the [SIG page in Confluence](https://edfi.atlassian.net/wiki/spaces/ESIG/overview) for a list of current and past SIGs and their meeting notes.
 
 :::tip
 
