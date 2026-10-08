@@ -13,9 +13,9 @@ Command-line arguments take precedence over environment variables, which in turn
 take precedence over the values defined in the _publisherSettings.json_
 configuration file. To use environment variables to provide configuration
 values, use the "Configuration Path" from the tables below, and add an
-`EdFi:Publisher:` prefix to the name of each variable. For example, to specify a
-named connection for the source API using an environment variable, use an
-environment variable name of `EdFi:Publisher:Connections:Source:Name`.
+`EdFi:ApiPublisher:` prefix to the name of each variable. For example, to
+specify a named connection for the source API using an environment variable, use
+an environment variable name of `EdFi:ApiPublisher:Connections:Source:Name`.
 
 ## Options
 
@@ -25,7 +25,7 @@ Defines general behavior of the Ed-Fi API Publisher.
 | --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Options:BearerTokenRefreshMinutes<br/>`--bearerTokenRefreshMinutes`                                       | Indicates how frequently the Ed-Fi API Publisher will obtain a new bearer token from the source and target API endpoints.<br/>(_Default value: 28_)                                                                                                                                        |
 | Options:RetryStartingDelayMilliseconds<br/>`--retryStartingDelayMilliseconds`                             | Indicates the initial delay in milliseconds used when performing an exponential "back off" delay for retries (doubling the delay between retries after each attempt).<br/>(_Default value: 100_)                                                                                           |
-| Options:MaxRetryAttempts<br/>`--maxRetryAttempts`                                                         | Indicates the number of times the Ed-Fi API Publisher will attempt to _resend_ a request against the source or target APIs before determining that the failure is permanent.<br/>(_Default value: 10_)                                                                                     |
+| Options:MaxRetryAttempts<br/>`--maxRetryAttempts`                                                         | Indicates the number of times the Ed-Fi API Publisher will attempt to _resend_ a request against the source or target APIs before determining that the failure is permanent.<br/>(_Default value: 5_)                                                                                      |
 | Options:MaxDegreeOfParallelismForResourceProcessing<br/>`--maxDegreeOfParallelismForResourceProcessing`   | Indicates the total number of resources that can be processed simultaneously.<br/>(_Default value: 10_)                                                                                                                                                                                    |
 | Options:MaxDegreeOfParallelismForPostResourceItem<br/>`--maxDegreeOfParallelismForPostResourceItem`       | Indicates the total number of threads that could be simultaneously issuing POST requests against the target API for each resource being processed.<br/>(_Default value: 20_)                                                                                                               |
 | Options:MaxDegreeOfParallelismForStreamResourcePages<br/>`--maxDegreeOfParallelismForStreamResourcePages` | Indicates the total number of threads that could be simultaneously issuing paged GET requests against the source API for each resource being processed.<br/>(_Default value: 5_)                                                                                                           |

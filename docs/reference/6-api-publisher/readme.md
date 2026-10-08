@@ -78,7 +78,7 @@ the Ed-Fi stack.
 #### Option 3 - Build the API Publisher from source code
 
 If you would like to build the API Publisher from source, build the solution by
-running the following command from the repository's root directory:
+running the following command from the repository's `src` directory:
 
 ```powershell
  dotnet build
@@ -131,16 +131,16 @@ executing the following command, substituting your own API client's key and
 secrets. (Below development keys as shown in other Ed-Fi examples):
 
 ```powershell
-.\EdFiApiPublisher.exe --sourceUrl=https://api.ed-fi.org/v5.2/api/ \
-  --sourceKey=RvcohKz9zHI4 \
-  --sourceSecret=E1iEFusaNf81xzCxwHfbolkC \
-  --targetUrl=http://localhost:54746/ \
-  --targetKey=minimal_sandbox_API_key \
-  --targetSecret=minimal_sandbox_API_secret \
-  --ignoreIsolation=true \
-  --maxDegreeOfParallelismForPostResourceItem=5 \
-  --maxDegreeOfParallelismForStreamResourcePages=3 \
-  --includeDescriptors=true \
+.\EdFiApiPublisher.exe --sourceUrl=https://api.ed-fi.org/v5.2/api/ `
+  --sourceKey=RvcohKz9zHI4 `
+  --sourceSecret=E1iEFusaNf81xzCxwHfbolkC `
+  --targetUrl=http://localhost:54746/ `
+  --targetKey=minimal_sandbox_API_key `
+  --targetSecret=minimal_sandbox_API_secret `
+  --ignoreIsolation=true `
+  --maxDegreeOfParallelismForPostResourceItem=5 `
+  --maxDegreeOfParallelismForStreamResourcePages=3 `
+  --includeDescriptors=true `
   --exclude=surveys
 ```
 
