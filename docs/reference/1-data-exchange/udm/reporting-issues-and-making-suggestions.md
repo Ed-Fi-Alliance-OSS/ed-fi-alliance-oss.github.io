@@ -24,8 +24,13 @@ for prior meeting notes and information on how to join the work group
 The Ed-Fi Alliance tracks issues and feature requests in Atlassian Jira Cloud.
 The [Data Standard
 project](https://edfi.atlassian.net/jira/software/c/projects/DATASTD/issues?jql=project%20%3D%20%22DATASTD%22%20ORDER%20BY%20created%20DESC)
-is open for anyone in the world to read. Unfortunately, we are **unable** to
-open this up so that Ed-Fi community could create or comment on issues.
+is currently publicly readable, but its access may change and it may no longer
+be publicly accessible. Community members are currently unable to create or
+comment on issues in the Jira project.
+
+To follow and discuss ongoing Data Standard work, see the [Data Standard ·
+Product Roadmap](https://github.com/orgs/Ed-Fi-Alliance-OSS/projects/2/views/3)
+in GitHub Issues. Anyone is welcome to comment on ongoing work there.
 
 ## Submitting a Case
 
