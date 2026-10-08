@@ -119,13 +119,13 @@ We have two ways to run API Publisher inside or outside the created container.
 ### Outside Container
 
 ```powershell
-docker exec -it ed-fi-ods-apipublisher dotnet EdFiApiPublisher.dll \
-  --sourceUrl={{SourceUrl}}/WebApi/ \
-  --sourceKey={{SourceKey}} \
-  --sourceSecret={{SourceSecret}} \
-  --targetUrl=https://{{TargetUrl}}/WebApi/ \
-  --targetKey={{TargetKey}} \
-  --targetSecret={{TargetSecret}} \
+docker exec -it ed-fi-ods-apipublisher dotnet EdFiApiPublisher.dll `
+  --sourceUrl={{SourceUrl}}/WebApi/ `
+  --sourceKey={{SourceKey}} `
+  --sourceSecret={{SourceSecret}} `
+  --targetUrl=https://{{TargetUrl}}/WebApi/ `
+  --targetKey={{TargetKey}} `
+  --targetSecret={{TargetSecret}} `
   {{Additional Parameters}}
 ```
 
