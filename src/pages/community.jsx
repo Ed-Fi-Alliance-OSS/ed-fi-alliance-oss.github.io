@@ -116,6 +116,11 @@ function Main() {
             <Heading as="h2">More information on getting involved</Heading>
             <ul>
               <li>
+                <Link to="/community/involved/governance">
+                  Governance
+                </Link>
+              </li>
+              <li>
                 <Link to="/community/involved/code-of-conduct">
                   Contributor Code of Conduct
                 </Link>
