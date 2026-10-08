@@ -1,5 +1,8 @@
 # Considerations for API Hosts
 
+The [Source API](#source-api) and [Target API](#target-api) sections describe
+the Ed-Fi ODS/API. For Ed-Fi API v8, see [Ed-Fi API v8](#ed-fi-api-v8).
+
 ## Source API
 
 ### Provide Snapshot Isolation for Client Publishing/Synchronization
@@ -14,7 +17,8 @@ Even worse, it could even result in undetected lost data (or changed data) in
 the target API.
 
 In order to provide an isolated context for client change processing, the host
-must perform the steps below.
+must perform the steps below. For an Ed-Fi ODS/API version 7 or later, see
+[Sources Without a Configured Snapshot](Known-Issues-Details.md#sources-without-a-configured-snapshot).
 
 #### Implement DevOps Processes for Maintaining Static Copy of the ODS
 
@@ -58,8 +62,8 @@ The host's process _should_ also perform the following steps:
 * Create an API client (key and secret) in the Admin app/database for use by the
   Ed-Fi API Publisher.
 * Provide the key, secret and your API's base URL to the party responsible for
-  configuring the Ed-Fi API Publisher's connections. The API's base URL includes
-  everything up to, but not including, the _/data/v3_ portion.
+  configuring the Ed-Fi API Publisher's connections. The API's base URL is the
+  address the API is reached at, the one that serves its Discovery document.
 
 ## Target API
 
@@ -82,8 +86,39 @@ The host's process _should_ also perform the following steps:
   the Ed-Fi API Publisher to write data _on behalf of_ a particular source API.
 * Associate the Application with the "Ed-Fi API Publisher - Writer" claim set.
 * Provide the key, secret and your API's base URL to the party responsible for
-  configuring the Ed-Fi API Publisher's connections. The API's base URL includes
-  everything up to, but not including, the _/data/v3_ portion.
+  configuring the Ed-Fi API Publisher's connections. The API's base URL is the
+  address the API is reached at, the one that serves its Discovery document.
+
+## Ed-Fi API v8
+
+Ed-Fi API v8 can be the source or the target of a publish, with an Ed-Fi ODS/API
+or another Ed-Fi API v8 instance at the other end. The publisher takes the paths
+and the token endpoint from the API's Discovery document, so no other
+connection settings are needed.
+
+Ed-Fi API v8 includes two claim sets for the publisher:
+
+| Claim set | Use |
+| --- | --- |
+| `EdFiAPIPublisherReader` | API client that reads from a source API. |
+| `EdFiAPIPublisherWriter` | API client that writes to a target API. |
+
+For each role, create a vendor and an application with the matching claim set
+through the Configuration Service, and associate the application with the data
+store and the education organizations whose data is published. See
+[API Client and Data Store Configuration](/reference/ed-fi-api/8/platform-dev-guide/configuration/api-client-and-data-store-configuration).
+
+Provide the key, secret and the API's base URL to the party responsible for
+configuring the Ed-Fi API Publisher's connections.
+
+As a source, Ed-Fi API v8.0 does not provide snapshot isolation. See
+[Snapshots on an Ed-Fi API v8.0 Source](Known-Issues-Details.md#snapshots-on-an-ed-fi-api-v80-source).
+
+As a target, load the data store's seed data before the first publish and, when
+the data store is on PostgreSQL, make sure it allows enough connections. See
+[Ed-Fi API v8 as a Target](Known-Issues-Details.md#ed-fi-api-v8-as-a-target).
+Ed-Fi API v8.0 also limits how many requests it accepts; see
+[Rate Limit on an Ed-Fi API v8.0 Target](Known-Issues-Details.md#rate-limit-on-an-ed-fi-api-v80-target).
 
 ## Profiles
 

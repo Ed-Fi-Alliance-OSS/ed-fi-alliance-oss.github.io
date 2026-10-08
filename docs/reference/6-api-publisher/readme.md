@@ -3,8 +3,9 @@
 ## Introduction
 
 The Ed-Fi API Publisher is a utility that can be used to move data and changes
-from one Ed-Fi ODS API instance to another instance of the `same` version of
-Ed-Fi. It operates as a standard API client against both API endpoints (source
+from one Ed-Fi API instance to another instance of the `same` version of Ed-Fi.
+The source and the target can each be an Ed-Fi ODS/API or Ed-Fi API v8. It
+operates as a standard API client against both API endpoints (source
 and target) and thus it does not require any special network configuration,
 direct ODS database access or a particular database engine. From a data
 security/privacy perspective, it is also subject to all authorization performed
@@ -32,6 +33,12 @@ will only publish changed data to the target on subsequent runs. The change
 versions that have been published to a particular target are maintained in a
 configuration store automatically for each source/target combination.
 
+## What's New
+
+Version 1.4 runs on .NET 10, adds support for Ed-Fi API v8, and reads Ed-Fi
+ODS/API 7.3 and later sources with cursor paging. See
+[What's New](whats-new.md) for details.
+
 ## Quick Start
 
 To demonstrate how the API Publisher works, this exercise copies all the data
@@ -54,24 +61,24 @@ API Publisher by running the following database scripts:
 ### Use the API Publisher
 
 The API Publisher has three options to use the product. The API Publisher
-requires [.NET 8.0](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) to
-run:
+requires [.NET 10.0](https://dotnet.microsoft.com/en-us/download/dotnet/10.0)
+to run:
 
 #### Option 1 - From binaries
 
 1. Download the latest published API Publisher package here:
-   [Ed-Fi API Publisher v1.0](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.ApiPublisher/overview/1.1.0).
+   [Ed-Fi API Publisher v1.4.0](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.ApiPublisher/overview/1.4.0).
    Visit the page and click download.
 2. This will download a NuGet package to your computer. Rename this file,
-   `EdFi.ApiPublisher.1.1.0.nupkg`, to include .zip extension:
-   `EdFi.ApiPublisher.1.1.0.zip`.
+   `EdFi.ApiPublisher.1.4.0.nupkg`, to include .zip extension:
+   `EdFi.ApiPublisher.1.4.0.zip`.
 3. The binary mentioned below is in the `EdFi.ApiPublisher.Win64` folder, as
    `EdFiApiPublisher.exe`.
 
 #### Option 2 - From Docker img
 
 The Docker image for the Ed-Fi API Publisher is available here:
-[Ed-Fi API Publisher v1.0 on Docker Hub](https://hub.docker.com/layers/edfialliance/ods-api-publisher/v1.1.0/images/sha256-23a6989b16d779d594692e1c9a8f2eac1790ed53312d424d85e869fec05eb914?context=explore).
+[Ed-Fi API Publisher tag v1.4.0 on Docker Hub](https://hub.docker.com/r/edfialliance/ods-api-publisher/tags).
 Use this to include in your Docker environment and alongside other components of
 the Ed-Fi stack.
 
@@ -85,7 +92,7 @@ running the following command from the repository's `src` directory:
 ```
 
 The API Publisher executable (`EdFiApiPublisher.exe`) will be located in the
-`.\EdFi.Tools.ApiPublisher.Cli\bin\Debug\net8.0` subfolder.
+`.\EdFi.Tools.ApiPublisher.Cli\bin\Debug\net10.0` subfolder.
 
 ### Publish Data to Local Sandbox
 
@@ -205,8 +212,8 @@ support for API Profiles (for defining resource/property level data policies for
 API clients). Create a support case to request Profiles support if this of
 interest to you.
 
-More technical details on some of these issues can be found
-[here](Known-Issues-Details.md).
+More technical details on some of these issues, and usage notes for version
+1.4, can be found in [Known Issues Details](Known-Issues-Details.md).
 
 ## Next Steps
 
