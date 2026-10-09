@@ -180,7 +180,7 @@ to Ed-Fi Databases, place the extracted contents of your extension plugin
 package in the extracted EdFi.Suite3.RestApi.Databases package
 under Ed-Fi-ODS-Implementation\\Plugin folder.
 
-![Plugin Folder](https://edfi.atlassian.net/wiki/download/thumbnails/25493615/image2021-5-26_12-45-50.png?version=1&modificationDate=1699456100303&cacheVersion=1&api=v2&width=798&height=221)
+![Plugin Folder](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2021-5-26_12-45-50.png)
 
 #### Enable your extension plugin in the deployment configuration
 
@@ -378,7 +378,7 @@ If you have an extension plugin package that you would like to be the deployed
 to Ed-Fi WebApi, place the extracted contents of your extension plugin package
 in C:\\inetpub\\Ed-Fi\\WebApi\\Plugin folder.
 
-![Plugin Folder](https://edfi.atlassian.net/wiki/download/thumbnails/25493615/image2021-5-26_13-32-29.png?version=1&modificationDate=1699456100297&cacheVersion=1&api=v2&width=907&height=222)
+![Plugin Folder](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2021-5-26_13-32-29.png)
 
 #### Enable your extension plugin in appsettings.json
 

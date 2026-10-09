@@ -39,7 +39,7 @@ not detected in the default installation path.
   that you have followed the Ed-Fi ODS / API [Getting
   Started](../../getting-started/readme.md) steps successfully.
 
-  ![Example command](https://edfi.atlassian.net/wiki/download/thumbnails/25493687/image2021-8-13_7-36-37.png?version=1&modificationDate=1699456110240&cacheVersion=1&api=v2&width=292&height=354)
+  ![Example command](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2021-8-13_7-36-37.png)
 
 ## Step 3. Review Output
 
@@ -78,7 +78,7 @@ useful to fully understand the visualizations.
 
 Note that the shading of font has relevance:
 
-|     |     |
+| | |
 | --- | --- |
 | Black | Indicates permissions explicitly set for the resource claim. |
 | _Italic gray_ | Indicates inherited permissions from the higher-level logical groupings in the claims taxonomy. |
@@ -95,14 +95,14 @@ Delete (CRUD) operations are authorized. The diagram also indicates that the
 authorization strategy associated with the claim
 is **NoFurtherAuthorizationRequired**.
 
-![Education Organizations](https://edfi.atlassian.net/wiki/download/attachments/25493687/educationOrganizations_sb.png?version=1&modificationDate=1699456110287&cacheVersion=1&api=v2)
+![Education Organizations](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/educationOrganizations_sb.png)
 
 The diagram below shows permissions for accessing education organization
 entities for the "SIS Vendor" claim set. In this case, it is assumed that the
 education agency implementing the Ed-Fi ODS / API will load and manage education
 organizations, so SIS vendor applications are only granted Read authorization.
 
-![Education Organizations](https://edfi.atlassian.net/wiki/download/attachments/25493687/educationOrganizations.png?version=1&modificationDate=1699456110280&cacheVersion=1&api=v2)
+![Education Organizations](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/educationOrganizations.png)
 
 ### Descriptors
 
@@ -117,9 +117,9 @@ with the appropriate Namespace prefix can add or change a managed Descriptor,
 while the **NoFurtherAuthorizationRequired** strategy is applied to Read
 operations, meaning that other API clients read a managed Descriptor.
 
-![Managed Descriptors](https://edfi.atlassian.net/wiki/download/attachments/25493687/managedDescriptors.png?version=1&modificationDate=1699456110273&cacheVersion=1&api=v2)
+![Managed Descriptors](/img/reference/ods-api/managedDescriptors.webp)
 
 The diagram below shows permissions for accessing System Descriptors for the
 "SIS Vendor" claim set, where only Read access is allowed. (partial view only).
 
-![System Descriptors](https://edfi.atlassian.net/wiki/download/attachments/26968889/systemDescriptors.png?version=1&modificationDate=1534859004213&cacheVersion=1&api=v2)
+![System Descriptors](/img/reference/ods-api/systemDescriptors.webp)

@@ -54,7 +54,7 @@ possible, and there is a sub-folder for each authorization claim set that has
 been configured. The as-shipped ODS / API v5.4 contains nine claim sets,
 resulting in nine folders.
 
-![Output Folder Structure](https://edfi.atlassian.net/wiki/download/thumbnails/25493687/image2021-8-13_7-36-37.png?version=1&modificationDate=1699456110240&cacheVersion=1&api=v2&width=292&height=354)
+![Output Folder Structure](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2021-8-13_7-36-37.png)
 
 ## Example Output
 
@@ -79,14 +79,14 @@ entities for the "Ed-Fi Sandbox" claim set, where full Create, Read, Update, and
 (CRUD) operations are authorized. The diagram also indicates that the
 authorization strategy associated with the claim is NoFurtherAuthorizationRequired.
 
-![Education Organizations Sandbox](https://edfi.atlassian.net/wiki/download/attachments/25493687/educationOrganizations_sb.png?version=1&modificationDate=1699456110287&cacheVersion=1&api=v2)
+![Education Organizations Sandbox](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/educationOrganizations_sb.png)
 
 The diagram below shows permissions for accessing education organization
 entities for the "SIS Vendor" claim set. In this case, it is assumed that the education
 agency implementing the Ed-Fi ODS / API will load and manage education
 organizations, so SIS vendor applications are only granted Read authorization.
 
-![Education Organizations SIS Vendor](https://edfi.atlassian.net/wiki/download/attachments/25493687/educationOrganizations.png?version=1&modificationDate=1699456110280&cacheVersion=1&api=v2)
+![Education Organizations SIS Vendor](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/educationOrganizations.png)
 
 ### Descriptors
 
@@ -100,7 +100,7 @@ which ensures that only API clients with the appropriate Namespace prefix can ad
 or change a managed Descriptor, while the NoFurtherAuthorizationRequired strategy is applied to Read operations, meaning that other API clients read a
 managed Descriptor.
 
-![Managed Descriptors](https://edfi.atlassian.net/wiki/download/attachments/25493687/managedDescriptors.png?version=1&modificationDate=1699456110273&cacheVersion=1&api=v2)
+![Managed Descriptors](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/managedDescriptors.png)
 
 The diagram below shows permissions for accessing System Descriptors for the
 "SIS Vendor" claim set, where only Read access is allowed.

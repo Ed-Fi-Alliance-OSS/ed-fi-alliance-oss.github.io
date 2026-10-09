@@ -18,11 +18,11 @@ In the API surface, a CourseOffering can be looked up/queried by doing an HTTP G
 
 In the returned JSON, the resource ID appears as the `id` element:
 
-![CourseOffering JSON with resource ID](https://edfi.atlassian.net/wiki/download/thumbnails/25493779/json-resourceid.png?version=1&modificationDate=1699456135013&cacheVersion=1&api=v2&width=500&height=147)
+![CourseOffering JSON with resource ID](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/json-resourceid.png)
 
 When an element is POSTed (i.e., created in the ODS / API), the resource ID is provided via an HTTP Header. It will look something like:
 
-![image](https://edfi.atlassian.net/wiki/download/attachments/25493779/api-newresourceheader.png?version=1&modificationDate=1699456135003&cacheVersion=1&api=v2)
+![image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/api-newresourceheader.png)
 
 ## USIs (Unique Surrogate Identifiers)
 
@@ -46,7 +46,7 @@ The data in the Ed-Fi ODS / API represents a rich domain with deep relationships
 
 This section provides an example of how natural keys in the ODS / API work in practice. Consider the following diagram, noting the composite key structure of `BellScheduleClassPeriod`:
 
-![BellScheduleClassPeriod composite key diagram](https://edfi.atlassian.net/wiki/download/attachments/25493779/Composite-Key-Model.png?version=1&modificationDate=1699456135040&cacheVersion=1&api=v2)
+![BellScheduleClassPeriod composite key diagram](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/composite-key-model.png)
 
 While `SchoolId` is present as a key in both `BellSchedule` and `ClassPeriod`, there is only one `SchoolId` on the `BellScheduleClassPeriod`. This process of “merging” the `SchoolId` column from the two keys is known as _key unification_. In turn, key unification is fundamentally what gives the composite key design approach its power to enforce referential integrity deeply throughout the entire data store — even when data is supplied from many different client systems of record that do not communicate with each other.
 

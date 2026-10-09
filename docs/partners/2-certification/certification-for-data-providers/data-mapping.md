@@ -16,7 +16,7 @@ Please submit a spreadsheet that follows these usage norms:
     Resource, and Property Name).
   * For **Assessment certifications**, these values SHOULD be defined according
     to the provided
-    [Assessment Certification Mapping Template](https://edfi.atlassian.net/wiki/download/attachments/23695793/Data%20Mapping%20Template.xlsx?version=1&modificationDate=1568305681130&cacheVersion=1&api=v2).
+    [Assessment Certification Mapping Template](https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/certification-for-data-providers/Data%20Mapping%20Template.xlsx).
 * All properties identified as "REQUIRED" for certification MUST be included.
   When present in the provider application, all "CONDITIONAL" properties MUST be
   included. "OPTIONAL" properties can be included at the vendor's discretion,

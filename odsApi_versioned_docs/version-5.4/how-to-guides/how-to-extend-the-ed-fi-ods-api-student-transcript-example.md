@@ -42,7 +42,7 @@ postsecondary institutions) and we need to add some elements to existing entitie
 following is a diagram is a sketch showing the additional entity and the new
 elements we're bolting on to existing Ed-Fi entities.
 
-![Image](https://edfi.atlassian.net/wiki/download/attachments/25493733/Student-Transcript-Visio-Diagram.png?version=1&modificationDate=1699456121597&cacheVersion=1&api=v2)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/Student-Transcript-Visio-Diagram.png)
 
 You'll notice that a few elements are shown with a type of "descriptor." The
 Ed-Fi Descriptor is analogous to an enumeration. It's an Ed-Fi-specific design
@@ -69,7 +69,7 @@ The desired model for the latest ODS / API is "ed-fi-model-3.3b".
 
 Create a new extension by following the steps in [MetaEd IDE - Creating and Maintaining Your Extension](/reference/metaed/ide-user-guide/creating-and-maintaining-your-extension/). In this example our extension is in a folder called "StudentTranscript"
 
-![Image](https://edfi.atlassian.net/wiki/download/attachments/25493733/NewProject.png?version=1&modificationDate=1699456119970&cacheVersion=1&api=v2)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/NewProject.png)
 
 ### Step 2c. Update the package.json File
 
@@ -79,7 +79,7 @@ call it "SampleStudentTranscript".
 
 Click "Save" under the "File" menu or press Ctrl + S to save your changes.
 
-![Image](https://edfi.atlassian.net/wiki/download/attachments/25493733/NewProjectPackageJson.png?version=1&modificationDate=1699456119960&cacheVersion=1&api=v2)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/NewProjectPackageJson.png)
 
 ### Step 2d. Add MetaEd Source Files to Your Project
 
@@ -96,11 +96,11 @@ Now we'll add two MetaEd source files to the DomainEntity folder. **Right-click*
 
 Name the new file **PostSecondaryOrganization.metaed** to match the name of the new entity to be created.
 
-![Image](https://edfi.atlassian.net/wiki/download/attachments/25493733/PostSecondaryOrgName.png?version=1&modificationDate=1699456119940&cacheVersion=1&api=v2)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/PostSecondaryOrgName.png)
 
 Note the new file appears in the tree view to the left. **Double-click** on the file in the tree view to open it. Type or copy and paste the code listing below into your MetaEd file:
 
-![Image](https://edfi.atlassian.net/wiki/download/attachments/25493733/PostSecondaryOrgCode.png?version=1&modificationDate=1699456119930&cacheVersion=1&api=v2)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/PostSecondaryOrgCode.png)
 
 Note that errors will be listed in the linter panel until the referenced
 Descriptors are created in a future step.
@@ -130,7 +130,7 @@ Domain Entity PostSecondaryOrganization
 We'll now create a Domain Entity source file, called **StudentAcademicRecordExtension**, to add our new elements to the existing Student Academic Record entity. Note
 that we can extend an existing entity using the `additions` keyword (line 1 in the example below).
 
-![Image](https://edfi.atlassian.net/wiki/download/attachments/25493733/StudentAcademicRecordExtensionCode.png?version=1&modificationDate=1699456119913&cacheVersion=1&api=v2)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/StudentAcademicRecordExtensionCode.png)
 
 <details>
 <summary><strong>MetaEd Source for StudentAcademicRecordExtensions Entity</strong></summary>
@@ -159,7 +159,7 @@ Similar to how you extended the Student Academic Record domain entity above,
 you'll extend the Class Ranking entity with the keyword `additions`. Replace the template text in your new Common source file with the following
 code.
 
-![Image](https://edfi.atlassian.net/wiki/download/attachments/25493733/ClassRankingExtensions.png?version=1&modificationDate=1699456119903&cacheVersion=1&api=v2)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/ClassRankingExtensions.png)
 
 <details>
 <summary><strong>MetaEd Source for ClassRankingExtensions Common Type</strong></summary>
@@ -188,14 +188,14 @@ Right-click on the Descriptor folder, select New File. We'll be adding four Desc
 Replace the template text in your new Descriptor source file with the following
 code.
 
-![Image](https://edfi.atlassian.net/wiki/download/attachments/25493733/InstitutionControlDescriptor.png?version=1&modificationDate=1699456119893&cacheVersion=1&api=v2)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/InstitutionControlDescriptor.png)
 
 Voilà! Almost done. Follow the steps above and add the remaining three
 Descriptors.
 
 Add an InstitutionLevel.metaed file.
 
-![Image](https://edfi.atlassian.net/wiki/download/attachments/25493733/InstitutionLevelDescriptor.png?version=1&modificationDate=1699456119883&cacheVersion=1&api=v2)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/InstitutionLevelDescriptor.png)
 
 <details>
 <summary><strong>MetaEd Source for InstitutionLevel Descriptor</strong></summary>
@@ -209,7 +209,7 @@ Descriptor InstitutionLevelDescriptor
 
 Add a SpecialEducationGraduationStatus.metaed file.
 
-![Image](https://edfi.atlassian.net/wiki/download/attachments/25493733/SpecialEducationGradStatusDescriptor.png?version=1&modificationDate=1699456119873&cacheVersion=1&api=v2)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/SpecialEducationGradStatusDescriptor.png)
 
 <details>
 <summary><strong>MetaEd Source for SpecialEducationGraduationStatus Descriptor</strong></summary>
@@ -304,7 +304,7 @@ Visual Studio Project Templates can be installed by following steps in [Project 
 
 In the Project Name field, enter EdFi.Ods.Extensions.SampleStudentTranscript and click Create.
 
-![Image](https://edfi.atlassian.net/wiki/download/thumbnails/25493733/vs-create%20extension%20project2.png?version=1&modificationDate=1699456119993&cacheVersion=1&api=v2&width=900&height=597)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/vs-create%20extension%20project2.png)
 
 :::note
 To ensure MetaEd outputs are correctly deployed to ODS / API extension project,
@@ -316,7 +316,7 @@ Step 2.c with the first character in upper case.
 
 4c.1. Right-click on the Marker_EdFi_Ods_Extensions_ExtensionName.cs file in newly created EdFi.Ods.Extensions.SampleStudentTranscript project and Rename the file to Marker_EdFi_Ods_Extensions_SampleStudentTranscript.cs.
 
-![Image](https://edfi.atlassian.net/wiki/download/attachments/25493733/vs-remane%20marker.png?version=1&modificationDate=1699456120033&cacheVersion=1&api=v2)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/vs-remane%20marker.png)
 
 4c.2. When prompted choose to rename all references to the code element Marker_EdFi_Ods_Extensions_ExtensionName.
 
@@ -477,9 +477,9 @@ steps outlined in the [Getting Started Guide](../getting-started/readme.md) (i.e
 The new postSecondaryOrganizations API resource should be visible, as well as
 the postSecondaryOrganizationReference in the studentAcademicRecord resource.
 
-![Image](https://edfi.atlassian.net/wiki/download/attachments/25493733/extension%20swagger1.png?version=1&modificationDate=1699456121570&cacheVersion=1&api=v2)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/extension%20swagger1.png)
 
-![Image](https://edfi.atlassian.net/wiki/download/attachments/25493733/extension%20swagger2.png?version=1&modificationDate=1699456121580&cacheVersion=1&api=v2)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/extension%20swagger2.png)
 
 ## Next Steps & Further Information
 
@@ -508,13 +508,13 @@ Visual Studio Project Templates can be installed by following steps in [Project 
 
 In the Project Name field, enter EdFi.Ods.Extensions.SampleStudentTranscript and click Create.
 
-![Image](https://edfi.atlassian.net/wiki/download/thumbnails/25493733/vs-create%20extension%20project2.png?version=1&modificationDate=1699456119993&cacheVersion=1&api=v2&width=900&height=597)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/vs-create%20extension%20project2.png)
 
 ### Step 3. Rename the "Marker" Interface File
 
 3.1. Right-click on the Marker_EdFi_Ods_Extensions_ExtensionName.cs file in newly created EdFi.Ods.Extensions.SampleStudentTranscript project and Rename the file to Marker_EdFi_Ods_Extensions_SampleStudentTranscript.cs.
 
-![Image](https://edfi.atlassian.net/wiki/download/attachments/25493733/vs-remane%20marker.png?version=1&modificationDate=1699456120033&cacheVersion=1&api=v2)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/vs-remane%20marker.png)
 
 3.2. When prompted choose to rename all references to the code element Marker_EdFi_Ods_Extensions_ExtensionName.
 
@@ -632,9 +632,9 @@ Save all modified files, close Ed-Fi-ODS.sln, and re-run the code generation
 steps outlined in the [Getting Started Guide](../getting-started/readme.md) (i.e., from a PowerShell prompt run `Initialize-PowershellForDevelopment.ps1` script, followed by the `initdev` command). Then, run the application and view the Ed-Fi ODS / API in the Swagger
 UI. The following new API resource should be visible:
 
-![Image](https://edfi.atlassian.net/wiki/download/attachments/25493733/extension%20swagger1.png?version=1&modificationDate=1699456121570&cacheVersion=1&api=v2)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/extension%20swagger1.png)
 
-![Image](https://edfi.atlassian.net/wiki/download/attachments/25493733/extension%20swagger2.png?version=1&modificationDate=1699456121580&cacheVersion=1&api=v2)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/extension%20swagger2.png)
 
 ## Downloads
 

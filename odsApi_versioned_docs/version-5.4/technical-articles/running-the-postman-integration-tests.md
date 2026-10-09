@@ -38,33 +38,33 @@ will create the Postman Environment file required for the tests to run.
 
     b. Run the EdFi.Ods.Api.IntegrationTestHarness project. Test Harness will create test API clients in the EdFi_Admin_Test database, create a Postman environment file and run a test API instance for the Postman tests to interact with.
     
-       ![Test harness running](https://edfi.atlassian.net/wiki/download/attachments/25493791/image2021-10-5_16-59-40.png?version=1&modificationDate=1699456138440&cacheVersion=1&api=v2)
+       ![Test harness running](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2021-10-5_16-59-40.png)
 
     c. After the test harness is running, import the generated environment file located at ~Ed-Fi-ODS-Implementation\logistics\scripts\modules
     
-       ![Environment file](https://edfi.atlassian.net/wiki/download/attachments/25493791/image2021-10-5_17-4-17.png?version=1&modificationDate=1699456138423&cacheVersion=1&api=v2)
+       ![Environment file](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2021-10-5_17-4-17.png)
     
-       ![Import environment](https://edfi.atlassian.net/wiki/download/attachments/25493791/image2021-10-5_17-2-59.png?version=1&modificationDate=1699456138430&cacheVersion=1&api=v2)
+       ![Import environment](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2021-10-5_17-2-59.png)
 
     d. Ensure the environment is selected on the top right corner of Postman window.
     
-       ![Select environment](https://edfi.atlassian.net/wiki/download/attachments/25493791/image2021-10-6_9-5-10.png?version=1&modificationDate=1699456138367&cacheVersion=1&api=v2)
+       ![Select environment](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2021-10-6_9-5-10.png)
 
 3. Locate (or download) the Ed-Fi ODS Integration Test Suite collections from the Ed-Fi-ODS GitHub repository. See the reference section on the right for GitHub link.  
 
-   ![Postman collections](https://edfi.atlassian.net/wiki/download/attachments/25493791/image2021-10-5_17-13-4.png?version=1&modificationDate=1699456138407&cacheVersion=1&api=v2)
+   ![Postman collections](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2021-10-5_17-13-4.png)
 
 4. Import one or more of the collections into Postman using the Import function located in the upper left corner of the Postman window. 
 
-   ![Import collections](https://edfi.atlassian.net/wiki/download/attachments/25493791/image2021-10-5_17-14-18.png?version=1&modificationDate=1699456138400&cacheVersion=1&api=v2)
+   ![Import collections](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2021-10-5_17-14-18.png)
 
 5. Run the tests using the Collection Runner. 
 
-   ![Collection runner](https://edfi.atlassian.net/wiki/download/attachments/25493791/image2021-10-6_8-54-29.png?version=1&modificationDate=1699456138393&cacheVersion=1&api=v2)
+   ![Collection runner](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2021-10-6_8-54-29.png)
 
-   ![Run configuration](https://edfi.atlassian.net/wiki/download/attachments/25493791/image2021-10-6_8-55-15.png?version=1&modificationDate=1699456138383&cacheVersion=1&api=v2)
+   ![Run configuration](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2021-10-6_8-55-15.png)
 
 6. Monitor test execution and review the test results. 
 
-   ![Test results](https://edfi.atlassian.net/wiki/download/attachments/25493791/image2021-10-6_9-0-0.png?version=1&modificationDate=1699456138373&cacheVersion=1&api=v2)
+   ![Test results](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2021-10-6_9-0-0.png)
 

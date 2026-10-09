@@ -25,12 +25,12 @@ GET on a path like: `/courseOfferings/d0fd729db6ee4a7bbc989720e4f833f5`.
 
 In the returned JSON, the resource ID appears as the `id` element:
 
-![JSON resource ID](https://edfi.atlassian.net/wiki/download/thumbnails/25493779/json-resourceid.png?version=1&modificationDate=1699456135013&cacheVersion=1&api=v2&width=500&height=147)
+![JSON resource ID](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/json-resourceid.png)
 
 When an element is POSTed (i.e., created in the ODS / API), the resource ID is
 provided via a HTTP Header. It will look something like:
 
-![API new resource header](https://edfi.atlassian.net/wiki/download/attachments/25493779/api-newresourceheader.png?version=1&modificationDate=1699456135003&cacheVersion=1&api=v2)
+![API new resource header](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/api-newresourceheader.png)
 
 ## USIs (Unique Surrogate Identifiers)
 

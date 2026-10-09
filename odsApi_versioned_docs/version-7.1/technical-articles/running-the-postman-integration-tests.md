@@ -44,27 +44,27 @@ This will capture the _stdout_ from the process and write it to the specified lo
 2. Run the EdFi.Ods.Api.IntegrationTestHarness project from the ODS solution. This will create the Postman Environment file required for the tests to run.
     - a. Run the EdFi.Ods.Api.IntegrationTestHarness project. Test Harness will create test API clients in the `EdFi_Admin_Test` database, create a Postman environment file, and run a test API instance for the Postman tests to interact with.
 
-        ![image](https://edfi.atlassian.net/wiki/download/attachments/25493791/image2021-10-5_16-59-40.png?version=1&modificationDate=1699456138440&cacheVersion=1&api=v2)
+        ![image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2021-10-5_16-59-40.png)
 
     - b. After the test harness is running, open Postman and import the generated environment file located at `Ed-Fi-ODS-Implementation\logistics\scripts\modules`.
-    ![image](https://edfi.atlassian.net/wiki/download/attachments/25493791/image2021-10-5_17-4-17.png?version=1&modificationDate=1699456138423&cacheVersion=1&api=v2)
-    ![image](https://edfi.atlassian.net/wiki/download/attachments/25493791/image2021-10-5_17-2-59.png?version=1&modificationDate=1699456138430&cacheVersion=1&api=v2)
+    ![image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2021-10-5_17-4-17.png)
+    ![image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2021-10-5_17-2-59.png)
     - c. Ensure the environment is selected on the top right corner of the Postman window.
-    ![image](https://edfi.atlassian.net/wiki/download/attachments/25493791/image2021-10-6_9-5-10.png?version=1&modificationDate=1699456138367&cacheVersion=1&api=v2)
+    ![image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2021-10-6_9-5-10.png)
 
 3. Locate (or download) the Ed-Fi ODS Integration Test Suite collections from the [Ed-Fi-ODS GitHub repository](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS). Look in the `Ed-FI-ODS\Postman Test Suite` directory.
 
-    ![Integration Test Suite directory screenshot](https://edfi.atlassian.net/wiki/download/attachments/25493791/image2021-10-5_17-13-4.png?version=1&modificationDate=1699456138407&cacheVersion=1&api=v2)
+    ![Integration Test Suite directory screenshot](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2021-10-5_17-13-4.png)
 
 4. Import one or more of the collections into Postman using the _Import_ function located in the upper left corner of the Postman window.
 
-    ![Postman Import function screenshot](https://edfi.atlassian.net/wiki/download/attachments/25493791/image2021-10-5_17-14-18.png?version=1&modificationDate=1699456138400&cacheVersion=1&api=v2)
+    ![Postman Import function screenshot](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2021-10-5_17-14-18.png)
 
 5. Run the tests using the [Collection Runner](https://learning.postman.com/docs/collections/running-collections/intro-to-collection-runs/).
 
-    ![Collection Runner screenshot](https://edfi.atlassian.net/wiki/download/attachments/25493791/image2021-10-6_8-54-29.png?version=1&modificationDate=1699456138393&cacheVersion=1&api=v2)
-    ![Collection Runner results screenshot](https://edfi.atlassian.net/wiki/download/attachments/25493791/image2021-10-6_8-55-15.png?version=1&modificationDate=1699456138383&cacheVersion=1&api=v2)
+    ![Collection Runner screenshot](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2021-10-6_8-54-29.png)
+    ![Collection Runner results screenshot](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2021-10-6_8-55-15.png)
 
 6. Monitor test execution and review the test results.
 
-    ![Test execution results screenshot](https://edfi.atlassian.net/wiki/download/attachments/25493791/image2021-10-6_9-0-0.png?version=1&modificationDate=1699456138373&cacheVersion=1&api=v2)
+    ![Test execution results screenshot](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2021-10-6_9-0-0.png)

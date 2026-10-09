@@ -45,7 +45,7 @@ postsecondary institutions) and we need to add some elements to existing
 entities. The following diagram is a sketch showing the additional entity
 and the new elements we're bolting on to existing Ed-Fi entities.
 
-![image](https://edfi.atlassian.net/wiki/download/attachments/25493733/Student-Transcript-Visio-Diagram.png?version=1&modificationDate=1699456121597&cacheVersion=1&api=v2)
+![image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/Student-Transcript-Visio-Diagram.png)
 
 You'll notice that a few elements are shown with a type of "descriptor." The
 Ed-Fi Descriptor is analogous to an enumeration. It's an Ed-Fi-specific design
@@ -76,7 +76,7 @@ The desired model for the latest ODS / API is "ed-fi-model-5.1".
 
 Create a new extension by following the steps in [MetaEd IDE - Creating and Maintaining Your Extension](https://docs.ed-fi.org/reference/metaed/ide-user-guide/creating-and-maintaining-your-extension). In this example our extension is in a folder called "StudentTranscript"
 
-![Create new extension project](https://edfi.atlassian.net/wiki/download/attachments/25493733/NewProject.png?version=1&modificationDate=1699456119970&cacheVersion=1&api=v2)
+![Create new extension project](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/NewProject.png)
 
 ### Step 2c. Update the package.json File
 
@@ -84,7 +84,7 @@ Open the package.json file by double-clicking on the file in the tree view to th
 
 Click "Save" under the "File" menu or press **Ctrl + S** to save your changes.
 
-![Update package.json file](https://edfi.atlassian.net/wiki/download/attachments/25493733/NewProjectPackageJson.png?version=1&modificationDate=1699456119960&cacheVersion=1&api=v2)
+![Update package.json file](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/NewProjectPackageJson.png)
 
 ### Step 2d. Add MetaEd Source Files to Your Project
 
@@ -98,11 +98,11 @@ Now we'll add two MetaEd source files to the DomainEntity folder. **Right-click*
 
 Name the new file `PostSecondaryOrganization.metaed` to match the name of the new entity to be created.
 
-![Name new domain entity file](https://edfi.atlassian.net/wiki/download/attachments/25493733/PostSecondaryOrgName.png?version=1&modificationDate=1699456119940&cacheVersion=1&api=v2)
+![Name new domain entity file](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/PostSecondaryOrgName.png)
 
 Note the new file appears in the tree view to the left. **Double-click** on the file in the tree view to open it. Type or copy and paste the code listing below into your MetaEd file:
 
-![MetaEd source code for PostSecondaryOrganization](https://edfi.atlassian.net/wiki/download/attachments/25493733/PostSecondaryOrgCode.png?version=1&modificationDate=1699456119930&cacheVersion=1&api=v2)
+![MetaEd source code for PostSecondaryOrganization](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/PostSecondaryOrgCode.png)
 
 Note that errors will be listed in the linter panel until the referenced
 Descriptors are created in a future step.
@@ -131,7 +131,7 @@ Domain Entity PostSecondaryOrganization
 
 We'll now create a Domain Entity source file, called **StudentAcademicRecordExtension**, to add our new elements to the existing Student Academic Record entity. Note that we can extend an existing entity using the `additions` keyword (line 1 in the example below).
 
-![MetaEd source code for StudentAcademicRecordExtension](https://edfi.atlassian.net/wiki/download/attachments/25493733/StudentAcademicRecordExtensionCode.png?version=1&modificationDate=1699456119913&cacheVersion=1&api=v2)
+![MetaEd source code for StudentAcademicRecordExtension](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/StudentAcademicRecordExtensionCode.png)
 
 <details>
 <summary>MetaEd Source for StudentAcademicRecordExtensions Entity</summary>
@@ -159,7 +159,7 @@ In this step, we'll extend the Class Ranking entity to add our new Special Educa
 
 Similar to how you extended the Student Academic Record domain entity above, you'll extend the Class Ranking entity with the keyword `additions`. Replace the template text in your new Common source file with the following code.
 
-![MetaEd source code for ClassRankingExtensions](https://edfi.atlassian.net/wiki/download/attachments/25493733/ClassRankingExtensions.png?version=1&modificationDate=1699456119903&cacheVersion=1&api=v2)
+![MetaEd source code for ClassRankingExtensions](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/ClassRankingExtensions.png)
 
 <details>
 <summary>MetaEd Source for ClassRankingExtensions Common Type</summary>
@@ -181,7 +181,7 @@ If you're new to Ed-Fi technology, it's worth understanding the Ed-Fi Descriptor
 
 Replace the template text in your new Descriptor source file with the following code.
 
-![MetaEd source code for InstitutionControl Descriptor](https://edfi.atlassian.net/wiki/download/attachments/25493733/InstitutionControlDescriptor.png?version=1&modificationDate=1699456119893&cacheVersion=1&api=v2)
+![MetaEd source code for InstitutionControl Descriptor](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/InstitutionControlDescriptor.png)
 
 <details>
 <summary>MetaEd Source for InstitutionControl Descriptor</summary>
@@ -198,7 +198,7 @@ Descriptors.
 
 Add an `InstitutionLevel.metaed` file.
 
-![MetaEd source code for InstitutionLevel Descriptor](https://edfi.atlassian.net/wiki/download/attachments/25493733/InstitutionLevelDescriptor.png?version=1&modificationDate=1699456119883&cacheVersion=1&api=v2)
+![MetaEd source code for InstitutionLevel Descriptor](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/InstitutionLevelDescriptor.png)
 
 <details>
 <summary>MetaEd Source for InstitutionLevel Descriptor</summary>
@@ -212,7 +212,7 @@ Descriptor InstitutionLevel
 
 Add a `SpecialEducationGraduationStatus.metaed` file.
 
-![MetaEd source code for SpecialEducationGraduationStatus Descriptor](https://edfi.atlassian.net/wiki/download/attachments/25493733/SpecialEducationGradStatusDescriptor.png?version=1&modificationDate=1699456119873&cacheVersion=1&api=v2)
+![MetaEd source code for SpecialEducationGraduationStatus Descriptor](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/SpecialEducationGradStatusDescriptor.png)
 
 <details>
 <summary>MetaEd Source for SpecialEducationGraduationStatus Descriptor</summary>
@@ -370,7 +370,7 @@ Search and select the **Ed-Fi API Extensions Project Template** option and Clic
 
 In the Project Name field, enter `EdFi.Ods.Extensions.SampleStudentTranscript` and click **Create**.
 
-![image](https://edfi.atlassian.net/wiki/download/thumbnails/25493733/vs-create%20extension%20project2.png?version=1&modificationDate=1699456119993&cacheVersion=1&api=v2&width=900&height=597)
+![image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/vs-create%20extension%20project2.png)
 
 :::info
 To ensure MetaEd outputs are correctly deployed to ODS / API extension project, the last section of the project name should match the namespace you provided in Step 2.c with the first character in upper case.
@@ -611,9 +611,9 @@ The new postSecondaryOrganizations API resource should be visible, as well as
 the **postSecondaryOrganizationReference** in
 the **studentAcademicRecord** resource.
 
-![Extension Swagger 1](https://edfi.atlassian.net/wiki/download/attachments/25493733/extension%20swagger1.png?version=1&modificationDate=1699456121570&cacheVersion=1&api=v2)
+![Extension Swagger 1](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/extension%20swagger1.png)
 
-![Extension Swagger 2](https://edfi.atlassian.net/wiki/download/attachments/25493733/extension%20swagger2.png?version=1&modificationDate=1699456121580&cacheVersion=1&api=v2)
+![Extension Swagger 2](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/extension%20swagger2.png)
 
 ## Next Steps & Further Information
 
@@ -655,7 +655,7 @@ In the Project Name field,
 enter `EdFi.Ods.Extensions.SampleStudentTranscript` and
 click **Create**.
 
-![image](https://edfi.atlassian.net/wiki/download/thumbnails/25493733/vs-create%20extension%20project2.png?version=1&modificationDate=1699456119993&cacheVersion=1&api=v2&width=900&height=597)
+![image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/vs-create%20extension%20project2.png)
 
 ### Step A3. Rename the "Marker" Interface File
 
@@ -664,7 +664,7 @@ the `Marker_EdFi_Ods_Extensions_ExtensionName.cs` file in newly
 created **EdFi.Ods.Extensions.SampleStudentTranscript** project and Rename the
 file to `Marker_EdFi_Ods_Extensions_SampleStudentTranscript.cs`.
 
-![image](https://edfi.atlassian.net/wiki/download/attachments/25493733/vs-remane%20marker.png?version=1&modificationDate=1699456120033&cacheVersion=1&api=v2)
+![image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/vs-remane%20marker.png)
 
 **3.2.** When prompted choose to rename all references to the code
 element `Marker_EdFi_Ods_Extensions_ExtensionName`.
@@ -866,9 +866,9 @@ from a PowerShell prompt run `Initialize-PowershellForDevelopment.ps1` script,
 followed by the `initdev` command). Then, run the application and view the Ed-Fi
 ODS / API in the Swagger UI. The following new API resource should be visible:
 
-![Extension Swagger 1](https://edfi.atlassian.net/wiki/download/attachments/25493733/extension%20swagger1.png?version=1&modificationDate=1699456121570&cacheVersion=1&api=v2)
+![Extension Swagger 1](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/extension%20swagger1.png)
 
-![Extension Swagger 2](https://edfi.atlassian.net/wiki/download/attachments/25493733/extension%20swagger2.png?version=1&modificationDate=1699456121580&cacheVersion=1&api=v2)
+![Extension Swagger 2](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/extension%20swagger2.png)
 
 :::note
 The following GitHub links contain source files for this extensibility sample.

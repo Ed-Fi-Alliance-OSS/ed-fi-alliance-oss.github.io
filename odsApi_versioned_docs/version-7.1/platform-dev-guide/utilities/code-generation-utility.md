@@ -13,15 +13,15 @@ utility is downloaded from Azure Artifacts into the tools folder under
 the Ed-Fi-ODS-Implementation repository and is executed after the
 `Invoke-NewDevelopmentAppSettings` task.
 
-![image](https://edfi.atlassian.net/wiki/download/attachments/25493683/image2020-11-3_11-23-42.png?version=1&modificationDate=1699456109710&cacheVersion=1&api=v2)
+![image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2020-11-3_11-23-42.png)
 
-![image](https://edfi.atlassian.net/wiki/download/thumbnails/25493683/image2020-11-3_11-26-46.png?version=1&modificationDate=1699456109703&cacheVersion=1&api=v2&width=848&height=511)
+![image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2020-11-3_11-26-46.png)
 
 A successful `initdev` execution will display the tasks executed and their
 duration as shown, and you can see that code generation utility is downloaded
 and installed during the process.
 
-![image](https://edfi.atlassian.net/wiki/download/thumbnails/25493683/image2020-11-3_11-21-9.png?version=1&modificationDate=1699456109730&cacheVersion=1&api=v2&width=839&height=263)
+![image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2020-11-3_11-21-9.png)
 
 ## Manual Execution
 
@@ -37,7 +37,7 @@ the `Install-CodeGenUtility` command. This will pull the current version of t
 tool, and install it into the tools folder under the Ed-Fi-ODS-Implementation
 repository.
 
-![image](https://edfi.atlassian.net/wiki/download/thumbnails/25493683/image2020-11-3_11-29-58.png?version=1&modificationDate=1699456109693&cacheVersion=1&api=v2&width=839&height=228)
+![image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2020-11-3_11-29-58.png)
 
 ### Execution
 
@@ -45,4 +45,4 @@ To run code generation independently from the build process, the tool can be
 executed by calling the PowerShell command `Run-CodeGen`. This will execute the
 generation process for all required classes.
 
-![image](https://edfi.atlassian.net/wiki/download/thumbnails/25493683/image2020-11-3_11-31-4.png?version=1&modificationDate=1699456109687&cacheVersion=1&api=v2&width=841&height=529)
+![image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2020-11-3_11-31-4.png)
