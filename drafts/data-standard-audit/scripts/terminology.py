@@ -50,9 +50,12 @@ def main():
     WORKING.mkdir(parents=True, exist_ok=True)
     rows = []
     for set_name, path, rel in iter_pages(("5", "6", "udm")):
-        _, body = split_front_matter(path.read_text(encoding="utf-8"))
+        text = path.read_text(encoding="utf-8")
+        _, body = split_front_matter(text)
+        # Report source-file line numbers, not body-relative ones.
+        offset = text[:len(text) - len(body)].count("\n")
         in_code, seen_full = False, False
-        for lineno, line in enumerate(body.splitlines(), 1):
+        for lineno, line in enumerate(body.splitlines(), 1 + offset):
             if line.strip().startswith("```"):
                 in_code = not in_code
                 continue
