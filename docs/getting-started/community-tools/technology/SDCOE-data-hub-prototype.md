@@ -1,7 +1,4 @@
 ---
-labels:
-- exchange-code
-- exchange-tech-suite-3
 description: User interface for supporting members of an education service agency
 ---
 
