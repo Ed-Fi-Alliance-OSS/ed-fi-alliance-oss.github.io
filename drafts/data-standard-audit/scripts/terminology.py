@@ -59,7 +59,9 @@ def main():
         # Report source-file line numbers, not body-relative ones.
         offset = text[:len(text) - len(body)].count("\n")
         in_code, seen_full = False, False
-        for lineno, line in enumerate(body.splitlines(), 1 + offset):
+        lines = body.splitlines()
+        for lineno, line in enumerate(lines, 1 + offset):
+            nxt = lines[lineno - offset] if lineno - offset < len(lines) else ""
             if line.strip().startswith("```"):
                 in_code = not in_code
                 continue
@@ -72,6 +74,9 @@ def main():
                 if IDENTIFIER.match(scan, max(0, start - 1)) and start > 0 and scan[start - 1] not in " (*_[\"'":
                     continue
                 after = scan[m.end():].lstrip()
+                if not after:
+                    # Accepted names are often wrapped onto the next line.
+                    after = nxt.lstrip()
                 rule, phrase = classify(after)
                 if rule == "accepted":
                     first_full = not seen_full
