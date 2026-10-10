@@ -6,6 +6,10 @@ Outputs (in working/):
     table-dupes.csv      entity/descriptor rows repeated across domains (v5, v6)
 """
 
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
 import csv
 import difflib
 import re

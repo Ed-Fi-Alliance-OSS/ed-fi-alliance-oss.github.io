@@ -5,6 +5,10 @@ working/inventory-html.csv with extra columns, and builds the search corpus
 used by retrieval.py (working/corpus.jsonl, whole site).
 """
 
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
 import csv
 import json
 import re

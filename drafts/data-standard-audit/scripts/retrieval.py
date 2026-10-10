@@ -10,6 +10,10 @@ Usage:
 Writes working/retrieval-results.csv when run over questions.yaml.
 """
 
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
 import csv
 import json
 import math

@@ -4,6 +4,10 @@ Output: working/terminology-hits.csv — one row per "Ed-Fi" occurrence with a
 rule tag. Regex candidates only; Phase 2a-T classifies them in context.
 """
 
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
 import csv
 import re
 
