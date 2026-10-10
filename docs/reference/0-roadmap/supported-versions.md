@@ -125,7 +125,7 @@ information.
 Additional applications formally maintained and supported by the Ed-Fi Alliance:
 
 * [API Publisher](../6-api-publisher/readme.md) works with all supported
-  versions of the Ed-Fi ODS/API
+  versions of the Ed-Fi ODS/API and with Ed-Fi API v8.0
 * [Data Import](/getting-started/community-tools/technology/data-import) works with all supported versions of
   the Ed-Fi ODS/API (supported through June 30, 2026)
 
