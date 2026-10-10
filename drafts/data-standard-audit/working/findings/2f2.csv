@@ -1,0 +1,126 @@
+id,verdict,miss_cause,fix_page,fix_suggestion
+q-cal-07,no,vocabulary-mismatch,model-reference/school-calendar-domain/overview,"Define it in a plain sentence: ""An academic week (AcademicWeek) is a named span of calendar dates, such as instructional week 12."" The page only lists the CamelCase token AcademicWeek, so a spaced query does not match."
+q-cal-08,yes,,,
+q-sedm-01,partial,ranking-noise,model-reference/special-education-data-model-domain/overview,"Open with ""To store a student IEP in Ed-Fi Data Standard v6.1, create a StudentIEP record""; the community acronym page outranks the overview."
+q-sedm-02,yes,,,
+q-sedm-03,yes,,,
+q-sedm-04,yes,,,
+q-sedm-05,yes,,,
+q-sedm-06,yes,,,
+q-sedm-07,yes,,,
+q-sedm-08,yes,,,
+q-staff-01,partial,wrong-version,model-reference/staff-domain/overview,"Name ""Ed-Fi Data Standard v6"" in the H1 and first sentence so the v6 page outranks v3-v5 copies; add a one-line employment (financial) vs assignment (where the person serves) contrast."
+q-staff-02,no,vocabulary-mismatch,model-reference/staff-domain/overview,"Say ""email address and telephone number"" in the StaffDirectory sentence; the page never uses those words."
+q-staff-03,no,wrong-domain,model-reference/staff-domain/overview,"Add a sentence ""Staff absences and leave are recorded with StaffLeave and StaffAbsenceEvent""; student attendance overviews outrank it."
+q-staff-04,no,answer-absent,model-reference/staff-domain/overview,"Add a short scenario ""A teacher at two schools"" naming the multiple assignment association records used."
+q-staff-05,no,vocabulary-mismatch,model-reference/staff-domain/overview,"Say ""race and ethnicity"" explicitly in the StaffDemographic sentence (""ethnicity"" never appears)."
+q-staff-06,yes,,,
+q-staff-07,partial,wrong-version,model-reference/teaching-and-learning-domain/overview,"Add ""assign a teacher to a class section with StaffSectionAssociation"" and the version to the opener; v3-v5 entity tables outrank v6."
+q-staff-08,no,vocabulary-mismatch,model-reference/staff-domain/overview,"Add ""state educator ID, license number or other staff identifiers are stored as StaffIdentificationCode""; learner words ""state"" and ""educator ID"" are absent."
+q-sar-01,yes,,,
+q-sar-02,partial,wrong-version,model-reference/student-academic-record-domain/overview,"Add an explicit ""Where is GPA stored?"" paragraph (StudentAcademicRecord.CumulativeGradePointAverage / ReportCard) naming Data Standard v6; v3/v4 best-practices outrank v6."
+q-sar-03,yes,,,
+q-sar-04,yes,,,
+q-sar-05,partial,wrong-version,model-reference/student-academic-record-domain/best-practices,"The ""Historical Records for Transfer Students"" section exists but the v3 page ranks above v6; retitle it ""Load course history for a student who transferred from another district"" and name v6."
+q-sar-06,yes,,,
+q-sar-07,yes,,,
+q-sar-08,no,table-only,model-reference/student-academic-record-domain/overview,"Add prose: ""Academic honors and awards are recorded with AcademicHonor on StudentAcademicRecord""; today the answer is only a row in the entities table."
+q-attend-01,yes,,,
+q-attend-02,partial,ranking-noise,model-reference/student-attendance-domain/overview,"Add a ""daily vs class-period attendance"" paragraph naming StudentSchoolAttendanceEvent and StudentSectionAttendanceEvent; the answer is buried in a 27k-character best-practices page."
+q-attend-03,yes,,,
+q-attend-04,no,non-DS-page,model-reference/student-attendance-domain/best-practices-and-use-cases,"Add a ""Calculate days absent"" subsection (count AbsentDays from StudentSchoolAttendanceEvent against calendar days); Analytics Middle Tier pages currently win."
+q-attend-05,partial,wrong-version,model-reference/student-attendance-domain/best-practices-and-use-cases,"Add an ""Excused and unexcused codes"" subsection mapping local codes to AttendanceEventCategory; v3/v5 entity tables and Analytics Middle Tier outrank it."
+q-attend-06,no,non-DS-page,model-reference/student-attendance-domain/overview,"Add one plain sentence defining SectionAttendanceTakenEvent (""records that attendance was taken for a section on a date"") so it outranks ODS/API key-structure pages."
+q-attend-07,no,ranking-noise,model-reference/student-attendance-domain/overview,"Add a short ""Deriving daily attendance from period attendance"" paragraph; the answer sits in the large best-practices page (rank 5)."
+q-attend-08,no,non-DS-page,model-reference/student-attendance-domain/overview,"State ""The data model stores individual attendance events, not aggregates such as chronic absenteeism; compute it from events"" and link to the Analytics Middle Tier view."
+q-cohort-01,yes,,,
+q-cohort-02,yes,,,
+q-cohort-03,no,answer-absent,model-reference/student-cohort-domain/overview,"Add a comparison ""Cohort vs section vs program"" paragraph; the page only contrasts cohort with graduation-year cohort."
+q-cohort-04,no,vocabulary-mismatch,model-reference/student-cohort-domain/overview,"Rewrite the ""graduation year cohort"" sentence to include ""graduating class"" and a plain no/yes lead."
+q-cohort-05,no,vocabulary-mismatch,model-reference/student-cohort-domain/overview,"Add ""To give a counselor or staff member a group of students, use StaffCohortAssociation""; learner words ""counselor access"" do not match."
+q-cohort-06,no,non-DS-page,model-reference/student-cohort-domain/overview,Add a sentence on how cohorts link to interventions through StudentInterventionAssociation; certification pages currently outrank it.
+q-cohort-07,no,table-only,model-reference/student-cohort-domain/overview,"Add ""CohortScope descriptor sets whether a cohort is school-wide, district-wide, etc."" as prose; the value lives only in the entities table."
+q-cohort-08,no,answer-absent,model-reference/student-cohort-domain/best-practices,Create a best-practices page covering when to use a cohort versus a program.
+q-health-01,yes,,,
+q-health-02,yes,,,
+q-health-03,yes,,,
+q-health-04,yes,,,
+q-health-05,yes,,,
+q-health-06,no,answer-absent,model-reference/student-health-domain/overview,"Add ""Introduced in Data Standard v5.1"" to the opener; domain pages never state the introduction version."
+q-health-07,yes,,,
+q-health-08,partial,table-only,model-reference/student-health-domain/entities-references-descriptors,"Add a prose lead naming ImmunizationType and listing the default CDC vaccine codes (or link them) before the table; learners say ""vaccine codes""."
+q-stuid-01,partial,wrong-version,model-reference/student-identification-and-demographics-domain/overview,"Name Data Standard v6 in the H1/opening and add ""Parents and guardians are stored as Contact with StudentContactAssociation""; v5/v4 outrank v6."
+q-stuid-02,no,vocabulary-mismatch,model-reference/student-identification-and-demographics-domain/overview,"Say ""race and ethnicity"" in the StudentDemographic sentence and that it moved from StudentEducationOrganizationAssociation in v6.0."
+q-stuid-03,yes,,,
+q-stuid-04,yes,,,
+q-stuid-05,no,non-DS-page,model-reference/student-identification-and-demographics-domain/overview,"Add ""State and district IDs are stored as StudentIdentificationCode rows with different assigning organizations""; certification scenario pages outrank it."
+q-stuid-06,partial,wrong-version,model-reference/student-identification-and-demographics-domain/overview,Add an emergency / authorized pick-up contacts scenario using Contact and StudentContactAssociation and name v6.
+q-stuid-07,yes,,,
+q-stuid-08,yes,,,
+q-spe-01,yes,,,
+q-spe-02,yes,,,
+q-spe-03,partial,table-only,model-reference/student-program-evaluation-domain/overview,Add a plain definition of EvaluationRubricDimension (criteria and rating scale per evaluation element) in the overview.
+q-spe-04,no,wrong-domain,model-reference/student-program-evaluation-domain/best-practices,"Add ""Record a student rating with StudentProgramEvaluation"" at the start; EPDM entity tables win."
+q-spe-05,partial,ranking-noise,model-reference/student-program-evaluation-domain/overview,"Add ""Objectives group elements"" with a one-line example; the v6 best-practices page answers it but the overview ranks 4."
+q-spe-06,no,wrong-domain,model-reference/student-program-evaluation-domain/overview,"Add a ""Not the same as Performance Evaluation"" note linking the Performance Evaluation domain; EPDM pages currently win."
+q-spe-07,yes,,,
+q-spe-08,yes,,,
+q-survey-01,yes,,,
+q-survey-02,yes,,,
+q-survey-03,partial,wrong-version,model-reference/survey-domain/overview,"Add ""A survey section is an optional grouping of questions"" and name v6; v3-v5 entity rows outrank v6."
+q-survey-04,yes,,,
+q-survey-05,no,vocabulary-mismatch,model-reference/survey-domain/overview,"Rewrite ""target a person type"" as ""record who the survey is about (for example, a teacher) with the person target associations""."
+q-survey-06,yes,,,
+q-survey-07,partial,answer-absent,model-reference/survey-domain/overview,"Fix ""Qualtrex"" and add a short vendor-export mapping example (Qualtrics or SurveyMonkey to Survey, SurveyQuestion, SurveyResponse)."
+q-survey-08,partial,wrong-version,model-reference/survey-domain/overview,"Add a ""New in v6.0"" note naming SurveyResponsePersonTargetAssociation and SurveySectionResponsePersonTargetAssociation; v5/v4 overviews outrank v6."
+q-tl-01,yes,,,
+q-tl-02,partial,wrong-version,model-reference/teaching-and-learning-domain/overview,"Add ""Assign a teacher to a section with StaffSectionAssociation"" with v6 in the opener; v3-v5 entity tables outrank it."
+q-tl-03,yes,,,
+q-tl-04,yes,,,
+q-tl-05,yes,,,
+q-tl-06,no,vocabulary-mismatch,model-reference/teaching-and-learning-domain/overview,"Add ""The classroom or room for a section is the Location entity"" ; the entities table describes ""physical space"" and never says ""room number""."
+q-tl-07,no,answer-absent,model-reference/teaching-and-learning-domain/best-practices,"Add the rationale for attaching programs to sections rather than students, or state that the docs do not cover it."
+q-tl-08,no,wrong-domain,model-reference/teaching-and-learning-domain/best-practices,"Add a ""Local vs state course codes"" heading naming LocalCourseCode on CourseOffering vs Course; other domains tables win."
+q-concept-01,no,non-DS-page,reference/data-exchange/data-standards,"Open with a one-paragraph plain definition ""The Ed-Fi Data Standard is ...""; ODS/API release pages currently outrank it."
+q-concept-02,no,answer-absent,reference/data-exchange/data-standards,"Add a ""Data Standard vs Ed-Fi ODS/API"" section: specification versus software that implements it."
+q-concept-03,partial,wrong-version,reference/data-exchange/udm,"Start with ""The Ed-Fi Unifying Data Model (UDM) is ..."" as a definition sentence; v4/v5 model-reference landings outrank it."
+q-concept-04,no,wrong-domain,reference/data-exchange/data-standards,"Add ""UDM vs Data Standard"" definitions; Education Organization overviews win."
+q-concept-05,no,non-DS-page,reference/data-exchange/data-standard,"Add a ""What is a descriptor?"" section; MetaEd cookbook and ODS/API pages outrank it."
+q-concept-06,yes,,,
+q-concept-07,no,answer-absent,reference/data-exchange/udm/core-concepts,"Define ""extended reference"" and link to it from every entities table."
+q-concept-08,no,ranking-noise,reference/data-exchange/udm/ed-fi-domains,"Open with ""A domain is a named grouping of related entities ...""; the generic word ""domain"" matches many pages."
+q-concept-09,no,answer-absent,model-reference,State the count of domains in v6 and list them; the UDM page says 17 and the folder has 26.
+q-concept-10,partial,wrong-version,model-reference/enrollment-domain/overview,"Add ""Student bus transportation is StudentTransportation in the Enrollment domain"" and v6; v5 pages outrank v6."
+q-concept-11,yes,,,
+q-concept-12,partial,wrong-version,model-reference/student-identification-and-demographics-domain/overview,"Add ""parent contact info"" wording and v6 in the opener; v3-v5 overviews outrank v6."
+q-concept-13,partial,non-DS-page,reference/data-exchange/data-standards,"Add a short ""How extensions work"" paragraph linking the extensions framework; ODS/API how-to pages win."
+q-concept-14,no,answer-absent,reference/data-exchange/udm/core-concepts,"Add ""How to read an entities table"" explaining each column; add the same link on each entities page."
+q-concept-15,no,answer-absent,reference/data-exchange/udm/core-concepts,Define Usage Classification and Commonly State-Defined in-scope instead of linking only to an external article.
+q-concept-16,yes,,,
+q-concept-17,partial,non-DS-page,reference/data-exchange/udm/core-concepts,"Add ""Natural keys: how to find the fields that make a record unique"" with a pointer to the Handbook identity column."
+q-concept-18,yes,,,
+q-concept-19,no,non-DS-page,reference/data-exchange/data-standard,"Add a ""Which version for 2026-27?"" section; roadmap and API FAQ pages currently win."
+q-concept-20,yes,,,
+q-concept-21,no,non-DS-page,whats-new/whats-new-v61,"Open the v6.1 page with a title ""What's New in Data Standard v6.1""; blog posts outrank it."
+q-concept-22,no,non-DS-page,whats-new/whats-new-v61,"State ""Data Standard v6.1 is a non-breaking (minor) release"" in the first sentence."
+q-concept-23,no,vocabulary-mismatch,whats-new/migration-guide,"Title and open with ""Migrate an API client from Ed-Fi Data Standard v5 to v6""; learner ""update client 5 to 6"" does not match ""5.0 to 6.0""."
+q-concept-24,yes,,,
+q-concept-25,no,non-DS-page,reference/data-exchange/udm/reporting-issues-and-making-suggestions,"Retitle with ""Suggest a change or report a problem with the data model""."
+q-concept-26,no,wrong-domain,reference/data-exchange/udm/uml-notation-and-conventions,"Retitle ""How to read the UML diagrams"" and link it from every model-diagrams page."
+q-concept-27,no,wrong-domain,reference/data-exchange/udm/design-principles,"Add ""Why the model stores individual data points, not aggregates such as attendance rate""."
+q-concept-28,yes,,,
+q-concept-29,yes,,,
+q-concept-30,no,non-DS-page,reference/data-exchange/data-standard,"Retitle the ""Sample Data"" section ""Sample data (Grand Bend ISD)"" with a download link."
+q-concept-31,no,vocabulary-mismatch,model-reference (landing),"Rename the link to ""Download UML diagrams (Mermaid files on GitHub)""; each model-diagrams page should link to it."
+q-concept-32,yes,,,
+q-ver-01,no,vocabulary-mismatch,model-reference/student-identification-and-demographics-domain/overview,"In v5 pages, say ""home address"" and where addresses live; v5 overview lacks both words and older versions outrank it."
+q-ver-02,no,non-DS-page,whats-new/whats-new-v50,"Add ""Parent was renamed Contact in v5.0"" line near the top; ODS/API claim-set pages win."
+q-ver-03,partial,wrong-version,model-reference/staff-domain/overview,Name v5 on the v5 page and explain contact info lives in StaffEducationOrganizationContactAssociation; v6 staff overview currently outranks it.
+q-ver-04,yes,,,
+q-ver-05,partial,wrong-version,whats-new/whats-new-v60,"Add ""Assessment can have only one AcademicSubject in 6.0 (v5 allowed several)""; v3-v5 entity tables outrank it."
+q-ver-06,yes,,,
+q-ver-07,yes,,,
+q-ver-08,no,wrong-version,whats-new/whats-new-v61,"Add ""ResidencyStatus is deprecated in 6.1; use SEORA"" as a plain Q&A line; older enrollment entity pages win."
+q-ver-09,no,non-DS-page,whats-new/migration-guide,"Add ""SchoolYear is now required on StudentAssessment"" as its own heading; ODS/API key-structure pages win."
+q-ver-10,partial,ranking-noise,model-reference,"Add a version note to the v5 landing ""Credential domain was introduced in v6.0; v5 uses EPDM""."
+q-ver-11,partial,ranking-noise,model-reference/student-identification-and-demographics-domain/overview,"On v5 pages state ""In v5, demographics are on StudentEducationOrganizationAssociation""; domain readmes outrank."
