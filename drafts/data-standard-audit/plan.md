@@ -22,6 +22,8 @@ audiences:
 | Model-reference pages | Hand-generated and hand-maintained (edit in place; no generator to fix) |
 | RAG ingestion | Perplexity web search, domain-filtered to `docs.ed-fi.org`; chunking is a black box |
 | Primary persona | New-to-Ed-Fi learner |
+| Terminology | Enforce [terminology-guidelines.md](./terminology-guidelines.md); "Ed-Fi Unifying Data Model (UDM)" accepted; "Ed-Fi API Specification" enforced over "API Standard" |
+| Glossary | No official glossary exists; the report may propose a data-model concepts glossary |
 | Evaluation questions | Synthesized by subagents (no real logs available) |
 | Deliverable | Audit report only |
 | Model mix | Balanced: Haiku for mechanical work, Sonnet for per-domain audits, Opus for rubric, cross-version analysis, and synthesis |
@@ -60,6 +62,13 @@ Observations to validate (not yet conclusions):
   Commonly Used, etc.) are mostly empty.
 - **Quality nits** exist, e.g., "acceptances acceptances" in
   `version-6/model-reference/graduation-domain/overview.md`.
+- **Terminology drift**: a rough grep over v5, v6, and the UDM pages finds about
+  517 uses of "Ed-Fi", of which about 200 are not followed by an accepted
+  phrase. Examples: 75 bare "Ed-Fi", 43 "Ed-Fi data …", 22 "Ed-Fi community"
+  (lowercase), and "Ed-Fi model", "Ed-Fi domains", "Ed-Fi core", "Ed-Fi
+  extension". Some are probably acceptable in context, such as possessive
+  constructions or "Ed-Fi data" meaning data conforming to the Ed-Fi Data
+  Standard. Phase 2a will classify them.
 - `robots.txt` allows everything; the sitemap comes from preset-classic
   defaults, with no per-version exclusions.
 - The live site is **not reachable from the cloud container** (proxy 403), so
@@ -81,6 +90,7 @@ Outputs live under `drafts/data-standard-audit/` (not built or published):
 ```text
 drafts/data-standard-audit/
   plan.md                  # this file
+  terminology-guidelines.md  # brand terminology rules + audit rulings
   rubric.md                # Phase 1
   questions.yaml           # Phase 1
   working/                 # Phase 0 + Phase 2 raw outputs (may be gitignored or pruned)
@@ -108,7 +118,14 @@ Deterministic work belongs in scripts, not LLM calls.
    diff ratio) and flag identical or near-identical pages.
 4. Script a **descriptor/entity duplication report**: how often each
    descriptor/entity row repeats across domain pages within v6 and v5.
-5. Script a **lightweight retrieval simulator** (BM25 over built-HTML text, one
+5. Script a **terminology pre-pass** (`working/terminology-hits.csv`): every
+   "Ed-Fi" occurrence in scope with path, line, version, the following 1–4
+   words, a ±1 sentence context, first-on-page flag, and a rule tag:
+   accepted phrase / avoid-list match / bare / unlisted phrase. Also flag
+   verb misuse near "Ed-Fi Data Standard" (e.g., "deploy the data standard",
+   "adopt the data standard" where "implement" fits). Regex finds candidates;
+   Phase 2a classifies them.
+6. Script a **lightweight retrieval simulator** (BM25 over built-HTML text, one
    document per page) for use in Phase 2f. It stands in for Perplexity, which
    is a black box; the point is relative signal (does v6 outrank v3? does the
    right domain win?), not absolute fidelity.
@@ -117,7 +134,8 @@ Deterministic work belongs in scripts, not LLM calls.
 
 Opus, because every downstream agent inherits this quality bar.
 
-Inputs: this plan, `CLAUDE.md`, `documentation_prompt.instructions.md`, inventory,
+Inputs: this plan, `CLAUDE.md`, `documentation_prompt.instructions.md`,
+`terminology-guidelines.md`, inventory,
 a sample of 3 domains (small/medium/large) in v6.
 
 Outputs:
@@ -138,6 +156,12 @@ Outputs:
     rows, missing narrative context around large tables.
   - **V — Version disambiguation**: clear version signals; retire, redirect,
     or noindex candidates.
+  - **G — Terminology**: conforms to
+    [terminology-guidelines.md](./terminology-guidelines.md) (no bare
+    "Ed-Fi", no avoid-list phrases, correct implement/deploy/adopt verbs,
+    full form on first use per page). This matters for retrieval too:
+    consistent canonical names ("Ed-Fi Data Standard", "Ed-Fi ODS/API")
+    help a search engine match learner queries to the right page.
   - **Q — Quality**: typos, outdated claims, broken or vague links,
     contradictions with UDM pages.
 - `questions.yaml` — ~250 new-learner questions: ~8 per v6 domain (27
@@ -164,7 +188,10 @@ into one template recommendation.
 ## Phase 2 — Parallel Audits
 
 Launch all Phase 2 agents **in a single message** so they run concurrently
-(about 16 agents). Agent rules:
+(about 18 agents). Agent rules:
+
+- Every agent gets `terminology-guidelines.md` along with the rubric. Their
+  own recommendations, including proposed rewrites, must follow it.
 
 - Use the `general-purpose` agent type (needs Write for the findings file);
   instruct agents to be **read-only on `docs/` and `dataStandard_versioned_docs/`**.
@@ -179,14 +206,15 @@ Launch all Phase 2 agents **in a single message** so they run concurrently
 | ID | Workstream | Model | Count | Scope |
 | --- | --- | --- | --- | --- |
 | 2a | Mechanical scan | Haiku | 2 | v6 and v5 (one each): typos, repeated words, heading anomalies, link-hub-only pages, inconsistent bullet styles, "Go back" boilerplate. Mostly verifies or extends the Phase 0 script output. |
+| 2a-T | Terminology classification | Haiku | 2 | Split `terminology-hits.csv` in half. For each row, label it _violation_, _acceptable in context_, or _unsure_, with a suggested replacement. "Unsure" rows go to a single Sonnet pass during synthesis, not to Opus. |
 | 2b | v6 domain audits | Sonnet | 7 | 27 v6 domains, about 4 per agent, balanced by word count (put the large entity tables, such as Teaching & Learning, Enrollment, and Alternative/Supplemental Services, in separate batches). Apply the rubric to source plus built HTML; try to answer each domain's synthetic questions using only that domain's pages and record gaps. |
 | 2c | v5 delta audit | Sonnet | 2 | Only v5 pages that differ meaningfully from v6 (from the diff matrix). Assume v6 findings carry over; record v5-specific issues and which v6 recommendations apply. |
 | 2d | Conceptual and learner journey | Sonnet | 2 | (i) UDM folder plus `data-standards.md`; (ii) v6 `readme`, `handbook`, `model-reference/readme`, `whats-new/*`, migration guide. Walk the new-learner path: where would they land, and what is missing (glossary, "how to read an entities table", domain map)? Flag overlap between UDM pages and the handbook. |
 | 2e | Cross-version redundancy and retirement | Opus | 1 | Uses the diff matrix, supported-versions, the certification pages, inbound links (`grep` for `/data-standard/3` and `/4`), and `docusaurus.config.js`. Recommends a retire/archive plan for v3 and v4, redirect map, `noindex` and sitemap handling, version-in-title strategy, and certification-doc implications. Needs judgment about trade-offs, hence Opus. |
 | 2f | Retrieval simulation | Sonnet | 2 | Run the Phase 0 BM25 simulator for every question, then judge whether the top-3 pages actually answer it, and classify misses (wrong version, wrong domain, answer only in diagram or table, answer absent). Split the question set in half between the two agents. |
 
-**Concurrency:** about 16 agents fit comfortably in one fan-out. If rate limits
-bite, run 2a, 2b, and 2e first, then 2c, 2d, and 2f (2c benefits from 2b
+**Concurrency:** about 18 agents fit comfortably in one fan-out. If rate limits
+bite, run 2a, 2a-T, 2b, and 2e first, then 2c, 2d, and 2f (2c benefits from 2b
 anyway).
 
 **Why these models:**
@@ -210,7 +238,12 @@ anyway).
    - Executive summary (one page) with the top 10 recommendations.
    - Findings by theme: metadata and titles, version strategy and retirement,
      domain page template, tables and descriptors, diagrams' text
-     equivalents, learner on-ramp and glossary, quality fixes.
+     equivalents, learner on-ramp and glossary, terminology conformance,
+     quality fixes.
+   - Terminology appendix: violation counts by rule and by page, plus a
+     replacement table ready for a find-and-review pass. Also note the
+     inconsistency in the source guidelines ("API Standard" vs. "API
+     Specification") and the UDM ruling.
    - **Proposed domain page template** (before/after example on one domain).
    - v3/v4 retirement plan with a redirect map and certification impacts.
    - Per-domain scorecard (v6, plus a v5 delta column).
@@ -244,8 +277,6 @@ anyway).
 
 ## Open Questions (can be answered during execution)
 
-- Is there an official Ed-Fi glossary to link to, or should the report propose
-  one?
 - Who owns the retirement decision for v3 and v4, and does the timing need to
   align with certification cycles?
 - Should `working/` artifacts be committed or kept local only?
