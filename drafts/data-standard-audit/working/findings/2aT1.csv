@@ -45,7 +45,7 @@ dataStandard_versioned_docs/version-6/model-reference/school-calendar-domain/bes
 dataStandard_versioned_docs/version-6/model-reference/school-calendar-domain/overview.md,35,The Ed-Fi data model has no,violation,The Ed-Fi Unifying Data Model (UDM) has no,"Unlisted ""Ed-Fi data model""."
 dataStandard_versioned_docs/version-6/model-reference/school-calendar-domain/overview.md,36,in the Ed-Fi data model represent,violation,in the Ed-Fi Unifying Data Model (UDM) represent,"Unlisted ""Ed-Fi data model""."
 dataStandard_versioned_docs/version-6/model-reference/special-education-data-model-domain/overview.md,10,standard Ed-Fi breaking change release cycle,violation,the standard breaking-change release cycle for the Ed-Fi Data Standard,"""Ed-Fi"" + unlisted ""breaking change release cycle"" as an attributive phrase."
-dataStandard_versioned_docs/version-6/model-reference/special-education-data-model-domain/readme.md,5,standard Ed-Fi breaking change release cycle,violation,the standard breaking-change release cycle for the Ed-Fi Data Standard,Same sentence as the domain overview (duplicate text).
+dataStandard_versioned_docs/version-6/model-reference/special-education-data-model-domain/readme.md,6,standard Ed-Fi breaking change release cycle,violation,the standard breaking-change release cycle for the Ed-Fi Data Standard,Same sentence as the domain overview (duplicate text).
 dataStandard_versioned_docs/version-6/model-reference/student-academic-record-domain/best-practices.md,12,"In the Ed-Fi data model, this",violation,"In the Ed-Fi Unifying Data Model (UDM), this","Unlisted ""Ed-Fi data model""."
 dataStandard_versioned_docs/version-6/model-reference/student-academic-record-domain/best-practices.md,48,mappings to the Ed-Fi data [model],violation,mappings to the Ed-Fi Unifying Data Model (UDM),"Unlisted ""Ed-Fi data model""; wraps to line 49."
 dataStandard_versioned_docs/version-6/model-reference/student-academic-record-domain/best-practices.md,54,Ed-Fi Entity (table header),violation,Entity,"Table header ""Ed-Fi"" + unlisted noun."
@@ -83,7 +83,7 @@ dataStandard_versioned_docs/version-6/readme.md,54,Ed-Fi Resources API,unsure,Ed
 dataStandard_versioned_docs/version-6/readme.md,86,[Ed-Fi Data Exchange Standards Home],acceptable,,Proper title of an Alliance page (link text).
 dataStandard_versioned_docs/version-6/readme.md,99,[Ed-Fi XSD Design & Implementation Guidelines],acceptable,,Proper title of a guidelines document.
 dataStandard_versioned_docs/version-6/whats-new/migration-guide.md,19,[Ed-Fi Swagger documentation site],acceptable,,Proper name of a site.
-dataStandard_versioned_docs/version-6/whats-new/readme.md,11,(Ed-Fi core model),violation,(Ed-Fi UDM) (drop the alias),"""Ed-Fi core model"" is an unlisted alias. Page already names the UDM on the same line."
+dataStandard_versioned_docs/version-6/whats-new/readme.md,11,(Ed-Fi core model),violation,(Ed-Fi UDM) (drop the alias),"""Ed-Fi core model"" is an unlisted alias. Page already names the UDM on the previous line (line 10)."
 dataStandard_versioned_docs/version-6/whats-new/readme.md,31,[Ed-Fi Data Exchange Standards],acceptable,,Page title used as link text.
 dataStandard_versioned_docs/version-6/whats-new/readme.md,33,[Ed-Fi Technology Roadmap],acceptable,,Proper title of a roadmap page (link text wraps).
 dataStandard_versioned_docs/version-6/whats-new/whats-new-v60.md,43,[Ed-Fi RFC 27b],acceptable,,Proper title of an RFC document.
