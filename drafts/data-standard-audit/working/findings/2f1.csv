@@ -1,0 +1,127 @@
+id,verdict,miss_cause,fix_page,fix_suggestion
+q-altsvc-01,partial,wrong-domain,/reference/data-exchange/data-standard/model-reference/alternative-and-supplemental-services-domain/overview,"Add a prose ""Special education and other federal program services"" section naming StudentSpecialEducationProgramAssociation as a subclass of StudentProgramAssociation, using the words ""special education services"", and link to the Special Education Data Model domain."
+q-altsvc-02,no,non-DS-page,/reference/data-exchange/data-standard/model-reference/alternative-and-supplemental-services-domain/overview,"Add a short ""Program vs StudentProgramAssociation"" definition paragraph (Program is the offering, the association is one student's participation with dates); overview currently names StudentProgramAssociation once."
+q-altsvc-03,yes,,,
+q-altsvc-04,no,wrong-domain,/reference/data-exchange/data-standard/model-reference/alternative-and-supplemental-services-domain/best-practices,"Add a heading phrased as a question (""Can a program association span several school years?"") with the one-association-per-school-year rule and the words ""program enrollment""; enrollment best practices currently outrank it."
+q-altsvc-05,no,table-only,/reference/data-exchange/data-standard/model-reference/alternative-and-supplemental-services-domain/overview,"StaffProgramAssociation appears once in prose and as a table row. Add a ""Staff and programs"" sentence using ""teachers"", ""staff"", ""after-school""."
+q-altsvc-06,no,non-DS-page,/reference/data-exchange/data-standard/model-reference/alternative-and-supplemental-services-domain/best-practices,"Add a decision section ""Free or reduced-price lunch: characteristic or program association?"" with the words ""free or reduced lunch"" and StudentSchoolFoodServiceProgramAssociation; cross-link from the student identification best practices."
+q-altsvc-07,no,vocabulary-mismatch,/reference/data-exchange/data-standard/model-reference/alternative-and-supplemental-services-domain/overview,"Add an opening scope paragraph listing program kinds in learner words: clubs, tutoring, extracurricular, early learning, special education, federal programs."
+q-altsvc-08,partial,wrong-version,/reference/data-exchange/data-standard/model-reference/alternative-and-supplemental-services-domain/overview,"Add a ""Section 504 plans"" prose entry naming StudentSection504ProgramAssociation (added in Data Standard v5.2); today only the v5.2 what's-new answers in top 3."
+q-assess-01,partial,non-DS-page,/reference/data-exchange/data-standard/model-reference/assessment-domain/overview,"Add a lead paragraph ""How student test scores are stored"" (Assessment = test metadata, StudentAssessment = a student's result) using ""test scores"", ""results""; Assessment Providers playbook pages outrank."
+q-assess-02,partial,wrong-version,/reference/data-exchange/data-standard/model-reference/assessment-domain/overview,"The v6 overview holds the answer (14 ObjectiveAssessment mentions) but is not in top 3; add an explicit ""Assessment vs ObjectiveAssessment"" paragraph with the word ""difference"" and ""subtest""."
+q-assess-03,yes,,,
+q-assess-04,partial,non-DS-page,/reference/data-exchange/data-standard/model-reference/assessment-domain/best-practices,"Retitle/add a heading ""Choosing identifiers for a vendor test"" with ""identifier"" and ""vendor"" in the first sentence; Assessment Providers playbook pages outrank."
+q-assess-05,yes,,,
+q-assess-06,partial,wrong-version,/reference/data-exchange/data-standard/model-reference/assessment-domain/overview,"Add a ""Linking tests to learning standards"" sentence/heading using ""state standards""; v3 overview and v4/v5 diagram pages outrank the v6 overview (rank 4)."
+q-assess-07,no,vocabulary-mismatch,/reference/data-exchange/data-standard/model-reference/assessment-domain/overview,"Add a ""How detailed are the results?"" paragraph: item-level results via AssessmentItem and StudentAssessmentItem; full response replay is out of scope. Use ""answers"", ""item responses""."
+q-assess-08,yes,,,
+q-assessreg-01,yes,,,
+q-assessreg-02,yes,,,
+q-assessreg-03,yes,,,
+q-assessreg-04,yes,,,
+q-assessreg-05,no,ranking-noise,/reference/data-exchange/data-standard/model-reference/assessment-registration-domain/best-practices,"Top 3 are unrelated certification and admin pages; give the ""Prerequisites"" section a question-style heading (""What must exist before creating a registration"") so passage retrieval matches."
+q-assessreg-06,partial,ranking-noise,/reference/data-exchange/data-standard/whats-new/whats-new-v60,"The v6 best-practices page mentions StudentDemographic once; state the SEOA-to-StudentDemographic change in a short sentence on the v6 assessment registration overview, using ""StudentEducationOrganizationAssociation""."
+q-assessreg-07,yes,,,
+q-assessreg-08,partial,wrong-version,/reference/data-exchange/data-standard/model-reference/assessment-registration-domain/overview,"Add an ""Assessment vs Assessment Registration"" sentence (metadata/results vs administration/student registration); v5 pages outrank the v6 overview (rank 7)."
+q-bell-01,partial,non-DS-page,/reference/data-exchange/data-standard/model-reference/bell-schedule-domain/overview,"Add a lead sentence ""Class periods and bell times"" with the words ""class period"", ""bell time"", ""block schedule""; SEA playbook and certification pages outrank (v6 overview rank 8)."
+q-bell-02,yes,,,
+q-bell-03,yes,,,
+q-bell-04,yes,,,
+q-bell-05,no,vocabulary-mismatch,/reference/data-exchange/data-standard/model-reference/bell-schedule-domain/overview,"Add a worked sentence ""How a section knows when it meets"" (Section to ClassPeriod to BellSchedule) using ""meets"", ""meeting time""."
+q-bell-06,yes,,,
+q-bell-07,partial,non-DS-page,/reference/data-exchange/data-standard/model-reference/bell-schedule-domain/overview,"Add a ""Total instructional minutes"" sentence naming StartTime, EndTime and TotalInstructionalTime and linking to the SEA instructional-time guide."
+q-bell-08,no,answer-absent,/reference/data-exchange/data-standard/model-reference/bell-schedule-domain/best-practices,Create a Bell Schedule best-practices page covering mid-year schedule changes and versioning (docs gap).
+q-cred-01,no,vocabulary-mismatch,/reference/data-exchange/data-standard/model-reference/credential-domain/overview,"Add ""teaching license"" and ""teaching certificate"" as plain-language synonyms in the first paragraph of the Credential overview."
+q-cred-02,yes,,,
+q-cred-03,yes,,,
+q-cred-04,no,vocabulary-mismatch,/reference/data-exchange/data-standard/model-reference/credential-domain/overview,"Add a sentence about non-staff credentials (""students can earn industry certifications""): Credential may reference a Person; name the graduation-plan certification link."
+q-cred-05,partial,table-only,/reference/data-exchange/data-standard/model-reference/credential-domain/overview,"CertificationExam/CertificationExamResult appear only as table rows; add a prose sentence ""Certification exam scores"" in the overview. Legacy EPDM page outranks."
+q-cred-06,yes,,,
+q-cred-07,partial,answer-absent,/reference/data-exchange/data-standard/model-reference/credential-domain/overview,"Readme definition is vague; rewrite the first paragraph to say who holds credentials (staff, candidates, students) and what it records."
+q-cred-08,partial,answer-absent,/reference/data-exchange/data-standard/model-reference/credential-domain/overview,Add one sentence explaining why Credential is its own domain though Staff also references it.
+q-disc-01,partial,table-only,/reference/data-exchange/data-standard/model-reference/discipline-domain/overview,"Entities table is the top hit; add a worked ""Recording a fight between students"" example (DisciplineIncident + one StudentDisciplineIncidentBehaviorAssociation per student)."
+q-disc-02,yes,,,
+q-disc-03,partial,table-only,/reference/data-exchange/data-standard/model-reference/discipline-domain/overview,"StudentDisciplineIncidentNonOffenderAssociation is reachable only from older-version entity tables; add ""victims and witnesses"" prose to the v6 overview."
+q-disc-04,yes,,,
+q-disc-05,no,vocabulary-mismatch,/reference/data-exchange/data-standard/model-reference/discipline-domain/best-practices,"Retrieval returns AMT/descriptor-mapping pages; add a ""Where do behavior codes go?"" section using ""behavior code"" for BehaviorDescriptor locations."
+q-disc-06,partial,table-only,/reference/data-exchange/data-standard/model-reference/discipline-domain/overview,"DisciplineIncidentExternalParticipant appears only in the entity table; add prose ""People who are not students or staff"" to the overview."
+q-disc-07,no,non-DS-page,/reference/data-exchange/data-standard/model-reference/discipline-domain/overview,"Add a ""Many-to-many between incidents and actions"" key-concept sentence; certification scenarios outrank."
+q-disc-08,no,answer-absent,/reference/data-exchange/data-standard/model-reference/discipline-domain/best-practices,"Add narrative guidance on assigned vs served length of removal (""days of suspension""); currently only entity descriptions."
+q-edorg-01,no,vocabulary-mismatch,/reference/data-exchange/data-standard/model-reference/education-organization-domain/overview,"Add ""school district"" as plain-language synonym for LocalEducationAgency in the overview (ODS/API claim-set pages currently win)."
+q-edorg-02,yes,,,
+q-edorg-03,partial,wrong-version,/reference/data-exchange/data-standard/model-reference/education-organization-domain/overview,"v6 overview outranked by v5/v4/v3 copies (rank 4); add ""Data Standard v6"" and the EducationOrganization-vs-Person rationale in the opening paragraph."
+q-edorg-04,partial,table-only,/reference/data-exchange/data-standard/model-reference/education-organization-domain/overview,"EducationServiceCenter is not named in the readme; add a prose line ""Regional service centers (ESC) sit between state and district""."
+q-edorg-05,no,vocabulary-mismatch,/reference/data-exchange/data-standard/model-reference/education-organization-domain/overview,"Add ""charter management organization (CMO)"" to the LocalEducationAgency description; finance overview wins by mentioning CMO."
+q-edorg-06,partial,wrong-version,/reference/data-exchange/data-standard/model-reference/education-organization-domain/overview,"AccountabilityRating answer only surfaces from v5/v4/v3 overviews; v6 overview at rank 4. Add ""state accountability ratings"" wording."
+q-edorg-07,partial,wrong-version,/reference/data-exchange/data-standard/model-reference/education-organization-domain/entities-and-descriptors,"FeederSchoolAssociation is only a table row; add a prose line in the v6 overview (""feeder schools, elementary to middle"")."
+q-edorg-08,no,vocabulary-mismatch,/reference/data-exchange/data-standard/model-reference/education-organization-domain/overview,"Add a ""Do I need a State Education Agency record?"" Q&A sentence (SEA optional; LEA-only implementations)."
+q-epp-01,partial,wrong-version,/reference/data-exchange/data-standard/model-reference/educator-preparation-program-domain/overview,"v3/v4/v5 ""Educator Preparation Data Model"" pages outrank; add ""teacher candidates"" and ""university prep program"" wording to the v6 overview and a rename note (EPDM to Educator Preparation Program)."
+q-epp-02,no,answer-absent,/reference/data-exchange/data-standard/model-reference/educator-preparation-program-domain/overview,Add a rationale sentence for Candidate being separate from Student (design decision).
+q-epp-03,no,vocabulary-mismatch,/reference/data-exchange/data-standard/model-reference/educator-preparation-program-domain/overview,"Add ""student teaching placements"" prose naming FieldworkExperience and FieldworkExperienceSectionAssociation."
+q-epp-04,no,table-only,/reference/data-exchange/data-standard/model-reference/educator-preparation-program-domain/overview,"CandidateRelationshipToStaffAssociation is a table row only; add a prose sentence ""From candidate to staff member""."
+q-epp-05,yes,,,
+q-epp-06,partial,wrong-version,/reference/data-exchange/data-standard/whats-new/whats-new-v60,State the tpdm to ed-fi descriptor namespace change in prose on the v6 what's-new page; EPDM v3-v5 pages outrank (v6 rank 6).
+q-epp-07,no,non-DS-page,/reference/data-exchange/data-standard/model-reference/educator-preparation-program-domain/overview,"Add ""candidate enrollment"" sentence naming CandidateEducatorPreparationProgramAssociation."
+q-epp-08,no,answer-absent,/reference/data-exchange/data-standard/model-reference/educator-preparation-program-domain/best-practices,Create an Educator Preparation Program best-practices page (docs gap).
+q-enroll-01,yes,,,
+q-enroll-02,no,non-DS-page,/reference/data-exchange/data-standard/model-reference/enrollment-domain/best-practices,"Certification scenario pages win; add a ""Recording a withdrawal"" heading naming ExitWithdrawDate and ExitWithdrawType on StudentSchoolAssociation."
+q-enroll-03,partial,wrong-version,/reference/data-exchange/data-standard/model-reference/enrollment-domain/overview,"Add a ""StudentSchoolAssociation vs StudentEducationOrganizationAssociation"" side-by-side in the v6 enrollment overview; v3 student-ID best practices currently appear."
+q-enroll-04,yes,,,
+q-enroll-05,yes,,,
+q-enroll-06,no,table-only,/reference/data-exchange/data-standard/model-reference/enrollment-domain/overview,"Grade level on StudentSchoolAssociation is only a table row; add prose ""Where a student's grade level lives"" in the enrollment overview."
+q-enroll-07,partial,wrong-version,/reference/data-exchange/data-standard/model-reference/enrollment-domain/best-practices,"v5.1 what's-new and v4/v5 copies outrank the v6 page (rank 4); lead the CrisisEvent section with ""hurricane"" and ""displaced""."
+q-enroll-08,partial,wrong-version,/reference/data-exchange/data-standard/model-reference/enrollment-domain/best-practices,"StudentTransportation appears via v5 entity table first; add a ""Bus route / transportation"" sentence to the v6 page."
+q-fin-01,yes,,,
+q-fin-02,yes,,,
+q-fin-03,yes,,,
+q-fin-04,yes,,,
+q-fin-05,partial,wrong-version,/reference/data-exchange/data-standard/model-reference/finance-domain/overview,"Add a ""Payroll and contractors"" sentence naming LocalPayroll and LocalContractedStaff; older-version entity tables outrank the v6 overview (rank 5)."
+q-fin-06,yes,,,
+q-fin-07,yes,,,
+q-fin-08,partial,answer-absent,/reference/data-exchange/data-standard/model-reference/finance-domain/overview,Single sentence on linking finance to student outcomes; add an example of how to join finance data to student data.
+q-grad-01,no,vocabulary-mismatch,/reference/data-exchange/data-standard/model-reference/graduation-domain/overview,"Add ""courses a student needs to graduate"" wording describing GraduationPlan; teaching-and-learning best practices win."
+q-grad-02,partial,non-DS-page,/reference/data-exchange/data-standard/model-reference/graduation-domain/overview,"Add a ""District-wide vs individual graduation plan"" sentence; certification scenarios outrank."
+q-grad-03,yes,,,
+q-grad-04,yes,,,
+q-grad-05,yes,,,
+q-grad-06,partial,answer-absent,/reference/data-exchange/data-standard/model-reference/graduation-domain/overview,Readme only says evaluation uses Student Academic Record data; add a worked outline of checking progress against a GraduationPlan.
+q-grad-07,partial,table-only,/reference/data-exchange/data-standard/model-reference/graduation-domain/overview,Required exams are only visible in entity tables; add a prose sentence on GraduationPlan required assessments.
+q-grad-08,yes,,,
+q-interv-01,partial,table-only,/reference/data-exchange/data-standard/model-reference/intervention-domain/overview,"Add a ""Intervention vs InterventionPrescription"" definition paragraph; entities table currently ranks first."
+q-interv-02,yes,,,
+q-interv-03,partial,wrong-version,/reference/data-exchange/data-standard/model-reference/intervention-domain/overview,"Add ""assign a group of students"" prose (Cohort via StudentInterventionAssociation); only older entity tables surface."
+q-interv-04,yes,,,
+q-interv-05,partial,wrong-version,/reference/data-exchange/data-standard/model-reference/intervention-domain/overview,"Add ""research evidence"" prose naming InterventionStudy to v6 overview (rank 5)."
+q-interv-06,partial,wrong-version,/reference/data-exchange/data-standard/model-reference/intervention-domain/overview,"Add ""learning materials / content"" prose naming EducationContent and LRMI."
+q-interv-07,no,answer-absent,/reference/data-exchange/data-standard/model-reference/intervention-domain/overview,"Add a ""Intervention vs Program"" guidance section (docs gap; Alternative and Supplemental Services cross-link)."
+q-interv-08,yes,,,
+q-path-01,partial,wrong-version,/reference/data-exchange/data-standard/model-reference/path-domain/overview,"Top hit is diagrams-only; v5/v4 student-path pages outrank v6 overview (rank 10). Add a plain ""What is a path?"" definition (scheme of milestones in phases)."
+q-path-02,yes,,,
+q-path-03,partial,wrong-version,/reference/data-exchange/data-standard/model-reference/path-domain/overview,"Add ""path phase vs path milestone"" definition lines; v6 overview is rank 5."
+q-path-04,yes,,,
+q-path-05,no,wrong-version,/reference/data-exchange/data-standard/model-reference/path-domain/overview,Clarify scope: path is usable beyond teacher candidates (K-12 career pathways) and stop framing it only for educator candidates.
+q-path-06,partial,answer-absent,/reference/data-exchange/data-standard/model-reference/path-domain/overview,GraduationPlan appears only as an extended reference; add a sentence on how Path relates to GraduationPlan.
+q-path-07,yes,,,
+q-path-08,yes,,,
+q-perf-01,no,wrong-version,/reference/data-exchange/data-standard/model-reference/performance-evaluation-domain/overview,"Add ""teacher observation rating"" prose (EvaluationRating, EvaluationElementRating); EPDM v3-v5 entity tables outrank."
+q-perf-02,no,wrong-version,/reference/data-exchange/data-standard/model-reference/performance-evaluation-domain/overview,"State the PerformanceEvaluation > Evaluation > EvaluationObjective > EvaluationElement hierarchy in prose with ""levels""."
+q-perf-03,yes,,,
+q-perf-04,yes,,,
+q-perf-05,no,wrong-version,/reference/data-exchange/data-standard/model-reference/performance-evaluation-domain/overview,"Add ""who can be evaluated"" sentence (Staff, Candidate, Student via Person)."
+q-perf-06,yes,,,
+q-perf-07,partial,ranking-noise,/reference/data-exchange/data-standard/model-reference/performance-evaluation-domain/overview,"Add a short ""vs Student Program Evaluation"" comparison; the SPE page outranks (PE overview rank 6)."
+q-perf-08,yes,,,
+q-recruit-01,no,answer-absent,/reference/data-exchange/data-standard/model-reference/recruiting-and-staffing-domain/overview,"Overview says ""Coming Soon""; write a real overview covering ApplicantProfile and Application."
+q-recruit-02,yes,,,
+q-recruit-03,yes,,,
+q-recruit-04,partial,wrong-version,/reference/data-exchange/data-standard/model-reference/staff-domain/overview,"OpenStaffPosition answer surfaces from v5/v4/v3 staff overviews; add ""open positions / job postings"" wording and a link from Recruiting and Staffing."
+q-recruit-05,yes,,,
+q-recruit-06,no,answer-absent,/reference/data-exchange/data-standard/model-reference/recruiting-and-staffing-domain/overview,"Describe the ApplicationEvent lifecycle (interview, offer, hire); only a one-line definition exists today."
+q-recruit-07,no,answer-absent,/reference/data-exchange/data-standard/model-reference/recruiting-and-staffing-domain/overview,"Replace ""Coming Soon"" Key Entities and Key Concepts with real content."
+q-recruit-08,partial,ranking-noise,/reference/data-exchange/data-standard/whats-new/whats-new-v60,"Name Recruiting and Staffing explicitly with ""new in Data Standard v6.0"" on the v6 what's-new page; v6 what's-new ranks 7."
+q-cal-01,partial,non-DS-page,/reference/data-exchange/data-standard/model-reference/school-calendar-domain/overview,"Add ""school holidays and instructional days"" wording (Calendar and CalendarDate event types); SEA playbook pages outrank (v6 overview rank 4)."
+q-cal-02,no,non-DS-page,/reference/data-exchange/data-standard/model-reference/school-calendar-domain/overview,"Add a ""Session vs grading period"" comparison; AMT views and certification scenarios outrank (v6 overview rank 7)."
+q-cal-03,partial,ranking-noise,/reference/data-exchange/data-standard/model-reference/school-calendar-domain/overview,"State ""there is no district-level calendar; a district calendar is the set of school calendars"" in the overview; best practices page currently wins without saying it."
+q-cal-04,yes,,,
+q-cal-05,yes,,,
+q-cal-06,yes,,,
