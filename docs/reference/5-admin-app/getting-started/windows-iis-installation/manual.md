@@ -14,7 +14,7 @@ Prepare the following on the Windows host before deploying the API and Web Appli
 - **[IIS modules](#iis-modules)** — the URL Rewrite Module and an httpPlatform handler.
 - **[Database](#database)** — SQL Server (default) or PostgreSQL.
 - **[Node.js](#nodejs)** — the major version pinned in the Admin App's `package.json` (currently `>=22`).
-- **[Identity provider](#identity-provider)** — an OIDC provider; this guide uses a local Keycloak example.
+- **[Identity provider](../../configuration/identity-provider/readme.md)** — an OIDC provider; this guide uses a local Keycloak example.
 - **[TLS certificate](#tls-and-certificates)** — a CA-issued certificate, or a self-signed one for local use.
 - **[Yopass](#yopass-optional)** (optional) — for one-time credential links.
 
@@ -96,7 +96,7 @@ Install the Node.js major version pinned in the Admin App's `package.json` (`eng
 
 ### Identity provider
 
-This guide uses **Keycloak**, running locally, as the example OIDC identity provider. Install a supported LTS JDK — Keycloak 26.6 supports OpenJDK 17, 21, or 25 — then download and start [Keycloak](https://www.keycloak.org/) and create the `edfi` realm, the `edfiadminapp` confidential client, and a test user.
+This guide uses **Keycloak**, running locally, as the example OIDC identity provider; Microsoft Entra ID, Google Workspace, and Auth0 are also supported (see the guide linked below). Install a supported LTS JDK — Keycloak 26.6 supports OpenJDK 17, 21, or 25 — then download and start [Keycloak](https://www.keycloak.org/) and create the `edfi` realm, the `edfiadminapp` confidential client, and a test user.
 
 :::note
 Register these in the Keycloak client (HTTPS, matching the default ports):
@@ -110,7 +110,7 @@ Register these in the Keycloak client (HTTPS, matching the default ports):
 A user must exist in Keycloak whose email/username claim matches the Admin App admin user (default `admin@example.com`). Java is required **only** for the local Keycloak example.
 :::
 
-For more detail, see [Configuring an Identity Provider for Ed-Fi Admin App](../../configuration/identity-provider.md).
+For more detail, see [Configuring an Identity Provider for Ed-Fi Admin App](../../configuration/identity-provider/readme.md).
 
 :::warning Keycloak does not survive a restart on its own
 A locally installed Keycloak does not come back when the host restarts. The API needs Keycloak already running when the API starts, so it has to start **after** Keycloak is accepting requests. If the API starts first, sign-in fails until the API is recycled.
@@ -507,6 +507,6 @@ A fresh install has no users, teams, or environments yet. The Global Admin Quick
 
 - [Global Admin Quick Start](../../user-guide/global-admin-quick-start/readme.md)
 - [Configuring Ed-Fi Admin App](../../configuration/configuring-admin-app.md)
-- [Configuring an Identity Provider for Ed-Fi Admin App](../../configuration/identity-provider.md)
+- [Configuring an Identity Provider for Ed-Fi Admin App](../../configuration/identity-provider/readme.md)
 - [Security Considerations](../../configuration/security-considerations.md)
 - [Global Administration Tasks](../../configuration/global-administration-tasks.md)
