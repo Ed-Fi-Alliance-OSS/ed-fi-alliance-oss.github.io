@@ -1,0 +1,2169 @@
+# Synthetic new-learner question set for the Ed-Fi Data Standard documentation audit.
+# Phase 1 output, 2026-10-10. AI-generated; review before use.
+#
+# - question: written in the voice of someone new to the Ed-Fi Data Standard, typing
+#   into a search or answer engine restricted to docs.ed-fi.org. Wording deliberately
+#   avoids copying page headings so retrieval tests are not inflated.
+# - type: definition | relationship | how-to | change-history | orientation
+# - domain: v6 model-reference folder name, or "conceptual" / "version-sensitive"
+# - version: Data Standard major version the answer should come from ("6", "5"),
+#   or "any" for unversioned UDM concept pages.
+# - expected_urls: published paths from working/inventory.csv `url`; best answer first.
+#   An empty list plus a "gap:" note means no in-scope page answers the question today.
+# - notes: what a good answer must contain, or "partial:" when the answer is incomplete.
+
+questions:
+  - id: q-altsvc-01
+    question: "how do I record that a student is getting special education services"
+    type: how-to
+    domain: alternative-and-supplemental-services-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/alternative-and-supplemental-services-domain/best-practices
+      - /reference/data-exchange/data-standard/model-reference/alternative-and-supplemental-services-domain/overview
+    notes: "Should name StudentSpecialEducationProgramAssociation as a subclass of StudentProgramAssociation, and note the SEDM domain for IEP detail."
+  - id: q-altsvc-02
+    question: "What's the difference between a Program and a StudentProgramAssociation?"
+    type: relationship
+    domain: alternative-and-supplemental-services-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/alternative-and-supplemental-services-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/alternative-and-supplemental-services-domain/entities-references-and-descriptors
+    notes: "Program defines the offering; StudentProgramAssociation links a student to it with dates."
+  - id: q-altsvc-03
+    question: "which federal programs have their own special association type"
+    type: definition
+    domain: alternative-and-supplemental-services-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/alternative-and-supplemental-services-domain/best-practices
+      - /reference/data-exchange/data-standard/model-reference/alternative-and-supplemental-services-domain/overview
+    notes: "List of subclasses such as Title I Part A, CTE, Homeless, Migrant, Language Instruction, Section 504, School Food Service."
+  - id: q-altsvc-04
+    question: "Can one program enrollment record span several school years?"
+    type: how-to
+    domain: alternative-and-supplemental-services-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/alternative-and-supplemental-services-domain/best-practices
+    notes: "Multi-year StudentProgramAssociation is an anti-pattern; create one per school year."
+  - id: q-altsvc-05
+    question: "link teachers or staff to an after-school program"
+    type: relationship
+    domain: alternative-and-supplemental-services-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/alternative-and-supplemental-services-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/alternative-and-supplemental-services-domain/entities-references-and-descriptors
+    notes: "StaffProgramAssociation."
+  - id: q-altsvc-06
+    question: "Should free or reduced lunch eligibility be a student characteristic or a program association?"
+    type: how-to
+    domain: alternative-and-supplemental-services-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-identification-and-demographics-domain/best-practices
+      - /reference/data-exchange/data-standard/model-reference/alternative-and-supplemental-services-domain/best-practices
+    notes: "Must explain the characteristic vs program association decision and mention StudentSchoolFoodServiceProgramAssociation."
+  - id: q-altsvc-07
+    question: "what kinds of programs does the data standard cover — clubs, tutoring, early learning?"
+    type: orientation
+    domain: alternative-and-supplemental-services-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/alternative-and-supplemental-services-domain
+      - /reference/data-exchange/data-standard/model-reference/alternative-and-supplemental-services-domain/overview
+    notes: "Covers education, alternative, extracurricular, supplemental, and early learning programs."
+  - id: q-altsvc-08
+    question: "where do 504 plans go"
+    type: definition
+    domain: alternative-and-supplemental-services-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/alternative-and-supplemental-services-domain/best-practices
+      - /reference/data-exchange/data-standard/model-reference/alternative-and-supplemental-services-domain/overview
+    notes: "StudentSection504ProgramAssociation; added in DS 5.2."
+  - id: q-assess-01
+    question: "how are a student's test scores stored"
+    type: definition
+    domain: assessment-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/assessment-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/assessment-domain/entities-references-and-descriptors
+    notes: "StudentAssessment holds results; Assessment holds metadata."
+  - id: q-assess-02
+    question: "difference between Assessment and ObjectiveAssessment"
+    type: relationship
+    domain: assessment-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/assessment-domain/overview
+    notes: "ObjectiveAssessment is a subtest or scored subcomponent; can nest hierarchically."
+  - id: q-assess-03
+    question: "How do I report sub-scores like reading comprehension and fluency from one reading test?"
+    type: how-to
+    domain: assessment-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/assessment-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/assessment-domain/best-practices
+    notes: "ObjectiveAssessment metadata plus StudentObjectiveAssessment results."
+  - id: q-assess-04
+    question: "what should I use as the assessment identifier for a vendor test"
+    type: how-to
+    domain: assessment-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/assessment-domain/best-practices
+    notes: "Guidance under assigning identifiers for Assessment, ObjectiveAssessment, AssessmentItem, StudentAssessment."
+  - id: q-assess-05
+    question: "where do performance levels like proficient or advanced go"
+    type: how-to
+    domain: assessment-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/assessment-domain/best-practices
+      - /reference/data-exchange/data-standard/model-reference/assessment-domain/entities-references-and-descriptors
+    notes: "Assessment performance levels and student performance levels; PerformanceLevel descriptor."
+  - id: q-assess-06
+    question: "Can test results be tied to state learning standards?"
+    type: relationship
+    domain: assessment-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/assessment-domain/overview
+    notes: "LearningStandard linked from ObjectiveAssessment and AssessmentItem."
+  - id: q-assess-07
+    question: "does the model store every answer a student gave on a test"
+    type: definition
+    domain: assessment-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/assessment-domain/overview
+    notes: "AssessmentItem and StudentAssessmentItem exist, but full replay of interactions is out of scope."
+  - id: q-assess-08
+    question: "What changed for assessments in Data Standard 6.0?"
+    type: change-history
+    domain: assessment-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/whats-new/whats-new-v60
+      - /reference/data-exchange/data-standard/whats-new/migration-guide
+      - /reference/data-exchange/data-standard/whats-new/api-changes-6
+    notes: "AcademicSubject single required; ParentObjectiveAssessment collection; SchoolYear required; AssessedGradeLevel and StudentAssessmentIndicator added."
+  - id: q-assessreg-01
+    question: "How does a state send the list of students registered for a test to the testing company?"
+    type: orientation
+    domain: assessment-registration-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/assessment-registration-domain
+      - /reference/data-exchange/data-standard/model-reference/assessment-registration-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/assessment-registration-domain/best-practices
+    notes: "StudentAssessmentRegistration linked to AssessmentAdministration; SEA/LEA to vendor exchange."
+  - id: q-assessreg-02
+    question: "what is an assessment battery part"
+    type: definition
+    domain: assessment-registration-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/assessment-registration-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/assessment-registration-domain/best-practices
+    notes: "A module or grouping of tests delivered separately; may relate to ObjectiveAssessment."
+  - id: q-assessreg-03
+    question: "assigning vs participating vs testing vs reporting education organization"
+    type: definition
+    domain: assessment-registration-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/assessment-registration-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/assessment-registration-domain/best-practices
+    notes: "Must define all four roles with the SEA/LEA example."
+  - id: q-assessreg-04
+    question: "how do I send a student's testing accommodations like extended time"
+    type: how-to
+    domain: assessment-registration-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/assessment-registration-domain/best-practices
+      - /reference/data-exchange/data-standard/model-reference/assessment-registration-domain/overview
+    notes: "StudentEducationOrganizationAssessmentAccommodation and accommodation on the registration."
+  - id: q-assessreg-05
+    question: "What has to exist in the system before I can create a test registration?"
+    type: how-to
+    domain: assessment-registration-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/assessment-registration-domain/best-practices
+    notes: "Prerequisites section."
+  - id: q-assessreg-06
+    question: "Does the test registration still point to StudentEducationOrganizationAssociation in version 6?"
+    type: change-history
+    domain: assessment-registration-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/whats-new/whats-new-v60
+      - /reference/data-exchange/data-standard/model-reference/assessment-registration-domain/overview
+    notes: "In 6.0 StudentAssessmentRegistration references StudentDemographic instead of SEOA."
+  - id: q-assessreg-07
+    question: "which data standard version first added assessment registration"
+    type: change-history
+    domain: assessment-registration-domain
+    version: "5"
+    expected_urls:
+      - /reference/data-exchange/data-standard/5/whats-new/whats-new-v52
+    notes: "Added in DS 5.2."
+  - id: q-assessreg-08
+    question: "is assessment registration the same thing as the assessment domain"
+    type: relationship
+    domain: assessment-registration-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/assessment-registration-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/assessment-domain
+    notes: "Assessment covers metadata and results; registration covers administration and student registration."
+  - id: q-bell-01
+    question: "how are class periods and bell times modeled"
+    type: orientation
+    domain: bell-schedule-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/bell-schedule-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/bell-schedule-domain
+    notes: "BellSchedule, ClassPeriod, Section relationship."
+  - id: q-bell-02
+    question: "how do I represent an A/B block schedule"
+    type: how-to
+    domain: bell-schedule-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/bell-schedule-domain/overview
+    notes: "Model accommodates block schedules; meeting days listed via dates."
+  - id: q-bell-03
+    question: "what's the difference between a class period and a bell schedule"
+    type: relationship
+    domain: bell-schedule-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/bell-schedule-domain/overview
+    notes: "ClassPeriod is a named slot (e.g., Block A); BellSchedule gives the times on given dates."
+  - id: q-bell-04
+    question: "Our school has a late-start day on Wednesdays. How do I show a different schedule for that day?"
+    type: how-to
+    domain: bell-schedule-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/bell-schedule-domain/overview
+    notes: "Multiple bell schedules; specific dates on BellSchedule."
+  - id: q-bell-05
+    question: "How does a class section know what time it meets?"
+    type: relationship
+    domain: bell-schedule-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/bell-schedule-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/teaching-and-learning-domain/overview
+    notes: "Section → ClassPeriod → BellSchedule."
+  - id: q-bell-06
+    question: "can different grades in the same school have different bell schedules"
+    type: how-to
+    domain: bell-schedule-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/bell-schedule-domain/overview
+    notes: "Yes; multiple bell schedules may cover the same calendar period."
+  - id: q-bell-07
+    question: "where do I store total instructional minutes per day for state reporting"
+    type: definition
+    domain: bell-schedule-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/bell-schedule-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/bell-schedule-domain/entities-references-and-descriptors
+    notes: "StartTime, EndTime, TotalInstructionalTime on BellSchedule."
+  - id: q-bell-08
+    question: "What should I send when the bell schedule changes in the middle of the year?"
+    type: how-to
+    domain: bell-schedule-domain
+    version: "6"
+    expected_urls: []
+    notes: "gap: no best-practices page for Bell Schedule and no guidance on mid-year changes or versioning of schedules."
+  - id: q-cred-01
+    question: "how do I record a teacher's teaching license"
+    type: how-to
+    domain: credential-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/credential-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/credential-domain/entities-references-and-descriptors
+      - /reference/data-exchange/data-standard/model-reference/staff-domain/overview
+    notes: "Credential entity, referenced by Staff or Person."
+  - id: q-cred-02
+    question: "What is the difference between a credential and a certification?"
+    type: definition
+    domain: credential-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/credential-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/credential-domain/entities-references-and-descriptors
+    notes: "Certification is the offering by a granting authority; Credential is what a person holds."
+  - id: q-cred-03
+    question: "track a credential being renewed, revoked, or expired"
+    type: how-to
+    domain: credential-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/credential-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/credential-domain/entities-references-and-descriptors
+    notes: "CredentialEvent tracks lifecycle after issuance."
+  - id: q-cred-04
+    question: "can students earn credentials like industry certifications in the model"
+    type: relationship
+    domain: credential-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/credential-domain/overview
+    notes: "Credential may reference Person; GraduationPlan RequiredCertifications; StudentAcademicRecord association."
+  - id: q-cred-05
+    question: "where do certification exam scores go"
+    type: definition
+    domain: credential-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/credential-domain/entities-references-and-descriptors
+    notes: "CertificationExam and CertificationExamResult."
+  - id: q-cred-06
+    question: "Was the credential domain new in Data Standard 6?"
+    type: change-history
+    domain: credential-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/whats-new/whats-new-v60
+      - /reference/data-exchange/data-standard/whats-new/api-changes-6
+    notes: "New domain in 6.0 from EPDM migration to core."
+  - id: q-cred-07
+    question: "what is the credential domain for"
+    type: orientation
+    domain: credential-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/credential-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/credential-domain
+    notes: "partial: readme definition is vague; overview gives entity definitions."
+  - id: q-cred-08
+    question: "is Credential part of the Staff domain or its own domain"
+    type: relationship
+    domain: credential-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/credential-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/staff-domain/overview
+    notes: "partial: Credential is listed as a key entity in both Staff and Credential overviews without explanation."
+  - id: q-disc-01
+    question: "how do I record a fight between two students"
+    type: how-to
+    domain: discipline-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/discipline-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/discipline-domain/best-practices
+    notes: "DisciplineIncident plus StudentDisciplineIncidentBehaviorAssociation per student, with behaviors."
+  - id: q-disc-02
+    question: "discipline incident vs discipline action"
+    type: definition
+    domain: discipline-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/discipline-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/discipline-domain
+    notes: "Incident is the offense; action is the consequence."
+  - id: q-disc-03
+    question: "How do I record the victim and witnesses of an incident?"
+    type: how-to
+    domain: discipline-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/discipline-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/discipline-domain/best-practices
+    notes: "StudentDisciplineIncidentNonOffenderAssociation."
+  - id: q-disc-04
+    question: "how to record an out of school suspension"
+    type: how-to
+    domain: discipline-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/discipline-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/discipline-domain/entities-references-and-descriptors
+    notes: "DisciplineAction with type descriptor and length."
+  - id: q-disc-05
+    question: "where should the behavior code go"
+    type: how-to
+    domain: discipline-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/discipline-domain/best-practices
+    notes: "Locations for the Behavior descriptor."
+  - id: q-disc-06
+    question: "Someone involved in the incident isn't a student or staff member. How do I record them?"
+    type: how-to
+    domain: discipline-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/discipline-domain/overview
+    notes: "DisciplineIncidentExternalParticipant."
+  - id: q-disc-07
+    question: "can one discipline action cover several incidents"
+    type: relationship
+    domain: discipline-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/discipline-domain/overview
+    notes: "Yes, multiple incidents per action and multiple actions per incident."
+  - id: q-disc-08
+    question: "How do I record days of suspension assigned versus actually served?"
+    type: how-to
+    domain: discipline-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/discipline-domain/entities-references-and-descriptors
+    notes: "partial: length elements appear only in entity descriptions and the Handbook; no narrative guidance."
+  - id: q-edorg-01
+    question: "how is a school district represented"
+    type: definition
+    domain: education-organization-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/education-organization-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/education-organization-domain/entities-and-descriptors
+    notes: "LocalEducationAgency."
+  - id: q-edorg-02
+    question: "what is an education organization"
+    type: definition
+    domain: education-organization-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/education-organization-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/education-organization-domain
+    notes: "Abstract base type for SEA, ESC, LEA, School, and others."
+  - id: q-edorg-03
+    question: "Why is there an EducationOrganization base type but no Person base type?"
+    type: relationship
+    domain: education-organization-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/education-organization-domain/overview
+    notes: "Concrete ed orgs cannot be two types at once; people can hold multiple roles."
+  - id: q-edorg-04
+    question: "regional service center where does it go"
+    type: definition
+    domain: education-organization-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/education-organization-domain/overview
+    notes: "EducationServiceCenter, optional, between district and state."
+  - id: q-edorg-05
+    question: "how do I represent a charter management organization"
+    type: how-to
+    domain: education-organization-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/education-organization-domain/overview
+    notes: "LocalEducationAgency represents a district or CMO."
+  - id: q-edorg-06
+    question: "Where do state accountability ratings for schools go?"
+    type: how-to
+    domain: education-organization-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/education-organization-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/education-organization-domain/entities-and-descriptors
+    notes: "AccountabilityRating."
+  - id: q-edorg-07
+    question: "feeder schools elementary to middle"
+    type: relationship
+    domain: education-organization-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/education-organization-domain/entities-and-descriptors
+    notes: "FeederSchoolAssociation."
+  - id: q-edorg-08
+    question: "If only one district is using the system, do I still need a state education agency record?"
+    type: how-to
+    domain: education-organization-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/education-organization-domain/overview
+    notes: "SEA optional; in LEA-only implementations state and local may be duplicates."
+  - id: q-epp-01
+    question: "how do I model teacher candidates in a university prep program"
+    type: orientation
+    domain: educator-preparation-program-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/educator-preparation-program-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/educator-preparation-program-domain
+    notes: "Candidate and EducatorPreparationProgram."
+  - id: q-epp-02
+    question: "Why is a teacher candidate not just a Student?"
+    type: relationship
+    domain: educator-preparation-program-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/educator-preparation-program-domain/overview
+    notes: "Design decision to separate Candidate from Student."
+  - id: q-epp-03
+    question: "where do I record student teaching placements"
+    type: how-to
+    domain: educator-preparation-program-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/educator-preparation-program-domain/entities-references-and-descriptors
+      - /reference/data-exchange/data-standard/model-reference/educator-preparation-program-domain/overview
+    notes: "FieldworkExperience and FieldworkExperienceSectionAssociation."
+  - id: q-epp-04
+    question: "link a candidate to the staff record they get once hired"
+    type: relationship
+    domain: educator-preparation-program-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/educator-preparation-program-domain/entities-references-and-descriptors
+    notes: "CandidateRelationshipToStaffAssociation; Person."
+  - id: q-epp-05
+    question: "what happened to TPDM / the educator preparation data model"
+    type: change-history
+    domain: educator-preparation-program-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/whats-new/whats-new-v60
+      - /reference/data-exchange/data-standard/whats-new/migration-guide
+    notes: "Migrated from EPDM community extension into core in 6.0 as five domains."
+  - id: q-epp-06
+    question: "Did the descriptor namespace for educator prep descriptors change?"
+    type: change-history
+    domain: educator-preparation-program-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/whats-new/whats-new-v60
+    notes: "tpdm namespace replaced by ed-fi namespace in 6.0."
+  - id: q-epp-07
+    question: "how is a candidate's enrollment in a program captured"
+    type: how-to
+    domain: educator-preparation-program-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/educator-preparation-program-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/educator-preparation-program-domain/entities-references-and-descriptors
+    notes: "CandidateEducatorPreparationProgramAssociation; EPP is the source of enrollment."
+  - id: q-epp-08
+    question: "Are there best practices for loading educator preparation program data?"
+    type: how-to
+    domain: educator-preparation-program-domain
+    version: "6"
+    expected_urls: []
+    notes: "gap: no best-practices page exists for the Educator Preparation Program domain in v6."
+  - id: q-enroll-01
+    question: "Can a student be enrolled in two schools at the same time?"
+    type: how-to
+    domain: enrollment-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/enrollment-domain/best-practices
+      - /reference/data-exchange/data-standard/model-reference/enrollment-domain
+    notes: "Multiple StudentSchoolAssociation records; state policy dependent."
+  - id: q-enroll-02
+    question: "how to record a student withdrawing from school"
+    type: how-to
+    domain: enrollment-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/enrollment-domain/best-practices
+      - /reference/data-exchange/data-standard/model-reference/enrollment-domain/entities-references-and-descriptors
+    notes: "ExitWithdrawDate and ExitWithdrawType on StudentSchoolAssociation."
+  - id: q-enroll-03
+    question: "StudentSchoolAssociation vs StudentEducationOrganizationAssociation"
+    type: relationship
+    domain: enrollment-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/enrollment-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/student-identification-and-demographics-domain/overview
+    notes: "SSA is enrollment; SEOA is characteristics scoped to an ed org, not enrollment."
+  - id: q-enroll-04
+    question: "what is SEORA used for"
+    type: definition
+    domain: enrollment-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/enrollment-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/enrollment-domain/best-practices
+      - /reference/data-exchange/data-standard/whats-new/whats-new-v61
+    notes: "Responsibility (accountability, funding, residency) without enrollment; ResponsibleEducationOrganization added in 6.1."
+  - id: q-enroll-05
+    question: "should I create one enrollment record per school year"
+    type: how-to
+    domain: enrollment-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/enrollment-domain/best-practices
+    notes: "Multi-year enrollment is an anti-pattern."
+  - id: q-enroll-06
+    question: "Where is a student's grade level stored?"
+    type: definition
+    domain: enrollment-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/enrollment-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/enrollment-domain/entities-references-and-descriptors
+    notes: "On StudentSchoolAssociation (entry grade level), not on Student."
+  - id: q-enroll-07
+    question: "how to record students displaced by a hurricane or other disaster"
+    type: how-to
+    domain: enrollment-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/enrollment-domain/best-practices
+    notes: "CrisisEvent and DisplacedStudent."
+  - id: q-enroll-08
+    question: "bus route or transportation info for a student"
+    type: how-to
+    domain: enrollment-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/enrollment-domain/best-practices
+      - /reference/data-exchange/data-standard/model-reference/enrollment-domain/entities-references-and-descriptors
+    notes: "StudentTransportation."
+  - id: q-fin-01
+    question: "what is a chart of accounts in the data standard"
+    type: definition
+    domain: finance-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/finance-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/finance-domain/best-practices
+    notes: "ChartOfAccounts with dimension codes."
+  - id: q-fin-02
+    question: "How do I send budgeted and actual spending amounts?"
+    type: how-to
+    domain: finance-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/finance-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/finance-domain/best-practices
+    notes: "LocalBudget and LocalActual against LocalAccount."
+  - id: q-fin-03
+    question: "fund function object dimensions meaning"
+    type: definition
+    domain: finance-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/finance-domain/overview
+    notes: "NCES accounting dimensions."
+  - id: q-fin-04
+    question: "How does a district map its local account codes to the state chart of accounts?"
+    type: how-to
+    domain: finance-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/finance-domain/best-practices
+    notes: "Example usage: mapping local accounts to SEA chart of account entries."
+  - id: q-fin-05
+    question: "can I track staff payroll and contractors in finance"
+    type: definition
+    domain: finance-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/finance-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/finance-domain/entities-references-and-descriptors
+    notes: "LocalPayroll and LocalContractedStaff."
+  - id: q-fin-06
+    question: "is the finance domain meant for states or districts"
+    type: orientation
+    domain: finance-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/finance-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/finance-domain/best-practices
+    notes: "SEA, CMO, and LEA use cases."
+  - id: q-fin-07
+    question: "what's an encumbrance"
+    type: definition
+    domain: finance-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/finance-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/finance-domain/entities-references-and-descriptors
+    notes: "LocalEncumbrance."
+  - id: q-fin-08
+    question: "Can finance data be linked to student outcomes?"
+    type: relationship
+    domain: finance-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/finance-domain/overview
+    notes: "partial: one sentence in Key Concepts; no example of how to join finance data to student data."
+  - id: q-grad-01
+    question: "How do I record which courses a student needs to graduate?"
+    type: how-to
+    domain: graduation-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/graduation-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/graduation-domain/entities-references-and-descriptors
+    notes: "GraduationPlan with credits by subject and by course."
+  - id: q-grad-02
+    question: "district-wide graduation plan vs individual plan for one student"
+    type: relationship
+    domain: graduation-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/graduation-domain/overview
+    notes: "Plans may be generic for an ed org or personalized."
+  - id: q-grad-03
+    question: "where is diploma information stored"
+    type: definition
+    domain: graduation-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/graduation-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/student-academic-record-domain/entities-references-and-descriptors
+    notes: "Diploma common on StudentAcademicRecord."
+  - id: q-grad-04
+    question: "record college applications and acceptances after high school"
+    type: how-to
+    domain: graduation-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/graduation-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/graduation-domain/entities-references-and-descriptors
+    notes: "PostSecondaryEvent."
+  - id: q-grad-05
+    question: "how is a graduation plan connected to a student"
+    type: relationship
+    domain: graduation-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/graduation-domain/overview
+    notes: "Through StudentSchoolAssociation."
+  - id: q-grad-06
+    question: "How can I tell whether a student has met graduation requirements?"
+    type: how-to
+    domain: graduation-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/graduation-domain
+      - /reference/data-exchange/data-standard/model-reference/student-academic-record-domain
+    notes: "partial: readme says evaluation uses Student Academic Record data; no worked guidance."
+  - id: q-grad-07
+    question: "required end-of-course exams for graduation"
+    type: relationship
+    domain: graduation-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/graduation-domain
+      - /reference/data-exchange/data-standard/model-reference/graduation-domain/entities-references-and-descriptors
+    notes: "GraduationPlan references required assessments."
+  - id: q-grad-08
+    question: "Where do I store a student's expected graduation year or cohort?"
+    type: relationship
+    domain: graduation-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-cohort-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/student-identification-and-demographics-domain/overview
+    notes: "CohortYear on SEOA; Cohort entity is not the graduation cohort."
+  - id: q-interv-01
+    question: "intervention vs intervention prescription"
+    type: definition
+    domain: intervention-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/intervention-domain/overview
+    notes: "Prescription is the designated course of action; Intervention is the implementation."
+  - id: q-interv-02
+    question: "how do I record how many minutes of tutoring a student got"
+    type: how-to
+    domain: intervention-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/intervention-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/student-attendance-domain/best-practices-and-use-cases/expected-and-actual-programintervention-attendance
+    notes: "InterventionDuration on StudentInterventionAttendanceEvent."
+  - id: q-interv-03
+    question: "assign a group of students to an intervention"
+    type: how-to
+    domain: intervention-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/intervention-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/student-cohort-domain/overview
+    notes: "Cohort through StudentInterventionAssociation."
+  - id: q-interv-04
+    question: "what does dosage mean in the intervention model"
+    type: definition
+    domain: intervention-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/intervention-domain/overview
+    notes: "Prescribed minutes (MinDosage, MaxDosage, Dosage)."
+  - id: q-interv-05
+    question: "Where do I record research evidence that an intervention works?"
+    type: definition
+    domain: intervention-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/intervention-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/intervention-domain/entities-references-and-descriptors
+    notes: "InterventionStudy."
+  - id: q-interv-06
+    question: "connect learning materials or content to an intervention"
+    type: relationship
+    domain: intervention-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/intervention-domain/overview
+    notes: "EducationContent, derived from LRMI."
+  - id: q-interv-07
+    question: "When should I use an Intervention instead of a Program?"
+    type: relationship
+    domain: intervention-domain
+    version: "6"
+    expected_urls: []
+    notes: "gap: no page explains when to model support as an Intervention vs a Program (Alternative and Supplemental Services)."
+  - id: q-interv-08
+    question: "how is attendance at intervention sessions recorded"
+    type: how-to
+    domain: intervention-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-attendance-domain/best-practices-and-use-cases/expected-and-actual-programintervention-attendance
+      - /reference/data-exchange/data-standard/model-reference/intervention-domain/overview
+    notes: "StudentInterventionAttendanceEvent."
+  - id: q-path-01
+    question: "what is a path in the data model"
+    type: definition
+    domain: path-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/path-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/path-domain
+    notes: "Scheme of milestones organized by phases."
+  - id: q-path-02
+    question: "track a student's progress toward certification milestones"
+    type: how-to
+    domain: path-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/path-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/path-domain/entities-references-and-descriptors
+    notes: "StudentPath, StudentPathMilestoneStatus, StudentPathPhaseStatus."
+  - id: q-path-03
+    question: "Path phase vs path milestone — what's the difference?"
+    type: definition
+    domain: path-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/path-domain/overview
+    notes: "Phases are overall stages; milestones are smaller goals within a phase."
+  - id: q-path-04
+    question: "can a path be customized for one student"
+    type: how-to
+    domain: path-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/path-domain
+    notes: "Yes; identified by PathName and EducationOrganization."
+  - id: q-path-05
+    question: "Is the Path domain only for teacher candidates or can K-12 career pathways use it too?"
+    type: orientation
+    domain: path-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/path-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/path-domain
+    notes: "partial: readme frames it for educator candidates; overview mentions graduation goals; scope is ambiguous."
+  - id: q-path-06
+    question: "how does a path relate to a graduation plan"
+    type: relationship
+    domain: path-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/path-domain/entities-references-and-descriptors
+    notes: "partial: GraduationPlan appears only as an extended reference; no narrative."
+  - id: q-path-07
+    question: "completion indicator vs status events for path progress"
+    type: how-to
+    domain: path-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/path-domain/overview
+    notes: "Either CompletionIndicators or status events depending on granularity."
+  - id: q-path-08
+    question: "when was the path domain added"
+    type: change-history
+    domain: path-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/whats-new/whats-new-v60
+      - /reference/data-exchange/data-standard/whats-new/api-changes-6
+    notes: "New in 6.0."
+  - id: q-perf-01
+    question: "how to record a teacher observation rating"
+    type: how-to
+    domain: performance-evaluation-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/performance-evaluation-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/performance-evaluation-domain/entities-references-and-descriptors
+    notes: "EvaluationRating and EvaluationElementRating under the evaluation hierarchy."
+  - id: q-perf-02
+    question: "What are the levels in the performance evaluation hierarchy?"
+    type: definition
+    domain: performance-evaluation-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/performance-evaluation-domain/overview
+      - /reference/data-exchange/data-standard/whats-new/whats-new-v60
+    notes: "PerformanceEvaluation, Evaluation, EvaluationObjective, EvaluationElement."
+  - id: q-perf-03
+    question: "rubric based teacher evaluation like Danielson or Marzano"
+    type: how-to
+    domain: performance-evaluation-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/performance-evaluation-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/performance-evaluation-domain/entities-references-and-descriptors
+    notes: "Evaluation instrument with RubricDimension."
+  - id: q-perf-04
+    question: "track professional growth goals for a teacher"
+    type: definition
+    domain: performance-evaluation-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/performance-evaluation-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/performance-evaluation-domain/entities-references-and-descriptors
+    notes: "Goal entity tied to EvaluationElement."
+  - id: q-perf-05
+    question: "Can students or candidates be evaluated with the same model as teachers?"
+    type: relationship
+    domain: performance-evaluation-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/performance-evaluation-domain/overview
+    notes: "Associated with Person: Staff, Candidate, Student."
+  - id: q-perf-06
+    question: "rating renamed numericRating"
+    type: change-history
+    domain: performance-evaluation-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/whats-new/whats-new-v60
+    notes: "Results.rating renamed to Results.numericRating in 6.0."
+  - id: q-perf-07
+    question: "difference between performance evaluation and student program evaluation"
+    type: relationship
+    domain: performance-evaluation-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/performance-evaluation-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/student-program-evaluation-domain/overview
+    notes: "partial: SPE overview says it draws from Performance Evaluation; no side-by-side comparison."
+  - id: q-perf-08
+    question: "Can an evaluation be based on student growth scores instead of a rubric?"
+    type: how-to
+    domain: performance-evaluation-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/performance-evaluation-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/performance-evaluation-domain/entities-references-and-descriptors
+    notes: "QuantitativeMeasure and QuantitativeMeasureScore."
+  - id: q-recruit-01
+    question: "How do I track job applicants and their applications?"
+    type: how-to
+    domain: recruiting-and-staffing-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/recruiting-and-staffing-domain/entities-references-and-descriptors
+      - /reference/data-exchange/data-standard/model-reference/recruiting-and-staffing-domain
+    notes: "partial: overview says Coming Soon; only entity table definitions (ApplicantProfile, Application)."
+  - id: q-recruit-02
+    question: "record attendance at a teacher recruitment fair"
+    type: how-to
+    domain: recruiting-and-staffing-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/recruiting-and-staffing-domain/entities-references-and-descriptors
+    notes: "RecruitmentEvent and RecruitmentEventAttendance."
+  - id: q-recruit-03
+    question: "where does professional development attendance go"
+    type: how-to
+    domain: recruiting-and-staffing-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/recruiting-and-staffing-domain/entities-references-and-descriptors
+    notes: "ProfessionalDevelopmentEvent and ProfessionalDevelopmentEventAttendance; note Credential overview refers to a nonexistent Professional Development domain."
+  - id: q-recruit-04
+    question: "open teaching positions / job postings"
+    type: relationship
+    domain: recruiting-and-staffing-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/staff-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/recruiting-and-staffing-domain/entities-references-and-descriptors
+    notes: "OpenStaffPosition in Staff domain, referenced here."
+  - id: q-recruit-05
+    question: "what is an applicant profile"
+    type: definition
+    domain: recruiting-and-staffing-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/recruiting-and-staffing-domain/entities-references-and-descriptors
+    notes: "ApplicantProfile."
+  - id: q-recruit-06
+    question: "How does an application move through interview, offer, and hire stages?"
+    type: how-to
+    domain: recruiting-and-staffing-domain
+    version: "6"
+    expected_urls: []
+    notes: "gap: overview is a placeholder; ApplicationEvent is only defined as 'The life cycle event associated with an application.'"
+  - id: q-recruit-07
+    question: "key concepts of the recruiting and staffing domain"
+    type: orientation
+    domain: recruiting-and-staffing-domain
+    version: "6"
+    expected_urls: []
+    notes: "gap: overview Key Entities and Key Concepts both read 'Coming Soon'."
+  - id: q-recruit-08
+    question: "Which release added the recruiting and staffing endpoints?"
+    type: change-history
+    domain: recruiting-and-staffing-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/whats-new/api-changes-6
+      - /reference/data-exchange/data-standard/whats-new/whats-new-v60
+    notes: "New in 6.0."
+  - id: q-cal-01
+    question: "how do I record school holidays and instructional days"
+    type: how-to
+    domain: school-calendar-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/school-calendar-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/school-calendar-domain/entities-references-and-descriptors
+    notes: "Calendar and CalendarDate with event types."
+  - id: q-cal-02
+    question: "session vs grading period"
+    type: definition
+    domain: school-calendar-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/school-calendar-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/school-calendar-domain/best-practices
+    notes: "Session is a term on which credits are awarded; GradingPeriod groups dates for grades."
+  - id: q-cal-03
+    question: "Is there a district-level calendar?"
+    type: how-to
+    domain: school-calendar-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/school-calendar-domain/overview
+    notes: "No; calendars are school-level; district calendar is a collection of school calendars."
+  - id: q-cal-04
+    question: "Pre-K starts a week later than the rest of the school. Do I need a separate calendar?"
+    type: how-to
+    domain: school-calendar-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/school-calendar-domain/best-practices
+    notes: "Multiple calendars per school, including student-specific."
+  - id: q-cal-05
+    question: "should I create a calendar for each semester"
+    type: how-to
+    domain: school-calendar-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/school-calendar-domain/overview
+    notes: "No; recommended practice is an annual calendar; use session dates."
+  - id: q-cal-06
+    question: "why does the calendar list every single date instead of start and end dates"
+    type: definition
+    domain: school-calendar-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/school-calendar-domain/overview
+    notes: "The model is enumerative, like most SIS implementations."
+  - id: q-cal-07
+    question: "what is an academic week"
+    type: definition
+    domain: school-calendar-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/school-calendar-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/school-calendar-domain/entities-references-and-descriptors
+    notes: "AcademicWeek groups calendar dates by week."
+  - id: q-cal-08
+    question: "How do I count the number of instructional days in the year for attendance rates?"
+    type: how-to
+    domain: school-calendar-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-attendance-domain/best-practices-and-use-cases/expected-and-actual-school-day-attendance
+      - /reference/data-exchange/data-standard/model-reference/school-calendar-domain/overview
+    notes: "Session.TotalInstructionalDays or count CalendarDate."
+  - id: q-sedm-01
+    question: "how do I store a student's IEP"
+    type: how-to
+    domain: special-education-data-model-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/special-education-data-model-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/special-education-data-model-domain
+    notes: "StudentIEP as a time-bound document."
+  - id: q-sedm-02
+    question: "where do IDEA events like referral, evaluation, and parental consent go"
+    type: definition
+    domain: special-education-data-model-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/special-education-data-model-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/special-education-data-model-domain/entities-references-and-descriptors
+    notes: "IDEAEvent."
+  - id: q-sedm-03
+    question: "What's the difference between services prescribed and services delivered in an IEP?"
+    type: relationship
+    domain: special-education-data-model-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/special-education-data-model-domain/overview
+    notes: "StudentIEPServicePrescription vs StudentIEPServiceDelivery."
+  - id: q-sedm-04
+    question: "what happens when an IEP is amended"
+    type: how-to
+    domain: special-education-data-model-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/special-education-data-model-domain/overview
+    notes: "Create a new StudentIEP record with IEPAmendedDate."
+  - id: q-sedm-05
+    question: "Does the new special ed model replace StudentSpecialEducationProgramAssociation?"
+    type: relationship
+    domain: special-education-data-model-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/special-education-data-model-domain/overview
+    notes: "No; SSEPA remains for program participation; comparison table."
+  - id: q-sedm-06
+    question: "is the special education data model final"
+    type: orientation
+    domain: special-education-data-model-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/special-education-data-model-domain
+      - /reference/data-exchange/data-standard/model-reference/special-education-data-model-domain/overview
+      - /reference/data-exchange/data-standard/whats-new/whats-new-v61
+    notes: "Early access in 6.1; may change outside the breaking-change cycle."
+  - id: q-sedm-07
+    question: "tracking progress on IEP goals"
+    type: how-to
+    domain: special-education-data-model-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/special-education-data-model-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/special-education-data-model-domain/entities-references-and-descriptors
+    notes: "StudentIEPGoal."
+  - id: q-sedm-08
+    question: "Should my SIS implement the special education data model now?"
+    type: orientation
+    domain: special-education-data-model-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/special-education-data-model-domain
+      - /reference/data-exchange/data-standard/whats-new/whats-new-v61
+    notes: "Recommended for special education vendors first, not SIS vendors."
+  - id: q-staff-01
+    question: "employment association vs assignment association for staff"
+    type: relationship
+    domain: staff-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/staff-domain/overview
+    notes: "Employment is the financial relationship; assignment is where the staff member serves."
+  - id: q-staff-02
+    question: "Where do I put a teacher's email address and phone number in version 6?"
+    type: how-to
+    domain: staff-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/staff-domain/overview
+      - /reference/data-exchange/data-standard/whats-new/whats-new-v60
+    notes: "StaffDirectory, replacing StaffEducationOrganizationContactAssociation."
+  - id: q-staff-03
+    question: "how are staff absences or leave recorded"
+    type: how-to
+    domain: staff-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/staff-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/student-attendance-domain/best-practices-and-use-cases
+    notes: "StaffLeave and StaffAbsenceEvent."
+  - id: q-staff-04
+    question: "A teacher works at two schools. How do I model that?"
+    type: how-to
+    domain: staff-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/staff-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/staff-domain
+    notes: "Multiple assignment associations."
+  - id: q-staff-05
+    question: "where is staff race and ethnicity stored"
+    type: definition
+    domain: staff-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/staff-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/staff-domain/entities-references-and-descriptors
+    notes: "StaffDemographic."
+  - id: q-staff-06
+    question: "what replaced StaffEducationOrganizationContactAssociation"
+    type: change-history
+    domain: staff-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/whats-new/whats-new-v60
+      - /reference/data-exchange/data-standard/whats-new/migration-guide
+      - /reference/data-exchange/data-standard/model-reference/staff-domain/overview
+    notes: "Removed in 6.0; functionality moved to StaffDirectory."
+  - id: q-staff-07
+    question: "how do I assign a teacher to a class"
+    type: relationship
+    domain: staff-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/teaching-and-learning-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/teaching-and-learning-domain/best-practices
+    notes: "StaffSectionAssociation in Teaching and Learning."
+  - id: q-staff-08
+    question: "store a state educator ID for a staff member"
+    type: how-to
+    domain: staff-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/staff-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/staff-domain/entities-references-and-descriptors
+    notes: "StaffIdentificationCode."
+  - id: q-sar-01
+    question: "how do I store a student transcript"
+    type: how-to
+    domain: student-academic-record-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-academic-record-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/student-academic-record-domain/best-practices
+    notes: "StudentAcademicRecord per session with CourseTranscript per course."
+  - id: q-sar-02
+    question: "where is GPA stored"
+    type: definition
+    domain: student-academic-record-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-academic-record-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/student-academic-record-domain/entities-references-and-descriptors
+    notes: "On StudentAcademicRecord (transcript) and optionally ReportCard."
+  - id: q-sar-03
+    question: "Report card vs transcript vs gradebook — which one do I use?"
+    type: relationship
+    domain: student-academic-record-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-academic-record-domain/overview
+    notes: "Three subdomains with different purposes; not a hierarchy."
+  - id: q-sar-04
+    question: "standards based grading"
+    type: how-to
+    domain: student-academic-record-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-academic-record-domain/best-practices
+    notes: "Standards-based grading section."
+  - id: q-sar-05
+    question: "How do I load course history for a student who transferred from another district?"
+    type: how-to
+    domain: student-academic-record-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-academic-record-domain/best-practices
+    notes: "Historical records for transfer students."
+  - id: q-sar-06
+    question: "how to send a student's current grade mid-term"
+    type: how-to
+    domain: student-academic-record-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-academic-record-domain/best-practices
+    notes: "Current grade capture."
+  - id: q-sar-07
+    question: "transcript for a year-long course split into two semester parts"
+    type: how-to
+    domain: student-academic-record-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-academic-record-domain/best-practices
+    notes: "Course transcript data for a course with multiple parts."
+  - id: q-sar-08
+    question: "where do academic honors and awards go"
+    type: definition
+    domain: student-academic-record-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-academic-record-domain/entities-references-and-descriptors
+      - /reference/data-exchange/data-standard/model-reference/graduation-domain/overview
+    notes: "AcademicHonor, Recognition on StudentAcademicRecord; AcademicHonorCategory descriptor."
+  - id: q-attend-01
+    question: "how do I record a student being tardy"
+    type: how-to
+    domain: student-attendance-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-attendance-domain/best-practices-and-use-cases
+      - /reference/data-exchange/data-standard/model-reference/student-attendance-domain/overview
+    notes: "Attendance event with AttendanceEventCategory for tardy."
+  - id: q-attend-02
+    question: "daily attendance vs class period attendance"
+    type: relationship
+    domain: student-attendance-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-attendance-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/student-attendance-domain/best-practices-and-use-cases
+    notes: "StudentSchoolAttendanceEvent vs StudentSectionAttendanceEvent."
+  - id: q-attend-03
+    question: "Do I have to send present records or only absences?"
+    type: how-to
+    domain: student-attendance-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-attendance-domain/best-practices-and-use-cases
+      - /reference/data-exchange/data-standard/model-reference/student-attendance-domain/overview
+    notes: "Both supported; recommended pattern is to write both absent and present."
+  - id: q-attend-04
+    question: "How do I calculate how many days a student was absent this year?"
+    type: how-to
+    domain: student-attendance-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-attendance-domain/best-practices-and-use-cases/expected-and-actual-school-day-attendance
+      - /reference/data-exchange/data-standard/model-reference/student-attendance-domain/overview
+    notes: "No stored aggregate; derive from events and calendar."
+  - id: q-attend-05
+    question: "map our local excused/unexcused attendance codes"
+    type: how-to
+    domain: student-attendance-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-attendance-domain/best-practices-and-use-cases
+    notes: "Map to AttendanceEventCategory descriptor."
+  - id: q-attend-06
+    question: "what is SectionAttendanceTakenEvent for"
+    type: definition
+    domain: student-attendance-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-attendance-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/student-attendance-domain/entities-references-and-descriptors
+      - /reference/data-exchange/data-standard/model-reference/student-attendance-domain/best-practices-and-use-cases
+    notes: "Records that attendance was taken for a section on a date."
+  - id: q-attend-07
+    question: "Can I figure out daily attendance from period attendance?"
+    type: how-to
+    domain: student-attendance-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-attendance-domain/best-practices-and-use-cases
+    notes: "Deriving school-day attendance from section attendance."
+  - id: q-attend-08
+    question: "is chronic absenteeism stored anywhere"
+    type: definition
+    domain: student-attendance-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-attendance-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/student-attendance-domain/best-practices-and-use-cases
+    notes: "No built-in aggregate; event-based by design."
+  - id: q-cohort-01
+    question: "how do I track a principal's watch list of students"
+    type: how-to
+    domain: student-cohort-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-cohort-domain
+      - /reference/data-exchange/data-standard/model-reference/student-cohort-domain/overview
+    notes: "Cohort with StudentCohortAssociation."
+  - id: q-cohort-02
+    question: "Can I use cohorts for athletic teams or counseling groups?"
+    type: how-to
+    domain: student-cohort-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-cohort-domain
+    notes: "Yes; readme names these."
+  - id: q-cohort-03
+    question: "cohort vs section vs program"
+    type: relationship
+    domain: student-cohort-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-cohort-domain
+      - /reference/data-exchange/data-standard/model-reference/student-cohort-domain/overview
+    notes: "Cohorts are distinct from class rosters and program participants."
+  - id: q-cohort-04
+    question: "is a cohort the same as a graduating class"
+    type: relationship
+    domain: student-cohort-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-cohort-domain/overview
+    notes: "No; graduation cohort comes from enrollment and grade level."
+  - id: q-cohort-05
+    question: "give a counselor access to a group of students"
+    type: how-to
+    domain: student-cohort-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-cohort-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/student-cohort-domain/entities-references-and-descriptors
+    notes: "StaffCohortAssociation."
+  - id: q-cohort-06
+    question: "how are cohorts used with interventions"
+    type: relationship
+    domain: student-cohort-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-cohort-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/intervention-domain/overview
+    notes: "Through StudentInterventionAssociation."
+  - id: q-cohort-07
+    question: "can a cohort be school-wide or district-wide"
+    type: definition
+    domain: student-cohort-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-cohort-domain/entities-references-and-descriptors
+    notes: "CohortScope descriptor."
+  - id: q-cohort-08
+    question: "Are there recommended practices for when to create a cohort vs a program?"
+    type: how-to
+    domain: student-cohort-domain
+    version: "6"
+    expected_urls: []
+    notes: "gap: no best-practices page for Student Cohort."
+  - id: q-health-01
+    question: "how do I record student immunizations"
+    type: how-to
+    domain: student-health-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-health-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/student-health-domain/best-practices
+    notes: "StudentHealth entity with immunization records."
+  - id: q-health-02
+    question: "Can I store allergies or medical conditions?"
+    type: definition
+    domain: student-health-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-health-domain/overview
+    notes: "Not yet; current scope is immunizations only."
+  - id: q-health-03
+    question: "is student health data covered by HIPAA or FERPA"
+    type: definition
+    domain: student-health-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-health-domain/overview
+    notes: "Generally FERPA, not HIPAA, for school-held records."
+  - id: q-health-04
+    question: "medical vs religious immunization exemption"
+    type: how-to
+    domain: student-health-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-health-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/student-health-domain/best-practices
+      - /reference/data-exchange/data-standard/model-reference/student-health-domain/entities-references-descriptors
+    notes: "Medical and non-medical exemptions; NonMedicalImmunizationExemption descriptor."
+  - id: q-health-05
+    question: "record multiple doses of the same vaccine"
+    type: how-to
+    domain: student-health-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-health-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/student-health-domain/best-practices
+    notes: "Multiple doses supported."
+  - id: q-health-06
+    question: "which version added the student health domain"
+    type: change-history
+    domain: student-health-domain
+    version: "5"
+    expected_urls:
+      - /reference/data-exchange/data-standard/5/whats-new/whats-new-v51
+    notes: "Added in DS 5.1."
+  - id: q-health-07
+    question: "what does AsOfDate mean on the health record"
+    type: definition
+    domain: student-health-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-health-domain/overview
+    notes: "Date the cumulative record was last updated."
+  - id: q-health-08
+    question: "list of vaccine codes"
+    type: definition
+    domain: student-health-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-health-domain/entities-references-descriptors
+    notes: "ImmunizationType descriptor values (currently rendered as table rows)."
+  - id: q-stuid-01
+    question: "where are parents and guardians stored"
+    type: definition
+    domain: student-identification-and-demographics-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-identification-and-demographics-domain/overview
+    notes: "Contact entity via StudentContactAssociation."
+  - id: q-stuid-02
+    question: "Where does student race and ethnicity go now?"
+    type: definition
+    domain: student-identification-and-demographics-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-identification-and-demographics-domain/overview
+      - /reference/data-exchange/data-standard/whats-new/whats-new-v60
+    notes: "StudentDemographic in 6.0."
+  - id: q-stuid-03
+    question: "student characteristic vs program association"
+    type: how-to
+    domain: student-identification-and-demographics-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-identification-and-demographics-domain/best-practices
+    notes: "Decision guidance."
+  - id: q-stuid-04
+    question: "when to use a student indicator instead of a characteristic"
+    type: how-to
+    domain: student-identification-and-demographics-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-identification-and-demographics-domain/best-practices
+    notes: "Student Characteristic vs Student Indicator."
+  - id: q-stuid-05
+    question: "A student has a state ID and a district ID. How do I store both?"
+    type: how-to
+    domain: student-identification-and-demographics-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-identification-and-demographics-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/student-identification-and-demographics-domain/entities-references-and-descriptors
+    notes: "StudentIdentificationCode."
+  - id: q-stuid-06
+    question: "emergency contacts who are allowed to pick up the child"
+    type: how-to
+    domain: student-identification-and-demographics-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-identification-and-demographics-domain/overview
+    notes: "Contact can represent approved emergency or pick-up contacts; relationship on StudentContactAssociation."
+  - id: q-stuid-07
+    question: "what is still on StudentEducationOrganizationAssociation after 6.0"
+    type: change-history
+    domain: student-identification-and-demographics-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/whats-new/whats-new-v60
+      - /reference/data-exchange/data-standard/model-reference/student-identification-and-demographics-domain/overview
+    notes: "Cohort year, LoginId, DisplacedStudent, internet access indicators."
+  - id: q-stuid-08
+    question: "which domain is FinancialAid in"
+    type: change-history
+    domain: student-identification-and-demographics-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/whats-new/whats-new-v61
+      - /reference/data-exchange/data-standard/model-reference/student-identification-and-demographics-domain/entities-references-and-descriptors
+    notes: "Moved from Enrollment to Student Identification and Demographics in 6.1."
+  - id: q-spe-01
+    question: "how do I report early childhood outcomes"
+    type: orientation
+    domain: student-program-evaluation-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-program-evaluation-domain
+      - /reference/data-exchange/data-standard/model-reference/student-program-evaluation-domain/overview
+    notes: "Student Program Evaluation domain."
+  - id: q-spe-02
+    question: "21st Century Community Learning Centers data"
+    type: orientation
+    domain: student-program-evaluation-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-program-evaluation-domain/overview
+    notes: "Domain originated from 21st CCLC and ECE needs."
+  - id: q-spe-03
+    question: "what is an evaluation rubric dimension"
+    type: definition
+    domain: student-program-evaluation-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-program-evaluation-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/student-program-evaluation-domain/best-practices
+    notes: "EvaluationRubricDimension defines criteria per element."
+  - id: q-spe-04
+    question: "How do I record a student's rating on a program evaluation?"
+    type: how-to
+    domain: student-program-evaluation-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-program-evaluation-domain/best-practices
+      - /reference/data-exchange/data-standard/model-reference/student-program-evaluation-domain/overview
+    notes: "StudentProgramEvaluation."
+  - id: q-spe-05
+    question: "program evaluation objective vs element"
+    type: definition
+    domain: student-program-evaluation-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-program-evaluation-domain/overview
+    notes: "Objectives group elements."
+  - id: q-spe-06
+    question: "Is student program evaluation the same as teacher performance evaluation?"
+    type: relationship
+    domain: student-program-evaluation-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-program-evaluation-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/performance-evaluation-domain/overview
+    notes: "Derived from EPDM Performance Evaluation framework."
+  - id: q-spe-07
+    question: "when was student program evaluation added"
+    type: change-history
+    domain: student-program-evaluation-domain
+    version: "5"
+    expected_urls:
+      - /reference/data-exchange/data-standard/5/whats-new/whats-new-v50
+    notes: "Added in DS 5.0."
+  - id: q-spe-08
+    question: "what needs to be loaded before program evaluation results"
+    type: how-to
+    domain: student-program-evaluation-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-program-evaluation-domain/best-practices
+    notes: "Prerequisites section."
+  - id: q-survey-01
+    question: "How do I store student climate survey results?"
+    type: how-to
+    domain: survey-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/survey-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/survey-domain/entities-references-and-descriptors
+    notes: "Survey, SurveyQuestion, SurveyResponse, SurveyQuestionResponse."
+  - id: q-survey-02
+    question: "anonymous survey responses"
+    type: how-to
+    domain: survey-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/survey-domain
+      - /reference/data-exchange/data-standard/model-reference/survey-domain/overview
+    notes: "Identified and anonymous responses supported."
+  - id: q-survey-03
+    question: "what is a survey section"
+    type: definition
+    domain: survey-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/survey-domain/overview
+    notes: "Optional grouping of questions."
+  - id: q-survey-04
+    question: "link a survey to a course or class section"
+    type: relationship
+    domain: survey-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/survey-domain/entities-references-and-descriptors
+    notes: "SurveyCourseAssociation and SurveySectionAssociation."
+  - id: q-survey-05
+    question: "A survey asks students about their teacher. How do I record who the survey is about?"
+    type: how-to
+    domain: survey-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/survey-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/survey-domain/entities-references-and-descriptors
+    notes: "Staff target associations."
+  - id: q-survey-06
+    question: "matrix or grid questions"
+    type: definition
+    domain: survey-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/survey-domain/overview
+    notes: "SurveyQuestionResponse supports matrix responses."
+  - id: q-survey-07
+    question: "How do I map a Qualtrics or SurveyMonkey export into the survey model?"
+    type: how-to
+    domain: survey-domain
+    version: "6"
+    expected_urls: []
+    notes: "gap: readme names vendors (and misspells Qualtrics as 'Qualtrex') but no mapping guidance exists."
+  - id: q-survey-08
+    question: "person target association for surveys new"
+    type: change-history
+    domain: survey-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/whats-new/api-changes-6
+    notes: "SurveyResponsePersonTargetAssociation and SurveySectionResponsePersonTargetAssociation added in 6.0."
+  - id: q-tl-01
+    question: "course vs course offering vs section"
+    type: relationship
+    domain: teaching-and-learning-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/teaching-and-learning-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/teaching-and-learning-domain/best-practices
+    notes: "Course definition, local offering per session, section as classroom unit."
+  - id: q-tl-02
+    question: "how do I assign a teacher to a class"
+    type: how-to
+    domain: teaching-and-learning-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/teaching-and-learning-domain/overview
+      - /reference/data-exchange/data-standard/model-reference/teaching-and-learning-domain/entities-references-and-descriptors
+      - /reference/data-exchange/data-standard/model-reference/teaching-and-learning-domain/best-practices
+    notes: "StaffSectionAssociation."
+  - id: q-tl-03
+    question: "dual credit courses"
+    type: how-to
+    domain: teaching-and-learning-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/teaching-and-learning-domain/best-practices
+    notes: "Dual credit pattern."
+  - id: q-tl-04
+    question: "Elementary students stay with one teacher all day. How do I create sections for that?"
+    type: how-to
+    domain: teaching-and-learning-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/teaching-and-learning-domain/best-practices
+    notes: "Elementary school sections pattern."
+  - id: q-tl-05
+    question: "credit recovery classes"
+    type: how-to
+    domain: teaching-and-learning-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/teaching-and-learning-domain/best-practices
+    notes: "Credit recovery pattern."
+  - id: q-tl-06
+    question: "where is the room number for a class"
+    type: definition
+    domain: teaching-and-learning-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/teaching-and-learning-domain/entities-references-and-descriptors
+      - /reference/data-exchange/data-standard/model-reference/teaching-and-learning-domain/best-practices
+    notes: "Location entity."
+  - id: q-tl-07
+    question: "Why are programs attached to sections instead of students?"
+    type: relationship
+    domain: teaching-and-learning-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/teaching-and-learning-domain/overview
+    notes: "Flexibility and alignment with attendance modeling."
+  - id: q-tl-08
+    question: "local course codes vs state course codes"
+    type: how-to
+    domain: teaching-and-learning-domain
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/teaching-and-learning-domain/best-practices
+      - /reference/data-exchange/data-standard/model-reference/teaching-and-learning-domain/model-diagrams
+    notes: "LocalCourseCode on CourseOffering vs Course definition at state level."
+  - id: q-concept-01
+    question: "what is the Ed-Fi Data Standard"
+    type: orientation
+    domain: conceptual
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standards
+      - /reference/data-exchange/data-standard
+      - /reference/data-exchange/udm
+    notes: "Plain-language definition, scope (K-12, student-centric), and current version."
+  - id: q-concept-02
+    question: "What's the difference between the Ed-Fi Data Standard and the Ed-Fi ODS/API?"
+    type: orientation
+    domain: conceptual
+    version: "any"
+    expected_urls: []
+    notes: "gap: no in-scope page contrasts the Data Standard (specification) with the ODS/API (software that implements it)."
+  - id: q-concept-03
+    question: "what is the unifying data model"
+    type: definition
+    domain: conceptual
+    version: "any"
+    expected_urls:
+      - /reference/data-exchange/udm
+      - /reference/data-exchange/udm/getting-started/core-concepts
+    notes: "Enterprise logical model underlying the Data Standard."
+  - id: q-concept-04
+    question: "Are the UDM and the Data Standard the same thing?"
+    type: relationship
+    domain: conceptual
+    version: "any"
+    expected_urls:
+      - /reference/data-exchange/data-standards
+      - /reference/data-exchange/udm
+    notes: "UDM is the logical model; the Data Standard includes bindings and guidance."
+  - id: q-concept-05
+    question: "what is a descriptor"
+    type: definition
+    domain: conceptual
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard
+    notes: "partial: only 'Default Descriptors' section on the v6 landing page describes code sets; no definition in the UDM glossary."
+  - id: q-concept-06
+    question: "what is an association in the data model"
+    type: definition
+    domain: conceptual
+    version: "any"
+    expected_urls:
+      - /reference/data-exchange/udm/getting-started/core-concepts
+      - /reference/data-exchange/udm/uml-notation-and-conventions
+    notes: "Relationship between entities, e.g., StudentSchoolAssociation."
+  - id: q-concept-07
+    question: "What does 'extended reference' mean in the entities tables?"
+    type: definition
+    domain: conceptual
+    version: "any"
+    expected_urls: []
+    notes: "gap: term heads a table on every entities page but is not defined in scope (only in XSD guidelines, with XML-specific meaning)."
+  - id: q-concept-08
+    question: "what is a domain"
+    type: definition
+    domain: conceptual
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/udm/getting-started/ed-fi-domains
+      - /reference/data-exchange/data-standard/model-reference
+    notes: "Views over the UDM grouping related entities."
+  - id: q-concept-09
+    question: "how many domains are there"
+    type: orientation
+    domain: conceptual
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference
+      - /reference/data-exchange/udm/getting-started/ed-fi-domains
+    notes: "The UDM page titled 'Ed-Fi Domains' says 17 base domains; v6 model reference has 26 domain folders."
+  - id: q-concept-10
+    question: "Which domain covers student bus transportation?"
+    type: orientation
+    domain: conceptual
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/enrollment-domain/best-practices
+      - /reference/data-exchange/data-standard/model-reference/enrollment-domain/entities-references-and-descriptors
+    notes: "StudentTransportation in Enrollment."
+  - id: q-concept-11
+    question: "which part of the model has course grades"
+    type: orientation
+    domain: conceptual
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-academic-record-domain
+      - /reference/data-exchange/data-standard/model-reference/student-academic-record-domain/overview
+    notes: "Student Academic Record."
+  - id: q-concept-12
+    question: "where do I find parent contact info in the model"
+    type: orientation
+    domain: conceptual
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/student-identification-and-demographics-domain/overview
+    notes: "Contact in Student Identification and Demographics."
+  - id: q-concept-13
+    question: "how do extensions work if my state needs extra fields"
+    type: how-to
+    domain: conceptual
+    version: "any"
+    expected_urls:
+      - /reference/data-exchange/data-standards
+    notes: "partial: explains why the standard is extensible; points to Extension Framework Guidelines outside scope."
+  - id: q-concept-14
+    question: "How do I read the entities, references, and descriptors tables?"
+    type: how-to
+    domain: conceptual
+    version: "any"
+    expected_urls: []
+    notes: "gap: no page explains what a row in each table represents or what the columns mean."
+  - id: q-concept-15
+    question: "What do 'Usage Classification' and 'Commonly State-Defined' mean in descriptor tables?"
+    type: definition
+    domain: conceptual
+    version: "any"
+    expected_urls: []
+    notes: "gap: entities pages link to a technical article outside the audit scope; no in-scope explanation."
+  - id: q-concept-16
+    question: "what is the data handbook"
+    type: definition
+    domain: conceptual
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/handbook
+      - /reference/data-exchange/udm/udm-handbook
+      - /reference/data-exchange/udm/getting-started/core-concepts
+    notes: "Searchable reference of every entity and element."
+  - id: q-concept-17
+    question: "How do I find the key fields that make a record unique?"
+    type: how-to
+    domain: conceptual
+    version: "any"
+    expected_urls:
+      - /reference/data-exchange/udm/getting-started/core-concepts
+    notes: "Natural keys; Identity column in the Handbook."
+  - id: q-concept-18
+    question: "how does data standard versioning work, what is a breaking change"
+    type: definition
+    domain: conceptual
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/udm
+      - /reference/data-exchange/data-standard
+    notes: "SemVer: major breaking, minor additive, patch fixes."
+  - id: q-concept-19
+    question: "Which data standard version should I use for the 2026-27 school year?"
+    type: orientation
+    domain: conceptual
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standards
+      - /reference/data-exchange/data-standard
+    notes: "6.x intended for 2026-27; 5.x also supported."
+  - id: q-concept-20
+    question: "what changed in data standard 6.0"
+    type: change-history
+    domain: conceptual
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/whats-new/whats-new-v60
+      - /reference/data-exchange/data-standard/whats-new
+    notes: "Major changes summary."
+  - id: q-concept-21
+    question: "What's new in 6.1?"
+    type: change-history
+    domain: conceptual
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/whats-new/whats-new-v61
+      - /reference/data-exchange/data-standard/whats-new
+    notes: "SEDM early access, SEORA responsible ed org, AddressCharacteristic, ResidencyStatus deprecation."
+  - id: q-concept-22
+    question: "is 6.1 a breaking change"
+    type: change-history
+    domain: conceptual
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/whats-new/whats-new-v61
+      - /reference/data-exchange/data-standard
+    notes: "No; non-breaking."
+  - id: q-concept-23
+    question: "How do I update my API client from Data Standard 5 to 6?"
+    type: how-to
+    domain: conceptual
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/whats-new/migration-guide
+      - /reference/data-exchange/data-standard/whats-new/api-changes-6
+    notes: "Migration guide."
+  - id: q-concept-24
+    question: "who decides what goes into the data standard"
+    type: orientation
+    domain: conceptual
+    version: "any"
+    expected_urls:
+      - /reference/data-exchange/udm/governance
+      - /reference/data-exchange/data-standards
+    notes: "Governance process and Data Standard Work Group."
+  - id: q-concept-25
+    question: "how do I suggest a new field or report a problem with the model"
+    type: how-to
+    domain: conceptual
+    version: "any"
+    expected_urls:
+      - /reference/data-exchange/udm/reporting-issues-and-making-suggestions
+    notes: "Jira project and work group."
+  - id: q-concept-26
+    question: "how to read the UML diagrams"
+    type: how-to
+    domain: conceptual
+    version: "any"
+    expected_urls:
+      - /reference/data-exchange/udm/uml-notation-and-conventions
+    notes: "UML notation and conventions."
+  - id: q-concept-27
+    question: "Why doesn't the model store averages like attendance rate?"
+    type: definition
+    domain: conceptual
+    version: "any"
+    expected_urls:
+      - /reference/data-exchange/udm/design-principles
+      - /reference/data-exchange/udm/getting-started/core-concepts
+    notes: "Individual data points over aggregates."
+  - id: q-concept-28
+    question: "what does early access mean for a domain"
+    type: definition
+    domain: conceptual
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference/special-education-data-model-domain
+      - /reference/data-exchange/data-standard/whats-new/whats-new-v61
+    notes: "May change outside the breaking-change cycle."
+  - id: q-concept-29
+    question: "descriptor values in ed-fi.org namespace vs local values"
+    type: definition
+    domain: conceptual
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard
+    notes: "Only ed-fi.org namespace values are part of the standard."
+  - id: q-concept-30
+    question: "is there sample data I can look at"
+    type: orientation
+    domain: conceptual
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard
+    notes: "Grand Bend ISD sample XML."
+  - id: q-concept-31
+    question: "where can I download the model diagrams"
+    type: orientation
+    domain: conceptual
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/model-reference
+      - /reference/data-exchange/data-standard
+    notes: "Mermaid files on GitHub."
+  - id: q-concept-32
+    question: "how is the model related to CEDS"
+    type: relationship
+    domain: conceptual
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard
+      - /reference/data-exchange/udm/uml-notation-and-conventions
+    notes: "partial: 'CEDS-aligned' and naming conventions only; no explanation of the alignment."
+  - id: q-ver-01
+    question: "In Data Standard 5.2, where do I put a student's home address?"
+    type: how-to
+    domain: version-sensitive
+    version: "5"
+    expected_urls:
+      - /reference/data-exchange/data-standard/5/model-reference/student-identification-and-demographics-domain/overview
+      - /reference/data-exchange/data-standard/whats-new/whats-new-v60
+    notes: "In 5.x on StudentEducationOrganizationAssociation; moved to StudentDirectory in 6.0."
+  - id: q-ver-02
+    question: "Is there still a Parent resource?"
+    type: change-history
+    domain: version-sensitive
+    version: "5"
+    expected_urls:
+      - /reference/data-exchange/data-standard/5/whats-new/whats-new-v50
+    notes: "Parent renamed to Contact in 5.0."
+  - id: q-ver-03
+    question: "In version 5, how is staff contact information stored?"
+    type: how-to
+    domain: version-sensitive
+    version: "5"
+    expected_urls:
+      - /reference/data-exchange/data-standard/5/model-reference/staff-domain/overview
+      - /reference/data-exchange/data-standard/whats-new/whats-new-v60
+    notes: "StaffEducationOrganizationContactAssociation in 5.x; removed in 6.0."
+  - id: q-ver-04
+    question: "Is EconomicDisadvantaged a true/false field?"
+    type: change-history
+    domain: version-sensitive
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/whats-new/whats-new-v60
+    notes: "Boolean replaced with a descriptor in 6.0."
+  - id: q-ver-05
+    question: "Can an assessment have more than one academic subject?"
+    type: change-history
+    domain: version-sensitive
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/whats-new/whats-new-v60
+      - /reference/data-exchange/data-standard/whats-new/migration-guide
+    notes: "5.x collection; 6.0 single required value."
+  - id: q-ver-06
+    question: "How were educator preparation entities handled in Data Standard 5?"
+    type: orientation
+    domain: version-sensitive
+    version: "5"
+    expected_urls:
+      - /reference/data-exchange/data-standard/5/model-reference/educator-preparation-data-model-domain
+      - /reference/data-exchange/data-standard/5/model-reference/educator-preparation-data-model-domain/overview
+    notes: "EPDM in v5; note v5 readme text is copied from Education Organization."
+  - id: q-ver-07
+    question: "IEP review date field name changed"
+    type: change-history
+    domain: version-sensitive
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/whats-new/migration-guide
+      - /reference/data-exchange/data-standard/whats-new/whats-new-v60
+    notes: "IEPReviewDate → IEPLastReviewDate; LastEvaluationDate → IEPLastEvaluationDate."
+  - id: q-ver-08
+    question: "Can I keep using ResidencyStatus on enrollment?"
+    type: change-history
+    domain: version-sensitive
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/whats-new/whats-new-v61
+    notes: "Deprecated in 6.1, removal planned for v8.0; use SEORA."
+  - id: q-ver-09
+    question: "Is SchoolYear required on StudentAssessment?"
+    type: change-history
+    domain: version-sensitive
+    version: "6"
+    expected_urls:
+      - /reference/data-exchange/data-standard/whats-new/migration-guide
+      - /reference/data-exchange/data-standard/whats-new/whats-new-v60
+    notes: "Optional in 5.x; required in 6.0."
+  - id: q-ver-10
+    question: "Does Data Standard 5 have a Credential domain?"
+    type: change-history
+    domain: version-sensitive
+    version: "5"
+    expected_urls:
+      - /reference/data-exchange/data-standard/5/model-reference
+      - /reference/data-exchange/data-standard/whats-new/whats-new-v60
+    notes: "No; Credential domain added in 6.0 (EPDM in 5.x)."
+  - id: q-ver-11
+    question: "Where do student demographics go in Data Standard 5?"
+    type: definition
+    domain: version-sensitive
+    version: "5"
+    expected_urls:
+      - /reference/data-exchange/data-standard/5/model-reference/student-identification-and-demographics-domain/overview
+      - /reference/data-exchange/data-standard/5/model-reference/student-identification-and-demographics-domain/best-practices
+    notes: "On SEOA in 5.x; moved to StudentDemographic in 6.0."
