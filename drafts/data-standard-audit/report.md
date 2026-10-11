@@ -7,7 +7,7 @@ edited.
 ## AI-Assisted Analysis
 
 This report and all of the findings it draws on were produced with AI models
-(Claude Haiku, Sonnet, and Opus) working from the repository source, a local
+(Claude AI agents) working from the repository source, a local
 `npm run build`, and scripts in [scripts/](./scripts/). A person must review
 every recommendation before acting on it, and that reviewer is accountable for
 any decision taken from this report. If you share this report, or content
