@@ -104,7 +104,7 @@ Type or copy and paste the code listing below into your MetaEd file:
 <details>
 <summary>MetaEd Source for StudentTransportation Entity</summary>
 
-```
+```text
 Domain Entity StudentTransportation
     documentation "Information about a student's transportation status."
     shared string AMBusNumber
@@ -127,6 +127,7 @@ Domain Entity StudentTransportation
         documentation "The school the student attends."
         is part of identity
 ```
+
 </details>
 
 If you want to bulk load this extension, you need to create an interchange file.
@@ -138,11 +139,12 @@ following code:
 <details>
 <summary>MetaEd Source for StudentTransportation Interchange</summary>
 
-```
+```text
 Interchange StudentTransportation
     documentation "The Student Transportation interchange describes a student's transportation status."
     domain entity StudentTransportation
 ```
+
 </details>
 
 Click File > Save (Ctrl + S) to save your changes.
@@ -357,6 +359,7 @@ BEGIN
     VALUES (claim_set_id, claim_set_resourceclaim_action_id);
 END $$;
 ```
+
 </details>
 
 ### Preventing Resource Name Conflicts
@@ -368,7 +371,7 @@ the resource, but instead uses the ClaimName. To prevent possible naming
 conflicts, the claim name's URI value should include the schema representation, using
 the following format:
 
-http://ed-fi.org/ods/identity/claims/{schema}/{resourceName}
+`http://ed-fi.org/ods/identity/claims/{schema}/{resourceName}`
 
 The URI representation of the schema name should be derived by splitting the
 terms in the name of the extension, inserting hyphens and converting to lower case.
@@ -380,7 +383,7 @@ The resource name should be the camel-cased (also known as "medial capitals"),
 singularized name of the resource (e.g., "studentTransportation" not
 "StudentTransportation" or "studentTransportations").
 
-Note that in 0001-StudentTransportation_ResourceClaims.sql script above, the resulting ClaimName value is "http://ed-fi.org/ods/identity/claims/sample-student-transportation/studentTransportation".
+Note that in 0001-StudentTransportation_ResourceClaims.sql script above, the resulting ClaimName value is `http://ed-fi.org/ods/identity/claims/sample-student-transportation/studentTransportation`.
 
 ## Step 7. Run Code Generation and Verify Changes
 
@@ -456,7 +459,7 @@ Ed-Fi-ODS/Samples/Extensions/StudentTransportation.
 
    * Copy the metadata files to the implementation project.
 
-     ```
+     ```text
      xcopy /y 
      "Ed-Fi-ODS\Samples\Extensions\StudentTransportation\StudentTransportationMetaEd\MetaEdOutput\samplestudenttransportation\Database\SQLServer\ODS\Structure" 
      "Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleStudentTransportation\Artifacts\MsSql\Structure\Ods\*"
@@ -569,6 +572,7 @@ BEGIN
     VALUES (claim_set_id, claim_set_resourceclaim_action_id);
 END $$;
 ```
+
 </details>
 
 ### Step 7. Run Initdev

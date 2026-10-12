@@ -185,6 +185,7 @@ namespace EdFi.Ods.Features.Container.Modules
     }
 }
 ```
+
 Sample custom implementation could be:
 
 <details>
@@ -274,6 +275,7 @@ public class UniqueIdPersonMapping
     public string UniqueId { get; set; }
 }
 ```
+
 </details>
 
 This approach resolves supplied unique ID values to resource identifier (Id) records in the ODS using UniqueIdPersonMapping table:
@@ -299,6 +301,7 @@ ALTER TABLE [uid].UniqueIdPersonMapping ADD CONSTRAINT PK_UniqueIdMapping PRIMAR
 ALTER TABLE [uid].UniqueIdPersonMapping ADD CONSTRAINT UI_UniqueIdPersonMapping_UniqueId UNIQUE NONCLUSTERED (UniqueId);
 GO
 ```
+
 </details>
 
 ### Technical Details of How Unique ID Integration Works

@@ -15,8 +15,8 @@ steps:
 
 Ensure that the following components are installed:
 
-*   **PowerShell 5.0-7.2.** PowerShell is used by the database deployment scripts.
-*   **.NET 8.0 SDK.** Required by the [Database Deploy Tool](../../platform-dev-guide/utilities/database-deploy-tool.md) used in the database deployment scripts.
+* **PowerShell 5.0-7.2.** PowerShell is used by the database deployment scripts.
+* **.NET 8.0 SDK.** Required by the [Database Deploy Tool](../../platform-dev-guide/utilities/database-deploy-tool.md) used in the database deployment scripts.
 
     <details>
       <summary>View detail...</summary>

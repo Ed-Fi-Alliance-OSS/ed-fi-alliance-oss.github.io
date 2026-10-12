@@ -77,8 +77,8 @@ Ed-Fi ODS / API traditionally supported different database partitioning strategi
 | **Database Provider** | **Partitioning Strategy** | **appsettings.json ApiSettings:Mode value** | **appsettings.json EdFi_ODS Connection String** |
 |----------------------|--------------------------|---------------------------------------------|-------------------------------------------------|
 | **District Specific** | Partitioning by district. Different district data is accessed through district ID associated with the API client. To use this option, the API client must be configured for exactly one district ID during API key and secret configuration. | DistrictSpecific | Database=EdFi_Ods_DISTRICTID<br/>Server=Ods_DISTRICTID<br/>(substitute actual district ID) |
-| **Instance-Year Specific** | Partitioning by instance and year. Different instance and year data is accessed through changing the URL (e.g., http://website-address/data/v3/inst-1/2021). Partitioning by-district-by-year is one specific example of this strategy. | InstanceYearSpecific | Database=EdFi_Ods_INSTANCEID_YYYY<br/>Server=Ods_INSTANCEID_YYYY<br/>(substitute actual instance ID and current year) |
-| **Year Specific** | Partitioning by year. Different year data is accessed through changing the URL (e.g., http://website-address/data/v3/2021). | YearSpecific | Database=EdFi_Ods_YYYY<br/>Server=Ods_YYYY<br/>(substitute actual current year) |
+| **Instance-Year Specific** | Partitioning by instance and year. Different instance and year data is accessed through changing the URL (e.g., `http://website-address/data/v3/inst-1/2021`). Partitioning by-district-by-year is one specific example of this strategy. | InstanceYearSpecific | Database=EdFi_Ods_INSTANCEID_YYYY<br/>Server=Ods_INSTANCEID_YYYY<br/>(substitute actual instance ID and current year) |
+| **Year Specific** | Partitioning by year. Different year data is accessed through changing the URL (e.g., `http://website-address/data/v3/2021`). | YearSpecific | Database=EdFi_Ods_YYYY<br/>Server=Ods_YYYY<br/>(substitute actual current year) |
 
 ### MetaEd IDE v2.6
 
@@ -202,7 +202,7 @@ With the ODS / API v3.3 release, the Alliance announced deprecation of server-si
 
 ### Apache License
 
-In April 2020, the Ed-Fi Alliance [announced](https://www.ed-fi.org/blog/2020/04/ed-fi-opens-the-door-to-move-from-hundreds-to-hundreds-of-millions) a move to the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0) to lower the barrier to entry for EdTech vendors, universities, school districts, and states, and to encourage continued community contribution to the technology. This release delivers on that promise and moves the source code to https://github.com/Ed-Fi-Alliance-OSS/ under the Apache license. The [Ed-Fi License](https://license.ed-fi.org/license-form/) is no longer required to access ODS / API source code.
+In April 2020, the Ed-Fi Alliance [announced](https://www.ed-fi.org/blog/2020/04/ed-fi-opens-the-door-to-move-from-hundreds-to-hundreds-of-millions) a move to the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0) to lower the barrier to entry for EdTech vendors, universities, school districts, and states, and to encourage continued community contribution to the technology. This release delivers on that promise and moves the source code to [https://github.com/Ed-Fi-Alliance-OSS/](https://github.com/Ed-Fi-Alliance-OSS/) under the Apache license. The [Ed-Fi License](https://license.ed-fi.org/license-form/) is no longer required to access ODS / API source code.
 
 ### Semantic Versioning
 

@@ -87,17 +87,17 @@ To route requests to two year-specific ODS databases, for school years 2026 and
 
 - **Step 2:** Create the following records in `dbo.OdsInstances`:
 
-  OdsInstanceId | Name          | InstanceType | ConnectionString                                         |
-  ------------- | --------------| -------------| ---------------------------------------------------------|
-  1             | EdFi_Ods_2026 | YearSpecific | Server=??;Database=EdFi_Ods_2026;User ID=??;Password=??; |
-  2             | EdFi_Ods_2027 | YearSpecific | Server=??;Database=EdFi_Ods_2027;User ID=??;Password=??; |
+  | OdsInstanceId | Name          | InstanceType | ConnectionString                                         |
+  | ------------- | --------------| -------------| ---------------------------------------------------------|
+  | 1             | EdFi_Ods_2026 | YearSpecific | Server=??;Database=EdFi_Ods_2026;User ID=??;Password=??; |
+  | 2             | EdFi_Ods_2027 | YearSpecific | Server=??;Database=EdFi_Ods_2027;User ID=??;Password=??; |
 
 - **Step 3:** Create the following records in the `dbo.OdsInstanceContext`:
 
-  OdsInstance_OdsInstanceId | ContextKey          | ContextValue |
-  ------------------------- | --------------------| ------------ |
-  1                         | schoolYearFromRoute | 2026         |
-  2                         | schoolYearFromRoute | 2027         |
+  | OdsInstance_OdsInstanceId | ContextKey          | ContextValue |
+  | ------------------------- | --------------------| ------------ |
+  | 1                         | schoolYearFromRoute | 2026         |
+  | 2                         | schoolYearFromRoute | 2027         |
 
 SQL statements:
 
@@ -122,17 +122,17 @@ Agency ID values 255901 and 255902 with explicit district id segment in the rout
   or `ApiSettings__OdsContextRouteTemplate` environment variable.
 - **Step 2:** Create the following records in `dbo.OdsInstances`:
 
-  OdsInstanceId | Name            | InstanceType     | ConnectionString                                           |
-  --------------| ----------------| -----------------| -----------------------------------------------------------|
-  1             | EdFi_Ods_255901 | DistrictSpecific | Server=??;Database=EdFi_Ods_255901;User ID=??;Password=??; |
-  2             | EdFi_Ods_255902 | DistrictSpecific | Server=??;Database=EdFi_Ods_255902;User ID=??;Password=??; |
+  | OdsInstanceId | Name            | InstanceType     | ConnectionString                                           |
+  | --------------| ----------------| -----------------| -----------------------------------------------------------|
+  | 1             | EdFi_Ods_255901 | DistrictSpecific | Server=??;Database=EdFi_Ods_255901;User ID=??;Password=??; |
+  | 2             | EdFi_Ods_255902 | DistrictSpecific | Server=??;Database=EdFi_Ods_255902;User ID=??;Password=??; |
 
 - **Step 3:** Create the following records in the `dbo.OdsInstanceContext`:
 
-  OdsInstance_OdsInstanceId | ContextKey | ContextValue |
-  --------------------------| -----------| ------------ |
-  1                         | instanceId | 255901       |
-  2                         | instanceId | 255902       |
+  | OdsInstance_OdsInstanceId | ContextKey | ContextValue |
+  | --------------------------| -----------| ------------ |
+  | 1                         | instanceId | 255901       |
+  | 2                         | instanceId | 255902       |
 
 SQL statements:
 

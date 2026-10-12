@@ -116,24 +116,25 @@ named **EdFi.OdsApi.Sdk.sln** will be created with the SDK artifacts.
 ## Step 4. Use the SDK in a Sample C# Program
 
 1. **Open** the generated EdFi.OdsApi.Sdk.sln in Visual Studio.
-2.  **Right-click** on the solution and **click Restore NuGetPackages**.  
-3.  **Build** the solution.  
-4.  **Right-click** on the solution and **add a new project**. Choose the type **Console App**. Name the project **EdFi.OdsApi.SdkClient**.  
-5.  **Right-click** on **Edfi.OdsApi.SdkClient** \> **Set as Startup Project**.  
-6.  In **Solution Explorer**, **right-click EdFi.OdsApi.SdkClient Dependencies node** and click **Add Project Reference**.
-7.  In the **Add Reference** > **Projects** tab select **EdFi.OdsApi.Sdk**, and then click **OK**.  
-8.  In **Solution Explorer**, **right-click EdFi.OdsApi.SdkClient Dependencies node** and click **Manage Nuget Packages...** and add RestSharp reference, install the same version that EdFi.OdsApi.Sdk has.
-9.  Open the **Program.cs** file and add the following `using` statements at the top of the file:
+2. **Right-click** on the solution and **click Restore NuGetPackages**.  
+3. **Build** the solution.  
+4. **Right-click** on the solution and **add a new project**. Choose the type **Console App**. Name the project **EdFi.OdsApi.SdkClient**.  
+5. **Right-click** on **Edfi.OdsApi.SdkClient** \> **Set as Startup Project**.  
+6. In **Solution Explorer**, **right-click EdFi.OdsApi.SdkClient Dependencies node** and click **Add Project Reference**.
+7. In the **Add Reference** > **Projects** tab select **EdFi.OdsApi.Sdk**, and then click **OK**.  
+8. In **Solution Explorer**, **right-click EdFi.OdsApi.SdkClient Dependencies node** and click **Manage Nuget Packages...** and add RestSharp reference, install the same version that EdFi.OdsApi.Sdk has.
+9. Open the **Program.cs** file and add the following `using` statements at the top of the file:
 
-    ```
+    ```text
     using EdFi.OdsApi.Sdk.Apis.All;
     using EdFi.OdsApi.Sdk.Client;
     using EdFi.OdsApi.Sdk.Models.All;
     using EdFi.OdsApi.SdkClient;
     ```
-10.  Edit the **Program.cs** file and paste the following code. The client and key are using a publicly available sandbox environment with sample data hosted by the Ed-Fi Alliance.
 
-    ```
+10. Edit the **Program.cs** file and paste the following code. The client and key are using a publicly available sandbox environment with sample data hosted by the Ed-Fi Alliance.
+
+    ```text
     // Trust all SSL certs -- needed unless signed SSL certificates are configured.
     System.Net.ServicePointManager.ServerCertificateValidationCallback =
         ((sender, certificate, chain, sslPolicyErrors) => true);
@@ -191,9 +192,10 @@ named **EdFi.OdsApi.Sdk.sln** will be created with the SDK artifacts.
     Console.WriteLine("Hit ENTER key to continue...");
     Console.ReadLine();
     ```
-11.  **Add a .cs file** named **TokenRetriever.cs** and copy the following code to help with OAuth integration.
 
-    ```
+11. **Add a .cs file** named **TokenRetriever.cs** and copy the following code to help with OAuth integration.
+
+    ```csharp
     using System.Net;
     using System.Runtime.Serialization;
     using System.Security.Authentication;
@@ -262,7 +264,8 @@ named **EdFi.OdsApi.Sdk.sln** will be created with the SDK artifacts.
         }
     }
     ```
-12.  Build the project and run it without debugging (**Ctrl**+**F5**)
+
+12. Build the project and run it without debugging (**Ctrl**+**F5**)
 
 With that, you're done!
 

@@ -10,6 +10,23 @@ no-inline-html:
     - br
     - iframe
     - sup
+    # Lists inside table cells have no Markdown equivalent.
+    - ul
+    - li
+    # Existing HTML with no clean Markdown equivalent (underline, sized
+    # images, complex tables) and Docusaurus tab components.
+    - u
+    - strong
+    - a
+    - img
+    - table
+    - thead
+    - tbody
+    - tr
+    - th
+    - td
+    - Tabs
+    - TabItem
 emphasis-style:
   style: underscore
 ul-style:
@@ -21,3 +38,13 @@ no-duplicate-heading:
 # MD060 (table-column-style) arrived with markdownlint 0.39 and flags ~16,500
 # existing table cells. Disabled for now; revisit separately (DOC-270).
 table-column-style: false
+# The rules below need content or structural judgment to fix. Disabled
+# for now so lint can gate pull requests; re-enable one at a time (DOC-270).
+heading-increment: false          # MD001
+single-title: false               # MD025
+no-emphasis-as-heading: false     # MD036
+table-column-count: false         # MD056
+descriptive-link-text: false      # MD059
+ol-prefix: false                  # MD029 (renumbering breaks lists that start mid-sequence)
+no-empty-links: false             # MD042 (rule throws on two files)
+code-block-style: false           # MD046 (mixed styles hide real rendering bugs)

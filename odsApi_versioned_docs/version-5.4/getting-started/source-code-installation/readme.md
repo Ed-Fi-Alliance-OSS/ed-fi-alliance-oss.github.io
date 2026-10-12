@@ -193,7 +193,7 @@ volumes:
 
 Create an environment file (name: `.env`) to be consumed by Docker Compose. By default the environment file needs to be in the same folder as the Docker Compose file.
 
-```
+```text
 PG_PASSWORD=P@ssw0rd
 ```
 
@@ -225,7 +225,7 @@ C:\PGDockerSetup>docker-compose down -v
 
 Create a pgpass.conf file. Note that the password should be your postgres superuser password and it should match the password in your environment file.
 
-```
+```text
 localhost:5432:*:postgres:P@ssw0rd
 ```
 
@@ -242,6 +242,7 @@ C:\> get-item env:pgpassfile
 |------------|------------------------------|
 | PGPASSFILE | C:\PGDockerSetup\pgpass.conf |
 ```
+
 </details>
 
 ## Step 3. Download the Ed-Fi ODS / API v5.4 Code
@@ -263,6 +264,7 @@ When you clone a repository, ensure that you have the correct tag checked out in
 ```bash
 git checkout tags/v5.4-patch1 -b <branch>
 ```
+
 :::
 
 If you download the code via a ZIP file, ensure that you check Unblock in the file's Properties dialog to allow the contents of the contained scripts to execute properly.
@@ -318,7 +320,7 @@ Set-ExecutionPolicy Unrestricted
 
 There are several databases that must be successfully deployed. PowerShell scripts that initialize all necessary development databases are included in the Visual Studio solution. These scripts are enabled for use within Visual Studio when the Ed-Fi-ODS solution is opened. They may also be loaded for use within a PowerShell console window by running the initialize PowerShell for development script located at:
 
-```
+```text
 C:\Ed-Fi-ODS-Implementation\Initialize-PowershellForDevelopment.ps1
 ```
 
@@ -356,6 +358,7 @@ To build the solution from within Visual Studio:
 
 1. Start Visual Studio. Within Visual Studio, open the "Ed-Fi-Ods.sln" solution file from the C:\Ed-Fi-ODS-Implementation\Application directory.
 2. Select Build > Build Solution (or press Ctrl+Shift+B).
+
 <details>
 <summary>View detail and options...</summary>
 

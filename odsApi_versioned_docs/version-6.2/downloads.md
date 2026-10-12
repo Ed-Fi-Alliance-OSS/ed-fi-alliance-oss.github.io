@@ -14,10 +14,10 @@ repository.
 
 ## Source & Code Downloads
 
-*   [Ed-Fi-ODS/v6.2](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v6.2) source code (GitHub)
-*   [Ed-Fi-ODS-Implementation/v6.2](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/tree/v6.2) source code (GitHub)
-*   [API Project Templates Installer](./getting-started/source-code-installation/project-templates-installation.md) (VSIX)
-*   [API Profiles Sample Source Files](./how-to-guides/how-to-add-profiles-to-the-ed-fi-ods-api.md) (XML)
-*   [API Composite Sample Source File](./how-to-guides/how-to-add-api-composites-to-the-ed-fi-ods-api-solution.md) (XML)
-*   [Using Code Generation to Create an SDK](./client-developers-guide/using-code-generation-to-create-an-sdk.md) (C# Sample Application)
-*   API Extensibility Sample Code - [Student Transportation](./how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transportation-example.md) and [Student Transcript](./how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transcript-example.md) (C# Source, SQL, XML)
+* [Ed-Fi-ODS/v6.2](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v6.2) source code (GitHub)
+* [Ed-Fi-ODS-Implementation/v6.2](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/tree/v6.2) source code (GitHub)
+* [API Project Templates Installer](./getting-started/source-code-installation/project-templates-installation.md) (VSIX)
+* [API Profiles Sample Source Files](./how-to-guides/how-to-add-profiles-to-the-ed-fi-ods-api.md) (XML)
+* [API Composite Sample Source File](./how-to-guides/how-to-add-api-composites-to-the-ed-fi-ods-api-solution.md) (XML)
+* [Using Code Generation to Create an SDK](./client-developers-guide/using-code-generation-to-create-an-sdk.md) (C# Sample Application)
+* API Extensibility Sample Code - [Student Transportation](./how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transportation-example.md) and [Student Transcript](./how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transcript-example.md) (C# Source, SQL, XML)

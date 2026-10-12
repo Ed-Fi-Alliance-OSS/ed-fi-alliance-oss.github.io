@@ -47,7 +47,7 @@ identity service.
 Client code should follow the pattern of the following pseudo-code in most
 cases:
 
-```
+```text
 result <= client.Post(queryURL, queryData)
 While result.HttpStatus is 201 or 202
     result <= client.Get(result.location)

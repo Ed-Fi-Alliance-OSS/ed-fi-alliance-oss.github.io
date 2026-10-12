@@ -13,7 +13,7 @@ Before you begin:
     If you prefer to generate extended artifacts manually instead of using
     MetaEd, steps are listed in [Appendix
     A](#appendix-a-adding-manually-created-extensions) of this page.
-*   This example assumes knowledge of the basic concepts described in the [How To: Extend the ODS / API - Student Transportation Example](./how-to-extend-the-ed-fi-ods-api-student-transportation-example.md). If you're new to the Ed-Fi technology stack, or if you haven't used MetaEd before, then we suggest you run through that example first.
+* This example assumes knowledge of the basic concepts described in the [How To: Extend the ODS / API - Student Transportation Example](./how-to-extend-the-ed-fi-ods-api-student-transportation-example.md). If you're new to the Ed-Fi technology stack, or if you haven't used MetaEd before, then we suggest you run through that example first.
 * This example assumes that the Ed-Fi ODS / API has been successfully
     downloaded and is running in a local development environment per the
     instructions in the [Getting
@@ -985,7 +985,7 @@ ODS / API in the Swagger UI. The following new API resource should be visible:
 :::note
 The following GitHub links contain source files for this extensibility sample.
 
-*   [Student Transcript MetaEd Source](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v6.2/Samples/Extensions/StudentTranscript/StudentTranscriptMetaEd)
-*   [Student Transcript Generated Artifacts](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v6.2/Samples/Extensions/StudentTranscript/StudentTranscriptMetaEd/MetaEdOutput/SampleStudentTranscript)
+* [Student Transcript MetaEd Source](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v6.2/Samples/Extensions/StudentTranscript/StudentTranscriptMetaEd)
+* [Student Transcript Generated Artifacts](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v6.2/Samples/Extensions/StudentTranscript/StudentTranscriptMetaEd/MetaEdOutput/SampleStudentTranscript)
 
 :::

@@ -13,17 +13,21 @@ The steps below walk you through the process that a client uses to supply creden
 POST to the `/oauth/token` endpoint with an Authorization header of `"Basic <base64 encoded client key : client secret>"`. The `grant_type` will be set to `client_credentials`. This follows the process described by the [Basic Authentication Scheme](https://tools.ietf.org/html/rfc2617#section-2).
 
 **PowerShell Token Request:**
+
 ```powershell
 Invoke-RestMethod -Method Post -Uri "https://api.ed-fi.org/v7.1/api/oauth/token" -Headers @{ "Authorization" = ("Basic " + [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("RvcohKz9zHI4", "E1iEFusaNf81xzCxwHfbolkC" -join ":"))) ) } -Body @{ "grant_type" = "client_credentials"; }
 ```
 
 **cURL Token Request:**
+
 ```bash
 curl --user RvcohKz9zHI4:E1iEFusaNf81xzCxwHfbolkC https://api.ed-fi.org/v7.1/api/oauth/token --data 'grant_type=client_credentials'
 ```
+
 _Note: curl --user option should base-64 encode the key and secret into the Authorization header._
 
 The above should return an access token. Example response:
+
 ```json
 {
   "access_token": "940934d3a405492c99572db9329fc081",
@@ -39,11 +43,13 @@ In the OAuth2 Client Credentials Grant Flow, the host issues an access token and
 On subsequent API requests, include the access token in an HTTP Authorization header as "Bearer XYZ" where "XYZ" is the access token.
 
 **API Call with Token (PowerShell):**
+
 ```powershell
 Invoke-RestMethod -Method Get -Uri "https://api.ed-fi.org/v7.1/api/data/v3/ed-fi/schools" -Headers @{ "Authorization" = "Bearer R3PLAC3_W1TH_ACC3SS_TOK3N" }
 ```
 
 **API Call with Token (cURL):**
+
 ```bash
 curl https://api.ed-fi.org/v7.1/api/data/v3/ed-fi/schools -H "Authorization: Bearer R3PLAC3_W1TH_ACC3SS_TOK3N"
 ```

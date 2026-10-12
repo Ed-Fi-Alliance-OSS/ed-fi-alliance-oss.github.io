@@ -58,6 +58,7 @@ public class EdOrgIdModel : TemplateModelBase
     }
 }
 ```
+
 </details>
 
 ## Assembly Metadata
@@ -74,6 +75,7 @@ code generation, the assemblyMetadata.json file:
   "assemblyMetadataFormatVersion": "1.0.0"
 }
 ```
+
 </details>
 
 * `assemblyModelType` maps the to the template set to generate.
@@ -108,6 +110,7 @@ grouping is stored in an embedded object named TemplateSets.json which contains 
   ]
 }
 ```
+
 </details>
 
 * **Name** is the name of the template.
@@ -186,6 +189,7 @@ The listing below shows the TemplateSets.json contents:
   }
 ]
 ```
+
 </details>
 
 ## Command Line Parameters

@@ -23,7 +23,7 @@ Before you begin:
     Source Code
     Installation](../getting-started/source-code-installation/readme.md) before
     you get started.
-*   This example uses the XML sample data found in the [Ed-Fi-Standard repository on GitHub](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Standard). You will need to clone or download these sample data files in order to follow along.
+* This example uses the XML sample data found in the [Ed-Fi-Standard repository on GitHub](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Standard). You will need to clone or download these sample data files in order to follow along.
 
 ### Step 1: Import the Create Populated Template Module
 

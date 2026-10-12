@@ -33,6 +33,7 @@ Upon completion of the "Create Account" form, the Sandbox Administration Portal
 will create and send an account activation e-mail. The e-mail settings are
 located in the **appsettings.json** (appsettings.Development.json in a
 development environment) file of the **EdFi.Ods.SandboxAdmin** website.  By default, the e-mails are placed in the C:\Temp\AdminConsole\Artifacts\Emails directory on the computer where the Admin site is running. The default setting is:
+
 ```json
   "MailSettings": {
         "Smtp": {

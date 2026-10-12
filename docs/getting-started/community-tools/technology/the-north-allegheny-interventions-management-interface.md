@@ -1,6 +1,6 @@
 # The North Allegheny Interventions Management Interface
 
-<img src="https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/technology/naTigerLogo.png" width="200" />
+<img src="https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/technology/naTigerLogo.png" alt="North Allegheny Tigers logo" width="200" />
 
 ## Description
 

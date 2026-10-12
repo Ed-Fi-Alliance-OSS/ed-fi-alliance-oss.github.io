@@ -52,6 +52,7 @@ Analytics Middle Tier over a customized database can do so.
             $content | Out-File -FilePath $filePath -Encoding UTF8
         }
    ```
+
 4. Execute the script against the desired release tag (for example, "2.0.0" for
     the AMT 2.0.0 release), commit all changes in a new branch, and push back to
     GitHub.\*

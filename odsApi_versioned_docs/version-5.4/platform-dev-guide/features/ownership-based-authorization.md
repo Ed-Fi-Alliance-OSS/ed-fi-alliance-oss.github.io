@@ -180,6 +180,7 @@ SELECT csrca.ClaimSetResourceClaimActionId, @AuthorizationStrategyId
 FROM ClaimSetResourceClaimActions csrca
 WHERE csrca.ResourceClaimId = @ResourceClaimId
 ```
+
 </details>
 
 ## Configuring the API Client
@@ -229,6 +230,7 @@ JOIN Applications a ON a.ApplicationId = ac.Application_ApplicationId
 JOIN OwnershipTokens ot ON ot.Description = ac.[Name] + ' Ownership Token'
 WHERE a.ApplicationName = @ApplicationName
 ```
+
 </details>
 
 ## Preparing an existing ODS
@@ -338,6 +340,7 @@ DEALLOCATE TableCursor
   
 DROP TABLE #RecordLevelOwnershipTables
 ```
+
 </details>
 
 ## Verifying a successful setup

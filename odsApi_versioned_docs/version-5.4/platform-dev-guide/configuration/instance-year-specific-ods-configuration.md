@@ -38,7 +38,7 @@ The ODS / API can be configured for instance-year-specific configuration through
 
 * Within `EdFi_Ods` connection string, add the `{0}` template string to the database name which will be replaced at runtime with the appropriate Instance and Year, for example:
 
-```
+```text
 server=(local);trusted_connection=True;database=EdFi_{0};Application Name=EdFi.Ods.WebApi
 ```
 
@@ -46,7 +46,7 @@ Assuming that Instance = my-instance and Year = 2021 in the request URL, databas
 
 * Within `EdFi_Admin` connection string, add the `{0}` template string to the database name, for example:
 
-```
+```text
 server=(local);trusted_connection=True;database=EdFi_{0};Application Name=EdFi.Ods.WebApi
 ```
 
@@ -54,7 +54,7 @@ Assuming that Instance = my-instance and Year = 2021 in the request URL, databas
 
 * Within `EdFi_Security` connection string, add the `{0}` template string to the database name, for example:
 
-```
+```text
 server=(local);trusted_connection=True;database=EdFi_{0};Application Name=EdFi.Ods.WebApi
 ```
 

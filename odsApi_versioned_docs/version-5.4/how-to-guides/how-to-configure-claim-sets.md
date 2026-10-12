@@ -10,7 +10,7 @@ The Ed-Fi ODS / API comes pre-configured with default authorization strategies f
 
 You should replace the values for `@actionName`, `@authorizationStrategyName`, and `@resourceName` with values you desire. In addition, if adding Upsert, Manage, or Maintain actions, then the core actions (such as Create) that comprise that composite action should also be added.
 
-```
+```text
 USE EdFi_Security
 GO
  
@@ -51,7 +51,7 @@ The Ed-Fi ODS / API comes with a set of claim sets pre-configured with actions t
 
 You should replace the values for `@actionName`, `@claimSetName`, and `@resourceName` with values you desire. In addition, if adding Upsert, Manage, or Maintain actions, then the core actions (such as Create) that comprise that composite action should also be added.
 
-```
+```text
 USE EdFi_Security
 GO
  
@@ -83,7 +83,7 @@ As you learned earlier, the Ed-Fi ODS / API comes pre-configured with default au
 
 You should replace the values for `@actionName`, `@authorizationStrategyName`, `@resourceName` and `@claimSetName` with values you desire. In addition, if adding Upsert, Manage, or Maintain actions, then the core actions (such as Create) that comprise that composite action should also be added.
 
-```
+```text
 USE EdFi_Security
 GO
  

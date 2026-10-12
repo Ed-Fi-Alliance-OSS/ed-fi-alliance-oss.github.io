@@ -10,11 +10,11 @@ This section describes how to install the Project Templates. It assumes you have
 
 The installation steps can be summarized as:
 
-*   [Step 1. Uninstall Any Previous Versions](#step-1-uninstall-any-previous-versions)
-*   [Step 2. Download the Ed-Fi Visual Studio Extension](#step-2-download-the-ed-fi-visual-studio-extension)
-*   [Step 3. Close Visual Studio](#step-3-close-visual-studio)
-*   [Step 4. Install the Templates](#step-4-install-the-templates)
-*   [Step 5. Verify Install](#step-5-verify-install)
+* [Step 1. Uninstall Any Previous Versions](#step-1-uninstall-any-previous-versions)
+* [Step 2. Download the Ed-Fi Visual Studio Extension](#step-2-download-the-ed-fi-visual-studio-extension)
+* [Step 3. Close Visual Studio](#step-3-close-visual-studio)
+* [Step 4. Install the Templates](#step-4-install-the-templates)
+* [Step 5. Verify Install](#step-5-verify-install)
 
 Detail on each step follows.
 
@@ -54,9 +54,9 @@ Verify that the templates are available under **File** > **New** > **Project**
 
 Now that you've installed the templates, you can find information on how to use them in the following articles:
 
-*   [How To: Add API Composites to the Ed-Fi ODS / API Solution](../../how-to-guides/how-to-add-api-composites-to-the-ed-fi-ods-api-solution.md)
-*   [How To: Add Profiles to the Ed-Fi ODS / API Solution](../../how-to-guides/how-to-add-profiles-to-the-ed-fi-ods-api.md)
-*   [How To: Extend the Ed-Fi ODS / API - Student Transportation Example](../../how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transportation-example.md)
+* [How To: Add API Composites to the Ed-Fi ODS / API Solution](../../how-to-guides/how-to-add-api-composites-to-the-ed-fi-ods-api-solution.md)
+* [How To: Add Profiles to the Ed-Fi ODS / API Solution](../../how-to-guides/how-to-add-profiles-to-the-ed-fi-ods-api.md)
+* [How To: Extend the Ed-Fi ODS / API - Student Transportation Example](../../how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transportation-example.md)
 
 ## Contents
 

@@ -14,9 +14,10 @@ The information MUST be submitted by the data provider seeking certification usi
 certification record.
 
 Partners must provide a document detailing the product's pricing structure. This should outline:
+
 1. General information about whether Ed-Fi functionality covered in certification is
 included or incurs additional costs.
-3. List of states where additional fees for Ed-Fi certified functionality apply.
+2. List of states where additional fees for Ed-Fi certified functionality apply.
 
 ## Rationale
 

@@ -54,7 +54,8 @@ rather than guessing.
 === STEP 1: Current state (local repo) ===
 Read everything in:
 `dataStandard_versioned_docs/version-6/model-reference/{{DOMAIN_FOLDER_SLUG}}/`
-  - readme.md, overview.md, entities-references-and-descriptors.md,
+
+- readme.md, overview.md, entities-references-and-descriptors.md,
     best-practices.md, model-diagrams.mdx, and any *.mmd diagrams
 Also skim `docs/reference/1-data-exchange/udm/` (design-principles.md,
 governance.md, udm-handbook.md) for cross-domain conventions that apply here.

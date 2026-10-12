@@ -10,12 +10,12 @@ single ODS and provides guidance on how to solve for multi-year use cases.
 
 Contents:
 
-*   [Recommendation](#recommendation)
-*   [ODS Deployment Modes](#ods-deployment-modes)
-*   [Rationale for Single-year Collection](#rationale-for-single-year-collection)
-*   [What Does a Multi-Year Deployment Look Like?](#what-does-a-multi-year-deployment-look-like)
-*   [End of Year Considerations](#end-of-year-considerations)
-*   [Possible Uses for Multi-Year Data in Single ODS](#possible-uses-for-multi-year-data-in-single-ods)
+* [Recommendation](#recommendation)
+* [ODS Deployment Modes](#ods-deployment-modes)
+* [Rationale for Single-year Collection](#rationale-for-single-year-collection)
+* [What Does a Multi-Year Deployment Look Like?](#what-does-a-multi-year-deployment-look-like)
+* [End of Year Considerations](#end-of-year-considerations)
+* [Possible Uses for Multi-Year Data in Single ODS](#possible-uses-for-multi-year-data-in-single-ods)
 
 ## Recommendation
 

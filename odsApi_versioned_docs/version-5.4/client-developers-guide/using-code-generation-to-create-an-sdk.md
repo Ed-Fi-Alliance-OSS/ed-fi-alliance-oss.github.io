@@ -65,6 +65,7 @@ java -jar openApi-codegen-cli.jar generate -g csharp -i https://api.ed-fi.org/v5
  
 java -jar openApi-codegen-cli.jar generate -g csharp -i https://api.ed-fi.org/v5.4/api/metadata/data/v3/descriptors/swagger.json --api-package Api.Descriptors --model-package Models.Descriptors -o ./csharp --additional-properties packageName=EdFi.OdsApi.Sdk,targetFramework=net8.0,netCoreProjectFile=true --global-property modelTests=false --global-property apiTests=false --skip-validate-spec
 ```
+
 Alternatively you can use unified SDK generation endpoints that combine resources, descriptors and extensions under one namespace/directory in the generated SDK:
 
 ### Resources, Descriptors and Extensions
@@ -114,7 +115,7 @@ Wait for the Swagger Codegen to finish generating code. A Visual Studio Solution
    using System.Collections.Generic;
    ```
 
-9.  Edit the **Program.cs** file and paste the following into the `Main` method. The client and key are using a publicly available sandbox environment with sample data hosted by the Ed-Fi Alliance.
+9. Edit the **Program.cs** file and paste the following into the `Main` method. The client and key are using a publicly available sandbox environment with sample data hosted by the Ed-Fi Alliance.
 
    ```csharp
    // Trust all SSL certs -- needed unless signed SSL certificates are configured.
@@ -175,7 +176,7 @@ Wait for the Swagger Codegen to finish generating code. A Visual Studio Solution
    Console.ReadLine();
    ```
 
-10.  **Add a .cs** file named **TokenRetriever.cs** and copy the following code to help with OAuth integration.
+10. **Add a .cs** file named **TokenRetriever.cs** and copy the following code to help with OAuth integration.
 
     ```csharp
     using System;
@@ -235,7 +236,7 @@ Wait for the Swagger Codegen to finish generating code. A Visual Studio Solution
     }
     ```
 
-11.  Build the project and run it without debugging (**Ctrl+F5**) and you should see the following results:
+11. Build the project and run it without debugging (**Ctrl+F5**) and you should see the following results:
 ![Step 11](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2022-3-31_14-46-32.png)
 
 With that, you're done!

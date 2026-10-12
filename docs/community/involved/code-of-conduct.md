@@ -47,8 +47,7 @@ or harmful.
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
 reported to the community leaders responsible for enforcement at
-[governance@ed-fi.org](mailto:governance@ed-fi.org?subject=Community Code of
-Conduct) or individually to any member of the
+[governance@ed-fi.org](mailto:governance@ed-fi.org?subject=Community%20Code%20of%20Conduct) or individually to any member of the
 [Governance Advisory Team](https://www.ed-fi.org/community/). All complaints
 will be handled with discretion and respect and will be reviewed and
 investigated promptly and fairly.

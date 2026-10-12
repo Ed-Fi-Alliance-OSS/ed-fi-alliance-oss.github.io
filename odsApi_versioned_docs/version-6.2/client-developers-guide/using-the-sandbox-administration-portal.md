@@ -22,7 +22,7 @@ By logging into the Sandbox Administration Portal using an Admin account,
 platform hosts can provision access to vendors to manage their sandboxes. In the
 navigation bar at the top, click on **Manage Accounts** > **Create Account**
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-4-3_11-7-54.png)
+![Create Account screen in the Sandbox Administration Portal](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-4-3_11-7-54.png)
 
 **Figure 1.** Creating new users using the Administration Portal
 

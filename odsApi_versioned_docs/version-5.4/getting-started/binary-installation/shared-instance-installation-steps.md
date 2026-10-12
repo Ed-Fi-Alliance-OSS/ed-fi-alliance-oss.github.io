@@ -47,7 +47,7 @@ For each of the downloads, **right-click** and select "Properties." Update the f
 :::info
 You may need to configure TLS while running the installation scripts described in steps below.
 
-```
+```text
 [Net.ServicePointManager]::SecurityProtocol += [Net.SecurityProtocolType]::Tls12
 ```
 
@@ -65,7 +65,7 @@ There are several settings in the configuration file that are left empty as they
 
 SQL Server
 
-```
+```text
 {
   "ConnectionStrings": {
     "EdFi_Ods": "server=(local);trusted_connection=True;database=EdFi_{0};Application Name=EdFi.Ods.WebApi",
@@ -85,7 +85,7 @@ SQL Server
 
 PostgreSQL
 
-```
+```text
 {
   "ConnectionStrings": {
     "EdFi_Ods": "host=localhost;port=5432;username=postgres;database=EdFi_{0};Application Name=EdFi.Ods.WebApi",
@@ -109,13 +109,13 @@ Open a PowerShell window in Administrator mode and navigate to the EdFi.Suite3.R
 
 Run the following PowerShell command to load modules for installation:
 
-```
+```text
 Import-Module .\Deployment.psm1
 ```
 
 Next, execute the following command in PowerShell:
 
-```
+```text
 Initialize-DeploymentEnvironment
 ```
 
@@ -129,7 +129,7 @@ Extract the contents of the EdFi.Suite3.Installer.WebApi package. The paths in t
 
 Open a PowerShell window in Administrator mode and navigate to the EdFi.Suite3.Installer.WebApi package folder. Run the following PowerShell command to load modules for installation:
 
-```
+```text
 Import-Module .\Install-EdFiOdsWebApi.psm1
 ```
 
@@ -139,7 +139,7 @@ Copy and modify the following parameter code to fit your connection information:
 
 SQL Server
 
-```
+```text
 $parameters = @{
     PackageVersion = "5.4.2285"
     DbConnectionInfo = @{
@@ -153,7 +153,7 @@ $parameters = @{
 
 PostgreSQL
 
-```
+```text
 $parameters = @{
     PackageVersion = "5.4.2285"
     DbConnectionInfo = @{
@@ -171,7 +171,7 @@ Paste the modified parameter code into your PowerShell window and hit Enter.
 
 Run the following command in the PowerShell window:
 
-```
+```text
 Install-EdFiOdsWebApi @parameters
 ```
 
@@ -185,7 +185,7 @@ Extract the contents of the "EdFi.Suite3.Installer.SwaggerUI" package. The paths
 
 Open a PowerShell window in Administrator mode and navigate to the "EdFi.Suite3.Installer.SwaggerUI" folder. Run the following PowerShell command to load modules for installation:
 
-```
+```text
 Import-Module .\Install-EdFiOdsSwaggerUI.psm1
 ```
 
@@ -193,7 +193,7 @@ The Swagger UI installer can take a number of parameters to tailor the install e
 
 Copy and modify the following parameter code to add your site name:
 
-```
+```text
 $parameters = @{
     PackageVersion = "5.4.2272"
     WebApiVersionUrl = "https://YOUR_SITE_OR_SERVER_NAME_HERE/WebApi"
@@ -206,7 +206,7 @@ Paste the modified parameter into your PowerShell window and execute the code.
 
 Run the following command in the PowerShell window:
 
-```
+```text
 Install-EdFiOdsSwaggerUI @parameters
 ```
 

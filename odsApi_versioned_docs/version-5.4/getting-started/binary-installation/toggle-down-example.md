@@ -22,6 +22,7 @@ This file demonstrates how to use toggle-down (details/summary) sections in Mark
     "PopulatedTemplateScript": "TPDMCorePopulatedTemplate"
   }
   ```
+
 </details>
 
 <details>
@@ -42,6 +43,7 @@ This file demonstrates how to use toggle-down (details/summary) sections in Mark
     "PopulatedTemplateScript": "TPDMCorePostgreSqlPopulatedTemplate"
   }
   ```
+
 </details>
 
 ---

@@ -72,6 +72,7 @@ and placing students as shown in the following table.
 |  <li> Student registration for a dual credit (dual enrollment) course at a post-secondary institution </li> <li> Secondary registration at another school to take a course. </li> | <li> Teaching and Learning </li> &nbsp;&nbsp; - Section <br/> &nbsp;&nbsp; - StudentSectionAssociation <li> Enrollment </li> &nbsp;&nbsp; - StudentSchoolAssociation |
 
 The Teaching and Learning domain includes the following entities and associations:
+
 * Course: An organization of subject matter and related learning experiences
 provided for the instruction of students on a regular or systematic basis.
 * CourseOffering: An available course offered by a school during a session. The
@@ -208,6 +209,7 @@ and teachers, take attendance, and post grades.
 However, elementary school teaching and learning is often organized with students
 spending their instructional time in a single classroom where all subjects are covered.
 Best practices have the following approach:
+
 1. Courses are defined for each subject and grade, for example Grade 1 Mathematics,
 Grade 1 Language Arts and Reading, and so forth.
 2. CourseOfferings are defined for each of the subject-grade Courses available at a
@@ -228,6 +230,7 @@ Conceptually, this may seem like there would be a CouseOffering without an assoc
 Course entity (which would be an anti-pattern). The Course–CourseOffering–Section pattern
 requires a CourseOffering to be associated with a Course. Best practices find there are
 two ways to handle the situation of locally-defined courses:
+
 * The state may define open-ended courses that are specifically identified for local course
 offerings. For example, a Course could be defined for “Advanced Mathematics” to which a local
 CourseOffering for “Topology” could be associated. The advantage of this approach is that the
@@ -246,6 +249,7 @@ identified:
 
 In a general sense, dual credit courses refer to situations where the student can earn credits
 for both high school and college by taking a single course. There are three variants:
+
 1. Dual enrollment involves students taking college courses while in high school. A dual
 enrollment experience earns college credit and may or may not allow students to earn
 simultaneous credits for high school.
@@ -290,6 +294,7 @@ specific teacher(s) assigned and those students that are studying that course.
 
 School districts operate credit recovery sections somewhat differently, including
 as follows:
+
 1. The different courses to be taught for credit recovery in a section are
 determined before student assignments to sections. Sections are defined for each
 course, assigned a teacher, and assigned the same ClassPeriod and Location.
@@ -300,6 +305,7 @@ course and assigned the same ClassPeriod and Location.
 
 The first approach is easily supported by the Section model. The details of the
 latter case are as follows:
+
 * A credit recovery section is defined for students that need to make up credits.
 The Section is for “Credit Recovery” and is defined in the SIS and scheduled for an
 assigned Location and a ClassPeriod in the Bell Schedule with Section.SectionType
@@ -330,6 +336,7 @@ or for CTE students that are getting on-the-job experience or exposure while als
 receiving classroom instruction.
 
 These cases are handled as follows:
+
 * Students are assigned to a Section using the StudentSectionAssociation as normal.
 * If one or more students in a section are associated with program(s) the
 Section.Program collection references those Program(s).
