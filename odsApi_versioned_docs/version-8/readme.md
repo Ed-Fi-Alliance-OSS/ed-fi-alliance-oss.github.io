@@ -13,6 +13,31 @@ by the 2029–2030 school year. The ODS/API Platform will continue to receive
 support through the 2028–2029 school year. For details, see the [Ed-Fi ODS/API
 and Ed-Fi API v8 FAQ](/reference/roadmap/api-faq).
 
+## What Ed-Fi API v8 Is and Is Not
+
+Ed-Fi API v8 **is**:
+
+- The successor to the Ed-Fi ODS/API Platform. It replaces both the ODS/API and
+  the ODS Admin API.
+- Two services: the Ed-Fi API, which serves Ed-Fi Data Standard resources over
+  REST, and the Configuration Service, which manages client credentials, claim
+  sets, and deployment configuration.
+- An implementation of existing Ed-Fi Data Standard versions. See [Supported
+  Versions](/reference/roadmap/supported-versions) for which versions each
+  release supports.
+
+Ed-Fi API v8 **is not**:
+
+- A new version of the Ed-Fi Data Standard. The Data Standard is versioned and
+  released separately from the software that implements it.
+- An incremental upgrade to ODS/API 7.x. It is a new codebase.
+- Compatible with the ODS database schema. The backend is relational, but its
+  tables differ from the ODS, `EdFi_Admin`, and `EdFi_Security` databases, so
+  integrations that read or write those databases directly need to change.
+  Client applications that use the REST API are largely compatible.
+- The Admin API. The Configuration Service takes over that role and implements
+  the Ed-Fi Management API Specification (v3), not the Admin API v2 software.
+
 ## Key Highlights
 
 - **API-compatible** — Ed-Fi API v8 is a fully conformant implementation of the
@@ -28,6 +53,24 @@ and Ed-Fi API v8 FAQ](/reference/roadmap/api-faq).
   Server), preserving existing SQL-based reporting and analytics patterns.
 - **New admin surface** — Replaces the Admin API with a Configuration Service
   that implements the Ed-Fi Management API Specification (v3).
+
+## Naming
+
+Ed-Fi API v8 was developed under earlier and internal names that still appear
+in community discussions, source code, and older materials:
+
+| Earlier or internal name            | Current name                    | Replaces            |
+| ----------------------------------- | ------------------------------- | ------------------- |
+| Ed-Fi Data Management Service (DMS) | Ed-Fi API                       | Ed-Fi ODS/API       |
+| DMS Configuration Service           | Ed-Fi API Configuration Service | Ed-Fi ODS Admin API |
+
+[Project Tanager](https://github.com/Ed-Fi-Alliance-OSS/Project-Tanager) is the
+Ed-Fi Alliance's name for the project that built these two services. It is a
+project name, not a product name.
+
+The DMS name remains in the source repository, in script names such as
+`bootstrap-local-dms.ps1`, and in database names such as
+`edfi_datamanagementservice`.
 
 ## Source Code
 

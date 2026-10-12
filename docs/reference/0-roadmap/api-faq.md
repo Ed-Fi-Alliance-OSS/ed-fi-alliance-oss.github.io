@@ -8,6 +8,13 @@ plans to fully replace the current ODS/API Platform with Ed-Fi API v8 by the
 2029-2030 school year. In the meantime, the Alliance remains committed to
 supporting the ODS/API Platform through the 2028-2029 school year.
 
+Ed-Fi API v8 is not a new version of the Ed-Fi Data Standard; it replaces the
+ODS/API and the ODS Admin API with two services, the Ed-Fi API and the
+Configuration Service. "Data Management Service (DMS)" and "Project Tanager" are
+earlier or internal names for this work. See [What Ed-Fi API v8 Is and Is
+Not](/reference/ed-fi-api/8#what-ed-fi-api-v8-is-and-is-not) and
+[Naming](/reference/ed-fi-api/8#naming).
+
 ## Roadmap
 
 ### Q: What does the future look like for the legacy ODS/API Platform?
