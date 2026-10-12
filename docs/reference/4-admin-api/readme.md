@@ -7,6 +7,34 @@
 The Ed-Fi ODS Admin API (Admin API) is an API-based administrative interface for the Ed-Fi ODS /
 API Platform.  The Admin API is available for installation as standalone binaries, as well as for deployment using Docker or other container orchestration tools.
 
+## What the Admin API Owns
+
+---
+
+The Admin API is a separate application from the Ed-Fi ODS/API. It reads and
+writes the ODS/API's `EdFi_Admin` and `EdFi_Security` databases, but its own
+setup is independent:
+
+- **Its connection strings and settings live in its own configuration**, not in
+  the `EdFi_Admin` database. For IIS installs, that is the Admin API's
+  `appsettings.json` (`ConnectionStrings` for `EdFi_Admin` and `EdFi_Security`,
+  plus authentication and encryption settings). For Docker, it is the
+  environment variables and settings template. In multi-tenant mode, each
+  tenant's connection strings are listed in the same configuration.
+- **It has its own clients and tokens.** Callers register an Admin API client
+  through the Admin API's `/connect/register` endpoint and get tokens from its
+  `/connect/token` endpoint. These registrations are stored in the `adminapi`
+  schema of `EdFi_Admin`. The Admin API does not need ODS/API client credentials; an Admin API
+  client and an ODS/API key and secret are separate things.
+- **It manages ODS/API data for the ODS/API to use.** Vendors, applications,
+  ODS/API key and secret pairs, claim sets, and ODS instance records created
+  through the Admin API are what the ODS/API reads at run time. ODS instance
+  connection strings are encrypted with the Admin API `EncryptionKey`, which
+  must match the ODS/API `OdsConnectionStringEncryptionKey` setting.
+
+See the [Getting Started 2.3 guide](./getting-started/admin-api-2.3-newer/readme.md)
+for configuration details.
+
 ## What's New
 
 ---
