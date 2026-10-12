@@ -59,6 +59,7 @@ Admin App users who create claimsets and provision API credentials must be aware
 * Relationships with Students only (through - StudentEducationOrganizationResponsibilityAssociation)
 * Ownership Based
 * Relationships with Education Organizations and People (including deletes)
+* Relationships with Students only (including deletes)
 * Relationships with Education Organizations only (Inverted)
 * Relationships with Education Organizations and People (Inverted)
 * Relationships with Students only (through - StudentEducationOrganizationResponsibilityAssociation, including deletes)
