@@ -168,7 +168,6 @@ the `IUniqueIdToIdValueMapper` will still need to be registered with the contain
 implementation, add registration to ApplyConfigurationSpecificRegistrations method in
 the `UniqueIdIntegrationModule` class as shown below:
 
-
 ```csharp
 namespace EdFi.Ods.Features.Container.Modules
 {
@@ -186,7 +185,7 @@ namespace EdFi.Ods.Features.Container.Modules
     }
 }
 ```
-Sample custom implementation could be: 
+Sample custom implementation could be:
 
 <details>
 <summary><strong>My.Custom.UniqueIdToIdValueMapper</strong></summary>
@@ -277,8 +276,7 @@ public class UniqueIdPersonMapping
 ```
 </details>
 
-
-This approach resolves supplied unique ID values to resource identifier (Id) records in the ODS using UniqueIdPersonMapping table: 
+This approach resolves supplied unique ID values to resource identifier (Id) records in the ODS using UniqueIdPersonMapping table:
 
 <details>
 <summary><strong>UniqueIdPersonMapping Table</strong></summary>

@@ -42,7 +42,7 @@ created during the code generation.
 
 The SDK source files are generated using swagger metadata via a few simple
 PowerShell commands. You can see the available metadata endpoints for SDK generation
-at [https://api.ed-fi.org/v5.4/api/metadata?sdk=true](https://api.ed-fi.org/v5.4/api/metadata?sdk=true). 
+at [https://api.ed-fi.org/v5.4/api/metadata?sdk=true](https://api.ed-fi.org/v5.4/api/metadata?sdk=true).
 
 ```powershell
 java -jar <openapi-generator-jar-path> generate -g csharp -i <swagger-json-url> `
@@ -54,7 +54,7 @@ at [https://github.com/OpenAPITools/openapi-generator](https://github.com/OpenAP
 
 To generate SDK source files, navigate to the folder containing
 openapi-codegen-cli.jar and run the following commands in PowerShell 3.0+ to
-generate C# SDK source files. 
+generate C# SDK source files.
 
 ```powershell
 java -jar openApi-codegen-cli.jar generate -g csharp -i https://api.ed-fi.org/v5.4/api/metadata/data/v3/resources/swagger.json --api-package Api.Resources --model-package Models.Resources  -o ./csharp --additional-properties packageName=EdFi.OdsApi.Sdk,targetFramework=net8.0,netCoreProjectFile=true --global-property modelTests=false --global-property apiTests=false --skip-validate-spec
@@ -65,7 +65,7 @@ java -jar openApi-codegen-cli.jar generate -g csharp -i https://api.ed-fi.org/v5
  
 java -jar openApi-codegen-cli.jar generate -g csharp -i https://api.ed-fi.org/v5.4/api/metadata/data/v3/descriptors/swagger.json --api-package Api.Descriptors --model-package Models.Descriptors -o ./csharp --additional-properties packageName=EdFi.OdsApi.Sdk,targetFramework=net8.0,netCoreProjectFile=true --global-property modelTests=false --global-property apiTests=false --skip-validate-spec
 ```
-Alternatively you can use unified SDK generation endpoints that combine resources, descriptors and extensions under one namespace/directory in the generated SDK: 
+Alternatively you can use unified SDK generation endpoints that combine resources, descriptors and extensions under one namespace/directory in the generated SDK:
 
 ### Resources, Descriptors and Extensions
 
@@ -238,8 +238,6 @@ Wait for the Swagger Codegen to finish generating code. A Visual Studio Solution
 11.  Build the project and run it without debugging (**Ctrl+F5**) and you should see the following results:
 ![Step 11](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2022-3-31_14-46-32.png)
 
-
 With that, you're done!
 
 This exercise leveraged a publicly available instance of the API, which contains the surface for a core implementation. If you're working with a specific platform host, a great next step is to use these same techniques to generate an SDK for that platform. If the platform host has extended the data model, your new code will automatically include those structures in the data access components in the generated code.
-

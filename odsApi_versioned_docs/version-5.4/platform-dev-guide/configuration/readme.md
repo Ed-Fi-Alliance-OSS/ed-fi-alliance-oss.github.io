@@ -18,4 +18,3 @@ In addition to the configuration settings above, the Ed-Fi ODS / API allows impl
 * **API Profiles.** Profiles allow implementers to create data policy that specify exactly what access is allowed for particular kinds of client systems. For example, student information systems in an enterprise might require broad access to data, including students, grades, attendance, discipline incidents, assessment results, and so forth, while a gradebook application might only need access to student and gradebook data.
 
 For more detail on the security aspects of the Ed-Fi ODS / API, see the [Security](../security/readme.md) section of this documentation.
-

@@ -35,7 +35,6 @@ Notes:
 5. Endpoint for identity feature is clearly separated to allow separate versioning for this feature and to
    support implementations that are not using this optional feature.
 
-
 ### Example: Extended Ed-Fi Student Resource
 
 Route: `/data/v3/ed-fi/students`

@@ -6,7 +6,7 @@
 
 Persistent teacher shortages across the U.S.—especially in science, bilingual education, special education, and math—are worsening as fewer new educators enter the field and retention challenges grow.
 
-To help address these issues, the Ed‑Fi Alliance led a structured essential question (EQ) process and visual design effort to identify the most impactful staffing *questions districts and supporting Education Service Agencies (ESAs) face.* Three core EQs emerged, guiding the creation of dashboard mockups that deliver actionable, data‑informed insights to support strategic staffing decisions. These dashboards help education leaders visualize key metrics to strengthen hiring, promote staffing equity, and improve educator retention.
+To help address these issues, the Ed‑Fi Alliance led a structured essential question (EQ) process and visual design effort to identify the most impactful staffing _questions districts and supporting Education Service Agencies (ESAs) face._ Three core EQs emerged, guiding the creation of dashboard mockups that deliver actionable, data‑informed insights to support strategic staffing decisions. These dashboards help education leaders visualize key metrics to strengthen hiring, promote staffing equity, and improve educator retention.
 
 Open‑source versions of the dashboards are available in both Power BI and Superset, along with resources for mapping data to Ed‑Fi–powered Educator Workforce dashboards. This document outlines each EQ and links to related technical and non‑technical materials.
 

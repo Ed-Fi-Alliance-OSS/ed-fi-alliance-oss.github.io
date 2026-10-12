@@ -53,7 +53,6 @@ Download and install the latest [.NET SDK 8.0 (Compatible with Visual Studio
 
 ![.NET 8.0 SDK](https://edfi.atlassian.net/wiki/download/thumbnails/22774233/image2024-10-31_14-12-25.png?version=1&modificationDate=1730401946958&cacheVersion=1&api=v2&width=812&height=491)
 
-
 :::tip
 
 Most Windows users will want either the `winget` instructions for command line
@@ -293,7 +292,6 @@ Use a Git client (such as [GitHub Desktop](https://desktop.github.com/)) or a Gi
 
 ![Cloned Folders](https://edfi.atlassian.net/wiki/download/thumbnails/22774233/Step-3-Fig-2.png?version=1&modificationDate=1641861345380&cacheVersion=1&api=v2&width=203&height=42)
 
-
 ```none title="File listing"
 > Ed-Fi-ODS
 > Ed-Fi-ODS-Implementation
@@ -382,9 +380,8 @@ To set the "MSBuildDisableNodeReuse" variable globally:
 2.  Under **User variables**, select **New...**![](https://lh3.googleusercontent.com/UU4Hi_fAeYJprfaRYlkUi37rXujBGdjqfKngoIsyBQZm-z0UtHOqUXe43LuNVY4JVunW4NVh7tIVSadURJhwYc4OBETAmijkPJ9j9kbZ-pL74EPdnovkIbTkSYIMoIP2zzuFoP_k)
 3.  For **Variable name**, enter **MSBuildDisableNodeReuse**
 4.  For **Variable value**, enter **1,** and press **OK**.![](https://lh5.googleusercontent.com/CVN-O0ChzLq8ZFl0ACnjPONKo7kOiP3cW-oLzlaZQxdJqLFZOuxYdPUxQOKp9a75A7k99mOKwoW_W8dlATdEcUKls3AAhzRHGGh10UvRVBqrryHqkdDGyvQzfWKnHbkxX-XtIhlZ)
-    
 
-To turn off this behavior when compiling the solution using MSBuild, include the following compiler flag: **/nr:false**. 
+To turn off this behavior when compiling the solution using MSBuild, include the following compiler flag: **/nr:false**.
 
 ## Verify PowerShell Script Permissions
 

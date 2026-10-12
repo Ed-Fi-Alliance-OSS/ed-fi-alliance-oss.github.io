@@ -72,11 +72,11 @@ namespace EdFi.Common.Security
 }
 ```
 
-## Development Environment 
+## Development Environment
 
 The following setting in appsettings.Development.json of EdFi.Ods.WebApi
 application sets the API to use plain text secrets for the development environment by
-default. 
+default.
 
 ```json
 "ApiSettings": {
@@ -88,7 +88,7 @@ default.
 
 It goes without saying, but we'll say it anyway: disabling hash configuration
 touches on the security of the ODS / API and should not be done on production
-deployment environments. 
+deployment environments.
 
 Hashing can be instated in a development environment by removing the above
 entry. If hashing is enabled, the secret will be in plain text when first stored in

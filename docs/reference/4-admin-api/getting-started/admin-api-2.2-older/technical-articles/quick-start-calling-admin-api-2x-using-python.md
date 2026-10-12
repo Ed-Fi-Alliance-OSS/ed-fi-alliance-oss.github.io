@@ -230,7 +230,7 @@ Admin API endpoints documentation is found on GitHub and available in links belo
 | -- | -- |
 | Admin API 2.3.0 | [api-specifications](https://github.com/Ed-Fi-Alliance-OSS/AdminAPI-2.x/tree/main/docs/api-specifications) |
 
-For the most accurate and detailed documentation of active endpoints in a version, configure and launch your application with `SwaggerEnabled : true` *(this is not recommended in production)*. The documentation can be found at `/swagger/v2/swagger.json` and the UI found at `/adminapi/swagger/index.html`.
+For the most accurate and detailed documentation of active endpoints in a version, configure and launch your application with `SwaggerEnabled : true` _(this is not recommended in production)_. The documentation can be found at `/swagger/v2/swagger.json` and the UI found at `/adminapi/swagger/index.html`.
 
 All functional endpoints require authentication to access. See [Securing Admin API](https://docs.ed-fi.org/reference/admin-api/securing-admin-api) for details.
 
@@ -387,7 +387,7 @@ Admin API endpoints documentation is found on GitHub and available in links belo
 | -- | -- |
 | Admin API 2.3.0 | [api-specifications](https://github.com/Ed-Fi-Alliance-OSS/AdminAPI-2.x/tree/main/docs/api-specifications) |
 
-For the most accurate and detailed documentation of active endpoints in a version, configure and launch your application with `SwaggerEnabled : true` *(this is not recommended in production)*. The documentation can be found at `/swagger/v2/swagger.json` and the UI found at `/adminapi/swagger/index.html`.
+For the most accurate and detailed documentation of active endpoints in a version, configure and launch your application with `SwaggerEnabled : true` _(this is not recommended in production)_. The documentation can be found at `/swagger/v2/swagger.json` and the UI found at `/adminapi/swagger/index.html`.
 
 All functional endpoints require authentication to access. See [Securing Admin API](https://docs.ed-fi.org/reference/admin-api/securing-admin-api) for details.
 
@@ -1316,7 +1316,7 @@ Admin API endpoints documentation is found on GitHub and available in links belo
 | -- | -- |
 | Admin API 2.3.0 | [api-specifications](https://github.com/Ed-Fi-Alliance-OSS/AdminAPI-2.x/tree/main/docs/api-specifications) |
 
-For the most accurate and detailed documentation of active endpoints in a version, configure and launch your application with `SwaggerEnabled : true` *(this is not recommended in production)*. The documentation can be found at `/swagger/v2/swagger.json` and the UI found at `/adminapi/swagger/index.html`.
+For the most accurate and detailed documentation of active endpoints in a version, configure and launch your application with `SwaggerEnabled : true` _(this is not recommended in production)_. The documentation can be found at `/swagger/v2/swagger.json` and the UI found at `/adminapi/swagger/index.html`.
 
 All functional endpoints require authentication to access. See [Securing Admin API](https://docs.ed-fi.org/reference/admin-api/securing-admin-api) for details.
 
@@ -1672,7 +1672,7 @@ Admin API endpoints documentation is found on GitHub and available in links belo
 | -- | -- |
 | Admin API 2.3.0 | [api-specifications](https://github.com/Ed-Fi-Alliance-OSS/AdminAPI-2.x/tree/main/docs/api-specifications) |
 
-For the most accurate and detailed documentation of active endpoints in a version, configure and launch your application with `SwaggerEnabled : true` *(this is not recommended in production)*. The documentation can be found at `/swagger/v2/swagger.json` and the UI found at `/adminapi/swagger/index.html`.
+For the most accurate and detailed documentation of active endpoints in a version, configure and launch your application with `SwaggerEnabled : true` _(this is not recommended in production)_. The documentation can be found at `/swagger/v2/swagger.json` and the UI found at `/adminapi/swagger/index.html`.
 
 All functional endpoints require authentication to access. See [Securing Admin API](https://docs.ed-fi.org/reference/admin-api/securing-admin-api) for details.
 
@@ -1961,7 +1961,7 @@ Admin API endpoints documentation is found on GitHub and available in links belo
 | -- | -- |
 | Admin API 2.3.0 | [api-specifications](https://github.com/Ed-Fi-Alliance-OSS/AdminAPI-2.x/tree/main/docs/api-specifications) |
 
-For the most accurate and detailed documentation of active endpoints in a version, configure and launch your application with `SwaggerEnabled : true` *(this is not recommended in production)*. The documentation can be found at `/swagger/v2/swagger.json` and the UI found at `/adminapi/swagger/index.html`.
+For the most accurate and detailed documentation of active endpoints in a version, configure and launch your application with `SwaggerEnabled : true` _(this is not recommended in production)_. The documentation can be found at `/swagger/v2/swagger.json` and the UI found at `/adminapi/swagger/index.html`.
 
 All functional endpoints require authentication to access. See [Securing Admin API](https://docs.ed-fi.org/reference/admin-api/securing-admin-api) for details.
 
@@ -2645,7 +2645,7 @@ Admin API endpoints documentation is found on GitHub and available in links belo
 | -- | -- |
 | Admin API 2.3.0 | [api-specifications](https://github.com/Ed-Fi-Alliance-OSS/AdminAPI-2.x/tree/main/docs/api-specifications) |
 
-For the most accurate and detailed documentation of active endpoints in a version, configure and launch your application with `SwaggerEnabled : true` *(this is not recommended in production)*. The documentation can be found at `/swagger/v2/swagger.json` and the UI found at `/adminapi/swagger/index.html`.
+For the most accurate and detailed documentation of active endpoints in a version, configure and launch your application with `SwaggerEnabled : true` _(this is not recommended in production)_. The documentation can be found at `/swagger/v2/swagger.json` and the UI found at `/adminapi/swagger/index.html`.
 
 All functional endpoints require authentication to access. See [Securing Admin API](https://docs.ed-fi.org/reference/admin-api/securing-admin-api) for details.
 
@@ -3025,7 +3025,7 @@ Admin API endpoints documentation is found on GitHub and available in links belo
 | -- | -- |
 | Admin API 2.3.0 | [api-specifications](https://github.com/Ed-Fi-Alliance-OSS/AdminAPI-2.x/tree/main/docs/api-specifications) |
 
-For the most accurate and detailed documentation of active endpoints in a version, configure and launch your application with `SwaggerEnabled : true` *(this is not recommended in production)*. The documentation can be found at `/swagger/v2/swagger.json` and the UI found at `/adminapi/swagger/index.html`.
+For the most accurate and detailed documentation of active endpoints in a version, configure and launch your application with `SwaggerEnabled : true` _(this is not recommended in production)_. The documentation can be found at `/swagger/v2/swagger.json` and the UI found at `/adminapi/swagger/index.html`.
 
 All functional endpoints require authentication to access. See [Securing Admin API](https://docs.ed-fi.org/reference/admin-api/securing-admin-api) for details.
 

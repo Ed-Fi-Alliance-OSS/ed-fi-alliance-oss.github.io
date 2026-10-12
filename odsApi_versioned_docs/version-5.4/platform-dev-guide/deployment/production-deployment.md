@@ -38,7 +38,7 @@ creating an Autofac module class that inherits from ConditionalModule class. See
 
 Changes to the processing pipelines, caching mechanisms, data repository, and
 many other considerations can be adapted by changing the
-corresponding Autofac modules called from the Startup class when the website is loaded. 
+corresponding Autofac modules called from the Startup class when the website is loaded.
 
 API provides database partitioning strategy options, which is configurable via
 the 'ApiSettings:Mode' application setting in the appsettings.json file.

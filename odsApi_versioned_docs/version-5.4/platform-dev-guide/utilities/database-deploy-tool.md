@@ -191,9 +191,6 @@ EdFi.Db.Deploy.exe deploy
 
 For info on securing and encrypting connection strings please see the npgsql docs: [https://www.npgsql.org/doc/security.html](https://www.npgsql.org/doc/security.html).
 
-
-
 ## Troubleshooting
 
 PostgreSQL passwords containing special characters are problematic — some users find that they work and others find that they do not work, even with third-party tools such as PG Admin 4. This problem might be restricted to Windows Containers. No workaround other than changing the password has been found.
-

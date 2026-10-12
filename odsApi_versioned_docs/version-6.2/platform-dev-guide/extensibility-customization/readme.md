@@ -25,7 +25,7 @@ technical article has details.
 
 ### Database Partitioning Strategy
 
-Large databases may require partitioning. The default ODS database connection string provider for deployed instances is the "SharedInstance" provider, which provides no database partitioning. This and other providers are pre-packaged into various API modes. Deciding on a database partitioning strategy is something that should be done prior to deployment as migration to another approach may be difficult after production data is loaded and the system is online. 
+Large databases may require partitioning. The default ODS database connection string provider for deployed instances is the "SharedInstance" provider, which provides no database partitioning. This and other providers are pre-packaged into various API modes. Deciding on a database partitioning strategy is something that should be done prior to deployment as migration to another approach may be difficult after production data is loaded and the system is online.
 
 | Database Provider | Partitioning Strategy | appsettings.json  <br/>ApiSettings:Mode value | appsettings.json  <br/>EdFi\_ODS Connection String |
 | --- | --- | --- | --- |
@@ -35,7 +35,7 @@ Large databases may require partitioning. The default ODS database connection st
 | District Specific | Partitioning by district. Different district data is accessed through district ID associated with the API client. To use this option, the API client must be configured for exactly one district ID during API key and secret configuration. | DistrictSpecific | Database=EdFi\_Ods\_DISTRICTID  <br/>(substitute actual district id) |
 | Instance-Year Specific | Partitioning by instance and year. Different instance and year data is accessed through changing the URL (e.g., http://website-address/data/v3/inst-1/2021). Partitioning by-district-by-year is one specific example of this partitioning Strategy. | InstanceYearSpecific | Database=EdFi\_Ods\_INSTNACEID\_YYYY  <br/>(substitute actual instance id and current year) |
 
-Other custom partitioning strategies are possible and have been used to meet the needs of specific implementations. 
+Other custom partitioning strategies are possible and have been used to meet the needs of specific implementations.
 
 ### Security Settings
 

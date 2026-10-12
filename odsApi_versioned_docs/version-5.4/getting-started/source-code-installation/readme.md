@@ -16,8 +16,6 @@ Ensure that the following components are installed:
 * PowerShell 5.0. PowerShell is used to initialize the development environment.
 * .NET 8.0 SDK. The .NET 8.0 Software Developer Kit is required for compiling the solution.
 
-
-
 <details>
   <summary>View detail...</summary>
 
@@ -35,7 +33,6 @@ Download and install the latest [NET SDK 8.0 (Compatible with Visual Studio 2022
 
 ![.NET 8.0 SDK](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2024-10-31_14-12-25.png)
 </details>
-
 
 ## Step 2. Install and Configure Required Software
 
@@ -55,7 +52,7 @@ Install Microsoft SQL Server 2019:
 
 ![SQL Server Install 1](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/SQLServerInstallationStep1.png)
 
-1. When prompted, select the following features: 
+1. When prompted, select the following features:
 ![SQL Server Features](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Feature%20Installation.png)
 2. Use the default instance named MSSQLSERVER.
  ![SQL Server Instance](https://lh6.googleusercontent.com/qOzdSg0rMADabs7fFr27XNBu_v2zyG5A5vzp55cx-20gPED_ahSihYeHuEiXRDoo1iw29IoKnvEabogFX1VG79e59fmqbMoGEUUqiiYKKH71IoaEEpA8o6cxx7gTyZQnbPN1WrYf)
@@ -107,6 +104,7 @@ Unlike SQL Server, PostgreSQL does not include a GUI to visualize the database (
 Installation of PostgreSQL can be done either using the binaries or using Docker. The recommended solution is to to use the docker install using Linux containers.
 
 #### Option 1.Installation using PostgreSQL Installer
+
 <details>
 <summary>Installation using PostgreSQL Installer</summary>
 
@@ -231,8 +229,6 @@ Create a pgpass.conf file. Note that the password should be your postgres superu
 localhost:5432:*:postgres:P@ssw0rd
 ```
 
-
-
 Set the environment variable PGPASSFILE to the location of the pgpass file that was created, which is the recommended approach. Optionally, the file can be saved in `%APPDATA%/postgresql/pgpass.conf.`
 
 ![pgpass.conf Example](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-4-9_16-43-3.png)
@@ -247,7 +243,6 @@ C:\> get-item env:pgpassfile
 | PGPASSFILE | C:\PGDockerSetup\pgpass.conf |
 ```
 </details>
-
 
 ## Step 3. Download the Ed-Fi ODS / API v5.4 Code
 
@@ -278,6 +273,7 @@ If you download the code via a ZIP file, ensure that you check Unblock in the fi
 <summary>View detail and options...</summary>
 
 ### Accessing Daily Source
+
 The links above are for the stable release of the ODS / API v5.4. You can download the links to the very latest daily source code in the development branch:
 
 * [Ed-Fi-ODS/main](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/main)
@@ -371,14 +367,12 @@ The following diagram shows how MeatEd generated artifacts are used to create th
 
 ### Alternatively Building from the Developer Command Prompt
 
-
-
 When the “EdFi_Ods_Empty” database has been created (by running the `initdev` PowerShell command in the previous step), there are two ways to build the solution. The solution can be built from Visual Studio, as described above, or from a Developer Command Prompt for Visual Studio using the Windows start menu.
 
 To do a clean build from the command prompt:
 
-1. Open the Developer Command Prompt for Visual Studio. 
-   
+1. Open the Developer Command Prompt for Visual Studio.
+
    ![VS Command Prompt](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/vs_step5.png)
 2. Navigate to your C:\Ed-Fi-ODS-Implementation\Application directory.
 3. Issue a command similar to the following:
@@ -404,7 +398,6 @@ To set the Startup Projects:
     ![Startup Projects 2](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/startup3.png)
 
 3. Click OK to accept the changes to your local development settings.
-
 
 ## Step 7. Run the Solution
 
@@ -435,8 +428,6 @@ Follow these steps to finish configuring the solution:
 1. Visiting the API Sandbox Administration Portal and logging in with the Test User Account
 2. Reviewing the Ed-Fi ODS API Documentation
 
-
-
 ## The Sandbox Administration Portal
 
 The Sandbox Administration Portal is a web application used to create sandbox databases containing data that can be accessed through the Ed-Fi ODS / API.
@@ -466,4 +457,3 @@ To view the data in your sandbox, click Authorize and enter the key and secret i
 Similar to the Sandbox Administration Portal, the ODS / API Documentation Web Page is useful for development machines and sandbox instances of the ODS / API, but is generally not present on production instances. See the [Platform Developers' Guide - Deployment](../../platform-dev-guide/deployment/readme.md) section for details.
 
 </details>
-

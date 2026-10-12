@@ -35,11 +35,11 @@ The Ed-Fi ODS / API comes with a set of configurable features that can be enable
 | uniqueIdValidation | false | Enables [Unique ID Validation](../technical-articles/unique-id-system-integration.md). This requires custom implementation of IUniqueIdToIdValueMapper and its registration within the WebApi. |
 | tokenInfo | true | Enables oauth [token\_info](https://tools.ietf.org/html/rfc7662#section-2) introspective endpoint which provides the additional security configuration information for the token. |
 
-# Ed-Fi ODS / API Cloud Binary Features 
+# Ed-Fi ODS / API Cloud Binary Features
 
 ---
 
-The Ed-Fi ODS / API cloud binary release focuses on the district use cases and comes with a limited set of features but enables these features for both SQL Server and PostgreSQL. 
+The Ed-Fi ODS / API cloud binary release focuses on the district use cases and comes with a limited set of features but enables these features for both SQL Server and PostgreSQL.
 
 | Feature | Is Enabled by Default | Description |
 | --- | --- | --- |

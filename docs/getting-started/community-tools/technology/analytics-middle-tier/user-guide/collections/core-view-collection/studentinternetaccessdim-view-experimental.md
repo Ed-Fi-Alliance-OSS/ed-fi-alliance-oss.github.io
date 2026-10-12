@@ -27,7 +27,6 @@ added in Data Standard 3.
 
 :::
 
-
 For more information on recording appropriate student indicator data for
 Internet Access, please
 see [DIGITAL EQUITY COLLECTION](https://edfi.atlassian.net/wiki/spaces/EFDSDRAFT/pages/22773854).

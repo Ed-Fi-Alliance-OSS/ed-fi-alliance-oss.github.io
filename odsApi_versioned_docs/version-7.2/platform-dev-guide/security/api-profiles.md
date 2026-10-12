@@ -239,7 +239,7 @@ addresses. If also applied to the `WriteContentType`, the caller will receive a
 error response if they attempt to write anything other than Physical or Shipping
 addresses.
 
-Resource members that are part of the identity are automatically included in the 
+Resource members that are part of the identity are automatically included in the
 `GET` responses and must be included in the `PUT` and `POST` request bodies.
 
 ```xml

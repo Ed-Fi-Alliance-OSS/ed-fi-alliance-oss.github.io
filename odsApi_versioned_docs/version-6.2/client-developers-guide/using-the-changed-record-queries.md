@@ -49,7 +49,7 @@ The core operations for Change Queries processing are as follows:
 
 ### Snapshots
 
-The global Snapshots API resource provides information on the snapshot(s) that the host has made available for change processing. 
+The global Snapshots API resource provides information on the snapshot(s) that the host has made available for change processing.
 *   `GET /changeQueries/v1/snapshots`
 A successful request will contain a response body that looks like the following:
 
@@ -190,7 +190,7 @@ following elements:
     processing and add 1 (a.k.a., the _starting change version_)
   * Obtain the system's current change version (a.k.a., the _synchronization
     version_).
-    *   Obtain the most recent [snapshot identifier](#use-snapshot-isolation) (if available) and process the following API calls by applying `Snapshot-Identifier`  HTTP header. 
+    *   Obtain the most recent [snapshot identifier](#use-snapshot-isolation) (if available) and process the following API calls by applying `Snapshot-Identifier`  HTTP header.
   * Process for key changes on identified resources (as applicable, in
     dependency order).
   * Process for changes on identified resources(in dependency order).

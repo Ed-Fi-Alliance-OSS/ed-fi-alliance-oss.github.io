@@ -29,4 +29,3 @@ initdev -InstallType YearSpecific -OdsTokens '2020;2021'
 * The same parameters noted above can be used with the deployment script packaged with [EdFi.Suite3.RestApi.Databases](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging?_a=package&feed=EdFi%40Local&package=EdFi.Suite3.RestApi.Databases&protocolType=NuGet&version=5.3.139) NuGet for non-development environments. See [Getting Started - Binary Installation Steps](../../getting-started/binary-installation/readme.md) for details.
 
 See the [Extensibility & Customization](../extensibility-customization/readme.md) section for information on using year-specific configuration as a facet of a partitioning strategy.
-

@@ -24,7 +24,7 @@ The SIS certification is intended to verify that the SIS can send the student’
 
 1. Create a Course Transcript Record for Fall Semester of Current School Year for a student at Grand Bend High School.
 2. Update the finalNumericGradeEarned on the high school Student's record.
-3. Create a Course Transcript Record for Spring Semester from 5 years ago for the same student at Grand Bend High School. 
+3. Create a Course Transcript Record for Spring Semester from 5 years ago for the same student at Grand Bend High School.
 
 ### Additional Requirements for Final Grades Earned
 

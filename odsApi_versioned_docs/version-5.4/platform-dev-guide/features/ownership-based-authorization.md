@@ -21,7 +21,7 @@ filter criteria to apply authorization.
 The following steps demonstrate setting up ownership based authorization:
 
 * [Enabling Ownership Based Authorization](#enabling-ownership-based-authorization)
-* [Setting up Security Metadata](#setting-up-security-metadata) 
+* [Setting up Security Metadata](#setting-up-security-metadata)
 * [Configuring the API Client](#configuring-the-api-client)
 * [Preparing an existing ODS](#preparing-an-existing-ods)
 * [Verifying a successful setup](#verifying-a-successful-setup)

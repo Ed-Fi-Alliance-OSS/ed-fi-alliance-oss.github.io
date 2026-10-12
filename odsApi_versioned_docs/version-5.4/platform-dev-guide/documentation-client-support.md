@@ -28,4 +28,3 @@ The Client SDK code generation is based on the Swagger Codegen tools. An excelle
 The Ed-Fi Alliance also publishes an API Client Developers' Guide that describes the fundamentals of connecting client applications to an Ed-Fi-based ODS / API. Platform hosts can refer clients to this documentation or use the guide as a starting place for documentation describing their own platform instance. See the [API Client Developers' Guide](../client-developers-guide/readme.md) documentation for more details.
 
 <sup>1</sup> Formerly known as the Swagger specification. In January 2016, the specification changed its name to the OpenAPI specification, though many of the tools retain the Swagger identity.
-

@@ -151,7 +151,7 @@ reason, the metadata.json file should be deleted so that new mapping information
 can be stored.
 
 An alternate, and possibly preferred, approach is to include the `-f` flag to force metadata to be reloaded rather than using the locally cached
-information. 
+information.
 
 ## Debugging
 

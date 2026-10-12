@@ -6,6 +6,7 @@ The Ed-Fi ODS Platform Consumer badge has been retired.  Any existing badges wil
 :::
 
 ## Why the change?
-Retiring the Platform Consumer Badge is a continuation of the Ed-Fi Alliance’s move toward API-first approaches. The Alliance no longer sees a need to verify the way databases are managed and consumed if the API is implemented correctly. As a result, Platform Consumer Badge-holders will be transitioned to the API Consumer Badge. 
+
+Retiring the Platform Consumer Badge is a continuation of the Ed-Fi Alliance’s move toward API-first approaches. The Alliance no longer sees a need to verify the way databases are managed and consumed if the API is implemented correctly. As a result, Platform Consumer Badge-holders will be transitioned to the API Consumer Badge.
 
 ![Ed-Fi ODS Platform Consumer Badge](https://edfidocs.blob.core.windows.net/$web/img/partners/badging/ed-fi-ods-platform-badge.webp)

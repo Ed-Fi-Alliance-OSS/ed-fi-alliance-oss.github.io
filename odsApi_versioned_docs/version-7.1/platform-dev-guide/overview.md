@@ -8,7 +8,6 @@ This section provides important conceptual material related to the Ed-Fi ODS / A
 
 ## Solution Overview
 
-
 The Ed-Fi Alliance publishes the [Ed-Fi Data
 Standard](/reference/data-exchange/data-standard), which models a broad spectrum
 of commonly exchanged and shared K–12 education data. The Ed-Fi ODS / API is a

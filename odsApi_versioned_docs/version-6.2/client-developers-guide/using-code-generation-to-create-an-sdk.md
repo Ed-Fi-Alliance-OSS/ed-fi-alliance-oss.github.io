@@ -44,7 +44,7 @@ created during the code generation.
 
 ## Step 3. Generate the SDK Source Files
 
-The SDK source files are generated using Swagger metadata via a few simple PowerShell commands. You can see the available metadata endpoints for SDK generation at [https://api.ed-fi.org/v6.2/api/metadata?sdk=true](https://api.ed-fi.org/v6.2/api/metadata?sdk=true). 
+The SDK source files are generated using Swagger metadata via a few simple PowerShell commands. You can see the available metadata endpoints for SDK generation at [https://api.ed-fi.org/v6.2/api/metadata?sdk=true](https://api.ed-fi.org/v6.2/api/metadata?sdk=true).
 
 ```powershell
 java -jar <openapi-generator-jar-path> generate -g csharp -i <swagger-json-url> `
@@ -123,8 +123,8 @@ named **EdFi.OdsApi.Sdk.sln** will be created with the SDK artifacts.
 6.  In **Solution Explorer**, **right-click EdFi.OdsApi.SdkClient Dependencies node** and click **Add Project Reference**.
 7.  In the **Add Reference** > **Projects** tab select **EdFi.OdsApi.Sdk**, and then click **OK**.  
 8.  In **Solution Explorer**, **right-click EdFi.OdsApi.SdkClient Dependencies node** and click **Manage Nuget Packages...** and add RestSharp reference, install the same version that EdFi.OdsApi.Sdk has.
-9.  Open the **Program.cs** file and add the following `using` statements at the top of the file: 
-    
+9.  Open the **Program.cs** file and add the following `using` statements at the top of the file:
+
     ```
     using EdFi.OdsApi.Sdk.Apis.All;
     using EdFi.OdsApi.Sdk.Client;
@@ -132,11 +132,11 @@ named **EdFi.OdsApi.Sdk.sln** will be created with the SDK artifacts.
     using EdFi.OdsApi.SdkClient;
     ```
 10.  Edit the **Program.cs** file and paste the following code. The client and key are using a publicly available sandbox environment with sample data hosted by the Ed-Fi Alliance.
-    
+
     ```
     // Trust all SSL certs -- needed unless signed SSL certificates are configured.
     System.Net.ServicePointManager.ServerCertificateValidationCallback =
-    	((sender, certificate, chain, sslPolicyErrors) => true);
+        ((sender, certificate, chain, sslPolicyErrors) => true);
     
     //Explicitly configures outgoing network calls to use the latest version of TLS where possible.
     //Due to our reliance on some older libraries, the.NET framework won't necessarily default
@@ -174,9 +174,9 @@ named **EdFi.OdsApi.Sdk.sln** will be created with the SDK artifacts.
     
     while (offset < totalCount)
     {
-    	Console.WriteLine($"Fetching student records {offset} through {Math.Min(offset + limit, totalCount)} of {totalCount}");
-    	students.AddRange(apiInstance.GetStudents(limit: limit, offset: 0));
-    	offset += limit;
+        Console.WriteLine($"Fetching student records {offset} through {Math.Min(offset + limit, totalCount)} of {totalCount}");
+        students.AddRange(apiInstance.GetStudents(limit: limit, offset: 0));
+        offset += limit;
     }
     
     Console.WriteLine();
@@ -184,7 +184,7 @@ named **EdFi.OdsApi.Sdk.sln** will be created with the SDK artifacts.
     
     foreach (var student in students)
     {
-    	Console.WriteLine($"Student: {student.StudentUniqueId}, {student.FirstName}, {student.LastSurname}");
+        Console.WriteLine($"Student: {student.StudentUniqueId}, {student.FirstName}, {student.LastSurname}");
     }
     
     Console.WriteLine();
@@ -192,7 +192,7 @@ named **EdFi.OdsApi.Sdk.sln** will be created with the SDK artifacts.
     Console.ReadLine();
     ```
 11.  **Add a .cs file** named **TokenRetriever.cs** and copy the following code to help with OAuth integration.
-    
+
     ```
     using System.Net;
     using System.Runtime.Serialization;

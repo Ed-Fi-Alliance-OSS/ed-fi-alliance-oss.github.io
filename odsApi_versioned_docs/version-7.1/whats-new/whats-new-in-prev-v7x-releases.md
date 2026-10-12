@@ -11,7 +11,6 @@ v7.x suite of releases and provides links to additional documentation.
 
 Detail about each change follows.
 
-
 ## Improvements & Enhancements - Version v7.0
 
 This section briefly describes the new features and enhancements built into the

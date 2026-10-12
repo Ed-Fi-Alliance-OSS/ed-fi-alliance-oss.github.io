@@ -21,7 +21,7 @@ Invoke-RestMethod -Method Post -Uri "https://api.ed-fi.org/v7.1/api/oauth/token"
 ```bash
 curl --user RvcohKz9zHI4:E1iEFusaNf81xzCxwHfbolkC https://api.ed-fi.org/v7.1/api/oauth/token --data 'grant_type=client_credentials'
 ```
-*Note: curl --user option should base-64 encode the key and secret into the Authorization header.*
+_Note: curl --user option should base-64 encode the key and secret into the Authorization header._
 
 The above should return an access token. Example response:
 ```json

@@ -1,7 +1,6 @@
 # Code Generation Utility
 
-The Code Generation tool is an external tool used for generating required classes and ORM mappings that are necessary to build the solution. Code generation is required when working on the solution to create the core objects, profiles, and extensions. This article describes how code generation is built into the initdev command for local development and how it can be executed from a [CICD pipeline](#manual-execution). 
-
+The Code Generation tool is an external tool used for generating required classes and ORM mappings that are necessary to build the solution. Code generation is required when working on the solution to create the core objects, profiles, and extensions. This article describes how code generation is built into the initdev command for local development and how it can be executed from a [CICD pipeline](#manual-execution).
 
 ## Running initdev
 

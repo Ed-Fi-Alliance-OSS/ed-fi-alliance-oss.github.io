@@ -8,7 +8,7 @@ The Ed-Fi ODS / API comes with a set of configurable features that can be
 enabled or disabled using configuration settings in deployed API. Additional custom
 features could be implemented by following the steps outlined here:
 
-### Step 1. Create a Service 
+### Step 1. Create a Service
 
 ```csharp
 namespace EdFi.Ods.Services

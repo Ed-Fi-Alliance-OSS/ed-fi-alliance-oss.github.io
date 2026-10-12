@@ -344,7 +344,7 @@ CREATE DATABASE EdFi_Ods_Sandbox_CW39oP8dfsLr0yXVGTixq_SSabcd ON
 The host's process MUST perform the following steps:
 
 * Back up the current EdFi\_Ods database (or equivalent).
-*   Generate a *short* string-based "snapshot identifier" (GUID-based values are discouraged to prevent name length problems when possibly combined with other API features that increase ODS database name length).
+*   Generate a _short_ string-based "snapshot identifier" (GUID-based values are discouraged to prevent name length problems when possibly combined with other API features that increase ODS database name length).
 *   Restore the ODS database using following naming convention: `{Ed-Fi ODS database name}\_SS{snapshot-identifier}`.
 *   Insert a new record into the `changes.Snapshot` table with the new snapshot identifier and the current date/time.
 

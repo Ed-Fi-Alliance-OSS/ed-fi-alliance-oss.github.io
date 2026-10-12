@@ -13,7 +13,7 @@ Before you begin:
     If you prefer to generate extended artifacts manually instead of using
     MetaEd, steps are listed in [Appendix
     A](#appendix-a-adding-manually-created-extensions) of this page.
-*   This example assumes knowledge of the basic concepts described in the [How To: Extend the ODS / API - Student Transportation Example](./how-to-extend-the-ed-fi-ods-api-student-transportation-example.md). If you're new to the Ed-Fi technology stack, or if you haven't used MetaEd before, then we suggest you run through that example first. 
+*   This example assumes knowledge of the basic concepts described in the [How To: Extend the ODS / API - Student Transportation Example](./how-to-extend-the-ed-fi-ods-api-student-transportation-example.md). If you're new to the Ed-Fi technology stack, or if you haven't used MetaEd before, then we suggest you run through that example first.
 * This example assumes that the Ed-Fi ODS / API has been successfully
     downloaded and is running in a local development environment per the
     instructions in the [Getting
@@ -89,7 +89,7 @@ Do that now if you haven't already.
 
 ### Step 2a. Set or Confirm MetaEd Target Version
 
-MetaEd allows you to target different versions of the Ed-Fi technology stack and data model. Confirm that your MetaEd IDE is targeting v6.1 by following the instructions in the [Version Targeting](#)    documentation for the MetaEd IDE. 
+MetaEd allows you to target different versions of the Ed-Fi technology stack and data model. Confirm that your MetaEd IDE is targeting v6.1 by following the instructions in the [Version Targeting](#)    documentation for the MetaEd IDE.
 
 The desired model for the latest ODS / API is "ed-fi-model-4.0".
 

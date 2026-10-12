@@ -31,7 +31,7 @@ model before using that model.
 
 The ODS / API provides multiple deployment options for segregating data in the ODS. When setting up Ed-Fi ODS / API environment intended for production data collection, implementers have the option to configure the API to run on Shared Instance, Year Specific, District Specific or Instance-Year Specific modes. See the [Extensibility & Customization](../platform-dev-guide/extensibility-customization/readme.md) section for details.
 
-While none of the modes prevent multi-year data being stored in the ODS, some of the modes (i.e., Year Specific) are more aligned with single year data capture with year-based ODS naming convention and separate year-specific API URL, others (i.e., Shared Instance, District Specific) do not provide clear indication of whether data in the ODS spans across multiple years. 
+While none of the modes prevent multi-year data being stored in the ODS, some of the modes (i.e., Year Specific) are more aligned with single year data capture with year-based ODS naming convention and separate year-specific API URL, others (i.e., Shared Instance, District Specific) do not provide clear indication of whether data in the ODS spans across multiple years.
 
 ## Rationale for Single-year Collection
 
@@ -88,11 +88,11 @@ When configuring your ODS to collect "single-year" data, there are a few things 
 
 | End of Year Rollover | Details |
 | --- | --- |
-| Determination of need for continued API access of prior year ODS | *   Once API access to prior year data is no longer needed, the API can be taken down. |
-| Deploy new ODS / API school year ODS | *   Consider upgrading to ODS / API to stay close to the latest data model. <br/>*   The Deployment process should be updated to include the new year ODS.<br/>*   Updated Security for new or changing vendor/district pairings should be set up . |
-| Load or migrate initial data | *   Any data that can be migrated from the prior year should be migrated at this point. Descriptors, and Education Organization Data valid for the new year should be loaded, if your agency is handling that responsibility (some SIS systems may do this work instead - consult your SIS for the support they offer) |
-| Inform vendors of new URL | *   If there is a change in the API URL, vendors will need to be made aware when the new school year ODS is available. |
-| Open collection for new year | *   Vendors begin submissions for new school year collection |
+| Determination of need for continued API access of prior year ODS | \*   Once API access to prior year data is no longer needed, the API can be taken down. |
+| Deploy new ODS / API school year ODS | \*   Consider upgrading to ODS / API to stay close to the latest data model. <br/>\*   The Deployment process should be updated to include the new year ODS.<br/>\*   Updated Security for new or changing vendor/district pairings should be set up . |
+| Load or migrate initial data | \*   Any data that can be migrated from the prior year should be migrated at this point. Descriptors, and Education Organization Data valid for the new year should be loaded, if your agency is handling that responsibility (some SIS systems may do this work instead - consult your SIS for the support they offer) |
+| Inform vendors of new URL | \*   If there is a change in the API URL, vendors will need to be made aware when the new school year ODS is available. |
+| Open collection for new year | \*   Vendors begin submissions for new school year collection |
 
 ## Possible Uses for Multi-Year Data in Single ODS
 

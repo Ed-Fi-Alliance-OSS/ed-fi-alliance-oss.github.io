@@ -2,7 +2,7 @@
 
 In this example, we will create a new domain entity called Student
 Transportation. This entity will be exposed in Ed-Fi ODS / API through a new API resource
-called studentTransportations. 
+called studentTransportations.
 
 Before you begin:
 
@@ -19,7 +19,7 @@ Before you begin:
   hand-crafted customizations (e.g., to define an authorization strategy).
 
 The steps can be summarized as:
- 
+
 * Step 1. Design Your Extension
 * Step 2. Author Your Extension Using MetaEd
 * Step 3. Generate Extended Technical Artifacts Using MetaEd
@@ -83,7 +83,7 @@ Click File > Save (Ctrl + S) to save your changes.
 We're going to add a Domain Entity source file to the project we just created.
 Note that MetaEd files are required to be organized into subfolders. Folders are
 generally named after their entity type. When you followed the steps in [MetaEd IDE - Creating and Maintaining Your Extension](https://edfi.atlassian.net/wiki/spaces/METAED20/pages/23709491/MetaEd+IDE+-+Creating+and+Maintaining+Your+Extension) one of the folders you created was called "DomainEntity". We will now add a
-MetaEd source file to that folder. 
+MetaEd source file to that folder.
 
 Right-click on the folder DomainEntity, and select New File.
 
@@ -192,7 +192,7 @@ Visual Studio Project Templates can be installed by following steps in [Project 
 
    ![Add New Project](https://edfi.atlassian.net/wiki/download/attachments/22774474/VisualStudio-AddNewProject.png?version=1&modificationDate=1641861355517&cacheVersion=1&api=v2)
 
-2. Search and select the Ed-Fi API Extensions Project Template option and click Next. 
+2. Search and select the Ed-Fi API Extensions Project Template option and click Next.
 
    ![Create Extension Project](https://edfi.atlassian.net/wiki/download/attachments/22774474/vs-create%20extension%20project.png?version=1&modificationDate=1641861354793&cacheVersion=1&api=v2)
 
@@ -382,7 +382,7 @@ singularized name of the resource (e.g., "studentTransportation" not
 
 Note that in 0001-StudentTransportation_ResourceClaims.sql script above, the resulting ClaimName value is "http://ed-fi.org/ods/identity/claims/sample-student-transportation/studentTransportation".
 
-## Step 7. Run Code Generation and Verify Changes 
+## Step 7. Run Code Generation and Verify Changes
 
 Save all modified files, close Ed-Fi-ODS.sln, and re-run the code generation
 steps outlined in the [Getting Started Guide](../getting-started/readme.md) (i.e., from a PowerShell prompt run `Initialize-PowershellForDevelopment.ps` script, followed by the `initdev` command). Then, run the application and view the Ed-Fi ODS / API in the Swagger
@@ -415,10 +415,10 @@ Visual Studio Project Templates can be installed by following steps in [Project 
 
    ![Add New Project](https://edfi.atlassian.net/wiki/download/attachments/22774474/VisualStudio-AddNewProject.png?version=1&modificationDate=1641861355517&cacheVersion=1&api=v2)
 
-2. Search and select the Ed-Fi API Extensions Project Template option and click Next. 
+2. Search and select the Ed-Fi API Extensions Project Template option and click Next.
 
    ![Create Extension Project](https://edfi.atlassian.net/wiki/download/attachments/22774474/vs-create%20extension%20project.png?version=1&modificationDate=1641861354793&cacheVersion=1&api=v2)
-   
+
    In the Project Name field, enter EdFi.Ods.Extensions.SampleStudentTransportation and click Create.
 
    ![Name Extension Project](https://edfi.atlassian.net/wiki/download/attachments/22774474/vs-create%20extension%20project%202.png?version=1&modificationDate=1641861354803&cacheVersion=1&api=v2)
@@ -580,6 +580,7 @@ UI. The following new API resource should be visible:
 ![Swagger UI](https://edfi.atlassian.net/wiki/download/attachments/22774474/extension%20swagger.png?version=1&modificationDate=1641861356440&cacheVersion=1&api=v2)
 
 ## Downloads
+
 The following GitHub links contain source files for this extensibility sample.
 
 * [Student Transportation MetaEd Source](https://github.com/Ed-Fi-Alliance-oss/Ed-Fi-ODS/tree/v5.4/Samples/Extensions/StudentTransportation/StudentTransportationMetaEd)

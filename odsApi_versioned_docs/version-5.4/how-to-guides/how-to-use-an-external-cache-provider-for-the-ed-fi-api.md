@@ -1,12 +1,13 @@
 
 # How To: Use an External Cache Provider for the Ed-Fi API
+
 By default, the Ed-Fi API uses an internal memory cache in order to increase the performance of the API. However, an optional feature is to use an External or Distributed Cache option such as Redis, a distributed memory cache which, in a multi-server environment, can prevent cached data on multiple servers from getting out of sync and be more cost effective.
 
 For information on getting started with Redis Cache check out: [https://redis.io/docs/getting-started/](https://redis.io/docs/getting-started/)
 
 ## API External Cache Feature Settings
 
-Configuration of the External Cache feature works in conjunction with the Caching configuration settings. Each caching entry can be enabled to use external cache, but will still follow the Caching Configuration settings. For instance, if the SuppressStaffCache setting is set to true, Staff cache will be disabled for either internal or external cache. 
+Configuration of the External Cache feature works in conjunction with the Caching configuration settings. Each caching entry can be enabled to use external cache, but will still follow the Caching Configuration settings. For instance, if the SuppressStaffCache setting is set to true, Staff cache will be disabled for either internal or external cache.
 
 In order to use the external cache feature:
 
@@ -25,7 +26,7 @@ In order to use the external cache feature:
   * Redis, SQLServer currently supported
 * Set external cache configuration
   * Configuration (required)
-    * Redis - Comma separated list of host and ports 
+    * Redis - Comma separated list of host and ports
     * SQL Server - Connection String
   * Password (optional)
     * Redis - AUTH Password
@@ -35,6 +36,7 @@ In order to use the external cache feature:
   2. AvailableChangeVersionCache
   3. Descriptors
   4. PersonUniqueIdToUsiCache
+
 ### Default External Cache Feature configuration
 
 ```json
@@ -60,6 +62,7 @@ In order to use the external cache feature:
     "EnablePersonUniqueIdToUsiCache" : false
 }  
 ```
+
 ### Example Redis External Cache feature
 
 ```json
@@ -85,6 +88,7 @@ In order to use the external cache feature:
     "EnablePersonUniqueIdToUsiCache" : true
 }  
 ```
+
 ### Example SQL Server External Cache feature
 
 ```json
@@ -110,6 +114,7 @@ In order to use the external cache feature:
     "EnablePersonUniqueIdToUsiCache" : true
 }  
 ```
+
 ### Setting up Redis distributed cache
 
 [https://redis.io/docs/getting-started/installation/](https://redis.io/docs/getting-started/installation/)

@@ -18,3 +18,6 @@ table-pipe-style:
   style: leading_and_trailing
 no-duplicate-heading:
   siblings_only: true
+# MD060 (table-column-style) arrived with markdownlint 0.39 and flags ~16,500
+# existing table cells. Disabled for now; revisit separately (DOC-270).
+table-column-style: false

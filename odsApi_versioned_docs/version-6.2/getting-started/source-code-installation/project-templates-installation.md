@@ -6,7 +6,7 @@ Note that the project templates have been updated for the v6.2 release. Develope
 
 The Ed-Fi Alliance provides a Visual Studio extension that contains project templates for creating Composites, Ed-Fi Extensions, and Profiles. The Visual Studio extension is supported by Visual Studio 2022. Installing the VS extension is useful for many customization needs.
 
-This section describes how to install the Project Templates. It assumes you have Visual Studio installed, and have successfully installed the ODS / API on a development machine per the instructions in the [Getting Started - Source Code Installation](../../getting-started/source-code-installation/readme.md) section of this documentation. 
+This section describes how to install the Project Templates. It assumes you have Visual Studio installed, and have successfully installed the ODS / API on a development machine per the instructions in the [Getting Started - Source Code Installation](../../getting-started/source-code-installation/readme.md) section of this documentation.
 
 The installation steps can be summarized as:
 
@@ -36,15 +36,9 @@ Close Visual Studio. Ensure you close all instances.
 
 Double-click the downloaded EdFi.ProjectTemplates.Installer.vsix file and install the templates.
 
-  
-
 ![Install Templates 1](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2022-2-7_14-42-7.png)
 
-
-  
-
 ![Install Templates 2](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2022-2-7_14-43-35.png)
-
 
 ## Step 5. Verify Install
 
@@ -52,11 +46,9 @@ Verify that the extension installed under **Extensions** \> **Manage Extensions*
 
 ![Verify Templates 1](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-10-18_16-16-34.png)
 
-
 Verify that the templates are available under **File** > **New** > **Project**.
 
 ![Verify Templates 2](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-10-18_16-21-35.png)
-
 
 ## Next Steps
 
@@ -69,10 +61,6 @@ Now that you've installed the templates, you can find information on how to use 
 ## Contents
 
 Find out more about how to begin using the Ed-Fi ODS / API:
-
-            
-
- 
 
 :::note
  The following link contains the Visual Studio Extension:

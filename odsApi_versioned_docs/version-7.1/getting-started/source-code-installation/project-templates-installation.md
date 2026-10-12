@@ -1,7 +1,7 @@
 # Project Templates Installation
 
 :::info
-Note that the project templates have been updated for the v7.1 release. Developers using previous versions should uninstall the previous version and install the latest. 
+Note that the project templates have been updated for the v7.1 release. Developers using previous versions should uninstall the previous version and install the latest.
 :::
 
 The Ed-Fi Alliance provides a Visual Studio extension that contains project
@@ -56,7 +56,6 @@ Verify that the templates are available under **File** > **New** >
 
 ## Next Steps
 
-
 Now that you've installed the templates, you can find information on how to
 use them in the following articles:
 
@@ -66,5 +65,3 @@ use them in the following articles:
       API](../../how-to-guides/how-to-add-profiles-to-the-ed-fi-ods-api.md)
 * [How To: Extend the Ed-Fi ODS / API - Alternative Education Program
       Example](../../how-to-guides/how-to-extend-the-ed-fi-ods-api-alternative-education-program-example.md)
-
-

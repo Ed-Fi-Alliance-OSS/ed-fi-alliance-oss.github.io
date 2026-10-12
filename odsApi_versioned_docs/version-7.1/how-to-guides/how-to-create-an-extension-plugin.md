@@ -66,4 +66,3 @@ In this step, execute the following command to publish NuGet package.
   -apikey <PAT> `
   <nuget directory>\EdFi.Ods.Extensions.SampleAlternativeEducationProgram.1.0.0.Standard.5.1.0.1.0.0.nupkg
 ```
-

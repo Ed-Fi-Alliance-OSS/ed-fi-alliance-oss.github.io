@@ -127,4 +127,3 @@ Clean and then rebuild the ODS Visual Studio Solution. This can be done through 
 :::info
 When the API is initialized, the names of the Profiles configured into the API will be published to the Profiles table in the EdFi_Admin database. This process performs one-way publishing and will not remove existing Profile names that are no longer contained within the API configuration. Profiles added to the Ed-Fi Visual Studio Solution using the Profiles Visual Studio Project Template will have their name published in the EdFi_Admin database, but the ProfileDefinition column in the profiles table remains empty because the XML definition for the profile is provided as an embedded resource. Only Profiles configured directly in the EdFi_Admin database have their definitions stored in the ProfileDefinition column.
 :::
-

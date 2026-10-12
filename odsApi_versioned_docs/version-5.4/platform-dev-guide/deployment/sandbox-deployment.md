@@ -274,9 +274,9 @@ website are provided in the sections that follow.
 6. Open IIS in the target machine, expand the Sites, right-click on **Default Web Site** and select **Add Application.**
 7. Fill in the application name and the server location that you have published the
    application:
-   
+
    ![Add Application](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image18.png)
-   
+
 8. Click **OK.**
 9. The application is ready to use. You can browse and see version information
    about the API.
@@ -328,14 +328,14 @@ Steps to deploy the application:
 6. Open IIS in the target machine, expand the Sites, right-click on **Default Web Site** and select **Add Application**.
 7. Fill in the application name and the server location that you have published the
    application:
-   
+
    ![Add Application](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image05.png)
-   
+
 8. Click **OK**.
 9. The application is ready to use.
 
    ![Sandbox Admin](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image07.png)
-   
+
 10. The article [Using the Sandbox Admin Portal](../../client-developers-guide/using-the-sandbox-administration-portal.md) has useful information about how to set up accounts for client system
     developers, additional configuration details, plus general usage instructions.
 
@@ -378,9 +378,9 @@ API in sandbox environments.
 6. Open IIS in the target machine, expand the Sites, right-click on **Default Web Site** and select **Add Application**.
 7. Fill in the application name and the server location that you have published the
    application:
-   
+
    ![Add Application](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image16.png)
-   
+
 8. Click **OK**.
 9. The application is ready to use.
 

@@ -101,7 +101,6 @@ You can also verify the Sample API endpoints in the Swagger UI documentation:
 
   ![Image](https://edfi.atlassian.net/wiki/download/thumbnails/22774717/image2021-10-26_17-0-27.png?version=1&modificationDate=1641861360107&cacheVersion=1&api=v2&width=350&height=605)
 
-
 ### Deploy Sample Extension Binaries to Web Server
 
 #### Step 4. Download EdFi.Suite3.Ods.Extensions.Sample
@@ -114,7 +113,6 @@ You can also verify the Sample API endpoints in the Swagger UI documentation:
   your WebAPI directory.
 
   ![Image](https://edfi.atlassian.net/wiki/download/thumbnails/22774717/image2021-10-26_17-10-52.png?version=1&modificationDate=1641861360097&cacheVersion=1&api=v2&width=808&height=193)
-
 
 * Update appsettings.json, for plugin settings as shown below:
 
@@ -133,7 +131,6 @@ You can also verify the Sample API endpoints in the Swagger UI documentation:
   listed, as described above.
 
 ![Image](https://edfi.atlassian.net/wiki/download/thumbnails/22774717/image2021-10-26_16-52-9.png?version=1&modificationDate=1641861360127&cacheVersion=1&api=v2&width=644&height=573)
-
 
 * You can also verify the Sample extension API endpoints in the Swagger UI
   documentation.

@@ -116,82 +116,82 @@ Sections or StudentSectionAssociations that are associated with a program.
 StaffSectionAssociation.
 * Descriptor values need to be loaded, organized by the referring entities and
 associations, as follows.
-	* Course
-		* AcademicSubject, an optional collection of descriptor values to indicate
-		the intended major subject area(s) of the course.
-		* CareerPathway, optionally indicates the career cluster or pathway the course
-		is associated with as part of a CTE curriculum.
-		* CompetencyLevel, an optional collection of descriptor values for competency
-		levels defined to rate the student for the course.
-		* CourseDefinedBy, optionally specifies whether the course was defined by the
-		SEA, LEA, School, or national organization.
-		* CourseGPAApplicability, an optional indicator of whether or not the course
-		being described is included in the computation of the student's Grade Point
-		Average, and if so, if it is weighted differently from regular courses.
-		* CourseIdentificationSystem, a required descriptor for the optional
-		CourseIdentificationCode common that specifies the system that is used to
-		alternatively identify the Course.
-		* CourseLevelCharacteristic, an optional collection of descriptor values to
-		indicate various designation(s) with which the course is associated (e.g.,
-		AP, IB, Dual Credit, CTE).
-		* CreditType, optionally used as part of the MinimumAvailableCredits and
-		MaximumAvailableCredits commons to specify type of credits or units of value
-		awarded for the completion of a course.
-		* OfferedGradeLevel, an optional collection of descriptor values using the
-		GradeLevel descriptor, indicating the grade level(s) in which the course is
-		offered.
-	* CourseOffering
-		* CourseLevelCharacteristic, an optional collection of descriptor values to
-		indicate various designation(s) with which the course offering is associated
-		(e.g., AP, IB, Dual Credit, CTE). The collection should be populated if it
-		differs from the CourseLevelCharacteristics identified at the Course level.
-		* CurriculumUsed, an optional collection of descriptor values to indicate the
-		type of curriculum used in classroom or group.
-		* OfferedGradeLevel, an optional collection of descriptor values using the
-		GradeLevel descriptor, indicating the grade level(s) in which the course
-		offering is offered. This collection should be populated if it differs from
-		the OfferedGradeLevels identified at the Course level.
-	* Section
-		* CourseLevelCharacteristic, an optional collection of descriptor values to
-		indicate various designation(s) with which the section is associated (e.g.,
-		AP, IB, Dual Credit, CTE). The collection should be populated if it differs
-		from the CourseLevelCharacteristics identified at the CourseOffering level.
-		* CreditType, the type of credits or units of value awarded for the
-		completion of a course.
-		* EducationalEnvironment, the setting in which a child receives education
-		and related services; for example: center-based instruction, home based
-		instruction, hospital class, mainstream, residential care and treatment
-		facility.
-		* InstructionLanguage, the primary language of instruction; if omitted
-		English is assumed.
-		* OfferedGradeLevel, an optional collection of descriptor values using the
-		GradeLevel descriptor, indicating the grade level(s) in which the section
-		is offered. This collection should only be populated if it differs from the
-		OfferedGradeLevels identified at the Course Offering level.
-		* MediumOfInstruction, the media through which teachers provide instruction
-		to students and students and teachers communicate about instructional matters;
-		for example: technology-based instruction in classroom, correspondence
-		instruction, face-to-face instruction, virtual/on-line distance learning,
-		center-based instruction.
-		* PopulationServed, the type of students the Section is offered and tailored
-		to; for example: bilingual students, remedial education students, gifted and
-		talented students, Career and Technical Education students, special education
-		students.
-		* SectionCharacteristic reflects important characteristics of the Section,
-		such as whether or not attendance is taken, and whether the Section is
-		graded and awards credits.
-		* SectionType specifies whether the section is for attendance only, credit
-		only, or both.
-	* StudentSectionAssociation
-		* AttemptStatus, an indication of the student's completion status for the
-		section.
-		* RepeatIdentifier, an indication as to whether a student has previously
-		taken a given course. Repeated, counted in grade point average, Repeated,
-		not counted in grade point average, Not repeated, Other.
-	* StaffSectionAssociation
-		* ClassroomPosition indicates the type of position the Staff member holds in
-		the specific section; for example: teacher of record, assistant teacher,
-		support teacher, substitute teacher.
+  * Course
+    * AcademicSubject, an optional collection of descriptor values to indicate
+    the intended major subject area(s) of the course.
+    * CareerPathway, optionally indicates the career cluster or pathway the course
+    is associated with as part of a CTE curriculum.
+    * CompetencyLevel, an optional collection of descriptor values for competency
+    levels defined to rate the student for the course.
+    * CourseDefinedBy, optionally specifies whether the course was defined by the
+    SEA, LEA, School, or national organization.
+    * CourseGPAApplicability, an optional indicator of whether or not the course
+    being described is included in the computation of the student's Grade Point
+    Average, and if so, if it is weighted differently from regular courses.
+    * CourseIdentificationSystem, a required descriptor for the optional
+    CourseIdentificationCode common that specifies the system that is used to
+    alternatively identify the Course.
+    * CourseLevelCharacteristic, an optional collection of descriptor values to
+    indicate various designation(s) with which the course is associated (e.g.,
+    AP, IB, Dual Credit, CTE).
+    * CreditType, optionally used as part of the MinimumAvailableCredits and
+    MaximumAvailableCredits commons to specify type of credits or units of value
+    awarded for the completion of a course.
+    * OfferedGradeLevel, an optional collection of descriptor values using the
+    GradeLevel descriptor, indicating the grade level(s) in which the course is
+    offered.
+  * CourseOffering
+    * CourseLevelCharacteristic, an optional collection of descriptor values to
+    indicate various designation(s) with which the course offering is associated
+    (e.g., AP, IB, Dual Credit, CTE). The collection should be populated if it
+    differs from the CourseLevelCharacteristics identified at the Course level.
+    * CurriculumUsed, an optional collection of descriptor values to indicate the
+    type of curriculum used in classroom or group.
+    * OfferedGradeLevel, an optional collection of descriptor values using the
+    GradeLevel descriptor, indicating the grade level(s) in which the course
+    offering is offered. This collection should be populated if it differs from
+    the OfferedGradeLevels identified at the Course level.
+  * Section
+    * CourseLevelCharacteristic, an optional collection of descriptor values to
+    indicate various designation(s) with which the section is associated (e.g.,
+    AP, IB, Dual Credit, CTE). The collection should be populated if it differs
+    from the CourseLevelCharacteristics identified at the CourseOffering level.
+    * CreditType, the type of credits or units of value awarded for the
+    completion of a course.
+    * EducationalEnvironment, the setting in which a child receives education
+    and related services; for example: center-based instruction, home based
+    instruction, hospital class, mainstream, residential care and treatment
+    facility.
+    * InstructionLanguage, the primary language of instruction; if omitted
+    English is assumed.
+    * OfferedGradeLevel, an optional collection of descriptor values using the
+    GradeLevel descriptor, indicating the grade level(s) in which the section
+    is offered. This collection should only be populated if it differs from the
+    OfferedGradeLevels identified at the Course Offering level.
+    * MediumOfInstruction, the media through which teachers provide instruction
+    to students and students and teachers communicate about instructional matters;
+    for example: technology-based instruction in classroom, correspondence
+    instruction, face-to-face instruction, virtual/on-line distance learning,
+    center-based instruction.
+    * PopulationServed, the type of students the Section is offered and tailored
+    to; for example: bilingual students, remedial education students, gifted and
+    talented students, Career and Technical Education students, special education
+    students.
+    * SectionCharacteristic reflects important characteristics of the Section,
+    such as whether or not attendance is taken, and whether the Section is
+    graded and awards credits.
+    * SectionType specifies whether the section is for attendance only, credit
+    only, or both.
+  * StudentSectionAssociation
+    * AttemptStatus, an indication of the student's completion status for the
+    section.
+    * RepeatIdentifier, an indication as to whether a student has previously
+    taken a given course. Repeated, counted in grade point average, Repeated,
+    not counted in grade point average, Not repeated, Other.
+  * StaffSectionAssociation
+    * ClassroomPosition indicates the type of position the Staff member holds in
+    the specific section; for example: teacher of record, assistant teacher,
+    support teacher, substitute teacher.
 
 ## Alternative Patterns for the Teaching and Learning Domain
 
@@ -237,10 +237,10 @@ Mathematics” course offering.
 local course offerings. In the example a local CourseOffering for “Topology” would create a
 Course for “Topology.”  In this case, it is important that the local Course be properly
 identified:
-	* Course.EducationOrganization should reference the LocalEducationAgency or School
-	that defines the local course offering; and
-	* Course.CourseDefinedBy descriptor value should indicate whether it was defined by an
-	LEA or a school.
+  * Course.EducationOrganization should reference the LocalEducationAgency or School
+  that defines the local course offering; and
+  * Course.CourseDefinedBy descriptor value should indicate whether it was defined by an
+  LEA or a school.
 
 ### Dual Credit Courses
 
@@ -335,7 +335,7 @@ These cases are handled as follows:
 Section.Program collection references those Program(s).
 * Each student participating in a program must also have an associated
 StudentProgramAssociation (or a specific StudentXxxProgramAssociation).
- 
+
 ## Teaching and Learning Best Practices
 
 The following best practices are organized by entity and association in the
@@ -460,7 +460,6 @@ Best practices for the use of Section and its attributes
 
 ::::
 
-
 ### StaffSectionAssociation
 
 The StaffSectionAssociation indicates the Section to which a
@@ -505,22 +504,22 @@ best practice use of the StudentSectionAssociation attributes.
 Best practices for the use of StudentSectionAssociation and its attributes
 :::info
 
-* A Student with a StudentSectionAssociation must have a 
-  StudentSchoolAssociation for the same School where the Section is being 
+* A Student with a StudentSectionAssociation must have a
+  StudentSchoolAssociation for the same School where the Section is being
   offered, reflecting either a primary or secondary enrollment.
-* The period (defined by the BeginDate and EndDate) specified in the 
-  StudentSectionAssociation must be contained within the period 
-  (defined by the BeginDate and EndDate) specified in the associated 
+* The period (defined by the BeginDate and EndDate) specified in the
+  StudentSectionAssociation must be contained within the period
+  (defined by the BeginDate and EndDate) specified in the associated
   StudentSchoolAssociation.
-* A StudentSectionAssociation is created for each student assignment to 
+* A StudentSectionAssociation is created for each student assignment to
   a Section during a session.
-* The EndDate of a StudentSectionAssociation must be equal or after the 
+* The EndDate of a StudentSectionAssociation must be equal or after the
   BeginDate.
-* When students complete a section at the end of the session, the 
-  StudentSectionAssociation.EndDate must be written to reflect the 
+* When students complete a section at the end of the session, the
+  StudentSectionAssociation.EndDate must be written to reflect the
   Session.EndDate.
-* A Program identified in the StudentSectionAssociation that the student 
-  is participating in the context of the Section must also have a 
+* A Program identified in the StudentSectionAssociation that the student
+  is participating in the context of the Section must also have a
   corresponding StudentProgramAssociation (SPA or SXPA).
 
 ::::

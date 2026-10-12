@@ -614,8 +614,6 @@ following entries:
 * **Ed-Fi ODS/API on AWS**
 * **Ed-Fi ODS/API Deploy Tools for Azure**
 
-
-
 ## Conclusion
 
 A Sandbox instance of the ODS / API is a critical element in the success of a

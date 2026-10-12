@@ -49,14 +49,12 @@ The Postman screenshot below shows the GET call:
 
 ![Dependency Endpoint JSON](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Dependency%20Endpoint%20-json%20endpoint.jpg)
 
-
 Adding a header `Accept` with a value of `application/graphml` can be passed to
 obtain dependency output in the graphml XML
 format. The
 Postman screenshot below shows the GET call with the added header:
 
 ![Dependency Endpoint GraphML](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Dependency%20Endpoint%20-%20Graphml%20output.png)
-
 
 The screenshots bellow show the dependency order enforced by authorization on the Students resource. You can see that Student creation is at order 3, StudentSchoolAssociation creation is at order 18 the Student update is at order 19. This shows that a client cannot edit a student record it has created until an enrollment record has been established.
 
