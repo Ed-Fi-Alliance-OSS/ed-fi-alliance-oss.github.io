@@ -21,7 +21,7 @@ and Ed-Fi API v8 FAQ](/reference/roadmap/api-faq).
 During development, the Ed-Fi API was called the Data Management Service (DMS)
 and the Configuration Service the DMS Configuration Service (CMS). These names
 still appear in source code and older materials. See [What are DMS, CMS, and
-Project Tanager?](/reference/roadmap/api-faq#q-what-are-dms-cms-and-project-tanager)
+Project Tanager?](/reference/roadmap/api-faq#q-what-are-dms-cms-and-project-tanager).
 
 :::
 

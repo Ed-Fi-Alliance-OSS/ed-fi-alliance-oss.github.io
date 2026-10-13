@@ -8,7 +8,7 @@ plans to fully replace the current ODS/API Platform with Ed-Fi API v8 by the
 2029-2030 school year. In the meantime, the Alliance remains committed to
 supporting the ODS/API Platform through the 2028-2029 school year.
 
-## Roadmap
+## General
 
 ### Q: What are DMS, CMS, and Project Tanager?
 
@@ -21,6 +21,8 @@ They are earlier or internal names for Ed-Fi API v8:
 
 Project Tanager is the name of the project that built these services; it is not
 a product name.
+
+## Roadmap
 
 ### Q: What does the future look like for the legacy ODS/API Platform?
 
