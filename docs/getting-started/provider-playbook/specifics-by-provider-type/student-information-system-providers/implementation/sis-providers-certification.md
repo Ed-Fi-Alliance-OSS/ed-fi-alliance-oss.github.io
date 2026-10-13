@@ -1,3 +1,7 @@
+---
+slug: /provider-playbook/specifics-by-provider-type/student-information-system-providers/student-information-system-providers-implementation/sis-providers-certification
+---
+
 # SIS Providers - Certification
 
 :::info
