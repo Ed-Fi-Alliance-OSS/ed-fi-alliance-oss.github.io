@@ -41,11 +41,15 @@ const config = {
             `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/docs/getting-started/${docPath}/`,
           routeBasePath: 'getting-started',
           sidebarPath: './sidebars.js',
+          showLastUpdateTime: true,
         },
         blog: {
           showReadingTime: true,
           editUrl:
             'https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/blog/',
+        },
+        sitemap: {
+          lastmod: 'date',
         },
         googleTagManager: {
           containerId: 'GTM-KGR2977',
@@ -67,6 +71,7 @@ const config = {
           `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/docs/partners/${docPath}/`,
         routeBasePath: 'partners',
         sidebarPath: './sidebars.js',
+        showLastUpdateTime: true,
       },
     ],
     [
@@ -78,6 +83,7 @@ const config = {
           `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/docs/reference/${docPath}/`,
         routeBasePath: 'reference',
         sidebarPath: './sidebars.js',
+        showLastUpdateTime: true,
       },
     ],
     [
@@ -89,6 +95,7 @@ const config = {
           `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/docs/community/${docPath}/`,
         routeBasePath: 'community',
         sidebarPath: './sidebars.js',
+        showLastUpdateTime: true,
       },
     ],
     [
@@ -100,6 +107,7 @@ const config = {
           `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/${versionDocsDirPath}/${docPath}/`,
         routeBasePath: 'reference/ed-fi-api',
         sidebarPath: './sidebars.js',
+        showLastUpdateTime: true,
         includeCurrentVersion: false,
         lastVersion: '7.3',
         versions: {
@@ -139,6 +147,7 @@ const config = {
           `https://github.com/ed-fi-alliance-oss/ed-fi-alliance-oss.github.io/tree/main/${versionDocsDirPath}/${docPath}`,
         routeBasePath: 'reference/data-exchange/data-standard',
         sidebarPath: './sidebars.js',
+        showLastUpdateTime: true,
         includeCurrentVersion: false,
         lastVersion: '6',
         versions: {
@@ -251,6 +260,139 @@ const config = {
           {
             from: '/reference/roadmap/notifications/admin-app-to-exchange',
             to: '/reference/roadmap/notifications/admin-app-to-community-tools',
+          },
+          // Assessment provider pages moved under domain-api-tutorial.
+          {
+            from: '/getting-started/provider-playbook/specifics-by-provider-type/assessment-providers/assessment-providers-implementation/assessment-providers-data-model/learning-standards-and-learning-objective-entities',
+            to: '/getting-started/provider-playbook/specifics-by-provider-type/assessment-providers/domain-api-tutorial/assessment-providers-data-model/learning-standards-and-learning-objective-entities',
+          },
+          {
+            from: '/getting-started/provider-playbook/specifics-by-provider-type/assessment-providers/assessment-providers-implementation/assessment-providers-data-pull-model',
+            to: '/getting-started/provider-playbook/specifics-by-provider-type/assessment-providers/domain-api-tutorial/assessment-providers-data-pull-model',
+          },
+          {
+            from: '/getting-started/provider-playbook/specifics-by-provider-type/assessment-providers/assessment-providers-implementation/assessment-providers-use-cases',
+            to: '/getting-started/provider-playbook/specifics-by-provider-type/assessment-providers/domain-api-tutorial/assessment-providers-use-cases',
+          },
+          {
+            from: '/getting-started/provider-playbook/specifics-by-provider-type/assessment-providers/assessment-providers-implementation/assessment-providers-sandbox/assessment-providers-activity-1',
+            to: '/getting-started/provider-playbook/specifics-by-provider-type/assessment-providers/domain-api-tutorial/assessment-providers-sandbox/assessment-providers-activity-1',
+          },
+          {
+            from: '/getting-started/provider-playbook/specifics-by-provider-type/assessment-providers/assessment-providers-implementation/ed-fi-ods-api-authorization-for-assessment-providers',
+            to: '/getting-started/provider-playbook/specifics-by-provider-type/assessment-providers/domain-api-tutorial/ed-fi-ods-api-authorization-for-assessment-providers',
+          },
+          {
+            from: '/getting-started/provider-playbook/specifics-by-provider-type/assessment-providers/assessment-providers-implementation/assessment-providers-data-model/key-structure',
+            to: '/getting-started/provider-playbook/specifics-by-provider-type/assessment-providers/domain-api-tutorial/assessment-providers-data-model/key-structure',
+          },
+          {
+            from: '/getting-started/provider-playbook/specifics-by-provider-type/assessment-providers/assessment-providers-implementation/assessment-providers-data-model/objective-assessment-entity',
+            to: '/getting-started/provider-playbook/specifics-by-provider-type/assessment-providers/domain-api-tutorial/assessment-providers-data-model/objective-assessment-entity',
+          },
+          {
+            from: '/getting-started/provider-playbook/specifics-by-provider-type/assessment-providers/assessment-providers-implementation/assessment-providers-data-model',
+            to: '/getting-started/provider-playbook/specifics-by-provider-type/assessment-providers/domain-api-tutorial/assessment-providers-data-model',
+          },
+          // Admin API docs moved under getting-started.
+          {
+            from: '/reference/admin-api/admin-api-2.x/installation-for-odsapi-7x/first-time-configuration-for-admin-api-2x',
+            to: '/reference/admin-api/getting-started/admin-api-2.2-older/installation-for-odsapi-7x/first-time-configuration-for-admin-api-2x',
+          },
+          {
+            from: '/reference/admin-api/admin-api-1.x/technical-articles/admin-api-1x-docker-microsoft-sql-server-support',
+            to: '/reference/admin-api/getting-started/admin-api-1.x/technical-articles/admin-api-1x-docker-microsoft-sql-server-support',
+          },
+          {
+            from: '/reference/admin-api/admin-api-1.x/technical-articles/quick-start-calling-admin-1x-api-using-python',
+            to: '/reference/admin-api/getting-started/admin-api-1.x/technical-articles/quick-start-calling-admin-1x-api-using-python',
+          },
+          {
+            from: '/reference/admin-api/admin-api-2.x/technical-articles/quick-start-calling-admin-api-2x-using-python',
+            to: '/reference/admin-api/getting-started/admin-api-2.2-older/technical-articles/quick-start-calling-admin-api-2x-using-python',
+          },
+          {
+            from: '/reference/admin-api/admin-api-1.x/installation-for-odsapi-5x-6x/admin-api-1x-docker-installation',
+            to: '/reference/admin-api/getting-started/admin-api-1.x/installation-for-odsapi-5x-6x/admin-api-1x-docker-installation',
+          },
+          // ODS Admin App (pre-v4) docs moved to Community Tools.
+          {
+            from: '/reference/admin-app/getting-started/known-issues',
+            to: '/getting-started/community-tools/technology/ods-admin-app/getting-started/known-issues',
+          },
+          {
+            from: '/reference/admin-app/technical-articles/manually-restricting-access-to-a-single-education-organization',
+            to: '/getting-started/community-tools/technology/ods-admin-app/technical-articles/manually-restricting-access-to-a-single-education-organization',
+          },
+          {
+            from: '/reference/ods-admin-app/getting-started/next-steps',
+            to: '/getting-started/community-tools/technology/ods-admin-app/next-steps',
+          },
+          {
+            from: '/reference/admin-app/technical-articles/resetting-admin-app-configuration',
+            to: '/getting-started/community-tools/technology/ods-admin-app/technical-articles/resetting-admin-app-configuration',
+          },
+          {
+            from: '/reference/ods-admin-app/getting-started/multi-instance-connections',
+            to: '/getting-started/community-tools/technology/ods-admin-app/getting-started/multi-instance-connections',
+          },
+          // Analytics Middle Tier docs moved to Community Tools.
+          {
+            from: '/reference/analytics-middle-tier/deployment-guide/replacing-the-edfi-schema-in-source-code',
+            to: '/getting-started/community-tools/technology/analytics-middle-tier/deployment-guide/replacing-the-edfi-schema-in-source-code',
+          },
+          {
+            from: '/reference/analytics-middle-tier/deployment-guide/limiting-impact-on-the-production-ods',
+            to: '/getting-started/community-tools/technology/analytics-middle-tier/deployment-guide/limiting-impact-on-the-production-ods',
+          },
+          {
+            from: '/reference/analytics-middle-tier/user-guide/how-to-use-the-student-dimensions',
+            to: '/getting-started/community-tools/technology/analytics-middle-tier/user-guide/how-to-use-the-student-dimensions',
+          },
+          {
+            from: '/reference/analytics-middle-tier/deployment-guide/administrative-security',
+            to: '/getting-started/community-tools/technology/analytics-middle-tier/deployment-guide/administrative-security',
+          },
+          {
+            from: '/reference/analytics-middle-tier/user-guide/collections/engage-online-learners-collection/engage_assignmentsubmissionfact-view',
+            to: '/getting-started/community-tools/technology/analytics-middle-tier/user-guide/collections/engage-online-learners-collection/engage_assignmentsubmissionfact-view',
+          },
+          {
+            from: '/reference/analytics-middle-tier/deployment-guide',
+            to: '/getting-started/community-tools/technology/analytics-middle-tier/deployment-guide/',
+          },
+          {
+            from: '/reference/analytics-middle-tier/user-guide/collections/installation-journal-tables',
+            to: '/getting-started/community-tools/technology/analytics-middle-tier/user-guide/collections/installation-journal-tables',
+          },
+          {
+            from: '/reference/analytics-middle-tier/user-guide/collections/core-view-collection/studentschooldim-view',
+            to: '/getting-started/community-tools/technology/analytics-middle-tier/user-guide/collections/core-view-collection/studentschooldim-view',
+          },
+          {
+            from: '/reference/analytics-middle-tier/user-guide/collections/assessment-collection',
+            to: '/getting-started/community-tools/technology/analytics-middle-tier/user-guide/collections/assessment-collection/',
+          },
+          {
+            from: '/reference/analytics-middle-tier/user-guide/collections/core-view-collection/studentlocaleducationagencydemographicsbridge-view',
+            to: '/getting-started/community-tools/technology/analytics-middle-tier/user-guide/collections/core-view-collection/studentlocaleducationagencydemographicsbridge-view',
+          },
+          {
+            from: '/reference/analytics-middle-tier/deployment-guide/descriptor-mapping',
+            to: '/getting-started/community-tools/technology/analytics-middle-tier/deployment-guide/descriptor-mapping',
+          },
+          // Other removed pages, redirected to the closest current equivalent.
+          {
+            from: '/getting-started/provider-playbook/common-use-cases/rostering-solution-guide/sample-application/setup-guide',
+            to: '/reference/educator-pipeline/clinical-experience/setup-guide',
+          },
+          {
+            from: '/reference/ed-fi-api/8.0/client-developers-guide/authorization',
+            to: '/getting-started/provider-playbook/implementation/ed-fi-api-fundamentals/authorization',
+          },
+          {
+            from: '/getting-started/provider-playbook/common-use-cases/assessment-solution-guide/getting-data-flowing/authorization',
+            to: '/getting-started/provider-playbook/implementation/ed-fi-api-fundamentals/authorization',
           },
         ],
         createRedirects(existingPath) {

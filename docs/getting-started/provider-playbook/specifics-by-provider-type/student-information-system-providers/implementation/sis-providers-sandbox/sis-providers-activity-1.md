@@ -1,3 +1,7 @@
+---
+slug: /provider-playbook/specifics-by-provider-type/student-information-system-providers/student-information-system-providers-implementation/sis-providers-sandbox/sis-providers-activity-1
+---
+
 # SIS Providers - Activity 1
 
 :::info
