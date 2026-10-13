@@ -5,7 +5,8 @@ sidebar_position: 1
 # What's New
 
 This section provides an overview of what's new in the latest version of the
-Ed-Fi API Publisher.
+Ed-Fi API Publisher. For the complete list of changes, see
+[Release Notes](release-notes.md).
 
 ## Updates in API Publisher v1.4 (Latest Release)
 
