@@ -17,11 +17,12 @@ and Ed-Fi API v8 FAQ](/reference/roadmap/api-faq).
 
 Ed-Fi API v8 **is**:
 
-- The successor to the Ed-Fi ODS/API Platform. It replaces both the ODS/API and
-  the ODS Admin API.
-- Two services: the Ed-Fi API, which serves Ed-Fi Data Standard resources over
-  REST, and the Configuration Service, which manages client credentials, claim
-  sets, and deployment configuration.
+- The successor to the Ed-Fi ODS/API: a single service that serves Ed-Fi Data
+  Standard resources over HTTP (REST).
+- Part of the Ed-Fi API Platform, which replaces the Ed-Fi ODS/API Platform.
+  Alongside Ed-Fi API v8, the platform includes the Configuration Service, which
+  replaces the ODS Admin API and manages client credentials, claim sets, and
+  deployment configuration, and optional Kafka connectors for streaming data.
 - An implementation of existing Ed-Fi Data Standard versions. See [Supported
   Versions](/reference/roadmap/supported-versions) for which versions each
   release supports.
@@ -35,8 +36,9 @@ Ed-Fi API v8 **is not**:
   tables differ from the ODS, `EdFi_Admin`, and `EdFi_Security` databases, so
   integrations that read or write those databases directly need to change.
   Client applications that use the REST API are largely compatible.
-- The Admin API. The Configuration Service takes over that role and implements
-  the Ed-Fi Management API Specification (v3), not the Admin API v2 software.
+- The ODS Admin API. The Configuration Service takes over that role and
+  implements the Ed-Fi Management API Specification (v3), not the ODS Admin API
+  v2 software.
 
 ## Key Highlights
 
@@ -64,9 +66,8 @@ in community discussions, source code, and older materials:
 | Ed-Fi Data Management Service (DMS) | Ed-Fi API                       | Ed-Fi ODS/API       |
 | DMS Configuration Service           | Ed-Fi API Configuration Service | Ed-Fi ODS Admin API |
 
-[Project Tanager](https://github.com/Ed-Fi-Alliance-OSS/Project-Tanager) is the
-Ed-Fi Alliance's name for the project that built these two services. It is a
-project name, not a product name.
+Project Tanager is the Ed-Fi Alliance's name for the project that built Ed-Fi
+API v8 and the Configuration Service. It is a project name, not a product name.
 
 The DMS name remains in the source repository, in script names such as
 `bootstrap-local-dms.ps1`, and in database names such as
