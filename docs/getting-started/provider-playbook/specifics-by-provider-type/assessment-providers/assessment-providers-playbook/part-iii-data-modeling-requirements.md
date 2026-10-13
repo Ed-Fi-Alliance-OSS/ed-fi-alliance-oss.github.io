@@ -275,7 +275,7 @@ This section operationalizes the core entities defined in Section 2.2:
 
 These two layers must remain strictly aligned. The structure declared by the assessment must match the placement of student results.
 
-This is the primary enforcement point for a native Ed-Fi ODS/API assessment integration.
+This is the primary enforcement point for a native Ed-Fi API assessment integration.
 
 Correct implementation preserves the relationship between structure and results exactly as defined in the vendor score report. This allows results to be interpreted directly, without vendor-specific logic, reconstruction, or score-name parsing.
 
