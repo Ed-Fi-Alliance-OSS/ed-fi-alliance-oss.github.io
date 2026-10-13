@@ -43,7 +43,7 @@ The `EdFi_Admin` database stores the following configuration entities:
 The following entity relationship diagram (ERD) provides additional data on the
 structure of the `EdFi_Admin` database:
 
-![graph](https://edfi.atlassian.net/wiki/download/attachments/25493667/image-2023-7-28_10-28-57.png?version=1&modificationDate=1699456107210&cacheVersion=1&api=v2)
+![graph](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-7.1/image-2023-7-28_10-28-57.png)
 
 ## Ed-Fi Security Database
 

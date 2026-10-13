@@ -8,7 +8,7 @@ API Profiles can be configured and assigned through the `EdFi_Admin` database. T
 
 The tables related to this process are shown below.
 
-![Profiles ER Diagram](https://edfi.atlassian.net/wiki/download/thumbnails/25493741/image-2023-4-5_22-34-39.png?version=1&modificationDate=1699456124790&cacheVersion=1&api=v2&width=624&height=159)
+![Profiles ER Diagram](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-7.1/image-2023-4-5_22-34-39.png)
 
 API Profiles can be directly inserted into the Profiles table and then assigned to Applications via the ProfileApplications table. When making changes in the Profiles table, be aware that only one Profile can be stored per row. As such, the XML in the `ProfileDefinition` column should use `<Profile>` as the root element rather than the `<Profiles>` root element defined in the Ed-Fi-ODS-API-Profiles.xsd.
 

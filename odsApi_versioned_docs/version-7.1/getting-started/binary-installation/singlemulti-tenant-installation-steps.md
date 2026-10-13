@@ -30,7 +30,7 @@ file extension (from .nupkg to .zip). Remove the version number (optional).
 Check the box next to **Unblock** (this will prevent PowerShell from asking for
 permission to load every module in the installer) and click **OK**.
 
-![Package Properties](https://edfi.atlassian.net/wiki/download/thumbnails/25493615/image-2023-8-21_11-25-34.png?version=1&modificationDate=1699456100277&cacheVersion=1&api=v2&width=359&height=503)
+![Package Properties](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-7.1/image-2023-8-21_11-25-34.png)
 
 :::info 
 You may need to configure TLS while running the installation scripts described

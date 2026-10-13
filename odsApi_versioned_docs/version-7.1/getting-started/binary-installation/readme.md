@@ -47,7 +47,7 @@ Ensure that the following components are installed:
 
     Download and install the latest release of the [.NET 8.0 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
 
-    ![SDK 6.0](https://edfi.atlassian.net/wiki/download/thumbnails/25493611/image2022-3-8_10-52-30.png?version=1&modificationDate=1699456099517&cacheVersion=1&api=v2&width=666&height=390)
+    ![SDK 6.0](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-7.1/image2022-3-8_10-52-30.png)
     </details>
 
 ### Web Server
@@ -88,7 +88,7 @@ Ensure that the following components are installed:
 
     Download and install [.NET Hosting Bundle 6.0](https://dotnet.microsoft.com/en-us/download/dotnet/6.0).
 
-    ![.net hosting bundle](https://edfi.atlassian.net/wiki/download/thumbnails/25493611/image2022-3-8_10-53-38.png?version=1&modificationDate=1699456099523&cacheVersion=1&api=v2&width=666&height=401)
+    ![.net hosting bundle](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-7.1/image2022-3-8_10-53-38.png)
   </details>
 
 ## Step 2. Install and Configure Required Software

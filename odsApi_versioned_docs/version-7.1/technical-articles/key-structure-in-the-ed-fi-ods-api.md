@@ -12,7 +12,7 @@ The ODS / API assigns and exposes resource IDs to align with REST conventions. T
 
 The following diagram shows the `Id` in the `CourseOffering` table, which stores the resource ID for an offering:
 
-![CourseOffering Id field diagram](https://edfi.atlassian.net/wiki/download/attachments/25493779/image2020-6-29_9-13-52.png?version=1&modificationDate=1699456134993&cacheVersion=1&api=v2)
+![CourseOffering Id field diagram](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-7.1/image2020-6-29_9-13-52.png)
 
 In the API surface, a CourseOffering can be looked up/queried by doing an HTTP GET on a path like: `/courseOfferings/d0fd729db6ee4a7bbc989720e4f833f5`.
 
@@ -34,7 +34,7 @@ A key point with USIs is that integration with the ODS / API is done via the tex
 
 The following diagram shows the `StaffUSI` primary key field and the `StaffUniqueId` field in the Staff table:
 
-![Staff table with StaffUSI and StaffUniqueId fields](https://edfi.atlassian.net/wiki/download/attachments/25493779/image2020-6-29_9-6-38.png?version=1&modificationDate=1699456135030&cacheVersion=1&api=v2)
+![Staff table with StaffUSI and StaffUniqueId fields](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-7.1/image2020-6-29_9-6-38.png)
 
 ## Natural Keys
 

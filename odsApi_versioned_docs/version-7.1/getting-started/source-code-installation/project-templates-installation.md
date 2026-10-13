@@ -47,7 +47,7 @@ install the templates.
 Verify that the extension installed under **Extensions** \> **Manage
 Extensions** \> **Installed** > **Templates**.
 
-![Extensions Manager Verification](https://edfi.atlassian.net/wiki/download/thumbnails/25493621/image-2023-12-3_16-31-17.png?version=1&modificationDate=1701642677327&cacheVersion=1&api=v2&width=650&height=131)
+![Extensions Manager Verification](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-7.1/image-2023-12-3_16-31-17.png)
 
 Verify that the templates are available under **File** > **New** >
 **Project**.

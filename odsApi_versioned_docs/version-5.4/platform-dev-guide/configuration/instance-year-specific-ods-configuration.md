@@ -24,7 +24,7 @@ When combined with multi-server deployment (one server per Instance), each set o
 
 ## Configuration
 
-![Instance-Year-Specific Configuration Diagram](https://edfi.atlassian.net/wiki/plugins/servlet/confluence/placeholder/unknown-macro?name=drawio&locale=en_US&version=2)
+![Instance-Year-Specific Configuration Diagram](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/instance-year-specific-configuration.png)
 
 ## Routing
 

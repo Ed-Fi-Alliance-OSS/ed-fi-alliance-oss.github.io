@@ -11,11 +11,11 @@ The following instructions assume that the Ed-Fi ODS / API has been successfully
 
 2. As outlined in the [Getting Started Guide](../getting-started/source-code-installation/readme.md), from a PowerShell prompt run `Initialize-PowershellForDevelopment.ps1`, then `initdev -usePlugins`, and finally `Invoke-PostmanIntegrationTests`:
 
-    ![image](https://edfi.atlassian.net/wiki/download/thumbnails/25493791/image-2023-10-3_9-7-30.png?version=1&modificationDate=1699456138357&cacheVersion=1&api=v2&width=666&height=146)
+    ![image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-7.1/image-2023-10-3_9-7-30.png)
 
 3. Test results are presented as the tests run:
 
-    ![Postman test results summary table](https://edfi.atlassian.net/wiki/download/attachments/25493791/image-2023-10-3_9-17-12.png?version=1&modificationDate=1699456138347&cacheVersion=1&api=v2)
+    ![Postman test results summary table](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-7.1/image-2023-10-3_9-17-12.png)
 
     
 

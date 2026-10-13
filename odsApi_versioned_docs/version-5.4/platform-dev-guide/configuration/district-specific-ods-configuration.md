@@ -8,7 +8,7 @@ Some implementations find it useful to partition data based on school districts 
 
 ## Configuration
 
-![District-Specific Configuration Diagram](https://edfi.atlassian.net/wiki/plugins/servlet/confluence/placeholder/unknown-macro?name=drawio&locale=en_US&version=2)
+![District-Specific Configuration Diagram](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/district-specific-configuration.png)
 
 ## How to Enable
 
