@@ -154,7 +154,11 @@ It is necessary to have the store parameters created on AWS
 
 Export AWS credentials to consume AWS parameters store inside the container
 
-![Aws Credentials](img/docker/setup-aws-credentials.png)
+```sh
+export AWS_ACCESS_KEY_ID="<access key id>"
+export AWS_SECRET_ACCESS_KEY="<secret access key>"
+export AWS_SESSION_TOKEN="<session token>"
+```
 
 #### B. Execution
 

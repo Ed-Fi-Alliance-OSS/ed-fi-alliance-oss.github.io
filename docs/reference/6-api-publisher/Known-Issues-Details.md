@@ -19,9 +19,9 @@ There are two ways to publish from such a source:
 
 * **Configure a snapshot on the source.** The run then reads from a frozen copy,
   so the data it reads cannot change while it is being walked.
-* **Set `--ignoreIsolation=true`** (or `ignoreIsolation` on the named
-  connection). The run reads live data instead. This is simpler, but changes
-  made at the source during the run may not be captured consistently.
+* **Set `--ignoreIsolation=true`.** The run reads live data instead. This is
+  simpler, but changes made at the source during the run may not be captured
+  consistently.
 
 Setting the option while a snapshot is configured still reads live data, which
 is rarely what is intended.

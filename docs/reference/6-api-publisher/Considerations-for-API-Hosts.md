@@ -16,46 +16,19 @@ inconsistencies and the failure to complete the publishing process successfully.
 Even worse, it could even result in undetected lost data (or changed data) in
 the target API.
 
-In order to provide an isolated context for client change processing, the host
-must perform the steps below. For an Ed-Fi ODS/API version 7 or later, see
+To provide an isolated context, the host maintains a periodically refreshed
+static copy of the ODS database and registers it as a snapshot of the ODS
+instance. See
+[Creating and Managing Snapshots](/reference/ed-fi-api/platform-dev-guide/features/changed-record-queries#creating-and-managing-snapshots)
+in the Ed-Fi ODS/API documentation. For a source without a configured snapshot,
+see
 [Sources Without a Configured Snapshot](Known-Issues-Details.md#sources-without-a-configured-snapshot).
-
-#### Implement DevOps Processes for Maintaining Static Copy of the ODS
-
-The host must implement the processes to maintain a periodically refreshed
-static copy of the API's main ODS database, and the corresponding records in the
-`changes.Snapshot` table.
-
-If you are using a full installation of SQL Server you should use SQL Server's
-lighter-weight "Database Snapshots" feature (this feature is not supported by
-AWS RDS or SQL Azure). Otherwise, this would generally be implemented as a basic
-scheduled database backup and restore operation.
-
-This process must perform the following steps:
-
-* Backup up the current EdFi_Ods database (or equivalent).
-* Generate a "snapshot identifier" as a string-based value that can be
-  incorporated into a database name.
-* Restore the ODS database using following naming convention:
-  `{Ed-Fi ODS database name}_SS{snapshotIdentifier}`.
-* Insert a new record into the `changes.Snapshot` table with the new snapshot
-  identifier and the current date/time.
-
-The host's process _should_ also perform the following steps:
-
-* Drop old snapshot databases. (Note: Hosts may choose to maintain the last 2
-  snapshot databases to avoid dropping a database that could be currently in use
-  by an API client. If that were to happen, the client would begin receiving
-  `410 Gone` responses from the API indicating they need to start over with
-  their processing and synchronize using a newer snapshot).
-* Remove corresponding records from `changes.Snapshot` table for the dropped
-  snapshots.
 
 ### SDefine Authorization and Security Metadata for the Source
 
-* Create an "Ed-Fi API Publisher - Reader" claim set that provides _read_
-  permissions to the API resources needed for the use case. The claim set must
-  be created by modifying data directly in the _EdFi_Security_ database.
+* Use the "Ed-Fi API Publisher - Reader" claim set included in the Ed-Fi
+  ODS/API, which provides _read_ permissions to the API resources the publisher
+  needs.
 * Create an Application in the Admin app/database for the Ed-Fi API Publisher,
   naming it meaningfully for the use case.
 * Associate the Application with the "Ed-Fi API Publisher - Reader" claim set.
@@ -69,12 +42,11 @@ The host's process _should_ also perform the following steps:
 
 ### Define Authorization and Security Metadata for the Target
 
-* Create an "Ed-Fi API Publisher - Writer" claim set that provides appropriate
-  _read_ and _write_ permissions to the API resources needed for the use case.
-  The claim set must be created by modifying data directly in the
-  _EdFi_Security_ database.
-  * Read permissions will be used to perform deletions (not yet supported due to
-    current Ed-Fi ODS API functionality).
+* Use the "Ed-Fi API Publisher - Writer" claim set included in the Ed-Fi
+  ODS/API, which provides _read_ and _write_ permissions to the API resources the
+  publisher needs.
+  * Read permissions are used to locate the target records of deletes and key
+    changes.
   * Consider granting write permissions to all descriptors (i.e. the
     _systemDescriptors_ and _managedDescriptors_ resource claims), overriding
     the authorization strategy to use "No Further Authorization". This will

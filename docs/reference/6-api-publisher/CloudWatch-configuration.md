@@ -17,7 +17,11 @@ Configure the AWS log storage parameters in the configuration file.
 
 Export AWS credentials to consume AWS parameters store inside the container
 
-![Setup AWS credentials](img/docker/setup-aws-credentials.png)
+```sh
+export AWS_ACCESS_KEY_ID="<access key id>"
+export AWS_SECRET_ACCESS_KEY="<secret access key>"
+export AWS_SESSION_TOKEN="<session token>"
+```
 
 ## Looking for a different output format?
 
