@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 8
 ---
 
 # Advisory: ReadChanges action grants access to Read and Update actions

@@ -116,7 +116,7 @@ a single computer.
 
 In this document we are discussing deployment to Internet Information Server
 (IIS) on a Windows Server and using SQL Server for the database. However the web
-applications, being a .NET 8 application, can run cross-platform and PostgreSQL
+applications, being a .NET 10 application, can run cross-platform and PostgreSQL
 is another choice for database.
 
 :::
@@ -125,7 +125,7 @@ is another choice for database.
 
 This logical server requires Internet Information Server (IIS) to be installed
 as well as the [ASP.NET Core Hosting
-Bundle](https://dotnet.microsoft.com/en-us/download/dotnet/8.0).
+Bundle](https://dotnet.microsoft.com/en-us/download/dotnet/10.0).
 
 ### ODS Database Server
 
@@ -353,7 +353,7 @@ website are provided in the sections that follow.
 
 * IIS is running on the target machine.
 * [ASP.NET Core Hosting
-    Bundle](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) is
+    Bundle](https://dotnet.microsoft.com/en-us/download/dotnet/10.0) is
     installed.
 * The local IIS site used to host your web application has site bindings
     configured for https.  This only needs to be done once per IIS site.
@@ -659,9 +659,9 @@ accounts be used as connection criteria from the API.
 ### Sandbox Deployment in Azure and AWS Environments
 
 Documentation and scripts for deployment of an Ed-Fi ODS / API instance in
-Microsoft Azure and Amazon Web Services can be found in the Ed-Fi Exchange. To
+Microsoft Azure and Amazon Web Services can be found in the Ed-Fi Community Tools. To
 locate these, navigate
-to [https://exchange.ed-fi.org](https://exchange.ed-fi.org), and browse to the
+to [Ed-Fi Community Tools](/getting-started/community-tools/technology), and browse to the
 following entries:
 
 * **Ed-Fi ODS/API on AWS**
@@ -669,7 +669,7 @@ following entries:
 
 :::warning
 
-These scripts in the Ed-Fi Exchange may have been developed for older versions
+These scripts in the Ed-Fi Community Tools may have been developed for older versions
 of the Ed-Fi ODS/API, and therefore may need modification to work with this
 version.
 

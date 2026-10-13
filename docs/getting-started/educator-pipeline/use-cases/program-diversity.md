@@ -1,3 +1,8 @@
+---
+sidebar_position: 2
+sidebar_label: Program Diversity and Persistence Use Case
+---
+
 # Program Diversity and Persistence Use Case / Dashboard
 
 Educator Preparation Programs (EPPs) are committed to increasing the number of teacher candidates who complete their programs and earn certification. By analyzing data on how different candidate groups progress through key milestones, EPPs can identify trends, set improvement targets, and tailor supports. These insights are essential for driving equity, enhancing program effectiveness, and ensuring more candidates are prepared to enter the classroom. Access the [Educator Preparation Ed-Fi Backed Tools: Program Diversity and Persistence Use Case Resource](https://edfidocs.blob.core.windows.net/$web/assets/getting-started/epp/use-cases/program-diversity/Program%20Diversity%20and%20Persistence%20Use%20Case%20Resource.pdf), to learn more about this use case and the related essential questions.

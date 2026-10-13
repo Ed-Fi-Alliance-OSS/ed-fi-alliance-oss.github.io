@@ -215,7 +215,7 @@ This approach has a significant weakness: the retrieved data will be close, but 
 
 #### Option 2: Read from the API
 
-Build and schedule an **API-based ETL process**, using the [Changed Record Queries](/reference/ods-api/client-developers-guide/using-the-changed-record-queries) functionality in the ODS/API. The Changed Record Queries feature shortens the data load time by helping the API client retrieve only the records changed since the last extraction. The retrieved data have shapes defined by the Data Standard, since they are standard API payloads. This batch-based process fits well with many systems, though some implementations might prefer a more real-time approach.
+Build and schedule an **API-based ETL process**, using the [Changed Record Queries](/reference/ed-fi-api/client-developers-guide/using-the-changed-record-queries) functionality in the ODS/API. The Changed Record Queries feature shortens the data load time by helping the API client retrieve only the records changed since the last extraction. The retrieved data have shapes defined by the Data Standard, since they are standard API payloads. This batch-based process fits well with many systems, though some implementations might prefer a more real-time approach.
 
 ![Diagram showing the API as the source for the data lake, with a note about the data being in the Data Standard schema](https://edfidocs.blob.core.windows.net/$web/assets/getting-started/sea-playbook/data-lake/api-to-lake.png)
 

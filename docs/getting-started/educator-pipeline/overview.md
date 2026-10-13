@@ -16,9 +16,8 @@ Following field implementation, the entities and descriptors from the EPDM Commu
 
 ![Overview](https://edfidocs.blob.core.windows.net/$web/img/getting-started/epp/overview/tpdm_to_epdm_timeline.png)
 
-[Navigate to the Ed-Fi Data Standard reference](https://docs.ed-fi.org/reference/data-exchange/data-standard/) page to access additional Ed-Fi Data Standard v6 Technical Resources, which include information about EPDM related entities.
+[Navigate to the Ed-Fi Data Standard reference](/reference/data-exchange/data-standard/) page to access additional Ed-Fi Data Standard v6 Technical Resources, which include information about EPDM related entities.
 
-[Navigate to the Technical reference](https://edfi.atlassian.net/wiki/spaces/EPP/pages/23171694/EPDM+Technical+Resources) page to access additional EPDM Technical Resources.
+[Navigate to the Technical Reference](/reference/educator-pipeline/) page to access additional EPDM Technical Resources.
 
-[Navigate to Educator Pipeline Use Cases](https://docs.ed-fi.org/getting-started/educator-pipeline/use-cases/) for additional context on EPDM backed tools and solutions.
-
+[Navigate to Educator Pipeline Use Cases](/getting-started/educator-pipeline/use-cases/) for additional context on EPDM backed tools and solutions.

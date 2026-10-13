@@ -20,7 +20,7 @@ See [Ed-Fi Data Exchange Standards](../1-data-exchange/readme.md) for more infor
 | [6.x](/reference/data-exchange/data-standard)    | Active through 2029-2030 school year | Ed-Fi ODS/API 7.3 and Ed-Fi API 8.0 |
 
 Development of extensions for the Ed-Fi Data Standard relies on
-[MetaEd](../4-metaed/readme.md) version 4.x. As Visual Studio Code extension,
+[MetaEd](../8-metaed/readme.md) version 4.x. As Visual Studio Code extension,
 MetaEd will self-update to the latest version unless the user disables the
 self-update feature.
 
@@ -29,13 +29,13 @@ self-update feature.
 The _Ed-Fi ODS/API Platform_ is the group of tools that work together to support
 a production deployment of the Ed-Fi Resources API. The Platform includes:
 
-* [Ed-Fi ODS/API](../ods-api-platform.mdx), the official Ed-Fi implementation of a REST API
+* [Ed-Fi ODS/API](../2-ods-api-platform.mdx), the official Ed-Fi implementation of a REST API
   defined by the Ed-Fi Data Standard.
   * Also includes the _Ed-Fi ODS Sandbox Admin_ and _Ed-Fi Swagger UI_ web
     applications.
-* [Ed-Fi ODS Admin API](../3-admin-api/readme.md), a REST interface for managing
+* [Ed-Fi ODS Admin API](../4-admin-api/readme.md), a REST interface for managing
   client credentials ("key and secret") and security configuration.
-* [Ed-Fi ODS Admin App](../ods-admin-app/readme.md), a web application for
+* [Ed-Fi ODS Admin App](/getting-started/community-tools/technology/ods-admin-app), a web application for
   managing single instances of an Ed-Fi ODS/API.
 
 ### Ed-Fi ODS/API
@@ -48,11 +48,11 @@ The Ed-Fi ODS/API application is being phased out with 2028-2029 as the final pl
 
 | Version                                       | Timeline                             | Data Standard(s)    |
 | --------------------------------------------- | ------------------------------------ | ------------------- |
-| [6.2.x](/reference/ods-api/6.2)               | Active through 2025-2026 school year | 4.0.0               |
+| [6.2.x](/reference/ed-fi-api/6.2)               | Active through 2025-2026 school year | 4.0.0               |
 | 7.0.0                                         | Replaced by 7.1                      | 4.0.0, 5.0.0        |
-| [7.1.x](/reference/ods-api/7.1)               | Active through 2025-2026 school year | 4.0.0, 5.0.0        |
-| [7.2.x](/reference/ods-api/7.2)               | ⚠️ inactive - upgrade to 7.3         | 4.0.0, 5.1.0        |
-| [7.3.x](/reference/ods-api/) (current: 7.3.1) | Active through 2028-2029 school year | 4.0.0, 5.2.0, 6.0.0 |
+| [7.1.x](/reference/ed-fi-api/7.1)               | Active through 2025-2026 school year | 4.0.0, 5.0.0        |
+| [7.2.x](/reference/ed-fi-api/7.2)               | ⚠️ inactive - upgrade to 7.3         | 4.0.0, 5.1.0        |
+| [7.3.x](/reference/ed-fi-api/) (current: 7.3.2) | Active through 2028-2029 school year | 4.0.0, 5.2.0, 6.1.0 |
 
 Out of Support: all releases prior to ODS/API 6.2.
 
@@ -81,7 +81,7 @@ the single application to support either ODS/API 6.x and ODS/API 7.x.
 
 The legacy ODS Admin App user interface supports ODS/API 5.x and 6.x. It is now
 in "maintenance mode", meaning it will only receive critical updates. Formal
-support [will end June 30, 2025](./notifications/admin-app-to-exchange.md).
+support [will end June 30, 2025](./notifications/admin-app-to-community-tools.md).
 
 The new Ed-Fi Admin App user interface was released in December 2025.
 This application provides an all new front-end application paired with the
@@ -115,22 +115,19 @@ This is the future replacement for the Ed-Fi ODS/API. See
 [Ed-Fi ODS/API and Ed-Fi API v8 FAQ](./api-faq.md) for more
 information.
 
-| Version           | Timeline             | Data Standard(s) |
-| ----------------- | -------------------- | ---------------- |
-| Release Candidate | Summer 2025          | 5.2.0            |
-| 8.0               | Coming summer 2026   | 6.0, others      |
+| Version                       | Timeline                                | Data Standard(s) |
+| ----------------------------- | --------------------------------------- | ---------------- |
+| [8.0](/reference/ed-fi-api/8) | Released. Target school year: 2027-2028 | 5.2.0, 6.1.0     |
+| 8.1                           | Releasing November 2026                 | 5.2.0, 6.1.0     |
 
 ## Tools
 
 Additional applications formally maintained and supported by the Ed-Fi Alliance:
 
-* [API Publisher](../5-api-publisher/readme.md) works with all supported
+* [API Publisher](../6-api-publisher/readme.md) works with all supported
   versions of the Ed-Fi ODS/API
-* [Data Import](../6-data-import/readme.md) works with all supported versions of
+* [Data Import](/getting-started/community-tools/technology/data-import) works with all supported versions of
   the Ed-Fi ODS/API (supported through June 30, 2026)
-* [Analytics Middle Tier](../9-analytics-middle-tier/readme.md) works with 5.x
-and 6.x
-  versions of the Ed-Fi ODS/API.
 
 In all of these cases, only the latest version is formally supported.
 
@@ -138,9 +135,9 @@ In all of these cases, only the latest version is formally supported.
 
 All versions of these applications are no longer supported.
 
-| Product                             | Notice                                                                            | Ed-Fi Exchange                                                                                                            |
+| Product                             | Notice                                                                            | Ed-Fi Community Tools                                                                                                     |
 | ----------------------------------- | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| Analytics Middle Tier               | [Analytics Middle Tier Transitioning to Ed-Fi Exchange](./notifications/amt.md)   | (coming soon)                                                                                                             |
+| Analytics Middle Tier               | [Transitioning to Ed-Fi Community Tools](./notifications/amt.md)                  | (coming soon)                                                                                                             |
 | Migration Utility Migration Utility | [End of Support Notice and Product Discontinuation](./notifications/migration.md) | [ODS Migration Utility](https://edfi.atlassian.net/wiki/spaces/EXCHANGE/pages/22492292/Migration+Utility)                 |
 | MappingEDU                          | [MappingEDU - Service EOL and Open Source Notice](./notifications/mappingedu.md)  | [MappingEDU](https://edfi.atlassian.net/wiki/spaces/EXCHANGE/pages/22496563/MappingEDU)                                   |
 | LMS Toolkit                         | not available                                                                     | [Ed-Fi LMS Toolkit](https://edfi.atlassian.net/wiki/spaces/EXCHANGE/pages/22498933/Ed-Fi+LMS+Toolkit)                     |

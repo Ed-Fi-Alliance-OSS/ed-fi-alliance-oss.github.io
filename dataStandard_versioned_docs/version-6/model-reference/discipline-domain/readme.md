@@ -9,7 +9,7 @@ entities (e.g., non-students and non-staff).
 * [Discipline Domain -
     Overview](./overview.md)
 * [Discipline Domain - Model
-    Diagrams](./model-diagrams.md)
+    Diagrams](./model-diagrams.mdx)
 * [Discipline Domain - Entities, References, and
     Descriptors](./entities-references-and-descriptors.md)
 * [Discipline Domain - Best

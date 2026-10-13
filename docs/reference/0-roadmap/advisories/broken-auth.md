@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 7
 ---
 
 # Advisory: Potential for Broken Authorization When Using Admin App or Admin API

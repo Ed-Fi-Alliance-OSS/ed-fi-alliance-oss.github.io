@@ -1,0 +1,28 @@
+﻿erDiagram
+    LearningStandard {
+        string LearningStandardId "I"
+        descriptor AcademicSubject "RC"
+        common ContentStandard "R"
+        string Description "R"
+        descriptor GradeLevel "RC"
+        string Namespace "R"
+        string CourseTitle "O"
+        descriptor LearningStandardCategory "O"
+        common LearningStandardIdentificationCode "OC"
+        string LearningStandardItemCode "O"
+        descriptor LearningStandardScope "O"
+        reference ParentLearningStandard "O"
+        string SuccessCriteria "O"
+        string URI "O"
+    }
+    LearningStandardEquivalenceAssociation {
+        reference SourceLearningStandard "I"
+        reference TargetLearningStandard "I"
+		string Namespace "I"
+        date EffectiveDate "O"
+        descriptor LearningStandardEquivalenceStrength "O"
+        string LearningStandardEquivalenceStrengthDescription "O"
+    }
+    LearningStandard ||--o{ LearningStandard : "hasFunctionalComponent"
+    LearningStandardEquivalenceAssociation }o..|| LearningStandard : "hasAssociatedEquivalence"
+    LearningStandard }o--o{ LearningStandard : "hasAssociatedEquivalence"

@@ -28,7 +28,7 @@ The gaps you identified during the mapping exercise are the data elements that a
 
 Once these are identified as Extensions in the mapping document, a business analyst or a developer must use the MetaEd tool to create these Extensions. Refer to these documents to learn more:
 
-* [How To: Extend the Ed-Fi ODS / API - Student Transportation Example](/reference/ods-api/how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transcript-example)
+* [How To: Extend the Ed-Fi ODS / API - Student Transportation Example](/reference/ed-fi-api/how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transcript-example)
 * [MetaEd IDE User Guide](/reference/metaed/ide-user-guide)
 
 Here are some examples of state-specific extensions to the Ed-Fi Data Standard.
@@ -54,4 +54,4 @@ The Ed-Fi Data Standard ships with a set of default Descriptors. States are advi
 
 Before states receive the student information data from their technology providers, they load a set of data initially (i.e., "seed data") into the Ed-Fi ODS. This includes Education Organizations (schools, LEAs, SEAs) and Courses. Some states load program information as well.
 
-Always follow the data dependency order when you are loading this data into the Ed-Fi ODS. States have used either SQL scripts or [bulk console](/reference/ods-api/how-to-guides/how-to-load-the-ods-with-sample-xml-data-using-bulk-load-client-utility) process using XML files to load the education organization and course information.
+Always follow the data dependency order when you are loading this data into the Ed-Fi ODS. States have used either SQL scripts or [bulk console](/reference/ed-fi-api/how-to-guides/how-to-load-the-ods-with-sample-xml-data-using-bulk-load-client-utility) process using XML files to load the education organization and course information.

@@ -292,7 +292,7 @@ attributes.
 
 | Required | Must Have | Recommended | As Needed |
 |---|---|---|---|
-| AssessmentAdministration (key) <br/> StudentEducationOrganization Association (key) <br/> StudentSchoolAssociation | TestingEducationOrganization <br/> ReportingEducationOrganization | AssessmentAccommodation <br/> PlatformType <br/> AssessmentGradeLevel | StudentEducationOrganizationAssessmentAccommodation <br/> AssessmentCustomization |
+| AssessmentAdministration (key) <br/> StudentDemographic (key) <br/> StudentSchoolAssociation | TestingEducationOrganization <br/> ReportingEducationOrganization | AssessmentAccommodation <br/> PlatformType <br/> AssessmentGradeLevel | StudentEducationOrganizationAssessmentAccommodation <br/> AssessmentCustomization |
 
 <br/>
 

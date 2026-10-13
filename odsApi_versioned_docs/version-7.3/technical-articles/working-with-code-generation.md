@@ -1,6 +1,6 @@
 # Working with Code Generation
 
-The Code Generation utility is a .NET 8.0 command-line application that has been
+The Code Generation utility is a .NET 10.0 command-line application that has been
 integrated into the Ed-Fi ODS / API `initdev` process. Its responsibility is to
 generate C# classes, ORM mapping files for the core application, plus all
 profiles and extensions. It uses logic-less `{{mustache}}` templates that are
@@ -15,7 +15,7 @@ Utilities\\CodeGeneration.
 The following are required to build the application:
 
 * Visual Studio 2022 / JetBrains Rider 2021.3
-* .NET 8.0
+* .NET 10.0
 
 ## Template Model
 
@@ -465,11 +465,11 @@ PS D:\ed-fi\Ed-Fi-ODS\Utilities\CodeGeneration> dotnet build
   Restored D:\ed-fi\Ed-Fi-ODS\Application\EdFi.Ods.Common\EdFi.Ods.Common.csproj (in 282 ms).
   Restored D:\ed-fi\Ed-Fi-ODS\Utilities\CodeGeneration\EdFi.Ods.CodeGen.Tests\EdFi.Ods.CodeGen.Tests.csproj (in 282 ms
   ).
-  EdFi.Common -> D:\ed-fi\Ed-Fi-ODS\Application\EdFi.Common\bin\Debug\net8.0\EdFi.Common.dll
-  EdFi.Ods.Common -> D:\ed-fi\Ed-Fi-ODS\Application\EdFi.Ods.Common\bin\Debug\net8.0\EdFi.Ods.Common.dll
-  EdFi.Ods.CodeGen -> D:\ed-fi\Ed-Fi-ODS\Utilities\CodeGeneration\EdFi.Ods.CodeGen\bin\Debug\net8.0\EdFi.Ods.CodeGen.d
+  EdFi.Common -> D:\ed-fi\Ed-Fi-ODS\Application\EdFi.Common\bin\Debug\net10.0\EdFi.Common.dll
+  EdFi.Ods.Common -> D:\ed-fi\Ed-Fi-ODS\Application\EdFi.Ods.Common\bin\Debug\net10.0\EdFi.Ods.Common.dll
+  EdFi.Ods.CodeGen -> D:\ed-fi\Ed-Fi-ODS\Utilities\CodeGeneration\EdFi.Ods.CodeGen\bin\Debug\net10.0\EdFi.Ods.CodeGen.d
   ll
-  EdFi.Ods.CodeGen.Tests -> D:\ed-fi\Ed-Fi-ODS\Utilities\CodeGeneration\EdFi.Ods.CodeGen.Tests\bin\Debug\net8.0\EdFi.O
+  EdFi.Ods.CodeGen.Tests -> D:\ed-fi\Ed-Fi-ODS\Utilities\CodeGeneration\EdFi.Ods.CodeGen.Tests\bin\Debug\net10.0\EdFi.O
   ds.CodeGen.Tests.dll
 
 Build succeeded.
@@ -499,7 +499,7 @@ Testing C:\projects\Ed-Fi-DOS\Application\EdFi.Ods.Standard\Requests\Requests.ge
 Testing C:\projects\Ed-Fi-DOS\Application\EdFi.Ods.Standard\Resources\Resources.generated.cs
 Testing C:\projects\Ed-Fi-DOS\Application\EdFi.Ods.Standard\Security\Authorization\EntityAuthorizationContextProviders.generated.cs
 Testing C:\projects\Ed-Fi-DOS\Artifacts\PgSql\Data\Security\0001-ResourceClaimMetadata_generated.sql
-Passed: 0, Failed: 137, Skipped: 0, Total: 127, Duration: 6m - EdFi.Ods.CodeGen.Tests.dll (net6.0)
+Passed: 0, Failed: 137, Skipped: 0, Total: 127, Duration: 6m - EdFi.Ods.CodeGen.Tests.dll (net10.0)
 ```
 
 ## Running Approval Tests

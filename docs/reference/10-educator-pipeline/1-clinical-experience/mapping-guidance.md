@@ -45,7 +45,7 @@ Instructions for adding education organizations in Admin App can be found in the
 
 ### Set up Data Import
 
-Installation Instructions for Data Import can be found [here](../../6-data-import/readme.md).
+Installation Instructions for Data Import can be found [here](/getting-started/community-tools/technology/data-import).
 
 Once you've installed Data Import, initial setup and post installation steps are [here](./setup-guide.md#configure-data-import-for-first-time-use).
 
@@ -53,7 +53,7 @@ Once you've installed Data Import, initial setup and post installation steps are
 
 Data Import requires a map for each piece of CSV data that will loaded into the ODS. Basic information on creating maps and agents for the Clinical Experience and Performance Dashboard can be found [here](./setup-guide.md#create-or-import-a-mapping-template).
 
-More in-depth documentation on Import Maps and Agents can be found in the Data Import [documentation](../../6-data-import/readme.md).
+More in-depth documentation on Import Maps and Agents can be found in the Data Import [documentation](/getting-started/community-tools/technology/data-import).
 
 ### Upload File to Agent
 
@@ -299,7 +299,7 @@ Surveys in the Clinical Experience and Performance Dashboard allow Educator Prep
 
 ![Survey workbook](https://edfidocs.blob.core.windows.net/$web/img/reference/epp-sk/survey-workbook.webp)
 
-Survey acts as a vessel to tie a set of questions together. With the natural [Key Structure in the Ed-Fi ODS / API](/reference/ods-api/technical-articles/key-structure-in-the-ed-fi-ods-api) the questions that belong to a survey reference the survey rather than the survey having a list of questions. Because of this, the survey model is fairly simple.
+Survey acts as a vessel to tie a set of questions together. With the natural [Key Structure in the Ed-Fi ODS / API](/reference/ed-fi-api/technical-articles/key-structure-in-the-ed-fi-ods-api) the questions that belong to a survey reference the survey rather than the survey having a list of questions. Because of this, the survey model is fairly simple.
 
 The required fields for Survey are:
 

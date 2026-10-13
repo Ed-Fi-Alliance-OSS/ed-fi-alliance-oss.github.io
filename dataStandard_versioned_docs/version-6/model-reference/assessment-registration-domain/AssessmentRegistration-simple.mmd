@@ -1,0 +1,53 @@
+﻿erDiagram
+    Assessment {
+    }
+    AssessmentAdministration {
+    }
+    AssessmentAdministrationParticipation["AssessmentAdministration<br/>Participation"] {
+    }
+    AssessmentBatteryPart {
+    }
+    ObjectiveAssessment {
+    }
+    StudentAssessmentRegistration {
+    }
+    StudentAssessmentRegistrationBatteryPartAssociation["StudentAssessment<br/>RegistrationBattery<br/>PartAssociation"] {
+    }
+    StudentEducationOrganizationAssessmentAccommodation["StudentEducationOrganization<br/>AssessmentAccommodation"] {
+    }
+    Student {
+    }
+    StudentDemographic {
+    }
+    StudentSchoolAssociation {
+    }
+    EducationOrganization {
+    }
+    LocalEducationAgency {
+    }
+    School {
+    }
+    School ||--|| EducationOrganization : "IsA"
+    School ||--|| LocalEducationAgency : "HasAssociated"
+    LocalEducationAgency ||--|| EducationOrganization : "IsA"
+    AssessmentBatteryPart }o--|| Assessment : "HasAssociated"
+    AssessmentBatteryPart }o--o{ ObjectiveAssessment : "HasAssociated"
+    ObjectiveAssessment }o--|| Assessment : "HasAssociated"
+    AssessmentAdministration }o--o{ AssessmentBatteryPart : "HasAssociated"
+    AssessmentAdministration }o--|| EducationOrganization : "HasAssociated"
+    AssessmentAdministration }o--|| Assessment : "HasAssociated"
+    AssessmentAdministrationParticipation }o--|| AssessmentAdministration : "HasAssociated"
+    AssessmentAdministrationParticipation }o--|| EducationOrganization : "HasAssociated"
+    StudentAssessmentRegistration }o--|| AssessmentAdministration : "HasAssociated"
+    StudentAssessmentRegistration }o--|| StudentSchoolAssociation : "HasAssociated"
+    StudentAssessmentRegistration }o--|| EducationOrganization : "HasAssociated"
+    StudentAssessmentRegistration }o--o| StudentEducationOrganizationAssessmentAccommodation : "HasAssociated"
+    StudentAssessmentRegistrationBatteryPartAssociation }o--|| StudentAssessmentRegistration : "HasAssociated"
+    StudentAssessmentRegistrationBatteryPartAssociation }o--|| AssessmentBatteryPart : "HasAssociated"
+    StudentEducationOrganizationAssessmentAccommodation }o--|| Student : "HasAssociated"
+    StudentEducationOrganizationAssessmentAccommodation }o--|| EducationOrganization : "HasAssociated"
+    StudentSchoolAssociation }o--|| Student : "HasAssociated"
+    StudentSchoolAssociation }o--|| School : "HasAssociated"
+    StudentDemographic }o--|| EducationOrganization : "HasAssociated"
+    StudentDemographic }o--|| Student : "HasAssociated"
+    StudentDemographic ||--}o StudentAssessmentRegistration : "HasAssociated"

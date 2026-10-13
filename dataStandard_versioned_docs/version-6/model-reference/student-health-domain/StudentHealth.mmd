@@ -1,0 +1,31 @@
+﻿erDiagram
+    Student {
+        string StudentUniqueId "I"
+        common BirthData "R"
+        common Name "R"
+        common OtherName "OC"
+        reference Person "O"
+    }
+    StudentHealth {
+        reference EducationOrganization "I"
+        reference Student "I"
+        date AsOfDate "R"
+        common AdditionalImmunization "OC"
+        descriptor NonMedicalImmunizationExemption "O"
+        date NonMedicalImmunizationExemptionDate "O"
+        common RequiredImmunization "OC"
+    }
+    EducationOrganization {
+        integer EducationOrganizationId "I"
+        descriptor EducationOrganizationCategory "RC"
+        string NameOfInstitution "R"
+        common Address "OC"
+        common EducationOrganizationIndicator "OC"
+        common InstitutionTelephone "OC"
+        common InternationalAddress "OC"
+        descriptor OperationalStatus "O"
+        string ShortNameOfInstitution "O"
+        string WebSite "O"
+    }
+    StudentHealth }o--|| Student : "HasAssociated"
+    StudentHealth }o--|| EducationOrganization : "HasAssociated"

@@ -1,0 +1,54 @@
+﻿erDiagram
+    EducationOrganization {
+    }
+    LocalAccount {
+    }
+    ChartOfAccount {
+    }
+    LocalBudget {
+    }
+    LocalActual {
+    }
+    LocalEncumbrance {
+    }
+    LocalContractedStaff {
+    }
+    LocalPayroll {
+    }
+    FundDimension {
+    }
+    ProgramDimension {
+    }
+    FunctionDimension {
+    }
+    ObjectDimension {
+    }
+    ProjectDimension {
+    }
+    BalanceSheetDimension {
+    }
+    OperationalUnitDimension {
+    }
+    SourceDimension {
+    }
+    Staff {
+    }
+    LocalAccount }o--|| EducationOrganization : "HasAssociated"
+    LocalAccount }o--|| ChartOfAccount : "HasAssociated"
+    ChartOfAccount }o--|| EducationOrganization : "HasAssociated"
+    ChartOfAccount }o--o| FundDimension : "HasAssociated"
+    ChartOfAccount }o--o| ProgramDimension : "HasAssociated"
+    ChartOfAccount }o--o| FunctionDimension : "HasAssociated"
+    ChartOfAccount }o--o| ObjectDimension : "HasAssociated"
+    ChartOfAccount }o--o| ProjectDimension : "HasAssociated"
+    ChartOfAccount }o--o| OperationalUnitDimension : "HasAssociated"
+    ChartOfAccount }o--o| SourceDimension : "HasAssociated"
+    ChartOfAccount }o--o| BalanceSheetDimension : "HasAssociated"
+    LocalBudget }o--|| LocalAccount : "HasAssociated"
+    LocalActual }o--|| LocalAccount : "HasAssociated"
+    LocalEncumbrance }o--|| LocalAccount : "HasAssociated"
+    LocalContractedStaff }o--|| LocalAccount : "HasAssociated"
+    LocalContractedStaff }o--|| Staff : "HasAssociated"
+    LocalPayroll }o--|| LocalAccount : "HasAssociated"
+    LocalPayroll }o--|| Staff : "HasAssociated"
+

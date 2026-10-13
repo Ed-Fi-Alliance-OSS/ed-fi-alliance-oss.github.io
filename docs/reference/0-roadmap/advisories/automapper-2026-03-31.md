@@ -1,4 +1,8 @@
-# Threat assessment and mitigation for AutoMapper Denial of Service GHSA-rvv3-g6hj-g44
+---
+sidebar_position: 2
+---
+
+# Advisory: Threat Assessment and Mitigation for AutoMapper Denial of Service GHSA-rvv3-g6hj-g44
 
 31 March 2026
 

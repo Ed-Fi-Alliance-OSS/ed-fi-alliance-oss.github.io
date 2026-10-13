@@ -13,7 +13,7 @@ such as enrollment in college or other postsecondary events.
 * [Graduation Domain -
     Overview](./overview.md)
 * [Graduation Domain - Model
-    Diagrams](./model-diagrams.md)
+    Diagrams](./model-diagrams.mdx)
 * [Graduation Domain - Entities, References, and
     Descriptors](./entities-references-and-descriptors.md)
 

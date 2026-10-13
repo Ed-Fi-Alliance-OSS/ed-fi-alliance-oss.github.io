@@ -28,7 +28,7 @@ There are three `npm run` commands that can help ensure consistent style:
 
 * `npm run format` will reformat almost everything _except_ `*.md`. This command uses Prettier, which does not have provide any customization options for Markdown files. Note that it _is_ running on `*.mdx` files.
 * `npm run lint` calls Markdownlint, the same tool used in the Visual Studio Code extension. It will only report style errors.
-* `npm run lint:folder <folder-path>` calls Markdownlint, the same tool used in the Visual Studio Code extension. It will only report style errors in the specified folder. eg: `npm run lint:folder docs/reference/3-admin-api`
+* `npm run lint:folder <folder-path>` calls Markdownlint, the same tool used in the Visual Studio Code extension. It will only report style errors in the specified folder. eg: `npm run lint:folder docs/reference/4-admin-api`
 * `npm run lint:fix` will automatically fix many style errors, though it cannot fix everything.
   * If you have modified a `.mdx` file, then you might want to call `format` first and then call `lint:fix`: Prettier will reformat the JSX embedded in the `.mdx` file, and Markdownlint will fix the Markdown problems that Prettier introduced.
 
@@ -66,6 +66,18 @@ This command generates static content into the `build` directory and can be serv
 
 > [!TIP]
 > It is a good idea to run the `build` command before pushing a branch to GitHub for review. Among other things, it will help you detect broken links.
+
+## Pull Request Merge Queue
+
+This repository uses GitHub's merge queue for the `main` branch. After a pull request is approved, it is added to the queue instead of merging immediately.
+
+When your pull request enters the queue, GitHub creates a temporary merged context and re-runs required checks (including lint and build) before merging. This extra validation helps catch issues that only appear when multiple approved pull requests are combined.
+
+For maintainers configuring branch protection:
+
+- Enable **Require merge queue** for `main`.
+- Keep required checks aligned with the jobs in the `On Pull Request` workflow so queued pull requests must pass the same validation in the merged queue context.
+- Validate the queue by merging at least one pull request through the queue and confirming required checks complete successfully before auto-merge.
 
 ## AI Tool Usage
 

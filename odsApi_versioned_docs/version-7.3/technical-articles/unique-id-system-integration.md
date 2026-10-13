@@ -234,7 +234,7 @@ namespace EdFi.Ods.Features.Container.Modules
 
 Sample custom implementation could be:
 
-**My.Custom.UniqueIdToIdValueMapper** Expand source
+**My.Custom.UniqueIdToIdValueMapper**:
 
 ```csharp
     public class My.Custom.UniqueIdToIdValueMapper : IUniqueIdToIdValueMapper
@@ -324,7 +324,7 @@ Sample custom implementation could be:
 This approach resolves supplied unique ID values to resource identifier (`Id`)
 records in the ODS using UniqueIdPersonMapping table:
 
-**UniqueIdPersonMapping Table** Expand source
+**UniqueIdPersonMapping Table**:
 
 ```sql
 --

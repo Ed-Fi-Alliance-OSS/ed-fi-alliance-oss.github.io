@@ -16,7 +16,7 @@ We recommend doing so before attempting to digest all the information presented 
 
 Architecting an Ed-Fi API integration can be complex. This document seeks to surface things one should consider when implementing an integration for their application. In this document, we try to not be overly prescriptive when it comes to programming language or software. We acknowledge that programming languages and tools can look very different from vendor to vendor and by staying tool agnostic, we hope to provide guidance that is usable by all.
 
-While this knowledgebase article does not go deep into the dependency order built into the Ed-Fi API, you can find more information in [Resource Dependency Order](/reference/ods-api/client-developers-guide/resource-dependency-order) as well as the Ed-Fi API Resource Dependency page in the Ed-Fi Academy course [Publishing Your First Set of Data](https://academy.ed-fi.org/courses/ed-fi-142-publishing-your-first-set-of-data/lessons/ed-fi-api/topic/ed-fi-api-resource-dependency-2/).
+While this knowledgebase article does not go deep into the dependency order built into the Ed-Fi API, you can find more information in [Resource Dependency Order](/reference/ed-fi-api/client-developers-guide/resource-dependency-order) as well as the Ed-Fi API Resource Dependency page in the Ed-Fi Academy course [Publishing Your First Set of Data](https://academy.ed-fi.org/courses/ed-fi-142-publishing-your-first-set-of-data/lessons/ed-fi-api/topic/ed-fi-api-resource-dependency-2/).
 
 Throughout this document, we will be using a fictional student information system, Limitless SIS, to better explain various aspects of architecting an Ed-Fi API integration. For the sake of brevity, let’s imagine that Limitless has decided they will sync information from their SIS to the Ed-Fi API resources below.
 
@@ -133,4 +133,4 @@ POST and PUT calls should run in dependency order and DELETE calls should run in
 
 Leveraging an architecture as described in this knowledgebase article can provide you with an Ed-Fi API integration that is efficient, does not make unnecessary API calls, and runs in a such a way where your application’s production system is not impacted (using an orchestrator).
 
-We hope this article has helped you understand how to approach architecting an Ed-Fi API integration for your application. For further reading on best practices related to interfacing with the Ed-Fi API, we recommend you read our article [Best Practices - API Integration](https://edfi.atlassian.net/wiki/display/EDFICERT/Best+Practices+-+API+Integration).
+We hope this article has helped you understand how to approach architecting an Ed-Fi API integration for your application. For further reading on best practices related to interfacing with the Ed-Fi API, we recommend you read our article [Best Practices - API Integration](./best-practices-api-integration.md).

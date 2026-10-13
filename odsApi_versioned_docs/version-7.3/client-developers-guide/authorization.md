@@ -85,7 +85,7 @@ Where:
 
 - `{schema}` — The schema name for the resource. Use ed-fi for core schema resources, or the appropriate extension schema for extension resources (e.g., `ed-fi` ,`tpdm`)
 - `{resource}` — The API resource name (e.g., `student`, `school`)
-- `{profile-name}` — The name of the profile as declared in the [profile definition](/reference/ods-api/platform-dev-guide/security/api-profiles/#profile-definition) (e.g., nutrition, assessment)
+- `{profile-name}` — The name of the profile as declared in the [profile definition](/reference/ed-fi-api/platform-dev-guide/security/api-profiles/#profile-definition) (e.g., nutrition, assessment)
 - `{readable|writable}` — Operation type: `readable` for read operations, `writable` for write operations
 
 ### Read Operations
@@ -131,7 +131,7 @@ resources are accessible and which operations are allowed (Create, Delete, etc.)
 
 :::tip
 
-Combining the `/oauth/token_info` endpoint with the [Dependency Order](./resource-dependency-order.md) endpoint could make integrating with Ed-Fi API easier.
+Combining the `/oauth/token_info` endpoint with the [Dependency Order](./resource-dependency-order/readme.mdx) endpoint could make integrating with Ed-Fi API easier.
 
 :::
 

@@ -1,0 +1,23 @@
+erDiagram
+    EducationOrganization {
+    }
+    School {
+    }
+    Session {
+    }
+    Course {
+    }
+    CourseOffering {
+    }
+    LearningStandard {
+    }
+
+    Session }o--|| School : "HasAssociated"
+    CourseOffering }o--|| School : "HasAssociated"
+    CourseOffering }o--|| Session : "HasAssociated"
+    CourseOffering }o--|| Course : "HasAssociated"
+    Course }o--|| EducationOrganization : "HasAssociated"
+    Course }o--o{ LearningStandard : "HasAssociated"
+    LearningStandard }o--o| LearningStandard : "HasFunctionalComponent"
+    LearningStandard }o--o{ LearningStandard : "HasAssociatedEquivalence"
+    School ||--|| EducationOrganization : "IsA"

@@ -1,0 +1,230 @@
+﻿erDiagram
+    Survey {
+        string Namespace "I"
+        string SurveyIdentifier "I"
+        enumeration SchoolYear "R"
+        string SurveyTitle "R"
+        reference EducationOrganization "O"
+        integer NumberAdministered "O"
+        reference Session "O"
+        descriptor SurveyCategory "O"
+    }
+    SurveySection {
+        reference Survey "I"
+        string SurveySectionTitle "I"
+        reference EvaluationElement "O"
+    }
+    SurveyQuestion {
+        string QuestionCode "I"
+        reference Survey "I"
+        descriptor QuestionForm "R"
+        string QuestionText "R"
+        common Matrix "OC"
+        common ResponseChoice "OC"
+        reference SurveySection "O"
+    }
+    SurveyResponse {
+        reference Survey "I"
+        string SurveyResponseIdentifier "I"
+        date ResponseDate "R"
+        string ElectronicMailAddress "O"
+        string FullName "O"
+        string Location "O"
+        reference Person "O"
+        integer ResponseTime "O"
+        descriptor SurveyLevel "OC"
+        choice SurveyResponderChoice "O"
+    }
+    SurveySectionResponse {
+        reference SurveyResponse "I"
+        reference SurveySection "I"
+        decimal SectionRating "O"
+    }
+    SurveyQuestionResponse {
+        reference SurveyQuestion "I"
+        reference SurveyResponse "I"
+        string Comment "O"
+        bool NoResponse "O"
+        common SurveyQuestionMatrixElementResponse "OC"
+        common SurveyQuestionResponseValue "OC"
+    }
+    SurveyProgramAssociation {
+        reference Program "I"
+        reference Survey "I"
+    }
+    SurveyCourseAssociation {
+        reference Course "I"
+        reference Survey "I"
+    }
+    SurveySectionAssociation {
+        reference Section "I"
+        reference Survey "I"
+    }
+    SurveyResponseEducationOrganizationTargetAssociation {
+        reference EducationOrganization "I"
+        reference SurveyResponse "I"
+    }
+    SurveyResponseStaffTargetAssociation {
+        reference Staff "I"
+        reference SurveyResponse "I"
+    }
+    SurveySectionResponseEducationOrganizationTargetAssociation {
+        reference EducationOrganization "I"
+        reference SurveySectionResponse "I"
+    }
+    SurveySectionResponseStaffTargetAssociation {
+        reference Staff "I"
+        reference SurveySectionResponse "I"
+    }
+    Session {
+        reference School "I"
+        enumeration SchoolYear "I"
+        string SessionName "I"
+        date BeginDate "R"
+        date EndDate "R"
+        descriptor Term "R"
+        integer TotalInstructionalDays "R"
+        reference AcademicWeek "OC"
+        reference GradingPeriod "OC"
+    }
+    Course {
+        string CourseCode "I"
+        reference EducationOrganization "I"
+        common CourseIdentificationCode "RC"
+        string CourseTitle "R"
+        integer NumberOfParts "R"
+        descriptor AcademicSubject "OC"
+        descriptor CareerPathway "O"
+        descriptor CompetencyLevel "OC"
+        descriptor CourseDefinedBy "O"
+        string CourseDescription "O"
+        descriptor CourseGPAApplicability "O"
+        descriptor CourseLevelCharacteristic "OC"
+        date DateCourseAdopted "O"
+        bool HighSchoolCourseRequirement "O"
+        reference LearningStandard "OC"
+        integer MaxCompletionsForCredit "O"
+        common MaximumAvailableCredits "O"
+        common MinimumAvailableCredits "O"
+        descriptor OfferedGradeLevel "OC"
+        integer TimeRequiredForCompletion "O"
+    }
+    Program {
+        reference EducationOrganization "I"
+        string ProgramName "I"
+        descriptor ProgramType "I"
+        reference LearningStandard "OC"
+        descriptor ProgramCharacteristic "OC"
+        string ProgramId "O"
+        descriptor ProgramSponsor "OC"
+    }
+    Section {
+        reference CourseOffering "I"
+        string SectionIdentifier "I"
+        common AvailableCredits "O"
+        reference ClassPeriod "OC"
+        descriptor CourseLevelCharacteristic "OC"
+        descriptor EducationalEnvironment "O"
+        descriptor InstructionLanguage "O"
+        reference Location "O"
+        reference LocationSchool "O"
+        descriptor MediumOfInstruction "O"
+        descriptor OfferedGradeLevel "OC"
+        bool OfficialAttendancePeriod "O"
+        descriptor PopulationServed "O"
+        reference Program "OC"
+        descriptor SectionCharacteristic "OC"
+        string SectionName "O"
+        descriptor SectionType "O"
+        integer SequenceOfCourse "O"
+    }
+    Student {
+        string StudentUniqueId "I"
+        common BirthData "R"
+        common Name "R"
+        common OtherName "OC"
+        reference Person "O"
+    }
+    Contact {
+        string ContactUniqueId "I"
+        common Name "R"
+        common Address "OC"
+        common ElectronicMail "OC"
+        string GenderIdentity "O"
+        descriptor HighestCompletedLevelOfEducation "O"
+        common InternationalAddress "OC"
+        common Language "OC"
+        string LoginId "O"
+        common OtherName "OC"
+        reference Person "O"
+        descriptor Sex "O"
+        common Telephone "OC"
+    }
+    Staff {
+        string StaffUniqueId "I"
+        common Name "R"
+        date BirthDate "O"
+        reference Credential "OC"
+        reference EducatorPreparationProgram "OC"
+        common EducatorResearch "O"
+        descriptor HighestCompletedLevelOfEducation "O"
+        descriptor HighlyQualifiedAcademicSubject "OC"
+        bool HighlyQualifiedTeacher "O"
+        string LoginId "O"
+        reference OpenStaffPosition "O"
+        common OtherName "OC"
+        reference Person "O"
+        common Recognition "OC"
+        decimal YearsOfPriorProfessionalExperience "O"
+        decimal YearsOfPriorTeachingExperience "O"
+    }
+    Person {
+        string PersonId "I"
+        descriptor SourceSystem "I"
+    }
+    EducationOrganization {
+        integer EducationOrganizationId "I"
+        descriptor EducationOrganizationCategory "RC"
+        string NameOfInstitution "R"
+        common Address "OC"
+        common EducationOrganizationIndicator "OC"
+        common InstitutionTelephone "OC"
+        common InternationalAddress "OC"
+        descriptor OperationalStatus "O"
+        string ShortNameOfInstitution "O"
+        string WebSite "O"
+    }
+    Survey }o--o| EducationOrganization : "HasAssociated"
+    Survey }o--o| Session : "HasAssociated"
+    Survey }o--o{ Program : "HasAssociated"
+    Survey }o--o{ Course : "HasAssociated"
+    Survey }o--o{ Section : "HasAssociated"
+    SurveySection }o--|| Survey : "HasAssociated"
+    SurveyQuestion }o--|| Survey : "HasAssociated"
+    SurveyQuestion }o--o| SurveySection : "HasAssociated"
+    SurveyResponse }o--o{ Student : "HasAssociated"
+    SurveyResponse }o--o{ Staff : "HasAssociated"
+    SurveyResponse }o--o{ Contact : "HasAssociated"
+    SurveyResponse }o--|| Survey : "HasAssociated"
+    SurveyResponse }o--|| Person : "HasAssociated"
+    SurveySectionResponse }o--|| SurveyResponse : "HasAssociated"
+    SurveySectionResponse }o--|| SurveySection : "HasAssociated"
+    SurveyQuestionResponse }o--|| SurveyQuestion : "HasAssociated"
+    SurveyQuestionResponse }o--|| SurveyResponse : "HasAssociated"
+    SurveyResponse }o--o{ EducationOrganization : "HasAssociated"
+    SurveySectionResponse }o--o{ EducationOrganization : "HasAssociated"
+    SurveySectionResponse }o--o{ Staff : "HasAssociated"
+    SurveyCourseAssociation }o..|| Survey : "HasAssociated"
+    SurveyCourseAssociation }o..|| Course : "HasAssociated"
+    SurveyProgramAssociation }o..|| Survey : "HasAssociated"
+    SurveyProgramAssociation }o..|| Program : "HasAssociated"
+    SurveySectionAssociation }o..|| Survey : "HasAssociated"
+    SurveySectionAssociation }o..|| Section : "HasAssociated"
+    SurveyResponseEducationOrganizationTargetAssociation }o..|| SurveyResponse : "HasAssociated"
+    SurveyResponseEducationOrganizationTargetAssociation }o..|| EducationOrganization : "HasAssociated"
+    SurveySectionResponseEducationOrganizationTargetAssociation }o..|| EducationOrganization : "HasAssociated"
+    SurveySectionResponseEducationOrganizationTargetAssociation }o..|| SurveySectionResponse : "HasAssociated"
+    SurveyResponseStaffTargetAssociation }o..|| Staff : "HasAssociated"
+    SurveyResponseStaffTargetAssociation }o..|| SurveyResponse : "HasAssociated"
+    SurveySectionResponseStaffTargetAssociation }o..|| Staff : "HasAssociated"
+    SurveySectionResponseStaffTargetAssociation }o..|| SurveySectionResponse : "HasAssociated"

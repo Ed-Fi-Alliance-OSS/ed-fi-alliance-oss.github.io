@@ -165,7 +165,7 @@ tutorials are arranged from basic to more advanced.
   organizations must
   [enable Two-Factor Authentication (2FA)](https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa)
   on their GitHub accounts.
-  * Open source contributors, including on the Ed-Fi Exchange, do not require
+  * Open source contributors, including on the Ed-Fi Community Tools, do not require
     2FA. They will not be granted membership or direct write access in the
     repositories; instead they will need to fork the repository, make
     modifications in their forks, and then create the pull request from the fork

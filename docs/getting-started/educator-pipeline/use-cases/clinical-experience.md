@@ -1,3 +1,7 @@
+---
+sidebar_position: 3
+sidebar_label: Clinical Experience and Performance Use Case
+---
 # Clinical Experience and Performance Use Case / Dashboard
 
 Educator Preparation Programs (EPPs) gain valuable insights into candidate readiness through clinical evaluations and end-of-program surveys. By analyzing this data across programs, cohorts, and demographic groups, EPPs can pinpoint areas of strength and identify where additional support is needed. These findings guide targeted improvements, helping ensure candidates are well-prepared for the classroom and that programs evolve to meet the diverse needs of future educators. Access the [Educator Preparation Ed-Fi Backed Tools: Clinical Experience and Performance Use Case Resource](https://edfidocs.blob.core.windows.net/$web/assets/getting-started/epp/use-cases/clinical-experience/Ed-Fi%20Alliance%20_Clinical%20Experience%20and%20Performance%20Use%20Case%20Resource.pdf), to learn more about this use case and the related essential questions.

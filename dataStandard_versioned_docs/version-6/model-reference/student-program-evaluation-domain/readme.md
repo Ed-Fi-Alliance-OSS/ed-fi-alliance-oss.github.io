@@ -9,7 +9,7 @@ programs.
 * [Student Program Evaluation Domain - Entities, References, and
   Descriptors](./entities-references-and-descriptors.md)
 * [Student Program Evaluation Domain - Model
-  Diagrams](./model-diagrams.md)
+  Diagrams](./model-diagrams.mdx)
 * [Student Program Evaluation Domain - Overview](./overview.md)
 * [Student Program Evaluation Domain - Best Practices](./best-practices.md)
 

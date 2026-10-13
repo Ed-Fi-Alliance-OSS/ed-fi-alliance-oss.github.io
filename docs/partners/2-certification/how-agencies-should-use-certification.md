@@ -11,8 +11,7 @@ serviceable than blanket ambiguous ones.
 
 ## Procurement Language
 
-The Ed-Fi Alliance has published a "Ed-Fi Model RFP" in the [Ed-Fi
-Exchange](https://exchange.ed-fi.org/) that may assist agencies with procurement
+The Ed-Fi Alliance has published a "Ed-Fi Model RFP" in the [Ed-Fi Community Tools](/getting-started/community-tools/guides/ed-fi-model-rfp) that may assist agencies with procurement
 language.
 
 Another example of a statement that can be used in RFPs can be here: [Global

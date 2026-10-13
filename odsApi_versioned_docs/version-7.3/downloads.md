@@ -10,18 +10,28 @@ repository.
 
 ## Binary Downloads
 
-* [Binary Releases](./getting-started/binary-installation/binary-releases.md)
+* [Binary Releases
+  7.3.2](./getting-started/binary-installation/binary-releases.md#ods-api-v732-packages)
+* [Binary Releases
+  7.3.1](./getting-started/binary-installation/binary-releases.md#ods-api-v731-packages)
 * [Binary Releases
   7.3.0](./getting-started/binary-installation/binary-releases.md#ods-api-v730-packages)
 
 ## Docker Downloads
 
-* [Docker Images](./getting-started/getting-started-docker-deployment.md)
+* [Docker Images
+  7.3.2](./getting-started/getting-started-docker-deployment.md#ods-api-v732-images)
+* [Docker Images
+  7.3.1](./getting-started/getting-started-docker-deployment.md#ods-api-v731-images)
 * [Docker Images
   7.3.0](./getting-started/getting-started-docker-deployment.md#ods-api-v730-images)
 
 ## Source & Code Downloads
 
+* [Ed-Fi-ODS/v7.3.2](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v7.3.2)
+    source code (GitHub)
+* [Ed-Fi-ODS-Implementation/v7.3.2](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/tree/v7.3.2) source
+    code (GitHub)
 * [Ed-Fi-ODS/v7.3.1](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v7.3.1)
     source code (GitHub)
 * [Ed-Fi-ODS-Implementation/v7.3.1](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/tree/v7.3.1) source

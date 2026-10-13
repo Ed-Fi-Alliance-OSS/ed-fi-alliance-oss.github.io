@@ -44,8 +44,7 @@ Guidelines](/reference/data-exchange/api-guidelines) documentation.
 ## Ed-Fi Data Model Extension Patterns
 
 The Ed-Fi Data Standard has a set of conventions collectively known as the
-[Ed-Fi Extensions
-Framework](https://edfi.atlassian.net/wiki/display/EFDS5/Ed-Fi+Extension+Framework).
+[Ed-Fi Extensions Framework](/reference/data-exchange/extensions-framework/).
 This framework defines the patterns to use in concrete technology components
 like the ODS and the XSD where extensions to the Ed-Fi Data Model are required
 by implementers. [MetaEd IDE](/reference/metaed) simplifies authoring extensions

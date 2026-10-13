@@ -8,7 +8,7 @@ The Ed-Fi Alliance publishes bulk data exchange standards for XML that cover man
 
 Ed-Fi data exchange standards leverage the Ed-Fi Core XSD, which contains reusable definitions for hundreds of entities relevant to the K–12 information domain. By using the predefined entities in the Ed-Fi Core XSD, implementers can quickly compose specifications for many different data exchange purposes.
 
-The Ed-Fi Alliance provides a free tool called the [MetaEd IDE](../../../4-metaed/readme.md) that automates the process of extending Ed-Fi technology, including the Ed-Fi data exchange XSDs. The documentation that follows covers the patterns that are created by the MetaEd IDE, and additional considerations when creating a custom exchange.
+The Ed-Fi Alliance provides a free tool called the [MetaEd IDE](../../../8-metaed/readme.md) that automates the process of extending Ed-Fi technology, including the Ed-Fi data exchange XSDs. The documentation that follows covers the patterns that are created by the MetaEd IDE, and additional considerations when creating a custom exchange.
 
 ## Custom Exchange Overview
 
@@ -30,4 +30,4 @@ In creating interchanges using the Ed-Fi Data Standard, there are several consid
 
 ## Building a Custom Exchange Specification
 
-The [MetaEd IDE documentation](../../../4-metaed/readme.md) contains everything you need to know about building a new XSD specification based on the Ed-Fi Core XSD. The documentation includes download and installation instructions, plus how-to articles.
+The [MetaEd IDE documentation](../../../8-metaed/readme.md) contains everything you need to know about building a new XSD specification based on the Ed-Fi Core XSD. The documentation includes download and installation instructions, plus how-to articles.

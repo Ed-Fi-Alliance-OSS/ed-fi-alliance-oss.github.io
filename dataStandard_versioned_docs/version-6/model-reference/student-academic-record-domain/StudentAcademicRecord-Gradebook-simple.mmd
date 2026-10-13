@@ -1,0 +1,25 @@
+﻿erDiagram
+    Course {
+    }
+    LearningStandard {
+    }
+    GradebookEntry {
+    }
+    StudentGradebookEntry {
+    }
+    StudentSectionAssociation {
+    }
+    Section {
+    }
+    Student {
+    }
+    Course }o--o{ LearningStandard : "HasAssociated"
+    Student }o--o{ Section : "ParticipatesIn"
+    LearningStandard }o--o| LearningStandard : "HasFunctionalComponent"
+    LearningStandard }o--o{ LearningStandard : "HasAssociatedEquivalence"
+    GradebookEntry }o--o{ LearningStandard : "HasAssociated"
+    GradebookEntry }o--|| Section : "HasAssociated"
+    StudentGradebookEntry }o--|| GradebookEntry : "HasAssociated"
+    StudentGradebookEntry }o--|| StudentSectionAssociation : "HasAssociated"
+    StudentSectionAssociation }o..|| Student : "HasAssociated"
+    StudentSectionAssociation }o..|| Section : "HasAssociated"

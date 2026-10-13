@@ -1,13 +1,12 @@
 # Ed-Fi ODS/API and Ed-Fi API v8 FAQ
 
-The Ed-Fi Alliance is actively developing
-[Ed-Fi API v8](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service)
-(formerly the Ed-Fi Data Management Service) to enhance data integration and management capabilities for educational
-agencies. Designed to be robust and flexible, Ed-Fi API v8 will address the evolving
-needs of the Ed-Fi community. The Ed-Fi Alliance plans to fully replace the
-current ODS/API Platform with Ed-Fi API v8 by the 2029-2030 school year. In the
-meantime, the Alliance remains committed to supporting the ODS/API Platform
-through the 2028-2029 school year.
+[Ed-Fi API v8.0](/reference/ed-fi-api/8) (formerly the Ed-Fi Data Management
+Service) has been released to enhance data integration and management
+capabilities for educational agencies. Designed to be robust and flexible, Ed-Fi
+API v8 addresses the evolving needs of the Ed-Fi community. The Ed-Fi Alliance
+plans to fully replace the current ODS/API Platform with Ed-Fi API v8 by the
+2029-2030 school year. In the meantime, the Alliance remains committed to
+supporting the ODS/API Platform through the 2028-2029 school year.
 
 ## Roadmap
 
@@ -93,14 +92,14 @@ As shown in the table above:
 
 ### Q: When will Ed-Fi API v8 be available?
 
-Goal timeline:
+Timeline:
 
-1. _Release 8.0_ Q2 of 2026, available for pilot / parallel usage
-   in school year 2026-2027.
-2. _Release 8.1_ Q4 of 2026, available for parallel / production usage
-   in school year 2027-2028.
+1. _Release 8.0_ was released in Q3 of 2026, available for pilot / parallel
+   usage in school year 2026-2027.
+2. _Release 8.1_ is planned for Q4 of 2026, available for parallel / production
+   usage in school year 2027-2028.
 
-The _release 8.0_ will be fully compatible with the _must have_ requirements
+_Release 8.0_ is fully compatible with the _must have_ requirements
 described in the [Ed-Fi API Design and Implementation Guidelines,
 4.0](../1-data-exchange/api-guidelines/readme.md) and will expand further into
 the _should have_ and _optional_ requirements and features. State Education
@@ -109,8 +108,8 @@ authorization and for access to raw data for warehousing and reporting. The
 SEA-oriented release 8.1 should be available for production use in the 2027-2028
 school year.
 
-The 8.0 release will not have complete parity with the optional features in the
-ODS/API Platform (see note below). The Ed-Fi API Technical Workgroup
+The 8.0 release does not have complete parity with the _optional_ features in the
+ODS/API Platform. The Ed-Fi API Technical Workgroup
 and/or Technical Advisory Group (TAG) will help guide prioritization of
 features.
 
@@ -123,17 +122,73 @@ timeline
          : SEA
 ```
 
-:::note
-
-An example of an ODS/API feature that is _not_ planned for Ed-Fi API v8:
-`link` elements in the `xyzReference` sections when retrieving a
-resource with a `GET` request. See
-[Deprecation of Links](../1-data-exchange/api-guidelines/design-and-implementation-guidelines/api-design-guidelines/rest-api-conventions/get-requests.md#deprecation-of-links)
-for more information.
-
-:::
-
 ## Technical Integrations
+
+### Q: What will the system architecture look like?
+
+The following diagram shows the core system architecture for Ed-Fi API v8.
+
+```mermaid
+graph LR
+
+    subgraph Vendor["Vendor Application"]
+        vendor["SIS<br/>Assessment</br>etc."]
+    end
+
+    subgraph Application["<b>Application Layer</b>"]
+        edfi["🏫<br/>Ed-Fi API"]
+        config["⚙️<br/>Configuration<br />Service"]
+        admin["Ed-Fi Admin App"]
+
+        edfi -->|read|config
+
+        admin -->|read/write|config
+    end
+
+    subgraph Data["<b>Data Layer</b>"]
+        dmsDb[(edfi_datamanagementservice)]
+        configDb[(edfi_configurationservice)]
+    end
+
+    vendor --> edfi
+
+    edfi -->|read/write| dmsDb
+    config -->|read/write| configDb
+
+    style Vendor fill:#c6d9f0
+    style Data fill:#c6e6c6
+    style Application fill:#fffacd
+```
+
+The next diagram shows the optional streaming components. Note: the streaming
+architecture, although it was an original design goal for the system, has taken
+a lower priority for the initial release, and is not expected to be fully tested
+and supported until the 8.1 release.
+
+```mermaid
+graph LR
+
+    subgraph Application["<b>Application Layer</b>"]
+        edfi["🏫<br/>Ed-Fi API"]
+    end
+
+    subgraph Data["<b>Data Layer</b>"]
+        dmsDb[(edfi_datamanagementservice)]
+    end
+
+    subgraph Stream["<b>Streaming Layer</b>"]
+        cdc[Change Data Capture]
+        kafka[(Kafka)]
+    end
+
+    edfi -->|read/write|dmsDb
+
+    cdc -->|read log|dmsDb
+    cdc -->|write|kafka
+
+    style Data fill:#c6e6c6
+    style Stream fill:#fffacd
+```
 
 ### Q: Will integrations built for the ODS/API continue to work with the new system?
 
@@ -164,7 +219,7 @@ redirection rules in an API Gateway application sitting in front of Ed-Fi API v8
 ### Q: Will integrations built for the Admin API continue to work with the new system?
 
 Yes &mdash; if referring to the Management API
-[specification](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-API-Standards/blob/main/api-specifications/admin-api/admin-api-2.2.0.yaml).
+[specification](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-API-Standards/blob/main/api-specifications/admin-api/admin-api-2.2.0.yaml)[^1].
 No &mdash; if referring to the specific software application called "Admin API".
 Ed-Fi API v8 will have a different database system than the
 ODS/API, including restructuring of the data currently housed in the
@@ -174,6 +229,8 @@ Management API specification. The plan is to implement the
 Management API specification (version 3), so that applications and scripts
 developed on this specification can interact seamlessly either with the platform
 of today or of tomorrow.
+
+[^1]: Caveat: the claimset data structure is sufficiently different that the Management API specification will need to fork to version 3. The development teams responsible for the Ed-Fi API v8 and legacy Ed-Fi ODS Admin API v2 are working together to define the updated specification and provide a clear migration path for client applications.
 
 ## Process
 
@@ -199,19 +256,17 @@ whenever possible, use the REST API to load or extract data. Doing so both
 prepares you for Ed-Fi API v8 and helps you ensure data integrity and security.
 
 You can work with your Ed-Fi liaison to build a plan for transitioning ahead of
-the 2028-2029 school year.
+the 2029-2030 school year.
 
 ### Q: How can I / my team get involved?
 
-The Ed-Fi Alliance is running a technical workgroup that will meet regularly
-to help with prioritization, review, and testing of the software.
+The Ed-Fi Alliance is running a technical workgroup that will meet regularly to
+help with prioritization, review, and testing of the software.
 
 Anyone wishing to contribute at the level of design or application code level is
-invited to review the
-[Project Tanager design repository](https://github.com/Ed-Fi-Alliance-OSS/Project-Tanager)
-to understand current and upcoming work. Please see
-[How to Contribute](https://github.com/Ed-Fi-Alliance-OSS/Project-Tanager/CONTRIBUTING.md)
-for more information.
+invited to review the [Design
+Documents](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/tree/main/reference/design)
+to understand current and upcoming work.
 
 ## Technical Design
 
@@ -235,9 +290,10 @@ real-time data flows.
 
 ### Q: When will Microsoft SQL Server be supported?
 
-Ed-Fi API v8 supports PostgreSQL as the primary data store. Microsoft SQL Server
-is being added as an alternative data store in parallel with the 8.0 release
-(2026). Any remaining gaps will be addressed in the 8.1 release.
+Ed-Fi API v8 supports both PostgreSQL and Microsoft SQL Server as data store
+options. While Ed-Fi API v8.0 includes support for Microsoft SQL Server, some
+gaps remain in the SQL Server implementation compared to the PostgreSQL
+implementation. These gaps are planned to be addressed in the v8.1 release.
 
 This approach allows agencies to continue using their existing SQL Server
 infrastructure to run Ed-Fi API v8.

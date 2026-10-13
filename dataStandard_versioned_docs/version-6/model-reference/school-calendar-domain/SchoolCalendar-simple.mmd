@@ -1,0 +1,30 @@
+﻿erDiagram
+    Session {
+    }
+    GradingPeriod {
+    }
+    AcademicWeek {
+    }
+    Calendar {
+    }
+    CalendarDate {
+    }
+    StudentSchoolAssociation {
+    }
+    Student {
+    }
+    EducationOrganization {
+    }
+    School {
+    }
+    Session }o--o{ AcademicWeek : "HasAssociated"
+    Session }o--|| School : "HasAssociated"
+    Session }o--o{ GradingPeriod : "HasAssociated"
+    GradingPeriod }o--|| School : "HasAssociated"
+    CalendarDate }o--|| Calendar : "HasAssociated"
+    Calendar }o--|| School : "HasAssociated"
+    Student }o--o{ School : "HasAssociated"
+    School ||--|| EducationOrganization : "IsA"
+    StudentSchoolAssociation }o--o| Calendar : "HasAssociated"
+    StudentSchoolAssociation }o--|| School : "HasAssociated"
+    StudentSchoolAssociation }o--|| Student : "HasAssociated"

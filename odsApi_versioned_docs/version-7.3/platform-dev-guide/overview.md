@@ -121,7 +121,7 @@ section in this documentation for complete details.
 ## Technology Stack
 
 The core ODS / API technologies are essentially built on a Microsoft stack,
-including C# and ASP.NET Core. Being a .NET 8 application, it can be hosted on a
+including C# and ASP.NET Core. Being a .NET 10 application, it can be hosted on a
 Microsoft stack with API running on Internet Information Services backed by
 Microsoft SQL Server ODS or API running as well as on Linux Server backed by
 PostgreSQL ODS.

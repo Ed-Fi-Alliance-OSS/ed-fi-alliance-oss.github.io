@@ -1,0 +1,52 @@
+﻿erDiagram
+    PerformanceEvaluation {
+    }
+    PerformanceEvaluationRating {
+    }
+    Evaluation {
+    }
+    EvaluationRating {
+    }
+    EvaluationObjective {
+    }
+    EvaluationObjectiveRating {
+    }
+    EvaluationElement {
+    }
+    EvaluationElementRating {
+    }
+    QuantitativeMeasure {
+    }
+    QuantitativeMeasureScore {
+    }
+    Goal {
+    }
+    Person {
+    }
+    Section {
+    }
+    SurveySectionAggregateResponse {
+    }
+    EducationOrganization {
+    }
+    PerformanceEvaluation }o--|| EducationOrganization : "HasAssociated"
+    PerformanceEvaluation ||--o{ Evaluation : "HasAssociated"
+    PerformanceEvaluationRating }o--|| PerformanceEvaluation : "HasAssociated"
+    PerformanceEvaluationRating ||--o{ EvaluationRating : "HasAssociated"
+    PerformanceEvaluationRating }o--|| Person : "HasAssociated"
+    EvaluationRating }o--|| Evaluation : "HasAssociated"
+    EvaluationRating ||--o{ EvaluationObjectiveRating : "HasAssociated"
+    Evaluation ||--o{ EvaluationObjective : "HasAssociated"
+    EvaluationObjective ||--o{ EvaluationElement : "HasAssociated"
+    EvaluationObjectiveRating }o--|| EvaluationObjective : "HasAssociated"
+    EvaluationObjectiveRating ||--o{ EvaluationElementRating : "HasAssociated"
+    EvaluationElementRating }o--|| EvaluationElement : "HasAssociated"
+    EvaluationElementRating ||--o{ QuantitativeMeasureScore : "HasAssociated"
+    EvaluationElement ||--o{ QuantitativeMeasure : "HasAssociated"
+    QuantitativeMeasureScore }o--|| QuantitativeMeasure : "HasAssociated"
+    Goal }o--|| Person : "HasAssociated"
+    Goal }o--o| EvaluationObjective : "HasAssociated"
+    Goal }o--o| EvaluationElement : "HasAssociated"
+    Goal }o--o| Goal : "HasFunctionalComponent"
+    Section |o--o{ EvaluationRating : "HasAssociated"
+    SurveySectionAggregateResponse |o--|| EvaluationElementRating : "HasAssociated"

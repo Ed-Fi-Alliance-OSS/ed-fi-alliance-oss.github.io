@@ -52,7 +52,7 @@ Other specifications managed by the Ed-Fi Alliance include:
 
 * [Ed-Fi Descriptors API](./api-design-guidelines/ed-fi-descriptors.md)
 
-* Ed-Fi Admin API
+* Ed-Fi Management API
 
 * Ed-Fi Identity API
 

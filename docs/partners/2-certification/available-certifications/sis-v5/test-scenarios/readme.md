@@ -141,7 +141,7 @@ the same data concept is modeled.
 | [StaffCohortAssociation](./staff-cohort-association-scenarios.md)                                                     | Create, Update, Delete |
 | [StudentCohortAssociation](./student-cohort-association-scenarios.md)                                                 | Create, Update         |
 | [DisciplineIncident](./disciplineincident-scenarios.md)                                                               | Create, Update         |
-| [StudentDisciplineIncidentAssociation](./student-discipline-incident-association.md)                                  | Create, Delete         |
+| [StudentDisciplineIncidentBehaviorAssociation](./student-discipline-incident-behavior-association.md)                 | Create, Delete         |
 | [DisciplineAction](./disciplineaction-scenarios.md)                                                                   | Create, Update, Delete |
 | [StudentProgramAssociation](./student-program-association-scenarios.md)                                               | Create, Update, Delete |
 | [StudentCTEProgramAssociation](./student-cte-program-association-scenarios.md)                                        | Create, Update         |
@@ -167,4 +167,4 @@ Ed-Fi API Dependency Graph:
 
 Use the links below to view the diagram in a different format.
 
-[ [PDF Version](https://edfidocs.blob.core.windows.net/$web/assets/reference/ods-api/Ed-Fi%20-%20Data%20Model%20Logical%20Loading%20Sequence%20V2%20(1).pdf) | [Vizio format](https://edfidocs.blob.core.windows.net/$web/assets/reference/ods-api/Ed-Fi%20-%20Data%20Model%20Logical%20Loading%20Sequence%20V2%20(1).vsdx) ]
+[ [PDF Version](https://edfidocs.blob.core.windows.net/$web/assets/reference/ed-fi-api/Ed-Fi%20-%20Data%20Model%20Logical%20Loading%20Sequence%20V2%20(1).pdf) | [Vizio format](https://edfidocs.blob.core.windows.net/$web/assets/reference/ed-fi-api/Ed-Fi%20-%20Data%20Model%20Logical%20Loading%20Sequence%20V2%20(1).vsdx) ]

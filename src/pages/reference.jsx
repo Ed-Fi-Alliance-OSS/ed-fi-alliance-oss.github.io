@@ -43,13 +43,25 @@ function Main() {
                 Discover the Ed-Fi Data Exchange Standards
               </Link>
             </p>
-            <h2>Ed-Fi ODS/API</h2>
+            <h2>Ed-Fi API</h2>
             <p>
-              The Ed-Fi ODS/API provides a robust platform for integrating and
+              The Ed-Fi API provides a robust platform for integrating and
               managing educational data through a REST-inspired HTTP interface.
               It enables seamless data exchange and supports various educational
-              applications.{' '}
-              <Link to="/reference/ods-api">Explore the Ed-Fi ODS/API</Link>
+              applications. Explore the{' '}
+              <Link to="/reference/ed-fi-api/">Ed-Fi ODS/API</Link> or the{' '}
+              <Link to="/reference/ed-fi-api/8/">Ed-Fi API v8</Link>.
+            </p>
+            <h2>Ed-Fi OneRoster Service</h2>
+            <p>
+              The Ed-Fi OneRoster® Service serves a 1EdTech® OneRoster v1.2
+              Rostering API from data in an Ed-Fi ODS. It gives vendor
+              applications that expect OneRoster a consistent way to read
+              rostering data, and is certified by 1EdTech against the
+              OneRoster v1.2 Rostering Core service.{' '}
+              <Link to="/reference/oneroster">
+                Explore the Ed-Fi OneRoster Service
+              </Link>
             </p>
             {/* useful text for future use, not ready to include here yet. */}
             {/* <h2>Ed-Fi Data Management Service</h2>
@@ -63,18 +75,7 @@ function Main() {
             <p>
               <Link to="/reference/admin-app">Ed-Fi Admin App</Link> (human-to-system) and the <Link to="/reference/admin-api">Ed-Fi ODS Admin API</Link> (system-to-system) provide administrative interfaces for managing the Ed-Fi
               ODS/API platform. They simplify common administrative tasks and
-              support both Docker and Windows installations. See our tools below to get started.
-              <ul>
-                <li>
-                  <Link to="/reference/admin-app">Ed-Fi Admin App (version 4.0+)</Link>
-                </li>
-                <li>
-                  <Link to="/reference/admin-api">Ed-Fi ODS Admin API</Link>
-                </li>
-                <li>
-                  <Link to="/reference/ods-admin-app">ODS Admin App (legacy version 3 and earlier)</Link>
-                </li>
-              </ul>
+              support both Docker and Windows installations.
             </p>
             <h2>Ed-Fi API Publisher</h2>
             <p>
@@ -102,17 +103,6 @@ function Main() {
               </li>
               <li>
                 <Link to="/reference/docker">Sample Docker Deployments</Link>
-              </li>
-              <li>
-                <Link to="/reference/data-import">Data Import</Link>
-              </li>
-              <li>
-                <Link to="/reference/ods-admin-app">Legacy ODS Admin App</Link>
-              </li>
-              <li>
-                <Link to="/reference/analytics-middle-tier">
-                  Analytics Middle Tier
-                </Link>
               </li>
             </ul>
           </div>
