@@ -408,15 +408,22 @@ the association that linked them to the caller's education organization has
 been deleted. They use the `tracked_changes_edfi` tables that support [Change
 Queries](../features/changed-record-queries.md), so they are intended for
 claim sets that read changes (such as deletes) for students, staff, or contacts
-who have since left the caller's schools or district.
+who have since left the caller's schools or district. In the default security
+metadata they are assigned only to the `ReadChanges` action.
 
 - **RelationshipsWithEdOrgsAndPeopleIncludingDeletes.** Same as
-  `RelationshipsWithEdOrgsAndPeople`, but person identifiers can also be
-  reached through deleted `StudentSchoolAssociation`, staff employment and
-  assignment, and contact relationships.
+  `RelationshipsWithEdOrgsAndPeople`, but students can also be reached through
+  deleted `StudentSchoolAssociation` records, staff through deleted
+  `StaffEducationOrganizationEmploymentAssociation` or
+  `StaffEducationOrganizationAssignmentAssociation` records, and contacts
+  through deleted `StudentSchoolAssociation` or `StudentContactAssociation`
+  records.
 - **RelationshipsWithStudentsOnlyIncludingDeletes.** Same as
   `RelationshipsWithStudentsOnly`, but students can also be reached through
-  deleted `StudentSchoolAssociation` records.
+  deleted `StudentSchoolAssociation` records. In releases through ODS/API
+  7.3.2, this strategy also checks staff, contact, and education organization
+  identifiers, the same as `RelationshipsWithEdOrgsAndPeopleIncludingDeletes`;
+  a fix that restricts it to students is pending release.
 - **RelationshipsWithStudentsOnlyThroughResponsibilityIncludingDeletes.** Same
   as `RelationshipsWithStudentsOnlyThroughResponsibility`, but students can also
   be reached through deleted
