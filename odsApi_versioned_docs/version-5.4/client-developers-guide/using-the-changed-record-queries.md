@@ -14,10 +14,8 @@ The change queries feature was designed to have a simple architecture, and to in
 
 * The API will return the most recent version of the resource. This is different from, say, a change data capture system that provides a log of every change.
 * The solution offers guaranteed consistency only if the host provides facilities for snapshot isolation for the API client to perform change processing. In the absence of snapshots provided by the host, periodic re-synchronization as described in this documentation may help in achieving eventual consistency. To learn more about some additional considerations refer to the [SQL Server Change Tracking](https://docs.microsoft.com/en-us/sql/relational-databases/track-changes/work-with-change-tracking-sql-server?view=sql-server-ver15) with a particular emphasis on: [Obtain consistent and correct results](https://docs.microsoft.com/en-us/sql/relational-databases/track-changes/work-with-change-tracking-sql-server?view=sql-server-ver15#obtain-consistent-and-correct-results) and [Alternatives to Snapshot Isolation](https://docs.microsoft.com/en-us/sql/relational-databases/track-changes/work-with-change-tracking-sql-server?view=sql-server-ver15#alternatives-to-snapshot-isolation).
-* The solution will work for most use cases, but snapshot isolation requirement could limit the frequency of data synchronization. 
+* The solution will work for most use cases, but snapshot isolation requirement could limit the frequency of data synchronization.
 * The [Changed Record Queries](../platform-dev-guide/features/changed-record-queries.md) article has implementation details which may be of interest to some client system developers.
-
-
 
 ## Overview of Change Query Endpoints
 
@@ -28,7 +26,6 @@ The simple design means that the core operations are basic. This section provide
 A global Available snapshots API resource provides information on the available snapshots that host has provided for change processing.
 
 * GET /changeQueries/v1/snapshots
-
 
 A successful request will contain a response body that looks like the following:
 
@@ -49,7 +46,6 @@ If no snapshots are returned, it means that the host has not set up snapshots fo
 The ODS / API uses a change version (as opposed to, say, a date) in the form of a sequential long integer. A global Available Change Versions API resource provides information on the current change version. This resource allows clients to request a reference to changed records they have not already requested or processed.
 
 * GET /changeQueries/v1/availableChangeVersions
-
 
 ### Minimum and Maximum Change Version Parameters
 
@@ -86,9 +82,7 @@ The "Deletes" route allows clients to get the `Id` for deleted resources. This r
 
 The "keyChanges" route allows clients to get the **natural key** changes for updated resources. Not all resources support key changes. For those unsupported resources, the "keyChanges" route will always return an empty array. If there were multiple key changes in the change window defined on the request, there will be one entry per resource item affected with the initial and final key values for that resource. This route also supports the existing paging parameters of `offset` and `limit`.
 
-
 * GET /data/v3/ed-fi/classPeriods/keyChanges?minChangeVersion=104030&offset=100&limit=100
-
 
 **Composite Logical Key Changes Response**
 
@@ -172,4 +166,3 @@ As an example of processing using multiple change windows in lieu of snapshots, 
 | Incremental #1 | Immediately after completion of start | 200 | 100 | 200 |
 | Incremental #2 | 1 day after start | 300 | 100 | 300 |
 | Incremental #3 | 2 days after start | 400 | 200 | 400 |
-

@@ -82,7 +82,7 @@ each ODS.
 <details>
 <summary>MSSQL Change Queries Removal</summary>
 
-```
+```text
 -- Drop delete tracking triggers
 SELECT 'DROP TRIGGER IF EXISTS ' + s.name + '.' + tr.name + ';'
 FROM sys.triggers tr
@@ -135,12 +135,13 @@ UNION ALL
 -- Clean up journal entries related to Changes
 SELECT 'DELETE FROM dbo.DeployJournal WHERE ScriptName LIKE ''%Artifacts.MsSql.Structure.Ods.Changes.%'''
 ```
+
 </details>
 
 <details>
 <summary>PostgreSQL Change Queries Removal</summary>
 
-```
+```text
 -- Drop delete tracking triggers
 SELECT 'DROP TRIGGER IF EXISTS ' || tr.trigger_name || ' ON ' || tr.event_object_schema || '.' || tr.event_object_table || ';'
 FROM information_schema.triggers tr
@@ -183,6 +184,7 @@ UNION ALL
 -- Clean up journal entries related to Changes
 SELECT 'DELETE FROM public."DeployJournal" WHERE ScriptName LIKE ''%Artifacts.PgSql.Structure.Ods.Changes.%'''
 ```
+
 </details>
 
 ## Technical Details

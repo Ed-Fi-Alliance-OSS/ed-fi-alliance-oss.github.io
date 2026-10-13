@@ -86,7 +86,7 @@ Minor updates in this release focus on improving documentation clarity and consi
 
 The FinancialAid domain entity and its associated descriptor AidType were moved from the Enrollment domain to the Identification and Student Demographic domain.  
 
-In Data Standard v6.0, FinancialAid was classified under the Enrollment domain when the EPDM extensions were incorporated into Core. Subsequent review determined that FinancialAid aligns more appropriately with the Student Identification and Demographics domain because it is not associated with a StudentSchoolAssociation reference. 
+In Data Standard v6.0, FinancialAid was classified under the Enrollment domain when the EPDM extensions were incorporated into Core. Subsequent review determined that FinancialAid aligns more appropriately with the Student Identification and Demographics domain because it is not associated with a StudentSchoolAssociation reference.
 
 ### Documentation and Descriptor Updates In MetaEd
 

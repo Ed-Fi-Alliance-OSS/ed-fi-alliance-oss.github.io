@@ -317,9 +317,9 @@ changes) in the target system.
 
 The following ODS / API artifacts are relevant for snapshot isolation:
 
-*   A database table (`changes.Snapshot`) to capture basic information about the available snapshots.
-*   A "snapshots" API resource (at `/changeQueries/v1/snapshots`) which enables API clients to read the snapshot identifier of an available snapshot (or snapshots). Clients then supply the identifier with each API request using the `Snapshot-Identifier` HTTP header.
-*   API support for processing the `Snapshot-Identifier` HTTP header to service API requests using the corresponding static ODS data source rather than the live operational ODS.
+* A database table (`changes.Snapshot`) to capture basic information about the available snapshots.
+* A "snapshots" API resource (at `/changeQueries/v1/snapshots`) which enables API clients to read the snapshot identifier of an available snapshot (or snapshots). Clients then supply the identifier with each API request using the `Snapshot-Identifier` HTTP header.
+* API support for processing the `Snapshot-Identifier` HTTP header to service API requests using the corresponding static ODS data source rather than the live operational ODS.
 
 ## Creating and Managing Snapshots
 
@@ -344,12 +344,12 @@ CREATE DATABASE EdFi_Ods_Sandbox_CW39oP8dfsLr0yXVGTixq_SSabcd ON
 The host's process MUST perform the following steps:
 
 * Back up the current EdFi\_Ods database (or equivalent).
-*   Generate a *short* string-based "snapshot identifier" (GUID-based values are discouraged to prevent name length problems when possibly combined with other API features that increase ODS database name length).
-*   Restore the ODS database using following naming convention: `{Ed-Fi ODS database name}\_SS{snapshot-identifier}`.
-*   Insert a new record into the `changes.Snapshot` table with the new snapshot identifier and the current date/time.
+* Generate a _short_ string-based "snapshot identifier" (GUID-based values are discouraged to prevent name length problems when possibly combined with other API features that increase ODS database name length).
+* Restore the ODS database using following naming convention: `{Ed-Fi ODS database name}\_SS{snapshot-identifier}`.
+* Insert a new record into the `changes.Snapshot` table with the new snapshot identifier and the current date/time.
 
 The host's process SHOULD also perform the following steps:
 
-*   Drop old snapshot databases.
-    *   Hosts may choose to maintain the last 2 snapshot databases to avoid dropping a database that could be currently in use by an API client. If that were to happen, the client would begin receiving `410 Gone`  responses from the API indicating they need to start over with their processing and synchronize using the new snapshot.
-*   Remove corresponding records from `changes.Snapshot` table for the dropped snapshots.
+* Drop old snapshot databases.
+  * Hosts may choose to maintain the last 2 snapshot databases to avoid dropping a database that could be currently in use by an API client. If that were to happen, the client would begin receiving `410 Gone`  responses from the API indicating they need to start over with their processing and synchronize using the new snapshot.
+* Remove corresponding records from `changes.Snapshot` table for the dropped snapshots.

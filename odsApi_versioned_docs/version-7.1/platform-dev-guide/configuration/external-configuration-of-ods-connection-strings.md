@@ -137,5 +137,3 @@ In order for this code to work, you must perform some initialization of the AWS
 SDK so that it has the necessary information to authenticate with your AWS
 account. That information is outside the scope of this documentation.
 :::
-
-

@@ -274,9 +274,9 @@ website are provided in the sections that follow.
 6. Open IIS in the target machine, expand the Sites, right-click on **Default Web Site** and select **Add Application.**
 7. Fill in the application name and the server location that you have published the
    application:
-   
+
    ![Add Application](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image18.png)
-   
+
 8. Click **OK.**
 9. The application is ready to use. You can browse and see version information
    about the API.
@@ -328,14 +328,14 @@ Steps to deploy the application:
 6. Open IIS in the target machine, expand the Sites, right-click on **Default Web Site** and select **Add Application**.
 7. Fill in the application name and the server location that you have published the
    application:
-   
+
    ![Add Application](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image05.png)
-   
+
 8. Click **OK**.
 9. The application is ready to use.
 
    ![Sandbox Admin](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image07.png)
-   
+
 10. The article [Using the Sandbox Admin Portal](../../client-developers-guide/using-the-sandbox-administration-portal.md) has useful information about how to set up accounts for client system
     developers, additional configuration details, plus general usage instructions.
 
@@ -344,7 +344,7 @@ Steps to deploy the application:
 | App Settings | | |
 | DefaultApplicationName | The name of the application used for sandbox application clients. | Default value is Default Sandbox Application. |
 | DefaultClaimSetName | The claim set name for the default application for sandbox application clients. | Default value is Ed-Fi Sandbox. |
-| OAuthUrl* | Points to WebApi OAuth controller. | Default value is http://localhost:54746/oauth/. |
+| OAuthUrl* | Points to WebApi OAuth controller. | Default value is `http://localhost:54746/oauth/`. |
 | MaximumSandboxesPerUser | The maximum number of sandboxes a sandbox admin user can create. | Default value is 5 |
 | **Connection Strings** | | |
 | EdFi_Admin | Should point to the Sandbox deployment of EdFi_Admin. Note that this database should NOT be shared with Security Tools. | |
@@ -378,9 +378,9 @@ API in sandbox environments.
 6. Open IIS in the target machine, expand the Sites, right-click on **Default Web Site** and select **Add Application**.
 7. Fill in the application name and the server location that you have published the
    application:
-   
+
    ![Add Application](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image16.png)
-   
+
 8. Click **OK**.
 9. The application is ready to use.
 
@@ -389,7 +389,7 @@ API in sandbox environments.
 | Configuration | | |
 | ------------- | --- | --- |
 | App Settings | | |
-| WebApiVersionUrl* | Provides the version information for ODS / API. | Sample value: https://server-name |
+| WebApiVersionUrl* | Provides the version information for ODS / API. | Sample value: `https://server-name` |
 | SwaggerUIOptions:OAuthConfigObject:ClientId | Optionally provides the value to prefill in the "key" field of auth. | Sample value: populatedTemplate |
 | SwaggerUIOptions:OAuthConfigObject:ClientSecret | Optionally provides the value to prefill in the "secret" field of auth. | Sample value: populatedTemplateSecret |
 

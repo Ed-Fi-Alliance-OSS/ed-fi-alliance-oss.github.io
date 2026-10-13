@@ -11,7 +11,7 @@ serve the request).
 
 The `EdFi_Admin` database stores the following configuration entities:
 
-*   **Vendors.** Each education software vendor is represented in the admin database and serves as a wrapper for individual users and applications. Vendor records include a namespace prefix, which takes the form of the URL for the vendor's website. The namespace prefix is used by the claims system where callers need to manage their own data. 
+* **Vendors.** Each education software vendor is represented in the admin database and serves as a wrapper for individual users and applications. Vendor records include a namespace prefix, which takes the form of the URL for the vendor's website. The namespace prefix is used by the claims system where callers need to manage their own data.
 * **Vendor Users.** Each vendor may have one or more users defined. The
     database includes the full name and e-mail address for each user for
     identification purposes.
@@ -29,12 +29,10 @@ The `EdFi_Admin` database stores the following configuration entities:
     record includes both a key and a secret, which function as a public and
     private key for the Ed-Fi ODS / API, respectively.
 
-
 The following entity relationship diagram (ERD) provides additional data on the
 structure of the `EdFi_Admin` database:
 
 ![Image](https://edfi.atlassian.net/wiki/download/attachments/22774359/Ed-Fi%20Admin.png?version=1&modificationDate=1643225267337&cacheVersion=1&api=v2)
-
 
 ## Ed-Fi Security Database
 

@@ -112,7 +112,7 @@ The script will run through the tasks noted above. The process will take a few m
 
 **Initialize-PopulatedTemplate Script Results**
 
-```
+```text
 ...
 
 Duration  Task

@@ -21,7 +21,7 @@ filter criteria to apply authorization.
 The following steps demonstrate setting up ownership based authorization:
 
 * [Enabling Ownership Based Authorization](#enabling-ownership-based-authorization)
-* [Setting up Security Metadata](#setting-up-security-metadata) 
+* [Setting up Security Metadata](#setting-up-security-metadata)
 * [Configuring the API Client](#configuring-the-api-client)
 * [Preparing an existing ODS](#preparing-an-existing-ods)
 * [Verifying a successful setup](#verifying-a-successful-setup)
@@ -180,6 +180,7 @@ SELECT csrca.ClaimSetResourceClaimActionId, @AuthorizationStrategyId
 FROM ClaimSetResourceClaimActions csrca
 WHERE csrca.ResourceClaimId = @ResourceClaimId
 ```
+
 </details>
 
 ## Configuring the API Client
@@ -229,6 +230,7 @@ JOIN Applications a ON a.ApplicationId = ac.Application_ApplicationId
 JOIN OwnershipTokens ot ON ot.Description = ac.[Name] + ' Ownership Token'
 WHERE a.ApplicationName = @ApplicationName
 ```
+
 </details>
 
 ## Preparing an existing ODS
@@ -338,6 +340,7 @@ DEALLOCATE TableCursor
   
 DROP TABLE #RecordLevelOwnershipTables
 ```
+
 </details>
 
 ## Verifying a successful setup

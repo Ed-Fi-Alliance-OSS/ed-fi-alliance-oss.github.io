@@ -42,8 +42,7 @@ PS C:\OSS-Workspace\Ed-Fi-ODS-Implementation\Application\EdFi.Ods.WebApi\> dotne
 Successfully saved Plugin:Scripts:1 = sample to the secret store.
 ```
 
-To do so, simply open PowerShell and navigate to "<source/>
-<directory/>\Ed-Fi-ODS-Implementation" folder and run:
+To do so, simply open PowerShell and navigate to `<source directory>\Ed-Fi-ODS-Implementation` folder and run:
 
 ```powershell
 .\Initialize-PowershellForDevelopment.ps1
@@ -57,7 +56,7 @@ This will execute configured script from **secret.json** to download sample exte
 ![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-10-26_16-39-14.png)
 
 After the successful execution of initdev, you will find the sample extension in
-<directory/><source/>\Ed-Fi-ODS-Implementation\Plugin folder.
+`<source directory>\Ed-Fi-ODS-Implementation\Plugin` folder.
 
 ![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-10-26_16-49-9.png)
 

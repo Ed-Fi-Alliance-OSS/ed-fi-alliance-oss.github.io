@@ -11,7 +11,7 @@ You should replace the values for variables with values you desire.
 
 :::
 
-```
+```text
 DECLARE @VendorName nvarchar(150) = 'Local Test Vendor'
 DECLARE @NamespacePrefix nvarchar (255) = 'uri://ed-fi.org'
 DECLARE @UserFullName varchar(150) = 'Local Test User'

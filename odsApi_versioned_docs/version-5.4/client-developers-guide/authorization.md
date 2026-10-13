@@ -61,15 +61,16 @@ API Profiles enable an Ed-Fi ODS / API platform host to constrain the data expos
 
 To use a profile, callers must add media type information to their requests. For read operations, this takes the form of an Accept header, shown below, which indicates to the server that the caller will accept the profile-based version of the resource.
 
-
 ```text
 Accept: application/vnd.ed-fi.student.nutrition.readable+json
 ```
+
 For write operations, the Content-Type header is used.
 
 ```text
 Content-Type: application/vnd.ed-fi.student.nutrition.writable+json
 ```
+
 This indicates to the server that the caller is expecting their update to apply to the constrained surface area of the Resource as defined by the Profile. With this explicit communication style, any extra data passed in the message body can (and generally will) be quietly discarded by server.
 
 While callers can choose to use any Profile, failure to use an assigned Profile (e.g., using the application/json media type) will result in an error.

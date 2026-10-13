@@ -118,7 +118,6 @@ GO
 
 For Ed-Fi implementations running PostgreSQL, pgAgent needs to be configured.
 
-
 <summary><strong>PostgreSQL Sample Code</strong></summary>
 
 ```sql

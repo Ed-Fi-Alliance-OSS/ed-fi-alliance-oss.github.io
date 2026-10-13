@@ -6,19 +6,19 @@ sidebar_position: 2
 
 This section describes how to set up the Ed-Fi ODS / API source code on a development machine. For those interested in getting an Ed-Fi ODS / API instance up and running quickly, but do not have developer tools or experience we recommend you to consult [Getting Started - Binary Installation](../binary-installation/readme.md).
 
-*   [Step 1. Install and Configure Windows Components](#step-1-install-and-configure-windows-components)
-*   [Step 2. Install and Configure Required Software](#step-2-install-and-configure-required-software)
-*   [Step 3. Download the Ed-Fi ODS / API v6.2 Code](#step-3-download-the-ed-fi-ods--api-v62-code)
-*   [Step 4. Prepare the Development Environment](#step-4-prepare-the-development-environment)
-*   [Step 5. Build the Visual Studio Solution](#step-5-build-the-visual-studio-solution)
-*   [Step 6. Set Startup Projects](#step-6-set-startup-projects)
-*   [Step 7. Run the Solution](#step-7-run-the-solution)
+* [Step 1. Install and Configure Windows Components](#step-1-install-and-configure-windows-components)
+* [Step 2. Install and Configure Required Software](#step-2-install-and-configure-required-software)
+* [Step 3. Download the Ed-Fi ODS / API v6.2 Code](#step-3-download-the-ed-fi-ods--api-v62-code)
+* [Step 4. Prepare the Development Environment](#step-4-prepare-the-development-environment)
+* [Step 5. Build the Visual Studio Solution](#step-5-build-the-visual-studio-solution)
+* [Step 6. Set Startup Projects](#step-6-set-startup-projects)
+* [Step 7. Run the Solution](#step-7-run-the-solution)
 
 ## Step 1. Install and Configure Windows Components
 
 Ensure that the following components are installed:
 
-*   **PowerShell 5.0 - 7.2.** PowerShell is used to initialize the development environment.
+* **PowerShell 5.0 - 7.2.** PowerShell is used to initialize the development environment.
 * **.NET 8.0 SDK**. The .NET 8.0 Software Developer Kit is required for
     compiling the solution.
 
@@ -52,7 +52,6 @@ Download and install the latest [.NET SDK 8.0 (Compatible with Visual Studio
 2022)](https://dotnet.microsoft.com/en-us/download/dotnet/8.0).
 
 ![.NET 8.0 SDK](https://edfi.atlassian.net/wiki/download/thumbnails/22774233/image2024-10-31_14-12-25.png?version=1&modificationDate=1730401946958&cacheVersion=1&api=v2&width=812&height=491)
-
 
 :::tip
 
@@ -286,13 +285,12 @@ by GitHub.
 
 The Ed-Fi ODS / API can be found in the repository links below:
 
-*   [Ed-Fi-ODS/v6.2](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v6.2)
-*   [Ed-Fi-ODS-Implementation/v6.2](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/tree/v6.2)
+* [Ed-Fi-ODS/v6.2](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v6.2)
+* [Ed-Fi-ODS-Implementation/v6.2](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/tree/v6.2)
 
 Use a Git client (such as [GitHub Desktop](https://desktop.github.com/)) or a Git command line tool to Git Clone each of the repository links described above. It is important that both repositories are extracted to the same root directory (for example C:\\). When both repositories have been cloned, there will be two folders for the ODS / API source code as shown below:
 
 ![Cloned Folders](https://edfi.atlassian.net/wiki/download/thumbnails/22774233/Step-3-Fig-2.png?version=1&modificationDate=1641861345380&cacheVersion=1&api=v2&width=203&height=42)
-
 
 ```none title="File listing"
 > Ed-Fi-ODS
@@ -305,7 +303,7 @@ When you clone a repository, ensure that you have the correct tag checked out in
 your client before you proceed.
 
 ```powershell
-$ git checkout tags/v6.2 -b <branch>
+git checkout tags/v6.2 -b <branch>
 ```
 
 :::
@@ -340,8 +338,8 @@ Clone. You can do so by following these instructions:
 1. Navigate to each of the repository links described above (for latest release
   or daily source) and use the **Download ZIP** button to download the
   repository to your local drive.
-2.  In Windows Explorer, right-click on each of the downloaded ZIP files and   select Extract All… Enter C:\\ for the target folder. (You can extract the files to any directory, but these instructions assume you've extracted to C:\\.) The ZIP files contain an embedded folder ending in "-v6.2" (or "-main" if downloading latest daily source). For example, the "Ed-Fi ODS ZIP" archive contents will be extracted into C:\\Ed-Fi-ODS-v6.2.
-3.  After the extractions are complete, rename the folders to remove the -v6.2 (or "-main") from the folder names. For example, change C:\\Ed-Fi-ODS-v6.2 to C:\\Ed-Fi-ODS.
+2. In Windows Explorer, right-click on each of the downloaded ZIP files and   select Extract All… Enter C:\\ for the target folder. (You can extract the files to any directory, but these instructions assume you've extracted to C:\\.) The ZIP files contain an embedded folder ending in "-v6.2" (or "-main" if downloading latest daily source). For example, the "Ed-Fi ODS ZIP" archive contents will be extracted into C:\\Ed-Fi-ODS-v6.2.
+3. After the extractions are complete, rename the folders to remove the -v6.2 (or "-main") from the folder names. For example, change C:\\Ed-Fi-ODS-v6.2 to C:\\Ed-Fi-ODS.
 4. When the extraction and renaming are complete, there should be two folders
     for the ODS / API source code.
 
@@ -379,12 +377,11 @@ To set the "MSBuildDisableNodeReuse" variable globally:
    select **Environment Variables**. (Alternatively, right-click the **Start
    Menu** 🪟 button, select **System**, and click on the **Advanced system
     settings**. Under **Advanced**, select **Environment Variables**.)
-2.  Under **User variables**, select **New...**![](https://lh3.googleusercontent.com/UU4Hi_fAeYJprfaRYlkUi37rXujBGdjqfKngoIsyBQZm-z0UtHOqUXe43LuNVY4JVunW4NVh7tIVSadURJhwYc4OBETAmijkPJ9j9kbZ-pL74EPdnovkIbTkSYIMoIP2zzuFoP_k)
-3.  For **Variable name**, enter **MSBuildDisableNodeReuse**
-4.  For **Variable value**, enter **1,** and press **OK**.![](https://lh5.googleusercontent.com/CVN-O0ChzLq8ZFl0ACnjPONKo7kOiP3cW-oLzlaZQxdJqLFZOuxYdPUxQOKp9a75A7k99mOKwoW_W8dlATdEcUKls3AAhzRHGGh10UvRVBqrryHqkdDGyvQzfWKnHbkxX-XtIhlZ)
-    
+2. Under **User variables**, select **New...**![New User Variable dialog](https://lh3.googleusercontent.com/UU4Hi_fAeYJprfaRYlkUi37rXujBGdjqfKngoIsyBQZm-z0UtHOqUXe43LuNVY4JVunW4NVh7tIVSadURJhwYc4OBETAmijkPJ9j9kbZ-pL74EPdnovkIbTkSYIMoIP2zzuFoP_k)
+3. For **Variable name**, enter **MSBuildDisableNodeReuse**
+4. For **Variable value**, enter **1,** and press **OK**.![Environment Variables dialog with MSBuildDisableNodeReuse set to 1](https://lh5.googleusercontent.com/CVN-O0ChzLq8ZFl0ACnjPONKo7kOiP3cW-oLzlaZQxdJqLFZOuxYdPUxQOKp9a75A7k99mOKwoW_W8dlATdEcUKls3AAhzRHGGh10UvRVBqrryHqkdDGyvQzfWKnHbkxX-XtIhlZ)
 
-To turn off this behavior when compiling the solution using MSBuild, include the following compiler flag: **/nr:false**. 
+To turn off this behavior when compiling the solution using MSBuild, include the following compiler flag: **/nr:false**.
 
 ## Verify PowerShell Script Permissions
 
@@ -471,7 +468,7 @@ duration as shown below:
 
 ![Initdev Success](https://edfi.atlassian.net/wiki/download/thumbnails/22774233/image2021-2-4_12-3-8.png?version=1&modificationDate=1641861346387&cacheVersion=1&api=v2&width=462&height=262)
 
-![](https://edfi.atlassian.net/wiki/images/icons/grey_arrow_down.png)
+![Down arrow](https://edfi.atlassian.net/wiki/images/icons/grey_arrow_down.png)
 
 MSBuildDisableNodeReuse
 
@@ -485,7 +482,7 @@ If these settings are not applied, Visual Studio or MSBuild may lock resources d
 
 If the "MSBuildDisableNodeReuse" variable is set within a command prompt session, the Visual Studio development environment must be launched using the devenv command (rather than from an icon):
 
-```
+```text
 SET MSBUILDDISABLENODEREUSE=1
 ```
 
@@ -516,10 +513,10 @@ Duration Task
 
 To build the solution from within Visual Studio:
 
-1.  Ensure that the **MsBuildDisableNodeReuse** flag is set (see Configure MSBuild, above).
-2.  If the above flag has been set globally, start Visual Studio normally. Otherwise, open Visual Studio from the Visual Studio Developer Command Prompt (where you set the flag value by typing `devenv`).
-3.  Within Visual Studio, open the "Ed-Fi-Ods.sln" solution file from the C:\\Ed-Fi-ODS-Implementation\\Application directory.
-4.  Select **Build** > **Build Solution** (or press **Ctrl**+**Shift**+**B**).  
+1. Ensure that the **MsBuildDisableNodeReuse** flag is set (see Configure MSBuild, above).
+2. If the above flag has been set globally, start Visual Studio normally. Otherwise, open Visual Studio from the Visual Studio Developer Command Prompt (where you set the flag value by typing `devenv`).
+3. Within Visual Studio, open the "Ed-Fi-Ods.sln" solution file from the C:\\Ed-Fi-ODS-Implementation\\Application directory.
+4. Select **Build** > **Build Solution** (or press **Ctrl**+**Shift**+**B**).  
 
 <details>
 <summary>View detail and options...</summary>

@@ -4,9 +4,9 @@ The Code Generation tool is an external tool used for generating required
 classes and ORM mappings that are necessary to build the solution. Code generation is
 required when working on the solution to create the core objects, profiles, and
 extensions. This article describes how code generation is built into
-the initdev command for local development and how it can be executed from a CICD pipeline. 
+the initdev command for local development and how it can be executed from a CICD pipeline.
 
-## Running initdev   
+## Running initdev
 
 The code generation utility is integrated into the initdev process. When you
 run Initialize-PowershellForDevelopment.ps followed by initdev (as outlined in the [Getting Started Guide](../../getting-started/readme.md)), the codegen utility is downloaded from MyGet into the tools folder under
@@ -23,7 +23,7 @@ process.
 
 ![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-11-3_11-21-9.png)
 
-##   Manual Execution
+## Manual Execution
 
 The code generation utility can be run from the command line.
 

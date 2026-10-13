@@ -83,7 +83,7 @@ Ensure that the following components are installed:
     3. Click **OK**.
 
     ![windows feature](https://edfi.atlassian.net/wiki/download/thumbnails/25493611/image2021-10-13_16-25-43.png?version=1&modificationDate=1699456099243&cacheVersion=1&api=v2&width=412&height=364)
-    
+
     **.NET 8.0 Hosting Bundle**
 
     Download and install [.NET Hosting Bundle 6.0](https://dotnet.microsoft.com/en-us/download/dotnet/6.0).

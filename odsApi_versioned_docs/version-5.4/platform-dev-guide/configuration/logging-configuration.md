@@ -87,4 +87,3 @@ In production, it's often useful to log more activity such as when troubleshooti
   </root>
 </log4net>
 ```
-

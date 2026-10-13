@@ -34,16 +34,18 @@ Find out more about how to begin using the Ed-Fi ODS / API:
 <details>
   <summary>Getting Started - Binary Installation</summary>
 
-  * [Sandbox Installation Steps](./binary-installation/sandbox-installation-steps.mdx)
-  * [Shared Instance Installation Steps](./binary-installation/shared-instance-installation-steps.md)
-  * [Year-Specific Installation Steps](./binary-installation/year-specific-installation-steps.md)
-  * [Binary Releases](./binary-installation/binary-releases.md)
+* [Sandbox Installation Steps](./binary-installation/sandbox-installation-steps.mdx)
+* [Shared Instance Installation Steps](./binary-installation/shared-instance-installation-steps.md)
+* [Year-Specific Installation Steps](./binary-installation/year-specific-installation-steps.md)
+* [Binary Releases](./binary-installation/binary-releases.md)
+
 </details>
 
 <details>
   <summary>Getting Started - Source Code Installation</summary>
 
-  * [Project Templates Installation](./source-code-installation/project-templates-installation.md)
-  </details>
+* [Project Templates Installation](./source-code-installation/project-templates-installation.md)
+
+</details>
 
 [Getting Started - Appendix](./getting-started-appendix.md)

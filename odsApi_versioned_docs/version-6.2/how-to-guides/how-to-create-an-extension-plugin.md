@@ -7,7 +7,7 @@ to extend it.
 Before you begin:
 
 * This walkthrough assumes you have a working extension project.
-*   This article uses the [student transportation extension](../how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transportation-example.md) as an example.
+* This article uses the [student transportation extension](../how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transportation-example.md) as an example.
 * This example assumes you have the NuGet CLI tool. You can follow the
   instructions for [Installing NuGet Client
   Tools](https://docs.microsoft.com/en-us/nuget/install-nuget-client-tools#nugetexe-cli).
@@ -45,6 +45,7 @@ From a PowerShell session, run the following command to build your extension p
 ```powershell
 & `C:\Program Files\dotnet\dotnet.exe` build `<source directory>\Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleStudentTransportation` --configuration Release
 ```
+
 ![Image](https://edfi.atlassian.net/wiki/download/thumbnails/22774761/image2020-11-4_13-44-34.png?version=1&modificationDate=1641861360863&cacheVersion=1&api=v2&width=1280&height=398)
 
 ### Step 3. Create a NuGet Package
@@ -57,6 +58,7 @@ the same version as the ODS / API for which it was built.
 ```powershell
 NuGet.exe pack <source directory>\Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleStudentTransportation\EdFi.Ods.Extensions.SampleStudentTransportation.nuspec -OutputDirectory <output directory> -Properties configuration=release -NoPackageAnalysis -NoDefaultExcludes
 ```
+
 ![Image](https://edfi.atlassian.net/wiki/download/thumbnails/22774761/image2021-4-7_18-22-23.png?version=1&modificationDate=1641861361270&cacheVersion=1&api=v2&width=840&height=102)
 
 ![Image](https://edfi.atlassian.net/wiki/download/thumbnails/22774761/image2021-3-29_14-18-15.png?version=1&modificationDate=1641861361277&cacheVersion=1&api=v2&width=938&height=687)

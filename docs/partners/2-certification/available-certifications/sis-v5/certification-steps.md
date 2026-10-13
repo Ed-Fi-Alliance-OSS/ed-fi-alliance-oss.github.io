@@ -111,7 +111,7 @@ for details.
 <summary>View detail...</summary>
 
 The provider will show evidence, via a live, synchronous meeting and screen sharing, how the product
- integration follows these [API Integration Best Practices](../../certification-for-data-providers/api-integration-best-practices.md) 
+ integration follows these [API Integration Best Practices](../../certification-for-data-providers/api-integration-best-practices.md)
 
 </details>
 

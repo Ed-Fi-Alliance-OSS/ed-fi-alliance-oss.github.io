@@ -33,6 +33,7 @@ Upon completion of the "Create Account" form, the Sandbox Administration Portal
 will create and send an account activation e-mail. The e-mail settings are
 located in the **appsettings.json** (appsettings.Development.json in a
 development environment) file of the **EdFi.Ods.SandboxAdmin** website.  By default, the e-mails are placed in the C:\Temp\AdminConsole\Artifacts\Emails directory on the computer where the Admin site is running. The default setting is:
+
 ```json
   "MailSettings": {
         "Smtp": {
@@ -48,8 +49,6 @@ development environment) file of the **EdFi.Ods.SandboxAdmin** website.  By defa
 ```
 
 SMTP e-mail settings may be used to configure the settings to use an SMTP relay. See [here](https://docs.microsoft.com/en-us/dotnet/framework/configure-apps/file-schema/network/mailsettings-element-network-settings) for more details.
-
-
 
 ## Obtaining Access and Setting Up Sandboxes
 
@@ -68,13 +67,10 @@ The **Add Sandbox** button allows you to create a new sandbox environment with o
 
 **Figure 3.** Adding a sandbox via the Administration Portal
 
-Clicking the Gear icon brings up features like Delete and the ability to change the assigned application Secret. One useful feature included in that menu is **Get Token**, which performs the OAuth authentication steps using the selected application's credentials and returns an access token. This access token code can be used, for example, in the Swagger documentation or to make sample calls to the ODS / API sandbox as shown in the [Authentication](./authentication.md) section of this documentation. 
+Clicking the Gear icon brings up features like Delete and the ability to change the assigned application Secret. One useful feature included in that menu is **Get Token**, which performs the OAuth authentication steps using the selected application's credentials and returns an access token. This access token code can be used, for example, in the Swagger documentation or to make sample calls to the ODS / API sandbox as shown in the [Authentication](./authentication.md) section of this documentation.
 
 ![Fig 4](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Admin-Portal-Figure-3.png)
 **Figure 4.** Getting an access token using an application's credentials
-
-
-
 
 ### Access to Production
 
@@ -91,4 +87,3 @@ supply connection information for production data systems.
 :::note
 The [ODS / API Admin App](https://edfi.atlassian.net/wiki/spaces/ADMIN/overview) is the tool provided with the ODS / API platform code for configuring access to production.
 :::
-

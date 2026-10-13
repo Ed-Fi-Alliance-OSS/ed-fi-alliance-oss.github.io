@@ -20,15 +20,15 @@ Detail on each step follows.
 1. Add a Profiles Project Using the Visual Studio Project Template. Visual Studio Project Template can be installed by following steps in [Project Templates Installation](../getting-started/source-code-installation/project-templates-installation.md) section of this documentation.
 
    a. Add the Profiles project, right-click on the "Profiles" folder and select File > Add > New Project...
-   
+
    b. In the "Add New Project" dialog, find and select the "Ed-Fi API Profiles Project Template" entry as shown below. Click Next.
-   
+
    ![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/profiles1.webp)
-   
+
    c. Enter the project name for the new project and click Create. The suggested naming convention for this type of project is something like EdFi.Ods.Profiles.MyProfiles.
-   
+
    ![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/profiles2.PNG)
-   
+
 2. Update the Marker Interface File. To integrate the Profiles with the API, start by ensuring you have a marker interface in the root of your Profiles project.
 
    This interface is an idiom used in the Ed-Fi Visual Studio Solution to enable a
@@ -50,10 +50,10 @@ Detail on each step follows.
    example, in the Profile.xml file created by the Visual Studio template,
    School-and-Student-Sample has the resource School, which is extended in the EdFi.Ods.Extensions.Sample and EdFi.Ods.Extensions.TPDM sample extensions. A hard project reference to this Ed-Fi Extension assembly
    must be added to the newly created Profile project.
-   
+
 4. Review and modify Profiles.xml file. The Visual Studio Project Template creates a sample Profiles.xml file. You should open it and modify it to meet the needs of your Profile.
    Consult [API Profiles](../platform-dev-guide/security/api-profiles.md) for guidance.
-   
+
 5. Save the Project.
 
 ## Step 2. Integrate Profiles into the Solution
@@ -61,7 +61,7 @@ Detail on each step follows.
 To integrate the Profiles into the solution, add a reference to the Profiles
 project you constructed in the previous step in the EdFi.Ods.WebApi project (located in the "Entry Points" folder).
 
-## Step 3. Run Code Generation and Verify Changes 
+## Step 3. Run Code Generation and Verify Changes
 
 Save all modified files, close the Ed-Fi-ODS Visual Studio Solution, then re-run
 the code generation steps outlined in the [Getting Started Guide](../getting-started/readme.md) (i.e., from a PowerShell prompt run `Initialize-PowershellForDevelopment.ps1` script followed by the `initdev` command). Then run the application and view the Ed-Fi ODS / API using Swagger.
@@ -101,6 +101,7 @@ The EdFi_Admin tables related to this process are shown below.
 ![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2015-9-3%2019-33-12.png)
 
 ## Downloads
+
 The following GitHub link contains source files for this Profile sample:
 
 [Profile Source Files](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/v5.4/Samples/Project-Profiles-Template)

@@ -37,4 +37,3 @@ Here are some resource highlights for the ODS / API v6.2:
     Profiles](./how-to-guides/how-to-add-profiles-to-the-ed-fi-ods-api.md)
 * [How To: Create a Client
     SDK](./client-developers-guide/using-code-generation-to-create-an-sdk.md)
-

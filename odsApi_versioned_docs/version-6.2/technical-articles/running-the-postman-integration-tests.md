@@ -22,7 +22,6 @@ Many Windows users choose [nvm for Windows](https://github.com/coreybutler/nvm-w
     from a PowerShell prompt run `Initialize-PowershellForDevelopment.ps1` script followed by `Invoke-PostmanIntegrationTests`
     ![PowerShell command](https://edfi.atlassian.net/wiki/download/attachments/22774891/image2021-10-5_16-41-25.png?version=1&modificationDate=1641861367870&cacheVersion=1&api=v2)
 
-
 3. Test results are presented as the tests run
 
 ![PowerShell results](https://edfi.atlassian.net/wiki/download/attachments/22774891/image2021-10-5_16-43-41.png?version=1&modificationDate=1641861367857&cacheVersion=1&api=v2)

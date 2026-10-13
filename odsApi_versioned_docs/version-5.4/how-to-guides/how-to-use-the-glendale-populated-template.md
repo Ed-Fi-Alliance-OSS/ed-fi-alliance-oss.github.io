@@ -64,5 +64,3 @@ There are three test databases available to use with Ed-Fi ODS / API.
 | Default    | 1,000             | Limited breadth. 1 district, 1 high school |
 | Northridge | 25,000            | Greater breadth. 1 district, 4 schools     |
 | Glendale   | 50,000            | Full breadth. 2 districts, 36 schools      |
-
-

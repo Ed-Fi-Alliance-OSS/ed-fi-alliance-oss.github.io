@@ -108,7 +108,7 @@ Descriptors are created in a future step.
 <details>
 <summary><strong>MetaEd Source for PostSecondaryOrganization Entity</strong></summary>
 
-```
+```text
 Domain Entity PostSecondaryOrganization
     documentation "PostSecondaryOrganization"
     shared string EdFi.NameOfInstitution
@@ -135,7 +135,7 @@ that we can extend an existing entity using the `additions` keyword (line 1 in t
 <details>
 <summary><strong>MetaEd Source for StudentAcademicRecordExtensions Entity</strong></summary>
 
-```
+```text
 Domain Entity EdFi.StudentAcademicRecord additions
     documentation "This educational entity represents the cumulative record of academic achievement for a student."
     descriptor SubmissionCertificationDescriptor SubmissionCertification
@@ -164,7 +164,7 @@ code.
 <details>
 <summary><strong>MetaEd Source for ClassRankingExtensions Common Type</strong></summary>
 
-```
+```text
 Common EdFi.ClassRanking additions
     documentation "This entity represents the academic rank information for a student in relation to his or her graduating class."
     descriptor SpecialEducationGraduationStatusDescriptor SpecialEducationGraduationStatus
@@ -200,7 +200,7 @@ Add an InstitutionLevel.metaed file.
 <details>
 <summary><strong>MetaEd Source for InstitutionLevel Descriptor</strong></summary>
 
-```
+```text
 Descriptor InstitutionLevelDescriptor
     documentation "A classification of whether a postsecondary institution's highest level of offering is a program of 4-years or higher (4 year), 2-but-less-than 4-years (2 year), or less than 2-years."
 ```
@@ -214,7 +214,7 @@ Add a SpecialEducationGraduationStatus.metaed file.
 <details>
 <summary><strong>MetaEd Source for SpecialEducationGraduationStatus Descriptor</strong></summary>
 
-```
+```text
 Descriptor SpecialEducationGraduationStatusDescriptor
     documentation "An indication of the special education graduation status of the student."
 ```
@@ -228,7 +228,7 @@ Add a SubmissionCertification.metaed file.
 <details>
 <summary><strong>MetaEd Source for SubmissionCertification Descriptor</strong></summary>
 
-```
+```text
 Descriptor SubmissionCertificationDescriptor
     documentation "An indication of the certification of the reported data."
 ```
@@ -246,7 +246,7 @@ Right-click on the Interchange folder, select New File. Name your file StudentTr
 <details>
 <summary><strong>MetaEd Source for StudentTranscript Interchange</strong></summary>
 
-```
+```text
 Interchange StudentTranscript
     documentation "The Student Transcript interchange describes transcript information for a student from schools and/or school districts. The transcript is a record of courses and grades."
     domain entity PostSecondaryOrganization
@@ -541,7 +541,7 @@ Open command prompt and navigate to root of the ODS / API repository on your
 local drive. This is the folder that contains both Ed-Fi-ODS
 and Ed-Fi-ODS-Implementation repositories. Run the following copy commands:
 
-```
+```text
 xcopy /y "Ed-Fi-ODS\Samples\Extensions\StudentTranscript\StudentTranscriptMetaEd\MetaEdOutput\SampleStudentTranscript\Database\SQLServer\ODS\Structure" "Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleStudentTranscript\Artifacts\MsSql\Structure\Ods\*"
 
 xcopy /y "Ed-Fi-ODS\Samples\Extensions\StudentTranscript\StudentTranscriptMetaEd\MetaEdOutput\SampleStudentTranscript\Database\PostgreSQL\ODS\Structure" "Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleStudentTranscript\Artifacts\PgSql\Structure\Ods\*"

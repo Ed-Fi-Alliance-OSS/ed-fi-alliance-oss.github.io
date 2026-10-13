@@ -86,7 +86,7 @@ and changes in the Ed-Fi ODS / API for Suite 3 v7.1 release, with links to the r
 * [[ODS-6066](https://tracker.ed-fi.org/browse/ODS-6066)] - ClaimSets table should have a unique constraint on ClaimSetName
 * [[ODS-6104](https://tracker.ed-fi.org/browse/ODS-6104)] - Security migration/upgrade not working
 
-## Ed-Fi ODS / API v7.x - Breaking Changes 
+## Ed-Fi ODS / API v7.x - Breaking Changes
 
 Apart from the breaking changes introduced by the data standard, there are some
 breaking changes in the API behavior introduced at the API tech stack
@@ -101,5 +101,3 @@ breaking changes in the API behavior introduced at the API tech stack
 | Validation - Throughout the API surface | ODS / API 7.x now results in error response (instead of ignoring) when primary key value changes are submitted for resource that doesn't allow key updates | ODS-5831 - Data cannot be retrieved due to an unexpected error. |
 
 You can also view release information in Ed-Fi Tracker [here](https://tracker.ed-fi.org/projects/ODS/versions/15609).
-
-

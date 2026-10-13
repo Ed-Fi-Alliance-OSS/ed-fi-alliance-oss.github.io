@@ -14,12 +14,12 @@ Student360 comprises the following screens:
 
 4. Attendance Actions:  Lists students who have accrued attendance makeup hours and the total of their hours, as well as students who have had attendance interventions assigned.  Click on a student name to display each date, the intervention or makeup hours activity assigned, the number of hours (if applicable), and the staff member who input the record.  Hours and interventions may be added/edited directly to the student’s record from this screen, or via a spreadsheet upload. A spreadsheet template is available to download from the screen.
 
-1. Attendance Letters:  Does calculations each night to find students who are eligible for a 3-, 5-, or 10-day attendance warning letter according to TEA guidance.  The resulting letters may be saved in PDF format for printing and mailing, or “archived” (recorded, but removed from view) if it is decided to not send the letter to a student. In either case, a record of the action is made a part of the Attendance Actions associated with each student.  Although all class attendance is recalculated nightly, the letters may be generated for any given date in the past. A dashboard view displays the total number of each type of eligible letter, the age of the oldest unsent letter, and the average age of all the letters of that type, based on the search criteria specified.
-2. Charts:  An Enrollment vs Absence ADA sample chart exists here. Other charts can be added here.
+5. Attendance Letters:  Does calculations each night to find students who are eligible for a 3-, 5-, or 10-day attendance warning letter according to TEA guidance.  The resulting letters may be saved in PDF format for printing and mailing, or “archived” (recorded, but removed from view) if it is decided to not send the letter to a student. In either case, a record of the action is made a part of the Attendance Actions associated with each student.  Although all class attendance is recalculated nightly, the letters may be generated for any given date in the past. A dashboard view displays the total number of each type of eligible letter, the age of the oldest unsent letter, and the average age of all the letters of that type, based on the search criteria specified.
+6. Charts:  An Enrollment vs Absence ADA sample chart exists here. Other charts can be added here.
 
-1. Reports:  Ad-hoc Reports can be easily created using SQL Server Reporting Services and attach to the web application using the licensed Bold Reports\* viewer that has been incorporated into the app.
+7. Reports:  Ad-hoc Reports can be easily created using SQL Server Reporting Services and attach to the web application using the licensed Bold Reports\* viewer that has been incorporated into the app.
 
-1. Student with excessive absences Map. This feature allows users view student locations with excessive absences and check a detailed overview of the absences All within the familiar Google Maps component embedded in the application.
+8. Student with excessive absences Map. This feature allows users view student locations with excessive absences and check a detailed overview of the absences All within the familiar Google Maps component embedded in the application.
 
 **Technical Requirements:**
 

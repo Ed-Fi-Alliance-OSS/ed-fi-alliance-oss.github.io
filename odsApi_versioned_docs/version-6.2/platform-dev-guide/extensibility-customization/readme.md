@@ -25,17 +25,17 @@ technical article has details.
 
 ### Database Partitioning Strategy
 
-Large databases may require partitioning. The default ODS database connection string provider for deployed instances is the "SharedInstance" provider, which provides no database partitioning. This and other providers are pre-packaged into various API modes. Deciding on a database partitioning strategy is something that should be done prior to deployment as migration to another approach may be difficult after production data is loaded and the system is online. 
+Large databases may require partitioning. The default ODS database connection string provider for deployed instances is the "SharedInstance" provider, which provides no database partitioning. This and other providers are pre-packaged into various API modes. Deciding on a database partitioning strategy is something that should be done prior to deployment as migration to another approach may be difficult after production data is loaded and the system is online.
 
 | Database Provider | Partitioning Strategy | appsettings.json  <br/>ApiSettings:Mode value | appsettings.json  <br/>EdFi\_ODS Connection String |
 | --- | --- | --- | --- |
 | Sandbox | One database per application key and secret. | Sandbox | Database=EdFi\_Ods\_Sandbox\_CLIENTKEY  <br/>(substitute actual API client key) |
 | Shared Instance | No partitioning. All applications share one database. Database must be manually "rolled over" before each new school year. | SharedInstance | Database=EdFi\_Ods |
-| Year Specific | Partitioning by year. Different year data is accessed through changing the URL (e.g., http://website-address/data/v3/2021). | YearSpecific | Database=EdFi\_Ods\_YYYY  <br/>(substitute actual current year) |
+| Year Specific | Partitioning by year. Different year data is accessed through changing the URL (e.g., `http://website-address/data/v3/2021`). | YearSpecific | Database=EdFi\_Ods\_YYYY  <br/>(substitute actual current year) |
 | District Specific | Partitioning by district. Different district data is accessed through district ID associated with the API client. To use this option, the API client must be configured for exactly one district ID during API key and secret configuration. | DistrictSpecific | Database=EdFi\_Ods\_DISTRICTID  <br/>(substitute actual district id) |
-| Instance-Year Specific | Partitioning by instance and year. Different instance and year data is accessed through changing the URL (e.g., http://website-address/data/v3/inst-1/2021). Partitioning by-district-by-year is one specific example of this partitioning Strategy. | InstanceYearSpecific | Database=EdFi\_Ods\_INSTNACEID\_YYYY  <br/>(substitute actual instance id and current year) |
+| Instance-Year Specific | Partitioning by instance and year. Different instance and year data is accessed through changing the URL (e.g., `http://website-address/data/v3/inst-1/2021`). Partitioning by-district-by-year is one specific example of this partitioning Strategy. | InstanceYearSpecific | Database=EdFi\_Ods\_INSTNACEID\_YYYY  <br/>(substitute actual instance id and current year) |
 
-Other custom partitioning strategies are possible and have been used to meet the needs of specific implementations. 
+Other custom partitioning strategies are possible and have been used to meet the needs of specific implementations.
 
 ### Security Settings
 

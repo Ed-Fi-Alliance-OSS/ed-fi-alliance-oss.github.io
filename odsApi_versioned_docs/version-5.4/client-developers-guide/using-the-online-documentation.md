@@ -146,4 +146,3 @@ response codes along with human-readable error messages.
 To view the full request and response including the JSON and header values, you
 can use the developer tools included with the browser (typically with an **F12**
 in most browsers).
-

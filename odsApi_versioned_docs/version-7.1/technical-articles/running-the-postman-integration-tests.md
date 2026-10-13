@@ -8,7 +8,6 @@ The following instructions assume that the Ed-Fi ODS / API has been successfully
 
 1. Install NVM, for windows systems you could use [nvm for Windows](https://github.com/coreybutler/nvm-windows/releases)
 
-
 2. As outlined in the [Getting Started Guide](../getting-started/source-code-installation/readme.md), from a PowerShell prompt run `Initialize-PowershellForDevelopment.ps1`, then `initdev -usePlugins`, and finally `Invoke-PostmanIntegrationTests`:
 
     ![image](https://edfi.atlassian.net/wiki/download/thumbnails/25493791/image-2023-10-3_9-7-30.png?version=1&modificationDate=1699456138357&cacheVersion=1&api=v2&width=666&height=146)
@@ -16,8 +15,6 @@ The following instructions assume that the Ed-Fi ODS / API has been successfully
 3. Test results are presented as the tests run:
 
     ![Postman test results summary table](https://edfi.atlassian.net/wiki/download/attachments/25493791/image-2023-10-3_9-17-12.png?version=1&modificationDate=1699456138347&cacheVersion=1&api=v2)
-
-    
 
 :::info
 To capture the execution output of the Postman tests into a log file for full review (since the console window buffer may not be large enough to review the entire results of the test), you can do the following:

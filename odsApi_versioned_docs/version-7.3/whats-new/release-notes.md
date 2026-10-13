@@ -71,7 +71,6 @@ the Git commit history to find the changes for that specific update.
 
 * ODS-6747 - Program Association child item references return default uuid (only 0s) links.
   
-
 ## Ed-Fi ODS / API v7.3-patch2 - Release Notes
 
 ### Bug Fixes

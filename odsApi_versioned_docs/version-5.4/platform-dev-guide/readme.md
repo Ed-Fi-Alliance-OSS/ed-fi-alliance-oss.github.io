@@ -84,4 +84,3 @@ A few things to note:
 
 * The Ed-Fi ODS / API platform is cross platform and clients of the platform can be written in practically any language for any modern operating system. See the [API Client Developers' Guide](../client-developers-guide/readme.md) for details.
 * The Ed-Fi ODS / API platform can run in a variety of server environments, including on-premises hardware, docker or cloud-based platforms like AWS and Azure. See the [Deployment](./deployment/readme.md) section in this documentation for details.
-

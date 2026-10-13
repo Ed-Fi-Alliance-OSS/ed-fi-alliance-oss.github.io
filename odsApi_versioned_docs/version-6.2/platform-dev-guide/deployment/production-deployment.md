@@ -34,7 +34,7 @@ Beyond changes to database connection strings, the Ed-Fi ODS / API is configura
 
 API provides feature on/off flags for several built in features. Also the system can be extended by creating a feature service and registering the service by creating an Autofac module class that inherits from ConditionalModule class. See [Adding Custom ODS / API Features](../../technical-articles/adding-custom-ods-api-features.md) for more information on customizing the application.
 
-Changes to the processing pipelines, caching mechanisms, data repository, and many other considerations can be adapted by changing the corresponding Autofac modules called from the Startup class when the website is loaded. 
+Changes to the processing pipelines, caching mechanisms, data repository, and many other considerations can be adapted by changing the corresponding Autofac modules called from the Startup class when the website is loaded.
 
 API provides database partitioning strategy options, which is configurable via the 'ApiSettings:Mode' application setting in the appsettings.json file.
 
@@ -345,7 +345,7 @@ The as-shipped configuration of the Ed-Fi ODS database does not support multi-ye
 
 ### Per-District Databases
 
-For policy or database size reasons, it may be desirable for some education agencies to implement per-district partitioning strategy. This approach ensures that district data is physically separated from other districts. 
+For policy or database size reasons, it may be desirable for some education agencies to implement per-district partitioning strategy. This approach ensures that district data is physically separated from other districts.
 
 ## Conclusion
 

@@ -8,7 +8,7 @@ Automated data exchange can go wrong for a number of reasons. Some common reason
 * Data quality - users have input bad data that doesn't meet the API's requirements
 * There is a bug ... somewhere!
 
-...and the list goes on. The point is that things **will** go wrong. How your product handles API conditions is critical. 
+...and the list goes on. The point is that things **will** go wrong. How your product handles API conditions is critical.
 
 ## Common Errors
 

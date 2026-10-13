@@ -12,7 +12,7 @@ SaaS providers that offer managed Ed-Fi ODS / API may find it useful to partitio
 
 ### **Isolation**
 
-Data is isolated by Instance and by Year so the data will not leak between multiple Instances nor Years. API security and client access setup is isolated by Instance. 
+Data is isolated by Instance and by Year so the data will not leak between multiple Instances nor Years. API security and client access setup is isolated by Instance.
 
 ### **Data archival**
 
@@ -38,7 +38,7 @@ The ODS / API can be configured for instance-year-specific configuration through
 
 * Within `EdFi_Ods` connection string, add the `{0}` template string to the database name which will be replaced at runtime with the appropriate Instance and Year, for example:
 
-```
+```text
 server=(local);trusted_connection=True;database=EdFi_{0};Application Name=EdFi.Ods.WebApi
 ```
 
@@ -46,7 +46,7 @@ Assuming that Instance = my-instance and Year = 2021 in the request URL, databas
 
 * Within `EdFi_Admin` connection string, add the `{0}` template string to the database name, for example:
 
-```
+```text
 server=(local);trusted_connection=True;database=EdFi_{0};Application Name=EdFi.Ods.WebApi
 ```
 
@@ -54,7 +54,7 @@ Assuming that Instance = my-instance and Year = 2021 in the request URL, databas
 
 * Within `EdFi_Security` connection string, add the `{0}` template string to the database name, for example:
 
-```
+```text
 server=(local);trusted_connection=True;database=EdFi_{0};Application Name=EdFi.Ods.WebApi
 ```
 
@@ -67,4 +67,3 @@ Assuming that Instance = my-instance and Year = 2021 in the request URL, databas
 * SwaggerUI is not available yet for this strategy. See [ODS-4978](https://tracker.ed-fi.org/browse/ODS-4978) for details.
 
 See the [Extensibility & Customization](../extensibility-customization/readme.md) section for information on using Instance-Year-Specific configuration as a facet of a partitioning strategy.
-

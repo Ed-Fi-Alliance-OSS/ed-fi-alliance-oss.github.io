@@ -344,7 +344,7 @@ the assessment that the student is to be tested for this administration of the a
 The following table summarizes the best practice use of the
 StudentAssessmentRegistrationBatteryPartAssociation attributes.
 
- Required | Must Have | Recommended | As Needed |
+ | Required | Must Have | Recommended | As Needed |
 |---|---|---|---|
 | StudentAssessmentRegistration (key) <br/> AssessmentBatteryPart (key) |  | Accommodation |  |
 
@@ -367,7 +367,7 @@ applications for ELL or special education) to indicate what assessment accommoda
 student should generally receive for assessments.  The following table summarizes the best
 practice use of the StudentEducationOrganizationAssessmentAccommodation attributes.
 
- Required | Must Have | Recommended | As Needed |
+ | Required | Must Have | Recommended | As Needed |
 |---|---|---|---|
 | EducationOrganization (key) <br/> Student (key) | GeneralAccommodation |  |  |
 

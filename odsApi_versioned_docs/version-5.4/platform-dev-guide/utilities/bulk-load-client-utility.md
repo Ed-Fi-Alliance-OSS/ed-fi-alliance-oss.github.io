@@ -100,7 +100,7 @@ matching the pattern "*.xml"
 
 | Arg | Long Arg | Description |
 | --- | --- | --- |
-| `b` | `baseurl` | The base url used to derived api, metadata, oauth, and dependency urls (e.g., http://server). If provided, `apiurl`, `dependenciesurl`, `metadataurl`, `oauthurl` and `xsd` parameters can be skipped. |
+| `b` | `baseurl` | The base url used to derived api, metadata, oauth, and dependency urls (e.g., `http://server`). If provided, `apiurl`, `dependenciesurl`, `metadataurl`, `oauthurl` and `xsd` parameters can be skipped. |
 | `c` | `connectionlimit` | Maximum concurrent connections to api |
 | `d` | `data` | Path to folder containing the data files to be submitted |
 | `e` | `extension` | The extension name to download Xsd Schema files for |
@@ -151,7 +151,7 @@ reason, the metadata.json file should be deleted so that new mapping information
 can be stored.
 
 An alternate, and possibly preferred, approach is to include the `-f` flag to force metadata to be reloaded rather than using the locally cached
-information. 
+information.
 
 ## Debugging
 

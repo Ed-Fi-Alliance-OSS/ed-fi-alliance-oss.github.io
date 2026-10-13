@@ -54,15 +54,15 @@ false** will use the default internal in-memory cache.
 In order to use the external cache feature:
 
 * Set external cache - cache provider:
-  *   Redis and SQLServer are currently supported
+  * Redis and SQLServer are currently supported
 * Set external cache configuration
   * Redis
     * Configuration - Comma separated list of host and ports
     * Password (optional) AUTH Password
-*   SQL Server  
-    *   ConnectionString - SQL Server connection string
-    *   SchemaName - SQL Server schema to be used by cache table
-    *   TableName - SQL Server table to store cache in
+* SQL Server  
+  * ConnectionString - SQL Server connection string
+  * SchemaName - SQL Server schema to be used by cache table
+  * TableName - SQL Server table to store cache in
 * Configure which cacheable resource to use external cache for:
     1. ApiClientDetails
     2. Descriptors
@@ -147,7 +147,7 @@ In order to use the external cache feature:
 
 **SQL Server Cache Settings**
 
-```
+```text
 "Caching": {
         "ExternalCacheProvider": "SqlServer",
         "Redis":{

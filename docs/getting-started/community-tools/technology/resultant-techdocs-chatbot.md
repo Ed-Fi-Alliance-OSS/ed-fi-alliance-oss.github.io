@@ -1,6 +1,6 @@
 # Resultant TechDocs Chatbot
 
-<img src="https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/technology/resultant.png" width="250" />
+<img src="https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/technology/resultant.png" alt="Resultant logo" width="250" />
 
 ## Description
 

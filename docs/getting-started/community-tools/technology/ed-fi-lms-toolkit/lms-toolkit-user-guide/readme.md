@@ -127,7 +127,7 @@ In addition to the tables created by the LMS Data Store Loader, in the `lms`  
 
    3. Run `initdev` from the root of the Ed-Fi-ODS-Implementation directory.
 
-      ```
+      ```text
       ./Initialize-PowershellForDevelopment.ps1
        Initdev
       ```
@@ -138,7 +138,7 @@ In addition to the tables created by the LMS Data Store Loader, in the `lms`  
 
          * If you have `nuget.exe` you can download and extract files with the following command. This will create directory `EdFi.Suite3.RestApi.Databases.5.2.14406` in the current working directory. See link above for other available versions, matching the ODS/API releases:
 
-             ```
+             ```text
              $url = "https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi%40Release/nuget/v3/index.json"
              nuget.exe install EdFi.Suite3.RestApi.Databases -version 5.2.14406 -source $url
              ```

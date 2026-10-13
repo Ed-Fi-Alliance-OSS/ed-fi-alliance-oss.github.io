@@ -54,7 +54,7 @@ automatically handles naming and placement of these scripts. If you need to
 provide additional database objects to support your customization, they should
 be placed here as well.
 
-The [How To: Extend the ODS / API - Student Transportation Example](../../how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transportation-example.md) 
+The [How To: Extend the ODS / API - Student Transportation Example](../../how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transportation-example.md)
 and [How To: Extend the Ed-Fi ODS / API - Student Transcript
 Example](../../how-to-guides/how-to-extend-the-ed-fi-ods-api-student-transcript-example.md)
 articles explain how to set up security for your extensions using this

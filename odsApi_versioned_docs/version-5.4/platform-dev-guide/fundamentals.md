@@ -92,4 +92,3 @@ In the Continuous Integration software development methodology, a build and inte
 The Ed-Fi ODS / API is an ideal data source to populate an instance of the [Ed-Fi Dashboards](https://edfi.atlassian.net/wiki/spaces/DASH20).[^1] The Dashboards display a range of student performance metrics in a compelling interface. The ODS database contains the full spectrum of information needed to populate the Dashboards, and the data structures in the ODS are tuned to the data loaders that ship with the Dashboards. This similarity allows for a simplified data import and metrics computation in organizations where the Ed-Fi Dashboards are used.
 
 <sup>1</sup> See the [Ed-Fi Technical Suite Compatibility Matrix](https://edfi.atlassian.net/wiki/spaces/ETKB/pages/20875825/Ed-Fi+Technical+Suite+Version+Matrix) for the latest details on the Ed-Fi products that are compatible with the ODS / API.
-

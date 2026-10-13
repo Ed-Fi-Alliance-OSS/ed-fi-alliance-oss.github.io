@@ -6,7 +6,7 @@ Authorization takes place after authentication is established. The purpose of au
 
 With each request made to the API, the token obtained from the authentication process must be passed in an HTTP header:
 
-```
+```text
 Authorization: Bearer <token_value>
 ```
 
@@ -29,13 +29,17 @@ An ownership-based authorization strategy is used for assessment metadata, enabl
 API Profiles enable an Ed-Fi ODS / API platform host to constrain the data exposed from specific resources to meet the needs of individual use cases. When an API client is assigned a profile, API responses for resources covered by the profile are served on a profile-specific media-type. To use a profile, callers can add media-type information to their requests.
 
 For read operations, this takes the form of an Accept header:
-```
+
+```text
 Accept: application/vnd.ed-fi.student.nutrition.readable+json
 ```
+
 For write operations, the Content-Type header:
-```
+
+```text
 Content-Type: application/vnd.ed-fi.student.nutrition.writable+json
 ```
+
 Any extra data passed in the message body can (and generally will) be quietly discarded by the server.
 
 API clients assigned only one profile covering the accessed Resource can omit the media-type headers or use standard 'application/json', and the Ed-Fi ODS /API will auto apply the assigned profile. API clients assigned with more than one profile covering the accessed Resource MUST include the media-type headers for one of the applicable profiles. Failing to provide a valid profile header will result in an error response.
@@ -47,12 +51,14 @@ The Ed-Fi API provides a way to get information about education organizations, n
 POST to the `/oauth/token_info` endpoint with an HTTP Authorization header as "Bearer XYZ" where "XYZ" is the access token. The same access token must be sent in the request body in the `token` parameter.
 
 Example PowerShell:
+
 ```powershell
 $response = Invoke-RestMethod -Method Post -Uri "https://api.ed-fi.org/v7.1/api/oauth/token_info" -Headers @{ "Authorization" = "Bearer 385432d854194fd5bb09fe08092353b5" } -Body @{ "token" = "385432d854194fd5bb09fe08092353b5"; }
 $response | ConvertTo-Json
 ```
 
 Example response:
+
 ```json
 {
   "active": true,
@@ -73,4 +79,5 @@ Example response:
 Now that you've seen how to authenticate and authorize a client application, let's look at how to design an elegant solution by trapping errors and leveraging best practices learned from hard-won experience. The [Error Handling & Best Practices](./error-handling-best-practices.md) section walks you through the details.
 
 Downloads:
+
 * [Ed-Fi API Client Developer Postman Example](https://edfi.atlassian.net/wiki/download/attachments/20480666/Ed-Fi%20API%20Client%20Developer%20Postman%20Example.zip?version=3&modificationDate=1527887971107&api=v2&download=true)

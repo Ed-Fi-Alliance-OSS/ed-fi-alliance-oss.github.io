@@ -67,7 +67,7 @@ These rules apply to every page written for v8.0 docs.
 
 ## Proposed File Tree
 
-```
+```text
 odsApi_versioned_docs/version-8.0/
 ├── readme.md
 │
@@ -190,6 +190,7 @@ Admin API, deployment model, no in-place migration) and feature availability tab
 started path. Links to docker-compose files in the DMS repo.
 
 **`docker-deployment.md`** — Step-by-step using `start-local-dms.ps1`:
+
 1. Clone repo / pull images
 2. Run `./start-local-dms.ps1` (flags for Swagger UI, Keycloak, etc.)
 3. Register a data store with `./configure-local-data-store.ps1`
@@ -237,6 +238,7 @@ structured logging fields.
 #### `deployment/`
 
 **`database-provisioning.md`** — `dms-schema` CLI in depth:
+
 - `dms-schema ddl emit` — generate DDL scripts
 - `dms-schema ddl provision` — apply DDL to a target database
 - `dms-schema hash` — compute schema fingerprint
@@ -259,6 +261,7 @@ Stub pages for sidebar navigation only. Full content is in `configuration/`.
 the Ed-Fi API reads `APISchema.json` files at startup, not compiled plugins.
 
 **`extending-with-metaed.md`** — Step-by-step extension authoring:
+
 1. Author extension data model in MetaEd
 2. MetaEd generates extension `APISchema.json`
 3. Place `APISchema.json` in the directory pointed to by `AppSettings__ApiSchemaPath`
@@ -346,6 +349,7 @@ school-year-specific data stores, test routing.
 install and for updating after adding extensions.
 
 Carry over from 7.3 (with updates):
+
 - `how-to-configure-key-secret.md` — via Config Service API now, not Admin App
 - `how-to-configure-claim-sets.md` — via Config Service API
 - `how-to-add-profiles.md` — upload profile XML to Config Service

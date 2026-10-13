@@ -56,6 +56,7 @@ Examples of name shortening:
 | Assessment | AssessmentPeriod | AssessmentPeriod | periods |
 
 Exceptions to name shortening:
+
 * Name shortening is not applied to known identifiers like 'USI', 'Id', and 'TypeId'.
 * Name shortening is not applied to the properties that are resource references.
 * Name shortening is not applied to scalar properties.

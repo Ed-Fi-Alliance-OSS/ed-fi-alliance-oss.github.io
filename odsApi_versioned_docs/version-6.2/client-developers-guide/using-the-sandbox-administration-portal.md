@@ -22,7 +22,7 @@ By logging into the Sandbox Administration Portal using an Admin account,
 platform hosts can provision access to vendors to manage their sandboxes. In the
 navigation bar at the top, click on **Manage Accounts** > **Create Account**
 
-![](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-4-3_11-7-54.png)
+![Create Account screen in the Sandbox Administration Portal](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-4-3_11-7-54.png)
 
 **Figure 1.** Creating new users using the Administration Portal
 
@@ -72,10 +72,9 @@ without sample data will still include the lookup data.
 
 **Figure 3.** Adding a sandbox via the Administration Portal
 
-Clicking the Gear icon brings up features like Delete and the ability to change the assigned application Secret. One useful feature included in that menu is **Get Token**, which performs the OAuth authentication steps using the selected application's credentials and returns an access token. This access token code can be used, for example, in the Swagger documentation or to make sample calls to the ODS / API sandbox as shown in the [Authentication](./authentication.md) section of this documentation. 
+Clicking the Gear icon brings up features like Delete and the ability to change the assigned application Secret. One useful feature included in that menu is **Get Token**, which performs the OAuth authentication steps using the selected application's credentials and returns an access token. This access token code can be used, for example, in the Swagger documentation or to make sample calls to the ODS / API sandbox as shown in the [Authentication](./authentication.md) section of this documentation.
 
 ![Fig 4](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Admin-Portal-Figure-3.png)
-
 
 **Figure 4.** Getting an access token using an application's credentials
 

@@ -75,9 +75,9 @@ When your pull request enters the queue, GitHub creates a temporary merged conte
 
 For maintainers configuring branch protection:
 
-- Enable **Require merge queue** for `main`.
-- Keep required checks aligned with the jobs in the `On Pull Request` workflow so queued pull requests must pass the same validation in the merged queue context.
-- Validate the queue by merging at least one pull request through the queue and confirming required checks complete successfully before auto-merge.
+* Enable **Require merge queue** for `main`.
+* Keep required checks aligned with the jobs in the `On Pull Request` workflow so queued pull requests must pass the same validation in the merged queue context.
+* Validate the queue by merging at least one pull request through the queue and confirming required checks complete successfully before auto-merge.
 
 ## AI Tool Usage
 

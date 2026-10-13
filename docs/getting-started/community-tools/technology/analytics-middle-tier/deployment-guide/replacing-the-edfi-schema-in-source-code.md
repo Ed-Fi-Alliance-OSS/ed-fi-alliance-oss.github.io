@@ -22,8 +22,8 @@ Analytics Middle Tier over a customized database can do so.
     ([https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Analytics-Middle-Tier](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Analytics-Middle-Tier)).
 2. Clone the fork onto a developer computer.
 3. Place the following script in the root repository
-    directory: 
-    
+    directory:
+
     ```powershell title="amt-change-source-schema.ps1"
         <#
         This script will change all AMT SQL scripts to use a different schema in place
@@ -52,6 +52,7 @@ Analytics Middle Tier over a customized database can do so.
             $content | Out-File -FilePath $filePath -Encoding UTF8
         }
    ```
+
 4. Execute the script against the desired release tag (for example, "2.0.0" for
     the AMT 2.0.0 release), commit all changes in a new branch, and push back to
     GitHub.\*
