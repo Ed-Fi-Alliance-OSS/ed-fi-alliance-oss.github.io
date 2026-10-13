@@ -1,0 +1,15 @@
+---
+config:
+  layout: fixed
+  flowchart: 
+    wrappingWidth: 300
+---
+flowchart TB
+    primaryRelationships["<b>primaryRelationships</b><br>C: RelationshipWithEdOrgsOnly<br>R: RelationshipWithEdOrgsAndPeople<br>U: RelationshipWithEdOrgsAndPeople<br>D: RelationshipWithEdOrgsAndPeople"] --> staffEdOrganizationOrganizationAssociation["<b>staffEdOrganizationOrganizationAssociation (ed-fi)</b><br>C | R | U | D"] & staffEdOrganizationEmploymentAssociation["<b>staffEdOrganizationEmploymentAssociation (ed-fi)</b><br>C | R | U | D"] & studentContactAssociation["<b>studentContactAssociation (ed-fi)</b><br>C: RelationshipWithStudentsOnly<br>R: RelationshipWithStudentsOnly<br>U: RelationshipWithStudentsOnly<br>D: RelationshipWithStudentsOnly"] & studentSchoolAssociation["<b>studentSchoolAssociation (ed-fi)</b><br>C | R | U | D"]
+    staffEdOrganizationOrganizationAssociation --> educationOrganization["<b>educationOrganization</b><br>C: NoParentAuthorizationRequired<br>R: NoParentAuthorizationRequired<br>U: NoParentAuthorizationRequired<br>D: NoParentAuthorizationRequired"]
+    staffEdOrganizationEmploymentAssociation --> educationOrganization
+    studentContactAssociation --> educationOrganization
+    studentSchoolAssociation --> educationOrganization
+    educationOrganization --> communityOrganization["<b>communityOrganization (ed-fi)</b><br>C | R | U | D"] & communityProvider["<b>communityProvider (ed-fi)</b><br>C | R | U | D"] & educationOrganizationNetwork["<b>educationOrganizationNetwork (ed-fi)</b><br>C | R | U | D"] & educationServiceCenter["<b>educationServiceCenter (ed-fi)</b><br>C | R | U | D"] & localEducationAgency["<b>localEducationAgency (ed-fi)</b><br>C | R | U | D"] & postSecondaryInstitution["<b>postSecondaryInstitution (ed-fi)</b><br>C | R | U | D"] & school["<b>school (ed-fi)</b><br>C | R | U | D"] & staffEducationAgency["<b>staffEducationAgency (ed-fi)</b><br>C | R | U | D"] & organizationDepartment["<b>organizationDepartment (ed-fi)</b><br>C: RelationshipWithEdOrgsAndPeople<br>R: RelationshipWithEdOrgsAndPeople<br>U: RelationshipWithEdOrgsAndPeople<br>D: RelationshipWithEdOrgsAndPeople"] & people["<b>people</b><br>C: NoFurtherAuthorizationRequired<br>R: RelationshipWithEdOrgsAndPeople<br>U: RelationshipWithEdOrgsAndPeople<br>D: NoFurtherAuthorizationRequired"]
+    organizationDepartment --> people
+    people --> candidate["<b>candidate (ed-fi)</b><br>C: NoFurtherAuthorizationRequired<br>R: NoFurtherAuthorizationRequired<br>U: NoFurtherAuthorizationRequired<br>D: NoFurtherAuthorizationRequired"] & contact["<b>contact (ed-fi)</b><br>C | R | U | D"] & staff["<b>staff (ed-fi)</b><br>C | R | U | D"] & staffDirectory["<b>staffDirectory (ed-fi)</b><br>C | R | U | D"] & student["<b>student (ed-fi)</b><br>C | R | U | D"] & studentDirectory["<b>studentDirectory (ed-fi)</b><br>C | R | U | D"]

@@ -96,7 +96,7 @@ API](/reference/admin-api) documentation.
 Some platform hosts may wish to extend or create their own security model. Since
 the ODS / API is open source, the built-in security can be extended in a number
 of ways. The [API Claim Sets &
-Resources](./api-claim-sets-resources.md) section of
+Resources](./api-claim-sets-resources.mdx) section of
 this documentation provides detail on the resources and claims implementation in
 the ODS / API solution. Meanwhile, the [Security Configuration Data
 Stores](./security-configuration-data-stores.md) section
