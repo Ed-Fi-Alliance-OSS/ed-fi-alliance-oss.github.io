@@ -137,13 +137,16 @@ The API Publisher has three options to use the product. It runs on
 The Docker image for the Ed-Fi API Publisher is available here:
 [Ed-Fi API Publisher tag v1.4.0 on Docker Hub](https://hub.docker.com/r/edfialliance/ods-api-publisher/tags).
 Use this to include in your Docker environment and alongside other components of
-the Ed-Fi stack. To build and run the API Publisher with Docker Compose, see
+the Ed-Fi stack. The image includes the .NET runtime. To build and run the API
+Publisher with Docker Compose, see
 [Running in Docker Desktop](Running-in-docker-desktop.md).
 
 #### Option 3 - Build the API Publisher from source code
 
-If you would like to build the API Publisher from source, build the solution by
-running the following command from the repository's `src` directory:
+Building from source requires the
+[.NET 10 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/10.0). Build
+the solution by running the following command from the repository's `src`
+directory:
 
 ```powershell
  dotnet build
