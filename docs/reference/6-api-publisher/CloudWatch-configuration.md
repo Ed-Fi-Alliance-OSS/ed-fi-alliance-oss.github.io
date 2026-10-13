@@ -7,7 +7,7 @@ securely storing keys and secrets in the
 ## Configure AWS SDK
 
 Ensure that the AWS SDK has the necessary
-[configured AWS credentials](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/net-dg-config-creds.html).
+[configured AWS credentials](https://docs.aws.amazon.com/sdk-for-net/v4/developer-guide/creds-assign.html).
 
 ## Configure API Publisher
 

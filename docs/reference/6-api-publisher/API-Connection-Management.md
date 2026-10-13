@@ -56,17 +56,3 @@ settings needed for defining a named API connection are described below.
 | `/ed-fi/apiPublisher/connections/`<br/>`_{connectionName}_/exclude` | String | (_Optional_) For _source_ API connections, the resources (and their dependents) to NOT publish to the target. The value is defined using the same format as with `--include` (see above). The Ed-Fi API Publisher will also evaluate and automatically exclude all dependent resources of the excluded resources (using the dependency metadata exposed by the target API). This will ensure (barring misconfigured authorization metadata or data policies) that data can be successfully published to the target API. |
 | `/ed-fi/apiPublisher/connections/`<br/>`_{connectionName}_/excludeOnly` | String | (_Optional_) For _source_ API connections, the specific resources to skip publishing to the target (dependent resources will still be published). The value is defined using the same format as with `--include` (see above).<br/><br/> NOTE: Use caution when publishing without automatically including all dependencies. |
 | `/ed-fi/apiPublisher/connections/`<br/>`_{connectionName}_/lastChangeVersionsProcessed` | String | _(Optional)_ For _source_ API connections, contains a JSON object, keyed by target API name, that indicates the last change version successfully published from the source to the target. This value is automatically created/updated by the Ed-Fi API Publisher after successfully completing the publishing process. |
-
-## Screenshots
-
-### SQL Server Configuration
-
-![SQL Server](img/Sql-Server-configuration-store-example.png)
-
-### PostgreSQL Configuration
-
-![PostgreSQL](img/PostgreSql-configuration-store-example.png)
-
-### AWS Parameter Store Configuration
-
-![AWS](img/Aws-Parameter-Store-configuration-store-example.png)
