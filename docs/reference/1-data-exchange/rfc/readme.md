@@ -58,6 +58,6 @@ certification.
 
 Approved changes are published in a versioned release of the Ed-Fi Data
 Standard, which uses semantic versioning. New material may first be published
-as _early access_ when it is not yet fully verified as stable, and the "EARLY
+as _early access_ when it is not yet fully verified as stable. The "EARLY
 ACCESS" label is removed in a later release once the material matures. See
 [Ed-Fi Data Standard Versioning and Releases](../versioning-and-releases.md).
