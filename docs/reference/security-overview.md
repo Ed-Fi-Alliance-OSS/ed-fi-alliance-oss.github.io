@@ -35,8 +35,9 @@ its own users can see, using its local accounts and roles. The API host controls
 what data the application as a whole can reach.
 
 - In the **Ed-Fi ODS/API**, the API itself issues tokens.
-- In **Ed-Fi API v8**, the Ed-Fi API Configuration Service issues tokens, using
-  either its built-in identity provider or Keycloak.
+- In **Ed-Fi API v8**, tokens come from the Configuration Service's built-in
+  identity provider, or from Keycloak when the host selects that provider. See
+  [Identity Provider Configuration](/reference/ed-fi-api/8/platform-dev-guide/configuration/identity-provider).
 
 ## Claim Sets: What an Application Can Do
 
