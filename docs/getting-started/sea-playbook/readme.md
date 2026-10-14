@@ -51,7 +51,7 @@ playbook.
    RFPs](./project-planning/requiring-ed-fi-certification-in-state-rfps.md).
 3. **Pilot, run in parallel, then go to production.** Pilot with core data
    elements and a small group of districts and vendors, run Ed-Fi-based
-   collection alongside the legacy system for a school year, then move to
+   collection alongside the legacy system, then move to
    production. See [The Four
    Stages](./ed-fi-overview-and-implementation-playbook.md#the-four-stages).
 
