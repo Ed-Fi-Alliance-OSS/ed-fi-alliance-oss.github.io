@@ -52,6 +52,23 @@ and supporting functions for a Sandbox instance:
   * **`EdFi_Security`.** A database containing authorization information for
         API clients.
 
+### Minimal Template, Populated Template, and Sandboxes
+
+The ODS / API ships two template databases. A sandbox is not a third template;
+it is a working ODS copied from one of them.
+
+| Database                                           | What it contains                                                                                                     | When to use it                                                                                                           |
+| -------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| Minimal template (`EdFi_Ods_Minimal_Template`)     | The ODS schema and the Ed-Fi core descriptors (the TPDM variant adds TPDM core descriptors). No sample data.         | Starting point for a production ODS, and for empty sandboxes (Sandbox Admin type `Minimal`).                             |
+| Populated template (`EdFi_Ods_Populated_Template`) | The minimal contents plus a fictional sample dataset of about 1,000 students.                                        | Sandboxes for client development and testing that need realistic data (Sandbox Admin type `Sample`). Not for production. |
+| Sandbox (`EdFi_Ods_*`)                             | A copy of the minimal or populated template, created by the Sandbox Administration UI for a specific key and secret. | Day-to-day client development against a disposable ODS that can be refreshed to a clean state.                           |
+
+You can replace the populated template's sample data with a larger dataset or
+your own data. See [How To: Use the Northridge Populated
+Template](../../how-to-guides/how-to-use-the-northridge-populated-template.md)
+and [How To: Create a Custom Populated
+Template](../../how-to-guides/how-to-create-a-custom-populated-template.md).
+
 ## Sandbox Security
 
 The Sandbox system is, by definition, a test system so it has a different
