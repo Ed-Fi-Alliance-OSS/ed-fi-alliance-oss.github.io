@@ -144,6 +144,23 @@ The Ed-Fi ODS / API supports the following HTTP verbs:
   identify resources that support natural key updates.
 * **DELETE** An HTTP DELETE deletes an existing individual resource.
 
+### JSON Member Order
+
+The order of members within a JSON object is never significant. [RFC
+8259](https://www.rfc-editor.org/rfc/rfc8259), the JSON specification, defines
+an object as an unordered collection of name/value pairs, and the Ed-Fi ODS / API
+follows that rule. For example, the identity members of a resource or of a
+reference such as `studentReference` or `schoolReference` can appear in any
+order in a request body. Clients should not depend on the order of members in a
+response either.
+
+Member order is different from resource load order, which does matter. A
+resource can only be created after the resources it references exist: for
+example, a `StudentSchoolAssociation` requires the `Student` and the `School`
+to be loaded first. See [Resource Dependency
+Order](./resource-dependency-order/readme.mdx) for the order in which to load
+resources.
+
 ## Security
 
 How is the student information exchanged between clients and platforms kept
