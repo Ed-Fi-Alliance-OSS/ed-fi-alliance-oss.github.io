@@ -114,5 +114,5 @@ This is just a representative example. Naturally, you will need to modify
 
 :::info note:
   The following ZIP file is the source for this example:
-  [di-powershell-csv-preprocessor-example.zip](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/technical-articles/di-powershell-csv-preprocessor-example.zip)
+  [di-powershell-csv-preprocessor-example.zip](https://edfidocs.blob.core.windows.net/$web/assets/reference/6-data-import/technical-articles/di-powershell-csv-preprocessor-example.zip)
 :::
