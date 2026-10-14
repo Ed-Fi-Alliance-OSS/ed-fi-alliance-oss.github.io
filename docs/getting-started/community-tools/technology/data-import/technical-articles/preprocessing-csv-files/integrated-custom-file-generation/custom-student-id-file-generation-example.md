@@ -27,7 +27,7 @@ We also have a table called StudentLookups defined with StudentUSI as the
 primary key and StudentUniqueId as the value. Here is a snippet of some of the
 records in that table:
 
-![dbo.StudentLookups](https://edfi.atlassian.net/wiki/download/thumbnails/24117519/image2020-1-23_15-39-12.png?version=1&modificationDate=1579816932767&cacheVersion=1&api=v2&width=134&height=114)
+![dbo.StudentLookups](https://edfidocs.blob.core.windows.net/$web/img/reference/6-data-import/technical-articles/preprocessing-csv-files/integrated-custom-file-generation/image2020-1-23_15-39-12.png)
 
 A custom script to "look up" the Student Unique Id from the Student USI looks
 like this:
@@ -111,4 +111,4 @@ for the looked-up value in that column.
 When we run Transform/Load, we will encounter success. The _Logs \\ Ingestion_
 screen shows the looked-up StudentUniqueId value that was POSTed to the ODS:
 
-![Import Logs](https://edfi.atlassian.net/wiki/download/thumbnails/24117519/image2020-1-23_15-53-40.png?version=1&modificationDate=1579816932637&cacheVersion=1&api=v2&width=920&height=345)
+![Import Logs](https://edfidocs.blob.core.windows.net/$web/img/reference/6-data-import/technical-articles/preprocessing-csv-files/integrated-custom-file-generation/image2020-1-23_15-53-40.png)

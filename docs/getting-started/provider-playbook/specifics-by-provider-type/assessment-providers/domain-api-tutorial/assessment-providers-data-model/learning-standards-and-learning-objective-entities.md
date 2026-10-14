@@ -30,7 +30,7 @@ Generally, most APIs are pre-configured with learning standards data published b
 
 To return to the sample data report, we saw in previous sections that the sample was organized into a number of ObjectiveAssessments, and that each ObjectiveAssessment corresponds to a learning standard.
 
-![MathWhale objective assessment](https://edfi.atlassian.net/wiki/download/thumbnails/22905208/mathwhale-objassessment.png?version=2&modificationDate=1561126822437&cacheVersion=1&api=v2&width=746&height=291)
+![MathWhale objective assessment](https://edfidocs.blob.core.windows.net/$web/img/getting-started/provider-playbook/specifics-by-provider-type/assessment-providers/assessment-providers-implementation/assessment-providers-data-model/mathwhale-objassessment.png)
 
 _Figure 1: the learning standards (surrounded in a red box)._
 

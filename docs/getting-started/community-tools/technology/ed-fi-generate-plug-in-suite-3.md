@@ -9,7 +9,7 @@ The Ed-Fi Generate plug-in provides a standard means to transfer data from an Ed
 ## Download
 
 * **Code:** [https://github.com/Ed-Fi-Exchange-OSS/Ed-Fi-to-Generate](https://github.com/Ed-Fi-Exchange-OSS/Ed-Fi-to-Generate)
-* **Documentation:** [Ed-Fi 3.x to Generate Plug In Implementation Guide v1.0.docx](https://edfi.atlassian.net/wiki/download/attachments/22490313/Ed-Fi%203.x%20to%20Generate%20Plug%20In%20Implementation%20Guide%20v1.0.docx?version=1&modificationDate=1588806894523&cacheVersion=1&api=v2)
+* **Documentation:** [Ed-Fi 3.x to Generate Plug In Implementation Guide v1.0.docx](https://edfidocs.blob.core.windows.net/$web/assets/getting-started/edfi-exchange/technology/Ed-Fi%203.x%20to%20Generate%20Plug%20In%20Implementation%20Guide%20v1.0.docx)
 
 ## Details
 

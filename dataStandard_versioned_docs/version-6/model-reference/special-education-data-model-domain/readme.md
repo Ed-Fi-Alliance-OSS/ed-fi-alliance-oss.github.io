@@ -7,6 +7,24 @@ on its viability for possible future enhancements. This domain may change outsid
 
 :::
 
+**Does the Ed-Fi Data Standard support special education data?** Yes, in two
+ways:
+
+* **Program participation and eligibility** are part of the standard, through
+  `StudentSpecialEducationProgramAssociation` and
+  `StudentSpecialEducationProgramEligibilityAssociation` in the [Alternative
+  and Supplemental Services
+  domain](../alternative-and-supplemental-services-domain/readme.md).
+* **The IEP and IDEA events** are modeled by this domain, the Special Education
+  Data Model (SEDM), which is early access in Data Standard 6.1. It adds IDEA
+  events, IEPs, IEP goals, and prescribed and delivered services.
+
+The SEDM complements the program association rather than replacing it; program
+participation should still be recorded there. See [Differences from
+StudentSpecialEducationProgramAssociation](./overview.md#differences-from-studentspecialeducationprogramassociation)
+and [Early Access
+Material](/reference/data-exchange/versioning-and-releases#early-access-material).
+
 This model is expected to evolve, initial implementation is recommended through special education vendors rather than general SIS vendors. This approach helps maintain SIS code stability while the SEDM model matures.
 
 The Special Education Data Model Domain provides the ability to record and track a student's special education journey as it develops.

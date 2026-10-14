@@ -51,7 +51,7 @@ above](https://learn.microsoft.com/en-us/powershell/scripting/install/installing
 Download and install the latest [.NET SDK 8.0 (Compatible with Visual Studio
 2022)](https://dotnet.microsoft.com/en-us/download/dotnet/8.0).
 
-![.NET 8.0 SDK](https://edfi.atlassian.net/wiki/download/thumbnails/22774233/image2024-10-31_14-12-25.png?version=1&modificationDate=1730401946958&cacheVersion=1&api=v2&width=812&height=491)
+![.NET 8.0 SDK](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2024-10-31_14-12-25.png)
 
 
 :::tip
@@ -291,7 +291,7 @@ The Ed-Fi ODS / API can be found in the repository links below:
 
 Use a Git client (such as [GitHub Desktop](https://desktop.github.com/)) or a Git command line tool to Git Clone each of the repository links described above. It is important that both repositories are extracted to the same root directory (for example C:\\). When both repositories have been cloned, there will be two folders for the ODS / API source code as shown below:
 
-![Cloned Folders](https://edfi.atlassian.net/wiki/download/thumbnails/22774233/Step-3-Fig-2.png?version=1&modificationDate=1641861345380&cacheVersion=1&api=v2&width=203&height=42)
+![Cloned Folders](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Step-3-Fig-2.png)
 
 
 ```none title="File listing"
@@ -469,7 +469,7 @@ in the solution. Some considerations while running the script:
 A successful `initdev` execution will display the tasks executed and their
 duration as shown below:
 
-![Initdev Success](https://edfi.atlassian.net/wiki/download/thumbnails/22774233/image2021-2-4_12-3-8.png?version=1&modificationDate=1641861346387&cacheVersion=1&api=v2&width=462&height=262)
+![Initdev Success](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-2-4_12-3-8.png)
 
 ![](https://edfi.atlassian.net/wiki/images/icons/grey_arrow_down.png)
 
@@ -678,6 +678,6 @@ for details.
 :::note
 
 The following link contains sample docker setup files for PostgreSQL
-[PGDockerSetup.zip](https://edfi.atlassian.net/wiki/download/attachments/18219161/PGDockerSetup.zip?version=1&modificationDate=1710953711567&cacheVersion=1&api=v2)
+[PGDockerSetup.zip](https://edfidocs.blob.core.windows.net/$web/assets/reference/ods-api/PGDockerSetup.zip)
 
 :::

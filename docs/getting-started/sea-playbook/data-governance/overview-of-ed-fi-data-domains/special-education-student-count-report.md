@@ -8,7 +8,7 @@ AZ - OCT1 FED SPED Report provides a list of students receiving special student 
 
 ## Model Navigation Special Education
 
-![Model Navigation Special Education Diagram](https://edfi.atlassian.net/wiki/download/attachments/22906370/image2019-6-15_17-42-58.png?api=v2) |
+![Model Navigation Special Education Diagram](https://edfidocs.blob.core.windows.net/$web/img/getting-started/sea-playbook/data-governance/overview-of-ed-fi-data-domains/image2019-6-15_17-42-58.png) |
 
 ## Special Education Count Report (DRAFT ONLY)
 

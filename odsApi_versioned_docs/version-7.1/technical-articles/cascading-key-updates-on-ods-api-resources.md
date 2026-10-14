@@ -157,7 +157,7 @@ For configuring cascading key updates on the extension resource, simply add the
 extension project. For more details on creating Ed-Fi Extensions, see
 [here](../how-to-guides/how-to-extend-the-ed-fi-ods-api-alternative-education-program-example.md).
 
-![image](https://edfi.atlassian.net/wiki/download/thumbnails/25493781/image2022-7-26_16-5-3.png?version=1&modificationDate=1699456135677&cacheVersion=1&api=v2&width=1138&height=250)
+![image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-7.1/image2022-7-26_16-5-3.png)
 
 For more details on Table Cascading Updates, see [Cascading Referential
 Integrity](https://learn.microsoft.com/en-us/sql/relational-databases/tables/primary-and-foreign-key-constraints?view=sql-server-ver16#cascading-referential-integrity).

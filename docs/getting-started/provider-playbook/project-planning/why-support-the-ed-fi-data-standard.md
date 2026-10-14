@@ -10,7 +10,7 @@ You may be barraged with "one-off" requests for data in or data out from your cu
 
 Their systems end up looking and functioning much like a spaghetti bowl—difficult to untangle and extract value from:
 
-![Agency Architecture](https://edfi.atlassian.net/wiki/download/attachments/22905129/agency-architecture.png?version=1&modificationDate=1569247541193&cacheVersion=1&api=v2)
+![Agency Architecture](https://edfidocs.blob.core.windows.net/$web/img/getting-started/provider-playbook/project-planning/agency-architecture.png)
 
 _Education agency architectures to link systems result in more time fixing internal pipes and less time making better use of data._
 
