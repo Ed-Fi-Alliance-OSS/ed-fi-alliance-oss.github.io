@@ -3,13 +3,16 @@
 ## How Does a Technology Provider Integrate with Ed-Fi?
 
 A technology provider integrates by building an API client that sends data from
-its product to an education agency's Ed-Fi API. The agency hosts the API and
-gives the provider a key and secret. The provider maps its data to the Ed-Fi
-Data Standard, then pushes creates, updates, and deletes to the agency's API as
-they happen. Assessment providers can use a [pull
+its product to an education agency's Ed-Fi API, or that reads data from it. The
+agency hosts the API and gives the provider a key and secret. A provider that
+sends data maps it to the Ed-Fi Data Standard, then pushes creates, updates,
+and deletes to the agency's API as they happen. Assessment providers can use a
+[pull
 model](../specifics-by-provider-type/assessment-providers/domain-api-tutorial/assessment-providers-data-pull-model.md)
-instead. Many providers then earn Ed-Fi Certification or an Ed-Fi Badge so
-agencies know the integration meets a shared specification.
+instead. Providers should then join the [Ed-Fi Partner
+Program](../../../partners/2-certification/certification-for-data-providers/partner-program.md)
+and earn Ed-Fi Certification or an Ed-Fi Badge, so agencies know the
+integration meets a shared specification.
 
 Most providers move through four stages, described in the sections below:
 
