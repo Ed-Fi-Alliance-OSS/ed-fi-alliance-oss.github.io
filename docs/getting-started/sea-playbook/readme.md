@@ -12,6 +12,49 @@ Welcome to the Ed-Fi State Education Agencies (SEAs) - Implementation Playbook (
 
 The intended audience for the SEA Playbook is leadership of state data efforts. The Playbook explains the problems Ed-Fi is solving for states and how data modernization efforts can unlock statewide opportunity to support schools, teachers and students.
 
+## Where Should a State Education Agency Start?
+
+Most states start by deciding what they want Ed-Fi technology to do, then
+choosing an implementation approach and planning a pilot.
+
+### Typical SEA Use Cases
+
+* **State reporting and data collection.** Collect enrollment, program, and
+  assessment data from districts through the Ed-Fi API, with validation as data
+  arrives, instead of file-based submissions.
+* **Funding and accountability.** Show districts how their enrollment data feeds
+  state funding calculations and accountability results, so they can catch
+  problems before results are final.
+* **Assessment integration.** Assessment vendors connect once, statewide,
+  instead of district by district.
+* **Returning data to districts.** Student records that follow students between
+  schools, early warning systems, and timely alerts to counselors.
+* **Special populations and programs.** Special education, English learners,
+  early childhood, and dual enrollment.
+* **Research and analytics.** Analysis-ready statewide datasets, including
+  feeding a CEDS data warehouse.
+
+For state examples, see
+[Impact](./ed-fi-overview-and-implementation-playbook.md#impact) in the
+playbook.
+
+### First Steps
+
+1. **Choose an implementation approach:** Reporting Only, Data Hub Only, or
+   Reporting + Data Hub. The playbook recommends Reporting + Data Hub where a
+   strong education service agency (ESA) model exists. See [Implementation
+   Approaches](./ed-fi-overview-and-implementation-playbook.md#implementation-approaches).
+2. **Plan the project.** Assemble internal and external expertise, issue an RFP
+   if you will use a managed service provider, design the pilot, map state data
+   to the Ed-Fi Data Standard, and start communicating with districts and
+   vendors. Consider [requiring Ed-Fi certification in state
+   RFPs](./project-planning/requiring-ed-fi-certification-in-state-rfps.md).
+3. **Pilot, run in parallel, then go to production.** Pilot with core data
+   elements and a small group of districts and vendors, run Ed-Fi-based
+   collection alongside the legacy system for a school year, then move to
+   production. See [The Four
+   Stages](./ed-fi-overview-and-implementation-playbook.md#the-four-stages).
+
 ### View Playbook Online
 
 The full playbook content is available as an online, readable page with diagrams and structured sections:
