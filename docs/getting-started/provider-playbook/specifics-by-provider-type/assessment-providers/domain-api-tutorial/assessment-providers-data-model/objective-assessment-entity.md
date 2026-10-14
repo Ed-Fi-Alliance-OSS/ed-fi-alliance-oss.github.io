@@ -8,7 +8,7 @@ In the Ed-Fi model, ObjectiveAssessments represent sub-scores, "strands" or othe
 
 To return to the original sample score report, we can see that the assessment results contain several such sub-scores:
 
-![MathWhale Objective Assessment](https://edfi.atlassian.net/wiki/download/thumbnails/22905200/mathwhale-objassessment.png?version=2&modificationDate=1561126701003&cacheVersion=1&api=v2&width=746&height=291)
+![MathWhale Objective Assessment](https://edfidocs.blob.core.windows.net/$web/img/getting-started/provider-playbook/specifics-by-provider-type/assessment-providers/assessment-providers-implementation/assessment-providers-data-model/mathwhale-objassessment.png)
 
 _Figure 1: Objective Assessments in the sample score report (denoted by the red rectangle)._
 

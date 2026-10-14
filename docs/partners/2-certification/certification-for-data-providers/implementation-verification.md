@@ -10,7 +10,7 @@ to provide K–12 education services by a U.S. state or territory.
 To meet the requirement, the Ed-Fi Alliance must receive three verifications
 from LEAs (i.e., entities authorized to provide education services by a U.S.
 state), that use the [Ed-Fi Certification Verification
-Form](https://edfi.atlassian.net/wiki/download/attachments/23695790/Ed-Fi+Certification+-+Implementation+Verification+Form.docx?version=4)
+Form](https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/certification-for-data-providers/Ed-Fi%20Certification%20-%20Implementation%20Verification%20Form.docx)
 (docx)
 
 ### When are verifications required?

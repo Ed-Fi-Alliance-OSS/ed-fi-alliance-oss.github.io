@@ -20,7 +20,7 @@ section of this documentation.
 Verify that there are no previous versions of the templates installed under
 **Extensions** \> **Manage Extensions** \> **Installed** > **Templates**.
 "Uninstall" previous versions of "Ed-Fi Alliance Project Templates"
-![Extensions Manager](https://edfi.atlassian.net/wiki/download/thumbnails/25493621/image2020-10-18_16-6-25.png?version=1&modificationDate=1699456102423&cacheVersion=1&api=v2&width=850&height=238)
+![Extensions Manager](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-10-18_16-6-25.png)
 
 ## Step 2. Download the Ed-Fi Visual Studio Extension
 
@@ -38,21 +38,21 @@ Close Visual Studio. Ensure you close all instances.
 Double-click the downloaded EdFi.ProjectTemplates.Installer.vsix file and
 install the templates.
 
-![Installation Dialog](https://edfi.atlassian.net/wiki/download/attachments/25493621/image2022-2-7_14-42-7.png?version=1&modificationDate=1699456102527&cacheVersion=1&api=v2)
+![Installation Dialog](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2022-2-7_14-42-7.png)
 
-![Installation Confirmation](https://edfi.atlassian.net/wiki/download/attachments/25493621/image2022-2-7_14-43-35.png?version=1&modificationDate=1699456102537&cacheVersion=1&api=v2)
+![Installation Confirmation](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2022-2-7_14-43-35.png)
 
 ## Step 5. Verify Install
 
 Verify that the extension installed under **Extensions** \> **Manage
 Extensions** \> **Installed** > **Templates**.
 
-![Extensions Manager Verification](https://edfi.atlassian.net/wiki/download/thumbnails/25493621/image-2023-12-3_16-31-17.png?version=1&modificationDate=1701642677327&cacheVersion=1&api=v2&width=650&height=131)
+![Extensions Manager Verification](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-7.1/image-2023-12-3_16-31-17.png)
 
 Verify that the templates are available under **File** > **New** >
 **Project**.
 
-![Templates in New Project Dialog](https://edfi.atlassian.net/wiki/download/thumbnails/25493621/image2020-10-18_16-21-35.png?version=1&modificationDate=1699456102393&cacheVersion=1&api=v2&width=650&height=412)
+![Templates in New Project Dialog](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-10-18_16-21-35.png)
 
 ## Next Steps
 

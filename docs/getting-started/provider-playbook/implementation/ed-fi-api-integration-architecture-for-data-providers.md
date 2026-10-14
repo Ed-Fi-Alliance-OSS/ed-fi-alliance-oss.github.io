@@ -20,7 +20,7 @@ While this knowledgebase article does not go deep into the dependency order buil
 
 Throughout this document, we will be using a fictional student information system, Limitless SIS, to better explain various aspects of architecting an Ed-Fi API integration. For the sake of brevity, let’s imagine that Limitless has decided they will sync information from their SIS to the Ed-Fi API resources below.
 
- ![SIS Resources Diagram](https://edfi.atlassian.net/wiki/download/thumbnails/22908163/image-2024-2-11_19-5-23.png?version=1&modificationDate=1707699923973&cacheVersion=1&api=v2&width=1136&height=300)
+ ![SIS Resources Diagram](https://edfidocs.blob.core.windows.net/$web/img/getting-started/provider-playbook/implementation/image-2024-2-11_19-5-23.png)
 
 The arrows note the dependency order that must be adhered to. While data may be sent to Local Education Agencies and Students at the same time, data must be sent to Local Education Agencies prior to sending data to Schools.
 
@@ -36,13 +36,13 @@ The goal of any Ed-Fi API integration is to create, update, and delete data on a
 
 In our example, Limitless SIS has already mapped the data from their application to the Ed-Fi API resources below.
 
- ![SIS Resource Diagram](https://edfi.atlassian.net/wiki/download/thumbnails/22908163/image-2024-2-11_19-5-23-1.png?version=1&modificationDate=1707699925507&cacheVersion=1&api=v2&width=1136&height=300) Their Ed-Fi API integration has the following components which we will dive into in the following sections:
+ ![SIS Resource Diagram](https://edfidocs.blob.core.windows.net/$web/img/getting-started/provider-playbook/implementation/image-2024-2-11_19-5-23-1.png) Their Ed-Fi API integration has the following components which we will dive into in the following sections:
 
 * A read-replica of their application database to reduce strain on production systems
 * An Ed-Fi sync service which is the codebase that is processing the data and calling the Ed-Fi API
 * A sync database to store information related to previous syncs  
 
-![Ed-Fi Sync Diagram](https://edfi.atlassian.net/wiki/download/thumbnails/22908163/image-2024-2-11_19-5-23-2.png?version=1&modificationDate=1707699926183&cacheVersion=1&api=v2&width=1072&height=500)
+![Ed-Fi Sync Diagram](https://edfidocs.blob.core.windows.net/$web/img/getting-started/provider-playbook/implementation/image-2024-2-11_19-5-23-2.png)
 
 ### Ingestion
 
@@ -54,7 +54,7 @@ In an ideal implementation, an Ed-Fi API integration should be as near real-time
 
 Further, it is best practice to allow your customer to manually trigger an Ed-Fi sync. This means architecting an Ed-Fi API integration that reduces strain on your source database instance. Consider implementing a read-replica of the primary source database and running all SQL queries related to your Ed-Fi API integration on the read-replica.
 
-![Read Replica Diagram](https://edfi.atlassian.net/wiki/download/thumbnails/22908163/image-2024-2-11_19-5-23-3.png?version=1&modificationDate=1707699926657&cacheVersion=1&api=v2&width=600&height=500)
+![Read Replica Diagram](https://edfidocs.blob.core.windows.net/$web/img/getting-started/provider-playbook/implementation/image-2024-2-11_19-5-23-3.png)
 
 ####  Change Data Capture
 
@@ -72,7 +72,7 @@ Back to our fictional SIS, let’s imagine that Limitless develops their integra
 
 The diagram below shows a generalized architecture of a workflow / data orchestrator. Typically, these platforms are deployed in a container orchestration system such as Kubernetes allowing pods to be created so a specific job can be run in an environment with its own compute and memory. These pods are ephemeral and are stopped after execution completes.
 
- ![Orchestrator Diagram](https://edfi.atlassian.net/wiki/download/thumbnails/22908163/image-2024-2-11_19-5-23-4.png?version=1&modificationDate=1707699927050&cacheVersion=1&api=v2&width=1280&height=479)
+ ![Orchestrator Diagram](https://edfidocs.blob.core.windows.net/$web/img/getting-started/provider-playbook/implementation/image-2024-2-11_19-5-23-4.png)
 
 The diagram above shows a SIS application using an API provided by the orchestrator to trigger jobs and read back metadata to report back via their UI the status and result of the job.
 
@@ -113,7 +113,7 @@ Let’s look at what a simplified sync database could look like and how it is us
 * **natural\_key\_hash**: this is a hash of only the natural keys for the respective Ed-Fi API resource
 * **full\_record\_hash**: this is a hash of the full JSON payload
 
- ![Sync Database Example Record](https://edfi.atlassian.net/wiki/download/thumbnails/22908163/image-2024-2-11_19-5-23-5.png?version=1&modificationDate=1707699927467&cacheVersion=1&api=v2&width=876&height=300)
+ ![Sync Database Example Record](https://edfidocs.blob.core.windows.net/$web/img/getting-started/provider-playbook/implementation/image-2024-2-11_19-5-23-5.png)
 
 ### The Reconciliation Process
 
@@ -125,7 +125,7 @@ After the full list of Ed-Fi API records are created, we can perform the followi
 4. If a record is found for the natural key hash and the full record has **not** changed, we don’t need to do anything
 5. If a record in the sync database was not checked, it is likely that the record was deleted in the source system application database and we should run a DELETE using the Ed-Fi API ID.
 
- ![POST PUT DELETE Diagram](https://edfi.atlassian.net/wiki/download/thumbnails/22908163/image-2024-2-11_19-5-23-6.png?version=1&modificationDate=1707699927910&cacheVersion=1&api=v2&width=886&height=300)
+ ![POST PUT DELETE Diagram](https://edfidocs.blob.core.windows.net/$web/img/getting-started/provider-playbook/implementation/image-2024-2-11_19-5-23-6.png)
 
 POST and PUT calls should run in dependency order and DELETE calls should run in reverse dependency order.  
 

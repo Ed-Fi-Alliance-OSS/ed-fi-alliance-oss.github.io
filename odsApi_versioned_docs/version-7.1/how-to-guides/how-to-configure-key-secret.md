@@ -130,6 +130,6 @@ END
 :::note
 API client creation script samples:
 
-* **SQL Server Script:** [SetupApiClient_SQLServer.sql](https://edfi.atlassian.net/wiki/download/attachments/23301501/SetupApiClient_SQLServer.sql?version=1&modificationDate=1708470934973&cacheVersion=1&api=v2)
-* **PostgreSQL Script:** [SetupApiClient_PostgreSQL.sql](https://edfi.atlassian.net/wiki/download/attachments/23301501/SetupApiClient_PostgreSQL.sql?version=1&modificationDate=1708470934980&cacheVersion=1&api=v2)
+* **SQL Server Script:** [SetupApiClient_SQLServer.sql](https://edfidocs.blob.core.windows.net/$web/assets/reference/ods-api/SetupApiClient_SQLServer.sql)
+* **PostgreSQL Script:** [SetupApiClient_PostgreSQL.sql](https://edfidocs.blob.core.windows.net/$web/assets/reference/ods-api/SetupApiClient_PostgreSQL.sql)
 :::

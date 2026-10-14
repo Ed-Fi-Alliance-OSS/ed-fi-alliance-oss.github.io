@@ -26,4 +26,4 @@ Assumptions:
 
 ### Diagram
 
-![Minutes Per Day Diagram](https://edfi.atlassian.net/wiki/download/attachments/22905416/Minutes%20per%20Day%20v2.png?api=v2)
+![Minutes Per Day Diagram](https://edfidocs.blob.core.windows.net/$web/img/getting-started/sea-playbook/data-governance/overview-of-ed-fi-data-domains/how-to-calculate-instructional-days-and-instructional-time/Minutes%20per%20Day%20v2.png)

@@ -202,6 +202,6 @@ Throughout this documentation, we generally use "HTTP" to describe specific uses
 The following link is a ZIP archive containing a Postman example
 illustrating the relationship based authorization strategy for a student.
 [Ed-Fi API Client Developer Postman
-Example](https://edfi.atlassian.net/wiki/download/attachments/20480666/Ed-Fi%20API%20Client%20Developer%20Postman%20Example.zip?version=3&modificationDate=1527887971107&api=v2&download=true)
+Example](https://edfidocs.blob.core.windows.net/$web/assets/reference/ods-api/Ed-Fi%20API%20Client%20Developer%20Postman%20Example.zip)
 
 :::

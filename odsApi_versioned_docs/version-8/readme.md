@@ -6,12 +6,24 @@ sidebar_position: 0
 
 **Ed-Fi API v8** is the next-generation platform for data integration and
 management. It is designed to be a fully compatible replacement for the current
-ODS/API Platform, built on a modern architecture.
+ODS/API Platform, built on a modern architecture. It implements existing
+versions of the Ed-Fi Data Standard; it is not a new Data Standard version. See
+[Supported Versions](/reference/roadmap/supported-versions) for which versions
+each release supports.
 
 The Ed-Fi Alliance plans to fully replace the ODS/API Platform with Ed-Fi API v8
 by the 2029–2030 school year. The ODS/API Platform will continue to receive
 support through the 2028–2029 school year. For details, see the [Ed-Fi ODS/API
 and Ed-Fi API v8 FAQ](/reference/roadmap/api-faq).
+
+:::note[Earlier names]
+
+During development, the Ed-Fi API was called the Data Management Service (DMS)
+and the Configuration Service the DMS Configuration Service (CMS). These names
+still appear in source code and older materials. See [What are DMS, CMS, and
+Project Tanager?](/reference/roadmap/api-faq#q-what-are-dms-cms-and-project-tanager).
+
+:::
 
 ## Key Highlights
 

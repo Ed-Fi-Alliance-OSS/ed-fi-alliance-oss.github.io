@@ -38,7 +38,7 @@ The Result endpoint will return a `200 Success` response with a search response
 status of “Incomplete” with no data or “Complete” with the results. The
 following diagram provides an overview of the program workflow:
 
-![image](https://edfi.atlassian.net/wiki/download/attachments/25493775/identities1.PNG?version=1&modificationDate=1699456133807&cacheVersion=1&api=v2)
+![image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/identities1.PNG)
 
 **Figure 1.** Identities API workflow
 
@@ -225,7 +225,7 @@ The following diagram shows a process flow that illustrates how additional
 properties are transparently passed through the Identities API for processing by
 the back-end Identity System:
 
-![image](https://edfi.atlassian.net/wiki/download/attachments/25493775/identities2.PNG?version=1&modificationDate=1699456133810&cacheVersion=1&api=v2)
+![image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/identities2.PNG)
 
 **Figure 2.** Identity API process flow
 
