@@ -52,10 +52,11 @@ mapping for each vendor.
   specifications consistent with each other. See [What is the purpose of the
   Ed-Fi Unifying Data
   Model?](#what-is-the-purpose-of-the-ed-fi-unifying-data-model)
-* The normative part of the Data Standard is its API endpoint descriptions and
-  JSON messages. See [What standards do the Ed-Fi Alliance
-  publish?](#what-standards-do-the-ed-fi-alliance-publish) The Ed-Fi ODS/API and
-  Ed-Fi API v8 implement those specifications.
+* The Ed-Fi Alliance's normative standards include the API endpoint
+  descriptions and JSON messages in the [Ed-Fi API
+  Specifications](./readme.md#ed-fi-api-specifications). See [What standards do
+  the Ed-Fi Alliance publish?](#what-standards-do-the-ed-fi-alliance-publish) The
+  Ed-Fi ODS/API and Ed-Fi API v8 implement those specifications.
 
 ## Active Versions
 
