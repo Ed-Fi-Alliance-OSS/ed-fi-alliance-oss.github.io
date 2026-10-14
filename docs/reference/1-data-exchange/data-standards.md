@@ -6,18 +6,17 @@ sidebar_position: 0
 
 ## What is the Ed-Fi Data Standard?
 
-The Ed-Fi Data Standard is an open, CEDS-aligned standard for exchanging K–12
-education data, centered on students and their academic performance. It defines
-the data that education systems share, such as students, schools, enrollments,
-attendance, grades, and assessment results, and the API and JSON message formats
-used to exchange it. Student information systems, assessment platforms, and
-other products use it to send data to, and read data from, education agencies in
-a consistent way.
+The Ed-Fi Data Standard is the widely adopted, CEDS-aligned, open-source data
+standard developed by the educational community for the betterment of the
+community. The Ed-Fi Data Standard serves as the foundation for enabling
+interoperability among secure data systems and contains a [Unifying Data
+Model](./udm/readme.md) designed to capture the meaning and inherent structure
+in the most important information in the K–12 education enterprise.
 
 ### What it is and is not
 
-* **It is a specification.** It describes education data and how to exchange
-  it. It is not software: the [Ed-Fi ODS/API](../2-ods-api-platform.mdx) and
+* **It is a specification.** It describes the meaning and structure of
+  education data. It is not software: the [Ed-Fi ODS/API](../2-ods-api-platform.mdx) and
   [Ed-Fi API v8](/reference/ed-fi-api/8) are Ed-Fi Alliance products that
   implement it, and any party can build a compatible API by following the [Ed-Fi
   API Guidelines](./api-guidelines/readme.md).
