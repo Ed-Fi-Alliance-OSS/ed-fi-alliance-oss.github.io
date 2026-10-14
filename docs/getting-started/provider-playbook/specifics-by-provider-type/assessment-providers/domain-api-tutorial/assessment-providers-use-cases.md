@@ -11,7 +11,7 @@
 
 The Ed-Fi Alliance publishes an Assessment Outcomes API that is designed to allow data on student outcomes to flow from an assessment provider to other systems. The data covered in this API is principally **data directly related to student outcomes and results** that can be used by teachers and others to make instructional decisions to improve student performance. See the diagram below that reflects this primary area of focus:
 
-![assessment standards diagram](https://edfi.atlassian.net/wiki/download/thumbnails/22905149/figure1.png?version=2&modificationDate=1561126886630&cacheVersion=1&api=v2&width=879&height=277)
+![assessment standards diagram](https://edfidocs.blob.core.windows.net/$web/img/getting-started/provider-playbook/specifics-by-provider-type/assessment-providers/assessment-providers-implementation/figure1.png)
 _Figure 1: Focus of the Assessment API standards_
 
 It is notable that the specifications do not cover related areas:

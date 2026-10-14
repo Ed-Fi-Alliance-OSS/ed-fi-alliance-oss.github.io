@@ -6,7 +6,7 @@ The Scores element is used to capture student scores on an assessment. Most asse
 
 If we look at the original sample score report, we will see that the assessment has some aggregate scores that encapsulate overall performance on the benchmark. There is an overall score and a percentile, which also has a z-score. The Assessment.Score element captures data on the scores that will be provided.
 
- ![screenshot scores](https://edfi.atlassian.net/wiki/download/thumbnails/22905192/scores.png?version=2&modificationDate=1561126783963&cacheVersion=1&api=v2&width=234&height=218)
+ ![screenshot scores](https://edfidocs.blob.core.windows.net/$web/img/getting-started/provider-playbook/specifics-by-provider-type/assessment-providers/assessment-providers-implementation/assessment-providers-data-model/scores.png)
 
 Figure 1: scores on the sample score report_
 

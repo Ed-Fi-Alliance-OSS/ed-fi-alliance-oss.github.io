@@ -130,7 +130,7 @@ configuration of secure connection strings for tenant-specific EdFi_Admin, EdFi_
 and EdFi_ODS databases in a multi-tenant configuration. Note the use of the same
 prefix on the individual item names as the first argument passed to the `AddSystemsManager` call in the code sample above.
 
-![AWS Systems Manager](https://edfi.atlassian.net/wiki/download/attachments/25493645/image-2023-11-30_15-1-26.png?version=1&modificationDate=1701378086900&cacheVersion=1&api=v2)
+![AWS Systems Manager](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image-2023-11-30_15-1-26.png)
 
 :::info
 In order for this code to work, you must perform some initialization of the AWS

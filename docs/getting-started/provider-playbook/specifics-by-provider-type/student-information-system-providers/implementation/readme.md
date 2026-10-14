@@ -1,3 +1,7 @@
+---
+slug: /provider-playbook/specifics-by-provider-type/student-information-system-providers/student-information-system-providers-implementation/
+---
+
 # Student Information System Providers - Implementation
 
 The information in this section explores the Ed-Fi SIS Certification. It is designed to help new developers learn the basics necessary to do a few initial transactions with the API.

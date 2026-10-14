@@ -178,23 +178,23 @@ will prompt you to enter windows username. The installation process will
 validate and create database login using entered username, if the login does not
 exist on the database server already.
 
-![Set SqlLogins](https://edfi.atlassian.net/wiki/download/thumbnails/24119784/image2022-8-29_14-22-0.png?version=1&modificationDate=1661800920340&cacheVersion=1&api=v2&width=628&height=123)
+![Set SqlLogins](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/getting-started/installation/image2022-8-29_14-22-0.png)
 
-![Set SqlLoginPermissions](https://edfi.atlassian.net/wiki/download/thumbnails/24119784/image2022-8-29_14-52-50.png?version=1&modificationDate=1661802770437&cacheVersion=1&api=v2&width=847&height=137)
+![Set SqlLoginPermissions](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/getting-started/installation/image2022-8-29_14-52-50.png)
 
 Please refer Steps 5 and 6 for more details on verifying the database login and
 setting up the application pool identity.
 
 The PowerShell output should look like the following:
 
-![Install DataImport](https://edfi.atlassian.net/wiki/download/thumbnails/24119784/Data%20Import%20PowerShell%20Installer%20Output.JPG?version=1&modificationDate=1652389201443&cacheVersion=1&api=v2&width=577&height=195)
+![Install DataImport](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/getting-started/installation/Data%20Import%20PowerShell%20Installer%20Output.JPG)
 
 ### Step 4. Confirm Installation in IIS Manager
 
 Open IIS Manager, and confirm a Data Import app exists under the Ed-Fi site. You
 should also see the location of the Transform Load executable registered.
 
-![IIS Manager](https://edfi.atlassian.net/wiki/download/thumbnails/24119784/Data%20Import%20in%20IIS.JPG?version=1&modificationDate=1652395261557&cacheVersion=1&api=v2&width=457&height=250)
+![IIS Manager](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/getting-started/installation/Data%20Import%20in%20IIS.JPG)
 
 ### Step 5. Ensure SQL Server Login Exists
 
@@ -202,7 +202,7 @@ The installation process sets up an appropriate SQL Login for use with the
 dedicated Data Import Application Pool in IIS. You can verify this in SQL Server
 Management Studio:
 
-![Sql Login Exist](https://edfi.atlassian.net/wiki/download/thumbnails/24119784/DataImportSqlUser.png?version=1&modificationDate=1652817086627&cacheVersion=1&api=v2&width=700&height=183)
+![Sql Login Exist](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/getting-started/installation/DataImportSqlUser.png)
 
 If you wish to set up your login differently, some basic guidance on how to set
 this up is explained in this [blog
@@ -231,7 +231,7 @@ domain in the username, then the username can look something like this:
 entered the correct credentials, we'll click OK on all screens until we're back
 to the main Application Pools page.
 
-![Set Credentials](https://edfi.atlassian.net/wiki/download/attachments/24119784/image2019-7-17_16-8-37.png?version=1&modificationDate=1652395054730&cacheVersion=1&api=v2)
+![Set Credentials](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/getting-started/installation/image2019-7-17_16-8-37.png)
 
 ## Launch the Application
 
@@ -242,7 +242,7 @@ database is being created.
 Proceed to instructions in
 the [Configuration](../first-time-configuration.md) section.
 
-![Login](https://edfi.atlassian.net/wiki/download/attachments/24119784/image2019-7-16_12-58-41.png?version=1&modificationDate=1652395321510&cacheVersion=1&api=v2)
+![Login](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/getting-started/installation/image2019-7-16_12-58-41.png)
 
 **Once you see the log in screen above, proceed
 with [Configuration](../first-time-configuration.md).**
@@ -291,7 +291,7 @@ Launch PowerShell as an administrator, cd to the directory containing the
 installation files, and run the "uninstall.ps1" script. The PowerShell output
 should look like the following:
 
-![Uninstall](https://edfi.atlassian.net/wiki/download/attachments/24119784/image2019-7-16_13-29-7.png?version=1&modificationDate=1652818247347&cacheVersion=1&api=v2)
+![Uninstall](https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/getting-started/installation/image2019-7-16_13-29-7.png)
 
 ### Uninstall Step 2. Clear Out Source File Directory
 

@@ -63,7 +63,7 @@ Once your project plan is in place, ensure effective communication with all stak
 
 Many factors go into determining an appropriate timeline; we provided general guidelines here for you to build from.  We always recommend that you look at the pre-release date of the version you are planning to upgrade to and then build your timeline around that.  For this article's purposes, we will use August as the pre-release date and build our timeline from there.  It is important to note that this is a general guideline, and you should always work with your technology providers to understand the scope of the upgrade and if it may need more or less time than this example.  Refer to the following diagram for the four phases of the project timeline:  
 
-![Example Project Timeline](https://edfi.atlassian.net/wiki/download/thumbnails/73072649/Screenshot%202024-02-06%20at%209.06.01%20PM.png?version=1&modificationDate=1714405020787&cacheVersion=1&api=v2&width=1280&height=261)
+![Example Project Timeline](https://edfidocs.blob.core.windows.net/$web/img/getting-started/sea-playbook/project-planning/Screenshot%202024-02-06%20at%209.06.01%20PM.png)
 
 ## Project Planning and Preparation
 

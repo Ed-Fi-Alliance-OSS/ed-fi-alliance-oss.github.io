@@ -45,7 +45,7 @@ From a PowerShell session, run the following command to build your extension p
 ```powershell
 & `C:\Program Files\dotnet\dotnet.exe` build `<source directory>\Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleStudentTransportation` --configuration Release
 ```
-![Image](https://edfi.atlassian.net/wiki/download/thumbnails/22774761/image2020-11-4_13-44-34.png?version=1&modificationDate=1641861360863&cacheVersion=1&api=v2&width=1280&height=398)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-11-4_13-44-34.png)
 
 ### Step 3. Create a NuGet Package
 
@@ -57,9 +57,9 @@ the same version as the ODS / API for which it was built.
 ```powershell
 NuGet.exe pack <source directory>\Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleStudentTransportation\EdFi.Ods.Extensions.SampleStudentTransportation.nuspec -OutputDirectory <output directory> -Properties configuration=release -NoPackageAnalysis -NoDefaultExcludes
 ```
-![Image](https://edfi.atlassian.net/wiki/download/thumbnails/22774761/image2021-4-7_18-22-23.png?version=1&modificationDate=1641861361270&cacheVersion=1&api=v2&width=840&height=102)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-4-7_18-22-23.png)
 
-![Image](https://edfi.atlassian.net/wiki/download/thumbnails/22774761/image2021-3-29_14-18-15.png?version=1&modificationDate=1641861361277&cacheVersion=1&api=v2&width=938&height=687)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-3-29_14-18-15.png)
 
 ### Step 4. Publish NuGet Package
 
@@ -69,7 +69,7 @@ In this step, execute the following command to publish NuGet package.
 NuGet.exe push -source https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json -apikey <PAT> <nuget directory>\EdFi.Ods.Extensions.SampleStudentTransportation.1.0.0.nupkg
 ```
 
-![Image](https://edfi.atlassian.net/wiki/download/thumbnails/22774761/image2021-4-7_19-8-54.png?version=1&modificationDate=1641861361283&cacheVersion=1&api=v2&width=838&height=96)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-4-7_19-8-54.png)
 
 ## Consuming Extension Plugins
 

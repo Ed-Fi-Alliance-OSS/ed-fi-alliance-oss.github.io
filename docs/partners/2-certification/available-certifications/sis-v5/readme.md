@@ -4,7 +4,7 @@ Certification Name: Ed-Fi Student Information Systems API for Data Standard v5 \
 Standards Referenced: \
    [Ed-Fi Core Student Data API (RFC    16)](https://edfi.atlassian.net/wiki/spaces/EFDSRFC/pages/25362441/ED-FI+RFC+16+-+CORE+STUDENT+DATA+API)
 \
-   [Ed-Fi API Design & Implementation Guidelines    v7.1](https://edfi.atlassian.net/wiki/download/attachments/18645251/Public-REST-API-Design-and-Implementation-Guidelines-Rev2.pdf?version=1&modificationDate=1425039412083&cacheVersion=1&api=v2)
+   [Ed-Fi API Design & Implementation Guidelines    v7.1](https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Public-REST-API-Design-and-Implementation-Guidelines-Rev2.pdf)
 \
 Technical Suite: Suite 3 \
 Obsoletes: – \

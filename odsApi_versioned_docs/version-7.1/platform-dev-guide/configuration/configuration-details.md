@@ -106,13 +106,13 @@ projects so that they aren't accidentally checked into source control. To set
 overrides, you can either use the [.NET
 CLI Tool](https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-8.0&tabs=windows#set-a-secret)
 
-![.NET CLI Tool](https://edfi.atlassian.net/wiki/download/thumbnails/25493635/image2021-3-19_12-8-29.png?version=1&modificationDate=1699456103973&cacheVersion=1&api=v2&width=1097&height=80)
+![.NET CLI Tool](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2021-3-19_12-8-29.png)
 
 or [Manage User
 Secrets](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows#json-structure-flattening-in-visual-studio)
 in Visual Studio.
 
-![Manage User Secrets](https://edfi.atlassian.net/wiki/download/thumbnails/25493635/image2021-3-19_12-6-13.png?version=1&modificationDate=1699456103957&cacheVersion=1&api=v2&width=773&height=247)
+![Manage User Secrets](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2021-3-19_12-6-13.png)
 
 Both of the above methods will create a _secret.json_ file in the local
 machine's user profile folder and will override settings
@@ -127,7 +127,7 @@ in _appsettings_._**Development**_._json._
 e.g., Following _secret.json_ overrides the default 'GrandBend' dataset and
 deploys with 'Glendale' sample dataset.
 
-![Secret.json example](https://edfi.atlassian.net/wiki/download/thumbnails/25493635/image2021-3-12_16-47-40.png?version=1&modificationDate=1699456103947&cacheVersion=1&api=v2&width=710&height=180)
+![Secret.json example](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2021-3-12_16-47-40.png)
 
 See [Safe storage of app secrets in development in ASP.NET
 Core](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows)
