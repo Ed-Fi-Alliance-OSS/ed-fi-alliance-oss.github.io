@@ -13,9 +13,9 @@ layers:
 2. **Claim sets.** Each request is checked against the claim set assigned to that
    application, which says which kinds of data it may create, read, update, or
    delete.
-3. **Relationship-based access.** Within those resources, the application only
-   reaches records for students, staff, and contacts connected to the schools or
-   district its key is associated with.
+3. **Relationship-based access.** Where configured for a resource and action,
+   this restricts access to records for students, staff, and contacts connected
+   to the schools or district associated with the application's key.
 4. **Profiles.** Optionally, the host can limit which fields an application sees
    or writes.
 
