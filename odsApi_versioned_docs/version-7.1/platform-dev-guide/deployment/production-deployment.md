@@ -119,7 +119,7 @@ Very small deployments (up to about 7,500 students) can function on a simple,
 two-server model. One server hosts the API application and the other hosts the
 SQL Server platform and the ODS data store.
 
-![image](https://edfi.atlassian.net/wiki/download/thumbnails/25493673/image17.png?version=1&modificationDate=1699456108427&cacheVersion=1&api=v2&width=334&height=152)
+![image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image17.png)
 
 This configuration is excellent for small organizations because it is
 inexpensive, easy to maintain, and leverages common technologies that are
@@ -131,7 +131,7 @@ used for a cloud-based or hybrid deployment.
 
 ### Load-Balanced Deployment Model
 
-![deployment model](https://edfi.atlassian.net/wiki/download/attachments/25493673/image06.png?version=1&modificationDate=1699456108417&cacheVersion=1&api=v2)
+![deployment model](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image06.png)
 
 A load-balanced deployment, whether on-site or in the cloud, includes an HTTP
 Load Balancer that analyzes and routes incoming network traffic, multiple web

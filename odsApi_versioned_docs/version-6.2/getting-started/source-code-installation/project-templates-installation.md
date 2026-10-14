@@ -76,5 +76,5 @@ Find out more about how to begin using the Ed-Fi ODS / API:
 
 :::note
  The following link contains the Visual Studio Extension:
- [EdFi.ProjectTemplates.Installer.vsix](https://edfi.atlassian.net/wiki/download/attachments/18219164/EdFi.ProjectTemplates.Installer.vsix?version=4&modificationDate=1711578642477&cacheVersion=1&api=v2)
+ [EdFi.ProjectTemplates.Installer.vsix](https://edfidocs.blob.core.windows.net/$web/assets/reference/ods-api/EdFi.ProjectTemplates.Installer.vsix)
 :::

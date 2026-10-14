@@ -12,7 +12,7 @@ The application includes basic information about the product and functionality
 seeking a badge.
 
 [Application
-form](https://edfi.atlassian.net/wiki/download/attachments/20611181/Ed-Fi%20Badge%20Application%20(3).docx?version=1&modificationDate=1683898134510&cacheVersion=1&api=v2)
+form](https://edfidocs.blob.core.windows.net/$web/assets/partners/1-badging/Ed-Fi%20Badge%20Application%20(3).docx)
 (docx)
 
 ### 2. Data Model Integration Information

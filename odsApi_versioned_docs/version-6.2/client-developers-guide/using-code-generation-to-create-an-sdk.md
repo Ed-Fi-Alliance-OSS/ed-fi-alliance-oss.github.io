@@ -276,7 +276,7 @@ components in the generated code.
 :::note
 
 > The following link is a ZIP archive containing a C# sample program that uses the client SDK:
-> [Ed-Fi-ODS-API-SDK.zip](https://edfi.atlassian.net/wiki/download/attachments/18219495/Ed-Fi-ODS-API-SDK.zip?version=1&modificationDate=1710953723980&cacheVersion=1&api=v2)
+> [Ed-Fi-ODS-API-SDK.zip](https://edfidocs.blob.core.windows.net/$web/assets/reference/ods-api/Ed-Fi-ODS-API-SDK.zip)
 > The Sample program works against the Ed-Fi ODS / API sandbox hosted at [https://api.ed-fi.org/v6.2/docs/](https://api.ed-fi.org/v6.2/docs/).
 
 :::

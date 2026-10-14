@@ -6,4 +6,4 @@ While the Ed-Fi Alliance is pleased to offer the full toolkit, we believe direct
 
 ![LMS Extensions Diagram](https://edfidocs.blob.core.windows.net/$web/img/edfi-exchange/technology/ed-fi-lms-toolkit/LMSX%20Extension.png)
 
-[LMSX Extension.drawio](https://edfi.atlassian.net/wiki/download/attachments/22500277/LMSX%20Extension?version=1&modificationDate=1673031243807&cacheVersion=1&api=v2)
+[LMSX Extension.drawio](https://edfidocs.blob.core.windows.net/$web/assets/getting-started/edfi-exchange/technology/LMSX%20Extension.drawio)

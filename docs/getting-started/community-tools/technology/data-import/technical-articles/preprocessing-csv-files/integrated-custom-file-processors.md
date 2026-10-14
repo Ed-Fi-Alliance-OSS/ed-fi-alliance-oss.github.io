@@ -130,7 +130,7 @@ installation, and then tested using Manual Agents with the sample \*.csv and
 
 :::info
 
-[CustomFileProcessorExamples.zip](https://edfi.atlassian.net/wiki/download/attachments/24117967/CustomFileProcessorExamples.zip?api=v2)
+[CustomFileProcessorExamples.zip](https://edfidocs.blob.core.windows.net/$web/assets/reference/6-data-import/technical-articles/preprocessing-csv-files/CustomFileProcessorExamples.zip)
 
 :::
 

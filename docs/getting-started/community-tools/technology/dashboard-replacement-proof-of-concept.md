@@ -21,9 +21,9 @@ The project underwent a second phase of development to further demonstrate the r
 
 * **Code:** [https://github.com/Ed-Fi-Exchange-OSS/Dashboard-Replacement-POC](https://github.com/Ed-Fi-Exchange-OSS/Dashboard-Replacement-POC)
 * **Documentation:**
-  * [Dashboard POC Final Design.docx](https://edfi.atlassian.net/wiki/download/attachments/22492526/Dashboard%20POC%20Final%20Design.docx?version=1&modificationDate=1596468602153&cacheVersion=1&api=v2)
-  * [Dashboard POC Sizing Estimate.docx](https://edfi.atlassian.net/wiki/download/attachments/22492526/Dashboard%20POC%20Sizing%20Estimate.docx?version=1&modificationDate=1596468619457&cacheVersion=1&api=v2)
-  * [Ed-Fi Dashboard UI Project.xlsx](https://edfi.atlassian.net/wiki/download/attachments/22492526/Ed-Fi%20Dashboard%20UI%20Project.xlsx?version=1&modificationDate=1596468632113&cacheVersion=1&api=v2)
+  * [Dashboard POC Final Design.docx](https://edfidocs.blob.core.windows.net/$web/assets/getting-started/edfi-exchange/technology/Dashboard%20POC%20Final%20Design.docx)
+  * [Dashboard POC Sizing Estimate.docx](https://edfidocs.blob.core.windows.net/$web/assets/getting-started/edfi-exchange/technology/Dashboard%20POC%20Sizing%20Estimate.docx)
+  * [Ed-Fi Dashboard UI Project.xlsx](https://edfidocs.blob.core.windows.net/$web/assets/getting-started/edfi-exchange/technology/Ed-Fi%20Dashboard%20UI%20Project.xlsx)
 
 ## Details
 
