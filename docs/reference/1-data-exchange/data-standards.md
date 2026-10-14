@@ -4,6 +4,60 @@ sidebar_position: 0
 
 # About the Ed-Fi Data Standard
 
+## What is the Ed-Fi Data Standard?
+
+The Ed-Fi Data Standard is an open, CEDS-aligned standard for exchanging K–12
+education data, centered on students and their academic performance. It defines
+the data that education systems share, such as students, schools, enrollments,
+attendance, grades, and assessment results, and the API and JSON message formats
+used to exchange it. Student information systems, assessment platforms, and
+other products use it to send data to, and read data from, education agencies in
+a consistent way.
+
+### What it is and is not
+
+* **It is a specification.** It describes education data and how to exchange
+  it. It is not software: the [Ed-Fi ODS/API](../2-ods-api-platform.mdx) and
+  [Ed-Fi API v8](/reference/ed-fi-api/8) are Ed-Fi Alliance products that
+  implement it, and any party can build a compatible API by following the [Ed-Fi
+  API Guidelines](./api-guidelines/readme.md).
+* **It is not a database or a reporting tool.** It defines what is exchanged,
+  not how a system stores or reports on that data.
+* **It does not cover everything a school records.** See [What does the Ed-Fi
+  Data Standard cover?](#what-does-the-ed-fi-data-standard-cover) for what is
+  in scope and what is deliberately left out.
+* **It is versioned.** Each major version supports specific school years. See
+  [Active Versions](#active-versions).
+
+### Who uses it
+
+* **Technology providers**, such as student information system and assessment
+  vendors, build API clients that send data to or read data from an agency's
+  API. See the [Technology Providers
+  Playbook](/getting-started/provider-playbook).
+* **State education agencies** use it to collect data from districts and
+  vendors. See the [SEA Playbook](/getting-started/sea-playbook).
+* **Education service agencies and districts** use it to bring data from many
+  products together. See the [ESA Playbook](/getting-started/esa-playbook).
+
+For example, when a student enrolls, the district's student information system
+sends a `StudentSchoolAssociation` record to the agency's API. Later, an
+assessment vendor sends that student's results to the same API. Because both
+follow the Data Standard, the agency can connect the records without a custom
+mapping for each vendor.
+
+### How it relates to the Unifying Data Model and APIs
+
+* The [Ed-Fi Unifying Data Model (UDM)](./udm/readme.md) is the logical model
+  behind the Data Standard. It is non-normative and keeps the Data Standard's
+  specifications consistent with each other. See [What is the purpose of the
+  Ed-Fi Unifying Data
+  Model?](#what-is-the-purpose-of-the-ed-fi-unifying-data-model)
+* The normative part of the Data Standard is its API endpoint descriptions and
+  JSON messages. See [What standards do the Ed-Fi Alliance
+  publish?](#what-standards-do-the-ed-fi-alliance-publish) The Ed-Fi ODS/API and
+  Ed-Fi API v8 implement those specifications.
+
 ## Active Versions
 
 ### Version 6.x
