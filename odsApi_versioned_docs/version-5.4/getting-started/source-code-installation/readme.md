@@ -16,8 +16,6 @@ Ensure that the following components are installed:
 * PowerShell 5.0. PowerShell is used to initialize the development environment.
 * .NET 8.0 SDK. The .NET 8.0 Software Developer Kit is required for compiling the solution.
 
-
-
 <details>
   <summary>View detail...</summary>
 
@@ -35,7 +33,6 @@ Download and install the latest [NET SDK 8.0 (Compatible with Visual Studio 2022
 
 ![.NET 8.0 SDK](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2024-10-31_14-12-25.png)
 </details>
-
 
 ## Step 2. Install and Configure Required Software
 
@@ -55,7 +52,7 @@ Install Microsoft SQL Server 2019:
 
 ![SQL Server Install 1](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/SQLServerInstallationStep1.png)
 
-1. When prompted, select the following features: 
+1. When prompted, select the following features:
 ![SQL Server Features](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Feature%20Installation.png)
 2. Use the default instance named MSSQLSERVER.
  ![SQL Server Instance](https://lh6.googleusercontent.com/qOzdSg0rMADabs7fFr27XNBu_v2zyG5A5vzp55cx-20gPED_ahSihYeHuEiXRDoo1iw29IoKnvEabogFX1VG79e59fmqbMoGEUUqiiYKKH71IoaEEpA8o6cxx7gTyZQnbPN1WrYf)
@@ -89,8 +86,6 @@ The instructions below are based on the Visual Studio 2022 Community Installer.
 After installing, check the **Visual Studio Start Page** and **Windows Update** for Visual Studio updates.
 :::
 
-![Visual Studio Installer](https://api.media.atlassian.com/file/0f287731-920b-4267-b2e9-5913118f2043/image?mode=full-fit&client=2be2a89a-89cc-49e5-a06e-a8e454f2fb83&token=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIyYmUyYTg5YS04OWNjLTQ5ZTUtYTA2ZS1hOGU0NTRmMmZiODMiLCJhY2Nlc3MiOnsidXJuOmZpbGVzdG9yZTpmaWxlOjBmMjg3NzMxLTkyMGItNDI...)
-
 ### PostgreSQL Installation (Optional)
 
 #### PostgreSQL Visualization Tool
@@ -107,6 +102,7 @@ Unlike SQL Server, PostgreSQL does not include a GUI to visualize the database (
 Installation of PostgreSQL can be done either using the binaries or using Docker. The recommended solution is to to use the docker install using Linux containers.
 
 #### Option 1.Installation using PostgreSQL Installer
+
 <details>
 <summary>Installation using PostgreSQL Installer</summary>
 
@@ -231,8 +227,6 @@ Create a pgpass.conf file. Note that the password should be your postgres superu
 localhost:5432:*:postgres:P@ssw0rd
 ```
 
-
-
 Set the environment variable PGPASSFILE to the location of the pgpass file that was created, which is the recommended approach. Optionally, the file can be saved in `%APPDATA%/postgresql/pgpass.conf.`
 
 ![pgpass.conf Example](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2020-4-9_16-43-3.png)
@@ -246,8 +240,8 @@ C:\> get-item env:pgpassfile
 |------------|------------------------------|
 | PGPASSFILE | C:\PGDockerSetup\pgpass.conf |
 ```
-</details>
 
+</details>
 
 ## Step 3. Download the Ed-Fi ODS / API v5.4 Code
 
@@ -268,6 +262,7 @@ When you clone a repository, ensure that you have the correct tag checked out in
 ```bash
 git checkout tags/v5.4-patch1 -b <branch>
 ```
+
 :::
 
 If you download the code via a ZIP file, ensure that you check Unblock in the file's Properties dialog to allow the contents of the contained scripts to execute properly.
@@ -278,6 +273,7 @@ If you download the code via a ZIP file, ensure that you check Unblock in the fi
 <summary>View detail and options...</summary>
 
 ### Accessing Daily Source
+
 The links above are for the stable release of the ODS / API v5.4. You can download the links to the very latest daily source code in the development branch:
 
 * [Ed-Fi-ODS/main](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/tree/main)
@@ -360,6 +356,7 @@ To build the solution from within Visual Studio:
 
 1. Start Visual Studio. Within Visual Studio, open the "Ed-Fi-Ods.sln" solution file from the C:\Ed-Fi-ODS-Implementation\Application directory.
 2. Select Build > Build Solution (or press Ctrl+Shift+B).
+
 <details>
 <summary>View detail and options...</summary>
 
@@ -371,14 +368,12 @@ The following diagram shows how MeatEd generated artifacts are used to create th
 
 ### Alternatively Building from the Developer Command Prompt
 
-
-
 When the “EdFi_Ods_Empty” database has been created (by running the `initdev` PowerShell command in the previous step), there are two ways to build the solution. The solution can be built from Visual Studio, as described above, or from a Developer Command Prompt for Visual Studio using the Windows start menu.
 
 To do a clean build from the command prompt:
 
-1. Open the Developer Command Prompt for Visual Studio. 
-   
+1. Open the Developer Command Prompt for Visual Studio.
+
    ![VS Command Prompt](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/vs_step5.png)
 2. Navigate to your C:\Ed-Fi-ODS-Implementation\Application directory.
 3. Issue a command similar to the following:
@@ -405,7 +400,6 @@ To set the Startup Projects:
 
 3. Click OK to accept the changes to your local development settings.
 
-
 ## Step 7. Run the Solution
 
 ### Running the solution
@@ -420,7 +414,7 @@ To set the Startup Projects:
 * The solution builds and starts each of the projects that were added to the startup projects list. Each web application starts an instance of IIS Express. By default, the websites are configured according to the following table:
 
 | Website | Project | URL |
-|---------|---------|-----|
+| --------- | --------- | ----- |
 | Ed-Fi ODS API | EdFi.Ods.WebApi | [http://localhost:54746/](http://localhost:54746/) |
 | Sandbox Administration | EdFi.Ods.SandboxAdmin | [http://localhost:38928/](http://localhost:38928/) |
 | Ed-Fi ODS API Documentation | EdFi.Ods.SwaggerUI | [http://localhost:56641/](http://localhost:56641/) |
@@ -434,8 +428,6 @@ Follow these steps to finish configuring the solution:
 
 1. Visiting the API Sandbox Administration Portal and logging in with the Test User Account
 2. Reviewing the Ed-Fi ODS API Documentation
-
-
 
 ## The Sandbox Administration Portal
 
@@ -466,4 +458,3 @@ To view the data in your sandbox, click Authorize and enter the key and secret i
 Similar to the Sandbox Administration Portal, the ODS / API Documentation Web Page is useful for development machines and sandbox instances of the ODS / API, but is generally not present on production instances. See the [Platform Developers' Guide - Deployment](../../platform-dev-guide/deployment/readme.md) section for details.
 
 </details>
-

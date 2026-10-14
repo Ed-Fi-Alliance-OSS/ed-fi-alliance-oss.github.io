@@ -330,7 +330,7 @@ If you download the code via a ZIP file, ensure that you check Unblock in the
 file's Properties dialog to allow the contents of the contained scripts to
 execute properly.
 
-![Unblock](https://edfi.atlassian.net/wiki/download/thumbnails/25493619/unblock.png?version=1&modificationDate=1699456100990&cacheVersion=1&api=v2&width=363&height=509)
+![Unblock](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/unblock.png)
 
 :::
 
@@ -610,7 +610,7 @@ system to be fully functional.
 To set the Startup Projects:
 
 1. Select the **Set StartUp Projects…** context menu by right-clicking on the
-solution file in the Solution Explorer. ![Startup Projects](https://edfi.atlassian.net/wiki/download/thumbnails/25493619/startup2.png?version=1&modificationDate=1699456101317&cacheVersion=1&api=v2&width=850&height=883)
+solution file in the Solution Explorer. ![Startup Projects](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/startup2.png)
 1. Within the Startup Project property page, select the **Multiple startup
     projects** radio button and enable the following projects:
 
@@ -618,7 +618,7 @@ solution file in the Solution Explorer. ![Startup Projects](https://edfi.atlassi
     * EdFi.Ods.SwaggerUI
     * EdFi.Ods.WebApi
 
-    ![Startup Projects](https://edfi.atlassian.net/wiki/download/thumbnails/25493619/startup3.png?version=1&modificationDate=1699456101307&cacheVersion=1&api=v2&width=1057&height=757)
+    ![Startup Projects](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/startup3.png)
 
 3. Click **OK** to accept the changes to your local development settings.
 
@@ -713,6 +713,6 @@ for details.
 :::note
 
 The following link contains sample docker setup files for PostgreSQL
-[PGDockerSetup.zip](https://edfi.atlassian.net/wiki/download/attachments/23298387/PGDockerSetup.zip?version=1&modificationDate=1708470913300&cacheVersion=1&api=v2)
+[PGDockerSetup.zip](https://edfidocs.blob.core.windows.net/$web/assets/reference/ods-api/PGDockerSetup.zip)
 
 :::

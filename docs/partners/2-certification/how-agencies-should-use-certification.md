@@ -16,7 +16,7 @@ language.
 
 Another example of a statement that can be used in RFPs can be here: [Global
 Interoperability
-Standards.docx](https://edfi.atlassian.net/wiki/download/attachments/23695618/Global+Interoperability+Standards.docx?version=1).
+Standards.docx](https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Global%20Interoperability%20Standards.docx).
 
 ## What is Covered in Certification?
 

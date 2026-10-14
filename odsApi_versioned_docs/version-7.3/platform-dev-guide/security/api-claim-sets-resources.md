@@ -228,6 +228,13 @@ any parent-inherited strategies.
 The implementation of the Ed-Fi ODS / API includes several authorization
 strategies, applied to the claims taxonomy shown in the figure above.
 
+ODS/API 7.3 ships with 13 named authorization strategies in the `EdFi_Security`
+database (`dbo.AuthorizationStrategies`): `NoFurtherAuthorizationRequired`,
+`NamespaceBased`, `OwnershipBased`, and ten relationship-based strategies
+described under [Relationship-Based Strategy
+Variants](#relationship-based-strategy-variants). API hosts can add further
+strategies using custom view-based authorization.
+
 - **NoFurtherAuthorizationRequired.** Explicitly performs no additional
   authorization beyond resource/action verification. Used for actions where no
   relationship check is possible or necessary (such as creating a record for the
@@ -393,6 +400,34 @@ read programs defined by the SEA.
   district-level callers to read records defined at the state level.
 - **RelationshipsWithEdOrgsOnlyInverted.** Same inverted hierarchy check but
   ignores person identifiers entirely.
+
+**Including-deletes variants** (also authorize through deleted relationships):
+
+These variants extend a standard strategy so that a person stays reachable after
+the association that linked them to the caller's education organization has
+been deleted. They use the `tracked_changes_edfi` tables that support [Change
+Queries](../features/changed-record-queries.md), so they are intended for
+claim sets that read changes (such as deletes) for students, staff, or contacts
+who have since left the caller's schools or district. In the default security
+metadata they are assigned only to the `ReadChanges` action.
+
+- **RelationshipsWithEdOrgsAndPeopleIncludingDeletes.** Same as
+  `RelationshipsWithEdOrgsAndPeople`, but students can also be reached through
+  deleted `StudentSchoolAssociation` records, staff through deleted
+  `StaffEducationOrganizationEmploymentAssociation` or
+  `StaffEducationOrganizationAssignmentAssociation` records, and contacts
+  through deleted `StudentSchoolAssociation` or `StudentContactAssociation`
+  records.
+- **RelationshipsWithStudentsOnlyIncludingDeletes.** Same as
+  `RelationshipsWithStudentsOnly`, but students can also be reached through
+  deleted `StudentSchoolAssociation` records. In releases through ODS/API
+  7.3.2, this strategy also checks staff, contact, and education organization
+  identifiers, the same as `RelationshipsWithEdOrgsAndPeopleIncludingDeletes`;
+  a fix that restricts it to students is pending release.
+- **RelationshipsWithStudentsOnlyThroughResponsibilityIncludingDeletes.** Same
+  as `RelationshipsWithStudentsOnlyThroughResponsibility`, but students can also
+  be reached through deleted
+  `StudentEducationOrganizationResponsibilityAssociation` records.
 
 When multiple relationship-based strategies are configured for a resource, they
 are combined with OR logic — authorization succeeds if any single variant

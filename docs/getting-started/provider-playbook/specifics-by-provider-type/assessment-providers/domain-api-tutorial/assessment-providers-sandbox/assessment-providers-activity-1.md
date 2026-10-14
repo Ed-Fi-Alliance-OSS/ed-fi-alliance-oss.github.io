@@ -20,7 +20,7 @@ In this activity, we will get a record of assessments in the API (in the Ed-Fi d
 7. Scroll down and click the "Try it Out Button" - this requests that the API send all /assessment resources back to your browser.
 8. You will see info that looks like this appear.
 
- ![Assessment Query Screenshot](https://edfi.atlassian.net/wiki/download/thumbnails/22905175/assessment_query.png?version=1&modificationDate=1562948657390&cacheVersion=1&api=v2&width=886&height=912)
+ ![Assessment Query Screenshot](https://edfidocs.blob.core.windows.net/$web/img/getting-started/provider-playbook/specifics-by-provider-type/assessment-providers/assessment-providers-implementation/assessment-providers-sandbox/assessment_query.png)
 
 ### Congratulations, you just completed your first assessment data exchange using Ed-Fi
 

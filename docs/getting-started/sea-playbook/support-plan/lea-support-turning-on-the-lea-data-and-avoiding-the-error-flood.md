@@ -117,7 +117,7 @@ So advise school districts to look at their Ed-Fi control panel in the SIS and s
 
 For example, many SIS systems will have a control panel for Ed-Fi that looks conceptually like this:
 
-![Dependency Order](https://edfi.atlassian.net/wiki/download/attachments/22908291/Sample%20SIS%20UX%20-%20Dependency%20Order.png?api=v2)
+![Dependency Order](https://edfidocs.blob.core.windows.net/$web/img/getting-started/sea-playbook/support-plan/Sample%20SIS%20UX%20-%20Dependency%20Order.png)
 
 What is going on here is that the SIS system has organized data by the dependency order. Where this exists, the data steward at the school has the option of sending records like Schools and Courses first before trying to send everything. This will allow the district data steward to debug and make progress without generating loads of error messages.
 

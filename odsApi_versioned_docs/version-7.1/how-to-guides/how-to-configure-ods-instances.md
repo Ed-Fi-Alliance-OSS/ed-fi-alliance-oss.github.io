@@ -49,11 +49,11 @@ END
 :::note
 ODS Instance creation script samples:
 
-* **SQL Server Script:** [configure_ods_instances_sql.sql](https://edfi.atlassian.net/wiki/download/attachments/23301477/configure_ods_instances_sql.sql?version=1&modificationDate=1708470934587&cacheVersion=1&api=v2)
-* **PostgreSQL Script:** [configure_ods_instances_postgres.sql](https://edfi.atlassian.net/wiki/download/attachments/23301477/configure_ods_instances_postgres.sql?version=1&modificationDate=1708470934590&cacheVersion=1&api=v2)
+* **SQL Server Script:** [configure_ods_instances_sql.sql](https://edfidocs.blob.core.windows.net/$web/assets/reference/ods-api/configure_ods_instances_sql.sql)
+* **PostgreSQL Script:** [configure_ods_instances_postgres.sql](https://edfidocs.blob.core.windows.net/$web/assets/reference/ods-api/configure_ods_instances_postgres.sql)
 
 ODS Instance Context script samples:
 
-* **SQL Server Script:** [configure_ods_instance_context_sql.sql](https://edfi.atlassian.net/wiki/download/attachments/23301477/configure_ods_instance_context_sql.sql?version=1&modificationDate=1708470934597&cacheVersion=1&api=v2)
-* **PostgreSQL Script:** [configure_ods_instances_context_postgres.sql](https://edfi.atlassian.net/wiki/download/attachments/23301477/configure_ods_instances_context_postgres.sql?version=1&modificationDate=1708470934603&cacheVersion=1&api=v2)
+* **SQL Server Script:** [configure_ods_instance_context_sql.sql](https://edfidocs.blob.core.windows.net/$web/assets/reference/ods-api/configure_ods_instance_context_sql.sql)
+* **PostgreSQL Script:** [configure_ods_instances_context_postgres.sql](https://edfidocs.blob.core.windows.net/$web/assets/reference/ods-api/configure_ods_instances_context_postgres.sql)
 :::

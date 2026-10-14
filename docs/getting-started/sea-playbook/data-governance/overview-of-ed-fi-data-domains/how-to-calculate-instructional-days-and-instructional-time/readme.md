@@ -12,7 +12,7 @@ The CalendarEvent entity identifies a date, a type of activity for the date (e.g
 
 #### Calendar and CalendarEvent Model
 
-![Calendar and CalendarEvent Model UML](https://edfi.atlassian.net/wiki/download/thumbnails/22905346/Calendar%20UML.png?version=2&modificationDate=1564410017670&cacheVersion=1&api=v2&width=1280&height=839)
+![Calendar and CalendarEvent Model UML](https://edfidocs.blob.core.windows.net/$web/img/getting-started/sea-playbook/data-governance/overview-of-ed-fi-data-domains/how-to-calculate-instructional-days-and-instructional-time/Calendar%20UML.png)
 
 ### Bell Schedule Domain
 
@@ -20,7 +20,7 @@ The Bell Schedule domain represents the start time and duration of one or more c
 
 #### Bell Schedule Model
 
-![Bell Schedule Model UML](https://edfi.atlassian.net/wiki/download/thumbnails/22905346/Bell%20Schedule%20UML.png?version=2&modificationDate=1564410044127&cacheVersion=1&api=v2&width=1280&height=639)
+![Bell Schedule Model UML](https://edfidocs.blob.core.windows.net/$web/img/getting-started/sea-playbook/data-governance/overview-of-ed-fi-data-domains/how-to-calculate-instructional-days-and-instructional-time/Bell%20Schedule%20UML.png)
 
 ## Use Cases
 

@@ -50,18 +50,19 @@ Admin App users who create claimsets and provision API credentials must be aware
 
 ### The current list of authorization strategies used in the Ed-Fi ODS/API version 7
 
-* No Further Authorization Required
-* Relationships with Education Organizations and People
-* Relationships with Education Organizations only
-* Namespace Based
-* Relationships with People only
-* Relationships with Students only
-* Relationships with Students only (through - StudentEducationOrganizationResponsibilityAssociation)
-* Ownership Based
-* Relationships with Education Organizations and People (including deletes)
-* Relationships with Education Organizations only (Inverted)
-* Relationships with Education Organizations and People (Inverted)
-* Relationships with Students only (through - StudentEducationOrganizationResponsibilityAssociation, including deletes)
+* `NoFurtherAuthorizationRequired`
+* `RelationshipsWithEdOrgsAndPeople`
+* `RelationshipsWithEdOrgsOnly`
+* `NamespaceBased`
+* `RelationshipsWithPeopleOnly`
+* `RelationshipsWithStudentsOnly`
+* `RelationshipsWithStudentsOnlyThroughResponsibility`
+* `OwnershipBased`
+* `RelationshipsWithEdOrgsAndPeopleIncludingDeletes`
+* `RelationshipsWithStudentsOnlyIncludingDeletes`
+* `RelationshipsWithEdOrgsOnlyInverted`
+* `RelationshipsWithEdOrgsAndPeopleInverted`
+* `RelationshipsWithStudentsOnlyThroughResponsibilityIncludingDeletes`
 
 For more information about how authorization works [**please read the docs here.**](/reference/ed-fi-api/platform-dev-guide/security/api-claim-sets-resources#authorization-strategies).
 

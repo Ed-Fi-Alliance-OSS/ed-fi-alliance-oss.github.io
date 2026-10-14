@@ -37,7 +37,7 @@ If your implementation has extensions, we strongly recommend publishing the Meta
 * **Allows vendors to build and maintain an API in their development environment.** These files are used by vendors in conjunction with the Ed-Fi ODS technology to generate copies of the API surface (copies that are most likely, but not necessarily near replicas) that can used to support their internal development. Even in the case where the API is not an exact replica, the files provide precise technical guidance about data model extensions.
 * **Supports multi-level state data architectures.** In some states, data will not be sourced directly from a SIS, but come from a ODS that is managed by a school district or even an education service agency. There are also less common cases where it flows from a state via API to a ODS. In these architectures (the first cases is diagrammed below), the owner of the API wants to ensure that it is as close to the SEA's Ed-Fi API as possible, as the movement of data between these levels is automated.
 
-![Integrated State Model](https://edfi.atlassian.net/wiki/download/thumbnails/22907869/Integrated%20State%20Model.png?version=2&modificationDate=1699633271937&cacheVersion=1&api=v2&width=690&height=500)
+![Integrated State Model](https://edfidocs.blob.core.windows.net/$web/img/getting-started/sea-playbook/support-plan/Integrated%20State%20Model.png)
 
 Figure 1. A multi-level architecture involving multiple APIs that need to match
 

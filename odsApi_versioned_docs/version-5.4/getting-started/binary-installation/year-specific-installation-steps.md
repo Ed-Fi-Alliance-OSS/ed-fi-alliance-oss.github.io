@@ -86,7 +86,7 @@ There are several settings in the configuration file that are left empty as they
 
 **Copy your extension plugin to the database deployment package.** Place the extracted contents of your extension plugin package in the extracted EdFi.Suite3.RestApi.Databases package under `Ed-Fi-ODS-Implementation\Plugin` folder.
 
-![Plugin Folder](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-5-26_12-45-50.png)
+![Plugin Folder](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2021-5-26_12-45-50.png)
 
 **Enable your extension plugin in the deployment configuration.** Edit the Plugin section of the configuration file and update the Folder and Scripts values to the following:
 
@@ -189,7 +189,7 @@ Enable your extension plugin in `appsettings.json`. Open the `appsettings.json` 
 }
 ```
 
-![WebApi Plugin](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-5-26_13-32-29.png)
+![WebApi Plugin](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2021-5-26_13-32-29.png)
 
 </details>
 
