@@ -9,7 +9,6 @@ API Platform.  The Admin API is available for installation as standalone binarie
 
 ## What the Admin API Owns
 
----
 
 The Admin API is a separate application from the Ed-Fi ODS/API. It reads and
 writes the ODS/API's `EdFi_Admin` and `EdFi_Security` databases, but its own
