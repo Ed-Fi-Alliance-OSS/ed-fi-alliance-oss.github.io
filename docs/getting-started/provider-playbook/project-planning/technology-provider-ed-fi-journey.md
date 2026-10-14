@@ -10,7 +10,7 @@ and deletes to the agency's API as they happen. Assessment providers can use a
 [pull
 model](../specifics-by-provider-type/assessment-providers/domain-api-tutorial/assessment-providers-data-pull-model.md)
 instead. Providers should then join the [Ed-Fi Partner
-Program](../../../partners/2-certification/certification-for-data-providers/partner-program.md)
+Program](/partners/certification/certification-for-data-providers/partner-program)
 and earn Ed-Fi Certification or an Ed-Fi Badge, so agencies know the
 integration meets a shared specification.
 
