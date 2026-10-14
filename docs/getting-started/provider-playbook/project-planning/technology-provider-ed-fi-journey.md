@@ -1,12 +1,37 @@
 # Technology Provider Ed-Fi Journey
 
+## How Does a Technology Provider Integrate with Ed-Fi?
+
+A technology provider integrates by building an API client that sends data from
+its product to an education agency's Ed-Fi API. The agency hosts the API and
+gives the provider a key and secret. The provider maps its data to the Ed-Fi
+Data Standard, then pushes creates, updates, and deletes to the agency's API as
+they happen. Assessment providers can use a [pull
+model](../specifics-by-provider-type/assessment-providers/domain-api-tutorial/assessment-providers-data-pull-model.md)
+instead. Many providers then earn Ed-Fi Certification or an Ed-Fi Badge so
+agencies know the integration meets a shared specification.
+
+Most providers move through four stages, described in the sections below:
+
+1. **Engage:** learn what your customers are asking for, meet the Ed-Fi vendor
+   team, and join the community.
+2. **Develop:** build your first integration iteratively, with a customer using
+   it as you build, and join the partner program.
+3. **Credential:** have the integration certified or badged, and keep it current
+   with new Ed-Fi versions.
+4. **Productize:** make the integration self-serve, supported, and available to
+   any agency.
+
+For the technical work, see [What Does it Mean to Build an Ed-Fi
+Integration?](./what-does-it-mean-to-build-an-ed-fi-integration.md)
+
 ## Overview
 
 The Ed-Fi journey for technology providers usually follows the steps below. Understanding the steps will help you contextualize the stages and activities that will lead you from engaging to delivering real value in the Ed-Fi Community.   We encourage you to participate in the following ways to get the most out of your Ed-Fi integration.
 
 ## Engage
 
-**Engage** with your users about Ed-Fi. You probably came to Ed-Fi because your customers asked you to support the Ed-Fi Data Standard. The first stage for your teams – generally your product management teams – is to understand these requests and determine if and when support for Ed-Fi is right for your product roadmap and will deliver value to your customers. There are several critical activities in this stage of the vendor’s journey. These includes:
+**Engage** with your users about Ed-Fi. You probably came to Ed-Fi because your customers asked you to support the Ed-Fi Data Standard. The first stage for your teams – generally your product management teams – is to understand these requests and determine if and when support for Ed-Fi is right for your product roadmap and will deliver value to your customers. There are several critical activities in this stage of the vendor’s journey. These include:
 
 * Meeting with the Ed-Fi vendor team to share your goals and pain points, as well as what your customers have asked you to support
 * Identifying priorities and potential entry points into this work
@@ -22,7 +47,7 @@ During this “Develop” stage:
 
 * You will make a plan with the support of the Ed-Fi vendor team, establishing your first goal as a vendor participating in the community.  
 * You will join the partner program, which is a set of community participation commitments, organized around best practices of engagement in the community.  
-* You will establish and resource key roles, such as your Ed-Fi Product Owner, Implementation Lead, and Partnerships Lead. A
+* You will establish and resource key roles, such as your Ed-Fi Product Owner, Implementation Lead, and Partnerships Lead.
 * And you will become acquainted with the support and resources of the Ed-Fi vendor team available to you.
 
 ## Credential
