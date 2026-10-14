@@ -181,7 +181,7 @@ Read more about getting started with the Data Import tool:
 Below are two sample data files used in the "Next Steps" referenced in
 the walkthrough on this page:
 
-* Sample CSV file: [DI-TEST-2019-GrandBend.csv](https://edfi.atlassian.net/wiki/download/attachments/24119444/DI-TEST-2019-GrandBend.csv?version=1&modificationDate=1576003083757&cacheVersion=1&api=v2)
+* Sample CSV file: [DI-TEST-2019-GrandBend.csv](https://edfidocs.blob.core.windows.net/$web/assets/reference/6-data-import/getting-started/DI-TEST-2019-GrandBend.csv)
 *  Sample template file: [Grand Bend 2019 Sample ELA Assessment Results](https://github.com/Ed-Fi-Exchange-OSS/DataImport-Templates/tree/main/Grand_Bend_2019_Sample_State_ELA_Assessment_Results)
   (on GitHub)
 

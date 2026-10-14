@@ -27,7 +27,7 @@ A REST API is a common pattern in software development; if you are not familiar 
 
 [Video about REST APIs](https://www.youtube.com/watch?v=Q-BpqyOT3a8&)  The Ed-Fi API is built around Resources such as schools, students, grades, and assessments. In the Ed-Fi API, a Resource either represents an entity or composition of entities wrapped up as a single entity known as “domain aggregate” in the Ed-Fi Unifying Data Model. Your technology partner will send or receive data to these Resources via HTTPS (Hypertext Transfer Protocol Secure), using the HTTP methods (GET, PUT, POST, DELETE).  The diagram below shows an LEA SIS interacting with the Ed-Fi ODS/API.
 
-![LEA SIS Ed-Fi ODS/API Interaction Diagram](https://edfi.atlassian.net/wiki/download/thumbnails/19334211/image-2024-2-11_19-30-9.png?version=1&modificationDate=1707701409610&cacheVersion=1&api=v2&width=884&height=300)
+![LEA SIS Ed-Fi ODS/API Interaction Diagram](https://edfidocs.blob.core.windows.net/$web/img/getting-started/sea-playbook/implementation/image-2024-2-11_19-30-9.png)
 
 See the Data Exchange section of [API Developers Guide: Basics](/reference/ed-fi-api/client-developers-guide/basics) to understand more about the difference between the GET, PUT, POST and DELETE endpoints.  It is important to note that most of the Core API endpoints have all HTTP methods implemented, and what each technology provider can do is controlled by the platform host via the security setup which we will discuss later in this article.
 
@@ -77,7 +77,7 @@ To learn more about why composite keys are used in the database see: [Technical 
 
 In the sample technology stack for an Ed-Fi Technology Suite installation that is pictured below, you can see how the Ed-Fi API sits between the various external systems and the Ed-Fi ODS.
 
- ![Sample Technology Stack for Ed-Fi Technology Suite](https://edfi.atlassian.net/wiki/download/thumbnails/19334211/image-2024-2-11_19-30-9-2.png?version=1&modificationDate=1707701411450&cacheVersion=1&api=v2&width=966&height=500)
+ ![Sample Technology Stack for Ed-Fi Technology Suite](https://edfidocs.blob.core.windows.net/$web/img/getting-started/sea-playbook/implementation/image-2024-2-11_19-30-9-2.png)
 
 When planning your Ed-Fi Technology Suite deployment you have three options, each with its own benefits and drawbacks.
 

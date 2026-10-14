@@ -51,7 +51,7 @@ This self-assessment tool is more than just a checklist; it is a comprehensive g
 
 We highly recommend downloading and completing this self-assessment as your first step. It will provide a clear picture of your current capabilities and areas that need attention, setting you on the right path toward a successful data validation process. This self-assessment is instrumental in ensuring that your journey towards data validation is well-informed and strategically planned.
 
-**[Click Here to Download the Self-Assessment for Data Validation Readiness](https://edfi.atlassian.net/wiki/download/attachments/19334220/Self_Assessment_For_Data_Validation_Readiness.docx?version=1&modificationDate=1711424183807&cacheVersion=1&api=v2)**
+**[Click Here to Download the Self-Assessment for Data Validation Readiness](https://edfidocs.blob.core.windows.net/$web/assets/getting-started/sea-playbook/project-planning/Self_Assessment_For_Data_Validation_Readiness.docx)**
 
 ## Documenting Data Validation Rules
 
@@ -85,7 +85,7 @@ The workbook contains three different worksheets. Each of these worksheets has a
 * **Validation Rules:** This worksheet is designed to document the details of each validation rule in both natural language and technical terms. This is the heart of the documentation process for documenting validation rules.
 * **Validation Rule Mapping:** This worksheet is designed to help plan and track the transition of validation rules from your current system to the Ed-Fi Data Standard.
 
-**[Click Here to Download the Data Validation Documentation Workbook](https://edfi.atlassian.net/wiki/download/attachments/19334220/Data_Validation_Documentation_Workbook.xlsx?version=1&modificationDate=1711423298007&cacheVersion=1&api=v2)**
+**[Click Here to Download the Data Validation Documentation Workbook](https://edfidocs.blob.core.windows.net/$web/assets/getting-started/sea-playbook/project-planning/Data_Validation_Documentation_Workbook.xlsx)**
 
 ### Implementing Data Validation: Best Practices
 
@@ -110,8 +110,8 @@ Dedicating effort to effective data validation unlocks the power of educational 
 
 Here are links to the tools referenced in this article along with a few other useful links to continue your learning:
 
-* [Self-Assessment for Data Validation Readiness](https://edfi.atlassian.net/wiki/download/attachments/19334220/Self_Assessment_For_Data_Validation_Readiness.docx?version=1&modificationDate=1711424183807&cacheVersion=1&api=v2)
-* [Data Validation Documentation: Excel Workbook](https://edfi.atlassian.net/wiki/download/attachments/19334220/Data_Validation_Documentation_Workbook.xlsx?version=1&modificationDate=1711423298007&cacheVersion=1&api=v2)
+* [Self-Assessment for Data Validation Readiness](https://edfidocs.blob.core.windows.net/$web/assets/getting-started/sea-playbook/project-planning/Self_Assessment_For_Data_Validation_Readiness.docx)
+* [Data Validation Documentation: Excel Workbook](https://edfidocs.blob.core.windows.net/$web/assets/getting-started/sea-playbook/project-planning/Data_Validation_Documentation_Workbook.xlsx)
 * [Open-Source Rules Engine and Validation API Special Interest Group](https://edfi.atlassian.net/wiki/display/ESIG/Open+Source+Rules+Engine+and+Validation+API)
 * Example: Texas Student Data System Data Validation Rules, see link on [TSDS ODS Upgrade Data Standards page](https://www.texasstudentdatasystem.org/tsds/teds/ods-upgrade-data-standards)
 * [Example: WISEdata Validation Rule List (GoogleSheet)](https://docs.google.com/spreadsheets/d/10Wk6o20-HSw6qed7EK7nso0-eK9n1W9Ped9MRcM_4Mo/edit#gid=0)

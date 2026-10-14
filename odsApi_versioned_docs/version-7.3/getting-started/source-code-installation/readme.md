@@ -713,6 +713,6 @@ for details.
 :::note
 
 The following link contains sample docker setup files for PostgreSQL
-[PGDockerSetup.zip](https://edfi.atlassian.net/wiki/download/attachments/23298387/PGDockerSetup.zip?version=1&modificationDate=1708470913300&cacheVersion=1&api=v2)
+[PGDockerSetup.zip](https://edfidocs.blob.core.windows.net/$web/assets/reference/ods-api/PGDockerSetup.zip)
 
 :::

@@ -19,7 +19,7 @@ In this activity, we will run a GET call on the `/ed-fi/students` endpoint.
 6. Scroll down and click the "Execute" button.
 7. You will see info that looks like this appear.
 
- ![Swagger Screenshot](https://edfi.atlassian.net/wiki/download/thumbnails/22907812/Screen%20Shot%202022-08-01%20at%204.09.33%20PM.png?version=1&modificationDate=1660667877247&cacheVersion=1&api=v2&width=1178&height=800)
+ ![Swagger Screenshot](https://edfidocs.blob.core.windows.net/$web/img/getting-started/provider-playbook/implementation/getting-started-with-apis/all-providers/Screen%20Shot%202022-08-01%20at%204.09.33%20PM.png)
 
 ### Congratulations, you just completed your first API call to an Ed-Fi API
 
