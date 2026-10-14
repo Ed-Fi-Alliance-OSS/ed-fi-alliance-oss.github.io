@@ -8,7 +8,7 @@ Achievement First is excited to share with the Ed-Fi community some resources fr
 
 ## Download
 
-* ****Documentation:**** [Achievement First Solution.pdf](https://edfi.atlassian.net/wiki/download/attachments/22490924/Achievement%20First%20Solution.pdf?version=1&modificationDate=1592339317437&cacheVersion=1&api=v2) & [Achievement First Solution.pdf](https://edfi.atlassian.net/wiki/download/attachments/22490924/Achievement%20First%20Solution.pdf?version=1&modificationDate=1592339317437&cacheVersion=1&api=v2)
+* ****Documentation:**** [Achievement First Solution.pdf](https://edfidocs.blob.core.windows.net/$web/assets/getting-started/edfi-exchange/technology/Achievement%20First%20Solution.pdf) & [Achievement First Solution.pdf](https://edfidocs.blob.core.windows.net/$web/assets/getting-started/edfi-exchange/technology/Achievement%20First%20Solution.pdf)
 * ****Code :**** [https://github.com/achievementfirst/af-edfi-shared](https://github.com/achievementfirst/af-edfi-shared)
 
 ## Details

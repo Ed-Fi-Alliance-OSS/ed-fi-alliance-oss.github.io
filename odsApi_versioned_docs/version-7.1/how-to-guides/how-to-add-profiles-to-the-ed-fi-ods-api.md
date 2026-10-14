@@ -8,7 +8,7 @@ API Profiles can be configured and assigned through the `EdFi_Admin` database. T
 
 The tables related to this process are shown below.
 
-![Profiles ER Diagram](https://edfi.atlassian.net/wiki/download/thumbnails/25493741/image-2023-4-5_22-34-39.png?version=1&modificationDate=1699456124790&cacheVersion=1&api=v2&width=624&height=159)
+![Profiles ER Diagram](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-7.1/image-2023-4-5_22-34-39.png)
 
 API Profiles can be directly inserted into the Profiles table and then assigned to Applications via the ProfileApplications table. When making changes in the Profiles table, be aware that only one Profile can be stored per row. As such, the XML in the `ProfileDefinition` column should use `<Profile>` as the root element rather than the `<Profiles>` root element defined in the Ed-Fi-ODS-API-Profiles.xsd.
 
@@ -49,7 +49,7 @@ Verify that the new Profile endpoints are visible in the swagger or via metadata
 You may have to clear your browser cache in order for Swagger UI to display the new resource.
 :::
 
-![Profiles](https://edfi.atlassian.net/wiki/download/attachments/25493741/image2017-12-18_16-23-55.png?version=1&modificationDate=1699456124837&cacheVersion=1&api=v2)
+![Profiles](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2017-12-18_16-23-55.png)
 
 ```json title="Discovery API metadata listing (partial)"
 [
@@ -112,7 +112,7 @@ Detail on each step follows.
 
 1. In the "Add New Project" dialog, find and select the "Ed-Fi API Profiles Project Template" entry as shown below. Click **Next**.
 1. Enter the project name for the new project and click **Create**. The suggested naming convention for this type of project is something like `EdFi.Ods.Profiles.MyProfiles`.
-![image](https://edfi.atlassian.net/wiki/download/thumbnails/25493741/profiles2.PNG?version=1&modificationDate=1699456124807&cacheVersion=1&api=v2&width=900&height=597)
+![image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/profiles2.PNG)
 1. **Review and modify `Profiles.xml` file**. The Visual Studio Project Template creates a sample `Profiles.xml` file. You should open it and modify it to meet the needs of your Profile. Consult [API Profiles](../platform-dev-guide/security/api-profiles.md) for guidance.
 1. **Save** the Project.
 

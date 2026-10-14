@@ -21,7 +21,7 @@ the certified functionality.
 
 The information MUST be submitted by the data provider seeking certification
 using the
-[Required Form](<https://edfi.atlassian.net/wiki/download/attachments/293896203/Ed-Fi%20Certification%20-%20Availability%20Statement%20V2.docx?api=v2>).
+[Required Form](<https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/certification-for-data-providers/Ed-Fi%20Certification%20-%20Availability%20Statement%20V2.docx>).
 Information from this form will be published as part of the product's
 certification record.
 

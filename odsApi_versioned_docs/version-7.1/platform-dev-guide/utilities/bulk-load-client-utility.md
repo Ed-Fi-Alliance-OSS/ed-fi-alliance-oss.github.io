@@ -49,7 +49,7 @@ The projects involved are:
 The general design of the application is a pipeline that takes XML files as
 input. The pipeline has the following general flow:
 
-![Image](https://edfi.atlassian.net/wiki/download/attachments/25493681/DedupeApiLoaderProcess.png?version=1&modificationDate=1699456109483&cacheVersion=1&api=v2)
+![Image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/DedupeApiLoaderProcess.png)
 
 | Step | Action |
 | --- | --- |

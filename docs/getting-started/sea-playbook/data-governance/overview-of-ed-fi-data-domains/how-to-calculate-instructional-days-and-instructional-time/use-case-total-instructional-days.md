@@ -24,4 +24,4 @@ Assumptions:
 
 ### Diagram
 
-![Total Instruction Days Diagram](https://edfi.atlassian.net/wiki/download/attachments/22905412/Total%20Instructional%20Days%20v2.png?api=v2)
+![Total Instruction Days Diagram](https://edfidocs.blob.core.windows.net/$web/img/getting-started/sea-playbook/data-governance/overview-of-ed-fi-data-domains/how-to-calculate-instructional-days-and-instructional-time/Total%20Instructional%20Days%20v2.png)
