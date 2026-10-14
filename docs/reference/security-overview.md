@@ -56,9 +56,12 @@ A claim set says an application may read students. Authorization strategies
 decide _which_ students. Most student, staff, and contact data uses a
 relationship-based strategy: an application's key is associated with one or more
 education organizations, such as a school or district, and the application can
-only reach people connected to those organizations. For example, a student
-information system with a district key can only work with students enrolled in
-that district's schools.
+only reach people connected to those organizations for operations protected by
+that strategy. For example, when a read strategy uses enrollment, a student
+information system with a district key can read students enrolled in that
+district's schools. Other strategies can use responsibility associations instead.
+Under the default student-creation strategy, an application with create access
+can create a student record before enrollment is established.
 
 Other strategies cover other kinds of data. Namespace-based authorization, for
 example, controls access to assessment metadata by the namespaces assigned to the
