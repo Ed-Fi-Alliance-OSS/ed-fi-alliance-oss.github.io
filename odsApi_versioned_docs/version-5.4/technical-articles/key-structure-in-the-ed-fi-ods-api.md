@@ -18,19 +18,19 @@ uniqueness is enforced.
 The following diagram shows Id in CourseOffering table, which stores the
 resource ID for an offering:
 
-![CourseOffering table](https://edfi.atlassian.net/wiki/download/attachments/22774867/course-offering-table.png?version=1&modificationDate=1641921864981&cacheVersion=1&api=v2)
+![CourseOffering table](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/course-offering-table.png)
 
 In the API surface, a CourseOffering can be looked up/queried by doing a HTTP
 GET on a path like: `/courseOfferings/d0fd729db6ee4a7bbc989720e4f833f5`.
 
 In the returned JSON, the resource ID appears as the `id` element:
 
-![JSON resource ID](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/json-resourceid.png)
+![JSON resource ID](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/json-resourceid.png)
 
 When an element is POSTed (i.e., created in the ODS / API), the resource ID is
 provided via a HTTP Header. It will look something like:
 
-![API new resource header](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/api-newresourceheader.png)
+![API new resource header](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/api-newresourceheader.png)
 
 ## USIs (Unique Surrogate Identifiers)
 
@@ -51,7 +51,7 @@ text-based UniqueId. The integer-based USI is not visible to the API client and 
 The following diagram shows the StaffUSI primary key field and the StaffUniqueId
 field in the Staff table:
 
-![Staff table](https://edfi.atlassian.net/wiki/download/attachments/22774867/staff-table.png?version=1&modificationDate=1641921865096&cacheVersion=1&api=v2)
+![Staff table](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/staff-table.png)
 
 ## Natural Keys
 

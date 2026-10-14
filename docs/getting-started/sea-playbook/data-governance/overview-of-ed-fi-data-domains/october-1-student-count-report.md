@@ -6,7 +6,7 @@ For the October 1 Child Count, the student must be enrolled in the school and re
 
 ## Model Navigation Student Count
 
-![Model Navigation Student Count Diagram](https://edfi.atlassian.net/wiki/download/attachments/22906370/image2019-6-15_16-58-40.png?api=v2)
+![Model Navigation Student Count Diagram](https://edfidocs.blob.core.windows.net/$web/img/getting-started/sea-playbook/data-governance/overview-of-ed-fi-data-domains/image2019-6-15_16-58-40.png)
 
 ## Oct1CountReport (DRAFT ONLY)
 

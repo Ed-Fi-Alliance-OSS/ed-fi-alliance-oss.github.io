@@ -39,7 +39,7 @@ In Web.config, to enable Claim Set Editing functionality inside Admin App,
 change the **IsClaimSetsTabEnabled** item to have a value of **true** as shown
 below in the AppSettings node in Web.config:
 
-![WebConfig](https://edfi.atlassian.net/wiki/download/attachments/25238416/image2020-1-13_11-15-28.png?version=1&modificationDate=1578935728477&cacheVersion=1&api=v2)
+![WebConfig](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-admin-app/technical-articles/image2020-1-13_11-15-28.png)
 
 ## Claim Sets Tab
 

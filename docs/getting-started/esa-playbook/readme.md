@@ -6,14 +6,14 @@ sidebar_position: 3
 
 ![ESA playbook cover image](/img/esa-playbook.jpg)
 
-## Download the Playbook
+## Welcome to the Playbook
 
 Welcome to the Ed-Fi playbook for Educational Service Agencies in the K–12
 ecosystem! Educational Service Agencies may go by a variety of names depending
 on where you are in the country like Education Service Centers (ESC),
 collaboratives, Counties of Education (COEs), Regional Information Centers
-(RIC), etc.  These organizations also have slightly varying charters and
-missions.  This information is intended to help you understand the major aspects
+(RIC), etc. These organizations also have slightly varying charters and
+missions. This information is intended to help you understand the major aspects
 of building data system integrations using the Ed-Fi Data Standard that is
 universal to Educational Service Agencies (ESA).
 
@@ -29,6 +29,8 @@ There are three intended audiences for this playbook:
 * Agency instructional technologists who may be assisting LEAs with the
   implementation of edTech platforms and want to expand their coaching
   abilities.
+
+## Download the Playbook
 
 [Educational Service Agency (ESA)
 Playbook](https://edfidocs.blob.core.windows.net/$web/assets/getting-started/esa-playbook/Educational%20Service%20Agency%20(ESA)%20Playbook.pdf)

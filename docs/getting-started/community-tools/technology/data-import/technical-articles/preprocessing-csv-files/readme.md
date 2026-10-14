@@ -47,7 +47,7 @@ right-click the zip and select "Properties", then "Unblock" the file and select
 
 After unzipping, you'll find 3 files:
 
-![Unzip file](https://edfi.atlassian.net/wiki/download/thumbnails/24117496/image2019-8-19_17-13-1.png?version=1&modificationDate=1566252782427&cacheVersion=1&api=v2&width=936&height=250)
+![Unzip file](https://edfidocs.blob.core.windows.net/$web/img/reference/6-data-import/technical-articles/preprocessing-csv-files/image2019-8-19_17-13-1.png)
 
 "DI-TEST-2018-GrandBend-pre.csv" is an example CSV file from the Quickstart with
 a few additional data issues. Open this file in notepad.exe to witness the raw
@@ -73,7 +73,7 @@ custom CSV preprocessor. It is used by "di-csv-preprocessor.ps1".
 Holding the shift key, right click within the extracted zip folder and select
 "Open PowerShell window here":
 
-![PowerShell](https://edfi.atlassian.net/wiki/download/thumbnails/24117496/image2019-8-19_17-19-35.png?version=1&modificationDate=1566253175663&cacheVersion=1&api=v2&width=500&height=373)
+![PowerShell](https://edfidocs.blob.core.windows.net/$web/img/reference/6-data-import/technical-articles/preprocessing-csv-files/image2019-8-19_17-19-35.png)
 
 ## 4\. Run the Example
 
@@ -85,9 +85,9 @@ In the powershell window, enter the following command and hit enter:
 
 A new file will appear, "DI-TEST-2018-GrandBend-post.csv":
 
-![Shell ps1](https://edfi.atlassian.net/wiki/download/thumbnails/24117496/image2019-8-19_17-21-47.png?version=1&modificationDate=1566253307093&cacheVersion=1&api=v2&width=1200&height=169)
+![Shell ps1](https://edfidocs.blob.core.windows.net/$web/img/reference/6-data-import/technical-articles/preprocessing-csv-files/image2019-8-19_17-21-47.png)
 
-![File Generated](https://edfi.atlassian.net/wiki/download/thumbnails/24117496/image2019-8-19_17-22-21.png?version=1&modificationDate=1566253341943&cacheVersion=1&api=v2&width=600&height=130)
+![File Generated](https://edfidocs.blob.core.windows.net/$web/img/reference/6-data-import/technical-articles/preprocessing-csv-files/image2019-8-19_17-22-21.png)
 
 ## 5\. Inspect the Results
 
@@ -101,11 +101,11 @@ except:
 
 DI-TEST-2018-GrandBend-pre.csv:
 
-![Template Generated Pre](https://edfi.atlassian.net/wiki/download/thumbnails/24117496/image2019-8-19_17-24-34.png?version=1&modificationDate=1566253474087&cacheVersion=1&api=v2&width=930&height=250)
+![Template Generated Pre](https://edfidocs.blob.core.windows.net/$web/img/reference/6-data-import/technical-articles/preprocessing-csv-files/image2019-8-19_17-24-34.png)
 
 DI-TEST-2018-GrandBend-post.csv:
 
-![Template Generated Post](https://edfi.atlassian.net/wiki/download/thumbnails/24117496/image2019-8-19_17-25-9.png?version=1&modificationDate=1566253509187&cacheVersion=1&api=v2&width=1050&height=226)
+![Template Generated Post](https://edfidocs.blob.core.windows.net/$web/img/reference/6-data-import/technical-articles/preprocessing-csv-files/image2019-8-19_17-25-9.png)
 
 ## 6\. Customize
 
@@ -114,5 +114,5 @@ This is just a representative example. Naturally, you will need to modify
 
 :::info note:
   The following ZIP file is the source for this example:
-  [di-powershell-csv-preprocessor-example.zip](https://edfi.atlassian.net/wiki/download/https://edfidocs.blob.core.windows.net/$web/img/reference/data-import/technical-articles/hotfixes/24117496/di-powershell-csv-preprocessor-example.zip?version=2&modificationDate=1566253046610&cacheVersion=1&api=v2)
+  [di-powershell-csv-preprocessor-example.zip](https://edfidocs.blob.core.windows.net/$web/assets/reference/6-data-import/technical-articles/di-powershell-csv-preprocessor-example.zip)
 :::

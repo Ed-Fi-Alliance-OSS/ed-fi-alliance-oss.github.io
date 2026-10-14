@@ -11,7 +11,7 @@ This package uses the iMart/Ed-Fi Data Warehouse-Synergyz (1.0) model which spec
 ## Download
 
 * **Code:** [https://github.com/Ed-Fi-Exchange-OSS/Ed-Fi-X-OtisEd-iMart](https://github.com/Ed-Fi-Exchange-OSS/Ed-Fi-X-OtisEd-iMart)
-* **Documentation:** [OtisEd - iMart Ed-Fi Data Warehouse Starter Kit.pdf](https://edfi.atlassian.net/wiki/download/attachments/22487677/OtisEd%20iMart%20Ed-Fi%20Data%20Warehouse%20Starter%20Kit.pdf?version=1&modificationDate=1572964568703&cacheVersion=1&api=v2)
+* **Documentation:** [OtisEd - iMart Ed-Fi Data Warehouse Starter Kit.pdf](https://edfidocs.blob.core.windows.net/$web/assets/getting-started/edfi-exchange/technology/OtisEd%20iMart%20Ed-Fi%20Data%20Warehouse%20Starter%20Kit.pdf)
 
 ## Details
 

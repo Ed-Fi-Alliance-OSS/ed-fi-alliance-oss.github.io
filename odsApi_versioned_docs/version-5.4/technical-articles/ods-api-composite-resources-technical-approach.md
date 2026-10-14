@@ -73,7 +73,7 @@ a single query that contains a specific slice of data.
 The approach is depicted in the images below for the Ed-Fi Enrollment API's
 Section resource:
 
-![Composite Table 01](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/Composite-Table-01-1.png)
+![Composite Table 01](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/Composite-Table-01-1.png)
 
 The results of all the queries are then processed into a generic structure of `IDictionary<string, object>` instances (representing individual objects) and `IList<IDictionary<string, object>>` representing collections of objects. These generic structures are then provided
 to the Json.NET library and serialized directly to form the API response.

@@ -73,4 +73,4 @@ Example response:
 Now that you've seen how to authenticate and authorize a client application, let's look at how to design an elegant solution by trapping errors and leveraging best practices learned from hard-won experience. The [Error Handling & Best Practices](./error-handling-best-practices.md) section walks you through the details.
 
 Downloads:
-* [Ed-Fi API Client Developer Postman Example](https://edfi.atlassian.net/wiki/download/attachments/20480666/Ed-Fi%20API%20Client%20Developer%20Postman%20Example.zip?version=3&modificationDate=1527887971107&api=v2&download=true)
+* [Ed-Fi API Client Developer Postman Example](https://edfidocs.blob.core.windows.net/$web/assets/reference/ods-api/Ed-Fi%20API%20Client%20Developer%20Postman%20Example.zip)
