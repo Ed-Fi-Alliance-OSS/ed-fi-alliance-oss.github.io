@@ -1,11 +1,63 @@
 ---
 sidebar_position: 5
+description: How a change to the Ed-Fi Data Standard becomes official, from idea through Request for Comment (RFC), review, approval, and release.
 ---
 
-# RFC Specifications
+# Requests for Comment (RFC)
 
-:::tip
+A change to the Ed-Fi Data Standard becomes official by moving through the Ed-Fi
+Alliance governance process: someone proposes it, the Ed-Fi Alliance turns it
+into a Request for Comment (RFC) that the community reviews, the Technical
+Advisory Group (TAG) and Governance Advisory Team (GAT) review it as needed, and
+the Ed-Fi Alliance Management Committee gives final approval. Approved changes
+are then published in a versioned release of the Ed-Fi Data Standard.
 
-Coming soon
+## From idea to final approval
 
-:::
+Every change moves through the same stages, whether it starts with a work group
+or with Ed-Fi Alliance staff:
+
+1. **Idea initiation**: someone raises a change or a gap in the standard.
+2. **RFC process and engagement**: the idea becomes a request. The Ed-Fi
+   Alliance team manages proposed changes and works with community members to
+   design and validate them.
+3. **Incorporation of feedback**: comments are folded back into the proposal.
+4. **TAG and GAT review**: the Technical Advisory Group and Governance Advisory
+   Team review changes as needed.
+5. **Final approval**: the Ed-Fi Alliance Management Committee signs off, and
+   the change is implemented on the roadmap.
+
+The [Governance](/community/involved/governance) page describes the groups
+involved at each stage and how to take part.
+
+## Where to find and comment on RFCs
+
+- Data Standard RFCs are published as [GitHub Discussions with the RFC
+  label](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Technology-Roadmap/discussions?discussions_q=label%3ARFC).
+- Proposals for the Ed-Fi Technology Suite are tracked in the [Technology Suite
+  Proposals](https://github.com/orgs/Ed-Fi-Alliance-OSS/projects/2/views/1)
+  project.
+- To report an issue or suggest a change to the Ed-Fi Data Standard, see
+  [Reporting Issues and Making
+  Suggestions](../udm/reporting-issues-and-making-suggestions.md).
+
+## What RFC status means
+
+Request for Comment versions contain data elements and models proposed for use
+by the community but not yet part of the core standard. Elements and exchanges
+defined in RFCs are expected to be implemented in the field so that issues can
+be found and the model refined. If you use an RFC version, stay on the latest
+version to avoid fragmenting the ecosystem, because early iterations change more
+often.
+
+The [classes of Ed-Fi Data Standard](../data-standards.md#what-are-the-classes-of-ed-fi-data-standard)
+section explains how RFC material differs from the core standard and from
+certification.
+
+## After approval: release and early access
+
+Approved changes are published in a versioned release of the Ed-Fi Data
+Standard, which uses semantic versioning. New material may first be published
+as _early access_ when it is not yet fully verified as stable, and the "EARLY
+ACCESS" label is removed in a later release once the material matures. See
+[Ed-Fi Data Standard Versioning and Releases](../versioning-and-releases.md).
