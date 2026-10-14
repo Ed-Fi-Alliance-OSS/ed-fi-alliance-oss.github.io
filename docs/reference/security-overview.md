@@ -27,7 +27,7 @@ explains each one and links to the technical documentation.
 
 ## Authentication: Applications, Not People
 
-Ed-Fi APIs use the OAuth 2.0 client credentials flow. Credentials are issued to
+Ed-Fi API applications use the OAuth 2.0 client credentials flow. Credentials are issued to
 client applications, not to individual teachers or staff. The host gives each
 application a key and secret, which the application exchanges for a short-lived
 access token. Every API call must carry a valid token. Traffic carrying
