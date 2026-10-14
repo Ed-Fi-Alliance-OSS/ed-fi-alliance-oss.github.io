@@ -15,7 +15,9 @@ Ed-Fi API Publisher. For the complete list of changes, see
 The API Publisher now runs on .NET 10, the current long-term support release of
 .NET. Install the
 [.NET 10 runtime](https://dotnet.microsoft.com/en-us/download/dotnet/10.0)
-before upgrading a binary deployment. The Docker image is built on .NET 10.
+before upgrading a deployment that uses the portable `EdFi.ApiPublisher`
+package. The Windows package includes the runtime, and the Docker image is
+built on .NET 10.
 
 ### Ed-Fi API v8 Support
 

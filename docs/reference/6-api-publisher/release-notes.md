@@ -30,7 +30,9 @@ GitHub repository to find the changes for that specific update.
 * APIPUB-116 - The API Publisher requires .NET 10.
 * APIPUB-120 - New exit codes: `0` success, `1` documents rejected beyond the
   tolerance, `2` run incomplete, `3` authentication failure, `4` invalid
-  configuration. A run that loses documents no longer exits with `0`.
+  configuration. A run that loses documents no longer exits with `0`, except
+  for writes that time out on every retry (see
+  [Known Issues](Known-Issues-Details.md#writes-that-time-out-on-every-retry)).
 * APIPUB-108 - Resource paths are taken from the API's Discovery document. A
   proxy in front of Ed-Fi API v8 that only routes `/data/v3/` answers `404`;
   set `dataManagementUrlSegment` to keep the previous path.

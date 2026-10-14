@@ -125,7 +125,7 @@ The API Publisher has three options to use the product. It runs on
 2. This will download a NuGet package to your computer. Rename this file,
    `EdFi.ApiPublisher.1.4.0.nupkg`, to include .zip extension:
    `EdFi.ApiPublisher.1.4.0.zip`.
-3. The package contains two folders:
+3. Extract the ZIP file. It contains two folders:
    * `EdFi.ApiPublisher.Win64`: `EdFiApiPublisher.exe` for Windows. It includes
      the .NET runtime, so no separate installation is needed. The Quick Start
      command below uses it.
@@ -195,7 +195,8 @@ file:
 ```
 
 When the run finishes, the publisher prints a summary of the documents
-attempted, published and failed for each resource, and exits with code `0`. See
+attempted, published and failed for each resource. A successful run exits with
+code `0`. See
 [Run outcome and exit codes](API-Publisher-Configuration.md#run-outcome-and-exit-codes).
 
 For more documentation on API Publisher's parameters, please see the
