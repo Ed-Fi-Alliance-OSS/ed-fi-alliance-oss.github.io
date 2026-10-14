@@ -14,7 +14,7 @@ The intended audience for the SEA Playbook is leadership of state data efforts. 
 
 ## Where Should a State Education Agency Start?
 
-Most states start by deciding what they want Ed-Fi technology to do, then
+Most states start by deciding what they want to do with the Ed-Fi Data Standard, then
 choosing an implementation approach and planning a pilot.
 
 ### Typical SEA Use Cases
