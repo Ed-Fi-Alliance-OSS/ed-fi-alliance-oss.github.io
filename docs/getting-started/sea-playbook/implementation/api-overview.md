@@ -121,7 +121,7 @@ The Ed-Fi API is extendable to allow for use cases that are not already in place
 
 Security is imperative when dealing with student data.  The Ed-Fi ODS/API provide keys and secrets to the client applications that require access, and those determine what access is provided.  All communication is done over HTTPS which is more secure the HTTP.  To learn more about how the Authentication works see: [API Client Developers’ Guide: Authentication](/reference/ed-fi-api/client-developers-guide/authentication)
 
-For a plain-language overview of how the Ed-Fi ODS/API and Ed-Fi API v8 protect student data, and what the platform host is responsible for, see [How Ed-Fi API Platforms Secure Student Data](/reference/security-overview).
+For a plain-language overview of how the Ed-Fi ODS/API and Ed-Fi API v8 protect student data, and what the platform host is responsible for, see [How Ed-Fi API Platforms Secure Student Data](/reference/ods-api-platform/security-overview).
 
 ### Working with Key/Secrets
 

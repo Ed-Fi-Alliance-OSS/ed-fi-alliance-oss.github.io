@@ -12,6 +12,6 @@ In the Ed-Fi _open source technology development_ effort, the Ed-Fi ODS / API fo
 
 For a plain-language overview of claim sets, relationship-based access, and
 profiles, see [How Ed-Fi API Platforms Secure Student
-Data](/reference/security-overview).
+Data](/reference/ods-api-platform/security-overview).
 
 **Pro tip:** The ODS / API system is highly configurable, and an API implementer can configure or implement other strategies. Ask the API host if such configurations have taken place before doing integration work.

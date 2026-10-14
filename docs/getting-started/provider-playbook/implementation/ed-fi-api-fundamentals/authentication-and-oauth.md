@@ -10,4 +10,4 @@ Accordingly, in the Ed-Fi open source technology development effort, the Ed-Fi O
 
 For a plain-language overview of how authentication fits with the other
 security layers, see [How Ed-Fi API Platforms Secure Student
-Data](/reference/security-overview).
+Data](/reference/ods-api-platform/security-overview).
