@@ -46,14 +46,21 @@ Populated Template sandbox to the Minimal Template sandbox of a local Ed-Fi
 ODS/API 7.3 sandbox on Windows with SQL Server. Both sandboxes are served by the
 same API, and each one has its own API client.
 
+### Prerequisites
+
+An Ed-Fi ODS/API 7.3 sandbox on Windows with SQL Server, installed by following
+the
+[Sandbox Installation Steps](/reference/ed-fi-api/getting-started/binary-installation/sandbox-installation-steps)
+after the prerequisites listed in
+[Binary Installation](/reference/ed-fi-api/getting-started/binary-installation/).
+This Quick Start covers only the installation and use of the API Publisher.
+It uses an Ed-Fi ODS/API sandbox; to publish to or from Ed-Fi API v8, see
+[Considerations for API Hosts](Considerations-for-API-Hosts.md#ed-fi-api-v8).
+
 ### Configure Local Sandbox Environment
 
-1. Install an Ed-Fi ODS/API 7.3 sandbox by following the
-   [Sandbox Installation Steps](/reference/ed-fi-api/getting-started/binary-installation/sandbox-installation-steps).
-   Install the prerequisites listed in
-   [Binary Installation](/reference/ed-fi-api/getting-started/binary-installation/)
-   first. The keys and secrets of the Populated Template and Minimal Template
-   sandboxes are in the `User` section of
+1. Find the keys and secrets of the Populated Template and Minimal Template
+   sandboxes in the `User` section of
    `C:\inetpub\Ed-Fi\SandboxAdmin\appsettings.json`.
 2. Configure the API clients of both sandboxes. The script below assigns the
    `Ed-Fi API Publisher - Writer` claim set to the Minimal Template client and
