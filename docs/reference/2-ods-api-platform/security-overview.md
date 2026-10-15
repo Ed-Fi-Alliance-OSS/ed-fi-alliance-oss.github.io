@@ -24,15 +24,31 @@ explains each one and links to the technical documentation.
 
 ## Authentication: Applications, Not People
 
-Ed-Fi API applications use the OAuth 2.0 client credentials flow. Credentials are issued to
-client applications, not to individual teachers or staff. The host gives each
-application a key and secret, which the application exchanges for a short-lived
-access token. Every API call must carry a valid token. Traffic carrying
-production data always uses HTTPS.
+Ed-Fi API applications use the OAuth 2.0 client credentials flow.[^oauth]
+Credentials are issued to client applications, not to individual teachers or
+staff. The host gives each application a key and secret, which the application
+exchanges for a short-lived access token. Every API call must carry a valid
+token. Traffic carrying production data always uses HTTPS.
+
+```mermaid
+sequenceDiagram
+    participant App as Client application
+    participant Token as Token service
+    participant API as Ed-Fi API
+
+    App->>API: GET /students (no token)
+    API-->>App: 401 Unauthorized
+    App->>Token: Key and secret
+    Token-->>App: Access token
+    App->>API: GET /students with access token
+    API-->>App: Students the application may access
+```
 
 Because access is granted per application, the client application controls what
 its own users can see, using its local accounts and roles. The API host controls
 what data the application as a whole can reach.
+
+The token service depends on the platform:
 
 - In the **Ed-Fi ODS/API**, the API itself issues tokens.
 - In **Ed-Fi API v8**, tokens come from the Configuration Service's built-in
@@ -112,3 +128,11 @@ Hosts, lead developers, and DevOps staff should also read
 
 - [Authentication and OAuth](/getting-started/provider-playbook/implementation/ed-fi-api-fundamentals/authentication-and-oauth)
 - [Authorization](/getting-started/provider-playbook/implementation/ed-fi-api-fundamentals/authorization)
+
+[^oauth]: OAuth 2.0 is an open standard that lets an application get a
+    limited, short-lived access token instead of sending a password with every
+    request. In the client credentials flow, the client is the application
+    itself, not a person: it sends its key and secret to a token service and
+    gets back an access token. See
+    [OAuth 2.0 Client Credentials](https://oauth.net/2/grant-types/client-credentials/)
+    and [RFC 6749, section 4.4](https://tools.ietf.org/html/rfc6749#section-4.4).
