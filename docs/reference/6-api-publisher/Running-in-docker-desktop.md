@@ -19,13 +19,11 @@ Configure your deployments using an environment file. The repository includes a
 
 ![Docker path example](img/docker/docker-path.png)
 
-Copy `env.example` file and name it `.env`. Update the values as desired.
+Copy `env.example` file and name it `.env`. Update the values as desired, and
+replace every `<...>` placeholder: a value left as a placeholder is written to
+the configuration as is.
 
 ```env
-# Nuget version
-# Find versions at https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.ApiPublisher
-VERSION=<Package to install from Eg. 0.0.0-alpha.0.38>
-
 # The section option for apiPublisherSettings file
 BEARER_TOKEN_REFRESH_MINUTES=<Default. 28>
 RETRY_STARTING_DELAY_MILLISECONDS=<Default. 100>
@@ -50,15 +48,15 @@ AWS_PROFILE=<If PROVIDER is awsParameterStore this is required Eg. default>
 AWS_REGION=<If PROVIDER is awsParameterStore this is required Eg. us-east-1>
 
 # PlainText connections
-SOURCE_NAME=<Name for the source connection Eg. Hosted_Sample_v5.2>
-SOURCE_URL=<Url for the source connection Eg. https://api.ed-fi.org/v5.2/api/>
-SOURCE_KEY=<Key for the source connection Eg. RvcohKz9zHI4>RvcohKz9zHI4
-SOURCE_SECRET=<Secret for the source connection Eg. E1iEFusaNf81xzCxwHfbolkC>
+SOURCE_NAME=<Name for the source connection Eg. District_Source>
+SOURCE_URL=<Url for the source connection Eg. https://district.example.org/api/>
+SOURCE_KEY=<Key for the source connection Eg. sourceKey>
+SOURCE_SECRET=<Secret for the source connection Eg. sourceSecret>
 
-TARGET_NAME=<Name for the target connection Eg. Local_v5.2>
-TARGET_URL=<Url for the target connection Eg. http://localhost:54746/>
-TARGET_KEY=<Key for the target connection Eg. RvcohKz9zHI4>
-TARGET_SECRET=<Secret for the target connection Eg. E1iEFusaNf81xzCxwHfbolkC>
+TARGET_NAME=<Name for the target connection Eg. State_Target>
+TARGET_URL=<Url for the target connection Eg. https://state.example.org/api/>
+TARGET_KEY=<Key for the target connection Eg. targetKey>
+TARGET_SECRET=<Secret for the target connection Eg. targetSecret>
 
 # Logging using Serilog
 WRITE_TO_FILE_PATH=<Path to store the logging file Eg. ../tmp/logs/Ed-Fi-API-PublisherSerilog.log>
@@ -68,18 +66,12 @@ Sample `.env` provide all the different parameters for run ApiPublisher with
 different configurations. Please provide the information necessary for a
 specific configuration.
 
-### 2a. Nuget Version
+### 2a. API Publisher Version
 
-:::info note:
-
-If you want to run a different version than the release, you can modify the
-version in this file using the name of the generated build. (Docker file i.e.
-`ENV VERSION="1.0.1-alpha.0.17"`) ![Image of version number in Azure
-Arifacts](img/docker/build-version.png)
-
-:::
-
-![Build version file](img/docker/build-version-file.png)
+The image installs the API Publisher package set by `ARG VERSION` in
+`src/Dockerfile`. To install another version, change that value before you build
+the image. The available versions are listed in the
+[EdFi.ApiPublisher feed](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.ApiPublisher).
 
 ### 2b. Section ApiPublisherSettings file
 
@@ -116,20 +108,22 @@ used in the API Publisher configuration.
 
 We have two ways to run API Publisher inside or outside the created container.
 
+Inside the container, `localhost` is the container itself. To reach an API that
+runs on the same machine as Docker, use `host.docker.internal` as the host name,
+for example `https://host.docker.internal/WebApi/`.
+
 ### Outside Container
 
 ```powershell
-docker exec -it ed-fi-ods-apipublisher dotnet EdFiApiPublisher.dll \
-  --sourceUrl={{SourceUrl}}/WebApi/ \
-  --sourceKey={{SourceKey}} \
-  --sourceSecret={{SourceSecret}} \
-  --targetUrl=https://{{TargetUrl}}/WebApi/ \
-  --targetKey={{TargetKey}} \
-  --targetSecret={{TargetSecret}} \
+docker exec -it ed-fi-ods-apipublisher dotnet EdFiApiPublisher.dll `
+  --sourceUrl={{SourceUrl}} `
+  --sourceKey={{SourceKey}} `
+  --sourceSecret={{SourceSecret}} `
+  --targetUrl={{TargetUrl}} `
+  --targetKey={{TargetKey}} `
+  --targetSecret={{TargetSecret}} `
   {{Additional Parameters}}
 ```
-
-![Console Command](img/docker/console-command.png)
 
 ### Inside Container
 
@@ -139,17 +133,15 @@ parameter... i.e.
 
 ![Docker Terminal](img/docker/docker-terminal.png)
 
-```powershell
-dotnet EdFiApiPublisher.dll --sourceUrl={{SourceUrl}}/WebApi/ \
+```sh
+dotnet EdFiApiPublisher.dll --sourceUrl={{SourceUrl}} \
   --sourceKey={{SourceKey}} \
   --sourceSecret={{SourceSecret}} \
-  --targetUrl=https://{{TargetUrl}}/WebApi/ \
+  --targetUrl={{TargetUrl}} \
   --targetKey={{TargetKey}} \
   --targetSecret={{TargetSecret}} \
   {{Additional Parameters}}
 ```
-
-![Docker Terminal Command](img/docker/docker-terminal-command.png)
 
 ## Additional Configurations
 
@@ -162,14 +154,18 @@ It is necessary to have the store parameters created on AWS
 
 Export AWS credentials to consume AWS parameters store inside the container
 
-![Aws Credentials](img/docker/setup-aws-credentials.png)
+```sh
+export AWS_ACCESS_KEY_ID="<access key id>"
+export AWS_SECRET_ACCESS_KEY="<secret access key>"
+export AWS_SESSION_TOKEN="<session token>"
+```
 
 #### B. Execution
 
 Having all this configured it is possible to run ApiPublisher with the
 AWSParameterStore parameter
 
-```powershell
+```sh
 dotnet EdFiApiPublisher.dll --configurationStoreProvider=awsParameterStore \
   --sourceName=Ed-Fi-ApiPub01 \
   --targetName=Ed-Fi-ApiPub02 \
@@ -201,7 +197,7 @@ Configure the AWS log storage parameters in the configuration file.
 
 Run any ApiPublisher command to start storing the execution results.
 
-```powershell
+```sh
 dotnet EdFiApiPublisher.dll --configurationStoreProvider=awsParameterStore \
   --sourceName=Ed-Fi-ApiPub01 \
   --targetName=Ed-Fi-ApiPub02 \

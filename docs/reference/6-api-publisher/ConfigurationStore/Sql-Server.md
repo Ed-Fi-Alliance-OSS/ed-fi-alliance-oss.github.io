@@ -251,9 +251,6 @@ EXEC    [dbo].[SetConfigurationValue]
 GO
 ```
 
-![SQL Server Configuration
-Store](../img/Sql-Server-configuration-store-example.png)
-
 ## Configure API Publisher
 
 To use the SQL Server Configuration Store, change the `provider` setting in the
