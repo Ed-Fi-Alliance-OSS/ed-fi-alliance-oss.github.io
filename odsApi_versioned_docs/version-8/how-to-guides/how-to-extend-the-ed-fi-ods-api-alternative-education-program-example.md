@@ -438,9 +438,7 @@ Attaching the new claims as children of the existing `systemDescriptors` and
 sets are already granted at those domains: for example, `SISVendor` already
 has `Read` on `systemDescriptors` and full CRUD on `relationshipBasedData`, so
 no explicit `claimSets` entry is needed here. To grant a different claim set,
-or restrict access to just the new resources, add an explicit `claimSets`
-array, but the fragment validator requires any resource claim with its own
-`claimSets` entry to also be marked `isParent: true`.
+or to restrict access to just the new resources, see Step 7.
 
 Now stage the claims configuration, including your new fragment:
 
@@ -492,11 +490,19 @@ The built-in `SISVendor` claim set, for example, already has `Read` on
 `systemDescriptors` and full CRUD on `relationshipBasedData`, so it can access
 both new resources as soon as the stack restarts with the staged claims.
 
-If you want to grant a different claim set, or restrict access to only the new
-resources, add an explicit `claimSets` array to the resource claim in your
-fragment. The fragment validator requires any resource claim with its own
-`claimSets` entry to also be marked `isParent: true`; CMS derives a non-parent
-claim's grant from the fragment's top-level `name` instead.
+Adding a `claimSets` array to the parent entries in this fragment wouldn't
+change that: grants on a parent entry are ignored when it names an existing
+domain such as `systemDescriptors`. Instead:
+
+- To restrict access to only the new resources, put them under a new domain
+  whose parent entry lists the claim sets that should have access, as the
+  [Student Transcript
+  example](./how-to-extend-the-ed-fi-ods-api-student-transcript-example.md#step-5d-author-and-stage-the-claims-fragment)
+  does for `postSecondaryOrganizations`.
+- To grant one more claim set access to a resource, add a fragment named after
+  that claim set with a grant entry for the resource. See [Claim Set
+  Fragments](./how-to-create-and-manage-api-security-metadata.mdx#claim-set-fragments)
+  for the format.
 
 See [How To: Create and Manage API Security
 Metadata](./how-to-create-and-manage-api-security-metadata.mdx) for the full
