@@ -17,23 +17,24 @@ deployments. It consists of:
 - **Web Application**: React-based single-page application (SPA)
 - **Backend API**: Node.js/NestJS application
 - **Database**: PostgreSQL or SQL Server database for application data
-- **Authentication**: OpenID Connect (OIDC) integration (typically Keycloak)
+- **Authentication**: OpenID Connect (OIDC) integration (any OIDC provider; Keycloak is the bundled example)
 
 ### Required Components
 
 - **PostgreSQL or SQL Server Database** (Required) — an empty database created
   for the Admin App (the examples use the name `sbaa`)
-- **OIDC Provider** (Required) - Keycloak or similar see
-  - [Configuring an Identity Provider for Ed-Fi Admin App](../configuration/identity-provider.md)
+- **OIDC Provider** (Required) - Keycloak, Microsoft Entra ID, Google Workspace, or Auth0; see
+  - [Configuring an Identity Provider for Ed-Fi Admin App](../configuration/identity-provider/readme.md)
 - **Reverse Proxy** (Recommended for production) - Nginx, IIS, or similar
   - Provides a single public entry point for the Web Application and API (this avoids cross-origin/CORS between the two sites), plus caching, load balancing, and a place to enforce edge security (for example, a web application firewall).
   - Not required to obtain HTTPS: each installation path terminates TLS itself. The Windows install scripts deploy the API and Web Application as two IIS sites directly (no front-facing proxy) with TLS and enforcing security headers, and the app is architecturally optional behind a proxy by design, honoring `X-Forwarded-*` headers when used.
 
 :::tip
 
-This application runs with any Open ID Connect provider. Keycloak is the only
-fully supported provider in this release; Microsoft Entra ID and Google Workspace
-have been tested and gain full support in Admin App v4.1.
+This application runs with any Open ID Connect provider. The Ed-Fi Alliance has
+validated four end-to-end on the Windows/IIS deployment: Keycloak (the bundled
+example), Microsoft Entra ID, Google Workspace, and Auth0. See
+[Configuring an Identity Provider for Ed-Fi Admin App](../configuration/identity-provider/readme.md).
 
 :::
 
@@ -95,6 +96,6 @@ before going to production.
 
 - [Roadmap to Success](./roadmap-to-success.md)
 - [Configuring Ed-Fi Admin App](../configuration/configuring-admin-app.md)
-- [Configuring an Identity Provider for Ed-Fi Admin App](../configuration/identity-provider.md)
+- [Configuring an Identity Provider for Ed-Fi Admin App](../configuration/identity-provider/readme.md)
 - [Security Considerations](../configuration/security-considerations.md)
 - [Global Administration Tasks](../configuration/global-administration-tasks.md)
