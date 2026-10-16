@@ -16,7 +16,7 @@ in the most important information in the K–12 education enterprise.
 ### What it is and is not
 
 * **It is a specification.** It describes the meaning and structure of
-  education data. It is not software: the [Ed-Fi ODS/API](../2-ods-api-platform.mdx) and
+  education data. It is not software: the [Ed-Fi ODS/API](../2-ods-api-platform/readme.mdx) and
   [Ed-Fi API v8](/reference/ed-fi-api/8) are Ed-Fi Alliance products that
   implement it, and any party can build a compatible API by following the [Ed-Fi
   API Guidelines](./api-guidelines/readme.md).
