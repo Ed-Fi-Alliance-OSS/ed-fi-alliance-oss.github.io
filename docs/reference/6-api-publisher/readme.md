@@ -129,7 +129,9 @@ The API Publisher has three options to use the product. It runs on
 1. Download the latest published API Publisher package here:
    [Ed-Fi API Publisher v1.4.0](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.ApiPublisher/overview/1.4.0).
    Visit the page and click download.
-2. This will download a NuGet package to your computer. Rename this file,
+2. This will download a NuGet package to your computer. Right-click the file,
+   select **Properties**, check **Unblock** and click **OK**, so that Windows
+   does not block the files extracted from it. Then rename the file,
    `EdFi.ApiPublisher.1.4.0.nupkg`, to include .zip extension:
    `EdFi.ApiPublisher.1.4.0.zip`.
 3. Extract the ZIP file. It contains two folders:
