@@ -92,7 +92,7 @@ A district's student information system asks the API for grades:
 2. The API checks the application's claim set. If the claim set doesn't allow
    reading grades, the request is denied.
 3. The API applies the relationship-based strategy, so it returns grades only
-   for students enrolled in the district's schools.
+   for students connected to the district's schools.
 4. If the host assigned a profile, the API returns only the fields that profile
    allows.
 
