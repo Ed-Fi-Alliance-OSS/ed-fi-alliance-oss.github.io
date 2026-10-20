@@ -54,7 +54,8 @@ GitHub repository to find the changes for that specific update.
   Service
 * DMS-1270 - Option to use a separate database for the Configuration Service
 * DMS-1335 - Export logs to an OpenTelemetry (OTLP) endpoint
-* DMS-1459 - Configurable limit on active access tokens per API client
+* DMS-1459 - Limit on active access tokens per API client (15 by default, as in
+  the ODS/API)
 * DMS-1589 - Ignore unknown query string parameters and report them in an
   `X-EdFi-Warning` header
 * DMS-1626 - Vendor namespace prefixes can be up to 255 characters, matching
@@ -215,7 +216,9 @@ ignores client-supplied correlation IDs unless the platform operator sets a
 header name in `AppSettings:CorrelationIdHeader` (`CORRELATION_ID_HEADER` in
 Docker Compose), and it doesn't read one from the query string. When enabled,
 the value is cleaned and truncated to `AppSettings:CorrelationIdMaxLength`
-characters (default `255`).
+characters (default `255`). The sample Docker Compose environment files set the
+header name to `correlationid`, which differs from the ODS/API's
+`correlation-id`.
 
 To keep the ODS/API behavior, set the header name to `correlation-id`. Clients
 that send the correlation ID in the query string should send it in the header
@@ -321,7 +324,7 @@ table shows the current status.
 | Event streaming with Kafka | No | No | Yes |
 | Identities API | Yes | No | Yes (the host supplies the identity integration as a plugin) |
 | Unique ID validation | Yes | No | Yes, built as a custom validator plugin |
-| External configuration of connection strings | Yes | No | Partly: values within data store connection strings can come from a secret store (see [Secrets in Connection Strings](../platform-dev-guide/configuration/secrets-in-connection-strings.md)) |
+| External configuration of connection strings | Yes | No | Partly: values within data store connection strings can come from a secret store, and a secrets plugin can also supply the Configuration Service's own database connection string, and both services' keys and client secrets (see [Secrets in Connection Strings](../platform-dev-guide/configuration/secrets-in-connection-strings.md)) |
 | MetaEd extensions | Yes | Yes (different workflow — see [Extending API DataModel](../platform-dev-guide/extensibility-customization/extending-api-datamodel.md)) | Yes |
 | OneRoster | Yes | No | No (planned for v8.2) |
 | Bulk Load Client utility | Yes | Yes (same tool, updated for v8 URLs) | Yes |
