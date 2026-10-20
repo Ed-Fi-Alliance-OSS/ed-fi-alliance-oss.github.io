@@ -77,7 +77,7 @@ that strategy. For example, when a read strategy uses enrollment, a student
 information system with a district key can read students enrolled in that
 district's schools. Other strategies can use responsibility associations instead.
 
-Other strategies cover other kinds of data. Namespace-based authorization, for
+There are additional strategies for covering other kinds of data. Namespace-based authorization, for
 example, controls access to assessment metadata by the namespaces assigned to the
 application. For the full list, see
 [Authorization Strategies](/reference/ed-fi-api/platform-dev-guide/security/api-claim-sets-resources#authorization-strategies).
