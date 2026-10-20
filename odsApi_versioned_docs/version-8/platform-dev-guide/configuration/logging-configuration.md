@@ -13,7 +13,7 @@ The log level for each service is controlled independently:
 
 - Ed-Fi API: `LOG_LEVEL` environment variable (maps to
   `Serilog__MinimumLevel__Default` in `appsettings.json`)
-- Configuration Service: `DMS_CONFIG_LOG_LEVEL` environment variable
+- Configuration Service: `CONFIGURATION_SERVICE_LOG_LEVEL` environment variable
 
 ## Log Levels
 
@@ -35,7 +35,7 @@ request or response body content.
 
 ```ini
 LOG_LEVEL=Information
-DMS_CONFIG_LOG_LEVEL=Information
+CONFIGURATION_SERVICE_LOG_LEVEL=Information
 ```
 
 Both services write structured JSON to the console — one JSON object per log entry.
@@ -78,13 +78,15 @@ breaking log collection. Override `MinimumLevel` only.
 
 ### Local Development (DEBUG)
 
-The Docker Compose `.env.example` ships with `LOG_LEVEL=DEBUG`. At this level,
-the Ed-Fi API logs anonymized request payloads to aid integration
-troubleshooting. See [PII Protection](#pii-protection-at-debug-level) for how
-anonymization works.
+The environment files that ship with the Docker Compose setup start both
+services at `Information`. To troubleshoot an integration locally, set the log
+level to `Debug` in the `.env` file you start the stack with. At this level, the
+Ed-Fi API logs anonymized request payloads. See [PII
+Protection](#pii-protection-at-debug-level) for how anonymization works.
 
 ```ini
 LOG_LEVEL=Debug
+CONFIGURATION_SERVICE_LOG_LEVEL=Debug
 ```
 
 ### Production Troubleshooting
@@ -99,6 +101,33 @@ left on indefinitely.
 `DEBUG` logging includes anonymized request bodies. Although sensitive field
 values are replaced with `"*"`, ensure your log storage and access policies are
 appropriate before enabling `DEBUG` in a production environment.
+
+:::
+
+### Container Log Retention
+
+The Docker Compose setup limits how much log output Docker keeps for each
+container, so logs can't fill the host's disk:
+
+| Variable | Default | Description |
+| --- | --- | --- |
+| `DOCKER_LOG_MAX_SIZE` | `50m` | Maximum size of one log file before Docker starts a new one |
+| `DOCKER_LOG_MAX_FILE` | `5` | Maximum number of log files Docker keeps for each container |
+
+With the defaults, each container keeps up to 250 MB of logs, and the oldest
+entries are discarded as new ones arrive. Under heavy load at `Debug` level,
+that can amount to only a few seconds of history.
+
+For a longer investigation, raise these values temporarily and restore the
+defaults afterward, or [export logs with
+OpenTelemetry](#opentelemetry-otlp-log-export) so they're kept outside the
+container.
+
+:::caution
+
+Docker rejects "unlimited" values such as `-1` or `0`. A very large value, such
+as `DOCKER_LOG_MAX_SIZE=1000g`, effectively removes the limit and can let a log
+file fill the host's disk, which affects every container on the host.
 
 :::
 
@@ -225,6 +254,57 @@ correlationid: b9567d36-91c1-4bae-aff5-3fde8367b969
 { ... }
 ```
 
+### Correlation ID Normalization
+
+Before the Ed-Fi API uses a correlation ID in a log entry or an error response,
+it normalizes the value. This applies to client-supplied values and to trace
+identifiers alike:
+
+- Values longer than the maximum length are truncated. The maximum is set by
+  `CORRELATION_ID_MAX_LENGTH` (`AppSettings:CorrelationIdMaxLength`), which
+  defaults to `255`.
+- Control characters (including carriage return, line feed, and tab),
+  invisible format characters, and Unicode line and paragraph separators are
+  removed, so a client-supplied value can't add extra lines to the logs. All
+  other characters, including punctuation and non-ASCII characters, are kept.
+
+The Ed-Fi API never rejects a request because of its correlation ID. Because the
+same normalized value is used everywhere, the correlation ID in an error
+response always matches the one in the logs.
+
+When normalization changes a client-supplied correlation ID, the Ed-Fi API logs
+a `CorrelationIdModified` event at `Information` level (see [Event
+IDs](#event-ids)). The event reports what changed, but deliberately doesn't log
+the original value:
+
+| Property | Meaning |
+| --- | --- |
+| `SuppliedLength`, `NormalizedLength` | Length of the value before and after normalization |
+| `CharactersRemoved` | `true` if characters were removed |
+| `Truncated` | `true` if the value was cut to the maximum length |
+| `FellBackToServerIdentifier` | `true` if nothing usable was left, so the request's trace identifier was used instead |
+
+`FellBackToServerIdentifier` is the property to alert on: when it is `true`, the
+client's own identifier can't be recovered from the logs. No event is logged
+when the value is unchanged or when no correlation header is configured.
+
+:::warning
+
+`CORRELATION_ID_MAX_LENGTH` must be between `64` and `1024`. With any other
+value, the Ed-Fi API starts but answers every request, including `/health`,
+with a `500` error until the setting is fixed and the service is restarted.
+
+:::
+
+:::note
+
+A client-supplied correlation ID that is truncated or has characters removed no
+longer matches the identifier recorded by the upstream system that generated
+it. To avoid this, use correlation IDs of plain printable characters within the
+maximum length.
+
+:::
+
 ## Log Collection
 
 Both services emit the same structured request-log contract. Collector rules
@@ -239,6 +319,7 @@ strings:
 | --- | --- | --- | --- |
 | `1228001` | `HttpRequestCompleted` | `Information` (Ed-Fi API); `Information` or `Debug` (Configuration Service, see note) | Request completed — includes all 4xx responses |
 | `1228002` | `HttpRequestFailed` | `Error` | Request failed with a 5xx or unhandled exception |
+| `1228003` | `CorrelationIdModified` | `Information` | Ed-Fi API only. A client-supplied correlation ID was changed by [normalization](#correlation-id-normalization). This isn't a request event, so rules that filter on `1228001` and `1228002` don't receive it |
 
 :::note
 
@@ -274,3 +355,42 @@ downstream pipeline returned a 5xx status code). Collector rules must treat
 Oversized request body rejections (HTTP 413) are emitted as
 `HttpRequestCompleted` events, not `HttpRequestFailed`, because they are handled
 as client errors. The `StatusCode` property carries `413`.
+
+## OpenTelemetry (OTLP) Log Export
+
+Both the Ed-Fi API and the Configuration Service can also send their logs to an
+[OpenTelemetry](https://opentelemetry.io/) (OTLP) endpoint, either a compatible
+service or an OpenTelemetry Collector that forwards them to a backend such as
+Splunk, Datadog, Elastic, or CloudWatch. Log export is off by default. When it
+is on, logs are still written to the console as well.
+
+Each service is configured through its own `OtlpLogging` section:
+
+| Setting | Ed-Fi API variable | Configuration Service variable | Description |
+| --- | --- | --- | --- |
+| `OtlpLogging:Enabled` | `OTLP_LOGGING_ENABLED` | `CONFIGURATION_SERVICE_OTLP_LOGGING_ENABLED` | `true` to export logs. Default: `false` |
+| `OtlpLogging:Endpoint` | `OTLP_LOGGING_ENDPOINT` | `CONFIGURATION_SERVICE_OTLP_LOGGING_ENDPOINT` | Absolute `http://` or `https://` URL of the OTLP endpoint, for example `http://collector:4318`. Required when export is on |
+| `OtlpLogging:Protocol` | `OTLP_LOGGING_PROTOCOL` | `CONFIGURATION_SERVICE_OTLP_LOGGING_PROTOCOL` | `HttpProtobuf` (default) or `Grpc` |
+| `OtlpLogging:DeploymentEnvironment` | `OTLP_LOGGING_DEPLOYMENT_ENVIRONMENT` | `CONFIGURATION_SERVICE_OTLP_LOGGING_DEPLOYMENT_ENVIRONMENT` | Optional name of the deployment environment, such as `production` |
+| `OtlpLogging:Headers` | Not mapped | Not mapped | Optional headers sent with every export request, such as `Authorization` |
+
+The variable names are those used by the Docker Compose files. Without those
+files, set the settings directly, for example `OtlpLogging__Enabled=true`.
+
+```ini
+OTLP_LOGGING_ENABLED=true
+OTLP_LOGGING_ENDPOINT=http://collector:4318
+```
+
+:::caution
+
+- Header values are often secrets. Supply them through environment variables,
+  such as `OtlpLogging__Headers__Authorization`, or a secret store, never a
+  committed configuration file.
+- The standard `OTEL_EXPORTER_OTLP_*` environment variables are ignored. Use
+  the `OtlpLogging` settings instead.
+- If the endpoint is missing or invalid, log export isn't applied and a warning
+  is written to the console's error output. Delivery failures never stop the
+  service from starting or serving requests.
+
+:::
