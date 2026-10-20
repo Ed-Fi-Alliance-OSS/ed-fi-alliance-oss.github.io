@@ -83,6 +83,19 @@ For example, a gradebook application might read only a few student fields but
 have full write access to grades. See
 [API Profiles](/reference/ed-fi-api/platform-dev-guide/security/api-profiles).
 
+## Putting It Together: One Request
+
+A district's student information system asks the API for grades:
+
+1. It exchanges its key and secret for an access token. Without a valid token,
+   the API rejects the request.
+2. The API checks the application's claim set. If the claim set doesn't allow
+   reading grades, the request is denied.
+3. The API applies the relationship-based strategy, so it returns grades only
+   for students enrolled in the district's schools.
+4. If the host assigned a profile, the API returns only the fields that profile
+   allows.
+
 ## Who Is Responsible for What
 
 - **The Ed-Fi Alliance** publishes the Ed-Fi Data Standard and the open-source
@@ -93,6 +106,10 @@ have full write access to grades. See
   key with the right education organizations.
 - **Client application vendors** keep their keys and secrets private and control
   their own users' access to data.
+
+The API's controls cover who can call it and what data each application can
+reach. Securing the servers, network, and database, including HTTPS, encryption
+at rest, backups, and monitoring, is the host's responsibility.
 
 These controls support privacy laws such as FERPA by limiting each application
 to the people and data it needs, but they do not replace an agency's own privacy
