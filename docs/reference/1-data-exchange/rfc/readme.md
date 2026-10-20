@@ -37,6 +37,10 @@ involved at each stage and how to take part.
 - Proposals for the Ed-Fi Technology Suite are tracked in the [Technology Suite
   Proposals](https://github.com/orgs/Ed-Fi-Alliance-OSS/projects/2/views/1)
   project.
+- When an RFC is accepted - meaning the proposed changes have been implemented
+  into the Unifying Data Model, then the RFC is published to the [API 
+  Specifications](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-API-Specifications/tree/main/RFC)
+  repository for archival.
 - To report an issue or suggest a change to the Ed-Fi Data Standard, see
   [Reporting Issues and Making
   Suggestions](../udm/reporting-issues-and-making-suggestions.md).
