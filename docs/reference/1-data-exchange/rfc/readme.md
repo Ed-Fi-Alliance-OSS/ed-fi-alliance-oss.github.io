@@ -37,6 +37,19 @@ involved at each stage and how to take part.
 - Proposals for the Ed-Fi Technology Suite are tracked in the [Technology Suite
   Proposals](https://github.com/orgs/Ed-Fi-Alliance-OSS/projects/2/views/1)
   project.
+- When an RFC is finalized, it is published to the [API
+  Specifications](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-API-Specifications/tree/main/RFC)
+  repository and is no longer open for comment. A finalized RFC is either
+  already implemented in the Unifying Data Model or being implemented for an
+  upcoming release.
+- To report an issue or suggest a change to the Ed-Fi Data Standard, see
+  [Reporting Issues and Making
+  Suggestions](../udm/reporting-issues-and-making-suggestions.md).
+
+## What RFC status means
+
+A _draft RFC_ is a design proposal that has not been incorporated into the Ed-Fi
+Data Standard's Unifying Data Model. A _published RFC_ represents a design that
 has been finalized for a versioned release of the Ed-Fi Data Standard: it is
 either already included in a release or being implemented for an upcoming one.
 
