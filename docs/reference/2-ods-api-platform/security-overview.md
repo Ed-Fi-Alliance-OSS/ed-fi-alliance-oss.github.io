@@ -76,8 +76,6 @@ only reach people connected to those organizations for operations protected by
 that strategy. For example, when a read strategy uses enrollment, a student
 information system with a district key can read students enrolled in that
 district's schools. Other strategies can use responsibility associations instead.
-Under the default student-creation strategy, an application with create access
-can create a student record before enrollment is established.
 
 Other strategies cover other kinds of data. Namespace-based authorization, for
 example, controls access to assessment metadata by the namespaces assigned to the
