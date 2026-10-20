@@ -386,17 +386,8 @@ stopped in Step 5a picks up the staged schema when you start it again in Step 6.
 ### Step 5d. Author and Stage the Claims Fragment
 
 New extension resources are not accessible until they're added to the claims
-hierarchy and granted to a claim set. Do this by authoring a small claim
+hierarchy and granted to a claim set. Do this by authoring a small claims
 fragment file and staging it; no runtime API call is needed.
-
-:::info
-
-Ed-Fi API v8.1 and later read claims fragment files whose names end in
-`-claims.json`. Ed-Fi API v8.0 reads only files ending in `-claimset.json`, so
-on v8.0 name this file
-`001-sample-alternative-education-program-claimset.json` instead.
-
-:::
 
 Create a directory (e.g. `my-claims/`) containing a file named
 `001-sample-alternative-education-program-claims.json`:
