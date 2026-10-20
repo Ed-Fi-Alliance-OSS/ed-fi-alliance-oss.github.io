@@ -32,8 +32,7 @@ In the `logging.json` file
       "logGroup": "Ed-Fi-Publisher",
       "logStreamPrefix": "Ed-Fi-Tools",
       "restrictedToMinimumLevel": "Verbose",
-      "textFormatter": "EdFi.Tools.ApiPublisher.Core.Configuration.Serilog.TextFormatter,
-                        EdFi.Tools.ApiPublisher.Core"
+      "textFormatter": "EdFi.Tools.ApiPublisher.Core.Configuration.Serilog.TextFormatter, EdFi.Tools.ApiPublisher.Core"
     }
   }
   ```
@@ -59,8 +58,7 @@ In the `logging.json` file
       "logStreamPrefix": "Ed-Fi-Tools",
       "restrictedToMinimumLevel": "Verbose",
       "textFormatter": {
-        "type": "EdFi.Tools.ApiPublisher.Core.Configuration.Serilog.TextFormatter,
-                 EdFi.Tools.ApiPublisher.Core",
+        "type": "EdFi.Tools.ApiPublisher.Core.Configuration.Serilog.TextFormatter, EdFi.Tools.ApiPublisher.Core",
         "format": "[{Timestamp:MM-dd HH:mm:ss}] {Level} - {Message} {Exception} {NewLine}"
       }
     }
@@ -106,8 +104,7 @@ You can also use this format in other sinks:
      "Name": "Console",
      "Args": {
        "formatter": {
-         "type": "EdFi.Tools.ApiPublisher.Core.Configuration.Serilog.TextFormatter,
-                  EdFi.Tools.ApiPublisher.Core",
+         "type": "EdFi.Tools.ApiPublisher.Core.Configuration.Serilog.TextFormatter, EdFi.Tools.ApiPublisher.Core",
          "format": "[{Level}] - {Message} {Exception} {NewLine}"
        }
      }
@@ -121,8 +118,7 @@ You can also use this format in other sinks:
      "Name": "File",
      "Args": {
        "formatter": {
-         "type": "EdFi.Tools.ApiPublisher.Core.Configuration.Serilog.TextFormatter,
-                  EdFi.Tools.ApiPublisher.Core",
+         "type": "EdFi.Tools.ApiPublisher.Core.Configuration.Serilog.TextFormatter, EdFi.Tools.ApiPublisher.Core",
          "format": "[{Level}] - {Message} {Exception} {NewLine}"
        },
        "path": "C:\\ProgramData\\Ed-Fi-API-Publisher\\Ed-Fi-API-PublisherSerilog.log"

@@ -52,7 +52,7 @@ requests above that with `429 Too Many Requests`. The publisher does not retry a
 write rejected this way: the run reports the failed documents and exits with a
 non-zero code, but the target is left incomplete. To stay under the limit, turn
 on the publisher's own rate limiting, for example
-`--enableRateLimit=true --rateLimitNumberExecutions=400 --rateLimitTimeSeconds=1`
+`--enableRateLimit=true --rateLimitNumberExecutions=200 --rateLimitTimeSeconds=1`
 (or the same options in `apiPublisherSettings.json`), or raise
 `RateLimit:PermitLimit` on the Ed-Fi API.
 

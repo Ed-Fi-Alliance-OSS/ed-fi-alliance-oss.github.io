@@ -23,48 +23,29 @@ Copy `env.example` file and name it `.env`. Update the values as desired, and
 replace every `<...>` placeholder: a value left as a placeholder is written to
 the configuration as is.
 
-```env
-# The section option for apiPublisherSettings file
-BEARER_TOKEN_REFRESH_MINUTES=<Default. 28>
-RETRY_STARTING_DELAY_MILLISECONDS=<Default. 100>
-MAX_RETRY_ATTEMPTS=<Default. 10>
-MAX_DEGREE_OF_PARALLELISM_FOR_RESOURCE_PROCESSING=<Default. 10>
-MAX_DEGREE_OF_PARALLELISM_FOR_POST_RESOURCE_ITEM=<Default. 20>
-MAX_DEGREE_OF_PARALLELISM_FOR_STREAM_RESOURCE_PAGES=<Default. 5>
-STREAMING_PAGES_WAIT_DURATION_SECONDS=<Default. 10>
-STREAMING_PAGE_SIZE=<Default. 75>
-INCLUDE_DESCRIPTORS=<Default. false>
-ERROR_PUBLISHING_BATCH_SIZE=<Default. 25>
-USE_CHANGE_VERSION_PAGING=<Default. false>
-CHANGE_VERSION_PAGING_WINDOW_SIZE=<Default. 25000>
+When the container starts, it writes these variables into its configuration
+files. Each variable in the options section of `env.example` sets the option of
+the same name described in
+[API Publisher Configuration](API-Publisher-Configuration.md#options), for
+example `STREAMING_PAGE_SIZE` sets `StreamingPageSize`. Set every one of these
+variables: an empty value makes the settings file invalid. The
+exceptions are `MAX_CONCURRENT_SOURCE_REQUESTS`,
+`TOO_MANY_REQUESTS_RETRY_ATTEMPTS`, `PROCESSING_BLOCK_BOUNDED_CAPACITY`,
+`DISABLE_CURSOR_PAGING` and `CURSOR_PAGING_PARTITION_COUNT`, which take their
+default value when they are not set. Options without a variable are passed as
+command-line arguments when you run the API Publisher (Step 5).
 
-# The file configurationStoreSettings
-PROVIDER=<Could be one of the following values: sqlServer, postgreSql, awsParameterStore, or plainText (default)>
-SQLSERVER_SERVER=<If PROVIDER is sqlServer this is required Eg. (local)>
-SQLSERVER_DATABASE=<If PROVIDER is sqlServer this is required Eg. EdFi_API_Publisher_Configuration>
-POSTGRESQL_HOST=<If PROVIDER is postgreSql this is required Eg. localhost>
-POSTGRESQL_DATABASE=<If PROVIDER is postgreSql this is required Eg. edfi_api_publisher_configuration>
-AWS_PROFILE=<If PROVIDER is awsParameterStore this is required Eg. default>
-AWS_REGION=<If PROVIDER is awsParameterStore this is required Eg. us-east-1>
+The configuration store, the plain text connections and the log file:
 
-# PlainText connections
-SOURCE_NAME=<Name for the source connection Eg. District_Source>
-SOURCE_URL=<Url for the source connection Eg. https://district.example.org/api/>
-SOURCE_KEY=<Key for the source connection Eg. sourceKey>
-SOURCE_SECRET=<Secret for the source connection Eg. sourceSecret>
-
-TARGET_NAME=<Name for the target connection Eg. State_Target>
-TARGET_URL=<Url for the target connection Eg. https://state.example.org/api/>
-TARGET_KEY=<Key for the target connection Eg. targetKey>
-TARGET_SECRET=<Secret for the target connection Eg. targetSecret>
-
-# Logging using Serilog
-WRITE_TO_FILE_PATH=<Path to store the logging file Eg. ../tmp/logs/Ed-Fi-API-PublisherSerilog.log>
-```
-
-Sample `.env` provide all the different parameters for run ApiPublisher with
-different configurations. Please provide the information necessary for a
-specific configuration.
+| Variable | Use |
+| --- | --- |
+| `PROVIDER` | The configuration store: `sqlServer`, `postgreSql`, `awsParameterStore` or `plainText`. |
+| `SQLSERVER_SERVER`, `SQLSERVER_DATABASE` | The SQL Server configuration store, when `PROVIDER` is `sqlServer`. |
+| `POSTGRESQL_HOST`, `POSTGRESQL_DATABASE` | The PostgreSQL configuration store, when `PROVIDER` is `postgreSql`. |
+| `AWS_PROFILE`, `AWS_REGION` | The AWS Parameter Store, when `PROVIDER` is `awsParameterStore`. |
+| `SOURCE_NAME`, `SOURCE_URL`, `SOURCE_KEY`, `SOURCE_SECRET` | The source connection, when `PROVIDER` is `plainText`. |
+| `TARGET_NAME`, `TARGET_URL`, `TARGET_KEY`, `TARGET_SECRET` | The target connection, when `PROVIDER` is `plainText`. |
+| `WRITE_TO_FILE_PATH` | The path of the log file. |
 
 ### 2a. API Publisher Version
 
@@ -111,6 +92,12 @@ We have two ways to run API Publisher inside or outside the created container.
 Inside the container, `localhost` is the container itself. To reach an API that
 runs on the same machine as Docker, use `host.docker.internal` as the host name,
 for example `https://host.docker.internal/WebApi/`.
+
+To resume a run that failed partway through, pass `--resumeLastRun=true` and
+set `--runStatePath` to a path on a mounted volume, so that the run state
+outlives the container (see
+[ResumeLastRun and RunStatePath](API-Publisher-Configuration.md#options)). The
+compose file mounts a volume only at `/tmp/logs`.
 
 ### Outside Container
 
