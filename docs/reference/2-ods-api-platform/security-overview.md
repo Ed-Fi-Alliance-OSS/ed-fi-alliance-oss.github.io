@@ -104,7 +104,7 @@ These controls support privacy laws such as FERPA by limiting each application
 to the people and data it needs, but they do not replace an agency's own privacy
 policies and data-sharing agreements.
 
-Hosts, lead developers, and DevOps staff should also read
+Hosts, lead developers, and IT operational staff should also read
 [Education Agency Business Process Security Considerations](/reference/ed-fi-api/technical-articles/education-agency-business-process-security-considerations).
 
 ## Technical Documentation
