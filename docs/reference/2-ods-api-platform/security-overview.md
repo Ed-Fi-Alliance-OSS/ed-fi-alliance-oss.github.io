@@ -28,7 +28,8 @@ Ed-Fi API applications use the OAuth 2.0 client credentials flow.[^oauth]
 Credentials are issued to client applications, not to individual teachers or
 staff. The host gives each application a key and secret, which the application
 exchanges for a short-lived access token. Every API call must carry a valid
-token. Traffic carrying production data always uses HTTPS.
+token. Hosts should always serve the API over HTTPS, which encrypts traffic
+between the application and the API, including keys, secrets, and tokens.
 
 ```mermaid
 sequenceDiagram
@@ -47,13 +48,6 @@ sequenceDiagram
 Because access is granted per application, the client application controls what
 its own users can see, using its local accounts and roles. The API host controls
 what data the application as a whole can reach.
-
-The token service depends on the platform:
-
-- In the **Ed-Fi ODS/API**, the API itself issues tokens.
-- In **Ed-Fi API v8**, tokens come from the Configuration Service's built-in
-  identity provider, or from Keycloak when the host selects that provider. See
-  [Identity Provider Configuration](/reference/ed-fi-api/8/platform-dev-guide/configuration/identity-provider).
 
 ## Claim Sets: What an Application Can Do
 
@@ -77,16 +71,16 @@ that strategy. For example, when a read strategy uses enrollment, a student
 information system with a district key can read students enrolled in that
 district's schools. Other strategies can use responsibility associations instead.
 
-There are additional strategies for covering other kinds of data. Namespace-based authorization, for
-example, controls access to assessment metadata by the namespaces assigned to the
-application. For the full list, see
+There are additional strategies for covering other kinds of data.
+Namespace-based authorization, for example, controls access to assessment
+metadata by the namespaces assigned to the application. For the full list, see
 [Authorization Strategies](/reference/ed-fi-api/platform-dev-guide/security/api-claim-sets-resources#authorization-strategies).
 
 ## Profiles: Which Fields an Application Can See
 
-Profiles let a host limit an application to part of a resource, much like a
-database view. For example, a gradebook application might read only a few
-student fields but have full write access to grades. See
+Profiles let a host limit an application to a subset of a resource's fields.
+For example, a gradebook application might read only a few student fields but
+have full write access to grades. See
 [API Profiles](/reference/ed-fi-api/platform-dev-guide/security/api-profiles).
 
 ## Who Is Responsible for What
