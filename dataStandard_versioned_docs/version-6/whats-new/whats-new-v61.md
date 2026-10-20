@@ -84,11 +84,11 @@ Minor updates in this release focus on improving documentation clarity and consi
 
 * [DATASTD-2529](https://edfi.atlassian.net/browse/DATASTD-2529)
 
-The FinancialAid domain entity and its associated descriptor AidType were moved from the Enrollment domain to the Identification and Student Demographic domain.  
+The FinancialAid domain entity and its associated descriptor AidType were moved from the Enrollment domain to the Identification and Student Demographic domain.
 
-In Data Standard v6.0, FinancialAid was classified under the Enrollment domain when the EPDM extensions were incorporated into Core. Subsequent review determined that FinancialAid aligns more appropriately with the Student Identification and Demographics domain because it is not associated with a StudentSchoolAssociation reference. 
+In Data Standard v6.0, FinancialAid was classified under the Enrollment domain when the EPDM extensions were incorporated into Core. Subsequent review determined that FinancialAid aligns more appropriately with the Student Identification and Demographics domain because it is not associated with a StudentSchoolAssociation reference.
 
-### Documentation and Descriptor Updates In MetaEd
+### Descriptor Updates
 
 * [DATASTD-2515](https://edfi.atlassian.net/browse/DATASTD-2515)
 * [DATASTD-2517](https://edfi.atlassian.net/browse/DATASTD-2517)
@@ -106,15 +106,3 @@ These updates improve the usability of the Data Standard documentation without i
 * [DATASTD-2523](https://edfi.atlassian.net/browse/DATASTD-2523)
 
 StateAbbreviationDescriptor values have been updated to reflect the full name of the state or territory.
-
-### Maintenance Related Updates
-
-* [DATASTD-2531](https://edfi.atlassian.net/browse/DATASTD-2531): Missing links on DS 5.2 and 6.0 Handbooks
-* [DATASTD-2532](https://edfi.atlassian.net/browse/DATASTD-2532): Update Spacing Issue On Descriptor Tables For Version 5.X Documentation
-* [DATASTD-2533](https://edfi.atlassian.net/browse/DATASTD-2533): Update Spacing Issue On Descriptor Tables For Version 4.X Documentation
-
-General documentation maintenance and corrections, including:
-
-* Fixing missing links in prior Data Standard handbooks.
-* Resolving formatting issues in descriptor tables.
-* Improving overall documentation consistency across versions.
