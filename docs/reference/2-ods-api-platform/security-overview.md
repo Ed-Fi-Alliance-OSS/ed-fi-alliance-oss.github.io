@@ -64,7 +64,7 @@ grant access to a whole group of related resources at once.
 
 Host administrators assign claim sets and manage keys and secrets with the
 [Ed-Fi ODS Admin API](/reference/admin-api) for the ODS/API, or with the
-Configuration Service for Ed-Fi API v8.
+Ed-Fi API Configuration Service for Ed-Fi API v8.
 
 ## Relationship-Based Access: Which Records an Application Can Reach
 
