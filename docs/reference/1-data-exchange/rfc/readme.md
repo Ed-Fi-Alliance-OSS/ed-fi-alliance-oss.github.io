@@ -52,7 +52,22 @@ often.
 
 The [classes of Ed-Fi Data Standard](../data-standards.md#what-are-the-classes-of-ed-fi-data-standard)
 section explains how RFC material differs from the core standard and from
-certification.
+## What RFC status means
+
+A _draft RFC_ is a design proposal that has not been incorporated into the Ed-Fi
+Data Standard's Unifying Data Model. A _published RFC_ represents a design that
+has been incorporated into a versioned release of the Ed-Fi Data Standard.
+
+The Ed-Fi Community may choose to implement a draft RFC as an extension to the
+Ed-Fi Data Standard so that the model can be put into limited operational use.
+Doing so helps the Community provide practical feedback on the RFC model's
+utility in addressing the problem it was designed to solve. In such a case,
+those implementing the draft RFC should stay in close contact with the Ed-Fi
+Alliance and other Community members so that any incremental updates do not
+lead to version fragmentation.
+
+Draft RFCs are not included in the Ed-Fi Certification program, which only relies
+on the official, published, Ed-Fi Data Standard releases.
 
 ## After approval: release and early access
 
