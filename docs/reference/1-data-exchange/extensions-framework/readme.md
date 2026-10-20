@@ -5,6 +5,68 @@ title: Extension Framework Best Practices
 
 # Ed-Fi Data Standard Extension Framework Best Practices
 
+## What is an Ed-Fi extension?
+
+An Ed-Fi extension adds data that the core Ed-Fi Data Standard does not include,
+for a specific implementation. An extension can add new entities, add elements
+to existing entities, or subclass existing entities, following the rules of the
+Extension Framework described on this page. Extensions are built with the
+[MetaEd IDE](../../8-metaed/readme.md). The Ed-Fi ODS/API then generates API
+resources for them: extended elements appear in an `_ext` object in the JSON,
+under a namespace that shows who defined them.
+
+### Why extensions exist
+
+The core Data Standard cannot meet every requirement of every implementation in
+a given time frame. The most common case is mandated compliance reporting: a
+state education agency often has to collect state-specific indicators that are
+not used elsewhere in K–12. Extensions also let the community try out proposed
+changes to the model in practice before they are added to the standard.
+
+### Local and community extensions
+
+* **Local extensions** are defined by one organization, usually a state
+  education agency, for its own requirements. See [Examples of State
+  Extensions](/getting-started/sea-playbook/data-governance/developing-state-data-specifications/examples-of-state-extensions).
+* **Community extensions** are defined and shared by a group of organizations
+  for a need they have in common, so others can adopt them. A community
+  extension can later move into the core Data Standard. For example, the
+  Educator Preparation Data Model (Community Edition) was held as a community
+  extension until its entities [moved into Data Standard
+  6](../../10-educator-pipeline/v6-epdm-related-domains.md).
+
+### How extensions affect interoperability
+
+Extensions trade some standardization for the ability to meet local
+requirements. Used carefully, they let an agency be interoperable where it can
+and customize only where it must. Used incorrectly, they fragment the
+ecosystem. Each extension is extra work for the vendors that send the data, and
+an integration built for one agency's extensions may not work for other
+agencies. See [API
+Extensions](/getting-started/provider-playbook/implementation/ed-fi-api-fundamentals/api-extensions)
+for how extensions look to API clients.
+
+### When not to create an extension
+
+Do not create an extension when:
+
+* **The Data Standard already has the element.** Extensions should not
+  duplicate elements that are already in the data model.
+* **The business process can change instead.** During data mapping, check with
+  the business owners whether their process can align with the standard.
+* **The data is an aggregate, such as a count.** Collect the underlying
+  student-level records instead.
+* **An upcoming Data Standard release covers the gap** and waiting is an
+  option.
+* **The change is not a supported extension type.** See [Unsupported
+  Modifications](./unsupported-modifications.md).
+
+Before extending, talk with the Ed-Fi Data Standard team through the [Community
+Hub](https://community.ed-fi.org/). The rest of this page covers [when to
+extend](#when-to-extend-the-ed-fi-data-standard), [how to
+extend](#how-to-extend-the-ed-fi-data-standard), and [best
+practices](#best-practices) in more detail.
+
 ## Introduction
 
 The Ed-Fi Data Standard and related technologies can be extended to add new

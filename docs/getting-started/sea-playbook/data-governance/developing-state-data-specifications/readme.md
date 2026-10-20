@@ -24,7 +24,7 @@ Most state data specifications are shared openly online, because states need a b
 
 ## State-Specific Data Elements - Ed-Fi Extensions
 
-The gaps you identified during the mapping exercise are the data elements that are not in Ed-Fi Data Standard and need to be added to the Ed-Fi API and Operational Data Store. These are called "Extensions."
+The gaps you identified during the mapping exercise are the data elements that are not in Ed-Fi Data Standard and need to be added to the Ed-Fi API and Operational Data Store. These are called "Extensions." For what an extension is and when not to create one, see [What is an Ed-Fi extension?](/reference/data-exchange/extensions-framework#what-is-an-ed-fi-extension)
 
 Once these are identified as Extensions in the mapping document, a business analyst or a developer must use the MetaEd tool to create these Extensions. Refer to these documents to learn more:
 
