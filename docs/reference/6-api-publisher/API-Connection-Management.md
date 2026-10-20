@@ -1,3 +1,7 @@
+---
+sidebar_position: 6
+---
+
 # API Connection Management
 
 The Quick Start exercise supplies all connection information explicitly as

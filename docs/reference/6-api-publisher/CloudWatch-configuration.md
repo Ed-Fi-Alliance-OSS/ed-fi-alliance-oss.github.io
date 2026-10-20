@@ -1,3 +1,7 @@
+---
+sidebar_position: 12
+---
+
 # CloudWatch Configuration
 
 Sends the API Publisher logs to

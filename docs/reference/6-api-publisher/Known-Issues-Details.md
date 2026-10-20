@@ -1,3 +1,7 @@
+---
+sidebar_position: 9
+---
+
 # Known Issues Details
 
 The notes below apply to Ed-Fi API Publisher 1.4. They are grouped by the API in

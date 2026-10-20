@@ -1,3 +1,7 @@
+---
+sidebar_position: 13
+---
+
 # Use TextFormatter Serilog
 
 ## How to use the TextFormatter class

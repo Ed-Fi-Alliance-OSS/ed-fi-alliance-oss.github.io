@@ -1,3 +1,7 @@
+---
+sidebar_position: 14
+---
+
 # Ed-Fi API Publisher Extensibility
 
 The Ed-Fi API Publisher was developed following SOLID principles and defines

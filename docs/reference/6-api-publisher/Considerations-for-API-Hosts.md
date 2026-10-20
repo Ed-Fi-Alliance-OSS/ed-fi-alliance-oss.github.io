@@ -1,3 +1,7 @@
+---
+sidebar_position: 8
+---
+
 # Considerations for API Hosts
 
 The [Source API](#source-api) and [Target API](#target-api) sections describe

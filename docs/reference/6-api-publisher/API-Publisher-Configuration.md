@@ -1,3 +1,7 @@
+---
+sidebar_position: 5
+---
+
 # Ed-Fi API Publisher Configuration
 
 The Ed-Fi API Publisher provides a hierarchical organization of configuration

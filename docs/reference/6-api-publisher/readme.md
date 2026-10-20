@@ -228,7 +228,7 @@ When you're ready to look further, review these other topics:
 * [API Connection Management](API-Connection-Management.md)
 * [API Publisher Configuration](API-Publisher-Configuration.md)
 * [Considerations for API Hosts](Considerations-for-API-Hosts.md)
-* [Considerations for Docker Configuration and Execution](Running-in-docker-desktop.md)
+* [Running in Docker Desktop](Running-in-docker-desktop.md)
 * [How to use the TextFormatter class](Use-TextFormatter-Serilog.md).
 
 ## Support
