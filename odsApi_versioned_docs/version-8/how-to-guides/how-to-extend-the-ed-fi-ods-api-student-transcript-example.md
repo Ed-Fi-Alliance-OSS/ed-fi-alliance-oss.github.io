@@ -486,6 +486,15 @@ situations:
   existing `studentAcademicRecord` claim (already granted to claim sets like
   `SISVendor`) already covers them. No claims work is needed for it at all.
 
+:::info
+
+Ed-Fi API v8.1 and later read claims fragment files whose names end in
+`-claims.json`. Ed-Fi API v8.0 reads only files ending in `-claimset.json`, so
+on v8.0 name this file
+`001-sample-student-transcript-claimset.json` instead.
+
+:::
+
 Create a directory (e.g. `my-claims/`) containing a file named
 `001-sample-student-transcript-claims.json`:
 

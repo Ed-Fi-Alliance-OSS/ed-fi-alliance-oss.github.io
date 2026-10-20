@@ -389,6 +389,15 @@ New extension resources are not accessible until they're added to the claims
 hierarchy and granted to a claim set. Do this by authoring a small claim
 fragment file and staging it; no runtime API call is needed.
 
+:::info
+
+Ed-Fi API v8.1 and later read claims fragment files whose names end in
+`-claims.json`. Ed-Fi API v8.0 reads only files ending in `-claimset.json`, so
+on v8.0 name this file
+`001-sample-alternative-education-program-claimset.json` instead.
+
+:::
+
 Create a directory (e.g. `my-claims/`) containing a file named
 `001-sample-alternative-education-program-claims.json`:
 
@@ -500,8 +509,8 @@ domain such as `systemDescriptors`. Instead:
   example](./how-to-extend-the-ed-fi-ods-api-student-transcript-example.md#step-5d-author-and-stage-the-claims-fragment)
   does for `postSecondaryOrganizations`.
 - To grant one more claim set access to a resource, add a fragment named after
-  that claim set with a grant entry for the resource. See [Claim Set
-  Fragments](./how-to-create-and-manage-api-security-metadata.mdx#claim-set-fragments)
+  that claim set with a grant entry for the resource. See [Claims
+  Fragments](./how-to-create-and-manage-api-security-metadata.mdx#claims-fragments)
   for the format.
 
 See [How To: Create and Manage API Security

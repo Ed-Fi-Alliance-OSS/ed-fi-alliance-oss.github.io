@@ -20,9 +20,9 @@ repository](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service).
 :::tip
 
 You don't need this tool to add extension resources or claim sets. The
-Configuration Service merges claim set fragments into its base claims itself;
-see [Claim Set
-Fragments](../../how-to-guides/how-to-create-and-manage-api-security-metadata.mdx#claim-set-fragments).
+Configuration Service merges claims fragments into its base claims itself;
+see [Claims
+Fragments](../../how-to-guides/how-to-create-and-manage-api-security-metadata.mdx#claims-fragments).
 
 :::
 
