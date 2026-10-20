@@ -8,8 +8,8 @@ sidebar_position: 1
 This section provides an overview of the new features in Ed-Fi API v8.1. Many
 of them restore capabilities that platform hosts relied on in the Ed-Fi ODS/API
 and that were not available in Ed-Fi API v8.0. A comprehensive list of all
-changes, including the breaking changes to review before upgrading from v8.0, is
-available in the [Release Notes](./release-notes.md) section.
+changes, including the breaking changes to review when moving from the Ed-Fi
+ODS/API, is available in the [Release Notes](./release-notes.md) section.
 
 ## Improvements & Enhancements
 
