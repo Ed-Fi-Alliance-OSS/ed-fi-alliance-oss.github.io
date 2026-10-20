@@ -32,7 +32,7 @@ There are three intended audiences for this playbook:
 
 ## What Is an Ed-Fi Data Hub?
 
-An Ed-Fi data hub is a shared data system, usually run by an ESA or a state,
+An Ed-Fi Data Hub is a shared data system, usually run by an ESA or a state,
 that collects data from many districts' products using the Ed-Fi Data Standard.
 District student information, assessment, HR, learning, and other systems send
 data to the hub's Ed-Fi API. The hub then supports analytics, data warehousing,
