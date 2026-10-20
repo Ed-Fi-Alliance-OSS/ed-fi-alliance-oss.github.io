@@ -38,24 +38,13 @@ involved at each stage and how to take part.
   Proposals](https://github.com/orgs/Ed-Fi-Alliance-OSS/projects/2/views/1)
   project.
 - When an RFC is accepted - meaning the proposed changes have been implemented
-  into the Unifying Data Model, then the RFC is published to the [API 
+  into the Unifying Data Model, then the RFC is published to the [API
   Specifications](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-API-Specifications/tree/main/RFC)
   repository for archival.
 - To report an issue or suggest a change to the Ed-Fi Data Standard, see
   [Reporting Issues and Making
   Suggestions](../udm/reporting-issues-and-making-suggestions.md).
 
-## What RFC status means
-
-Request for Comment versions contain data elements and models proposed for use
-by the community but not yet part of the core standard. Elements and exchanges
-defined in RFCs are expected to be implemented in the field so that issues can
-be found and the model refined. If you use an RFC version, stay on the latest
-version to avoid fragmenting the ecosystem, because early iterations change more
-often.
-
-The [classes of Ed-Fi Data Standard](../data-standards.md#what-are-the-classes-of-ed-fi-data-standard)
-section explains how RFC material differs from the core standard and from
 ## What RFC status means
 
 A _draft RFC_ is a design proposal that has not been incorporated into the Ed-Fi
