@@ -7,7 +7,7 @@ securely storing keys and secrets in the
 ## Configure AWS SDK
 
 Ensure that the AWS SDK has the necessary
-[configured AWS credentials](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/net-dg-config-creds.html).
+[configured AWS credentials](https://docs.aws.amazon.com/sdk-for-net/v4/developer-guide/creds-assign.html).
 
 ## Configure API Connections
 
@@ -17,15 +17,13 @@ details, providing key names as defined in
 entries for API client _keys_ or _secrets_, use the _SecureString_ type for the
 value.
 
-![AWS](../img/Aws-Parameter-Store-configuration-store-example.png)
-
 ## Configure API Publisher
 
 To use the AWS Parameter Store for you connection management, change the
 `provider` setting in the _configurationStoreSettings.json_ file to
 `awsParameterStore` and supply the appropriate AWS SDK initialization
 parameters, as shown below (see the
-[AWS SDK for .NET Core documentation](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/net-dg-config-netcore.html)
+[AWS SDK for .NET documentation](https://docs.aws.amazon.com/sdk-for-net/v4/developer-guide/net-dg-config-netcore.html)
 for more information):
 
 ```json
