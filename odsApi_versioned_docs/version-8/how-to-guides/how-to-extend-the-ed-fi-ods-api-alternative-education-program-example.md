@@ -390,9 +390,9 @@ hierarchy and granted to a claim set. Do this by authoring a small claim
 fragment file and staging it; no runtime API call is needed.
 
 Create a directory (e.g. `my-claims/`) containing a file named
-`001-sample-alternative-education-program-claimset.json`:
+`001-sample-alternative-education-program-claims.json`:
 
-```json title="001-sample-alternative-education-program-claimset.json"
+```json title="001-sample-alternative-education-program-claims.json"
 {
   "name": "SampleAlternativeEducationProgramClaims",
   "resourceClaims": [

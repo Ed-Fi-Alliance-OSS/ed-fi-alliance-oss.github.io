@@ -487,9 +487,9 @@ situations:
   `SISVendor`) already covers them. No claims work is needed for it at all.
 
 Create a directory (e.g. `my-claims/`) containing a file named
-`001-sample-student-transcript-claimset.json`:
+`001-sample-student-transcript-claims.json`:
 
-```json title="001-sample-student-transcript-claimset.json"
+```json title="001-sample-student-transcript-claims.json"
 {
   "name": "SampleStudentTranscriptClaims",
   "resourceClaims": [
