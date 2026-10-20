@@ -438,7 +438,7 @@ A fragment has a top-level `name` and a `resourceClaims` array. Each entry in
 The top-level `name` is the claim set that the fragment's grant entries give
 access to. Always set it on a fragment with grant entries. If it's missing, the
 service uses the file name as the claim set name (for example,
-`003-sisvendor-claimset`) and creates a new system-reserved claim set with that
+`003-sisvendor-claims`) and creates a new system-reserved claim set with that
 name, which the claim set endpoints can't change or delete. In a fragment with
 only parent entries, `name` is just a label.
 
@@ -455,12 +455,12 @@ names in a fragment file:
 
 #### File Names and Order
 
-The service applies every file whose name ends in `-claimset.json` in the
-configured claims directory, one at a time, sorted by file path. Start each file
-name with a number such as `001-` or `002-` to control the order, and keep all
-your fragments in one folder: a number prefix only orders files within the same
-folder. Order matters when one fragment refers to a claim that an earlier
-fragment adds.
+The service applies every file whose name ends in `-claims.json` anywhere under
+the configured claims directory, including subdirectories, one at a time, sorted
+by file path. Start each file name with a number such as `001-` or `002-` to
+control the order, and keep all your fragments in one folder: a number prefix
+only orders files within the same folder. Order matters when one fragment refers
+to a claim that an earlier fragment adds.
 
 #### Referring to Existing Claims
 
@@ -478,7 +478,7 @@ The following fragment adds an extension descriptor under the out-of-the-box
 `systemDescriptors` domain and an extension association under the
 `relationshipBasedData` domain:
 
-```json title="001-my-extension-claimset.json"
+```json title="001-my-extension-claims.json"
 {
   "name": "MyExtensionClaims",
   "resourceClaims": [
@@ -517,7 +517,7 @@ To add a domain, write a parent entry whose name is the full URI of the new
 domain, with its default authorization, its resource claims, and the claim sets
 that can access it:
 
-```json title="002-my-extension-domain-claimset.json"
+```json title="002-my-extension-domain-claims.json"
 {
   "name": "MyExtensionDomainClaims",
   "resourceClaims": [
@@ -585,7 +585,7 @@ strategies that override the defaults for that action. The following fragment
 grants the out-of-the-box `SISVendor` claim set access to the resource claim
 added by the previous example:
 
-```json title="003-sisvendor-claimset.json"
+```json title="003-sisvendor-claims.json"
 {
   "name": "SISVendor",
   "resourceClaims": [
