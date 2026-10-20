@@ -30,6 +30,35 @@ There are three intended audiences for this playbook:
   implementation of edTech platforms and want to expand their coaching
   abilities.
 
+## What Is an Ed-Fi Data Hub?
+
+An Ed-Fi Data Hub is a shared data system, usually run by an ESA or a state,
+that collects data from many districts' products using the Ed-Fi Data Standard.
+District student information, assessment, HR, learning, and other systems send
+data to the hub's Ed-Fi API. The hub then supports analytics, data warehousing,
+and other data services for member districts, and can forward reporting data
+to the state's Ed-Fi API for state and federal reporting.
+
+A data hub is not the Ed-Fi Data Standard or the Ed-Fi API. The Ed-Fi Alliance
+publishes those; a data hub is a service that an ESA, a state, or a managed
+service provider builds on them. A
+hub does not replace districts' own tools. It helps districts use their data
+across those tools.
+
+### The ESA's Role
+
+ESAs already provide shared contracts and services to member districts, and
+most districts do not have the staff to run data infrastructure themselves.
+That puts ESAs in a good position to run a data hub, offer data services on
+top of it, and work with the state on vendor expectations. Palmetto Data
+Collaborative (South Carolina), Texas Education Exchange, and Michigan DataHub
+are examples operating today.
+
+For the architecture, see [Reporting and data hub
+architecture](./ed-fi-overview-and-esa-implementation-playbook.md#reporting-and-data-hub-architecture).
+For an example member portal, see the [SDCOE Data Hub
+Prototype](../community-tools/technology/SDCOE-data-hub-prototype.md).
+
 ## Download the Playbook
 
 [Educational Service Agency (ESA)
