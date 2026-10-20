@@ -462,6 +462,27 @@ control the order, and keep all your fragments in one folder: a number prefix
 only orders files within the same folder. Order matters when one fragment refers
 to a claim that an earlier fragment adds.
 
+:::caution Upgrading from v8.0
+
+Before v8.1, fragment file names ended in `-claimset.json`. The service no
+longer reads those files. Rename each one to end in `-claims.json`, including
+files in subdirectories, before you upgrade.
+
+If a fragment with grant entries has no top-level `name`, its claim set is named
+after the file, so renaming the file also renames the claim set. Applications
+assigned to the old name lose their access. Before renaming such a file, add a
+top-level `"name"` set to the old file name without `.json`, for example
+`"003-sisvendor-claimset"`.
+
+The service logs a warning for each `-claimset.json` file it finds, but only
+when it reads fragments. That happens when it seeds a database that holds no
+claims, on `POST /management/reload-claims`, and on the first
+`GET /management/current-claims`. An existing database already holds its claims
+(see [When Claims Are Loaded](#when-claims-are-loaded)), so an in-place upgrade
+logs no warning at startup.
+
+:::
+
 #### Referring to Existing Claims
 
 To point at a claim that already exists, use its short form: the last two
