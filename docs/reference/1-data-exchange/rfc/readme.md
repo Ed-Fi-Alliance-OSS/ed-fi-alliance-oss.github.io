@@ -37,9 +37,7 @@ involved at each stage and how to take part.
    a case describing the change you would like to see. If you would like the
    team to be able to contact you on GitHub, include your GitHub handle in the
    case.
-2. The Data Standard team reviews the request and decides whether to accept it
-   for further action or decline it.
-3. Requests the team shares publicly are tracked on the [Data Standard ·
+2. Requests that are shared publicly are tracked on the [Data Standard ·
    Product Roadmap](https://github.com/orgs/Ed-Fi-Alliance-OSS/projects/2/views/3)
    in GitHub, where you can follow an item's status to see whether it has been
    accepted or declined. Anyone is welcome to comment on ongoing work there.
