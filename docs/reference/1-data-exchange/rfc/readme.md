@@ -17,7 +17,8 @@ are then published in a versioned release of the Ed-Fi Data Standard.
 Every change moves through the same stages, whether it starts with a work group
 or with Ed-Fi Alliance staff:
 
-1. **Idea initiation**: someone raises a change or a gap in the standard.
+1. **Idea initiation**: someone raises a change or a gap in the standard (see
+   [How to propose a change and follow it](#how-to-propose-a-change-and-follow-it)).
 2. **RFC process and engagement**: the idea becomes a request. The Ed-Fi
    Alliance team manages proposed changes and works with community members to
    design and validate them.
@@ -29,6 +30,23 @@ or with Ed-Fi Alliance staff:
 
 The [Governance](/community/involved/governance) page describes the groups
 involved at each stage and how to take part.
+
+## How to propose a change and follow it
+
+1. Sign in to the [Ed-Fi Community Hub](https://community.ed-fi.org) and submit
+   a case describing the change you would like to see. If you would like the
+   team to be able to contact you on GitHub, include your GitHub handle in the
+   case.
+2. The Data Standard team reviews the request and decides whether to accept it
+   for further action or decline it.
+3. Requests the team shares publicly are tracked on the [Data Standard ·
+   Product Roadmap](https://github.com/orgs/Ed-Fi-Alliance-OSS/projects/2/views/3)
+   in GitHub, where you can follow an item's status to see whether it has been
+   accepted or declined. Anyone is welcome to comment on ongoing work there.
+
+For more ways to take part, such as the Data Standard Work Group, see
+[Reporting Issues and Making
+Suggestions](../udm/reporting-issues-and-making-suggestions.md).
 
 ## Where to find and comment on RFCs
 
@@ -42,9 +60,6 @@ involved at each stage and how to take part.
   repository and is no longer open for comment. A finalized RFC is either
   already implemented in the Unifying Data Model or being implemented for an
   upcoming release.
-- To report an issue or suggest a change to the Ed-Fi Data Standard, see
-  [Reporting Issues and Making
-  Suggestions](../udm/reporting-issues-and-making-suggestions.md).
 
 ## What RFC status means
 
