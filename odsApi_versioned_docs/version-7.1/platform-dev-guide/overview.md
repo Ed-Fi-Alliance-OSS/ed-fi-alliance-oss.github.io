@@ -128,7 +128,7 @@ PostgreSQL ODS.
 
 A high-level view looks something like this:
 
-![Technology Stack Diagram](https://edfi.atlassian.net/wiki/download/attachments/25493627/image2020-10-20_11-33-39.png?version=2&modificationDate=1701196189347&cacheVersion=1&api=v2)
+![Technology Stack Diagram](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2020-10-20_11-33-39.png)
 
 A few things to note:
 

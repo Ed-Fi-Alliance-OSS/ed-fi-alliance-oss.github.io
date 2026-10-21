@@ -73,7 +73,7 @@ counterparts.
 
 To help demonstrate what is wanted, view this score report from a fictitious
 vendor: [Sample Score
-Template.pdf](https://edfi.atlassian.net/wiki/download/attachments/23703026/Sample%20Score%20Template.pdf?version=1&modificationDate=1701717860453&cacheVersion=1&api=v2)
+Template.pdf](https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Sample%20Score%20Template.pdf)
 
 </details>
 
@@ -301,7 +301,7 @@ be able to successfully handle such situations.
 <summary>View detail...</summary>
 
 The provider will show evidence, via a live, synchronous meeting and screen sharing, how the product
- integration follows these [API Integration Best Practices](../../certification-for-data-providers/api-integration-best-practices.md) 
+ integration follows these [API Integration Best Practices](../../certification-for-data-providers/api-integration-best-practices.md)
 
 </details>
 

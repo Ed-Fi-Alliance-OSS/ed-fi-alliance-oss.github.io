@@ -5,8 +5,11 @@
 A primary component of the Ed-Fi technical solution is an educational data model
 that empowers educators with real-time, actionable information on every student
 in their classroom, school, or district. The Ed-Fi Unifying Data Model (UDM)
-integrates and organizes raw education data and information from a broad range
-of data sources so it can be sifted, analyzed, and put to everyday use.
+gives education data from a broad range of sources a common structure and
+common definitions. The UDM itself is a logical model: it does not store, move,
+or integrate data. Systems built on it, such as the Ed-Fi ODS/API and Ed-Fi API
+v8, collect and organize that data so it can be sifted, analyzed, and put to
+everyday use.
 
 ![Interoperability](https://edfidocs.blob.core.windows.net/$web/img/reference/data-standard/Ed-Fi%20Interoperability%20Graphic.png)
 

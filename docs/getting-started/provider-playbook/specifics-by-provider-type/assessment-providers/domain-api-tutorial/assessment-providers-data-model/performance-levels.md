@@ -18,7 +18,7 @@ And on and on. Clearly, there is no end to the possible permutations. The Ed-Fi 
 
 To return to the last section where we were modeling an Objective Assessment, note that the score report has a set of standardized values it communicates for mastery on each of the items.
 
-![performance levels](https://edfi.atlassian.net/wiki/download/thumbnails/22905196/mathwhale-performancelevels.png?version=2&modificationDate=1561126804640&cacheVersion=1&api=v2&width=737&height=419)
+![performance levels](https://edfidocs.blob.core.windows.net/$web/img/getting-started/provider-playbook/specifics-by-provider-type/assessment-providers/assessment-providers-implementation/assessment-providers-data-model/mathwhale-performancelevels.png)
 
 _Figure 1: the sample report has 3 performance levels denoted by "M", "S" or "N" which identify the level of mastery on each sub-element of the assessment._
 

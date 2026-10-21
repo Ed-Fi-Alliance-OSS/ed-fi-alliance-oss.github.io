@@ -26,6 +26,7 @@ This documentation describes important properties and features of these releases
 - [What's New - v6.0](./whats-new-v60.md)
 - [API Changes for v6.0](./api-changes-6.md)
 - [What's New - v6.1](./whats-new-v61.md)
+<!-- [What's New - v6.2](./whats-new-v62.md) -->
 
 For more on data standard versioning and where to find source materials, please
 consult [Ed-Fi Data Exchange Standards](/reference/data-exchange/).

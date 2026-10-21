@@ -146,9 +146,13 @@ In addition to the tables created by the LMS Data Store Loader, in the `lms`  
          * If you don't have `nuget.exe`, just download from the link above and treat it as a zip file. Unzip to an appropriate location.
       2. Locate the directory for your WebAPI website. Does it have a `Plugin` sub-directory? If not, create it. Copy the full exact path for use in the next step.
 
-      3. Create a new file called `lmsx.ps1` in the `Ed-Fi-ODS-Implementation/Plugin` directory, using the contents shown below (![(warning)](https://edfi.atlassian.net/wiki/s/695013191/6452/be943731e17d7f4a2b01aa3e67b9f29c0529a211/_/images/icons/emoticons/warning.png)
+      3. Create a new file called `lmsx.ps1` in the `Ed-Fi-ODS-Implementation/Plugin` directory, using the contents shown below. Please read the comments in the file to see how to change from ODS/API version 5.3 to version 5.2.
 
-          make sure this file is "lms**x**.ps1" not "lms.ps1"). Please read the comments in the file to see how to change from ODS/API version 5.3 to version 5.2.
+         :::warning
+
+         Make sure this file is "lms**x**.ps1" not "lms.ps1".
+
+         :::
 
          ```powershell
          # SPDX-License-Identifier: Apache-2.0
@@ -194,7 +198,11 @@ In addition to the tables created by the LMS Data Store Loader, in the `lms`  
          }
          ```
 
-          ![(warning)](https://edfi.atlassian.net/wiki/s/695013191/6452/be943731e17d7f4a2b01aa3e67b9f29c0529a211/_/images/icons/emoticons/warning.png)If you use any directory other than the WebAPI project's Plugin directory at this step , then the plugin will not load when you run the application at the final step below.
+         :::warning
+
+         If you use any directory other than the WebAPI project's Plugin directory at this step, then the plugin will not load when you run the application at the final step below.
+
+         :::
 
       5. In that same file, adjust the database connection strings and database engine as appropriate for your installation. If you are not sure what they are, then look in the `appsettings.json` file in your WebAPI directory.
 

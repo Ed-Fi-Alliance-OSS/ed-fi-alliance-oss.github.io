@@ -114,7 +114,7 @@ export default {
       verifyingAgencies: ['Monroe County Community School Corporation, IN'],
       documentation: {
         'EdGraph Analytics - Suite 2 Mapping':
-          'https://edfi.atlassian.net/wiki/download/attachments/20611183/EdGraph+Analytics+-+Suite+2+Mapping.xlsx?version=1',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/1-badging/EdGraph%20Analytics%20-%20Suite%202%20Mapping.xlsx',
       },
       versionCompatibility: ['Ed-Fi ODS/API v2.6', 'Ed-Fi ODS/API v3.2'],
       availability: 'Available to any agency (all sizes) or vendor in the U.S.',
@@ -128,7 +128,7 @@ export default {
       verifyingAgencies: ['Austin ISD, TX'],
       documentation: {
         'Mapping Document':
-          'https://edfi.atlassian.net/wiki/download/attachments/20611183/Innive_TSDS_to_EDFI_ODS_Mapping.xlsx?version=1',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/1-badging/Innive_TSDS_to_EDFI_ODS_Mapping.xlsx',
       },
       versionCompatibility: ['Ed-Fi ODS 3.0 and above'],
       availability: 'Available to any agency (all sizes) or vendor in the U.S.',
@@ -155,7 +155,7 @@ export default {
       verifyingAgencies: ['Wyoming Department of Education (WDE)'],
       documentation: {
         'ESP Mapping':
-          'https://edfi.atlassian.net/wiki/download/attachments/20611183/EdFi+3.4+Mapping+Master+API_to_ODS.xlsx?version=1',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/1-badging/EdFi%203.4%20Mapping%20Master%20API_to_ODS.xlsx',
       },
       versionCompatibility: ['Ed-Fi ODS/API 2.x', 'Ed-Fi ODS/API 3.x'],
       availability: 'Available to any agency (all sizes) or vendor in the U.S.',
@@ -169,7 +169,7 @@ export default {
       verifyingAgencies: ['Texas Education Agency (TEA)'],
       documentation: {
         'Data Mapping':
-          'https://edfi.atlassian.net/wiki/download/attachments/20611183/TEA_I2I+Mapping.xlsx?version=1',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/1-badging/TEA_I2I%20Mapping.xlsx',
       },
       versionCompatibility: ['Ed-Fi Data Standard 3.3.1b / ODS/API API 5.3'],
       availability: 'Available to all educator prep programs in Texas',
@@ -186,9 +186,9 @@ export default {
       verifyingAgencies: ['Providence Public Schools, RI'],
       documentation: {
         Mapping:
-          'https://edfi.atlassian.net/wiki/download/attachments/20611183/eScholar+to+Ed-Fi+Mapping+API+Consumer+Badge+App.xlsx?version=1',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/1-badging/eScholar%20to%20Ed-Fi%20Mapping%20API%20Consumer%20Badge%20App.xlsx',
         'Usage Overview':
-          'https://edfi.atlassian.net/wiki/download/attachments/20611183/escholar+Usage+Overview.docx?version=1',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/1-badging/escholar%20Usage%20Overview.docx',
         'API Documentation':
           'https://escholar.com/wp-content/uploads/2023/10/eScholar-Ed-Fi-API-Documentation.pdf',
       },
@@ -204,7 +204,7 @@ export default {
       verifyingAgencies: ['Duneland School Corporation (IN)'],
       documentation: {
         'Usage Overview & Mapping':
-          'https://edfi.atlassian.net/wiki/download/attachments/20611183/Ed-Fi+API+Consumer+Badge+-+Lingk+usage+overview+%26+mapping.pdf?version=1',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/1-badging/Ed-Fi%20API%20Consumer%20Badge%20-%20Lingk%20usage%20overview%20%26%20mapping.pdf',
       },
       versionCompatibility: ['Ed-Fi ODS API for Suite 3 (and Suite 2)'],
       availability: 'Available to any agency (all sizes) or vendor in the U.S.',
@@ -228,15 +228,15 @@ export default {
       verifyingAgencies: ['Kalamazoo RESA / Michigan Data Hub'],
       documentation: {
         'Academic Achievement Mapping':
-          'https://edfi.atlassian.net/wiki/download/attachments/20611183/Munetrix+Ed-Fi+Utilization.xlsx?version=1',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/1-badging/Munetrix%20Ed-Fi%20Utilization.xlsx',
         'Availability Statement':
-          'https://edfi.atlassian.net/wiki/download/attachments/20611183/Munetrix+Ed-Fi+Certification+-+Availability+Statement.docx?version=1',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/1-badging/Munetrix%20Ed-Fi%20Certification%20-%20Availability%20Statement.docx',
         'Connecting the MIDataHub to Munetrix':
           'https://solutions.munetrix.com/en/knowledge/connecting-the-midatahub-to-munetrix',
         'Munetrix Implementation Guide for School Leaders':
-          'https://edfi.atlassian.net/wiki/download/attachments/20611183/Munetrix_Implementation%2BGuide%2Bfor%2BSchool%2BLeaders_V3.pdf?version=1',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/1-badging/Munetrix_Implementation%2BGuide%2Bfor%2BSchool%2BLeaders_V3.pdf',
         'EMW Onboard Planning':
-          'https://edfi.atlassian.net/wiki/download/attachments/20611183/Munetrix_EWM+Onboarding+Planning.pdf?version=1',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/1-badging/Munetrix_EWM%20Onboarding%20Planning.pdf',
       },
       versionCompatibility: ['Ed-Fi ODS API for Suite 3 v3.1'],
       availability: 'MI',
@@ -250,9 +250,9 @@ export default {
       verifyingAgencies: ['Michigan Data Hub'],
       documentation: {
         'Usage Overview':
-          'https://edfi.atlassian.net/wiki/download/attachments/20611183/Eidex+Ed-Fi+Badge+Application+July+2023.pdf?version=1',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/1-badging/Eidex%20Ed-Fi%20Badge%20Application%20July%202023.pdf',
         'Mapping Document':
-          'https://edfi.atlassian.net/wiki/download/attachments/20611183/Eidex+Mapping+Document.docx?version=1',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/1-badging/Eidex%20Mapping%20Document.docx',
         'Support & Configuration': 'http://portal.eiexinsights.com',
       },
       versionCompatibility: [
@@ -284,7 +284,7 @@ export default {
       verifyingAgencies: ['Michigan Data Hub'],
       documentation: {
         'Mapping Document':
-          'https://edfi.atlassian.net/wiki/download/attachments/20611183/SAS+Ed-Fi+Badge+Application+-+Mapping+%281%29%5B98%5D+%281%29.docx?version=1',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/1-badging/SAS%20Ed-Fi%20Badge%20Application%20-%20Mapping%20%281%29%5B98%5D%20%281%29.docx',
         'SAS EVAAS for K-12':
           'https://www.midatahub.org/pub/stories/view/sas-evaas-for-k-12',
       },
@@ -300,9 +300,9 @@ export default {
       verifyingAgencies: ['Austin ISD, TX'],
       documentation: {
         'Mapping Document':
-          'https://edfi.atlassian.net/wiki/download/attachments/20611183/Innive_TSDS_to_EDFI_ODS_Mapping.xlsx?version=1',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/1-badging/Innive_TSDS_to_EDFI_ODS_Mapping.xlsx',
         'Usage Overview':
-          'https://edfi.atlassian.net/wiki/download/attachments/20611183/Innive_usage_summary.docx?version=1',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/1-badging/Innive_usage_summary.docx',
         Email: 'k12360support@inniveinc.com',
       },
       versionCompatibility: ['Ed-Fi ODS API for Suite 3 and above'],
@@ -317,9 +317,9 @@ export default {
       verifyingAgencies: ['Mondovi School District, WI'],
       documentation: {
         'Alio and Linq ERP mapping':
-          'https://edfi.atlassian.net/wiki/download/attachments/20611183/Alio+and+Linq+ERP+mapping.docx?version=1',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/1-badging/Alio%20and%20Linq%20ERP%20mapping.docx',
         'Usage Overview':
-          'https://edfi.atlassian.net/wiki/download/attachments/20611183/AlioLinq+Usage.docx?version=1',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/1-badging/AlioLinq%20Usage.docx',
         Email: 'erpsupport@linq.com',
       },
       versionCompatibility: [
@@ -337,9 +337,9 @@ export default {
       verifyingAgencies: ['Texas Education Agency (TEA)'],
       documentation: {
         'Data Mapping':
-          'https://edfi.atlassian.net/wiki/download/attachments/20611183/TEA_I2I+Mapping.xlsx?version=1',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/1-badging/TEA_I2I%20Mapping.xlsx',
         'Usage Summary':
-          'https://edfi.atlassian.net/wiki/download/attachments/20611183/Ed-Fi+Badge+Application+Crocus+TEA+I2I.docx.pdf?version=1',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/1-badging/Ed-Fi%20Badge%20Application%20Crocus%20TEA%20I2I.docx.pdf',
       },
       versionCompatibility: ['Data Standard 3.3.1b, ODS/API 5.3'],
       availability: 'All Educator prep programs in Texas',
@@ -373,7 +373,7 @@ export default {
       verifyingAgencies: ['Michigan Data Hub'],
       documentation: {
         'Mapping Document':
-          'https://edfi.atlassian.net/wiki/download/attachments/20611183/FiveStar-EdFi-staff-mapping+%281%29.xlsx?version=1',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/1-badging/FiveStar-EdFi-staff-mapping%20%281%29.xlsx',
       },
       versionCompatibility: ['Ed-Fi API version 6.x'],
       availability: 'Available to any LEA in any US geography',
@@ -387,7 +387,7 @@ export default {
       verifyingAgencies: ['Boston Public Schools'],
       documentation: {
         'Mapping Document':
-          'https://edfi.atlassian.net/wiki/download/attachments/20611183/EdFi__Panorama+Student+Success+Mapping.xlsx?version=1',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/1-badging/EdFi__Panorama%20Student%20Success%20Mapping.xlsx',
       },
       versionCompatibility: [
         'Ed-Fi API Suite 3 v5.3',
@@ -407,13 +407,13 @@ export default {
       availability: 'Available to any agency (all sizes) or vendor in the U.S.',
     },
     {
-      logo: 'https://edfi.atlassian.net/wiki/download/attachments/23692586/xello%20logo.png?api=v2',
+      logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/1-badging/xello%20logo.png',
       productName: 'Xello',
       provider: 'Xello Inc.',
       website: 'https://xello.world/en/',
       validThrough: 'January 14, 2027',
       verifyingAgencies: ['Michigan Data Hub'],
-      documentation: {'Mapping Document':'https://edfi.atlassian.net/wiki/download/attachments/23692586/Xello%20required%20Ed-Fi%20API%20Data%20Elements.xlsx?api=v2',
+      documentation: {'Mapping Document':'https://edfidocs.blob.core.windows.net/$web/assets/partners/1-badging/Xello%20required%20Ed-Fi%20API%20Data%20Elements.xlsx',
       },
       versionCompatibility: ['Ed-Fi API version 6.x'],
       availability: 'Available to any agency (all sizes) or vendor in the U.S.',
@@ -579,7 +579,21 @@ export default {
   availability: 'Available to any agency (all sizes) or vendor in the U.S.',
 },
 
-
+ {
+  logo: 'https://edfidocs.blob.core.windows.net/$web/assets/partners/1-badging/Cloudwick%20_%20Amorphic%20Logo%20Lockup_Square.png',
+  productName: 'Amorphic',
+  provider: 'Cloudwick',
+  website: 'https://cloudwick.com/',
+  validThrough: 'September 25, 2028',
+  verifyingAgencies: ['Michigan Association of Intermediate School Administrators (MAISA)'],
+  documentation: {
+    'Mapping Document': 'https://edfidocs.blob.core.windows.net/$web/assets/partners/1-badging/Cloudwick%20ED-FI%20MAPPING%20SHEET.xlsx',
+  },
+  versionCompatibility: [
+    'Amorphic Platform supports integration with the Ed-Fi ODS/API Version 6.2 and Ed-Fi Data Standard Version 4.0.0.',
+  ],
+  availability: 'Available to any agency (all sizes) or vendor in the U.S. on version 3.2 and above.',
+},
 
   ],
 
@@ -594,7 +608,7 @@ export default {
         'IDOE Ed-Fi 6.1 SIS Vendor Badging Scenarios':
           'https://docs.google.com/spreadsheets/d/1K_qFq3397XNTLBjvDlwLlxC3c2XetTou/edit#gid=1800575453',
         'IDOE Ed-Fi 2.4 to 6.0 Data mapping':
-          'https://edfi.atlassian.net/wiki/download/attachments/20611183/IDOE+Ed-Fi+2.4+to+6.0+Data+mapping.xlsx?version=1',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/1-badging/IDOE%20Ed-Fi%202.4%20to%206.0%20Data%20mapping.xlsx',
       },
       validThrough: 'February 10, 2028',
       verifyingAgencies: ['Indiana DoE', 'Nebraska DoE'],
@@ -609,11 +623,11 @@ export default {
       website: 'https://www.unicon.net/services/k-20',
       documentation: {
         'TPDM Starter Kit Required Data Checklist':
-          'https://edfi.atlassian.net/wiki/download/attachments/20611183/TPDM+Starter+Kit+Required+Data+Checklist.xlsx?version=1',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/1-badging/TPDM%20Starter%20Kit%20Required%20Data%20Checklist.xlsx',
         'Evaluation Data Collection Short Form Template with Sample':
-          'https://edfi.atlassian.net/wiki/download/attachments/20611183/Evaluation+Data+Collection+Short+Form+Template+with+Sample.xlsx?version=1',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/1-badging/Evaluation%20Data%20Collection%20Short%20Form%20Template%20with%20Sample.xlsx',
         'Project Phases':
-          'https://edfi.atlassian.net/wiki/download/attachments/20611183/Project+Phases.pptx?version=1',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/1-badging/Project%20Phases.pptx',
       },
       validThrough: 'May 14, 2026',
       verifyingAgencies: [
@@ -630,7 +644,7 @@ export default {
       website: 'https://www.keenlogic.io/',
       documentation: {
         'MSP Rubric and Guided Questions.docx':
-          'https://edfi.atlassian.net/wiki/download/attachments/20611183/MSP+Rubric+and+Guided+Questions.docx?version=1',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/1-badging/MSP%20Rubric%20and%20Guided%20Questions.docx',
         'Sample vendor resource and generalized error encyclopedia':
           'https://app.powerbi.com/view?r=eyJrIjoiZTJiNGQ3OWEtMDBjNy00NTk1LWExNzQtNzdmNjIyMDFhZTliIiwidCI6Ijg1ODNiOGI5LTc2OGItNDA2Yy04OGU5LThjMjk1Y2FkYTk2MyIsImMiOjJ9',
       },

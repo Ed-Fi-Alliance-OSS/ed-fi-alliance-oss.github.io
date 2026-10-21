@@ -23,7 +23,7 @@ business analysts, database administrators, and software developers.
 
 - [EPDM UML Diagram](https://github.com/Ed-Fi-Exchange-OSS/Ed-Fi-TPDM-Community-Artifacts)
   — UML Entity-Relationship Diagram for EPDM entities.
-- [Ed-Fi Data Model with EPDM Data Handbook](https://edfidocs.blob.core.windows.net/$web/handbook/tpdm-community-v1.2/Index.html)
+- [Ed-Fi Data Model with EPDM Data Handbook](https://edfidocs.blob.core.windows.net/$web/handbook/tpdm-community-v1.2/index.html)
   — Searchable, filterable EPDM-enhanced version of the Ed-Fi Data Handbook.
 
 ### Model Improvements & Enhancements

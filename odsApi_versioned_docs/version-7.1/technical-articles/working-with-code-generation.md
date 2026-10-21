@@ -519,8 +519,8 @@ window showing that code generation is running.
 
 **Step 4 :** Open Test Explorer and look for the Verify_All test and run it to see if there are any failures
 
-![Test Explorer window showing Verify_All test](https://edfi.atlassian.net/wiki/download/thumbnails/25493787/image2022-3-8_10-17-36.png?version=1&modificationDate=1699456135027&cacheVersion=1&api=v2&width=600&height=300)
+![Test Explorer window showing Verify_All test](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2022-3-8_10-17-36.png)
 
 **Step 5 :** Approve any changes, if appropriate.
 
-![Approve Changes dialog in Visual Studio](https://edfi.atlassian.net/wiki/download/thumbnails/25493787/image2022-3-8_10-18-8.png?version=1&modificationDate=1699456135027&cacheVersion=1&api=v2&width=600&height=300)
+![Approve Changes dialog in Visual Studio](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2022-3-8_10-18-8.png)
