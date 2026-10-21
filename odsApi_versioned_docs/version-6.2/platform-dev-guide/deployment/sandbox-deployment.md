@@ -597,7 +597,7 @@ Steps to deploy the application:
 
 9. The application is ready to use.
 
-    ![Swagger UI](https://edfi.atlassian.net/wiki/download/attachments/22774363/image08.png?version=1&modificationDate=1641861350230&cacheVersion=1&api=v2)
+    ![Swagger UI](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image08.png)
 
 App Settings:
 

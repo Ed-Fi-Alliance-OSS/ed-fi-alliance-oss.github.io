@@ -55,9 +55,9 @@ appropriate HTTP header to the request (i.e. `Accept` for `GET` requests, and
 
 |     |     |
 | --- | --- |
-| ![Depiction of the inclusion of all properties](https://edfi.atlassian.net/wiki/download/attachments/25493665/image2015-8-26%2011-40-33.png?version=1&modificationDate=1699456106973&cacheVersion=1&api=v2)<br/>**Figure 1.** Depiction of the inclusion of all properties | ![Depiction of the inclusion of specific properties](https://edfi.atlassian.net/wiki/download/attachments/25493665/image2015-8-26%2011-42-57.png?version=1&modificationDate=1699456106967&cacheVersion=1&api=v2)<br/>**Figure 2.** Depiction of the inclusion of specific properties |
-| ![Depiction of the inclusion of a specific collection](https://edfi.atlassian.net/wiki/download/attachments/25493665/image2015-8-25%2016-56-57.png?version=1&modificationDate=1699456106960&cacheVersion=1&api=v2)<br/>**Figure 3.** Depiction of the inclusion of a specific collection | ![Depiction of the inclusion or exclusion of specific collection items](https://edfi.atlassian.net/wiki/download/attachments/25493665/image2015-8-26%2011-37-23.png?version=1&modificationDate=1699456106950&cacheVersion=1&api=v2)<br/> **Figure 4.** Depiction of the inclusion or exclusion of specific collection items |
-| ![Depiction of the inclusion of specific properties on a child collection's items](https://edfi.atlassian.net/wiki/download/attachments/25493665/image2015-8-26%2018-42-12.png?version=1&modificationDate=1699456106943&cacheVersion=1&api=v2)<br/>**Figure 5.** Depiction of the inclusion of specific properties on a child collection's items |     |
+| ![Depiction of the inclusion of all properties](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2015-8-26%2011-40-33.png)<br/>**Figure 1.** Depiction of the inclusion of all properties | ![Depiction of the inclusion of specific properties](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2015-8-26%2011-42-57.png)<br/>**Figure 2.** Depiction of the inclusion of specific properties |
+| ![Depiction of the inclusion of a specific collection](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2015-8-25%2016-56-57.png)<br/>**Figure 3.** Depiction of the inclusion of a specific collection | ![Depiction of the inclusion or exclusion of specific collection items](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2015-8-26%2011-37-23.png)<br/> **Figure 4.** Depiction of the inclusion or exclusion of specific collection items |
+| ![Depiction of the inclusion of specific properties on a child collection's items](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2015-8-26%2018-42-12.png)<br/>**Figure 5.** Depiction of the inclusion of specific properties on a child collection's items |     |
 
 ## Include-Only vs. Exclude-Only Strategies
 
@@ -75,7 +75,7 @@ will not necessarily require adjustments over time. The implications of these
 two approaches is depicted in the diagram below:
 
 ![Depiction of the implications on Profile flexibility using Inclusion vs.
-Exclusion](https://edfi.atlassian.net/wiki/download/attachments/25493665/image2015-8-26%2011-45-58.png?version=1&modificationDate=1699456106937&cacheVersion=1&api=v2)
+Exclusion](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2015-8-26%2011-45-58.png)
 
 **Figure 6.** Depiction of the implications on Profile flexibility using
 Inclusion vs. Exclusion

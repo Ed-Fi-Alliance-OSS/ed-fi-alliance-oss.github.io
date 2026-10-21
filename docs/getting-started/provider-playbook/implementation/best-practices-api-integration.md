@@ -33,7 +33,7 @@
   * The API is usually a shared resource and if many clients overuse the API, performance can degrade. It helps all clients when each client minimizes API usage.
   * The Ed-Fi API data model is high normalized, so is usually not optimized for application data usage. This means that there are generally more calls to the API than would be required by a de-normalized, application-specific data model.
 * Clients should use the API for data transfer to their own application datastore, then use that local database as the product backend, per the diagram below.
-![Data Flow Consumer Applications](https://edfi.atlassian.net/wiki/download/attachments/23700360/API%20data%20flow%20-%20Data%20Consumer%20Applications.png?api=v2)
+![Data Flow Consumer Applications](https://edfidocs.blob.core.windows.net/$web/img/getting-started/provider-playbook/implementation/API%20data%20flow%20-%20Data%20Consumer%20Applications.png)
 _Recommended pattern for usage of the Ed-Fi API by a data consuming application_
 
 * For clients retrieving data from the ODS/API, use Change Queries when available to optimize the data retrieval process. For more information, see [Using the Changed Record Queries](/reference/ed-fi-api/client-developers-guide/using-the-changed-record-queries)

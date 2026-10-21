@@ -21,19 +21,19 @@ Student Assessments example described in the [Quick Start]:
 
 :::info
 
-[ExampleSqlQueryFileGenerator.zip](https://edfi.atlassian.net/wiki/download/attachments/24117960/ExampleSqlQueryFileGenerator.zip?api=v2)
+[ExampleSqlQueryFileGenerator.zip](https://edfidocs.blob.core.windows.net/$web/assets/reference/6-data-import/technical-articles/preprocessing-csv-files/integrated-custom-file-generation/ExampleSqlQueryFileGenerator.zip)
 
 :::
 
 We begin in a Data Import 1.1.1 system, with a File Generator stored on disk
 like so:
 
-![Sql Script](https://edfi.atlassian.net/wiki/download/attachments/24117960/0.%20On%20disk%20in%201.1.2.PNG?version=1&modificationDate=1621556421333&cacheVersion=1&api=v2)
+![Sql Script](https://edfidocs.blob.core.windows.net/$web/img/reference/6-data-import/technical-articles/preprocessing-csv-files/integrated-custom-file-generation/0.%20On%20disk%20in%201.1.2.PNG)
 
 The script on disk in Data Import 1.1.1 is associated with this agent, as it is
 selected under "File Generation":
 
-![Agent Schedule](https://edfi.atlassian.net/wiki/download/attachments/24117960/1.%20File%20based%20script%20in%201.1.2.PNG?version=1&modificationDate=1621556426973&cacheVersion=1&api=v2)
+![Agent Schedule](https://edfidocs.blob.core.windows.net/$web/img/reference/6-data-import/technical-articles/preprocessing-csv-files/integrated-custom-file-generation/1.%20File%20based%20script%20in%201.1.2.PNG)
 
 The user then upgrades to Data Import 1.2, which moves the script content into
 the database:
@@ -44,7 +44,7 @@ access to the system, so upon the next usage it fails as expected. Several
 dangerous commands like Get-Content and New-Object are deliberately denied in
 the sandbox:
 
-![Query](https://edfi.atlassian.net/wiki/download/thumbnails/24117960/3.%20First%20execution%20expected%20failure.PNG?version=1&modificationDate=1621556461800&cacheVersion=1&api=v2&width=1159&height=189)
+![Query](https://edfidocs.blob.core.windows.net/$web/img/reference/6-data-import/technical-articles/preprocessing-csv-files/integrated-custom-file-generation/3.%20First%20execution%20expected%20failure.PNG)
 
 Here is where you need to make an important decision. Is your bespoke file
 generation concept truly an aspect of data _mapping,_ or is it in fact an ETL
@@ -69,4 +69,4 @@ PowerShell access:
 Upon the next attempt to run the Agent, the script runs with full privileges and
 is able to complete once again:
 
-![Results](https://edfi.atlassian.net/wiki/download/thumbnails/24117960/5.%20Success.PNG?version=1&modificationDate=1621556519373&cacheVersion=1&api=v2&width=1160&height=294)
+![Results](https://edfidocs.blob.core.windows.net/$web/img/reference/6-data-import/technical-articles/preprocessing-csv-files/integrated-custom-file-generation/5.%20Success.PNG)
