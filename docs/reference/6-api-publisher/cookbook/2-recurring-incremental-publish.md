@@ -39,8 +39,14 @@ stored version.
 
    ```powershell
    .\EdFiApiPublisher.exe --sourceName=District --targetName=State `
-     --includeDescriptors=true --ignoreIsolation=true
+     --includeDescriptors=true --ignoreIsolation=true --exclude=surveys
    ```
+
+   `--exclude=surveys` leaves out the survey resources. On Ed-Fi ODS/API 7.3, the
+   `Ed-Fi API Publisher - Reader` claim set cannot read them: without the option
+   the source answers `403`, the run exits with code `2` and the change version
+   is not stored, so every later run publishes all the data again. Remove it
+   once the source's Reader claim set can read the surveys.
 
    `--ignoreIsolation=true` reads the source's live data, because an Ed-Fi ODS/API
    7.x source has no snapshot configured by default. Remove it when the source has
@@ -68,13 +74,6 @@ Every run exits with code `0`. After the first one, the run summary lists only
 the resources that changed. A run with nothing new to publish ends in a few
 seconds, and its log says that all available changes have already been
 published.
-
-On Ed-Fi ODS/API 7.3.2, the `Ed-Fi API Publisher - Reader` claim set does not
-include the survey resources, so the source answers `403` for them. The run
-exits with code `0` only when they are left out with `--exclude=surveys`;
-otherwise it exits with code `2`, although the rest of the data is published,
-and the change version is not stored, so every run publishes all the data
-again. On 7.3.2, add `--exclude=surveys` to the command in steps 3 and 4.
 
 ## Common Errors
 

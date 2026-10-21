@@ -52,8 +52,14 @@ PowerShell does not change characters such as `$`:
   --sourceKey=<key> --sourceSecret='<secret>' `
   --targetUrl=<target base URL> `
   --targetKey=<key> --targetSecret='<secret>' `
-  --includeDescriptors=true --ignoreIsolation=true
+  --includeDescriptors=true --ignoreIsolation=true --exclude=surveys
 ```
+
+`--exclude=surveys` leaves out the survey resources. On Ed-Fi ODS/API 7.3, the
+`Ed-Fi API Publisher - Reader` claim set cannot read them: without the option
+the source answers `403` and the run exits with code `2`, although the rest of
+the data is published. Remove it once the source's Reader claim set can read
+the surveys.
 
 `--ignoreIsolation=true` reads the source's live data, because an Ed-Fi ODS/API
 7.x source has no snapshot configured by default. Remove it when the source has
@@ -63,10 +69,6 @@ The run should exit with code `0`, and the run summary at the end of the log
 should show the same Published and Attempted counts for every resource. A few
 warnings with `500` or `504` that succeed when the request is retried are not
 failures.
-On Ed-Fi ODS/API 7.3.2, the `Ed-Fi API Publisher - Reader` claim set does not
-include the survey resources, so the source answers `403` for them. The run
-exits with code `0` only when they are left out with `--exclude=surveys`;
-otherwise it exits with code `2`, although the rest of the data is published.
 
 ## Common Errors
 

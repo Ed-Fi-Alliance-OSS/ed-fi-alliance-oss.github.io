@@ -93,7 +93,7 @@ The run exits with code `0`, and the run summary lists only the resources in the
 preview. With `--include=studentSchoolAssociations`, it also lists the
 resources they depend on, such as `schools` and `students`.
 
-On Ed-Fi ODS/API 7.3.2, a selection that includes the survey resources ends
+On Ed-Fi ODS/API 7.3, a selection that includes the survey resources ends
 with code `2`, because the `Ed-Fi API Publisher - Reader` claim set does not
 include them. With `--exclude`, add `surveys` to the list.
 

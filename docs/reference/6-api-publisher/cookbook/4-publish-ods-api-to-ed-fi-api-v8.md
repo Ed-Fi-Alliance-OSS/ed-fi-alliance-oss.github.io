@@ -105,9 +105,15 @@ PostgreSQL).
      --sourceKey=<key> --sourceSecret='<secret>' `
      --targetUrl=<Ed-Fi API v8 base URL> `
      --targetKey=<key> --targetSecret='<secret>' `
-     --includeDescriptors=true --ignoreIsolation=true `
+     --includeDescriptors=true --ignoreIsolation=true --exclude=surveys `
      --enableRateLimit=true --rateLimitNumberExecutions=200 --rateLimitTimeSeconds=1
    ```
+
+   `--exclude=surveys` leaves out the survey resources. On Ed-Fi ODS/API 7.3, the
+   `Ed-Fi API Publisher - Reader` claim set cannot read them: without the option
+   the source answers `403` and the run exits with code `2`, although the rest
+   of the data is published. Remove it once the source's Reader claim set can
+   read the surveys.
 
    `--ignoreIsolation=true` reads the source's live data, because an Ed-Fi ODS/API
    7.x source has no snapshot configured by default. Remove it when the source has
@@ -119,11 +125,6 @@ PostgreSQL).
 The run exits with code `0`, and the run summary shows the same Published and
 Attempted counts for every resource. A few `409` warnings for a record whose
 parent was not yet in the target are normal when the retry then succeeds.
-
-On Ed-Fi ODS/API 7.3.2, the `Ed-Fi API Publisher - Reader` claim set does not
-include the survey resources, so the source answers `403` for them. The run
-exits with code `0` only when they are left out with `--exclude=surveys`;
-otherwise it exits with code `2`, although the rest of the data is published.
 
 ## Common Errors
 
