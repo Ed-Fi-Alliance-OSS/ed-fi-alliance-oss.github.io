@@ -470,20 +470,27 @@ Before v8.1, fragment file names ended in `-claimset.json`. The service no
 longer reads those files, so rename each one to end in `-claims.json`. The
 service logs a warning for each `-claimset.json` file it finds, but only when it
 reads fragments (see [When Claims Are Loaded](#when-claims-are-loaded)), so an
-in-place upgrade of an existing database logs no warning at startup. If you
-relied on the Docker Compose default instead of setting
-`CONFIGURATION_SERVICE_CLAIMS_MOUNT_SOURCE`, note that the default fragment
-folder moved from `Deploy/AdditionalClaimsets` to `Deploy/AdditionalClaims`.
+in-place upgrade of an existing database logs no warning at startup.
+
+The Docker Compose files changed too. In v8.0 they read the fragment folder from
+`DMS_CONFIG_CLAIMS_MOUNT_SOURCE`, which is now
+`CONFIGURATION_SERVICE_CLAIMS_MOUNT_SOURCE`, and their default folder moved from
+`Deploy/AdditionalClaimsets` to `Deploy/AdditionalClaims`. If you set
+`DMS_CONFIG_CLAIMS_MOUNT_SOURCE`, rename it to
+`CONFIGURATION_SERVICE_CLAIMS_MOUNT_SOURCE`. Otherwise Compose mounts the
+default folder instead of yours, and the service logs no warning.
 
 Renaming needs care for a fragment with grant entries but no top-level `name`.
 This applies only to fragments the Configuration Service reads directly, because
-`prepare-dms-claims.ps1` rejects such fragments. The service registered that
-fragment's claim set under the file name as a system-reserved claim set (see
-[Choosing Claim Set Names](#choosing-claim-set-names)). Renaming the file also
-renames the claim set, so applications assigned to the old name lose their
-access, and the old claim set stays in the database. To keep the old name, set
-the fragment's top-level `name` to the old file name without `.json`, for
-example `"003-sisvendor-claimset"`, before you rename the file.
+`prepare-dms-claims.ps1` rejects such fragments. The service attaches that
+fragment's grants to a claim set named after the file. In v8.0, applications
+could use those grants only if a claim set with that name was created separately
+through the claim set endpoints. Renaming the file moves the grants to a new
+name, so those applications lose their access. To keep their access, set the
+fragment's top-level `name` to the old file name without `.json`, for example
+`"003-sisvendor-claimset"`, before you rename the file. From v8.1, that name
+becomes a system-reserved claim set (see
+[Choosing Claim Set Names](#choosing-claim-set-names)).
 
 #### Referring to Existing Claims
 
