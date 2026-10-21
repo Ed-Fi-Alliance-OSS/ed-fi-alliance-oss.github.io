@@ -467,14 +467,23 @@ match is case-sensitive, so the Configuration Service skips a file ending in
 `-Claims.json` without a warning.
 
 Before v8.1, fragment file names ended in `-claimset.json`. The service no
-longer reads those files, so rename each one to end in `-claims.json`. If a
-fragment with grant entries has no top-level `name`, renaming the file also
-renames its claim set, and applications assigned to the old name lose their
-access. Before renaming such a file, set its top-level `name` to the old file
-name without `.json`, for example `"003-sisvendor-claimset"`. The service logs a
-warning for each `-claimset.json` file it finds, but only when it reads
-fragments (see [When Claims Are Loaded](#when-claims-are-loaded)), so an
-in-place upgrade of an existing database logs no warning at startup.
+longer reads those files, so rename each one to end in `-claims.json`. The
+service logs a warning for each `-claimset.json` file it finds, but only when it
+reads fragments (see [When Claims Are Loaded](#when-claims-are-loaded)), so an
+in-place upgrade of an existing database logs no warning at startup. If you
+relied on the Docker Compose default instead of setting
+`CONFIGURATION_SERVICE_CLAIMS_MOUNT_SOURCE`, note that the default fragment
+folder moved from `Deploy/AdditionalClaimsets` to `Deploy/AdditionalClaims`.
+
+Renaming needs care for a fragment with grant entries but no top-level `name`.
+This applies only to fragments the Configuration Service reads directly, because
+`prepare-dms-claims.ps1` rejects such fragments. The service registered that
+fragment's claim set under the file name as a system-reserved claim set (see
+[Choosing Claim Set Names](#choosing-claim-set-names)). Renaming the file also
+renames the claim set, so applications assigned to the old name lose their
+access, and the old claim set stays in the database. To keep the old name, set
+the fragment's top-level `name` to the old file name without `.json`, for
+example `"003-sisvendor-claimset"`, before you rename the file.
 
 #### Referring to Existing Claims
 
