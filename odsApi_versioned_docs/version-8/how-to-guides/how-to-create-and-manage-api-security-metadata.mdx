@@ -463,8 +463,18 @@ only orders files within the same folder. Order matters when one fragment refers
 to a claim that an earlier fragment adds.
 
 The suffix must be lowercase. The Configuration Service runs on Linux, where the
-match is case-sensitive, so a file ending in `-Claims.json` is skipped without a
-warning.
+match is case-sensitive, so the Configuration Service skips a file ending in
+`-Claims.json` without a warning.
+
+Before v8.1, fragment file names ended in `-claimset.json`. The service no
+longer reads those files, so rename each one to end in `-claims.json`. If a
+fragment with grant entries has no top-level `name`, renaming the file also
+renames its claim set, and applications assigned to the old name lose their
+access. Before renaming such a file, set its top-level `name` to the old file
+name without `.json`, for example `"003-sisvendor-claimset"`. The service logs a
+warning for each `-claimset.json` file it finds, but only when it reads
+fragments (see [When Claims Are Loaded](#when-claims-are-loaded)), so an
+in-place upgrade of an existing database logs no warning at startup.
 
 #### Referring to Existing Claims
 
