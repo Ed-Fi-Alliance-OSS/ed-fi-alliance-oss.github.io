@@ -11,7 +11,7 @@ Before you begin:
   tool developed by the Ed-Fi Alliance and is the recommended way to add new
   fields to the Ed-Fi API. [Download and install
   MetaEd](/reference/metaed/getting-started-with-metaed-ide/installation/)
-  before beginning. MetaEd **4.8 or later** is required for Ed-Fi API v8.0.
+  before beginning. MetaEd **4.9 or later** is required for Ed-Fi API v8.1.
 - This example assumes knowledge of the basic concepts described in [How To:
   Extend the Ed-Fi API - Alternative Education Program
   Example](./how-to-extend-the-ed-fi-ods-api-alternative-education-program-example.md).
@@ -93,7 +93,7 @@ Confirm that your MetaEd IDE is targeting the desired data model, e.g.
 **ed-fi-model-5.2**, by following the instructions in [Version
 Targeting](/reference/metaed/ide-user-guide/creating-and-maintaining-your-extension#step-4-add-the-correct-data-model-project).
 
-MetaEd **4.8 or later** is required for Ed-Fi API v8.0 support.
+MetaEd **4.9 or later** is required for Ed-Fi API v8.1 support.
 
 ### Step 2b. Create a New Extension Project
 
@@ -347,7 +347,7 @@ We'll look at how to use the MetaEd output for the Ed-Fi API below.
 
 :::info
 
-For Ed-Fi API v8.0, only `ApiSchema-EXTENSION.json` and (optionally) the XSD
+For Ed-Fi API v8.1, only `ApiSchema-EXTENSION.json` and (optionally) the XSD
 file are needed. The SQL scripts under `Database/` and the interchange schemas
 are used by the legacy ODS / API and are not required for the new Ed-Fi API.
 The XSD file is required only if you load data via the [XML Bulk Load Client

@@ -392,7 +392,7 @@ its intended parent in the `claims` array:
 The new claim inherits the domain's `defaultAuthorization` unless you specify
 its own. Include any `claimSets` entries needed to grant access to it.
 
-Alternatively, write a [claim set fragment](#claim-set-fragments) and let the
+Alternatively, write a [claims fragment](#claims-fragments) and let the
 Configuration Service merge it into the base claims at startup using the
 [Hybrid](#hybrid) loading mode. You don't need to produce a merged document
 yourself. For complete worked examples, see Step 5d of
@@ -415,9 +415,9 @@ authoring a document from scratch.
 
 :::
 
-### Claim Set Fragments
+### Claims Fragments
 
-A _claim set fragment_ is a small JSON file that adds to the claims the
+A _claims fragment_ is a small JSON file that adds to the claims the
 Configuration Service already has, rather than replacing them. Use fragments to
 add extension resources, add a new domain, or give a claim set access to
 existing claims, without maintaining a complete claims document. The
@@ -461,6 +461,36 @@ by file path. Start each file name with a number such as `001-` or `002-` to
 control the order, and keep all your fragments in one folder: a number prefix
 only orders files within the same folder. Order matters when one fragment refers
 to a claim that an earlier fragment adds.
+
+The suffix must be lowercase. The Configuration Service runs on Linux, where the
+match is case-sensitive, so the Configuration Service skips a file ending in
+`-Claims.json` without a warning.
+
+Before v8.1, fragment file names ended in `-claimset.json`. The service no
+longer reads those files, so rename each one to end in `-claims.json`. The
+service logs a warning for each `-claimset.json` file it finds, but only when it
+reads fragments (see [When Claims Are Loaded](#when-claims-are-loaded)), so an
+in-place upgrade of an existing database logs no warning at startup.
+
+The Docker Compose files changed too. In v8.0 they read the fragment folder from
+`DMS_CONFIG_CLAIMS_MOUNT_SOURCE`, which is now
+`CONFIGURATION_SERVICE_CLAIMS_MOUNT_SOURCE`, and their default folder moved from
+`Deploy/AdditionalClaimsets` to `Deploy/AdditionalClaims`. If you set
+`DMS_CONFIG_CLAIMS_MOUNT_SOURCE`, rename it to
+`CONFIGURATION_SERVICE_CLAIMS_MOUNT_SOURCE`. Otherwise Compose mounts the
+default folder instead of yours, and the service logs no warning.
+
+Renaming needs care for a fragment with grant entries but no top-level `name`.
+This applies only to fragments the Configuration Service reads directly, because
+`prepare-dms-claims.ps1` rejects such fragments. The service attaches that
+fragment's grants to a claim set named after the file. In v8.0, applications
+could use those grants only if a claim set with that name was created separately
+through the claim set endpoints. Renaming the file moves the grants to a new
+name, so those applications lose their access. To keep their access, set the
+fragment's top-level `name` to the old file name without `.json`, for example
+`"003-sisvendor-claimset"`, before you rename the file. From v8.1, that name
+becomes a system-reserved claim set (see
+[Choosing Claim Set Names](#choosing-claim-set-names)).
 
 #### Referring to Existing Claims
 
@@ -721,8 +751,8 @@ CONFIGURATION_SERVICE_CLAIMS_DIRECTORY=/app/additional-claims
 ```
 
 Uses the same embedded base as Embedded mode, and applies the
-[claim set fragments](#claim-set-fragments) found in the configured directory on
-top of it. This is the recommended way to add extension resources and extension
+[claims fragments](#claims-fragments) found in the configured directory on top
+of it. This is the recommended way to add extension resources and extension
 claim sets without maintaining a complete claims document.
 
 The fragment directory must be readable by the Configuration Service. The Docker
@@ -745,9 +775,9 @@ The embedded `Claims.json` is not used. Instead, the service reads a complete
 claims document (see [Building a Security Policy](#building-a-security-policy))
 from a file named `Claims.json` in the configured directory. The service also
 looks in subdirectories, and it stops with an error if it finds no `Claims.json`
-or more than one. Any [claim set fragments](#claim-set-fragments) in the
-directory are applied on top of it. This is for deployments that manage their
-own complete claims document outside the service binary.
+or more than one. Any [claims fragments](#claims-fragments) in the directory are
+applied on top of it. This is for deployments that manage their own complete
+claims document outside the service binary.
 
 ### When Claims Are Loaded
 
@@ -761,7 +791,7 @@ stored in the database. Seeding also requires database setup at startup to be on
 This means that for an existing deployment, restarting the service after any of
 these changes does **not** change the active claims:
 
-- adding, editing, or removing claim set fragments;
+- adding, editing, or removing claims fragments;
 - editing the `Claims.json` used by Filesystem mode;
 - changing `CONFIGURATION_SERVICE_CLAIMS_SOURCE` or
   `CONFIGURATION_SERVICE_DATA_STANDARD_VERSION`.
