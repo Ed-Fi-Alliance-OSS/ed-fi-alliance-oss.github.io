@@ -25,7 +25,7 @@ The Ed-Fi API Specifications define the API resources and JSON message formats
 used to exchange data that conforms to the Ed-Fi Data Standard. An Ed-Fi
 compatible API application creates a REST-based interface for data exchange,
 where the messages conform to the Ed-Fi Data Standard. The [Ed-Fi
-ODS/API](../2-ods-api-platform.mdx) is the Ed-Fi Alliance's core API product, used
+ODS/API](../2-ods-api-platform/readme.mdx) is the Ed-Fi Alliance's core API product, used
 by nearly all "Ed-Fi deployments." Any interested party can build an alternate,
 compatible, application, by adhering to the Open API specifications and guidance
 provided in [Ed-Fi API Guidelines](./api-guidelines/readme.md).
