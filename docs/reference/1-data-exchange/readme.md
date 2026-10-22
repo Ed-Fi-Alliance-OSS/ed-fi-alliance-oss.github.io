@@ -50,11 +50,9 @@ API Guidelines](./api-guidelines/).
   published in the [Ed-Fi Data Standard](./data-standards.md). In particular,
   the [Ed-Fi Unifying Data Model](./udm/readme.md) is a helpful reference
   to understand the contents and structure of the data exchanges we support.
-* The [Ed-Fi RFC Specifications](./rfc/readme.md) contains work-in-progress
-  specifications. Although the material is still in draft form, the technical
-  specifications are typically implementable. For example, the Ed-Fi community
-  uses this site to publish data exchange specifications for Ed-Fi-related
-  technologies.
+* [Requests for Comment (RFC)](./rfc/readme.md) explains how a change to the
+  Ed-Fi Data Standard becomes official and where to find and comment on open
+  RFCs.
 
 ### Other Resources
 
