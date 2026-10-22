@@ -106,7 +106,9 @@ The same mapped name is used in the catalog and hierarchy references:
 
 - Remove only literal spaces (`U+0020`) and hyphens (`U+002D`). For example,
   `Ed-Fi Sandbox` becomes `EdFiSandbox`.
-- Preserve the remaining spelling, case, and valid non-ASCII characters.
+- Reject all remaining whitespace, including nonbreaking spaces (`U+00A0`);
+  these are not removed or accepted. Preserve the remaining spelling, case, and
+  valid non-ASCII characters.
 - Require a nonempty mapped name of at most 256 UTF-16 code units, with no
   control characters. Exactly 256 is accepted.
 - Reject distinct source names that map to the same name under an ordinal,
@@ -123,9 +125,20 @@ upload; conversion does not demote existing reserved sets.
 
 Only the exact, case-sensitive leading prefix
 `http://ed-fi.org/ods/identity/claims/` is migrated to
-`http://ed-fi.org/identity/claims/`. The rest of the URI is preserved. Other
-URIs, extension URIs without that prefix, near matches, and `/ods/` elsewhere
-in a URI remain unchanged.
+`http://ed-fi.org/identity/claims/`. A nonempty suffix containing no `/` also
+receives the core project segment `ed-fi/`. For example:
+
+```text
+http://ed-fi.org/ods/identity/claims/academicWeek
+→ http://ed-fi.org/identity/claims/ed-fi/academicWeek
+```
+
+Domain, service, and already-namespaced suffixes retain their paths: `domains/student`,
+`services/educationOrganizations`, and `ed-fi/academicWeek` are not prefixed again.
+An empty suffix remains empty. Already-current URIs, external and extension URIs
+without the legacy prefix, near matches, and `/ods/` elsewhere remain unchanged.
+Prefix-only migration of legacy single-segment resources is not supported: the
+`ed-fi/` segment is required for the Ed-Fi API's full resource-claim URI matching.
 
 Conversion fails if distinct source claim URIs collapse to the same URI after
 migration, including a legacy URI colliding with an already-current URI
