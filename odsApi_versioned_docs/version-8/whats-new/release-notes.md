@@ -72,7 +72,8 @@ GitHub repository to find the changes for that specific update.
   parameter-validation-failed response
 * DMS-1295 - Profiles and other features failed when the Configuration Service
   used a custom base path
-* DMS-1298 - Change query paging was slow on large resources when the change version window was wide
+* DMS-1298 - Change query paging was slow on large resources when the change
+  version window was wide
 * DMS-1299 - Default rate limit caused `429` errors during bulk and seed loads
 * DMS-1336 - Configuration Service `PUT` endpoints didn't consistently validate
   the route and body ids
@@ -99,7 +100,8 @@ GitHub repository to find the changes for that specific update.
   the token limit
 * DMS-1588 - OpenAPI published a `pageSize` default that requests rejected
 * DMS-1594 - Duplicate-property errors reported the wrong array index
-* DMS-1596 - A write that referenced a missing record returned `500` during namespace authorization instead of `403` or `409`
+* DMS-1596 - A write that referenced a missing record returned `500` during
+  namespace authorization instead of `403` or `409`
 * DMS-1604 - Client credentials couldn't be posted in the form body
 
 ## Ed-Fi API v8.0 - Release Notes
@@ -198,7 +200,7 @@ call the Configuration Service `/connect/token` endpoint directly.
 #### Rate Limiting
 
 The ODS/API has no built-in rate limiting; throttling is left to a gateway or
-proxy. Ed-Fi API v8 limits requests by default to 20,000 requests per 10
+proxy. Ed-Fi API v8.1 limits requests by default to 20,000 requests per 10
 seconds for each `Host` header value. Over the limit, it returns `429 Too Many
 Requests` with a `Retry-After` header. All clients that reach the API through
 the same host name share one limit.
@@ -324,7 +326,7 @@ table shows the current status.
 | Event streaming with Kafka | No | No | Yes |
 | Identities API | Yes | No | Yes (the host supplies the identity integration as a plugin) |
 | Unique ID validation | Yes | No | Yes, built as a custom validator plugin |
-| External configuration of connection strings | Yes | No | Partly: values within data store connection strings can come from a secret store, and a secrets plugin can also supply the Configuration Service's own database connection string, and both services' keys and client secrets (see [Secrets in Connection Strings](../platform-dev-guide/configuration/secrets-in-connection-strings.md)) |
+| External configuration of connection strings | Yes | No | Partly: values within data store connection strings can come from a secret store, and configuration-source plugins can supply the Configuration Service's own database connection string, and both services' keys and client secrets (see [Secrets in Connection Strings](../platform-dev-guide/configuration/secrets-in-connection-strings.md)) |
 | MetaEd extensions | Yes | Yes (different workflow — see [Extending API DataModel](../platform-dev-guide/extensibility-customization/extending-api-datamodel.md)) | Yes |
 | OneRoster | Yes | No | No (planned for v8.2) |
 | Bulk Load Client utility | Yes | Yes (same tool, updated for v8 URLs) | Yes |
