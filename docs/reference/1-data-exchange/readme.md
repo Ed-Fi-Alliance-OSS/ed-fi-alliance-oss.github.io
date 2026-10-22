@@ -26,8 +26,8 @@ the conceptual overview and the version-specific technical reference for each.
 - **[Extension Framework](./extensions-framework/readme.md).** Guidelines for
   adding data to the Data Standard for a specific implementation.
   Non-normative.
-- **[RFC Specifications](./rfc/readme.md).** Data elements and models proposed
-  for use by the community but not yet part of the core standard.
+- **[Requests for Comment (RFC)](./rfc/readme.md).** How a change to the Data
+  Standard becomes official, and where to find and comment on open RFCs.
 
 ## Normative and non-normative standards
 
@@ -78,7 +78,7 @@ The Ed-Fi API Specifications define the API resources and JSON message formats
 used to exchange data that conforms to the Ed-Fi Data Standard. An Ed-Fi
 compatible API application creates a REST-based interface for data exchange,
 where the messages conform to the Ed-Fi Data Standard. The [Ed-Fi
-ODS/API](/reference/ods-api-platform) is the Ed-Fi Alliance's core API product, used
+ODS/API](../2-ods-api-platform/readme.mdx) is the Ed-Fi Alliance's core API product, used
 by nearly all "Ed-Fi deployments." Any interested party can build an alternate,
 compatible, application, by adhering to the Open API specifications and guidance
 provided in [Ed-Fi API Guidelines](./api-guidelines/readme.md).
@@ -93,10 +93,10 @@ API Guidelines](./api-guidelines/).
 ## How standards are developed and governed
 
 The Ed-Fi Alliance coordinates standards development with the community: it
-sets schedules, arranges field testing, takes draft standards through an RFC
-process, and publishes the final, authoritative artifacts. See [Data Standard
-Governance](./data-standards.md#data-standard-governance) and [Data Standard
-Development](./data-standards.md#data-standard-development).
+sets schedules, arranges field testing, takes draft standards through an [RFC
+process](./rfc/readme.md), and publishes the final, authoritative artifacts.
+See [Data Standard Governance](./data-standards.md#data-standard-governance)
+and [Data Standard Development](./data-standards.md#data-standard-development).
 
 Looking to get involved in the discussion and definition of standards?
 
@@ -110,6 +110,10 @@ Looking to get involved in the discussion and definition of standards?
 - What do we mean by "standards?" The [Ed-Fi is a Data
   Standard](https://www.ed-fi.org/ed-fi-data-standard/) article on our main
   website has an overview.
+- [How the Ed-Fi Data Standard Fits Into Your Data
+  Ecosystem](./ed-fi-in-your-data-ecosystem.md) explains how the Data Standard
+  and Ed-Fi API relate to student information systems, data warehouses and data
+  lakes, and state longitudinal data systems.
 - The [Legacy Educator Preparation Data Model (EPDM)](./epdm.md) page covers the
   educator preparation model. Its community edition is now part of Data
   Standard 6.
