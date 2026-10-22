@@ -8,8 +8,8 @@ sidebar_position: 1
 This section provides an overview of the new features in Ed-Fi API v8.1. Many
 of them restore capabilities that platform hosts relied on in the Ed-Fi ODS/API
 and that were not available in Ed-Fi API v8.0. A comprehensive list of all
-changes, including the breaking changes to review before upgrading from v8.0, is
-available in the [Release Notes](./release-notes.md) section.
+changes, including the breaking changes to review when moving from the Ed-Fi
+ODS/API, is available in the [Release Notes](./release-notes.md) section.
 
 ## Improvements & Enhancements
 
@@ -158,10 +158,11 @@ Values in a data store connection string, such as the password, user name, or
 host, can now refer to secrets in an external secret manager, for example
 `Password=${secret:prod/dms/ds-2026}`. The connection string itself is still
 stored in the Configuration Service, which resolves each reference through a
-secrets plugin supplied by the host. Unlike the Ed-Fi ODS/API, the whole data
-store connection string can't be supplied from an external configuration
-source. A configuration source plugin can supply the Configuration Service's
-own database connection string and keys. See [Secrets in Connection
+secrets plugin supplied by the host. The same plugin can also add the secret
+store as a configuration source, so the Configuration Service's own database
+connection string and keys can come from it as well. Unlike the Ed-Fi ODS/API,
+the whole data store connection string can't be supplied from an external
+configuration source. See [Secrets in Connection
 Strings](../platform-dev-guide/configuration/secrets-in-connection-strings.md)
 for details.
 
