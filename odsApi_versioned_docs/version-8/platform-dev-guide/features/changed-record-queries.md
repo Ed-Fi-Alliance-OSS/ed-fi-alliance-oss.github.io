@@ -16,9 +16,10 @@ schema is provisioned as part of the standard database setup via
 `api-schema-tools ddl provision`. No additional configuration is required to enable
 the feature.
 
-A future release will also add an [option](#changed-record-queries-with-snapshot-isolation)
-that will allow platform hosts to serve API clients from an isolated snapshot
-context for processing changes.
+Platform hosts can also offer [snapshot
+isolation](#changed-record-queries-with-snapshot-isolation), which lets API
+clients process changes from a point-in-time copy of the data that isn't
+affected by ongoing writes.
 
 ## Technical Details
 
@@ -102,55 +103,73 @@ top-level entities introduced by Extension projects.
 
 ## Changed Record Queries with Snapshot Isolation
 
-:::info
+Snapshot isolation lets platform hosts serve change query requests from a
+static copy of the database that is isolated from ongoing writes. This avoids
+data consistency problems, processing failures, and undetected missing data in
+downstream systems.
 
-Snapshot isolation is planned for a future release and is **not available in
-Ed-Fi API v8.0**. The description below documents the intended design.
+A host offers a snapshot by registering a data store derivative with a
+`derivativeType` of `Snapshot` in the Configuration Service, using
+`POST /v3/dataStoreDerivatives/`:
 
-:::
+```json
+{
+  "dataStoreId": 1,
+  "derivativeType": "Snapshot",
+  "connectionString": "<connection string of the snapshot database>"
+}
+```
 
-When available, snapshot isolation will allow API hosts to serve change-query
-requests from a static copy of the database isolated from ongoing writes. This
-avoids data consistency problems, processing failures, and undetected missing
-data in downstream systems.
+Each data store can have at most one snapshot. API clients then read from it by
+sending the `Use-Snapshot: true` header on each request; see [Using the Changed
+Record
+Queries](../../client-developers-guide/using-the-changed-record-queries.md#use-snapshot-isolation).
 
-The planned design involves two artifacts:
+The Ed-Fi API responds as follows:
 
-- A `DataStoreDerivative` record in the Configuration Service with
-  `DerivativeType = 'Snapshot'` pointing to the snapshot database connection
-  string.
-- API support for the `Use-Snapshot` HTTP request header, which routes the
-  request to the static snapshot rather than the live operational database.
+- **Read requests** with `Use-Snapshot: true` are served from the snapshot. A
+  snapshot takes precedence over a [read replica](./read-replicas.md).
+- **The header must be exactly `true`** (in any letter case). Any other value,
+  such as `yes` or `1`, is treated as a request for current data, without an
+  error.
+- **Without a snapshot,** or if the snapshot database can't be reached, a
+  request with `Use-Snapshot: true` gets a `404 Not Found` response with the
+  message `Snapshot not found.` The API doesn't fall back to current data. A
+  client can't tell the two cases apart, so check the Ed-Fi API log, which
+  records a warning when a snapshot connection fails.
+- **Write requests** (`POST`, `PUT`, and `DELETE`) with `Use-Snapshot: true` get
+  a `405 Method Not Allowed` response.
 
-## Creating and Managing Snapshots (Planned)
+## Creating and Managing Snapshots
 
-When snapshot support is available, platform hosts will implement a DevOps
-process to maintain a periodically refreshed static copy of the API's main
-database and the corresponding `DataStoreDerivative` record in the
-Configuration Service.
+Platform hosts implement a DevOps process to maintain a periodically refreshed
+static copy of the Ed-Fi API database, and the corresponding data store
+derivative in the Configuration Service. The Ed-Fi API doesn't create or
+refresh snapshots itself.
 
-This would typically be a scheduled database backup-and-restore operation. For
+This is typically a scheduled database backup-and-restore operation. For
 PostgreSQL or SQL Server, the respective database's lightweight snapshot
 features can also be used where available.
 
-The process will need to:
+The process needs to:
 
-- Back up the current operational database.
+- Back up the current Ed-Fi API database.
 - Restore it as a snapshot copy.
-- Create or update a `DataStoreDerivative` record in the Configuration Service
-  with `DerivativeType = 'Snapshot'` and the snapshot connection string,
-  associated with the appropriate `DataStore`.
+- Create or update the data store derivative in the Configuration Service with
+  a `derivativeType` of `Snapshot` and the snapshot connection string, for the
+  appropriate data store.
 
-## Current Limitations
+:::warning
 
-Changed record queries (`/availableChangeVersions`, `/deletes`, `/keyChanges`)
-are supported in Ed-Fi API v8.0 with the following limitations compared to the
-ODS/API:
+A snapshot must not change while a client is reading from it. Use a static copy,
+not a live secondary or a standby that is still applying changes; a changing
+source can return a record twice and skip another within a single read, without
+an error.
 
-- **No snapshot support** — the ODS/API allowed clients to create and query
-  against a consistent point-in-time snapshot. Snapshot support is planned for a
-  future release.
-- **Always enabled** — the feature cannot be disabled through configuration.
-- **No custom view-based authorization** — the ODS/API supported custom database
-  view-based authorization strategies on change query endpoints. This is not
-  available in v8.0.
+Don't replace the snapshot (by changing the derivative's connection string or
+re-creating the database behind it) while clients are reading from it. Those
+clients would read later pages from a different copy of the data, and the API
+can't detect it. Schedule refreshes for times when no synchronization runs are
+in progress.
+
+:::

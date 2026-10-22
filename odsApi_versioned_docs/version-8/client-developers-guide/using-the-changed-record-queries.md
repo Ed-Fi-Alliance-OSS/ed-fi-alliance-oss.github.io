@@ -45,24 +45,18 @@ The core operations for Change Queries processing are as follows:
 
 ### Snapshots
 
-:::info
-
-Snapshot support is planned for a future release. See [Current
-Limitations](../platform-dev-guide/features/changed-record-queries.md#current-limitations)
-for details.
-
-:::
-
-Snapshots are configured through the Configuration Service by creating a
-`DataStoreDerivative` record with `DerivativeType = 'Snapshot'` and the
-snapshot database connection string, associated with the appropriate
-`DataStore`.
+The API host makes a snapshot available by registering it in the Configuration
+Service; see [Changed Record
+Queries](../platform-dev-guide/features/changed-record-queries.md#changed-record-queries-with-snapshot-isolation).
 
 The API client should set the `Use-Snapshot` HTTP header to `true` on each
-request.
+request. Send exactly `true`; any other value, such as `yes` or `1`, reads
+current data instead, without an error.
 
-If a 404 Snapshot Not Found response is returned, it means that the host has
-not set up snapshots for change query processing.
+If a `404 Not Found` response with the message `Snapshot not found.` is
+returned, the host hasn't set up a snapshot for change query processing, or the
+snapshot isn't available. The API doesn't fall back to current data in that
+case; contact the API host.
 
 ### Available Change Versions Resource
 
@@ -187,7 +181,7 @@ following elements:
     processing and add 1 (a.k.a., the _starting change version_).
   - Obtain the system's current change version (a.k.a., the _synchronization
     version_).
-  - _(Optional — not available in Ed-Fi API v8.0)_ If
+  - _(Optional)_ If
     [snapshot isolation](#use-snapshot-isolation) is supported by the host,
     apply the `Use-Snapshot: true` header to all API calls in this processing
     run.
@@ -301,21 +295,12 @@ the previous steps, such as the following operations:
   _students_ resource.
 
 To overcome these challenges, we recommend that you use _**snapshot
-isolation**_ functionality provided by the _snapshots_ API resource (which
-must be supported and maintained by the API host). This will help to ensure
-consistency of the change information. If you don't (or can't) use snapshots,
-developing a synchronization process that uses change queries could require
-significantly more effort.
+isolation**_ (which must be supported and maintained by the API host). This will
+help to ensure consistency of the change information. If you don't (or can't)
+use snapshots, developing a synchronization process that uses change queries
+could require significantly more effort.
 
 ### Use snapshot isolation
-
-:::info
-
-Snapshot support is planned for a future release. See [Current
-Limitations](../platform-dev-guide/features/changed-record-queries.md#current-limitations)
-for details.
-
-:::
 
 Change queries has been designed to work well with snapshot isolation. Snapshot
 isolation must be supported by the API host through a `DataStoreDerivative`
