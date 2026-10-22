@@ -1,10 +1,10 @@
 ---
 sidebar_position: 3
-sidebar_label: Ed-Fi and Other Systems
+sidebar_label: Ed-Fi in Your Ecosystem
 description: How the Ed-Fi Data Standard and Ed-Fi APIs relate to student information systems, data warehouses and data lakes, and state longitudinal data systems.
 ---
 
-# The Ed-Fi Data Standard and Other Education Data Systems
+# How the Ed-Fi Data Standard Fits Into Your Data Ecosystem
 
 The [Ed-Fi Data Standard](./data-standards.md) is a specification for
 exchanging education data. Ed-Fi APIs, such as the [Ed-Fi
@@ -18,7 +18,7 @@ questions about how they relate to other kinds of education data systems.
 No. A student information system (SIS) is the application a school or district
 uses to manage enrollment, attendance, schedules, grades, and other student
 records. The Ed-Fi Data Standard defines how that data is described and
-exchanged, and an Ed-Fi API receives it. Neither one is a SIS.
+exchanged, and an Ed-Fi API implements it. Neither one is a SIS.
 
 The two work together:
 
@@ -71,8 +71,6 @@ For more detail, see [The Ed-Fi Data Standard in the Age of
 AI](/getting-started/provider-playbook/implementation/ed-fi-data-standard-in-the-age-of-ai)
 and [Ed-Fi in the Data
 Lake](/getting-started/provider-playbook/implementation/ed-fi-in-the-data-lake).
-The data lake paper was written in 2022, and some tools it mentions are now
-deprecated.
 
 An [Ed-Fi data hub](/getting-started/esa-playbook#what-is-an-ed-fi-data-hub)
 is a related idea: a shared data system, usually run by an education service
@@ -95,7 +93,7 @@ In a typical state Ed-Fi architecture:
 3. The state populates its SLDS for reporting needs. In some states the SLDS is
    based on the Ed-Fi data model; in others it is a third-party or existing
    agency system.
-4. From the SLDS, the state generates datamarts for state and federal
+4. From the SLDS, the state generates data marts for state and federal
    reporting, such as EDFacts.
 
 See [Elements of an Ed-Fi
