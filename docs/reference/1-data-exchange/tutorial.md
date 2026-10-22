@@ -44,8 +44,10 @@ GET https://api.ed-fi.org/v7.3.2/api/
 
 In particular, note the following:
 
-* This application support the Ed-Fi Data Standard 5.0 with Teacher Preparation
-  Data Model (TPDM) extension 1.1.
+* This application supports the Ed-Fi Data Standard 6.1. The `dataModels`
+  array lists the core `Ed-Fi` model and its version; if an application
+  includes extensions, each one appears there as another entry with its own
+  version.
 
 :::info
 
@@ -76,8 +78,8 @@ Standard.
 expression; it tells you to start at the top (`$`) of the document, look for the
 `urls` element, then inside of it, look for the value on the `oauth` element.
 
-Arrays are described in JSONPath using index notation. For example, the TPDM
-version number is at path `$.dataModels[1].version`.
+Arrays are described in JSONPath using index notation. For example, the core
+Ed-Fi model's version number is at path `$.dataModels[0].version`.
 
 :::
 
