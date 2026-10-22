@@ -8,6 +8,9 @@ This section covers the essential information and provides links to additional
 detail and how-to information. A few key concepts you'll find throughout this
 section are discussed below.
 
+For a plain-language overview written for non-technical readers, see [How Ed-Fi
+API Platforms Secure Student Data](/reference/ods-api-platform/security-overview).
+
 ## Authentication via OAuth2
 
 The Ed-Fi API uses OAuth 2.0 Client Credentials Grant Flow for authentication.
