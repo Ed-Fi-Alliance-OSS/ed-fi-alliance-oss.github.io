@@ -45,10 +45,10 @@ Compiled executables for a variety of platforms can be downloaded from the
 
 ### Step 1. Obtain an Access Token
 
-POST to the Configuration Service's `/connect/token` endpoint with the
-`grant_type` set to `client_credentials` and the `client_id` and
-`client_secret` in the request body as `application/x-www-form-urlencoded`
-parameters. This follows the [OAuth 2.0 Client Credentials Grant
+POST to the Configuration Service's `/connect/token` endpoint with an
+Authorization header using Basic authentication. Set the `grant_type` to
+`client_credentials` in the `application/x-www-form-urlencoded` request body.
+This follows the [OAuth 2.0 Client Credentials Grant
 Flow](https://tools.ietf.org/html/rfc6749#section-4.4).
 
 For example, if the client key is `RvcohKz9zHI4` and the client secret is
@@ -59,21 +59,33 @@ For example, if the client key is `RvcohKz9zHI4` and the client secret is
 ```powershell
 $key = "RvcohKz9zHI4"
 $secret = "E1iEFusaNf81xzCxwHfbolkC"
+$auth = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes("$($key):$secret"))
 $token = Invoke-RestMethod -Method Post -Uri "http://localhost:8081/connect/token" `
+  -Headers @{ "Authorization" = "Basic $auth" } `
   -ContentType "application/x-www-form-urlencoded" `
   -Body @{
     "grant_type"    = "client_credentials"
-    "client_id"     = $key
-    "client_secret" = $secret
   }
 ```
+
+:::tip
+
+The string following "Basic" is a Base64-encoded version of `{key}:{secret}`.
+Alternatively, an implementation _may_ provide the credentials in the form
+body instead of in an Authorization header. The Ed-Fi software will not
+write that form body out to a log file, but a network router or proxy server
+might do so. Therefore the `Authorization` header approach is considered
+more secure by default.
+
+:::
 
 #### cURL Token Request
 
 ```bash
 curl -X POST http://localhost:8081/connect/token \
+  -H "Authorization: Basic UnZjb2hLejl6SEk0OkUxaUVGdXNhTmY4MXh6Q3h3SGZib2xrQw==" \
   -H "Content-Type: application/x-www-form-urlencoded" \
-  -d "grant_type=client_credentials&client_id=RvcohKz9zHI4&client_secret=E1iEFusaNf81xzCxwHfbolkC"
+  -d "grant_type=client_credentials"
 ```
 
 The above should return an access token.
