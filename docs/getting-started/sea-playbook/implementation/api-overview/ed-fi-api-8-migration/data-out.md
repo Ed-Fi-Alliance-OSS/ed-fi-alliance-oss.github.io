@@ -78,7 +78,7 @@ GET /data/v3/ed-fi/studentSchoolAssociations/deletes?minChangeVersion=1001&maxCh
 Now:
 
 ```http
-GET /changeQueries/v1/availableChangeVersions
+GET /api/changeQueries/v1/availableChangeVersions
 GET /api/data/ed-fi/studentSchoolAssociations?minChangeVersion=1001&maxChangeVersion=2000
 GET /api/data/ed-fi/studentSchoolAssociations/deletes?minChangeVersion=1001&maxChangeVersion=2000
 ```
