@@ -100,7 +100,7 @@ with your interactions with the API, then you will need to re-issue the command
 below to acquire a new token.
 
 ```fetch
-POST https://api.ed-fi.org/v7.1/api/oauth/token
+POST https://api.ed-fi.org/v7.3/api/oauth/token
 Authorization: Basic cG9wdWxhdGVkS2V5OnBvcHVsYXRlZFNlY3JldA==
 Content-Type: application/x-www-form-urlencoded
 
