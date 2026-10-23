@@ -59,6 +59,10 @@ focus on the following entities as parts of the domain
 * _CrisisEvent_ entity that holds data about each identified crisis that
     displaces impacted students into other schools.
 
+For the elements required to create a StudentSchoolAssociation through the API,
+see [Required and Identity Elements in the
+API](./entities-references-and-descriptors.md#required-and-identity-elements-in-the-api).
+
 Please refer the best practices documentation of related domains for use cases
 listed above that will require Ed-Fi domains other than Enrollment domain.
 

@@ -1,4 +1,5 @@
 ---
+description: Student Identification and Demographics domain entities, references, and descriptors in Data Standard v6, including the required and identity elements of the Student API resource.
 sidebar_position: 3
 hide_table_of_contents: true
 ---
@@ -25,6 +26,18 @@ hide_table_of_contents: true
 | --- | --- |
 | FinancialAid | This entity represents the financial aid a person is awarded. |
 | EducationOrganization | This entity represents any public or private institution, organization, or agency that provides instructional or support services to students or staff at any level. |
+
+## Required and Identity Elements in the API
+
+The following elements are required to create the resource through the API in
+Data Standard 6.0 and 6.1, as defined in the
+[API resource specifications](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-API-Specifications/tree/main/api-specifications/resources).
+Identity elements uniquely identify a record (its natural key) and are always
+required. For the full schema, open the resource in the API sandbox.
+
+| Resource | Identity elements | Required elements | Full schema |
+| --- | --- | --- | --- |
+| Student | `studentUniqueId` | `birthDate`, `firstName`, `lastSurname`, `studentUniqueId` | [students (ODS/API 7.3.2 sandbox, Data Standard 6.1)](https://api.ed-fi.org/v7.3.2/docs/swagger/index.html?urls.primaryName=Resources#operations-tag-students) |
 
 ### Student Identification and Demographics Domain Descriptors
 

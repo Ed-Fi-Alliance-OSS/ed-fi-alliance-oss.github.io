@@ -1,4 +1,5 @@
 ---
+description: Enrollment domain entities, references, and descriptors in Data Standard v5, including the required and identity elements of the StudentSchoolAssociation API resource.
 sidebar_position: 3
 hide_table_of_contents: true
 ---
@@ -23,6 +24,18 @@ hide_table_of_contents: true
 | Student | This entity represents an individual for whom instruction, services, and/or care are provided in an early childhood, elementary, or secondary educational program under the jurisdiction of a school, education agency or other institution or program. A student is a person who has been enrolled in a school or other educational institution. |
 | CrisisEvent | This entity represents natural or man-made event that causes the disruption of school-level activities and temporary or permanent displacement of students. |
 | StudentTransportation | This entity captures detailed information about student transportation arrangements, including the responsible organization, eligibility for public expense coverage, transportation type, special accommodations, and specific bus details. |
+
+## Required and Identity Elements in the API
+
+The following elements are required to create the resource through the API in
+Data Standard 5.0, 5.1, and 5.2, as defined in the
+[API resource specifications](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-API-Specifications/tree/main/api-specifications/resources).
+Identity elements uniquely identify a record (its natural key) and are always
+required. For the full schema, open the resource in the API sandbox.
+
+| Resource | Identity elements | Required elements | Full schema |
+| --- | --- | --- | --- |
+| StudentSchoolAssociation | `entryDate`, `schoolId` (from `schoolReference`), `studentUniqueId` (from `studentReference`) | `entryDate`, `entryGradeLevelDescriptor`, `schoolReference`, `studentReference` | [studentSchoolAssociations (ODS/API 7.3 sandbox, Data Standard 5.2)](https://api.ed-fi.org/v7.3/docs/swagger/index.html?urls.primaryName=Resources#operations-tag-studentSchoolAssociations) |
 
 ## Enrollment Domain Descriptors
 

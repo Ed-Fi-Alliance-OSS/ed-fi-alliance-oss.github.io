@@ -37,6 +37,10 @@ do not have dates attached: they are intended to capture the current information
 as assessed by the education organization. It is not intended to capture "as of"
 dates, historical changes to the data, enrollment dates, or the like.
 
+For the elements required to create a Student through the API, see [Required and
+Identity Elements in the
+API](./entities-references-and-descriptors.md#required-and-identity-elements-in-the-api).
+
 ## Use of Student Education Organization Association
 
 ### Purpose
