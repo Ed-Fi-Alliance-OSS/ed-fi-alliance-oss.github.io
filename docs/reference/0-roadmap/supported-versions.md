@@ -29,7 +29,7 @@ self-update feature.
 The _Ed-Fi ODS/API Platform_ is the group of tools that work together to support
 a production deployment of the Ed-Fi Resources API. The Platform includes:
 
-* [Ed-Fi ODS/API](../2-ods-api-platform.mdx), the official Ed-Fi implementation of a REST API
+* [Ed-Fi ODS/API](../2-ods-api-platform/readme.mdx), the official Ed-Fi implementation of a REST API
   defined by the Ed-Fi Data Standard.
   * Also includes the _Ed-Fi ODS Sandbox Admin_ and _Ed-Fi Swagger UI_ web
     applications.
@@ -125,7 +125,7 @@ information.
 Additional applications formally maintained and supported by the Ed-Fi Alliance:
 
 * [API Publisher](../6-api-publisher/readme.md) works with all supported
-  versions of the Ed-Fi ODS/API
+  versions of the Ed-Fi ODS/API and with Ed-Fi API v8.0
 * [Data Import](/getting-started/community-tools/technology/data-import) works with all supported versions of
   the Ed-Fi ODS/API (supported through June 30, 2026)
 
