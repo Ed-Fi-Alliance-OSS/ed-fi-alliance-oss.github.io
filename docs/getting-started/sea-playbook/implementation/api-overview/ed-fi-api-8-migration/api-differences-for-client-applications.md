@@ -12,7 +12,7 @@ The full list is in the [release notes](/reference/ed-fi-api/8/whats-new/release
 
 | | ODS/API | Ed-Fi API v8 |
 | --- | --- | --- |
-| Resource URL | `/data/v3/ed-fi/schools` | `/api/data/ed-fi/schools` (no `v3` segment; `api` is the default path base) |
+| Resource URL | `/data/v3/ed-fi/schools` | `/api/data/ed-fi/schools` (no `v3` segment; `api` is the path base in the default Docker configuration, and it is configurable) |
 | Year-specific URL | `/2026/data/v3/ed-fi/schools` | `/api/2026/data/ed-fi/schools` |
 | Token endpoint | `https://{api-host}/oauth/token` | `https://{config-service-host}/connect/token` (the old `/oauth/token` still works through a forwarding proxy) |
 | Property names in request bodies | Not case-sensitive | **Case-sensitive** |
@@ -60,6 +60,8 @@ The same client on Ed-Fi API v8:
 Base URL:  https://api.your-state.gov/api/data
 Token URL: https://config.your-state.gov/connect/token
 ```
+
+Both services have a configurable path base. In the default Docker environment file, the Ed-Fi API path base is `api` (`PATH_BASE`) and the Configuration Service path base is `config` (`CONFIGURATION_SERVICE_PATH_BASE`), so check the exact URLs for your deployment before you give them to vendors.
 
 ## Features not in Ed-Fi API v8.0
 
