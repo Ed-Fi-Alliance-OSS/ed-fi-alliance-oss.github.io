@@ -1,4 +1,5 @@
 ---
+description: Student Identification and Demographics domain entities, references, and descriptors in Data Standard v5, including the required and identity elements of the Student API resource.
 sidebar_position: 3
 hide_table_of_contents: true
 ---
@@ -20,6 +21,18 @@ hide_table_of_contents: true
 | Name | Description |
 | --- | --- |
 | EducationOrganization | This entity represents any public or private institution, organization, or agency that provides instructional or support services to students or staff at any level. |
+
+## Required and Identity Elements in the API
+
+The following elements are required to create the resource through the API in
+Data Standard 5.0, 5.1, and 5.2, as defined in the
+[API resource specifications](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-API-Specifications/tree/main/api-specifications/resources).
+Identity elements uniquely identify a record (its natural key) and are always
+required. For the full schema, open the resource in the API sandbox.
+
+| Resource | Identity elements | Required elements | Full schema |
+| --- | --- | --- | --- |
+| Student | `studentUniqueId` | `birthDate`, `firstName`, `lastSurname`, `studentUniqueId` | [students (ODS/API 7.3 sandbox, Data Standard 5.2)](https://api.ed-fi.org/v7.3/docs/swagger/index.html?urls.primaryName=Resources#operations-tag-students) |
 
 ### Student Identification and Demographics Domain Descriptors
 
