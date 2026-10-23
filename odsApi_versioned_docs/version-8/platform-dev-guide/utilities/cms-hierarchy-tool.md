@@ -1,21 +1,30 @@
 ---
 sidebar_position: 3
-description: Reference for the CmsHierarchy tool, which converts ODS/API XML security metadata to JSON and composes extension claim set fragments into the claims hierarchy.
+description: Reference for the CmsHierarchy tool, which converts ODS/API XML security metadata to the JSON format used by the Ed-Fi API Configuration Service.
 ---
 
 # CmsHierarchy Tool
 
 The CmsHierarchy tool is a .NET command-line utility in the source code
-repository that helps prepare and transform the JSON security metadata used by
-the Ed-Fi API Configuration Service. It provides two commands:
+repository that converts ODS/API XML security metadata to the JSON format used
+by the Ed-Fi API Configuration Service. Use it when migrating the security
+metadata of a previous Ed-Fi ODS/API deployment.
 
 | Command | Purpose |
 | --- | --- |
 | `ParseXml` | Convert ODS/API XML security metadata to the JSON array format used by the Configuration Service |
-| `Transform` | Merge extension claim set fragment files into the base authorization hierarchy |
 
 The tool is located at `eng/CmsHierarchy/` in the [source code
 repository](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service).
+
+:::tip
+
+You don't need this tool to add extension resources or claim sets. The
+Configuration Service merges claims fragments into its base claims itself;
+see [Claims
+Fragments](../../how-to-guides/how-to-create-and-manage-api-security-metadata.mdx#claims-fragments).
+
+:::
 
 ## Prerequisites
 
@@ -26,11 +35,10 @@ repository](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service).
 
 | Argument | Required | Description |
 | --- | --- | --- |
-| `--command` | Yes | Command to execute: `ParseXml` or `Transform` |
-| `--input` | Yes | Input file path(s). For `Transform`, separate multiple files with semicolons (`;`) |
+| `--command` | Yes | Command to execute: `ParseXml` |
+| `--input` | Yes | Path of the ODS/API XML security metadata file |
 | `--output` | Conditional | Output file path. Required when `--outputFormat ToFile` is used |
 | `--outputFormat` | Yes | `ToFile` - write JSON to `--output` file. `Json` - print JSON to stdout |
-| `--skipAuths` | No | Authorization strategy names to omit from the output, separated by semicolons |
 
 Run all commands from the `eng/CmsHierarchy/` directory (or provide the full
 project path to `dotnet run`).
@@ -73,141 +81,36 @@ URI patterns in ODS/API include an `/ods/` segment that is absent from Ed-Fi API
 v8 URIs. Update any such URIs accordingly before loading the file into the
 Configuration Service.
 
-## Transform
+## Delivering the Output to the Configuration Service
 
-The `Transform` command applies one or more claim set fragment files on top of
-the built-in `AuthorizationHierarchy.json` and outputs the merged hierarchy. Use
-this command to add extension resources or additional claim sets to the
-hierarchy without editing the base file directly.
-
-### Fragment File Format
-
-Each fragment file describes a named claim set and the resource claims it adds
-to the hierarchy. See
-[`SampleExtensionResourceClaims.json`](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/main/eng/CmsHierarchy/ClaimSetFiles/SampleExtensionResourceClaims.json)
-for a complete example. A minimal fragment looks like this:
+`ParseXml` produces only the claims hierarchy array. The Configuration Service
+loads complete claims documents, which wrap that array as `claimsHierarchy`
+together with a `claimSets` catalog. Add a `claimSets` entry for every claim set
+the hierarchy references. Both sections are top-level properties:
 
 ```json
 {
-  "name": "MyExtensionClaimSet",
-  "resourceClaims": [
-    {
-      "isParent": true,
-      "name": "http://ed-fi.org/identity/claims/domains/myextension",
-      "_defaultAuthorizationStrategiesForCrud": [
-        {
-          "actionName": "Create",
-          "authorizationStrategies": [{ "name": "NoFurtherAuthorizationRequired" }]
-        },
-        {
-          "actionName": "Read",
-          "authorizationStrategies": [{ "name": "NoFurtherAuthorizationRequired" }]
-        },
-        {
-          "actionName": "Update",
-          "authorizationStrategies": [{ "name": "NoFurtherAuthorizationRequired" }]
-        },
-        {
-          "actionName": "Delete",
-          "authorizationStrategies": [{ "name": "NoFurtherAuthorizationRequired" }]
-        }
-      ],
-      "children": [
-        { "name": "http://ed-fi.org/identity/claims/myext/myNewResource" }
-      ],
-      "claimSets": [
-        {
-          "name": "MyExtensionClaimSet",
-          "actions": [
-            { "name": "Create" },
-            { "name": "Read" },
-            { "name": "Update" },
-            { "name": "Delete" }
-          ]
-        }
-      ]
-    }
-  ]
+  "claimSets": [
+    { "claimSetName": "MyClaimSet", "isSystemReserved": false }
+  ],
+  "claimsHierarchy": [ ... ]
 }
 ```
 
-### Running Transform
-
-:::info
-
-The `--input` filename is resolved relative to the `ClaimSetFiles/` subdirectory
-of the tool's working directory (`eng/CmsHierarchy/ClaimSetFiles/`). Place your
-fragment file there before running, or supply an absolute path to read from
-another location.
-
-:::
-
-Apply a single extension fragment:
-
-```powershell
-# Place my-extension-claims.json in eng/CmsHierarchy/ClaimSetFiles/ first
-dotnet run --no-launch-profile `
-  --command Transform `
-  --input my-extension-claims.json `
-  --output Claims.json `
-  --outputFormat ToFile
-```
-
-Apply multiple fragments in order (fragments are applied sequentially):
-
-```powershell
-dotnet run --no-launch-profile `
-  --command Transform `
-  --input "001-my-extension.json;002-another-extension.json" `
-  --output Claims.json `
-  --outputFormat ToFile
-```
-
-Print to stdout (useful for inspection before writing to a file):
-
-```powershell
-dotnet run --no-launch-profile `
-  --command Transform `
-  --input my-extension-claims.json `
-  --outputFormat Json
-```
-
-Strip authorization strategies that are not implemented in your environment:
-
-```powershell
-dotnet run --no-launch-profile `
-  --command Transform `
-  --input my-extension-claims.json `
-  --outputFormat Json `
-  --skipAuths "NotImplementedAuth;AnotherStrategy"
-```
-
-## Delivering the Output to the Configuration Service
-
-After generating the hierarchy JSON, deliver it to the Configuration Service
-using the loading mode configured for your deployment.
+Then deliver the document using the loading mode configured for your deployment:
 
 | Loading Mode | Delivery |
 | --- | --- |
-| **Filesystem** | Copy the output file to the directory set by `DMS_CONFIG_CLAIMS_DIRECTORY` before the service starts |
-| **Hybrid** | Place the fragment file in the directory set by `DMS_CONFIG_CLAIMS_DIRECTORY`; the embedded base loads automatically |
-| **Embedded** | Rebuild and redeploy the Configuration Service binary with the updated embedded `Claims.json` |
-| **Management API** | Wrap the hierarchy array in the two-section upload format and `POST` to `/management/upload-claims` |
+| **Filesystem** | Save the document as `Claims.json` in the directory set by `CONFIGURATION_SERVICE_CLAIMS_DIRECTORY` |
+| **Management API** | `POST` the document directly to `/management/upload-claims` (non-production only) |
 
-For the management API upload, wrap the document produced by `Transform` in the
-two-section container **and** nest it under a top-level `claims` property (the
-`/management/upload-claims` endpoint requires this wrapper):
-
-```json
-{
-  "claims": {
-    "claimSets": [
-      { "claimSetName": "MyExtensionClaimSet", "isSystemReserved": false }
-    ],
-    "claimsHierarchy": [ ... ]
-  }
-}
-```
+The Configuration Service loads claims from its configured source only when its
+database holds no claims yet. See [When Claims Are
+Loaded](../../how-to-guides/how-to-create-and-manage-api-security-metadata.mdx#when-claims-are-loaded)
+before applying a converted policy to an existing deployment, and [Verifying the
+Active
+Policy](../../how-to-guides/how-to-create-and-manage-api-security-metadata.mdx#verifying-the-active-policy)
+to check the result.
 
 See [Loading Your Security
 Policy](../../how-to-guides/how-to-create-and-manage-api-security-metadata.mdx#loading-your-security-policy)

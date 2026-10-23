@@ -12,46 +12,50 @@ via the Configuration Service API.
 The Configuration Service provides three mechanisms for managing claims, each
 suited to different scenarios:
 
-| Scenario | Approach |
-| --- | --- |
-| Create a new custom claim set with specific resource permissions | `POST /v3/claimSets/import` |
-| Override authorization strategies for a specific claim set on a resource | `POST /v3/claimSets/import` |
-| Change the default authorization strategy for a resource or domain (dev/test) | `POST /management/upload-claims` |
-| Add extension resources to the claims taxonomy (dev/test) | `POST /management/upload-claims` |
-| Restructure domain groupings or remove claims from the taxonomy (dev/test) | `POST /management/upload-claims` |
-| Change the default authorization strategy for a resource or domain (production) | Deployment-time loading |
-| Add extension resources to the claims taxonomy (production) | Deployment-time loading |
-| Restructure domain groupings or remove claims from the taxonomy (production) | Deployment-time loading |
+| Scenario                                                                        | Approach                         |
+| ------------------------------------------------------------------------------- | -------------------------------- |
+| Create a new custom claim set with specific resource permissions                | `POST /v3/claimSets/import`      |
+| Override authorization strategies for a specific claim set on a resource        | `POST /v3/claimSets/import`      |
+| Change the default authorization strategy for a resource or domain (dev/test)   | `POST /management/upload-claims` |
+| Add extension resources to the claims taxonomy (dev/test)                       | `POST /management/upload-claims` |
+| Restructure domain groupings or remove claims from the taxonomy (dev/test)      | `POST /management/upload-claims` |
+| Change the default authorization strategy for a resource or domain (production) | Deployment-time loading          |
+| Add extension resources to the claims taxonomy (production)                     | Deployment-time loading          |
+| Restructure domain groupings or remove claims from the taxonomy (production)    | Deployment-time loading          |
 
 **`POST /v3/claimSets/import`** operates at the claim set level. It creates a
 new custom claim set and defines which resources it can access and with what
 actions. It is non-destructive (only the imported claim set is affected) and
 does not require the unrestricted claims loading flag. The resource claim names
-referenced must already exist in the taxonomy. See [How To: Configure Claim
-Sets](./how-to-configure-claim-sets.md) for examples.
+referenced must already exist in the taxonomy. See
+[How To: Configure Claim Sets](./how-to-configure-claim-sets.md) for examples.
 
 **`POST /management/upload-claims`** replaces the entire claims hierarchy
 atomically. Use it when the change involves the taxonomy itself: default
 authorization strategies, adding or removing resource claims, or domain-level
 restructuring. This requires
-`DMS_CONFIG_DANGEROUSLY_ENABLE_UNRESTRICTED_CLAIMS_LOADING=true` and should only
-be used in non-production environments.
+`CONFIGURATION_SERVICE_DANGEROUSLY_ENABLE_UNRESTRICTED_CLAIMS_LOADING=true` and
+should only be used in non-production environments.
 
 **Deployment-time loading** is the production-safe way to make taxonomy-level
 changes. The Configuration Service loads claims from an embedded resource, a
 directory of fragment files, or a complete claims file — controlled by the
-`DMS_CONFIG_CLAIMS_SOURCE` environment variable. No dangerous flag is required.
-See [Loading Modes](#loading-modes) for details.
+`CONFIGURATION_SERVICE_CLAIMS_SOURCE` environment variable. No dangerous flag is
+required. Claims are loaded only when the Configuration Service database is
+first initialized; see [When Claims Are Loaded](#when-claims-are-loaded) before
+changing the claims of an existing deployment. See
+[Loading Modes](#loading-modes) for details.
 
 :::caution
 
-Both API approaches write only to the [Configuration Service
-database](../platform-dev-guide/security/security-configuration-data-stores.md#authorization-configuration);
-the embedded `Claims.json` resource is not modified. Changes survive
-redeployment as long as the database persists, but will be lost if the database
-is recreated or cleared, since startup re-seeding restores only what is in the
-embedded file. For changes that must survive a fresh database, update the claims
-source directly and use deployment-time loading.
+Both API approaches write only to the
+[Configuration Service database](../platform-dev-guide/security/security-configuration-data-stores.md#authorization-configuration);
+the configured claims source (such as the embedded `Claims.json` resource) is
+not modified. Changes survive redeployment as long as the database persists, but
+will be lost if the database is recreated or cleared, since startup seeding
+restores only what the configured claims source contains. For changes that must
+survive a fresh database, update the claims source directly and use
+deployment-time loading.
 
 :::
 
@@ -77,9 +81,12 @@ per-claim-set permission assignments:
 ]
 ```
 
-The examples throughout this section all use this array format. How the array is
-delivered to the Configuration Service depends on the loading mode; see [Loading
-Your Security Policy](#loading-your-security-policy).
+The examples throughout this section all use this array format. A complete
+claims document wraps the array as its `claimsHierarchy` property, next to a
+`claimSets` catalog; see
+[Building a Security Policy](#building-a-security-policy). How the document is
+delivered to the Configuration Service depends on the loading mode; see
+[Loading Your Security Policy](#loading-your-security-policy).
 
 ### Managing the Claims Taxonomy
 
@@ -87,12 +94,12 @@ Individual API resources are represented as "leaf nodes" (aka _resource claims_)
 that are grouped under higher-level _domain claims_, as depicted in the table
 below.
 
-|              |                                                               |
-| ------------ | ------------------------------------------------------------- |
-| people       | `http://ed-fi.org/identity/claims/domains/people`            |
-| ⌊_ contact   | `http://ed-fi.org/identity/claims/ed-fi/contact`             |
-| ⌊_ staff     | `http://ed-fi.org/identity/claims/ed-fi/staff`               |
-| ⌊_ student   | `http://ed-fi.org/identity/claims/ed-fi/student`             |
+|             |                                                   |
+| ----------- | ------------------------------------------------- |
+| people      | `http://ed-fi.org/identity/claims/domains/people` |
+| ⌊\_ contact | `http://ed-fi.org/identity/claims/ed-fi/contact`  |
+| ⌊\_ staff   | `http://ed-fi.org/identity/claims/ed-fi/staff`    |
+| ⌊\_ student | `http://ed-fi.org/identity/claims/ed-fi/student`  |
 
 The JSON representation of this structure uses the `claims` array to nest
 resource claims under their parent domain claim:
@@ -310,16 +317,47 @@ would be redundant.
 ### Building a Security Policy
 
 Each of the examples in the previous sections is a partial view. A complete
-policy is a single JSON array containing every domain and resource claim you
-want to be active, with all `defaultAuthorization`, `claimSets`, and `claims`
-entries in place. Any claim, claim set assignment, or authorization strategy
-omitted from the array will be absent from the active configuration. The
+policy is a claims document with two top-level properties:
+
+```json
+{
+  "claimSets": [
+    { "claimSetName": "SISVendor", "isSystemReserved": true }
+  ],
+  "claimsHierarchy": [ ... ]
+}
+```
+
+- `claimSets` registers every claim set name and whether it is system-reserved
+  (the claim set endpoints can't change or delete it). List every claim set that
+  the hierarchy grants access to. A grant to a claim set that isn't listed here
+  has no effect.
+- `claimsHierarchy` is the array described in
+  [The Security Metadata Format](#the-security-metadata-format). It contains
+  every domain and resource claim you want to be active, with all
+  `defaultAuthorization`, `claimSets`, and `claims` entries in place.
+
+Any claim, claim set assignment, or authorization strategy omitted from the
+document will be absent from the active configuration. The Filesystem loading
+mode and the runtime upload endpoint both expect this complete document; the
+embedded resource uses the same format.
+
+There are two practical starting points for a complete policy:
+
+- The `Claims.json` shipped with the Configuration Service for your data
+  standard version, in
+  [`Claims/Standards/ds{version}/`](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/tree/main/src/config/backend/EdFi.DmsConfigurationService.Backend/Claims/Standards).
+  Use the file from the release you deploy.
+- The active document downloaded from `GET /management/current-claims` (see
+  [Runtime Upload via Configuration Service](#runtime-upload-via-configuration-service)).
+
+If you are migrating from a previous Ed-Fi ODS/API deployment, the
 [CmsHierarchy Tool](../platform-dev-guide/utilities/cms-hierarchy-tool.md)
-command-line utility can be used to author or update security metadata. It can
-convert ODS/API XML security metadata to JSON, or merge extension claim set
-fragments into the base hierarchy. The generated JSON file can then be delivered
-to the Configuration Service using one of the loading modes described in
-[Loading Your Security Policy](#loading-your-security-policy).
+converts ODS/API XML security metadata into the `claimsHierarchy` array format.
+
+To add extension resources without maintaining a complete document, use claim
+set fragments instead; see
+[Introducing Extension Resources into the Taxonomy](#introducing-extension-resources-into-the-taxonomy).
 
 ### Adding New Claims
 
@@ -354,12 +392,13 @@ its intended parent in the `claims` array:
 The new claim inherits the domain's `defaultAuthorization` unless you specify
 its own. Include any `claimSets` entries needed to grant access to it.
 
-Alternatively, write a [fragment
-file](../platform-dev-guide/utilities/cms-hierarchy-tool.md#fragment-file-format)
-and use the CmsHierarchy `Transform` command to merge it with the base hierarchy
-to produce a merged security metadata JSON file. Once generated, deliver the
-output to the Configuration Service using one of the loading modes in [Loading
-Your Security Policy](#loading-your-security-policy).
+Alternatively, write a [claims fragment](#claims-fragments) and let the
+Configuration Service merge it into the base claims at startup using the
+[Hybrid](#hybrid) loading mode. You don't need to produce a merged document
+yourself. For complete worked examples, see Step 5d of
+[How To: Extend the Ed-Fi API - Student Transcript Example](./how-to-extend-the-ed-fi-ods-api-student-transcript-example.md#step-5d-author-and-stage-the-claims-fragment)
+and
+[How To: Extend the Ed-Fi API - Alternative Education Program Example](./how-to-extend-the-ed-fi-ods-api-alternative-education-program-example.md#step-5d-author-and-stage-the-claims-fragment).
 
 ### Omitting Claims and Claim Sets
 
@@ -376,58 +415,411 @@ authoring a document from scratch.
 
 :::
 
+### Claims Fragments
+
+A _claims fragment_ is a small JSON file that adds to the claims the
+Configuration Service already has, rather than replacing them. Use fragments to
+add extension resources, add a new domain, or give a claim set access to
+existing claims, without maintaining a complete claims document. The
+Configuration Service merges fragments into its base claims when it loads claims
+in the [Hybrid](#hybrid) or [Filesystem](#filesystem) loading mode.
+
+#### Fragment Structure
+
+A fragment has a top-level `name` and a `resourceClaims` array. Each entry in
+`resourceClaims` is one of two kinds:
+
+- A _parent entry_ has `"isParent": true`. It adds new claims to the hierarchy:
+  resource claims under an existing domain, or a new domain.
+- A _grant entry_ has no `isParent` (or `"isParent": false`). It gives the
+  fragment's claim set access to a claim that already exists, for the actions
+  listed in its `authorizationStrategyOverridesForCRUD`.
+
+The top-level `name` is the claim set that the fragment's grant entries give
+access to. Always set it on a fragment with grant entries. If it's missing, the
+service uses the file name as the claim set name (for example,
+`003-sisvendor-claims`) and creates a new system-reserved claim set with that
+name, which the claim set endpoints can't change or delete. In a fragment with
+only parent entries, `name` is just a label.
+
+Fragments use different property names from the claims hierarchy described in
+[The Security Metadata Format](#the-security-metadata-format). Use the fragment
+names in a fragment file:
+
+| Purpose                      | Claims hierarchy                                | Fragment                                                                                                                                                  |
+| ---------------------------- | ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Child claims                 | `claims`                                        | `children`                                                                                                                                                |
+| Default authorization        | `defaultAuthorization.actions[].name`           | `_defaultAuthorizationStrategiesForCrud[].actionName`                                                                                                     |
+| Claim set permissions        | `claimSets`                                     | `claimSets` on a parent entry, or a grant entry                                                                                                           |
+| Claim set strategy overrides | `authorizationStrategyOverrides` in `claimSets` | `authorizationStrategyOverrides` in a parent entry's `claimSets`, or `authorizationStrategies` in a grant entry's `authorizationStrategyOverridesForCRUD` |
+
+#### File Names and Order
+
+The service applies every file whose name ends in `-claims.json` anywhere under
+the configured claims directory, including subdirectories, one at a time, sorted
+by file path. Start each file name with a number such as `001-` or `002-` to
+control the order, and keep all your fragments in one folder: a number prefix
+only orders files within the same folder. Order matters when one fragment refers
+to a claim that an earlier fragment adds.
+
+The suffix must be lowercase. The Configuration Service runs on Linux, where the
+match is case-sensitive, so the Configuration Service skips a file ending in
+`-Claims.json` without a warning.
+
+Before v8.1, fragment file names ended in `-claimset.json`. The service no
+longer reads those files, so rename each one to end in `-claims.json`. The
+service logs a warning for each `-claimset.json` file it finds, but only when it
+reads fragments (see [When Claims Are Loaded](#when-claims-are-loaded)), so an
+in-place upgrade of an existing database logs no warning at startup.
+
+The Docker Compose files changed too. In v8.0 they read the fragment folder from
+`DMS_CONFIG_CLAIMS_MOUNT_SOURCE`, which is now
+`CONFIGURATION_SERVICE_CLAIMS_MOUNT_SOURCE`, and their default folder moved from
+`Deploy/AdditionalClaimsets` to `Deploy/AdditionalClaims`. If you set
+`DMS_CONFIG_CLAIMS_MOUNT_SOURCE`, rename it to
+`CONFIGURATION_SERVICE_CLAIMS_MOUNT_SOURCE`. Otherwise Compose mounts the
+default folder instead of yours, and the service logs no warning.
+
+Renaming needs care for a fragment with grant entries but no top-level `name`.
+This applies only to fragments the Configuration Service reads directly, because
+`prepare-dms-claims.ps1` rejects such fragments. The service attaches that
+fragment's grants to a claim set named after the file. In v8.0, applications
+could use those grants only if a claim set with that name was created separately
+through the claim set endpoints. Renaming the file moves the grants to a new
+name, so those applications lose their access. To keep their access, set the
+fragment's top-level `name` to the old file name without `.json`, for example
+`"003-sisvendor-claimset"`, before you rename the file. From v8.1, that name
+becomes a system-reserved claim set (see
+[Choosing Claim Set Names](#choosing-claim-set-names)).
+
+#### Referring to Existing Claims
+
+To point at a claim that already exists, use its short form: the last two
+segments of its URI, such as `domains/systemDescriptors` or `ed-fi/student`.
+Case doesn't matter. A full URI never matches an existing claim. Use full URIs
+only for claims you are adding, such as a new domain or the `children` you add
+under a domain.
+
+#### Adding Resource Claims to an Existing Domain
+
+To add resource claims under an existing domain, write a parent entry that names
+the domain by its short form and lists the new resource claims as `children`.
+The following fragment adds an extension descriptor under the out-of-the-box
+`systemDescriptors` domain and an extension association under the
+`relationshipBasedData` domain:
+
+```json title="001-my-extension-claims.json"
+{
+  "name": "MyExtensionClaims",
+  "resourceClaims": [
+    {
+      "isParent": true,
+      "name": "domains/systemDescriptors",
+      "children": [
+        { "name": "http://ed-fi.org/identity/claims/my-extension/MyDescriptor" }
+      ]
+    },
+    {
+      "isParent": true,
+      "name": "domains/relationshipBasedData",
+      "children": [
+        {
+          "name": "http://ed-fi.org/identity/claims/my-extension/MyAssociation"
+        }
+      ]
+    }
+  ]
+}
+```
+
+This tells the Configuration Service to add `MyDescriptor` and `MyAssociation`
+as resource claims under those domains. They inherit each domain's default
+authorization and claim set permissions, so every claim set that can already
+access the domain gets the same access to the new resource claims.
+
+Any `claimSets` or `_defaultAuthorizationStrategiesForCrud` on a parent entry
+that names an existing domain are ignored. To give different access to the new
+resource claims, put them in a new domain or use grant entries.
+
+#### Adding a New Domain
+
+To add a domain, write a parent entry whose name is the full URI of the new
+domain, with its default authorization, its resource claims, and the claim sets
+that can access it:
+
+```json title="002-my-extension-domain-claims.json"
+{
+  "name": "MyExtensionDomainClaims",
+  "resourceClaims": [
+    {
+      "isParent": true,
+      "name": "http://ed-fi.org/identity/claims/domains/myExtension",
+      "_defaultAuthorizationStrategiesForCrud": [
+        {
+          "actionName": "Create",
+          "authorizationStrategies": [
+            { "name": "NoFurtherAuthorizationRequired" }
+          ]
+        },
+        {
+          "actionName": "Read",
+          "authorizationStrategies": [
+            { "name": "NoFurtherAuthorizationRequired" }
+          ]
+        },
+        {
+          "actionName": "Update",
+          "authorizationStrategies": [
+            { "name": "NoFurtherAuthorizationRequired" }
+          ]
+        },
+        {
+          "actionName": "Delete",
+          "authorizationStrategies": [
+            { "name": "NoFurtherAuthorizationRequired" }
+          ]
+        }
+      ],
+      "children": [
+        {
+          "name": "http://ed-fi.org/identity/claims/my-extension/MyNewResource"
+        }
+      ],
+      "claimSets": [
+        {
+          "name": "EdFiSandbox",
+          "actions": [
+            { "name": "Create" },
+            { "name": "Read" },
+            { "name": "Update" },
+            { "name": "Delete" }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+This tells the Configuration Service to add a top-level `myExtension` domain
+that contains `MyNewResource`, to use `NoFurtherAuthorizationRequired` for every
+action unless a claim set overrides it, and to give `EdFiSandbox` full CRUD
+access. No other claim set can access `MyNewResource` until it is granted.
+
+#### Granting a Claim Set Access to an Existing Claim
+
+To give a claim set access to a claim that already exists, write a fragment
+named after that claim set, with a grant entry for each claim. List each granted
+action in `authorizationStrategyOverridesForCRUD`, optionally with authorization
+strategies that override the defaults for that action. The following fragment
+grants the out-of-the-box `SISVendor` claim set access to the resource claim
+added by the previous example:
+
+```json title="003-sisvendor-claims.json"
+{
+  "name": "SISVendor",
+  "resourceClaims": [
+    {
+      "name": "my-extension/MyNewResource",
+      "authorizationStrategyOverridesForCRUD": [
+        { "actionName": "Read" },
+        {
+          "actionName": "Update",
+          "authorizationStrategies": [{ "name": "NamespaceBased" }]
+        }
+      ]
+    }
+  ]
+}
+```
+
+This tells the Configuration Service that `SISVendor` can read `MyNewResource`
+using the domain's default authorization strategy, and can update it using
+`NamespaceBased` instead. A grant entry can refer to a claim added by an earlier
+entry or an earlier fragment, which is why this file is numbered after the one
+that adds the domain.
+
+#### Choosing Claim Set Names
+
+Use only claim sets that the base claims document already declares, both in a
+parent entry's `claimSets` and as the `name` of a fragment with grant entries.
+An undeclared claim set in a parent entry's `claimSets` is ignored. An
+undeclared `name` on a fragment with grant entries creates a new
+**system-reserved** claim set, which the claim set endpoints can't change or
+delete and which stays even if you remove the fragment. `prepare-dms-claims.ps1`
+rejects both.
+
+#### Rules and Common Mistakes
+
+- Refer to an existing claim by its short form. If you write an existing
+  domain's full URI in a parent entry, the service doesn't find the domain and
+  adds a second, duplicate domain.
+- In a parent entry, name a domain, not a resource claim, and list only direct
+  `children`. Children under a resource claim, or nested inside another child,
+  are ignored.
+- `claimSets` belongs only on parent entries. On a grant entry the service
+  ignores it, and `prepare-dms-claims.ps1` rejects the file.
+
+:::caution
+
+Fragment mistakes don't always produce an error:
+
+- A grant entry whose claim isn't found is skipped.
+- If a fragment isn't valid JSON, the service logs only a warning and loads the
+  base claims **without any fragments**, including the valid ones:
+  - On a first start, only the base claims are stored. Fixing the file and
+    restarting doesn't help, because claims load only into an empty database.
+  - On a reload, the request succeeds but removes every claim that the fragments
+    added.
+
+  To recover, fix the file. In a non-production environment, then call
+  `POST /management/reload-claims` (requires
+  `CONFIGURATION_SERVICE_DANGEROUSLY_ENABLE_UNRESTRICTED_CLAIMS_LOADING=true`).
+  In production, start with a new Configuration Service database.
+
+- Other mistakes, including a fragment file the service doesn't have permission
+  to read, stop the claims from loading. On a first start, the service doesn't
+  start. On a reload, the request fails with a `500` error and the stored claims
+  don't change.
+
+After deploying fragments, check the Configuration Service log and verify the
+result as described in
+[Verifying the Active Policy](#verifying-the-active-policy).
+
+:::
+
 ## Loading Your Security Policy
 
 ### Loading Modes
 
 The Configuration Service controls how claims are loaded at startup via the
-`DMS_CONFIG_CLAIMS_SOURCE` environment variable. Three source modes are
-available: **Embedded**, **Hybrid**, and **Filesystem**. Claims can also be
-replaced at runtime via the [management
-API](#runtime-upload-via-configuration-service), independently of the configured
-source mode.
+`CONFIGURATION_SERVICE_CLAIMS_SOURCE` environment variable. Three source modes
+are available: **Embedded**, **Hybrid**, and **Filesystem**. Claims can also be
+replaced at runtime via the
+[management API](#runtime-upload-via-configuration-service), independently of
+the configured source mode.
+
+Whichever mode you choose, the service seeds its database from that source only
+when the database holds no claims yet. See
+[When Claims Are Loaded](#when-claims-are-loaded).
+
+The variable names on this page are the ones used by the Docker Compose files
+that ship with the Ed-Fi API. Compose passes each one to the Configuration
+Service as a setting. If you run the Configuration Service without those Compose
+files, set the setting directly instead:
+
+| Purpose                                                 | Docker Compose variable                                                | Configuration Service setting                                                                   |
+| ------------------------------------------------------- | ---------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| Claims source                                           | `CONFIGURATION_SERVICE_CLAIMS_SOURCE`                                  | `ClaimsOptions__ClaimsSource`                                                                   |
+| Claims directory                                        | `CONFIGURATION_SERVICE_CLAIMS_DIRECTORY`                               | `ClaimsOptions__ClaimsDirectory`                                                                |
+| Data standard version                                   | `CONFIGURATION_SERVICE_DATA_STANDARD_VERSION`                          | `ClaimsOptions__DataStandardVersion`                                                            |
+| Runtime claims changes                                  | `CONFIGURATION_SERVICE_DANGEROUSLY_ENABLE_UNRESTRICTED_CLAIMS_LOADING` | `ClaimsOptions__DangerouslyEnableUnrestrictedClaimsLoading`                                     |
+| Database setup at startup                               | `CONFIGURATION_SERVICE_DEPLOY_DATABASE`                                | `AppSettings__DeployDatabaseOnStartup`                                                          |
+| Folder on your machine to mount as the claims directory | `CONFIGURATION_SERVICE_CLAIMS_MOUNT_SOURCE`                            | None. Compose mounts it at `/app/additional-claims`; without Compose, mount the folder yourself |
 
 #### Embedded (Production Default)
 
 ```ini
-DMS_CONFIG_CLAIMS_SOURCE=Embedded
+CONFIGURATION_SERVICE_CLAIMS_SOURCE=Embedded
 ```
 
 The
 [`Claims/Standards/ds{version}/Claims.json`](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/tree/main/src/config/backend/EdFi.DmsConfigurationService.Backend/Claims/Standards)
-file in the DmsConfigurationService.Backend project is compiled into the Config
-Service assembly as an embedded resource. On startup, if the database tables are
-empty, the service seeds the `ClaimSet`, `ResourceClaim`, and `ClaimsHierarchy`
-tables from that embedded file. The active hierarchy cannot be changed at
-runtime without redeploying the service. The data standard version to load is
-selected by `DMS_CONFIG_DATA_STANDARD_VERSION` (default: `5.2`).
+file in the `EdFi.DmsConfigurationService.Backend` project is compiled into the
+Configuration Service assembly as an embedded resource. On startup, if the
+database tables are empty, the service seeds the `ClaimSet`, `ResourceClaim`,
+and `ClaimsHierarchy` tables from that embedded file. The embedded file changes
+only when the service is rebuilt, and deploying a rebuilt service doesn't update
+the claims of an existing database (see
+[When Claims Are Loaded](#when-claims-are-loaded)). The data standard version to
+load is selected by `CONFIGURATION_SERVICE_DATA_STANDARD_VERSION` (default:
+`5.2`).
 
 This is the most secure option for production: no external files, no runtime
 modifications.
 
+Embedded is what the service uses when no claims source is set. The sample
+environment files that ship with the Docker Compose setup (`.env.example` and
+`.env.template`) set Hybrid instead, so a local environment started from them
+uses Hybrid mode.
+
 #### Hybrid
 
 ```ini
-DMS_CONFIG_CLAIMS_SOURCE=Hybrid
-DMS_CONFIG_CLAIMS_DIRECTORY=/app/claims-fragments
+CONFIGURATION_SERVICE_CLAIMS_SOURCE=Hybrid
+CONFIGURATION_SERVICE_CLAIMS_DIRECTORY=/app/additional-claims
 ```
 
-Uses the same initial seed as Embedded, but fragment files (`*-claimset.json`)
-from the configured directory are applied on top of the embedded base at
-startup. Files are applied in alphabetical order; use numeric prefixes (e.g.
-`001-`, `002-`) to control the sequence. This is useful for adding extension
-claim sets without modifying the embedded resource.
+Uses the same embedded base as Embedded mode, and applies the
+[claims fragments](#claims-fragments) found in the configured directory on top
+of it. This is the recommended way to add extension resources and extension
+claim sets without maintaining a complete claims document.
+
+The fragment directory must be readable by the Configuration Service. The Docker
+Compose files mount a folder from your machine into the container at
+`/app/additional-claims`. Set `CONFIGURATION_SERVICE_CLAIMS_MOUNT_SOURCE` to the
+folder that holds your fragments. If you deploy without those Compose files,
+mount your folder yourself and set the claims directory to the path inside the
+container. For a complete walkthrough, see Step 5d of the extension how-to
+guides linked in
+[Introducing Extension Resources into the Taxonomy](#introducing-extension-resources-into-the-taxonomy).
 
 #### Filesystem
 
 ```ini
-DMS_CONFIG_CLAIMS_SOURCE=Filesystem
-DMS_CONFIG_CLAIMS_DIRECTORY=/app/claims-files
+CONFIGURATION_SERVICE_CLAIMS_SOURCE=Filesystem
+CONFIGURATION_SERVICE_CLAIMS_DIRECTORY=/app/additional-claims
 ```
 
-The embedded `Claims.json` is not used. The service loads its claims entirely
-from files in the configured directory. This is for deployments that manage
-their own complete claims document outside the service binary.
+The embedded `Claims.json` is not used. Instead, the service reads a complete
+claims document (see [Building a Security Policy](#building-a-security-policy))
+from a file named `Claims.json` in the configured directory. The service also
+looks in subdirectories, and it stops with an error if it finds no `Claims.json`
+or more than one. Any [claims fragments](#claims-fragments) in the directory are
+applied on top of it. This is for deployments that manage their own complete
+claims document outside the service binary.
+
+### When Claims Are Loaded
+
+At startup, the Configuration Service seeds its database from the configured
+claims source **only when the database holds no claims yet**, which is normally
+the first start against a new database. On every later start it logs
+`Claims data already exists, skipping initial load` and keeps the claims already
+stored in the database. Seeding also requires database setup at startup to be on
+(`CONFIGURATION_SERVICE_DEPLOY_DATABASE`, on by default).
+
+This means that for an existing deployment, restarting the service after any of
+these changes does **not** change the active claims:
+
+- adding, editing, or removing claims fragments;
+- editing the `Claims.json` used by Filesystem mode;
+- changing `CONFIGURATION_SERVICE_CLAIMS_SOURCE` or
+  `CONFIGURATION_SERVICE_DATA_STANDARD_VERSION`.
+
+For a **new deployment**, put the claims source in place (embedded, fragments,
+or `Claims.json`) before the first start, and the service loads it
+automatically.
+
+For an **existing deployment**, the stored claims can only be replaced through
+the management API: `POST /management/reload-claims` reloads from the configured
+source, including fragments, and `POST /management/upload-claims` replaces the
+claims with a document you supply. Both require
+`CONFIGURATION_SERVICE_DANGEROUSLY_ENABLE_UNRESTRICTED_CLAIMS_LOADING=true`; see
+[Runtime Upload via Configuration Service](#runtime-upload-via-configuration-service).
+Changes limited to individual claim sets can be made with the claim set
+endpoints instead; see [Choosing an Approach](#choosing-an-approach).
+
+A reload or upload deletes every claim set that isn't system-reserved and isn't
+in the claims source, including claim sets created through the claim set
+endpoints. Before reloading or uploading, export those claim sets
+(`GET /v3/claimSets/{id}/export`) and re-import them afterward
+(`POST /v3/claimSets/import`).
+
+In this release, production deployments have no supported way to change the full
+claims policy of an existing database. To apply a new full claims policy,
+provision a new Configuration Service database. A new database doesn't carry
+over vendors, applications, client credentials, or data store registrations, so
+plan to recreate them.
 
 ### Runtime Upload via Configuration Service
 
@@ -435,7 +827,7 @@ Runtime upload is a separate capability that can be combined with any of the
 three source modes above. It is enabled by:
 
 ```ini
-DMS_CONFIG_DANGEROUSLY_ENABLE_UNRESTRICTED_CLAIMS_LOADING=true
+CONFIGURATION_SERVICE_DANGEROUSLY_ENABLE_UNRESTRICTED_CLAIMS_LOADING=true
 ```
 
 When enabled, the following management API endpoints become available:
@@ -446,9 +838,9 @@ When enabled, the following management API endpoints become available:
 
 :::caution
 
-`DMS_CONFIG_DANGEROUSLY_ENABLE_UNRESTRICTED_CLAIMS_LOADING=true` enables runtime
-modification of security policies and should **never** be enabled in production
-deployments.
+`CONFIGURATION_SERVICE_DANGEROUSLY_ENABLE_UNRESTRICTED_CLAIMS_LOADING=true`
+enables runtime modification of security policies and should **never** be
+enabled in production deployments.
 
 :::
 
@@ -465,15 +857,19 @@ array together with a claim set catalog:
 ```
 
 The `claimSets` array registers every claim set name and whether it is
-system-reserved (protected from modification or deletion). The `claimsHierarchy`
-array uses the same JSON array format described in [The Security Metadata
-Format](#the-security-metadata-format). Any new claim set referenced in the
-hierarchy must also appear in `claimSets`.
+system-reserved (the claim set endpoints can't change or delete it). The
+`claimsHierarchy` array uses the same JSON array format described in
+[The Security Metadata Format](#the-security-metadata-format). Any new claim set
+referenced in the hierarchy must also appear in `claimSets`.
+
+`GET /management/current-claims` returns this same two-section document, and
+`POST /management/upload-claims` accepts it unchanged, so a document retrieved
+from the service can be edited and posted back exactly as it was downloaded.
 
 These management endpoints require a Configuration Service bearer token. Write
 operations (`POST /management/upload-claims`, `POST /management/reload-claims`)
 require the `edfi_admin_api/full_access` scope; the read operation
-(`GET /management/current-claims`) accepts `edfi_admin_api/read_only` or
+(`GET /management/current-claims`) accepts `edfi_admin_api/readonly_access` or
 `edfi_admin_api/full_access`. Obtain a token:
 
 ```powershell
@@ -500,21 +896,97 @@ Invoke-RestMethod -Uri "http://localhost:8081/management/current-claims" `
 set names to the `claimSets` catalog as well.
 
 **Upload** the modified document to replace the active claims hierarchy. The
-endpoint requires the document wrapped in a top-level `claims` property, which
-the `@{ claims = ... }` hashtable adds before serializing:
+endpoint accepts the two-section document exactly as downloaded, so post the
+file contents directly as the request body:
 
 ```powershell
-$claims = Get-Content claims.json -Raw | ConvertFrom-Json
-$body = @{ claims = $claims } | ConvertTo-Json -Depth 100
-
 Invoke-RestMethod -Method Post `
   -Uri "http://localhost:8081/management/upload-claims" `
   -Headers @{ Authorization = "Bearer $($token.access_token)" } `
   -ContentType "application/json" `
-  -Body $body
+  -Body (Get-Content claims.json -Raw)
 ```
 
 The uploaded document must include both the `claimSets` catalog and the
-`claimsHierarchy` array, wrapped as `{"claims": {"claimSets": [...],
-"claimsHierarchy": [...]}}`. It atomically replaces the current configuration
-and re-seeds the `ResourceClaim` catalog with any new claim names.
+`claimsHierarchy` array as top-level properties, as
+`{"claimSets": [...], "claimsHierarchy": [...]}`.
+
+An upload or reload replaces the claims hierarchy, including the permissions of
+system-reserved claim sets. It is not a complete replacement of everything,
+though:
+
+- Claim sets that aren't system-reserved are replaced by the ones in the
+  document. System-reserved claim sets are never removed, even if the document
+  leaves them out. Their permissions still come only from the uploaded
+  hierarchy, so a system-reserved claim set the document doesn't grant anything
+  to has no access afterward.
+- The claim sets and the hierarchy are replaced together, in a single step.
+
+### Verifying the Active Policy
+
+To see what the Ed-Fi API actually enforces, call
+`GET /v3/authorizationMetadata` on the Configuration Service. It is the same
+data the Ed-Fi API loads to authorize requests, it reflects the claims stored in
+the Configuration Service database, and it is available in every loading mode
+without `CONFIGURATION_SERVICE_DANGEROUSLY_ENABLE_UNRESTRICTED_CLAIMS_LOADING`.
+It accepts a token with the `edfi_admin_api/full_access`,
+`edfi_admin_api/readonly_access`, or
+`edfi_admin_api/authMetadata_readonly_access` scope.
+
+```powershell
+Invoke-RestMethod -Uri "http://localhost:8081/v3/authorizationMetadata?claimSetName=SISVendor" `
+  -Headers @{ Authorization = "Bearer $($token.access_token)" } |
+  ConvertTo-Json -Depth 10
+```
+
+Omit `claimSetName` to return every claim set. Check the spelling of the name:
+an unknown name returns `200` with an empty array (`[]`) rather than an error.
+An empty array means no claim set has that name. A claim set that exists but has
+no access is still listed, with an empty `claims` list.
+
+The response doesn't repeat your policy document. Instead, for each claim set it
+lists every resource claim the claim set can access, with the effective actions
+and authorization strategies after inheritance and defaults are resolved. An
+abridged example:
+
+```json
+[
+  {
+    "claimSetName": "SISVendor",
+    "claims": [
+      {
+        "name": "http://ed-fi.org/identity/claims/ed-fi/academicWeek",
+        "authorizationId": 1
+      }
+    ],
+    "authorizations": [
+      {
+        "id": 1,
+        "actions": [
+          {
+            "name": "Read",
+            "authorizationStrategies": [
+              { "name": "RelationshipsWithEdOrgsOnly" }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
+```
+
+Use it to confirm that new resource claims appear for the claim sets you
+expected, with the actions and strategies you intended. Domain claims don't
+appear in the response, only the resource claims beneath them.
+
+:::note
+
+`GET /management/current-claims` isn't a good substitute. It returns 404 unless
+`CONFIGURATION_SERVICE_DANGEROUSLY_ENABLE_UNRESTRICTED_CLAIMS_LOADING` is set.
+It also returns the claims document the service most recently loaded or
+received, which isn't guaranteed to match what is stored in the database. For
+example, changes made through the claim set endpoints aren't reflected in it.
+Use `GET /v3/authorizationMetadata` to check what is enforced.
+
+:::

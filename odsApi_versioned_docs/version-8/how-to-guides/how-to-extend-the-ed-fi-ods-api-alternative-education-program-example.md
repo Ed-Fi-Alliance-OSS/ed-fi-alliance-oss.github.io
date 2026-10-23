@@ -10,7 +10,7 @@ Before you begin:
   tool developed by the Ed-Fi Alliance and is the recommended way to add new
   fields to the Ed-Fi API. [Download and install
   MetaEd](/reference/metaed/getting-started-with-metaed-ide/installation/)
-  before beginning. MetaEd **4.8 or later** is required for Ed-Fi API v8.0.
+  before beginning. MetaEd **4.9 or later** is required for Ed-Fi API v8.1.
 - This example assumes the Ed-Fi API is already running locally per the
   instructions in [Getting Started](../getting-started/readme.md).
 - The `api-schema-tools` CLI must be available. See [Database
@@ -82,7 +82,7 @@ that your MetaEd IDE is targeting the desired data model, e.g.
 **ed-fi-model-5.2**, by following the instructions in [Version
 Targeting](/reference/metaed/ide-user-guide/creating-and-maintaining-your-extension#step-4-add-the-correct-data-model-project).
 
-MetaEd **4.8 or later** is required for Ed-Fi API v8.0 support.
+MetaEd **4.9 or later** is required for Ed-Fi API v8.1 support.
 
 ### Step 2b. Create a New Extension Project
 
@@ -256,7 +256,7 @@ We'll look at how to use the MetaEd output for the Ed-Fi API below.
 
 :::info
 
-For Ed-Fi API v8.0, only `ApiSchema-EXTENSION.json` and (optionally) the XSD
+For Ed-Fi API v8.1, only `ApiSchema-EXTENSION.json` and (optionally) the XSD
 file are needed. The SQL scripts under `Database/` and the interchange schemas
 are used by the legacy ODS / API and are not required for the new Ed-Fi API. The
 XSD file is required only if you load data via the [XML Bulk Load Client
@@ -386,13 +386,13 @@ stopped in Step 5a picks up the staged schema when you start it again in Step 6.
 ### Step 5d. Author and Stage the Claims Fragment
 
 New extension resources are not accessible until they're added to the claims
-hierarchy and granted to a claim set. Do this by authoring a small claim
+hierarchy and granted to a claim set. Do this by authoring a small claims
 fragment file and staging it; no runtime API call is needed.
 
 Create a directory (e.g. `my-claims/`) containing a file named
-`001-sample-alternative-education-program-claimset.json`:
+`001-sample-alternative-education-program-claims.json`:
 
-```json title="001-sample-alternative-education-program-claimset.json"
+```json title="001-sample-alternative-education-program-claims.json"
 {
   "name": "SampleAlternativeEducationProgramClaims",
   "resourceClaims": [
@@ -438,9 +438,7 @@ Attaching the new claims as children of the existing `systemDescriptors` and
 sets are already granted at those domains: for example, `SISVendor` already
 has `Read` on `systemDescriptors` and full CRUD on `relationshipBasedData`, so
 no explicit `claimSets` entry is needed here. To grant a different claim set,
-or restrict access to just the new resources, add an explicit `claimSets`
-array, but the fragment validator requires any resource claim with its own
-`claimSets` entry to also be marked `isParent: true`.
+or to restrict access to just the new resources, see Step 7.
 
 Now stage the claims configuration, including your new fragment:
 
@@ -492,11 +490,19 @@ The built-in `SISVendor` claim set, for example, already has `Read` on
 `systemDescriptors` and full CRUD on `relationshipBasedData`, so it can access
 both new resources as soon as the stack restarts with the staged claims.
 
-If you want to grant a different claim set, or restrict access to only the new
-resources, add an explicit `claimSets` array to the resource claim in your
-fragment. The fragment validator requires any resource claim with its own
-`claimSets` entry to also be marked `isParent: true`; CMS derives a non-parent
-claim's grant from the fragment's top-level `name` instead.
+Adding a `claimSets` array to the parent entries in this fragment wouldn't
+change that: grants on a parent entry are ignored when it names an existing
+domain such as `systemDescriptors`. Instead:
+
+- To restrict access to only the new resources, put them under a new domain
+  whose parent entry lists the claim sets that should have access, as the
+  [Student Transcript
+  example](./how-to-extend-the-ed-fi-ods-api-student-transcript-example.md#step-5d-author-and-stage-the-claims-fragment)
+  does for `postSecondaryOrganizations`.
+- To grant one more claim set access to a resource, add a fragment named after
+  that claim set with a grant entry for the resource. See [Claims
+  Fragments](./how-to-create-and-manage-api-security-metadata.mdx#claims-fragments)
+  for the format.
 
 See [How To: Create and Manage API Security
 Metadata](./how-to-create-and-manage-api-security-metadata.mdx) for the full
