@@ -28,17 +28,35 @@ to reenable the feature after disabling it.
 
 The feature is managed on the deployed code by changing the
 appsettings.json file of the EdFi.Ods.WebApi project. This is
-the appsettings.json of the "Api" component of the deployed solution. The app
-setting `ApiSettings:Features:ChangeQueries` should be set to the value "true".
+the appsettings.json of the "Api" component of the deployed solution. The name
+of the app setting changed in ODS / API 7.3.1:
+
+* **7.3.1 and later:** set `FeatureManagement:ChangeQueries` to `true`.
+* **7.3 and its patches:** in the `ApiSettings:Features` array, set `IsEnabled`
+    to `true` on the entry named `ChangeQueries`.
+
 If the app setting doesn't exist, it should be created.
 
-The following snippet shows the app setting:
+The following snippets show the app setting for each release:
 
-```json
+```json title="7.3.1 and later"
 "FeatureManagement": {
     ...
     "ChangeQueries": true,
     ...
+}
+```
+
+```json title="7.3 and its patches"
+"ApiSettings": {
+    ...
+    "Features": [
+      {
+        "Name": "ChangeQueries",
+        "IsEnabled": true
+      },
+    ...
+  ]
 }
 ```
 
@@ -52,8 +70,8 @@ Scripts will be generated for this feature by MetaEd for Ed-Fi Extension
 projects as well.
 
 Note that in development environments, initdev process automatically deploys the
-change query schema based on the "ApiSettings:Features:ChangeQueries" flag in
-the appsettings.json file of the EdFi.Ods.WebApi project. This means that a
+change query schema based on the change queries setting shown above in the
+appsettings.json file of the EdFi.Ods.WebApi project. This means that a
 development instance will typically not require any additional database scripts
 to be run.
 
@@ -63,8 +81,10 @@ reapplying the feature by deploying the necessary change scripts to the target
 ODS database(s). The exact steps depend on your deployment method:
 
 * If you are using the built-in deployment PowerShell scripts, update the
-    configuration.json to set the "ApiSettings:Features:ChangeQueries" flag to
-    "true". Same changes to configuration.json are needed while installing
+    configuration.json to enable change queries, using the same setting as
+    appsettings.json: `FeatureManagement:ChangeQueries` in 7.3.1 and later, or
+    the `ChangeQueries` entry in the `ApiSettings:Features` array in 7.3 and its
+    patches. Same changes to configuration.json are needed while installing
     databases using the EdFi.Suite3.RestApi.Databases NuGet package. Performing
     a deployment on top of an existing ODS database after setting this flag will
     correctly execute the change queries scripts, which perform the necessary
