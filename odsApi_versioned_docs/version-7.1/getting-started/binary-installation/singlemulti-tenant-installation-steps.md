@@ -30,7 +30,7 @@ file extension (from .nupkg to .zip). Remove the version number (optional).
 Check the box next to **Unblock** (this will prevent PowerShell from asking for
 permission to load every module in the installer) and click **OK**.
 
-![Package Properties](https://edfi.atlassian.net/wiki/download/thumbnails/25493615/image-2023-8-21_11-25-34.png?version=1&modificationDate=1699456100277&cacheVersion=1&api=v2&width=359&height=503)
+![Package Properties](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-7.1/image-2023-8-21_11-25-34.png)
 
 :::info
 You may need to configure TLS while running the installation scripts described
@@ -184,7 +184,7 @@ to Ed-Fi Databases, place the extracted contents of your extension plugin
 package in the extracted EdFi.Suite3.RestApi.Databases package
 under Ed-Fi-ODS-Implementation\\Plugin folder.
 
-![Plugin Folder](https://edfi.atlassian.net/wiki/download/thumbnails/25493615/image2021-5-26_12-45-50.png?version=1&modificationDate=1699456100303&cacheVersion=1&api=v2&width=798&height=221)
+![Plugin Folder](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2021-5-26_12-45-50.png)
 
 #### Enable your extension plugin in the deployment configuration
 
@@ -384,7 +384,7 @@ If you have an extension plugin package that you would like to be the deployed
 to Ed-Fi WebApi, place the extracted contents of your extension plugin package
 in C:\\inetpub\\Ed-Fi\\WebApi\\Plugin folder.
 
-![Plugin Folder](https://edfi.atlassian.net/wiki/download/thumbnails/25493615/image2021-5-26_13-32-29.png?version=1&modificationDate=1699456100297&cacheVersion=1&api=v2&width=907&height=222)
+![Plugin Folder](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2021-5-26_13-32-29.png)
 
 #### Enable your extension plugin in appsettings.json
 
@@ -484,9 +484,9 @@ Just a few more tasks to complete your installation:
   select **Internet Information Services (IIS)**, and press **Enter**.
 * **Right-click** on the server (alternatively, you can right-click the EdFi
   web site), and select **Stop**.
-  ![IIS manager](https://edfi.atlassian.net/wiki/download/attachments/25493615/image2021-2-12_17-5-39.png?version=1&modificationDate=1699456100327&cacheVersion=1&api=v2)
+  ![IIS manager](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-2-12_17-5-39.png)
 * **Right-click** the server (or EdFi website) again and select **Start**.
-![IIS manager start](https://edfi.atlassian.net/wiki/download/thumbnails/25493615/image2021-2-12_17-7-5.png?version=1&modificationDate=1699456100337&cacheVersion=1&api=v2&width=466&height=555)
+![IIS manager start](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-2-12_17-7-5.png)
 
 You are now ready to use the Ed-Fi ODS / API. The following URLs are available:
 

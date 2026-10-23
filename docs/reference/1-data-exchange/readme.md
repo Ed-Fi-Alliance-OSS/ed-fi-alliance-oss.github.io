@@ -21,9 +21,11 @@ education enterprise
 
 ## Ed-Fi API Specifications
 
-An Ed-Fi compatible API application creates a REST-based interface for data
-exchange, where the messages conform to the Ed-Fi Data Standard. The [Ed-Fi
-ODS/API](../2-ods-api-platform.mdx) is the Ed-Fi Alliance's core API product, used
+The Ed-Fi API Specifications define the API resources and JSON message formats
+used to exchange data that conforms to the Ed-Fi Data Standard. An Ed-Fi
+compatible API application creates a REST-based interface for data exchange,
+where the messages conform to the Ed-Fi Data Standard. The [Ed-Fi
+ODS/API](../2-ods-api-platform/readme.mdx) is the Ed-Fi Alliance's core API product, used
 by nearly all "Ed-Fi deployments." Any interested party can build an alternate,
 compatible, application, by adhering to the Open API specifications and guidance
 provided in [Ed-Fi API Guidelines](./api-guidelines/readme.md).
@@ -48,11 +50,9 @@ API Guidelines](./api-guidelines/).
   published in the [Ed-Fi Data Standard](./data-standards.md). In particular,
   the [Ed-Fi Unifying Data Model](./udm/readme.md) is a helpful reference
   to understand the contents and structure of the data exchanges we support.
-* The [Ed-Fi RFC Specifications](./rfc/readme.md) contains work-in-progress
-  specifications. Although the material is still in draft form, the technical
-  specifications are typically implementable. For example, the Ed-Fi community
-  uses this site to publish data exchange specifications for Ed-Fi-related
-  technologies.
+* [Requests for Comment (RFC)](./rfc/readme.md) explains how a change to the
+  Ed-Fi Data Standard becomes official and where to find and comment on open
+  RFCs.
 
 ### Other Resources
 

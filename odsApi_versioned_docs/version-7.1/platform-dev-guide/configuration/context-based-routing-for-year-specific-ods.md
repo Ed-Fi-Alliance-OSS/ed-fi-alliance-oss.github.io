@@ -47,4 +47,4 @@ for the ODS instance to identify which database should be used to service the
 request. A failure to match all the context values defined will result in a 404
 Not Found response.
 
-![Context Route Template](https://edfi.atlassian.net/wiki/download/thumbnails/25493643/image-2023-7-26_20-38-28.png?version=1&modificationDate=1699456104537&cacheVersion=1&api=v2&width=548&height=162)
+![Context Route Template](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-7.1/image-2023-7-26_20-38-28.png)

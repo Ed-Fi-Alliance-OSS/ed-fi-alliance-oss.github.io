@@ -20,7 +20,7 @@ The API identifies the presence of a read-replica ODS by the existence of a
 record in the OdsInstanceDerivative table in the `EdFi_Admin` database with a
 DerivativeType value of "ReadReplica":
 
-![image](https://edfi.atlassian.net/wiki/download/thumbnails/25493659/image-2023-8-4_14-23-55.png?version=1&modificationDate=1699456106123&cacheVersion=1&api=v2&width=548&height=152)
+![image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-7.1/image-2023-8-4_14-23-55.png)
 
 This connection string can also be overridden through configuration, as the
 example below for SQL Server demonstrates (note the addition of

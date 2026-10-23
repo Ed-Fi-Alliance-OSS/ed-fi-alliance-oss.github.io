@@ -68,9 +68,9 @@ logging — but users can swap that module out and use the logging system of the
 choice.
 
 The Ed-Fi Alliance also welcomes code contributions from field implementers and
-hosts a platform called the Ed-Fi Exchange that allows licensees to share code
+hosts a platform called the Ed-Fi Community Tools that allows licensees to share code
 modules. For a listing of available technology and information about how to
-contribute code, see [exchange.ed-fi.org](http://exchange.ed-fi.org).
+contribute code, see [Ed-Fi Community Tools](/getting-started/community-tools).
 
 ## Unique ID Endpoints: Some Assembly Required
 
@@ -154,7 +154,7 @@ format for data exchange. However there are utilities that can aid in uploadin
 data in batch mode via the API (e.g., [Bulk Load Client
 Utility](./utilities/bulk-load-client-utility.md) can
 be used to bulk load XML data and Data Import [Data
-Import](/reference/data-import) can be
+Import](/getting-started/community-tools/technology/data-import) can be
 used to bulk load CSV data). Bulk loading is useful for solutions where data is
 updated in batches (e.g., for organizations that feed data on a nightly
 schedule). Bulk loading is also useful for the initial population of data (e.g.,

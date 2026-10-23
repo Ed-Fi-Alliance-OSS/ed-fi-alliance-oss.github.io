@@ -29,13 +29,13 @@ self-update feature.
 The _Ed-Fi ODS/API Platform_ is the group of tools that work together to support
 a production deployment of the Ed-Fi Resources API. The Platform includes:
 
-* [Ed-Fi ODS/API](../2-ods-api-platform.mdx), the official Ed-Fi implementation of a REST API
+* [Ed-Fi ODS/API](../2-ods-api-platform/readme.mdx), the official Ed-Fi implementation of a REST API
   defined by the Ed-Fi Data Standard.
   * Also includes the _Ed-Fi ODS Sandbox Admin_ and _Ed-Fi Swagger UI_ web
     applications.
 * [Ed-Fi ODS Admin API](../4-admin-api/readme.md), a REST interface for managing
   client credentials ("key and secret") and security configuration.
-* [Ed-Fi ODS Admin App](/getting-started/edfi-exchange/technology/ods-admin-app), a web application for
+* [Ed-Fi ODS Admin App](/getting-started/community-tools/technology/ods-admin-app), a web application for
   managing single instances of an Ed-Fi ODS/API.
 
 ### Ed-Fi ODS/API
@@ -81,7 +81,7 @@ the single application to support either ODS/API 6.x and ODS/API 7.x.
 
 The legacy ODS Admin App user interface supports ODS/API 5.x and 6.x. It is now
 in "maintenance mode", meaning it will only receive critical updates. Formal
-support [will end June 30, 2025](./notifications/admin-app-to-exchange.md).
+support [will end June 30, 2025](./notifications/admin-app-to-community-tools.md).
 
 The new Ed-Fi Admin App user interface was released in December 2025.
 This application provides an all new front-end application paired with the
@@ -125,8 +125,8 @@ information.
 Additional applications formally maintained and supported by the Ed-Fi Alliance:
 
 * [API Publisher](../6-api-publisher/readme.md) works with all supported
-  versions of the Ed-Fi ODS/API
-* [Data Import](../9-data-import/readme.md) works with all supported versions of
+  versions of the Ed-Fi ODS/API and with Ed-Fi API v8.0
+* [Data Import](/getting-started/community-tools/technology/data-import) works with all supported versions of
   the Ed-Fi ODS/API (supported through June 30, 2026)
 
 In all of these cases, only the latest version is formally supported.
@@ -135,9 +135,9 @@ In all of these cases, only the latest version is formally supported.
 
 All versions of these applications are no longer supported.
 
-| Product                             | Notice                                                                            | Ed-Fi Exchange                                                                                                            |
+| Product                             | Notice                                                                            | Ed-Fi Community Tools                                                                                                     |
 | ----------------------------------- | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| Analytics Middle Tier               | [Analytics Middle Tier Transitioning to Ed-Fi Exchange](./notifications/amt.md)   | (coming soon)                                                                                                             |
+| Analytics Middle Tier               | [Transitioning to Ed-Fi Community Tools](./notifications/amt.md)                  | (coming soon)                                                                                                             |
 | Migration Utility Migration Utility | [End of Support Notice and Product Discontinuation](./notifications/migration.md) | [ODS Migration Utility](https://edfi.atlassian.net/wiki/spaces/EXCHANGE/pages/22492292/Migration+Utility)                 |
 | MappingEDU                          | [MappingEDU - Service EOL and Open Source Notice](./notifications/mappingedu.md)  | [MappingEDU](https://edfi.atlassian.net/wiki/spaces/EXCHANGE/pages/22496563/MappingEDU)                                   |
 | LMS Toolkit                         | not available                                                                     | [Ed-Fi LMS Toolkit](https://edfi.atlassian.net/wiki/spaces/EXCHANGE/pages/22498933/Ed-Fi+LMS+Toolkit)                     |

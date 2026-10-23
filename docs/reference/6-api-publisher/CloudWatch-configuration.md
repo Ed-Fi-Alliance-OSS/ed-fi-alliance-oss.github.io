@@ -7,7 +7,7 @@ securely storing keys and secrets in the
 ## Configure AWS SDK
 
 Ensure that the AWS SDK has the necessary
-[configured AWS credentials](https://docs.aws.amazon.com/sdk-for-net/latest/developer-guide/net-dg-config-creds.html).
+[configured AWS credentials](https://docs.aws.amazon.com/sdk-for-net/v4/developer-guide/creds-assign.html).
 
 ## Configure API Publisher
 
@@ -17,7 +17,11 @@ Configure the AWS log storage parameters in the configuration file.
 
 Export AWS credentials to consume AWS parameters store inside the container
 
-![Setup AWS credentials](img/docker/setup-aws-credentials.png)
+```sh
+export AWS_ACCESS_KEY_ID="<access key id>"
+export AWS_SECRET_ACCESS_KEY="<secret access key>"
+export AWS_SESSION_TOKEN="<session token>"
+```
 
 ## Looking for a different output format?
 

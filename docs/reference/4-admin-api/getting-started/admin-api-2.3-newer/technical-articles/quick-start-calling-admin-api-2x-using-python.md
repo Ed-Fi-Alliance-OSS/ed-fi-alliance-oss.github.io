@@ -2549,7 +2549,7 @@ In case you want to create multiple applications, you can use the following
 template and code sample to do so:
 
 CSV file template
-→ [apps.csv](https://edfi.atlassian.net/wiki/download/attachments/21301321/apps.csv?version=2&modificationDate=1721410503374&cacheVersion=1&api=v2)
+→ [apps.csv](https://edfidocs.blob.core.windows.net/$web/assets/reference/3-admin-api/apps.csv)
 
 Columns description
 

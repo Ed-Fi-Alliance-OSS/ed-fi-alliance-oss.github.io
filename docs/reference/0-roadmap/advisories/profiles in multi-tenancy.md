@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 4
 ---
 
 # Advisory: Implementation Error When Using Profiles with Multi-Tenant Deployments

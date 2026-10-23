@@ -1,5 +1,12 @@
 # Assessment Outcomes API Certification for Data Standard v5 - Steps
 
+:::info
+
+The Ed-Fi Assessment Outcomes API for Data Standard v5 Certification is currently under revision to align to the requirements of
+the [Ed-Fi Assessment Native Integration Playbook](https://docs.ed-fi.org/getting-started/provider-playbook/specifics-by-provider-type/assessment-providers/assessment-providers-playbook/part-vi-validation-and-certification). 
+
+:::
+
 There are 14 steps to completing certification: 8 documentation steps (completed
 prior to certification) and 6 tests that MUST be completed.
 
@@ -66,7 +73,7 @@ counterparts.
 
 To help demonstrate what is wanted, view this score report from a fictitious
 vendor: [Sample Score
-Template.pdf](https://edfi.atlassian.net/wiki/download/attachments/23703026/Sample%20Score%20Template.pdf?version=1&modificationDate=1701717860453&cacheVersion=1&api=v2)
+Template.pdf](https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Sample%20Score%20Template.pdf)
 
 </details>
 
@@ -294,7 +301,7 @@ be able to successfully handle such situations.
 <summary>View detail...</summary>
 
 The provider will show evidence, via a live, synchronous meeting and screen sharing, how the product
- integration follows these [API Integration Best Practices](../../certification-for-data-providers/api-integration-best-practices.md) 
+ integration follows these [API Integration Best Practices](../../certification-for-data-providers/api-integration-best-practices.md)
 
 </details>
 

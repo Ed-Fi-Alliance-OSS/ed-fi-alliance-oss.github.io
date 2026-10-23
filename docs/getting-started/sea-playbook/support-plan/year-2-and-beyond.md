@@ -48,4 +48,4 @@ Snapshots are essentially a frozen point-in-time version of the data. They serve
 
 As an example, the diagram shown below shows how the state education agency in Wisconsin uses snapshots in their Ed-Fi Technology Suite integration lifecycle to facilitate state and federal reporting.
 
-![WISEData Technology Suite integration lifecycle](https://edfi.atlassian.net/wiki/download/thumbnails/22908274/image-2024-2-14_17-1-17.png?version=1&modificationDate=1707951677347&cacheVersion=1&api=v2&width=1280&height=642)
+![WISEData Technology Suite integration lifecycle](https://edfidocs.blob.core.windows.net/$web/img/getting-started/sea-playbook/support-plan/image-2024-2-14_17-1-17.png)

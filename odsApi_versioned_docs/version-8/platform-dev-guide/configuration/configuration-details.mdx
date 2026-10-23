@@ -18,8 +18,8 @@ The Ed-Fi API requires a database connection, a reachable Configuration Service,
 and JWT authentication settings to start. In the Docker Compose setup these are
 provided via the `.env` file; in other deployments configure them directly in
 `appsettings.json` or via environment variables. The `JwtAuthentication` section
-points the Ed-Fi API at the token authority — see [Identity
-Provider](./identity-provider.md) for the required keys.
+points the Ed-Fi API at the token authority — see
+[Identity Provider](./identity-provider.md) for the required keys.
 
 - **`AppSettings:Datastore`**
 
@@ -30,9 +30,9 @@ Provider](./identity-provider.md) for the required keys.
 
 - **`ConfigurationServiceSettings:BaseUrl`**
 
-  |             |                                                                                                                                      |
-  | ----------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-  | Example     | `http://ed-fi-api-config:8081`                                                                                                       |
+  |             |                                                                                                                                                |
+  | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Example     | `http://ed-fi-api-config:8081`                                                                                                                 |
   | Description | Base URL of the Configuration Service. The Ed-Fi API contacts this URL at runtime to retrieve claim sets, data stores, and application context |
 
 - **`ConfigurationServiceSettings:EncryptionKey`**
@@ -44,32 +44,32 @@ Provider](./identity-provider.md) for the required keys.
 
 - **`AppSettings:AuthenticationService`**
 
-  |             |                                                                                                                                                                                                                           |
-  | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-  | Example     | `http://ed-fi-api-config:8081/connect/token`                                                                                                                                                                              |
+  |             |                                                                                                                                                                                                                         |
+  | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Example     | `http://ed-fi-api-config:8081/connect/token`                                                                                                                                                                            |
   | Description | Token endpoint the Ed-Fi API forwards `/oauth/token` proxy requests to. Must use the container-network hostname in Docker deployments. Set via `SELF_CONTAINED_OAUTH_TOKEN_ENDPOINT` or `KEYCLOAK_OAUTH_TOKEN_ENDPOINT` |
 
 - **`ConfigurationServiceSettings:ClientSecret`**
 
-  |             |                                                                                                                                                                                                                              |
-  | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-  | Example     | _(generated secret)_                                                                                                                                                                                                         |
+  |             |                                                                                                                                                                                                                                |
+  | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+  | Example     | _(generated secret)_                                                                                                                                                                                                           |
   | Description | Client secret the Ed-Fi API uses to authenticate to the Configuration Service as the `CMSReadOnlyAccess` client. Must match the secret configured in the Configuration Service. Set via `CONFIG_SERVICE_CLIENT_SECRET` env var |
 
 ### Optional Settings
 
 - **`AppSettings:MultiTenancy`**
 
-  |             |                                                                                                                                              |
-  | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-  | Default     | `false`                                                                                                                                      |
+  |             |                                                                                                                                                                                         |
+  | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `false`                                                                                                                                                                                 |
   | Description | When `true`, enables multi-tenancy mode. The tenant identifier is extracted from the URL route. See [Single and Multi-Tenant Configuration](./single-and-multi-tenant-configuration.md) |
 
 - **`AppSettings:RouteQualifierSegments`**
 
-  |             |                                                                                                                                                                                                                                                                  |
-  | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-  | Default     | _(empty)_                                                                                                                                                                                                                                                        |
+  |             |                                                                                                                                                                                                                                                                                                                   |
+  | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | _(empty)_                                                                                                                                                                                                                                                                                                         |
   | Description | Comma-separated list of route qualifier segments extracted from the URL path. Example: `districtId,schoolYear`. Segments must match `dataStoreContexts` configured in the Configuration Service. See [Context-Based Routing for Year-Specific Data Store](./context-based-routing-for-year-specific-datastore.md) |
 
 - **`AppSettings:BypassTypeCoercion`**
@@ -88,24 +88,24 @@ Provider](./identity-provider.md) for the required keys.
 
 - **`AppSettings:MaskRequestBodyInLogs`**
 
-  |             |                                                                                                                                                                                                            |
-  | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-  | Default     | `true`                                                                                                                                                                                                          |
+  |             |                                                                                                                                                                                                                            |
+  | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `true`                                                                                                                                                                                                                     |
   | Description | When `true`, masks request body content in `DEBUG`-level log statements by replacing all scalar values with `"*"`. When `false`, the full unmasked body is logged. See [Logging Configuration](./logging-configuration.md) |
 
 - **`AppSettings:UseApiSchemaPath`**
 
   |             |                                                                                                                                                                             |
   | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-  | Default     | `false`; Docker Compose env var `USE_API_SCHEMA_PATH` defaults to `true` in `.env.example`                                                                                                                                                                      |
+  | Default     | `false`; Docker Compose env var `USE_API_SCHEMA_PATH` defaults to `true` in `.env.example`                                                                                  |
   | Description | When `true`, loads the API schema (core and extensions) from the directory specified by `ApiSchemaPath`. When `false`, loads the bundled schema from the application output |
 
 - **`AppSettings:ApiSchemaPath`**
 
-  |             |                                                                                                                                                                                                                                                                                          |
-  | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-  | Default     | _(empty)_; Docker Compose env var `API_SCHEMA_PATH` defaults to `/app/ApiSchema` in `.env.example`                                                                                                                                                                                                                                                                         |
-  | Description | Directory containing `bootstrap-api-schema-manifest.json` and the declared schema files. Used when `UseApiSchemaPath` is `true`. Extension `ApiSchema.json` files placed in this directory are automatically loaded. See [Extending with MetaEd](../extensibility/extending-with-metaed.md) |
+  |             |                                                                                                                                                                                                                                                                                                 |
+  | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | _(empty)_; Docker Compose env var `API_SCHEMA_PATH` defaults to `/app/ApiSchema` in `.env.example`                                                                                                                                                                                              |
+  | Description | Directory containing `bootstrap-api-schema-manifest.json` and the declared schema files. Used when `UseApiSchemaPath` is `true`. Extension `ApiSchema.json` files placed in this directory are automatically loaded. See [Extending API DataModel](../extensibility-customization/extending-api-datamodel.md) |
 
 - **`AppSettings:DomainsExcludedFromOpenApi`**
 
@@ -116,16 +116,16 @@ Provider](./identity-provider.md) for the required keys.
 
 - **`CacheSettings:ClaimSetsCacheExpirationSeconds`**
 
-  |             |                                                                                                    |
-  | ----------- | -------------------------------------------------------------------------------------------------- |
-  | Default     | `600`                                                                                              |
+  |             |                                                                                                                 |
+  | ----------- | --------------------------------------------------------------------------------------------------------------- |
+  | Default     | `600`                                                                                                           |
   | Description | Seconds before cached claim sets (the claims taxonomy) expire and are re-fetched from the Configuration Service |
 
 - **`CacheSettings:ApplicationContextCacheExpirationSeconds`**
 
-  |             |                                                                                              |
-  | ----------- | -------------------------------------------------------------------------------------------- |
-  | Default     | `600`                                                                                        |
+  |             |                                                                                                    |
+  | ----------- | -------------------------------------------------------------------------------------------------- |
+  | Default     | `600`                                                                                              |
   | Description | Seconds before cached application context expires and is re-fetched from the Configuration Service |
 
 - **`CacheSettings:TokenCacheExpirationSeconds`**
@@ -137,23 +137,23 @@ Provider](./identity-provider.md) for the required keys.
 
 - **`CacheSettings:ProfileCacheExpirationSeconds`**
 
-  |             |                                                                                    |
-  | ----------- | ---------------------------------------------------------------------------------- |
-  | Default     | `1800`                                                                             |
+  |             |                                                                                                    |
+  | ----------- | -------------------------------------------------------------------------------------------------- |
+  | Default     | `1800`                                                                                             |
   | Description | Seconds before cached profile definitions expire and are re-fetched from the Configuration Service |
 
 - **`CacheSettings:DataStoreCacheExpirationSeconds`**
 
-  |             |                                                                                       |
-  | ----------- | ------------------------------------------------------------------------------------- |
-  | Default     | `600`                                                                                 |
+  |             |                                                                                                                                                                                                                                                |
+  | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `600`                                                                                                                                                                                                                                          |
   | Description | Seconds before cached data store configuration expires and is re-fetched from the Configuration Service. Requires `DataStoreCacheRefreshEnabled` to be `true`. Set to `0` or a negative value to keep the cache until the next explicit reload |
 
 - **`CacheSettings:DataStoreCacheRefreshEnabled`**
 
-  |             |                                                                                       |
-  | ----------- | ------------------------------------------------------------------------------------- |
-  | Default     | `true`                                                                                |
+  |             |                                                                                                                                                                                                                                                                                                                                                                                              |
+  | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `true`                                                                                                                                                                                                                                                                                                                                                                                       |
   | Description | Enables TTL-based automatic refresh of the cached data store configuration from the Configuration Service. When `true`, Ed-Fi API re-fetches data store settings once a cache entry is older than `DataStoreCacheExpirationSeconds`, so changes made in the Configuration Service propagate without a restart. When `false`, the cached configuration is kept until the next explicit reload |
 
 - **`AppSettings:PathBase`**
@@ -193,16 +193,16 @@ Provider](./identity-provider.md) for the required keys.
 
 - **`AppSettings:IdentityProvider`**
 
-  |             |                                                                                                                                |
-  | ----------- | ------------------------------------------------------------------------------------------------------------------------------ |
-  | Default     | `self-contained`                                                                                                               |
+  |             |                                                                                                                                   |
+  | ----------- | --------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `self-contained`                                                                                                                  |
   | Description | Authentication provider. Valid values: `self-contained` (OpenIddict), `keycloak`. See [Identity Provider](./identity-provider.md) |
 
 - **`DatabaseSettings:EncryptionKey`**
 
-  |             |                                                                                                                                                                                                                                                |
-  | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-  | Example     | `MySecretKey1234567890123456789012`                                                                                                                                                                                                            |
+  |             |                                                                                                                                                                                                                                                      |
+  | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Example     | `MySecretKey1234567890123456789012`                                                                                                                                                                                                                  |
   | Description | AES key used to encrypt data store connection strings at rest. Must match `ConfigurationServiceSettings:EncryptionKey` in the Ed-Fi API. Set via `DMS_CONFIG_DATABASE_ENCRYPTION_KEY` environment variable. Recommended: a 32-character ASCII string |
 
 ### Optional Settings
@@ -223,9 +223,9 @@ Provider](./identity-provider.md) for the required keys.
 
 - **`AppSettings:PathBase`**
 
-  |             |                                                                                                                                                                 |
-  | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-  | Default     | _(empty)_; Docker Compose env var `DMS_CONFIG_PATH_BASE` defaults to `config` in `.env.example`                                                                 |
+  |             |                                                                                                                                          |
+  | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | _(empty)_; Docker Compose env var `DMS_CONFIG_PATH_BASE` defaults to `config` in `.env.example`                                          |
   | Description | URL base segment for all Configuration Service endpoints. Example: with `PathBase=config`, the management API is at `/config/v3/vendors` |
 
 - **`AppSettings:TokenRequestTimeoutSeconds`**
@@ -244,23 +244,23 @@ Provider](./identity-provider.md) for the required keys.
 
 - **`AppSettings:ReverseProxy:KnownProxies`**
 
-  |             |                                                                                                                    |
-  | ----------- | ------------------------------------------------------------------------------------------------------------------ |
-  | Default     | _(empty)_                                                                                                          |
+  |             |                                                                                                                                           |
+  | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | _(empty)_                                                                                                                                 |
   | Description | Comma-separated list of trusted proxy IP addresses (e.g. `10.0.0.1,10.0.0.2`). Restricts which proxies may supply forwarded-header values |
 
 - **`AppSettings:ReverseProxy:KnownNetworks`**
 
-  |             |                                                                                                                                     |
-  | ----------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-  | Default     | _(empty)_                                                                                                                           |
+  |             |                                                                                                                                              |
+  | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | _(empty)_                                                                                                                                    |
   | Description | Comma-separated list of trusted proxy CIDR networks (e.g. `192.168.1.0/24,10.0.0.0/8`). Extends `KnownProxies` to cover a range of addresses |
 
 - **`AppSettings:EnableApplicationResetEndpoint`**
 
-  |             |                                                                                                                                                                                                                                            |
-  | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-  | Default     | `false`                                                                                                                                                                                                                                    |
+  |             |                                                                                                                                                                                                                                              |
+  | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `false`                                                                                                                                                                                                                                      |
   | Description | When `true`, enables `PUT /v3/applications/{id}/reset-credential` for resetting API client credentials via API. Disable when an application supports multiple API clients, as resetting credentials affects all clients for that application |
 
 - **`IdentitySettings:ClientSecretValidation:MinimumLength`**

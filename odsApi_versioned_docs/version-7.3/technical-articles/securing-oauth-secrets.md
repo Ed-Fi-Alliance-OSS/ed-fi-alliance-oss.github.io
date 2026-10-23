@@ -17,7 +17,7 @@ transformed into the hashed password. There are several mathematically complex
 hashing algorithms that work for this purpose.
 
 By default, the Ed-Fi ODS / API stores OAuth secrets securely using
-PBKDF2-HMACSHA1 algorithm in deployment environments. For ease of use, the
+PBKDF2-HMAC-SHA256 algorithm in deployment environments. For ease of use, the
 development environment does not use hashing by default.
 
 The hash implementation in the Ed-Fi ODS / API is resilient to hash algorithm
@@ -32,7 +32,7 @@ re-hashed using the new algorithm and the hashing method details are updated.
 
 ## Default Hashing
 
-As noted above, the default algorithm used for hashing is PBKDF2-HMACSHA1, and
+As noted above, the default algorithm used for hashing is PBKDF2-HMAC-SHA256, and
 is implemented in EdFi.Common.Security. The ODS/ API uses the
 following values. No manual scripts are necessary to hash existing
 secrets. Existing vendor secrets are upgraded from plain text to the a hashed

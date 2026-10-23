@@ -43,6 +43,7 @@ is missing.
 | `PORT` | `3000` | TCP port the Node service listens on. |
 | `API_BASE_PATH` | _(empty)_ | Set when the service is hosted under a virtual directory (for example, `/oneroster` behind IIS). Used to generate deterministic discovery URLs. |
 | `NODE_ENV` | `dev` | Set to `prod` (or empty) for production. Influences logging verbosity. |
+| `MAX_PAGE_SIZE` | `500` | Optional: maximum number of records a single collection request may return. Requests with a larger 'limit' are clamped to this value rather than rejected. Must be a positive integer no greater than 10000. |
 
 ## Connection and tenancy
 

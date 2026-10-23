@@ -12,7 +12,7 @@ This ID helps provide for compatibility with REST conventions. For example, a Co
 
 In the JSON, the resource ID appears as the "id" element
 
-![Resource ID screenshot](https://edfi.atlassian.net/wiki/download/thumbnails/22905241/json-resourceid.png?version=3&modificationDate=1561127014607&cacheVersion=1&api=v2&width=791&height=234)
+![Resource ID screenshot](https://edfidocs.blob.core.windows.net/$web/img/getting-started/provider-playbook/implementation/ed-fi-api-fundamentals/json-resourceid.png)
 
 _Figure 1: the resource ID in the JSON._
 
@@ -24,7 +24,7 @@ To improve data quality and maximize the possibility for data to move between sy
 
 The key for an entity can be looked up by using the [Unifying Data Model - Handbook](/reference/data-exchange/udm/udm-handbook) version appropriate to the Data Standard in use and looking under the column “Identity” – key fields are indicated there. For example, for the CourseOffering entity, this page appears:
 
-![Handbook Offering](https://edfi.atlassian.net/wiki/download/thumbnails/22905241/handbook-courseoffering.png?version=2&modificationDate=1561126990507&cacheVersion=1&api=v2&width=1162&height=367)
+![Handbook Offering](https://edfidocs.blob.core.windows.net/$web/img/getting-started/provider-playbook/implementation/ed-fi-api-fundamentals/handbook-courseoffering.png)
 
 _Figure 3: natural key fields are shown by looking at the "identity" column in the UDM Handbook._
 
@@ -70,7 +70,7 @@ Note in the JSON above that schoolId appears twice, but we only list it once as 
 
 How do you know when fields are being unified? This information is declared in the Ed-Fi Data Handbook under the Merge column.
 
-![Handbook Screenshot](https://edfi.atlassian.net/wiki/download/thumbnails/22905241/handbook-merge.png?version=2&modificationDate=1561126980177&cacheVersion=1&api=v2&width=1280&height=378)
+![Handbook Screenshot](https://edfidocs.blob.core.windows.net/$web/img/getting-started/provider-playbook/implementation/ed-fi-api-fundamentals/handbook-merge.png)
 
 _Figure 5: the "Merge" column shows which fields in the entity are merged - this merging is most common with key fields._
 

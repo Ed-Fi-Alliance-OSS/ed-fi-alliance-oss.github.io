@@ -439,7 +439,7 @@ Repeat this meeting until major issues are addressed.
 
 ![Ed-Fi Governance Playbook](https://edfidocs.blob.core.windows.net/%24web/static/img/sea-playbook/page-32-v2.webp)
 
-See [Recommended Ed-Fi Data Goverance Playbook: Resolution Task Force (RTF) Meetings Slide](https://edfidocs.blob.core.windows.net/%24web/static/assets/sea-playbook/Ed-Fi%20Data%20Governance%20Playbook.pdf)
+See [Recommended Ed-Fi Data Governance Playbook: Resolution Task Force (RTF) Meetings Slide](https://edfidocs.blob.core.windows.net/%24web/assets/getting-started/sea-playbook/Ed-Fi%20Data%20Governance%20Playbook.pdf)
 
 ### Parallel Phase (12 Months)
 

@@ -83,7 +83,7 @@ It is assumed that once a unique ID is obtained by a client, it will be stored
 in client applications as a way to easily sync data between the client and
 platform from that point forward.
 
-![image](https://edfi.atlassian.net/wiki/download/thumbnails/25493777/image2019-8-2_12-17-37.png?version=1&modificationDate=1699456134310&cacheVersion=1&api=v2&width=400&height=482)
+![image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2019-8-2_12-17-37.png)
 
 A description of each step follows.
 

@@ -111,7 +111,7 @@ can stay connected in near real-time. The API uses JSON for real-time and
 transactional data exchange. There are also utilities that can aid in uploading
 data in batch mode via the API (e.g., [Bulk Load Client
 Utility](../platform-dev-guide/utilities/bulk-load-client-utility.md) can be
-used to bulk load XML data and [Data Import](/reference/data-import) can be used
+used to bulk load XML data and [Data Import](/getting-started/community-tools/technology/data-import) can be used
 to bulk load CSV data).
 
 The Ed-Fi API supports the following HTTP verbs:
@@ -128,6 +128,23 @@ The Ed-Fi API supports the following HTTP verbs:
 - **PUT** An HTTP PUT performs an idempotent update of an existing resource. PUT
   performs a full replacement of the existing resource with the supplied value.
 - **DELETE** An HTTP DELETE deletes an existing individual resource.
+
+### JSON Member Order
+
+The order of members within a JSON object is never significant. [RFC
+8259](https://www.rfc-editor.org/rfc/rfc8259), the JSON specification, defines
+an object as an unordered collection of name/value pairs, and the Ed-Fi API
+follows that rule. For example, the identity members of a resource or of a
+reference such as `studentReference` or `schoolReference` can appear in any
+order in a request body. Clients should not depend on the order of members in a
+response either.
+
+Member order is different from resource load order, which does matter. A
+resource can only be created after the resources it references exist: for
+example, a `StudentSchoolAssociation` requires the `Student` and the `School`
+to be loaded first. See [Resource Dependency
+Order](./resource-dependency-order/readme.mdx) for the order in which to load
+resources.
 
 ## Security
 

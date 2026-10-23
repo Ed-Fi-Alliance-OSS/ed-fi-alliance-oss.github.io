@@ -54,7 +54,7 @@ Without unlocking the `handlers` section, requests to the API return **HTTP 500.
 
 The Admin App supports PostgreSQL 16+ and SQL Server 2017+, and needs only one. This guide uses **SQL Server** by default on Windows; PostgreSQL is available via Docker (requires Docker Desktop in Linux-container mode).
 
-For SQL Server, run these steps as a Windows account that is a SQL Server sysadmin (Windows Authentication); the `sa` login is not required:
+For **SQL Server**, run these steps as a Windows account that is a SQL Server sysadmin (Windows Authentication); the `sa` login is not required:
 
 1. Enable **Mixed Mode (SQL Server and Windows) authentication** (the Node `mssql` driver connects with SQL authentication).
 2. Enable the **TCP/IP** protocol and confirm it listens on port **1433** (the driver requires TCP).
@@ -78,7 +78,17 @@ Some special characters are not currently supported in the Admin App database us
 Installing the Admin App database in its own SQL Server instance, separate from the ODS/API databases (`EdFi_Admin`, `EdFi_Security`), is recommended.
 :::
 
-For PostgreSQL, see [Configuring the Admin App](../../configuration/configuring-admin-app.md).
+For a managed **Azure SQL Database**, provision the logical server (with SQL authentication enabled and an admin login), a firewall rule for the client's public IP, and an empty database through the Azure portal or CLI first — the local-instance steps above (Mixed Mode, TCP/IP) do not apply. Create the Admin App login as a _contained user_, which lives entirely in the application database and needs no login in `master`. Connect to that database first, since a session cannot switch databases on Azure SQL Database:
+
+```sql
+-- Connected to the application database as the server admin.
+CREATE USER [edfi_adminapp] WITH PASSWORD = N'YourStrong!AppPassw0rd';
+ALTER ROLE db_owner ADD MEMBER [edfi_adminapp];
+```
+
+Azure SQL rejects a password that contains the login name, so avoid `edfi_adminapp` in the value.
+
+For **PostgreSQL**, see [Configuring the Admin App](../../configuration/configuring-admin-app.md#postgresql-setup).
 
 ### Node.js
 
@@ -294,6 +304,19 @@ The API is deployed as a standalone IIS site, `EdFi-AdminApp-API`, with an HTTP 
      RATE_LIMIT_LIMIT: 10,
    };
    ```
+
+   For a managed **Azure SQL Database**, change the host and the two values that control the connection's encryption:
+
+   ```javascript
+     DB_TRUST_CERTIFICATE: false, // Azure SQL presents a CA-issued certificate: validate it
+     DB_SSL: true,                // request encryption; Azure SQL requires it
+     DB_SECRET_VALUE: {
+       MSSQL_DB_HOST: 'myserver.database.windows.net',
+       // the remaining values are unchanged
+     },
+   ```
+
+   `DB_SSL` is the driver's `encrypt` flag. Left at `false`, the API cannot connect to Azure SQL at all, because the server requires encryption; and `DB_TRUST_CERTIFICATE: false` only takes effect once encryption is requested.
 
 7. **Create the log directory**:
    - Create `C:\inetpub\EdFi-AdminApp-API\logs` (httpPlatform writes Node's stdout to `logs\node-stdout.log`).

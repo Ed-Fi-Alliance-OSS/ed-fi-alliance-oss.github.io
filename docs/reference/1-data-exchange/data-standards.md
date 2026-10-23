@@ -4,6 +4,60 @@ sidebar_position: 0
 
 # About the Ed-Fi Data Standard
 
+## What is the Ed-Fi Data Standard?
+
+The Ed-Fi Data Standard is the widely adopted, CEDS-aligned, open-source data
+standard developed by the educational community for the betterment of the
+community. The Ed-Fi Data Standard serves as the foundation for enabling
+interoperability among secure data systems and contains a [Unifying Data
+Model](./udm/readme.md) designed to capture the meaning and inherent structure
+in the most important information in the K–12 education enterprise.
+
+### What it is and is not
+
+* **It is a specification.** It describes the meaning and structure of
+  education data. It is not software: the [Ed-Fi ODS/API](../2-ods-api-platform/readme.mdx) and
+  [Ed-Fi API v8](/reference/ed-fi-api/8) are Ed-Fi Alliance products that
+  implement it, and any party can build a compatible API by following the [Ed-Fi
+  API Guidelines](./api-guidelines/readme.md).
+* **It is not a database or a reporting tool.** It defines what is exchanged,
+  not how a system stores or reports on that data.
+* **It does not cover everything a school records.** See [What does the Ed-Fi
+  Data Standard cover?](#what-does-the-ed-fi-data-standard-cover) for what is
+  in scope and what is deliberately left out.
+* **It is versioned.** Each major version supports specific school years. See
+  [Active Versions](#active-versions).
+
+### Who uses it
+
+* **Technology providers**, such as student information system and assessment
+  vendors, build API clients that send data to or read data from an agency's
+  API. See the [Technology Providers
+  Playbook](/getting-started/provider-playbook).
+* **State education agencies** use it to collect data from districts and
+  vendors. See the [SEA Playbook](/getting-started/sea-playbook).
+* **Education service agencies and districts** use it to bring data from many
+  products together. See the [ESA Playbook](/getting-started/esa-playbook).
+
+For example, when a student enrolls, the district's student information system
+sends a `StudentSchoolAssociation` record to the agency's API. Later, an
+assessment vendor sends that student's results to the same API. Because both
+follow the Data Standard, the agency can connect the records without a custom
+mapping for each vendor.
+
+### How it relates to the Unifying Data Model and APIs
+
+* The [Ed-Fi Unifying Data Model (UDM)](./udm/readme.md) is the logical model
+  behind the Data Standard. It is non-normative and keeps the Data Standard's
+  specifications consistent with each other. See [What is the purpose of the
+  Ed-Fi Unifying Data
+  Model?](#what-is-the-purpose-of-the-ed-fi-unifying-data-model)
+* The Ed-Fi Alliance's normative standards include the API endpoint
+  descriptions and JSON messages in the [Ed-Fi API
+  Specifications](./readme.md#ed-fi-api-specifications). See [What standards do
+  the Ed-Fi Alliance publish?](#what-standards-do-the-ed-fi-alliance-publish) The
+  Ed-Fi ODS/API and Ed-Fi API v8 implement those specifications.
+
 ## Active Versions
 
 ### Version 6.x
@@ -61,6 +115,38 @@ The Ed-Fi Data Standard focuses on K–12 information related to students and th
 * Basic information from students' Pre-K and post-secondary experiences.
 
 The standard is student-centric, meaning that detailed data is described at the individual student level. Many Ed-Fi Technology Suite aggregate or otherwise process information to give a look at school, district, and state-level trends – but central to our philosophy is that any aggregation should be calculated based on student-level information, since each student's story is unique.
+
+Data Standard 6 organizes this information into domains, including:
+
+* Enrollment, education organizations, school calendars, and bell schedules
+* Student identification and demographics
+* Student attendance (daily and class period)
+* Assessment, student academic records (grades, report cards, transcripts), and graduation
+* Teaching and learning (courses, sections, and student class schedules)
+* Programs, through the Alternative and Supplemental Services domain, including
+  special education, Title I, migrant, and school food service program participation
+* Discipline, interventions, and student cohorts
+* Student health, which currently holds immunization records
+* Staff, credentials and certifications, educator preparation, recruiting and staffing, and performance evaluation
+* Finance and surveys
+
+Data Standard 6.1 also includes the Special Education Data Model domain as
+early access material. See [Ed-Fi
+Domains](/reference/data-exchange/udm/getting-started/ed-fi-domains) for a
+description of each domain and the [Model
+Reference](/reference/data-exchange/data-standard/model-reference) for the
+complete list and entity details.
+
+Some things are deliberately outside the standard:
+
+* **Calculated or aggregate values**, such as attendance rates or average daily
+  attendance. Attendance is recorded as individual events, and aggregates are
+  expected to be calculated from that student-level data.
+* **Health records beyond immunizations.** The Student Health domain may grow
+  in the future, but immunizations are its current scope.
+* **Data unique to one state or district.** Agencies capture this through
+  [extensions](#why-is-the-ed-fi-data-standard-extensible-doesnt-that-work-against-interoperability)
+  rather than the core standard.
 
 ### What standards do the Ed-Fi Alliance publish?
 

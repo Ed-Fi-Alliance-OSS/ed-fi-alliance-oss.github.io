@@ -48,15 +48,16 @@ In addition, in the ODS/API's **EdFi_Security** database (by direct SQL):
 | Ed-Fi ODS/API and ODS Admin API | Installed and reachable at the URLs configured in `.env` (defaults assume the local stack at `https://localhost`) |
 | Admin API client registration enabled | `Authentication:AllowRegistration=true` in the Admin API's `appsettings.json` while the scripts run — the Admin App registers its **own** client credentials at `POST /connect/register` when creating the environment, so this is required even if a client was already registered manually (previously created clients are not reused). Re-enable it if it was turned off after first-time setup; it can be disabled again afterwards |
 | Ed-Fi Admin App | Deployed with its database migrated (migrations seed the built-in roles the scripts reference — `Global admin`, `Tenant admin`, `Full ownership`) |
+| SQL Server reachable | Both SQL Server databases the scripts touch — the Admin App application database and the ODS/API's `EdFi_Security` — may be local or remote, including a managed Azure SQL Database, which requires SQL authentication; see [Managed Azure SQL Database](./quick-start-appendix.md#managed-azure-sql-database) |
 | Identity provider (OIDC) | Configured for the Admin App, with a bootstrap global-admin user you can sign in as — see [Configuring an Identity Provider for Ed-Fi Admin App](/reference/admin-app/configuration/identity-provider) |
-| ODS instances registered in `EdFi_Admin` | Every instance listed in `ODSS_JSON` must exist in `EdFi_Admin.dbo.OdsInstances` on the target ODS/API — the scripts do not create them; see [Set Up the ODS Instances](run-the-quick-start#set-up-the-ods-instances-odss_json) |
+| ODS instances registered in `EdFi_Admin` | Every instance listed in `ODSS_JSON` must exist in `EdFi_Admin.dbo.OdsInstances` on the target ODS/API — the scripts do not create them; see [Set Up the ODS Instances](./run-the-quick-start.md#set-up-the-ods-instances-odss_json) |
 
 :::info
 
 The ODS instance ids **and names** in `ODSS_JSON` must match real rows in
 `EdFi_Admin.dbo.OdsInstances` on the target ODS/API — otherwise the sync will
 not find them and the ODS lists will be empty.
-[Set Up the ODS Instances](run-the-quick-start#set-up-the-ods-instances-odss_json)
+[Set Up the ODS Instances](./run-the-quick-start.md#set-up-the-ods-instances-odss_json)
 covers how to check the table and create missing rows before running the
 scripts.
 
@@ -90,11 +91,11 @@ which is why registration must remain enabled while the scripts run.
 
 ## Steps Overview
 
-1. [Run the Scripts](run-the-quick-start) — clone the scripts repository,
+1. [Run the Scripts](./run-the-quick-start.md) — clone the scripts repository,
    configure the `.env` file, and run the scripts
-2. [Machine User Setup](machine-user-setup) — _optional_: how the machine
+2. [Machine User Setup](./machine-user-setup.md) — _optional_: how the machine
    (service-account) user that calls the Admin App API works, and how to
    configure it manually (Keycloak console steps)
 
-See the [Appendix](quick-start-appendix) for the full `.env` variable
+See the [Appendix](./quick-start-appendix.md) for the full `.env` variable
 reference, script options, and troubleshooting.

@@ -597,7 +597,7 @@ Steps to deploy the application:
 
 9. The application is ready to use.
 
-    ![Swagger UI](https://edfi.atlassian.net/wiki/download/attachments/22774363/image08.png?version=1&modificationDate=1641861350230&cacheVersion=1&api=v2)
+    ![Swagger UI](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image08.png)
 
 App Settings:
 
@@ -633,9 +633,9 @@ accounts be used as connection criteria from the API.
 ### Sandbox Deployment in Azure and AWS Environments
 
 Documentation and scripts for deployment of an Ed-Fi ODS / API instance in
-Microsoft Azure and Amazon Web Services can be found in the Ed-Fi Exchange. To
+Microsoft Azure and Amazon Web Services can be found in the Ed-Fi Community Tools. To
 locate these, navigate
-to [https://exchange.ed-fi.org](https://exchange.ed-fi.org), and browse to the
+to [Ed-Fi Community Tools](/getting-started/community-tools/technology), and browse to the
 following entries:
 
 * **Ed-Fi ODS/API on AWS**
@@ -643,7 +643,7 @@ following entries:
 
 :::warning
 
-These scripts in the Ed-Fi Exchange may have been developed for older versions
+These scripts in the Ed-Fi Community Tools may have been developed for older versions
 of the Ed-Fi ODS/API, and therefore may need modification to work with this
 version.
 
