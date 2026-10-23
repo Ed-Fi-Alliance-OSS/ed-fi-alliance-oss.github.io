@@ -27,6 +27,67 @@ const PLAYBOOKS = [
   },
 ];
 
+// Newcomer explanation sourced from "About the Ed-Fi Data Standard" and the
+// ESA playbook's "What Is an Ed-Fi Data Hub?" section
+const ROLES = [
+  {
+    role: 'State education agency',
+    title: 'SEA Playbook',
+    to: '/getting-started/sea-playbook',
+  },
+  {
+    role: 'Technology provider',
+    title: 'Technology Provider Playbook',
+    to: '/getting-started/provider-playbook',
+  },
+  {
+    role: 'Educational service agency',
+    title: 'ESA Playbook',
+    to: '/getting-started/esa-playbook',
+  },
+  {
+    role: 'School district',
+    title: 'What Is an Ed-Fi Data Hub?',
+    to: '/getting-started/esa-playbook#what-is-an-ed-fi-data-hub',
+    description:
+      "how district systems send data to a hub's Ed-Fi API, usually run by an ESA or a state.",
+  },
+  {
+    role: 'Developer learning the Ed-Fi API',
+    title: 'Tutorial: Interacting with an Ed-Fi API',
+    to: '/reference/data-exchange/tutorial',
+  },
+];
+
+function NewToEdFi() {
+  return (
+    <div className="card shadow--md margin-top--md margin-bottom--sm padding--md">
+      <Heading as="h2">New to Ed-Fi?</Heading>
+      <p>
+        The Ed-Fi Data Standard is a widely adopted, open-source data standard
+        developed by the education community. It is the foundation for
+        interoperability among K–12 education data systems. Ed-Fi API platforms,
+        the Ed-Fi ODS/API and Ed-Fi API v8, implement the standard so that
+        systems such as student information, assessment, and analytics systems
+        can exchange data. Learn more in{' '}
+        <Link to="/reference/data-exchange/data-standards">
+          About the Ed-Fi Data Standard
+        </Link>
+        .
+      </p>
+      <Heading as="h3">Start here by role</Heading>
+      <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+        {ROLES.map((r) => (
+          <li key={r.to} className="margin-bottom--sm">
+            <strong>{r.role}:</strong> <Link to={r.to}>{r.title}</Link>
+            {r.description && <> — {r.description}</>}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 function Playbooks() {
   return (
     <div className="card shadow--md margin-top--md margin-bottom--sm padding--md">
@@ -110,6 +171,11 @@ function Main() {
   return (
     <div className="main">
       <div className="container">
+        <div className="row">
+          <div className="col col--12">
+            <NewToEdFi />
+          </div>
+        </div>
         <div className="row">
           <div className="col col--12">
             <Playbooks />
