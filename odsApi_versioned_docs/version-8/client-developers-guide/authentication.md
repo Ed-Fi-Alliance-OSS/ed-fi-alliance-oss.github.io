@@ -70,7 +70,6 @@ $token = Invoke-RestMethod -Method Post -Uri "http://localhost:8081/connect/toke
 
 :::tip
 
-The string following "Basic" is a Base64-encoded version of `{key}:{secret}`.
 Alternatively, an implementation _may_ provide the credentials in the form
 body instead of in an Authorization header. The Ed-Fi software will not
 write that form body out to a log file, but a network router or proxy server
@@ -83,7 +82,7 @@ more secure by default.
 
 ```bash
 curl -X POST http://localhost:8081/connect/token \
-  -H "Authorization: Basic UnZjb2hLejl6SEk0OkUxaUVGdXNhTmY4MXh6Q3h3SGZib2xrQw==" \
+  -H "Authorization: Basic cG9wdWxhdGVkS2V5OnBvcHVsYXRlZFNlY3JldA==" \
   -H "Content-Type: application/x-www-form-urlencoded" \
   -d "grant_type=client_credentials"
 ```

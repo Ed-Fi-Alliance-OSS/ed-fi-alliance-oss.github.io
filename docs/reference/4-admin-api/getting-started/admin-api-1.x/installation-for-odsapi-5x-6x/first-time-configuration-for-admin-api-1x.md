@@ -57,17 +57,6 @@ authorization token.
 curl -X POST https://your-admin-api/connect/token -u YourClientId:YourClientSecret -H "Content-Type: application/x-www-form-urlencoded" -d "grant_type=client_credentials"
 ```
 
-:::tip
-
-The string following "Basic" is a Base64-encoded version of `{key}:{secret}`.
-Alternatively, an implementation _may_ provide the credentials in the form
-body instead of in an Authorization header. The Ed-Fi software will not
-write that form body out to a log file, but a network router or proxy server
-might do so. Therefore the `Authorization` header approach is considered
-more secure by default.
-
-:::
-
 This should return a JSON result including a bearer token. Note that the above
 request does _not_ include a request scope, so the token will be invalid for
 accessing most endpoints. See [Securing Admin

@@ -190,20 +190,6 @@ curl -X POST <issuer-token-endpoint> \
   -d "scope=https://purl.imsglobal.org/spec/or/v1p2/scope/roster-core.readonly" \
   -d "audience=<OAUTH2_AUDIENCE>"
 
-```
-
-:::tip
-
-The string following "Basic" is a Base64-encoded version of `{key}:{secret}`.
-Alternatively, an implementation _may_ provide the credentials in the form
-body instead of in an Authorization header. The Ed-Fi software will not
-write that form body out to a log file, but a network router or proxy server
-might do so. Therefore the `Authorization` header approach is considered
-more secure by default.
-
-:::
-
-```bash
 # Then:
 curl -i http://localhost:3000/ims/oneroster/rostering/v1p2/orgs \
   -H "Authorization: Bearer <access_token>"
