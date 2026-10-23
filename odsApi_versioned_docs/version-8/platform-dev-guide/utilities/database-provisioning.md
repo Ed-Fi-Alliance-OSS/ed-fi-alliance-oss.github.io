@@ -79,8 +79,8 @@ database. It provides three commands:
 The `--schema` inputs are the same `ApiSchema.json` files the Ed-Fi API loads at
 runtime: the core Ed-Fi Data Standard schema followed by any extension schemas
 produced by MetaEd. The first `--schema` path is the core schema; the rest are
-extensions. See [Extending with
-MetaEd](../extensibility/extending-with-metaed.md) and the `ApiSchemaPath`
+extensions. See [Extending API
+DataModel](../extensibility-customization/extending-api-datamodel.md) and the `ApiSchemaPath`
 setting in [Configuration Details](../configuration/configuration-details) for
 how the runtime locates these files.
 

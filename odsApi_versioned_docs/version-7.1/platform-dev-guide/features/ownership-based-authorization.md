@@ -242,7 +242,7 @@ updated to allow configuration of multiple authorization strategies for the
 default resource claim/action "tuples" as well as for claim set-specific
 overrides.
 
-![image](https://edfi.atlassian.net/wiki/download/attachments/25493657/image2022-2-3_10-42-35.png?version=1&modificationDate=1699456105887&cacheVersion=1&api=v2)
+![image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2022-2-3_10-42-35.png)
 
 ### EdFi_Admin Database
 
@@ -254,11 +254,11 @@ to identify which resource items they currently "own", and the authorization
 process will filter results and access against this list against based on the
 target resource's "CretedByOwnershipTokenId" value.
 
-![image](https://edfi.atlassian.net/wiki/download/thumbnails/25493657/image2022-2-3_10-36-52.png?version=1&modificationDate=1699456105873&cacheVersion=1&api=v2&width=683&height=679)
+![image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2022-2-3_10-36-52.png)
 
 ### Ed-Fi ODS Database
 
 Each aggregate root entity table in the ODS has a CretedByOwnershipTokenId field
 used to assign an ownership token to each record.
 
-![image](https://edfi.atlassian.net/wiki/download/attachments/25493657/image2022-2-3_10-37-3.png?version=1&modificationDate=1699456105880&cacheVersion=1&api=v2)
+![image](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2022-2-3_10-37-3.png)

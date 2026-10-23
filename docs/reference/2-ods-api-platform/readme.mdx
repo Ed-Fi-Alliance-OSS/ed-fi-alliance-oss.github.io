@@ -1,0 +1,48 @@
+---
+sidebar_position: 2
+---
+
+# Ed-Fi API Platforms
+
+The Ed-Fi Alliance publishes the
+[Ed-Fi Data Standard](/reference/data-exchange/data-standard/), which models a
+broad spectrum of commonly exchanged and shared K-12 education data. Two Ed-Fi
+Alliance implementations bring the Data Standard to life as a relational
+database and a companion REST API:
+
+- **Ed-Fi ODS / API** (versions through 7.x) is the established implementation,
+  tuned to the security and performance needs of K-12 organizations and the
+  education technology vendors who serve them. The ODS uses Microsoft SQL Server
+  or PostgreSQL as a database platform, and the API is written in C#.
+- **Ed-Fi API** (v8 and later) is the next-generation platform. It is not an
+  incremental update to the ODS / API, but instead replaces the Ed-Fi ODS / API
+  and ODS Admin API with two new services, the Ed-Fi API and a Configuration
+  Service, built on a new relational storage model (also on SQL Server or
+  PostgreSQL) and deployed using Docker images.
+
+The Ed-Fi Alliance plans to support the ODS/API Platform through the 2028-2029
+school year and to fully replace it with Ed-Fi API v8 by the 2029-2030 school
+year; see the
+[FAQ](../0-roadmap/api-faq.md#q-when-will-ed-fi-api-v8-be-available) for the
+release timeline.
+
+Both platforms are vendor neutral, meaning that the client applications may be
+written in any language. See the
+[Ed-Fi ODS/API and Ed-Fi API v8 FAQ](../0-roadmap/api-faq.md) for a detailed
+comparison, roadmap, and migration timeline.
+
+For a plain-language explanation of how both platforms protect student data, see
+[How Ed-Fi API Platforms Secure Student Data](./security-overview.md).
+
+Please see the
+[Ed-Fi Technology Suite Supported Versions](../0-roadmap/supported-versions.md)
+for an overview of which Data Standard version(s) are supported by a given Ed-Fi
+API or ODS / API version.
+
+Use the dropdown version control below to select which platform and version's
+documentation you wish to view. Both the legacy Ed-Fi ODS / API (7.x) and the
+new Ed-Fi API (8.x) are available:
+
+import { EdFiApiDropDown } from '@site/src/components/VersionDropDown';
+
+<EdFiApiDropDown />

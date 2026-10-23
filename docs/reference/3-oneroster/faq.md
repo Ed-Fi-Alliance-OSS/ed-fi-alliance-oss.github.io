@@ -4,8 +4,8 @@ sidebar_position: 6
 
 # Ed-Fi OneRoster® FAQ
 
-This FAQ covers adoption-stage questions about the Ed-Fi OneRoster
-service: when it fits, when the Ed-Fi ODS / API is a better choice,
+This FAQ covers how the [Ed-Fi Data Standard](../1-data-exchange/data-standards.md) and [OneRoster](https://www.1edtech.org/standards/oneroster) relate to one another, and
+adoption-stage questions about the Ed-Fi OneRoster service: when it fits, when an [Ed-Fi API platform](/reference/ods-api-platform) is a better choice,
 how it relates to Assessment Registration, and what the current
 release readiness looks like. For the technical introduction to the
 service, its endpoints, and supported versions, see the [OneRoster
@@ -23,6 +23,36 @@ the rostering subset that many vendors already support. Shipping a
 reference implementation from the Ed-Fi Alliance reduces the number
 of divergent CSV and custom-API pipelines that agencies have to
 maintain.
+
+## Ed-Fi Data Standard and OneRoster
+
+### Q: What is the difference between the Ed-Fi Data Standard and OneRoster?
+
+They cover different scopes and are designed to be used together. The
+Ed-Fi Data Standard models a broad spectrum of K-12 data, including
+enrollment, attendance, assessment, program, and outcome data, and an
+Ed-Fi API is the system of record for that data. OneRoster v1.2,
+published by 1EdTech®, is a smaller model focused on rostering: who is
+enrolled in or teaches which class at which school. Many vendor
+applications already read rosters in OneRoster v1.2.
+
+The Ed-Fi Alliance and 1EdTech keep the two standards in their
+respective lanes rather than merging them. The Ed-Fi OneRoster service
+bridges them by serving a OneRoster v1.2 feed from data that already
+exists in an Ed-Fi API, so a vendor reading a roster through OneRoster
+and a vendor reading the equivalent resources through the Ed-Fi
+API see the same source of truth.
+
+### Q: Should an organization use the Ed-Fi Data Standard, OneRoster, or both?
+
+Many organizations use both. Use the Ed-Fi Data Standard, through an
+Ed-Fi API, to collect and exchange the full range of K-12 data and to
+write data into the system of record. Use OneRoster when a vendor
+application needs rostering data and already expects a OneRoster v1.2
+feed. With the Ed-Fi OneRoster service, an agency that runs the
+Ed-Fi ODS/API can offer both from the same data. See [OneRoster vs. Ed-Fi ODS /
+API: when to use which](#oneroster-vs-ed-fi-ods--api-when-to-use-which)
+for specific cases.
 
 ## Who this is for
 

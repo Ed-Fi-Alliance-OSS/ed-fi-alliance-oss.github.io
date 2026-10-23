@@ -77,7 +77,7 @@ At its most basic level, the Ed-Fi ODS / API platform consists of two logical
 servers: a web server (for the ODS / API), a database server (for the ODS
 database). A diagram showing a typical configuration follows:
 
-![Logical Config](https://edfi.atlassian.net/wiki/download/thumbnails/25493671/image2015-11-16%208-35-34.png?version=1&modificationDate=1699456108107&cacheVersion=1&api=v2&width=709&height=309)
+![Logical Config](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2015-11-16%208-35-34.png)
 
 These logical functions may be combined into one or more physical (or virtual)
 machines depending upon the scale and preferences of the hosting organization.
@@ -134,7 +134,7 @@ live Sandbox deployments. A typical single-server specification follows:
 
 A diagram of a simple two-server deployment follows:
 
-![two server deployment](https://edfi.atlassian.net/wiki/download/thumbnails/25493671/image17.png?version=1&modificationDate=1699456108117&cacheVersion=1&api=v2&width=300&height=153)
+![two server deployment](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image17.png)
 
 The two-server deployment of an Ed-Fi ODS / API Sandbox provides greater
 security and performance than the single server configuration. This is a common
@@ -291,7 +291,7 @@ root location can be:
 The following diagram shows the relationship between the various databases and
 their corresponding ODS / API websites.
 
-![API web](https://edfi.atlassian.net/wiki/download/thumbnails/25493671/image2015-11-16%208-58-14.png?version=1&modificationDate=1699456108100&cacheVersion=1&api=v2&width=749&height=300)
+![API web](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2015-11-16%208-58-14.png)
 
 Detailed instructions regarding the installation and configuration of each
 website are provided in the sections that follow.
@@ -312,7 +312,7 @@ website are provided in the sections that follow.
         apply.  You can create a new self-signed certificate or use an existing
         one.
 
-        ![SSL certificate](https://edfi.atlassian.net/wiki/download/thumbnails/25493671/image2022-12-7_15-40-25.png?version=1&modificationDate=1699456107990&cacheVersion=1&api=v2&width=520&height=416)
+        ![SSL certificate](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2022-12-7_15-40-25.png)
 
 ### EdFi.Ods.WebApi
 
@@ -352,7 +352,7 @@ Steps to deploy the application:
 7. Fill in the application name and the server location that you have published
     the application:
 
-    ![Application](https://edfi.atlassian.net/wiki/download/attachments/25493671/image18.png?version=1&modificationDate=1699456107997&cacheVersion=1&api=v2)
+    ![Application](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image18.png)
 
 8. Click **OK**.
 
@@ -415,7 +415,7 @@ Prerequisites:
         one. Ed-Fi deployment scripts generate the self-signed certificate
         Ed-Fi-ODS which is typically what is used for local IIS deployments.
 
-        ![SSL certificate](https://edfi.atlassian.net/wiki/download/thumbnails/25493671/image2022-12-7_15-40-25.png?version=1&modificationDate=1699456107990&cacheVersion=1&api=v2&width=520&height=416)
+        ![SSL certificate](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2022-12-7_15-40-25.png)
 
 3. All dependent databases are in place.
 
@@ -439,13 +439,13 @@ Steps to deploy the application:
 7. Fill in the application name and the server location that you have published
     the application:
 
-    ![Name and location](https://edfi.atlassian.net/wiki/download/thumbnails/25493671/image05.png?version=1&modificationDate=1699456108090&cacheVersion=1&api=v2&width=535&height=372)
+    ![Name and location](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image05.png)
 
 8. Click **OK**.
 
 9. The application is ready to use.
 
-    ![Ready to use](https://edfi.atlassian.net/wiki/download/thumbnails/25493671/image07.png?version=1&modificationDate=1699456108007&cacheVersion=1&api=v2&width=688&height=222)
+    ![Ready to use](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image07.png)
 
 10. The article [Using the Sandbox Admin
      Portal](../../client-developers-guide/using-the-sandbox-administration-portal.md)
@@ -540,7 +540,7 @@ For Windows Server / IIS installations. Prerequisites:
         one. Ed-Fi deployment scripts generate the self-signed certificate
         Ed-Fi-ODS which is typically what is used for local IIS deployments.
 
-        ![SSL certificate](https://edfi.atlassian.net/wiki/download/thumbnails/25493671/image2022-12-7_15-40-25.png?version=1&modificationDate=1699456107990&cacheVersion=1&api=v2&width=520&height=416)
+        ![SSL certificate](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2022-12-7_15-40-25.png)
 
 3. All dependent databases are in place.
 
@@ -564,13 +564,13 @@ Steps to deploy the application:
 7. Fill in the application name and the server location that you have published
     the application:
 
-    ![Name and location](https://edfi.atlassian.net/wiki/download/attachments/25493671/image16.png?version=1&modificationDate=1699456108017&cacheVersion=1&api=v2)
+    ![Name and location](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image16.png)
 
 8. Click **OK**.
 
 9. The application is ready to use.
 
-    ![Ready to use](https://edfi.atlassian.net/wiki/download/thumbnails/25493671/image-2023-6-5_10-41-38.png?version=1&modificationDate=1699456108123&cacheVersion=1&api=v2&width=1280&height=547)
+    ![Ready to use](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image-2023-6-5_10-41-38.png)
 
 App Settings:
 
@@ -606,9 +606,9 @@ accounts be used as connection criteria from the API.
 ### Sandbox Deployment in Azure and AWS Environments
 
 Documentation and scripts for deployment of an Ed-Fi ODS / API instance in
-Microsoft Azure and Amazon Web Services can be found in the Ed-Fi Exchange. To
+Microsoft Azure and Amazon Web Services can be found in the Ed-Fi Community Tools. To
 locate these, navigate
-to [https://exchange.ed-fi.org](https://exchange.ed-fi.org), and browse to the
+to [Ed-Fi Community Tools](/getting-started/community-tools/technology), and browse to the
 following entries:
 
 * **Ed-Fi ODS/API on AWS**

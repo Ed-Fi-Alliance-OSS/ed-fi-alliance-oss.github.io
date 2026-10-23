@@ -97,7 +97,7 @@ function Main() {
                 className="button button--secondary button--lg"
                 to="https://github.com/Ed-Fi-Exchange-OSS"
               >
-                Ed-Fi Exchange »
+                Ed-Fi Community Tools »
               </Link>
             </p>
           </div>
@@ -115,6 +115,11 @@ function Main() {
           <div className="col">
             <Heading as="h2">More information on getting involved</Heading>
             <ul>
+              <li>
+                <Link to="/community/involved/governance">
+                  Governance
+                </Link>
+              </li>
               <li>
                 <Link to="/community/involved/code-of-conduct">
                   Contributor Code of Conduct
@@ -134,7 +139,11 @@ function Main() {
                   CEDS and Ed-Fi Collaboration Guidelines
                 </Link>
               </li>
-              <li><Link to="/community/involved/communications-toolkit">Ed-Fi Alliance Communications Toolkit</Link></li>
+              <li>
+                <Link to="/community/involved/communications-toolkit">
+                  Ed-Fi Alliance Communications Toolkit
+                </Link>
+              </li>
             </ul>
           </div>
         </div>

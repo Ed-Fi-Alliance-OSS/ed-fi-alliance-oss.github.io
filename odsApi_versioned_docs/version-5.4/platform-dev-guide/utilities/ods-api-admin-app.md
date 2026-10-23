@@ -13,7 +13,7 @@ Three.
 
 The following Admin App releases are compatible with ODS/API v5.4:
 
-* [Admin App for Suite 3 v2.3](/getting-started/edfi-exchange/technology/ods-admin-app/)
+* [Admin App for Suite 3 v2.3](/getting-started/community-tools/technology/ods-admin-app/)
 * [Admin App for Suite 3 v2.2.1](https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25231403/Admin+App+for+Suite+3+v2.2.1)
 * [Admin App for Suite 3 v2.2](https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25231382/Admin+App+for+Suite+3+v2.2)
 
@@ -36,7 +36,7 @@ The Admin App provides the following key features:
 
 ## Installation
 
-The Admin App provides a graphical interface for platform hosts to administer and manage non-sandbox instances of the Ed-Fi ODS / API. Follow the installation steps in the [Admin App for Suite 3 v2.3 documentation](/getting-started/edfi-exchange/technology/ods-admin-app/).
+The Admin App provides a graphical interface for platform hosts to administer and manage non-sandbox instances of the Ed-Fi ODS / API. Follow the installation steps in the [Admin App for Suite 3 v2.3 documentation](/getting-started/community-tools/technology/ods-admin-app/).
 
 ### Installation Requirements
 

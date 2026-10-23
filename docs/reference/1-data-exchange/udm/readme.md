@@ -7,11 +7,17 @@ title: Unifying Data Model
 
 ## Introduction
 
-The Ed-Fi Data Standard is built upon a Unifying Data Model (UDM), an
-enterprise data model of commonly exchanged and shared K–12 education data. The
-model includes entities such as students, teachers, assessment results,
-attendance, and many others that will be easily recognized by professionals in
-the education field.
+The Ed-Fi Unifying Data Model (UDM) is the logical, enterprise data model behind
+the Ed-Fi Data Standard. It defines the entities, attributes, and relationships
+of commonly exchanged and shared K–12 education data. The model includes
+entities such as students, teachers, assessment results, attendance, and many
+others that will be easily recognized by professionals in the education field.
+
+The UDM is not itself an API or a physical database schema. Ed-Fi API
+specifications and database implementations such as the Ed-Fi ODS/API are
+derived from it. See [What is the purpose of the Ed-Fi Unifying Data
+Model?](../data-standards.md#what-is-the-purpose-of-the-ed-fi-unifying-data-model)
+for how the UDM keeps the Ed-Fi Data Standard specifications consistent.
 
 The model was originally developed to capture and represent data related to
 student performance, and that remains the core goal of the model. In addition,
@@ -28,7 +34,7 @@ covered in the Unifying Data Model.
 
 ## Revisions
 
-The Ed-Fi Alliance manages and revises the Unify Data Model annually. Please see
+The Ed-Fi Alliance manages and revises the Unifying Data Model annually. Please see
 the [Roadmap for the Ed-Fi Technology Suite](../../0-roadmap/readme.mdx) for announcements about
 upcoming releases. Each revision is given a version number that follows the
 SemVer labeling conventions: major.minor.patch number (ex: 1.2.3), where a

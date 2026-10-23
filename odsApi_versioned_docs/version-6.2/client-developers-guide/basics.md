@@ -112,7 +112,7 @@ can stay connected in near real-time. The API uses JSON for real-time and
 transactional data exchange. However there are utilities that can aid
 in uploading data in batch mode via the API (e.g., [Bulk Load Client
 Utility](../platform-dev-guide/utilities/bulk-load-client-utility.md) can be
-used to bulk load XML data and [Data Import](/reference/data-import) can be used
+used to bulk load XML data and [Data Import](/getting-started/community-tools/technology/data-import) can be used
 to bulk load CSV data).
 
 The Ed-Fi ODS / API supports the following HTTP verbs:

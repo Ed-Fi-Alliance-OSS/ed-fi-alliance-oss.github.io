@@ -44,25 +44,22 @@ through the `configurationStoreSettings.json` file.
 ```sql
 -- Insert plain text values into the 'configuration_value' column
 insert into dbo.configuration_value(configuration_key, configuration_value)
-values ('/ed-fi/apiPublisher/connections/Hosted_Sample_v5.2/url', 'https://api.ed-fi.org/v5.2/api/');
+values ('/ed-fi/apiPublisher/connections/Populated_Sandbox/url', 'https://localhost/api/');
 
 -- Insert encrypted values into 'configuration_value_encrypted' column
 insert into dbo.configuration_value(configuration_key, configuration_value_encrypted)
-values ('/ed-fi/apiPublisher/connections/Hosted_Sample_v5.2/key', pgp_sym_encrypt('RvcohKz9zHI4', 'my-secure-password'));
+values ('/ed-fi/apiPublisher/connections/Populated_Sandbox/key', pgp_sym_encrypt('populated', 'my-secure-password'));
 
 insert into dbo.configuration_value(configuration_key, configuration_value_encrypted)
-values ('/ed-fi/apiPublisher/connections/Hosted_Sample_v5.2/secret',
-  pgp_sym_encrypt('E1iEFusaNf81xzCxwHfbolkC', 'my-secure-password'));
+values ('/ed-fi/apiPublisher/connections/Populated_Sandbox/secret',
+  pgp_sym_encrypt('populatedSecret', 'my-secure-password'));
 ```
-
-![PostgreSQL Configuration
-Store](../img/PostgreSql-configuration-store-example.png)
 
 :::info note:
 
-The name of the connection (`Hosted_Sample_v5.2` in the example above) should
+The name of the connection (`Populated_Sandbox` in the example above) should
 not contain spaces since a primary usage scenario is to provide the name in a
-command-line argument to the utility (i.e.`--sourceName=Hosted_Sample_v5.2`).
+command-line argument to the utility (i.e.`--sourceName=Populated_Sandbox`).
 
 :::
 

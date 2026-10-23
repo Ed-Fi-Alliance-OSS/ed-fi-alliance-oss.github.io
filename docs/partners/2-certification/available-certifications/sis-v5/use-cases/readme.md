@@ -34,12 +34,10 @@ Your feedback and suggestions for continual improvement on these priority use
 cases are welcomed and needed. There are several channels open to you to lend
 your perspective:
 
-* Comment on this page in TechDocs with a mention to
-  [Jeff Putnam](https://edfi.atlassian.net/wiki/people/630e7c61d8850343ef584307?ref=confluence)
 * Convey your feedback via email or Slack to
-  [Jeff.putnam@ed-fi.org](mailto:Jeff.putnam@ed-fi.org)
+  [nathan.gandomi@ed-fi.org](mailto:nathan.gandomi@ed-fi.org)
 * Schedule a meeting with
-  the [vendor team](https://go.oncehub.com/EdFiJeffPutnam)
+  the [vendor team](https://go.oncehub.com/EdFiNathanGandomi)
 * Discuss in our vendor convenings and governance opportunities, such as the
   Summit, Technical Congress, Technical Advisory Group, etc.
 

@@ -11,13 +11,12 @@ serviceable than blanket ambiguous ones.
 
 ## Procurement Language
 
-The Ed-Fi Alliance has published a "Ed-Fi Model RFP" in the [Ed-Fi
-Exchange](https://exchange.ed-fi.org/) that may assist agencies with procurement
+The Ed-Fi Alliance has published a "Ed-Fi Model RFP" in the [Ed-Fi Community Tools](/getting-started/community-tools/guides/ed-fi-model-rfp) that may assist agencies with procurement
 language.
 
 Another example of a statement that can be used in RFPs can be here: [Global
 Interoperability
-Standards.docx](https://edfi.atlassian.net/wiki/download/attachments/23695618/Global+Interoperability+Standards.docx?version=1).
+Standards.docx](https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Global%20Interoperability%20Standards.docx).
 
 ## What is Covered in Certification?
 

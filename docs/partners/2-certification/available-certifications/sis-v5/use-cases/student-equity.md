@@ -177,7 +177,7 @@ This use case also applies to [CCMR](./college-career-and-military-readiness-ccm
 | ------------------------------------------------- | ----- |
 | /disciplineActions                                |       |
 | /disciplineIncidents                              |       |
-| /studentDisciplineIncidentAssociations            |       |
+| /studentDisciplineIncidentBehaviorAssociations    |       |
 | /calendars                                        |       |
 | /calendarDates                                    |       |
 | /courses                                          |       |

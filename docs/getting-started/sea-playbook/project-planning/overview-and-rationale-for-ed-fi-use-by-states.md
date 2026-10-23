@@ -29,4 +29,4 @@ Below are materials from states on their projects, experiences and best practice
 
 |     |     |     |
 | --- | --- | --- |
-| Insight into WI's Ed-Fi Implementation & Lessons Learned | John Raub from WI DPI | [WI Knowledge Sharing - 2020.mp4](https://edfi.atlassian.net/wiki/download/attachments/22908091/WI%20Knowledge%20Sharing%20-%202020.mp4?version=2&modificationDate=1709087482300&cacheVersion=1&api=v2) |
+| Insight into WI's Ed-Fi Implementation & Lessons Learned | John Raub from WI DPI | [WI Knowledge Sharing - 2020.mp4](https://edfidocs.blob.core.windows.net/$web/assets/getting-started/sea-playbook/project-planning/WI%20Knowledge%20Sharing%20-%202020.mp4) |

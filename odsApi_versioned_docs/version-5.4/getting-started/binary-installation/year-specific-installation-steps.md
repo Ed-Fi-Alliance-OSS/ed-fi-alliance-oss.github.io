@@ -86,7 +86,7 @@ There are several settings in the configuration file that are left empty as they
 
 **Copy your extension plugin to the database deployment package.** Place the extracted contents of your extension plugin package in the extracted EdFi.Suite3.RestApi.Databases package under `Ed-Fi-ODS-Implementation\Plugin` folder.
 
-![Plugin Folder](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-5-26_12-45-50.png)
+![Plugin Folder](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2021-5-26_12-45-50.png)
 
 **Enable your extension plugin in the deployment configuration.** Edit the Plugin section of the configuration file and update the Folder and Scripts values to the following:
 
@@ -189,7 +189,7 @@ Enable your extension plugin in `appsettings.json`. Open the `appsettings.json` 
 }
 ```
 
-![WebApi Plugin](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/image2021-5-26_13-32-29.png)
+![WebApi Plugin](https://edfidocs.blob.core.windows.net/$web/img/reference/ods-api/version-5.4/image2021-5-26_13-32-29.png)
 
 </details>
 
@@ -228,7 +228,7 @@ Install-EdFiOdsSwaggerUI @parameters
 
 ## Step 5. Install Admin App
 
-The Admin App provides a graphical interface for platform hosts to administer and manage non-sandbox instances of the Ed-Fi ODS / API. Follow the installation steps [here](https://docs.ed-fi.org/getting-started/edfi-exchange/technology/ods-admin-app) to install Admin App for administration of Ed-Fi ODS / API in YearSpecific mode and then configure your year specific instances as described [here](https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25239521/Multi-Instance+Connections). Alternatively, API keys and secrets can be administered by database administrators via SQL queries as outlined in the article [How To: Configure Key / Secret](../../how-to-guides/how-to-configure-key-secret.md).
+The Admin App provides a graphical interface for platform hosts to administer and manage non-sandbox instances of the Ed-Fi ODS / API. Follow the installation steps [here](https://docs.ed-fi.org/getting-started/community-tools/technology/ods-admin-app) to install Admin App for administration of Ed-Fi ODS / API in YearSpecific mode and then configure your year specific instances as described [here](https://edfi.atlassian.net/wiki/spaces/ADMIN/pages/25239521/Multi-Instance+Connections). Alternatively, API keys and secrets can be administered by database administrators via SQL queries as outlined in the article [How To: Configure Key / Secret](../../how-to-guides/how-to-configure-key-secret.md).
 
 ---
 

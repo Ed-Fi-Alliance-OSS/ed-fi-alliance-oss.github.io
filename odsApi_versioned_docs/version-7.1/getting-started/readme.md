@@ -22,7 +22,7 @@ useful.
 
 For those interested in getting an Ed-Fi ODS / API instance up and running
 quickly, but do not have developer tools or experience, we recommend you consult
-the [Docker Deployment](https://edfi.atlassian.net/wiki/spaces/EDFITOOLS/pages/24120025/Docker+Deployment) page and the Ed-Fi Exchange, which
+the [Docker Deployment](https://edfi.atlassian.net/wiki/spaces/EDFITOOLS/pages/24120025/Docker+Deployment) page and the Ed-Fi Community Tools, which
 provides a number of alternatives for installing the Ed-Fi ODS / API. These
 options include support for deploying into public cloud platforms including
 Amazon Web Services, Google Cloud, and Microsoft Azure as well as on-premises

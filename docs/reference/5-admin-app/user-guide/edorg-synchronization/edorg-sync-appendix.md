@@ -99,9 +99,9 @@ Source ODS (read-only):
 | --- | --- | --- |
 | `ODS_DB_ENGINE` | `mssql` | `mssql` or `pgsql` |
 | `ODS_DATABASE_NAME` | — | The ODS to export from. Required |
-| `ODS_SQL_SERVER` | `tcp:localhost,1433` | SQL Server hosting the ODS |
+| `ODS_SQL_SERVER` | `tcp:localhost,1433` | SQL Server hosting the ODS. May be a remote server, including a managed Azure SQL Database (see [Managed Azure SQL Database](#managed-azure-sql-database)) |
 | `ODS_DB_USERNAME` / `ODS_DB_PASSWORD` | `sa` / — | SQL Server login; the password is prompted when empty |
-| `ODS_USE_INTEGRATED_SECURITY` | `false` | `true` = Windows authentication (no password needed) |
+| `ODS_USE_INTEGRATED_SECURITY` | `false` | `true` = Windows authentication (no password needed). Not usable against a remote `ODS_SQL_SERVER` |
 | `ODS_POSTGRES_HOST` / `ODS_POSTGRES_PORT` | `localhost` / `5432` | PostgreSQL host/port |
 | `ODS_POSTGRES_USER` / `ODS_POSTGRES_PASSWORD` | `postgres` / — | PostgreSQL login; the password is prompted when empty |
 | `ODS_USE_POSTGRES_DOCKER` | `false` | `true` = run `psql` inside the ODS stack's database container |
@@ -113,9 +113,10 @@ Target Admin App database:
 | --- | --- | --- |
 | `DB_ENGINE` | `mssql` | `mssql` or `pgsql` |
 | `DATABASE_NAME` | `sbaa` | The Admin App application database |
-| `SQL_SERVER` | `tcp:localhost,1433` | SQL Server hosting it |
+| `SQL_SERVER` | `tcp:localhost,1433` | SQL Server hosting it. May be a remote server, including a managed Azure SQL Database, independently of `ODS_SQL_SERVER` |
 | `ADMIN_APP_DB_USER` / `ADMIN_APP_DB_PASSWORD` | `edfi_adminapp` / — | SQL Server login; the password is prompted when empty |
-| `USE_INTEGRATED_SECURITY` | `false` | `true` = Windows authentication |
+| `USE_INTEGRATED_SECURITY` | `false` | `true` = Windows authentication. Not usable against a remote `SQL_SERVER` |
+| `SQL_TRUST_SERVER_CERTIFICATE` | `false` | `true` = accept a SQL Server certificate without validating it. Applies to `ODS_SQL_SERVER` and `SQL_SERVER`; a local instance is trusted automatically, so set it only for a remote server presenting a self-signed certificate |
 | `POSTGRES_HOST` / `POSTGRES_PORT` | `localhost` / `5432` | PostgreSQL host/port |
 | `POSTGRES_APP_USER` / `POSTGRES_APP_PASSWORD` | `edfiadminapp` / — | PostgreSQL login; the password is prompted when empty |
 | `USE_POSTGRES_DOCKER` | `false` | `true` = run `psql` inside the Admin App stack's database container |
@@ -129,6 +130,59 @@ Scope and files:
 | `ENVIRONMENT_NAME` | — | Only needed when the same tenant name exists in more than one environment |
 | `ODS_DB_NAME` | `ODS_DATABASE_NAME` | Which registered ODS (the Admin App registration's database name) to attach to; only needed when the registration's name differs or the tenant has several |
 | `CSV_PATH` | `./edorgs.csv` | Where the export writes and the import reads. The import records the ids it inserts in `imported-ids.csv` next to this file, and the cleanup deletes from that manifest |
+
+## Managed Azure SQL Database
+
+Either SQL Server database may be a managed Azure SQL Database, and
+independently of the other: the source ODS (`ODS_SQL_SERVER`) and the target
+Admin App application database (`SQL_SERVER`).
+
+```ini
+# Source ODS (read-only)
+ODS_SQL_SERVER=tcp:myserver.database.windows.net,1433
+ODS_DATABASE_NAME=EdFi_Ods_2026
+ODS_DB_USERNAME=ods_reader
+ODS_DB_PASSWORD=<contained user's password>
+ODS_USE_INTEGRATED_SECURITY=false
+# Target Admin App application database
+SQL_SERVER=tcp:myserver.database.windows.net,1433
+DATABASE_NAME=sbaa
+ADMIN_APP_DB_USER=edfi_adminapp
+ADMIN_APP_DB_PASSWORD=<contained user's password>
+USE_INTEGRATED_SECURITY=false
+SQL_TRUST_SERVER_CERTIFICATE=false
+```
+
+Each database needs its own contained user: `ODS_DB_USERNAME` in the ODS, which
+only ever reads, and `ADMIN_APP_DB_USER` in the application database, which
+writes. They are separate databases, so one login cannot serve both.
+
+Three things differ from a local instance:
+
+- **SQL authentication is required.** Azure SQL does not accept Windows
+  integrated authentication, so the two `*_USE_INTEGRATED_SECURITY` variables
+  must be `false` and the logins must be set. The scripts refuse the
+  combination up front rather than failing later with a driver error.
+- **The login is a contained user** in the database itself. See
+  [Database](/reference/admin-app/getting-started/windows-iis-installation/manual#database)
+  for the `CREATE USER` statement, and for the server, firewall rule, and
+  database to provision in Azure.
+- **The connection is encrypted and the certificate validated.** A remote
+  server is reached with `sqlcmd -N`, which requires both. Azure SQL presents a
+  CA-issued certificate, so leave `SQL_TRUST_SERVER_CERTIFICATE=false`; setting
+  it to `true` adds `-C`, which turns validation off. A local instance is
+  reached with `-C` alone, because its auto-generated certificate cannot be
+  validated and loopback has no machine-in-the-middle to protect against.
+  Recognized local targets are `localhost`, `127.0.0.1`, `::1`, `.`, `(local)`,
+  this machine's own name, and a local named pipe, each with an optional
+  `tcp:` prefix and `,port` or `\instance` suffix.
+
+No schema is created or altered: the export is read-only and the import only
+writes rows in tables that already exist. `cleanup-edorgs.ps1` does delete,
+though: it removes the education organizations recorded in `imported-ids.csv`
+and any team access granted to them, on whichever server `SQL_SERVER` points
+at. Confirm that value names the intended database before running it against a
+remote server.
 
 ## Troubleshooting
 

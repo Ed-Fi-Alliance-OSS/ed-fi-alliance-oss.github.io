@@ -6,13 +6,11 @@
 export default {
   sisApiV5: [
     {
-    productName: 'PowerSchool',
+      productName: 'PowerSchool',
       logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/PowerSchool.png',
       website: 'https://www.powerschool.com/',
       validThrough: 'December 12, 2026',
-      verifyingAgencies: [
-        'Franklin Public Schools, WI',
-      ],
+      verifyingAgencies: ['Franklin Public Schools, WI'],
       versionCompatibility: 'Conformance testing met with version 221014',
       availability: 'Available to any agency (all sizes) in the U.S.',
       documentation: {
@@ -20,8 +18,8 @@ export default {
           'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/PowerSchool/Ed-Fi%20Certification%20-%20PowerSchool%20SIS.docx',
         'Pricing Statement':
           'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/PowerSchool/Ed-Fi%20Certification%20-%20Pricing%20Statement%20PS%20SIS%2025-26.pdf',
-        'Mappings':
-          'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ed-Fi%20Resources%20and%20Elements%20for%20PowerSchool%20SIS%20Base%20v221014.xlsx?api=v2',
+        Mappings:
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Ed-Fi%20Resources%20and%20Elements%20for%20PowerSchool%20SIS%20Base%20v221014.xlsx',
       },
       supportResources: [
         {
@@ -48,18 +46,25 @@ export default {
       website:
         'http://www.edupoint.com/Products/Student-Information-Management',
       validThrough: 'April 28, 2026',
-      verifyingAgencies: ['Lincoln Public Schools, NE', 'Higley Unified School District, Gilbert, AZ', 'Phoenix Union High School District, AZ'],
+      verifyingAgencies: [
+        'Lincoln Public Schools, NE',
+        'Higley Unified School District, Gilbert, AZ',
+        'Phoenix Union High School District, AZ',
+      ],
       versionCompatibility: 'Conformance testing met with version 2023',
       availability: 'Available to any agency (all sizes) in the U.S.',
       documentation: {
-        'Availability Statement':'https://edfi.atlassian.net/wiki/download/attachments/23702484/Edupoint%20Ed-Fi%20Certification%20-%20Availibility%20Statement%20V2.pdf?api=v2',
-        'Pricing Statement':'https://edfi.atlassian.net/wiki/download/attachments/23702484/Edupoint%20Ed-Fi%20Certification%20-%20Pricing%20Statement.pdf?api=v2',
-        'Mappings':'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Edupoint/Edupoint%20-%20Base%20Ed-Fi%20Certification%20Mappings.xlsx',
+        'Availability Statement':
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Edupoint%20Ed-Fi%20Certification%20-%20Availibility%20Statement%20V2.pdf',
+        'Pricing Statement':
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Edupoint%20Ed-Fi%20Certification%20-%20Pricing%20Statement.pdf',
+        Mappings:
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Edupoint/Edupoint%20-%20Base%20Ed-Fi%20Certification%20Mappings.xlsx',
       },
       supportResources: [
         {
           name: 'Usage overview',
-          link: 'https://edfi.atlassian.net/wiki/download/attachments/23694066/edupoint_Usage%20narrative.docx?version=1&modificationDate=1673960206427&cacheVersion=1&api=v2',
+          link: 'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/edupoint_Usage%20narrative.docx',
         },
         {
           name: 'Edupoint customer FTP site',
@@ -95,11 +100,11 @@ export default {
         },
         {
           name: 'Using DEX Cloud (general)',
-          link: 'https://edfi.atlassian.net/wiki/download/attachments/23694066/Using%20DEX%20Cloud%20-%202023-10-24.docx?version=1&modificationDate=1704980608687&cacheVersion=1&api=v2',
+          link: 'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Using%20DEX%20Cloud%20-%202023-10-24.docx',
         },
         {
           name: 'Using TX DEX Cloud',
-          link: 'https://edfi.atlassian.net/wiki/download/attachments/23694066/Using%20TX%20DEX%20Cloud%202024_01_12.pdf?version=1&modificationDate=1705085207093&cacheVersion=1&api=v2',
+          link: 'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Using%20TX%20DEX%20Cloud%202024_01_12.pdf',
         },
       ],
     },
@@ -120,8 +125,8 @@ export default {
           'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Aeries/Ed-Fi%20Cert%20-%20Availabiity%20Statement%2007.25.pdf',
         'Pricing Statement':
           'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Aeries/Ed-Fi%20Pricing%20Statement%20July_2025_signed.pdf',
-        'Mappings':
-          'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ed-Fi%20Mappings%2010-21.xlsx?version=1&modificationDate=1668719714227&cacheVersion=1&api=v2',
+        Mappings:
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Ed-Fi%20Mappings%2010-21.xlsx',
       },
       supportResources: [
         {
@@ -151,9 +156,9 @@ export default {
         'Availability Statement':
           'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/eSchoolPlus/Ed-Fi%20Certification%20-%20Availability%20Statement%20eSchoolPlus.pdf',
         'Pricing Statement':
-         'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/eSchoolPlus/Ed-Fi%20Certification%20-%20Pricing%20Statement%20eSchoolPlus.pdf',
-         'Mapping Document':
-          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/eSchoolPlus/Ed-Fi%20Resources%20and%20Elements%20for%20eSchoolPlus%20Base%20v250501.xlsx'
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/eSchoolPlus/Ed-Fi%20Certification%20-%20Pricing%20Statement%20eSchoolPlus.pdf',
+        'Mapping Document':
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/eSchoolPlus/Ed-Fi%20Resources%20and%20Elements%20for%20eSchoolPlus%20Base%20v250501.xlsx',
       },
       supportResources: [
         {
@@ -162,11 +167,11 @@ export default {
         },
         {
           name: 'Using DEX Cloud (general)',
-          link: 'https://edfi.atlassian.net/wiki/download/attachments/23694066/Using%20DEX%20Cloud%20-%202023-10-24.docx?version=1&modificationDate=1704980608687&cacheVersion=1&api=v2',
+          link: 'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Using%20DEX%20Cloud%20-%202023-10-24.docx',
         },
         {
           name: 'Using TX DEX Cloud',
-          link: 'https://edfi.atlassian.net/wiki/download/attachments/23694066/Using%20TX%20DEX%20Cloud%202024_01_12.pdf?version=1&modificationDate=1705085207093&cacheVersion=1&api=v2',
+          link: 'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Using%20TX%20DEX%20Cloud%202024_01_12.pdf',
         },
       ],
     },
@@ -187,8 +192,8 @@ export default {
           'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/PowerSchool/Ed-Fi%20Certification%20-%20Availability%20Statement%20PS%20SIS%2025-26.pdf',
         'Pricing Statement':
           'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/PowerSchool/Ed-Fi%20Certification%20-%20Pricing%20Statement%20PS%20SIS%2025-26.pdf',
-        'Mappings':
-          'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ed-Fi%20Resources%20and%20Elements%20for%20PowerSchool%20SIS%20Base%20v221014.xlsx?api=v2',
+        Mappings:
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Ed-Fi%20Resources%20and%20Elements%20for%20PowerSchool%20SIS%20Base%20v221014.xlsx',
       },
       supportResources: [
         {
@@ -219,14 +224,14 @@ export default {
       availability: 'Available to any agency (all sizes) in the U.S.',
       documentation: {
         'Availability Statement':
-          'https://edfi.atlassian.net/wiki/download/attachments/23694066/Focus%20Ed-Fi%20v4%20Availability%20Statement%20-%20Signed.pdf?version=1&modificationDate=1688731324490&cacheVersion=1&api=v2',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Focus%20Ed-Fi%20v4%20Availability%20Statement%20-%20Signed.pdf',
         Mappings:
-          'https://edfi.atlassian.net/wiki/download/attachments/23694066/Field%20Mappings.xlsx?version=2&modificationDate=1663104029430&cacheVersion=1&api=v2',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Field%20Mappings.xlsx',
       },
       supportResources: [
         {
           name: 'Usage overview',
-          link: 'https://edfi.atlassian.net/wiki/download/attachments/23694066/Usage%20Overview.pdf?version=1&modificationDate=1660926004610&cacheVersion=1&api=v2',
+          link: 'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Usage%20Overview.pdf',
         },
         {
           name: 'Enablement & configuration guide',
@@ -248,7 +253,7 @@ export default {
       availability: 'Available to any agency (all sizes) in the U.S.',
       documentation: {
         'Availability Statement':
-          'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ed-Fi%20Certification%20-%20Availability%20Statement%20IC%202023%20v4.docx?version=1&modificationDate=1692208989277&cacheVersion=1&api=v2',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Ed-Fi%20Certification%20-%20Availability%20Statement%20IC%202023%20v4.docx',
         Mappings:
           'https://kb.infinitecampus.com/help/ed-fi-v31---ed-fi-core-data',
       },
@@ -281,18 +286,18 @@ export default {
       availability: 'Available to any LEA in Texas only',
       documentation: {
         'Availability Statement':
-          'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ascender%20Ed-Fi%20Certification%20-%20Availability%20Statement.pdf?version=1&modificationDate=1702748666493&cacheVersion=1&api=v2',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Ascender%20Ed-Fi%20Certification%20-%20Availability%20Statement.pdf',
         Mappings:
-          'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ascender%20Ed-Fi%20v4%20Certification.xlsx?version=1&modificationDate=1702585341873&cacheVersion=1&api=v2',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Ascender%20Ed-Fi%20v4%20Certification.xlsx',
       },
       supportResources: [
         {
           name: 'Usage - End to End flow',
-          link: 'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ascender_End%20to%20End%20Flow%20Diagram-v2-20231212_081854.pdf?version=2&modificationDate=1702585493633&cacheVersion=1&api=v2',
+          link: 'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Ascender_End%20to%20End%20Flow%20Diagram-v2-20231212_081854.pdf',
         },
         {
           name: 'Enablement/Configuration',
-          link: 'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ascender_preparing_for_the_tsds_upgrade.pdf?version=1&modificationDate=1702585505553&cacheVersion=1&api=v2',
+          link: 'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Ascender_preparing_for_the_tsds_upgrade.pdf',
         },
       ],
     },
@@ -302,7 +307,11 @@ export default {
       website:
         'http://www.edupoint.com/Products/Student-Information-Management',
       validThrough: 'April 28, 2026',
-      verifyingAgencies: ['Lincoln Public Schools, NE', 'Higley Unified School District, Gilbert, AZ', 'Phoenix Union High School District, AZ'],
+      verifyingAgencies: [
+        'Lincoln Public Schools, NE',
+        'Higley Unified School District, Gilbert, AZ',
+        'Phoenix Union High School District, AZ',
+      ],
       versionCompatibility: 'Conformance testing met with version 2023',
       availability: 'Available to any agency (all sizes) in the U.S.',
       documentation: {
@@ -313,7 +322,7 @@ export default {
       supportResources: [
         {
           name: 'Usage overview',
-          link: 'https://edfi.atlassian.net/wiki/download/attachments/23694066/edupoint_Usage%20narrative.docx?version=1&modificationDate=1673960206427&cacheVersion=1&api=v2',
+          link: 'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/edupoint_Usage%20narrative.docx',
         },
         {
           name: 'Edupoint customer FTP site',
@@ -336,9 +345,9 @@ export default {
       availability: 'Available to any LEA in Texas only, others upon request',
       documentation: {
         'Availability Statement':
-          'https://edfi.atlassian.net/wiki/download/attachments/23694066/Qmlativ%20-%20Ed-Fi%20Certification%20-%20Availability%20Statement%20Form.docx?version=1&modificationDate=1704891797820&cacheVersion=1&api=v2',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Qmlativ%20-%20Ed-Fi%20Certification%20-%20Availability%20Statement%20Form.docx',
         Mappings:
-          'https://edfi.atlassian.net/wiki/download/attachments/23694066/Qmlativ%20Data%20Mapping.docx?version=1&modificationDate=1704891823890&cacheVersion=1&api=v2',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Qmlativ%20Data%20Mapping.docx',
       },
       supportResources: [
         {
@@ -363,14 +372,14 @@ export default {
       availability: 'Available to all Texas Frontline SIS clients.',
       documentation: {
         'Availability Statement':
-          'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ed-Fi%20Certification%20-%20Availability%20Statement.docx?version=1&modificationDate=1713283670679&cacheVersion=1&api=v2',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Ed-Fi%20Certification%20-%20Availability%20Statement.docx',
         Mappings:
-          'https://edfi.atlassian.net/wiki/download/attachments/23694066/EdFi%20Data%20Mapping.zip?version=1&modificationDate=1713283750434&cacheVersion=1&api=v2',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/EdFi%20Data%20Mapping.zip',
       },
       supportResources: [
         {
           name: 'Usage Statement',
-          link: 'https://edfi.atlassian.net/wiki/download/attachments/23694066/Frontline%20-%20Ed-Fi%20Usage%20Narrative.docx?version=1&modificationDate=1713283782666&cacheVersion=1&api=v2',
+          link: 'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Frontline%20-%2001-Ed-Fi%20Badge%20Application%20-Revised.docx',
         },
         {
           name: 'Enablement & Support',
@@ -414,15 +423,20 @@ export default {
       logo: 'https://edfidocs.blob.core.windows.net/$web/img/partners/certification/Skyward-logo.jpg',
       website: 'https://www.skyward.com/ed-fi',
       validThrough: 'December 4, 2025',
-      verifyingAgencies: ['Sharyland ISD, TX', 'New Caney ISD, TX', 'Mesquite ISD, TX'],
+      verifyingAgencies: [
+        'Sharyland ISD, TX',
+        'New Caney ISD, TX',
+        'Mesquite ISD, TX',
+      ],
       versionCompatibility:
         'Conformance testing met with SMS 2.0 single product version (distributed to all customers)',
-      availability: 'Available to any LEA in Florida, New Jersey, Rhode Island, South Dakota, Tennessee, Texas, Washington, Utah, others by request',
+      availability:
+        'Available to any LEA in Florida, New Jersey, Rhode Island, South Dakota, Tennessee, Texas, Washington, Utah, others by request',
       documentation: {
         'Availability Statement':
-          'https://edfi.atlassian.net/wiki/download/attachments/23691441/SMS%20-%20Ed-Fi%20Certification%20-%20Availability%20Statement%20Form.docx?api=v2',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/SMS%20-%20Ed-Fi%20Certification%20-%20Availability%20Statement%20Form.docx',
         Mappings:
-          'https://edfi.atlassian.net/wiki/download/attachments/23691441/SMS%20Data%20Mapping.docx?api=v2',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/SMS%20Data%20Mapping.docx',
       },
       supportResources: [
         {
@@ -448,9 +462,9 @@ export default {
       availability: 'Available to any agency (all sizes) in the U.S.',
       documentation: {
         'Availability Statement':
-          'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ed-Fi%20Certification%20-%20Availability%20Statement%20-%20Aeries%20Software%20-%20Signed.pdf?version=1&modificationDate=1668719682233&cacheVersion=1&api=v2',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Ed-Fi%20Certification%20-%20Availability%20Statement%20-%20Aeries%20Software%20-%20Signed.pdf',
         Mappings:
-          'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ed-Fi%20Mappings%2010-21.xlsx?version=1&modificationDate=1668719714227&cacheVersion=1&api=v2',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Ed-Fi%20Mappings%2010-21.xlsx',
       },
       supportResources: [
         {
@@ -483,14 +497,14 @@ export default {
       availability: 'Available to any agency (all sizes) in the U.S.',
       documentation: {
         'Availability Statement':
-          'https://edfi.atlassian.net/wiki/download/attachments/23694066/Edupoint%20-%20Ed-Fi%20Certification%20-%20Availability%20Statement.pdf?version=1&modificationDate=1673960235177&cacheVersion=1&api=v2',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Edupoint%20-%20Ed-Fi%20Certification%20-%20Availability%20Statement.pdf',
         Mappings:
-          'https://edfi.atlassian.net/wiki/download/attachments/23694066/Edupoint%20-%20Base%20Ed-Fi%20Certification%20Mappings%20for%203x.xlsx?version=1&modificationDate=1673960210507&cacheVersion=1&api=v2',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Edupoint%20-%20Base%20Ed-Fi%20Certification%20Mappings%20for%203x.xlsx',
       },
       supportResources: [
         {
           name: 'Usage Overview',
-          link: 'https://edfi.atlassian.net/wiki/download/attachments/23694066/edupoint_Usage%20narrative.docx?version=1&modificationDate=1673960206427&cacheVersion=1&api=v2',
+          link: 'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/edupoint_Usage%20narrative.docx',
         },
         {
           name: 'Enablement & Support',
@@ -517,7 +531,7 @@ export default {
         'Available to all Infinite Campus Student Information System customers on version 2235 or later',
       documentation: {
         'Availability Statement':
-          'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ed-Fi%20Certification%20-%20Availability%20Statement%20IC%202022.docx?version=1&modificationDate=1666815066043&cacheVersion=1&api=v2',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Ed-Fi%20Certification%20-%20Availability%20Statement%20IC%202022.docx',
         Mappings:
           'https://kb.infinitecampus.com/help/ed-fi-v31---ed-fi-core-data',
       },
@@ -554,14 +568,14 @@ export default {
       availability: 'Available to any agency (all sizes) in the U.S.',
       documentation: {
         'Availability Statement':
-          'https://edfi.atlassian.net/wiki/download/attachments/23694066/Availability%20Statement.pdf?version=2&modificationDate=1663103992567&cacheVersion=1&api=v2',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Availability%20Statement.pdf',
         Mappings:
-          'https://edfi.atlassian.net/wiki/download/attachments/23694066/Field%20Mappings.xlsx?version=2&modificationDate=1663104029430&cacheVersion=1&api=v2',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Field%20Mappings.xlsx',
       },
       supportResources: [
         {
           name: 'Usage overview',
-          link: 'https://edfi.atlassian.net/wiki/download/attachments/23694066/Usage%20Overview.pdf?version=1&modificationDate=1660926004610&cacheVersion=1&api=v2',
+          link: 'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Usage%20Overview.pdf',
         },
         {
           name: 'Enablement & configuration guide',
@@ -588,9 +602,9 @@ export default {
       availability: 'Available to any agency (all sizes) in the U.S.',
       documentation: {
         'Availability Statement':
-          'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ed-Fi%20Certification%20-%20Implementation%20Verification%20-%20PowerSchool%20SIS%20signed.JPG?api=v2',
+          'https://edfidocs.blob.core.windows.net/$web/img/partners/2-certification/Ed-Fi%20Certification%20-%20Implementation%20Verification%20-%20PowerSchool%20SIS%20signed.JPG',
         Mappings:
-          'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ed-Fi%20Resources%20and%20Elements%20for%20PowerSchool%20SIS%20Base%20v221014.xlsx?api=v2',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Ed-Fi%20Resources%20and%20Elements%20for%20PowerSchool%20SIS%20Base%20v221014.xlsx',
       },
       supportResources: [
         {
@@ -626,7 +640,7 @@ export default {
       availability: 'Available to any agency (all sizes) in the U.S.',
       documentation: {
         'Availability Statement':
-          'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ed-Fi%20Certification%20-%20Implementation%20Verification%20-%20PowerSchool%20SIS%20signed.JPG?api=v2',
+          'https://edfidocs.blob.core.windows.net/$web/img/partners/2-certification/Ed-Fi%20Certification%20-%20Implementation%20Verification%20-%20PowerSchool%20SIS%20signed.JPG',
       },
       supportResources: [
         {
@@ -665,7 +679,6 @@ export default {
         },
       ],
     },
-
   ],
   assessmentOutcomesSuite3: [
     {
@@ -689,7 +702,7 @@ export default {
       supportResources: [
         {
           name: 'Usage Overview',
-          link: 'https://edfi.atlassian.net/wiki/download/attachments/23694066/Illuminate%20DnA%20-%20Usage%20Narrative.docx?version=1&modificationDate=1669837792907&cacheVersion=1&api=v2',
+          link: 'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Illuminate%20DnA%20-%20Usage%20Narrative.docx',
         },
         {
           name: 'Enablement and configuration guide',
@@ -734,7 +747,7 @@ export default {
       supportResources: [
         {
           name: 'DeSSADemoDistrict_Demoschool_Grade8_TES-TES_StudentISRs_121540985 PM (1).PDF',
-          link: 'https://edfi.atlassian.net/wiki/download/attachments/23694066/DeSSADemoDistrict_Demoschool_Grade8_TES-TES_StudentISRs_121540985%20PM%20(1).PDF?api=v2',
+          link: 'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/DeSSADemoDistrict_Demoschool_Grade8_TES-TES_StudentISRs_121540985%20PM.pdf',
         },
       ],
     },
@@ -743,7 +756,11 @@ export default {
       logo: 'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/amplify/AmplifyWordmark_Screen.png',
       website: 'https://amplify.com/',
       validThrough: 'February 17, 2027',
-      verifyingAgencies: ['Richardson ISD, TX', 'Midland ISD, TX', 'Aldine ISD, TX'],
+      verifyingAgencies: [
+        'Richardson ISD, TX',
+        'Midland ISD, TX',
+        'Aldine ISD, TX',
+      ],
       versionCompatibility: 'All versions',
       availability: 'Available to any agency (all sizes) in the U.S.',
       documentation: {
@@ -764,7 +781,8 @@ export default {
     {
       productName: 'i-Ready Math and ELA Diagnostic',
       logo: 'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/iReady/i-Ready-logo.svg',
-      website: 'https://www.curriculumassociates.com/programs/i-ready-assessment/diagnostic',
+      website:
+        'https://www.curriculumassociates.com/programs/i-ready-assessment/diagnostic',
       validThrough: 'April 13, 2027',
       verifyingAgencies: ['South Carolina Department of Education'],
       versionCompatibility: 'All versions',
@@ -797,9 +815,9 @@ export default {
       availability: 'Available to any LEA in any US geography',
       documentation: {
         Mappings:
-          'https://edfi.atlassian.net/wiki/download/attachments/20611183/Alio%20and%20Linq%20ERP%20mapping.docx?version=1&modificationDate=1697572605577&cacheVersion=1&api=v2',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Alio%20and%20Linq%20ERP%20mapping.docx',
         usageOverview:
-          'https://edfi.atlassian.net/wiki/download/attachments/20611183/AlioLinq%20Usage.docx?version=1&modificationDate=1697573131280&cacheVersion=1&api=v2',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/AlioLinq%20Usage.docx',
       },
       supportResources: [
         {
@@ -818,9 +836,9 @@ export default {
       availability: 'TX and WI, other states upon request',
       documentation: {
         Mappings:
-          'https://edfi.atlassian.net/wiki/download/attachments/20611183/Skyward%20Qmlativ%20Data%20Model%20Integration%20Information.xlsx?version=1&modificationDate=1701089895570&cacheVersion=1&api=v2',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Skyward%20Qmlativ%20Data%20Model%20Integration%20Information.xlsx',
         usageOverview:
-          'https://edfi.atlassian.net/wiki/download/attachments/20611183/Ed-Fi%20Badge%20Application%20-%20Qmlativ.docx?version=1&modificationDate=1701089907167&cacheVersion=1&api=v2',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Ed-Fi%20Badge%20Application%20-%20Qmlativ.docx',
       },
       supportResources: [
         {
@@ -839,9 +857,9 @@ export default {
       availability: 'TX and WI, other states upon request',
       documentation: {
         Mappings:
-          'https://edfi.atlassian.net/wiki/download/attachments/20611183/Skyward%20SMS%20Data%20Model%20Integration%20Information.xlsx?version=1&modificationDate=1701089901547&cacheVersion=1&api=v2',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Skyward%20SMS%20Data%20Model%20Integration%20Information.xlsx',
         usageOverview:
-          'https://edfi.atlassian.net/wiki/download/attachments/20611183/Ed-Fi%20Badge%20Application%20-%20SMS.docx?version=1&modificationDate=1701089912137&cacheVersion=1&api=v2',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Ed-Fi%20Badge%20Application%20-%20SMS.docx',
       },
       supportResources: [
         {
@@ -860,9 +878,9 @@ export default {
       availability: 'TX only',
       documentation: {
         Mappings:
-          'https://edfi.atlassian.net/wiki/download/attachments/20611183/FrontlineERPBadgeApplication-DataDescriptors.docx?version=1&modificationDate=1701112790670&cacheVersion=1&api=v2',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/FrontlineERPBadgeApplication-DataDescriptors.docx',
         usageOverview:
-          'https://edfi.atlassian.net/wiki/download/attachments/20611183/Frontline%20-%2001-Ed-Fi%20Badge%20Application%20-Revised.docx?version=1&modificationDate=1701213267247&cacheVersion=1&api=v2',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Frontline%20-%2001-Ed-Fi%20Badge%20Application%20-Revised.docx',
       },
       supportResources: [],
     },
@@ -876,9 +894,9 @@ export default {
       availability: 'TX Only',
       documentation: {
         Mappings:
-          'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ascender%20Ed-Fi%20v4%20Certification.xlsx?version=1&modificationDate=1702585341873&cacheVersion=1&api=v2',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Ascender%20Ed-Fi%20v4%20Certification.xlsx',
         usageOverview:
-          'https://edfi.atlassian.net/wiki/download/attachments/23694066/Ascender_End%20to%20End%20Flow%20Diagram-v2-20231212_081854.pdf?version=2&modificationDate=1702585493633&cacheVersion=1&api=v2',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Ascender_End%20to%20End%20Flow%20Diagram-v2-20231212_081854.pdf',
       },
       supportResources: [],
     },
@@ -892,9 +910,9 @@ export default {
       availability: 'TX Only',
       documentation: {
         Mappings:
-          'https://edfi.atlassian.net/wiki/download/attachments/23694066/TylerERPEdFiDataMappingTX.xlsx?version=1&modificationDate=1705500614457&cacheVersion=1&api=v2',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/TylerERPEdFiDataMappingTX.xlsx',
         usageOverview:
-          'https://edfi.atlassian.net/wiki/download/attachments/23694066/Tyler%20Ed-Fi%20Badge%20Application2.docx?version=1&modificationDate=1705503082483&cacheVersion=1&api=v2',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Tyler%20Ed-Fi%20Badge%20Application2.docx',
       },
       supportResources: [
         {
@@ -915,12 +933,12 @@ export default {
         'Available to states (SEAs) and school districts (LEAs) using Ed-Fi Technology Suite.',
       documentation: {
         Mappings:
-          'https://edfi.atlassian.net/wiki/download/attachments/20611183/AB%20Connect%20-%20API%20Provider%20Badge%20-%20Data%20Mapping.xlsx?version=2&modificationDate=1597692936440&cacheVersion=1&api=v2',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/AB%20Connect%20-%20API%20Provider%20Badge%20-%20Data%20Mapping.xlsx',
       },
       supportResources: [
         {
           name: 'Learning Standards Sync Utility',
-          link: 'https://docs.ed-fi.org/getting-started/edfi-exchange/technology/learning-standards-sync/getting-started/',
+          link: 'https://docs.ed-fi.org/getting-started/community-tools/technology/learning-standards-sync/getting-started/',
         },
       ],
     },
@@ -938,12 +956,12 @@ export default {
         'Available to states (SEAs) and school districts (LEAs) using Ed-Fi Technology Suite.',
       documentation: {
         Mappings:
-          'https://edfi.atlassian.net/wiki/download/attachments/20611183/AB%20Connect%20-%20API%20Provider%20Badge%20-%20Data%20Mapping.xlsx?version=2&modificationDate=1597692936440&cacheVersion=1&api=v2',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/AB%20Connect%20-%20API%20Provider%20Badge%20-%20Data%20Mapping.xlsx',
       },
       supportResources: [
         {
           name: 'Learning Standards Sync Utility',
-          link: 'https://docs.ed-fi.org/getting-started/edfi-exchange/technology/learning-standards-sync/getting-started/',
+          link: 'https://docs.ed-fi.org/getting-started/community-tools/technology/learning-standards-sync/getting-started/',
         },
       ],
     },
@@ -958,9 +976,9 @@ export default {
         'Available to any Local Education Agency (LEA) of any size in MN, WI, or NE.',
       documentation: {
         Mappings:
-          'https://edfi.atlassian.net/wiki/download/attachments/20611183/jmc%20to%20Ed-Fi%20data%20mapping.xlsx?api=v2',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/jmc%20to%20Ed-Fi%20data%20mapping.xlsx',
         usageOverview:
-          'https://edfi.atlassian.net/wiki/download/attachments/20611183/JMC-%20usage%20overview.docx?api=v2',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/JMC-%20usage%20overview.docx',
       },
       supportResources: [],
     },
@@ -975,9 +993,9 @@ export default {
       availability: 'Available to any LEA in any US geography',
       documentation: {
         Mappings:
-          'https://edfi.atlassian.net/wiki/download/attachments/20611183/Alio%20and%20Linq%20ERP%20mapping.docx?version=1&modificationDate=1697572605577&cacheVersion=1&api=v2',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Alio%20and%20Linq%20ERP%20mapping.docx',
         usageOverview:
-          'https://edfi.atlassian.net/wiki/download/attachments/20611183/AlioLinq%20Usage.docx?version=1&modificationDate=1697573131280&cacheVersion=1&api=v2',
+          'https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/AlioLinq%20Usage.docx',
       },
       supportResources: [
         {

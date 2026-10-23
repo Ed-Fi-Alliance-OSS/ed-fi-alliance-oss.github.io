@@ -10,4 +10,4 @@ Below are some links to important community resources for technology providers n
 * [Ed-Fi Documentation](https://docs.ed-fi.org) - technical and non-technical documentation arranged by component or product
 * [Ed-Fi Governance](https://edfi.atlassian.net/wiki/spaces/GOV) - processes and groups that define how the Ed-Fi Data Standard and Ed-Fi Technology Suite evolve, with info on how to participate
 
-![Community Diagram](https://edfi.atlassian.net/wiki/download/thumbnails/22905286/community.png?version=1&modificationDate=1569247813987&cacheVersion=1&api=v2&width=570&height=620)
+![Community Diagram](https://edfidocs.blob.core.windows.net/$web/img/getting-started/provider-playbook/support/community.png)
