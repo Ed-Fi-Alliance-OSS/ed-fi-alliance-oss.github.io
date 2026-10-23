@@ -4,7 +4,8 @@ Unsupported modifications are modifications or extensions to the Ed-Fi model
 that are not supported as part of Ed-Fi core standards and technology. The list
 below should not be interpreted as a list of all unsupported extensions (only
 those items listed under Supported Extensions are supported); rather this list
-is provided to assist data modelers in their usage.
+is provided to assist data modelers in their usage. For an overview, see [What
+is an Ed-Fi extension?](./readme.md#what-is-an-ed-fi-extension)
 
 ## Addition Exceptions
 
