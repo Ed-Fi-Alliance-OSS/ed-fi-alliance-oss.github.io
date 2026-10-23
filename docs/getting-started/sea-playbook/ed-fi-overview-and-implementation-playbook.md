@@ -12,6 +12,14 @@ This playbook provides an overview of the Ed-Fi Technology Suite and practical g
 (SEAs) implementing Ed-Fi Data Standard for data modernization. It covers the problem space, available
 implementation approaches, a phased timeline, and best practices for vendor and LEA coordination.
 
+:::info Which playbook applies to you?
+This playbook is for SEAs planning a statewide implementation. If you are an ESA providing data services
+to your member districts, see the [ESA implementation playbook](../esa-playbook/ed-fi-overview-and-esa-implementation-playbook.md)
+instead. The timelines differ because a statewide rollout coordinates many LEAs and vendors and runs
+state reporting in parallel with the legacy system before cutover, while an ESA works with its own
+member districts.
+:::
+
 ## Data Pain Points
 
 States and districts share related but distinct data challenges.

@@ -6,6 +6,10 @@ sidebar_position: 2
 
 This playbook covers how Educational Service Agencies (ESAs) can leverage the Ed-Fi Data Standard to provide data services for their member districts. The first section makes the case for Ed-Fi Data Standard adoption; the second walks through the implementation journey.
 
+:::info Which playbook applies to you?
+This playbook is for ESAs providing data services to their member districts. If you are a State Education Agency (SEA) planning a statewide implementation, see the [SEA implementation playbook](../sea-playbook/ed-fi-overview-and-implementation-playbook.md) instead. The timelines differ because an ESA works with its own member districts, while a statewide rollout coordinates many LEAs and vendors and runs state reporting in parallel with the legacy system before cutover.
+:::
+
 ## Ed-Fi and the ESA Opportunity
 
 ### State, ESA, and district pain points
