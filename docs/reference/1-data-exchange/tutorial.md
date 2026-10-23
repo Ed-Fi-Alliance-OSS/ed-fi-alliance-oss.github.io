@@ -100,15 +100,23 @@ with your interactions with the API, then you will need to re-issue the command
 below to acquire a new token.
 
 ```fetch
-POST https://api.ed-fi.org/v7.1/api/oauth/token
-Content-Type: application/json
+POST https://api.ed-fi.org/v7.3/api/oauth/token
+Authorization: Basic cG9wdWxhdGVkS2V5OnBvcHVsYXRlZFNlY3JldA==
+Content-Type: application/x-www-form-urlencoded
 
-{
-    "grant_type": "client_credentials",
-    "client_id": "RvcohKz9zHI4",
-    "client_secret": "E1iEFusaNf81xzCxwHfbolkC"
-}
+grant_type=client_credentials
 ```
+
+:::tip
+
+The string following "Basic" is a Base64-encoded version of `{key}:{secret}`.
+Alternatively, an implementation _may_ provide the credentials in the form
+body instead of in an Authorization header. The Ed-Fi software will not
+write that form body out to a log file, but a network router or proxy server
+might do so. Therefore the `Authorization` header approach is considered
+more secure by default.
+
+:::
 
 <codapi-snippet engine="browser" sandbox="fetch" editor="basic" init-delay="500"></codapi-snippet>
 

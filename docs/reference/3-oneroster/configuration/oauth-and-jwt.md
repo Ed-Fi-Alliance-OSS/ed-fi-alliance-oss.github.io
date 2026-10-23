@@ -185,9 +185,8 @@ token from the issuer and call the service:
 ```bash
 # Replace <issuer-token-endpoint>, <client_id>, <client_secret>
 curl -X POST <issuer-token-endpoint> \
+  -u "<client_id>:<client_secret>" \
   -d "grant_type=client_credentials" \
-  -d "client_id=<client_id>" \
-  -d "client_secret=<client_secret>" \
   -d "scope=https://purl.imsglobal.org/spec/or/v1p2/scope/roster-core.readonly" \
   -d "audience=<OAUTH2_AUDIENCE>"
 

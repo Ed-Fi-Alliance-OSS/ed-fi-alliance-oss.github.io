@@ -189,9 +189,8 @@ def token(
 
     r = requests.post(
         url,
+        auth=(client_id, client_secret),
         data={
-            "client_id": client_id,
-            "client_secret": client_secret,
             "grant_type": grant_type,
             "scope": scope,
             },
