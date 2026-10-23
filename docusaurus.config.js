@@ -261,6 +261,11 @@ const config = {
             from: '/reference/roadmap/notifications/admin-app-to-exchange',
             to: '/reference/roadmap/notifications/admin-app-to-community-tools',
           },
+          // SEA ETL/ELT article retitled to a neutral comparison (DOC-335).
+          {
+            from: '/getting-started/sea-playbook/implementation/why-etl-and-elt-practices-do-not-solve-interoperability-problems',
+            to: '/getting-started/sea-playbook/implementation/ed-fi-apis-and-etl-elt',
+          },
           // Assessment provider pages moved under domain-api-tutorial.
           {
             from: '/getting-started/provider-playbook/specifics-by-provider-type/assessment-providers/assessment-providers-implementation/assessment-providers-data-model/learning-standards-and-learning-objective-entities',

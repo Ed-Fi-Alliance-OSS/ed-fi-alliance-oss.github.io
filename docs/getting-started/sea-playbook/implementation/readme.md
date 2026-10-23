@@ -15,4 +15,4 @@ The documents in this section provide additional information important for SEAs 
 * [Elements of an Ed-Fi Architecture](./elements-of-an-ed-fi-architecture.md)
 * [Hardware and Software Recommendations](./hardware-and-software-recommendations.md)
 * [Ed-Fi Installation Environments](./ed-fi-installation-environments.md)
-* [Why ETL and ELT Practices Do Not Solve Interoperability Problems](./why-etl-and-elt-practices-do-not-solve-interoperability-problems.md)
+* [Ed-Fi APIs and ETL/ELT: When to Use Each](./ed-fi-apis-and-etl-elt.md)

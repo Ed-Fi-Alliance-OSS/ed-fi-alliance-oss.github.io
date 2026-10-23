@@ -94,7 +94,7 @@ Below, please find links to additional KB articles that your teams will find hel
   * [Elements of an Ed-Fi Architecture](./implementation/elements-of-an-ed-fi-architecture.md)
   * [Hardware and Software Recommendations](./implementation/hardware-and-software-recommendations.md)
   * [Ed-Fi Installation Environments](./implementation/ed-fi-installation-environments.md)
-  * [Why ETL and ELT Practices Do Not Solve Interoperability Problems](./implementation/why-etl-and-elt-practices-do-not-solve-interoperability-problems.md)
+  * [Ed-Fi APIs and ETL/ELT: When to Use Each](./implementation/ed-fi-apis-and-etl-elt.md)
 * [Support Plan](./support-plan/readme.md)
   * [Vendor Support - Technical Resources to Support API Development](./support-plan/vendor-support-technical-resources-to-support-api-development.md)
   * [LEA Support - Turning on the LEA Data and Avoiding the "Error Flood"](./support-plan/lea-support-turning-on-the-lea-data-and-avoiding-the-error-flood.md)
