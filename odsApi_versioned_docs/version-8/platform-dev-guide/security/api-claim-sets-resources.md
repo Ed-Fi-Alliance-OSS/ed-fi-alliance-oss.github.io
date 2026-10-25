@@ -225,6 +225,11 @@ applied to the claims taxonomy shown in the figure above.
   NamespacePrefix claim. A resource's namespace value must start with at least
   one of the caller's assigned namespace prefixes. NamespacePrefix values are
   assigned when a vendor's record is created.
+- **OwnershipBased.** Allows access to items based on ownership tokens
+  associated with the caller. The caller is granted access to an item when the
+  ownership token stamped on it when it was created matches one of the caller's
+  ownership tokens. See [Ownership-Based
+  Authorization](#ownership-based-authorization) for more details.
 - **Relationship-based strategies.** A family of strategies that authorize
   access to student and education organization-related data through relationships
   in the database, from the perspective of the education organization(s)
@@ -386,3 +391,22 @@ is missing, for example:
 > _No relationships have been established between the caller's education
 > organization(s) and the resource. Verify that a StudentSchoolAssociation
 > exists for the referenced student and school._
+
+## Ownership-Based Authorization
+
+Though the relationship-based authorization strategy is sufficient for most
+implementations, there are use cases with overlapping local contexts where
+education-organization-based authorization lacks the granularity necessary for
+controlling data access — for example, private schools that students from
+multiple LEAs attend for special education needs. In such cases, the
+ownership-based authorization strategy is typically applied _in conjunction
+with_ the relationship-based authorization strategy.
+
+This strategy authorizes access to individual resources based on the concept of
+"ownership". Each API client has a creator ownership token that is stamped on
+each resource the client creates, and a list of ownership tokens that identifies
+which resources it currently "owns". The authorization process filters results
+to the resources whose stamped token is in that list. Platform hosts manage
+ownership tokens through the Configuration Service; unlike the Ed-Fi ODS/API,
+there's no feature flag to turn on. See [Ownership-Based
+Authorization](./ownership-based-authorization.md) for setup details.
