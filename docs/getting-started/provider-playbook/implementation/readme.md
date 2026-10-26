@@ -10,7 +10,7 @@ sidebar_position: 2
     * [All Providers - Activity 1](./getting-started-with-apis/all-providers/all-providers-activity-1.md)
 * [Ed-Fi API Fundamentals](./ed-fi-api-fundamentals/readme.md)
   * [Enumerations (Descriptors)](./ed-fi-api-fundamentals/enumerations-descriptors.md)
-  * [API Key Structures](./ed-fi-api-fundamentals/api-key-structures.md)
+  * [Resource IDs and Natural Keys](./ed-fi-api-fundamentals/resource-ids-and-natural-keys.md)
   * [Authentication and OAuth](./ed-fi-api-fundamentals/authentication-and-oauth.md)
   * [Authorization](./ed-fi-api-fundamentals/authorization.md)
   * [API Extensions](./ed-fi-api-fundamentals/api-extensions.md)
