@@ -1,8 +1,11 @@
+---
+sidebar_position: 12
+---
+
 # CloudWatch Configuration
 
-Enables management of individual connection settings with encryption support for
-securely storing keys and secrets in the
-[AWS Systems Manager Parameter Store](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html).
+Sends the API Publisher logs to
+[Amazon CloudWatch Logs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html).
 
 ## Configure AWS SDK
 
@@ -15,7 +18,7 @@ Configure the AWS log storage parameters in the configuration file.
 
 ![Cloudwatch configuration](img/docker/logging-cloudwatch-configuration.png)
 
-Export AWS credentials to consume AWS parameters store inside the container
+When the API Publisher runs in a container, export the AWS credentials inside it:
 
 ```sh
 export AWS_ACCESS_KEY_ID="<access key id>"
