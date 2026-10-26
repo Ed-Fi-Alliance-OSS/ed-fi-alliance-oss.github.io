@@ -1923,6 +1923,60 @@ team check first:
 
 :::
 
+#### Not Authorized by a Custom View-Based Rule
+
+The API host can configure custom view-based authorization strategies that
+limit an API client to a subset of records, such as students enrolled in CTE
+courses. A request for a single item outside that subset, or a write of such an
+item, is denied. The hint in `detail` is built from the name of the rule. When
+reading many items, records outside the subset are left out without an error.
+
+<details>
+<summary>Example</summary>
+
+HTTP Request
+
+```text
+GET http://localhost:8080/api/data/ed-fi/students/b0c2a1c3e8f44f8f9c8d2d1f0c9a7e61
+Authorization: Bearer 6f5bb488a65948b5b847b561b23e
+```
+
+HTTP Response
+
+```text
+HTTP/1.1 403 Forbidden
+Content-Type: application/problem+json
+
+{
+  "detail": "Access to the requested data could not be authorized. Hint: You may need a Student with CTE Course Enrollments.",
+  "type": "urn:ed-fi:api:security:authorization",
+  "title": "Authorization Denied",
+  "status": 403,
+  "errors": [
+    "The caller is not authorized to perform the requested operation on the item based on the existing value of the 'StudentUniqueId' property of the item."
+  ]
+}
+```
+
+</details>
+
+If the reference that the rule depends on is empty, the response has the type
+`urn:ed-fi:api:security:authorization:custom-view:invalid-data:element-uninitialized`
+(for a stored item) or
+`urn:ed-fi:api:security:authorization:custom-view:access-denied:element-required`
+(for a create or update).
+
+:::tip
+
+The problem is likely in the data or the API client's permissions:
+
+- Check whether the record meets the rule described by the hint, such as a
+  student having a CTE course enrollment.
+- If the record should be accessible, send the client key and the hint to the
+  hosting provider / IT operations to review the API client's claim set.
+
+:::
+
 ### urn:ed-fi:api:security:authorization:access-denied:action
 
 #### The Requested Action Is Not Permitted
@@ -2839,3 +2893,79 @@ team for resolution.
 
 This is a catch-all for various errors that can occur on the server. Review this
 section for possible reasons for the error.
+
+### urn:ed-fi:api:system:configuration:security
+
+#### Security Configuration Error
+
+The API host's security metadata names an authorization strategy that the Ed-Fi
+API can't apply to the requested resource. For example, a custom view-based
+strategy whose name doesn't match a resource (in the example below,
+`StudentsWithCTECourseEnrollments` instead of `StudentWithCTECourseEnrollments`),
+or whose basis resource isn't referenced by the requested resource.
+
+<details>
+<summary>Example</summary>
+
+HTTP Response
+
+```text
+HTTP/1.1 500 Internal Server Error
+Content-Type: application/problem+json
+
+{
+  "detail": "A security configuration problem was detected. The request cannot be authorized.",
+  "type": "urn:ed-fi:api:system:configuration:security",
+  "title": "Security Configuration Error",
+  "status": 500,
+  "errors": [
+    "Could not find authorization strategy implementations for the following strategy names: 'StudentsWithCTECourseEnrollments'."
+  ]
+}
+```
+
+</details>
+
+:::tip
+
+This is a hosting problem → report it to the hosting provider / IT operations
+with the `correlationId`. The Ed-Fi API log names the resource and the
+authorization strategy. See [Configuration
+Errors](../technical-articles/authorizing-requests-using-custom-database-views.md#configuration-errors)
+for custom view-based strategies.
+
+:::
+
+### urn:ed-fi:api:system
+
+#### System Error
+
+An unexpected problem occurred on the server. One cause is a custom view-based
+authorization strategy whose database view is missing or invalid, for example a
+view without a `bigint` `DocumentId` column.
+
+<details>
+<summary>Example</summary>
+
+HTTP Response
+
+```text
+HTTP/1.1 500 Internal Server Error
+Content-Type: application/problem+json
+
+{
+  "detail": "An unexpected problem has occurred.",
+  "type": "urn:ed-fi:api:system",
+  "title": "System Error",
+  "status": 500
+}
+```
+
+</details>
+
+:::tip
+
+This is a hosting problem → report it to the hosting provider / IT operations
+with the `correlationId`, so they can find the details in the Ed-Fi API log.
+
+:::

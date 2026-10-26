@@ -92,6 +92,14 @@ for extensions built with [MetaEd](/reference/metaed). This allows hosts to have
 consistent support for the feature across their entire API, even for new
 top-level entities introduced by Extension projects.
 
+## Authorizing Change Queries
+
+The `/deletes` and `/keyChanges` endpoints are authorized with the `ReadChanges`
+action. Custom view-based authorization strategies apply to these endpoints as
+well as to regular reads. See [Authorizing Requests Using Custom Database
+Views](../../technical-articles/authorizing-requests-using-custom-database-views.md#change-queries)
+for the requirements.
+
 ## Changed Record Queries with Snapshot Isolation
 
 Snapshot isolation lets platform hosts serve change query requests from a

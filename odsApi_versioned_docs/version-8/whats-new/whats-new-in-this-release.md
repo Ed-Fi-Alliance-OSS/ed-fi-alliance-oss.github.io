@@ -101,7 +101,7 @@ enrolled in CTE courses," by creating a database view and naming it as an
 authorization strategy on a claim set. When more than one custom rule applies
 to a request, all of them must pass. Custom rules also apply to the `/deletes`
 and `/keyChanges` change query endpoints. See [How To: Use Custom View-Based
-Authorization](../how-to-guides/how-to-use-custom-view-based-authorization.md)
+Authorization](../how-to-guides/how-to-use-custom-view-based-authorization.mdx)
 for details.
 
 #### Access Token Management
