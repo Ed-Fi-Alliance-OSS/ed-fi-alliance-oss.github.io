@@ -381,6 +381,11 @@ const config = {
             from: '/reference/analytics-middle-tier/deployment-guide/descriptor-mapping',
             to: '/getting-started/community-tools/technology/analytics-middle-tier/deployment-guide/descriptor-mapping',
           },
+          // "API Key Structures" renamed to "Resource IDs and Natural Keys" (#713).
+          {
+            from: '/getting-started/provider-playbook/implementation/ed-fi-api-fundamentals/api-key-structures',
+            to: '/getting-started/provider-playbook/implementation/ed-fi-api-fundamentals/resource-ids-and-natural-keys',
+          },
           // Other removed pages, redirected to the closest current equivalent.
           {
             from: '/getting-started/provider-playbook/common-use-cases/rostering-solution-guide/sample-application/setup-guide',
@@ -446,7 +451,7 @@ const config = {
           },
           {
             from: '/getting-started/provider-playbook/common-use-cases/assessment-solution-guide/understanding-ed-fi-apis/api-resource-keys',
-            to: '/getting-started/provider-playbook/implementation/ed-fi-api-fundamentals/api-key-structures',
+            to: '/getting-started/provider-playbook/implementation/ed-fi-api-fundamentals/resource-ids-and-natural-keys',
           },
           {
             from: '/getting-started/provider-playbook/common-use-cases/assessment-solution-guide/understanding-ed-fi-apis/api-routes',
@@ -530,7 +535,7 @@ const config = {
           },
           {
             from: '/getting-started/provider-playbook/common-use-cases/student-equity-solution-guide/understanding-ed-fi-apis/api-resource-keys',
-            to: '/getting-started/provider-playbook/implementation/ed-fi-api-fundamentals/api-key-structures',
+            to: '/getting-started/provider-playbook/implementation/ed-fi-api-fundamentals/resource-ids-and-natural-keys',
           },
           {
             from: '/getting-started/provider-playbook/common-use-cases/student-equity-solution-guide/understanding-ed-fi-apis/api-routes',
