@@ -56,23 +56,13 @@ SQL client messages and avoiding truncation. The supported format has a
 `SecurityMetadata` root containing `Claims`, with nested `Claim` elements,
 local `DefaultAuthorization`, and `ClaimSets` declarations.
 
-The representative acceptance export was captured from the standard ODS/API
-**7.3.2**, Data Standard **5.2.0** security seed, without extensions or optional
-feature scripts. Its provenance is:
-
-- Ed-Fi-ODS structure and seed revision:
-  `e489317ea77f245aff99d57374165c238848f9a0`.
-- Ed-Fi-ODS-Implementation deployment revision:
-  `8b5ccf9b2f64dce214db0e364eada267822af4d7`.
-- Database deployment tool: `EdFi.Suite3.Db.Deploy` 4.1.52.
-- Database engine: SQL Server 2025 RTM-CU8-GDR, 17.0.4085.5, Enterprise
-  Developer Edition on Linux.
-
-The [acceptance fixture and reproduction
+Conversion is verified against an export from the standard ODS/API **7.3.2**,
+Data Standard **5.2.0** security seed, without extensions or optional feature
+scripts. See the [acceptance fixture and reproduction
 instructions](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/tree/main/src/config/clis/EdFi.DmsConfigurationService.SecurityMetadataTools.Tests.Unit/Fixtures/OdsSecurityMetadata)
-record the database preparation, pinned scripts, hashes, export commands, and
-independently prepared expected JSON. This verifies that specific export format
-and provenance; it does not establish support for a range of ODS/API versions.
+for source revisions, database and deployment-tool versions, export commands,
+hashes, and expected JSON. This verification covers that specific export format;
+it does not establish support for other ODS/API versions.
 
 ## Convert the Export
 
@@ -94,10 +84,10 @@ It does not write JSON to standard output. Existing output is refused unless
 security-metadata-tools convert-ods-xml --input export.xml --output Claims.json --force
 ```
 
-Conversion and CMS schema validation finish before any output is created or
-replaced. If either fails, a new destination remains absent and an existing
-file remains byte-for-byte unchanged, even with `--force`. Failures return a
-nonzero exit code and diagnostics on standard error.
+Conversion and Configuration Service schema validation finish before any output
+is created or replaced. If either fails, a new destination remains absent and an
+existing file remains byte-for-byte unchanged, even with `--force`. Failures
+return a nonzero exit code and diagnostics on standard error.
 
 ### Claim Set Names and Editable Imports
 
@@ -156,21 +146,23 @@ Non-policy `claimId` metadata is not emitted into JSON.
 
 Populated `validationRuleSet` attributes on default actions and
 `validationRuleSetOverride` attributes on claim-set actions cannot be
-represented by the CMS claims document and cause conversion to fail. Absent
-or empty values are accepted. The diagnostic names the attribute and affected
-claim/action. Do not remove policy-bearing values merely to make an export
-convert; resolve their intended behavior before migration.
+represented by the Configuration Service claims document and cause conversion
+to fail. Absent or empty values are accepted. The diagnostic names the attribute
+and affected claim/action. Do not remove policy-bearing values merely to make
+an export convert; resolve their intended behavior before migration.
 
 Malformed XML, unexpected roots or structure, unknown policy elements or
 attributes, missing names, and malformed actions fail with location or
 claim/action diagnostics. Documents with no claims, no referenced claim sets,
 or no claim-set actions also fail. Every successful result passes the existing
-CMS claims validator; schema failures report useful JSON paths and messages.
+Configuration Service claims validator; schema failures report useful JSON
+paths and messages.
 
 Conversion and loading validate the document's structure. They do not establish
 runtime support for every imported authorization strategy. Review the strategies
-against the Ed-Fi API deployment that will enforce them. Policy merge, resolve,
-and verify commands and broader policy verification remain DMS-1618 work.
+against the Ed-Fi API deployment that will enforce them. The tool converts
+exports; it does not merge policies, resolve effective permissions, or verify
+runtime authorization.
 
 ## Load the Generated Document
 
