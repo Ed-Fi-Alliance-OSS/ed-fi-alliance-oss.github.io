@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-description: Install Ed-Fi API Security Metadata Tools and convert an ODS security metadata XML export into a complete Configuration Service claims document.
+description: Ed-Fi API Security Metadata Tools is a command-line utility for working with Ed-Fi API security metadata. It converts an ODS/API security metadata XML export into a complete Claims.json file for the Ed-Fi API Configuration Service. Use this tool when migrating security metadata from an ODS/API deployment.
 ---
 
 # Ed-Fi API Security Metadata Tools
