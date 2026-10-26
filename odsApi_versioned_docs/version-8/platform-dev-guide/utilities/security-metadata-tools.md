@@ -170,7 +170,8 @@ Upload the generated `Claims.json` unchanged to
 `POST /management/upload-claims`; no wrapper, catalog edits, URI edits, or
 strategy substitutions are needed.
 
-Runtime upload requires a non-production Configuration Service configured with:
+Runtime upload requires a Configuration Service configured with the following
+setting. Enable it only in non-production environments.
 
 ```ini
 CONFIGURATION_SERVICE_DANGEROUSLY_ENABLE_UNRESTRICTED_CLAIMS_LOADING=true
