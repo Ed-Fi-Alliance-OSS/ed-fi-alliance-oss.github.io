@@ -5,59 +5,6 @@ education data and the exchange of that data. This page is a map of those
 standards: what each one defines, which ones are normative, and where to find
 the conceptual overview and the version-specific technical reference for each.
 
-## What standards does the Ed-Fi Alliance publish?
-
-- **[Ed-Fi Data Standard](./data-standards.md).** The community-developed
-  standard for K–12 education data. It is versioned, and each major version
-  supports specific school years.
-- **[Ed-Fi Unifying Data Model (UDM)](./udm/readme.md).** The logical model
-  behind the Data Standard. It keeps the Data Standard's specifications
-  consistent with each other. Non-normative.
-- **[Ed-Fi API Specifications](#ed-fi-api-specifications).** The API endpoints
-  and JSON messages used to exchange data that conforms to the Data Standard.
-  Normative.
-- **[Ed-Fi API Design and Implementation
-  Guidelines](./api-guidelines/readme.md).** The requirements an Ed-Fi REST API
-  specification and implementation must meet to be aligned with Ed-Fi
-  standards. Contains both normative and non-normative documentation.
-- **[Ed-Fi XSD Design and Implementation
-  Guidelines](./xsd-guidelines/readme.md).** Guidelines for Ed-Fi XML schema
-  definitions (XSD) and XML data exchange.
-- **[Extension Framework](./extensions-framework/readme.md).** Guidelines for
-  adding data to the Data Standard for a specific implementation.
-  Non-normative.
-- **[Requests for Comment (RFC)](./rfc/readme.md).** How a change to the Data
-  Standard becomes official, and where to find and comment on open RFCs.
-
-## Normative and non-normative standards
-
-A normative standard states requirements that a conforming implementation must
-meet. Non-normative material explains, models, or guides, but does not by
-itself set requirements.
-
-- **Normative:** the Ed-Fi API Specifications (API endpoint descriptions and
-  JSON messages), and parts of the API Design and Implementation Guidelines.
-- **Non-normative:** the Unifying Data Model, which is a logical model only;
-  the Extension Framework guidelines; and the rest of the API Design and
-  Implementation Guidelines.
-
-See [What standards do the Ed-Fi Alliance
-publish?](./data-standards.md#what-standards-do-the-ed-fi-alliance-publish) on
-About the Ed-Fi Data Standard.
-
-## Conceptual overviews and version-specific reference
-
-Pages in this section fall into two groups:
-
-- **Conceptual overviews apply across versions.** Start with [About the Ed-Fi
-  Data Standard](./data-standards.md), the [Unifying Data
-  Model](./udm/readme.md), [Versioning and
-  Releases](./versioning-and-releases.md), and the [Extension
-  Framework](./extensions-framework/readme.md).
-- **Technical reference is specific to a Data Standard version.** It lists the
-  domains, entities, and descriptors in that version. Use the version links
-  below.
-
 ## Ed-Fi Data Standard
 
 The [Ed-Fi Data Standard](./data-standards.md) is the widely
@@ -71,6 +18,48 @@ education enterprise.
 ➡️ [Documentation for version 6 (current)](/reference/data-exchange/data-standard/) \
 ➡️ [Documentation for version 5 (active)](/reference/data-exchange/data-standard/5/) \
 ➡️ [Documentation for version 4 (active)](/reference/data-exchange/data-standard/4/)
+
+These version pages list the domains, entities, and descriptors in each
+version; the other pages in this section apply across versions.
+
+## What standards does the Ed-Fi Alliance publish?
+
+- **[Ed-Fi Data Standard](./data-standards.md).** The community-developed
+  standard for K–12 education data. It is expressed through the Unifying Data
+  Model and the Ed-Fi REST API Specifications below; it is not a separate
+  artifact. Major versions are released and supported on a published [release
+  cadence](/reference/roadmap/cadence).
+- **[Ed-Fi Unifying Data Model (UDM)](./udm/readme.md).** The logical model
+  behind the Data Standard. Following Domain-Driven Design, its entities and
+  relationships represent the data that source systems actually collect. The
+  UDM doesn't by itself tell you how to build an API or an integration, and
+  much of it is background. Its Best Practices pages, however, are normative
+  guidance on how to conform to the standard.
+- **[Ed-Fi REST API Specifications](#ed-fi-api-specifications).** The REST API
+  endpoints and JSON messages used to exchange data that conforms to the Data
+  Standard. Normative.
+- **[Ed-Fi API Design and Implementation
+  Guidelines](./api-guidelines/readme.md).** The requirements an Ed-Fi REST API
+  specification and implementation must meet to be aligned with Ed-Fi
+  standards. Normative: an implementation that doesn't follow them doesn't
+  conform to the standard.
+- **[Extension Framework](./extensions-framework/readme.md).** Guidelines for
+  adding data to the Data Standard for a specific implementation.
+  Non-normative.
+- **[Requests for Comment (RFC)](./rfc/readme.md).** How a change to the Data
+  Standard becomes official, and where to find and comment on open RFCs.
+
+## Normative and non-normative standards
+
+A normative standard states requirements that a conforming implementation must
+meet. Non-normative material explains, models, or guides, but does not by
+itself set requirements.
+
+- **Normative:** the Ed-Fi REST API Specifications, the API Design and
+  Implementation Guidelines, and the Best Practices pages in the Unifying Data
+  Model.
+- **Non-normative:** the rest of the Unifying Data Model, and the Extension
+  Framework guidelines.
 
 ## Ed-Fi API Specifications
 

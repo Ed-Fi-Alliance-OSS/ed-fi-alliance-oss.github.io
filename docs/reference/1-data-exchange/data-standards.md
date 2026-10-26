@@ -152,7 +152,7 @@ Some things are deliberately outside the standard:
 
 The Alliance publishes a number of normative and non-normative standards.
 
-Normative standards include API endpoint descriptions and JSON messages. The [API Technical Design and Implementation Guidelines](./api-guidelines/readme.md) contains additional normative and non-normative documentation. The [Ed-Fi Unifying Data Model](./udm/readme.md) is a logical model only and non-normative.
+Normative standards include API endpoint descriptions and JSON messages. The [API Technical Design and Implementation Guidelines](./api-guidelines/readme.md) are also normative: an implementation that doesn't follow them doesn't conform to the standard. The [Ed-Fi Unifying Data Model](./udm/readme.md) is a logical model and is non-normative, except for its Best Practices pages, which are normative guidance on how to conform to the standard.
 
 ### What is the purpose of the Ed-Fi Unifying Data Model?
 
