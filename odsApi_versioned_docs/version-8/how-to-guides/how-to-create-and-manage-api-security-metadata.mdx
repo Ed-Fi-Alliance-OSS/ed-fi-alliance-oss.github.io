@@ -352,11 +352,18 @@ There are two practical starting points for a complete policy:
   [Runtime Upload via Configuration Service](#runtime-upload-via-configuration-service)).
 
 If you are migrating from a previous Ed-Fi ODS/API deployment, the
-[CmsHierarchy Tool](../platform-dev-guide/utilities/cms-hierarchy-tool.md)
-converts ODS/API XML security metadata into the `claimsHierarchy` array format.
+[Ed-Fi API Security Metadata Tools](../platform-dev-guide/utilities/security-metadata-tools.md)
+converts ODS/API XML security metadata into a complete document with top-level
+`claimSets` and `claimsHierarchy` properties. Upload the generated file
+unchanged to `POST /management/upload-claims`, using the administrative token
+and unrestricted-claims-loading setting described in
+[Runtime Upload via Configuration Service](#runtime-upload-via-configuration-service).
+The converter emits editable imported sets (`isSystemReserved: false`); an
+already-present reserved set with the same name retains its stored reserved
+status during upload.
 
-To add extension resources without maintaining a complete document, use claim
-set fragments instead; see
+To add extension resources without maintaining a complete document, use claims
+fragments instead; see
 [Introducing Extension Resources into the Taxonomy](#introducing-extension-resources-into-the-taxonomy).
 
 ### Adding New Claims

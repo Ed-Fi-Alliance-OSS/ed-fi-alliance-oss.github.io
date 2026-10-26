@@ -177,6 +177,10 @@ const config = {
       '@docusaurus/plugin-client-redirects',
       {
         redirects: [
+          {
+            from: '/reference/ed-fi-api/8/platform-dev-guide/utilities/cms-hierarchy-tool/',
+            to: '/reference/ed-fi-api/8/platform-dev-guide/utilities/security-metadata-tools/',
+          },
           // Legacy /system-administrators/* routes redirect directly to their
           // final destinations (no redirect chains).
           {
