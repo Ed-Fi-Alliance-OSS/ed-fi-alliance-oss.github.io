@@ -48,7 +48,7 @@ and TLS startup failure symptoms were inferred rather than observed.
 
 ---
 
-## Troubleshooting
+# Troubleshooting
 
 The most common issues when running the Ed-Fi OneRoster® service
 fall into four groups: authentication failures, empty or missing
@@ -59,9 +59,9 @@ For startup configuration, see [Environment variables](../docs/reference/11-oner
 For authentication specifics, see [OAuth and JWT](../docs/reference/11-oneroster/configuration/oauth-and-jwt.md).
 For how records are built from Ed-Fi sources, see [Data Model](../docs/reference/11-oneroster/data-model/readme.mdx).
 
-### Authentication failures
+## Authentication failures
 
-#### Symptom: every request returns HTTP 401
+### Symptom: every request returns HTTP 401
 
 All requests to `/ims/oneroster/rostering/v1p2/*` return:
 
@@ -92,7 +92,7 @@ _Fix:_ decode the token at [jwt.io](https://jwt.io) and compare the
 
 See [OAuth and JWT, Claims inspected](../docs/reference/11-oneroster/configuration/oauth-and-jwt.md#claims-inspected).
 
-#### Symptom: 401 only on `/demographics`
+### Symptom: 401 only on `/demographics`
 
 Tokens for `/demographics` require the `roster-demographics.readonly`
 or `roster.readonly` scope. `roster-core.readonly` is not sufficient.
@@ -100,7 +100,7 @@ or `roster.readonly` scope. `roster-core.readonly` is not sufficient.
 _Fix:_ request the correct scope from the issuer. See
 [OneRoster v1.2 scopes](../docs/reference/11-oneroster/configuration/oauth-and-jwt.md#oneroster-v12-scopes).
 
-#### Symptom: 401 behind a reverse proxy (IIS, NGINX, ARR)
+### Symptom: 401 behind a reverse proxy (IIS, NGINX, ARR)
 
 A reverse proxy that strips or rewrites the `Authorization` header
 will cause this. Confirm the proxy forwards the `Authorization`
@@ -109,9 +109,9 @@ service uses `X-Forwarded-*` headers for URL reconstruction.
 
 See [CORS, rate limiting, and proxy](../docs/reference/11-oneroster/configuration/cors-rate-limit-proxy.md).
 
-### Empty or missing endpoint responses
+## Empty or missing endpoint responses
 
-#### Symptom: `/orgs` returns rows but `/schools` returns none
+### Symptom: `/orgs` returns rows but `/schools` returns none
 
 `/schools` is `/orgs` filtered to `type = 'school'`. An empty
 `/schools` with a populated `/orgs` means there are no rows in the
@@ -122,7 +122,7 @@ _Fix:_ confirm each `edfi.school.schoolId` has a matching
 `edfi.educationOrganization.educationOrganizationId` row. See
 [Schools without `educationOrganization` rows](../docs/reference/11-oneroster/data-model/organization-mapping.md#schools-without-educationorganization-rows).
 
-#### Symptom: `/terms` or `/gradingPeriods` is empty
+### Symptom: `/terms` or `/gradingPeriods` is empty
 
 The service emits terms and grading periods only from
 `edfi.session` rows whose `TermDescriptor` is mapped to the
@@ -142,7 +142,7 @@ specifically, load the augmentation under
 `tests/grand-bend-augmentation/` in the service repository. See
 [Reproducing conformance on your own deployment](../docs/reference/11-oneroster/conformance.md#reproducing-conformance-on-your-own-deployment).
 
-#### Symptom: a principal or counselor is missing from `/users`
+### Symptom: a principal or counselor is missing from `/users`
 
 Staff members whose `StaffClassificationDescriptor` is not in the
 shipped mapping are filtered out of `/users` if they also have no
@@ -155,7 +155,7 @@ at the closest OneRoster `role` for your deployment (commonly
 `teacher`, `aide`, or `siteAdministrator`). Then refresh the `users`
 view. See [Extending a mapping](../docs/reference/11-oneroster/data-model/descriptor-mappings.md#extending-a-mapping).
 
-#### Symptom: a student is in `/users` but has no demographics
+### Symptom: a student is in `/users` but has no demographics
 
 Demographics come from separate Ed-Fi tables and require mapped
 descriptor values. Unmapped `SexDescriptor` leaves `sex` as `null`.
@@ -163,7 +163,7 @@ Unmapped `RaceDescriptor` drops the race value from the array. The
 student is still returned by both `/users` and `/demographics`. See
 [Descriptor mappings, unmapped behavior](../docs/reference/11-oneroster/data-model/descriptor-mappings.md#behavior-for-unmapped-values).
 
-#### Symptom: recent Ed-Fi changes do not appear
+### Symptom: recent Ed-Fi changes do not appear
 
 The service reads from derived `oneroster12` objects, not the Ed-Fi
 tables directly. Changes become visible only after the corresponding
@@ -173,9 +173,9 @@ _Fix:_ check the service logs for `[CronService]` entries confirming
 the refresh queue is scheduled, or for errors from the refresh
 procedure.
 
-### Refresh stalls
+## Refresh stalls
 
-#### Symptom: PostgreSQL, views not refreshing
+### Symptom: PostgreSQL, views not refreshing
 
 The Node service initializes pg-boss at startup. If `PGBOSS_CRON` is
 unset, the queues exist but nothing is scheduled.
@@ -187,7 +187,7 @@ Confirm pg-boss connectivity. The service logs `[CronService] Error
 starting CRON jobs` if pg-boss cannot connect to PostgreSQL with the
 same credentials the service uses for data reads.
 
-#### Symptom: PostgreSQL, `REFRESH MATERIALIZED VIEW CONCURRENTLY` fails
+### Symptom: PostgreSQL, `REFRESH MATERIALIZED VIEW CONCURRENTLY` fails
 
 `CONCURRENTLY` requires a unique index on the view. The shipped SQL
 artifacts create the required indexes in `00_setup.sql`. If the
@@ -197,7 +197,7 @@ indexes are missing (for example, after a manual `DROP INDEX`),
 _Fix:_ redeploy the SQL artifacts, or recreate the unique indexes
 manually.
 
-#### Symptom: Microsoft SQL Server, views not refreshing
+### Symptom: Microsoft SQL Server, views not refreshing
 
 SQL Server Agent must be running. In Microsoft SQL Server in Docker
 the agent is off by default. The service reports no error in this
@@ -209,9 +209,9 @@ msdb.dbo.sp_help_job`.
 
 See [Deploy on Microsoft SQL Server](../docs/reference/11-oneroster/getting-started/deploy-mssql.md).
 
-### Database connectivity
+## Database connectivity
 
-#### Symptom: service starts but every request returns HTTP 500
+### Symptom: service starts but every request returns HTTP 500
 
 The database pool is unreachable or the configured database user
 cannot read the `oneroster12` schema. Node logs will show a
@@ -222,7 +222,7 @@ credentials used to deploy the `oneroster12` schema, and that the
 role has `USAGE` on the schema and `SELECT` on each view or table.
 See [Environment variables](../docs/reference/11-oneroster/configuration/environment-variables.md#connection-and-tenancy).
 
-#### Symptom: SSL connection to the database fails
+### Symptom: SSL connection to the database fails
 
 PostgreSQL SSL is configured through connection string parameters
 (`sslmode`, `sslrootcert`, `sslcert`, `sslkey`) embedded in
@@ -236,7 +236,7 @@ _Fix:_ confirm the certificate file paths in the `adminConnection`
 string are correct and readable by the service process. See
 [PostgreSQL SSL](../docs/reference/11-oneroster/configuration/environment-variables.md#postgresql-ssl).
 
-### Getting more help
+## Getting more help
 
 If the issue is not covered above and is not a configuration problem:
 
