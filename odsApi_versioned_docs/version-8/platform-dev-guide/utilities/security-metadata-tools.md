@@ -1,6 +1,5 @@
 ---
 sidebar_position: 3
-slug: /platform-dev-guide/utilities/security-metadata-tools/
 description: Install Ed-Fi API Security Metadata Tools and convert an ODS security metadata XML export into a complete Configuration Service claims document.
 ---
 
