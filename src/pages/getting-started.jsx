@@ -62,7 +62,7 @@ const ROLES = [
 function NewToEdFi() {
   return (
     <div className="card shadow--md margin-top--md margin-bottom--sm padding--md">
-      <Heading as="h2">New to Ed-Fi?</Heading>
+      <Heading as="h2">New to the Ed-Fi Data Standard?</Heading>
       <p>
         The Ed-Fi Data Standard is a widely adopted, open-source data standard
         developed by the education community. It is the foundation for
