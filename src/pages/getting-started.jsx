@@ -7,43 +7,28 @@ import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 
-// Original playbook text sourced from
-// https://www.ed-fi.org/blog/introducing-ed-fi-implementation-playbooks/
-const PLAYBOOKS = [
-  {
-    title: 'State Education Agency (SEA) Playbook',
-    to: '/getting-started/sea-playbook',
-    description: 'Guidance for state agencies managing Ed-Fi implementations.',
-  },
-  {
-    title: 'Technology Provider Playbook',
-    to: '/getting-started/provider-playbook',
-    description: 'Best practices for vendors building Ed-Fi integrations.',
-  },
-  {
-    title: 'Educational Service Agency (ESA) Playbook',
-    to: '/getting-started/esa-playbook',
-    description: 'Patterns for ESAs supporting districts with Ed-Fi data.',
-  },
-];
-
 // Newcomer explanation sourced from "About the Ed-Fi Data Standard" and the
-// ESA playbook's "What Is an Ed-Fi Data Hub?" section
+// ESA playbook's "What Is an Ed-Fi Data Hub?" section. Original playbook text
+// sourced from
+// https://www.ed-fi.org/blog/introducing-ed-fi-implementation-playbooks/
 const ROLES = [
   {
     role: 'State education agency',
     title: 'SEA Playbook',
     to: '/getting-started/sea-playbook',
+    description: 'guidance for state agencies managing Ed-Fi implementations.',
   },
   {
     role: 'Technology provider',
     title: 'Technology Provider Playbook',
     to: '/getting-started/provider-playbook',
+    description: 'best practices for vendors building Ed-Fi integrations.',
   },
   {
     role: 'Educational service agency',
     title: 'ESA Playbook',
     to: '/getting-started/esa-playbook',
+    description: 'patterns for ESAs supporting districts with Ed-Fi data.',
   },
   {
     role: 'School district',
@@ -76,36 +61,17 @@ function NewToEdFi() {
         .
       </p>
       <Heading as="h3">Start here by role</Heading>
+      <p>
+        Every Ed-Fi implementation is unique, but the most successful ones share
+        common foundations. Drawing from years of fieldwork with agencies and
+        providers, our team has captured proven practices and patterns into
+        clear guidance. Choose the guide that matches your role:
+      </p>
       <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
         {ROLES.map((r) => (
           <li key={r.to} className="margin-bottom--sm">
             <strong>{r.role}:</strong> <Link to={r.to}>{r.title}</Link>
             {r.description && <> — {r.description}</>}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
-function Playbooks() {
-  return (
-    <div className="card shadow--md margin-top--md margin-bottom--sm padding--md">
-      <Heading as="h2">Playbooks</Heading>
-      <p>
-        Every Ed-Fi implementation is unique, but the most successful ones share
-        common foundations. Drawing from years of fieldwork with agencies and
-        providers, our team has captured proven practices and patterns into
-        clear guidance. Choose the playbook that matches your role:
-      </p>
-      <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-        {PLAYBOOKS.map((pb) => (
-          <li key={pb.to} className="margin-bottom--sm">
-            <Link to={pb.to}>
-              <strong>{pb.title}</strong>
-            </Link>
-            {' — '}
-            {pb.description}
           </li>
         ))}
       </ul>
@@ -174,11 +140,6 @@ function Main() {
         <div className="row">
           <div className="col col--12">
             <NewToEdFi />
-          </div>
-        </div>
-        <div className="row">
-          <div className="col col--12">
-            <Playbooks />
           </div>
         </div>
         <div className="row">
