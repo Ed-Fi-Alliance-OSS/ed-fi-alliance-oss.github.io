@@ -5,9 +5,9 @@ title: Extension Framework Best Practices
 
 # Ed-Fi Data Standard Extension Framework Best Practices
 
-## What is an Ed-Fi extension?
+## What is an Ed-Fi Data Standard extension?
 
-An Ed-Fi extension adds data that the core Ed-Fi Data Standard does not include,
+An Ed-Fi Data Standard extension adds data that the core Ed-Fi Data Standard does not include,
 for a specific implementation. An extension can add new entities, add elements
 to existing entities, or subclass existing entities, following the rules of the
 Extension Framework described on this page. Extensions are built with the
