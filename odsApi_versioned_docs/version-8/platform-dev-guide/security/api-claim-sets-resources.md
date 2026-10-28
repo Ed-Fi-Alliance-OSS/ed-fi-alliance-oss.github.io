@@ -403,9 +403,10 @@ ownership-based authorization strategy is typically applied _in conjunction
 with_ the relationship-based authorization strategy.
 
 This strategy authorizes access to individual resources based on the concept of
-"ownership". Each API client has a creator ownership token that is stamped on
-each resource the client creates, and a list of ownership tokens that identifies
-which resources it currently "owns". The authorization process filters results
+"ownership". An API client can have a creator ownership token, which is stamped
+on each resource the client creates, and a list of ownership tokens that
+identifies which resources it currently "owns". Resources created by a client
+without a creator token have no owner. The authorization process filters results
 to the resources whose stamped token is in that list. Platform hosts manage
 ownership tokens through the Configuration Service; unlike the Ed-Fi ODS/API,
 there's no feature flag to turn on. See [Ownership-Based

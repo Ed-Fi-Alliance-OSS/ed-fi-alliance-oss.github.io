@@ -10,10 +10,13 @@ authorization.
 
 ## How Ownership-Based Authorization Works
 
-Each record the Ed-Fi API stores carries the _ownership token_ of the API client
-that created it. Each API client has:
+Each record the Ed-Fi API stores can carry the _ownership token_ of the API
+client that created it. Each API client can have:
 
 - A **creator token**, which is stamped on every record the client creates.
+  The creator token is optional: records created by a client without one have
+  no ownership token. See [Records Without an
+  Owner](#records-without-an-owner).
 - A list of **ownership tokens**, which identifies the records the client
   "owns" and can read and change under the `OwnershipBased` authorization
   strategy.
@@ -35,9 +38,9 @@ check then limits access to the records the caller owns.
 :::info
 
 Unlike the Ed-Fi ODS/API, Ed-Fi API v8 has no feature flag and needs no extra
-database scripts for ownership-based authorization. Every record is stamped
-with its creator's token, whether or not any claim set uses the
-`OwnershipBased` strategy.
+database scripts for ownership-based authorization. Every record created by an
+API client with a creator token is stamped with that token, whether or not any
+claim set uses the `OwnershipBased` strategy.
 
 :::
 
@@ -66,9 +69,18 @@ authorized this way.
 
 ## Configuring the API Clients
 
-Ownership tokens are managed through the Configuration Service API. In a
-multi-tenant deployment, tokens belong to a tenant and can only be assigned to
-API clients in the same tenant.
+Ownership tokens are managed through the Configuration Service API. Requests
+need a Configuration Service bearer token: write operations require the
+`edfi_admin_api/full_access` scope, and `GET` operations also accept
+`edfi_admin_api/readonly_access`. See [Runtime Upload via Configuration
+Service](../../how-to-guides/how-to-create-and-manage-api-security-metadata.mdx#runtime-upload-via-configuration-service)
+for an example of obtaining a token.
+
+In a multi-tenant deployment, tokens belong to a tenant and can only be
+assigned to API clients in the same tenant. Every request must include the
+[`Tenant` header](../configuration/single-and-multi-tenant-configuration.md)
+with the tenant name, for example `Tenant: tenant1`. Requests without it fail
+with `400 Bad Request`.
 
 1. **Create an ownership token** for each API client, or for each group of API
    clients that should share ownership, with `POST /v3/ownershipTokens/`. The
@@ -108,7 +120,8 @@ API clients in the same tenant.
 :::warning
 
 The creator token isn't added to `ownershipTokenIds` automatically. Include it
-in both, or the API client can't read or change the records it creates.
+in `ownershipTokenIds` if the API client needs to access its records through
+actions that use the `OwnershipBased` strategy.
 
 When the Create action itself uses the `OwnershipBased` strategy, the API client
 also needs a correctly configured creator token to create records:
@@ -135,18 +148,46 @@ strategy.
 
 ### When Changes Take Effect
 
-The Ed-Fi API caches each API client's ownership configuration for up to 10
-minutes, set by `CacheSettings:ApplicationContextCacheExpirationSeconds`. A
-change to an API client's tokens can take that long to take effect. Restarting
-the Ed-Fi API applies it immediately.
+The Ed-Fi API caches each API client's ownership configuration for the period
+set by `CacheSettings:ApplicationContextCacheExpirationSeconds`, which defaults
+to 600 seconds (10 minutes). A change to an API client's tokens can take that
+long to take effect. Restarting the Ed-Fi API applies it immediately.
 
 ## Transferring Ownership to Another API Client
 
 Records don't need to change when another API client takes over from the one
-that created them, for example when a district replaces a vendor. Add the
-previous client's tokens to the new client's `ownershipTokenIds`. To have the
-new client keep stamping the same token on new records, also set it as the new
-client's `creatorOwnershipTokenId`.
+that created them, for example when a district replaces a vendor. To hand over
+the records:
+
+1. **Give the new client the previous client's tokens.** Because
+   `PUT /v3/apiClients/{id}/ownership` replaces the whole configuration, the
+   new client's `ownershipTokenIds` must list both its existing tokens and the
+   previous client's tokens. Sending only the previous client's tokens removes
+   the new client's own. To have the new client keep stamping the same token
+   on new records, also set it as the new client's `creatorOwnershipTokenId`.
+1. **Retire the previous client.** Delete it with
+   `DELETE /v3/apiClients/{id}`. To keep the client but remove its access
+   through actions that use the `OwnershipBased` strategy, update its
+   ownership with an empty `ownershipTokenIds` list and no
+   `creatorOwnershipTokenId`:
+
+   ```json
+   {
+     "apiClientId": 4,
+     "ownershipTokenIds": []
+   }
+   ```
+
+   The client can still access the records through actions that use other
+   strategies. Records it creates afterward have no owner, and if the Create
+   action uses the `OwnershipBased` strategy, its creates are denied with the
+   `ownership-uninitialized` type.
+
+1. **Wait for the change to take effect.** The previous client can keep
+   accessing the records for as long as the Ed-Fi API caches its configuration.
+   See [When Changes Take Effect](#when-changes-take-effect). Don't treat the
+   handover as complete until the cache period has passed or the Ed-Fi API has
+   been restarted.
 
 ## Records Without an Owner
 
@@ -170,9 +211,14 @@ other resources.
 ## Verifying a Successful Setup
 
 To verify the setup, use Swagger UI or another API client to request records
-created by a different API client under a resource and action that use the
-`OwnershipBased` strategy:
+under a resource and action that use the `OwnershipBased` strategy. Use a
+caller that passes the other authorization strategies for the resource and
+action, such as the relationship-based and namespace-based checks. Otherwise,
+the request can be denied by one of those strategies, and the response won't
+show the ownership error types below.
 
+- A `GET` request for a single record that the caller owns returns
+  `200 OK`.
 - A `GET` request for a single record that the caller doesn't own returns
   `403 Forbidden` with the type
   `urn:ed-fi:api:security:authorization:ownership:access-denied:ownership-mismatch`.
