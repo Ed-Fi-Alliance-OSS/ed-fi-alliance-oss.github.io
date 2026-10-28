@@ -11,9 +11,11 @@ An Ed-Fi extension adds data that the core Ed-Fi Data Standard does not include,
 for a specific implementation. An extension can add new entities, add elements
 to existing entities, or subclass existing entities, following the rules of the
 Extension Framework described on this page. Extensions are built with the
-[MetaEd IDE](../../8-metaed/readme.md). The Ed-Fi ODS/API then generates API
-resources for them: extended elements appear in an `_ext` object in the JSON,
-under a namespace that shows who defined them.
+[MetaEd IDE](../../8-metaed/readme.md). The Ed-Fi API then generates API
+resources for the new entities, and includes extended elements in an `_ext`
+object in the JSON. These appear under a namespace that shows who defined
+them &mdash; for example with URL fragment `/<extension namespace>/<new entity>`
+instead of `/ed-fi/<new entity>`.
 
 ### Why extensions exist
 
