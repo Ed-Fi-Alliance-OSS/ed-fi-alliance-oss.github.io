@@ -15,7 +15,10 @@ Descriptor everywhere necessary. Build MetaEd.
 
 After building MetaEd, almost all technical artifacts related to the new
 Descriptor will be generated, with one exception. Each new Descriptor requires
-that the individual Descriptor _values_ be defined manually in XML.
+that the individual Descriptor _values_ be defined manually in XML
+in order to be included in the bootstrap data load process. Code
+repository [Ed-Fi-Data-Standard](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard)
+holds the default descriptor set published by the Ed-Fi Alliance.
 
 ## Discussion
 
