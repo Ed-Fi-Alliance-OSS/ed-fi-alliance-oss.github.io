@@ -2,9 +2,33 @@
 sidebar_position: 0
 ---
 
-# Ed-Fi Data Standard
+# Ed-Fi Data Standard v6
 
-## Documentation Home
+:::info Version-specific reference
+
+This page is technical reference for Data Standard v6. For what the Ed-Fi Data
+Standard is, independent of version, see [About the Ed-Fi Data
+Standard](/reference/data-exchange/data-standards). For which Data Standard
+versions are supported, and through which school year, see [Ed-Fi Technology
+Suite Supported Versions](/reference/roadmap/supported-versions).
+
+:::
+
+## About Data Standard v6
+
+Data Standard v6 is a major version of the Ed-Fi Data Standard and the
+successor to Data Standard v5. Version 6.0, released in 2025, introduced
+breaking changes to the Ed-Fi Unifying Data Model (UDM) for domains commonly
+used by student information systems, assessment vendors, and educator pipeline
+systems. Version 6.1 added non-breaking changes. The current release is v6.1
+(full version number v6.1.0).
+
+For details on changes introduced in v6, refer to the [What's
+New](./whats-new/readme.md) page. See the [Ed-Fi Technology Suite
+Roadmap](/reference/roadmap) for information on past and upcoming Data Standard
+releases.
+
+## Data Model
 
 The Ed-Fi Unifying Data Model (UDM) is the widely adopted, CEDS-aligned,
 open-source data standard developed by the Ed-Fi community for the improvement
@@ -17,21 +41,13 @@ The Ed-Fi UDM, along with the normative and non-normative guidance in the Ed-Fi
 Standards, serve as the foundation for enabling interoperability among secure
 data systems.
 
-:::warning
-
-Please note that the current version of Data Standard v6 is v6.1 (full version
-number v6.1.0). See the [Ed-Fi Technology Suite Roadmap](/reference/roadmap)
-for information on past and upcoming Data Standard releases. For details on changes introduced in v6, refer to the [What's New](./whats-new/readme.md) page.
-
-:::
-
 ### Data Model Documentation
 
 The data model is referred to as the Ed-Fi Unifying Data Model, or UDM. The UDM
 is documented via 2 primary artifacts: the **Ed-Fi Data Handbook** and a set of
-**Unifying Modeling Language (UML)** diagrams.
+**Unified Modeling Language (UML)** diagrams.
 
-* <a href="https://edfidocs.blob.core.windows.net/$web/handbook/v6.1/index.html" target=" blank">Ed-Fi Data Handbook for DS v6.1</a>
+* <a href="https://edfidocs.blob.core.windows.net/$web/handbook/v6.1/index.html" target="_blank">Ed-Fi Data Handbook for DS v6.1</a>
 * <a href="https://edfidocs.blob.core.windows.net/$web/handbook/v6.0/index.html" target="_blank">Ed-Fi Data Handbook for DS v6.0</a>
 * [Ed-Fi UDM UML Diagrams](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v6.1.0/Models) ([Mermaid](https://mermaid.js.org/) files)
 

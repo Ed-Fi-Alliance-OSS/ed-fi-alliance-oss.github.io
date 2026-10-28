@@ -62,7 +62,9 @@ mapping for each vendor.
 
 ### Version 6.x
 
-Version 6.0 was released in 2025. This version is intended to support school years 2026-2027, and 2027-2028.
+Version 6.0 was released in 2025. For the school years this version supports,
+see [Ed-Fi Technology Suite Supported
+Versions](/reference/roadmap/supported-versions).
 
 ➡️ [Documentation for 6.x](/reference/data-exchange/data-standard/)
 
