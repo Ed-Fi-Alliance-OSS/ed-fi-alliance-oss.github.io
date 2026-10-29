@@ -62,7 +62,9 @@ mapping for each vendor.
 
 ### Version 6.x
 
-Version 6.0 was released in 2025. This version is intended to support school years 2026-2027, and 2027-2028.
+Version 6.0 was released in 2025. For the school years this version supports,
+see [Ed-Fi Technology Suite Supported
+Versions](/reference/roadmap/supported-versions).
 
 ➡️ [Documentation for 6.x](/reference/data-exchange/data-standard/)
 
@@ -152,7 +154,7 @@ Some things are deliberately outside the standard:
 
 The Alliance publishes a number of normative and non-normative standards.
 
-Normative standards include API endpoint descriptions and JSON messages. The [API Technical Design and Implementation Guidelines](./api-guidelines/readme.md) contains additional normative and non-normative documentation. The [Ed-Fi Unifying Data Model](./udm/readme.md) is a logical model only and non-normative.
+Normative standards include API endpoint descriptions and JSON messages. The [API Technical Design and Implementation Guidelines](./api-guidelines/readme.md) are also normative: an implementation that doesn't follow them doesn't conform to the standard. The [Ed-Fi Unifying Data Model](./udm/readme.md) is a logical model and is non-normative, except for its Best Practices pages, which are normative guidance on how to conform to the standard.
 
 ### What is the purpose of the Ed-Fi Unifying Data Model?
 

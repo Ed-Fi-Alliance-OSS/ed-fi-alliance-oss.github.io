@@ -381,6 +381,11 @@ const config = {
             from: '/reference/analytics-middle-tier/deployment-guide/descriptor-mapping',
             to: '/getting-started/community-tools/technology/analytics-middle-tier/deployment-guide/descriptor-mapping',
           },
+          // "API Key Structures" renamed to "Resource IDs and Natural Keys" (#713).
+          {
+            from: '/getting-started/provider-playbook/implementation/ed-fi-api-fundamentals/api-key-structures',
+            to: '/getting-started/provider-playbook/implementation/ed-fi-api-fundamentals/resource-ids-and-natural-keys',
+          },
           // Other removed pages, redirected to the closest current equivalent.
           {
             from: '/getting-started/provider-playbook/common-use-cases/rostering-solution-guide/sample-application/setup-guide',
@@ -393,6 +398,258 @@ const config = {
           {
             from: '/getting-started/provider-playbook/common-use-cases/assessment-solution-guide/getting-data-flowing/authorization',
             to: '/getting-started/provider-playbook/implementation/ed-fi-api-fundamentals/authorization',
+          },
+          // Common use case solution guides removed in DOC-299 (#540), redirected
+          // to the current page on the same topic.
+          {
+            from: '/getting-started/provider-playbook/common-use-cases',
+            to: '/getting-started/provider-playbook/',
+          },
+          {
+            from: '/getting-started/provider-playbook/common-use-cases/assessment-solution-guide',
+            to: '/getting-started/provider-playbook/specifics-by-provider-type/assessment-providers/assessment-providers-playbook/',
+          },
+          {
+            from: '/getting-started/provider-playbook/common-use-cases/assessment-solution-guide/getting-data-flowing',
+            to: '/getting-started/provider-playbook/specifics-by-provider-type/assessment-providers/assessment-providers-playbook/part-v-integration-architecture-and-operations',
+          },
+          {
+            from: '/getting-started/provider-playbook/common-use-cases/assessment-solution-guide/getting-data-flowing/architecture',
+            to: '/getting-started/provider-playbook/implementation/ed-fi-api-integration-architecture-for-data-providers',
+          },
+          {
+            from: '/getting-started/provider-playbook/common-use-cases/assessment-solution-guide/getting-data-flowing/data-requirements/assessment-systems',
+            to: '/getting-started/provider-playbook/specifics-by-provider-type/assessment-providers/assessment-providers-playbook/part-iii-data-modeling-requirements',
+          },
+          {
+            from: '/getting-started/provider-playbook/common-use-cases/assessment-solution-guide/getting-data-flowing/data-requirements/student-information-systems',
+            to: '/getting-started/provider-playbook/specifics-by-provider-type/assessment-providers/assessment-providers-playbook/part-iv-student-identity-and-rostering',
+          },
+          {
+            from: '/getting-started/provider-playbook/common-use-cases/assessment-solution-guide/getting-data-flowing/online-api-documentation-and-sandbox',
+            to: '/getting-started/provider-playbook/specifics-by-provider-type/assessment-providers/domain-api-tutorial/assessment-providers-sandbox/',
+          },
+          {
+            from: '/getting-started/provider-playbook/common-use-cases/assessment-solution-guide/getting-data-flowing/sample-transactions',
+            to: '/getting-started/provider-playbook/specifics-by-provider-type/assessment-providers/domain-api-tutorial/assessment-providers-sandbox/',
+          },
+          {
+            from: '/getting-started/provider-playbook/common-use-cases/assessment-solution-guide/tools-and-best-practices',
+            to: '/getting-started/provider-playbook/implementation/best-practices-api-integration',
+          },
+          {
+            from: '/getting-started/provider-playbook/common-use-cases/assessment-solution-guide/tools-and-best-practices/common-api-errors',
+            to: '/reference/ed-fi-api/client-developers-guide/error-response-knowledge-base',
+          },
+          {
+            from: '/getting-started/provider-playbook/common-use-cases/assessment-solution-guide/tools-and-best-practices/error-handling',
+            to: '/getting-started/provider-playbook/specifics-by-provider-type/assessment-providers/domain-api-tutorial/assessment-providers-error-handling',
+          },
+          {
+            from: '/getting-started/provider-playbook/common-use-cases/assessment-solution-guide/understanding-ed-fi-apis',
+            to: '/getting-started/provider-playbook/implementation/ed-fi-api-fundamentals/',
+          },
+          {
+            from: '/getting-started/provider-playbook/common-use-cases/assessment-solution-guide/understanding-ed-fi-apis/api-resource-keys',
+            to: '/getting-started/provider-playbook/implementation/ed-fi-api-fundamentals/resource-ids-and-natural-keys',
+          },
+          {
+            from: '/getting-started/provider-playbook/common-use-cases/assessment-solution-guide/understanding-ed-fi-apis/api-routes',
+            to: '/reference/ed-fi-api/client-developers-guide/api-routes',
+          },
+          {
+            from: '/getting-started/provider-playbook/common-use-cases/assessment-solution-guide/understanding-ed-fi-apis/dependency-ordering-for-resources',
+            to: '/reference/ed-fi-api/client-developers-guide/resource-dependency-order/',
+          },
+          {
+            from: '/getting-started/provider-playbook/common-use-cases/assessment-solution-guide/understanding-ed-fi-apis/descriptors',
+            to: '/getting-started/provider-playbook/implementation/ed-fi-api-fundamentals/enumerations-descriptors',
+          },
+          {
+            from: '/getting-started/provider-playbook/common-use-cases/chronic-absenteeism-solution-guide/getting-data-flowing/architecture',
+            to: '/getting-started/provider-playbook/implementation/ed-fi-api-integration-architecture-for-data-providers',
+          },
+          {
+            from: '/getting-started/provider-playbook/common-use-cases/chronic-absenteeism-solution-guide/getting-data-flowing/data-requirements',
+            to: '/partners/certification/available-certifications/sis-v5/use-cases/chronic-absenteeism',
+          },
+          {
+            from: '/getting-started/provider-playbook/common-use-cases/chronic-absenteeism-solution-guide/getting-data-flowing/sample-transactions',
+            to: '/partners/certification/available-certifications/sis-v5/use-cases/chronic-absenteeism',
+          },
+          {
+            from: '/getting-started/provider-playbook/common-use-cases/chronic-absenteeism-solution-guide/getting-data-flowing/understanding-rest-apis',
+            to: '/reference/ed-fi-api/client-developers-guide/basics',
+          },
+          {
+            from: '/getting-started/provider-playbook/common-use-cases/chronic-absenteeism-solution-guide/tools-and-best-practices/common-api-errors',
+            to: '/reference/ed-fi-api/client-developers-guide/error-response-knowledge-base',
+          },
+          {
+            from: '/getting-started/provider-playbook/common-use-cases/rostering-solution-guide/sample-application/enrollment-api',
+            to: '/reference/roadmap/notifications/enrollment-api-deprecation',
+          },
+          {
+            from: '/getting-started/provider-playbook/common-use-cases/rostering-solution-guide/workflow-in-postman/enrollment-api-via-postman',
+            to: '/reference/roadmap/notifications/enrollment-api-deprecation',
+          },
+          {
+            from: '/getting-started/provider-playbook/common-use-cases/rostering-solution-guide/workflow-in-postman/setting-up-postman',
+            to: '/reference/roadmap/notifications/enrollment-api-deprecation',
+          },
+          {
+            from: '/getting-started/provider-playbook/common-use-cases/student-equity-solution-guide/getting-data-flowing/architecture',
+            to: '/getting-started/provider-playbook/implementation/ed-fi-api-integration-architecture-for-data-providers',
+          },
+          {
+            from: '/getting-started/provider-playbook/common-use-cases/student-equity-solution-guide/getting-data-flowing/authentication',
+            to: '/getting-started/provider-playbook/implementation/ed-fi-api-fundamentals/authentication-and-oauth',
+          },
+          {
+            from: '/getting-started/provider-playbook/common-use-cases/student-equity-solution-guide/getting-data-flowing/authorization',
+            to: '/getting-started/provider-playbook/implementation/ed-fi-api-fundamentals/authorization',
+          },
+          {
+            from: '/getting-started/provider-playbook/common-use-cases/student-equity-solution-guide/getting-data-flowing/data-requirements',
+            to: '/partners/certification/available-certifications/sis-v5/use-cases/student-equity',
+          },
+          {
+            from: '/getting-started/provider-playbook/common-use-cases/student-equity-solution-guide/getting-data-flowing/online-api-documentation-and-sandbox',
+            to: '/getting-started/provider-playbook/implementation/getting-started-with-apis/',
+          },
+          {
+            from: '/getting-started/provider-playbook/common-use-cases/student-equity-solution-guide/tools-and-best-practices',
+            to: '/getting-started/provider-playbook/implementation/best-practices-api-integration',
+          },
+          {
+            from: '/getting-started/provider-playbook/common-use-cases/student-equity-solution-guide/tools-and-best-practices/best-practices',
+            to: '/getting-started/provider-playbook/implementation/best-practices-api-integration',
+          },
+          {
+            from: '/getting-started/provider-playbook/common-use-cases/student-equity-solution-guide/tools-and-best-practices/common-api-errors',
+            to: '/reference/ed-fi-api/client-developers-guide/error-response-knowledge-base',
+          },
+          {
+            from: '/getting-started/provider-playbook/common-use-cases/student-equity-solution-guide/tools-and-best-practices/error-handling',
+            to: '/reference/ed-fi-api/client-developers-guide/error-handling-best-practices',
+          },
+          {
+            from: '/getting-started/provider-playbook/common-use-cases/student-equity-solution-guide/understanding-ed-fi-apis/api-resource-keys',
+            to: '/getting-started/provider-playbook/implementation/ed-fi-api-fundamentals/resource-ids-and-natural-keys',
+          },
+          {
+            from: '/getting-started/provider-playbook/common-use-cases/student-equity-solution-guide/understanding-ed-fi-apis/api-routes',
+            to: '/reference/ed-fi-api/client-developers-guide/api-routes',
+          },
+          // Assessment provider pages removed or moved under domain-api-tutorial.
+          {
+            from: '/getting-started/provider-playbook/specifics-by-provider-type/assessment-providers/assessment-provider-overview',
+            to: '/getting-started/provider-playbook/specifics-by-provider-type/assessment-providers/assessment-providers-playbook/',
+          },
+          {
+            from: '/getting-started/provider-playbook/specifics-by-provider-type/assessment-providers/assessment-providers-implementation',
+            to: '/getting-started/provider-playbook/specifics-by-provider-type/assessment-providers/assessment-providers-playbook/',
+          },
+          {
+            from: '/getting-started/provider-playbook/specifics-by-provider-type/assessment-providers/assessment-providers-implementation/assessment-providers-data-model/assessment-entity',
+            to: '/getting-started/provider-playbook/specifics-by-provider-type/assessment-providers/domain-api-tutorial/assessment-providers-data-model/assessment-entity',
+          },
+          {
+            from: '/getting-started/provider-playbook/specifics-by-provider-type/assessment-providers/assessment-providers-implementation/assessment-providers-sandbox/assessment-providers-activity-2',
+            to: '/getting-started/provider-playbook/specifics-by-provider-type/assessment-providers/domain-api-tutorial/assessment-providers-sandbox/assessment-providers-activity-2',
+          },
+          // "What's new" pages that moved into versioned Data Standard docs or to
+          // Community Tools.
+          {
+            from: '/reference/analytics-middle-tier/whats-new',
+            to: '/getting-started/community-tools/technology/analytics-middle-tier/whats-new',
+          },
+          {
+            from: '/reference/data-exchange/data-standard/next/model-reference/student-attendance-domain/best-practices-and-use-cases',
+            to: '/reference/data-exchange/data-standard/model-reference/student-attendance-domain/',
+          },
+          {
+            from: '/reference/data-exchange/data-standard/next/whats-new',
+            to: '/reference/data-exchange/data-standard/whats-new/',
+          },
+          {
+            from: '/reference/data-exchange/data-standard/whats-new/api-changes-5',
+            to: '/reference/data-exchange/data-standard/5/whats-new/api-changes-5',
+          },
+          {
+            from: '/reference/data-exchange/data-standard/whats-new/whats-new-v50',
+            to: '/reference/data-exchange/data-standard/5/whats-new/whats-new-v50',
+          },
+          {
+            from: '/reference/data-exchange/data-standard/whats-new/whats-new-v52',
+            to: '/reference/data-exchange/data-standard/5/whats-new/whats-new-v52',
+          },
+          // Admin App, ODS Admin App, Admin API, and Analytics Middle Tier pages
+          // that moved.
+          {
+            from: '/reference/admin-api/admin-api-1.x/technical-articles/endpoints-in-admin-api-1x',
+            to: '/reference/admin-api/getting-started/admin-api-1.x/technical-articles/endpoints-in-admin-api-1x',
+          },
+          {
+            from: '/reference/admin-app/getting-started/installation/older-versions-of-admin-app/admin-app-v17-for-ods-api-v33',
+            to: '/getting-started/community-tools/technology/ods-admin-app/getting-started/installation',
+          },
+          {
+            from: '/reference/admin-app/getting-started/installation/older-versions-of-admin-app/admin-app-v181-for-ed-fi-ods-api-v34',
+            to: '/getting-started/community-tools/technology/ods-admin-app/getting-started/installation',
+          },
+          {
+            from: '/reference/admin-app/getting-started/installation/older-versions-of-admin-app/admin-app-v30-for-odsapi-v60',
+            to: '/getting-started/community-tools/technology/ods-admin-app/getting-started/installation',
+          },
+          {
+            from: '/reference/admin-app/technical-articles/powershell-installation-ods-api-v33',
+            to: '/getting-started/community-tools/technology/ods-admin-app/getting-started/installation',
+          },
+          {
+            from: '/reference/admin-app/technical-articles/resetting-admin-app-configuration-admin-app-22',
+            to: '/getting-started/community-tools/technology/ods-admin-app/technical-articles/resetting-admin-app-configuration',
+          },
+          {
+            from: '/reference/admin-app/technical-articles/year-specific-mode-v1x',
+            to: '/getting-started/community-tools/technology/ods-admin-app/technical-articles/year-specific-mode-v1x',
+          },
+          {
+            from: '/reference/analytics-middle-tier/user-guide/collections/chronic-absenteeism-collection',
+            to: '/getting-started/community-tools/technology/analytics-middle-tier/user-guide/collections/chronic-absenteeism-collection/',
+          },
+          {
+            from: '/reference/analytics-middle-tier/user-guide/collections/early-warning-system-collection',
+            to: '/getting-started/community-tools/technology/analytics-middle-tier/user-guide/collections/early-warning-system-collection/',
+          },
+          {
+            from: '/reference/ods-admin-app',
+            to: '/getting-started/community-tools/technology/ods-admin-app/',
+          },
+          {
+            from: '/reference/ods-admin-app/technical-articles/configuration-settings-v2x',
+            to: '/getting-started/community-tools/technology/ods-admin-app/technical-articles/configuration-settings-v2x',
+          },
+          {
+            from: '/reference/ods-admin-app/whats-new',
+            to: '/getting-started/community-tools/technology/ods-admin-app/whats-new',
+          },
+          // ODS / API pages renamed or not present in that version.
+          {
+            from: '/reference/ods-api/6.2/platform-dev-guide/configuration/api-client-and-ods-instance-configuration',
+            to: '/reference/ed-fi-api/6.2/platform-dev-guide/configuration/',
+          },
+          {
+            from: '/reference/ods-api/7.1/client-developers-guide/error-response-knowledge-base',
+            to: '/reference/ed-fi-api/client-developers-guide/error-response-knowledge-base',
+          },
+          {
+            from: '/reference/ods-api/7.1/how-to-guides/how-to-deploy-an-extension-plugin',
+            to: '/reference/ed-fi-api/7.1/how-to-guides/how-to-create-an-extension-plugin',
+          },
+          {
+            from: '/reference/ods-api/platform-dev-guide/security/api-configuration-data-stores',
+            to: '/reference/ed-fi-api/platform-dev-guide/security/security-configuration-data-stores',
           },
         ],
         createRedirects(existingPath) {

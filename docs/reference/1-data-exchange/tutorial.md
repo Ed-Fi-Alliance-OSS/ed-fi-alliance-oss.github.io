@@ -10,18 +10,22 @@ Background assumptions: basic knowledge of REST API semantics and basic
 familiarity with [data exchange standards](./).
 
 This tutorial will walk through some basic interactions with an Ed-Fi API. It
-uses a live application running the Ed-Fi Resources API version 5.0 and
-Descriptors API version 5.0 (hosted via the Ed-Fi ODS/API version 7.1). The
-concepts are the same in all versions, though some detail of the data models may
-differ.
+uses a live application running Ed-Fi Data Standard version 6.1 (hosted via the
+Ed-Fi ODS/API version 7.3.2). The concepts are the same in all versions, though
+some detail of the data models may differ.
+
+This tutorial is for learning. The version it uses is not a recommendation for
+your own implementation; see
+[Supported Versions](/reference/roadmap/supported-versions) for the versions
+that are currently supported, including Ed-Fi API v8.
 
 :::note
 
 The data returned by this API may _look_ realistic, but they are entirely fake.
-The Ed-Fi Alliance does not store, transmit, or have access to student data - we
-provide software to our community members, who run it for themselves or engage
-with a partner to do so on their behalf. The live application used by this
-tutorial is a demonstration site containing synthetic data.
+The live application used by this tutorial is a demonstration site containing
+synthetic data. To learn how Ed-Fi API platforms protect real student data, and
+who is responsible for what, see
+[How Ed-Fi API Platforms Secure Student Data](/reference/ods-api-platform/security-overview).
 
 :::
 
@@ -33,15 +37,17 @@ to that URL, we receive a document that describes the application with which you
 are interacting. This endpoint is called the Discovery API.
 
 ```fetch
-GET https://api.ed-fi.org/v7.1/api/
+GET https://api.ed-fi.org/v7.3.2/api/
 ```
 
 <codapi-snippet engine="browser" sandbox="fetch" editor="basic" init-delay="500"></codapi-snippet>
 
 In particular, note the following:
 
-* This application support the Ed-Fi Data Standard 5.0 with Teacher Preparation
-  Data Model (TPDM) extension 1.1.
+* This application supports the Ed-Fi Data Standard 6.1. The `dataModels`
+  array lists the core `Ed-Fi` model and its version; if an application
+  includes extensions, each one appears there as another entry with its own
+  version.
 
 :::info
 
@@ -72,8 +78,8 @@ Standard.
 expression; it tells you to start at the top (`$`) of the document, look for the
 `urls` element, then inside of it, look for the value on the `oauth` element.
 
-Arrays are described in JSONPath using index notation. For example, the TPDM
-version number is at path `$.dataModels[1].version`.
+Arrays are described in JSONPath using index notation. For example, the core
+Ed-Fi model's version number is at path `$.dataModels[0].version`.
 
 :::
 
@@ -95,12 +101,12 @@ OAuth client credentials flow. The following example submits a pairing of
 `client_id` and `client_secret`, and the response will contain an `access_token`
 value. That token value is a temporary key for unlocking access to the Ed-Fi
 API. What do we mean by "temporary"? Note the `expires_in` value, which is in
-milliseconds - the token will expire after this time. If you are not finished
+seconds - the token will expire after this time. If you are not finished
 with your interactions with the API, then you will need to re-issue the command
 below to acquire a new token.
 
 ```fetch
-POST https://api.ed-fi.org/v7.3/api/oauth/token
+POST https://api.ed-fi.org/v7.3.2/api/oauth/token
 Authorization: Basic cG9wdWxhdGVkS2V5OnBvcHVsYXRlZFNlY3JldA==
 Content-Type: application/x-www-form-urlencoded
 
@@ -138,7 +144,7 @@ We do this with a `GET` request to the `/ed-fi/students` endpoint, appending the
 query string parameters `limit=1`.
 
 ```fetch
-GET https://api.ed-fi.org/v7.1/api/data/v3/ed-fi/students?limit=1
+GET https://api.ed-fi.org/v7.3.2/api/data/v3/ed-fi/students?limit=1
 ```
 
 <codapi-snippet engine="browser" sandbox="fetch" editor="basic" init-delay="500"></codapi-snippet>
@@ -154,7 +160,7 @@ Authentication section above into the box below, replacing
 "98aa86998da3476c95c296e99e397891" after the word "bearer":
 
 ```fetch
-GET https://api.ed-fi.org/v7.1/api/data/v3/ed-fi/students?limit=1
+GET https://api.ed-fi.org/v7.3.2/api/data/v3/ed-fi/students?limit=1
 Authorization: bearer 98aa86998da3476c95c296e99e397891
 ```
 
@@ -174,7 +180,7 @@ unique; otherwise, if someone else has run this tutorial recently, you will end
 up _updating_ an existing record instead of _creating_ a new one.
 
 ```fetch
-POST https://api.ed-fi.org/v7.1/api/data/v3/ed-fi/students
+POST https://api.ed-fi.org/v7.3.2/api/data/v3/ed-fi/students
 Authorization: bearer 98aa86998da3476c95c296e99e397891
 Content-Type: application/json
 
@@ -196,7 +202,7 @@ _response headers_ &mdash; the key-value pairs below the status code. That
 that value into the next request.
 
 ```fetch
-GET https://api.ed-fi.org/v7.1/api/data/v3/ed-fi/students/692ea2ceebd142bfa7a5ace10c3f11e7
+GET https://api.ed-fi.org/v7.3.2/api/data/v3/ed-fi/students/692ea2ceebd142bfa7a5ace10c3f11e7
 Authorization: bearer 98aa86998da3476c95c296e99e397891
 ```
 
@@ -230,16 +236,17 @@ associated with that LEA or individual school. We need to create a
 School. The error message above tells us what `educationOrganizationId` values
 we are allowed to use: 255901 or 19255901. But neither of these is a school, as
 it turns out. We will need a `schoolId`. The following request looks up the
-first School associated with LEA 255901.
+Schools associated with LEA 255901.
 
 ```fetch
-GET https://api.ed-fi.org/v7.1/api/data/v3/ed-fi/schools?localEducationAgencyId=255901&limit=1
+GET https://api.ed-fi.org/v7.3.2/api/data/v3/ed-fi/schools?localEducationAgencyId=255901
 Authorization: bearer 98aa86998da3476c95c296e99e397891
 ```
 
 <codapi-snippet engine="browser" sandbox="fetch" editor="basic" init-delay="500"></codapi-snippet>
 
-We'll use the `schoolId` value in the next section.
+We'll use the `schoolId` value for Grand Bend High School, 255901001, in the
+next section.
 
 ### Creating a Student School Association
 
@@ -264,7 +271,7 @@ Level Descriptors. The following example looks up the first two available
 `gradeLevelDescriptor` resources held by the API.
 
 ```fetch
-GET https://api.ed-fi.org/v7.1/api/data/v3/ed-fi/gradeLevelDescriptors?limit=2
+GET https://api.ed-fi.org/v7.3.2/api/data/v3/ed-fi/gradeLevelDescriptors?limit=2
 Authorization: bearer 98aa86998da3476c95c296e99e397891
 ```
 
@@ -277,7 +284,7 @@ you can try the `GET` request for the Student again (above). This time, it
 should be successful.
 
 ```fetch
-POST https://api.ed-fi.org/v7.1/api/data/v3/ed-fi/studentSchoolAssociations
+POST https://api.ed-fi.org/v7.3.2/api/data/v3/ed-fi/studentSchoolAssociations
 Authorization: bearer 000b2ebdc059479d93f75f4f64934dd3
 Content-Type: application/json
 
@@ -289,7 +296,7 @@ Content-Type: application/json
     "studentUniqueId": "unique"
   },
   "entryDate": "2024-06-02",
-  "entryGradeLevelDescriptor": "uri://ed-fi.org/GradeLevelDescriptor#Ninth grade",
+  "entryGradeLevelDescriptor": "uri://ed-fi.org/GradeLevelDescriptor#Ninth grade"
 }
 ```
 
@@ -306,7 +313,7 @@ to it being at the end of the URL. But, don't try this on the `POST` request,
 because `id` is not allowed in `POST` requests.
 
 ```fetch
-POST https://api.ed-fi.org/v7.1/api/data/v3/ed-fi/students
+POST https://api.ed-fi.org/v7.3.2/api/data/v3/ed-fi/students
 Authorization: bearer 98aa86998da3476c95c296e99e397891
 Content-Type: application/json
 
@@ -322,7 +329,7 @@ Content-Type: application/json
 <codapi-snippet engine="browser" sandbox="fetch" editor="basic" init-delay="500"></codapi-snippet>
 
 ```fetch
-PUT https://api.ed-fi.org/v7.1/api/data/v3/ed-fi/students/a597ca255e8e4155b54c389a7b13931c
+PUT https://api.ed-fi.org/v7.3.2/api/data/v3/ed-fi/students/a597ca255e8e4155b54c389a7b13931c
 Authorization: bearer 98aa86998da3476c95c296e99e397891
 Content-Type: application/json
 
@@ -343,7 +350,7 @@ Content-Type: application/json
 To delete the Student, use the same URL as in the `PUT` request:
 
 ```fetch
-DELETE https://api.ed-fi.org/v7.1/api/data/v3/ed-fi/students/a597ca255e8e4155b54c389a7b13931c
+DELETE https://api.ed-fi.org/v7.3.2/api/data/v3/ed-fi/students/a597ca255e8e4155b54c389a7b13931c
 Authorization: bearer 98aa86998da3476c95c296e99e397891
 ```
 
@@ -369,14 +376,14 @@ record, from which the `id` value can be copied and pasted into the `DELETE`
 request that follows it.
 
 ```fetch
-GET https://api.ed-fi.org/v7.1/api/data/v3/ed-fi/studentSchoolAssociations?studentUniqueId=unique&schoolId=255901001
+GET https://api.ed-fi.org/v7.3.2/api/data/v3/ed-fi/studentSchoolAssociations?studentUniqueId=unique&schoolId=255901001
 Authorization: bearer 98aa86998da3476c95c296e99e397891
 ```
 
 <codapi-snippet engine="browser" sandbox="fetch" editor="basic" init-delay="500"></codapi-snippet>
 
 ```fetch
-DELETE https://api.ed-fi.org/v7.1/api/data/v3/ed-fi/studentSchoolAssociations/629d690e8007483ba52780749688f104
+DELETE https://api.ed-fi.org/v7.3.2/api/data/v3/ed-fi/studentSchoolAssociations/629d690e8007483ba52780749688f104
 Authorization: bearer 98aa86998da3476c95c296e99e397891
 ```
 
@@ -394,7 +401,7 @@ Descriptors, and Student School Associations.
 
 As a next step in learning how to interact with an Ed-Fi API, we suggest trying
 the
-[live documentation site for ODS/API 7.1](https://api.ed-fi.org/v7.1/docs/swagger).
+[live documentation site for ODS/API 7.3.2](https://api.ed-fi.org/v7.3.2/docs/swagger/index.html).
 It uses a tool called Swagger UI to read the OpenAPI specification file &mdash;
 provided by the Discovery API, in `$.urls.openApiMetadata` &mdash; and create a
 friendly user interface for exploring the full scope of the Resources API.
@@ -409,7 +416,7 @@ A few tips to help you navigate and use the tool:
 3. Each resource type (e.g. `academicWeeks`, `accountabilityRatings`, etc.) has
    expandable content for `GET`, `POST`, `GET` by ID, `PUT`, and `DELETE`
    requests &mdash; plus two more `GET` requests that relate to the
-   [Change Queries](https://edfi.atlassian.net/wiki/spaces/ODSAPIS3V61/pages/18811902/Using+the+Changed+Record+Queries)
+   [Change Queries](/reference/ed-fi-api/client-developers-guide/using-the-changed-record-queries)
    feature.
 4. The `GET` request shows all of the available _query string parameters_ for
    filtering query results.
@@ -431,9 +438,9 @@ application:
   to build a compliant Ed-Fi API application. Those who are writing client
   applications that interact with a compatible Ed-Fi API application can also
   benefit by learning more about what to expect from the system.
-* [API Client Developers' Guide](/reference/ed-fi-api/7.2/client-developers-guide): provides
+* [API Client Developers' Guide](/reference/ed-fi-api/client-developers-guide): provides
   more detail on many of the topics explored in this tutorial, and covers
   additional details not reviewed here. This link is to the Ed-Fi ODS/API
-  version 7.2 documentation. Most if not all content there applies equally to
+  version 7.3 documentation. Most if not all content there applies equally to
   other versions of the Ed-Fi ODS/API and to other Ed-Fi API applications more
   generally.
