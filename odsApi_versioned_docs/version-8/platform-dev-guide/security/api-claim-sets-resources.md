@@ -235,6 +235,18 @@ applied to the claims taxonomy shown in the figure above.
   in the database, from the perspective of the education organization(s)
   contained in the caller's claims. See [Relationship-Based
   Authorization](#relationship-based-authorization) for more details.
+- **Custom View-Based Authorization.** Provides a flexible mechanism for
+  defining custom authorization strategies. Platform hosts can create database
+  views tailored to specific authorization needs, such as restricting access by
+  student program enrollment or grade level, and name them as authorization
+  strategies in the security metadata, without recompiling or restarting the
+  Ed-Fi API. Custom view-based strategies are combined with the other strategies
+  using AND semantics, so they further restrict access. See [Authorizing
+  Requests Using Custom Database
+  Views](../../technical-articles/authorizing-requests-using-custom-database-views.md)
+  and [How To: Use Custom View-Based
+  Authorization](../../how-to-guides/how-to-use-custom-view-based-authorization.mdx)
+  for details.
 
 ## How Authorization Is Enforced
 
