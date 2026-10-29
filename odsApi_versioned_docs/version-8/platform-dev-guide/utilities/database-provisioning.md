@@ -18,7 +18,7 @@ provisioned differently:
 
 | Database | Provisioning |
 | --- | --- |
-| **Configuration Service** (`dmscs` schema) | Deployed automatically on startup when `DeployDatabaseOnStartup` is `true` (the default; set via the `DMS_CONFIG_DEPLOY_DATABASE` environment variable). No manual step is required. |
+| **Configuration Service** (`dmscs` schema) | Deployed automatically on startup when `DeployDatabaseOnStartup` is `true` (the default; set via the `CONFIGURATION_SERVICE_DEPLOY_DATABASE` environment variable). No manual step is required. |
 | **Ed-Fi API** (resource data) | Provisioned explicitly with the `api-schema-tools` CLI. The API container does **not** deploy or migrate this schema on startup. |
 
 :::info
@@ -31,6 +31,38 @@ database until the service restarts. See [Schema Fingerprint
 Validation](#schema-fingerprint-validation) below.
 
 :::
+
+## Database Requirements
+
+The Ed-Fi API and the Configuration Service run on either PostgreSQL or SQL
+Server. For SQL Server, use SQL Server 2025 or later.
+
+On PostgreSQL, the two services have different minimum versions:
+
+| Service | Minimum PostgreSQL version |
+| --- | --- |
+| **Ed-Fi API** | PostgreSQL 18, with a UTF-8 database encoding |
+| **Configuration Service** | PostgreSQL 15 |
+
+If both services use the same database server, it must meet the Ed-Fi API
+requirement. The provided Docker Compose files use PostgreSQL 18.
+
+The Ed-Fi API needs a UTF-8 database because descriptor identity depends on
+PostgreSQL's built-in `pg_c_utf8` collation, which exists only in UTF-8
+databases. PostgreSQL can't change the encoding of an existing database; a
+database that isn't UTF-8 has to be re-created as UTF-8.
+
+`api-schema-tools ddl provision` checks the server version and the target
+database's encoding before it runs any DDL. With `--create-database`, it also
+checks the encoding of the server's `template1` database when the target
+database doesn't exist yet, and creates the database as UTF-8. If a check fails,
+provisioning stops before anything is created, and the error message names the
+value that failed.
+
+On PostgreSQL 14 or earlier, the Configuration Service's database deployment
+fails, because it uses constraints those versions don't support. With
+`DeployDatabaseOnStartup` enabled (the default), the service logs the failure
+and doesn't start.
 
 ## Provisioning in a Local (Getting Started) Environment
 
@@ -46,7 +78,7 @@ use for production or other non-scripted deployments.
 
 `api-schema-tools` is published as a .NET global tool on the Ed-Fi Azure
 Artifacts feed. See [Package
-Releases](../../getting-started/package-releases.md#ed-fi-api-v800-packages)
+Releases](../../getting-started/package-releases.md#ed-fi-api-v810-packages)
 for the current published version.
 
 ```powershell
@@ -80,9 +112,10 @@ The `--schema` inputs are the same `ApiSchema.json` files the Ed-Fi API loads at
 runtime: the core Ed-Fi Data Standard schema followed by any extension schemas
 produced by MetaEd. The first `--schema` path is the core schema; the rest are
 extensions. See [Extending API
-DataModel](../extensibility-customization/extending-api-datamodel.md) and the `ApiSchemaPath`
-setting in [Configuration Details](../configuration/configuration-details) for
-how the runtime locates these files.
+DataModel](../extensibility-customization/extending-api-datamodel.md) and the
+`AppSettings:ApiSchema:Path` setting in [Configuration
+Details](../configuration/configuration-details) for how the runtime locates
+these files.
 
 ### Computing the schema fingerprint (`hash`)
 

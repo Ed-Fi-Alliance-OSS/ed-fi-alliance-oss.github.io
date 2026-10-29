@@ -47,8 +47,8 @@ An extension schema can:
    for how to set up the extension project and author entities.
 2. **Build the project** to generate `ApiSchema-EXTENSION.json`.
 3. **Stage the schema.** Place the core and extension `ApiSchema.json` files
-   together in the directory specified by `AppSettings:ApiSchemaPath` (requires
-   `AppSettings:UseApiSchemaPath` set to `true`; see [Configuration
+   together in the directory specified by `AppSettings:ApiSchema:Path` (requires
+   `AppSettings:ApiSchema:UseCustomPath` set to `true`; see [Configuration
    Details](../configuration/configuration-details)). In a local environment,
    `prepare-dms-schema.ps1` builds this staged workspace for you.
 4. **Provision the database.** Run `api-schema-tools ddl provision` (or, in a
