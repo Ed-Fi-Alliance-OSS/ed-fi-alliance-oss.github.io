@@ -114,7 +114,10 @@ Only some references can be part of this path:
   reference can be any top-level reference. Each reference after it must be
   part of the identity of the resource it's on. In the chain above, a grade can
   reach a course offering because a student section association is identified
-  in part by its section, and a section in part by its course offering.
+  in part by its section, and a section in part by its course offering. This
+  rule applies to references to other resources. A descriptor value at the end
+  of the path, such as a school's school type, doesn't have to be identifying,
+  except for change queries (see [Change Queries](#change-queries)).
 
 If the basis resource can't be reached this way, requests fail with a security
 configuration error, even if the resources are connected in the data model.
@@ -379,6 +382,15 @@ values and the values used for authorization, so the first reference on the path
 to the basis resource must be part of the resource's identity or one of those
 authorization values. If it isn't, change query requests for that resource fail
 with a security configuration error.
+
+A descriptor basis resource reached through another resource has one more
+requirement: the descriptor value must be part of the identity of every
+resource on the path, so that it's recorded in the tracked-change table. For
+example, a student school association can reach a school type descriptor
+through its school reference, and this works for regular requests. But a school
+type isn't part of a school's identity, so it isn't recorded when an association
+is deleted, and `/studentSchoolAssociations/deletes` fails with a security
+configuration error for a strategy such as `SchoolTypeDescriptorWithX`.
 
 How the Ed-Fi API then checks the basis resource depends on what the basis
 resource is:
