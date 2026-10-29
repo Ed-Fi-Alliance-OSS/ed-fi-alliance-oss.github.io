@@ -7,70 +7,30 @@ Admin API.
 
 ### Features
 
-* New `v3` API mode: an updated Management API definition that is compatible
-  with the Ed-Fi API v8 platform. The `v1` and `v2` modes remain available.
-* Instance Management: create and delete ODS database instances from an
-  approved database template, through `/v2/odsInstances/manage` (v2) or
-  `/v3/dataStores/manage` (v3). Provisioning runs asynchronously in a
-  background job, and each instance reports a lifecycle status such as
-  `PendingCreate`, `CreateInProgress`, `PendingDelete` or `Deleted`. The new
-  `EnableDataStoreManagement` setting turns these endpoints and jobs off.
-* Job status endpoints `GET /v2/jobs/{jobId}` and `GET /v3/jobs/{jobId}` for
-  tracking asynchronous work, such as instance provisioning and education
-  organization refreshes. Instance create and delete requests return the
-  `jobId`.
-* Education organizations: Admin API keeps a periodically refreshed copy of
-  the education organizations in each ODS instance (interval set by
-  `EdOrgsRefreshIntervalInMins`), with endpoints to list them by instance or
-  tenant and to request an on-demand refresh (returns `202 Accepted`).
-* ADMINAPI-1500 - New response on the Information endpoint (`GET /`): it now
-  returns `specificationVersion`, `applicationName`, `informationalVersion`,
-  and absolute URLs to the OpenAPI metadata and to the new `/tenancy`
-  endpoint, which reports multi-tenant mode and the configured tenant names.
-* ADMINAPI-1483 - Duplicate protection (v3): Admin API rejects a new Vendor
-  with an existing company name, an Application with an existing vendor and
-  name, and an ApiClient with an existing application and name.
-* Audit logging (v2 and v3 modes): authentication events and API actions are
-  written to an audit log table, including the natural key of deleted objects.
-  It can be turned off with the `AuditLogging:Enabled` setting.
-
-### Changes in the v3 API
-
-The following changes apply to the `v3` mode only, unless noted otherwise.
-
-* ADMINAPI-1373 - `odsInstances` resources are renamed to `dataStores`.
-* ADMINAPI-1476 - `apiclients` endpoints are renamed to `apiClients` (v2 and
-  v3).
-* ADMINAPI-1379 - The ApiClients endpoints no longer return the deprecated
-  `useSandbox` and `sandboxType` fields, and `key` is renamed to `clientId`.
-* ADMINAPI-1440/1441/1442 - Claim set payloads use a flat list of resource
-  claims, with `claimName` and `parentClaimName` identifying the hierarchy.
-  The claim set export payload has the same shape as the read payload.
-* ADMINAPI-1381 - Claim set names that contain whitespace are rejected.
-* ADMINAPI-1383 - Error responses use the RFC 7807 Problem Details format,
-  with a `type` URN that identifies the error category.
-* ADMINAPI-1376 - The `Location` header contains an absolute URL instead of a
-  relative one.
-* ADMINAPI-1377 - Successful PUT and DELETE requests return `204 No Content`,
-  and PUT requests are rejected when the ID in the body is missing or does
-  not match the ID in the URL.
-* ADMINAPI-1484 - Editing an Application no longer changes `enabled` or
-  `dataStoreIds`; these are managed per ApiClient. Resetting the credential
-  of an Application that has more than one ApiClient returns `409 Conflict`;
-  use `PUT /v3/apiClients/{id}/reset-credential` instead.
+* New `v3` API mode, aligned with the Ed-Fi API v8 platform. It brings
+  consistent resource naming (ODS instances are now "data stores"), simpler
+  claim set payloads, and standard Problem Details error responses. The `v1`
+  and `v2` modes remain available.
+* Instance management: create and delete ODS database instances from a
+  template directly through the API, with provisioning handled in the
+  background.
+* Job status tracking for long-running operations, such as instance
+  provisioning and education organization refreshes.
+* Education organization endpoints: view the education organizations in each
+  ODS instance, kept up to date automatically or refreshed on demand.
+* Audit logging of authentication events and administrative actions.
+* The Information endpoint now reports the active specification version and
+  links to tenancy information and the OpenAPI metadata.
 
 ### Enhancements
 
-* ADMINAPI-1411 - Upgraded to .NET 10.
-* ADMINAPI-1482 - ODS instance and derivative connection strings are
-  encrypted, and derivative connection strings are no longer returned in API
-  responses. Tenant endpoints no longer expose connection strings.
-* ADMINAPI-1503 - Removed support for external identity providers (Keycloak).
-  Admin API uses only its built-in OpenIddict authentication.
-* ADMINAPI-1352 - Fixed an installer error when IIS hosts multiple websites.
-* The PostgreSQL Docker image is now based on a Docker Hardened Image.
-* The OpenAPI specifications are now published in the Ed-Fi specification
-  repository.
+* Duplicate protection for vendors, applications, and API clients in the `v3`
+  mode.
+* Connection strings are encrypted and are no longer returned in API
+  responses.
+* Upgraded to .NET 10.
+* Removed support for external identity providers (Keycloak).
+* Installer and Docker image improvements.
 
 ## Updates in Admin API v2.3.2
 
