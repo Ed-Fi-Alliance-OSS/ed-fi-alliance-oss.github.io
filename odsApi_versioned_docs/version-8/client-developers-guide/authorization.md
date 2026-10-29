@@ -65,6 +65,21 @@ A namespace-based authorization strategy is used for resources such as
 assessment metadata, where access is governed by the namespace prefixes assigned
 to the caller rather than by a relationship to an education organization.
 
+Your API host may also use custom view-based authorization strategies, which
+further limit access to a subset of records, such as students enrolled in CTE
+courses. When a custom view-based strategy applies:
+
+- Requests for many items leave out the records you can't access, without an
+  error.
+- Requests for a single item that you can't access, and writes of an item that
+  you can't access, fail with `403 Forbidden` and the type
+  `urn:ed-fi:api:security:authorization`. The response's `detail` includes a
+  hint named after the rule, such as "You may need a Student with CTE Course
+  Enrollments."
+
+If a hint doesn't explain the denial, ask your API host which rules apply to
+your API client.
+
 ## API Client Profiles
 
 API Profiles enable an Ed-Fi API platform host to constrain the data exposed
