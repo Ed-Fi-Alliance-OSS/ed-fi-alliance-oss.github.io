@@ -21,8 +21,8 @@ ODS (SQL Scripts), and technical documentation from a single source definition
 written in the MetaEd DSL.
 
 A version of MetaEd called the MetaEd IDE supports the generation of Ed-Fi
-Extensions and all related artifacts. The MetaEd IDE is freely available to
-Ed-Fi community members.
+Data Standard Extensions and all related artifacts. The MetaEd IDE is freely
+available to Ed-Fi community members.
 
 ## Documentation
 
