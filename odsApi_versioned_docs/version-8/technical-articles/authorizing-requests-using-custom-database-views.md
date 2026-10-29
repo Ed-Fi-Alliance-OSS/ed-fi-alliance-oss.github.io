@@ -59,7 +59,8 @@ strategy:
    pattern `{BasisResource}With{Description}`, so
    `StudentWithCTECourseEnrollments` has the basis resource `Student`.
 1. It finds the path from the resource being authorized to the basis resource,
-   through the resource's references.
+   through the resource's references. Not every reference can be used; see
+   [Which References Are Used](#which-references-are-used).
 1. It checks that the basis resource's `DocumentId` for the item is in the view
    `auth.{StrategyName}`.
 
@@ -89,6 +90,56 @@ descriptors and education organizations.
 For this example, let's build a strategy based on `Assessment` that authorizes
 access to resources that reference an assessment, filtering them to assessments
 with the academic subject "Mathematics".
+
+### Which References Are Used
+
+Most strategies use a direct reference to the basis resource, and you don't
+need the details in this section. They matter when the basis resource is
+reached through other resources, when a resource has more than one reference to
+it, or when you use change queries (see [Change Queries](#change-queries)).
+
+The resource being authorized can reach the basis resource through a direct
+reference, such as a student assessment's reference to an assessment, or
+through a chain of references, such as:
+
+`Grade` → `StudentSectionAssociation` → `Section` → `CourseOffering`
+
+Only some references can be part of this path:
+
+- **Only top-level references.** References inside a collection, such as an
+  item in a list of programs, and references added by an extension aren't used.
+  For a descriptor basis resource, the descriptor value must also be at the top
+  level of the resource.
+- **After the first reference, only identifying references.** The first
+  reference can be any top-level reference. Each reference after it must be
+  part of the identity of the resource it's on. In the chain above, a grade can
+  reach a course offering because a student section association is identified
+  in part by its section, and a section in part by its course offering.
+
+If the basis resource can't be reached this way, requests fail with a security
+configuration error, even if the resources are connected in the data model.
+See [Configuration Errors](#configuration-errors).
+
+When more than one path reaches the basis resource, the Ed-Fi API uses only one
+of them, chosen as follows:
+
+1. If the basis resource is `EducationOrganization`, or another resource that
+   has several types, a reference to the basis resource itself is preferred
+   over a reference to one of its types, such as `School`, even when that path
+   is longer. For example, with an `EducationOrganization` basis, a student
+   school association is authorized through its graduation plan's education
+   organization reference, not through its own school reference. An
+   association without a graduation plan is then treated as having no basis
+   reference, so it's denied or left out of results.
+1. Otherwise, the paths are compared one reference at a time, starting from the
+   resource being authorized. An identifying reference is preferred over one
+   that isn't, a required reference over an optional one, and a reference
+   without a role name (such as `schoolReference`) over one with a role name
+   (such as `responsibilitySchoolReference`).
+1. If the paths are still tied, the shorter path is used.
+
+Only the basis item reached through the chosen path is checked against the
+view. Other references to the basis resource on the same item aren't checked.
 
 ## Step 2: Create the Database View
 
@@ -153,8 +204,9 @@ plural noun instead to avoid the "a".
 The view must:
 
 - Be in the `auth` schema, with the same name as the authorization strategy.
-- Be a view. On PostgreSQL, a materialized view also works. A table isn't
-  accepted.
+- Be a view. On PostgreSQL, a materialized view also works, but it must be
+  refreshed for data changes to take effect (see [When Changes Take
+  Effect](#when-changes-take-effect)). A table isn't accepted.
 - Have a `DocumentId` column, named exactly that, with the type `bigint`,
   containing the basis resource's `DocumentId` values. Other types, such as
   `integer` or text, aren't accepted. Other columns are ignored.
@@ -317,31 +369,112 @@ If the reference to the basis resource is empty:
   type `urn:ed-fi:api:security:authorization:custom-view:access-denied:element-required`.
 - A read of many items leaves those items out.
 
-Changes to the data in the view take effect immediately. For example, when a
-student enrolls in a CTE course, the next request for that student is
-authorized.
-
 ### Change Queries
 
 On `/deletes` and `/keyChanges`, the Ed-Fi API authorizes each deleted or
 changed item using the values recorded when it was deleted or changed. These
-records only keep a resource's identifying values and the values used for
-authorization, so the first reference on the path to the basis resource must be
-part of the resource's identity or one of those authorization values. If it
-isn't, change query requests for that resource fail with a security
-configuration error.
+values are kept in a _tracked-change table_ for each resource, such as
+`tracked_changes_edfi.School`. The table only keeps a resource's identifying
+values and the values used for authorization, so the first reference on the path
+to the basis resource must be part of the resource's identity or one of those
+authorization values. If it isn't, change query requests for that resource fail
+with a security configuration error.
 
-If the basis resource itself may have been deleted, end the strategy name with
-`IncludingDeletes`, for example `SchoolWithAlternativeTypeIncludingDeletes`.
-The Ed-Fi API then also checks the basis resource's deleted items, so deleted
-items that referred to it can still be authorized. Without the suffix, only
-basis items that still exist are checked. The suffix has no effect on other
-requests, and the view's name still includes it.
+How the Ed-Fi API then checks the basis resource depends on what the basis
+resource is:
+
+- **The resource itself, or a student, contact, or staff member used for
+  authorization.** The recorded values include the basis item's `DocumentId`,
+  and it's checked against the view as it is now. If the view still returns
+  that `DocumentId`, the item is authorized, even if the basis item has since
+  been deleted. A student, contact, or staff member counts only when the
+  resource's reference to them is one of its authorization values, which is
+  usually the case.
+- **Any other resource**, including a student, contact, or staff member
+  referenced in some other way. The Ed-Fi API uses the recorded values to look
+  up the basis item, and checks the `DocumentId` of the item it finds. If the
+  basis item has since been deleted, or its identifying values have changed,
+  it isn't found, and the item is denied, unless the strategy uses
+  `IncludingDeletes` (see below).
+
+#### Authorizing Items Whose Basis Was Deleted
+
+When the basis item has to be looked up, a deleted basis item can't be found.
+For example, with `SchoolWithAlternativeType` on
+`/studentSchoolAssociations/deletes`, a deleted enrollment is denied once its
+school has also been deleted. To keep authorizing items like this:
+
+1. **Add `IncludingDeletes` to the end of the strategy and view names**, for
+   example `SchoolWithAlternativeTypeIncludingDeletes`. The Ed-Fi API then also
+   looks for the basis item in its tracked-change table by its old identifying
+   values, so a deleted basis item, or one whose identifying values changed, can
+   still be found. The suffix only affects `/deletes` and `/keyChanges`
+   requests, so you can use the strategy for the ReadChanges action only.
+1. **Include deleted basis items in the view.** A view that queries only the
+   resource's table stops returning an item's `DocumentId` once the item is
+   deleted, so the suffix alone isn't enough. Add a second query to the view,
+   with `UNION ALL`, that returns the `DocumentId` of deleted items from the
+   tracked-change table.
+
+Because tracked-change tables keep only identifying and authorization values,
+the second query can only filter on those. For example, a deleted school's
+type isn't recorded, so the following view includes every deleted school. In
+`tracked_changes_edfi.School`, deleted schools are the rows without a
+`NewSchoolId`; the other rows record changes to a school's `SchoolId`.
+
+PostgreSQL:
+
+```sql
+CREATE OR REPLACE VIEW "auth"."SchoolWithAlternativeTypeIncludingDeletes" AS
+    SELECT s."DocumentId"
+    FROM "edfi"."School" s
+        INNER JOIN "dms"."Descriptor" d
+            ON d."DescriptorId" = s."SchoolTypeDescriptor_DescriptorId"
+    WHERE d."Namespace" = 'uri://ed-fi.org/SchoolTypeDescriptor'
+        AND d."CodeValue" = 'Alternative'
+    UNION ALL
+    SELECT tc."DocumentId"
+    FROM "tracked_changes_edfi"."School" tc
+    WHERE tc."NewSchoolId" IS NULL;
+```
+
+SQL Server:
+
+```sql
+CREATE OR ALTER VIEW [auth].[SchoolWithAlternativeTypeIncludingDeletes] AS
+    SELECT s.[DocumentId]
+    FROM [edfi].[School] s
+        INNER JOIN [dms].[Descriptor] d
+            ON d.[DescriptorId] = s.[SchoolTypeDescriptor_DescriptorId]
+    WHERE d.[Namespace] = N'uri://ed-fi.org/SchoolTypeDescriptor'
+        AND d.[CodeValue] = N'Alternative'
+    UNION ALL
+    SELECT tc.[DocumentId]
+    FROM [tracked_changes_edfi].[School] tc
+    WHERE tc.[NewSchoolId] IS NULL;
+GO
+```
+
+If the basis resource has many deleted items, consider adding an index to its
+tracked-change table on the identifying values, such as `OldSchoolId`, to speed
+up these requests.
 
 ## When Changes Take Effect
 
 The Ed-Fi API checks each custom view when a request uses it, not at startup.
 You can create or fix a view at any time without restarting the Ed-Fi API.
+
+For a regular view, changes to the data the view queries take effect
+immediately. For example, when a student enrolls in a CTE course, the next
+request for that student is authorized.
+
+A PostgreSQL materialized view stores its results, so changes to the data take
+effect only when the view is refreshed with `REFRESH MATERIALIZED VIEW`. Until
+then, the view keeps returning its old results, both for items that should now
+be authorized and for items that should no longer be. If you use a materialized
+view, refresh it often enough for your access rules. See
+[Materialized Views](https://www.postgresql.org/docs/current/rules-materializedviews.html)
+in the PostgreSQL documentation.
 
 A new or changed authorization strategy in the security metadata takes effect
 when the Ed-Fi API next refreshes its claim set cache. By default, the cache
@@ -362,10 +495,11 @@ empty result. Check the Ed-Fi API log for details.
   resource name matches the part before it, requests fail with `500 Internal
   Server Error`, the type `urn:ed-fi:api:system:configuration:security`, and
   the title "Security Configuration Error".
-- **No path to the basis resource.** If the resource being authorized doesn't
-  reference the basis resource, directly or through other references, requests
-  fail with the same security configuration error. The log message names the
-  resource, the strategy, and the basis resource.
+- **No path to the basis resource.** If the resource being authorized can't
+  reach the basis resource through the references described in [Which References
+  Are Used](#which-references-are-used), requests fail with the same security
+  configuration error. The log message names the resource, the strategy, and the
+  basis resource.
 
 A view is only checked when the strategies before it pass. For example, if
 `NamespaceBased` is listed before the view and denies a request, the response is
