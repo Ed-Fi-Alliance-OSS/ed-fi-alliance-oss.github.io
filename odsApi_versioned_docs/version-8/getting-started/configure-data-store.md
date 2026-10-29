@@ -69,11 +69,14 @@ same applies if you started the services with `-AddSmokeTestCredentials`.
 
 :::note Multiple data stores
 
+If you started with `-AddSmokeTestCredentials`, the bootstrap already associated
+its credential with every school-year data store, so you can skip this note.
+
 If you created year-specific data stores (for example, with `-SchoolYearRange`),
 the default `Get-SmokeTestCredential` call above associates the client with only
 the **first** data store, so requests to the other school-year routes return a
-403. List the data store IDs and pass them all so the client is authorized for
-every route:
+403. Create a credential for all of the data stores instead. The snippet uses a
+different application name, so it works even if you already ran the call above:
 
 ```powershell
 # Get a Configuration Service admin token. This uses the local admin client
@@ -82,10 +85,14 @@ Import-Module ../Dms-Management.psm1 -Force
 Add-CmsClient -CmsUrl "http://localhost:8081" -ClientId "smoke-test-admin" -DisplayName "Smoke Test Administrator"
 $adminToken = Get-CmsToken -CmsUrl "http://localhost:8081" -ClientId "smoke-test-admin"
 
-# List data store IDs
-Get-DataStore -CmsUrl "http://localhost:8081" -AccessToken $adminToken | Select-Object id, name
-
-$cred = Get-SmokeTestCredential -ConfigServiceUrl "http://localhost:8081" -DataStoreIds @(1, 2, 3)
+# List the data stores and pass all of their IDs to the helper
+$dataStores = @(Get-DataStore -CmsUrl "http://localhost:8081" -AccessToken $adminToken)
+$dataStores | Select-Object id, name
+$dataStoreIds = @($dataStores | ForEach-Object { [long]$_.id })
+$cred = Get-SmokeTestCredential -ConfigServiceUrl "http://localhost:8081" `
+  -ApplicationName "Smoke Test Application (all data stores)" -DataStoreIds $dataStoreIds
+Write-Host "Key:    $($cred.Key)"
+Write-Host "Secret: $($cred.Secret)"
 ```
 
 The admin client's secret is a fixed development default in
