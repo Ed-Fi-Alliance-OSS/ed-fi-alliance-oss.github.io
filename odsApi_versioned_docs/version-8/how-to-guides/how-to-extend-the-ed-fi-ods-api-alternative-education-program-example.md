@@ -289,7 +289,7 @@ Copy-Item ".bootstrap\ApiSchema\schemas\Ed-Fi\ApiSchema.json" "C:\path\to\my-sch
 
 Alternatively, download the `EdFi.DataStandard52.ApiSchema` package; see
 [Package
-Releases](../getting-started/package-releases.md#ed-fi-api-v800-schema-packages)
+Releases](../getting-started/package-releases.md#ed-fi-api-v810-schema-packages)
 for
 the package link and version. A `.nupkg` is a ZIP archive, and the core schema
 is inside it at `contentFiles/any/any/ApiSchema/ApiSchema.json`:
@@ -377,8 +377,8 @@ checkout; after this step, your original directory isn't referenced again.
 Writing the staged workspace also creates `.bootstrap/bootstrap-manifest.json`,
 which puts the stack into "bootstrap mode": the next start automatically adds a
 compose override that mounts `.bootstrap/ApiSchema` read-only into the DMS
-container at `/app/ApiSchema`, matching the `AppSettings:ApiSchemaPath` and
-`AppSettings:UseApiSchemaPath` values already defaulted in `.env`. The stack you
+container at `/app/ApiSchema`, matching the `API_SCHEMA_PATH` and
+`USE_API_SCHEMA_PATH` values already defaulted in `.env`. The stack you
 stopped in Step 5a picks up the staged schema when you start it again in Step 6.
 
 :::

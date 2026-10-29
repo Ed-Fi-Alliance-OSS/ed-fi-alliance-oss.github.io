@@ -11,7 +11,8 @@ sidebar_position: 3
 | Ed-Fi API | 8080 |
 | Configuration Service | 8081 |
 | Swagger UI _(optional)_ | 8082 |
-| PostgreSQL | 5435 |
+| PostgreSQL _(default database engine)_ | 5435 |
+| SQL Server _(with `-DatabaseEngine mssql`)_ | 1435 |
 | Keycloak _(optional)_ | 8045 |
 
 Ports can be overridden in the `.env` file before starting the services.
@@ -31,7 +32,7 @@ configuration. Copy `.env.example` to `.env` and edit as needed before running
 | `ROUTE_QUALIFIER_SEGMENTS` | _(empty)_ | Route qualifier path segments, e.g. `schoolYear` or `districtId,schoolYear` |
 | `MAXIMUM_PAGE_SIZE` | `500` | Maximum number of results per paginated request |
 | `MASK_REQUEST_BODY_IN_LOGS` | `true` | Mask request body in DEBUG-level logs |
-| `LOG_LEVEL` | `DEBUG` | Log verbosity: `DEBUG`, `INFORMATION`, `WARNING`, `ERROR` |
+| `LOG_LEVEL` | `Information` | Log verbosity: `Debug`, `Information`, `Warning`, `Error` |
 | `DMS_HTTP_PORTS` | `8080` | Port the Ed-Fi API container listens on |
 
 ### PostgreSQL
@@ -46,17 +47,17 @@ configuration. Copy `.env.example` to `.env` and edit as needed before running
 
 | Variable | Default | Description |
 | --- | --- | --- |
-| `DMS_CONFIG_ASPNETCORE_HTTP_PORTS` | `8081` | Port the Configuration Service container listens on |
-| `DMS_CONFIG_IDENTITY_PROVIDER` | `self-contained` | Identity provider: `self-contained` or `keycloak` |
-| `DMS_CONFIG_MULTI_TENANCY` | `false` | Enable multi-tenancy for the Configuration Service |
-| `DMS_CONFIG_DEPLOY_DATABASE` | `true` | Provision Configuration Service database on start |
-| `DMS_CONFIG_LOG_LEVEL` | `Information` | Configuration Service log verbosity |
-| `CONFIG_SERVICE_URL` | `http://ed-fi-api-config:8081` | URL the Ed-Fi API uses to reach the Configuration Service (internal Docker network name) |
+| `CONFIGURATION_SERVICE_ASPNETCORE_HTTP_PORTS` | `8081` | Port the Configuration Service container listens on |
+| `CONFIGURATION_SERVICE_IDENTITY_PROVIDER` | `self-contained` | Identity provider: `self-contained` or `keycloak` |
+| `CONFIGURATION_SERVICE_MULTI_TENANCY` | `false` | Enable multi-tenancy for the Configuration Service |
+| `CONFIGURATION_SERVICE_DEPLOY_DATABASE` | `true` | Provision Configuration Service database on start |
+| `CONFIGURATION_SERVICE_LOG_LEVEL` | `Information` | Configuration Service log verbosity |
+| `DMS_CONFIGURATION_SERVICE_URL` | `http://ed-fi-api-config:8081` | URL the Ed-Fi API uses to reach the Configuration Service (internal Docker network name) |
 
 :::info
 
-Advanced settings such as rate limiting, circuit breaker thresholds, and JWT
-clock skew are configured in `appsettings.json` inside the container. See
+The Docker Compose files support more settings than the ones listed here, such as
+rate limits, circuit breaker thresholds, and JWT clock skew. See
 [Configuration Details](../platform-dev-guide/configuration/configuration-details)
 for the full reference.
 
@@ -71,7 +72,7 @@ Service. No external dependency is required. This is the recommended option for
 development and most production deployments.
 
 ```ini
-DMS_CONFIG_IDENTITY_PROVIDER=self-contained
+CONFIGURATION_SERVICE_IDENTITY_PROVIDER=self-contained
 ```
 
 ### Keycloak
@@ -93,12 +94,14 @@ Server — organized into separate schemas by concern. By default, the Docker
 Compose stack uses PostgreSQL and creates a single database — named by
 `POSTGRES_DB_NAME` (default `edfi_datamanagementservice`) — that both services
 use, with the Configuration Service's data isolated in the `dmscs` schema.
-Alternatively, the Configuration Service can be pointed at its own database (for
-example, `edfi_configurationservice`) via the
-`DMS_CONFIG_DATABASE_CONNECTION_STRING` environment variable.
+Alternatively, the Configuration Service can use its own database. Pass
+`-SeparateConfigDatabase` to `bootstrap-local-dms.ps1` to create a separate
+`edfi_configurationservice` database, or point the Configuration Service at
+another database with the `CONFIGURATION_SERVICE_DATABASE_CONNECTION_STRING`
+environment variable.
 
 The Configuration Service schema is deployed automatically on startup when
-`DMS_CONFIG_DEPLOY_DATABASE=true` (the default). The data stores used by the Ed-Fi
+`CONFIGURATION_SERVICE_DEPLOY_DATABASE=true` (the default). The data stores used by the Ed-Fi
 API are not deployed by the API container on startup; it is provisioned as a
 separate phase by the startup scripts (using the `api-schema-tools` CLI), which
 `bootstrap-local-dms.ps1` orchestrates for you.
@@ -106,6 +109,7 @@ separate phase by the startup scripts (using the `api-schema-tools` CLI), which
 | Schema | Application | Purpose |
 | --- | --- | --- |
 | `dms`, `edfi`, `tracked_changes_<project>` (e.g. `tracked_changes_edfi`, `tracked_changes_tpdm`) | Ed-Fi API | Ed-Fi resource and descriptor data |
+| `auth` | Ed-Fi API | Database views that platform hosts create for custom view-based authorization |
 | `dmscs` | Configuration Service | Vendors, applications, claim sets, data store configuration, and OAuth client credentials (OpenIddict, used with the self-contained identity provider) |
 
 To provision the database manually, see
@@ -120,8 +124,8 @@ startup script:
 ./bootstrap-local-dms.ps1 -DatabaseEngine mssql
 ```
 
-`-DatabaseEngine mssql` runs against the bundled SQL Server container
-(`dms-mssql`), configured by the `.env.mssql` overlay; the local startup scripts
+`-DatabaseEngine mssql` runs against the bundled SQL Server 2025 container
+(`dms-mssql`, on host port `1435`), configured by the `.env.mssql` overlay; the local startup scripts
 always register the data store against that container. Pointing the local stack
 at an **external** SQL Server is not supported by these scripts. To run against
 an external or production SQL Server, provision it with the `api-schema-tools`
