@@ -2,8 +2,8 @@
 
 The Ed-Fi Data Standard and related technologies can be extended to add new
 entities and elements. Extensions included in this category are allowed and
-fully endorsed. For an overview, see [What is an Ed-Fi
-extension?](../readme.md#what-is-an-ed-fi-extension)
+fully endorsed. For an overview, see
+[What is an Ed-Fi Data Standard extension?](../readme.md#what-is-an-ed-fi-data-standard-extension)
 
 Supported activities are outlined in the sections listed below.
 

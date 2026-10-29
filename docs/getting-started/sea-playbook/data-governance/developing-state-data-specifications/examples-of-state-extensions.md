@@ -1,7 +1,7 @@
 
 # Examples of State Extensions
 
-Here are some examples of state-specific extensions to the Ed-Fi Data Standard. For what an extension is and how it affects interoperability, see [What is an Ed-Fi extension?](/reference/data-exchange/extensions-framework#what-is-an-ed-fi-extension)
+Here are some examples of state-specific extensions to the Ed-Fi Data Standard. For what an extension is and how it affects interoperability, see [What is an Ed-Fi Data Standard extension?](/reference/data-exchange/extensions-framework#what-is-an-ed-fi-data-standard-extension)
 
 | State | Extension Link |
 | ----- | ------------- |

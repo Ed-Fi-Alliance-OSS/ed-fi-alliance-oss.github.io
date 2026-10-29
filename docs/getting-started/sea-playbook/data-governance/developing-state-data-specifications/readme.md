@@ -8,7 +8,7 @@ The data specifications comprise elements that your state needs to collect in or
 
 For a successful Ed-Fi Technology Suite implementation, we recommend states start small and identify one or two priority use cases as a starting point.
 
-Defining a data specification generally means mapping between the state elements and those elements in the Ed-Fi Data Standard. This mapping exercise will identify where the elements are 1:1 aligned, where they are not 1:1 aligned, what elements need to be omitted, and what elements do not exist in Ed-Fi (e.g., need to be added using Ed-Fi Extensions – more on this below).
+Defining a data specification generally means mapping between the state elements and those elements in the Ed-Fi Data Standard. This mapping exercise will identify where the elements are 1:1 aligned, where they are not 1:1 aligned, what elements need to be omitted, and what elements do not exist in Ed-Fi (e.g., need to be added using Ed-Fi Data Standard Extensions – more on this below).
 
 ## Sample State Data Specifications
 
@@ -22,9 +22,9 @@ Most state data specifications are shared openly online, because states need a b
 | NE  | [ADVISER Resources \| Nebraska Department of Education](https://www.education.ne.gov/dataservices/adviser-resources/#1533221816265-b51e789f-abfc) |
 | WI  | [WISEdata Domains and Endpoints \| Wisconsin Department of Public Instruction](https://wisconsindpi.atlassian.net/wiki/spaces/widpiedfi/pages/2294032/Data+Domains+Endpoints+Integrations) |
 
-## State-Specific Data Elements - Ed-Fi Extensions
+## State-Specific Data Elements - Ed-Fi Data Standard Extensions
 
-The gaps you identified during the mapping exercise are the data elements that are not in Ed-Fi Data Standard and need to be added to the Ed-Fi API and Operational Data Store. These are called "Extensions." For what an extension is and when not to create one, see [What is an Ed-Fi extension?](/reference/data-exchange/extensions-framework#what-is-an-ed-fi-extension)
+The gaps you identified during the mapping exercise are the data elements that are not in Ed-Fi Data Standard and need to be added to the Ed-Fi API and Operational Data Store. These are called "Extensions." For what an extension is and when not to create one, see [What is an Ed-Fi Data Standard extension?](/reference/data-exchange/extensions-framework#what-is-an-ed-fi-data-standard-extension)
 
 Once these are identified as Extensions in the mapping document, a business analyst or a developer must use the MetaEd tool to create these Extensions. Refer to these documents to learn more:
 

@@ -14,7 +14,7 @@ States may perceive that they cannot meet some of these expectations due to poli
 
 ## Avoid unnecessary API Extensions
 
-Ed-Fi API Extensions are available in recognition that each state will have unique data elements not present in the Ed-Fi API Specifications. However, extensions should not be used when unnecessary, and in particular should not duplicate elements that are already present in the data model. See [What is an Ed-Fi extension?](/reference/data-exchange/extensions-framework#what-is-an-ed-fi-extension) for when not to create one.
+Ed-Fi API Extensions are available in recognition that each state will have unique data elements not present in the Ed-Fi API Specifications. However, extensions should not be used when unnecessary, and in particular should not duplicate elements that are already present in the data model. See [What is an Ed-Fi Data Standard extension?](/reference/data-exchange/extensions-framework#what-is-an-ed-fi-data-standard-extension) for when not to create one.
 
 ## Avoid aggregate data elements
 

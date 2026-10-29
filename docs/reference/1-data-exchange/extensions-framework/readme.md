@@ -73,7 +73,7 @@ practices](#best-practices) in more detail.
 
 The Ed-Fi Data Standard and related technologies can be extended to add new
 entities and elements. The set of standard extensions are codified in the Ed-Fi
-Extension Framework, documented herein. This knowledge base article attempts to provide an overview and best practices
+Data Standard Extension Framework, documented herein. This knowledge base article attempts to provide an overview and best practices
 for the Ed-Fi Data Standard Extension Framework.
 
 This article assumes prerequisite knowledge from the [Ed-Fi
@@ -91,8 +91,8 @@ before attempting to digest the information presented in this article.
 
 ### Framework Reference Implementation
 
-An implementation of the Ed-Fi Extension Framework is provided via the MetaEd
-IDE. The Ed-Fi Community has relied heavily on this reference implementation and
+An implementation of the Ed-Fi Data Standard Extension Framework is provided
+via the MetaEd IDE. The Ed-Fi Community has relied heavily on this reference implementation and
 downstream technology implementations (e.g., the API implementation in the Ed-Fi
 ODS/API, etc.) to define patterns that have proven stable and are believed to be
 widely implementable.
@@ -212,9 +212,9 @@ Framework.
   (including your vendors). Evaluate whether the extension aligns with your
   long-term goals and whether it is a sustainable solution for addressing your
   unique data needs.
-* **Evaluate future standard updates.** As mentioned earlier, Ed-Fi extensions
-    play a key role in ensuring the Ed-Fi Data Standard continues to stay
-    relevant as new data collection sources come online.  Stay informed about
+* **Evaluate future standard updates.** As mentioned earlier, Ed-Fi Data Standard
+    extensions play a key role in ensuring the Ed-Fi Data Standard continues to
+    stay relevant as new data collection sources come online.  Stay informed about
     upcoming releases and updates to the Ed-Fi Data Standard. Some of your
     identified gaps may be addressed in future versions. Assess whether waiting
     for an upcoming release is a viable option for your organization. Also,
