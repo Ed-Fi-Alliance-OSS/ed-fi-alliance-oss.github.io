@@ -38,7 +38,7 @@
     "gray-matter": {
       "js-yaml": "^3.13.1"
     },
-    "qs": ">=6.16.0",
+    "qs": ">=6.17.0",
     "tinypool": ">=2.1.2",
     "follow-redirects": ">=1.16.1",
     "browserslist": ">=4.28.7",
