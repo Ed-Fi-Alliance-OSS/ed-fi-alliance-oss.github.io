@@ -50,8 +50,9 @@ Service; see [Changed Record
 Queries](../platform-dev-guide/features/changed-record-queries.md#changed-record-queries-with-snapshot-isolation).
 
 The API client should set the `Use-Snapshot` HTTP header to `true` on each
-request. Send exactly `true`; any other value, such as `yes` or `1`, reads
-current data instead, without an error.
+request. The value isn't case-sensitive, and spaces around it are ignored, so
+`TRUE` also works. Any other value, such as `yes` or `1`, reads current data
+instead, without an error.
 
 If a `404 Not Found` response with the message `Snapshot not found.` is
 returned, the host hasn't set up a snapshot for change query processing, or the
@@ -169,6 +170,9 @@ following elements:
   be processed and the order of processing (informed by Ed-Fi model
   dependencies).
 - [Initial Synchronization](#obtain-initial-data) (a one-time operation).
+  - _(Optional)_ If [snapshot isolation](#use-snapshot-isolation) is supported
+    by the host, apply the `Use-Snapshot: true` header to all API calls in this
+    run, starting with the next step.
   - Obtain the system's current change version (a.k.a., the _synchronization
     version_).
   - Obtain and process the initial data for identified resources (with no
@@ -179,12 +183,11 @@ following elements:
   (repeating, on a schedule).
   - Obtain the saved synchronization version from the previous successful
     processing and add 1 (a.k.a., the _starting change version_).
+  - _(Optional)_ If [snapshot isolation](#use-snapshot-isolation) is supported
+    by the host, apply the `Use-Snapshot: true` header to all API calls in this
+    processing run, starting with the next step.
   - Obtain the system's current change version (a.k.a., the _synchronization
     version_).
-  - _(Optional)_ If
-    [snapshot isolation](#use-snapshot-isolation) is supported by the host,
-    apply the `Use-Snapshot: true` header to all API calls in this processing
-    run.
   - Process for key changes on identified resources (as applicable, in
     dependency order).
   - Process for changes on identified resources (in dependency order).
@@ -208,6 +211,11 @@ _availableChangeVersions_ route:
 ```none
 GET /changeQueries/v1/availableChangeVersions
 ```
+
+If you're using a [snapshot](#use-snapshot-isolation), send the
+`Use-Snapshot: true` header on this request too. The response reports the
+newest change version of the database the request reads from, so the
+synchronization version must come from the same snapshot as the data.
 
 #### Available Change Versions Response
 
@@ -310,6 +318,13 @@ performed against a specific snapshot by applying the `Use-Snapshot` header
 set to true to each API request. This will ensure that the changes that are
 made to the data by other API clients won't be visible to the synchronization
 processing.
+
+Apply the header to the `availableChangeVersions` request as well, before
+reading any data. Without it, the request reports the live database's newest
+change version, which can be ahead of the snapshot. For example, if the live
+database is at change version 200 and the snapshot is at 150, a client that
+reads the data from the snapshot but saves 200 as its synchronization version
+starts the next run at 201 and never processes changes 151 to 200.
 
 ### Alternatives to snapshot isolation
 

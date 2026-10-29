@@ -168,11 +168,12 @@ the `minChangeVersion` and `maxChangeVersion` query string parameters).
 :::info
 
 Send the same filtering criteria to the partitions endpoint as to the page
-requests that read the partitions. If the partitions request includes
-`maxChangeVersion`, every page request must include it too, and the other way
-round; a mismatch is rejected. Other differences aren't rejected, but they
-produce partitions that don't match the data being read, for example one very
-large partition and several small ones.
+requests that read the partitions, including the same `minChangeVersion` and
+`maxChangeVersion` parameters and the same `Use-Snapshot` header. Changing
+either can change the order the API reads items in, and a page token used with
+a different order is rejected as invalid. Other differences aren't rejected, but
+they produce partitions that don't match the data being read, for example one
+very large partition and several small ones.
 
 :::
 

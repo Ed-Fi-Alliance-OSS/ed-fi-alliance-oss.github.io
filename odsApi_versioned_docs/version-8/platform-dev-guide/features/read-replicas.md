@@ -39,6 +39,11 @@ string is stored encrypted, like the primary database connection string. If you
 delete the data store in the Configuration Service, its read replica
 registration is deleted with it.
 
+A new or changed read replica isn't used right away. Each Ed-Fi API instance
+caches the data store configuration and reloads it only after
+`CacheSettings:DataStoreCacheExpirationSeconds` has passed (10 minutes by
+default). Restarting the Ed-Fi API instances applies the change immediately.
+
 For SQL Server, note the addition of `ApplicationIntent=ReadOnly`, which directs
 the connection to a readable secondary replica of an availability group.
 
