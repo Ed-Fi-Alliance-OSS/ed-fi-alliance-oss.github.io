@@ -17,13 +17,20 @@ Running `bootstrap-local-dms.ps1` provisioned:
   Configuration Service
 - The **Ed-Fi database schema** provisioned via the `api-schema-tools` CLI
 
-API client credentials are not created by the bootstrap. You create them
-separately so you control which vendor, claim set, and education organizations
-are associated with the client.
+API client credentials are not created by the bootstrap unless you pass
+`-AddSmokeTestCredentials`. Otherwise, you create them separately so you control
+which vendor, claim set, and education organizations are associated with the
+client.
 
 ## Step 1: Create API Credentials
 
-For local development, use the `Get-SmokeTestCredential` helper from the
+If you started the services with `-AddSmokeTestCredentials`, the bootstrap
+script created the credentials for you and printed the key and secret at the end
+of its output. Record them and continue with [Step 2](#step-2-request-an-oauth-token).
+The Configuration Service returns the secret only once, so it can't be retrieved
+later.
+
+Otherwise, for local development, use the `Get-SmokeTestCredential` helper from the
 repository's smoke test module. It creates a vendor and application in the
 Configuration Service and returns a key and secret.
 
@@ -49,13 +56,14 @@ testing, not production deployments.
 
 :::note Run it once per environment
 
-`Get-SmokeTestCredential` **creates** a new vendor and application on each call —
-it does not retrieve existing credentials, and the generated secret cannot be
-recovered afterward. Because the vendor company name ("Smoke Test Vendor") must
-be unique, running it a second time against the same environment fails with an
-HTTP 400. To obtain a fresh credential, either reset the local stack
-(`./bootstrap-local-dms.ps1 -d -v`, then re-run it without flags) or pass a different
-`-VendorName`.
+`Get-SmokeTestCredential` **creates** a new application on each call. It does
+not retrieve existing credentials, and the generated secret cannot be recovered
+afterward. It reuses the "Smoke Test Vendor" vendor if it already exists, but
+the application name ("Smoke Test Application") must be unique for the vendor,
+so running it a second time against the same environment fails. To obtain a
+fresh credential, either pass a different `-ApplicationName`, or reset the local
+stack (`./bootstrap-local-dms.ps1 -d -v`, then re-run it without flags). The
+same applies if you started the services with `-AddSmokeTestCredentials`.
 
 :::
 
@@ -68,12 +76,20 @@ the **first** data store, so requests to the other school-year routes return a
 every route:
 
 ```powershell
-# List data store IDs (requires an admin token from the Configuration Service)
-Invoke-RestMethod -Uri "http://localhost:8081/v3/dataStores" `
-  -Headers @{ Authorization = "Bearer <admin_token>" }
+# Get a Configuration Service admin token. This uses the local admin client
+# that Get-SmokeTestCredential registers; Add-CmsClient reuses it if it exists.
+Import-Module ../Dms-Management.psm1 -Force
+Add-CmsClient -CmsUrl "http://localhost:8081" -ClientId "smoke-test-admin" -DisplayName "Smoke Test Administrator"
+$adminToken = Get-CmsToken -CmsUrl "http://localhost:8081" -ClientId "smoke-test-admin"
+
+# List data store IDs
+Get-DataStore -CmsUrl "http://localhost:8081" -AccessToken $adminToken | Select-Object id, name
 
 $cred = Get-SmokeTestCredential -ConfigServiceUrl "http://localhost:8081" -DataStoreIds @(1, 2, 3)
 ```
+
+The admin client's secret is a fixed development default in
+`Dms-Management.psm1`. Use these helpers only for local development.
 
 :::
 
@@ -123,8 +139,9 @@ and no schools have been loaded yet.
 If you receive a 403 `Authorization Denied` response with the message "No
 database instances are authorized for this client," the credentials you are
 using were not linked to a data store when they were created. Ensure you are
-using the key and secret from `Get-SmokeTestCredential`, which associates the
-application with the data store created by the bootstrap. If you created a
+using the key and secret from `-AddSmokeTestCredentials` or
+`Get-SmokeTestCredential`, which associate the application with the data store
+created by the bootstrap. If you created a
 vendor or application manually through the Configuration Service, you must also
 associate it with a data store before API requests will succeed. If you have
 multiple data stores (for example, from `-SchoolYearRange`), see [Multiple data
