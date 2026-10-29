@@ -8,6 +8,43 @@ plans to fully replace the current ODS/API Platform with Ed-Fi API v8 by the
 2029-2030 school year. In the meantime, the Alliance remains committed to
 supporting the ODS/API Platform through the 2028-2029 school year.
 
+## Choosing a Platform
+
+### Q: Should a new Ed-Fi implementation use ODS/API 7.x or Ed-Fi API v8?
+
+Plan new implementations on Ed-Fi API v8. Ed-Fi API v8 is the long-term
+replacement for the ODS/API Platform, and the Ed-Fi Alliance plans to fully
+replace the ODS/API Platform with it by the 2029-2030 school year. The ODS/API
+Platform remains supported through the 2028-2029 school year, so an
+implementation that starts on ODS/API 7.x will need a second migration before
+then.
+
+Which Ed-Fi API v8 release to use depends on your timeline and your role:
+
+* **Managed service providers and early adopters, school year 2026-2027:** use
+  _Release 8.0_ for pilot or parallel use. The [Ed-Fi API v8 Pilot Test
+  Kit](https://github.com/Ed-Fi-Exchange-OSS/Ed-Fi-API-v8-pilot-testing-kit)
+  provides a non-production environment for testing client integrations
+  against Ed-Fi API v8.
+* **State Education Agencies (SEAs) and other production deployments, school
+  year 2027-2028:** plan on _Release 8.1_, the SEA-oriented release, which is
+  planned for Q4 2026.
+* **Client application developers (SIS, assessment, and other vendors):**
+  Ed-Fi API v8 implements the Ed-Fi API specification, so most client
+  applications built for the ODS/API continue to work. Review the [breaking
+  changes and migration
+  checklist](/reference/ed-fi-api/8/whats-new/release-notes#ed-fi-api-v80---breaking-changes-from-previous-releases)
+  and test against Ed-Fi API v8.
+
+Use ODS/API 7.3 only if you need production use before Ed-Fi API v8 is ready
+for your needs, or if you depend on a feature that is [not yet available in
+Ed-Fi API v8.0](/reference/ed-fi-api/8/whats-new/release-notes#feature-availability).
+If you do, plan your move to Ed-Fi API v8 now: see [How can I / my team prepare
+for the upgrade?](#q-how-can-i--my-team-prepare-for-the-upgrade) below.
+
+For the support window of each release, see [Supported
+Versions](/reference/roadmap/supported-versions).
+
 ## General
 
 ### Q: What are DMS, CMS, and Project Tanager?
@@ -130,9 +167,9 @@ features.
 ```mermaid
 %%{init: { 'theme': 'neutral' } }%%
 timeline
-    Q1 26 : 8.0
+    Q3 26 : 8.0
          : MSPs, Early adopters
-    Q2 26 : 8.1
+    Q4 26 : 8.1
          : SEA
 ```
 
