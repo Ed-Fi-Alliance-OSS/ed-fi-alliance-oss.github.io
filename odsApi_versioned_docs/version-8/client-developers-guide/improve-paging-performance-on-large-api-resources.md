@@ -1,5 +1,13 @@
 # Improve Paging Performance on Large API Resources
 
+:::warning
+
+This article describes an older technique for paging using change versions. For
+new implementations, see [Improve Paging Performance with Partitioned Cursor
+Paging](./improve-paging-performance-cursor-paging.md).
+
+:::
+
 ## Introduction
 
 The Ed-Fi API uses Offset Paging (through the `offset` and `limit` query
