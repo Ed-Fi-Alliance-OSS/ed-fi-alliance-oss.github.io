@@ -99,7 +99,8 @@ A district's student information system asks the API for grades:
 ## Who Is Responsible for What
 
 - **The Ed-Fi Alliance** publishes the Ed-Fi Data Standard and the open-source
-  Ed-Fi API software, including its security model.
+  Ed-Fi API software, including its security model. The Ed-Fi Alliance does not
+  host, store, or have access to agencies' student data.
 - **The API host**, often a state education agency, an education service agency,
   a district, or a managed service provider, installs and runs the API. The host
   issues keys and secrets, assigns claim sets and profiles, and associates each
@@ -137,6 +138,9 @@ Hosts, lead developers, and IT operational staff should also read
 
 - [Authentication and OAuth](/getting-started/provider-playbook/implementation/ed-fi-api-fundamentals/authentication-and-oauth)
 - [Authorization](/getting-started/provider-playbook/implementation/ed-fi-api-fundamentals/authorization)
+- [Tutorial: Interacting with an Ed-Fi API](/reference/data-exchange/tutorial):
+  try authentication and education organization authorization against a
+  demonstration API with synthetic data.
 
 [^oauth]: OAuth 2.0 is an open standard that lets an application get a
     limited, short-lived access token instead of sending a password with every
