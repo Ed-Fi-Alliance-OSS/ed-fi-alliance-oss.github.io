@@ -16,58 +16,59 @@ schema is provisioned as part of the standard database setup via
 `api-schema-tools ddl provision`. No additional configuration is required to enable
 the feature.
 
-A future release will also add an [option](#changed-record-queries-with-snapshot-isolation)
-that will allow platform hosts to serve API clients from an isolated snapshot
-context for processing changes.
+Platform hosts can also offer [snapshot
+isolation](#changed-record-queries-with-snapshot-isolation), which lets API
+clients process changes from a point-in-time copy of the data that isn't
+affected by ongoing writes.
 
 ## Technical Details
 
 The change queries feature uses basic versioning concepts. A global version
-counter is introduced using a sequence object, and each table representing the
-top-level entities of a data domain is given a `ChangeVersion` column to
-represent the current version of the entity instance. These columns are set up
-with triggers to ensure they are automatically updated based on the latest value
-of the sequence on all inserts and updates. Queries done against the API to find
-changed records function by adding an additional where clause based on this
-`ChangeVersion` column.
+counter is kept in the `dms.ChangeVersionSequence` sequence. Every document has
+a `ContentVersion`, stored on `dms.Document` and mirrored on its resource's root
+table (for example, `edfi.Student`) or on `dms.Descriptor`. Triggers stamp a new
+value from the sequence on every insert and every update that changes the
+record, including changes to child collections and extensions. Queries done against the API to find changed records
+function by adding an additional where clause based on this `ContentVersion`
+column.
 
 ```mermaid
 erDiagram
+    Document ||--|| Student : "is stored as"
+
+    Document {
+        bigint DocumentId PK
+        uuid DocumentUuid
+        bigint ContentVersion
+    }
+
     Student {
         bigint DocumentId PK
         varchar StudentUniqueId
         varchar FirstName
         etc etc
-        datetime CreateDate
-        datetime LastModifiedDate
-        bigint ChangeVersion
-    }
-
-    Candidate {
-        varchar CandidateIdentifier PK
-        varchar FirstName
-        etc etc
-        datetime CreateDate
-        datetime LastModifiedDate
-        bigint ChangeVersion
+        bigint ContentVersion
+        timestamp ContentLastModifiedAt
     }
 ```
 
-Supporting delete tracking requires a "tombstone" table. This concept involves
-tracking all deletes and storing a record of what was deleted, to allow future
-querying against deleted records. The pattern is implemented using a delete
-trigger on the main table, and the resource id and primary key of the deleted
-record are stored in the tracking table. API requests to retrieve information on
-deletes query against these tables to retrieve the resource ids of deleted entity
-instances.
+Supporting deletes and key changes requires a history of tracked changes. The
+same triggers record a row in a per-resource _tracked-change_ table, in a
+`tracked_changes_<project>` schema (for example, `tracked_changes_edfi`), when a
+record is deleted or its identifying values change. Each row stores the
+resource id, the old and new values (the new values are empty for a delete),
+and the `ChangeVersion` of the change. Descriptors share a single
+`tracked_changes_edfi.Descriptor` table. API requests to the `/deletes` and
+`/keyChanges` routes query these tables, so the history survives after the
+record itself is deleted.
 
 :::note
 
 There is a concern in use cases with very high volume of deletes or for very
-long-running database instances where the size of these delete tracking tables
+long-running database instances where the size of these tracked-change tables
 can get very large. In that case, these tables can be truncated periodically.
-The only risk is losing visibility into any deletes that are removed by the
-truncation.
+The only risk is losing visibility into any deletes and key changes that are
+removed by the truncation.
 
 :::
 
@@ -78,79 +79,99 @@ erDiagram
         varchar OldStudentUniqueId
         varchar NewStudentUniqueId
         uuid Id
-        varchar Discriminator
-        datetime CreateDate
-    }
-
-    "tracked_changes_edfi.Candidate" {
-        bigint ChangeVersion PK
-        varchar OldCandidateIdentifier
-        varchar NewCandidateIdentifier
-        uuid Id
-        varchar Discriminator
-        datetime CreateDate
+        bigint DocumentId
+        timestamp CreatedAt
     }
 ```
 
 The patterns described above are used for both the standard, as-shipped Ed-Fi
-database tables, as well as tables generated to serve Ed-Fi Extensions. By using
-[MetaEd](/reference/metaed) (the recommended method for extending the Ed-Fi
-API), scripts are generated to support the `ChangeVersion` column,
-insert/update/delete triggers, and delete tracking tables. This allows hosts to
-have consistent support for the feature across their entire API, even for new
+database tables, as well as tables generated to serve Ed-Fi Extensions. The
+`api-schema-tools ddl provision` command generates the `ContentVersion` columns,
+triggers, and tracked-change tables from the API schema, including the schema
+for extensions built with [MetaEd](/reference/metaed). This allows hosts to have
+consistent support for the feature across their entire API, even for new
 top-level entities introduced by Extension projects.
 
 ## Changed Record Queries with Snapshot Isolation
 
-:::info
+Snapshot isolation lets platform hosts serve change query requests from a
+static copy of the database that is isolated from ongoing writes. This avoids
+data consistency problems, processing failures, and undetected missing data in
+downstream systems.
 
-Snapshot isolation is planned for a future release and is **not available in
-Ed-Fi API v8.0**. The description below documents the intended design.
+A host offers a snapshot by registering a data store derivative with a
+`derivativeType` of `Snapshot` in the Configuration Service, using
+`POST /v3/dataStoreDerivatives/`:
 
-:::
+```json
+{
+  "dataStoreId": 1,
+  "derivativeType": "Snapshot",
+  "connectionString": "<connection string of the snapshot database>"
+}
+```
 
-When available, snapshot isolation will allow API hosts to serve change-query
-requests from a static copy of the database isolated from ongoing writes. This
-avoids data consistency problems, processing failures, and undetected missing
-data in downstream systems.
+Each data store can have at most one snapshot. API clients then read from it by
+sending the `Use-Snapshot: true` header on each request; see [Using the Changed
+Record
+Queries](../../client-developers-guide/using-the-changed-record-queries.md#use-snapshot-isolation).
 
-The planned design involves two artifacts:
+The Ed-Fi API responds as follows:
 
-- A `DataStoreDerivative` record in the Configuration Service with
-  `DerivativeType = 'Snapshot'` pointing to the snapshot database connection
-  string.
-- API support for the `Use-Snapshot` HTTP request header, which routes the
-  request to the static snapshot rather than the live operational database.
+- **Read requests** with `Use-Snapshot: true` are served from the snapshot. A
+  snapshot takes precedence over a [read replica](./read-replicas.md).
+- **The header value must be `true`.** It isn't case-sensitive, and spaces
+  around it are ignored. Any other value, such as `yes` or `1`, is treated as a
+  request for current data, without an error.
+- **Without a snapshot,** or if the snapshot database can't be reached, a
+  request with `Use-Snapshot: true` gets a `404 Not Found` response with the
+  message `Snapshot not found.` The API doesn't fall back to current data. A
+  client can't tell the two cases apart, so check the Ed-Fi API log, which
+  records a warning when a snapshot connection fails.
+- **Write requests** (`POST`, `PUT`, and `DELETE`) with `Use-Snapshot: true` get
+  a `405 Method Not Allowed` response.
 
-## Creating and Managing Snapshots (Planned)
+Each Ed-Fi API instance caches the data store configuration, including
+snapshots, and reloads it from the Configuration Service only after
+`CacheSettings:DataStoreCacheExpirationSeconds` has passed (10 minutes by
+default). A new or changed snapshot can take that long to reach every instance.
+Restarting the Ed-Fi API instances applies the change immediately.
 
-When snapshot support is available, platform hosts will implement a DevOps
-process to maintain a periodically refreshed static copy of the API's main
-database and the corresponding `DataStoreDerivative` record in the
-Configuration Service.
+## Creating and Managing Snapshots
 
-This would typically be a scheduled database backup-and-restore operation. For
+Platform hosts implement a DevOps process to maintain a periodically refreshed
+static copy of the Ed-Fi API database, and the corresponding data store
+derivative in the Configuration Service. The Ed-Fi API doesn't create or
+refresh snapshots itself.
+
+This is typically a scheduled database backup-and-restore operation. For
 PostgreSQL or SQL Server, the respective database's lightweight snapshot
 features can also be used where available.
 
-The process will need to:
+The process needs to:
 
-- Back up the current operational database.
+- Back up the current Ed-Fi API database.
 - Restore it as a snapshot copy.
-- Create or update a `DataStoreDerivative` record in the Configuration Service
-  with `DerivativeType = 'Snapshot'` and the snapshot connection string,
-  associated with the appropriate `DataStore`.
+- Create or update the data store derivative in the Configuration Service with
+  a `derivativeType` of `Snapshot` and the snapshot connection string, for the
+  appropriate data store.
+- Wait until every Ed-Fi API instance has loaded the updated configuration,
+  either by waiting for the data store cache to expire or by restarting the
+  instances, before allowing new synchronization runs to start.
 
-## Current Limitations
+:::warning
 
-Changed record queries (`/availableChangeVersions`, `/deletes`, `/keyChanges`)
-are supported in Ed-Fi API v8.0 with the following limitations compared to the
-ODS/API:
+A snapshot must not change while a client is reading from it. Use a static copy,
+not a live secondary or a standby that is still applying changes; a changing
+source can return a record twice and skip another within a single read, without
+an error.
 
-- **No snapshot support** — the ODS/API allowed clients to create and query
-  against a consistent point-in-time snapshot. Snapshot support is planned for a
-  future release.
-- **Always enabled** — the feature cannot be disabled through configuration.
-- **No custom view-based authorization** — the ODS/API supported custom database
-  view-based authorization strategies on change query endpoints. This is not
-  available in v8.0.
+Don't replace the snapshot (by changing the derivative's connection string or
+re-creating the database behind it) while clients are reading from it. Those
+clients would read later pages from a different copy of the data, and the API
+can't detect it. Schedule refreshes for times when no synchronization runs are
+in progress, and don't start new runs until every Ed-Fi API instance has
+loaded the new connection string. Otherwise, a run can start against the old
+snapshot and switch to the new one partway through when the cache refreshes.
+
+:::

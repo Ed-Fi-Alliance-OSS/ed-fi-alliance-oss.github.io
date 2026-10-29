@@ -8,10 +8,10 @@ sidebar_position: 4
 
 Database connection strings for Ed-Fi API v8 are stored in the Configuration
 Service, not in application configuration files. Each _data store_ entry holds
-the connection string and type for one tenant database. Connection strings stored
-in the Configuration Service are encrypted at rest using AES. This measure
-guards against the possibility that someone who gains unauthorized access to the
-database can retrieve connection strings from the system.
+the connection string and type for one Ed-Fi API database. Connection strings
+stored in the Configuration Service are encrypted at rest using AES. This
+measure guards against the possibility that someone who gains unauthorized
+access to the database can retrieve connection strings from the system.
 
 ```mermaid
 erDiagram
@@ -53,8 +53,9 @@ page for encryption key configuration.
 
 ## Data Store Derivatives
 
-Ed-Fi API v8 supports derivative data stores — secondary databases associated
-with a primary data store — configured in the `DataStoreDerivative` table.
+Ed-Fi API v8 supports data store derivatives: secondary databases (read
+replicas and snapshots) registered with a data store, configured in the
+`DataStoreDerivative` table.
 
 ```mermaid
 erDiagram
@@ -79,29 +80,22 @@ The `DerivativeType` column accepts the following values:
 
 | Value | Description |
 | --- | --- |
-| `ReadReplica` | A read-only replica of the primary data store, intended to offload GET request workloads (not yet used by Ed-Fi API v8.0) |
-| `Snapshot` | A point-in-time copy of the primary data store, intended for consistent change processing by API clients (not yet used by Ed-Fi API v8.0) |
+| `ReadReplica` | A read-only replica of the primary data store, used to serve read requests. See [Read Replicas](../features/read-replicas.md) |
+| `Snapshot` | A point-in-time copy of the primary data store, used for consistent change processing by API clients. See [Changed Record Queries](../features/changed-record-queries.md#changed-record-queries-with-snapshot-isolation) |
 
-:::info
-
-`ReadReplica` and `Snapshot` derivative support are planned for future releases
-and are not yet consumed by Ed-Fi API v8.0. See [Current
-Limitations](../features/changed-record-queries.md#current-limitations) for
-details.
-
-:::
+Each data store can have at most one derivative of each type.
 
 ## API Client and Data Store Association
 
 To provide a simple experience for API clients with a fixed API base URL (no
 route segments for school year, district, etc.), each API client can be
 associated with a single data store. This association provides the required
-context to identify the specific database for each API request.
+context to identify the specific data store for each API request.
 
 API clients belong to applications, which in turn belong to vendors. The full
-hierarchy is: Vendor → Application → ApiClient → DataStore. Vendors, applications,
-API clients, and their data store associations are all managed through the
-Configuration Service API.
+hierarchy is: vendor → application → API client → data store. Vendors,
+applications, API clients, and their data store associations are all managed
+through the Configuration Service API.
 
 ## Route-Based Data Store Selection
 
