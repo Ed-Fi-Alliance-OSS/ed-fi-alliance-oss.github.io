@@ -85,7 +85,7 @@ SQL Server
 
 PostgreSQL
 
-```text
+```json
 {
   "ConnectionStrings": {
     "EdFi_Ods": "host=localhost;port=5432;username=postgres;database=EdFi_{0};Application Name=EdFi.Ods.WebApi",
