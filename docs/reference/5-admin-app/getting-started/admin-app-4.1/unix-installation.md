@@ -13,7 +13,7 @@ This is one of three alternative installation paths. If you instead want to run 
 ## Unix Prerequisites
 
 - **NGiNX**: For reverse proxy and static file serving
-- **Node.js**: Version 22.0.0+
+- **Node.js**: Version 24
 - **PostgreSQL**: Database server
 - **systemd**: For service management (most modern Linux distributions)
 
@@ -43,7 +43,7 @@ This path uses **PostgreSQL**. The Admin App is database-engine-agnostic, but SQ
    cd /opt/edfiadminapp
 
    # Replace the TAG value with the latest release from the Releases page
-   TAG="v4.0.1"
+   TAG="v4.1.0"
 
    git clone --branch "$TAG" --depth 1 https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-AdminApp.git .
    npm ci
@@ -79,6 +79,8 @@ This path uses **PostgreSQL**. The Admin App is database-engine-agnostic, but SQ
      DB_ENCRYPTION_SECRET_VALUE: {
        KEY: 'your-64-hex-char-encryption-key' // 32-byte key, hex-encoded (64 hex chars); see tip below
      },
+     // Signs session cookies. A list of secrets, newest first; generate each one like the key above.
+     SESSION_SECRET_VALUE: ['your-session-secret'],
      FE_URL: 'https://your-domain.com/adminapp',
      MY_URL: 'https://your-domain.com/adminapp-api',
      API_PORT: 3333
@@ -88,6 +90,10 @@ This path uses **PostgreSQL**. The Admin App is database-engine-agnostic, but SQ
 
    :::warning
    Some special characters are not currently supported in the Admin App database username or password (`DB_USERNAME` / `DB_PASSWORD`). Use only letters, digits, and these symbols: `! $ ( ) * , - . _ ~`. A value that includes other characters (for example `@ : / ? # % & = ;`, `"`, `< >`, `|`, or a space) can stop the API from connecting to the database at startup.
+   :::
+
+   :::warning
+   The API refuses to start in production when `SESSION_SECRET_VALUE`, `DB_ENCRYPTION_SECRET_VALUE.KEY`, the database password, or the OIDC client secret is missing, blank, or still a sample value. Never change `DB_ENCRYPTION_SECRET_VALUE.KEY` once environments exist: it encrypts their stored credentials.
    :::
 
    :::tip
