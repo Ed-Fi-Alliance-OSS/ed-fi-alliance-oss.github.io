@@ -88,7 +88,7 @@ ALTER ROLE db_owner ADD MEMBER [edfi_adminapp];
 
 Azure SQL rejects a password that contains the login name, so avoid `edfi_adminapp` in the value.
 
-For **PostgreSQL**, see [Configuring the Admin App](../../configuration/configuring-admin-app.md#postgresql-setup).
+For **PostgreSQL**, see [Configuring the Admin App](../../../configuration/configuring-admin-app.md#postgresql-setup).
 
 ### Node.js
 
@@ -110,7 +110,7 @@ Register these in the Keycloak client (HTTPS, matching the default ports):
 A user must exist in Keycloak whose email/username claim matches the Admin App admin user (default `admin@example.com`). Java is required **only** for the local Keycloak example.
 :::
 
-For more detail, see [Configuring an Identity Provider for Ed-Fi Admin App](../../configuration/identity-provider.md).
+For more detail, see [Configuring an Identity Provider for Ed-Fi Admin App](../../../configuration/identity-provider.md).
 
 :::warning Keycloak does not survive a restart on its own
 A locally installed Keycloak does not come back when the host restarts. The API needs Keycloak already running when the API starts, so it has to start **after** Keycloak is accepting requests. If the API starts first, sign-in fails until the API is recycled.
@@ -126,7 +126,7 @@ The [Automated](./automated.md#after-a-restart-the-keycloak-startup-task) and [S
 
 ### Yopass (optional)
 
-Yopass lets the Admin App share newly created API client credentials as one-time, self-destructing links instead of showing them inline. Stand up a local Yopass via Docker, point the app at an existing Yopass, or leave it disabled (credentials are then shown inline, a supported configuration). See the [Yopass Administrator Guide](../../configuration/yopass-administrators-guide/readme.md).
+Yopass lets the Admin App share newly created API client credentials as one-time, self-destructing links instead of showing them inline. Stand up a local Yopass via Docker, point the app at an existing Yopass, or leave it disabled (credentials are then shown inline, a supported configuration). See the [Yopass Administrator Guide](../../../configuration/yopass-administrators-guide/readme.md).
 
 ### TLS and certificates
 
@@ -348,7 +348,7 @@ The API is deployed as a standalone IIS site, `EdFi-AdminApp-API`, with an HTTP 
 - **`API_PORT` must read `HTTP_PLATFORM_PORT`.** httpPlatform assigns the loopback port at runtime; a hard-coded port makes IIS and Node disagree and the site returns 502.
 - **The HTTPS binding needs a certificate.** Without one bound to port 3443, the site cannot start over HTTPS. See [TLS and certificates](#tls-and-certificates).
 
-See the [Troubleshooting](../../troubleshooting.md#backend-troubleshooting) section if you hit errors.
+See the [Troubleshooting](../../../troubleshooting.md#backend-troubleshooting) section if you hit errors.
 
 ## Web Application Installation
 
@@ -455,10 +455,10 @@ The Web Application is a Vite single-page application, deployed as a second stan
    :::
 
    :::note
-   If your web fonts fail to load (HTTP 404 for `.woff2` files), your IIS may be missing that MIME type. See [Troubleshooting](../../troubleshooting.md#frontend-troubleshooting).
+   If your web fonts fail to load (HTTP 404 for `.woff2` files), your IIS may be missing that MIME type. See [Troubleshooting](../../../troubleshooting.md#frontend-troubleshooting).
    :::
 
-See the [Troubleshooting](../../troubleshooting.md#frontend-troubleshooting) section if you hit errors.
+See the [Troubleshooting](../../../troubleshooting.md#frontend-troubleshooting) section if you hit errors.
 
 ## Security headers
 
@@ -473,7 +473,7 @@ The API additionally sets `X-Content-Type-Options` and `X-Frame-Options` in appl
 
 Open the Web Application at `https://localhost:4443` and sign in through the identity provider. For the local Keycloak example, use the Keycloak user you created — its email must match `ADMIN_USERNAME` in `production.js` (default `admin@example.com`). This first user is the bootstrap administrator; additional users must be granted access from within the Admin App afterward.
 
-The Admin App is now running, but it manages **Ed-Fi ODS/API** instances that run separately — this guide does not install an ODS/API. After signing in, connect a running ODS/API environment (ODS/API 6.x or 7.x) by its Discovery API URL. If that fails with a certificate error, see [Troubleshooting](../../troubleshooting.md#backend-troubleshooting).
+The Admin App is now running, but it manages **Ed-Fi ODS/API** instances that run separately — this guide does not install an ODS/API. After signing in, connect a running ODS/API environment (ODS/API 6.x or 7.x) by its Discovery API URL. If that fails with a certificate error, see [Troubleshooting](../../../troubleshooting.md#backend-troubleshooting).
 
 ## Production considerations
 
@@ -505,8 +505,8 @@ Node.js, SQL Server, and IIS can remain in place.
 
 A fresh install has no users, teams, or environments yet. The Global Admin Quick Start seeds that starter configuration, so it is the recommended next step.
 
-- [Global Admin Quick Start](../../user-guide/global-admin-quick-start/readme.md)
-- [Configuring Ed-Fi Admin App](../../configuration/configuring-admin-app.md)
-- [Configuring an Identity Provider for Ed-Fi Admin App](../../configuration/identity-provider.md)
-- [Security Considerations](../../configuration/security-considerations.md)
-- [Global Administration Tasks](../../configuration/global-administration-tasks.md)
+- [Global Admin Quick Start](../../../user-guide/global-admin-quick-start/readme.md)
+- [Configuring Ed-Fi Admin App](../../../configuration/configuring-admin-app.md)
+- [Configuring an Identity Provider for Ed-Fi Admin App](../../../configuration/identity-provider.md)
+- [Security Considerations](../../../configuration/security-considerations.md)
+- [Global Administration Tasks](../../../configuration/global-administration-tasks.md)
