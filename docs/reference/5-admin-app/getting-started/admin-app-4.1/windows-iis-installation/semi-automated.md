@@ -4,6 +4,10 @@ sidebar_position: 3
 
 # Semi-automated
 
+:::caution
+The installation scripts are being updated for Admin App 4.1, which requires a session secret (`SESSION_SECRET_VALUE`) that the current scripts do not set. Until the scripts are updated, use the [Manual](./manual.md) installation path for Admin App 4.1.
+:::
+
 Automate some sections and hand-configure others — for example, script the prerequisites and the build, then deploy against an existing IIS setup by hand. Each script below automates one section; any script can be skipped in favor of the matching [Manual](./manual.md) steps.
 
 First clone the scripts (see [Automated](./automated.md#get-the-scripts)), then run the ones you want from an elevated PowerShell in `windows-install/`, in the order below.
@@ -33,8 +37,8 @@ To remove an install, use `uninstall.ps1` (generic) and, for the local Keycloak,
 
 A fresh install has no users, teams, or environments yet. The Global Admin Quick Start seeds that starter configuration, so it is the recommended next step.
 
-- [Global Admin Quick Start](../../user-guide/global-admin-quick-start/readme.md)
-- [Configuring Ed-Fi Admin App](../../configuration/configuring-admin-app.md)
-- [Configuring an Identity Provider for Ed-Fi Admin App](../../configuration/identity-provider.md)
-- [Security Considerations](../../configuration/security-considerations.md)
-- [Global Administration Tasks](../../configuration/global-administration-tasks.md)
+- [Global Admin Quick Start](../../../user-guide/global-admin-quick-start/readme.md)
+- [Configuring Ed-Fi Admin App](../../../configuration/configuring-admin-app.md)
+- [Configuring an Identity Provider for Ed-Fi Admin App](../../../configuration/identity-provider.md)
+- [Security Considerations](../../../configuration/security-considerations.md)
+- [Global Administration Tasks](../../../configuration/global-administration-tasks.md)

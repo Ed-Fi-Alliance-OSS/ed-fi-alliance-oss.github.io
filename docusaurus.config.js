@@ -214,15 +214,15 @@ const config = {
           // Routes changed by the 2025 Admin App docs reorganization.
           {
             from: '/reference/admin-app/getting-started/installing/docker-installation',
-            to: '/reference/admin-app/getting-started/docker-installation',
+            to: '/reference/admin-app/getting-started/admin-app-4.1/docker-installation',
           },
           {
             from: '/reference/admin-app/getting-started/installing/windows-iis-installation',
-            to: '/reference/admin-app/getting-started/windows-iis-installation',
+            to: '/reference/admin-app/getting-started/admin-app-4.1/windows-iis-installation',
           },
           {
             from: '/reference/admin-app/getting-started/installing/unix-installation',
-            to: '/reference/admin-app/getting-started/unix-installation',
+            to: '/reference/admin-app/getting-started/admin-app-4.1/unix-installation',
           },
           {
             from: '/reference/admin-app/getting-started/identity-provider',
@@ -255,6 +255,35 @@ const config = {
           {
             from: '/reference/admin-app/getting-started/troubleshooting',
             to: '/reference/admin-app/troubleshooting',
+          },
+          // AC-647: getting-started split into versioned folders.
+          {
+            from: '/reference/admin-app/getting-started/roadmap-to-success',
+            to: '/reference/admin-app/getting-started/admin-app-4.1/roadmap-to-success',
+          },
+          {
+            from: '/reference/admin-app/getting-started/docker-installation',
+            to: '/reference/admin-app/getting-started/admin-app-4.1/docker-installation',
+          },
+          {
+            from: '/reference/admin-app/getting-started/unix-installation',
+            to: '/reference/admin-app/getting-started/admin-app-4.1/unix-installation',
+          },
+          {
+            from: '/reference/admin-app/getting-started/windows-iis-installation',
+            to: '/reference/admin-app/getting-started/admin-app-4.1/windows-iis-installation',
+          },
+          {
+            from: '/reference/admin-app/getting-started/windows-iis-installation/automated',
+            to: '/reference/admin-app/getting-started/admin-app-4.1/windows-iis-installation/automated',
+          },
+          {
+            from: '/reference/admin-app/getting-started/windows-iis-installation/semi-automated',
+            to: '/reference/admin-app/getting-started/admin-app-4.1/windows-iis-installation/semi-automated',
+          },
+          {
+            from: '/reference/admin-app/getting-started/windows-iis-installation/manual',
+            to: '/reference/admin-app/getting-started/admin-app-4.1/windows-iis-installation/manual',
           },
           // Renamed off of "exchange" as part of the Community Tools rebrand.
           {

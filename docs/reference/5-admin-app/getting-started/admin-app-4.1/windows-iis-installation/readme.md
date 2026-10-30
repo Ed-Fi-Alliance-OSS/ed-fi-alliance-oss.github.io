@@ -13,7 +13,7 @@ This is one of three alternative installation paths. If you instead want to run 
 ## Before you start: decide three things
 
 1. **Database engine** — SQL Server (default) or PostgreSQL. You need only one.
-2. **Identity provider** — the Admin App authenticates against an OIDC provider. This guide sets up **Keycloak**, running locally, as the example identity provider. The Admin App's auth engine uses generic OIDC discovery, but Keycloak is the identity provider documented for this release. See [Configuring an Identity Provider](../../configuration/identity-provider.md).
+2. **Identity provider** — the Admin App authenticates against an OIDC provider. This guide sets up **Keycloak**, running locally, as the example identity provider. The Admin App's auth engine uses generic OIDC discovery, but Keycloak is the identity provider documented for this release. See [Configuring an Identity Provider](../../../configuration/identity-provider.md).
 3. **How much to automate** — pick one of the three installation paths below.
 
 :::info
@@ -27,6 +27,10 @@ Both IIS sites are served over **HTTPS by default** — API on port **3443** and
 ## Installation paths
 
 Choose the path that fits how much you want to automate. All three produce the same two IIS sites.
+
+:::caution
+The installation scripts are being updated for Admin App 4.1, which requires a session secret (`SESSION_SECRET_VALUE`) that the current scripts do not set. Until the scripts are updated, use the [Manual](./manual.md) installation path for Admin App 4.1.
+:::
 
 - **[Automated](./automated.md)** — the whole stack in one command (`setup-vm-prereqs.ps1`, then `install-all.ps1`). Best for a fresh machine or a quick stand-up.
 - **[Semi-automated](./semi-automated.md)** — automate some sections and hand-configure others, using the script-to-section map.

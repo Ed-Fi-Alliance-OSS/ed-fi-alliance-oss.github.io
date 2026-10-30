@@ -24,7 +24,7 @@ environment variable configuration.
 
 ## Database engine
 
-The Docker Compose stack supports **both** PostgreSQL and SQL Server — you need only one. **PostgreSQL is the default.** To use SQL Server instead, set `DB_ENGINE=mssql` in `.env`, uncomment the `MSSQL_*` variables there (`MSSQL_SA_PASSWORD`, `MSSQL_ACCEPT_EULA=Y`), and start the stack with the `-MSSQL` switch:
+The Docker Compose stack supports **both** PostgreSQL and SQL Server — you need only one. **PostgreSQL is the default.** To use SQL Server instead, set `DB_ENGINE=mssql` in `.env`, uncomment the `MSSQL_*` variables there (`MSSQL_SA_PASSWORD`, `MSSQL_ACCEPT_EULA=Y`), switch `DB_SECRET_VALUE` to its SQL Server form, and start the stack with the `-MSSQL` switch:
 
 ```powershell
 compose/start-services.ps1 -MSSQL
@@ -47,7 +47,7 @@ compose/start-services.ps1 -MSSQL
   
    ```powershell
    # Replace the TAG value with the latest release from the Releases page
-   $TAG = "v4.0.1"
+   $TAG = "v4.1.0"
 
    git clone --branch $TAG --depth 1 https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-AdminApp.git
    ```
@@ -77,8 +77,8 @@ compose/start-services.ps1 -MSSQL
 - **Using Pre-Built Images**:
       The recommended way to run the Admin App is to use the official images from Docker Hub.
 
-  - **Frontend:** `edfialliance/admin-app-fe:v4.0.1`
-  - **API:** `edfialliance/admin-app-api:v4.0.1`
+  - **Frontend:** `edfialliance/admin-app-fe:v4.1.0`
+  - **API:** `edfialliance/admin-app-api:v4.1.0`
 
   - Open PowerShell in the `compose` directory:
 
@@ -116,7 +116,7 @@ compose/start-services.ps1 -MSSQL
 
 Deployment settings can be customized using environment variables. Define these variables in a `.env` file within the `compose` directory, or provide them directly to Docker Compose as needed.
 
-For a complete list of available variables and their descriptions, see the [Environment variables example file](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-AdminApp/blob/main/compose/.env.example).
+For a complete list of available variables and their descriptions, see the [Environment variables example file](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-AdminApp/blob/v4.1.0/compose/.env.example).
 
 ### Example `.env` for Production
 
@@ -124,6 +124,11 @@ For a complete list of available variables and their descriptions, see the [Envi
 # Use strong, unique passwords
 POSTGRES_PASSWORD=your-secure-password
 KEYCLOAK_ADMIN_PASSWORD=your-keycloak-password
+
+# Database connection for the API. DB_PASSWORD must equal POSTGRES_PASSWORD
+# (it is not filled in from it). For SQL Server, use the commented mssql form
+# from .env.example instead, with MSSQL_DB_PASSWORD equal to MSSQL_SA_PASSWORD.
+DB_SECRET_VALUE={"DB_HOST":"edfiadminapp-postgres","DB_PORT":5432,"DB_USERNAME":"postgres","DB_PASSWORD":"your-secure-password","DB_DATABASE":"sbaa"}
 
 # Set production URLs
 VITE_API_URL=https://yourdomain.com/adminapp-api
@@ -136,6 +141,26 @@ NODE_EXTRA_CA_CERTS=/app/ssl/your-cert.crt
 # Administrator credentials
 KEYCLOAK_ADMIN=admin
 
+# Required secrets: the API refuses to start without them.
+# Generate each value with: openssl rand -hex 32
+SESSION_SECRET_VALUE=["your-session-secret"]
+DB_ENCRYPTION_SECRET_VALUE={"KEY":"your-64-hex-char-encryption-key","IV":"unused"}
+KEYCLOAK_EDFIADMINAPP_CLIENT_SECRET=your-keycloak-client-secret
+KEYCLOAK_EDFIADMINAPP_DEV_CLIENT_SECRET=your-keycloak-dev-client-secret
+
+# Keycloak hostname, when the stack is not served from localhost
+KEYCLOAK_HOSTNAME=yourdomain.com
+KEYCLOAK_HOSTNAME_PROTOCOL=https
+
+# Verify TLS certificates on outgoing requests (default true)
+SSL_VERIFICATION=true
+
+# Audit log (default true); see the Getting Started overview
+AUDIT_LOGGING_ENABLED=true
+
+# Session lifetime in minutes (default 120)
+DB_TTL_IN_MINUTES=120
+
 # Frontend UI Configuration
 VITE_STARTING_GUIDE=https://docs.ed-fi.org/reference/admin-app/configuration/global-administration-tasks
 VITE_CONTACT=https://community.ed-fi.org/
@@ -147,10 +172,36 @@ VITE_IDP_ACCOUNT_URL=https://yourdomain.com/auth/realms/edfi/account/
 Some special characters are not currently supported in the database password (for example `POSTGRES_PASSWORD`, or `MSSQL_SA_PASSWORD` when using SQL Server). Use only letters, digits, and these symbols: `! $ ( ) * , - . _ ~`. A password that includes other characters (for example `@ : / ? # % & = ;`, `"`, `< >`, `|`, or a space) can stop the API from connecting to the database at startup.
 :::
 
+:::warning
+The API refuses to start in production when `SESSION_SECRET_VALUE`,
+`DB_ENCRYPTION_SECRET_VALUE`, the database password, or the Keycloak client
+secrets are missing, blank, or still set to the sample values from
+`.env.example`.
+
+- `SESSION_SECRET_VALUE` is a JSON array of secrets, newest first. To rotate
+  it, add the new secret at the front and keep the old one until existing
+  sessions expire.
+- `DB_ENCRYPTION_SECRET_VALUE.KEY` must be 64 hexadecimal characters. It
+  encrypts the stored environment credentials, so **never change it** once
+  environments exist: the Admin App can no longer decrypt them with a different
+  key.
+
+:::
+
+:::note
+`SSL_VERIFICATION` defaults to `true`. Set it to `false` only to reach upstream
+services with self-signed certificates during testing; it is not recommended in
+production. Prefer `NODE_EXTRA_CA_CERTS` to trust a private certificate
+authority.
+:::
+
 :::note
 **Important:** The `VITE_IDP_ACCOUNT_URL` value may differ from your Keycloak admin console URL.
 This should point to the **account management interface** (`/auth/realms/{realm-name}/account/`), not the admin console.
 Ensure this matches your actual Keycloak realm configuration and domain.
+If you leave `VITE_IDP_ACCOUNT_URL` out of `.env`, Docker Compose falls back to
+`https://localhost/auth/realms/edfi/account/`, so set it for any deployment not
+served from localhost.
 :::
 
 - **SSL Certificates:** Replace self-signed certificates with production certificates in a live environment.
@@ -160,8 +211,8 @@ Ensure this matches your actual Keycloak realm configuration and domain.
 
 A fresh install has no users, teams, or environments yet. The Global Admin Quick Start seeds that starter configuration, so it is the recommended next step.
 
-- [Global Admin Quick Start](../user-guide/global-admin-quick-start/readme.md)
-- [Configuring Ed-Fi Admin App](../configuration/configuring-admin-app.md)
-- [Configuring an Identity Provider for Ed-Fi Admin App](../configuration/identity-provider.md)
-- [Security Considerations](../configuration/security-considerations.md)
-- [Global Administration Tasks](../configuration/global-administration-tasks.md)
+- [Global Admin Quick Start](../../user-guide/global-admin-quick-start/readme.md)
+- [Configuring Ed-Fi Admin App](../../configuration/configuring-admin-app.md)
+- [Configuring an Identity Provider for Ed-Fi Admin App](../../configuration/identity-provider.md)
+- [Security Considerations](../../configuration/security-considerations.md)
+- [Global Administration Tasks](../../configuration/global-administration-tasks.md)
