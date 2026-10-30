@@ -3,7 +3,36 @@
 This section provides an overview of what's new in the latest versions of the
 Admin API.
 
-## Updates in Admin API v2.3.2 (Latest Release)
+## Updates in Admin API v2.4 (Latest Release)
+
+### Features
+
+* New `v3` API mode, aligned with the Ed-Fi API v8 platform. It brings
+  consistent resource naming (ODS instances are now "data stores"), simpler
+  claim set payloads, and standard Problem Details error responses. The `v1`
+  and `v2` modes remain available.
+* Instance management: create and delete ODS database instances from a
+  template directly through the API, with provisioning handled in the
+  background.
+* Job status tracking for long-running operations, such as instance
+  provisioning and education organization refreshes.
+* Education organization endpoints: view the education organizations in each
+  ODS instance, kept up to date automatically or refreshed on demand.
+* Audit logging of authentication events and administrative actions.
+* The Information endpoint now reports the active specification version and
+  links to tenancy information and the OpenAPI metadata.
+
+### Enhancements
+
+* Duplicate protection for vendors, applications, and API clients in the `v3`
+  mode.
+* Connection strings are encrypted and are no longer returned in API
+  responses.
+* Upgraded to .NET 10.
+* Removed support for external identity providers (Keycloak).
+* Installer and Docker image improvements.
+
+## Updates in Admin API v2.3.2
 
 ### Bug Fix
 
