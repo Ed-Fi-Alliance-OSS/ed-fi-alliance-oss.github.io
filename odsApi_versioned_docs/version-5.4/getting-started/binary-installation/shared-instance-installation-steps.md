@@ -115,7 +115,7 @@ Import-Module .\Deployment.psm1
 
 Next, execute the following command in PowerShell:
 
-```text
+```powershell
 Initialize-DeploymentEnvironment
 ```
 
