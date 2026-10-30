@@ -18,7 +18,7 @@ If you have not already completed these courses, we recommend doing so before at
 There are many different reasons for upgrading your Ed-Fi Technology Suite Installation; they can be divided into three categories:
 
 * Alignment with Ed-Fi Alliance  
-  * As of the writing of this article, each major release is supported by the Alliance for three school years after release. You can always check the following link for the most up to date information on release cadences: [Ed-Fi Release Cadence](/reference/roadmap/cadence/).  Upgrading between sequential major releases means a smaller number of changes than waiting until the release is out of support before upgrading.
+  * Each major release is supported by the Alliance for a limited number of school years. See [Ed-Fi Technology Suite Supported Versions](/reference/roadmap/supported-versions) for the current support status of each version, and [Ed-Fi Release Cadence](/reference/roadmap/cadence/) for release timing.  Upgrading between sequential major releases means a smaller number of changes than waiting until the release is out of support before upgrading.
 * Technology and Security Enhancements
   * With each major release there are improvements and enhancements made to the system which provide better performance, improved security and/or technology upgrades.  Upgrading ensures your system continues to perform at scale and maintain the highest level of data security.
 * Updated Data Standards and Technology Partner Alignment  
