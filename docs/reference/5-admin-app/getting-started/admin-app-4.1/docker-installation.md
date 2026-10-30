@@ -24,7 +24,7 @@ environment variable configuration.
 
 ## Database engine
 
-The Docker Compose stack supports **both** PostgreSQL and SQL Server — you need only one. **PostgreSQL is the default.** To use SQL Server instead, set `DB_ENGINE=mssql` in `.env`, uncomment the `MSSQL_*` variables there (`MSSQL_SA_PASSWORD`, `MSSQL_ACCEPT_EULA=Y`), and start the stack with the `-MSSQL` switch:
+The Docker Compose stack supports **both** PostgreSQL and SQL Server — you need only one. **PostgreSQL is the default.** To use SQL Server instead, set `DB_ENGINE=mssql` in `.env`, uncomment the `MSSQL_*` variables there (`MSSQL_SA_PASSWORD`, `MSSQL_ACCEPT_EULA=Y`), switch `DB_SECRET_VALUE` to its SQL Server form, and start the stack with the `-MSSQL` switch:
 
 ```powershell
 compose/start-services.ps1 -MSSQL
@@ -125,6 +125,11 @@ For a complete list of available variables and their descriptions, see the [Envi
 POSTGRES_PASSWORD=your-secure-password
 KEYCLOAK_ADMIN_PASSWORD=your-keycloak-password
 
+# Database connection for the API. DB_PASSWORD must equal POSTGRES_PASSWORD
+# (it is not filled in from it). For SQL Server, use the commented mssql form
+# from .env.example instead, with MSSQL_DB_PASSWORD equal to MSSQL_SA_PASSWORD.
+DB_SECRET_VALUE={"DB_HOST":"edfiadminapp-postgres","DB_PORT":5432,"DB_USERNAME":"postgres","DB_PASSWORD":"your-secure-password","DB_DATABASE":"sbaa"}
+
 # Set production URLs
 VITE_API_URL=https://yourdomain.com/adminapp-api
 FE_URL=https://yourdomain.com/adminapp
@@ -194,7 +199,9 @@ authority.
 **Important:** The `VITE_IDP_ACCOUNT_URL` value may differ from your Keycloak admin console URL.
 This should point to the **account management interface** (`/auth/realms/{realm-name}/account/`), not the admin console.
 Ensure this matches your actual Keycloak realm configuration and domain.
-If `VITE_IDP_ACCOUNT_URL` is not set, the **Account** link is hidden.
+If you leave `VITE_IDP_ACCOUNT_URL` out of `.env`, Docker Compose falls back to
+`https://localhost/auth/realms/edfi/account/`, so set it for any deployment not
+served from localhost.
 :::
 
 - **SSL Certificates:** Replace self-signed certificates with production certificates in a live environment.
