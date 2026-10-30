@@ -31,11 +31,34 @@ deployments. It consists of:
 
 :::tip
 
-This application runs with any Open ID Connect provider. Keycloak is the only
-fully supported provider in this release; Microsoft Entra ID and Google Workspace
-have been tested and gain full support in Admin App v4.1.
+This application runs with any Open ID Connect provider. Keycloak, Microsoft
+Entra ID, and Google Workspace are supported. Sign-out uses the provider's
+published sign-out endpoint, and the **Account** link in the Admin App is shown
+only when `VITE_IDP_ACCOUNT_URL` is set.
 
 :::
+
+### Audit log
+
+The Admin App keeps an audit trail of changes and sign-in activity in the
+`audit_log` table of the Admin App database:
+
+- Every create, update, and delete request is recorded, including requests that
+  were rejected, along with sign-in successes, sign-in failures, and sign-outs.
+  Read-only requests, request bodies, and tokens are not recorded.
+- Audit logging is on by default. Set `AUDIT_LOGGING_ENABLED=false` to turn it
+  off; the API reads the setting at startup, so a change requires a restart.
+- There is no screen for the audit log. Query the `audit_log` table with SQL.
+- The Admin App never purges the table. Plan your own retention, for example a
+  scheduled job that deletes rows by `timestamp`.
+- Entries contain user names, which are often email addresses. Treat the table
+  as personal data under your data-protection policies.
+
+### Health check
+
+`GET /api/healthcheck` returns HTTP 200 when the API is healthy and HTTP 503
+when it is not. Configure load balancers and monitors to treat 503 as
+unhealthy.
 
 ### Optional Components
 
@@ -54,14 +77,16 @@ have been tested and gain full support in Admin App v4.1.
 
 ### Software Dependencies
 
-- **Node.js**: Version 22.0.0 or higher
+- **Node.js**: Version 24
 - **SSL/TLS Certificates**: For HTTPS endpoints
 
 ### Ed-Fi Services
 
-- **Ed-Fi ODS/API and ODS Admin API**: Installed and reachable — the Admin App
-  performs all credential and configuration management by calling the Admin
-  API.
+- **Ed-Fi ODS/API and ODS Admin API 2.4 or later**: Installed and reachable —
+  the Admin App performs all credential and configuration management by calling
+  the Admin API. Environments built on Admin API v3 (the Ed-Fi Data Management
+  Service) are also supported; the Admin App shows their ODS instances as
+  **Data Stores**.
 - **Admin API first-time configuration completed**: When an environment is
   connected, the Admin App registers its own client credentials at the Admin
   API's `POST /connect/register` endpoint, which requires

@@ -47,7 +47,7 @@ graph LR
 How the components relate:
 
 - The **Ed-Fi Admin App** is the web user interface (a single-page application) that administrators sign in to. It does not access any database directly; instead it sends every request to its backend, the **Ed-Fi Admin App API**.
-- The **Ed-Fi Admin App API** is the backend for the Admin App. It stores the application's own state (users, teams, ownership) in the **Admin App database**, and it performs all credential and configuration management by calling the **Ed-Fi ODS Admin API**.
+- The **Ed-Fi Admin App API** is the backend for the Admin App. It stores the application's own state (users, teams, ownership, and the audit log) in the **Admin App database**, and it performs all credential and configuration management by calling the **Ed-Fi ODS Admin API**.
 - The **Ed-Fi ODS Admin API** reads and writes the **EdFi\_Admin** database (vendors, applications, claimset assignments, credentials) and the **EdFi\_Security** database (claim/resource authorization metadata).
 - The **Ed-Fi ODS/API** serves data to vendors and integrating systems from one or more **ODS instances** (the `EdFi_Ods_*` databases), and reads the same `EdFi_Admin` and `EdFi_Security` databases at runtime to authenticate and authorize API clients.
 - The **Identity Provider** authenticates Admin App users; it is not involved in authenticating API clients (which use the credentials managed in `EdFi_Admin`).
