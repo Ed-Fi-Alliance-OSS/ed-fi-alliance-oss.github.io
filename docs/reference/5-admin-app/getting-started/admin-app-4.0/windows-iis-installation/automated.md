@@ -107,8 +107,8 @@ This task belongs to the local Keycloak example. It is not registered when the A
 
 A fresh install has no users, teams, or environments yet. The Global Admin Quick Start seeds that starter configuration, so it is the recommended next step.
 
-- [Global Admin Quick Start](../../user-guide/global-admin-quick-start/readme.md)
-- [Configuring Ed-Fi Admin App](../../configuration/configuring-admin-app.md)
-- [Configuring an Identity Provider for Ed-Fi Admin App](../../configuration/identity-provider.md)
-- [Security Considerations](../../configuration/security-considerations.md)
-- [Global Administration Tasks](../../configuration/global-administration-tasks.md)
+- [Global Admin Quick Start](../../../user-guide/global-admin-quick-start/readme.md)
+- [Configuring Ed-Fi Admin App](../../../configuration/configuring-admin-app.md)
+- [Configuring an Identity Provider for Ed-Fi Admin App](../../../configuration/identity-provider.md)
+- [Security Considerations](../../../configuration/security-considerations.md)
+- [Global Administration Tasks](../../../configuration/global-administration-tasks.md)

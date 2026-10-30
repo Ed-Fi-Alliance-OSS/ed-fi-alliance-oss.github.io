@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Configuring Ed-Fi Admin App
 
-This page describes how to configure the Ed-Fi Admin App after installation, regardless of which installation path you followed ([Docker Compose](../getting-started/docker-installation.md), [Windows IIS](../getting-started/windows-iis-installation/readme.md), or [Unix-like Systems](../getting-started/unix-installation.md)). It covers backend API configuration, frontend build-time configuration, database setup and migrations, and authentication.
+This page describes how to configure the Ed-Fi Admin App after installation, regardless of which installation path you followed ([Docker Compose](../getting-started/admin-app-4.0/docker-installation.md), [Windows IIS](../getting-started/admin-app-4.0/windows-iis-installation/readme.md), or [Unix-like Systems](../getting-started/admin-app-4.0/unix-installation.md)). It covers backend API configuration, frontend build-time configuration, database setup and migrations, and authentication.
 
 ## Backend API Configuration
 

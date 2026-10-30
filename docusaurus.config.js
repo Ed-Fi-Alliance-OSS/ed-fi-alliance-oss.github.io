@@ -214,15 +214,15 @@ const config = {
           // Routes changed by the 2025 Admin App docs reorganization.
           {
             from: '/reference/admin-app/getting-started/installing/docker-installation',
-            to: '/reference/admin-app/getting-started/docker-installation',
+            to: '/reference/admin-app/getting-started/admin-app-4.0/docker-installation',
           },
           {
             from: '/reference/admin-app/getting-started/installing/windows-iis-installation',
-            to: '/reference/admin-app/getting-started/windows-iis-installation',
+            to: '/reference/admin-app/getting-started/admin-app-4.0/windows-iis-installation',
           },
           {
             from: '/reference/admin-app/getting-started/installing/unix-installation',
-            to: '/reference/admin-app/getting-started/unix-installation',
+            to: '/reference/admin-app/getting-started/admin-app-4.0/unix-installation',
           },
           {
             from: '/reference/admin-app/getting-started/identity-provider',

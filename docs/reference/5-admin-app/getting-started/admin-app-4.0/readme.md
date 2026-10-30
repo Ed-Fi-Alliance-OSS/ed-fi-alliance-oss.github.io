@@ -24,7 +24,7 @@ deployments. It consists of:
 - **PostgreSQL or SQL Server Database** (Required) — an empty database created
   for the Admin App (the examples use the name `sbaa`)
 - **OIDC Provider** (Required) - Keycloak or similar see
-  - [Configuring an Identity Provider for Ed-Fi Admin App](../configuration/identity-provider.md)
+  - [Configuring an Identity Provider for Ed-Fi Admin App](../../configuration/identity-provider.md)
 - **Reverse Proxy** (Recommended for production) - Nginx, IIS, or similar
   - Provides a single public entry point for the Web Application and API (this avoids cross-origin/CORS between the two sites), plus caching, load balancing, and a place to enforce edge security (for example, a web application firewall).
   - Not required to obtain HTTPS: each installation path terminates TLS itself. The Windows install scripts deploy the API and Web Application as two IIS sites directly (no front-facing proxy) with TLS and enforcing security headers, and the app is architecturally optional behind a proxy by design, honoring `X-Forwarded-*` headers when used.
@@ -67,7 +67,7 @@ have been tested and gain full support in Admin App v4.1.
   API's `POST /connect/register` endpoint, which requires
   `Authentication:AllowRegistration=true` in the Admin API's
   `appsettings.json` (`false` by default). Complete
-  [Create the First API Client](../../4-admin-api/getting-started/admin-api-2.3-newer/first-time-configuration.md#2-create-the-first-api-client)
+  [Create the First API Client](../../../4-admin-api/getting-started/admin-api-2.3-newer/first-time-configuration.md#2-create-the-first-api-client)
   and keep registration enabled while connecting environments (it can be
   disabled again afterwards).
 
@@ -85,16 +85,16 @@ target environment and follow that page from start to finish.
 
 :::note
 You only need to complete **one** of the paths above — each one installs and
-configures the Admin App. The [Configuring Ed-Fi Admin App](../configuration/configuring-admin-app.md)
+configures the Admin App. The [Configuring Ed-Fi Admin App](../../configuration/configuring-admin-app.md)
 page is a reference for the available configuration options, and it is worth
-reviewing [Security Considerations](../configuration/security-considerations.md)
+reviewing [Security Considerations](../../configuration/security-considerations.md)
 before going to production.
 :::
 
 ## Next steps
 
 - [Roadmap to Success](./roadmap-to-success.md)
-- [Configuring Ed-Fi Admin App](../configuration/configuring-admin-app.md)
-- [Configuring an Identity Provider for Ed-Fi Admin App](../configuration/identity-provider.md)
-- [Security Considerations](../configuration/security-considerations.md)
-- [Global Administration Tasks](../configuration/global-administration-tasks.md)
+- [Configuring Ed-Fi Admin App](../../configuration/configuring-admin-app.md)
+- [Configuring an Identity Provider for Ed-Fi Admin App](../../configuration/identity-provider.md)
+- [Security Considerations](../../configuration/security-considerations.md)
+- [Global Administration Tasks](../../configuration/global-administration-tasks.md)
