@@ -459,7 +459,7 @@ Ed-Fi-ODS/Samples/Extensions/StudentTransportation.
 
    * Copy the metadata files to the implementation project.
 
-     ```text
+     ```powershell
      xcopy /y 
      "Ed-Fi-ODS\Samples\Extensions\StudentTransportation\StudentTransportationMetaEd\MetaEdOutput\samplestudenttransportation\Database\SQLServer\ODS\Structure" 
      "Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.SampleStudentTransportation\Artifacts\MsSql\Structure\Ods\*"
