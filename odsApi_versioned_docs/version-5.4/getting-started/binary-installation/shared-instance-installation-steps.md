@@ -129,7 +129,7 @@ Extract the contents of the EdFi.Suite3.Installer.WebApi package. The paths in t
 
 Open a PowerShell window in Administrator mode and navigate to the EdFi.Suite3.Installer.WebApi package folder. Run the following PowerShell command to load modules for installation:
 
-```text
+```powershell
 Import-Module .\Install-EdFiOdsWebApi.psm1
 ```
 
