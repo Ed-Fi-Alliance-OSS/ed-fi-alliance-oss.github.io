@@ -113,8 +113,8 @@ The Ed-Fi Admin App organizes everything it manages around a small set of core c
 - **Claimsets** — A collection of rules/permissions that define which resources can be accessed, what actions can be performed, and the authorization strategies that apply.
 - **Profiles** — Complement claimsets by controlling access at a more granular level — at the columnar or sub-collection level within resources.
 - **Applications** — A named entity that associates resource authorizations with API clients. All applications belong to a vendor and are assigned a claimset (and optionally one or more profiles).
-- **API Clients** — The client entities through which an application connects to the Ed-Fi ODS/API. An application has one on one API clients. Creating an application automatically creates its first (default) API client.
-- **Credentials** — The `client_id` and `client_secret` (aka "key and secret") for authenticating with an Ed-Fi API application. The ODS/API's security database supports multiple sets of credentials per application, as does ODS Admin API version 2.3. However, the Ed-Fi Admin App only supports a one-to-one mapping and treats the credentials as synonymous with the application itself.
+- **API Clients** — The client entities through which an application connects to the Ed-Fi ODS/API. An application has one or more API clients. Creating an application automatically creates its first (default) API client.
+- **Credentials** — The `client_id` and `client_secret` (aka "key and secret") for authenticating with an Ed-Fi API application. The ODS/API's security database supports multiple sets of credentials per application, as does ODS Admin API version 2.3. Admin App 4.1 also supports multiple credentials per application: you can create, edit, reset, and delete an application's credentials, but an application always keeps at least one.
 
 The diagram below shows how these concepts relate to one another.
 
