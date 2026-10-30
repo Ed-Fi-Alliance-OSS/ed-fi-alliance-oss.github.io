@@ -47,7 +47,7 @@ For each of the downloads, **right-click** and select "Properties." Update the f
 :::info
 You may need to configure TLS while running the installation scripts described in steps below.
 
-```text
+```powershell
 [Net.ServicePointManager]::SecurityProtocol += [Net.SecurityProtocolType]::Tls12
 ```
 
