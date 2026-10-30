@@ -37,10 +37,10 @@ points the Ed-Fi API at the token authority — see
 
 - **`ConfigurationServiceSettings:EncryptionKey`**
 
-  |             |                                                                                                                                                                                                                                                                              |
-  | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-  | Example     | `MySecretKey1234567890123456789012`                                                                                                                                                                                                                                          |
-  | Description | Key used to decrypt data store connection strings stored in the Configuration Service. Must match `DatabaseSettings:EncryptionKey` in the Configuration Service. Recommended: a 32-character ASCII string. Set via `DMS_CONFIG_DATABASE_ENCRYPTION_KEY` environment variable |
+  |             |                                                                                                                                                                                                                                                                                         |
+  | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Example     | `MySecretKey1234567890123456789012`                                                                                                                                                                                                                                                     |
+  | Description | Key used to decrypt data store connection strings stored in the Configuration Service. Must match `DatabaseSettings:EncryptionKey` in the Configuration Service. Recommended: a 32-character ASCII string. Set via `CONFIGURATION_SERVICE_DATABASE_ENCRYPTION_KEY` environment variable |
 
 - **`AppSettings:AuthenticationService`**
 
@@ -93,19 +93,19 @@ points the Ed-Fi API at the token authority — see
   | Default     | `true`                                                                                                                                                                                                                     |
   | Description | When `true`, masks request body content in `DEBUG`-level log statements by replacing all scalar values with `"*"`. When `false`, the full unmasked body is logged. See [Logging Configuration](./logging-configuration.md) |
 
-- **`AppSettings:UseApiSchemaPath`**
+- **`AppSettings:ApiSchema:UseCustomPath`**
 
-  |             |                                                                                                                                                                             |
-  | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-  | Default     | `false`; Docker Compose env var `USE_API_SCHEMA_PATH` defaults to `true` in `.env.example`                                                                                  |
-  | Description | When `true`, loads the API schema (core and extensions) from the directory specified by `ApiSchemaPath`. When `false`, loads the bundled schema from the application output |
+  |             |                                                                                                                                                                              |
+  | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `false`; Docker Compose env var `USE_API_SCHEMA_PATH` defaults to `true` in `.env.example`                                                                                   |
+  | Description | When `true`, loads the API schema (core and extensions) from the directory specified by `ApiSchema:Path`. When `false`, loads the bundled schema from the application output |
 
-- **`AppSettings:ApiSchemaPath`**
+- **`AppSettings:ApiSchema:Path`**
 
-  |             |                                                                                                                                                                                                                                                                                                 |
-  | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-  | Default     | _(empty)_; Docker Compose env var `API_SCHEMA_PATH` defaults to `/app/ApiSchema` in `.env.example`                                                                                                                                                                                              |
-  | Description | Directory containing `bootstrap-api-schema-manifest.json` and the declared schema files. Used when `UseApiSchemaPath` is `true`. Extension `ApiSchema.json` files placed in this directory are automatically loaded. See [Extending API DataModel](../extensibility-customization/extending-api-datamodel.md) |
+  |             |                                                                                                                                                                                                                                                                                                                      |
+  | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | _(empty)_; Docker Compose env var `API_SCHEMA_PATH` defaults to `/app/ApiSchema` in `.env.example`                                                                                                                                                                                                                   |
+  | Description | Directory containing `bootstrap-api-schema-manifest.json` and the declared schema files. Used when `ApiSchema:UseCustomPath` is `true`. Extension `ApiSchema.json` files placed in this directory are automatically loaded. See [Extending API DataModel](../extensibility-customization/extending-api-datamodel.md) |
 
 - **`AppSettings:DomainsExcludedFromOpenApi`**
 
@@ -200,10 +200,10 @@ points the Ed-Fi API at the token authority — see
 
 - **`DatabaseSettings:EncryptionKey`**
 
-  |             |                                                                                                                                                                                                                                                      |
-  | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-  | Example     | `MySecretKey1234567890123456789012`                                                                                                                                                                                                                  |
-  | Description | AES key used to encrypt data store connection strings at rest. Must match `ConfigurationServiceSettings:EncryptionKey` in the Ed-Fi API. Set via `DMS_CONFIG_DATABASE_ENCRYPTION_KEY` environment variable. Recommended: a 32-character ASCII string |
+  |             |                                                                                                                                                                                                                                                                 |
+  | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Example     | `MySecretKey1234567890123456789012`                                                                                                                                                                                                                             |
+  | Description | AES key used to encrypt data store connection strings at rest. Must match `ConfigurationServiceSettings:EncryptionKey` in the Ed-Fi API. Set via `CONFIGURATION_SERVICE_DATABASE_ENCRYPTION_KEY` environment variable. Recommended: a 32-character ASCII string |
 
 ### Optional Settings
 
@@ -225,7 +225,7 @@ points the Ed-Fi API at the token authority — see
 
   |             |                                                                                                                                          |
   | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-  | Default     | _(empty)_; Docker Compose env var `DMS_CONFIG_PATH_BASE` defaults to `config` in `.env.example`                                          |
+  | Default     | _(empty)_; Docker Compose env var `CONFIGURATION_SERVICE_PATH_BASE` defaults to `config` in `.env.example`                               |
   | Description | URL base segment for all Configuration Service endpoints. Example: with `PathBase=config`, the management API is at `/config/v3/vendors` |
 
 - **`AppSettings:TokenRequestTimeoutSeconds`**

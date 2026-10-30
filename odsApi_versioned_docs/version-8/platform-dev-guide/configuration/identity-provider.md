@@ -56,7 +56,7 @@ pass `-IdentityProvider self-contained`) — self-contained is the default:
 The relevant `.env` variables:
 
 ```ini
-DMS_CONFIG_IDENTITY_PROVIDER=self-contained
+CONFIGURATION_SERVICE_IDENTITY_PROVIDER=self-contained
 SELF_CONTAINED_OAUTH_TOKEN_ENDPOINT=http://ed-fi-api-config:8081/connect/token
 SELF_CONTAINED_DMS_JWT_AUTHORITY=http://ed-fi-api-config:8081
 SELF_CONTAINED_DMS_JWT_METADATA_ADDRESS=http://ed-fi-api-config:8081/.well-known/openid-configuration
@@ -97,10 +97,25 @@ Docker Compose.
 
 ```json
 "JwtAuthentication": {
-  "Authority": "http://dms-keycloak:8080/realms/edfi",
+  "Authority": "http://localhost:8045/realms/edfi",
   "MetadataAddress": "http://dms-keycloak:8080/realms/edfi/.well-known/openid-configuration"
 }
 ```
+
+`Authority` must equal the `issuer` in Keycloak's metadata document exactly,
+with no trailing-slash or case differences. Keycloak's issuer is its public URL
+(its `KC_HOSTNAME` setting, `http://localhost:8045` in the local Docker Compose
+setup), so use the public URL here even though the Ed-Fi API reaches Keycloak
+inside the Docker network. `MetadataAddress` can use the internal address
+because the local Keycloak is started with `KC_HOSTNAME_BACKCHANNEL_DYNAMIC`,
+which serves metadata on the internal address while keeping the public issuer.
+
+If `Authority` doesn't match the issuer, the Ed-Fi API doesn't start. If a
+mismatch appears later, for example after a Keycloak hostname change, the
+Ed-Fi API rejects every token with `401 Unauthorized` until it fetches metadata
+that matches again. It retries at most once per
+`JwtAuthentication:RefreshIntervalMinutes` (60 minutes by default); restarting
+the Ed-Fi API recovers immediately.
 
 ### Docker Compose
 
@@ -113,17 +128,25 @@ Pass `-IdentityProvider keycloak` to the startup script:
 The relevant `.env` variables:
 
 ```ini
-DMS_CONFIG_IDENTITY_PROVIDER=keycloak
+CONFIGURATION_SERVICE_IDENTITY_PROVIDER=keycloak
 KEYCLOAK_OAUTH_TOKEN_ENDPOINT=http://dms-keycloak:8080/realms/edfi/protocol/openid-connect/token
-KEYCLOAK_DMS_JWT_AUTHORITY=http://dms-keycloak:8080/realms/edfi
+KEYCLOAK_DMS_JWT_AUTHORITY=http://localhost:8045/realms/edfi
 KEYCLOAK_DMS_JWT_METADATA_ADDRESS=http://dms-keycloak:8080/realms/edfi/.well-known/openid-configuration
+KEYCLOAK_CONFIGURATION_SERVICE_IDENTITY_AUTHORITY=http://dms-keycloak:8080/realms/edfi
 KEYCLOAK_PORT=8045
 ```
 
+In Keycloak mode the two authorities differ. `KEYCLOAK_DMS_JWT_AUTHORITY` is
+Keycloak's public issuer, which the Ed-Fi API requires to match exactly.
+`KEYCLOAK_CONFIGURATION_SERVICE_IDENTITY_AUTHORITY` is the in-network URL the
+Configuration Service calls. The startup scripts stop with an error if
+`KEYCLOAK_CONFIGURATION_SERVICE_IDENTITY_AUTHORITY` is missing.
+
 :::note
 
-`KEYCLOAK_OAUTH_TOKEN_ENDPOINT` is consumed by the Ed-Fi API **inside the
-Docker network**. Use the container hostname (`dms-keycloak:8080`), not
+`KEYCLOAK_OAUTH_TOKEN_ENDPOINT` and
+`KEYCLOAK_CONFIGURATION_SERVICE_IDENTITY_AUTHORITY` are used **inside the Docker
+network**. Use the container hostname (`dms-keycloak:8080`), not
 `localhost:8045`.
 
 :::

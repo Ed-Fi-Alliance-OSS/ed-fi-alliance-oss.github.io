@@ -15,43 +15,34 @@ git clone https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service.git
 cd Data-Management-Service
 ```
 
-## Step 2 — Build the Schema Tool
+## Step 2 — Review the Environment File
 
-The startup script relies on `api-schema-tools` to prepare and hash the database
-schema. Build it from the repository root before starting services:
+The startup scripts read their settings from the `.env` file in the
+`eng/docker-compose` directory. On the first run, they create it as a copy of
+`.env.example`, so you don't need to create it yourself.
 
-```powershell
-dotnet build src/dms/clis/EdFi.DataManagementService.SchemaTools
-```
-
-:::info Prerequisite
-
-The [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0) must be
-installed.
-
-:::
-
-## Step 3 — Configure the Environment File
-
-Move into the Docker Compose directory and copy the example environment file:
+The defaults work for local development. To change a setting before the first
+run, copy the example file yourself and edit the copy:
 
 ```powershell
 cd eng/docker-compose
 Copy-Item .env.example .env
 ```
 
-The defaults work for local development. Key settings you may want to review:
+Key settings you may want to review:
 
 | Variable | Default | Purpose |
 | --- | --- | --- |
-| `DMS_CONFIG_IDENTITY_PROVIDER` | `self-contained` | Identity provider: `self-contained` (OpenIddict) or `keycloak` |
+| `CONFIGURATION_SERVICE_IDENTITY_PROVIDER` | `self-contained` | Identity provider: `self-contained` (OpenIddict) or `keycloak` |
 | `POSTGRES_PASSWORD` | _(set in .env.example)_ | PostgreSQL admin password |
-| `LOG_LEVEL` | `DEBUG` | Ed-Fi API log verbosity |
+| `LOG_LEVEL` | `Information` | Ed-Fi API log verbosity |
 
 See [Getting Started — Appendix](getting-started-appendix) for a full
 environment variable reference.
 
-## Step 4 — Start the Services
+## Step 3 — Start the Services
+
+From the `eng/docker-compose` directory, run:
 
 ```powershell
 ./bootstrap-local-dms.ps1
@@ -60,7 +51,17 @@ environment variable reference.
 This command handles the full startup lifecycle: it stages the API schema and
 claims metadata, starts PostgreSQL and the Configuration Service, creates the
 default data store, provisions the database schema, and starts the Ed-Fi API.
-Initial startup typically takes 3–5 minutes.
+Startup typically takes 3–5 minutes. The first run takes longer because it
+builds the Ed-Fi API and Configuration Service images and the `api-schema-tools`
+CLI.
+
+:::info Prerequisite
+
+The script provisions the database with the `api-schema-tools` CLI, which it
+builds from source on the first run. This requires the [.NET 10
+SDK](https://dotnet.microsoft.com/download/dotnet/10.0).
+
+:::
 
 ### Common Startup Options
 
@@ -73,6 +74,10 @@ Initial startup typically takes 3–5 minutes.
 | `-LoadSeedData -SeedTemplate Populated` | Load the full Ed-Fi sample dataset after startup |
 | `-SchoolYearRange "2024-2025"` | Create year-specific data stores (see [Context-Based Routing](../platform-dev-guide/configuration/context-based-routing-for-year-specific-datastore.md)) |
 | `-DatabaseEngine mssql` | Use SQL Server instead of PostgreSQL |
+| `-DataStandardVersion 6.1` | Use Data Standard 6.1 instead of the default, 5.2 |
+| `-AddSmokeTestCredentials` | Create API client credentials for local testing and print the key and secret at the end of startup (see [Configure a Data Store](configure-data-store)) |
+| `-SeparateConfigDatabase` | Store the Configuration Service data in its own database instead of sharing the Ed-Fi API database |
+| `-Rebuild` | Rebuild the local Docker images before starting, for example after updating the repository |
 
 ### Optional: Year-Specific Data Stores
 
@@ -122,7 +127,7 @@ and volumes. Two common cases:
 
 :::
 
-## Step 5 — Verify the Services
+## Step 4 — Verify the Services
 
 Once startup completes, confirm the Ed-Fi API is responding:
 

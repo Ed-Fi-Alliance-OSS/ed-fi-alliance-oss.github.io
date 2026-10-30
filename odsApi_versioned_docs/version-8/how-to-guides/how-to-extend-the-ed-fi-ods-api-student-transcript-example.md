@@ -11,7 +11,7 @@ Before you begin:
   tool developed by the Ed-Fi Alliance and is the recommended way to add new
   fields to the Ed-Fi API. [Download and install
   MetaEd](/reference/metaed/getting-started-with-metaed-ide/installation/)
-  before beginning. MetaEd **4.8 or later** is required for Ed-Fi API v8.0.
+  before beginning. MetaEd **4.9 or later** is required for Ed-Fi API v8.1.
 - This example assumes knowledge of the basic concepts described in [How To:
   Extend the Ed-Fi API - Alternative Education Program
   Example](./how-to-extend-the-ed-fi-ods-api-alternative-education-program-example.md).
@@ -93,7 +93,7 @@ Confirm that your MetaEd IDE is targeting the desired data model, e.g.
 **ed-fi-model-5.2**, by following the instructions in [Version
 Targeting](/reference/metaed/ide-user-guide/creating-and-maintaining-your-extension#step-4-add-the-correct-data-model-project).
 
-MetaEd **4.8 or later** is required for Ed-Fi API v8.0 support.
+MetaEd **4.9 or later** is required for Ed-Fi API v8.1 support.
 
 ### Step 2b. Create a New Extension Project
 
@@ -347,7 +347,7 @@ We'll look at how to use the MetaEd output for the Ed-Fi API below.
 
 :::info
 
-For Ed-Fi API v8.0, only `ApiSchema-EXTENSION.json` and (optionally) the XSD
+For Ed-Fi API v8.1, only `ApiSchema-EXTENSION.json` and (optionally) the XSD
 file are needed. The SQL scripts under `Database/` and the interchange schemas
 are used by the legacy ODS / API and are not required for the new Ed-Fi API.
 The XSD file is required only if you load data via the [XML Bulk Load Client
@@ -380,7 +380,7 @@ Copy-Item ".bootstrap\ApiSchema\schemas\Ed-Fi\ApiSchema.json" "C:\path\to\my-sch
 
 Alternatively, download the `EdFi.DataStandard52.ApiSchema` package; see
 [Package
-Releases](../getting-started/package-releases.md#ed-fi-api-v800-schema-packages)
+Releases](../getting-started/package-releases.md#ed-fi-api-v810-schema-packages)
 for
 the package link and version. A `.nupkg` is a ZIP archive, and the core schema
 is inside it at `contentFiles/any/any/ApiSchema/ApiSchema.json`:
@@ -467,8 +467,8 @@ checkout; after this step, your original directory isn't referenced again.
 Writing the staged workspace also creates `.bootstrap/bootstrap-manifest.json`,
 which puts the stack into "bootstrap mode": the next start automatically adds a
 compose override that mounts `.bootstrap/ApiSchema` read-only into the DMS
-container at `/app/ApiSchema`, matching the `AppSettings:ApiSchemaPath` and
-`AppSettings:UseApiSchemaPath` values already defaulted in `.env`. The stack you
+container at `/app/ApiSchema`, matching the `API_SCHEMA_PATH` and
+`USE_API_SCHEMA_PATH` values already defaulted in `.env`. The stack you
 stopped in Step 5a picks up the staged schema when you start it again in Step 6.
 
 :::
@@ -487,9 +487,9 @@ situations:
   `SISVendor`) already covers them. No claims work is needed for it at all.
 
 Create a directory (e.g. `my-claims/`) containing a file named
-`001-sample-student-transcript-claimset.json`:
+`001-sample-student-transcript-claims.json`:
 
-```json title="001-sample-student-transcript-claimset.json"
+```json title="001-sample-student-transcript-claims.json"
 {
   "name": "SampleStudentTranscriptClaims",
   "resourceClaims": [
