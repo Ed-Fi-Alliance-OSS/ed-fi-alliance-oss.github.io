@@ -82,7 +82,7 @@ each ODS.
 <details>
 <summary>MSSQL Change Queries Removal</summary>
 
-```text
+```sql
 -- Drop delete tracking triggers
 SELECT 'DROP TRIGGER IF EXISTS ' + s.name + '.' + tr.name + ';'
 FROM sys.triggers tr
