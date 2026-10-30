@@ -65,7 +65,7 @@ There are several settings in the configuration file that are left empty as they
 
 SQL Server
 
-```text
+```json
 {
   "ConnectionStrings": {
     "EdFi_Ods": "server=(local);trusted_connection=True;database=EdFi_{0};Application Name=EdFi.Ods.WebApi",
