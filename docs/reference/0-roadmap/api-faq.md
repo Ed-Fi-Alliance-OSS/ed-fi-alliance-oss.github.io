@@ -19,22 +19,21 @@ Platform remains supported through the 2028-2029 school year, so an
 implementation that starts on ODS/API 7.x will need a second migration before
 then.
 
-Which Ed-Fi API v8 release to use depends on your timeline and your role:
+Use the latest Ed-Fi API v8 release. Once _Release 8.1_ is available (planned
+for November 2026), use 8.1 for all new implementations, including pilots.
+_Release 8.0_ is intended for pilot and parallel use in school year 2026-2027.
+Teams already running 8.0 should plan to upgrade to 8.1, and should expect to
+re-provision their databases when they do. The [Ed-Fi API v8 Pilot Test
+Kit](https://github.com/Ed-Fi-Exchange-OSS/Ed-Fi-API-v8-pilot-testing-kit)
+provides a non-production environment for testing client integrations against
+Ed-Fi API v8.
 
-* **Managed service providers and early adopters, school year 2026-2027:** use
-  _Release 8.0_ for pilot or parallel use. The [Ed-Fi API v8 Pilot Test
-  Kit](https://github.com/Ed-Fi-Exchange-OSS/Ed-Fi-API-v8-pilot-testing-kit)
-  provides a non-production environment for testing client integrations
-  against Ed-Fi API v8.
-* **State Education Agencies (SEAs) and other production deployments, school
-  year 2027-2028:** plan on _Release 8.1_, the SEA-oriented release, which is
-  planned for Q4 2026.
-* **Client application developers (SIS, assessment, and other vendors):**
-  Ed-Fi API v8 implements the Ed-Fi API specification, so most client
-  applications built for the ODS/API continue to work. Review the [breaking
-  changes and migration
-  checklist](/reference/ed-fi-api/8/whats-new/release-notes#ed-fi-api-v80---breaking-changes-from-previous-releases)
-  and test against Ed-Fi API v8.
+**Client application developers (SIS, assessment, and other vendors):** Ed-Fi
+API v8 implements the Ed-Fi API specification, so most client applications
+built for the ODS/API continue to work. Review the [breaking changes and
+migration
+checklist](/reference/ed-fi-api/8/whats-new/release-notes#ed-fi-api-v80---breaking-changes-from-previous-releases)
+and test against Ed-Fi API v8.
 
 Use ODS/API 7.3 only if you need production use before Ed-Fi API v8 is ready
 for your needs, or if you depend on a feature that is [not yet available in
