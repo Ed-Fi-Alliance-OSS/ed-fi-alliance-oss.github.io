@@ -134,7 +134,7 @@ named **EdFi.OdsApi.Sdk.sln** will be created with the SDK artifacts.
 
 10. Edit the **Program.cs** file and paste the following code. The client and key are using a publicly available sandbox environment with sample data hosted by the Ed-Fi Alliance.
 
-    ```text
+    ```csharp
     // Trust all SSL certs -- needed unless signed SSL certificates are configured.
     System.Net.ServicePointManager.ServerCertificateValidationCallback =
         ((sender, certificate, chain, sslPolicyErrors) => true);
