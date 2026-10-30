@@ -4,6 +4,10 @@ sidebar_position: 3
 
 # Semi-automated
 
+:::caution
+The installation scripts are being updated for Admin App 4.1, which requires a session secret (`SESSION_SECRET_VALUE`) that the current scripts do not set. Until the scripts are updated, use the [Manual](./manual.md) installation path for Admin App 4.1.
+:::
+
 Automate some sections and hand-configure others — for example, script the prerequisites and the build, then deploy against an existing IIS setup by hand. Each script below automates one section; any script can be skipped in favor of the matching [Manual](./manual.md) steps.
 
 First clone the scripts (see [Automated](./automated.md#get-the-scripts)), then run the ones you want from an elevated PowerShell in `windows-install/`, in the order below.

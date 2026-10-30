@@ -13,7 +13,7 @@ Prepare the following on the Windows host before deploying the API and Web Appli
 - **[Operating-system components](#operating-system-components-iis-sql-server-git)** — IIS (**version 10 or newer**), SQL Server, and, optionally, Git.
 - **[IIS modules](#iis-modules)** — the URL Rewrite Module and an httpPlatform handler.
 - **[Database](#database)** — SQL Server (default) or PostgreSQL.
-- **[Node.js](#nodejs)** — the major version pinned in the Admin App's `package.json` (currently `>=22`).
+- **[Node.js](#nodejs)** — the major version pinned in the Admin App's `package.json` (currently `>=24`).
 - **[Identity provider](#identity-provider)** — an OIDC provider; this guide uses a local Keycloak example.
 - **[TLS certificate](#tls-and-certificates)** — a CA-issued certificate, or a self-signed one for local use.
 - **[Yopass](#yopass-optional)** (optional) — for one-time credential links.
@@ -92,7 +92,7 @@ For **PostgreSQL**, see [Configuring the Admin App](../../../configuration/confi
 
 ### Node.js
 
-Install the Node.js major version pinned in the Admin App's `package.json` (`engines.node`, currently `>=22`) from [nodejs.org](https://nodejs.org/).
+Install the Node.js major version pinned in the Admin App's `package.json` (`engines.node`, currently `>=24`) from [nodejs.org](https://nodejs.org/).
 
 ### Identity provider
 
@@ -161,7 +161,7 @@ The API is deployed as a standalone IIS site, `EdFi-AdminApp-API`, with an HTTP 
 
    ```powershell
    # Replace the TAG value with the latest release from the Releases page
-   $TAG = "v4.0.1"
+   $TAG = "v4.1.0"
 
    git clone --branch $TAG --depth 1 https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-AdminApp.git
    cd Ed-Fi-AdminApp
@@ -267,6 +267,8 @@ The API is deployed as a standalone IIS site, `EdFi-AdminApp-API`, with an HTTP 
        // Generate with: node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
        KEY: 'your-64-hex-char-encryption-key',
      },
+     // Signs session cookies. A list of secrets, newest first; generate each one like the key above.
+     SESSION_SECRET_VALUE: ['your-session-secret'],
 
      // Verify TLS certificates on the API's OUTBOUND calls to the ODS/API, Admin API,
      // and Yopass. Keep true. If a local ODS/API presents a self-signed certificate,
@@ -304,6 +306,10 @@ The API is deployed as a standalone IIS site, `EdFi-AdminApp-API`, with an HTTP 
      RATE_LIMIT_LIMIT: 10,
    };
    ```
+
+   :::warning
+   The API refuses to start in production when `SESSION_SECRET_VALUE`, `DB_ENCRYPTION_SECRET_VALUE.KEY`, the database password, or the OIDC client secret is missing, blank, or still a sample value. Never change `DB_ENCRYPTION_SECRET_VALUE.KEY` once environments exist: it encrypts their stored credentials.
+   :::
 
    For a managed **Azure SQL Database**, change the host and the two values that control the connection's encryption:
 
@@ -486,7 +492,7 @@ The default install is suitable for a local or trusted-network deployment. Befor
   2. Set `NODE_EXTRA_CA_CERTS` to that file's path for the API process — add an `<environmentVariable name="NODE_EXTRA_CA_CERTS" value="C:\path\to\upstream-ca.crt" />` inside `<httpPlatform><environmentVariables>` in the API site's `web.config` (next to `NODE_ENV`), or set it on the `EdFi-AdminApp-API` App Pool's environment.
   3. Restart the API site so Node re-reads the value.
 
-  On Node 22.15+ you can instead set `NODE_OPTIONS=--use-system-ca`, which honors the Windows certificate store.
+  On Node.js 24 you can instead set `NODE_OPTIONS=--use-system-ca`, which honors the Windows certificate store.
 - **Review secrets handling.** A manual install keeps credentials in `production.js`. Protect or rotate them per your policy.
 - **Harden the database and App Pool identities.** This guide already connects as a least-privilege SQL login (`edfi_adminapp`, not `sa`); keep that separation in production.
 

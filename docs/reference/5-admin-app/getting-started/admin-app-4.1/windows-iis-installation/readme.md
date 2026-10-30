@@ -28,6 +28,10 @@ Both IIS sites are served over **HTTPS by default** — API on port **3443** and
 
 Choose the path that fits how much you want to automate. All three produce the same two IIS sites.
 
+:::caution
+The installation scripts are being updated for Admin App 4.1, which requires a session secret (`SESSION_SECRET_VALUE`) that the current scripts do not set. Until the scripts are updated, use the [Manual](./manual.md) installation path for Admin App 4.1.
+:::
+
 - **[Automated](./automated.md)** — the whole stack in one command (`setup-vm-prereqs.ps1`, then `install-all.ps1`). Best for a fresh machine or a quick stand-up.
 - **[Semi-automated](./semi-automated.md)** — automate some sections and hand-configure others, using the script-to-section map.
 - **[Manual](./manual.md)** — every step by hand, with the exact `web.config` and `production.js`. The authoritative reference for what gets configured.
