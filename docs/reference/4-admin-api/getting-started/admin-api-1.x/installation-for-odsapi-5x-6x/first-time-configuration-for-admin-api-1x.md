@@ -54,7 +54,7 @@ After registering the client, verify it was created by retrieving an
 authorization token.
 
 ```shell
-curl -X POST https://your-admin-api/connect/token-H "Content-Type: application/x-www-form-urlencoded" -d "client_id=YourClientId&client_secret=YourClientSecret&grant_type=client_credentials"
+curl -X POST https://your-admin-api/connect/token -u YourClientId:YourClientSecret -H "Content-Type: application/x-www-form-urlencoded" -d "grant_type=client_credentials"
 ```
 
 This should return a JSON result including a bearer token. Note that the above
