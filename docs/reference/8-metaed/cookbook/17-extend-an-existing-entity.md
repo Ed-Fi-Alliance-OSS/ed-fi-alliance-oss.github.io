@@ -57,5 +57,5 @@ entity Staff and will add all defined properties within the extension file. In
 this example, this is the "IsTenured" property. When a build is run, technical
 artifacts are created for the extended domain entity to add the new properties
 to the now extended model. Details on supported and unsupported extensions can
-be found in the Ed-Fi Extension Framework in the Ed-Fi Data Standard technical
-documentation.
+be found in the Ed-Fi Data Standard Extension Framework in the Ed-Fi Data
+Standard technical documentation.

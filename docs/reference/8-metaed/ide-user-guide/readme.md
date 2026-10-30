@@ -18,6 +18,6 @@ familiar with the following knowledge areas:
 
 * Ed-Fi technologies such as the [Ed-Fi ODS / API
   Platform](../../ods-api-platform) and [Ed-Fi Data Standard](/reference/data-exchange/data-standard/)
-* The [Ed-Fi Extension
+* The [Ed-Fi Data Standard Extension
   Framework](docs/reference/1-data-exchange/extensions-framework/readme.md),
   which provides guidance on the extension of the Ed-Fi Data Standard.

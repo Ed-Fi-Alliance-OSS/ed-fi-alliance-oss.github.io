@@ -68,9 +68,9 @@ example above shows the core Teacher Preparation Data Model (TPDM) extension.
 
 :::tip
 
-The Ed-Fi extension framework is defined elsewhere. All implementations
-that include extensions should follow the extension framework guidance as
-supplementary to this guide.
+The Ed-Fi Data Standard extension framework is defined elsewhere. All
+implementations that include extensions should follow the extension framework
+guidance as supplementary to this guide.
 
 :::
 
