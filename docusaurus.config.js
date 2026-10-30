@@ -112,22 +112,22 @@ const config = {
         lastVersion: '7.3',
         versions: {
           5.4: {
-            banner: 'none',
+            banner: 'unmaintained',
             badge: true,
             path: '5.4',
             className: 'unmaintained',
           },
           6.2: {
-            banner: 'none',
+            banner: 'unmaintained',
             badge: true,
             path: '6.2',
-            className: 'active',
+            className: 'unmaintained',
           },
           7.1: {
-            banner: 'none',
+            banner: 'unmaintained',
             badge: true,
             path: '7.1',
-            className: 'active',
+            className: 'unmaintained',
           },
           7.2: { banner: 'unmaintained', badge: true, path: '7.2' },
           7.3: { banner: 'none', badge: true },
@@ -159,10 +159,10 @@ const config = {
             className: 'active',
           },
           4: {
-            banner: 'none',
+            banner: 'unmaintained',
             badge: true,
             path: '4',
-            className: 'active',
+            className: 'unmaintained',
           },
           3: {
             banner: 'unmaintained',

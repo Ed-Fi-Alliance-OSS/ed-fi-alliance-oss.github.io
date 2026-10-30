@@ -8,46 +8,46 @@ import { useLocation } from '@docusaurus/router';
 const edFiApi = [
   {
     path: '/reference/ed-fi-api/8/',
-    number: '8.0 (Latest)',
+    number: '8.0 (Latest, Fully supported)',
   },
   {
     path: '/reference/ed-fi-api/',
-    number: '7.3 (Current)',
+    number: '7.3 (Fully supported)',
   },
   {
     path: '/reference/ed-fi-api/7.2/',
-    number: '7.2 (Unsupported)',
+    number: '7.2 (Out of support)',
   },
   {
     path: '/reference/ed-fi-api/7.1/',
-    number: '7.1 (Supported)',
+    number: '7.1 (Out of support)',
   },
   {
     path: '/reference/ed-fi-api/6.2/',
-    number: '6.2 (Supported)',
+    number: '6.2 (Out of support)',
   },
   {
     path: '/reference/ed-fi-api/5.4/',
-    number: '5.4 (Unsupported)',
+    number: '5.4 (Out of support)',
   },
 ];
 
 const dataStandard = [
   {
     path: '/reference/data-exchange/data-standard/',
-    number: '6 (Current)',
+    number: '6 (Fully supported)',
   },
   {
     path: '/reference/data-exchange/data-standard/5/',
-    number: '5 (Supported)',
+    number: '5 (Fully supported)',
   },
   {
     path: '/reference/data-exchange/data-standard/4/',
-    number: '4 (Supported)',
+    number: '4 (Out of support)',
   },
   {
     path: '/reference/data-exchange/data-standard/3/',
-    number: '3 (Unsupported)',
+    number: '3 (Out of support)',
   },
 ];
 
