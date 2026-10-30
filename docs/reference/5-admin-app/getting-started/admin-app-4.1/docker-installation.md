@@ -180,6 +180,7 @@ secrets are missing, blank, or still set to the sample values from
   encrypts the stored environment credentials, so **never change it** once
   environments exist: the Admin App can no longer decrypt them with a different
   key.
+
 :::
 
 :::note
