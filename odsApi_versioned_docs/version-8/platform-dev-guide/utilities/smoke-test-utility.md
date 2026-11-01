@@ -11,12 +11,12 @@ continuous deployment environment. Although it does not perform complex scenario
 tests, the Smoke Test tool does methodically perform operations in scenario-like
 orders.
 
-The Smoke Test Utility source code can be found in the Ed-Fi-ODS repository in
-the `Utilities\DataLoading\EdFi.SmokeTest.Console` directory. It is part of the
-LoadTools solution (`\Utilities\DataLoading`). The LoadTools solution can be
-compiled using Visual Studio. Because the Smoke Test Utility uses Swagger
-metadata and an externally built SDK, it does not need to be recompiled when the
-API changes.
+The Smoke Test Utility is published as the `EdFi.Suite3.SmokeTest.Console`
+NuGet package (see [Install the Smoke Test
+Utility](#install-the-smoke-test-utility)). Its source code is in the Ed-Fi-ODS
+repository, in the `Utilities/DataLoading/EdFi.SmokeTest.Console` directory.
+Because the Smoke Test Utility uses Swagger metadata and an externally built
+SDK, it does not need to be recompiled when the API changes.
 
 The Smoke Test tool has three modes of operation:
 
@@ -74,7 +74,8 @@ operations in an API.
 The Smoke Test Tool uses log4net to capture all relevant test information. Out
 of the box, the tool logs to the console and to a rolling log file that is
 created in the same directory as the console application. These settings may be
-changed as necessary by altering the application .config file. Consult the
+changed as necessary by editing the `log4net.config` file next to the
+application. Consult the
 [log4net
 documentation](https://logging.apache.org/log4net/release/manual/configuration.html)
 for detailed configuration settings and documentation.
@@ -84,68 +85,123 @@ for detailed configuration settings and documentation.
 Built-in help documentation is available for the Smoke Test tool by running the
 tool with `--help` parameter.
 
-:::info
-
-In Ed-Fi API v8, the OAuth token endpoint is hosted by the Configuration Service
-on a separate port. When using the `--baseurl` parameter, the derived OAuth URL
-will not be correct for v8. Specify the token endpoint explicitly using the
-`--oauthurl` parameter:
-
-```none
---oauthurl http://localhost:8081/connect/token
-```
-
-The Ed-Fi API base URL for a local deployment is `http://localhost:8080/api` (no
-`v3/` segment).
-
-:::
+With `-b`, the tool reads the discovery document served at the base URL to find
+the other URLs it needs. For a local deployment the base URL is
+`http://localhost:8080/api` (no `v3/` segment). If the advertised token URL
+isn't reachable from the machine running the tool, for example a
+Docker-internal host name, pass `-o http://localhost:8080/api/oauth/token`.
+The examples below pass `-o` so they work whatever the discovery document
+advertises.
 
 | Parameter | Description | Non-Destructive API | Non-Destructive SDK | Destructive SDK |
 | --- | --- | --- | --- | --- |
-| `b, baseurl` | The base url used to derive api, metadata, oauth, and dependency urls (e.g., `http://server`). If provided, `apiurl, metadataurl and oauthurl` parameters can be skipped. | Required | Required | Required |
+| `b, baseurl` | The Ed-Fi API base URL (e.g., `http://localhost:8080/api`). The tool derives the metadata, data, and OAuth token URLs from its discovery document. | Required | Required | Required |
 | `k, key` | The web API OAuth key | Required | Required | Required |
-| `l, library` | The complete path to a compiled Ed-Fi SDK library | N/A | Required | Required |
-| `n, namespace` | Override the URI to use when generating namespace values (e.g., `uri://edfi.org`) | Optional | Optional | Optional |
 | `s, secret` | The web API OAuth secret | Required | Required | Required |
 | `t, testset` | The test set to run | NonDestructiveApi | NonDestructiveSdk | DestructiveSdk |
+| `o, oauthurl` | The OAuth token URL (e.g., `http://localhost:8080/api/oauth/token`). Overrides the URL from the discovery document. | Optional | Optional | Optional |
+| `l, library` | The complete path to a compiled Ed-Fi SDK library | N/A | Required | Required |
+| `c, sdknamespaceprefix` | The root namespace of the SDK library passed with `-l`. Defaults to `EdFi.OdsApi.Sdk`, which matches the published test SDK. | N/A | Optional | Optional |
+| `n, namespace` | Override the URI to use when generating namespace values (e.g., `uri://ed-fi.org`) | Optional | Optional | Optional |
 | `help` | Show command line help | Optional | Optional | Optional |
 
-## Build and Run the Smoke Test Utility
+## Install the Smoke Test Utility
 
-This section provides an overview on how to use the Smoke Test Utility.
+The Smoke Test Utility is published as the `EdFi.Suite3.SmokeTest.Console`
+package on the Ed-Fi release feed
+(`https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi%40Release/nuget/v3/index.json`).
+The package contains a .NET 10 console application, so you need the .NET 10
+runtime.
 
-- Start Visual Studio, open `\Ed-Fi-ODS\Utilities\DataLoading\LoadTools.sln` and
-  build.
-- Open a Console window and navigate to
-  `\Ed-Fi-ODS\Utilities\DataLoading\EdFi.SmokeTest.Console\bin\Debug\net10.0`
-- Execute the tool to run the smoke tests.
+To download and extract the package with PowerShell:
+
+```powershell
+$feed = "https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi%40Release/nuget/v3/index.json"
+$packageBase = ((Invoke-RestMethod $feed).resources |
+  Where-Object { $_.'@type' -like 'PackageBaseAddress*' }).'@id'
+$id = "edfi.suite3.smoketest.console"
+$version = "7.3.20185"
+Invoke-RestMethod "$packageBase$id/$version/$id.$version.nupkg" -OutFile "$id.zip"
+Expand-Archive "$id.zip" -DestinationPath $id -Force
+$smokeTest = Resolve-Path "$id/tools/net*/any/EdFi.SmokeTest.Console.dll"
+```
+
+Run the tool with `dotnet $smokeTest`, followed by the parameters.
+
+## Run the Smoke Test Utility
+
+### Prerequisites
+
+The Smoke Test Utility requests a new OAuth token for each resource it tests.
+With the Configuration Service's self-contained identity provider, a smoke test
+run exceeds two default limits:
+
+- The number of active tokens per client (`15` by default). Set
+  `CONFIGURATION_SERVICE_IDENTITY_BEARER_TOKEN_PER_CLIENT_LIMIT=-1` to remove
+  the limit.
+- The rate limits on the `/connect` endpoints (`120` requests per source and
+  `30` per client in 60 seconds). Raise
+  `CONFIGURATION_SERVICE_CONNECT_RATE_LIMIT_SOURCE_PERMIT_LIMIT` and
+  `CONFIGURATION_SERVICE_CONNECT_RATE_LIMIT_CLIENT_PERMIT_LIMIT`, or set
+  `CONFIGURATION_SERVICE_CONNECT_RATE_LIMIT_ENABLED=false`.
+
+Set these in the Docker Compose `.env` file (or the equivalent
+`IdentitySettings:BearerTokenPerClientLimit` and `ConnectRateLimit:*` settings)
+before you start or recreate the services, and restore the original values
+after the smoke test run. Don't relax these limits on a production
+Configuration Service; run smoke tests against a test deployment. See
+[Identity Provider](../configuration/identity-provider.md) for these settings.
+
+You also need an API client key and secret. For a local environment, the
+`Get-SmokeTestCredential` helper or the `-AddSmokeTestCredentials` bootstrap
+option creates them; see [Configure a Data
+Store](../../getting-started/configure-data-store.md).
 
 The following examples show common testing scenarios. The examples below assume
 that you have followed the Ed-Fi API [Getting
-Started](../../getting-started/docker-deployment.md) steps successfully.
+Started](../../getting-started/docker-deployment.md) steps successfully, and
+that `$smokeTest` holds the path to `EdFi.SmokeTest.Console.dll` from the
+installation step. The SDK examples also assume `$sdk` holds the SDK library
+described next.
+
+The SDK tests also need a compiled SDK library. The Ed-Fi API's own scripts use
+`EdFi.OdsApi.Sdk.dll` from the `EdFi.Suite3.OdsApi.TestSdk.Standard.5.2.0`
+package (version `7.3.10132`); an `EdFi.Suite3.OdsApi.TestSdk.Standard.6.1.0`
+package is also published for Data Standard 6.1. Both are on the Ed-Fi
+pre-release feed
+(`https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json`).
+To download one, run the installation script with these changes:
+
+- Set `$feed` to the pre-release feed URL above.
+- Set `$id = "edfi.suite3.odsapi.testsdk.standard.5.2.0"` and
+  `$version = "7.3.10132"`. For a Data Standard 6.1 deployment, use
+  `$id = "edfi.suite3.odsapi.testsdk.standard.6.1.0"` instead.
+- Replace the last line with
+  `$sdk = Get-ChildItem $id -Recurse -Filter EdFi.OdsApi.Sdk.dll | Select-Object -First 1`;
+  the DLL isn't under `tools/`.
 
 ### API tests
 
 ```powershell
-EdFi.SmokeTest.Console.exe -k {yourKey} -s {yourSecret} `
-  -b "http://localhost:8080/api" --oauthurl "http://localhost:8081/connect/token" `
+dotnet $smokeTest -k {yourKey} -s {yourSecret} `
+  -b "http://localhost:8080/api" -o "http://localhost:8080/api/oauth/token" `
   -t NonDestructiveApi
 ```
 
 ### Non-destructive SDK tests
 
 ```powershell
-EdFi.SmokeTest.Console.exe -k {yourKey} -s {yourSecret} `
-  -b "http://localhost:8080/api" --oauthurl "http://localhost:8081/connect/token" `
-  -t NonDestructiveSdk -l "..\..\..\..\EdFi.LoadTools.Test\bin\Debug\net10.0\EdFi.OdsApi.Sdk.dll"
+dotnet $smokeTest -k {yourKey} -s {yourSecret} `
+  -b "http://localhost:8080/api" -o "http://localhost:8080/api/oauth/token" `
+  -t NonDestructiveSdk -l $sdk.FullName
 ```
 
 ### Destructive SDK tests
 
 ```powershell
-EdFi.SmokeTest.Console.exe -k {yourKey} -s {yourSecret} `
-  -b "http://localhost:8080/api" --oauthurl "http://localhost:8081/connect/token" `
-  -t DestructiveSdk -l "..\..\..\..\EdFi.LoadTools.Test\bin\Debug\net10.0\EdFi.OdsApi.Sdk.dll"
+dotnet $smokeTest -k {yourKey} -s {yourSecret} `
+  -b "http://localhost:8080/api" -o "http://localhost:8080/api/oauth/token" `
+  -t DestructiveSdk -l $sdk.FullName
 ```
 
 :::caution
@@ -174,7 +230,8 @@ access to the configured Education Organizations.
 In Ed-Fi API v8, authorization configuration is managed through the
 Configuration Service rather than direct database SQL. Use the Configuration
 Service API to associate the API client with the required Education Organization
-Ids (`100000` and `200000` by default).
+Ids (`100000`, `200000`, and `300000` by default). The `Get-SmokeTestCredential`
+helper includes these Ids by default.
 
 :::
 

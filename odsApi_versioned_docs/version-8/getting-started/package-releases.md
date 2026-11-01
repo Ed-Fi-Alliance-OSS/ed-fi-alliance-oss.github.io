@@ -49,7 +49,7 @@ details.
 | Package | Purpose | Location |
 | --- | --- | --- |
 | EdFi.Api.Plugins | Plugin contract for Ed-Fi API and Configuration Service plugins | [EdFi.Api.Plugins 1.1.0](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.Api.Plugins/overview/1.1.0) |
-| EdFi.Api.CustomValidation | Contract for custom validator plugins | [EdFi.Api.CustomValidation 1.0.0](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.Api.CustomValidation/overview/1.0.0) |
+| EdFi.Api.CustomValidation | Contract for unique ID validation plugins | [EdFi.Api.CustomValidation 1.0.0](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.Api.CustomValidation/overview/1.0.0) |
 | EdFi.Api.Identity | Contract for identity system plugins used by the Identities API | [EdFi.Api.Identity 1.0.0](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.Api.Identity/overview/1.0.0) |
 | EdFi.Api.Secrets | Contract for secrets plugins used to resolve connection string secrets | [EdFi.Api.Secrets 1.0.0](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.Api.Secrets/overview/1.0.0) |
 
