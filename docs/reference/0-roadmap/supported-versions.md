@@ -12,13 +12,17 @@ As of the last verified date, these products and versions are fully supported:
 
 - Ed-Fi Data Standard 5.x and 6.x
 - Ed-Fi ODS/API 7.3.x
-- Ed-Fi API 8.0
+- Ed-Fi API 8.0 (pilot / parallel use; 8.1 is planned for November 2026)
 - Ed-Fi ODS Admin API 2.4
 - Ed-Fi Admin App 4.1
 - API Publisher (latest version)
 
 Every other version listed below is in maintenance mode, out of support, or not
 yet released.
+
+To choose between the Ed-Fi ODS/API and Ed-Fi API v8 for a new implementation,
+see [Should a new Ed-Fi implementation use ODS/API 7.x or Ed-Fi API
+v8?](./api-faq.md#q-should-a-new-ed-fi-implementation-use-odsapi-7x-or-ed-fi-api-v8).
 
 ## Status Definitions
 
@@ -35,6 +39,10 @@ Each table below has a _Status_ column. It uses the support levels defined in
   product or version of a product is
   out-of-support?](./notifications/readme.mdx#what-changes-when-a-product-or-version-of-a-product-is-out-of-support)
 - _Upcoming_: announced, but not yet released.
+
+To choose between the Ed-Fi ODS/API and Ed-Fi API v8 for a new implementation,
+see [Should a new Ed-Fi implementation use ODS/API 7.x or Ed-Fi API
+v8?](./api-faq.md#q-should-a-new-ed-fi-implementation-use-odsapi-7x-or-ed-fi-api-v8).
 
 Version numbers are sometimes given like 1.2.x below. This indicates that the
 software may receive bug and security fixes from time to time, and the latest
@@ -81,7 +89,7 @@ a production deployment of the Ed-Fi Resources API. The Platform includes:
 
 :::tip
 
-The Ed-Fi ODS/API application is being phased out with 2028-2029 as the final planned year of support. It will be replaced by the [Ed-Fi API](#ed-fi-api).
+The Ed-Fi ODS/API application is being phased out with 2028-2029 as the final planned year of support. It will be replaced by the [Ed-Fi API](#ed-fi-api). New implementations should plan on Ed-Fi API v8; see [Should a new Ed-Fi implementation use ODS/API 7.x or Ed-Fi API v8?](./api-faq.md#q-should-a-new-ed-fi-implementation-use-odsapi-7x-or-ed-fi-api-v8).
 
 :::
 
@@ -158,9 +166,11 @@ and the Docker 2.2.x release that supported ODS/API 6.0 and Admin App 3.0.
 
 ## Ed-Fi API
 
-This is the future replacement for the Ed-Fi ODS/API. See
-[Ed-Fi ODS/API and Ed-Fi API v8 FAQ](./api-faq.md) for more
-information.
+Ed-Fi API v8 is the long-term replacement for the Ed-Fi ODS/API. Once 8.1 is
+available, it is the recommended release for all new implementations, including
+pilots, and teams running 8.0 should plan to upgrade to 8.1. See [Should a new
+Ed-Fi implementation use ODS/API 7.x or Ed-Fi API v8?](./api-faq.md#q-should-a-new-ed-fi-implementation-use-odsapi-7x-or-ed-fi-api-v8) and the [Ed-Fi
+ODS/API and Ed-Fi API v8 FAQ](./api-faq.md) for more information.
 
 | Version                       | Status          | Timeline                                               | Data Standard(s) |
 | ----------------------------- | --------------- | ------------------------------------------------------ | ---------------- |
