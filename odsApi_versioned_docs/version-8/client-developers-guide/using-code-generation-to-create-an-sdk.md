@@ -105,10 +105,40 @@ named **EdFi.OdsApi.Sdk.sln** will be created with the SDK artifacts.
 
 ## Step 4. Use the SDK in a Sample C# Program
 
+:::note
+
+Download the sample: [Sample Console Application
+project](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/tree/v7.3.2/Examples/Using%20the%20ODS%20API%20SDK).
+
+:::
+
+:::warning
+
+The sample project was written for ODS/API v7.3 and doesn't work as-is with
+Ed-Fi API v8. After you download it in step 2 below, edit it as follows:
+
+- In `EdFi.OdsApi.SdkClient.csproj`, give the `CommandLineParser` package
+  reference a version:
+  `<PackageReference Include="CommandLineParser" Version="2.9.1" />`. The
+  sample's original repository sets that version centrally, so the version is
+  missing once you copy the project into your solution.
+- In `Program.cs`, change the `HttpClient` `BaseAddress` from `{url}/data/v3`
+  to `{url}/data`. If your host uses tenant or route qualifier segments,
+  include them before `/data` (see [API Routes](./api-routes.md)).
+- Replace the `EdFi.OdsApi.Sdk.Apis.All` and `EdFi.OdsApi.Sdk.Models.All`
+  imports with the namespaces generated in Step 3, such as
+  `EdFi.OdsApi.Sdk.Api.Resources` and `EdFi.OdsApi.Sdk.Models.Resources`.
+- `EdFiTools/Authentication/TokenRetriever.cs` requests a token from
+  `{url}/oauth/token`, which the Ed-Fi API serves when `--url` is the API base
+  URL (for example, `http://localhost:8080/api`). If your host gives you a
+  different token URL, point the token request at that URL instead.
+
+:::
+
 1. **Open** the generated EdFi.OdsApi.Sdk.sln in Visual Studio.
-2. **Download** the sample Console Application project and place it in your
-   solution directory. The download link is in the note at the bottom of this
-   page.
+2. **Download** the sample Console Application project from the link in the
+   note above, place it in your solution directory, and make the edits listed
+   in the warning above.
 3. In the **Solution Explorer**, **right-click** on the solution and add a
    reference to the sample project that you downloaded in the previous step.
 4. **Right-click** on **EdFi.OdsApi.SdkClient** > **Set as Startup Project**.
@@ -156,28 +186,3 @@ If you're working with a specific platform host, a great next step is to use
 these same techniques to generate an SDK for that deployment. If the platform
 host has extended the data model, your new code will automatically include those
 structures in the data access components in the generated code.
-
-:::note
-
-[Sample Console Application
-project](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/tree/v7.3.2/Examples/Using%20the%20ODS%20API%20SDK).
-
-:::
-
-:::warning
-
-The sample project was written for ODS/API v7.3 and doesn't work as-is with
-Ed-Fi API v8. Before running it, edit it as follows:
-
-- In `Program.cs`, change the `HttpClient` `BaseAddress` from `{url}/data/v3`
-  to `{url}/data`. If your host uses tenant or route qualifier segments,
-  include them before `/data` (see [API Routes](./api-routes.md)).
-- Replace the `EdFi.OdsApi.Sdk.Apis.All` and `EdFi.OdsApi.Sdk.Models.All`
-  imports with the namespaces generated in Step 3, such as
-  `EdFi.OdsApi.Sdk.Api.Resources` and `EdFi.OdsApi.Sdk.Models.Resources`.
-- `EdFiTools/Authentication/TokenRetriever.cs` requests a token from
-  `{url}/oauth/token`, which the Ed-Fi API serves when `--url` is the API base
-  URL (for example, `http://localhost:8080/api`). If your host gives you a
-  different token URL, point the token request at that URL instead.
-
-:::

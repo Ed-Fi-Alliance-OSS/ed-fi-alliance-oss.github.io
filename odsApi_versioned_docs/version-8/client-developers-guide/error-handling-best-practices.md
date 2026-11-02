@@ -42,11 +42,19 @@ client read it, the API returns `412 Precondition Failed`. Rather than resending
 the same request, GET the resource again, reapply the change, and send the
 request with the resource's new `_etag` value in the `If-Match` header.
 
-The API also returns `412 Precondition Failed` when a request sends `If-Match`
-for a resource that does not exist. In that case, don't retry with `If-Match`:
-create the resource first, or send the request without `If-Match`. See [412
-Precondition Failed](./error-response-knowledge-base.md#412-precondition-failed)
-for details.
+A request that sends `If-Match` for a resource that does not exist fails as
+follows:
+
+- A POST with any `If-Match` value returns `412 Precondition Failed` when its
+  natural key doesn't match an existing resource. To create the resource, send
+  the POST without `If-Match`.
+- A PUT or DELETE with `If-Match: *` returns `412 Precondition Failed`. With a
+  specific ETag value, or without `If-Match`, it returns `404 Not Found`
+  instead. A PUT never creates a resource, so retrying it without `If-Match`
+  still returns `404`; use POST to create the resource.
+
+See [412 Precondition
+Failed](./error-response-knowledge-base.md#412-precondition-failed) for details.
 
 ## Blind Error Message Resending
 
