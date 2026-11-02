@@ -7,19 +7,18 @@ access the platform. Authentication in an Ed-Fi API is handled using two-legged
 Flow](https://tools.ietf.org/html/rfc6749#section-4.4).
 
 Before accessing the resources in an Ed-Fi API platform, client applications
-need to obtain an access token from the Configuration Service. This access
-token is validated on every call made to the API as a representation of the
-client's application key and secret. This document briefly outlines the steps
-involved.
+need to obtain an access token. This access token is validated on every call
+made to the API as a representation of the client's application key and secret.
+This document briefly outlines the steps involved.
 
 :::info
 
-In Ed-Fi API v8, OAuth tokens are issued by the **Configuration Service**
-(default port 8081) at its `/connect/token` endpoint. For compatibility, the
-Ed-Fi API also exposes an `/oauth/token` endpoint that forwards token requests
-to the Configuration Service, so existing clients calling `/oauth/token`
-continue to work. New clients should call the Configuration Service's
-`/connect/token` endpoint directly.
+Request tokens from the token URL your API host gives you. If you don't have
+one, request the API's discovery document at your full base URL (including any
+tenant and route qualifier segments) and use its `oauth` URL, typically
+`{base}/oauth/token`. Some hosts also expose the Configuration Service's
+`/connect/token` endpoint, which issues the tokens behind the scenes. The Ed-Fi
+API accepts tokens from either endpoint.
 
 :::
 
@@ -45,11 +44,12 @@ Compiled executables for a variety of platforms can be downloaded from the
 
 ### Step 1. Obtain an Access Token
 
-POST to the Configuration Service's `/connect/token` endpoint with an
-Authorization header using Basic authentication. Set the `grant_type` to
-`client_credentials` in the `application/x-www-form-urlencoded` request body.
-This follows the [OAuth 2.0 Client Credentials Grant
-Flow](https://tools.ietf.org/html/rfc6749#section-4.4).
+POST to the token endpoint with an Authorization header using Basic
+authentication. Set the `grant_type` to `client_credentials` in the
+`application/x-www-form-urlencoded` request body. This follows the [OAuth 2.0
+Client Credentials Grant Flow](https://tools.ietf.org/html/rfc6749#section-4.4).
+The examples below use the Ed-Fi API's `/oauth/token` endpoint on a
+deployment at `http://localhost:8080/api`; substitute your host's token URL.
 
 For example, if the client key is `RvcohKz9zHI4` and the client secret is
 `E1iEFusaNf81xzCxwHfbolkC`:
@@ -60,7 +60,7 @@ For example, if the client key is `RvcohKz9zHI4` and the client secret is
 $key = "RvcohKz9zHI4"
 $secret = "E1iEFusaNf81xzCxwHfbolkC"
 $auth = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes("$($key):$secret"))
-$token = Invoke-RestMethod -Method Post -Uri "http://localhost:8081/connect/token" `
+$token = Invoke-RestMethod -Method Post -Uri "http://localhost:8080/api/oauth/token" `
   -Headers @{ "Authorization" = "Basic $auth" } `
   -ContentType "application/x-www-form-urlencoded" `
   -Body @{
@@ -68,24 +68,30 @@ $token = Invoke-RestMethod -Method Post -Uri "http://localhost:8081/connect/toke
   }
 ```
 
-:::tip
-
-Alternatively, an implementation _may_ provide the credentials in the form
-body instead of in an Authorization header. The Ed-Fi software will not
-write that form body out to a log file, but a network router or proxy server
-might do so. Therefore the `Authorization` header approach is considered
-more secure by default.
-
-:::
-
 #### cURL Token Request
 
 ```bash
-curl -X POST http://localhost:8081/connect/token \
-  -H "Authorization: Basic cG9wdWxhdGVkS2V5OnBvcHVsYXRlZFNlY3JldA==" \
+curl -X POST http://localhost:8080/api/oauth/token \
+  -u "RvcohKz9zHI4:E1iEFusaNf81xzCxwHfbolkC" \
   -H "Content-Type: application/x-www-form-urlencoded" \
   -d "grant_type=client_credentials"
 ```
+
+:::tip
+
+Alternatively, an implementation _may_ provide the credentials in the form
+body, as `client_id` and `client_secret`, instead of in an Authorization
+header. The Ed-Fi software will not write that form body out to a log file,
+but a network router or proxy server might do so. Therefore the
+`Authorization` header approach is considered more secure by default.
+
+Don't send credentials both ways in one request: the Ed-Fi API's
+`/oauth/token` rejects that with `400` `invalid_request`, and the
+Configuration Service's `/connect/token` uses the Basic credentials. The Ed-Fi
+API's `/oauth/token` also accepts the body parameters as JSON
+(`application/json`).
+
+:::
 
 The above should return an access token.
 
@@ -103,7 +109,28 @@ a different access token.
 In the OAuth2 Client Credentials Grant Flow, the host issues an access token
 and the amount of time in seconds until the token expires. The token will
 expire at the end of that allotted time and a new token will have to be
-obtained.
+obtained. The default lifetime is 1800 seconds (30 minutes), but hosts can
+change it, so rely on `expires_in` rather than a fixed value. When the client
+has been granted scopes, the response also includes a `scope` value.
+
+:::warning
+
+Reuse each access token until it expires. Hosts using the self-contained
+identity provider limit how many active tokens a client can hold (15 by
+default). Once a client reaches the limit, token requests fail until existing
+tokens expire. The response is HTTP 429, with the `error`
+`temporarily_unavailable` and an `error_description` saying too many access
+tokens have been requested. Request rate limiting can also return a 429 with
+the same `error`, so use the `error_description` to tell them apart.
+See [Identity Provider](../platform-dev-guide/configuration/identity-provider.md)
+for the host settings.
+
+:::
+
+Token request failures use the OAuth error format: read the `error` and
+`error_description` fields at the root of the JSON response. A `401` response
+from the Ed-Fi API's `/oauth/token` also carries a `WWW-Authenticate: Basic`
+header.
 
 ### Step 2. Use the Access Token
 

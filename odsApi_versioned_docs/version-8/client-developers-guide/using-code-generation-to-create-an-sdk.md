@@ -59,9 +59,10 @@ at [https://github.com/OpenAPITools/openapi-generator](https://github.com/OpenAP
 
 To generate SDK source files, navigate to the folder containing
 openApi-codegen-cli.jar and run the following commands in PowerShell 3.0+. The
-Ed-Fi API publishes two specification documents — the resources specification
-(which includes core and extension resources) and the descriptors specification
-— so the SDK is generated from each in turn, into segregated namespaces:
+Ed-Fi API publishes two core specification documents — the resources
+specification (which includes core and extension resources) and the descriptors
+specification — so the SDK is generated from each in turn, into segregated
+namespaces:
 
 ### Resources (core and extensions)
 
@@ -83,18 +84,64 @@ java -jar openApi-codegen-cli.jar generate -g csharp `
   --global-property modelTests=false --global-property apiTests=false --skip-validate-spec
 ```
 
+### Profiles and Change Queries
+
+The resources and descriptors specifications describe the full API surface. If
+your API client is assigned an [API
+profile](./authorization.md#api-client-profiles), generate from that profile's
+specification instead, so that the SDK uses the profile's content types and
+constrained models:
+
+`http://localhost:8080/api/metadata/specifications/profiles/{profileName}/resources-spec.json`
+
+To call the Change Queries API (for example,
+`/changeQueries/v1/availableChangeVersions`), generate from its specification
+at `http://localhost:8080/api/metadata/changequeries/v1/swagger.json`. The
+`/metadata/specifications` listing includes the profile and Change Queries
+specifications that are available on your host.
+
 Wait for the OpenAPI CodeGen to finish generating code. A Visual Studio Solution
 named **EdFi.OdsApi.Sdk.sln** will be created with the SDK artifacts.
 
 ## Step 4. Use the SDK in a Sample C# Program
 
+:::note
+
+Download the sample: [Sample Console Application
+project](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/tree/v7.3.2/Examples/Using%20the%20ODS%20API%20SDK).
+
+:::
+
+:::warning
+
+The sample project was written for ODS/API v7.3 and doesn't work as-is with
+Ed-Fi API v8. After you download it in step 2 below, edit it as follows:
+
+- In `EdFi.OdsApi.SdkClient.csproj`, give the `CommandLineParser` package
+  reference a version:
+  `<PackageReference Include="CommandLineParser" Version="2.9.1" />`. The
+  sample's original repository sets that version centrally, so the version is
+  missing once you copy the project into your solution.
+- In `Program.cs`, change the `HttpClient` `BaseAddress` from `{url}/data/v3`
+  to `{url}/data`. If your host uses tenant or route qualifier segments,
+  include them before `/data` (see [API Routes](./api-routes.md)).
+- Replace the `EdFi.OdsApi.Sdk.Apis.All` and `EdFi.OdsApi.Sdk.Models.All`
+  imports with the namespaces generated in Step 3, such as
+  `EdFi.OdsApi.Sdk.Api.Resources` and `EdFi.OdsApi.Sdk.Models.Resources`.
+- `EdFiTools/Authentication/TokenRetriever.cs` requests a token from
+  `{url}/oauth/token`, which the Ed-Fi API serves when `--url` is the API base
+  URL (for example, `http://localhost:8080/api`). If your host gives you a
+  different token URL, point the token request at that URL instead.
+
+:::
+
 1. **Open** the generated EdFi.OdsApi.Sdk.sln in Visual Studio.
-2. **Download** the sample Console Application project and place it in your
-   solution directory. The download link is in the note at the bottom of this
-   page.
+2. **Download** the sample Console Application project from the link in the
+   note above, place it in your solution directory, and make the edits listed
+   in the warning above.
 3. In the **Solution Explorer**, **right-click** on the solution and add a
    reference to the sample project that you downloaded in the previous step.
-4. **Right-click** on **Edfi.OdsApi.SdkClient** > **Set as Startup Project**.
+4. **Right-click** on **EdFi.OdsApi.SdkClient** > **Set as Startup Project**.
 5. **Right-click EdFi.OdsApi.SdkClient Dependencies node** and click **Add
    Project Reference**.
 6. In the **Add Reference** > **Projects** tab, select **EdFi.OdsApi.Sdk**, and
@@ -139,14 +186,3 @@ If you're working with a specific platform host, a great next step is to use
 these same techniques to generate an SDK for that deployment. If the platform
 host has extended the data model, your new code will automatically include those
 structures in the data access components in the generated code.
-
-:::note
-
-[Sample Console Application
-project](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation/tree/v7.3/Examples/Using%20the%20ODS%20API%20SDK).
-
-Note: the sample project targets ODS/API v7.3. Adapt the base URL
-(`http://localhost:8080/api`) and the token endpoint (`http://localhost:8081/connect/token`)
-for Ed-Fi API v8.
-
-:::

@@ -67,8 +67,7 @@ constructed from a number of course-related entities in the Ed-Fi UDM.
 
 | Domain Aggregate/Resource | Entities |
 | --- | --- |
-| Course | Course |
-| CourseAcademicSubject | CourseCompetencyLevel<br />CourseIdentificationCode<br />CourseLearningStandard<br />CourseLevelCharacteristic<br />CourseOfferedGradeLevel |
+| Course | Course<br />CourseAcademicSubject<br />CourseCompetencyLevel<br />CourseIdentificationCode<br />CourseLearningStandard<br />CourseLevelCharacteristic<br />CourseOfferedGradeLevel |
 
 When a domain aggregate is constructed from related entities and associations,
 the API applies name shortening to remove redundancy in the property names by
@@ -77,7 +76,9 @@ collection properties as defined in the data model. This rule is applied to the
 embedded object and collection properties and not to scalar properties. While
 this removes unnecessary redundancy from the JSON object names, this can result
 in property names in the API differing from those in the [Data
-Handbook](https://edfidocs.blob.core.windows.net/$web/handbook/v6.1/index.html).
+Handbook](https://edfidocs.blob.core.windows.net/$web/handbook/v5.2/index.html).
+The Ed-Fi API uses Data Standard 5.2 by default; a platform host can configure
+a different supported Data Standard version, such as 6.1.
 
 ### Examples of name shortening
 
@@ -108,26 +109,36 @@ How do clients exchange information with the API? What format is used?
 
 The API supports transactional data loading scenarios, so client applications
 can stay connected in near real-time. The API uses JSON for real-time and
-transactional data exchange. There are also utilities that can aid in uploading
-data in batch mode via the API (e.g., [Bulk Load Client
+transactional data exchange. For loading data in batch mode via the API, the
+[Bulk Load Client
 Utility](../platform-dev-guide/utilities/bulk-load-client-utility.md) can be
-used to bulk load XML data and [Data Import](/getting-started/community-tools/technology/data-import) can be used
-to bulk load CSV data).
+used to bulk load XML data.
 
 The Ed-Fi API supports the following HTTP verbs:
 
-- **POST** An HTTP POST creates an individual resource. If successful, the URI
-  to the new resource is returned in the "Location" HTTP header of the response.
-  Performing a POST with identical [natural
-  keys](../technical-articles/relational-data-model.md) to a resource already
-  in the data store performs an update rather than creates a new resource.
-- **GET** An HTTP GET returns existing resources. Providing the [natural
-  key](../technical-articles/relational-data-model.md) or internal UUID on the
-  URL specifies an individual resource, while omitting the natural keys and UUID
-  retrieves the complete set of resources of the given type.
+- **POST** An HTTP POST creates an individual resource. If successful, the API
+  returns `201 Created`, with the URI to the new resource in the "Location"
+  HTTP header and the resource version in the "ETag" header. Performing a POST
+  with identical [natural keys](/getting-started/provider-playbook/implementation/ed-fi-api-fundamentals/resource-ids-and-natural-keys)
+  to a resource already in the data store updates that resource instead of
+  creating a new one, and returns `200 OK` with the same headers. Such a POST
+  is authorized as an update, so the client needs permission to update the
+  resource, not just to create it.
+- **GET** An HTTP GET returns existing resources. Providing the resource ID
+  (UUID) in the path, as in `…/ed-fi/students/{id}`, returns that single
+  resource. A GET on the collection returns an array of resources, which you
+  can filter with query parameters such as the [natural
+  key](/getting-started/provider-playbook/implementation/ed-fi-api-fundamentals/resource-ids-and-natural-keys)
+  values. A query on the full natural key still returns an array, with at most
+  one item. Collection results are returned a page at a time, whether or not
+  you filter them.
 - **PUT** An HTTP PUT performs an idempotent update of an existing resource. PUT
   performs a full replacement of the existing resource with the supplied value.
-- **DELETE** An HTTP DELETE deletes an existing individual resource.
+  If successful, the API returns `204 No Content`.
+- **DELETE** An HTTP DELETE deletes an existing individual resource. If
+  successful, the API returns `204 No Content`. The API returns `404 Not Found`
+  if the resource does not exist, and `409 Conflict` if other resources still
+  reference it.
 
 ### JSON Member Order
 
@@ -145,6 +156,14 @@ example, a `StudentSchoolAssociation` requires the `Student` and the `School`
 to be loaded first. See [Resource Dependency
 Order](./resource-dependency-order/readme.mdx) for the order in which to load
 resources.
+
+### JSON Property Names
+
+Property names are case-sensitive and must match the names in the API
+definition exactly. If a property name isn't recognized, including one with the
+wrong capitalization, the API doesn't reject the request. It drops the property
+and ignores its value. If that property was required, the request then fails
+with `400 Bad Request` because the required property is missing.
 
 ## Security
 
