@@ -6,46 +6,30 @@ for each resource as well as a simple way to test calls to the API.
 
 :::info
 
-Swagger UI is an optional service in the Ed-Fi API v8 deployment. It must be
-started explicitly using the `-EnableSwaggerUI` flag:
-
-```powershell
-./bootstrap-local-dms.ps1 -EnableSwaggerUI
-```
-
-Once running, the Swagger UI is available at `http://localhost:8082`.
+Swagger UI is an optional service that your API host may provide. Ask your
+host for its URL. A local Docker deployment of the Ed-Fi API serves it at
+`http://localhost:8082` when it is enabled.
 
 :::
 
 ## Gaining Access to the Documentation
 
-Before using the Swagger UI, you must obtain an access token from the
-Configuration Service and authorize the Swagger session with it. See
-[Authentication](./authentication.md) for the full token acquisition flow. In
-brief:
+The OpenAPI specifications declare a single OAuth 2.0 client credentials
+security scheme whose token URL is the Ed-Fi API's `/oauth/token` endpoint, so
+Swagger UI can request a token for you. See
+[Authentication](./authentication.md) for details on the token flow.
 
-```powershell
-$response = Invoke-RestMethod -Method Post `
-  -Uri "http://localhost:8081/connect/token" `
-  -ContentType "application/x-www-form-urlencoded" `
-  -Body @{
-    client_id     = "your_key"
-    client_secret = "your_secret"
-    grant_type    = "client_credentials"
-  }
-$response.access_token
-```
-
-Once you have the token, click the **Authorize** button in the Swagger UI.
+Click the **Authorize** button in the Swagger UI.
 
 ![Authorize button](/img/reference/ods-api/image2018-5-31_22-59-59.png)
 
 **Figure 1.** Authorize button
 
-In the authorization dialog, enter the token value in the `bearerAuth` field and
-click **Authorize**.
+In the authorization dialog, enter your client key as `client_id` and your
+client secret as `client_secret`, then click **Authorize**. Swagger UI requests
+an access token from the token URL.
 
-![Swagger authorization dialog showing auto-filled values](/img/reference/ods-api/image2018-5-31_23-0-52.png)
+![Swagger authorization dialog](/img/reference/ods-api/image2018-5-31_23-0-52.png)
 
 **Figure 2.** Swagger authorization dialog
 
@@ -54,9 +38,12 @@ your behalf.
 
 ## Browsing All Resources
 
-Resources are categorized into sections in the Swagger UI for easier browsing.
-The main sections are **Resources** and **Descriptors**. If the API host has
-configured profiles, a **Profiles** section will also appear.
+Resources are categorized into separate specifications in the Swagger UI for
+easier browsing. Use the definition selector at the top of the page to switch
+between them. The main specifications are **Resources** and **Descriptors**. The
+selector can also list **Change-Queries** and, if the host has enabled identity
+management, **Identity**. If the API host has configured profiles, each profile
+appears as its own specification.
 
 The resources exposed are representative of entities from the [Ed-Fi Data
 Standard](/reference/data-exchange/data-standard), sharing names, organization,
@@ -80,9 +67,9 @@ Standard.
 ### Profiles
 
 If the API platform host has configured API profiles, you will see them listed
-alongside the other sections. Profiles restrict access to properties of a
-resource — properties may be read-write, read-only, or hidden for certain client
-applications.
+in the definition selector alongside the other specifications. Profiles restrict
+access to properties of a resource — properties may be read-write, read-only, or
+hidden for certain client applications.
 
 For example, an assessment system might have read-only access to students and
 read-write access to other information in the assessment domain.

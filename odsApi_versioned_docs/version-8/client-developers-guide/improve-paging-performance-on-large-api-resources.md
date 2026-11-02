@@ -10,14 +10,16 @@ Paging](./improve-paging-performance-cursor-paging.md).
 
 ## Introduction
 
-The Ed-Fi API uses Offset Paging (through the `offset` and `limit` query
-string parameters on API requests). However, this approach is known to suffer
-from increasingly poor database performance as the underlying data set gets
-larger. This article describes a mechanism you can use through the API to engage
-a technique known as "Keyset Paging" to improve the execution plan used by the
-database during paging. While this may not be the most optimal solution for all
-implementations, it may provide improved API paging performance on large
-datasets by utilizing artifacts from the existing change query feature.
+The Ed-Fi API supports Offset Paging (through the `offset` and `limit` query
+string parameters on API requests) and [cursor
+paging](./improve-paging-performance-cursor-paging.md) (through the `pageToken`
+and `pageSize` parameters). Offset Paging is known to suffer from increasingly
+poor database performance as the underlying data set gets larger. This article
+describes a mechanism you can use through the API to engage a technique known as
+"Keyset Paging" to improve the execution plan used by the database during
+paging. While this may not be the most optimal solution for all implementations,
+it may provide improved API paging performance on large datasets by utilizing
+artifacts from the existing change query feature.
 
 ## Standard API Paging (Offset Paging)
 
@@ -49,21 +51,20 @@ underlying database queries.
 Keyset Paging works by applying range-based criteria for column(s) with unique
 values that are also backed by an index. This enables the query optimizer to
 limit the amount of data being processed with the request using an index seek,
-and therefore limit the number of rows that are read. Fortunately, the Change
-Queries feature adds the ChangeVersion column along with an index to every
-resource's underlying database table, which happens to fit the requirements for
-using Keyset Paging. However, while the ChangeVersion column is suitable for
-Keyset paging, it is not the best candidate. The Change Version values are
-determined by a global shared sequence, and thus the value increases with every
-change made in the database. Also the distribution of records in a given table
-across an arbitrarily chosen range of Change Version values is not likely to be
-uniform.
+and therefore limit the number of rows that are read. Fortunately, to support
+Change Queries the API maintains an indexed change version for each resource,
+which happens to fit the requirements for using Keyset Paging. However, while
+the change version is suitable for Keyset paging, it is not the best candidate.
+The Change Version values are determined by a global shared sequence, and thus
+the value increases with every change made in the database. Also the
+distribution of records in a given resource across an arbitrarily chosen range
+of Change Version values is not likely to be uniform.
 
 :::
 
 The following steps illustrate how to use Change Queries to engage Keyset
 Paging. Since this example uses a sample dataset that is bulk loaded in
-resource dependency order, the records in each table are clustered closely
+resource dependency order, the records in each resource are clustered closely
 together (in terms of their Change Version values against the whole range of
 possible values). Due to the pattern of data load utilized, this example is not
 depicting the most optimal Keyset paging but can be used to understand the
@@ -76,7 +77,7 @@ the newest change version value from your source API by sending a GET request to
 the _availableChangeVersions_ resource:
 
 ```none
-GET <host>/api/changeQueries/v1/availableChangeVersions
+GET /api/changeQueries/v1/availableChangeVersions
 accept: application/json
 authorization: Bearer fghjklrftyuiofghjk
 
@@ -94,7 +95,7 @@ Send a request to the resource with the `totalCount=true` query string
 parameter and get the total item count from the `Total-Count` response header.
 
 ```none
-GET <host>/api/data/ed-fi/studentSectionAttendanceEvents?totalCount=true
+GET /api/data/ed-fi/studentSectionAttendanceEvents?totalCount=true&limit=0
 accept: application/json
 authorization: Bearer fghjklrftyuiofghjk
 
@@ -137,26 +138,40 @@ follows:
 
 | Partition | minChangeVersion | maxChangeVersion |
 | --------- | ---------------- | ---------------- |
-| 1         | 0                | 22464            |
-| 2         | 22465            | 49929            |
-| 3         | 49930            | 67393            |
-| 4         | 67394            | 89857            |
-| 5         | 89858            |                  |
+| 1         | 0                | 22463            |
+| 2         | 22464            | 44926            |
+| 3         | 44927            | 67390            |
+| 4         | 67391            | 89853            |
+| 5         | 89854            | 112317           |
 
-The range criteria for each partition can be added to the queries using the
-`minChangeVersion` and/or `maxChangeVersion` query string parameters.
+Add each partition's range to the queries with the `minChangeVersion` and
+`maxChangeVersion` query string parameters. Give every partition a
+`maxChangeVersion`, including the last one, which uses the
+`newestChangeVersion` from Step 1.
+
+Against live data, a request with no `maxChangeVersion` is paged in record
+order instead of change version order. It can't use the change version index
+efficiently, and records that change during the walk move into the last
+partition and shift its offsets.
+
+Even with an upper bound, a record updated during the walk gets a new change
+version and leaves its partition. That shifts the partition's offsets and can
+cause another, unchanged record to be skipped, which the next synchronization
+won't return. To avoid this, read from a snapshot (`Use-Snapshot: true`), where
+records don't change during the walk, or use [cursor
+paging](./improve-paging-performance-cursor-paging.md).
 
 ### Step 4 - Issue paged requests to retrieve all data from each partition
 
 For each partition, send requests with the appropriate `minChangeVersion`
-and/or `maxChangeVersion` parameters, along with the Offset Paging parameters
+and `maxChangeVersion` parameters, along with the Offset Paging parameters
 of `limit` and `offset` until all data in each partition has been retrieved.
 
-On the populated sample database, the Change Version value ranges defined above
+With a sample data set loaded, the Change Version value ranges defined above
 for partitions 1, 3, 4 and 5 actually return no items.
 
 ```none
-GET <host>/api/data/ed-fi/studentSectionAttendanceEvents?offset=0&limit=500&minChangeVersion=0&maxChangeVersion=22463
+GET /api/data/ed-fi/studentSectionAttendanceEvents?offset=0&limit=500&minChangeVersion=0&maxChangeVersion=22463
 accept: application/json
 authorization: Bearer fghjklrftyuiofghjk
 
@@ -167,17 +182,17 @@ authorization: Bearer fghjklrftyuiofghjk
 
 This is because the effectiveness of the technique is greatly influenced by the
 pattern of loading and/or usage by API clients on the underlying database. In
-this case, the populated sample database is loaded en-masse in resource
-dependency order, and thus the records in the StudentSectionAttendanceEvent
-table are not well distributed across the partition ranges we've calculated
-(they're clustered together with Change Version values that place them all in
-partition 2, as we've defined them).
+this case, the sample data set is loaded en-masse in resource dependency order,
+and thus the StudentSectionAttendanceEvent records are not well distributed
+across the partition ranges we've calculated (they're clustered together with
+Change Version values that place them all in partition 2, as we've defined
+them).
 
-The following image shows that data is returned for the first page of the second
-partition:
+The following request shows that data is returned for the first page of the
+second partition:
 
 ```none
-GET <host>/api/data/ed-fi/studentSectionAttendanceEvents?offset=0&limit=500&minChangeVersion=22464&maxChangeVersion=49929
+GET /api/data/ed-fi/studentSectionAttendanceEvents?offset=0&limit=500&minChangeVersion=22464&maxChangeVersion=44926
 accept: application/json
 authorization: Bearer fghjklrftyuiofghjk
 
@@ -199,39 +214,39 @@ So for this example, the following requests would be sent to the API:
 #### Partition 1 (0 items)
 
 ```text
-GET /api/data/ed-fi/studentSectionAttendanceEvents?offset=0&limit=500&maxChangeVersion=22464
+GET /api/data/ed-fi/studentSectionAttendanceEvents?offset=0&limit=500&minChangeVersion=0&maxChangeVersion=22463
 ```
 
 #### Partition 2 (4,332 items)
 
 ```text
-GET /api/data/ed-fi/studentSectionAttendanceEvents?offset=0&limit=500&minChangeVersion=22465&maxChangeVersion=49929
-GET /api/data/ed-fi/studentSectionAttendanceEvents?offset=500&limit=500&minChangeVersion=22465&maxChangeVersion=49929
-GET /api/data/ed-fi/studentSectionAttendanceEvents?offset=1000&limit=500&minChangeVersion=22465&maxChangeVersion=49929
-GET /api/data/ed-fi/studentSectionAttendanceEvents?offset=1500&limit=500&minChangeVersion=22465&maxChangeVersion=49929
-GET /api/data/ed-fi/studentSectionAttendanceEvents?offset=2000&limit=500&minChangeVersion=22465&maxChangeVersion=49929
-GET /api/data/ed-fi/studentSectionAttendanceEvents?offset=2500&limit=500&minChangeVersion=22465&maxChangeVersion=49929
-GET /api/data/ed-fi/studentSectionAttendanceEvents?offset=3000&limit=500&minChangeVersion=22465&maxChangeVersion=49929
-GET /api/data/ed-fi/studentSectionAttendanceEvents?offset=3500&limit=500&minChangeVersion=22465&maxChangeVersion=49929
-GET /api/data/ed-fi/studentSectionAttendanceEvents?offset=4000&limit=500&minChangeVersion=22465&maxChangeVersion=49929
+GET /api/data/ed-fi/studentSectionAttendanceEvents?offset=0&limit=500&minChangeVersion=22464&maxChangeVersion=44926
+GET /api/data/ed-fi/studentSectionAttendanceEvents?offset=500&limit=500&minChangeVersion=22464&maxChangeVersion=44926
+GET /api/data/ed-fi/studentSectionAttendanceEvents?offset=1000&limit=500&minChangeVersion=22464&maxChangeVersion=44926
+GET /api/data/ed-fi/studentSectionAttendanceEvents?offset=1500&limit=500&minChangeVersion=22464&maxChangeVersion=44926
+GET /api/data/ed-fi/studentSectionAttendanceEvents?offset=2000&limit=500&minChangeVersion=22464&maxChangeVersion=44926
+GET /api/data/ed-fi/studentSectionAttendanceEvents?offset=2500&limit=500&minChangeVersion=22464&maxChangeVersion=44926
+GET /api/data/ed-fi/studentSectionAttendanceEvents?offset=3000&limit=500&minChangeVersion=22464&maxChangeVersion=44926
+GET /api/data/ed-fi/studentSectionAttendanceEvents?offset=3500&limit=500&minChangeVersion=22464&maxChangeVersion=44926
+GET /api/data/ed-fi/studentSectionAttendanceEvents?offset=4000&limit=500&minChangeVersion=22464&maxChangeVersion=44926
 ```
 
 #### Partition 3 (0 items)
 
 ```text
-GET /api/data/ed-fi/studentSectionAttendanceEvents?offset=0&limit=500&minChangeVersion=49930&maxChangeVersion=67393
+GET /api/data/ed-fi/studentSectionAttendanceEvents?offset=0&limit=500&minChangeVersion=44927&maxChangeVersion=67390
 ```
 
 #### Partition 4 (0 items)
 
 ```text
-GET /api/data/ed-fi/studentSectionAttendanceEvents?offset=0&limit=500&minChangeVersion=67394&maxChangeVersion=89857
+GET /api/data/ed-fi/studentSectionAttendanceEvents?offset=0&limit=500&minChangeVersion=67391&maxChangeVersion=89853
 ```
 
 #### Partition 5 (0 items)
 
 ```text
-GET /api/data/ed-fi/studentSectionAttendanceEvents?offset=0&limit=500&minChangeVersion=89858
+GET /api/data/ed-fi/studentSectionAttendanceEvents?offset=0&limit=500&minChangeVersion=89854&maxChangeVersion=112317
 ```
 
 ## Conclusion
