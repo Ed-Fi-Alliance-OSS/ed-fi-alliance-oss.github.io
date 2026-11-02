@@ -98,7 +98,10 @@ documentation is useful in exploring the domain models.
 Ed-Fi API v8 stores each resource in its own set of dedicated relational tables
 using a tables-per-resource model. Tables are organized into a schema per
 project — for example, the `ed-fi` project maps to the `edfi` schema, giving
-tables such as `edfi.School` and `edfi.Student`.
+tables such as `edfi.School` and `edfi.Student`. Descriptors are the exception:
+all descriptors share one `dms.Descriptor` table rather than having tables of
+their own.
+
 The `api-schema-tools` CLI tool manages database provisioning — creating tables,
 indexes, and authorization structures for a given API schema version. The
 RESTful interface makes it easy for client systems to keep the data up to date
@@ -114,14 +117,15 @@ resources accessible from the API share the same naming conventions,
 definitions, and organization as the underlying tables. This makes it easy to
 understand where data is coming from and what it means.
 
-The API is secure. It uses HTTPS for communication, the OAuth 2 specification
-for authentication, and comes with a rich and customizable claim-set model so
-platform hosts have fine-grained control over which applications and users can
-see particular pieces of data. Ed-Fi API v8 includes a built-in
+The API is secure. It uses the OAuth 2 specification for authentication, and
+comes with a rich and customizable claim-set model so platform hosts have
+fine-grained control over which applications and users can see particular
+pieces of data. Ed-Fi API v8 includes a built-in
 [OpenIddict](https://openiddict.com/)-based identity provider hosted inside the
 Configuration Service — no external identity server is required for a standard
-deployment. See the [Security](./security/readme.md) section in this
-documentation for complete details.
+deployment. Deploy the services behind TLS (see
+[Fundamentals](./fundamentals.md)). See the [Security](./security/readme.md)
+section in this documentation for complete details.
 
 ## Technology Stack
 

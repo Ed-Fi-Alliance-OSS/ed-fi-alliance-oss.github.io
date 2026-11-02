@@ -201,8 +201,9 @@ Loaded](../../how-to-guides/how-to-create-and-manage-api-security-metadata.mdx#w
 including the effects on other claim sets and applications.
 
 `GET /management/current-claims` returns the loaded complete document, including
-the emitted `isSystemReserved: false` values. That provider document alone is
-not proof of the persisted catalog: existing reserved sets keep their stored
+the emitted `isSystemReserved: false` values. Like `upload-claims`, it returns
+404 unless unrestricted claims loading is enabled. That provider document alone
+is not proof of the persisted catalog: existing reserved sets keep their stored
 flags. Follow [Verifying the Active
 Policy](../../how-to-guides/how-to-create-and-manage-api-security-metadata.mdx#verifying-the-active-policy)
 to inspect the policy used by the Ed-Fi API.

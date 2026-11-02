@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-description: How to provision the Ed-Fi API v8.0 database schema with the api-schema-tools CLI.
+description: How to provision the Ed-Fi API database schema with the api-schema-tools CLI.
 ---
 
 # Database Provisioning
@@ -100,13 +100,19 @@ dotnet build src/dms/clis/EdFi.DataManagementService.SchemaTools
 
 `api-schema-tools` is a command-line tool that generates deterministic SQL from
 one or more `ApiSchema.json` inputs and, optionally, executes it against a
-database. It provides three commands:
+database. It provides these commands:
 
 | Command | Purpose |
 | --- | --- |
-| `hash` | Compute the effective schema hash (fingerprint) for a set of schemas |
+| `hash` | Compute the effective schema hash (the fingerprint; see [Schema Fingerprint Validation](#schema-fingerprint-validation)) for a set of schemas |
 | `ddl emit` | Generate DDL scripts and manifests to a directory (no database connection) |
 | `ddl provision` | Generate DDL **and** execute it against a target database |
+| `ddl re-stamp` | Update the stored schema fingerprint after a validated physical migration |
+| `cdc` | Manage change data capture (CDC) event streaming for a provisioned database |
+
+Add `--verbose` (`-v`) to `hash`, `ddl emit`, or `ddl provision` for
+debug-level logging. It also writes a daily `logs/api-schema-tools*.log` file
+under the current directory.
 
 The `--schema` inputs are the same `ApiSchema.json` files the Ed-Fi API loads at
 runtime: the core Ed-Fi Data Standard schema followed by any extension schemas
@@ -160,6 +166,29 @@ api-schema-tools ddl provision --schema <paths...> --connection-string <connstr>
 | `--create-database` | — | No | `false` | Create the target database if it does not already exist. |
 | `--timeout` | `-t` | No | `300` | DDL execution timeout, in seconds. |
 
+`ddl provision` also has options for the managed change data capture (CDC)
+workflow, which streams data changes to Kafka. If you don't use event
+streaming, leave them out. See [Event Streaming with
+Kafka](../features/event-streaming-kafka-cdc.md).
+
+:::warning
+
+On PostgreSQL, provisioning uses a locked-down `NOLOGIN` role,
+`edfi_dms_enqueue_owner`; it's not a login the Ed-Fi API uses at runtime. If
+the role doesn't exist yet, provisioning creates it, so the login in the
+connection string must be `SUPERUSER` or have `CREATEROLE`. If the role
+already exists, a login that isn't `SUPERUSER` needs a direct membership in
+it instead:
+
+```sql
+GRANT edfi_dms_enqueue_owner TO <login> WITH SET TRUE, INHERIT FALSE, ADMIN FALSE;
+```
+
+Otherwise provisioning stops before it creates any schema objects, and the
+error names the missing capability.
+
+:::
+
 **PostgreSQL:**
 
 ```powershell
@@ -199,6 +228,9 @@ RCSI is recommended for the Ed-Fi API workload.
 
 :::
 
+Provisioning also creates the document cache tables, even if you don't enable
+the [document cache](../features/document-cache.md).
+
 ### Previewing DDL without a database (`ddl emit`)
 
 To review the generated SQL before applying it — for example, to check it into
@@ -210,12 +242,109 @@ database:
 api-schema-tools ddl emit --schema core/ApiSchema.json --output ./ddl-output
 ```
 
-The `--dialect` option defaults to `both`, producing `pgsql.sql` and
-`mssql.sql`. Pass `--dialect pgsql` or `--dialect mssql` to generate only one.
-The output also includes a relational-model manifest per dialect and an
-`effective-schema.manifest.json` describing the schema fingerprint. For a fixed
-set of schema inputs, dialect, and mapping version, the output is byte-for-byte
-identical across runs.
+| Option | Short | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `--schema` | `-s` | Yes | — | `ApiSchema.json` path(s). The first is core; the rest are extensions. |
+| `--output` | `-o` | Yes | — | Output directory. It must be new or empty; `ddl emit` fails rather than mix new files with old ones. |
+| `--dialect` | `-d` | No | `both` | SQL dialect: `pgsql`, `mssql`, or `both`. |
+| `--ddl-manifest` | — | No | `false` | Also write `ddl.manifest.json`, a diagnostic summary with the SHA-256 hash and statement count of the SQL for each dialect. |
+
+With the default `--dialect both`, the output contains `pgsql.sql` and
+`mssql.sql`. The output also includes a relational-model manifest per dialect
+(`relational-model.<dialect>.manifest.json`) and an
+`effective-schema.manifest.json` describing the schema fingerprint. The SQL
+scripts don't include a transaction wrapper; if you apply them yourself, add
+one. For a fixed set of schema inputs, dialect, and mapping version, the output
+is byte-for-byte identical across runs.
+
+### Recording a validated migration (`ddl re-stamp`)
+
+You rarely need `ddl re-stamp`. Use it only when a release's upgrade
+instructions tell you to migrate an existing database in place; otherwise
+provision a fresh database (see [Upgrading the Schema](#upgrading-the-schema)).
+
+`ddl re-stamp` updates the fingerprint stored in `dms.EffectiveSchema` after you
+have migrated an existing database's physical schema yourself and validated the
+result. It doesn't run any migration DDL.
+
+:::danger
+
+`ddl re-stamp` tells the Ed-Fi API that the database matches the new schema,
+but it doesn't check that the tables actually match. If the migration is
+incomplete, the Ed-Fi API can fail or return wrong data.
+
+:::
+
+```powershell
+api-schema-tools ddl re-stamp --schema <paths...> --connection-string <connstr> --dialect <dialect> [--migration-completed] [--timeout <seconds>]
+```
+
+`--schema`, `--connection-string`, `--dialect`, and `--timeout` work as they do
+for `ddl provision`. Use the `api-schema-tools` build from the same release as
+the target Ed-Fi API, with that deployment's exact core and extension schemas.
+The login needs:
+
+- `SELECT` on `dms.EffectiveSchema`, `dms.SchemaComponent`, and
+  `dms.ResourceKey`
+- `UPDATE` on `dms.EffectiveSchema`
+- `DELETE` and `INSERT` on `dms.SchemaComponent`
+- On PostgreSQL, permission to lock `dms.ResourceKey` as well (for example,
+  `MAINTAIN` on that table), because the command locks all three tables
+
+How the command behaves:
+
+- If the stored fingerprint already matches, the command changes nothing and
+  prints the hash.
+- If it differs, the command updates it only when you pass
+  `--migration-completed` to confirm the migration is done.
+- It only accepts changes that keep the same resources, projects, and versions.
+  Adding or removing resources or projects, or changing their versions, is
+  rejected.
+
+To migrate a database in place:
+
+1. Note the hash the new Ed-Fi API version expects. When it handles a data
+   request against the unmigrated database, it returns `503` and logs
+   `EffectiveSchemaHash mismatch for data store … database has <hash>, process
+   expects <hash>`. The second hash is the expected one.
+2. Stop the Ed-Fi API and any CDC workers. Keep them stopped until the last
+   step.
+3. Apply the migration from the release's upgrade instructions.
+4. Validate the migrated schema yourself. Neither `ddl re-stamp` nor
+   `ddl provision` checks every table.
+5. Run `ddl re-stamp` with `--migration-completed`.
+6. Compare the hash the command prints with the expected hash from step 1. If
+   they differ, keep the services stopped and check that the tool comes from
+   the same release as the Ed-Fi API and that you passed the same schema files.
+7. If the release's upgrade instructions say API response formats changed,
+   run the DocumentCache representation restamp (see the [DocumentCacheAdmin
+   README](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/main/src/dms/clis/EdFi.DataManagementService.DocumentCacheAdmin/README.md#representation-restamp)).
+   Re-stamp keeps cached documents, and restarting doesn't clear them.
+8. Run `ddl provision` against the database, restart the services, and test the
+   affected API operations before you reopen traffic.
+
+If provisioning fails, the new fingerprint stays recorded; keep the services
+stopped until the migration is fixed.
+
+### Change data capture (`cdc`)
+
+The `cdc` commands set up and operate the background workers that stream data
+changes to Kafka, for a database provisioned through the managed CDC workflow.
+If you don't use event streaming, you don't need them. See [Event Streaming with
+Kafka](../features/event-streaming-kafka-cdc.md).
+
+### Exit codes
+
+| Code | Meaning |
+| --- | --- |
+| `0` | Success |
+| `1` | Failure: invalid arguments, missing files, schema validation errors, or a failed database operation |
+| `2` | Invalid arguments (`cdc` commands only) |
+| `130` | Cancelled (`cdc` commands and managed CDC provisioning only) |
+
+Errors are written to standard error. The `cdc` commands write one JSON result
+to standard output, including on failure, and all diagnostics to standard
+error.
 
 ## Schema Fingerprint Validation
 
@@ -252,9 +381,14 @@ re-provision an existing database for a different schema.
 
 Any change to the effective schema — upgrading the Ed-Fi Data Standard version,
 adding or changing an extension, or a new relational mapping version — produces
-a new fingerprint. Because there is **no in-place migration path**, an upgrade
-is performed by provisioning a **fresh database** for the new schema, re-loading
-data through the Ed-Fi API, then pointing the service at the new database and
-restarting it. See [No In-Place Database
+a new fingerprint. `api-schema-tools` doesn't migrate an existing database, so
+the standard upgrade is to provision a **fresh database** for the new schema,
+re-load data through the Ed-Fi API, then point the service at the new database
+and restart it. See [No In-Place Database
 Migration](../../whats-new/release-notes.md#no-in-place-database-migration) in
 the release notes for the rationale.
+
+Only when a release's upgrade instructions call for an in-place migration (a
+change that keeps the same resources and versions), use [`ddl
+re-stamp`](#recording-a-validated-migration-ddl-re-stamp) to record the new
+fingerprint once the migration is validated.

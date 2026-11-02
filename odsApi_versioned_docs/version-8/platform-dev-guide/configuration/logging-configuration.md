@@ -167,10 +167,9 @@ for that request and is included in error response bodies. The correlation ID
 makes it possible to trace a specific failed request across multiple log lines
 and across service boundaries.
 
-If a request does not include a correlation ID, the Ed-Fi API uses the
-request's trace identifier for the request's lifetime. The header name used to pass or read a correlation ID is configurable via the
-`CORRELATION_ID_HEADER` environment variable. This is **disabled by default**
-(empty string); set it explicitly to enable header-based extraction:
+By default the Ed-Fi API ignores client-supplied correlation IDs and uses the
+request's trace identifier. To accept one, set `AppSettings:CorrelationIdHeader`
+(`CORRELATION_ID_HEADER` in Docker Compose) to the header name:
 
 ```ini
 CORRELATION_ID_HEADER=correlationid
@@ -226,10 +225,10 @@ linking the structured log event to the error response body:
 
 ### Specifying the Correlation ID for a Request
 
-Client applications can supply their own correlation ID by including an HTTP
-header named `correlationid` (or the value of `CORRELATION_ID_HEADER`) on the
-request. If no such header is present, the Ed-Fi API uses the request's trace
-identifier for the request's lifetime.
+Clients send their correlation ID in the header named by
+`AppSettings:CorrelationIdHeader` (Docker Compose env var:
+`CORRELATION_ID_HEADER`). If the setting is empty or a request doesn't send the
+header, the Ed-Fi API uses the request's trace identifier instead.
 
 Using a client-supplied correlation ID is particularly useful when the API sits
 behind a gateway or proxy that logs its own correlation IDs — matching them
@@ -243,6 +242,8 @@ code. A GUID per request is a simple and reliable approach.
 :::
 
 ### Example 3: Correlation ID supplied as an HTTP header
+
+This example assumes `CORRELATION_ID_HEADER=correlationid`.
 
 ```text
 POST /api/data/ed-fi/schools HTTP/1.1
@@ -371,6 +372,7 @@ Each service is configured through its own `OtlpLogging` section:
 | `OtlpLogging:Enabled` | `OTLP_LOGGING_ENABLED` | `CONFIGURATION_SERVICE_OTLP_LOGGING_ENABLED` | `true` to export logs. Default: `false` |
 | `OtlpLogging:Endpoint` | `OTLP_LOGGING_ENDPOINT` | `CONFIGURATION_SERVICE_OTLP_LOGGING_ENDPOINT` | Absolute `http://` or `https://` URL of the OTLP endpoint, for example `http://collector:4318`. Required when export is on |
 | `OtlpLogging:Protocol` | `OTLP_LOGGING_PROTOCOL` | `CONFIGURATION_SERVICE_OTLP_LOGGING_PROTOCOL` | `HttpProtobuf` (default) or `Grpc` |
+| `OtlpLogging:ServiceName` | Not mapped | Not mapped | The `service.name` attribute sent with each log. Default: `EdFi.DataManagementService` (Ed-Fi API) or `EdFi.DmsConfigurationService` (Configuration Service). Override to tell instances apart in your log backend |
 | `OtlpLogging:DeploymentEnvironment` | `OTLP_LOGGING_DEPLOYMENT_ENVIRONMENT` | `CONFIGURATION_SERVICE_OTLP_LOGGING_DEPLOYMENT_ENVIRONMENT` | Optional name of the deployment environment, such as `production` |
 | `OtlpLogging:Headers` | Not mapped | Not mapped | Optional headers sent with every export request, such as `Authorization` |
 

@@ -52,15 +52,15 @@ erDiagram
     DataStore ||--o{ DataStoreDerivative : has
 
     DataStore {
-        bigint Id PK
+        int Id PK
         varchar DataStoreType
         varchar Name
         bytea ConnectionString
     }
 
     DataStoreDerivative {
-        bigint Id PK
-        bigint DataStoreId FK
+        int Id PK
+        int DataStoreId FK
         varchar DerivativeType
         bytea ConnectionString
     }
@@ -94,7 +94,12 @@ again.
 The Ed-Fi API checks each read replica the first time a request is routed to
 it, the same way it checks the primary: the replica must be provisioned with the
 same effective schema. Requests routed to a replica with a different schema get
-a `503 Service Unavailable` response.
+a `503 Service Unavailable` response. The result of the check is cached for
+`CacheSettings:DerivativeValidationCacheExpirationSeconds` (10 minutes by
+default, up to 1 hour, and never longer than
+`CacheSettings:DataStoreCacheExpirationSeconds` while data store refresh is
+on), so a replica whose database is rebuilt, or whose
+connection string you change, is checked again after that time.
 
 Because a read replica can lag slightly behind the primary database, a client
 that writes a record and immediately reads it back might not see the change yet.

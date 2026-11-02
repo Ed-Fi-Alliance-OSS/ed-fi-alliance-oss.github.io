@@ -125,22 +125,16 @@ by name. The contract packages are `EdFi.Api.Plugins`,
 [Plugins](../platform-dev-guide/extensibility-customization/plugins.md) for
 details.
 
-#### Custom Validation
-
-Platform hosts and vendors can enforce their own business rules on create and
-update requests by writing a custom validator plugin. A failed custom
-validation returns a `400` response in the same format as the platform's
-built-in validation errors. Without any custom validators, requests behave
-exactly as before. See [Custom
-Validation](../platform-dev-guide/extensibility-customization/custom-validation.md)
-for details.
-
 #### Unique ID Validation
 
 Platform hosts that use an external unique ID system can check that a supplied
-unique ID exists before a person record is created. Ed-Fi API v8.1 doesn't ship
+unique ID exists when a student, staff, or contact record is created or
+updated. The plugin can reject a unique ID that isn't found with a `400`
+response in the same
+format as the platform's built-in validation errors. Ed-Fi API v8.1 doesn't ship
 this check as a built-in feature; instead, the documentation shows how to build
-it as a custom validator plugin, with a sample to start from. See [Unique ID
+it as a plugin against `EdFi.Api.CustomValidation`, with a sample to start
+from. See [Unique ID
 System Integration](../technical-articles/unique-id-system-integration.md) for
 details.
 
