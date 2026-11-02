@@ -34,39 +34,73 @@ include multiple segments if multiple context values are required (e.g.,
 }
 ```
 
-Or via environment variable:
+Or set the `AppSettings__RouteQualifierSegments` environment variable. In the
+provided Docker Compose files, set `ROUTE_QUALIFIER_SEGMENTS` instead:
 
 ```ini
 ROUTE_QUALIFIER_SEGMENTS=schoolYear
 ```
 
+The Ed-Fi API validates the segment names at startup. Names must be unique
+(ignoring letter case) and can't be `__identityId` or `__identityToken`. If the
+value is invalid, the Ed-Fi API logs a `Critical` error and returns `500` for
+every request, including `/health`, until you correct the setting and restart
+the service.
+
 Once `RouteQualifierSegments` is defined, _all_ API requests must include the
 segment(s) in the base path (in multi-tenant mode this context segment will be
-added after the tenant identifier segment). Also, all data store definitions in
-the Configuration Service must have corresponding contextual name/value pairs
-defined in the `DataStoreContext` table. The API uses the context from the
-request path with the contextual values defined for the data store to identify
-which database should service the request. A failure to match all context
-values will result in a 404 Not Found response.
+added after the tenant identifier segment). Each data store's context values
+are stored as `DataStoreContext` entries in the Configuration Service:
 
 ```mermaid
 erDiagram
     DataStore ||--o{ DataStoreContext : has
 
     DataStore {
-        bigint Id PK
+        int Id PK
         varchar Name
         varchar DataStoreType
         bytea ConnectionString
     }
 
     DataStoreContext {
-        bigint Id PK
-        bigint DataStoreId FK
+        int Id PK
+        int DataStoreId FK
         varchar ContextKey
         varchar ContextValue
     }
 ```
+
+## How a Data Store Is Selected
+
+For each request, the Ed-Fi API only considers the data stores assigned to the
+calling API client (the client's `dataStoreIds` in the Configuration Service,
+as recorded in its access token when the token was issued). Data stores that
+exist but aren't assigned to the client are never selected, even if their
+context values match the route. Among the assigned data stores, a data store
+matches when:
+
+- It has one context entry per route qualifier segment, no more and no fewer.
+  (With no route qualifiers configured, only data stores with no context
+  entries match.)
+- Each context key matches a segment name. Use the same spelling and letter
+  case as in `RouteQualifierSegments`.
+- Each context value matches the value in the request path. Values are
+  compared case-insensitively.
+
+The result depends on how many assigned data stores match:
+
+| Matching data stores | Response |
+| --- | --- |
+| None, because the API client has no data stores assigned | `403 Forbidden` |
+| None | `404 Not Found` |
+| One | The request is served from that data store |
+| One, but it has no connection string | `503 Service Unavailable` |
+| More than one | `400 Bad Request` (ambiguous routing isn't supported) |
+
+Each data store's database must also be provisioned before it can serve
+requests. The Ed-Fi API doesn't create database schemas at startup. See
+[Database Provisioning](../utilities/database-provisioning.md).
 
 Examples below outline steps to configure explicit year-specific and
 district-specific routes.
@@ -76,16 +110,64 @@ district-specific routes.
 To route requests to two year-specific databases, for school years 2026 and
 2027 with an explicit school year segment in the route:
 
-- **Step 1:** Set `RouteQualifierSegments` to `schoolYear` in the appsettings
-  file or via the `ROUTE_QUALIFIER_SEGMENTS` environment variable.
+- **Step 1:** Set `RouteQualifierSegments` to `schoolYear` (in Docker Compose,
+  `ROUTE_QUALIFIER_SEGMENTS`), then restart the Ed-Fi API.
 
-- **Step 2:** Create two data stores in the Configuration Service — one named
-  `EdFi_2026` and one named `EdFi_2027` — each with the appropriate database
-  connection string.
+- **Step 2:** Create two data stores in the Configuration Service with
+  `POST /v3/dataStores` — one named `EdFi_2026` and one named `EdFi_2027` —
+  each with the appropriate database connection string. `dataStoreType` is
+  required; it's a free-form label of up to 50 characters. Note the `id` of
+  each new data store.
 
-- **Step 3:** Add a `DataStoreContext` entry to each data store in the
-  Configuration Service with `contextKey: "schoolYear"` and the corresponding
-  year as `contextValue` (`"2026"` and `"2027"` respectively).
+  ```json
+  {
+    "dataStoreType": "Production",
+    "name": "EdFi_2026",
+    "connectionString": "<connection string>"
+  }
+  ```
+
+- **Step 3:** Add a context entry to each data store with
+  `POST /v3/dataStoreContexts`, using `contextKey: "schoolYear"` and the
+  corresponding year as `contextValue` (`"2026"` and `"2027"` respectively).
+  Use the `id` returned for each data store in Step 2 as `dataStoreId` (here,
+  `1` and `2`):
+
+  ```json
+  {
+    "dataStoreId": 1,
+    "contextKey": "schoolYear",
+    "contextValue": "2026"
+  }
+  ```
+
+- **Step 4:** Assign both data stores to each API client that should reach
+  them, with `PUT /v3/apiClients/{id}`. The `dataStoreIds` list replaces the
+  client's current assignments, so include every data store the client needs.
+  Without this step, requests return `404` (or `403` if the client has no data
+  stores at all). The client must request a new access token to pick up the
+  change.
+
+  Build the `PUT` body from the client's `id`, `applicationId`, `name`, and
+  `isApproved` (from `GET /v3/apiClients/{id}`) plus the new `dataStoreIds`, as
+  in the example below. Don't send the `GET` response back as is: the update
+  rejects `creatorOwnershipTokenId` and `ownershipTokenIds` with `400`, even
+  when they're `null` or empty. Leave out `educationOrganizationIds` and
+  `inheritsApplicationEducationOrganizations` to keep the client's current
+  education organization scope.
+
+  ```json
+  {
+    "id": 5,
+    "applicationId": 3,
+    "name": "SIS Vendor client",
+    "isApproved": true,
+    "dataStoreIds": [1, 2]
+  }
+  ```
+
+- **Step 5:** Provision each data store's database. See
+  [Database Provisioning](../utilities/database-provisioning.md).
 
 After this configuration, API requests use the school year in the path:
 
@@ -94,20 +176,36 @@ GET http://localhost:8080/api/2026/data/ed-fi/schools
 GET http://localhost:8080/api/2027/data/ed-fi/schools
 ```
 
+API clients can request tokens from either `/api/oauth/token` or the qualified
+path, such as `/api/2026/oauth/token`. One token covers every data store
+assigned to the client, so the same token works for both school years.
+
+For a local environment, the `-SchoolYearRange` option of
+`bootstrap-local-dms.ps1` creates year-specific data stores and their
+`schoolYear` context entries for you. See [Year-Specific Data
+Stores](../../getting-started/docker-deployment.md#optional-year-specific-data-stores)
+in Getting Started.
+
 ## Configuring District-Specific Routes
 
 To route requests to two district-specific databases for LEA IDs 255901 and
 255902 with an explicit district segment in the route:
 
-- **Step 1:** Set `RouteQualifierSegments` to `districtId` in the appsettings
-  file or via the `ROUTE_QUALIFIER_SEGMENTS` environment variable.
+- **Step 1:** Set `RouteQualifierSegments` to `districtId` (in Docker Compose,
+  `ROUTE_QUALIFIER_SEGMENTS`), then restart the Ed-Fi API.
 
-- **Step 2:** Create two data stores in the Configuration Service — one per
-  district — each with the appropriate database connection string.
+- **Step 2:** Create two data stores in the Configuration Service with
+  `POST /v3/dataStores` — one per district — each with a `dataStoreType` and
+  the appropriate database connection string. Note the `id` of each new data
+  store.
 
-- **Step 3:** Add a `DataStoreContext` entry to each data store in the
-  Configuration Service with `contextKey: "districtId"` and the LEA ID as
-  `contextValue` (`"255901"` and `"255902"` respectively).
+- **Step 3:** Add a context entry to each data store with
+  `POST /v3/dataStoreContexts`, using `contextKey: "districtId"` and the LEA ID
+  as `contextValue` (`"255901"` and `"255902"` respectively).
+
+- **Step 4:** Assign both data stores to each API client that should reach
+  them (`dataStoreIds` on `PUT /v3/apiClients/{id}`), and provision each
+  data store's database, as in the year-specific example.
 
 After this configuration, API requests use the district ID in the path:
 
@@ -131,6 +229,10 @@ For example, with `MultiTenancy=true` and `RouteQualifierSegments=schoolYear`:
 GET http://localhost:8080/api/tenant1/2026/data/ed-fi/schools
 GET http://localhost:8080/api/tenant2/2027/data/ed-fi/schools
 ```
+
+Data stores, their contexts, and API clients belong to a tenant. Send the
+`Tenant` header with each Configuration Service request in the setup steps, so
+that the data stores are created in, and assigned within, the right tenant.
 
 See [Single and Multi-Tenant
 Configuration](./single-and-multi-tenant-configuration.md) for details on

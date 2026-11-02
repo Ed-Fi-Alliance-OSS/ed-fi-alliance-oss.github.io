@@ -179,9 +179,10 @@ very large partition and several small ones.
 
 ## Related Settings
 
-Platform hosts can adjust two settings that affect cursor paging:
+Platform hosts can adjust three settings that affect cursor paging:
 
 | Setting | Effect | Default |
 | --- | --- | --- |
 | `AppSettings:MaximumPageSize` | The largest allowed `pageSize` and `limit`, and the page size used when neither is given | `500` |
 | `AppSettings:DefaultPartitionCount` | The number of partitions returned when `number` is omitted | `10` |
+| `AppSettings:UseLegacyDocumentIdOrderingForChangeQueries` | When `true`, change queries are paged in creation order instead of change-version order, which is slower on large collections. Changing it invalidates outstanding page and partition tokens for some change queries. Hosts should leave it `false`. See [Configuration Details](../platform-dev-guide/configuration/configuration-details.mdx) | `false` |

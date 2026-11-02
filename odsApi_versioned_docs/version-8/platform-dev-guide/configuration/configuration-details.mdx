@@ -14,12 +14,12 @@ required.
 
 ### Required Settings
 
-The Ed-Fi API requires a database connection, a reachable Configuration Service,
-and JWT authentication settings to start. In the Docker Compose setup these are
-provided via the `.env` file; in other deployments configure them directly in
-`appsettings.json` or via environment variables. The `JwtAuthentication` section
-points the Ed-Fi API at the token authority — see
-[Identity Provider](./identity-provider.md) for the required keys.
+The Ed-Fi API requires a reachable Configuration Service, the shared connection
+string encryption key, and JWT authentication settings to start. In the Docker
+Compose setup these are provided via the `.env` file; in other deployments
+configure them directly in `appsettings.json` or via environment variables. The
+[`JwtAuthentication`](#jwtauthentication) section points the Ed-Fi API at the
+token authority — see also [Identity Provider](./identity-provider.md).
 
 - **`AppSettings:Datastore`**
 
@@ -37,10 +37,10 @@ points the Ed-Fi API at the token authority — see
 
 - **`ConfigurationServiceSettings:EncryptionKey`**
 
-  |             |                                                                                                                                                                                                                                                                                         |
-  | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-  | Example     | `MySecretKey1234567890123456789012`                                                                                                                                                                                                                                                     |
-  | Description | Key used to decrypt data store connection strings stored in the Configuration Service. Must match `DatabaseSettings:EncryptionKey` in the Configuration Service. Recommended: a 32-character ASCII string. Set via `CONFIGURATION_SERVICE_DATABASE_ENCRYPTION_KEY` environment variable |
+  |             |                                                                                                                                                                                                                                                                                                                                                                                        |
+  | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Example     | `MySecretKey1234567890123456789012`                                                                                                                                                                                                                                                                                                                                                    |
+  | Description | Key used to decrypt data store connection strings stored in the Configuration Service. Required: while it is empty, the Ed-Fi API reports a configuration error and answers every request with HTTP 500 until it is corrected. Must match `DatabaseSettings:EncryptionKey` in the Configuration Service. Docker Compose sets both from `CONFIGURATION_SERVICE_DATABASE_ENCRYPTION_KEY` |
 
 - **`AppSettings:AuthenticationService`**
 
@@ -51,10 +51,10 @@ points the Ed-Fi API at the token authority — see
 
 - **`ConfigurationServiceSettings:ClientSecret`**
 
-  |             |                                                                                                                                                                                                                                |
-  | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-  | Example     | _(generated secret)_                                                                                                                                                                                                           |
-  | Description | Client secret the Ed-Fi API uses to authenticate to the Configuration Service as the `CMSReadOnlyAccess` client. Must match the secret configured in the Configuration Service. Set via `CONFIG_SERVICE_CLIENT_SECRET` env var |
+  |             |                                                                                                                                                                                                                                           |
+  | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Example     | _(generated secret)_                                                                                                                                                                                                                      |
+  | Description | Client secret the Ed-Fi API uses to authenticate to the Configuration Service as the client named in `ClientId`. Must match the secret configured in the Configuration Service. Set via `DMS_CONFIGURATION_SERVICE_CLIENT_SECRET` env var |
 
 ### Optional Settings
 
@@ -93,6 +93,63 @@ points the Ed-Fi API at the token authority — see
   | Default     | `true`                                                                                                                                                                                                                     |
   | Description | When `true`, masks request body content in `DEBUG`-level log statements by replacing all scalar values with `"*"`. When `false`, the full unmasked body is logged. See [Logging Configuration](./logging-configuration.md) |
 
+- **`AppSettings:CorrelationIdHeader`**
+
+  |             |                                                                                                                                                                                                                       |
+  | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | _(empty)_                                                                                                                                                                                                             |
+  | Description | Name of the request header a client-supplied correlation ID is read from. When empty, no header is read and the request's trace identifier is used. See [Correlation IDs](./logging-configuration.md#correlation-ids) |
+
+- **`AppSettings:CorrelationIdMaxLength`**
+
+  |             |                                                                                                                                   |
+  | ----------- | --------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `255`                                                                                                                             |
+  | Description | Maximum length of a correlation ID used in logs and error responses; longer values are truncated. Must be between `64` and `1024` |
+
+- **`AppSettings:MaximumPageSize`**
+
+  |             |                                                                                                                                                                                                          |
+  | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `500`                                                                                                                                                                                                    |
+  | Description | Upper bound for the `limit` and `pageSize` query parameters on GET-many requests, and the page size used when neither is supplied. Must be greater than `0`. Docker Compose env var: `MAXIMUM_PAGE_SIZE` |
+
+- **`AppSettings:DefaultPartitionCount`**
+
+  |             |                                                                                                                                                                                                                                                                                                                   |
+  | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `10`                                                                                                                                                                                                                                                                                                              |
+  | Description | Number of partitions a `/partitions` request returns when it omits the `number` query parameter. Must be between `1` and `200`. See [Improve Paging Performance with Cursor Paging](../../client-developers-guide/improve-paging-performance-cursor-paging.md). Docker Compose env var: `DEFAULT_PARTITION_COUNT` |
+
+- **`AppSettings:UseLegacyDocumentIdOrderingForChangeQueries`**
+
+  |             |                                                                                                                                                                                                                                    |
+  | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `false`                                                                                                                                                                                                                            |
+  | Description | When `true`, pages every request in creation order, including change queries that would otherwise be paged in change-version order. Leave it `false`. Docker Compose env var: `USE_LEGACY_DOCUMENT_ID_ORDERING_FOR_CHANGE_QUERIES` |
+
+  By default, the Ed-Fi API pages some change queries in change-version order,
+  which is faster on large collections. These are requests that include
+  `maxChangeVersion`, and change-version-filtered requests served from a
+  [snapshot](../features/changed-record-queries.md#changed-record-queries-with-snapshot-isolation).
+  All other requests, including live requests with only `minChangeVersion`, are
+  paged in creation order. When this setting is `true`, every request is paged
+  in the order records were created, as in the ODS/API, and change queries on
+  large collections are slower. Turn it on only if change-version ordering
+  causes a problem, and turn it off again once the problem is fixed.
+
+  Changing this setting, in either direction, invalidates page and partition
+  tokens issued for requests that include `maxChangeVersion`, and for
+  change-version-filtered requests served from a snapshot. Clients holding those
+  tokens must start over, so make the change when no change queries are running.
+
+- **`AppSettings:MaxRequestBodySizeMegabytes`**
+
+  |             |                                                                                                       |
+  | ----------- | ----------------------------------------------------------------------------------------------------- |
+  | Default     | `10`                                                                                                  |
+  | Description | Largest request body, in megabytes, the Ed-Fi API accepts. Larger requests are rejected with HTTP 413 |
+
 - **`AppSettings:ApiSchema:UseCustomPath`**
 
   |             |                                                                                                                                                                              |
@@ -102,10 +159,10 @@ points the Ed-Fi API at the token authority — see
 
 - **`AppSettings:ApiSchema:Path`**
 
-  |             |                                                                                                                                                                                                                                                                                                                      |
-  | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-  | Default     | _(empty)_; Docker Compose env var `API_SCHEMA_PATH` defaults to `/app/ApiSchema` in `.env.example`                                                                                                                                                                                                                   |
-  | Description | Directory containing `bootstrap-api-schema-manifest.json` and the declared schema files. Used when `ApiSchema:UseCustomPath` is `true`. Extension `ApiSchema.json` files placed in this directory are automatically loaded. See [Extending API DataModel](../extensibility-customization/extending-api-datamodel.md) |
+  |             |                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+  | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | _(empty)_; Docker Compose env var `API_SCHEMA_PATH` defaults to `/app/ApiSchema` in `.env.example`                                                                                                                                                                                                                                                                                                                                                   |
+  | Description | Directory containing `bootstrap-api-schema-manifest.json` and the declared schema files. Used when `ApiSchema:UseCustomPath` is `true`. Only schema files listed in the manifest are loaded. In the Ed-Fi API container, `SCHEMA_PACKAGES` can download the schema packages into this directory and write the manifest; see [Loading Schemas from Packages](../extensibility-customization/extending-api-datamodel.md#loading-schemas-from-packages) |
 
 - **`AppSettings:DomainsExcludedFromOpenApi`**
 
@@ -113,6 +170,65 @@ points the Ed-Fi API at the token authority — see
   | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
   | Default     | _(empty)_                                                                                                                                                                     |
   | Description | Comma-separated list of Ed-Fi domain names to exclude from the generated OpenAPI specification. Case-insensitive. Useful for reducing Swagger UI noise in focused deployments |
+
+- **`AppSettings:ManagementEndpoints:Enabled`**,
+  **`AppSettings:ManagementEndpoints:RequiredRole`**
+
+  |             |                                                                                                                                                                                                                                                                                                                                                         |
+  | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Defaults    | `false`, _(empty)_                                                                                                                                                                                                                                                                                                                                      |
+  | Description | Set `Enabled` to `true` and `RequiredRole` to a role (for example, `cms-client`) to expose `/management/reload-claimsets` and `/management/view-claimsets`. Callers' tokens must carry that role. The endpoints aren't mapped while `RequiredRole` is empty. Docker Compose env vars: `DMS_ENABLE_MANAGEMENT_ENDPOINTS`, `DMS_MANAGEMENT_REQUIRED_ROLE` |
+
+- **`DataManagement:IdentityManagement:Enabled`**
+
+  |             |                                                                                                                                                                                                                                                    |
+  | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `false`                                                                                                                                                                                                                                            |
+  | Description | When `true`, maps the `/identity/v2/identities` routes. The operations themselves are performed by an identity provider plugin; see [Plugins](../extensibility-customization/plugins.md). Docker Compose env var: `DMS_ENABLE_IDENTITY_MANAGEMENT` |
+
+- **`DataManagement:ResourceLinks:Enabled`**
+
+  |             |                                                                                                                             |
+  | ----------- | --------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `true`                                                                                                                      |
+  | Description | When `true`, each document reference in a response carries a `link` object. When `false`, responses carry no `link` objects |
+
+- **`DataManagement:DocumentCache`**
+
+  |             |                                                                                                                                                                                                              |
+  | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+  | Default     | No targets; read acceleration off                                                                                                                                                                            |
+  | Description | Configures the optional document cache. Nothing is projected while `Targets` is empty, and cached reads require `ReadAcceleration:Enabled` to be `true`. See [Document Cache](../features/document-cache.md) |
+
+- **`AppSettings:ReverseProxy:UseForwardedHeaders`**,
+  **`AppSettings:ReverseProxy:KnownProxies`**,
+  **`AppSettings:ReverseProxy:KnownNetworks`**
+
+  |             |                                                                                                                                                                                                                                               |
+  | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Defaults    | `false`, _(empty)_, _(empty)_                                                                                                                                                                                                                 |
+  | Description | Same behavior as the Configuration Service settings of the same name, described [below](#configuration-service-settings). Docker Compose env vars: `USE_REVERSE_PROXY_HEADERS`, `REVERSE_PROXY_KNOWN_PROXIES`, `REVERSE_PROXY_KNOWN_NETWORKS` |
+
+- **`ConfigurationServiceSettings:ClientId`**
+
+  |             |                                                                                                                                          |
+  | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `CMSReadOnlyAccess`                                                                                                                      |
+  | Description | Client ID the Ed-Fi API uses to authenticate to the Configuration Service. Docker Compose env var: `DMS_CONFIGURATION_SERVICE_CLIENT_ID` |
+
+- **`ConfigurationServiceSettings:Scope`**
+
+  |             |                                                                                                                                                                                                                                                     |
+  | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `edfi_admin_api/readonly_access`                                                                                                                                                                                                                    |
+  | Description | Scope requested for the Configuration Service token. The `ClientId` client must hold it, or the Ed-Fi API can't read its configuration. Keep the default when multi-tenancy is on. Docker Compose env var: `DMS_CONFIGURATION_SERVICE_CLIENT_SCOPE` |
+
+- **`ConfigurationServiceSettings:AllowLegacyConnectionStrings`**
+
+  |             |                                                                                                                                                                                                                                                                                                              |
+  | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+  | Default     | `true`                                                                                                                                                                                                                                                                                                       |
+  | Description | Whether connection strings stored in the legacy (unauthenticated) encryption format can still be read. Set it to the same value as `DatabaseSettings:AllowLegacyConnectionStrings` in the Configuration Service. Docker Compose env var: `CONFIGURATION_SERVICE_ALLOW_LEGACY_CONNECTION_STRINGS` (sets both) |
 
 - **`CacheSettings:ClaimSetsCacheExpirationSeconds`**
 
@@ -144,17 +260,24 @@ points the Ed-Fi API at the token authority — see
 
 - **`CacheSettings:DataStoreCacheExpirationSeconds`**
 
-  |             |                                                                                                                                                                                                                                                |
-  | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-  | Default     | `600`                                                                                                                                                                                                                                          |
-  | Description | Seconds before cached data store configuration expires and is re-fetched from the Configuration Service. Requires `DataStoreCacheRefreshEnabled` to be `true`. Set to `0` or a negative value to keep the cache until the next explicit reload |
+  |             |                                                                                                                                                                                          |
+  | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `600`                                                                                                                                                                                    |
+  | Description | Seconds before cached data store configuration expires and is re-fetched from the Configuration Service. Set to `0` or a negative value to keep the cache until the next explicit reload |
 
 - **`CacheSettings:DataStoreCacheRefreshEnabled`**
 
-  |             |                                                                                                                                                                                                                                                                                                                                                                                              |
-  | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-  | Default     | `true`                                                                                                                                                                                                                                                                                                                                                                                       |
-  | Description | Enables TTL-based automatic refresh of the cached data store configuration from the Configuration Service. When `true`, Ed-Fi API re-fetches data store settings once a cache entry is older than `DataStoreCacheExpirationSeconds`, so changes made in the Configuration Service propagate without a restart. When `false`, the cached configuration is kept until the next explicit reload |
+  |             |                                                                                                                                                                                                                    |
+  | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+  | Default     | `true`                                                                                                                                                                                                             |
+  | Description | When `true`, data store settings are re-fetched every `DataStoreCacheExpirationSeconds`, so Configuration Service changes take effect without a restart. When `false`, they're kept until the next explicit reload |
+
+- **`CacheSettings:DerivativeValidationCacheExpirationSeconds`**
+
+  |             |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+  | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `600`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+  | Description | Seconds the Ed-Fi API caches the result of checking that a read replica or snapshot database matches the expected schema. Unlike `DataStoreCacheExpirationSeconds`, `0` doesn't turn off expiry: values below `1` fall back to `600`, and values above `3600` are capped at `3600`. When the data store cache expires (`DataStoreCacheRefreshEnabled` is `true` and `DataStoreCacheExpirationSeconds` is above `0`), the value is also capped at `DataStoreCacheExpirationSeconds`. See [Read Replicas](../features/read-replicas.md) |
 
 - **`AppSettings:PathBase`**
 
@@ -163,20 +286,121 @@ points the Ed-Fi API at the token authority — see
   | Default     | _(empty)_; Docker Compose env var `PATH_BASE` defaults to `api` in `.env.example`                                                                                          |
   | Description | URL path prefix for all Ed-Fi API endpoints. With `PATH_BASE=api`, resource endpoints are at `/api/data/ed-fi/...`. Leave empty to serve from the root path with no prefix |
 
+- **`Cors:SwaggerUIOrigin`**
+
+  |             |                                                                                                                                                   |
+  | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `http://localhost:8082`                                                                                                                           |
+  | Description | The single origin allowed to call the Ed-Fi API from a browser, normally where Swagger UI is served. Docker Compose env var: `DMS_SWAGGER_UI_URL` |
+
 - **`DatabaseOptions:IsolationLevel`**
 
-  |             |                                                                                                                                                        |
-  | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-  | Default     | `ReadCommitted`                                                                                                                                        |
-  | Description | Transaction isolation level. Valid values from [`System.Data.IsolationLevel`](https://learn.microsoft.com/en-us/dotnet/api/system.data.isolationlevel) |
+  |             |                                                                                                                                                                                                                                                   |
+  | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `ReadCommitted`                                                                                                                                                                                                                                   |
+  | Description | Transaction isolation level. Valid values from [`System.Data.IsolationLevel`](https://learn.microsoft.com/en-us/dotnet/api/system.data.isolationlevel). Docker Compose sets it to `RepeatableRead` through the `DATABASE_ISOLATION_LEVEL` env var |
 
 - **`RateLimit:PermitLimit`**, **`RateLimit:Window`**,
   **`RateLimit:QueueLimit`**
 
-  |             |                                                                                                                                                                                                                                                                                       |
-  | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-  | Defaults    | `5000`, `10`, `0`                                                                                                                                                                                                                                                                     |
-  | Description | Fixed-window rate limiting, partitioned by hostname. `PermitLimit` requests are allowed per `Window` seconds. Excess requests queue up to `QueueLimit` (0 = no queuing); requests beyond the queue receive HTTP 429. Remove the `RateLimit` section entirely to disable rate limiting |
+  |             |                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+  | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Defaults    | `20000`, `10`, `0`                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+  | Description | Fixed-window limit of `PermitLimit` requests per `Window` seconds, shared by all clients that use the same `Host` header. Up to `QueueLimit` excess requests wait (`0` = no queuing); the rest get HTTP 429. To disable, remove the `RateLimit` section; this isn't possible with the provided Docker Compose files, which always set it. Docker Compose env vars: `DMS_RATE_LIMIT_PERMIT_LIMIT`, `DMS_RATE_LIMIT_WINDOW`, `DMS_RATE_LIMIT_QUEUE_LIMIT` |
+
+- **`CircuitBreaker:FailureRatio`**,
+  **`CircuitBreaker:SamplingDurationSeconds`**,
+  **`CircuitBreaker:MinimumThroughput`**,
+  **`CircuitBreaker:BreakDurationSeconds`**
+
+  |             |                                                                                                                                                                                                                                                                                                                                                                                        |
+  | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Defaults    | `0.1`, `120`, `20`, `30`                                                                                                                                                                                                                                                                                                                                                               |
+  | Description | Circuit breaker for document reads and writes. When the share of unexpected database failures within `SamplingDurationSeconds` reaches `FailureRatio` (after at least `MinimumThroughput` calls), document requests receive HTTP 503 for `BreakDurationSeconds`. Docker Compose env vars: `FAILURE_RATIO`, `SAMPLING_DURATION_SECONDS`, `MINIMUM_THROUGHPUT`, `BREAK_DURATION_SECONDS` |
+
+- **`DeadlockRetry:MaxRetryAttempts`**,
+  **`DeadlockRetry:BaseDelayMilliseconds`**, **`DeadlockRetry:UseJitter`**
+
+  |             |                                                                                                                                                                                                      |
+  | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Defaults    | `3`, `150`, `true`                                                                                                                                                                                   |
+  | Description | Retries a document request that failed with a retryable database error, such as a deadlock, using exponential backoff from `BaseDelayMilliseconds`. Set `MaxRetryAttempts` to `0` to disable retries |
+
+- **`Plugins:Directory`**, **`Plugins:Allowed`**
+
+  |             |                                                                                                                                                                                                 |
+  | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Defaults    | `/app/plugins`, _(empty)_                                                                                                                                                                       |
+  | Description | Plugin root directory and the comma-separated, ordered list of plugin directory names to load. Nothing loads while `Allowed` is empty. See [Plugins](../extensibility-customization/plugins.md) |
+
+- **`OtlpLogging`**
+
+  |             |                                                                                                                                         |
+  | ----------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | Disabled                                                                                                                                |
+  | Description | Exports logs over OpenTelemetry (OTLP). See [OpenTelemetry (OTLP) Log Export](./logging-configuration.md#opentelemetry-otlp-log-export) |
+
+### JwtAuthentication
+
+These settings tell the Ed-Fi API how to validate the bearer tokens issued by
+the identity provider. See [Identity Provider](./identity-provider.md) for
+values for each provider.
+
+- **`JwtAuthentication:Authority`**
+
+  |             |                                                                                                                                                                          |
+  | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+  | Example     | `http://ed-fi-api-config:8081`                                                                                                                                           |
+  | Description | Token issuer. Must exactly match the `issuer` in the identity provider's metadata document, or the Ed-Fi API does not start. Docker Compose env var: `DMS_JWT_AUTHORITY` |
+
+- **`JwtAuthentication:MetadataAddress`**
+
+  |             |                                                                                                                                                                        |
+  | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Example     | `http://ed-fi-api-config:8081/.well-known/openid-configuration`                                                                                                        |
+  | Description | OpenID Connect metadata endpoint. Signing keys are fetched only from this address's origin (scheme, host and port). Docker Compose env var: `DMS_JWT_METADATA_ADDRESS` |
+
+- **`JwtAuthentication:Audience`**
+
+  |             |                                                                                  |
+  | ----------- | -------------------------------------------------------------------------------- |
+  | Default     | `account`                                                                        |
+  | Description | Expected audience of incoming tokens. Docker Compose env var: `DMS_JWT_AUDIENCE` |
+
+- **`JwtAuthentication:RequireHttpsMetadata`**
+
+  |             |                                                                                                                                                                                                                                                 |
+  | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `true`                                                                                                                                                                                                                                          |
+  | Description | Requires the metadata and signing-key documents to be fetched over HTTPS. Set to `false` only when the identity provider is reached over a private network; the Docker Compose files set it to `false` through `DMS_JWT_REQUIRE_HTTPS_METADATA` |
+
+- **`JwtAuthentication:RoleClaimType`**
+
+  |             |                                                                                                                                                                                      |
+  | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+  | Default     | `http://schemas.microsoft.com/ws/2008/06/identity/claims/role`                                                                                                                       |
+  | Description | Claim type that carries role values in tokens. Used by endpoints that require a configured role, such as the management endpoints. Docker Compose env var: `DMS_JWT_ROLE_CLAIM_TYPE` |
+
+- **`JwtAuthentication:ClockSkewSeconds`**
+
+  |             |                                                                                                                                         |
+  | ----------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `30`                                                                                                                                    |
+  | Description | Clock skew tolerance, in seconds, applied when checking a token's validity period. Docker Compose env var: `DMS_JWT_CLOCK_SKEW_SECONDS` |
+
+- **`JwtAuthentication:RefreshIntervalMinutes`**
+
+  |             |                                                                                                                                                                                                           |
+  | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `60`                                                                                                                                                                                                      |
+  | Description | Minimum time, in minutes, between on-demand re-fetches of the identity provider's metadata and signing keys, such as after an issuer mismatch. Docker Compose env var: `DMS_JWT_REFRESH_INTERVAL_MINUTES` |
+
+- **`JwtAuthentication:ValidatedTokenCacheEntryMaxLifetimeSeconds`**
+
+  |             |                                                                                                                                   |
+  | ----------- | --------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `300`                                                                                                                             |
+  | Description | How long, in seconds, a validated token is reused before it is validated again. `0` turns reuse off. Not mapped in Docker Compose |
 
 ---
 
@@ -198,12 +422,19 @@ points the Ed-Fi API at the token authority — see
   | Default     | `self-contained`                                                                                                                  |
   | Description | Authentication provider. Valid values: `self-contained` (OpenIddict), `keycloak`. See [Identity Provider](./identity-provider.md) |
 
+- **`DatabaseSettings:DatabaseConnection`**
+
+  |             |                                                                                                                                                                                         |
+  | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Example     | `host=localhost;port=5432;username=postgres;database=edfi_configurationservice;`                                                                                                        |
+  | Description | Connection string for the Configuration Service's own database. The service does not start when it is blank. Docker Compose env var: `CONFIGURATION_SERVICE_DATABASE_CONNECTION_STRING` |
+
 - **`DatabaseSettings:EncryptionKey`**
 
-  |             |                                                                                                                                                                                                                                                                 |
-  | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-  | Example     | `MySecretKey1234567890123456789012`                                                                                                                                                                                                                             |
-  | Description | AES key used to encrypt data store connection strings at rest. Must match `ConfigurationServiceSettings:EncryptionKey` in the Ed-Fi API. Set via `CONFIGURATION_SERVICE_DATABASE_ENCRYPTION_KEY` environment variable. Recommended: a 32-character ASCII string |
+  |             |                                                                                                                                                                                                                                                                                                                                                                                                                               |
+  | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Example     | `MySecretKey1234567890123456789012`                                                                                                                                                                                                                                                                                                                                                                                           |
+  | Description | AES key used to encrypt data store connection strings at rest. The service does not start when it is blank, shorter than 32 characters, has a non-ASCII character in its first 32 characters, or is the sample key that earlier `appsettings.json` files shipped with. Must match `ConfigurationServiceSettings:EncryptionKey` in the Ed-Fi API. Set via `CONFIGURATION_SERVICE_DATABASE_ENCRYPTION_KEY` environment variable |
 
 ### Optional Settings
 
@@ -230,10 +461,10 @@ points the Ed-Fi API at the token authority — see
 
 - **`AppSettings:TokenRequestTimeoutSeconds`**
 
-  |             |                                                |
-  | ----------- | ---------------------------------------------- |
-  | Default     | `30`                                           |
-  | Description | Timeout in seconds for outbound token requests |
+  |             |                                                                                |
+  | ----------- | ------------------------------------------------------------------------------ |
+  | Default     | `30`                                                                           |
+  | Description | Timeout in seconds for calls to Keycloak when `IdentityProvider` is `keycloak` |
 
 - **`AppSettings:ReverseProxy:UseForwardedHeaders`**
 
@@ -256,12 +487,178 @@ points the Ed-Fi API at the token authority — see
   | Default     | _(empty)_                                                                                                                                    |
   | Description | Comma-separated list of trusted proxy CIDR networks (e.g. `192.168.1.0/24,10.0.0.0/8`). Extends `KnownProxies` to cover a range of addresses |
 
-- **`AppSettings:EnableApplicationResetEndpoint`**
+- **`DatabaseSettings:AllowLegacyConnectionStrings`**
 
-  |             |                                                                                                                                                                                                                                              |
-  | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-  | Default     | `false`                                                                                                                                                                                                                                      |
-  | Description | When `true`, enables `PUT /v3/applications/{id}/reset-credential` for resetting API client credentials via API. Disable when an application supports multiple API clients, as resetting credentials affects all clients for that application |
+  |             |                                                                                                                                                                                                                                                                   |
+  | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `true`                                                                                                                                                                                                                                                            |
+  | Description | Whether stored connection strings in the legacy (unauthenticated) encryption format can still be read. Set to `false` once every stored value has been re-encrypted, and set the Ed-Fi API's `ConfigurationServiceSettings:AllowLegacyConnectionStrings` to match |
+
+- **`ClaimsOptions:ClaimsSource`**
+
+  |             |                                                                                                                                                                                                                                                                       |
+  | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `Embedded`                                                                                                                                                                                                                                                            |
+  | Description | Where claims are loaded from. Valid values: `Embedded` (built-in claims only), `Hybrid` (built-in base claims plus fragments from `ClaimsDirectory`), `Filesystem` (all claims from `ClaimsDirectory`). Docker Compose env var: `CONFIGURATION_SERVICE_CLAIMS_SOURCE` |
+
+- **`ClaimsOptions:ClaimsDirectory`**
+
+  |             |                                                                                                                                                               |
+  | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | _(empty)_                                                                                                                                                     |
+  | Description | Directory that holds claims files. Required when `ClaimsSource` is `Hybrid` or `Filesystem`. Docker Compose env var: `CONFIGURATION_SERVICE_CLAIMS_DIRECTORY` |
+
+- **`ClaimsOptions:DataStandardVersion`**
+
+  |             |                                                                                                                                                                      |
+  | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `5.2`                                                                                                                                                                |
+  | Description | Ed-Fi Data Standard version whose built-in base claims are loaded, for example `5.2` or `6.1`. Docker Compose env var: `CONFIGURATION_SERVICE_DATA_STANDARD_VERSION` |
+
+- **`JobSettings:WorkerEnabled`**, **`JobSettings:SchedulerEnabled`**,
+  **`JobSettings:RetentionEnabled`**
+
+  |             |                                                                                                                                                                                                                                                                                                                 |
+  | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Defaults    | `true`, `true`, `true`                                                                                                                                                                                                                                                                                          |
+  | Description | Turn off the job worker, the recurring-job scheduler, or the cleanup of old finished jobs on this instance, for example on extra replicas. Docker Compose env vars: `CONFIGURATION_SERVICE_JOBS_WORKER_ENABLED`, `CONFIGURATION_SERVICE_JOBS_SCHEDULER_ENABLED`, `CONFIGURATION_SERVICE_JOBS_RETENTION_ENABLED` |
+
+- **`JobSettings:MaxConcurrentJobs`**, **`JobSettings:FinishedJobRetention`**
+
+  |             |                                                                                                                                                                                                         |
+  | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Defaults    | `2`, `7.00:00:00`                                                                                                                                                                                       |
+  | Description | Number of jobs one instance runs at the same time (1 to 32), and how long a completed or failed job is kept (1 hour to 365 days). The service does not start when a `JobSettings` value is out of range |
+
+- **`SecretsSettings:CacheExpirationSeconds`**,
+  **`SecretsSettings:ResolveTimeoutSeconds`**
+
+  |             |                                                                                                                                                                                                                                         |
+  | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Defaults    | `300`, `10`                                                                                                                                                                                                                             |
+  | Description | How long a resolved `${secret:<name>}` value in a connection string is reused (`0` disables caching), and how long a read waits for the secret resolver plugin. See [Secrets in Connection Strings](./secrets-in-connection-strings.md) |
+
+- **`ConnectRateLimit:Enabled`**, **`ConnectRateLimit:SourcePermitLimit`**,
+  **`ConnectRateLimit:ClientPermitLimit`**,
+  **`ConnectRateLimit:WindowSeconds`**,
+  **`ConnectRateLimit:RequiredProxyAddress`**
+
+  |             |                                                                                                                                                   |
+  | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Defaults    | `true`, `120`, `30`, `60`, _(empty)_                                                                                                              |
+  | Description | Rate limits on the `/connect` OAuth endpoints. See [Rate Limits on `/connect` Endpoints](./identity-provider.md#rate-limits-on-connect-endpoints) |
+
+- **`Plugins:Directory`**, **`Plugins:Allowed`**
+
+  |             |                                                                                                                                                                                                        |
+  | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+  | Defaults    | `/app/plugins`, _(empty)_                                                                                                                                                                              |
+  | Description | Configuration Service plugins, such as a secret resolver, configured separately from the Ed-Fi API's. Nothing loads while `Allowed` is empty. See [Plugins](../extensibility-customization/plugins.md) |
+
+- **`OtlpLogging`**
+
+  |             |                                                                                                                                         |
+  | ----------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | Disabled                                                                                                                                |
+  | Description | Exports logs over OpenTelemetry (OTLP). See [OpenTelemetry (OTLP) Log Export](./logging-configuration.md#opentelemetry-otlp-log-export) |
+
+### IdentitySettings
+
+These settings configure how the Configuration Service issues and validates
+tokens. See [Identity Provider](./identity-provider.md) for values for each
+provider.
+
+- **`IdentitySettings:Authority`**
+
+  |             |                                                                                                                                                                                                       |
+  | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Example     | `http://ed-fi-api-config:8081`                                                                                                                                                                        |
+  | Description | Token issuer. In self-contained mode, the base URL advertised for discovery endpoints; don't include `AppSettings:PathBase` in it. Docker Compose env var: `CONFIGURATION_SERVICE_IDENTITY_AUTHORITY` |
+
+- **`IdentitySettings:Audience`**
+
+  |             |                                                                                                           |
+  | ----------- | --------------------------------------------------------------------------------------------------------- |
+  | Default     | `account`                                                                                                 |
+  | Description | Audience of issued and accepted tokens. Docker Compose env var: `CONFIGURATION_SERVICE_IDENTITY_AUDIENCE` |
+
+- **`IdentitySettings:ClientId`**, **`IdentitySettings:ClientSecret`**
+
+  |             |                                                                                                                                                                                                                                                                   |
+  | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Defaults    | `DmsConfigurationService`, _(none)_                                                                                                                                                                                                                               |
+  | Description | The Configuration Service's own client credentials. The secret is required and must meet the client secret length and complexity rules below. Docker Compose env vars: `CONFIGURATION_SERVICE_IDENTITY_CLIENT_ID`, `CONFIGURATION_SERVICE_IDENTITY_CLIENT_SECRET` |
+
+- **`IdentitySettings:RequireHttpsMetadata`**
+
+  |             |                                                                                                                                                                                                                           |
+  | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `true`                                                                                                                                                                                                                    |
+  | Description | Requires identity provider metadata to be fetched over HTTPS (Keycloak mode). Set to `false` only on a private network; the Docker Compose files set it to `false` through `CONFIGURATION_SERVICE_IDENTITY_REQUIRE_HTTPS` |
+
+- **`IdentitySettings:RoleClaimType`**
+
+  |             |                                                                                                                         |
+  | ----------- | ----------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `http://schemas.microsoft.com/ws/2008/06/identity/claims/role`                                                          |
+  | Description | Claim type that carries role values in tokens. Docker Compose env var: `CONFIGURATION_SERVICE_IDENTITY_ROLE_CLAIM_TYPE` |
+
+- **`IdentitySettings:ConfigServiceRole`**
+
+  |             |                                                                                                                                                 |
+  | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `cms-client`                                                                                                                                    |
+  | Description | Role a token must carry to call the Configuration Service management API. Docker Compose env var: `CONFIGURATION_SERVICE_IDENTITY_SERVICE_ROLE` |
+
+- **`IdentitySettings:ClientRole`**
+
+  |             |                                                                                                                              |
+  | ----------- | ---------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `dms-client`                                                                                                                 |
+  | Description | Role assigned to API clients created for the Ed-Fi API. Docker Compose env var: `CONFIGURATION_SERVICE_IDENTITY_CLIENT_ROLE` |
+
+- **`IdentitySettings:AllowRegistration`**
+
+  |             |                                                                                                                                                                                             |
+  | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `false`                                                                                                                                                                                     |
+  | Description | When `true`, allows new clients to register themselves through `/connect/register`. Keep `false` in production. Docker Compose env var: `CONFIGURATION_SERVICE_IDENTITY_ALLOW_REGISTRATION` |
+
+- **`IdentitySettings:EncryptionKey`**
+
+  |             |                                                                                                                                                                                                                                                                 |
+  | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | _(empty)_                                                                                                                                                                                                                                                       |
+  | Description | Key that protects the token signing keys stored in the Configuration Service database. Must be set in self-contained mode; while it is empty the service starts but can't issue tokens. Docker Compose env var: `CONFIGURATION_SERVICE_IDENTITY_ENCRYPTION_KEY` |
+
+- **`IdentitySettings:TokenExpirationMinutes`**
+
+  |             |                                                                      |
+  | ----------- | -------------------------------------------------------------------- |
+  | Default     | `30`                                                                 |
+  | Description | Lifetime, in minutes, of access tokens issued in self-contained mode |
+
+- **`IdentitySettings:BearerTokenPerClientLimit`**
+
+  |             |                                                                                                                                                |
+  | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `15`                                                                                                                                           |
+  | Description | Maximum number of active access tokens one API client may hold in self-contained mode. See [Token limits](./identity-provider.md#token-limits) |
+
+- **`IdentitySettings:TokenCleanup:Enabled`**,
+  **`IdentitySettings:TokenCleanup:IntervalMinutes`**
+
+  |             |                                                                                                                                                |
+  | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Defaults    | `true`, `30`                                                                                                                                   |
+  | Description | Background deletion of expired access tokens in self-contained mode. See [Expired-token cleanup](./identity-provider.md#expired-token-cleanup) |
+
+- **`IdentitySettings:ClientSecretHashingIterations`**
+
+  |             |                                                                                                                                                                                                                                                                            |
+  | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `210000`                                                                                                                                                                                                                                                                   |
+  | Description | Number of hashing iterations (PBKDF2-SHA256) for client secrets in self-contained mode. Don't change it after clients exist: every existing client secret stops working and must be re-issued. Docker Compose env var: `CONFIGURATION_SERVICE_IDENTITY_HASHING_ITERATIONS` |
 
 - **`IdentitySettings:ClientSecretValidation:MinimumLength`**
 

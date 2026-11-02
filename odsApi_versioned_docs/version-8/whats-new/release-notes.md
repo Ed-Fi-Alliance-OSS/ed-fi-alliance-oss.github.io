@@ -38,7 +38,7 @@ GitHub repository to find the changes for that specific update.
 * DMS-1308 - DocumentCache: serialized copy of resources
 * DMS-1309 - Event streaming with Kafka and Debezium change data capture
 * DMS-1504 - Plugin infrastructure
-* DMS-1345 - Custom validation
+* DMS-1345 - Validation plugin contract (used for unique ID validation)
 * DMS-1414 - Unique ID validation
 * DMS-1412 - Identities API
 * DMS-1084 - Security hardening and token management
@@ -325,7 +325,7 @@ table shows the current status.
 | Serialized data (DocumentCache in v8) | Yes | No | Yes |
 | Event streaming with Kafka | No | No | Yes |
 | Identities API | Yes | No | Yes (the host supplies the identity integration as a plugin) |
-| Unique ID validation | Yes | No | Yes, built as a custom validator plugin |
+| Unique ID validation | Yes | No | Yes, built as a plugin (see [Unique ID System Integration](../technical-articles/unique-id-system-integration.md)) |
 | External configuration of connection strings | Yes | No | Partly: values within data store connection strings can come from a secret store, and configuration-source plugins can supply the Configuration Service's own database connection string, and both services' keys and client secrets (see [Secrets in Connection Strings](../platform-dev-guide/configuration/secrets-in-connection-strings.md)) |
 | MetaEd extensions | Yes | Yes (different workflow — see [Extending API DataModel](../platform-dev-guide/extensibility-customization/extending-api-datamodel.md)) | Yes |
 | OneRoster | Yes | No | No (planned for v8.2) |

@@ -14,9 +14,11 @@ secure and that students' information is kept private. Ed-Fi API v8 was built
 from the ground up to provide developers with a solution to keep data secure and
 private.
 
-Communication with the API is encrypted and only sent over HTTPS. Ed-Fi API v8
-uses OAuth 2.0 to handle client access, requiring clients to provide an access
-token before any data-related action is invoked. Tokens are issued by the
+Communication with the API should be encrypted. The services don't enforce
+HTTPS themselves, so deploy them behind TLS (for example, a reverse proxy or
+load balancer that terminates HTTPS). Ed-Fi API v8 uses OAuth 2.0 to handle
+client access, requiring clients to provide an access token before any
+data-related action is invoked. Tokens are issued by the
 built-in [OpenIddict](https://openiddict.com/)-based identity provider hosted in
 the Configuration Service, or by an external Keycloak instance for environments
 that require enterprise identity management. Once an access token has been
@@ -47,6 +49,12 @@ Supporting artifacts — including API documentation and database structures —
 generated automatically from the data model description, so extensions are
 reflected consistently across the platform without manual maintenance.
 
+Behavior can be extended too. Plugins add code to the Ed-Fi API or the
+Configuration Service without rebuilding them. For example, an Ed-Fi API plugin
+can check person unique IDs against an external identity system, and a
+Configuration Service plugin can resolve connection string secrets from an
+external secret store.
+
 See the section on
 [Extensibility & Customization](./extensibility-customization/readme.md) in this documentation
 for details.
@@ -59,11 +67,11 @@ development machine or test environment — however, some analysis, planning, an
 development work are essential to put the complete system into production for an
 enterprise.
 
-Ed-Fi API v8 is open source, meaning that all the source code is available to
-licensees who are free to modify and enhance the system. Many implementers
-choose to start with a core installation to get running quickly, and then
-customize or swap out modules to improve fit with their environment and to ready
-the solution for production deployment.
+Ed-Fi API v8 is open source under the Apache License 2.0: all the source code is
+publicly available, and anyone is free to modify and enhance the system. Many
+implementers choose to start with a core installation to get running quickly,
+and then customize or swap out modules to improve fit with their environment and
+to ready the solution for production deployment.
 
 The Ed-Fi Alliance also welcomes code contributions from field implementers and
 hosts a platform called Ed-Fi Community Tools that allows licensees to share code
@@ -124,9 +132,10 @@ toolchain. The same schema file drives database provisioning (via the
 
 For implementers extending the data model, MetaEd provides a lightweight
 language to express data model customizations. The toolchain generates the
-`ApiSchema.json` extension artifact automatically, and the API picks it up on
-startup. See [Extending API DataModel](./extensibility-customization/extending-api-datamodel.md)
-for details.
+`ApiSchema-EXTENSION.json` extension file, which you load into the API and
+provision. See [Extending API
+DataModel](./extensibility-customization/extending-api-datamodel.md) for the
+steps.
 
 Schema-driven generation from an authoritative source ensures that the API,
 database, and documentation remain consistent in a way that manual maintenance

@@ -20,36 +20,57 @@ Utility](../../how-to-guides/how-to-load-the-ods-with-sample-xml-data-using-bulk
 
 ## Ed-Fi Populated Template
 
-The populated template is generated with the Loader using sample XML data
-contained in the public Ed-Fi-Standard GitHub repository:
+The populated template is generated with the Bulk Load Client using sample XML
+data contained in the public Ed-Fi-Data-Standard GitHub repository. There is a
+template for each supported Data Standard version:
 
-- [v6.1.0 Descriptors](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v6.1.0/Descriptors)
-- [v6.1.0 Samples Sample XML](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v6.1.0/Samples/Sample%20XML)
+- Data Standard 5.2.0: [Descriptors](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v5.2.0/Descriptors)
+  and [Sample XML](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v5.2.0/Samples/Sample%20XML)
+- Data Standard 6.1.0: [Descriptors](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v6.1.0/Descriptors)
+  and [Sample XML](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v6.1.0/Samples/Sample%20XML)
 
 ## Ed-Fi Minimal Template
 
-The minimal template is generated with the Loader by loading Ed-Fi
-descriptors contained in the public Ed-Fi-Standard GitHub
-repository ([v6.1.0 Descriptors](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v6.1.0/Descriptors)).
+The minimal template is generated with the Bulk Load Client by loading Ed-Fi
+descriptors contained in the public Ed-Fi-Data-Standard GitHub repository
+([v5.2.0 Descriptors](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v5.2.0/Descriptors)
+or [v6.1.0 Descriptors](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/tree/v6.1.0/Descriptors)).
+
+## Install the Bulk Load Client
+
+The Bulk Load Client is published as the `EdFi.Suite3.BulkLoadClient.Console`
+package on the Ed-Fi release feed
+(`https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi%40Release/nuget/v3/index.json`).
+The package contains a .NET 10 console application, so you need the .NET 10
+runtime. The Ed-Fi API's own template build scripts use version `7.3.20162`.
+
+To download and extract the package with PowerShell:
+
+```powershell
+$feed = "https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi%40Release/nuget/v3/index.json"
+$packageBase = ((Invoke-RestMethod $feed).resources |
+  Where-Object { $_.'@type' -like 'PackageBaseAddress*' }).'@id'
+$id = "edfi.suite3.bulkloadclient.console"
+$version = "7.3.20162"
+Invoke-RestMethod "$packageBase$id/$version/$id.$version.nupkg" -OutFile "$id.zip"
+Expand-Archive "$id.zip" -DestinationPath $id -Force
+$bulkLoad = Resolve-Path "$id/tools/net*/any/EdFi.BulkLoadClient.Console.dll"
+```
+
+Run the tool with `dotnet $bulkLoad`, followed by the [command line
+parameters](#command-line-parameter-definitions). For example, to load sample
+data into a local Ed-Fi API:
+
+```powershell
+dotnet $bulkLoad -b "http://localhost:8080/api" -o "http://localhost:8080/api/oauth/token" `
+  -k {yourKey} -s {yourSecret} `
+  -d "C:\Ed-Fi-Data-Standard\Samples\Sample XML" -w "C:\bulkload\working" -x "C:\bulkload\xsd"
+```
+
+On an empty data store, load the Data Standard's `Descriptors` folder first;
+the sample data references those descriptors.
 
 ## Overview of Solution Architecture
-
-The Bulk Load Client consists of a .NET 10 solution. It uses C# as the primary
-language, with TPL (Task Parallel Library) for pipeline processing support.
-Infrastructure libraries include log4net for logging, nUnit for unit testing, and
-Newtonsoft.Json and Microsoft's WebApi client libraries for web API integration.
-The solution consists of five projects, with the primary output being a console
-application for use on the command line.
-
-The projects involved are:
-
-- EdFi.LoadTools: Main class library, provides all functionality used by the
-  application, including pipeline management, resource parsing, resource
-  transformation, and resource posting.
-- EdFi.BulkLoadClient.Console: Output project to generate the executable for
-  running the application.
-- EdFi.LoadTools.Test: Contains all unit and integration tests for the
-  application.
 
 The general design of the application is a pipeline that takes XML files as
 input. The pipeline has the following general flow:
@@ -142,9 +163,9 @@ existing automation system.
 
 The application supports configuring a variety of settings, including the max
 retry count and locations for the input files and XSDs. These settings can all
-be configured through the app.config or by passing them in as command line
-parameters. Anything not passed in by command line will default back to the
-app.config settings.
+be configured in the `appsettings.json` file next to the application or by
+passing them in as command line parameters. Anything not passed in by command
+line will default back to the `appsettings.json` settings.
 
 It is recommended to run the tool daily, but it can be run at any frequency based
 on the data coming in. The tool will only process what has changed since the
@@ -155,7 +176,7 @@ fairly low risk, and as the Ed-Fi API will handle upserting the record as
 needed, the issue this raises is just a time and efficiency cost.
 
 The code for the Bulk Load Client is located in the Ed-Fi-ODS repository in the
-`./Utilities/DataLoading/EdFi.BulkLoadClient.Console` directory.
+`Utilities/DataLoading/EdFi.BulkLoadClient.Console` directory.
 
 Input files are loaded based on pattern-based matching derived from the
 interchange names. As the application goes through each interchange, it checks
@@ -172,24 +193,20 @@ of an interchange:
 
 :::info
 
-In Ed-Fi API v8, the OAuth token endpoint is hosted by the Configuration
-Service on a separate port. When using the `--baseurl` parameter, the derived
-OAuth URL will not be correct for v8. Specify the token endpoint explicitly
-using the `--oauthurl` parameter:
-
-```none
---oauthurl http://localhost:8081/connect/token
-```
-
 API requests use the URL pattern `/{pathBase}/data/{schema}/{resource}` (no
 `v3/` segment). The default `pathBase` is `api`, so for a local deployment the
 API base URL is `http://localhost:8080/api`.
+
+With `-b`, the tool reads the discovery document served at the base URL to find
+the other URLs it needs. If the advertised token URL isn't reachable from the
+machine running the tool, for example a Docker-internal host name, pass
+`-o http://localhost:8080/api/oauth/token`.
 
 :::
 
 | Arg | Long Arg | Description |
 | --- | --- | --- |
-| `b` | `baseurl` | The base url used to derived api, metadata, oauth, and dependency urls (e.g., `http://server`). If provided, `apiurl`, `dependenciesurl`, `metadataurl`, `oauthurl` and `xsd` parameters can be skipped. |
+| `b` | `baseurl` | The Ed-Fi API base URL (e.g., `http://localhost:8080/api`). The tool derives the data, metadata, dependencies, XSD metadata, and OAuth token URLs from its discovery document. |
 | `c` | `connectionlimit` | Maximum concurrent connections to api |
 | `d` | `data` | Path to folder containing the data files to be submitted |
 | `e` | `extension` | The extension name to download Xsd Schema files for |
@@ -197,11 +214,14 @@ API base URL is `http://localhost:8080/api`.
 | `k` | `key` | The web API OAuth key |
 | `l` | `maxRequests` | Max number of simultaneous API requests |
 | `n` | `novalidation` | No argument. Do not validate the XML document against the XSD before processing |
+| `o` | `oauthurl` | The OAuth token URL (e.g., `http://localhost:8080/api/oauth/token`). Overrides the URL from the discovery document. |
 | `p` | `profile` | The name of an API profile to use (optional) |
 | `r` | `retries` | The number of times to retry submitting a resource |
 | `s` | `secret` | The web API OAuth secret |
 | `t` | `taskcapacity` | Maximum concurrent tasks to be buffered |
 | `w` | `working` | Path to a writable folder containing the working files, such as the swagger metadata cache and hash cache |
+| `x` | `xsd` | Path to a folder for the Ed-Fi XSD files. The tool downloads the XSDs from the API into this folder if it has none (or with `-f`). Defaults to a `Schemas` folder under the working folder. The long form `--xsd` doesn't work; use `-x`. |
+| `z` | `xsdmetadataurl` | The XSD metadata URL. Overrides the URL from the discovery document. |
 | | `include-stats` | Include timing stats |
 
 ## Use Tips
@@ -223,8 +243,7 @@ delete one or more .hash files are:
 - A database restore occurred (if the exact time of the backup is known, it
   may be correlated to the corresponding .hash file).
 - The underlying database was updated via a SQL client.
-- Another tool (Console Bulk Loader, Bulk Upload API client, or Transactional
-  API client) has modified data.
+- Another API client has modified data.
 
 ### Metadata Files
 
