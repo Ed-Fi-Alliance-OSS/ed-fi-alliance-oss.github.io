@@ -1,6 +1,6 @@
 # Ed-Fi Technology Suite Supported Versions
 
-_Last verified:_ 2026-10-30
+_Last verified:_ 2026-11-02
 
 This page is the authoritative source for the support status of Ed-Fi Alliance
 products and versions. Other pages link here rather than restating support
@@ -13,11 +13,12 @@ As of the last verified date, these products and versions are fully supported:
 - Ed-Fi Data Standard 5.x and 6.x
 - Ed-Fi ODS/API 7.3.x
 - Ed-Fi API 8.0
-- Ed-Fi ODS Admin API 2.3 and later
-- Ed-Fi Admin App 4.0
+- Ed-Fi ODS Admin API 2.4
+- Ed-Fi Admin App 4.1
 - API Publisher (latest version)
 
-Every other version listed below is out of support or not yet released.
+Every other version listed below is in maintenance mode, out of support, or not
+yet released.
 
 ## Status Definitions
 
@@ -70,8 +71,11 @@ a production deployment of the Ed-Fi Resources API. The Platform includes:
     applications.
 - [Ed-Fi ODS Admin API](../4-admin-api/readme.md), a REST interface for managing
   client credentials ("key and secret") and security configuration.
-- [Ed-Fi ODS Admin App](/getting-started/community-tools/technology/ods-admin-app), a web application for
-  managing single instances of an Ed-Fi ODS/API.
+- [Ed-Fi Admin App](../5-admin-app/readme.md), a web application for education
+  organizations that manage multiple instances of the Ed-Fi ODS/API or Ed-Fi API
+  across tenants and environments. The legacy [Ed-Fi ODS Admin
+  App](/getting-started/community-tools/technology/ods-admin-app) 3.x has moved to
+  Ed-Fi Community Tools.
 
 ### Ed-Fi ODS/API
 
@@ -104,14 +108,15 @@ fixed in 2.2.1 rather than creating a 2.1.1 release.
 :::
 
 ODS Admin API version 2.3 consolidates functionality from version 1, allowing
-the single application to support either ODS/API 6.x and ODS/API 7.x.
+the single application to support both ODS/API 6.x and ODS/API 7.x.
 
-| Version       | Status          | Timeline                                      | Supports ODS/API |
-| ------------- | --------------- | --------------------------------------------- | ---------------- |
-| 1.x.y         | Out of support  | Support ended after the 2025-2026 school year | 5.x.y, 6.x.y     |
-| 2.0.0 - 2.2.x | Out of support  | Replaced by 2.3; upgrade to the latest 2.x    | 7.x.y            |
-| 2.3.x         | Fully supported | Active through 2028-2029 school year          | 6.x.y, 7.x.y     |
-| 2.4           | Upcoming        | Releasing early November 2026                 | 6.x.y, 7.x.y     |
+| Version       | Status          | Timeline                                                           | Supports API |
+| ------------- | --------------- | ------------------------------------------------------------------ | ------------ |
+| 1.x.y         | Out of support  | Support ended after the 2025-2026 school year                      | 5.x.y, 6.x.y |
+| 2.0.0 - 2.2.x | Out of support  | Replaced by 2.3; upgrade to the latest 2.x                         | 7.x.y        |
+| 2.3.x         | Out of support  | Replaced by 2.4; upgrade to the latest 2.x                         | 6.x.y, 7.x.y |
+| 2.4           | Fully supported | Released early November 2026. Active through 2028-2029 school year | 6.x.y, 7.x.y |
+| 2.5           | Upcoming        | Releasing in December 2026                                         | 6.x.y, 7.x.y |
 
 ### Ed-Fi Admin App
 
@@ -124,14 +129,15 @@ Tools](./notifications/admin-app-to-community-tools.md).
 The new Ed-Fi Admin App user interface (version 4.0) was released in December
 2025. This application provides an all new front-end application paired with the
 ODS Admin API on the backend. It supports ODS/API 6.x and ODS/API 7.x. Admin
-App 4.1, which adds support for Ed-Fi API v8, is scheduled for release in early
-November 2026.
+App 4.1, released in early November 2026, adds support for Ed-Fi API v8. Admin
+App 4.2 is scheduled for release in December 2026.
 
-| Version | Status          | Timeline                                     | Supports ODS/API                |
+| Version | Status          | Timeline                                     | Supports API                    |
 | ------- | --------------- | -------------------------------------------- | ------------------------------- |
 | 3.3     | Out of support  | Maintenance mode ended June 30, 2026         | 5.x.y, 6.x.y                    |
-| 4.0     | Fully supported | Released December 2025                       | 6.x.y, 7.x.y                    |
-| 4.1     | Upcoming        | Releasing early November 2026                | 6.x.y, 7.x.y, and Ed-Fi API 8.x |
+| 4.0     | Out of support  | Replaced by 4.1; upgrade to 4.1              | 6.x.y, 7.x.y                    |
+| 4.1     | Fully supported | Released early November 2026                 | 6.x.y, 7.x.y, and Ed-Fi API 8.x |
+| 4.2     | Upcoming        | Releasing in December 2026                   | 6.x.y, 7.x.y, and Ed-Fi API 8.x |
 
 ### Docker Deployments
 
@@ -146,8 +152,9 @@ versions.
 | 2.3.x   | Maintenance mode | ODS/API 6.2.x and Admin App 3.2.1                   |
 | 3.2.x   | Fully supported  | ODS/API 7.3 and Admin API 2.2.x                     |
 
-Out of support: Docker 3.0.x and 3.1.x (replaced by 3.2), and all releases prior to 2.3, including the "Docker 2.2.x" release
-that supported ODS/API 5.4 and Admin App 3.2.
+Out of support: Docker 3.0.x and 3.1.x (replaced by 3.2), and all releases prior
+to 2.3, including the Docker 2.1.x releases that supported ODS/API 5.3 and 5.4,
+and the Docker 2.2.x release that supported ODS/API 6.0 and Admin App 3.0.
 
 ## Ed-Fi API
 
@@ -155,10 +162,10 @@ This is the future replacement for the Ed-Fi ODS/API. See
 [Ed-Fi ODS/API and Ed-Fi API v8 FAQ](./api-faq.md) for more
 information.
 
-| Version                       | Status          | Timeline                                | Data Standard(s) |
-| ----------------------------- | --------------- | --------------------------------------- | ---------------- |
-| [8.0](/reference/ed-fi-api/8) | Fully supported | Released. Target school year: 2027-2028 | 5.2.0, 6.1.0     |
-| 8.1                           | Upcoming        | Releasing November 2026                 | 5.2.0, 6.1.0     |
+| Version                       | Status          | Timeline                                               | Data Standard(s) |
+| ----------------------------- | --------------- | ------------------------------------------------------ | ---------------- |
+| [8.0](/reference/ed-fi-api/8) | Fully supported | Released. Pilot / parallel use, school year 2026-2027  | 5.2.0, 6.1.0     |
+| 8.1                           | Upcoming        | Releasing November 2026. Target school year: 2027-2028 | 5.2.0, 6.1.0     |
 
 ## Tools
 
