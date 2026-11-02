@@ -146,8 +146,15 @@ To route requests to two year-specific databases, for school years 2026 and
   client's current assignments, so include every data store the client needs.
   Without this step, requests return `404` (or `403` if the client has no data
   stores at all). The client must request a new access token to pick up the
-  change. `PUT` replaces the whole client record, so read it first with
-  `GET /v3/apiClients/{id}` and change only `dataStoreIds`.
+  change.
+
+  Build the `PUT` body from the client's `id`, `applicationId`, `name`, and
+  `isApproved` (from `GET /v3/apiClients/{id}`) plus the new `dataStoreIds`, as
+  in the example below. Don't send the `GET` response back as is: the update
+  rejects `creatorOwnershipTokenId` and `ownershipTokenIds` with `400`, even
+  when they're `null` or empty. Leave out `educationOrganizationIds` and
+  `inheritsApplicationEducationOrganizations` to keep the client's current
+  education organization scope.
 
   ```json
   {
