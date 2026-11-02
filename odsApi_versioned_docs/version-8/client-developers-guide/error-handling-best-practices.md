@@ -21,6 +21,33 @@ relationship has been established between that resource and an education
 organization to which the client has access. For example, a client cannot edit a
 student record it has created until an enrollment record has been established.
 
+The same applies when a client re-sends a POST for a record that already
+exists: the API treats that POST as an update, so it is authorized as an
+update.
+
+Relationship-based authorization is not the only source of `403 Forbidden`
+responses. Namespace-based, ownership-based, and custom view-based
+authorization also deny requests with `403 Forbidden`. To see which check
+failed, read the `type`, `detail`, and `errors` in the response body together,
+because the `type` alone may be the generic
+`urn:ed-fi:api:security:authorization`. For examples and fixes, see the [Error
+Response Knowledge Base](./error-response-knowledge-base.md#403-forbidden). For
+ownership denials, see [Ownership-Based
+Authorization](../platform-dev-guide/security/ownership-based-authorization.md).
+
+## Concurrency Errors
+
+If a client sends an `If-Match` header and the resource has changed since the
+client read it, the API returns `412 Precondition Failed`. Rather than resending
+the same request, GET the resource again, reapply the change, and send the
+request with the resource's new `_etag` value in the `If-Match` header.
+
+The API also returns `412 Precondition Failed` when a request sends `If-Match`
+for a resource that does not exist. In that case, don't retry with `If-Match`:
+create the resource first, or send the request without `If-Match`. See [412
+Precondition Failed](./error-response-knowledge-base.md#412-precondition-failed)
+for details.
+
 ## Blind Error Message Resending
 
 Unless an error response is truly transient, it is usually not sufficient to
@@ -44,17 +71,22 @@ responses from the Ed-Fi API.
 The Ed-Fi Alliance, through field experience, has developed additional best
 practices. These best practices are some features and capabilities that an API
 client considers when designing the Ed-Fi API client in the software system.
-Plan for Multiple API Integrations. Some API clients initially built Ed-Fi
-integrations assuming a single integration (often with an SEA). But,
-increasingly, LEAs are asking for integration as well, resulting in two separate
-API integrations. Theoretically, even more integrations are possible (though
-probably of a smaller scope of data – see the next item below). Plan to
-Configure API Resources Per API Integration. A state or district integration may
-only want a fraction of the API resources, so plan for the ability to "turn off"
-unused/un-requested API resources. In some cases, over-sharing is even against
-state or local policy.
 
-## Plan for Transactional and Bulk Updates
+### Plan for Multiple API Integrations
+
+Some API clients initially built Ed-Fi integrations assuming a single
+integration (often with an SEA). But, increasingly, LEAs are asking for
+integration as well, resulting in two separate API integrations.
+Theoretically, even more integrations are possible (though probably of a
+smaller scope of data – see the next item below).
+
+### Plan to Configure API Resources Per API Integration
+
+A state or district integration may only want a fraction of the API resources,
+so plan for the ability to "turn off" unused/un-requested API resources. In
+some cases, over-sharing is even against state or local policy.
+
+### Plan for Transactional and Bulk Updates
 
 The field expectation is increasingly that data lands quickly in the API after
 the data is added or updated in a source system (i.e., a transactional

@@ -65,6 +65,12 @@ A namespace-based authorization strategy is used for resources such as
 assessment metadata, where access is governed by the namespace prefixes assigned
 to the caller rather than by a relationship to an education organization.
 
+Some hosts also apply [ownership-based
+authorization](../platform-dev-guide/security/ownership-based-authorization.md),
+which limits a client to records that carry one of its assigned ownership
+tokens. Other records, including records with no owner, are left out of
+collection results and return `403 Forbidden` when requested directly.
+
 Your API host may also use custom view-based authorization strategies, which
 further limit access to a subset of records, such as students enrolled in CTE
 courses. When a custom view-based strategy applies:
@@ -163,13 +169,15 @@ with the Ed-Fi API easier.
 :::
 
 The process is relatively straightforward. POST to the
-`/{pathBase}/oauth/token_info` endpoint with an HTTP Authorization header as
-"Bearer XYZ" where "XYZ" is the access token. The same access token must also
-be sent in the request body in the `token` parameter. Note that you need an
-active bearer token for this call, which you can obtain from the Configuration
-Service `/connect/token` endpoint. See
-[Authentication](./authentication.md) for a refresher on how to acquire
-a token.
+`[/{pathBase}][/{tenant}][/{qualifier}…]/oauth/token_info` endpoint (see [API
+Routes](./api-routes.md)) with an HTTP Authorization header of "Bearer XYZ",
+where "XYZ" is an active access token. Send the same token in the request body
+in the `token` parameter, either as a form field or as JSON such as
+`{"token": "XYZ"}`.
+
+If the header and body tokens don't match, the API returns `400 Bad Request`.
+See [Authentication](./authentication.md) for a refresher on how to acquire a
+token.
 
 The snippet below shows an example POST:
 
