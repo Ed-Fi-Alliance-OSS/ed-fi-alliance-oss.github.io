@@ -71,25 +71,26 @@ Versions](/reference/roadmap/supported-versions).
 ### Version 5.x
 
 Version 5.0 was released in 2023 and again modified in 2024 with minor releases
-5.1 and 5.2. This version is intended to support school years 2024-2025,
-2025-2026, 2026-2027, and 2027-2028.
+5.1 and 5.2. For the school years this version supports, see [Ed-Fi Technology
+Suite Supported Versions](/reference/roadmap/supported-versions).
 
 ➡️ [Documentation for 5.2](/reference/data-exchange/data-standard/5/)
 
 ### Version 4.0
 
 Version 4.0 was released in 2022, following a prior convention of breaking
-changes in consecutive years followed by a year with no breaking changes. This
-version is intended to support school years 2024-2025, 2025-2026. There is no
-plan for a 4.1 or other minor release.
+changes in consecutive years followed by a year with no breaking changes. There
+is no plan for a 4.1 or other minor release. Version 4.0 is now out of support;
+see [Ed-Fi Technology Suite Supported
+Versions](/reference/roadmap/supported-versions).
 
 ➡️ [Documentation for 4.0](/reference/data-exchange/data-standard/4/)
 
 ### Version 3.x
 
 Version 3.0 was released in 2018 and received several updates until 2022,
-through version 3.3.1. School year 2024-2025 will be the last year to support
-Data Standard 3.3.1; older 3.x releases are already out of support.
+through version 3.3.1. All 3.x releases are out of support; see [Ed-Fi
+Technology Suite Supported Versions](/reference/roadmap/supported-versions).
 
 ➡️ [Documentation for 3.3](/reference/data-exchange/data-standard/3/)
 
