@@ -431,10 +431,13 @@ deleted basis item. For example, with `SchoolWithAlternativeType` on
 `/schools/deletes`, every deleted school is denied. To authorize them, include
 deleted items in the view, as described in step 2 below. The `IncludingDeletes`
 suffix isn't needed in this case, because the deleted item's `DocumentId` is
-already recorded. `/keyChanges` isn't affected, because a changed item still
-exists. The suffix also isn't needed for a student, contact, or staff basis
-that is one of the resource's authorization values; if that person may have been
-deleted, include deleted people in the view the same way.
+already recorded. For `/keyChanges`, a view over live tables continues to
+authorize a changed item while it still exists and meets the view's conditions.
+An item's key changes stay on `/keyChanges` after the item is deleted, so if
+the item may be deleted later, the view must include deleted items too. The
+suffix also isn't needed for a student, contact, or staff basis that is one of
+the resource's authorization values; if that person may have been deleted,
+include deleted people in the view the same way.
 
 When the basis item has to be looked up, a deleted basis item can't be found.
 For example, with `SchoolWithAlternativeType` on

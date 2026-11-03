@@ -75,10 +75,45 @@ greater than zero, or the Configuration Service doesn't start. See
 Changing the iteration count invalidates every existing client secret. Because
 the count isn't stored with each hash, every secret hashed at the old count
 fails verification at the new one. Choose the count before you create any
-clients. If you change it later, re-issue every client secret: reset the
-credentials of each API client and give the client its new secret.
+clients.
 
 :::
+
+If you change the count later, every client stops authenticating:
+
+- API clients.
+- The Configuration Service clients that `setup-openiddict.ps1 -InsertData`
+  creates, such as the administrative `DmsConfigurationService` client, and any
+  client registered through `/connect/register`.
+- The client that the Ed-Fi API uses to read from the Configuration Service
+  (`ConfigurationServiceSettings:ClientId`, `CMSReadOnlyAccess` by default).
+  Until it's fixed, the Ed-Fi API can't load its configuration from the
+  Configuration Service.
+
+Restore administrative access first, because resetting an API client's
+credentials requires an administrative token. The `reset-credential` endpoints
+cover only API clients and applications. Rerunning `setup-openiddict.ps1` for
+an existing client ID leaves that client's stored hash unchanged. To recover:
+
+1. Create Configuration Service clients with new client IDs. New clients are
+   hashed at the new count.
+   - For administrative access, run `setup-openiddict.ps1 -InsertData` with a
+     new `-NewClientId` and a new secret, or, when
+     `IdentitySettings:AllowRegistration` is `true`, register a client through
+     `/connect/register`.
+   - For the Ed-Fi API, run `setup-openiddict.ps1 -InsertData` with a new
+     `-NewClientId`, a new secret, and
+     `-ClientScopeName "edfi_admin_api/readonly_access"`.
+
+   Pass the secret with `-NewClientSecret`, or with
+   `-NewClientSecretEnvironmentVariable` to name a variable that holds it.
+   Without either, the script uses its built-in default secret, which is
+   published in the Ed-Fi API repository.
+1. Set `ConfigurationServiceSettings:ClientId` and
+   `ConfigurationServiceSettings:ClientSecret` in the Ed-Fi API to the new
+   read-only client, and restart the Ed-Fi API.
+1. With the new administrative client, reset the credentials of each API client
+   and give each client its new secret.
 
 ### Replacing the Hasher
 
