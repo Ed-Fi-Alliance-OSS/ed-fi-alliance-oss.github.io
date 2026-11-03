@@ -16,8 +16,8 @@ Plan new implementations on Ed-Fi API v8. Ed-Fi API v8 is the long-term
 replacement for the ODS/API Platform, and the Ed-Fi Alliance plans to fully
 replace the ODS/API Platform with it by the 2029-2030 school year. The ODS/API
 Platform remains supported through the 2028-2029 school year, so an
-implementation that starts on ODS/API 7.x will need a second migration before
-then.
+implementation that starts on ODS/API 7.x will need to migrate to Ed-Fi API v8
+before the 2029-2030 school year.
 
 Use the latest Ed-Fi API v8 release. Once _Release 8.1_ is available (planned
 for November 2026), use 8.1 for all new implementations, including pilots.
