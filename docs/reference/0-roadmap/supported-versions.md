@@ -10,13 +10,16 @@ windows.
 
 As of the last updated date, these products and versions are fully supported:
 
-- Ed-Fi Data Standard 5.x and 6.x
-- Ed-Fi ODS/API 7.3.x
-- Ed-Fi API 8.0 (pilot / parallel use; 8.1 is planned for November 2026)
-- Ed-Fi ODS Admin API 2.4
-- Ed-Fi Admin App 4.1
-- Docker Deployments 3.2.x
-- API Publisher (latest version)
+- [Ed-Fi Data Standard](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Data-Standard/releases) 5.2 and 6.1
+- [Ed-Fi ODS/API](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS/releases) 7.3
+- [Ed-Fi API 8.1](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/releases)
+- [Ed-Fi ODS Admin API](https://github.com/Ed-Fi-Alliance-OSS/ODS-Admin-API/releases) 2.4
+- [Ed-Fi Admin App](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-AdminApp/releases) 4.1
+- [Docker Deployments for ODS/API Platform](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Docker/releases) 3.2
+- [API Publisher](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-API-Publisher/releases) 1.4
+- [MetaEd IDE](https://github.com/Ed-Fi-Alliance-OSS/vscode-metaed-ide/releases) 4.9
+
+The Data Standard does not typically have patch releases, only `major.minor` releases. For the other applications, the latest patch release is always the supported version. The list above includes the `major.minor` version; the Ed-Fi Alliance maintains support for the most recent patch release number. The links above go to the release page for each source code repository, where you can find the latest available patch release.
 
 Every other version listed below is in maintenance mode, out of support, or not
 yet released.
