@@ -14,7 +14,9 @@ client assigned to the `EdFiSandbox` claim set, with education organization IDs
 that cover the sample data's schools (for example, the district `255901`).
 Changing the claims document at runtime requires the Configuration Service
 setting
-`CONFIGURATION_SERVICE_DANGEROUSLY_ENABLE_UNRESTRICTED_CLAIMS_LOADING=true`.
+`CONFIGURATION_SERVICE_DANGEROUSLY_ENABLE_UNRESTRICTED_CLAIMS_LOADING=true`
+(`ClaimsOptions:DangerouslyEnableUnrestrictedClaimsLoading` if you don't use the
+Docker Compose files).
 
 ## Create the Custom Authorization View
 
@@ -241,8 +243,9 @@ A failed request returns a response like this:
 }
 ```
 
-If requests fail with `500 Internal Server Error` instead, check the view's
-name, schema, and `DocumentId` column, and see
+If requests fail with `500 Internal Server Error` instead, check the view's name
+and schema. The object must be a view, not a table, with a `DocumentId` column
+of type `bigint`. See
 [Configuration Errors](../technical-articles/authorizing-requests-using-custom-database-views.md#configuration-errors).
 
 :::info
