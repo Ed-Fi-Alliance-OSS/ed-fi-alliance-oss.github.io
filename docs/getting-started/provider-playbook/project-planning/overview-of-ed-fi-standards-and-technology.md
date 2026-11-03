@@ -1,22 +1,55 @@
 # Overview of Ed-Fi Standards and Technology
 
+This page introduces the Ed-Fi standards and technology for technology
+providers. For the full list of what makes up the Ed-Fi Technology Suite today,
+see [Ed-Fi Technology Suite Overview](/reference/technology-suite).
+
 ## What is the Ed-Fi Alliance?
 
-The Ed-Fi Alliance is a publisher of data exchange standards and an open-source software community
+The Ed-Fi Alliance publishes data exchange standards for K-12 education data
+and leads an open-source software community that builds technology to implement
+them.
 
-## What are the Ed-Fi Standards?
+## What are the Ed-Fi standards?
 
-These standards allow data to move seamlessly across many domains—including assessment, enrollment, attendance, grades, demographics, etc.—which, in turn, empowers educators to improve student performance.
+The [Ed-Fi Data Standard](/reference/data-exchange/data-standard) lets data
+move across many domains, including assessment, enrollment, attendance, grades,
+and demographics, which in turn helps educators improve student outcomes.
 
-These standards are reflected principally as Rest API specifications implemented by education agencies. This provides external systems a common API surface to build an integration around and removes the management of custom extracts.
+For technology providers, the standard takes shape mainly as the [Ed-Fi REST API
+Specifications](/reference/data-exchange#ed-fi-api-specifications). Education
+agencies deploy APIs that implement these specifications, which gives your
+product one common API surface to integrate with instead of a custom extract for
+each agency. See [Data Exchange Standards](/reference/data-exchange) for all the
+standards the Ed-Fi Alliance publishes.
 
-## What software is supported by Ed-Fi Alliance?
+## The standard and the technology are separate
 
-The Ed-Fi Alliance supports the Ed-Fi ODS/API Platform which consists of the Operational Data Store (ODS) and API. The Ed-Fi ODS/API Platform is a software platform that many education agencies use to aggregate data across disparate domains.
+The Data Standard and the technology that implements it are two separate
+things. The Ed-Fi Alliance builds two API platforms that implement the API
+specifications:
 
-Please note: The data standard and the technology that implements the standard are two separate things. Any system is welcome to implement the API specifications via different technologies.
+- **Ed-Fi API v8**, the next-generation platform and the long-term replacement
+  for the Ed-Fi ODS/API.
+- **Ed-Fi ODS/API** (versions through 7.x), the established platform, supported
+  through the 2028-2029 school year.
+
+These are implementations of the API, not the API itself. Any system may
+implement the API specifications using different technology. Build your
+integration to the specifications, and test it against the platforms your
+customers run. See [Ed-Fi API Platforms](/reference/ods-api-platform) for how the two
+platforms compare, and [Should a new Ed-Fi implementation use ODS/API 7.x or
+Ed-Fi API
+v8?](/reference/roadmap/api-faq#q-should-a-new-ed-fi-implementation-use-odsapi-7x-or-ed-fi-api-v8)
+for what client application developers should test.
 
 ## Key Concepts
 
-* The Ed-Fi Data Standard is focused on classroom-level decision making to improve student outcomes.
-* The Ed-Fi Alliance is both a publisher of data exchange standards and an open-source software effort.
+- The Ed-Fi Data Standard is focused on classroom-level decision making to
+  improve student outcomes.
+- The Ed-Fi Alliance is both a publisher of data exchange standards and an
+  open-source software community.
+- The Ed-Fi ODS/API and Ed-Fi API v8 implement the Ed-Fi API specifications;
+  they are not the standard itself.
+- For which versions are supported, see [Supported
+  Versions](/reference/roadmap/supported-versions).
