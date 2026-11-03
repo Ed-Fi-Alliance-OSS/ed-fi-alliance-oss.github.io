@@ -9,26 +9,42 @@ via the Configuration Service API.
 
 ## Choosing an Approach
 
-The Configuration Service provides three mechanisms for managing claims, each
+The Configuration Service provides several mechanisms for managing claims, each
 suited to different scenarios:
 
-| Scenario                                                                        | Approach                         |
-| ------------------------------------------------------------------------------- | -------------------------------- |
-| Create a new custom claim set with specific resource permissions                | `POST /v3/claimSets/import`      |
-| Override authorization strategies for a specific claim set on a resource        | `POST /v3/claimSets/import`      |
-| Change the default authorization strategy for a resource or domain (dev/test)   | `POST /management/upload-claims` |
-| Add extension resources to the claims taxonomy (dev/test)                       | `POST /management/upload-claims` |
-| Restructure domain groupings or remove claims from the taxonomy (dev/test)      | `POST /management/upload-claims` |
-| Change the default authorization strategy for a resource or domain (production) | Deployment-time loading          |
-| Add extension resources to the claims taxonomy (production)                     | Deployment-time loading          |
-| Restructure domain groupings or remove claims from the taxonomy (production)    | Deployment-time loading          |
+| Scenario                                                                        | Approach                                            |
+| ------------------------------------------------------------------------------- | --------------------------------------------------- |
+| Create or replace a custom claim set with specific resource permissions         | `POST /v3/claimSets/import`                         |
+| Override authorization strategies for a specific claim set on a resource        | `POST /v3/claimSets/import`                         |
+| Change one resource claim's actions or overrides on an existing claim set       | `/v3/claimSets/{id}/resourceClaimActions` endpoints |
+| Change the default authorization strategy for a resource or domain (dev/test)   | `POST /management/upload-claims`                    |
+| Add extension resources to the claims taxonomy (dev/test)                       | `POST /management/upload-claims`                    |
+| Restructure domain groupings or remove claims from the taxonomy (dev/test)      | `POST /management/upload-claims`                    |
+| Change the default authorization strategy for a resource or domain (production) | Deployment-time loading                             |
+| Add extension resources to the claims taxonomy (production)                     | Deployment-time loading                             |
+| Restructure domain groupings or remove claims from the taxonomy (production)    | Deployment-time loading                             |
 
-**`POST /v3/claimSets/import`** operates at the claim set level. It creates a
-new custom claim set and defines which resources it can access and with what
-actions. It is non-destructive (only the imported claim set is affected) and
-does not require the unrestricted claims loading flag. The resource claim names
-referenced must already exist in the taxonomy. See
+**`POST /v3/claimSets/import`** operates at the claim set level. It defines
+which resources a claim set can access and with what actions. If no claim set
+has the name, it creates one. If a claim set that isn't system-reserved already
+has the name, the import replaces its grants. Built-in claim sets such as
+`SISVendor` are system-reserved and can't be imported; copy one first. Only the
+imported claim set is affected, and the unrestricted claims loading flag isn't
+required. Resource claims that aren't in the taxonomy are skipped and listed in
+the response's `warnings`, so check them after every import. See
 [How To: Configure Claim Sets](./how-to-configure-claim-sets.md) for examples.
+
+**The `/v3/claimSets/{id}/resourceClaimActions` endpoints** change one resource
+claim on an existing claim set that isn't system-reserved: grant or remove
+actions, or override or reset its authorization strategies. You don't need to
+re-import the whole claim set. See
+[Managing a Claim Set's Resource Claims](../platform-dev-guide/security/api-claim-sets-resources.md#managing-a-claim-sets-resource-claims).
+
+Claim set import and the `resourceClaimActions` endpoints accept only built-in
+authorization strategies. To use a
+[custom view-based authorization](./how-to-use-custom-view-based-authorization.mdx)
+strategy, change the claims document instead, with `upload-claims` or
+deployment-time loading.
 
 **`POST /management/upload-claims`** replaces the entire claims hierarchy
 atomically. Use it when the change involves the taxonomy itself: default
@@ -248,7 +264,8 @@ strategy can be used as an override on the Update and Delete actions.
 
 The out-of-the-box default authorization metadata for the
 `relationshipBasedData` domain applies the general-purpose relationship-based
-strategy to all actions. The following JSON adds the `SISVendor` claim set with
+strategy to the CRUD actions, and its `IncludingDeletes` variant to
+`ReadChanges`. The following JSON adds the `SISVendor` claim set with
 ownership-based overrides on Update and Delete:
 
 ```json
@@ -279,6 +296,12 @@ ownership-based overrides on Update and Delete:
           "name": "Delete",
           "authorizationStrategies": [
             { "name": "RelationshipsWithEdOrgsAndPeople" }
+          ]
+        },
+        {
+          "name": "ReadChanges",
+          "authorizationStrategies": [
+            { "name": "RelationshipsWithEdOrgsAndPeopleIncludingDeletes" }
           ]
         }
       ]
@@ -314,6 +337,12 @@ Notice that the Create and Read actions rely on the `defaultAuthorization`
 defined for the domain claim rather than repeating the strategy locally, which
 would be redundant.
 
+The `OwnershipBased` override works only after the vendors' API clients are
+assigned ownership tokens. It denies access to records that have no owner, such
+as records created before the creating client had a creator token. See
+[Ownership-Based Authorization](../platform-dev-guide/security/ownership-based-authorization.md)
+for setup.
+
 ### Building a Security Policy
 
 Each of the examples in the previous sections is a partial view. A complete
@@ -346,7 +375,7 @@ There are two practical starting points for a complete policy:
 
 - The `Claims.json` shipped with the Configuration Service for your data
   standard version, in
-  [`Claims/Standards/ds{version}/`](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/tree/main/src/config/backend/EdFi.DmsConfigurationService.Backend/Claims/Standards).
+  [`Claims/Standards/ds{version}/`](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/tree/main/src/config/backend/EdFi.DmsConfigurationService.Claims/Claims/Standards).
   Use the file from the release you deploy.
 - The active document downloaded from `GET /management/current-claims` (see
   [Runtime Upload via Configuration Service](#runtime-upload-via-configuration-service)).
@@ -366,6 +395,24 @@ To add extension resources without maintaining a complete document, use claims
 fragments instead; see
 [Introducing Extension Resources into the Taxonomy](#introducing-extension-resources-into-the-taxonomy).
 
+To review the result of your fragments before you deploy them, build the
+complete document offline with the `merge` command of the
+[Ed-Fi API Security Metadata Tools](../platform-dev-guide/utilities/security-metadata-tools.md#install).
+It applies the fragments in a directory to the bundled base claims for a data
+standard version. Use the same version as the Configuration Service's
+`CONFIGURATION_SERVICE_DATA_STANDARD_VERSION`. The output folder must already
+exist:
+
+```powershell
+New-Item -ItemType Directory -Force ./policy-output | Out-Null
+security-metadata-tools merge --fragments ./fragments `
+  --data-standard-version 5.2 --output ./policy-output/Claims.json
+```
+
+Use the version of the tool that matches the Configuration Service you deploy.
+The result is a complete document that you can deploy with Filesystem loading or
+upload. Don't also deploy the fragments it already includes.
+
 ### Adding New Claims
 
 When the hierarchy is loaded, the Configuration Service automatically derives a
@@ -375,8 +422,11 @@ needed.
 
 ### Adding Authorization Strategies and Actions
 
-Authorization strategies and actions cannot be defined through the policy
-document; the values must match those built into the service.
+Actions can't be defined through the policy document; use the actions built into
+the service. An authorization strategy must be either a built-in strategy or the
+name of a custom authorization view. The Ed-Fi API treats a name that isn't
+built in as a view in the `auth` schema. See
+[How To: Use Custom View-Based Authorization](./how-to-use-custom-view-based-authorization.mdx).
 
 ### Introducing Extension Resources into the Taxonomy
 
@@ -731,8 +781,8 @@ CONFIGURATION_SERVICE_CLAIMS_SOURCE=Embedded
 ```
 
 The
-[`Claims/Standards/ds{version}/Claims.json`](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/tree/main/src/config/backend/EdFi.DmsConfigurationService.Backend/Claims/Standards)
-file in the `EdFi.DmsConfigurationService.Backend` project is compiled into the
+[`Claims/Standards/ds{version}/Claims.json`](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/tree/main/src/config/backend/EdFi.DmsConfigurationService.Claims/Claims/Standards)
+file in the `EdFi.DmsConfigurationService.Claims` project is compiled into the
 Configuration Service assembly as an embedded resource. On startup, if the
 database tables are empty, the service seeds the `ClaimSet`, `ResourceClaim`,
 and `ClaimsHierarchy` tables from that embedded file. The embedded file changes
@@ -986,6 +1036,25 @@ abridged example:
 Use it to confirm that new resource claims appear for the claim sets you
 expected, with the actions and strategies you intended. Domain claims don't
 appear in the response, only the resource claims beneath them.
+
+To compare a whole claims document with what is enforced, use the `verify`
+command of the
+[Ed-Fi API Security Metadata Tools](../platform-dev-guide/utilities/security-metadata-tools.md#install).
+It reads `GET /v3/authorizationMetadata` and reports every claim set, claim,
+action, or strategy that differs from the document. Pass the _name_ of an
+environment variable that holds a Configuration Service token, not the token
+itself:
+
+```powershell
+$env:CMS_ACCESS_TOKEN = $token.access_token
+security-metadata-tools verify --input ./policy-output/Claims.json `
+  --cms-url http://localhost:8081 --access-token-env CMS_ACCESS_TOKEN
+Remove-Item Env:CMS_ACCESS_TOKEN
+```
+
+For a multi-tenant deployment, add `--tenant <tenant-name>`. `verify` compares
+every claim set, so system-reserved claim sets kept by an upload but missing
+from the document are reported as unexpected.
 
 :::note
 
