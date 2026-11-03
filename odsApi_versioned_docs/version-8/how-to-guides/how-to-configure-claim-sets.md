@@ -31,6 +31,8 @@ Out of the box, the Ed-Fi API ships with the following built-in claim sets:
   financial (Finance domain) data.
 - **RosterVendor** - Provides Read-only permissions on a set of resources used
   for rostering Student and Staff Section data.
+- **SeedLoader** - Provides Create and Update permissions for loading seed and
+  sample data, such as descriptors, education organizations, and students.
 - **SISVendor** - Provides CRUD permissions on the most common resources
   representing staff and student school and classroom data. Typically used by
   an implementer with a multi-tenant LEA deployment.
@@ -40,10 +42,20 @@ can be created to suit specific needs.
 
 :::info
 
-Claim set and security configuration changes made in the Configuration Service
-are reflected in the Ed-Fi API after the next cache refresh cycle. See
-[Caching Strategy](../technical-articles/caching-strategy.md) for TTL details
-and how to force an immediate reload.
+The Ed-Fi API caches claim sets, so a change made in the Configuration Service
+can take up to 10 minutes to apply
+(`CacheSettings:ClaimSetsCacheExpirationSeconds`, default `600`). To apply it
+sooner, do one of the following:
+
+- Restart the Ed-Fi API.
+- Call the Ed-Fi API's `POST /management/reload-claimsets` endpoint
+  (`/management/{tenant}/reload-claimsets` with multi-tenancy). The endpoint is
+  off by default. To turn it on, set `AppSettings:ManagementEndpoints:Enabled`
+  to `true` and `AppSettings:ManagementEndpoints:RequiredRole` to a role. The
+  caller's token must carry that role. See [Optional
+  Settings](../platform-dev-guide/configuration/configuration-details.mdx#optional-settings).
+
+See [Caching Strategy](../technical-articles/caching-strategy.md) for details.
 
 :::
 
@@ -51,7 +63,12 @@ and how to force an immediate reload.
 
 The `POST /v3/claimSets/import` endpoint documented on this page is the right
 choice when you need to create or modify a custom claim set without touching the
-underlying claims taxonomy. For a full comparison of available mechanisms for
+underlying claims taxonomy. To change one resource claim on an existing custom
+claim set, without re-importing the whole claim set, use the
+`/v3/claimSets/{claimSetId}/resourceClaimActions` endpoints instead; see
+[Managing a Claim Set's Resource
+Claims](../platform-dev-guide/security/api-claim-sets-resources.md#managing-a-claim-sets-resource-claims).
+For a full comparison of available mechanisms for
 updating security metadata and when to use each, see [Choosing an
 Approach](./how-to-create-and-manage-api-security-metadata.mdx#choosing-an-approach)
 in How To: Create and Manage API Security Metadata.
@@ -59,7 +76,15 @@ in How To: Create and Manage API Security Metadata.
 ## Add a Resource and Action to a Claim Set
 
 You can create new claim sets and define the resource actions granted to them
-using the `POST /v3/claimSets/import` endpoint.
+using the `POST /v3/claimSets/import` endpoint. The import matches claim sets by
+name:
+
+- If no claim set has the name, the import creates one.
+- If a claim set that isn't system-reserved already has the name, the import
+  replaces all of its grants with the ones in the request.
+- Importing a built-in claim set, such as `SISVendor`, returns
+  `400 Bad Request`, because built-in claim sets are system-reserved. To start
+  from one, copy it first (see below).
 
 :::info
 
@@ -117,7 +142,20 @@ Invoke-RestMethod -Method Post -Uri "http://localhost:8081/v3/claimSets/import" 
   -Body $body
 ```
 
-The response includes the new claim set ID in the `Location` response header.
+A successful import returns `201 Created` with the claim set's URL in the
+`Location` header and a body like this:
+
+```json
+{
+  "id": 14,
+  "warnings": []
+}
+```
+
+Check `warnings` after every import. A resource claim that isn't in the claims
+taxonomy doesn't fail the import: it is skipped and listed in `warnings`. A
+`parentClaimName` that doesn't match the taxonomy is also reported there.
+
 To start from an existing claim set as a template, use
 `POST /v3/claimSets/copy` with the `originalId` of the claim set to copy and
 the `claimSetName` for the new one.
@@ -172,3 +210,8 @@ Invoke-RestMethod -Method Post -Uri "http://localhost:8081/v3/claimSets/import" 
 
 The override applies only to the specified claim set; all other claim sets
 continue using the default authorization strategy for this resource.
+
+Overrides must name built-in authorization strategies; any other name returns
+`400 Bad Request`. To use a custom view-based authorization strategy, add it to
+the claims document instead; see [How To: Use Custom View-Based
+Authorization](./how-to-use-custom-view-based-authorization.mdx).
