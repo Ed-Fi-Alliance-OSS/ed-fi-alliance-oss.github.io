@@ -26,6 +26,14 @@ Teams already running 8.0 should plan to upgrade to 8.1, and should expect to
 re-provision their databases when they do. The [Ed-Fi API v8 Pilot Test
 Kit](https://github.com/Ed-Fi-Exchange-OSS/Ed-Fi-API-v8-pilot-testing-kit)
 provides a non-production environment for testing client integrations against
+Use the latest Ed-Fi API v8 release. Once _Release 8.1_ ships (planned for
+November 2026), start all new implementations, including pilots, on 8.1.
+_Release 8.0_ remains available for pilots and parallel use already under way
+in school year 2026-2027. Teams already running 8.0 should plan to upgrade to
+8.1, and should expect to re-provision their databases when they do. The
+[Ed-Fi API v8 Pilot Test
+Kit](https://github.com/Ed-Fi-Exchange-OSS/Ed-Fi-API-v8-pilot-testing-kit)
+provides a non-production environment for testing client integrations against
 Ed-Fi API v8.
 
 **Client application developers (SIS, assessment, and other vendors):** Ed-Fi
