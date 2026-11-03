@@ -4,7 +4,7 @@ First published: 3 November 2026
 
 ## What is Happening
 
-The [Ed-Fi ODS/API Docker deployments](/reference/docker) are no longer
+The [Ed-Fi ODS/API Docker deployments](/reference/docker) are no longer actively
 maintained as part of the Ed-Fi Alliance Technology Suite. They are moving to
 [Ed-Fi Community Tools](/getting-started/community-tools). All Docker
 deployment releases are now [out of support](./readme.mdx).
