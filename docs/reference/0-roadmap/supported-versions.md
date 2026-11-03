@@ -15,7 +15,6 @@ As of the last updated date, these products and versions are fully supported:
 - [Ed-Fi API](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/releases) 8.0
 - [Ed-Fi ODS Admin API](https://github.com/Ed-Fi-Alliance-OSS/ODS-Admin-API/releases) 2.4
 - [Ed-Fi Admin App](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-AdminApp/releases) 4.1
-- [Docker Deployments for ODS/API Platform](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Docker/releases) 3.2
 - [API Publisher](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-API-Publisher/releases) 1.4
 - [MetaEd IDE](https://github.com/Ed-Fi-Alliance-OSS/vscode-metaed-ide/releases) 4.9
 
@@ -156,20 +155,30 @@ App 4.2 is scheduled for release in December 2026.
 
 ### Docker Deployments
 
+:::warning
+
+The Ed-Fi ODS/API Docker deployments are no longer maintained as part of the
+Ed-Fi Alliance Technology Suite and are moving to [Ed-Fi Community
+Tools](/getting-started/community-tools). The Ed-Fi Alliance may still update
+them from time to time, but does not commit to supporting them or to releasing
+them alongside new ODS/API versions.
+
+:::
+
 The [sample Docker Compose scripts](../7-docker/readme.mdx) demonstrate how to
 run these applications together, and provide a quick startup option for running
-a local testing environment. Because these are demonstration scripts, not meant
-for production, they are not always fully up-to-date with the latest software
-versions.
+a local testing environment. They are demonstrations, not production
+components. Docker release numbers track which components are in the kit, not
+the versions of those components.
 
-| Version | Status           | Supports                                            |
-| ------- | ---------------- | --------------------------------------------------- |
-| 2.3.x   | Maintenance mode | ODS/API 6.2.x and Admin App 3.2.1                   |
-| 3.2.x   | Fully supported  | ODS/API 7.3 and Admin API 2.4                       |
+| Version | Status         | Deploys                           |
+| ------- | -------------- | --------------------------------- |
+| 2.3.x   | Out of support | ODS/API 6.2.x and Admin App 3.2.1 |
+| 3.2.x   | Out of support | ODS/API 7.3 and Admin API 2.2     |
 
-Out of support: Docker 3.0.x and 3.1.x (replaced by 3.2), and all releases prior
-to 2.3, including the Docker 2.1.x releases that supported ODS/API 5.3 and 5.4,
-and the Docker 2.2.x release that supported ODS/API 6.0 and Admin App 3.0.
+Earlier releases include Docker 3.0.x and 3.1.x, the Docker 2.2.x release that
+deployed ODS/API 6.0 and Admin App 3.0, and the Docker 2.1.x releases that
+deployed ODS/API 5.3 and 5.4.
 
 ## Ed-Fi API
 
