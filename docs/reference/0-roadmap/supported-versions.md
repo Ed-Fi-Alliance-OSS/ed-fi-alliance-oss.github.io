@@ -161,7 +161,8 @@ The Ed-Fi ODS/API Docker deployments are no longer maintained as part of the
 Ed-Fi Alliance Technology Suite and are moving to [Ed-Fi Community
 Tools](/getting-started/community-tools). The Ed-Fi Alliance may still update
 them from time to time, but does not commit to supporting them or to releasing
-them alongside new ODS/API versions.
+them alongside new ODS/API versions. See [Docker Deployments Transitioning to
+Ed-Fi Community Tools](./notifications/docker.md).
 
 :::
 
@@ -206,14 +207,15 @@ Only the latest version is formally supported.
 
 All versions of these applications are no longer supported.
 
-| Product                             | Notice                                                                            | Ed-Fi Community Tools                                                                                                     |
-| ----------------------------------- | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| Data Import                         | [Transitioning to Ed-Fi Community Tools](./notifications/data-import.md)          | [Data Import](/getting-started/community-tools/technology/data-import)                                                    |
-| Analytics Middle Tier               | [Transitioning to Ed-Fi Community Tools](./notifications/amt.md)                  | (coming soon)                                                                                                             |
-| Migration Utility                   | [End of Support Notice and Product Discontinuation](./notifications/migration.md) | [ODS Migration Utility](https://edfi.atlassian.net/wiki/spaces/EXCHANGE/pages/22492292/Migration+Utility)                 |
-| MappingEDU                          | [MappingEDU - Service EOL and Open Source Notice](./notifications/mappingedu.md)  | [MappingEDU](https://edfi.atlassian.net/wiki/spaces/EXCHANGE/pages/22496563/MappingEDU)                                   |
-| LMS Toolkit                         | not available                                                                     | [Ed-Fi LMS Toolkit](https://edfi.atlassian.net/wiki/spaces/EXCHANGE/pages/22498933/Ed-Fi+LMS+Toolkit)                     |
-| Sample Data Generator               | not available                                                                     | [Ed-Fi Sample Data Generator](https://edfi.atlassian.net/wiki/spaces/EXCHANGE/pages/22495849/Ed-Fi+Sample+Data+Generator) |
-| Ed-Fi Technology Suite 2            | [End of Support Notice](./notifications/suite-two.md)                             | not applicable                                                                                                            |
-| Ed-Fi ODS 1.x                       | not available                                                                     | not applicable                                                                                                            |
-| Ed-Fi Dashboards                    | not available                                                                     | Not applicable                                                                                                            |
+| Product                  | Notice                                                                            | Ed-Fi Community Tools                                                                                                     |
+| ------------------------ | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| Data Import              | [Transitioning to Ed-Fi Community Tools](./notifications/data-import.md)          | [Data Import](/getting-started/community-tools/technology/data-import)                                                    |
+| Docker Deployments       | [Transitioning to Ed-Fi Community Tools](./notifications/docker.md)               | (coming soon)                                                                                                             |
+| Analytics Middle Tier    | [Transitioning to Ed-Fi Community Tools](./notifications/amt.md)                  | (coming soon)                                                                                                             |
+| Migration Utility        | [End of Support Notice and Product Discontinuation](./notifications/migration.md) | [ODS Migration Utility](https://edfi.atlassian.net/wiki/spaces/EXCHANGE/pages/22492292/Migration+Utility)                 |
+| MappingEDU               | [MappingEDU - Service EOL and Open Source Notice](./notifications/mappingedu.md)  | [MappingEDU](https://edfi.atlassian.net/wiki/spaces/EXCHANGE/pages/22496563/MappingEDU)                                   |
+| LMS Toolkit              | not available                                                                     | [Ed-Fi LMS Toolkit](https://edfi.atlassian.net/wiki/spaces/EXCHANGE/pages/22498933/Ed-Fi+LMS+Toolkit)                     |
+| Sample Data Generator    | not available                                                                     | [Ed-Fi Sample Data Generator](https://edfi.atlassian.net/wiki/spaces/EXCHANGE/pages/22495849/Ed-Fi+Sample+Data+Generator) |
+| Ed-Fi Technology Suite 2 | [End of Support Notice](./notifications/suite-two.md)                             | not applicable                                                                                                            |
+| Ed-Fi ODS 1.x            | not available                                                                     | not applicable                                                                                                            |
+| Ed-Fi Dashboards         | not available                                                                     | Not applicable                                                                                                            |
