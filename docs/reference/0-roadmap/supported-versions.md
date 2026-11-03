@@ -141,7 +141,7 @@ Tools](./notifications/admin-app-to-community-tools.md).
 The new Ed-Fi Admin App user interface (version 4.0) was released in December
 2025. This application provides an all new front-end application paired with the
 ODS Admin API on the backend. It supports ODS/API 6.x and ODS/API 7.x. Admin
-App 4.1, released in early November 2026, adds support for Ed-Fi API v8. Admin
+App 4.1, released in early November 2026, adds support for Ed-Fi API v8.x. Admin
 App 4.2 is scheduled for release in December 2026.
 
 | Version | Status          | Timeline                                     | Supports API                    |
