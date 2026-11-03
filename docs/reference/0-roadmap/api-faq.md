@@ -19,13 +19,6 @@ Platform remains supported through the 2028-2029 school year, so an
 implementation that starts on ODS/API 7.x will need to migrate to Ed-Fi API v8
 before the 2029-2030 school year.
 
-Use the latest Ed-Fi API v8 release. Once _Release 8.1_ is available (planned
-for November 2026), use 8.1 for all new implementations, including pilots.
-_Release 8.0_ is intended for pilot and parallel use in school year 2026-2027.
-Teams already running 8.0 should plan to upgrade to 8.1, and should expect to
-re-provision their databases when they do. The [Ed-Fi API v8 Pilot Test
-Kit](https://github.com/Ed-Fi-Exchange-OSS/Ed-Fi-API-v8-pilot-testing-kit)
-provides a non-production environment for testing client integrations against
 Use the latest Ed-Fi API v8 release. Once _Release 8.1_ ships (planned for
 November 2026), start all new implementations, including pilots, on 8.1.
 _Release 8.0_ remains available for pilots and parallel use already under way
@@ -250,9 +243,13 @@ graph LR
 
 ### Q: Will integrations built for the ODS/API continue to work with the new system?
 
-Ed-Fi API v8 will be a fully compatible implementation of the Ed-Fi API
-specification. Client applications that interact with the REST API will continue
-to work.
+Ed-Fi API v8 is a fully compatible implementation of the Ed-Fi API
+specification, so most client applications that interact with the REST API
+continue to work. Some changes, such as case-sensitive property names and new
+URL paths, can affect existing clients. Review the [breaking changes and
+migration
+checklist](/reference/ed-fi-api/8/whats-new/release-notes#ed-fi-api-v80---breaking-changes-from-previous-releases)
+before moving a client to Ed-Fi API v8.
 
 The backend data store in Ed-Fi API v8 differs from the ODS/API, but it remains
 ODS-like and relational. To support existing reporting, analytics, and
