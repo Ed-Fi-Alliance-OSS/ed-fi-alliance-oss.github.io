@@ -38,7 +38,7 @@ and test against Ed-Fi API v8.
 
 Use ODS/API 7.3 only if you need production use before Ed-Fi API v8 is ready
 for your needs, or if you depend on a feature that is [not yet available in
-Ed-Fi API v8.0](/reference/ed-fi-api/8/whats-new/release-notes#feature-availability).
+Ed-Fi API v8](/reference/ed-fi-api/8/whats-new/release-notes#feature-availability).
 If you do, plan your move to Ed-Fi API v8 now: see [How can I / my team prepare
 for the upgrade?](#q-how-can-i--my-team-prepare-for-the-upgrade) below.
 
