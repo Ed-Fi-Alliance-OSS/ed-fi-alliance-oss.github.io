@@ -98,6 +98,12 @@ need the details in this section. They matter when the basis resource is
 reached through other resources, when a resource has more than one reference to
 it, or when you use change queries (see [Change Queries](#change-queries)).
 
+A reference to a resource that has several types, such as an education
+organization, also reaches a basis resource that is one of those types. For
+example, with a `School` basis resource, a resource's
+`educationOrganizationReference` is checked against the view, so items that
+reference an education organization that isn't a school are denied.
+
 The resource being authorized can reach the basis resource through a direct
 reference, such as a student assessment's reference to an assessment, or
 through a chain of references, such as:
@@ -363,6 +369,10 @@ A denied request returns `403 Forbidden` with the type
 }
 ```
 
+The error says "existing value" when the stored item is denied. When the new
+values in a Create or Update are denied, it says "proposed value" instead. When
+more than one property leads to the basis resource, the error lists them all.
+
 If the reference to the basis resource is empty:
 
 - A read or delete of a stored item without that reference fails with `403
@@ -384,8 +394,8 @@ authorization values. If it isn't, change query requests for that resource fail
 with a security configuration error.
 
 A descriptor basis resource reached through another resource has one more
-requirement: the descriptor value must be part of the identity of every
-resource on the path, so that it's recorded in the tracked-change table. For
+requirement: the descriptor value must be part of the identity of the resource
+that holds it, so that it's recorded in the tracked-change table. For
 example, a student school association can reach a school type descriptor
 through its school reference, and this works for regular requests. But a school
 type isn't part of a school's identity, so it isn't recorded when an association
@@ -401,7 +411,9 @@ resource is:
   that `DocumentId`, the item is authorized, even if the basis item has since
   been deleted. A student, contact, or staff member counts only when the
   resource's reference to them is one of its authorization values, which is
-  usually the case.
+  usually the case. When the basis resource is the resource itself, the
+  deleted item _is_ the basis item, so a view over live tables never returns
+  it; see the next section.
 - **Any other resource**, including a student, contact, or staff member
   referenced in some other way. The Ed-Fi API uses the recorded values to look
   up the basis item, and checks the `DocumentId` of the item it finds. If the
@@ -411,10 +423,27 @@ resource is:
 
 #### Authorizing Items Whose Basis Was Deleted
 
+A view that queries only live tables stops returning an item's `DocumentId`
+once the item is deleted. How you fix that depends on the basis resource.
+
+When the basis resource is the resource itself, every item on `/deletes` is a
+deleted basis item. For example, with `SchoolWithAlternativeType` on
+`/schools/deletes`, every deleted school is denied. To authorize them, include
+deleted items in the view, as described in step 2 below. The `IncludingDeletes`
+suffix isn't needed in this case, because the deleted item's `DocumentId` is
+already recorded. For `/keyChanges`, a view over live tables continues to
+authorize a changed item while it still exists and meets the view's conditions.
+An item's key changes stay on `/keyChanges` after the item is deleted, so if
+the item may be deleted later, the view must include deleted items too. The
+suffix also isn't needed for a student, contact, or staff basis that is one of
+the resource's authorization values; if that person may have been deleted,
+include deleted people in the view the same way.
+
 When the basis item has to be looked up, a deleted basis item can't be found.
 For example, with `SchoolWithAlternativeType` on
 `/studentSchoolAssociations/deletes`, a deleted enrollment is denied once its
-school has also been deleted. To keep authorizing items like this:
+school has also been deleted. To keep authorizing items like this, use both
+steps:
 
 1. **Add `IncludingDeletes` to the end of the strategy and view names**, for
    example `SchoolWithAlternativeTypeIncludingDeletes`. The Ed-Fi API then also
@@ -503,10 +532,11 @@ empty result. Check the Ed-Fi API log for details.
   no `bigint` `DocumentId` column, requests fail with `500 Internal Server Error`
   and the type `urn:ed-fi:api:system`. This includes a PostgreSQL view created
   without quotes around its name.
-- **An unknown basis resource.** If the strategy name has no `With`, or no
-  resource name matches the part before it, requests fail with `500 Internal
-  Server Error`, the type `urn:ed-fi:api:system:configuration:security`, and
-  the title "Security Configuration Error".
+- **An unknown basis resource.** If the strategy name has no `With` with text
+  on both sides of it, or no resource name matches the part before it, requests
+  fail with `500 Internal Server Error`, the type
+  `urn:ed-fi:api:system:configuration:security`, and the title "Security
+  Configuration Error".
 - **No path to the basis resource.** If the resource being authorized can't
   reach the basis resource through the references described in [Which References
   Are Used](#which-references-are-used), requests fail with the same security
@@ -517,3 +547,10 @@ A view is only checked when the strategies before it pass. For example, if
 `NamespaceBased` is listed before the view and denies a request, the response is
 a `403 Forbidden`. Since the view isn't checked, a missing or invalid view
 doesn't cause a `500` for that request.
+
+On `/deletes` and `/keyChanges`, the checks don't follow the configured order
+in two cases. `NamespaceBased` for a client with no namespace prefixes returns
+its `403` before any view is checked. A strategy with a security configuration
+error, such as a basis resource that can't be reached, returns that error before
+`NamespaceBased` runs. Both cases matter only when a request is misconfigured in
+two ways at once.
