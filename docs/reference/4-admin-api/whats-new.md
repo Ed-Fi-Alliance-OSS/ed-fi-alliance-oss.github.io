@@ -3,7 +3,67 @@
 This section provides an overview of what's new in the latest versions of the
 Admin API.
 
-## Updates in Admin API v2.3.2 (Latest Release)
+## Updates in Admin API v2.4.0 (Latest Release)
+
+Admin API v2.4 improves how administrators manage credentials, education
+organizations, and database instances, and adds a new `v3` API mode alongside
+the existing v1 and v2 modes.
+
+### Breaking Changes
+
+The `v3` mode is new in this release, so nothing about it can break an existing
+integration. The items below affect v1 and v2 deployments and need attention
+before you upgrade.
+
+* **Keycloak is no longer supported.** Signing in through an external identity provider has been removed, along with the IdP Docker Compose files, the `env-idp.example` templates, and the matching installer options. A deployment using Keycloak must move to Admin API's built-in sign-in first. There is no in-place upgrade path.
+* **.NET 10 is required.** Install the .NET 10 runtime on every application host before upgrading. .NET 8 is no longer supported.
+* **The API clients endpoint is now spelled `apiClients`.** The all-lowercase `apiclients` spelling no longer resolves. Update any script or integration that calls it.
+* **Instance management endpoints moved** to `/v2/odsInstances/manage`.
+* **Some education organization endpoints were removed**, including `/odsInstances/edOrgs` and the older "list by instance" and "list by data store" endpoints. Use the current education organization endpoints instead.
+* **Refreshing education organizations is now asynchronous.** The request returns `202 Accepted` to say the work has been queued instead of waiting for it to finish. Use the new job status endpoints to see the result.
+* **Database instance names are limited to 46 characters.** Admin API builds the database name from the name you supply, and the finished name has to fit a 63-character limit. This applies when creating an instance; existing instances are unaffected.
+
+### Features
+
+* **A new `v3` API mode.** `v3` implements the Management API v3 specification, the same specification used by the Ed-Fi Configuration Management Service. It is offered alongside v1 and v2, which are unchanged, so you can adopt it when you are ready. An instance serves one mode at a time: set `AppSettings:adminApiMode` to `v1`, `v2` or `v3`, and a request to a path that does not match the configured mode is rejected with `400 Bad Request`. When the setting is absent the mode is `v2`. Within `v3`:
+  * _Data stores_ replace _ODS instances_ as the name for a database an application reads from and writes to.
+  * Errors follow the RFC 9457 Problem Details format, returning a structured body instead of a plain message.
+  * The API clients resource no longer carries `UseSandbox` or `SandboxType`. These recorded whether a credential pointed at a sandbox — a practice environment vendors use with non-production data — which Admin API no longer sets. The `key` field is now named `clientId`.
+  * Claim set payloads use a single flat shape.
+  * A created resource returns a full URL in its `Location` header.
+  * Connection strings are encrypted and are no longer returned in API responses.
+* **API clients can be limited to specific education organizations.** A credential can now cover a subset of its application's education organizations rather than all of them.
+* **An application can hold more than one credential.** An application is no longer tied to a single set of keys, so credentials can be rotated or separated per integration.
+* **Database instances are created and deleted in the background.** Provisioning from a database template no longer blocks the request, and new endpoints report the status of each job.
+* **Audit logging covers more of the application.** Entries now record tenant and outcome, and a deletion records which record was removed so the trail stays readable afterwards.
+* **A new `/tenancy` endpoint and a fuller `GET /` response**, including a new `SpecificationVersion` field.
+* **`GET /v2/tenants` and `GET /v2/tenants/{tenantName}` are available again.**
+* **A new `EnableDataStoreManagement` setting** turns instance management off entirely, for deployments that provision databases another way.
+* **Duplicate names are rejected** for vendors, applications, and API clients.
+* **Education organization responses include `dbInstanceId`.**
+
+### Enhancements
+
+* Critical and high findings from the security review have been addressed.
+* Stored connection strings are encrypted, including ones found unencrypted when read.
+* PostgreSQL images are now built on a Docker Hardened Image.
+* DbDeploy upgraded to 4.3.2.
+* Fixes released in Admin API 2.3.1 are carried forward into this release.
+* Dependency versions are locked for reproducible builds, and compiler warnings are treated as errors.
+* API specifications now come from the specification repository rather than being maintained alongside the code.
+
+### Bug Fixes
+
+* Fixed an audit log error in multi-tenant configurations.
+* Fixed editing an application that has no API clients or more than one.
+* Fixed the duplicate-name message returned when updating a data store or ODS instance.
+* Fixed an installation error when IIS hosts multiple websites.
+* Fixed endpoints that were not returning every instance or data store.
+* Fixed the education organization refresh endpoints.
+* Restored database initialization script scanning in the `ods-admin-api-db` container.
+* Corrected inaccurate Swagger/OpenAPI documentation.
+
+## Updates in Admin API v2.3.2
 
 ### Bug Fix
 

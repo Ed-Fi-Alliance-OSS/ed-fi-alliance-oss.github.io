@@ -67,7 +67,7 @@ have been tested and gain full support in Admin App v4.1.
   API's `POST /connect/register` endpoint, which requires
   `Authentication:AllowRegistration=true` in the Admin API's
   `appsettings.json` (`false` by default). Complete
-  [Create the First API Client](../../4-admin-api/getting-started/admin-api-2.3-newer/first-time-configuration.md#2-create-the-first-api-client)
+  [Create the First API Client](../../4-admin-api/getting-started/admin-api-2.3-older/first-time-configuration.md#2-create-the-first-api-client)
   and keep registration enabled while connecting environments (it can be
   disabled again afterwards).
 

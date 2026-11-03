@@ -297,7 +297,7 @@ const config = {
           // Admin API docs moved under getting-started.
           {
             from: '/reference/admin-api/admin-api-2.x/installation-for-odsapi-7x/first-time-configuration-for-admin-api-2x',
-            to: '/reference/admin-api/getting-started/admin-api-2.2-older/installation-for-odsapi-7x/first-time-configuration-for-admin-api-2x',
+            to: '/reference/admin-api/getting-started/admin-api-2.2/installation-for-odsapi-7x/first-time-configuration-for-admin-api-2x',
           },
           {
             from: '/reference/admin-api/admin-api-1.x/technical-articles/admin-api-1x-docker-microsoft-sql-server-support',
@@ -309,7 +309,7 @@ const config = {
           },
           {
             from: '/reference/admin-api/admin-api-2.x/technical-articles/quick-start-calling-admin-api-2x-using-python',
-            to: '/reference/admin-api/getting-started/admin-api-2.2-older/technical-articles/quick-start-calling-admin-api-2x-using-python',
+            to: '/reference/admin-api/getting-started/admin-api-2.2/technical-articles/quick-start-calling-admin-api-2x-using-python',
           },
           {
             from: '/reference/admin-api/admin-api-1.x/installation-for-odsapi-5x-6x/admin-api-1x-docker-installation',
