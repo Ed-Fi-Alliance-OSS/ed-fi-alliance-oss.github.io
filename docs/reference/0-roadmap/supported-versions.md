@@ -15,6 +15,7 @@ As of the last verified date, these products and versions are fully supported:
 - Ed-Fi API 8.0 (pilot / parallel use; 8.1 is planned for November 2026)
 - Ed-Fi ODS Admin API 2.4
 - Ed-Fi Admin App 4.1
+- Docker Deployments 3.2.x
 - API Publisher (latest version)
 
 Every other version listed below is in maintenance mode, out of support, or not
