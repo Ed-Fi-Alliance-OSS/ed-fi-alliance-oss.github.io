@@ -1,6 +1,6 @@
 # Ed-Fi Technology Suite Supported Versions
 
-_Last verified:_ 2026-11-02
+_Last updated:_ 2026-11-03
 
 This page is the authoritative source for the support status of Ed-Fi Alliance
 products and versions. Other pages link here rather than restating support
@@ -8,7 +8,7 @@ windows.
 
 ## Currently Supported
 
-As of the last verified date, these products and versions are fully supported:
+As of the last updated date, these products and versions are fully supported:
 
 - Ed-Fi Data Standard 5.x and 6.x
 - Ed-Fi ODS/API 7.3.x
