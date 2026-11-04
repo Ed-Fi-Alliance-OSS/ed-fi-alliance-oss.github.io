@@ -40,7 +40,7 @@
     },
     "qs": ">=6.17.0",
     "tinypool": ">=2.1.2",
-    "follow-redirects": ">=1.16.1",
+    "follow-redirects": ">=1.16.2",
     "browserslist": ">=4.28.7",
     "launch-editor": ">=2.14.2"
   },
