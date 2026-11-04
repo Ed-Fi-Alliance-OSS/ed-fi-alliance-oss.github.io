@@ -31,7 +31,8 @@ The following fields included in the API error response are noteworthy:
 
 - **`correlationId`**: This field connects the error response to entries in the
   API's logs. Report the returned value to the host, since a client-supplied ID
-  may have been normalized or replaced. See [Correlation IDs](./correlation-ids.md)
+  may have been normalized or replaced. Some `500` responses use `traceId`
+  instead; report that value for those responses. See [Correlation IDs](./correlation-ids.md)
   for the rules and responses that carry the ID elsewhere or omit it.
 
 :::tip

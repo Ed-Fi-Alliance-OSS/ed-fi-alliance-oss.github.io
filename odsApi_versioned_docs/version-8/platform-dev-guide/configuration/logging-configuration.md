@@ -163,9 +163,9 @@ MASK_REQUEST_BODY_IN_LOGS=false
 ## Correlation IDs
 
 Every HTTP request is assigned a correlation ID that appears in request log
-entries and in error response bodies that carry a `correlationId` field. The
-correlation ID makes it possible to trace a specific failed request across
-multiple log lines and across service boundaries.
+entries and in error response bodies that carry a `correlationId` or `traceId`
+field. The correlation ID makes it possible to trace a specific failed request
+across multiple log lines and across service boundaries.
 
 Client-supplied IDs are normalized before use: they are truncated to the
 configured maximum, filtered for logging safety, and replaced with the

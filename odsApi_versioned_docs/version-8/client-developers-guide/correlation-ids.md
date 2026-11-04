@@ -1,9 +1,10 @@
 # Correlation IDs
 
 A correlation ID connects an API request to the host's logs. When you report an
-error, quote the `correlationId` returned in the response body. That value is the
-one recorded in the Ed-Fi API's request logs as `TraceId`; it may differ from an
-identifier your client sent.
+error, quote the `correlationId` returned in the response body, or `traceId` when
+the response uses that field instead. That value is the one recorded in the
+Ed-Fi API's request logs as `TraceId`; it may differ from an identifier your
+client sent.
 
 This page describes the Ed-Fi API 8.1 contract. The Configuration Service does
 not accept client-supplied correlation IDs; it uses its server-generated request
@@ -77,6 +78,12 @@ For errors with a problem-details body, read `correlationId` from that body:
   "correlationId": "94bd4093-faab-4bba-8d02-4ddd5d1cd97f"
 }
 ```
+
+Some `500 Internal Server Error` responses, including unexpected pipeline
+exceptions and certain authorization failures, use a body with `message` and
+`traceId` instead of problem details. Read and report `traceId` for those
+responses. It contains the same normalized ID used in the request logs; an
+absent `correlationId` field does not mean the response has no ID.
 
 Save the returned ID alongside the original ID, timestamp, request method, path,
 and status code. Give the host the returned ID when asking them to search their
