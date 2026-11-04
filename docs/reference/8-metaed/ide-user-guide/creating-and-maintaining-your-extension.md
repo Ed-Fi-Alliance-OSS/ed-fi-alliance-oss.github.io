@@ -1,8 +1,10 @@
 # Creating and Maintaining Your Extension
 
 The MetaEd IDE makes it easy for implementers to create their own Ed-Fi
-Extensions. The basic steps to do that are fairly simple, and so are a great
-place to get started with the IDE.
+Data Standard Extensions. The basic steps to do that are fairly simple, and so
+are a great place to get started with the IDE. Before you start, see
+[What is an Ed-Fi Data Standard extension?](../../1-data-exchange/extensions-framework/readme.md#what-is-an-ed-fi-data-standard-extension)
+for when an extension is and is not the right choice.
 
 Detail on each step follows.
 

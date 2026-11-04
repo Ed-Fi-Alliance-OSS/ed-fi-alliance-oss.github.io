@@ -19,11 +19,13 @@ the Admin API using this framework.
 ## Authenticating Requests
 
 To authenticate your request to the Admin API, first retrieve a token by POSTing
-a **URL-Encoded Form** request to the `/connect/token` endpoint.
+a **URL-Encoded Form** request to the `/connect/token` endpoint. Send the client
+ID and secret using HTTP Basic authentication; include the grant type and scope
+in the form body.
 
 | Endpoint | Http Verb | Description | Request Schema | Response Schema (Success) | Response Schema (Error) |
 | --- | --- | --- | --- | --- | --- |
-| ```/connect``` ```/token``` | POST | Retrieve a bearer token for Admin API | ```client_id="string"``` ```client_secret="string"``` ```grant_type="client_credentials"``` ```scope="edfi_admin_api/full_access"```|```{ "access_token": "string", "token_type": "Bearer", "expires_in": 0  }``` | ```{ "error": "string", "error_description": "string", "error_uri": "string"}``` |
+| `/connect/token` | POST | Retrieve a bearer token for Admin API | `grant_type=client_credentials&scope=edfi_admin_api/full_access` | `{"access_token":"<string>","token_type":"Bearer","expires_in":0 }` | `{"error":"<string>","error_description":"<string>","error_uri": "<string>"}` |
 
 Save the resulting `access_token` from the response and include it as a Bearer
 token in the `Authorization`  header on subsequent requests. Note the

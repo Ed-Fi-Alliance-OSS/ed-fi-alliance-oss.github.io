@@ -1,4 +1,4 @@
-# API Key Structures
+# Resource IDs and Natural Keys
 
 Ed-Fi API resources have two overlapping key systems. This section describes the structure of the different systems along with detail about how and in what circumstances API clients interact with each.
 

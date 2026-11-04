@@ -100,6 +100,9 @@ environment variable.
 
 ### Encryption Password
 
+The encryption password is required. The API Publisher fails when it is not
+set, even if no stored value is encrypted.
+
 While you can set the `encryptionPassword` (in plain text) in the settings file
 shown above, it is recommended that you manage it externally (and securely) and
 supply it at runtime using either the `--postgreSqlEncryptionPassword`

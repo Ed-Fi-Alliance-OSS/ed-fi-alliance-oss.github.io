@@ -1,58 +1,34 @@
+---
+sidebar_position: 11
+---
+
 # Reverse Paging
 
-This is the result documentation of
-[APIPUB-62](https://edfi.atlassian.net/browse/APIPUB-62)
+Reverse paging divides each change version window into pages counted back from
+its last record, and queues them from the last page to the first. It is
+intended for a source API that is updated while the publish runs and does not
+provide a snapshot: with forward `offset`/`limit` paging, records that move
+between pages during the publish can be skipped and never reach the target.
+The problem is described in the
+[edfi_api_client documentation on change version stepping](https://github.com/edanalytics/edfi_api_client?tab=readme-ov-file#change-version-stepping).
 
-## In relation to how Publisher does pagination
+A snapshot of the source avoids the problem altogether, and is the recommended
+option. See
+[Considerations for API Hosts](Considerations-for-API-Hosts.md#provide-snapshot-isolation-for-client-publishingsynchronization).
 
-Publisher does pagination in 2 levels. The first one is done using the Change
-Version feature from the Web Api. The second one is done using the offset and
-limit parameters.
+## Enabling Reverse Paging
 
-At a high level, the execution it works like this.
+Reverse paging works on top of change version paging, so both options must be
+set:
 
-1. Get the total number of records.
-2. Using the changeVersionPagingWindowSize app setting determine how many
-   windows will be processed.
-3. Loop trough the number of Change Query windows.
-   1. Get the total number of records for that specific Change Query window.
-   2. Based on that number determine how many Offset-Limit windows will be
-      processed.
-4. Based on all this information prepare the GET requests that will be sent on
-   the next step.
+```sh
+--useChangeVersionPaging=true --useReversePaging=true
+```
 
-Notice that at this point Publisher does not get the real data yet. It just
-prepares all the GET requests that will be necessary to retrieve all the
-records. It is until the previous process ends (when all the GET requests have
-been prepared), that Publisher starts actually getting the data from the source.
+`ChangeVersionPagingWindowSize` sets the size of each change version window.
+Like change version paging, reverse paging reads with `offset`/`limit`, so
+cursor paging is not used.
 
-## The problem
-
-The problem where a record (or a number of records) can be skipped is described
-[here](https://github.com/edanalytics/edfi_api_client?tab=readme-ov-file#change-version-stepping)
-(taken from the Jira ticket).
-
-At a high level, the problem they describe is that there could be scenarios
-where one or more records can be skkiped from the process and so they will never
-be published to the target. Part of this problem accurs because they execute
-Publisher on an active database.
-
-What they propose to fix the problem is to execute the Offset-Limit pagination
-in reverse mode, so that the last page is processed first, and the first one is
-processed last.
-
-## Reproducing the issue on Publisher
-
-Reproducing this problem seemed to be trick. But the help of Visual Studio and
-the execution in Debug mode (with break points, etc.) we accomplish to reproduce
-it, so the problem does exist.
-
-## In relation to how to implement this on Publisher
-
-1. We will add a flag (on false by default) where the user will be able to
-   decide if he wants to execute Publisher in reverse paging mode.
-
-## Other notes
-
-1. Tests will be tricky without the capabilities of Visual Studio in debug mode
-   and with a set of break points.
+Set `UseReversePaging` only together with `UseChangeVersionPaging`. On its own,
+it does not change the order in which pages are read, but it still turns off
+cursor paging.

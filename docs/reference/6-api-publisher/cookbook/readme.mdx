@@ -1,0 +1,38 @@
+---
+sidebar_position: 3
+---
+
+# Cookbook
+
+import DocCardList from '@theme/DocCardList';
+
+## Overview
+
+This cookbook contains recipes for common publishing scenarios with the Ed-Fi
+API Publisher. Each recipe gives the complete steps for one scenario, with
+examples of the requests, configuration files and commands, how to check the
+result, and the most common errors.
+
+Each recipe was tested end to end with Ed-Fi API Publisher 1.4 and the versions
+it names. For a first run on a local sandbox, start with the
+[Quick Start](../readme.md#quick-start).
+
+## Audience
+
+These recipes are for the technical staff who set up and run the API Publisher
+between two Ed-Fi APIs, for example at a district or a state agency.
+
+## Before You Start
+
+- Install the API Publisher 1.4, as described in
+  [Use the API Publisher](../readme.md#use-the-api-publisher), and run the
+  commands from the folder where it is installed.
+- Run the examples in PowerShell 7.
+- If an API uses a self-signed certificate, as a local test environment does,
+  add `-SkipCertificateCheck` to the `Invoke-RestMethod` calls and
+  `--ignoreSslErrors=true` to the API Publisher commands. Do not use them in
+  production.
+
+## Cookbook Contents
+
+<DocCardList />

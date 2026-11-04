@@ -37,8 +37,9 @@ GO
 
 The Ed-Fi ODS API Publisher is intended to use integrated security to connect to
 the configuration database. To that end, the process under which the publisher
-utility is executing should be a local or domain Windows identity with an
-associated SQL Server login named "EdFiOdsApiPublisher".
+utility is executing should be a local or domain Windows identity with a SQL
+Server login. The script below creates that login and a database user named
+`EdFiApiPublisher` for it.
 
 To provide parameters for the script, type
 <kbd>Ctrl</kbd>+<kbd>Shft</kbd>+<kbd>M</kbd> in the SSMS query window before
@@ -116,7 +117,7 @@ The configuration implementation for SQL Server provides the ability to encrypt
 sensitive values like API keys and secrets. A database level user named
 "EdFiEncryption" is created and granted the necessary permissions to perform all
 encryption and decryption of the configuration values on behalf of the caller
-through the `dbo.GetConfigurationValue` and `dbo.SetConfigurationValue` stored
+through the `dbo.GetConfigurationValues` and `dbo.SetConfigurationValue` stored
 procedures (which are created in the next step).
 
 Execute the following script to create the database-level user account used for
@@ -153,7 +154,7 @@ GRANT UPDATE ON [dbo].[ConfigurationValue] TO [EdFiEncryption]
 GO
 ```
 
-## Create User-Defined Functions for Managing Encrypted Configuration Entries
+## Create Stored Procedures for Managing Encrypted Configuration Entries
 
 ```sql
 CREATE OR ALTER PROCEDURE dbo.SetConfigurationValue
@@ -219,10 +220,8 @@ BEGIN
 END
 GO
 
-GRANT EXECUTE ON [dbo].[GetConfigurationValues] TO
-  [<Domain or Machine Name, nvarchar, DOMAIN_OR_MACHINE>\<User Name, nvarchar, EdFiApiPublisher>]
-GRANT EXECUTE ON [dbo].[SetConfigurationValue] TO
-  [<Domain or Machine Name, nvarchar, DOMAIN_OR_MACHINE>\<User Name, nvarchar, EdFiApiPublisher>]
+GRANT EXECUTE ON [dbo].[GetConfigurationValues] TO [EdFiApiPublisher]
+GRANT EXECUTE ON [dbo].[SetConfigurationValue] TO [EdFiApiPublisher]
 ```
 
 ## Configure API Connections

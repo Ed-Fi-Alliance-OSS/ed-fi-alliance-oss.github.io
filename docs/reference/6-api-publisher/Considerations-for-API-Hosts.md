@@ -1,3 +1,7 @@
+---
+sidebar_position: 8
+---
+
 # Considerations for API Hosts
 
 The [Source API](#source-api) and [Target API](#target-api) sections describe
@@ -24,7 +28,7 @@ in the Ed-Fi ODS/API documentation. For a source without a configured snapshot,
 see
 [Sources Without a Configured Snapshot](Known-Issues-Details.md#sources-without-a-configured-snapshot).
 
-### SDefine Authorization and Security Metadata for the Source
+### Define Authorization and Security Metadata for the Source
 
 * Use the "Ed-Fi API Publisher - Reader" claim set included in the Ed-Fi
   ODS/API, which provides _read_ permissions to the API resources the publisher
@@ -96,7 +100,9 @@ As a target:
 * **When the data store is on PostgreSQL, make sure it has enough connections.**
   Ed-Fi API v8 keeps a connection pool per data store. Under the publisher's
   default concurrency it can exhaust PostgreSQL's `max_connections`; the
-  affected requests fail with `500` and those documents are not published.
+  affected requests fail with `500`, or with `400` and the message
+  "53300: sorry, too many clients already", and those documents are not
+  published.
   Raise `max_connections` (300 was enough for an instance serving two data
   stores in testing) or reduce the API's connection pool size.
 * **Stay under the Ed-Fi API v8.0 rate limit.** See
@@ -120,5 +126,6 @@ Use [API configuration values](API-Publisher-Configuration.md#api-connections)
 like `--include` `--includeOnly` `--exclude` or `--excludeOnly` to indicate the
 data to be published.
 
-Take into account that Ed-Fi-API-Publisher won't allow you to provide a profile
-just on one end (source or target).
+Take into account that the Ed-Fi API Publisher won't run with a profile on the
+source and no profile on the target, because posting data read through a
+profile without that context can lose data in the target.

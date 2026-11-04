@@ -1,19 +1,30 @@
+---
+sidebar_position: 10
+---
+
 # Remediations
 
 Remediations allow you to extend the API Publisher with custom behavior to
 remediate failed POST requests against the target API. The remediations are
 defined in a JavaScript file whose file system path is provided using the
 `--remediationsScriptFile` command-line argument (or the `remediationsScriptFile`
-setting in the `options` section of the `apiPublisherSettings.js` file).
+setting in the `options` section of the `apiPublisherSettings.json` file).
 
-:::warning This feature uses Node.js for JavaScript execution, and the
-JavaScript code does not run in a sandbox. You must take appropriate steps to
-only allow trusted remediation scripts to be executed. :::
+:::warning
+
+This feature uses Node.js for JavaScript execution, and the JavaScript code does
+not run in a sandbox. You must take appropriate steps to only allow trusted
+remediation scripts to be executed.
+
+:::
 
 ## Dependency
 
 The remediations feature has a dependency on [Node.js](https://nodejs.org/en/)
-which must be available on the `PATH` environment variable.
+which must be available on the `PATH` environment variable. The API Publisher
+Docker image does not include Node.js; to use remediations in a container,
+build an image based on it that adds Node.js. Runs without remediations do not
+need Node.js.
 
 ## Parameters
 
@@ -48,7 +59,7 @@ against the target API. For example:
       body: {
         "staffUniqueId": "ABC123",
         "firstName": "John",
-        "lastName": "Smith"
+        "lastSurname": "Smith"
       }
     },
     {

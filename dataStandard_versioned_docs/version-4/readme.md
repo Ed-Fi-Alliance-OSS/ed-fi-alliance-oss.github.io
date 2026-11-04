@@ -89,7 +89,3 @@ on the Ed-Fi Data Standard:
     Design & Implementation
     Guidelines](/reference/data-exchange/api-guidelines)
     documentation.
-* For XSD design and implementation guidelines covering bulk XML, visit the
-    [Ed-Fi XSD Design & Implementation
-    Guidelines](/reference/data-exchange/xsd-guidelines)
-    documentation.

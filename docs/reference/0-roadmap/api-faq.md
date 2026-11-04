@@ -8,6 +8,43 @@ plans to fully replace the current ODS/API Platform with Ed-Fi API v8 by the
 2029-2030 school year. In the meantime, the Alliance remains committed to
 supporting the ODS/API Platform through the 2028-2029 school year.
 
+## Choosing a Platform
+
+### Q: Should a new Ed-Fi implementation use ODS/API 7.x or Ed-Fi API v8?
+
+Plan new implementations on Ed-Fi API v8. Ed-Fi API v8 is the long-term
+replacement for the ODS/API Platform, and the Ed-Fi Alliance plans to fully
+replace the ODS/API Platform with it by the 2029-2030 school year. The ODS/API
+Platform remains supported through the 2028-2029 school year, so an
+implementation that starts on ODS/API 7.x will need to migrate to Ed-Fi API v8
+before the 2029-2030 school year.
+
+Use the latest Ed-Fi API v8 release. Once _Release 8.1_ ships (planned for
+November 2026), start all new implementations, including pilots, on 8.1.
+_Release 8.0_ remains available for pilots and parallel use already under way
+in school year 2026-2027. Teams already running 8.0 should plan to upgrade to
+8.1, and should expect to re-provision their databases when they do. The
+[Ed-Fi API v8 Pilot Test
+Kit](https://github.com/Ed-Fi-Exchange-OSS/Ed-Fi-API-v8-pilot-testing-kit)
+provides a non-production environment for testing client integrations against
+Ed-Fi API v8.
+
+**Client application developers (SIS, assessment, and other vendors):** Ed-Fi
+API v8 implements the Ed-Fi API specification, so most client applications
+built for the ODS/API continue to work. Review the [breaking changes and
+migration
+checklist](/reference/ed-fi-api/8/whats-new/release-notes#ed-fi-api-v80---breaking-changes-from-previous-releases)
+and test against Ed-Fi API v8.
+
+Use ODS/API 7.3 only if you need production use before Ed-Fi API v8 is ready
+for your needs, or if you depend on a feature that is [not yet available in
+Ed-Fi API v8](/reference/ed-fi-api/8/whats-new/release-notes#feature-availability).
+If you do, plan your move to Ed-Fi API v8 now: see [How can I / my team prepare
+for the upgrade?](#q-how-can-i--my-team-prepare-for-the-upgrade) below.
+
+For the support window of each release, see [Supported
+Versions](/reference/roadmap/supported-versions).
+
 ## General
 
 ### Q: What are DMS, CMS, and Project Tanager?
@@ -130,9 +167,9 @@ features.
 ```mermaid
 %%{init: { 'theme': 'neutral' } }%%
 timeline
-    Q1 26 : 8.0
+    Q3 26 : 8.0
          : MSPs, Early adopters
-    Q2 26 : 8.1
+    Q4 26 : 8.1
          : SEA
 ```
 
@@ -206,9 +243,13 @@ graph LR
 
 ### Q: Will integrations built for the ODS/API continue to work with the new system?
 
-Ed-Fi API v8 will be a fully compatible implementation of the Ed-Fi API
-specification. Client applications that interact with the REST API will continue
-to work.
+Ed-Fi API v8 is a fully compatible implementation of the Ed-Fi API
+specification, so most client applications that interact with the REST API
+continue to work. Some changes, such as case-sensitive property names and new
+URL paths, can affect existing clients. Review the [breaking changes and
+migration
+checklist](/reference/ed-fi-api/8/whats-new/release-notes#ed-fi-api-v80---breaking-changes-from-previous-releases)
+before moving a client to Ed-Fi API v8.
 
 The backend data store in Ed-Fi API v8 differs from the ODS/API, but it remains
 ODS-like and relational. To support existing reporting, analytics, and

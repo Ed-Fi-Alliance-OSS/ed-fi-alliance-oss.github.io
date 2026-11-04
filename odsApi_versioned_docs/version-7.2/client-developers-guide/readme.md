@@ -13,6 +13,7 @@ considerations for developing a robust and scalable solution.
 
 * [Introduction](./introduction.md)
 * [Basics](./basics.md)
+* [Resource IDs and Natural Keys](/getting-started/provider-playbook/implementation/ed-fi-api-fundamentals/resource-ids-and-natural-keys)
 * [API Routes](./api-routes.md)
 * [Authentication](./authentication.md)
 * [Authorization](./authorization.md)
