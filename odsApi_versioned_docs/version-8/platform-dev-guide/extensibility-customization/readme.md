@@ -87,6 +87,3 @@ setting, which is empty by default.
 | A validator that checks student, staff, and contact unique IDs against an external identity system (see [Unique ID System Integration](../../technical-articles/unique-id-system-integration.md)) | Ed-Fi API | `EdFi.Api.CustomValidation` |
 | An identity service that backs the identity management API | Ed-Fi API | `EdFi.Api.Identity` |
 | A secret resolver for connection strings that name secrets in an external store, and a client secret hasher | Configuration Service | `EdFi.Api.Secrets` |
-
-The [Plugins](./plugins.md) page describes how to deliver, enable and
-troubleshoot a plugin, and summarizes how plugins are built.
