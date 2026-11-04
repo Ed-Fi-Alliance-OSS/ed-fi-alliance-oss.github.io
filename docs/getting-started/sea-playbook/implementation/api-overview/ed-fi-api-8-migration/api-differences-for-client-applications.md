@@ -14,7 +14,7 @@ The full list is in the [release notes](/reference/ed-fi-api/8/whats-new/release
 | --- | --- | --- |
 | Resource URL | `/data/v3/ed-fi/schools` | `/api/data/ed-fi/schools` (no `v3` segment; `api` is the path base in the default Docker configuration, and it is configurable) |
 | Year-specific URL | `/2026/data/v3/ed-fi/schools` | `/api/2026/data/ed-fi/schools` |
-| Token endpoint | `https://{api-host}/oauth/token` | `https://{config-service-host}/connect/token` (the old `/oauth/token` still works through a forwarding proxy) |
+| Token endpoint | `https://{api-host}/oauth/token` | `https://{api-host}/api/oauth/token` (still on the API host; Ed-Fi API v8 passes the request to the Configuration Service) |
 | Property names in request bodies | Not case-sensitive | **Case-sensitive** |
 | Resource IDs and change versions | Existing values | New values, because data is reloaded through the API |
 | Credentials | Existing key and secret | New key and secret from the Configuration Service |
@@ -23,7 +23,7 @@ The full list is in the [release notes](/reference/ed-fi-api/8/whats-new/release
 
 This is the change most likely to break an existing client.
 
-Before, the ODS/API accepted this:
+Before, the ODS/API accepted this (shortened; `...` stands for the rest of the body):
 
 ```json
 {
@@ -43,7 +43,7 @@ Now, property names must match the OpenAPI specification exactly (`camelCase`):
 }
 ```
 
-With wrong casing, a required property makes the request fail with HTTP 400. An optional property is **dropped without any error**, so the value is silently lost. To check a client, compare its request bodies against the specification at `/metadata/specifications/resources-spec.json`.
+With wrong casing, a required property makes the request fail with HTTP 400. An optional property is **dropped without any error**, so the value is silently lost (see [Data strictness](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/main/docs/DATA-STRICTNESS.md#how-an-incorrectly-cased-property-is-handled) in the Ed-Fi API source). To check a client, compare its request bodies against the specification at `/metadata/specifications/resources-spec.json`.
 
 ## Example: base URL and token URL
 
@@ -58,10 +58,10 @@ The same client on Ed-Fi API v8:
 
 ```text
 Base URL:  https://api.your-state.gov/api/data
-Token URL: https://config.your-state.gov/connect/token
+Token URL: https://api.your-state.gov/api/oauth/token
 ```
 
-Both services have a configurable path base. In the default Docker environment file, the Ed-Fi API path base is `api` (`PATH_BASE`) and the Configuration Service path base is `config` (`CONFIGURATION_SERVICE_PATH_BASE`), so check the exact URLs for your deployment before you give them to vendors.
+The `/api` segment is the Ed-Fi API path base. It is `api` (`PATH_BASE`) in the default Docker environment file and it is configurable, so check the exact URLs for your deployment before you give them to vendors.
 
 ## Features not in Ed-Fi API v8.0
 

@@ -42,7 +42,7 @@ https://api.your-state.gov/2026/data/v3/ed-fi/schools
 Now, on Ed-Fi API v8 with route qualifiers:
 
 ```text
-https://api.your-state.gov/api/2027/data/ed-fi/schools
+https://api.your-state.gov/api/2026/data/ed-fi/schools
 ```
 
 See [Context-Based Routing for Year-Specific Data Store](/reference/ed-fi-api/8/platform-dev-guide/configuration/context-based-routing-for-year-specific-datastore).

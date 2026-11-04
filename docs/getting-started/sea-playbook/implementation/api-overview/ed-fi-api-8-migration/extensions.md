@@ -12,7 +12,7 @@ sidebar_position: 5
 | What MetaEd produces for the API | Generated code, database scripts and metadata files for an extension project in the ODS/API solution | One `ApiSchema-EXTENSION.json` file |
 | Building | Add the extension project and rebuild the ODS/API | No code generation or rebuild. The Ed-Fi API reads the ApiSchema file at startup |
 | Database | Extension database scripts deployed with the ODS | `api-schema-tools ddl provision` creates the extension tables |
-| Security for new resources | SQL scripts that add resource claims to `EdFi_Security` | A claims JSON file loaded by the Configuration Service |
+| Security for new resources | SQL scripts that add resource claims to `EdFi_Security` | A claims fragment file (`*-claims.json`) loaded by the Configuration Service |
 | Changing an extension later | Deploy updated scripts to the existing ODS | Provision a fresh database and reload data through the API |
 
 See [Extending API DataModel](/reference/ed-fi-api/8/platform-dev-guide/extensibility-customization/extending-api-datamodel) for the full workflow, and [Extending the ODS / API Data Model](/reference/ed-fi-api/platform-dev-guide/extensibility-customization/extending-the-ods-api-data-model) for how it worked before.
@@ -30,24 +30,53 @@ The [Alternative Education Program example](/reference/ed-fi-api/8/how-to-guides
 
 ## Example: claims for a new extension resource
 
-Before, you ran SQL against `EdFi_Security` to add a resource claim and grant it to a claimset. Now you add the resource to the claims hierarchy in JSON, under the domain it belongs to:
+Before, you ran SQL against `EdFi_Security` to add a resource claim and grant it to a claimset. Now you write a claims fragment: a JSON file whose name ends in `-claims.json`, for example `010-myext-claims.json`. In a fragment:
+
+- An entry with `"isParent": true` adds a node to the claims hierarchy, such as a domain for your extension.
+- `children` lists the resource claims for your new resources.
+- `_defaultAuthorizationStrategiesForCrud` sets the authorization strategy for each action.
+- `claimSets` grants actions to claimsets that already exist.
+
+This example is shortened from the [Ed-Fi sample extension's fragment](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/main/src/config/backend/EdFi.DmsConfigurationService.Backend/Deploy/AdditionalClaims/004-sample-extension-claims.json). It adds a domain with one resource and lets `EdFiSandbox` read it:
 
 ```json
-[
-  {
-    "name": "http://ed-fi.org/identity/claims/domains/someDomain",
-    "claims": [
-      {
-        "name": "http://ed-fi.org/identity/claims/myext/myNewResource"
-      }
-    ]
-  }
-]
+{
+  "name": "MyExtensionClaims",
+  "resourceClaims": [
+    {
+      "isParent": true,
+      "name": "http://ed-fi.org/identity/claims/domains/myext",
+      "_defaultAuthorizationStrategiesForCrud": [
+        {
+          "actionName": "Read",
+          "authorizationStrategies": [
+            { "name": "NoFurtherAuthorizationRequired" }
+          ]
+        }
+      ],
+      "children": [
+        { "name": "http://ed-fi.org/identity/claims/myext/myNewResource" }
+      ],
+      "claimSets": [
+        {
+          "name": "EdFiSandbox",
+          "actions": [{ "name": "Read" }]
+        }
+      ]
+    }
+  ]
+}
 ```
 
-The new claim inherits the domain's default authorization unless you set its own. Add `claimSets` entries to grant it to the claimsets that need it.
+Choose the authorization strategy that each action needs for your resources. The sample uses `NoFurtherAuthorizationRequired`, which applies no further restriction.
 
-For production, load claims when the Configuration Service starts (the `Hybrid` or `Filesystem` claims source), rather than uploading them at runtime. Claims uploaded at runtime are lost if the Configuration Service database is recreated. See [How To: Create and Manage API Security Metadata](/reference/ed-fi-api/8/how-to-guides/how-to-create-and-manage-api-security-metadata).
+How the Configuration Service loads claims is set by `CONFIGURATION_SERVICE_CLAIMS_SOURCE`:
+
+- **`Embedded`** loads only the claims built into the Configuration Service. It is the default, and the source documentation recommends it for production. It does not include extension claims.
+- **`Hybrid`** adds the `*-claims.json` fragments in a folder to the built-in claims. The source documentation describes it as for development and testing. The local startup scripts load extension claims fragments when you add `-AddExtensionSecurityMetadata`.
+- **`Filesystem`** loads a complete claims file that you prepare. From Ed-Fi API 8.1, `security-metadata-tools merge` combines the built-in claims and your fragments into that file ahead of time.
+
+Uploading claims at runtime needs `CONFIGURATION_SERVICE_DANGEROUSLY_ENABLE_UNRESTRICTED_CLAIMS_LOADING=true`, which the source documentation says must never be enabled in production. See the [Claims Loading Deployment Guide](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/main/docs/CLAIMS-LOADING-GUIDE.md) and [How To: Create and Manage API Security Metadata](/reference/ed-fi-api/8/how-to-guides/how-to-create-and-manage-api-security-metadata).
 
 ## Plan for extension changes
 
@@ -57,6 +86,7 @@ Plan extension changes for the start of a school year, when you set up a new dat
 
 :::info[Still being worked out]
 
+- **Loading extension claims in production.** The recommended production mode, `Embedded`, cannot include extension claims. We have not yet published a recommended production setup for states with extensions.
 - **Extension build errors.** Some extensions that build in MetaEd have failed when the Ed-Fi API starts. We are still collecting examples. If you hit one, tell us through the [Ed-Fi Community](/community).
 - **Reviewing extensions before you migrate.** Moving to Ed-Fi API v8 is a good time to retire extensions you no longer need, because each one you keep has to be rebuilt in the new workflow.
 

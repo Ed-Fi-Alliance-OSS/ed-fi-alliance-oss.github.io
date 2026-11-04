@@ -27,7 +27,7 @@ List everything that reads from the ODS database before you migrate. For each it
 
 ## Example: rewrite a SQL query
 
-Active enrollments with school name and school type.
+Active enrollments with school name and school type. This is an illustration: it treats an enrollment with no exit date as active, which misses exits recorded with a future date.
 
 Before, on the ODS:
 

@@ -2,13 +2,13 @@
 sidebar_position: 11
 ---
 
-# Still Being Figured Out
+# Still Being Worked Out
 
 Parts of the move from the ODS/API to Ed-Fi API v8 are not settled. This page lists them in one place. If your state has experience, a workaround or a strong view on any of them, tell us through the [Ed-Fi Community](/community). Your input shapes what we publish next.
 
 ## Deployment
 
-- **PowerShell deployment without Docker.** A PowerShell deployment script is planned for states that cannot run containers. It will not be available before next year. ([Deployment](./deployment.md))
+- **PowerShell deployment without Docker.** A PowerShell deployment script is planned for 2027, for states that cannot run containers. ([Deployment](./deployment.md))
 - **Taking new releases.** How a state pulls a new Ed-Fi API release into its clone, and whether to keep all local changes inside the state's own `eng/` folder. ([Deployment](./deployment.md))
 - **File formats across releases.** Whether a new release could change the format of the files a state keeps (claims JSON, ApiSchema output). ([Deployment](./deployment.md))
 
@@ -21,11 +21,13 @@ Parts of the move from the ODS/API to Ed-Fi API v8 are not settled. This page li
 
 - **Relational data model documentation.** The reference page is still being written. ([Data Out](./data-out.md))
 - **Change Query snapshots.** Planned for a future release. ([Data Out](./data-out.md))
+- **Files from districts without an Ed-Fi SIS.** A recommended replacement for loading these files with SQL or SSIS. ([Data In](./data-in.md))
 - **Patterns for direct writes.** Recommended replacements for each common way states write directly to the ODS. ([Data In](./data-in.md))
 - **Identity system integration and custom validation.** Designed as plugins for Ed-Fi API v8, not built yet. ([Data In](./data-in.md))
 
 ## Extensions and seed data
 
+- **Loading extension claims in production.** A recommended production setup for states with extensions. ([Extensions](./extensions.md))
 - **Extension build errors.** Some extensions that build in MetaEd have failed at startup. ([Extensions](./extensions.md))
 - **Converting SQL seed scripts to XML.** No conversion tool yet. ([Seed Data and Annual Rollover](./seed-data-and-annual-rollover.md))
 - **Rollover on a running production system.** Tested steps not yet published. ([Seed Data and Annual Rollover](./seed-data-and-annual-rollover.md))

@@ -50,12 +50,12 @@ Keep Ed-Fi's descriptors and your state's own data in separate folders under you
 
 ## Example: loading seed data
 
-Before, with the Bulk Load Client against the ODS/API, the token URL came from the base URL. Now the token endpoint is on the Configuration Service, so set it explicitly:
+Before, with the Bulk Load Client against the ODS/API, the token URL came from the base URL. Now set it explicitly to the Ed-Fi API's `/oauth/token`, which includes the API path base:
 
 ```powershell
 EdFi.BulkLoadClient.Console `
   --baseurl http://localhost:8080/api `
-  --oauthurl http://localhost:8081/connect/token `
+  --oauthurl http://localhost:8080/api/oauth/token `
   -k <key> -s <secret> `
   -d ./eng/<your-state>/seedData `
   -w ./working

@@ -36,8 +36,8 @@ During development, Ed-Fi API v8 was called the Data Management Service (DMS), a
 | [API Differences for Client Applications](./api-differences-for-client-applications.md) | URL paths, token endpoint, case-sensitive property names |
 | [School Years and Cutover](./school-years-and-cutover.md) | Running ODS/API and Ed-Fi API v8 side by side, or moving everything |
 | [Ed-Fi Tools](./ed-fi-tools.md) | Which Ed-Fi tools work with Ed-Fi API v8 |
-| [Still Being Figured Out](./still-being-figured-out.md) | Open questions where we want community input |
+| [Still Being Worked Out](./still-being-worked-out.md) | Open questions where we want community input |
 
-## Still being figured out
+## Still being worked out
 
-Parts of this migration are not settled yet. Each page marks them in a **Still being worked out** box, and the [Still Being Figured Out](./still-being-figured-out.md) page collects them in one place. If you have experience or opinions on any of them, tell us through the [Ed-Fi Community](/community).
+Parts of this migration are not settled yet. Each page marks them in a **Still being worked out** box, and the [Still Being Worked Out](./still-being-worked-out.md) page collects them in one place. If you have experience or opinions on any of them, tell us through the [Ed-Fi Community](/community).

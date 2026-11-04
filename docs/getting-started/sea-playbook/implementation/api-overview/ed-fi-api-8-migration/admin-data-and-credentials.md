@@ -9,11 +9,12 @@ sidebar_position: 3
 | | ODS/API | Ed-Fi API v8 |
 | --- | --- | --- |
 | Where admin data lives | `EdFi_Admin` and `EdFi_Security` databases | One Configuration Service database (see [Security Configuration Data Stores](/reference/ed-fi-api/8/platform-dev-guide/security/security-configuration-data-stores)) |
-| How you manage it | Admin App, Admin API, or SQL run directly against the databases | The Configuration Service API, or Admin App 4.1 and later |
+| How you manage it | Admin App, ODS Admin API, or SQL run directly against the databases | The Configuration Service API, or Admin App 4.1 and later |
 | Vendors and applications | `/v2/vendors`, `/v2/applications` (Admin API 2.x) | `/v3/vendors`, `/v3/applications` (Configuration Service) |
 | Which database an application uses | ODS instances (`odsInstanceIds`) | Data stores (`dataStoreIds`) |
 | Claimsets | Rows in `EdFi_Security`, or Admin API claimset endpoints | Stored in the Configuration Service; custom claimsets imported with `POST /v3/claimSets/import` |
-| Token endpoint | `https://{host}/oauth/token` on the ODS/API | `https://{config-service-host}/connect/token` |
+| Token endpoint for the Resources and Descriptors APIs | `https://{host}/oauth/token` on the ODS/API | `https://{api-host}/api/oauth/token` on the Ed-Fi API (still on the API host; `api` is the default path base) |
+| Token endpoint for managing vendors, applications and claimsets | `https://{admin-api-host}/connect/token` on the Admin API | `https://{config-service-host}/connect/token` on the Configuration Service |
 
 The Configuration Service implements the [Ed-Fi Management API specification V3](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-API-Specifications/tree/main/api-specifications/management). See [Admin API Replaced by Configuration Service](/reference/ed-fi-api/8/whats-new/release-notes#admin-api-replaced-by-configuration-service).
 
@@ -71,7 +72,16 @@ The main differences are the `/v3` routes, `dataStoreIds` in place of `odsInstan
 
 ## Claimsets
 
-Ed-Fi API v8 ships with built-in claimsets such as `SISVendor`, `AssessmentVendor` and `EdFiSandbox`. See [How To: Configure Claim Sets](/reference/ed-fi-api/8/how-to-guides/how-to-configure-claim-sets) for the full list and for importing custom claimsets.
+Ed-Fi API v8 ships with built-in claimsets. Their names no longer contain spaces, so update any script or tool that refers to them by name:
+
+| ODS/API | Ed-Fi API v8 |
+| --- | --- |
+| `SIS Vendor` | `SISVendor` |
+| `Assessment Vendor` | `AssessmentVendor` |
+| `Ed-Fi Sandbox` | `EdFiSandbox` |
+| `Bootstrap Descriptors and EdOrgs` | `BootstrapDescriptorsandEdOrgs` |
+
+See [How To: Configure Claim Sets](/reference/ed-fi-api/8/how-to-guides/how-to-configure-claim-sets) for the full list and for importing custom claimsets.
 
 Keep two kinds of claims apart when you plan:
 
@@ -82,7 +92,7 @@ Keep two kinds of claims apart when you plan:
 
 When the Configuration Service creates an application, it generates a new key and secret. Plan to give every vendor new credentials for Ed-Fi API v8, and tell vendors the timeline well before cutover.
 
-Vendors that build the token URL from the API host do not have to change it straight away: Ed-Fi API v8 still answers at `/oauth/token` and forwards the request to the Configuration Service. New and updated clients should call `/connect/token` on the Configuration Service directly. See [Token Endpoint Location](/reference/ed-fi-api/8/whats-new/release-notes#token-endpoint-location).
+Vendors still get their tokens from `/oauth/token` on the Ed-Fi API host. Ed-Fi API v8 passes the request to the Configuration Service, which issues the token. `/connect/token` on the Configuration Service is for managing vendors, applications and claimsets, so vendors do not need access to the Configuration Service. See [Token Endpoint Location](/reference/ed-fi-api/8/whats-new/release-notes#token-endpoint-location).
 
 :::info[Still being worked out]
 
