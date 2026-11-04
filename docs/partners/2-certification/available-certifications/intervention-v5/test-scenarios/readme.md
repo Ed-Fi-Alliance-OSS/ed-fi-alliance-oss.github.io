@@ -36,7 +36,8 @@ replaced with identifiers of records that exist in the sandbox.
 
 ### Order of Operations and Deletes
 
-Scenarios 1 through 5 are run in order, and Scenario 6 is run last. Records
+Run the create and update activities of Scenarios 1 through 5 in order, then
+run Scenario 6 before any delete test activities. Records
 depend on each other: a StudentInterventionAssociation or a
 StudentInterventionAttendanceEvent references an Intervention, and a Path 2
 association references a Cohort. The API rejects the deletion of a record that
