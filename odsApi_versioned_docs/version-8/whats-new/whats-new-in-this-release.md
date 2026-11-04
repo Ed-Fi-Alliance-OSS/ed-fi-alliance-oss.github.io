@@ -109,8 +109,8 @@ for details.
 The self-contained identity provider now limits each API client to 15 active
 access tokens by default, so clients should reuse a token until it expires.
 Expired tokens are cleaned up automatically. See [Identity Provider
-Configuration](../platform-dev-guide/configuration/identity-provider.md) for
-details.
+Configuration](../platform-dev-guide/configuration/identity-provider.md#access-token-management)
+for details.
 
 ### Extensibility
 
