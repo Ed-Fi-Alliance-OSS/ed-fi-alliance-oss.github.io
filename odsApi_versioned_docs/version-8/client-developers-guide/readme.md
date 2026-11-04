@@ -20,6 +20,7 @@ scalable solution.
 - [Date and DateTime Elements](./date-datetime-elements.md)
 - [Descriptor References](./descriptor-references.md)
 - [Error Handling Best Practices](./error-handling-best-practices.md)
+- [Correlation IDs](./correlation-ids.md)
 - [Error Response Knowledge Base](./error-response-knowledge-base.md)
 - [Improve Paging Performance on Large API Resources](./improve-paging-performance-on-large-api-resources.md)
 - [Improve Paging Performance with Partitioned Cursor Paging](./improve-paging-performance-cursor-paging.md)
