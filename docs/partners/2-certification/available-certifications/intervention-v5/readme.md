@@ -280,9 +280,9 @@ Certification checks that each published intervention can be linked to at least
 one valid staff member through the path the provider uses. Updates and removals
 are tested on that same path.
 
-Cohort and StudentCohortAssociation remain optional in version 1; they are
-needed only if a provider uses Path 2. Assigning staff to an individual
-student's plan is not supported in Data Standard v5. It is a future
+Cohort and StaffCohortAssociation are required only when a provider uses Path 2.
+StudentCohortAssociation remains optional on either path. Assigning staff to an
+individual student's plan is not supported in Data Standard v5. It is a future
 consideration for Data Standard v7.
 
 ### Assigned and Delivered Dosage
