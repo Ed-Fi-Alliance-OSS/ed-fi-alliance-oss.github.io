@@ -48,8 +48,9 @@ mapping for each vendor.
 ### How it relates to the Unifying Data Model and APIs
 
 * The [Ed-Fi Unifying Data Model (UDM)](./udm/readme.md) is the logical model
-  behind the Data Standard. It is non-normative and keeps the Data Standard's
-  specifications consistent with each other. See [What is the purpose of the
+  behind the Data Standard. It is non-normative, except for its Best Practices
+  pages, and keeps the Data Standard's specifications consistent with each
+  other. See [What is the purpose of the
   Ed-Fi Unifying Data
   Model?](#what-is-the-purpose-of-the-ed-fi-unifying-data-model)
 * The Ed-Fi Alliance's normative standards include the API endpoint
@@ -57,6 +58,10 @@ mapping for each vendor.
   Specifications](./readme.md#ed-fi-api-specifications). See [What standards do
   the Ed-Fi Alliance publish?](#what-standards-do-the-ed-fi-alliance-publish) The
   Ed-Fi ODS/API and Ed-Fi API v8 implement those specifications.
+* For a side-by-side comparison of the Data Standard, the UDM, the API
+  Specifications, the API Guidelines, and an Ed-Fi API, see [Ed-Fi Data
+  Standard vs. UDM vs. API Specifications vs. Ed-Fi
+  API](./data-standard-vs-udm-vs-api.md).
 
 ## Active Versions
 
