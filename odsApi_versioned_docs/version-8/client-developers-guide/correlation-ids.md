@@ -55,9 +55,9 @@ Check the error response for the ID:
 - **Most errors:** read `correlationId` from the JSON body.
 - **Some `500 Internal Server Error` responses:** the body has `message` and
   `traceId` fields instead of problem details. Read `traceId`.
-- **Token errors:** a POST to `/oauth/token` with a supported content type
-  returns errors as OAuth JSON, with the ID in the `X-Correlation-ID` response
-  header. This also applies to token routes with tenant or qualifier segments.
+- **Token errors:** look for the ID in the `X-Correlation-ID` response header.
+  If that header is absent, check the response body for `correlationId` or
+  `traceId`.
   See [Authentication](./authentication.md) for token requests.
 
 Decode the token error header once using UTF-8 percent-decoding. For example,
