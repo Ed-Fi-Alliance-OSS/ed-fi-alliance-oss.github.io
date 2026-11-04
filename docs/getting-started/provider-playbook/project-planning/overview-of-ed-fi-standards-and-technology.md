@@ -34,8 +34,9 @@ specifications:
 - **Ed-Fi ODS/API** (versions through 7.x), the established platform, supported
   through the 2028-2029 school year.
 
-These are implementations of the API, not the API itself. Any system may
-implement the API specifications using different technology. Build your
+These platforms implement the API specifications; they are not the
+specifications themselves. Any system may implement the API specifications
+using different technology. Build your
 integration to the specifications, and test it against the platforms your
 customers run. See [Ed-Fi API Platforms](/reference/ods-api-platform) for how the two
 platforms compare, and [Should a new Ed-Fi implementation use ODS/API 7.x or

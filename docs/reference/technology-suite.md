@@ -78,8 +78,8 @@ they compare.
   managing client credentials ("key and secret") and security configuration on
   the Ed-Fi ODS/API. In Ed-Fi API v8, the Configuration Service takes this role.
 - **[Ed-Fi Admin App](./5-admin-app/readme.md)** (v4) is a web application for
-  organizations that manage multiple instances of the Ed-Fi ODS/API or Ed-Fi API
-  across tenants and environments.
+  organizations that manage multiple instances of the Ed-Fi ODS/API or Ed-Fi
+  API v8 across tenants and environments.
 
 ### Data movement and other services
 
