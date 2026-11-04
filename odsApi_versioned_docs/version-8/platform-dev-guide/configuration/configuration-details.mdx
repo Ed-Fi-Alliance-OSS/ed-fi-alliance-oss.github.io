@@ -246,10 +246,10 @@ token authority — see also [Identity Provider](./identity-provider.md).
 
 - **`CacheSettings:TokenCacheExpirationSeconds`**
 
-  |             |                                                                                     |
-  | ----------- | ----------------------------------------------------------------------------------- |
-  | Default     | `1500`                                                                              |
-  | Description | Seconds before the cached Configuration Service access token expires and is renewed |
+  |             |                                                                                                                                                                                                                                                                                                                                  |
+  | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `1500`                                                                                                                                                                                                                                                                                                                           |
+  | Description | Seconds before the cached Configuration Service access token expires and is renewed. The Ed-Fi API does not read the token's `expires_in`, so keep this no longer than the Configuration Service token lifetime: `IdentitySettings:TokenExpirationMinutes` in self-contained mode, or the access token lifespan in Keycloak mode |
 
 - **`CacheSettings:ProfileCacheExpirationSeconds`**
 
@@ -633,10 +633,10 @@ provider.
 
 - **`IdentitySettings:TokenExpirationMinutes`**
 
-  |             |                                                                      |
-  | ----------- | -------------------------------------------------------------------- |
-  | Default     | `30`                                                                 |
-  | Description | Lifetime, in minutes, of access tokens issued in self-contained mode |
+  |             |                                                                                                                                                                                                                                                                                                                                                                       |
+  | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `30`                                                                                                                                                                                                                                                                                                                                                                  |
+  | Description | Lifetime, in minutes, of access tokens issued in self-contained mode. Must be between `1` and `35791394`; the Configuration Service does not start otherwise. Keep it at or above the Ed-Fi API's `CacheSettings:TokenCacheExpirationSeconds` (25 minutes by default), because the Ed-Fi API keeps using its cached token for that long whatever the token's lifetime |
 
 - **`IdentitySettings:BearerTokenPerClientLimit`**
 
