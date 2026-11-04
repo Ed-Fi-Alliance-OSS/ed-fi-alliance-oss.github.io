@@ -42,7 +42,8 @@
     "tinypool": ">=2.1.2",
     "follow-redirects": ">=1.16.1",
     "browserslist": ">=4.28.7",
-    "launch-editor": ">=2.14.2"
+    "launch-editor": ">=2.14.2",
+    "re2js": "^2.8.7"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.7.0",
