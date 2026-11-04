@@ -162,10 +162,10 @@ MASK_REQUEST_BODY_IN_LOGS=false
 
 ## Correlation IDs
 
-Every HTTP request is assigned a correlation ID that appears in all log entries
-for that request and is included in error response bodies. The correlation ID
-makes it possible to trace a specific failed request across multiple log lines
-and across service boundaries.
+Every HTTP request is assigned a correlation ID that appears in request log
+entries and in error response bodies that carry a `correlationId` or `traceId`
+field. The correlation ID makes it possible to trace a specific failed request
+across multiple log lines and across service boundaries.
 
 By default the Ed-Fi API ignores client-supplied correlation IDs and uses the
 request's trace identifier. To accept one, set `AppSettings:CorrelationIdHeader`
@@ -263,15 +263,26 @@ identifiers alike:
 
 - Values longer than the maximum length are truncated. The maximum is set by
   `CORRELATION_ID_MAX_LENGTH` (`AppSettings:CorrelationIdMaxLength`), which
-  defaults to `255`.
-- Control characters (including carriage return, line feed, and tab),
-  invisible format characters, and Unicode line and paragraph separators are
-  removed, so a client-supplied value can't add extra lines to the logs. All
-  other characters, including punctuation and non-ASCII characters, are kept.
+  defaults to `255` and accepts `64` through `1024`, inclusive. Length is
+  measured in UTF-16 code units; a non-BMP character, such as many emoji, uses
+  two units. If truncation would split a surrogate pair, that character is
+  omitted.
+- After truncation, Unicode control characters (category `Cc`, including
+  carriage return, line feed, tab, and null), invisible format characters
+  (category `Cf`), Unicode line and paragraph separators (`U+2028` and `U+2029`),
+  and unpaired UTF-16 surrogates are removed. All other characters, including
+  punctuation, non-ASCII characters, emoji, and spaces, are kept. Filtering
+  after truncation can leave a value shorter than the configured maximum.
+- If the result is empty or contains only whitespace, the request's
+  server-generated trace identifier is used instead.
 
 The Ed-Fi API never rejects a request because of its correlation ID. Because the
 same normalized value is used everywhere, the correlation ID in an error
 response always matches the one in the logs.
+
+Use the returned normalized value when searching logs. See the client guide's
+[Correlation IDs](../../client-developers-guide/correlation-ids.md) page for
+client examples, token error response headers, and responses without an ID.
 
 When normalization changes a client-supplied correlation ID, the Ed-Fi API logs
 a `CorrelationIdModified` event at `Information` level (see [Event
