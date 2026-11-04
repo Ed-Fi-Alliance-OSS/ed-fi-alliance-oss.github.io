@@ -24,6 +24,10 @@ version; the other pages in this section apply across versions.
 
 ## What standards does the Ed-Fi Alliance publish?
 
+For a side-by-side comparison of these standards and of the Ed-Fi API
+applications that implement them, see [Ed-Fi Data Standard vs. UDM vs. API
+Specifications vs. Ed-Fi API](./data-standard-vs-udm-vs-api.md).
+
 - **[Ed-Fi Data Standard](./data-standards.md).** The community-developed
   standard for K–12 education data. It is expressed through the Unifying Data
   Model and the Ed-Fi REST API Specifications below; it is not a separate
@@ -96,6 +100,9 @@ Looking to get involved in the discussion and definition of standards?
 
 ## Other resources
 
+- [Ed-Fi Data Standard vs. UDM vs. API Specifications vs. Ed-Fi
+  API](./data-standard-vs-udm-vs-api.md) compares what each one is, what it
+  does, and what it is not.
 - What do we mean by "standards?" The [Ed-Fi is a Data
   Standard](https://www.ed-fi.org/ed-fi-data-standard/) article on our main
   website has an overview.
