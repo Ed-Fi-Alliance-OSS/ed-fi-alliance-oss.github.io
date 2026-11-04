@@ -6,16 +6,15 @@ the response uses that field instead. That value is the one recorded in the
 Ed-Fi API's request logs as `TraceId`; it may differ from an identifier your
 client sent.
 
-This page describes the Ed-Fi API 8.1 contract. The Configuration Service does
-not accept client-supplied correlation IDs; it uses its server-generated request
-trace identifier.
+The Configuration Service doesn't accept client-supplied correlation IDs;
+it uses its server-generated request trace identifier.
 
 ## Sending a Correlation ID
 
 By default, the Ed-Fi API uses a server-generated trace identifier and ignores
 client-supplied correlation IDs. Hosts can accept them by configuring
 `AppSettings:CorrelationIdHeader`. Ask your host which request header to use;
-there is no enabled header name by default. For example, if the host configures
+there's no enabled header name by default. For example, if the host configures
 `correlationid`, send:
 
 ```http
@@ -26,29 +25,24 @@ correlationid: 94bd4093-faab-4bba-8d02-4ddd5d1cd97f
 ```
 
 Use a unique identifier per request and keep it in your client's request record.
-The API normalizes the supplied value before using it. Normalization adjusts the
-identifier without rejecting the request: the request still succeeds or fails
-on its own merits. Hosts can disable client-supplied IDs entirely by leaving
-`AppSettings:CorrelationIdHeader` empty, in which case the API always uses its
-server-generated identifier.
+The Ed-Fi API normalizes the supplied value before using it. Normalization
+adjusts the identifier without rejecting the request: the request still succeeds
+or fails on its own merits.
 
 ## Normalization Rules
 
-The API applies these steps in order:
+The Ed-Fi API applies these steps in order:
 
 1. **Truncate to the host's maximum length.** The default is `255`; hosts can
    configure any value from `64` through `1024`, inclusive, with
    `AppSettings:CorrelationIdMaxLength`. Length is measured in UTF-16 code
-   units: a non-BMP character, such as many emoji, uses two units. If the cut
-   would split a surrogate pair, both halves of that character are omitted.
-2. **Remove characters outside the logging-safe allowlist.** The API removes
-   Unicode control characters (category `Cc`), format characters (category
-   `Cf`), the line and paragraph separators (`U+2028` and `U+2029`), and any
-   unpaired UTF-16 surrogates. This includes carriage returns, line feeds, tabs,
-   nulls, zero-width spaces, and bidirectional formatting controls. All other
-   characters are preserved, including punctuation, non-ASCII letters, digits,
-   symbols, ordinary spaces, and well-formed non-BMP characters. Leading,
-   trailing, and internal spaces are not trimmed from a nonblank result.
+   units: many emoji use two units. If the cut would split a character, that
+   character is omitted.
+2. **Remove characters that are unsafe in logs.** The Ed-Fi API removes control
+   characters (such as carriage return, line feed, tab, and null), invisible
+   formatting characters (such as zero-width spaces and text-direction marks),
+   and Unicode line and paragraph separators. All other characters are kept,
+   including punctuation, non-ASCII letters, emoji, and spaces.
 3. **Fall back when no usable value remains.** If the normalized value is empty
    or contains only whitespace, use the server-generated trace identifier
    instead. An absent or empty header has the same result.
@@ -60,10 +54,10 @@ length limit.
 Truncation happens _before_ filtering. For example, at the default limit, a
 value containing 254 `a` characters, then `U+200B` ZERO WIDTH SPACE, then `b`
 is first cut to 255 units. The zero-width space is then removed, leaving only
-the 254 `a` characters. The trailing `b` is not brought back to fill the gap.
+the 254 `a` characters. The trailing `b` isn't brought back to fill the gap.
 The result can therefore be shorter than the configured maximum. If the
-retained prefix contains only removed characters or whitespace, the API uses
-the server-generated identifier even if usable text followed the cut.
+retained prefix contains only removed characters or whitespace, the Ed-Fi API
+uses the server-generated identifier even if usable text followed the cut.
 
 ## Finding the ID in a Response
 
@@ -83,17 +77,17 @@ Some `500 Internal Server Error` responses, including unexpected pipeline
 exceptions and certain authorization failures, use a body with `message` and
 `traceId` instead of problem details. Read and report `traceId` for those
 responses. It contains the same normalized ID used in the request logs; an
-absent `correlationId` field does not mean the response has no ID.
+absent `correlationId` field doesn't mean the response has no ID.
 
 Save the returned ID alongside the original ID, timestamp, request method, path,
 and status code. Give the host the returned ID when asking them to search their
-logs. The original ID alone may no longer match, and the API deliberately does
-not log the original value when normalization changes it.
+logs. The original ID alone may no longer match, and the Ed-Fi API deliberately
+doesn't log the original value when normalization changes it.
 
-The API does not generally return a correlation ID response header. Errors from
-POST requests using a supported content type at its `/oauth/token` endpoint, including
-routes with tenant or qualifier segments, are an exception: they use OAuth JSON
-and return the normalized ID in the `X-Correlation-ID` response header. Decode
+The Ed-Fi API doesn't generally return a correlation ID response header. Token
+errors are an exception. A POST to `/oauth/token` with a supported content type,
+including routes with tenant or qualifier segments, returns errors as OAuth JSON
+and puts the normalized ID in the `X-Correlation-ID` response header. Decode
 that header once using UTF-8 percent-decoding before searching the logs; for
 example, `request%2B42%25` represents `request+42%`. A literal `+` is not a
 space. This response header name is fixed and is independent of the configured
@@ -103,7 +97,7 @@ Some errors return no correlation ID, including certain management and metadata
 `404` responses and non-token `413` responses with no body. Successful responses
 also need not return one. If no ID is returned, give the host the request's
 timestamp, method, path, and status code. A supplied ID helps only when the host
-accepted it and normalization left it unchanged; do not assume the value you
+accepted it and normalization left it unchanged; don't assume the value you
 sent is a reliable log search key.
 
 For host settings and log examples, see [Correlation
