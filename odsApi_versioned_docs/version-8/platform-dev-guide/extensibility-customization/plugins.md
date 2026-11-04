@@ -281,8 +281,10 @@ not only with the contract packages.
   carries. Check a plugin against the manifest of the release you'll run it on.
 - **The Configuration Service has no manifest.** The contract versions it carries
   are the ones in its source at the release tag.
-- **An older plugin runs on a newer service.** The contracts only ever add
-  members, so a plugin built against an older contract version keeps working.
+- **Newer services support older contract versions.** The contracts only ever
+  add members, so a plugin built against an older contract version still runs
+  against them. That guarantee covers only the contracts: check the plugin's
+  other shared dependencies against the target release's manifest.
 - **A newer plugin doesn't run on an older service.** A plugin built against a
   newer contract, or a newer version of an assembly the service also carries, is
   refused with a message naming both versions. Usually that happens at startup.
@@ -361,7 +363,7 @@ A plugin may register its own types, `Microsoft.Extensions.*` types, logging
 providers, and the contracts the service defines. It may not:
 
 - register any other service type the host owns, or remove or replace a
-  registration the host made;
+  pre-existing registration for a host-owned service type;
 - remove or replace the host's logging, including by calling
   `logging.ClearProviders()`, or add its own logger factory;
 - register a contract under a wildcard service key.
