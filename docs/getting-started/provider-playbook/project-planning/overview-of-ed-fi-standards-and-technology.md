@@ -31,7 +31,9 @@ things. The Ed-Fi Alliance builds two API platforms, the Ed-Fi ODS/API and
 Ed-Fi API v8; see [Ed-Fi API Platforms](/reference/ods-api-platform). These
 platforms implement the API specifications; they are not the specifications
 themselves. Any system may implement the API specifications using different
-technology.
+technology. See [Ed-Fi Data Standard vs. UDM vs. API Specifications vs. Ed-Fi
+API](/reference/data-exchange/data-standard-vs-udm-vs-api) for how the
+standards and the software that implements them relate.
 
 Build your integration to the specifications, and test it against the platforms
 your customers run. See [Should a new Ed-Fi implementation use ODS/API 7.x or

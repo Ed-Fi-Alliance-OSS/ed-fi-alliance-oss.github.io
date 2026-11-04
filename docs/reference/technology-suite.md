@@ -27,10 +27,12 @@ Supported](./0-roadmap/supported-versions.md#currently-supported).
 The standards define the data and how it is exchanged; the platforms are
 software that implements them. The Ed-Fi ODS/API and Ed-Fi API v8 are the Ed-Fi
 Alliance's implementations, and any party can build a compatible one by
-following the API specifications and guidelines. See [Data Exchange
-Standards](./1-data-exchange/readme.md) for the standards the Ed-Fi Alliance
-publishes, and [Ed-Fi certification](/partners/certification) for how vendor
-products show that they exchange data correctly.
+following the API specifications and guidelines. See [Ed-Fi Data Standard vs.
+UDM vs. API Specifications vs. Ed-Fi
+API](./1-data-exchange/data-standard-vs-udm-vs-api.md) for how the standards
+and the software that implements them relate, and [Ed-Fi
+certification](/partners/certification) for how vendor products show that they
+exchange data correctly.
 
 ## What technologies make up the Ed-Fi Technology Suite?
 
@@ -38,7 +40,8 @@ products show that they exchange data correctly.
 
 - **[Ed-Fi API v8](/reference/ed-fi-api/8)**, the next-generation platform and
   the long-term replacement for the Ed-Fi ODS/API. It is made up of the Ed-Fi API
-  and the Configuration Service.
+  and the Configuration Service. It implements existing Data Standard versions;
+  it is not a new Data Standard version.
 - **[Ed-Fi ODS/API](./2-ods-api-platform/readme.mdx)** (versions through 7.x),
   the established platform.
 
