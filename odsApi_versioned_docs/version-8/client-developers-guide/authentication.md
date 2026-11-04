@@ -257,8 +257,10 @@ curl -X POST http://localhost:8081/connect/revoke \
 A successful revocation returns `200 OK` with an empty body. The response is
 `200` even when the token is unknown, already revoked, or belongs to another
 client; a client can revoke only its own tokens. Wrong credentials get the
-OAuth error `invalid_client`. On hosts that use Keycloak, the same endpoint
-forwards the revocation to Keycloak.
+OAuth error `invalid_client`, with HTTP `401` and a `WWW-Authenticate` header
+when they were sent as HTTP Basic, or `400` when they were sent as form fields.
+On hosts that use Keycloak, the same endpoint forwards the revocation to
+Keycloak.
 
 The next section, [Authorization](./authorization.md), has more details about
 using the access token.

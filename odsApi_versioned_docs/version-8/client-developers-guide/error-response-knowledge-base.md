@@ -2930,7 +2930,8 @@ X-Correlation-ID: 1745dc8cc91c
 
 :::tip
 
-Problem is in the client application code:
+Problem is in the client application code → send to application development team
+for resolution.
 
 - The client requests new tokens instead of reusing the one it has. Cache the
   token and reuse it until it expires. See [Token Limits and

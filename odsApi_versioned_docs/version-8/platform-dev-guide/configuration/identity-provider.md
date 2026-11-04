@@ -80,7 +80,7 @@ its configuration from the Configuration Service.
 the Ed-Fi API can't get a token and can't read its configuration. See
 [Configuration Details](./configuration-details.mdx).
 
-### Access Token Management
+### Access token management
 
 The self-contained provider stores every access token it issues. It limits how
 many active tokens each client can hold, accepts revocation requests, and
@@ -108,9 +108,9 @@ of the following are true:
 Clients registered through `/connect/register` meet both conditions,
 because registration assigns `edfi_admin_api/full_access` and creates no
 `ApiClient` row. The client the Ed-Fi API uses to read its own configuration is
-exempt when it is set up the same way. The Docker Compose scripts create it
-with the scope in `DMS_CONFIGURATION_SERVICE_CLIENT_SCOPE`
-(`edfi_admin_api/full_access` by default) and no `ApiClient` row.
+exempt for the same reason. The Docker Compose scripts create it as
+`CMSReadOnlyAccess`, with `edfi_admin_api/readonly_access` and no `ApiClient`
+row.
 
 A value below `1` (for example `-1`) turns the limit off for every client. In
 Docker Compose, set `CONFIGURATION_SERVICE_IDENTITY_BEARER_TOKEN_PER_CLIENT_LIMIT`.
@@ -147,13 +147,9 @@ revokes all of its tokens at once, but it also changes the client's secret.
 #### Token revocation
 
 `POST /connect/revoke` on the Configuration Service revokes a token. It is
-advertised as `revocation_endpoint` in the OpenID configuration document, which
-the Configuration Service serves at `/.well-known/openid-configuration` under
-its base URL, including `AppSettings:PathBase` when one is set. This is the
-same document the Ed-Fi API's `JwtAuthentication:MetadataAddress` points at.
-The caller authenticates with
-its own `client_id` and `client_secret` and sends the token in the `token`
-form field; [Token Revocation and
+advertised as `revocation_endpoint` in the OpenID configuration document. The
+caller authenticates with its own `client_id` and `client_secret` and sends the
+token in the `token` form field; [Token Revocation and
 Introspection](#token-revocation-and-introspection) has the full contract.
 
 A revoked token stops counting toward the limit immediately, and the
@@ -347,7 +343,9 @@ Keycloak with the caller's credentials.
 Both endpoints require the caller's own `client_id` and `client_secret` (HTTP
 Basic or form fields, not both), with the token in the `token` form field. A
 bearer token is not accepted as authentication. Failed authentication returns
-the OAuth error `invalid_client`.
+the OAuth error `invalid_client`, with HTTP `401` and a `WWW-Authenticate`
+header when the credentials were sent as HTTP Basic, or `400` when they were
+sent as form fields.
 
 A client can only revoke or inspect its own tokens:
 
