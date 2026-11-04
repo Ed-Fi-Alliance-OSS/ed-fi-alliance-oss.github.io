@@ -84,8 +84,8 @@ they compare.
 ### Data movement and other services
 
 - **[Ed-Fi API Publisher](./6-api-publisher/readme.md)** moves data and changes
-  from one Ed-Fi API instance to another. The source and target can each be an
-  Ed-Fi ODS/API or Ed-Fi API v8.
+  between Ed-Fi API instances using the same Data Standard version. The source
+  and target can each be an Ed-Fi ODS/API or Ed-Fi API v8.
 - **[Ed-Fi OneRoster® service](./3-oneroster/readme.mdx)** serves a 1EdTech®
   OneRoster v1.2 Rostering API from data in an Ed-Fi ODS.
 
@@ -112,9 +112,9 @@ numbers.
 
 ## What is no longer part of the Technology Suite?
 
-Some products the Ed-Fi Alliance once maintained have moved to [Ed-Fi Community
-Tools](/getting-started/community-tools), where they are available without a
-support commitment. These include the Ed-Fi ODS/API Docker deployments, Data
-Import, the Analytics Middle Tier, and the legacy Ed-Fi ODS Admin App 3.x. See
+Some products the Ed-Fi Alliance once maintained have moved or are moving to
+[Ed-Fi Community Tools](/getting-started/community-tools) and no longer carry an
+Alliance support commitment. These include the Ed-Fi ODS/API Docker deployments,
+Data Import, the Analytics Middle Tier, and the legacy Ed-Fi ODS Admin App 3.x. See
 [Out of Support](./0-roadmap/supported-versions.md#out-of-support) for the full
 list and the notice for each.
