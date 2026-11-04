@@ -12,6 +12,12 @@ processes in that software to handle errors programmatically when possible and a
 workflow and tools for the appropriate system user to review and resolve errors
 received from the API.
 
+Save the `correlationId` returned in an error response and include it when
+reporting the error to the host. A client-supplied ID can be adjusted before it
+is logged, so use the returned value for log searches. See [Correlation
+IDs](./correlation-ids.md) for normalization rules and responses without this
+field.
+
 ## Authorization Errors
 
 Many API response errors can be attributed to the relationship-based

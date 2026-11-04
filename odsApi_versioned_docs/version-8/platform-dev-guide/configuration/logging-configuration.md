@@ -162,10 +162,19 @@ MASK_REQUEST_BODY_IN_LOGS=false
 
 ## Correlation IDs
 
-Every HTTP request is assigned a correlation ID that appears in all log entries
-for that request and is included in error response bodies. The correlation ID
-makes it possible to trace a specific failed request across multiple log lines
-and across service boundaries.
+Every HTTP request is assigned a correlation ID that appears in request log
+entries and in error response bodies that carry a `correlationId` field. The
+correlation ID makes it possible to trace a specific failed request across
+multiple log lines and across service boundaries.
+
+Client-supplied IDs are normalized before use: they are truncated to the
+configured maximum, filtered for logging safety, and replaced with the
+server-generated identifier if the result is empty or whitespace. The default
+maximum is `255` UTF-16 code units; hosts can configure `64` through `1024` with
+`AppSettings:CorrelationIdMaxLength`. Use the returned normalized value when
+searching logs. See the client guide's [Correlation
+IDs](../../client-developers-guide/correlation-ids.md) page for the exact rules,
+token error response headers, and responses without an ID.
 
 By default the Ed-Fi API ignores client-supplied correlation IDs and uses the
 request's trace identifier. To accept one, set `AppSettings:CorrelationIdHeader`

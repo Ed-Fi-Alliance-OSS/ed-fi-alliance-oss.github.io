@@ -29,9 +29,10 @@ The following fields included in the API error response are noteworthy:
   client developers and API hosts to facilitate the identification and
   resolution of errors.
 
-- **`correlationId`**: This field allows traceability of the specific
-  occurrence of the error and connects error response to entries in the API
-  errors logs.
+- **`correlationId`**: This field connects the error response to entries in the
+  API's logs. Report the returned value to the host, since a client-supplied ID
+  may have been normalized or replaced. See [Correlation IDs](./correlation-ids.md)
+  for the rules and responses that carry the ID elsewhere or omit it.
 
 :::tip
 
