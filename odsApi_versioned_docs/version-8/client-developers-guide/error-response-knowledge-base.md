@@ -2891,6 +2891,65 @@ team for resolution.
 
 :::
 
+## 429 Too Many Requests
+
+### Too Many Tokens
+
+The token endpoint returns this when the client already holds the maximum
+number of active access tokens the host allows (15 by default on hosts that use
+the self-contained identity provider). The response uses the OAuth 2.0 error
+format instead of the problem-details format used by the data endpoints, so it
+has `error` and `error_description` fields rather than `type` and `detail`.
+
+<details>
+<summary>Example</summary>
+
+HTTP Request
+
+```text
+POST http://localhost:8080/api/oauth/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials&client_id=RvcohKz9zHI4&client_secret=E1iEFusaNf81xzCxwHfbolkC
+
+```
+
+HTTP Response
+
+```text
+HTTP/1.1 429 Too Many Requests
+Content-Type: application/json; charset=utf-8
+X-Correlation-ID: 1745dc8cc91c
+
+{
+  "error": "temporarily_unavailable",
+  "error_description": "Too many access tokens have been requested (limit is 15). Access tokens should be reused until they expire."
+}
+
+```
+
+</details>
+
+:::tip
+
+Problem is in the client application code → send to application development team
+for resolution.
+
+- The client requests new tokens instead of reusing the one it has. Cache the
+  token and reuse it until it expires. See [Token Limits and
+  Revocation](./authentication.md#token-limits-and-revocation).
+- The tokens the client already holds keep working. If none is available (for
+  example after a crash loop), wait for them to expire (30 minutes by default)
+  and retry with a backoff, not in a tight loop.
+- Revoke tokens the client no longer needs with the Configuration Service's
+  `POST /connect/revoke` endpoint.
+- Request rate limiting also returns `429` with `error`
+  `temporarily_unavailable`, but its `error_description` is "The number of
+  allowed requests has been exceeded. Retry the request later." In that case,
+  retry later.
+
+:::
+
 ## 500 Internal Server Error
 
 This is a catch-all for various errors that can occur on the server. Review this
