@@ -6,19 +6,13 @@ description: How the Ed-Fi Data Standard, the Ed-Fi Unifying Data Model (UDM), t
 
 # Ed-Fi Data Standard vs. UDM vs. API Specifications vs. Ed-Fi API
 
-The [Ed-Fi Data Standard](./data-standards.md) is the community standard for
-K–12 education data. The [Ed-Fi Unifying Data Model (UDM)](./udm/readme.md) is
-the logical model behind it, and the [Ed-Fi API
-Specifications](./readme.md#ed-fi-api-specifications) are the REST endpoints and
-JSON messages used to exchange data that conforms to it. The [Ed-Fi API
-Guidelines](./api-guidelines/readme.md) set the rules an API must follow. An
-_Ed-Fi API_ is any application that implements the API Specifications and
-follows the Guidelines; the [Ed-Fi ODS/API](/reference/ods-api-platform) and
-[Ed-Fi API v8](/reference/ed-fi-api/8) are the Ed-Fi Alliance's own Ed-Fi API
-applications.
-
-In short: the first four are published standards, and an Ed-Fi API is software
-that implements them.
+The Ed-Fi Data Standard, the Unifying Data Model (UDM), the Ed-Fi API
+Specifications, and the Ed-Fi API Guidelines are standards that the Ed-Fi
+Alliance publishes; each one is defined on [Data Exchange
+Standards](./readme.md#what-standards-does-the-ed-fi-alliance-publish). An
+[Ed-Fi API](#what-does-ed-fi-api-mean) is software that implements them, such
+as the Ed-Fi ODS/API or Ed-Fi API v8. This page compares how they relate, what
+each one does and is not, and how each one is versioned.
 
 ## How they relate
 
@@ -36,29 +30,18 @@ flowchart LR
     GL -- "followed by" --> API
 ```
 
-1. The **Data Standard** defines what education data means and how it is
-   structured. It is expressed through the UDM and the API Specifications; it is
-   not a separate artifact.
-2. The **UDM** models that data as entities, attributes, and relationships. Its
-   domain aggregates become the resources in the API Specifications.
-3. The **API Specifications** describe the endpoints and JSON messages for
-   exchanging that data. The Resources API specification has one version for
-   each Data Standard version.
-4. The **API Guidelines** describe the requirements any Ed-Fi API specification
-   and implementation must meet, regardless of technology.
-5. An **Ed-Fi API** application implements one or more of the API
-   Specifications, follows the Guidelines, and runs in an agency's environment.
+The UDM's domain aggregates become the resources in the API Specifications,
+and the Resources API specification has one version for each Data Standard
+version. The Guidelines apply to any Ed-Fi API, whatever technology it uses.
 
 ## Comparison
 
 | | Ed-Fi Data Standard | Unifying Data Model (UDM) | Ed-Fi API Specifications | Ed-Fi API Guidelines | Ed-Fi API |
 | --- | --- | --- | --- | --- | --- |
-| **What it is** | The community standard for K–12 education data | The logical, enterprise data model behind the Data Standard | Open API definitions of REST endpoints and JSON messages | Requirements for any Ed-Fi REST API specification and implementation | Any application that implements the Ed-Fi API Specifications and follows the Guidelines |
 | **What it does** | Defines the meaning and structure of exchanged data | Defines entities, attributes, and relationships, and keeps the specifications consistent with each other | Defines the resources, descriptors, and other API surfaces a client calls | Sets the rules for URLs, requests, authentication, and other behavior | Exposes a REST interface for exchanging data represented according to the Data Standard |
 | **What it is not** | Software, a database, or a reporting tool | An API or a physical database schema | A running service or a specific product | A specification of endpoints, or an implementation technology | The Data Standard itself, or one specific product |
 | **Normative?** | Its normative parts are the API Specifications, the Guidelines, and the UDM Best Practices pages | No, except its domain Best Practices pages | Yes | Yes | Not a standard; it conforms to the standards |
 | **Versioning** | Major and minor versions (for example, Data Standard 6.1) | Versioned with the Data Standard | The Resources API matches the Data Standard version | Its own version (currently 4.0) | Each product has its own versions; see [Supported Versions](/reference/roadmap/supported-versions) |
-| **Where to find it** | [About the Ed-Fi Data Standard](./data-standards.md) | [Unifying Data Model](./udm/readme.md) and the [Model Reference](/reference/data-exchange/data-standard/model-reference) | [Ed-Fi-API-Specifications on GitHub](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-API-Specifications) | [Ed-Fi API Guidelines](./api-guidelines/readme.md) | [Ed-Fi API Platforms](/reference/ods-api-platform) |
 
 For which Data Standard versions each Ed-Fi API product supports, see [Ed-Fi
 Technology Suite Supported Versions](/reference/roadmap/supported-versions).
