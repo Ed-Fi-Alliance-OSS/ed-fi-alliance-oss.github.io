@@ -116,13 +116,9 @@ has been granted scopes, the response also includes a `scope` value.
 
 Reuse each access token until it expires. Hosts using the self-contained
 identity provider limit how many active tokens a client can hold (15 by
-default). Once a client reaches the limit, token requests fail until existing
-tokens expire. The response is HTTP 429, with the `error`
-`temporarily_unavailable` and an `error_description` saying too many access
-tokens have been requested. Request rate limiting can also return a 429 with
-the same `error`, so use the `error_description` to tell them apart.
-See [Identity Provider](../platform-dev-guide/configuration/identity-provider.md)
-for the host settings.
+default). Once a client reaches the limit, token requests fail with HTTP 429
+until existing tokens expire or are revoked. See [Token Limits and
+Revocation](#token-limits-and-revocation).
 
 :::
 
@@ -172,6 +168,97 @@ curl http://localhost:8080/api/data/ed-fi/disciplineIncidents -H "Authorization:
 You can explore the whole API surface in this manner, but there are easier
 ways. See the section called [Using the Online
 Documentation](./using-the-online-documentation.md) for more information.
+
+## Token Limits and Revocation
+
+Hosts that use the self-contained identity provider limit how many active
+access tokens one client can hold: 15 by default, counting tokens that have
+neither expired nor been revoked. Hosts can raise the limit or turn it off, and
+it doesn't apply on hosts that use Keycloak, but a client can't tell which
+applies, so design for the limit. See [Identity Provider
+Configuration](../platform-dev-guide/configuration/identity-provider.md#access-token-management)
+for the host side.
+
+### Reuse Tokens Until They Expire
+
+Request a token once, cache it, and send it with every request until it
+expires. Use `expires_in` from the token response to decide when to request the
+next one, and request a new one when the API answers `401`. Share one token
+across the threads or workers of a process rather than requesting one per
+request or per worker.
+
+### Handle the 429 Response
+
+When a client already holds its maximum number of active tokens, the token
+endpoint answers `429 Too Many Requests` in the OAuth error format:
+
+```text
+HTTP/1.1 429 Too Many Requests
+Content-Type: application/json; charset=utf-8
+
+{
+  "error": "temporarily_unavailable",
+  "error_description": "Too many access tokens have been requested (limit is 15). Access tokens should be reused until they expire."
+}
+```
+
+Request rate limiting also answers `429` with the same `error`, but its
+`error_description` is "The number of allowed requests has been exceeded. Retry
+the request later." Read `error_description` to tell the two apart.
+
+A token-limit rejection means the client already holds all the tokens it is
+allowed, and those tokens keep working:
+
+- If the application still has one of them, keep using it.
+- If the tokens are lost, for example after a crash loop or a restart that
+  requested a new token each time, there is no way to get them back. Wait for
+  them to expire (30 minutes by default) and retry with a backoff, not in a
+  tight loop. Each rejected request still counts against rate limiting.
+- Revoke any tokens the client still holds but no longer needs (see below).
+- If this happens often, fix the client's token caching rather than asking the
+  host to raise the limit.
+
+### Revoke Tokens You No Longer Need
+
+A revoked token stops counting toward the limit immediately. Revoke a token
+when your application finishes a run or shuts down cleanly and won't use the
+token again. Revocation frees a slot under the limit; it doesn't cut off
+access, because the Ed-Fi API keeps accepting a revoked token until it expires.
+
+Revocation uses the Configuration Service's `POST /connect/revoke` endpoint,
+not the Ed-Fi API's base URL. Ask your host for the URL, or for the URL of the
+identity provider's OpenID configuration document, which lists it as
+`revocation_endpoint`. Authenticate with your own
+client ID and secret, as HTTP Basic credentials or as `client_id` and
+`client_secret` form fields (not both), and send the token in the `token`
+field. The examples use a Configuration Service at `http://localhost:8081`.
+
+#### PowerShell Revocation Request
+
+```powershell
+Invoke-RestMethod -Method Post -Uri "http://localhost:8081/connect/revoke" `
+  -ContentType "application/x-www-form-urlencoded" `
+  -Body @{
+    "client_id"     = $key
+    "client_secret" = $secret
+    "token"         = $token.access_token
+  }
+```
+
+#### cURL Revocation Request
+
+```bash
+curl -X POST http://localhost:8081/connect/revoke \
+  -u "RvcohKz9zHI4:E1iEFusaNf81xzCxwHfbolkC" \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "token=R3PLAC3_W1TH_ACC3SS_TOK3N"
+```
+
+A successful revocation returns `200 OK` with an empty body. The response is
+`200` even when the token is unknown, already revoked, or belongs to another
+client; a client can revoke only its own tokens. Wrong credentials get the
+OAuth error `invalid_client`. On hosts that use Keycloak, the same endpoint
+forwards the revocation to Keycloak.
 
 The next section, [Authorization](./authorization.md), has more details about
 using the access token.

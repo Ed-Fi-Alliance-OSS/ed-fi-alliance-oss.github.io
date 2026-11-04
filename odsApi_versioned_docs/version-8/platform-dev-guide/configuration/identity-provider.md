@@ -80,25 +80,93 @@ its configuration from the Configuration Service.
 the Ed-Fi API can't get a token and can't read its configuration. See
 [Configuration Details](./configuration-details.mdx).
 
-### Token limits
+### Access Token Management
 
-The self-contained provider limits how many active (unexpired and unrevoked)
-access tokens one client can hold. `IdentitySettings:BearerTokenPerClientLimit`
-sets the limit; the default is `15`. When a client already holds that many
-tokens, its next token request is rejected with `429 Too Many Requests` and the
-OAuth error `temporarily_unavailable`. The Ed-Fi API's `/oauth/token` endpoint
-returns the same `429` to the client.
+The self-contained provider stores every access token it issues. It limits how
+many active tokens each client can hold, accepts revocation requests, and
+deletes expired tokens in the background.
 
-Clients should reuse a token until it expires. A client that no longer needs a
-token can [revoke it](#token-revocation-and-introspection), which frees a slot
-straight away.
+#### Token limits
 
-The limit applies to every Ed-Fi API client. Clients used only for the
-Configuration Service management API are exempt. A value below `1` (for example
-`-1`) turns the limit off for all clients. In Docker Compose, set
-`CONFIGURATION_SERVICE_IDENTITY_BEARER_TOKEN_PER_CLIENT_LIMIT`.
+`IdentitySettings:BearerTokenPerClientLimit` sets how many active access tokens
+one client can hold; the default is `15`. An active token is one that has
+neither expired nor been revoked. When a client already holds that many tokens,
+its next token request is rejected with `429 Too Many Requests` (see [The 429
+response](#the-429-response)).
 
-### Expired-token cleanup
+The limit applies to every Ed-Fi API client. A client is exempt only when both
+of the following are true:
+
+- It has no `dmscs.ApiClient` row, so it was not created as an API client
+  through the Configuration Service.
+- It is registered with at least one scope, and every one of them is a
+  Configuration Service admin scope: `edfi_admin_api/full_access`,
+  `edfi_admin_api/readonly_access`, or
+  `edfi_admin_api/authMetadata_readonly_access`. Only registered scopes count;
+  the scopes a token request asks for don't select the exemption.
+
+Clients registered through `/connect/register` meet both conditions,
+because registration assigns `edfi_admin_api/full_access` and creates no
+`ApiClient` row. The client the Ed-Fi API uses to read its own configuration is
+exempt when it is set up the same way. The Docker Compose scripts create it
+with the scope in `DMS_CONFIGURATION_SERVICE_CLIENT_SCOPE`
+(`edfi_admin_api/full_access` by default) and no `ApiClient` row.
+
+A value below `1` (for example `-1`) turns the limit off for every client. In
+Docker Compose, set `CONFIGURATION_SERVICE_IDENTITY_BEARER_TOKEN_PER_CLIENT_LIMIT`.
+
+#### The 429 response
+
+The Configuration Service's `/connect/token` and the Ed-Fi API's `/oauth/token`
+both answer a token-limit rejection in the OAuth 2.0 error format, with `error`
+set to `temporarily_unavailable` and an `error_description` that names the
+limit. The Ed-Fi API rebuilds the message from the limit it reads in the
+Configuration Service's answer and adds an `X-Correlation-ID` header:
+
+```json
+{
+  "error": "temporarily_unavailable",
+  "error_description": "Too many access tokens have been requested (limit is 15). Access tokens should be reused until they expire."
+}
+```
+
+The [`/connect` rate limiter](#rate-limits-on-connect-endpoints) also answers
+`429` with `temporarily_unavailable`, but its `error_description` is "The
+number of allowed requests has been exceeded. Retry the request later." and it
+sends a `Retry-After` header. A token-limit rejection sends no `Retry-After`
+header, because the wait depends on when the client's tokens expire.
+
+What a client should do about this response is covered in the [Client
+Developers'
+Guide](../../client-developers-guide/authentication.md#token-limits-and-revocation).
+On the host side, a client that has lost track of its tokens, for example
+after a crash loop that requested a new token on every start, has to wait for
+them to expire. If that wait is a problem, resetting the client's credentials
+revokes all of its tokens at once, but it also changes the client's secret.
+
+#### Token revocation
+
+`POST /connect/revoke` on the Configuration Service revokes a token. It is
+advertised as `revocation_endpoint` in the OpenID configuration document, which
+the Configuration Service serves at `/.well-known/openid-configuration` under
+its base URL, including `AppSettings:PathBase` when one is set. This is the
+same document the Ed-Fi API's `JwtAuthentication:MetadataAddress` points at.
+The caller authenticates with
+its own `client_id` and `client_secret` and sends the token in the `token`
+form field; [Token Revocation and
+Introspection](#token-revocation-and-introspection) has the full contract.
+
+A revoked token stops counting toward the limit immediately, and the
+Configuration Service rejects it on its next request. The Ed-Fi API validates
+tokens locally and keeps accepting a revoked token until it expires, so
+revocation frees a limit slot but doesn't cut off access.
+
+The Configuration Service also revokes all of a client's tokens on its own when
+the client's credentials are reset (`PUT /v3/apiClients/{id}/reset-credential`),
+when the client is deleted, and when an update sets its `isApproved` to
+`false`.
+
+#### Expired-token cleanup
 
 The self-contained provider runs a background job that deletes expired access
 tokens:
@@ -108,8 +176,10 @@ tokens:
 | `IdentitySettings:TokenCleanup:Enabled` | `true` | `CONFIGURATION_SERVICE_IDENTITY_TOKEN_CLEANUP_ENABLED` |
 | `IdentitySettings:TokenCleanup:IntervalMinutes` | `30` | `CONFIGURATION_SERVICE_IDENTITY_TOKEN_CLEANUP_INTERVAL_MINUTES` |
 
-Leave cleanup on. Each token request counts the client's active tokens, and
-expired tokens that haven't been deleted yet make that count slower.
+Leave cleanup on. Each token request counts the client's active tokens over the
+token table, and expired tokens that haven't been deleted yet make that count
+slower. Cleanup only removes tokens that have already stopped counting, so it
+never changes a client's active-token count.
 
 ### Docker Compose
 
@@ -127,6 +197,9 @@ CONFIGURATION_SERVICE_IDENTITY_PROVIDER=self-contained
 SELF_CONTAINED_OAUTH_TOKEN_ENDPOINT=http://ed-fi-api-config:8081/connect/token
 SELF_CONTAINED_DMS_JWT_AUTHORITY=http://ed-fi-api-config:8081
 SELF_CONTAINED_DMS_JWT_METADATA_ADDRESS=http://ed-fi-api-config:8081/.well-known/openid-configuration
+CONFIGURATION_SERVICE_IDENTITY_BEARER_TOKEN_PER_CLIENT_LIMIT=15
+CONFIGURATION_SERVICE_IDENTITY_TOKEN_CLEANUP_ENABLED=true
+CONFIGURATION_SERVICE_IDENTITY_TOKEN_CLEANUP_INTERVAL_MINUTES=30
 ```
 
 :::note
@@ -148,6 +221,22 @@ Docker Compose.
 
 **Token endpoint:**
 `http://{keycloak-host}:{port}/realms/edfi/protocol/openid-connect/token`
+
+:::note
+
+The [token limit](#token-limits) and [expired-token
+cleanup](#expired-token-cleanup) apply only to the self-contained provider.
+Keycloak manages its own tokens and sets their lifetimes in the realm's token
+settings. Clients can still call the Configuration Service's
+`POST /connect/revoke`; in Keycloak mode it forwards the request, with the
+caller's credentials, to Keycloak's revocation endpoint
+(`{keycloak}/realms/{realm}/protocol/openid-connect/revoke`). The Ed-Fi API and
+the Configuration Service validate Keycloak tokens locally, so a revoked token
+is still accepted until it expires. See [Token Revocation and
+Introspection](#token-revocation-and-introspection) and the [Keycloak
+documentation](https://www.keycloak.org/documentation).
+
+:::
 
 ### Configuration Service settings
 

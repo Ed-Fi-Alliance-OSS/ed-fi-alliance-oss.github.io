@@ -640,18 +640,24 @@ provider.
 
 - **`IdentitySettings:BearerTokenPerClientLimit`**
 
+  |             |                                                                                                                                                                                                                                                                               |
+  | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `15`                                                                                                                                                                                                                                                                          |
+  | Description | Maximum number of active access tokens one API client may hold in self-contained mode. A value below `1` turns the limit off. See [Token limits](./identity-provider.md#token-limits). Docker Compose env var: `CONFIGURATION_SERVICE_IDENTITY_BEARER_TOKEN_PER_CLIENT_LIMIT` |
+
+- **`IdentitySettings:TokenCleanup:Enabled`**
+
+  |             |                                                                                                                                                                                                                                              |
+  | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `true`                                                                                                                                                                                                                                       |
+  | Description | Runs the background job that deletes expired access tokens in self-contained mode. See [Expired-token cleanup](./identity-provider.md#expired-token-cleanup). Docker Compose env var: `CONFIGURATION_SERVICE_IDENTITY_TOKEN_CLEANUP_ENABLED` |
+
+- **`IdentitySettings:TokenCleanup:IntervalMinutes`**
+
   |             |                                                                                                                                                |
   | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-  | Default     | `15`                                                                                                                                           |
-  | Description | Maximum number of active access tokens one API client may hold in self-contained mode. See [Token limits](./identity-provider.md#token-limits) |
-
-- **`IdentitySettings:TokenCleanup:Enabled`**,
-  **`IdentitySettings:TokenCleanup:IntervalMinutes`**
-
-  |             |                                                                                                                                                |
-  | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-  | Defaults    | `true`, `30`                                                                                                                                   |
-  | Description | Background deletion of expired access tokens in self-contained mode. See [Expired-token cleanup](./identity-provider.md#expired-token-cleanup) |
+  | Default     | `30`                                                                                                                                           |
+  | Description | Minutes between runs of the expired-token cleanup job. Docker Compose env var: `CONFIGURATION_SERVICE_IDENTITY_TOKEN_CLEANUP_INTERVAL_MINUTES` |
 
 - **`IdentitySettings:ClientSecretHashingIterations`**
 
