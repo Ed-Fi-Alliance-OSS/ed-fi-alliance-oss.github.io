@@ -281,8 +281,7 @@ The provider must:
 4. Include examples of both attendance and non-attendance events, if supported
    by the product. Record an absence with the appropriate
    AttendanceEventCategory (for example, Excused Absence or Unexcused Absence)
-   and omit `interventionDuration`, unless the product has a specific
-   requirement to include it.
+   and omit `interventionDuration`.
 5. Demonstrate the ability to update and delete an intervention attendance event
    record. The delete is run in the order described in
    [Order of Operations and Deletes](#order-of-operations-and-deletes).
