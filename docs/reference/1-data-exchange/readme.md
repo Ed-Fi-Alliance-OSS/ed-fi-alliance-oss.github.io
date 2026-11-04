@@ -24,6 +24,10 @@ version; the other pages in this section apply across versions.
 
 ## What standards does the Ed-Fi Alliance publish?
 
+For a side-by-side comparison of these standards and of the Ed-Fi API
+applications that implement them, see [Ed-Fi Data Standard vs. UDM vs. API
+Specifications vs. Ed-Fi API](./data-standard-vs-udm-vs-api.md).
+
 - **[Ed-Fi Data Standard](./data-standards.md).** The community-developed
   standard for K–12 education data. It is expressed through the Unifying Data
   Model and the Ed-Fi REST API Specifications below; it is not a separate
@@ -64,13 +68,16 @@ itself set requirements.
 ## Ed-Fi API Specifications
 
 The Ed-Fi API Specifications define the API resources and JSON message formats
-used to exchange data that conforms to the Ed-Fi Data Standard. An Ed-Fi
-compatible API application creates a REST-based interface for data exchange,
-where the messages conform to the Ed-Fi Data Standard. The [Ed-Fi
-ODS/API](../2-ods-api-platform/readme.mdx) is the Ed-Fi Alliance's core API product, used
-by nearly all "Ed-Fi deployments." Any interested party can build an alternate,
-compatible, application, by adhering to the Open API specifications and guidance
-provided in [Ed-Fi API Guidelines](./api-guidelines/readme.md).
+used to exchange data that conforms to the Ed-Fi Data Standard. The
+specification files are published in the
+[Ed-Fi-API-Specifications](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-API-Specifications)
+repository.
+
+Applications that implement these specifications, such as the [Ed-Fi
+ODS/API](../2-ods-api-platform/readme.mdx) and [Ed-Fi API
+v8](/reference/ed-fi-api/8), are Ed-Fi APIs. See [What does "Ed-Fi API"
+mean?](./data-standard-vs-udm-vs-api.md#what-does-ed-fi-api-mean) for
+the levels of conformance and how the product names are used.
 
 :::tip
 
@@ -96,6 +103,9 @@ Looking to get involved in the discussion and definition of standards?
 
 ## Other resources
 
+- [Ed-Fi Data Standard vs. UDM vs. API Specifications vs. Ed-Fi
+  API](./data-standard-vs-udm-vs-api.md) compares what each one is, what it
+  does, and what it is not.
 - What do we mean by "standards?" The [Ed-Fi is a Data
   Standard](https://www.ed-fi.org/ed-fi-data-standard/) article on our main
   website has an overview.
