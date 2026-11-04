@@ -196,8 +196,9 @@ identifiers.
 The provider will show evidence, via a live, synchronous meeting and screen
 sharing, the ability to perform the transactional test scenarios listed in
 [Intervention API for Data Standard v5 Certification - Test Scenarios](./test-scenarios/readme.md).
-This includes creating, updating, and deleting each of the required API
-resources.
+This includes creating, updating, and deleting the resources marked for those
+operations in [Required API Resources](./test-scenarios/readme.md#required-api-resources).
+Student, Staff, and EducationOrganization may be used as read-only references.
 
 "Transactionally" means that API resource transactions MUST occur as changes are
 made during normal product usage. It is acceptable for a product to batch
