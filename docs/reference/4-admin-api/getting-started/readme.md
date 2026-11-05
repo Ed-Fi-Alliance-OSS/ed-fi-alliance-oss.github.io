@@ -15,11 +15,11 @@ Each Ed-Fi ODS Admin API product line has a set of steps outlining a one-time co
 
 ### Admin API version 2.4 and later (ODS/API 6.x and 7.x)
 
-Admin API version 2.4 and later supports use of both ODS/API 6.x and 7.x applications. Please follow the [Getting Started 2.4 guide](./admin-api-2.4-newer/readme.md) for more information on set up and configuration.
+Admin API version 2.4 and later supports use of both ODS/API 6.x and 7.x applications. Please follow the [Getting Started 2.4 guide](./admin-api-2.4/readme.md) for more information on set up and configuration.
 
 ### Admin API version 2.3 (ODS/API 6.x and 7.x)
 
-Admin API version 2.3 also supports both ODS/API 6.x and 7.x applications. Please follow the [Getting Started 2.3 guide](./admin-api-2.3-older/readme.md) for more information on set up and configuration.
+Admin API version 2.3 also supports both ODS/API 6.x and 7.x applications. Please follow the [Getting Started 2.3 guide](./admin-api-2.3/readme.md) for more information on set up and configuration.
 
 ### Admin API version 2.0 - 2.2 (ODS/API 7.x only)
 

@@ -682,6 +682,27 @@ const config = {
           },
         ],
         createRedirects(existingPath) {
+          // Admin API getting-started folders were renamed to drop the
+          // relative "-newer" / "-older" suffixes, which went stale on every
+          // release. Keep the previously published URLs working.
+          const adminApiVersionFolderRenames = [
+            [
+              '/reference/admin-api/getting-started/admin-api-2.2',
+              '/reference/admin-api/getting-started/admin-api-2.2-older',
+            ],
+            [
+              '/reference/admin-api/getting-started/admin-api-2.3',
+              '/reference/admin-api/getting-started/admin-api-2.3-newer',
+            ],
+          ];
+          for (const [current, previous] of adminApiVersionFolderRenames) {
+            if (
+              existingPath === current ||
+              existingPath.startsWith(`${current}/`)
+            ) {
+              return [previous + existingPath.slice(current.length)];
+            }
+          }
           if (existingPath.includes('/reference/ed-fi-api')) {
             return [
               existingPath.replace(
