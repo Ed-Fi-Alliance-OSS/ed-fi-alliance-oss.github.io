@@ -221,7 +221,7 @@ _Not yet on the public GitHub roadmap views._
 - The release that takes Ed-Fi API v8 to **production** for the 2027-2028 school year
 - Built for the needs of state education agencies and statewide deployments
 - Faster than the ODS/API on PostgreSQL across every workload we tested
-- The payoff of a multi-year effort to modernize the Ed-Fi platform
+- The payoff of a multi-year effort, from Project Meadowlark to Project Tanager to Ed-Fi API v8
 
 Speaker notes:
 
@@ -247,23 +247,60 @@ Speaker notes:
 
 ---
 
-## A Multi-Year Journey
+## A Multi-Year Journey: Three Names, One Goal
 
-**From idea to production:**
+**A cloud-native replacement for the ODS/API, in three chapters:**
 
-- **July 2025:** Data Management Service release candidate 1, ready for integration testing
-- **March 2026:** the decision to move to a fully relational data store, shaped by community feedback
-- **July 2026:** **Ed-Fi API v8.0**, a new platform, with multi-tenancy, profiles, changed record queries, and Docker deployment
-- **September 2026:** performance comparison against the ODS/API
-- **October 2026:** Pilot Test Kit and API Publisher 1.4 with v8 support
-- **November 2026:** **Ed-Fi API 8.1**
+1. **Project Meadowlark** (R&D, shut down January 2024): a proof of concept built on NoSQL document storage. Its lessons shaped the 2024 roadmap.
+2. **Project Tanager and the Data Management Service** (2024-2026): the project and the product that carried those lessons toward production, announced at Tech Congress 2024.
+3. **Ed-Fi API v8** (2026): the production release of the Data Management Service. 8.0 in July, 8.1 today.
 
-Thank you to the Ed-Fi community, the working groups, and our implementation partners.
+Nearly three years from the close of Meadowlark to today's 8.1 release.
 
 Speaker notes:
 
-- Acknowledge the people: the Data Management Service work group, the Technical Advisory Group, and the pilot participants. Add names if appropriate.
-- Earlier origin points (before July 2025) are not covered in the source posts. Add them if you want to show the full multi-year arc.
+- Project Tanager is the code name for the _project_; the Data Management Service was its key _product_. Ed-Fi API v8 is that product's production name.
+- Meadowlark is documented only on its project page (docs/getting-started/community-tools/technology/project-meadowlark.md). Its last release was Milestone 0.5.0 in January 2024. Earlier history is not covered in the blog.
+- The blog posts from this period carry a note that Ed-Fi API v8 is the production release of the DMS, which is useful for audience members who remember the earlier names.
+
+---
+
+## Milestones Along the Way
+
+| When | Milestone | What it proved |
+| --- | --- | --- |
+| May 2024 | Tanager FAQ at Tech Congress 2024 | The community wants an ODS/API successor and has questions |
+| June 2024 | **0.1** | PostgreSQL-backed API: validation, persistence, Resources, Descriptors, and Discovery APIs |
+| August 2024 | **0.2** | Referential integrity and descriptor validation |
+| March 2025 | **0.4** | Configuration Service, OAuth with Keycloak, namespace-based authorization |
+| April 2025 | Tech Congress 2025 | Call for community posters showing use cases for the platform |
+| June 2025 | **0.5** | MetaEd-based extensions, SDK generation, relationship-based authorization |
+| July 2025 | **0.6 (release candidate 1)** | Swagger UI, template databases, end-to-end and compatibility testing |
+| December 2025 | **0.7** | Multi-tenancy, built-in identity provider, OpenSearch removed |
+| March 2026 | Relational backend decision | Familiar, joinable tables for ODS-experienced teams |
+| July 2026 | **8.0** | A new platform: the summer milestone |
+| October 2026 | Pilot Test Kit | Real client integrations tested against v8 |
+| November 2026 | **8.1** | Production-ready |
+
+Speaker notes:
+
+- The 0.3 milestone has no blog post in the source material, so it is not listed.
+- Show a subset on the slide if the table is too long, for example 0.1, 0.4, 0.7, 8.0, 8.1.
+
+---
+
+## Listening Shaped the Design
+
+**The architecture changed as the community and the evidence spoke:**
+
+- **Documents to relational tables:** the data store moved from document-style storage to a fully relational design (March 2026), so ODS-experienced teams find it familiar
+- **Search engine removed:** PostgreSQL alone met read and write needs, so OpenSearch and Elasticsearch were dropped in 0.7 (December 2025). This lowered cost and complexity, especially in multi-tenant deployments.
+- **Streaming became optional:** Kafka went from required to optional
+- **Built-in identity provider:** no external identity server needed for a standard deployment
+
+Speaker notes:
+
+- The original plan for GET by query leaned on Debezium, Kafka, and OpenSearch (see the 0.2 post). It is a good story about being willing to simplify.
 
 ---
 
