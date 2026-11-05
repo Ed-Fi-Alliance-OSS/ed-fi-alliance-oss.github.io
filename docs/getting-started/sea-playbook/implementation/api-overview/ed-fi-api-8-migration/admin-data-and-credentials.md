@@ -88,6 +88,8 @@ Keep two kinds of claims apart when you plan:
 - **Your existing custom claimsets and profiles.** These move across through the Admin API or Admin App v4. To move claimsets as a file instead, the Security Metadata Tools' `convert-ods-xml` command converts an XML export of your `EdFi_Security` security metadata into a complete Configuration Service claims file. It has been verified against the ODS/API 7.3.2 security metadata format, so check the result (see [Conversion rules](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/main/src/config/clis/EdFi.DmsConfigurationService.SecurityMetadataTools/README.md#conversion-rules)).
 - **Claims for your extension resources.** If you have extensions, you also need claims for the new extension resources. These are written as JSON files kept with your state's extension files. See the Extensions page.
 
+From 8.1, Ed-Fi API v8 supports the same authorization strategies as the ODS/API, with the same names, so the authorization strategies in your custom claimsets carry over unchanged.
+
 If you use ownership-based authorization, from 8.1 you assign ownership tokens to API clients through the Configuration Service (`/v3/ownershipTokens`).
 
 ## Vendor credentials
