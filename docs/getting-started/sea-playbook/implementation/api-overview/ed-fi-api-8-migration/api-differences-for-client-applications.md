@@ -63,9 +63,9 @@ Token URL: https://api.your-state.gov/api/oauth/token
 
 The `/api` segment is the Ed-Fi API path base. It is `api` (`PATH_BASE`) in the default Docker environment file and it is configurable, so check the exact URLs for your deployment before you give them to vendors.
 
-## Features not in Ed-Fi API v8.0
+## Features by release
 
-Some ODS/API features are not available yet, including OneRoster, ownership-based authorization, and custom view-based authorization. Change Queries work without snapshots. See [Feature Availability](/reference/ed-fi-api/8/whats-new/release-notes#feature-availability) for the current list, and check the release notes for later versions.
+Ownership-based authorization, custom view-based authorization and Change Query snapshots are available from Ed-Fi API 8.1; 8.0 does not have them. OneRoster is planned for 8.2. See [Feature Availability](/reference/ed-fi-api/8/whats-new/release-notes#feature-availability), and check the release notes for later versions.
 
 ## What to tell vendors
 

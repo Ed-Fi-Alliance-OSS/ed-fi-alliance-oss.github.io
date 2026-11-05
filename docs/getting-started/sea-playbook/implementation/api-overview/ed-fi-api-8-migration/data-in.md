@@ -12,8 +12,8 @@ Some states write straight into ODS tables: identity systems that fill the Stude
 | --- | --- | --- |
 | Writing data | Through the API, or with SQL straight into ODS tables | Through the API only |
 | File loads | SQL or SSIS from files, or the Bulk Load Client | Through the API (recommended approach still being worked out) |
-| Identity system integration | Custom `IUniqueIdentity` implementation built into the ODS/API ([Unique ID System Integration](/reference/ed-fi-api/technical-articles/unique-id-system-integration)) | No equivalent yet (see below) |
-| Validation on write | Custom code in the ODS/API | No equivalent yet (see below) |
+| Identity system integration | Custom `IUniqueIdentity` implementation built into the ODS/API ([Unique ID System Integration](/reference/ed-fi-api/technical-articles/unique-id-system-integration)) | From 8.1, a custom validator plugin that checks UniqueIds against your identity system ([UniqueId Validation](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/main/docs/UNIQUEID-VALIDATION.md)), and an optional Identity API backed by an identity plugin ([Identity Management](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/main/docs/IDENTITY-MANAGEMENT.md)) |
+| Validation on write | Custom code in the ODS/API | From 8.1, custom validator plugins ([Custom Validation](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/main/src/dms/core/EdFi.DataManagementService.CustomValidation/CUSTOM-VALIDATION.md)) |
 
 Every row in an Ed-Fi API v8 table is linked to internal records the API maintains, and the API enforces references, authorization and change tracking. See [Direct Database Access Patterns](/reference/ed-fi-api/8/whats-new/release-notes#direct-database-access-patterns).
 
@@ -50,8 +50,7 @@ Property names are case-sensitive on Ed-Fi API v8. A wrongly cased optional prop
 
 :::info[Still being worked out]
 
-- **Identity system integration.** The ODS/API let states plug in their own unique identity system. Ed-Fi API v8 has a design for this using plugins, but it is not built yet.
-- **Custom validation on write.** Also planned through plugins and not built yet.
+- **Rewriting identity and validation code as plugins.** ODS/API customizations for identity systems and validation have to be rewritten against the Ed-Fi API v8 plugin contracts. Tell us what your state's code does through the [Ed-Fi Community](/community), so we can check that the plugins cover it.
 - **Files from districts without an Ed-Fi SIS.** On the ODS/API, some states load these files into ODS tables with SQL or SSIS. We have not settled on a recommended replacement. One option is to store the data as Ed-Fi JSON files and load them through the API with a simple client such as [lightbeam](https://github.com/edanalytics/lightbeam). Tell us how your state handles these files through the [Ed-Fi Community](/community).
 - **Recommended patterns for direct writes.** We want to hear how your state writes directly to the ODS today, so we can publish a replacement for each common pattern. Tell us through the [Ed-Fi Community](/community).
 

@@ -16,6 +16,7 @@ Parts of the move from the ODS/API to Ed-Fi API v8 are not settled. This page li
 
 - **Carrying keys and secrets across.** There is no supported way yet to keep vendors' existing keys and secrets. Plan for new credentials. ([Admin Data and Credentials](./admin-data-and-credentials.md))
 - **Scripts to migrate `EdFi_Admin` and `EdFi_Security`.** Planned for a later date. ([Admin Data and Credentials](./admin-data-and-credentials.md))
+- **Ownership of reloaded data.** How to give vendors ownership of records reloaded through the API. ([Admin Data and Credentials](./admin-data-and-credentials.md))
 
 ## Extensions and seed data
 
@@ -27,10 +28,10 @@ Parts of the move from the ODS/API to Ed-Fi API v8 are not settled. This page li
 ## Data
 
 - **Relational data model documentation.** The reference page is still being written. ([Data Out](./data-out.md))
-- **Change Query snapshots.** Planned for a future release. ([Data Out](./data-out.md))
+- **Creating and refreshing snapshots.** Recommended steps for the snapshot databases that 8.1 serves. ([Data Out](./data-out.md))
 - **Files from districts without an Ed-Fi SIS.** A recommended replacement for loading these files with SQL or SSIS. ([Data In](./data-in.md))
 - **Patterns for direct writes.** Recommended replacements for each common way states write directly to the ODS. ([Data In](./data-in.md))
-- **Identity system integration and custom validation.** Designed as plugins for Ed-Fi API v8, not built yet. ([Data In](./data-in.md))
+- **Rewriting identity and validation code as plugins.** Checking that the 8.1 plugins cover what states' ODS/API customizations do. ([Data In](./data-in.md))
 
 ## Cutover
 
@@ -42,4 +43,4 @@ Parts of the move from the ODS/API to Ed-Fi API v8 are not settled. This page li
 
 - **A replacement for Analytics Middle Tier.** ([Ed-Fi Tools](./ed-fi-tools.md))
 - **Data Import with Ed-Fi API v8.** Not tested yet. ([Ed-Fi Tools](./ed-fi-tools.md))
-- **Features not in Ed-Fi API v8.0.** OneRoster, ownership-based and custom view-based authorization, and the Sandbox Administration Portal. See [Feature Availability](/reference/ed-fi-api/8/whats-new/release-notes#feature-availability).
+- **Features not in Ed-Fi API v8.** OneRoster is planned for 8.2. The Sandbox Administration Portal is not planned. See [Feature Availability](/reference/ed-fi-api/8/whats-new/release-notes#feature-availability).

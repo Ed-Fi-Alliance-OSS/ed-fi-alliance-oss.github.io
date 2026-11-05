@@ -6,7 +6,8 @@ sidebar_position: 9
 
 ## Timeline
 
-- Ed-Fi API v8.0 targets the 2027–2028 school year.
+- Ed-Fi API 8.0 is for pilots and parallel use in the 2026–2027 school year.
+- Ed-Fi API 8.1 is the release for production use, targeting the 2027–2028 school year.
 - The ODS/API is supported through the 2028–2029 school year.
 - The Ed-Fi Alliance plans to fully replace the ODS/API with Ed-Fi API v8 by the 2029–2030 school year.
 

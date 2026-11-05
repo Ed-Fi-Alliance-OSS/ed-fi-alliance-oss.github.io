@@ -85,8 +85,10 @@ See [How To: Configure Claim Sets](/reference/ed-fi-api/8/how-to-guides/how-to-c
 
 Keep two kinds of claims apart when you plan:
 
-- **Your existing custom claimsets and profiles.** These move across through the Admin API or Admin App v4.
+- **Your existing custom claimsets and profiles.** These move across through the Admin API or Admin App v4. To move claimsets as a file instead, the Security Metadata Tools' `convert-ods-xml` command converts an XML export of your `EdFi_Security` security metadata into a complete Configuration Service claims file. It has been verified against the ODS/API 7.3.2 security metadata format, so check the result (see [Conversion rules](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/main/src/config/clis/EdFi.DmsConfigurationService.SecurityMetadataTools/README.md#conversion-rules)).
 - **Claims for your extension resources.** If you have extensions, you also need claims for the new extension resources. These are written as JSON files kept with your state's extension files. See the Extensions page.
+
+If you use ownership-based authorization, from 8.1 you assign ownership tokens to API clients through the Configuration Service (`/v3/ownershipTokens`).
 
 ## Vendor credentials
 
@@ -98,5 +100,6 @@ Vendors still get their tokens from `/oauth/token` on the Ed-Fi API host. Ed-Fi 
 
 - **Carrying existing keys and secrets across.** We have not found a supported way to import existing ODS/API keys and secrets into the Configuration Service. Until that is settled, plan for new vendor credentials.
 - **Scripts to migrate `EdFi_Admin` and `EdFi_Security`.** Planned for a later date, to the extent possible.
+- **Ownership of reloaded data.** With ownership-based authorization, a record is owned by the API client that created it. Data you reload through the API, for example with API Publisher, is created by the loading client rather than the original vendor. We have not yet published how to give vendors ownership of reloaded data.
 
 :::

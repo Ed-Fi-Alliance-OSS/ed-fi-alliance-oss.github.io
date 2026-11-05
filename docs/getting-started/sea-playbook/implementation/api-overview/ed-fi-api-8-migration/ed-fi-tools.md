@@ -14,8 +14,8 @@ Which Ed-Fi tools you can keep using with Ed-Fi API v8, and what replaces the on
 | [Bulk Load Client](/reference/ed-fi-api/8/platform-dev-guide/utilities/bulk-load-client-utility) | Works | Set the token URL with `--oauthurl`. See [Seed Data and Annual Rollover](./seed-data-and-annual-rollover.md). |
 | [Data Import](/getting-started/community-tools/technology/data-import) | Out of support; not tested with Ed-Fi API v8 | Find an alternative import tool, or convert files to Ed-Fi XML and use the Bulk Load Client. |
 | Analytics Middle Tier | Does not work; out of support ([notice](/reference/roadmap/notifications/amt)) | Move the reports built on it. See below. |
-| Sandbox Administration Portal | Not available in Ed-Fi API v8.0 | Create test credentials through the Configuration Service. |
-| OneRoster | Not available in Ed-Fi API v8.0 | Keep OneRoster on the ODS/API for now. |
+| Sandbox Administration Portal | Not available in Ed-Fi API v8, and not planned | Create test credentials through the Configuration Service. |
+| OneRoster | Planned for Ed-Fi API 8.2 | Keep OneRoster on the ODS/API until then. |
 | Swagger UI | Available | Start with `-EnableSwaggerUI`. |
 
 ## Moving off Analytics Middle Tier

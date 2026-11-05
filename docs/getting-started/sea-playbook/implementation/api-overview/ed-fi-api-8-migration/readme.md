@@ -7,6 +7,8 @@ sidebar_label: Ed-Fi API 8 Migration
 
 This section is for state education agency (SEA) technical leads and implementers who run their own Ed-Fi ODS/API and are planning the move to Ed-Fi API v8.
 
+These pages describe Ed-Fi API 8.1, the release intended for production use from the 2027–2028 school year. If you are piloting 8.0, plan to upgrade to 8.1 and expect to re-provision your databases when you do (see the [Ed-Fi ODS/API and Ed-Fi API v8 FAQ](/reference/roadmap/api-faq)).
+
 Each page takes one part of your current setup and shows what you did on the ODS/API, what you do on Ed-Fi API v8, and an example. Background detail stays in the [Ed-Fi API v8 reference](/reference/ed-fi-api/8/getting-started); these pages link to it rather than repeat it.
 
 :::note[Earlier names]
@@ -22,7 +24,20 @@ During development, Ed-Fi API v8 was called the Data Management Service (DMS), a
 - **Docker is the only supported deployment today.** PowerShell scripts that install Ed-Fi API v8 without Docker, on a server or virtual machine, are planned for 2027. See [Deployment](./deployment.md).
 - **Any change to your extensions or Data Standard version needs a fresh database.** Adding, removing or changing an extension, or upgrading the Data Standard, means provisioning a new database and reloading data through the API. Plan these changes for the start of a school year. See [Plan for extension changes](./extensions.md#plan-for-extension-changes).
 - **Move to the Admin API or Admin App v4 first** if you manage vendors, applications and claimsets any other way today. See [Admin Data and Credentials](./admin-data-and-credentials.md).
-- **Check the feature list.** Some ODS/API features are not in Ed-Fi API v8.0. See [Feature Availability](/reference/ed-fi-api/8/whats-new/release-notes#feature-availability).
+- **Check the feature list.** A few ODS/API features are not in Ed-Fi API v8: OneRoster is planned for 8.2, and the Sandbox Administration Portal is not coming back. See [Feature Availability](/reference/ed-fi-api/8/whats-new/release-notes#feature-availability).
+
+## Migration steps
+
+A typical migration runs in this order. Each step links to the page that covers it.
+
+1. **Assess.** Read "Before you start", choose your Data Standard version and first school year on Ed-Fi API v8, and tell your vendors. See [School Years and Cutover](./school-years-and-cutover.md).
+2. **Inventory.** List everything that reads from or writes to the ODS directly, your extensions, your custom claimsets, and the Ed-Fi tools you use. See [Data Out](./data-out.md), [Data In](./data-in.md), [Extensions](./extensions.md) and [Ed-Fi Tools](./ed-fi-tools.md).
+3. **Move admin work to the Admin API or Admin App v4.** See [Admin Data and Credentials](./admin-data-and-credentials.md).
+4. **Build the Ed-Fi API v8 environment.** Deploy it, rebuild your extensions and their claims, and load seed data. See [Deployment](./deployment.md), [Extensions](./extensions.md) and [Seed Data and Annual Rollover](./seed-data-and-annual-rollover.md).
+5. **Rewrite what reads and writes the database directly.** See [Data Out](./data-out.md) and [Data In](./data-in.md).
+6. **Test with vendors.** Give them new credentials and URLs, and have them check property-name casing. See [API Differences for Client Applications](./api-differences-for-client-applications.md).
+7. **Cut over.** Go live with the new school year and, if you are moving everything, reload prior years. See [School Years and Cutover](./school-years-and-cutover.md).
+8. **Retire the ODS/API** once no school year you still need runs on it.
 
 ## Pages in this section
 

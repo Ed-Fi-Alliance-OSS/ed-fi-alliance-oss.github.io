@@ -12,7 +12,7 @@ Most states read data from the ODS database directly for validations, warehouse 
 | --- | --- | --- |
 | Direct SQL | Queries against ODS tables (`edfi.Student`, `edfi.StudentSchoolAssociation`, ...) | Still possible, but the tables are structured differently, so **every existing query must be rewritten** |
 | Resource API | `GET /data/v3/ed-fi/{resource}` | `GET /api/data/ed-fi/{resource}` (no `v3` segment) |
-| Change Queries | `availableChangeVersions`, `minChangeVersion`, `/deletes`, `/keyChanges`, snapshots | Same routes and parameters, with no snapshots and no custom view-based authorization |
+| Change Queries | `availableChangeVersions`, `minChangeVersion`, `/deletes`, `/keyChanges`, snapshots | Same routes and parameters, including the `Use-Snapshot` header from 8.1. The host creates each snapshot database and registers it with the Configuration Service as a snapshot of the data store |
 
 We recommend reading through the API wherever you can. Where that isn't practical, rewrite your SQL for the new structure.
 
@@ -94,7 +94,7 @@ Because data is reloaded through the API, every record gets a new resource ID an
 
 :::info[Still being worked out]
 
-- **Relational data model documentation.** The [Relational Data Model](/reference/ed-fi-api/8/technical-articles/relational-data-model) reference page is still being written. The SQL example above follows the current design and may change.
-- **Snapshots.** Change Query snapshots are planned for a future release. Until then, there is no built-in point-in-time copy for data freezes.
+- **Relational data model documentation.** The [Relational Data Model](/reference/ed-fi-api/8/technical-articles/relational-data-model) reference page is still being written. The SQL example above matches the current generated schema and may change.
+- **Creating and refreshing snapshots.** From 8.1, the API serves a snapshot when a client sends `Use-Snapshot: true`, but creating and refreshing the snapshot database is the host's job. We have not yet published recommended steps. See [Cursor paging](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/main/docs/CURSOR-PAGING.md) for how snapshot requests behave.
 
 :::
