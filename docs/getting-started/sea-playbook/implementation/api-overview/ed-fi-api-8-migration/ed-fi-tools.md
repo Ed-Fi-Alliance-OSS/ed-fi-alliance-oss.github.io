@@ -12,7 +12,7 @@ Which Ed-Fi tools you can keep using with Ed-Fi API v8, and what replaces the on
 | [Admin API](/reference/admin-api) | Replaced by the Configuration Service | Update scripts and tools to the Configuration Service `/v3` routes. See [Admin Data and Credentials](./admin-data-and-credentials.md). |
 | [API Publisher](/reference/api-publisher) | Works | Use it to copy data between data stores on the same Data Standard version. |
 | [Bulk Load Client](/reference/ed-fi-api/8/platform-dev-guide/utilities/bulk-load-client-utility) | Works | Set the token URL with `--oauthurl`. See [Seed Data and Annual Rollover](./seed-data-and-annual-rollover.md). |
-| [Data Import](/getting-started/community-tools/technology/data-import) | Out of support; not tested with Ed-Fi API v8 | Find an alternative import tool, or convert files to Ed-Fi XML and use the Bulk Load Client. |
+| [Data Import](/getting-started/community-tools/technology/data-import) | Out of support; not tested with Ed-Fi API v8 | Find another import tool that writes to the Ed-Fi API. See [Moving off Data Import](#moving-off-data-import). |
 | Analytics Middle Tier | Does not work; out of support ([notice](/reference/roadmap/notifications/amt)) | Move the reports built on it. See below. |
 | Sandbox Administration Portal | Not available in Ed-Fi API v8, and not planned | Create test credentials through the Configuration Service. |
 | OneRoster | Planned for Ed-Fi API 8.2 | Keep OneRoster on the ODS/API until then. |
@@ -31,10 +31,7 @@ The first route is the one the Ed-Fi Alliance encourages, and it also takes repo
 
 ## Moving off Data Import
 
-Data Import mapped district files (often CSV) to the Ed-Fi API. It is out of support and has not been tested with Ed-Fi API v8. Before, a district uploaded a file and Data Import posted it to the API. Now:
-
-- Use another import tool that writes to the Ed-Fi API, or
-- Convert the files to Ed-Fi XML interchange format and load them with the Bulk Load Client.
+Data Import mapped district files (often CSV) to the Ed-Fi API. It is out of support and has not been tested with Ed-Fi API v8. Before, a district uploaded a file and Data Import posted it to the API. Now, use another import tool that writes to the Ed-Fi API. We have not settled on a recommended replacement. One option is to store the data as Ed-Fi JSON files and load them with a simple client such as [lightbeam](https://github.com/edanalytics/lightbeam). See [Data In](./data-in.md).
 
 :::info[Still being worked out]
 
