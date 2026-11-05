@@ -86,5 +86,6 @@
   },
   "editor.codeActionsOnSave": {
     "source.fixAll.markdownlint": "explicit"
-  }
+  },
+  "rewrap.wrappingColumn": 110
 }
