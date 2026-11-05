@@ -326,7 +326,7 @@ table shows the current status.
 | Event streaming with Kafka | No | No | Yes |
 | Identities API | Yes | No | Yes (the host supplies the identity integration as a plugin) |
 | Unique ID validation | Yes | No | Yes, built as a plugin (see [Unique ID System Integration](../technical-articles/unique-id-system-integration.md)) |
-| External configuration of connection strings | Yes | No | Partly: values within data store connection strings can come from a secret store, and configuration-source plugins can supply the Configuration Service's own database connection string, and both services' keys and client secrets (see [Secrets in Connection Strings](../platform-dev-guide/configuration/secrets-in-connection-strings.md)) |
+| External configuration of connection strings | Yes | No | Partly: values within data store connection strings can come from a secret store, and configuration-source plugins can supply the Configuration Service's own database connection string, and both services' keys and client secrets (see [Secrets in Connection Strings](../platform-dev-guide/configuration/secrets-in-connection-strings.mdx)) |
 | MetaEd extensions | Yes | Yes (different workflow — see [Extending API DataModel](../platform-dev-guide/extensibility-customization/extending-api-datamodel.md)) | Yes |
 | OneRoster | Yes | No | No (planned for v8.2) |
 | Bulk Load Client utility | Yes | Yes (same tool, updated for v8 URLs) | Yes |
