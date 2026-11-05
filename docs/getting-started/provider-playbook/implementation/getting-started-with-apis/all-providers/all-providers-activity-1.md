@@ -11,7 +11,7 @@
 
 In this activity, we will run a GET call on the `/ed-fi/students` endpoint.
 
-1. Open a separate browser window and go to our [public Ed-Fi API v7.2 sandbox](https://api.ed-fi.org/v7.2/docs/swagger/index.html?urls.primaryName=Resources). Other API versions can be found at [https://api.ed-fi.org](https://api.ed-fi.org/).
+1. Open a separate browser window and go to our [public Ed-Fi ODS/API 7.3.2 sandbox](https://api.ed-fi.org/v7.3.2/docs/swagger/index.html?urls.primaryName=Resources). Other API versions can be found at [https://api.ed-fi.org](https://api.ed-fi.org/).
 2. In the top right corner, click on the "Authorize" button, and click on the "Authorize" button on the popup window. This authorizes your browser to communicate with this API.
 3. Scroll down to the "students" API resource and click on it. This opens up documentation of all methods available on the `/ed-fi/students` API resource
 4. Click on the first "GET" in the list that appears. This expands the info on the GET operation. In it, you can see an example of the JSON object to expect when you do a GET.
@@ -28,7 +28,7 @@ If you received a different response, check the response code and response body 
 | Response Code | Response Body | Issue |
 | --- | --- | --- |
 | 400 | "message": "The argument 'request' is missing or invalid." | The API is complaining that it can't parse the JSON. Check that the JSON is well-formed. There may be a missing brace or bracket. |
-| 403 | "message": "No API key information was available for authorization." | The access token you received in step 4 has expired. Go back and redo step 4. |
+| 401 | "detail": "The caller could not be authenticated." | The browser has no access token, or the token has expired. Go back to step 2, click "Authorize" again, and then rerun the request. |
 
 Read on to learn a bit about the transaction.
 
@@ -37,7 +37,7 @@ Read on to learn a bit about the transaction.
 In this activity, your browser sent a request to the API using an HTTP GET operation. That transaction was sent a URL that looks like this:
 
 ```link
-https://api.ed-fi.org/v7.2/api/data/v3/ed-fi/students
+https://api.ed-fi.org/v7.3.2/api/data/v3/ed-fi/students
 ```
 
 Further, that request included the access token (a "Bearer" token) you created earlier, sent in the header of the HTTP request. You can see that in the Web page under the "CURL" section, which will look like this:
