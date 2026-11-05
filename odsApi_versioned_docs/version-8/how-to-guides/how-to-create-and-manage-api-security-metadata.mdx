@@ -481,6 +481,14 @@ existing claims, without maintaining a complete claims document. The
 Configuration Service merges fragments into its base claims when it loads claims
 in the [Hybrid](#hybrid) or [Filesystem](#filesystem) loading mode.
 
+Before deployment, use the Security Metadata Tools'
+[merge command](../platform-dev-guide/utilities/security-metadata-tools.md#merge-checks)
+to check your fragments against the bundled base for the same data standard. It
+fails on incomplete composition and policy that the service silently ignores,
+including policy on matched parent entries and retired `*-claimset.json` files.
+The Configuration Service's loading behavior is unchanged; these are additional
+offline checks.
+
 #### Fragment Structure
 
 A fragment has a top-level `name` and a `resourceClaims` array. Each entry in
@@ -491,6 +499,13 @@ A fragment has a top-level `name` and a `resourceClaims` array. Each entry in
 - A _grant entry_ has no `isParent` (or `"isParent": false`). It gives the
   fragment's claim set access to a claim that already exists, for the actions
   listed in its `authorizationStrategyOverridesForCRUD`.
+
+On a grant entry, `actions` and its `enabled` values are informational. The
+requested grants come only from `authorizationStrategyOverridesForCRUD`:
+enabling an action without an override doesn't grant it, and an override
+requests its action even if `actions` is absent or marks it disabled. These
+flags don't deny or revoke existing or inherited access. This rule applies to
+grant entries, not the `claimSets[].actions` on a new parent entry.
 
 The top-level `name` is the claim set that the fragment's grant entries give
 access to. Always set it on a fragment with grant entries. If it's missing, the
@@ -716,6 +731,14 @@ rejects both.
   are ignored.
 - `claimSets` belongs only on parent entries. On a grant entry the service
   ignores it, and `prepare-dms-claims.ps1` rejects the file.
+- On an existing matched parent, `claimSets` and
+  `_defaultAuthorizationStrategiesForCrud` are ignored. `merge` rejects these
+  fields when they contain policy. Put grants in grant entries instead.
+- Use only a `name` on each child in a parent entry's `children` list. The
+  service copies that name, not policy nested on the child; `merge` rejects
+  unapplied child policy.
+- Put `authorizationStrategyOverridesForCRUD` on grant entries, not parent
+  entries. The service ignores it on parents; `merge` rejects it when nonempty.
 
 :::caution
 
@@ -981,12 +1004,12 @@ though:
 
 ### Verifying the Active Policy
 
-To see what the Ed-Fi API actually enforces, call
-`GET /v3/authorizationMetadata` on the Configuration Service. It is the same
-data the Ed-Fi API loads to authorize requests, it reflects the claims stored in
-the Configuration Service database, and it is available in every loading mode
-without `CONFIGURATION_SERVICE_DANGEROUSLY_ENABLE_UNRESTRICTED_CLAIMS_LOADING`.
-It accepts a token with the `edfi_admin_api/full_access`,
+To inspect the policy stored by the Configuration Service, call
+`GET /v3/authorizationMetadata`. It is the same data the Ed-Fi API loads to
+authorize requests, it reflects the claims stored in the Configuration Service
+database, and it is available in every loading mode without
+`CONFIGURATION_SERVICE_DANGEROUSLY_ENABLE_UNRESTRICTED_CLAIMS_LOADING`. It
+accepts a token with the `edfi_admin_api/full_access`,
 `edfi_admin_api/readonly_access`, or
 `edfi_admin_api/authMetadata_readonly_access` scope.
 
@@ -1037,13 +1060,14 @@ Use it to confirm that new resource claims appear for the claim sets you
 expected, with the actions and strategies you intended. Domain claims don't
 appear in the response, only the resource claims beneath them.
 
-To compare a whole claims document with what is enforced, use the `verify`
-command of the
-[Ed-Fi API Security Metadata Tools](../platform-dev-guide/utilities/security-metadata-tools.md#install).
-It reads `GET /v3/authorizationMetadata` and reports every claim set, claim,
-action, or strategy that differs from the document. Pass the _name_ of an
-environment variable that holds a Configuration Service token, not the token
-itself:
+To compare a complete claims document with that stored metadata, use the
+`verify` command of the
+[Ed-Fi API Security Metadata Tools](../platform-dev-guide/utilities/security-metadata-tools.md#prepare-inspect-deploy-and-verify).
+Use the tool from the matching Configuration Service release. Pass the complete
+claims document, not the inspection output from `resolve`. It reads
+`GET /v3/authorizationMetadata` and reports every claim set, claim, action, or
+strategy that differs from the document. Pass the _name_ of an environment
+variable that holds a Configuration Service token, not the token itself:
 
 ```powershell
 $env:CMS_ACCESS_TOKEN = $token.access_token
@@ -1054,7 +1078,15 @@ Remove-Item Env:CMS_ACCESS_TOKEN
 
 For a multi-tenant deployment, add `--tenant <tenant-name>`. `verify` compares
 every claim set, so system-reserved claim sets kept by an upload but missing
-from the document are reported as unexpected.
+from the document are reported as unexpected. It compares effective permissions,
+including the order of strategies within each action. Exit code `0` means all
+metadata matches, `2` means valid metadata differs, and `1` means the command
+failed, for example because authentication failed or a response was invalid.
+
+A match confirms the Configuration Service metadata at the time of the request.
+It doesn't prove that the Ed-Fi API's authorization cache is current or that
+live API requests enforce the intended policy. Verify those requests separately;
+`verify` doesn't change policy or refresh caches.
 
 :::note
 
@@ -1063,6 +1095,6 @@ from the document are reported as unexpected.
 It also returns the claims document the service most recently loaded or
 received, which isn't guaranteed to match what is stored in the database. For
 example, changes made through the claim set endpoints aren't reflected in it.
-Use `GET /v3/authorizationMetadata` to check what is enforced.
+Use `GET /v3/authorizationMetadata` to inspect stored effective permissions.
 
 :::
