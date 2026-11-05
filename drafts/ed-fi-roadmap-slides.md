@@ -123,6 +123,30 @@ Speaker notes:
 
 ---
 
+## Follow Along: The GitHub Roadmap Boards
+
+Two public boards track the work. Anyone can read them.
+
+| | **Roadmap Release Schedule** | **Product Roadmap** |
+| --- | --- | --- |
+| **Answers** | What is shipping, and when? | What is being proposed, and what is its status? |
+| **Contents** | Releases for every component of the Technology Suite | Proposed changes and requests shared publicly, including Data Standard items |
+| **Layout** | Todo, In Progress, Done, with tabs for different areas of the suite | Views for Technology Suite proposals and the Data Standard |
+| **Link** | [Project 1](https://github.com/orgs/Ed-Fi-Alliance-OSS/projects/1) | [Project 2](https://github.com/orgs/Ed-Fi-Alliance-OSS/projects/2) |
+
+- Each release shows its target quarter, goal, and key features; release notes are linked once it is Done
+- Done items stay on the board for two quarters
+- Comment on items to give feedback
+- Remember: plans, not promises
+
+Speaker notes:
+
+- Consider a live click-through or a screenshot of each board.
+- The two boards are named inconsistently across the blog and docs ("Roadmap Boards", "Technology Roadmap", "Product Roadmap"). The names here follow how you described them; adjust to match the boards' actual titles.
+- Items in the Product Roadmap board can be followed to see whether a request was accepted or declined.
+
+---
+
 ## Section: Data Standard
 
 ---
@@ -522,7 +546,8 @@ _Dates are quarterly targets, not commitments._
 **Where to engage:**
 
 - [Data Standard 7.0 issue](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Technology-Roadmap/issues/46)
-- [Roadmap boards](https://github.com/orgs/Ed-Fi-Alliance-OSS/projects/1)
+- [Roadmap Release Schedule board](https://github.com/orgs/Ed-Fi-Alliance-OSS/projects/1)
+- [Product Roadmap board](https://github.com/orgs/Ed-Fi-Alliance-OSS/projects/2)
 - [Ed-Fi Community Hub](https://community.ed-fi.org/)
 
 ---
@@ -530,6 +555,7 @@ _Dates are quarterly targets, not commitments._
 ## Resources
 
 - [Ed-Fi Technology Roadmap](https://docs.ed-fi.org/reference/roadmap/)
+- [Roadmap Release Schedule board](https://github.com/orgs/Ed-Fi-Alliance-OSS/projects/1) and [Product Roadmap board](https://github.com/orgs/Ed-Fi-Alliance-OSS/projects/2)
 - [ODS/API and Ed-Fi API v8 FAQ](https://docs.ed-fi.org/reference/roadmap/api-faq)
 - [What's New in Ed-Fi API v8.0](https://docs.ed-fi.org/reference/ed-fi-api/8/whats-new/whats-new-in-this-release)
 - [Ed-Fi API v8 Pilot Test Kit](https://github.com/Ed-Fi-Exchange-OSS/Ed-Fi-API-v8-pilot-testing-kit)
