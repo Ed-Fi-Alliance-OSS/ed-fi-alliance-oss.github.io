@@ -47,9 +47,9 @@ install a fresh copy of Admin API to upgrade from prior versions.
 :::note
 The following is the DockerHub repo for **Admin API v2.4 Docker Image** for inclusion in Docker compose:
 
-* [edfialliance/ods-admin-api:v2.4](https://hub.docker.com/r/edfialliance/ods-admin-api/tags?name=v2.4)
+* [edfialliance/ods-admin-api:v2.4](https://hub.docker.com/layers/edfialliance/ods-admin-api/v2.4/images/sha256-2cf23e70283581d0c16fad923857bc6b63421a9c36da7450130011474248d1a7)
 
-* [edfialliance/ods-admin-api-db:v2.4](https://hub.docker.com/r/edfialliance/ods-admin-api-db/tags?name=v2.4)
+* [edfialliance/ods-admin-api-db:v2.4](https://hub.docker.com/layers/edfialliance/ods-admin-api-db/v2.4/images/sha256-61178bca5253295127ac81071bebe8ee2810845b9a98dc4185f69224491b0a43)
 
 :::
 
@@ -318,8 +318,8 @@ Continue on to [First-Time Configuration for Admin API
 
 The following is the DockerHub repo for **Admin API v2.4 Docker Image** for inclusion in Docker compose:
 
-* [edfialliance/ods-admin-api:v2.4](https://hub.docker.com/r/edfialliance/ods-admin-api/tags?name=v2.4)
+* [edfialliance/ods-admin-api:v2.4](https://hub.docker.com/layers/edfialliance/ods-admin-api/v2.4/images/sha256-2cf23e70283581d0c16fad923857bc6b63421a9c36da7450130011474248d1a7)
 
-* [edfialliance/ods-admin-api-db:v2.4](https://hub.docker.com/r/edfialliance/ods-admin-api-db/tags?name=v2.4)
+* [edfialliance/ods-admin-api-db:v2.4](https://hub.docker.com/layers/edfialliance/ods-admin-api-db/v2.4/images/sha256-61178bca5253295127ac81071bebe8ee2810845b9a98dc4185f69224491b0a43)
 
 :::

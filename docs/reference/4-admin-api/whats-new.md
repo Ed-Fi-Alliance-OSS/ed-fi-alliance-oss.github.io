@@ -33,13 +33,15 @@ before you upgrade.
   * A created resource returns a full URL in its `Location` header.
   * Connection strings are encrypted and are no longer returned in API responses.
 * **API clients can be limited to specific education organizations.** A credential can now cover a subset of its application's education organizations rather than all of them.
-* **An application can hold more than one credential.** An application is no longer tied to a single set of keys, so credentials can be rotated or separated per integration.
-* **Database instances are created and deleted in the background.** Provisioning from a database template no longer blocks the request, and new endpoints report the status of each job.
-* **Audit logging covers more of the application.** Entries now record tenant and outcome, and a deletion records which record was removed so the trail stays readable afterwards.
-* **A new `/tenancy` endpoint and a fuller `GET /` response**, including a new `SpecificationVersion` field.
+* **An application can be created without a default set of credentials.** Multiple credentials per application arrived in 2.3; this release removes the requirement that an application start with one, so credentials can be created deliberately per integration.
+* **Database instances are created and deleted in the background.** Provisioning from a database template no longer blocks the request.
+* **Job status tracking for long-running operations**, such as instance provisioning and education organization refreshes.
+* **Audit logging covers more of the application**, spanning authentication events and administrative actions. Entries now record tenant and outcome, and a deletion records which record was removed so the trail stays readable afterwards.
+* **A new `/tenancy` endpoint and a fuller `GET /` response.** The Information endpoint reports the active specification version in a new `SpecificationVersion` field and links to tenancy information and the OpenAPI metadata.
 * **`GET /v2/tenants` and `GET /v2/tenants/{tenantName}` are available again.**
 * **A new `EnableDataStoreManagement` setting** turns instance management off entirely, for deployments that provision databases another way.
-* **Duplicate names are rejected** for vendors, applications, and API clients.
+* **Duplicate names are rejected** for vendors, applications, and API clients in the `v3` mode.
+* **Education organization endpoints report what each instance contains.** You can view the education organizations in each ODS instance, kept up to date automatically or refreshed on demand.
 * **Education organization responses include `dbInstanceId`.**
 
 ### Enhancements
