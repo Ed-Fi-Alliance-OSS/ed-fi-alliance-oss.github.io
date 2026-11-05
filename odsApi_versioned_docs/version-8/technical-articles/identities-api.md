@@ -387,30 +387,3 @@ in the Ed-Fi API repository has the complete contract and an end-to-end sample
 provider. See
 [Building a Plugin](../platform-dev-guide/extensibility-customization/plugins.md#building-a-plugin)
 for the rules every plugin follows.
-
-## Compared with Ed-Fi ODS/API 7.3
-
-The operations and the identity properties are the same as in Ed-Fi ODS/API
-7.3. Some responses differ, so check client code that handles them:
-
-- **Create returns `200`** with the new unique ID, and no `Location` header.
-- **An unsupported operation returns `404`** with the problem type
-  `operation-not-supported`, instead of `501 Not Implemented`. With no provider
-  installed, every operation returns this `404`.
-- **Errors use the Ed-Fi API's problem details format**, and a `502` never
-  includes exception details.
-- **Any operation can return `400`** when the identity provider rejects the
-  request's properties, not only create.
-- **Authorization checks the action.** Creating an identity requires `Create`
-  on the identity service claim, and every other operation requires `Read`.
-- **When the Identities API is turned off**, its routes and OpenAPI document
-  don't exist, so requests return `404`.
-
-For platform hosts:
-
-- The provider is delivered as a plugin, instead of being registered in the
-  API's source code.
-- One interface, `IIdentityService`, covers both synchronous and asynchronous
-  operations. It replaces `IIdentityService` and `IIdentityServiceAsync`.
-- Additional properties pass through as JSON, instead of through custom model
-  types.

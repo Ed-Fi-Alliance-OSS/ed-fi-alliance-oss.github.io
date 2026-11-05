@@ -425,22 +425,7 @@ don't allow identity updates. A `PUT` that changes the unique ID gets `400`:
 
 This check runs after unique ID validation, so a `PUT` that changes the unique
 ID to a value the external system doesn't know gets the validator's `400`
-first. A platform host can allow identity changes for a resource by listing it
-in `AppSettings:AllowIdentityUpdateOverrides`.
-
-### Compared with Ed-Fi ODS/API 7.3
-
-The client-facing behavior is the same as in Ed-Fi ODS/API 7.3: an unknown
-unique ID is rejected, and so is a change to a unique ID. How it's built is
-different:
-
-| Ed-Fi ODS/API 7.3 | Ed-Fi API v8 |
-| --- | --- |
-| Turned on with a feature setting, then a custom `IUniqueIdToIdValueMapper` registered in code. | Turned on by allowlisting a validator plugin. There's no feature setting. |
-| The mapper's `Id` became the person's resource ID. | The validator only reports whether the unique ID exists. The Ed-Fi API assigns resource IDs itself. |
-| Checked on `POST` only. | Checked on both `POST` and `PUT`, because an external system can retire a unique ID after the record was created. |
-| A 10-minute cache was built in. | No built-in cache. The validator can add its own. |
-| The error message included the submitted value. | The example's error message doesn't include the submitted value. |
+first.
 
 ## Key Integration Steps for Identity Management
 
