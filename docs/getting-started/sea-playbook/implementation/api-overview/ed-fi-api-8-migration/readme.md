@@ -28,16 +28,16 @@ During development, Ed-Fi API v8 was called the Data Management Service (DMS), a
 
 ## Migration steps
 
-A typical migration runs in this order. Each step links to the page that covers it.
+A typical migration runs in this order. Each step links to the page that covers it and names a typical owner. Adjust the owners to how your agency is organized.
 
-1. **Assess.** Read "Before you start", choose your Data Standard version and first school year on Ed-Fi API v8, and tell your vendors. See [School Years and Cutover](./school-years-and-cutover.md).
-2. **Inventory.** List everything that reads from or writes to the ODS directly, your extensions, your custom claimsets, and the Ed-Fi tools you use. See [Data Out](./data-out.md), [Data In](./data-in.md), [Extensions](./extensions.md) and [Ed-Fi Tools](./ed-fi-tools.md).
-3. **Move admin work to the Admin API or Admin App v4.** See [Admin Data and Credentials](./admin-data-and-credentials.md).
-4. **Build the Ed-Fi API v8 environment.** Deploy it, rebuild your extensions and their claims, and load seed data. See [Deployment](./deployment.md), [Extensions](./extensions.md) and [Seed Data and Annual Rollover](./seed-data-and-annual-rollover.md).
-5. **Rewrite what reads and writes the database directly.** See [Data Out](./data-out.md) and [Data In](./data-in.md).
-6. **Test with vendors.** Give them new credentials and URLs, and have them check property-name casing. See [API Differences for Client Applications](./api-differences-for-client-applications.md).
-7. **Cut over.** Go live with the new school year and, if you are moving everything, reload prior years. See [School Years and Cutover](./school-years-and-cutover.md).
-8. **Retire the ODS/API** once no school year you still need runs on it.
+1. **Assess.** Read "Before you start", choose your Data Standard version and first school year on Ed-Fi API v8, and tell your vendors. See [School Years and Cutover](./school-years-and-cutover.md). **Owner:** SEA project lead.
+2. **Inventory.** List everything that reads from or writes to the ODS directly, your extensions, your custom claimsets, and the Ed-Fi tools you use. See [Data Out](./data-out.md), [Data In](./data-in.md), [Extensions](./extensions.md) and [Ed-Fi Tools](./ed-fi-tools.md). **Owner:** SEA technical lead, with the data and reporting teams.
+3. **Move admin work to the Admin API or Admin App v4.** See [Admin Data and Credentials](./admin-data-and-credentials.md). **Owner:** Ed-Fi administrator (whoever manages vendors and credentials).
+4. **Build the Ed-Fi API v8 environment.** Deploy it, rebuild your extensions and their claims, and load seed data. See [Deployment](./deployment.md), [Extensions](./extensions.md) and [Seed Data and Annual Rollover](./seed-data-and-annual-rollover.md). **Owner:** SEA technical or infrastructure team.
+5. **Rewrite what reads and writes the database directly.** See [Data Out](./data-out.md) and [Data In](./data-in.md). **Owner:** The teams that own each report, ETL job or integration.
+6. **Test with vendors.** Give them new credentials and URLs, and have them check property-name casing. See [API Differences for Client Applications](./api-differences-for-client-applications.md). **Owner:** Vendor support or vendor liaison, with vendors.
+7. **Cut over.** Go live with the new school year and, if you are moving everything, reload prior years. See [School Years and Cutover](./school-years-and-cutover.md). **Owner:** SEA project lead, with the technical team.
+8. **Retire the ODS/API** once no school year you still need runs on it. **Owner:** SEA technical team.
 
 ## Pages in this section
 
