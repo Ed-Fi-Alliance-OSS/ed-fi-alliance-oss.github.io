@@ -14,21 +14,13 @@ For the concepts behind this pattern (the push model, data mapping, and tracking
 
 ## Introduction
 
-This article walks through the architecture of an Ed-Fi API integration in more detail.
-
-If you haven’t already completed:
-
-- [Ed-Fi 101 – Welcome to Ed-Fi](https://academy.ed-fi.org/courses/ed-fi-101-welcome-to-ed-fi/)
-- [Ed-Fi 102 – Introduction to the Ed-Fi Technology Suite](https://academy.ed-fi.org/courses/ed-fi-102-data-management/)
-- [Ed-Fi 251 – Technology Providers Playbook](https://academy.ed-fi.org/courses/ed-fi-251/) - Particularly the _Mapping to the Data Standard_ section
-
-We recommend doing so before attempting to digest all the information presented in this article.
+This article walks through the architecture of an Ed-Fi API integration in more detail. If you are new to Ed-Fi APIs, start with [Getting Started with APIs](./getting-started-with-apis/readme.md), which covers what an Ed-Fi API is, the prerequisites, and a hands-on tutorial.
 
 ## Background
 
 Architecting an Ed-Fi API integration can be complex. This document seeks to surface things one should consider when implementing an integration for their application. In this document, we try to not be overly prescriptive when it comes to programming language or software. We acknowledge that programming languages and tools can look very different from vendor to vendor and by staying tool agnostic, we hope to provide guidance that is usable by all.
 
-While this knowledgebase article does not go deep into the dependency order built into the Ed-Fi API, you can find more information in Resource Dependency Order for [ODS/API 7.3](/reference/ed-fi-api/client-developers-guide/resource-dependency-order) and [Ed-Fi API v8](/reference/ed-fi-api/8/client-developers-guide/resource-dependency-order) as well as the Ed-Fi API Resource Dependency page in the Ed-Fi Academy course [Publishing Your First Set of Data](https://academy.ed-fi.org/courses/ed-fi-142-publishing-your-first-set-of-data/lessons/ed-fi-api/topic/ed-fi-api-resource-dependency-2/).
+While this knowledgebase article does not go deep into the dependency order built into the Ed-Fi API, you can find more information in Resource Dependency Order for [ODS/API 7.3](/reference/ed-fi-api/client-developers-guide/resource-dependency-order) and [Ed-Fi API v8](/reference/ed-fi-api/8/client-developers-guide/resource-dependency-order).
 
 Throughout this document, we will be using a fictional student information system, Limitless SIS, to better explain various aspects of architecting an Ed-Fi API integration. For the sake of brevity, let’s imagine that Limitless has decided they will sync information from their SIS to the Ed-Fi API resources below.
 
@@ -133,9 +125,10 @@ After the full list of Ed-Fi API records are created, we can perform the followi
 
 1. Create a hash of the natural keys
 2. Check the sync database using the natural key hash to see if the record has been sent previously
-3. If a record is found for the natural key hash and the full record has changed, we know we need to run a PUT using the Ed-Fi API ID to update the record
-4. If a record is found for the natural key hash and the full record has **not** changed, we don’t need to do anything
-5. If a record in the sync database was not checked, it is likely that the record was deleted in the source system application database and we should run a DELETE using the Ed-Fi API ID.
+3. If no record is found for the natural key hash, the record is new: run a POST, then store the returned Ed-Fi API ID and both hashes in the sync database
+4. If a record is found for the natural key hash and the full record has changed, we know we need to run a PUT using the Ed-Fi API ID to update the record
+5. If a record is found for the natural key hash and the full record has **not** changed, we don’t need to do anything
+6. If a record in the sync database was not checked, it is likely that the record was deleted in the source system application database and we should run a DELETE using the Ed-Fi API ID.
 
  ![POST PUT DELETE Diagram](https://edfidocs.blob.core.windows.net/$web/img/getting-started/provider-playbook/implementation/image-2024-2-11_19-5-23-6.png)
 
@@ -149,7 +142,7 @@ The architecture in this article applies to both platforms. Ed-Fi API v8 uses th
 - **Resource URLs drop the `v3` segment.** For example, `/data/v3/ed-fi/students` on the ODS/API is `/api/data/ed-fi/students` on Ed-Fi API v8 (the host sets the prefix).
 - **The token endpoint moves.** Ed-Fi API v8 issues tokens from the Configuration Service at `/connect/token`. The Ed-Fi API keeps an `/oauth/token` endpoint that forwards requests there, so existing clients keep working.
 
-Because an education agency may host either platform, keep the API base URL and token URL configurable for each customer rather than hard-coding them.
+Because an education agency may host either platform, keep the API base URL and token URL configurable for each customer rather than hard-coding them. For what to collect from each customer (base URL, client key and secret, Data Standard version), see [Getting Started with APIs](./getting-started-with-apis/readme.md#prerequisites).
 
 For the full list of differences, see the Ed-Fi API v8 [breaking changes and migration checklist](/reference/ed-fi-api/8/whats-new/release-notes#ed-fi-api-v80---breaking-changes-from-previous-releases). For which platform an agency should use, see [Should a new Ed-Fi implementation use ODS/API 7.x or Ed-Fi API v8?](/reference/roadmap/api-faq#q-should-a-new-ed-fi-implementation-use-odsapi-7x-or-ed-fi-api-v8). For support windows, see [Supported Versions](/reference/roadmap/supported-versions).
 

@@ -90,6 +90,9 @@ supports, see [Supported Versions](/reference/roadmap/supported-versions).
    application:
    [ODS/API 7.3](/reference/ed-fi-api/client-developers-guide) and
    [Ed-Fi API v8](/reference/ed-fi-api/8/client-developers-guide).
+5. [Ed-Fi API Integration Architecture for Data Providers](../ed-fi-api-integration-architecture-for-data-providers.md)
+   describes a recommended architecture for a production integration that
+   keeps an Ed-Fi API in sync with your application.
 
 There are two main provider types in the current Ed-Fi ecosystem. To find API
 use cases specific to each, follow the links below:
