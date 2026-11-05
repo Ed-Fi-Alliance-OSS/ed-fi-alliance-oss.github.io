@@ -15,12 +15,22 @@ Presented by the Ed-Fi Alliance product team
 
 ---
 
+## Today's Headline: Ed-Fi API 8.1
+
+**Ed-Fi API 8.1 is released today.**
+
+- Follows the milestone **8.0** release this summer
+- Production-ready for the 2027-2028 school year
+- The culmination of years of work by the Alliance and the community
+
+---
+
 ## Agenda
 
-1. The year in review
-2. Planning principles and priorities
-3. Data Standard: 6.2 and 7.0
-4. Ed-Fi API v8
+1. Ed-Fi API 8.1: today's release
+2. The year in review
+3. Planning principles and priorities
+4. Data Standard: 6.2 and 7.0
 5. ODS/API and OneRoster: staying stable
 6. Tools and tooling
 7. Timeline at a glance
@@ -37,6 +47,7 @@ Presented by the Ed-Fi Alliance product team
 - **Ed-Fi OneRoster Service** (May): OneRoster 1.2, SQL Server and PostgreSQL
 - **MetaEd 4.7** (May) and **4.8** (July)
 - **Ed-Fi API v8.0** (July): the next-generation platform
+- **Ed-Fi API 8.1** (today): production-ready for 2027-2028
 - **Certification Suite 2.1** (July): Data Standard 5 coverage complete
 - **API Publisher 1.4** (October): Ed-Fi API v8 support, cursor paging, resumable runs
 
@@ -94,6 +105,7 @@ Speaker notes:
 
 | Release | Target |
 | --- | --- |
+| **Ed-Fi API 8.1** | **Released today** |
 | API Publisher 1.5 | 2026-Q4 |
 | OneRoster API Service 1.1 | 2026-Q4 |
 | ODS Admin API 2.5 | 2026-Q4 |
@@ -158,7 +170,7 @@ Three goals:
 2. Reduce the number of state extensions
 3. Clarify the intended usage of existing entities
 
-**Only available on Ed-Fi API v8. Not released via ODS/API.:**
+**Only available on Ed-Fi API v8. Not released via ODS/API.**
 
 ---
 
@@ -202,13 +214,66 @@ _Not yet on the public GitHub roadmap views._
 
 ---
 
-## Ed-Fi API v8.0: Released July 2026
+## Ed-Fi API 8.1 Is Here
 
-**A new platform, not an incremental ODS/API update. The long-term replacement for the ODS/API.:**
+**Released today, November 5, 2026.**
+
+- The release that takes Ed-Fi API v8 to **production** for the 2027-2028 school year
+- Built for the needs of state education agencies and statewide deployments
+- Faster than the ODS/API on PostgreSQL across every workload we tested
+- The payoff of a multi-year effort to modernize the Ed-Fi platform
+
+Speaker notes:
+
+- This is the headline of the talk. Pause here and let it land before moving on.
+- Confirm the final feature list against the 8.1 release notes before presenting. The items on the next slides come from the API FAQ, the September performance post, and the MetaEd 4.9 and API Publisher 1.4 documentation, not from the 8.1 release notes themselves.
+
+---
+
+## Why 8.1 Matters
+
+8.0 proved the architecture. **8.1 is the release you can build production on.**
+
+- **SQL Server gaps closed:** both PostgreSQL and SQL Server are now first-class data stores
+- **Consistent bulk reads:** snapshot support and cursor paging, which API Publisher 1.4 already takes advantage of
+- **Built for SEAs:** the detailed client authorization and raw-data access that statewide warehousing and reporting require
+- **Performance:** ahead of ODS/API 7.3.2 on PostgreSQL for writes, deep paging, and filtered reads
+- **Data Standard 5.2 and 6.1** supported; **MetaEd 4.9** adds 8.1 as a target
+
+Speaker notes:
+
+- 8.0 did not have complete parity with the optional features of the ODS/API, and was aimed at early adopters and pilots. 8.1 is the release that closes the most important gaps.
+- The FAQ describes 8.1 as the SEA-oriented release.
+
+---
+
+## A Multi-Year Journey
+
+**From idea to production:**
+
+- **July 2025:** Data Management Service release candidate 1, ready for integration testing
+- **March 2026:** the decision to move to a fully relational data store, shaped by community feedback
+- **July 2026:** **Ed-Fi API v8.0**, a new platform, with multi-tenancy, profiles, changed record queries, and Docker deployment
+- **September 2026:** performance comparison against the ODS/API
+- **October 2026:** Pilot Test Kit and API Publisher 1.4 with v8 support
+- **November 2026:** **Ed-Fi API 8.1**
+
+Thank you to the Ed-Fi community, the working groups, and our implementation partners.
+
+Speaker notes:
+
+- Acknowledge the people: the Data Management Service work group, the Technical Advisory Group, and the pilot participants. Add names if appropriate.
+- Earlier origin points (before July 2025) are not covered in the source posts. Add them if you want to show the full multi-year arc.
+
+---
+
+## The Summer Milestone: Ed-Fi API v8.0
+
+**A new platform, not an incremental ODS/API update. The long-term replacement for the ODS/API.**
 
 - **Relational storage** (PostgreSQL or SQL Server): dedicated tables per resource
 - **Multi-tenancy** with database-level data isolation
-- **Profiles**: readable and writable
+- **Profiles:** readable and writable
 - **Changed Record Queries**
 - **Self-contained identity provider** (OpenIddict); Keycloak still supported
 - **Docker-based deployment**
@@ -217,7 +282,7 @@ Two services: **Ed-Fi API** (Resources, Descriptors, Discovery) and **Configurat
 
 ---
 
-## Performance: v8.1 Versus ODS/API 7.3.2
+## Performance: Ed-Fi API 8.1 Versus ODS/API 7.3.2
 
 | Workload | PostgreSQL | SQL Server |
 | --- | --- | --- |
@@ -225,40 +290,26 @@ Two services: **Ed-Fi API** (Resources, Descriptors, Discovery) and **Configurat
 | DeepPaging | 34% lower latency | Near tie |
 | FilteredRead | 1.7x faster | Near tie |
 
+- On PostgreSQL, 8.1 wins on every workload we tested
 - Advantage is mostly lower database CPU on reads
 - SQL Server write gap is traced to change-version stamp triggers; a fix is scoped
-- Single runs on tuned PostgreSQL. A snapshot, not a guarantee.
+- Single runs on tuned PostgreSQL. A snapshot, not a guarantee for your deployment.
 
 Speaker notes:
 
-- Compared Ed-Fi API 8.1 (pre-release) against ODS/API 7.3.2 using the Suite-3 performance suite and the Northridge dataset.
-- Be careful with SQL Server wording: it is behind on writes, and the blog is explicit about that.
+- Measured on the pre-release 8.1 code with the Suite-3 performance suite and the Northridge dataset. The September post said further database changes were still being finalized, so confirm the numbers still hold for the released build.
+- Be careful with SQL Server wording: it is behind on writes, and the blog is explicit about that. Improved SQL Server performance is on the 8.2.0 list.
 
 ---
 
-## Ed-Fi API v8.2.0
+## Adopting 8.1
 
-Targeted for **2027-Q2**, a quick follow-up to v8.1
+- **New implementations and pilots:** start on 8.1
+- **Teams running 8.0:** plan to upgrade to 8.1, and expect to re-provision your databases
+- **Production target:** school year 2027-2028
+- **ODS/API users:** you have runway; ODS/API is fully supported through the 2028-2029 school year
 
-- **Integrated OneRoster:** one application serves Ed-Fi and OneRoster 1.2 endpoints
-- **Lineage tracking** in GET output
-- **Improved SQL Server performance**
-- **Universal Vendor ID**
-
-**Design constraint:** minimize data structure changes. Operators should be able to take this release without a migration project.
-
-**Fall 2027: v8.3.0 planned, scope not committed.:**
-
----
-
-## How 8.x Work Is Prioritized
-
-Priority goes to work that:
-
-- **Reduces platform operating costs**, or
-- **Reduces vendor integration costs**
-
-If a proposed feature does neither, expect it to wait.
+[Ed-Fi API v8 FAQ and migration guidance](https://docs.ed-fi.org/reference/roadmap/api-faq)
 
 ---
 
@@ -274,6 +325,32 @@ Internal testing shows how v8 behaves for _us_. Pilots show how it behaves for _
 Coming: ODS/API comparison environment and log-based report scripts
 
 [Pilot Test Kit on GitHub](https://github.com/Ed-Fi-Exchange-OSS/Ed-Fi-API-v8-pilot-testing-kit)
+
+---
+
+## What's Next: Ed-Fi API 8.2.0
+
+Targeted for **2027-Q2**, a quick follow-up to 8.1
+
+- **Integrated OneRoster:** one application serves Ed-Fi and OneRoster 1.2 endpoints
+- **Lineage tracking** in GET output
+- **Improved SQL Server performance**
+- **Universal Vendor ID**
+
+**Design constraint:** minimize data structure changes. Operators should be able to take this release without a migration project.
+
+**Fall 2027:** 8.3.0 planned, scope not committed.
+
+---
+
+## How 8.x Work Is Prioritized
+
+Priority goes to work that:
+
+- **Reduces platform operating costs**, or
+- **Reduces vendor integration costs**
+
+If a proposed feature does neither, expect it to wait.
 
 ---
 
@@ -377,7 +454,7 @@ Targeted for **2026-Q4**, in progress
 
 | Quarter | Milestones |
 | --- | --- |
-| **2026-Q4** | API Publisher 1.5, OneRoster Service 1.1, Admin API 2.5, Admin App 4.2 |
+| **2026-Q4** | **Ed-Fi API 8.1 (today)**, API Publisher 1.5, OneRoster Service 1.1, Admin API 2.5, Admin App 4.2 |
 | **2027-Q1** | Data Standard 6.2, ODS/API 7.3.3 |
 | **2027-Q2** | Ed-Fi API 8.2.0, Data Standard 7.0 |
 | **2027 fall** | Ed-Fi API 8.3.0 (scope TBD) |
@@ -390,7 +467,8 @@ _Dates are quarterly targets, not commitments._
 
 - **Data Standard 7.0 is breaking.** Review candidate changes now for impact on integrations and extensions.
 - **Data Standard 6.2 is safe to adopt** early for school year 2027-2028.
-- **Evaluate Ed-Fi API v8.** Join the pilot if you are a SIS, assessment, or warehouse integrator.
+- **Start on Ed-Fi API 8.1.** New implementations and pilots should begin there. Teams on 8.0 should plan to upgrade and re-provision databases.
+- **Join the pilot** if you are a SIS, assessment, or warehouse integrator.
 - **ODS/API users have runway** through the 2028-2029 school year.
 - **.NET 8 support ends in November 2026.** Make sure deployments are on a supported runtime. ODS/API 7.3.2 and API Publisher 1.4 target .NET 10.
 
