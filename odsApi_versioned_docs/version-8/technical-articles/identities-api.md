@@ -51,8 +51,13 @@ identity, and `Read` for every other operation. A client without the required
 action receives `403`. See
 [Service Claims](../platform-dev-guide/security/api-claim-sets-resources.md#service-claims).
 
-The identity provider can apply its own access rules as well. A request it
-doesn't allow is answered as `404`, without saying whether the person exists.
+The identity service claim decides only whether a client can call the
+Identities API. Identity operations don't use a data store, so the client's data
+store assignments, education organization scope and resource authorization
+don't limit them. Instead, the identity provider must check that the client is
+allowed to use the identity namespace that the tenant and route qualifiers
+select. A request the provider doesn't allow is answered as `404`, without
+saying whether the person exists.
 
 ### Request and Response Bodies
 
@@ -66,7 +71,7 @@ person:
   "LastSurname": "Lopez",
   "GenerationCodeSuffix": null,
   "SexType": "Female",
-  "BirthDate": "2015-04-12T00:00:00",
+  "BirthDate": "2015-04-12T00:00:00Z",
   "BirthOrder": null,
   "BirthLocation": {
     "City": "Austin",
@@ -101,7 +106,7 @@ the same order:
           "LastSurname": "Lopez",
           "GenerationCodeSuffix": null,
           "SexType": "Female",
-          "BirthDate": "2015-04-12T00:00:00",
+          "BirthDate": "2015-04-12T00:00:00Z",
           "BirthOrder": null,
           "BirthLocation": {
             "City": "Austin",
@@ -133,7 +138,7 @@ The properties of an identity are as follows:
 | `MiddleName` | The person's given middle name, if available. |
 | `GenerationCodeSuffix` | The suffix applied to the person's name, such as Jr. or III. |
 | `SexType` | The person's sex. |
-| `BirthDate` | The date the person was born. |
+| `BirthDate` | The date the person was born, as a date-time with a UTC offset, such as `2015-04-12T00:00:00Z`. The identity provider can reject a date alone, or a date-time without an offset, with `400`. |
 | `BirthOrder` | The person's birth order among their siblings, if known. |
 | `BirthLocation` | Where the person was born: `City`, `StateAbbreviation`, `InternationalProvince` and `Country`. |
 
@@ -252,6 +257,19 @@ problem `type` to tell responses with the same status apart.
 
 Every response from these endpoints carries `Cache-Control: no-store`.
 
+:::warning
+
+Don't simply retry a create that failed. The identity system can issue a unique
+ID and the response can still be lost, for example when the connection drops or
+the identity system answers `502` after saving the person. Creating again can
+then issue a second unique ID for the same person. The Ed-Fi API doesn't make a
+create safe to retry, and it has no idempotency key. Before you create again,
+check what your identity provider documents about a repeated create. Some
+providers make it safe to repeat using a key they define; others document how
+to find and reconcile the duplicate.
+
+:::
+
 ## Enabling the Identities API
 
 The platform host turns on the Identities API in three steps:
@@ -345,6 +363,24 @@ API applies no timeout and no retry of its own.
 - **Search** returns, for each search request, zero or more identities, each
   with a `Score`. Limit the matches to likely ones.
 
+### Issuing Unique IDs
+
+A unique ID that create returns is later written as a student, staff or
+contact unique ID. The Ed-Fi API doesn't check the ID when the provider returns
+it, so an ID that breaks one of these rules fails later, when a client writes
+the person:
+
+- **Length.** It must fit the person resource's maximum length in the deployed
+  Ed-Fi data model, which is 32 characters today. A standard GUID with hyphens
+  is 36 characters and doesn't fit; the same GUID without hyphens does.
+- **Characters.** Use only the ASCII letters and digits. The ID must work as a
+  single URL path segment, because get by unique ID takes it in the URL.
+- **Case.** Don't issue two IDs that differ only by letter case, such as `ab12`
+  and `AB12`. A SQL Server data store usually treats them as the same ID, while
+  PostgreSQL treats them as different.
+- **Stability.** Never change an ID after it's issued, because person records
+  already refer to it.
+
 ### Asynchronous Find and Search
 
 A provider can process find and search later instead of immediately. It returns
@@ -376,10 +412,12 @@ default provider that supports no operations, so `TryAdd` is silently skipped,
 and `Replace` and `RemoveAll` fail at startup. Only one identity provider can be
 installed.
 
-A provider must also enforce its own access rules for each client, using the
-client ID in `IdentityRequestContext`. The identity service claim controls
-whether a client can call the Identities API at all, not which people it can
-see. Answer a request the client isn't allowed with `NotFound`.
+A provider must also authorize each client on every operation. Resolve the
+identity namespace from the tenant and route qualifiers in
+`IdentityRequestContext`, and check that the client ID is allowed to use it. The
+identity service claim controls whether a client can call the Identities API at
+all, not which people it can see. Answer a request the client isn't allowed with
+`NotFound`.
 
 The
 [Ed-Fi API Identity implementer guide](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/main/src/dms/core/EdFi.DataManagementService.Identity/IDENTITY.md)
