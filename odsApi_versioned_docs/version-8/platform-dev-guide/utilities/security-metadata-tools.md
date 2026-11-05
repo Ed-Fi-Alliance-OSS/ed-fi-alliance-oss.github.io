@@ -10,7 +10,8 @@ it with the authorization metadata stored by the Ed-Fi API Configuration Service
 Use it to combine claims fragments with the bundled base claims, inspect the
 permissions they grant, or migrate an ODS/API security metadata XML export.
 
-Version 8.1 adds `merge`, `resolve`, and `verify` alongside `convert-ods-xml`.
+The `merge`, `resolve`, and `verify` commands prepare and check security policy;
+`convert-ods-xml` migrates an ODS/API export.
 Preparing a policy and deploying it are separate steps: the tool doesn't upload
 claims or change a running service.
 
@@ -95,7 +96,7 @@ in subdirectories. It rejects incomplete composition, including malformed
 fragments, grants that match no claim, and retired `*-claimset.json` files.
 It also rejects policy that the Configuration Service would silently ignore,
 such as `claimSets` or `_defaultAuthorizationStrategiesForCrud` on a parent
-entry that matches an existing domain. This makes it useful for checking
+entry that matches an existing claim. This makes it useful for checking
 fragments before deployment, even when you plan to let the service compose them
 in Hybrid mode.
 
