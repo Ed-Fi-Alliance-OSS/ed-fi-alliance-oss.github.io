@@ -1,26 +1,19 @@
 ---
 sidebar_position: 3
-description: Ed-Fi API Security Metadata Tools is a command-line utility for working with Ed-Fi API security metadata. It converts an ODS/API security metadata XML export into a complete Claims.json file for the Ed-Fi API Configuration Service. Use this tool when migrating security metadata from an ODS/API deployment.
+description: Prepare Ed-Fi API security policy offline, inspect effective permissions, and compare the policy with a running Configuration Service.
 ---
 
 # Ed-Fi API Security Metadata Tools
 
-Ed-Fi API Security Metadata Tools converts an ODS/API security metadata XML
-export into a complete `Claims.json` document for the Ed-Fi API Configuration
-Service. Use it when migrating security metadata from an ODS/API deployment.
+Ed-Fi API Security Metadata Tools prepares security policy offline and compares
+it with the authorization metadata stored by the Ed-Fi API Configuration Service.
+Use it to combine claims fragments with the bundled base claims, inspect the
+permissions they grant, or migrate an ODS/API security metadata XML export.
 
-The `convert-ods-xml` command preserves the exported authorization policy and
-validates the result against the Configuration Service claims schema before
-writing it. The result contains both the `claimSets` catalog and the nested
-`claimsHierarchy`; it can be uploaded unchanged.
-
-:::tip
-
-To add extension resources or claim sets, the Configuration Service can merge
-claims fragments into its base claims. See [Claims
-Fragments](../../how-to-guides/how-to-create-and-manage-api-security-metadata.mdx#claims-fragments).
-
-:::
+The `merge`, `resolve`, and `verify` commands prepare and check security policy;
+`convert-ods-xml` migrates an ODS/API export.
+Preparing a policy and deploying it are separate steps: the tool doesn't upload
+claims or change a running service.
 
 ## Install
 
@@ -33,17 +26,215 @@ dotnet tool install --global EdFi.Api.SecurityMetadataTools --version <major>.<m
 ```
 
 Replace `<major>.<minor>.*` with `8.1.*` for the latest stable patch on the 8.1
-line. For a reproducible installation, use an exact published version such as
-`8.1.0`. The tool package has its own patch version within the app's major/minor
-release line.
+line. Use the tool from the matching Configuration Service release; compatibility
+across releases isn't guaranteed. The tool package has its own patch version,
+which needn't equal the Configuration Service patch number. For a reproducible
+installation, find the tool version in the `EdFi.Api.SecurityMetadataTools`
+entry in `EdFi.Api.SecurityMetadataTools-SBOM.zip` attached to the corresponding
+[GitHub release](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/releases),
+and install that exact version.
 
 Check the installed command:
 
 ```shell
 security-metadata-tools --version
 security-metadata-tools --help
+security-metadata-tools merge --help
+security-metadata-tools resolve --help
+security-metadata-tools verify --help
 security-metadata-tools convert-ods-xml --help
 ```
+
+## Commands
+
+| Command | Purpose | Required options | Optional options |
+| --- | --- | --- | --- |
+| `merge` | Combine the bundled base claims and a directory of fragments into a complete claims document | `--fragments <directory>`, `--output <json>` | `--data-standard-version <version>`, `--force` |
+| `resolve` | Show a complete document's effective permissions, including inheritance, defaults, and overrides | `--input <json>`, `--output <json>` | `--force` |
+| `verify` | Compare a complete document with a running Configuration Service's authorization metadata | `--input <json>`, `--cms-url <base-url>`, `--access-token-env <variable-name>` | `--tenant <tenant-name>` |
+| `convert-ods-xml` | Convert an ODS/API security metadata XML export to a complete claims document | `--input <xml>`, `--output <json>` | `--force` |
+
+A _complete claims document_ contains both a `claimSets` catalog and a nested
+`claimsHierarchy`. `merge` and `convert-ods-xml` produce this format; `resolve`,
+`verify`, and the Configuration Service's `upload-claims` endpoint accept it.
+
+_Resolved metadata_ is a JSON array describing each claim set's accessible
+resource claims, effective actions, and authorization strategies. It has the
+same shape as the Configuration Service's `GET /v3/authorizationMetadata`
+response. Use it for inspection only: it can't be uploaded as a claims document
+or passed as input to `resolve` or `verify`.
+
+### Output Files and Exit Codes
+
+For commands that write a file, the destination's parent directory must already
+exist. An existing destination requires `--force`. The tool finishes processing
+and validation before writing the result. A failure leaves an existing file
+unchanged and doesn't leave a partial new file. `--force` permits replacement;
+it doesn't bypass validation.
+
+Successful file-producing commands write JSON to the destination file, with no
+success message on standard output. `verify` writes its match or difference
+report to standard output. Failures write diagnostics to standard error.
+
+| Exit code | Meaning |
+| --- | --- |
+| `0` | Conversion, merge, or resolution succeeded; for `verify`, all metadata matched |
+| `1` | The command failed, for example because of invalid input, incomplete fragment composition, authentication failure, an HTTP error, or an invalid response |
+| `2` | `verify` received valid metadata that differs from the expected policy |
+
+### Merge Checks
+
+`merge` uses the bundled base claims for the selected data standard. Match
+`--data-standard-version` to the Configuration Service's
+`ClaimsOptions:DataStandardVersion` setting (the Compose variable
+`CONFIGURATION_SERVICE_DATA_STANDARD_VERSION`). Both default to `5.2`; use
+`6.1` for a deployment configured for that version. An unsupported version
+fails instead of falling back to a different base.
+
+The tool applies `*-claims.json` fragments in file-path order, including files
+in subdirectories. It rejects incomplete composition, including malformed
+fragments, grants that match no claim, and retired `*-claimset.json` files.
+It also rejects policy that the Configuration Service would silently ignore,
+such as `claimSets` or `_defaultAuthorizationStrategiesForCrud` on a parent
+entry that matches an existing claim. This makes it useful for checking
+fragments before deployment, even when you plan to let the service compose them
+in Hybrid mode.
+
+These checks don't change how the Configuration Service loads claims. For
+fragment examples, see [Claims
+Fragments](../../how-to-guides/how-to-create-and-manage-api-security-metadata.mdx#claims-fragments).
+For the full input restrictions, see the [tool
+README](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/main/src/config/clis/EdFi.DmsConfigurationService.SecurityMetadataTools/README.md#complete-document-and-merge-restrictions).
+
+## Prepare, Inspect, Deploy, and Verify
+
+This PowerShell example creates a claim set named `Offline` with Read access
+to students. A new claim set defined by a fragment is system-reserved, so the
+claim set endpoints can't change or delete it. Start in a working directory
+with the matching tool installed.
+
+### Prepare the Complete Document
+
+Create the fragment and output directories, then save the fragment:
+
+```powershell
+New-Item -ItemType Directory -Force ./fragments, ./policy-output | Out-Null
+@'
+{
+  "name": "Offline",
+  "resourceClaims": [
+    {
+      "name": "ed-fi/student",
+      "authorizationStrategyOverridesForCRUD": [
+        {
+          "actionName": "Read",
+          "authorizationStrategies": [{ "name": "NoFurtherAuthorizationRequired" }]
+        }
+      ]
+    }
+  ]
+}
+'@ | Set-Content ./fragments/001-offline-claims.json -Encoding utf8
+security-metadata-tools merge --fragments ./fragments `
+  --data-standard-version 5.2 --output ./policy-output/Claims.json
+```
+
+Use `--data-standard-version 6.1` instead if that is the version configured for
+your Configuration Service. This command includes all bundled claim sets as
+well as `Offline`; review the complete result before deployment.
+
+### Inspect Effective Permissions
+
+```powershell
+security-metadata-tools resolve --input ./policy-output/Claims.json `
+  --output ./policy-output/authorization-metadata.json
+Get-Content ./policy-output/authorization-metadata.json -Raw
+```
+
+Check that `Offline` has Read access to the student resource with
+`NoFurtherAuthorizationRequired`. Also review the other claim sets, including
+inherited permissions. Defaults choose strategies for actions that have been
+granted; defaults alone don't grant access.
+
+### Deploy the Complete Document
+
+Deploy `policy-output/Claims.json`, keeping the resolved metadata file for
+inspection. Choose one of the existing deployment paths:
+
+- For Filesystem loading, copy the generated file unchanged as `Claims.json`
+  into an otherwise empty claims directory. Configure the directory and start
+  the Configuration Service against a new database. Don't put fragments already
+  merged into the document in that directory. Startup loads only an empty
+  database; restarting with a changed file doesn't replace stored policy.
+- For a non-production runtime upload, post the unchanged file to
+  `POST /management/upload-claims` with an authorized administrative token and
+  unrestricted claims loading enabled.
+
+For example, stage the file for Filesystem loading:
+
+```powershell
+New-Item -ItemType Directory -Force ./deployment-claims | Out-Null
+Copy-Item ./policy-output/Claims.json ./deployment-claims/Claims.json
+```
+
+Set these variables in your Compose environment file, replacing the mount source
+with the absolute path to `deployment-claims`, then start the service against a
+new database:
+
+```ini
+CONFIGURATION_SERVICE_CLAIMS_SOURCE=Filesystem
+CONFIGURATION_SERVICE_CLAIMS_MOUNT_SOURCE=/absolute/path/to/deployment-claims
+CONFIGURATION_SERVICE_CLAIMS_DIRECTORY=/app/additional-claims
+CONFIGURATION_SERVICE_DATA_STANDARD_VERSION=5.2
+```
+
+See [Loading Your Security
+Policy](../../how-to-guides/how-to-create-and-manage-api-security-metadata.mdx#loading-your-security-policy)
+for configuration and upload examples. Review the effects on existing claim
+sets and applications before replacing policy. An upload keeps existing
+system-reserved claim sets, which can appear as unexpected sets in verification
+if the document doesn't include them.
+
+### Verify Stored Permissions
+
+Obtain a Configuration Service bearer token using your deployment's identity
+provider. The token must satisfy the existing role and scope requirements for
+`GET /v3/authorizationMetadata`; verification doesn't require unrestricted
+claims loading. For example, with the `$token` obtained in [Runtime Upload via
+Configuration Service](../../how-to-guides/how-to-create-and-manage-api-security-metadata.mdx#runtime-upload-via-configuration-service):
+
+```powershell
+$env:CMS_ACCESS_TOKEN = $token.access_token
+security-metadata-tools verify --input ./policy-output/Claims.json `
+  --cms-url http://localhost:8081 --access-token-env CMS_ACCESS_TOKEN
+Remove-Item Env:CMS_ACCESS_TOKEN
+```
+
+`--access-token-env` takes the environment variable's _name_, not the token
+value. Missing or empty credentials fail before the tool makes an HTTP request.
+Use the Configuration Service's HTTP(S) base URL for `--cms-url`, including a
+deployment prefix if needed. Don't include an endpoint path, credentials,
+query string, or fragment. For tenant routing, add `--tenant <tenant-name>`;
+this sends the `Tenant` header and doesn't grant authorization.
+
+#### What a Verification Result Means
+
+`verify` compares every expected and actual claim set, including empty sets.
+There is no claim set filter. Missing or extra sets, resource claims, actions,
+or different authorization strategies are mismatches. Strategy order and
+repetitions matter: changing only their order can return exit code `2`.
+
+Claim set names are compared without regard to case. Resource URIs, action
+names, and strategy names are case-sensitive. The comparison ignores generated
+IDs, catalog flags such as `isSystemReserved`, and the ordering of claim sets,
+claims, authorization records, and actions. Different hierarchies that resolve
+to the same permissions match. Resolution can combine equivalent authorization
+records; verification can't recover strategy ordering already lost in that step.
+
+A match describes the Configuration Service metadata returned by that request.
+It doesn't prove that the Ed-Fi API's authorization cache is current or that
+live API requests enforce the policy as intended. Test those requests
+separately. `verify` doesn't upload, reload, or invalidate caches.
 
 ## Export from ODS/API
 
@@ -159,9 +350,9 @@ paths and messages.
 
 Conversion and loading validate the document's structure. They do not establish
 runtime support for every imported authorization strategy. Review the strategies
-against the Ed-Fi API deployment that will enforce them. The tool converts
-exports; it does not merge policies, resolve effective permissions, or verify
-runtime authorization.
+against the Ed-Fi API deployment that will enforce them. Use `resolve` to
+inspect the converted document and `verify` to compare it with stored
+Configuration Service metadata after deployment.
 
 ## Load the Generated Document
 
