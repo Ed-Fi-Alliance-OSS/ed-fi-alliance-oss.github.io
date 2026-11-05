@@ -78,7 +78,6 @@ Clone the `Data-Management-Service` repository and keep your state's extensions,
 
 :::info[Still being worked out]
 
-- **PowerShell deployment without Docker.** The Ed-Fi Alliance plans a PowerShell deployment script for 2027, for states that cannot run containers.
 - **Taking new releases.** We have not yet published guidance on how a state pulls a new Ed-Fi API release into its clone, or whether to limit local changes to the state's own `eng/` folder.
 - **File formats across releases.** It is not yet settled whether a new release could change the format of the files a state keeps in its folder (claims JSON, ApiSchema output).
 

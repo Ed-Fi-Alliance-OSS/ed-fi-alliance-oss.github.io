@@ -11,7 +11,7 @@ Which Ed-Fi tools you can keep using with Ed-Fi API v8, and what replaces the on
 | [Admin App](/reference/admin-app) | Works from version 4.1 | Move to Admin App v4 before you migrate if you use an earlier Admin App, and use 4.1 or later with Ed-Fi API v8. |
 | [Admin API](/reference/admin-api) | Replaced by the Configuration Service | Update scripts and tools to the Configuration Service `/v3` routes. See [Admin Data and Credentials](./admin-data-and-credentials.md). |
 | [API Publisher](/reference/api-publisher) | Works | Use it to copy data between data stores on the same Data Standard version. |
-| [Bulk Load Client](/reference/ed-fi-api/8/platform-dev-guide/utilities/bulk-load-client-utility) | Works | Set the token URL with `--oauthurl`. See [Seed Data and Annual Rollover](./seed-data-and-annual-rollover.md). |
+| [Bulk Load Client](/reference/ed-fi-api/8/platform-dev-guide/utilities/bulk-load-client-utility) | Expected to work; not yet tested with Ed-Fi API v8 | Set the token URL with `--oauthurl`. See [Loading seed data](./seed-data-and-annual-rollover.md#example-loading-seed-data). |
 | [Data Import](/getting-started/community-tools/technology/data-import) | Out of support; not tested with Ed-Fi API v8 | Find another import tool that writes to the Ed-Fi API. See [Moving off Data Import](#moving-off-data-import). |
 | Analytics Middle Tier | Does not work; out of support ([notice](/reference/roadmap/notifications/amt)) | Move the reports built on it. See below. |
 | Sandbox Administration Portal | Not available in Ed-Fi API v8, and not planned | Create test credentials through the Configuration Service. |
