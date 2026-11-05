@@ -152,12 +152,14 @@ Values in a data store connection string, such as the password, user name, or
 host, can now refer to secrets in an external secret manager, for example
 `Password=${secret:prod/dms/ds-2026}`. The connection string itself is still
 stored in the Configuration Service, which resolves each reference through a
-secrets plugin supplied by the host. The same plugin can also add the secret
-store as a configuration source, so the Configuration Service's own database
-connection string and keys can come from it as well. Unlike the Ed-Fi ODS/API,
+secrets plugin supplied by the host. In the Configuration Service, the same
+plugin can also add the secret store as a configuration source, so the
+Configuration Service's own database connection string and keys can come from
+it as well. The Ed-Fi API's own keys and client secret need a separate plugin
+that only adds a configuration source. Unlike the Ed-Fi ODS/API,
 the whole data store connection string can't be supplied from an external
 configuration source. See [Secrets in Connection
-Strings](../platform-dev-guide/configuration/secrets-in-connection-strings.md)
+Strings](../platform-dev-guide/configuration/secrets-in-connection-strings.mdx)
 for details.
 
 ### MetaEd IDE v4.9
