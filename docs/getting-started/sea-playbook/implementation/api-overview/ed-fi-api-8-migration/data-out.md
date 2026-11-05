@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 6
 ---
 
 # Data Out
@@ -64,6 +64,7 @@ What changed:
 - **No `StudentUSI` join.** Tables store the natural key of what they reference (`Student_StudentUniqueId`) next to an internal `..._DocumentId` key.
 - **No inheritance tables.** `NameOfInstitution` is on `edfi.School` itself; there is no `edfi.EducationOrganization` base table to join.
 - **Descriptors live in one table, `dms.Descriptor`.** Descriptor columns end in `Descriptor_DescriptorId`.
+- **Quote names on PostgreSQL.** Table and column names are mixed case, so on PostgreSQL write them in double quotes, for example `"edfi"."School"."NameOfInstitution"`. The query above runs as written on SQL Server.
 
 ## Example: incremental extract with Change Queries
 

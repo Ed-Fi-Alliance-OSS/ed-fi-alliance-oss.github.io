@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 5
 ---
 
 # Seed Data and Annual Rollover
@@ -60,6 +60,12 @@ EdFi.BulkLoadClient.Console `
   -d ./eng/<your-state>/seedData `
   -w ./working
 ```
+
+:::warning[Not yet tested]
+
+This command has not yet been tested against a running Ed-Fi API v8. The Ed-Fi API's own seed data script calls `/connect/token` on the Configuration Service instead of `/api/oauth/token`.
+
+:::
 
 Use a client with a claimset that allows creating descriptors and education organizations, such as `BootstrapDescriptorsandEdOrgs`.
 

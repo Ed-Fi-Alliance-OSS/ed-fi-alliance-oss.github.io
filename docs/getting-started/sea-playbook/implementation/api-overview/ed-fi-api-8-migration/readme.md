@@ -19,7 +19,8 @@ During development, Ed-Fi API v8 was called the Data Management Service (DMS), a
 
 - **There is no in-place database migration.** The Ed-Fi API v8 database is structured differently from the ODS. Data is reloaded through the Ed-Fi API. See [No In-Place Database Migration](/reference/ed-fi-api/8/whats-new/release-notes#no-in-place-database-migration).
 - **Plan to move to Data Standard 5.2 or later.** Ed-Fi API v8 can run Data Standard 4, but the Ed-Fi Alliance will not support it. Your SIS and assessment vendors need to support the new Data Standard version before your first school year on Ed-Fi API v8.
-- **Deployment is Docker today.** PowerShell-based install scripts are planned for Ed-Fi API v8. See [Deployment](./deployment.md).
+- **Docker is the only supported deployment today.** PowerShell scripts that install Ed-Fi API v8 without Docker, on a server or virtual machine, are planned for 2027. See [Deployment](./deployment.md).
+- **Any change to your extensions or Data Standard version needs a fresh database.** Adding, removing or changing an extension, or upgrading the Data Standard, means provisioning a new database and reloading data through the API. Plan these changes for the start of a school year. See [Plan for extension changes](./extensions.md#plan-for-extension-changes).
 - **Move to the Admin API or Admin App v4 first** if you manage vendors, applications and claimsets any other way today. See [Admin Data and Credentials](./admin-data-and-credentials.md).
 - **Check the feature list.** Some ODS/API features are not in Ed-Fi API v8.0. See [Feature Availability](/reference/ed-fi-api/8/whats-new/release-notes#feature-availability).
 
@@ -29,9 +30,9 @@ During development, Ed-Fi API v8 was called the Data Management Service (DMS), a
 | --- | --- |
 | [Deployment](./deployment.md) | IIS, binary installer or source build → Docker Compose |
 | [Admin Data and Credentials](./admin-data-and-credentials.md) | Admin API, Admin App or SQL into `EdFi_Admin` and `EdFi_Security` → Configuration Service or Admin App 4.1 |
-| [Data Out](./data-out.md) | SQL against ODS tables → the API, Change Queries or rewritten SQL |
 | [Extensions](./extensions.md) | Extension projects → MetaEd ApiSchema workflow |
 | [Seed Data and Annual Rollover](./seed-data-and-annual-rollover.md) | SQL scripts → XML seed data |
+| [Data Out](./data-out.md) | SQL against ODS tables → the API, Change Queries or rewritten SQL |
 | [Data In](./data-in.md) | Direct SQL writes → the API |
 | [API Differences for Client Applications](./api-differences-for-client-applications.md) | URL paths, token endpoint, case-sensitive property names |
 | [School Years and Cutover](./school-years-and-cutover.md) | Running ODS/API and Ed-Fi API v8 side by side, or moving everything |

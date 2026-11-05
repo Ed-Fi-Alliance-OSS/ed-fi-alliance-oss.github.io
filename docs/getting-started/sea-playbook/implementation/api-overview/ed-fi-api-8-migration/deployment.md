@@ -8,7 +8,7 @@ sidebar_position: 2
 
 | | ODS/API 7.x | Ed-Fi API v8 |
 | --- | --- | --- |
-| How you install | [Binary installation](/reference/ed-fi-api/getting-started/binary-installation) onto IIS, [source code installation](/reference/ed-fi-api/getting-started/source-code-installation), or [Docker](/reference/ed-fi-api/getting-started/getting-started-docker-deployment) | Docker Compose, using the startup scripts in the Ed-Fi API repository. PowerShell-based install scripts are planned |
+| How you install | [Binary installation](/reference/ed-fi-api/getting-started/binary-installation) onto IIS, [source code installation](/reference/ed-fi-api/getting-started/source-code-installation), or [Docker](/reference/ed-fi-api/getting-started/getting-started-docker-deployment) | Docker Compose, using the startup scripts in the [Data-Management-Service](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service) repository. PowerShell-based install scripts are planned |
 | What runs | ODS/API web application, plus Admin API or Admin App | Two services: the **Ed-Fi API** and the **Configuration Service** |
 | Databases | `EdFi_ODS` (one or more), `EdFi_Admin`, `EdFi_Security` | One or more Ed-Fi API data stores, plus one Configuration Service database that replaces `EdFi_Admin` and `EdFi_Security` |
 | Database setup | Installer or PowerShell deployment scripts | `api-schema-tools` CLI provisions the data store schema |
@@ -19,9 +19,13 @@ Ed-Fi API v8 is distributed as Docker images only today. There is no binary inst
 
 Ed-Fi API v8 runs on PostgreSQL or SQL Server. On PostgreSQL, the Ed-Fi API requires version 18 or later with a UTF-8 database encoding, and the Configuration Service requires version 15 or later. The startup scripts choose the engine with `-DatabaseEngine postgresql` (the default) or `-DatabaseEngine mssql`. See [Database versions](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/main/docs/OPERATIONS.md#database-versions).
 
-PowerShell-based install scripts for Ed-Fi API v8 are planned for 2027, for states that prefer not to run containers. Until they are available, plan your first deployment on Docker.
+In the default Docker setup, secrets such as database connection strings, client secrets and encryption keys are set in the `.env` file. From Ed-Fi API 8.1, a secrets plugin can read them from a vault such as Azure Key Vault or AWS Systems Manager Parameter Store instead. With the shipped Docker Compose files, removing a value from `.env` does not hand it over to the vault, so read [Secrets](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/main/docs/SECRETS.md) before you switch.
+
+Docker is the only supported deployment method today. Ed-Fi API v8 is expected to run without Docker, on a server or virtual machine, but that has not been tested. PowerShell scripts that install it that way are planned for 2027. Until they are available, plan your first deployment on Docker.
 
 ## What you need
+
+The Ed-Fi API v8 source code, startup scripts and Docker Compose files are in the [Data-Management-Service](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service) repository on GitHub. The repository keeps the project's development name.
 
 - Docker Desktop or Podman Desktop, with Docker Compose v2
 - PowerShell 7
@@ -70,7 +74,7 @@ Each year gets its own route, for example `/api/2028/data/ed-fi/schools`. `-Scho
 
 ## Keeping your state's files
 
-Clone the Ed-Fi API repository and keep your state's extensions, claims, schemas and seed data in a folder of their own under `eng/` (for example, `eng/<your-state>`). The extension, claims and seed data pages explain what goes in each subfolder.
+Clone the `Data-Management-Service` repository and keep your state's extensions, claims, schemas and seed data in a folder of their own under `eng/` (for example, `eng/<your-state>`). The extension, claims and seed data pages explain what goes in each subfolder.
 
 :::info[Still being worked out]
 

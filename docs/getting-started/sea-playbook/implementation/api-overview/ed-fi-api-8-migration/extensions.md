@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 4
 ---
 
 # Extensions
@@ -20,7 +20,7 @@ See [Extending API DataModel](/reference/ed-fi-api/8/platform-dev-guide/extensib
 ## Example: from MetaEd to a running API
 
 1. Open your extension project in MetaEd and target the Data Standard your Ed-Fi API v8 uses (for example, `ed-fi-model-5.2`).
-2. Build. MetaEd writes `ApiSchema-EXTENSION.json`.
+2. Build. MetaEd writes `ApiSchema-EXTENSION.json` to its `ApiSchema` output folder, where `EXTENSION` is your project's extension name.
 3. Copy it into your state's folder, for example `eng/<your-state>/mySchemas/`, next to the core `ApiSchema.json`.
 4. Stage the schema and provision the database. Locally, `prepare-dms-schema.ps1` stages the files and `bootstrap-local-dms.ps1` provisions. Elsewhere, run `api-schema-tools ddl provision` (see [Database Provisioning](/reference/ed-fi-api/8/platform-dev-guide/utilities/database-provisioning)).
 5. Restart the Ed-Fi API. The schema is read once at startup.

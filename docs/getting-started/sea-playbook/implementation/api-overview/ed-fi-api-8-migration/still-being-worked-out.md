@@ -17,6 +17,13 @@ Parts of the move from the ODS/API to Ed-Fi API v8 are not settled. This page li
 - **Carrying keys and secrets across.** There is no supported way yet to keep vendors' existing keys and secrets. Plan for new credentials. ([Admin Data and Credentials](./admin-data-and-credentials.md))
 - **Scripts to migrate `EdFi_Admin` and `EdFi_Security`.** Planned for a later date. ([Admin Data and Credentials](./admin-data-and-credentials.md))
 
+## Extensions and seed data
+
+- **Loading extension claims in production.** A recommended production setup for states with extensions. ([Extensions](./extensions.md))
+- **Extension build errors.** Some extensions that build in MetaEd have failed at startup. ([Extensions](./extensions.md))
+- **Converting SQL seed scripts to XML.** No conversion tool yet. ([Seed Data and Annual Rollover](./seed-data-and-annual-rollover.md))
+- **Rollover on a running production system.** Tested steps not yet published. ([Seed Data and Annual Rollover](./seed-data-and-annual-rollover.md))
+
 ## Data
 
 - **Relational data model documentation.** The reference page is still being written. ([Data Out](./data-out.md))
@@ -24,13 +31,6 @@ Parts of the move from the ODS/API to Ed-Fi API v8 are not settled. This page li
 - **Files from districts without an Ed-Fi SIS.** A recommended replacement for loading these files with SQL or SSIS. ([Data In](./data-in.md))
 - **Patterns for direct writes.** Recommended replacements for each common way states write directly to the ODS. ([Data In](./data-in.md))
 - **Identity system integration and custom validation.** Designed as plugins for Ed-Fi API v8, not built yet. ([Data In](./data-in.md))
-
-## Extensions and seed data
-
-- **Loading extension claims in production.** A recommended production setup for states with extensions. ([Extensions](./extensions.md))
-- **Extension build errors.** Some extensions that build in MetaEd have failed at startup. ([Extensions](./extensions.md))
-- **Converting SQL seed scripts to XML.** No conversion tool yet. ([Seed Data and Annual Rollover](./seed-data-and-annual-rollover.md))
-- **Rollover on a running production system.** Tested steps not yet published. ([Seed Data and Annual Rollover](./seed-data-and-annual-rollover.md))
 
 ## Cutover
 
