@@ -16,15 +16,15 @@ in the `Plugins:Allowed` setting of the service that loads it. The Ed-Fi API and
 the Configuration Service each have their own plugin directory and their own
 allowlist.
 
-In Ed-Fi API v8.1, plugins provide these features:
+In Ed-Fi API v8, plugins provide these features:
 
 | Feature | Loaded by | Contract package | See |
 | --- | --- | --- | --- |
 | Unique ID validation against an external system | Ed-Fi API | `EdFi.Api.CustomValidation` | [Unique ID System Integration](../../technical-articles/unique-id-system-integration.md) |
 | The identity service behind the Identities API | Ed-Fi API | `EdFi.Api.Identity` | [Identities API](../../technical-articles/identities-api.md) |
-| Secret references in data store connection strings | Configuration Service | `EdFi.Api.Secrets` | [Secrets in Connection Strings](../configuration/secrets-in-connection-strings.md) |
+| Secret references in data store connection strings | Configuration Service | `EdFi.Api.Secrets` | [Secrets in Connection Strings](../configuration/secrets-in-connection-strings.mdx) |
 | Replacing the client secret hasher | Configuration Service | `EdFi.Api.Secrets` | [Securing OAuth Client Secrets](../../technical-articles/securing-oauth-secrets.md#replacing-the-hasher) |
-| Service settings, such as keys and client secrets, from a secret store | Either service | `EdFi.Api.Plugins` only | [Secrets in Connection Strings](../configuration/secrets-in-connection-strings.md) |
+| Service settings, such as keys and client secrets, from a secret store | Either service | `EdFi.Api.Plugins` only | [Secrets in Connection Strings](../configuration/secrets-in-connection-strings.mdx) |
 
 Every plugin references `EdFi.Api.Plugins`, which provides the base class that
 all plugins derive from.
@@ -104,7 +104,7 @@ variables. Plugin sources rank as follows:
 
 A plugin can't supply the `Plugins` settings, because they're read before any
 plugin loads. See [Secrets in Connection
-Strings](../configuration/secrets-in-connection-strings.md) for the settings a
+Strings](../configuration/secrets-in-connection-strings.mdx) for the settings a
 secrets plugin is typically used for.
 
 ## Getting a Plugin into a Container
@@ -311,7 +311,7 @@ https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nug
 | `EdFi.Api.Plugins` | The `EdFiApiPlugin` base class. Every plugin references it. | This page |
 | `EdFi.Api.CustomValidation` | Unique ID validation | [Unique ID System Integration](../../technical-articles/unique-id-system-integration.md) |
 | `EdFi.Api.Identity` | The Identities API | [Identities API](../../technical-articles/identities-api.md) |
-| `EdFi.Api.Secrets` | Configuration Service secrets and the client secret hasher | [Secrets in Connection Strings](../configuration/secrets-in-connection-strings.md) |
+| `EdFi.Api.Secrets` | Configuration Service secrets and the client secret hasher | [Secrets in Connection Strings](../configuration/secrets-in-connection-strings.mdx) |
 
 Each package has its own version, independent of the Ed-Fi API release. See
 [Package Releases](../../getting-started/package-releases.md) for the current
