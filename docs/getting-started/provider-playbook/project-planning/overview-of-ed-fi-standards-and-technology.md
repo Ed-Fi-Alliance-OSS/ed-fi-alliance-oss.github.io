@@ -1,6 +1,6 @@
 # Overview of Ed-Fi Standards and Technology
 
-This page introduces the Ed-Fi standards and technology for technology
+This page introduces the Ed-Fi Alliance's standards and software for technology
 providers. For the full list of what makes up the Ed-Fi Technology Suite today,
 see [Ed-Fi Technology Suite Overview](/reference/technology-suite).
 
