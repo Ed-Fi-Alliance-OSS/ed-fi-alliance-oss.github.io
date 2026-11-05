@@ -10,7 +10,7 @@ The Ed-Fi Alliance publishes data exchange standards for K-12 education data
 and leads an open-source software community that builds technology to implement
 them.
 
-## What standards does the Ed-Fi Alliance provide?
+## What is the Ed-Fi Data Standard?
 
 The [Ed-Fi Data Standard](/reference/data-exchange/data-standard) is focused on
 classroom-level decision making. It lets data move across many domains,
