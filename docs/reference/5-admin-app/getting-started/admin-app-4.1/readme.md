@@ -92,7 +92,7 @@ unhealthy.
   API's `POST /connect/register` endpoint, which requires
   `Authentication:AllowRegistration=true` in the Admin API's
   `appsettings.json` (`false` by default). Complete
-  [Create the First API Client](../../../4-admin-api/getting-started/admin-api-2.3-newer/first-time-configuration.md#2-create-the-first-api-client)
+  [Create the First API Client](../../../4-admin-api/getting-started/admin-api-2.4-newer/first-time-configuration.md#2-create-the-first-api-client)
   and keep registration enabled while connecting environments (it can be
   disabled again afterwards).
 
