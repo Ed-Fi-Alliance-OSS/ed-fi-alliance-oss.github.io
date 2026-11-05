@@ -2,7 +2,7 @@
 title: '📢 Ed-Fi Admin App 4.1 and Admin API 2.4 Released'
 authors: [hunter, campos]
 tags: [release, admin-app, admin-api, ed-fi-api]
-date: 2026-11-05
+date: 2026-11-06
 ---
 
 The Ed-Fi Alliance is pleased to announce the release of **Ed-Fi Admin App 4.1**
