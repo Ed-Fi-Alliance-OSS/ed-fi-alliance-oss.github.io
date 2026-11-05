@@ -27,11 +27,12 @@ Supported](./0-roadmap/supported-versions.md#currently-supported).
 The standards define the data and how it is exchanged; the platforms are
 software that implements them. The Ed-Fi ODS/API and Ed-Fi API v8 are the Ed-Fi
 Alliance's implementations, and any party can build a compatible one by
-following the API specifications and guidelines. See [Ed-Fi Data Standard vs.
-UDM vs. API Specifications vs. Ed-Fi
+following the API specifications and the [Ed-Fi API
+Guidelines](./1-data-exchange/api-guidelines/readme.md). See [Ed-Fi Data
+Standard vs. UDM vs. API Specifications vs. Ed-Fi
 API](./1-data-exchange/data-standard-vs-udm-vs-api.md) for how the standards
 and the software that implements them relate, and [Ed-Fi
-certification](/partners/certification) for how vendor products show that they
+Certification](/partners/certification) for how vendor products show that they
 exchange data correctly.
 
 ## What technologies make up the Ed-Fi Technology Suite?
@@ -80,9 +81,10 @@ v8?](./0-roadmap/api-faq.md#q-should-a-new-ed-fi-implementation-use-odsapi-7x-or
 
 ## What is no longer part of the Technology Suite?
 
-Some products the Ed-Fi Alliance once maintained have moved or are moving to
-[Ed-Fi Community Tools](/getting-started/community-tools) and no longer carry an
-Alliance support commitment. These include the Ed-Fi ODS/API Docker deployments,
-Data Import, the Analytics Middle Tier, and the legacy Ed-Fi ODS Admin App 3.x.
-See [Out of Support](./0-roadmap/supported-versions.md#out-of-support) for the
-full list and the notice for each.
+Some products the Ed-Fi Alliance once maintained no longer carry an Alliance
+support commitment and belong to [Ed-Fi Community
+Tools](/getting-started/community-tools). Data Import and the legacy Ed-Fi ODS
+Admin App 3.x have already moved there. The Ed-Fi ODS/API Docker deployments
+and the Analytics Middle Tier are still moving. See [Out of
+Support](./0-roadmap/supported-versions.md#out-of-support) for the full list and
+the notice for each.
