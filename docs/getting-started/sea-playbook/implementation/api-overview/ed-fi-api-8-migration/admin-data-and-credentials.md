@@ -18,6 +18,8 @@ sidebar_position: 3
 
 The Configuration Service implements the [Ed-Fi Management API specification V3](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-API-Specifications/tree/main/api-specifications/management). See [Admin API Replaced by Configuration Service](/reference/ed-fi-api/8/whats-new/release-notes#admin-api-replaced-by-configuration-service).
 
+The Configuration Service has its own path base, like the Ed-Fi API. It is `config` (`CONFIGURATION_SERVICE_PATH_BASE`) in the default Docker environment file and it is configurable. The Configuration Service URLs on this page leave it out, so check the exact URLs for your deployment.
+
 ## Step one: get onto the Admin API or Admin App v4
 
 If you manage vendors, applications and claimsets with an Admin App version earlier than 4, with custom tools, or by editing `EdFi_Admin` and `EdFi_Security` directly, move that work to the [Admin API](/reference/admin-api) or [Admin App v4](/reference/admin-app) **before** you migrate. Both have equivalents on Ed-Fi API v8, so the processes you build now carry over. Hand edits to database tables do not.
