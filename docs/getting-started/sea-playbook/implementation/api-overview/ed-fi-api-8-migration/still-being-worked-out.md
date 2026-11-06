@@ -22,7 +22,7 @@ Parts of the move from the ODS/API to Ed-Fi API v8 are not settled. This page li
 
 - **Loading extension claims in production.** A recommended production setup for states with extensions. ([Extensions](./extensions.md))
 - **Extension build errors.** Some extensions that build in MetaEd have failed at startup. ([Extensions](./extensions.md))
-- **Converting SQL seed scripts to XML.** No conversion tool yet. ([Seed Data and Annual Rollover](./seed-data-and-annual-rollover.md))
+- **Converting SQL seed scripts to XML or JSON.** No conversion tool yet. ([Seed Data and Annual Rollover](./seed-data-and-annual-rollover.md))
 - **Rollover on a running production system.** Tested steps not yet published. ([Seed Data and Annual Rollover](./seed-data-and-annual-rollover.md))
 
 ## Data

@@ -46,7 +46,7 @@ A typical migration runs in this order. Each step links to the page that covers 
 | [Deployment](./deployment.md) | IIS, binary installer or source build → Docker Compose |
 | [Admin Data and Credentials](./admin-data-and-credentials.md) | Admin API, Admin App or SQL into `EdFi_Admin` and `EdFi_Security` → Configuration Service or Admin App 4.1 |
 | [Extensions](./extensions.md) | Extension projects → MetaEd ApiSchema workflow |
-| [Seed Data and Annual Rollover](./seed-data-and-annual-rollover.md) | SQL scripts → XML seed data |
+| [Seed Data and Annual Rollover](./seed-data-and-annual-rollover.md) | SQL scripts → seed data files (XML or JSON) |
 | [Data Out](./data-out.md) | SQL against ODS tables → the API, Change Queries or rewritten SQL |
 | [Data In](./data-in.md) | Direct SQL writes → the API |
 | [API Differences for Client Applications](./api-differences-for-client-applications.md) | URL paths, token endpoint, case-sensitive property names |
