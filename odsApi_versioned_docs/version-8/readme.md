@@ -5,13 +5,17 @@ sidebar_position: 0
 # Ed-Fi API v8
 
 **Ed-Fi API v8** is the next-generation platform for data integration and
-management. It is designed to be a fully compatible replacement for the current
-ODS/API Platform, built on a modern architecture. It implements existing
-versions of the Ed-Fi Data Standard; it is not a new Data Standard version. See
-[Supported Versions](/reference/roadmap/supported-versions) for which versions
-each release supports. For how an Ed-Fi API relates to the Data Standard and
-the Ed-Fi API Specifications, see [Ed-Fi Data Standard vs. UDM vs. API
+management. It is designed to replace the current ODS/API Platform, on a
+modern architecture. It implements existing versions of the Ed-Fi Data
+Standard; it is not a new Data Standard version. See [Supported
+Versions](/reference/roadmap/supported-versions) for which versions each
+release supports. For how an Ed-Fi API relates to the Data Standard and the
+Ed-Fi API Specifications, see [Ed-Fi Data Standard vs. UDM vs. API
 Specifications vs. Ed-Fi API](/reference/data-exchange/data-standard-vs-udm-vs-api).
+
+For the current release and its support status, see [Supported
+Versions](/reference/roadmap/supported-versions). For what Ed-Fi API v8.1
+adds, see [What's New](./whats-new/readme.mdx).
 
 The Ed-Fi Alliance plans to fully replace the ODS/API Platform with Ed-Fi API v8
 by the 2029–2030 school year. The ODS/API Platform will continue to receive
@@ -39,7 +43,9 @@ Project Tanager?](/reference/roadmap/api-faq#q-what-are-dms-cms-and-project-tana
 - **Modern architecture** — Adopts a service-oriented architecture with a
   Configuration Service for API management and deployment configuration.
 - **Relational data model** — The backend remains relational (PostgreSQL or SQL
-  Server), preserving existing SQL-based reporting and analytics patterns.
+  Server), so you can still report on the data with SQL. The tables differ from
+  the ODS/API's, so existing reporting queries need updating; see [Relational
+  Data Model](./technical-articles/relational-data-model).
 - **New admin surface** — Replaces the Admin API with a Configuration Service
   that implements the Ed-Fi Management API Specification (v3).
 

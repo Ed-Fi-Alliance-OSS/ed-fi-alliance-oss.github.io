@@ -41,28 +41,33 @@ as:
 
 ## Overview of Change Query Endpoints
 
-The core operations for Change Queries processing are as follows:
+:::note
 
-### Snapshots
-
-:::info
-
-Snapshot support is planned for a future release. See [Current
-Limitations](../platform-dev-guide/features/changed-record-queries.md#current-limitations)
-for details.
+The examples on this page assume a host that sets the path base to `api` and
+uses no tenant or route qualifier segments. Adjust the paths to match your
+host's routes; see [API Routes](./api-routes.md).
 
 :::
 
-Snapshots are configured through the Configuration Service by creating a
-`DataStoreDerivative` record with `DerivativeType = 'Snapshot'` and the
-snapshot database connection string, associated with the appropriate
-`DataStore`.
+The core operations for Change Queries processing are as follows.
+
+### Snapshots
+
+The API host makes a snapshot available by registering it in the Configuration
+Service; see [Changed Record
+Queries](../platform-dev-guide/features/changed-record-queries.md#changed-record-queries-with-snapshot-isolation).
 
 The API client should set the `Use-Snapshot` HTTP header to `true` on each
-request.
+request. The value isn't case-sensitive, and spaces around it are ignored, so
+`TRUE` also works. Any other value, such as `yes` or `1`, reads current data
+instead, without an error. Snapshots are read-only: a `POST`, `PUT`, or
+`DELETE` request to a resource that sends `Use-Snapshot: true` returns
+`405 Method Not Allowed` with an `Allow: GET` header.
 
-If a 404 Snapshot Not Found response is returned, it means that the host has
-not set up snapshots for change query processing.
+If a `404 Not Found` response with the message `Snapshot not found.` is
+returned, the host hasn't set up a snapshot for change query processing, or the
+snapshot isn't available. The API doesn't fall back to current data in that
+case; contact the API host.
 
 ### Available Change Versions Resource
 
@@ -73,7 +78,7 @@ clients to request just the resource items that have been created, updated, or
 deleted since the last synchronization processing was performed.
 
 ```none
-GET /changeQueries/v1/availableChangeVersions
+GET /api/changeQueries/v1/availableChangeVersions
 ```
 
 ```json
@@ -89,21 +94,24 @@ The Minimum Change Version and Maximum Change Version parameters allow clients
 to request the latest representation of all resources that were modified within
 the given change version window. These parameters are available on every data
 management resource, both as part of the Ed-Fi Data Standard and in extension
-models. The parameters are also compatible with the existing parameters to
-support paging using the `offset` and `limit` parameters. Using paging
-parameters in conjunction with change version parameters, all records can be
-retrieved over multiple calls.
+models. The parameters work with both offset paging (the `offset` and `limit`
+parameters) and [cursor
+paging](./improve-paging-performance-cursor-paging.md) (the `pageToken` and
+`pageSize` parameters). Using paging parameters in conjunction with change
+version parameters, all records can be retrieved over multiple calls.
 
-- `GET /data/ed-fi/classPeriods?minChangeVersion=234378&maxChangeVersion=234974&offset=100&limit=500`
+- `GET /api/data/ed-fi/classPeriods?minChangeVersion=234378&maxChangeVersion=234974&offset=100&limit=500`
+- `GET /api/data/ed-fi/classPeriods?minChangeVersion=234378&maxChangeVersion=234974&pageToken=<token>&pageSize=500`
 
 ### Deletes Route
 
 The "Deletes" route allows clients to get the `id` and the **natural key**
-values for deleted resources. This route also supports the existing paging
-parameters of `offset` and `limit`.
+values for deleted resources. This route supports only the `offset` and `limit`
+paging parameters; a request with `pageToken` or `pageSize` returns
+`400 Bad Request`.
 
 ```none
-GET /data/ed-fi/studentProgramAssociations/deletes?minChangeVersion=234378&offset=0&limit=25
+GET /api/data/ed-fi/studentProgramAssociations/deletes?minChangeVersion=234378&offset=0&limit=25
 ```
 
 #### Deletes Response for Resource with Composite Key
@@ -111,7 +119,7 @@ GET /data/ed-fi/studentProgramAssociations/deletes?minChangeVersion=234378&offse
 ```json
 [
   {
-    "id": "cfa3fea8edf44c50b95e1808e616460a",
+    "id": "cfa3fea8-edf4-4c50-b95e-1808e616460a",
     "changeVersion": 234550,
     "keyValues": {
       "beginDate": "2021-08-30",
@@ -132,11 +140,15 @@ updated resources. Not all resources support key changes. For those unsupported
 resources, the "keyChanges" route will always return an empty array. If there
 were multiple key changes in the change window defined on the request, there
 will be one entry per resource item affected with the _initial_ and _final_ key
-values for that resource. This route also supports the existing paging
-parameters of `offset` and `limit`.
+values for that resource. Like the "Deletes" route, this route supports only
+the `offset` and `limit` paging parameters.
+
+Both the "Deletes" and "keyChanges" routes require the `ReadChanges` action on
+the resource in the API client's claim set. Without it, the request returns
+`403 Forbidden`.
 
 ```none
-GET /data/ed-fi/classPeriods/keyChanges?minChangeVersion=104030&offset=100&limit=500
+GET /api/data/ed-fi/classPeriods/keyChanges?minChangeVersion=104030&offset=100&limit=500
 ```
 
 #### Key Changes Response for Resource with Composite Key
@@ -144,7 +156,7 @@ GET /data/ed-fi/classPeriods/keyChanges?minChangeVersion=104030&offset=100&limit
 ```json
 [
   {
-    "id": "e0f8848b54ad4bddbe81e96737ed7b46",
+    "id": "e0f8848b-54ad-4bdd-be81-e96737ed7b46",
     "changeVersion": 104036,
     "oldKeyValues": {
       "classPeriodName": "ORIGINAL",
@@ -175,6 +187,9 @@ following elements:
   be processed and the order of processing (informed by Ed-Fi model
   dependencies).
 - [Initial Synchronization](#obtain-initial-data) (a one-time operation).
+  - _(Optional)_ If [snapshot isolation](#use-snapshot-isolation) is supported
+    by the host, apply the `Use-Snapshot: true` header to all API calls in this
+    run, starting with the next step.
   - Obtain the system's current change version (a.k.a., the _synchronization
     version_).
   - Obtain and process the initial data for identified resources (with no
@@ -185,12 +200,11 @@ following elements:
   (repeating, on a schedule).
   - Obtain the saved synchronization version from the previous successful
     processing and add 1 (a.k.a., the _starting change version_).
+  - _(Optional)_ If [snapshot isolation](#use-snapshot-isolation) is supported
+    by the host, apply the `Use-Snapshot: true` header to all API calls in this
+    processing run, starting with the next step.
   - Obtain the system's current change version (a.k.a., the _synchronization
     version_).
-  - _(Optional — not available in Ed-Fi API v8.0)_ If
-    [snapshot isolation](#use-snapshot-isolation) is supported by the host,
-    apply the `Use-Snapshot: true` header to all API calls in this processing
-    run.
   - Process for key changes on identified resources (as applicable, in
     dependency order).
   - Process for changes on identified resources (in dependency order).
@@ -212,8 +226,13 @@ must obtain the system's current change version. This can be obtained using the
 _availableChangeVersions_ route:
 
 ```none
-GET /changeQueries/v1/availableChangeVersions
+GET /api/changeQueries/v1/availableChangeVersions
 ```
+
+If you're using a [snapshot](#use-snapshot-isolation), send the
+`Use-Snapshot: true` header on this request too. The response reports the
+newest change version of the database the request reads from, so the
+synchronization version must come from the same snapshot as the data.
 
 #### Available Change Versions Response
 
@@ -226,12 +245,20 @@ GET /changeQueries/v1/availableChangeVersions
 
 With the current (initial) change version identified, the initial data should
 be retrieved from the API using paged queries against the desired data
-management API resources, as follows:
+management API resources. Use [cursor
+paging](./improve-paging-performance-cursor-paging.md), which performs better
+than offset paging on large resources, as follows:
 
-1. `GET /data/ed-fi/students?offset=0&limit=500`
-2. `GET /data/ed-fi/students?offset=500&limit=500`
-3. `GET /data/ed-fi/students?offset=1000&limit=500`
-4. `...`
+1. `GET /api/data/ed-fi/students?limit=500` (the first request has no page
+   token, so it uses `limit`; `pageSize` applies only with a `pageToken`)
+2. `GET /api/data/ed-fi/students?pageToken=<Next-Page-Token>&pageSize=500`
+3. `...` (repeat until a response has no `Next-Page-Token` header)
+
+To read a large resource in parallel, request partitions from the
+`/partitions` endpoint (for example, `GET /api/data/ed-fi/students/partitions`)
+and read each partition with cursor paging. Use cursor paging the same way when
+reading changes from the main data management resources. The _keyChanges_ and
+_deletes_ routes accept only `offset` and `limit`.
 
 If retrieval of the initial data set succeeds, save the change version value
 obtained at the beginning of this initial processing for use in the next
@@ -247,7 +274,7 @@ For resources that allow for primary/natural key changes, first use the
 _keyChanges_ route with the `minChangeVersion` parameter as follows:
 
 ```none
-GET /data/ed-fi/sections/keyChanges?minChangeVersion=101
+GET /api/data/ed-fi/sections/keyChanges?minChangeVersion=101
 ```
 
 :::info
@@ -262,14 +289,14 @@ To obtain changes that have been made to a particular resource, use the main
 data management API with the `minChangeVersion` parameter, as follows:
 
 ```none
-GET /data/ed-fi/sections?minChangeVersion=101
+GET /api/data/ed-fi/sections?minChangeVersion=101
 ```
 
 To obtain resource items that have been deleted, use the _deletes_ route with
 the `minChangeVersion` parameter as follows:
 
 ```none
-GET /data/ed-fi/sections/deletes?minChangeVersion=101
+GET /api/data/ed-fi/sections/deletes?minChangeVersion=101
 ```
 
 ### Obtain consistent and correct results
@@ -301,30 +328,29 @@ the previous steps, such as the following operations:
   _students_ resource.
 
 To overcome these challenges, we recommend that you use _**snapshot
-isolation**_ functionality provided by the _snapshots_ API resource (which
-must be supported and maintained by the API host). This will help to ensure
-consistency of the change information. If you don't (or can't) use snapshots,
-developing a synchronization process that uses change queries could require
-significantly more effort.
+isolation**_ (which must be supported and maintained by the API host). This will
+help to ensure consistency of the change information. If you don't (or can't)
+use snapshots, developing a synchronization process that uses change queries
+could require significantly more effort.
 
 ### Use snapshot isolation
 
-:::info
-
-Snapshot support is planned for a future release. See [Current
-Limitations](../platform-dev-guide/features/changed-record-queries.md#current-limitations)
-for details.
-
-:::
-
 Change queries has been designed to work well with snapshot isolation. Snapshot
-isolation must be supported by the API host through a `DataStoreDerivative`
-record configured in the Configuration Service. All the steps that are required
-to [obtain changes](#use-the-change-version-to-obtain-changes) must be
-performed against a specific snapshot by applying the `Use-Snapshot` header
-set to true to each API request. This will ensure that the changes that are
+isolation must be supported and configured by the API host (see [Changed Record
+Queries](../platform-dev-guide/features/changed-record-queries.md#changed-record-queries-with-snapshot-isolation)).
+All the steps that are required to [obtain
+changes](#use-the-change-version-to-obtain-changes) must be performed against a
+specific snapshot by applying the `Use-Snapshot` header set to true to each API
+request. This will ensure that the changes that are
 made to the data by other API clients won't be visible to the synchronization
 processing.
+
+Apply the header to the `availableChangeVersions` request as well, before
+reading any data. Without it, the request reports the live database's newest
+change version, which can be ahead of the snapshot. For example, if the live
+database is at change version 200 and the snapshot is at 150, a client that
+reads the data from the snapshot but saves 200 as its synchronization version
+starts the next run at 201 and never processes changes 151 to 200.
 
 ### Alternatives to snapshot isolation
 
@@ -367,7 +393,7 @@ application and how it can handle the side-effects of each approach:
 
 Adding to the potential list of issues that must be considered with either of
 the above options is how certain operations performed by other API clients can
-affect API paging requests. For example, if while paging through a resource's
+affect offset paging requests. For example, if while paging through a resource's
 items an item is deleted by another API client, it will impact the items that
 are included in the paging offsets calculated by the database engine, causing
 them all to shift. If an item that has already been processed is subsequently
@@ -380,6 +406,14 @@ The same outcome could result if new changes are ignored and an item is updated
 after it has been processed (because the item would no longer match the
 `maxChangeVersion` filter criteria and paging would shift as described above,
 resulting in the same "missed item" condition).
+
+These page shifts are specific to offset paging. A [cursor
+paging](./improve-paging-performance-cursor-paging.md) page token marks a
+position in the resource's ordering rather than a number of items to skip, so
+deleting an item doesn't shift later items into pages already read. Cursor
+paging still doesn't hold a consistent view of the data for the length of a
+walk, though: items created, changed, or deleted during the walk can appear,
+disappear, or be missed.
 
 :::info
 

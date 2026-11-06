@@ -43,7 +43,7 @@ setting to define the context route.
 | **District-Specific** | Implicit | Segmentation by district. Multiple API clients may share a district-specific data store, but the district id is not part of the route. Each API client is associated with only one district-specific data store. |
 | **District-Specific** | Explicit | Segmentation by district. Multiple API clients may share multiple district-specific data stores. Data for different districts is explicitly accessed by changing the base path of the URL (e.g., `http://<host>/northridge/data/ed-fi/schools`). (Note: API configuration changes for [`RouteQualifierSegments`](../configuration/context-based-routing-for-year-specific-datastore.md) are required.) |
 | **Instance-Year Specific** | Implicit | Segmentation by instance and year. Multiple API clients may share an instance/year-specific data store. Each API client is associated with only one instance/year-specific data store. |
-| **Instance-Year Specific** | Explicit | Segmentation by instance and year. Different instance and year data is accessed by changing the base path of the URL (e.g., `http://<host>/inst-1/2021/data/ed-fi`). Two contextual name/value pairs must be defined for each data store and the API must be configured with a multiple-segment `RouteQualifierSegments` setting (e.g., `districtId,schoolYear`). |
+| **Instance-Year Specific** | Explicit | Segmentation by instance and year. Different instance and year data is accessed by changing the base path of the URL (e.g., `http://<host>/inst-1/2021/data/ed-fi`). Two contextual name/value pairs must be defined for each data store and the API must be configured with a multiple-segment `RouteQualifierSegments` setting (e.g., `instanceId,schoolYear`, with context values `inst-1` and `2021`). |
 
 Other segmentation strategies are possible as the design is flexible enough to
 satisfy custom requirements.
@@ -64,12 +64,29 @@ The Ed-Fi API allows for other useful customizations. A few are outlined below.
 
 One of the features that draws implementers to the Ed-Fi API is the support for
 extending the data model. In v8, extensions are driven by the MetaEd toolchain,
-which generates an `ApiSchema.json` file describing the additional resources,
-properties, or associations. Placing this file in the configured `ApiSchemaPath`
-directory and running `api-schema-tools ddl provision` extends both the API surface
-and the database schema without manual code changes. The Ed-Fi API loads
-`ApiSchema.json` at startup (it is not hot-reloaded), so restart the service
-after provisioning for the extension to take effect.
+which generates an `ApiSchema-EXTENSION.json` file describing the additional
+resources, properties, or associations. To add an extension, stage its schema
+file with the core schema in the `AppSettings:ApiSchema:Path` directory, list
+both in that directory's `bootstrap-api-schema-manifest.json` file, and run
+`api-schema-tools ddl provision` against a new database. No code changes are
+needed. Restart the Ed-Fi API afterward; the schema loads only at startup.
 
 The [Extending API DataModel](./extending-api-datamodel.md) page has an overview of
 the process with step-by-step instructions.
+
+### Plugins
+
+Code extensions are added as plugins: directories of compiled .NET assemblies
+that the Ed-Fi API or the Configuration Service loads at startup. A plugin runs
+only when its directory name is listed in that service's `Plugins:Allowed`
+setting, which is empty by default.
+
+| Plugin type | Loaded by | Contract package |
+| --- | --- | --- |
+| Any plugin (every plugin derives from this base class) | Ed-Fi API and Configuration Service | `EdFi.Api.Plugins` |
+| A validator that checks student, staff, and contact unique IDs against an external identity system (see [Unique ID System Integration](../../technical-articles/unique-id-system-integration.md)) | Ed-Fi API | `EdFi.Api.CustomValidation` |
+| An identity service that backs the identity management API | Ed-Fi API | `EdFi.Api.Identity` |
+| A secret resolver for connection strings that name secrets in an external store, and a client secret hasher | Configuration Service | `EdFi.Api.Secrets` |
+
+The [Plugins](./plugins.md) page describes how to deliver, enable and
+troubleshoot a plugin, and summarizes how plugins are built.

@@ -1,0 +1,358 @@
+---
+sidebar_position: 1
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Relational Data Model
+
+The Ed-Fi API stores each resource in its own set of relational tables on
+PostgreSQL or SQL Server. This article describes those tables for database
+administrators and for anyone who writes reporting or analytics queries against
+the database.
+
+:::warning
+
+The table layout is generated from the API schema. It can change when you
+upgrade the Ed-Fi Data Standard, add or change an extension, or move to a new
+Ed-Fi API release. Review reporting queries whenever the schema changes.
+
+:::
+
+## How the Model Is Built
+
+When a client writes a resource, the Ed-Fi API splits the JSON document into
+that resource's tables. When a client reads it, the Ed-Fi API rebuilds the JSON
+from those tables.
+
+The tables, views, constraints and triggers are generated from the _effective
+schema_: the core Ed-Fi data model plus any extensions that the deployment
+loads. `api-schema-tools ddl provision` creates them. See
+[Database Provisioning](../platform-dev-guide/utilities/database-provisioning.md).
+
+- Each project, such as the core model or an extension, has its own database
+  schema, named after the project's endpoint name in lowercase without
+  punctuation: `edfi` for the core Ed-Fi model, `tpdm` for TPDM, and `sample`
+  for the Sample extension.
+- The shared `dms` schema holds the tables that every resource uses, such as
+  `dms.Document` and `dms.Descriptor`.
+- The `auth` schema holds the education organization hierarchy and the views
+  that relationship-based authorization uses.
+- Each project also has a `tracked_changes_<schema>` schema, such as
+  `tracked_changes_edfi`, for change tracking.
+
+Table and column names use Pascal case; schema names are lowercase. On
+PostgreSQL, quote them, for example `"edfi"."StudentSchoolAssociation"`.
+
+A generated name that's too long for the database is cut short and ends with `_`
+and 10 hexadecimal characters. PostgreSQL allows 63 bytes, so this affects
+tables, columns, constraints and indexes, such as the table
+`"AssessmentAdministrationParticipationAdministrationP_c63833eb57"`. SQL Server
+allows 128 characters, so only some constraint and index names are shortened
+there.
+
+:::tip Coming from the ODS/API
+
+If you've written queries against an Ed-Fi ODS/API database, note these
+differences:
+
+- There are no surrogate keys such as `StudentUSI`. Every resource is keyed by
+  its `DocumentId`, and references use the referenced resource's `DocumentId`.
+- The resource `id` that clients see is `dms.Document.DocumentUuid`, not an `Id`
+  column on the resource table.
+- All descriptors are in one `dms.Descriptor` table. There is no table for each
+  descriptor type.
+- The timestamps are `ContentCreatedAt` and `ContentLastModifiedAt`, and the
+  change version is `ContentVersion`.
+
+:::
+
+## Resource Tables
+
+Every resource that isn't a descriptor has a root table, named after the
+resource in the project's schema, for example `edfi.Student` or
+`edfi.StudentSchoolAssociation`. The name isn't pluralized.
+
+| Column                            | Description                                                                                                                     |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `DocumentId`                      | The primary key, a `bigint`. It's the same value as `dms.Document.DocumentId`.                                                  |
+| Identity and other scalar columns | One column for each property, such as `StudentUniqueId` or `EntryDate`.                                                         |
+| `{Reference}_DocumentId`          | The `DocumentId` of a referenced resource, such as `Student_DocumentId`.                                                        |
+| `{Reference}_{IdentityProperty}`  | The referenced resource's identity values, such as `Student_StudentUniqueId`.                                                   |
+| `{Descriptor}_DescriptorId`       | A descriptor value, as an `int` that points to `dms.Descriptor.DescriptorId`, such as `EntryGradeLevelDescriptor_DescriptorId`. |
+| `ContentCreatedAt`                | When the resource was created, in UTC.                                                                                          |
+| `ContentLastModifiedAt`           | When the resource was last changed, in UTC.                                                                                     |
+| `ContentVersion`                  | The change version of the latest change. See [Change Tracking](#change-tracking).                                               |
+
+The unique constraint `UX_{Table}_NK` enforces the resource's natural key, the
+identity that clients use. A second one, `UX_{Table}_RefKey`, is what references
+to the resource point to.
+
+### Collections and Extensions
+
+Each collection in a resource has a child table, named after the root table
+followed by the singular collection name, for example
+`edfi.StudentSchoolAssociationEducationPlan`. A child table has:
+
+- `CollectionItemId`, a `bigint` primary key from
+  `dms.CollectionItemIdSequence`,
+- `Ordinal`, which keeps the order of the items in the JSON array,
+- `{Root}_DocumentId`, which points to the root table and is deleted with it,
+- `ParentCollectionItemId`, for a collection nested in another collection.
+
+Extension data is stored in the extension's schema, in tables named after the
+resource followed by `Extension`, such as `sample.ContactExtension`. The
+extension root table is keyed by the same `DocumentId` as the core root table.
+
+### References and Key Unification
+
+A reference is stored as the referenced resource's `DocumentId` and its identity
+values. A foreign key on those columns points to the referenced table's
+`UX_{Table}_RefKey` constraint, so the database checks that the referenced
+resource exists.
+
+When the referenced resource's identity can change, the foreign key uses
+`ON UPDATE CASCADE` (on SQL Server, wherever SQL Server's cascade rules allow
+it), so the database updates the stored identity values in every resource that
+refers to it. Each of those resources also gets a new `ContentVersion`.
+
+When two references in a resource share an identity value, the table stores it
+once in a column that ends in `_Unified`. For example,
+`edfi.StudentSchoolAssociation` stores the school ID in `SchoolId_Unified`, and
+`School_SchoolId` and `Calendar_SchoolId` are computed from it. Query the
+`_Unified` column: the computed columns are null when their reference is absent,
+but the `_Unified` column has the value whenever any of the references does.
+
+### Abstract Resources
+
+Abstract resources, such as `EducationOrganization` and
+`GeneralStudentProgramAssociation`, have no root table of their own. Each has:
+
+- an identity table, such as `edfi.EducationOrganizationIdentity`, with a row
+  for every school, local education agency and other concrete education
+  organization. Its `Discriminator` column names the concrete resource.
+  References to the abstract resource point to this table.
+- a view, such as `edfi.EducationOrganization_View`, that combines the concrete
+  resource tables.
+
+These are the only views that the provisioning generates in the resource
+schemas.
+
+## The `dms` Schema
+
+| Table                                                                       | Holds                                                                                     |
+| --------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `dms.Document`                                                              | One row for every resource and descriptor.                                                |
+| `dms.Descriptor`                                                            | Every descriptor value, for all descriptor types.                                         |
+| `dms.ResourceKey`                                                           | One row for each resource in the effective schema, with a small numeric `ResourceKeyId`.  |
+| `dms.EffectiveSchema`                                                       | The fingerprint of the effective schema that the database was provisioned for.            |
+| `dms.SchemaComponent`                                                       | The projects and versions that make up the effective schema.                              |
+| `dms.DataStoreIdentity`                                                     | A single row that identifies the database.                                                |
+| `dms.DocumentCache`, `dms.DocumentCacheState`, `dms.DocumentProjectionWork` | The DocumentCache. See [DocumentCache](../platform-dev-guide/features/document-cache.md). |
+| `dms.RepresentationRestampOperation`                                        | The progress of a DocumentCache representation restamp.                                   |
+
+The schema also has two sequences: `dms.ChangeVersionSequence` and
+`dms.CollectionItemIdSequence`.
+
+### `dms.Document`
+
+| Column                      | Description                                                                                                                                                                                                        |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `DocumentId`                | A `bigint` identity column and the primary key. Resource tables use it as their key.                                                                                                                               |
+| `DocumentUuid`              | The resource `id` that clients see in the API.                                                                                                                                                                     |
+| `ResourceKeyId`             | The resource type. Join to `dms.ResourceKey` for the project and resource name.                                                                                                                                    |
+| `CreatedByOwnershipTokenId` | The ownership token of the client that created the resource, used by ownership-based authorization. It's null unless the creating client had an ownership token, and its index covers only the rows that have one. |
+| `ContentVersion`            | The change version of the latest change.                                                                                                                                                                           |
+
+`dms.Document` has no timestamps. `ContentCreatedAt` and `ContentLastModifiedAt`
+are on each resource's root table, or on `dms.Descriptor`.
+
+A resource's root table references `dms.Document` on `DocumentId`. A document
+can't be deleted while its resource row exists: the foreign key uses
+`ON DELETE RESTRICT` on PostgreSQL and `ON DELETE NO ACTION` on SQL Server.
+Child and extension rows are deleted with their parent row.
+
+### Descriptors
+
+All descriptors are in `dms.Descriptor`. There is no separate table for each
+descriptor type; `ResourceKeyId` gives the type.
+
+| Column                                                        | Description                                                                                                   |
+| ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `DescriptorId`                                                | An `int` identity column and the primary key. Every descriptor value in a resource table is a `DescriptorId`. |
+| `DocumentId`                                                  | The descriptor's row in `dms.Document`. It's unique.                                                          |
+| `ResourceKeyId`                                               | The descriptor type, such as `GradeLevelDescriptor`.                                                          |
+| `Namespace`, `CodeValue`                                      | The descriptor's namespace and code value.                                                                    |
+| `ShortDescription`, `Description`                             | The descriptor's descriptions.                                                                                |
+| `EffectiveBeginDate`, `EffectiveEndDate`                      | The dates the descriptor is in effect.                                                                        |
+| `ContentVersion`, `ContentLastModifiedAt`, `ContentCreatedAt` | As on a resource's root table.                                                                                |
+
+There is no `Discriminator` column and no stored URI column. To get a
+descriptor's URI, concatenate `Namespace`, `#` and `CodeValue`. On SQL Server,
+the computed `Uri` column does this for you; it isn't stored.
+
+A descriptor is unique within its type by `Namespace#CodeValue`, ignoring case.
+On SQL Server, `Namespace` and `CodeValue`, like every string identity and
+reference column, use the case-insensitive `SQL_Latin1_General_CP1_CI_AS`
+collation.
+
+## Change Tracking
+
+Every change to a resource gets a new value from `dms.ChangeVersionSequence`.
+Triggers store it in `ContentVersion` on `dms.Document` and on the root table
+(or on `dms.Descriptor`), and set `ContentLastModifiedAt`. A change to a child
+collection or an extension counts as a change to the resource. An update that
+changes nothing doesn't get a new version.
+
+The exception is a DocumentCache representation restamp, which a release's
+upgrade instructions can call for when you migrate a database in place (see the
+in-place migration steps in
+[Database Provisioning](../platform-dev-guide/utilities/database-provisioning.md#recording-a-validated-migration-ddl-re-stamp)).
+It gives each resource it covers a new `ContentVersion` and
+`ContentLastModifiedAt` without changing its content, so incremental extracts
+and Changed Record Queries return those resources again.
+
+When a resource is deleted, or its identity values change, the triggers also add
+a row to that resource's table in the `tracked_changes_<schema>` schema, such as
+`tracked_changes_edfi.StudentSchoolAssociation`. The row has an `Old` and a
+`New` column for each identity value, such as `OldEntryDate` and `NewEntryDate`;
+the `New` columns are `NULL` for a delete. It also holds the values that
+authorization needs, the resource `Id`, its `DocumentId`, the `ChangeVersion`,
+and `CreatedAt`, when the row was written. All descriptors share
+`tracked_changes_edfi.Descriptor`. These rows have no foreign keys, so the
+history remains after the resource is deleted.
+
+See
+[Changed Record Queries](../platform-dev-guide/features/changed-record-queries.md)
+for how the API uses these tables.
+
+## `_etag` and `_lastModifiedDate`
+
+The `_etag` that the API returns starts with the resource's `ContentVersion`,
+followed by a part that describes the representation the client received, such
+as the profile applied. That second part isn't stored, so you can't build the
+full `_etag` from the table values, but its leading number tells you which
+version of the resource it describes.
+
+`_lastModifiedDate` is the root table's `ContentLastModifiedAt` (or
+`dms.Descriptor.ContentLastModifiedAt`), in UTC, to the second. The column is a
+`timestamp with time zone` on PostgreSQL, and a `datetime2` holding UTC without
+an offset on SQL Server.
+
+## Schema Fingerprint
+
+`dms.EffectiveSchema` records a hash of the effective schema that the database
+was provisioned for. The Ed-Fi API checks it at startup for every data store it
+knows about, and on first use for one added later, and answers `503` if it
+doesn't match the schema the Ed-Fi API loaded. The Ed-Fi API keeps a failed
+check until it restarts, so restart it after you provision or repair the
+database.
+
+A schema change, such as a new Data Standard version or extension, needs a newly
+provisioned database. The Ed-Fi API doesn't reload the schema while it runs and
+doesn't migrate an existing database. See
+[Schema Fingerprint Validation](../platform-dev-guide/utilities/database-provisioning.md#schema-fingerprint-validation)
+and
+[Upgrading the Schema](../platform-dev-guide/utilities/database-provisioning.md#upgrading-the-schema).
+
+## Querying for Reports
+
+:::caution
+
+Queries against the database read the data directly and skip the Ed-Fi API's
+authorization. Give reporting logins read access only to the data they need.
+
+:::
+
+To report on a resource:
+
+1. Start from its root table, such as `edfi.StudentSchoolAssociation`.
+2. Join a reference to the referenced root table on `{Reference}_DocumentId` =
+   `DocumentId`.
+3. Join a descriptor to `dms.Descriptor` on `{Descriptor}_DescriptorId` =
+   `DescriptorId`.
+4. Join `dms.Document` on `DocumentId` for the resource `id`.
+5. Join a collection's child table on `{Root}_DocumentId`, and order by
+   `Ordinal` for the original order.
+
+The following query lists student enrollments with the resource `id`, the
+student and school, and the entry grade level:
+
+<Tabs>
+  <TabItem value="pg" label="PostgreSQL" default>
+
+```sql
+SELECT
+    d."DocumentUuid" AS "Id",
+    st."StudentUniqueId",
+    st."FirstName",
+    st."LastSurname",
+    ssa."SchoolId_Unified" AS "SchoolId",
+    ssa."EntryDate",
+    gl."Namespace" || '#' || gl."CodeValue" AS "EntryGradeLevelDescriptor",
+    ssa."ContentLastModifiedAt"
+FROM "edfi"."StudentSchoolAssociation" ssa
+JOIN "dms"."Document" d
+    ON d."DocumentId" = ssa."DocumentId"
+JOIN "edfi"."Student" st
+    ON st."DocumentId" = ssa."Student_DocumentId"
+JOIN "dms"."Descriptor" gl
+    ON gl."DescriptorId" = ssa."EntryGradeLevelDescriptor_DescriptorId";
+```
+
+  </TabItem>
+  <TabItem value="mssql" label="SQL Server">
+
+```sql
+SELECT
+    d.[DocumentUuid] AS [Id],
+    st.[StudentUniqueId],
+    st.[FirstName],
+    st.[LastSurname],
+    ssa.[SchoolId_Unified] AS [SchoolId],
+    ssa.[EntryDate],
+    gl.[Uri] AS [EntryGradeLevelDescriptor],
+    ssa.[ContentLastModifiedAt]
+FROM [edfi].[StudentSchoolAssociation] ssa
+JOIN [dms].[Document] d
+    ON d.[DocumentId] = ssa.[DocumentId]
+JOIN [edfi].[Student] st
+    ON st.[DocumentId] = ssa.[Student_DocumentId]
+JOIN [dms].[Descriptor] gl
+    ON gl.[DescriptorId] = ssa.[EntryGradeLevelDescriptor_DescriptorId];
+```
+
+  </TabItem>
+</Tabs>
+
+To list the descriptors of one type, join `dms.Descriptor` to `dms.ResourceKey`
+and filter on both `ProjectName` and `ResourceName`, because an extension can
+use the same descriptor name as the core model:
+
+<Tabs>
+  <TabItem value="pg" label="PostgreSQL" default>
+
+```sql
+SELECT d."Namespace", d."CodeValue", d."ShortDescription"
+FROM "dms"."Descriptor" d
+JOIN "dms"."ResourceKey" rk
+    ON rk."ResourceKeyId" = d."ResourceKeyId"
+WHERE rk."ProjectName" = 'Ed-Fi'
+    AND rk."ResourceName" = 'GradeLevelDescriptor';
+```
+
+  </TabItem>
+  <TabItem value="mssql" label="SQL Server">
+
+```sql
+SELECT d.[Namespace], d.[CodeValue], d.[ShortDescription]
+FROM [dms].[Descriptor] d
+JOIN [dms].[ResourceKey] rk
+    ON rk.[ResourceKeyId] = d.[ResourceKeyId]
+WHERE rk.[ProjectName] = 'Ed-Fi'
+    AND rk.[ResourceName] = 'GradeLevelDescriptor';
+```
+
+  </TabItem>
+</Tabs>

@@ -29,9 +29,11 @@ The following fields included in the API error response are noteworthy:
   client developers and API hosts to facilitate the identification and
   resolution of errors.
 
-- **`correlationId`**: This field allows traceability of the specific
-  occurrence of the error and connects error response to entries in the API
-  errors logs.
+- **`correlationId`**: This field connects the error response to entries in the
+  API's logs. Report the returned value to the host, since a client-supplied ID
+  may have been normalized or replaced. Some `500` responses use `traceId`
+  instead; report that value for those responses. See [Correlation IDs](./correlation-ids.md)
+  for the rules and responses that carry the ID elsewhere or omit it.
 
 :::tip
 
@@ -1923,6 +1925,60 @@ team check first:
 
 :::
 
+#### Not Authorized by a Custom View-Based Rule
+
+The API host can configure custom view-based authorization strategies that
+limit an API client to a subset of records, such as students enrolled in CTE
+courses. A request for a single item outside that subset, or a write of such an
+item, is denied. The hint in `detail` is built from the name of the rule. When
+reading many items, records outside the subset are left out without an error.
+
+<details>
+<summary>Example</summary>
+
+HTTP Request
+
+```text
+GET http://localhost:8080/api/data/ed-fi/students/b0c2a1c3e8f44f8f9c8d2d1f0c9a7e61
+Authorization: Bearer 6f5bb488a65948b5b847b561b23e
+```
+
+HTTP Response
+
+```text
+HTTP/1.1 403 Forbidden
+Content-Type: application/problem+json
+
+{
+  "detail": "Access to the requested data could not be authorized. Hint: You may need a Student with CTE Course Enrollments.",
+  "type": "urn:ed-fi:api:security:authorization",
+  "title": "Authorization Denied",
+  "status": 403,
+  "errors": [
+    "The caller is not authorized to perform the requested operation on the item based on the existing value of the 'StudentUniqueId' property of the item."
+  ]
+}
+```
+
+</details>
+
+If the reference that the rule depends on is empty, the response has the type
+`urn:ed-fi:api:security:authorization:custom-view:invalid-data:element-uninitialized`
+(for a stored item) or
+`urn:ed-fi:api:security:authorization:custom-view:access-denied:element-required`
+(for a create or update).
+
+:::tip
+
+The problem is likely in the data or the API client's permissions:
+
+- Check whether the record meets the rule described by the hint, such as a
+  student having a CTE course enrollment.
+- If the record should be accessible, send the client key and the hint to the
+  hosting provider / IT operations to review the API client's claim set.
+
+:::
+
 ### urn:ed-fi:api:security:authorization:access-denied:action
 
 #### The Requested Action Is Not Permitted
@@ -2835,7 +2891,151 @@ team for resolution.
 
 :::
 
+## 429 Too Many Requests
+
+### Too Many Tokens
+
+The token endpoint returns this when the client already holds the maximum
+number of active access tokens the host allows (15 by default on hosts that use
+the self-contained identity provider). The response uses the OAuth 2.0 error
+format instead of the problem-details format used by the data endpoints, so it
+has `error` and `error_description` fields rather than `type` and `detail`.
+
+<details>
+<summary>Example</summary>
+
+HTTP Request
+
+```text
+POST http://localhost:8080/api/oauth/token
+Authorization: Basic UnZjb2hLejl6SEk0OkUxaUVGdXNhTmY4MXh6Q3h3SGZib2xrQw==
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials
+
+```
+
+:::tip
+
+The string following "Basic" is a Base64-encoded version of `{key}:{secret}`.
+See [Obtain an Access Token](./authentication.md#step-1-obtain-an-access-token)
+for why the credentials go in the Authorization header.
+
+:::
+
+HTTP Response
+
+```text
+HTTP/1.1 429 Too Many Requests
+Content-Type: application/json; charset=utf-8
+X-Correlation-ID: 1745dc8cc91c
+
+{
+  "error": "temporarily_unavailable",
+  "error_description": "Too many access tokens have been requested (limit is 15). Access tokens should be reused until they expire."
+}
+
+```
+
+</details>
+
+:::tip
+
+Problem is in the client application code → send to application development team
+for resolution.
+
+- The client requests new tokens instead of reusing the one it has. Cache the
+  token and reuse it until it expires. See [Token Limits and
+  Revocation](./authentication.md#token-limits-and-revocation).
+- The tokens the client already holds keep working. If none is available (for
+  example after a crash loop), wait for them to expire (30 minutes by default)
+  and retry with a backoff, not in a tight loop.
+- Revoke tokens the client no longer needs with the Configuration Service's
+  `POST /connect/revoke` endpoint.
+- Request rate limiting also returns `429` with `error`
+  `temporarily_unavailable`, but its `error_description` is "The number of
+  allowed requests has been exceeded. Retry the request later." In that case,
+  retry later.
+
+:::
+
 ## 500 Internal Server Error
 
 This is a catch-all for various errors that can occur on the server. Review this
 section for possible reasons for the error.
+
+### urn:ed-fi:api:system:configuration:security
+
+#### Security Configuration Error
+
+The API host's security metadata names an authorization strategy that the Ed-Fi
+API can't apply to the requested resource. For example, a custom view-based
+strategy whose name doesn't match a resource (in the example below,
+`StudentsWithCTECourseEnrollments` instead of `StudentWithCTECourseEnrollments`),
+or whose basis resource isn't referenced by the requested resource.
+
+<details>
+<summary>Example</summary>
+
+HTTP Response
+
+```text
+HTTP/1.1 500 Internal Server Error
+Content-Type: application/problem+json
+
+{
+  "detail": "A security configuration problem was detected. The request cannot be authorized.",
+  "type": "urn:ed-fi:api:system:configuration:security",
+  "title": "Security Configuration Error",
+  "status": 500,
+  "errors": [
+    "Could not find authorization strategy implementations for the following strategy names: 'StudentsWithCTECourseEnrollments'."
+  ]
+}
+```
+
+</details>
+
+:::tip
+
+This is a hosting problem → report it to the hosting provider / IT operations
+with the `correlationId`. The Ed-Fi API log names the resource and the
+authorization strategy. See [Configuration
+Errors](../technical-articles/authorizing-requests-using-custom-database-views.md#configuration-errors)
+for custom view-based strategies.
+
+:::
+
+### urn:ed-fi:api:system
+
+#### System Error
+
+An unexpected problem occurred on the server. One cause is a custom view-based
+authorization strategy whose database view is missing or invalid, for example a
+view without a `bigint` `DocumentId` column.
+
+<details>
+<summary>Example</summary>
+
+HTTP Response
+
+```text
+HTTP/1.1 500 Internal Server Error
+Content-Type: application/problem+json
+
+{
+  "detail": "An unexpected problem has occurred.",
+  "type": "urn:ed-fi:api:system",
+  "title": "System Error",
+  "status": 500
+}
+```
+
+</details>
+
+:::tip
+
+This is a hosting problem → report it to the hosting provider / IT operations
+with the `correlationId`, so they can find the details in the Ed-Fi API log.
+
+:::
