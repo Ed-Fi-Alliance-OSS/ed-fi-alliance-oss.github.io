@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-description: How to provision the Ed-Fi API database schema with the api-schema-tools CLI.
+description: How to provision the Ed-Fi API database schema with the api-schema-tools CLI or restore it from a database template.
 ---
 
 # Database Provisioning
@@ -19,7 +19,7 @@ provisioned differently:
 | Database | Provisioning |
 | --- | --- |
 | **Configuration Service** (`dmscs` schema) | Deployed automatically on startup when `DeployDatabaseOnStartup` is `true` (the default; set via the `CONFIGURATION_SERVICE_DEPLOY_DATABASE` environment variable). No manual step is required. |
-| **Ed-Fi API** (resource data) | Provisioned explicitly with the `api-schema-tools` CLI. The API container does **not** deploy or migrate this schema on startup. |
+| **Ed-Fi API** (resource data) | Provisioned explicitly with the `api-schema-tools` CLI, or restored from a [database template](#restoring-a-database-template). The API container does **not** deploy or migrate this schema on startup. |
 
 :::info
 
@@ -345,6 +345,182 @@ Kafka](../features/event-streaming-kafka-cdc.md).
 Errors are written to standard error. The `cdc` commands write one JSON result
 to standard output, including on failure, and all diagnostics to standard
 error.
+
+## Restoring a Database Template
+
+Instead of provisioning an empty database, you can restore a database template.
+A template is a NuGet package that holds an Ed-Fi API database that is already provisioned and loaded with data:
+
+- _Minimal_ templates contain the Ed-Fi descriptors.
+- _Populated_ templates also contain the Ed-Fi Data Standard sample data.
+
+Templates are published for PostgreSQL and SQL Server and for each supported Data Standard; see [Package Releases](../../getting-started/package-releases.md#ed-fi-api-v810-packages).
+You restore a template with your database engine's own tools, into a new, empty database.
+Don't run `ddl provision` against that database first, because the template already contains the schema.
+
+### Choosing a template
+
+A template works only with the Ed-Fi API it was built for:
+
+- The template's package version must equal the Ed-Fi API version.
+  For example, use the `8.1.0` templates with the `8.1.0` Docker images.
+- The Ed-Fi API must load the schema packages the template was built with, at the versions listed in [Package Releases](../../getting-started/package-releases.md#ed-fi-api-v810-schema-packages).
+  In a Docker deployment, `SCHEMA_PACKAGES` sets them (see [Loading Schemas from Packages](../extensibility-customization/extending-api-datamodel.md#loading-schemas-from-packages)).
+
+| Templates | Schema packages |
+| --- | --- |
+| Data Standard 5.2 (`*.5.2.0`) | `EdFi.DataStandard52.ApiSchema` and `EdFi.DataStandard52.TPDM.ApiSchema` |
+| Data Standard 6.1 (`*.6.1.0`) | `EdFi.DataStandard61.ApiSchema` |
+
+If either doesn't hold, the schema fingerprint stored in the template doesn't match the Ed-Fi API, and data requests return HTTP 503 (see [Schema Fingerprint Validation](#schema-fingerprint-validation)).
+
+### Downloading a template
+
+Download the package from the Ed-Fi Azure Artifacts feed and extract it.
+A `.nupkg` file is a zip archive.
+In PowerShell:
+
+```powershell
+$package = "EdFi.Api.Populated.Template.PostgreSql.5.2.0"
+$version = "8.1.0"
+$id = $package.ToLowerInvariant()
+$feed = "https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/flat2"
+Invoke-WebRequest "$feed/$id/$version/$id.$version.nupkg" -OutFile "$package.zip"
+Expand-Archive "$package.zip" -DestinationPath $package
+```
+
+The extracted folder holds the database file, `<package>.sql` for PostgreSQL or `<package>.bak` for SQL Server, and a `restore-manifest.json` file that describes it.
+
+### Restoring on PostgreSQL
+
+The PostgreSQL templates are plain-text dumps from PostgreSQL 18.
+Restore them with `psql` from PostgreSQL 18.
+The dumps contain `psql` meta-commands and `COPY` data, so tools that run the file as ordinary SQL can't restore them.
+
+1. Create the `edfi_dms_enqueue_owner` role.
+   Two trigger functions in the template, which queue work for the [document cache](../features/document-cache.md), are owned by this role and run with its rights.
+   A role belongs to the whole PostgreSQL server rather than to one database, so the dump doesn't include it, and the restore fails with `role "edfi_dms_enqueue_owner" does not exist` until you create it.
+   You need the role even if you don't use the document cache or change data capture.
+
+   Run the following once per server, as a superuser or a login with `CREATEROLE`, for example with `psql -d postgres`.
+   It's safe to run more than once: it creates the role if it's missing, and stops with an error if an existing role of that name has more rights than it should.
+
+   ```sql
+   DO $$
+   DECLARE
+       _owner_role oid := pg_catalog.to_regrole('edfi_dms_enqueue_owner');
+   BEGIN
+       IF _owner_role IS NULL THEN
+           CREATE ROLE "edfi_dms_enqueue_owner" WITH NOLOGIN NOINHERIT NOSUPERUSER NOCREATEDB NOCREATEROLE NOREPLICATION NOBYPASSRLS;
+       ELSIF EXISTS (
+           SELECT 1
+           FROM pg_catalog.pg_roles roles
+           WHERE roles.oid = _owner_role
+             AND (roles.rolcanlogin OR roles.rolinherit OR roles.rolsuper OR roles.rolcreatedb OR roles.rolcreaterole OR roles.rolreplication OR roles.rolbypassrls)
+       ) THEN
+           RAISE EXCEPTION 'PostgreSQL role edfi_dms_enqueue_owner exists but is not locked down as NOLOGIN NOINHERIT NOSUPERUSER NOCREATEDB NOCREATEROLE NOREPLICATION NOBYPASSRLS. Drop or repair the role before restoring template packages.';
+       ELSIF EXISTS (
+           SELECT 1
+           FROM pg_catalog.pg_auth_members memberships
+           WHERE memberships.member = _owner_role
+             AND (memberships.admin_option OR memberships.inherit_option OR memberships.set_option)
+       ) THEN
+           RAISE EXCEPTION 'PostgreSQL role edfi_dms_enqueue_owner must not hold outgoing privilege-bearing memberships before restoring template packages.';
+       END IF;
+   END
+   $$;
+   ```
+
+   :::warning
+
+   `edfi_dms_enqueue_owner` must stay a `NOLOGIN` role.
+   Never give it a login or a password, and never use it as an Ed-Fi API connection credential.
+
+   :::
+
+2. Create an empty database for the restore.
+   It must use the UTF-8 encoding (see [Database Requirements](#database-requirements)).
+
+   ```sql
+   CREATE DATABASE edfi_datamanagementservice;
+   ```
+
+3. Restore the dump into the new database:
+
+   ```powershell
+   psql -h <host> -U <superuser> -d edfi_datamanagementservice `
+     -v ON_ERROR_STOP=1 --single-transaction `
+     -f EdFi.Api.Populated.Template.PostgreSql.5.2.0.sql
+   ```
+
+   Run the restore as a superuser.
+   The dump ends by making `edfi_dms_enqueue_owner` the owner of the two trigger functions.
+   That role can't create objects in the `dms` schema, and in that case PostgreSQL lets only a superuser change a function's owner.
+   A login that isn't a superuser fails there, even with a membership in the role.
+   If you can't use a superuser, provision the database with [`ddl provision`](#provisioning-a-database-ddl-provision) instead.
+
+   With `--single-transaction`, a failed restore leaves the database empty, so you can fix the cause and run the command again.
+   If a restore without `--single-transaction` fails partway, drop the database and start again from step 2.
+
+   :::danger
+
+   Don't remove the `OWNER TO "edfi_dms_enqueue_owner"` statements from the dump to get past a missing role.
+   The two trigger functions are `SECURITY DEFINER` functions: without those statements, they're owned by whoever ran the restore, often a superuser, and run with that login's rights.
+
+   :::
+
+4. Give the restored database its own source identity by running this in the restored database:
+
+   ```sql
+   UPDATE dms."DataStoreIdentity"
+   SET "SourceIdentity" = gen_random_uuid()
+   WHERE "DataStoreIdentitySingletonId" = 1;
+   ```
+
+   The statement must report `UPDATE 1`.
+   Every database restored from a template starts with the identity stored in the template, but each one is a separate data store, and change data capture uses this value to tell data stores apart.
+
+### Restoring on SQL Server
+
+The SQL Server templates are native backups from SQL Server 2025, so they restore only on SQL Server 2025 or later.
+They don't need the `edfi_dms_enqueue_owner` role.
+
+1. Copy the `.bak` file to a folder the SQL Server service can read, such as its default backup folder (`/var/opt/mssql/data` on Linux).
+
+2. Restore it into a new database, moving its two files into your server's data folder.
+   The paths in this example are for SQL Server on Linux.
+
+   ```sql
+   RESTORE DATABASE [edfi_datamanagementservice]
+   FROM DISK =
+     N'/var/opt/mssql/data/EdFi.Api.Populated.Template.MsSql.5.2.0.bak'
+   WITH
+     MOVE N'edfi_datamanagementservice_template'
+       TO N'/var/opt/mssql/data/edfi_datamanagementservice.mdf',
+     MOVE N'edfi_datamanagementservice_template_log'
+       TO N'/var/opt/mssql/data/edfi_datamanagementservice_log.ldf';
+   ```
+
+   `edfi_datamanagementservice_template` and `edfi_datamanagementservice_template_log` are the logical file names in the templates.
+   To list them yourself, run `RESTORE FILELISTONLY FROM DISK = N'<path to the .bak file>';`.
+
+3. Give the restored database its own source identity, for the same reason as on PostgreSQL:
+
+   ```sql
+   UPDATE [edfi_datamanagementservice].[dms].[DataStoreIdentity]
+   SET [SourceIdentity] = NEWID()
+   WHERE [DataStoreIdentitySingletonId] = 1;
+   ```
+
+   The statement must report `(1 row affected)`.
+
+### After the restore
+
+1. Register the database as a data store in the Configuration Service (see [Data Stores](../configuration/api-client-and-data-store-configuration.md#data-stores)).
+2. Start the Ed-Fi API.
+   If it already tried to use the database before the restore, restart it (see [Schema Fingerprint Validation](#schema-fingerprint-validation)).
+
+If data requests still return HTTP 503 after a restart, the template doesn't match the Ed-Fi API's version or schema packages; see [Choosing a template](#choosing-a-template).
 
 ## Schema Fingerprint Validation
 
