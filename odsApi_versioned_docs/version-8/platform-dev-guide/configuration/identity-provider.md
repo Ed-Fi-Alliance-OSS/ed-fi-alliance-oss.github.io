@@ -182,7 +182,7 @@ revocation frees a limit slot but doesn't cut off access.
 The Configuration Service also revokes all of a client's tokens on its own when
 the client's credentials are reset (`PUT /v3/apiClients/{id}/reset-credential`),
 when the client is deleted, and when an update sets its `isApproved` to
-`false`.
+`false`. See [Removing a Client's Access](#removing-a-clients-access).
 
 #### Expired-token cleanup
 
@@ -376,6 +376,29 @@ A client can only revoke or inspect its own tokens:
 - Introspection describes a valid token only to the client it was issued to.
   Every other token (another client's, unknown, expired, or revoked) gets
   `200 OK` with `{"active": false}`.
+
+## Removing a Client's Access
+
+The Ed-Fi API validates each access token itself and never checks whether it
+was revoked, so a token that was already issued keeps working until it expires.
+Revoking it doesn't change that, and neither does restarting the Ed-Fi API.
+
+To cut off a client, for example one whose credentials were compromised:
+
+1. Stop the client from getting new tokens. In the Configuration Service,
+   delete the client, reset its credentials
+   (`PUT /v3/apiClients/{id}/reset-credential`), or set its `isApproved` to
+   `false`. For compromised credentials, delete the client; it's the only
+   option that also stops the client's requests before its tokens expire.
+2. Allow for the remaining lifetime of any token it already holds. Once the
+   client is deleted, its requests to read, create or update resources, and
+   its Identities API requests, fail with `401` on each Ed-Fi API instance when
+   its cached entry expires
+   (`CacheSettings:ApplicationContextCacheExpirationSeconds`, 10 minutes by
+   default), or right away after a restart. Resetting the credentials or
+   setting `isApproved` to `false` doesn't do this. Requests that don't need
+   the client's details, such as most deletes and change queries, can keep
+   succeeding until the token expires.
 
 ## Rate Limits on `/connect` Endpoints
 

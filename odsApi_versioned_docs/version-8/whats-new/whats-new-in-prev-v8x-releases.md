@@ -45,7 +45,7 @@ The new storage model enables direct SQL access to resource data with
 predictable, normalized table structures. Existing SQL-based reporting and
 analytics queries written against ODS/API database tables will require rewriting
 to accommodate the new schema structure. See [Relational Data
-Model](../technical-articles/relational-data-model.md) for the new schema.
+Model](../technical-articles/relational-data-model.mdx) for the new schema.
 
 The `api-schema-tools` CLI tool manages database provisioning — creating tables,
 indexes, triggers, and authorization structures for a given API schema version.

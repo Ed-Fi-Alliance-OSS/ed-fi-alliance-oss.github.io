@@ -93,7 +93,7 @@ applications use to identify and reference resources. Person entities
 (`Student`, `Staff`, `Contact`) are identified by their Ed-Fi natural
 identifiers (e.g., `StudentUniqueId`) as the first-class reference.
 
-See [Relational Data Model](../technical-articles/relational-data-model.md) for
+See [Relational Data Model](../technical-articles/relational-data-model.mdx) for
 the full schema reference.
 
 ## Support for Incremental Updates
