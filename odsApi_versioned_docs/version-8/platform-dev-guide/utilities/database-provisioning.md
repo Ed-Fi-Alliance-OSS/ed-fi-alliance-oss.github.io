@@ -349,61 +349,76 @@ error.
 ## Restoring a Database Template
 
 Instead of provisioning an empty database, you can restore a database template.
-A template is a NuGet package that holds an Ed-Fi API database that is already provisioned and loaded with data:
+A template is a NuGet package that holds an Ed-Fi API database that is already
+provisioned and loaded with data:
 
 - _Minimal_ templates contain the Ed-Fi descriptors.
 - _Populated_ templates also contain the Ed-Fi Data Standard sample data.
 
-Templates are published for PostgreSQL and SQL Server and for each supported Data Standard; see [Package Releases](../../getting-started/package-releases.md#ed-fi-api-v810-packages).
-You restore a template with your database engine's own tools, into a new, empty database.
-Don't run `ddl provision` against that database first, because the template already contains the schema.
+Templates are published for PostgreSQL and SQL Server and for each supported
+Data Standard; see [Package
+Releases](../../getting-started/package-releases.md#ed-fi-api-v810-packages).
+You restore a template with your database engine's own tools, into a new, empty
+database. Don't run `ddl provision` against that database first, because the
+template already contains the schema.
 
 ### Choosing a template
 
 A template works only with the Ed-Fi API it was built for:
 
-- The template's package version must equal the Ed-Fi API version.
-  For example, use the `8.1.0` templates with the `8.1.0` Docker images.
-- The Ed-Fi API must load the schema packages the template was built with, at the versions listed in [Package Releases](../../getting-started/package-releases.md#ed-fi-api-v810-schema-packages).
-  In a Docker deployment, `SCHEMA_PACKAGES` sets them (see [Loading Schemas from Packages](../extensibility-customization/extending-api-datamodel.md#loading-schemas-from-packages)).
+- The template's package version must equal the Ed-Fi API version. For example,
+  use the `8.1.0` templates with the `8.1.0` Docker images.
+- The Ed-Fi API must load the schema packages the template was built with, at
+  the versions listed in [Package
+  Releases](../../getting-started/package-releases.md#ed-fi-api-v810-schema-packages).
+  In a Docker deployment, `SCHEMA_PACKAGES` sets them (see [Loading Schemas from
+  Packages](../extensibility-customization/extending-api-datamodel.md#loading-schemas-from-packages)).
 
 | Templates | Schema packages |
 | --- | --- |
 | Data Standard 5.2 (`*.5.2.0`) | `EdFi.DataStandard52.ApiSchema` and `EdFi.DataStandard52.TPDM.ApiSchema` |
 | Data Standard 6.1 (`*.6.1.0`) | `EdFi.DataStandard61.ApiSchema` |
 
-If either doesn't hold, the schema fingerprint stored in the template doesn't match the Ed-Fi API, and data requests return HTTP 503 (see [Schema Fingerprint Validation](#schema-fingerprint-validation)).
+If either doesn't hold, the schema fingerprint stored in the template doesn't
+match the Ed-Fi API, and data requests return HTTP 503 (see [Schema Fingerprint
+Validation](#schema-fingerprint-validation)).
 
 ### Downloading a template
 
-Download the package from the Ed-Fi Azure Artifacts feed and extract it.
-A `.nupkg` file is a zip archive.
-In PowerShell:
+Download the package from the Ed-Fi Azure Artifacts feed and extract it. A
+`.nupkg` file is a zip archive. In PowerShell:
 
 ```powershell
 $package = "EdFi.Api.Populated.Template.PostgreSql.5.2.0"
 $version = "8.1.0"
 $id = $package.ToLowerInvariant()
-$feed = "https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/flat2"
+$feed = "https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi%40Release/nuget/v3/flat2"
 Invoke-WebRequest "$feed/$id/$version/$id.$version.nupkg" -OutFile "$package.zip"
 Expand-Archive "$package.zip" -DestinationPath $package
 ```
 
-The extracted folder holds the database file, `<package>.sql` for PostgreSQL or `<package>.bak` for SQL Server, and a `restore-manifest.json` file that describes it.
+The extracted folder holds the database file, `<package>.sql` for PostgreSQL or
+`<package>.bak` for SQL Server, and a `restore-manifest.json` file that
+describes it.
 
 ### Restoring on PostgreSQL
 
-The PostgreSQL templates are plain-text dumps from PostgreSQL 18.
-Restore them with `psql` from PostgreSQL 18.
-The dumps contain `psql` meta-commands and `COPY` data, so tools that run the file as ordinary SQL can't restore them.
+The PostgreSQL templates are plain-text dumps from PostgreSQL 18. Restore them
+with `psql` from PostgreSQL 18. The dumps contain `psql` meta-commands and
+`COPY` data, so tools that run the file as ordinary SQL can't restore them.
 
-1. Create the `edfi_dms_enqueue_owner` role.
-   Two trigger functions in the template, which queue work for the [document cache](../features/document-cache.md), are owned by this role and run with its rights.
-   A role belongs to the whole PostgreSQL server rather than to one database, so the dump doesn't include it, and the restore fails with `role "edfi_dms_enqueue_owner" does not exist` until you create it.
-   You need the role even if you don't use the document cache or change data capture.
+1. Create the `edfi_dms_enqueue_owner` role. Two trigger functions in the
+   template, which queue work for the [document
+   cache](../features/document-cache.md), are owned by this role and run with
+   its rights. A role belongs to the whole PostgreSQL server rather than to one
+   database, so the dump doesn't include it, and the restore fails with
+   `role "edfi_dms_enqueue_owner" does not exist` until you create it. You need
+   the role even if you don't use the document cache or change data capture.
 
-   Run the following once per server, as a superuser or a login with `CREATEROLE`, for example with `psql -d postgres`.
-   It's safe to run more than once: it creates the role if it's missing, and stops with an error if an existing role of that name has more rights than it should.
+   Run the following once per server, as a superuser or a login with
+   `CREATEROLE`, for example with `psql -d postgres`. It's safe to run more than
+   once: it creates the role if it's missing, and stops with an error if an
+   existing role of that name has more rights than it should.
 
    ```sql
    DO $$
@@ -433,13 +448,13 @@ The dumps contain `psql` meta-commands and `COPY` data, so tools that run the fi
 
    :::warning
 
-   `edfi_dms_enqueue_owner` must stay a `NOLOGIN` role.
-   Never give it a login or a password, and never use it as an Ed-Fi API connection credential.
+   `edfi_dms_enqueue_owner` must stay a `NOLOGIN` role. Never give it a login or
+   a password, and never use it as an Ed-Fi API connection credential.
 
    :::
 
-2. Create an empty database for the restore.
-   It must use the UTF-8 encoding (see [Database Requirements](#database-requirements)).
+2. Create an empty database for the restore. It must use the UTF-8 encoding (see
+   [Database Requirements](#database-requirements)).
 
    ```sql
    CREATE DATABASE edfi_datamanagementservice;
@@ -453,23 +468,30 @@ The dumps contain `psql` meta-commands and `COPY` data, so tools that run the fi
      -f EdFi.Api.Populated.Template.PostgreSql.5.2.0.sql
    ```
 
-   Run the restore as a superuser.
-   The dump ends by making `edfi_dms_enqueue_owner` the owner of the two trigger functions.
-   That role can't create objects in the `dms` schema, and in that case PostgreSQL lets only a superuser change a function's owner.
-   A login that isn't a superuser fails there, even with a membership in the role.
-   If you can't use a superuser, provision the database with [`ddl provision`](#provisioning-a-database-ddl-provision) instead.
+   Run the restore as a superuser. The dump ends by making
+   `edfi_dms_enqueue_owner` the owner of the two trigger functions. That role
+   can't create objects in the `dms` schema, and in that case PostgreSQL lets
+   only a superuser change a function's owner. A login that isn't a superuser
+   fails there, even with a membership in the role. If you can't use a
+   superuser, provision the database with
+   [`ddl provision`](#provisioning-a-database-ddl-provision) instead.
 
-   With `--single-transaction`, a failed restore leaves the database empty, so you can fix the cause and run the command again.
-   If a restore without `--single-transaction` fails partway, drop the database and start again from step 2.
+   With `--single-transaction`, a failed restore leaves the database empty, so
+   you can fix the cause and run the command again. If a restore without
+   `--single-transaction` fails partway, drop the database and start again from
+   step 2.
 
    :::danger
 
-   Don't remove the `OWNER TO "edfi_dms_enqueue_owner"` statements from the dump to get past a missing role.
-   The two trigger functions are `SECURITY DEFINER` functions: without those statements, they're owned by whoever ran the restore, often a superuser, and run with that login's rights.
+   Don't remove the `OWNER TO "edfi_dms_enqueue_owner"` statements from the dump
+   to get past a missing role. The two trigger functions are `SECURITY DEFINER`
+   functions: without those statements, they're owned by whoever ran the
+   restore, often a superuser, and run with that login's rights.
 
    :::
 
-4. Give the restored database its own source identity by running this in the restored database:
+4. Give the restored database its own source identity by running this in the
+   restored database:
 
    ```sql
    UPDATE dms."DataStoreIdentity"
@@ -477,18 +499,66 @@ The dumps contain `psql` meta-commands and `COPY` data, so tools that run the fi
    WHERE "DataStoreIdentitySingletonId" = 1;
    ```
 
-   The statement must report `UPDATE 1`.
-   Every database restored from a template starts with the identity stored in the template, but each one is a separate data store, and change data capture uses this value to tell data stores apart.
+   The statement must report `UPDATE 1`. Every database restored from a template
+   starts with the identity stored in the template, but each one is a separate
+   data store, and change data capture uses this value to tell data stores
+   apart.
+
+5. If the Ed-Fi API connects with a login other than the superuser that ran the
+   restore, grant that login access to the restored objects. That superuser owns
+   the restored schemas, tables, and sequences, so other logins can't use them
+   until you grant access. Without these grants, the Ed-Fi API can't see the
+   restored tables, and data requests return HTTP 503 as if the database weren't
+   provisioned. Run the following in the restored database, replacing `edfi_api`
+   with the Ed-Fi API's login:
+
+   ```sql
+   GRANT USAGE
+     ON SCHEMA auth, dms, edfi, tpdm, tracked_changes_edfi, tracked_changes_tpdm
+     TO edfi_api;
+   GRANT SELECT, INSERT, UPDATE, DELETE
+     ON ALL TABLES
+     IN SCHEMA auth, dms, edfi, tpdm, tracked_changes_edfi, tracked_changes_tpdm
+     TO edfi_api;
+   GRANT USAGE, SELECT
+     ON ALL SEQUENCES
+     IN SCHEMA auth, dms, edfi, tpdm, tracked_changes_edfi, tracked_changes_tpdm
+     TO edfi_api;
+   ```
+
+   For a Data Standard 6.1 template, leave out `tpdm` and
+   `tracked_changes_tpdm`, which only the 5.2 templates have. The login also
+   needs the `CONNECT` and `TEMPORARY` rights on the database, which PostgreSQL
+   gives every login by default.
 
 ### Restoring on SQL Server
 
-The SQL Server templates are native backups from SQL Server 2025, so they restore only on SQL Server 2025 or later.
-They don't need the `edfi_dms_enqueue_owner` role.
+The SQL Server templates are native backups from SQL Server 2025, so they
+restore only on SQL Server 2025 or later. They don't need the
+`edfi_dms_enqueue_owner` role.
 
-1. Copy the `.bak` file to a folder the SQL Server service can read, such as its default backup folder (`/var/opt/mssql/data` on Linux).
+1. Copy the `.bak` file to a folder the SQL Server service can read, such as its
+   default backup folder (`/var/opt/mssql/data` on Linux).
 
-2. Restore it into a new database, moving its two files into your server's data folder.
-   The paths in this example are for SQL Server on Linux.
+2. List the logical file names in the backup. The paths in this and the next
+   example are for SQL Server on Linux.
+
+   ```sql
+   RESTORE FILELISTONLY
+   FROM DISK =
+     N'/var/opt/mssql/data/EdFi.Api.Populated.Template.MsSql.5.2.0.bak';
+   ```
+
+   The `LogicalName` column holds the names of the data file and the log file.
+   They differ by Data Standard: the 5.2 templates use
+   `edfi_datamanagementservice_template` and
+   `edfi_datamanagementservice_template_log`, and the 6.1 templates use
+   `edfi_datamanagementservice_template_61` and
+   `edfi_datamanagementservice_template_61_log`.
+
+3. Restore the backup into a new database, moving its two files into your
+   server's data folder. This example restores a Data Standard 5.2 template; for
+   a 6.1 template, use the 6.1 logical file names.
 
    ```sql
    RESTORE DATABASE [edfi_datamanagementservice]
@@ -501,10 +571,8 @@ They don't need the `edfi_dms_enqueue_owner` role.
        TO N'/var/opt/mssql/data/edfi_datamanagementservice_log.ldf';
    ```
 
-   `edfi_datamanagementservice_template` and `edfi_datamanagementservice_template_log` are the logical file names in the templates.
-   To list them yourself, run `RESTORE FILELISTONLY FROM DISK = N'<path to the .bak file>';`.
-
-3. Give the restored database its own source identity, for the same reason as on PostgreSQL:
+4. Give the restored database its own source identity, for the same reason as on
+   PostgreSQL:
 
    ```sql
    UPDATE [edfi_datamanagementservice].[dms].[DataStoreIdentity]
@@ -514,13 +582,32 @@ They don't need the `edfi_dms_enqueue_owner` role.
 
    The statement must report `(1 row affected)`.
 
+5. If the Ed-Fi API connects with a login other than the one that ran the
+   restore, give that login a user in the restored database. The restore makes
+   the login that ran it the database's owner, and the template holds no other
+   users. Run the following, replacing `edfi_api` with the Ed-Fi API's login:
+
+   ```sql
+   USE [edfi_datamanagementservice];
+   CREATE USER [edfi_api] FOR LOGIN [edfi_api];
+   ALTER ROLE [db_datareader] ADD MEMBER [edfi_api];
+   ALTER ROLE [db_datawriter] ADD MEMBER [edfi_api];
+   GRANT EXECUTE TO [edfi_api];
+   ```
+
 ### After the restore
 
-1. Register the database as a data store in the Configuration Service (see [Data Stores](../configuration/api-client-and-data-store-configuration.md#data-stores)).
-2. Start the Ed-Fi API.
-   If it already tried to use the database before the restore, restart it (see [Schema Fingerprint Validation](#schema-fingerprint-validation)).
+1. Register the database as a data store in the Configuration Service, with a
+   connection string for the Ed-Fi API's login (see [Data
+   Stores](../configuration/api-client-and-data-store-configuration.md#data-stores)).
+2. Start the Ed-Fi API. If it tried to use the database before you finished the
+   steps above, restart it (see [Schema Fingerprint
+   Validation](#schema-fingerprint-validation)).
 
-If data requests still return HTTP 503 after a restart, the template doesn't match the Ed-Fi API's version or schema packages; see [Choosing a template](#choosing-a-template).
+If data requests still return HTTP 503 after a restart, either the Ed-Fi API's
+login is missing the access from step 5, or the template doesn't match the Ed-Fi
+API's version or schema packages (see [Choosing a
+template](#choosing-a-template)).
 
 ## Schema Fingerprint Validation
 
