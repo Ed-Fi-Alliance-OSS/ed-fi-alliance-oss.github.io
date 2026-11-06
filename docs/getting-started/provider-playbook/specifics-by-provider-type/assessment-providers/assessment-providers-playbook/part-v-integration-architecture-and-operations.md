@@ -8,7 +8,7 @@ This section defines how an assessment integration moves from "a payload that ca
 
 Architecture is where good modeling either survives the real world or dies in production.
 
-A vendor can implement perfect Ed-Fi modeling on paper and still deliver an integration that fails districts if it depends on direct database writes, cannot be re-run safely, mixes tenants, or collapses under real volumes during peak testing windows. The Native Integration Foundational Design Principles apply here, too. The integration must be operationally usable, governance-aligned, and stable across implementations. That requires explicit enforcement mechanisms, not hopeful assumptions.
+A vendor can implement perfect Ed-Fi Data Standard modeling on paper and still deliver an integration that fails districts if it depends on direct database writes, cannot be re-run safely, mixes tenants, or collapses under real volumes during peak testing windows. The Native Integration Foundational Design Principles apply here, too. The integration must be operationally usable, governance-aligned, and stable across implementations. That requires explicit enforcement mechanisms, not hopeful assumptions.
 
 ## 9. Architecture Patterns
 
@@ -16,13 +16,13 @@ The patterns below are two common architectures that can meet assessment integra
 
 ### 9.1 Pattern A: Bidirectional Native API
 
-In this pattern, the vendor owns the full integration runtime. The vendor maps and transforms assessment data from its internal systems into Ed-Fi resources and interacts directly with the district or state Ed-Fi ODS/API using REST. A native integration follows a bidirectional pattern:
+In this pattern, the vendor owns the full integration runtime. The vendor maps and transforms assessment data from its internal systems into Ed-Fi API resources and interacts directly with the district or state Ed-Fi ODS/API using REST. A native integration follows a bidirectional pattern:
 
-- The vendor pulls roster data from Ed-Fi
+- The vendor pulls roster data from the Ed-Fi ODS/API
 
-- The vendor pushes assessment results to Ed-Fi
+- The vendor pushes assessment results to the Ed-Fi ODS/API
 
-This bidirectional pattern is foundational to a compliant integration. Pulling roster data from Ed-Fi ensures that student identity, enrollment context, and assessment registration are aligned to the system of record where results will be stored. Pushing results back to Ed-Fi completes the integration by delivering outcomes that are already resolved to that same identity framework.
+This bidirectional pattern is foundational to a compliant integration. Pulling roster data from the Ed-Fi ODS/API ensures that student identity, enrollment context, and assessment registration are aligned to the system of record where results will be stored. Pushing results back to the Ed-Fi ODS/API completes the integration by delivering outcomes that are already resolved to that same identity framework.
 
 Every other integration pattern represents a deviation from it. If this pattern is not followed, identity mismatches become unavoidable. Vendors that rely on external rostering sources or delayed reconciliation introduce inconsistencies that break referential integrity, fragment longitudinal data, and increase operational burden on districts. Bidirectionality is not a convenience. It is the mechanism that ensures assessment data is accurate at load time and usable over time.
 
@@ -32,7 +32,7 @@ _**What it looks like in practice:**_
 
 - The vendor retrieves roster, enrollment, and assessment registration data from the Ed-Fi API to establish identity alignment.
 
-- The vendor applies mapping and transformation logic to convert vendor-native data structures into Ed-Fi resources (Assessment, ObjectiveAssessment, StudentAssessment, StudentObjectiveAssessment).
+- The vendor applies mapping and transformation logic to convert vendor-native data structures into Ed-Fi API resources (Assessment, ObjectiveAssessment, StudentAssessment, StudentObjectiveAssessment).
 
 - The vendor uses Ed-Fi API credentials issued per district or tenant to POST and PUT resources to the ODS/API.
 
@@ -40,11 +40,11 @@ _**What it looks like in practice:**_
 
 #### Why this pattern works when done correctly
 
-- It enforces alignment to the Ed-Fi system of record for both identity and results, eliminating the need for downstream reconciliation.
+- It enforces alignment to the Ed-Fi ODS/API as the system of record for both identity and results, eliminating the need for downstream reconciliation.
 
-- It aligns with the Ed-Fi architectural intent that integrations interact with the Ed-Fi API layer, not through database writes.
+- It aligns with the Ed-Fi ODS/API's architectural intent that integrations interact with the Ed-Fi API layer, not through database writes.
 
-- It creates a clean operational boundary: the vendor produces standards-aligned resources, and the Ed-Fi implementation is responsible for storage and access.
+- It creates a clean operational boundary: the vendor produces standards-aligned resources, and the Ed-Fi ODS/API implementation is responsible for storage and access.
 
 - It supports real-time or near-real-time ingestion during testing windows when districts want timely results.
 
@@ -52,7 +52,7 @@ _**What it looks like in practice:**_
 
 #### What can go wrong if it is implemented carelessly
 
-- If the vendor does not pull roster data from Ed-Fi and instead relies on external sources, identity mismatches occur, leading to misaligned student records and broken longitudinal analysis.
+- If the vendor does not pull roster data from the Ed-Fi ODS/API and instead relies on external sources, identity mismatches occur, leading to misaligned student records and broken longitudinal analysis.
 
 - If the vendor does not implement safe-to-retry behavior, reprocessing creates duplicate StudentAssessment events and corrupts reporting.
 
@@ -66,7 +66,7 @@ _**What it looks like in practice:**_
 
 - The API-only rule must be respected. No direct database writes, no “patching the ODS,” and no shadow tables that bypass the API contract.
 
-- Bidirectional integration must be implemented. Rostering and identity must be sourced from EdFi, not external systems, unless explicitly required as a fallback.
+- Bidirectional integration must be implemented. Rostering and identity must be sourced from the Ed-Fi ODS/API, not external systems, unless explicitly required as a fallback.
 
 - Safe-to-retry behavior must be engineered from the start, not added after duplicates are discovered.
 
@@ -90,7 +90,7 @@ Earthmover and Lightbeam are open source utilities developed by Education Analyt
 
 - Vendor exports results in a defined vendor format, or a district extracts results via vendor export tooling.
 
-- Earthmover applies vendor-specific transformation logic (housed in Bundles), often producing staged outputs that map 1:1 to Ed-Fi resources.
+- Earthmover applies vendor-specific transformation logic (housed in Bundles), often producing staged outputs that map 1:1 to Ed-Fi API resources.
 
 - Validation occurs before loading, including schema checks, dependency checks, descriptor checks, and key consistency checks.
 
@@ -117,7 +117,7 @@ Earthmover and Lightbeam are open source utilities developed by Education Analyt
 
 ## 10. Descriptor Mapping Infrastructure
 
-Descriptor management is a critical component of a native Ed-Fi assessment integration. While earlier sections define how descriptors should be modeled and how vendor semantics must be preserved, this section defines how descriptor behavior must function in a real-world implementation.
+Descriptor management is a critical component of a native Ed-Fi API assessment integration. While earlier sections define how descriptors should be modeled and how vendor semantics must be preserved, this section defines how descriptor behavior must function in a real-world implementation.
 
 A native integration does not end with correctly assigning descriptor namespaces and values. It must support the realities of multi-state, multi-district deployments, where descriptor availability, naming conventions, and governance expectations vary across environments.
 
@@ -183,9 +183,9 @@ Preserving descriptor values at ingestion ensures that meaning remains intact an
 
 ### 10.2 Local Mapping and Override
 
-For shared, non-assessment descriptors such as AcademicSubject, GradeLevel, and Language, the assessment provider must align to the descriptors defined within the Ed-Fi implementation.
+For shared, non-assessment descriptors such as AcademicSubject, GradeLevel, and Language, the assessment provider must align to the descriptors defined within the Ed-Fi ODS/API implementation.
 
-While a native integration may include default mappings, these are not authoritative. The receiving EdFi environment defines the canonical descriptor values for these domains.
+While a native integration may include default mappings, these are not authoritative. The receiving Ed-Fi ODS/API environment defines the canonical descriptor values for these domains.
 
 This requires the ability to map descriptor values to match:
 
@@ -203,7 +203,7 @@ The assessment provider is responsible for ensuring that shared descriptor mappi
 
 - Support configurable mapping for shared descriptor types
 
-- Align shared descriptors to the target Ed-Fi implementation
+- Align shared descriptors to the target Ed-Fi ODS/API implementation
 
 - Validate shared descriptor values against the target environment before submission
 
@@ -434,7 +434,7 @@ Controlled change management ensures that descriptor meaning remains stable and 
 
 ## 11. API Interaction and Safe Reprocessing
 
-API interaction and safe reprocessing are the enforcement backbone of a native Ed-Fi assessment integration. These requirements ensure that integrations are not only technically valid but also operationally reliable, repeatable, and safe to run in production environments.
+API interaction and safe reprocessing are the enforcement backbone of a native Ed-Fi API assessment integration. These requirements ensure that integrations are not only technically valid but also operationally reliable, repeatable, and safe to run in production environments.
 
 A native integration must treat the Ed-Fi ODS/API as an API-driven system. It must respect dependency order, enforce validation, and support deterministic reprocessing.
 
@@ -452,7 +452,7 @@ A production-ready integration is not defined by whether it can load data once. 
 
 The Ed-Fi ODS/API must be treated as an API-driven system. All interactions must occur through the REST API layer.
 
-The API is where Ed-Fi enforces:
+The API is where the Ed-Fi ODS/API enforces:
 
 - Validation rules
 
@@ -804,7 +804,7 @@ The following patterns are not allowed because they create unnecessary access ri
 
 - Granting broad or administrative claimsets
 
-- Providing permissions to modify unrelated Ed-Fi domains
+- Providing permissions to modify unrelated Ed-Fi Data Standard domains
 
 - Reusing elevated credentials for integration runtime
 
@@ -1244,7 +1244,7 @@ Ed-Fi Data Standard versions evolve and may introduce:
 
 The integration must:
 
-- Explicitly track the target Ed-Fi version
+- Explicitly track the target Ed-Fi Data Standard version
 
 - Be tested before upgrades
 
