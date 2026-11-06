@@ -13,8 +13,9 @@ release supports. For how an Ed-Fi API relates to the Data Standard and the
 Ed-Fi API Specifications, see [Ed-Fi Data Standard vs. UDM vs. API
 Specifications vs. Ed-Fi API](/reference/data-exchange/data-standard-vs-udm-vs-api).
 
-The current release is Ed-Fi API v8.1. See [What's New](./whats-new/readme.mdx)
-for what it adds.
+For the current release and its support status, see [Supported
+Versions](/reference/roadmap/supported-versions). For what Ed-Fi API v8.1
+adds, see [What's New](./whats-new/readme.mdx).
 
 The Ed-Fi Alliance plans to fully replace the ODS/API Platform with Ed-Fi API v8
 by the 2029–2030 school year. The ODS/API Platform will continue to receive

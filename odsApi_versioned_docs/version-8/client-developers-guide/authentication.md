@@ -238,11 +238,10 @@ field. The examples use a Configuration Service at `http://localhost:8081`.
 
 ```powershell
 Invoke-RestMethod -Method Post -Uri "http://localhost:8081/connect/revoke" `
+  -Headers @{ "Authorization" = "Basic $auth" } `
   -ContentType "application/x-www-form-urlencoded" `
   -Body @{
-    "client_id"     = $key
-    "client_secret" = $secret
-    "token"         = $token.access_token
+    "token" = $token.access_token
   }
 ```
 
