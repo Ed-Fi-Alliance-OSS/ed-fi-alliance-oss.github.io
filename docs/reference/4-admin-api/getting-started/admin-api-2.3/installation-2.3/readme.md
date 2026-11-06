@@ -2,7 +2,7 @@
 sidebar_position: 0
 ---
 
-# Installation - v2.3 and later
+# Installation - v2.3
 
 ## About
 

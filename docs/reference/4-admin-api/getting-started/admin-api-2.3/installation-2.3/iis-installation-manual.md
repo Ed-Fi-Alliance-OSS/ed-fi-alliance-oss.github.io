@@ -3,7 +3,7 @@
 ## Before You Install
 
 This section provides general information you should review before installing
-the Ed-Fi ODS / API Admin API for v2.3 and later.
+the Ed-Fi ODS / API Admin API for v2.3.
 
 ### Compatibility & Supported ODS / API Versions
 

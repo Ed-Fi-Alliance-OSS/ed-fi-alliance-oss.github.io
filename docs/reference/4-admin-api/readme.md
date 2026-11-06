@@ -30,34 +30,41 @@ setup is independent:
   connection strings are encrypted with the Admin API `EncryptionKey`, which
   must match the ODS/API `OdsConnectionStringEncryptionKey` setting.
 
-See the [Getting Started 2.3 guide](./getting-started/admin-api-2.3/readme.md)
+See the [Getting Started 2.4 guide](./getting-started/admin-api-2.4/readme.md)
 for configuration details.
 
 ## What's New
 
 ---
 
-The Ed-Fi ODS Admin API brings some exciting changes to version 2.3. Please see the items below for more details!
+The Ed-Fi ODS Admin API brings some exciting changes to version 2.4. Please see the items below for more details!
 
-### Version 2.3 Combines ODS/API 6.x and 7.x line in one application
+### New `v3` API mode
 
-The Ed-Fi ODS Admin API version 2.3 introduces a new exciting change with ODS/API management. Admin API version 2.3 now supports managing _both_ ODS/API versions 6.x and versions 7.x of the product from a single Admin environment. For those users looking to maximize exposure to Ed-Fi's newest features while ensuring greatest forward compatibility with older ODS/API versions, The Ed-Fi Alliance strongly recommends users upgrade to Admin API 2.3.
+Admin API 2.4 adds a `v3` mode alongside the existing `v1` and `v2` modes. It
+implements the Management API v3 specification, which is aligned with the Ed-Fi
+API v8 platform: ODS instances are called _data stores_, claim set payloads are
+simpler, and errors use the standard Problem Details format.
 
-Please follow the content below for new and legacy installation instructions.
+### Data Store (ODS Instance) Management
 
-### Multiple Client Credential Support for Vendor applications
+Create and delete ODS databases from a template directly through the API.
+Provisioning runs in the background, and a new job status endpoint reports
+its progress.
 
-Vendors now have the ability to create multiple sets of client credentials (Client ID and Secret), that can be scoped to a single application. This allows system administrators better control over which vendor applications have access to which tenant resources.
+### Education Organization Endpoints
 
-### Tenant Management Endpoints
-
-Admin API version 2.3 begins laying the ground for ODS Instance management by exposing a set of endpoints to better manage Ed-Orgs and tenant resources. These endpoints can be used by other applications such as the Ed-Fi Admin App version 4 to perform system or team level operations while still respecting the tenant boundary.
+View the education organizations in each ODS instance, kept up to date
+automatically or refreshed on demand.
 
 ### Other changes
 
-- Reorganizing Admin API documentation hierarchy
-- Better support for Docker running in ARM environments
-- Please see our "What's new" page for additional details.
+- Finer-grained API client access, building on the multiple credentials per
+  application support added in 2.3
+- Audit logging of authentication events and administrative actions
+- Upgraded to .NET 10
+- Please see our [What's New](./whats-new.md) page for additional details,
+  including breaking changes to review before upgrading.
 
 ## Getting Started
 
@@ -73,11 +80,11 @@ Admin API version 2.3 also supports both ODS/API 6.x and 7.x applications. Pleas
 
 ### Admin API 2.x (version 2.2 and earlier)
 
-For Admin API versions 2.2 and earlier, users are required to match their version of Ed-Fi ODS/API with the Admin API version that supports that line. For additional instructions, please see our [Getting Started 2.x (2.2 and earlier)](./getting-started/admin-api-2.2/readme.md) page. NOTE: If you are on an Admin API 2.x version earlier than 2.3, the Ed-Fi Alliance **highly** recommends updating to take advantage of all the latest features.
+For Admin API versions 2.2 and earlier, users are required to match their version of Ed-Fi ODS/API with the Admin API version that supports that line. For additional instructions, please see our [Getting Started 2.x (2.2 and earlier)](./getting-started/admin-api-2.2/readme.md) page. NOTE: If you are on an Admin API 2.x version earlier than 2.4, the Ed-Fi Alliance **highly** recommends updating to Admin API 2.4 to take advantage of all the latest features.
 
 ### Admin API 1.x
 
-For Admin API versions 1.4 and earlier users are required to match the proper Admin API version with their corresponding Ed-Fi ODS/API version. For Admin API 1.x, this requires matching an ODS version between ODS/API v5.4 and ODS/API v6.3. Note, if you are on ODS/API v6.x and can upgrade to Admin API 2.3, Ed-Fi **highly** recommends doing so to maintain forward compatibility with upcoming features. Please see our [Getting Started 1.x](./getting-started/admin-api-1.x/readme.md) page for more information.
+For Admin API versions 1.4 and earlier users are required to match the proper Admin API version with their corresponding Ed-Fi ODS/API version. For Admin API 1.x, this requires matching an ODS version between ODS/API v5.4 and ODS/API v6.3. Note, if you are on ODS/API v6.x and can upgrade to Admin API 2.4, Ed-Fi **highly** recommends doing so to maintain forward compatibility with upcoming features. Please see our [Getting Started 1.x](./getting-started/admin-api-1.x/readme.md) page for more information.
 
 The Admin API v2.x is available for
 [Ed-Fi ODS / API v7.x](/reference/ed-fi-api) and Admin API
