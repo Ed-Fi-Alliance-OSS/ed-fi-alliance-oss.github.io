@@ -1,6 +1,6 @@
-# Ed-Fi ODS Admin API 2.x (v2.3 and later)
+# Ed-Fi ODS Admin API 2.x (v2.3)
 
-## Getting Started with Ed-Fi ODS Admin API 2.x (2.3 and later)
+## Getting Started with Ed-Fi ODS Admin API 2.x (2.3)
 
 The Ed-Fi ODS Admin API is an API-based administrative interface for the Ed-Fi ODS /
 API Platform.  The Admin API is available as a standalone application, and is

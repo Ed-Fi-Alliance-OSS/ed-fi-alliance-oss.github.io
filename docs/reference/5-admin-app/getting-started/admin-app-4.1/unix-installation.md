@@ -13,7 +13,7 @@ This is one of three alternative installation paths. If you instead want to run 
 ## Unix Prerequisites
 
 - **NGiNX**: For reverse proxy and static file serving
-- **Node.js**: Version 22.0.0+
+- **Node.js**: Version 24
 - **PostgreSQL**: Database server
 - **systemd**: For service management (most modern Linux distributions)
 
@@ -43,7 +43,7 @@ This path uses **PostgreSQL**. The Admin App is database-engine-agnostic, but SQ
    cd /opt/edfiadminapp
 
    # Replace the TAG value with the latest release from the Releases page
-   TAG="v4.0.1"
+   TAG="v4.1.0"
 
    git clone --branch "$TAG" --depth 1 https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-AdminApp.git .
    npm ci
@@ -68,17 +68,23 @@ This path uses **PostgreSQL**. The Admin App is database-engine-agnostic, but SQ
        CLIENT_SECRET: 'your-client-secret',
        MACHINE_AUDIENCE: 'edfiadminapp-api'
      },
+     // Identity provider (OIDC). The values below are the Keycloak example;
+     // for Microsoft Entra ID, Google Workspace, or Auth0, set
+     // issuer/clientId/clientSecret/scope per the identity-provider guide
+     // linked in "Next steps".
      SAMPLE_OIDC_CONFIG: {
       issuer: 'https://your-keycloak-server/auth/realms/edfi',
       clientId: 'edfiadminapp',
       clientSecret: 'your-client-secret',
-      scope: '',
+      scope: 'openid email profile',
      },
      //this should match with a user in your Idp
      ADMIN_USERNAME: 'admin@example.com',
      DB_ENCRYPTION_SECRET_VALUE: {
        KEY: 'your-64-hex-char-encryption-key' // 32-byte key, hex-encoded (64 hex chars); see tip below
      },
+     // Signs session cookies. A list of secrets, newest first; generate each one like the key above.
+     SESSION_SECRET_VALUE: ['your-session-secret'],
      FE_URL: 'https://your-domain.com/adminapp',
      MY_URL: 'https://your-domain.com/adminapp-api',
      API_PORT: 3333
@@ -90,8 +96,16 @@ This path uses **PostgreSQL**. The Admin App is database-engine-agnostic, but SQ
    Some special characters are not currently supported in the Admin App database username or password (`DB_USERNAME` / `DB_PASSWORD`). Use only letters, digits, and these symbols: `! $ ( ) * , - . _ ~`. A value that includes other characters (for example `@ : / ? # % & = ;`, `"`, `< >`, `|`, or a space) can stop the API from connecting to the database at startup.
    :::
 
+   :::warning
+   The API refuses to start in production when `SESSION_SECRET_VALUE`, `DB_ENCRYPTION_SECRET_VALUE.KEY`, the database password, or the OIDC client secret is missing, blank, or still a sample value. Never change `DB_ENCRYPTION_SECRET_VALUE.KEY` once environments exist: it encrypts their stored credentials.
+   :::
+
    :::tip
    `your-64-hex-char-encryption-key` can be generated with `openssl rand -hex 32` or `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`
+   :::
+
+   :::note
+   This path uses **Keycloak** as the example OIDC provider. Because the Admin App uses generic OIDC discovery, [Microsoft Entra ID](../../configuration/identity-provider/microsoft-entra-id.md), [Google Workspace](../../configuration/identity-provider/google-workspace.md), and [Auth0](../../configuration/identity-provider/auth0.md) also work: set `issuer`/`clientId`/`clientSecret`/`scope` and `ADMIN_USERNAME` accordingly, and set the frontend's `VITE_OIDC_ID` and `VITE_IDP_ACCOUNT_URL` in `packages/fe/.env` **before** `npm run build:fe`. The redirect/callback URI is `<MY_URL>/api/auth/callback/<oidc-id>` (here, `https://your-domain.com/adminapp-api/api/auth/callback/<oidc-id>`).
    :::
 
 4. **Create systemd service**:
@@ -194,8 +208,8 @@ This path uses **PostgreSQL**. The Admin App is database-engine-agnostic, but SQ
 
 A fresh install has no users, teams, or environments yet. The Global Admin Quick Start seeds that starter configuration, so it is the recommended next step.
 
-- [Global Admin Quick Start](../user-guide/global-admin-quick-start/readme.md)
-- [Configuring Ed-Fi Admin App](../configuration/configuring-admin-app.md)
-- [Configuring an Identity Provider for Ed-Fi Admin App](../configuration/identity-provider.md)
-- [Security Considerations](../configuration/security-considerations.md)
-- [Global Administration Tasks](../configuration/global-administration-tasks.md)
+- [Global Admin Quick Start](../../user-guide/global-admin-quick-start/readme.md)
+- [Configuring Ed-Fi Admin App](../../configuration/configuring-admin-app.md)
+- [Configuring an Identity Provider for Ed-Fi Admin App](../../configuration/identity-provider/readme.md)
+- [Security Considerations](../../configuration/security-considerations.md)
+- [Global Administration Tasks](../../configuration/global-administration-tasks.md)

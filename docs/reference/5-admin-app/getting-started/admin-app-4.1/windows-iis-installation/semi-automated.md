@@ -19,10 +19,10 @@ On **Windows Server 2019/2022**, install the Windows Package Manager (`winget`) 
 | 2 | `02-prereqs-sql.ps1` | SQL Server Mixed Mode + TCP/IP; creates the `sbaa` database and a dedicated least-privilege login (`edfi_adminapp`) the app connects as. Server setup uses Windows Authentication, not `sa`. | [Database](./manual.md#database) |
 | 3 | `03-prereqs-node.ps1` | Installs Node.js (the major version pinned in `engines.node`); remediates a too-old Node via nvm-windows. | [Node.js](./manual.md#nodejs) |
 | 4 | `04-build.ps1` | `npm ci` + build API + build Web Application. Seeds the Web Application `.env` before building. | [Backend API](./manual.md#backend-api-installation) / [Web Application](./manual.md#web-application-installation) |
-| 5 | `05-deploy-api.ps1` | Deploys the API as standalone site `EdFi-AdminApp-API` (HTTPS :3443; HTTP :3333 redirects): web.config, App Pool, `production.js`, App-Pool-scoped npm cache. | [Backend API](./manual.md#backend-api-installation) |
+| 5 | `05-deploy-api.ps1` | Deploys the API as standalone site `EdFi-AdminApp-API` (HTTPS :3443; HTTP :3333 redirects): web.config, App Pool, `production.js` (secrets go in the App Pool environment, not the file), App-Pool-scoped npm cache. | [Backend API](./manual.md#backend-api-installation) |
 | 6 | `06-deploy-fe.ps1` | Deploys the Web Application as standalone site `EdFi-AdminApp-FE` (HTTPS :4443; HTTP :4200 redirects). | [Web Application](./manual.md#web-application-installation) |
 | verify | `00-check-prereqs.ps1` | Read-only diagnostic: IIS (and version), database, Node, build artifacts, and whether ports 3333/4200/3443/4443 are free. | [Verify prerequisites](./manual.md#verify-prerequisites) |
-| optional | `idp-keycloak-setup.ps1` | Installs a JDK, downloads and starts a local Keycloak, provisions realm `edfi`, client `edfiadminapp`, and a test user. Also registers the `Ed-Fi Admin App Keycloak` startup task (see [Automated → After a restart](./automated.md#after-a-restart-the-keycloak-startup-task)). | [Identity provider](./manual.md#identity-provider) |
+| optional | `idp-keycloak-setup.ps1` | Installs a JDK, downloads and starts a local Keycloak, provisions realm `edfi`, client `edfiadminapp`, and a test user, and adds an HTTPS listener on port 8443 with a self-signed certificate. Also registers the `Ed-Fi Admin App Keycloak` startup task (see [Automated → After a restart](./automated.md#after-a-restart-the-keycloak-startup-task)). | [Identity provider](./manual.md#identity-provider) |
 | optional | `idp-keycloak-start.ps1` | Starts the local Keycloak again without restarting the host. After a host restart the startup task does this automatically. | [Identity provider](./manual.md#identity-provider) |
 | optional | `yopass-docker.ps1` | Stands up a local Yopass via Docker. | [Yopass](./manual.md#yopass-optional) |
 | optional | `install-all.ps1` | Runs the whole sequence end to end (see [Automated](./automated.md)). | (whole install) |
@@ -33,8 +33,8 @@ To remove an install, use `uninstall.ps1` (generic) and, for the local Keycloak,
 
 A fresh install has no users, teams, or environments yet. The Global Admin Quick Start seeds that starter configuration, so it is the recommended next step.
 
-- [Global Admin Quick Start](../../user-guide/global-admin-quick-start/readme.md)
-- [Configuring Ed-Fi Admin App](../../configuration/configuring-admin-app.md)
-- [Configuring an Identity Provider for Ed-Fi Admin App](../../configuration/identity-provider.md)
-- [Security Considerations](../../configuration/security-considerations.md)
-- [Global Administration Tasks](../../configuration/global-administration-tasks.md)
+- [Global Admin Quick Start](../../../user-guide/global-admin-quick-start/readme.md)
+- [Configuring Ed-Fi Admin App](../../../configuration/configuring-admin-app.md)
+- [Configuring an Identity Provider for Ed-Fi Admin App](../../../configuration/identity-provider/readme.md)
+- [Security Considerations](../../../configuration/security-considerations.md)
+- [Global Administration Tasks](../../../configuration/global-administration-tasks.md)
