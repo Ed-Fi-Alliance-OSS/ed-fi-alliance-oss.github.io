@@ -101,13 +101,13 @@ Configuration Service token for a client with the `edfi_admin_api/full_access`
 scope. Obtain one and store the response:
 
 ```powershell
+$auth = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes("<config-admin-key>:<config-admin-secret>"))
 $token = Invoke-RestMethod -Method Post -Uri "http://localhost:8081/connect/token" `
+  -Headers @{ "Authorization" = "Basic $auth" } `
   -ContentType "application/x-www-form-urlencoded" `
   -Body @{
-    "grant_type"    = "client_credentials"
-    "client_id"     = "<config-admin-key>"
-    "client_secret" = "<config-admin-secret>"
-    "scope"         = "edfi_admin_api/full_access"
+    "grant_type" = "client_credentials"
+    "scope"      = "edfi_admin_api/full_access"
   }
 ```
 

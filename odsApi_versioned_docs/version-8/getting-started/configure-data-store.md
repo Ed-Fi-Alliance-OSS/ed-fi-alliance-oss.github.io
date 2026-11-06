@@ -106,12 +106,12 @@ Use the client credentials to obtain a bearer token from the Configuration
 Service:
 
 ```powershell
+$auth = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes("<key>:<secret>"))
 $token = Invoke-RestMethod -Method Post -Uri "http://localhost:8081/connect/token" `
+  -Headers @{ "Authorization" = "Basic $auth" } `
   -ContentType "application/x-www-form-urlencoded" `
   -Body @{
-    "grant_type"    = "client_credentials"
-    "client_id"     = "<key>"
-    "client_secret" = "<secret>"
+    "grant_type" = "client_credentials"
   }
 ```
 

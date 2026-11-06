@@ -2908,11 +2908,20 @@ HTTP Request
 
 ```text
 POST http://localhost:8080/api/oauth/token
+Authorization: Basic UnZjb2hLejl6SEk0OkUxaUVGdXNhTmY4MXh6Q3h3SGZib2xrQw==
 Content-Type: application/x-www-form-urlencoded
 
-grant_type=client_credentials&client_id=RvcohKz9zHI4&client_secret=E1iEFusaNf81xzCxwHfbolkC
+grant_type=client_credentials
 
 ```
+
+:::tip
+
+The string following "Basic" is a Base64-encoded version of `{key}:{secret}`.
+See [Obtain an Access Token](./authentication.md#step-1-obtain-an-access-token)
+for why the credentials go in the Authorization header.
+
+:::
 
 HTTP Response
 

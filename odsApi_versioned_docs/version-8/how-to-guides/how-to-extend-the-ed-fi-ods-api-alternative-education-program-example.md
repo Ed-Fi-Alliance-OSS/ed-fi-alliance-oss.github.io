@@ -576,12 +576,12 @@ Make an authenticated request to one of the new endpoints, using the
 `<api-client-key>`/`<api-client-secret>` from Step 8a:
 
 ```powershell
+$auth = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes("<api-client-key>:<api-client-secret>"))
 $apiToken = Invoke-RestMethod -Method Post -Uri "http://localhost:8081/connect/token" `
+  -Headers @{ "Authorization" = "Basic $auth" } `
   -ContentType "application/x-www-form-urlencoded" `
   -Body @{
-    "grant_type"    = "client_credentials"
-    "client_id"     = "<api-client-key>"
-    "client_secret" = "<api-client-secret>"
+    "grant_type" = "client_credentials"
   }
 
 Invoke-RestMethod `
