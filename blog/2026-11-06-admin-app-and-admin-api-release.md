@@ -192,9 +192,10 @@ Configuration Service; the goal is full parity in a future release.
   to `/v3/dataStores/manage` and `/v2/odsInstances/manage`.
 - **Removed endpoints and fields**: `/dataStores/edOrgs` and
   `/odsInstances/edOrgs` are removed in both `v2` and `v3`, as are the
-  deprecated education organization list endpoints. The `UseSandbox` and
-  `SandboxType` fields are gone from the API clients resource, and `key` is now
-  `clientId`.
+  deprecated education organization list endpoints.
+- **API client fields in `v3`**: Compared with `v2`, the `v3` API clients
+  resource drops the `UseSandbox` and `SandboxType` fields and renames `key` to
+  `clientId`. The `v2` API clients resource is unchanged.
 - **Error payloads changed in `v3`**: Clients that parse the previous error
   shape must handle RFC 9457 Problem Details, served as
   `application/problem+json` with `errors`, `validationErrors` and
@@ -206,6 +207,9 @@ Configuration Service; the goal is full parity in a future release.
   `409 Conflict` instead of `400 Bad Request`. In `v2`, resetting an
   application's credentials returns `409` when the application has no API
   clients.
+- **Education organization refresh is asynchronous**: A refresh request now
+  returns `202 Accepted` once the work is queued, instead of waiting for it to
+  finish. Use the job status endpoint to see the result.
 - **Application changes in `v3`**: `PUT /v3/applications/{id}` no longer
   accepts `enabled` or `dataStoreIds`; set these on each API client instead.
   Resetting credentials at the application level returns `409` unless the

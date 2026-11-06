@@ -227,7 +227,7 @@ Admin API endpoints documentation is found on GitHub and available in links belo
 
 | Version | GitHub URL |
 | -- | -- |
-| Admin API 2.3.0 | [api-specifications](https://github.com/Ed-Fi-Alliance-OSS/AdminAPI-2.x/tree/main/docs/api-specifications) |
+| Admin API 2.4.0 | [Management API 2.4.0](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-API-Specifications/blob/main/api-specifications/management/management-api-2.4.0.yaml) |
 
 For the most accurate and detailed documentation of active endpoints in a version, configure and launch your application with `SwaggerEnabled : true` *(this is not recommended in production)*. The documentation can be found at `/swagger/v2/swagger.json` and the UI found at `/adminapi/swagger/index.html`.
 
@@ -384,7 +384,7 @@ Admin API endpoints documentation is found on GitHub and available in links belo
 
 | Version | GitHub URL |
 | -- | -- |
-| Admin API 2.3.0 | [api-specifications](https://github.com/Ed-Fi-Alliance-OSS/AdminAPI-2.x/tree/main/docs/api-specifications) |
+| Admin API 2.4.0 | [Management API 2.4.0](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-API-Specifications/blob/main/api-specifications/management/management-api-2.4.0.yaml) |
 
 For the most accurate and detailed documentation of active endpoints in a version, configure and launch your application with `SwaggerEnabled : true` *(this is not recommended in production)*. The documentation can be found at `/swagger/v2/swagger.json` and the UI found at `/adminapi/swagger/index.html`.
 
@@ -1313,7 +1313,7 @@ Admin API endpoints documentation is found on GitHub and available in links belo
 
 | Version | GitHub URL |
 | -- | -- |
-| Admin API 2.3.0 | [api-specifications](https://github.com/Ed-Fi-Alliance-OSS/AdminAPI-2.x/tree/main/docs/api-specifications) |
+| Admin API 2.4.0 | [Management API 2.4.0](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-API-Specifications/blob/main/api-specifications/management/management-api-2.4.0.yaml) |
 
 For the most accurate and detailed documentation of active endpoints in a version, configure and launch your application with `SwaggerEnabled : true` *(this is not recommended in production)*. The documentation can be found at `/swagger/v2/swagger.json` and the UI found at `/adminapi/swagger/index.html`.
 
@@ -1669,7 +1669,7 @@ Admin API endpoints documentation is found on GitHub and available in links belo
 
 | Version | GitHub URL |
 | -- | -- |
-| Admin API 2.3.0 | [api-specifications](https://github.com/Ed-Fi-Alliance-OSS/AdminAPI-2.x/tree/main/docs/api-specifications) |
+| Admin API 2.4.0 | [Management API 2.4.0](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-API-Specifications/blob/main/api-specifications/management/management-api-2.4.0.yaml) |
 
 For the most accurate and detailed documentation of active endpoints in a version, configure and launch your application with `SwaggerEnabled : true` *(this is not recommended in production)*. The documentation can be found at `/swagger/v2/swagger.json` and the UI found at `/adminapi/swagger/index.html`.
 
@@ -1958,7 +1958,7 @@ Admin API endpoints documentation is found on GitHub and available in links belo
 
 | Version | GitHub URL |
 | -- | -- |
-| Admin API 2.3.0 | [api-specifications](https://github.com/Ed-Fi-Alliance-OSS/AdminAPI-2.x/tree/main/docs/api-specifications) |
+| Admin API 2.4.0 | [Management API 2.4.0](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-API-Specifications/blob/main/api-specifications/management/management-api-2.4.0.yaml) |
 
 For the most accurate and detailed documentation of active endpoints in a version, configure and launch your application with `SwaggerEnabled : true` *(this is not recommended in production)*. The documentation can be found at `/swagger/v2/swagger.json` and the UI found at `/adminapi/swagger/index.html`.
 
@@ -2642,13 +2642,13 @@ Admin API endpoints documentation is found on GitHub and available in links belo
 
 | Version | GitHub URL |
 | -- | -- |
-| Admin API 2.3.0 | [api-specifications](https://github.com/Ed-Fi-Alliance-OSS/AdminAPI-2.x/tree/main/docs/api-specifications) |
+| Admin API 2.4.0 | [Management API 2.4.0](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-API-Specifications/blob/main/api-specifications/management/management-api-2.4.0.yaml) |
 
 For the most accurate and detailed documentation of active endpoints in a version, configure and launch your application with `SwaggerEnabled : true` *(this is not recommended in production)*. The documentation can be found at `/swagger/v2/swagger.json` and the UI found at `/adminapi/swagger/index.html`.
 
 All functional endpoints require authentication to access. See [Securing Admin API](https://docs.ed-fi.org/reference/admin-api/securing-admin-api) for details.
 
-### GET /v2/apiclients
+### GET /v2/apiClients
 
 ```python
 def get_apiclients(
@@ -2685,7 +2685,7 @@ def get_apiclients(
                 }
             ]
     '''
-    endpoint = "/v2/apiclients?applicationid=1&offset=0&limit=25"
+    endpoint = "/v2/apiClients?applicationid=1&offset=0&limit=25"
     url = f"{base_url}{endpoint}"
     headers = {
         'Authorization': f'Bearer {access_token}',
@@ -2749,7 +2749,7 @@ apiclient_payload = {
 Which we will pass as a parameter to a function as shown below, or with the
 method of your choice.
 
-#### POST /v2/apiclients
+#### POST /v2/apiClients
 
 ```python
 def create_apiclients(
@@ -2776,7 +2776,7 @@ def create_apiclients(
                 ]
             }
     '''
-    endpoint = "/v2/apiclients"
+    endpoint = "/v2/apiClients"
     url = f"{base_url}{endpoint}"
     headers = {
         'Authorization': f'Bearer {access_token}',
@@ -2801,7 +2801,7 @@ As a result, we will obtain a 201 Status Code
 In the case that you want to retrieve information from one of the Api Clients, you
 will need to use the resource ID.
 
-#### GET /v2/apiclients/`{id}`
+#### GET /v2/apiClients/`{id}`
 
 ```python
 def get_apiclient(
@@ -2821,7 +2821,7 @@ def get_apiclient(
         id: int
             Resource identifier
     '''
-    endpoint = "/v2/apiclients"
+    endpoint = "/v2/apiClients"
     url = f"{base_url}{endpoint}/{id}"
     headers = {
         'Authorization': f'Bearer {access_token}',
@@ -2866,7 +2866,7 @@ In addition to that, some of these fields are read-only.
 
 You can use the following code to update the information in the Api Client.
 
-#### PUT /v2/apiclients/`{id}`
+#### PUT /v2/apiClients/`{id}`
 
 ```python
 def edit_apiclient(
@@ -2896,7 +2896,7 @@ def edit_apiclient(
         id: int
             Resource ID
     '''
-    endpoint = "/v2/apiclients"
+    endpoint = "/v2/apiClients"
     url = f"{base_url}{endpoint}/{id}"
     headers = {
         'Authorization': f'Bearer {access_token}',
@@ -2919,7 +2919,7 @@ As a result, we will obtain a 200 Status Code
 
 To delete an Api Client you can use the next point, as the example provided below.
 
-#### DELETE /v2/apiclients/`{id}`
+#### DELETE /v2/apiClients/`{id}`
 
 ```python
 def delete_apiclient(
@@ -2939,7 +2939,7 @@ def delete_apiclient(
         id: int
             Resource identifier
     '''
-    endpoint = "/v2/apiclients"
+    endpoint = "/v2/apiClients"
     url = f"{base_url}{endpoint}/{id}"
     headers = {
         'Authorization': f'Bearer {access_token}',
@@ -2963,7 +2963,7 @@ As a result, we will obtain a 200 Status Code
 In case you want to refresh your credentials or get a new ones you can use the
 next endpoint.
 
-**PUT /v2/apiclients/`{id}`/reset-credential**
+**PUT /v2/apiClients/`{id}`/reset-credential**
 
 ```python
 def reset_apiclient_credentials(
@@ -2983,7 +2983,7 @@ def reset_apiclient_credentials(
         id: int
             Resource identifier
     '''
-    endpoint = "/v2/apiclients"
+    endpoint = "/v2/apiClients"
     url = f"{base_url}{endpoint}/{id}/reset-credential"
     headers = {
         'Authorization': f'Bearer {access_token}',
@@ -3022,7 +3022,7 @@ Admin API endpoints documentation is found on GitHub and available in links belo
 
 | Version | GitHub URL |
 | -- | -- |
-| Admin API 2.3.0 | [api-specifications](https://github.com/Ed-Fi-Alliance-OSS/AdminAPI-2.x/tree/main/docs/api-specifications) |
+| Admin API 2.4.0 | [Management API 2.4.0](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-API-Specifications/blob/main/api-specifications/management/management-api-2.4.0.yaml) |
 
 For the most accurate and detailed documentation of active endpoints in a version, configure and launch your application with `SwaggerEnabled : true` *(this is not recommended in production)*. The documentation can be found at `/swagger/v2/swagger.json` and the UI found at `/adminapi/swagger/index.html`.
 

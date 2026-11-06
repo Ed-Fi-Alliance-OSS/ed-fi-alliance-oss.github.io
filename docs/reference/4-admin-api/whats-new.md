@@ -21,6 +21,7 @@ before you upgrade.
 * **Instance management endpoints moved** to `/v2/odsInstances/manage`.
 * **Some education organization endpoints were removed**, including `/odsInstances/edOrgs` and the older "list by instance" and "list by data store" endpoints. Use the current education organization endpoints instead.
 * **Refreshing education organizations is now asynchronous.** The request returns `202 Accepted` to say the work has been queued instead of waiting for it to finish. Use the new job status endpoints to see the result.
+* **Some `400 Bad Request` responses are now `409 Conflict`.** A request that refers to a record that doesn't exist, or uses a duplicate API client name, returns `409`. Resetting credentials for an application with no API clients also returns `409`.
 * **Database instance names are limited to 46 characters.** Admin API builds the database name from the name you supply, and the finished name has to fit a 63-character limit. This applies when creating an instance; existing instances are unaffected.
 
 ### Features
