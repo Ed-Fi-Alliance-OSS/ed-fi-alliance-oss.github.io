@@ -112,6 +112,39 @@ A user must exist in Keycloak whose email/username claim matches the Admin App a
 
 For more detail, see [Configuring an Identity Provider for Ed-Fi Admin App](../../../configuration/identity-provider/readme.md).
 
+#### Serve the local Keycloak over HTTPS {#keycloak-https}
+
+Admin App 4.1 only accepts an HTTPS issuer: with an `http://` issuer, sign-in returns HTTP 404. Keycloak's `start-dev` mode serves HTTP on port 8080 by default, so add an HTTPS listener on port 8443 with a self-signed `localhost` certificate. Port 8080 can stay on for the admin console.
+
+1. Create the certificate, the keystore Keycloak reads, and a PEM copy for the API. From an elevated PowerShell (adjust `C:\keycloak` to your Keycloak folder):
+
+   ```powershell
+   $cert = New-SelfSignedCertificate -DnsName 'localhost' -CertStoreLocation Cert:\LocalMachine\My `
+     -NotAfter (Get-Date).AddYears(5) -KeyExportPolicy Exportable
+   $keystorePassword = Read-Host -AsSecureString 'Keystore password'
+   Export-PfxCertificate -Cert $cert -FilePath 'C:\keycloak\conf\keycloak-https.p12' -Password $keystorePassword
+   Export-Certificate -Cert $cert -FilePath "$env:TEMP\keycloak-https.cer"
+   certutil -encode "$env:TEMP\keycloak-https.cer" 'C:\keycloak\keycloak-https.pem'
+   # Optional: trust it on this machine so the browser shows no certificate warning.
+   Import-Certificate -FilePath "$env:TEMP\keycloak-https.cer" -CertStoreLocation Cert:\LocalMachine\Root
+   ```
+
+2. Add these lines to `C:\keycloak\conf\keycloak.conf`, then restart Keycloak:
+
+   ```text
+   https-port=8443
+   https-key-store-file=C:/keycloak/conf/keycloak-https.p12
+   https-key-store-password=<the keystore password>
+   ```
+
+3. Make the API trust the certificate. Node does not read the Windows certificate store, so the API needs `NODE_EXTRA_CA_CERTS` pointing at the PEM file. After you create the API site in [Backend API Installation](#backend-api-installation), add this line next to `NODE_ENV` in its `web.config`, or set it on the `EdFi-AdminApp-API` App Pool's environment, and grant the App Pool identity read access to the file:
+
+   ```xml
+   <environmentVariable name="NODE_EXTRA_CA_CERTS" value="C:\keycloak\keycloak-https.pem" />
+   ```
+
+Use `https://localhost:8443/realms/edfi` as the issuer and `https://localhost:8443/realms/edfi/account/` as the account URL in the steps below. An external identity provider (Entra ID, Google, Auth0) already serves HTTPS with a trusted certificate and needs none of this.
+
 :::warning Keycloak does not survive a restart on its own
 A locally installed Keycloak does not come back when the host restarts. The API needs Keycloak already running when the API starts, so it has to start **after** Keycloak is accepting requests. If the API starts first, sign-in fails until the API is recycled.
 
@@ -282,15 +315,16 @@ The API is deployed as a standalone IIS site, `EdFi-AdminApp-API`, with an HTTP 
      YOPASS_URL: '',
 
      AUTH0_CONFIG_SECRET_VALUE: {
-       ISSUER: 'http://localhost:8080/realms/edfi',
+       ISSUER: 'https://localhost:8443/realms/edfi',
        CLIENT_ID: 'edfiadminapp',
        CLIENT_SECRET: 'your-client-secret',
        MACHINE_AUDIENCE: 'edfiadminapp-api',
      },
 
      // Identity provider (OIDC). The values below are the local Keycloak example.
+     // The issuer must be HTTPS; see "Serve the local Keycloak over HTTPS".
      SAMPLE_OIDC_CONFIG: {
-       issuer: 'http://localhost:8080/realms/edfi',
+       issuer: 'https://localhost:8443/realms/edfi',
        clientId: 'edfiadminapp',
        clientSecret: 'your-client-secret',
        scope: 'openid email profile',
@@ -372,7 +406,7 @@ The Web Application is a Vite single-page application, deployed as a second stan
    VITE_STARTING_GUIDE=https://docs.ed-fi.org/reference/admin-app/configuration/global-administration-tasks
    VITE_CONTACT=https://community.ed-fi.org/
    VITE_APPLICATION_NAME="Ed-Fi Admin App"
-   VITE_IDP_ACCOUNT_URL=http://localhost:8080/realms/edfi/account/
+   VITE_IDP_ACCOUNT_URL=https://localhost:8443/realms/edfi/account/
    ```
 
    **Environment variable descriptions:**
@@ -386,7 +420,7 @@ The Web Application is a Vite single-page application, deployed as a second stan
    - `VITE_IDP_ACCOUNT_URL`: Identity provider account-management page URL.
 
    :::warning
-   These values are baked into the bundle at build time, so set `.env` **before** building (step 2); changing it afterward has no effect. For the local Keycloak example, `VITE_IDP_ACCOUNT_URL` is the account-management interface (`/realms/{realm-name}/account/`), not the admin console.
+   These values are baked into the bundle at build time, so set `.env` **before** building (step 2); changing it afterward has no effect. For the local Keycloak example, `VITE_IDP_ACCOUNT_URL` is the account-management interface (`/realms/{realm-name}/account/`), not the admin console. The template ships this line commented out (`# VITE_IDP_ACCOUNT_URL=`); remove the `#`, or the Account page shows no Account Management link.
    :::
 
 2. **Build the Web Application**:
@@ -448,8 +482,8 @@ The Web Application is a Vite single-page application, deployed as a second stan
            <add name="Strict-Transport-Security" value="max-age=31536000; includeSubDomains" />
            <add name="X-Content-Type-Options" value="nosniff" />
            <add name="X-Frame-Options" value="DENY" />
-           <add name="Referrer-Policy" value="no-referrer" />
-           <add name="Content-Security-Policy" value="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; img-src 'self' data:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self' https://localhost:3443; form-action 'self'" />
+           <add name="Referrer-Policy" value="strict-origin-when-cross-origin" />
+           <add name="Content-Security-Policy" value="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; img-src 'self' data:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self' https://localhost:3443; form-action 'self' https://localhost:3443 https://localhost:8443" />
          </customHeaders>
        </httpProtocol>
      </system.webServer>
@@ -458,6 +492,13 @@ The Web Application is a Vite single-page application, deployed as a second stan
 
    :::note
    The `connect-src` in the Content-Security-Policy must name the exact API origin the bundle calls (`VITE_API_URL`), or the browser blocks the Web Application's API requests. Here it is `https://localhost:3443`.
+   :::
+
+   :::note
+   Sign out is a form POST to the API, which then redirects to the identity provider's logout page. Two settings keep it working:
+
+   - `form-action` must list the API origin and the identity provider origin (here `https://localhost:3443` and `https://localhost:8443`). With only `'self'`, the browser blocks the request and the Sign out button does nothing.
+   - `Referrer-Policy` must not be `no-referrer`. With `no-referrer`, the browser sends `Origin: null` on the POST, and the API rejects it with HTTP 403.
    :::
 
    :::note
@@ -471,7 +512,7 @@ See the [Troubleshooting](../../../troubleshooting.md#frontend-troubleshooting) 
 Both IIS sites emit a baseline set of response headers (shown in each site's `web.config` above) and remove `X-Powered-By`. Both send `Strict-Transport-Security` (HSTS) and `Referrer-Policy`, and each carries an **enforcing** `Content-Security-Policy`:
 
 - **API** — `default-src 'none'`, since it serves only JSON in production (Swagger UI is disabled there).
-- **Web Application** — allows its own origin plus the API origin in `connect-src`; `style-src` allows `'unsafe-inline'` because the UI framework injects styles at runtime.
+- **Web Application** — allows its own origin plus the API origin in `connect-src`, and the API and identity provider origins in `form-action` for sign out; `style-src` allows `'unsafe-inline'` because the UI framework injects styles at runtime.
 
 The API additionally sets `X-Content-Type-Options` and `X-Frame-Options` in application code. Adjust these headers if you place the sites behind a reverse proxy that sets its own.
 
@@ -486,13 +527,13 @@ The Admin App is now running, but it manages **Ed-Fi ODS/API** instances that ru
 The default install is suitable for a local or trusted-network deployment. Before exposing the Admin App more broadly:
 
 - **Use a CA-issued certificate.** The default self-signed certificate is trusted only on the install host. Bind a CA-issued certificate (see [TLS and certificates](#tls-and-certificates)) so other machines trust the sites without warnings.
-- **Do not run the example Keycloak in production.** The local Keycloak example runs in `start-dev` (HTTP, embedded H2 database, hostname strictness off) and is for local development only. For production, run `kc.bat start` with `--hostname`, a real database, and TLS — or use your own OIDC provider.
+- **Do not run the example Keycloak in production.** The local Keycloak example runs in `start-dev` (embedded H2 database, hostname strictness off, self-signed certificate) and is for local development only. For production, run `kc.bat start` with `--hostname`, a real database, and TLS — or use your own OIDC provider.
 - **Keep upstream TLS verification on.** `SSL_VERIFICATION` defaults to `true`, so the API verifies the certificate of the ODS/API and Admin API it calls. If an upstream presents a self-signed or dev certificate, make Node trust it rather than disabling verification:
   1. Export the upstream's certificate (or its issuing CA) to a PEM file (`.crt`/`.pem`).
   2. Set `NODE_EXTRA_CA_CERTS` to that file's path for the API process — add an `<environmentVariable name="NODE_EXTRA_CA_CERTS" value="C:\path\to\upstream-ca.crt" />` inside `<httpPlatform><environmentVariables>` in the API site's `web.config` (next to `NODE_ENV`), or set it on the `EdFi-AdminApp-API` App Pool's environment.
   3. Restart the API site so Node re-reads the value.
 
-  On Node.js 24 you can instead set `NODE_OPTIONS=--use-system-ca`, which honors the Windows certificate store.
+  `NODE_EXTRA_CA_CERTS` holds a single file. If it already points at the local Keycloak certificate, combine both certificates into one PEM file and point the variable at that file.
 - **Review secrets handling.** A manual install keeps credentials in `production.js`. Protect or rotate them per your policy.
 - **Harden the database and App Pool identities.** This guide already connects as a least-privilege SQL login (`edfi_adminapp`, not `sa`); keep that separation in production.
 

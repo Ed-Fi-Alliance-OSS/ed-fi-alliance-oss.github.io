@@ -4,10 +4,6 @@ sidebar_position: 2
 
 # Automated
 
-:::caution
-The installation scripts are being updated for Admin App 4.1, which requires a session secret (`SESSION_SECRET_VALUE`) that the current scripts do not set. Until the scripts are updated, use the [Manual](./manual.md) installation path for Admin App 4.1.
-:::
-
 The fastest path: install the whole stack with the PowerShell scripts from the [Admin App Installation Scripts repository](https://github.com/Ed-Fi-Exchange-OSS/Admin-App-Installation-Scripts), with no manual steps. For what each step configures under the hood, see [Manual](./manual.md).
 
 ## Get the scripts
@@ -51,7 +47,7 @@ On a fresh machine, run `setup-vm-prereqs.ps1` first — it installs the operati
 
 `install-all.ps1` can be run with **no parameters**. It applies sensible defaults (SQL Server, the latest stable Admin App release, and the seeded administrator `admin@example.com`) and prompts at the console for anything it requires, including the identity provider (`-IdpProvider`) and any secrets. It always asks for the identity provider, so the choice is explicit; this guide uses `keycloak`.
 
-Running with the defaults stands up the local Keycloak (realm `edfi`, client `edfiadminapp`, and a test user), creates the least-privilege `edfi_adminapp` database login, and deploys the API and Web Application in the same run.
+Running with the defaults stands up the local Keycloak (realm `edfi`, client `edfiadminapp`, and a test user, served over HTTPS on port 8443 with a self-signed certificate), creates the least-privilege `edfi_adminapp` database login, and deploys the API and Web Application in the same run.
 
 Pass a parameter only to change something the defaults do not cover. PostgreSQL is the common case: the engine and the bundled container are not prompted for, though its passwords are.
 

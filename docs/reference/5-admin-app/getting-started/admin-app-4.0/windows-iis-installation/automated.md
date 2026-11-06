@@ -8,10 +8,10 @@ The fastest path: install the whole stack with the PowerShell scripts from the [
 
 ## Get the scripts
 
-Clone the repository into a dedicated parent folder, then open the `windows-install` folder from an elevated PowerShell:
+Clone the scripts release for Admin App 4.0, `adminapp-v4.0.1-scripts-v1.1`, into a dedicated parent folder, then open the `windows-install` folder from an elevated PowerShell:
 
 ```powershell
-git clone https://github.com/Ed-Fi-Exchange-OSS/Admin-App-Installation-Scripts.git C:\Ed-Fi\Admin-App-Installation-Scripts
+git clone --branch adminapp-v4.0.1-scripts-v1.1 --depth 1 https://github.com/Ed-Fi-Exchange-OSS/Admin-App-Installation-Scripts.git C:\Ed-Fi\Admin-App-Installation-Scripts
 cd C:\Ed-Fi\Admin-App-Installation-Scripts\windows-install
 ```
 
@@ -29,7 +29,7 @@ Avoid a user profile folder like `Downloads`, since the Admin App source lands b
 :::
 
 :::note
-On a bare machine without Git, download the repository as a ZIP from GitHub (**Code → Download ZIP**) and extract it under `C:\Ed-Fi`, so it sits where the clone above would have put it. Only the location matters, not the extracted folder's name. `setup-vm-prereqs.ps1` installs Git afterward. If PowerShell refuses to run the scripts (they carry the internet Mark of the Web), `setup-vm-prereqs.ps1` unblocks them and sets the execution policy; to do it by hand, run `Get-ChildItem *.ps1 | Unblock-File` and `Set-ExecutionPolicy -Scope Process Bypass`.
+On a bare machine without Git, download the source code ZIP of the [`adminapp-v4.0.1-scripts-v1.1` release](https://github.com/Ed-Fi-Exchange-OSS/Admin-App-Installation-Scripts/releases/tag/adminapp-v4.0.1-scripts-v1.1) and extract it under `C:\Ed-Fi`, so it sits where the clone above would have put it. Only the location matters, not the extracted folder's name. `setup-vm-prereqs.ps1` installs Git afterward. If PowerShell refuses to run the scripts (they carry the internet Mark of the Web), `setup-vm-prereqs.ps1` unblocks them and sets the execution policy; to do it by hand, run `Get-ChildItem *.ps1 | Unblock-File` and `Set-ExecutionPolicy -Scope Process Bypass`.
 :::
 
 ## Windows Server prerequisite: install winget
@@ -43,9 +43,17 @@ The scripts use the Windows Package Manager (`winget`) to install Node.js, OpenJ
 
 On a fresh machine, run `setup-vm-prereqs.ps1` first — it installs the operating-system-level pieces: IIS, SQL Server, and Git — then `install-all.ps1`.
 
-`install-all.ps1` fetches the Admin App source for you — by default it clones the latest stable release of `Ed-Fi-AdminApp` beside the scripts repository, as shown in [Get the scripts](#get-the-scripts). To build from a checkout you already have, pass `-SourcePath`; to pin a specific version, pass `-AdminAppRef <tag>` (for example `-AdminAppRef v4.0.1`).
+`install-all.ps1` fetches the Admin App source for you and clones it beside the scripts repository, as shown in [Get the scripts](#get-the-scripts). To build from a checkout you already have, pass `-SourcePath`.
 
-`install-all.ps1` can be run with **no parameters**. It applies sensible defaults (SQL Server, the latest stable Admin App release, and the seeded administrator `admin@example.com`) and prompts at the console for anything it requires, including the identity provider (`-IdpProvider`) and any secrets. It always asks for the identity provider, so the choice is explicit; this guide uses `keycloak`.
+:::warning Always pass `-AdminAppRef v4.0.1`
+Without it, `install-all.ps1` clones the latest Admin App release, which is now 4.1, and these scripts do not support 4.1. Every command on this page passes it. For Admin App 4.1, follow the [Admin App 4.1 guide](../../admin-app-4.1/windows-iis-installation/automated.md) instead.
+:::
+
+```powershell
+.\install-all.ps1 -AdminAppRef v4.0.1
+```
+
+Apart from `-AdminAppRef`, `install-all.ps1` needs no parameters. It applies sensible defaults (SQL Server and the seeded administrator `admin@example.com`) and prompts at the console for anything it requires, including the identity provider (`-IdpProvider`) and any secrets. It always asks for the identity provider, so the choice is explicit; this guide uses `keycloak`.
 
 Running with the defaults stands up the local Keycloak (realm `edfi`, client `edfiadminapp`, and a test user), creates the least-privilege `edfi_adminapp` database login, and deploys the API and Web Application in the same run.
 
@@ -54,13 +62,13 @@ Pass a parameter only to change something the defaults do not cover. PostgreSQL 
 **Example — PostgreSQL via Docker** (no local SQL Server; the bundled docker-compose runs PostgreSQL and requires Docker Desktop in Linux-container mode):
 
 ```powershell
-.\install-all.ps1 -DbEngine pgsql -UsePostgresDocker
+.\install-all.ps1 -AdminAppRef v4.0.1 -DbEngine pgsql -UsePostgresDocker
 ```
 
 **Example — managed Azure SQL Database** (provision the logical server, a client-IP firewall rule, and an empty database in Azure first — see [Database](./manual.md#database)):
 
 ```powershell
-.\install-all.ps1 -SqlServerHost myserver.database.windows.net -SqlAdminUsername sqladmin
+.\install-all.ps1 -AdminAppRef v4.0.1 -SqlServerHost myserver.database.windows.net -SqlAdminUsername sqladmin
 ```
 
 The script prompts for `-SqlAdminPassword`, `-AppDbPassword`, and the rest, the same as any other run. It provisions the Admin App login as a contained user, connects with encryption and validates the server certificate, and configures the API to do the same — nothing to set by hand. For a remote server that presents a self-signed certificate rather than a CA-issued one, add `-TrustServerCertificate`, which turns that validation off. Azure rejects a database password containing the login name, so avoid `edfi_adminapp` in the value; the script checks this up front.
@@ -73,7 +81,7 @@ By default the sites use a self-signed certificate (auto-trusted on this machine
 
 To remove an install, use `uninstall.ps1` (generic) and, for the local Keycloak, `uninstall-keycloak.ps1` (removes Keycloak and its startup task, and unsets `JAVA_HOME`; leaves the JDK installed). Against a managed Azure SQL Database, pass the same `-SqlServerHost` and `-SqlAdminUsername`: the database itself is yours and is left untouched, and only the Admin App's contained user is removed.
 
-For the full list of parameters and configuration options, see the [`windows-install/README.md`](https://github.com/Ed-Fi-Exchange-OSS/Admin-App-Installation-Scripts/blob/main/windows-install/README.md) in the scripts repository, or run `Get-Help .\install-all.ps1 -Full`.
+For the full list of parameters and configuration options, see the [`windows-install/README.md`](https://github.com/Ed-Fi-Exchange-OSS/Admin-App-Installation-Scripts/blob/adminapp-v4.0.1-scripts-v1.1/windows-install/README.md) of the scripts release, or run `Get-Help .\install-all.ps1 -Full`.
 
 ## First sign-in
 
