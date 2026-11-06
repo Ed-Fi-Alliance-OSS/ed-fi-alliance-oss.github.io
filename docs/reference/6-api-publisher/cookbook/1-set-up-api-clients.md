@@ -82,4 +82,4 @@ failures.
 ## Related Topics
 
 - [Considerations for API Hosts](../Considerations-for-API-Hosts.md)
-- [First-Time Configuration for Admin API](/reference/admin-api/getting-started/admin-api-2.3-newer/first-time-configuration)
+- [First-Time Configuration for Admin API](/reference/admin-api/getting-started/admin-api-2.3/first-time-configuration)

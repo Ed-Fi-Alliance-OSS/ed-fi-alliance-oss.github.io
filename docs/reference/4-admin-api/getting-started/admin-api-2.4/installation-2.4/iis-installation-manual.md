@@ -3,7 +3,7 @@
 ## Before You Install
 
 This section provides general information you should review before installing
-the Ed-Fi ODS / API Admin API for v2.3 and later.
+the Ed-Fi ODS / API Admin API for v2.4 and later.
 
 ### Compatibility & Supported ODS / API Versions
 
@@ -25,8 +25,8 @@ install a fresh copy of Admin API to upgrade from prior versions.
 The following are required to install the Admin API with IIS:
 
 * Enable IIS (before installing .NET Hosting Bundle).
-* Install [.NET 8 Hosting Bundle v8.0.21 or
-    higher](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-aspnetcore-8.0.21-windows-hosting-bundle-installer). After
+* Install [.NET 10 Hosting
+    Bundle](https://dotnet.microsoft.com/en-us/download/dotnet/10.0). After
     installing the .NET Hosting Bundle, it may be necessary to restart the
     computer for the changes to take effect.
 
@@ -35,10 +35,10 @@ The following are required to install the Admin API with IIS:
 ### Installation files
 
 :::note
- The following is a Nuget package containing the **Admin API v2.3 source files** for manual deployment to IIS.
+ The following is a Nuget package containing the **Admin API v2.4 source files** for manual deployment to IIS.
 
 * [EdFi.Suite3.ODS.AdminApi
-     v2.3](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.Suite3.ODS.AdminApi/overview/2.3.2)
+     v2.4](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi/NuGet/EdFi.Suite3.ODS.AdminApi/overview/2.4.0)
 
 :::
 
@@ -128,6 +128,17 @@ keys in `AdminApi\appsettings.json`. Some values to note:
 * Please refer [IP Rate Limiting Configuration
     Guide](../technical-articles/ip-rate-limit-configuration.md)
    for configuring IP Rate Limiting specific AppSettings.
+
+:::note
+
+`adminApiMode` selects the API surface this instance serves: `v1`, `v2` or
+`v3`. An instance serves one version at a time, and a request to a path that
+does not match the configured mode is rejected with `400 Bad Request`. The
+snippet below uses `v2`; set it to `v3` to serve the Management API v3 surface
+that is new in Admin API 2.4. `EncryptionKey` is required for both `v2` and
+`v3`.
+
+:::
 
 Here is a snippet from a properly configured application settings file:
 
@@ -431,4 +442,4 @@ CREATE TABLE adminapi.Tokens (
 ### **Step 10. Execute First-Time Configuration**
 
 Continue on to [First-Time Configuration for Admin
-2.3](../first-time-configuration.md).
+2.4](../first-time-configuration.md).

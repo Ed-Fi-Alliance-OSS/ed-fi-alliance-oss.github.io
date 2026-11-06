@@ -218,15 +218,15 @@ const config = {
           // Routes changed by the 2025 Admin App docs reorganization.
           {
             from: '/reference/admin-app/getting-started/installing/docker-installation',
-            to: '/reference/admin-app/getting-started/docker-installation',
+            to: '/reference/admin-app/getting-started/admin-app-4.1/docker-installation',
           },
           {
             from: '/reference/admin-app/getting-started/installing/windows-iis-installation',
-            to: '/reference/admin-app/getting-started/windows-iis-installation',
+            to: '/reference/admin-app/getting-started/admin-app-4.1/windows-iis-installation',
           },
           {
             from: '/reference/admin-app/getting-started/installing/unix-installation',
-            to: '/reference/admin-app/getting-started/unix-installation',
+            to: '/reference/admin-app/getting-started/admin-app-4.1/unix-installation',
           },
           {
             from: '/reference/admin-app/getting-started/identity-provider',
@@ -259,6 +259,35 @@ const config = {
           {
             from: '/reference/admin-app/getting-started/troubleshooting',
             to: '/reference/admin-app/troubleshooting',
+          },
+          // AC-647: getting-started split into versioned folders.
+          {
+            from: '/reference/admin-app/getting-started/roadmap-to-success',
+            to: '/reference/admin-app/getting-started/admin-app-4.1/roadmap-to-success',
+          },
+          {
+            from: '/reference/admin-app/getting-started/docker-installation',
+            to: '/reference/admin-app/getting-started/admin-app-4.1/docker-installation',
+          },
+          {
+            from: '/reference/admin-app/getting-started/unix-installation',
+            to: '/reference/admin-app/getting-started/admin-app-4.1/unix-installation',
+          },
+          {
+            from: '/reference/admin-app/getting-started/windows-iis-installation',
+            to: '/reference/admin-app/getting-started/admin-app-4.1/windows-iis-installation',
+          },
+          {
+            from: '/reference/admin-app/getting-started/windows-iis-installation/automated',
+            to: '/reference/admin-app/getting-started/admin-app-4.1/windows-iis-installation/automated',
+          },
+          {
+            from: '/reference/admin-app/getting-started/windows-iis-installation/semi-automated',
+            to: '/reference/admin-app/getting-started/admin-app-4.1/windows-iis-installation/semi-automated',
+          },
+          {
+            from: '/reference/admin-app/getting-started/windows-iis-installation/manual',
+            to: '/reference/admin-app/getting-started/admin-app-4.1/windows-iis-installation/manual',
           },
           // Renamed off of "exchange" as part of the Community Tools rebrand.
           {
@@ -301,7 +330,7 @@ const config = {
           // Admin API docs moved under getting-started.
           {
             from: '/reference/admin-api/admin-api-2.x/installation-for-odsapi-7x/first-time-configuration-for-admin-api-2x',
-            to: '/reference/admin-api/getting-started/admin-api-2.2-older/installation-for-odsapi-7x/first-time-configuration-for-admin-api-2x',
+            to: '/reference/admin-api/getting-started/admin-api-2.2/installation-for-odsapi-7x/first-time-configuration-for-admin-api-2x',
           },
           {
             from: '/reference/admin-api/admin-api-1.x/technical-articles/admin-api-1x-docker-microsoft-sql-server-support',
@@ -313,7 +342,7 @@ const config = {
           },
           {
             from: '/reference/admin-api/admin-api-2.x/technical-articles/quick-start-calling-admin-api-2x-using-python',
-            to: '/reference/admin-api/getting-started/admin-api-2.2-older/technical-articles/quick-start-calling-admin-api-2x-using-python',
+            to: '/reference/admin-api/getting-started/admin-api-2.2/technical-articles/quick-start-calling-admin-api-2x-using-python',
           },
           {
             from: '/reference/admin-api/admin-api-1.x/installation-for-odsapi-5x-6x/admin-api-1x-docker-installation',
@@ -657,6 +686,27 @@ const config = {
           },
         ],
         createRedirects(existingPath) {
+          // Admin API getting-started folders were renamed to drop the
+          // relative "-newer" / "-older" suffixes, which went stale on every
+          // release. Keep the previously published URLs working.
+          const adminApiVersionFolderRenames = [
+            [
+              '/reference/admin-api/getting-started/admin-api-2.2',
+              '/reference/admin-api/getting-started/admin-api-2.2-older',
+            ],
+            [
+              '/reference/admin-api/getting-started/admin-api-2.3',
+              '/reference/admin-api/getting-started/admin-api-2.3-newer',
+            ],
+          ];
+          for (const [current, previous] of adminApiVersionFolderRenames) {
+            if (
+              existingPath === current ||
+              existingPath.startsWith(`${current}/`)
+            ) {
+              return [previous + existingPath.slice(current.length)];
+            }
+          }
           if (existingPath.includes('/reference/ed-fi-api')) {
             return [
               existingPath.replace(

@@ -2,7 +2,7 @@
 sidebar_position: 0
 ---
 
-# Installation - v2.3 and later
+# Installation - v2.4 and later
 
 ## About
 
@@ -12,7 +12,7 @@ Ed-Fi ODS Admin API provides support for both ODS/API 7.x and ODS/API 6.x produc
 
 Below are pages that support the installation Admin API 2.x (NOTE: You will need to complete installation steps before completing the first time config):
 
-* [Admin API 2.3 - Docker installation](docker-installation.md)
-* [Admin API 2.3 - IIS Installation (PowerShell)](iis-installation-powershell.md)
-* [Admin API 2.3 - IIS Installation (Manual)](./iis-installation-manual.md)
-* [First-Time Configuration for Admin API 2.3](../first-time-configuration.md)
+* [Admin API 2.4 - Docker installation](docker-installation.md)
+* [Admin API 2.4 - IIS Installation (PowerShell)](iis-installation-powershell.md)
+* [Admin API 2.4 - IIS Installation (Manual)](./iis-installation-manual.md)
+* [First-Time Configuration for Admin API 2.4](../first-time-configuration.md)
