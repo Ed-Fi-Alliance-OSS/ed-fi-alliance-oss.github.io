@@ -303,7 +303,7 @@ the table structure has changed. Ed-Fi API v8 uses dedicated tables per
 resource, schema-qualified per project (e.g., `edfi.School`, `edfi.Student`);
 however, there are structural changes. Existing SQL queries against ODS tables
 will need to be updated. See
-[Relational Data Model](../technical-articles/relational-data-model.md) for the
+[Relational Data Model](../technical-articles/relational-data-model.mdx) for the
 new schema structure.
 
 ### Feature Availability

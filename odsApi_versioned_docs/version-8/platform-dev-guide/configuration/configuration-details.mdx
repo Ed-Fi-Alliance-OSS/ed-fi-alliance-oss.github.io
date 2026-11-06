@@ -693,3 +693,40 @@ provider.
   | ----------- | --------------------------------- |
   | Default     | `128`                             |
   | Description | Maximum length for client secrets |
+
+The following settings control how the Configuration Service keeps its token
+signing keys in memory. They apply only in self-contained mode, aren't mapped in
+the Docker Compose files, and are checked at startup: the Configuration Service
+doesn't start when a value is out of range. See
+[Configuration Service Signing Keys](../../technical-articles/caching-strategy.md#configuration-service-signing-keys).
+
+- **`IdentitySettings:SigningKeyRefreshIntervalSeconds`**
+
+  |             |                                                                                                                           |
+  | ----------- | ------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `300`                                                                                                                     |
+  | Description | Seconds between scheduled reloads of the signing keys. Each wait varies by up to 10 percent. Must be from `30` to `43200` |
+
+- **`IdentitySettings:SigningKeyMaxStalenessSeconds`**
+
+  |             |                                                                                                                                                                                                                                                                                                                                                         |
+  | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `3600`                                                                                                                                                                                                                                                                                                                                                  |
+  | Description | Age, in seconds, at which the loaded signing keys are no longer trusted. Until a reload succeeds, requests that need a bearer token and the JWKS endpoint get `503`, and introspection reports every token as inactive. Issuing and revoking tokens aren't affected. Must be at least twice `SigningKeyRefreshIntervalSeconds` and no more than `86400` |
+
+- **`IdentitySettings:SigningKeyUnknownKeyRefreshCooldownSeconds`**
+
+  |             |                                                                                                                                 |
+  | ----------- | ------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `30`                                                                                                                            |
+  | Description | Minimum seconds between the end of a load and a reload caused by a token signed with an unknown key. Must be from `1` to `3600` |
+
+- **`IdentitySettings:SigningKeyLoadTimeoutSeconds`**
+
+  |             |                                                                                                                                                       |
+  | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `10`                                                                                                                                                  |
+  | Description | Seconds after which a signing key load is cancelled and counted as failed. Must be from `1` to `60`, and less than `SigningKeyRefreshIntervalSeconds` |
+
+`IdentitySettings:KeyFormatCacheSize` is no longer read. Remove it from your
+configuration; it has no effect.
