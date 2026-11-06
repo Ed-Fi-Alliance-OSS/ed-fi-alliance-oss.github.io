@@ -104,11 +104,12 @@ Configuration Service; the goal is full parity in a future release.
 
 ### Key Features
 
-- **Support for the Admin API `v3` mode**: Manage vendors, applications, API
-  clients, claim sets (including import and export), profiles, data stores, and
-  education organizations in environments that run Admin API in `v3` mode. In
-  those environments, the user interface says _Data Stores_ instead of _ODS
-  instances_.
+- **Support for the Management API `v3` mode**: Manage vendors, applications,
+  API clients, claim sets (including import and export), profiles, data stores,
+  and education organizations in environments that run Admin API in `v3` mode,
+  as well as support for the Configuration Management Service that accompanies
+  Ed-Fi API v8. In those environments, the user interface says _Data Stores_
+  instead of _ODS instances_.
 - **Multiple credentials per application**: A new credentials page under each
   application lets you list, view, create, edit, reset, and delete its
   credential sets, which makes key rotation easier. New and reset secrets are
@@ -185,8 +186,12 @@ Configuration Service; the goal is full parity in a future release.
   client credentials flow (`/connect/register` and `/connect/token`). The
   Keycloak Docker Compose files, the `env-idp.example` templates and the
   related installer options have been removed. There is no in-place upgrade
-  path; deployments using an external identity provider must move to the
-  built-in authentication first.
+  path; deployments using an external identity provider must register clients
+  against Admin API's built-in authentication first, following
+  [First-Time Configuration](/reference/admin-api/getting-started/admin-api-2.4/first-time-configuration).
+  Note this is separate from the Admin App identity providers below, which
+  govern who signs in to Admin App rather than how Admin API authenticates
+  clients.
 - **Endpoint renames**: `apiclients` is now `apiClients` in both `v2` and `v3`.
   In `v3`, `odsInstances` is `dataStores`, and instance-management routes moved
   to `/v3/dataStores/manage` and `/v2/odsInstances/manage`.
