@@ -37,3 +37,18 @@
 _Recommended pattern for usage of the Ed-Fi API by a data consuming application_
 
 * For clients retrieving data from the ODS/API, use Change Queries when available to optimize the data retrieval process. For more information, see [Using the Changed Record Queries](/reference/ed-fi-api/client-developers-guide/using-the-changed-record-queries)
+
+## Independent Security Review
+
+* Have your integration, and the product around it, reviewed by an independent third-party security reviewer before go-live and again after significant changes. Ed-Fi certification and badges test conformance to the Data Standard and best practices; they are not an attestation of your product's security. Ed-Fi does not endorse specific reviewers or standards.
+* A review can help you:
+  * Find issues your own team may overlook, such as credential handling, over-broad access scoping, tenant isolation gaps, and sensitive data in logs.
+  * Verify that the practices in this playbook are implemented in the shipped product, not only intended in the design.
+  * Show agencies and districts, who often ask for evidence of security posture during procurement, that student data is protected.
+  * Fix problems before go-live, when they are far cheaper to address.
+* Skipping a review puts you at risk of:
+  * Exposing student data (PII), with the FERPA and state privacy law consequences that follow.
+  * Leaking one district's data to another in a multi-district product.
+  * Compromising stored credentials, which can open the APIs of many agencies at once.
+  * Assuming an Ed-Fi credential covers security when it does not.
+  * Contract termination, reputational damage, and lost sales when agencies require security evidence.
