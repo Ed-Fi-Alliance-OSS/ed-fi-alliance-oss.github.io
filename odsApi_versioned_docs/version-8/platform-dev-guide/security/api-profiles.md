@@ -131,7 +131,7 @@ server and can't be named in a Profile.
 :::info
 
 The Profile XML schema is available in the source code repository at
-[API-Profile.xsd](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/main/src/config/datamodel/EdFi.DmsConfigurationService.DataModel/Schema/Ed-Fi-ODS-API-Profile.xsd).
+[API-Profile.xsd](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/src/config/datamodel/EdFi.DmsConfigurationService.DataModel/Schema/Ed-Fi-ODS-API-Profile.xsd).
 This file serves as a useful reference when authoring profile definitions.
 
 :::

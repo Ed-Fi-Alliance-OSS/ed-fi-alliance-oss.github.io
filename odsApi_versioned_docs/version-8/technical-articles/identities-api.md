@@ -420,7 +420,7 @@ all, not which people it can see. Answer a request the client isn't allowed with
 `NotFound`.
 
 The
-[Ed-Fi API Identity implementer guide](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/main/src/dms/core/EdFi.DataManagementService.Identity/IDENTITY.md)
+[Ed-Fi API Identity implementer guide](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/src/dms/core/EdFi.DataManagementService.Identity/IDENTITY.md)
 in the Ed-Fi API repository has the complete contract and an end-to-end sample
 provider. See
 [Building a Plugin](../platform-dev-guide/extensibility-customization/plugins.md#building-a-plugin)

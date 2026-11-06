@@ -54,7 +54,7 @@ the relational tables. If a cached copy is missing or out of date, the Ed-Fi
 API falls back to the relational tables, so responses are unchanged. The
 DocumentCache is off by default, is enabled per data store, and includes a
 command-line tool for administration. See
-[DocumentCache](../platform-dev-guide/features/document-cache.md) for details.
+[DocumentCache](../platform-dev-guide/features/document-cache.md).
 
 ### Data Integration
 
@@ -70,14 +70,13 @@ Queries](../platform-dev-guide/features/changed-record-queries.md) for details.
 
 #### Event Streaming with Kafka
 
-Ed-Fi API v8.1 can publish every change to resource data as an event on Apache
-Kafka, so downstream systems can react to changes without polling the API.
-Changes are captured from the database with Debezium, on both PostgreSQL and
-SQL Server. Each event carries the complete resource as plain JSON, and a
-deleted resource appears as a tombstone event. Streaming is off by default and
-requires the DocumentCache. See [Event Streaming with
-Kafka](../platform-dev-guide/features/event-streaming-kafka-cdc.md) for
-details.
+Ed-Fi API v8.1 can stream resource data to Apache Kafka, so downstream systems
+can react to changes without polling the API. Changes are captured from the
+database with Debezium, on both PostgreSQL and SQL Server. Each data store gets
+one topic that holds the latest state of each resource, as plain JSON, rather
+than a log of every change. A deleted resource appears as a tombstone.
+Streaming is off by default and requires the DocumentCache. See [Event
+Streaming with Kafka](../platform-dev-guide/features/event-streaming-kafka-cdc.md).
 
 ### Security and Access Control
 
@@ -166,5 +165,5 @@ for details.
 
 Implementing extensions in Ed-Fi API v8.1 requires implementers to update to
 [MetaEd IDE v4.9](/reference/metaed) or higher. Refer to [MetaEd 4.9 What's
-New](/reference/metaed/releases/) for details on latest updates and
+New](/reference/metaed/releases/4.9.1) for details on latest updates and
 improvements.

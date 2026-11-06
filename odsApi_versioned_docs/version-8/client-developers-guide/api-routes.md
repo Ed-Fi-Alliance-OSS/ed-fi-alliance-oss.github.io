@@ -52,6 +52,9 @@ including your tenant and route qualifier segments; its `urls` object lists
 them. If you request it at the bare root of a multi-tenant or qualified host,
 the URLs contain `{tenant}` and qualifier placeholders instead.
 
+On a multi-tenant host, a `/metadata` route that leaves out the tenant or any
+route qualifier returns `404`. Use the URLs from the discovery document.
+
 | Route | Purpose |
 | --- | --- |
 | `/` | Discovery document: API version, data models, and `urls` |

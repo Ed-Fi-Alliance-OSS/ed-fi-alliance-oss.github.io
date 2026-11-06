@@ -157,7 +157,7 @@ Ed-Fi package feed:
 ```shell title=".env"
 USE_API_SCHEMA_PATH=true
 API_SCHEMA_PATH=/app/ApiSchema
-SCHEMA_PACKAGES='[{"name":"EdFi.DataStandard52.ApiSchema","version":"1.0.335","feedUrl":"https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json"},{"name":"EdFi.DataStandard52.TPDM.ApiSchema","version":"1.0.335","feedUrl":"https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json"}]'
+SCHEMA_PACKAGES='[{"name":"EdFi.DataStandard52.ApiSchema","version":"1.0.335","feedUrl":"https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi%40Release/nuget/v3/index.json"},{"name":"EdFi.DataStandard52.TPDM.ApiSchema","version":"1.0.335","feedUrl":"https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi%40Release/nuget/v3/index.json"}]'
 ```
 
 Keep the `SCHEMA_PACKAGES` value on a single line, as in the example.
