@@ -397,8 +397,8 @@ To cut off a client, for example one whose credentials were compromised:
    (`CacheSettings:ApplicationContextCacheExpirationSeconds`, 10 minutes by
    default), or right away after a restart. Resetting the credentials or
    setting `isApproved` to `false` doesn't do this. Requests that don't need
-   the client's details, such as most deletes and change queries, can keep
-   succeeding until the token expires.
+   the client's details, such as most `DELETE`, `/deletes` and `/keyChanges`
+   requests, can keep succeeding until the token expires.
 
 ## Rate Limits on `/connect` Endpoints
 

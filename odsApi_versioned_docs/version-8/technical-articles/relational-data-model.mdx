@@ -205,13 +205,23 @@ Triggers store it in `ContentVersion` on `dms.Document` and on the root table
 collection or an extension counts as a change to the resource. An update that
 changes nothing doesn't get a new version.
 
+The exception is a DocumentCache representation restamp, which a release's
+upgrade instructions can call for when you migrate a database in place (see the
+in-place migration steps in
+[Database Provisioning](../platform-dev-guide/utilities/database-provisioning.md#recording-a-validated-migration-ddl-re-stamp)).
+It gives each resource it covers a new `ContentVersion` and
+`ContentLastModifiedAt` without changing its content, so incremental extracts
+and Changed Record Queries return those resources again.
+
 When a resource is deleted, or its identity values change, the triggers also add
 a row to that resource's table in the `tracked_changes_<schema>` schema, such as
-`tracked_changes_edfi.StudentSchoolAssociation`. The row holds the old and new
-identity values (the new values are empty for a delete), the values that
-authorization needs, the resource `Id`, its `DocumentId` and the
-`ChangeVersion`. All descriptors share `tracked_changes_edfi.Descriptor`. These
-rows have no foreign keys, so the history remains after the resource is deleted.
+`tracked_changes_edfi.StudentSchoolAssociation`. The row has an `Old` and a
+`New` column for each identity value, such as `OldEntryDate` and `NewEntryDate`;
+the `New` columns are `NULL` for a delete. It also holds the values that
+authorization needs, the resource `Id`, its `DocumentId`, the `ChangeVersion`,
+and `CreatedAt`, when the row was written. All descriptors share
+`tracked_changes_edfi.Descriptor`. These rows have no foreign keys, so the
+history remains after the resource is deleted.
 
 See
 [Changed Record Queries](../platform-dev-guide/features/changed-record-queries.md)

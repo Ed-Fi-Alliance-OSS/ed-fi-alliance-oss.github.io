@@ -24,8 +24,8 @@ This has three consequences:
   an Instance](#warming-up-an-instance).
 - Restarting an instance empties its caches.
 
-When several requests need the same missing or expired entry at once, they
-share one fetch instead of each calling the Configuration Service or the
+When several requests need the same missing or expired entry at once, most
+caches share one fetch instead of each calling the Configuration Service or the
 database.
 
 A failed fetch is never cached. The next request that needs the value tries
@@ -61,11 +61,11 @@ following times:
 | Claim set or its authorization rules | 10 minutes | Call `reload-claimsets` on each instance, or restart them |
 | An API client's data store assignments, claim set, education organizations or namespace prefixes | The client's next token (at most the token lifetime) | The client requests a new token |
 | An API client's ownership tokens, or a deleted API client | 10 minutes | Restart the instances |
-| A profile, or the profiles assigned to an application | 30 minutes | Restart the instances |
+| A profile, or the profiles assigned to an application | 30 minutes; up to an hour for a new profile | Restart the instances |
 | A data store's settings or connection string | 10 minutes | Restart the instances |
 | A rotated secret in a connection string | 15 minutes (5 in the Configuration Service, then 10) | Restart the Configuration Service, then the Ed-Fi API instances |
 | A new tenant, for the Identities API | 60 seconds | — |
-| A new signing key at the identity provider | 24 hours | Restart the instances |
+| A new signing key at the identity provider | About 24 hours, not guaranteed | Restart the instances |
 | A new Data Standard version or extension | Only after a restart | Provision a new database, then restart |
 | A database provisioned or repaired after the Ed-Fi API's check failed | Only after a restart | Restart the instances |
 
@@ -80,8 +80,10 @@ cover.
 **Holds:** the calling API client's application and its ownership tokens
 (`CreatorOwnershipTokenId` and `OwnershipTokenIds`), known internally as the
 _application context_. The Ed-Fi API needs it to read, create or update
-resources, for a `DELETE` or change query that uses ownership-based
-authorization, and for every [Identities API](./identities-api.md) request.
+resources, including change queries with `minChangeVersion`, for
+`/oauth/token_info`, for a `DELETE`, `/deletes` or `/keyChanges` request that
+uses ownership-based authorization, and for every [Identities
+API](./identities-api.md) request.
 There is one entry for each client in each tenant.
 
 The client's data store assignments, claim set, education organizations and
@@ -100,8 +102,9 @@ within 10 minutes or when the instance restarts.
 **Failure:** if the Configuration Service can't be reached while the entry isn't
 cached, a request that needs the entry fails with `503` and the problem type
 `urn:ed-fi:api:service-unavailable`. Requests that don't need it, such as most
-deletes and change queries, aren't affected. A client that the Configuration
-Service doesn't know, for example one that was deleted, gets `401`.
+`DELETE`, `/deletes` and `/keyChanges` requests, aren't affected. A client that
+the Configuration Service doesn't know, for example one that was deleted, gets
+`401`.
 
 ### Claim Sets
 
@@ -131,8 +134,11 @@ application with no profiles is cached as well.
 **Lifetime:** `CacheSettings:ProfileCacheExpirationSeconds`, `1800` (30 minutes)
 by default.
 
-**Refresh:** expiry or restart. A new or changed profile, or a change to an
-application's profiles, can take up to 30 minutes to reach an instance.
+**Refresh:** expiry or restart. A changed profile, or a change to an
+application's profiles, can take up to 30 minutes to reach an instance. A new
+profile can take up to an hour: the profile definitions and each
+application's assignments expire separately, so an assignment refreshed before
+the definitions can leave out the new profile for another 30 minutes.
 
 **Failure:** if the Configuration Service can't return profile data, the
 request fails with `503` and the problem type
@@ -204,9 +210,10 @@ fetches them sooner only when the issuer in the metadata doesn't match
 `JwtAuthentication:RefreshIntervalMinutes` (60 minutes by default).
 
 A new signing key doesn't trigger a refresh. Before the identity provider starts
-signing tokens with a new key, restart the Ed-Fi API instances, or wait up to 24
-hours for the automatic refresh. Until then, tokens signed with the new key get
-`401`.
+signing tokens with a new key, restart the Ed-Fi API instances. The automatic
+refresh runs in the background after the interval has passed, so waiting about
+24 hours usually picks up the key but doesn't guarantee it. Until the Ed-Fi API
+has the key, tokens signed with it get `401`.
 
 The Ed-Fi API also remembers each access token it has validated, for up to
 `JwtAuthentication:ValidatedTokenCacheEntryMaxLifetimeSeconds` (300 seconds by
@@ -281,8 +288,11 @@ stops trusting it. Until a load succeeds:
 - Issuing and revoking tokens still work.
 
 The Ed-Fi API's own calls to the Configuration Service fail during that time
-too. Ed-Fi API requests that need a value it hasn't cached, such as any request
-from a client it hasn't seen recently, fail with `503`.
+too. At first, only Ed-Fi API requests that need a value it hasn't cached, such
+as any request from a client it hasn't seen recently, fail with `503`. Once the
+Ed-Fi API's cached [claim sets](#claim-sets) expire, within 10 minutes, every
+resource request fails with `500` until the Configuration Service loads its
+signing keys again.
 
 | Setting | Default | What it does |
 | --- | --- | --- |

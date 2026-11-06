@@ -350,9 +350,9 @@ error.
 
 At provisioning time, `api-schema-tools` records a **fingerprint** of the
 effective schema in a single row of the `dms.EffectiveSchema` table. The
-Ed-Fi API reads this fingerprint on first use and compares it to the schema it
-loaded, guaranteeing that the running service and the database agree on exactly
-one effective schema.
+Ed-Fi API reads this fingerprint at startup, or on first use for a data store
+added later, and compares it to the schema it loaded, guaranteeing that the
+running service and the database agree on exactly one effective schema.
 
 The check runs before any data-resource request is served:
 
