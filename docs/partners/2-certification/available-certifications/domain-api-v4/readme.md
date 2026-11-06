@@ -1,12 +1,19 @@
 # Ed-Fi Domain API for Data Standard v4 Certification
 
-Certification Name: Ed-Fi Assessment Outcomes API for Suite 3\
+:::warning
+
+The  Ed-Fi Domain API for Data Standard v4 Certification is no longer supported. Please refer to
+[Ed-Fi Domain API for Data Standard V5 Certification](https://docs.ed-fi.org/partners/certification/available-certifications/domain-api-v5/). 
+
+:::
+
+Certification Name: Ed-Fi Domain API for Data Standard v4\
 Standards Referenced: \
    Ed-Fi API Design & Implementation Guidelines v3.1\
 Technical Suite: Suite 3\
 Obsoletes: –\
 Obsoleted By: –\
-Status: Active
+Status: No longer supported
 
 Certifying Organization: Ed-Fi Alliance\
 Contact: [certification@ed-fi.org](mailto:certification@ed-fi.org)\
@@ -16,7 +23,7 @@ Last Revision Date: –
 
 ## Overview and Purpose
 
-The Ed-Fi Domain API for Suite 3 Certification verifies that a source system
+The Ed-Fi Domain API for Data Standard v4 Certification verifies that a source system
 (the provider) can manage a core set of domain data on a target system (the
 consumer) using the RESTful APIs.
 

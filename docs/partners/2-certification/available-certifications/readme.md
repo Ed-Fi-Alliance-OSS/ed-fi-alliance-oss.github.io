@@ -8,6 +8,7 @@ The Ed-Fi Alliance provides the following certifications:
 * [Ed-Fi Assessment Outcomes API for Data Standard v4 Certification](./assessment-v4/readme.md)
 * [Ed-Fi Domain API for Data Standard v5 Certification](./domain-api-v5/readme.md)
 * [Ed-Fi Domain API for Data Standard v4 Certification](./domain-api-v4/readme.md)
+* [Ed-Fi Intervention API for Data Standard v5 Certification](./intervention-v5/readme.md) (draft, under community review)
 * [Non-Ed-Fi Alliance Certifications](./non-ed-fi-alliance-certifications/readme.md)
 
 Older certifications:

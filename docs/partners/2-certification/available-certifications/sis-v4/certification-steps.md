@@ -1,5 +1,12 @@
 # Student Information Systems API for Data Standard v4 Certification - Steps
 
+:::warning
+
+The  Ed-Fi SIS API for Data Standard v4 Certification is no longer supported. Please refer to
+[Ed-Fi Student Information Systems API for Data Standard V5 Certification](https://docs.ed-fi.org/partners/certification/available-certifications/sis-v5/). 
+
+:::
+
 ## I. Pre-Certification Documentation
 
 The following documentation MUST be received by the Ed-Fi Alliance prior to
