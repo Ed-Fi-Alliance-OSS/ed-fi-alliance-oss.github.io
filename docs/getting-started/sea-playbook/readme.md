@@ -90,7 +90,7 @@ Below, please find links to additional KB articles that your teams will find hel
   * [Guidelines and Expectations for States Using Ed-Fi Standards](./data-governance/guidelines-and-expectations-for-states-using-ed-fi-standards.md)
   * [Overview of Ed-Fi Data Domains](./data-governance/overview-of-ed-fi-data-domains/readme.md)
 * [Implementation](./implementation/readme.md)
-  * [API Overview](./implementation/api-overview.md)
+  * [API Overview](./implementation/api-overview/readme.md)
   * [Elements of an Ed-Fi Architecture](./implementation/elements-of-an-ed-fi-architecture.md)
   * [Hardware and Software Recommendations](./implementation/hardware-and-software-recommendations.md)
   * [Ed-Fi Installation Environments](./implementation/ed-fi-installation-environments.md)
