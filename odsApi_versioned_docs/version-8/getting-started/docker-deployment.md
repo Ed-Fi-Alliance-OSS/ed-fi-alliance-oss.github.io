@@ -10,8 +10,11 @@ scripts in the Ed-Fi API repository.
 
 ## Step 1 — Clone the Repository
 
+Clone the `v8.1.0` release tag, so the scripts and the images they build match
+this documentation:
+
 ```powershell
-git clone https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service.git
+git clone --branch v8.1.0 https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service.git
 cd Data-Management-Service
 ```
 

@@ -80,6 +80,28 @@ its configuration from the Configuration Service.
 the Ed-Fi API can't get a token and can't read its configuration. See
 [Configuration Details](./configuration-details.mdx).
 
+### Clients that aren't API clients
+
+A client that wasn't created as an API client through the Configuration
+Service has no `dmscs.ApiClient` row. The self-contained provider accepts such a
+client only if it's an administrative client:
+
+- It holds the role named by `IdentitySettings:ConfigServiceRole`.
+- It's registered with at least one scope, and every one of them is a
+  Configuration Service admin scope.
+- `IdentitySettings:ConfigServiceRole` and `IdentitySettings:ClientRole` are
+  different roles. Names that differ only in case or width, such as
+  `cms-client` and `CMS-Client`, count as the same, and then every client
+  without an `ApiClient` row is refused, including the client the Ed-Fi API
+  uses to read its configuration.
+
+Clients registered through `/connect/register`, and the client the Docker
+Compose scripts create for the Ed-Fi API, meet these conditions. Any other
+client without an `ApiClient` row is refused at `/connect/token`,
+`/connect/revoke` and `/connect/introspect` with `invalid_client`. Give it the
+role and only admin scopes, or re-create it. With Keycloak, these rules don't
+apply.
+
 ### Access token management
 
 The self-contained provider stores every access token it issues. It limits how

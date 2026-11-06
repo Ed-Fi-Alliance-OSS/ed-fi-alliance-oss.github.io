@@ -22,7 +22,7 @@ Install the .NET 10 SDK and ensure the .NET global tools directory is on your
 release line you deploy:
 
 ```shell
-dotnet tool install --global EdFi.Api.SecurityMetadataTools --version <major>.<minor>.* --add-source https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json
+dotnet tool install --global EdFi.Api.SecurityMetadataTools --version <major>.<minor>.* --add-source https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi%40Release/nuget/v3/index.json
 ```
 
 Replace `<major>.<minor>.*` with `8.1.*` for the latest stable patch on the 8.1
@@ -104,7 +104,7 @@ These checks don't change how the Configuration Service loads claims. For
 fragment examples, see [Claims
 Fragments](../../how-to-guides/how-to-create-and-manage-api-security-metadata.mdx#claims-fragments).
 For the full input restrictions, see the [tool
-README](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/main/src/config/clis/EdFi.DmsConfigurationService.SecurityMetadataTools/README.md#complete-document-and-merge-restrictions).
+README](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/src/config/clis/EdFi.DmsConfigurationService.SecurityMetadataTools/README.md#complete-document-and-merge-restrictions).
 
 ## Prepare, Inspect, Deploy, and Verify
 
@@ -249,7 +249,7 @@ local `DefaultAuthorization`, and `ClaimSets` declarations.
 Conversion is verified against an export from the standard ODS/API **7.3.2**,
 Data Standard **5.2.0** security seed, without extensions or optional feature
 scripts. See the [acceptance fixture and reproduction
-instructions](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/tree/main/src/config/clis/EdFi.DmsConfigurationService.SecurityMetadataTools.Tests.Unit/Fixtures/OdsSecurityMetadata)
+instructions](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/tree/v8.1.0/src/config/clis/EdFi.DmsConfigurationService.SecurityMetadataTools.Tests.Unit/Fixtures/OdsSecurityMetadata)
 for source revisions, database and deployment-tool versions, export commands,
 hashes, and expected JSON. This verification covers that specific export format;
 it does not establish support for other ODS/API versions.

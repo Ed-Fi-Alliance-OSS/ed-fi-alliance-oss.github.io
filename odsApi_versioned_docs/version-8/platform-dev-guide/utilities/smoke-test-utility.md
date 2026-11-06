@@ -167,12 +167,9 @@ described next.
 The SDK tests also need a compiled SDK library. Use
 `EdFi.OdsApi.Sdk.dll` from the `EdFi.Suite3.OdsApi.TestSdk.Standard.5.2.0`
 package (version `7.3.20160`); an `EdFi.Suite3.OdsApi.TestSdk.Standard.6.1.0`
-package is also published for Data Standard 6.1. Both are on the Ed-Fi
-pre-release feed
-(`https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json`).
-To download one, run the installation script with these changes:
+package is also published for Data Standard 6.1. Both are on the Ed-Fi release
+feed. To download one, run the installation script with these changes:
 
-- Set `$feed` to the pre-release feed URL above.
 - Set `$id = "edfi.suite3.odsapi.testsdk.standard.5.2.0"` and
   `$version = "7.3.20160"`. For a Data Standard 6.1 deployment, use
   `$id = "edfi.suite3.odsapi.testsdk.standard.6.1.0"` instead.

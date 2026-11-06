@@ -25,7 +25,7 @@ developers evaluating or implementing Ed-Fi API v8.
 | Requirement | Minimum Version | Notes |
 | --- | --- | --- |
 | Docker Desktop or Podman Desktop | Latest stable | Docker Compose v2 required |
-| PowerShell | 7.4 | Cross-platform; required to run the provided startup scripts |
+| PowerShell | 7.4 | Run the startup scripts in PowerShell 7 (`pwsh`), not Windows PowerShell 5.1. The steps in this guide need 7.4 or later. [Kafka event streaming](../platform-dev-guide/features/event-streaming-kafka-cdc.md), which this guide doesn't set up, needs 7.5 or later. |
 | .NET SDK | 10.0 | Required on first run (the scripts build the `api-schema-tools` CLI) |
 | Git | Any | For cloning the source repository |
 | PostgreSQL _or_ SQL Server | PostgreSQL 18 (Ed-Fi API) and 15 (Configuration Service); SQL Server 2025 | Choose one database engine. Only needed if you use your own database server; the Docker Compose files include both. A PostgreSQL Ed-Fi API database must be UTF-8. See [Database Requirements](../platform-dev-guide/utilities/database-provisioning.md#database-requirements) |

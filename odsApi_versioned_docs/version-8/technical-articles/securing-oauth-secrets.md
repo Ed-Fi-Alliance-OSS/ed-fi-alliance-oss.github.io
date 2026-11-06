@@ -59,7 +59,7 @@ self-contained identity provider does not retain one. If a secret is lost or
 exposed, reset the credentials and replace the client's stored value.
 
 The implementation is in
-[`src/config/backend/EdFi.DmsConfigurationService.Backend.OpenIddict/Services/ClientSecretHasher.cs`](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/main/src/config/backend/EdFi.DmsConfigurationService.Backend.OpenIddict/Services/ClientSecretHasher.cs).
+[`src/config/backend/EdFi.DmsConfigurationService.Backend.OpenIddict/Services/ClientSecretHasher.cs`](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/src/config/backend/EdFi.DmsConfigurationService.Backend.OpenIddict/Services/ClientSecretHasher.cs).
 
 ### Changing the Iteration Count
 
@@ -124,7 +124,7 @@ The replacement applies only to the self-contained identity provider. Secrets
 already in the database were hashed by the default hasher, so a replacement must
 still verify them, or every existing client must be issued a new secret. See the
 [`EdFi.DmsConfigurationService.Secrets`
-guide](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/main/src/config/contracts/EdFi.DmsConfigurationService.Secrets/README.md#replacing-the-client-secret-hasher)
+guide](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/src/config/contracts/EdFi.DmsConfigurationService.Secrets/README.md#replacing-the-client-secret-hasher)
 for the contract and its rules.
 
 ## Keycloak

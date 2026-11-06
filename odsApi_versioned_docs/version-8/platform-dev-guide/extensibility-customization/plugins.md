@@ -196,9 +196,9 @@ their own `-f` options, after the Configuration Service's base Compose file.
 
 For the exact commands, and for running the fetch as a Kubernetes init
 container, see the Plugins sections of the [operations
-guide](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/main/docs/OPERATIONS.md#plugins)
+guide](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/docs/OPERATIONS.md#plugins)
 and the [Docker Compose
-README](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/main/eng/docker-compose/README.md#loading-plugins)
+README](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/eng/docker-compose/README.md#loading-plugins)
 in the Ed-Fi API repository.
 
 ## Trust
@@ -267,7 +267,7 @@ of these groups:
 
 While you wait for a fix, remove the plugin's name from `Plugins:Allowed` to
 start the service without it. For the full list of failures, see [When a plugin does not
-load](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/main/docs/OPERATIONS.md#when-a-plugin-does-not-load-dms-does-not-start)
+load](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/docs/OPERATIONS.md#when-a-plugin-does-not-load-dms-does-not-start)
 in the operations guide.
 
 ## Compatibility
@@ -295,7 +295,7 @@ not only with the contract packages.
 ## Building a Plugin
 
 This section summarizes the rules for plugin developers. The [plugin developer's
-guide](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/main/src/plugins/EdFi.Api.Plugins/PLUGINS.md)
+guide](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/src/plugins/EdFi.Api.Plugins/PLUGINS.md)
 in the Ed-Fi API repository has the details.
 
 ### Contract Packages
@@ -303,7 +303,7 @@ in the Ed-Fi API repository has the details.
 The contract packages are published to the Ed-Fi Azure Artifacts feed:
 
 ```text
-https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json
+https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi%40Release/nuget/v3/index.json
 ```
 
 | Package | Use in v8.1 | Details |

@@ -375,7 +375,7 @@ There are two practical starting points for a complete policy:
 
 - The `Claims.json` shipped with the Configuration Service for your data
   standard version, in
-  [`Claims/Standards/ds{version}/`](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/tree/main/src/config/backend/EdFi.DmsConfigurationService.Claims/Claims/Standards).
+  [`Claims/Standards/ds{version}/`](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/tree/v8.1.0/src/config/backend/EdFi.DmsConfigurationService.Claims/Claims/Standards).
   Use the file from the release you deploy.
 - The active document downloaded from `GET /management/current-claims` (see
   [Runtime Upload via Configuration Service](#runtime-upload-via-configuration-service)).
@@ -804,7 +804,7 @@ CONFIGURATION_SERVICE_CLAIMS_SOURCE=Embedded
 ```
 
 The
-[`Claims/Standards/ds{version}/Claims.json`](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/tree/main/src/config/backend/EdFi.DmsConfigurationService.Claims/Claims/Standards)
+[`Claims/Standards/ds{version}/Claims.json`](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/tree/v8.1.0/src/config/backend/EdFi.DmsConfigurationService.Claims/Claims/Standards)
 file in the `EdFi.DmsConfigurationService.Claims` project is compiled into the
 Configuration Service assembly as an embedded resource. On startup, if the
 database tables are empty, the service seeds the `ClaimSet`, `ResourceClaim`,

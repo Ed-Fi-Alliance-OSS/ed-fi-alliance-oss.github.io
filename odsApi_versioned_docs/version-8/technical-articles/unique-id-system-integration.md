@@ -174,9 +174,9 @@ or updates a student, staff or contact. The plugin looks up the unique ID in the
 external system and reports whether it exists. Ed-Fi API v8 doesn't ship a
 ready-made validator. Instead, the Ed-Fi API repository includes a worked
 example to build from:
-[`Acme.UniqueIdValidation`](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/tree/main/eng/fixtures/plugins/Acme.UniqueIdValidation).
+[`Acme.UniqueIdValidation`](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/tree/v8.1.0/eng/fixtures/plugins/Acme.UniqueIdValidation).
 The steps below follow that example. The
-[unique ID validation how-to](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/main/docs/UNIQUEID-VALIDATION.md)
+[unique ID validation how-to](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/docs/UNIQUEID-VALIDATION.md)
 in the Ed-Fi API repository has the complete code, how to adapt it, and how to
 move an Ed-Fi ODS/API 7.3 implementation to it.
 

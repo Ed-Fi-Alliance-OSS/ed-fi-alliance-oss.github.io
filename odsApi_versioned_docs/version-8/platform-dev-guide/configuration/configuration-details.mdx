@@ -44,10 +44,10 @@ token authority — see also [Identity Provider](./identity-provider.md).
 
 - **`AppSettings:AuthenticationService`**
 
-  |             |                                                                                                                                                                                                                         |
-  | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-  | Example     | `http://ed-fi-api-config:8081/connect/token`                                                                                                                                                                            |
-  | Description | Token endpoint the Ed-Fi API forwards `/oauth/token` proxy requests to. Must use the container-network hostname in Docker deployments. Set via `SELF_CONTAINED_OAUTH_TOKEN_ENDPOINT` or `KEYCLOAK_OAUTH_TOKEN_ENDPOINT` |
+  |             |                                                                                                                                                                                       |
+  | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Example     | `http://ed-fi-api-config:8081/connect/token`                                                                                                                                          |
+  | Description | Token endpoint the Ed-Fi API forwards `/oauth/token` proxy requests to. Must use the container-network hostname in Docker deployments. Docker Compose env var: `OAUTH_TOKEN_ENDPOINT` |
 
 - **`ConfigurationServiceSettings:ClientSecret`**
 
@@ -295,10 +295,10 @@ token authority — see also [Identity Provider](./identity-provider.md).
 
 - **`DatabaseOptions:IsolationLevel`**
 
-  |             |                                                                                                                                                                                                                                                   |
-  | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-  | Default     | `ReadCommitted`                                                                                                                                                                                                                                   |
-  | Description | Transaction isolation level. Valid values from [`System.Data.IsolationLevel`](https://learn.microsoft.com/en-us/dotnet/api/system.data.isolationlevel). Docker Compose sets it to `RepeatableRead` through the `DATABASE_ISOLATION_LEVEL` env var |
+  |             |                                                                                                                                                                                                                                                                      |
+  | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `ReadCommitted`                                                                                                                                                                                                                                                      |
+  | Description | Transaction isolation level. Valid values from [`System.Data.IsolationLevel`](https://learn.microsoft.com/en-us/dotnet/api/system.data.isolationlevel). Docker Compose env var: `DATABASE_ISOLATION_LEVEL`; the Compose files use `RepeatableRead` when it isn't set |
 
 - **`RateLimit:PermitLimit`**, **`RateLimit:Window`**,
   **`RateLimit:QueueLimit`**
@@ -380,6 +380,20 @@ values for each provider.
   | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
   | Default     | `http://schemas.microsoft.com/ws/2008/06/identity/claims/role`                                                                                                                       |
   | Description | Claim type that carries role values in tokens. Used by endpoints that require a configured role, such as the management endpoints. Docker Compose env var: `DMS_JWT_ROLE_CLAIM_TYPE` |
+
+- **`JwtAuthentication:ClientRole`**
+
+  |             |                                                                                                                                                                                                                                                                                                                                                                                                                              |
+  | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `service`                                                                                                                                                                                                                                                                                                                                                                                                                    |
+  | Description | Role that every access token must carry. A token without it gets `403 Forbidden`. Set it to the role your identity provider gives API clients, such as `dms-client`, the self-contained default (`IdentitySettings:ClientRole`). Empty turns the check off. The local Docker Compose files use `dms-client` when the env var isn't set, and the published ones leave it empty. Docker Compose env var: `DMS_JWT_CLIENT_ROLE` |
+
+- **`JwtAuthentication:AutomaticRefreshIntervalHours`**
+
+  |             |                                                                                                                                                                                                                                   |
+  | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Default     | `24`                                                                                                                                                                                                                              |
+  | Description | How often, in hours, the Ed-Fi API re-fetches the identity provider's metadata and signing keys. A new signing key isn't used until this refresh or a restart. Docker Compose env var: `DMS_JWT_AUTOMATIC_REFRESH_INTERVAL_HOURS` |
 
 - **`JwtAuthentication:ClockSkewSeconds`**
 
@@ -533,9 +547,9 @@ values for each provider.
 - **`SecretsSettings:CacheExpirationSeconds`**,
   **`SecretsSettings:ResolveTimeoutSeconds`**
 
-  |             |                                                                                                                                                                                                                                         |
-  | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-  | Defaults    | `300`, `10`                                                                                                                                                                                                                             |
+  |             |                                                                                                                                                                                                                                          |
+  | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | Defaults    | `300`, `10`                                                                                                                                                                                                                              |
   | Description | How long a resolved `${secret:<name>}` value in a connection string is reused (`0` disables caching), and how long a read waits for the secret resolver plugin. See [Secrets in Connection Strings](./secrets-in-connection-strings.mdx) |
 
 - **`ConnectRateLimit:Enabled`**, **`ConnectRateLimit:SourcePermitLimit`**,

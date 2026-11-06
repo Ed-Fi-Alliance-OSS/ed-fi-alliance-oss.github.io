@@ -82,7 +82,7 @@ Releases](../../getting-started/package-releases.md#ed-fi-api-v810-packages)
 for the current published version.
 
 ```powershell
-$feed = "https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json"
+$feed = "https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi%40Release/nuget/v3/index.json"
 $version = "<published-version>"
 dotnet tool install --global EdFi.Api.SchemaTools --source $feed --version $version
 ```
@@ -318,7 +318,7 @@ To migrate a database in place:
    the same release as the Ed-Fi API and that you passed the same schema files.
 7. If the release's upgrade instructions say API response formats changed,
    run the DocumentCache representation restamp (see the [DocumentCacheAdmin
-   README](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/main/src/dms/clis/EdFi.DataManagementService.DocumentCacheAdmin/README.md#representation-restamp)).
+   README](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/src/dms/clis/EdFi.DataManagementService.DocumentCacheAdmin/README.md#representation-restamp)).
    Re-stamp keeps cached documents, and restarting doesn't clear them.
 8. Run `ddl provision` against the database, restart the services, and test the
    affected API operations before you reopen traffic.
