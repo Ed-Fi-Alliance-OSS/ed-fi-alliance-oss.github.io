@@ -12,3 +12,4 @@ available for use with Ed-Fi API v8.
 - [Bulk Load Client Utility](./bulk-load-client-utility.md)
 - [Ed-Fi API Security Metadata Tools](./security-metadata-tools.md)
 - [Database Provisioning](./database-provisioning.md)
+- [DocumentCache Administration CLI](./document-cache-admin-cli.md)

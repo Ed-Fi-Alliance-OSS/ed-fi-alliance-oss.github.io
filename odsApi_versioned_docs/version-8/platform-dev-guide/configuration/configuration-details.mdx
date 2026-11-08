@@ -195,10 +195,10 @@ token authority — see also [Identity Provider](./identity-provider.md).
 
 - **`DataManagement:DocumentCache`**
 
-  |             |                                                                                                                                                                                                              |
-  | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-  | Default     | No targets; read acceleration off                                                                                                                                                                            |
-  | Description | Configures the optional document cache. Nothing is projected while `Targets` is empty, and cached reads require `ReadAcceleration:Enabled` to be `true`. See [Document Cache](../features/document-cache.md) |
+  |             |                                                                                                                                                                                                                                                              |
+  | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+  | Default     | No targets; read acceleration off                                                                                                                                                                                                                            |
+  | Description | Configures the optional document cache. Nothing is projected while `Targets` is empty, and cached reads require `ReadAcceleration:Enabled` to be `true`. See [DocumentCache settings](#documentcache) and the [feature guide](../features/document-cache.md) |
 
 - **`AppSettings:ReverseProxy:UseForwardedHeaders`**,
   **`AppSettings:ReverseProxy:KnownProxies`**,
@@ -339,6 +339,70 @@ token authority — see also [Identity Provider](./identity-provider.md).
   | ----------- | --------------------------------------------------------------------------------------------------------------------------------------- |
   | Default     | Disabled                                                                                                                                |
   | Description | Exports logs over OpenTelemetry (OTLP). See [OpenTelemetry (OTLP) Log Export](./logging-configuration.md#opentelemetry-otlp-log-export) |
+
+### DocumentCache
+
+All settings below belong under `DataManagement:DocumentCache` in the API's
+configuration. These v8.1.0 defaults leave projection idle and read acceleration
+off. Database activation is a separate administrative step; see
+[DocumentCache](../features/document-cache.md) and the
+[administration CLI](../utilities/document-cache-admin-cli.md).
+
+Restart API instances after changing these settings. Each CLI invocation loads
+its configuration afresh. Durations use .NET `TimeSpan` syntax, such as
+`00:00:00.250` for 250 milliseconds or `1.00:00:00` for one day.
+
+| Setting below `DataManagement:DocumentCache` | Default          | Description and constraints                                                                                                                                             |
+| -------------------------------------------- | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Targets`                                    | `[]`             | Explicit target list; empty means no runtime projection. Entries cannot be null or duplicate a normalized tenant/data-store pair.                                       |
+| `Targets:<n>:TenantKey`                      | `""`             | Empty or null means the default tenant. Comparison is case-insensitive. No leading/trailing whitespace or control characters; must be safe as the `Tenant` HTTP header. |
+| `Targets:<n>:DataStoreId`                    | No valid default | Required positive Configuration Service data store ID.                                                                                                                  |
+| `ReadAcceleration:Enabled`                   | `false`          | Allows fresh cached bodies for eligible resource and descriptor GETs on configured targets.                                                                             |
+| `ReadAcceleration:DirectFillTimeout`         | `00:00:00.250`   | Budget for optional best-effort direct fill after relational fallback. Positive, at most `4294967294` milliseconds.                                                     |
+| `Projector:PollInterval`                     | `00:00:05`       | Positive polling interval.                                                                                                                                              |
+| `Projector:PageSize`                         | `100`            | Positive number of items in a projector page.                                                                                                                           |
+| `Projector:MaxConcurrentTargets`             | `2`              | Positive maximum number of targets projected concurrently by one process.                                                                                               |
+| `Projector:FailureBackoff`                   | `00:00:30`       | Positive wait before retrying after a target-level failure.                                                                                                             |
+| `Projector:BaselineHighWaterMark`            | `1000`           | Baseline projection high-water mark; integer from `1` through `2147483646`.                                                                                             |
+| `Administration:WorkflowTimeout`             | `1.00:00:00`     | Positive total administrative workflow budget (24 hours).                                                                                                               |
+| `Status:StatusObservationTimeout`            | `00:00:05`       | Per-target durable observation budget; positive, at most `4294967294` milliseconds.                                                                                     |
+| `Status:EndpointTimeout`                     | `00:00:30`       | Overall HTTP status endpoint budget; positive, at most `4294967294` milliseconds.                                                                                       |
+| `Status:RequiredRole`                        | Unset            | Single literal role needed to map and authorize `GET /health/document-cache`. Recommended: `dms-client`.                                                                |
+
+Do not set `Targets`, `ReadAcceleration`, `Projector`, `Administration`, or
+`Status` to null. `Status` may be omitted or an object (including `{}`), but
+cannot be a scalar. Invalid configuration fails validation. An invalid
+`Status:RequiredRole` instead leaves the status endpoint unmapped: the role must
+be a single untrimmed token of at most 256 characters, without ASCII whitespace,
+commas, semicolons, quotes, brackets, braces, or control characters. The
+caller's role is read under `JwtAuthentication:RoleClaimType`.
+
+Use these exact .NET environment variable names to override settings. Index `0`
+is the first target; use `1`, `2`, and so on for additional entries.
+
+```ini
+DataManagement__DocumentCache__Targets__0__TenantKey=
+DataManagement__DocumentCache__Targets__0__DataStoreId=1
+DataManagement__DocumentCache__ReadAcceleration__Enabled=false
+DataManagement__DocumentCache__ReadAcceleration__DirectFillTimeout=00:00:00.250
+DataManagement__DocumentCache__Projector__PollInterval=00:00:05
+DataManagement__DocumentCache__Projector__PageSize=100
+DataManagement__DocumentCache__Projector__MaxConcurrentTargets=2
+DataManagement__DocumentCache__Projector__FailureBackoff=00:00:30
+DataManagement__DocumentCache__Projector__BaselineHighWaterMark=1000
+DataManagement__DocumentCache__Administration__WorkflowTimeout=1.00:00:00
+DataManagement__DocumentCache__Status__StatusObservationTimeout=00:00:05
+DataManagement__DocumentCache__Status__EndpointTimeout=00:00:30
+DataManagement__DocumentCache__Status__RequiredRole=dms-client
+```
+
+This example selects data store `1` and enables the protected status endpoint;
+it does not activate the database or enable accelerated reads. The
+`DMS_DOCUMENTCACHE_*` variables used by the
+[optional Docker overlay](../../getting-started/getting-started-appendix.md#optional-documentcache)
+are Compose conveniences, not configuration keys read directly by the API. Set
+.NET variables in the container environment, not merely in the Compose `.env`
+file unless an overlay maps them there.
 
 ### JwtAuthentication
 

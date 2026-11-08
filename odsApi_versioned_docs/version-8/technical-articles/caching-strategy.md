@@ -3,29 +3,31 @@
 The Ed-Fi API keeps much of what it reads from the Configuration Service and the
 database in memory, so that most requests don't wait for another service. This
 article describes each cache, how long a change takes to reach the Ed-Fi API,
-and what to restart to apply a change sooner.
+and what to restart to apply a change sooner. The optional [DocumentCache](#documentcache)
+also stores resource and descriptor JSON durably in each data store.
 
 To see how long a particular change takes, go to [How Long a Change
 Takes](#how-long-a-change-takes).
 
 ## How the Caches Work
 
-The caches are held in the memory of each Ed-Fi API process. There is no Redis
-or other shared cache.
+Most caches are held in the memory of each Ed-Fi API process, without Redis.
+DocumentCache is the exception: it is stored in the database and shared by API
+instances using that data store.
 
-This has three consequences:
+For the in-memory caches, this has three consequences:
 
-- Each Ed-Fi API instance has its own copy of every cache and refreshes it on
+- Each Ed-Fi API instance has its own copy of each in-memory cache and refreshes it on
   its own schedule. Two instances can briefly answer the same request
   differently after a change.
 - Most cache entries are empty until the first request that needs them, which
   then waits while the Ed-Fi API fetches the value. Later requests use the
   cached value until it expires. A few are loaded at startup; see [Warming Up
   an Instance](#warming-up-an-instance).
-- Restarting an instance empties its caches.
+- Restarting an instance empties its in-memory caches.
 
 When several requests need the same missing or expired entry at once, most
-caches share one fetch instead of each calling the Configuration Service or the
+in-memory caches share one fetch instead of each calling the Configuration Service or the
 database.
 
 A failed fetch is never cached. The next request that needs the value tries
@@ -47,6 +49,7 @@ Fingerprint](#schema-fingerprint-and-resource-key-validation).)
 | [Validated tokens](#oidc-metadata-and-signing-keys) | 5 minutes, or less if the token expires sooner | `JwtAuthentication:ValidatedTokenCacheEntryMaxLifetimeSeconds` | No | Expiry or restart |
 | [Schema fingerprint](#schema-fingerprint-and-resource-key-validation) | Process lifetime (primary); 10 minutes (read replicas and snapshots) | `CacheSettings:DerivativeValidationCacheExpirationSeconds` | One for each connection string | Restart (primary); expiry (read replicas and snapshots) |
 | [Identities API tenant list](#identities-api-tenant-list) | 60 seconds, fixed | — | No | Expiry, an unknown tenant, or restart |
+| [DocumentCache](#documentcache) | Durable; no time-based expiry | `DataManagement:DocumentCache` | Per tenant/data-store target | Projector processes durable work; reads may attempt direct fill |
 
 The Configuration Service has caches of its own, described in [Configuration
 Service Caches](#configuration-service-caches).
@@ -308,14 +311,30 @@ Details](../platform-dev-guide/configuration/configuration-details.mdx#identitys
 
 The [DocumentCache](../platform-dev-guide/features/document-cache.md) is
 different from the caches above. It stores ready-made JSON for resources in the
-`dms.DocumentCache` table of each data store's database, so every Ed-Fi API
-instance that uses the database shares it, and a restart doesn't clear it.
+`dms.DocumentCache` table of each data store's database, including descriptor
+bodies. Every Ed-Fi API instance using the database shares it, and a restart
+doesn't clear it.
+
+Canonical writes record durable projection work atomically when the cache's
+lifecycle enables enqueue. The asynchronous projector refreshes cache rows;
+there is no time-based expiry. Projection is idle until targets are configured,
+and read acceleration is separately opt-in (off by default).
+
+Eligible primary-database GETs use only fresh, version-equal rows. Snapshot and
+read-replica requests bypass the cache. Missing or stale rows,
+lifecycle fences, and expected cache availability failures fall back to
+relational reconstruction with the same response semantics. Best-effort direct
+fill may refresh a row after fallback; it is skipped for snapshots and read
+replicas. Cache storage and queued work consume database space. See the
+[feature guide](../platform-dev-guide/features/document-cache.md) for activation,
+status, and recovery procedures.
 
 ## Operating the Caches
 
 ### Running Several Instances
 
-Behind a load balancer, each instance refreshes its caches on its own schedule.
+Behind a load balancer, each instance refreshes its in-memory caches on its own
+schedule. DocumentCache rows are shared through the selected database.
 After a change, some requests can be answered from the old value and some from
 the new one until every instance has refreshed. `reload-claimsets` affects only
 the instance that receives the call, so call it on each instance, or restart
@@ -329,14 +348,14 @@ with the number of instances.
 
 At startup, the Ed-Fi API loads the API schema, the data stores and the claim
 sets, checks the database of each data store, and fetches the OIDC metadata.
-Everything else is cached when it's first needed, so the first requests after a
+Other in-memory entries are cached when first needed, so the first requests after a
 restart can be slower. Sending a few representative requests before you add an
 instance to the load balancer warms it.
 
 ### What a Restart Clears
 
-Restarting an Ed-Fi API instance clears every Ed-Fi API cache, but not the
-DocumentCache, and reloads the API schema. Restarting the Configuration Service
+Restarting an Ed-Fi API instance clears its in-memory caches and reloads the
+API schema. It does not clear DocumentCache. Restarting the Configuration Service
 clears its secret cache and reloads its signing keys.
 
 ### Cache Lifetimes and Removing Access
