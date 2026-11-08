@@ -35,6 +35,39 @@ configuration. Copy `.env.example` to `.env` and edit as needed before running
 | `LOG_LEVEL` | `Information` | Log verbosity: `Debug`, `Information`, `Warning`, `Error` |
 | `DMS_HTTP_PORTS` | `8080` | Port the Ed-Fi API container listens on |
 
+### Optional DocumentCache
+
+The v8.1.0 `eng/docker-compose/local-dms-document-cache.yml` overlay selects one
+DocumentCache target for the API container. Add the following to the local
+`.env` file only when you want to configure projection for a registered data
+store:
+
+```ini
+DMS_DOCUMENTCACHE_COMPOSE_FILE=local-dms-document-cache.yml
+DMS_DOCUMENTCACHE_TARGET_TENANT_KEY=
+DMS_DOCUMENTCACHE_TARGET_DATA_STORE_ID=1
+```
+
+Replace `1` with the Configuration Service ID of the intended data store. Use
+the matching tenant key for a multi-tenant deployment; an empty key selects the
+default tenant.
+
+| Variable | Default | Effect |
+| --- | --- | --- |
+| `DMS_DOCUMENTCACHE_COMPOSE_FILE` | Empty; no overlay | `start-local-dms.ps1` adds this Compose file when starting API services. Relative paths resolve from `eng/docker-compose/`; the file must exist. |
+| `DMS_DOCUMENTCACHE_TARGET_TENANT_KEY` | Empty | Maps to `DataManagement__DocumentCache__Targets__0__TenantKey`. |
+| `DMS_DOCUMENTCACHE_TARGET_DATA_STORE_ID` | Required when using the overlay | Maps to `DataManagement__DocumentCache__Targets__0__DataStoreId`; must be a positive registered data store ID. |
+
+The bootstrap flow uses the startup script to select the overlay. The overlay
+only configures the target: follow the [DocumentCache activation
+guide](../platform-dev-guide/features/document-cache.md#configure-and-activate-a-target)
+to satisfy prerequisites, activate the database, and verify status. Then enable
+`DataManagement__DocumentCache__ReadAcceleration__Enabled=true` in the API
+container environment if accelerated reads are wanted, and recreate the
+container to apply the setting. The supplied overlay does not map a convenience
+variable for this switch; add it to your deployment's Compose environment.
+Putting an unmapped .NET setting in `.env` alone does not pass it to the container.
+
 ### PostgreSQL
 
 | Variable | Default | Description |
