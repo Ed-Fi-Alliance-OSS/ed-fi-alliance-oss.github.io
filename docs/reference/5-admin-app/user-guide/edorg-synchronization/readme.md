@@ -17,10 +17,11 @@ database.
 
 :::warning
 
-This is a **temporary bridge**. Admin App v4.1 is slated to synchronize
-education organizations natively, after which these scripts are unnecessary.
-Use them only for the one-time import of organizations that pre-date the
-Admin App installation.
+This is a **temporary bridge for Admin App v4.0**. Admin App v4.1 synchronizes
+education organizations itself: syncing an environment asks the Admin API to
+refresh them from the ODS. On v4.1, sync the environment instead of running
+these scripts. On v4.0, use them only for the one-time import of organizations
+that pre-date the Admin App installation.
 
 :::
 

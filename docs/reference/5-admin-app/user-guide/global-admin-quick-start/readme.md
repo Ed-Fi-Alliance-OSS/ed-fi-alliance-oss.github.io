@@ -35,7 +35,8 @@ Admin App API, running as the authenticated service-account (machine) user):
 In addition, in the ODS/API's **EdFi_Security** database (by direct SQL):
 
 - A copy of every built-in **claim set** (`SIS Vendor`, `Ed-Fi Sandbox`,
-  `Assessment Vendor`, … — excluding internal-use ones) under an `AA` prefix —
+  `Assessment Vendor`, … — excluding internal-use ones) under an `AA-` prefix
+  (`AA-SIS-Vendor`) —
   the Admin App hides built-in claim sets from the application claim set
   dropdown, so only the copies can be assigned when creating client credentials
 
