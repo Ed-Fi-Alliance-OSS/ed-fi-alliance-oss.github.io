@@ -97,7 +97,7 @@ The script prompts for `-SqlAdminPassword`, `-AppDbPassword`, and the rest, the 
   -AdminUsername 'you@yourorg.com'
 ```
 
-`-IdpProvider` accepts `keycloak`, `microsoft`, `google`, `auth0`, or `other` (a generic OIDC provider you register yourself). Pass `-OidcIssuer` and `-OidcClientId` for `microsoft`, `auth0`, and `other`; for `keycloak` and `google` the issuer is defaulted. For `auth0`, either slash form of the issuer works — the installer normalizes it into the forms each setting expects. In every external-provider example, `-AdminUsername` is the email of the first (bootstrap) administrator — it must exactly match the `email` claim your identity provider returns for that user. See [Configuring an Identity Provider](../../../configuration/identity-provider/readme.md) for how to register the application with each provider.
+`-IdpProvider` accepts `keycloak`, `microsoft`, `google`, `auth0`, or `other` (a generic OIDC provider you register yourself). Pass `-OidcIssuer` and `-OidcClientId` for `microsoft`, `auth0`, and `other`; for `keycloak` and `google` the issuer is defaulted. The issuer must be an HTTPS URL: Admin App 4.1 rejects an `http://` issuer (sign-in returns 404), and `install-all.ps1` warns when `-OidcIssuer` is not HTTPS. For `auth0`, either slash form of the issuer works — the installer normalizes it into the forms each setting expects. In every external-provider example, `-AdminUsername` is the email of the first (bootstrap) administrator — it must exactly match the `email` claim your identity provider returns for that user. See [Configuring an Identity Provider](../../../configuration/identity-provider/readme.md) for how to register the application with each provider.
 
 :::note
 By default the sites use a self-signed certificate (auto-trusted on this machine only). To bind a real certificate, pass `-CertificateThumbprint`, or `-CertificatePfxPath` with `-CertificatePassword` (see [TLS and certificates](./manual.md#tls-and-certificates)). Yopass is off by default; add `-SetupYopassDocker` to stand up a local Yopass via Docker, or `-YopassUrl <url>` to point at an existing one.
@@ -105,9 +105,24 @@ By default the sites use a self-signed certificate (auto-trusted on this machine
 
 `install-all.ps1` is idempotent: if a step fails, fix the cause and re-run. `-SkipPhase1` (skip prerequisites) and `-SkipPhase2` (skip build) speed up re-runs.
 
-To remove an install, use `uninstall.ps1` (generic) and, for the local Keycloak, `uninstall-keycloak.ps1` (removes Keycloak and its startup task, and unsets `JAVA_HOME`; leaves the JDK installed). Against a managed Azure SQL Database, pass the same `-SqlServerHost` and `-SqlAdminUsername`: the database itself is yours and is left untouched, and only the Admin App's contained user is removed.
+The data-encryption key and the session secret live in the `NODE_CONFIG` environment variable of the `EdFi-AdminApp-API` App Pool, and every re-run reads them back from there. If that value has been edited and can no longer be read, the re-run stops at the API deployment instead of generating a new key, which would make the stored ODS/API and Admin API credentials unreadable. To recover, fix `NODE_CONFIG` in IIS Manager (**Configuration Editor**, `system.applicationHost/applicationPools`), or run `05-deploy-api.ps1` with `-DbEncryptionKey` set to the key recorded in `install-summary.txt`. A new session secret is then generated, which signs current users out.
+
+To remove an install, use `uninstall.ps1` (generic) and, for the local Keycloak, `uninstall-keycloak.ps1` (removes Keycloak, its startup task, and its self-signed HTTPS certificate, and unsets `JAVA_HOME`; leaves the JDK installed). Against a managed Azure SQL Database, pass the same `-SqlServerHost` and `-SqlAdminUsername`: the database itself is yours and is left untouched, and only the Admin App's contained user is removed.
 
 For the full list of parameters and configuration options, see the [`windows-install/README.md`](https://github.com/Ed-Fi-Exchange-OSS/Admin-App-Installation-Scripts/blob/main/windows-install/README.md) in the scripts repository, or run `Get-Help .\install-all.ps1 -Full`.
+
+## Upgrade from Admin App 4.0
+
+To move an install made with these scripts from Admin App 4.0.x to 4.1, update your copy of the scripts (`git pull`) and run `install-all.ps1` again with the parameters you used for the install. The re-run keeps the data-encryption key, so the stored ODS/API and Admin API credentials still work, and keeps your teams, environments, and users. With the local Keycloak, it adds the HTTPS listener on port 8443 and moves the Admin App's issuer from `http://localhost:8080/realms/edfi` to `https://localhost:8443/realms/edfi`, because 4.1 accepts only an HTTPS issuer. With an external provider, the issuer must already be HTTPS; `install-all.ps1` warns when `-OidcIssuer` is not.
+
+To stay on 4.0, pass `-AdminAppRef v4.0.1`.
+
+## ODS/API or Admin API with a self-signed certificate
+
+The API verifies the TLS certificate of the ODS/API and Admin API it connects to. When they use a self-signed certificate, as a local ODS/API usually does, adding or syncing an environment fails with `DEPTH_ZERO_SELF_SIGNED_CERT` in the API log (`C:\inetpub\EdFi-AdminApp-API\logs\node-stdout*.log`). Choose one:
+
+- **Trust the certificate (recommended).** Export it as a `.pem` file, set `NODE_EXTRA_CA_CERTS` to that path on the `EdFi-AdminApp-API` App Pool (**Advanced Settings → Environment Variables**), and recycle the pool. Re-runs of `install-all.ps1` keep the value. With the local Keycloak, they combine it with the Keycloak certificate in one bundle, because the variable holds a single file.
+- **Turn verification off, on a local test machine only.** Re-run `install-all.ps1` with `-DisableSslVerification`.
 
 ## First sign-in
 

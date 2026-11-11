@@ -57,7 +57,7 @@ Used by `bootstrap.ps1` to seed the machine user and by `cleanup.ps1`.
 
 | Variable | Default | Description |
 | --- | --- | --- |
-| `API_BASE_URL` | `https://localhost/adminapp-api/api` | Admin App API base URL (through the reverse proxy) |
+| `API_BASE_URL` | `https://localhost/adminapp-api/api` | Admin App API base URL. The default is the Docker deployment's reverse-proxy path; for a Windows install made with the scripts, the API is its own IIS site: use `https://localhost:3443/api` |
 | `TOKEN_URL` | `https://localhost:8443/realms/edfi/protocol/openid-connect/token` | Your issuer's token endpoint (see [Finding your token endpoint](#finding-your-token-endpoint)). Keycloak writes the URL it was called on into the token's issuer, and Admin App v4.1 accepts only an HTTPS issuer, so a token requested on port 8080 is rejected with 401 |
 | `OAUTH_SCOPE` | `login:app` | OAuth scope requested for the machine token (Keycloak: `login:app`) |
 | `TEAM_NAME` | `Quick Start` | Team to create |
@@ -235,10 +235,10 @@ resources instead of duplicating them.
   `TOKEN_URL=https://localhost:8443/realms/edfi/protocol/openid-connect/token`
   and `KEYCLOAK_BASE_URL=https://localhost:8443`.
 - **Environment sync fails with `DEPTH_ZERO_SELF_SIGNED_CERT`.** The Admin App
-  does not trust the self-signed certificate of the Admin API or ODS/API. Add
-  that certificate to the file in the API's `NODE_EXTRA_CA_CERTS`, as described
-  in [Security Considerations](/reference/admin-app/configuration/security-considerations#built-in-protections),
-  and restart the API.
+  does not trust the self-signed certificate of the Admin API or ODS/API. Trust
+  it through the API's `NODE_EXTRA_CA_CERTS`; for a Windows install made with
+  the scripts, see
+  [ODS/API or Admin API with a self-signed certificate](/reference/admin-app/getting-started/admin-app-4.1/windows-iis-installation/automated#odsapi-or-admin-api-with-a-self-signed-certificate).
 - **`Create environment failed: … 403 (Forbidden)`** (or, for Admin API v2
   environments, environment creation reports a failed sync with no clear
   error). The Admin API rejected the Admin App's credential registration at
