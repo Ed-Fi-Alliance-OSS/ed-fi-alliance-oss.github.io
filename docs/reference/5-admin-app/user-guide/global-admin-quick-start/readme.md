@@ -46,7 +46,7 @@ In addition, in the ODS/API's **EdFi_Security** database (by direct SQL):
 | --- | --- |
 | Windows PowerShell 5.1 or PowerShell 7.0+ | |
 | Git | For cloning the scripts repository |
-| Ed-Fi ODS/API and ODS Admin API | Installed and reachable at the URLs configured in `.env` (defaults assume the local stack at `https://localhost`) |
+| Ed-Fi ODS/API and ODS Admin API | Installed and reachable at the URLs configured in `.env` (see [URLs per Deployment](./run-the-quick-start.md#urls-per-deployment)) |
 | Admin API client registration enabled | `Authentication:AllowRegistration=true` in the Admin API's `appsettings.json` while the scripts run — the Admin App registers its **own** client credentials at `POST /connect/register` when creating the environment, so this is required even if a client was already registered manually (previously created clients are not reused). Re-enable it if it was turned off after first-time setup; it can be disabled again afterwards |
 | Ed-Fi Admin App | Deployed with its database migrated (migrations seed the built-in roles the scripts reference — `Global admin`, `Tenant admin`, `Full ownership`) |
 | SQL Server reachable | Both SQL Server databases the scripts touch — the Admin App application database and the ODS/API's `EdFi_Security` — may be local or remote, including a managed Azure SQL Database, which requires SQL authentication; see [Managed Azure SQL Database](./quick-start-appendix.md#managed-azure-sql-database) |

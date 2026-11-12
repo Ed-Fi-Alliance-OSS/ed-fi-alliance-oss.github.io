@@ -20,7 +20,9 @@ database.
 This is a **temporary bridge for Admin App v4.0**. Admin App v4.1 synchronizes
 education organizations itself: syncing an environment asks the Admin API to
 refresh them from the ODS. On v4.1, sync the environment instead of running
-these scripts. On v4.0, use them only for the one-time import of organizations
+these scripts: **Sync Resources** in the environment's actions. This needs an
+environment on Admin API 2.x or later; with the v1 Admin API there is no
+refresh. On v4.0, use them only for the one-time import of organizations
 that pre-date the Admin App installation.
 
 :::

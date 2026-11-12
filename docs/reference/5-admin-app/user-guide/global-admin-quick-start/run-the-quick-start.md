@@ -23,8 +23,10 @@ Copy the example environment file and edit it to match your deployment:
 Copy-Item .env.example .env
 ```
 
-The defaults work for the local Docker stack. Key settings you may want to
-review:
+The URL defaults do not all target the same deployment: the Keycloak URLs point
+at the Keycloak of the Windows install scripts, `API_BASE_URL` at the Docker
+deployment. Set them for yours (see [URLs per Deployment](#urls-per-deployment)).
+Key settings you may want to review:
 
 | Variable | Purpose |
 | --- | --- |
@@ -40,6 +42,19 @@ review:
 
 See the [Appendix](quick-start-appendix) for the full environment variable
 reference.
+
+### URLs per Deployment
+
+| Variable | Docker deployment | Windows install made with the scripts |
+| --- | --- | --- |
+| `KEYCLOAK_BASE_URL` | `https://localhost/auth` | `https://localhost:8443` (default) |
+| `TOKEN_URL` | `https://localhost/auth/realms/edfi/protocol/openid-connect/token` | `https://localhost:8443/realms/edfi/protocol/openid-connect/token` (default) |
+| `API_BASE_URL` | `https://localhost/adminapp-api/api` (default) | `https://localhost:3443/api` |
+
+`ADMIN_API_URL` and `ODS_API_DISCOVERY_URL` are wherever your Admin API and
+ODS/API answer. On an Admin App 4.0 install made before the 4.1 scripts, the
+local Keycloak serves only HTTP: use `http://localhost:8080` in the two
+Keycloak URLs (4.0 accepts an HTTP issuer).
 
 ### Set Up the ODS Instances (`ODSS_JSON`)
 
@@ -110,8 +125,8 @@ application later fails with
    [Set Up the ODS Instances](#set-up-the-ods-instances-odss_json).
 3. **`copy-claimsets.ps1`** — copies every built-in claim set under an `AA-`
    prefix, with spaces turned into hyphens (`SIS Vendor` becomes
-   `AA-SIS-Vendor`, because Admin App v4.1 rejects a claim set name with white
-   space), directly in the ODS/API's
+   `AA-SIS-Vendor`, because the Admin API in v3 mode, which Admin App v4.1
+   uses, rejects a claim set name with white space), directly in the ODS/API's
    `EdFi_Security` database (internal-use claim sets — those flagged
    `ForApplicationUseOnly` in `EdFi_Security`, such as
    `Bootstrap Descriptors and EdOrgs` — are excluded; set `CLAIMSET_NAMES` to
