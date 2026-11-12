@@ -31,3 +31,5 @@ Choose the path that fits how much you want to automate. All three produce the s
 - **[Automated](./automated.md)** — the whole stack in one command (`setup-vm-prereqs.ps1`, then `install-all.ps1`). Best for a fresh machine or a quick stand-up.
 - **[Semi-automated](./semi-automated.md)** — automate some sections and hand-configure others, using the script-to-section map.
 - **[Manual](./manual.md)** — every step by hand, with the exact `web.config` and `production.js`. The authoritative reference for what gets configured.
+
+Already running Admin App 4.0, installed with the scripts? See [Upgrade from Admin App 4.0](./automated.md#upgrade-from-admin-app-40).
