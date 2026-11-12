@@ -6,6 +6,10 @@ sidebar_position: 2
 
 The fastest path: install the whole stack with the PowerShell scripts from the [Admin App Installation Scripts repository](https://github.com/Ed-Fi-Exchange-OSS/Admin-App-Installation-Scripts), with no manual steps. For what each step configures under the hood, see [Manual](./manual.md).
 
+:::tip
+To upgrade an install made with these scripts to Admin App 4.1, see [Upgrade from Admin App 4.0](../../admin-app-4.1/windows-iis-installation/automated.md#upgrade-from-admin-app-40).
+:::
+
 ## Get the scripts
 
 Clone the scripts release for Admin App 4.0, `adminapp-v4.0.1-scripts-v1.1`, into a dedicated parent folder, then open the `windows-install` folder from an elevated PowerShell:

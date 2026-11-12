@@ -118,7 +118,7 @@ To remove an install, use `uninstall.ps1` (generic) and, for the local Keycloak,
 
 For the full list of parameters and configuration options, see the [`windows-install/README.md`](https://github.com/Ed-Fi-Exchange-OSS/Admin-App-Installation-Scripts/blob/main/windows-install/README.md) in the scripts repository, or run `Get-Help .\install-all.ps1 -Full`.
 
-## Upgrade from Admin App 4.0
+## Upgrade from Admin App 4.0 {#upgrade-from-admin-app-40}
 
 An install made with these scripts moves from Admin App 4.0.x to 4.1 with a re-run of `install-all.ps1`, using current scripts and the 4.1 source. The re-run keeps the data-encryption key, so the stored ODS/API and Admin API credentials still work, and keeps your teams, environments, and users.
 
