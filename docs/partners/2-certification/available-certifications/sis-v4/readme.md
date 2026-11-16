@@ -1,13 +1,20 @@
 # Ed-Fi Student Information Systems API for Data Standard v4 Certification
 
+:::warning
+
+The Ed-Fi Student Information Systems API for Data Standard v4 Certification is no longer supported. Please refer to
+[Ed-Fi Student Information Systems API for Data Standard v5 Certification](../sis-v5/readme.md).
+
+:::
+
 Certification Name: Ed-Fi Student Information Systems API for Data Standard v4\
 Standards Referenced:\
    [Ed-Fi Core Student Data API (RFC 16)](https://edfi.atlassian.net/wiki/spaces/EFDSRFC/pages/25362441/ED-FI+RFC+16+-+CORE+STUDENT+DATA+API)\
    [Ed-Fi API Design & Implementation Guidelines    v7.1](https://edfidocs.blob.core.windows.net/$web/assets/partners/certification/Public-REST-API-Design-and-Implementation-Guidelines-Rev2.pdf)\
 Technical Suite: Suite 3\
 Obsoletes: –\
-Obsoleted By: –\
-Status: Active
+Obsoleted By: August 2026\
+Status: Not active
 
 Certifying Organization: Ed-Fi Alliance\
 Contact: [certification@ed-fi.org](mailto:certification@ed-fi.org)\

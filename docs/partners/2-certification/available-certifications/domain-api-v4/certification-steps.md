@@ -1,5 +1,12 @@
 # Domain API Certification for Data Standard v4 - Steps
 
+:::warning
+
+The Ed-Fi Domain API for Data Standard v4 Certification is no longer supported. Please refer to
+[Ed-Fi Domain API for Data Standard v5 Certification](../domain-api-v5/readme.md).
+
+:::
+
 There are 13 steps to completing certification: 8 documentation steps (completed
 prior to certification) and 6 tests that MUST be completed.
 
