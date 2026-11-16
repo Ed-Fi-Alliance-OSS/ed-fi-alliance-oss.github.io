@@ -2,4 +2,4 @@
 
 | Date | Change |
 | --- | --- |
-| \[DRAFT — date TBD upon Alliance publication\] | Change log created. Version 1.0 of the certification, aligned to the Ed-Fi Assessment Vendor Native Integration Playbook. |
+| November 16, 2026 | Change log created. Version 1.0 of the certification, aligned to the Ed-Fi Assessment Vendor Native Integration Playbook. |
