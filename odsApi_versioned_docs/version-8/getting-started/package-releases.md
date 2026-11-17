@@ -11,7 +11,7 @@ NuGet packages below provide supporting artifacts, including API schema
 packages, client SDKs, database provisioning tools, sample-data templates, and
 plugin contract packages, published to the **Ed-Fi AzureFeed**.
 
-## Ed-Fi API v8.1.0 Docker Images
+## Ed-Fi API v8 Docker Images {#ed-fi-api-v810-docker-images}
 
 | Image Tag | Purpose | Example |
 | --- | --- | --- |
@@ -19,8 +19,16 @@ plugin contract packages, published to the **Ed-Fi AzureFeed**.
 | 8.1 | Latest patch release of Ed-Fi API 8.1.x | [edfialliance/ed-fi-api:8.1](https://hub.docker.com/layers/edfialliance/ed-fi-api/8.1/) |
 | 8.1.0 | Configuration Service container | [edfialliance/ed-fi-api-configuration-service:8.1.0](https://hub.docker.com/layers/edfialliance/ed-fi-api-configuration-service/8.1.0/) |
 | 8.1 | Latest patch release of the Configuration Service 8.1.x | [edfialliance/ed-fi-api-configuration-service:8.1](https://hub.docker.com/layers/edfialliance/ed-fi-api-configuration-service/8.1/) |
+| Qualified digest | Kafka Connect worker with the Ed-Fi DocumentState transform | [edfialliance/ed-fi-kafka-connect](https://hub.docker.com/r/edfialliance/ed-fi-kafka-connect) |
 
-## Ed-Fi API v8.1.0 Packages
+The [Kafka CDC walkthrough](../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx)
+uses the qualified worker image
+`edfialliance/ed-fi-kafka-connect@sha256:bfabcabfd28868d32ab0271b42b7d147b9566c89bfe1747716368208e8291921`.
+Use this digest with the walkthrough's release inputs; the worker does not
+share the API's image tag. The [qualification record](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/src/dms/backend/EdFi.DataManagementService.Backend.Cdc/CdcQualifiedWorkerImage.json)
+identifies the tested image and companion source revision.
+
+## Ed-Fi API v8 Packages {#ed-fi-api-v810-packages}
 
 | Package | Purpose | Location |
 | --- | --- | --- |
@@ -39,7 +47,7 @@ plugin contract packages, published to the **Ed-Fi AzureFeed**.
 | EdFi.Api.Populated.Template.MsSql.5.2.0 | Populated sample-data template (SQL Server), Data Standard 5.2 | [EdFi.Api.Populated.Template.MsSql.5.2.0 8.1.0](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Api.Populated.Template.MsSql.5.2.0/overview/8.1.0) |
 | EdFi.Api.Populated.Template.MsSql.6.1.0 | Populated sample-data template (SQL Server), Data Standard 6.1 | [EdFi.Api.Populated.Template.MsSql.6.1.0 8.1.0](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Api.Populated.Template.MsSql.6.1.0/overview/8.1.0) |
 
-## Ed-Fi API v8.1.0 Plugin Contract Packages
+## Ed-Fi API v8 Plugin Contract Packages {#ed-fi-api-v810-plugin-contract-packages}
 
 Plugins are built against these contract packages. Each contract has its own
 version, which changes only when the contract changes. See
@@ -53,7 +61,7 @@ details.
 | EdFi.Api.Identity | Contract for identity system plugins used by the Identities API | [EdFi.Api.Identity 1.0.0](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Api.Identity/overview/1.0.0) |
 | EdFi.Api.Secrets | Contract for secrets plugins used to resolve connection string secrets | [EdFi.Api.Secrets 1.0.0](https://dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_artifacts/feed/EdFi@Release/NuGet/EdFi.Api.Secrets/overview/1.0.0) |
 
-## Ed-Fi API v8.1.0 Schema Packages
+## Ed-Fi API v8 Schema Packages {#ed-fi-api-v810-schema-packages}
 
 The API schema for each supported Data Standard is published as a separate
 package. Each core package contains the `ApiSchema.json` that the Ed-Fi API

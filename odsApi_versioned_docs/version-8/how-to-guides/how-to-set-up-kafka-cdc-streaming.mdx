@@ -1,0 +1,632 @@
+---
+description:
+  Evaluate Ed-Fi API resource streaming with Kafka on PostgreSQL or SQL Server.
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# How To: Set Up Kafka CDC Streaming
+
+This walkthrough uses change data capture (CDC) to send Ed-Fi API resource data
+to Kafka. It starts a local environment, creates a synthetic academic subject
+descriptor, and observes its creation, update, and deletion in Kafka UI. It uses
+Data Standard 5.2 and the self-contained identity provider. Ed-Fi API also
+supports Data Standard 6.1; this example uses 5.2 throughout.
+
+Read
+[Event Streaming with Kafka](../platform-dev-guide/features/event-streaming-kafka-cdc.md)
+for the message contract and consumer responsibilities.
+
+:::important Use a fresh, isolated environment
+
+This evaluation runs one broker and one Kafka Connect worker with Kafka
+authorization disabled. Use synthetic data only. It requires a new Configuration
+Service database and a new API data store. Adding the flags below to an existing
+deployment is not a supported way to enable streaming.
+
+Use one database tab throughout. Run the two alternatives separately: they share
+container names, ports, the `dms-local` Compose project, and the `dms` Docker
+network. No unrelated containers may share this network. Keep other API
+processes, IDE hosts, and seed loaders stopped until bootstrap finishes.
+
+Successful message delivery demonstrates this evaluation. It does not establish
+aggregate readiness: the standalone status command can report unknown
+cache-refresh health. [Check Status](#check-status) explains how to distinguish
+that result from other failures.
+
+:::
+
+## Prepare the Host
+
+Use a Linux host with these tools available to the same user:
+
+- PowerShell 7.5 or later (`pwsh`). The scripts check Linux file ownership.
+- Docker Engine and the Docker Compose plugin, supporting Compose v2 syntax
+  including `!override`. The user must be able to run `docker ps`.
+- The .NET 10 SDK, Git, and internet access to the image registries and Ed-Fi
+  package feed. Bootstrap builds its matching command-line tools from source.
+
+Reserve these loopback ports before starting:
+
+| Service                 | Host port       |
+| ----------------------- | --------------- |
+| Ed-Fi API               | `8080`          |
+| Configuration Service   | `8081`          |
+| Kafka Connect           | `8083`          |
+| Kafka UI                | `8088`          |
+| Kafka broker            | `9092`          |
+| Worker metrics          | `9404`          |
+| PostgreSQL / SQL Server | `5435` / `1435` |
+
+Clone the release and enter PowerShell. Run all subsequent commands from the
+repository root in the same PowerShell session, unless a step says otherwise.
+
+```bash
+git clone --depth 1 --branch v8.1.0 https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service.git
+cd Data-Management-Service
+pwsh
+```
+
+The source tag fixes the scripts, schema package versions, and database/Kafka
+image references. Kafka Connect uses the qualified image
+`edfialliance/ed-fi-kafka-connect@sha256:bfabcabfd28868d32ab0271b42b7d147b9566c89bfe1747716368208e8291921`.
+Do not substitute a floating image tag. SQL Server uses the release's
+`mcr.microsoft.com/mssql/server:2025-latest` reference; record its resolved
+image identity when retaining evaluation results.
+
+## Prepare Private Configuration
+
+The environment and settings files contain credentials. Keep them out of source
+control, shared transcripts, and screenshots. These commands refuse to replace
+an existing environment file, protect the directories, and assign unique local
+image names so another checkout's cached application images are not reused.
+
+```powershell
+$ErrorActionPreference = 'Stop'
+$repoRoot = (Get-Location).Path
+$environmentFile = Join-Path $repoRoot 'eng/docker-compose/.env'
+if (Test-Path $environmentFile) { throw 'Use a fresh checkout with no existing .env.' }
+$null = New-Item -ItemType Directory -Path '.local/cdc' -Force
+chmod 700 .local .local/cdc eng/docker-compose
+Copy-Item eng/docker-compose/.env.example $environmentFile
+chmod 600 $environmentFile
+$evaluationKey = [guid]::NewGuid().ToString('N')
+$values = @{
+    POSTGRES_PASSWORD = ([guid]::NewGuid().ToString('N') + 'Aa1!')
+    CDC_DATABASE_PASSWORD = ([guid]::NewGuid().ToString('N') + 'Aa1!')
+    DMS_CONFIGURATION_SERVICE_CLIENT_SECRET = ([guid]::NewGuid().ToString('N') + 'Aa1!')
+    CONFIGURATION_SERVICE_IDENTITY_CLIENT_SECRET = ([guid]::NewGuid().ToString('N') + 'Aa1!')
+    DMS_BOOTSTRAP_ADMIN_CLIENT_SECRET = ([guid]::NewGuid().ToString('N') + 'Aa1!')
+    CONFIGURATION_SERVICE_DATABASE_ENCRYPTION_KEY = [guid]::NewGuid().ToString('N')
+    CONFIGURATION_SERVICE_IDENTITY_ENCRYPTION_KEY = [Convert]::ToBase64String(
+        [Security.Cryptography.RandomNumberGenerator]::GetBytes(32))
+    CDC_WORKER_HEAP_MIB = '1024'
+    DMS_DOCKER_IMAGE = "ed-fi-cdc-evaluation-api:$evaluationKey"
+    CONFIGURATION_SERVICE_DOCKER_IMAGE = "ed-fi-cdc-evaluation-config:$evaluationKey"
+}
+$contents = Get-Content $environmentFile -Raw
+foreach ($name in $values.Keys) {
+    $pattern = '(?m)^' + [regex]::Escape($name) + '=.*$'
+    $entry = $name + '=' + $values[$name]
+    if ([regex]::IsMatch($contents, $pattern)) {
+        $contents = [regex]::Replace($contents, $pattern, $entry)
+    } else { $contents += "`n$entry`n" }
+}
+Set-Content -LiteralPath $environmentFile -Value $contents
+```
+
+Leave the example's ports, single-tenant settings, empty route qualifiers, and
+self-contained identity provider unchanged. The worker uses a 1 GiB heap for
+startup headroom; the CDC settings below declare the same value. Remove any
+`DMS_CDC__*` variables from your shell before starting. Also check for ambient
+environment variables that override values in `.env`.
+
+<Tabs groupId="cdc-database">
+<TabItem value="postgresql" label="PostgreSQL" default>
+
+Select PostgreSQL; no further environment changes are needed.
+
+```powershell
+$databaseEngine = 'postgresql'
+$provider = 'postgresql'
+$setupPrincipal = 'postgres'
+$settingsPath = Join-Path $repoRoot '.local/cdc/postgresql.json'
+$statePath = Join-Path $repoRoot '.local/cdc/state-pg'
+```
+
+</TabItem>
+<TabItem value="sqlserver" label="SQL Server">
+
+Declare SQL Server in the base environment before infrastructure preparation, so
+the engine overlay preserves the selected password and port.
+
+```powershell
+$databaseEngine = 'mssql'
+$provider = 'sqlserver'
+$setupPrincipal = 'sa'
+$settingsPath = Join-Path $repoRoot '.local/cdc/sqlserver.json'
+$statePath = Join-Path $repoRoot '.local/cdc/state-sqlserver'
+$contents = Get-Content $environmentFile -Raw
+$contents = $contents -replace '(?m)^DMS_DATASTORE=.*$', 'DMS_DATASTORE=mssql'
+$contents = $contents -replace '(?m)^CONFIGURATION_SERVICE_DATASTORE=.*$', 'CONFIGURATION_SERVICE_DATASTORE=mssql'
+$contents += "`nMSSQL_SA_PASSWORD=$([guid]::NewGuid().ToString('N'))Aa1!`n"
+$contents += "MSSQL_PORT=1435`nMSSQL_DB_NAME=edfi_datamanagementservice`n"
+Set-Content -LiteralPath $environmentFile -Value $contents
+```
+
+</TabItem>
+</Tabs>
+
+## Start the Database and Configuration Service
+
+This preparation starts infrastructure only. It does not create the new
+`edfi_cdc` data store or start API writers. The first run builds the
+Configuration Service image and can take several minutes.
+
+```powershell
+pwsh ./eng/docker-compose/start-local-dms.ps1 -InfraOnly -EnableConfig `
+    -SeparateConfigDatabase -CdcDatabaseInfrastructure -DatabaseEngine $databaseEngine `
+    -IdentityProvider self-contained -EnvironmentFile $environmentFile
+if ($LASTEXITCODE -ne 0) { throw 'Infrastructure failed; keep API writers stopped.' }
+```
+
+The Configuration Service uses its own `edfi_configurationservice` database. The
+new `edfi_cdc` database must not already exist. Ignore the generic manual IDE
+next-steps printed by infrastructure preparation; continue below with the CDC
+bootstrap instead of registering or provisioning a data store separately.
+
+### Prepare the Connector Login
+
+The connector reads captured data using a restricted account. The setup
+administrator is a separate account used by bootstrap to prepare the database.
+Do not grant the connector administrator access or resource-table writes.
+
+<Tabs groupId="cdc-database">
+<TabItem value="postgresql" label="PostgreSQL" default>
+
+The fresh PostgreSQL volume is initialized for logical replication. Check it:
+
+```powershell
+docker exec dms-postgresql psql -U postgres -c 'SHOW wal_level;' `
+    -c 'SHOW max_replication_slots;' -c 'SHOW max_wal_senders;'
+if ($LASTEXITCODE -ne 0) { throw 'PostgreSQL prerequisite check failed.' }
+```
+
+Expect `logical` and available capacity for the connector's replication slot and
+WAL sender. Create the login once. At the masked password prompts, enter the
+`CDC_DATABASE_PASSWORD` from your protected `.env` file.
+
+```powershell
+docker exec -it dms-postgresql createuser -U postgres --login --replication `
+    --no-superuser --no-createdb --no-createrole --pwprompt cdc_reader
+if ($LASTEXITCODE -ne 0) { throw 'Connector login preparation failed.' }
+```
+
+Bootstrap grants the necessary table access and manages the publication,
+replication slot, and progress table. Do not create these yourself.
+
+</TabItem>
+<TabItem value="sqlserver" label="SQL Server">
+
+The infrastructure option enables SQL Server Agent. Create only the server login
+now; bootstrap creates the matching database user with restricted access after
+creating `edfi_cdc`. This command reads the connector password privately and
+sends the SQL through standard input, without putting passwords in command
+arguments.
+
+```powershell
+Import-Module ./eng/docker-compose/env-utility.psm1 -DisableNameChecking
+$envValues = ReadValuesFromEnvFile $environmentFile
+$loginPassword = $envValues.CDC_DATABASE_PASSWORD.Replace("'", "''")
+"CREATE LOGIN cdc_reader WITH PASSWORD = '$loginPassword';" |
+    docker exec -i dms-mssql sh -c 'SQLCMDPASSWORD="$MSSQL_SA_PASSWORD" /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -C -b'
+if ($LASTEXITCODE -ne 0) { throw 'Connector login preparation failed.' }
+Remove-Variable loginPassword
+```
+
+Do not add the login to server roles or create `edfi_cdc` manually. The managed
+creation enables read committed snapshot isolation (RCSI), snapshot isolation,
+and nested triggers before activating DocumentCache; provider setup enables CDC
+and prepares capture jobs. After successful bootstrap, verify the settings with
+the checks in [Verify Database Preparation](#verify-database-preparation).
+
+</TabItem>
+</Tabs>
+
+## Prepare the Complete API and CDC Settings
+
+In this fresh Configuration Service, the first data-store registration has ID
+`1`. Both DocumentCache and CDC must select that same ID. Bootstrap checks the
+ID returned by registration before provisioning. This expectation is valid only
+when the Configuration Service has had no prior data-store inserts, including
+deleted registrations, and no concurrent configuration activity. Do not run
+registration separately to discover an ID; doing so would consume it.
+
+Load the complete API settings and fill in this environment's Configuration
+Service credentials. The API keeps read acceleration disabled while the cache
+refresh process supplies streaming.
+
+```powershell
+Import-Module ./eng/docker-compose/env-utility.psm1 -DisableNameChecking
+$envValues = ReadValuesFromEnvFile $environmentFile
+$settings = Get-Content ./src/dms/frontend/EdFi.DataManagementService.Frontend.AspNetCore/appsettings.json -Raw |
+    ConvertFrom-Json -AsHashtable
+$settings.ConfigurationServiceSettings.BaseUrl = 'http://127.0.0.1:8081'
+$settings.ConfigurationServiceSettings.ClientId = $envValues.DMS_CONFIGURATION_SERVICE_CLIENT_ID
+$settings.ConfigurationServiceSettings.ClientSecret = $envValues.DMS_CONFIGURATION_SERVICE_CLIENT_SECRET
+$settings.ConfigurationServiceSettings.Scope = $envValues.DMS_CONFIGURATION_SERVICE_CLIENT_SCOPE
+$settings.ConfigurationServiceSettings.EncryptionKey = $envValues.CONFIGURATION_SERVICE_DATABASE_ENCRYPTION_KEY
+$settings.AppSettings.AuthenticationService = 'http://127.0.0.1:8081/connect/token'
+$settings.JwtAuthentication.Authority = 'http://ed-fi-api-config:8081'
+$settings.JwtAuthentication.MetadataAddress = 'http://127.0.0.1:8081/.well-known/openid-configuration'
+$settings.JwtAuthentication.ClientRole = 'dms-client'
+$settings.JwtAuthentication.RequireHttpsMetadata = $false
+$settings.AppSettings.Datastore = $databaseEngine
+$settings.AppSettings.MultiTenancy = $false
+$settings.AppSettings.RouteQualifierSegments = ''
+$settings.DataManagement.DocumentCache.Targets = @(@{ DataStoreId = 1 })
+```
+
+Prepare the administrator's host connection string and the connector's container
+connection settings. Using a connection-string builder preserves special
+characters in the generated password.
+
+<Tabs groupId="cdc-database">
+<TabItem value="postgresql" label="PostgreSQL" default>
+
+```powershell
+$connection = [System.Data.Common.DbConnectionStringBuilder]::new()
+$connection['Host'] = '127.0.0.1'
+$connection['Port'] = '5435'
+$connection['Database'] = 'edfi_cdc'
+$connection['Username'] = 'postgres'
+$connection['Password'] = $envValues.POSTGRES_PASSWORD
+$providerProperties = @{
+    'database.hostname' = 'dms-postgresql'; 'database.port' = '5432'
+    'database.dbname' = 'edfi_cdc'; 'database.user' = 'cdc_reader'
+    'database.password' = '${env:CDC_DATABASE_PASSWORD}'
+}
+```
+
+</TabItem>
+<TabItem value="sqlserver" label="SQL Server">
+
+```powershell
+$connection = [System.Data.Common.DbConnectionStringBuilder]::new()
+$connection['Server'] = '127.0.0.1,1435'
+$connection['Database'] = 'edfi_cdc'
+$connection['User Id'] = 'sa'
+$connection['Password'] = $envValues.MSSQL_SA_PASSWORD
+$connection['Encrypt'] = 'true'
+$connection['TrustServerCertificate'] = 'true'
+$connection['Command Timeout'] = '180'
+$providerProperties = @{
+    'database.hostname' = 'dms-mssql'; 'database.port' = '1433'
+    'database.names' = 'edfi_cdc'; 'database.user' = 'cdc_reader'
+    'database.password' = '${env:CDC_DATABASE_PASSWORD}'
+    'driver.encrypt' = 'true'; 'driver.trustServerCertificate' = 'true'
+}
+```
+
+Certificate trust is allowed here for the local SQL Server container's
+self-signed certificate.
+
+</TabItem>
+</Tabs>
+
+Keep `${env:CDC_DATABASE_PASSWORD}` single-quoted. Kafka Connect resolves it
+inside the worker; PowerShell must not expand it. The following settings are
+inputs to bootstrap, which fills in the staged schema paths before using them.
+Do not pass this initial file directly to `api-schema-tools`.
+
+```powershell
+if (Test-Path $settingsPath) { throw 'Retain existing settings; do not overwrite them.' }
+$settings.Cdc = @{
+    Provider = $provider; DeploymentKey = 'local'; TenantKey = ''
+    DataStoreId = '1'; InstanceKey = 'datastore-1'; Generation = 1
+    TopicPrefix = 'edfi'; PartitionCount = 1; Schemas = @()
+    SetupPrincipal = $setupPrincipal; DatabaseConnectorPrincipal = 'cdc_reader'
+    SetupConnectionString = $connection.ConnectionString
+    ConnectEndpoint = 'http://127.0.0.1:8083'
+    WorkerMetricsEndpoint = 'http://127.0.0.1:9404/metrics'
+    KafkaBootstrapServers = 'dms-kafka1:9092'
+    KafkaAdminBootstrapServers = '127.0.0.1:9092'
+    MaxRecordBytes = 10000000; LagThresholdMilliseconds = 5000
+    DurabilityProfile = 'LocalSingleBroker'
+    AuthorizationProfile = 'AuthorizationDisabledLocal'
+    Worker = @{
+        Key = 'local-worker'; OffsetStorageTopic = 'dms-connect-offsets'
+        HeapBytes = 1073741824; Principal = 'worker'
+        ConnectorPrincipal = 'connector'; AdministratorPrincipal = 'administrator'
+    }
+    Consumers = @()
+    ProviderConnectionProperties = $providerProperties
+    KafkaClientSecurityProperties = @{}; KafkaAdminProperties = @{}
+    Compose = @{
+        File = Join-Path $repoRoot 'eng/docker-compose/kafka-cdc.compose.yml'
+        EnvironmentFile = $environmentFile; Project = 'dms-local'
+        BrokerSizeOverrideFile = Join-Path $statePath 'broker-size.json'
+    }
+    Timing = @{
+        CallMilliseconds = 180000; WaitMilliseconds = 600000
+        PollMilliseconds = 1000; MaximumObservationAgeMilliseconds = 60000
+    }
+}
+$null = New-Item -ItemType Directory -Path $statePath -Force
+chmod 700 $statePath
+$settings | ConvertTo-Json -Depth 64 | Set-Content -LiteralPath $settingsPath
+chmod 600 $settingsPath
+```
+
+The example allows ten minutes for bounded CDC waits and three minutes per
+external call. It sets a 10,000,000-byte record ceiling and a five-second
+connector lag threshold. These are evaluation settings, not performance
+qualification. The host addresses are reachable from SchemaTools; the
+`dms-postgresql`, `dms-mssql`, and `dms-kafka1` addresses are reachable inside
+Docker. Keep these two kinds of addresses distinct.
+
+## Start the API and Streaming
+
+Bootstrap stages the Data Standard packages, registers the first data store,
+creates and provisions `edfi_cdc`, and coordinates cache activation and CDC. It
+starts the API only after the managed initial checks succeed. No separate cache
+activation or seed loading is required for the descriptor example.
+
+```powershell
+pwsh ./eng/docker-compose/bootstrap-local-dms.ps1 -DatabaseEngine $databaseEngine `
+    -EnableKafkaCdc -SeparateConfigDatabase -DataStoreDatabaseName edfi_cdc `
+    -CdcSettingsPath $settingsPath -CdcBindingStatePath $statePath `
+    -EnvironmentFile $environmentFile -DataStandardVersion '5.2' `
+    -IdentityProvider self-contained -EnableKafkaUI -AddSmokeTestCredentials
+if ($LASTEXITCODE -ne 0) { throw 'Bootstrap failed; retain state and keep other writers stopped.' }
+```
+
+Expect successful completion, the API discovery address, test client
+credentials, and an `Inspect CDC` command. Save the credentials privately. Copy
+the **exact** settings and state paths printed in `Inspect CDC`; the settings
+path is a new file under `eng/docker-compose/.bootstrap/cdc-runtime`. Do not
+select the newest file by timestamp or reuse the input settings file.
+
+Keep `.env`, any `.derived` environment files, the entire `.bootstrap`
+directory, `eng/docker-compose/.cdc-deployments`, and the original state
+directory together. They contain the information needed to safely stop and
+resume the environment. Moving or deleting them is not a supported reset.
+
+### Verify Database Preparation
+
+<Tabs groupId="cdc-database">
+<TabItem value="postgresql" label="PostgreSQL" default>
+
+```powershell
+docker exec dms-postgresql psql -U postgres -d edfi_cdc `
+    -c 'SELECT slot_name, plugin, active FROM pg_replication_slots;' `
+    -c 'SELECT pubname FROM pg_publication;'
+```
+
+Expect the managed logical replication slot and publication. A running connector
+should have an active slot. Do not change or drop these objects.
+
+</TabItem>
+<TabItem value="sqlserver" label="SQL Server">
+
+```powershell
+@'
+SELECT name, is_read_committed_snapshot_on, snapshot_isolation_state_desc,
+       is_cdc_enabled FROM sys.databases WHERE name = N'edfi_cdc';
+SELECT name, CAST(value_in_use AS int) AS value_in_use
+FROM sys.configurations WHERE name = N'nested triggers';
+SELECT servicename, status_desc FROM sys.dm_server_services;
+'@ | docker exec -i dms-mssql sh -c 'SQLCMDPASSWORD="$MSSQL_SA_PASSWORD" /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -C -b -W -s "|"'
+if ($LASTEXITCODE -ne 0) { throw 'SQL Server prerequisite check failed.' }
+```
+
+Expect RCSI and CDC values of `1`, snapshot isolation `ON`, nested triggers `1`,
+and SQL Server Agent running. Bootstrap already performed the preparation; these
+checks do not replace it. If a prerequisite is missing, stop and retain the
+diagnostics. Do not change prerequisites after activation and assume streaming
+is repaired.
+
+</TabItem>
+</Tabs>
+
+## Check Status
+
+Resolve the same SchemaTools executable used by bootstrap, then enter the paths
+from its printed `Inspect CDC` command:
+
+```powershell
+Import-Module ./eng/docker-compose/bootstrap-schema-tool.psm1
+$schemaTool = Resolve-DmsSchemaTool
+$retainedSettings = Read-Host 'Exact settings path from Inspect CDC'
+$retainedState = Read-Host 'Exact state path from Inspect CDC'
+& $schemaTool cdc status --settings $retainedSettings --state-path $retainedState --json
+$statusExitCode = $LASTEXITCODE
+```
+
+This operation can record incidents and stop connectors if it detects unsafe
+conditions; it is not a side-effect-free health request. JSON goes to standard
+output and diagnostics go to standard error. Keep any captured output private.
+
+| Result                                                   | Interpretation                                                                                                                                                                  |
+| -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Exit `0`, `data.aggregate.readiness: "Ready"`            | The current observation satisfied aggregate readiness.                                                                                                                          |
+| Exit `1`, projection `Unknown` with `RuntimeNotObserved` | The standalone command cannot observe the API's hosted cache-refresh process. This can occur with an empty queue and successful message delivery. It remains an unknown result. |
+| Other exit `1` diagnostics                               | Rejection, unavailable evidence, failed component, or timeout. Use the troubleshooting checks below; do not treat every failure as the observation limitation.                  |
+| Exit `2`                                                 | Invalid command or configuration. Check the emitted paths and inputs without changing the retained target or state.                                                             |
+| Exit `130`                                               | Cancellation. Preserve state; do not assume earlier work was rolled back.                                                                                                       |
+
+An unavailable projection observation may instead report the general category
+`StatusObservationUnavailable` and a Projection / `Unavailable` diagnostic,
+without exposing the underlying reason. Preserve that result; do not infer
+`RuntimeNotObserved` from `Unknown` alone. Check the other components and
+message delivery separately.
+
+The local profile reports `deploymentProfile.aclIsolationProven: false` because
+Kafka authorization is disabled. Initial bootstrap success authorizes starting
+the API; a later status result is a separate observation. Successful delivery
+below demonstrates the evaluation, not current aggregate readiness.
+
+## Create and Observe a Resource
+
+The bootstrap's test credentials belong to the `EdFiSandbox` claim set and are
+for this disposable environment only. Enter the printed key and secret without
+placing them in command arguments, then request a token:
+
+```powershell
+$clientId = Read-Host 'Bootstrap test client key'
+$clientSecret = Read-Host 'Bootstrap test client secret' -MaskInput
+$token = Invoke-RestMethod -Method Post -Uri 'http://localhost:8080/api/oauth/token' `
+    -ContentType 'application/x-www-form-urlencoded' -Body @{
+        grant_type = 'client_credentials'; client_id = $clientId; client_secret = $clientSecret
+    }
+$headers = @{ Authorization = "Bearer $($token.access_token)" }
+$resourceUrl = 'http://localhost:8080/api/data/ed-fi/academicSubjectDescriptors'
+$body = @{
+    namespace = 'uri://ed-fi.org/AcademicSubjectDescriptor'
+    codeValue = 'CdcDemo'; shortDescription = 'CDC demonstration'
+    description = 'Synthetic data for a local streaming evaluation'
+}
+$response = Invoke-WebRequest -Method Post -Uri $resourceUrl -Headers $headers `
+    -ContentType 'application/json' -Body ($body | ConvertTo-Json)
+$response.StatusCode
+$documentId = ([string]$response.Headers.Location[0]).TrimEnd('/').Split('/')[-1]
+$documentId
+```
+
+Expect HTTP `201` and a UUID. The descriptor has no prerequisite resources.
+
+Open `http://localhost:8088` in your browser. Select cluster **kafka1**, open
+**Topics**, and select `edfi.instance.datastore-1-g1.documents.v1`. Open
+**Messages**, keep **Oldest First**, and click **Submit** to read from the
+beginning. Expand a message row to inspect its value. Inspect the record whose
+key matches `$documentId`; refresh/poll for up to **120 seconds**.
+
+Before continuing, verify:
+
+- The key is the lowercase UUID, matching `documentUuid` and `document.id`.
+- The value is a JSON envelope with `contractVersion: 1`,
+  `projectName: "Ed-Fi"`, `resourceName: "AcademicSubjectDescriptor"`, and
+  `resourceVersion: "5.2.0"`.
+- `document.shortDescription` is `CDC demonstration`.
+- Record the `contentVersion` and `documentCreatedAt` for comparison.
+
+If the record is absent after 120 seconds, stop here and use
+[Troubleshooting](#troubleshooting). Do not update and delete rapidly: cache
+refresh can combine intermediate changes before publication.
+
+## Update and Observe a Higher Version
+
+```powershell
+$body.id = $documentId
+$body.shortDescription = 'CDC demonstration updated'
+$response = Invoke-WebRequest -Method Put -Uri "$resourceUrl/$documentId" `
+    -Headers $headers -ContentType 'application/json' -Body ($body | ConvertTo-Json)
+$response.StatusCode
+```
+
+Expect HTTP `204`. In Kafka UI, refresh/poll for up to **120 seconds** for a
+message with the same key, the updated description, and a **higher**
+`contentVersion`. Its `documentCreatedAt` must remain unchanged. Observe this
+message before deleting. Earlier messages may disappear through compaction; the
+topic is a stream of resource state, not a permanent change history.
+
+## Delete and Observe the Tombstone
+
+```powershell
+$response = Invoke-WebRequest -Method Delete -Uri "$resourceUrl/$documentId" -Headers $headers
+$response.StatusCode
+```
+
+Expect HTTP `204`. Refresh/poll Kafka UI for up to **120 seconds** for the same
+key with a **null message value**. This tombstone has no JSON envelope or
+`contentVersion`. If the UI has a value filter, remove it so null values are
+visible. Stop and investigate if the expected record does not arrive.
+
+## Stop and Resume the Evaluation
+
+Keep the checkout and all its private state. With no external API or seed
+processes running, use the same bootstrap wrapper to stop the retained stack:
+
+```powershell
+pwsh ./eng/docker-compose/bootstrap-local-dms.ps1 -d -EnableKafkaUI
+if ($LASTEXITCODE -ne 0) { throw 'Managed stop failed; retain all state.' }
+```
+
+The wrapper reads its saved deployment inventory, stops connectors and verifies
+that their tasks stopped, then stops the infrastructure while retaining data. To
+resume from a successful stop:
+
+```powershell
+pwsh ./eng/docker-compose/bootstrap-local-dms.ps1 -EnableKafkaUI
+if ($LASTEXITCODE -ne 0) { throw 'Managed start failed; keep external writers stopped.' }
+```
+
+Repeat `-EnableKafkaUI` so the optional UI is included in both operations. The
+wrapper restores the original database engine and settings, validates source and
+connector history, and starts the API after the managed checks pass. Do not
+repeat initial enablement flags or register another data store.
+
+Request a fresh API token and create another synthetic descriptor:
+
+```powershell
+$token = Invoke-RestMethod -Method Post -Uri 'http://localhost:8080/api/oauth/token' `
+    -ContentType 'application/x-www-form-urlencoded' -Body @{
+        grant_type = 'client_credentials'; client_id = $clientId; client_secret = $clientSecret
+    }
+$headers = @{ Authorization = "Bearer $($token.access_token)" }
+$body.Remove('id')
+$body.codeValue = 'CdcDemoAfterRestart'
+$response = Invoke-WebRequest -Method Post -Uri $resourceUrl -Headers $headers `
+    -ContentType 'application/json' -Body ($body | ConvertTo-Json)
+$response.StatusCode
+$documentId = ([string]$response.Headers.Location[0]).TrimEnd('/').Split('/')[-1]
+$documentId
+```
+
+Expect HTTP `201`. Confirm the new key's envelope appears within 120 seconds on
+the **same topic generation**. This checks resumed delivery as well as
+successful command exits.
+
+Ordinary stop preserves all data. Destructive retirement and volume deletion are
+outside this walkthrough; deleting only some volumes or state files can make the
+remaining environment unusable. The optional
+[advanced operations reference](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/cdc-documentation/operations-runbook.md#stack-teardown)
+covers coordinated retirement and cleanup.
+
+## Troubleshooting
+
+Use bounded, read-only checks before deciding what to do next:
+
+```powershell
+docker ps --filter label=com.docker.compose.project=dms-local
+Invoke-RestMethod http://localhost:8080/api/health
+Invoke-RestMethod http://localhost:8081/config/health
+$connectors = Invoke-RestMethod http://localhost:8083/connectors
+foreach ($name in $connectors) {
+    Invoke-RestMethod "http://localhost:8083/connectors/$name/status" | ConvertTo-Json -Depth 10
+}
+```
+
+A running connector and task are expected. For private diagnostics, inspect
+recent service logs; they may contain sensitive information:
+
+```powershell
+docker logs --tail 100 ed-fi-api
+docker logs --tail 100 dms-local-kafka-cdc-worker-1
+```
+
+| Symptom                                        | Likely cause and next action                                                                                                                                                                                                                                                                                                      |
+| ---------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Infrastructure fails before registration       | Check free ports, Docker access, image/package download errors, and the selected engine. Keep API writers stopped. Correct the prerequisite and repeat the same infrastructure command.                                                                                                                                           |
+| Data-store ID mismatch                         | Configuration Service was not fresh or another registration occurred. Preserve the registration and settings. Do not register again, reset an identity counter, or guess another ID. Stop this walkthrough and resolve the environment selection.                                                                                 |
+| Bootstrap fails after provisioning begins      | Preserve the original settings, `.bootstrap`, deployment inventory, and state root. Read the reported stage and diagnostic code. Do not delete state or provision again. An interrupted initial operation may be retried only with its retained workflow and unchanged inputs; obtain operator support if its stage is uncertain. |
+| API request returns `401` or `403`             | Request a new token with the bootstrap's test credentials. Confirm the exact resource namespace and data-store assignment; an HTTP health response does not validate client access.                                                                                                                                               |
+| No public message after 120 seconds            | Confirm the API request succeeded and the correct topic/key is selected. Check the connector and task status, then run `cdc status` with the emitted paths. Inspect recent API/worker logs privately. Fix the reported failure before advancing to the next operation.                                                            |
+| `RuntimeNotObserved` with projection `Unknown` | This is the standalone observation limitation described above. Record it accurately and separately check delivery. It does not excuse failed connector tasks, missing capture progress, or failed bootstrap.                                                                                                                      |
+| Connector task failed                          | Inspect its status and private worker logs for the specific error: credentials, unavailable source history, malformed resource, or record-size rejection. Do not set error tolerance to skip records or reset offsets. Preserve evidence and use the supported recovery procedure for that failure.                               |
+| SQL Server prerequisites or capture jobs fail  | Use the database checks above and confirm Agent is running. Keep writers stopped on failed initial setup. Changing prerequisites after activation or recreating capture history is not a supported repair.                                                                                                                        |
+| Stop/start fails or reports missing state      | Keep all retained files and volumes. Inspect diagnostics and keep external writers stopped. Do not use volume deletion or raw Connect restart/resume requests to bypass the managed checks.                                                                                                                                       |
+
+For advanced failures beyond this local recipe, consult the optional
+[operations reference](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/cdc-documentation/operations-runbook.md#procedure-navigation).

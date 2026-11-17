@@ -80,7 +80,27 @@ SDK](https://dotnet.microsoft.com/download/dotnet/10.0).
 | `-DataStandardVersion 6.1` | Use Data Standard 6.1 instead of the default, 5.2 |
 | `-AddSmokeTestCredentials` | Create API client credentials for local testing and print the key and secret at the end of startup (see [Configure a Data Store](configure-data-store)) |
 | `-SeparateConfigDatabase` | Store the Configuration Service data in its own database instead of sharing the Ed-Fi API database |
+| `-EnableKafkaCdc` | Coordinate cache activation and Kafka streaming for a fresh data store; requires the settings and preparation in the [CDC walkthrough](../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx) |
+| `-CdcSettingsPath` / `-CdcBindingStatePath` | Select the prepared CDC settings file and the directory that retains deployment state |
+| `-EnableKafkaUI` | Start Kafka UI to inspect messages in the local evaluation |
 | `-Rebuild` | Rebuild the local Docker images before starting, for example after updating the repository |
+
+### Optional: Evaluate Kafka Streaming
+
+Follow [Set Up Kafka CDC
+Streaming](../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx) before starting
+a streaming evaluation. It requires a fresh Configuration Service database,
+`-SeparateConfigDatabase`, a new API data store, and coordinated cache/CDC setup
+before the API starts. Do not add the CDC flags to an existing deployment.
+
+The workflow uses `kafka-broker.compose.yml`, `kafka-cdc.compose.yml`, and,
+with `-EnableKafkaUI`, `kafka-ui.compose.yml`. Bootstrap starts the Kafka
+Connect worker only after its setup checks. The supplied single-broker,
+single-worker environment has Kafka authorization disabled and is for local
+evaluation with synthetic data.
+
+For this environment, use the walkthrough's managed stop/start instructions;
+they preserve and validate the saved streaming state.
 
 ### Optional: Year-Specific Data Stores
 

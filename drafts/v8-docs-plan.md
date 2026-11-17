@@ -126,7 +126,7 @@ These rules apply to every page in `version-8/`.
 | Access token management | DMS-1644 | Done |
 | Correlation ID normalization | DMS-1540 | Done |
 | DocumentCache and its admin CLI | DMS-1635 | Placeholder, due 2026-12-15 |
-| Kafka event streaming (host page and walkthrough) | DMS-1636 | Placeholder, due 2026-12-15 |
+| Kafka event streaming (host page and [walkthrough](../odsApi_versioned_docs/version-8/how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx)) | DMS-1636 | Done |
 | Bulk load walkthrough | To be filed | Placeholder, due 2026-12-15 |
 
 ## Remaining Work
@@ -134,15 +134,9 @@ These rules apply to every page in `version-8/`.
 1. **DocumentCache (DMS-1635):** `platform-dev-guide/features/document-cache.md`,
    a new `utilities/document-cache-admin-cli.md`, and the DocumentCache
    settings in Configuration Details.
-2. **Kafka event streaming (DMS-1636):**
-   `platform-dev-guide/features/event-streaming-kafka-cdc.md` and a new
-   `how-to-guides/how-to-set-up-kafka-cdc-streaming.md`. Include the
-   `documentCreatedAt` envelope field (DMS-1658) and the PowerShell 7.5
-   requirement for the CDC scripts. Consumer guidance goes on the host page;
-   there's no separate client guide page.
-3. **Bulk load walkthrough:**
+2. **Bulk load walkthrough:**
    `how-to-guides/how-to-load-the-ods-with-sample-xml-data-using-bulk-load-client-utility.md`.
-4. When each page is written, remove its expected-date note.
+3. When each page is written, remove its expected-date note.
 
 ### Backlog
 

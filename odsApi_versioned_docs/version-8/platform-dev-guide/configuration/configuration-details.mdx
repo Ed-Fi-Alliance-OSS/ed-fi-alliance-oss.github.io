@@ -489,6 +489,22 @@ values for each provider.
 
 ---
 
+## Event Streaming with Kafka
+
+Kafka streaming requires an activated DocumentCache target and a complete
+settings file with a `Cdc` section. The local evaluation selects the database
+provider and data store, host and worker connection addresses, protected
+credentials, topic identity, and record-size and observation limits. API read
+acceleration can remain disabled.
+
+The
+[Kafka CDC walkthrough](../../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx)
+provides every setting needed for the fresh local environment and shows how
+bootstrap produces the settings used by later commands. Keep those emitted
+settings with their original state directory. The separate
+[SchemaTools CDC reference](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/src/dms/clis/EdFi.DataManagementService.SchemaTools/README.md#cdc-deployment-commands)
+is the complete command and setting catalog for advanced use.
+
 ## Configuration Service Settings
 
 ### Required Settings

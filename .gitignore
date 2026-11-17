@@ -33,4 +33,5 @@ tools/build-chroma/.venv/
 .worktrees/
 
 # AI planning/spec documents (not for publication)
+PLAN.md
 docs/superpowers/
