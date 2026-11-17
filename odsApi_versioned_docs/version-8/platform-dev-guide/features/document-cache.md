@@ -1,6 +1,6 @@
 # DocumentCache
 
-DocumentCache is an optional feature in Ed-Fi API v8.1. It keeps serialized
+DocumentCache is an optional feature in Ed-Fi API v8. It keeps serialized
 resource and descriptor JSON in each data store's `dms.DocumentCache` table.
 API instances using that database share the cache, and restarting an instance
 does not clear it. For read-heavy workloads, cached bodies can avoid rebuilding
@@ -81,7 +81,7 @@ targets are read-only for this purpose.
 
 ## Configure and Activate a Target
 
-These examples use v8.1.0, PostgreSQL, data store `1`, and the default tenant.
+These examples use PostgreSQL, data store `1`, and the default tenant.
 Replace the ID with the Configuration Service data store ID. For a named tenant,
 set `TenantKey` and add `--tenant-key district-a` to every command. For SQL Server,
 use `--datastore sqlserver` and satisfy its additional prerequisites below.

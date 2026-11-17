@@ -37,7 +37,7 @@ configuration. Copy `.env.example` to `.env` and edit as needed before running
 
 ### Optional DocumentCache
 
-The v8.1.0 `eng/docker-compose/local-dms-document-cache.yml` overlay selects one
+The `eng/docker-compose/local-dms-document-cache.yml` overlay selects one
 DocumentCache target for the API container. Add the following to the local
 `.env` file only when you want to configure projection for a registered data
 store:
@@ -61,12 +61,12 @@ default tenant.
 The bootstrap flow uses the startup script to select the overlay. The overlay
 only configures the target: follow the [DocumentCache activation
 guide](../platform-dev-guide/features/document-cache.md#configure-and-activate-a-target)
-to satisfy prerequisites, activate the database, and verify status. Then enable
-`DataManagement__DocumentCache__ReadAcceleration__Enabled=true` in the API
-container environment if accelerated reads are wanted, and recreate the
-container to apply the setting. The supplied overlay does not map a convenience
-variable for this switch; add it to your deployment's Compose environment.
-Putting an unmapped .NET setting in `.env` alone does not pass it to the container.
+to satisfy prerequisites, activate the database, and verify status.
+
+To enable accelerated reads, add
+`DataManagement__DocumentCache__ReadAcceleration__Enabled=true` to the API
+container's Compose environment and recreate the container; the overlay does
+not map this setting from `.env`.
 
 ### PostgreSQL
 

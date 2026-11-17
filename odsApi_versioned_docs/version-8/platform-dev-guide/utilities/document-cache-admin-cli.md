@@ -1,13 +1,13 @@
 ---
 sidebar_position: 5
-description: Install and use the DocumentCache administration tool for Ed-Fi API v8.1.
+description: Install and use the DocumentCache administration tool for Ed-Fi API v8.
 ---
 
 # DocumentCache Administration CLI
 
 The `dms-document-cache` tool inspects and administers one tenant/data-store
-pair at a time without starting the API web host. This reference describes
-v8.1.0. Start with the [DocumentCache guide](../features/document-cache.md) for
+pair at a time without starting the API web host. Start with the
+[DocumentCache guide](../features/document-cache.md) for
 activation examples and lifecycle interpretation.
 
 ## Installation
