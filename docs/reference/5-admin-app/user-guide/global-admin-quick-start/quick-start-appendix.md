@@ -9,8 +9,9 @@ sidebar_position: 3
 The `.env` file in the repository's `quick-start/` folder configures all the
 scripts. Copy
 [`.env.example`](https://github.com/Ed-Fi-Exchange-OSS/Admin-App-Installation-Scripts/blob/main/quick-start/.env.example)
-to `.env` and edit as needed before running `run.ps1`. The defaults match the
-local Docker stack.
+to `.env` and edit as needed before running `run.ps1`. The URL defaults do not
+all target the same deployment; see
+[URLs per Deployment](./run-the-quick-start.md#urls-per-deployment).
 
 Passwords (`KEYCLOAK_ADMIN_PASSWORD`, `APP_DB_PASSWORD`,
 `POSTGRES_APP_PASSWORD`, `SECURITY_DB_PASSWORD`, `POSTGRES_SECURITY_PASSWORD`)
@@ -22,7 +23,7 @@ with the input masked. Set them in the file only for unattended runs.
 | Variable | Default | Description |
 | --- | --- | --- |
 | `PROVIDER` | `keycloak` | Identity provider for the machine client: `keycloak` |
-| `KEYCLOAK_BASE_URL` | `http://localhost:8080` | Keycloak admin API base URL (bootstrap; Keycloak only) |
+| `KEYCLOAK_BASE_URL` | `https://localhost:8443` | Keycloak admin API base URL (bootstrap; Keycloak only). The default is the HTTPS listener of the Windows install scripts' Keycloak |
 | `KEYCLOAK_ADMIN_USER` | `admin` | Keycloak master admin user |
 | `KEYCLOAK_ADMIN_PASSWORD` | _(empty)_ | Keycloak master admin password — used when `PROVIDER=keycloak`; prompted when empty |
 | `KEYCLOAK_REALM` | `edfi` | Realm holding the machine client |
@@ -57,8 +58,8 @@ Used by `bootstrap.ps1` to seed the machine user and by `cleanup.ps1`.
 
 | Variable | Default | Description |
 | --- | --- | --- |
-| `API_BASE_URL` | `https://localhost/adminapp-api/api` | Admin App API base URL (through the reverse proxy) |
-| `TOKEN_URL` | `https://localhost/auth/realms/edfi/protocol/openid-connect/token` | Your issuer's token endpoint (see [Finding your token endpoint](#finding-your-token-endpoint)) |
+| `API_BASE_URL` | `https://localhost/adminapp-api/api` | Admin App API base URL. The default is the Docker deployment's reverse-proxy path; for a Windows install made with the scripts, the API is its own IIS site: use `https://localhost:3443/api` |
+| `TOKEN_URL` | `https://localhost:8443/realms/edfi/protocol/openid-connect/token` | Your issuer's token endpoint (see [Finding your token endpoint](#finding-your-token-endpoint)). Keycloak writes the URL it was called on into the token's issuer, and Admin App v4.1 accepts only an HTTPS issuer, so a token requested on port 8080 is rejected with 401 |
 | `OAUTH_SCOPE` | `login:app` | OAuth scope requested for the machine token (Keycloak: `login:app`) |
 | `TEAM_NAME` | `Quick Start` | Team to create |
 | `ENVIRONMENT_NAME` | `Ed-Fi ODS/API v7.3` | Environment to create |
@@ -68,7 +69,7 @@ Used by `bootstrap.ps1` to seed the machine user and by `cleanup.ps1`.
 | `TENANT_NAME` | `default` | Ed-Fi tenant to create under the environment |
 | `ADMIN_USERNAME` | _(empty)_ | Username of the **human** bootstrap admin. When set, `quick-start.ps1` also adds that user to the team (Tenant admin role) so the **Applications** and **Profiles** pages work for them; leave empty to skip |
 | `ODSS_JSON` | _(two sample instances)_ | JSON array of ODS instances to attach; ids must match `EdFi_Admin.dbo.OdsInstances` on the target ODS/API |
-| `SKIP_CERTIFICATE_CHECK` | `true` | `true`: skip TLS validation (local self-signed certificates) |
+| `SKIP_CERTIFICATE_CHECK` | `true` in `.env.example` (unset = `false`) | `true`: skip TLS validation (local self-signed certificates). The quick start then also sends the Keycloak admin password and the machine client secret without checking the server, so set `false` when the certificates are trusted on this machine |
 
 ### Claim set copies (EdFi_Security)
 
@@ -86,7 +87,7 @@ value above when empty.
 | --- | --- | --- |
 | `COPY_CLAIMSETS` | `true` | `false`: skip the claim set copy step entirely |
 | `CLAIMSET_NAMES` | _(empty = every built-in claim set)_ | Claim sets to copy, semicolon-separated; blank copies all built-ins except internal-use ones (`ForApplicationUseOnly = 1`, e.g. `Bootstrap Descriptors and EdOrgs`) |
-| `CLAIMSET_PREFIX` | `"AA "` | Prefix for the copies; quote it to keep the trailing space |
+| `CLAIMSET_PREFIX` | `AA-` | Prefix for the copies. Spaces in the copy names become hyphens (`SIS Vendor` becomes `AA-SIS-Vendor`), because the Admin API in v3 mode, which Admin App v4.1 uses, rejects a claim set name with white space |
 | `SECURITY_DB_ENGINE` | _(empty = same as `DB_ENGINE`)_ | Engine hosting `EdFi_Security`: `mssql` or `pgsql`. Set it when the ODS/API side runs a different engine than the Admin App database |
 | `SECURITY_DATABASE_NAME` | `EdFi_Security` | Security database name |
 | `SECURITY_SQL_SERVER` | `tcp:localhost,1433` | SQL Server hosting `EdFi_Security`. May be a remote server, including a managed Azure SQL Database, independently of `APP_SQL_SERVER` |
@@ -220,7 +221,31 @@ resources instead of duplicating them.
   `Connection to Ed-Fi API Discovery URL timed out. Please ensure the URL is correct and the server is reachable.`
   Confirm the ODS/API and Admin API are up and reachable at the
   `ODS_API_DISCOVERY_URL` / `ADMIN_API_URL` values (open them in a browser or
-  `curl` them), then run the script again.
+  `curl` them), then run the script again. The Admin App waits 5 seconds by
+  default (`EDFI_URLS_TIMEOUT_MS`) for the ODS/API, so `quick-start.ps1` first waits until both URLs answer;
+  a timeout that remains means the URL is wrong or the server is down.
+- **Saving an application fails with
+  `"ClaimSetName": [ "Claim set name must not contain white spaces." ]`.** The
+  selected claim set copy has a space in its name, as the copies made by
+  earlier versions of the quick start do (`AA SIS Vendor`). Run `./run.ps1`
+  again (or only `copy-claimsets.ps1`): it creates the copies as
+  `AA-SIS-Vendor` beside the old ones. Select the new copy, and move any
+  application that uses an old copy to it. `./cleanup.ps1` removes the old
+  copies too, but it also removes the environment, its ODS instances and
+  Ed-Orgs, the team and the machine user, and an application that still uses
+  a removed copy loses its resource access.
+- **`/auth/me` returns 401 and the script reports a token issuer that starts
+  with `http://`.** The token was requested on Keycloak's HTTP port, and Admin
+  App v4.1 accepts only an HTTPS issuer. Set
+  `TOKEN_URL=https://localhost:8443/realms/edfi/protocol/openid-connect/token`
+  and `KEYCLOAK_BASE_URL=https://localhost:8443` for a Windows install made with
+  the scripts, or the Docker values in
+  [URLs per Deployment](./run-the-quick-start.md#urls-per-deployment).
+- **Environment sync fails with `DEPTH_ZERO_SELF_SIGNED_CERT`.** The Admin App
+  does not trust the self-signed certificate of the Admin API or ODS/API. Trust
+  it through the API's `NODE_EXTRA_CA_CERTS`; for a Windows install made with
+  the scripts, see
+  [ODS/API or Admin API with a self-signed certificate](/reference/admin-app/getting-started/admin-app-4.1/windows-iis-installation/automated#odsapi-or-admin-api-with-a-self-signed-certificate).
 - **`Create environment failed: … 403 (Forbidden)`** (or, for Admin API v2
   environments, environment creation reports a failed sync with no clear
   error). The Admin API rejected the Admin App's credential registration at

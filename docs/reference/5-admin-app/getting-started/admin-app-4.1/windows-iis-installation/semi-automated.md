@@ -27,7 +27,7 @@ On **Windows Server 2019/2022**, install the Windows Package Manager (`winget`) 
 | optional | `yopass-docker.ps1` | Stands up a local Yopass via Docker. | [Yopass](./manual.md#yopass-optional) |
 | optional | `install-all.ps1` | Runs the whole sequence end to end (see [Automated](./automated.md)). | (whole install) |
 
-To remove an install, use `uninstall.ps1` (generic) and, for the local Keycloak, `uninstall-keycloak.ps1` (removes Keycloak and its startup task, and unsets `JAVA_HOME`; leaves the JDK installed).
+To remove an install, use `uninstall.ps1` (generic) and, for the local Keycloak, `uninstall-keycloak.ps1` (removes Keycloak, its startup task, and its self-signed HTTPS certificate, and unsets `JAVA_HOME`; leaves the JDK installed).
 
 ## Next steps
 
