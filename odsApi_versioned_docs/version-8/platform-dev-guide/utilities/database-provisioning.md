@@ -262,7 +262,7 @@ value (the default is 300 seconds).
 | Option | Required for managed provisioning | Default | Description |
 | --- | --- | --- | --- |
 | `--managed-state-path` | Yes | None | Protected, persistent controller-state directory. Retain the original directory for later administration. |
-| `--managed-workflow-purpose` | No | `source-history-only` | Use `source-history-only` to record creation history without enabling Kafka. `initial-cdc-provisioning` is for the separate initial CDC setup workflow; the purpose cannot be changed later. |
+| `--managed-workflow-purpose` | No | `source-history-only` | Use `source-history-only` to retain history for offline DocumentCache administration. It cannot later be changed to `initial-cdc-provisioning`, which is required for initial Kafka setup. For streaming, follow the [Kafka setup workflow](../features/event-streaming-kafka-cdc.md#setup) before creating the database. |
 | `--deployment-key` | No | `local` | Stable deployment identifier used to find the history. Retain the original value. |
 | `--tenant-key` | No | Default tenant | Omit for the default tenant; otherwise use the target's Configuration Service tenant key. |
 | `--data-store-id` | Yes | None | Positive Configuration Service data store ID for this database. |

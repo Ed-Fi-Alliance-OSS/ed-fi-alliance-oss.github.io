@@ -15,6 +15,12 @@ DocumentCache is also a prerequisite for
 [Event Streaming with Kafka](./event-streaming-kafka-cdc.md); projection alone
 does not configure connectors or prove downstream delivery.
 
+If you plan to stream data to Kafka, follow the
+[Kafka setup workflow](./event-streaming-kafka-cdc.md#setup) before creating the
+database. That workflow creates a new database and activates DocumentCache
+before writes begin. Activating DocumentCache independently does not prepare a
+database for initial Kafka setup.
+
 :::warning Existing databases require original provisioning history
 
 Activating DocumentCache on an existing database requires the original history
@@ -80,6 +86,10 @@ fill is skipped for snapshot and read-replica requests because those database
 targets are read-only for this purpose.
 
 ## Configure and Activate a Target
+
+If you plan to use Kafka, follow its
+[setup workflow](./event-streaming-kafka-cdc.md#setup) before provisioning or
+activating a target.
 
 These examples use PostgreSQL, data store `1`, and the default tenant.
 Replace the ID with the Configuration Service data store ID. For a named tenant,
@@ -302,8 +312,7 @@ To enable accelerated reads, set
 `DataManagement:DocumentCache:ReadAcceleration:Enabled` to `true` in the API
 settings and restart the API instances to apply it. Recheck runtime health
 after the restart, and reopen write admission after the activation procedure
-is complete. Projection can also run with read acceleration left off, for
-example to support CDC.
+is complete. Projection can run with read acceleration turned off.
 
 See [Configuration Details](../configuration/configuration-details.mdx#documentcache)
 for all settings and environment variable names, or the
