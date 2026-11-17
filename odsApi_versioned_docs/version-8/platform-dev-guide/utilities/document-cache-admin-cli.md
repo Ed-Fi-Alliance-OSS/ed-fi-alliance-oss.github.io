@@ -92,7 +92,12 @@ dms-document-cache status --request-json status-target.json \
 ```
 
 When using `--request-json`, put the target and any required confirmation in
-the request. Omit `--tenant-key`, `--data-store-id`, `--confirm`,
+the request. If the command requires `--offline-writer-admission`, include
+`"offlineWriterAdmission": "closedAndDrained"` in the JSON. For offline
+activation, you can also set `expectedPhysicalSourceFingerprint` to the value
+from `status` to verify that you're activating the same database.
+
+Omit `--tenant-key`, `--data-store-id`, `--confirm`,
 `--offline-writer-admission`, and `--expected-physical-source-fingerprint`
 from the command line. You can still use `--settings`, `--environment`,
 `--datastore`, and `--json`.
@@ -252,6 +257,5 @@ and loaders, while deploying the corrected code and running the procedure.
 
 In `tracking` mode the command queues the corrected resources for the worker
 to process. In `disabled` mode it updates versions and timestamps in the
-relational tables. Follow the release's
-[restamp procedure](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/src/dms/clis/EdFi.DataManagementService.DocumentCacheAdmin/README.md#representation-restamp)
-for verification and Kafka coordination before restoring service.
+relational tables. Follow the upgrade instructions for your release before
+restoring service.

@@ -205,7 +205,9 @@ that have any credentials removed.
   Scrub requires `tracking` and a clear cache-ahead flag. Resolve any other
   state first. If scrub sets the flag, follow cache-ahead recovery. Otherwise,
   let repaired work finish and verify live status. [Restore and repair procedure](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/document-cache-documentation/operations-runbook.md#suspected-restore-or-direct-mutation)
-- **API writes start failing.** Each write must also record its pending cache
-  update while the cache is active. If that fails, the database rolls back the
-  write. Check `enqueueFailures` and the status of the work table and triggers.
+- **API creates or updates start failing.** When the cache is active, the
+  database rolls back a create or a content-changing update if it cannot queue
+  the cache update. On the API instance that handled the failed request, check
+  `enqueueFailures` at `GET /health/document-cache` or inspect that instance's
+  logs for errors involving the work table or triggers.
   [Diagnose write failures](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/document-cache-documentation/operations-runbook.md#enqueue-vs-processing-availability)
