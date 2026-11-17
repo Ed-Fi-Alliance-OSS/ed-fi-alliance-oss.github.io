@@ -15,15 +15,15 @@ The following links contain information specific to MetaEd.
 * Suggestions for improvement and bug reports can be submitted as a case in the
   [Ed-Fi Community Hub](https://community.ed-fi.org).
 
-## Ed-Fi Extension Resources
+## Ed-Fi Data Standard Extension Resources
 
 The main function of the MetaEd IDE is to generate technical resources and
 documentation that extend the Ed-Fi Data Standard and related technologies like
 the Ed-Fi ODS / API. The following links contain information about Ed-Fi
-Extensions.
+Data Standard Extensions.
 
-* Extending the XML and the Ed-Fi Data Standard is covered in the [Ed-Fi
-  Extensions
+* Extending the XML and the Ed-Fi Data Standard is covered in the
+  [Ed-Fi Data Standard Extension
   Framework](docs/reference/1-data-exchange/extensions-framework/readme.md)
   documentation.
 * Extending the Ed-Fi ODS / API is covered in the [ODS / API Platform documentation](../../2-ods-api-platform/readme.mdx)

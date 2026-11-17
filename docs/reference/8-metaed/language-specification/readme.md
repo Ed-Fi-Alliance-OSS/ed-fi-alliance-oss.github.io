@@ -17,8 +17,8 @@ To gain the most benefit from this information, the reader should already be
 familiar with the following knowledge areas:
 
 * Ed-Fi Technology Suite, see [www.ed-fi.org](http://www.ed-fi.org)
-* The Ed-Fi Extensions Framework, see, for example, the relevant sections of
-  the [Ed-Fi Extension Framework](docs/reference/1-data-exchange/extensions-framework/readme.md)
+* The Ed-Fi Data Standard Extension Framework, see, for example, the relevant
+  sections of the [Ed-Fi Data Standard Extension Framework](docs/reference/1-data-exchange/extensions-framework/readme.md)
   documentation and the [ODS/API Platform](../../2-ods-api-platform/readme.mdx) documentation
 * MetaEd IDE, see the [MetaEd IDE User
     Guide](../ide-user-guide/readme.md), particularly the [Core

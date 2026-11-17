@@ -1,37 +1,29 @@
+---
+sidebar_position: 14
+---
+
 # Ed-Fi API Publisher Extensibility
 
-::: warning
+The Ed-Fi API Publisher was developed following SOLID principles and defines
+interfaces for the parts a developer may want to replace, for example to keep
+connections in another configuration service, or to write data errors to a
+database instead of the log.
 
-This page is stale, and may not be accurate.
+A custom implementation requires changing and building the API Publisher from
+its [source code](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-API-Publisher).
+The connection and configuration store plugins are listed in `Program.cs` of
+the `EdFi.Tools.ApiPublisher.Cli` project, and the API Publisher does not load
+plugins from other assemblies at run time.
 
-:::
+| Interface | Purpose | Implementations in the API Publisher |
+| --- | --- | --- |
+| `INamedApiConnectionDetailsReader` | Reads the details of a named API connection from a configuration store. | AWS Systems Manager Parameter Store, PostgreSQL, SQL Server and plain text |
+| `IChangeVersionProcessedWriter` | Stores the last change version published from a source connection to a target connection. | AWS Systems Manager Parameter Store, PostgreSQL and SQL Server; the plain text store only logs a warning |
+| `IErrorPublisher` | Captures data-related errors for later analysis and troubleshooting. | The log, through Serilog |
+| `IPlugin` | Adds a connection type or a configuration store: its configuration values and its service registrations. | One per connection type and per configuration store |
 
-The Ed-Fi API Publisher has been developed using SOLID Principles of Software
-Development. It provides several interfaces that are pertinent for a developer
-wanting to change some of the behavior or out-of-the-box integrations of the
-software.
-
-For example, a developer could provide alternative implementations for any of
-the following aspects:
-
-* Rather than using AWS Systems Manager Parameter Store to manage the connection
-  configurations, they could be persisted and managed using Azure App
-  Configuration.
-* Rather than simply logging the data errors that occur, the API Publisher could
-  write these values to a structured data store like Amazon DynamoDB or
-  Microsoft Azure Cosmos DB.
-* Rather than storing the LastChangeVersionProcessed in the AWS Systems Manager
-  Parameter Store, they could be saved to a database. NOTE: This type of
-  customization would require some additional work to also integrate that
-  persistent store with the .NET configuration architecture since those values
-  are read by the Ed-Fi API Publisher as configuration values.
-
-The following interfaces are defined, and could be useful for tailoring the
-Ed-Fi API Publisher to work in other contexts:
-
-* **IErrorPublisher** - Defines a method for capturing data-related errors for
-  subsequent analysis and troubleshooting.
-* **INamedApiConnectionDetailsReader** - Defines a method for obtaining named
-  API connection details.
-* **IChangeVersionProcessedWriter** - Defines a method for setting the last
-  change version processed for a particular source and target connection.
+Each configuration store is a project named
+`EdFi.Tools.ApiPublisher.ConfigurationStore.<Store>` that implements
+`INamedApiConnectionDetailsReader`, `IChangeVersionProcessedWriter` and
+`IPlugin`. To add a store, follow the same pattern and add its plugin to the
+list in `Program.cs`.

@@ -43,7 +43,7 @@ Resources to review when diagnosing an issue:
 
 * [Cookbook](../cookbook/readme.mdx)
 * [Language Specification](../language-specification/readme.md).
-* [Ed-Fi Extension
+* [Ed-Fi Data Standard Extension
   Framework](docs/reference/1-data-exchange/extensions-framework/readme.md)
 
 Occasionally, there may be known issues preventing the use of otherwise valid

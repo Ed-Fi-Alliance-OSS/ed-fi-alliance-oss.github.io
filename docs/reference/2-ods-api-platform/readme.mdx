@@ -14,17 +14,22 @@ database and a companion REST API:
   tuned to the security and performance needs of K-12 organizations and the
   education technology vendors who serve them. The ODS uses Microsoft SQL Server
   or PostgreSQL as a database platform, and the API is written in C#.
-- **Ed-Fi API** (v8 and later) is the next-generation platform. It is not an
-  incremental update to the ODS / API, but instead replaces the Ed-Fi ODS / API
-  and ODS Admin API with two new services, the Ed-Fi API and a Configuration
-  Service, built on a new relational storage model (also on SQL Server or
-  PostgreSQL) and deployed using Docker images.
+- **Ed-Fi API v8** (and later versions) is the next-generation platform. It is
+  not an incremental update to the ODS / API, but instead replaces the Ed-Fi ODS
+  / API and ODS Admin API with two new services, the Ed-Fi API and a
+  Configuration Service, built on a new relational storage model (also on SQL
+  Server or PostgreSQL) and deployed using Docker images.
 
 The Ed-Fi Alliance plans to support the ODS/API Platform through the 2028-2029
 school year and to fully replace it with Ed-Fi API v8 by the 2029-2030 school
 year; see the
 [FAQ](../0-roadmap/api-faq.md#q-when-will-ed-fi-api-v8-be-available) for the
 release timeline.
+
+Both platforms are Ed-Fi API applications: they implement the Ed-Fi API
+Specifications. For how an Ed-Fi API differs from the Data Standard, the
+Unifying Data Model, and the API Specifications, see
+[Ed-Fi Data Standard vs. UDM vs. API Specifications vs. Ed-Fi API](/reference/data-exchange/data-standard-vs-udm-vs-api).
 
 Both platforms are vendor neutral, meaning that the client applications may be
 written in any language. See the
