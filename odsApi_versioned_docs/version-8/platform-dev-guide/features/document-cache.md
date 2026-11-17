@@ -1,11 +1,10 @@
 # DocumentCache
 
 DocumentCache stores a JSON copy of each resource and descriptor in the
-database, where API instances share it. Activation keeps the copies up to date
-for the selected database. For read-heavy workloads, the API can serve cached
-GET responses without rebuilding them from relational tables. Kafka event
-streaming requires an active cache. Allow extra database space for the copies,
-their indexes, and pending updates.
+database, where API instances share it. Activate the cache to keep the copies
+up to date. For read-heavy workloads, also enable accelerated reads so the API
+can serve GET requests from the cache. Kafka event streaming requires an active
+cache. Allow extra database space for the copies, their indexes, and pending updates.
 
 Clients get the same response from the cache or the relational tables. If a
 copy is missing or out of date, the API reads the relational tables and may
@@ -31,8 +30,7 @@ Service access, and API schema. Supply credentials through protected settings
 or your deployment's secret provider.
 
 Provisioning creates the cache tables for every database. After activation, a
-background worker, the _projector_, updates the copies as data changes. This
-process is called _projection_.
+background worker, the _projector_, updates the copies as data changes.
 
 The default `Targets` list is empty, so the worker is idle. For first-time
 setup, merge the example below into the `appsettings.Production.json` used by
@@ -100,8 +98,9 @@ active, preserve status and logs and escalate the incident.
 
 ## Turn It On for a New Database
 
-1. For Kafka, use the [Kafka workflow](./event-streaming-kafka-cdc.md#setup) for
-   provisioning and activation. Otherwise, [provision the database](../utilities/database-provisioning.md#provisioning-a-database-ddl-provision)
+Use these steps for a database without Kafka.
+
+1. [Provision the database](../utilities/database-provisioning.md#provisioning-a-database-ddl-provision)
    and [prepare its settings](#prepare-the-target-and-settings).
 2. Before the first resource or descriptor write, stop all API instances, bulk
    loaders, scheduled jobs, and other writers for this database. Prevent
@@ -124,6 +123,15 @@ active, preserve status and logs and escalate the incident.
 5. If the CLI returns exit code `12`, keep writers stopped and repeat the same
    command. When it returns `completed` (exit code `0`), [finish activation](#finish-activation).
 
+## Turn It On for an Existing Database
+
+For a database that already has data, `activate-offline` builds the initial
+cached copies. The cache must be `disabled`, and the CLI must be able to check
+the database's original managed provisioning records. Schedule downtime so all
+writers can stay stopped through activation and any retries. Follow
+[Activate an Existing Database](../utilities/document-cache-admin-cli.md#activate-an-existing-database)
+for the settings, commands, and verification steps.
+
 ## Finish Activation
 
 1. Rerun the CLI `status` command for the same tenant and data store. Verify
@@ -134,19 +142,9 @@ active, preserve status and logs and escalate the incident.
 3. If you want to enable accelerated reads, set
    `DataManagement:DocumentCache:ReadAcceleration:Enabled` to `true`, restart
    the API instances, and recheck status. This enables cached resource and
-   descriptor GET requests on all configured targets. The worker also keeps
-   the cache up to date when accelerated reads are off.
+   descriptor GET requests on all configured targets.
 
 Resume writes or load data once the checks pass.
-
-## Turn It On for an Existing Database
-
-For a database that already has data, `activate-offline` builds the initial
-cached copies. The cache must be `disabled`, and the CLI must be able to check
-the database's original managed provisioning records. Schedule downtime so all
-writers can stay stopped through activation and any retries. Follow
-[Activate an Existing Database](../utilities/document-cache-admin-cli.md#activate-an-existing-database)
-for the settings, commands, and verification steps.
 
 ## Check Status
 
@@ -190,7 +188,7 @@ that have any credentials removed.
 - **The CLI returns exit code `12`.** The command stopped before it finished.
   Retry it with the same target and options. For activation or another command
   that requires downtime, keep writers stopped through every retry.
-- **The queue stops shrinking.** Check `documentDiagnostics` and
+- **The worker stays behind after writes stop.** Check `documentDiagnostics` and
   `targetDiagnostics`. If one document repeatedly fails to build its cached
   JSON, `poisonTraversalDiagnostics` can help identify it. Correct the cause,
   resume the worker, and check progress. [Repeated document failures](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/document-cache-documentation/operations-runbook.md#persistent-projection-failure-and-poison-remediation)
