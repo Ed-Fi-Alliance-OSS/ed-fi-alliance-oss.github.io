@@ -88,14 +88,65 @@ use `--datastore sqlserver` and satisfy its additional prerequisites below.
   administrative workflow. The CLI provider must match the deployed API,
   Configuration Service database platform, and data store's provider metadata.
 - On SQL Server, enable database Read Committed Snapshot Isolation (RCSI) and
-  server-level `nested triggers` before activation. See the
-  [SQL Server prerequisite procedure](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/document-cache-documentation/operations-runbook.md#sql-server-prerequisite-failure-correction).
-  Changing these settings while the cache is active is outside the supported
-  recovery contract.
-- Close write admission and drain in-flight writers before either activation
-  example. For an existing store, also locate the original history described
-  below. A confirmation flag acknowledges an operator-established fence; it
-  does not stop writers.
+  server-level `nested triggers` using the [prerequisite commands below](#sql-server-prerequisites).
+- [Close and drain writers](#close-and-drain-writers) before either activation
+  workflow. For an existing store, also locate the original history described
+  in [Activate an Existing Store](#activate-an-existing-store).
+
+#### SQL Server Prerequisites
+
+Connect DBA tooling to the intended data store database and inspect both
+settings. Each query must return `1`:
+
+```sql
+SELECT is_read_committed_snapshot_on
+FROM sys.databases
+WHERE database_id = DB_ID();
+
+SELECT value_in_use
+FROM sys.configurations
+WHERE name = 'nested triggers';
+```
+
+If either setting is disabled, have an authorized DBA enable it during
+maintenance, before cache activation and with writers closed and drained:
+
+```sql
+ALTER DATABASE CURRENT SET READ_COMMITTED_SNAPSHOT ON WITH ROLLBACK IMMEDIATE;
+EXEC sp_configure 'show advanced options', 1;
+RECONFIGURE;
+EXEC sp_configure 'nested triggers', 1;
+RECONFIGURE;
+```
+
+`WITH ROLLBACK IMMEDIATE` disconnects other sessions and rolls back incomplete
+transactions in that database. `nested triggers` is a server-wide setting.
+Rerun the inspection queries to confirm both values are `1`, then retry
+activation with a new CLI invocation. Restart API instances when restoring
+the runtime during verification so they observe the updated settings.
+
+Only correct these prerequisites while the cache lifecycle is `disabled`.
+An activation preflight failure changes no cache state, so activation can be
+retried after correction. If status reports `sqlServerPrerequisiteFailed`
+while lifecycle is `tracking`, `resetting`, or `rebuilding`, treat it as an
+unsupported prerequisite incident. Changing these settings while the cache is
+active has no supported correction-and-restart recovery procedure.
+
+#### Close and Drain Writers
+
+Before activation, close admission for new writes to the target database and
+prevent automatic restarts or scheduled jobs from reopening it. Stop every API
+replica, including its projector and direct-fill writes, as well as bulk
+loaders, administrative writers, and external database writers. Drain their
+in-flight transactions and verify they have finished before running an
+activation command.
+
+Keep these writers stopped through activation and every retry. Restore the API
+runtime and reopen write admission only as directed in
+[Verify and Enable Reads](#verify-and-enable-reads). The
+`--offline-writer-admission closedAndDrained` flag acknowledges that the
+operator has already stopped and drained writers; it does not perform those
+actions.
 
 ### Select the Target
 
@@ -119,41 +170,105 @@ configuration.
 ### Activate a New Empty Store
 
 Use this path only for a newly provisioned database _before its first canonical
-write_, with writers closed and drained. Inspect the target, then activate it:
+write_. [Close and drain writers](#close-and-drain-writers), inspect the target,
+then activate it:
 
 ```bash
 dms-document-cache status --data-store-id 1 --settings ./appsettings.Production.json --environment Production --datastore postgresql --json
 dms-document-cache activate-new-empty --data-store-id 1 --confirm newEmptyActivation --settings ./appsettings.Production.json --environment Production --datastore postgresql --json
 ```
 
+Continue with [Verify and Enable Reads](#verify-and-enable-reads) before
+allowing writes to the database.
+
 ### Activate an Existing Store
 
-The existing store must be `disabled`. Before running the command, configure
-[`Cdc:PublicationHistory`](../utilities/document-cache-admin-cli.md#offline-administration-history)
-with the original managed provisioning state and deployment key. Trusted
-history must prove `internalOnly` for this target and physical source; missing
-or unknown history rejects activation. This requirement applies even if Kafka
-is not enabled. An empty state directory is not sufficient.
+The existing store must be `disabled`. Trusted history must prove
+`internalOnly` for this target and physical source; missing or unknown history
+rejects activation. This requirement applies even if Kafka is not enabled.
 
 If the store was created without
 [managed provisioning](../utilities/database-provisioning.md#managed-provisioning-for-documentcache),
 this activation path is unavailable. Use a new database, activate it before its
 first write, and reload the data as described above.
 
-Follow the runbook's
-[activation procedure](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/document-cache-documentation/operations-runbook.md#activation)
-and keep writers closed and drained, then run:
+For a store with the original managed history:
 
-```bash
-dms-document-cache activate-offline --data-store-id 1 --confirm offlineActivation --offline-writer-admission closedAndDrained --settings ./appsettings.Production.json --environment Production --datastore postgresql --json
-```
+1. Locate the original provisioning `--managed-state-path` and
+   `--deployment-key` in retained scripts or deployment configuration. Resolve
+   the path against the original working directory or mounted volume. If the
+   key was omitted, confirm that the original default, `local`, was used.
+   Retain the original creation receipt, workflow journal, and source history;
+   an empty directory or a new deployment key cannot replace them.
+2. Add this fragment to the complete CLI settings, replacing the path and key
+   with those original values:
+
+   ```json
+   {
+     "Cdc": {
+       "PublicationHistory": {
+         "StatePath": "/absolute/original/controller-state",
+         "DeploymentKey": "original-deployment-key",
+         "LockTimeout": "00:00:30"
+       }
+     }
+   }
+   ```
+
+   Reference the same protected state directory used by provisioning and any
+   CDC administration, with owner-only access. An independent copy does not
+   share its controller lock. Check environment overrides, particularly
+   `Cdc__PublicationHistory__StatePath` and
+   `Cdc__PublicationHistory__DeploymentKey`, so the CLI reads the intended
+   records. See [Offline Administration History](../utilities/document-cache-admin-cli.md#offline-administration-history)
+   for all history-reader settings.
+3. Inspect the selected target with those settings:
+
+   ```bash
+   dms-document-cache status --data-store-id 1 --settings ./appsettings.Production.json --environment Production --datastore postgresql --json
+   ```
+
+   Confirm that `targetKey.tenantKey` and `targetKey.dataStoreId` identify the
+   intended database and that `lifecycle.state` is `disabled`. Retain its
+   `physicalSourceFingerprint` for the activation command below. Status
+   identifies the current source; it does not establish permission to activate
+   it. The activation command checks the original history before mutation.
+4. [Close and drain all writers](#close-and-drain-writers). Keep them stopped
+   throughout the command and any retries. For SQL Server, confirm the
+   [prerequisites](#sql-server-prerequisites) before proceeding.
+5. Activate the target. Replace `<observed-lowercase-hex>` with the hash from
+   the status result, preserving the `sha256:` prefix. This guard rejects
+   activation if the physical source changed after the status check:
+
+   ```bash
+   dms-document-cache activate-offline \
+     --data-store-id 1 \
+     --confirm offlineActivation \
+     --offline-writer-admission closedAndDrained \
+     --expected-physical-source-fingerprint "sha256:<observed-lowercase-hex>" \
+     --settings ./appsettings.Production.json \
+     --environment Production \
+     --datastore postgresql \
+     --json
+   ```
+
+   Use the same tenant, data store ID, provider, and settings as the status
+   command. The CLI holds the controller lock while checking history and
+   throughout administration. Missing, unreadable, mismatched, or unknown
+   history rejects activation; do not use this mutating command just to test
+   whether the history exists.
+6. Check the command result and complete [Verify and Enable Reads](#verify-and-enable-reads)
+   before reopening write admission. If the command is incomplete, keep all
+   writers stopped and retry as described below.
 
 ### Verify and Enable Reads
 
 Accepted activation revalidates prerequisites, clears residual cache/work
 through the supported workflow, seeds and drains baseline work, and enters
 `tracking`. Check command results before proceeding. Exit code `12` means
-incomplete: retry the same command with the same target and guard values.
+incomplete: keep writers stopped and retry the same command with the same
+target and guard values. Require a `completed` result (exit code `0`) before
+proceeding with verification.
 
 ```bash
 dms-document-cache status --data-store-id 1 --settings ./appsettings.Production.json --environment Production --datastore postgresql --json
