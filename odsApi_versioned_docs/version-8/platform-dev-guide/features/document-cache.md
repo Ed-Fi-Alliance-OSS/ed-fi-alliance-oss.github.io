@@ -20,6 +20,11 @@ Snapshot and read-replica requests always read the relational tables and skip di
 | You want the cache on an existing database | You can [activate it offline](#turn-it-on-for-an-existing-database) if the original managed provisioning records show this database has never published changes to Kafka or another downstream system. |
 | The existing database was created without those records | [Provision a new database and activate its cache](#turn-it-on-for-a-new-database), verify it, then reload the data. Rerunning provisioning on the existing database cannot recreate its history. |
 
+## Turn It On for a New Database
+
+For a deployment without Kafka, [provision the database](../utilities/database-provisioning.md#provisioning-a-database-ddl-provision)
+and activate the cache before the first resource or descriptor write.
+
 ### Prepare the Target and Settings
 
 Register the database in the Configuration Service and install the
@@ -35,7 +40,7 @@ background worker, the _projector_, updates the copies as data changes.
 The default `Targets` list is empty, so the worker is idle. For first-time
 setup, merge the example below into the `appsettings.Production.json` used by
 the API and CLI. Leave accelerated reads at their default (`false`) and choose
-an administrator-only role for the [HTTP status endpoint](#http-status-endpoint).
+an administrator-only role for the [HTTP status endpoint](#check-status).
 If you already use DocumentCache, append the new entry to `Targets` and keep
 your current read-acceleration setting.
 
@@ -96,16 +101,11 @@ active, preserve status and logs and escalate the incident.
 
 </details>
 
-## Turn It On for a New Database
+### Activate the Empty Database
 
-Use these steps for a database without Kafka.
-
-1. [Provision the database](../utilities/database-provisioning.md#provisioning-a-database-ddl-provision)
-   and [prepare its settings](#prepare-the-target-and-settings).
-2. Before the first resource or descriptor write, stop all API instances, bulk
-   loaders, scheduled jobs, and other writers for this database. Prevent
-   automatic restarts and wait for all writes in progress to finish.
-3. Check that the CLI reports the intended tenant and data store with
+1. Stop all API instances, bulk loaders, scheduled jobs, and other writers for
+   this database. Prevent automatic restarts and wait for writes in progress to finish.
+2. Check that the CLI reports the intended tenant and data store with
    `lifecycle.state` set to `disabled`.
 
    ```bash
@@ -113,26 +113,17 @@ Use these steps for a database without Kafka.
      --settings ./appsettings.Production.json --environment Production --datastore postgresql --json
    ```
 
-4. Activate the cache while writers are still stopped.
+3. Activate the cache while writers are still stopped.
 
    ```bash
    dms-document-cache activate-new-empty --data-store-id 1 --confirm newEmptyActivation \
      --settings ./appsettings.Production.json --environment Production --datastore postgresql --json
    ```
 
-5. If the CLI returns exit code `12`, keep writers stopped and repeat the same
-   command. When it returns `completed` (exit code `0`), [finish activation](#finish-activation).
+4. If the CLI returns exit code `12`, keep writers stopped and repeat the same
+   command. Continue when it returns `completed` (exit code `0`).
 
-## Turn It On for an Existing Database
-
-For a database that already has data, `activate-offline` builds the initial
-cached copies. The cache must be `disabled`, and the CLI must be able to check
-the database's original managed provisioning records. Schedule downtime so all
-writers can stay stopped through activation and any retries. Follow
-[Activate an Existing Database](../utilities/document-cache-admin-cli.md#activate-an-existing-database)
-for the settings, commands, and verification steps.
-
-## Finish Activation
+### Finish Activation
 
 1. Rerun the CLI `status` command for the same tenant and data store. Verify
    `lifecycle.state` is `tracking` and `cacheAhead.state` is `clear`.
@@ -146,16 +137,36 @@ for the settings, commands, and verification steps.
 
 Resume writes or load data once the checks pass.
 
+## Turn It On for an Existing Database
+
+If the cache is `disabled` and the original managed provisioning records show
+the database has never published changes downstream, use
+[`activate-offline`](../utilities/document-cache-admin-cli.md#activate-an-existing-database)
+to build the cached copies. Schedule downtime so writers stay stopped through
+activation and any retries.
+
 ## Check Status
 
-Call [`GET /health/document-cache`](#http-status-endpoint) on the running API
-with a token carrying the configured role and find the entry for your tenant
-and data store.
-A healthy worker reports `operationalHealth.status` as `operational`.
-When `caughtUp.status` is `caughtUp`, the queue was empty at the time of the check.
+Set `DataManagement:DocumentCache:Status:RequiredRole` to a single role reserved
+for administrators or operators. Restart the API after changing it. An empty
+or invalid role leaves the endpoint unavailable.
 
-The CLI reads the database. Only the running API can check the worker, so the
-CLI reports `unknown` with reason `runtimeNotObserved` for these two fields.
+1. Get a bearer token with that role. With the self-contained provider, use
+   `IdentitySettings:ConfigServiceRole` (`cms-client` by default). Request the
+   token from the Configuration Service at `/connect/token` using the
+   [administrative client's credentials](../configuration/identity-provider.md#clients-that-arent-api-clients)
+   and the `client_credentials` grant. With Keycloak, assign the chosen role
+   to the monitoring client.
+2. Call `GET /health/document-cache` on the Ed-Fi API with the token. Find
+   your tenant and data store. A healthy worker reports
+   `operationalHealth.status` as `operational`. A `caughtUp.status` of
+   `caughtUp` means the queue was empty at the time of the check.
+
+A `401` means the token is missing or invalid. For a `403`, check the token's
+role under `JwtAuthentication:RoleClaimType`.
+
+The CLI reads the database and reports `unknown` with reason
+`runtimeNotObserved` for both worker checks.
 
 | `lifecycle.state` | What it means for the host |
 | --- | --- |
@@ -165,20 +176,6 @@ CLI reports `unknown` with reason `runtimeNotObserved` for these two fields.
 | `tracking` | The worker can update cached copies. With accelerated reads enabled and the cache-ahead flag clear, the API can use current copies. |
 | `invalid` | The stored cache state is missing or invalid. Inspect the database tables and status diagnostics. |
 | `unknown` | The tool could not read the state. Check the selected tenant, data store, and database access. |
-
-### HTTP Status Endpoint
-
-Set `DataManagement:DocumentCache:Status:RequiredRole` to a single role
-reserved for administrators or operators and restart the API. An empty or
-invalid role leaves the endpoint unavailable. With the self-contained identity
-provider, use `IdentitySettings:ConfigServiceRole` (`cms-client` by default).
-Request a token at `/connect/token` with the administrative client's credentials
-and the `client_credentials` grant. With Keycloak, assign the chosen role to
-the clients that monitor the cache. See [administrative client requirements](../configuration/identity-provider.md#clients-that-arent-api-clients).
-
-Call `GET /health/document-cache` with that bearer token. A `401` means the
-token is missing or invalid. For a `403`, check that the token carries the
-configured role under `JwtAuthentication:RoleClaimType`.
 
 ## When Something Goes Wrong
 
@@ -193,13 +190,13 @@ that have any credentials removed.
   JSON, `poisonTraversalDiagnostics` can help identify it. Correct the cause,
   resume the worker, and check progress. [Repeated document failures](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/document-cache-documentation/operations-runbook.md#persistent-projection-failure-and-poison-remediation)
 - **Status shows `cacheAhead.state` is `recoveryRequired`.** A cached version
-  is newer than its relational source. Cached reads and updates are blocked.
-  Use offline recovery only if the original records show this database has
-  never published changes to Kafka or another downstream system and you
-  confirm those systems could not have seen that version. If exposure is
-  possible or unknown, stop publication and preserve the evidence.
-  [Cache-ahead recovery](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/document-cache-documentation/operations-runbook.md#cache-ahead-recovery)
-  and [CDC containment](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/cdc-documentation/operations-runbook.md#projection-handoff)
+  is newer than its relational source. The API reads the relational tables and
+  cache updates stop. Use [offline recovery](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/document-cache-documentation/operations-runbook.md#cache-ahead-recovery)
+  only if the original provisioning records show the database has never
+  published changes downstream and you confirm no downstream system could have
+  seen that version. If records are missing or damaged, save status and logs
+  and escalate the incident. If downstream exposure is possible or unknown,
+  stop publication and follow [CDC containment](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/cdc-documentation/operations-runbook.md#projection-handoff).
 - **The database was restored or changed outside the API.** Run `scrub` to
   check for missing or inconsistent cache updates, even if the queue is empty.
   Scrub requires `tracking` and a clear cache-ahead flag. Resolve any other
