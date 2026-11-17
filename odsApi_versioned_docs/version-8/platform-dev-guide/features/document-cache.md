@@ -6,9 +6,11 @@ API instances using that database share the cache, and restarting an instance
 does not clear it. For read-heavy workloads, cached bodies can avoid rebuilding
 resources from relational tables while preserving the same API response.
 
-An asynchronous _projector_ processes durable work recorded with canonical
-writes and refreshes the cached JSON. Plan for additional database storage for
-JSON bodies, indexes, and queued projection work alongside the relational data.
+An asynchronous background worker, the _projector_, refreshes the cached JSON.
+While the cache is active, writes to the relational resource and descriptor
+tables also save work in a database queue, in the same transaction. The
+projector processes that queue. Plan for additional database storage for JSON
+bodies, indexes, and queued work alongside the relational data.
 DocumentCache is also a prerequisite for
 [Event Streaming with Kafka](./event-streaming-kafka-cdc.md); projection alone
 does not configure connectors or prove downstream delivery.
@@ -52,17 +54,26 @@ GET-many requests on the primary database whose tenant/data-store pair matches
 a configured target. Snapshot and read-replica requests bypass cached reads
 and direct fill, using their selected database's relational data.
 Authorization, filtering, ordering, paging, and response shaping still apply.
-Only fresh, version-equal cache rows in an eligible lifecycle can be used.
+Only cache rows whose content version matches the relational source can be
+used, and only when the cache's lifecycle state allows reads.
 
-The relational path remains the correctness path. Missing or stale rows,
-lifecycle fences, ineligible targets, and expected cache-read availability
-failures fall back to relational reconstruction. A projection backlog alone
-does not make every cache row unusable: fresh rows can still serve reads in
-`tracking` with a clear cache-ahead latch.
+The API falls back to rebuilding the response from relational data when cache
+rows are missing or stale, the lifecycle blocks cached reads, the target is
+ineligible, or an expected cache-read availability failure occurs. A projection
+backlog alone does not make every cache row unusable: fresh rows can still serve
+reads in `tracking` when `cacheAhead.state` is `clear`.
+
+The _cache-ahead flag_ is stored in the database. It records that a cached
+content version was observed to be higher than the version in the relational
+source, for example after a database restore. Status then reports
+`cacheAhead.state` as `recoveryRequired`. Cached reads and cache writes,
+including direct fill, are blocked until a supported recovery workflow clears
+the flag. See [Maintenance and Recovery](#maintenance-and-recovery).
 
 After successful relational fallback, the API may attempt a best-effort
-_direct fill_ using the shared materializer and cache writer. It does not cache
-the already shaped response or replace the response selected by fallback.
+_direct fill_: populate the cache using the same JSON generation and storage
+code as the projector. It does not cache the already shaped response or replace
+the response selected by fallback.
 `ReadAcceleration:DirectFillTimeout` bounds this attempt (250 milliseconds by
 default); a direct-fill failure leaves the relational response intact. Direct
 fill is skipped for snapshot and read-replica requests because those database
@@ -169,9 +180,9 @@ configuration.
 
 ### Activate a New Empty Store
 
-Use this path only for a newly provisioned database _before its first canonical
-write_. [Close and drain writers](#close-and-drain-writers), inspect the target,
-then activate it:
+Use this path only for a newly provisioned database _before its first resource
+or descriptor write_. [Close and drain writers](#close-and-drain-writers), inspect
+the target, then activate it:
 
 ```bash
 dms-document-cache status --data-store-id 1 --settings ./appsettings.Production.json --environment Production --datastore postgresql --json
@@ -277,8 +288,8 @@ dms-document-cache status --data-store-id 1 --settings ./appsettings.Production.
 In the CLI result, verify `lifecycle.state` is `tracking` and `cacheAhead.state`
 is `clear`. Standalone CLI status does not observe the running projector, so
 `operationalHealth` and `caughtUp` report `unknown` with reason
-`runtimeNotObserved` even when the durable state is healthy. Do not wait for
-those CLI fields to become healthy.
+`runtimeNotObserved` even when the stored database state is healthy. Do not wait
+for those CLI fields to become healthy.
 
 Configure the [HTTP status endpoint](#http-status-endpoint), then restore the
 API/projector runtime while keeping external write admission closed. Call
@@ -302,35 +313,37 @@ for the local Compose overlay.
 ## Interpret Status
 
 The CLI and `GET /health/document-cache` expose the same projection status
-contract. Check target resolution, eligibility, inventory, and provider
-prerequisites as well as lifecycle and queue status.
+contract. Check that the target resolves to the intended database, is eligible
+for projection, and has the required database tables, triggers, and provider
+settings, as well as checking lifecycle and queue status.
 
-The standalone CLI observes durable database state, but does not observe the
-running projector. Its `operationalHealth` and `caughtUp` fields therefore
-report `unknown` with reason `runtimeNotObserved` when durable observation
+The standalone CLI observes state stored in the database, but does not observe
+the running projector. Its `operationalHealth` and `caughtUp` fields therefore
+report `unknown` with reason `runtimeNotObserved` when database observation
 succeeds. Use the live HTTP endpoint to verify runtime health and caught-up
 status.
 
 | `lifecycle.state` | Meaning and action |
 | --- | --- |
-| `disabled` | Enqueue, projection writes, acknowledgements, and cached reads are disabled. The canonical API remains available. Activate through the CLI when ready. |
-| `resetting` | Administrative clearing is running or was interrupted. Enqueue remains enabled; cache writes and acknowledgements are fenced. Reissue the known interrupted command; do not infer a recovery command from this state alone. |
-| `rebuilding` | Baseline seeding/draining is in progress. Cached reads and caught-up success are fenced. Let the active workflow finish or reissue the known interrupted command. |
-| `tracking` | Ordinary projection is enabled. Cached reads still need a clear cache-ahead latch and version-equal rows. |
-| `invalid` | Durable lifecycle state is missing or invalid. Inspect inventory and diagnostics and follow the runbook before claiming health. |
+| `disabled` | Recording new work, writing cached JSON, marking queued work complete, and reading from the cache are disabled. The API continues to use relational data. Activate through the CLI when ready. |
+| `resetting` | Administrative clearing is running or was interrupted. New work is still recorded; writing cached JSON and marking queued work complete are blocked. Reissue the known interrupted command; do not infer a recovery command from this state alone. |
+| `rebuilding` | Work for existing data is being added to the queue and processed. Cached reads are blocked, and status cannot report caught-up success. Let the active workflow finish or reissue the known interrupted command. |
+| `tracking` | Ordinary projection is enabled. Cached reads still require `cacheAhead.state` to be `clear` and cache content versions to match the relational source. |
+| `invalid` | Stored lifecycle state is missing or invalid. Inspect the required database tables, triggers, and diagnostics and follow the runbook before claiming health. |
 | `unknown` | Lifecycle could not be observed. Resolve target or observation failures before drawing conclusions. |
 
 `operationalHealth` describes whether projection can process ordinary work.
-`caughtUp` is a separate observation: one provider statement saw `tracking`, a
-clear latch, and an empty `dms.DocumentProjectionWork` queue. It is not proof of
-Kafka delivery or an integrity scan. New writes can enqueue work immediately
-after that observation.
+`caughtUp` is a separate observation: one database query saw `tracking`,
+`cacheAhead.state` as `clear`, and an empty `dms.DocumentProjectionWork` queue.
+It is not proof of Kafka delivery or an integrity scan. New writes can add work
+immediately after that observation.
 
 Projection status is distinct from ordinary API health. A processing backlog
-or projector failure does not remove an otherwise healthy API instance from
-canonical routing. However, failure to persist projection work during a
-canonical write rolls back the whole write; broken enqueue inventory is an API
-availability incident, not just lag.
+or projector failure does not stop an otherwise healthy API instance from
+serving requests using relational data. However, if a write to the relational
+tables cannot also save its required projection work, the whole transaction
+rolls back. Missing or broken queue tables or triggers can therefore cause API
+writes to fail, rather than just delay cache updates.
 
 ### HTTP Status Endpoint
 
@@ -358,7 +371,7 @@ See the [configuration constraints](../configuration/configuration-details.mdx#d
 ## Maintenance and Recovery
 
 Use the v8.1.0 operational procedures rather than editing cache, work, lifecycle,
-or latch tables directly:
+or cache-ahead flag tables directly:
 
 - [Explicit integrity scrub](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/document-cache-documentation/operations-runbook.md#explicit-integrity-scrub)
   checks source/cache/work relationships.
@@ -368,6 +381,7 @@ or latch tables directly:
 - [Persistent failures and poison remediation](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/document-cache-documentation/operations-runbook.md#persistent-projection-failure-and-poison-remediation)
   covers work that will not drain.
 - [Suspected restore or direct mutation](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/document-cache-documentation/operations-runbook.md#suspected-restore-or-direct-mutation)
-  requires an admitted scrub before relying on caught-up status.
+  requires an integrity check (`scrub`) before relying on caught-up status.
+  The command requires lifecycle `tracking` and `cacheAhead.state` of `clear`.
 - [Kafka/CDC operations](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/cdc-documentation/operations-runbook.md)
   owns connector setup and downstream publication handling.
