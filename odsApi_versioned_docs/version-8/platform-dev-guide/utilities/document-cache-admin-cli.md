@@ -65,16 +65,15 @@ With data store `1` registered and selected in
 dms-document-cache status --data-store-id 1 --settings ./appsettings.Production.json --environment Production --datastore postgresql --json
 ```
 
-Add `--tenant-key district-a` for a named tenant. With `--json`, the result
-goes to standard output. Logs go to standard error or the configured log
-destination. Check that `targetKey` identifies the intended database, then
-inspect its `resolution`, `eligibility`, `lifecycle`, `cacheAhead`, and
-`queueSummary` fields.
+Add `--tenant-key district-a` for a named tenant. With `--json`, results go to
+standard output and logs go to standard error or the configured log destination.
+Verify the tenant and data store in `targetKey`. After activation, check that
+`lifecycle.state` is `tracking` and `cacheAhead.state` is `clear`.
 
-The CLI reads the state stored in the database. It reports `unknown` with
-reason `runtimeNotObserved` for `operationalHealth` and `caughtUp`. Use the
-running API's status endpoint to check whether the worker is healthy and has
-finished pending updates. See [Check Status](../features/document-cache.md#check-status).
+The CLI reads database state and reports `unknown` with reason
+`runtimeNotObserved` for `operationalHealth` and `caughtUp`. Use the
+[running API's status endpoint](../features/document-cache.md#check-status)
+to verify the worker is healthy and caught up.
 
 ### Pass a Request as JSON
 
@@ -224,18 +223,15 @@ may have occurred, preserve the records and follow the
 
 | Code | Meaning |
 | --- | --- |
-| `0` | Status or administration completed according to the result contract. Inspect the result for target health. |
-| `1` | Unexpected or unclassified failure. |
-| `10` | A known guard or preflight rule rejected administration before mutation. |
-| `11` | Administration failed before mutation, or status failed before a complete result. |
-| `12` | Incomplete and retryable after possible mutation. Retry the same command. |
-| `64` | Invalid arguments, confirmation token, or JSON request. |
-| `78` | Process-wide configuration failed before the target registry or command contract could be built. |
+| `0` | The command completed. For `status`, read the result to check the target's state. |
+| `1` | The command failed unexpectedly. Check the error details. |
+| `10` | A safety check stopped the command before it changed the database. Read the reason in the output. |
+| `11` | The command failed before changing the database, or `status` could not return a complete result. |
+| `12` | The command stopped before it finished and may have changed the database. Retry it with the same target and options. |
+| `64` | Check the command arguments, confirmation token, or request JSON for errors. |
+| `78` | The CLI could not load a valid configuration. Check the settings files and environment variables. |
 
-For `12` (`incompleteRetryable`), retain the same target and guard values. The
-next invocation reacquires the database administration lock and revalidates
-stored state before resuming. Keep writers stopped through retries of commands
-that require the database to be offline.
+If the command requires downtime, keep writers stopped through every retry.
 
 ## Representation Restamp
 
