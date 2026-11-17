@@ -250,7 +250,7 @@ options to a later provisioning run cannot establish it for an existing
 database, and a new state directory cannot replace lost records. Without the
 original history, `activate-offline` is unavailable. To use DocumentCache in
 that case, provision a fresh database, [activate its cache before the first
-write](../features/document-cache.md#activate-a-new-empty-store), and reload the
+write](../features/document-cache.md#turn-it-on-for-a-new-database), and reload the
 data after activation and verification.
 
 :::

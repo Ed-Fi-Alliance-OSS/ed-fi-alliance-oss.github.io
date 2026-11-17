@@ -60,7 +60,7 @@ default tenant.
 
 The bootstrap flow uses the startup script to select the overlay. The overlay
 only configures the target: follow the [DocumentCache activation
-guide](../platform-dev-guide/features/document-cache.md#configure-and-activate-a-target)
+guide](../platform-dev-guide/features/document-cache.md#before-you-start)
 to satisfy prerequisites, activate the database, and verify status.
 
 To enable accelerated reads, add

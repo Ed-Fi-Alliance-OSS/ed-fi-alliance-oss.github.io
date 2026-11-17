@@ -8,7 +8,7 @@ description: Install and use the DocumentCache administration tool for Ed-Fi API
 The `dms-document-cache` tool inspects and administers one tenant/data-store
 pair at a time without starting the API web host. Start with the
 [DocumentCache guide](../features/document-cache.md) for
-activation examples and lifecycle interpretation.
+help choosing an activation procedure and checking the result.
 
 ## Installation
 
@@ -32,8 +32,9 @@ configure `AppSettings:ApiSchema:UseCustomPath=true` and
 
 Run with complete settings matching the deployed API, its Configuration Service,
 provider, and effective schema. The operator needs database access appropriate
-to the selected workflow. SQL Server projection requires RCSI and server-level
-`nested triggers`; see the [feature prerequisites](../features/document-cache.md#prerequisites).
+to the selected workflow. For SQL Server, check the
+[database and server settings](../features/document-cache.md#sql-server-prerequisites)
+before activation.
 
 | Option | Use |
 | --- | --- |
@@ -64,56 +65,67 @@ With data store `1` registered and selected in
 dms-document-cache status --data-store-id 1 --settings ./appsettings.Production.json --environment Production --datastore postgresql --json
 ```
 
-Add `--tenant-key district-a` for a named tenant. In JSON mode, stdout contains
-one shared contract document, with diagnostics and logs on stderr or configured
-log sinks. Inspect the target's `resolution`, `eligibility`, `lifecycle`,
-`cacheAhead`, `operationalHealth`, `caughtUp`, and `queueSummary` fields. A
-successful status command means it returned a complete result, not that the
-target is operational.
+Add `--tenant-key district-a` for a named tenant. With `--json`, the result
+goes to standard output. Logs go to standard error or the configured log
+destination. Check that `targetKey` identifies the intended database, then
+inspect its `resolution`, `eligibility`, `lifecycle`, `cacheAhead`, and
+`queueSummary` fields.
 
-Standalone CLI status observes state stored in the database, including
-lifecycle, the [cache-ahead flag](../features/document-cache.md#read-behavior),
-and queue state, but does not observe the running projector. Even with healthy
-database state, `operationalHealth` and `caughtUp` report `unknown` with reason
-`runtimeNotObserved`. Use the live
-[`GET /health/document-cache` endpoint](../features/document-cache.md#http-status-endpoint)
-after restoring the API/projector runtime to verify operational health and
-caught-up status. See [status interpretation](../features/document-cache.md#interpret-status).
+The CLI reads the state stored in the database. It reports `unknown` with
+reason `runtimeNotObserved` for `operationalHealth` and `caughtUp`. Use the
+running API's status endpoint to check whether the worker is healthy and has
+finished pending updates. See [Check Status](../features/document-cache.md#check-status).
 
-Duration fields use numeric `*Seconds` values; administrative results include
-`elapsedCommandTimeSeconds`.
+### Pass a Request as JSON
 
-For automation, `--request-json <path|->` accepts a request file or stdin. Do not
-combine it with target, confirmation, offline writer admission, or fingerprint
-options. See the [release CLI README](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/src/dms/clis/EdFi.DataManagementService.DocumentCacheAdmin/README.md#configuration)
-for request shapes.
+A script can supply the request in a file with `--request-json <path>` or
+through standard input with `--request-json -`. For example, save the
+following status request as `status-target.json`.
+
+```json
+{ "targetKey": { "tenantKey": "", "dataStoreId": 1 } }
+```
+
+```bash
+dms-document-cache status --request-json status-target.json \
+  --settings ./appsettings.Production.json --environment Production --json
+```
+
+When using `--request-json`, put the target and any required confirmation in
+the request. Omit `--tenant-key`, `--data-store-id`, `--confirm`,
+`--offline-writer-admission`, and `--expected-physical-source-fingerprint`
+from the command line. You can still use `--settings`, `--environment`,
+`--datastore`, and `--json`.
 
 ## Commands
 
-Supply the exact token with `--confirm`. Commands marked _offline_ also require
-`--offline-writer-admission closedAndDrained`, after the operator has actually
-stopped new writes and waited for in-flight transactions to finish. That flag
-does not stop writers for you.
+Supply the token shown with `--confirm`. For commands marked _offline_,
+stop writers and wait for writes in progress to finish. Then pass
+`--offline-writer-admission closedAndDrained` to acknowledge those steps.
+Keep writers stopped through retries.
 
-| Command | Required confirmation | Prerequisites and purpose |
+| Command | Required confirmation | When to use it |
 | --- | --- | --- |
-| `activate-new-empty` | `newEmptyActivation` | Newly provisioned store before its first resource or descriptor write, with writers stopped and in-flight transactions finished. Activate and establish the baseline. |
-| `activate-offline` | `offlineActivation` | Offline; existing `disabled` store and trusted internal-only history. Activate and establish the baseline. |
-| `deactivate-offline` | `offlineDeactivation` | Offline; trusted internal-only history. Clear cache/work through the supported workflow and enter `disabled`. |
-| `rebuild-online` | `onlineCacheRebuild` | `tracking` or `rebuilding`, `cacheAhead.state` is `clear`. Rebuild while writes to the relational tables continue. |
-| `scrub` | `integrityScrub` | `tracking`, `cacheAhead.state` is `clear`. Check consistency between relational data, cached JSON, and queued work, and repair eligible discrepancies in queued work. |
-| `recover-cache-ahead` | `internalCacheAheadRecovery` | Offline; trusted internal-only history and the runbook's recovery guards. Recover a cache-ahead incident. |
+| `activate-new-empty` | `newEmptyActivation` | Start the cache on a newly provisioned database before its first resource or descriptor write. Stop writers and wait for writes in progress to finish first. |
+| `activate-offline` | `offlineActivation` | Offline. Build the first cached copies on an existing `disabled` database with the required publication history. |
+| `deactivate-offline` | `offlineDeactivation` | Offline. Clear cached copies and pending updates, then enter `disabled`. Requires the same publication history as offline activation. |
+| `rebuild-online` | `onlineCacheRebuild` | Rebuild cached copies while writes continue. Requires `tracking` or `rebuilding` and a clear cache-ahead flag. |
+| `scrub` | `integrityScrub` | Check the cache against relational data and repair missing or incorrect queued updates. Requires `tracking` and a clear cache-ahead flag. |
+| `recover-cache-ahead` | `internalCacheAheadRecovery` | Offline. Recover when a cached version is newer than its source. Requires the original publication history and the checks in the recovery procedure. |
 
-Use the [activation examples](../features/document-cache.md#configure-and-activate-a-target)
-and the [operations runbook](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/document-cache-documentation/operations-runbook.md)
-for the complete procedures. Do not select a different workflow just because a
-previous command stopped in `resetting` or `rebuilding`.
+Follow the activation steps for a [new database](../features/document-cache.md#turn-it-on-for-a-new-database)
+or an [existing database](#activate-an-existing-database). If a command stops
+in `resetting` or `rebuilding`, resume the same command with the same target
+and options. For other symptoms, see [When Something Goes Wrong](../features/document-cache.md#when-something-goes-wrong).
 
-Optional guards and timeouts:
+Removing a data store from `Targets` pauses the worker for that database.
+The database continues recording pending updates until you deactivate the cache.
+
+### Optional Checks and Time Limits
 
 | Option | Default | Meaning |
 | --- | --- | --- |
-| `--expected-physical-source-fingerprint <value>` | None | Reject mutation if the current source differs from the observed `sha256:<lowercase-hex>` fingerprint. |
+| `--expected-physical-source-fingerprint <value>` | None | Proceed only if the selected database still matches the identifier from the last status check. |
 | `--command-timeout-seconds <seconds>` | `86400` | Total administrative workflow budget. |
 | `--status-observation-timeout-seconds <seconds>` | `5` | Time allowed to read each target's status from the database. |
 | `--status-timeout-seconds <seconds>` | `30` | Overall status budget. |
@@ -123,19 +135,23 @@ see [Configuration Details](../configuration/configuration-details.mdx#documentc
 
 ## Offline Administration History
 
-`activate-offline`, `deactivate-offline`, and `recover-cache-ahead` require a
-trusted history provider to report `internalOnly` for the same target and
-physical-source fingerprint. That history must have been recorded when the
-database was created through
-[managed provisioning](./database-provisioning.md#managed-provisioning-for-documentcache).
-An existing database created without it cannot gain the evidence retroactively;
-rerunning provisioning with managed options does not make `activate-offline`
-available. To use DocumentCache in that case, provision a new database,
-[activate it before its first write](../features/document-cache.md#activate-a-new-empty-store),
-and reload the data after activation and verification.
+For `activate-offline`, `deactivate-offline`, and `recover-cache-ahead`, the
+original provisioning records must show that this database has no history of
+downstream publication, such as through Kafka. The CLI calls this
+`internalOnly`. [Managed provisioning](./database-provisioning.md#managed-provisioning-for-documentcache)
+records that history at database creation. Stopping or removing a Kafka
+connector cannot establish it later.
 
-For a store with the original managed history, configure the shipped reader by
-adding this fragment to the complete CLI settings:
+Find the original `--managed-state-path` and `--deployment-key` in your
+provisioning scripts or deployment settings. If the path was relative, resolve
+it against the original working directory or mounted volume. If the key was
+omitted, its default was `local`. The directory must still hold the original
+creation receipt, workflow journal, and source history.
+
+Add the following to the complete CLI settings, substituting the original path
+and key. Use the same protected directory as provisioning and CDC
+administration. The tools use the same lock in that directory to prevent
+overlapping operations. A separate copy has its own lock.
 
 ```json
 {
@@ -149,26 +165,56 @@ adding this fragment to the complete CLI settings:
 }
 ```
 
-Use the original provisioning `--managed-state-path` and `--deployment-key`.
-The protected state must contain the original managed CREATE receipt, workflow,
-and source history. Creating an empty directory or choosing a new key does not
-establish internal-only history. Managed creation with
-`--managed-workflow-purpose source-history-only` supplies this evidence without
-enabling Kafka. Reference the same state root used by provisioning and any CDC
-administration; an independent copy does not share its controller lock.
+Restrict access to the directory to its owner. The CLI holds the lock through
+the command. `LockTimeout` sets how long it waits to acquire the lock. The
+default is 30 seconds and the allowed range is greater than zero through ten
+minutes. Check for environment overrides such as
+`Cdc__PublicationHistory__StatePath` and `Cdc__PublicationHistory__DeploymentKey`.
 
-`LockTimeout` defaults to 30 seconds and must be positive and no more than ten
-minutes. Environment overrides use names such as
-`Cdc__PublicationHistory__StatePath`, not SchemaTools' `DMS_CDC__` prefix. Keep
-state owner-only; the reader holds the controller lock through administration.
+The CLI rejects an offline command if it cannot read matching records or the
+history is unknown. If this database was created without managed history, use
+the [new database procedure](../features/document-cache.md#turn-it-on-for-a-new-database)
+and reload the data after verification. If records are damaged or publication
+may have occurred, preserve the records and follow the
+[history and recovery guidance](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/document-cache-documentation/operations-runbook.md#history-decisions-for-offline-administration).
 
-Without this configuration, history is `unknown`. Missing, unreadable, invalid,
-or mismatched evidence also fails closed. Stopping a connector, removing a
-runtime target, absence of a binding, or retiring a binding does not establish
-internal-only eligibility. Follow the
-[history decisions](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/document-cache-documentation/operations-runbook.md#history-decisions-for-offline-administration)
-and [recovery setup](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/document-cache-documentation/operations-runbook.md#recovery-procedure)
-before invoking an offline command.
+## Activate an Existing Database
+
+1. [Prepare the target and settings](../features/document-cache.md#prepare-the-target-and-settings)
+   and configure [offline administration history](#offline-administration-history)
+   using the original provisioning records. For SQL Server, check the
+   [SQL Server prerequisites](../features/document-cache.md#sql-server-prerequisites).
+2. Inspect the target. This example uses PostgreSQL, data store `1`, and the
+   default tenant. Substitute your registered ID, use `--datastore sqlserver`
+   for SQL Server, and add `--tenant-key <your-tenant-key>` for a named tenant.
+
+   ```bash
+   dms-document-cache status --data-store-id 1 \
+     --settings ./appsettings.Production.json --environment Production --datastore postgresql --json
+   ```
+
+   Verify `targetKey.tenantKey` and `targetKey.dataStoreId` and check that
+   `lifecycle.state` is `disabled`. Copy `physicalSourceFingerprint`, the
+   identifier for the database the CLI actually reached. Supplying this value
+   in the next command prevents changes if the target now points elsewhere.
+3. Stop all API instances, bulk loaders, scheduled jobs, and other writers
+   for this database. Prevent automatic restarts and wait for all writes in
+   progress to finish. Keep writers stopped through activation and any retries.
+4. Activate the cache using the same target, provider, and settings. Replace
+   the example fingerprint with the entire value from status, including
+   `sha256:`. The command checks the original history before changing the cache.
+
+   ```bash
+   dms-document-cache activate-offline --data-store-id 1 \
+     --confirm offlineActivation --offline-writer-admission closedAndDrained \
+     --expected-physical-source-fingerprint "sha256:<observed-lowercase-hex>" \
+     --settings ./appsettings.Production.json --environment Production --datastore postgresql --json
+   ```
+
+5. If the CLI returns exit code `12`, keep writers stopped and retry the same
+   command with the same target and fingerprint. After `completed` (exit code
+   `0`), [check status and enable accelerated reads](../features/document-cache.md#check-status)
+   before allowing writes again.
 
 ## Exit Codes
 
@@ -189,29 +235,23 @@ that require the database to be offline.
 
 ## Representation Restamp
 
-Representation restamp corrects how resources are represented in API responses
-and Kafka messages after a fix to the code that generates JSON. It leaves
-stored resource field values, keys, and deletion history unchanged. It advances
-`ContentVersion` and regenerates `ContentLastModifiedAt` so clients can detect
-the corrected representations.
+Run a restamp only when a release's upgrade instructions call for it. A
+restamp corrects how resources appear in API responses and Kafka messages
+after a change to the code that generates JSON. It advances `ContentVersion`
+and updates `ContentLastModifiedAt` so clients can detect the correction.
 
-Stop and verify all target access before preview: API readers and writers,
-replicas, projectors, direct-fill paths, bulk/seed loaders, administrative peers,
-and external writers. Deploy the corrected code while the target remains
-offline, and keep all access stopped through execution and every retry.
+Keep all access to the database stopped, including readers, writers, workers,
+and loaders, while deploying the corrected code and running the procedure.
 
-- `restamp-preview` requires `--offline-writer-admission closedAndDrained` but
-  no confirmation token. It saves an operation record for later execution; it
-  is not a read-only dry run. Choose mode `tracking` or `disabled` to match the
-  stored lifecycle state, with `cacheAhead.state` of `clear`.
+- `restamp-preview` saves an operation record. Use the mode (`tracking` or
+  `disabled`) matching the database's lifecycle and confirm `cacheAhead.state`
+  is `clear`. Pass `--offline-writer-admission closedAndDrained`.
 - `restamp-execute` requires `--confirm representationRestamp`, the same
-  offline admission token, and the previewed operation ID. On incomplete
-  execution, resume with that same target and operation ID, not a new preview.
+  offline option, and the operation ID from the preview. For an incomplete
+  execution, retry with that same target and operation ID.
 
-A completed tracking-mode operation means projection work was queued, not that
-projection or Kafka delivery has finished. Disabled mode updates the versions
-and timestamps in the relational tables without queuing projection work.
-Follow the release README's full
-[representation-restamp procedure](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/src/dms/clis/EdFi.DataManagementService.DocumentCacheAdmin/README.md#representation-restamp)
-for preview, execution, verification, and the CDC handoff before restoring
-service.
+In `tracking` mode the command queues the corrected resources for the worker
+to process. In `disabled` mode it updates versions and timestamps in the
+relational tables. Follow the release's
+[restamp procedure](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/src/dms/clis/EdFi.DataManagementService.DocumentCacheAdmin/README.md#representation-restamp)
+for verification and Kafka coordination before restoring service.
