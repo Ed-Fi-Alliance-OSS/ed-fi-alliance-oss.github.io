@@ -220,11 +220,24 @@ availability incident, not just lag.
 ### HTTP Status Endpoint
 
 The status endpoint is unmapped by default. Configure
-`DataManagement:DocumentCache:Status:RequiredRole` with a valid single role
-(such as `dms-client`) and restart the API. Callers must present a valid bearer
-token carrying that role under `JwtAuthentication:RoleClaimType`. Missing or
-invalid authentication returns `401`; an authenticated caller without the role
-gets `403`. An empty or invalid configured role leaves the endpoint unmapped.
+`DataManagement:DocumentCache:Status:RequiredRole` with a single role reserved
+for administrators or operators, such as `cms-client`, and restart the API.
+Avoid `dms-client`: it is the default `IdentitySettings:ClientRole` assigned to
+ordinary API clients, so using it would grant vendors access to this endpoint.
+
+With the self-contained identity provider, use the role named by
+`IdentitySettings:ConfigServiceRole` (`cms-client` by default) and request a
+token at `/connect/token` using an administrative client's credentials and
+the `client_credentials` grant. See
+[administrative client requirements](../configuration/identity-provider.md#clients-that-arent-api-clients).
+If you use Keycloak, assign the selected role only to clients authorized to
+monitor DocumentCache and include it in their access tokens. Setting
+`Status:RequiredRole` does not create the role or grant it to any client.
+
+Callers must present a valid bearer token carrying that exact role under
+`JwtAuthentication:RoleClaimType`. Missing or invalid authentication returns
+`401`; an authenticated caller without the role gets `403`. An empty or
+invalid configured role leaves the endpoint unmapped.
 See the [configuration constraints](../configuration/configuration-details.mdx#documentcache).
 
 ## Maintenance and Recovery

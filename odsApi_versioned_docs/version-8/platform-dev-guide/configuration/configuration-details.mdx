@@ -367,7 +367,7 @@ its configuration afresh. Durations use .NET `TimeSpan` syntax, such as
 | `Administration:WorkflowTimeout`             | `1.00:00:00`     | Positive total administrative workflow budget (24 hours).                                                                                                               |
 | `Status:StatusObservationTimeout`            | `00:00:05`       | Per-target durable observation budget; positive, at most `4294967294` milliseconds.                                                                                     |
 | `Status:EndpointTimeout`                     | `00:00:30`       | Overall HTTP status endpoint budget; positive, at most `4294967294` milliseconds.                                                                                       |
-| `Status:RequiredRole`                        | Unset            | Single literal role needed to map and authorize `GET /health/document-cache`. Recommended: `dms-client`.                                                                |
+| `Status:RequiredRole`                        | Unset            | Single literal role needed to map and authorize `GET /health/document-cache`. Use a role reserved for administrators or operators, such as `cms-client`.                |
 
 Do not set `Targets`, `ReadAcceleration`, `Projector`, `Administration`, or
 `Status` to null. `Status` may be omitted or an object (including `{}`), but
@@ -376,6 +376,15 @@ cannot be a scalar. Invalid configuration fails validation. An invalid
 be a single untrimmed token of at most 256 characters, without ASCII whitespace,
 commas, semicolons, quotes, brackets, braces, or control characters. The
 caller's role is read under `JwtAuthentication:RoleClaimType`.
+
+Avoid `dms-client`, the default role assigned to ordinary API clients by
+`IdentitySettings:ClientRole`; it would give vendors access to the status
+endpoint. With the self-contained identity provider, use
+`IdentitySettings:ConfigServiceRole` (`cms-client` by default). Configure the
+identity provider to issue the selected role only to authorized administrators
+or operators. See
+[HTTP Status Endpoint](../features/document-cache.md#http-status-endpoint) for
+token setup.
 
 Use these exact .NET environment variable names to override settings. Index `0`
 is the first target; use `1`, `2`, and so on for additional entries.
@@ -393,7 +402,7 @@ DataManagement__DocumentCache__Projector__BaselineHighWaterMark=1000
 DataManagement__DocumentCache__Administration__WorkflowTimeout=1.00:00:00
 DataManagement__DocumentCache__Status__StatusObservationTimeout=00:00:05
 DataManagement__DocumentCache__Status__EndpointTimeout=00:00:30
-DataManagement__DocumentCache__Status__RequiredRole=dms-client
+DataManagement__DocumentCache__Status__RequiredRole=cms-client
 ```
 
 This example selects data store `1` and enables the protected status endpoint;
