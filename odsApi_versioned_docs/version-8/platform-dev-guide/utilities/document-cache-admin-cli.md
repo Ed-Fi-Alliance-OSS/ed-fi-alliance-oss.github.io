@@ -141,8 +141,8 @@ see [Configuration Details](../configuration/configuration-details.mdx#documentc
 ## Offline Administration History
 
 For `activate-offline`, `deactivate-offline`, and `recover-cache-ahead`, the
-original provisioning records must show that this database has no history of
-downstream publication, such as through Kafka. The CLI calls this
+original provisioning records must show that this database has never published
+changes to Kafka or another downstream system. The CLI calls this
 `internalOnly`. [Managed provisioning](./database-provisioning.md#managed-provisioning-for-documentcache)
 records that history at database creation. Stopping or removing a Kafka
 connector cannot establish it later.
@@ -218,8 +218,7 @@ may have occurred, preserve the records and follow the
 
 5. If the CLI returns exit code `12`, keep writers stopped and retry the same
    command with the same target and fingerprint. After `completed` (exit code
-   `0`), [check status and enable accelerated reads](../features/document-cache.md#check-status)
-   before allowing writes again.
+   `0`), [finish activation](../features/document-cache.md#finish-activation).
 
 ## Exit Codes
 

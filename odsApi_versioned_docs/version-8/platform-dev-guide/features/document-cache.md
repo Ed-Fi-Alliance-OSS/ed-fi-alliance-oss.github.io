@@ -18,9 +18,9 @@ skip direct fill.
 
 | Your deployment | Where to start |
 | --- | --- |
-| You plan to stream to Kafka | Start with [Kafka setup](./event-streaming-kafka-cdc.md#setup) **before creating the database**. That workflow creates the database and activates its cache before the first write. |
+| You plan to stream to Kafka | Review the [Kafka requirements](./event-streaming-kafka-cdc.md#setup) **before creating the database**. The Kafka workflow creates the database and activates its cache before the first write. |
 | You want the cache on a new database | [Turn it on before the first resource or descriptor write](#turn-it-on-for-a-new-database). Choose [managed provisioning](../utilities/database-provisioning.md#managed-provisioning-for-documentcache) at creation if you want the option to deactivate the cache or recover it offline later. |
-| You want the cache on an existing database | Check the original managed provisioning records. If they show this database has no history of downstream publication, such as through Kafka, you can [activate it offline](#turn-it-on-for-an-existing-database). |
+| You want the cache on an existing database | You can [activate it offline](#turn-it-on-for-an-existing-database) if the original managed provisioning records show this database has never published changes to Kafka or another downstream system. |
 | The existing database was created without those records | [Provision a new database and activate its cache](#turn-it-on-for-a-new-database), verify it, then reload the data. Rerunning provisioning on the existing database cannot recreate its history. |
 
 ### Prepare the Target and Settings
@@ -36,11 +36,12 @@ Provisioning creates the cache tables for every database. Activation starts
 maintaining the cached copies. A background worker, the _projector_, keeps
 them up to date as data changes. This process is called _projection_.
 
-Select the tenant and data store the worker should update. The default
-`Targets` list is empty, so the worker is idle. Merge the following into the
-deployment's complete `appsettings.Production.json` for the API and CLI.
-Accelerated reads are off by default. Leave them off during setup.
-Choose an administrator-only role for the [HTTP status endpoint](#http-status-endpoint).
+The default `Targets` list is empty, so the worker is idle. For first-time
+setup, merge the example below into the `appsettings.Production.json` used by
+the API and CLI. Leave accelerated reads at their default (`false`) and choose
+an administrator-only role for the [HTTP status endpoint](#http-status-endpoint).
+If you already use DocumentCache, append the new entry to `Targets` and keep
+your current read-acceleration setting.
 
 ```json
 {
@@ -101,11 +102,14 @@ active, preserve status and logs and escalate the incident.
 
 ## Turn It On for a New Database
 
-1. Provision the database and [prepare its settings](#prepare-the-target-and-settings)
-   before its first resource or descriptor write. Stop all API instances, bulk
+1. [Choose how to provision the database](#before-you-start) before creating
+   it. If you plan to use Kafka, its workflow handles provisioning and
+   activation. Otherwise, provision the database, [prepare its settings](#prepare-the-target-and-settings),
+   and continue below.
+2. Before the first resource or descriptor write, stop all API instances, bulk
    loaders, scheduled jobs, and other writers for this database. Prevent
    automatic restarts and wait for all writes in progress to finish.
-2. Check that the CLI reports the intended tenant and data store with
+3. Check that the CLI reports the intended tenant and data store with
    `lifecycle.state` set to `disabled`.
 
    ```bash
@@ -113,17 +117,15 @@ active, preserve status and logs and escalate the incident.
      --settings ./appsettings.Production.json --environment Production --datastore postgresql --json
    ```
 
-3. Activate the cache while writers are still stopped.
+4. Activate the cache while writers are still stopped.
 
    ```bash
    dms-document-cache activate-new-empty --data-store-id 1 --confirm newEmptyActivation \
      --settings ./appsettings.Production.json --environment Production --datastore postgresql --json
    ```
 
-4. Wait for `completed` (exit code `0`). If the CLI returns exit code `12`,
-   keep writers stopped and repeat the same command. After completion,
-   [check status and enable accelerated reads](#check-status) before allowing
-   writes or loading data.
+5. If the CLI returns exit code `12`, keep writers stopped and repeat the same
+   command. When it returns `completed` (exit code `0`), [finish activation](#finish-activation).
 
 ## Turn It On for an Existing Database
 
@@ -134,29 +136,31 @@ writers can stay stopped through activation and any retries. Follow
 [Activate an Existing Database](../utilities/document-cache-admin-cli.md#activate-an-existing-database)
 for the settings, commands, and verification steps.
 
+## Finish Activation
+
+1. Rerun the CLI `status` command for the same tenant and data store. Verify
+   `lifecycle.state` is `tracking` and `cacheAhead.state` is `clear`.
+2. Start the API instances with the target settings while keeping external
+   writes paused. [Check status](#check-status) and wait for the worker to
+   catch up.
+3. If you want to enable accelerated reads, set
+   `DataManagement:DocumentCache:ReadAcceleration:Enabled` to `true`, restart
+   the API instances, and recheck status. This enables cached resource and
+   descriptor GET requests on all configured targets. The worker also keeps
+   the cache up to date when accelerated reads are off.
+
+Resume writes or load data once the checks pass.
+
 ## Check Status
 
-1. After activation, run the CLI status command for the same target.
+Call [`GET /health/document-cache`](#http-status-endpoint) on the running API
+with a token carrying the configured role and find the entry for your tenant
+and data store.
+A healthy worker reports `operationalHealth.status` as `operational`.
+When `caughtUp.status` is `caughtUp`, the queue was empty at the time of the check.
 
-   ```bash
-   dms-document-cache status --data-store-id 1 \
-     --settings ./appsettings.Production.json --environment Production --datastore postgresql --json
-   ```
-
-   Verify `lifecycle.state` is `tracking` and `cacheAhead.state` is `clear`.
-   The CLI reads the database. Only the running API can check the worker, so
-   `operationalHealth` and `caughtUp` show `unknown` with reason
-   `runtimeNotObserved` in the CLI.
-2. Start the API instances with the target settings while keeping external
-   writes paused. Call [GET /health/document-cache](#http-status-endpoint) and
-   find the matching tenant and data store. Verify `operationalHealth.status`
-   is `operational`. Once pending updates finish, `caughtUp.status` should be
-   `caughtUp`. This means the queue was empty when checked.
-3. If you want the API to serve reads from the cache, set
-   `DataManagement:DocumentCache:ReadAcceleration:Enabled` to `true`, restart
-   the API instances, and recheck the endpoint. This setting applies to
-   resource and descriptor GET requests for configured targets. You can leave
-   it off and still maintain the cache. Resume writes after verification.
+The CLI reads the database. Only the running API can check the worker, so the
+CLI reports `unknown` with reason `runtimeNotObserved` for these two fields.
 
 | `lifecycle.state` | What it means for the host |
 | --- | --- |
@@ -195,10 +199,11 @@ that have any credentials removed.
   resume the worker, and check progress. [Repeated document failures](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/document-cache-documentation/operations-runbook.md#persistent-projection-failure-and-poison-remediation)
 - **Status shows `cacheAhead.state` is `recoveryRequired`.** A cached version
   is newer than its relational source. Cached reads and updates are blocked.
-  Use offline recovery only if the original records show no downstream
-  publication and you confirm downstream systems could not have seen that
-  version. If exposure is possible or unknown, stop publication and preserve
-  the evidence. [Cache-ahead recovery](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/document-cache-documentation/operations-runbook.md#cache-ahead-recovery)
+  Use offline recovery only if the original records show this database has
+  never published changes to Kafka or another downstream system and you
+  confirm those systems could not have seen that version. If exposure is
+  possible or unknown, stop publication and preserve the evidence.
+  [Cache-ahead recovery](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/document-cache-documentation/operations-runbook.md#cache-ahead-recovery)
   and [CDC containment](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/cdc-documentation/operations-runbook.md#projection-handoff)
 - **The database was restored or changed outside the API.** Run `scrub` to
   check for missing or inconsistent cache updates, even if the queue is empty.

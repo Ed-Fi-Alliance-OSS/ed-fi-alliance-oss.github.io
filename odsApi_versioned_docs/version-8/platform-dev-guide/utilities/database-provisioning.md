@@ -235,10 +235,10 @@ the [document cache](../features/document-cache.md).
 
 #### Managed provisioning for DocumentCache
 
-Managed provisioning records the database's creation receipt, workflow journal,
-and physical-source history in a protected directory outside the database.
-Offline DocumentCache commands use those original records to verify that the
-same database has remained internal-only, with no downstream publication.
+Managed provisioning saves the database's creation and publication records in
+a protected directory outside the database. Offline DocumentCache commands use
+the original records to verify that this database has never published changes
+to Kafka or another downstream system.
 Choose this workflow when creating a database if you may later need to activate
 DocumentCache on a populated store, deactivate it, or recover a cache-ahead
 incident. Kafka is not required for this history-only workflow.
@@ -261,8 +261,8 @@ value (the default is 300 seconds).
 
 | Option | Required for managed provisioning | Default | Description |
 | --- | --- | --- | --- |
-| `--managed-state-path` | Yes | None | Protected, persistent controller-state directory. Retain the original directory for later administration. |
-| `--managed-workflow-purpose` | No | `source-history-only` | Use `source-history-only` to retain history for offline DocumentCache administration. It cannot later be changed to `initial-cdc-provisioning`, which is required for initial Kafka setup. For streaming, follow the [Kafka setup workflow](../features/event-streaming-kafka-cdc.md#setup) before creating the database. |
+| `--managed-state-path` | Yes | None | Protected, persistent directory for the provisioning records. Retain the original directory for later administration. |
+| `--managed-workflow-purpose` | No | `source-history-only` | Use `source-history-only` to retain history for offline DocumentCache administration. It cannot later be changed to `initial-cdc-provisioning`, which is required for initial Kafka setup. For streaming, review the [Kafka requirements](../features/event-streaming-kafka-cdc.md#setup) before creating the database. |
 | `--deployment-key` | No | `local` | Stable deployment identifier used to find the history. Retain the original value. |
 | `--tenant-key` | No | Default tenant | Omit for the default tenant; otherwise use the target's Configuration Service tenant key. |
 | `--data-store-id` | Yes | None | Positive Configuration Service data store ID for this database. |
@@ -303,14 +303,13 @@ Check that `creationReceipt.outcome` is `Created`, not `Reused`, and retain the
 result and provisioning inputs. A `Reused` result does not establish creation
 history for offline cache administration.
 
-Preserve the complete state directory with owner-only access. When configuring
-[offline administration history](./document-cache-admin-cli.md#offline-administration-history),
-set `Cdc:PublicationHistory:StatePath` to this original directory and
-`Cdc:PublicationHistory:DeploymentKey` to the original deployment key. Use the
-same directory for provisioning and administration so they share the controller
-lock. An empty directory, an independent copy, or a different key is not a
-replacement. The offline command checks the retained history against the
-selected target and physical source before it changes the cache.
+Keep the original directory with owner-only access. In the CLI's
+[offline administration settings](./document-cache-admin-cli.md#offline-administration-history),
+set `Cdc:PublicationHistory:StatePath` to that directory and
+`Cdc:PublicationHistory:DeploymentKey` to the original key. Using the same
+directory prevents provisioning and administration from running at the same
+time. Before changing the cache, the CLI checks that the records match the
+selected tenant, data store, and database.
 
 ### Previewing DDL without a database (`ddl emit`)
 
