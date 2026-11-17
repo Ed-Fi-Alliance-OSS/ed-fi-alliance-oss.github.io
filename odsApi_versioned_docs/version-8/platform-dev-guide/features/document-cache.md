@@ -370,18 +370,52 @@ See the [configuration constraints](../configuration/configuration-details.mdx#d
 
 ## Maintenance and Recovery
 
-Use the v8.1.0 operational procedures rather than editing cache, work, lifecycle,
-or cache-ahead flag tables directly:
+Start by checking status for the intended tenant and data store. Preserve the
+status JSON and sanitized logs before remediation. Use the supported CLI
+workflows below; do not edit cache, work, lifecycle, or cache-ahead flag tables
+directly.
 
 - [Explicit integrity scrub](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/document-cache-documentation/operations-runbook.md#explicit-integrity-scrub)
-  checks source/cache/work relationships.
+  is appropriate when diagnostics suggest missing or mismatched projection
+  work. Run `scrub` only when lifecycle is `tracking` and `cacheAhead.state` is
+  `clear`. It scans source/cache/work relationships, adds missing work, and
+  corrects work to match the current relational version. It can set the
+  cache-ahead flag if it finds a cached version ahead of the source; it cannot
+  clear that flag. After completion, follow cache-ahead recovery if required;
+  otherwise, let projection drain and recheck live status. Scrub alone does not
+  prove that the cache is caught up.
 - [Cache-ahead recovery](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/document-cache-documentation/operations-runbook.md#cache-ahead-recovery)
-  requires trusted internal-only history; possible or unknown publication
-  requires the CDC containment procedure.
+  applies when `cacheAhead.state` is `recoveryRequired`: a cached content
+  version was observed to be higher than the relational source version. Cached
+  reads and cache writes are blocked. Using `recover-cache-ahead` requires
+  original trusted `internalOnly` history for the same target and physical
+  source, plus incident analysis confirming that downstream systems could not
+  have observed the higher value. When those conditions hold,
+  [close and drain writers](#close-and-drain-writers) and
+  follow the offline recovery procedure, keeping writers stopped through
+  completion and retries. If publication is possible or unknown, stop
+  publication, preserve cache/work/flag evidence, and follow
+  [CDC containment](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/cdc-documentation/operations-runbook.md#projection-handoff)
+  instead of attempting internal-only recovery.
 - [Persistent failures and poison remediation](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/document-cache-documentation/operations-runbook.md#persistent-projection-failure-and-poison-remediation)
-  covers work that will not drain.
+  applies when the queue will not drain or a document repeatedly fails
+  projection (often called a _poison_ document). Inspect `documentDiagnostics`,
+  `poisonTraversalDiagnostics`, and `targetDiagnostics` to identify the failing
+  document or target. Correct the underlying materialization, database, or
+  configuration problem, then restart or resume the projector if needed. Do
+  not delete queued work or repeatedly rebuild without fixing the cause.
+  Recheck live operational health and queue progress; run a scrub if missing
+  or mismatched work is suspected.
 - [Suspected restore or direct mutation](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/document-cache-documentation/operations-runbook.md#suspected-restore-or-direct-mutation)
-  requires an integrity check (`scrub`) before relying on caught-up status.
-  The command requires lifecycle `tracking` and `cacheAhead.state` of `clear`.
+  includes database restores, out-of-band data copies, disabled triggers, and
+  unsupported direct table edits. An empty queue is insufficient evidence of
+  consistency after these events. Run an explicit `scrub` before relying on
+  caught-up status. If lifecycle is not `tracking` or the cache-ahead flag is
+  already set, resolve that condition through its supported workflow first.
+  After scrub, follow cache-ahead recovery if required; otherwise, let repaired
+  work drain and verify live status again.
 - [Kafka/CDC operations](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/cdc-documentation/operations-runbook.md)
-  owns connector setup and downstream publication handling.
+  cover issues involving connectors, offsets, topics, publication
+  history, or downstream consumers. Use the CDC procedures for those systems;
+  a healthy, caught-up DocumentCache does not prove that Kafka messages were
+  delivered or consumed.
