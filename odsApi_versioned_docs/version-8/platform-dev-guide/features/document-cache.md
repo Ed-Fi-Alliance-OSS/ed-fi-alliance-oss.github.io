@@ -13,6 +13,22 @@ DocumentCache is also a prerequisite for
 [Event Streaming with Kafka](./event-streaming-kafka-cdc.md); projection alone
 does not configure connectors or prove downstream delivery.
 
+:::warning Existing databases require original provisioning history
+
+Activating DocumentCache on an existing database requires the original history
+recorded by [managed provisioning](../utilities/database-provisioning.md#managed-provisioning-for-documentcache).
+If the database was provisioned without that history, `activate-offline` cannot
+activate its cache. Rerunning provisioning with managed options cannot create
+the missing evidence retroactively, even if Kafka has never been enabled.
+
+For a store without this history, provision a new database, follow
+[Activate a New Empty Store](#activate-a-new-empty-store) before its first
+resource or descriptor write, then reload the data after activation and
+verification. Choose managed provisioning when creating new databases to retain
+the history needed for later offline cache administration.
+
+:::
+
 ## How It Is Enabled
 
 These are separate steps:
@@ -77,7 +93,7 @@ use `--datastore sqlserver` and satisfy its additional prerequisites below.
   Changing these settings while the cache is active is outside the supported
   recovery contract.
 - Close write admission and drain in-flight writers before either activation
-  example. For an existing store, also establish the trusted history described
+  example. For an existing store, also locate the original history described
   below. A confirmation flag acknowledges an operator-established fence; it
   does not stop writers.
 
@@ -118,6 +134,11 @@ with the original managed provisioning state and deployment key. Trusted
 history must prove `internalOnly` for this target and physical source; missing
 or unknown history rejects activation. This requirement applies even if Kafka
 is not enabled. An empty state directory is not sufficient.
+
+If the store was created without
+[managed provisioning](../utilities/database-provisioning.md#managed-provisioning-for-documentcache),
+this activation path is unavailable. Use a new database, activate it before its
+first write, and reload the data as described above.
 
 Follow the runbook's
 [activation procedure](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/document-cache-documentation/operations-runbook.md#activation)

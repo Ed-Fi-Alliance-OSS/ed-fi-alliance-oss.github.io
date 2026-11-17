@@ -134,8 +134,17 @@ see [Configuration Details](../configuration/configuration-details.mdx#documentc
 
 `activate-offline`, `deactivate-offline`, and `recover-cache-ahead` require a
 trusted history provider to report `internalOnly` for the same target and
-physical-source fingerprint. Configure the shipped reader by adding this
-fragment to the complete CLI settings:
+physical-source fingerprint. That history must have been recorded when the
+database was created through
+[managed provisioning](./database-provisioning.md#managed-provisioning-for-documentcache).
+An existing database created without it cannot gain the evidence retroactively;
+rerunning provisioning with managed options does not make `activate-offline`
+available. To use DocumentCache in that case, provision a new database,
+[activate it before its first write](../features/document-cache.md#activate-a-new-empty-store),
+and reload the data after activation and verification.
+
+For a store with the original managed history, configure the shipped reader by
+adding this fragment to the complete CLI settings:
 
 ```json
 {
@@ -152,8 +161,10 @@ fragment to the complete CLI settings:
 Use the original provisioning `--managed-state-path` and `--deployment-key`.
 The protected state must contain the original managed CREATE receipt, workflow,
 and source history. Creating an empty directory or choosing a new key does not
-establish internal-only history. Managed creation with `source-history-only`
-can supply this evidence without enabling Kafka.
+establish internal-only history. Managed creation with
+`--managed-workflow-purpose source-history-only` supplies this evidence without
+enabling Kafka. Reference the same state root used by provisioning and any CDC
+administration; an independent copy does not share its controller lock.
 
 `LockTimeout` defaults to 30 seconds and must be positive and no more than ten
 minutes. Environment overrides use names such as
