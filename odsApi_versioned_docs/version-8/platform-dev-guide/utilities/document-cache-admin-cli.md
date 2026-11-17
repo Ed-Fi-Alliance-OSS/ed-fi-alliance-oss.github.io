@@ -15,19 +15,9 @@ activation examples and lifecycle interpretation.
 Install the .NET 10 SDK to use `dotnet tool install`, and keep the .NET 10
 runtime available to run the tool.
 
-:::note Package publication
-
-Publication of `EdFi.Api.DocumentCacheAdmin` is tracked separately. The v8.1.0
-source defines the package and command, but this guide does not confirm an
-available feed version. Obtain the published version corresponding to v8.1.0
-before running the installation command below; `<published-version>` is a
-placeholder, not a package version.
-
-:::
-
 ```bash
-feed="https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json"
-version="<published-version>"
+feed="https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi%40Release/nuget/v3/index.json"
+version="8.1.0"
 dotnet tool install --global EdFi.Api.DocumentCacheAdmin --source "$feed" --version "$version"
 dms-document-cache --help
 ```
