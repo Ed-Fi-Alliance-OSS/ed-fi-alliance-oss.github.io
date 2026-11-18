@@ -165,8 +165,11 @@ or invalid role leaves the endpoint unavailable.
 A `401` means the token is missing or invalid. For a `403`, check the token's
 role under `JwtAuthentication:RoleClaimType`.
 
-The CLI reads the database and reports `unknown` with reason
-`runtimeNotObserved` for both worker checks.
+Both the CLI `status` command and `GET /health/document-cache` return an entry
+for each tenant and data store. The CLI reads only the database, so it can't
+check the worker and reports `unknown` for the two checks in step 2. Use the
+HTTP endpoint for those. In both outputs, `lifecycle.state` shows whether the
+cache is turned on and receiving updates:
 
 | `lifecycle.state` | What it means for the host |
 | --- | --- |
