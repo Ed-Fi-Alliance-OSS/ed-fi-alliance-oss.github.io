@@ -37,10 +37,9 @@ configuration. Copy `.env.example` to `.env` and edit as needed before running
 
 ### Optional DocumentCache
 
-The `eng/docker-compose/local-dms-document-cache.yml` overlay selects one
-DocumentCache target for the API container. Add the following to the local
-`.env` file only when you want to configure projection for a registered data
-store:
+Use the `eng/docker-compose/local-dms-document-cache.yml` overlay to select the
+registered data store whose cache the API container will update. Add these
+settings to the local `.env` file.
 
 ```ini
 DMS_DOCUMENTCACHE_COMPOSE_FILE=local-dms-document-cache.yml

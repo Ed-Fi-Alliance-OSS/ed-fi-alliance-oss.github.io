@@ -15,20 +15,21 @@ Snapshot and read-replica requests always read the relational tables and skip di
 
 | Your deployment | Where to start |
 | --- | --- |
-| You plan to stream to Kafka | Review the [Kafka requirements](./event-streaming-kafka-cdc.md#setup) **before creating the database**. The Kafka workflow creates the database and activates its cache before the first write. |
-| You want the cache on a new database | [Turn it on before the first resource or descriptor write](#turn-it-on-for-a-new-database). Choose [managed provisioning](../utilities/database-provisioning.md#managed-provisioning-for-documentcache) at creation if you want the option to deactivate the cache or recover it offline later. |
-| You want the cache on an existing database | You can [activate it offline](#turn-it-on-for-an-existing-database) if the original managed provisioning records show this database has never published changes to Kafka or another downstream system. |
-| The existing database was created without those records | [Provision a new database and activate its cache](#turn-it-on-for-a-new-database), verify it, then reload the data. Rerunning provisioning on the existing database cannot recreate its history. |
+| You plan to stream to Kafka | Review the [Kafka requirements](./event-streaming-kafka-cdc.md#setup) **before creating the database**. The Kafka workflow creates it and activates its cache. |
+| Before the first resource or descriptor write | [Activate the new database](#turn-it-on-for-a-new-database). Choose [managed provisioning](../utilities/database-provisioning.md#managed-provisioning-for-documentcache) at creation if you may need to deactivate or recover the cache offline later. |
+| After the first write, with managed provisioning | [Activate offline](#turn-it-on-for-an-existing-database) if the original records show the database has never published changes to Kafka or another downstream system. |
+| After the first write, without managed provisioning | [Activate a new database](#turn-it-on-for-a-new-database), verify its cache, then reload the data. Provisioning cannot recreate the original database's history. |
 
 ## Turn It On for a New Database
 
-For a deployment without Kafka, [provision the database](../utilities/database-provisioning.md#provisioning-a-database-ddl-provision)
-and activate the cache before the first resource or descriptor write.
+For a deployment without Kafka, [register the data store](../configuration/api-client-and-data-store-configuration.md#data-stores)
+in the Configuration Service, then [provision the database](../utilities/database-provisioning.md#provisioning-a-database-ddl-provision).
+Use the assigned ID in `Targets` and CLI commands, and for managed provisioning if you choose it.
+Activate the cache before the first resource or descriptor write.
 
 ### Prepare the Target and Settings
 
-Register the database in the Configuration Service and install the
-[DocumentCache Administration CLI](../utilities/document-cache-admin-cli.md#installation).
+Install the [DocumentCache Administration CLI](../utilities/document-cache-admin-cli.md#installation).
 Use an operator account with access to administer the database. The CLI needs
 the deployment's API settings, including the same provider, Configuration
 Service access, and API schema. Supply credentials through protected settings
@@ -59,8 +60,7 @@ your current read-acceleration setting.
 ```
 
 The commands below use PostgreSQL, data store `1`, and the default tenant.
-Use your registered data store ID throughout. For a named tenant, set
-`TenantKey` and add `--tenant-key <your-tenant-key>` to every command. For
+For a named tenant, set `TenantKey` and add `--tenant-key <your-tenant-key>` to every command. For
 SQL Server, use `--datastore sqlserver` and check the settings below. See
 [Configuration Details](../configuration/configuration-details.mdx#documentcache)
 for all settings, or the [Docker appendix](../../getting-started/getting-started-appendix.md#optional-documentcache)
@@ -189,14 +189,12 @@ that have any credentials removed.
   `targetDiagnostics`. If one document repeatedly fails to build its cached
   JSON, `poisonTraversalDiagnostics` can help identify it. Correct the cause,
   resume the worker, and check progress. [Repeated document failures](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/document-cache-documentation/operations-runbook.md#persistent-projection-failure-and-poison-remediation)
-- **Status shows `cacheAhead.state` is `recoveryRequired`.** A cached version
-  is newer than its relational source. The API reads the relational tables and
-  cache updates stop. Use [offline recovery](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/document-cache-documentation/operations-runbook.md#cache-ahead-recovery)
-  only if the original provisioning records show the database has never
-  published changes downstream and you confirm no downstream system could have
-  seen that version. If records are missing or damaged, save status and logs
-  and escalate the incident. If downstream exposure is possible or unknown,
-  stop publication and follow [CDC containment](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/cdc-documentation/operations-runbook.md#projection-handoff).
+- **Status shows `cacheAhead.state` is `recoveryRequired`.** A cached copy is
+  newer than its source. Cache updates stop and reads use the relational tables.
+  If a downstream system might have seen that version, stop publication and
+  follow [CDC containment](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/cdc-documentation/operations-runbook.md#projection-handoff).
+  Otherwise, follow the [offline recovery checks](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/document-cache-documentation/operations-runbook.md#cache-ahead-recovery).
+  They require original provisioning records showing the database has never published changes downstream.
 - **The database was restored or changed outside the API.** Run `scrub` to
   check for missing or inconsistent cache updates, even if the queue is empty.
   Scrub requires `tracking` and a clear cache-ahead flag. Resolve any other

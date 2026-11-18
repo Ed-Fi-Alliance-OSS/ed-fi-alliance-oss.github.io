@@ -49,7 +49,7 @@ Fingerprint](#schema-fingerprint-and-resource-key-validation).)
 | [Validated tokens](#oidc-metadata-and-signing-keys) | 5 minutes, or less if the token expires sooner | `JwtAuthentication:ValidatedTokenCacheEntryMaxLifetimeSeconds` | No | Expiry or restart |
 | [Schema fingerprint](#schema-fingerprint-and-resource-key-validation) | Process lifetime (primary); 10 minutes (read replicas and snapshots) | `CacheSettings:DerivativeValidationCacheExpirationSeconds` | One for each connection string | Restart (primary); expiry (read replicas and snapshots) |
 | [Identities API tenant list](#identities-api-tenant-list) | 60 seconds, fixed | — | No | Expiry, an unknown tenant, or restart |
-| [DocumentCache](#documentcache) | Durable; no time-based expiry | `DataManagement:DocumentCache` | One for each data store | Projector processes durable work; reads may attempt direct fill |
+| [DocumentCache](#documentcache) | No time-based expiry | `DataManagement:DocumentCache` | One for each data store | A background worker refreshes copies as data changes |
 
 The Configuration Service has caches of its own, described in [Configuration
 Service Caches](#configuration-service-caches).
@@ -315,7 +315,7 @@ different from the caches above. It stores ready-made JSON for resources in the
 bodies. Every Ed-Fi API instance using the database shares it, and a restart
 doesn't clear it.
 
-The projector refreshes rows as data changes; there is no time-based expiry.
+A background worker keeps cached rows current. They have no time-based expiry.
 Reads that cannot use a cached row fall back to the relational tables. See the
 [feature guide](../platform-dev-guide/features/document-cache.md) for read
 behavior, activation, status, and recovery procedures.
