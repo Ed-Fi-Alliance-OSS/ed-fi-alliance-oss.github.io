@@ -52,7 +52,8 @@ the matching tenant key for a multi-tenant deployment; an empty key selects the
 default tenant.
 
 If you need seed data, run bootstrap without `-LoadSeedData`, activate and
-verify the cache, then load the data.
+verify the cache, then run `load-dms-seed-data.ps1` with the seed options you
+would have passed to bootstrap, such as `-SeedTemplate`.
 
 | Variable | Default | Effect |
 | --- | --- | --- |
