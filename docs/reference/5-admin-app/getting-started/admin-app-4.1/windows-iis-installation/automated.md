@@ -1,0 +1,198 @@
+---
+sidebar_position: 2
+---
+
+# Automated
+
+The fastest path: install the whole stack with the PowerShell scripts from the [Admin App Installation Scripts repository](https://github.com/Ed-Fi-Exchange-OSS/Admin-App-Installation-Scripts), with no manual steps. For what each step configures under the hood, see [Manual](./manual.md).
+
+## Get the scripts
+
+Clone the scripts release for Admin App 4.1, `adminapp-v4.1.0-scripts-v2.0`, into a dedicated parent folder, then open the `windows-install` folder from an elevated PowerShell:
+
+```powershell
+git clone --branch adminapp-v4.1.0-scripts-v2.0 --depth 1 https://github.com/Ed-Fi-Exchange-OSS/Admin-App-Installation-Scripts.git C:\Ed-Fi\Admin-App-Installation-Scripts
+cd C:\Ed-Fi\Admin-App-Installation-Scripts\windows-install
+```
+
+:::info Where the folders end up
+`install-all.ps1` clones the Admin App source **beside** the scripts repository, not inside it, so where you put the scripts determines where the source lands. With the commands above:
+
+```text
+C:\Ed-Fi\
+├── Admin-App-Installation-Scripts\   the scripts you cloned
+│   └── windows-install\              run the scripts from here
+└── Ed-Fi-AdminApp\                   the Admin App source, cloned for you
+```
+
+Avoid a user profile folder like `Downloads`, since the Admin App source lands beside it. To put the source somewhere else, pass `-SourcePath`. If the scripts already sit inside an Admin App checkout, that checkout is used instead of a new clone.
+:::
+
+:::note
+On a bare machine without Git, download the source code ZIP of the [`adminapp-v4.1.0-scripts-v2.0` release](https://github.com/Ed-Fi-Exchange-OSS/Admin-App-Installation-Scripts/releases/tag/adminapp-v4.1.0-scripts-v2.0) and extract it under `C:\Ed-Fi`, so it sits where the clone above would have put it. Only the location matters, not the extracted folder's name. `setup-vm-prereqs.ps1` installs Git afterward. If PowerShell refuses to run the scripts (they carry the internet Mark of the Web), `setup-vm-prereqs.ps1` unblocks them and sets the execution policy; to do it by hand, run `Get-ChildItem *.ps1 | Unblock-File` and `Set-ExecutionPolicy -Scope Process Bypass`.
+:::
+
+## Windows Server prerequisite: install winget
+
+The scripts use the Windows Package Manager (`winget`) to install Node.js, OpenJDK, SQL Server, and Git. It ships with Windows 10 and Windows 11 but is **not** included on Windows Server 2019 or 2022, so install it there before running `setup-vm-prereqs.ps1`. (`00-check-prereqs.ps1` reports when winget is missing.)
+
+- **Official Microsoft guidance:** see [Install WinGet](https://learn.microsoft.com/en-us/windows/package-manager/winget/#install-winget). Because Windows Server 2019/2022 do not include the Microsoft Store, install the App Installer package directly from the official [microsoft/winget-cli releases](https://github.com/microsoft/winget-cli/releases).
+- **Community helper (optional):** the [`winget-install`](https://www.powershellgallery.com/packages/winget-install) PowerShell Gallery script is a third-party tool that installs winget in a single command. It downloads only from official Microsoft and GitHub sources, though it is not maintained or endorsed by Ed-Fi or Microsoft.
+
+## Run everything at once
+
+On a fresh machine, run `setup-vm-prereqs.ps1` first — it installs the operating-system-level pieces: IIS, SQL Server, and Git — then `install-all.ps1`.
+
+`install-all.ps1` fetches the Admin App source for you — by default it clones the latest stable release of `Ed-Fi-AdminApp` beside the scripts repository, as shown in [Get the scripts](#get-the-scripts). To build from a checkout you already have, pass `-SourcePath`.
+
+:::tip Pass `-AdminAppRef v4.1.0`
+This scripts release was validated with Admin App 4.1.0. Without the parameter, `install-all.ps1` clones whatever the latest Admin App release is at the time. Every command on this page passes it.
+:::
+
+Besides `-AdminAppRef`, `install-all.ps1` needs **no parameters**. It applies sensible defaults (SQL Server and the seeded administrator `admin@example.com`) and prompts at the console for anything it requires, including the identity provider (`-IdpProvider`) and any secrets. It always asks for the identity provider, so the choice is explicit; this guide uses `keycloak`.
+
+Running with the defaults stands up the local Keycloak (realm `edfi`, client `edfiadminapp`, and a test user, served over HTTPS on port 8443 with a self-signed certificate), creates the least-privilege `edfi_adminapp` database login, and deploys the API and Web Application in the same run.
+
+Pass a parameter only to change something the defaults do not cover. PostgreSQL is the common case: the engine and the bundled container are not prompted for, though its passwords are.
+
+**Example — PostgreSQL via Docker** (no local SQL Server; the bundled docker-compose runs PostgreSQL and requires Docker Desktop in Linux-container mode):
+
+```powershell
+.\install-all.ps1 -AdminAppRef v4.1.0 -DbEngine pgsql -UsePostgresDocker
+```
+
+**Example — managed Azure SQL Database** (provision the logical server, a client-IP firewall rule, and an empty database in Azure first — see [Database](./manual.md#database)):
+
+```powershell
+.\install-all.ps1 -AdminAppRef v4.1.0 -SqlServerHost myserver.database.windows.net -SqlAdminUsername sqladmin
+```
+
+The script prompts for `-SqlAdminPassword`, `-AppDbPassword`, and the rest, the same as any other run. It provisions the Admin App login as a contained user, connects with encryption and validates the server certificate, and configures the API to do the same — nothing to set by hand. For a remote server that presents a self-signed certificate rather than a CA-issued one, add `-TrustServerCertificate`, which turns that validation off. Azure rejects a database password containing the login name, so avoid `edfi_adminapp` in the value; the script checks this up front.
+
+**Microsoft Entra ID, SQL Server** — an external OIDC provider. Register the application and its redirect URIs in Entra first (or script that step with `idp-entra-setup.ps1` — see [Microsoft Entra ID](../../../configuration/identity-provider/microsoft-entra-id.md#part-a--register-the-application-in-microsoft-entra-id)), and make sure a user exists there whose email matches `-AdminUsername`:
+
+```powershell
+.\install-all.ps1 -AdminAppRef v4.1.0 -IdpProvider microsoft `
+  -AppDbPassword (Read-Host -AsSecureString 'Admin App DB login password') `
+  -OidcIssuer 'https://login.microsoftonline.com/<tenant-id>/v2.0' `
+  -OidcClientId '<application-id>' `
+  -OidcClientSecret (Read-Host -AsSecureString 'Entra client secret') `
+  -AdminUsername 'you@yourtenant.onmicrosoft.com'
+```
+
+**Google Workspace, SQL Server** — an external OIDC provider. The issuer is defaulted for Google; register the OAuth client first:
+
+```powershell
+.\install-all.ps1 -AdminAppRef v4.1.0 -IdpProvider google `
+  -AppDbPassword (Read-Host -AsSecureString 'Admin App DB login password') `
+  -OidcClientId '<google-client-id>' `
+  -OidcClientSecret (Read-Host -AsSecureString 'Google client secret') `
+  -AdminUsername 'you@yourdomain.com'
+```
+
+**Auth0, SQL Server** — an external OIDC provider. Create the Single Page Web Application in the Auth0 dashboard first (see [Auth0](../../../configuration/identity-provider/auth0.md)), and make sure an Auth0 user exists whose email matches `-AdminUsername`:
+
+```powershell
+.\install-all.ps1 -AdminAppRef v4.1.0 -IdpProvider auth0 `
+  -AppDbPassword (Read-Host -AsSecureString 'Admin App DB login password') `
+  -OidcIssuer 'https://your-tenant.us.auth0.com' `
+  -OidcClientId '<Single-Page-App-Client-ID>' `
+  -OidcClientSecret (Read-Host -AsSecureString 'Auth0 client secret') `
+  -AdminUsername 'you@yourorg.com'
+```
+
+`-IdpProvider` accepts `keycloak`, `microsoft`, `google`, `auth0`, or `other` (a generic OIDC provider you register yourself). Pass `-OidcIssuer` and `-OidcClientId` for `microsoft`, `auth0`, and `other`; for `keycloak` and `google` the issuer is defaulted. The issuer must be an HTTPS URL: Admin App 4.1 rejects an `http://` issuer (sign-in returns 404), and `install-all.ps1` warns when `-OidcIssuer` is not HTTPS. For `auth0`, either slash form of the issuer works — the installer normalizes it into the forms each setting expects. In every external-provider example, `-AdminUsername` is the email of the first (bootstrap) administrator — it must exactly match the `email` claim your identity provider returns for that user. See [Configuring an Identity Provider](../../../configuration/identity-provider/readme.md) for how to register the application with each provider.
+
+:::note
+By default the sites use a self-signed certificate (auto-trusted on this machine only). To bind a real certificate, pass `-CertificateThumbprint`, or `-CertificatePfxPath` with `-CertificatePassword` (see [TLS and certificates](./manual.md#tls-and-certificates)). Yopass is off by default; add `-SetupYopassDocker` to stand up a local Yopass via Docker, or `-YopassUrl <url>` to point at an existing one.
+:::
+
+`install-all.ps1` is idempotent: if a step fails, fix the cause and re-run. `-SkipPhase1` (skip prerequisites) and `-SkipPhase2` (skip build) speed up re-runs.
+
+The data-encryption key and the session secret live in the `NODE_CONFIG` environment variable of the `EdFi-AdminApp-API` App Pool, and every re-run reads them back from there. If that value has been edited and can no longer be read, the re-run stops at the API deployment instead of generating a new key, which would make the stored ODS/API and Admin API credentials unreadable. To recover, fix `NODE_CONFIG` in IIS Manager (**Configuration Editor**, `system.applicationHost/applicationPools`), or re-run `install-all.ps1` with the parameters you used plus `-DbEncryptionKey`, set to the key from `install-summary.txt` (`C:\Ed-Fi\install-summary.txt` by default) or from your backup. Reading the key from the file keeps it out of the console history:
+
+```powershell
+$key = (Select-String -Path C:\Ed-Fi\install-summary.txt -Pattern 'Key:\s+([0-9a-fA-F]{64})').Matches[0].Groups[1].Value
+.\install-all.ps1 <the parameters you used> -DbEncryptionKey $key
+```
+
+A new session secret is then generated, which signs current users out.
+
+To remove an install, use `uninstall.ps1` (generic) and, for the local Keycloak, `uninstall-keycloak.ps1` (removes Keycloak, its startup task, and its self-signed HTTPS certificate, and unsets `JAVA_HOME`; leaves the JDK installed). Against a managed Azure SQL Database, pass the same `-SqlServerHost` and `-SqlAdminUsername`: the database itself is yours and is left untouched, and only the Admin App's contained user is removed.
+
+For the full list of parameters and configuration options, see the [`windows-install/README.md`](https://github.com/Ed-Fi-Exchange-OSS/Admin-App-Installation-Scripts/blob/adminapp-v4.1.0-scripts-v2.0/windows-install/README.md) in the scripts repository, or run `Get-Help .\install-all.ps1 -Full`.
+
+## Upgrade from Admin App 4.0 {#upgrade-from-admin-app-40}
+
+An install made with these scripts moves from Admin App 4.0.x to 4.1 with a re-run of `install-all.ps1`, using current scripts and the 4.1 source. The re-run keeps the data-encryption key, so the stored ODS/API and Admin API credentials still work, and keeps your teams, environments, and users.
+
+1. **Back up.** Back up the Admin App database (`sbaa` by default) and keep a copy of the data-encryption key from `install-summary.txt`.
+2. **Get the current scripts.** The 4.0 guide cloned a release tag, so `git pull` does not update that folder. Rename it (for example to `Admin-App-Installation-Scripts-4.0`) and clone or download the scripts again, as in [Get the scripts](#get-the-scripts).
+3. **Move the Admin App source to 4.1.** `install-all.ps1` builds an existing checkout as it is (it prints the checkout's version), so a re-run alone would rebuild 4.0.1:
+
+   ```powershell
+   git -C C:\Ed-Fi\Ed-Fi-AdminApp fetch --depth 1 origin tag v4.1.0
+   git -C C:\Ed-Fi\Ed-Fi-AdminApp checkout v4.1.0
+   git -C C:\Ed-Fi\Ed-Fi-AdminApp describe --tags   # prints v4.1.0
+   ```
+
+4. **Re-run `install-all.ps1`** with the parameters you used for the install, but with `-AdminAppRef v4.1.0` instead of `v4.0.1`, and without `-SkipPhase2`: the source changed, so it must be built again. Admin App 4.1 refuses to start with a publicly known sample password or client secret (such as `YourStrong!Passw0rd` or `big-secret-123`), so the run stops before changing anything if one is passed; pass a different value, and the run updates the database login and the local Keycloak client.
+
+With the local Keycloak, the re-run adds the HTTPS listener on port 8443 and moves the Admin App's issuer from `http://localhost:8080/realms/edfi` to `https://localhost:8443/realms/edfi`, because 4.1 accepts only an HTTPS issuer. On PostgreSQL without Docker, that change needs `psql` on the `PATH`; without it the run says so, and the `issuer` column of the `oidc` table must be updated by hand. With an external provider, the issuer must already be HTTPS; `install-all.ps1` warns when `-OidcIssuer` is not.
+
+After the upgrade:
+
+- If you use the [Global Admin quick start](/reference/admin-app/user-guide/global-admin-quick-start), update its `.env` (`KEYCLOAK_BASE_URL` and `TOKEN_URL` on port 8443, and `API_BASE_URL`), then run `run.ps1` again: it adds claim set copies named without spaces (`AA-SIS-Vendor`), which 4.1 requires, beside the old ones.
+- Admin App 4.1 loads education organizations itself when an environment is synced, so the ed-org synchronization scripts are no longer needed.
+- If the ODS/API or Admin API uses a self-signed certificate, see the next section.
+
+To install 4.0.1 on a new machine instead, follow the [Admin App 4.0 guide](../../admin-app-4.0/windows-iis-installation/automated.md).
+
+## ODS/API or Admin API with a self-signed certificate {#odsapi-or-admin-api-with-a-self-signed-certificate}
+
+The API verifies the TLS certificate of the ODS/API and Admin API it connects to. When they use a self-signed certificate, as a local ODS/API usually does, adding or syncing an environment fails with `DEPTH_ZERO_SELF_SIGNED_CERT` in the API log (`C:\inetpub\EdFi-AdminApp-API\logs\node-stdout*.log`). Choose one:
+
+- **Trust the certificate (recommended).** Export its public certificate as a `.pem` file and set `NODE_EXTRA_CA_CERTS` to that path on the `EdFi-AdminApp-API` App Pool (IIS Manager, **Configuration Editor**, `system.applicationHost/applicationPools`, the pool's `environmentVariables`). Then:
+  - With the local Keycloak, re-run `install-all.ps1` right away. The variable holds a single file and already points at the Keycloak certificate, so until the re-run combines both into one bundle (readable by the App Pool), sign-in fails.
+  - With another identity provider, let the App Pool read the file (`icacls <file>.pem /grant "IIS APPPOOL\EdFi-AdminApp-API:(R)"`) and recycle the pool.
+
+  Later re-runs of `install-all.ps1` keep the value.
+- **Turn verification off, on a local test machine only.** Re-run `install-all.ps1` with `-DisableSslVerification`. It turns off verification for every outbound call of the API (ODS/API, Admin API, and Yopass), and a later re-run without the switch turns it back on.
+
+## First sign-in
+
+Open the Web Application at `https://localhost:4443` and sign in through the identity provider. For the local Keycloak example, use the seeded user — email `admin@example.com` (the `-AdminUsername` / `-TestUserEmail` default) and the test-user password you entered when the script prompted for it (`-TestUserPassword`). This first user is the bootstrap administrator; additional users must be granted access from within the Admin App afterward.
+
+## After a restart: the Keycloak startup task
+
+After the host restarts, the local Keycloak is not running. The API needs Keycloak to be answering requests by the time the API starts, so the two have to come back in that order: Keycloak first, then the API.
+
+The install does this for you. `install-all.ps1` (through `idp-keycloak-setup.ps1`) registers a scheduled task named `Ed-Fi Admin App Keycloak`, triggered at system startup and running as `SYSTEM`, which:
+
+1. Starts Keycloak from its install folder (`C:\keycloak` by default).
+2. Waits for the OIDC discovery endpoint to respond, up to `-ReadyTimeoutSeconds` (120 by default).
+3. Recycles the `EdFi-AdminApp-API` App Pool, so the API starts again with Keycloak already running.
+
+No manual step is needed after a restart, though a sign-in attempted before the task finishes can fail. If sign-in does not work, wait a moment and retry; if it still fails, check the task's log at `C:\keycloak\keycloak-startup-task.log`.
+
+To start Keycloak again without restarting the host, run `idp-keycloak-start.ps1`.
+
+`uninstall-keycloak.ps1` removes the task along with Keycloak. To remove only the task:
+
+```powershell
+schtasks /delete /tn 'Ed-Fi Admin App Keycloak' /f
+```
+
+:::note
+This task belongs to the local Keycloak example. It is not registered when the Admin App points at an external identity provider, which is expected: an external provider does not need to be started on this host.
+:::
+
+## Next steps
+
+A fresh install has no users, teams, or environments yet. The Global Admin Quick Start seeds that starter configuration, so it is the recommended next step.
+
+- [Global Admin Quick Start](../../../user-guide/global-admin-quick-start/readme.md)
+- [Configuring Ed-Fi Admin App](../../../configuration/configuring-admin-app.md)
+- [Configuring an Identity Provider for Ed-Fi Admin App](../../../configuration/identity-provider/readme.md)
+- [Security Considerations](../../../configuration/security-considerations.md)
+- [Global Administration Tasks](../../../configuration/global-administration-tasks.md)

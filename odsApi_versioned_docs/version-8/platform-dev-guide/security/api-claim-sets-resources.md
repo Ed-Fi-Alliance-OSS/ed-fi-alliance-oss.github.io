@@ -78,34 +78,29 @@ write, and delete data.
 
 :::info
 
-In most cases, the API now treats the claims documented in this section as
-conceptual. In .NET, claim values are stored as strings. However, since the API
-authorization process requires a richer context, the values for the resource
-claims were actually previously represented as JSON requiring serialization and
-deserialization during a single request. For performance reasons, the
-authorization metadata they represent are now only available to the application
-code through purpose-built in-memory objects in the current request context.
-With the exception of "service" claims, the implementation no longer creates
-.NET `Claim` objects and adds them to the current principal. Service claims are
-still added to the principal, however, to leverage built-in ASP.NET Core
-authorization capabilities for custom developed controllers.
+The resource claims documented in this section are conceptual: they aren't
+added to the access token. The token carries the client's claim set name, and
+the Ed-Fi API reads that claim set's resource claims, actions, and
+authorization strategies from the Configuration Service. It caches them for
+`CacheSettings:ClaimSetsCacheExpirationSeconds` (600 seconds by default), so a
+change to a claim set can take up to that long to take effect.
 
 :::
 
 ### Identity Claims
 
-Identity claims will be issued to enable the authorization layer to access
-specific attributes about the caller when making authorization decisions. The
-following identity claims are currently represented by in-memory purpose-built
-objects available in the current request context (and not created and accessed
-as `Claim` objects):
+Identity claims give the authorization layer specific attributes about the
+caller when making authorization decisions. The claim set name, namespace
+prefixes, and education organization IDs are in the access token. Changes to
+them take effect when the client gets a new token. Assigned profiles are looked
+up in the Configuration Service.
 
 - Namespace Prefix - used to authorize access to resource items where callers
   need to manage their own data that is not associated with any specific
   education organizations, such as custom descriptor values and assessment
-  metadata. A consumer could have access to many namespace prefixes, with each
-  namespace prefix defined in association with their "Vendor" record in the
-  Configuration Service.
+  metadata. A consumer can have zero or more namespace prefixes, defined on
+  their "Vendor" record in the Configuration Service. Namespace prefixes are
+  optional, and can be changed by updating the vendor.
 - Profile - used to apply data policies to the response data returned to a
   consumer. A consumer could have many assigned profiles, with each profile name
   defined in association with their "Application" record in the Configuration
@@ -116,18 +111,29 @@ as `Claim` objects):
 - Education Organization Ids - used to identify the education organizations
   whose data the consumer can access. For example, a SIS vendor would have
   permissions to manage student data, but only for students enrolled in schools
-  within the local education agencies they serve. The education organization ids
-  associated with the consumer are managed in the Configuration Service.
+  within the local education agencies they serve. Education organization IDs
+  are assigned to the "Application" record in the Configuration Service. By
+  default, each API client of the application uses all of them, but an API
+  client can be narrowed to a subset of its application's education
+  organizations. See [API Client and Data Store
+  Configuration](../configuration/api-client-and-data-store-configuration.md).
 
 ### Service Claims
 
-Service claims are defined in the Ed-Fi API security metadata with a claim name
-using a prefix of `http://ed-fi.org/identity/claims/services/`. These are the only type
-of claims that are actually created as `Claim` objects and added to the
-consumer's authenticated principal. They can be used to perform authorization on
-additional services exposed through the API using the built-in ASP.NET Core
-architecture (e.g., ASP.NET Core security policies). The value of each service
-claim will contain a comma-separated list of the associated Action URIs.
+Service claims authorize access to services exposed by the Ed-Fi API other than
+resources. They're resource claims in the claims hierarchy whose names use the
+prefix `http://ed-fi.org/identity/claims/services/`, and they're granted to
+claim sets like any other resource claim.
+
+The Ed-Fi API has one service claim,
+`http://ed-fi.org/identity/claims/services/identity`, which authorizes the
+[Identities API](../../technical-articles/identities-api.md)
+(`/identity/v2/identities`, available when Identity Management is enabled).
+Creating an identity requires the `Create` action; every other identity
+operation requires `Read`. Leave this claim's authorization strategy as
+`NoFurtherAuthorizationRequired`. A client whose claim set doesn't grant the
+required action receives `403`. In the default claims, `EdFiSandbox` can create
+and read identities; `SeedLoader` can only create them.
 
 ### Resource Claims
 
@@ -159,6 +165,13 @@ to the [changed record query](../features/changed-record-queries.md) endpoints
 (`/deletes` and `/keyChanges`). The actions are expressed as URIs, such as
 `uri://ed-fi.org/api/actions/create` and
 `uri://ed-fi.org/api/actions/readChanges`.
+
+A POST that creates a new record is authorized as **Create**. A POST whose
+identity matches a record that already exists (including an identical repost)
+is authorized as **Update**, the same as a PUT: the claim set must grant
+Update, and Update's authorization strategies are applied. Clients that re-run
+loads against existing data therefore need both Create and Update; the
+built-in `SeedLoader` claim set grants both.
 
 ## Claims Taxonomy
 
@@ -212,6 +225,48 @@ level. For example, a specialized claim set could override the default
 overrides are stored in the Configuration Service database and take precedence
 over both the resource-level defaults and any parent-inherited strategies.
 
+### Managing a Claim Set's Resource Claims
+
+Besides importing or replacing a whole claim set, you can change one resource
+claim at a time with these Configuration Service endpoints:
+
+| Endpoint | Purpose |
+| --- | --- |
+| `POST /v3/claimSets/{claimSetId}/resourceClaimActions` | Grant actions on a resource claim (`201`) |
+| `PUT /v3/claimSets/{claimSetId}/resourceClaimActions/{resourceClaimId}` | Replace the granted actions (`204`) |
+| `DELETE /v3/claimSets/{claimSetId}/resourceClaimActions/{resourceClaimId}` | Remove the resource claim from the claim set (`204`) |
+| `POST /v3/claimSets/{claimSetId}/resourceClaimActions/{resourceClaimId}/overrideAuthorizationStrategy` | Override the strategies for one action (`200`) |
+| `POST /v3/claimSets/{claimSetId}/resourceClaimActions/{resourceClaimId}/resetAuthorizationStrategies` | Remove the overrides and return to the defaults (`200`) |
+
+The `DELETE` and `resetAuthorizationStrategies` requests take no body. The
+other requests take a body that must include `claimSetId` and
+`resourceClaimId`; where they also appear in the route, they must match (a
+mismatch returns `400`). The grant and replace requests also take a
+`resourceClaimActions` list of `{ "name": "Read", "enabled": true }` entries,
+with at least one action enabled. For example, to grant read access on resource
+claim `17` in claim set `5`:
+
+```http
+POST http://localhost:8081/config/v3/claimSets/5/resourceClaimActions
+Content-Type: application/json
+Authorization: Bearer <token>
+
+{
+  "claimSetId": 5,
+  "resourceClaimId": 17,
+  "resourceClaimActions": [{ "name": "Read", "enabled": true }]
+}
+```
+
+The override request takes an `actionName` and an `authorizationStrategies`
+list of strategy names. Look up IDs and names with `GET /v3/resourceClaims`,
+`GET /v3/actions`, and `GET /v3/authorizationStrategies`.
+
+System-reserved claim sets can't be changed through these endpoints (`400`).
+These include the built-in claim sets and any claim set loaded from a claims
+file when the Configuration Service starts. An unknown action or strategy name
+also returns `400`.
+
 ## Authorization Strategies
 
 The implementation of the Ed-Fi API includes several authorization strategies,
@@ -224,12 +279,30 @@ applied to the claims taxonomy shown in the figure above.
 - **NamespaceBased.** Allows access to items based on the caller's
   NamespacePrefix claim. A resource's namespace value must start with at least
   one of the caller's assigned namespace prefixes. NamespacePrefix values are
-  assigned when a vendor's record is created.
+  assigned on the vendor's record. A caller with no
+  namespace prefixes receives `403` on any request this strategy applies to.
+- **OwnershipBased.** Allows access to items based on ownership tokens
+  associated with the caller. The caller is granted access to an item when the
+  ownership token stamped on it when it was created matches one of the caller's
+  ownership tokens. See [Ownership-Based
+  Authorization](#ownership-based-authorization) for more details.
 - **Relationship-based strategies.** A family of strategies that authorize
   access to student and education organization-related data through relationships
   in the database, from the perspective of the education organization(s)
   contained in the caller's claims. See [Relationship-Based
   Authorization](#relationship-based-authorization) for more details.
+- **Custom View-Based Authorization.** Provides a flexible mechanism for
+  defining custom authorization strategies. Platform hosts can create database
+  views tailored to specific authorization needs, such as restricting access by
+  student program enrollment or grade level, and name them as authorization
+  strategies in the security metadata, without recompiling or restarting the
+  Ed-Fi API. Custom view-based strategies are combined with the other strategies
+  using AND semantics, so they further restrict access. See [Authorizing
+  Requests Using Custom Database
+  Views](../../technical-articles/authorizing-requests-using-custom-database-views.md)
+  and [How To: Use Custom View-Based
+  Authorization](../../how-to-guides/how-to-use-custom-view-based-authorization.mdx)
+  for details.
 
 ## How Authorization Is Enforced
 
@@ -300,6 +373,12 @@ relationship tables, filtering results to only those records reachable through
 the caller's education organization associations. For GET-by-id, PUT, and DELETE
 requests, it is performed as an existence check before the operation proceeds.
 
+An update (a PUT, or a POST that matches an existing record) is checked against
+both the stored record and the proposed new values. The caller must be
+authorized for the record as it is now and as it will be after the change, so
+a client can't move a record out of its own scope or into another
+organization's.
+
 ### Relationship-Based Strategy Variants
 
 **Standard variants** (parent education organization access grants access to
@@ -365,6 +444,31 @@ read programs defined by the SEA.
 - **RelationshipsWithEdOrgsOnlyInverted.** Same inverted hierarchy check but
   ignores person identifiers entirely.
 
+The inverted strategies are used in the Data Standard 6.1 default claims for
+`Course`, `Program`, and `ChartOfAccount` reads.
+
+**Including-deletes variants** (for change queries):
+
+The [changed record query](../features/changed-record-queries.md) endpoints
+(`/deletes` and `/keyChanges`) return records that may no longer exist, and
+the relationship that authorized a record may itself have been deleted. These
+variants also consider relationships that have since been deleted, so a
+caller can still see deletes and key changes for students, staff, and contacts
+it was related to. In the default claims, these are the `ReadChanges`
+strategies for relationship-based resources.
+
+- **RelationshipsWithEdOrgsAndPeopleIncludingDeletes.** The `ReadChanges`
+  counterpart of `RelationshipsWithEdOrgsAndPeople`.
+- **RelationshipsWithStudentsOnlyIncludingDeletes.** The `ReadChanges`
+  counterpart of `RelationshipsWithStudentsOnly`.
+- **RelationshipsWithStudentsOnlyThroughResponsibilityIncludingDeletes.** The
+  `ReadChanges` counterpart of
+  `RelationshipsWithStudentsOnlyThroughResponsibility`.
+
+Custom view-based strategies can also be applied to the `ReadChanges` action.
+See [Authorizing Requests Using Custom Database
+Views](../../technical-articles/authorizing-requests-using-custom-database-views.md#change-queries).
+
 When multiple relationship-based strategies are configured for a resource, they
 are combined with OR logic — authorization succeeds if any single variant
 establishes a valid path. Non-relationship strategies (such as namespace-based
@@ -380,9 +484,41 @@ the SIS vendor's education organization(s) have an established path to that
 school (via the education organization hierarchy) and to that student (via
 `StudentSchoolAssociation` or another primary relationship table). If such a
 path exists, authorization is granted. If not, the request is rejected with an
-HTTP 403 response and a descriptive error message identifying which relationship
-is missing, for example:
+HTTP 403 response. The `errors` list names the caller's education organization
+IDs and the properties of the resource that couldn't be authorized, and the
+`detail` may include a hint. For example, reading a student who has no
+`StudentSchoolAssociation` with the caller's school returns:
 
-> _No relationships have been established between the caller's education
-> organization(s) and the resource. Verify that a StudentSchoolAssociation
-> exists for the referenced student and school._
+```json
+{
+  "detail": "Access to the requested data could not be authorized. Hint: You may need to create a corresponding 'StudentSchoolAssociation' item.",
+  "type": "urn:ed-fi:api:security:authorization",
+  "title": "Authorization Denied",
+  "status": 403,
+  "correlationId": "...",
+  "validationErrors": {},
+  "errors": [
+    "No relationships have been established between the caller's education organization id claim ('255901') and the resource item's 'StudentUniqueId' value."
+  ]
+}
+```
+
+## Ownership-Based Authorization
+
+Though the relationship-based authorization strategy is sufficient for most
+implementations, there are use cases with overlapping local contexts where
+education-organization-based authorization lacks the granularity necessary for
+controlling data access — for example, private schools that students from
+multiple LEAs attend for special education needs. In such cases, the
+ownership-based authorization strategy is typically applied _in conjunction
+with_ the relationship-based authorization strategy.
+
+This strategy authorizes access to individual resources based on the concept of
+"ownership". An API client can have a creator ownership token, which is stamped
+on each resource the client creates, and a list of ownership tokens that
+identifies which resources it currently "owns". Resources created by a client
+without a creator token have no owner. The authorization process filters results
+to the resources whose stamped token is in that list. Platform hosts manage
+ownership tokens through the Configuration Service; unlike the Ed-Fi ODS/API,
+there's no feature flag to turn on. See [Ownership-Based
+Authorization](./ownership-based-authorization.md) for setup details.
