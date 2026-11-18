@@ -200,7 +200,7 @@ that have any credentials removed.
   check for missing or inconsistent cache updates, even if the queue is empty.
   Scrub requires `tracking` and a clear cache-ahead flag. Resolve any other
   state first. If scrub sets the flag, follow cache-ahead recovery. Otherwise,
-  let repaired work finish and verify live status. [Restore and repair procedure](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/document-cache-documentation/operations-runbook.md#suspected-restore-or-direct-mutation)
+  let repaired work finish and verify live status. For the full procedure, see [Restore and repair procedure](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/document-cache-documentation/operations-runbook.md#suspected-restore-or-direct-mutation)
 - **API creates or updates start failing.** When the cache is active, the
   database rolls back a create or a content-changing update if it cannot queue
   the cache update. On the API instance that handled the failed request, check
