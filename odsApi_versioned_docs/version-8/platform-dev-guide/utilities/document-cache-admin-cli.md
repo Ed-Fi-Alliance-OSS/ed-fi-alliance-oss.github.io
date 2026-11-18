@@ -243,9 +243,10 @@ and updates `ContentLastModifiedAt` so clients can detect the correction.
 Keep all access to the database stopped, including readers, writers, workers,
 and loaders, while deploying the corrected code and running the procedure.
 
-- `restamp-preview` saves an operation record. Use the mode (`tracking` or
-  `disabled`) matching the database's lifecycle and confirm `cacheAhead.state`
-  is `clear`. Pass `--offline-writer-admission closedAndDrained`.
+- `restamp-preview` saves an operation record. It requires `--mode` (`tracking`
+  or `disabled`, matching the database's lifecycle), `--reason` with a short
+  explanation, and `--offline-writer-admission closedAndDrained`. Confirm
+  `cacheAhead.state` is `clear` first.
 - `restamp-execute` requires `--confirm representationRestamp`, the same
   offline option, and the operation ID from the preview. For an incomplete
   execution, retry with that same target and operation ID.
