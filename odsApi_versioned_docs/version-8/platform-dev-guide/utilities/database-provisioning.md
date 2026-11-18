@@ -166,9 +166,11 @@ api-schema-tools ddl provision --schema <paths...> --connection-string <connstr>
 | `--create-database` | — | No | `false` | Create the target database if it does not already exist. |
 | `--timeout` | `-t` | No | `300` | DDL execution timeout, in seconds. |
 
-`ddl provision` also has options for the managed change data capture (CDC)
-workflow, which streams data changes to Kafka. If you don't use event
-streaming, leave them out. See [Event Streaming with
+To retain the creation history needed for later offline DocumentCache
+administration, use the additional
+[managed provisioning options](#managed-provisioning-for-documentcache) when
+creating the database, even if you don't use Kafka. Managed provisioning also
+supports a separate workflow for [Event Streaming with
 Kafka](../features/event-streaming-kafka-cdc.md).
 
 :::warning
@@ -230,6 +232,84 @@ RCSI is recommended for the Ed-Fi API workload.
 
 Provisioning also creates the document cache tables, even if you don't enable
 the [document cache](../features/document-cache.md).
+
+#### Managed provisioning for DocumentCache
+
+Managed provisioning saves the database's creation and publication records in
+a protected directory outside the database. Offline DocumentCache commands use
+the original records to verify that this database has never published changes
+to Kafka or another downstream system.
+Choose this workflow when creating a database if you may later need to activate
+DocumentCache on a populated store, deactivate it, or recover a cache-ahead
+incident. Kafka is not required for this history-only workflow.
+
+:::warning History must be recorded at database creation
+
+The command must create a new database to establish this history. Adding managed
+options to a later provisioning run cannot establish it for an existing
+database, and a new state directory cannot replace lost records. Without the
+original history, `activate-offline` is unavailable. To use DocumentCache in
+that case, provision a fresh database, [activate its cache before the first
+write](../features/document-cache.md#turn-it-on-for-a-new-database), and reload the
+data after activation and verification.
+
+:::
+
+Add these options to `ddl provision`, along with `--create-database` and the
+schema, connection string, and dialect options above. Use a positive `--timeout`
+value (the default is 300 seconds).
+
+| Option | Required for managed provisioning | Default | Description |
+| --- | --- | --- | --- |
+| `--managed-state-path` | Yes | None | Protected, persistent directory for the provisioning records. Retain the original directory for later administration. |
+| `--managed-workflow-purpose` | No | `source-history-only` | Use `source-history-only` to retain history for offline DocumentCache administration. It cannot later be changed to `initial-cdc-provisioning`, which is required for initial Kafka setup. For streaming, review the [Kafka requirements](../features/event-streaming-kafka-cdc.md#setup) before creating the database. |
+| `--deployment-key` | No | `local` | Stable deployment identifier used to find the history. Retain the original value. |
+| `--tenant-key` | No | Default tenant | Omit for the default tenant; otherwise use the target's Configuration Service tenant key. |
+| `--data-store-id` | Yes | None | Positive Configuration Service data store ID for this database. |
+| `--instance-key` | Yes | None | Stable identifier for this managed database instance, such as `datastore-1`. Retain it with the provisioning inputs. |
+| `--generation` | No | `1` | Positive workflow generation. Retain the original value. |
+
+Deployment, tenant, and instance keys use lowercase letters and digits, with
+single dots, underscores, or hyphens as separators. Start and end each key with
+a letter or digit.
+
+This PostgreSQL example uses the default tenant and data store `1`. Replace the
+ID with the actual Configuration Service registration, and choose a database
+that does not yet exist. Set `EDFI_PROVISIONING_CONNECTION_STRING` in your
+environment to its connection string using your deployment's secret management.
+Replace the state path and deployment key with persistent values for your
+deployment.
+
+```powershell
+api-schema-tools ddl provision `
+  --schema core/ApiSchema.json `
+  --connection-string $env:EDFI_PROVISIONING_CONNECTION_STRING `
+  --dialect pgsql `
+  --create-database `
+  --managed-state-path /srv/edfi/controller-state `
+  --managed-workflow-purpose source-history-only `
+  --deployment-key production `
+  --data-store-id 1 `
+  --instance-key datastore-1 `
+  --generation 1
+```
+
+For SQL Server, use `--dialect mssql` and a SQL Server connection string. For a
+named tenant, add `--tenant-key` with that tenant's key. Supply any extension
+schemas in the same order as the API's configuration.
+
+On success, managed provisioning writes a JSON result to standard output.
+Check that `creationReceipt.outcome` is `Created`, not `Reused`, and retain the
+result and provisioning inputs. A `Reused` result does not establish creation
+history for offline cache administration.
+
+Keep the original directory with owner-only access. In the CLI's
+[offline administration settings](./document-cache-admin-cli.md#offline-administration-history),
+set `Cdc:PublicationHistory:StatePath` to that directory and
+`Cdc:PublicationHistory:DeploymentKey` to the original key. Using the same
+directory prevents provisioning and administration from running at the same
+time. Before changing the cache, the CLI checks that the records match the
+selected tenant, data store, and database.
 
 ### Previewing DDL without a database (`ddl emit`)
 
