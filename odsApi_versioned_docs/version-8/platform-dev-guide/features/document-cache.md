@@ -185,7 +185,8 @@ that have any credentials removed.
 - **The CLI returns exit code `12`.** The command stopped before it finished.
   Retry it with the same target and options. For activation or another command
   that requires downtime, keep writers stopped through every retry.
-- **The worker stays behind after writes stop.** Check `documentDiagnostics` and
+- **The worker stays behind after writes stop.** On the affected API instance,
+  check `GET /health/document-cache` for `documentDiagnostics` and
   `targetDiagnostics`. If one document repeatedly fails to build its cached
   JSON, `poisonTraversalDiagnostics` can help identify it. Correct the cause,
   resume the worker, and check progress. [Repeated document failures](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/document-cache-documentation/operations-runbook.md#persistent-projection-failure-and-poison-remediation)

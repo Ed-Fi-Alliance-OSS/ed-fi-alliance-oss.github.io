@@ -51,6 +51,9 @@ Replace `1` with the Configuration Service ID of the intended data store. Use
 the matching tenant key for a multi-tenant deployment; an empty key selects the
 default tenant.
 
+If you need seed data, run bootstrap without `-LoadSeedData`, activate and
+verify the cache, then load the data.
+
 | Variable | Default | Effect |
 | --- | --- | --- |
 | `DMS_DOCUMENTCACHE_COMPOSE_FILE` | Empty; no overlay | `start-local-dms.ps1` adds this Compose file when starting API services. Relative paths resolve from `eng/docker-compose/`; the file must exist. |
