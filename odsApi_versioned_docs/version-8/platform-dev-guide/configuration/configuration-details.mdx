@@ -407,9 +407,9 @@ This example selects data store `1` and enables the protected status endpoint;
 it does not activate the database or enable accelerated reads. The
 `DMS_DOCUMENTCACHE_*` variables used by the
 [optional Docker overlay](../../getting-started/getting-started-appendix.md#optional-documentcache)
-are Compose conveniences, not configuration keys read directly by the API. Set
-.NET variables in the container environment, not merely in the Compose `.env`
-file unless an overlay maps them there.
+are Compose conveniences, not configuration keys read directly by the API. In
+the local Docker setup, the Compose files map them to the .NET variables above.
+In other deployments, set the .NET variables in the API's environment.
 
 ### JwtAuthentication
 
