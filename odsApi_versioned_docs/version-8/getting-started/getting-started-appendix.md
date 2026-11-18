@@ -67,9 +67,8 @@ guide](../platform-dev-guide/features/document-cache.md#before-you-start)
 to satisfy prerequisites, activate the database, and verify status.
 
 To enable accelerated reads, add
-`DataManagement__DocumentCache__ReadAcceleration__Enabled=true` to the API
-container's Compose environment and recreate the container; the overlay does
-not map this setting from `.env`.
+To enable accelerated reads, set `DMS_DOCUMENTCACHE_READ_ACCELERATION_ENABLED=true`
+in `.env` and recreate the API container.
 
 ### PostgreSQL
 
