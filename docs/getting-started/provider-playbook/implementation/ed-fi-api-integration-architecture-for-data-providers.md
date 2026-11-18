@@ -130,7 +130,7 @@ After the full list of Ed-Fi API records are created, we can perform the followi
 5. If a record is found for the natural key hash and the full record has **not** changed, we don’t need to do anything
 6. If a record in the sync database was not checked, it is likely that the record was deleted in the source system application database and we should run a DELETE using the Ed-Fi API ID.
 
-Step 6 is safe only when the run builds the full list of records. If the run reads only changed records, for example with [change data capture](#change-data-capture), unchanged records are also missing from the list, and step 6 would delete them. In that case, skip step 6 and send a DELETE for each delete that the change data reports.
+Step 6 is safe only when the run builds the full list of records. If the run reads only changed records, for example with [change data capture](#change-data-capture), unchanged records are also missing from the list, and step 6 would delete them. In that case, skip step 6, send a DELETE for each delete reported by the change data, and treat natural-key changes as DELETE of the prior natural key/API ID followed by POST of the record under its new natural key.
 
  ![POST PUT DELETE Diagram](https://edfidocs.blob.core.windows.net/$web/img/getting-started/provider-playbook/implementation/image-2024-2-11_19-5-23-6.png)
 
