@@ -22,8 +22,8 @@ Snapshot and read-replica requests always read the relational tables and skip di
 
 ## Turn It On for a New Database
 
-For a deployment without Kafka, [register the data store](../configuration/api-client-and-data-store-configuration.md#data-stores)
-in the Configuration Service, then [provision the database](../utilities/database-provisioning.md#provisioning-a-database-ddl-provision).
+When creating a database without Kafka, [register the data store](../configuration/api-client-and-data-store-configuration.md#data-stores)
+in the Configuration Service before [provisioning it](../utilities/database-provisioning.md#provisioning-a-database-ddl-provision).
 Use the assigned ID in `Targets` and CLI commands, and for managed provisioning if you choose it.
 Activate the cache before the first resource or descriptor write.
 
