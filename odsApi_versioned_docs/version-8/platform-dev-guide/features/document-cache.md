@@ -157,19 +157,19 @@ or invalid role leaves the endpoint unavailable.
    [administrative client's credentials](../configuration/identity-provider.md#clients-that-arent-api-clients)
    and the `client_credentials` grant. With Keycloak, assign the chosen role
    to the monitoring client.
-2. Call `GET /health/document-cache` on the Ed-Fi API with the token. Find
-   your tenant and data store. A healthy worker reports
+2. Call `GET /health/document-cache` on the Ed-Fi API with the token. The
+   response includes one entry per configured tenant and data store pair.
+   Find the pair you want to check. A healthy worker reports
    `operationalHealth.status` as `operational`. A `caughtUp.status` of
    `caughtUp` means the queue was empty at the time of the check.
 
 A `401` means the token is missing or invalid. For a `403`, check the token's
 role under `JwtAuthentication:RoleClaimType`.
 
-Both the CLI `status` command and `GET /health/document-cache` return an entry
-for each tenant and data store. The CLI reads only the database, so it can't
-check the worker and reports `unknown` for the two checks in step 2. Use the
-HTTP endpoint for those. In both outputs, `lifecycle.state` shows whether the
-cache is turned on and receiving updates:
+The CLI `status` command reports on the tenant and data store you select.
+It reads only the database, so it reports `unknown` for the two worker checks
+in step 2. In both outputs, `lifecycle.state` shows whether the cache is
+turned on and receiving updates.
 
 | `lifecycle.state` | What it means for the host |
 | --- | --- |
@@ -192,7 +192,8 @@ that have any credentials removed.
   check `GET /health/document-cache` for `documentDiagnostics` and
   `targetDiagnostics`. If one document repeatedly fails to build its cached
   JSON, `poisonTraversalDiagnostics` can help identify it. Correct the cause,
-  resume the worker, and check progress. For the full procedure, see [Repeated document failures](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/document-cache-documentation/operations-runbook.md#persistent-projection-failure-and-poison-remediation)
+  resume the worker, and check progress. For the full procedure, see
+  [Repeated document failures](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/document-cache-documentation/operations-runbook.md#persistent-projection-failure-and-poison-remediation).
 - **Status shows `cacheAhead.state` is `recoveryRequired`.** A cached copy is
   newer than its source. Cache updates stop and reads use the relational tables.
   If a downstream system might have seen that version, stop publication and
@@ -203,10 +204,11 @@ that have any credentials removed.
   check for missing or inconsistent cache updates, even if the queue is empty.
   Scrub requires `tracking` and a clear cache-ahead flag. Resolve any other
   state first. If scrub sets the flag, follow cache-ahead recovery. Otherwise,
-  let repaired work finish and verify live status. For the full procedure, see [Restore and repair procedure](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/document-cache-documentation/operations-runbook.md#suspected-restore-or-direct-mutation)
+  let repaired work finish and verify live status. For the full procedure, see
+  [Restore and repair procedure](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/document-cache-documentation/operations-runbook.md#suspected-restore-or-direct-mutation).
 - **API creates or updates start failing.** When the cache is active, the
   database rolls back a create or a content-changing update if it cannot queue
   the cache update. On the API instance that handled the failed request, check
   `enqueueFailures` at `GET /health/document-cache` or inspect that instance's
   logs for errors involving the work table or triggers. For the full procedure, see
-  [Diagnose write failures](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/document-cache-documentation/operations-runbook.md#enqueue-vs-processing-availability)
+  [Diagnose write failures](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/document-cache-documentation/operations-runbook.md#enqueue-vs-processing-availability).

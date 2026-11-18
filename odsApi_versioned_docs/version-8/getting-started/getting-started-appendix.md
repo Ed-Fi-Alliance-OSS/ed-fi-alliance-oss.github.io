@@ -61,14 +61,28 @@ would have passed to bootstrap, such as `-SeedTemplate`.
 | `DMS_DOCUMENTCACHE_TARGET_TENANT_KEY` | Empty | Maps to `DataManagement__DocumentCache__Targets__0__TenantKey`. |
 | `DMS_DOCUMENTCACHE_TARGET_DATA_STORE_ID` | Required when using the overlay | Maps to `DataManagement__DocumentCache__Targets__0__DataStoreId`; must be a positive registered data store ID. |
 
-The bootstrap flow uses the startup script to select the overlay. The overlay
-only configures the target: follow the [DocumentCache activation
-guide](../platform-dev-guide/features/document-cache.md#before-you-start)
-to satisfy prerequisites, activate the database, and verify status.
+The base `local-dms.compose.yml` file maps the following `.env` variables
+to settings in the API container.
 
-To enable accelerated reads, add
-To enable accelerated reads, set `DMS_DOCUMENTCACHE_READ_ACCELERATION_ENABLED=true`
-in `.env` and recreate the API container.
+| Variable | Default | Effect |
+| --- | --- | --- |
+| `DMS_DOCUMENTCACHE_READ_ACCELERATION_ENABLED` | `false` | Enables cached resource and descriptor GETs on the configured targets. |
+| `DMS_DOCUMENTCACHE_READ_ACCELERATION_DIRECT_FILL_TIMEOUT` | `00:00:00.250` | Time allowed to refresh a cached copy after a read from the relational tables. |
+| `DMS_DOCUMENTCACHE_PROJECTOR_POLL_INTERVAL` | `00:00:05` | Time between worker polls. |
+| `DMS_DOCUMENTCACHE_PROJECTOR_PAGE_SIZE` | `100` | Number of items the worker reads per page. |
+| `DMS_DOCUMENTCACHE_PROJECTOR_MAX_CONCURRENT_TARGETS` | `2` | Maximum number of data stores one API instance updates at once. |
+| `DMS_DOCUMENTCACHE_PROJECTOR_FAILURE_BACKOFF` | `00:00:30` | Time the worker waits before retrying after a database failure. |
+| `DMS_DOCUMENTCACHE_PROJECTOR_BASELINE_HIGH_WATER_MARK` | `1000` | Activation or rebuild pauses adding existing documents at this queue size and resumes when the queue falls below it. |
+| `DMS_DOCUMENTCACHE_ADMINISTRATION_WORKFLOW_TIMEOUT` | `1.00:00:00` | Time allowed for an administration command. |
+| `DMS_DOCUMENTCACHE_STATUS_OBSERVATION_TIMEOUT` | `00:00:05` | Time allowed to read one target's status from the database. |
+| `DMS_DOCUMENTCACHE_STATUS_ENDPOINT_TIMEOUT` | `00:00:30` | Time allowed for the entire HTTP status request. |
+| `DMS_DOCUMENTCACHE_STATUS_REQUIRED_ROLE` | Empty | Role required to call `GET /health/document-cache`. An empty value disables the endpoint. |
+
+Set `DMS_DOCUMENTCACHE_STATUS_REQUIRED_ROLE` to an administrator-only role
+and follow the [DocumentCache activation guide](../platform-dev-guide/features/document-cache.md#before-you-start)
+to activate the database and verify worker status. To enable accelerated reads
+after activation, set `DMS_DOCUMENTCACHE_READ_ACCELERATION_ENABLED=true` in
+`.env` and recreate the API container.
 
 ### PostgreSQL
 

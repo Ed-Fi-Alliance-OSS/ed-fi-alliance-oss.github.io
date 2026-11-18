@@ -245,8 +245,10 @@ and loaders, while deploying the corrected code and running the procedure.
 
 - `restamp-preview` saves an operation record. It requires `--mode` (`tracking`
   or `disabled`, matching the database's lifecycle), `--reason` with a short
-  explanation, and `--offline-writer-admission closedAndDrained`. Confirm
-  `cacheAhead.state` is `clear` first.
+  explanation, and `--offline-writer-admission closedAndDrained`. Choose
+  exactly one scope. For a resource type, pass both `--project-name` and
+  `--resource-name`. For individual documents, pass `--document-uuid` once
+  for each UUID. Confirm `cacheAhead.state` is `clear` before running the preview.
 - `restamp-execute` requires `--confirm representationRestamp`, the same
   offline option, and the operation ID from the preview. For an incomplete
   execution, retry with that same target and operation ID.
