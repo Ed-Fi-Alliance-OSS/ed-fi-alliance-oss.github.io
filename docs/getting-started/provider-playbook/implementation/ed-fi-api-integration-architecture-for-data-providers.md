@@ -6,7 +6,7 @@ A data provider, such as a student information system (SIS) or an assessment pla
 
 - **Ingestion:** read source data from a read-replica of the application database, optionally using change data capture (CDC), so the integration does not slow down the production system.
 - **Sync service:** a process that runs separately from the main application, often on a workflow orchestrator. It turns source records into Ed-Fi API payloads and validates them before sending.
-- **Sync database:** stores the Ed-Fi API `id` and hashes of each record's natural keys and full payload. Each run compares against it and sends only what changed: POST for new records, PUT for changed records, and DELETE for records removed from the source. Send POST and PUT requests in resource dependency order and DELETE requests in reverse dependency order.
+- **Sync database:** stores the Ed-Fi API `id` and hashes of each record's natural keys and full payload. Each run compares against it and sends only what changed: POST for new records, PUT for changed records, and DELETE for records removed from the source. Treat a record missing from a run as deleted only when that run read the full source data; an incremental run, such as one driven by CDC, should take deletes from the change data instead. Send POST and PUT requests in resource dependency order and DELETE requests in reverse dependency order.
 
 The same pattern works with ODS/API 7.x and with Ed-Fi API v8. A few client details differ; see [ODS/API 7.x and Ed-Fi API v8](#odsapi-7x-and-ed-fi-api-v8).
 
@@ -129,6 +129,8 @@ After the full list of Ed-Fi API records are created, we can perform the followi
 4. If a record is found for the natural key hash and the full record has changed, we know we need to run a PUT using the Ed-Fi API ID to update the record
 5. If a record is found for the natural key hash and the full record has **not** changed, we don’t need to do anything
 6. If a record in the sync database was not checked, it is likely that the record was deleted in the source system application database and we should run a DELETE using the Ed-Fi API ID.
+
+Step 6 is safe only when the run builds the full list of records. If the run reads only changed records, for example with [change data capture](#change-data-capture), unchanged records are also missing from the list, and step 6 would delete them. In that case, skip step 6 and send a DELETE for each delete that the change data reports.
 
  ![POST PUT DELETE Diagram](https://edfidocs.blob.core.windows.net/$web/img/getting-started/provider-playbook/implementation/image-2024-2-11_19-5-23-6.png)
 
