@@ -189,7 +189,7 @@ that have any credentials removed.
   check `GET /health/document-cache` for `documentDiagnostics` and
   `targetDiagnostics`. If one document repeatedly fails to build its cached
   JSON, `poisonTraversalDiagnostics` can help identify it. Correct the cause,
-  resume the worker, and check progress. [Repeated document failures](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/document-cache-documentation/operations-runbook.md#persistent-projection-failure-and-poison-remediation)
+  resume the worker, and check progress. For the full procedure, see [Repeated document failures](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/document-cache-documentation/operations-runbook.md#persistent-projection-failure-and-poison-remediation)
 - **Status shows `cacheAhead.state` is `recoveryRequired`.** A cached copy is
   newer than its source. Cache updates stop and reads use the relational tables.
   If a downstream system might have seen that version, stop publication and
