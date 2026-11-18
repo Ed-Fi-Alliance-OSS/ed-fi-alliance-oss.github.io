@@ -83,5 +83,6 @@ In this API (which is defined in [ED-FI RFC 15 - ASSESSMENT OUTCOMES API](https:
 
 * [Ed-Fi Assessment Outcomes API for Suite 3 Certification, **v4**](/partners/certification/available-certifications/assessment-v4/)
 * [Ed-Fi Assessment Outcomes API for Data Standard, **v5**](/partners/certification/available-certifications/assessment-v5/)
+* [Ed-Fi Assessment Outcomes API for Data Standard, **v6**](/partners/certification/available-certifications/assessment-v6/)
 
 **This requirement to handle both tech-provider-supplied and Ed-Fi-governed values applies only to products seeking Ed-Fi Certification.** You can implement the specification without this guidance, but a product that does so will not be eligible for Ed-Fi Certification.
