@@ -141,6 +141,9 @@ The architecture in this article applies to both platforms. Ed-Fi API v8 uses th
 - **Property names are case-sensitive in Ed-Fi API v8.** POST and PUT bodies must use the exact `camelCase` names from the resource's OpenAPI specification. If an optional property is cased wrongly, Ed-Fi API v8 drops it without returning an error. The ODS/API does not check casing, so an integration that works against ODS/API 7.x can lose data on v8. Check property names in your validation step.
 - **Resource URLs drop the `v3` segment.** For example, `/data/v3/ed-fi/students` on the ODS/API is `/api/data/ed-fi/students` on Ed-Fi API v8 (the host sets the prefix).
 - **The token endpoint moves.** Ed-Fi API v8 issues tokens from the Configuration Service at `/connect/token`. The Ed-Fi API keeps an `/oauth/token` endpoint that forwards requests there, so existing clients keep working.
+- **Ed-Fi API v8.1 limits request rates.** The ODS/API has no built-in rate limiting. Ed-Fi API v8.1 limits requests for each host name by default and returns `429 Too Many Requests` with a `Retry-After` header when a client goes over the limit. A sync service, especially during a first full load, should handle `429` responses by waiting for the `Retry-After` time and then retrying.
+
+Some ODS/API features are not available in every v8 release. For example, ownership-based authorization is available in Ed-Fi API v8.1 but not in v8.0. See the [feature availability table](/reference/ed-fi-api/8/whats-new/release-notes#feature-availability) for details.
 
 Because an education agency may host either platform, keep the API base URL and token URL configurable for each customer rather than hard-coding them. For what to collect from each customer (base URL, client key and secret, Data Standard version), see [Getting Started with APIs](./getting-started-with-apis/readme.md#prerequisites).
 
