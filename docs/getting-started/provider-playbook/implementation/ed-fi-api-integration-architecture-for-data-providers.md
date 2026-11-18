@@ -6,7 +6,7 @@ A data provider, such as a student information system (SIS) or an assessment pla
 
 - **Ingestion:** read source data from a read-replica of the application database, optionally using change data capture (CDC), so the integration does not slow down the production system.
 - **Sync service:** a process that runs separately from the main application, often on a workflow orchestrator. It turns source records into Ed-Fi API payloads and validates them before sending.
-- **Sync database:** stores the Ed-Fi API `id` and hashes of each record's natural keys and full payload. Each run compares against it and sends only what changed: POST for new records, PUT for changed records, and DELETE for records removed from the source. Treat a record missing from a run as deleted only when that run read the full source data; an incremental run, such as one driven by CDC, should take deletes from the change data instead. Send POST and PUT requests in resource dependency order and DELETE requests in reverse dependency order.
+- **Sync database:** stores, for each record, the source system's ID, the Ed-Fi API `id`, and hashes of the record's natural keys and full payload. Each run compares against it and sends only what changed: POST for new records, PUT for changed records, and DELETE for deleted records. [The Reconciliation Process](#the-reconciliation-process) gives the steps, including natural key changes and incremental runs.
 
 The same pattern works with ODS/API 7.x and with Ed-Fi API v8. A few client details differ; see [ODS/API 7.x and Ed-Fi API v8](#odsapi-7x-and-ed-fi-api-v8).
 
@@ -111,30 +111,43 @@ We now have our data transformed into the format the Ed-Fi API expects.
 
 ### The Sync Database
 
-Let’s look at what a simplified sync database could look like and how it is used. This design would likely be built out further in a full production Ed-Fi deployment to take into account things like supporting multiple Ed-Fi sync profiles. Imagine a table per Ed-Fi API resource along with three columns per table:
+Let’s look at what a simplified sync database could look like and how it is used. This design would likely be built out further in a full production Ed-Fi deployment to take into account things like supporting multiple Ed-Fi sync profiles. Imagine a table per Ed-Fi API resource along with four columns per table:
 
+- **source\_id**: the ID of the record in the source system, such as the primary key of the enrollment row. It does not change when the record's natural keys change, so it is how the sync service finds a record it has sent before.
 - **edfi\_id**: this is the ID that is returned by the Ed-Fi API when a record is successfully created
 - **natural\_key\_hash**: this is a hash of only the natural keys for the respective Ed-Fi API resource
 - **full\_record\_hash**: this is a hash of the full JSON payload
+
+The example record below shows the last three columns.
 
  ![Sync Database Example Record](https://edfidocs.blob.core.windows.net/$web/img/getting-started/provider-playbook/implementation/image-2024-2-11_19-5-23-5.png)
 
 ### The Reconciliation Process
 
-After the full list of Ed-Fi API records are created, we can perform the following reconciliation process:
+Each run builds a list of Ed-Fi API payloads. A _full run_ builds a payload for every source record. An _incremental run_ builds payloads only for the records that changed since the last run, for example using [change data capture](#change-data-capture). For each payload in the list:
 
-1. Create a hash of the natural keys
-2. Check the sync database using the natural key hash to see if the record has been sent previously
-3. If no record is found for the natural key hash, the record is new: run a POST, then store the returned Ed-Fi API ID and both hashes in the sync database
-4. If a record is found for the natural key hash and the full record has changed, we know we need to run a PUT using the Ed-Fi API ID to update the record
-5. If a record is found for the natural key hash and the full record has **not** changed, we don’t need to do anything
-6. If a record in the sync database was not checked, it is likely that the record was deleted in the source system application database and we should run a DELETE using the Ed-Fi API ID.
+1. Look up the record in the sync database by its `source_id`.
+2. If no row is found, the record is new: run a POST, then store the `source_id`, the returned Ed-Fi API ID, and both hashes.
+3. If a row is found and the natural key hash has not changed:
+   - If the full record hash has changed, run a PUT using the stored Ed-Fi API ID, then store the new full record hash.
+   - If the full record hash has **not** changed, do nothing.
+4. If a row is found and the natural key hash has changed, a natural key has changed. Follow [Natural Key Changes](#natural-key-changes).
 
-Step 6 is safe only when the run builds the full list of records. If the run reads only changed records, for example with [change data capture](#change-data-capture), unchanged records are also missing from the list, and step 6 would delete them. In that case, skip step 6, send a DELETE for each delete reported by the change data, and treat natural-key changes as DELETE of the prior natural key/API ID followed by POST of the record under its new natural key.
+Then send deletes. How depends on the kind of run:
+
+- **Full run:** a sync database row whose record was not in the list was likely deleted in the source system. Run a DELETE using its Ed-Fi API ID, then remove the row.
+- **Incremental run:** do not treat missing records as deleted. Unchanged records are also missing from the list, so this would delete them. Instead, run a DELETE for each delete that the change data reports, using the Ed-Fi API ID stored for that `source_id`, then remove the row.
 
  ![POST PUT DELETE Diagram](https://edfidocs.blob.core.windows.net/$web/img/getting-started/provider-playbook/implementation/image-2024-2-11_19-5-23-6.png)
 
 POST and PUT calls should run in dependency order and DELETE calls should run in reverse dependency order.
+
+#### Natural Key Changes
+
+Some Ed-Fi API resources let a PUT change a record's natural key. To find out which ones, see [Cascading Key Updates on ODS/API Resources](/reference/ed-fi-api/technical-articles/cascading-key-updates-on-ods-api-resources) for ODS/API 7.3, and [Identifying Resources that Support Natural Key Updates](/reference/ed-fi-api/8/client-developers-guide/using-the-online-documentation#identifying-resources-that-support-natural-key-updates) for Ed-Fi API v8.
+
+- **If the resource supports natural key updates,** run a PUT with the new payload using the stored Ed-Fi API ID. The record keeps its Ed-Fi API ID. Store the new natural key hash and full record hash.
+- **If it does not,** run a DELETE using the stored Ed-Fi API ID, then POST the record under its new natural key, and store the new Ed-Fi API ID and both hashes. Other records that reference the old natural key also have changed natural keys, so handle them in the same run: delete them before the record they reference, and POST them again after it.
 
 ## ODS/API 7.x and Ed-Fi API v8
 
