@@ -135,7 +135,7 @@ Each run builds a list of Ed-Fi API payloads. A _full run_ builds a payload for 
 
 Then send deletes. How depends on the kind of run:
 
-- **Full run:** a sync database row whose record was not in the list was likely deleted in the source system. Run a DELETE using its Ed-Fi API ID, then remove the row.
+- **Full run:** a sync database row whose `source_id` was not read from the source system during the run was likely deleted there. Run a DELETE using its Ed-Fi API ID, then remove the row. Compare against all the source IDs read, before validation: a record that failed validation still exists in the source and should not be deleted from the Ed-Fi API.
 - **Incremental run:** do not treat missing records as deleted. Unchanged records are also missing from the list, so this would delete them. Instead, run a DELETE for each delete that the change data reports, using the Ed-Fi API ID stored for that `source_id`, then remove the row.
 
  ![POST PUT DELETE Diagram](https://edfidocs.blob.core.windows.net/$web/img/getting-started/provider-playbook/implementation/image-2024-2-11_19-5-23-6.png)
@@ -146,8 +146,10 @@ POST and PUT calls should run in dependency order and DELETE calls should run in
 
 Some Ed-Fi API resources let a PUT change a record's natural key. To find out which ones, see [Cascading Key Updates on ODS/API Resources](/reference/ed-fi-api/technical-articles/cascading-key-updates-on-ods-api-resources) for ODS/API 7.3, and [Identifying Resources that Support Natural Key Updates](/reference/ed-fi-api/8/client-developers-guide/using-the-online-documentation#identifying-resources-that-support-natural-key-updates) for Ed-Fi API v8.
 
-- **If the resource supports natural key updates,** run a PUT with the new payload using the stored Ed-Fi API ID. The record keeps its Ed-Fi API ID. Store the new natural key hash and full record hash.
+- **If the resource supports natural key updates,** run a PUT with the new payload using the stored Ed-Fi API ID. The record keeps its Ed-Fi API ID. Store the new natural key hash and full record hash. On Ed-Fi API v8, the host must also allow natural key updates for the resource. If a PUT that changes a natural key returns `400 Bad Request`, use DELETE and POST instead.
 - **If it does not,** run a DELETE using the stored Ed-Fi API ID, then POST the record under its new natural key, and store the new Ed-Fi API ID and both hashes. Other records that reference the old natural key also have changed natural keys, so handle them in the same run: delete them before the record they reference, and POST them again after it.
+
+On an incremental run, records that reference the changed record may not appear in the change data, because nothing changed in their own source rows. Add those records to the run, or run a full sync for their resources.
 
 ## ODS/API 7.x and Ed-Fi API v8
 
