@@ -63,7 +63,7 @@ reference those projects directly as shown in this config file under
 Now, to run the build:
 
 ```powershell
-node .\node_modules\@edfi\metaed-console\dist\index.js -c .\your-config.json -a
+node .\node_modules\@edfi\metaed-console\dist\index.js -c .\your-config.json
 ```
 
 The output log will provide details on any errors, and you can check for exit
@@ -71,8 +71,10 @@ code `1`  to fail a build process.
 
 :::warning
 
-The `-a`  flag is for accepting the Ed-Fi license agreement, and it
-is new in MetaEd 4.0.
+Prior to MetaEd 4.10 (January, 2027), this command also required `-a` for accepting the legacy Ed-Fi License
+Agreement. This flag has been removed in version 4.10, as the Ed-Fi Unifying Data Model packages used by
+MetaEd are now available under the open source Apache 2.0 license (also applying retroactively to previous
+package releases).
 
 :::
 
