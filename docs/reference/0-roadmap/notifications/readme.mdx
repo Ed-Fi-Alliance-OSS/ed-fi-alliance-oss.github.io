@@ -2,43 +2,42 @@ import DocCardList from '@theme/DocCardList';
 
 # Support Notifications
 
-## Overview
+## Support Lifecycle Policy
 
 The Ed-Fi Alliance regularly reviews its technology products to assess their
 fitness for current strategic goals and our ability to continue maintaining
-them. Older versions need to move out of support, and sometimes entire product
-lines are retired.
+them. As a result, each product version moves through these support levels over
+time:
 
-- Fully supported products receive new features and compatibility updates /
-  testing with related software, in addition to bug / security fixes and
-  framework / dependency updates.
-- Maintenance mode products receive framework / dependency updates and critical
-  bug / security fixes. They do not receive new features and may be incompatible
-  with newer versions of other software
-- Example: Ed-Fi ODS Admin App is now in maintenance mode as of December, 2023.
-  It will be updated to .NET 8 all all NuGet package dependencies will be
-  brought up to date. But there will be no new features, and it will not become
-  compatible with Ed-Fi ODS/API 7.x.
-- A product line that is still a core part of the Ed-Fi Technology Suite
-  offering may remain fully supported while older versions eventually fall out
-  of support, for example in 2023, we ended support for Ed-Fi ODS/API versions
-  less than 5.3.
-- Or, a product may be moved to the Ed-Fi Community Tools for community support.
-  The Alliance tech team will not formally offer updates, though we remain open
-  to a conversation about bug / security fixes on a case-by-case basis.
+- _Fully supported_: receives new features and compatibility updates and testing
+  with related software, in addition to bug and security fixes and framework /
+  dependency updates.
+- _Maintenance mode_: receives framework / dependency updates and critical bug /
+  security fixes only. No new features, and may be incompatible with newer
+  versions of other software.
+- _Out of support_: no further updates or enhancements. See
+  [What changes when a product or version of a product is out-of-support?](#what-changes-when-a-product-or-version-of-a-product-is-out-of-support)
+
+A product line that is still a core part of the Ed-Fi Technology Suite stays
+fully supported while its older versions move to maintenance mode and then out
+of support. An entire product line may also be retired, or moved to the Ed-Fi
+Community Tools for community support. For Community Tools products, the
+Alliance tech team will not formally offer updates, though we remain open to a
+conversation about bug / security fixes on a case-by-case basis.
+
+When a product or version changes support level, the Alliance may publish a
+specific notice with additional details or guidance for users of the affected
+products and versions. See [Specific Notices](#specific-notices).
 
 ![Diagram of support levels](/img/reference/support-notifications.jpg)
 
-:::tip
+:::info Current support status
 
-Specific notices may be provided for individual products, and those notices may
-provide additional details or guidance for uses of the affected products and
-versions. Specific end-of-support notices are listed in the panel to the right
-of this text.
-
-→ See [Ed-Fi Technology Suite Supported Versions](../supported-versions.md) for
-a detailed view of which products and versions are currently in or out of
-support.
+This page describes the support lifecycle policy, not the current status of any
+product. For which products and versions are currently fully supported, in
+maintenance mode, or out of support, see
+[Ed-Fi Technology Suite Supported Versions](../supported-versions.md), the
+authoritative source for current status.
 
 :::
 
@@ -70,12 +69,10 @@ support.
 
 - Ed-Fi community members will continue to have full access to source code,
   under the existing open source license.
-- All existing documentation on will be retained, though it may be moved to
-  another location in order to ensure that technical documentation remains
-  uncluttered and friendly.
-- Ed-Fi community members will continue to have full access to source code,
-  under the existing open source license.
-- Some of the tooling that the Alliance uses to monitor and maintain this
+- All existing documentation will be retained, though it may be moved to another
+  location in order to ensure that technical documentation remains uncluttered
+  and friendly.
+- Some of the tooling that the Alliance uses to monitor and maintain the
   security of the affected product may be available for others to use; please
   contact the Alliance if this is of interest.
 - If guidance on upgrade to a supported version exists, the Alliance will

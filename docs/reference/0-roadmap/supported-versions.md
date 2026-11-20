@@ -40,7 +40,7 @@ v8?](./api-faq.md#q-should-a-new-ed-fi-implementation-use-odsapi-7x-or-ed-fi-api
 ## Status Definitions
 
 Each table below has a _Status_ column. It uses the support levels defined in
-[Support Notifications](./notifications/readme.mdx):
+[Support Lifecycle Policy](./notifications/readme.mdx#support-lifecycle-policy):
 
 - _Fully supported_: receives new features and compatibility updates and testing
   with related software, in addition to bug and security fixes and framework /
