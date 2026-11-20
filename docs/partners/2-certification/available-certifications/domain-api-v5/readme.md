@@ -1,6 +1,6 @@
 # Ed-Fi Domain API for Data Standard v5 Certification
 
-Certification Name: Ed-Fi Assessment Outcomes API for Suite 3 \
+Certification Name: Ed-Fi Domain API for Data Standard v5 \
 Standards Referenced:\
     [Ed-Fi API Design & Implementation Guidelines v3.1](https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-API-Standards/tree/main/api-guidelines/v3.1) \
 Technical
@@ -17,7 +17,7 @@ Last Revision Date: –
 
 ## Overview and Purpose
 
-The Ed-Fi Domain API for Suite 3 Certification verifies that a source system
+The Ed-Fi Domain API for Data Standard v5 Certification verifies that a source system
 (the provider) can manage a core set of domain data on a target system (the
 consumer) using the RESTful APIs.
 
