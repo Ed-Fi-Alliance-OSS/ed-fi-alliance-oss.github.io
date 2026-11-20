@@ -11,7 +11,7 @@ Before you begin:
   tool developed by the Ed-Fi Alliance and is the recommended way to add new
   fields to the Ed-Fi API. [Download and install
   MetaEd](/reference/metaed/getting-started-with-metaed-ide/installation/)
-  before beginning. MetaEd **4.8 or later** is required for Ed-Fi API v8.0.
+  before beginning. MetaEd **4.9 or later** is required for Ed-Fi API v8.1.
 - This example assumes knowledge of the basic concepts described in [How To:
   Extend the Ed-Fi API - Alternative Education Program
   Example](./how-to-extend-the-ed-fi-ods-api-alternative-education-program-example.md).
@@ -19,9 +19,11 @@ Before you begin:
   run through that example first.
 - This example assumes the Ed-Fi API is already running locally per the
   instructions in [Getting Started](../getting-started/readme.md).
-- The `api-schema-tools` CLI must be available. See [Database
+- The .NET 10 SDK must be installed. The staging script uses the
+  `api-schema-tools` CLI and builds it from your repository checkout if it
+  can't find a build (see Step 5b). See [Database
   Provisioning](../platform-dev-guide/utilities/database-provisioning.md) for
-  installation instructions.
+  more about the CLI.
 - Step 8 verifies the extension with an authenticated API request, which
   requires API client credentials. Step 5a deletes the database volumes, so any
   client you created while following Getting Started is removed along with them.
@@ -93,7 +95,7 @@ Confirm that your MetaEd IDE is targeting the desired data model, e.g.
 **ed-fi-model-5.2**, by following the instructions in [Version
 Targeting](/reference/metaed/ide-user-guide/creating-and-maintaining-your-extension#step-4-add-the-correct-data-model-project).
 
-MetaEd **4.8 or later** is required for Ed-Fi API v8.0 support.
+MetaEd **4.9 or later** is required for Ed-Fi API v8.1 support.
 
 ### Step 2b. Create a New Extension Project
 
@@ -347,7 +349,7 @@ We'll look at how to use the MetaEd output for the Ed-Fi API below.
 
 :::info
 
-For Ed-Fi API v8.0, only `ApiSchema-EXTENSION.json` and (optionally) the XSD
+For Ed-Fi API v8.1, only `ApiSchema-EXTENSION.json` and (optionally) the XSD
 file are needed. The SQL scripts under `Database/` and the interchange schemas
 are used by the legacy ODS / API and are not required for the new Ed-Fi API.
 The XSD file is required only if you load data via the [XML Bulk Load Client
@@ -359,47 +361,68 @@ Utility](../platform-dev-guide/utilities/bulk-load-client-utility.md).
 
 Create a directory (e.g. `my-schemas/`) to hold the core and extension
 schemas. The `prepare-dms-schema.ps1` staging script discovers every file
-matching `ApiSchema*.json` recursively in this directory, so subdirectory
-organization is up to you.
+matching `ApiSchema*.json` recursively in this directory. Put each schema in
+its own subdirectory. The script also stages the `discovery-spec.json` file and
+`xsd/` folder that sit next to each schema, so separate subdirectories keep each
+schema's files with it.
 
 ```text
 my-schemas/
-├─ ApiSchema.json                   <── core schema
-└─ ApiSchema-EXTENSION.json         <── extension (Step 3b output, copied as-is)
+├─ Ed-Fi/
+│  ├─ ApiSchema.json                <── core schema
+│  ├─ discovery-spec.json
+│  └─ xsd/
+├─ TPDM/                            <── Data Standard 5.2 only
+│  └─ ApiSchema.json
+└─ SampleStudentTranscript/
+   └─ ApiSchema-EXTENSION.json      <── extension (Step 3b output, copied as-is)
 ```
 
-### Step 4a. Copy the Core Schema
+### Step 4a. Copy the Core Schemas
 
-After running `bootstrap-local-dms.ps1` at least once, the core schema is staged
-in your repository checkout. Run from the `eng/docker-compose/` directory:
+After running `bootstrap-local-dms.ps1` at least once, the schemas it loaded are
+staged in your repository checkout. For Data Standard 5.2, the default, that's
+the core schema and TPDM. Copy every staged schema, with its discovery
+specification and XSD files, so the Ed-Fi API keeps serving them after you add
+your extension. Run from the `eng/docker-compose/` directory:
 
 ```powershell
-New-Item -ItemType Directory -Force "C:\path\to\my-schemas" | Out-Null
-Copy-Item ".bootstrap\ApiSchema\schemas\Ed-Fi\ApiSchema.json" "C:\path\to\my-schemas\"
+$schemaRoot = "C:\path\to\my-schemas"
+foreach ($project in Get-ChildItem ".bootstrap\ApiSchema\schemas" -Directory) {
+  $target = Join-Path $schemaRoot $project.Name
+  New-Item -ItemType Directory -Force $target | Out-Null
+  Copy-Item (Join-Path $project.FullName "ApiSchema.json") $target
+  $content = Join-Path ".bootstrap\ApiSchema\content" $project.Name
+  if (Test-Path $content) {
+    Copy-Item (Join-Path $content "*") $target -Recurse
+  }
+}
 ```
 
-Alternatively, download the `EdFi.DataStandard52.ApiSchema` package; see
-[Package
-Releases](../getting-started/package-releases.md#ed-fi-api-v800-schema-packages)
-for
-the package link and version. A `.nupkg` is a ZIP archive, and the core schema
-is inside it at `contentFiles/any/any/ApiSchema/ApiSchema.json`:
+Alternatively, download the `EdFi.DataStandard52.ApiSchema` package (and the
+TPDM package, if you use TPDM); see [Package
+Releases](../getting-started/package-releases.md#ed-fi-api-v810-schema-packages)
+for the package links and versions. A `.nupkg` is a ZIP archive. Copy the whole
+`contentFiles/any/any/ApiSchema/` folder from each package into its own
+subdirectory:
 
 ```powershell
 $package = Get-Item "edfi.datastandard52.apischema.*.nupkg"
 Expand-Archive $package.FullName -DestinationPath "./apischema-package" -Force
-Copy-Item "./apischema-package/contentFiles/any/any/ApiSchema/ApiSchema.json" "C:\path\to\my-schemas\"
+New-Item -ItemType Directory -Force "C:\path\to\my-schemas\Ed-Fi" | Out-Null
+Copy-Item "./apischema-package/contentFiles/any/any/ApiSchema/*" "C:\path\to\my-schemas\Ed-Fi\" -Recurse
 ```
 
 ### Step 4b. Copy the Extension Schema
 
 Copy `ApiSchema-EXTENSION.json` from
 `MetaEdOutput/SampleStudentTranscript/ApiSchema/` (your Step 3b output) into
-the same directory. The filename already follows the `ApiSchema-*.json`
+its own subdirectory. The filename already follows the `ApiSchema-*.json`
 pattern that `prepare-dms-schema.ps1` discovers, so no rename is necessary:
 
 ```powershell
-Copy-Item "C:\path\to\StudentTranscript\MetaEdOutput\SampleStudentTranscript\ApiSchema\ApiSchema-EXTENSION.json" "C:\path\to\my-schemas\"
+New-Item -ItemType Directory -Force "C:\path\to\my-schemas\SampleStudentTranscript" | Out-Null
+Copy-Item "C:\path\to\StudentTranscript\MetaEdOutput\SampleStudentTranscript\ApiSchema\ApiSchema-EXTENSION.json" "C:\path\to\my-schemas\SampleStudentTranscript\"
 ```
 
 ## Step 5. Stage the Extension Schema
@@ -413,10 +436,10 @@ extension.
 
 ### Step 5a. Reset the Local Stack
 
-The Ed-Fi API loads the schema **once at startup** into a fresh database, so
-adding an extension means provisioning a new database rather than mutating the
-running one. Stop the stack, delete its database volumes, and clear any existing
-`.bootstrap/` workspace:
+When the stack starts, bootstrap creates the data store's tables from the staged
+schema, so adding an extension means provisioning a new database rather than
+changing the running one. Stop the stack, delete its database volumes, and clear
+any existing `.bootstrap/` workspace:
 
 ```powershell
 ./bootstrap-local-dms.ps1 -d -v
@@ -425,20 +448,21 @@ running one. Stop the stack, delete its database volumes, and clear any existing
 :::caution
 
 This reset is required, not optional. Following [Getting
-Started](../getting-started/readme.md) (a prerequisite for this guide) leaves a
-core-only `.bootstrap/` workspace staged; staging your extension on top of it
-makes `prepare-dms-schema.ps1` fail with an error like "Existing staged
-bootstrap workspace differs from requested inputs... effective schema hash
-mismatch." The `-d -v` teardown removes that workspace and the populated
-database volumes so you stage from a clean state.
+Started](../getting-started/readme.md) (a prerequisite for this guide) leaves
+the default schemas staged in `.bootstrap/` (core and TPDM for Data Standard
+5.2). Staging your extension on top of them makes `prepare-dms-schema.ps1` fail
+with an error like "Existing staged bootstrap workspace differs from requested
+inputs... effective schema hash mismatch." The `-d -v` teardown removes that
+workspace and the populated database volumes so you stage from a clean state.
 
 :::
 
-### Step 5b. Build the Schema Tool
+### Step 5b. Build the Schema Tool (Optional)
 
 `prepare-dms-schema.ps1` uses `api-schema-tools` to hash the combined schema.
-Build it once, the same way the [Getting
-Started](../getting-started/readme.md) flow does:
+If it can't find a build, it publishes the tool into `.bootstrap/tools/`. The
+Step 5a reset deletes that folder, so the tool is rebuilt after every reset. To
+avoid that, build it once yourself:
 
 ```powershell
 dotnet build ..\..\src\dms\clis\EdFi.DataManagementService.SchemaTools
@@ -446,7 +470,7 @@ dotnet build ..\..\src\dms\clis\EdFi.DataManagementService.SchemaTools
 
 `prepare-dms-schema.ps1` auto-discovers the build output under the project's
 `bin/` directory, so no `-SchemaToolPath` is needed. That output lives outside
-`.bootstrap/`, so it survives the Step 5a reset; you only need to build it once.
+`.bootstrap/`, so it survives the Step 5a reset.
 
 ### Step 5c. Stage the Schema
 
@@ -454,9 +478,9 @@ dotnet build ..\..\src\dms\clis\EdFi.DataManagementService.SchemaTools
 ./prepare-dms-schema.ps1 -ApiSchemaPath "C:\path\to\my-schemas"
 ```
 
-`prepare-dms-schema.ps1` discovers both `ApiSchema*.json` files in your
-directory, identifies the core (via `isExtensionProject: false`) and your
-extension, computes the combined schema hash, and writes the staged workspace
+`prepare-dms-schema.ps1` discovers the `ApiSchema*.json` files in your
+directory, identifies the core (via `isExtensionProject: false`) and the
+extensions, computes the combined schema hash, and writes the staged workspace
 to `.bootstrap/ApiSchema/`.
 
 :::info
@@ -467,9 +491,11 @@ checkout; after this step, your original directory isn't referenced again.
 Writing the staged workspace also creates `.bootstrap/bootstrap-manifest.json`,
 which puts the stack into "bootstrap mode": the next start automatically adds a
 compose override that mounts `.bootstrap/ApiSchema` read-only into the DMS
-container at `/app/ApiSchema`, matching the `AppSettings:ApiSchemaPath` and
-`AppSettings:UseApiSchemaPath` values already defaulted in `.env`. The stack you
-stopped in Step 5a picks up the staged schema when you start it again in Step 6.
+container at `/app/ApiSchema`. The start script also sets
+`USE_API_SCHEMA_PATH=true`, `API_SCHEMA_PATH=/app/ApiSchema`, and an empty
+`SCHEMA_PACKAGES` itself, so the container loads only your staged schemas and
+you don't need to change `.env`. The stack you stopped in Step 5a picks up the
+staged schema when you start it again in Step 6.
 
 :::
 
@@ -487,9 +513,9 @@ situations:
   `SISVendor`) already covers them. No claims work is needed for it at all.
 
 Create a directory (e.g. `my-claims/`) containing a file named
-`001-sample-student-transcript-claimset.json`:
+`001-sample-student-transcript-claims.json`:
 
-```json title="001-sample-student-transcript-claimset.json"
+```json title="001-sample-student-transcript-claims.json"
 {
   "name": "SampleStudentTranscriptClaims",
   "resourceClaims": [
@@ -611,13 +637,14 @@ built-in claims plus your fragment:
 
 :::note
 
-Both the schema and the claims are loaded **once at startup**, and only when
-their respective databases are empty; there is no hot-reload for either. To
-apply a later change to the extension schema or the claims fragment, repeat the
-cycle **in order**: tear down with `./bootstrap-local-dms.ps1 -d -v` (which wipes
-the databases **and** clears the staged workspace), re-run
-`prepare-dms-schema.ps1` / `prepare-dms-claims.ps1` to stage the updated files,
-then start again with `./bootstrap-local-dms.ps1`.
+The schema takes effect when bootstrap creates the data store's tables, and the
+claims load only into an empty Configuration Service database. The default local
+stack can't reload either one while it runs. To apply a later change to the
+extension schema or the claims fragment, repeat the cycle **in order**: tear
+down with `./bootstrap-local-dms.ps1 -d -v` (which wipes the databases **and**
+clears the staged workspace), re-run `prepare-dms-schema.ps1` /
+`prepare-dms-claims.ps1` to stage the updated files, then start again with
+`./bootstrap-local-dms.ps1`.
 
 :::
 
@@ -675,7 +702,11 @@ Write-Host "Key:    $($cred.Key)"
 Write-Host "Secret: $($cred.Secret)"
 ```
 
-See [Getting Started - Configure a Data
+This client uses the `EdFiSandbox` claim set, the default for
+`Get-SmokeTestCredential`. The fragment grants `EdFiSandbox` access to
+`postSecondaryOrganizations` directly, and `EdFiSandbox` inherits access to the
+descriptors and `studentAcademicRecords` in the same way as `SISVendor`. See
+[Getting Started - Configure a Data
 Store](../getting-started/configure-data-store.md) for details, including how to
 associate the client with multiple data stores.
 
@@ -685,12 +716,12 @@ Make an authenticated request to the new resource, using the
 `<api-client-key>`/`<api-client-secret>` from Step 8a:
 
 ```powershell
+$auth = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes("<api-client-key>:<api-client-secret>"))
 $apiToken = Invoke-RestMethod -Method Post -Uri "http://localhost:8081/connect/token" `
+  -Headers @{ "Authorization" = "Basic $auth" } `
   -ContentType "application/x-www-form-urlencoded" `
   -Body @{
-    "grant_type"    = "client_credentials"
-    "client_id"     = "<api-client-key>"
-    "client_secret" = "<api-client-secret>"
+    "grant_type" = "client_credentials"
   }
 
 Invoke-RestMethod `

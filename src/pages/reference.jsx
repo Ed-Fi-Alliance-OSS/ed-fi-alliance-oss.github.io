@@ -19,7 +19,11 @@ function Main() {
               designed to empower educators and administrators by providing a
               unified view of educational data. Explore our suite to learn how
               we can help you streamline data management and enhance educational
-              outcomes.
+              outcomes. For a summary of what the suite includes today, see the{' '}
+              <Link to="/reference/technology-suite">
+                Ed-Fi Technology Suite Overview
+              </Link>
+              .
             </p>
             <h2>Ed-Fi Technology Roadmap</h2>
             <p>

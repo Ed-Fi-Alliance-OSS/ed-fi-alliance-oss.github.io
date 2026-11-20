@@ -17,7 +17,9 @@ some detail of the data models may differ.
 This tutorial is for learning. The version it uses is not a recommendation for
 your own implementation; see
 [Supported Versions](/reference/roadmap/supported-versions) for the versions
-that are currently supported, including Ed-Fi API v8.
+that are currently supported, including Ed-Fi API v8. For the prerequisites
+and help choosing a platform and version, see
+[Getting Started with APIs](/getting-started/provider-playbook/implementation/getting-started-with-apis/).
 
 :::note
 
