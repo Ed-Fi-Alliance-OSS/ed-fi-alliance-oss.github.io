@@ -8,13 +8,10 @@ import TabItem from '@theme/TabItem';
 
 # How To: Set Up Kafka CDC Streaming
 
-This walkthrough uses change data capture (CDC) to send Ed-Fi API resource data
-to Kafka. It starts a local environment, creates a synthetic academic subject
-descriptor, and observes its creation, update, and deletion in Kafka UI. It uses
-Data Standard 5.2 and the self-contained identity provider. Ed-Fi API also
-supports Data Standard 6.1; this example uses 5.2 throughout.
-
-Read
+Use change data capture (CDC) to observe a synthetic academic subject
+descriptor's creation, update, and deletion in Kafka UI. This evaluation uses
+the self-contained identity provider and Data Standard 5.2. The API also
+supports 6.1. See
 [Event Streaming with Kafka](../platform-dev-guide/features/event-streaming-kafka-cdc.md)
 for the message contract and consumer responsibilities.
 
@@ -47,20 +44,13 @@ Use a Linux host with these tools available to the same user:
 - The .NET 10 SDK, Git, and internet access to the image registries and Ed-Fi
   package feed. Bootstrap builds its matching command-line tools from source.
 
-Reserve these loopback ports before starting:
-
-| Service                 | Host port       |
-| ----------------------- | --------------- |
-| Ed-Fi API               | `8080`          |
-| Configuration Service   | `8081`          |
-| Kafka Connect           | `8083`          |
-| Kafka UI                | `8088`          |
-| Kafka broker            | `9092`          |
-| Worker metrics          | `9404`          |
-| PostgreSQL / SQL Server | `5435` / `1435` |
+Reserve loopback ports `8080` (Ed-Fi API), `8081` (Configuration Service),
+`8083` (Kafka Connect), `8088` (Kafka UI), `9092` (broker), and `9404` (worker
+metrics). Also reserve `5435` for PostgreSQL or `1435` for SQL Server.
 
 Clone the release and enter PowerShell. Run all subsequent commands from the
 repository root in the same PowerShell session, unless a step says otherwise.
+Expand and run each setup block in order.
 
 ```bash
 git clone --depth 1 --branch v8.1.0 https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service.git
@@ -81,6 +71,9 @@ The environment and settings files contain credentials. Keep them out of source
 control, shared transcripts, and screenshots. These commands refuse to replace
 an existing environment file, protect the directories, and assign unique local
 image names so another checkout's cached application images are not reused.
+
+<details>
+<summary>Create the private environment file</summary>
 
 ```powershell
 $ErrorActionPreference = 'Stop'
@@ -115,6 +108,8 @@ foreach ($name in $values.Keys) {
 }
 Set-Content -LiteralPath $environmentFile -Value $contents
 ```
+
+</details>
 
 Leave the example's ports, single-tenant settings, empty route qualifiers, and
 self-contained identity provider unchanged. The worker uses a 1 GiB heap for
@@ -247,6 +242,9 @@ Load the complete API settings and fill in this environment's Configuration
 Service credentials. The API keeps read acceleration disabled while the cache
 refresh process supplies streaming.
 
+<details>
+<summary>Load the API settings and select the cache target</summary>
+
 ```powershell
 Import-Module ./eng/docker-compose/env-utility.psm1 -DisableNameChecking
 $envValues = ReadValuesFromEnvFile $environmentFile
@@ -267,6 +265,8 @@ $settings.AppSettings.MultiTenancy = $false
 $settings.AppSettings.RouteQualifierSegments = ''
 $settings.DataManagement.DocumentCache.Targets = @(@{ DataStoreId = 1 })
 ```
+
+</details>
 
 Prepare the administrator's host connection string and the connector's container
 connection settings. Using a connection-string builder preserves special
@@ -320,6 +320,9 @@ inside the worker; PowerShell must not expand it. The following settings are
 inputs to bootstrap, which fills in the staged schema paths before using them.
 Do not pass this initial file directly to `api-schema-tools`.
 
+<details>
+<summary>Add the CDC settings and save the settings file</summary>
+
 ```powershell
 if (Test-Path $settingsPath) { throw 'Retain existing settings; do not overwrite them.' }
 $settings.Cdc = @{
@@ -359,12 +362,11 @@ $settings | ConvertTo-Json -Depth 64 | Set-Content -LiteralPath $settingsPath
 chmod 600 $settingsPath
 ```
 
-The example allows ten minutes for bounded CDC waits and three minutes per
-external call. It sets a 10,000,000-byte record ceiling and a five-second
-connector lag threshold. These are evaluation settings, not performance
-qualification. The host addresses are reachable from SchemaTools; the
-`dms-postgresql`, `dms-mssql`, and `dms-kafka1` addresses are reachable inside
-Docker. Keep these two kinds of addresses distinct.
+</details>
+
+SchemaTools uses host addresses. The worker uses Docker service names. See
+[CDC settings](../platform-dev-guide/configuration/configuration-details.mdx#event-streaming-with-kafka)
+for the timing, lag, and record-size limits used in this evaluation.
 
 ## Start the API and Streaming
 
@@ -444,26 +446,19 @@ $retainedState = Read-Host 'Exact state path from Inspect CDC'
 $statusExitCode = $LASTEXITCODE
 ```
 
-Status can record incidents and stop connectors if it detects unsafe conditions.
-Keep the JSON result on standard output and the diagnostics on standard error
-private.
+Status can record incidents and stop connectors. Keep the JSON on standard
+output and diagnostics on standard error private. Exit `0` with
+`data.aggregate.readiness: "Ready"` confirms readiness at the time of the check.
+On exit `1` with projection `Unknown`, an explicit `RuntimeNotObserved` means
+the CLI could not observe the API's cache-refresh process. If the only reason
+given is `StatusObservationUnavailable` or Projection / `Unavailable`, the cause
+is unknown. Check other components and verify message delivery separately.
 
-- Exit `0` with `data.aggregate.readiness: "Ready"` means the checks passed for
-  this observation.
-- Exit `1` with projection `Unknown` leaves aggregate readiness unconfirmed. If
-  the diagnostic explicitly says `RuntimeNotObserved`, the standalone check
-  lacks information about the API's cache-refresh process. If you see only
-  `StatusObservationUnavailable` and Projection / `Unavailable`, the reason is
-  unknown. Check the other components and verify message delivery separately.
-- For a failed component or timeout, inspect its diagnostics and use the
-  [troubleshooting checks](#troubleshooting) before the next write. For invalid
-  input, cancellation, or an incident, use the
-  [full exit-code table and incident results](../platform-dev-guide/utilities/database-provisioning.md#check-cdc-status).
-
-The local profile reports `deploymentProfile.aclIsolationProven: false` because
-Kafka authorization is disabled. Initial bootstrap success authorizes starting
-the API; a later status result is a separate observation. Successful delivery
-below demonstrates the evaluation, not current aggregate readiness.
+Bootstrap authorizes API startup. The local profile reports
+`deploymentProfile.aclIsolationProven: false` because Kafka authorization is
+disabled. For a component failure or timeout, [troubleshoot](#troubleshooting)
+before the next write. For invalid input, cancellation, or an incident, see the
+[full exit-code table and incident results](../platform-dev-guide/utilities/database-provisioning.md#check-cdc-status).
 
 ## Create and Observe a Resource
 

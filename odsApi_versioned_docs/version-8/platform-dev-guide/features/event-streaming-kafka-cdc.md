@@ -254,16 +254,10 @@ records needed to rebuild the copy.
 
 ### Accept the Configured Record Size
 
-Set both `max.partition.fetch.bytes` and `fetch.max.bytes` to at least the
-deployment's `Cdc.MaxRecordBytes`, and provide enough receive and
-deserialization memory for a record of that size. The walkthrough uses
-`10000000` bytes. This is an operational ceiling, not the largest possible
-Ed-Fi resource; the stream envelope and resource links add bytes beyond an
-API request body.
-
-An oversized record stops the connector task. To raise the ceiling, stop
-publication and coordinate the consumer, broker, topic, and producer settings.
-See [CDC record size](../configuration/configuration-details.mdx#cdc-record-size).
+Set both `max.partition.fetch.bytes` and `fetch.max.bytes` to at least
+`Cdc.MaxRecordBytes`. Allow enough memory to receive and deserialize a record
+of that size. For the walkthrough ceiling, oversized records, and the steps
+to raise the limit, see [CDC record size](../configuration/configuration-details.mdx#cdc-record-size).
 
 ### Security
 
