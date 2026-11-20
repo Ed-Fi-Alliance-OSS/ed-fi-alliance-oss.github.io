@@ -88,7 +88,7 @@ The Ed-Fi Alliance is recognizing MTSS as a distinct domain certification to ens
 
 By formalizing MTSS certification, Ed-Fi helps districts and states leverage intervention data for better instructional decisions and student outcomes. For vendors, it provides clear standards and a streamlined path to demonstrate interoperability, data quality, and error handling in MTSS products—making it easier to meet district and state requirements and stand out in the market. This move responds to market demand and field experience, driving consistency and innovation in how schools support students through multi-tiered systems.
 
-Review the certification requirements here.
+Review the [Ed-Fi Intervention API for Data Standard v5 Certification](/docs/partners/2-certification/available-certifications/intervention-v5/readme.md) requirements (draft, under community review).
 
 ## All Certifications: include optional registry entry to link security and data privacy validations
 
