@@ -92,24 +92,18 @@ after activation, set `DMS_DOCUMENTCACHE_READ_ACCELERATION_ENABLED=true` in
 
 ### Optional Kafka Streaming
 
-The `kafka-cdc.compose.yml` file extends the broker in `kafka-broker.compose.yml`
-and defines the Kafka Connect worker. Bootstrap starts the worker after its
-setup checks. With `-EnableKafkaUI`, it also loads `kafka-ui.compose.yml`.
-All four published ports bind to loopback.
+The [Kafka walkthrough](../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx#prepare-private-configuration)
+sets up these values for a local evaluation. The four ports are accessible
+from the host's loopback interface.
 
-| Variable | Evaluation value and source | Purpose |
+| Variable | Walkthrough value | Purpose |
 | --- | --- | --- |
-| `KAFKA_PORT` | `9092` from `.env.example` | Broker port for host-side administration. |
-| `CONNECT_SOURCE_PORT` | `8083` from `kafka-cdc.compose.yml` | Kafka Connect REST API on the host. |
-| `KAFKA_UI_PORT` | `8088` from `.env.example` | Kafka UI in the host browser. |
-| `CDC_METRICS_PORT` | `9404` from `kafka-cdc.compose.yml` | Worker metrics endpoint used by the status command. |
-| `CDC_DATABASE_PASSWORD` | Generated in the walkthrough | Password for the restricted `cdc_reader` database login. The worker resolves it when connecting. |
-| `CDC_WORKER_HEAP_MIB` | `1024` set by the walkthrough | Worker heap in MiB. The matching CDC setting, `Worker.HeapBytes`, is `1073741824` bytes. |
-
-Use [Prepare Private Configuration](../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx#prepare-private-configuration)
-to generate the credentials, select the engine, and assign unique local
-image names for the API and Configuration Service. Keep the published ports
-and heap size consistent with the [CDC settings](../platform-dev-guide/configuration/configuration-details.mdx#event-streaming-with-kafka).
+| `KAFKA_PORT` | `9092` | Kafka broker port on the host. |
+| `CONNECT_SOURCE_PORT` | `8083` | Kafka Connect REST API. |
+| `KAFKA_UI_PORT` | `8088` | Kafka UI in your browser. |
+| `CDC_METRICS_PORT` | `9404` | Kafka Connect metrics used by the status check. |
+| `CDC_DATABASE_PASSWORD` | Generated during setup | Password for the restricted `cdc_reader` database login. |
+| `CDC_WORKER_HEAP_MIB` | `1024` | Memory for the Kafka Connect worker. Match `Worker.HeapBytes` in the [CDC settings](../platform-dev-guide/configuration/configuration-details.mdx#event-streaming-with-kafka). |
 
 ### PostgreSQL
 

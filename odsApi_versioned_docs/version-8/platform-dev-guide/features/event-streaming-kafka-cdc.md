@@ -1,167 +1,60 @@
 # Event Streaming with Kafka
 
-Ed-Fi API v8 can use change data capture (CDC) to send resource data to
-Apache Kafka so downstream systems can maintain a copy of a data store
-without polling the API. Each data store has
-one _topic_, a named stream containing all its resource types. A system reading
-the topic (a _consumer_) receives the latest available state of each resource
-and a message when a resource is deleted. Several edits can reach Kafka as one
-update, so the stream is unsuitable for auditing every change.
-[Changed Record Queries](./changed-record-queries.md) remain available for
-clients that poll the API.
+Ed-Fi API v8 can send resource changes to Apache Kafka so another system can
+keep a copy of the data without polling the API. Each data store publishes to
+one _topic_, a named stream of messages. Creates and updates send the full
+resource. A deletion sends the resource ID with a null value.
 
-## Before You Start
+The API uses change data capture (CDC) to publish changes in the background.
+Several edits can reach Kafka as one update, so the stream cannot serve as an
+audit log. Clients that poll the API can use
+[Changed Record Queries](./changed-record-queries.md).
 
-Use the supplied setup only for a **local evaluation with synthetic data**.
-Anyone with access to the topic can read every resource it carries, including
-sensitive student data. The setup runs one Kafka broker and one Kafka Connect
-worker with Kafka authorization disabled.
+## Before You Start {#setup}
 
-| Your deployment | Where to start |
+The supplied setup is for **local evaluation with synthetic data only**.
+Kafka authorization is turned off. Anyone who can read the topic can see
+every resource in the data store, regardless of API client permissions or
+readable profiles. Restrict access to Kafka Connect, its internal topics, and
+the deployment's settings and logs.
+
+| Your situation | Where to start |
 | --- | --- |
-| You want to evaluate Kafka for the first time | [Turn it on](#setup) before creating the data store or starting API writers. |
-| You already have a data store created without Kafka | Use a [fresh, isolated environment](../../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx#prepare-the-host). An existing store is ineligible for initial setup, even if DocumentCache is active. |
-| You have a retained Kafka evaluation | [Check status](#check-status) while it is running. If you stopped it, [resume the same deployment](../../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx#stop-and-resume-the-evaluation). |
-| You are writing a consumer | Start with the [topic, message, and replay contract](#consumer-reference). |
-
-## Turn It On {#setup}
-
-Streaming is off by default. Choose this workflow **before creating the data
-store**. It requires a fresh Configuration Service database and creates the
-API database itself. A database created with `source-history-only` or with
-[DocumentCache](./document-cache.md) activated independently is ineligible.
-Serving reads from the cache is optional.
-
-1. [Prepare the host](../../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx#prepare-the-host)
-   and its private configuration. Choose one database engine and keep API
-   writers and seed loaders stopped until bootstrap succeeds.
-2. [Start the database and Configuration Service](../../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx#start-the-database-and-configuration-service),
-   then [prepare the restricted connector login](../../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx#prepare-the-connector-login).
-   PostgreSQL uses logical replication. SQL Server uses SQL Server Agent to run capture jobs.
-3. [Prepare the API and CDC settings](../../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx#prepare-the-complete-api-and-cdc-settings).
-   Select the same data store for DocumentCache and CDC, and supply the
-   connection addresses for both the host and the worker.
-4. [Run managed bootstrap](../../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx#start-the-api-and-streaming)
-   with `-EnableKafkaCdc` and `-SeparateConfigDatabase`. It registers and
-   provisions the store, activates the cache, and sets up capture before the
-   API starts. Save the settings and state paths printed in `Inspect CDC`.
-   You will need that exact pair to check this deployment.
+| You want to try streaming | Follow [Stream Ed-Fi API Changes to Kafka](../../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx) **before creating the database**. The setup script registers the data store and activates [DocumentCache](./document-cache.md). Accelerated API reads are optional. |
+| You already have a data store | Use a separate, fresh environment for the evaluation. Initial Kafka setup requires a new database even if the existing store already uses DocumentCache. |
+| You stopped an evaluation | [Resume the same evaluation](../../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx#stop-and-resume-the-evaluation) with its original files and Docker volumes. |
+| You are building a system that reads from Kafka (a _consumer_) | Start with [Read the Messages](#consumer-reference). |
 
 ## Check Status
 
-From the root of the release checkout, run the status check in PowerShell
-using the two paths from bootstrap's `Inspect CDC` line. Run it against the
-retained, running deployment. If it detects lost source or connector offset
-history, the check can record an incident and stop the affected connector.
+Use the settings and state paths printed under `Inspect CDC` at startup to
+[check streaming status](../utilities/database-provisioning.md#check-cdc-status).
+`Ready` means all checks passed at that moment. If the cache status
+(`projection`) is `Unknown`, check the reported reason and the other results.
+Seeing a test resource in Kafka confirms that message arrived, even if the
+tool cannot confirm overall readiness.
 
-```powershell
-Import-Module ./eng/docker-compose/bootstrap-schema-tool.psm1
-$schemaTool = Resolve-DmsSchemaTool
-$retainedSettings = Read-Host 'Exact settings path from Inspect CDC'
-$retainedState = Read-Host 'Exact state path from Inspect CDC'
-& $schemaTool cdc status --settings $retainedSettings --state-path $retainedState --json
-$statusExitCode = $LASTEXITCODE
-```
+## Read the Messages {#consumer-reference}
 
-| Result | What to check |
-| --- | --- |
-| Exit `0`, `data.aggregate.readiness` is `Ready` | All required checks passed for this observation. |
-| Exit `1`, projection is `Unknown` | Inspect the target diagnostics. An explicit `RuntimeNotObserved` means the CLI could not observe the API's cache-refresh process. A Projection / `Unavailable` diagnostic alone leaves the cause unknown. Check the other components and verify delivery separately. |
-| Exit `1`, a component failed | Inspect that component's diagnostics and any reported incident or connector stop. Follow the [troubleshooting steps](../../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx#troubleshooting) before retrying. |
+The local walkthrough uses the topic `edfi.instance.datastore-1-g1.documents.v1`.
+Each message uses the resource's API `id` as its key, written as lowercase
+UUID text. Kafka divides a topic into ordered groups of messages called
+_partitions_. All messages for one resource go to the same partition.
 
-Seeing the test resource in Kafka confirms delivery. Readiness can still be
-`NotReady`. For all exit codes and incident results, see the
-[CDC status command reference](../utilities/database-provisioning.md#check-cdc-status).
-
-## When Something Goes Wrong
-
-- **A message is missing.** Confirm the API write succeeded and Kafka UI shows
-  the correct topic and resource ID. If the message is still missing after
-  120 seconds, check the connector and its task using the
-  [troubleshooting steps](../../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx#troubleshooting).
-- **The environment fails to restart.** Keep the database and Kafka volumes,
-  settings, and saved state together. Use the walkthrough's
-  [stop and resume procedure](../../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx#stop-and-resume-the-evaluation).
-  If state is missing or the source database was replaced, stop and preserve
-  what remains and follow the [missing state and source mismatch procedure](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/cdc-documentation/operations-runbook.md#unsupported-provenance).
-- **The connector task rejected an oversized record.** Check the task error
-  and the [configured record size](../configuration/configuration-details.mdx#cdc-record-size)
-  before changing a limit or restarting the task.
-- **Sensitive data reached Kafka.** Stop publication, restrict access, and
-  follow your incident process. Deleting the resource can still leave copies
-  in retained records, backups, and downstream systems. Follow the
-  [disclosure response procedure](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/cdc-documentation/operations-runbook.md#sensitive-data-response).
-
-For persistent capture delays or retiring an old topic, use the
-[CDC operations runbook](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/cdc-documentation/operations-runbook.md#procedure-navigation).
-
-## Consumer Reference
-
-### How Data Reaches Kafka
-
-A background process prepares full resource JSON in DocumentCache. Debezium
-runs inside Kafka Connect. It reads changes to the cached resources and
-captures deletions from the database. The Ed-Fi `DocumentState` transform
-converts these changes into the messages consumers receive.
+Kafka Connect reads creates and updates from DocumentCache and deletions from
+the resource tables. Rebuilding the cache alone does not send deletions.
 
 ```mermaid
 flowchart TB
-    API[Ed-Fi API writes] --> DB[Relational resource tables]
-    DB --> Refresh[Background cache refresh]
-    Refresh --> Cache[DocumentCache: full resource JSON]
-    Cache -->|Create, update, snapshot| Capture[Debezium in Kafka Connect]
-    DB -->|Resource deletions| Capture
-    Heartbeat[Database progress signals] --> Capture
-    Capture --> Transform[DocumentState: format and route records]
-    Transform -->|Resource JSON or null deletion| Public[Public data-store topic]
-    Transform -->|Progress only| Internal[Internal progress topic]
-    Public --> Consumer[Consumer's local resource state]
+    Cache[DocumentCache] -->|Full resource| Connector[Kafka Connect]
+    DB[Resource deletions in the database] -->|Resource ID| Connector
+    Connector --> Topic[Kafka topic for the data store]
 ```
 
-Cached creates, updates, and snapshots produce _upserts_, messages that add or
-replace a resource. Deleting the resource from the database produces a
-_tombstone_, a Kafka record with a key and a null value. Rebuilding the cache
-alone does not publish resource deletions. Progress signals go to an internal
-topic.
+### Creates and Updates
 
-### Topics and Keys
-
-A public topic has this name:
-
-```text
-<topic-prefix>.instance.<instance-key>-g<generation>.documents.v1
-```
-
-| Part | Meaning |
-| --- | --- |
-| `topic-prefix` | Identifies the deployment and environment. It must be unique among deployments sharing a broker. A short prefix is suitable only for an isolated local broker. |
-| `instance-key` | A stable ID for the data store within that prefix. Choose a value that reveals nothing about the district or tenant. Data-store IDs can repeat across deployments. |
-| `generation` | A number identifying the pairing of a source database with a topic. It starts at `1`. The supplied setup does not support moving consumers to a new generation. |
-| `documents.v1` | Identifies the public document-state contract. |
-
-For example, the walkthrough creates
-`edfi.instance.datastore-1-g1.documents.v1`. A deployment sharing a Kafka
-cluster would need a deployment-specific prefix, such as
-`edfi.deployment-a.prod`.
-
-The key is the API resource's `id`, encoded as lowercase UUID text:
-
-```text
-f81d4fae-7dec-11d0-a765-00a0c91e6bf6
-```
-
-Creates, updates, and deletes use the same key, without JSON quotes or a schema
-wrapper. Kafka divides a topic into ordered sequences called _partitions_. The
-number of partitions and the mapping of keys to partitions stay fixed for the
-life of the topic. Consumers can rely on message order for each resource only.
-
-### Message Values
-
-An upsert is a UTF-8 JSON object containing metadata and the full resource.
-There is no `schema`/`payload` wrapper, Avro encoding, or Schema Registry
-dependency. The `document` field is an object, not an escaped JSON string.
-
-This synthetic example shows an academic subject descriptor:
+A create or update sends a UTF-8 JSON object called an _upsert_. For example,
+a consumer receives this value for an academic subject descriptor:
 
 ```json
 {
@@ -185,91 +78,81 @@ This synthetic example shows an academic subject descriptor:
 }
 ```
 
-| Field | JSON type | Meaning |
-| --- | --- | --- |
-| `contractVersion` | Number | `1`, identifying this envelope contract. |
-| `documentUuid` | String | Public resource ID, identical to the Kafka key and `document.id`. |
-| `projectName` | String | Data model project, such as `Ed-Fi`. |
-| `resourceName` | String | Resource type, such as `Student` or `AcademicSubjectDescriptor`. |
-| `resourceVersion` | String | Version of the resource's data model, such as `5.2.0`; not the API software version. |
-| `contentVersion` | Number | Signed 64-bit integer used to compare non-null versions of this resource. Preserve its integer precision. |
-| `lastModifiedAt` | String | UTC last-modified time at whole-second precision, in `yyyy-MM-ddTHH:mm:ssZ` format; identical to `document._lastModifiedDate`. |
-| `documentCreatedAt` | String | UTC creation time in the same format. Updates preserve this value. It is not an ordering field. |
-| `document` | Object | Full resource JSON, including `id`, `_etag`, and `_lastModifiedDate`. |
+| Field | How to use it |
+| --- | --- |
+| `contractVersion` | Identifies the message format. This format is version `1`. |
+| `documentUuid` | Matches the Kafka key and `document.id`. |
+| `projectName`, `resourceName`, `resourceVersion` | Identify the data model project, resource type, and version of its data model. |
+| `contentVersion` | Compare versions of the same resource. Preserve the full precision of this signed 64-bit integer. |
+| `lastModifiedAt`, `documentCreatedAt` | Give the modification and creation times in UTC to the second. `lastModifiedAt` matches `document._lastModifiedDate`. The creation time stays the same across updates. |
+| `document` | Contains the full resource as a JSON object. Treat its `_etag` as opaque. A filtered API response can have a different ETag. |
 
-Treat `document._etag` as opaque. It describes the stream representation and
-is not necessarily the validator for a differently filtered or formatted API
-response. Use `contentVersion`, rather than timestamps or the ETag, to compare
-upserts. Kafka record timestamps are outside this public contract.
+Read each partition in order. Save the first upsert for each key, then replace
+the saved resource only when an upsert has a higher `contentVersion`. Kafka
+can deliver an earlier version again after a newer one.
 
-A delete uses the same key and a **record-level null value**. It is neither
-the string `"null"` nor a JSON object with `deleted: true`. It contains no
-resource type, resource body, or `contentVersion`. Consumers that route by
-resource type must retain enough previous state to identify a deleted key.
-A tombstone can arrive without an earlier upsert for that key.
+### Deletions
 
-### Apply Upserts and Deletes
+A delete sends a _tombstone_, a message with the same key and a **null Kafka
+value**. The resource type, body, and version are absent. If you store each
+resource type separately, keep track of which type each key belongs to.
 
-For each key, apply the first upsert. Replace the saved resource only when
-an upsert has a higher `contentVersion`. Ignore equal or lower versions.
-A tombstone has no version. When one arrives, remove the resource if present.
+Remove the resource if present. Save your reading position even if you have
+never seen that key. During recovery the connector can replay an earlier upsert and
+temporarily restore a deleted resource. Applying the replayed tombstone
+removes it again.
 
-An _offset_ is a position in a partition. A _checkpoint_ is the position a
-consumer saves so it can resume reading that partition. Save each change with
-its checkpoint so a restart cannot skip it. Advance the checkpoint even when
-a tombstone arrives for a key that is already absent.
+### Keep a Local Copy Up to Date
 
-During recovery the connector can send earlier records again. A replayed
-upsert may temporarily restore a deleted resource. The replayed tombstone
-removes it again when the consumer catches up.
+Kafka compacts the topic, keeping the latest value for each live resource.
+It can eventually remove a tombstone and the messages it supersedes. A
+consumer that falls behind can therefore miss a deletion.
 
-### Rebuild and Maintain a Consumer's Copy
+1. Start with an empty copy. Record the end position (_offset_) of each
+   partition, then read from the earliest available offset in every partition.
+2. Within **24 hours** of starting the first partition, apply all messages
+   through the recorded positions. Save the data and the position where
+   reading should resume (the _checkpoint_) together in durable storage.
+3. Continue reading from those checkpoints. At least once every 24 hours,
+   record fresh end offsets for **all** partitions and save all changes
+   through them. Include idle partitions, even when their offsets stay the same.
 
-The topic uses `cleanup.policy=compact` and an explicit per-topic
-`delete.retention.ms` of at least `604800000` (seven days). Compaction retains
-the latest live value for each key, but Kafka can eventually remove a
-tombstone and the older values it deletes. Simply resuming an old consumer
-checkpoint can therefore leave deleted resources in local state.
+If you miss the deadline, lose a checkpoint, see an unexpected partition
+assignment, or cannot verify progress, stop using the copy. Discard it and
+repeat the full scan. Test that your consumer can meet the deadline with
+large records, uneven partitions, and new updates arriving.
 
-To build a copy of the data store, scan all the partitions.
+<details>
+<summary>Topic settings for consumers</summary>
 
-1. Record the end offset of each partition and start reading at its earliest
-   available offset.
-2. Apply all changes through those end offsets and save the copy and its
-   checkpoints to durable storage. Finish both within **24 hours** of starting
-   the first partition, then continue from the saved positions.
-3. At least once every 24 hours after that, record each partition's current
-   end offset and save all changes through those positions with their
-   checkpoints. An idle partition may have the same end offset as before.
+The topic name follows
+`<topic-prefix>.instance.<instance-key>-g<generation>.documents.v1`. The
+prefix identifies the deployment and must be unique on a shared broker.
+The instance key identifies the data store within that prefix. Keep district
+and tenant names out of it. The generation starts at `1` and stays the same
+across restarts. The supplied setup supports one generation.
 
-If you cannot verify completion on time, stop using the copy, discard it, and
-rebuild from the beginning of every partition. Do the same if a checkpoint is
-missing or corrupt, a partition assignment changes unexpectedly, or you can no
-longer verify progress, even if Kafka reports no error.
+Keep the partition count and key mapping fixed. Use `cleanup.policy=compact`
+and set `delete.retention.ms` explicitly on the topic to at least
+`604800000` (seven days). Set the consumer's `max.partition.fetch.bytes`
+and `fetch.max.bytes` to at least the
+[configured record size](../configuration/configuration-details.mdx#cdc-record-size).
+Allow enough memory to read a record of that size.
 
-Test that the consumer can finish in time with large records, uneven
-partitions, and new updates arriving. The scan includes older records that
-Kafka has yet to compact. Adding time- or size-based deletion can remove
-records needed to rebuild the copy.
+</details>
 
-### Accept the Configured Record Size
+## When Something Goes Wrong
 
-Set both `max.partition.fetch.bytes` and `fetch.max.bytes` to at least
-`Cdc.MaxRecordBytes`. Allow enough memory to receive and deserialize a record
-of that size. For the walkthrough ceiling, oversized records, and the steps
-to raise the limit, see [CDC record size](../configuration/configuration-details.mdx#cdc-record-size).
-
-### Security
-
-API client permissions and readable profiles do not filter the stream. A
-consumer receives the full resource before it can apply any filters of its own.
-Public messages omit API client identity, authorization results, education
-organization hierarchy arrays, tenant display names, and readable-profile
-projections. They also omit Debezium's `before`, `after`, `source`, and `op`
-fields, internal database IDs, and cache-processing status.
-
-Protect database and Configuration Service credentials, Kafka Connect's REST
-interface, deployment-state files, and diagnostic output as well as the
-topics. Grant consumers access only to their authorized public topic. Restrict
-access to the worker's internal configuration, offset, history, and progress
-topics.
+- **An expected message is missing.** Check that the API request succeeded,
+  then look for its resource ID on the data store's topic. If the message is
+  still missing after 120 seconds in the walkthrough, [check the connector and
+  its logs](../../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx#troubleshooting).
+- **The evaluation fails to restart.** Keep the original settings, state files,
+  and volumes together and leave other writers stopped. If files are missing
+  or the source database was replaced, follow the [recovery procedure](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/cdc-documentation/operations-runbook.md#unsupported-provenance).
+- **A record is too large.** Check the connector error and the
+  [record-size limit](../configuration/configuration-details.mdx#cdc-record-size).
+- **Sensitive data reached Kafka.** Stop publication, restrict access, and
+  follow your incident process. Deleting the resource can leave copies in
+  Kafka, backups, and downstream systems. See the [disclosure response
+  procedure](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/cdc-documentation/operations-runbook.md#sensitive-data-response).

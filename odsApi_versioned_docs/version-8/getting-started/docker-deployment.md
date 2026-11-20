@@ -8,13 +8,8 @@ Ed-Fi API v8 runs as a set of Docker containers orchestrated by Docker Compose.
 This page walks through starting the services for the first time using the
 scripts in the Ed-Fi API repository.
 
-## Optional: Evaluate Kafka Streaming
-
-For a local Kafka evaluation with synthetic data, start with
-[Set Up Kafka CDC Streaming](../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx#prepare-the-host)
-before creating `.env` or running bootstrap. That walkthrough prepares an
-isolated environment and creates a fresh Configuration Service database and
-API data store. The steps below start the API without streaming.
+If you want to try Kafka streaming, follow the [Kafka walkthrough](../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx)
+before running any steps below. It creates its own databases and environment file.
 
 ## Step 1 — Clone the Repository
 
@@ -89,8 +84,8 @@ SDK](https://dotnet.microsoft.com/download/dotnet/10.0).
 | `-AddSmokeTestCredentials` | Create API client credentials for local testing and print the key and secret at the end of startup (see [Configure a Data Store](configure-data-store)) |
 | `-SeparateConfigDatabase` | Store the Configuration Service data in its own database instead of sharing the Ed-Fi API database |
 | `-EnableKafkaCdc` | Activate the cache and start streaming in the [Kafka walkthrough](../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx#start-the-api-and-streaming) |
-| `-CdcSettingsPath` / `-CdcBindingStatePath` | Select the prepared CDC settings file and the directory that retains deployment state |
-| `-EnableKafkaUI` | Start Kafka UI to inspect messages in the local evaluation |
+| `-CdcSettingsPath` / `-CdcBindingStatePath` | Set the path to the streaming settings and the directory where the script saves its state |
+| `-EnableKafkaUI` | Start Kafka UI to view messages |
 | `-Rebuild` | Rebuild the local Docker images before starting, for example after updating the repository |
 
 ### Optional: Year-Specific Data Stores
@@ -114,9 +109,8 @@ for details.
 
 ### Stopping the Services
 
-For a Kafka evaluation, use the [managed stop and resume commands](../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx#stop-and-resume-the-evaluation).
-They retain the database, Kafka volumes, and deployment state so the connector
-can resume on the same topic generation.
+For a Kafka evaluation, use the [walkthrough’s stop and resume commands](../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx#stop-and-resume-the-evaluation)
+to keep streaming to the same topic.
 
 For the standard deployment, use the wrapper that started the stack:
 

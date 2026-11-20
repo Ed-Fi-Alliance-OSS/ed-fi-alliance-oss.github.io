@@ -19,14 +19,12 @@ plugin contract packages, published to the **Ed-Fi AzureFeed**.
 | 8.1 | Latest patch release of Ed-Fi API 8.1.x | [edfialliance/ed-fi-api:8.1](https://hub.docker.com/layers/edfialliance/ed-fi-api/8.1/) |
 | 8.1.0 | Configuration Service container | [edfialliance/ed-fi-api-configuration-service:8.1.0](https://hub.docker.com/layers/edfialliance/ed-fi-api-configuration-service/8.1.0/) |
 | 8.1 | Latest patch release of the Configuration Service 8.1.x | [edfialliance/ed-fi-api-configuration-service:8.1](https://hub.docker.com/layers/edfialliance/ed-fi-api-configuration-service/8.1/) |
-| Qualified digest | Kafka Connect worker with the Ed-Fi DocumentState transform | [edfialliance/ed-fi-kafka-connect](https://hub.docker.com/r/edfialliance/ed-fi-kafka-connect) |
+| Image digest | Kafka Connect worker that sends resource changes to Kafka | [edfialliance/ed-fi-kafka-connect](https://hub.docker.com/r/edfialliance/ed-fi-kafka-connect) |
 
-The [Kafka CDC walkthrough](../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx)
-uses the qualified worker image
+The [Kafka walkthrough](../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx)
+uses the worker image tested with this release. Its full reference is
 `edfialliance/ed-fi-kafka-connect@sha256:bfabcabfd28868d32ab0271b42b7d147b9566c89bfe1747716368208e8291921`.
-Use this digest with the walkthrough's release inputs; the worker does not
-share the API's image tag. The [qualification record](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/src/dms/backend/EdFi.DataManagementService.Backend.Cdc/CdcQualifiedWorkerImage.json)
-identifies the tested image and companion source revision.
+See the [release's worker image record](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/src/dms/backend/EdFi.DataManagementService.Backend.Cdc/CdcQualifiedWorkerImage.json).
 
 ## Ed-Fi API v8 Packages {#ed-fi-api-v810-packages}
 
