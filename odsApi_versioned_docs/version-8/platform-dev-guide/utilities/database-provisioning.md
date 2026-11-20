@@ -410,15 +410,63 @@ stopped until the migration is fixed.
 
 The `cdc` commands set up and operate the background workers that stream data
 changes to Kafka, for a database provisioned through the managed CDC workflow.
-If you don't use event streaming, you don't need them. See [Event Streaming with
-Kafka](../features/event-streaming-kafka-cdc.md).
+For a new evaluation, follow [managed Kafka setup](../features/event-streaming-kafka-cdc.md#setup)
+before creating the database.
+
+#### Check CDC status
+
+Use the two paths printed together on the `Inspect CDC` line by the bootstrap
+that created the deployment. `--settings` selects the generated runtime file
+under `eng/docker-compose/.bootstrap/cdc-runtime`; `--state-path` selects its
+original state directory. The input settings used for initial setup lack the
+staged schema paths. Keep the generated settings, state directory, deployment
+inventory, environment files, and volumes together across restarts.
+
+Run this from the root of the same release checkout in PowerShell while the
+deployment is running. The module resolves the SchemaTools executable used by
+bootstrap. If status detects loss of source or connector offset history, it
+can record a terminal incident and stop affected connectors.
+
+```powershell
+Import-Module ./eng/docker-compose/bootstrap-schema-tool.psm1
+$schemaTool = Resolve-DmsSchemaTool
+$retainedSettings = Read-Host 'Exact settings path from Inspect CDC'
+$retainedState = Read-Host 'Exact state path from Inspect CDC'
+& $schemaTool cdc status --settings $retainedSettings --state-path $retainedState --json
+$statusExitCode = $LASTEXITCODE
+```
+
+Standard output contains one JSON result. Diagnostics also go to standard
+error. Keep the streams separate and private. Read `data.aggregate.readiness`
+and the status and diagnostics for the affected entry in `data.targets`.
+
+| Status exit | Result | Operator action |
+| --- | --- | --- |
+| `0` | Aggregate readiness is `Ready`. | Use this as the result for the time of the observation. |
+| `1` | Projection is `Unknown` with an explicit `RuntimeNotObserved` diagnostic. | The standalone CLI cannot observe the API's running cache-refresh process. Record the unknown result, check the other components, and verify delivery separately. |
+| `1` | Projection reports `StatusObservationUnavailable` or Projection / `Unavailable` without a specific cause. | Keep the cause open. An empty queue or a delivered message cannot identify why the observation was unavailable. |
+| `1` | A check failed, was rejected, timed out, or lacks other evidence. | Inspect the component diagnostics. If initial setup is incomplete, keep writers stopped. |
+| `2` | Invalid command or configuration input. | Check the arguments and the original settings and state paths. Preserve any remaining state if a required file is missing. |
+| `130` | The caller cancelled the command. | Check what was recorded before retrying. Cancellation can leave completed actions in place. |
+
+For an incident, examine both `incidentPersistence` and `containment` on the
+affected target. `Persisted` confirms the incident was saved. `Stopped`
+confirms the connector stop was verified. If either reports `Failed`, retain
+the diagnostics and escalate the failed action. Publication may still be
+running if the stop failed.
+
+For a stopped evaluation, follow [managed stop and resume](../../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx#stop-and-resume-the-evaluation).
+For a failed check or missing state, start with the [walkthrough troubleshooting
+steps](../../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx#troubleshooting).
+For the complete list of commands and settings, see the
+[SchemaTools CDC reference](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/src/dms/clis/EdFi.DataManagementService.SchemaTools/README.md#cdc-deployment-commands).
 
 ### Exit codes
 
 | Code | Meaning |
 | --- | --- |
 | `0` | Success |
-| `1` | Failure: invalid arguments, missing files, schema validation errors, or a failed database operation |
+| `1` | Operation failed. For CDC status, see the [status results](#check-cdc-status). |
 | `2` | Invalid arguments (`cdc` commands only) |
 | `130` | Cancelled (`cdc` commands and managed CDC provisioning only) |
 

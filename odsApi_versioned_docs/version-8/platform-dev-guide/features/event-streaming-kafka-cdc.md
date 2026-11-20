@@ -1,7 +1,8 @@
 # Event Streaming with Kafka
 
-Ed-Fi API v8 can send resource data to Apache Kafka so downstream systems can
-maintain a copy of a data store without polling the API. Each data store has
+Ed-Fi API v8 can use change data capture (CDC) to send resource data to
+Apache Kafka so downstream systems can maintain a copy of a data store
+without polling the API. Each data store has
 one _topic_, a named stream containing all its resource types. A system reading
 the topic (a _consumer_) receives the latest available state of each resource
 and a message when a resource is deleted. Several edits can reach Kafka as one
@@ -16,33 +17,61 @@ Anyone with access to the topic can read every resource it carries, including
 sensitive student data. The setup runs one Kafka broker and one Kafka Connect
 worker with Kafka authorization disabled.
 
-Start with a fresh, isolated environment. The walkthrough shows how to prepare
-a restricted connector login and check the settings for your database.
-
-- **PostgreSQL** uses logical replication to stream changes. It needs an
-  available replication slot, a process to send the changes (a WAL sender),
-  and a connector login with replication permission.
-- **SQL Server** uses SQL Server Agent to run its change data capture (CDC)
-  jobs. The resource cache requires read committed snapshot isolation (RCSI),
-  snapshot isolation, and nested triggers.
+| Your deployment | Where to start |
+| --- | --- |
+| You want to evaluate Kafka for the first time | [Turn it on](#setup) before creating the data store or starting API writers. |
+| You already have a data store created without Kafka | Use a [fresh, isolated environment](../../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx#prepare-the-host). An existing store is ineligible for initial setup, even if DocumentCache is active. |
+| You have a retained Kafka evaluation | [Check status](#check-status) while it is running. If you stopped it, [resume the same deployment](../../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx#stop-and-resume-the-evaluation). |
+| You are writing a consumer | Start with the [topic, message, and replay contract](#consumer-reference). |
 
 ## Turn It On {#setup}
 
-Streaming is off by default. Follow [Set Up Kafka CDC
-Streaming](../../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx) **before
-creating the data store**. The setup script creates a new database, enables
-change capture, and activates [DocumentCache](./document-cache.md) before API
-writes begin. A database created with `source-history-only` or with
-DocumentCache activated independently is ineligible for initial Kafka setup.
-Serving API reads from the cache is optional.
+Streaming is off by default. Choose this workflow **before creating the data
+store**. It requires a fresh Configuration Service database and creates the
+API database itself. A database created with `source-history-only` or with
+[DocumentCache](./document-cache.md) activated independently is ineligible.
+Serving reads from the cache is optional.
+
+1. [Prepare the host](../../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx#prepare-the-host)
+   and its private configuration. Choose one database engine and keep API
+   writers and seed loaders stopped until bootstrap succeeds.
+2. [Start the database and Configuration Service](../../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx#start-the-database-and-configuration-service),
+   then [prepare the restricted connector login](../../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx#prepare-the-connector-login).
+   PostgreSQL uses logical replication. SQL Server uses SQL Server Agent to run capture jobs.
+3. [Prepare the API and CDC settings](../../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx#prepare-the-complete-api-and-cdc-settings).
+   Select the same data store for DocumentCache and CDC, and supply the
+   connection addresses for both the host and the worker.
+4. [Run managed bootstrap](../../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx#start-the-api-and-streaming)
+   with `-EnableKafkaCdc` and `-SeparateConfigDatabase`. It registers and
+   provisions the store, activates the cache, and sets up capture before the
+   API starts. Save the settings and state paths printed in `Inspect CDC`.
+   You will need that exact pair to check this deployment.
 
 ## Check Status
 
-Seeing your test resource in Kafka UI confirms delivery. The `cdc status`
-command can still report `Unknown` for cache refresh and `NotReady` overall
-when it lacks information about the API's background refresh process. Use the
-walkthrough's [status table](../../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx#check-status)
-to interpret the diagnostic and investigate any failed checks.
+From the root of the release checkout, run the status check in PowerShell
+using the two paths from bootstrap's `Inspect CDC` line. Run it against the
+retained, running deployment. If it detects lost source or connector offset
+history, the check can record an incident and stop the affected connector.
+
+```powershell
+Import-Module ./eng/docker-compose/bootstrap-schema-tool.psm1
+$schemaTool = Resolve-DmsSchemaTool
+$retainedSettings = Read-Host 'Exact settings path from Inspect CDC'
+$retainedState = Read-Host 'Exact state path from Inspect CDC'
+& $schemaTool cdc status --settings $retainedSettings --state-path $retainedState --json
+$statusExitCode = $LASTEXITCODE
+```
+
+| Result | What to check |
+| --- | --- |
+| Exit `0`, `data.aggregate.readiness` is `Ready` | All required checks passed for this observation. |
+| Exit `1`, projection is `Unknown` | Inspect the target diagnostics. An explicit `RuntimeNotObserved` means the CLI could not observe the API's cache-refresh process. A Projection / `Unavailable` diagnostic alone leaves the cause unknown. Check the other components and verify delivery separately. |
+| Exit `1`, a component failed | Inspect that component's diagnostics and any reported incident or connector stop. Follow the [troubleshooting steps](../../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx#troubleshooting) before retrying. |
+
+Seeing the test resource in Kafka confirms delivery. Readiness can still be
+`NotReady`. For all exit codes and incident results, see the
+[CDC status command reference](../utilities/database-provisioning.md#check-cdc-status).
 
 ## When Something Goes Wrong
 
@@ -54,12 +83,16 @@ to interpret the diagnostic and investigate any failed checks.
   settings, and saved state together. Use the walkthrough's
   [stop and resume procedure](../../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx#stop-and-resume-the-evaluation).
   If state is missing or the source database was replaced, stop and preserve
-  what remains.
+  what remains and follow the [missing state and source mismatch procedure](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/cdc-documentation/operations-runbook.md#unsupported-provenance).
+- **The connector task rejected an oversized record.** Check the task error
+  and the [configured record size](../configuration/configuration-details.mdx#cdc-record-size)
+  before changing a limit or restarting the task.
 - **Sensitive data reached Kafka.** Stop publication, restrict access, and
   follow your incident process. Deleting the resource can still leave copies
-  in retained records, backups, and downstream systems.
+  in retained records, backups, and downstream systems. Follow the
+  [disclosure response procedure](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/cdc-documentation/operations-runbook.md#sensitive-data-response).
 
-For capture delays, record-size changes, or retiring an old topic, use the
+For persistent capture delays or retiring an old topic, use the
 [CDC operations runbook](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/cdc-documentation/operations-runbook.md#procedure-navigation).
 
 ## Consumer Reference
@@ -229,8 +262,8 @@ Ed-Fi resource; the stream envelope and resource links add bytes beyond an
 API request body.
 
 An oversized record stops the connector task. To raise the ceiling, stop
-publication and coordinate the consumer, broker, topic, and producer settings. See
-[Configuration Details](../configuration/configuration-details.mdx#event-streaming-with-kafka).
+publication and coordinate the consumer, broker, topic, and producer settings.
+See [CDC record size](../configuration/configuration-details.mdx#cdc-record-size).
 
 ### Security
 

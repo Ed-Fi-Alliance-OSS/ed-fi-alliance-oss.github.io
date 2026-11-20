@@ -8,6 +8,14 @@ Ed-Fi API v8 runs as a set of Docker containers orchestrated by Docker Compose.
 This page walks through starting the services for the first time using the
 scripts in the Ed-Fi API repository.
 
+## Optional: Evaluate Kafka Streaming
+
+For a local Kafka evaluation with synthetic data, start with
+[Set Up Kafka CDC Streaming](../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx#prepare-the-host)
+before creating `.env` or running bootstrap. That walkthrough prepares an
+isolated environment and creates a fresh Configuration Service database and
+API data store. The steps below start the API without streaming.
+
 ## Step 1 — Clone the Repository
 
 Clone the `v8.1.0` release tag, so the scripts and the images they build match
@@ -80,27 +88,10 @@ SDK](https://dotnet.microsoft.com/download/dotnet/10.0).
 | `-DataStandardVersion 6.1` | Use Data Standard 6.1 instead of the default, 5.2 |
 | `-AddSmokeTestCredentials` | Create API client credentials for local testing and print the key and secret at the end of startup (see [Configure a Data Store](configure-data-store)) |
 | `-SeparateConfigDatabase` | Store the Configuration Service data in its own database instead of sharing the Ed-Fi API database |
-| `-EnableKafkaCdc` | Coordinate cache activation and Kafka streaming for a fresh data store; requires the settings and preparation in the [CDC walkthrough](../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx) |
+| `-EnableKafkaCdc` | Activate the cache and start streaming in the [Kafka walkthrough](../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx#start-the-api-and-streaming) |
 | `-CdcSettingsPath` / `-CdcBindingStatePath` | Select the prepared CDC settings file and the directory that retains deployment state |
 | `-EnableKafkaUI` | Start Kafka UI to inspect messages in the local evaluation |
 | `-Rebuild` | Rebuild the local Docker images before starting, for example after updating the repository |
-
-### Optional: Evaluate Kafka Streaming
-
-Follow [Set Up Kafka CDC
-Streaming](../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx) before starting
-a streaming evaluation. It requires a fresh Configuration Service database,
-`-SeparateConfigDatabase`, a new API data store, and coordinated cache/CDC setup
-before the API starts. Do not add the CDC flags to an existing deployment.
-
-The workflow uses `kafka-broker.compose.yml`, `kafka-cdc.compose.yml`, and,
-with `-EnableKafkaUI`, `kafka-ui.compose.yml`. Bootstrap starts the Kafka
-Connect worker only after its setup checks. The supplied single-broker,
-single-worker environment has Kafka authorization disabled and is for local
-evaluation with synthetic data.
-
-For this environment, use the walkthrough's managed stop/start instructions;
-they preserve and validate the saved streaming state.
 
 ### Optional: Year-Specific Data Stores
 
@@ -123,7 +114,11 @@ for details.
 
 ### Stopping the Services
 
-Use `bootstrap-local-dms.ps1` to stop the stack started by the same wrapper:
+For a Kafka evaluation, use the [managed stop and resume commands](../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx#stop-and-resume-the-evaluation).
+They retain the database, Kafka volumes, and deployment state so the connector
+can resume on the same topic generation.
+
+For the standard deployment, use the wrapper that started the stack:
 
 | Command | Effect |
 | --- | --- |

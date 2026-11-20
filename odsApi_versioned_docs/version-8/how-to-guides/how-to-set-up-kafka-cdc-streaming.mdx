@@ -444,23 +444,21 @@ $retainedState = Read-Host 'Exact state path from Inspect CDC'
 $statusExitCode = $LASTEXITCODE
 ```
 
-This operation can record incidents and stop connectors if it detects unsafe
-conditions; it is not a side-effect-free health request. JSON goes to standard
-output and diagnostics go to standard error. Keep any captured output private.
+Status can record incidents and stop connectors if it detects unsafe conditions.
+Keep the JSON result on standard output and the diagnostics on standard error
+private.
 
-| Result                                                   | Interpretation                                                                                                                                                                  |
-| -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Exit `0`, `data.aggregate.readiness: "Ready"`            | The current observation satisfied aggregate readiness.                                                                                                                          |
-| Exit `1`, projection `Unknown` with `RuntimeNotObserved` | The standalone command cannot observe the API's hosted cache-refresh process. This can occur with an empty queue and successful message delivery. It remains an unknown result. |
-| Other exit `1` diagnostics                               | Rejection, unavailable evidence, failed component, or timeout. Use the troubleshooting checks below; do not treat every failure as the observation limitation.                  |
-| Exit `2`                                                 | Invalid command or configuration. Check the emitted paths and inputs without changing the retained target or state.                                                             |
-| Exit `130`                                               | Cancellation. Preserve state; do not assume earlier work was rolled back.                                                                                                       |
-
-An unavailable projection observation may instead report the general category
-`StatusObservationUnavailable` and a Projection / `Unavailable` diagnostic,
-without exposing the underlying reason. Preserve that result; do not infer
-`RuntimeNotObserved` from `Unknown` alone. Check the other components and
-message delivery separately.
+- Exit `0` with `data.aggregate.readiness: "Ready"` means the checks passed for
+  this observation.
+- Exit `1` with projection `Unknown` leaves aggregate readiness unconfirmed. If
+  the diagnostic explicitly says `RuntimeNotObserved`, the standalone check
+  lacks information about the API's cache-refresh process. If you see only
+  `StatusObservationUnavailable` and Projection / `Unavailable`, the reason is
+  unknown. Check the other components and verify message delivery separately.
+- For a failed component or timeout, inspect its diagnostics and use the
+  [troubleshooting checks](#troubleshooting) before the next write. For invalid
+  input, cancellation, or an incident, use the
+  [full exit-code table and incident results](../platform-dev-guide/utilities/database-provisioning.md#check-cdc-status).
 
 The local profile reports `deploymentProfile.aclIsolationProven: false` because
 Kafka authorization is disabled. Initial bootstrap success authorizes starting

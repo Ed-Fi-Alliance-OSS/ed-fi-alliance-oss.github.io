@@ -491,19 +491,48 @@ values for each provider.
 
 ## Event Streaming with Kafka
 
-Kafka streaming requires an activated DocumentCache target and a complete
-settings file with a `Cdc` section. The local evaluation selects the database
-provider and data store, host and worker connection addresses, protected
-credentials, topic identity, and record-size and observation limits. API read
-acceleration can remain disabled.
-
 The
-[Kafka CDC walkthrough](../../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx)
-provides every setting needed for the fresh local environment and shows how
-bootstrap produces the settings used by later commands. Keep those emitted
-settings with their original state directory. The separate
-[SchemaTools CDC reference](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/src/dms/clis/EdFi.DataManagementService.SchemaTools/README.md#cdc-deployment-commands)
-is the complete command and setting catalog for advanced use.
+[Kafka walkthrough](../../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx#prepare-the-complete-api-and-cdc-settings)
+adds a `Cdc` section to the complete API settings. Bootstrap activates
+DocumentCache for the selected data store and can leave read acceleration
+disabled. The values below are the ones the walkthrough supplies.
+
+| Setting in `Cdc`                                                                | Local walkthrough value                                          | What it selects                                                                                                                                     |
+| ------------------------------------------------------------------------------- | ---------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Provider`                                                                      | `postgresql` or `sqlserver`                                      | Capture provider for the API's `AppSettings.Datastore` value (`postgresql` or `mssql`, respectively).                                               |
+| `DeploymentKey`, `TenantKey`, `DataStoreId`                                     | `local`, empty string, `1`                                       | Deployment, default tenant, and first registered data store. The tenant and ID must match the DocumentCache target.                                 |
+| `TopicPrefix`, `InstanceKey`, `Generation`, `PartitionCount`                    | `edfi`, `datastore-1`, `1`, `1`                                  | Creates the single-partition topic `edfi.instance.datastore-1-g1.documents.v1`. Retain this identity across restarts.                               |
+| `SetupConnectionString`                                                         | PostgreSQL at `127.0.0.1:5435` or SQL Server at `127.0.0.1,1435` | Host-side administrator connection to `edfi_cdc` for setup. Protect the full connection string.                                                     |
+| `ProviderConnectionProperties`                                                  | `dms-postgresql:5432` or `dms-mssql:1433`                        | Inside Docker the worker connects to `edfi_cdc` as `cdc_reader`. Its password comes from the worker's `CDC_DATABASE_PASSWORD`.                      |
+| `KafkaAdminBootstrapServers`, `KafkaBootstrapServers`                           | `127.0.0.1:9092`, `dms-kafka1:9092`                              | Broker addresses for SchemaTools on the host and Kafka Connect inside Docker, respectively.                                                         |
+| `ConnectEndpoint`, `WorkerMetricsEndpoint`                                      | `http://127.0.0.1:8083`, `http://127.0.0.1:9404/metrics`         | Host-side access to the Connect REST API and the worker's metrics.                                                                                  |
+| `MaxRecordBytes`, `Worker.HeapBytes`                                            | `10000000`, `1073741824` bytes                                   | Record ceiling and worker heap. The heap matches the [Compose setting](../../getting-started/getting-started-appendix.md#optional-kafka-streaming). |
+| `LagThresholdMilliseconds`, `Timing.MaximumObservationAgeMilliseconds`          | `5000`, `60000`                                                  | Maximum connector lag and maximum age of an observation used to assess readiness.                                                                   |
+| `Timing.CallMilliseconds`, `Timing.WaitMilliseconds`, `Timing.PollMilliseconds` | `180000`, `600000`, `1000`                                       | Timeout per external call, wait timeout, and polling interval.                                                                                      |
+
+Bootstrap fills in the schema paths and prints the resulting settings file and
+state directory in `Inspect CDC`. Keep that pair for the
+[status command](../utilities/database-provisioning.md#check-cdc-status).
+
+### CDC Record Size
+
+`Cdc.MaxRecordBytes` sets the producer's size ceiling for a serialized record,
+including the resource key and envelope. The walkthrough sets it to 10,000,000
+bytes. An API request that fits the API's request-body limit can still produce
+an oversized record after resource links and metadata are added.
+
+| Component          | Required capacity                                                                                                                                                                                                     |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Connector producer | `producer.override.max.request.size` equals the ceiling. `producer.override.buffer.memory` must be at least that large, with additional heap for the worker.                                                          |
+| Public topic       | `max.message.bytes` equals the ceiling.                                                                                                                                                                               |
+| Broker             | The effective `message.max.bytes` or topic override, `replica.fetch.max.bytes`, and `replica.fetch.response.max.bytes` must admit the record. `socket.request.max.bytes` must allow at least 1 MiB above the ceiling. |
+| Each consumer      | Set both `max.partition.fetch.bytes` and `fetch.max.bytes` to at least the ceiling. Allow enough memory to receive and deserialize a record of that size.                                                             |
+
+An oversized record stops the connector task. To raise the limit on an existing
+stream, confirm every consumer can handle the new size, then use the
+[coordinated record-size increase procedure](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/cdc-documentation/operations-runbook.md#record-size-increase).
+It pauses publication while applying and verifying the producer, topic, and
+broker settings. Update the retained settings after the operation succeeds.
 
 ## Configuration Service Settings
 
