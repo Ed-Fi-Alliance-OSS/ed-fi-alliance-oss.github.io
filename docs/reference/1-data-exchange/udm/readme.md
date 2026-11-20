@@ -17,7 +17,10 @@ The UDM is not itself an API or a physical database schema. Ed-Fi API
 specifications and database implementations such as the Ed-Fi ODS/API are
 derived from it. See [What is the purpose of the Ed-Fi Unifying Data
 Model?](../data-standards.md#what-is-the-purpose-of-the-ed-fi-unifying-data-model)
-for how the UDM keeps the Ed-Fi Data Standard specifications consistent.
+for how the UDM keeps the Ed-Fi Data Standard specifications consistent, and
+[Ed-Fi Data Standard vs. UDM vs. API Specifications vs. Ed-Fi
+API](../data-standard-vs-udm-vs-api.md) for how the UDM differs from the Data
+Standard, the API Specifications, and an Ed-Fi API.
 
 The model was originally developed to capture and represent data related to
 student performance, and that remains the core goal of the model. In addition,

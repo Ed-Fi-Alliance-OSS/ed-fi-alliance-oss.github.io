@@ -12,6 +12,9 @@ ODS/API](/reference/ods-api-platform) and [Ed-Fi API v8](/reference/ed-fi-api/8)
 operationalize the standard. Together they connect the systems that schools and
 agencies already run; they do not replace those systems. This page answers
 common questions about how they relate to other kinds of education data systems.
+For how the Data Standard, the Unifying Data Model, the API Specifications, and
+an Ed-Fi API differ from each other, see [Ed-Fi Data Standard vs. UDM vs. API
+Specifications vs. Ed-Fi API](./data-standard-vs-udm-vs-api.md).
 
 ## Does the Ed-Fi Data Standard replace a student information system?
 

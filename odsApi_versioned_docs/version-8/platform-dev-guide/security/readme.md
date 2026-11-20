@@ -76,11 +76,13 @@ and easy to understand once implemented.
 
 ## Vendors and Applications
 
-As noted above, two-legged OAuth2 authentication grants access at the client
-application level. Throughout this documentation (and the solution), we use the
+As noted above, two-legged OAuth2 authentication grants access at the API
+client level. Throughout this documentation (and the solution), we use the
 term "Vendor" to describe an organization that hosts or owns client systems, and
 "Application" to describe an actual client system. Vendors are associated with
-one or more applications. Each application is issued an OAuth key and secret.
+one or more applications. OAuth keys and secrets belong to API clients, and
+each API client belongs to an application. An application can have several API
+clients, or none until one is added.
 
 Vendors, applications, and API clients are managed through the Configuration
 Service API. The [Security Configuration Data

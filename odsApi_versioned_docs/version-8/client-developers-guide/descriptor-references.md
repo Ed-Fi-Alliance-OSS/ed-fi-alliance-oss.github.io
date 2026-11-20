@@ -16,12 +16,15 @@ The Descriptor references must be formatted as follows:
 uri://[namespace]/[name of descriptor]#[descriptor value]
 ```
 
-- Valid namespaces can only contain alphanumeric characters and `$-_.+!*'()`
-- Valid Descriptor names can only contain alphanumeric characters
-- Valid code values can contain any character except `#`
+A Descriptor value must exist in the API before a resource can reference it.
+When a resource references a Descriptor, the API looks up the value, ignoring
+case. If the value does not match an existing Descriptor, including a
+value that is not in the format above, the API returns `400 Bad Request` with a
+validation error such as:
 
-The API provides validation errors for Descriptor references that are not in the
-correct format.
+```text
+AcademicSubjectDescriptor value 'uri://ed-fi.org/academicsubjectdescriptor#unknown' does not exist.
+```
 
 Namespaces are assigned by platform hosts. Generally speaking, namespaces
 identify the originating entity. The following are examples from the Ed-Fi

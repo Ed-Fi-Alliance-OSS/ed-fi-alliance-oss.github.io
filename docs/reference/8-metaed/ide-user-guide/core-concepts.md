@@ -6,7 +6,7 @@ This section outlines core concepts related to MetaEd.
 
 The MetaEd IDE provides implementers with a quick and painless means of
 extending various Ed-Fi Technology Suite components. All extensions to Ed-Fi technical
-products must adhere to the [Ed-Fi Extension
+products must adhere to the [Ed-Fi Data Standard Extension
 Framework](../../1-data-exchange/extensions-framework/readme.md). The MetaEd IDE
 generates extended technical artifacts aligned with the guidance and principles
 in the Extension Framework.  

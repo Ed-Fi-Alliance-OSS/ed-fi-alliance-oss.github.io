@@ -17,7 +17,9 @@ some detail of the data models may differ.
 This tutorial is for learning. The version it uses is not a recommendation for
 your own implementation; see
 [Supported Versions](/reference/roadmap/supported-versions) for the versions
-that are currently supported, including Ed-Fi API v8.
+that are currently supported, including Ed-Fi API v8. For the prerequisites
+and help choosing a platform and version, see
+[Getting Started with APIs](/getting-started/provider-playbook/implementation/getting-started-with-apis/).
 
 :::note
 
@@ -107,14 +109,22 @@ below to acquire a new token.
 
 ```fetch
 POST https://api.ed-fi.org/v7.3.2/api/oauth/token
-Content-Type: application/json
+Authorization: Basic cG9wdWxhdGVkS2V5OnBvcHVsYXRlZFNlY3JldA==
+Content-Type: application/x-www-form-urlencoded
 
-{
-    "grant_type": "client_credentials",
-    "client_id": "populatedKey",
-    "client_secret": "populatedSecret"
-}
+grant_type=client_credentials
 ```
+
+:::tip
+
+The string following "Basic" is a Base64-encoded version of `{key}:{secret}`.
+Alternatively, an implementation _may_ provide the credentials in the form
+body instead of in an Authorization header. The Ed-Fi software will not
+write that form body out to a log file, but a network router or proxy server
+might do so. Therefore the `Authorization` header approach is considered
+more secure by default.
+
+:::
 
 <codapi-snippet engine="browser" sandbox="fetch" editor="basic" init-delay="500"></codapi-snippet>
 

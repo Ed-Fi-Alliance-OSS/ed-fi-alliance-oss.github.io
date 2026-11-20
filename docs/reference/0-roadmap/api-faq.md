@@ -1,12 +1,49 @@
 # Ed-Fi ODS/API and Ed-Fi API v8 FAQ
 
-[Ed-Fi API v8.0](/reference/ed-fi-api/8) (formerly the Ed-Fi Data Management
+[Ed-Fi API v8](/reference/ed-fi-api/8) (formerly the Ed-Fi Data Management
 Service) has been released to enhance data integration and management
 capabilities for educational agencies. Designed to be robust and flexible, Ed-Fi
 API v8 addresses the evolving needs of the Ed-Fi community. The Ed-Fi Alliance
 plans to fully replace the current ODS/API Platform with Ed-Fi API v8 by the
 2029-2030 school year. In the meantime, the Alliance remains committed to
 supporting the ODS/API Platform through the 2028-2029 school year.
+
+## Choosing a Platform
+
+### Q: Should a new Ed-Fi implementation use ODS/API 7.x or Ed-Fi API v8?
+
+Plan new implementations on Ed-Fi API v8. Ed-Fi API v8 is the long-term
+replacement for the ODS/API Platform, and the Ed-Fi Alliance plans to fully
+replace the ODS/API Platform with it by the 2029-2030 school year. The ODS/API
+Platform remains supported through the 2028-2029 school year, so an
+implementation that starts on ODS/API 7.x will need to migrate to Ed-Fi API v8
+before the 2029-2030 school year.
+
+Use the latest Ed-Fi API v8 release, _Release 8.1_, for all new
+implementations, including pilots. _Release 8.0_ is out of support; see
+[Supported Versions](./supported-versions.md#ed-fi-api). Teams running 8.0
+should upgrade to 8.1, and should expect to re-provision their databases when
+they do. The
+[Ed-Fi API v8 Pilot Test
+Kit](https://github.com/Ed-Fi-Exchange-OSS/Ed-Fi-API-v8-pilot-testing-kit)
+provides a non-production environment for testing client integrations against
+Ed-Fi API v8.
+
+**Client application developers (SIS, assessment, and other vendors):** Ed-Fi
+API v8 implements the Ed-Fi API specification, so most client applications
+built for the ODS/API continue to work. Review the [breaking changes and
+migration
+checklist](/reference/ed-fi-api/8/whats-new/release-notes#ed-fi-api-v80---breaking-changes-from-previous-releases)
+and test against Ed-Fi API v8.
+
+Use ODS/API 7.3 only if you need production use before Ed-Fi API v8 is ready
+for your needs, or if you depend on a feature that is [not yet available in
+Ed-Fi API v8](/reference/ed-fi-api/8/whats-new/release-notes#feature-availability).
+If you do, plan your move to Ed-Fi API v8 now: see [How can I / my team prepare
+for the upgrade?](#q-how-can-i--my-team-prepare-for-the-upgrade) below.
+
+For the support window of each release, see [Supported
+Versions](/reference/roadmap/supported-versions).
 
 ## General
 
@@ -110,19 +147,20 @@ Timeline:
 
 1. _Release 8.0_ was released in Q3 of 2026, available for pilot / parallel
    usage in school year 2026-2027.
-2. _Release 8.1_ is planned for Q4 of 2026, available for parallel / production
-   usage in school year 2027-2028.
+2. _Release 8.1_ was released in November 2026, available for parallel /
+   production usage in school year 2027-2028. It replaces 8.0, which is out of
+   support.
 
-_Release 8.0_ is fully compatible with the _must have_ requirements
-described in the [Ed-Fi API Design and Implementation Guidelines,
-4.0](../1-data-exchange/api-guidelines/readme.md) and will expand further into
-the _should have_ and _optional_ requirements and features. State Education
-Agencies (SEA) frequently have more detailed technical requirements for client
-authorization and for access to raw data for warehousing and reporting. The
-SEA-oriented release 8.1 should be available for production use in the 2027-2028
-school year.
+Ed-Fi API v8 is fully compatible with the _must have_ requirements described
+in the [Ed-Fi API Design and Implementation
+Guidelines, 4.0](../1-data-exchange/api-guidelines/readme.md) and continues to
+expand into the _should have_ and _optional_ requirements and features. State
+Education Agencies (SEA) frequently have more detailed technical requirements
+for client authorization and for access to raw data for warehousing and
+reporting. The SEA-oriented release 8.1 is available for production use in the
+2027-2028 school year.
 
-The 8.0 release does not have complete parity with the _optional_ features in the
+Ed-Fi API v8 does not yet have complete parity with the _optional_ features in the
 ODS/API Platform. The Ed-Fi API Technical Workgroup
 and/or Technical Advisory Group (TAG) will help guide prioritization of
 features.
@@ -130,9 +168,9 @@ features.
 ```mermaid
 %%{init: { 'theme': 'neutral' } }%%
 timeline
-    Q1 26 : 8.0
+    Q3 26 : 8.0
          : MSPs, Early adopters
-    Q2 26 : 8.1
+    Q4 26 : 8.1
          : SEA
 ```
 
@@ -175,9 +213,9 @@ graph LR
 ```
 
 The next diagram shows the optional streaming components. Note: the streaming
-architecture, although it was an original design goal for the system, has taken
-a lower priority for the initial release, and is not expected to be fully tested
-and supported until the 8.1 release.
+architecture, although it was an original design goal for the system, took a
+lower priority for the initial release. It is supported starting with the 8.1
+release.
 
 ```mermaid
 graph LR
@@ -206,9 +244,13 @@ graph LR
 
 ### Q: Will integrations built for the ODS/API continue to work with the new system?
 
-Ed-Fi API v8 will be a fully compatible implementation of the Ed-Fi API
-specification. Client applications that interact with the REST API will continue
-to work.
+Ed-Fi API v8 is a fully compatible implementation of the Ed-Fi API
+specification, so most client applications that interact with the REST API
+continue to work. Some changes, such as case-sensitive property names and new
+URL paths, can affect existing clients. Review the [breaking changes and
+migration
+checklist](/reference/ed-fi-api/8/whats-new/release-notes#ed-fi-api-v80---breaking-changes-from-previous-releases)
+before moving a client to Ed-Fi API v8.
 
 The backend data store in Ed-Fi API v8 differs from the ODS/API, but it remains
 ODS-like and relational. To support existing reporting, analytics, and
@@ -305,9 +347,8 @@ real-time data flows.
 ### Q: When will Microsoft SQL Server be supported?
 
 Ed-Fi API v8 supports both PostgreSQL and Microsoft SQL Server as data store
-options. While Ed-Fi API v8.0 includes support for Microsoft SQL Server, some
-gaps remain in the SQL Server implementation compared to the PostgreSQL
-implementation. These gaps are planned to be addressed in the v8.1 release.
+options. Ed-Fi API v8.0 had some gaps in the SQL Server implementation
+compared to the PostgreSQL implementation; the v8.1 release addresses them.
 
 This approach allows agencies to continue using their existing SQL Server
 infrastructure to run Ed-Fi API v8.

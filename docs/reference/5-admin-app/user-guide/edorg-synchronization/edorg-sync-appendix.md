@@ -164,7 +164,7 @@ Three things differ from a local instance:
   must be `false` and the logins must be set. The scripts refuse the
   combination up front rather than failing later with a driver error.
 - **The login is a contained user** in the database itself. See
-  [Database](/reference/admin-app/getting-started/windows-iis-installation/manual#database)
+  [Database](/reference/admin-app/getting-started/admin-app-4.1/windows-iis-installation/manual#database)
   for the `CREATE USER` statement, and for the server, firewall rule, and
   database to provision in Azure.
 - **The connection is encrypted and the certificate validated.** A remote

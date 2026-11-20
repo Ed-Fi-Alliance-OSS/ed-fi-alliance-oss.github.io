@@ -6,7 +6,7 @@ The information in this section explores the Ed-Fi API. It is designed to help n
 
 Rather than talk about data exchanges, let's see some in action. The following brief activities will allow you to see data flowing using an Ed-Fi API Sandbox.
 
-These activities use a browser-based toolkit called Swagger UI. This toolkit allows your browser to send requests to the API and receive responses from the API. You can access the **Ed-Fi ODS / API sandbox** at [https://api.ed-fi.org/](https://api.ed-fi.org/v7.2/docs/swagger/index.html?urls.primaryName=Resources). You can [read more about Swagger UI here](https://swagger.io/tools/swagger-ui/).
+These activities use a browser-based toolkit called Swagger UI. This toolkit allows your browser to send requests to the API and receive responses from the API. You can access the **Ed-Fi ODS / API sandbox** at [https://api.ed-fi.org/](https://api.ed-fi.org/v7.3.2/docs/swagger/index.html?urls.primaryName=Resources). You can [read more about Swagger UI here](https://swagger.io/tools/swagger-ui/).
 
 ![Swagger UI screenshot](https://edfidocs.blob.core.windows.net/$web/img/getting-started/provider-playbook/implementation/getting-started-with-apis/all-providers/swagger.png)
 
