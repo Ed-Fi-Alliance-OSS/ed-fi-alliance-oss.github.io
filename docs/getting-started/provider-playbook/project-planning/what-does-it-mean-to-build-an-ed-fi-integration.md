@@ -88,6 +88,7 @@ An Ed-Fi transaction table that logs various pieces of information every time an
 | Table column name | Sample value |
 | --- | --- |
 | Ed-Fi API endpoint name | studentSchoolAssociations |
+| Source record ID | 88213 |
 | Natural keys | ```json {"entryDate": "2021-09-02", "schoolReference": { "schoolId": 1234 },  "studentReference": {  "studentUniqueId": "40670327" }}``` |
 | Ed-Fi API ID | 12546a2c3c7b5485f93310d432dd55afb |
 | Natural keys hash | wR6EK1uJRDyAr11k496kWQ== |
@@ -98,7 +99,7 @@ An Ed-Fi transaction table that logs various pieces of information every time an
 
 The "Query-based Ed-Fi API payloads" section above looked at tracking when a record has changed and needs to be updated on an education agency's Ed-Fi API. If a record has been updated, but the has of the natural keys has not changed, you can safely POST the updated record to the Ed-Fi API endpoint.
 
-However, if a natural key has changed, the existing record must be deleted and a new record sent. Adding some more complexity, you will also need to know when records in the application database are deleted and thus, deletes need to be sent to the Ed-Fi API. The SQL query above will only return a record when a payload has changed. It’s not going to surface deletes.
+However, if a natural key has changed, a POST would create a second record instead of updating the existing one. If the resource supports natural key updates, send a PUT using the record's Ed-Fi API ID; otherwise, delete the existing record and send a new one. See [Natural Key Changes](../implementation/ed-fi-api-integration-architecture-for-data-providers.md#natural-key-changes). To find the existing record after its natural keys change, the transaction table also needs an ID from the source system that does not change. Adding some more complexity, you will also need to know when records in the application database are deleted and thus, deletes need to be sent to the Ed-Fi API. The SQL query above will only return a record when a payload has changed. It’s not going to surface deletes.
 
 You have at least two options here and deciding which one to use will depend on how your application database is structured. If the application database supports soft deletes, you can continue using only the SQL query approach for the Ed-Fi sync. The SQL query above can be expanded to return records that have been deleted. When a record has been deleted, the natural keys will be hashed, looked up in the transaction table to retrieve the Ed-Fi API, and a DELETE would be run on the appropriate endpoint.
 
