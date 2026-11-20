@@ -408,17 +408,51 @@ stopped until the migration is fixed.
 
 ### Change data capture (`cdc`)
 
-The `cdc` commands set up and operate the background workers that stream data
-changes to Kafka, for a database provisioned through the managed CDC workflow.
-If you don't use event streaming, you don't need them. See [Event Streaming with
-Kafka](../features/event-streaming-kafka-cdc.md).
+Use the `cdc` commands to operate a Kafka stream. For first-time setup,
+follow the [Kafka walkthrough](../../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx)
+before creating the database.
+
+#### Check CDC status
+
+While the evaluation is running, use the `cdc status` command printed on the
+bootstrap script's `Inspect CDC` line. Its `--settings` path points to the
+generated settings file and `--state-path` points to the original state
+directory. The [PowerShell example](../../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx#check-status)
+runs the same tool that bootstrap used.
+
+Status can record an incident and stop the connector if the database or
+connector has lost its history. Keep the output private. Read
+`data.aggregate.readiness` for the overall result and `data.targets` for the
+checks on each data store.
+
+| Exit code | What to do |
+| --- | --- |
+| `0` | `Ready` means all checks passed at the time of the command. |
+| `1` | Read the failed or unknown check for the affected data store. If setup is incomplete, keep writers stopped. |
+| `2` | Check the arguments and both paths against the saved `Inspect CDC` line. |
+| `130` | The command was canceled. Check which actions finished before retrying. |
+
+If `projection` is `Unknown`, the tool could not confirm the health of the
+API's cache refresh. `RuntimeNotObserved` means the tool could not see the
+running process. `StatusObservationUnavailable` or a projection diagnostic of
+`Unavailable` alone leaves the cause unknown. Check the other results and
+verify message delivery separately.
+
+If status reports an incident, `incidentPersistence: Persisted` means the
+incident was saved and `containment: Stopped` confirms the connector stopped.
+If either action reports `Failed`, save the diagnostics for investigation.
+The connector may still be publishing if the stop failed.
+
+See [Troubleshooting](../../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx#troubleshooting)
+for common failures and the [SchemaTools CDC reference](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/src/dms/clis/EdFi.DataManagementService.SchemaTools/README.md#cdc-deployment-commands)
+for all commands and options.
 
 ### Exit codes
 
 | Code | Meaning |
 | --- | --- |
 | `0` | Success |
-| `1` | Failure: invalid arguments, missing files, schema validation errors, or a failed database operation |
+| `1` | Operation failed. For CDC status, see the [status results](#check-cdc-status). |
 | `2` | Invalid arguments (`cdc` commands only) |
 | `130` | Cancelled (`cdc` commands and managed CDC provisioning only) |
 

@@ -8,6 +8,9 @@ Ed-Fi API v8 runs as a set of Docker containers orchestrated by Docker Compose.
 This page walks through starting the services for the first time using the
 scripts in the Ed-Fi API repository.
 
+If you want to try Kafka streaming, follow the [Kafka walkthrough](../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx)
+before running any steps below. It creates its own databases and environment file.
+
 ## Step 1 — Clone the Repository
 
 Clone the `v8.1.0` release tag, so the scripts and the images they build match
@@ -80,6 +83,9 @@ SDK](https://dotnet.microsoft.com/download/dotnet/10.0).
 | `-DataStandardVersion 6.1` | Use Data Standard 6.1 instead of the default, 5.2 |
 | `-AddSmokeTestCredentials` | Create API client credentials for local testing and print the key and secret at the end of startup (see [Configure a Data Store](configure-data-store)) |
 | `-SeparateConfigDatabase` | Store the Configuration Service data in its own database instead of sharing the Ed-Fi API database |
+| `-EnableKafkaCdc` | Activate the cache and start streaming in the [Kafka walkthrough](../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx#start-the-api-and-streaming) |
+| `-CdcSettingsPath` / `-CdcBindingStatePath` | Set the path to the streaming settings and the directory where the script saves its state |
+| `-EnableKafkaUI` | Start Kafka UI to view messages |
 | `-Rebuild` | Rebuild the local Docker images before starting, for example after updating the repository |
 
 ### Optional: Year-Specific Data Stores
@@ -103,7 +109,10 @@ for details.
 
 ### Stopping the Services
 
-Use `bootstrap-local-dms.ps1` to stop the stack started by the same wrapper:
+For a Kafka evaluation, use the [walkthrough’s stop and resume commands](../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx#stop-and-resume-the-evaluation)
+to keep streaming to the same topic.
+
+For the standard deployment, use the wrapper that started the stack:
 
 | Command | Effect |
 | --- | --- |

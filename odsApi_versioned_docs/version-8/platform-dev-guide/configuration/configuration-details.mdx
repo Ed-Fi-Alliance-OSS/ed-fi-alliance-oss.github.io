@@ -489,6 +489,51 @@ values for each provider.
 
 ---
 
+## Event Streaming with Kafka
+
+The
+[Kafka walkthrough](../../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx#prepare-the-api-and-cdc-settings)
+adds these settings under `Cdc` and activates DocumentCache for the same data
+store. API read acceleration is optional.
+
+| Setting in `Cdc`                                                                | Value in the walkthrough                                       | Purpose                                                                                                                        |
+| ------------------------------------------------------------------------------- | -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| `Provider`                                                                      | `postgresql` or `sqlserver`                                    | Match the API's database engine (`postgresql` or `mssql`, respectively).                                                       |
+| `DeploymentKey`, `TenantKey`, `DataStoreId`                                     | `local`, empty string, `1`                                     | Select the deployment and data store. The tenant and data store ID must match the DocumentCache settings.                      |
+| `TopicPrefix`, `InstanceKey`, `Generation`, `PartitionCount`                    | `edfi`, `datastore-1`, `1`, `1`                                | Create the topic `edfi.instance.datastore-1-g1.documents.v1` with one partition. Keep these values across restarts.            |
+| `SetupConnectionString`                                                         | `127.0.0.1:5435` (PostgreSQL) or `127.0.0.1,1435` (SQL Server) | Connect to `edfi_cdc` from the host as the setup administrator. Keep the connection string private.                            |
+| `ProviderConnectionProperties`                                                  | `dms-postgresql:5432` or `dms-mssql:1433`                      | Connect to the database from Docker as `cdc_reader`, using `CDC_DATABASE_PASSWORD`.                                            |
+| `KafkaAdminBootstrapServers`, `KafkaBootstrapServers`                           | `127.0.0.1:9092`, `dms-kafka1:9092`                            | Reach the broker from the host and from Docker, respectively.                                                                  |
+| `ConnectEndpoint`, `WorkerMetricsEndpoint`                                      | `http://127.0.0.1:8083`, `http://127.0.0.1:9404/metrics`       | Reach Kafka Connect and read worker metrics from the host.                                                                     |
+| `Worker.HeapBytes`                                                              | `1073741824`                                                   | Match the worker memory in the [Compose settings](../../getting-started/getting-started-appendix.md#optional-kafka-streaming). |
+| `LagThresholdMilliseconds`, `Timing.MaximumObservationAgeMilliseconds`          | `5000`, `60000`                                                | Set how far the connector can fall behind and how old a measurement can be for the status check to pass.                       |
+| `Timing.CallMilliseconds`, `Timing.WaitMilliseconds`, `Timing.PollMilliseconds` | `180000`, `600000`, `1000`                                     | Set the timeout for one call, the total wait, and the interval between checks.                                                 |
+
+### CDC Record Size
+
+`Cdc.MaxRecordBytes` limits the size of a Kafka message, including the key, full
+resource, and metadata. The walkthrough sets it to 10,000,000 bytes. An API
+request within the API's size limit can still produce a larger Kafka message
+once resource links and metadata are added.
+
+An oversized message stops the connector task. Before raising the limit, check
+that each consumer can read a message of the new size. Then follow the
+[record-size increase procedure](https://github.com/Ed-Fi-Alliance-OSS/Data-Management-Service/blob/v8.1.0/reference/cdc-documentation/operations-runbook.md#record-size-increase)
+to pause streaming and update the connector, topic, and broker limits together.
+Save the new setting after the change succeeds.
+
+<details>
+<summary>Kafka settings that must accept the new record size</summary>
+
+| Component | Settings                                                                                                                                                                                              |
+| --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Connector | Set `producer.override.max.request.size` to the limit and allow at least that much `producer.override.buffer.memory`, plus memory for the worker.                                                     |
+| Topic     | Set `max.message.bytes` to the limit.                                                                                                                                                                 |
+| Broker    | Allow the record in `message.max.bytes` or the topic override, `replica.fetch.max.bytes`, and `replica.fetch.response.max.bytes`. Allow at least 1 MiB above the limit in `socket.request.max.bytes`. |
+| Consumer  | Set `max.partition.fetch.bytes` and `fetch.max.bytes` to at least the limit. Allow enough memory to read a record of that size.                                                                       |
+
+</details>
+
 ## Configuration Service Settings
 
 ### Required Settings

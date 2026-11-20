@@ -14,6 +14,10 @@ sidebar_position: 3
 | PostgreSQL _(default database engine)_ | 5435 |
 | SQL Server _(with `-DatabaseEngine mssql`)_ | 1435 |
 | Keycloak _(optional)_ | 8045 |
+| Kafka broker _(streaming)_ | 9092 |
+| Kafka Connect REST API _(streaming)_ | 8083 |
+| Kafka UI _(with `-EnableKafkaUI`)_ | 8088 |
+| Kafka Connect worker metrics _(streaming)_ | 9404 |
 
 Ports can be overridden in the `.env` file before starting the services.
 
@@ -21,7 +25,9 @@ Ports can be overridden in the `.env` file before starting the services.
 
 The `.env` file in `eng/docker-compose/` controls Docker Compose service
 configuration. Copy `.env.example` to `.env` and edit as needed before running
-`bootstrap-local-dms.ps1`.
+`bootstrap-local-dms.ps1`. For a Kafka evaluation, the
+[private configuration step](../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx#prepare-private-configuration)
+creates this file for you.
 
 ### Ed-Fi API
 
@@ -83,6 +89,21 @@ and follow the [DocumentCache activation guide](../platform-dev-guide/features/d
 to activate the database and verify worker status. To enable accelerated reads
 after activation, set `DMS_DOCUMENTCACHE_READ_ACCELERATION_ENABLED=true` in
 `.env` and recreate the API container.
+
+### Optional Kafka Streaming
+
+The [Kafka walkthrough](../how-to-guides/how-to-set-up-kafka-cdc-streaming.mdx#prepare-private-configuration)
+sets up these values for a local evaluation. The four ports are accessible
+from the host's loopback interface.
+
+| Variable | Walkthrough value | Purpose |
+| --- | --- | --- |
+| `KAFKA_PORT` | `9092` | Kafka broker port on the host. |
+| `CONNECT_SOURCE_PORT` | `8083` | Kafka Connect REST API. |
+| `KAFKA_UI_PORT` | `8088` | Kafka UI in your browser. |
+| `CDC_METRICS_PORT` | `9404` | Kafka Connect metrics used by the status check. |
+| `CDC_DATABASE_PASSWORD` | Generated during setup | Password for the restricted `cdc_reader` database login. |
+| `CDC_WORKER_HEAP_MIB` | `1024` | Memory for the Kafka Connect worker. Match `Worker.HeapBytes` in the [CDC settings](../platform-dev-guide/configuration/configuration-details.mdx#event-streaming-with-kafka). |
 
 ### PostgreSQL
 
