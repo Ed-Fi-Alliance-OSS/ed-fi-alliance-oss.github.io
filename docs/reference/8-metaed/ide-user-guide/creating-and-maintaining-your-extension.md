@@ -125,10 +125,7 @@ Simply add one or more folders with the "Add Folder to Workspace..." command.
 3. Expand `Extensions > MetaEd`  or type "metaed" in the search bar to scroll to
     the available settings.
 4. Available settings:
-    1. **Accepted License:** Usage of the Ed-Fi Unifying Data Model requires acceptance of the
-        [Ed-Fi License agreement](../getting-started-with-metaed-ide/installation/ed-fi-license-agreement.md).
-        Check the box to accept the license terms.
-    2. **Target Ods Api Version**: The target Ed-Fi ODS/API version.
+    1. **Target Ods Api Version**: The target Ed-Fi ODS/API version.
 
         :::tip
 
@@ -137,18 +134,27 @@ Simply add one or more folders with the "Add Folder to Workspace..." command.
 
         :::
 
-    3. **Ods Api Deployment Directory**: Full path to root folder for the Ed-Fi
+    2. **Ods Api Deployment Directory**: Full path to root folder for the Ed-Fi
         ODS / API source code. The folder this points to should contain
         Ed-Fi-ODS and Ed-Fi-ODS-Implementation folders.
-    4. **Suppress Delete on Deploy:** Stop deployment from deleting the
+    3. **Suppress Delete on Deploy:** Stop deployment from deleting the
         SupportingArtifacts API folder. For advanced users only.
-    5. **Alliance Mode:** For Alliance users only, this makes core files
+    4. **Alliance Mode:** For Alliance users only, this makes core files
         editable. Non-Alliance users must leave this setting disabled to avoid
         dangerous and costly mistakes. :warning:
 
          Alliance mode users: manually update the "Data Standard Project
          Directory" to the correct folder path to the active Ed-Fi-Model
          repository.
+
+:::tip
+
+Prior to MetaEd 4.10 (January, 2027), the extension required checking an "Accept License" button applicable to
+the legacy Ed-Fi License Agreement. This setting has been removed in version 4.10, as the Ed-Fi Unifying Data
+Model packages used by MetaEd are now available under the open source Apache 2.0 license (also applying
+retroactively to previous package releases).
+
+:::
 
 ## Step 4. Add the Correct Data Model Project
 

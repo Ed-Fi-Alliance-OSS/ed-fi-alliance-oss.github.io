@@ -45,22 +45,8 @@ notification that  "MetaEd has started".
 
 ## Step 4. Configure Settings
 
-Open the settings from the `File > Preferences > Settings`  menu. [MetaEd IDE -
-Creating and Maintaining Your Extension (X)](#) provides more detail on the
-settings, most of which depend on your project needs. Most importantly, please
-be sure to accept the [Ed-Fi License Agreement for Use of
-the Ed-Fi Unifying Data Model](./ed-fi-license-agreement.md),
-as shown in the screenshot below.
-
-![MetaEd Settings](https://edfidocs.blob.core.windows.net/$web/img/reference/metaed/accept-license.png)
+Open the settings from the `File > Preferences > Settings`  menu. [Creating and Maintaining Your
+Extension](../../ide-user-guide/creating-and-maintaining-your-extension.md) provides more detail on the
+settings, most of which depend on your project needs.
 
 That's it! You can now start using MetaEd in Visual Studio Code.
-
-:::tip
-
-Beginning in March, 2025, the MetaEd source code uses the Apache License,
-version 2.0, like the other Ed-fi applications. However, the [Unifying Data
-Model](../../../1-data-exchange/udm/readme.md) files continue to be provided
-through MetaEd under terms of the Ed-Fi License Agreement.
-
-:::
