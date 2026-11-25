@@ -21,7 +21,7 @@ This domain contains:
 * A StaffDisciplineIncidentAssociation entity, which links staff members to
     DisciplineIncident entities and indicates their role in that incident.
 * A DisciplineAction entity, which represents the punitive or other action
-    taken against a student or students.
+    taken against a student.
 
 ## Key Concepts
 
@@ -29,8 +29,9 @@ The key concepts include the following:
 
 * One or more discipline actions may be applied to one DisciplineIncident
     entity (e.g., suspension plus after-school study hall). Alternatively, one
-    DisciplineAction entity could have multiple DisciplineIncident entities as
-    an attribute to accomplish the same thing.
+    DisciplineAction entity can reference multiple
+    StudentDisciplineIncidentBehaviorAssociation entities, which may come from
+    more than one DisciplineIncident.
 * When multiple students are involved in a discipline incident, the
     StudentDisciplineIncidentBehaviorAssociation and
     StudentDisciplineIncidentNonOffenderAssociation entities indicates the role

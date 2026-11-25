@@ -300,6 +300,31 @@ breaking year of the next cycle. In this way, Ed-Fi community members will have
 three years to adopt their system for the removal of obsolete model elements
 assuming the continuity of the current release policy.
 
+#### Discipline Domain Removals
+
+The following previously deprecated elements were removed from the Discipline
+domain in Data Standard v5.0:
+
+* **StudentDisciplineIncidentAssociation** (deprecated in Data Standard v3.3).
+    Use StudentDisciplineIncidentBehaviorAssociation for students who were
+    responsible for a behavior in an incident, and
+    StudentDisciplineIncidentNonOffenderAssociation for students who were
+    involved in other roles (for example, victim, witness, or reporter).
+* **StudentDisciplineIncidentAssociation reference collection on
+    DisciplineAction.** Use the StudentDisciplineIncidentBehaviorAssociation
+    reference collection on DisciplineAction instead.
+* **ReceivedEducationServicesDuringExpulsion on DisciplineAction.** Use the
+    Discipline descriptor value "Expulsion with Services" instead.
+* **Staff reference on DisciplineIncident** (the staff reporter of the
+    incident). Use StaffDisciplineIncidentAssociation instead, which supports
+    staff participation roles beyond reporter.
+
+The corresponding API changes are listed in [API Changes - Discipline Domain
+Removals in Data Standard
+v5.0](./api-changes-5.md#discipline-domain-removals-in-data-standard-v50). For
+guidance on recording Discipline data without these elements, see [Discipline
+Domain - Best Practices](../model-reference/discipline-domain/best-practices.md).
+
 ### Changes on Student School Association
 
 [DATASTD-1939](https://tracker.ed-fi.org/browse/DATASTD-1939)
