@@ -26,6 +26,7 @@
   IDEAEvent }o--|| EducationOrganization : "HasAssociated"
   StudentIEPServicePrescription }o--|| StudentIEP : "HasAssociated"
   StudentIEP ||--o{ StudentIEPGoal : "HasAssociated"
+  StudentIEP ||--o{ StudentIEPResponsibleContactAssociation : "HasAssociated"
   StudentIEPServiceDelivery }o--|| StudentIEPServicePrescription : "HasAssociated"
   Student }|--o{ EducationOrganization : "HasAssociated"
   Student ||--o{ IDEAEvent : "HasAssociated"
@@ -35,6 +36,7 @@
   StudentIEPGoal }o--o{ IDEAEvent : "HasAssociated"
   StudentIEP ||--o{ StudentIEPServiceDelivery : "HasAssociated"
   EducationOrganization ||--o{ StudentIEP : "HasAssociated"
+  
 
   style StudentIEP fill:#E1BEE7,stroke:#AA00FF,color:#000000
   style IDEAEvent fill:#E1BEE7,stroke:#AA00FF,color:#000000

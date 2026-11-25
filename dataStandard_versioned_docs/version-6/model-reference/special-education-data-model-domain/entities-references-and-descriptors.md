@@ -40,23 +40,24 @@ for more information.
 
 | Name | Entity | Description | Usage Classification | EDFacts Mapping | Commonly Used | Commonly State-Defined |
 | --- | --- | --- | --- | --- | --- | --- |
-| Accommodation | StudentIEP | The special variation(s) to be used in how various services (in general) are presented, how they are administered, or how the student is allowed to respond. This generally refers to changes that do not substantially alter the content that the service renders. The proper use of accommodations does not substantially change academic level or performance criteria. | Local |     | Yes |     |
-| Disability | StudentIEP | A disability category that describes a individual's impairment. | Orthodox | Yes | Yes |     |
-| DisabilityDesignation | StudentIEP | Whether the disability is IDEA, Section 504, or other disability designation. | Orthodox |     |     |     |
-| DisabilityDeterminationSourceType | StudentIEP | The source that provided the disability determination. | Orthodox |     |     |     |
-| DurationInterval | StudentIEPServicePrescription | How often the prescribed service is to be provided within the specified duration period. Examples include: Per Session, Per Week, Per Month. |     |     |     |     |
-|EventCompliance |  IDEAEvent | The type of compliance represented by this event. |     |     |     |     |
-| EventReason | IDEAEvent | The reason why the IDEA event occurred. |     |     |     |     |
-| FrequencyInterval | StudentIEPServicePrescription | How often the frequency should repeat for the prescribed service. Examples include: Per Session, Weekly, Monthly. |     |     |     |     |
-| IDEAEventType | IDEAEvent  | The IDEA event recorded for the student. |     |     |     |     |
-| IEPStatus | StudentIEP  | The current status of the IEP. |     |     |     |     |
-| IEPGoalType | StudentIEPGoal | A focused goal prescribed as part of the IEP. Examples include Academic Goal, Behavioral Goal, Attendance Goal. |     |     |     |     |
-| ReasonExited | StudentIEP  | The reason why a person stops receiving special education services. |     |     |     |     |
-| ServiceDelivery | StudentIEPServiceDelivery | The type of services delivered to the student. |     |     |     |     |
-| ServiceLocationType | StudentIEPServicePrescription | The type of location where the prescribed service is to be provided. Examples include: Home, Hospital, School. |     |     |     |     |
-| ServicePrescription | StudentIEPServicePrescription  | The type of service prescribed. Examples include: Auditory Specialist, Vocational Therapy. |     |     |     |     |
-| ServiceProviderType | StudentIEPServiceDelivery | The type of services delivered to the student. |     |     |     |     |
-| SpecialEducationSetting | StudentIEP | The major instructional setting (more than 50 percent of a student's special education program). | Standard | Yes | Yes |     |
+| Accommodation | StudentIEP | The special variation(s) to be used in how various services (in general) are presented, how they are administered, or how the student is allowed to respond. This generally refers to changes that do not substantially alter the content that the service renders. The proper use of accommodations does not substantially change academic level or performance criteria. | Local | | Yes | |
+| ContactResponsibility | StudentIEP | Defines the type of responsibility a contact has for a specific student. | | | | |
+| Disability | StudentIEP | A disability category that describes a individual's impairment. | Orthodox | Yes | Yes | |
+| DisabilityDesignation | StudentIEP | Whether the disability is IDEA, Section 504, or other disability designation. | Orthodox | | | |
+| DisabilityDeterminationSourceType | StudentIEP | The source that provided the disability determination. | Orthodox | | | |
+| DurationInterval | StudentIEPServicePrescription | How often the prescribed service is to be provided within the specified duration period. Examples include: Per Session, Per Week, Per Month. | | | | |
+| EventCompliance | IDEAEvent | The type of compliance represented by this event. | | | | |
+| EventReason | IDEAEvent | The reason why the IDEA event occurred. | | | | |
+| FrequencyInterval | StudentIEPServicePrescription | How often the frequency should repeat for the prescribed service. Examples include: Per Session, Weekly, Monthly. | | | | |
+| IDEAEventType | IDEAEvent | The IDEA event recorded for the student. | | | | |
+| IEPStatus | StudentIEP | The current status of the IEP. | | | | |
+| IEPGoalType | StudentIEPGoal | A focused goal prescribed as part of the IEP. Examples include Academic Goal, Behavioral Goal, Attendance Goal. | | | | |
+| ReasonExited | StudentIEP | The reason why a person stops receiving special education services. | | | | |
+| ServiceDelivery | StudentIEPServiceDelivery | The type of services delivered to the student. | | | | |
+| ServiceLocationType | StudentIEPServicePrescription | The type of location where the prescribed service is to be provided. Examples include: Home, Hospital, School. | | | | |
+| ServicePrescription | StudentIEPServicePrescription | The type of service prescribed. Examples include: Auditory Specialist, Vocational Therapy. | | | | |
+| ServiceProviderType | StudentIEPServiceDelivery | The type of services delivered to the student. | | | | |
+| SpecialEducationSetting | StudentIEP | The major instructional setting (more than 50 percent of a student's special education program). | Standard | Yes | Yes | |
 
 :::tip
 

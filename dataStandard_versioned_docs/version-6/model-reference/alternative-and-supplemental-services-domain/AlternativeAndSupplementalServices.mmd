@@ -26,10 +26,10 @@
         decimal YearsOfPriorProfessionalExperience "O"
         decimal YearsOfPriorTeachingExperience "O"
     }
-    GeneralStudentProgramAssociation {     
+    GeneralStudentProgramAssociation {
         reference Student "I"
 		reference Program "I"
-		reference EducationOrganization "I"     
+		reference EducationOrganization "I"
 		date BeginDate "I"
         date EndDate "O"
         common ProgramParticipationStatus "OC"
@@ -104,7 +104,7 @@
         integer SectionAttendanceDuration "O"
     }
     StudentSchoolAttendanceEvent {
-        reference Student "I" 
+        reference Student "I"
 		reference School "I"
         reference Session "I"
         common AttendanceEvent "R"
