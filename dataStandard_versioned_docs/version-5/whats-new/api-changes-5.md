@@ -293,3 +293,87 @@ _Also see [Discipline Domain Best Practices](../model-reference/discipline-domai
 
   * **Request**
     * **Added** property: weapons (array)
+
+## Discipline Domain Removals in Data Standard v5.0
+
+:::note
+
+The rest of this page covers API changes from Data Standard v5.1 to v5.2. The
+removals below took effect earlier, in Data Standard v5.0 (relative to Data
+Standard v4.0), and are listed here so that implementers upgrading from v4 can
+find them. See [Removal of Previously Deprecated
+Elements](./whats-new-v50.md#removal-of-previously-deprecated-elements) for
+background.
+
+:::
+
+_Also see [Discipline Domain Best Practices](../model-reference/discipline-domain/best-practices.md)_
+
+### Removed studentDisciplineIncidentAssociations Endpoints
+
+StudentDisciplineIncidentAssociation was removed from the model. Use
+`studentDisciplineIncidentBehaviorAssociations` for students who were
+responsible for a behavior in an incident, and
+`studentDisciplineIncidentNonOffenderAssociations` for students who were
+involved in other roles.
+
+* `GET /ed-fi/studentDisciplineIncidentAssociations`
+    **Removed**
+* `POST /ed-fi/studentDisciplineIncidentAssociations`
+    **Removed**
+* `GET /ed-fi/studentDisciplineIncidentAssociations/{id}`
+    **Removed**
+* `PUT /ed-fi/studentDisciplineIncidentAssociations/{id}`
+    **Removed**
+* `DELETE /ed-fi/studentDisciplineIncidentAssociations/{id}`
+    **Removed**
+* `GET /ed-fi/studentDisciplineIncidentAssociations/deletes`
+    **Removed**
+
+### Changes to disciplineActions
+
+* `GET /ed-fi/disciplineActions`
+
+  * **Response**
+    * **Removed** property: [n].receivedEducationServicesDuringExpulsion (boolean)
+    * **Removed** property: [n].studentDisciplineIncidentAssociations (array)
+
+* `POST /ed-fi/disciplineActions`
+
+  * **Request**
+    * **Removed** property: receivedEducationServicesDuringExpulsion (boolean)
+    * **Removed** property: studentDisciplineIncidentAssociations (array)
+
+* `GET /ed-fi/disciplineActions/{id}`
+
+  * **Response**
+    * **Removed** property: receivedEducationServicesDuringExpulsion (boolean)
+    * **Removed** property: studentDisciplineIncidentAssociations (array)
+
+* `PUT /ed-fi/disciplineActions/{id}`
+
+  * **Request**
+    * **Removed** property: receivedEducationServicesDuringExpulsion (boolean)
+    * **Removed** property: studentDisciplineIncidentAssociations (array)
+
+### Changes to disciplineIncidents
+
+* `GET /ed-fi/disciplineIncidents`
+
+  * **Response**
+    * **Removed** property: [n].staffReference (object)
+
+* `POST /ed-fi/disciplineIncidents`
+
+  * **Request**
+    * **Removed** property: staffReference (object)
+
+* `GET /ed-fi/disciplineIncidents/{id}`
+
+  * **Response**
+    * **Removed** property: staffReference (object)
+
+* `PUT /ed-fi/disciplineIncidents/{id}`
+
+  * **Request**
+    * **Removed** property: staffReference (object)

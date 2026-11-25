@@ -12,7 +12,6 @@ hide_table_of_contents: true
 | DisciplineAction | This event entity represents actions taken by an education organization after a disruptive event that is recorded as a discipline incident. |
 | DisciplineIncident | This event entity represents an occurrence of an infraction ranging from a minor behavioral problem that disrupts the orderly functioning of a school or classroom (such as tardiness) to a criminal act that results in the involvement of a law enforcement official (such as robbery). A single event (e.g., a fight) is one incident regardless of how many perpetrators or victims are involved. Discipline incidents are events classified as warranting discipline action. |
 | StaffDisciplineIncidentAssociation | This association indicates those staff who were victims, perpetrators, witnesses, and reporters for a discipline incident. |
-| StudentDisciplineIncidentAssociation | **Deprecated.** This association indicates those students who were victims, perpetrators, witnesses, and reporters for a discipline incident. |
 | StudentDisciplineIncidentBehaviorAssociation | This association describes the behavior of students involved in a discipline incident. |
 | StudentDisciplineIncidentNonOffenderAssociation | This association indicates those students who were involved and not perpetrators for a discipline incident. |
 
@@ -36,10 +35,9 @@ hide_table_of_contents: true
 | DisciplineIncident | Weapon | Identifies the type of weapon used during an incident. The Federal Gun-Free Schools Act requires states to report the number of students expelled for bringing firearms to school by type of firearm. | Local |     | Yes |     |
 | DisciplineIncident | DisciplineIncidentParticipationCode | The role or type of participation of a student in a discipline incident; for example: Victim, Perpetrator, Witness, Reporter. | Local |     | Yes |     |
 | StaffDisciplineIncidentAssociation | DisciplineIncidentParticipationCode | The role or type of participation of a student in a discipline incident (e.g., Victim, Perpetrator, Witness, Reporter). | Local |     | Yes |     |
-| StudentDisciplineIncidentAssociation | StudentParticipationCode | The role or type of participation of a student in a discipline incident;  <br/>for example: Victim, Perpetrator, Witness, Reporter. | Local |     | Yes |     |
-| StudentDisciplineIncidentAssociation | Behavior | Describes behavior by category and provides a detailed description. | Local |     | Yes |     |
 | StudentDisciplineIncidentBehaviorAssociation | Behavior | Describes behavior by category. | Local |     | Yes |     |
 | StudentDisciplineIncidentBehaviorAssociation | DisciplineIncidentParticipationCode | The role or type of participation of a student in a discipline incident. | Local |     | Yes |     |
+| StudentDisciplineIncidentBehaviorAssociation | Weapon | Identifies the type(s) of weapon used by the student during a discipline incident. The Federal Gun-Free Schools Act requires states to report the number of students expelled for bringing firearms to school by type of firearm. Added in Data Standard v5.2. | Local |     | Yes |     |
 | StudentDisciplineIncidentNonOffenderAssociation | DisciplineIncidentParticipationCode | The role or type of participation of a student in a discipline incident. | Local |     | Yes |     |
 
 :::tip
