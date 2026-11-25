@@ -104,9 +104,19 @@
      common GoalAchievementPeriod "O"
      reference IDEAEvent "OC"
  }
+
+ StudentIEPResponsibleContactAssociation {
+     reference StudentIEP "I"
+     reference Contact "I"
+     descriptor ContactResponsibility "I"
+     date ContactResponsibilityBeginDate "I"
+    date ContactResponsibilityEndDate "O"
+ }
+
     IDEAEvent }o--|| EducationOrganization : "HasAssociated"
     StudentIEPServicePrescription }o--|| StudentIEP : "HasAssociated"
     StudentIEP ||--o{ StudentIEPGoal : "HasAssociated"
+    StudentIEP ||--o{ StudentIEPResponsibleContactAssociation : "HasAssociated"
     StudentIEPServiceDelivery }o--|| StudentIEPServicePrescription : "HasAssociated"
     Student }|--o{ EducationOrganization : "HasAssociated"
     Student ||--o{ IDEAEvent : "HasAssociated"

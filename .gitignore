@@ -34,3 +34,6 @@ tools/build-chroma/.venv/
 
 # AI planning/spec documents (not for publication)
 docs/superpowers/
+
+# macOS Finder metadata
+.DS_Store

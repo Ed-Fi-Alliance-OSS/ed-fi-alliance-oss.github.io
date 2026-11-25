@@ -243,7 +243,7 @@ The following table summarizes the best practice use of the _Program_ attributes
 
 | Required | Must Have | Recommended | As Needed |
 | --- | --- | --- | --- |
-| ProgramName (key)<br/>ProgramType (key)<br/>EntrEducationOrganization Date (key)<br/> |  | ProgramId<br/>ProgramSponsor<br/> | ProgramCharacteristic<br/>LearningStandard |
+| ProgramName (key)<br/>ProgramType (key)<br/>EntrEducationOrganization Date (key)<br/> | | ProgramId<br/>ProgramSponsor<br/> | ProgramCharacteristic<br/>LearningStandard |
 
 :::note Keys in reading the table and following ones:
 
@@ -288,7 +288,7 @@ best practice use of the _StaffProgramAssociation_ attributes.
 
 | Required | Must Have | Recommended | As Needed |
 | --- | --- | --- | --- |
-| Staf (key)<br/>Program (key)<br/>BeginDate (key)<br/> | EndDate |  | StudentRecordAccess |
+| Staf (key)<br/>Program (key)<br/>BeginDate (key)<br/> | EndDate | | StudentRecordAccess |
 
 Business Rules that considered as best practices for the usage of the _StaffProgramAssociation_ are as follows
 :::info
@@ -309,7 +309,7 @@ Business Rules that considered as best practices for the usage of the _StaffProg
 The _GeneralStudentProgramAssociation_ is the base abstract class for the subclasses
 _StudentProgramAssociation_ (SPA) and all _StudentXxxProgramAssociations_ (SXPAs),
 including those defined for the Federal programs and any custom extensions.
-As such, the _GeneralStudentProgamAssociation_ defines the keys and common
+As such, the _GeneralStudentProgramAssociation_ defines the keys and common
 attributes for the SPA and all predefined or extended SXPAs.
 
 The following table summarizes the best practice use of the
@@ -319,10 +319,10 @@ _GeneralStudentProgramAssociation_ attributes.
 
 | Required | Must Have | Recommended | As Needed |
 | --- | --- | --- | --- |
-| Student (key)<br/>Program (key)<br/>BeginDate (key)<br/>EducationOrganization (key)<br/> | EndDate<br/>ReasonExited |  | ServedOutsideOfRegularSession<br/>ProgramParticipationStatus |
+| Student (key)<br/>Program (key)<br/>BeginDate (key)<br/>EducationOrganization (key)<br/> | EndDate<br/>ReasonExited | | ServedOutsideOfRegularSession<br/>ProgramParticipationStatus |
 
 <br/>
-Business Rules that considered as best practices for the usage of the _GeneralStudentProgamAssociation_ are as follows
+Business Rules that considered as best practices for the usage of the _GeneralStudentProgramAssociation_ are as follows
 
 :::info
 
@@ -338,7 +338,7 @@ Business Rules that considered as best practices for the usage of the _GeneralSt
 
 For the _SPA_ or _SXPA_, the BeginDate and the _EndDate_ define the period of assignment
 or participation in the program. As part of the key inherited from the
-_GeneralStudentProgamAssociation_ each _SPA_ or _SXPA_ for a student must have a
+_GeneralStudentProgramAssociation_ each _SPA_ or _SXPA_ for a student must have a
 _BeginDate_. An active program assignment is one with a _BeginDate_ and no
 _EndDate_, meaning the student is still assigned and participating in the program.
 
@@ -660,7 +660,7 @@ _StudentSpecialEducationProgramAssociation_ attributes.
 
 | Required | Must Have | Recommended | As Needed |
 | --- | --- | --- | --- |
-| Student**(key)<br/>Program** (key)<br/>BeginDate**(key)<br/>EducationOrganization** (key)<br/> | EndDate**<br/>ReasonExited**<br/>IdeaEligibility<br/>SpecialEducationSetting<br/>Disability<br/>MultiplyDisabled<br/>SpecialEducationExitDate<br/>SpecialEducationExitReason<br/>SpecialEducationProgramService<br/>SpecialEducationHours PerWeek<br/>SchoolHoursPerWeek<br/>LastEvaluationDate<br/>IEPReviewDate<br/>IEPBeginDate<br/>IEPEndDate | ProgramParticipationStatus**<br/>MedicallyFragile<br/>ServiceProvider | ServedOutsideOfRegularSession**<br/>SpecialEducationExitExplained |
+| Student**(key)<br/>Program** (key)<br/>BeginDate**(key)<br/>EducationOrganization** (key)<br/> | EndDate**<br/>ReasonExited**<br/>IdeaEligibility<br/>SpecialEducationSetting<br/>Disability<br/>MultiplyDisabled<br/>SpecialEducationExitDate<br/>SpecialEducationExitReason<br/>SpecialEducationProgramService<br/>SpecialEducationHours PerWeek<br/>SchoolHoursPerWeek<br/>LastEvaluationDate<br/>IEPReviewDate<br/>IEPBeginDate<br/>IEPEndDate | ProgramParticipationStatus**<br/>MedicallyFragile<br/>ServiceProvider<br/>ResponsibleContact | ServedOutsideOfRegularSession**<br/>SpecialEducationExitExplained |
 
 ** Indicates attributes inherited from the _GeneralStudentProgramAssociation_
 
